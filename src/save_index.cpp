@@ -42,7 +42,7 @@ void extract_summary_from_config(config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
-	std::time_t modified = filesystem::file_modified_time(dir_ + "/" + name);
+	const std::time_t modified = filesystem::file_modified_time(dir_ + "/" + name);
 	rebuild(name, modified);
 }
 
@@ -81,9 +81,9 @@ void save_index_class::set_modified(const std::string& name, const std::time_t& 
 config& save_index_class::get(const std::string& name)
 {
 	config& result = data(name);
-	std::time_t m = modified_[name];
+	const std::time_t m = modified_[name];
 
-	config::attribute_value& mod_time = result["mod_time"];
+	const config::attribute_value& mod_time = result["mod_time"];
 	if(mod_time.empty() || mod_time.to_time_t() != m) {
 		rebuild(name, m);
 	}
@@ -215,7 +215,7 @@ std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
 /** Get a list of available saves. */
 std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
-	create_save_info creator(shared_from_this());
+	const create_save_info creator(shared_from_this());
 
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
@@ -264,7 +264,7 @@ std::string save_info::format_time_local() const
 
 std::string save_info::format_time_summary() const
 {
-	std::time_t t = modified();
+	const std::time_t t = modified();
 	return utils::format_time_summary(t);
 }
 
@@ -392,7 +392,7 @@ create_save_info::create_save_info(const std::shared_ptr<save_index_class>& mana
 
 save_info create_save_info::operator()(const std::string& filename) const
 {
-	std::time_t modified = filesystem::file_modified_time(manager_->dir() + "/" + filename);
+	const std::time_t modified = filesystem::file_modified_time(manager_->dir() + "/" + filename);
 	manager_->set_modified(filename, modified);
 	return save_info(filename, manager_, modified);
 }
@@ -451,7 +451,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
 			std::string leader_name;
-			int gold = side["gold"].to_int();
+			const int gold = side["gold"].to_int();
 			int units = 0, recall_units = 0;
 
 			if(side["controller"] != side_controller::human) {

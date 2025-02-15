@@ -78,7 +78,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	pre_show();
 
 	{
-		cursor::setter cur{cursor::NORMAL};
+		const cursor::setter cur{cursor::NORMAL};
 		window::show(auto_close_time);
 	}
 

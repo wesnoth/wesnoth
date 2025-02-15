@@ -133,7 +133,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 		}
 	}
 	if(type == NAMED) {
-		std::string name = s.str();
+		const std::string name = s.str();
 		entity["name"] = name;
 		if(name == "lt") {
 			entity["code_point"] = '<';
@@ -229,7 +229,8 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 
 static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
 {
-	std::string attr = parse_name(beg, end), value;
+	const std::string attr = parse_name(beg, end);
+	std::string value;
 	if(attr.empty()) {
 		throw parse_error("missing attribute name");
 	}
@@ -291,7 +292,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 
 static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match)
 {
-	size_t remaining = end - beg;
+	const size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
 	if(remaining < match.size() + 3) {
 		throw parse_error("Unexpected eos in closing tag");
@@ -346,7 +347,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		return res;
 	}
 	while(true) {
-		config text = parse_text_until(beg, end, '<');
+		const config text = parse_text_until(beg, end, '<');
 		if(beg == end || beg + 1 == end) {
 			throw parse_error("Missing closing tag");
 		}
@@ -368,7 +369,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 {
 	assert(*beg == '<');
 	++beg;
-	std::string tag_name = parse_name(beg, end);
+	const std::string tag_name = parse_name(beg, end);
 	if(tag_name.empty()) {
 		throw parse_error("missing tag name");
 	}
@@ -409,7 +410,7 @@ config parse_text(const std::string &text)
 			auto [tag, contents] = parse_tag(beg, end);
 			res.add_child(tag, contents);
 		} else {
-			config text = parse_text_until(beg, end, '<');
+			const config text = parse_text_until(beg, end, '<');
 			res.append_children(text);
 		}
 	}

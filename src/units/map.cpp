@@ -95,19 +95,19 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 	DBG_NG << "Unit map: Moving unit from " << src << " to " << dst;
 
 	// Find the unit at the src location
-	lmap::iterator i = lmap_.find(src);
+	const lmap::iterator i = lmap_.find(src);
 	if(i == lmap_.end()) {
 		return std::pair(make_unit_iterator(i), false);
 	}
 
-	umap::iterator uit(i->second);
+	const umap::iterator uit(i->second);
 
 	if(src == dst) {
 		return std::pair(make_unit_iterator(uit), true);
 	}
 
 	// Fail if there is no unit to move.
-	unit_ptr p = uit->second.unit;
+	const unit_ptr p = uit->second.unit;
 	if(!p) {
 		return std::pair(make_unit_iterator(uit), false);
 	}
@@ -116,7 +116,7 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 
 	lmap_.erase(i);
 
-	std::pair<lmap::iterator, bool> res = lmap_.emplace(dst, uit);
+	const std::pair<lmap::iterator, bool> res = lmap_.emplace(dst, uit);
 
 	// Fail and don't move if the destination is already occupied.
 	if(res.second == false) {
@@ -164,7 +164,7 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 
 			assert(opod.ref_count != 0);
 		} else {
-			unit_ptr q = uinsert.first->second.unit;
+			const unit_ptr q = uinsert.first->second.unit;
 			ERR_NG << "Trying to add " << p->name()
 				   << " - " << p->id() << " - " << p->underlying_id()
 				   << " ("  << loc << ") over " << q->name()
@@ -190,7 +190,7 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 		}
 	}
 
-	std::pair<lmap::iterator, bool> linsert = lmap_.emplace(loc, uinsert.first);
+	const std::pair<lmap::iterator, bool> linsert = lmap_.emplace(loc, uinsert.first);
 
 	// Fail if the location is occupied
 	if(!linsert.second) {
@@ -226,12 +226,12 @@ std::size_t unit_map::num_iters() const
 	/** Add up number of extant iterators */
 	std::size_t num_iters(0);
 	umap::const_iterator ui = umap_.begin();
-	umap::const_iterator uend = umap_.end();
+	const umap::const_iterator uend = umap_.end();
 
 	for(; ui != uend; ++ui) {
 		if(ui->second.ref_count < 0) {
 			// Somewhere, someone generated 2^31 iterators to this unit.
-			bool a_reference_counter_overflowed(false);
+			const bool a_reference_counter_overflowed(false);
 			assert(a_reference_counter_overflowed);
 		}
 
@@ -260,15 +260,15 @@ unit_ptr unit_map::extract(const map_location& loc)
 {
 	self_check();
 
-	lmap::iterator i = lmap_.find(loc);
+	const lmap::iterator i = lmap_.find(loc);
 	if(i == lmap_.end()) {
 		return unit_ptr();
 	}
 
-	umap::iterator uit(i->second);
+	const umap::iterator uit(i->second);
 
 	unit_ptr u = uit->second.unit;
-	std::size_t uid(u->underlying_id());
+	const std::size_t uid(u->underlying_id());
 
 	DBG_NG << "Extract unit " << uid << " - " << u->id() << " from location: (" << loc << ")";
 

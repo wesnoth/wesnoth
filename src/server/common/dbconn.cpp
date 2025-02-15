@@ -72,14 +72,14 @@ mariadb::connection_ref dbconn::create_connection()
 //
 int dbconn::async_test_query(int limit)
 {
-	std::string sql = "with recursive TEST(T) as "
-	                  "( "
-					  "select 1 "
-					  "union all "
-					  "select T+1 from TEST where T < ? "
-					  ") "
-					  "select count(*) from TEST";
-	int t = get_single_long(create_connection(), sql, { limit });
+	const std::string sql = "with recursive TEST(T) as "
+	                        "( "
+					        "select 1 "
+					        "union all "
+					        "select T+1 from TEST where T < ? "
+					        ") "
+					        "select count(*) from TEST";
+	const int t = get_single_long(create_connection(), sql, { limit });
 	return t;
 }
 
@@ -280,7 +280,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 
 		DBG_SQL << "before getting connection for game history query for player " << player_id;
 
-		mariadb::connection_ref connection = create_connection();
+		const mariadb::connection_ref connection = create_connection();
 
 		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
 
@@ -576,7 +576,7 @@ void dbconn::get_users_for_ip(const std::string& ip, std::ostringstream* out)
 {
 	try
 	{
-		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE IP LIKE ? order by LOGIN_TIME",
+		const mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE IP LIKE ? order by LOGIN_TIME",
 			{ ip });
 
 		*out << "\nCount of results for ip: " << rslt->row_count();
@@ -597,7 +597,7 @@ void dbconn::get_ips_for_user(const std::string& username, std::ostringstream* o
 {
 	try
 	{
-		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE USER_NAME LIKE ? order by LOGIN_TIME",
+		const mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE USER_NAME LIKE ? order by LOGIN_TIME",
 			{ utf8::lowercase(username) });
 
 		*out << "\nCount of results for user: " << rslt->row_count();
@@ -761,7 +761,7 @@ config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
 template <typename F>
 config dbconn::get_complex_results(const mariadb::connection_ref& connection, F* handler, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	const mariadb::result_set_ref rslt = select(connection, sql, params);
 	config c = (*handler)(rslt);
 	return c;
 }
@@ -770,7 +770,7 @@ config dbconn::get_complex_results(const mariadb::connection_ref& connection, F*
 //
 std::string dbconn::get_single_string(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	const mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		return rslt->get_string(0);
@@ -782,7 +782,7 @@ std::string dbconn::get_single_string(const mariadb::connection_ref& connection,
 }
 long dbconn::get_single_long(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	const mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
@@ -815,7 +815,7 @@ long dbconn::get_single_long(const mariadb::connection_ref& connection, const st
 }
 bool dbconn::exists(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	const mariadb::result_set_ref rslt = select(connection, sql, params);
 	return rslt->next();
 }
 
@@ -826,7 +826,7 @@ mariadb::result_set_ref dbconn::select(const mariadb::connection_ref& connection
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
+		const mariadb::statement_ref stmt = query(connection, sql, params);
 		mariadb::result_set_ref rslt = mariadb::result_set_ref(stmt->query());
 		return rslt;
 	}
@@ -840,8 +840,8 @@ unsigned long long dbconn::modify(const mariadb::connection_ref& connection, con
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
-		unsigned long long count = stmt->execute();
+		const mariadb::statement_ref stmt = query(connection, sql, params);
+		const unsigned long long count = stmt->execute();
 		return count;
 	}
 	catch(const mariadb::exception::base& e)
@@ -854,8 +854,8 @@ unsigned long long dbconn::modify_get_id(const mariadb::connection_ref& connecti
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
-		unsigned long long count = stmt->insert();
+		const mariadb::statement_ref stmt = query(connection, sql, params);
+		const unsigned long long count = stmt->insert();
 		return count;
 	}
 	catch(const mariadb::exception::base& e)

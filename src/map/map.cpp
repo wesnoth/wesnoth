@@ -140,7 +140,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 		if(allow_invalid) return;
 	}
 
-	int offset = read_header(data);
+	const int offset = read_header(data);
 
 	const std::string& data_only = std::string(data, offset);
 
@@ -160,7 +160,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 		for(int y = 0; y < total_height(); ++y) {
 
 			// Is the terrain valid?
-			t_translation::terrain_code t = tiles().get(x, y);
+			const t_translation::terrain_code t = tiles().get(x, y);
 			if(tdata_->map().count(t) == 0) {
 				if(!tdata_->is_known(t)) {
 					std::stringstream ss;
@@ -199,7 +199,7 @@ int gamemap::read_header(const std::string& data)
 	if (!(!(header_offset == std::string::npos || comma_offset < header_offset)))
 		return 0;
 
-	std::string header_str(std::string(data, 0, header_offset + 1));
+	const std::string header_str(std::string(data, 0, header_offset + 1));
 	config header;
 	::read(header, header_str);
 
@@ -214,8 +214,8 @@ std::string gamemap::write() const
 
 void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, bool ignore_special_locations)
 {
-	int xpos = loc.wml_x();
-	int ypos = loc.wml_y();
+	const int xpos = loc.wml_x();
+	const int ypos = loc.wml_y();
 
 	const int xstart = std::max<int>(0, -xpos);
 	const int xend = std::min<int>(m.total_width(), total_width() - xpos);
@@ -277,9 +277,8 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 
 	if (!ignore_special_locations) {
 		for(auto& pair : m.special_locations().left) {
-
-			int x = pair.second.wml_x();
-			int y = pair.second.wml_y();
+			const int x = pair.second.wml_x();
+			const int y = pair.second.wml_y();
 			if(x & 1) {
 				if(x < xstart || x >= xend || y < ystart_odd || y >= yend_odd) {
 					continue;
@@ -290,9 +289,9 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 					continue;
 				}
 			}
-			int x_new = x + xoffset;
-			int y_new = y + ((x & 1 ) ? yoffset_odd : yoffset_even);
-			map_location pos_new = map_location(x_new, y_new, wml_loc());
+			const int x_new = x + xoffset;
+			const int y_new = y + ((x & 1) ? yoffset_odd : yoffset_even);
+			const map_location pos_new = map_location(x_new, y_new, wml_loc());
 
 			starting_positions_.left.erase(pair.first);
 			starting_positions_.insert(location_map::value_type(pair.first, t_translation::coordinate(pos_new.x, pos_new.y)));
@@ -362,7 +361,7 @@ const std::string* gamemap_base::is_special_location(const map_location& loc) co
 
 void gamemap_base::set_special_location(const std::string& id, const map_location& loc)
 {
-	bool valid = loc.valid();
+	const bool valid = loc.valid();
 	auto it_left = starting_positions_.left.find(id);
 	if (it_left != starting_positions_.left.end()) {
 		if (valid) {
@@ -401,7 +400,8 @@ void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_
 		return;
 	}
 
-	t_translation::terrain_code new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
+	const t_translation::terrain_code new_terrain
+		= tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
 
 	if(new_terrain == t_translation::NONE_TERRAIN) {
 		return;
@@ -429,7 +429,7 @@ std::vector<map_location> gamemap_base::parse_location_range(const std::string &
 	const std::vector<std::string> yvals = utils::split(y);
 	int xmin = 1, xmax = w(), ymin = 1, ymax = h();
 	if (with_border) {
-		int bs = border_size();
+		const int bs = border_size();
 		xmin -= bs;
 		xmax += bs;
 		ymin -= bs;
@@ -473,7 +473,7 @@ std::string gamemap_base::to_string() const
 }
 
 const std::vector<map_location> gamemap_base::starting_positions() const {
-	int n = num_valid_starting_positions();
+	const int n = num_valid_starting_positions();
 	std::vector<map_location> res;
 	for(int i = 1; i <= n; i++) {
 		res.push_back(starting_position(i));

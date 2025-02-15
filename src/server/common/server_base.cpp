@@ -77,14 +77,14 @@ server_base::server_base(unsigned short port, bool keep_alive)
 
 void server_base::start_server()
 {
-	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
+	const boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
 	boost::asio::spawn(io_service_, [this, endpoint_v6](const boost::asio::yield_context& yield) { serve(yield, acceptor_v6_, endpoint_v6); }
 #if BOOST_VERSION >= 108000
 		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 
-	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
+	const boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
 	boost::asio::spawn(io_service_, [this, endpoint_v4](const boost::asio::yield_context& yield) { serve(yield, acceptor_v4_, endpoint_v4); }
 #if BOOST_VERSION >= 108000
 		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
@@ -117,7 +117,7 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
 	}
 
-	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
+	const socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
@@ -318,7 +318,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 	}
 
 	try {
-		simple_wml::string_span s = doc.output_compressed();
+		const simple_wml::string_span s = doc.output_compressed();
 
 		union DataSize
 		{
@@ -327,10 +327,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 		} data_size {};
 		data_size.size = htonl(s.size());
 
-		std::vector<boost::asio::const_buffer> buffers {
-			{ data_size.buf, 4 },
-			{ s.begin(), std::size_t(s.size()) }
-		};
+		const std::vector<boost::asio::const_buffer> buffers{{data_size.buf, 4}, {s.begin(), std::size_t(s.size())}};
 
 		boost::system::error_code ec;
 		async_write(*socket, buffers, yield[ec]);
@@ -348,7 +345,7 @@ template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, 
 
 template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
-	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	const std::size_t filesize{std::size_t(filesystem::file_size(filename))};
 	union DataSize
 	{
 		uint32_t size;
@@ -387,8 +384,8 @@ void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filen
 
 void server_base::coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
-	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
-	int in_file { open(filename.c_str(), O_RDONLY) };
+	const std::size_t filesize{std::size_t(filesystem::file_size(filename))};
+	const int in_file{open(filename.c_str(), O_RDONLY)};
 	ON_SCOPE_EXIT(in_file) { close(in_file); };
 	off_t offset { 0 };
 	//std::size_t total_bytes_transferred { 0 };
@@ -414,7 +411,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 	{
 		// Try the system call.
 		errno = 0;
-		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
+		const int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
 		ec = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
 		//total_bytes_transferred += *(yield.ec_) ? 0 : n;
@@ -533,7 +530,7 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	boost::system::error_code ec;
 	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield[ec]);
 	if(check_error(ec, socket)) return {};
-	uint32_t size = ntohl(data_size.size);
+	const uint32_t size = ntohl(data_size.size);
 
 	if(size == 0) {
 		ERR_SERVER <<
@@ -548,12 +545,12 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		return {};
 	}
 
-	boost::shared_array<char> buffer{ new char[size] };
+	const boost::shared_array<char> buffer{new char[size]};
 	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield[ec]);
 	if(check_error(ec, socket)) return {};
 
 	try {
-		simple_wml::string_span compressed_buf(buffer.get(), size);
+		const simple_wml::string_span compressed_buf(buffer.get(), size);
 		return std::make_unique<simple_wml::document>(compressed_buf);
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
@@ -667,7 +664,8 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 	}
 
 	if(utils::md5::is_valid_prefix(salt)) {
-		std::string hash = utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
+		const std::string hash
+			= utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
 		return salt+hash;
 	} else if(utils::bcrypt::is_valid_prefix(salt)) {
 		try {

@@ -225,7 +225,7 @@ void lobby_info::process_userlist()
 
 	users_.clear();
 	for(const auto& c : gamelist_.child_range("user")) {
-		user_info& ui = users_.emplace_back(c);
+		const user_info& ui = users_.emplace_back(c);
 
 		if(ui.game_id == 0) {
 			continue;

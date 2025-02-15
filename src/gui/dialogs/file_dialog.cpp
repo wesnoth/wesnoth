@@ -166,14 +166,14 @@ void file_dialog::check_filename() {
 		return;
 	}
 
-	text_box& file_textbox = find_widget<text_box>("filename");
+	const text_box& file_textbox = find_widget<text_box>("filename");
 	button& save_btn = find_widget<button>("ok");
 
 	// empty filename
 	const std::string& filename = file_textbox.get_value();
 	styled_widget& validation_msg = find_widget<styled_widget>("validation_msg");
 
-	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
+	const bool stat_invalid = filename.empty() || (filename.substr(0, 1) == ".");
 	bool wrong_ext = false;
 
 	if (stat_invalid) {
@@ -183,7 +183,7 @@ void file_dialog::check_filename() {
 		// wrong extension check
 		for (const auto& extension : extensions_) {
 			if (filename.size() >= extension.size()) {
-				std::string ext = filename.substr(filename.size()-extension.size());
+				const std::string ext = filename.substr(filename.size() - extension.size());
 				if (ext == extension) {
 					wrong_ext = false;
 					break;
@@ -414,7 +414,7 @@ bool file_dialog::process_fileview_submit()
 
 bool file_dialog::process_textbox_submit()
 {
-	text_box& file_textbox = find_widget<text_box>("filename");
+	const text_box& file_textbox = find_widget<text_box>("filename");
 	const std::string& input_name = file_textbox.get_value();
 	return !input_name.empty() && process_submit_common(input_name);
 }
@@ -542,7 +542,7 @@ void file_dialog::clear_input_text(text_box& t)
 
 void file_dialog::refresh_fileview()
 {
-	cursor::setter cur{cursor::WAIT};
+	const cursor::setter cur{cursor::WAIT};
 
 	dir_files_.clear();
 	dir_subdirs_.clear();

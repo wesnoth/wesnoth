@@ -42,7 +42,7 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 			const unsigned ordered_index = get_ordered_index(index);
 			// find the next shown item
 			for(unsigned i = ordered_index + 1; i < item_count; ++i) {
-				unsigned new_index = get_item_at_ordered(i);
+				const unsigned new_index = get_item_at_ordered(i);
 				if(get_item_shown(new_index)) {
 					do_select_item(new_index);
 					found_new_item = true;
@@ -52,7 +52,7 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 			// fall back to finding the previous shown item
 			if(!found_new_item) {
 				for(signed i = static_cast<signed>(ordered_index) - 1; i >= 0; --i) {
-					unsigned new_index = get_item_at_ordered(static_cast<unsigned>(i));
+					const unsigned new_index = get_item_at_ordered(static_cast<unsigned>(i));
 					if(get_item_shown(new_index)) {
 						do_select_item(new_index);
 						break;
@@ -549,8 +549,8 @@ point table::calculate_best_size() const
 	 * - vultraz, 2017-08-25
 	 */
 
-	std::size_t n_items = get_item_count();
-	std::size_t max_cols = std::sqrt(n_items) + 2;
+	const std::size_t n_items = get_item_count();
+	const std::size_t max_cols = std::sqrt(n_items) + 2;
 
 	std::vector<point> item_sizes;
 	for(std::size_t i = 0; i < n_items; i++) {
@@ -569,16 +569,14 @@ point table::calculate_best_size() const
 		[](point a, point b) { return point(std::max(a.x, b.x), a.y + b.y); }
 	);
 
-	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(),
-		[](point a, point b) { return a.x < b.x; }
-	)->x / 2;
+	const int max_xtra
+		= std::min_element(item_sizes.begin(), item_sizes.end(), [](point a, point b) { return a.x < b.x; })->x / 2;
 
 	for(std::size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
-		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0,
-			[](int a, point b) { return a + b.x; }
-		);
+		const int row_min_width = std::accumulate(
+			item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0, [](int a, point b) { return a + b.x; });
 
-		int row_max_width = row_min_width + max_xtra;
+		const int row_max_width = row_min_width + max_xtra;
 
 		point row_size, total_size;
 
@@ -636,7 +634,7 @@ void table::place(const point& origin, const point& size)
 		}
 
 		grid& grid = item_ordered(i);
-		point best_size = grid.get_best_size();
+		const point best_size = grid.get_best_size();
 		// FIXME should we look at grow factors???
 
 		if(current_origin.x + best_size.x > origin.x + size.x) {

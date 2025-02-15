@@ -46,7 +46,7 @@ void modification_queue::push(std::unique_ptr<modification> mod)
 /** Removes the top element from the queue */
 void modification_queue::pop()
 {
-	map_type::iterator top_pair = priorities_.begin();
+	const map_type::iterator top_pair = priorities_.begin();
 	auto& top_vector = top_pair->second;
 
 	// Erase the top element.
@@ -207,7 +207,7 @@ void crop_transparency_modification::operator()(surface& src) const
 		return;
 	}
 
-	if(surface cropped = get_surface_portion(src, src_rect)) {
+	if(const surface cropped = get_surface_portion(src, src_rect)) {
 		src = cropped;
 	} else {
 		ERR_DP << "Failed to either crop or scale the surface";
@@ -286,9 +286,9 @@ private:
 void adjust_alpha_modification::operator()(surface& src) const
 {
 	if(src) {
-		wfl::formula new_alpha(formula_);
+		const wfl::formula new_alpha(formula_);
 
-		surface_lock lock(src);
+		const surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
 		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
@@ -300,12 +300,12 @@ void adjust_alpha_modification::operator()(surface& src) const
 			pixel.g = (*cur) >> 8;
 			pixel.b = (*cur);
 
-			int i = cur - beg;
+			const int i = cur - beg;
 			SDL_Point p;
 			p.y = i / src->w;
 			p.x = i % src->w;
 
-			pixel_callable px(p, pixel, src->w, src->h);
+			const pixel_callable px(p, pixel, src->w, src->h);
 			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
 			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
 
@@ -317,12 +317,12 @@ void adjust_alpha_modification::operator()(surface& src) const
 void adjust_channels_modification::operator()(surface& src) const
 {
 	if(src) {
-		wfl::formula new_red(formulas_[0]);
-		wfl::formula new_green(formulas_[1]);
-		wfl::formula new_blue(formulas_[2]);
-		wfl::formula new_alpha(formulas_[3]);
+		const wfl::formula new_red(formulas_[0]);
+		const wfl::formula new_green(formulas_[1]);
+		const wfl::formula new_blue(formulas_[2]);
+		const wfl::formula new_alpha(formulas_[3]);
 
-		surface_lock lock(src);
+		const surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
 		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
@@ -334,12 +334,12 @@ void adjust_channels_modification::operator()(surface& src) const
 			pixel.g = (*cur) >> 8;
 			pixel.b = (*cur);
 
-			int i = cur - beg;
+			const int i = cur - beg;
 			SDL_Point p;
 			p.y = i / src->w;
 			p.x = i % src->w;
 
-			pixel_callable px(p, pixel, src->w, src->h);
+			const pixel_callable px(p, pixel, src->w, src->h);
 			pixel.r = std::min<unsigned>(new_red.evaluate(px).as_int(), 255);
 			pixel.g = std::min<unsigned>(new_green.evaluate(px).as_int(), 255);
 			pixel.b = std::min<unsigned>(new_blue.evaluate(px).as_int(), 255);
@@ -479,9 +479,9 @@ void xbrz_modification::operator()(surface& src) const
 void o_modification::operator()(surface& src) const
 {
 	if(src) {
-		uint8_t alpha_mod = float_to_color(opacity_);
+		const uint8_t alpha_mod = float_to_color(opacity_);
 
-		surface_lock lock(src);
+		const surface_lock lock(src);
 		uint32_t* beg = lock.pixels();
 		uint32_t* end = beg + src.area();
 
@@ -664,8 +664,8 @@ REGISTER_MOD_PARSER(PAL, args)
 // Flip/flop
 REGISTER_MOD_PARSER(FL, args)
 {
-	bool horiz = (args.empty() || args.find("horiz") != std::string::npos);
-	bool vert = (args.find("vert") != std::string::npos);
+	const bool horiz = (args.empty() || args.find("horiz") != std::string::npos);
+	const bool vert = (args.find("vert") != std::string::npos);
 
 	return std::make_unique<fl_modification>(horiz, vert);
 }
@@ -945,7 +945,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	message << "~BLIT():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_surface(img);
+	const surface surf = get_surface(img);
 
 	return std::make_unique<blit_modification>(surf, x, y);
 }
@@ -978,7 +978,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	message << "~MASK():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_surface(img);
+	const surface surf = get_surface(img);
 
 	return std::make_unique<mask_modification>(surf, x, y);
 }
@@ -991,7 +991,7 @@ REGISTER_MOD_PARSER(L, args)
 		return nullptr;
 	}
 
-	surface surf = get_surface(std::string{args}); // FIXME: string_view for image::locator::value
+	const surface surf = get_surface(std::string{args}); // FIXME: string_view for image::locator::value
 	return std::make_unique<light_modification>(surf);
 }
 

@@ -151,7 +151,7 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		nick_ = "*"+cfg["id"].str()+"*";
 	}
-	int side = cfg["side"].to_int(0);
+	const int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side;
 	if (side==0) {
 		color_ = "white";//observers
@@ -195,7 +195,7 @@ void replay::add_unit_checksum(const map_location& loc,config& cfg)
 	}
 	config& cc = cfg.add_child("checksum");
 	loc.write(cc);
-	unit_map::const_iterator u = resources::gameboard->units().find(loc);
+	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	assert(u.valid());
 	cc["value"] = get_checksum(*u);
 }
@@ -402,7 +402,7 @@ config replay::get_unsent_commands(DATA_TYPE data_type)
 void replay::redo(const config& cfg, bool set_to_end)
 {
 	assert(base_->get_pos() == ncommands());
-	int old_pos = base_->get_pos();
+	const int old_pos = base_->get_pos();
 	for (const config &cmd : cfg.child_range("command"))
 	{
 		base_->add_child() = cmd;
@@ -460,7 +460,7 @@ static bool fix_rename_command(const config& c, config& async_child)
 		else {
 			const map_location &src = steps.front();
 			const map_location &dst = steps.back();
-			map_location aloc(async_child);
+			const map_location aloc(async_child);
 			if (dst == aloc) src.write(async_child);
 		}
 	}
@@ -474,8 +474,8 @@ static bool fix_rename_command(const config& c, config& async_child)
 		if(loc) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(loc.value());
-			map_location aloc(async_child);
+			const map_location src(loc.value());
+			const map_location aloc(async_child);
 			if (src == aloc) {
 				return true;
 			}
@@ -745,12 +745,12 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string &speaker_name = speak["id"];
 			const std::string &message = speak["message"];
 
-			bool is_whisper = (speaker_name.find("whisper: ") == 0);
+			const bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
 				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
-					int side = speak["side"].to_int();
-					auto as_time_t = std::chrono::system_clock::to_time_t(get_time(*speak)); // FIXME: remove
+					const int side = speak["side"].to_int();
+					const auto as_time_t = std::chrono::system_clock::to_time_t(get_time(*speak)); // FIXME: remove
 					game_display::get_singleton()->get_chat_manager().add_chat_message(as_time_t, speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
@@ -764,7 +764,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (auto label_config = cfg->optional_child("label"))
 		{
-			terrain_label label(display::get_singleton()->labels(), *label_config);
+			const terrain_label label(display::get_singleton()->labels(), *label_config);
 
 			display::get_singleton()->labels().set_label(label.location(),
 						label.text(),
@@ -781,7 +781,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const map_location loc(*rename);
 			const std::string &name = rename["name"];
 
-			unit_map::iterator u = resources::gameboard->units().find(loc);
+			const unit_map::iterator u = resources::gameboard->units().find(loc);
 			if (u.valid() && !u->unrenamable()) {
 				u->rename(name);
 			} else {
@@ -828,7 +828,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				if (auto cfg_verify = cfg->optional_child("verify")) {
 					verify(resources::gameboard->units(), *cfg_verify);
 				}
-				if(int npn = end_turn["next_player_number"].to_int(0); npn > 0) {
+				if(const int npn = end_turn["next_player_number"].to_int(0); npn > 0) {
 					resources::controller->gamestate().next_player_number_ = npn;
 				}
 				resources::controller->gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
@@ -838,7 +838,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
 			auto val = chrono::parse_duration<std::chrono::milliseconds>(countdown_update["value"]);
-			int tval = countdown_update["team"].to_int();
+			const int tval = countdown_update["team"].to_int();
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"

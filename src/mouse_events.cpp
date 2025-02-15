@@ -94,8 +94,8 @@ int mouse_handler::drag_threshold() const
     // Function uses window resolution as an estimate of users perception of distance
     // Tune this variable if necessary:
     const unsigned threshold_1080p = 14; // threshold number of pixels for 1080p
-    double screen_diagonal = std::hypot(gui2::settings::screen_width,gui2::settings::screen_height);
-    const double scale_factor = threshold_1080p / std::hypot(1080,1920);
+	const double screen_diagonal = std::hypot(gui2::settings::screen_width, gui2::settings::screen_height);
+	const double scale_factor = threshold_1080p / std::hypot(1080,1920);
     return static_cast<int>(screen_diagonal * scale_factor);
 }
 
@@ -131,7 +131,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
-			point pos = sdl::get_mouse_location();
+			const point pos = sdl::get_mouse_location();
 			const double drag_distance =
 				std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
 				std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
@@ -148,7 +148,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
 
 		if(gui().map_area().contains(x, y)) {
-			point pos = sdl::get_mouse_location();
+			const point pos = sdl::get_mouse_location();
 			gui().scroll(drag_from_ - pos);
 			drag_from_ = pos;
 		}
@@ -172,7 +172,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
 			{ // start planned unit map scope
-				wb::future_map_if_active raii;
+				const wb::future_map_if_active raii;
 				if(last_hex_ == selected_hex_ || !find_unit(last_hex_)) {
 					previous_free_hex_ = last_hex_;
 				}
@@ -189,7 +189,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		reachmap_invalid_ = false;
 		if(!current_paths_.destinations.empty() && !show_partial_move_) {
 			{ // start planned unit map scope
-				wb::future_map_if_active planned_unit_map;
+				const wb::future_map_if_active planned_unit_map;
 				selected_hex_has_my_unit = found_unit.valid();
 			} // end planned unit map scope
 			if(selected_hex_.valid() && selected_hex_has_my_unit) {
@@ -228,7 +228,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	map_location attack_from;
 
 	{ // start planned unit map scope
-		wb::future_map_if_active planned_unit_map;
+		const wb::future_map_if_active planned_unit_map;
 		selected_unit = found_unit;
 		mouseover_unit = find_unit(new_hex);
 
@@ -284,7 +284,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	map_location dest;
 	unit_map::const_iterator dest_un;
 	{ // start planned unit map scope
-		wb::future_map_if_active raii;
+		const wb::future_map_if_active raii;
 		if (attack_from.valid()) {
 			dest = attack_from;
 			dest_un = find_unit(dest);
@@ -331,7 +331,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 
-		unit_map::iterator iter = mouseover_unit;
+		const unit_map::iterator iter = mouseover_unit;
 		if (iter)
 			un = iter.get_shared_ptr();
 		else
@@ -354,7 +354,7 @@ void mouse_handler::show_reach_for_unit(const unit_ptr& un)
 			if(pc_.get_map().on_board(go_to)) {
 				pathfind::marked_route route;
 				{ // start planned unit map scope
-					wb::future_map_if_active raii;
+					const wb::future_map_if_active raii;
 					route = get_route(un.get(), go_to, current_team());
 				} // end planned unit map scope
 				gui().set_route(&route);
@@ -374,7 +374,7 @@ void mouse_handler::show_reach_for_unit(const unit_ptr& un)
 
 			// Handle whiteboard. Any move_reset must be done before this, since the future
 			// state includes changes to units' movement.
-			wb::future_map_if_active raii;
+			const wb::future_map_if_active raii;
 
 			current_paths_ = pathfind::paths(*un, false, true, gui().viewing_team(), path_turns_);
 		}
@@ -419,7 +419,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 			// the hex of the selected unit is also "free"
 			{ // start planned unit map scope
-				wb::future_map_if_active raii;
+				const wb::future_map_if_active raii;
 				if(last_hex_ == selected_hex_ || !find_unit(last_hex_)) {
 					previous_free_hex_ = last_hex_;
 				}
@@ -443,7 +443,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		if(!current_paths_.destinations.empty() && !show_partial_move_) {
 			bool selected_hex_has_unit;
 			{ // start planned unit map scope
-				wb::future_map_if_active planned_unit_map;
+				const wb::future_map_if_active planned_unit_map;
 				selected_hex_has_unit = find_unit(selected_hex_).valid();
 			} // end planned unit map scope
 
@@ -483,7 +483,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	map_location attack_from;
 
 	{ // start planned unit map scope
-		wb::future_map_if_active planned_unit_map;
+		const wb::future_map_if_active planned_unit_map;
 		selected_unit = find_unit(selected_hex_);
 		mouseover_unit = find_unit(new_hex);
 
@@ -532,7 +532,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	unit_map::const_iterator dest_un;
 	/* start planned unit map scope*/
 	{
-		wb::future_map_if_active raii;
+		const wb::future_map_if_active raii;
 		if(attack_from.valid()) {
 			dest = attack_from;
 			dest_un = find_unit(dest);
@@ -635,7 +635,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 unit_map::iterator mouse_handler::selected_unit()
 {
-	unit_map::iterator res = find_unit(selected_hex_);
+	const unit_map::iterator res = find_unit(selected_hex_);
 	if(res) {
 		return res;
 	}
@@ -645,7 +645,7 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
-	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
+	const unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	if(it.valid()) {
 		return it;
 	}
@@ -660,13 +660,13 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 
 unit* mouse_handler::find_unit_nonowning(const map_location& hex)
 {
-	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
+	const unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	return it.valid() ? &*it : nullptr;
 }
 
 const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
 {
-	unit_map::const_iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
+	const unit_map::const_iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	return it.valid() ? &*it : nullptr;
 }
 
@@ -687,7 +687,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		return map_location();
 	}
 
-	bool wb_active = pc_.get_whiteboard()->is_active();
+	const bool wb_active = pc_.get_whiteboard()->is_active();
 
 	{
 		// Check the unit SOURCE of the attack
@@ -797,7 +797,7 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, board.teams(), board.map());
 
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*un, gui().viewing_team());
+	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*un, gui().viewing_team());
 
 	pathfind::plain_route route;
 
@@ -826,8 +826,8 @@ void mouse_handler::select_teleport()
 		lk->select_hex_callback(last_hex_);
 	}
 
-	unit_map::iterator clicked_u = find_unit(last_hex_);
-	unit_map::iterator selected_u = find_unit(selected_hex_);
+	const unit_map::iterator clicked_u = find_unit(last_hex_);
+	const unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
@@ -866,14 +866,14 @@ void mouse_handler::select_or_action(bool browse)
 	}
 
 	// Load whiteboard partial moves
-	wb::future_map_if_active planned_unit_map;
+	const wb::future_map_if_active planned_unit_map;
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
 		lk->select_hex_callback(last_hex_);
 	}
 
-	unit_map::iterator clicked_u = find_unit(last_hex_);
-	unit_map::iterator selected_u = find_unit(selected_hex_);
+	const unit_map::iterator clicked_u = find_unit(last_hex_);
+	const unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
@@ -889,11 +889,11 @@ void mouse_handler::move_action(bool browse)
 {
 	// Lock whiteboard activation state to avoid problems due to
 	// its changing while an animation takes place.
-	wb::whiteboard_lock wb_lock = pc_.get_whiteboard()->get_activation_state_lock();
+	const wb::whiteboard_lock wb_lock = pc_.get_whiteboard()->get_activation_state_lock();
 
 	// we use the last registered highlighted hex
 	// since it's what update our global state
-	map_location hex = last_hex_;
+	const map_location hex = last_hex_;
 
 	// TODO
 	//	// Clicks on border hexes mean to deselect.
@@ -911,7 +911,7 @@ void mouse_handler::move_action(bool browse)
 	map_location attack_from;
 
 	{ // start planned unit map scope
-		wb::future_map_if_active planned_unit_map;
+		const wb::future_map_if_active planned_unit_map;
 		u = find_unit_nonowning(selected_hex_);
 
 		// if the unit is selected and then itself clicked on,
@@ -942,7 +942,7 @@ void mouse_handler::move_action(bool browse)
 			if(attack_from == selected_hex_) { // no move needed
 				int choice = -1;
 				{
-					wb::future_map_if_active planned_unit_map; // start planned unit map scope
+					const wb::future_map_if_active planned_unit_map; // start planned unit map scope
 					choice = show_attack_dialog(attack_from, clicked_u->get_location());
 				} // end planned unit map scope
 
@@ -963,9 +963,10 @@ void mouse_handler::move_action(bool browse)
 				int choice = -1; // for the attack dialog
 
 				{
-					wb::future_map_if_active planned_unit_map; // start planned unit map scope
-					// we will now temporary move next to the enemy
-					pathfind::paths::dest_vect::const_iterator itor = current_paths_.destinations.find(attack_from);
+					const wb::future_map_if_active planned_unit_map; // start planned unit map scope
+																	 // we will now temporary move next to the enemy
+					const pathfind::paths::dest_vect::const_iterator itor
+						= current_paths_.destinations.find(attack_from);
 					if(itor == current_paths_.destinations.end()) {
 						// can't reach the attacking location
 						// not supposed to happen, so abort
@@ -974,7 +975,7 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
+						const temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
 
@@ -987,8 +988,8 @@ void mouse_handler::move_action(bool browse)
 				if(pc_.get_whiteboard()->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
 				} else {
-					bool not_interrupted = move_unit_along_current_route();
-					bool alt_unit_selected = (selected_hex_ != src);
+					const bool not_interrupted = move_unit_along_current_route();
+					const bool alt_unit_selected = (selected_hex_ != src);
 					src = selected_hex_;
 					// clear current unit selection so that any other unit selected
 					// triggers a new selection
@@ -1082,7 +1083,7 @@ void mouse_handler::move_action(bool browse)
 
 void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 {
-	unit_map::iterator unit = find_unit(touched_hex);
+	const unit_map::iterator unit = find_unit(touched_hex);
 
 	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
 		select_or_action(browse);
@@ -1093,7 +1094,7 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event, const bool force_unhighlight)
 {
-	bool unhighlight = selected_hex_.valid() && force_unhighlight;
+	const bool unhighlight = selected_hex_.valid() && force_unhighlight;
 
 	selected_hex_ = hex;
 
@@ -1103,9 +1104,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 	show_partial_move_ = false;
 
-	wb::future_map_if_active planned_unit_map; // lasts for whole method
+	const wb::future_map_if_active planned_unit_map; // lasts for whole method
 
-	unit_map::iterator unit = find_unit(selected_hex_);
+	const unit_map::iterator unit = find_unit(selected_hex_);
 
 	if(selected_hex_.valid() && unit.valid() && !unit->get_hidden()) {
 		next_unit_ = unit->get_location();
@@ -1132,7 +1133,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 				if(fire_event) {
 					// Ensure unit map is back to normal while event is fired
-					wb::real_map srum;
+					const wb::real_map srum;
 					pc_.pump().fire("select", hex);
 					// end forced real unit map
 				}
@@ -1154,7 +1155,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		for(unit_map::iterator u = pc_.get_units().begin(); u != pc_.get_units().end();
 				++u) {
-			bool invisible = u->invisible(u->get_location());
+			const bool invisible = u->invisible(u->get_location());
 
 			if(!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible) {
 				const pathfind::paths& path =
@@ -1208,7 +1209,7 @@ bool mouse_handler::move_unit_along_current_route()
 
 	bool interrupted = false;
 	if(steps.size() > 1) {
-		std::size_t num_moves = move_unit_along_route(steps, interrupted);
+		const std::size_t num_moves = move_unit_along_route(steps, interrupted);
 
 		interrupted = interrupted || num_moves + 1 < steps.size();
 		next_unit_ = steps[num_moves];
@@ -1263,7 +1264,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 	}
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back();
-	std::size_t moves = actions::move_unit_and_record(steps, false, &interrupted);
+	const std::size_t moves = actions::move_unit_and_record(steps, false, &interrupted);
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
@@ -1340,8 +1341,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 {
 	game_board& board = pc_.gamestate().board_;
 
-	unit_map::iterator attacker = board.units().find(attacker_loc);
-	unit_map::iterator defender = board.units().find(defender_loc);
+	const unit_map::iterator attacker = board.units().find(attacker_loc);
+	const unit_map::iterator defender = board.units().find(defender_loc);
 
 	if(!attacker || !defender) {
 		ERR_NG << "One fighter is missing, can't attack";
@@ -1389,12 +1390,12 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	std::vector<battle_context> bc_vector;
 
 	{
-		unit_map::iterator attacker_it = find_unit(attacker_loc);
+		const unit_map::iterator attacker_it = find_unit(attacker_loc);
 		if(!attacker_it || attacker_it->side() != side_num_ || attacker_it->incapacitated()) {
 			return;
 		}
 
-		unit_map::iterator defender_it = find_unit(defender_loc);
+		const unit_map::iterator defender_it = find_unit(defender_loc);
 		if(!defender_it || current_team().is_enemy(defender_it->side()) == false || defender_it->incapacitated()) {
 			return;
 		}
@@ -1409,7 +1410,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 		return;
 	}
 
-	events::command_disabler disabler;
+	const events::command_disabler disabler;
 	const battle_context_unit_stats& att = bc_vector[choice].get_attacker_stats();
 	const battle_context_unit_stats& def = bc_vector[choice].get_defender_stats();
 
@@ -1454,7 +1455,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 	const team& uteam = pc_.get_teams()[side - 1];
 
 	for(const map_location& aloc : get_adjacent_tiles(loc)) {
-		unit_map::const_iterator i = find_unit(aloc);
+		const unit_map::const_iterator i = find_unit(aloc);
 
 		if(i && uteam.is_enemy(i->side())) {
 			res.insert(aloc);
@@ -1466,7 +1467,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)
 {
-	game_board& board = pc_.gamestate().board_;
+	const game_board& board = pc_.gamestate().board_;
 
 	if(!it) {
 		return false;

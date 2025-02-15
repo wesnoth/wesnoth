@@ -376,7 +376,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 void mp_staging::on_controller_select(const ng::side_engine_ptr& side, grid& row_grid)
 {
 	menu_button& ai_selection         = row_grid.find_widget<menu_button>("ai_controller");
-	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
+	const menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
 	if(side->controller_changed(controller_selection.get_value())) {
 		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::visibility::visible : widget::visibility::hidden);
@@ -549,7 +549,7 @@ void mp_staging::network_handler()
 	// Update side leader displays
 	// This is basically only needed when a new player joins and selects their faction
 	for(auto& tree_entry : side_tree_map_) {
-		ng::side_engine_ptr side = tree_entry.first;
+		const ng::side_engine_ptr side = tree_entry.first;
 
 		grid& row_grid = tree_entry.second->get_grid();
 

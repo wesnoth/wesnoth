@@ -117,7 +117,7 @@ void plugins_manager::start_plugin(std::size_t idx)
 
 std::size_t plugins_manager::add_plugin(const std::string & name, const std::string & prog)
 {
-	std::size_t idx = plugins_.size();
+	const std::size_t idx = plugins_.size();
 	plugins_.emplace_back();
 
 	plugin & p = plugins_[idx];
@@ -130,7 +130,7 @@ std::size_t plugins_manager::add_plugin(const std::string & name, const std::str
 
 std::size_t plugins_manager::load_plugin(const std::string & name, const std::string & filename)
 {
-	std::size_t idx = plugins_.size();
+	const std::size_t idx = plugins_.size();
 	plugins_.emplace_back();
 
 	plugin & p = plugins_[idx];
@@ -164,7 +164,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 					//are discarded to prevent them from being executed at an improper time
 	}
 	playing_ = std::make_shared<bool> (true);
-	std::shared_ptr<bool> local = playing_; //make a local copy of the pointer on the stack
+	const std::shared_ptr<bool> local = playing_; // make a local copy of the pointer on the stack
 
 	for (std::size_t idx = 0; idx < size(); ++idx)
 	{
@@ -176,7 +176,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 				return;
 			}
 
-			std::vector<event> input = plugins_[idx].queue; //empty the queue to a temporary variable
+			const std::vector<event> input = plugins_[idx].queue; // empty the queue to a temporary variable
 			plugins_[idx].queue = std::vector<event>();
 
 			//application_lua_kernel::requests_list requests =

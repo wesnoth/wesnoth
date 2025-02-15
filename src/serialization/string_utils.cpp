@@ -68,7 +68,7 @@ void trim(std::string_view& s)
 		return;
 	}
 	//find_last_not_of never returns npos because !s.empty()
-	std::size_t first_to_trim = s.find_last_not_of(" \t\r\n") + 1;
+	const std::size_t first_to_trim = s.find_last_not_of(" \t\r\n") + 1;
 	s = s.substr(0, first_to_trim);
 }
 
@@ -149,12 +149,12 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			//push back square contents
 			std::size_t size_square_exp = 0;
 			for (std::size_t i=0; i < square_left.size(); i++) {
-				std::string tmp_val(square_left[i]+1,square_right[i]);
-				std::vector< std::string > tmp = split(tmp_val);
+				const std::string tmp_val(square_left[i] + 1, square_right[i]);
+				const std::vector<std::string> tmp = split(tmp_val);
 				for(const std::string& piece : tmp) {
-					std::size_t found_tilde = piece.find_first_of('~');
+					const std::size_t found_tilde = piece.find_first_of('~');
 					if (found_tilde == std::string::npos) {
-						std::size_t found_asterisk = piece.find_first_of('*');
+						const std::size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
 							std::string tmp2(piece);
 							boost::trim(tmp2);
@@ -172,7 +172,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 					else { //expand number range
 						std::string s_begin = piece.substr(0,found_tilde);
 						boost::trim(s_begin);
-						int begin = std::stoi(s_begin);
+						const int begin = std::stoi(s_begin);
 						std::size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
@@ -189,7 +189,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						}
 						if (padding_end > padding) padding = padding_end;
 
-						int increment = (end >= begin ? 1 : -1);
+						const int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
 							std::string pb = std::to_string(k);
@@ -200,7 +200,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 					}
 				}
 				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
-					std::string tmp2(i1, i2);
+					const std::string tmp2(i1, i2);
 					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2;
 					return res;
 				}
@@ -216,14 +216,14 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 				j1 = i1;
 				std::string new_val;
 				for (std::size_t i=0; i < square_left.size(); i++) {
-					std::string tmp_val(j1, square_left[i]);
+					const std::string tmp_val(j1, square_left[i]);
 					new_val.append(tmp_val);
-					std::size_t k = j+i*j_max;
+					const std::size_t k = j + i * j_max;
 					if (k < square_expansion.size())
 						new_val.append(square_expansion[k]);
 					j1 = square_right[i]+1;
 				}
-				std::string tmp_val(j1, i2);
+				const std::string tmp_val(j1, i2);
 				new_val.append(tmp_val);
 				if (flags & STRIP_SPACES)
 					boost::trim_right(new_val);
@@ -291,7 +291,7 @@ std::map<std::string, std::string> map_split(
 	std::map< std::string, std::string > res;
 
 	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
-		std::size_t pos = i->find_first_of(minor);
+		const std::size_t pos = i->find_first_of(minor);
 		std::string key, value;
 
 		if(pos == std::string::npos) {
@@ -458,7 +458,7 @@ std::string urlencode(std::string_view str)
 	res << std::hex;
 	res.fill('0');
 
-	for(char c : str) {
+	for(const char c : str) {
 		if(nonresv.count(c) != 0) {
 			res << c;
 			continue;
@@ -509,7 +509,7 @@ std::string half_signed_value(int val)
 }
 
 static void si_string_impl_stream_write(std::stringstream &ss, double input) {
-	std::streamsize oldprec = ss.precision();
+	const std::streamsize oldprec = ss.precision();
 #ifdef _MSC_VER
 	// For MSVC, default mode misbehaves, so we use fixed instead.
 	ss.precision(1);
@@ -549,21 +549,12 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	strings9 prefixes;
 	strings9::const_iterator prefix;
 	if (input == 0.0) {
-		strings9 tmp { { "","","","","","","","","" } };
+		const strings9 tmp{{"", "", "", "", "", "", "", "", ""}};
 		prefixes = tmp;
 		prefix = prefixes.begin();
 	} else if (input < 1.0) {
-		strings9 tmp { {
-			"",
-			_("prefix_milli^m"),
-			_("prefix_micro^µ"),
-			_("prefix_nano^n"),
-			_("prefix_pico^p"),
-			_("prefix_femto^f"),
-			_("prefix_atto^a"),
-			_("prefix_zepto^z"),
-			_("prefix_yocto^y")
-		} };
+		const strings9 tmp{{"", _("prefix_milli^m"), _("prefix_micro^µ"), _("prefix_nano^n"), _("prefix_pico^p"),
+			_("prefix_femto^f"), _("prefix_atto^a"), _("prefix_zepto^z"), _("prefix_yocto^y")}};
 		prefixes = tmp;
 		prefix = prefixes.begin();
 		while (input < 1.0  && *prefix != prefixes.back()) {
@@ -571,21 +562,13 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 			++prefix;
 		}
 	} else {
-		strings9 tmp { {
-			"",
+		const strings9 tmp{{"",
 			(base2 ?
-				// TRANSLATORS: Translate the K in KiB only
-				_("prefix_kibi^K") :
-				_("prefix_kilo^k")
-			),
-			_("prefix_mega^M"),
-			_("prefix_giga^G"),
-			_("prefix_tera^T"),
-			_("prefix_peta^P"),
-			_("prefix_exa^E"),
-			_("prefix_zetta^Z"),
-			_("prefix_yotta^Y")
-		} };
+				   // TRANSLATORS: Translate the K in KiB only
+					_("prefix_kibi^K")
+				   : _("prefix_kilo^k")),
+			_("prefix_mega^M"), _("prefix_giga^G"), _("prefix_tera^T"), _("prefix_peta^P"), _("prefix_exa^E"),
+			_("prefix_zetta^Z"), _("prefix_yotta^Y")}};
 		prefixes = tmp;
 		prefix = prefixes.begin();
 		while (input > multiplier && *prefix != prefixes.back()) {
@@ -691,10 +674,10 @@ static bool is_word_boundary(char c) {
 }
 
 bool word_match(const std::string& message, const std::string& word) {
-	std::size_t first = message.find(word);
+	const std::size_t first = message.find(word);
 	if (first == std::string::npos) return false;
 	if (first == 0 || is_word_boundary(message[first - 1])) {
-		std::size_t next = first + word.size();
+		const std::size_t next = first + word.size();
 		if (next == message.size() || is_word_boundary(message[next])) {
 			return true;
 		}
@@ -726,7 +709,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 		// Now try to place the str into the solid space
 		const std::string::size_type test_len = str.length() - current;
 		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
-			char solid_c = match[solid_begin + i];
+			const char solid_c = match[solid_begin + i];
 			if(i > test_len || !(solid_c == '?' || solid_c == str[current+i])) {
 				matches = false;
 			}

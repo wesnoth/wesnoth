@@ -76,7 +76,7 @@ void tab_container::finalize(std::unique_ptr<generator_base> generator)
 	generator_ = generator.get();
 	assert(generator_);
 
-	widget_item empty_data;
+	const widget_item empty_data;
 	for(const auto& builder_entry : builders_) {
 		generator->create_item(-1, *builder_entry, empty_data, nullptr);
 	}

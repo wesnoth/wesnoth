@@ -188,7 +188,7 @@ t_string recruit_message(
 	// TODO take a wb::future_map RAII as units_dialog does
 	int wb_gold = 0;
 	{
-		wb::future_map future;
+		const wb::future_map future;
 		wb_gold = (resources::controller->get_whiteboard()
 			? resources::controller->get_whiteboard()->get_spent_gold_for(current_team.side())
 			: 0);
@@ -206,7 +206,7 @@ t_string recruit_message(
 	const events::command_disabler disable_commands;
 
 	{
-		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
+		const wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
 		std::string msg = actions::find_recruit_location(current_team.side(), target_hex, recruited_from, type_id);
 		if(!msg.empty()) {
 			return msg;

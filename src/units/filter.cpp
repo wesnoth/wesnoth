@@ -99,8 +99,8 @@ struct unit_filter_xy : public unit_filter_base
 
 	virtual bool matches(const unit_filter_args& args) const override
 	{
-		std::string x = utils::interpolate_variables_into_string(x_, *(resources::gamedata));
-		std::string y = utils::interpolate_variables_into_string(y_, *(resources::gamedata));
+		const std::string x = utils::interpolate_variables_into_string(x_, *(resources::gamedata));
+		const std::string y = utils::interpolate_variables_into_string(y_, *(resources::gamedata));
 
 		if(x.empty() && y.empty()) {
 			return false;
@@ -131,15 +131,15 @@ struct unit_filter_adjacent : public unit_filter_base
 		const auto adjacent = get_adjacent_tiles(args.loc);
 		int match_count=0;
 
-		config::attribute_value i_adjacent = cfg_["adjacent"];
+		const config::attribute_value i_adjacent = cfg_["adjacent"];
 		std::vector<map_location::direction> dirs;
 		if (i_adjacent.empty()) {
 			dirs = map_location::all_directions();
 		} else {
 			dirs = map_location::parse_directions(i_adjacent);
 		}
-		for (map_location::direction dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
+		for(const map_location::direction dir : dirs) {
+			const unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
 			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
@@ -150,8 +150,8 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-		config::attribute_value i_count = cfg_["count"];
+		static const std::vector<std::pair<int, int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		const config::attribute_value i_count = cfg_["count"];
 		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
 	}
 
@@ -234,10 +234,10 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 	bool res;
 
 	if(args.loc.valid()) {
-		scoped_xy_unit auto_store("this_unit", args.u.get_location(), args.context().get_disp_context().units());
+		const scoped_xy_unit auto_store("this_unit", args.u.get_location(), args.context().get_disp_context().units());
 		if (args.u2) {
 			const map_location& loc2 = args.u2->get_location();
-			scoped_xy_unit u2_auto_store("other_unit", loc2, args.context().get_disp_context().units());
+			const scoped_xy_unit u2_auto_store("other_unit", loc2, args.context().get_disp_context().units());
 			res = filter_impl(args);
 		} else {
 			res = filter_impl(args);
@@ -306,7 +306,7 @@ namespace {
 		for (const auto [key, cfg] : parent.all_children_view())
 		{
 			if(cfg["id"] == id) {
-				ability_match special = { key, &cfg };
+				const ability_match special = {key, &cfg};
 				id_result.push_back(special);
 			}
 		}
@@ -616,41 +616,40 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			}
 		);
 
-		create_attribute(literal["defense"],
-			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
-			{
-				int actual_defense = args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
+		create_attribute(
+			literal["defense"], [](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
+			[](const std::vector<std::pair<int, int>>& ranges, const unit_filter_args& args) {
+				const int actual_defense
+					= args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
 				return in_ranges(actual_defense, ranges);
-			}
-		);
+			});
 
-		create_attribute(literal["movement_cost"],
+		create_attribute(
+			literal["movement_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
-			{
-				int actual_cost = args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
+			[](const std::vector<std::pair<int, int>>& ranges, const unit_filter_args& args) {
+				const int actual_cost
+					= args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				return in_ranges(actual_cost, ranges);
-			}
-		);
+			});
 
-		create_attribute(literal["vision_cost"],
+		create_attribute(
+			literal["vision_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
-			{
-				int actual_cost = args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
+			[](const std::vector<std::pair<int, int>>& ranges, const unit_filter_args& args) {
+				const int actual_cost
+					= args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				return in_ranges(actual_cost, ranges);
-			}
-		);
+			});
 
-		create_attribute(literal["jamming_cost"],
+		create_attribute(
+			literal["jamming_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
-			{
-				int actual_cost = args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
+			[](const std::vector<std::pair<int, int>>& ranges, const unit_filter_args& args) {
+				const int actual_cost
+					= args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				return in_ranges(actual_cost, ranges);
-			}
-		);
+			});
 
 		create_attribute(literal["lua_function"],
 			[](const config::attribute_value& c) { return c.str(); },
@@ -739,7 +738,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 
 					/* Check if the filter only cares about variables.
 					   If so, no need to serialize the whole unit. */
-					config::all_children_itors ci = fwml.all_children_range();
+					const config::all_children_itors ci = fwml.all_children_range();
 					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
 						return args.u.variables().matches(ci.front().cfg);
 					} else {
@@ -752,15 +751,16 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			else if (child.first == "filter_vision") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					std::set<int> viewers;
-					side_filter ssf(c, args.fc);
+					const side_filter ssf(c, args.fc);
 					std::vector<int> sides = ssf.get_teams();
 					viewers.insert(sides.begin(), sides.end());
 
 					for (const int viewer : viewers) {
-						bool fogged = args.context().get_disp_context().get_team(viewer).fogged(args.loc);
+						const bool fogged = args.context().get_disp_context().get_team(viewer).fogged(args.loc);
 						// Check is_enemy() before invisible() to prevent infinite recursion in [abilities][hides][filter_self][filter_vision]
-						bool hiding = args.context().get_disp_context().get_team(viewer).is_enemy(args.u.side()) && args.u.invisible(args.loc);
-						bool unit_hidden = fogged || hiding;
+						const bool hiding = args.context().get_disp_context().get_team(viewer).is_enemy(args.u.side())
+							&& args.u.invisible(args.loc);
+						const bool unit_hidden = fogged || hiding;
 						if (c["visible"].to_bool(true) != unit_hidden) {
 							return true;
 						}

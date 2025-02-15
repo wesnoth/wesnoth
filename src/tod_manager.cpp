@@ -83,7 +83,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
-		int chosen = output[r.next_random() % output.size()];
+		const int chosen = output[r.next_random() % output.size()];
 		currentTime_ = fix_time_index(times_.size(), chosen);
 		r.next_random();
 	} else if(random_tod_.to_bool(false)) {
@@ -240,9 +240,10 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		for(std::size_t i = 0; i < locs.size(); ++i) {
 			const auto itor = units.find(locs[i]);
 			if(itor != units.end() && !itor->incapacitated()) {
-				unit_ability_list illum = itor->get_abilities("illuminates");
+				const unit_ability_list illum = itor->get_abilities("illuminates");
 				if(!illum.empty()) {
-					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
+					const unit_abilities::effect illum_effect(
+						illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
 
 					// Record this value.
@@ -265,7 +266,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
 
 		for(std::size_t i = 0; i != mod_list.size(); ++i) {
-			int result = bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
+			const int result = bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
 
 			if(net_darker && result < best_result) {
 				best_result = result;
@@ -593,11 +594,11 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 		bonuses.insert(std::abs(tod.lawful_bonus));
 	}
 
-	int target = std::max(fearless_chaotic, fearless_lawful);
+	const int target = std::max(fearless_chaotic, fearless_lawful);
 	int delta = target;
 	int result = 0;
 
-	for(int bonus : bonuses) {
+	for(const int bonus : bonuses) {
 		int liminal_effect = 0;
 		for(const auto& tod : schedule) {
 			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::liminal, false, bonus);

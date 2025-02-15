@@ -69,8 +69,8 @@ static int impl_color_collect(lua_State *L)
  */
 static int impl_color_equality(lua_State* L)
 {
-	color_range& left = LuaW_checkcolor(L, 1);
-	color_range& right = LuaW_checkcolor(L, 2);
+	const color_range& left = LuaW_checkcolor(L, 1);
+	const color_range& right = LuaW_checkcolor(L, 2);
 	const bool equal = left == right;
 	lua_pushboolean(L, equal);
 	return 1;
@@ -81,7 +81,7 @@ static int impl_color_equality(lua_State* L)
  */
 static int impl_color_tostring(lua_State* L)
 {
-	color_range& c = LuaW_checkcolor(L, 1);
+	const color_range& c = LuaW_checkcolor(L, 1);
 	//TODO: is this the best way to call tostring?
 	lua_push(L, c.debug());
 	return 1;
@@ -95,14 +95,14 @@ static int impl_color_tostring(lua_State* L)
  */
 static int impl_get_color(lua_State *L)
 {
-	std::string color_id = luaL_checkstring(L, 2);
+	const std::string color_id = luaL_checkstring(L, 2);
 	luaW_pushcolor(L, game_config::color_info(color_id));
 	return 1;
 }
 
 static int impl_color_get(lua_State *L)
 {
-	color_range& c = LuaW_checkcolor(L, 1);
+	const color_range& c = LuaW_checkcolor(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 
 	if(strcmp(m, "min") == 0) {

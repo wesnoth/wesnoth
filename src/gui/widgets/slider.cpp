@@ -81,7 +81,7 @@ point slider::calculate_best_size() const
 void slider::set_value(int value)
 {
 	value = std::clamp(value, minimum_value_, get_maximum_value());
-	int old_value = get_value();
+	const int old_value = get_value();
 
 	if(value == old_value) {
 		return;
@@ -144,9 +144,7 @@ unsigned slider::offset_after() const
 
 bool slider::on_positioner(const point& coordinate) const
 {
-	rect positioner_rect(
-		get_positioner_offset(), 0, get_positioner_length(), get_height()
-	);
+	const rect positioner_rect(get_positioner_offset(), 0, get_positioner_length(), get_height());
 
 	// Note we assume the positioner is over the entire height of the widget.
 	return positioner_rect.contains(coordinate);
@@ -259,8 +257,8 @@ void slider::set_value_range(int min_value, int max_value)
 		return;
 	}
 
-	int diff = max_value - min_value;
-	int old_value = get_value();
+	const int diff = max_value - min_value;
+	const int old_value = get_value();
 
 	step_size_ = std::gcd(diff, step_size_);
 	minimum_value_ = min_value;

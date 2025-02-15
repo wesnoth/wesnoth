@@ -68,7 +68,7 @@ static int impl_gettext(lua_State *L)
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
 	if(lua_isstring(L, 3)) {
 		const char* pl = luaL_checkstring(L, 3);
-		int count = luaL_checkinteger(L, 4);
+		const int count = luaL_checkinteger(L, 4);
 		luaW_pushtstring(L, t_string(m, pl, count, d));
 	} else {
 		luaW_pushtstring(L, t_string(m, d));
@@ -80,7 +80,7 @@ static int impl_gettext_tostr(lua_State* L)
 {
 	char* d = static_cast<char*>(lua_touserdata(L, 1));
 	using namespace std::literals;
-	std::string str = "textdomain: "s + d;
+	const std::string str = "textdomain: "s + d;
 	lua_push(L, str);
 	return 1;
 }
@@ -208,8 +208,8 @@ static int impl_vconfig_get(lua_State *L)
 	if (lua_isnumber(L, 2))
 	{
 		vconfig::all_children_iterator i = v->ordered_begin();
-		unsigned len = std::distance(i, v->ordered_end());
-		unsigned pos = lua_tointeger(L, 2) - 1;
+		const unsigned len = std::distance(i, v->ordered_end());
+		const unsigned pos = lua_tointeger(L, 2) - 1;
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 
@@ -231,7 +231,7 @@ static int impl_vconfig_get(lua_State *L)
 		return 1;
 	}
 
-	bool shallow_literal = strcmp(m, "__shallow_literal") == 0;
+	const bool shallow_literal = strcmp(m, "__shallow_literal") == 0;
 	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
 	{
 		lua_newtable(L);
@@ -302,13 +302,13 @@ static int impl_vconfig_collect(lua_State *L)
  */
 static int impl_vconfig_pairs_iter(lua_State *L)
 {
-	vconfig vcfg = luaW_checkvconfig(L, 1);
+	const vconfig vcfg = luaW_checkvconfig(L, 1);
 	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
 	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
 	if (range.empty()) {
 		return 0;
 	}
-	config::attribute value = range.front();
+	const config::attribute value = range.front();
 	range.pop_front();
 	lua_pushlstring(L, value.first.c_str(), value.first.length());
 	luaW_pushscalar(L, vcfg[value.first]);
@@ -344,7 +344,7 @@ static int impl_vconfig_pairs_collect(lua_State *L)
  */
 static int impl_vconfig_pairs(lua_State *L)
 {
-	vconfig vcfg = luaW_checkvconfig(L, 1);
+	const vconfig vcfg = luaW_checkvconfig(L, 1);
 	new(L) config::const_attr_itors(vcfg.get_config().attribute_range());
 	luaL_newmetatable(L, vconfigpairsKey);
 	lua_setmetatable(L, -2);
@@ -361,13 +361,13 @@ typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator
 static int impl_vconfig_ipairs_iter(lua_State *L)
 {
 	luaW_checkvconfig(L, 1);
-	int i = luaL_checkinteger(L, 2);
+	const int i = luaL_checkinteger(L, 2);
 	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
 	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
 	if (range.first == range.second) {
 		return 0;
 	}
-	std::pair<std::string, vconfig> value = *range.first++;
+	const std::pair<std::string, vconfig> value = *range.first++;
 	lua_pushinteger(L, i + 1);
 	lua_createtable(L, 2, 0);
 	lua_pushlstring(L, value.first.c_str(), value.first.length());
@@ -393,7 +393,7 @@ static int impl_vconfig_ipairs_collect(lua_State *L)
  */
 static int impl_vconfig_ipairs(lua_State *L)
 {
-	vconfig cfg = luaW_checkvconfig(L, 1);
+	const vconfig cfg = luaW_checkvconfig(L, 1);
 	new(L) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
 	luaL_newmetatable(L, vconfigipairsKey);
 	lua_setmetatable(L, -2);
@@ -410,7 +410,7 @@ static int impl_vconfig_ipairs(lua_State *L)
  */
 int intf_tovconfig(lua_State *L)
 {
-	vconfig vcfg = luaW_checkvconfig(L, 1);
+	const vconfig vcfg = luaW_checkvconfig(L, 1);
 	luaW_pushvconfig(L, vcfg);
 	return 1;
 }
@@ -526,7 +526,7 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key)
 	if(key == nullptr) {
 		return false;
 	}
-	int n = strlen(key);
+	const int n = strlen(key);
 	if(n == 0) {
 		return false;
 	}
@@ -677,12 +677,12 @@ void luaW_filltable(lua_State *L, const config& cfg)
 static int impl_namedtuple_get(lua_State* L)
 {
 	if(lua_type(L, 2) == LUA_TSTRING) {
-		std::string k = lua_tostring(L, 2);
+		const std::string k = lua_tostring(L, 2);
 		luaL_getmetafield(L, 1, "__names");
 		auto names = lua_check<std::vector<std::string>>(L, -1);
 		auto iter = std::find(names.begin(), names.end(), k);
 		if(iter != names.end()) {
-			int i = std::distance(names.begin(), iter) + 1;
+			const int i = std::distance(names.begin(), iter) + 1;
 			lua_rawgeti(L, 1, i);
 			return 1;
 		}
@@ -693,12 +693,12 @@ static int impl_namedtuple_get(lua_State* L)
 static int impl_namedtuple_set(lua_State* L)
 {
 	if(lua_type(L, 2) == LUA_TSTRING) {
-		std::string k = lua_tostring(L, 2);
+		const std::string k = lua_tostring(L, 2);
 		luaL_getmetafield(L, 1, "__names");
 		auto names = lua_check<std::vector<std::string>>(L, -1);
 		auto iter = std::find(names.begin(), names.end(), k);
 		if(iter != names.end()) {
-			int i = std::distance(names.begin(), iter) + 1;
+			const int i = std::distance(names.begin(), iter) + 1;
 			lua_pushvalue(L, 3);
 			lua_rawseti(L, 1, i);
 			return 0;
@@ -825,7 +825,7 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		return false;
 	}
 
-	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
+	const vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
 
 	index = lua_absindex(L, index);
 
@@ -892,7 +892,7 @@ std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
 		luaW_type_error(L, idx, "array of locations");
 	}
 	lua_len(L, idx);
-	int len = luaL_checkinteger(L, -1);
+	const int len = luaL_checkinteger(L, -1);
 	for(int i = 1; i <= len; i++) {
 		lua_geti(L, idx, i);
 		locs.insert(luaW_checklocation(L, -1));
@@ -913,7 +913,7 @@ luaW_PrintStack luaW_debugstack(lua_State* L) {
 }
 
 std::ostream& operator<<(std::ostream& os, const luaW_PrintStack& s) {
-	int top = lua_gettop(s.L);
+	const int top = lua_gettop(s.L);
 	os << "Lua Stack\n";
 	for(int i = 1; i <= top; i++) {
 		luaW_getglobal(s.L, "wesnoth", "as_text");
@@ -939,7 +939,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 
 	// Get the absolute index of the table.
 	index = lua_absindex(L, index);
-	int initial_top = lua_gettop(L);
+	const int initial_top = lua_gettop(L);
 
 	switch (lua_type(L, index))
 	{
@@ -978,14 +978,14 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 	// Then convert the attributes (string indices).
 	for (lua_pushnil(L); lua_next(L, index); lua_pop(L, 1))
 	{
-		int indextype = lua_type(L, -2);
+		const int indextype = lua_type(L, -2);
 		if (indextype == LUA_TNUMBER) continue;
 		if (indextype != LUA_TSTRING) return_misformed();
 		const char* m = lua_tostring(L, -2);
 		if(!m || !config::valid_attribute(m)) return_misformed();
 		config::attribute_value &v = cfg[m];
 		if (lua_istable(L, -1)) {
-			int subindex = lua_absindex(L, -1);
+			const int subindex = lua_absindex(L, -1);
 			std::ostringstream str;
 			for (int i = 1, i_end = lua_rawlen(L, subindex); i <= i_end; ++i, lua_pop(L, 1)) {
 				lua_rawgeti(L, -1, i);
@@ -1033,7 +1033,7 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 		case LUA_TTABLE:
 		{
 			config cfg;
-			bool ok = luaW_toconfig(L, index, cfg);
+			const bool ok = luaW_toconfig(L, index, cfg);
 			if (!ok) return false;
 			vcfg = vconfig(std::move(cfg));
 			break;
@@ -1115,7 +1115,7 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 
 bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 {
-	int variabletype = lua_type(L, n);
+	const int variabletype = lua_type(L, n);
 	try
 	{
 		switch (variabletype) {
@@ -1206,12 +1206,12 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 	lua_getfield(L, LUA_REGISTRYINDEX, executeKey);
 	lua_insert(L, -2 - nArgs);
 
-	int error_handler_index = lua_gettop(L) - nArgs - 1;
+	const int error_handler_index = lua_gettop(L) - nArgs - 1;
 
 	++lua_jailbreak_exception::jail_depth;
 
 	// Call the function.
-	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	const int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 
 	--lua_jailbreak_exception::jail_depth;
 	lua_jailbreak_exception::rethrow();
@@ -1228,7 +1228,7 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 #endif
 bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 {
-	int res = luaW_pcall_internal(L, nArgs, nRets);
+	const int res = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (res)
 	{

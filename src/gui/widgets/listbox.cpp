@@ -128,8 +128,8 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 	// TODO: Fix this for horizontal listboxes
 	// Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
-	int row_pos_y = is_horizontal ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
-	int row_pos_x = is_horizontal ? -1 : 0;
+	const int row_pos_y = is_horizontal ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
+	const int row_pos_x = is_horizontal ? -1 : 0;
 
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != visibility::invisible) {
@@ -181,11 +181,11 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	// Local scope for invalidate_layout_blocker
 	{
-		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
+		const window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
 
-		point best_size = generator_->calculate_best_size();
+		const point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
 		resize_needed = !content_resize_request();
@@ -222,13 +222,13 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	// Local scope for invalidate_layout_blocker
 	{
-		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
+		const window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		for(std::size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
 
-		point best_size = generator_->calculate_best_size();
+		const point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
 		resize_needed = !content_resize_request(true);
@@ -284,7 +284,7 @@ bool listbox::select_row(const unsigned row, const bool select)
 	}
 	assert(generator_);
 
-	unsigned int before = generator_->get_selected_item_count();
+	const unsigned int before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
 
 	return before != generator_->get_selected_item_count();
@@ -590,7 +590,7 @@ void listbox::order_by_column(unsigned column, widget& widget)
 		}
 	}
 
-	auto order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
+	const auto order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
 	if(static_cast<unsigned>(order) > orders_[column].second.size()) {
 		return;
 	}
@@ -642,7 +642,7 @@ std::pair<widget*, sort_order::type> listbox::get_active_sorter() const
 	for(const auto& [w, _] : orders_) {
 		if(!w) continue;
 
-		auto sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		const auto sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
 		if(sort != sort_order::type::none) {
 			return { dynamic_cast<widget*>(w), sort };
 		}
@@ -676,7 +676,7 @@ void listbox::update_layout()
 	assert(content_grid());
 
 	// If we haven't initialized, or have no content, just return.
-	point size = content_grid()->get_size();
+	const point size = content_grid()->get_size();
 	if(size.x <= 0 || size.y <= 0) {
 		return;
 	}

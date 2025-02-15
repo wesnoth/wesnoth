@@ -234,14 +234,12 @@ bool update_framebuffer()
 	int scale = 1;
 	if (prefs::get().auto_pixel_scale()) {
 		// Try to match the default size (1280x720) but do not reduce below
-		int def_scale = std::min(
-			osize.x / pref_constants::def_window_width,
-			osize.y / pref_constants::def_window_height);
+		const int def_scale
+			= std::min(osize.x / pref_constants::def_window_width, osize.y / pref_constants::def_window_height);
 		scale = std::min(max_scale, def_scale);
 		// Otherwise reduce to keep below the max window size (1920x1080).
-		int min_scale = std::min(
-			osize.x / (pref_constants::max_window_width+1) + 1,
-			osize.y / (pref_constants::max_window_height+1) + 1);
+		const int min_scale = std::min(osize.x / (pref_constants::max_window_width + 1) + 1,
+			osize.y / (pref_constants::max_window_height + 1) + 1);
 		scale = std::max(scale, min_scale);
 	} else {
 		scale = std::min(max_scale, prefs::get().pixel_scale());
@@ -312,7 +310,7 @@ bool update_framebuffer()
 	// By default input area is the same as the window area.
 	input_area_ = {{}, wsize};
 
-	rect active_area = to_output(draw_area());
+	const rect active_area = to_output(draw_area());
 	if (active_area.size() != osize) {
 		LOG_DP << "render target offset: LT " << active_area.origin() << " RB "
 		       << osize - active_area.size() - active_area.origin();
@@ -450,25 +448,25 @@ point draw_offset()
 	// is not perfectly divisble by the scale.
 	// SDL doesn't provide any way of retrieving this offset,
 	// so we just have to base our calculation on the known behaviour.
-	point osize = output_size();
-	point dsize = draw_size();
-	point scale = osize / dsize;
+	const point osize = output_size();
+	const point dsize = draw_size();
+	const point scale = osize / dsize;
 	return (osize - (scale * dsize)) / 2;
 }
 
 rect output_area()
 {
-	point p = output_size();
+	const point p = output_size();
 	return {0, 0, p.x, p.y};
 }
 
 rect to_output(const rect& r)
 {
 	// Multiply r by integer scale, adding draw_offset to the position.
-	point dsize = current_render_target_.draw_size();
-	point osize = current_render_target_.get_raw_size();
-	point pos = (r.origin() * (osize / dsize)) + draw_offset();
-	point size = r.size() * (osize / dsize);
+	const point dsize = current_render_target_.draw_size();
+	const point osize = current_render_target_.get_raw_size();
+	const point pos = (r.origin() * (osize / dsize)) + draw_offset();
+	const point size = r.size() * (osize / dsize);
 	return {pos, size};
 }
 
@@ -597,7 +595,7 @@ surface read_pixels(SDL_Rect* r)
 	}
 
 	// This should be what we want to read from.
-	texture& target = current_render_target_;
+	const texture& target = current_render_target_;
 
 	// Make doubly sure.
 	if (target != SDL_GetRenderTarget(*window)) {
@@ -635,7 +633,7 @@ surface read_pixels_low_res(SDL_Rect* r)
 		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
-	surface s = read_pixels(r);
+	const surface s = read_pixels(r);
 	if(r) {
 		return scale_surface(s, r->w, r->h);
 	} else {
@@ -678,7 +676,7 @@ std::string current_driver()
 std::vector<std::string> enumerate_drivers()
 {
 	std::vector<std::string> res;
-	int num_drivers = SDL_GetNumVideoDrivers();
+	const int num_drivers = SDL_GetNumVideoDrivers();
 
 	for(int n = 0; n < num_drivers; ++n) {
 		const char* drvname = SDL_GetVideoDriver(n);
@@ -889,9 +887,8 @@ std::vector<std::pair<std::string, std::string>> renderer_report()
 			renderer_name += " (hw)";
 		}
 
-		std::string renderer_max = std::to_string(ri.max_texture_width) +
-								   'x' +
-								   std::to_string(ri.max_texture_height);
+		const std::string renderer_max
+			= std::to_string(ri.max_texture_width) + 'x' + std::to_string(ri.max_texture_height);
 
 		res.emplace_back("Renderer", renderer_name);
 		res.emplace_back("Maximum texture size", renderer_max);

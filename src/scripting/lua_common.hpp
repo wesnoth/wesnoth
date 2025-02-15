@@ -307,6 +307,8 @@ do { \
 #define return_cfg_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
+		/* Depending on how this function-like macro is called, cfg may or may not be modified. */ \
+		/* NOLINTNEXTLINE(misc-const-correctness)*/ \
 		config cfg; \
 		{accessor;} \
 		luaW_pushconfig(L, cfg); \
@@ -346,7 +348,7 @@ do { \
 #define modify_tstring_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		t_string value = luaW_checktstring(L, 3); \
+		const t_string value = luaW_checktstring(L, 3); \
 		{accessor;} \
 		return 0; \
 	} \
@@ -368,7 +370,7 @@ do { \
 #define modify_int_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		int value = static_cast<int>(luaL_checknumber(L, 3)); \
+		const int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		{accessor;} \
 		return 0; \
 	} \
@@ -379,7 +381,7 @@ do { \
 #define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		int value = static_cast<int>(luaL_checknumber(L, 3)); \
+		const int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
@@ -402,7 +404,7 @@ do { \
 #define modify_float_attrib_check_range(name, accessor, allowed_min, allowed_max) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		lua_Number value = luaL_checknumber(L, 3); \
+		const lua_Number value = luaL_checknumber(L, 3); \
 		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
@@ -414,7 +416,7 @@ do { \
 #define modify_bool_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		bool value = luaW_toboolean(L, 3); \
+		const bool value = luaW_toboolean(L, 3); \
 		{accessor;} \
 		return 0; \
 	} \

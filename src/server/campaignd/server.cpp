@@ -307,7 +307,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	std::memset( &sa, 0, sizeof(sa) );
 	#pragma GCC diagnostic ignored "-Wold-style-cast"
 	sa.sa_handler = SIG_IGN;
-	int res = sigaction( SIGPIPE, &sa, nullptr);
+	const int res = sigaction(SIGPIPE, &sa, nullptr);
 	assert( res == 0 );
 #endif
 	load_config();
@@ -380,7 +380,7 @@ void server::load_config()
 				ERR_CS << "could not make fifo at '" << path << "' (" << strerror(errno) << ")";
 			} else {
 				input_.close();
-				int fifo = open(path.c_str(), O_RDWR|O_NONBLOCK);
+				const int fifo = open(path.c_str(), O_RDWR | O_NONBLOCK);
 				input_.assign(fifo);
 				LOG_CS << "opened fifo at '" << path << "'. Server commands may be written to this file.";
 				read_from_fifo();
@@ -526,18 +526,17 @@ void server::serve_requests(Socket socket, boost::asio::yield_context yield)
 		config data;
 		read(data, doc->output());
 
-		config::all_children_iterator i = data.ordered_begin();
+		const config::all_children_iterator i = data.ordered_begin();
 
 		if(i != data.ordered_end()) {
 			// We only handle the first child.
 			const config::any_child& c = *i;
 
-			request_handlers_table::const_iterator j
-				= handlers_.find(c.key);
+			const request_handlers_table::const_iterator j = handlers_.find(c.key);
 
 			if(j != handlers_.end()) {
 				// Call the handler.
-				request req{c.key, c.cfg, socket, yield};
+				const request req{c.key, c.cfg, socket, yield};
 				auto st = service_timer(req);
 				j->second(this, req);
 			} else {
@@ -916,7 +915,7 @@ void server::delete_addon(const std::string& id)
 		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
 	}
 
-	std::string fn = cfg["filename"].str();
+	const std::string fn = cfg["filename"].str();
 
 	if(fn.empty()) {
 		ERR_CS << "Add-on '" << id << "' does not have an associated filename, cannot delete";
@@ -987,7 +986,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	config addons_list;
 	addons_list["timestamp"] = chrono::serialize_timestamp(now);
 
-	bool before_flag = !req.cfg["before"].empty();
+	const bool before_flag = !req.cfg["before"].empty();
 	std::chrono::system_clock::time_point before;
 	if(before_flag) {
 		if(relative_to_now) {
@@ -998,7 +997,7 @@ void server::handle_request_campaign_list(const server::request& req)
 		}
 	}
 
-	bool after_flag = !req.cfg["after"].empty();
+	const bool after_flag = !req.cfg["after"].empty();
 	std::chrono::system_clock::time_point after;
 	if(after_flag) {
 		if(relative_to_now) {
@@ -1082,7 +1081,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 	std::ostringstream ostr;
 	write(ostr, response);
-	std::string wml = ostr.str();
+	const std::string wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
@@ -1251,7 +1250,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 		return;
 	} else {
 		const auto& version_str = addon["version"].str();
-		version_info version_parsed{version_str};
+		const version_info version_parsed{version_str};
 		auto version = version_map.find(version_parsed);
 		if(version != version_map.end()) {
 			path += version->second["filename"].str();
@@ -1453,8 +1452,8 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	}
 
 	if(existing_addon) {
-		version_info new_version{upload["version"].str()};
-		version_info old_version{(*existing_addon)["version"].str()};
+		const version_info new_version{upload["version"].str()};
+		const version_info old_version{(*existing_addon)["version"].str()};
 
 		if(strict_versions_ ? new_version <= old_version : new_version < old_version) {
 			LOG_CS << "Validation error: add-on version not incremented";
@@ -1473,13 +1472,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_EMAIL;
 	}
 
-	if(std::vector<std::string> badnames = multi_find_illegal_names({data, addlist, removelist}); !badnames.empty()) {
+	if(const std::vector<std::string> badnames = multi_find_illegal_names({data, addlist, removelist}); !badnames.empty()) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(std::vector<std::string> badnames = multi_find_case_conflicts({data, addlist, removelist}); !badnames.empty()) {
+	if(const std::vector<std::string> badnames = multi_find_case_conflicts({data, addlist, removelist}); !badnames.empty()) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
@@ -1492,7 +1491,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 	if(auto url_params = upload.optional_child("feedback")) {
 		try {
-			int topic_id = std::stoi(url_params["topic_id"].str("0"));
+			const int topic_id = std::stoi(url_params["topic_id"].str("0"));
 			if(user_handler_ && topic_id != 0) {
 				if(!user_handler_->db_topic_id_exists(topic_id)) {
 					LOG_CS << "Validation error: feedback topic ID does not exist in forum database";
@@ -1584,8 +1583,9 @@ void server::handle_upload(const server::request& req)
 
 			// if no author information exists, insert data since that of course means no primary author can be found
 			// or if the author is the primary uploader, replace the author information
-			bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, name);
-			bool is_primary = user_handler_->db_is_user_primary_author(server_id_, name, upload["uploader"].str());
+			const bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, name);
+			const bool is_primary
+				= user_handler_->db_is_user_primary_author(server_id_, name, upload["uploader"].str());
 			if(!do_authors_exist || is_primary) {
 				user_handler_->db_delete_addon_authors(server_id_, name);
 				// author instead of uploader here is intentional, since this allows changing the primary author
@@ -1656,7 +1656,7 @@ void server::handle_upload(const server::request& req)
 		} else {
 			// If the requested 'from' version doesn't exist, select the newest
 			// older version available.
-			version_info prev_version_parsed{prev_version};
+			const version_info prev_version_parsed{prev_version};
 			auto vm_entry = version_map.find(prev_version_parsed);
 			if(vm_entry == version_map.end()) {
 				prev_version = (--version_map.upper_bound(prev_version_parsed))->first;
@@ -1715,7 +1715,7 @@ void server::handle_upload(const server::request& req)
 		// new full pack, which will be written later near the end of this
 		// request servicing routine.
 
-		version_info prev_version_parsed{prev_version};
+		const version_info prev_version_parsed{prev_version};
 		auto it = version_map.find(prev_version_parsed);
 		if(it == version_map.end()) {
 			// This REALLY should never happen
@@ -1966,9 +1966,9 @@ void server::handle_change_passphrase(const server::request& req)
 // the fifo handler also hides add-ons
 void server::handle_hide_addon(const server::request& req)
 {
-	std::string addon_id = req.cfg["addon"].str();
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
+	const std::string addon_id = req.cfg["addon"].str();
+	const std::string username = req.cfg["username"].str();
+	const std::string passphrase = req.cfg["passphrase"].str();
 
 	auto addon = get_addon(addon_id);
 
@@ -1994,9 +1994,9 @@ void server::handle_hide_addon(const server::request& req)
 // the fifo handler also unhides add-ons
 void server::handle_unhide_addon(const server::request& req)
 {
-	std::string addon_id = req.cfg["addon"].str();
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
+	const std::string addon_id = req.cfg["addon"].str();
+	const std::string username = req.cfg["username"].str();
+	const std::string passphrase = req.cfg["passphrase"].str();
 
 	auto addon = get_addon(addon_id);
 
@@ -2022,8 +2022,8 @@ void server::handle_unhide_addon(const server::request& req)
 void server::handle_list_hidden(const server::request& req)
 {
 	config response;
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
+	const std::string username = req.cfg["username"].str();
+	const std::string passphrase = req.cfg["passphrase"].str();
 
 	if(!authenticate_admin(username, passphrase)) {
 		send_error("The passphrase is incorrect.", req.sock);
@@ -2106,11 +2106,11 @@ bool server::authenticate_forum(const config& addon, const std::string& passphra
 		return false;
 	}
 
-	std::string uploader = addon["uploader"].str();
-	std::string id = addon["name"].str();
-	bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, id);
-	bool is_primary = user_handler_->db_is_user_primary_author(server_id_, id, uploader);
-	bool is_secondary = user_handler_->db_is_user_secondary_author(server_id_, id, uploader);
+	const std::string uploader = addon["uploader"].str();
+	const std::string id = addon["name"].str();
+	const bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, id);
+	const bool is_primary = user_handler_->db_is_user_primary_author(server_id_, id, uploader);
+	const bool is_secondary = user_handler_->db_is_user_secondary_author(server_id_, id, uploader);
 
 	// allow if there is no author information - this is a new upload
 	// don't allow other people to upload if author information does exist
@@ -2119,9 +2119,9 @@ bool server::authenticate_forum(const config& addon, const std::string& passphra
 		return false;
 	}
 
-	std::string author = addon["uploader"].str();
-	std::string salt = user_handler_->extract_salt(author);
-	std::string hashed_password = hash_password(passphrase, salt, author);
+	const std::string author = addon["uploader"].str();
+	const std::string salt = user_handler_->extract_salt(author);
+	const std::string hashed_password = hash_password(passphrase, salt, author);
 
 	return user_handler_->login(author, hashed_password);
 }
@@ -2132,8 +2132,8 @@ bool server::authenticate_admin(const std::string& username, const std::string& 
 		return false;
 	}
 
-	std::string salt = user_handler_->extract_salt(username);
-	std::string hashed_password = hash_password(passphrase, salt, username);
+	const std::string salt = user_handler_->extract_salt(username);
+	const std::string hashed_password = hash_password(passphrase, salt, username);
 
 	return user_handler_->login(username, hashed_password);
 }

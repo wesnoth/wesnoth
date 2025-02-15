@@ -118,7 +118,7 @@ std::string get_title_suffix(int side_num)
 
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
+		const unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
 		if(leader != resources::gameboard->units().end() && !leader->name().empty()) {
 			msg << " (" << leader->name() << ")";
 		}
@@ -295,7 +295,7 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 	dump_recall_list_to_console(team.recall_list());
 
 	// Find the unit in the recall list.
-	unit_const_ptr dismissed_unit = team.recall_list().find_if_matches_id(u.id());
+	const unit_const_ptr dismissed_unit = team.recall_list().find_if_matches_id(u.id());
 	assert(dismissed_unit);
 
 	// Record the dismissal, then delete the unit.
@@ -327,7 +327,7 @@ void units_dialog::list_item_clicked()
 
 void units_dialog::post_show()
 {
-	listbox& list = find_widget<listbox>("main_list");
+	const listbox& list = find_widget<listbox>("main_list");
 	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
 		sort_last.emplace(sorter->id(), order);
 	} else {
@@ -492,7 +492,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 
 	set_column("unit_details", [&](const auto& recruit) {
 		// Does the unit have error message? If so, grey out text here.
-		bool recruitable = err_msgs_map[recruit].empty();
+		const bool recruitable = err_msgs_map[recruit].empty();
 		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
 			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
@@ -638,7 +638,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 {
 	int wb_gold = 0;
 	if(resources::controller && resources::controller->get_whiteboard()) {
-		wb::future_map future; // So gold takes into account planned spending
+		const wb::future_map future; // So gold takes into account planned spending
 		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(team.side());
 	}
 

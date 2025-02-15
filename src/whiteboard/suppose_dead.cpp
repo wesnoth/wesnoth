@@ -67,7 +67,7 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	, loc_(cfg.mandatory_child("loc_")["x"],cfg.mandatory_child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
+	const unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("suppose_dead: Invalid underlying_id");
 
@@ -91,7 +91,7 @@ suppose_dead::~suppose_dead()
 
 unit_ptr suppose_dead::get_unit() const
 {
-	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
+	const unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
@@ -120,7 +120,7 @@ void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 {
 	// Just check to make sure the hex is empty
-	unit_map::iterator unit_it = resources::gameboard->units().find(loc_);
+	const unit_map::iterator unit_it = resources::gameboard->units().find(loc_);
 	assert(unit_it == resources::gameboard->units().end());
 
 	// Restore the unit
@@ -153,7 +153,7 @@ action::error suppose_dead::check_validity() const
 		return INVALID_LOCATION;
 	}
 	//Check that the unit still exists in the source hex
-	unit_map::const_iterator unit_it = resources::gameboard->units().find(get_source_hex());
+	const unit_map::const_iterator unit_it = resources::gameboard->units().find(get_source_hex());
 	if(unit_it == resources::gameboard->units().end()) {
 		return NO_UNIT;
 	}

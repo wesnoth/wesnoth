@@ -82,7 +82,7 @@ bool recruit_action::undo(int side)
 	team &current_team = resources::gameboard->get_team(side);
 
 	const map_location & recruit_loc = route.front();
-	unit_map::iterator un_it = units.find(recruit_loc);
+	const unit_map::iterator un_it = units.find(recruit_loc);
 	if ( un_it == units.end() ) {
 		return false;
 	}

@@ -181,10 +181,10 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 	DBG_LUA << "loading script from string:\n<<\n" << prog << "\n>>";
 
 	// note: this is unsafe for umc as it allows loading lua baytecode, but umc cannot add application lua kernel scipts.
-	int errcode = luaL_loadstring(T, prog.c_str());
+	const int errcode = luaL_loadstring(T, prog.c_str());
 	if (errcode != LUA_OK) {
 		const char * err_str = lua_tostring(T, -1);
-		std::string msg = err_str ? err_str : "null string";
+		const std::string msg = err_str ? err_str : "null string";
 
 		std::string context = "When parsing a string to a lua thread, ";
 
@@ -420,7 +420,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 		if(ctxt.execute_kernel_ && req.name == "execute") {
 			results.push_back([this, lk = ctxt.execute_kernel_, data = req.data]() {
 				auto result = lk->run_binary_lua_tag(data);
-				int ref = result["ref"].to_int();
+				const int ref = result["ref"].to_int();
 				if(auto func = result.optional_child("executed")) {
 					lua_rawgeti(T_, LUA_REGISTRYINDEX, ref);
 					luaW_copy_upvalues(T_, *func);
@@ -446,9 +446,9 @@ bool luaW_copy_upvalues(lua_State* L, const config& cfg)
 		lua_pushvalue(L, -1); // duplicate function because lua_getinfo will pop it
 		lua_Debug info;
 		lua_getinfo(L, ">u", &info);
-		int funcindex = lua_absindex(L, -1);
+		const int funcindex = lua_absindex(L, -1);
 		for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)) {
-			std::string_view name = lua_getupvalue(L, funcindex, i);
+			const std::string_view name = lua_getupvalue(L, funcindex, i);
 			if(name == "_ENV") {
 				lua_pushglobaltable(L);
 			} else if(upvalues->has_attribute(name)) {

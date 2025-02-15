@@ -217,9 +217,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 		int best_size = node->get_best_size().x;
 		best_size += get_indentation_level() * get_tree_view().indentation_step_size_;
 
-		int new_width = best_size > current_size.x
-			? best_size - current_size.x
-			: 0;
+		const int new_width = best_size > current_size.x ? best_size - current_size.x : 0;
 
 		if(new_width > width_modification)
 		{
@@ -494,7 +492,7 @@ point tree_view_node::get_current_size(bool assume_visible) const
 			continue;
 		}
 
-		point node_size = node->get_current_size();
+		const point node_size = node->get_current_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -525,7 +523,7 @@ point tree_view_node::get_unfolded_size() const
 			continue;
 		}
 
-		point node_size = node->get_current_size(true);
+		const point node_size = node->get_current_size(true);
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);

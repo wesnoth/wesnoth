@@ -74,7 +74,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 
 	// Check for a leader at recruit_loc (means we are recruiting from there,
 	// rather than to there).
-	unit_map::const_iterator find_it = resources::gameboard->units().find(recruit_loc);
+	const unit_map::const_iterator find_it = resources::gameboard->units().find(recruit_loc);
 	if ( find_it != u_end ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
 		     resources::gameboard->map().is_keep(recruit_loc) )
@@ -140,11 +140,12 @@ namespace { // Helpers for get_recalls()
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
-			std::size_t underlying_id = recall_unit.underlying_id();
+			const std::size_t underlying_id = recall_unit.underlying_id();
 			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
 				// Only units that match the leader's recall filter are valid.
-				scoped_recall_unit this_unit("this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
+				const scoped_recall_unit this_unit(
+					"this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
 
 				if ( ufilt(recall_unit, map_location::null_location()) )
 				{
@@ -247,8 +248,8 @@ namespace { // Helpers for check_recall_location()
 
 		// Make sure the recalling unit can recall this specific unit.
 		team& recall_team = (*resources::gameboard).get_team(recaller.side());
-		scoped_recall_unit this_unit("this_unit", recall_team.save_id_or_number(),
-						recall_team.recall_list().find_index(recall_unit.id()));
+		const scoped_recall_unit this_unit(
+			"this_unit", recall_team.save_id_or_number(), recall_team.recall_list().find_index(recall_unit.id()));
 
 		const unit_filter ufilt(vconfig(recaller.recall_filter()));
 		if ( !ufilt(recall_unit, map_location::null_location()) )
@@ -259,7 +260,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
-		map_location permissible = pathfind::find_vacant_castle(recaller);
+		const map_location permissible = pathfind::find_vacant_castle(recaller);
 		if ( !permissible.valid() )
 			return RECRUIT_NO_VACANCY;
 
@@ -307,8 +308,7 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 			continue;
 
 		// Check this unit's viability as a recaller.
-		RECRUIT_CHECK current_result =
-			check_unit_recall_location(*u, unit_recall, check_location, alternative);
+		RECRUIT_CHECK const current_result = check_unit_recall_location(*u, unit_recall, check_location, alternative);
 
 		// If this is not an improvement, proceed to the next unit.
 		if ( current_result <= best_result )
@@ -389,7 +389,7 @@ namespace { // Helpers for check_recruit_location()
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
-		map_location permissible = pathfind::find_vacant_castle(recruiter);
+		const map_location permissible = pathfind::find_vacant_castle(recruiter);
 		if ( !permissible.valid() )
 			return RECRUIT_NO_VACANCY;
 
@@ -443,8 +443,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 			continue;
 
 		// Check this unit's viability as a recruiter.
-		RECRUIT_CHECK current_result =
-			check_unit_recruit_location(*u, check_type, check_location, alternative);
+		RECRUIT_CHECK const current_result = check_unit_recruit_location(*u, check_type, check_location, alternative);
 
 		// If this is not an improvement, proceed to the next unit.
 		if ( current_result <= best_result )
@@ -596,7 +595,7 @@ namespace { // Helpers for place_recruit()
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
 				unit_itor->is_visible_to_team(resources::gameboard->get_team(new_unit.side()), false)) {
-				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
+				const int dist = distance_between(unit_itor->get_location(), recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;
 					min_loc = unit_itor->get_location();
@@ -717,7 +716,7 @@ place_recruit_result place_recruit(const unit_ptr& u, const map_location &recrui
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from)
 {
-	bool show = !resources::controller->is_skipping_actions();
+	const bool show = !resources::controller->is_skipping_actions();
 	const unit_ptr new_unit = unit::create(u_type, side_num, true);
 
 
@@ -741,8 +740,8 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  map_location::direction facing)
 {
-	bool show = !resources::controller->is_skipping_actions();
-	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
+	const bool show = !resources::controller->is_skipping_actions();
+	const unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
 	if ( !recall )
 		return false;
@@ -751,7 +750,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
-	int cost = recall->recall_cost() >= 0 ? recall->recall_cost() : current_team.recall_cost();
+	const int cost = recall->recall_cost() >= 0 ? recall->recall_cost() : current_team.recall_cost();
 
 	place_recruit_result res = place_recruit(recall, loc, from, cost,
 	                             true, facing, show);

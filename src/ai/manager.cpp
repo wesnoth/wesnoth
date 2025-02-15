@@ -536,7 +536,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			return "AI MANAGER: History is empty";
 		}
 
-		int n = std::min<int>( MAX_HISTORY_VISIBLE, history_.size() );
+		const int n = std::min<int>(MAX_HISTORY_VISIBLE, history_.size());
 		std::stringstream strstream;
 		strstream << "AI MANAGER: History - last "<< n <<" commands:\n";
 		std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
@@ -555,7 +555,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		// add_ai side file
 		if (cmd.at(0)=="!add_ai"){
 			side = std::stoi(cmd.at(1));
-			std::string file = cmd.at(2);
+			const std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,false)){
 				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
@@ -565,7 +565,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		// replace_ai side file
 		if (cmd.at(0)=="!replace_ai"){
 			side = std::stoi(cmd.at(1));
-			std::string file = cmd.at(2);
+			const std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,true)){
 					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
@@ -587,7 +587,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 				history_item_counter_--;
 			}
 
-			int command = std::stoi(cmd.at(1));
+			const int command = std::stoi(cmd.at(1));
 			std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
 			//yes, the iterator could be precisely positioned (since command numbers go 1,2,3,4,..). will do it later.
 			while ( (j!=history_.rend()) && (j->get_number()!=command) ){
@@ -754,7 +754,7 @@ void manager::play_turn( side_number side ){
 // =======================================================================
 std::stack<holder>& manager::get_or_create_ai_stack_for_side( side_number side )
 {
-	AI_map_of_stacks::iterator iter = ai_map_.find(side);
+	const AI_map_of_stacks::iterator iter = ai_map_.find(side);
 	if (iter!=ai_map_.end()){
 		return iter->second;
 	}
@@ -771,7 +771,7 @@ holder& manager::get_active_ai_holder_for_side( side_number side )
 	if (!ai_stack_for_specific_side.empty()){
 		return ai_stack_for_specific_side.top();
 	} else {
-		config cfg = configuration::get_default_ai_parameters();
+		const config cfg = configuration::get_default_ai_parameters();
 		ai_stack_for_specific_side.emplace(side, cfg);
 		return ai_stack_for_specific_side.top();
 	}

@@ -29,7 +29,7 @@ namespace network
 {
 	static size_t write_callback(char* contents, size_t size, size_t nmemb, void* buffer)
 	{
-		size_t amount = size * nmemb;
+		const size_t amount = size * nmemb;
 		static_cast<std::string*>(buffer)->append(contents, amount);
 		DBG_NW << "Downloaded " << amount << " bytes.";
 		return amount;
@@ -59,13 +59,15 @@ namespace network
 				curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);
 			#endif
 
-			CURLcode res = curl_easy_perform(curl);
+				const CURLcode res = curl_easy_perform(curl);
 
-			if(res != CURLE_OK) {
-				ERR_NW << "Error downloading file from url `" << url << "`.\n"
-					<< "Short error: " << curl_easy_strerror(res) << "\n"
-					<< "Long error: " << std::string(error);
-				gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
+				if(res != CURLE_OK) {
+					ERR_NW << "Error downloading file from url `" << url << "`.\n"
+						   << "Short error: " << curl_easy_strerror(res) << "\n"
+						   << "Long error: " << std::string(error);
+					gui2::show_message(_("Download error"),
+						_("An error occurred when downloading the file. Check the game logs for more information."),
+						gui2::dialogs::message::button_style::auto_close);
 			} else {
 				try {
 					if(filesystem::file_exists(local_path)) {

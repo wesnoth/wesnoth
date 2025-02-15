@@ -82,7 +82,7 @@ struct wesnoth_global_fixture {
 		filesystem::set_user_data_dir(std::string());
 
 		// declare this here so that it will always be at the front of the event queue.
-		events::event_context global_context;
+		const events::event_context global_context;
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
