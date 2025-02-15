@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2025-01-24 10:34+0530\n"
+"PO-Revision-Date: 2025-02-15 14:42+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -62,7 +62,7 @@ msgstr "বড় সাধারণ টেক্স ফাইল"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Show icons in the Add-ons manager"
-msgstr ""
+msgstr "অ্যাড-অন ম্যানেজারে আইকন দেখান"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:27
@@ -70,6 +70,8 @@ msgid ""
 "Disabling saves bandwidth by not sending icons for the add-ons list in the "
 "add-ons manager"
 msgstr ""
+"বন্ধ করলে অ্যাড-অন ম্যানেজারের অ্যাড-অন তালিকার জন্য আইকনগুলি না পাঠিয়ে আপনার "
+"ইন্টারনেট ডেটা বাঁচাবে"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:34
@@ -1729,6 +1731,7 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"এই ইউনিটটির রক্ষণাত্মক কৌশল প্রতিপক্ষের দ্বারা সফল আক্রমণের সম্ভাবনা কমিয়ে দেয় ।"
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:416
@@ -1741,12 +1744,15 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"এই আক্রমণটি ইউনিটটিকে একটি ভালো রক্ষণাত্মক অবস্থানে সরায়, এবং প্রতিপক্ষের আক্রমণের "
+"দ্বারা হওয়া ক্ষতির কিছুটা শোষণ করে নেয় ।"
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:418
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"এই ইউনিটটি প্রতিপক্ষের আক্রমণ আটকাতে পারে, তাই এটি আক্রান্ত হলে কম ক্ষতিগ্রস্ত হয় ।"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -4621,6 +4627,8 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"একটি মরুদ্যানের বিশুদ্ধ জল আহতদের নিরাময় করে । ভুগর্ভের জ্বলন্ত পদার্থ যারা উড়তে পারে "
+"না তাদের বাধা দেয়, আর যারা এর উপরে উড়তে পারে তাদের অন্ধকারে আলোক সরবরাহ করে ।"
 
 #. [tip]
 #: data/tips.cfg:258
@@ -4634,6 +4642,9 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"যদি দুটি মিত্র পক্ষের আরোগ্যকারকদের পাশে একটি ইউনিটকে স্থাপন করা হয় তবে ইউনিটটি "
+"উভয় পক্ষের দানেই চিকিৎসা লাভ করবে । এইভাবে, একটি ইউনিটকে অন্য যেকোনো পদ্ধতির "
+"তুলনায় দ্রুত সুস্থ করা যায়।"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -4664,6 +4675,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"বাদুড় এবং অন্যান্য প্রাণীর মতো <i>বন্য</i> ইউনিটগুলি গ্রামগুলি এড়িয়ে চলে । এমনকি যদি "
+"তারা একটি গ্রামের ষড়ভুজ দখল করে, তবুও তারা গ্রাম থেকে কোনও প্রতিরক্ষামূলক সুবিধা "
+"অর্জন করে না, যদিও তারা সেখানে চিকিৎসা লাভ করে ।"
 
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
@@ -4841,6 +4855,8 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
+"অ্যাড-অন <i>$addon_title</i> এর আইডি '$addon_id' অবৈধ এবং তাই তা প্রকাশ করা "
+"যাবে না ।"
 
 #: src/addon/client.cpp:324
 msgid ""
@@ -4915,6 +4931,8 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
+"অ্যাড-অন <i>$addon_title</i>-তে অবৈধ ফাইল বা ডিরেক্টরি রয়েছে এবং তা ইনস্টল করা "
+"যাবে না ।"
 
 #: src/addon/client.cpp:517 src/addon/client.cpp:543
 msgid ""
@@ -4934,7 +4952,7 @@ msgstr[1] ""
 
 #: src/addon/client.cpp:640
 msgid "Broken Dependencies"
-msgstr ""
+msgstr "ভগ্ন নির্ভরশীলতা"
 
 #: src/addon/client.cpp:680
 msgid ""
@@ -5218,10 +5236,11 @@ msgid ""
 "The add-on’s forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"এই অ্যাড-অনটির forum_auth অ্যাট্রিবিউট পূর্ববর্তী আপলোডকৃত সংস্করণের সঙ্গে মিলছে না । "
 
 #: src/addon/validation.cpp:510
 msgid "The add-on’s icon’s file size is too large."
-msgstr ""
+msgstr "অ্যাড-অনের আইকনের ফাইল সাইজ খুব বড়ো ।"
 
 #: src/addon/validation.cpp:519
 msgid "Unspecified server error."
@@ -5242,7 +5261,7 @@ msgstr "সার্ভারে অ্যাড-অনের তালিকা
 #: src/addon/validation.cpp:535
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
-msgstr ""
+msgstr "এই সার্ভারটি আপনার পিবিএল-এ forum_auth অ্যাট্রিবিউট সমর্থন করে না ।"
 
 #: src/addon/validation.cpp:545
 msgid "Unspecified validation failure."
@@ -5309,6 +5328,8 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"কোনও খেলোয়াড় বা দর্শককে নিষিদ্ধ করুন এবং বের করে দিন । যদি সে খেলায় না থাকে "
+"কিন্তু সার্ভারে থাকে তবে তাকে কেবল নিষিদ্ধ করা হবে ।"
 
 #: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
 #: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
@@ -5321,6 +5342,8 @@ msgstr "<nickname>"
 #: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"একজন ব্যবহারকারীকে আনব্যান করুন । তাকে খেলার মধ্যে থাকতে হবে না তবে সার্ভারে "
+"থাকতে হবে ।"
 
 #: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
@@ -5442,23 +5465,24 @@ msgstr "হুইসপার: $sender"
 
 #: src/deprecation.cpp:39
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "$elem অনির্দিষ্ট কালের জন্য ডেপ্রিকেট করা হয়েছে ।"
 
 #: src/deprecation.cpp:46
 msgid "$elem has been deprecated and may be removed in version $version."
 msgstr ""
+"$elem ডেপ্রিকেট করা হয়েছে এবং সংস্করণ $version-তে হয়তো সরিয়ে ফেলা হতে পারে ।"
 
 #: src/deprecation.cpp:48
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
+msgstr "$elem ডেপ্রিকেট করা হয়েছে এবং হয়তো যেকোনো সময়ে সরিয়ে ফেলা হতে পারে ।"
 
 #: src/deprecation.cpp:55
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr ""
+msgstr "$elem ডেপ্রিকেট করা হয়েছে এবং সংস্করণ $version-তে সরিয়ে ফেলা হবে ।"
 
 #: src/deprecation.cpp:60
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "$elem ডেপ্রিকেট এবং সরানো হয়েছে ।"
 
 #: src/desktop/notifications.cpp:77
 msgid "Chat message"
@@ -5509,44 +5533,44 @@ msgstr "%d %b %Y"
 #: src/formula/format_timespan.hpp:38
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num বছর"
+msgstr[1] "$num বছর"
 
 #: src/formula/format_timespan.hpp:39
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num মাস"
+msgstr[1] "$num মাস"
 
 #: src/formula/format_timespan.hpp:40
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num সপ্তাহ"
+msgstr[1] "$num সপ্তাহ"
 
 #: src/formula/format_timespan.hpp:41
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num দিন"
+msgstr[1] "$num দিন"
 
 #: src/formula/format_timespan.hpp:42
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num ঘন্টা"
+msgstr[1] "$num ঘন্টা"
 
 #: src/formula/format_timespan.hpp:43
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num মিনিট"
+msgstr[1] "$num মিনিট"
 
 #: src/formula/format_timespan.hpp:44
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num সেকেন্ড"
+msgstr[1] "$num সেকেন্ড"
 
 #: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
 msgid "timespan^expired"
@@ -5600,10 +5624,8 @@ msgid "Falling back to the default core."
 msgstr "স্বাভাবিক কোরে ফিরে যাওয়া হচ্ছে ।"
 
 #: src/game_config_manager.cpp:301
-#, fuzzy
-#| msgid "Can't locate the default core."
 msgid "Can’t locate the default core."
-msgstr "স্বাভাবিক কোরে ফিরে যাওয়া হচ্ছে ।"
+msgstr "স্বাভাবিক কোরে খুঁজে পাওয়া যাচ্ছে না ।"
 
 #: src/game_config_manager.cpp:302
 msgid "The game will now exit."
@@ -5624,7 +5646,7 @@ msgstr ""
 #: src/game_config_manager.cpp:379
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
-msgstr ""
+msgstr "স্বাভাবিক কোর ফাইলে লোডে ত্রুটি । খেলাটি এখন বন্ধ হয়ে যাবে ।"
 
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
@@ -5635,10 +5657,13 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"ত্রুটি: [advancefrom] এখন আর কাজ করে না । ‘$lower_level’ ইউনিটেরা আর "
+"‘$higher_level’-এ উন্নিত হতে পারবে না; অনুগ্রহ করে অ্যাড-অনের লেখককে "
+"[modify_unit_type] ব্যবহার করতে বলুন ।"
 
 #: src/game_config_manager.cpp:441
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "পরিবর্ত, ম্যাক্রোটিকে একই নামের সঙ্গে [campaign]-এ ব্যবহার করুন ।"
 
 #: src/game_config_manager.cpp:634
 msgid "The following add-on had errors and could not be loaded:"
@@ -5732,10 +5757,8 @@ msgid "OK"
 msgstr "ঠিক আছে"
 
 #: src/game_initialization/depcheck.cpp:516
-#, fuzzy
-#| msgid "Scenario can't be activated. Some dependencies are missing: "
 msgid "Scenario can’t be activated. Some dependencies are missing: "
-msgstr "ঘটনাক্রম সক্রিয় করা যাচ্ছে না । নির্ভরশীল উপাদানগুলি নেই ।"
+msgstr "ঘটনাক্রম সক্রিয় করা যাচ্ছে না । কিছু নির্ভরশীল উপাদান নেই:"
 
 #: src/game_initialization/depcheck.cpp:570
 #: src/game_initialization/depcheck.cpp:693
@@ -5743,10 +5766,8 @@ msgid "No compatible eras found."
 msgstr "ব্যবহারযোগ্য যুগ নেই ।"
 
 #: src/game_initialization/depcheck.cpp:585
-#, fuzzy
-#| msgid "Era can't be activated. Some dependencies are missing: "
 msgid "Era can’t be activated. Some dependencies are missing: "
-msgstr "যুগ সক্রিয় করা যাচ্ছে না । নির্ভরশীল উপাদানগুলি নেই ।"
+msgstr "যুগ সক্রিয় করা যাচ্ছে না । কিছু নির্ভরশীল উপাদান নেই:"
 
 #: src/game_initialization/depcheck.cpp:638
 #: src/game_initialization/depcheck.cpp:730
@@ -5839,6 +5860,8 @@ msgid ""
 "The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
+"হোস্টের <i>$addon</i>-এর সংস্করণে অসামঞ্জস্য রয়েছে । তাদের কাছে <b>$host_ver</b> "
+"সংস্করণ রয়েছে যেখানে আপনার কাছে <b>$local_ver</b> সংস্করণ রয়েছে ।"
 
 #: src/game_initialization/lobby_data.cpp:459
 msgid ""
@@ -5853,20 +5876,20 @@ msgid "Defeat enemy leader(s)"
 msgstr "শত্রু দলনেতা(দের) হারান"
 
 #: src/game_initialization/mp_game_utils.cpp:102
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era ‘$era’"
-msgstr "যুগ '$era' খুঁজে পাওয়া যাচ্ছে না"
+msgstr "যুগ ‘$era’ খুঁজে পাওয়া যাচ্ছে না"
 
 #: src/game_initialization/multiplayer.cpp:234
 msgid "Invalid address specified for multiplayer server"
-msgstr ""
+msgstr "বহুখেলোয়াড় সার্ভারের জন্য অবৈধ অ্যাড্রেস দেওয়া হয়েছে ।"
 
 #: src/game_initialization/multiplayer.cpp:269
 msgid ""
 "The server accepts versions ‘$required_version’, but you are using version "
 "‘$your_version’"
 msgstr ""
+"সার্ভার সংস্করণ ‘$required_version’ চায়, কিন্তু আপনি সংস্করণ ‘$your_version’ "
+"ব্যবহারক করছেন ।"
 
 #: src/game_initialization/multiplayer.cpp:282
 msgid "Server-side redirect loop"
@@ -5878,6 +5901,9 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
+"ডাকনাম ‘$nick’ নিস্ক্রিয় । আপনি ততক্ষণ এই ডাকনাম ব্যবহার করতে পারবেন না যতক্ষণ না "
+"আপনি ইমেল মারফত আপনার অ্যাকউন্ট সক্রিয় করেন বা একজন অ্যাডমিনস্ট্রেটরকে আপনার জন্য "
+"তা করে দিতে বলেন ।"
 
 #: src/game_initialization/multiplayer.cpp:341
 msgid "Do you want to continue?"
@@ -5891,6 +5917,7 @@ msgstr "সতর্কবার্তা"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"দূরবর্তী সার্ভারটি একটি অনিরাপদ সংযোগ ব্যবহার করে একটি পাসওয়ার্ডের অনুরোধ করেছিল ।"
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -5905,6 +5932,8 @@ msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
+"ডাকনাম ‘$nick’-এ অবৈধ অক্ষর রয়েছে । শুধুমাত্র আলফা-সাংখ্যিক অক্ষর (ন্যূনতম একটি), "
+"আন্ডারস্কোর এবং হাইফেন অনুমোদিত ।"
 
 #: src/game_initialization/multiplayer.cpp:417
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -5913,15 +5942,15 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr ""
+msgstr "ডাকনাম ‘$nick’ সংরক্ষিত এবং খেলোয়াড়দের দ্বারা ব্যবহার করা যাবে না।"
 
 #: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr ""
+msgstr "ডাকনাম ‘$nick এই সার্ভারে নথিভুক্ত নয় ।"
 
 #: src/game_initialization/multiplayer.cpp:422
 msgid " This server disallows unregistered nicknames."
-msgstr ""
+msgstr "এই সার্ভার অনথিভুক্ত ডাকনাম ব্যবহার করার অনুমোদন দেয় না ।"
 
 #: src/game_initialization/multiplayer.cpp:425
 msgid "Your IP address is banned on this server for $duration|."
@@ -5952,22 +5981,25 @@ msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
+"ডাকনাম ‘$nick’-এর ইমেল অ্যাড্রেস এই সার্ভারের ফোরামে $duration|-এর জন্য নিষিদ্ধ ।"
 
 #: src/game_initialization/multiplayer.cpp:445
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr ""
+msgstr "ডাকনাম ‘$nick’-এর ইমেল অ্যাড্রেস এই সার্ভারের ফোরামে $duration| নিষিদ্ধ ।"
 
 #: src/game_initialization/multiplayer.cpp:448
 #: src/game_initialization/multiplayer.cpp:450
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr ""
+msgstr "ডাকনাম ‘$nick’-এই সার্ভারে নথিভুক্ত ।"
 
 #: src/game_initialization/multiplayer.cpp:451
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
+"সতর্কতা: ইতিমধ্যে একটি ক্লায়েন্ট এই ডাকনাম ব্যবহার করছে, লগ ইন করলে সেই ক্লায়েন্টকে "
+"বের করে দেওয়া হবে!"
 
 #: src/game_initialization/multiplayer.cpp:454
 msgid "The password you provided was incorrect."
@@ -6031,11 +6063,11 @@ msgstr ""
 
 #: src/game_launcher.cpp:671
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "খেলাটি পড়ার সময় ফাইল আই/ও ত্রুটি"
 
 #: src/game_launcher.cpp:673
 msgid "File I/O Error while reading the game: '"
-msgstr ""
+msgstr "খেলাটি পড়ার সময় ফাইল আই/ও ত্রুটি: '"
 
 #: src/game_launcher.cpp:856
 msgid "Error while starting server: "
@@ -6046,26 +6078,20 @@ msgid "Connection failed: "
 msgstr "সংযোগ করা যাচ্ছে না:"
 
 #: src/generators/default_map_generator_job.cpp:707
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren’t supported."
 msgstr "বিজোড় প্রস্থ বিশিষ্ট ইতস্তত মানচিত্র সমর্থিত নয় ।"
 
 #: src/generators/default_map_generator_job.cpp:964
-#, fuzzy
-#| msgid ""
-#| "No valid castle location found. Too many or too few mountain hexes? "
-#| "(please check the 'max hill size' parameter)"
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the ‘max hill size’ parameter)"
 msgstr ""
 "প্রাসাদের জন্য কোনো বৈধ অবস্থান নেই । খুব বেশী বা খুব কম পর্বত ষড়ভুজ? অনুগ্রহ করে "
-"'max hill size' প্যারামিটারে টিক দিন ।"
+"‘max hill size’ প্যারামিটারে টিক দিন ।"
 
 #: src/gui/core/linked_group_definition.cpp:40
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+msgstr "লিঙ্কড গ্রুপ '$id'-এর একটি 'fixed_width' বা 'fixed_height' চাবি প্রয়োজন ।"
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:33
 msgid ""
@@ -6075,7 +6101,11 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
+"নির্বাচিত এড-অনের নিম্নোক্ত নির্ভরশীলতা আছে, যা পুরানো বা বর্তমানে ইনস্টল করা নেই. "
+"আপনি কি এগিয়ে যাওয়ার আগে এটি ইনস্টল করতে চান?"
 msgstr[1] ""
+"নির্বাচিত এড-অনের নিম্নোক্ত নির্ভরশীলতাগুলি আছে, যা পুরানো বা বর্তমানে ইনস্টল করা "
+"নেই. আপনি কি এগিয়ে যাওয়ার আগে সেগুলি ইনস্টল করতে চান?"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:73
 msgid "Create a new add-on"
@@ -6447,6 +6477,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = সকল কমান্ডের সংক্ষিপ্ত বর্ণনা, <command> = একটি সুনির্দিষ্ট কমান্ডের নাম "
+"(আরও বেশী তথ্য দেয়)"
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
@@ -6457,6 +6490,8 @@ msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"উপলব্ধ কমান্ডগুলি $flags_description:\n"
+"$list_of_commands"
 
 #: src/map_command_handler.hpp:355 src/map_command_handler.hpp:356
 #: src/map_command_handler.hpp:396
@@ -6480,8 +6515,8 @@ msgstr "ব্যবহার:"
 #: src/map_command_handler.hpp:394
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "অ্যালায়াস:"
+msgstr[1] "অ্যালায়াসগুলি:"
 
 #: src/menu_events.cpp:174
 msgid "Save Map As"
@@ -6537,6 +6572,7 @@ msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
 msgstr ""
+"আপনার পরিকল্পনার এই পর্যায়ে, আপনার এই ইউনিটটিক নিয়োগ করার মতো যথেষ্ট স্বর্ণ নেই ।"
 
 #: src/menu_events.cpp:341
 msgid "You do not have enough gold to recruit this unit."
@@ -6545,6 +6581,7 @@ msgstr "আপনার কাছে এই ইউনিটটিকে নি�
 #: src/menu_events.cpp:385
 msgid "You are separated from your soldiers and may not recall them."
 msgstr ""
+"আপনি আপনার সেনাদের থেকে বিছিন্ন হয়ে গিয়েছেন এবং তাদের পুনরায় ডাকতে পারবেন না ।"
 
 #: src/menu_events.cpp:403
 msgid "You must have at least 1 gold piece to recall a unit."
@@ -6575,11 +6612,11 @@ msgstr "আপনি এখনও আপনার দান শুরু কর�
 
 #: src/menu_events.cpp:605
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
+msgstr "কিছু ইউনিটেরা আরও চলতে পারবে । আপনি কী সত্যিই আপনার দান শেষ করতে চান?"
 
 #: src/menu_events.cpp:614
 msgid "Some units have not moved. Do you really want to end your turn?"
-msgstr ""
+msgstr "কিছু ইউনিটেরা চলেনি । আপনি কী সত্যিই আপনার দান শেষ করতে চান?"
 
 #: src/menu_events.cpp:670
 msgid "Rename Unit"
@@ -6680,11 +6717,11 @@ msgstr "<side>"
 
 #: src/menu_events.cpp:1237
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "ফোরগ্রাউন্ড ভূমি ডিবাগ করুন ।"
 
 #: src/menu_events.cpp:1239
 msgid "Debug layers from terrain under the mouse."
-msgstr ""
+msgstr "মাউসের নীচে থাকা স্তরগুলি ডিবাগ করুন ।"
 
 #: src/menu_events.cpp:1240
 msgid "Display and log fps (Frames Per Second)."
@@ -6746,6 +6783,8 @@ msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"দানের সীমা পাল্টান, অথবা দানের সীমা নিস্ক্রিয় করুন যদি কোনো সংখ্যা না দেওয়া থাকে "
+"বা -1 হয় ।"
 
 #: src/menu_events.cpp:1260
 msgid "[limit]"
