@@ -602,7 +602,7 @@ void prefs::set_reach_map_enemy_color(const std::string& color_id) {
 
 int prefs::reach_map_border_opacity()
 {
-	return preferences_[prefs_list::reach_map_border_opacity].to_int();
+	return preferences_[prefs_list::reach_map_border_opacity].to_int(100); // 100% by default
 }
 
 void prefs::set_reach_map_border_opacity(const int new_opacity)
@@ -612,7 +612,7 @@ void prefs::set_reach_map_border_opacity(const int new_opacity)
 
 int prefs::reach_map_tint_opacity()
 {
-	return preferences_[prefs_list::reach_map_tint_opacity].to_int();
+	return preferences_[prefs_list::reach_map_tint_opacity].to_int(100); // 100% by default
 }
 
 void prefs::set_reach_map_tint_opacity(const int new_opacity)
