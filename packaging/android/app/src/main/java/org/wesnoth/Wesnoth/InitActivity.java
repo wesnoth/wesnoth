@@ -26,6 +26,7 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.util.Enumeration;
+import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -71,45 +72,38 @@ public class InitActivity extends Activity {
 		if (!fDataDir.exists()) {
 			fDataDir.mkdir();
 		}
-		Log.e("Initialize", dataDir);
+		Log.d("InitActivity", "Creating " + dataDir);
 
-		// Download file
 		File f = new File(dataDir + "/" + name);
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
-		if (!f.exists()) {
-			Thread threadDnld = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						downloadFile(archiveURL, dataDir + "/" + name);
-					} catch (Exception e) {
-						Log.e("Download", "security error", e);
-					}
-				}
-			});
-
-			threadDnld.start();
-		}
-
-		// Unpack archive
-		if (f.exists()) {
-			progressText.setText("Unpacking assets...");
-			Thread threadUnpk = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					unpackArchive(dataDir + "/" + name, dataDir);
-				}
-			});
-			
-			threadUnpk.start();
-			progressText.setText("Unpacking finished...");
-		}
 		
-		// Launch Wesnoth
-		// TODO: check data existence
-		progressText.setText("Launching Wesnoth...");
-		// TODO: launch WesnothActivity
+		Executors.newSingleThreadExecutor().execute(() -> {
+			// Download file
+			if (!f.exists()) {
+				Log.d("InitActivity", "Start download");
+				try {
+					downloadFile(archiveURL, dataDir + "/" + name);
+				} catch (Exception e) {
+					Log.e("Download", "security error", e);
+				}
+			}
+			
+			// Unpack archive
+			runOnUiThread(() -> progressText.setText("Unpacking assets..."));
+			Log.d("InitActivity", "Start unpack");
+			
+			unpackArchive(dataDir + "/" + name, dataDir);
+			
+			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
+			Log.d("InitActivity", "Stop unpack");
+			
+			// Launch Wesnoth
+			// TODO: check data existence
+			runOnUiThread(() -> progressText.setText("Launching Wesnoth..."));
+			Log.d("InitActivity", "Launch wesnoth");
+			// TODO: launch WesnothActivity
+		});
 	}
 
 	private void launchWesnothActivity() {
@@ -146,7 +140,7 @@ public class InitActivity extends Activity {
 			int response = conn.getResponseCode();
 
 			if (response != HttpURLConnection.HTTP_OK) {
-				Log.e("Download", "Server returned response : " + response);
+				Log.d("Download", "Server returned response : " + response);
 				return;
 			}
 
@@ -183,53 +177,64 @@ public class InitActivity extends Activity {
 
 	private void unpackArchive(String path, String destdir) {
 		File sFile = new File(path);
-		if (sFile != null) {
-			try {
-				ZipFile zf = new ZipFile(sFile);
-				Enumeration<? extends ZipEntry> e = zf.entries();
-				
-				progress = 0;
-				max = zf.size();
-				
-				runOnUiThread(() -> {
-					ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-					progressBar.setMax((int) max);
-					progressBar.setProgress(0);
-				});
-				
-				while (e.hasMoreElements()) {
-					ZipEntry ze = (ZipEntry) e.nextElement();
-					
-					runOnUiThread(() -> updateUnpackProgress(progress));
-					
-					if (ze.isDirectory()) {
-						File dir = new File(destdir + "/" + ze.getName());
-						if (!dir.exists()) {
-							dir.mkdir();
-						}
-					} else {
-						InputStream in = zf.getInputStream(ze);
-						OutputStream out = new FileOutputStream(new File(destdir + "/" + ze.getName()));
-						byte[] buffer = new byte[4096];
-						int length;
-						while ((length = in.read(buffer)) > 0) {
-							out.write(buffer, 0, length);
-						}
-						out.close();
-						in.close();
-					}
-					
-					progress++;
-				}
-				zf.close();
-			} catch (ZipException e) {
-				Log.e("Unpack", "ZIP exception", e);
-			} catch (FileNotFoundException e) {
-				Log.e("Unpack", "File not found", e);
-			} catch (IOException e) {
-				Log.e("Unpack", "IO exception", e);
-			}
+		Log.d("Unpack", "Start");
+		
+		if (sFile == null) {
+			Log.e("Unpack", "File is null!");
+			return;
 		}
+		
+		try {
+			ZipFile zf = new ZipFile(sFile);
+			Enumeration<? extends ZipEntry> e = zf.entries();
+			
+			progress = 0;
+			max = zf.size();
+			
+			runOnUiThread(() -> {
+				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+				progressBar.setMax((int) max);
+				progressBar.setProgress(0);
+			});
+			
+			while (e.hasMoreElements()) {
+				ZipEntry ze = (ZipEntry) e.nextElement();
+				
+				runOnUiThread(() -> updateUnpackProgress(progress));
+				
+				if (ze.isDirectory()) {
+					File dir = new File(destdir + "/" + ze.getName());
+					if (!dir.exists()) {
+						dir.mkdir();
+					}
+				} else {
+					InputStream in = zf.getInputStream(ze);
+					OutputStream out = new FileOutputStream(new File(destdir + "/" + ze.getName()));
+					byte[] buffer = new byte[4096];
+					int length;
+					while ((length = in.read(buffer)) > 0) {
+						out.write(buffer, 0, length);
+					}
+					out.close();
+					in.close();
+				}
+				
+				Log.d("Unpack", "Unpacking " + progress + "/" + max);
+				progress++;
+			}
+			Log.d("Unpack", "Done");
+			zf.close();
+		} catch (ZipException e) {
+			Log.e("Unpack", "ZIP exception", e);
+		} catch (FileNotFoundException e) {
+			Log.e("Unpack", "File not found", e);
+		} catch (IOException e) {
+			Log.e("Unpack", "IO exception", e);
+		} finally {
+			Log.e("Unpack", "Done (finally)");
+		}
+		
+		Log.d("Unpack", "Exit function!");
 	}
 
 }
