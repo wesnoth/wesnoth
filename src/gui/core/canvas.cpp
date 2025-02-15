@@ -412,10 +412,6 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
-	, attr_start_(cfg["attr_start"])
-	, attr_end_(cfg["attr_end"])
-	, attr_name_(cfg["attr_name"])
-	, attr_data_(cfg["attr_data"])
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
 {
@@ -444,13 +440,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	//
 	// Highlight
 	//
-	std::vector<std::string> starts = utils::split(highlight_start_, ',');
-	std::vector<std::string> stops = utils::split(highlight_end_, ',');
+	const int highlight_start = highlight_start_(variables);
+	const int highlight_end = highlight_end_(variables);
 
-	for(size_t i = 0; i < std::min(starts.size(), stops.size()); i++) {
-		typed_formula<int> hstart(starts.at(i));
-		typed_formula<int> hstop(stops.at(i));
-		add_attribute_bg_color(text_attributes, hstart(variables), hstop(variables), highlight_color_(variables));
+	if(highlight_start != highlight_end) {
+		add_attribute_bg_color(text_attributes, highlight_start, highlight_end, highlight_color_(variables));
 	}
 
 	//

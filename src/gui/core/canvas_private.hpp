@@ -285,29 +285,14 @@ private:
 	/** The maximum height for the text. */
 	typed_formula<int> maximum_height_;
 
-	/** Start and end offsets for highlight */
-	std::string highlight_start_;
-	std::string highlight_end_;
+	/** Start offset for highlight */
+	typed_formula<int> highlight_start_;
+
+	/** End offset for highlight */
+	typed_formula<int> highlight_end_;
 
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
-
-	/** Generic start and end offsets for various attributes */
-	std::string attr_start_;
-	std::string attr_end_;
-
-	/**
-	 * The attribute type
-	 * Possible values :
-	 *  color/foreground, bgcolor/background, font_size/size,
-	 *  bold, italic, underline
-	 * The first three require extra data
-	 * the color for the first two, and font size for the last
-	 */
-	std::string attr_name_;
-
-	/** extra data for the attribute, if any */
-	std::string attr_data_;
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
