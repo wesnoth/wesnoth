@@ -382,7 +382,7 @@ void title_screen::update_static_labels()
 		version_label->set_label(version_string);
 	}
 
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+	get_canvas(1).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Language menu label
