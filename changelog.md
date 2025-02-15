@@ -17,6 +17,7 @@
         * new secondary melee attack: 25-2 scimitar melee blade marksman
 ### User interface
    * A new "Customize Reach Map (Unit Movement UI)" option has been added under the advanced settings category. It provides highlight color, enemy highlight color, border opacity and tint opacity customization options for the reach map UI.
+   * The game will now default to 1920x1080 with a minimum of 1280x720
 ### WML Engine
    * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
 ### Miscellaneous and Bug Fixes
