@@ -26,6 +26,8 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -49,13 +51,16 @@ public class InitActivity extends Activity {
 	private int progress = 0;
 	private long max = 0;
 
-	private final String name = "master.zip";
-	private final String[] packages = {"master.zip", "music.zip"};
-	private final String archiveURL =
-		"https://sourceforge.net/projects/wesnoth/files/android/" + name + "/download";
+	private static HashMap<String, String> packages = new HashMap<String, String>();
+	private String archiveURL = "https://sourceforge.net/projects/wesnoth/files/android/%s/download";
 
 	private String dataDir;
 	private String archivePath;
+	
+	static {
+		packages.put("Core", "master.zip");
+		packages.put("Music", "music.zip");
+	}
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -74,26 +79,39 @@ public class InitActivity extends Activity {
 		}
 		Log.d("InitActivity", "Creating " + dataDir);
 
-		File f = new File(dataDir + "/" + name);
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
 		
 		Executors.newSingleThreadExecutor().execute(() -> {
-			// Download file
-			if (!f.exists()) {
-				Log.d("InitActivity", "Start download");
-				try {
-					downloadFile(archiveURL, dataDir + "/" + name);
-				} catch (Exception e) {
-					Log.e("Download", "security error", e);
+			//TODO record if the data files have been downloaded and unpacked successfully.
+			//Only download if 1. previous download failed, 2. new version/patch is available.
+			
+			for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
+				String uiname = entry.getKey();
+				String name = entry.getValue();
+				
+				File f = new File(dataDir + "/" + name);
+				
+				// Download file
+				if (!f.exists()) {
+					Log.d("InitActivity", "Start download " + name);
+					try {
+						downloadFile(
+							String.format(archiveURL, name),
+							dataDir + "/" + name,
+							uiname
+						);
+					} catch (Exception e) {
+						Log.e("Download", "security error", e);
+					}
 				}
+				
+				// Unpack archive
+				Log.d("InitActivity", "Start unpack " + name);
+				
+				unpackArchive(dataDir + "/" + name, dataDir, uiname);
+				f.delete();
 			}
-			
-			// Unpack archive
-			runOnUiThread(() -> progressText.setText("Unpacking assets..."));
-			Log.d("InitActivity", "Start unpack");
-			
-			unpackArchive(dataDir + "/" + name, dataDir);
 			
 			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
 			Log.d("InitActivity", "Stop unpack");
@@ -102,7 +120,12 @@ public class InitActivity extends Activity {
 			// TODO: check data existence
 			runOnUiThread(() -> progressText.setText("Launching Wesnoth..."));
 			Log.d("InitActivity", "Launch wesnoth");
-			// TODO: launch WesnothActivity
+			runOnUiThread(() -> {
+				Intent launchIntent = new Intent(this, WesnothActivity.class);
+				launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(launchIntent);
+				finish();
+			});
 		});
 	}
 
@@ -111,23 +134,25 @@ public class InitActivity extends Activity {
 		startActivity(launchIntent);
 	}
 
-	private void updateDownloadProgress(int progress) {
+	private void updateDownloadProgress(int progress, String type) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
-		progressText.setText("Downloading game data... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+		progressText.setText("Downloading " + type + " data... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
 	}
 	
-	private void updateUnpackProgress(int progress) {
+	private void updateUnpackProgress(int progress, String type) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
-		progressText.setText("Unpacking assets... (" + (progress+1) + "/" + max + ")");
+		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
 	}
 
-	private void downloadFile(String url, String destpath) {
+	private void downloadFile(String url, String destpath, String type) {
 		// based on https://stackoverflow.com/a/4896527/22060628
+		Log.d("Download", "URL: " + url);
+		
 		try {
 			URL downloadURL = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) downloadURL.openConnection();
@@ -140,14 +165,14 @@ public class InitActivity extends Activity {
 			int response = conn.getResponseCode();
 
 			if (response != HttpURLConnection.HTTP_OK) {
-				Log.d("Download", "Server returned response : " + response);
+				Log.e("Download", "Server returned response: " + response);
 				return;
 			}
 
 			DataInputStream in = new DataInputStream(conn.getInputStream());
 			OutputStream out = new FileOutputStream(new File(destpath));
 
-			byte[] buffer = new byte[4096];
+			byte[] buffer = new byte[8192];
 
 			max = conn.getContentLengthLong();
 			progress = 0;
@@ -161,7 +186,7 @@ public class InitActivity extends Activity {
 			while ((length = in.read(buffer)) > 0) {
 				progress += length;
 				out.write(buffer, 0, length);
-				runOnUiThread(() -> updateDownloadProgress(progress));
+				runOnUiThread(() -> updateDownloadProgress(progress, type));
 			}
 
 			out.close();
@@ -173,14 +198,16 @@ public class InitActivity extends Activity {
 		} catch (SecurityException se) {
 			Log.e("Download", "Security exception", se);
 		}
+		
+		Log.d("Download", "Download success from URL: " + url);
 	}
 
-	private void unpackArchive(String path, String destdir) {
+	private void unpackArchive(String path, String destdir, String type) {
 		File sFile = new File(path);
 		Log.d("Unpack", "Start");
 		
 		if (sFile == null) {
-			Log.e("Unpack", "File is null!");
+			Log.e("Unpack", "File for " + type + " is null!");
 			return;
 		}
 		
@@ -200,7 +227,7 @@ public class InitActivity extends Activity {
 			while (e.hasMoreElements()) {
 				ZipEntry ze = (ZipEntry) e.nextElement();
 				
-				runOnUiThread(() -> updateUnpackProgress(progress));
+				runOnUiThread(() -> updateUnpackProgress(progress, type));
 				
 				if (ze.isDirectory()) {
 					File dir = new File(destdir + "/" + ze.getName());
@@ -210,7 +237,7 @@ public class InitActivity extends Activity {
 				} else {
 					InputStream in = zf.getInputStream(ze);
 					OutputStream out = new FileOutputStream(new File(destdir + "/" + ze.getName()));
-					byte[] buffer = new byte[4096];
+					byte[] buffer = new byte[8192];
 					int length;
 					while ((length = in.read(buffer)) > 0) {
 						out.write(buffer, 0, length);
@@ -219,10 +246,10 @@ public class InitActivity extends Activity {
 					in.close();
 				}
 				
-				Log.d("Unpack", "Unpacking " + progress + "/" + max);
+				Log.d("Unpack", "Unpacking " + type + ":" + progress + "/" + max);
 				progress++;
 			}
-			Log.d("Unpack", "Done");
+			Log.d("Unpack", "Done unpacking " + type);
 			zf.close();
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
