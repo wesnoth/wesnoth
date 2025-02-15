@@ -11,7 +11,7 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
 ### Units
-   * Dune Paragon: 
+   * Dune Paragon:
         * Cost 78 -> 85
         * primary melee attack: description changed to scimitar, 13-4 -> 15-4, removed marksman
         * new secondary melee attack: 25-2 scimitar melee blade marksman
@@ -19,6 +19,7 @@
 ### WML Engine
    * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
 ### Miscellaneous and Bug Fixes
+   * A new "Customize Reach Map (Unit Movement UI)" option has been added under the advanced settings category. It provides highlight color, enemy highlight color, border opacity and tint opacity options for the reach map UI.
 
 ## Version 1.19.8
 ### Campaigns
