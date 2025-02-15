@@ -6,7 +6,7 @@ project(wesnoth)
 include(CheckCXXCompilerFlag)
 include(CTest)
 
-# use our own version of FindBoost.cmake and other Find* scripts
+# use our own version of Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
@@ -93,7 +93,7 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -552,7 +552,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 endif()
 
 if(ENABLE_TESTS)
-	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
+	find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS unit_test_framework)
 endif()
 
 if(ENABLE_GAME)
