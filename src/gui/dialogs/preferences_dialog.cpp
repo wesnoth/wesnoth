@@ -38,6 +38,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/title_screen.hpp"
 
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -1086,6 +1087,8 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 			gui2::dialogs::log_settings::display();
 		} else if(pref.field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
+		} else if(pref.field == "reach_map") {
+			gui2::dialogs::reachmap_options::display();
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field;
 		}

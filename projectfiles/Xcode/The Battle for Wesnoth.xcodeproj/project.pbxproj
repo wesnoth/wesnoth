@@ -20,6 +20,7 @@
 		04DC4E59AEDBC1A0AFDCA8CC /* units_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAF74C3AB8D456EA3E756396 /* units_dialog.cpp */; };
 		0554467DB5FE99D85ABCDCA0 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
 		0813449DBC67700714FA3ACD /* attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57724A59B2F7D072D91DD787 /* attributes.cpp */; };
+		08964907BF0C2F261FC984DC /* reachmap_options.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */; };
 		0DA840E1AD033775DD626F42 /* markup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D7B540678519F0EBD7C19A17 /* markup.hpp */; };
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
@@ -646,7 +647,9 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		63B0402A889C6663911DC677 /* reachmap_options.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */; };
 		6A1F44688986D07EB5DBEF75 /* gui_test_dialog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0110429EAA81AED07D53B749 /* gui_test_dialog.hpp */; };
+		6C4A4F7982769422C51DC3E6 /* reachmap_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85514A7D81C52A912FF68AEB /* reachmap_options.cpp */; };
 		6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
 		77D94146A5FA29849D1A9BD8 /* multiline_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F48CE9CF65D9813BE6CDC /* multiline_text.cpp */; };
 		7A0347D48BDB52B1430D9E79 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
@@ -1314,6 +1317,7 @@
 		E60E437B8712EC8D22CA2608 /* addon_server_info.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1E364CB2B7C9E22650753C72 /* addon_server_info.hpp */; };
 		E6CF415F9FD04C35A55FB24D /* scroll_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D4555A1DEA29125E7F338 /* scroll_text.cpp */; };
 		E79249078ACE777D1E219DED /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
+		E875402885AA34096C34E3B0 /* reachmap_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85514A7D81C52A912FF68AEB /* reachmap_options.cpp */; };
 		EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
 		EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
 		EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
@@ -1604,6 +1608,7 @@
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E364CB2B7C9E22650753C72 /* addon_server_info.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = addon_server_info.hpp; path = addon_server_info.hpp; sourceTree = "<group>"; };
 		20E644DC98F26C756364EC2C /* choose_addon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = choose_addon.cpp; sourceTree = "<group>"; };
+		231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = reachmap_options.hpp; path = reachmap_options.hpp; sourceTree = "<group>"; };
 		26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_self_validator.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
 		2AC74C76BE76F62C771A81E1 /* test_lua_ptr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_lua_ptr.cpp; sourceTree = "<group>"; };
@@ -2208,6 +2213,7 @@
 		7CF14AB694764953E2CB3AF7 /* test_schema_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_validator.cpp; sourceTree = "<group>"; };
 		7FBD4033B4B52E9424819B5F /* gui_test_dialog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gui_test_dialog.cpp; sourceTree = "<group>"; };
 		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = general.cpp; sourceTree = "<group>"; };
+		85514A7D81C52A912FF68AEB /* reachmap_options.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = reachmap_options.cpp; path = reachmap_options.cpp; sourceTree = "<group>"; };
 		875E45698F8A8D5B750E7317 /* combobox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3862,6 +3868,8 @@
 				46F92CF62174F6A300602C1C /* wml_message.hpp */,
 				CAF74C3AB8D456EA3E756396 /* units_dialog.cpp */,
 				8DAD49C8B52CC4E4FD686A60 /* units_dialog.hpp */,
+				85514A7D81C52A912FF68AEB /* reachmap_options.cpp */,
+				231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */,
 			);
 			path = dialogs;
 			sourceTree = "<group>";
@@ -5202,6 +5210,7 @@
 				00424091A60B5901585B212F /* units_dialog.hpp in Headers */,
 				48C54CF8AD9615C43EB823E7 /* addon_server_info.hpp in Headers */,
 				B14E4163984EED844169EF4F /* attributes.hpp in Headers */,
+				08964907BF0C2F261FC984DC /* reachmap_options.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5227,6 +5236,7 @@
 				96D34041A501AB7F5B7AD596 /* units_dialog.hpp in Headers */,
 				E60E437B8712EC8D22CA2608 /* addon_server_info.hpp in Headers */,
 				7C4740B081A838A09779FAAA /* attributes.hpp in Headers */,
+				63B0402A889C6663911DC677 /* reachmap_options.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5964,6 +5974,7 @@
 				04DC4E59AEDBC1A0AFDCA8CC /* units_dialog.cpp in Sources */,
 				DA2B4478B9C7AB102479C322 /* addon_server_info.cpp in Sources */,
 				0813449DBC67700714FA3ACD /* attributes.cpp in Sources */,
+				6C4A4F7982769422C51DC3E6 /* reachmap_options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6638,6 +6649,7 @@
 				52074B55B6C7AC8A1AE8BEA8 /* addon_server_info.cpp in Sources */,
 				144E49509EAC409649899BD4 /* test_lua_ptr.cpp in Sources */,
 				38C444C497ECBE2DF9BB2319 /* attributes.cpp in Sources */,
+				E875402885AA34096C34E3B0 /* reachmap_options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

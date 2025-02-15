@@ -11,6 +11,10 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
 ### Units
+   * Dune Paragon: 
+        * Cost 78 -> 85
+        * primary melee attack: description changed to scimitar, 13-4 -> 15-4, removed marksman
+        * new secondary melee attack: 25-2 scimitar melee blade marksman
 ### User interface
 ### WML Engine
    * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys

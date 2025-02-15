@@ -112,18 +112,21 @@ std::string format_cost_string(int unit_recall_cost, bool active)
 
 std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 {
-	std::stringstream str;
-
 	if(unit_recall_cost < 0) {
 		unit_recall_cost = team_recall_cost;
 	}
 
+	std::stringstream str;
+	str << markup::img("themes/gold.png");
+
 	if(unit_recall_cost > team_recall_cost) {
-		format_cost_string(unit_recall_cost, false);
-	} else if(unit_recall_cost == team_recall_cost) {
-		format_cost_string(unit_recall_cost, true);
+		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::img("themes/gold.png") << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+		str << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+	} else {
+		// Default: show cost in white font color.
+		// Should handle the unit cost = team cost case.
+		str << unit_recall_cost;
 	}
 
 	return str.str();
@@ -148,9 +151,11 @@ std::string format_level_string(const int level, bool recallable)
 	}
 }
 
-std::string format_movement_string(const int moves_left, const int moves_max)
+std::string format_movement_string(const int moves_left, const int moves_max, bool active)
 {
-	if(moves_left == 0) {
+	if (!active) {
+		return markup::span_color(font::GRAY_COLOR, moves_left, "/", moves_max);
+	} else if(moves_left == 0) {
 		return markup::span_color(font::BAD_COLOR, moves_left, "/", moves_max);
 	} else if(moves_left > moves_max) {
 		return markup::span_color(font::YELLOW_COLOR, moves_left, "/", moves_max);
@@ -162,11 +167,11 @@ std::string format_movement_string(const int moves_left, const int moves_max)
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
-utils::optional<std::string> recruit_message(
+t_string recruit_message(
 	const std::string& type_id,
-	const map_location& target_hex,
-	const map_location& recruited_from,
-	const team& current_team)
+	map_location& target_hex,
+	map_location& recruited_from,
+	team& current_team)
 {
 	const unit_type* u_type = unit_types.find(type_id);
 	if(u_type == nullptr) {
@@ -180,7 +185,7 @@ utils::optional<std::string> recruit_message(
 				utils::string_map{{ "unit_type_name", u_type->type_name() }});
 	}
 
-	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
+	// TODO take a wb::future_map RAII as units_dialog does
 	int wb_gold = 0;
 	{
 		wb::future_map future;
@@ -202,8 +207,7 @@ utils::optional<std::string> recruit_message(
 
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		std::string msg = actions::find_recruit_location(
-			current_team.side(), const_cast<map_location&>(target_hex), const_cast<map_location&>(recruited_from), type_id);
+		std::string msg = actions::find_recruit_location(current_team.side(), target_hex, recruited_from, type_id);
 		if(!msg.empty()) {
 			return msg;
 		}
