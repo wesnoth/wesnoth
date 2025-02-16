@@ -17,6 +17,7 @@ package org.wesnoth.Wesnoth;
 
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -26,8 +27,9 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.util.Enumeration;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -83,17 +85,30 @@ public class InitActivity extends Activity {
 		progressText.setText("Connecting...");
 		
 		Executors.newSingleThreadExecutor().execute(() -> {
-			//TODO record if the data files have been downloaded and unpacked successfully.
-			//Only download if 1. previous download failed, 2. new version/patch is available.
+			//TODO Update mechanism when patch is available.
+			
+			Properties status = new Properties();
+			File statusFile = new File(dataDir + "/" + "status.properties");
+			try {
+				if (statusFile.exists()) {
+					status.load(new FileInputStream(statusFile));
+				} else {
+					statusFile.createNewFile();
+				}
+			} catch (IOException ioe) {
+				Log.e("InitActivity", "IO exception", ioe);
+			}
 			
 			for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
 				String uiname = entry.getKey();
 				String name = entry.getValue();
 				
 				File f = new File(dataDir + "/" + name);
+				boolean isDownloaded =
+					(status.getProperty("download." + name, "false").equalsIgnoreCase("true"));
 				
 				// Download file
-				if (!f.exists()) {
+				if (!f.exists() && !isDownloaded) {
 					Log.d("InitActivity", "Start download " + name);
 					try {
 						downloadFile(
@@ -101,19 +116,34 @@ public class InitActivity extends Activity {
 							dataDir + "/" + name,
 							uiname
 						);
+						status.setProperty("download." + name, "true");
 					} catch (Exception e) {
 						Log.e("Download", "security error", e);
 					}
 				}
 				
 				// Unpack archive
-				Log.d("InitActivity", "Start unpack " + name);
-				
-				unpackArchive(dataDir + "/" + name, dataDir, uiname);
-				f.delete();
+				// TODO Checksum verification?
+				if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
+					Log.d("InitActivity", "Start unpack " + name);
+					
+					unpackArchive(dataDir + "/" + name, dataDir, uiname);
+					f.delete();
+					
+					// If we've unpacked the file, that means we've downloaded it
+					// Either via this Activity or manually. No need to redownload.
+					status.setProperty("download." + name, "true");
+					status.setProperty("unpack." + name, "true");
+				}
 			}
 			
 			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
+			try {
+				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
+			} catch (IOException ioe) {
+				Log.e("InitActivity", "IO exception", ioe);
+			}
+			
 			Log.d("InitActivity", "Stop unpack");
 			
 			// Launch Wesnoth
