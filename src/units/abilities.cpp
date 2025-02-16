@@ -2334,8 +2334,8 @@ bool attack_type::special_active_impl(
 	//if filter_self != "filter_self" then it's in [abilities] tags and
 	//[filter_student_adjacent] and [filter_student_adjacent] then designate 'the student' (which may be different from the owner of the ability),
 	//while in the tags[specials] the usual names are kept.
-	const std::string& filter_adjacent = in_abilities_tag ? "filter_student_adjacent" : "filter_adjacent";
-	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_student_adjacent_location" : "filter_adjacent_location";
+	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
+	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
 
