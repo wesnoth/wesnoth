@@ -43,6 +43,7 @@ jobs:
 
       - name: Build Wesnoth and create APKs and AAB
         env:
+          API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleDebug bundleDebug;
 
