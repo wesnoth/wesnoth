@@ -116,7 +116,7 @@ void play_controller::hotkey_handler::left_mouse_click(){
 	event.x = x + 30;
 	event.y = y + 30;
 	event.which = 0;
-	event.state = SDL_PRESSED;
+	event.down = true;
 
 	mouse_handler_.mouse_press(event, false);
 }
@@ -149,7 +149,7 @@ void play_controller::hotkey_handler::right_mouse_click(){
 	event.x = x + 30;
 	event.y = y + 30;
 	event.which = 0;
-	event.state = SDL_PRESSED;
+	event.down = true;
 
 	mouse_handler_.mouse_press(event, true);
 }

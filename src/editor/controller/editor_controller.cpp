@@ -1078,7 +1078,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		// Side specific ones
 		case HOTKEY_EDITOR_SIDE_NEW:
 			if(get_current_map_context().teams().size() >= 9) {
-				size_t new_side_num = get_current_map_context().teams().size() + 1;
+				std::size_t new_side_num = get_current_map_context().teams().size() + 1;
 				toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
 			}
 			get_current_map_context().new_side();
@@ -1448,10 +1448,10 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		// last_undo is a non-owning pointer. Although it could have other uses, it seems to be
 		// mainly (only?) used for printing debugging information.
 		auto last_undo = get_current_map_context().last_undo_action();
-		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(1)) != 0) {
+		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON_MASK(1)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
-		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(3)) != 0) {
+		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON_MASK(3)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}

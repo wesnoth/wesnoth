@@ -849,22 +849,22 @@ bool play_controller::have_keyboard_focus()
 
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
+	if(event.key.key == SDLK_ESCAPE) {
 		menu_handler_.get_textbox().close();
-	} else if(event.key.keysym.sym == SDLK_TAB) {
+	} else if(event.key.key == SDLK_TAB) {
 		tab();
-	} else if(event.key.keysym.sym == SDLK_UP) {
+	} else if(event.key.key == SDLK_UP) {
 		textbox_move_vertically(true);
-	} else if(event.key.keysym.sym == SDLK_DOWN) {
+	} else if(event.key.key == SDLK_DOWN) {
 		textbox_move_vertically(false);
-	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
+	} else if(event.key.key == SDLK_RETURN || event.key.key == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_TAB) {
+	if(event.key.key == SDLK_TAB) {
 		whiteboard_manager_->set_invert_behavior(true);
 	}
 }
@@ -873,8 +873,8 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 {
 	// If the user has pressed 1 through 9, we want to show
 	// how far the unit can move in that many turns
-	if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') {
-		const int new_path_turns = (event.type == SDL_KEYDOWN) ? event.key.keysym.sym - '1' : 0;
+	if(event.key.key >= '1' && event.key.key <= '9') {
+		const int new_path_turns = (event.type == SDL_EVENT_KEY_DOWN) ? event.key.key - '1' : 0;
 
 		if(new_path_turns != mouse_handler_.get_path_turns()) {
 			mouse_handler_.set_path_turns(new_path_turns);
@@ -893,7 +893,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 				mouse_handler_.select_hex(mouse_handler_.get_selected_hex(), false, false, false);
 			}
 		}
-	} else if(event.key.keysym.sym == SDLK_TAB) {
+	} else if(event.key.key == SDLK_TAB) {
 		CKey keys;
 		if(!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);

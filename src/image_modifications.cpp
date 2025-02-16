@@ -523,7 +523,7 @@ void bl_modification::operator()(surface& src) const
 void background_modification::operator()(surface& src) const
 {
 	surface ret = src.clone();
-	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g, color_.b, color_.a));
+	SDL_FillSurfaceRect(ret, nullptr, SDL_MapSurfaceRGBA(ret, color_.r, color_.g, color_.b, color_.a));
 	sdl_blit(src, nullptr, ret, nullptr);
 	src = ret;
 }
@@ -1087,8 +1087,12 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
-	return std::make_unique<xbrz_modification>(factor);
+	int z = utils::from_chars<int>(args).value_or(0);
+	if(z < 1 || z > 5) {
+		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
+	}
+
+	return std::make_unique<xbrz_modification>(z);
 }
 
 // Gaussian-like blur

@@ -19,9 +19,10 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
+using namespace std::literals::chrono_literals;
+
 namespace soundsource {
 
-using namespace std::chrono_literals;
 const unsigned DEFAULT_CHANCE           = 100;
 const auto DEFAULT_DELAY                = 1000ms;
 
