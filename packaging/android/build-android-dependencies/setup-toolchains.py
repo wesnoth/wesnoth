@@ -4,8 +4,8 @@ from subprocess import run
 from pathlib import Path
 from os import environ
 
-api = environ.get("API", 29)
-sdk = Path(environ.get("ANDROID_SDK_ROOT", environ.get("ANDROID_SDK", "/opt/android-sdk-update-manager")))
+api = environ.get("API", 35)
+sdk = Path(environ.get("ANDROID_HOME", environ.get("ANDROID_SDK", "/opt/android-sdk-update-manager")))
 ndk = Path(environ.get("ANDROID_NDK_ROOT", environ.get("ANDROID_NDK_HOME", sdk / "ndk/23.1.7779620")))
 
 abis = json.load(open(ndk / "meta/abis.json"))
@@ -83,5 +83,6 @@ using clang : android
 : {ndk}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
 : <compileflags>"--target={triple}{api}" <linkflags>"--target={triple}{api}"
 <compileflags>-I{prefix}/include <linkflags>-L{prefix}/lib
+<compileflags>-DBOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS
 ;
 """)
