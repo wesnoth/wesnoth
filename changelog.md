@@ -1,6 +1,4 @@
-## Version 1.18.3+dev
-### Add-ons client
-### Add-ons server
+## Version 1.18.4
 ### Campaigns
    * Eastern Invasion
      * S04c: achievement now only triggers when escaping with all knights alive
@@ -10,13 +8,8 @@
      * S99: prisoners now escape if their jailers are killed
 ### Editor
    * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
 ### Translations
   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Dutch, Finnish, German, Hungarian, Italian, Norwegian, Spanish, Turkish
-### Units
 ### User interface
    * Switched default Pango/Cairo backend from CoreText to Fontconfig on macOS to fix issues with certain fonts such as Oldania ADF Std being unrecognized on current OS versions (issue #8488).
    * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
