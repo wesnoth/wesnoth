@@ -27,7 +27,7 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.util.Enumeration;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
@@ -53,15 +53,17 @@ public class InitActivity extends Activity {
 	private int progress = 0;
 	private long max = 0;
 
-	private static HashMap<String, String> packages = new HashMap<String, String>();
-	private String archiveURL = "https://sourceforge.net/projects/wesnoth/files/android/%s/download";
+	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
+	private final String archiveURL =
+		"https://sourceforge.net/projects/wesnoth/files/android/%s/download";
 
 	private String dataDir;
 	private String archivePath;
 	
 	static {
-		packages.put("Core", "master.zip");
+		packages.put("Core Data", "master.zip");
 		packages.put("Music", "music.zip");
+		packages.put("Patch", "patch.zip");
 	}
 
 	private String toSizeString(long bytes) {
@@ -104,19 +106,19 @@ public class InitActivity extends Activity {
 				String name = entry.getValue();
 				
 				File f = new File(dataDir + "/" + name);
-				boolean isDownloaded =
-					(status.getProperty("download." + name, "false").equalsIgnoreCase("true"));
+				long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
 				
 				// Download file
-				if (!f.exists() && !isDownloaded) {
+				if (!f.exists()) {
 					Log.d("InitActivity", "Start download " + name);
 					try {
-						downloadFile(
+						lastModified = downloadFile(
 							String.format(archiveURL, name),
 							dataDir + "/" + name,
-							uiname
+							uiname,
+							lastModified
 						);
-						status.setProperty("download." + name, "true");
+						status.setProperty("modified." + name, "" + lastModified);
 					} catch (Exception e) {
 						Log.e("Download", "security error", e);
 					}
@@ -124,15 +126,14 @@ public class InitActivity extends Activity {
 				
 				// Unpack archive
 				// TODO Checksum verification?
-				if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
+				if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")
+					&& f.exists())
+				{
 					Log.d("InitActivity", "Start unpack " + name);
 					
 					unpackArchive(dataDir + "/" + name, dataDir, uiname);
 					f.delete();
 					
-					// If we've unpacked the file, that means we've downloaded it
-					// Either via this Activity or manually. No need to redownload.
-					status.setProperty("download." + name, "true");
 					status.setProperty("unpack." + name, "true");
 				}
 			}
@@ -168,7 +169,7 @@ public class InitActivity extends Activity {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
-		progressText.setText("Downloading " + type + " data... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+		progressText.setText("Downloading " + type + " ... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
 	}
 	
 	private void updateUnpackProgress(int progress, String type) {
@@ -179,7 +180,8 @@ public class InitActivity extends Activity {
 		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
 	}
 
-	private void downloadFile(String url, String destpath, String type) {
+	private long downloadFile(String url, String destpath, String type, long modified) {
+		long newModified = 0;
 		// based on https://stackoverflow.com/a/4896527/22060628
 		Log.d("Download", "URL: " + url);
 		
@@ -190,22 +192,27 @@ public class InitActivity extends Activity {
 			conn.setRequestProperty("User-Agent", "Wget/1.13.4 (linux-gnu)");
 			conn.setRequestMethod("GET");
 			conn.setConnectTimeout(10000); // 10 seconds
-			conn.setReadTimeout(10000); // 10 seconds
+			conn.setReadTimeout(10000);    // 10 seconds
 
 			int response = conn.getResponseCode();
 
 			if (response != HttpURLConnection.HTTP_OK) {
 				Log.e("Download", "Server returned response: " + response);
-				return;
+				return newModified;
+			}
+			
+			max = conn.getContentLengthLong();
+			progress = 0;
+			newModified = conn.getLastModified();
+			// File did not change on server, don't download.
+			if (newModified == modified) {
+				return newModified;
 			}
 
 			DataInputStream in = new DataInputStream(conn.getInputStream());
 			OutputStream out = new FileOutputStream(new File(destpath));
 
 			byte[] buffer = new byte[8192];
-
-			max = conn.getContentLengthLong();
-			progress = 0;
 
 			runOnUiThread(() -> {
 				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
@@ -230,6 +237,7 @@ public class InitActivity extends Activity {
 		}
 		
 		Log.d("Download", "Download success from URL: " + url);
+		return newModified;
 	}
 
 	private void unpackArchive(String path, String destdir, String type) {
