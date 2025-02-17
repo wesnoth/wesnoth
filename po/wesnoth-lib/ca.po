@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-02-17 15:53-0600\n"
 "PO-Revision-Date: 2021-01-16 19:31+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -2434,11 +2434,13 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=reachmap_defaults
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:474
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
 msgstr "Per defecte"
@@ -2459,54 +2461,89 @@ msgstr "Jugadors:"
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Premeu '$hotkey' per a més informació)"
 
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:157
-msgid "Hide"
-msgstr ""
-
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Hide tip of the day"
-msgstr "Mostra el consell del dia següent"
-
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:171
+#: data/gui/themes/celes/dialogs/title_screen.cfg:165
 #: data/gui/themes/default/dialogs/chat_log.cfg:105
 #: data/gui/themes/default/dialogs/title_screen.cfg:194
 msgid "Previous"
 msgstr "Anterior"
 
 #. [button]: id=previous_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:172
+#: data/gui/themes/celes/dialogs/title_screen.cfg:166
 #: data/gui/themes/default/dialogs/title_screen.cfg:195
 msgid "Show previous tip of the day"
 msgstr "Mostra el consell del dia anterior"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:186
+#: data/gui/themes/celes/dialogs/title_screen.cfg:179
 #: data/gui/themes/default/dialogs/chat_log.cfg:114
 #: data/gui/themes/default/dialogs/title_screen.cfg:209
 msgid "Next"
 msgstr "Següent"
 
 #. [button]: id=next_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:187
+#: data/gui/themes/celes/dialogs/title_screen.cfg:180
 #: data/gui/themes/default/dialogs/title_screen.cfg:210
 msgid "Show next tip of the day"
 msgstr "Mostra el consell del dia següent"
 
+#. [button]: id=toggle_tip_panel
+#: data/gui/themes/celes/dialogs/title_screen.cfg:215
+#, fuzzy
+#| msgid "Next Tip of the Day"
+msgid "Tip of the Day"
+msgstr "Consell del dia següent"
+
+#. [button]: id=toggle_tip_panel
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/celes/dialogs/title_screen.cfg:216
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#, fuzzy
+#| msgid "Show next tip of the day"
+msgid "Show tip of the day"
+msgstr "Mostra el consell del dia següent"
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:229
+#: data/gui/themes/default/dialogs/title_screen.cfg:472
+msgid "About"
+msgstr ""
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:230
+#: data/gui/themes/default/dialogs/title_screen.cfg:473
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "General information about Battle for Wesnoth"
+msgstr "La batalla per Wesnoth"
+
+#. [button]: id=language
+#. [label]
+#. [label]: id=translations_language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/default/dialogs/addon_manager.cfg:870
+#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
+#: data/gui/themes/default/dialogs/language_selection.cfg:227
+#: data/gui/themes/default/dialogs/title_screen.cfg:494
+msgid "Language"
+msgstr "Idioma"
+
+#. [button]: id=language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/default/dialogs/title_screen.cfg:495
+msgid "Change the language"
+msgstr "Canvia l'idioma"
+
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Campaigns"
 msgstr "Campanyes"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Start a new single player campaign"
 msgstr "Comenceu una campanya nova d'un jugador"
@@ -2515,7 +2552,7 @@ msgstr "Comenceu una campanya nova d'un jugador"
 #. [grid]
 #. [label]
 #. [widget]: id=label
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
@@ -2524,7 +2561,7 @@ msgid "Multiplayer"
 msgstr "Multijugador"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
@@ -2536,7 +2573,7 @@ msgstr ""
 #. [grid]
 #. [button]: id=load_movetype
 #. [button]: id=ok
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
 #: data/gui/themes/default/dialogs/game_load.cfg:639
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
@@ -2544,19 +2581,19 @@ msgid "Load"
 msgstr "Carrega"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load a saved game"
 msgstr "Carregueu una partida desada"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Add-ons"
 msgstr "Complements"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Descarregueu campanyes, eres o paquets de mapes fets pels usuaris"
@@ -2564,8 +2601,8 @@ msgstr "Descarregueu campanyes, eres o paquets de mapes fets pels usuaris"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:79
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
 #, fuzzy
@@ -2574,7 +2611,7 @@ msgid "Achievements"
 msgstr "Pujades de nivell"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #, fuzzy
 #| msgid "View: Each Team"
@@ -2582,27 +2619,27 @@ msgid "View achievements"
 msgstr "Vista: cada equip"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Map Editor"
 msgstr "Editor de mapes"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Start the map editor"
 msgstr "Inicieu l'editor de mapes"
 
 #. [grid]
 #. [tab]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/game_version.cfg:904
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 #, fuzzy
 #| msgid "The Battle for Wesnoth"
@@ -2610,7 +2647,7 @@ msgid "Places to talk about Wesnoth"
 msgstr "La batalla per Wesnoth"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 msgid "Configure the game’s settings"
 msgstr "Configureu els paràmetres del joc"
@@ -2619,7 +2656,7 @@ msgstr "Configureu els paràmetres del joc"
 #. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
 #: data/gui/themes/default/dialogs/lobby_main.cfg:772
 #: data/gui/themes/default/dialogs/preferences.cfg:213
@@ -2631,14 +2668,14 @@ msgstr "Preferències"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [button]: id=help
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #: data/gui/themes/default/dialogs/title_screen.cfg:178
 #: src/hotkey/hotkey_command.cpp:291
 msgid "Help"
 msgstr "Ajuda"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #, fuzzy
 #| msgid "Quit the game"
 msgid "Visit the in-game help"
@@ -2647,7 +2684,7 @@ msgstr "Sortiu del joc"
 #. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/formula_debugger.cfg:234
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
@@ -2655,41 +2692,10 @@ msgid "Quit"
 msgstr "Surt"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit the game"
 msgstr "Sortiu del joc"
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:461
-#: data/gui/themes/default/dialogs/title_screen.cfg:472
-msgid "About"
-msgstr ""
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:462
-#: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
-msgid "General information about Battle for Wesnoth"
-msgstr "La batalla per Wesnoth"
-
-#. [button]: id=language
-#. [label]
-#. [label]: id=translations_language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:475
-#: data/gui/themes/default/dialogs/addon_manager.cfg:870
-#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
-#: data/gui/themes/default/dialogs/language_selection.cfg:227
-#: data/gui/themes/default/dialogs/title_screen.cfg:494
-msgid "Language"
-msgstr "Idioma"
-
-#. [button]: id=language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:476
-#: data/gui/themes/default/dialogs/title_screen.cfg:495
-msgid "Change the language"
-msgstr "Canvia l'idioma"
 
 #. [draw]
 #: data/gui/themes/celes/widgets/button_success.cfg:196
@@ -2714,7 +2720,7 @@ msgstr ""
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/themes/celes/widgets/window_default.cfg:106
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:306
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
@@ -2795,6 +2801,7 @@ msgstr "Desa la contrasenya localment (encriptada)"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
 #: data/gui/themes/default/dialogs/mp_report.cfg:235
 #: data/gui/themes/default/dialogs/prompt.cfg:86
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:171
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:181
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:145
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:105
@@ -2804,7 +2811,7 @@ msgstr "Desa la contrasenya localment (encriptada)"
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
 #: data/gui/themes/default/dialogs/wml_message.cfg:444
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
-#: src/gui/dialogs/units_dialog.cpp:71
+#: src/gui/dialogs/units_dialog.cpp:70
 msgid "OK"
 msgstr "D'acord"
 
@@ -2854,6 +2861,7 @@ msgstr "D'acord"
 #: data/gui/themes/default/dialogs/mp_report.cfg:249
 #: data/gui/themes/default/dialogs/mp_staging.cfg:450
 #: data/gui/themes/default/dialogs/network_transmission.cfg:111
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:182
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:192
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:158
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:117
@@ -2862,7 +2870,7 @@ msgstr "D'acord"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
 #: data/gui/themes/default/dialogs/units_dialog.cfg:575
-#: src/gui/dialogs/units_dialog.cpp:72 src/hotkey/hotkey_command.cpp:79
+#: src/gui/dialogs/units_dialog.cpp:71 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -2961,7 +2969,7 @@ msgstr "date^Actualitzat:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:582
 msgid "No description available."
 msgstr "No hi ha cap descripció disponible."
 
@@ -3475,7 +3483,7 @@ msgstr "Carrega un nucli"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1306
+#: src/preferences/preferences.cpp:1347
 msgid "Select"
 msgstr "Selecciona"
 
@@ -3549,7 +3557,7 @@ msgstr "Edita l'horari"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:219
+#: src/gui/dialogs/units_dialog.cpp:225
 msgid "Name:"
 msgstr "Nom:"
 
@@ -4399,7 +4407,7 @@ msgstr "Alçada:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:426
+#: src/gui/dialogs/units_dialog.cpp:432
 msgid "Create"
 msgstr "Crea"
 
@@ -4697,7 +4705,7 @@ msgstr "Equip"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:440
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Gold"
 msgstr "Or"
 
@@ -4725,7 +4733,7 @@ msgstr "Manteniment"
 #: data/gui/themes/default/dialogs/game_stats.cfg:118
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:281
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:294
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:446
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:447
 msgid "Income"
 msgstr "Ingressos"
 
@@ -4794,7 +4802,7 @@ msgstr "Paràmetres de l'escenari"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:496
+#: src/gui/dialogs/units_dialog.cpp:516
 msgid "Scroll To"
 msgstr "Desplaça-ho a"
 
@@ -6393,7 +6401,7 @@ msgstr "Drecera"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:908
 msgid "game_hotkeys^G"
 msgstr "game_hotkeys^G"
 
@@ -6406,7 +6414,7 @@ msgstr "Disponible durant una partida"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:909
 msgid "editor_hotkeys^E"
 msgstr "editor_hotkeys^E"
 
@@ -6419,7 +6427,7 @@ msgstr "Disponible a l'editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:910
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -6526,13 +6534,6 @@ msgstr ""
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Aplica"
-
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Show tip of the day"
-msgstr "Mostra el consell del dia següent"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
@@ -6827,6 +6828,33 @@ msgstr "Suprimeix aquest usuari de la llista"
 #| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
 msgstr "No heu fet amistat ni ignorat cap altre jugador."
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:101
+#, fuzzy
+#| msgid "Random map options: "
+msgid "Reach Map Options"
+msgstr "Opcions de mapa personalitzat: "
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+msgid "Highlight Color"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+msgid "Enemy Highlight Color"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+msgid "Border Opacity:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:144
+msgid "Tint Opacity:"
+msgstr ""
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -7146,7 +7174,7 @@ msgstr "Canvia el nom"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Error"
@@ -7298,7 +7326,7 @@ msgstr "disjunct mid^$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "disjunct end^$prefix or $last"
 
-#: src/gui/core/canvas.cpp:263
+#: src/gui/core/canvas.cpp:264
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7350,7 +7378,7 @@ msgstr "El servidor ha respost amb un error:"
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
 #: src/gui/dialogs/addon/manager.cpp:1018
 #: src/gui/dialogs/addon/manager.cpp:1045
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Resposta"
 
@@ -8463,7 +8491,7 @@ msgstr "No s'han trobat eres."
 msgid "No eras found"
 msgstr "No s'han trobat eres"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:528
 msgid "No eras available for this game."
 msgstr "No hi ha eres disponibles per a aquesta partida."
 
@@ -8471,12 +8499,12 @@ msgstr "No hi ha eres disponibles per a aquesta partida."
 msgid "number of players^$min to $max"
 msgstr "number of players^de $min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:845
 msgid "The selected game has no sides!"
 msgstr "La partida seleccionada no té cap bàndol!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:852
 #, fuzzy
 #| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
@@ -8490,27 +8518,27 @@ msgstr "Trieu l'escenari inicial"
 msgid "Select at which point to begin this campaign."
 msgstr "Seleccioneu en quin punt voleu començar la campanya."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Empty slot"
 msgstr "Plaça buida"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Reserved for $playername"
 msgstr "Reservada per a $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Vacant slot"
 msgstr "Plaça lliure"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:231
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:232
 msgid "empty"
 msgstr "buit"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:107
 msgid "this game"
 msgstr "aquesta partida"
@@ -8539,33 +8567,33 @@ msgstr "S'està esperant que els jugadors escullin les faccions..."
 msgid "The End"
 msgstr "Fi"
 
-#: src/gui/dialogs/preferences_dialog.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:199
 msgid "friend"
 msgstr "amic"
 
-#: src/gui/dialogs/preferences_dialog.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:204
 msgid "ignored"
 msgstr "ignorat"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:257
+#: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "No username specified"
 msgstr "No s'ha especificat cap nom d'usuari"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:272
 msgid "Invalid username"
 msgstr "El nom de l'usuari no és vàlid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:319
 msgid "Not on friends or ignore lists"
 msgstr "No és a les llistes d'amics ni d'ignorats"
 
-#: src/gui/dialogs/preferences_dialog.cpp:953
-#: src/gui/dialogs/preferences_dialog.cpp:1017
+#: src/gui/dialogs/preferences_dialog.cpp:954
+#: src/gui/dialogs/preferences_dialog.cpp:1018
 msgid "No hotkey selected"
 msgstr "No s'ha seleccionat cap drecera de teclat"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8573,16 +8601,16 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» està en ús per «<b>$old_hotkey_action|</b>».\n"
 "Voleu reassignar-la a «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:988
 msgid "Reassign Hotkey"
 msgstr "Reassigna la drecera"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "S'han restablert els valors per defecte de totes les dreceres de teclat."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "Hotkeys Reset"
 msgstr "Restabliment de dreceres"
 
@@ -8663,77 +8691,77 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/gui/dialogs/title_screen.cpp:398
+#: src/gui/dialogs/title_screen.cpp:379
 msgid "Version $version"
 msgstr "Versió $version"
 
-#: src/gui/dialogs/title_screen.cpp:491 src/hotkey/hotkey_command.cpp:310
+#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:310
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
 msgstr "Trieu l'escenari inicial"
 
-#: src/gui/dialogs/units_dialog.cpp:219 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:225 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Renomena la unitat"
 
-#: src/gui/dialogs/units_dialog.cpp:252
+#: src/gui/dialogs/units_dialog.cpp:253
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Aquesta unitat és lleial i no requereix cap manteniment."
 
-#: src/gui/dialogs/units_dialog.cpp:253 src/gui/dialogs/units_dialog.cpp:258
-#: src/gui/dialogs/units_dialog.cpp:263
+#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
+#: src/gui/dialogs/units_dialog.cpp:264
 msgid "Do you really want to dismiss him?"
 msgstr "Segur que voleu descartar-lo?"
 
-#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
-#: src/gui/dialogs/units_dialog.cpp:264
+#: src/gui/dialogs/units_dialog.cpp:255 src/gui/dialogs/units_dialog.cpp:260
+#: src/gui/dialogs/units_dialog.cpp:265
 msgid "Do you really want to dismiss her?"
 msgstr "Segur que voleu descartar-la?"
 
-#: src/gui/dialogs/units_dialog.cpp:257
+#: src/gui/dialogs/units_dialog.cpp:258
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Aquesta és una unitat experimentada que ha pujat algun nivell."
 
-#: src/gui/dialogs/units_dialog.cpp:262
+#: src/gui/dialogs/units_dialog.cpp:263
 msgid "This unit is close to advancing a level."
 msgstr "Aquesta unitat és a prop de pujar de nivell."
 
-#: src/gui/dialogs/units_dialog.cpp:268
+#: src/gui/dialogs/units_dialog.cpp:269
 msgid "Dismiss Unit"
 msgstr "Descarta la unitat"
 
-#: src/gui/dialogs/units_dialog.cpp:389
+#: src/gui/dialogs/units_dialog.cpp:395
 msgid "unit_variation^Default Variation"
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:425
+#: src/gui/dialogs/units_dialog.cpp:431
 #, fuzzy
 #| msgid "Delete Unit"
 msgid "Create Unit"
 msgstr "Elimina la unitat"
 
-#: src/gui/dialogs/units_dialog.cpp:482
+#: src/gui/dialogs/units_dialog.cpp:497
 msgid "Recruit Unit"
 msgstr "Recluta una unitat"
 
-#: src/gui/dialogs/units_dialog.cpp:483 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:498 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Recluta"
 
-#: src/gui/dialogs/units_dialog.cpp:495 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:515 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Llista d'unitats"
 
-#: src/gui/dialogs/units_dialog.cpp:611
+#: src/gui/dialogs/units_dialog.cpp:652
 msgid "Recall Unit"
 msgstr "Reincorpora una unitat"
 
-#: src/gui/dialogs/units_dialog.cpp:612 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:653 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Reincorpora"
 
-#: src/gui/dialogs/units_dialog.cpp:720
+#: src/gui/dialogs/units_dialog.cpp:769
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8741,7 +8769,7 @@ msgstr ""
 "Aquesta unitat no es pot reincorporar perquè no tindreu prou or en aquest "
 "moment de la vostra planificació."
 
-#: src/gui/dialogs/units_dialog.cpp:722
+#: src/gui/dialogs/units_dialog.cpp:771
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Aquesta unitat no es pot reincorporar perquè no teniu prou or."
 
@@ -8860,7 +8888,7 @@ msgstr[1] "$excess altres"
 msgid "multimenu^None Selected"
 msgstr "multimenu^Cap seleccionat"
 
-#: src/gui/widgets/pane.cpp:359
+#: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
 msgstr "Cal almenys un element paral·lel."
 
@@ -8970,7 +8998,7 @@ msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Fer clic a descarta necessita un botó «clic_dismiss» o «ok»."
 
 #: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:738
+#: src/tests/gui/test_gui2.cpp:743
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9863,12 +9891,12 @@ msgstr "Mostra la consola Lua"
 msgid "Unrecognized Command"
 msgstr "Ordre no reconeguda"
 
-#: src/preferences/preferences.cpp:1263
+#: src/preferences/preferences.cpp:1304
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "No hi ha temes disponibles. Intenteu canviar-lo des d'una partida començada."
 
-#: src/preferences/preferences.cpp:1300
+#: src/preferences/preferences.cpp:1341
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9879,15 +9907,15 @@ msgstr ""
 "xarxa local. Normalment es trobarà a la mateixa carpeta que l'executable del "
 "joc."
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1345
 msgid "Find Server Application"
 msgstr "Cerca una aplicació de servidor"
 
-#: src/preferences/preferences.cpp:1759
+#: src/preferences/preferences.cpp:1800
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1761
+#: src/preferences/preferences.cpp:1802
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9928,6 +9956,11 @@ msgstr ""
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr ""
 "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
+
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Hide tip of the day"
+#~ msgstr "Mostra el consell del dia següent"
 
 #~ msgid "Race"
 #~ msgstr "Raça"
