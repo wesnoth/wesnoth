@@ -2,6 +2,13 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Delfador’s Memoirs
+     * Campaign removed! Replaced with “The Deceiver’s Gambit”
+   * The Deceiver’s Gambit
+     * New campaign, replacing “Delfador’s Memoirs”!
+     * _Yearning for adventure, a newly-trained apprentice from the magic academy at Alduin fights alongside Wesnoth’s king during a major war against the orcs of the north.  Play a pivotal role during this time of turmoil, as despite a string of battlefield victories Wesnoth seems to be slipping inexorably into chaos..._
+   * The Hammer of Thursagan
+     * Revised maps for Scenarios 1, 3, 4, 5 and 7
 ### Editor
 ### Multiplayer
 ### Lua API
@@ -10,6 +17,7 @@
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
+   * For translation statistics, wesnoth-tsg is now part of core, and wesnoth-tutorial isn't
 ### Units
    * Dune Paragon:
         * Cost 78 -> 85
@@ -20,7 +28,9 @@
    * The game will now default to 1920x1080 with a minimum of 1280x720
 ### WML Engine
    * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
+   * [fire_event][data] content is available in the fired event as $data
 ### Miscellaneous and Bug Fixes
+   * Various fixes for the unit recruit/recall dialog
 
 ## Version 1.19.8
 ### Campaigns
