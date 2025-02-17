@@ -12,11 +12,11 @@
 	See the COPYING file for more details.
 */
 
-#include "font/standard_colors.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/units_dialog.hpp"
 
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
@@ -178,7 +178,6 @@ void units_dialog::show_list(listbox& list)
 	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
 		widget_item column;
-		formatter filter_fmt;
 		// generate tooltip for ith row
 		if (tooltip_gen_) {
 			column["tooltip"] = tooltip_gen_(i);
@@ -189,18 +188,19 @@ void units_dialog::show_list(listbox& list)
 			filter_options_.push_back(filter_gen_(i));
 		}
 
+		std::vector<std::string> filter_keys;
 		for (const auto& [id, gen] : column_generators_) {
 			column["use_markup"] = "true";
 			// generate label for ith row and column with 'id'
 			column["label"] = gen(i);
 			if (!filter_gen_ && id != "unit_image") {
-				filter_fmt << column["label"];
+				filter_keys.emplace_back(column["label"]);
 			}
 			row_data.emplace(id, column);
 		}
 
 		if (!filter_gen_) {
-			filter_options_.push_back(filter_fmt.str());
+			filter_options_.push_back(filter_keys);
 		}
 		list.add_row(row_data);
 	}
@@ -228,12 +228,7 @@ void units_dialog::rename_unit(std::vector<unit_const_ptr>& unit_list)
 		list.get_row_grid(selected_index_)->find_widget<label>("unit_name").set_label(name);
 
 		filter_options_.erase(filter_options_.begin() + selected_index_);
-		std::ostringstream filter_text;
-		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
-		for(const std::string& trait : selected_unit.trait_names()) {
-			filter_text << " " << trait;
-		}
-		filter_options_.insert(filter_options_.begin() + selected_index_, filter_text.str());
+		filter_options_.insert(filter_options_.begin() + selected_index_, filter_gen_(selected_index_));
 
 		list_item_clicked();
 		invalidate_layout();
@@ -342,8 +337,10 @@ void units_dialog::post_show()
 void units_dialog::filter_text_changed(const std::string& text)
 {
 	auto& list = find_widget<listbox>("main_list");
-	const std::size_t shown = list.filter_rows_by(
-		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(filter_options_[row]); });
+	const std::size_t shown = list.filter_rows_by([this, &text](std::size_t row) {
+		const auto& match = translation::make_ci_matcher(filter_options_[row]);
+		return match(text);
+	});
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
@@ -606,21 +603,23 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 
 	dlg->set_filter_generator([&unit_list](std::size_t index) {
 		const auto& unit = unit_list[index];
+		std::vector<std::string> filter_keys;
 
-		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		// Since the table widgets use heavy formatting, we save a bare copy
-		// of certain options to filter on.
-		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
-			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
+		filter_keys.emplace_back(unit->type_name());
+		filter_keys.emplace_back(!unit->name().empty() ? unit->name().str() : font::unicode_en_dash);
+		filter_keys.emplace_back(std::to_string(unit->level()));
+		filter_keys.emplace_back(unit_type::alignment_description(unit->alignment(), unit->gender()));
+
 		if(const auto* race = unit->race()) {
-			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
+			filter_keys.emplace_back(race->name(unit->gender()));
+			filter_keys.emplace_back(race->plural_name());
 		}
 
 		for(const std::string& trait : unit->trait_names()) {
-			filter_text += " " + trait;
+			filter_keys.emplace_back(trait);
 		}
 
-		return filter_text;
+		return filter_keys;
 	});
 
 	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
@@ -775,21 +774,23 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 
 	dlg->set_filter_generator([&recall_list](std::size_t index) {
 		const auto& unit = recall_list[index];
+		std::vector<std::string> filter_keys;
 
-		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		// Since the table widgets use heavy formatting, we save a bare copy
-		// of certain options to filter on.
-		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
-			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
+		filter_keys.emplace_back(unit->type_name());
+		filter_keys.emplace_back(!unit->name().empty() ? unit->name().str() : font::unicode_en_dash);
+		filter_keys.emplace_back(std::to_string(unit->level()));
+		filter_keys.emplace_back(unit_type::alignment_description(unit->alignment(), unit->gender()));
+
 		if(const auto* race = unit->race()) {
-			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
+			filter_keys.emplace_back(race->name(unit->gender()));
+			filter_keys.emplace_back(race->plural_name());
 		}
 
 		for(const std::string& trait : unit->trait_names()) {
-			filter_text += " " + trait;
+			filter_keys.emplace_back(trait);
 		}
 
-		return filter_text;
+		return filter_keys;
 	});
 
 	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {

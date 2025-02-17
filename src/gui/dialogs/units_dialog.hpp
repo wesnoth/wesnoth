@@ -15,12 +15,9 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "map/location.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
@@ -215,12 +212,12 @@ private:
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
-	std::function<std::string(std::size_t)> filter_gen_;
+	std::function<std::vector<std::string>(std::size_t)> filter_gen_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
 
-	std::vector<std::string> filter_options_;
+	std::vector<std::vector<std::string>> filter_options_;
 	group<unit_race::GENDER> gender_toggle_;
 
 	group<unit_race::GENDER>& get_toggle() {
