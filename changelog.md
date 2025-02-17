@@ -1,3 +1,18 @@
+## Version 1.19.9+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
 ## Version 1.19.9
 ### Campaigns
    * Delfador’s Memoirs
