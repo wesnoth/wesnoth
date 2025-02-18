@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -322,7 +322,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 			visible_string = "";
 		}
 
-		int w = font::pango_line_width(visible_string, font_size_);
+		auto [w, _] = font::pango_line_size(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {

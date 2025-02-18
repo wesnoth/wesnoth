@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
 #include "floating_label.hpp"
-#include "font/sdl_ttf_compat.hpp" // for pango_line_width
+#include "font/sdl_ttf_compat.hpp" // for pango_line_size
 #include "formula/string_utils.hpp"
 #include "lexical_cast.hpp"
 #include "overlay.hpp"
@@ -221,7 +221,7 @@ void editor_display::set_help_string(const std::string& str)
 	point canvas_size = video::game_canvas_size();
 
 	while(size > 0) {
-		if(font::pango_line_width(str, size) * 2 > canvas_size.x) {
+		if(auto [lw, _] = font::pango_line_size(str, size); lw * 2 > canvas_size.x) {
 			size--;
 		} else {
 			break;

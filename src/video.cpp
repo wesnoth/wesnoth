@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -118,7 +118,6 @@ void deinit()
 	// Clear any static texture caches,
 	// lest they try to delete textures after SDL_Quit.
 	image::flush_cache();
-	font::flush_texture_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
 

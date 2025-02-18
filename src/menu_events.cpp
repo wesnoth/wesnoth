@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -56,6 +56,7 @@
 #include "help/help.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
+#include "map/location.hpp"
 #include "map/map.hpp"
 #include "map_command_handler.hpp"
 #include "mouse_events.hpp"
@@ -255,9 +256,11 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
+	std::map<const unit_type*, t_string> err_msgs_map;
 	std::vector<const unit_type*> recruit_list;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 	std::vector<t_string> unknown_units;
+	team& current_team = board().get_team(side_num);
 
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
@@ -267,6 +270,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			continue;
 		}
 
+		map_location ignored;
+		map_location recruit_hex = last_hex;
+		t_string err_msg = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
+		if (!err_msg.empty()) {
+			err_msgs_map[type] = err_msg;
+		}
 		recruit_list.push_back(type);
 	}
 
@@ -287,40 +296,41 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	const auto& dlg = units_dialog::build_recruit_dialog(
-		recruit_list, board().get_team(side_num));
+	const auto& dlg = units_dialog::build_recruit_dialog(recruit_list, err_msgs_map, current_team);
 
 	if(dlg->show() && dlg->is_selected()) {
 		const auto& type = recruit_list[dlg->get_selected_index()];
-		do_recruit(type->id(), side_num, last_hex);
+		map_location recruit_hex = last_hex;
+		do_recruit(type->id(), side_num, recruit_hex);
 	}
 }
 
 void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
 	const std::string& last_recruit = board().get_team(side_num).last_recruit();
-	if(last_recruit.empty() == false) {
-		do_recruit(last_recruit, side_num, last_hex);
+	if(!last_recruit.empty()) {
+		map_location recruit_hex = last_hex;
+		do_recruit(last_recruit, side_num, recruit_hex);
 	}
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, const map_location& loc)
+bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
 {
 	map_location recruited_from = map_location::null_location();
 	team& current_team = board().get_team(side_num);
 	const auto& res = unit_helper::recruit_message(name, loc, recruited_from, current_team);
 
-	if(!res.has_value() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
+	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
 		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
 		return true;
-	} else if(!res.has_value()) {
+	} else if(res.empty()) {
 		return false;
 	} else {
-		gui2::show_transient_message("", res.value());
+		gui2::show_transient_message("", res);
 		return false;
 	}
 
@@ -339,18 +349,6 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	{
 		wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
-	}
-
-	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
-	int team_recall_cost = current_team.recall_cost();
-	bool recallable = (team_recall_cost <= current_team.gold() - wb_gold);
-	if(!recallable) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = std::to_string(team_recall_cost);
-		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
-				"You must have at least $cost gold pieces to recall this unit.", team_recall_cost, i18n_symbols);
-		gui2::show_transient_message("", msg);
-		return;
 	}
 
 	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:";
@@ -375,18 +373,31 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	const unit_const_ptr sel_unit = recall_list_team[dlg->get_selected_index()];
+	int res = dlg->get_selected_index();
 
+	int unit_cost = current_team.recall_cost();
+	const unit_const_ptr sel_unit = recall_list_team[res];
 
 	// we need to check if unit has a specific recall cost
 	// if it does we use it elsewise we use the team.recall_cost()
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
 	if(sel_unit->recall_cost() > -1) {
-		team_recall_cost = sel_unit->recall_cost();
+		unit_cost = sel_unit->recall_cost();
 	}
 
-	LOG_NG << "recall index: " << dlg->get_selected_index();
+	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
+
+	if(current_team.gold() - wb_gold < unit_cost) {
+		utils::string_map i18n_symbols;
+		i18n_symbols["cost"] = std::to_string(unit_cost);
+		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
+				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
+		gui2::show_transient_message("", msg);
+		return;
+	}
+
+	LOG_NG << "recall index: " << res;
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;

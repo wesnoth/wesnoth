@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,16 +16,17 @@
 
 #include "gui/dialogs/sp_options_configure.hpp"
 
+#include "preferences/preferences.hpp"
+#include "saved_game.hpp"
 
 namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(sp_options_configure)
 
-sp_options_configure::sp_options_configure(ng::create_engine& create_engine, ng::configure_engine& config_engine)
+sp_options_configure::sp_options_configure(ng::create_engine& create_engine)
 	: modal_dialog(window_id())
 	, create_engine_(create_engine)
-	, config_engine_(config_engine)
 	, options_manager_()
 {
 	set_show_even_without_video(true);
@@ -44,7 +45,8 @@ void sp_options_configure::pre_show()
 void sp_options_configure::post_show()
 {
 	if(get_retval() == retval::OK) {
-		config_engine_.set_options(options_manager_->get_options_config());
+		create_engine_.get_state().mp_settings().options = options_manager_->get_options_config();
+		prefs::get().set_options(options_manager_->get_options_config());
 	}
 }
 

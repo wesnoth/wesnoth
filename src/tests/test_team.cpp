@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

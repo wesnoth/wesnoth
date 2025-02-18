@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024 - 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -324,6 +324,14 @@ struct preferences_list_defines
 	ADDPREF(server_message_notif)
 	/** whether to show the enabled server message sound or notification in the lobby as well */
 	ADDPREF(server_message_lobby)
+	/** opacity of the reach map border, 100 being 100% of the original image opacity, 0 being invisible */
+	ADDPREF(reach_map_border_opacity)
+	/** the color of the reach map */
+	ADDPREF(reach_map_color)
+	/** the color of tile borders of the reach map that are next to an enemy */
+	ADDPREF(reach_map_enemy_color)
+	/** opacity of the reach map tint, 100 being 100% of the original image opacity, 0 being invisible */
+	ADDPREF(reach_map_tint_opacity)
 	/** whether to play a sound when the game is ready to be started */
 	ADDPREF(ready_for_start_sound)
 	/** whether to show a notification when the game is ready to be started */
@@ -563,7 +571,11 @@ struct preferences_list_defines
 		game_created_sound,
 		game_created_notif,
 		game_created_lobby,
-		addon_icons
+		addon_icons,
+		reach_map_border_opacity,
+		reach_map_tint_opacity,
+		reach_map_color,
+		reach_map_enemy_color
 	)
 };
 using prefs_list = string_enums::enum_base<preferences_list_defines>;

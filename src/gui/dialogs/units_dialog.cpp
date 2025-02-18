@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/units_dialog.hpp"
 
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
@@ -177,23 +178,30 @@ void units_dialog::show_list(listbox& list)
 	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
 		widget_item column;
-		formatter filter_fmt;
 		// generate tooltip for ith row
 		if (tooltip_gen_) {
 			column["tooltip"] = tooltip_gen_(i);
 		}
 
+		// if custom filter text generator exists, use it to generate the filter text
+		if (filter_gen_) {
+			filter_options_.push_back(filter_gen_(i));
+		}
+
+		std::vector<std::string> filter_keys;
 		for (const auto& [id, gen] : column_generators_) {
 			column["use_markup"] = "true";
 			// generate label for ith row and column with 'id'
 			column["label"] = gen(i);
-			if (id != "unit_image") {
-				filter_fmt << column["label"];
+			if (!filter_gen_ && id != "unit_image") {
+				filter_keys.emplace_back(column["label"]);
 			}
 			row_data.emplace(id, column);
 		}
 
-		filter_options_.push_back(filter_fmt.str());
+		if (!filter_gen_) {
+			filter_options_.push_back(filter_keys);
+		}
 		list.add_row(row_data);
 	}
 
@@ -220,12 +228,7 @@ void units_dialog::rename_unit(std::vector<unit_const_ptr>& unit_list)
 		list.get_row_grid(selected_index_)->find_widget<label>("unit_name").set_label(name);
 
 		filter_options_.erase(filter_options_.begin() + selected_index_);
-		std::ostringstream filter_text;
-		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
-		for(const std::string& trait : selected_unit.trait_names()) {
-			filter_text << " " << trait;
-		}
-		filter_options_.insert(filter_options_.begin() + selected_index_, filter_text.str());
+		filter_options_.insert(filter_options_.begin() + selected_index_, filter_gen_(selected_index_));
 
 		list_item_clicked();
 		invalidate_layout();
@@ -334,8 +337,10 @@ void units_dialog::post_show()
 void units_dialog::filter_text_changed(const std::string& text)
 {
 	auto& list = find_widget<listbox>("main_list");
-	const std::size_t shown = list.filter_rows_by(
-		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(filter_options_[row]); });
+	const std::size_t shown = list.filter_rows_by([this, &text](std::size_t row) {
+		const auto& match = translation::make_ci_matcher(filter_options_[row]);
+		return match(text);
+	});
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
@@ -461,29 +466,30 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 
 std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 	const std::vector<const unit_type*>& recruit_list,
-	const team& team,
-	const map_location& recruit_hex)
+	recruit_msgs_map& err_msgs_map,
+	const team& team
+)
 {
 	auto dlg = std::make_unique<units_dialog>();
 	auto set_column = dlg->make_column_builder(recruit_list);
 
-	set_column("unit_image", [&team, &recruit_hex](const auto& recruit) {
+	set_column("unit_image", [&](const auto& recruit) {
 		std::string image_string = recruit->icon();
 		if (image_string.empty()) {
 			image_string = recruit->image();
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		image_string += "~SCALE_INTO(72,72)";
-		bool not_recruitable = unit_helper::recruit_message(
-			recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
-		if (not_recruitable) {
+		// Does the unit have error message? If so, grey out image.
+		if (!err_msgs_map[recruit].empty()) {
 			image_string += "~GS()";
 		}
 		return image_string;
 	}, sort_type::none);
 
-	set_column("unit_details", [&team, &recruit_hex](const auto& recruit) {
-		bool recruitable = !unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+	set_column("unit_details", [&](const auto& recruit) {
+		// Does the unit have error message? If so, grey out text here.
+		bool recruitable = err_msgs_map[recruit].empty();
 		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
 			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
@@ -493,9 +499,9 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size());
 
-	dlg->set_tooltip_generator([&team, &recruit_hex, &recruit_list](std::size_t index) {
-		const auto& msg = unit_helper::recruit_message(recruit_list[index]->id(), recruit_hex, map_location::null_location(), team);
-		return msg.has_value() ? msg.value() : std::string();
+	dlg->set_tooltip_generator([&](std::size_t index) {
+		// Show the error message in case of disabled units, if any.
+		return err_msgs_map[recruit_list[index]];
 	});
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
@@ -595,6 +601,27 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return utils::join(unit->trait_names(), ", ");
 	}, sort_type::generator);
 
+	dlg->set_filter_generator([&unit_list](std::size_t index) {
+		const auto& unit = unit_list[index];
+		std::vector<std::string> filter_keys;
+
+		filter_keys.emplace_back(unit->type_name());
+		filter_keys.emplace_back(!unit->name().empty() ? unit->name().str() : font::unicode_en_dash);
+		filter_keys.emplace_back(std::to_string(unit->level()));
+		filter_keys.emplace_back(unit_type::alignment_description(unit->alignment(), unit->gender()));
+
+		if(const auto* race = unit->race()) {
+			filter_keys.emplace_back(race->name(unit->gender()));
+			filter_keys.emplace_back(race->plural_name());
+		}
+
+		for(const std::string& trait : unit->trait_names()) {
+			filter_keys.emplace_back(trait);
+		}
+
+		return filter_keys;
+	});
+
 	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
 		auto& unit = unit_list[index];
 		rename.set_active(!unit->unrenamable());
@@ -667,7 +694,12 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		[recallable, &team](const auto& unit) {
 			std::stringstream details;
 			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit));
-			details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
+			const int recall_cost = unit->recall_cost() == -1 ? team.recall_cost() : unit->recall_cost();
+			if (recallable(*unit)) {
+				details << unit_helper::format_cost_string(recall_cost, team.recall_cost());
+			} else {
+				details << unit_helper::format_cost_string(recall_cost, false);
+			}
 			return details.str();
 		},
 		[](const auto& unit) {
@@ -675,8 +707,9 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		});
 
 	set_column("unit_moves",
-		[](const auto& unit) {
-			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
+		[recallable](const auto& unit) {
+			return unit_helper::format_movement_string(
+				unit->movement_left(), unit->total_movement(), recallable(*unit));
 		},
 		[](const auto& unit) {
 			return unit->movement_left();
@@ -691,19 +724,21 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		});
 
 	set_column("unit_hp",
-		[](const auto& unit) {
-			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
+		[recallable](const auto& unit) {
+			const color_t& col = recallable(*unit) ? unit->hp_color() : font::GRAY_COLOR;
+			return markup::span_color(col, unit->hitpoints(), "/", unit->max_hitpoints());
 		},
 		[](const auto& unit) {
 			return unit->hitpoints();
 		});
 
 	set_column("unit_xp",
-		[](const auto& unit) {
+		[recallable](const auto& unit) {
+			const color_t& col = recallable(*unit) ? unit->xp_color() : font::GRAY_COLOR;
 			if(unit->can_advance()) {
-				return markup::span_color(unit->xp_color(), unit->experience(), "/", unit->max_experience());
+				return markup::span_color(col, unit->experience(), "/", unit->max_experience());
 			} else {
-				return markup::span_color(unit->xp_color(), font::unicode_en_dash);
+				return markup::span_color(col, font::unicode_en_dash);
 			}
 		},
 		[](const auto& unit) {
@@ -735,6 +770,27 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		} else {
 			return _("This unit cannot be recalled because you do not have enough gold.");
 		}
+	});
+
+	dlg->set_filter_generator([&recall_list](std::size_t index) {
+		const auto& unit = recall_list[index];
+		std::vector<std::string> filter_keys;
+
+		filter_keys.emplace_back(unit->type_name());
+		filter_keys.emplace_back(!unit->name().empty() ? unit->name().str() : font::unicode_en_dash);
+		filter_keys.emplace_back(std::to_string(unit->level()));
+		filter_keys.emplace_back(unit_type::alignment_description(unit->alignment(), unit->gender()));
+
+		if(const auto* race = unit->race()) {
+			filter_keys.emplace_back(race->name(unit->gender()));
+			filter_keys.emplace_back(race->plural_name());
+		}
+
+		for(const std::string& trait : unit->trait_names()) {
+			filter_keys.emplace_back(trait);
+		}
+
+		return filter_keys;
 	});
 
 	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {

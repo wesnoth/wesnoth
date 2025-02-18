@@ -1,6 +1,6 @@
 
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -31,6 +31,25 @@ inline auto make_ci_matcher(std::string_view filter_text)
 		}
 
 		return true;
+	};
+}
+
+inline auto make_ci_matcher(const std::vector<std::string>& keywords)
+{
+	return [keywords](auto&& text) {
+		if (text.empty()) {
+			return true;
+		}
+
+		for(const auto& keyword : keywords) {
+			for(const auto& word: utils::split(text, ' ')) {
+				if (translation::ci_search(keyword, word)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	};
 }
 

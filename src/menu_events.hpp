@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -114,7 +114,7 @@ public:
 			mouse_handler& mousehandler);
 
 	/** @return Whether or not the recruit was successful */
-	bool do_recruit(const std::string& name, int side_num, const map_location& target_hex);
+	bool do_recruit(const std::string& name, int side_num, map_location& target_hex);
 	void do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@
 #include "exceptions.hpp"          // for error
 #include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
-#include "game_config.hpp"         // for path, revision, etc
+#include "game_config.hpp"         // for path, etc
 #include "game_config_manager.hpp" // for game_config_manager
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc

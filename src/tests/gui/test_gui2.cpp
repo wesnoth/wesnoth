@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -102,6 +102,7 @@
 #include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
@@ -586,6 +587,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_screenshot_notification)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
 {
 	test<select_orb_colors>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_reachmap_options)
+{
+	test<reachmap_options>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
 {
@@ -1406,12 +1411,10 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(state)
-		, config_eng(create_eng.get_state()) {}
+	dialog_tester() : create_eng(state) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(create_eng, config_eng);
+		return new sp_options_configure(create_eng);
 	}
 };
 

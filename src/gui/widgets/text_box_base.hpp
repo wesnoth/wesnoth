@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -121,12 +121,9 @@ public:
 	/**
 	 * Wrapper function, sets the area between column start and end
 	 * offset to be highlighted in a specific color.
-	 * See @ref font::pango_text::add_attribute_bg_color.
+	 * See @ref font::add_attribute_bg_color.
 	 */
-	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-	{
-		text_.add_attribute_bg_color(start_offset, end_offset, color);
-	}
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -38,6 +38,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/title_screen.hpp"
 
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -1086,6 +1087,8 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 			gui2::dialogs::log_settings::display();
 		} else if(pref.field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
+		} else if(pref.field == "reach_map") {
+			gui2::dialogs::reachmap_options::display();
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field;
 		}

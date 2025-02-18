@@ -1,13 +1,13 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2024.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-01-19 17:47 UTC\n"
-"PO-Revision-Date: 2024-09-21 15:15+0200\n"
+"PO-Revision-Date: 2025-02-08 12:08+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -19,10 +19,8 @@ msgstr ""
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Battle Training — Old Tutorial"
-msgstr "Addestramento da Battaglia"
+msgstr "Addestramento da Battaglia - Vecchia Guida"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
@@ -32,16 +30,12 @@ msgstr "Guida"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first-time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial.\n"
 "    \n"
 msgstr ""
-"Impara le basi di gioco di Wesnoth con una guida. Campagna raccomandata per "
-"i neofiti."
+"Impara le basi di gioco di Wesnoth con una guida. \n"
+"    \n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:23
@@ -49,6 +43,8 @@ msgid ""
 "Note: No longer recommended for first-time players. Try <i>The South Guard</"
 "i> instead."
 msgstr ""
+"Nota: Non è più la prima campagna consigliata per i neofiti. Prova piuttosto "
+"<i>La Guardia del Sud</i>."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:33
@@ -57,10 +53,8 @@ msgstr "Principiante"
 
 #. [achievement_group]
 #: data/campaigns/tutorial/achievements.cfg:3
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Old Tutorial"
-msgstr "Guida"
+msgstr "Vecchia Guida"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
@@ -411,8 +405,8 @@ msgstr "Cosa? Quel <i>fantoccio</i> ha il suo turno?"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Certo che sì: è una quintana magica! Ora, questa quintana ha 5 possibilità "
 "di colpirti e causa 3 punti di danno per colpo. Se andrà a segno ogni volta, "
@@ -2263,8 +2257,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Le unità di livello più alto sono sì potenti, ma non invulnerabili. Addio, "
 "$unit.name|."
@@ -2548,629 +2542,3 @@ msgstr ""
 "\n"
 "\n"
 "<big>Premi un tasto del mouse o la barra spaziatrice per continuare...</big>"
-
-#~ msgid ""
-#~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#~ "usually provide small buffs or debuffs, abilities give units special "
-#~ "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#~ "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#~ "hitpoints at the start of each turn. Unit types with abilities, "
-#~ "especially ones like Heal, can be very useful, so be careful when sending "
-#~ "them into battle."
-#~ msgstr ""
-#~ "Alcuni tipi di unità hanno <i>abilità</i> speciali. A differenza delle "
-#~ "caratteristiche, che di solito forniscono piccoli vantaggi o svantaggi, "
-#~ "le abilità conferiscono attitudini speciali che le unità non hanno. In "
-#~ "questo specifico caso, le sciamane hanno l’abilità di curare, che "
-#~ "permette loro ad inizio turno di guarire 4 punti ferita alle unità ad "
-#~ "essa adiacenti. Unità con queste abilità, specialmente quelle guaritrici, "
-#~ "posso essere molto utili, quindi sii cauto nel mandarle in battaglia."
-
-#~ msgid ""
-#~ "Remember to retreat your wounded units to villages. Healers can only heal "
-#~ "4 hitpoints at a time, while villages can heal 8 (the maximum healing for "
-#~ "any unit)."
-#~ msgstr ""
-#~ "Ricordati di ritirare le unità ferite nei villaggi. Le guaritrici possono "
-#~ "farti recuperare solo 4 punti ferita alla volta, mentre i villaggi "
-#~ "possono fartene recuperare 8 (il massimo per tutte le unità)."
-
-#~ msgid "Agh! Now who will teach you how to defeat these orcs!"
-#~ msgstr "Agh! Ora ti insegnerò come si sconfiggono questi orchi!"
-
-#~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next, such as <i>A Tale of Two Brothers</i>, <i>An Orcish "
-#~ "Incursion</i>, or <i>The South Guard</i>. Konrad, Li’sar and Delfador are "
-#~ "characters from <i>Heir to the Throne</i>. You can also refer to the in-"
-#~ "game help browser if you ever need to refresh your memory on gameplay "
-#~ "mechanics."
-#~ msgstr ""
-#~ "Hai sconfitto gli orchi! Ora potresti provare una delle campagne per "
-#~ "principianti, come <i>Racconto di due fratelli</i>, <i>Un’incursione "
-#~ "orchesca</i> o <i>La Guardia del Sud</i>. Konrad, Li’sar e Delfador sono "
-#~ "personaggi tratti da <i>L’erede al trono</i>. Puoi sempre fare "
-#~ "riferimento all’aiuto in linea mentre giochi, nel caso dovessi aver "
-#~ "bisogno di rinfrescarti la memoria sui meccanismi di gioco."
-
-#~ msgid "End Scenario"
-#~ msgstr "Fine scenario"
-
-# Trattandosi di un tutorial, ho deciso di spiegare anche come visualizzare il menù contestuale
-#~ msgid ""
-#~ "Do you want to keep practicing? You can end this scenario at any time by "
-#~ "using the <b>End Scenario</b> item in the context menu to move on to the "
-#~ "next phase of your training."
-#~ msgstr ""
-#~ "Vuoi continuare ad esercitarti? Potrai comunque terminare lo scenario in "
-#~ "qualsiasi momento e passare al successivo selezionando <b>Fine scenario</"
-#~ "b> dal menù contestuale."
-
-#~ msgid "Yes, I’m still figuring it out."
-#~ msgstr "Sì, sto ancora cercando di capire."
-
-#~ msgid "female^Yes, I’m still figuring it out."
-#~ msgstr "Sì, sto ancora cercando di capire."
-
-#~ msgid "No, I think I’ve got it."
-#~ msgstr "No, penso di aver capito."
-
-#~ msgid "female^No, I think I’ve got it."
-#~ msgstr "No, penso di aver capito."
-
-#~ msgid "sword"
-#~ msgstr "spada"
-
-#~ msgid "saber"
-#~ msgstr "sciabola"
-
-#~ msgid "flail"
-#~ msgstr "mazzafrusto"
-
-#, fuzzy
-#~ msgid ""
-#~ "You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll "
-#~ "win."
-#~ msgstr ""
-#~ "Giovanotto, hai 32 punti ferita e una spada: sono abbastanza sicuro che "
-#~ "vincerai tu."
-
-#~ msgid ""
-#~ "<big>You have selected Konrad.</big>\n"
-#~ "The places he can move to are highlighted."
-#~ msgstr ""
-#~ "<big>Hai selezionato Konrad.</big>\n"
-#~ "Viene evidenziata l’area in cui si può muovere."
-
-#~ msgid ""
-#~ "<big>You have selected Li’sar.</big>\n"
-#~ "The places she can move to are highlighted."
-#~ msgstr ""
-#~ "<big>Hai selezionato Li’sar.</big>\n"
-#~ "Viene evidenziata l’area in cui si può muovere."
-
-#~ msgid "Here"
-#~ msgstr "Qui"
-
-#~ msgid ""
-#~ "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-#~ msgstr ""
-#~ "Sposta Konrad vicino a Delfador, facendo clic sulla casella "
-#~ "contrassegnata dalla scritta <b>Qui</b>."
-
-#~ msgid ""
-#~ "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-#~ msgstr ""
-#~ "Sposta Li’sar vicino a Delfador, facendo clic sulla casella "
-#~ "contrassegnata dalla scritta <b>Qui</b>."
-
-#~ msgid "Left click on tile labeled <b>Here</b>"
-#~ msgstr "Fai clic sulla casella contrassegnata dalla scritta <b>Qui</b>"
-
-#~ msgid "Oops!"
-#~ msgstr "Oops!"
-
-#~ msgid "Click on the quintain to attack it"
-#~ msgstr "Fai clic sulla quintana per attaccarla"
-
-#~ msgid ""
-#~ "The tiny metal crown above Delfador means you will lose the game if he is "
-#~ "killed. You will also lose the game if your leader (Konrad) is killed."
-#~ msgstr ""
-#~ "La coroncina metallica sopra Delfador indica che, se egli fosse ucciso, "
-#~ "perderesti la battaglia. Lo stesso accadrebbe anche se ad essere ucciso "
-#~ "fosse il tuo condottiero (Konrad)."
-
-#~ msgid ""
-#~ "The tiny metal crown above Delfador means you will lose the game if he is "
-#~ "killed. You will also lose the game if your leader (Li’sar) is killed."
-#~ msgstr ""
-#~ "La coroncina metallica sopra Delfador indica che, se egli fosse ucciso, "
-#~ "perderesti la battaglia. Lo stesso accadrebbe anche se ad essere ucciso "
-#~ "fosse il tuo condottiero (Li’sar)."
-
-#~ msgid ""
-#~ "female^Unfortunately, you’ve used up your turn attacking the quintain. "
-#~ "The quintain now gets to attack."
-#~ msgstr ""
-#~ "Sfortunatamente, attaccando la quintana hai esaurito il tuo turno. Ora "
-#~ "l’attacco spetta alla quintana."
-
-#~ msgid ""
-#~ "Click on the <b>End Turn</b> button in the bottom right of the screen"
-#~ msgstr "Fai clic sul pulsante <b>Fine turno</b> in basso a destra"
-
-#~ msgid ""
-#~ "female^There is a village on the other side of the river. Visiting "
-#~ "villages is a good idea, and ending your turn in one will heal you. To "
-#~ "the village!"
-#~ msgstr ""
-#~ "C’è un villaggio sull’altra riva del fiume. Occupare i villaggi è una "
-#~ "buona idea: se finisci il turno in uno di essi, recupererai alcuni punti "
-#~ "ferita. Vai subito al villaggio!"
-
-#~ msgid "Click on the village to move Konrad"
-#~ msgstr "Fai clic sul villaggio per spostare Konrad"
-
-#~ msgid "Click on the village to move Li’sar"
-#~ msgstr "Fai clic sul villaggio per spostare Li’sar"
-
-#~ msgid "Click on the <b>End Turn</b> button"
-#~ msgstr "Fai clic sul pulsante <b>Fine turno</b>"
-
-#~ msgid ""
-#~ "female^You’re about to be healed by $hp_difference hitpoints, but it’s "
-#~ "time to summon some help against that quintain."
-#~ msgstr ""
-#~ "Stai per recuperare $hp_difference punti ferita, ma è ora di chiamare dei "
-#~ "rinforzi contro quella quintana."
-
-#~ msgid ""
-#~ "female^A splendid idea. You can recruit two units if you return to the "
-#~ "keep. You have plenty of gold for that."
-#~ msgstr ""
-#~ "Ottima idea. Se ritorni nella fortezza, potrai reclutare due unità. Hai "
-#~ "abbastanza oro per farlo."
-
-#~ msgid "Right click on a castle tile and select <b>Recruit</b>"
-#~ msgstr ""
-#~ "Fai clic col tasto destro su una casella con castello e seleziona "
-#~ "<b>Recluta</b>"
-
-#~ msgid "New Recruits"
-#~ msgstr "Nuove reclute"
-
-#~ msgid ""
-#~ "New units cannot act in the turn they appear; you will gain control of "
-#~ "them next turn.\n"
-#~ "After this dialog, you can move the mouse over a unit to see a summary of "
-#~ "its abilities on the right of the screen."
-#~ msgstr ""
-#~ "Le nuove unità non possono agire nel turno in cui vengono reclutate: "
-#~ "potrai controllarle solo a partire da quello successivo.\n"
-#~ "Una volta chiusa questa finestra di dialogo, potrai muovere il mouse su "
-#~ "un’unità per vedere un resoconto delle sue abilità sulla destra dello "
-#~ "schermo."
-
-#~ msgid "Right click on the other castle tile and recruit another unit"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sull’altra casella con castello e recluta "
-#~ "un’altra unità"
-
-#~ msgid ""
-#~ "Had the quintain survived your onslaught, it would have regained two "
-#~ "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
-#~ msgstr ""
-#~ "Se la quintana fosse sopravvissuta al tuo attacco, avrebbe recuperato due "
-#~ "punti ferita. Se un’unità non fa niente per un turno, guarirà lentamente."
-
-#~ msgid "End your turn and attack again."
-#~ msgstr "Termina il tuo turno e poi attacca di nuovo."
-
-#~ msgid "Left click on the quintain to attack it."
-#~ msgstr "Fai clic col tasto sinistro sulla quintana per attaccarla."
-
-# Spazio da tenere all'inizio.
-# La frase deve comparire solo se si attacca prima con la spada e poi con l'arco, oppure in entrambi i casi? Neanche in inglese lo fa...
-#~ msgid " The ranged attack would have been safer."
-#~ msgstr " L’attacco a distanza sarebbe stato più sicuro."
-
-#~ msgid ""
-#~ "\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "\n"
-#~ "Termina il tuo turno e poi attacca di nuovo."
-
-#~ msgid ""
-#~ "\n"
-#~ "You should tell the other elf to use the bow."
-#~ msgstr ""
-#~ "\n"
-#~ "Dovresti ordinare all’altro elfo di usare l’arco."
-
-#~ msgid "Attack with the other elf"
-#~ msgstr "Attacca con l’altro elfo"
-
-#~ msgid ""
-#~ ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
-#~ "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
-#~ "less experience to advance a level."
-#~ msgstr ""
-#~ ", la tua nuova recluta, ha due caratteristiche: <i>forte</i> e "
-#~ "<i>intelligente</i>. «Forte» significa che l’unità causa più danni, "
-#~ "mentre «intelligente» significa che ha bisogno di meno punti esperienza "
-#~ "per salire di livello."
-
-# Spazio iniziale da tenere
-#~ msgid ""
-#~ " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit "
-#~ "can move one tile further each turn, and ‘resilient’ means it has more "
-#~ "hitpoints."
-#~ msgstr ""
-#~ " ha due caratteristiche: <i>veloce</i> e <i>resistente</i>. «Veloce» "
-#~ "significa che l’unità può spostarsi di una casella in più per ogni turno, "
-#~ "mentre «resistente» significa che ha un maggior numero di punti ferita."
-
-#~ msgid "Patch of forest"
-#~ msgstr "Boschetto"
-
-#~ msgid ""
-#~ "Now put an unwounded unit, preferably a Fighter, in that patch of forest "
-#~ "on the south-east of the island; a nice, defensible spot."
-#~ msgstr ""
-#~ "Ora sposta una delle tue unità non ferite (preferibilmente un "
-#~ "combattente) in quel boschetto a sud-est dell’isola: è un ottimo punto da "
-#~ "difendere."
-
-#~ msgid "Can one unit survive against all those enemies?"
-#~ msgstr "Una sola unità può sopravvivere contro tutti questi nemici?"
-
-#~ msgid ""
-#~ "With a little help, yes. If you move your Shaman next to the defending "
-#~ "unit, she will heal it 4 hitpoints per turn. Just be careful not to "
-#~ "expose the Shaman to attack since she is fairly weak herself."
-#~ msgstr ""
-#~ "Con un po’ di aiuto, sì. Se muovi la tua sciamana vicino all’unità in "
-#~ "difesa, questa recupererà 4 punti ferita per turno. Fai solo attenzione a "
-#~ "non esporre la sciamana agli attacchi nemici, dal momento che è piuttosto "
-#~ "debole."
-
-#~ msgid "Move a unit (a Fighter if possible) to the patch of forest"
-#~ msgstr "Sposta un’unità (possibilmente un combattente) nel boschetto"
-
-#~ msgid ""
-#~ "Advance other units onto the island or to capture villages, then <b>End "
-#~ "Turn</b>"
-#~ msgstr ""
-#~ "Fai avanzare le altre unità sull’isola oppure occupa i villaggi, poi "
-#~ "premi <b>Fine turno</b>"
-
-#~ msgid "I have $side.gold gold; enough to recruit!"
-#~ msgstr "Ho $side.gold monete, abbastanza per reclutare unità!"
-
-#~ msgid "Yes, keep recruiting more units: I think you might need them!"
-#~ msgstr "Sì, continua a reclutare più unità: credo che ne avrai bisogno!"
-
-# Aggiunto uno spazio alla fine, da tenere. Altrimenti aggiungerlo all'inizio della stringa successiva.
-#~ msgid "This is no game, Konrad! "
-#~ msgstr "Non è un gioco, Konrad! "
-
-# V. due stringhe sopra
-#~ msgid "This is no game, Li’sar! "
-#~ msgstr "Non è un gioco, Li’sar! "
-
-#~ msgid "Shallow"
-#~ msgstr "Acqua bassa"
-
-#~ msgid "Deep water"
-#~ msgstr "Acqua profonda"
-
-#~ msgid ""
-#~ "To start, we will need some units:\n"
-#~ "two Elvish Fighters\n"
-#~ "two Elvish Archers\n"
-#~ "one Elvish Shaman"
-#~ msgstr ""
-#~ "Per iniziare, ci servono alcune unità:\n"
-#~ "due elfi combattenti;\n"
-#~ "due elfi arcieri;\n"
-#~ "una sciamana elfica."
-
-#~ msgid ""
-#~ "During your tutorial, both $recall_name1 and $recall_name2 gained "
-#~ "$recall_xp1 experience points. You should <i>recall</i> them now so they "
-#~ "can gain more experience, rather than recruiting new Fighters."
-#~ msgstr ""
-#~ "Nel corso della tua esercitazione, sia $recall_name1 che $recall_name2 "
-#~ "hanno guadagnato $recall_xp1 punti esperienza. Dovresti <i>richiamarli</"
-#~ "i> subito, in modo che possano guadagnare più esperienza, piuttosto che "
-#~ "reclutare nuovi combattenti."
-
-#~ msgid ""
-#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-#~ "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now "
-#~ "so they can gain more experience, rather than recruiting new Fighters."
-#~ msgstr ""
-#~ "Nel corso della tua esercitazione, $recall_name1 ha guadagnato "
-#~ "$recall_xp1 punti esperienza, mentre $recall_name2 ne ha guadagnati "
-#~ "$recall_xp2. Dovresti <i>richiamarli</i> subito, in modo che possano "
-#~ "guadagnare più esperienza, piuttosto che reclutare nuovi combattenti."
-
-#~ msgid ""
-#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
-#~ "You should recall that unit now, and recruit a second one (which is "
-#~ "cheaper than recalling, anyway)."
-#~ msgstr ""
-#~ "Nel corso della tua esercitazione, $recall_name1 ha guadagnato "
-#~ "$recall_xp1 punti esperienza. Dovresti richiamare subito quell’unità e "
-#~ "reclutarne una seconda (operazione comunque più economica del richiamo di "
-#~ "unità)."
-
-#~ msgid "RECALL $recall_name1"
-#~ msgstr "RICHIAMA $recall_name1"
-
-#~ msgid ""
-#~ "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sulla casella a nord-est e <i>richiama</i> "
-#~ "$recall_name1"
-
-#~ msgid ""
-#~ "If any Elvish Fighters from your last battle had experience, we would "
-#~ "<i>recall</i> them to the current battlefield. However, your veterans "
-#~ "gained no experience so it’s cheaper to recruit new units instead. "
-#~ "Recruit an Elvish Fighter."
-#~ msgstr ""
-#~ "Se uno degli elfi combattenti avesse guadagnato esperienza nella tua "
-#~ "ultima battaglia, lo avremmo <i>richiamato</i> anche in questa. Tuttavia, "
-#~ "i tuoi veterani non hanno guadagnato esperienza, perciò risulta più "
-#~ "economico reclutare nuove unità. Recluta un elfo combattente."
-
-#~ msgid ""
-#~ "If you had any experienced units alive from your last battle we would "
-#~ "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
-#~ msgstr ""
-#~ "Se avessi unità esperte sopravvissute alla tua ultima battaglia, le "
-#~ "avremmo <i>richiamate</i>; invece dovremo reclutare dei nuovi elfi "
-#~ "combattenti."
-
-#~ msgid ""
-#~ "Right click on the tile north-east of you and recruit an Elvish Fighter"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sulla casella a nord-est e recluta un elfo "
-#~ "combattente"
-
-#~ msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di reclutare una <i>sciamana</i> elfica! Su, prova di "
-#~ "nuovo..."
-
-#~ msgid "So, should I end my turn now?"
-#~ msgstr "E adesso? Devo terminare il mio turno?"
-
-#~ msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di reclutare un elfo <i>arciere</i>! Su, prova di nuovo..."
-
-#~ msgid "Eowynial"
-#~ msgstr "Eowynial"
-
-#~ msgid "Recruit an Elvish Shaman to your north"
-#~ msgstr "Recluta una sciamana elfica a nord"
-
-#~ msgid "Elriend"
-#~ msgstr "Elriend"
-
-#~ msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di <i>richiamare</i> $recall_name2|! Su, prova di nuovo..."
-
-#~ msgid "Archer #1"
-#~ msgstr "Arciere #1"
-
-#~ msgid "Archer #2"
-#~ msgstr "Arciere #2"
-
-#~ msgid "Recruit two Elvish Archers in the tiles to your west"
-#~ msgstr "Recluta due elfi arcieri nelle caselle ad ovest"
-
-#~ msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di reclutare un elfo <i>combattente</i>! Su, prova di "
-#~ "nuovo..."
-
-#~ msgid "Golir"
-#~ msgstr "Golir"
-
-#~ msgid ""
-#~ "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di richiamare $recall_name1, non $recall_name2|! Su, "
-#~ "prova di nuovo..."
-
-#~ msgid ""
-#~ "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit "
-#~ "a new $recruit.language_name|! Now try again..."
-#~ msgstr ""
-#~ "No! Avevo detto di <i>richiamare</i> $recall_name1 dall’ultima battaglia, "
-#~ "non di reclutare un nuovo $recruit.language_name|! Su, prova di nuovo..."
-
-#~ msgid "Right click on the tile east of you and recall $recall_name2"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sulla casella ad est e richiama $recall_name2"
-
-#~ msgid "RECALL $recall_name2"
-#~ msgstr "RICHIAMA $recall_name2"
-
-#~ msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sulla casella ad est e recluta un elfo "
-#~ "combattente"
-
-#~ msgid ""
-#~ "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</"
-#~ "i>. Now try again..."
-#~ msgstr ""
-#~ "Un $recruit.language_name|? Avevo detto di <i>reclutare</i> un <i>elfo "
-#~ "combattente</i>! Su, prova di nuovo..."
-
-#~ msgid "Elindel"
-#~ msgstr "Elindel"
-
-# Aggiunto spazio alla fine, da tenere. Altrimenti aggiungerlo all'inizio della stringa successiva
-#~ msgid "You’ve learned well, Konrad! "
-#~ msgstr "Bene, Konrad, hai imparato! "
-
-#~ msgid ""
-#~ "The village supports one unit and pays 1 gold per turn. You’re only "
-#~ "losing 1 gold per turn now."
-#~ msgstr ""
-#~ "Il villaggio mantiene un’unità e paga una moneta per turno: ora stai "
-#~ "perdendo soltanto una moneta per turno."
-
-# V. due stringhe sopra
-#~ msgid "You’ve learned well, Li’sar! "
-#~ msgstr "Bene, Li’sar, hai imparato! "
-
-#~ msgid ""
-#~ "You should leave the villages near your keep for Konrad to capture. He "
-#~ "needs to stay nearby to recruit more units anyway."
-#~ msgstr ""
-#~ "Dovresti lasciare che Konrad occupi i villaggi vicini alla tua fortezza: "
-#~ "in ogni caso, deve rimanere nei paraggi per poter reclutare altre unità."
-
-#~ msgid ""
-#~ "You should leave the villages near your keep for Li’sar to capture. She "
-#~ "needs to stay nearby to recruit more units anyway."
-#~ msgstr ""
-#~ "Dovresti lasciare che Li’sar occupi i villaggi vicini alla tua fortezza: "
-#~ "in ogni caso, deve rimanere nei paraggi per poter reclutare altre unità."
-
-#~ msgid ""
-#~ "Orcish Grunts have no ranged attacks, so use your archers against them."
-#~ msgstr ""
-#~ "Gli orchi recluta non hanno attacchi a distanza, quindi usa gli arcieri "
-#~ "contro di loro."
-
-#~ msgid ""
-#~ "To review the capabilities of any unit—including an enemy—hover the mouse "
-#~ "over it, and you will see a unit summary on the right of the screen"
-#~ msgstr ""
-#~ "Per esaminare le capacità di un’unità qualsiasi – comprese quelle nemiche "
-#~ "– passa il mouse su di essa: sulla destra dello schermo vedrai il "
-#~ "resoconto dell’unità."
-
-#~ msgid "Unit Summaries"
-#~ msgstr "Resoconto delle unità"
-
-#~ msgid ""
-#~ "Excellent. Elves are well-protected in the forest. There’s only a 30% "
-#~ "chance of hitting an Elvish Archer in that tile."
-#~ msgstr ""
-#~ "Eccellente! Gli elfi sono ben protetti nella foresta: c’è solo una "
-#~ "possibilità del 30% di colpire un elfo arciere quando si trova in una di "
-#~ "quelle caselle."
-
-#~ msgid ""
-#~ "It’s very dangerous to stand in water when there are enemies about! Your "
-#~ "unit will have an 80% chance of being hit when the enemy counter-attacks! "
-#~ "Cancel!"
-#~ msgstr ""
-#~ "È molto pericoloso restare in acqua quando ci sono dei nemici nelle "
-#~ "vicinanze! La tua unità avrà una probabilità dell’80% di essere colpita "
-#~ "quando il nemico contrattaccherà! Annulla la tua mossa!"
-
-#~ msgid "Attack the orc with the other Archer"
-#~ msgstr "Attacca l’orco con l’altro arciere"
-
-#~ msgid "Fighter to HERE"
-#~ msgstr "Combattente QUI"
-
-#~ msgid ""
-#~ "Your other units cannot reach the orc this turn. Send a Fighter to the "
-#~ "village in the far east of the map. It will take two turns to reach it."
-#~ msgstr ""
-#~ "Le altre unità non possono raggiungere l’orco in questo turno. Invia un "
-#~ "combattente verso il villaggio all’estremo est della mappa: impiegherà "
-#~ "due turni per raggiungerlo."
-
-#~ msgid "Tell a Fighter to move to the far east village"
-#~ msgstr ""
-#~ "Ordina a un combattente di recarsi al villaggio situato all’estremo est"
-
-#~ msgid ""
-#~ "Send the other Fighter and the Shaman south so they can attack next turn, "
-#~ "then return to the keep to recruit more units!"
-#~ msgstr ""
-#~ "Invia l’altro combattente e la sciamana a sud affinché possano attaccare "
-#~ "nel prossimo turno, quindi ritorna nella fortezza per reclutare altre "
-#~ "unità!"
-
-#~ msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
-#~ msgstr ""
-#~ "Sposta il combattente e la sciamana a sud, poi riporta Konrad nella "
-#~ "fortezza"
-
-#~ msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
-#~ msgstr ""
-#~ "Sposta il combattente e la sciamana a sud, poi riporta Li’sar nella "
-#~ "Fortezza"
-
-#~ msgid "Recruit another Archer and a Fighter"
-#~ msgstr "Recluta un altro arciere e un combattente"
-
-#~ msgid "That is often a problem, which is why owning villages is important."
-#~ msgstr ""
-#~ "Questo è spesso un problema: ecco perché è importante occupare i villaggi."
-
-#~ msgid "Move Konrad to another (unowned) village"
-#~ msgstr "Sposta Konrad su un altro villaggio (da te non occupato)"
-
-#~ msgid "Move Li’sar to another (unowned) village"
-#~ msgstr "Sposta Li’sar su un altro villaggio (da te non occupato)"
-
-#~ msgid "ZoC"
-#~ msgstr "ZdC"
-
-#~ msgid "Advance other units and capture villages, then <b>End Turn</b>"
-#~ msgstr ""
-#~ "Fai avanzare le altre unità e conquista i villaggi, poi premi <b>Fine "
-#~ "turno</b>"
-
-#~ msgid ""
-#~ "female^No other units can reach that orc. I hope my $unit.language_name "
-#~ "survives its counter-attack! I’d better grab more villages and move "
-#~ "everyone closer for next turn."
-#~ msgstr ""
-#~ "Nessun’altra unità può raggiungere quell’orco: spero che la mia $unit."
-#~ "language_name sopravviva al contrattacco! Sarà meglio occupare più "
-#~ "villaggi e spostare tutte le unità più vicine al nemico, in attesa del "
-#~ "prossimo turno."
-
-#~ msgid "Move your Shaman onto the bridge to stand behind your other unit"
-#~ msgstr ""
-#~ "Sposta la sciamana sul ponte mantenendola alle spalle dell’altra unità"
-
-#~ msgid ""
-#~ "Don’t forget about your Fighter in the east; you can move him south to "
-#~ "that last village near the channel."
-#~ msgstr ""
-#~ "Non scordarti del tuo combattente ad est: puoi muoverlo a sud, verso "
-#~ "l’ultimo villaggio vicino al canale."
-
-#~ msgid ""
-#~ "After this dialog, hold the mouse over the landscape image below the "
-#~ "minimap on the right. This brings up a description of the time of day, "
-#~ "showing who has the advantage."
-#~ msgstr ""
-#~ "Una volta chiusa questa finestra di dialogo, porta il mouse sull’immagine "
-#~ "del paesaggio sotto la mini-mappa, sulla destra dello schermo. Comparirà "
-#~ "una descrizione del periodo della giornata, che mostrerà chi si trova in "
-#~ "vantaggio."
-
-#~ msgid "Defend here"
-#~ msgstr "Difendi qui"
-
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Vuoi continuare ad esercitarti?"

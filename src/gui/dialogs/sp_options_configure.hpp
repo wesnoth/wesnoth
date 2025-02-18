@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
 
 namespace gui2::dialogs
 {
@@ -27,13 +26,13 @@ namespace gui2::dialogs
 class sp_options_configure : public modal_dialog, private plugin_executor
 {
 public:
-	sp_options_configure(ng::create_engine& create_engine, ng::configure_engine& config_engine);
+	sp_options_configure(ng::create_engine& create_engine);
 
 	/**
 	 * Execute function. We only want to show the dialog if the campaign has options or if
 	 * there are active mods and at least one of those mods has custom options.
 	 */
-	static bool execute(ng::create_engine& create_engine, ng::configure_engine& config_engine)
+	static bool execute(ng::create_engine& create_engine)
 	{
 		// Check campaign options.
 		const auto& campaign_mods = create_engine.current_level().data().child_range("options");
@@ -65,7 +64,7 @@ public:
 			return true;
 		}
 
-		return sp_options_configure(create_engine, config_engine).show();
+		return sp_options_configure(create_engine).show();
 	}
 
 private:
@@ -76,7 +75,6 @@ private:
 	virtual void post_show() override;
 
 	ng::create_engine& create_engine_;
-	ng::configure_engine& config_engine_;
 
 	std::unique_ptr<mp_options_helper> options_manager_;
 };
