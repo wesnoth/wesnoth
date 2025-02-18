@@ -1663,7 +1663,7 @@ Error code: {1}
     def on_about(self):
         showinfo(_("About Maintenance Tools GUI"),
                  # TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-                 _("""© Elvish_Hunter, 2014-2024
+                 _("""© Elvish_Hunter, 2014-2025
 
 Version: {0}
 
