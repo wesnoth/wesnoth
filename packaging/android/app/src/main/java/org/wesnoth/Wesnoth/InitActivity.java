@@ -18,14 +18,14 @@ package org.wesnoth.Wesnoth;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
-import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,16 +34,10 @@ import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipOutputStream;
 
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.pm.PackageManager;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,8 +51,7 @@ public class InitActivity extends Activity {
 	private final String archiveURL =
 		"https://sourceforge.net/projects/wesnoth/files/android/%s/download";
 
-	private String dataDir;
-	private String archivePath;
+	private File dataDir;
 	
 	static {
 		packages.put("Core Data", "master.zip");
@@ -76,10 +69,9 @@ public class InitActivity extends Activity {
 		this.setContentView(R.layout.activity_init);
 
 		// Initialize gamedata directory
-		dataDir = getExternalFilesDir(null) + "/gamedata";
-		File fDataDir = new File(dataDir);
-		if (!fDataDir.exists()) {
-			fDataDir.mkdir();
+		dataDir = new File(getExternalFilesDir(null), "gamedata");
+		if (!dataDir.exists()) {
+			dataDir.mkdir();
 		}
 		Log.d("InitActivity", "Creating " + dataDir);
 
@@ -90,7 +82,7 @@ public class InitActivity extends Activity {
 			//TODO Update mechanism when patch is available.
 			
 			Properties status = new Properties();
-			File statusFile = new File(dataDir + "/" + "status.properties");
+			File statusFile = new File(dataDir, "status.properties");
 			try {
 				if (statusFile.exists()) {
 					status.load(new FileInputStream(statusFile));
@@ -105,7 +97,7 @@ public class InitActivity extends Activity {
 				String uiname = entry.getKey();
 				String name = entry.getValue();
 				
-				File f = new File(dataDir + "/" + name);
+				File f = new File(dataDir, name);
 				long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
 				
 				// Download file
@@ -114,7 +106,7 @@ public class InitActivity extends Activity {
 					try {
 						lastModified = downloadFile(
 							String.format(archiveURL, name),
-							dataDir + "/" + name,
+							f,
 							uiname,
 							lastModified
 						);
@@ -131,7 +123,7 @@ public class InitActivity extends Activity {
 				{
 					Log.d("InitActivity", "Start unpack " + name);
 					
-					unpackArchive(dataDir + "/" + name, dataDir, uiname);
+					unpackArchive(f, dataDir, uiname);
 					f.delete();
 					
 					status.setProperty("unpack." + name, "true");
@@ -180,7 +172,7 @@ public class InitActivity extends Activity {
 		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
 	}
 
-	private long downloadFile(String url, String destpath, String type, long modified) {
+	private long downloadFile(String url, File destpath, String type, long modified) {
 		long newModified = 0;
 		// based on https://stackoverflow.com/a/4896527/22060628
 		Log.d("Download", "URL: " + url);
@@ -210,7 +202,7 @@ public class InitActivity extends Activity {
 			}
 
 			DataInputStream in = new DataInputStream(conn.getInputStream());
-			OutputStream out = new FileOutputStream(new File(destpath));
+			OutputStream out = new FileOutputStream(destpath);
 
 			byte[] buffer = new byte[8192];
 
@@ -240,17 +232,16 @@ public class InitActivity extends Activity {
 		return newModified;
 	}
 
-	private void unpackArchive(String path, String destdir, String type) {
-		File sFile = new File(path);
+	private void unpackArchive(File zipfile, File destdir, String type) {
 		Log.d("Unpack", "Start");
 		
-		if (sFile == null) {
+		if (zipfile == null) {
 			Log.e("Unpack", "File for " + type + " is null!");
 			return;
 		}
 		
 		try {
-			ZipFile zf = new ZipFile(sFile);
+			ZipFile zf = new ZipFile(zipfile);
 			Enumeration<? extends ZipEntry> e = zf.entries();
 			
 			progress = 0;
