@@ -16,7 +16,10 @@
 package org.wesnoth.Wesnoth;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.BatteryManager;
+import android.os.Build;
 import android.util.Log;
 
 import org.libsdl.app.SDLActivity;
@@ -31,4 +34,20 @@ public void open(String url) {
 	openIntent.setData(Uri.parse(url));
 	startActivity(openIntent);
 }
+
+public double getBatteryPercentage() {
+	// From https://stackoverflow.com/a/42327441
+	if (Build.VERSION.SDK_INT >= 21) {
+		BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
+		return (double) bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+	} else {
+		IntentFilter iFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+		Intent batteryStatus = registerReceiver(null, iFilter);
+		int level = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) : -1;
+		int scale = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1) : -1;
+		double batteryPct = level / (double) scale;
+		return batteryPct * 100;
+	}
+}
+
 }
