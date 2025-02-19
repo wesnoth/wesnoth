@@ -3,7 +3,6 @@
      com.gamemaker.game
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.wesnoth.Wesnoth"
     android:versionCode="1"
     android:versionName="1.19"
     android:installLocation="auto">
@@ -42,7 +41,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- Allow downloading to the external storage on Android 5.1 and older -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
 
     <!-- Allow access to Bluetooth devices -->
     <!-- Currently this is just for Steam Controller support and requires setting SDL_HINT_JOYSTICK_HIDAPI_STEAM -->
