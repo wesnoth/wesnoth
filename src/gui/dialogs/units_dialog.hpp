@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/sort_order.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -109,6 +110,12 @@ public:
 	units_dialog& set_row_num(const std::size_t row_num)
 	{
 		num_rows_ = row_num;
+		return *this;
+	}
+
+	units_dialog& set_sort_by(std::pair<std::string, sort_order::type> sort_order)
+	{
+		sort_order_ = sort_order;
 		return *this;
 	}
 
@@ -210,6 +217,7 @@ private:
 	bool show_dismiss_;
 	bool show_variations_;
 
+	std::pair<std::string, sort_order::type> sort_order_;
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
 	std::function<std::vector<std::string>(std::size_t)> filter_gen_;

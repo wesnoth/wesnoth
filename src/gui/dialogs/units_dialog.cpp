@@ -72,6 +72,7 @@ units_dialog::units_dialog()
 	, show_rename_(false)
 	, show_dismiss_(false)
 	, show_variations_(false)
+	, sort_order_(sort_default)
 	, gender_(unit_race::GENDER::MALE)
 	, variation_()
 	, filter_options_()
@@ -205,7 +206,7 @@ void units_dialog::show_list(listbox& list)
 		list.add_row(row_data);
 	}
 
-	const auto [sorter_id, order] = sort_last.value_or(sort_default);
+	const auto [sorter_id, order] = sort_last.value_or(sort_order_);
 	list.set_active_sorter(sorter_id, order, true);
 }
 
@@ -758,6 +759,9 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		[](const auto& unit) {
 			return !unit->trait_names().empty() ? unit->trait_names().front().str() : "";
 		});
+
+
+	dlg->set_sort_by(std::pair("unit_level", sort_order::type::descending));
 
 	dlg->set_tooltip_generator([recallable, wb_gold, &recall_list](std::size_t index) {
 		if(recallable(*recall_list[index])) {
