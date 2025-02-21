@@ -42,10 +42,6 @@
 #include <io.h>
 #endif
 
-#ifdef __ANDROID__
-#include <android/log.h>
-#endif
-
 static lg::log_domain log_setup("logsetup");
 #define ERR_LS LOG_STREAM(err,   log_setup)
 #define WRN_LS LOG_STREAM(warn,  log_setup)
@@ -72,7 +68,7 @@ class android_log_buf : public std::streambuf
 			output = output.substr(newline+1);
 		}
 	}
-	protected:
+protected:
 	virtual std::streamsize xsputn(const char_type* s, std::streamsize n) override {
 		output.append(s, n);
 		write();

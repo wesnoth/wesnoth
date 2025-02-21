@@ -98,22 +98,22 @@ window::~window()
 
 void window::set_size(const int w, const int h)
 {
-	#ifdef __ANDROID__
-		SDL_RenderSetLogicalSize(SDL_GetRenderer(window_), w, h);
-		SDL_WarpMouseInWindow(window_, w / 2, h / 2);
-	#else
-	 	SDL_SetWindowSize(window_, w, h);
-	#endif
+#ifdef __ANDROID__
+	SDL_RenderSetLogicalSize(SDL_GetRenderer(window_), w, h);
+	SDL_WarpMouseInWindow(window_, w / 2, h / 2);
+#else
+	SDL_SetWindowSize(window_, w, h);
+#endif
 }
 
 SDL_Point window::get_size()
 {
 	SDL_Point res;
-	#ifdef __ANDROID__
-		SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
-	#else
-	 	SDL_GetWindowSize(*this, &res.x, &res.y);
-	#endif
+#ifdef __ANDROID__
+	SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
+#else
+	SDL_GetWindowSize(*this, &res.x, &res.y);
+#endif
 
 	return res;
 }

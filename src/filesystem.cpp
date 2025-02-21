@@ -841,11 +841,11 @@ void set_cache_dir(const std::string& newcachedir)
 
 static const bfs::path& get_user_data_path()
 {
-	#ifdef __ANDROID__
+#ifdef __ANDROID__
 	if (user_data_dir.empty()) {
 		user_data_dir = bfs::path(SDL_AndroidGetExternalStoragePath());
 	}
-	#endif
+#endif
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
 }
