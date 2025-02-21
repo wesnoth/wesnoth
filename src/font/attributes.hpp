@@ -31,13 +31,26 @@ public:
 	{
 	}
 
+	attribute_list(attribute_list&& o)
+		: attributes_(std::exchange(o.attributes_, nullptr))
+	{
+	}
+
 	~attribute_list()
 	{
-		pango_attr_list_unref(attributes_);
+		if(attributes_) {
+			pango_attr_list_unref(attributes_);
+		}
 	}
 
 	attribute_list(const attribute_list&) = delete;
 	attribute_list& operator=(const attribute_list&) = delete;
+
+	attribute_list& operator=(attribute_list&& o)
+	{
+		attributes_ = std::exchange(o.attributes_, nullptr);
+		return *this;
+	};
 
 	void insert(PangoAttribute* attr)
 	{
