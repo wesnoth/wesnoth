@@ -16,6 +16,8 @@
 #include "gui/core/canvas.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 
+#include "font/attributes.hpp"
+
 namespace gui2
 {
 
@@ -246,9 +248,6 @@ public:
 	void draw(wfl::map_formula_callable& variables) override;
 
 private:
-	/** the source config */
-	config cfg_;
-
 	/** The text font family. */
 	font::family_class font_family_;
 
@@ -299,6 +298,9 @@ private:
 
 	/** Any extra WFL actions to execute. */
 	wfl::formula actions_formula_;
+
+	/** Any custom Pango text attributes. */
+	font::attribute_list text_attributes_;
 };
 
 }

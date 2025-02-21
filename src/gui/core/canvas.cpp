@@ -25,7 +25,6 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "font/attributes.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -394,71 +393,31 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
-text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
-	: rect_bounded_shape(cfg)
-	, cfg_(cfg)
-	, font_family_(font::str_to_family_class(cfg["font_family"]))
-	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
-	, font_style_(decode_font_style(cfg["font_style"]))
-	, text_alignment_(cfg["text_alignment"])
-	, color_(cfg["color"])
-	, text_(cfg["text"])
-	, text_markup_(cfg["text_markup"], false)
-	, link_aware_(cfg["text_link_aware"], false)
-	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
-	, maximum_width_(cfg["maximum_width"], -1)
-	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
-	, maximum_height_(cfg["maximum_height"], -1)
-	, highlight_start_(cfg["highlight_start"])
-	, highlight_end_(cfg["highlight_end"])
-	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
-	, outline_(cfg["outline"], false)
-	, actions_formula_(cfg["actions"], &functions)
+namespace
 {
-	const std::string& debug = (cfg["debug"]);
-	if(!debug.empty()) {
-		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
-	}
+/** For cases where we want a string wrapped in formula parentheses. */
+auto maybe_literal(const config::attribute_value& val, bool normal_formula)
+{
+	return typed_formula<t_string>{ normal_formula ? val : "('" + val + "')" };
 }
 
-void text_shape::draw(wfl::map_formula_callable& variables)
+/** Populates the attribute list from the given config child range. */
+auto parse_attributes(const config::const_child_itors& range)
 {
-	assert(variables.has_key("text"));
-
-	// We first need to determine the size of the text which need the rendered
-	// text. So resolve and render the text first and then start to resolve
-	// the other formulas.
-	const t_string& text = cfg_["parse_text_as_formula"].to_bool(true) ? text_(variables) : cfg_["text"].t_str();
-
-	if(text.empty()) {
-		DBG_GUI_D << "Text: no text to render, leave.";
-		return;
-	}
-
+	// TODO: most of the time this will be empty, unless you're using rich_label.
+	// It's a lot of memory allocations to always have a valid object here...
+	// Do we need store it as an optional?
 	font::attribute_list text_attributes;
 
-	//
-	// Highlight
-	//
-	const int highlight_start = highlight_start_(variables);
-	const int highlight_end = highlight_end_(variables);
+	for(const config& attr : range) {
+		const std::string name = attr["name"];
 
-	if(highlight_start != highlight_end) {
-		add_attribute_bg_color(text_attributes, highlight_start, highlight_end, highlight_color_(variables));
-	}
-
-	//
-	// Attribute subtags
-	//
-	for (const auto& attr : cfg_.child_range("attribute")) {
-		const std::string& name = attr["name"];
-
-		if (name.empty()) {
+		if(name.empty()) {
 			continue;
 		}
 
 		const unsigned start = attr["start"].to_int(0);
-		const unsigned end = attr["end"].to_int(text.size());
+		const unsigned end = attr["end"].to_int(/* text.size() */); // TODO: do we need to restore this default?
 
 		if (name == "color" || name == "fgcolor" || name == "foreground") {
 			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
@@ -485,6 +444,62 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		}
 	}
 
+	return text_attributes;
+}
+
+} // anon namespace
+
+text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
+	: rect_bounded_shape(cfg)
+	, font_family_(font::str_to_family_class(cfg["font_family"]))
+	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
+	, font_style_(decode_font_style(cfg["font_style"]))
+	, text_alignment_(cfg["text_alignment"])
+	, color_(cfg["color"])
+	, text_(maybe_literal(cfg["text"], cfg["parse_text_as_formula"].to_bool(true)))
+	, text_markup_(cfg["text_markup"], false)
+	, link_aware_(cfg["text_link_aware"], false)
+	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
+	, maximum_width_(cfg["maximum_width"], -1)
+	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
+	, maximum_height_(cfg["maximum_height"], -1)
+	, highlight_start_(cfg["highlight_start"])
+	, highlight_end_(cfg["highlight_end"])
+	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, outline_(cfg["outline"], false)
+	, actions_formula_(cfg["actions"], &functions)
+	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
+{
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
+	}
+}
+
+void text_shape::draw(wfl::map_formula_callable& variables)
+{
+	assert(variables.has_key("text"));
+
+	// We first need to determine the size of the text which need the rendered
+	// text. So resolve and render the text first and then start to resolve
+	// the other formulas.
+	const t_string text = text_(variables);
+
+	if(text.empty()) {
+		DBG_GUI_D << "Text: no text to render, leave.";
+		return;
+	}
+
+	//
+	// Highlight
+	//
+	const int highlight_start = highlight_start_(variables);
+	const int highlight_end = highlight_end_(variables);
+
+	if(highlight_start != highlight_end) {
+		add_attribute_bg_color(text_attributes_, highlight_start, highlight_end, highlight_color_(variables));
+	}
+
 	font::pango_text& text_renderer = font::get_text_renderer();
 	text_renderer.clear_attributes();
 
@@ -507,7 +522,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_add_outline(outline_(variables));
 
 	// Do this last so it can merge with attributes from markup
-	text_renderer.apply_attributes(text_attributes);
+	text_renderer.apply_attributes(text_attributes_);
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();
