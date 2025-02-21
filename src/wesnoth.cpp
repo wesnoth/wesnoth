@@ -68,10 +68,6 @@
 
 #include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
-#ifdef __ANDROID__
-#define main SDL_main
-#endif
-
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include "utils/optional_fwd.hpp"
@@ -104,6 +100,10 @@
 #include <windows.h>
 
 #endif // _WIN32
+
+#ifdef __ANDROID__
+#define main SDL_main
+#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -411,12 +411,12 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.usercache_path) {
-		PLAIN_LOG << filesystem::get_cache_dir();
+		std::cout << filesystem::get_cache_dir();
 		return 0;
 	}
 
 	if(cmdline_opts.userdata_path) {
-		PLAIN_LOG << filesystem::get_user_data_dir();
+		std::cout << filesystem::get_user_data_dir();
 		return 0;
 	}
 
@@ -427,6 +427,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	} else {
 		// if a pre-defined path does not exist this will empty it
+#ifdef __ANDROID__
+		game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
+#endif
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
@@ -599,7 +602,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
 		return 2;
 	}
-
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
 	return -1;
@@ -785,6 +787,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
 
+	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
 	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
 	if(!lg::log_dir_writable().value_or(true)) {
@@ -803,20 +806,19 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		loading_screen::progress(loading_stage::load_config);
-
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
 			PLAIN_LOG << "could not initialize game config";
-			return 1;
+			return;
 		}
 
 		loading_screen::progress(loading_stage::init_fonts);
-		res = font::load_font_config();
 
+		res = font::load_font_config();
 		if(res == false) {
 			PLAIN_LOG << "could not re-initialize fonts for the current language";
-			return 1;
+			return;
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
@@ -824,8 +826,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 			refresh_addon_version_info_cache();
 		}
-
-		return 0;
 	});
 
 	if(res == false) {
@@ -1004,10 +1004,8 @@ int main(int argc, char** argv)
 #endif
 
 #ifdef __ANDROID__
-	putenv("PANGOCAIRO_BACKEND=fontconfig");
-	putenv("FONTCONFIG_PATH=/storage/emulated/0/Android/data/org.wesnoth.Wesnoth/files/gamedata/fonts");
-	game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
-	putenv("SDL_HINT_AUDIODRIVER=android");
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 1);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 1);
 #endif
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
@@ -1019,6 +1017,7 @@ int main(int argc, char** argv)
 				std::cerr << "Press enter to continue..." << std::endl;
 				std::cin.get();
 			}
+#endif
 			safe_exit(finished);
 		}
 
