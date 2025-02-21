@@ -40,6 +40,14 @@ jobs:
         with:
           key: ${{ steps.restore-deps-cache.outputs.cache-primary-key }}
           path: ${{ env.PREFIXDIR }}
+          
+      - name: Upload Deps
+        uses: actions/upload-artifact@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          name: dependencies
+          path: ${{ env.PREFIXDIR }}
 
       - name: Build Wesnoth and create APKs and AAB
         env:
