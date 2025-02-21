@@ -58,7 +58,7 @@
 #endif
 
 #ifdef __ANDROID__
-	#include <SDL2/SDL.h>
+#include <SDL2/SDL_system.h>
 #endif
 
 static lg::log_domain log_desktop("desktop");

@@ -28,7 +28,7 @@
 #endif
 
 #ifdef __ANDROID__
-#include <SDL2/SDL.h> // For SDL Android functions
+#include <SDL2/SDL_system.h> // For SDL Android functions
 #include <jni.h>
 #endif
 
