@@ -14,9 +14,10 @@
 
 #pragma once
 
-#include <pango/pango-layout.h>
-
 #include "font/font_options.hpp"
+
+#include <pango/pango-layout.h>
+#include <utility>
 
 struct color_t;
 
