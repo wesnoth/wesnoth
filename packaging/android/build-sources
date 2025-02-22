@@ -5,11 +5,12 @@ ANDROID_HOME=${ANDROID_HOME:=/opt/android-sdk-update-manager/}
 NDKDIR=${ANDROID_NDK_ROOT:=$ANDROID_HOME/ndk/23.1.7779620}
 PREFIXDIR=${PREFIXDIR:=/tmp/android-prefix}
 BUILDDIR_PREFIX=${BUILDDIR_PREFIX:=/tmp}
+ARCHS=${ARCHS:="x86_64 armeabi-v7a arm64-v8a x86"}
 
 echo $ANDROID_HOME
 echo $NDKDIR
 
-for arch in "x86_64" "armeabi-v7a" "arm64-v8a" "x86"
+for arch in $ARCHS
 do
 	mkdir -p $BUILDDIR_PREFIX/wesnoth-$arch
 	pushd $BUILDDIR_PREFIX/wesnoth-$arch
