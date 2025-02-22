@@ -126,7 +126,8 @@ function gui.add_widget_definition(type, id, content) end
 ---@field text_alignment "'left'"|"'right'"|"'center'"
 ---@field ellipsize_mode "'none'"|"'start'"|"'middle'"|"'end'"
 ---@field overflow_to_tooltip boolean
----@field on_left_click fun()
+---@field on_left_click fun() a function that is called when the widget is left clicked once
+---@field on_double_click fun() a function that is called when the widget is left clicked twice
 
 ---The window widget is a container that contains all other widgets in the dialog
 ---@class window : widget

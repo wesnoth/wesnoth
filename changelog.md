@@ -5,6 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * All widgets now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget.
 ### Packaging
 ### Terrain
 ### Translations
