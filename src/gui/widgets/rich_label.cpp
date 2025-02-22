@@ -756,6 +756,7 @@ void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 void rich_label::update_canvas()
 {
 	for(canvas& tmp : get_canvases()) {
+		tmp.set_shapes(text_dom_, true);
 		tmp.set_variable("pos_x", wfl::variant(0));
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
@@ -766,7 +767,6 @@ void rich_label::update_canvas()
 		tmp.set_variable("padding", wfl::variant(padding_));
 		// Disable ellipsization so that text wrapping can work
 		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
-		tmp.set_cfg(text_dom_, true);
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
 }

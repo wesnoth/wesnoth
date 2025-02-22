@@ -118,7 +118,7 @@ public:
 	 * @param cfg                 The config object with the data to draw.
 	 * @param force               Whether to clear all shapes or not.
 	 */
-	void set_cfg(const config& cfg, const bool force = false)
+	void set_shapes(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
 		parse_cfg(cfg);
@@ -129,7 +129,7 @@ public:
 	 *
 	 * @param cfg                 The config object with the data to draw.
 	 */
-	void append_cfg(const config& cfg)
+	void append_shapes(const config& cfg)
 	{
 		parse_cfg(cfg);
 	}

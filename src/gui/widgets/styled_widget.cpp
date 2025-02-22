@@ -67,7 +67,7 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	 * and toggle_button have a variable canvas count determined by their definitions.
 	 */
 	for(unsigned i = 0; i < config_->state.size(); ++i) {
-		canvases_[i].set_cfg(config_->state[i].canvas_cfg_);
+		canvases_[i].set_shapes(config_->state[i].canvas_cfg_);
 	}
 
 	// Initialize all the canvas variables.
