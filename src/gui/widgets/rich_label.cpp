@@ -424,6 +424,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					col_x += col_widths[col_idx] + 2 * padding_;
 					auto [_, end_cfg] = text_dom.all_children_view().back();
+					end_cfg["maximum_width"] = col_widths[col_idx];
 					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
 					DBG_GUI_RL << "jump to next column";
