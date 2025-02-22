@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-help  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-02-17 15:53-0600\n"
-"PO-Revision-Date: 2024-09-06 08:58+0530\n"
+"PO-Revision-Date: 2025-02-20 14:27+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -466,7 +466,7 @@ msgstr "ছত্রাকের অরণ্য"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
-msgstr ""
+msgstr "রাত্রি-অনুসরণ"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
@@ -482,7 +482,7 @@ msgstr "বালি"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
@@ -669,12 +669,12 @@ msgstr "সূচনাকালীন অবস্থান টুল"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -717,10 +717,10 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))' align=here /><br/><bold>Impassable and Unwalkable</"
-"bold>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))' align=here /><br/><bold>Impassable and "
+"Unwalkable</bold>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -734,9 +734,10 @@ msgstr ""
 #: data/core/editor/help.cfg:139
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here /><img src='terrain/grass/green.png~BLIT(terrain/"
-"castle/keep-overlay-editor.png~O(0.5))' align=here />\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))' align=here /><img src='terrain/grass/"
+"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here /"
+">\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -857,8 +858,8 @@ msgstr ""
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:208
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' />\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)' />\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1156,10 +1157,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1260,22 +1261,16 @@ msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:466
-#, fuzzy
-#| msgid "Show all kinds of terrain"
 msgid "Show all kinds of terrain"
 msgstr "সব প্রকারের ভূমি দেখান"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:467
-#, fuzzy
-#| msgid "Show only water terrains"
 msgid "Show only water terrains"
 msgstr "শুধু জলজ ভুমি দেখান"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:468
-#, fuzzy
-#| msgid "Show only villages"
 msgid "Show only villages"
 msgstr "শুধু গ্রাম দেখান"
 
@@ -1312,8 +1307,9 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <italic>— "
 "supported since Wesnoth 1.14</italic>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <italic>— a WML preprocessor include</italic>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <italic>— a WML preprocessor include</"
+"italic>\n"
 "\n"
 "The <italic>map_file</italic> method is preferred over using a preprocessor "
 "include."
@@ -1388,24 +1384,6 @@ msgstr "দিনপঞ্জিকা"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
-#, fuzzy
-#| msgid ""
-#| "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
-#| "order:\n"
-#| "\n"
-#| "Whitefire\n"
-#| "Bleeding Moon\n"
-#| "Scatterseed\n"
-#| "Deeproot\n"
-#| "Scryer’s Bloom\n"
-#| "Thorntress\n"
-#| "Summit Star\n"
-#| "Kindlefire\n"
-#| "Stillseed\n"
-#| "Reaper’s Moon\n"
-#| "Verglas Bloom\n"
-#| "Blackfire\n"
-#| "\n"
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1430,21 +1408,6 @@ msgid ""
 "After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
 "(Before the Fall)."
 msgstr ""
-"ওয়েসনথ দিনপঞ্জিকায় 12টি মাস রয়েছে । ক্রমানুযায়ী, সেগুলি হল\n"
-"\n"
-"হোয়াইটফায়ার\n"
-"ব্লিডিং মুন\n"
-"স্ক্যাটারসিড\n"
-"ডিপরুট\n"
-"স্ক্রায়ারস্ ব্লুম\n"
-"থর্নট্রেস\n"
-"সামিট স্টার\n"
-"কিন্ডলফায়ার\n"
-"স্টিলসিড\n"
-"রিপারস মুন\n"
-"ভারগ্লাস ব্লুম\n"
-"ব্লাকফায়ার\n"
-"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1826,8 +1789,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref>dst='.."
-"race_elf' text='elves'</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive "
+"<ref>dst='..race_elf' text='elves'</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2517,7 +2480,7 @@ msgstr ""
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:280
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "ছায়া ও যুদ্ধের কুয়াশা"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:281
@@ -3525,8 +3488,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' dst='.."
-"eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' "
+"dst='..eras_section'</ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -4071,7 +4034,7 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
 msgid "female^skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:221
@@ -4079,6 +4042,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"এই ইউনিটটি শত্রুদের অতিক্রম করে যাওয়ায় দক্ষ, এবং প্রতিপক্ষের নিয়ন্ত্রণের ক্ষেত্রের "
+"দ্বারা প্রভাবিত হয় না ।"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
@@ -4106,6 +4071,8 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"এই ইউনিটটি নিজের পক্ষের যেকোনো দুটি ফাঁকা গ্রামের মধ্যে একটি মাত্র স্থানান্তর সংখ্যা "
+"খরচ করে দূরস্থানান্তর করতে পারে ।"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:286
@@ -6302,6 +6269,12 @@ msgid ""
 "civilization, though, only occasionally venturing close to prey upon "
 "livestock."
 msgstr ""
+"নেকড়ে হল শ্বাদন্ত বিশিষ্ট শিকারী প্রাণী যাদের প্রায়শই বন্য এলাকায় দেখতে পাওয়া যায় "
+"। দ্রুত, শক্ত এবং দৃঢ়, একটি নিঃসঙ্গ নেকড়ে সহজেই বেসামরিক এবং অপ্রশিক্ষিত সৈন্যদের "
+"পঙ্গু বা হত্যা করার জন্য যথেষ্ট, তবে তাদের দলে ভ্রমণ করার এবং একটি সংগঠিত পদ্ধতিতে "
+"আক্রমণ করার প্রবণতা তাদের ভ্রমণকারীদের কাছে বিশেষভাবে ভয়ঙ্কর করে তোলে । তারা "
+"সভ্যতা থেকে দূরে থাকার প্রবণতা রাখে, তবু, মাঝে মাঝে গবাদি পশুর শিকার করার চেষ্টা "
+"করে ।"
 
 #. [race]: id=wose
 #: data/core/units.cfg:442
@@ -6379,23 +6352,22 @@ msgstr "হতচকিত"
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Best of"
-msgstr ""
+msgstr "এর মধ্যে সবচেয়ে ভালো"
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
-msgstr ""
+msgstr "এর মধ্য সবচেয়ে খারাপ"
 
 #. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 #: src/help/help_topic_generators.cpp:122
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "base terrain"
-msgstr "মূল ভূমিরূপ:"
+msgstr "মূল ভূমিরূপ"
 
 #: src/help/help_topic_generators.cpp:197
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"গ্রামগুলি সেখানে অবস্থিত যে কোনও ইউনিটকে বিষ নিরাময় বা চিকিৎসার অনুমতি দেয় ।"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -6440,25 +6412,23 @@ msgstr "বিশেষ তথ্য:"
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
 #: src/help/help_topic_generators.cpp:241
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
-msgstr[0] "মূল ভূমিরূপ:"
-msgstr[1] "মূল ভূমিরূপ:"
+msgstr[0] "মূল ভূমিরূপ: $types"
+msgstr[1] "মূল ভূমিরূপগূলি: $types"
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 #: src/help/help_topic_generators.cpp:253
 msgid "Typical base terrain: $type"
-msgstr ""
+msgstr "স্বাভাবিক মূল ভূমিরূপ: $type"
 
 #: src/help/help_topic_generators.cpp:259
 msgid "Movement properties: "
-msgstr ""
+msgstr "চলাচলের বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:263
 msgid "Defense properties: "
-msgstr ""
+msgstr "প্রতিরক্ষামূলক বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:341
 msgid "Level"
@@ -6498,7 +6468,7 @@ msgstr "দক্ষতা: "
 
 #: src/help/help_topic_generators.cpp:562
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "দক্ষতা বৃদ্ধি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6526,7 +6496,7 @@ msgstr "দৃষ্টি:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:607
 msgid "Jamming:"
-msgstr ""
+msgstr "জ্যামিং:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6619,6 +6589,40 @@ msgstr "দৃষ্টিমূল্য"
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
 
+#~ msgid ""
+#~ "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+#~ "order:\n"
+#~ "\n"
+#~ "Whitefire\n"
+#~ "Bleeding Moon\n"
+#~ "Scatterseed\n"
+#~ "Deeproot\n"
+#~ "Scryer’s Bloom\n"
+#~ "Thorntress\n"
+#~ "Summit Star\n"
+#~ "Kindlefire\n"
+#~ "Stillseed\n"
+#~ "Reaper’s Moon\n"
+#~ "Verglas Bloom\n"
+#~ "Blackfire\n"
+#~ "\n"
+#~ msgstr ""
+#~ "ওয়েসনথ দিনপঞ্জিকায় 12টি মাস রয়েছে । ক্রমানুযায়ী, সেগুলি হল\n"
+#~ "\n"
+#~ "হোয়াইটফায়ার\n"
+#~ "ব্লিডিং মুন\n"
+#~ "স্ক্যাটারসিড\n"
+#~ "ডিপরুট\n"
+#~ "স্ক্রায়ারস্ ব্লুম\n"
+#~ "থর্নট্রেস\n"
+#~ "সামিট স্টার\n"
+#~ "কিন্ডলফায়ার\n"
+#~ "স্টিলসিড\n"
+#~ "রিপারস মুন\n"
+#~ "ভারগ্লাস ব্লুম\n"
+#~ "ব্লাকফায়ার\n"
+#~ "\n"
+
 #~ msgid "deflect"
 #~ msgstr "বিচ্যুতিকরণ"
 
@@ -6630,6 +6634,9 @@ msgstr "জ্যামিং মূল্য"
 
 #~ msgid "Help"
 #~ msgstr "সাহায্য"
+
+#~ msgid "Parse error when parsing help text:"
+#~ msgstr "সাহ্যয্যের তথ্য পড়ার সময় ত্রুটি:"
 
 #~ msgid "unit help^Attacks"
 #~ msgstr "আক্রমণসমূহ"
