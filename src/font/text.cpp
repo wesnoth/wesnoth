@@ -324,7 +324,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		}
 
 		const std::u32string wide = unicode_cast<std::u32string>(text);
-		const std::string narrow = unicode_cast<std::string>(wide);
+		std::string narrow = unicode_cast<std::string>(wide);
 		if(text != narrow) {
 			ERR_GUI_L
 				<< "pango_text::" << __func__
@@ -340,7 +340,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
 
-		text_ = narrow;
+		text_ = std::move(narrow);
 		length_ = wide.size();
 		markedup_text_ = markedup;
 		calculation_dirty_ = true;
