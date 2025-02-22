@@ -36,7 +36,7 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<level_type::type, std::string> level_type_info;
 
 public:
-	mp_create_game(saved_game& state, bool local_mode);
+	mp_create_game(saved_game& state, bool local_mode, const config& presets);
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
@@ -61,6 +61,8 @@ private:
 
 	void show_generator_settings();
 	void regenerate_random_map();
+
+	optional_const_config presets_;
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be

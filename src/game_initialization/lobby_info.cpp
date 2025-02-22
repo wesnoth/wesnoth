@@ -16,6 +16,7 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 
@@ -119,6 +120,49 @@ void lobby_info::process_gamelist(const config& data)
 	gamelist_initialized_ = true;
 
 	games_by_id_.clear();
+
+
+	// TODO: don't add if a matching game has already been created but has empty slots?
+	//       or keep this as a placeholder even if such a game exists?
+	for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
+		config qgame;
+		// id of -1 means a queue-defined game
+		qgame["id"] = -1;
+		// all are set as auto_hosted so they show up in that tab of the MP lobby
+		qgame["auto_hosted"] = true;
+
+		qgame["name"] = game["name"];
+		qgame["mp_scenario"] = game["mp_scenario"];
+		qgame["mp_era"] = game["mp_era"];
+		qgame["mp_use_map_settings"] = game["mp_use_map_settings"];
+		qgame["mp_fog"] = game["mp_fog"];
+		qgame["mp_shroud"] = game["mp_shroud"];
+		qgame["mp_village_gold"] = game["mp_village_gold"];
+		qgame["experience_modifier"] = game["experience_modifier"];
+
+		qgame["mp_countdown"] = game["mp_countdown"];
+		if(qgame["mp_countdown"].to_bool()) {
+			qgame["mp_countdown_reservoir_time"] = game["mp_countdown_reservoir_time"];
+			qgame["mp_countdown_init_time"] = game["mp_countdown_init_time"];
+			qgame["mp_countdown_action_bonus"] = game["mp_countdown_action_bonus"];
+			qgame["mp_countdown_turn_bonus"] = game["mp_countdown_turn_bonus"];
+		}
+		
+		qgame["observer"] = game["observer"];
+		qgame["human_sides"] = game["human_sides"];
+		
+		qgame["map_data"] = "Gg, 2 Gg, Gg, Gg, Gg, Gg, Gg, 1 Gg, Gg\nGg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg\nGg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg";
+		// needed here?
+		//qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["mp_scenario"].str()];
+
+		config& qchild = qgame.add_child("slot_data");
+		qchild["vacant"] = game.mandatory_child("slot_data")["vacant"];
+		qchild["max"] = game.mandatory_child("slot_data")["max"];
+
+		game_info g(qgame, installed_addons_);
+		games_by_id_.emplace(g.id, std::move(g));
+	}
+
 
 	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		game_info game(c, installed_addons_);
