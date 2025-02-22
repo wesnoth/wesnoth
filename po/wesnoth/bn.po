@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-02-05 12:06-0600\n"
-"PO-Revision-Date: 2025-02-15 14:42+0530\n"
+"PO-Revision-Date: 2025-02-21 22:54+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -2093,11 +2093,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "গ্রা,গ্রেয়া,গ্রি,কা,কাশশ,কেশশ,কোরো,ক্রা,কু,ক্জা,ক্জু"
 
 #: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr ""
+msgstr "কাসা,কায়া,কেয়া,কীরা,কোরা"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:91
@@ -2470,7 +2470,7 @@ msgstr ""
 
 #: data/core/macros/names.cfg:275
 msgid "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
-msgstr ""
+msgstr "বাল,কাম,কর্ন,ডেল,আর্ল,এল,ফক্স,ফ্রেন,গেল,হেল,হেক্স,হোক্স,ইল,কিন,নাম,নেস,নেউ,ওল,ওল্ড,ওল্ফ,ওউল,ওক্স,রক,রুক,সাল,সাম,সেড,সেল,সেন,সিল,টাল,ওয়াটার,ওয়েট,ইয়র্ক"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:277
@@ -3086,6 +3086,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=বন্দর|বন্দর\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3098,6 +3103,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|নদী\n"
+"\t\tsuffix=হ্যাম|ফোর্ড|ক্রস| on {river}\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3692,6 +3703,10 @@ msgid ""
 "will restrict it to one hex of movement in any direction. Unfortunately, you "
 "must completely surround skirmishers to immobilize them."
 msgstr ""
+"ঘিরে ফেলার কৌশলটি খুব শক্তিশালী, বিশেষত দ্রুত প্রতিপক্ষদের বিরুদ্ধে । শত্রুর দুই বিপরীত "
+"দিকে দুটি ইউনিট স্থাপন করে, তাদের নিয়ন্ত্রণের অঞ্চলগুলি তার চলাচল যে কোনও দিকে এক "
+"ষড়ভুজে সীমাবদ্ধ করবে। দুর্ভাগ্যক্রমে, সংঘর্ষকদের আটকানোর জন্য আপনাকে অবশ্যই তাদের "
+"সম্পূর্ণরূপে ঘিরে ফেলতে হবে ।"
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
@@ -3788,7 +3803,7 @@ msgstr ""
 #: data/tips.cfg:57
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr ""
+msgstr "<i>― রাজকীয় যুদ্ধ পরিভাষা সংকলন: দ্বিতীয় খন্ড (221 ই.ও.-তে পূনর্মুদ্রিত)</i>"
 
 #. [tip]
 #: data/tips.cfg:60
@@ -3809,8 +3824,8 @@ msgstr "<i>― দ্বিতীয় হ্যালড্রিক, 42 ই.ও.
 #| "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you "
 #| "won’t know what you’re facing. In this case, long-range scouting units "
 #| "are worth their cost. Try to choose scouts that can easily move across "
-#| "the surrounding terrain, because units can only see as far as they can "
-#| "move in one turn."
+#| "the surrounding terrain, because usually units can only see as far as "
+#| "they can move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
@@ -3825,6 +3840,13 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:68
+#, fuzzy
+#| msgid ""
+#| "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</"
+#| "i>, <i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have "
+#| "weaknesses against different types of attacks. Right-click on a unit and "
+#| "select <b>Unit Type Description</b> to see which attacks it is resistant "
+#| "to, and which will affect it the most."
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -3832,6 +3854,11 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
+"ছয় ধরণের আক্রমণ রয়েছে: <i>ভেদ্য</i>, <i>ধারালো অস্ত্র</i>, <i>ভোঁতা অস্ত্র</i>, "
+"<i>অগ্নি</i>, <i>শীতল</i> এবং <i>অলৌকিক</i> । ভিন্ন ভিন্ন ইউনিটদের ভিন্ন ভিন্ন "
+"ধরণের আক্রমণে দূর্বলতা থাকে । একটি ইউনিটের ওপর ডানদিকে ক্লিক করে <b>ইউনিটের "
+"প্রকৃতির বর্ণনা</b> পছন্দ করে কোন ধরণের আক্রমণে সেটির প্রতিরোধ বেশী, আর কোন ধরণের "
+"আক্রমণে সেটির দূর্বলতা রয়েছে ।"
 
 #. [tip]
 #: data/tips.cfg:72
@@ -3841,6 +3868,9 @@ msgid ""
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
+"আপনার ইউনিট দ্বারা দখল করা ভূখণ্ডটি তাদের আঘাত করতে পারার সম্ভাবনা নির্ধারণের "
+"প্রধান কারণ । বর্তমানে নির্বাচিত ভূখণ্ডে বর্তমানে নির্বাচিত ইউনিটের প্রতিরক্ষামূলক "
+"রেটিং স্ক্রিনের উপরের ডানদিকে প্রদর্শিত হয় ।"
 
 #. [tip]
 #: data/tips.cfg:76
@@ -3851,6 +3881,11 @@ msgid ""
 "poison will not be removed unless the unit regenerates, or begins a turn in "
 "a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
+"বিষ আক্রান্ত ইউনিটগুলি মারা যাওয়া থেকে এক পয়েন্ট না হওয়া পর্যন্ত প্রতি দানে আটটি "
+"জীবনসংখ্যা হারাবে। এরপর বিষ অপসারণ না হওয়া পর্যন্ত তারা মৃত্যুর দুয়ারে দাঁড়িয়ে থাকবে "
+"। আরোগ্যকারকরা একটি বিষাক্ত ইউনিটকে অবনতি থেকে রোধ করতে পারে, কিন্তু ইউনিটটি "
+"পুনরুদ্ধার না করা পর্যন্ত বা কোনও গ্রামে, একটি মরুদ্যানে বা <i>সুস্থ করে</i> বৈশিষ্ট্য "
+"সহ একটি ইউনিটের পাশে একটি পালা শুরু না করা পর্যন্ত বিষটি চলে যাবে না।"
 
 #. [tip]
 #: data/tips.cfg:80
@@ -3859,6 +3894,9 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
+"আপনি <b>কাজগুলি</b> মেনু থেকে <b>পুনরায় ডাকুন</b> নির্বাচন করে আগের ঘটনাক্রম থেকে "
+"ইউনিটগুলি পুনরায় ব্যবহার করতে পারেন । একই ইউনিটদের বারবার ডেকে, আপনি একটি "
+"শক্তিশালী এবং অভিজ্ঞ সেনাবাহিনী গড়ে তুলতে পারেন ।"
 
 #. [tip]
 #: data/tips.cfg:84
@@ -3869,6 +3907,10 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
+"এক এবং উচ্চতর পর্যায়ের ইউনিটগুলির চারপাশের ছয়টি ষড়ভূজে <i>নিয়ন্ত্রণের ক্ষেত্র</i> "
+"রয়েছে । যদি কোনও ইউনিট শত্রুর নিয়ন্ত্রণের অঞ্চলে চলে যায়, তবে সেটি সেই দানে আর "
+"অগ্রসর হতে পারে না । এর অর্থ হল ইউনিটগুলির মধ্যে দুটি খালি ষড়ভূজ থাকলেও তা শত্রুর "
+"জন্য বাধা তৈরি করতে পারে। তবে সতর্ক থাকবেন, সংঘর্ষকরা এই ফাঁকগুলি দিয়ে যেতে পারে।"
 
 #. [tip]
 #: data/tips.cfg:88
@@ -3879,6 +3921,11 @@ msgid ""
 "are guaranteed at least a 60% chance of a hit when they attack on their own "
 "turn."
 msgstr ""
+"কোনও ইউনিটকে আঘাত করার সুযোগটি সাধারণত নির্ভর করে যে ইউনিটটি যে ভূখণ্ডে দাঁড়িয়ে "
+"আছে সেখানে সে নিজেকে কতটা ভালভাবে রক্ষা করতে পারে তার উপর। যাইহোক, জাদু "
+"আক্রমণগুলিতে সর্বদা আঘাত করার 70% সম্ভাবনা থাকে এবং <i>লক্ষ্যবিদ</i> দক্ষতার সাথে "
+"ইউনিটগুলি যখন তারা নিজের পালা আক্রমণ করে তখন আঘাতের কমপক্ষে 60% সম্ভাবনা নিশ্চিত "
+"করে।"
 
 #. [tip]
 #: data/tips.cfg:89
@@ -4287,7 +4334,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:246
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― রাণী অ্যাশভিয়ের, 503 ই.ও."
+msgstr "<i>― রাণী অ্যাশভিয়ের, 503 ই.ও.</i>"
 
 #. [tip]
 #: data/tips.cfg:249
@@ -4600,8 +4647,9 @@ msgid ""
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] ""
+msgstr[0] "পরবর্তী নির্ভরশীলতা ইনস্টল করা যাবে না । আপনি কী তবুও এগিয়ে যেতে চান?"
 msgstr[1] ""
+"পরবর্তী নির্ভরশীলতাগুলি ইনস্টল করা যাবে না । আপনি কী তবুও এগিয়ে যেতে চান?"
 
 #: src/addon/client.cpp:538
 msgid "Dependencies Installation Failed"
@@ -4779,7 +4827,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:405
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "অস্তিত্বহীন অ্যাড-অনের জন্য আপডেট আপলোড করার চেষ্টা করা হয়েছে ।"
 
 #: src/addon/validation.cpp:414
 msgid "No add-on data was supplied by the client."
@@ -4795,7 +4843,7 @@ msgstr "অবৈধ অ্যাড-অন নাম ।"
 
 #: src/addon/validation.cpp:426
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "অ্যাড-অনের নামে ফরম্যাটিং অক্ষর রয়েছে ।"
 
 #: src/addon/validation.cpp:430
 msgid ""
@@ -8059,6 +8107,9 @@ msgstr "হোয়াইটবোর্ড অপশনগুলি"
 #~ msgid "Show icons in the Add-ons manager"
 #~ msgstr "অ্যাড-অন ম্যানেজারে আইকন দেখান"
 
+#~ msgid "deflect"
+#~ msgstr "বিক্ষেপ"
+
 #~ msgid ""
 #~ "When used defensively, this attack reduces the opponent’s chance to hit "
 #~ "by 10%."
@@ -8098,50 +8149,80 @@ msgstr "হোয়াইটবোর্ড অপশনগুলি"
 #~ msgid "Urban"
 #~ msgstr "শহর"
 
-#, fuzzy
-#~| msgid "Chat message aging"
-#~ msgid "Don’t show this message again"
-#~ msgstr "চ্যাট বার্তার বয়স"
+#~ msgid "Max HP bonus +3, Max XP +20%"
+#~ msgstr "অতিরিক্ত মোট জীবন +3, মোট অভিজ্ঞতা +20%"
 
-#, fuzzy
-#~| msgid "Warning"
+#~ msgid "Gain +8 hitpoints."
+#~ msgstr "+8 জীবনসংখ্যা পান ।"
+
+#~ msgid "Gain +4 melee damage."
+#~ msgstr "+4 নিকট আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Gain +2 melee damage."
+#~ msgstr "+2 নিকট আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Gain +1 melee damage."
+#~ msgstr "+1 নিকট আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Gain +4 ranged damage."
+#~ msgstr "+4 দূর আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Gain +2 ranged damage."
+#~ msgstr "+2 দূর আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Gain +1 ranged damage."
+#~ msgstr "+1 দূর আক্রমণের ক্ষমতা পান ।"
+
+#~ msgid "Ok, continue with the game"
+#~ msgstr "ঠিক আছে, খেলাতে এগিয়ে যান"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "এই বার্তা পুনরায় দেখাবেন না"
+
+#~ msgid "Urban Jungle"
+#~ msgstr "শহুরে জঙ্গল"
+
+#~ msgid "Dawn"
+#~ msgstr "ভোর"
+
 #~ msgid "Morning"
-#~ msgstr "সতর্কবার্তা"
+#~ msgstr "সকাল"
+
+#~ msgid "Midday"
+#~ msgstr "মধ্যাহ্ন"
+
+#~ msgid "Afternoon"
+#~ msgstr "বিকেল"
+
+#~ msgid "Dusk"
+#~ msgstr "সন্ধ্যা"
+
+#~ msgid "First Watch"
+#~ msgstr "রাত্রির প্রথমার্ধ"
+
+#~ msgid "Midnight"
+#~ msgstr "মধ্যরাত্রি"
+
+#~ msgid "Second Watch"
+#~ msgstr "রাত্রির দ্বিতীয়ার্ধ"
 
 #~ msgid "<i>― Great Mage Delfador, 520YW</i>"
 #~ msgstr "<i>― মহান জাদুবিদ ডেলফাডোর, 520 ই.ও.</i>"
 
-#, fuzzy
-#~| msgid "Requesting file index..."
 #~ msgid "Requesting forum_auth usage..."
-#~ msgstr "ফাইল ইনডেক্স চাওয়া হচ্ছে"
+#~ msgstr "forum_auth ব্যবহার জানতে চাওয়া হচ্ছে..."
 
-#, fuzzy
-#~| msgid "Requesting distribution terms..."
 #~ msgid "Requesting list of admins..."
-#~ msgstr "ডিস্ট্রিবিউশন টার্ম জানার চেষ্টা করা হচ্ছে ।"
+#~ msgstr "অ্যাডমিনদের তালিকা জানার চেষ্টা করা হচ্ছে..."
 
-#, fuzzy
-#~| msgid "Downloading list of add-ons..."
 #~ msgid "Getting list of hidden add-ons..."
-#~ msgstr "অ্যাড-অনের তালিকা ডাউনলোড করা হচ্ছে..."
+#~ msgstr "লুকোনো অ্যাড-অনের তালিকা নেওয়া হচ্ছে..."
 
-#, fuzzy
-#~| msgid "Downloading list of add-ons..."
 #~ msgid "Hiding add-on..."
-#~ msgstr "অ্যাড-অনের তালিকা ডাউনলোড করা হচ্ছে..."
+#~ msgstr "অ্যাড-অন লুকোনো হচ্ছে..."
 
-#, fuzzy
-#~| msgid "Downloading list of add-ons..."
 #~ msgid "Unhiding add-on..."
-#~ msgstr "অ্যাড-অনের তালিকা ডাউনলোড করা হচ্ছে..."
-
-#, fuzzy
-#~| msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "The file size for the icon for the add-on <i>$addon_title</i> is too "
-#~ "large."
-#~ msgstr "অ্যাড-অন <i>$addon_title</i>-এর জন্য আপডেট প্যাক পাঠানো হচ্ছে..."
+#~ msgstr "অ্যাড-অন দৃশ্যমান করা হচ্ছে..."
 
 #~ msgid "The add-on’s icon’s file size is too large."
 #~ msgstr "অ্যাড-অনের আইকনের ফাইল সাইজ খুব বড়ো ।"

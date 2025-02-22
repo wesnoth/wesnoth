@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-help  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-09-06 08:58+0530\n"
+"PO-Revision-Date: 2025-02-20 14:27+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -300,7 +300,7 @@ msgstr "ছত্রাকের অরণ্য"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
-msgstr ""
+msgstr "রাত্রি-অনুসরণ"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
@@ -316,7 +316,7 @@ msgstr "বালি"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
@@ -2146,7 +2146,7 @@ msgstr ""
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:277
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "ছায়া ও যুদ্ধের কুয়াশা"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:278
@@ -3748,7 +3748,7 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
 msgid "female^skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:221
@@ -3756,6 +3756,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"এই ইউনিটটি শত্রুদের অতিক্রম করে যাওয়ায় দক্ষ, এবং প্রতিপক্ষের নিয়ন্ত্রণের ক্ষেত্রের "
+"দ্বারা প্রভাবিত হয় না ।"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
@@ -3783,6 +3785,8 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"এই ইউনিটটি নিজের পক্ষের যেকোনো দুটি ফাঁকা গ্রামের মধ্যে একটি মাত্র স্থানান্তর সংখ্যা "
+"খরচ করে দূরস্থানান্তর করতে পারে ।"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:286
@@ -5849,6 +5853,12 @@ msgid ""
 "civilization, though, only occasionally venturing close to prey upon "
 "livestock."
 msgstr ""
+"নেকড়ে হল শ্বাদন্ত বিশিষ্ট শিকারী প্রাণী যাদের প্রায়শই বন্য এলাকায় দেখতে পাওয়া যায় "
+"। দ্রুত, শক্ত এবং দৃঢ়, একটি নিঃসঙ্গ নেকড়ে সহজেই বেসামরিক এবং অপ্রশিক্ষিত সৈন্যদের "
+"পঙ্গু বা হত্যা করার জন্য যথেষ্ট, তবে তাদের দলে ভ্রমণ করার এবং একটি সংগঠিত পদ্ধতিতে "
+"আক্রমণ করার প্রবণতা তাদের ভ্রমণকারীদের কাছে বিশেষভাবে ভয়ঙ্কর করে তোলে । তারা "
+"সভ্যতা থেকে দূরে থাকার প্রবণতা রাখে, তবু, মাঝে মাঝে গবাদি পশুর শিকার করার চেষ্টা "
+"করে ।"
 
 #. [race]: id=wose
 #: data/core/units.cfg:416
@@ -5933,20 +5943,21 @@ msgstr "সাহায্য"
 
 #: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
-msgstr ""
+msgstr "সাহ্যয্যের তথ্য পড়ার সময় ত্রুটি:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "এর মধ্যে সবচেয়ে ভালো"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "এর মধ্য সবচেয়ে খারাপ"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"গ্রামগুলি সেখানে অবস্থিত যে কোনও ইউনিটকে বিষ নিরাময় বা চিকিৎসার অনুমতি দেয় ।"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -5987,17 +5998,17 @@ msgstr "বিশেষ তথ্য:"
 
 #: src/help/help_topic_generators.cpp:193
 #, fuzzy
-#| msgid "Base Terrain: "
+#| msgid "base terrain"
 msgid "Base Terrain: "
-msgstr "মূল ভূমিরূপ:"
+msgstr "মূল ভূমিরূপ"
 
 #: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
-msgstr ""
+msgstr "চলাচলের বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
-msgstr ""
+msgstr "প্রতিরক্ষামূলক বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:297
 msgid "Level"
@@ -6037,7 +6048,7 @@ msgstr "দক্ষতা: "
 
 #: src/help/help_topic_generators.cpp:537
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "দক্ষতা বৃদ্ধি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6065,7 +6076,7 @@ msgstr "দৃষ্টি:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:582
 msgid "Jamming:"
-msgstr ""
+msgstr "জ্যামিং:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6152,9 +6163,10 @@ msgstr "দৃষ্টিমূল্য"
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
 
-#, fuzzy
-#~| msgid "Base Terrain: "
 #~ msgid "Basic terrain type: $types"
 #~ msgid_plural "Basic terrain types: $types"
-#~ msgstr[0] "মূল ভূমিরূপ:"
-#~ msgstr[1] "মূল ভূমিরূপ:"
+#~ msgstr[0] "মূল ভূমিরূপ: $types"
+#~ msgstr[1] "মূল ভূমিরূপগূলি: $types"
+
+#~ msgid "Typical base terrain: $type"
+#~ msgstr "স্বাভাবিক মূল ভূমিরূপ: $type"
