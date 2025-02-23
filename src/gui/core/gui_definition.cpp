@@ -228,7 +228,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	auto control = find_definition(current_types);
 
 	// Definition not found in the current theme, try the default theme.
-	if(!control) {
+	if(!control && current_gui != default_gui) {
 		control = find_definition(default_types);
 	}
 
