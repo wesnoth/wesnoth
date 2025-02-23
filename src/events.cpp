@@ -661,10 +661,8 @@ void pump()
 				// Not used.
 				break;
 			}
-
 			raise_window_event(event);
-
-					// This event was just distributed, don't re-distribute.
+		    // This event was just distributed, don't re-distribute.
 			continue;
 
 		case SDL_MOUSEMOTION: {
