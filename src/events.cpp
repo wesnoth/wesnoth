@@ -536,16 +536,15 @@ void pump()
 					return;
 				}
 
-				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+				if(event.motion.state & SDL_BUTTON_RMASK)
 				{
 					// Events are given by SDL in draw space
 					point c = video::game_canvas_size();
-
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
 					touch_event.type = SDL_FINGERMOTION;
-					touch_event.tfinger.type = SDL_FINGERMOTION;
-					touch_event.tfinger.timestamp = event.motion.timestamp;
+					touch_event.tfinger.type = touch_event.type; // touch_event.tfinger.type is attributed to SDL_FINGERMOTION
+					touch_event.tfinger.timestamp = event.motion.timestamp; // More maintainable this way?
 					touch_event.tfinger.touchId = 1;
 					touch_event.tfinger.fingerId = 1;
 					touch_event.tfinger.dx = static_cast<float>(event.motion.xrel) / c.x;
@@ -579,9 +578,32 @@ void pump()
 					touch_event.tfinger.dy = 0;
 					touch_event.tfinger.x = static_cast<float>(event.button.x) / c.x;
 					touch_event.tfinger.y = static_cast<float>(event.button.y) / c.y;
-					touch_event.tfinger.pressure = 1;
-					::SDL_PushEvent(&touch_event);
+					touch_event.tfinger.pressure = (event.type == SDL_MOUSEBUTTONDOWN) ? 1 : 0; // Important proposed change, here 
+					::SDL_PushEvent(&touch_event);     // now it is possible for tfinger.pressure to be deactivated (e.g 0)
 
+					if(event.type == SDL_MOUSEBUTTONUP) {
+						// Clear both touch and mouse state on finger up...
+						SDL_Event clear_motion; // To make sure there is no persistent touch event.
+						clear_motion.type = SDL_MOUSEMOTION;
+						clear_motion.motion.type = SDL_MOUSEMOTION;
+						clear_motion.motion.timestamp = event.button.timestamp; 
+						clear_motion.motion.windowID = event.button.windowID;
+						clear_motion.motion.which = SDL_TOUCH_MOUSEID;
+						clear_motion.motion.state = 0;  // No buttons pressed
+						clear_motion.motion.x = event.button.x;
+						clear_motion.motion.y = event.button.y;
+						clear_motion.motion.xrel = 0;
+						clear_motion.motion.yrel = 0;
+						::SDL_PushEvent(&clear_motion);
+
+						SDL_Event clear_touch;
+						clear_touch.type = SDL_FINGERMOTION;
+						clear_touch.tfinger = touch_event.tfinger;
+						clear_touch.tfinger.dx = 0;
+						clear_touch.tfinger.dy = 0;
+						clear_touch.tfinger.pressure = 0;
+						::SDL_PushEvent(&clear_touch);
+					}
 				}
 				break;
 			default:
@@ -642,7 +664,7 @@ void pump()
 
 			raise_window_event(event);
 
-			// This event was just distributed, don't re-distribute.
+					// This event was just distributed, don't re-distribute.
 			continue;
 
 		case SDL_MOUSEMOTION: {
