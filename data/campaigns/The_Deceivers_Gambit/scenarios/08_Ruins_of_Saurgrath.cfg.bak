@@ -250,21 +250,23 @@
         #############################
         # SAURIAN CIVILIANS
         #############################
-#define SPAWN_JUVENILE X Y 
-        {VARIABLE_OP image rand "juvenile,juvenile_backpack,juvenile_cloaked,juvenile_devotee"}
-        {GENERIC_UNIT 9 (Saurian Juvenile) {X} {Y}}
-        {ADD_MODIFICATION([object]
-            {EFFECT new_animation ([standing_anim]
-				start_time=0
-				base_score=99
-				[frame]
-					image="units/saurian-juvenile/$image-bob[1~6].png:200"
-				[/frame]
-			[/standing_anim])}
-            {EFFECT new_animation ([movement_anim]
-                base_score=99 {FRAME image="units/saurian-juvenile/$image.png"}
-            [/movement_anim])}
-        [/object])}
+#define SPAWN_JUVENILE X Y
+    {VARIABLE_OP image rand "saurian1.png,saurian2.png,saurian3.png,saurian4.png"}
+    {GENERIC_UNIT 9 (Saurian Juvenile) {X} {Y}}
+    {ADD_MODIFICATION(
+        [object]
+            {EFFECT new_animation (
+                [standing_anim]
+                    base_score=99 {FRAME image="units/civilian/$image"}
+                [/standing_anim]
+            )}
+            {EFFECT new_animation (
+                [movement_anim]
+                    base_score=99 {FRAME image="units/civilian/$image"}
+                [/movement_anim]
+            )}
+        [/object]
+    )}
 #enddef
 #define PLACE_CIVILIANS XLIST YLIST
     [random_placement]
