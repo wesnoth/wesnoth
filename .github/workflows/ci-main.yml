@@ -359,6 +359,10 @@ jobs:
         if: matrix.cfg == 'Release'
         run: python run_wml_tests -v -g -c -t 20 -p %CFG%/wesnoth.exe -a=--userdata-dir=ud
 
+      - name: Run Boost unit tests
+        if: matrix.cfg == 'Release'
+        run: python run_boost_tests -p %CFG%
+
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
         uses: actions/upload-artifact@v4
