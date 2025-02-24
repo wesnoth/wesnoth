@@ -6,6 +6,7 @@
 ### Multiplayer
 ### Lua API
 ### Packaging
+   * Boost 1.70 or later is now required
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Finnish, Italian

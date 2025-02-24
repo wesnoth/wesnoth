@@ -52,7 +52,7 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.67")
+set(BOOST_VERSION "1.70")
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)

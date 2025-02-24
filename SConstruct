@@ -196,7 +196,7 @@ if env['compile_db']:
     cdb = env.CompilationDatabase()
     Alias('cdb', cdb)
 
-boost_version = "1.67"
+boost_version = "1.70"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
