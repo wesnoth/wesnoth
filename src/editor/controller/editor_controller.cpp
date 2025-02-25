@@ -374,7 +374,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_TERRAIN_DESCRIPTION:
 			return gui().mouseover_hex().valid();
 
-			// unit tool related
+		// unit tool related
 		case HOTKEY_DELETE_UNIT:
 		case HOTKEY_RENAME_UNIT:
 		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
@@ -401,12 +401,16 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
-		case HOTKEY_EDITOR_MAP_SAVE_AS:
+		case HOTKEY_EDITOR_SAVE_AS:
 			return true;
 
 		// Can be enabled as long as a valid addon_id is set
 		case HOTKEY_EDITOR_EDIT_UNIT:
 			return !current_addon_id_.empty();
+
+		// Only enable when editing a map
+		case HOTKEY_EDITOR_SAVE_MAP_AS_SCENARIO:
+			return get_current_map_context().is_pure_map();
 
 		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
@@ -1054,10 +1058,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 			context_manager_->save_all_maps();
 			return true;
-		case HOTKEY_EDITOR_MAP_SAVE_AS:
-			context_manager_->save_map_as_dialog();
+		case HOTKEY_EDITOR_SAVE_AS:
+			if (get_current_map_context().is_pure_map()) {
+				context_manager_->save_map_as_dialog();
+			} else if(initialize_addon()) {
+				context_manager_->save_scenario_as_dialog();
+			}
 			return true;
-		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
+		case HOTKEY_EDITOR_SAVE_MAP_AS_SCENARIO:
 			if(initialize_addon()) {
 				context_manager_->save_scenario_as_dialog();
 			}
