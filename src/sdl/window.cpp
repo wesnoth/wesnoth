@@ -119,14 +119,10 @@ SDL_Point window::get_size()
 
 SDL_Point window::get_output_size()
 {
-#ifdef __ANDROID__
-	return this->get_size();
-#else
- 	SDL_Point res;
- 	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
+	SDL_Point res;
+	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
 
- 	return res;
-#endif
+	return res;
 }
 
 void window::center()
