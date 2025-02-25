@@ -667,6 +667,23 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 			}
 		}
 	}
+	std::optional<int> max_radius = dynamic_cast<game_state&>(*resources::filter_con).affect_distant_max_radius();
+	if(max_radius){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(loc_, *max_radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == this) {
+				continue;
+			}
+			for(const auto [key, cfg] : unit_itor->abilities_.all_children_view()) {
+				if(!cfg[image_type + "_image"].str().empty() && get_dist_ability_bool(cfg, key, loc_, *unit_itor, surrounding[j]))
+				{
+					add_string_to_vector(image_list, cfg, image_type + "_image");
+				}
+			}
+		}
+	}
 	//rearranges vector alphabetically when its size equals or exceeds two.
 	if(image_list.size() >= 2){
 		std::sort(image_list.begin(), image_list.end());
