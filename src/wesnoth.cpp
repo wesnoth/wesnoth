@@ -1002,11 +1002,11 @@ int main(int argc, char** argv)
 	// original process environment for research/testing purposes.
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
-
 #ifdef __ANDROID__
-	setenv("PANGOCAIRO_BACKEND", "fontconfig", 1);
-	setenv("SDL_HINT_AUDIODRIVER", "android", 1);
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
 #endif
+
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
