@@ -25,6 +25,7 @@
 #include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
+#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
@@ -249,6 +250,32 @@ void unit_mover::update_shown_unit()
 	}
 }
 
+static void update_distant(const unit& u)
+{
+	display* disp = display::get_singleton();
+	std::optional<int> max_radius = dynamic_cast<game_state&>(*resources::filter_con).affect_distant_max_radius();
+	bool affect_distant = false;
+	if(max_radius){
+		for(const auto [key, cfg] : u.abilities().all_children_view()) {
+				if(cfg.has_child("affect_distant")){
+					affect_distant = true;
+					break;
+				}
+		}
+		if(affect_distant){
+			const unit_map& units = disp->context().units();
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(u.get_location(), (*max_radius + 1), surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &u) {
+					continue;
+				}
+				unit_itor->anim_comp().set_standing();
+			}
+		}
+	}
+}
 
 /**
  * Initiates the display of movement for the supplied unit.
@@ -260,6 +287,7 @@ void unit_mover::start(const unit_ptr& u)
 	if ( !can_draw_ )
 		return;
 	// If no animation then hide unit until end of movement
+	update_distant(*u);
 	if ( !animate_ ) {
 		was_hidden_ = u->get_hidden();
 		u->set_hidden(true);
@@ -380,6 +408,7 @@ void unit_mover::proceed_to(const unit_ptr& u, std::size_t path_index, bool upda
 	u->anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
 	// Remember the unit to unhide when the animation finishes.
 	shown_unit_ = u;
+	update_distant(*u);
 	if ( wait )
 		wait_for_anims();
 }
@@ -464,6 +493,7 @@ void unit_mover::finish(const unit_ptr& u, map_location::direction dir)
 		// Switch the display back to the real unit.
 		u->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
+		update_distant(*u);
 
 		if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 			mousehandler->invalidate_reachmap();
@@ -589,6 +619,7 @@ void unit_die(const map_location& loc, unit& loser,
 	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();
 	}
+	update_distant(loser);
 }
 
 
@@ -837,6 +868,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 			}
 		}
 	}
+	update_distant(*u);
 	animator.add_animation(u.get_shared_ptr(), "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();
