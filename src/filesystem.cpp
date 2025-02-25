@@ -673,10 +673,6 @@ static void setup_user_data_dir()
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
 
-#ifdef __ANDROID__
-	user_data_dir = bfs::path(SDL_AndroidGetExternalStoragePath());
-#endif
-
 	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
@@ -752,6 +748,8 @@ void set_user_data_dir(std::string newprefdir)
 		} else {
 			newprefdir = "~/.wesnoth" + get_version_path_suffix();
 		}
+#elif defined(__ANDROID__)
+		newprefdir = SDL_AndroidGetExternalStoragePath();
 #else
 		const char* h = std::getenv("HOME");
 		std::string home = h ? h : "";
@@ -831,11 +829,6 @@ void set_cache_dir(const std::string& newcachedir)
 
 static const bfs::path& get_user_data_path()
 {
-#ifdef __ANDROID__
-	if (user_data_dir.empty()) {
-		user_data_dir = bfs::path(SDL_AndroidGetExternalStoragePath());
-	}
-#endif
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
 }
