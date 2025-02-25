@@ -58,6 +58,9 @@ void move_action::write(config & cfg) const
 /**
  * Reset halo of adjacent units when undo move.
  */
+/**
+ * Reset halo of adjacent units when undo move.
+ */
 static void reset_adjacent(bool& halo_adjacent, unit_map& units, const map_location& loc)
 {
 	if(halo_adjacent){
@@ -70,6 +73,12 @@ static void reset_adjacent(bool& halo_adjacent, unit_map& units, const map_locat
 			if ( &*it == &*u )
 				continue;
 			it->anim_comp().set_standing();
+		}
+		for(unit_map::const_iterator unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor) {
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &*u) {
+				continue;
+			}
+			unit_itor->anim_comp().set_standing();
 		}
 	}
 }
@@ -105,7 +114,7 @@ bool move_action::undo(int)
 	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	bool halo_adjacent = false;
 	for(const auto [_, cfg] : u->abilities().all_children_view()){
-		if(!cfg["halo_image"].empty() && cfg.has_child("affect_adjacent")){
+		if(!cfg["halo_image"].empty() && (cfg.has_child("affect_adjacent") || cfg.has_child("affect_distant"))){
 			halo_adjacent = true;
 			break;
 		}
