@@ -126,8 +126,11 @@ public:
 	 * \todo unclear what this should mean, so replace it with a clearly-named
 	 * successor.
 	 */
-	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
-		(number_ != t_translation::VOID_TERRAIN ); }
+	bool is_nonnull() const {
+		return (number_ != t_translation::NONE_TERRAIN)
+			&& (number_ != t_translation::VOID_TERRAIN);
+	}
+
 	/** Returns the light (lawful) bonus for this terrain when the time of day gives a @a base bonus. */
 	int light_bonus(int base) const
 	{

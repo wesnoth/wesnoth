@@ -96,11 +96,19 @@ static std::string format_mp_entry(const int cost, const int max_cost) {
 
 typedef t_translation::ter_list::const_iterator ter_iter;
 // Gets an english description of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(const ter_iter& start, const ter_iter& end, const std::shared_ptr<terrain_type_data> & tdata, bool first_level = true, bool begin_best = true)
+static std::string print_behavior_description(
+	const ter_iter& start,
+	const ter_iter& end,
+	const std::shared_ptr<terrain_type_data>& tdata,
+	bool first_level = true,
+	bool begin_best = true)
 {
 
 	if (start == end) return "";
-	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
+	if (*start == t_translation::MINUS || *start == t_translation::PLUS) {
+		//absorb any leading mode changes by calling again, with a new default value begin_best.
+		return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS);
+	}
 
 	utils::optional<ter_iter> last_change_pos;
 
@@ -176,10 +184,9 @@ std::string terrain_topic_generator::operator()() const {
 		ss << markup::img(type_.editor_image()) << markup::br;
 	}
 
+	ss << "\n";
 	if (!type_.help_topic_text().empty()) {
-		ss << "\n" << type_.help_topic_text().str() << "\n";
-	} else {
-		ss << "\n";
+		ss << type_.help_topic_text().str() << "\n";
 	}
 
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
@@ -187,6 +194,19 @@ std::string terrain_topic_generator::operator()() const {
 	if (!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
+	}
+
+	if (type_.is_combined()) {
+		ss << "Base terrain: ";
+		const auto base_t = tdata->get_terrain_info(
+			t_translation::terrain_code(type_.number().base, t_translation::NO_LAYER));
+		ss << markup::make_link(base_t.editor_name(), terrain_prefix + base_t.id());
+		ss << ", ";
+		ss << "Overlay terrain: ";
+		const auto overlay_t = tdata->get_terrain_info(
+			t_translation::terrain_code(t_translation::NO_LAYER, type_.number().overlay));
+		ss << markup::make_link(overlay_t.editor_name(), (overlay_t.hide_help() ? "." : "") + terrain_prefix + overlay_t.id());
+		ss << "\n";
 	}
 
 	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
@@ -244,11 +264,8 @@ std::string terrain_topic_generator::operator()() const {
 			const terrain_type& base = tdata->get_terrain_info(type_.default_base());
 
 			symbols.clear();
-			if (base.is_indivisible()) {
-				symbols["type"] = markup::make_link(base.editor_name(), ".." + terrain_prefix + base.id());
-			} else {
-				symbols["type"] = markup::make_link(base.editor_name(), terrain_prefix + base.id());
-			}
+			symbols["type"] = markup::make_link(base.editor_name(),
+				(base.is_indivisible() ? ".." : "") + terrain_prefix + base.id());
 			// TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 			ss << "\n" << VGETTEXT("Typical base terrain: $type", symbols);
 		}
@@ -277,6 +294,7 @@ std::string terrain_topic_generator::operator()() const {
 
 		ss << "Overlay: "     << (type_.is_overlay()   ? "Yes" : "No") << "\n";
 		ss << "Combined: "    << (type_.is_combined()  ? "Yes" : "No") << "\n";
+
 		ss << "Nonnull: "     << (type_.is_nonnull()   ? "Yes" : "No") << "\n";
 
 		ss << "Terrain string: " << type_.number() << "\n";
@@ -811,7 +829,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		// Add movement table rows
-		for(const terrain_movement_info &m : terrain_moves)
+		for(const terrain_movement_info& m : terrain_moves)
 		{
 			std::stringstream().swap(row_ss);
 			bool high_res = false;
