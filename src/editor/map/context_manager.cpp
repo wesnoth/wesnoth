@@ -784,7 +784,6 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			continue;
 		}
 
-		// TODO: we should probably use `child` with a try/catch block once that function throws
 		if(const auto generator_cfg = i.optional_child("generator")) {
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
