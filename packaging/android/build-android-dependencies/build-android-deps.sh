@@ -32,6 +32,7 @@ ORIGIN=`pwd`
 : ${BUILDDIR:=/tmp/android-build}
 : ${PREFIXDIR:=/tmp/android-prefix}
 : ${DOWNLOADDIR:=/tmp/android-dl}
+: ${ARCHS:=x86_64 armeabi-v7a arm64-v8a x86}
 
 export PREFIXDIR
 
@@ -81,6 +82,9 @@ popd
 for prefix in $PREFIXDIR/*
 do
 	abi=`basename $prefix`
+	if [[ ! " $ARCHS " =~ " $abi " ]] then
+		continue
+	fi
 	rm -rf $BUILDDIR/$abi
 
 	. $PREFIXDIR/$abi/android.env
@@ -176,7 +180,7 @@ cd $BUILDDIR/src/SDL2-ndk-build
 webpPath=($BUILDDIR/src/libwebp-*)
 sdl_imagePath=($BUILDDIR/src/SDL2_image-*)
 ln -sf $webpPath $sdl_imagePath/external/libwebp
-$NDK/ndk-build SUPPORT_WEBP=true
+$NDK/ndk-build SUPPORT_WEBP=true APP_ABI="$ARCHS"
 for lib in libs/*/*.so
 do
 	instdir=$(basename $(dirname $lib))
