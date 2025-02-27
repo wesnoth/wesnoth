@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -141,7 +141,7 @@ void wml_message_base::post_show()
 
 void wml_message_double::pre_show()
 {
-	wml_message_left::pre_show();
+	wml_message_base::pre_show();
 	get_canvas(1).set_variable("second_portrait_image", wfl::variant(second_portrait_));
 	get_canvas(1).set_variable("second_portrait_mirror", wfl::variant(second_mirror_));
 }

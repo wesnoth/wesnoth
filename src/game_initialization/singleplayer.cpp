@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include "addon/manager_ui.hpp"
 #include "config.hpp"
-#include "game_initialization/configure_engine.hpp"
 #include "game_initialization/connect_engine.hpp"
 #include "game_initialization/create_engine.hpp"
 #include "game_launcher.hpp"
@@ -83,7 +82,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 			// if we should quit the game or return to the main menu
 
 			// Checking for valid campaign name
-			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](ng::create_engine::level_ptr level) {
+			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](const ng::create_engine::level_ptr& level) {
 				return level->data()["id"] == jump_to_campaign.campaign_id;
 			});
 
@@ -134,14 +133,8 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 bool configure_campaign(saved_game& state, ng::create_engine& create_eng)
 {
-	// We create the config engine here in order to ensure values like use_map_settings are set correctly
-	// TODO: should this be passed to this function instead of created here?
-	ng::configure_engine config_eng(create_eng.get_state());
-
-	// TODO: needed?
-	config_eng.update_initial_cfg(create_eng.current_level().data());
-
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng)) {
+	create_eng.get_state().mp_settings().use_map_settings = false;
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng)) {
 		return false;
 	}
 

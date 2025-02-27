@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,32 +17,19 @@
 
 #include "gui/dialogs/help_browser.hpp"
 
-#include "game_config_manager.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/rich_label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/scrollbar_panel.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "video.hpp"
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
-#include "gui/widgets/listbox.hpp"
-#endif
 
 #include "help/help.hpp"
 #include "help/help_impl.hpp"
-#include "font/pango/escape.hpp"
-#include "font/pango/hyperlink.hpp"
 
 namespace gui2::dialogs
 {
@@ -82,12 +69,12 @@ void help_browser::pre_show()
 
 	if (video::window_size().x <= 800) {
 		contents.set_value(false);
-		connect_signal_mouse_left_click(contents, std::bind([&]() {
+		connect_signal_mouse_left_click(contents, [&](auto&&...) {
 			topic_tree.set_visible(topic_tree.get_visible() == widget::visibility::visible
 				? widget::visibility::invisible
 				: widget::visibility::visible);
 			invalidate_layout();
-		}));
+		});
 		topic_tree.set_visible(widget::visibility::invisible);
 	} else {
 		contents.set_value(true);
@@ -137,6 +124,7 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 
 	return new_node;
 }
+
 void help_browser::show_topic(std::string topic_id, bool add_to_history)
 {
 	if(topic_id.empty()) {

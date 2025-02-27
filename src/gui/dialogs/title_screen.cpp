@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -86,7 +86,7 @@ title_screen::~title_screen()
 {
 }
 
-void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback)
+void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
 		register_hotkey(hk, std::bind(callback));
@@ -194,43 +194,18 @@ void title_screen::init_callbacks()
 	//
 	// Tip-of-the-day browser
 	//
-	multi_page* tip_pages = find_widget<multi_page>("tips", false, false);
-
-	if(tip_pages != nullptr) {
-		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
-		if(tips.empty()) {
-			WRN_CF << "There are no tips of day available.";
-		}
-		for(const auto& tip : tips)	{
-			widget_item widget;
-			widget_data page;
-
-			widget["use_markup"] = "true";
-
-			// Use pango markup to insert drop cap
-			// Example: Lawful units -> <span ...>L</span>awful units
-			// If tip starts with a tag, we need to insert the <span> after it
-			// then insert the </span> tag after the first character of the text
-			// after markup. Assumes that the tags themselves don't
-			// contain non-ASCII characters.
-			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
-			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
-			std::string tip_text = tip.text().str();
-			std::size_t pos = 0;
-			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
-				pos = tip_text.find_first_of(">", pos) + 1;
-			}
-			utf8::insert(tip_text, pos+1, "</span>");
-			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
-
-			widget["label"] = tip_text;
-
-			page.emplace("tip", widget);
-
-			widget["label"] = tip.source();
-			page.emplace("source", widget);
-
-			tip_pages->add_page(page);
+	if(auto tip_pages = find_widget<multi_page>("tips", false, false)) {
+		for(const game_tip& tip : tip_of_the_day::shuffle(settings::tips))	{
+			tip_pages->add_page({
+				{ "tip", {
+					{ "use_markup", "true" },
+					{ "label", tip.text() }
+				}},
+				{ "source", {
+					{ "use_markup", "true" },
+					{ "label", tip.source() }
+				}}
+			});
 		}
 
 		update_tip(true);
@@ -241,6 +216,26 @@ void title_screen::init_callbacks()
 
 	register_button("previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
+
+	// Tip panel visiblity and close button
+	panel& tip_panel = find_widget<panel>("tip_panel");
+
+	tip_panel.set_visible(prefs::get().show_tips()
+		? widget::visibility::visible
+		: widget::visibility::hidden);
+
+	if(auto toggle_tips = find_widget<button>("toggle_tip_panel", false, false)) {
+		connect_signal_mouse_left_click(*toggle_tips, [&tip_panel](auto&&...) {
+			const bool currently_hidden = tip_panel.get_visible() == widget::visibility::hidden;
+
+			tip_panel.set_visible(currently_hidden
+				? widget::visibility::visible
+				: widget::visibility::hidden);
+
+			// If previously hidden, will now be visible, so we can reuse the same value
+			prefs::get().set_show_tips(currently_hidden);
+		});
+	}
 
 	//
 	// Help
@@ -356,7 +351,7 @@ void title_screen::init_callbacks()
 
 	auto clock = find_widget<button>("clock", false, false);
 	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		clock->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -367,7 +362,7 @@ void title_screen::init_callbacks()
 
 	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
-		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		test_dialog->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -387,7 +382,7 @@ void title_screen::update_static_labels()
 		version_label->set_label(version_string);
 	}
 
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+	get_canvas(1).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Language menu label
@@ -548,18 +543,18 @@ void title_screen::button_callback_multiplayer()
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			get_window()->set_retval(MP_HOST);
+			set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
-			get_window()->set_retval(MP_LOCAL);
+			set_retval(MP_LOCAL);
 			break;
 		}
 
@@ -585,7 +580,7 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		prefs::get().set_core(core_id);
-		get_window()->set_retval(RELOAD_GAME_DATA);
+		set_retval(RELOAD_GAME_DATA);
 	}
 }
 

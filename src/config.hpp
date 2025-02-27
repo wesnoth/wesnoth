@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,21 +32,7 @@
 #include "exceptions.hpp"
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
-
-#ifdef CONFIG_USE_STL_RANGES
-#undef CONFIG_USE_STL_RANGES
-#endif
-
-#ifdef __cpp_lib_ranges // C++20
-#define CONFIG_USE_STL_RANGES
-#endif
-
-#ifdef CONFIG_USE_STL_RANGES
-#include <ranges>
-#else
-#include <boost/range/adaptor/map.hpp>
-#include <boost/range/adaptor/transformed.hpp>
-#endif
+#include "utils/ranges.hpp"
 
 #include <functional>
 #include <iosfwd>
@@ -626,7 +612,7 @@ public:
 	 * Removes all children with tag @a key for which @a p returns true.
 	 * If no predicate is provided, all @a key tags will be removed.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p = {});
+	void remove_children(config_key_type key, const std::function<bool(const config&)>& p = {});
 
 	void recursive_clear_value(config_key_type key);
 
@@ -808,19 +794,11 @@ public:
 
 	/** In-order iteration over all children. */
 	auto all_children_view() const
-#ifdef CONFIG_USE_STL_RANGES
-	{ return ordered_children | std::views::transform(&config::any_tag_view<const config&>); }
-#else
-	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<const config&>); }
-#endif
+	{ return ordered_children | utils::views::transform(&config::any_tag_view<const config&>); }
 
 	/** In-order iteration over all children. */
 	auto all_children_view()
-#ifdef CONFIG_USE_STL_RANGES
-	{ return ordered_children | std::views::transform(&config::any_tag_view<config&>); }
-#else
-	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<config&>); }
-#endif
+	{ return ordered_children | utils::views::transform(&config::any_tag_view<config&>); }
 
 #endif // __cpp_explicit_this_parameter
 
@@ -886,7 +864,6 @@ public:
 	 * Adds children from @a cfg.
 	 */
 	void append_children(const config &cfg);
-	void append_children(config&& cfg);
 
 	/**
 	 * Adds children from @a cfg.
@@ -926,11 +903,7 @@ public:
 	/** A non-owning view over all child tag names. */
 	auto child_name_view() const
 	{
-#ifdef __cpp_lib_ranges
-		return children_ | std::views::keys;
-#else
-		return children_ | boost::adaptors::map_keys;
-#endif
+		return children_ | utils::views::keys;
 	}
 
 private:

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -727,21 +727,14 @@ public:
 
 	/**
 	 * The factor by which the HP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double hp_bar_scaling() const
-	{
-		return hp_bar_scaling_;
-	}
-
+	double hp_bar_scaling() const;
 	/**
 	 * The factor by which the XP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double xp_bar_scaling() const
-	{
-		return xp_bar_scaling_;
-	}
+	double xp_bar_scaling() const;
 
 	/**
 	 * Whether the unit has been instructed to hold its position.
@@ -958,7 +951,7 @@ public:
 	 * @param atk A pointer to the attack to remove
 	 * @return true if the attack was removed, false if it didn't exist on the unit
 	 */
-	bool remove_attack(attack_ptr atk);
+	bool remove_attack(const attack_ptr& atk);
 
 	/**
 	 * Set the unit to have no attacks left for this turn.
@@ -1046,7 +1039,7 @@ public:
 	 * @param weapon The weapon to check for any abilities or weapon specials
 	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 
 	/**
 	 * The unit's resistance against a given attack
@@ -1591,14 +1584,14 @@ public:
 	 * @param type The effect to apply. Must be one of the effects in @ref builtin_effects.
 	 * @param effect The details of the effect
 	 */
-	void apply_builtin_effect(std::string type, const config& effect);
+	void apply_builtin_effect(const std::string& type, const config& effect);
 
 	/**
 	 * Construct a string describing a built-in effect.
 	 * @param type The effect to describe. Must be one of the effects in @ref builtin_effects.
 	 * @param effect The details of the effect
 	 */
-	std::string describe_builtin_effect(std::string type, const config& effect);
+	std::string describe_builtin_effect(const std::string& type, const config& effect);
 
 	/** Re-apply all saved modifications. */
 	void apply_modifications();
@@ -1757,7 +1750,7 @@ public:
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
-	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
 	 * @param cfg the const config to one of abilities @a ability checked.
@@ -1777,7 +1770,7 @@ public:
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const const_attack_ptr& weapon=nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1950,7 +1943,7 @@ private:
 	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
 	 * (deprecated in two last cases)
 	 */
-	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
+	bool ability_affects_weapon(const config& cfg, const const_attack_ptr& weapon, bool is_opp) const;
 
 public:
 	/** Get the unit formula manager. */
@@ -2095,7 +2088,6 @@ private:
 	std::unique_ptr<unit_animation_component> anim_comp_;
 
 	mutable bool hidden_;
-	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
 	config abilities_;

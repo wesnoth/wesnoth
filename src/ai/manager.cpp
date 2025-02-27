@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -346,6 +346,13 @@ manager::manager()
 {
 	registry::init();
 	singleton_ = this;
+}
+
+manager::~manager() {
+	ai_map_.clear();
+	if(singleton_ == this) {
+		singleton_ = nullptr;
+	}
 }
 
 manager* manager::singleton_ = nullptr;

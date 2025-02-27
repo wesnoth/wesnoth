@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,12 +44,14 @@ REGISTER_WIDGET(multiline_text)
 multiline_text::multiline_text(const implementation::builder_multiline_text& builder)
 	: text_box_base(builder, type())
 	, history_()
-	, max_input_length_(0)
+	, max_input_length_(builder.max_input_length)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
 	, link_aware_(builder.link_aware)
+	, hint_text_(builder.hint_text)
+	, hint_image_(builder.hint_image)
 {
 	set_wants_mouse_left_double_click();
 
@@ -510,9 +512,6 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 	if(!history.empty()) {
 		widget->set_history(history);
 	}
-
-	widget->set_max_input_length(max_input_length);
-	widget->set_hint_data(hint_text, hint_image);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";

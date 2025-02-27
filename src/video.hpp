@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,10 +135,16 @@ std::vector<std::string> enumerate_drivers();
 /**
  * The refresh rate of the screen.
  *
+ * In most cases, this will be the native refresh rate of the display, but
+ * could be lower if FPS has been artificially capped (i.e., through --max-fps).
+ *
  * If a refresh cannot be detected, this may return 0, or it may return a
  * substitute value.
  */
 int current_refresh_rate();
+
+/** The native refresh rate of display, not taking any user preferences into account. */
+int native_refresh_rate();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();

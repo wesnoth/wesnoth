@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,28 +18,28 @@
 
 namespace actions::undo
 {
-struct auto_shroud_action : undo_action_base {
+struct auto_shroud_action : undo_action {
 	bool active;
 
 	explicit auto_shroud_action(bool turned_on)
-		: undo_action_base()
+		: undo_action()
 		, active(turned_on)
-	{}
-	virtual const char* get_type() const { return "auto_shroud"; }
-	virtual ~auto_shroud_action() {}
+	{
+	}
+	explicit auto_shroud_action(const config& cfg)
+		: undo_action()
+		, active(cfg["active"].to_bool())
+	{
+	}
 
-	/** Writes this into the provided config. */
-	virtual void write(config & cfg) const;
-};
+	static const char* get_type_impl() { return "auto_shroud"; }
+	virtual const char* get_type() const { return get_type_impl(); }
 
-struct update_shroud_action : undo_action_base {
-	// No additional data.
+	virtual bool undo(int);
 
-	update_shroud_action()
-		: undo_action_base()
-	{}
-	virtual const char* get_type() const { return "update_shroud"; }
-	virtual ~update_shroud_action() {}
+	virtual ~auto_shroud_action()
+	{
+	}
 
 	/** Writes this into the provided config. */
 	virtual void write(config & cfg) const;

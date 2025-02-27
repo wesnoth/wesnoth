@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -242,7 +242,7 @@ std::vector<std::string> unit_animation_component::get_flags() {
 	std::set<std::string> result;
 	for(const auto& anim : animations_) {
 		const std::vector<std::string>& flags = anim.get_flags();
-		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string flag) {
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string& flag) {
 			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
 		});
 	}

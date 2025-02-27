@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,6 +55,7 @@
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <string_view>
+#include <utility>
 
 namespace t_translation { struct terrain_code; }
 
@@ -303,8 +304,6 @@ unit::unit(const unit& o)
 	, modification_descriptions_(o.modification_descriptions_)
 	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
 	, hidden_(o.hidden_)
-	, hp_bar_scaling_(o.hp_bar_scaling_)
-	, xp_bar_scaling_(o.xp_bar_scaling_)
 	, modifications_(o.modifications_)
 	, abilities_(o.abilities_)
 	, advancements_(o.advancements_)
@@ -385,8 +384,6 @@ unit::unit(unit_ctor_t)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
 	, hidden_(false)
-	, hp_bar_scaling_(0)
-	, xp_bar_scaling_(0)
 	, modifications_()
 	, abilities_()
 	, advancements_()
@@ -417,8 +414,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	//, facing_(map_location::direction::indeterminate)
 	//, anim_comp_(new unit_animation_component(*this))
 	hidden_ = cfg["hidden"].to_bool(false);
-	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"].to_double();
-	xp_bar_scaling_ = cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"].to_double();
 	random_traits_ = true;
 	generate_name_ = true;
 	side_ = cfg["side"].to_int();
@@ -1032,8 +1027,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	recall_cost_ = new_type.recall_cost();
 	alignment_ = new_type.alignment();
 	max_hit_points_ = new_type.hitpoints();
-	hp_bar_scaling_ = new_type.hp_bar_scaling();
-	xp_bar_scaling_ = new_type.xp_bar_scaling();
 	max_movement_ = new_type.movement();
 	vision_ = new_type.vision(true);
 	jamming_ = new_type.jamming();
@@ -1778,27 +1771,15 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
-	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	if(opp_weapon){
+		return opp_weapon->effective_damage_type().second;
+	}
+	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
 		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
 	});
-	if(opp_weapon){
-		unit_ability_list damage_type_list = opp_weapon->get_specials_and_abilities("damage_type");
-		if(damage_type_list.empty()){
-			return resistance_value(resistance_list, damage_name);
-		}
-		std::string replacement_type = opp_weapon->select_damage_type(damage_type_list, "replacement_type", resistance_list);
-		std::string type_damage = replacement_type.empty() ? damage_name : replacement_type;
-		int max_res = resistance_value(resistance_list, type_damage);
-		for(auto& i : damage_type_list) {
-			if((*i.ability_cfg).has_attribute("alternative_type")){
-				max_res = std::max(max_res , resistance_value(resistance_list, (*i.ability_cfg)["alternative_type"].str()));
-			}
-		}
-		return max_res;
-	}
 	return resistance_value(resistance_list, damage_name);
 }
 
@@ -1927,7 +1908,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	advancements_ = advancements;
+	advancements_ = std::move(advancements);
 }
 
 const std::string& unit::type_id() const
@@ -1968,7 +1949,7 @@ const std::set<std::string> unit::builtin_effects {
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
 
-std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
+std::string unit::describe_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
 		std::vector<t_string> attack_names;
@@ -2033,7 +2014,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 	return "";
 }
 
-void unit::apply_builtin_effect(std::string apply_to, const config& effect)
+void unit::apply_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	config events;
 	appearance_changed_ = true;
@@ -2080,7 +2061,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
-		utils::erase_if(attacks_, [&effect](attack_ptr a) { return a->matches_filter(effect); });
+		utils::erase_if(attacks_, [&effect](const attack_ptr& a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
@@ -2745,7 +2726,7 @@ std::string unit::image_mods() const
 }
 
 // Called by the Lua API after resetting an attack pointer.
-bool unit::remove_attack(attack_ptr atk)
+bool unit::remove_attack(const attack_ptr& atk)
 {
 	set_attr_changed(UA_ATTACKS);
 	auto iter = std::find(attacks_.begin(), attacks_.end(), atk);
@@ -2785,6 +2766,15 @@ void unit::set_hidden(bool state) const
 	// TODO: this should really hide the halo, not destroy it
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
+}
+
+double unit::hp_bar_scaling() const
+{
+	return type().hp_bar_scaling();
+}
+double unit::xp_bar_scaling() const
+{
+	return type().xp_bar_scaling();
 }
 
 void unit::set_image_halo(const std::string& halo)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -173,7 +173,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 }
 
-wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables)
+wfl::variant formula_ai::make_action(const wfl::const_formula_ptr& formula_, const wfl::formula_callable& variables)
 {
 	if (!formula_) {
 		throw formula_error("null formula passed to make_action","","formula",0);
@@ -250,7 +250,7 @@ pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& uni
 	return pathfind::get_teleport_locations(*unit_it, current_team(), true);
 }
 
-void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
+void formula_ai::add_formula_function(const std::string& name, const const_formula_ptr& formula, const const_formula_ptr& precondition, const std::vector<std::string>& args)
 {
 	function_table_.add_function(name, std::make_shared<user_formula_function>(name, formula, precondition, args));
 }
@@ -655,13 +655,13 @@ void formula_ai::on_create(){
 
 }
 
-void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
+void formula_ai::evaluate_candidate_action(const ca_ptr& fai_ca)
 {
 	fai_ca->evaluate(this,resources::gameboard->units());
 
 }
 
-bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
+bool formula_ai::execute_candidate_action(const ca_ptr& fai_ca)
 {
 	map_formula_callable callable(fake_ptr());
 	fai_ca->update_callable_map( callable );

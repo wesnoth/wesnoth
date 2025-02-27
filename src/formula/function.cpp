@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,6 +28,7 @@
 #include <cctype>
 #include <chrono>
 #include <deque>
+#include <utility>
 
 using namespace boost::math::constants;
 
@@ -246,7 +247,7 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 {
 	const args_list& arguments = args();
 	const variant var0 = arguments[0]->evaluate(variables, fdb);
-	const variant var1 = arguments[1]->evaluate(variables, fdb);
+	variant var1 = arguments[1]->evaluate(variables, fdb);
 
 	const map_location location = var0.convert_to<location_callable>()->loc();
 	std::string text;
@@ -265,7 +266,7 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 {
-	const variant var1 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[0]->evaluate(variables, fdb);
 
 	std::string str1, str2;
 
@@ -1080,7 +1081,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 DEFINE_WFL_FUNCTION(reduce, 2, 3)
 {
 	const variant items = args()[0]->evaluate(variables, fdb);
-	const variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
+	variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
 
 	if(items.num_elements() == 0) {
 		return initial;
@@ -1483,8 +1484,8 @@ formula_function_expression::formula_function_expression(const std::string& name
 		const_formula_ptr precondition,
 		const std::vector<std::string>& arg_names)
 	: function_expression(name, args, arg_names.size(), arg_names.size())
-	, formula_(formula)
-	, precondition_(precondition)
+	, formula_(std::move(formula))
+	, precondition_(std::move(precondition))
 	, arg_names_(arg_names)
 	, star_arg_(-1)
 {
@@ -1542,7 +1543,7 @@ function_expression_ptr user_formula_function::generate_function_expression(
 	return std::make_shared<formula_function_expression>(name_, args, formula_, precondition_, args_);
 }
 
-function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+function_symbol_table::function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: parent(parent ? parent : get_builtins())
 {
 }
@@ -1670,7 +1671,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
 }
 
-action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+action_function_symbol_table::action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: function_symbol_table(parent)
 {
 	using namespace actions;

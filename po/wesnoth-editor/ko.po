@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -271,22 +271,22 @@ msgstr "레벨:"
 msgid "Cost: "
 msgstr "비용:"
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "치명적인 에러"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,33 +294,33 @@ msgstr ""
 "정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
 "사라집니다:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "에디터의 시각설정을 찾을 수 없습니다."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "클립보드 서포트가 무효가 되었습니다. 제작자에게 연락해 주세요"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "유닛 ID변경"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "유닛 이름 변경"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "이름:"
 
@@ -336,11 +336,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "맵 불러오기"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "새로운 맵"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "새로운 시나리오"
 
@@ -388,7 +388,7 @@ msgid "Save Map As"
 msgstr "다른 이름으로 맵 저장"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "에러"
@@ -468,34 +468,34 @@ msgstr "$side_num 번 플레이어"
 msgid "The size of the target map is different from the current map"
 msgstr "선택한 맵의 사이즈가 현재 맵의 사이즈와 다릅니다."
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "파일이 발견되지 않습니다"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "빈 파일"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -506,31 +506,31 @@ msgid ""
 msgstr ""
 "맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "시나리오를 저장 할 수 없습니다: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "시간 스케줄 메뉴"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "시나리오를 저장 할 수 없습니다: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "시나리오 안에 저장 할 수 없습니다"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "맵을 저장 할 수 없습니다: $msg"
 
@@ -597,25 +597,11 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "파일을 선택하세요"
+#~ msgid "Choose File"
+#~ msgstr "파일을 선택하세요"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "선택"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "선택"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr "클립보드 서포트가 무효가 되었습니다. 제작자에게 연락해 주세요"

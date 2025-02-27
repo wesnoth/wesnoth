@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
+#include "events.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -72,7 +73,6 @@
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include "utils/optional_fwd.hpp"
 
-#include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
@@ -106,6 +106,10 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
+// this file acts as a launcher for various gui2 dialogs
+// so this reduces some boilerplate.
+using namespace gui2::dialogs;
+
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
@@ -121,6 +125,64 @@ static void safe_exit(int res)
 {
 	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
+}
+
+static void handle_preprocess_string(const commandline_options& cmdline_opts)
+{
+	preproc_map defines_map;
+
+	if(cmdline_opts.preprocess_input_macros) {
+		std::string file = *cmdline_opts.preprocess_input_macros;
+		if(!filesystem::file_exists(file)) {
+			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
+			return;
+		}
+
+		PLAIN_LOG << "Reading cached defines from: " << file;
+
+		config cfg;
+
+		try {
+			filesystem::scoped_istream stream = filesystem::istream_file(file);
+			read(cfg, *stream);
+		} catch(const config::error& e) {
+			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
+		}
+
+		int read = 0;
+
+		// use static preproc_define::read_pair(config) to make a object
+		for(const auto [_, cfg] : cfg.all_children_view()) {
+			const preproc_map::value_type def = preproc_define::read_pair(cfg);
+			defines_map[def.first] = def.second;
+			++read;
+		}
+
+		PLAIN_LOG << "Read " << read << " defines.";
+	}
+
+	if(cmdline_opts.preprocess_defines) {
+		// add the specified defines
+		for(const std::string& define : *cmdline_opts.preprocess_defines) {
+			if(define.empty()) {
+				PLAIN_LOG << "empty define supplied";
+				continue;
+			}
+
+			LOG_PREPROC << "adding define: " << define;
+			defines_map.emplace(define, preproc_define(define));
+		}
+	}
+
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+
+	// preprocess resource
+	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -396,6 +458,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::allow_insecure = true;
 	}
 
+	if(cmdline_opts.addon_server_info) {
+		game_config::addon_server_info = true;
+	}
+
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
 	}
@@ -494,6 +560,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	if(cmdline_opts.preprocess) {
 		handle_preprocess_command(cmdline_opts);
+		return 0;
+	}
+
+	if(cmdline_opts.preprocess_source_string.has_value()) {
+		handle_preprocess_string(cmdline_opts);
 		return 0;
 	}
 
@@ -717,18 +788,18 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
-		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
-		gui2::dialogs::migrate_version_selection::execute();
+		migrate_version_selection::execute();
 	}
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
-		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
+	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
+		loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
@@ -736,7 +807,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_fonts);
+		loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -745,7 +816,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
-			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+			loading_screen::progress(loading_stage::refresh_addons);
 
 			refresh_addon_version_info_cache();
 		}
@@ -759,6 +830,8 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
+		{"play_local", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::LOCAL)},
+		{"play_campaign", std::bind(&game_launcher::play_campaign, game.get())},
 	};
 
 	const plugins_context::areg_vec accessors {
@@ -844,49 +917,46 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		int retval;
 		{ // scope to not keep the title screen alive all game
-			gui2::dialogs::title_screen dlg(*game);
+			title_screen dlg(*game);
 
 			// Allows re-layout on resize.
 			// Since RELOAD_UI is not checked here, it causes
 			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
 			retval = dlg.get_retval();
 		}
 
 		switch(retval) {
-		case gui2::dialogs::title_screen::QUIT_GAME:
+		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
-		case gui2::dialogs::title_screen::MP_CONNECT:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_CONNECT:
 			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
-		case gui2::dialogs::title_screen::MP_HOST:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_HOST:
 			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
-		case gui2::dialogs::title_screen::MP_LOCAL:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_LOCAL:
 			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
-		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
-			gui2::dialogs::loading_screen::display([&config_manager]() {
+		case title_screen::RELOAD_GAME_DATA:
+			loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
 				gui2::init();
 				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
-		case gui2::dialogs::title_screen::MAP_EDITOR:
+		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::dialogs::title_screen::LAUNCH_GAME:
+		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
-		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+		case title_screen::REDRAW_BACKGROUND:
 			break;
-		case gui2::dialogs::title_screen::RELOAD_UI:
+		case title_screen::RELOAD_UI:
 			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}
@@ -913,12 +983,18 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	events::set_main_thread();
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
 #ifdef _WIN32
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+#ifdef __APPLE__
+	// Using setenv with overwrite disabled so we can override this in the
+	// original process environment for research/testing purposes.
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 
 	try {

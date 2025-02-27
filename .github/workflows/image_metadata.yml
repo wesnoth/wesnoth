@@ -15,8 +15,8 @@ jobs:
     name: Image Metadata
     runs-on: ubuntu-latest
     env:
-      BASE_SHA: ${{ github.event_name == 'push' && github.event.before || github.event.pull_request.base.sha }}
-      HEAD_SHA: ${{ github.event_name == 'push' && github.event.after  || github.event.pull_request.head.sha }}
+      BASE_SHA: ${{ github.event_name == 'push' && github.event.before || 'HEAD^' }}
+      HEAD_SHA: ${{ github.event_name == 'push' && github.event.after  || 'HEAD' }}
 
     steps:
       - name: exiftool installation
@@ -29,6 +29,7 @@ jobs:
 
       - name: check image EXIF metadata
         run: |
+          git log --graph --pretty=format:'%h %G?%d %s (%cr) <%an> (%cn)' "$BASE_SHA^".."$HEAD_SHA"
           mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|je?pg)$')
           # cycle through the changed image files, make sure they have the right fields
           for file in "${image_files[@]}"; do

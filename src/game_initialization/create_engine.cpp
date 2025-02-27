@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -617,7 +617,7 @@ std::vector<create_engine::extras_metadata_ptr> create_engine::active_mods_data(
 	const std::vector<extras_metadata_ptr>& mods = get_const_extras_by_type(MP_EXTRA::MOD);
 
 	std::vector<extras_metadata_ptr> data_vec;
-	std::copy_if(mods.begin(), mods.end(), std::back_inserter(data_vec), [this](extras_metadata_ptr mod) {
+	std::copy_if(mods.begin(), mods.end(), std::back_inserter(data_vec), [this](const extras_metadata_ptr& mod) {
 		return dependency_manager_->is_modification_active(mod->id);
 	});
 
@@ -688,6 +688,10 @@ void create_engine::init_all_levels()
 		{
 			config data;
 			try {
+				// Only attempt to load .cfg files (.cfg extension is enforced in Editor save)
+				if (!filesystem::is_cfg(user_scenario_names_[i]))
+					continue;
+
 				read(data, *preprocess_file(filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]));
 			} catch(const config::error & e) {
 				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message;

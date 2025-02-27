@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "config.hpp"
 #include "serialization/markup.hpp"
 
 BOOST_AUTO_TEST_SUITE( help_markup )

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,14 @@
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "game_initialization/create_engine.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
 namespace gui2::dialogs
 {
 
-class campaign_selection : public modal_dialog
+class campaign_selection : public modal_dialog, private plugin_executor
 {
 	enum CAMPAIGN_ORDER {RANK, DATE, NAME};
 public:
@@ -44,20 +45,7 @@ public:
 	//return value for opening addon manager
 	const static int OPEN_ADDON_MANAGER = 3;
 
-	explicit campaign_selection(ng::create_engine& eng)
-		: modal_dialog(window_id())
-		, engine_(eng)
-		, choice_(-1)
-		, rng_mode_(RNG_DEFAULT)
-		, mod_states_()
-		, page_ids_()
-		, difficulties_()
-		, current_difficulty_()
-		, current_sorting_(RANK)
-		, currently_sorted_asc_(true)
-		, mod_ids_()
-	{
-	}
+	explicit campaign_selection(ng::create_engine& eng);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

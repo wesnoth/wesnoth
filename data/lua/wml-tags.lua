@@ -147,6 +147,9 @@ function wml_actions.fire_event(cfg)
 	if w1 then table.insert(data, wml.tag.first(w1)) end
 	if w2 then table.insert(data, wml.tag.second(w2)) end
 
+	local scoped_data <close> = utils.scoped_var("data")
+	scoped_data:set({wml.parsed(data)})
+
 	if cfg.id and cfg.id ~= "" then wesnoth.game_events.fire_by_id(cfg.id, x1, y1, x2, y2, data)
 	elseif cfg.name and cfg.name ~= "" then wesnoth.game_events.fire(cfg.name, x1, y1, x2, y2, data)
 	end

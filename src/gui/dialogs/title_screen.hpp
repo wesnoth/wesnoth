@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -71,7 +71,7 @@ private:
 
 	void init_callbacks();
 
-	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback);
+	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback);
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 

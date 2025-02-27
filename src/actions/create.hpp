@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -158,7 +158,7 @@ typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/,
  * @param wml_triggered whether this was triggered via WML.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
-place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
+place_recruit_result place_recruit(const unit_ptr& u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, map_location::direction facing = map_location::direction::indeterminate, bool show = false, bool fire_event = true, bool full_movement = false, bool wml_triggered = false);
 
 /**

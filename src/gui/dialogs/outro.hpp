@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,19 +43,23 @@ private:
 
 	virtual void pre_show() override;
 
-	virtual void post_show() override;
+	/** Returns a normalized [0.0 .. 1.0] value representing elapsed fade time. */
+	double get_fade_progress(const std::chrono::steady_clock::time_point& now) const;
 
+	/** The text to draw. Each entry is shown for the specified duration. */
 	std::vector<std::string> text_;
-	std::string current_text_;
+
+	/** The index of the text currently being shown. */
 	std::size_t text_index_;
 
-	std::chrono::milliseconds duration_;
-	int fade_alpha_;
-	uint32_t fade_start_;
+	/** How long to display each text entry. */
+	std::chrono::milliseconds display_duration_;
 
-	bool fading_in_;
+	/** Tracks whether we're fading in, displaying text, or fading out. */
+	enum class stage { fading_in, waiting, fading_out } stage_;
 
-	std::size_t timer_id_;
+	/** The time point at which the current stage began. */
+	std::chrono::steady_clock::time_point stage_start_;
 };
 
 } // namespace dialogs

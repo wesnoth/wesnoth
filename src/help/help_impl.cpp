@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,12 +44,13 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "utils/general.hpp"            // for contains
 
+#include <algorithm>                    // for sort, find, transform, etc
 #include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
-#include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
+#include <utility>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
@@ -372,7 +373,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 
 topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	generator_ = g;
+	generator_ = std::move(g);
 	return *this;
 }
 
@@ -917,12 +918,12 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	bool process_queue_again = true;
 	while(process_queue_again && !taxonomy_queue.empty()) {
 		process_queue_again = false;
-		std::vector<taxonomy_queue_type> to_process = std::move(taxonomy_queue);
+		auto to_process = std::exchange(taxonomy_queue, {});
 
 		for(auto& x : to_process) {
 			auto parent = find_section(sec, x.parent_id);
 			if(parent) {
-				parent->add_section(std::move(x.content));
+				parent->add_section(x.content);
 				process_queue_again = true;
 			} else {
 				taxonomy_queue.push_back(std::move(x));
@@ -932,7 +933,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 
 	// Fallback to adding the new race at the top level, as if it had help_taxonomy.empty().
 	for(auto& x : taxonomy_queue) {
-		sec.add_section(std::move(x.content));
+		sec.add_section(x.content);
 	}
 }
 

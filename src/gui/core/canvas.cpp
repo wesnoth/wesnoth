@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -277,7 +277,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: formula returned no value, will not be drawn.";
+		DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
 		return;
 	}
 
@@ -393,15 +393,70 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
+namespace
+{
+/** For cases where we want a string wrapped in formula parentheses. */
+auto maybe_literal(const config::attribute_value& val, bool normal_formula)
+{
+	return typed_formula<t_string>{ normal_formula ? val : "('" + val + "')" };
+}
+
+/** Populates the attribute list from the given config child range. */
+auto parse_attributes(const config::const_child_itors& range)
+{
+	// TODO: most of the time this will be empty, unless you're using rich_label.
+	// It's a lot of memory allocations to always have a valid object here...
+	// Do we need store it as an optional?
+	font::attribute_list text_attributes;
+
+	for(const config& attr : range) {
+		const std::string name = attr["name"];
+
+		if(name.empty()) {
+			continue;
+		}
+
+		const unsigned start = attr["start"].to_int(0);
+		const unsigned end = attr["end"].to_int(/* text.size() */); // TODO: do we need to restore this default?
+
+		if (name == "color" || name == "fgcolor" || name == "foreground") {
+			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "bgcolor" || name == "background") {
+			add_attribute_bg_color(text_attributes, start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "font_size" || name == "size") {
+			add_attribute_size(text_attributes, start, end, attr["value"].to_int(font::SIZE_NORMAL));
+		} else if (name == "font_family" || name == "face") {
+			add_attribute_font_family(text_attributes, start, end, font::str_to_family_class(attr["value"]));
+		} else if (name == "weight") {
+			add_attribute_weight(text_attributes, start, end, decode_text_weight(attr["value"]));
+		} else if (name == "style") {
+			add_attribute_style(text_attributes, start, end, decode_text_style(attr["value"]));
+		} else if (name == "bold" || name == "b") {
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_BOLD);
+		} else if (name == "italic" || name == "i") {
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
+		} else if (name == "underline" || name == "u") {
+			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
+		} else {
+			// Unsupported formatting or normal text
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
+		}
+	}
+
+	return text_attributes;
+}
+
+} // anon namespace
+
 text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
-	, cfg_(cfg)
 	, font_family_(font::str_to_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
-	, text_(cfg["text"])
+	, text_(maybe_literal(cfg["text"], cfg["parse_text_as_formula"].to_bool(true)))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
@@ -411,12 +466,9 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
-	, attr_start_(cfg["attr_start"])
-	, attr_end_(cfg["attr_end"])
-	, attr_name_(cfg["attr_name"])
-	, attr_data_(cfg["attr_data"])
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
+	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -438,58 +490,18 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		return;
 	}
 
-	font::pango_text& text_renderer = font::get_text_renderer();
-	text_renderer.clear_attribute_list();
-
 	//
 	// Highlight
 	//
-	std::vector<std::string> starts = utils::split(highlight_start_, ',');
-	std::vector<std::string> stops = utils::split(highlight_end_, ',');
+	const int highlight_start = highlight_start_(variables);
+	const int highlight_end = highlight_end_(variables);
 
-	for(size_t i = 0; i < std::min(starts.size(), stops.size()); i++) {
-		typed_formula<int> hstart(starts.at(i));
-		typed_formula<int> hstop(stops.at(i));
-		text_renderer.add_attribute_bg_color(hstart(variables), hstop(variables), highlight_color_(variables));
+	if(highlight_start != highlight_end) {
+		add_attribute_bg_color(text_attributes_, highlight_start, highlight_end, highlight_color_(variables));
 	}
 
-	//
-	// Attribute subtags
-	//
-	for (const auto& attr : cfg_.child_range("attribute")) {
-		const std::string& name = attr["name"];
-
-		if (name.empty()) {
-			continue;
-		}
-
-		const unsigned start = attr["start"].to_int(0);
-		const unsigned end = attr["end"].to_int(text.size());
-
-		if (name == "color" || name == "fgcolor" || name == "foreground") {
-			text_renderer.add_attribute_fg_color(start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
-		} else if (name == "bgcolor"||name == "background") {
-			text_renderer.add_attribute_bg_color(start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
-		} else if (name == "font_size"||name == "size") {
-			text_renderer.add_attribute_size(start, end, attr["value"].to_int(font::SIZE_NORMAL));
-		} else if (name == "font_family"||name == "face") {
-			text_renderer.add_attribute_font_family(start, end, attr["value"].str(font::get_font_families(font::FONT_SANS_SERIF)));
-		} else if (name == "weight") {
-			text_renderer.add_attribute_weight(start, end, decode_text_weight(attr["value"]));
-		} else if (name == "style") {
-			text_renderer.add_attribute_style(start, end, decode_text_style(attr["value"]));
-		} else if (name == "bold" || name == "b") {
-			text_renderer.add_attribute_weight(start, end, PANGO_WEIGHT_BOLD);
-		} else if (name == "italic" || name == "i") {
-			text_renderer.add_attribute_style(start, end, PANGO_STYLE_ITALIC);
-		} else if (name == "underline" || name == "u") {
-			text_renderer.add_attribute_underline(start, end, PANGO_UNDERLINE_SINGLE);
-		} else {
-			// Unsupported formatting or normal text
-			text_renderer.add_attribute_weight(start, end, PANGO_WEIGHT_NORMAL);
-			text_renderer.add_attribute_style(start, end, PANGO_STYLE_NORMAL);
-		}
-	}
+	font::pango_text& text_renderer = font::get_text_renderer();
+	text_renderer.clear_attributes();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
@@ -508,6 +520,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_)
 		.set_add_outline(outline_(variables));
+
+	// Do this last so it can merge with attributes from markup
+	text_renderer.apply_attributes(text_attributes_);
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();

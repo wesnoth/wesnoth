@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024 - 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -160,6 +160,8 @@ prefs::~prefs()
 
 void prefs::load_advanced_prefs(const game_config_view& gc)
 {
+	advanced_prefs_.clear();
+
 	for(const config& pref : gc.child_range("advanced_preference")) {
 		try {
 			advanced_prefs_.emplace_back(pref);
@@ -577,6 +579,45 @@ std::string prefs::partial_color() {
 }
 void prefs::set_partial_color(const std::string& color_id) {
 	preferences_[prefs_list::partial_orb_color] = color_id;
+}
+std::string prefs::reach_map_color() {
+	std::string reachmap_color = preferences_[prefs_list::reach_map_color].str();
+	if (reachmap_color.empty())
+		return game_config::colors::reach_map_color;
+	return fix_orb_color_name(reachmap_color);
+}
+void prefs::set_reach_map_color(const std::string& color_id) {
+	preferences_[prefs_list::reach_map_color] = color_id;
+}
+
+std::string prefs::reach_map_enemy_color() {
+	std::string reachmap_enemy_color = preferences_[prefs_list::reach_map_enemy_color].str();
+	if (reachmap_enemy_color.empty())
+		return game_config::colors::reach_map_enemy_color;
+	return fix_orb_color_name(reachmap_enemy_color);
+}
+void prefs::set_reach_map_enemy_color(const std::string& color_id) {
+	preferences_[prefs_list::reach_map_enemy_color] = color_id;
+}
+
+int prefs::reach_map_border_opacity()
+{
+	return preferences_[prefs_list::reach_map_border_opacity].to_int(game_config::reach_map_border_opacity);
+}
+
+void prefs::set_reach_map_border_opacity(const int new_opacity)
+{
+	preferences_[prefs_list::reach_map_border_opacity] = new_opacity;
+}
+
+int prefs::reach_map_tint_opacity()
+{
+	return preferences_[prefs_list::reach_map_tint_opacity].to_int(game_config::reach_map_tint_opacity);
+}
+
+void prefs::set_reach_map_tint_opacity(const int new_opacity)
+{
+	preferences_[prefs_list::reach_map_tint_opacity] = new_opacity;
 }
 
 point prefs::resolution()
@@ -1538,7 +1579,7 @@ void prefs::set_user_servers_list(const std::vector<game_config::server_info>& v
 
 std::string prefs::network_host()
 {
-	const std::string res = preferences_[prefs_list::host];
+	std::string res = preferences_[prefs_list::host];
 	if(res.empty()) {
 		return builtin_servers_list().front().address;
 	} else {
@@ -1752,14 +1793,13 @@ compression::format prefs::save_compression_format()
 	return compression::format::gzip;
 }
 
-std::string prefs::get_chat_timestamp(const std::time_t& t)
+std::string prefs::get_chat_timestamp(const std::chrono::system_clock::time_point& t)
 {
 	if(chat_timestamp()) {
-		auto temp = std::chrono::system_clock::from_time_t(t); // FIXME: remove
 		if(use_twelve_hour_clock_format() == false) {
-			return chrono::format_local_timestamp(temp, _("[%H:%M]")) + " ";
+			return chrono::format_local_timestamp(t, _("[%H:%M]")) + " ";
 		} else {
-			return chrono::format_local_timestamp(temp, _("[%I:%M %p]")) + " ";
+			return chrono::format_local_timestamp(t, _("[%I:%M %p]")) + " ";
 		}
 	}
 
@@ -1933,15 +1973,15 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(!ctx)
 	{
 		ERR_CFG << "AES EVP_CIPHER_CTX_new failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		return preferences::secure_buffer();
 	}
 
 	// TODO: use EVP_EncryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), nullptr, key.data(), iv) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptInit_ex failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -1949,7 +1989,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(EVP_EncryptUpdate(ctx, encrypted_buffer, &update_length, plaintext.data(), plaintext.size()) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptUpdate failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -1958,7 +1998,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(EVP_EncryptFinal_ex(ctx, encrypted_buffer + update_length, &extra_length) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptFinal failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2021,15 +2061,15 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(!ctx)
 	{
 		ERR_CFG << "AES EVP_CIPHER_CTX_new failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		return preferences::secure_buffer();
 	}
 
 	// TODO: use EVP_DecryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), nullptr, key.data(), iv) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptInit_ex failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2037,7 +2077,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(EVP_DecryptUpdate(ctx, plaintext_buffer, &update_length, encrypted.data(), encrypted.size()) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptUpdate failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2046,7 +2086,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(EVP_DecryptFinal_ex(ctx, plaintext_buffer + update_length, &extra_length) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptFinal failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}

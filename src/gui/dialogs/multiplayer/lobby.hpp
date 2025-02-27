@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,8 +126,6 @@ private:
 	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();
-
-	bool exit_hook(window& window);
 
 	static bool logout_prompt();
 

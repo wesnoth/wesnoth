@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -219,16 +219,13 @@ struct tree_view_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_tree_view : public builder_styled_widget
+struct builder_tree_view : public builder_scrollbar_container
 {
 	explicit builder_tree_view(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indentation_step_size;
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2015-02-15 14:48+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none <>\n"
@@ -273,15 +273,15 @@ msgstr "Līmenis: "
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Fatāla kļūda"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Vai tiešām vēlaties iziet?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -293,7 +293,7 @@ msgstr ""
 "Vai tiešām vēlaties iziet? Visas izmaiņas kartē kopš pēdējās saglabāšanas "
 "tiks zaudētas."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -301,31 +301,31 @@ msgstr ""
 "Vai tiešām vēlaties iziet? Sekojošas kartes tika modificētas, un visas "
 "izmaiņas kopš pēdējās saglabāšanas tiks zaudētas:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Netika atrasts redaktora diennakts laiks."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Mainīt vienības ID"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Pārsaukt vienību"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Vārds:"
 
@@ -341,13 +341,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Jauna karte)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -401,7 +401,7 @@ msgid "Save Map As"
 msgstr "Saglabāt karti kā"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr ""
@@ -490,19 +490,19 @@ msgstr "Spēlētājs $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Mērķa kartes izmērs atšķiras no pašreizējās"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Fails netika atrasts"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Tukšs fails"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -510,15 +510,15 @@ msgstr ""
 "Kartes datne izskatās pēc scenārija, bet 'map_data' vērtība nenorāda uz "
 "eksistējošu failu"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -530,31 +530,31 @@ msgstr ""
 "Kartes datne izskatās pēc scenārija, bet 'map_data' vērtība nenorāda uz "
 "eksistējošu failu"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Neizdevās saglabāt Scenāriju: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Laika grafika izvēlne"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Neizdevās saglabāt Scenāriju: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Neizdevās saglabāt scenārijā"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Neizdevās saglabāt karti: $msg"
 
@@ -621,25 +621,8 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Izvēlies failu"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Choose File"
+#~ msgstr "Izvēlies failu"
 
 #~ msgid "player^None"
 #~ msgstr "Neviens"

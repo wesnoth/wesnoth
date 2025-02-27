@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,13 +49,10 @@ public:
 	void build_team_stage_three();
 
 private:
-	int gold_info_ngold_;
 	std::deque<config> leader_configs_;
 	// only used for objectives
 	const config& level_;
 	game_board& board_;
-	// only used for debug message
-	bool player_exists_;
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config& side_cfg_;

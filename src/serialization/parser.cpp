@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -28,6 +28,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"
+#include "utils/charconv.hpp"
 #include "wesconfig.h"
 
 #include <boost/algorithm/string/replace.hpp>
@@ -537,7 +538,13 @@ public:
 	void operator()(const T& v) const
 	{
 		indent();
-		out_ << key_ << '=' << v << '\n';
+		if constexpr(std::is_arithmetic_v<T>) {
+			// for number values, this has to use the same method as in from_string_verify
+			auto buf = utils::charconv_buffer(v);
+			out_ << key_ << '=' << buf.get_view() << '\n';
+		} else {
+			out_ << key_ << '=' << v << '\n';
+		}
 	}
 
 	//

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,12 @@ inline constexpr bool decayed_is_same = std::is_same_v<std::decay_t<T1>, std::de
  */
 template<typename>
 inline constexpr bool dependent_false_v = false;
+
+template<typename Enum>
+constexpr std::underlying_type_t<Enum> to_underlying(Enum e) noexcept
+{
+	return static_cast<std::underlying_type_t<Enum>>(e);
+}
 
 namespace detail
 {
@@ -124,6 +130,17 @@ template<typename Container, typename Predicate>
 void sort_if(Container& container, const Predicate& predicate)
 {
 	std::sort(container.begin(), container.end(), predicate);
+}
+
+/**
+ * Convenience wrapper for using find on a container without needing to comare to end()
+ *
+ */
+template<typename Container, typename Value>
+auto* find(Container& container, const Value& value)
+{
+	auto res = container.find(value);
+	return (res == container.end()) ? nullptr : &*res;
 }
 
 } // namespace utils

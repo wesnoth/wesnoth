@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -93,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config(std::string textdomain) const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;

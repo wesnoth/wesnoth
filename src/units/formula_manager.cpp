@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,7 @@
 #include "config.hpp"
 #include "deprecation.hpp"
 
-void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
+void unit_formula_manager::add_formula_var(const std::string& str,const wfl:: variant& var)
 {
 	if(!formula_vars_) formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 	formula_vars_->add(str, var);

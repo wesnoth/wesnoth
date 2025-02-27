@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -304,7 +304,7 @@ void file_dialog::pre_show()
 
 	if (desktop::open_object_is_supported()) {
 		connect_signal_mouse_left_click(open_ext_button,
-			std::bind([this](){ desktop::open_object(path()); }));
+			[this](auto&&...) { desktop::open_object(path()); });
 	} else {
 		open_ext_button.set_active(false);
 		open_ext_button.set_tooltip(_("Opening files is not supported, contact your packager"));
@@ -323,23 +323,23 @@ void file_dialog::pre_show()
 	//window.keyboard_capture(find_widget<text_box>("filename", false, true));
 	keyboard_capture(&file_textbox);
 	add_to_keyboard_chain(&filelist);
-	set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return on_exit(); });
 }
 
-bool file_dialog::on_exit(window& window)
+bool file_dialog::on_exit()
 {
-	if(window.get_retval() == FILE_DIALOG_ITEM_RETVAL) {
+	if(get_retval() == FILE_DIALOG_ITEM_RETVAL) {
 		// Attempting to exit by double clicking items -- only proceeds if the item
 		// was a file.
 		if(process_fileview_submit()) {
-			window.set_retval(retval::OK, false);
+			set_retval(retval::OK, false);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	if(window.get_retval() == retval::OK) {
+	if(get_retval() == retval::OK) {
 		// Attempting to exit by pressing Enter/clicking OK -- only proceeds if the
 		// textbox was not altered by the user to point to a different directory.
 		return process_textbox_submit();
@@ -678,14 +678,14 @@ void file_dialog::on_row_selected()
 
 	// Need to do this every time so that input can still be sent to the
 	// textbox without clicking on it.
-	get_window()->keyboard_capture(&file_textbox);
+	keyboard_capture(&file_textbox);
 }
 
 void file_dialog::on_bookmark_selected()
 {
 	// Don't let us steal the focus from the primary widgets.
 	text_box& file_textbox = find_widget<text_box>("filename");
-	get_window()->keyboard_capture(&file_textbox);
+	keyboard_capture(&file_textbox);
 
 	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 	const int new_selection = bookmarks_bar.get_selected_row();

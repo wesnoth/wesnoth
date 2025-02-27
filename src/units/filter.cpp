@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,7 +47,7 @@ static lg::log_domain log_wml("wml");
 
 using namespace unit_filter_impl;
 
-unit_filter::unit_filter(vconfig cfg)
+unit_filter::unit_filter(const vconfig& cfg)
 	: cfg_(cfg)
 	, fc_(resources::filter_con)
 	, use_flat_tod_(false)
@@ -222,7 +222,7 @@ public:
 }
 
 
-unit_filter_compound::unit_filter_compound(vconfig cfg)
+unit_filter_compound::unit_filter_compound(const vconfig& cfg)
 	: children_()
 	, cond_children_()
 {
@@ -313,7 +313,7 @@ namespace {
 	}
 }
 
-void unit_filter_compound::fill(vconfig cfg)
+void unit_filter_compound::fill(const vconfig& cfg)
 	{
 		const config& literal = cfg.get_config();
 
@@ -666,8 +666,15 @@ void unit_filter_compound::fill(vconfig cfg)
 		create_attribute(literal["formula"],
 			[](const config::attribute_value& c)
 			{
-				//TODO: catch syntax error.
-				return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+				try {
+					return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+				} catch(const wfl::formula_error& e) {
+					lg::log_to_chat() << "Formula error while evaluating formula in unit filter: " << e.type << " at "
+									  << e.filename << ':' << e.line << ")\n";
+					ERR_WML << "Formula error while evaluating formula in unit filter: " << e.type << " at "
+							<< e.filename << ':' << e.line << ")";
+					return wfl::formula("");
+				}
 			},
 			[](const wfl::formula& form, const unit_filter_args& args)
 			{

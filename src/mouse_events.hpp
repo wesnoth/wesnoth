@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -71,7 +71,7 @@ public:
 
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
-	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
+	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src);
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
@@ -141,14 +141,13 @@ protected:
 
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
-	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
+	int fill_weapon_choices(std::vector<battle_context>& bc_vector, const unit_map::iterator& attacker, const unit_map::iterator& defender);
 	// the real function but can throw bad_alloc
 	// choice is the attack chosen in the attack dialog
 	void attack_enemy_(const map_location& attacker_loc
 			, const map_location& defender_loc
 			, int choice);
 
-	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
 	/*
@@ -157,7 +156,7 @@ protected:
 	 */
 	unit* find_unit_nonowning(const map_location& hex);
 	const unit* find_unit_nonowning(const map_location& hex) const;
-	bool unit_in_cycle(unit_map::const_iterator it);
+	bool unit_in_cycle(const unit_map::const_iterator& it);
 private:
 	team &current_team();
 

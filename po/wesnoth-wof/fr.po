@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Winds_of_Fate-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
 "PO-Revision-Date: 2023-11-05 12:35+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -6408,7 +6408,7 @@ msgstr "Caravelle"
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:8
 msgid ""
-"The sturdy and reliable caravel is the mainstay of human oceanic "
+"The sturdy and reliable Caravel is the mainstay of human oceanic "
 "exploration, shipping and projection of influence. More seaworthy than "
 "lighter vessels, one might yet be spied navigating deeper rivers, where the "
 "maneuverabilty and shallow draft somewhat compensate for the tonnage of the "
@@ -6439,8 +6439,17 @@ msgstr "Dauphin"
 
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+#| "and the Ka’lian rated the creature’s sensibility nearly on par with that "
+#| "of an elf. Among coastal orcish tribes the meat is consumed as a "
+#| "delicacy.\n"
+#| "\n"
+#| "One of the rare air breathing fish, the dolphin is never too long below "
+#| "the surface of the sea."
 msgid ""
-"The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+"The sight of a Dolphin is seen as a good omen by the sailors of Elensefar "
 "and the Ka’lian rated the creature’s sensibility nearly on par with that of "
 "an elf. Among coastal orcish tribes the meat is consumed as a delicacy.\n"
 "\n"
@@ -6478,7 +6487,7 @@ msgstr "Léopard"
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
 msgid ""
-"The leopard is a fast and powerful ambush predator of the distant and "
+"The Leopard is a fast and powerful ambush predator of the distant and "
 "mysterious jungle realms. While dangerous in any circumstance, it is most "
 "lethal when hidden in wooded areas."
 msgstr ""
@@ -6572,6 +6581,32 @@ msgstr "bec-aiguille"
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:82
 msgid "bladed feathers"
 msgstr "plumes coupantes"
+
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:5
+msgid "Wyrm"
+msgstr ""
+
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:9
+msgid ""
+"Wyrms are strange beasts, stout serpents with wings, but no legs. They are "
+"relatively rare, and their presence is attributed to some eccentric wizard "
+"or dragon. Mature Wyrms have excellent control of their fire breath attack, "
+"as if they are themselves miniature dragons."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:74
+msgid "fangs"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:86
+#, fuzzy
+#| msgid "fire breath"
+msgid "breath"
+msgstr "souffle ardent"
 
 #. [damage]: id=blast
 #: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9

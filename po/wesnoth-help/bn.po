@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-help  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
-"PO-Revision-Date: 2024-09-06 08:58+0530\n"
+"POT-Creation-Date: 2025-02-17 15:53-0600\n"
+"PO-Revision-Date: 2025-02-20 14:27+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -49,15 +49,15 @@ msgstr "নির্ভয়"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:41
-#: data/core/macros/weapon_specials.cfg:52
+#: data/core/macros/weapon_specials.cfg:51
+#: data/core/macros/weapon_specials.cfg:62
 msgid "plague"
 msgstr "প্লেগ"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:63
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -66,6 +66,194 @@ msgstr ""
 "যখন একটি ইউনিট প্লেগ আক্রমণের দ্বারা নিহত হয়, তখন সেই ইউনিটটি প্লেগ আক্রমণকারী "
 "পক্ষের একটি চলমান শব ইউনিটে পাল্টে যায় । এটি না-মৃত বা গ্রামে দাঁড়িয়ে থাকা "
 "ইউনিটদের ওপর কার্যকরী নয় ।"
+
+#. [trait]: id=loyal_dummy
+#. [trait]: id=loyal
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:679
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/core/macros/traits.cfg:12
+msgid "loyal"
+msgstr "বিশ্বস্ত"
+
+#. [trait]: id=loyal_dummy
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:680
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#, fuzzy
+#| msgid "Zero upkeep"
+msgid "Zero upkeep."
+msgstr "ভারবহনের মূল্য শূন্য"
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:111
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:110
+msgid "magical"
+msgstr "জাদু"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/core/macros/traits.cfg:190
+msgid "intelligent"
+msgstr "বুদ্ধিমান"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/core/macros/traits.cfg:192
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:50
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:57
+msgid "Methor"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:64
+msgid "Deoran"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:74
+msgid "Arand"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:83
+msgid "Asheviere"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:92
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:101
+msgid "Eldred"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:111
+msgid "Lionel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:125
+msgid "Lord Maddock"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:133
+msgid "Colonel Dommel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
+msgid "Captain Kestrel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:150
+msgid "Omaranth"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:174
+msgid "Iliah-Malal"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:210
+msgid "Garard II"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:515
+msgid "No, it can’t end yet! I have so much left to do..."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:526
+msgid "No! Magic, why have you failed me..."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:537
+msgid "If only I had been a little wiser..."
+msgstr ""
+
+#. [message]: speaker=Methor
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:549
+msgid "War, pain, death... I tried so hard to change things..."
+msgstr ""
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:561
+msgid "I have failed my kingdom and my duty..."
+msgstr ""
+
+#. [message]: speaker=Garard
+#. reference to Shakespeare's Richard III
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:573
+msgid "A horse! A horse! My kingdom for a horse..."
+msgstr ""
+
+#. [message]: speaker=Asheviere
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:583
+msgid "It’s finally over..."
+msgstr ""
+
+#. [message]: speaker=Lionel
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:593
+msgid "Blasted orcs..."
+msgstr ""
+
+#. [message]: speaker=Kalenz
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:605
+msgid "Nobody can cheat death forever..."
+msgstr ""
+
+#. [message]: speaker=Chantal
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:616
+msgid "Deoran, I never had a chance to tell you—"
+msgstr ""
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:631
+msgid "Boss, I ain’t feelin’ too hot..."
+msgstr ""
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:636
+msgid "I ain’t feelin’ too hot..."
+msgstr ""
+
+#. [message]: speaker=Barin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:647
+msgid "I shoulda never left my swamp..."
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. since he reappears in HttT's blackwater port, he can't die here.
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:657
+msgid ""
+"I am grievously injured; I can be of no further aid in your quest. Fight on "
+"without me, Delfador!"
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:666
+msgid ""
+"Many Knights choose the path of the Paladin, Delfador, but I am an heir of "
+"the Horse Lords. I shall be a Grand Knight."
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:676
+msgid ""
+"I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
+"the Paladin, but such is unbecoming for an heir of the Horse Lords."
+msgstr ""
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
@@ -204,14 +392,14 @@ msgstr "সবসময় বিশ্রাম সুস্থ করে"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/weapon_specials.cfg:21
+#: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "পিছন থেকে আঘাত"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "খাওয়া"
 
@@ -244,7 +432,7 @@ msgstr "গোপনীয়তা"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:166
+#: data/core/macros/weapon_specials.cfg:201
 msgid "drains"
 msgstr "টেনে নেয়"
 
@@ -266,7 +454,7 @@ msgstr "পাহাড়"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:86
+#: data/core/macros/weapon_specials.cfg:96
 msgid "marksman"
 msgstr "লক্ষ্যবিদ"
 
@@ -278,11 +466,11 @@ msgstr "ছত্রাকের অরণ্য"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
-msgstr ""
+msgstr "রাত্রি-অনুসরণ"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:188
+#: data/core/macros/weapon_specials.cfg:223
 msgid "poison"
 msgstr "বিষ"
 
@@ -294,11 +482,11 @@ msgstr "বালি"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:64
+#: data/core/macros/weapon_specials.cfg:74
 msgid "slows"
 msgstr "ধীর করে"
 
@@ -481,12 +669,12 @@ msgstr "সূচনাকালীন অবস্থান টুল"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -529,10 +717,10 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))' align=here /><br/><bold>Impassable and Unwalkable</"
-"bold>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))' align=here /><br/><bold>Impassable and "
+"Unwalkable</bold>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -546,9 +734,10 @@ msgstr ""
 #: data/core/editor/help.cfg:139
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here /><img src='terrain/grass/green.png~BLIT(terrain/"
-"castle/keep-overlay-editor.png~O(0.5))' align=here />\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))' align=here /><img src='terrain/grass/"
+"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here /"
+">\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -669,8 +858,8 @@ msgstr ""
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:208
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' />\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)' />\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -898,7 +1087,7 @@ msgid ""
 "\n"
 "• Event handlers and scripting\n"
 "\n"
-"The editor is not a tool to help you scripting the scenario’s event "
+"The editor is not a tool to help you with scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
@@ -968,10 +1157,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1009,7 +1198,7 @@ msgid ""
 "scenario mode\n"
 "• <span face='monospace'>scenarios/other.cfg</span>\n"
 "  ◦ this is the .cfg file containing everything that the scenario editor "
-"doesn't understand\n"
+"doesn’t understand\n"
 "• <span face='monospace'>scenarios/first.cfg</span>\n"
 "  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
 "face='monospace'>map_file=&quot;first.map&quot;</span> to load the map file\n"
@@ -1026,8 +1215,8 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:439
 msgid ""
-"Masks can be applied to a base map for reusal in several scenarios playing "
-"at the same locations."
+"Masks can be applied to a base map for reuse in several scenarios playing at "
+"the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
@@ -1072,23 +1261,17 @@ msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:466
-#, fuzzy
-#| msgid "Show all kinds of terrain"
-msgid "Show all kinds of terrain</col></row>"
+msgid "Show all kinds of terrain"
 msgstr "সব প্রকারের ভূমি দেখান"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:467
-#, fuzzy
-#| msgid "Show only water terrains"
-msgid "Show only water terrains</col></row>"
+msgid "Show only water terrains"
 msgstr "শুধু জলজ ভুমি দেখান"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:468
-#, fuzzy
-#| msgid "Show only villages"
-msgid "Show only villages</col></row>"
+msgid "Show only villages"
 msgstr "শুধু গ্রাম দেখান"
 
 #. [topic]: id=editor_map_format
@@ -1106,11 +1289,10 @@ msgstr ""
 msgid ""
 "<header>Native</header>\n"
 "\n"
-"A map file consists of rows with comma separated terrain code strings. The "
+"A map file consists of rows with comma-separated terrain code strings. The "
 "only non-terrain information provided by the map syntax is the set of "
 "locations created by the <ref dst='editor_tool_starting'>Starting Locations "
-"Tool</ref>. The files can be edited with a general purpose text editor like "
-"notepad.\n"
+"Tool</ref>. The files can be edited with a general purpose text editor.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -1125,8 +1307,9 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <italic>— "
 "supported since Wesnoth 1.14</italic>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <italic>— a WML preprocessor include</italic>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <italic>— a WML preprocessor include</"
+"italic>\n"
 "\n"
 "The <italic>map_file</italic> method is preferred over using a preprocessor "
 "include."
@@ -1137,9 +1320,10 @@ msgstr ""
 msgid ""
 "<header>Embedded</header>\n"
 "\n"
-"The map data can stored as part of a scenario’s .cfg file, directly in the "
-"<italic>map_data</italic> attribute. In other words, in the place that the "
-"preprocessor would include it when using the preprocessor-include method.\n"
+"The map data can be stored as part of a scenario’s .cfg file, directly in "
+"the <italic>map_data</italic> attribute. In other words, in the place that "
+"the preprocessor would include it when using the preprocessor-include "
+"method.\n"
 "\n"
 "<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
@@ -1200,24 +1384,6 @@ msgstr "দিনপঞ্জিকা"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
-#, fuzzy
-#| msgid ""
-#| "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
-#| "order:\n"
-#| "\n"
-#| "Whitefire\n"
-#| "Bleeding Moon\n"
-#| "Scatterseed\n"
-#| "Deeproot\n"
-#| "Scryer’s Bloom\n"
-#| "Thorntress\n"
-#| "Summit Star\n"
-#| "Kindlefire\n"
-#| "Stillseed\n"
-#| "Reaper’s Moon\n"
-#| "Verglas Bloom\n"
-#| "Blackfire\n"
-#| "\n"
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1237,24 +1403,11 @@ msgid ""
 "\n"
 "The Wesnothian calendar begins with the founding of Wesnoth in the year 1 YW "
 "(Year of Wesnoth). Years before that are counted based on the number of "
-"years before the founding of Wesnoth using BW (Before Wesnoth). After the "
-"Fall of Wesnoth dates use AF (After the Fall)."
+"years before the founding of Wesnoth using BW (Before Wesnoth).\n"
+"\n"
+"After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
+"(Before the Fall)."
 msgstr ""
-"ওয়েসনথ দিনপঞ্জিকায় 12টি মাস রয়েছে । ক্রমানুযায়ী, সেগুলি হল\n"
-"\n"
-"হোয়াইটফায়ার\n"
-"ব্লিডিং মুন\n"
-"স্ক্যাটারসিড\n"
-"ডিপরুট\n"
-"স্ক্রায়ারস্ ব্লুম\n"
-"থর্নট্রেস\n"
-"সামিট স্টার\n"
-"কিন্ডলফায়ার\n"
-"স্টিলসিড\n"
-"রিপারস মুন\n"
-"ভারগ্লাস ব্লুম\n"
-"ব্লাকফায়ার\n"
-"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1338,17 +1491,22 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:57
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Mount Morogor: An active volcanic mountain in the central island of "
-"Morogor."
+"    • Mount Morogor: The highest active volcanic mountain in the central "
+"island of Morogor.\n"
+"    • Isle of Gaall: A dangerous island slightly north of the central Isle "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only "
+"two small villages on the isle.\n"
+"    • Isle of Omarath: A major drakish island northwest of the main Isle of "
+"Morogor. It is the northernmost island of the Morogor Archipelago."
 msgstr ""
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:63
+#: data/core/encyclopedia/geography.cfg:65
 msgid "Green Isle"
 msgstr "সবুজ দ্বীপ"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:66
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
 "ref>, formerly home to the Islefolk and Wesfolk."
@@ -1356,37 +1514,42 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:68
+#: data/core/encyclopedia/geography.cfg:70
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Southbay: The capital of the largest Islefolk Kingdom.\n"
+"    • Southbay: The capital of the largest Islefolk kingdom.\n"
 "    • Clearwater Port: The second largest Islefolk city and the location of "
 "a major port.\n"
 "    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
 "Haldric I.\n"
 "    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-lord "
 "Jevyan.\n"
-"    • Blackmore: A small Wesfolk settlement."
+"    • Blackmore: A small settlement north of the Oldwood."
 msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:77
+#: data/core/encyclopedia/geography.cfg:79
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
 "Isle.\n"
-"    • Oldwood: A mysterious wood inhabited by some woses.\n"
-"    • Swamp of Esten: A small swamp located east of the Broken Mountains."
+"    • Midlands: A hilly and sparsely forested area south of the Swamp of "
+"Esten, once home to prosperous Islefolk kingdoms.\n"
+"    • Oldwood: A mysterious wood inhabited by some ancient woses. Dark old "
+"catacombs are located below a temple in the heart of the forest.\n"
+"    • Swamp of Esten: A small swamp located east of the Broken Mountains "
+"once home to Wesfolk-imitating cultists. The swamp was defiled in wars "
+"between Wesfolk and Islefolk long ago."
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:85
+#: data/core/encyclopedia/geography.cfg:88
 msgid "Old Continent"
 msgstr "পুরাতন মহাদেশ"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:86
+#: data/core/encyclopedia/geography.cfg:89
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
 "<ref>dst='green_isle' text='Green Isle'</ref> across the "
@@ -1395,12 +1558,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:91
+#: data/core/encyclopedia/geography.cfg:94
 msgid "Great Continent"
 msgstr "বিরাট মহাদেশ"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:92
+#: data/core/encyclopedia/geography.cfg:95
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -1408,12 +1571,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:97
+#: data/core/encyclopedia/geography.cfg:100
 msgid "Irdya"
 msgstr "ইরডিয়া"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:98
+#: data/core/encyclopedia/geography.cfg:101
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -1422,12 +1585,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:103
+#: data/core/encyclopedia/geography.cfg:106
 msgid "Kingdom of Wesnoth"
 msgstr "ওয়েসনথ রাজ্য"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:104
+#: data/core/encyclopedia/geography.cfg:107
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1438,13 +1601,15 @@ msgid ""
 "Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
-"It is bounded to the south (off-map) by dense woods of which the Aethenwood "
-"may be considered a northernmost extension."
+"It is bounded to the south by dense woods of which the Aethenwood may be "
+"considered a northernmost extension. Kerlath is its southernmost province, "
+"marking the end of Wesnoth and the start of the mysterious "
+"<ref>dst='far_south' text='Far South'</ref>."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:110
+#: data/core/encyclopedia/geography.cfg:113
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -1453,20 +1618,22 @@ msgid ""
 "    • Carcyn: Located between the Grey Woods and the Great River.\n"
 "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
 "country, just west and north of Weldyn.\n"
-"    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-"confluence of the Weldyn River and the Great River.\n"
+"    • Soradoc: The easternmost town of Wesnoth, controls the confluence of "
+"the Weldyn River and the Great River.\n"
 "    • Fort Tahn: The southernmost border outpost, controls the north/south "
 "road crossing the River Aethen.\n"
 "    • Tath: Important fort city north of Dan’Tonk, exerts control over the "
 "wilderness country around the east of the Brown Hills and north to the Ford "
 "of Abez.\n"
-"    • Westin: A small yet important town in Kerlath, a province of Southern "
-"Wesnoth. The old Citadel of Westin can be found there."
+"    • Westin: A small yet important town in Kerlath, the southernmost "
+"province of Wesnoth. The old Citadel of Westin can be found there.\n"
+"    • Southport: A small town in the southernmost reaches of Kerlath, near "
+"the Black Forest."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:123
+#: data/core/encyclopedia/geography.cfg:127
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
@@ -1499,12 +1666,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:140
+#: data/core/encyclopedia/geography.cfg:144
 msgid "Elensefar"
 msgstr "এলেনসেফার"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:145
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -1517,16 +1684,17 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:149
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the Great River "
-"delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River delta, "
+"though some peripheral farmland extends slightly on both sides of the Great "
+"River.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:150
+#: data/core/encyclopedia/geography.cfg:154
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
@@ -1534,20 +1702,20 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:156
+#: data/core/encyclopedia/geography.cfg:160
 msgid "Northlands"
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:157
+#: data/core/encyclopedia/geography.cfg:161
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
-"war. Various groups of orcs, dwarves, men, gryphons, ogres, and even elves "
-"fight over the region. The northern and eastern borders of the Northlands "
-"are not defined, the southern border is the <ref>dst='great_river' "
-"text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='ocean'</ref>.\n"
+"war. Various groups of orcs, dwarves, humans, gryphons, ogres, and even "
+"elves fight over the region. The northern and eastern borders of the "
+"Northlands are not defined, the southern border is the "
+"<ref>dst='great_river' text='Great River'</ref>, and the western border is "
+"the <ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "Yet despite the sheer wilderness above the Northlands, the subterranean "
 "Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
@@ -1558,13 +1726,14 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:163
+#: data/core/encyclopedia/geography.cfg:167
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
 "    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
 "the southern Heart Mountains. A major trade center.\n"
+"    • Saurgrath: A former saurian capital in the Swamp of Dread.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
 "abandoned. The forested area northeast of <ref>dst='elensefar' "
@@ -1574,7 +1743,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:170
+#: data/core/encyclopedia/geography.cfg:176
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
@@ -1601,12 +1770,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:183
+#: data/core/encyclopedia/geography.cfg:189
 msgid "Southwest Elven Lands"
 msgstr "দক্ষিণপশ্চিম এল্ফ এলাকা"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:184
+#: data/core/encyclopedia/geography.cfg:190
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1617,24 +1786,29 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:188
+#: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, it extends far to the south "
-"and is home to <ref>dst='..race_elf' text='elves'</ref>. Although the elves "
-"make no such distinction, the southern part of the forest has been named "
-"Southwood by denizens of Kerlath."
+"    • Aethenwood: The largest southern forest, home to reclusive "
+"<ref>dst='..race_elf' text='elves'</ref>.\n"
+"    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
+"Aethenwood. It contains the sacred Isle of Elrath.\n"
+"    • Lake Aelin: An elvish lake at the edge of their territory along the "
+"River Aethen.\n"
+"    • Black Forest: An ancient and likely haunted forest of which very "
+"little is known, believed to have been once inhabited by elves. Those who "
+"enter it seldom return."
 msgstr ""
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:203
 msgid "Heart Mountains"
 msgstr "হৃদয় পর্বত"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:197
+#: data/core/encyclopedia/geography.cfg:206
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -1645,12 +1819,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:202
+#: data/core/encyclopedia/geography.cfg:211
 msgid "Far North"
 msgstr "সূদূর উত্তর"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:212
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1664,25 +1838,28 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:216
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
 "    • Bitok\n"
 "    • Borstep\n"
 "    • Farzi\n"
-"    • Jotha: A large fortified capital of the local merfolk that lies within "
-"the bay of Jotha.\n"
+"    • Jotha: A large fortified capital of the local merfolk south of Bitok.\n"
 "    • Lmarig\n"
 "    • Melmog\n"
 "    • Prestim\n"
 "    • Tirigaz: A coastal orcish town that occasionally raids Jotha.\n"
-"    • Dorest: The northernmost human city."
+"    • Dorest: The northernmost human city.\n"
+"    • Arcanclave Citadel: A mythical fortress far beyond the woods of "
+"Lintanir, believed to have been forged by an earth elemental in the midst of "
+"battle. Its ruins have now become a military stronghold.\n"
+"    "
 msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:219
+#: data/core/encyclopedia/geography.cfg:232
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -1694,6 +1871,9 @@ msgid ""
 "nonetheless deadly to inexperienced travelers.\n"
 "    • Mountains of Haag: A group of high mountains inhabited by groups of "
 "orcs, trolls and dwarves.\n"
+"    • Mourned Hills: A series of rolling hills stretching south from the "
+"Mountains of Haag. The orcish town of Lmarig is at the southern edge of "
+"these hills.\n"
 "    • Greenwood: An elvish forest located near the Lintanir Forest. Some say "
 "it was once connected to it, until groups of savage orcs burned much of the "
 "forest.\n"
@@ -1711,32 +1891,35 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:235
+#: data/core/encyclopedia/geography.cfg:249
 #, fuzzy
 #| msgid "Far North"
 msgid "Far South"
 msgstr "সূদূর উত্তর"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:236
+#: data/core/encyclopedia/geography.cfg:250
 msgid ""
-"A vast region south of Kerlath home to the Dunefolk Civilization. It is also "
-"inhabited by many local creatures, including the Jinn and Wyverns."
+"A vast region south of Kerlath home to many mysterious races, including jinn "
+"and wyverns. Very little is known for certain about what lies here."
 msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:240
+#: data/core/encyclopedia/geography.cfg:254
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Sandy Wastes: A hot desert located south of Kerlath home to various "
-"Dunefolk settlements, as well as nomadic tribes in between. The northern "
-"parts of this desert are home to many treacherous monsters.\n"
-"    • Mountains of Peril: A tall and deadly mountain range in the far south "
+"    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
-"    • Black Forest: An ancient and likely haunted forest of which very "
-"little is known, believed to have been once inhabited by elves. Those who "
-"enter it seldom return."
+"    • Sandy Wastes: A hot desert located southeast of Kerlath. It is "
+"considered an impassable barrier by Wesnothians, filled with very sparse "
+"vegetation consisting of no more than a few shrubs and cacti.\n"
+"    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
+"entirely by flat desert. It is not part of any mountain range and its "
+"existence is doubted by many.\n"
+"    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
+"remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
+"civilization is sometimes said to live around the desert."
 msgstr ""
 
 #. [section]: id=schedule
@@ -1810,12 +1993,12 @@ msgstr "কমান্ড"
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
 msgid ""
-"<br/><italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-"strategy game somewhat unusual among modern strategy games. While other "
-"games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-"strives for simplicity of both rules and gameplay. This does not make the "
-"game simple, however — from these simple rules arises a wealth of strategy, "
-"making the game easy to learn but a challenge to master.\n"
+"<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
+"somewhat unusual among modern strategy games. While other games strive for "
+"complexity, <italic>Battle for Wesnoth</italic> strives for simplicity of "
+"both rules and gameplay. This does not make the game simple, however — from "
+"these simple rules arises a wealth of strategy, making the game easy to "
+"learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -1934,17 +2117,21 @@ msgid ""
 "campaign, you often need to play more carefully, preserving your best troops "
 "for use again in later scenarios.\n"
 "\n"
-"The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-"Wesnoth gameplay in the context of a scenario. Most material covered in the "
-"tutorial is explained more in-depth in these pages, so you can always refer "
+"The interactive tutorial campaign <bold>text='The South Guard'</bold> "
+"introduces Wesnoth gameplay in the context of a campaign. Most material "
+"covered in the tutorial is explained in these pages, so you can always refer "
 "back here if you forget something.\n"
 "\n"
-"After you master the basics, try out a beginner campaign, such as "
-"<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-"Guard'</italic>. A full list of installed campaigns can be found via the "
-"<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-"quite challenging, you may wish to start on easy before progressing to "
-"higher difficulties.\n"
+"After you master the basics, be sure to try another novice campaign next! "
+"You can help two brothers overcome a deadly peril in <italic>text='A Tale of "
+"Two Brothers'</italic>, help the prince Konrad through a turning point in "
+"the history of Wesnoth in the epic <italic>text='Heir to the Throne'</"
+"italic> or guide the mage Delfador on his way to becoming a legend in the "
+"equally epic <italic>text='The Deceiver’s Gambit'</italic>. A full list of "
+"installed campaigns can be found via the <bold>text='Campaign'</bold> option "
+"on the main menu, which is full of equally interesting adventures in the "
+"long history of Wesnoth. We’d recommend playing them in the order they are "
+"listed, but feel free to skip any that’s not your cup of tea!\n"
 "\n"
 "Campaigns are grouped by <italic>text='level'</italic> and "
 "<italic>text='difficulty'</italic>. For example, <italic>text='Heir to the "
@@ -1953,11 +2140,10 @@ msgid ""
 "what degree of proficiency in the game mechanics (such as "
 "<ref>dst='movement' text='zones of control'</ref> and <ref>dst='time_of_day' "
 "text='time of day'</ref>) is assumed. The difficulty indicates how "
-"challenging the scenarios will be to a veteran player: at higher "
-"difficulties, the obstacles to victory will be higher and overcoming them "
-"will require more skillful play. For example, at higher difficulties the "
-"enemy may have higher incomes, higher-level units, more castle hexes, and so "
-"on."
+"challenging the scenarios will be: at higher difficulties, the obstacles to "
+"victory will be higher and overcoming them will require more skillful play. "
+"For example, at higher difficulties the enemy may have higher incomes, "
+"higher-level units, more castle hexes, and so on."
 msgstr ""
 
 #. [topic]: id=..gameplay
@@ -2294,7 +2480,7 @@ msgstr ""
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:280
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "ছায়া ও যুদ্ধের কুয়াশা"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:281
@@ -3136,8 +3322,8 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:578
 msgid ""
-"<br/>Land-based villages generally give the best defense and movement as "
-"well. These villages are mixed terrains, based on the village terrain type, "
+"Land-based villages generally give the best defense and movement as well. "
+"These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
@@ -3302,8 +3488,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' dst='.."
-"eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' "
+"dst='..eras_section'</ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -3343,7 +3529,7 @@ msgid ""
 "\n"
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
+"represented as a hexagonal map with ‘units’ in some way."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -3848,7 +4034,7 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
 msgid "female^skirmisher"
-msgstr "লড়াকু"
+msgstr "সংঘর্ষক"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:221
@@ -3856,6 +4042,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"এই ইউনিটটি শত্রুদের অতিক্রম করে যাওয়ায় দক্ষ, এবং প্রতিপক্ষের নিয়ন্ত্রণের ক্ষেত্রের "
+"দ্বারা প্রভাবিত হয় না ।"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
@@ -3883,6 +4071,8 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"এই ইউনিটটি নিজের পক্ষের যেকোনো দুটি ফাঁকা গ্রামের মধ্যে একটি মাত্র স্থানান্তর সংখ্যা "
+"খরচ করে দূরস্থানান্তর করতে পারে ।"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:286
@@ -3966,20 +4156,42 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 
-#. [dummy]: id=feeding
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:388
+msgid "swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:389
+#, fuzzy
+#| msgid "female^weak"
+msgid "female^swamp lurk"
+msgstr "দূর্বল"
+
+#. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:390
+msgid ""
+"This unit can hide in swamp, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in swamp, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:409
 msgid "female^feeding"
 msgstr "খাওয়া"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:410
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
 
 #. [advancement]: id=amla_default
-#: data/core/macros/amla.cfg:10
+#: data/core/macros/amla.cfg:29
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "সর্বোচ্চ জীবন অতিরিক্ত বৃদ্ধি +3, সর্বোচ্চ অভিজ্ঞতা +20%"
 
@@ -4400,11 +4612,6 @@ msgid ""
 msgstr ""
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:12
-msgid "loyal"
-msgstr "বিশ্বস্ত"
-
-#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:13
 msgid "female^loyal"
 msgstr "বিশ্বস্ত"
@@ -4606,11 +4813,6 @@ msgid ""
 msgstr ""
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:190
-msgid "intelligent"
-msgstr "বুদ্ধিমান"
-
-#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
 msgstr "বুদ্ধিমতী"
@@ -4626,11 +4828,6 @@ msgid ""
 "Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
 "advancing a level. If you have many ‘maximum level’ units you may wish to "
 "recall units with more desirable traits."
-msgstr ""
-
-#. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:192
-msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 
 #. [trait]: id=resilient
@@ -4819,20 +5016,35 @@ msgid ""
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
 
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:7
+msgid "unwieldy"
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:8
+msgid "This attack can only be used offensively."
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:10
+msgid "This unit has an unwieldy weapon, which cannot be used defensively."
+msgstr ""
+
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:9
+#: data/core/macros/weapon_specials.cfg:19
 msgid "berserk"
 msgstr "ক্ষিপ্ত"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:20
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:22
+#: data/core/macros/weapon_specials.cfg:32
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4840,7 +5052,7 @@ msgid ""
 msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:42
+#: data/core/macros/weapon_specials.cfg:52
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -4848,7 +5060,7 @@ msgid ""
 msgstr ""
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:65
+#: data/core/macros/weapon_specials.cfg:75
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4857,75 +5069,49 @@ msgid ""
 msgstr ""
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:75
+#: data/core/macros/weapon_specials.cfg:85
 msgid "petrifies"
 msgstr "প্রস্তরীকরণ"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:76
+#: data/core/macros/weapon_specials.cfg:86
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:87
+#: data/core/macros/weapon_specials.cfg:97
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:100
-msgid "deflect"
-msgstr "বিচ্যুতিকরণ"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:101
-msgid ""
-"When used defensively, this attack reduces the opponent’s chance to hit by "
-"10%."
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:123
+msgid "naval ram"
 msgstr ""
 
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:102
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack can only be used against units in water terrain."
 msgstr ""
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:115
-msgid "magical"
-msgstr "জাদু"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:116
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:132
 msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-
-#. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:128
-msgid "swarm"
-msgstr "দঙ্গল"
-
-#. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:129
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
+"This unit has an attack that can only be used against units in watery "
+"terrain."
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:139
+#: data/core/macros/weapon_specials.cfg:136
+#: data/core/macros/weapon_specials.cfg:174
 msgid "charge"
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:140
+#: data/core/macros/weapon_specials.cfg:137
+#: data/core/macros/weapon_specials.cfg:175
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4933,44 +5119,73 @@ msgstr ""
 "আক্রমণের জন্য ব্যবহার করা হলে, এই আক্রমণটি প্রতিপক্ষকে দ্বিগুণ ক্ষতি করে । তবে "
 "ব্যবহারকারী ইউনিটও প্রতিপক্ষের আক্রমণ থেকে দ্বিগুণ পরিমাণ ক্ষতিগ্রস্ত হয় ।"
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:153
-msgid "absorb"
-msgstr "শোষণ"
-
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:154
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:150
+msgid "honed"
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:155
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:151
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:152
 msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:163
+msgid "swarm"
+msgstr "দঙ্গল"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:164
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:188
+msgid "guard"
+msgstr ""
+
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:189
+msgid "This attack blocks half of the damage from its target’s strikes."
+msgstr ""
+
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:190
+msgid ""
+"This unit’s guarding attack can halve incoming damage, but only when used in "
+"combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:167
+#: data/core/macros/weapon_specials.cfg:202
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:177
+#: data/core/macros/weapon_specials.cfg:212
 msgid "first strike"
 msgstr "প্রথম আঘাত"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:178
+#: data/core/macros/weapon_specials.cfg:213
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:189
+#: data/core/macros/weapon_specials.cfg:224
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4978,19 +5193,19 @@ msgid ""
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:199
+#: data/core/macros/weapon_specials.cfg:234
 msgid "stun"
 msgstr "হতচকিত"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:200
+#: data/core/macros/weapon_specials.cfg:235
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:201
+#: data/core/macros/weapon_specials.cfg:236
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -4998,19 +5213,19 @@ msgstr ""
 "পারে ।"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:245
 msgid "arcane"
 msgstr "অলৌকিক"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:246
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:247
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -5265,9 +5480,8 @@ msgid ""
 "in the northwest, and the great northern woods of which the Lintanir Forest "
 "is the southernmost edge.\n"
 "\n"
-"Elves are the eldest race of the continent, with the possible exception of "
-"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for several millennia.\n"
+"Elves are among the eldest races of the continent. Many of their settlements "
+"cannot be reliably dated, undoubtedly having existed for several millennia.\n"
 "\n"
 "<header>text='Magic'</header>\n"
 "While elves are fundamentally different creatures than the fabled fair folk, "
@@ -5666,23 +5880,48 @@ msgid ""
 "own, but some do so as a result of magical enchantment."
 msgstr ""
 
-#. [race]: id=merman
+#. [race]: id=ship
 #: data/core/units.cfg:294
+#, fuzzy
+#| msgid "race^Saurian"
+msgid "race^Ship"
+msgstr "সরিয়ান"
+
+#. [race]: id=ship
+#: data/core/units.cfg:295
+#, fuzzy
+#| msgid "race+plural^Mechanical"
+msgid "race+plural^Ships"
+msgstr "যান্ত্রিক"
+
+#. [race]: id=ship
+#: data/core/units.cfg:296
+msgid ""
+"Ships are not living beings, but they are crafted and (usually) controlled "
+"by living beings. Although inanimate objects, they are very dear to their "
+"masters, needing care and attention in return for providing sustenance and "
+"protection. For this reason, most are given names and attributed traits. "
+"Those traits may be technical or they may simply reflect the collective "
+"attitude of the crew, but they are real."
+msgstr ""
+
+#. [race]: id=merman
+#: data/core/units.cfg:310
 msgid "race^Merman"
 msgstr "জলমানব"
 
 #. [race]: id=merman
-#: data/core/units.cfg:295
+#: data/core/units.cfg:311
 msgid "race^Mermaid"
 msgstr "জলপরী"
 
 #. [race]: id=merman
-#: data/core/units.cfg:296
+#: data/core/units.cfg:312
 msgid "race^Merfolk"
 msgstr "জলমানবেরা"
 
 #. [race]: id=merman
-#: data/core/units.cfg:298
+#: data/core/units.cfg:314
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5696,22 +5935,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:306
+#: data/core/units.cfg:322
 msgid "race^Monster"
 msgstr "দানব"
 
 #. [race]: id=monster
-#: data/core/units.cfg:307
+#: data/core/units.cfg:323
 msgid "race+female^Monster"
 msgstr "দানব"
 
 #. [race]: id=monster
-#: data/core/units.cfg:308
+#: data/core/units.cfg:324
 msgid "race^Monsters"
 msgstr "দানবেরা"
 
 #. [race]: id=monster
-#: data/core/units.cfg:309
+#: data/core/units.cfg:325
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5719,22 +5958,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:316
+#: data/core/units.cfg:332
 msgid "race^Naga"
 msgstr "নাগ"
 
 #. [race]: id=naga
-#: data/core/units.cfg:317
+#: data/core/units.cfg:333
 msgid "race^Nagini"
 msgstr "নাগিনী"
 
 #. [race]: id=naga
-#: data/core/units.cfg:318
+#: data/core/units.cfg:334
 msgid "race^Nagas"
 msgstr "নাগেরা"
 
 #. [race]: id=naga
-#: data/core/units.cfg:319
+#: data/core/units.cfg:335
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5752,22 +5991,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:327
+#: data/core/units.cfg:343
 msgid "race^Ogre"
 msgstr "দৈত্য"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:328
+#: data/core/units.cfg:344
 msgid "race+female^Ogre"
 msgstr "দৈত্য"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:329
+#: data/core/units.cfg:345
 msgid "race^Ogres"
 msgstr "দৈত্যেরা"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:330
+#: data/core/units.cfg:346
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5786,22 +6025,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:338
+#: data/core/units.cfg:354
 msgid "race^Orc"
 msgstr "ওর্ক"
 
 #. [race]: id=orc
-#: data/core/units.cfg:339
+#: data/core/units.cfg:355
 msgid "race+female^Orc"
 msgstr "ওর্ক"
 
 #. [race]: id=orc
-#: data/core/units.cfg:340
+#: data/core/units.cfg:356
 msgid "race^Orcs"
 msgstr "ওর্কেরা"
 
 #. [race]: id=orc
-#: data/core/units.cfg:341
+#: data/core/units.cfg:357
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -5855,7 +6094,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -5864,22 +6103,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=raven
-#: data/core/units.cfg:361
+#: data/core/units.cfg:377
 msgid "race^Raven"
 msgstr "দাঁড়কাক"
 
 #. [race]: id=raven
-#: data/core/units.cfg:362
+#: data/core/units.cfg:378
 msgid "race+female^Raven"
 msgstr "দাঁড়কাক"
 
 #. [race]: id=raven
-#: data/core/units.cfg:363
+#: data/core/units.cfg:379
 msgid "race^Ravens"
 msgstr "দাঁড়কাকেরা"
 
 #. [race]: id=raven
-#: data/core/units.cfg:364
+#: data/core/units.cfg:380
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -5899,22 +6138,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:375
+#: data/core/units.cfg:391
 msgid "race^Troll"
 msgstr "ট্রোল"
 
 #. [race]: id=troll
-#: data/core/units.cfg:376
+#: data/core/units.cfg:392
 msgid "race+female^Troll"
 msgstr "ট্রোল"
 
 #. [race]: id=troll
-#: data/core/units.cfg:377
+#: data/core/units.cfg:393
 msgid "race^Trolls"
 msgstr "ট্রোলেরা"
 
 #. [race]: id=troll
-#: data/core/units.cfg:378
+#: data/core/units.cfg:394
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -5953,22 +6192,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:398
+#: data/core/units.cfg:414
 msgid "race^Undead"
 msgstr "না-মৃত"
 
 #. [race]: id=undead
-#: data/core/units.cfg:399
+#: data/core/units.cfg:415
 msgid "race+female^Undead"
 msgstr "না-মৃত"
 
 #. [race]: id=undead
-#: data/core/units.cfg:400
+#: data/core/units.cfg:416
 msgid "race+plural^Undead"
 msgstr "না-মৃতেরা"
 
 #. [race]: id=undead
-#: data/core/units.cfg:401
+#: data/core/units.cfg:417
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -6005,22 +6244,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:414
+#: data/core/units.cfg:430
 msgid "race^Wolf"
 msgstr "নেকড়ে"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:415
+#: data/core/units.cfg:431
 msgid "race+female^Wolf"
 msgstr "নেকড়ে"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:416
+#: data/core/units.cfg:432
 msgid "race^Wolves"
 msgstr "নেকড়েরা"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:417
+#: data/core/units.cfg:433
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6030,19 +6269,25 @@ msgid ""
 "civilization, though, only occasionally venturing close to prey upon "
 "livestock."
 msgstr ""
+"নেকড়ে হল শ্বাদন্ত বিশিষ্ট শিকারী প্রাণী যাদের প্রায়শই বন্য এলাকায় দেখতে পাওয়া যায় "
+"। দ্রুত, শক্ত এবং দৃঢ়, একটি নিঃসঙ্গ নেকড়ে সহজেই বেসামরিক এবং অপ্রশিক্ষিত সৈন্যদের "
+"পঙ্গু বা হত্যা করার জন্য যথেষ্ট, তবে তাদের দলে ভ্রমণ করার এবং একটি সংগঠিত পদ্ধতিতে "
+"আক্রমণ করার প্রবণতা তাদের ভ্রমণকারীদের কাছে বিশেষভাবে ভয়ঙ্কর করে তোলে । তারা "
+"সভ্যতা থেকে দূরে থাকার প্রবণতা রাখে, তবু, মাঝে মাঝে গবাদি পশুর শিকার করার চেষ্টা "
+"করে ।"
 
 #. [race]: id=wose
-#: data/core/units.cfg:426
+#: data/core/units.cfg:442
 msgid "race^Wose"
 msgstr "বৃক্ষাত্মা"
 
 #. [race]: id=wose
-#: data/core/units.cfg:427
+#: data/core/units.cfg:443
 msgid "race^Woses"
 msgstr "বৃক্ষাত্মারা"
 
 #. [race]: id=wose
-#: data/core/units.cfg:428
+#: data/core/units.cfg:444
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -6107,23 +6352,22 @@ msgstr "হতচকিত"
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Best of"
-msgstr ""
+msgstr "এর মধ্যে সবচেয়ে ভালো"
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
-msgstr ""
+msgstr "এর মধ্য সবচেয়ে খারাপ"
 
 #. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 #: src/help/help_topic_generators.cpp:122
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "base terrain"
-msgstr "মূল ভূমিরূপ:"
+msgstr "মূল ভূমিরূপ"
 
 #: src/help/help_topic_generators.cpp:197
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"গ্রামগুলি সেখানে অবস্থিত যে কোনও ইউনিটকে বিষ নিরাময় বা চিকিৎসার অনুমতি দেয় ।"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -6168,25 +6412,23 @@ msgstr "বিশেষ তথ্য:"
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
 #: src/help/help_topic_generators.cpp:241
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
-msgstr[0] "মূল ভূমিরূপ:"
-msgstr[1] "মূল ভূমিরূপ:"
+msgstr[0] "মূল ভূমিরূপ: $types"
+msgstr[1] "মূল ভূমিরূপগূলি: $types"
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 #: src/help/help_topic_generators.cpp:253
 msgid "Typical base terrain: $type"
-msgstr ""
+msgstr "স্বাভাবিক মূল ভূমিরূপ: $type"
 
 #: src/help/help_topic_generators.cpp:259
 msgid "Movement properties: "
-msgstr ""
+msgstr "চলাচলের বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:263
 msgid "Defense properties: "
-msgstr ""
+msgstr "প্রতিরক্ষামূলক বৈশিষ্ট্য:"
 
 #: src/help/help_topic_generators.cpp:341
 msgid "Level"
@@ -6226,7 +6468,7 @@ msgstr "দক্ষতা: "
 
 #: src/help/help_topic_generators.cpp:562
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "দক্ষতা বৃদ্ধি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6254,7 +6496,7 @@ msgstr "দৃষ্টি:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:607
 msgid "Jamming:"
-msgstr ""
+msgstr "জ্যামিং:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6347,11 +6589,54 @@ msgstr "দৃষ্টিমূল্য"
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
 
+#~ msgid ""
+#~ "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+#~ "order:\n"
+#~ "\n"
+#~ "Whitefire\n"
+#~ "Bleeding Moon\n"
+#~ "Scatterseed\n"
+#~ "Deeproot\n"
+#~ "Scryer’s Bloom\n"
+#~ "Thorntress\n"
+#~ "Summit Star\n"
+#~ "Kindlefire\n"
+#~ "Stillseed\n"
+#~ "Reaper’s Moon\n"
+#~ "Verglas Bloom\n"
+#~ "Blackfire\n"
+#~ "\n"
+#~ msgstr ""
+#~ "ওয়েসনথ দিনপঞ্জিকায় 12টি মাস রয়েছে । ক্রমানুযায়ী, সেগুলি হল\n"
+#~ "\n"
+#~ "হোয়াইটফায়ার\n"
+#~ "ব্লিডিং মুন\n"
+#~ "স্ক্যাটারসিড\n"
+#~ "ডিপরুট\n"
+#~ "স্ক্রায়ারস্ ব্লুম\n"
+#~ "থর্নট্রেস\n"
+#~ "সামিট স্টার\n"
+#~ "কিন্ডলফায়ার\n"
+#~ "স্টিলসিড\n"
+#~ "রিপারস মুন\n"
+#~ "ভারগ্লাস ব্লুম\n"
+#~ "ব্লাকফায়ার\n"
+#~ "\n"
+
+#~ msgid "deflect"
+#~ msgstr "বিচ্যুতিকরণ"
+
+#~ msgid "absorb"
+#~ msgstr "শোষণ"
+
 #~ msgid "Close"
 #~ msgstr "বন্ধ"
 
 #~ msgid "Help"
 #~ msgstr "সাহায্য"
+
+#~ msgid "Parse error when parsing help text:"
+#~ msgstr "সাহ্যয্যের তথ্য পড়ার সময় ত্রুটি:"
 
 #~ msgid "unit help^Attacks"
 #~ msgstr "আক্রমণসমূহ"

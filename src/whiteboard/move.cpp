@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,8 @@
  */
 
 #include "whiteboard/move.hpp"
+
+#include <utility>
 
 #include "whiteboard/visitor.hpp"
 #include "whiteboard/side_actions.hpp"
@@ -41,13 +43,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_ptr& move)
 {
 	assert(move);
 	return move->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_const_ptr& move)
 {
 	assert(move);
 	return move->print(s);
@@ -65,7 +67,7 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
+move::move(std::size_t team_index, bool hidden, const unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
   unit_underlying_id_(u.underlying_id()),
@@ -73,7 +75,7 @@ move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
   turn_number_(0),
-  arrow_(arrow),
+  arrow_(std::move(arrow)),
   fake_unit_(std::move(fake_unit)),
   arrow_brightness_(),
   arrow_texture_(),

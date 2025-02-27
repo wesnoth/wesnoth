@@ -127,8 +127,8 @@ WESMERE_FOOTER = '''\
 
 <div id="footer"><div id="footer-content"><div>
 	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
-	Copyright &copy; 2003&ndash;2024 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
-	Site design Copyright &copy; 2017&ndash;2024 by Iris Morelle
+	Copyright &copy; 2003&ndash;2025 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
+	Site design Copyright &copy; 2017&ndash;2025 by Iris Morelle
 </div></div></div>
 </body>
 </html>
@@ -302,11 +302,11 @@ def output(path, url, datadir, data):
 
         if icon:
             icon = icon.strip()
-            uri_manifest = re.match('^data:(image/(?:png|jpeg));base64,', icon)
+            uri_manifest = re.match('^data:(image/.*?);base64,', icon)
 
             if uri_manifest:
                 if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
-                    sys.stderr.write("Data URI icon using unsupported content type " + uri_manifest.group(1))
+                    print("Data URI icon using unsupported content type " + uri_manifest.group(1), file=sys.stderr)
                 else:
                     imgurl = icon
             else:

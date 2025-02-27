@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/editor/edit_pbl.hpp"
 
+#include "addon/validation.hpp"
 #include "editor/editor_common.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
@@ -140,15 +141,21 @@ void editor_edit_pbl::pre_show()
 
 	if(pbl["forum_auth"].to_bool()) {
 		find_widget<toggle_button>("forum_auth").set_value(true);
+		find_widget<text_box>("primary_authors").set_value(pbl["primary_authors"]);
+		find_widget<text_box>("secondary_authors").set_value(pbl["secondary_authors"]);
 		find_widget<text_box>("email").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
 		find_widget<text_box>("email").set_value(pbl["email"]);
 		find_widget<text_box>("password").set_value(pbl["passphrase"]);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
@@ -265,6 +272,10 @@ config editor_edit_pbl::create_cfg()
 	if(find_widget<toggle_button>("forum_auth").get_value_bool()) {
 		cfg["forum_auth"] = true;
 
+		if(const std::string& primary_authors = find_widget<text_box>("primary_authors").get_value(); !primary_authors.empty()) {
+			cfg["primary_authors"] = primary_authors;
+		}
+
 		if(const std::string& secondary_authors = find_widget<text_box>("secondary_authors").get_value(); !secondary_authors.empty()) {
 			cfg["secondary_authors"] = secondary_authors;
 		}
@@ -319,6 +330,8 @@ void editor_edit_pbl::toggle_auth()
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
@@ -326,6 +339,8 @@ void editor_edit_pbl::toggle_auth()
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
@@ -373,6 +388,8 @@ void editor_edit_pbl::validate()
 	read(temp, ss.str(), validator.get());
 	if(!validator->get_errors().empty()) {
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
+	} else if(addon_icon_too_large(temp["icon"].str())) {
+		gui2::show_error_message(_("The icon’s file size is too large"));
 	} else {
 		gui2::show_message(_("Success"), _("No validation errors"), gui2::dialogs::message::button_style::auto_close);
 	}

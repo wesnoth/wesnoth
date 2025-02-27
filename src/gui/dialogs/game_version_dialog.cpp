@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "desktop/version.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -31,6 +30,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -264,29 +264,21 @@ void game_version::show_license() {
 }
 
 void game_version::report_issue() {
-	if (!desktop::open_object_is_supported()) {
-		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
-		return;
-	} else {
+	if (desktop::open_object_is_supported()) {
 		desktop::open_object("https://bugs.wesnoth.org");
+	} else {
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 	}
 }
 
 void game_version::show_manual() {
 	if (desktop::open_object_is_supported()) {
-		std::string manual_filename = "manual." + get_language().localename + ".html";
-		std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
-		if (filesystem::file_exists(local_path)) {
-			desktop::open_object("file://" + local_path);
+		const auto& manual_path = filesystem::get_game_manual_file(get_language().localename);
+		if (manual_path) {
+			desktop::open_object(manual_path.value());
 		} else {
-			// If a filename like manual.en_GB.html is not found, try manual.en.html
-			manual_filename = "manual." + utils::split(get_language().localename, '_')[0] + ".html";
-			std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
-			if (filesystem::file_exists(local_path)) {
-				desktop::open_object("file://" + local_path);
-			} else {
-				desktop::open_object("https://www.wesnoth.org/manual/dev/" + manual_filename);
-			}
+			// Use web manual as a last resort
+			desktop::open_object("https://www.wesnoth.org/manual/dev/manual." + get_language().localename + ".html");
 		}
 	} else {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);

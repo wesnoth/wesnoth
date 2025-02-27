@@ -31,6 +31,8 @@ jobs:
         sudo apt-get -y -q install pngquant
         comment_body=""
         log() { printf '\e[1m%s\e[m\n' "$*"; } # write log message in bold
+        err() { printf '\e[1;31m%s\e[m\n' "$*"; exit 1; } # write error message in bold red and exit
+        dim() { tr -cd ',\n' < "$1" | awk 'p {if (p!=length) f=1} {p=length} END {if (f) print "not a rectangle!"; w=p-1; h=NR-2; printf "%dx%d\n", w, h}'; }
 
         ## Get changed maps
         git fetch --depth=1 origin "$SHA"
@@ -42,6 +44,8 @@ jobs:
           log "Check out $map_path from $SHA..."
           new_map=${map_path##*/}
           git show "$SHA":"$map_path" > "$new_map"
+          old_dim=$(dim "$map_path")
+          new_dim=$(dim "$new_map")
 
           log "Generate map diff image for $map_path..."
           node build/index.js "../../$map_path" "$new_map" diff_image.png
@@ -52,16 +56,18 @@ jobs:
           identify diff_image.png
 
           log 'Uploading diff_image.png...'
-          json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr) || continue
+          json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr)
 
           log 'Generating HTML comment...'
-          html=$(jq -r --arg path "$map_path" 'if .data.link != null
-            then @html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"
-            elif has("errors") then .errors[].status | halt_error
-            else "Unexpected JSON structure!\n" | halt_error end' <<< "$json") || continue
+          html=$(printf %s "$json" | jq -rRs --arg path "$map_path" --arg dim "$old_dim -> $new_dim" '. as $input |
+            try fromjson catch ({error:$input}) | @html "
+            <h3>\($path)</h3><p>dimensions: \($dim)</p>
+            <img src=\"\(.data.link)\" alt=\"\(if .data.link then "map diff image" else "image upload failed" end)\"/><br/>
+            <details><summary>imgur response</summary><p>\(tojson)</p></details>"')
           comment_body+=$html
         done
 
+        [[ $comment_body ]] || err Failed to generate comment
         printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
     - name: Find comment
       uses: peter-evans/find-comment@v2

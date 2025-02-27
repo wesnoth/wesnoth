@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -101,6 +101,37 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 	return PANGO_ALIGN_LEFT;
 }
 
+PangoEllipsizeMode decode_ellipsize_mode(const std::string& ellipsize_mode)
+{
+	if(ellipsize_mode == "start") {
+		return PANGO_ELLIPSIZE_START;
+	} else if(ellipsize_mode == "middle") {
+		return PANGO_ELLIPSIZE_MIDDLE;
+	} else if(ellipsize_mode == "end") {
+		return PANGO_ELLIPSIZE_END;
+	}
+
+	if(!ellipsize_mode.empty() && ellipsize_mode != "none") {
+		ERR_GUI_E << "Invalid text ellipsization mode '" << ellipsize_mode << "', falling back to 'none'.";
+	}
+
+	return PANGO_ELLIPSIZE_NONE;
+}
+
+std::string encode_ellipsize_mode(const PangoEllipsizeMode ellipsize_mode)
+{
+	switch(ellipsize_mode) {
+		case PANGO_ELLIPSIZE_START:
+			return "start";
+		case PANGO_ELLIPSIZE_MIDDLE:
+			return "middle";
+		case PANGO_ELLIPSIZE_END:
+			return "end";
+		default:
+			return "none";
+	}
+}
+
 std::string encode_text_alignment(const PangoAlignment alignment)
 {
 	switch(alignment) {
@@ -126,7 +157,6 @@ void get_screen_size_variables(wfl::map_formula_callable& variable)
 {
 	variable.add("screen_width", wfl::variant(settings::screen_width));
 	variable.add("screen_height", wfl::variant(settings::screen_height));
-	variable.add("screen_pitch_microns", wfl::variant(settings::screen_pitch_microns));
 	variable.add("gamemap_width", wfl::variant(settings::gamemap_width));
 	variable.add("gamemap_height", wfl::variant(settings::gamemap_height));
 	variable.add("gamemap_x_offset", wfl::variant(settings::gamemap_x_offset));

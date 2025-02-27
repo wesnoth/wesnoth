@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -630,6 +630,14 @@ const node* node::child(const char* name) const
 	}
 
 	return nullptr;
+}
+
+node& node::child_or_add(const char* name)
+{
+	if(node* res = child(name)) {
+		return *res;
+	}
+	return add_child(name);
 }
 
 const node::child_list& node::children(const char* name) const

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <iterator>
+#include <utility>
 
 #include "whiteboard/highlighter.hpp"
 
@@ -52,7 +53,7 @@ highlighter::highlighter(side_actions_ptr side_actions)
 	, selected_action_()
 	, main_highlight_()
 	, secondary_highlights_()
-	, side_actions_(side_actions)
+	, side_actions_(std::move(side_actions))
 {
 }
 
@@ -104,7 +105,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	for(action_ptr act : utils::reversed_view(*side_actions_)) {
+	for(action_ptr act : *side_actions_ | utils::views::reverse) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
@@ -179,7 +180,7 @@ void highlighter::unhighlight()
 	exclusive_display_hexes_.clear();
 }
 
-void highlighter::last_action_redraw(move_ptr move)
+void highlighter::last_action_redraw(const move_ptr& move)
 {
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {

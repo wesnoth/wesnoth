@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 	, label_details_(nullptr)
 	, tree_details_(nullptr)
 	, button_profile_(nullptr)
-	, image_mods_()
+	, image_mods_(builder.image_mods)
 {
 }
 
@@ -145,7 +145,7 @@ static inline std::string get_hp_tooltip(
 	return tooltip.str();
 }
 
-static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
+static inline std::string get_mp_tooltip(int total_movement, const std::function<int (t_translation::terrain_code)>& get)
 {
 	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;
@@ -258,7 +258,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	}
 }
 
-void unit_preview_pane::set_displayed_type(const unit_type& type)
+void unit_preview_pane::set_display_data(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = type;
@@ -389,7 +389,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 }
 
-void unit_preview_pane::set_displayed_unit(const unit& u)
+void unit_preview_pane::set_display_data(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = u.type();
@@ -584,7 +584,7 @@ namespace implementation
 
 builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 	: builder_styled_widget(cfg)
-	, image_mods_(cfg["image_mods"])
+	, image_mods(cfg["image_mods"])
 {
 }
 
@@ -600,7 +600,6 @@ std::unique_ptr<widget> builder_unit_preview_pane::build() const
 
 	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
-	widget->set_image_mods(image_mods_);
 
 	return widget;
 }

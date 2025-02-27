@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2024
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 
 #include "config.hpp"
 #include "gui/core/canvas.hpp"
-#include "gui/core/event/handler.hpp" // for open_window_stack
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -64,13 +63,7 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
-	int v = [&wp]() {
-		gui2::open_window_stack.push_back(wp.get());
-		ON_SCOPE_EXIT(&wp) {
-			gui2::remove_from_window_stack(wp.get());
-		};
-		return wp->show();
-	}();
+	int v = wp->show();
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -389,7 +382,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	cv[i - 1].set_cfg(cfg);
+	cv[i - 1].set_shapes(cfg);
 	c->queue_redraw();
 	return 0;
 }

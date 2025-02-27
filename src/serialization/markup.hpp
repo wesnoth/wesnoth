@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,154 +15,169 @@
 #pragma once
 
 #include "color.hpp"
-#include "config.hpp"
+#include "exceptions.hpp"
 // This file isn't needed by any of these functions, but this allows any
 // standard color to be passed to span_color without an extra include.
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <string>
+#include <string_view>
 
-namespace markup {
+class config;
 
+namespace markup
+{
 /**
- * @return  A Help markup tag corresponding to a linebreak.
+ * A Help markup tag corresponding to a linebreak.
  * @see gui2::rich_label for details on how this tag is parsed.
  */
-const static std::string br = "<br/>";
+constexpr std::string_view br{"<br/>"};
 
 /**
- * @return             The contents enclosed inside `<tag_name>` and `</tag_name>`.
- *                     Does not escape its contents and returns empty string
- *                     if empty or no contents is passed.
+ * Wraps the given data in the specified formatting tag.
  *
- * @param tag_name     Name of the tag.
- * @param contents     Variable list of contents to enclose inside @p tag_name.
- *                     Could anything that can be appended to a @ref formatter.
+ * @param tag       The formatting tag ("b", "i", etc).
+ * @param data      The content to wrap with @a tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
+ *                  If the concatenation of @a data results in an empty string,
+ *                  an empty string is returned in lieu of formatting tags.
  */
 template<typename... Args>
-std::string tag(const std::string& tag_name, Args&&... contents)
+std::string tag(std::string_view tag, Args&&... data)
 {
-	std::string input_text = ((formatter()) << ... << contents);
-	if (input_text.empty()) {
-		return "";
-	} else {
-		return formatter()
-			<< "<" << tag_name << ">"
-			<< input_text
-			<< "</" << tag_name << ">";
-	}
+	std::string input = (formatter() << ... << data);
+	if(input.empty()) return {};
+	return formatter() << "<" << tag << ">" << input << "</" << tag << ">";
 }
 
 /**
- * @return             A Pango formatting string using the provided color_t object.
- *                     The string returned will be in format: `<span foreground=#color>#data</span>`.
+ * Wraps the given data in a @c span tag with the specified attribute and value.
  *
- * @param color        The color_t object from which to retrieve the color.
- * @param data         Variable list of contents to enclose inside the span tag.
- *                     Could anything that can be appended to a @ref formatter.
- *                     This function does not escape data internally, so data should be escaped by the caller if needed.
+ * @param key       The span attribute ("color", "size", etc).
+ * @param value     The attribute value.
+ * @param data      The content to format.
+ *
+ * @note            See @ref tag for more information.
+ */
+template<typename Value, typename... Args>
+std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
+{
+	std::string input = (formatter() << ... << data);
+	if(input.empty()) return {};
+	return formatter() << "<span " << key << "='" << value << "'>" << input << "</span>";
+}
+
+/**
+ * Applies Pango markup to the input specifying its display color.
+ *
+ * @param color     The color_t object from which to retrieve the color.
+ * @param data      Variable list of content to enclose inside the span tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @returns         @code `<span color='#color'>#data</span>` @endcode
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
  */
 template<typename... Args>
 std::string span_color(const color_t& color, Args&&... data)
 {
-	std::string input_text = ((formatter()) << ... << data);
-	if (input_text.empty()) {
-		return "";
-	} else {
-		return formatter()
-			<< "<span color='" << color.to_hex_string() << "'>" << input_text << "</span>";
-	}
+	return span_attribute("color", color.to_hex_string(), std::forward<Args>(data)...);
 }
 
 /**
- * @return             A Pango formatting string using the provided hex color string.
- *                     The string returned will be in format: `<span foreground=#color>#data</span>`.
+ * Applies Pango markup to the input specifying its display color.
  *
- * @param color        The hex color string.
- * @param data         Variable list of contents to enclose inside the span tag.
- *                     Could anything that can be appended to a @ref formatter.
- *                     This function does not escape data internally, so data should be escaped by the caller if needed.
+ * @param color     The hex color string.
+ * @param data      Variable list of content to enclose inside the span tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @returns         @code `<span color='#color'>#data</span>` @endcode
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
  */
 template<typename... Args>
-std::string span_color(const std::string& color, Args&&... data)
+std::string span_color(std::string_view color, Args&&... data)
 {
-	std::string input_text = ((formatter()) << ... << data);
-	if (input_text.empty()) {
-		return "";
-	} else {
-		return formatter()
-			<< "<span color='" << color << "'>" << input_text << "</span>";
-	}
+	return span_attribute("color", color, std::forward<Args>(data)...);
 }
 
 /**
- * @return             A Pango formatting string that set the font size of the enclosed data.
- *                     The string returned will be in format: `<span size=#size>#data</span>`.
+ * Applies Pango markup to the input specifying its display size.
  *
- * @param size         The font size. String so values like x-large, large etc could be used.
- * @param data         Variable list of contents to enclose inside the span tag.
- *                     Could anything that can be appended to a @ref formatter.
- *                     This function does not escape data internally, so data should be escaped by the caller if needed.
+ * @param size      A Pango string size specifier (large, small, x-large, etc).
+ * @param data      Variable list of content to concatenate inside the span tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @returns         @code `<span size='#size'>#data</span>` @endcode
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
  */
 template<typename... Args>
-std::string span_size(const std::string& size, Args&&... data)
+std::string span_size(std::string_view size, Args&&... data)
 {
-	std::string input_text = ((formatter()) << ... << data);
-	if (input_text.empty()) {
-		return "";
-	} else {
-		return formatter()
-			<< "<span size='" << size << "'>" << input_text << "</span>";
-	}
+	return span_attribute("size", size, std::forward<Args>(data)...);
 }
 
 /**
- * @return          A Pango formatting string corresponding to bold formatting.
+ * Applies bold Pango markup to the input.
  *
- * @param data      Variable list of contents to enclose inside the bold tag. Could anything that can be appended to a @ref formatter.
- *                  This function does not escape data internally, so data should be escaped by the caller if needed.
+ * @param data      Variable list of content to concatenate inside the bold tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
  */
 template<typename... Args>
 std::string bold(Args&&... data)
 {
-	return tag("b", (formatter() << ... << data).str());
+	return tag("b", std::forward<Args>(data)...);
 }
 
 /**
- * @return          A Pango formatting string corresponding to italic formatting.
+ * Applies italic Pango markup to the input.
  *
- * @param data      Variable list of contents to enclose inside the italic tag. Could anything that can be appended to a @ref formatter.
- *                  This function does not escape data internally, so data should be escaped by the caller if needed.
+ * @param data      Variable list of content to enclose inside the italic tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
  */
 template<typename... Args>
 std::string italic(Args&&... data)
 {
-	return tag("i", (formatter() << ... << data).str());
+	return tag("i", std::forward<Args>(data)...);
 }
 
 /**
- * @return          A Help markup tag corresponding to an image. This function does not escape
- *                  strings internally, so should be escaped by the caller if needed.
+ * Generates a Help markup tag corresponding to an image.
  *
- * @param src       The WML path to where the image is located. (i.e., 'units/drakes/arbiter.png')
- * @param align     Alignment of this image. Possible values: left, right, center.
+ * @param src       The WML path to the image (i.e., 'units/drakes/arbiter.png')
+ * @param align     Alignment of the image. Possible values: left, right, center.
  * @param floating  Is the image a floating image or an inline image?
  *
- * @see gui2::rich_label for details on how this tag is parsed.
- *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
+ *                  @see gui2::rich_label for details on how this tag is parsed.
  */
-std::string img(const std::string& src, const std::string& align = "left", const bool floating = false);
+std::string img(const std::string& src, const std::string& align = "left", bool floating = false);
 
 /**
- * @return          A Help markup tag corresponding to a reference or link. This function does not
- *                  escape strings internally, so should be escaped by the caller if needed.
+ * Generates a Help markup tag corresponding to a reference or link.
  *
  * @param text      User visible text/caption of the link.
- * @param dst       Destination of the link. Can be any string depending on the link handler in the parsing @ref gui2::rich_label.
+ * @param dst       Destination of the link. Can be any string depending on the link handler
+ *                  in the parsing @ref gui2::rich_label.
  *
- * @see gui2::rich_label for details on how this tag is parsed.
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
+ *                  @see gui2::rich_label for details on how this tag is parsed.
  */
 std::string make_link(const std::string& text, const std::string& dst);
 
@@ -183,4 +198,4 @@ struct parse_error : public game::error
  */
 config parse_text(const std::string &text);
 
-} //end namespace markup
+} // namespace markup

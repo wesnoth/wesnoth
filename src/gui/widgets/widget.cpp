@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -557,13 +557,12 @@ const widget* widget::find_at(const point& coordinate,
 	return is_at(coordinate, must_be_active) ? this : nullptr;
 }
 
-widget* widget::find(const std::string& id, const bool /*must_be_active*/)
+widget* widget::find(const std::string_view id, const bool /*must_be_active*/)
 {
 	return id_ == id ? this : nullptr;
 }
 
-const widget* widget::find(const std::string& id,
-							 const bool /*must_be_active*/) const
+const widget* widget::find(const std::string_view id, const bool /*must_be_active*/) const
 {
 	return id_ == id ? this : nullptr;
 }

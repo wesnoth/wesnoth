@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,7 +74,7 @@ public:
 	/** Cycle to the next brush. */
 	void cycle_brush();
 
-	void set_brush(std::string id);
+	void set_brush(const std::string& id);
 
 	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 

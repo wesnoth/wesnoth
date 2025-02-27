@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -240,9 +240,7 @@ namespace implementation
 {
 
 builder_scroll_text::builder_scroll_text(const config& cfg)
-	: implementation::builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, editable(cfg["editable"].to_bool(true))
 	, link_aware(cfg["link_aware"].to_bool(false))
@@ -260,9 +258,6 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 std::unique_ptr<widget> builder_scroll_text::build() const
 {
 	auto widget = std::make_unique<scroll_text>(*this);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	const auto conf = widget->cast_config_to<scroll_text_definition>();
 	assert(conf);

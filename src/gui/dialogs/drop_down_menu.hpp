@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,6 +44,11 @@ public:
 		return selected_item_;
 	}
 
+	point selected_item_pos() const
+	{
+		return selected_item_pos_;
+	}
+
 	/** If a toggle button widget is present, returns the toggled state of each row's button. */
 	boost::dynamic_bitset<> get_toggle_states() const;
 
@@ -86,6 +91,7 @@ private:
 	SDL_Rect button_pos_;
 
 	int selected_item_;
+	point selected_item_pos_;
 
 	bool use_markup_;
 

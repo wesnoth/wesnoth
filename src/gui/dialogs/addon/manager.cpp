@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -326,7 +327,7 @@ void addon_manager::pre_show()
 	addon_list& list = find_widget<addon_list>("addons");
 
 	text_box& filter = find_widget<text_box>("filter");
-	filter.set_text_changed_callback(std::bind(&addon_manager::apply_filters, this));
+	filter.on_modified([this](const auto&) { apply_filters(); });
 
 	list.set_install_function(std::bind(&addon_manager::install_addon,
 		this, std::placeholders::_1));
@@ -349,7 +350,13 @@ void addon_manager::pre_show()
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		if(f.first == FILTER_ALL) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(addons_.size())+")");
+		} else if(f.first == FILTER_INSTALLED) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(installed_addons().size())+")");
+		} else {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		}
 	}
 
 	status_filter.set_values(status_filter_entries);
@@ -375,9 +382,29 @@ void addon_manager::pre_show()
 	// The type filter
 	multimenu_button& type_filter = find_widget<multimenu_button>("type_filter");
 
+	std::map<ADDON_TYPE, int> type_counts = {
+		{ADDON_SP_CAMPAIGN, 0},
+		{ADDON_SP_SCENARIO, 0},
+		{ADDON_SP_MP_CAMPAIGN, 0},
+		{ADDON_MP_CAMPAIGN, 0},
+		{ADDON_MP_SCENARIO, 0},
+		{ADDON_MP_MAPS, 0},
+		{ADDON_MP_ERA, 0},
+		{ADDON_MP_FACTION, 0},
+		{ADDON_MOD, 0},
+		{ADDON_CORE, 0},
+		{ADDON_THEME, 0},
+		{ADDON_MEDIA, 0},
+		{ADDON_OTHER, 0},
+		{ADDON_UNKNOWN, 0}
+	};
+	for(const auto& addon : addons_) {
+		type_counts[addon.second.type]++;
+	}
+
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN), "checkbox", false);
+		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(type_counts[f.first])+")", "checkbox", false);
 	}
 
 	type_filter.set_values(type_filter_entries);
@@ -403,7 +430,7 @@ void addon_manager::pre_show()
 		}
 	}
 	for (auto& i: language_strings_available) {
-		language_filter_types_.emplace_back(language_filter_types_.size(), std::move(i));
+		language_filter_types_.emplace_back(language_filter_types_.size(), i);
 	}
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>("language_filter");
@@ -489,6 +516,14 @@ void addon_manager::pre_show()
 		find_widget<button>("delete"),
 		std::bind(&addon_manager::delete_selected_addon, this));
 
+	if(game_config::addon_server_info) {
+		connect_signal_mouse_left_click(
+			find_widget<button>("info"),
+			std::bind(&addon_manager::info, this));
+	} else {
+		find_widget<button>("info").set_visible(false);
+	}
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("update_all"),
 		std::bind(&addon_manager::update_all_addons, this));
@@ -523,7 +558,7 @@ void addon_manager::pre_show()
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return exit_hook(); });
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)
@@ -539,7 +574,7 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	bool success = client_.request_addons_list(cfg_);
+	bool success = client_.request_addons_list(cfg_, prefs::get().addon_icons());
 	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		close();
@@ -599,7 +634,7 @@ void addon_manager::load_addon_list()
 	apply_filters();
 }
 
-void addon_manager::reload_list_and_reselect_item(const std::string id)
+void addon_manager::reload_list_and_reselect_item(const std::string& id)
 {
 	load_addon_list();
 
@@ -897,6 +932,32 @@ void addon_manager::update_all_addons()
 	}
 }
 
+void addon_manager::info()
+{
+	// TODO: make this a separate method to avoid code duplication
+
+	// Explicitly return to the main page if we're in low-res mode so the list is visible.
+	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
+		stk->select_layer(0);
+		find_widget<button>("details_toggle").set_label(_("Add-on Details"));
+	}
+
+	addon_list& addons = find_widget<addon_list>("addons");
+	const addon_info* addon = addons.get_selected_addon();
+
+	bool needs_refresh = false;
+	if(addon == nullptr) {
+		gui2::dialogs::addon_server_info::execute(client_, "", needs_refresh);
+	} else {
+		gui2::dialogs::addon_server_info::execute(client_, addon->id, needs_refresh);
+	}
+
+	if(needs_refresh) {
+		fetch_addons_list();
+		reload_list_and_reselect_item("");
+	}
+}
+
 /** Performs all backend and UI actions for publishing the specified add-on. */
 void addon_manager::publish_addon(const addon_info& addon)
 {
@@ -1158,9 +1219,9 @@ void addon_manager::on_selected_version_change()
 	}
 }
 
-bool addon_manager::exit_hook(window& window)
+bool addon_manager::exit_hook()
 {
-	if(window.get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
+	if(get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
 		execute_default_action_on_selected_addon();
 		return false;
 	}

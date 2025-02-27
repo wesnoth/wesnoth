@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -178,7 +178,7 @@ struct scroll_text_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_text : public builder_styled_widget
+struct builder_scroll_text : public builder_scrollbar_container
 {
 	explicit builder_scroll_text(const config& cfg);
 
@@ -186,8 +186,6 @@ struct builder_scroll_text : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	const PangoAlignment text_alignment;
 	bool editable;
 	bool link_aware;

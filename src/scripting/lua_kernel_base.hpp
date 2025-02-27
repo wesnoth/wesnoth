@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,6 +31,9 @@ public:
 
 	/** Runs a [lua] tag. Doesn't throw lua_error.*/
 	void run_lua_tag(const config& cfg);
+
+	/** Runs a binary [lua] tag. Doesn't throw lua_error.*/
+	config run_binary_lua_tag(const config& cfg);
 
 	/** Runs a plain script. Doesn't throw lua_error.*/
 	void run(char const *prog, const std::string& name, int nArgs = 0);
@@ -121,11 +124,12 @@ public:
 	int intf_show_lua_console(lua_State * L);
 protected:
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
-	bool protected_call(int nArgs, int nRets, error_handler);
+	bool protected_call(int nArgs, int nRets, const error_handler&);
 	// Execute a protected call, taking a lua_State as argument. For functions pushed into the lua environment, this version should be used, or the function cannot be used by coroutines without segfaulting (since they have a different lua_State pointer). This version is called by the above version.
-	static bool protected_call(lua_State * L, int nArgs, int nRets, error_handler);
+	static bool protected_call(lua_State * L, int nArgs, int nRets, const error_handler&);
 	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
-	bool load_string(char const * prog, const std::string& name, error_handler);
+	bool load_string(const std::string& prog, const std::string& name, const error_handler&, bool allow_unsafe = false);
+	bool load_binary(const config& func, const error_handler&);
 
 	virtual bool protected_call(int nArgs, int nRets); 	// select default error handler polymorphically
 	virtual bool load_string(char const * prog, const std::string& name);		// select default error handler polymorphically
@@ -144,6 +148,12 @@ protected:
 private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
+};
+
+config luaW_serialize_function(lua_State* L, int func);
+
+struct luafunc_serialize_error : public std::runtime_error {
+	using std::runtime_error::runtime_error;
 };
 
 std::vector<std::string> luaW_get_attributes(lua_State* L, int idx);

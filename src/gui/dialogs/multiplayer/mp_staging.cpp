@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -128,7 +128,7 @@ void mp_staging::pre_show()
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
+int mp_staging::get_side_node_position(const ng::side_engine_ptr& side) const
 {
 	int position = 0;
 	for(const auto& side_engine : connect_engine_.side_engines()) {
@@ -141,7 +141,7 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 }
 
 template<typename... T>
-tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&... params)
+tree_view_node& mp_staging::add_side_to_team_node(const ng::side_engine_ptr& side, T&&... params)
 {
 	static const widget_data empty_map;
 
@@ -168,7 +168,7 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 	return team_node->add_child(std::forward<T>(params)...);
 }
 
-void mp_staging::add_side_node(ng::side_engine_ptr side)
+void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 {
 	widget_data data;
 	widget_item item;
@@ -373,7 +373,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	}
 }
 
-void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::on_controller_select(const ng::side_engine_ptr& side, grid& row_grid)
 {
 	menu_button& ai_selection         = row_grid.find_widget<menu_button>("ai_controller");
 	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
@@ -385,7 +385,7 @@ void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 	}
 }
 
-void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game)
+void mp_staging::on_ai_select(const ng::side_engine_ptr& side, menu_button& ai_menu, const bool saved_game)
 {
 	// If this is a saved game, we need to reduce the index by one, to account for
 	// the "Keep saved AI" option having been added to the computer player menu
@@ -403,7 +403,7 @@ void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, co
 	set_state_changed();
 }
 
-void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::on_color_select(const ng::side_engine_ptr& side, grid& row_grid)
 {
 	side->set_color(row_grid.find_widget<menu_button>("side_color").get_value());
 
@@ -412,7 +412,7 @@ void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 	set_state_changed();
 }
 
-void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu)
+void mp_staging::on_team_select(const ng::side_engine_ptr& side, menu_button& team_menu)
 {
 	// Since we're not necessarily displaying every every team in the menu, we can't just
 	// use the selected index to set a side's team. Instead, we grab the index we stored
@@ -451,7 +451,7 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 	set_state_changed();
 }
 
-void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::select_leader_callback(const ng::side_engine_ptr& side, grid& row_grid)
 {
 	if(gui2::dialogs::faction_select::execute(side->flg(), side->color_id(), side->index() + 1)) {
 		update_leader_display(side, row_grid);
@@ -461,14 +461,14 @@ void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid
 }
 
 template<void(ng::side_engine::*fptr)(int)>
-void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
+void mp_staging::on_side_slider_change(const ng::side_engine_ptr& side, slider& slider)
 {
 	std::invoke(fptr, side, slider.get_value());
 
 	set_state_changed();
 }
 
-void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::update_leader_display(const ng::side_engine_ptr& side, grid& row_grid)
 {
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
 	std::string current_leader = side->flg().current_leader() != "null" ? side->flg().current_leader() : font::unicode_em_dash;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -129,50 +129,40 @@ void playmp_controller::play_human_turn()
 	end_turn_enable(true);
 
 	while(!should_return_to_play_side()) {
-		try {
-			process_network_data();
-			check_objectives();
-			play_slice_catch();
-			if(player_type_changed_) {
-				// Clean undo stack if turn has to be restarted (losing control)
-				if(undo_stack().can_undo()) {
-					gui_->announce(_("Undoing moves not yet transmitted to the server."), font::NORMAL_COLOR);
-				}
-
-				while(undo_stack().can_undo()) {
-					undo_stack().undo();
-				}
+		process_network_data();
+		check_objectives();
+		play_slice_catch();
+		if(player_type_changed_) {
+			// Clean undo stack if turn has to be restarted (losing control)
+			if(undo_stack().can_undo()) {
+				gui_->announce(_("Undoing moves not yet transmitted to the server."), font::NORMAL_COLOR);
 			}
 
-			if(timer) {
-				bool time_left = timer->update();
-				if(!time_left) {
-					end_turn_requested_ = true;
-				}
+			while(undo_stack().can_undo()) {
+				undo_stack().undo();
 			}
-		} catch(...) {
-			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
-			throw;
+		}
+
+		if(timer) {
+			bool time_left = timer->update();
+			if(!time_left) {
+				end_turn_requested_ = true;
+			}
 		}
 	}
 }
 
 void playmp_controller::play_idle_loop()
 {
-	LOG_NG << "playmp::play_human_turn...";
+	LOG_NG << "playmp::play_idle_loop...";
 
 	remove_blindfold();
 
 	while(!should_return_to_play_side()) {
-		try {
-			process_network_data();
-			play_slice_catch();
-			using namespace std::chrono_literals;
-			std::this_thread::sleep_for(1ms); // TODO: why?
-		} catch(...) {
-			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
-			throw;
-		}
+		process_network_data();
+		play_slice_catch();
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(1ms); // TODO: why?
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,12 +22,8 @@
 #include <map>
 #include <array>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class game_version : public modal_dialog
 {
 public:
@@ -121,5 +117,5 @@ private:
 	 */
 	void show_manual();
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

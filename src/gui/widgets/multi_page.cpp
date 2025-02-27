@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,8 +36,23 @@ REGISTER_WIDGET(multi_page)
 multi_page::multi_page(const implementation::builder_multi_page& builder)
 	: container_base(builder, type())
 	, generator_(nullptr)
-	, page_builders_()
+	, page_builders_(builder.builders)
 {
+	const auto conf = cast_config_to<multi_page_definition>();
+	assert(conf);
+
+	init_grid(*conf->grid);
+
+	auto generator = generator_base::build(true, true, generator_base::independent, false);
+
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	generator->create_items(-1, *page_builders_.begin()->second, builder.data, nullptr);
+
+	// TODO: can we use the replacements system here?
+	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 }
 
 grid& multi_page::add_page(const widget_item& item)
@@ -138,16 +153,6 @@ unsigned multi_page::get_state() const
 	return 0;
 }
 
-void multi_page::finalize(std::unique_ptr<generator_base> generator, const std::vector<widget_item>& page_data)
-{
-	// Save our *non-owning* pointer before this gets moved into the grid.
-	generator_ = generator.get();
-	assert(generator_);
-
-	generator->create_items(-1, *page_builders_.begin()->second, page_data, nullptr);
-	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
-}
-
 bool multi_page::impl_draw_background()
 {
 	/* DO NOTHING */
@@ -224,20 +229,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 std::unique_ptr<widget> builder_multi_page::build() const
 {
 	auto widget = std::make_unique<multi_page>(*this);
-
-	widget->set_page_builders(builders);
-
-	DBG_GUI_G << "Window builder: placed multi_page '" << id
-			  << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<multi_page_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(true, true, generator_base::independent, false);
-	widget->finalize(std::move(generator), data);
-
+	DBG_GUI_G << "Window builder: placed multi_page '" << id << "' with definition '" << definition << "'.";
 	return widget;
 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2024-01-01 18:43+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -269,22 +269,22 @@ msgstr "Úroveň: "
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Fatálna chyba"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Naozaj chcete skončiť?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "Naozaj chcete skončiť? Stratíte zmeny tejto mapy od posledného uloženia."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -292,35 +292,35 @@ msgstr ""
 "Naozaj chcete skončiť? Nasledujúce mapy boli zmenené, a všetky zmeny od "
 "posledného uloženia sa stratia:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Nenašiel sa rozvrh dňa pre editor."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "Doplnok"
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Podpora schránky sa nenašla, kontaktujte autora balíka programu"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Zmeň ID jednotky"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Premenovať jednotku"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Meno:"
 
@@ -336,11 +336,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "Načítať mapu"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Nová scéna"
 
@@ -386,7 +386,7 @@ msgid "Save Map As"
 msgstr "Ulož mapu ako"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Chyba"
@@ -460,21 +460,21 @@ msgstr "Hráč $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Veľkosť cieľovej mapy sa líši od súčasnej mapy"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Súbor sa nenašiel"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Prázdny súbor mapy"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Súbor nemá príponu .map alebo .cfg"
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -482,18 +482,18 @@ msgstr ""
 "Mapový súbor vyzerá ako scéna, ale hodnota map_data neukazuje na existujúci "
 "súbor"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
 #| "Found the characters '<<' indicating inline lua is present - aborting"
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr "Nájdené znaky '<<' indikujúce prítomnosť inline lua - prerušujem akciu"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Nepodarilo sa načítať scenár, pokúšam sa načítať iba mapu."
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -501,31 +501,31 @@ msgstr ""
 "Súbor mapy vyzerá ako scenár, ale hodnota map_file neukazuje na existujúci "
 "súbor"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr "Nie je možné analyzovať súbor na vyhľadanie údajov mapy"
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Časové menu"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Nepodarilo sa uložiť do scény"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
@@ -595,25 +595,11 @@ msgstr "Cmd + kliknutie: kopírovanie terénu"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + klik: kopírovanie terénu"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Vyberte súbor s mapou"
+#~ msgid "Choose File"
+#~ msgstr "Vyberte súbor s mapou"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Vybrať"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "Vybrať"
 
 #, fuzzy
 #~| msgid "Left-click: "

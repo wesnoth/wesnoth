@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
 
 
 namespace gui2
@@ -50,7 +49,6 @@ private:
 	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
 	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
@@ -99,7 +97,7 @@ private:
 	void on_game_select();
 	void on_tab_select();
 	void on_era_select();
-	void on_mod_toggle(const std::string id, toggle_button* sender);
+	void on_mod_toggle(const std::string& id, toggle_button* sender);
 	void on_random_faction_mode_select();
 
 	std::vector<std::string> get_active_mods();
@@ -119,7 +117,7 @@ private:
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(window&);
+	bool dialog_exit_hook();
 
 	int convert_to_game_filtered_index(const unsigned int initial_index);
 

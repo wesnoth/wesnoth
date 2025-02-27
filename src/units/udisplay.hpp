@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,13 +50,13 @@ public:
 	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 
-	void start(unit_ptr u);
-	void proceed_to(unit_ptr u, std::size_t path_index, bool update=false, bool wait=true);
+	void start(const unit_ptr& u);
+	void proceed_to(const unit_ptr& u, std::size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
-	void finish(unit_ptr u, map_location::direction dir = map_location::direction::indeterminate);
+	void finish(const unit_ptr& u, map_location::direction dir = map_location::direction::indeterminate);
 
 private: // functions
-	void replace_temporary(unit_ptr u);
+	void replace_temporary(const unit_ptr& u);
 	void update_shown_unit();
 
 private: // data
@@ -80,7 +80,7 @@ private: // data
 /**
  * Display a unit moving along a given path.
  */
-void move_unit(const std::vector<map_location>& path, unit_ptr u,
+void move_unit(const std::vector<map_location>& path, const unit_ptr& u,
 	bool animate=true,
 	map_location::direction dir=map_location::direction::indeterminate,
 	bool force_scroll=false);
@@ -89,13 +89,13 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
  * Play a pre-fight animation
  * First unit is the attacker, second unit the defender
  */
-void unit_draw_weapon( const map_location& loc, unit& u, const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit_ptr defender=unit_ptr());
+void unit_draw_weapon( const map_location& loc, unit& u, const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
 
 /**
  * Play a post-fight animation
  * Both unit can be set to null, only valid units will play their animation
  */
-void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit_ptr defender=unit_ptr());
+void unit_sheath_weapon( const map_location& loc, const unit_ptr& u=unit_ptr(), const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
 
 /**
  * Show a unit fading out.
@@ -103,9 +103,9 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
  void unit_die( const map_location& loc, unit& u,
-	const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,
+	const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,
 	const map_location& winner_loc=map_location::null_location(),
-	unit_ptr winner = unit_ptr());
+	const unit_ptr& winner = unit_ptr());
 
 
 /**
@@ -116,7 +116,7 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
  */
 void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
 	const map_location& a, const map_location& b, int damage,
-	const attack_type& attack, const_attack_ptr secondary_attack,
+	const attack_type& attack, const const_attack_ptr& secondary_attack,
 	int swing, const std::string& hit_text, int drain_amount, const std::string& att_text, const std::vector<std::string>* extra_hit_sounds=nullptr,
 	bool attacking=true);
 

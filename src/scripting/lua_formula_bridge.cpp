@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,7 @@ static const char formulaKey[] = "formula";
 
 using namespace wfl;
 
-void luaW_pushfaivariant(lua_State* L, variant val);
+void luaW_pushfaivariant(lua_State* L, const variant& val);
 variant luaW_tofaivariant(lua_State* L, int i);
 
 class lua_callable : public formula_callable {
@@ -119,7 +119,7 @@ public:
 	}
 };
 
-void luaW_pushfaivariant(lua_State* L, variant val) {
+void luaW_pushfaivariant(lua_State* L, const variant& val) {
 	if(val.is_int()) {
 		lua_pushinteger(L, val.as_int());
 	} else if(val.is_decimal()) {

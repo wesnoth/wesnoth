@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -192,11 +192,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	bool get_use_tooltip_on_label_overflow() const
@@ -309,7 +308,7 @@ protected:
 
 	void set_config(resolution_definition_ptr config)
 	{
-		config_ = config;
+		config_ = std::move(config);
 	}
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/

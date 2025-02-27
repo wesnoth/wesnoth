@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -146,7 +146,7 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
-void editor_toolkit::set_brush(std::string id) {
+void editor_toolkit::set_brush(const std::string& id) {
 
 	for (brush& i : brushes_) {
 		if (i.id() == id) {

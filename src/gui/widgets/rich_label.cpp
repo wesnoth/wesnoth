@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,9 +38,10 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/format.hpp>
 #include <functional>
 #include <string>
-#include <boost/format.hpp>
+#include <utility>
 
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
@@ -108,30 +109,30 @@ point rich_label::get_image_size(config& img_cfg) const {
 	};
 }
 
-std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string text) {
+std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
 	auto& attr = curr_item["text"];
 	size_t start = attr.str().size();
-	attr = attr.str() + std::move(text);
+	attr = attr.str() + text;
 	size_t end = attr.str().size();
 	return { start, end };
 }
 
-void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t start, size_t end, std::string extra_data) {
+void rich_label::add_attribute(config& curr_item, const std::string& attr_name, size_t start, size_t end, const std::string& extra_data) {
 	curr_item.add_child("attribute", config{
 		"name"  , attr_name,
 		"start" , start,
 		"end"   , end == 0 ? curr_item["text"].str().size() : end,
-		"value" , std::move(extra_data)
+		"value" , extra_data
 	});
 }
 
-std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
-	const auto [start, end] = add_text(curr_item, std::move(text));
+std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name, const std::string& extra_data) {
+	const auto [start, end] = add_text(curr_item, text);
 	add_attribute(curr_item, attr_name, start, end, extra_data);
 	return { start, end };
 }
 
-void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating) {
+void rich_label::add_image(config& curr_item, const std::string& name, std::string align, bool has_prev_image, bool floating) {
 	// TODO: still doesn't cover the case where consecutive inline images have different heights
 	curr_item["name"] = name;
 
@@ -174,7 +175,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	actions.str("");
 }
 
-void rich_label::add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width) {
+void rich_label::add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width) {
 	// TODO algorithm needs to be text_alignment independent
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
@@ -423,6 +424,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					col_x += col_widths[col_idx] + 2 * padding_;
 					auto [_, end_cfg] = text_dom.all_children_view().back();
+					end_cfg["maximum_width"] = col_widths[col_idx];
 					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
 					DBG_GUI_RL << "jump to next column";
@@ -731,15 +733,19 @@ std::pair<config, point> rich_label::get_parsed_text(
 	return { text_dom, point(w, h - origin.y) };
 } // function ends
 
-void rich_label::default_text_config(config* txt_ptr, t_string text) {
+void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
+		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
+		(*txt_ptr)["font_family"] = font_family_;
 		(*txt_ptr)["font_size"] = font_size_;
+		(*txt_ptr)["font_style"] = font_style_;
 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
 		(*txt_ptr)["x"] = "(pos_x)";
 		(*txt_ptr)["y"] = "(pos_y)";
 		(*txt_ptr)["w"] = "(text_width)";
 		(*txt_ptr)["h"] = "(text_height)";
+		(*txt_ptr)["parse_text_as_formula"] = false;
 		// tw -> table width, used for wrapping text inside table cols
 		// ww -> wrap width, used for wrapping around floating image
 		// max text width shouldn't go beyond the rich_label's specified width
@@ -751,6 +757,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 void rich_label::update_canvas()
 {
 	for(canvas& tmp : get_canvases()) {
+		tmp.set_shapes(text_dom_, true);
 		tmp.set_variable("pos_x", wfl::variant(0));
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
@@ -761,7 +768,6 @@ void rich_label::update_canvas()
 		tmp.set_variable("padding", wfl::variant(padding_));
 		// Disable ellipsization so that text wrapping can work
 		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
-		tmp.set_cfg(text_dom_, true);
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
 }
@@ -820,7 +826,7 @@ void rich_label::register_link_callback(std::function<void(std::string)> link_ha
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
-	link_handler_ = link_handler;
+	link_handler_ = std::move(link_handler);
 }
 
 
@@ -915,8 +921,12 @@ rich_label_definition::rich_label_definition(const config& cfg)
 
 rich_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
+	, text_color_enabled(color_t::from_rgba_string(cfg["text_font_color_enabled"].str()))
+	, text_color_disabled(color_t::from_rgba_string(cfg["text_font_color_disabled"].str()))
 	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
+	, font_family(cfg["text_font_family"].str())
 	, font_size(cfg["text_font_size"].to_int(font::SIZE_NORMAL))
+	, font_style(cfg["text_font_style"].str("normal"))
 {
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
@@ -944,8 +954,12 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	assert(conf);
 
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_text_color(conf->text_color_enabled, true);
+	lbl->set_text_color(conf->text_color_enabled, false);
 	lbl->set_link_color(conf->link_color);
+	lbl->set_font_family(conf->font_family);
 	lbl->set_font_size(conf->font_size);
+	lbl->set_font_style(conf->font_style);
 	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"

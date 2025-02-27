@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -83,6 +83,13 @@ void draw::fill(uint8_t r, uint8_t g, uint8_t b)
 void draw::fill(const color_t& c)
 {
 	draw::fill(c.r, c.g, c.b, c.a);
+}
+
+void draw::fill(const SDL_FRect& rect, const color_t& c)
+{
+	DBG_D << "sub-pixel fill";
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+	SDL_RenderFillRectF(renderer(), &rect);
 }
 
 void draw::fill(const SDL_Rect& area)

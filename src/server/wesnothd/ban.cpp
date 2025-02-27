@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -216,6 +216,16 @@ void banned::write(config& cfg) const
 	}
 }
 
+utils::optional<std::chrono::seconds> banned::get_remaining_ban_time() const
+{
+	if(end_time_) {
+		const auto time_left = *end_time_ - std::chrono::system_clock::now();
+		return std::chrono::duration_cast<std::chrono::seconds>(time_left);
+	} else {
+		return {};
+	}
+}
+
 std::string banned::get_human_start_time() const
 {
 	if(start_time_) {
@@ -232,16 +242,6 @@ std::string banned::get_human_end_time() const
 	} else {
 		return "permanent";
 	}
-}
-
-std::string banned::get_human_time_span() const
-{
-	if(!end_time_) {
-		return "permanent";
-	}
-
-	auto remaining = *end_time_ - std::chrono::system_clock::now();
-	return lg::format_timespan(std::chrono::duration_cast<std::chrono::seconds>(remaining));
 }
 
 bool banned::operator>(const banned& b) const
@@ -655,20 +655,18 @@ void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	}
 }
 
-std::string ban_manager::is_ip_banned(const std::string& ip)
+banned_ptr ban_manager::get_ban_info(const std::string& ip)
 {
 	expire_bans();
-	ip_mask pair;
+	ip_mask mask;
 	try {
-		pair = parse_ip(ip);
+		mask = parse_ip(ip);
 	} catch (const banned::error&) {
-		return "";
+		return nullptr;
 	}
 
-	auto ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });
-	if (ban == bans_.end()) return "";
-	const std::string& nick = (*ban)->get_nick();
-	return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (Remaining ban duration: " + (*ban)->get_human_time_span() + ")";
+	auto ban = std::find_if(bans_.begin(), bans_.end(), [&mask](const banned_ptr& p) { return p->match_ip(mask); });
+	return ban != bans_.end() ? *ban : nullptr;
 }
 
 void ban_manager::init_ban_help()

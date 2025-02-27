@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -269,7 +269,7 @@ void set_log_to_file()
 
 		// make stdout unbuffered - otherwise some output might be lost
 		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
-		if(setvbuf(stdout, NULL, _IONBF, 2) == -1) {
+		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1) {
 			std::cerr << "Failed to set stdout to be unbuffered";
 		}
 
@@ -401,30 +401,6 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string format_timespan(const std::chrono::seconds& span)
-{
-	if(span <= std::chrono::seconds{0}) {
-		return "expired";
-	}
-
-	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(span);
-	std::vector<std::string> formatted_values;
-
-	// TODO C++20: see if we can use the duration stream operators
-	const auto format_time = [&formatted_values](const auto& val, const std::string& suffix) {
-		if(val > std::decay_t<decltype(val)>{0}) {
-			formatted_values.push_back(formatter{} << val.count() << " " << suffix);
-		}
-	};
-
-	format_time(days, "days");
-	format_time(hours, "hours");
-	format_time(minutes, "minutes");
-	format_time(seconds, "seconds");
-
-	return utils::join(formatted_values, ", ");
-}
-
 void set_log_sanitize(bool sanitize) {
 	log_sanitization = sanitize;
 }
@@ -485,7 +461,7 @@ log_in_progress::log_in_progress(std::ostream& stream)
 	: stream_(stream)
 {}
 
-void log_in_progress::operator|(formatter&& message)
+void log_in_progress::operator|(const formatter& message)
 {
 	std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
@@ -498,6 +474,7 @@ void log_in_progress::operator|(formatter&& message)
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
 			stream_ << "." << std::setw(6) << fractional.count();
 		}
+		stream_ << " ";
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
 	if(auto_newline_) {

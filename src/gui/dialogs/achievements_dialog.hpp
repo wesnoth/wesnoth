@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,6 @@ public:
 	achievements_dialog();
 
 private:
-	achievements achieve_;
 	std::string last_selected_;
 	listbox* achievements_box_;
 	menu_button* content_names_;

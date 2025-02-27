@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,8 +126,8 @@ static void characterization_distance_direction (const std::vector<map_location>
 	BOOST_CHECK_MESSAGE( int_it == int_answers.end(), "Did not exhaust answers list.");
 }
 
-static std::size_t get_first (std::pair<std::size_t, std::string> arg) {return arg.first; }
-static map_location::direction get_second (std::pair<std::size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
+static std::size_t get_first (const std::pair<std::size_t, std::string>& arg) {return arg.first; }
+static map_location::direction get_second (const std::pair<std::size_t, std::string>& arg) {return map_location::parse_direction(arg.second); }
 
 /* This has to be recomputed, I'm commenting out the test so that it doesn't fail in the meantime. --iceiceice
 

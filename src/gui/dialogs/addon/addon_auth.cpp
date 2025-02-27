@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -45,12 +45,16 @@ void addon_auth::pre_show()
 	pwd->set_value(cfg_["passphrase"].str(""));
 
 	std::vector<config> content_list;
-	content_list.emplace_back("label", cfg_["author"].str(""));
 
+	for(const auto& author : utils::split(cfg_["primary_authors"].str(""), ',')) {
+		content_list.emplace_back("label", author);
+	}
 	for(const auto& author : utils::split(cfg_["secondary_authors"].str(""), ',')) {
 		content_list.emplace_back("label", author);
 	}
-	find_widget<menu_button>("choose_uploader").set_values(content_list);
+	if(content_list.size() > 0) {
+		find_widget<menu_button>("choose_uploader").set_values(content_list);
+	}
 }
 
 void addon_auth::post_show()

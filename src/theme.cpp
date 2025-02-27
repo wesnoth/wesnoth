@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -401,7 +401,7 @@ void theme::object::modify_location(const _rect& rect)
 	location_modified_ = true;
 }
 
-void theme::object::modify_location(std::string rect_str, SDL_Rect location_ref_rect)
+void theme::object::modify_location(const std::string& rect_str, SDL_Rect location_ref_rect)
 {
 	_rect rect {0, 0, 0, 0};
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
@@ -802,7 +802,7 @@ void theme::remove_object(const std::string& id)
 	throw config::error(stream.str());
 }
 
-void theme::set_object_location(theme::object& element, std::string rect_str, std::string ref_id)
+void theme::set_object_location(theme::object& element, const std::string& rect_str, std::string ref_id)
 {
 	theme::object ref_element = element;
 	if(ref_id.empty()) {

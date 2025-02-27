@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -784,7 +784,6 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			continue;
 		}
 
-		// TODO: we should probably use `child` with a try/catch block once that function throws
 		if(const auto generator_cfg = i.optional_child("generator")) {
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
@@ -1059,7 +1058,7 @@ void context_manager::replace_map_context(const T&... args)
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
 {
-	map_contexts_[current_context_index_].swap(mc);
+	map_contexts_[current_context_index_] = std::move(mc);
 	refresh_on_context_change();
 }
 

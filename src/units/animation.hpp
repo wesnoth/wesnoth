@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,8 +34,8 @@ public:
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "",
-		const int value = 0, strike_result::type hit = strike_result::type::invalid, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr,
+	int matches(const map_location& loc, const map_location& second_loc, const unit_const_ptr& my_unit, const std::string& event = "",
+		const int value = 0, strike_result::type hit = strike_result::type::invalid, const const_attack_ptr& attack = nullptr, const const_attack_ptr& second_attack = nullptr,
 		int value2 = 0) const;
 
 	const unit_frame& get_last_frame() const
@@ -233,14 +233,14 @@ public:
 	 * @param second_attack weapon used by opponent.
 	 * @param value2 i don't understand myself.but this value is used in choose_animation.
 	 */
-	bool has_animation(unit_const_ptr animated_unit
+	bool has_animation(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
 		, const int value = 0
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0) const;
 
 	const map_location& get_unit_last_move_anim_dst(unit_const_ptr ucp) const;
@@ -254,8 +254,8 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0);
 	void start_animations();
 	void pause_animation();

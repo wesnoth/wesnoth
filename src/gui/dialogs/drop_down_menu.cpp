@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -85,6 +85,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, items_(items.begin(), items.end())
 	, button_pos_(parent->get_rectangle())
 	, selected_item_(selected_item)
+	, selected_item_pos_(-1, -1)
 	, use_markup_(parent->get_use_markup())
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
@@ -198,9 +199,8 @@ void drop_down_menu::pre_show()
 
 			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
 			if(parent_) {
-				connect_signal_notify_modified(*checkbox, std::bind([this]() {
-					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
-				}));
+				connect_signal_notify_modified(
+					*checkbox, [this](auto&&...) { parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
 			}
 
 			mi_grid.swap_child("icon", std::move(checkbox), false);
@@ -232,16 +232,26 @@ void drop_down_menu::pre_show()
 
 	// Dismiss on resize.
 	connect_signal<event::SDL_VIDEO_RESIZE>(
-		std::bind([this](){ resize_callback(*this); }), event::dispatcher::front_child);
+		[this](auto&&...){ resize_callback(*this); }, event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
 	connect_signal_notify_modified(list,
-		std::bind([this](){ callback_flip_embedded_toggle(*this); }));
+		[this](auto&&...){ callback_flip_embedded_toggle(*this); });
 }
 
 void drop_down_menu::post_show()
 {
-	selected_item_ = find_widget<listbox>("list", true).get_selected_row();
+	const listbox& list = find_widget<listbox>("list", true);
+	selected_item_ = list.get_selected_row();
+	if(selected_item_ != -1) {
+		const grid* row_grid = list.get_row_grid(selected_item_);
+		if(row_grid) {
+			selected_item_pos_.x = row_grid->get_x();
+			selected_item_pos_.y = row_grid->get_y();
+		}
+	} else {
+		selected_item_pos_.x = selected_item_pos_.y = -1;
+	}
 }
 
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const

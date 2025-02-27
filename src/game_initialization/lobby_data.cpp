@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -112,7 +112,7 @@ std::string make_game_type_marker(const std::string& text, bool color_for_missin
 game_info::game_info(const config& game, const std::vector<std::string>& installed_addons)
 	: id(game["id"].to_int())
 	, map_data(game["map_data"])
-	, name(font::escape_text(game["name"]))
+	, name(font::escape_text(game["name"].str()))
 	, scenario()
 	, type_marker()
 	, remote_scenario(false)

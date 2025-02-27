@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,10 +35,9 @@
 
 struct point;
 
-namespace font {
-
-/** Flush the rendered text cache. */
-void flush_texture_cache();
+namespace font
+{
+class attribute_list;
 
 // add background color and also font markup.
 
@@ -318,74 +317,8 @@ public:
 
 	pango_text& set_add_outline(bool do_add);
 
-	// The following add attribute methods are thin wrappers around the corresponding pango
-	// add attribute methods. For more details, refer to the Pango docs.
-
-	/**
-	 * Add pango font weight attribute to a specific portion of text. This changes the font weight
-	 * of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where font weight change starts
- 	 * @param end_offset          Byte index of the cursor where font weight change ends
- 	 * @param weight              Pango font weight
-	 */
-	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
-
-	/**
-	 * Add pango font style attribute to a specific portion of text, used to set italic/oblique text
-	 * @param start_offset        Byte index of the cursor where font style change starts
- 	 * @param end_offset          Byte index of the cursor where font style change ends
- 	 * @param style               Pango font style (normal/italic/oblique)
-	 */
-	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
-
-	/**
-	 * Add pango underline attribute to a specific portion of text. This adds an underline to the
-	 * corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where underline starts
- 	 * @param end_offset          Byte index of the cursor where underline change ends
- 	 * @param underline           Pango underline style
-	 */
-	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
-
-	/**
-	 * Add pango fg color attribute to a specific portion of text. This changes the foreground
-	 * color of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where color change starts
- 	 * @param end_offset          Byte index of the cursor where color change ends
- 	 * @param color               Foreground color
-	 */
-	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-
-	/**
-	 * Mark a specific portion of text for highlighting. Used for selection box.
-	 * BGColor is set in set_text(), this just marks the area to be colored.
-	 * Markup not used because the user may enter their own markup or special characters
-	 * @param start_offset        Byte index of the cursor where selection/highlight starts
- 	 * @param end_offset          Byte index of the cursor where selection/highlight ends
- 	 * @param color               Highlight/Background color
-	 */
-	void add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-
-	/**
-	 * Add pango font size attribute to a specific portion of text. This changes the font size
-	 * of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where size change starts
- 	 * @param end_offset          Byte index of the cursor where size change ends
- 	 * @param size                Font size
-	 */
-	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
-
-	/**
-	 * Add pango font family attribute to a specific portion of text. This changes
-	 * the font family of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where size change starts
- 	 * @param end_offset          Byte index of the cursor where size change ends
- 	 * @param family              The font family
-	 */
-	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
-
-	/** Clears all attributes from the global attribute list */
-	void clear_attribute_list();
+	void clear_attributes();
+	void apply_attributes(const font::attribute_list& attrs);
 
 private:
 
@@ -483,16 +416,6 @@ private:
 
 	/** Length of the text. */
 	mutable std::size_t length_;
-
-	unsigned attribute_start_offset_;
-	unsigned attribute_end_offset_;
-	color_t	highlight_color_;
-
-	/**
-	 * Global pango attribute list. All attributes in this list
-	 * will be applied one by one to the text
-	 */
-	PangoAttrList* global_attribute_list_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;

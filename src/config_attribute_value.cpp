@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -24,7 +24,9 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/charconv.hpp"
 
+#include <array>
 #include <cstdlib>
 
 static lg::log_domain log_config("config");
@@ -113,19 +115,30 @@ namespace
  * @returns true if the conversion was successful and the source string
  *          can be reobtained by streaming the result.
  */
+
+template<typename TNum>
+bool str_equals_number(std::string_view str, TNum num)
+{
+	return utils::charconv_buffer<TNum>(num).get_view() == str;
+}
+
 template<typename To>
-bool from_string_verify(const std::string& source, To& res)
+bool from_string_verify(std::string_view source, To& res)
 {
 	// Check 1: convertible to the target type.
-	std::istringstream in_str(source);
-	if(!(in_str >> res)) {
+	auto [ptr, ec] = utils::charconv::from_chars(source.data(), source.data() + source.size(), res);
+	if(ec != std::errc()) {
 		return false;
 	}
 
+	if(ptr != source.data() + source.size()) {
+		// We didn't use some characters, its impossible that "Check 2" gives the same string back.
+		return false;
+	}
+
+
 	// Check 2: convertible back to the same string.
-	std::ostringstream out_str;
-	out_str << res;
-	return out_str.str() == source;
+	return str_equals_number(source, res);
 }
 } // end anon namespace
 
@@ -158,9 +171,9 @@ config_attribute_value& config_attribute_value::operator=(std::string&& v)
 	}
 
 	// Attempt to convert to a number.
-	char* eptr;
-	double d = strtod(v.c_str(), &eptr);
-	if(*eptr == '\0') {
+	double d = 0;
+	auto [eptr, ec] = utils::charconv::from_chars(v.data(), v.data() + v.size(), d);
+	if(eptr == v.data() + v.size() && ec == std::errc()) {
 		// Possibly a number. See what type it should be stored in.
 		// (All conversions will be from the string since the largest integer
 		// type could have more precision than a double.)
@@ -181,9 +194,7 @@ config_attribute_value& config_attribute_value::operator=(std::string&& v)
 		// This does not look like an integer, so it should be a double.
 		// However, make sure it can convert back to the same string (in
 		// case this is a string that just looks like a numeric value).
-		std::ostringstream tester;
-		tester << d;
-		if(tester.str() == v) {
+		if(str_equals_number(v, d)) {
 			value_ = d;
 			return *this;
 		}
@@ -311,9 +322,10 @@ public:
 	std::string operator()(const utils::monostate &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
 	std::string operator()(const true_false & b) const { return b.str(); }
-	std::string operator()(int i)                const { return std::to_string(i); }
-	std::string operator()(unsigned long long u) const { return std::to_string(u); }
-	std::string operator()(double d)             const { return lexical_cast<std::string>(d); }
+	//this has to use the same method as in from_string_verify
+	std::string operator()(int i)                const { return utils::charconv_buffer(i).to_string(); }
+	std::string operator()(unsigned long long u) const { return utils::charconv_buffer(u).to_string(); }
+	std::string operator()(double d)             const { return utils::charconv_buffer(d).to_string(); }
 	std::string operator()(const std::string& s) const { return s; }
 	std::string operator()(const t_string& s)    const { return s.str(); }
 };

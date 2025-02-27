@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,12 +38,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recall_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recall_const_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_const_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);

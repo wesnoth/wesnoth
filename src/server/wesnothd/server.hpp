@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
+#include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
@@ -82,6 +83,15 @@ public:
 			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
 			player->socket()
 		);
+	}
+	void send_to_player(any_socket_ptr socket, simple_wml::document& data) {
+		if(player_connections_.get<socket_t>().find(socket) != player_connections_.end())
+		{
+			utils::visit(
+				[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
+				socket
+			);
+		}
 	}
 	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
@@ -172,7 +182,7 @@ private:
 	void load_config();
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	std::string is_ip_banned(const std::string& ip);
+	utils::optional<server_base::login_ban_info> is_ip_banned(const std::string& ip);
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -212,7 +222,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
+	void update_game_in_lobby(game& g, utils::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 
@@ -267,7 +277,7 @@ private:
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 
 	boost::asio::steady_timer dummy_player_timer_;
-	int dummy_player_timer_interval_;
+	std::chrono::seconds dummy_player_timer_interval_;
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
 };

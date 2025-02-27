@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
+"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:57+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -16,7 +16,9 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
+#. [achievement_group]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:4
 msgid "The Hammer of Thursagan"
 msgstr "Cây búa của Thursagan"
 
@@ -107,6 +109,38 @@ msgstr "Ý tưởng, chơi thử, và hỗ trợ"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:60
 msgid "Campaign Maintenance"
+msgstr ""
+
+#. [achievement]: id=gryphon_hunter
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:8
+msgid "Gryphon Hunter"
+msgstr ""
+
+#. [achievement]: id=gryphon_hunter
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:9
+msgid "Kill the Gryphon leader in High Pass"
+msgstr ""
+
+#. [achievement]: id=conqueror_of_the_forest
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:16
+msgid "Conqueror of the Forest"
+msgstr ""
+
+#. [achievement]: id=conqueror_of_the_forest
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:17
+msgid "Defeat an enemy leader in Forbidden Forest"
+msgstr ""
+
+#. [achievement]: id=new_thursagan
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:23
+#, fuzzy
+#| msgid "The Hammer of Thursagan"
+msgid "New Thursagan"
+msgstr "Cây búa của Thursagan"
+
+#. [achievement]: id=new_thursagan
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:24
+msgid "Complete The Underlevels on challenging difficulty"
 msgstr ""
 
 #. [scenario]: id=01_At_the_East_Gate
@@ -313,9 +347,15 @@ msgstr "Đòi lại quá khứ"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Following the victory against the orcs, Aiglondur was summoned to the "
+#| "audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+#| "Alliance. Beside the dais stood a stranger in the robes of the Order of "
+#| "Loremasters..."
 msgid ""
 "Following the victory against the orcs, Aiglondur was summoned to the "
-"audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+"audience hall of Hamel, Lord of Knalga and Lord Companion of the Northern "
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
@@ -900,13 +940,13 @@ msgstr ""
 "chuyện đùa đâu."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:241
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:254
 msgid ""
 "It has begun to snow. Move, everyone! To be trapped here would be death."
 msgstr "Tuyết bắt đầu rơi. Đi thôi, mọi người! Bị kẹt ở đây là chết."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:250
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:263
 msgid ""
 "We’re snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
@@ -914,12 +954,12 @@ msgstr ""
 "chúng ta sống đến mùa xuân."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:264
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:277
 msgid "We’re through the pass!"
 msgstr "Chúng ta đã vượt qua con đèo!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:269
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:282
 #, fuzzy
 #| msgid ""
 #| "That may not be a blessing. Something frightened those orcs we fought "
@@ -934,21 +974,21 @@ msgstr ""
 "tây vào lãnh thổ của liên minh. Anh không băn khoăn đó là cái gì sao?"
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:274
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:287
 msgid ""
 "The same that has been driving them to attack us at Kal Kartha. But, no "
 "matter the reason for their aggression, we shall slaughter them all the same."
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:279
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:292
 msgid ""
 "We are coming to Kal Kartha to study the Hammer of Thursagan, not mindlessly "
 "slay orcs."
 msgstr ""
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:284
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:297
 msgid ""
 "Indeed, you are, but you musn’t lose sight of the end goal. Restoring the "
 "Hammer will revive the ancient art of runecraft and bring dwarven-kind back "
@@ -957,7 +997,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:289
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:302
 msgid ""
 "I hope so, for the sake of peace and the safety of our people. For now, "
 "however, we must content ourselves with pressing onward toward Kal Kartha."
@@ -1378,8 +1418,13 @@ msgstr ""
 "Thế thì, cứ việc. Đống xương của các ngươi không phải là bộ xương đầu tiên "
 "bón đất cho khu rừng của bọn ta."
 
+#. [message]: speaker=second_unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:263
+msgid "We shall pass!"
+msgstr ""
+
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:284
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:303
 msgid ""
 "Rally on me, everyone. We have better things to do than brawl with elves."
 msgstr ""
@@ -1387,7 +1432,7 @@ msgstr ""
 "lộn với bọn thần tiên."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:293
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:312
 #, fuzzy
 #| msgid "Kal Kartha should be only another day’s march east of here."
 msgid "Kal Kartha should be only another day’s march north of here."
@@ -2225,50 +2270,50 @@ msgid "Aye, let us go."
 msgstr ""
 
 #. [message]: speaker=Dufon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1308
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1315
 #, fuzzy
 #| msgid "Our master’s ritual must not be interrupted. Stop them!"
 msgid "The master’s ritual... must not be... interrupted..."
 msgstr "Nghi lễ của chủ nhân chúng ta không thể bị gián đoạn. Chặn chúng!"
 
 #. [message]: speaker=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1320
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1327
 msgid ""
 "Imbeciles! Once the master’s dark rite is complete, I will return to slay "
 "you myself!"
 msgstr ""
 
 #. [message]: speaker=Aragoth
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1332
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1339
 msgid "The heathens... have slain me-"
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1343
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1350
 msgid "The air is cold with the stench of death."
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1348
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1355
 msgid ""
 "No doubt it is this ritual that the masked ones spoke of. We must hurry and "
 "stop Karrag!"
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1367
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1374
 msgid "I feel as if the life is being sapped out of my body!"
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1372
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1379
 msgid ""
 "Karrag’s spell grows more powerful with every passing moment. If we do not "
 "defeat him now, we will all turn into his thralls!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1381
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1388
 msgid ""
 "HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
 "filthy dirtgrubbers, die so that I may raise you again as my mindless slaves!"
@@ -2567,19 +2612,13 @@ msgstr "Người lùn giáp sắt đeo mặt nạ"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:17
-#, fuzzy
-#| msgid ""
-#| "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
-#| "for which they are rightly famous. In the dark dreams of dwarvenkind, "
-#| "some conceal their faces behind riveted masks."
 msgid ""
-"More experienced dwarvish fighters wear heavy chain mail and plate armor, "
-"for which they are rightly famous. In the dark dreams of dwarvenkind, some "
+"Outfitted in the strongest plate and mail of Knalgan forges, the Steelclads "
+"are the vanguard of dwarvish armies. They are renowned for their resilience "
+"in the heat of battle, and their mastery of both battleaxe and warhammer "
+"make them imposing foes indeed. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
-"Các đấu sĩ người lùn có nhiều kinh nghiệm mặc những bộ áo giáp xích và bọc "
-"sắt, chính vì điều đó mà họ nổi tiếng. Trong giấc mơ đen tối của chủng tộc "
-"người lùn, một số người che giấu bộ mặt đằng sau những chiếc mặt nạ tán đinh."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:4
@@ -2672,21 +2711,20 @@ msgid "Aiglondur"
 msgstr "Aiglondur"
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:19
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:31
 msgid "Angarthing"
 msgstr "Angarthing"
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:43
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:31
 msgid "Movrur"
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:55
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:68
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:43
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:56
 msgid "Dulcatulos"
 msgstr "Dulcatulos"
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:81
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:90
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:78
 msgid "Karrag"
 msgstr "Karrag"
 
@@ -2715,6 +2753,21 @@ msgstr ""
 "Không có Dulcatulos giải thích các hành động của chúng ta cho những người "
 "Kal Kartha, chúng ta sẽ phải chiến đấu với họ. Nhiệm vụ của chúng ta đã thất "
 "bại."
+
+#, fuzzy
+#~| msgid ""
+#~| "More experienced Dwarvish fighters wear heavy chain mail and plate "
+#~| "armor, for which they are rightly famous. In the dark dreams of "
+#~| "dwarvenkind, some conceal their faces behind riveted masks."
+#~ msgid ""
+#~ "More experienced dwarvish fighters wear heavy chain mail and plate armor, "
+#~ "for which they are rightly famous. In the dark dreams of dwarvenkind, "
+#~ "some conceal their faces behind riveted masks."
+#~ msgstr ""
+#~ "Các đấu sĩ người lùn có nhiều kinh nghiệm mặc những bộ áo giáp xích và "
+#~ "bọc sắt, chính vì điều đó mà họ nổi tiếng. Trong giấc mơ đen tối của "
+#~ "chủng tộc người lùn, một số người che giấu bộ mặt đằng sau những chiếc "
+#~ "mặt nạ tán đinh."
 
 #~ msgid "Ratheln"
 #~ msgstr "Ratheln"

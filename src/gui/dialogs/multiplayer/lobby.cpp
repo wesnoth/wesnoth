@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -552,11 +552,6 @@ void mp_lobby::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-bool mp_lobby::exit_hook(window& window)
-{
-	return window.get_retval() == retval::CANCEL ? quit() : true;
-}
-
 void mp_lobby::pre_show()
 {
 	SCOPE_LB;
@@ -571,7 +566,7 @@ void mp_lobby::pre_show()
 	set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return get_retval() == retval::CANCEL ? quit() : true; });
 
 	chatbox_ = find_widget<chatbox>("chat", false, true);
 

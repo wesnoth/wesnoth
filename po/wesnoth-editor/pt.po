@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-editor)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2020-02-14 16:35+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -311,17 +311,17 @@ msgid "Cost: "
 msgstr "Custo: "
 
 #
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Erro fatal"
 
 #
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Queres realmente sair?"
 
 #
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -330,7 +330,7 @@ msgstr ""
 "serão perdidas."
 
 #
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -339,37 +339,37 @@ msgstr ""
 "mudanças desde o último guardeamento serão perdidas:"
 
 #
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Nenhum tempo-do-dia do editor encontrado."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Suporte para a área de transferência não encontrado"
 
 #
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Mudar ID da unidade"
 
 #
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
 #
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Renomear Unidade"
 
 #
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Nome:"
 
@@ -385,11 +385,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "Carregar Mapa"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Novo Mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Novo cenário"
 
@@ -439,7 +439,7 @@ msgid "Save Map As"
 msgstr "Gravar Mapa como"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Erro"
@@ -533,20 +533,20 @@ msgid "The size of the target map is different from the current map"
 msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
 #
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Ficheiro não encontrado"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Ficheiro vazio"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
 #
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -554,16 +554,16 @@ msgstr ""
 "O arquivo de mapa parece ser um cenário, mas o valor map_data não aponta "
 "para um ficheiro existente"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
 #
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -575,34 +575,34 @@ msgstr ""
 "O arquivo de mapa parece ser um cenário, mas o valor map_data não aponta "
 "para um ficheiro existente"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Não é possível guardar o cenário: $msg"
 
 #
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Definir Tempo do Dia"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Não é possível guardar o cenário: $msg"
 
 #
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Não é possível guardar num cenário"
 
 #
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Não é possível guardar o mapa: $msg"
 
@@ -673,25 +673,11 @@ msgid "Ctrl + click: copy terrain"
 msgstr ""
 
 #
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Escolher ficheiro"
+#~ msgid "Choose File"
+#~ msgstr "Escolher ficheiro"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Seleciona"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "Seleciona"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr "Suporte para a área de transferência não encontrado"

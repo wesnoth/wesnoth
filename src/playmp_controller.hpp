@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -17,7 +17,6 @@
 #pragma once
 
 #include "playsingle_controller.hpp"
-#include "syncmp_handler.hpp"
 
 struct mp_game_metadata;
 class playmp_controller : public playsingle_controller

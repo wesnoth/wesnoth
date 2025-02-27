@@ -44,6 +44,10 @@ hráčmi.
 .SH MOŽNOSTI
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Zobraziť všetky preklady vo výberovom zozname jazykov v hre, aj keď sa
 považujú za nedokončené.
@@ -165,10 +169,6 @@ veľmi experimentálne, nevypĺňajte hlásenia o chybách, pretože väčšina 
 je známa. Časti knižnice sa považujú za stabilné a budú fungovať bez tohto
 prepínača.
 .TP 
-\fB\-\-nodelay\fP
-spustí hru bez akýchkoľvek oneskorení pre grafický benchmarking. Toto je
-automaticky povolené pomocou \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 vypne automatické načítanie herných rozšírení.
 .TP 
@@ -201,9 +201,9 @@ použije \fIpassword\fP pri pripojení na server, bez ohľadu na predvoľby. Nie
 bezpečné.
 .TP 
 \fB\-\-plugin\fP\fI\ skript\fP
-(experimentálne) načítajte \fIscript\fP, ktorý definuje doplnok
-Wesnoth. Podobne ako \fB\-\-script\fP, ale súbor Lua by mal vrátiť funkciu, ktorá
-sa spustí ako co\-rutina a bude sa pravidelne prebúdzať s aktualizáciami.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
@@ -219,21 +219,26 @@ pred zadanými zdrojmi (resources). Príklad: \fB\-p ~/wesnoth/data/campaigns/tu
 preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-čiarkou oddelený zoznam definícié pre príkaz \fB\-\-preprocess\fP. Ak je v
-zozname \fBSKIP_CORE\fP potom nebude adresár "data/core" spracovaný
-preprocesorom.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový súbor\fP
-použitý len s príkazom \fB\-\-preprocess\fP. Určuje súbor, ktorý obsahuje
-definície \fB[preproc_define]\fP, ktoré majú byť vložené pred spracovaním
-preprocesorom.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=cieľový\-súbor\fP\fB]\fP
-použitý len s príkazom \fB\-\-preprocess\fP. Vypíše všetky spracované makrá v
-cieľovom súbore. Ak súbor nie je zadaný, súborom bude '_MACROS_.cfg' v
-cieľovom adresári príkazu \fB\-\-preprocess\-input\-macros\fP. Tento prepínač by
-mal byť uvedený pred príkazom \fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlíšenie obrazovky. Napríklad: \fB\-r\fP \fB800x600\fP.
@@ -252,9 +257,6 @@ nasadí generátor náhodných čísel s \fInumber\fP.  Príklad: \fB\-\-rng\-se
 .TP 
 \fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIvýstup\fP
 uloží snímku obrazovky \fImap\fP do \fIoutput\fP bez inicializácie obrazovky.
-.TP 
-\fB\-\-script\fP\fI\ súbor\fP
-(experimentálne) \fIfile\fP obsahujúci Lua skript na ovládanie klienta.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 pripojí sa na server, ak je zadaný, inak na prvý server uvedený v
@@ -413,7 +415,7 @@ Navštívte oficiálny web: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou
 verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného

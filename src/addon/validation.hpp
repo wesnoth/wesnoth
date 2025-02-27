@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -65,6 +65,7 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	BAD_FEEDBACK_TOPIC_ID       = 0x209,        /**< The provided topic ID for the addon's feedback forum thread is invalid */
 	FEEDBACK_TOPIC_ID_NOT_FOUND = 0x2A0,        /**< The provided topic ID for the addon's feedback forum thread wasn't found in the forum database */
 	AUTH_TYPE_MISMATCH 			= 0x2B0, 		/**< The addon's forum_auth value does not match its previously set value */
+	ICON_TOO_LARGE	 			= 0x2C0, 		/**< The add-on's icon is too large (presumably a DataURI) */
 	//
 	// Server errors
 	//
@@ -123,6 +124,9 @@ std::string get_addon_type_string(ADDON_TYPE type);
 bool addon_name_legal(const std::string& name);
 /** Checks whether an add-on file name is legal or not. */
 bool addon_filename_legal(const std::string& name);
+/** Checks whether an add-on icon is too large. */
+bool addon_icon_too_large(const std::string& icon);
+constexpr std::size_t max_icon_size = 500'000;
 
 /**
  * Scans an add-on archive for illegal names.

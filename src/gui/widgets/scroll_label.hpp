@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -147,7 +147,7 @@ struct scroll_label_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_label : public builder_styled_widget
+struct builder_scroll_label : public builder_scrollbar_container
 {
 	explicit builder_scroll_label(const config& cfg);
 

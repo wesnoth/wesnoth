@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -189,7 +189,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*randomness::generator);
 
-		undo_stack_->read(level.child_or_empty("undo_stack"));
+		undo_stack_->read(level.child_or_empty("undo_stack"), player_number_);
 
 		for(team_builder& tb : team_builders) {
 			tb.build_team_stage_two();
@@ -434,6 +434,6 @@ void game_state::add_side_wml(config cfg)
 	cfg["controller"] = side_controller::none;
 	//TODO: is this it? are there caches which must be cleared?
 	board_.teams().emplace_back();
-	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());
+	board_.teams().back().build(cfg, board_.map());
 	config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }

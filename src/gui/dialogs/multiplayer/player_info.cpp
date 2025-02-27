@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -180,31 +180,31 @@ void lobby_player_info::remove_from_list_button_callback()
 void lobby_player_info::start_whisper_button_callback()
 {
 	result_open_whisper_ = true;
-	get_window()->close();
+	close();
 }
 
 void lobby_player_info::check_status_button_callback()
 {
 	chat_.send_command("query", "status " + info_.name);
-	get_window()->close();
+	close();
 }
 
 void lobby_player_info::kick_button_callback()
 {
 	do_kick_ban(false);
-	get_window()->close();
+	close();
 }
 
 void lobby_player_info::kick_ban_button_callback()
 {
 	do_kick_ban(true);
-	get_window()->close();
+	close();
 }
 
 void lobby_player_info::stopgame_button_callback()
 {
 	do_stopgame();
-	get_window()->close();
+	close();
 }
 
 void lobby_player_info::do_stopgame()

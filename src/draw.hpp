@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -77,6 +77,8 @@ void fill(const SDL_Rect& rect, const color_t& color);
 void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void fill(uint8_t r, uint8_t g, uint8_t b);
 void fill(const color_t& color);
+
+void fill(const SDL_FRect& rect, const color_t& color);
 
 /**
  * Fill an area.

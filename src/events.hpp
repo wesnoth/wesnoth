@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -119,6 +119,8 @@ private:
 void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
+
+void set_main_thread();
 
 // whether the currently executing thread is the main thread.
 bool is_in_main_thread();

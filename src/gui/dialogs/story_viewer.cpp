@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -205,7 +205,7 @@ void story_viewer::display_part()
 		}
 	}
 
-	canvas& window_canvas = get_window()->get_canvas(0);
+	canvas& window_canvas = get_canvas(0);
 
 	/* In order to avoid manually loading the image and calculating the scaling factor, we instead
 	 * delegate the task of setting the necessary variables to the canvas once the calculations
@@ -233,11 +233,11 @@ void story_viewer::display_part()
 
 	cfg.add_child("image", get_title_area_decor_config());
 
-	window_canvas.set_cfg(cfg);
+	window_canvas.set_shapes(cfg);
 
 	// Needed to make the background redraw correctly.
 	window_canvas.update_size_variables();
-	get_window()->queue_redraw();
+	queue_redraw();
 
 	//
 	// Title
@@ -335,7 +335,7 @@ void story_viewer::display_part()
 void story_viewer::draw_floating_image(floating_image_list::const_iterator image_iter, int this_part_index)
 {
 	const auto& images = current_part_->get_floating_images();
-	canvas& window_canvas = get_window()->get_canvas(0);
+	canvas& window_canvas = get_canvas(0);
 
 	// If the current part has changed or we're out of images to draw, exit the draw loop.
 	while((this_part_index == part_index_) && (image_iter != images.end())) {
@@ -370,12 +370,11 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["name"] = floating_image.file();
 		config cfg{"image", std::move(image)};
 
-		cfg.add_child("image", std::move(image));
-		window_canvas.append_cfg(std::move(cfg));
+		window_canvas.append_shapes(cfg);
 
 		// Needed to make the background redraw correctly.
 		window_canvas.update_size_variables();
-		get_window()->queue_redraw();
+		queue_redraw();
 
 		// If a delay is specified, schedule the next image draw and break out of the loop.
 		const auto& draw_delay = floating_image.display_delay();
@@ -415,7 +414,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 
 	// If we've viewed all the parts, close the dialog.
 	if(part_index_ >= controller_.max_parts()) {
-		get_window()->close();
+		close();
 		return;
 	}
 

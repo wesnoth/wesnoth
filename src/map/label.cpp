@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -361,10 +361,10 @@ terrain_label::terrain_label(const map_labels& parent, const config& cfg)
 terrain_label::terrain_label(terrain_label&& l)
 	: handle_(l.handle_)
 	, tooltip_handle_(l.tooltip_handle_)
-	, text_(l.text_)
-	, tooltip_(l.tooltip_)
-	, category_(l.category_)
-	, team_name_(l.team_name_)
+	, text_(std::move(l.text_))
+	, tooltip_(std::move(l.tooltip_))
+	, category_(std::move(l.category_))
+	, team_name_(std::move(l.team_name_))
 	, visible_in_fog_(l.visible_in_fog_)
 	, visible_in_shroud_(l.visible_in_shroud_)
 	, immutable_(l.immutable_)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,7 +143,7 @@ private:
 	bool hidden_;
 };
 
-std::ostream& operator<<(std::ostream& s, action_ptr action);
-std::ostream& operator<<(std::ostream& s, action_const_ptr action);
+std::ostream& operator<<(std::ostream& s, const action_ptr& action);
+std::ostream& operator<<(std::ostream& s, const action_const_ptr& action);
 
 } // end namespace wb

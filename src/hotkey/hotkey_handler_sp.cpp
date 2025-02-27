@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -184,7 +184,7 @@ void playsingle_controller::hotkey_handler::whiteboard_bump_down_action()
 
 void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 {
-	unit* curr_unit;
+	const unit* curr_unit;
 	map_location loc;
 	{ wb::future_map future; //start planned unit map scope
 		curr_unit = &*menu_handler_.current_unit();
@@ -319,7 +319,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	if(!start_replay) {
 		play_controller::hotkey_handler::load_autosave(filename);
 	}
-	auto invalid_save_file = [this, filename](std::string msg){
+	auto invalid_save_file = [this, filename](const std::string& msg){
 		if(playsingle_controller_.is_networked_mp()) {
 			gui2::show_error_message(msg);
 		} else {

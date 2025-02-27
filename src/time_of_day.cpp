@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,7 +50,7 @@ time_of_day::time_of_day()
 {
 }
 
-void time_of_day::write(config& cfg, std::string textdomain) const
+void time_of_day::write(config& cfg, const std::string& textdomain) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
 	cfg["red"] = color.r;

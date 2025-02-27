@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -452,7 +452,7 @@ void unit_type::build(BUILD_STATUS status,
 	}
 }
 
-const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+const unit_type& unit_type::get_gender_unit_type(const std::string& gender) const
 {
 	if(gender == unit_race::s_female) {
 		return get_gender_unit_type(unit_race::FEMALE);
@@ -506,7 +506,7 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	notes.push_back(new_note);
 }
 
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+std::vector<t_string> combine_special_notes(const std::vector<t_string>& direct, const config& abilities, const const_attack_itors& attacks, const movetype& mt)
 {
 	std::vector<t_string> notes;
 	for(const auto& note : direct) {
@@ -1478,6 +1478,10 @@ void unit_type::check_id(std::string& id)
 	// We don't allow leading whitepaces.
 	if(id[0] == ' ') {
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
+	}
+
+	if(id == "random" || id == "null") {
+		throw error("Found unit type using a 'random' or 'null' as an id");
 	}
 
 	bool gave_warning = false;

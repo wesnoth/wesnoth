@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -140,6 +140,6 @@ std::vector<unit_ptr>::iterator recall_list_manager::erase_index(std::size_t idx
 	return recall_list_.erase(recall_list_.begin()+idx);
 }
 
-std::vector<unit_ptr>::iterator recall_list_manager::erase(std::vector<unit_ptr>::iterator it) {
+std::vector<unit_ptr>::iterator recall_list_manager::erase(const std::vector<unit_ptr>::iterator& it) {
 	return recall_list_.erase(it);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -430,7 +430,7 @@ bool manager::is_modification_active(int index) const
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
-bool manager::is_modification_active(const std::string id) const
+bool manager::is_modification_active(const std::string& id) const
 {
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }

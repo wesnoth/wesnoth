@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -153,6 +153,8 @@ public:
 
 	node* child(const char* name);
 	const node* child(const char* name) const;
+
+	node& child_or_add(const char* name);
 
 	const child_list& children(const char* name) const;
 

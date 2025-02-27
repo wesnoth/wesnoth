@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -99,6 +99,7 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
+	virtual void require_end_turn() = 0;
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;

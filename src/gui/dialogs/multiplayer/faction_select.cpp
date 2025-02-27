@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,7 @@ void faction_select::pre_show()
 
 	gender_toggle_.set_member_states("random");
 
-	gender_toggle_.set_callback_on_value_change(
+	gender_toggle_.on_modified(
 		std::bind(&faction_select::on_gender_select, this, std::placeholders::_2));
 
 	//
@@ -190,7 +190,7 @@ void faction_select::profile_button_callback()
 	}
 }
 
-void faction_select::on_gender_select(const std::string val)
+void faction_select::on_gender_select(const std::string& val)
 {
 	flg_manager_.set_current_gender(val);
 

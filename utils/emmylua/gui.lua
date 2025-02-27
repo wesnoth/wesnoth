@@ -78,6 +78,24 @@ function gui.show_help(topic) end
 ---@param title? string A title to be displayed in the inspector. Can be used to disambiguate where it was called from.
 function gui.show_inspector(title) end
 
+---Show the recruit dialog with the given list of unit types and configuration
+---@class unit_dialog_options
+---@field title? string the title of the dialog
+---@field ok_label? string caption of the button with id "ok"
+---@field cancel_label? string caption of the button with id "cancel"
+---@field help_topic? string the help topic that is to be opened when the '?' button is clicked
+
+---@param unit_types_list unit_type[] list of units types to be shown as available recruits
+---@param options? unit_dialog_options a list of optional configuration keys.
+---@return unit_type the selected unit type or nil if not selected
+function gui.show_recruit_dialog(unit_types_list, options) end
+
+---Show the recall dialog with the given list of units and configuration
+---@param units_list unit[] list of units types to be shown as available recalls
+---@param options? unit_dialog_options a list of optional configuration keys.
+---@return unit the selected unit or nil if not selected
+function gui.show_recall_dialog(units_list, options) end
+
 ---Open the in-game Lua console
 function gui.show_lua_console() end
 
@@ -226,6 +244,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@class rich_label : simple_widget
 ---@field link_color string
 ---@field wrap boolean
+---@field on_link_click fun(dest:string)
 
 ---A simple image
 ---@class image : simple_widget

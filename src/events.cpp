@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -260,7 +260,7 @@ sdl_handler::sdl_handler(const sdl_handler &that)
 		event_contexts.front().add_handler(this);
 	} else if(has_joined_) {
 		bool found_context = false;
-		for(auto &context : utils::reversed_view(event_contexts)) {
+		for(auto &context : event_contexts | utils::views::reverse) {
 			if(context.has_handler(&that)) {
 				found_context = true;
 				context.add_handler(this);
@@ -279,7 +279,7 @@ sdl_handler &sdl_handler::operator=(const sdl_handler &that)
 	if(that.has_joined_global_) {
 		join_global();
 	} else if(that.has_joined_) {
-		for(auto &context : utils::reversed_view(event_contexts)) {
+		for(auto &context : event_contexts | utils::views::reverse) {
 			if(context.has_handler(&that)) {
 				join(context);
 				break;
@@ -340,7 +340,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 		leave(); // should not be in multiple event contexts
 	}
 
-	for(auto& context : utils::reversed_view(event_contexts)) {
+	for(auto& context : event_contexts | utils::views::reverse) {
 		if(context.has_handler(parent)) {
 			join(context);
 			return;
@@ -362,7 +362,7 @@ void sdl_handler::leave()
 		member->leave();
 	}
 
-	for(auto& context : utils::reversed_view(event_contexts)) {
+	for(auto& context : event_contexts | utils::views::reverse) {
 		if(context.remove_handler(this)) {
 			break;
 		}
@@ -466,8 +466,12 @@ static void raise_window_event(const SDL_Event& event)
 	}
 }
 
-// TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
-static const std::thread::id main_thread = std::this_thread::get_id();
+static std::thread::id main_thread;
+
+void set_main_thread()
+{
+	 main_thread = std::this_thread::get_id();
+}
 
 // this should probably be elsewhere, but as the main thread is already
 // being tracked here, this went here.

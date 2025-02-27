@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,9 +39,10 @@
 #include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <boost/format.hpp>
 #include <ctime>
 #include <iomanip>
-#include <boost/format.hpp>
+#include <utility>
 
 #ifdef __cpp_lib_format
 #include <format>
@@ -117,7 +118,7 @@ static static_report_generators static_generators;
 
 struct report_generator_helper
 {
-	report_generator_helper(const char *name, reports::generator_function g)
+	report_generator_helper(const char *name, const reports::generator_function& g)
 	{
 		static_generators.insert(static_report_generators::value_type(name, g));
 	}
@@ -167,7 +168,7 @@ static config unit_name(const unit *u)
 	 * The name needs to be escaped, it might be set by the user and using
 	 * markup. Also names often contain a forbidden single quote.
 	 */
-	const std::string& name = font::escape_text(u->name());
+	const std::string& name = font::escape_text(u->name().str());
 	std::ostringstream str, tooltip;
 	str << markup::bold(name);
 	tooltip << _("Name: ") << markup::bold(name);
@@ -781,7 +782,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_team().side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage();
+		double specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		unit_alignments::type attack_alignment = weapon->alignment().value_or(u.alignment());
@@ -806,9 +807,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
 		color_t dmg_color = font::weapon_color;
-		if ( damage > specials_damage ) {
+		if (damage > std::round(specials_damage)) {
 			dmg_color = font::good_dmg_color;
-		} else if ( damage < specials_damage ) {
+		} else if (damage < std::round(specials_damage)) {
 			dmg_color = font::bad_dmg_color;
 		}
 
@@ -872,8 +873,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::string type = at.damage_type().first;
-		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::pair<std::string, std::set<std::string>> all_damage_types = at.damage_types();
+		std::string type = all_damage_types.first;
+		std::set<std::string> alt_types = all_damage_types.second;
 		std::string lang_type = string_table["type_" + type];
 		for(auto alt_t : alt_types){
 			lang_type += ", " + string_table["type_" + alt_t];
@@ -993,7 +995,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_team().side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
-						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
+						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
@@ -1050,7 +1052,7 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const reports::context& rc, const unit_const_ptr& attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 

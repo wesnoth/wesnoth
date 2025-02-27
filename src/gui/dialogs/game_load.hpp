@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,12 +23,8 @@
 
 #include <SDL2/SDL_keycode.h>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class game_load : public modal_dialog
 {
 public:
@@ -46,18 +42,16 @@ private:
 	/** Update (both internally and visually) the list of games. */
 	void populate_game_list();
 
-	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
 	void delete_button_callback();
 	void handle_dir_select();
 
 	/**
-	 * Implementation detail of filter_text_changed and handle_dir_select
+	 * Hides saves not matching the given filter.
 	 *
 	 * @param text Current contents of the textbox
-	 * @param force If true, recalculate even if the text is the same as last time
 	 */
-	void apply_filter_text(const std::string& text, bool force);
+	void apply_filter_text(const std::string& text);
 
 	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
 	void display_savegame_internal(const savegame::save_info& game);
@@ -77,8 +71,6 @@ private:
 
 	std::vector<savegame::save_info> games_;
 	const game_config_view& cache_config_;
-
-	std::vector<std::string> last_words_;
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

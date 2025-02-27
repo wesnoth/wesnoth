@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,12 @@
 	See the COPYING file for more details.
 */
 
+#include "serialization/markup.hpp"
 
+#include "config.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "serialization/markup.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 
 namespace markup {
@@ -23,10 +25,10 @@ namespace markup {
 std::string make_link(const std::string& text, const std::string& dst)
 {
 	// some sorting done on list of links may rely on the fact that text is first
-	return "<ref dst='" + dst+ "'>" + text + "</ref>";
+	return formatter() << "<ref dst='" << dst << "'>" << text << "</ref>";
 }
 
-std::string img(const std::string& src, const std::string& align, const bool floating)
+std::string img(const std::string& src, const std::string& align, bool floating)
 {
 	return formatter()
 		<< "<img src='" << src << "' "

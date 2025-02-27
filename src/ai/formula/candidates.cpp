@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -75,7 +75,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	}
 }
 
-variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula)
+variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const const_formula_ptr& formula)
 {
 	map_formula_callable callable(ai->fake_ptr());
 	callable.add("input", input);

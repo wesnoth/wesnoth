@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,6 +56,10 @@ editor_team_info::editor_team_info(const team& t)
 }
 
 const std::size_t map_context::max_action_stack_size_ = 100;
+
+namespace {
+	static const int editor_team_default_gold = 100;
+}
 
 map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
 	: filename_()
@@ -307,6 +311,7 @@ void map_context::new_side()
 	config cfg;
 	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
 	cfg["hidden"] = false;
+	cfg["gold"] = editor_team_default_gold;
 
 	teams_.back().build(cfg, map());
 
@@ -732,7 +737,7 @@ config map_context::to_config()
 	// [unit]s
 	config traits;
 	preproc_map traits_map;
-	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+	read(traits, *(preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map)));
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -756,10 +761,11 @@ config map_context::to_config()
 			u["unrenamable"] = unit.unrenamable();
 		}
 
+		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
 			config trait_loyal;
-			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
-			u.append(trait_loyal);
+			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
+			mods.append(trait_loyal);
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.

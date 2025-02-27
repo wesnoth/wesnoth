@@ -90,9 +90,14 @@ jobs:
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
                   extra_flags_config="-pipe" forum_user_handler=true \
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
-                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true
+                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
               build strict=true wesnoth boost_unit_tests
+
+              build cdb
+              # disable all warnings since we have coverage on them in a standard build, and clang-tidy
+              # triggers false positive compiler warnings that clang itself won't
+              run-clang-tidy -quiet -use-color -j 2 -extra-arg="-w" -warnings-as-errors='*' '^(?!.*src/modules/|.*build/)'
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
@@ -104,7 +109,7 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
               }
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
@@ -207,17 +212,22 @@ jobs:
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive", fetch-depth: 500, fetch-tags: true } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Flatpak
         run: |
           # write to an ignored filename so the build is not marked as modified
-          jq '.modules |= map(select(.name == "wesnoth").sources[0]={type:"dir",path:"."})' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
+          jq '.modules |= map(if .name == "wesnoth" then ."build-commands"[0]+=" appdata_filepath=org.wesnoth.Wesnoth.appdata.xml" | .sources[0]={type:"dir",path:"."} else . end)' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
           git config --global --add safe.directory "$PWD"
-          branch=ci-$(git describe || git log -n 1 --format=%h) # if git describe fails fall back to the commit hash
-          flatpak-builder --force-clean --default-branch="$branch" --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
-          flatpak build-export export wesnoth-app "$branch"
-          flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth "$branch" --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+          branch=ci-$(git log -n 1 --format=%h)
+          version=$(sed -n 's/#define VERSION "\(.*\)"/\1/p' src/wesconfig.h)
+          date=$(TZ=UTC0 git log -1 --date=iso-local --format=%cd)
+          cp packaging/org.wesnoth.Wesnoth.appdata.xml .
+          # add release info so the flatpak shows the version
+          utils/update_appdata "$version" org.wesnoth.Wesnoth.appdata.xml "$date"
+          flatpak-builder --force-clean --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
+          flatpak build-export export-repo wesnoth-app "$branch"
+          flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo export-repo wesnoth.flatpak org.wesnoth.Wesnoth "$branch"
 
       - name: Upload flatpak bundle
         uses: actions/upload-artifact@v4
@@ -274,12 +284,14 @@ jobs:
           ./projectfiles/Xcode/Fix_Xcode_Dependencies
       - name: Build translations
         run: scons translations build=release --debug=time nls=true jobs=2
-      - name: Build wesnoth and unit tests
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
         working-directory: projectfiles/Xcode
         run: |
-          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -configuration "$CFG" -target "The Battle for Wesnoth" -target "unit_tests" -target wesnothd -target campaignd
           # xcodebuild or maybe clang do not appear to fail properly when input files cannot be found; double check executables were produced
           [ -x "build/$CFG/The Battle for Wesnoth.app" ] || { printf 'Failed to build wesnoth executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/wesnothd"   ] || { printf 'Failed to build wesnothd executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/campaignd"  ] || { printf 'Failed to build campaignd executable!\n' >&2; exit 1; }
           [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
       - name: Create disk image
         working-directory: projectfiles/Xcode

@@ -1,18 +1,113 @@
-## Version 1.19.5+dev
+## Version 1.19.9+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+   * Boost 1.70 or later is now required
+### Terrain
+### Translations
+   * Updated translations: Bengali, British English, Finnish, Italian
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
+## Version 1.19.9
+### Campaigns
+   * Delfador’s Memoirs
+     * Campaign removed! Replaced with “The Deceiver’s Gambit”
+   * The Deceiver’s Gambit
+     * New campaign, replacing “Delfador’s Memoirs”!
+     * _Yearning for adventure, a newly-trained apprentice from the magic academy at Alduin fights alongside Wesnoth’s king during a major war against the orcs of the north.  Play a pivotal role during this time of turmoil, as despite a string of battlefield victories Wesnoth seems to be slipping inexorably into chaos..._
+   * The Hammer of Thursagan
+     * Revised maps for Scenarios 1, 3, 4, 5 and 7
+### Lua API
+   * `rich_label` now has the new event handler `on_link_click`. If set, it will be fired when the user clicks on a link set via the `<ref>` tag inside the `rich_label`.
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
+   * For translation statistics, wesnoth-tsg is now part of core, and wesnoth-tutorial isn't
+### Units
+   * Dune Paragon:
+        * Cost 78 -> 85
+        * primary melee attack: description changed to scimitar, 13-4 -> 15-4, removed marksman
+        * new secondary melee attack: 25-2 scimitar melee blade marksman
+### User interface
+   * A new "Customize Reach Map (Unit Movement UI)" option has been added under the advanced settings category. It provides highlight color, enemy highlight color, border opacity and tint opacity customization options for the reach map UI.
+   * The game will now default to 1920x1080 with a minimum of 1280x720
+### WML Engine
+   * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
+   * [fire_event][data] content is available in the fired event as $data
+### Miscellaneous and Bug Fixes
+   * Various fixes for the unit recruit/recall dialog
+
+## Version 1.19.8
+### Campaigns
+   * Eastern Invasion
+     * S04c: give Mal-Ravanal gold to recruit more units when their army becomes too small
+     * forbid all Dunefolk units to take the Plague Staff
+     * fix minor bugs with dialogues
+   * The South Guard
+     * Major rewrite of the campaign
+     * Adds an embedded tutorial, which is now the official starting campaign for new players
+   * Tutorial
+     * Description changed to explain that the standalone tutorial is no longer the recommended one
+### Editor
+   * The PBL editor now validates whether DataURI images are too large
+### Lua API
+   * New functions `gui.show_recruit_dialog()` and `gui.show_recall_dialog()` has been added which allow showing the recruit and recall dialogs in-game with a custom list of unit types or units respectively, along with some customizable features.
+### Translations
+   * Updated translations: Bengali, British English, Czech, Dutch, Finnish, German, Hungarian
+### Units
+   * Dune Warmaster: HP 59 -> 61 scimitar damage 9 -> 10
+   * Dwarvish Explorer: physical resists reduced from 20% to 10%, melee damage increased from 10 to 11.
+   * Fire Wisps and Guardian - Fire Resistance changed from 50% to 70%
+   * Fire Wraith - Fire Resistance changed from 50% to 80%
+   * Orcish Crossbowman: melee 6-3 -> 4-3, experience to level 43 -> 57
+   * Added the Coastal and Iron Raider ship units
+### User interface
+   * The Modern theme has been renamed to Celes and received design updates to the titlescreen and common UI controls. The Default theme has been renamed to Parchment.
+   * A preference to show/hide the tips panel on titlescreen has been added under Display preferences (id `show_tips`). In the Celes theme, it can also be hidden by clicking the cross button located at the top-right of the panel.
+   * Submenus are now positioned at the location of the menu item that spawned them, rather than the location of the mouse cursor at the time of click
+   * An advanced preference has been added to not download icons for the in-game add-ons manager.
+   * The end screen for campaigns now properly wraps text
+   * The themes have been renamed from Modern and Classic to Celes and Parchment, respectively. The Celes theme has also been further expanded to cover more UI elements.
+### WML Engine
+   * [variables] in [side] no longer sets variables of the implicit leader unit (it now only sets the sides variables), to create a leader unit with variables, [leader] must be used instead. (issue #3742)
+### Miscellaneous and Bug Fixes
+   * Attempting to view the in-game manual no longer causes Wesnoth to crash
+
+## Version 1.19.7
+### Multiplayer
+   * Implemented an attempt to fix the multiplayer server crashing if someone requested game history and then disconnected before receiving the results
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian
+### Units
+   * Dawarf - Decreased Cost from 17 to 12, Decreased Level from 1 to 0, and Decreased XP from 50 to 25
+   * Elvish Champion: HP 72 -> 70, cost 61 -> 60, accuracy bonus is now explained via a weapon special
+### User interface
+   * The `screen_pitch_microns` variable is no longer available for UI formulas
+   * Added a red line to the bottom of chat window when entering lobby
+### WML Engine
+   * [stacked_widget] no longer accepts the long-deprecated [stack] tag
+   * The author attribute is now again a display only attribute. Instead the primary_authors attribute should be used, which supports specifying multiple primary authors.
+   * [side]'s `leader` attribute has been removed
+### Miscellaneous and Bug Fixes
+   * Fixed the game quitting at scenario end when loading a mp campaign game in singleplayer in debug mode
+   * Fixed map editor crashing when creating or opening scenario after having played a local scenario before opening the map editor
+
+## Version 1.19.6
 ### Add-ons client
    * The Add-ons client now supports UI Theme type add-ons (id 'theme').
-### Add-ons server
 ### Campaigns
    * Son of the Black-Eye
      * Allowed Saurian Skirmishers to advance into Saurian Spearthrower.
    * The Hammer of Thursagan
      * Added Achievements.
-### Editor
 ### Multiplayer
    * OOS-bugs have been fixed.
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, German, Hungarian, Norwegian, Turkish
 ### Units
@@ -24,17 +119,23 @@
    * Huntsman: HP 57 -> 53, bow 9x4 marksman -> 10x4 marksman, cost 43g -> 47g, new ability: Swamp Lurk (invisibility in swamps)
    * Ranger: HP 60 -> 64, bow 7x4 -> 8x4, cost 43g -> 50g, defense: castle 60% -> 50%, frozen 20% -> 30%, reef 30% -> 50%, sand 30% -> 40%
    * Forest Lion: HP 42 -> 48, MP 9 -> 7, claws 5x4 -> 6x4, bite 15x2 -> 9x2 charge, arcane resistance 20% -> 10%, cost 21g -> 30g
+   * New ship units Derelict Hulk and Fireship
+   * Pirate Galleon and Transport Galleon moved to Ship race, sprite updated and animated
+   * Portraits for ships and their crew
 ### User interface
    * About Dialog's General tab now has a button to open the game manual for the currently selected language.
    * An entry for accessing the Add-ons Manager has been added to the Campaign Selection dialog.
    * Help Browser now has a checkbox for showing/hiding the contents list in low-resolution systems (800x600 or less).
    * It is now possible to select text in MP Lobby chat and Gamestate Inspector via mouse drag.
+   * Switched default Pango/Cairo backend from CoreText to Fontconfig on macOS to fix issues with certain fonts such as Oldania ADF Std being unrecognized on current OS versions (issue #8488).
+   * More titlescreen images have been added.
 ### WML Engine
    * Add a [remove_specials] tag in [effect] to be able to remove specials with other criteria than the id (type of the special, active_on, apply_to or other attributes).
    * Add [filter_special] to [has_attack/filter_weapon] in order to simultaneously check specials with id and type, and/or other attributes.
    * [modify_unit_type] can add a list of AMLAs in the unit_type, if a list is already written, it will be replaced.
    * [modify_unit_type] can modify [male/female] or [variation] subtags if already written in unit_type.
 ### Miscellaneous and Bug Fixes
+   * Removed `--nodelay` launch flag
 
 ## Version 1.19.5
 ### Campaigns
@@ -361,13 +462,13 @@
    * New dialog for entering custom schedule ID and name. The user is required to enter a non-empty schedule id and name. ID will be autogenerated if the user doesn't specify it or already exists.
    * Textbox to enter Add-on ID after selecting `New Scenario > New Add-on`.
 ### Multiplayer
-   * Fix Add-on version check error #4055 
+   * Fix Add-on version check error #4055
 ### Lua API
    * units.remove_modifications can now remove multiple types of modifications.
 ### Translations
    * Updated translations: British English, Bulgarian, Finnish, French, German, Polish, Slovak
 ### Miscellaneous and Bug Fixes
-   * Fix various assertion failures on invalid input 
+   * Fix various assertion failures on invalid input
    * Fix end credits not showing when a scenario has no [side]s #8090
    * The command line `--preprocess` utility now accepts any filename, not just those ending .cfg.
 

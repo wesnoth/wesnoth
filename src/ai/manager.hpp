@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -131,9 +131,7 @@ public:
 
 	manager();
 
-	/* The singleton can't be set to null in the destructor because member objects
-	(which access the singleton) are destroyed *after* the destructor has been run. */
-	~manager() = default;
+	~manager();
 
 	// =======================================================================
 	// ACCESS TO MANAGER

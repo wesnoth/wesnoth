@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -81,6 +81,7 @@ public:
 	 * Should only ever be used for local testing.
 	 */
 	bool allow_insecure;
+	bool addon_server_info;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
 	utils::optional<std::string> debug_dot_domain;
@@ -164,6 +165,8 @@ public:
 	utils::optional<std::string> preprocess_path;
 	/** Target (output) path that was given to the --preprocess option. */
 	utils::optional<std::string> preprocess_target;
+	/** String to preprocess */
+	utils::optional<std::string> preprocess_source_string;
 	/** Pair of AxB values specified after --resolution. Changes Wesnoth resolution. */
 	utils::optional<std::pair<int,int>> resolution;
 	/** RNG seed specified by --rng-seed option. Initializes RNG with given seed. */
@@ -178,7 +181,7 @@ public:
 	utils::optional<std::string> render_image;
 	/** Output file to put rendered image path in. Optional second parameter after --render-image */
 	utils::optional<std::string> render_image_dst;
-  /** Path of which to generate a spritesheet */
+	/** Path of which to generate a spritesheet */
 	utils::optional<std::string> generate_spritesheet;
 	/** True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode. */
 	bool screenshot;
@@ -186,9 +189,7 @@ public:
 	utils::optional<std::string> screenshot_map_file;
 	/** Output file to put screenshot in. Second parameter given after --screenshot. */
 	utils::optional<std::string> screenshot_output_file;
-	/** File to load lua script from. */
-	utils::optional<std::string> script_file;
-	/** File to load a lua plugin (similar to a script) from. Experimental / may replace script. */
+	/** File to load a lua plugin script from. */
 	utils::optional<std::string> plugin_file;
 	/** Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable) */
 	bool script_unsafe_mode;

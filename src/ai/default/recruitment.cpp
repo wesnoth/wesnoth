@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Felix Bauer
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1093,7 +1093,7 @@ struct attack_simulation {
 
 	attack_simulation(const unit_type* attacker, const unit_type* defender,
 			double attacker_defense, double defender_defense,
-			const_attack_ptr att_weapon, const_attack_ptr def_weapon,
+			const const_attack_ptr& att_weapon, const const_attack_ptr& def_weapon,
 			int average_lawful_bonus) :
 			attacker_type(attacker),
 			defender_type(defender),

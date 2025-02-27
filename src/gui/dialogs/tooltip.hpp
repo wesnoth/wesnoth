@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,15 +21,8 @@
 class t_string;
 struct point;
 
-namespace gui2
+namespace gui2::dialogs::tip
 {
-
-namespace dialogs
-{
-
-namespace tip
-{
-
 /**
  * Shows a tip.
  *
@@ -53,6 +46,4 @@ void show(const std::string& window_id,
  * */
 void remove();
 
-} // namespace tip
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs::tip

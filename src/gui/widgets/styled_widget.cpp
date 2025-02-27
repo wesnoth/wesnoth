@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,7 +67,7 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	 * and toggle_button have a variable canvas count determined by their definitions.
 	 */
 	for(unsigned i = 0; i < config_->state.size(); ++i) {
-		canvases_[i].set_cfg(config_->state[i].canvas_cfg_);
+		canvases_[i].set_shapes(config_->state[i].canvas_cfg_);
 	}
 
 	// Initialize all the canvas variables.
@@ -301,7 +301,7 @@ const widget* styled_widget::find_at(const point& coordinate,
 				   : nullptr;
 }
 
-widget* styled_widget::find(const std::string& id, const bool must_be_active)
+widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 {
 	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -309,7 +309,7 @@ widget* styled_widget::find(const std::string& id, const bool must_be_active)
 				   : nullptr;
 }
 
-const widget* styled_widget::find(const std::string& id, const bool must_be_active)
+const widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	return (widget::find(id, must_be_active)

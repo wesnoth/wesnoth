@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -95,9 +95,9 @@ public:
 	void on_change_controller(int side, const team& t);
 	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
-	void pre_delete_action(action_ptr action);
+	void pre_delete_action(const action_ptr& action);
 	/** Handles various cleanup right after removing an action from the queue */
-	void post_delete_action(action_ptr action);
+	void post_delete_action(const action_ptr& action);
 
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
@@ -155,7 +155,7 @@ public:
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Creates a suppose-dead action for the current side */
-	void save_suppose_dead(unit& curr_unit, const map_location& loc);
+	void save_suppose_dead(const unit& curr_unit, const map_location& loc);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();

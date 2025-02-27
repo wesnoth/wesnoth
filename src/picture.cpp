@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -325,7 +325,7 @@ static void add_localized_overlay(const std::string& ovr_file, surface& orig_sur
 
 	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
-	sdl_blit(ovr_surf, 0, orig_surf, &area);
+	sdl_blit(ovr_surf, nullptr, orig_surf, &area);
 }
 
 static surface load_image_file(const image::locator& loc)
@@ -466,9 +466,11 @@ static surface load_image_data_uri(const image::locator& loc)
 		if(image_data.empty()) {
 			ERR_IMG << "Invalid encoding in data URI";
 		} else if(parsed.mime == "image/png") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
+			surf = IMG_LoadPNG_RW(rwops.release());
 		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
+			surf = IMG_LoadJPG_RW(rwops.release());
+		} else if(parsed.mime == "image/webp") {
+			surf = IMG_LoadWEBP_RW(rwops.release());
 		} else {
 			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
 		}

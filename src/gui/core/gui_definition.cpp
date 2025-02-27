@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -205,45 +205,48 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	const auto& current_types = current_gui->second.widget_types;
 	const auto& default_types = default_gui->second.widget_types;
 
-	const auto widget_definitions = current_types.find(control_type);
+	const auto find_definition =
+		[&](const auto& widget_types) -> utils::optional<gui_definition::widget_definition_map_t::const_iterator>
+	{
+		// Get all possible definitions for the given widget type.
+		const auto widget_definitions = widget_types.find(control_type);
 
-	gui_definition::widget_definition_map_t::const_iterator control;
+		// We don't have a fallback here since all types should be valid in all themes.
+		VALIDATE(widget_definitions != widget_types.end(),
+			formatter() << "Control: type '" << control_type << "' is unknown.");
 
-	if(widget_definitions == current_types.end()) {
-		goto fallback;
+		const auto& options = widget_definitions->second;
+
+		// Out of all definitions for that type, find the requested one.
+		if(auto control = options.find(definition); control != options.end()) {
+			return control;
+		} else {
+			return utils::nullopt;
+		}
+	};
+
+	auto control = find_definition(current_types);
+
+	// Definition not found in the current theme, try the default theme.
+	if(!control && current_gui != default_gui) {
+		control = find_definition(default_types);
 	}
 
-	control = widget_definitions->second.find(definition);
-
-	if(control == widget_definitions->second.end()) {
-	fallback:
-		bool found_fallback = false;
-
-		if(current_gui != default_gui) {
-			auto default_widget_definitions = default_types.find(control_type);
-
-			VALIDATE(widget_definitions != current_types.end(),
-				formatter() << "Type '" << control_type << "' is unknown.");
-
-			control = default_widget_definitions->second.find(definition);
-			found_fallback = control != default_widget_definitions->second.end();
-		}
-
-		if(!found_fallback) {
-			if(definition != "default") {
-				LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
-						  << "' not found, falling back to 'default'.";
-				return get_control(control_type, "default");
-			}
-
-			FAIL(formatter() << "default definition not found for styled_widget " << control_type);
-		}
+	// Still no match. Try the default definition.
+	if(!control && definition != "default") {
+		LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
+				  << "' not found, falling back to 'default'.";
+		return get_control(control_type, "default");
 	}
 
-	const auto& resolutions = (*control->second).resolutions;
+	VALIDATE(control,
+		formatter() << "Control: definition '" << definition << "' not found for styled_widget " << control_type);
+
+	// Finally, resolve the appropriate resolution
+	const auto& resolutions = (*control)->second->resolutions;
 
 	VALIDATE(!resolutions.empty(),
-		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
+		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.");
 
 	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr) {
 		return point(

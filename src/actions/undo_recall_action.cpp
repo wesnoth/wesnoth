@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -32,19 +32,19 @@ static lg::log_domain log_engine("engine");
 
 namespace actions::undo
 {
-recall_action::recall_action(const unit_const_ptr recalled, const map_location& loc,
-			  const map_location& from, int orig_village_owner, bool time_bonus)
+recall_action::recall_action(const unit_const_ptr& recalled, const map_location& loc,
+			  const map_location& from)
 	: undo_action()
-	, shroud_clearing_action(recalled, loc, orig_village_owner, time_bonus)
+	, shroud_clearing_action(recalled, loc)
 	, id(recalled->id())
 	, recall_from(from)
 {}
 
-recall_action::recall_action(const config & cfg, const map_location & from)
-	: undo_action(cfg)
+recall_action::recall_action(const config & cfg)
+	: undo_action()
 	, shroud_clearing_action(cfg)
 	, id(cfg["id"])
-	, recall_from(from)
+	, recall_from(map_location(cfg.child_or_empty("leader"), nullptr))
 {}
 
 /**
@@ -97,9 +97,8 @@ bool recall_action::undo(int side)
 	units.erase(recall_loc);
 	resources::whiteboard->on_kill_unit();
 	un->anim_comp().clear_haloes();
-	this->return_village();
-	execute_undo_umc_wml();
 	return true;
 }
+static auto reg_undo_recall = undo_action_container::subaction_factory<recall_action>();
 
 }

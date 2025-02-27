@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/charconv.hpp"
 #include "utils/general.hpp"
 #include <array>
 #include <limits>
@@ -412,14 +413,14 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 	return value;
 }
 
-std::string escape(const std::string &str, const char *special_chars)
+std::string escape(std::string_view str, const char *special_chars)
 {
 	std::string::size_type pos = str.find_first_of(special_chars);
 	if (pos == std::string::npos) {
 		// Fast path, possibly involving only reference counting.
-		return str;
+		return std::string(str);
 	}
-	std::string res = str;
+	std::string res = std::string(str);
 	do {
 		res.insert(pos, 1, '\\');
 		pos = res.find_first_of(special_chars, pos + 2);
@@ -427,22 +428,22 @@ std::string escape(const std::string &str, const char *special_chars)
 	return res;
 }
 
-std::string unescape(const std::string &str)
+std::string unescape(std::string_view str)
 {
 	std::string::size_type pos = str.find('\\');
 	if (pos == std::string::npos) {
 		// Fast path, possibly involving only reference counting.
-		return str;
+		return std::string(str);
 	}
-	std::string res = str;
+	std::string res = std::string(str);
 	do {
 		res.erase(pos, 1);
 		pos = res.find('\\', pos + 1);
 	} while (pos != std::string::npos);
-	return str;
+	return res;
 }
 
-std::string urlencode(const std::string &str)
+std::string urlencode(std::string_view str)
 {
 	static const std::string nonresv_str =
 		"-."
@@ -762,7 +763,7 @@ std::string indent(const std::string& string, std::size_t indent_size)
 		return string;
 	}
 
-	const std::string indent(indent_size, ' ');
+	std::string indent(indent_size, ' ');
 
 	if(string.empty()) {
 		return indent;
@@ -836,7 +837,7 @@ namespace
  * If str contains two elements and a separator such as "a-b", returns a and b.
  * Otherwise, returns the original string and utils::nullopt.
  */
-std::pair<std::string, utils::optional<std::string>> parse_range_internal_separator(const std::string& str)
+std::pair<std::string_view, utils::optional<std::string_view>> parse_range_internal_separator(std::string_view str)
 {
 	// If turning this into a list with additional options, ensure that "-" (if present) is last. Otherwise a
 	// range such as "-2..-1" might be incorrectly split as "-2..", "1".
@@ -856,7 +857,7 @@ std::pair<std::string, utils::optional<std::string>> parse_range_internal_separa
 }
 } // namespace
 
-std::pair<int, int> parse_range(const std::string& str)
+std::pair<int, int> parse_range(std::string_view str)
 {
 	auto [a, b] = parse_range_internal_separator(str);
 	std::pair<int, int> res{0, 0};
@@ -866,7 +867,7 @@ std::pair<int, int> parse_range(const std::string& str)
 			// both of those will report an invalid range.
 			res.first = std::numeric_limits<int>::min();
 		} else {
-			res.first = std::stoi(a);
+			res.first = utils::stoi(a);
 		}
 
 		if(!b) {
@@ -874,7 +875,7 @@ std::pair<int, int> parse_range(const std::string& str)
 		} else if(*b == "infinity") {
 			res.second = std::numeric_limits<int>::max();
 		} else {
-			res.second = std::stoi(*b);
+			res.second = utils::stoi(*b);
 			if(res.second < res.first) {
 				res.second = res.first;
 			}
@@ -886,7 +887,7 @@ std::pair<int, int> parse_range(const std::string& str)
 	return res;
 }
 
-std::pair<double, double> parse_range_real(const std::string& str)
+std::pair<double, double> parse_range_real(std::string_view str)
 {
 	auto [a, b] = parse_range_internal_separator(str);
 	std::pair<double, double> res{0, 0};
@@ -898,7 +899,7 @@ std::pair<double, double> parse_range_real(const std::string& str)
 				"Don't know how negative infinity is treated on this architecture");
 			res.first = -std::numeric_limits<double>::infinity();
 		} else {
-			res.first = std::stod(a);
+			res.first = utils::stod(a);
 		}
 
 		if(!b) {
@@ -906,7 +907,7 @@ std::pair<double, double> parse_range_real(const std::string& str)
 		} else if(*b == "infinity") {
 			res.second = std::numeric_limits<double>::infinity();
 		} else {
-			res.second = std::stod(*b);
+			res.second = utils::stod(*b);
 			if(res.second < res.first) {
 				res.second = res.first;
 			}
