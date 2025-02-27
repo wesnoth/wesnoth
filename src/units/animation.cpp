@@ -1638,7 +1638,7 @@ void unit_animator::move_units_fake_queue(int& index_movement_anim)
 	}
 }
 
-bool unit_animator::has_animation(unit_const_ptr animated_unit
+bool unit_animator::has_animation(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location &dst
@@ -1749,7 +1749,7 @@ void unit_animator::revert_facing()
 // returns null location if no movement animation of the given unit is found.
 // according to celmin: `movement` as a function name need this as an arg. if don't needed, then `movement` shouldn't be part of it.
 // so this name needs change
-const map_location& unit_animator::get_unit_last_move_anim_dst(unit_const_ptr ucp) const
+const map_location& unit_animator::get_unit_last_move_anim_dst(const unit_const_ptr ucp) const
 {
 	if (animated_units_.empty()) {
 		return map_location::null_location();

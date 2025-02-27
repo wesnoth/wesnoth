@@ -243,7 +243,7 @@ public:
 		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0) const;
 
-	const map_location& get_unit_last_move_anim_dst(unit_const_ptr ucp) const;
+	const map_location& get_unit_last_move_anim_dst(const unit_const_ptr ucp) const;
 
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
