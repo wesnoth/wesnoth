@@ -269,16 +269,7 @@ static int impl_animator_collect(lua_State* L) {
 	anim.~unit_animator();
 	return 0;
 }
-//mark modify this: `target location must be ...`
-/*Soliton: about your comment related with target and facing field in https://github.com/wesnoth/wesnoth/issues/9032 , I
- * agree with your idea that they are not the same thing, however I thought for a while and I found that maybe facing
- * will hardly be useful when target is available. Animation appropriate for specified target can be chosen automatedly
- * considering the unit's location(as dst in choose_animation), facing field seems just redundant in this case. I
- * personally can't think of how an animation (possibly with movement, e.g. attacking) can properly run if user want to
- * manually decide its facing, from my view it will just look weird. For those animation don't require movement, target
- * will also serve its functionality, this is when it becomes facing and work. Thus it seems no need to add another
- * parameter to add_animation, just keep using target and it should work , from my prospect. (and it's okay for users to
- * use facing, it's interpreted as target anyway)*/
+
 static int impl_add_animation(lua_State* L)
 {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
@@ -286,7 +277,7 @@ static int impl_add_animation(lua_State* L)
 	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
 	unit& u = *up;
 	// Possible TODO: change movement support to movement-like animations support (like cheering and moving)
-	// But only changes of tag expected in this case.
+	// But only a change of tag here is expected in this case.
 	unit_ptr move_unit_p = (which == "movement") ? up : nullptr;
 	bool use_lockstep = false;
 	bool coherence = false;
@@ -345,8 +336,6 @@ static int impl_add_animation(lua_State* L)
 							"the animated unit");
 					}
 				} else if(dest == u.get_location()) {
-					// add a impl here called `havemovement` to indicate whether the fact that given location being the
-					// same with unit's location should be considered as an error
 					return luaL_argerror(L, 5,
 						"Given target or facing location for non-movement animation must be different from animated "
 						"unit's location");
@@ -432,16 +421,13 @@ static int impl_add_animation(lua_State* L)
 	} else if(!lua_isnoneornil(L, 5)) {
 		return luaW_type_error(L, 5, "table of options");
 	}
-	//u.set_facing(u.get_location().get_relative_dir(dest));
+
 	anim.add_animation(
 		up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true, move_unit_p, use_lockstep, coherence);
 	return 0;
 }
 
 
-/*	//mark how to impl move -> other -> move process: the lua impl part automatedly stops when movement animation phase end for the moment.
-	create a special function which uses a special mark when calling lua impl part, to inform the lua impl he should continue,
-	when other animations end	*/
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	if(video::headless() || resources::controller->is_skipping_replay()) {

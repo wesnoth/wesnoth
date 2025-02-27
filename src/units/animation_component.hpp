@@ -66,15 +66,13 @@ public:
 	}
 
 	/** Chooses an appropriate animation from the list of known animations. */
-	const unit_animation* choose_animation(const map_location& loc,
-		const std::string& event,
+	const unit_animation* choose_animation(
+		const map_location& loc, const std::string& event,
 		const map_location& second_loc = map_location::null_location(),
 		const int damage = 0,
 		const strike_result::type hit_type = strike_result::type::invalid,
-		const const_attack_ptr& attack = nullptr,
-		const const_attack_ptr& second_attack = nullptr,
-		int swing_num = 0,
-		bool need_process = false);
+		const const_attack_ptr& attack = nullptr, const const_attack_ptr& second_attack = nullptr,
+		int swing_num = 0, bool need_process = false);
 
 	/** Sets the animation state to standing. */
 	void set_standing(bool with_bars = true);

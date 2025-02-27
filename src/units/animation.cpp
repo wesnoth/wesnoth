@@ -27,20 +27,12 @@
 #include "units/filter.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
-#include "log.hpp" 
 #include "game_events/action_wml.cpp"
 
 #include <algorithm>
 #include <thread>
 
 using namespace std::chrono_literals;
-
-static lg::log_domain log_scripting_lua("scripting/lua");
-#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
-#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
-#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
-#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
-
 
 static std::string get_heal_sound(const config& cfg)
 {
@@ -1038,11 +1030,6 @@ std::chrono::milliseconds unit_animation::get_begin_time() const
 
 	return result;
 }
-//mark start_animation_a after testing, facing seems can only be impl by actually change the facing status of unit before and after animating.
-//in other words: target only affect how the pool of chosen animations generated will be (before bug fix, this even don't work neither),
-//don't actually have anything to do with unit facing according to related impl codes.
-//in testing, first functionality has been proved to work.
-//so the next step is the second: finding out how to impl facing change with acceptable side effects.
 
 void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 	, const map_location& src
@@ -1053,7 +1040,6 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 {
 	if(need_process_) {
 		unit_anim_.accelerate = accelerate;
-		LOG_LUA << "now dst in start_anim is " << dst_;
 	} else {
 		unit_anim_.accelerate = accelerate;
 		src_ = src;
@@ -1321,8 +1307,7 @@ void unit_animation::particle::start_animation(const std::chrono::milliseconds& 
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() - 1ms;
 }
-//mark add_anim
-//need to implement functionality of 2 or more animations running at the same time, for #9163
+
 void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location &src
@@ -1332,8 +1317,8 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const std::string& text
 		, const color_t text_color
 		, const strike_result::type hit_type
-		, const const_attack_ptr attack
-		, const const_attack_ptr second_attack
+		, const const_attack_ptr& attack
+		, const const_attack_ptr& second_attack
 		, int value2
 		, bool need_process
 		, unit_ptr move_unit_p
@@ -1342,10 +1327,6 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 {
 	if(!animated_unit) return;
 
-	// when dst is invalid, it shouldn't be processed whatsoever.
-	// need_process actually means the need for updating unit facing and destination before animation. Might change name of this param later.
-	// movement animation with move_unit_p defined don't actually use the animation generated. It's the later called wml function which uses generated animation.
-	// so in this case nullptr is enough.
 	const unit_animation* anim = move_unit_p ? nullptr
 											 : animated_unit->anim_comp().choose_animation(src, event, dst, value,
 												   hit_type, attack, second_attack, value2, need_process);
@@ -1358,12 +1339,10 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	if(need_process) {
 		if(move_unit_p != nullptr) {
 			// Process movement animation
-			LOG_LUA << "Processing movement animation, dst = " << dst;
 			if(!animated_units_.empty() && animated_units_[animated_units_.size() - 1].is_movement) {
 				if(!use_lockstep) {
 					last_movement_serino_++;
 				}
-				LOG_LUA << "	serial number is " << last_movement_serino_;
 				animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars,
 					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino_, coherence);
 			} else {
@@ -1373,21 +1352,11 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 			}
 		} else {
 			// Process non-movement animation
-			LOG_LUA << "Processing non-movement animation, dst = " << dst;
 			animated_units_.AGGREGATE_EMPLACE(
 				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, src.get_relative_dir(dst));
 		}
-		/* facing shouldn't be changed before animation runs. It should be changed right after run() is called, by
-		sequence. should remove these after main stuff proved to work.
-		au_rvalue->set_facing(src.get_relative_dir(dst));
-		display* disp = display::get_singleton();
-		disp->invalidate(src);
-		disp->update();
-		LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is "
-				 au_rvalue->facing();*/
 	} else{
 		animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars);
-		LOG_LUA << "facing setting skipped for invalid dst or operation not from lua.";
 	}
 }
 
@@ -1404,15 +1373,8 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
-// The return value indicates if the processing of movement animations should pursue.
-// Notice: position of the moved unit should only be set after run(), in the last movement.
-// need to implement a "sequence" and a "is_lockstep" for movement anim, which once latter is false, automatically
-// increases former and run animation queued by sequence.
-// this function should be implemented for serving as a more convinient option than using [move_unit_fake] and [move_units_fake].
-// mark move_unit_fake_queue
 bool unit_animator::move_unit_fake(int& index_movement_anim)
 {
-	LOG_LUA << "Running move_unit_fake";
 	const std::string tag = "move_unit_fake";
 	game_events::wml_action::map m = game_events::wml_action::registry();// m[tag] is call wml func by tag.
 	game_display* screen_p = game_display::get_singleton();
@@ -1426,7 +1388,6 @@ bool unit_animator::move_unit_fake(int& index_movement_anim)
 			&& animated_units_[index_movement_anim].serial_no == animated_units_[index_movement_anim + 1].serial_no) {
 			return true;
 		}
-		LOG_LUA << "serial_no in muf:" << animated_units_[index_movement_anim].serial_no;
 		auto& anim = animated_units_[index_movement_anim];
 		auto* last_anim_p = index_movement_anim > 0 ? &animated_units_[index_movement_anim - 1] : nullptr;
 		// only when start location and animated unit are the same with what in last animation, should the next movement animation run in coherence.
@@ -1436,8 +1397,7 @@ bool unit_animator::move_unit_fake(int& index_movement_anim)
 		unit& m_u = *m_up;
 		map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
 		map_location& m_dst = anim.move_dst;
-		// when animation is run, loc of the real unit could be different from m_src.
-		//use coherent_moving to indicate whether the location of real unit should be temporarily set to destination of last movement animation.
+		// when running the animation, loc of the real unit could be different from m_src, and the former is needed
 		u_initial_loc = m_u.get_location();
 		m_u.set_hidden(true);
 		// temporarily changes the unit location to make space.
@@ -1457,36 +1417,18 @@ bool unit_animator::move_unit_fake(int& index_movement_anim)
 		cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
 		cfg["force_scroll"] = true;
 		vconfig vcfg = vconfig(cfg);
-		LOG_LUA << "Now vcfg has an y of " << vcfg["y"] << " and cfg has an y of " << cfg["y"];
-		LOG_LUA << "Now m_src.wml_y() is " << m_src.wml_y() << " and m_dst.y is " << m_dst.wml_y() << " and added is "
-				<< std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
-		LOG_LUA << "Now vcfg has an x of " << vcfg["x"] << " and cfg has an x of " << cfg["x"];
-		LOG_LUA << "Now m_src.wml_x() is " << m_src.wml_x() << " and m_dst.x is " << m_dst.wml_x() << " and added is "
-				<< std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
-		LOG_LUA << "src = " << m_src << " and dst = " << m_dst;
 		m[tag]({"","",map_location(),map_location(),config()},vcfg);
 		result = screen_p->maybe_rebuild();
 		if (!result){
 			screen_p->invalidate_all();
 		}
 		m_u.set_location(u_initial_loc);
-		//m_u.set_hidden(false);
-		//disp->invalidate(u_initial_loc);
 		index_movement_anim++;
 	}
 	disp->update();
 	return index_movement_anim < animated_units_.size() && animated_units_[index_movement_anim].is_movement;
 }
-// The return value indicates if the processing of movement animations should pursue.
-// from animated_units_[index] to animated_units_[index+size-1], make sure these elements are all movements with the same sequence.
-// coherent moving here: unit a : A->B->C, b : B->C->D, want an convinient way to make it run in lockstep just by input like this:
-// animator: (moving a from A to B, uselockstep = true), animator: (a,B->C,true)...animator: (b,C->D,true), don't need to worry about
-// correcting locations of these two units and such, they will be the same as before these fake moves, should be much more convinient.
-// however, it's also expected to work when manulally corrected locations of animated units.
-// the issue that units disappear after this function runned comes out because they are not assigned to the last valid location respectively.
-// their location don't need to be revert iteratively, and where they are actually also don't matter to the animation after the configs have been generated.
-// so just remember the last valid location of units respectively, and reset them before or after animation, should solve the issue.
-//mark move_units_fake
+
 bool unit_animator::move_units_fake(int& index, const int& size)
 {
 	if(size < 1) {
@@ -1498,18 +1440,12 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 	}
 	const int start = index;
 	int temp_index = index;
-	LOG_LUA << "Running move_units_fake";
 	const std::string tag = "move_units_fake";
 	game_events::wml_action::map m = game_events::wml_action::registry(); // m[tag] is call wml func by tag.
 	game_display* screen_p = game_display::get_singleton();
 	display* disp = display::get_singleton();
 	bool result;
 	bool coherent_moving = false;
-	// use vector to temporarily store data needed to judge if the animation should run in coherence.
-	// map<pair src, move_up>
-	// tree : processed_anim_queues -> up -> src. first iterate over animated_units_ to fill the 2D processed_anim_queues, then
-	// iterate over it to produce real src, i.e. m_src,
-	// and create vconfig to create children to config in the iteration. after that, call wml.
 	std::vector<std::vector<std::reference_wrapper<anim_elem>>> processed_anim_queues;
 
 	while(temp_index < animated_units_.size() && temp_index < start + size) {
@@ -1539,7 +1475,6 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 			auto& anim = (*iter).get();
 			coherent_moving
 				= last_anim_p && anim.coherence && last_anim_p->move_up == anim.move_up && last_anim_p->src == anim.src;
-			LOG_LUA << "Now coherent has an value of " << coherent_moving;
 			unit_ptr& m_up = anim.move_up;
 			unit& m_u = *m_up;
 			map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
@@ -1571,13 +1506,6 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 			cfg["side"] = m_u.side();
 			cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
 			cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
-			LOG_LUA << "Now cfg has an y of " << cfg["y"];
-			LOG_LUA << "Now m_src.wml_y() is " << m_src.wml_y() << " and m_dst.y is " << m_dst.wml_y()
-					<< " and added is " << std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
-			LOG_LUA << "Now cfg has an x of " << cfg["x"];
-			LOG_LUA << "Now m_src.wml_x() is " << m_src.wml_x() << " and m_dst.x is " << m_dst.wml_x()
-					<< " and added is " << std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
-			LOG_LUA << "src = " << m_src << " and dst = " << m_dst;
 			judged_uconfigs.emplace_back(cfg);
 			last_anim_p = &anim;
 		}
@@ -1615,12 +1543,9 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 	return index < animated_units_.size() && animated_units_[index].is_movement;
 }
 
-//mark mufq
 void unit_animator::move_units_fake_queue(int& index_movement_anim)
 {
-	LOG_LUA << "Running move_units_fake_queue";
 	// check which tag to use.
-	// this is where the check happen, and also check for coherent moving, make 2 branches
 	int simu_size;
 	while ((move_unit_fake(index_movement_anim)))
 	{
@@ -1629,10 +1554,8 @@ void unit_animator::move_units_fake_queue(int& index_movement_anim)
 		const int& serino = animated_units_[index_movement_anim].serial_no;
 		int serino_tocompare = animated_units_[index_movement_anim + simu_size].serial_no;
 		while(serino == serino_tocompare) {
-			LOG_LUA << "move_units_fake_queue found a match for serino_tocompare = " << serino_tocompare;
 			simu_size++;
 			serino_tocompare = animated_units_[index_movement_anim + simu_size].serial_no;
-			LOG_LUA << "simu_size = " << simu_size;
 		}
 		if(!move_units_fake(index_movement_anim, simu_size)) {
 			break;
@@ -1652,7 +1575,7 @@ bool unit_animator::has_animation(const unit_const_ptr& animated_unit
 {
 	return (animated_unit && animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2));
 }
-//mark replace anim
+
 void unit_animator::replace_anim_if_invalid(const unit_const_ptr& animated_unit
 	, const std::string& event
 	, const map_location &src
@@ -1675,13 +1598,10 @@ void unit_animator::replace_anim_if_invalid(const unit_const_ptr& animated_unit
 	{
 		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
 	} else {
-		if (event == "movement")
-			LOG_LUA << "add_anim called by replace_anim";
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
-//mark start_anims call start_anim_ac
-//mark issue now: if movement and non-movement animations all operate at the same unit, non-movement animations will be override.
+
 void unit_animator::start_animations()
 {
 	auto begin_time = std::chrono::milliseconds::max();
@@ -1703,18 +1623,13 @@ void unit_animator::start_animations()
 			move_units_fake_queue(index);
 			continue;
 		}
-		LOG_LUA << "Running non-movement animation";
 		if(anim.animation) {
-			LOG_LUA << "now dst in start_anims if is " << anim.animation->get_dst();
-			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
 			// temporarily changing the animated unit's facing to match expected animation.
 			if (anim.changed_facing != map_location::direction::indeterminate){
 				anim.my_unit->set_facing(anim.changed_facing);
 				display* disp = display::get_singleton();
 				disp->invalidate(anim.my_unit->get_location());
 				disp->update();
-				LOG_LUA << "facing in start_anim set to " << anim.changed_facing << " expected, and actually is "
-				<< anim.my_unit->facing();
 			}
 
 			anim.my_unit->anim_comp().start_animation(
@@ -1722,35 +1637,26 @@ void unit_animator::start_animations()
 			// mark anim set to nptr this is why crash
 			anim.animation = nullptr;
 		} else {
-			LOG_LUA << "now dst in start_anims else is null";
-			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
 			anim.my_unit->anim_comp().get_animation()->update_parameters(
 				anim.src, anim.src.get_direction(anim.my_unit->facing()));
 		}
 		index++;
 	}
 }
-//mark revert
+
 void unit_animator::revert_facing()
 {
 	display* disp = display::get_singleton();
 	for(auto& anim : animated_units_) {
-		//mark crash
 		anim.my_unit->set_hidden(false);
 		if(anim.original_facing != map_location::direction::indeterminate) {
-			LOG_LUA << "unit facing reset from " << anim.my_unit->facing();
 			anim.my_unit->set_facing(anim.original_facing);
-			LOG_LUA << " to " << anim.my_unit->facing();
-			//disp->invalidate(anim.my_unit->get_location()); there's a chance that the unit's position is changed now, so this won't work properly
 		}
 	}
 	disp->invalidate_all();
 	disp->update();
 }
 
-// returns null location if no movement animation of the given unit is found.
-// according to celmin: `movement` as a function name need this as an arg. if don't needed, then `movement` shouldn't be part of it.
-// so this name needs change
 const map_location& unit_animator::get_unit_last_move_anim_dst(const unit_const_ptr ucp) const
 {
 	if (animated_units_.empty()) {
@@ -1758,7 +1664,6 @@ const map_location& unit_animator::get_unit_last_move_anim_dst(const unit_const_
 	}
 	for (auto iter = animated_units_.end() - 1; iter >= animated_units_.begin(); iter--) {
 		auto& anim = *iter;
-		//mark might go wrong if the equation of const unit ptr don't hold for same units.
 		if (anim.is_movement && ucp == anim.my_unit) {
 			return anim.move_dst;
 		}

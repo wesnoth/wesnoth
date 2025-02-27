@@ -1673,7 +1673,6 @@ void unit::write(config& cfg, bool write_all) const
 
 void unit::set_facing(map_location::direction dir) const
 {
-	LOG_UT << "facing set from " << facing_ << " to " << dir;
 	if(dir != map_location::direction::indeterminate && dir != facing_) {
 		appearance_changed_ = true;
 		facing_ = dir;

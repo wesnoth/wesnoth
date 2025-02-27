@@ -208,15 +208,14 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const const_attack_ptr attack = nullptr
-		, const const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0
 		, bool fromlua = false
 		, unit_ptr move_unit_p = nullptr
 		, bool use_lockstep = false
 		, bool coherence = false);
 
-	//mark impl this similar to what in add_animation
 	bool unit_animator::move_unit_fake(int& index_movement_anim);
 	bool unit_animator::move_units_fake(int& index, const int& size);
 	void unit_animator::move_units_fake_queue(int& index_movement_anim);

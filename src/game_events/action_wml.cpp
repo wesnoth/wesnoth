@@ -86,7 +86,7 @@ namespace { // Support functions
 	{
 		return map_location(cfg["x"].to_int(defaultx), cfg["y"].to_int(defaulty), wml_loc());
 	}
-//mark create_fake_unit
+
 	fake_unit_ptr create_fake_unit(const vconfig& cfg)
 	{
 		std::string type = cfg["type"];
@@ -351,7 +351,6 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
  * Moving a 'unit' - i.e. a dummy unit
  * that is just moving for the visual effect
  */
-//mark move_unit_fake wml impl
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
@@ -374,7 +373,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 	}
 }
-//mark move_unit`s`_fake wml impl
+
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;

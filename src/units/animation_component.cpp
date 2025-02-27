@@ -22,15 +22,9 @@
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include "log.hpp"
 
 #include <set>
 
-static lg::log_domain log_scripting_lua("scripting/lua");
-#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
-#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
-#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
-#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 using namespace std::chrono_literals;
 
 namespace
@@ -60,14 +54,10 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	//mark only chosen anim's param is updated. however chosen anim is not surely used by move_unit_display, that's the problem
 	for(unit_animation& anim : animations_) {
-		//mark choose_ani
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
-			// when event is "movement", also need to provent it from overriding by start_anim in animation.cpp
 			if (need_process || event == "movement"){
-				LOG_LUA << "now dst in choose_anim upper changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
 				anim.update_needproc(need_process || event == "movement");
 			}
@@ -76,7 +66,6 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 			max_val = matching;
 			options.clear();
 			if (need_process || event == "movement"){
-				LOG_LUA << "now dst in choose_anim lower changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
 				anim.update_needproc(need_process || event == "movement");
 			}
@@ -145,12 +134,8 @@ void unit_animation_component::start_animation(const std::chrono::milliseconds& 
 	// everything except standing select and idle
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
-	//? why reset? is this the reason why adjusting facing don't work?
-	//mark set facing before reset anim
-	//u_.set_facing(u_.loc_.get_relative_dir(anim_->get_dst()));
 	anim_.reset(new unit_animation(*animation));
 	const auto real_start_time = start_time == std::chrono::milliseconds::max() ? anim_->get_begin_time() : start_time;
-	LOG_LUA << "u_.loc_.get_direction(u_.facing_) in start_anim is " << u_.loc_.get_direction(u_.facing_);
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() - 1ms;
