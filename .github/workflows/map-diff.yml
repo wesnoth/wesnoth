@@ -55,6 +55,7 @@ jobs:
           pngquant --force --output diff_image.png diff_image.png
           identify diff_image.png
 
+          ## Write comment body
           log 'Uploading diff_image.png...'
           json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr)
 
