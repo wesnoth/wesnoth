@@ -50,7 +50,7 @@ Wesnoth can be played on Windows, macOS, and Linux, and can be installed using:
 * standalone installers on [SourceForge](https://sourceforge.net/projects/wesnoth/files/) (Windows and macOS)
 * [Flatpak](https://flathub.org/apps/details/org.wesnoth.Wesnoth) (Linux)
 
-Additionally, Wesnoth is available for [iOS](https://apps.apple.com/us/app/battle-for-wesnoth/id575852062) and [Android](https://sourceforge.net/projects/wesnoth-on-android/files/), but both of these versions are currently unmaintained.
+Additionally, Wesnoth is available for [iOS](https://apps.apple.com/us/app/battle-for-wesnoth/id575852062) and [Android](https://sourceforge.net/projects/wesnoth-on-android/files/). Both ports are currently unmaintained.
 
 To build the game from source, see [INSTALL](/INSTALL.md) for instructions.
 
