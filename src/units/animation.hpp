@@ -216,9 +216,9 @@ public:
 		, bool use_lockstep = false
 		, bool coherence = false);
 
-	bool unit_animator::move_unit_fake(int& index_movement_anim);
-	bool unit_animator::move_units_fake(int& index, const int& size);
-	void unit_animator::move_units_fake_queue(int& index_movement_anim);
+	bool move_unit_fake(int& index_movement_anim);
+	bool move_units_fake(int& index, const int& size);
+	void move_units_fake_queue(int& index_movement_anim);
 
 	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
 	 * @return True if the  @a animated_unit is present and have animation.
