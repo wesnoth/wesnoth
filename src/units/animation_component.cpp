@@ -52,8 +52,8 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	const map_location& second_loc,
 	const int value,
 	const strike_result::type hit,
-	const_attack_ptr attack,
-	const_attack_ptr second_attack,
+	const const_attack_ptr& attack,
+	const const_attack_ptr& second_attack,
 	int swing_num,
 	bool need_process)
 {

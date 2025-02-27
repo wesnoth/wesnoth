@@ -320,7 +320,7 @@ void unit_mover::start(const unit_ptr& u)
  * unit must remain valid until the wait is finished.
  */
 //mark proceed
-void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, bool wait)
+void unit_mover::proceed_to(const unit_ptr& u, std::size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
 	if ( !can_draw_ || !animate_ )
@@ -512,7 +512,7 @@ void unit_mover::finish(const unit_ptr& u, map_location::direction dir)
  * will still display the correct number of units.
  */
 //mark move_unit
-void move_unit(const std::vector<map_location>& path, unit_ptr u,
+void move_unit(const std::vector<map_location>& path, const unit_ptr& u,
                bool animate, map_location::direction dir,
                bool force_scroll)
 {

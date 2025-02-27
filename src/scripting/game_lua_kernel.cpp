@@ -458,8 +458,6 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	return 0;
 }
 
-
-
 static int impl_clear_animation(lua_State* L)
 {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
@@ -5644,6 +5642,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 
 	// Create the playlist table with its metatable
 	cmd_log_ << lua_audio::register_table(L);
+
 	// Create the wml_actions table.
 	cmd_log_ << "Adding wml_actions table...\n";
 

@@ -208,8 +208,8 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr attack = nullptr
+		, const const_attack_ptr second_attack = nullptr
 		, int value2 = 0
 		, bool fromlua = false
 		, unit_ptr move_unit_p = nullptr
@@ -245,7 +245,7 @@ public:
 
 	const map_location& get_unit_last_move_anim_dst(const unit_const_ptr ucp) const;
 
-	void replace_anim_if_invalid(unit_const_ptr animated_unit
+	void replace_anim_if_invalid(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()

@@ -71,8 +71,8 @@ public:
 		const map_location& second_loc = map_location::null_location(),
 		const int damage = 0,
 		const strike_result::type hit_type = strike_result::type::invalid,
-		const_attack_ptr attack = nullptr,
-		const_attack_ptr second_attack = nullptr,
+		const const_attack_ptr& attack = nullptr,
+		const const_attack_ptr& second_attack = nullptr,
 		int swing_num = 0,
 		bool need_process = false);
 
