@@ -208,6 +208,15 @@ void game_state::init(const config& level, play_controller & pc)
 	}
 }
 
+void game_state::set_affect_distant_max_radius(std::optional<int> value)
+{
+	if(value){
+		if(!affect_distant_max_radius_ || *affect_distant_max_radius_ < *value){
+			affect_distant_max_radius_ = value;
+		}
+	}
+}
+
 void game_state::set_game_display(game_display * gd)
 {
 	lua_kernel_->set_game_display(gd);
