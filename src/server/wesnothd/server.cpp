@@ -1448,9 +1448,9 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	if(game_id == -1) {
 		for(const auto& game_pair : games()) {
 			const auto game = game_pair.second;
-			if(game->is_queue_game() && 
-			   !game->started() && 
-			   join["mp_scenario"].to_string() == game->get_scenario_id() && 
+			if(game->is_queue_game() &&
+			   !game->started() &&
+			   join["mp_scenario"].to_string() == game->get_scenario_id() &&
 			   game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
 				game_id = game->id();
 			}

@@ -65,7 +65,7 @@ public:
 		RELOAD_CONFIG,
 		CREATE_PRESET /** player clicked Join button on an [mp_queue] game, but there was no existing game to join */
 	};
-	
+
 	static inline std::string queue_game_scenario_id = "";
 
 private:
