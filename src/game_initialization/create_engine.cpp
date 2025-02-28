@@ -545,6 +545,15 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 	dependency_manager_->try_era_by_index(index, force);
 }
 
+void create_engine::set_current_era_id(const std::string& id, bool force)
+{
+	std::size_t index = dependency_manager_->get_era_index(id);
+
+	current_era_index_ = index;
+
+	dependency_manager_->try_era_by_index(index, force);
+}
+
 bool create_engine::toggle_mod(const std::string& id, bool force)
 {
 	force |= state_.classification().type != campaign_type::type::multiplayer;

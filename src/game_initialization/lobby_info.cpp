@@ -151,9 +151,14 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = game["human_sides"];
 		
-		qgame["map_data"] = "Gg, 2 Gg, Gg, Gg, Gg, Gg, Gg, 1 Gg, Gg\nGg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg\nGg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg";
-		// needed here?
-		//qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["mp_scenario"].str()];
+
+		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["mp_scenario"].str());
+		if(scenario.has_attribute("map_data")) {
+			qgame["map_data"] = scenario["map_data"];
+		} else {
+			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
+		}
+		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["mp_scenario"].str()];
 
 		config& qchild = qgame.add_child("slot_data");
 		qchild["vacant"] = game.mandatory_child("slot_data")["vacant"];
