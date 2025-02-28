@@ -1035,8 +1035,15 @@ void context_manager::map_to_scenario()
 	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	replace_map_context(get_map_context().map(), false, default_schedule, current_addon_);
 
-	// Give the new scenario an initial side.
-	get_map_context().new_side();
+	// Give the converted scenario a number of sides
+	// equal to the number of valid starting positions.
+	int start_pos_count = get_map_context().map().num_valid_starting_positions();
+	if(start_pos_count == 0) {
+		start_pos_count = 1;
+	}
+	for(int i = 0; i < start_pos_count; i++) {
+		get_map_context().new_side();
+	}
 	gui().set_viewing_team_index(0, true);
 	gui().set_playing_team_index(0);
 	gui_.init_flags();
