@@ -592,7 +592,10 @@ void mp_manager::enter_create_mode(bool preset)
 		}
 	}
 
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr, presets)) {
+	if(preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, presets);
+		enter_staging_mode(preset);
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode(preset);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
