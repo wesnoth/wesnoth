@@ -147,10 +147,10 @@ void lobby_info::process_gamelist(const config& data)
 			qgame["mp_countdown_action_bonus"] = game["mp_countdown_action_bonus"];
 			qgame["mp_countdown_turn_bonus"] = game["mp_countdown_turn_bonus"];
 		}
-		
+
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = game["human_sides"];
-		
+
 
 		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["mp_scenario"].str());
 		if(scenario.has_attribute("map_data")) {
