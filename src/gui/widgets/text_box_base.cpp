@@ -26,6 +26,10 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_keyboard.h>
+#endif
+
 #include <functional>
 #include <limits>
 
@@ -198,9 +202,11 @@ size_t text_box_base::get_composition_length() const
 void text_box_base::interrupt_composition()
 {
 	ime_composing_ = false;
+#ifndef __ANDROID__
 	// We need to inform the IME that text input is no longer in progress.
 	SDL_StopTextInput();
 	SDL_StartTextInput();
+#endif
 }
 
 void text_box_base::copy_selection()
@@ -296,6 +302,13 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
+#ifdef __ANDROID__
+		if (state_ == state_t::FOCUSED) {
+			SDL_StartTextInput();
+		} else {
+			SDL_StopTextInput();
+		}
+#endif
 		queue_redraw();
 	}
 }
