@@ -135,7 +135,7 @@ protected:
 	virtual void select_bg_item(const std::string& item_id) override;
 
 	/**
-	 * The editor_groups as defined in editor-groups.cfg.
+	 * The editor_groups as defined in terrain-groups.cfg.
 	 *
 	 * Note the user must make sure the id's here are the same as the
 	 * editor_group in terrain.cfg.
