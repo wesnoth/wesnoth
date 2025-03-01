@@ -144,8 +144,6 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 
 void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 {
-	// TODO: map size is incorrect
-
 	// from constructor
 	ng::create_engine create(state);
 	create.init_active_mods();
@@ -170,6 +168,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 	create.prepare_for_new_level();
 
 	mp_game_settings& params = create.get_state().mp_settings();
+	params.use_map_settings = true;
 	params.num_turns = presets["turn_count"].to_int(-1);
 	params.village_gold = presets["mp_village_gold"].to_int();
 	params.village_support = presets["mp_village_support"].to_int();
@@ -179,6 +178,8 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 	params.shroud_game = presets["mp_shroud"].to_bool();
 
 	// write to scenario
+	// queue games are supposed to all use the same settings, not be modified by the user
+	// can be removed later if we jump straight from the lobby into a game instead of going to the staging screen to wait for other players to join
 	config& scenario = create.get_state().get_starting_point();
 
 	if(params.random_start_time) {
@@ -193,28 +194,15 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 	scenario["turns"] = params.num_turns;
 
 	for(config& side : scenario.child_range("side")) {
-		if(!params.use_map_settings) {
-			side["fog"] = params.fog_game;
-			side["shroud"] = params.shroud_game;
-			side["village_gold"] = params.village_gold;
-			side["village_support"] = params.village_support;
-		} else {
-			if(side["fog"].empty()) {
-				side["fog"] = params.fog_game;
-			}
+		side["controller_lock"] = true;
+		side["team_lock"] = true;
+		side["gold_lock"] = true;
+		side["income_lock"] = true;
 
-			if(side["shroud"].empty()) {
-				side["shroud"] = params.shroud_game;
-			}
-
-			if(side["village_gold"].empty()) {
-				side["village_gold"] = params.village_gold;
-			}
-
-			if(side["village_support"].empty()) {
-				side["village_support"] = params.village_support;
-			}
-		}
+		side["fog"] = params.fog_game;
+		side["shroud"] = params.shroud_game;
+		side["village_gold"] = params.village_gold;
+		side["village_support"] = params.village_support;
 	}
 
 	params.mp_countdown = presets["mp_countdown"].to_bool();
