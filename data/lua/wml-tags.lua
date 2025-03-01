@@ -407,6 +407,7 @@ function wml_actions.store_unit(cfg)
 		utils.vwriter.write(writer, ucfg)
 		if kill_units then u:erase() end
 	end
+	if kill_units then wesnoth.wml_actions.redraw{} end
 end
 
 function wml_actions.sound(cfg)
@@ -853,6 +854,7 @@ wml_actions.unstore_unit = function(cfg)
 	else
 		unit:to_recall()
 	end
+	wesnoth.wml_actions.redraw{}
 end
 
 wml_actions.teleport = function(cfg)
@@ -868,6 +870,7 @@ wml_actions.teleport = function(cfg)
 		x,y = table.unpack(wesnoth.current.map.special_locations[cfg.location_id])
 	end
 	unit:teleport(x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+	if cfg.animate == false then wesnoth.wml_actions.redraw{} end
 end
 
 function wml_actions.remove_sound_source(cfg)
