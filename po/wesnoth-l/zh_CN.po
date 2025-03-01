@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
-"PO-Revision-Date: 2024-06-02 16:44+0800\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-09-25 21:29+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -105,22 +105,22 @@ msgstr "给我自由或者给我死亡！"
 #. [achievement]: id=liberty_or_death
 #: data/campaigns/Liberty/achievements.cfg:8
 msgid "Complete Civil Disobedience with at least 3 peasants remaining."
-msgstr ""
+msgstr "完成《温和反抗》时至少有3个农民存活。"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
 msgid "The Nameless General"
-msgstr ""
+msgstr "无名将军"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
 msgid "Find out the name of the general in Unlawful Orders."
-msgstr ""
+msgstr "在《不法命令》中找出将军的名字。"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
 msgid "Harper vs. Goliath"
-msgstr ""
+msgstr "哈珀大战歌利亚"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:22
@@ -136,12 +136,12 @@ msgstr "完美猎人"
 #. [achievement]: id=liberty_hunter
 #: data/campaigns/Liberty/achievements.cfg:30
 msgid "Complete The Hunters with no losses"
-msgstr ""
+msgstr "无损失完成《猎手》"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:36
 msgid "Force of Arms is Pointless Without Strategy"
-msgstr ""
+msgstr "没有战略的武装毫无意义"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:37
@@ -459,7 +459,7 @@ msgstr "俺不晓得，哈珀。俺真是不晓得。只能讲，俺们在这儿
 #. Harper has a scar from a fire burn on the right side of her face
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:347
 msgid "My face kinda itches... I gotta be careful around these big ones."
-msgstr ""
+msgstr "俺的脸有点痒…我必须小心这些大家伙。"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:364
@@ -488,8 +488,13 @@ msgstr "地精蠢货。"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:416
+#, fuzzy
+#| msgid ""
+#| "Hey, someone left their pack here. I could use it to carry some more "
+#| "rocks."
 msgid ""
-"Hey, someone left their pack here. I could use it to carry some more rocks."
+"Hey, someone left their pack here. I could use it to carry some heavier "
+"rocks."
 msgstr "嘿，有人的背包丢这儿了。俺能拿来装多些石头。"
 
 #. [message]: speaker=unit
@@ -1502,13 +1507,13 @@ msgid ""
 "some of her spies are in the city... however, rest assured, I certainly do "
 "not trust the Queen and her questionable tactics.</i>"
 msgstr ""
-"<small>仔细听着。我不会公开反对艾什薇尔，因为她的间谍就在城里……不过请放心，我"
-"肯定不相信女王和她那些有问题的战术。</i>"
+"<i>仔细听着。我不会公开反对艾什薇尔，因为她的间谍就在城里……不过请放心，我肯定"
+"不相信女王和她那些有问题的战术。</i>"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:880
 msgid "<i>What can ya offer us then?</i>"
-msgstr "<small>那你能给俺们啥呢？</small>"
+msgstr "<i>那你能给俺们啥呢？</i>"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:884
@@ -1520,10 +1525,10 @@ msgid ""
 "I can arrange for some roads to be closed to delay their patrols. That is "
 "the most I can do for you.</i>"
 msgstr ""
-"<small>好吧，我通常不会让人知道我和他们的关系，但可以破例一次。在东南方的卡"
-"辛，你可以从我的一位……联络人那里得到援助。他们的方法应该更符合你们的需要。至"
-"于你们的家园，我不能保护那里不受维尔帝攻击，但我可以安排关闭一些道路，以拖延"
-"他们的巡逻队。我最多就能做到这样了。</small>"
+"<i>好吧，我通常不会让人知道我和他们的关系，但可以破例一次。在东南方的卡辛，你"
+"可以从我的一位……联络人那里得到援助。他们的方法应该更符合你们的需要。至于你们"
+"的家园，我不能保护那里不受维尔帝攻击，但我可以安排关闭一些道路，以拖延他们的"
+"巡逻队。我最多就能做到这样了。</i>"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:888
@@ -1533,8 +1538,8 @@ msgid ""
 "ourselves a good plan. Hope that you’re not sending us to our deaths, "
 "Maddock.</i>"
 msgstr ""
-"<small>哼。很明显你不会帮俺们打，但俺没时间接着呆这儿了。俺们要再抵抗王室，那"
-"就得有个好计划。但愿你这不是让俺们去送死，马多克。</small>"
+"<i>哼。很明显你不会帮俺们打，但俺没时间接着呆这儿了。俺们要再抵抗王室，那就得"
+"有个好计划。但愿你这不是让俺们去送死，马多克。</i>"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:908
@@ -1745,12 +1750,12 @@ msgstr "快，撤回阴影里！也许俺们还能甩掉他们！"
 #. Harper defeats an Iron Mauler
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:605
 msgid "Uncle, we did it! We beat one of them iron monsters!"
-msgstr ""
+msgstr "舅舅，俺们做到了！俺们击败了一个铁怪物！"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:609
 msgid "A fine job lass, but more sure gots to be coming. Let’s keep movin’."
-msgstr ""
+msgstr "好样的姑娘，但更多的会过来。俺们继续前进。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:628
@@ -1807,7 +1812,7 @@ msgstr "妈的，俺们太慢了！太阳升起来了，守卫现在不难发现
 #. [message]: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:734
 msgid "You fools! You weren’t supposed to lead them to me..."
-msgstr ""
+msgstr "你们这些蠢货！你们不应该带他们到我这里…"
 
 #. [scenario]: id=06_The_Hunters
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:4

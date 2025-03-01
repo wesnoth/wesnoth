@@ -40,8 +40,8 @@
 			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
-			<Add option="-D_WIN32_WINNT=0x0601" />
-			<Add option="-D_WIN32_IE=0x0601" />
+			<Add option="-D_WIN32_WINNT=0x0A00" />
+			<Add option="-D_WIN32_IE=0x0A00" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
@@ -144,12 +144,6 @@
 		<Unit filename="../../src/server/common/server_base.hpp" />
 		<Unit filename="../../src/server/common/simple_wml.cpp" />
 		<Unit filename="../../src/server/common/simple_wml.hpp" />
-		<Unit filename="../../src/server/common/resultsets/ban_check.cpp" />
-		<Unit filename="../../src/server/common/resultsets/ban_check.hpp" />
-		<Unit filename="../../src/server/common/resultsets/game_history.cpp" />
-		<Unit filename="../../src/server/common/resultsets/game_history.hpp" />
-		<Unit filename="../../src/server/common/resultsets/tournaments.cpp" />
-		<Unit filename="../../src/server/common/resultsets/tournaments.hpp" />
 		<Unit filename="../../src/server/common/user_handler.hpp" />
 		<Unit filename="../../src/server/room.hpp" />
 		<Unit filename="../../src/server/wesnothd/ban.cpp" />

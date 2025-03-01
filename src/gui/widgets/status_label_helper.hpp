@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -72,10 +72,10 @@ std::function<void()> bind_status_label(
 	const std::string label_id_ = label_id.empty() ? source_id + "_label" : label_id;
 
 	// Find the source value widget.
-	W& source = find_widget<W>(find_in, source_id, false);
+	W& source = find_in->find_widget<W>(source_id);
 
 	// Find the target status label.
-	styled_widget& label = find_widget<styled_widget>(find_in, label_id_, false);
+	styled_widget& label = find_in->find_widget<styled_widget>(label_id_);
 
 	const auto update_label = [&, value_getter]() {
 		label.set_label(value_getter(source));

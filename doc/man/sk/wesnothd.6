@@ -127,8 +127,7 @@ správami. (štandardne: \fB10\fP sekúnd)
 Správa dňa.
 .TP 
 \fBpasswd\fP
-Heslo používané na získanie administrátorských práv (pomocou \fB/query admin
-\fP\fIheslo\fP) .
+Heslo používané na získanie administrátorských práv (pomocou \fB/query admin \fP\fIheslo\fP) .
 .TP 
 \fBreplay_save_path\fP
 Adresár kam server ukladá záznamy hier. (Nezabudnite na posledné /!)
@@ -154,8 +153,7 @@ Umožní používať TLS. Ak bude nastavený na hodnotu true, je treba nastaviť
 privátny kľúč pre TLS v .pem formáte
 .TP 
 \fBtls_dh\fP
-Parametre TLS DH ako súbor .pem. Generujte pomocou \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Parametre TLS DH ako súbor .pem. Generujte pomocou \fBopenssl dhparam \-out filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
@@ -269,6 +267,14 @@ užívateľov. S najväčšou pravdepodobnosťou to bude
 \fBmp_mod_group\fP
 ID skupiny fóra, ktorá sa má považovať za skupinu s moderátorskými
 právomocami.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH "NÁVRATOVÝ KÓD"
@@ -289,7 +295,7 @@ Navštívte oficiálny web: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou
 verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,19 +26,13 @@ namespace gui {
 class button : public widget
 {
 public:
-	struct error : public game::error {
-		error()
-			: game::error("GUI1 button error")
-			{}
-	};
-
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
 	button(const std::string& label, TYPE type=TYPE_PRESS,
-	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
+	       const std::string& button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 

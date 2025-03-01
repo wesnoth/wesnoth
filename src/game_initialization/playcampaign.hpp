@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -55,6 +55,8 @@ public:
 		, mp_info_(nullptr)
 	{
 	}
+
+	~campaign_controller();
 
 	level_result::type play_game();
 	level_result::type play_replay()

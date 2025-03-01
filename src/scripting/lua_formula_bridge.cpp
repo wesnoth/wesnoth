@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,7 @@ static const char formulaKey[] = "formula";
 
 using namespace wfl;
 
-void luaW_pushfaivariant(lua_State* L, variant val);
+void luaW_pushfaivariant(lua_State* L, const variant& val);
 variant luaW_tofaivariant(lua_State* L, int i);
 
 class lua_callable : public formula_callable {
@@ -119,7 +119,7 @@ public:
 	}
 };
 
-void luaW_pushfaivariant(lua_State* L, variant val) {
+void luaW_pushfaivariant(lua_State* L, const variant& val) {
 	if(val.is_int()) {
 		lua_pushinteger(L, val.as_int());
 	} else if(val.is_decimal()) {
@@ -231,8 +231,9 @@ lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allo
 		form.reset(static_cast<fwrapper*>(ud));
 		// Setting a no-op deleter guarantees the Lua-held object is not deleted
 	} else if(allow_str) {
+		form.get_deleter() = std::default_delete<fwrapper>();
 		form.reset(new fwrapper(luaL_checkstring(L, idx)));
-		// Leave deleter at default so it's deleted properly later
+		// Set deleter to default so it's deleted properly later
 	} else {
 		luaW_type_error(L, idx, "formula");
 	}

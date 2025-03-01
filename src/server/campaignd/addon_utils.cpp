@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Copyright (C) 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -66,13 +66,11 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 	if(!format.empty() && !params.empty()) {
 		plain_string_map escaped;
 
-		config::const_attr_itors attrs = params.attribute_range();
-
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		for(const config::attribute& a : attrs) {
-			escaped[a.first] = utils::urlencode(a.second.str());
+		for(const auto& [key, value] : params.attribute_range()) {
+			escaped[key] = utils::urlencode(value.str());
 		}
 
 		// FIXME: We cannot use utils::interpolate_variables_into_string

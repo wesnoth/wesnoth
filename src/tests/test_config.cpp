@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -229,6 +229,12 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(c["x"], true);
 	c["x"] = false;
 	BOOST_CHECK_EQUAL(c["x"], "no");
+	c["x"] = 1.23456789;
+	BOOST_CHECK_EQUAL(c["x"], 1.23456789);
+#if 1 // FIXME: this should work. it doesn't work. looks like it's getting stored as 9.8765432099999995
+	c["x"] = "9.87654321";
+	BOOST_CHECK_EQUAL(c["x"], 9.87654321);
+#endif
 	c["x"] = "sfvsdgdsfg";
 	BOOST_CHECK_NE(c["x"], 0);
 	BOOST_CHECK_NE(c["x"], true);

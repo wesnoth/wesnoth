@@ -78,6 +78,24 @@ function gui.show_help(topic) end
 ---@param title? string A title to be displayed in the inspector. Can be used to disambiguate where it was called from.
 function gui.show_inspector(title) end
 
+---Show the recruit dialog with the given list of unit types and configuration
+---@class unit_dialog_options
+---@field title? string the title of the dialog
+---@field ok_label? string caption of the button with id "ok"
+---@field cancel_label? string caption of the button with id "cancel"
+---@field help_topic? string the help topic that is to be opened when the '?' button is clicked
+
+---@param unit_types_list unit_type[] list of units types to be shown as available recruits
+---@param options? unit_dialog_options a list of optional configuration keys.
+---@return unit_type the selected unit type or nil if not selected
+function gui.show_recruit_dialog(unit_types_list, options) end
+
+---Show the recall dialog with the given list of units and configuration
+---@param units_list unit[] list of units types to be shown as available recalls
+---@param options? unit_dialog_options a list of optional configuration keys.
+---@return unit the selected unit or nil if not selected
+function gui.show_recall_dialog(units_list, options) end
+
 ---Open the in-game Lua console
 function gui.show_lua_console() end
 
@@ -88,6 +106,10 @@ function gui.show_lua_console() end
 ---@return integer
 function gui.show_dialog(cfg, preshow, postshow) end
 
+---Changes the current ui (gui2) theme
+---@param theme_id string The id of the gui2 theme to switch to
+function gui.switch_theme(theme_id) end
+
 -- Add a custom widget definition, for use in a custom dialog
 ---@param type string The type of widget the definition applies to
 ---@param id string An ID for the definition, to be referenced from WML
@@ -97,9 +119,13 @@ function gui.add_widget_definition(type, id, content) end
 ---A reference to a widget in a custom dialog box
 ---@class widget : gui.widget
 ---@field enabled boolean
+---@field help tstring
 ---@field tooltip tstring
 ---@field visible boolean|"'visible'"|"'hidden'"|"'invisible'"
 ---@field type string
+---@field text_alignment "'left'"|"'right'"|"'center'"
+---@field ellipsize_mode "'none'"|"'start'"|"'middle'"|"'end'"
+---@field overflow_to_tooltip boolean
 ---@field on_left_click fun()
 
 ---The window widget is a container that contains all other widgets in the dialog
@@ -137,22 +163,49 @@ function gui.add_widget_definition(type, id, content) end
 ---A container widget whose children all occupy the same space, overlayed on top of each other
 ---@class stacked_widget : widget
 ---@field selected_index integer
+---@field item_count integer
 
 ---A button that produces a dropdown menu when clicked
 ---@class menu_button : widget
 ---@field selected_index integer
 ---@field on_modified fun()
 
+---A button that produces a dropdown menu when clicked in addition to supporting text input
+---@class combobox : widget
+---@field hint_image string
+---@field hint_text tstring
+---@field item_count integer
+---@field max_input_length integer
+---@field selected_index integer
+---@field on_modified fun()
+
 ---An editable text box
 ---@class text_box : widget
 ---@field text string
+---@field editable boolean
+---@field hint_image string
+---@field hint_text tstring
+---@field history string
+---@field max_input_length integer
 ---@field on_modified fun()
+
+---A label that wraps its text and also has a vertical scrollbar
+---@class scroll_label : widget
+---@field link_aware boolean
+
+---A multiline text area that shows a scrollbar if the text gets too long
+---@class scroll_text : widget
+---@field link_aware boolean
 
 ---A slider
 ---@class slider : widget
 ---@field value integer
 ---@field min_value integer
 ---@field max_value integer
+---@field best_slider_length integer
+---@field maximum_value_label tstring
+---@field minimum_value_label tstring
+---@field step_size integer
 ---@field on_modified fun()
 
 ---A progress bar
@@ -162,11 +215,14 @@ function gui.add_widget_definition(type, id, content) end
 ---A dynamic, hierarchical list of items, shown with a scrollbar
 ---@class treeview : widget
 ---@field selected_item_path integer[]
+---@field item_count integer
+---@field unfolded boolean
 ---@field on_modified fun()
 
 ---A single node in a tree view
 ---@class tree_view_node : widget
 ---@field path integer[]
+---@field item_count integer
 ---@field unfolded boolean
 
 ---A panel that shows details on a given unit or unit type
@@ -179,6 +235,17 @@ function gui.add_widget_definition(type, id, content) end
 
 ---A static text label
 ---@class label : simple_widget
+---@field characters_per_line integer
+---@field link_aware boolean
+---@field link_color string
+---@field wrap boolean
+
+---A label that shows formatted text marked up with Help markup
+---@class rich_label : simple_widget
+---@field link_color string
+---@field wrap boolean
+---@field on_link_click fun(dest:string)
+
 ---A simple image
 ---@class image : simple_widget
 ---A simple button that triggers repeatedly if the mouse is held down
@@ -209,8 +276,8 @@ function gui.widget.add_item(widget, position) end
 ---Add an item to a heterogenous container widget
 ---@param widget widget
 ---@param category string
----@param position integer
----@param count integer
+---@param position? integer
+---@param count? integer
 ---@return widget
 ---@return integer
 function gui.widget.add_item_of_type(widget, category, position, count) end
@@ -219,6 +286,10 @@ function gui.widget.add_item_of_type(widget, category, position, count) end
 ---@param widget widget
 ---@param position? integer
 function gui.widget.remove_items_at(widget, position) end
+
+---Remove all items from a container widget
+---@param widget widget
+function gui.widget.clear_items(widget) end
 
 ---Find a widget based on a path
 ---@param widget widget

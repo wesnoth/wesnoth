@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,10 +126,10 @@ private:
 	int* chosen_option_;
 
 protected:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 private:
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 /** Shows a dialog with the portrait on the left side. */
@@ -165,7 +165,7 @@ private:
 };
 
 /** Shows a dialog with two portraits, one on each side. */
-class wml_message_double : public wml_message_left
+class wml_message_double : public wml_message_base
 {
 public:
 	wml_message_double(const std::string& title,
@@ -174,7 +174,7 @@ public:
 					   const bool mirror,
 					   const std::string& second_portrait,
 					   const bool second_mirror)
-		: wml_message_left(title, message, portrait, mirror)
+		: wml_message_base(window_id(), title, message, portrait, mirror)
 		, second_portrait_(second_portrait)
 		, second_mirror_(second_mirror)
 	{
@@ -183,7 +183,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	std::string second_portrait_;
 

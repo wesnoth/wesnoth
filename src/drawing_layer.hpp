@@ -1,6 +1,6 @@
 
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,6 +44,12 @@ enum class drawing_layer {
 	/** Terrain drawn in front of the unit */
 	terrain_fg = unit_first + 50,
 
+	/** Overlay on reachable hexes */
+	reachmap_highlight = terrain_bg,
+
+	/** Overlay border of reachable hexes */
+	reachmap_border = terrain_fg,
+
 	/** Bottom half part of grid image. Should be under moving units, to avoid masking south move */
 	grid_bottom,
 
@@ -57,9 +63,6 @@ enum class drawing_layer {
 	unit_missile_default = unit_first + 90,
 
 	unit_last = unit_first + 100,
-
-	/** Overlay on unreachable hexes */
-	reachmap,
 
 	/** Bottom half of image following the mouse */
 	mouseover_bottom,

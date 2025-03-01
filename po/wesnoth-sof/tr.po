@@ -1,22 +1,22 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2022 Wesnoth development team
+# Copyright (C) 2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
 #
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-17 15:25 UTC\n"
-"PO-Revision-Date: 2022-08-21 21:57+0300\n"
+"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"PO-Revision-Date: 2024-09-16 14:47+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -218,30 +218,24 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:221
-#, fuzzy
-#| msgid "Transport 5 caravans full of silver back to the dwarvish castle"
 msgid ""
 "Transport 5 caravans full of silver to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Gümüş yüklü 5 arabayı cücelerin kalesine götür"
+msgstr "Gümüş yüklü 5 arabayı kuzey doğuya, cücelerin kalesine götür"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:223
-#, fuzzy
-#| msgid "Transport 4 caravans full of silver back to the dwarvish castle"
 msgid ""
 "Transport 4 caravans full of silver to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Gümüş yüklü 4 arabayı cücelerin kalesine götür"
+msgstr "Gümüş yüklü 4 arabayı kuzey doğuya, cücelerin kalesine götür"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:231
-#, fuzzy
-#| msgid "Bring Alanin, who has the Ruby of Fire, to the dwarvish castle"
 msgid ""
 "Bring Alanin, who has the Ruby of Fire, to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Ateş Yakutunu taşıyan Alanin’i cücelerin kalesine götür"
+msgstr "Ateş Yakutunu taşıyan Alanin’i kuzey doğuya, cücelerin kalesine götür"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:239
@@ -2929,12 +2923,6 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:563
-#, fuzzy
-#| msgid ""
-#| "I'm aware! Close the gates and keep them out! It should be easy to come "
-#| "up with a plan to outwit them later. Meanwhile, since the Shorbear's rune "
-#| "workshops are in here, you and your runecrafters might as well make the "
-#| "sceptre now."
 msgid ""
 "I’m aware! Close the gates and keep them out! It should be easy to come up "
 "with a plan to outwit them later. Meanwhile, since the Shorbear’s rune "
@@ -3453,8 +3441,13 @@ msgstr "Salira"
 msgid "Losnin"
 msgstr "Losnin"
 
+#. [unit]: type=Elvish Outrider, id=Ealin
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:178
+msgid "Ealin"
+msgstr "Evalin"
+
 #. [message]: speaker=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:181
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:193
 msgid ""
 "You cannot outride us, horseman of Wesnoth! Whatever message you are "
 "carrying, it will not be delivered!"
@@ -3463,22 +3456,22 @@ msgstr ""
 "ulaşmayacak!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:185
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:197
 msgid "We shall see about that!"
 msgstr "Göreceğiz!"
 
 #. [unit]: type=Elvish Outrider, id=Raesil
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:194
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:206
 msgid "Raesil"
 msgstr "Rayesil"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:220
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:232
 msgid "Great, now there is no need to worry about those elves anymore!"
 msgstr "Harika, artık bu elfler için endişelenmemize gerek yok!"
 
 #. [message]: role=newcomer
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:229
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:241
 msgid ""
 "Did you really think that you could escape us? Don’t underestimate us, "
 "inferior humans!"
@@ -3487,7 +3480,7 @@ msgstr ""
 "insanlar!"
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:241
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:253
 msgid ""
 "Even though my chances have grown worse, I have to fulfill my duty. I do not "
 "owe them any less!"
@@ -3496,22 +3489,24 @@ msgstr ""
 "daha fazlasını borçluyum!"
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:266
-msgid "Oh no, more of them? And there I thought I could catch my breath…"
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:278
+#, fuzzy
+#| msgid "Oh no, more of them? And there I thought I could catch my breath…"
+msgid "Oh no, more of them? And there I thought I could catch my breath..."
 msgstr "Oh hayır, daha da mı var? Orada nefesimi tutabileceğimi düşündüm…"
 
 #. [message]: role=fighter
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:271
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:283
 msgid "Don’t worry sir, we’ll make it through this!"
 msgstr "Endişelenmeyin efendim, bunu başaracağız!"
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:296
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:308
 msgid "Is there no end to their numbers?"
 msgstr "Bunlar hiç bitmeyecek mi?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:361
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:373
 msgid ""
 "The villagers here are loyal to Wesnoth. They should be willing to help me "
 "escape these elves!"
@@ -3520,35 +3515,35 @@ msgstr ""
 "için gönüllü olacaklardır!"
 
 #. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:366
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:378
 msgid "Rolin"
 msgstr "Rolin"
 
 #. [message]: speaker=Rolin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:376
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:388
 msgid "We will certainly help any warrior of Wesnoth in need!"
 msgstr ""
 "Yardımımıza ihtiyaç duyan her Vesnot savaşçısına kesinlikle yardım ederiz!"
 
 #. [message]: race=elf
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:432
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:444
 msgid ""
 "You slow humans took too long, our detachment has already caught up with you!"
 msgstr "Yavaş insanlar, bu çok uzun sürdü, ekibimiz sizi çoktan yakaladı!"
 
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:554
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:566
 msgid "Hadlin"
 msgstr "Hadlin"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:564
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:576
 msgid "Who goes there?"
 msgstr "Kim var orada?"
 
 #. [message]: speaker=Alanin
 #. dragoon = his unit type
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:575
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:587
 msgid ""
 "I’m a dragoon with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
@@ -3560,7 +3555,7 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #. cavalier = his unit type
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:582
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:594
 msgid ""
 "I’m a cavalier with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
@@ -3571,11 +3566,7 @@ msgstr ""
 "zor kaçtım."
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:588
-#, fuzzy
-#| msgid ""
-#| "I see. Well, come on in. I doubt they would be able to capture this fort, "
-#| "even if they did want to start a war, which I doubt."
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:600
 msgid ""
 "I see. Well, come on in. They could never capture this fort, even if they "
 "did want to start a war, which I doubt."
@@ -3715,11 +3706,6 @@ msgstr "Büyük ejderlerden hangisisin?"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:400
-#, fuzzy
-#| msgid ""
-#| "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
-#| "brother, but he was weaker than me, and you will not find me so easy to "
-#| "defeat. Now get out of my volcano!"
 msgid ""
 "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
 "rival, but he was weaker than me, and you will not find me so easy to "
@@ -3760,7 +3746,7 @@ msgstr "Hırsızlar! Bunu unutmayacağım..."
 #. [message]
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:456
 msgid "Haha, you’re making friends all over, you cowards!"
-msgstr "Haha, her yerde dost ediniyorsunuz, sizi korkaklar"
+msgstr "Haha, her yerde dost ediniyorsunuz, sizi korkaklar!"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:460
@@ -3814,7 +3800,7 @@ msgstr ""
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:528
 msgid "That’s my rock slab, leave it be!"
-msgstr "O benim kaya levham, bırak onu"
+msgstr "O benim kaya levham, bırak onu!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:545
@@ -3865,7 +3851,9 @@ msgstr "Yeraltı"
 
 #. [unit]: id=Gathor, type=Orcish Warrior
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:116
-msgid "Bar'Gathor"
+#, fuzzy
+#| msgid "Bar'Gathor"
+msgid "Bar’Gathor"
 msgstr "Bar Gator"
 
 #. [side]: type=Troll Warrior, id=Harohk
@@ -3967,7 +3955,7 @@ msgid ""
 msgstr ""
 "Kvarg, küçük tepe üzerinde gevşek duran taş karoya şaşkın baktı. Sıçrayan "
 "yarasa gübresinin altında parlayan bir rün vardı. Kvarg bunu ne yapacağını "
-"bilemedi, bu yüzden grifin bırakıp gitti"
+"bilemedi, bu yüzden grifin bırakıp gitti."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:701
@@ -4834,7 +4822,7 @@ msgstr "Arabadan İn"
 
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:6
 msgid "$cost|g"
-msgstr ""
+msgstr "$cost|g"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:17
@@ -4986,11 +4974,6 @@ msgstr "Kraa..."
 
 #. [note]
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:108
-#, fuzzy
-#| msgid ""
-#| "Thursagan's Rune Mastery: while Thursagan is on a keep, selecting an "
-#| "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "
-#| "until the end of the scenario."
 msgid ""
 "Thursagan’s Rune Mastery: while Thursagan is on a keep, selecting an "
 "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "
@@ -4999,9 +4982,6 @@ msgstr ""
 "Tursagan'ın Rün Ustalığı: Thursagan bir kaledeyken, yanındaki cücelerden "
 "birinin seçilmesi, senaryonun sonuna kadar geçerli olan yükseltmeleri almak "
 "için bir iletişim kutusu açar."
-
-#~ msgid "Ealin"
-#~ msgstr "Evalin"
 
 #~ msgid "Dwarvish Miner"
 #~ msgstr "Cüce Madenci"

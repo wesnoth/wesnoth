@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -361,6 +362,7 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
+			gui2::switch_theme(prefs::get().gui2_theme());
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:
@@ -402,7 +404,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
 }
@@ -415,11 +417,19 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	get_menu_images(gui, items);
 
 	int res = -1;
+	point selection_pos;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
+			if(res >= 0) {
+				// Get selection coordinates for a potential submenu below
+				selection_pos = mmenu.selected_item_pos();
+				// Compensate for borders
+				selection_pos.x--;
+				selection_pos.y--;
+			}
 		}
 	} // This will kill the dialog.
 	if (res < 0 || std::size_t(res) >= items.size()) return;
@@ -427,9 +437,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
-		int y,x;
-		sdl::get_mouse_state(&x,&y);
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context(), gui);
 	} else {
 		hotkey::ui_command cmd = hotkey::ui_command(id, res);
 		do_execute_command(cmd);

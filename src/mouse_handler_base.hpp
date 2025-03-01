@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -17,6 +17,7 @@
 #pragma once
 
 #include "map/location.hpp"
+#include "sdl/point.hpp"
 
 #include <SDL2/SDL_events.h>
 
@@ -238,11 +239,8 @@ protected:
 	/** RMB drag init flag */
 	bool dragging_right_;
 
-	/** Drag start position x */
-	int drag_from_x_;
-
-	/** Drag start position y */
-	int drag_from_y_;
+	/** Drag start position */
+	point drag_from_;
 
 	/** Drag start or mouse-down map location */
 	map_location drag_from_hex_;

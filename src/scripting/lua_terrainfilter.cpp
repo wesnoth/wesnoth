@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2024
+	Copyright (C) 2018 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 #include "scripting/lua_terrainmap.hpp"
 
 #include "formatter.hpp"
-#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
@@ -64,7 +63,7 @@ namespace {
 			return 0;
 		}
 
-		char** end = 0;
+		char** end = nullptr;
 		int res = strtol(&s[0], end, 10);
 		return res;
 	}
@@ -481,7 +480,7 @@ public:
 			if(lua_geti(L, idx, 3) == LUA_TSTRING) {
 				init_from_ranges(luaL_checkstring(L, -2), luaL_checkstring(L, -1));
 			} else {
-				init_from_named_set(L, luaL_checkstring(L, -1), res_index, ks);
+				init_from_named_set(L, luaL_checkstring(L, -2), res_index, ks);
 			}
 			break;
 		}
@@ -836,8 +835,7 @@ int intf_terrainfilter_create(lua_State *L)
  */
 static int impl_terrainfilter_get(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 
@@ -849,8 +847,7 @@ static int impl_terrainfilter_get(lua_State *L)
  */
 static int impl_terrainfilter_set(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string err_msg = "unknown modifiable property of map: ";
 	err_msg += m;
@@ -863,8 +860,7 @@ static int impl_terrainfilter_set(lua_State *L)
  */
 static int intf_clearcache(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 /**

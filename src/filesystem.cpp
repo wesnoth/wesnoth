@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,6 +32,7 @@
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/format.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/process.hpp>
@@ -59,6 +60,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <set>
+#include <utility>
 
 // Copied from boost::predef, as it's there only since 1.55.
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
@@ -406,6 +408,39 @@ static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 		ERR_FS << "Could not create parents to " << dirpath.string();
 		return false;
 	}
+}
+
+static bool check_prefix(bfs::path::iterator& fi, const bfs::path::iterator& fe, const bfs::path& prefix)
+{
+	bfs::path::iterator pi = prefix.begin(), pe = prefix.end();
+	while(fi != fe && pi != pe && *fi == *pi) {
+		++fi;
+		++pi;
+	}
+
+	return pi == pe;
+}
+
+static bool is_prefix(const bfs::path& full, const bfs::path& prefix_path)
+{
+	bfs::path::iterator fi = full.begin();
+	return check_prefix(fi, full.end(), prefix_path);
+}
+
+static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix_path)
+{
+	bfs::path rest;
+	bfs::path::iterator fi = full.begin(), fe = full.end();
+	if(!check_prefix(fi, fe, prefix_path)) {
+		return rest;
+	}
+
+	while(fi != fe) {
+		rest /= *fi;
+		++fi;
+	}
+
+	return rest;
 }
 
 void get_files_in_dir(const std::string& dir,
@@ -774,7 +809,7 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 
 static void set_cache_path(bfs::path newcache)
 {
-	cache_dir = newcache;
+	cache_dir = std::move(newcache);
 	if(!create_directory_if_missing_recursive(cache_dir)) {
 		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
 	}
@@ -789,6 +824,32 @@ static const bfs::path& get_user_data_path()
 {
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
+}
+
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code)
+{
+	utils::optional<std::string> manual_path_opt;
+	const std::string& manual_dir(game_config::path + "/doc/manual/");
+	boost::format manual_template(manual_dir + "manual.%s.html");
+	bfs::path manual_path((manual_template % locale_code).str());
+
+	if(bfs::exists(manual_path)) {
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	// Split the given locale code: "en_GB" -> "en", "GB"
+	// If the result of split() is empty then locale_code is empty (likely using System Language)
+	// Assume en is always available as a fall-back
+	const auto& split_locale_code = utils::split(locale_code, '_');
+	const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
+	manual_path = (manual_template % language_code).str();
+
+	if(bfs::exists(manual_path)) {
+		// If a filename like manual.en_GB.html is not found, try manual.en.html
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	return {};
 }
 
 std::string get_user_data_dir()
@@ -1362,7 +1423,7 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);
@@ -1621,58 +1682,44 @@ utils::optional<std::string> get_binary_dir_location(const std::string& type, co
 	return utils::nullopt;
 }
 
-utils::optional<std::string> get_wml_location(const std::string& filename, const std::string& current_dir)
+utils::optional<std::string> get_wml_location(const std::string& path, const utils::optional<std::string>& current_dir)
 {
-	if(!is_legal_file(filename)) {
+	if(!is_legal_file(path)) {
 		return utils::nullopt;
 	}
 
-	assert(game_config::path.empty() == false);
-
-	bfs::path fpath(filename);
+	bfs::path fpath(path);
 	bfs::path result;
 
-	if(filename[0] == '~') {
-		result /= get_user_data_path() / "data" / filename.substr(1);
+	if(path[0] == '~') {
+		result = get_user_data_path() / "data" / path.substr(1);
 		DBG_FS << "  trying '" << result.string() << "'";
 	} else if(*fpath.begin() == ".") {
-		if(!current_dir.empty()) {
-			result /= bfs::path(current_dir);
-		} else {
-			result /= bfs::path(game_config::path) / "data";
+		if (!current_dir) {
+			WRN_FS << "Cannot resolve " << path << " since the current directory is unknown!";
+			return utils::nullopt;
 		}
-
-		result /= filename;
-	} else if(!game_config::path.empty()) {
-		result /= bfs::path(game_config::path) / "data" / filename;
+		result = bfs::path(*current_dir) / path;
+		error_code ec;
+		bfs::path c = bfs::canonical(result, ec);
+		if (!is_prefix(c, bfs::path(game_config::path) / "data") && !is_prefix(c, get_user_data_path() / "data")) {
+			WRN_FS << "Resolved path " << c << " is outside game and user data directories!";
+		}
+	} else {
+		if(game_config::path.empty()) {
+			WRN_FS << "Cannot resolve " << path << " since the game data directory is unknown!";
+			return utils::nullopt;
+		}
+		result = bfs::path(game_config::path) / "data" / path;
 	}
 
-	if(result.empty() || !file_exists(result)) {
+	if(!file_exists(result)) {
 		DBG_FS << "  not found";
 		return utils::nullopt;
 	} else {
 		DBG_FS << "  found: '" << result.string() << "'";
 		return result.string();
 	}
-}
-
-static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix)
-{
-	bfs::path::iterator fi = full.begin(), fe = full.end(), pi = prefix.begin(), pe = prefix.end();
-	while(fi != fe && pi != pe && *fi == *pi) {
-		++fi;
-		++pi;
-	}
-
-	bfs::path rest;
-	if(pi == pe) {
-		while(fi != fe) {
-			rest /= *fi;
-			++fi;
-		}
-	}
-
-	return rest;
 }
 
 std::string get_short_wml_path(const std::string& filename)

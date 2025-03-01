@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	by Jyrki Vesterinen <sandgtx@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -81,7 +81,7 @@ namespace lua_preferences
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_preferences_dir);
 		lua_setfield(L, -2, "__dir");
-		lua_pushstring(L, "src/scripting/lua_preferences.cpp");
+		lua_pushstring(L, "preferences");
 		lua_setfield(L, -2, "__metatable");
 
 		// Set the table as its own metatable

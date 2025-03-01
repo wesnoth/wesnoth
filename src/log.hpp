@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -55,6 +55,7 @@
 #include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
+#include <chrono>
 #include <ctime>
 #include <cstdint>
 
@@ -196,7 +197,7 @@ class log_in_progress {
 	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
-	void operator|(formatter&& message);
+	void operator|(const formatter& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
@@ -229,8 +230,6 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
-std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
 std::string get_log_file_path();
 
@@ -239,19 +238,19 @@ log_domain& general();
 
 class scope_logger
 {
-	int64_t ticks_;
+	std::chrono::steady_clock::time_point start_;
 	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{

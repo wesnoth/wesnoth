@@ -4,7 +4,7 @@ set -xeu
 
 VALVEFILE=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.Dockerfile
 VALVETAR=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.tar.gz
-VALVE_SNAPSHOT=0.20240415.84603
+VALVE_SNAPSHOT=3.0.20250210.116596
 
 DOCKERBASEIMAGE=steamrt_sniper_amd64
 DOCKERLOCALIMAGE=wesnoth/wesnoth:steamrt-sniper

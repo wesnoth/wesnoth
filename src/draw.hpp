@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -77,6 +77,8 @@ void fill(const SDL_Rect& rect, const color_t& color);
 void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void fill(uint8_t r, uint8_t g, uint8_t b);
 void fill(const color_t& color);
+
+void fill(const SDL_FRect& rect, const color_t& color);
 
 /**
  * Fill an area.
@@ -357,7 +359,7 @@ private:
  *                      the clipping region will be restored to whatever
  *                      it was before this call.
  */
-clip_setter override_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter override_clip(const SDL_Rect& clip);
 
 /**
  * Set the clipping area to the intersection of the current clipping
@@ -365,7 +367,7 @@ clip_setter override_clip(const SDL_Rect& clip);
  *
  * Otherwise acts as override_clip().
  */
-clip_setter reduce_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter reduce_clip(const SDL_Rect& clip);
 
 /**
  * Set the clipping area, without any provided way of setting it back.
@@ -436,7 +438,7 @@ private:
  *                      destroyed the viewport will be restored to whatever
  *                      it was before this call.
  */
-viewport_setter set_viewport(const SDL_Rect& viewport);
+[[nodiscard]] viewport_setter set_viewport(const SDL_Rect& viewport);
 
 /**
  * Set the viewport, without any provided way of setting it back.
@@ -499,7 +501,7 @@ private:
  *              destroyed the render target will be restored to
  *              whatever it was before this call.
  */
-render_target_setter set_render_target(const texture& t);
+[[nodiscard]] render_target_setter set_render_target(const texture& t);
 
 
 } // namespace draw

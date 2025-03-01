@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -203,12 +203,6 @@ void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal
 void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification& signal)
 {
 	dispatcher.connect_signal<NOTIFY_MODIFIED>(signal);
-}
-
-void connect_signal_on_draw(dispatcher& dispatcher, const signal& signal)
-{
-	// TODO: evaluate whether draw events need go in this queue position.
-	dispatcher.connect_signal<DRAW>(signal, dispatcher::front_child);
 }
 
 } // namespace event

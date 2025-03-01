@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -173,7 +173,7 @@ public:
 	 * @param other the hokey bindings to compare against.
 	 * @return true if %other has same scope and bindings.
 	 */
-	virtual bool bindings_equal(hotkey_ptr other);
+	virtual bool bindings_equal(const hotkey_ptr& other);
 
 	virtual ~hotkey_base()
 	{}
@@ -356,7 +356,7 @@ void add_hotkey(hotkey_ptr item);
  * Remove a hotkey from the list of hotkeys
  * @todo unusued?
  */
-void del_hotkey(const hotkey_ptr item);
+void del_hotkey(const hotkey_ptr& item);
 
 /**
  * Create a new hotkey item for a command from an SDL_Event.

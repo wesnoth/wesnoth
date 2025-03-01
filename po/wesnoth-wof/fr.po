@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Winds_of_Fate-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
 "PO-Revision-Date: 2023-11-05 12:35+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -5128,7 +5128,9 @@ msgstr "C'est... un ancêtre..."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:363
-msgid "Shek'kahan, do you not recognize Khrakrahs...?"
+#, fuzzy
+#| msgid "Shek'kahan, do you not recognize Khrakrahs...?"
+msgid "Shek’kahan, do you not recognize Khrakrahs...?"
 msgstr "Shek'kahan, tu ne reconnais pas Khrakrahs ?"
 
 #. [objective]: condition=win
@@ -5168,7 +5170,9 @@ msgstr "Khrakrahs, il est ici..."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:486
-msgid "Behold, mighty Shek'kahan!"
+#, fuzzy
+#| msgid "Behold, mighty Shek'kahan!"
+msgid "Behold, mighty Shek’kahan!"
 msgstr "Prends garde, puisssant Shek'kahan !"
 
 #. [message]: speaker=Khrakrahs
@@ -5178,10 +5182,16 @@ msgstr "Tu es bien hardi de soutenir une telle imposture !"
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:496
+#, fuzzy
+#| msgid ""
+#| "Impossster?!\n"
+#| "\n"
+#| "I am elder of Green Swamp Clan and all my years Shek'kahan protected "
+#| "usss. I could never missstake sssome impossster for him!"
 msgid ""
 "Impossster?!\n"
 "\n"
-"I am elder of Green Swamp Clan and all my years Shek'kahan protected usss. I "
+"I am elder of Green Swamp Clan and all my years Shek’kahan protected usss. I "
 "could never missstake sssome impossster for him!"
 msgstr ""
 "Imposture ?!\n"
@@ -5258,8 +5268,13 @@ msgstr "Je pars."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:570
+#, fuzzy
+#| msgid ""
+#| "Ancestor, you spoke that Shek'kahan grew weak...\n"
+#| "\n"
+#| "Yet to his last breath, he was fearless."
 msgid ""
-"Ancestor, you spoke that Shek'kahan grew weak...\n"
+"Ancestor, you spoke that Shek’kahan grew weak...\n"
 "\n"
 "Yet to his last breath, he was fearless."
 msgstr ""
@@ -5269,7 +5284,9 @@ msgstr ""
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:578
-msgid "Yes, Shek'kahan was fearless."
+#, fuzzy
+#| msgid "Yes, Shek'kahan was fearless."
+msgid "Yes, Shek’kahan was fearless."
 msgstr "Oui, Shek'kahan était intrépide."
 
 #. [message]: speaker=Khrakrahs
@@ -6391,7 +6408,7 @@ msgstr "Caravelle"
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:8
 msgid ""
-"The sturdy and reliable caravel is the mainstay of human oceanic "
+"The sturdy and reliable Caravel is the mainstay of human oceanic "
 "exploration, shipping and projection of influence. More seaworthy than "
 "lighter vessels, one might yet be spied navigating deeper rivers, where the "
 "maneuverabilty and shallow draft somewhat compensate for the tonnage of the "
@@ -6422,8 +6439,17 @@ msgstr "Dauphin"
 
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+#| "and the Ka’lian rated the creature’s sensibility nearly on par with that "
+#| "of an elf. Among coastal orcish tribes the meat is consumed as a "
+#| "delicacy.\n"
+#| "\n"
+#| "One of the rare air breathing fish, the dolphin is never too long below "
+#| "the surface of the sea."
 msgid ""
-"The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+"The sight of a Dolphin is seen as a good omen by the sailors of Elensefar "
 "and the Ka’lian rated the creature’s sensibility nearly on par with that of "
 "an elf. Among coastal orcish tribes the meat is consumed as a delicacy.\n"
 "\n"
@@ -6461,7 +6487,7 @@ msgstr "Léopard"
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
 msgid ""
-"The leopard is a fast and powerful ambush predator of the distant and "
+"The Leopard is a fast and powerful ambush predator of the distant and "
 "mysterious jungle realms. While dangerous in any circumstance, it is most "
 "lethal when hidden in wooded areas."
 msgstr ""
@@ -6555,6 +6581,32 @@ msgstr "bec-aiguille"
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:82
 msgid "bladed feathers"
 msgstr "plumes coupantes"
+
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:5
+msgid "Wyrm"
+msgstr ""
+
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:9
+msgid ""
+"Wyrms are strange beasts, stout serpents with wings, but no legs. They are "
+"relatively rare, and their presence is attributed to some eccentric wizard "
+"or dragon. Mature Wyrms have excellent control of their fire breath attack, "
+"as if they are themselves miniature dragons."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:74
+msgid "fangs"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:86
+#, fuzzy
+#| msgid "fire breath"
+msgid "breath"
+msgstr "souffle ardent"
 
 #. [damage]: id=blast
 #: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9

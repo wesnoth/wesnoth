@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
+#include "events.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -46,6 +47,7 @@
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
+#include "utils/optimer.hpp"
 #include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
@@ -72,7 +74,6 @@
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include "utils/optional_fwd.hpp"
 
-#include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
@@ -106,6 +107,10 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
+// this file acts as a launcher for various gui2 dialogs
+// so this reduces some boilerplate.
+using namespace gui2::dialogs;
+
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
@@ -123,18 +128,18 @@ static void safe_exit(int res)
 	exit(res);
 }
 
-static void handle_preprocess_command(const commandline_options& cmdline_opts)
+static void handle_preprocess_string(const commandline_options& cmdline_opts)
 {
-	preproc_map input_macros;
+	preproc_map defines_map;
 
 	if(cmdline_opts.preprocess_input_macros) {
 		std::string file = *cmdline_opts.preprocess_input_macros;
-		if(filesystem::file_exists(file) == false) {
+		if(!filesystem::file_exists(file)) {
 			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Reading cached defines from: " << file;
+		PLAIN_LOG << "Reading cached defines from: " << file;
 
 		config cfg;
 
@@ -148,19 +153,78 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const config::any_child value : cfg.all_children_range()) {
-			const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
+		for(const auto [_, cfg] : cfg.all_children_view()) {
+			const preproc_map::value_type def = preproc_define::read_pair(cfg);
+			defines_map[def.first] = def.second;
+			++read;
+		}
+
+		PLAIN_LOG << "Read " << read << " defines.";
+	}
+
+	if(cmdline_opts.preprocess_defines) {
+		// add the specified defines
+		for(const std::string& define : *cmdline_opts.preprocess_defines) {
+			if(define.empty()) {
+				PLAIN_LOG << "empty define supplied";
+				continue;
+			}
+
+			LOG_PREPROC << "adding define: " << define;
+			defines_map.emplace(define, preproc_define(define));
+		}
+	}
+
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+
+	// preprocess resource
+	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
+}
+
+static void handle_preprocess_command(const commandline_options& cmdline_opts)
+{
+	preproc_map input_macros;
+
+	if(cmdline_opts.preprocess_input_macros) {
+		std::string file = *cmdline_opts.preprocess_input_macros;
+		if(filesystem::file_exists(file) == false) {
+			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
+			return;
+		}
+
+		PLAIN_LOG << "Reading cached defines from: " << file;
+
+		config cfg;
+
+		try {
+			filesystem::scoped_istream stream = filesystem::istream_file(file);
+			read(cfg, *stream);
+		} catch(const config::error& e) {
+			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
+		}
+
+		int read = 0;
+
+		// use static preproc_define::read_pair(config) to make a object
+		for(const auto [_, cfg] : cfg.all_children_view()) {
+			const preproc_map::value_type def = preproc_define::read_pair(cfg);
 			input_macros[def.first] = def.second;
 			++read;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Read " << read << " defines.";
+		PLAIN_LOG << "Read " << read << " defines.";
 	}
 
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
 	const std::string targetDir(*cmdline_opts.preprocess_target);
 
-	uint32_t startTime = SDL_GetTicks();
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	// If the users add the SKIP_CORE define we won't preprocess data/core
 	bool skipCore = false;
@@ -238,8 +302,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			PLAIN_LOG << "couldn't open the file.";
 		}
 	}
-
-	PLAIN_LOG << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.";
 }
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
@@ -278,39 +340,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		lg::set_log_sanitize(false);
 	}
 
-	// If true, output will be redirected to file, else output be written to console.
-	// On Windows, if Wesnoth was not started from a console, one will be allocated.
-	const auto should_redirect_to_file = [&cmdline_opts] {
-		if(cmdline_opts.log_to_file) {
-			return true;
-		} else if(cmdline_opts.no_log_to_file) {
-			return false;
-		} else {
-			return !getenv("WESNOTH_NO_LOG_FILE")
-				// command line options that imply not redirecting output to a log file
-				// Some switches force a Windows console to be attached to the process even
-				// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-				// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-				// a console to a regular GUI game session.
-				&& !cmdline_opts.data_path
-				&& !cmdline_opts.help
-				&& !cmdline_opts.logdomains
-				&& !cmdline_opts.nogui
-				&& !cmdline_opts.report
-				&& !cmdline_opts.simple_version
-				&& !cmdline_opts.userdata_path
-				&& !cmdline_opts.version
-				&& !cmdline_opts.do_diff
-				&& !cmdline_opts.do_patch
-				&& !cmdline_opts.preprocess
-				&& !cmdline_opts.render_image
-				&& !cmdline_opts.screenshot
-				&& !cmdline_opts.headless_unit_test
-				&& !cmdline_opts.validate_schema
-				&& !cmdline_opts.validate_wml;
-		}
-	};
-
 	if(cmdline_opts.usercache_dir) {
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
@@ -325,10 +354,38 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	// userdata is initialized, so initialize logging to file if enabled
-	if(should_redirect_to_file()) {
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	if(cmdline_opts.log_to_file
+		|| (!cmdline_opts.no_log_to_file
+			&& !getenv("WESNOTH_NO_LOG_FILE")
+			// command line options that imply not redirecting output to a log file
+			&& !cmdline_opts.data_path
+			&& !cmdline_opts.userdata_path
+			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.version
+			&& !cmdline_opts.simple_version
+			&& !cmdline_opts.logdomains
+			&& !cmdline_opts.help
+			&& !cmdline_opts.report
+			&& !cmdline_opts.do_diff
+			&& !cmdline_opts.do_patch
+			&& !cmdline_opts.preprocess
+			&& !cmdline_opts.render_image
+			&& !cmdline_opts.screenshot
+			&& !cmdline_opts.nogui
+			&& !cmdline_opts.headless_unit_test
+			&& !cmdline_opts.validate_schema
+			&& !cmdline_opts.validate_wml
+			)
+		)
+	{
 		lg::set_log_to_file();
 	}
 #ifdef _WIN32
+	// This forces a Windows console to be attached to the process even
+	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because it
+	// turns Wesnoth into a CLI application. (unless --wnoconsole is given)
 	else if(!cmdline_opts.no_console) {
 		lg::do_console_redirect();
 	}
@@ -345,6 +402,12 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	}
 
+	if(!cmdline_opts.nobanner) {
+		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
+		const std::time_t t = std::time(nullptr);
+		PLAIN_LOG << "Started on " << ctime(&t);
+	}
+
 	if(cmdline_opts.usercache_path) {
 		std::cout << filesystem::get_cache_dir();
 		return 0;
@@ -356,52 +419,31 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_dir) {
-		const std::string datadir = *cmdline_opts.data_dir;
-		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
-#ifdef _WIN32
-		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-		if(datadir.c_str()[1] == ':') {
-#else
-		if(datadir[0] == '/') {
-#endif
-			game_config::path = datadir;
-		} else {
-			game_config::path = filesystem::get_cwd() + '/' + datadir;
-		}
-
-		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
-		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+		game_config::path = filesystem::normalize_path(*cmdline_opts.data_dir, true, true);
 		if(!cmdline_opts.nobanner) {
 			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
-
-		if(!filesystem::is_directory(game_config::path)) {
-			PLAIN_LOG << "Could not find directory '" << game_config::path << "'";
-			throw config::error("directory not found");
-		}
-
-		// don't update font as we already updating it in game ctor
-		// font_manager_.update_font_path();
-	}
-
-	if(!cmdline_opts.nobanner) {
-		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-		const std::time_t t = std::time(nullptr);
-		PLAIN_LOG << "Started on " << ctime(&t);
-	}
-
-	if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
-		if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
-			if(!cmdline_opts.nobanner) {
-				PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
-			}
-			game_config::path = std::move(auto_dir);
-		} else if(game_config::path.empty()) {
-			if (!cmdline_opts.data_dir.has_value()) {
-				PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+	} else {
+		// if a pre-defined path does not exist this will empty it
+		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+		if(game_config::path.empty()) {
+			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+					if(!cmdline_opts.nobanner) {
+						PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
+					}
+					game_config::path = filesystem::normalize_path(auto_dir, true, true);
+				}
+			} else {
+				PLAIN_LOG << "Cannot find game data directory. Specify one with --data-dir";
 				return 1;
 			}
 		}
+	}
+
+	if(!filesystem::is_directory(game_config::path)) {
+		PLAIN_LOG << "Could not find game data directory '" << game_config::path << "'";
+		return 1;
 	}
 
 	if(cmdline_opts.data_path) {
@@ -415,6 +457,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	if(cmdline_opts.allow_insecure) {
 		game_config::allow_insecure = true;
+	}
+
+	if(cmdline_opts.addon_server_info) {
+		game_config::addon_server_info = true;
 	}
 
 	if(cmdline_opts.strict_lua) {
@@ -518,6 +564,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.preprocess_source_string.has_value()) {
+		handle_preprocess_string(cmdline_opts);
+		return 0;
+	}
+
 	if(cmdline_opts.validate_wml) {
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {
@@ -543,9 +594,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
-		// Return an error status other than -1, because in our caller -1 means no error
-		return -2;
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
+		return 2;
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
@@ -692,7 +742,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	srand(std::time(nullptr));
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
-	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
 
@@ -740,18 +789,18 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
-		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
-		gui2::dialogs::migrate_version_selection::execute();
+		migrate_version_selection::execute();
 	}
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
-		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
+	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
+		loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
@@ -759,7 +808,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_fonts);
+		loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -768,7 +817,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
-			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+			loading_screen::progress(loading_stage::refresh_addons);
 
 			refresh_addon_version_info_cache();
 		}
@@ -778,12 +827,12 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms";
-
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
+		{"play_local", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::LOCAL)},
+		{"play_campaign", std::bind(&game_launcher::play_campaign, game.get())},
 	};
 
 	const plugins_context::areg_vec accessors {
@@ -869,47 +918,46 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		int retval;
 		{ // scope to not keep the title screen alive all game
-			gui2::dialogs::title_screen dlg(*game);
+			title_screen dlg(*game);
 
 			// Allows re-layout on resize.
 			// Since RELOAD_UI is not checked here, it causes
 			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
 			retval = dlg.get_retval();
 		}
 
 		switch(retval) {
-		case gui2::dialogs::title_screen::QUIT_GAME:
+		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
-		case gui2::dialogs::title_screen::MP_CONNECT:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_CONNECT:
 			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
-		case gui2::dialogs::title_screen::MP_HOST:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_HOST:
 			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
-		case gui2::dialogs::title_screen::MP_LOCAL:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_LOCAL:
 			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
-		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
-			gui2::dialogs::loading_screen::display([&config_manager]() {
+		case title_screen::RELOAD_GAME_DATA:
+			loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
+				gui2::init();
+				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
-		case gui2::dialogs::title_screen::MAP_EDITOR:
+		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::dialogs::title_screen::LAUNCH_GAME:
+		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
-		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+		case title_screen::REDRAW_BACKGROUND:
 			break;
-		case gui2::dialogs::title_screen::RELOAD_UI:
+		case title_screen::RELOAD_UI:
 			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}
@@ -936,12 +984,18 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	events::set_main_thread();
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
 #ifdef _WIN32
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+#ifdef __APPLE__
+	// Using setenv with overwrite disabled so we can override this in the
+	// original process environment for research/testing purposes.
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 
 	try {
@@ -983,11 +1037,11 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
 		// logging hasn't been initialized by this point
+		std::cerr << "Error in command line: " << e.what() << std::endl;
 		std::string error = "Error parsing command line arguments: ";
 		error += e.what();
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
-		std::cerr << "Error in command line: " << e.what();
-		error_exit(1);
+		error_exit(2);
 	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
@@ -996,9 +1050,6 @@ int main(int argc, char** argv)
 		error_exit(1);
 	} catch(const config::error& e) {
 		PLAIN_LOG << e.message;
-		error_exit(1);
-	} catch(const gui::button::error&) {
-		PLAIN_LOG << "Could not create button: Image could not be found";
 		error_exit(1);
 	} catch(const video::quit&) {
 		// just means the game should quit

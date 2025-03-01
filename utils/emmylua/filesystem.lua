@@ -28,13 +28,13 @@ function filesystem.canonical_path(path) end
 function filesystem.image_size(path) end
 
 ---Check if an asset exists in the current binary path
----@param type string
+---@param type asset_type
 ---@param path string
 ---@return boolean
 function filesystem.have_asset(type, path) end
 
 ---Resolve an asset path against the current binary path
----@param type string
+---@param type asset_type
 ---@param path string
 ---@return string
 function filesystem.resolve_asset(type, path) end

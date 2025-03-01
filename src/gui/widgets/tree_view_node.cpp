@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,12 +18,13 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
+
 #include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + get_tree_view().id() + "] " + __func__
@@ -73,10 +74,10 @@ tree_view_node::tree_view_node(const std::string& id,
 			toggle_widget->set_visible(widget::visibility::hidden);
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2));
+				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2));
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2),
+				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2),
 				event::dispatcher::back_post_child);
 
 			if(unfolded_) {
@@ -193,8 +194,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 	int width_modification = 0;
 
 	for(const auto& d : data) {
-		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d);
-		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
+		auto& node = children_.emplace_back(std::make_shared<tree_view_node>(id, this, get_tree_view(), d));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
 		// just ensures that wasn't tried. Remove this if we implement support for that.
@@ -424,7 +424,7 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 	return tree_view_node_implementation::find_at<const widget>(*this, coordinate, must_be_active);
 }
 
-widget* tree_view_node::find(const std::string& id, const bool must_be_active)
+widget* tree_view_node::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
 	if(result) {
@@ -446,7 +446,7 @@ widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const widget* tree_view_node::find(const std::string& id, const bool must_be_active) const
+const widget* tree_view_node::find(const std::string_view id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
 	if(result) {
@@ -645,7 +645,7 @@ void tree_view_node::impl_draw_children()
 	}
 }
 
-void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
+void tree_view_node::signal_handler_toggle_left_click(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -735,7 +735,7 @@ tree_view_node& tree_view_node::get_child_at(int index)
 	return *children_[index];
 }
 
-std::vector<int> tree_view_node::describe_path()
+std::vector<int> tree_view_node::describe_path() const
 {
 	if(is_root_node()) {
 		return std::vector<int>();

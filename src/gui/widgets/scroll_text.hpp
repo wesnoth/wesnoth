@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	Copyright (C) 2023 - 2025
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -53,9 +53,6 @@ public:
 	/** See @ref styled_widget::set_text_alignment. */
 	virtual void set_text_alignment(const PangoAlignment text_alignment) override;
 
-	/** See @ref styled_widget::set_use_markup. */
-	virtual void set_use_markup(bool use_markup) override;
-
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
@@ -70,12 +67,20 @@ public:
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
 
+	void set_link_aware(bool l);
+
+	/** See @ref styled_widget::get_link_aware. */
+	virtual bool get_link_aware() const override
+	{
+		return link_aware_;
+	}
+
 	void set_editable(bool editable)
 	{
 		editable_ = editable;
 	}
 
-	bool is_editable()
+	bool is_editable() const
 	{
 		return editable_;
 	}
@@ -109,6 +114,8 @@ private:
 	bool editable_;
 
 	point max_size_;
+
+	bool link_aware_;
 
 	void finalize_subclass() override;
 
@@ -171,7 +178,7 @@ struct scroll_text_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_text : public builder_styled_widget
+struct builder_scroll_text : public builder_scrollbar_container
 {
 	explicit builder_scroll_text(const config& cfg);
 
@@ -179,10 +186,9 @@ struct builder_scroll_text : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	const PangoAlignment text_alignment;
 	bool editable;
+	bool link_aware;
 };
 
 } // namespace implementation

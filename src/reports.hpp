@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,10 @@
 
 #include "display_context.hpp"
 
+#include "config.hpp"
 #include <vector>
+#include <map>
+#include <set>
 
 #include "utils/optional_reference.hpp"
 

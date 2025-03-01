@@ -1,85 +1,82 @@
 {
-    "app-id": "org.wesnoth.Wesnoth",
-    "runtime": "org.freedesktop.Platform",
-    "runtime-version": "23.08",
-    "sdk": "org.freedesktop.Sdk",
-    "finish-args": [
-        "--device=dri",
-        "--share=ipc",
-        "--share=network",
-        "--socket=x11",
-        "--socket=pulseaudio"
-    ],
-    "command": "wesnoth",
-    "rename-icon": "wesnoth-icon",
-    "cleanup": [
-        "/include",
-        "/lib/pkgconfig",
-        "/share/aclocal",
-        "/share/man",
-        "*.la", "*.a"
-    ],
-    "build-options": {
-        "cflags-override": true,
-        "cppflags-override": true,
-        "cxxflags-override": true,
-        "cflags": "",
-        "cppflags": "",
-        "cxxflags": ""
-    },
-    "modules": [
-        {
-            "name": "boost",
-            "buildsystem": "simple",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.67.0/source/boost_1_67_0.tar.bz2",
-                    "sha256": "2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba"
-                }
-            ],
-            "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph",
-                "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
-            ]
-        },
-	{
-            "name": "scons",
-            "buildsystem": "simple",
-            "cleanup": [ "*" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.sourceforge.net/scons/scons-3.0.2.tar.gz",
-                    "sha256": "d0afcf8f4c2ea5fa7af3c9321c0cb3ea1c83d137196be10c4cb2c79cc5dade01"
-                }
-            ],
-            "build-commands": [
-                "python3 setup.py install --prefix=/app"
-            ]
-        },
-        {
-            "name": "wesnoth",
-            "buildsystem": "simple",
-            "cleanup": [
-                "/share/applications/wesnoth_editor.desktop"
-            ],
-            "build-commands": [
-                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app enable_lto=true ccache=true --debug=time install wesnoth wesnothd"
-	    ],
-            "sources": [
-                {
-                    "type": "git",
-                    "path": "/usr/src/wesnoth/master",
-                    "branch": "master"
-                },
-                {
-                     "type": "shell",
-                     "commands": [
-                          "echo Flatpak > data/dist"
-                     ]
-                }
-            ]
-        }
-    ]
+   "app-id":"org.wesnoth.Wesnoth",
+   "runtime":"org.freedesktop.Platform",
+   "runtime-version":"24.08",
+   "sdk":"org.freedesktop.Sdk",
+   "finish-args":[
+      "--device=dri",
+      "--share=ipc",
+      "--share=network",
+      "--socket=x11",
+      "--socket=pulseaudio"
+   ],
+   "command":"wesnoth",
+   "rename-icon":"wesnoth-icon",
+   "cleanup":[
+      "/include",
+      "/lib/pkgconfig",
+      "/share/aclocal",
+      "/share/man",
+      "*.la",
+      "*.a"
+   ],
+   "build-options":{
+      "cflags-override":true,
+      "cppflags-override":true,
+      "cxxflags-override":true,
+      "cflags":"",
+      "cppflags":"",
+      "cxxflags":""
+   },
+   "modules":[
+      {
+         "name":"python3-scons",
+         "buildsystem":"simple",
+         "build-commands":[
+            "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=\"${FLATPAK_DEST}\" \"scons\" --no-build-isolation"
+         ],
+         "sources":[
+            {
+               "type":"file",
+               "url":"https://files.pythonhosted.org/packages/b8/a7/823091100c88d7d992c8c608d82a88ed59e227d13f8ccb33ea7a96d43d51/SCons-4.8.1-py3-none-any.whl",
+               "sha256":"a4c3b434330e2d7d975002fd6783284ba348bf394db94c8f83fdc5bf69cdb8d7"
+            }
+         ]
+      },
+      {
+         "name":"boost",
+         "buildsystem":"simple",
+         "sources":[
+            {
+               "type":"archive",
+               "url":"https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2",
+               "sha256":"af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89"
+            }
+         ],
+         "build-commands":[
+            "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph,charconv",
+            "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
+         ]
+      },
+      {
+         "name":"wesnoth",
+         "buildsystem":"simple",
+         "build-commands":[
+            "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app enable_lto=true ccache=true --debug=time install wesnoth wesnothd"
+         ],
+         "sources":[
+            {
+               "type":"git",
+               "path":"/usr/src/wesnoth/master",
+               "branch":"master"
+            },
+            {
+               "type":"shell",
+               "commands":[
+                  "echo Flatpak > data/dist"
+               ]
+            }
+         ]
+      }
+   ]
 }

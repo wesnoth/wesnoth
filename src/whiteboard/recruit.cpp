@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,12 +35,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recruit_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_const_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);

@@ -43,6 +43,10 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 .SH ПАРАМЕТРЫ
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Отобразить все переводы во внутриигровом списке выбора языка, даже если они
 считаются недостаточно полными.
@@ -86,7 +90,7 @@ https://wiki.wesnoth.org/CommandMode/ru дальнейших сведений о
 \fB\-\-strict\-lua\fP
 запретить устаревшие вызовы Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ левый файл\fP\fB\ \fP\fIправый файл\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 сравнивает два WML\-файла (см. команду diff) без предварительной обработки
 (если нужна, используйте сначала команду \fB\-p\fP). Помещает разницу в виде
 DiffWML в стандартный вывод или в файл, указанный \fI\-\-output\fP.
@@ -170,10 +174,6 @@ replacing usernames with USER.
 нём, так как большинство уже известно. Части библиотеки считаются
 стабильными, и будут работать без этого включения.
 .TP 
-\fB\-\-nodelay\fP
-запустить игру без задержки, необходимой для проверки производительности
-графики. Автоматически включается при использовании \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 отключает загрузку пользовательских дополнений.
 .TP 
@@ -206,12 +206,11 @@ replacing usernames with USER.
 предпочтения. Небезопасно.
 .TP 
 \fB\-\-plugin\fP\fI\ скрипт\fP
-(экспериментально) загрузить \fIскрипт\fP, определяющий плагин Веснота. В
-целом, похоже на \fB\-\-script\fP за исключением того, что файл Lua должен
-вернуть функцию, которую можно запустить в качестве сопрограммы и время от
-времени пробуждать обновлениями.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ исходный файл\fP\fB\ \fP\fIфайл патча\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 применяет патч DiffWML к WML\-файлу; ни один из этих файлов предварительно не
 проверяется.  Выводит WML с применёнными к нему правками через стандартный
 вывод или в файл, указанный \fI\-\-output\fP.
@@ -226,22 +225,26 @@ replacing usernames with USER.
 можно прочитать здесь:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIОПРЕДЕЛЕНИЕ1\fP\fB,\fP\fIОПРЕДЕЛЕНИЕ2\fP\fB,\fP\fI...\fP
-разделённый запятыми список определений, используемых командой
-\fB\-\-preprocess\fP. Если в списке определений есть \fBSKIP_CORE\fP, то каталог
-"data/core" не будет прогоняться через препроцессор.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ исходный файл\fP
-используется только командой \fB\-\-preprocess\fP. Задает файл, который содержит
-определения препроцессора \fB[preproc_define]\fP, которые должны быть загружены
-до запуска препроцессора.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=целевой файл\fP\fB]\fP
-используется только командой \fB\-\-preprocess\fP. Выводит все заранее
-обработанные макросы в целевой файл. Если файл не задан, файлом вывода будет
-\&'_MACROS_.cfg' в целевом каталоге команды обработчика. Файл вывода можно
-передать с помощью \fB\-\-preprocess\-input\-macros\fP.   Этот ключ необходимо
-указать до команды \fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 установить разрешение экрана. Пример: \fB\-r\fP \fB800x600\fP.
@@ -262,9 +265,6 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 \fB\-\-screenshot\fP\fI\ карта\fP\fB\ \fP\fIрезультат\fP
 сохраняет снимок экрана \fIкарты\fP в файл \fIрезультат\fP , не запуская вывод на
 экран.
-.TP 
-\fB\-\-script\fP\fI\ файл\fP
-(экспериментально)  \fIфайл\fP , содержащий скрипт Lua управления клиентом.
 .TP 
 \fB\-s[\fP\fIхост\fP\fB],\ \-\-server[\fP\fI=хост\fP\fB]\fP
 подключиться к указанному хосту, если таковой имеется, иначе подключиться к
@@ -298,8 +298,8 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 Действие предоставляет lua такие же привилегии, как у исполняемого файла
 wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ путь\fP
-устанавливает шаблон WML, используемый \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ имя\fP
 установить папку пользовательских данных в подпапку \fIимя\fP в каталоге $HOME
@@ -325,7 +325,7 @@ Games"), задайте абсолютный путь. Помимо этого, 
 \fB\-\-validate\-core\fP
 проверяет WML ядра во время вашей игры.
 .TP 
-\fB\-\-validate\-schema \ путь\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 проверяет, является ли файл шаблоном WML.
 .TP 
 \fB\-\-validcache\fP
@@ -430,7 +430,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

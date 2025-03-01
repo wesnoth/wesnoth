@@ -274,6 +274,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		---@type location
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
+		---@diagnostic disable-next-line: return-type-mismatch
 		return setmetatable({x = loc.x, y = loc.y}, hex_mt)
 	end
 
@@ -282,7 +283,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param cfg WML
 	---@param ref_unit? unit
 	---@return terrain_hex[]
-	function wesnoth.map.find(cfg, ref_unit)
+	function wesnoth.map.find(cfg, ref_unit) ---@diagnostic disable-line: duplicate-set-field
 		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
@@ -460,6 +461,9 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 	wesnoth.map.get_tiles_radius = wesnoth.deprecate_api('map:get_tiles_radius', 'map:find_in_radius', 1, nil, function(map, locs, filter, radius)
 		return wesnoth.map.find_in_radius(map, locs, radius, filter)
 	end, 'The filter is now the last parameter, instead of the radius')
+	wesnoth.map.vector_sum = wesnoth.deprecate_api('wesnoth.map.vector_sum', 'wesnoth.map.hex_vector_sum', 1, nil, wesnoth.map.hex_vector_sum)
+	wesnoth.map.vector_diff = wesnoth.deprecate_api('wesnoth.map.vector_diff', 'wesnoth.map.hex_vector_dif', 1, nil, wesnoth.map.hex_vector_diff)
+	wesnoth.map.vector_negation = wesnoth.deprecate_api('wesnoth.map.vector_negation', 'wesnoth.map.hex_vector_negation', 1, nil, wesnoth.map.hex_vector_negation)
 end
 
 wesnoth.map.tiles_adjacent = wesnoth.deprecate_api('wesnoth.map.tiles_adjacent', 'wesnoth.map.are_hexes_adjacent', 1, nil, wesnoth.map.are_hexes_adjacent)

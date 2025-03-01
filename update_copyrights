@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 ##
-# This script checks all media files in the repository for whether they've been modified or added without updating the file tracking image, sound, and music copyright
+# This script checks all sound/music files in the repository for whether they've been modified or added without updating the file tracking sound or music copyright
+# This check was used in continuous integration for image files as well prior to September 2024.  
 ##
 
 import argparse
@@ -102,7 +103,7 @@ with contextlib.suppress(FileNotFoundError):
 for root, _, files in os.walk(options.repo):
     for filename in files:
         filetype = Path(filename).suffix
-        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
+        if filetype == ".wav" or filetype == ".ogg":
             file_path = os.path.normpath(os.path.join(root, filename))
             if os.path.sep != '/':
                 # Always use slashes for the file path irrespective of OS used to run the update
@@ -144,7 +145,8 @@ else:
 any_check_failed = False
 if len(removed) > 0:
     any_check_failed = True
-    print("There are "+str(len(removed))+" removed images")
+    print("There are "+str(len(removed))+" removed files")
+    print(",".join(removed))
 
 count_missing_fields = len(missing_fields)
 count_extra_fields = len(extra_fields)
@@ -157,10 +159,10 @@ if count_missing_fields > 0 or count_extra_fields > 0 or count_added > 0 or coun
     any_check_failed = True
     print("\nThere are "+str(count_missing_fields)+" rows with too few fields:\n"+"\n".join(",".join(a) for a in missing_fields))
     print("\nThere are "+str(count_extra_fields)+" rows with too many fields, possibly due to an unquoted comma:\n"+"\n".join(",".join(a) for a in extra_fields))
-    print("\nThere are "+str(count_added)+" new images:\n"+"\n".join(a[1] for a in added))
-    print("\nThere are "+str(count_changed)+" changed images:\n"+"\n".join(a[1] for a in changed))
-    print("\nThere are "+str(count_incomplete)+" images that lack license or author information:\n"+"\n".join(a[1] for a in incomplete))
-    print("\nThere are "+str(count_update)+" images that need updated information:\n"+"\n".join(a[1] for a in update))
+    print("\nThere are "+str(count_added)+" new files:\n"+"\n".join(a[1] for a in added))
+    print("\nThere are "+str(count_changed)+" changed files:\n"+"\n".join(a[1] for a in changed))
+    print("\nThere are "+str(count_incomplete)+" files that lack license or author information:\n"+"\n".join(a[1] for a in incomplete))
+    print("\nThere are "+str(count_update)+" files that need updated information:\n"+"\n".join(a[1] for a in update))
 
 if len(unknown_licenses) > 0:
     any_check_failed = True

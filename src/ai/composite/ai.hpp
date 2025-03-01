@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -75,7 +75,7 @@ public:
 
 	void create_engine(std::vector<engine_ptr> &engines, const config &cfg);
 
-	void replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id);
+	void replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, const std::string& id);
 
 	void on_create();
 

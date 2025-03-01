@@ -12,7 +12,6 @@ local strings = {
 	special_overlay = _ "Special Overlay",
 }
 
--- can move in same turn as when recruited/recalled
 function wesnoth.effects.wc2_unitmarker(u, cfg)
 	local number = math.min(cfg.number or 1, #img_is_special_overlays)
 

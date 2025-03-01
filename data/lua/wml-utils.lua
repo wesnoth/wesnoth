@@ -130,19 +130,24 @@ function utils.handle_event_commands(cfg, scope_type)
 			arg = wml.tovconfig(arg)
 		end
 		if not string.find(cmd, "^filter") then
-			cmd = wesnoth.wml_actions[cmd] or
+			local cmd_f = wesnoth.wml_actions[cmd] or
 				wml.error(string.format("[%s] not supported", cmd))
-			if insert_from then
-				local j = 0
-				repeat
-					cmd(arg)
-					if current_exit ~= "none" then break end
-					j = j + 1
-					if j >= wml.variables[insert_from .. ".length"] then break end
-					arg = wml.tovconfig(wml.variables[string.format("%s[%d]", insert_from, j)])
-				until false
-			else
-				cmd(arg)
+			local success, error = pcall(function()
+				if insert_from then
+					local j = 0
+					repeat
+						cmd_f(arg)
+						if current_exit ~= "none" then break end
+						j = j + 1
+						if j >= wml.variables[insert_from .. ".length"] then break end
+						arg = wml.tovconfig(wml.variables[string.format("%s[%d]", insert_from, j)])
+					until false
+				else
+					cmd_f(arg)
+				end
+			end)
+			if not success then
+				wml.error(string.format("Error occured inside [%s]: %s", cmd, error))
 			end
 		end
 		if current_exit ~= "none" then break end

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -72,7 +72,7 @@ class candidate_action_with_filters : public base_candidate_action {
 public:
 	candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 protected:
-	variant do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula);
+	variant do_filtering(ai::formula_ai* ai, variant& input, const const_formula_ptr& formula);
 
 	candidate_action_filters filter_map_;
 };

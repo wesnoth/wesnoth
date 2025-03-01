@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,6 @@ public:
 	achievements_dialog();
 
 private:
-	achievements achieve_;
 	std::string last_selected_;
 	listbox* achievements_box_;
 	menu_button* content_names_;
@@ -41,9 +40,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace gui2::dialogs

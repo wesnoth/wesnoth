@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -131,9 +131,7 @@ public:
 
 	manager();
 
-	/* The singleton can't be set to null in the destructor because member objects
-	(which access the singleton) are destroyed *after* the destructor has been run. */
-	~manager() = default;
+	~manager();
 
 	// =======================================================================
 	// ACCESS TO MANAGER
@@ -431,7 +429,7 @@ private:
 	events::generic_event tod_changed_;
 	events::generic_event gamestate_changed_;
 	events::generic_event turn_started_;
-	int last_interact_;
+	std::chrono::steady_clock::time_point last_interact_;
 	int num_interact_;
 
 	AI_map_of_stacks ai_map_;

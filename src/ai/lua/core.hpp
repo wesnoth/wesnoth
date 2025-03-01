@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,7 +80,7 @@ private:
 public:
 	~lua_ai_action_handler();
 	//void handle(const config &cfg, bool read_only, lua_object_ptr l_obj);
-	void handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj);
+	void handle(const config &cfg, const config &filter_own, bool read_only, const lua_object_ptr& l_obj);
 	friend class ::game_lua_kernel;
 };
 

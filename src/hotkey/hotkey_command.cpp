@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -99,7 +99,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ACCELERATED, "accelerated", N_("Toggle Accelerated Speed"), false, scope_game, HKCAT_GENERAL, "" },
 	{ HOTKEY_TERRAIN_DESCRIPTION, "describeterrain", N_("Terrain Description"), false, scope_game | scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
+	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Type Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, scope_game | scope_editor, HKCAT_TOOLS, "" },
 
@@ -107,6 +107,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, scope_game, HKCAT_SAVING, "" },
 	{ HOTKEY_SAVE_MAP, "savemap", N_("Save Map"), false, scope_game, HKCAT_SAVING, "" },
 	{ HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, scope_game | scope_main, HKCAT_SAVING, "" },
+	{ HOTKEY_LOAD_AUTOSAVES, "menu-autosaves", N_("Load Turn..."), true, scope_game, HKCAT_PLACEHOLDER, "" }, // Menu placeholder
 	{ HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_RECALL, "recall", N_("Recall"), false, scope_game, HKCAT_UNITS, "" },
@@ -205,7 +206,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", N_("Starting Positions Tool"), false, scope_editor, HKCAT_TOOLS,  N_("Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears.") },
 	{ HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label", N_("Label Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets or drags a label, right clears.") },
 	{ HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit", N_("Unit Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new unit or moves a unit via drag and drop, right brings up a context menu. Needs a defined side.") },
-	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item.") },
+	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item. Right click removes item.") },
 	{ HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets the village ownership to the current side, right clears. Needs a defined side.") },
 
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, scope_editor, HKCAT_TOOLS, N_("Toggle the recruit attribute of a unit.") },

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -144,6 +144,33 @@ public:
 	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
+	}
+
+	std::size_t get_max_input_length() const
+	{
+		return max_input_length_;
+	}
+
+	void set_hint_text(const std::string& text)
+	{
+		hint_text_ = text;
+		update_canvas();
+	}
+
+	std::string get_hint_text() const
+	{
+		return hint_text_;
+	}
+
+	void set_hint_image(const std::string& image)
+	{
+		hint_image_ = image;
+		update_canvas();
+	}
+
+	std::string get_hint_image() const
+	{
+		return hint_image_;
 	}
 
 	void set_hint_data(const std::string& text, const std::string& image)

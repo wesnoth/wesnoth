@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:05 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2024-02-19 12:42 UTC\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -366,7 +366,7 @@ msgid "number of keeps"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-msgid "$name|'s pet"
+msgid "$name|’s pet"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
@@ -383,6 +383,11 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
+msgstr ""
+
+#. [lua]: carryover.remaining_gold_message
+#: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
+msgid "Average remaining gold: "
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
@@ -1354,271 +1359,26 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/random_names.lua:2
 msgid ""
 "Aban,Abidin,Acacalide,Acimaëli,Acratoforo,Actarof,Adham,Adnan,Adramitio,Ael-"
-"Lagaleth,Aereste,Agshirt,Ahyaul,Aigaitha,Aigaithil,Aigaithol,Aigalam,"
-"Aigaling,Aigalir,Aigalol,Aigalsin,Aigatan,Aigatlod,Aigatsel,Aigatsol,Aigatu,"
-"Aigcataz,Aigcatil,Aigcating,Aigcatim,Aigcatsol,Aigcatur,Aigdring,Aigdril,"
-"Aigdersil,Aigdursol,Aigthain,Aigthasim,Aigthaug,Ainhuol,Ainuel,Aj Taum,"
-"Akoark,Akort,Akzalk,Alabrylla,Alaebrylla,Alaeniver,Alaitha,Alaith,Alaithol,"
-"Alaithsol,Alaithu,Alalil,Alalla,Alalol,Alalsol,Alalum,Alamade,Alamaitheol,"
-"Alanamix,Alaryan,Alatarc,Alating,Alatlor,Alatsil,Alberast,Aldarsol,Aldram,"
-"Aldril,Aldring,Aldrinm,Aldrulo,Aldrol,Aldumcatil,Aldura,Aldurlosp,Aldurol,"
-"Aleacla,Aleara,Alearka,Alena,Alengwen,Aleuksia,Al-Kuz,Alianora,Aligbrula,"
-"Alilonna,Alim,Alinash,Alingwen,Alinoe,Alistre,Almarcy,Alminzo,Alolonna,Alora,"
-"Althaam,Althail,Althalea,Althalo,Althaol,Althasil,Althasol,Althau,Althiela,"
-"Alubrylla,Aluneire,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,"
-"Alynoic,Alyra,Alyryan,Almahdi,Altaf,Amedë,Amilmaldur,Amorfir,Amowyn,Amprixta,"
-"Anaitharl,Anaithing,Anaithu,Analil,Anallom,Analol,Analsil,Analuh,Anataj,"
-"Anating,Anatir,Anatol,Anatsol,Ancataz,Ancatil,Ancatol,Ancattu,Andril,Andrih,"
-"Andrulop,Andrun,Anduril,Andurol,Andursol,Anduru,Anerion,Anexir,Anglachem,"
-"Anilad,Anilgawyn,Anitraz,Ankthorez,Anoithil,Anoush,Antarah,Anthaal,Anthaing,"
-"Anthaim,Anthaol,Anthasil,Anthasor,Anthaul,Anui,Anundil,Ardenia,Arnenvier,"
-"Arkarm,Arix,Arnondo,Asadel,Asbasalieg,Asgalioth,Asgertase,Asgriah,Ashraf,"
-"Asvetro,Athir,Atrede,Aufiloch,Auginet,Augithad,Augaithing,Augaithsil,"
-"Augaithur,Augalam,Augaling,Augating,Augatlo,Augatol,Augatsil,Augcatil,"
-"Augcatun,Augdrin,Augdrur,Augdursil,Augdura,Augduril,Augdursol,Augduruh,"
-"Augthail,Augthaim,Augthalo,Augthaol,Aungubulang,Ausrethgul,Auuglann,"
-"Auxdornath,Avenore,Axiz,Azimur,Azkabin,Azluheb,Azorein,Azurena,Azurix,Baart,"
-"Babreca,Bacbouc,Badri,Baelgaltir,Bagar,Baha,Bahamix,Bahiyy,Bahlagdi,"
-"Bahldrusk,Bahomet,Balfelor,Bakr,Bakri,Baligh,Balqueria,Bandar,Baogrish,"
-"Baradug,Barag,Barakah,Barbag,Barguntil,Barkuk,Barnasab,Bashnak,Baugahler,"
-"Baugdurol,Bayhar,Belineur,Belandil,Beleumaodir,Belise,Belithraldor,Belondel,"
-"Belurmeinseil,Belyrion,Bentesicime,Beolduf,Beraorg,Bercenego,Bergsnoth,"
-"Berigstan,Berq Tzerit,Bersevian,Beuchaliol,Bhunk,Bicoru,Bidush,Bielura,"
-"Bierthur,Bifix,Bik,Bilal,Bilerau,Bilg,Bilo,Binak,Biol,Biothfeorst,Birt,Bishr,"
-"Bisiluash,Bistemut,Biung,Bjouz,Bloik,Blokkar,Blygwyn,Bogdush,Bogor,Bok,Bolg,"
-"Bolunir,Bomduril,Borduntur,Borig,Borkuk,Borosnoat,Bort,Boshnak,Boulosh,"
-"Braedda,Brakor,Brassa,Bravyan,Breabrylla,Breall,Brealla,Brealonna,Breana,"
-"Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brithaithol,Britomartix,"
-"Brobrylla,Brogk,Brollyra,Brona,Bronoic,Brora,Brugaranti,Brugung,Brungwen,"
-"Bruorka,Bruryan,Brwra,Brycla,Brynoic,Bukkak,Bulruk,Budail,Budush,Bugdish,Buk,"
-"Bunak,Burag,Burg,Burgaur,Burhan,Burk,Buurk,Cael Einur,Caella,Caena,Caengwen,"
-"Caervecuto,Caevyan,Caldur,Calebrindel,Calebrindir,Calianasa,Calimire,"
-"Calisbia,Calla,Calusa,Calówien,Canduil,Caranfir,Carang,Carduan,Caribdi,Carla,"
-"Carseglio,Cassa,Cealonna,Cecropido,Celang,Cera,Ceryan,Cewdda,Chagron,Chamil,"
-"Chiona,Churumol,Cibrylla,Cicla,Cinoic,Cira,Cirduel,Cirsai,Cissa,Cithraldur,"
-"Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,Clara,Clarka,Clavyan,"
-"Cleacla,Cleall,Clealyan,Cleana,Cleezi,Clemirfone,Clenoic,Clezz,Clibrylla,"
-"Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,Clothildrien,"
-"Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Colgton,Cora,"
-"Coranthyo,Corkkar,Corodro,Corugush,Coryan,Cradagon,Crespuo,Crudvo,Crysgarin,"
-"Cucla,Cudda,Cundir,Curcopia,Curnacuyac,Curyan,Cwleina,Cwengwen,Cywivyan,"
-"Cydda,Cylasu,Cylla,Cyllyra,Cylyan,Cyniver,Cyvyan,Dabirmiliun,Dabnusagosh,"
-"Daedda,Daelyan,Daengwen,Daenoic,Dagnea,Dalaleika,Dallyra,Dalmalso,Damell,"
-"Dangwen,Danmonlulbam,Dara,Dassa,Deanoic,Deassa,Deborisa,Deimiluel,Delandel,"
-"Delaraldur,Delkkak,Della,Delilmaldor,Deliol,Delorion,Delundil,Demalot,Demla,"
-"Denya,Derceto,Deucalion,Devyan,Deyalh,Dhakwan,Dhogari,Dicla,Dijuf,Diniver,"
-"Dinsill,Dirala,Dirraquio,Dissa,Dobielon,Doburah,Dollyra,Donmolig,Dornoth,"
-"Dorobal,Doromina,Drahganilo,Drasan,Drensig,Drethmol,Dullyra,Dulonna,"
-"Dulaithil,Dulaithing,Dulaithlot,Dulaithsil,Dulaithsol,Dulalat,Dulalin,"
-"Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatur,Dulcatil,Dulcating,"
-"Dulcatlom,Duldril,Duldrik,Duldralo,Duldrol,Dulprisil,Duldruz,Duldurag,"
-"Dulduring,Duldursil,Duldurur,Dulnica,Dulthalol,Dulthasil,Dulthasol,Dulthaun,"
-"Dumanti,Dumuthi,Durbag,Durktuver,Duselia,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,"
-"Dybrylla,Dydda,Dyssa,Eäréwiel,Eärilmadë,Ealumox,Ebernith,Ebougrush,Ebraham,"
-"Edalei,Edusten,Eefur,Efnix,Efnushguraj,Egnosian,Egulym,Einidia,Eisal,Eitcha,"
-"Eki,Eladrieng,Elacla,Elaedda,Elaell,Elaelonna,Elaessa,Elaevyan,Elaiseng,"
-"Elallyra,Elalonna,Elara,Elavern,Elebrildor,Elebrindel,Elélan,Elémbor,Elemir,"
-"Elealla,Eleanoic,Elenoic,Elerka,Eleusinion,Eliomir,Eliondil,Elithae,Elivyan,"
-"Elomuar,Elorfilad,Elradrien,Elrioldor,Elriolith,Elrorfir,Elsviriz,Elueso,"
-"Elulonna,Elurka,Elval,Elvandir,Elvaramir,Elvioldur,Elwllyra,Elwlonna,"
-"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrion,Elyrka,Elzea,"
-"Enariol,Endaira,Endornathain,Enuilamde,Eowimbor,Eowiomir,Eowyla,Eponure,"
-"Eradash,Eradiush,Eragdish,Eragor,Eranak,Erang,Erarg,Erart,Erigdush,Erik,"
-"Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,Erogdush,Erok,Erong,"
-"Erorbag,Ertjon,Erudish,Erugar,Erugdush,Erulo,Erunk,Eruol,Erurag,Eruurk,Eshi,"
-"Eshkyrech,Esmodrigor,Estielem,Estinfalide,Estumbuprag,Etsenia,Eubuleo,"
-"Eugabor,Eulimn,Eulqaia,Eurinoa,Eur Masup,Evirigna,Evouli,Exnaug,Eyyu,Ezneale,"
-"Fabudain,Fadriendel,Faduhc,Faeminyon,Faervilim,Faiminei,Faisulal,Falvila,"
-"Fanthurfin,Falulmisso,Famyih,Fanaithsil,Farandir,Farlamir,Farseluo,Faugamel,"
-"Fazzi,Fáwyn,Feagoil,Febarnet,Feplerchaun,Ferabela,Ferdigan,Ferfamora,"
-"Fersijadmul,Festum,Feyz,Fgor,Fizlandilu,Fienar,Figalfin,Filanur,Filictor,"
-"Filvarëule,Finafgol,Findolith,Finduanor,Fioril,Fiorlah,Fizztrax,Flaamenthil,"
-"Flixta,Flizzil,Floqke,Fnigah,Foiginoch,Folmagauh,Fondarea,Fongaorn,Formontor,"
-"Forouzandeh,Fougul,Foutum,Fódë,Frellah,Freomeda,Frikeq,Frizzle,Fraonderic,"
-"Ftiotide,Fudail,Fuensithiem,Fuitheck,Furlamthaol,Furviramo,Fusenoyc,Fymn,"
-"Fyrion,Gabithol,Gadash,Gadriendil,Gadrieng,Gagdush,Gagor,Galalith,Galar,"
-"Galeck,Galela,Galeldur,Galelith,Galo,Galsh,Gamal,Gamilenao,Ganak,Ganamau,"
-"Ganelfir,Gaunk,Gaol,Garadin,Garag,Garaldor,Garchin,Gark,Garkuk,Garlan,Garlin,"
-"Garruj,Garushi,Garzilium,Gashnak,Gashinar,Gasthol,Gaugramelo,Gaunthelar,"
-"Gaushii,Gaustun,Gawna,Gegchi,Gelka,Gelknick,Genoro,Gerchog,Gewcla,Ghafur,"
-"Ghakhan,Ghani,Ghayth,Gienk,Gigor,Gillan,Gillohn,Ginak,Ging,Giombor,Girt,"
-"Gisharri,Glamadriel,Glamaithil,Glamaithim,Glamaithol,Glamaithsol,Glamalil,"
-"Glamaling,Glamalir,Glamallot,Glamaluf,Glamatug,Glamcatah,Glamcatil,Glamcatu,"
-"Glamdran,Glamdril,Glamdrelo,Glamdirsol,Glamdurain,Glamduring,Glamdurix,"
-"Glamthaal,Glamthasil,Glamthasol,Glamthaug,Glararil,Glaunurg,Glilmal,Glimir,"
-"Glomin,Glómir,Gnukk,Goark,Gogdish,Gogdush,Gomaithar,Gomaithil,Gomaithsol,"
-"Gomalil,Gomalux,Gomatarr,Gomatil,Gomating,Gomativ,Gomcatil,Gomcatlo,Gomdrah,"
-"Gomdril,Gomdring,Gomdrim,Gomdrol,Gomduri,Gomdurloh,Gomdursil,Gomdursol,"
-"Gomdurup,Gomthaatz,Gomthalor,Gomthasol,Gorfindil,Gorospkin,Gort,Goruk,Gorzol,"
-"Goshnak,Goust,Gozmiog,Grada,Grahklin,Grak,Gralg,Gralo,Granak,Graol,Graoug,"
-"Grarbag,Greragrog,Greth,Gribbel,Gridash,Griedush,Gridda,Grigar,Grignish,"
-"Grigor,Grilg,Grilo,Grink,Grirg,Grishnak,Grishuglunakh,Grithmau,Grodish,"
-"Grogar,Grolg,Gronk,Grorag,Grorg,Grork,Grort,Groshnak,Grotish,Grouk,Grudash,"
-"Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurt,Gruurk,Grymma,Gugdish,"
-"Gugdush,Gulcating,Gulg,Gulo,Gumbundulun,Gumalsil,Gunak,Guong,Gurbag,Gurt,"
-"Gushnak,Gurk,Gurm,Guthmorcobel,Gwaera,Gwaessa,Gweacla,Gwedda,Gwerka,Gwicla,"
-"Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,Gwonoic,Gworyan,Gwullyra,Gwussa,Gwycla,"
-"Gwydda,Gywvyan,Habohl,Habudamil,Hachuel,Hadash,Haderald,Hadiel,Hadum,"
-"Hafmaihjin,Hagar,Hagdelstaf,Hagdush,Hagor,Haik,Hakam,Halimanir,"
-"Hanfonderlincan,Hank,Haragdinul,Hareth,Harith,Harrmukhag,Harpalice,Harquem,"
-"Hashnak,Hasz,Hathnei,Haub,Haugduring,Haurapitko,Hausieg,Hayanami,Hayanee,"
-"Hebril,Heffez,Hegledna,Heldra,Herbet,Hertrazzir,Herudo,Hesz,Hezzi,Hidaspe,"
-"Hidush,Higduhn,Hilal,Hilg,Hilgarion,Hilmariand,Hilonome,Hilsmagath,Hinak,"
-"Hing,Hiol,Hiragna,Hirg,Hisiloem,Hobgar,Hodul,Hogor,Hoi,Hoidish,Holinurie,"
-"Holruk,Hong,Hool,Horbag,Horfindel,Horgsten,Hort,Hougssen,Housneak,Huadash,"
-"Hualg,Huchnubulo,Hudish,Huesk,Hugor,Huk,Hulo,Huol,Hurag,Hurbag,Hurimtum,Hurk,"
-"Hushnak,Huurk,Huyagharu,Ibmaecire,Ibmahalej,Ibsongord,Ichtka,Ictareuse,"
-"Idaluam,Idrasil,Iekal,Ifianasa,Ifbajimn,Igfeniorth,Igmavenar,Ihbur,Ihmusif,"
-"Ikatere,Ilamound,Ilisiade,Illa,Ilmiwir,Ilsalaah,Inai,Inalai,Inexi,Iraene,"
-"Irele,Iridelia,Irix,Iripza,Irobryne,Isadrieng,Isaurico,Iselan,Isilmandel,"
-"Isirion,Isorfilad,Isorfindir,Isurnym,Isuwyn,Isyndel,Isáwen,Isebridien,"
-"Isebrinia,Isemlath,Isendra,Iséng,Iseviel,Isil-Garith,Isithradien,Isithrarith,"
-"Isithrawiel,Isóthien,Ismozg,Issalai,Istirazu,Ithlurnae,Ivayinna,Iverone,"
-"Ivinhao,Ivonitha,Iznoud,Jabuoc,Jacla,Jadnor,Jaena,Jaerka,Jaevyan,Jalasad,"
-"Jalika,Jalyan,Jana,Jarame,Jarka,Jasmuniure,Jassa,Jaugwan,Jaumalon,Jawhar,"
-"Jeabrylla,Jealla,Jeanoic,Jelifem,Jemara,Jeniver,Jerco,Jerguo,Jeudriel,Jezzix,"
-"Jibran,Jibril,Jiel Dahr,Jiryan,Jissa,Jizz,Joll,Jolla,Jona,Jongwen,Jonoic,"
-"Jora,Jorka,Jovyan,Jowe,Jubair,Judda,Juffarin,Jugrund,Jull,Julonna,Jumah,"
-"Junayd,Jura,Jureh,Jusif,Juturne,Juwain,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,"
-"Jyrka,Jyvyan,Kadar,Kadin,Kadir,Kahil,Kalesiw,Kaliez,Kalinthya,Kalknix,Kall,"
-"Kalynteri,Kategard,Karak,Karbuk,Kargnak,Karterak,Karum,Kauthyn,Kayrak,"
-"Kegchitosh,Kelkrar,Kepz,Kernix,Kersezz,Kerta,Kertrasz,Kerx,Kerxenix,Kezz,"
-"Khaliq,Khayr,Khimessei,Kiryle,Klexaz,Klezyx,Khangatilha,Kiepp,Kierkugar,"
-"Kilkrar,Kingrok,Kitara,Kladiul,Klept,Klowe,Klud,Koen,Kognucha,Kokkan,Kolbyn,"
-"Koleri,Kolk,Komak,Koqeiri,Koqnir,Korgnak,Koria,Kork,Koruck,Koslourg,Kou "
-"Korul,Kórrigan,Kramak,Krog,Krukrak,Krumuk,Kruo,Kuknuk,Kurkur,Kurmak,Krisva,"
-"Konstentyn,Korim,Koschye,Krarax,Krenarex,Krex,Krinex,Kroo,Kropstin,Kthulju,"
-"Kurmalund,Kushana,Kyrtk,Laeniver,Laenoic,Laeryan,Lagrest,Lagusster,"
-"Laivaergne,Laizix,Lalaith,Lamatro,Langwen,Laomedontu,Laphira,Larka,Lassa,"
-"Lauvin,Lazki,Lealonna,Lealyan,Ledda,Legilad,Legorfindil,Legorfirion,"
-"Legorniath,Leifarom,Leivura,Lelonna,Lelyan,Lengwen,Leprethnaum,Lerka,Lessa,"
-"Leucotoe,Leukritia,Leuria,Lewlla,Licurgo,Lidda,Lill,Lilupar,Lina,Lipku,Lirka,"
-"Liryan,Lisgurerg,Lisidice,Lisuvik,Livyan,Lixeez,Loberta,Lobrishg,Locla,Lodda,"
-"Lollyra,Lolonna,Lomurg,Lophareon,Lorbuc,Lorquiel,Lortand,Lorthac,Lorthik,"
-"Loturni,Loubregarc,Loungodul,Lowryan,Luanud,Luargko,Lucanaor,Lugoum,Lullah,"
-"Lulyan,Lungwen,Lunoic,Luriniel,Luryan,Luvatamir,Lwcla,Lwnoic,Lycla,Lylla,"
-"Lylyan,Lyna,Lynoic,Lómariand,Maecla,Maeniver,Maerilna,Magirilion,Mahjub,"
-"Mahmud,Mahrul,Maijzasal,Maimun,Makron,Malaputo,Malatare,Maldurse,Mamurio,"
-"Mansrabunag,Maraldur,Mariudan,Markaak,Mar Kaog,Markuk,Marthaol,Maru,Marvin,"
-"Masaw,Masude,Masulami,Mausika,Mavyan,Meacla,Mealyan,Meana,Meangwen,Meanoic,"
-"Medda,Medesicaste,Meglusur,Megrollu,Meiseleng,Mejmed,Melalin,Meleagride,"
-"Melesagor,Melianur,Melicenea,Melifior,Melisteo,Mengwen,Meniver,Meradda,"
-"Meraecla,Meraelyan,Merall,Merallyra,Merana,Meranoic,Merealonna,Mereangwen,"
-"Mereaniver,Merebrylla,Merella,Merengwen,Meressa,Mergcan,Merilyan,Merina,"
-"Merinoic,Merissa,Merivyan,Merknik,Merogiv,Merolla,Merolyan,Merona,Meroniver,"
-"Mersulla,Merubrylla,Merulda,Merurka,Merwlla,Merwnoic,Merwryan,Merydda,"
-"Merylyan,Mesligfor,Messa,Meuj,Merask,Meyumn,Mhoro,Midsidrie,Migly,Milandra,"
-"Milonna,Minoloti,Miomir,Mireyah,Mirsha,Miskapuo,Mithrand,Miyen Kha,Mohrouh,"
-"Molokti,Molyan,Mondir,Moniver,Monsantir,Mor Drokuhr,Morduf,Morelna,Morgemil,"
-"Morisyeva,Morridgen,Moruboa,Morunthya,Morwen,Mossa,Mosgarnaruth,Mot,Mouresla,"
-"Moxanzz,Mubdugollush,Mudda,Mughni,Muhodre,Mulcatsol,Mullyra,Mulyan,Muneirwe,"
-"Munsif,Muntasir,Muqtadir,Murad,Murid,Murshid,Murstain,Murtada,Muryan,"
-"Musawwir,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myall,Mylla,Myngol,Myra,Myvyan,"
-"Mylith,Nabrylla,Nadrieldor,Naecla,Naell,Nalith,Nalyan,Nangwen,Naraithil,"
-"Naraithing,Naraithol,Naraithsil,Naraithsol,Naraithum,Naralan,Naralil,"
-"Naralsil,Naraluh,Naratlol,Naratsil,Narcating,Narcativ,Narcatol,Narcatsil,"
-"Narcatsol,Nardrab,Nardril,Nardring,Nardrig,Nardrol,Nardarsil,Nardrsol,"
-"Nardrul,Nardurah,Narduril,Nardurol,Nargak,Nargig,Narthalo,Nasdrubolish,"
-"Nathlaroel,Naucrati,Naumaragoth,Naxisz,Nazmi,Nealla,Neallyra,Nealonna,Nearof,"
-"Neavyan,Nemertex,Nera,Nerogish,Nessa,Ngondo,Nibalusg,Nibiru,Nibrash,Nidal,"
-"Nieron,Nimbuel,Nimdroth,Ninoic,Niryan,Nivyan,Nix,Noalor,Nobrylla,Nocht,"
-"Noctaul,Nolla,Nonoic,Nokan,Norfilith,Norfindir,Norka,Noryan,Noughalya,Nuaym,"
-"Nucla,Nuhayd,Nuhmu,Nulla,Nulyan,Numair,Numan,Nungwen,Nuri,Nusktar,Nusrah,"
-"Nuvyan,Nuyll,Nwllyra,Nwryan,Nwvyan,Nybrylla,Nylyan,Nymn,Nyryan,Nyssa,Nyvyan,"
-"Obeor,Odailuo,Oden,Odiel,Odo,Odoacru,Odurme,Oenoxoe,Ofirion,Ogdenescu,Ogi "
-"Kegnach,Ogliara,Ohcan,Ohecyn,Oktubahli,Olamdursol,Olath,Olegar,Oleif,Oleiron,"
-"Olineur,Olk,Olufarin,Omerith,Omoran,Onesipo,Onore,Onyi,Oona,Opalei,"
-"Orguathise,Orguel,Orialdur,Oridash,Orkut,Orleomyr,Ormagg,Orofarnië,Oroloqi,"
-"Orrh,Orsendur,Orsifal,Orsil,Orugusk,Osarcyn,Osbuhgnax,Oselienn,Oshibi,Osse,"
-"Osteron,Othroshagrat,Otogarim,Otride,Otsere,Ougdram,Oumina,Owac,Owadd,"
-"Owaddyn,Owaecyn,Owaedry,Owain,Owaryn,Oweran,Owercyn,Owidry,Owinyc,Owodd,"
-"Owoddry,Owogwyn,Owollyn,Oworcyn,Oworraent,Owuddyn,Owugwyn,Owur,Owyran,Oxpeii,"
-"Padrusil,Pagdish,Pagor,Pahsur,Paige,Palo,Pambedrumne,Pamirie,Paol,Parag,"
-"Parduthal,Parsifeluem,Parviz,Pashnak,Paskemuthar,Pausul,Pedergish,Pegrorausg,"
-"Pelaithaz,Pelaithil,Pelaithing,Pelaithiq,Pelaithlot,Pelaithol,Pelaithsil,"
-"Pelaithsol,Pelalil,Pelaling,Pelalsil,Pelalsol,Pelalum,Pelatil,Pelating,"
-"Pelatol,Pelatsil,Pelatur,Pelcating,Pelcatlop,Pelcatol,Peldrat,Peldril,"
-"Peldrsol,Peldruh,Pelduril,Pelduring,Pelduri,Peldurol,Peldursol,Peldurum,"
-"Pelthaal,Pelthasil,Pelusso,Persidul,Perthwan,Pesralg,Pestiurn,Phalaxi,Phoebe,"
-"Phutalmo,Pidush,Pigrush,Pilg,Pinak,Piper,Pirgasb,Plaxih,Plesix,Podager,"
-"Podish,Podusg,Poledean,Polg,Porbag,Porg,Pourk,Poret,Porfildur,Poshnak,"
-"Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,Praol,Prarag,Prarg,Prark,Prartsag,"
-"Prashnak,Praurk,Prerfosurz,Presch,Pridish,Prigar,Prigdish,Prigor,Prilg,Prilo,"
-"Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,Progush,Prolg,Prolo,Pronak,"
-"Prong,Pronk,Prool,Prourk,Prudish,Prugar,Prugdish,Pruk,Prunak,Prunk,Prurbarg,"
-"Prurg,Pruurk,Psipocum,Ptoliporto,Puladam,Pulg,Pulo,Punak,Punhg,Purag,Purg,"
-"Pusmahalu,Pustten,Puurk,Pyanepsie,Pyldur,Pyturc,Qadir,Qahhar,Qalioqe,Qam,"
-"Qanatloc,Qawi,Qayyum,Qeg Verkum,Qilenrama,Qitanira,Qizzeq,Quarismesta,Quddul,"
-"Quirenia,Quirisofo,Quisadz,Quroqoniba,Rabarecnu,Rabolux,Radash,Raebrylla,"
-"Raera,Raerka,Ragar,Ragdish,Rah,Rahlea,Rahunlar,Raithuin,Rakovisu,Ralonna,"
-"Raluenil,Ramnusia,Rang,Ranko,Ransevkurr,Raol,Rara,Rarag,Rarbag,Rark,Rarka,"
-"Rashid,Rashnak,Rassa,Rastud,Raurk,Ravsnuc,Rawdda,Razzaq,Reacla,Realla,Reana,"
-"Reangwen,Reh Shai,Rella,Relyan,Rengwen,Rei,Reknak,Renuto,Rerka,Reshan,Revyan,"
-"Rewllyra,Riamn,Rialna,Rik,Rileg,Rilluna,Rilmandil,Rilmasil,Rilyan,"
-"Rimilmandir,Rinak,Rirg,Rirka,Rithrandil,Riwlla,Roacura,Rodry,Rodush,Rogdish,"
-"Rohul,Roirk,Rolduen,Rolo,Ronak,Rorfindil,Rorta,Roth,Rubenof,Rucla,Rudash,"
-"Rufaroz,Rugar,Rugdish,Ruhnar,Ruk,Rulairuki,Runadrieng,Rung,Ruol,Rurag,Ruryan,"
-"Rushnak,Ruslika,Ruvlonna,Rwngwen,Rybrylla,Ryna,Ryngwen,Rynk,Rytuirka,Sador,"
-"Saell,Saellyra,Saenuber,Saerka,Saessa,Sahnor,Saibarini,Sailik,Salanix,"
-"Salimeh,Salik,Sallyra,Salmiegar,Salmiriem,Samosatu,Sandix,Sangaratil,Sanoic,"
-"Sanrauv,Saprazz,Sapnux,Saqr,Sara,Saria,Sariyah,Sarjine,Sarrusavag,Sarumegor,"
-"Sasegar,Sassa,Sati,Satral,Savnish,Schohozarog,Scorbu,Searka,Sebetide,Sebrun,"
-"Sehetti,Seif Girud,Seliandra,Selinunt,Seluomon,Sembriolibam,Semirami,Sena,"
-"Senoic,Sentinumo,Senzlerne,Seplattin,Seprorian,Sera,Sergustu,Serieva,Seulona,"
-"Sgalisse,Sgriag,Shaelmoc,Shakur,Siddiq,Sieulieare,Sigrery,Sigwuverno,"
-"Silfeleng,Sillumatti,Silmiril,Silonna,Sinan,Sinderul,Sinobia,Sira,Siraj,"
-"Sireyan,Sirvou,Sivnisiek,Skalix,Skandim,Skazix,Skeely,Skeezun,Sklizle,Skloe,"
-"Skorh,Skrez,Slive,Slizil,Slughirago,Slouag,Smirgaurn,Smirk,Sniuhgor,"
-"Sodelstan,Soederlein,Soereng,Sofian,Soldevig,Soleinth,Sonna,Soraceno,Sorekol,"
-"Sorfind,Sorivor,Sorka,Sorolle,Sougorn,Sowngwen,Soxgeurt,Sprizz,Sqal,Srygor,"
-"Ssexur,Sterizz,Stur,Subhi,Subrylla,Sucrator,Sufyan,Sugner,Suhayb,Sull,"
-"Sulonna,Sulyan,Suniong,Suqruto,Sura,Surdakhaur,Sussa,Suvok,Sverunidgi,"
-"Svignir,Swanoic,Swlla,Swlyan,Swvyan,Sylar,Syllyra,Sylyan,Syssa,Tadriendir,"
-"Tagnia,Takolak,Talerez,Tallasue,Talsthaf,Taltibio,Tanaël,Taral,Taraldur,"
-"Tarcatum,Tarex,Tarigolin,Tarnix,Tarsaff,Tarthmoul,Tarysth,Tauh,Taumacu,"
-"Tavyscite,Tawfiq,Tawhid,Tawwab,Taxiarqi,Taymullah,Taysir,Tel-Fabiel,Telxipea,"
-"Temisnioz,Teptum,Tequely,Terpsicore,Terthasol,Tesmurad,Teugarsen,Thael,"
-"Thalaisiel,Tharil-Garën,Thessaly,Thirgoalin,Thorsgan,Thrambor,Thraom,Thraral,"
-"Thrilgamir,Thrilmandel,Thrimir,Thrion,Throlar,Thrund,Thryriand,Thyndamara,"
-"Tilgan,Tilmalad,Timoh,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,"
-"Timbirtidul,Tirasch,Tirax,Tirix,Tissamo,Tiznuscievi,Tombadulum,Torval,"
-"Torfildur,Torquc,Trabuk,Trakkon,Trathdurl,Treidursol,Tremacalo,Trithaithan,"
-"Trithaithil,Trithaithif,Trithaithlov,Trithaithsil,Trinaithsol,Trirtaithu,"
-"Trigalilh,Trithalol,Trithata,Trislatil,Trithatloh,Triwatsol,Trithcatlo,"
-"Trithcatsol,Trithcatug,Trithdril,Trithdring,Trithdrim,Trithdrloh,Trithdrun,"
-"Trithduril,Trithduring,Trithdurlom,Trithdurol,Trithdursil,Trithduru,Trithaap,"
-"Trimathail,Triththaing,Triththauq,Trogish,Tufail,Tujcara,Tunorfiwyn,Uarso,"
-"Ubereo,Ucalea,Udirne,Udomaela,Uffestux,Ugmelorth,Uksul,Ulmë,Umutno,"
-"Unadrieldor,Unadrier,Unalah,Unaraldur,Unaril,Unénia,Uneldor,Ungolyost,Unil-"
-"Gadia,Unilmadia,Unindra,Uniolia,Uniolith,Unionia,Unioril,Unondir,Unorfildor,"
-"Unorfiril,Unorfiwen,Unulad,Unóndra,Unuviel,Unynia,Uradriela,Uraclya,"
-"Uradriedia,Urambar,Uránia,Urárith,Urebriclya,Ureclya,Urilmadia,Urilmawiel,"
-"Uriolia,Urkar,Urkiark,Usguthmaonu,Ushvasali,Uspai,Usthinier,Utter,Utok,Uzra,"
-"Vaclo,Vadoish,Vadush,Vaescansa,Vak,Vaklin,Valcemlegduf,Valinior,Valnirra,"
-"Valnit,Valnor,Vandir,Varag,Varala,Vararion,Varbag,Vashitt,Vaudash,Vebril,"
-"Vebrilah,Vebrinduil,Velisk,Vellin,Velnick,Venduvalo,Venezh,Veralon,Veramo,"
-"Verath,Verditt,Verilial,Verkon,Verlinn,Vermad,Vernoro,Verra,Vertick,"
-"Verusagno,Veshtar,Veskalica,Vigar,Vigdish,Vigor,Vihlo,Vilg,Vilsug,Vink,Virag,"
-"Virishneya,Virnella,Viroika,Virrugo,Virt,Virugusso,Vishnak,Vitrusgha,"
-"Vixezburto,Vladnir,Vladuanov,Vogdish,Vogor,Volugnaso,Vonak,Vorfin,Vorfindil,"
-"Vorg,Vork,Voshnak,Vougielan,Vourk,Vradash,Vragar,Vragdush,Vragor,Vralo,Vrang,"
-"Vrarbag,Vrarg,Vrart,Vraurk,Vren,Vridash,Vridish,Vrigor,Vrinak,Vring,Vrirt,"
-"Vrishnak,Vriurk,Vrodash,Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,"
-"Vrugdush,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vruurk,Vudish,Vugnael,Vuk,Vulg,Vulo,"
-"Vulsulta,Vumla,Vunak,Vurag,Vurbag,Vurg,Vushnak,Vushtin,Vylgrid,Wadud,Wajid,"
-"Wakh,Wakil,Walayla,Warathan,Warith,Wedielya,Wendomilla,Weira,Westraz,"
-"Widviringio,Wiggur,Wilnira,Wilp,Windego,Wintfeil,Wonrunmaldin,Worolusga,"
-"Wotiah,Wurgturah,Xaffrasz,Xaigatil,Xaihan,Xalertha,Xarangat,Xartrez,Xasz,"
-"Xaztex,Xeminei,Xenghir,Xerxix,Xibir,Xiesza,Xirasz,Xirr,Xirtra,Xirz,Xiterz,"
-"Xixzart,Xoishcan,Xoloshiva,Xour,Xue,Xu Ghamul,Yanirah,Yarabo,Yatungoa,Yaugol,"
-"Yazan,Yazid,Yeamila,Yeseriz,Ygrille,Ylena,Ylogcan,Yogthila,Yowuddry,Yrt,"
-"Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,Ysedda,Ysell,"
-"Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysura,Yswniver,Ysycla,Ysylla,"
-"Ysylyan,Ysyrka,Ysyssa,Yuhgurtah,Yunur,Yuraena,Yuriaz,Yushua,Yusri,Yutarh,"
-"Zaembriel,Zagriw,Zahir,Zaki,Zakwan,Zalamua,Zalde,Zalmut,Zandler,Zarep,Zazabi,"
-"Zburait,Zebeli,Zedrix,Zeikhal,Zeliste,Zenur,Zhiro,Ziembieth,Zilrix,Ziyad,"
-"Zogier,Zora,Zorgal,Zorugoth,Zoruleive,Zouhan,Zouridga,Zubayr,Zuhayr,Zuree,"
-"Zzupde"
+"Lagaleth,Aereste,Agshirt,Ahyaul,Aigaitha,Aigaithil,Aigaithol,Aigalam,Aigaling,Aigalir,Aigalol,Aigalsin,Aigatan,Aigatlod,Aigatsel,Aigatsol,Aigatu,Aigcataz,Aigcatil,Aigcating,Aigcatim,Aigcatsol,Aigcatur,Aigdring,Aigdril,Aigdersil,Aigdursol,Aigthain,Aigthasim,Aigthaug,Ainhuol,Ainuel,Aj "
+"Taum,Akoark,Akort,Akzalk,Alabrylla,Alaebrylla,Alaeniver,Alaitha,Alaith,Alaithol,Alaithsol,Alaithu,Alalil,Alalla,Alalol,Alalsol,Alalum,Alamade,Alamaitheol,Alanamix,Alaryan,Alatarc,Alating,Alatlor,Alatsil,Alberast,Aldarsol,Aldram,Aldril,Aldring,Aldrinm,Aldrulo,Aldrol,Aldumcatil,Aldura,Aldurlosp,Aldurol,Aleacla,Aleara,Alearka,Alena,Alengwen,Aleuksia,Al-"
+"Kuz,Alianora,Aligbrula,Alilonna,Alim,Alinash,Alingwen,Alinoe,Alistre,Almarcy,Alminzo,Alolonna,Alora,Althaam,Althail,Althalea,Althalo,Althaol,Althasil,Althasol,Althau,Althiela,Alubrylla,Aluneire,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alynoic,Alyra,Alyryan,Almahdi,Altaf,Amedë,Amilmaldur,Amorfir,Amowyn,Amprixta,Anaitharl,Anaithing,Anaithu,Analil,Anallom,Analol,Analsil,Analuh,Anataj,Anating,Anatir,Anatol,Anatsol,Ancataz,Ancatil,Ancatol,Ancattu,Andril,Andrih,Andrulop,Andrun,Anduril,Andurol,Andursol,Anduru,Anerion,Anexir,Anglachem,Anilad,Anilgawyn,Anitraz,Ankthorez,Anoithil,Anoush,Antarah,Anthaal,Anthaing,Anthaim,Anthaol,Anthasil,Anthasor,Anthaul,Anui,Anundil,Ardenia,Arnenvier,Arkarm,Arix,Arnondo,Asadel,Asbasalieg,Asgalioth,Asgertase,Asgriah,Ashraf,Asvetro,Athir,Atrede,Aufiloch,Auginet,Augithad,Augaithing,Augaithsil,Augaithur,Augalam,Augaling,Augating,Augatlo,Augatol,Augatsil,Augcatil,Augcatun,Augdrin,Augdrur,Augdursil,Augdura,Augduril,Augdursol,Augduruh,Augthail,Augthaim,Augthalo,Augthaol,Aungubulang,Ausrethgul,Auuglann,Auxdornath,Avenore,Axiz,Azimur,Azkabin,Azluheb,Azorein,Azurena,Azurix,Baart,Babreca,Bacbouc,Badri,Baelgaltir,Bagar,Baha,Bahamix,Bahiyy,Bahlagdi,Bahldrusk,Bahomet,Balfelor,Bakr,Bakri,Baligh,Balqueria,Bandar,Baogrish,Baradug,Barag,Barakah,Barbag,Barguntil,Barkuk,Barnasab,Bashnak,Baugahler,Baugdurol,Bayhar,Belineur,Belandil,Beleumaodir,Belise,Belithraldor,Belondel,Belurmeinseil,Belyrion,Bentesicime,Beolduf,Beraorg,Bercenego,Bergsnoth,Berigstan,Berq "
+"Tzerit,Bersevian,Beuchaliol,Bhunk,Bicoru,Bidush,Bielura,Bierthur,Bifix,Bik,Bilal,Bilerau,Bilg,Bilo,Binak,Biol,Biothfeorst,Birt,Bishr,Bisiluash,Bistemut,Biung,Bjouz,Bloik,Blokkar,Blygwyn,Bogdush,Bogor,Bok,Bolg,Bolunir,Bomduril,Borduntur,Borig,Borkuk,Borosnoat,Bort,Boshnak,Boulosh,Braedda,Brakor,Brassa,Bravyan,Breabrylla,Breall,Brealla,Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brithaithol,Britomartix,Brobrylla,Brogk,Brollyra,Brona,Bronoic,Brora,Brugaranti,Brugung,Brungwen,Bruorka,Bruryan,Brwra,Brycla,Brynoic,Bukkak,Bulruk,Budail,Budush,Bugdish,Buk,Bunak,Burag,Burg,Burgaur,Burhan,Burk,Buurk,Cael "
+"Einur,Caella,Caena,Caengwen,Caervecuto,Caevyan,Caldur,Calebrindel,Calebrindir,Calianasa,Calimire,Calisbia,Calla,Calusa,Calówien,Canduil,Caranfir,Carang,Carduan,Caribdi,Carla,Carseglio,Cassa,Cealonna,Cecropido,Celang,Cera,Ceryan,Cewdda,Chagron,Chamil,Chiona,Churumol,Cibrylla,Cicla,Cinoic,Cira,Cirduel,Cirsai,Cissa,Cithraldur,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleezi,Clemirfone,Clenoic,Clezz,Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,Clothildrien,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Colgton,Cora,Coranthyo,Corkkar,Corodro,Corugush,Coryan,Cradagon,Crespuo,Crudvo,Crysgarin,Cucla,Cudda,Cundir,Curcopia,Curnacuyac,Curyan,Cwleina,Cwengwen,Cywivyan,Cydda,Cylasu,Cylla,Cyllyra,Cylyan,Cyniver,Cyvyan,Dabirmiliun,Dabnusagosh,Daedda,Daelyan,Daengwen,Daenoic,Dagnea,Dalaleika,Dallyra,Dalmalso,Damell,Dangwen,Danmonlulbam,Dara,Dassa,Deanoic,Deassa,Deborisa,Deimiluel,Delandel,Delaraldur,Delkkak,Della,Delilmaldor,Deliol,Delorion,Delundil,Demalot,Demla,Denya,Derceto,Deucalion,Devyan,Deyalh,Dhakwan,Dhogari,Dicla,Dijuf,Diniver,Dinsill,Dirala,Dirraquio,Dissa,Dobielon,Doburah,Dollyra,Donmolig,Dornoth,Dorobal,Doromina,Drahganilo,Drasan,Drensig,Drethmol,Dullyra,Dulonna,Dulaithil,Dulaithing,Dulaithlot,Dulaithsil,Dulaithsol,Dulalat,Dulalin,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatur,Dulcatil,Dulcating,Dulcatlom,Duldril,Duldrik,Duldralo,Duldrol,Dulprisil,Duldruz,Duldurag,Dulduring,Duldursil,Duldurur,Dulnica,Dulthalol,Dulthasil,Dulthasol,Dulthaun,Dumanti,Dumuthi,Durbag,Durktuver,Duselia,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Eäréwiel,Eärilmadë,Ealumox,Ebernith,Ebougrush,Ebraham,Edalei,Edusten,Eefur,Efnix,Efnushguraj,Egnosian,Egulym,Einidia,Eisal,Eitcha,Eki,Eladrieng,Elacla,Elaedda,Elaell,Elaelonna,Elaessa,Elaevyan,Elaiseng,Elallyra,Elalonna,Elara,Elavern,Elebrildor,Elebrindel,Elélan,Elémbor,Elemir,Elealla,Eleanoic,Elenoic,Elerka,Eleusinion,Eliomir,Eliondil,Elithae,Elivyan,Elomuar,Elorfilad,Elradrien,Elrioldor,Elriolith,Elrorfir,Elsviriz,Elueso,Elulonna,Elurka,Elval,Elvandir,Elvaramir,Elvioldur,Elwllyra,Elwlonna,Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrion,Elyrka,Elzea,Enariol,Endaira,Endornathain,Enuilamde,Eowimbor,Eowiomir,Eowyla,Eponure,Eradash,Eradiush,Eragdish,Eragor,Eranak,Erang,Erarg,Erart,Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,Erogdush,Erok,Erong,Erorbag,Ertjon,Erudish,Erugar,Erugdush,Erulo,Erunk,Eruol,Erurag,Eruurk,Eshi,Eshkyrech,Esmodrigor,Estielem,Estinfalide,Estumbuprag,Etsenia,Eubuleo,Eugabor,Eulimn,Eulqaia,Eurinoa,Eur "
+"Masup,Evirigna,Evouli,Exnaug,Eyyu,Ezneale,Fabudain,Fadriendel,Faduhc,Faeminyon,Faervilim,Faiminei,Faisulal,Falvila,Fanthurfin,Falulmisso,Famyih,Fanaithsil,Farandir,Farlamir,Farseluo,Faugamel,Fazzi,Fáwyn,Feagoil,Febarnet,Feplerchaun,Ferabela,Ferdigan,Ferfamora,Fersijadmul,Festum,Feyz,Fgor,Fizlandilu,Fienar,Figalfin,Filanur,Filictor,Filvarëule,Finafgol,Findolith,Finduanor,Fioril,Fiorlah,Fizztrax,Flaamenthil,Flixta,Flizzil,Floqke,Fnigah,Foiginoch,Folmagauh,Fondarea,Fongaorn,Formontor,Forouzandeh,Fougul,Foutum,Fódë,Frellah,Freomeda,Frikeq,Frizzle,Fraonderic,Ftiotide,Fudail,Fuensithiem,Fuitheck,Furlamthaol,Furviramo,Fusenoyc,Fymn,Fyrion,Gabithol,Gadash,Gadriendil,Gadrieng,Gagdush,Gagor,Galalith,Galar,Galeck,Galela,Galeldur,Galelith,Galo,Galsh,Gamal,Gamilenao,Ganak,Ganamau,Ganelfir,Gaunk,Gaol,Garadin,Garag,Garaldor,Garchin,Gark,Garkuk,Garlan,Garlin,Garruj,Garushi,Garzilium,Gashnak,Gashinar,Gasthol,Gaugramelo,Gaunthelar,Gaushii,Gaustun,Gawna,Gegchi,Gelka,Gelknick,Genoro,Gerchog,Gewcla,Ghafur,Ghakhan,Ghani,Ghayth,Gienk,Gigor,Gillan,Gillohn,Ginak,Ging,Giombor,Girt,Gisharri,Glamadriel,Glamaithil,Glamaithim,Glamaithol,Glamaithsol,Glamalil,Glamaling,Glamalir,Glamallot,Glamaluf,Glamatug,Glamcatah,Glamcatil,Glamcatu,Glamdran,Glamdril,Glamdrelo,Glamdirsol,Glamdurain,Glamduring,Glamdurix,Glamthaal,Glamthasil,Glamthasol,Glamthaug,Glararil,Glaunurg,Glilmal,Glimir,Glomin,Glómir,Gnukk,Goark,Gogdish,Gogdush,Gomaithar,Gomaithil,Gomaithsol,Gomalil,Gomalux,Gomatarr,Gomatil,Gomating,Gomativ,Gomcatil,Gomcatlo,Gomdrah,Gomdril,Gomdring,Gomdrim,Gomdrol,Gomduri,Gomdurloh,Gomdursil,Gomdursol,Gomdurup,Gomthaatz,Gomthalor,Gomthasol,Gorfindil,Gorospkin,Gort,Goruk,Gorzol,Goshnak,Goust,Gozmiog,Grada,Grahklin,Grak,Gralg,Gralo,Granak,Graol,Graoug,Grarbag,Greragrog,Greth,Gribbel,Gridash,Griedush,Gridda,Grigar,Grignish,Grigor,Grilg,Grilo,Grink,Grirg,Grishnak,Grishuglunakh,Grithmau,Grodish,Grogar,Grolg,Gronk,Grorag,Grorg,Grork,Grort,Groshnak,Grotish,Grouk,Grudash,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurt,Gruurk,Grymma,Gugdish,Gugdush,Gulcating,Gulg,Gulo,Gumbundulun,Gumalsil,Gunak,Guong,Gurbag,Gurt,Gushnak,Gurk,Gurm,Guthmorcobel,Gwaera,Gwaessa,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,Gwonoic,Gworyan,Gwullyra,Gwussa,Gwycla,Gwydda,Gywvyan,Habohl,Habudamil,Hachuel,Hadash,Haderald,Hadiel,Hadum,Hafmaihjin,Hagar,Hagdelstaf,Hagdush,Hagor,Haik,Hakam,Halimanir,Hanfonderlincan,Hank,Haragdinul,Hareth,Harith,Harrmukhag,Harpalice,Harquem,Hashnak,Hasz,Hathnei,Haub,Haugduring,Haurapitko,Hausieg,Hayanami,Hayanee,Hebril,Heffez,Hegledna,Heldra,Herbet,Hertrazzir,Herudo,Hesz,Hezzi,Hidaspe,Hidush,Higduhn,Hilal,Hilg,Hilgarion,Hilmariand,Hilonome,Hilsmagath,Hinak,Hing,Hiol,Hiragna,Hirg,Hisiloem,Hobgar,Hodul,Hogor,Hoi,Hoidish,Holinurie,Holruk,Hong,Hool,Horbag,Horfindel,Horgsten,Hort,Hougssen,Housneak,Huadash,Hualg,Huchnubulo,Hudish,Huesk,Hugor,Huk,Hulo,Huol,Hurag,Hurbag,Hurimtum,Hurk,Hushnak,Huurk,Huyagharu,Ibmaecire,Ibmahalej,Ibsongord,Ichtka,Ictareuse,Idaluam,Idrasil,Iekal,Ifianasa,Ifbajimn,Igfeniorth,Igmavenar,Ihbur,Ihmusif,Ikatere,Ilamound,Ilisiade,Illa,Ilmiwir,Ilsalaah,Inai,Inalai,Inexi,Iraene,Irele,Iridelia,Irix,Iripza,Irobryne,Isadrieng,Isaurico,Iselan,Isilmandel,Isirion,Isorfilad,Isorfindir,Isurnym,Isuwyn,Isyndel,Isáwen,Isebridien,Isebrinia,Isemlath,Isendra,Iséng,Iseviel,Isil-"
+"Garith,Isithradien,Isithrarith,Isithrawiel,Isóthien,Ismozg,Issalai,Istirazu,Ithlurnae,Ivayinna,Iverone,Ivinhao,Ivonitha,Iznoud,Jabuoc,Jacla,Jadnor,Jaena,Jaerka,Jaevyan,Jalasad,Jalika,Jalyan,Jana,Jarame,Jarka,Jasmuniure,Jassa,Jaugwan,Jaumalon,Jawhar,Jeabrylla,Jealla,Jeanoic,Jelifem,Jemara,Jeniver,Jerco,Jerguo,Jeudriel,Jezzix,Jibran,Jibril,Jiel "
+"Dahr,Jiryan,Jissa,Jizz,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Jowe,Jubair,Judda,Juffarin,Jugrund,Jull,Julonna,Jumah,Junayd,Jura,Jureh,Jusif,Juturne,Juwain,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Kadar,Kadin,Kadir,Kahil,Kalesiw,Kaliez,Kalinthya,Kalknix,Kall,Kalynteri,Kategard,Karak,Karbuk,Kargnak,Karterak,Karum,Kauthyn,Kayrak,Kegchitosh,Kelkrar,Kepz,Kernix,Kersezz,Kerta,Kertrasz,Kerx,Kerxenix,Kezz,Khaliq,Khayr,Khimessei,Kiryle,Klexaz,Klezyx,Khangatilha,Kiepp,Kierkugar,Kilkrar,Kingrok,Kitara,Kladiul,Klept,Klowe,Klud,Koen,Kognucha,Kokkan,Kolbyn,Koleri,Kolk,Komak,Koqeiri,Koqnir,Korgnak,Koria,Kork,Koruck,Koslourg,Kou "
+"Korul,Kórrigan,Kramak,Krog,Krukrak,Krumuk,Kruo,Kuknuk,Kurkur,Kurmak,Krisva,Konstentyn,Korim,Koschye,Krarax,Krenarex,Krex,Krinex,Kroo,Kropstin,Kthulju,Kurmalund,Kushana,Kyrtk,Laeniver,Laenoic,Laeryan,Lagrest,Lagusster,Laivaergne,Laizix,Lalaith,Lamatro,Langwen,Laomedontu,Laphira,Larka,Lassa,Lauvin,Lazki,Lealonna,Lealyan,Ledda,Legilad,Legorfindil,Legorfirion,Legorniath,Leifarom,Leivura,Lelonna,Lelyan,Lengwen,Leprethnaum,Lerka,Lessa,Leucotoe,Leukritia,Leuria,Lewlla,Licurgo,Lidda,Lill,Lilupar,Lina,Lipku,Lirka,Liryan,Lisgurerg,Lisidice,Lisuvik,Livyan,Lixeez,Loberta,Lobrishg,Locla,Lodda,Lollyra,Lolonna,Lomurg,Lophareon,Lorbuc,Lorquiel,Lortand,Lorthac,Lorthik,Loturni,Loubregarc,Loungodul,Lowryan,Luanud,Luargko,Lucanaor,Lugoum,Lullah,Lulyan,Lungwen,Lunoic,Luriniel,Luryan,Luvatamir,Lwcla,Lwnoic,Lycla,Lylla,Lylyan,Lyna,Lynoic,Lómariand,Maecla,Maeniver,Maerilna,Magirilion,Mahjub,Mahmud,Mahrul,Maijzasal,Maimun,Makron,Malaputo,Malatare,Maldurse,Mamurio,Mansrabunag,Maraldur,Mariudan,Markaak,Mar "
+"Kaog,Markuk,Marthaol,Maru,Marvin,Masaw,Masude,Masulami,Mausika,Mavyan,Meacla,Mealyan,Meana,Meangwen,Meanoic,Medda,Medesicaste,Meglusur,Megrollu,Meiseleng,Mejmed,Melalin,Meleagride,Melesagor,Melianur,Melicenea,Melifior,Melisteo,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,Merall,Merallyra,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,Merebrylla,Merella,Merengwen,Meressa,Mergcan,Merilyan,Merina,Merinoic,Merissa,Merivyan,Merknik,Merogiv,Merolla,Merolyan,Merona,Meroniver,Mersulla,Merubrylla,Merulda,Merurka,Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Mesligfor,Messa,Meuj,Merask,Meyumn,Mhoro,Midsidrie,Migly,Milandra,Milonna,Minoloti,Miomir,Mireyah,Mirsha,Miskapuo,Mithrand,Miyen "
+"Kha,Mohrouh,Molokti,Molyan,Mondir,Moniver,Monsantir,Mor "
+"Drokuhr,Morduf,Morelna,Morgemil,Morisyeva,Morridgen,Moruboa,Morunthya,Morwen,Mossa,Mosgarnaruth,Mot,Mouresla,Moxanzz,Mubdugollush,Mudda,Mughni,Muhodre,Mulcatsol,Mullyra,Mulyan,Muneirwe,Munsif,Muntasir,Muqtadir,Murad,Murid,Murshid,Murstain,Murtada,Muryan,Musawwir,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myall,Mylla,Myngol,Myra,Myvyan,Mylith,Nabrylla,Nadrieldor,Naecla,Naell,Nalith,Nalyan,Nangwen,Naraithil,Naraithing,Naraithol,Naraithsil,Naraithsol,Naraithum,Naralan,Naralil,Naralsil,Naraluh,Naratlol,Naratsil,Narcating,Narcativ,Narcatol,Narcatsil,Narcatsol,Nardrab,Nardril,Nardring,Nardrig,Nardrol,Nardarsil,Nardrsol,Nardrul,Nardurah,Narduril,Nardurol,Nargak,Nargig,Narthalo,Nasdrubolish,Nathlaroel,Naucrati,Naumaragoth,Naxisz,Nazmi,Nealla,Neallyra,Nealonna,Nearof,Neavyan,Nemertex,Nera,Nerogish,Nessa,Ngondo,Nibalusg,Nibiru,Nibrash,Nidal,Nieron,Nimbuel,Nimdroth,Ninoic,Niryan,Nivyan,Nix,Noalor,Nobrylla,Nocht,Noctaul,Nolla,Nonoic,Nokan,Norfilith,Norfindir,Norka,Noryan,Noughalya,Nuaym,Nucla,Nuhayd,Nuhmu,Nulla,Nulyan,Numair,Numan,Nungwen,Nuri,Nusktar,Nusrah,Nuvyan,Nuyll,Nwllyra,Nwryan,Nwvyan,Nybrylla,Nylyan,Nymn,Nyryan,Nyssa,Nyvyan,Obeor,Odailuo,Oden,Odiel,Odo,Odoacru,Odurme,Oenoxoe,Ofirion,Ogdenescu,Ogi "
+"Kegnach,Ogliara,Ohcan,Ohecyn,Oktubahli,Olamdursol,Olath,Olegar,Oleif,Oleiron,Olineur,Olk,Olufarin,Omerith,Omoran,Onesipo,Onore,Onyi,Oona,Opalei,Orguathise,Orguel,Orialdur,Oridash,Orkut,Orleomyr,Ormagg,Orofarnië,Oroloqi,Orrh,Orsendur,Orsifal,Orsil,Orugusk,Osarcyn,Osbuhgnax,Oselienn,Oshibi,Osse,Osteron,Othroshagrat,Otogarim,Otride,Otsere,Ougdram,Oumina,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,Owain,Owaryn,Oweran,Owercyn,Owidry,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworcyn,Oworraent,Owuddyn,Owugwyn,Owur,Owyran,Oxpeii,Padrusil,Pagdish,Pagor,Pahsur,Paige,Palo,Pambedrumne,Pamirie,Paol,Parag,Parduthal,Parsifeluem,Parviz,Pashnak,Paskemuthar,Pausul,Pedergish,Pegrorausg,Pelaithaz,Pelaithil,Pelaithing,Pelaithiq,Pelaithlot,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,Pelalsil,Pelalsol,Pelalum,Pelatil,Pelating,Pelatol,Pelatsil,Pelatur,Pelcating,Pelcatlop,Pelcatol,Peldrat,Peldril,Peldrsol,Peldruh,Pelduril,Pelduring,Pelduri,Peldurol,Peldursol,Peldurum,Pelthaal,Pelthasil,Pelusso,Persidul,Perthwan,Pesralg,Pestiurn,Phalaxi,Phoebe,Phutalmo,Pidush,Pigrush,Pilg,Pinak,Piper,Pirgasb,Plaxih,Plesix,Podager,Podish,Podusg,Poledean,Polg,Porbag,Porg,Pourk,Poret,Porfildur,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,Praol,Prarag,Prarg,Prark,Prartsag,Prashnak,Praurk,Prerfosurz,Presch,Pridish,Prigar,Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,Progush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,Prugdish,Pruk,Prunak,Prunk,Prurbarg,Prurg,Pruurk,Psipocum,Ptoliporto,Puladam,Pulg,Pulo,Punak,Punhg,Purag,Purg,Pusmahalu,Pustten,Puurk,Pyanepsie,Pyldur,Pyturc,Qadir,Qahhar,Qalioqe,Qam,Qanatloc,Qawi,Qayyum,Qeg "
+"Verkum,Qilenrama,Qitanira,Qizzeq,Quarismesta,Quddul,Quirenia,Quirisofo,Quisadz,Quroqoniba,Rabarecnu,Rabolux,Radash,Raebrylla,Raera,Raerka,Ragar,Ragdish,Rah,Rahlea,Rahunlar,Raithuin,Rakovisu,Ralonna,Raluenil,Ramnusia,Rang,Ranko,Ransevkurr,Raol,Rara,Rarag,Rarbag,Rark,Rarka,Rashid,Rashnak,Rassa,Rastud,Raurk,Ravsnuc,Rawdda,Razzaq,Reacla,Realla,Reana,Reangwen,Reh "
+"Shai,Rella,Relyan,Rengwen,Rei,Reknak,Renuto,Rerka,Reshan,Revyan,Rewllyra,Riamn,Rialna,Rik,Rileg,Rilluna,Rilmandil,Rilmasil,Rilyan,Rimilmandir,Rinak,Rirg,Rirka,Rithrandil,Riwlla,Roacura,Rodry,Rodush,Rogdish,Rohul,Roirk,Rolduen,Rolo,Ronak,Rorfindil,Rorta,Roth,Rubenof,Rucla,Rudash,Rufaroz,Rugar,Rugdish,Ruhnar,Ruk,Rulairuki,Runadrieng,Rung,Ruol,Rurag,Ruryan,Rushnak,Ruslika,Ruvlonna,Rwngwen,Rybrylla,Ryna,Ryngwen,Rynk,Rytuirka,Sador,Saell,Saellyra,Saenuber,Saerka,Saessa,Sahnor,Saibarini,Sailik,Salanix,Salimeh,Salik,Sallyra,Salmiegar,Salmiriem,Samosatu,Sandix,Sangaratil,Sanoic,Sanrauv,Saprazz,Sapnux,Saqr,Sara,Saria,Sariyah,Sarjine,Sarrusavag,Sarumegor,Sasegar,Sassa,Sati,Satral,Savnish,Schohozarog,Scorbu,Searka,Sebetide,Sebrun,Sehetti,Seif "
+"Girud,Seliandra,Selinunt,Seluomon,Sembriolibam,Semirami,Sena,Senoic,Sentinumo,Senzlerne,Seplattin,Seprorian,Sera,Sergustu,Serieva,Seulona,Sgalisse,Sgriag,Shaelmoc,Shakur,Siddiq,Sieulieare,Sigrery,Sigwuverno,Silfeleng,Sillumatti,Silmiril,Silonna,Sinan,Sinderul,Sinobia,Sira,Siraj,Sireyan,Sirvou,Sivnisiek,Skalix,Skandim,Skazix,Skeely,Skeezun,Sklizle,Skloe,Skorh,Skrez,Slive,Slizil,Slughirago,Slouag,Smirgaurn,Smirk,Sniuhgor,Sodelstan,Soederlein,Soereng,Sofian,Soldevig,Soleinth,Sonna,Soraceno,Sorekol,Sorfind,Sorivor,Sorka,Sorolle,Sougorn,Sowngwen,Soxgeurt,Sprizz,Sqal,Srygor,Ssexur,Sterizz,Stur,Subhi,Subrylla,Sucrator,Sufyan,Sugner,Suhayb,Sull,Sulonna,Sulyan,Suniong,Suqruto,Sura,Surdakhaur,Sussa,Suvok,Sverunidgi,Svignir,Swanoic,Swlla,Swlyan,Swvyan,Sylar,Syllyra,Sylyan,Syssa,Tadriendir,Tagnia,Takolak,Talerez,Tallasue,Talsthaf,Taltibio,Tanaël,Taral,Taraldur,Tarcatum,Tarex,Tarigolin,Tarnix,Tarsaff,Tarthmoul,Tarysth,Tauh,Taumacu,Tavyscite,Tawfiq,Tawhid,Tawwab,Taxiarqi,Taymullah,Taysir,Tel-"
+"Fabiel,Telxipea,Temisnioz,Teptum,Tequely,Terpsicore,Terthasol,Tesmurad,Teugarsen,Thael,Thalaisiel,Tharil-"
+"Garën,Thessaly,Thirgoalin,Thorsgan,Thrambor,Thraom,Thraral,Thrilgamir,Thrilmandel,Thrimir,Thrion,Throlar,Thrund,Thryriand,Thyndamara,Tilgan,Tilmalad,Timoh,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Timbirtidul,Tirasch,Tirax,Tirix,Tissamo,Tiznuscievi,Tombadulum,Torval,Torfildur,Torquc,Trabuk,Trakkon,Trathdurl,Treidursol,Tremacalo,Trithaithan,Trithaithil,Trithaithif,Trithaithlov,Trithaithsil,Trinaithsol,Trirtaithu,Trigalilh,Trithalol,Trithata,Trislatil,Trithatloh,Triwatsol,Trithcatlo,Trithcatsol,Trithcatug,Trithdril,Trithdring,Trithdrim,Trithdrloh,Trithdrun,Trithduril,Trithduring,Trithdurlom,Trithdurol,Trithdursil,Trithduru,Trithaap,Trimathail,Triththaing,Triththauq,Trogish,Tufail,Tujcara,Tunorfiwyn,Uarso,Ubereo,Ucalea,Udirne,Udomaela,Uffestux,Ugmelorth,Uksul,Ulmë,Umutno,Unadrieldor,Unadrier,Unalah,Unaraldur,Unaril,Unénia,Uneldor,Ungolyost,Unil-"
+"Gadia,Unilmadia,Unindra,Uniolia,Uniolith,Unionia,Unioril,Unondir,Unorfildor,Unorfiril,Unorfiwen,Unulad,Unóndra,Unuviel,Unynia,Uradriela,Uraclya,Uradriedia,Urambar,Uránia,Urárith,Urebriclya,Ureclya,Urilmadia,Urilmawiel,Uriolia,Urkar,Urkiark,Usguthmaonu,Ushvasali,Uspai,Usthinier,Utter,Utok,Uzra,Vaclo,Vadoish,Vadush,Vaescansa,Vak,Vaklin,Valcemlegduf,Valinior,Valnirra,Valnit,Valnor,Vandir,Varag,Varala,Vararion,Varbag,Vashitt,Vaudash,Vebril,Vebrilah,Vebrinduil,Velisk,Vellin,Velnick,Venduvalo,Venezh,Veralon,Veramo,Verath,Verditt,Verilial,Verkon,Verlinn,Vermad,Vernoro,Verra,Vertick,Verusagno,Veshtar,Veskalica,Vigar,Vigdish,Vigor,Vihlo,Vilg,Vilsug,Vink,Virag,Virishneya,Virnella,Viroika,Virrugo,Virt,Virugusso,Vishnak,Vitrusgha,Vixezburto,Vladnir,Vladuanov,Vogdish,Vogor,Volugnaso,Vonak,Vorfin,Vorfindil,Vorg,Vork,Voshnak,Vougielan,Vourk,Vradash,Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vren,Vridash,Vridish,Vrigor,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vruurk,Vudish,Vugnael,Vuk,Vulg,Vulo,Vulsulta,Vumla,Vunak,Vurag,Vurbag,Vurg,Vushnak,Vushtin,Vylgrid,Wadud,Wajid,Wakh,Wakil,Walayla,Warathan,Warith,Wedielya,Wendomilla,Weira,Westraz,Widviringio,Wiggur,Wilnira,Wilp,Windego,Wintfeil,Wonrunmaldin,Worolusga,Wotiah,Wurgturah,Xaffrasz,Xaigatil,Xaihan,Xalertha,Xarangat,Xartrez,Xasz,Xaztex,Xeminei,Xenghir,Xerxix,Xibir,Xiesza,Xirasz,Xirr,Xirtra,Xirz,Xiterz,Xixzart,Xoishcan,Xoloshiva,Xour,Xue,Xu "
+"Ghamul,Yanirah,Yarabo,Yatungoa,Yaugol,Yazan,Yazid,Yeamila,Yeseriz,Ygrille,Ylena,Ylogcan,Yogthila,Yowuddry,Yrt,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysura,Yswniver,Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa,Yuhgurtah,Yunur,Yuraena,Yuriaz,Yushua,Yusri,Yutarh,Zaembriel,Zagriw,Zahir,Zaki,Zakwan,Zalamua,Zalde,Zalmut,Zandler,Zarep,Zazabi,Zburait,Zebeli,Zedrix,Zeikhal,Zeliste,Zenur,Zhiro,Ziembieth,Zilrix,Ziyad,Zogier,Zora,Zorgal,Zorugoth,Zoruleive,Zouhan,Zouridga,Zubayr,Zuhayr,Zuree,Zzupde"
 msgstr ""
 
 #. [lua]: training.describe_training_level
@@ -2231,18 +1991,18 @@ msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:125
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:128
-msgid "Scenario"
+#: data/campaigns/World_Conquest/lua/map/main.lua:127
+msgid "Scenario "
 msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:130
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 msgid "Final Battle"
 msgstr ""
 
@@ -2508,7 +2268,7 @@ msgid "Enemies"
 msgstr ""
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
 msgid "Allies"
 msgstr ""
 
@@ -3400,26 +3160,42 @@ msgid "World Conquest 4p"
 msgstr ""
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid "WC1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
+msgid "WC2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
+msgid "WC3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
+msgid "WC4p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:33
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:37
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 levels of "
 "difficulty.\n"
@@ -3427,91 +3203,86 @@ msgid ""
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
-msgid "WC"
-msgstr ""
-
-#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Beginner"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Peasant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Easy"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Sergeant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Lieutenant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Medium"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "General"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Hard"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Challenging"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Grand Marshal"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Expert"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Nightmare"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:125
 msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:132
 msgid "Prose, Grammatical and Text Assistance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:148
 msgid "Minor Code Contributors"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:158
 msgid "Playtesting"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr ""

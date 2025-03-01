@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,12 +38,40 @@ class combobox : public text_box_base
 	friend struct implementation::builder_combobox;
 
 public:
-	explicit combobox(const implementation::builder_styled_widget& builder);
+	explicit combobox(const implementation::builder_combobox& builder);
 
 	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
 	}
+
+    std::size_t get_max_input_length() const
+    {
+        return max_input_length_;
+    }
+
+    void set_hint_text(const std::string& text)
+    {
+        hint_text_ = text;
+        update_canvas();
+    }
+
+    std::string get_hint_text() const
+    {
+        return hint_text_;
+    }
+
+    void set_hint_image(const std::string& image)
+    {
+        hint_image_ = image;
+        update_canvas();
+    }
+
+    std::string get_hint_image() const
+    {
+        return hint_image_;
+    }
+
 
 	void set_hint_data(const std::string& text, const std::string& image)
 	{
@@ -58,9 +86,14 @@ public:
 		set_value("");
 	}
 
-	void set_values(const std::vector<::config>& values, unsigned selected = 0);
+	int get_item_count() const
+	{
+		return values_.size();
+	}
 
+	void set_values(const std::vector<::config>& values, unsigned selected = 0);
 	void set_selected(unsigned selected, bool fire_event = true);
+	unsigned get_selected() const { return selected_; }
 
 protected:
 	/* **** ***** ***** ***** layout functions ***** ***** ***** **** */

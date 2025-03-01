@@ -31,7 +31,7 @@ return function(eventname, priority, fcn)
 		priority = priority,
 		first_time_only = false,
 		action = function()
-			context = wesnoth.current.event_context
+			local context = wesnoth.current.event_context
 			wesnoth.experimental.game_events.set_undoable(true)
 			fcn(context)
 		end

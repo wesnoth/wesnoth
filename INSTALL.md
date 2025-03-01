@@ -2,13 +2,13 @@
 
 ## Prerequisites
 
-Wesnoth requires a compiler with sufficient C++17 support such as GCC 8 and
+Wesnoth requires a compiler with sufficient C++17 support such as GCC 11 and
 later, or a version of Clang with equivalent support.
 
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries             >= 1.66.0
+ * Boost libraries             >= 1.70.0
      Most headers plus the following binary libs:
    * Filesystem
    * Locale
@@ -19,6 +19,7 @@ order to build Wesnoth:
    * System
    * Coroutine
    * Graph
+   * Charconv (This requires boost 1.85 or higher and is optional but reccomended especially for clang builds)
  * SDL2 libraries:
    * SDL2                      >= 2.0.18 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
    * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)

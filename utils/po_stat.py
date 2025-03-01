@@ -209,7 +209,7 @@ if __name__ == '__main__':
         elif arg.startswith('--textdomains='):
             arg = arg[14:]
             # Is supposed to be:
-            # wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units
+            # wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tsg,wesnoth-units
             textdomains = re.split(r'[;, ]', arg)
 
     wesnoth_dir = os.path.realpath(os.path.join(os.path.dirname(sys.argv[0]), '..'))

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,13 +28,6 @@
 #error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
-#define UNUSED(x)  ((void)(x))     /* to avoid warnings */
-
-// To allow using some optional C++20 features
-#if __cplusplus >= 202002L
-#define HAVE_CXX20
-#endif
-
 #if defined(__clang__)
 #endif
 
@@ -53,10 +46,35 @@
  * attributes in the gnu:: namespace, so has to have the #if, and the #if means we need the #ifdef.
  */
 #ifdef __has_cpp_attribute
+
 #if __has_cpp_attribute(gnu::no_dangling)
 #define NOT_DANGLING [[gnu::no_dangling]]
 #endif
+
+#if __has_cpp_attribute(likely)
+#define LIKELY [[likely]]
 #endif
+
+#if __has_cpp_attribute(unlikely)
+#define UNLIKELY [[unlikely]]
+#endif
+
+#endif // __has_cpp_attribute
+
 #ifndef NOT_DANGLING
 #define NOT_DANGLING
+#endif
+
+#ifndef LIKELY
+#define LIKELY
+#endif
+
+#ifndef UNLIKELY
+#define UNLIKELY
+#endif
+
+#ifdef __cpp_aggregate_paren_init
+#define AGGREGATE_EMPLACE(...) emplace_back(__VA_ARGS__)
+#else
+#define AGGREGATE_EMPLACE(...) push_back({ __VA_ARGS__ })
 #endif

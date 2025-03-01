@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -48,6 +48,7 @@
 #include "gui/dialogs/editor/edit_pbl.hpp"
 #include "game_config_view.hpp"
 
+#include "serialization/markup.hpp"
 #include "terrain/translation.hpp"
 
 #include <memory>
@@ -61,15 +62,11 @@ int last_context_ = 0;
 
 const std::string get_menu_marker(const bool changed)
 {
-	std::ostringstream ss;
-	ss << "[<span ";
-
-	if(changed) {
-		ss << "color='#f00' ";
+	if (changed) {
+		return "[" + markup::span_color("#f00", font::unicode_bullet) + "]";
+	} else {
+		return font::unicode_bullet;
 	}
-
-	ss << ">" << font::unicode_bullet << "</span>]";
-	return ss.str();
 }
 
 }
@@ -111,9 +108,9 @@ void context_manager::refresh_on_context_change()
 	resources::classification = &get_map_context().get_classification();
 
 	// Reset side when switching to an existing scenario
-	if (gui().get_teams().size() > 0) {
-		gui().set_team(0, true);
-		gui().set_playing_team(0);
+	if(!get_map_context().teams().empty()) {
+		gui().set_viewing_team_index(0, true);
+		gui().set_playing_team_index(0);
 	}
 	gui().init_flags();
 
@@ -235,10 +232,8 @@ void context_manager::load_mru_item(unsigned index, bool force_same_context /* =
 	load_map(mru[index], !force_same_context);
 }
 
-void context_manager::edit_side_dialog(int side_index)
+void context_manager::edit_side_dialog(const team& t)
 {
-	team& t = get_map_context().teams()[side_index];
-
 	editor_team_info team_info(t);
 
 	if(gui2::dialogs::editor_edit_side::execute(team_info)) {
@@ -359,7 +354,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const bool changed = mc.modified();
 
 		if(changed) {
-			ss << "<i>" << filename << "</i>";
+			ss << markup::italic(filename);
 		} else {
 			ss << filename;
 		}
@@ -422,7 +417,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		ss << "[" << mci + 1 << "] ";\
 
 		if(area.empty()) {
-			ss << "<i>" << _("Unnamed Area") << "</i>";
+			ss << markup::italic(_("Unnamed Area"));
 		} else {
 			ss << area;
 		}
@@ -453,7 +448,7 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 		label << "[" << mci+1 << "] ";
 
 		if(teamname.empty()) {
-			label << "<i>" << _("New Side") << "</i>";
+			label << markup::italic(_("New Side"));
 		} else {
 			label << teamname;
 		}
@@ -789,7 +784,6 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			continue;
 		}
 
-		// TODO: we should probably use `child` with a try/catch block once that function throws
 		if(const auto generator_cfg = i.optional_child("generator")) {
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
@@ -889,10 +883,10 @@ bool context_manager::write_scenario(bool display_confirmation)
 	try {
 		get_map_context().save_scenario();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Scenario saved."));
+			gui_.set_status(_("Scenario saved."), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 
@@ -904,10 +898,10 @@ bool context_manager::write_map(bool display_confirmation)
 	try {
 		get_map_context().save_map();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Map saved."));
+			gui_.set_status(_("Map saved"), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 
@@ -1034,8 +1028,8 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
-	gui().set_team(0, true);
-	gui().set_playing_team(0);
+	gui().set_viewing_team_index(0, true);
+	gui().set_playing_team_index(0);
 	gui_.init_flags();
 }
 
@@ -1064,7 +1058,7 @@ void context_manager::replace_map_context(const T&... args)
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
 {
-	map_contexts_[current_context_index_].swap(mc);
+	map_contexts_[current_context_index_] = std::move(mc);
 	refresh_on_context_change();
 }
 

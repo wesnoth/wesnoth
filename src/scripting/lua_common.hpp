@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -100,6 +100,12 @@ void luaW_filltable(lua_State *L, const config& cfg);
  * Once it's pushed, you can set the elements, eg with lua_rawseti.
  */
 void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names);
+
+/**
+ * Get the keys of a "named tuple" from the stack.
+ * Returns an empty array if the stack element is not a named tuple.
+ */
+std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx);
 
 /**
  * Converts a map location object to a Lua table pushed at the top of the stack.
@@ -224,6 +230,10 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
 
 int luaW_type_error(lua_State *L, int narg, const char *tname);
 int luaW_type_error(lua_State *L, int narg, const char* kpath, const char *tname);
+
+struct luaW_PrintStack { lua_State* L; };
+luaW_PrintStack luaW_debugstack(lua_State* L);
+std::ostream& operator<<(std::ostream& os, const luaW_PrintStack&);
 
 #define deprecate_attrib(name, prefix, level, version, msg) deprecated_message(prefix "." name, DEP_LEVEL::level, version, msg)
 

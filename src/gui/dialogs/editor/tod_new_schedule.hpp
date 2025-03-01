@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,12 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 /**
  * Dialog that takes new schedule ID and name from the player.
  * custom_tod.cpp is the main editor window for time schedules.
@@ -37,8 +33,8 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(tod_new_schedule);
 
 private:
-	virtual void post_show(window& window) override;
-	virtual void pre_show(window& window) override;
+	virtual void post_show() override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 
@@ -49,6 +45,4 @@ private:
 	void button_state_change();
 };
 
-
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

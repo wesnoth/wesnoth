@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 #pragma once
 
 #include <ctime>
+#include <cstdint>
 #include <fstream>
 #include <iosfwd>
 #include <memory>
@@ -152,6 +153,8 @@ std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
+/** location of the game manual file correponding to the given locale (default: en) */
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
@@ -377,8 +380,8 @@ std::string normalize_path(const std::string& path,
 
 /** Helper function to convert absolute path to wesnoth relative path */
 bool to_asset_path(std::string& abs_path,
-                   std::string addon_id,
-                   std::string asset_type);
+                   const std::string& addon_id,
+                   const std::string& asset_type);
 
 /**
  * Sanitizes a path to remove references to the user's name.
@@ -469,10 +472,9 @@ utils::optional<std::string> get_binary_file_location(const std::string& type, c
 utils::optional<std::string> get_binary_dir_location(const std::string &type, const std::string &filename);
 
 /**
- * Returns a complete path to the actual WML file or directory, if either exists.
+ * Returns a translated path to the actual file or directory, if it exists. @a current_dir is needed to resolve a path starting with ".".
  */
-utils::optional<std::string> get_wml_location(const std::string &filename,
-	const std::string &current_dir = std::string());
+utils::optional<std::string> get_wml_location(const std::string& path, const utils::optional<std::string>& current_dir = utils::nullopt);
 
 /**
  * Returns a short path to @a filename, skipping the (user) data directory.

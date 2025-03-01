@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,7 +94,7 @@ public:
 	 *
 	 * @param states   A mask specifying which options to select and deselect
 	 */
-	void select_options(boost::dynamic_bitset<> states);
+	void select_options(const boost::dynamic_bitset<>& states);
 
 	/**
 	 * Set the available menu options.

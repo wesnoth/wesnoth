@@ -8,6 +8,7 @@
 ---@field type string
 ---@field icon string
 ---@field range integer
+---@field alignment string
 ---@field number integer
 ---@field movement_used integer
 ---@field attacks_used integer

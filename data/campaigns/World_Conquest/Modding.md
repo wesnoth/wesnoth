@@ -206,7 +206,11 @@ Next, continue coding:
 #endif
 ```
 
-## How to make your own artifacts and have them added to World Conquest
+## How to make your own artifacts/trainers/hero_types and have them added to World Conquest
+
+Instead of adding them to an era you can also put them in a `[resource]` that gets loaded from a `[modification]`.
+Make sure to mark the modification as required (`require_modification=yes`) or different clients may load different data in multiplayer leading to issues.
+World Conquest looks for `[world_conquest_data]` tags in the era and every loaded resource.
 
 ```ini
 [era]
@@ -235,23 +239,14 @@ Next, continue coding:
                 [/abilities]
             [/effect]
         [/artifact]
-    [/world_conquest_data]
-[/era]
-```
 
-## How to add your own trainers
-
-```ini
-[era]
-    # era code here
-
-    [world_conquest_data]
         [trainer]
             type=Blood Manipulator
             advanced_type=Sangel
             image=attacks/wail.png
             name= _ "Blood Magic"
             dialogue= "You have found me, mortals? Well...let us show your recruits some blood magic!"
+            manual_invest = false #Setting manual_invest to false will hide a trainer from the invest screen. Not specifying this variable at all includes a new trainer by default.
             [grade]
             [/grade]
             [grade]
@@ -285,6 +280,21 @@ Next, continue coding:
                 {WCT_CHANCE_XP 73 -30%}
             [/grade]
         [/trainer]
+        [hero_types]
+            [Aragwaithi] # Note this tag can be given any name (but maintain consistency)
+                name= _ "Aragwaithi"
+                types="Aragwaith Swordsman,Aragwaith Spearman,Aragwaith Adept,Aragwaith Archer"
+            [/Aragwaithi]
+            [Dark_Elves]
+                name= _ "Dark Elves"
+                types="Dark Elven Fighter,Dark Elven Hunter, Dark Elven Lizard Rider" # and so on...
+            [/Dark_Elves]
+            # Combined
+            # you need this bonus all since this is what WC sees when loading up the hero availability pool in bonus points.
+            [Bonus_All] # Notice how I added in the hero groups in. This is how it should be done.
+                types=Aragwaithi,Dark_Elves
+            [/Bonus_All]
+        [/hero_types]
     [/world_conquest_data]
 [/era]
 ```
@@ -428,7 +438,7 @@ Normally, this is what an entire modifications/era file should look like. Notice
     [/load_resource]
 
     # artifacts and trainers
-    [/world_conquest_data]
+    [world_conquest_data]
         [artifact]
             name= _ "Leather Bag of Herbal Stuff"
             icon=items/leather-pack.png # dont add attack icons here, just what the item image here.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,13 +16,12 @@
 
 #include "gui/widgets/chatbox.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -34,6 +33,7 @@
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_lobby("lobby");
@@ -72,16 +72,16 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 
 void chatbox::finalize_setup()
 {
-	roomlistbox_ = find_widget<listbox>(this, "room_list", false, true);
+	roomlistbox_ = find_widget<listbox>("room_list", false, true);
 
 	// We need to bind a lambda here since switch_to_window is overloaded.
 	// A lambda alone would be more verbose because it'd need to specify all the parameters.
 	connect_signal_notify_modified(*roomlistbox_,
-		std::bind([this]() { switch_to_window(roomlistbox_->get_selected_row()); }));
+		[this](auto&&...) { switch_to_window(roomlistbox_->get_selected_row()); });
 
-	chat_log_container_ = find_widget<multi_page>(this, "chat_log_container", false, true);
+	chat_log_container_ = find_widget<multi_page>("chat_log_container", false, true);
 
-	chat_input_ = find_widget<text_box>(this, "chat_input", false, true);
+	chat_input_ = find_widget<text_box>("chat_input", false, true);
 
 	connect_signal_pre_key_press(*chat_input_,
 		std::bind(&chatbox::chat_input_keypress_callback, this, std::placeholders::_5));
@@ -89,14 +89,24 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	for(const auto& l : log) {
+	const std::string new_tip = formatter()
+		<< "\n"
+		// TRANSLATORS: This is the new chat text indicator
+		<< markup::span_color("#FF0000", "============", _("NEW"), "============");
+
+	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
 
-		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
+		const std::size_t new_tip_index = l.second.log.find(new_tip);
+
+		if(new_tip_index != std::string::npos) {
+			l.second.log.replace(new_tip_index, new_tip.length(), "");
+		}
+		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
 	}
 
 	log_ = &log;
@@ -108,7 +118,7 @@ void chatbox::active_window_changed()
 
 	// Clear pending messages notification in room listbox
 	grid* grid = roomlistbox_->get_row_grid(active_window_);
-	find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::hidden);
+	grid->find_widget<image>("pending_messages").set_visible(widget::visibility::hidden);
 
 	t.pending_messages = 0;
 
@@ -175,7 +185,6 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 			break;
 		}
 
-		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
 		for(const auto& ui : li->users()) {
 			if(ui.name != prefs::get().login()) {
@@ -214,17 +223,17 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
 	grid& grid = chat_log_container_->page_grid(id);
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
 
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
-	const std::string before_message = log.get_label().empty() ? "" : "\n";
+	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_label() << before_message << "<span color='#bcb088'>" << prefs::get().get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::chrono::system_clock::now()), text);
 
 	log.set_use_markup(true);
-	log.set_label(new_text);
+	log.set_value(new_text);
 
 	if(log_ != nullptr) {
 		try {
@@ -253,7 +262,7 @@ void chatbox::clear_messages()
 {
 	const auto id = active_window_;
 	grid& grid = chat_log_container_->page_grid(id);
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
 	log.set_label("");
 }
 
@@ -271,14 +280,10 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 	events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::string text;
-
-	// FIXME: the chat_command_handler class (which handles chat commands) dispatches a
-	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
-	// commands are used, so we need to do some manual preprocessing here.
 	if(message.compare(0, 4, "/me ") == 0) {
-		text = formatter() << "<i>" << speaker << " " << font::escape_text(message.substr(4)) << "</i>";
+		text = formatter() << markup::italic(speaker, " ", font::escape_text(message.substr(4)));
 	} else {
-		text = formatter() << "<b>" << speaker << ":</b> " << font::escape_text(message);
+		text = formatter() << markup::bold(speaker, ":") << font::escape_text(message);
 	}
 
 	append_to_chatbox(text);
@@ -437,7 +442,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Set up the Close Window button.
 	//
-	button& close_button = find_widget<button>(&row_grid, "close_window", false);
+	button& close_button = row_grid.find_widget<button>("close_window");
 
 	if(!allow_close) {
 		close_button.set_visible(widget::visibility::hidden);
@@ -474,7 +479,7 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -490,7 +495,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(idx);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -503,7 +508,7 @@ void chatbox::add_whisper_window_whisper(const std::string& sender, const std::s
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -511,7 +516,7 @@ void chatbox::add_active_window_whisper(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << "whisper: " << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold("whisper: ", sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 
@@ -560,7 +565,7 @@ void chatbox::add_room_window_message(const std::string& room,
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -568,7 +573,7 @@ void chatbox::add_active_window_message(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 

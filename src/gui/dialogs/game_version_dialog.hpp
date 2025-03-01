@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,12 +22,8 @@
 #include <map>
 #include <array>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class game_version : public modal_dialog
 {
 public:
@@ -66,7 +62,7 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	//
 	// Widget event callbacks.
@@ -88,7 +84,7 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 * @param btn_id Id of the button that calls this method
 	 */
-	void copy_to_clipboard_callback(const std::string& path, const std::string btn_id);
+	void copy_to_clipboard_callback(const std::string& path, const std::string& btn_id);
 
 	/**
 	 * Callback function for browse-directory action buttons.
@@ -112,9 +108,14 @@ private:
 	void report_issue();
 
 	/**
-	 * Callback function to re-run the version migration dialog.
+	 * Re-runs the version migration dialog.
 	 */
 	void run_migrator();
+
+	/**
+	 * Opens the game manual in the platform's browser
+	 */
+	void show_manual();
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

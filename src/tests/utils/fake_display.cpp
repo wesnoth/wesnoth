@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,7 +50,7 @@ public:
 	//		~fake_display_manager();
 };
 
-fake_display_manager* fake_display_manager::manager_ = 0;
+fake_display_manager* fake_display_manager::manager_ = nullptr;
 
 fake_display_manager* fake_display_manager::get_manager()
 {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -106,20 +106,11 @@ private:
 	/** Get the listbox inside which the tabs are shown */
 	listbox& get_internal_list();
 
-	void add_tab_entry(const widget_data row);
+	void add_tab_entry(const widget_data& row);
 
 	void change_selection();
 
 	void finalize_listbox();
-
-	void set_items(std::vector<widget_data> list_items)
-	{
-		list_items_ = list_items;
-	}
-
-	void set_builders(std::vector<std::shared_ptr<builder_grid>> builders) {
-		builders_ = builders;
-	}
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

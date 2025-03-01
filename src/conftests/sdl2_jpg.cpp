@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 int main(int, char** argv)
 {
     SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
-    if (src == NULL) {
+    if (src == nullptr) {
         exit(2);
     }
     exit(!IMG_isJPG(src));

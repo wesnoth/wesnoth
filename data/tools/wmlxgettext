@@ -63,11 +63,7 @@ def commandline(args):
         required=True,
         default=None,
         dest='folder',
-        help= ('Destination folder. In some special situations you might want '
-               'to write the output to STDOUT instead of writing '
-               'an actual file (using "-o -"). On standard usage, however, '
-               'you should avoid to write the output to STDOUT (or you may '
-               'face some issues related to text encoding). '
+        help= ('Destination path. You can specify "-" to mean STDOUT.'
                '[**REQUIRED ARGUMENT**]')
     )
     parser.add_argument(
@@ -264,7 +260,9 @@ def main():
                 sentlist[domain] = dict()
 
     for domain, d in sentlist.items():
-        if folder is not None:
+        if folder is None:
+            sys.stdout.reconfigure(encoding="utf-8")
+        else:
             try:
                 outfile = open(os.path.join(folder, "{}.pot".format(domain) if filename is None else filename), 'w', encoding="utf-8")
             except OSError as e:

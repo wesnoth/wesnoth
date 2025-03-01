@@ -21,7 +21,7 @@ RUN locale-gen en_US.UTF-8
 RUN apt install -y -qq libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev moreutils ca-certificates libcurl4-openssl-dev liblua5.4-dev
 
 # programs
-RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang lld doxygen graphviz lua-check
+RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang clang-tidy lld doxygen graphviz lua-check curl
 
 WORKDIR /home/wesnoth-travis
 

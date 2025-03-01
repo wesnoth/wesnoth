@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,7 +36,7 @@ class tod_manager
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager) = default;
 
-		config to_config(std::string textdomain = "") const;
+		config to_config(const std::string& textdomain = "") const;
 		/**
 			handles random_start_time, should be called before the game starts.
 		*/

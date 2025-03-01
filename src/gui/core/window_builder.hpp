@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -217,18 +217,5 @@ private:
 	std::string id_;
 	std::string description_;
 };
-
-/**
- * Builds a window.
- *
- * @param type                    The type id string of the window, this window
- *                                must be registered at startup.
- */
-std::unique_ptr<window> build(const std::string& type);
-
-/**
- * Builds a window.
- */
-std::unique_ptr<window> build(const builder_window::window_resolution& res);
 
 } // namespace gui2

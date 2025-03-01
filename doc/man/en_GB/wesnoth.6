@@ -43,6 +43,10 @@ scenarios or campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Show all translations in the in\-game language selection list, even if they
 are deemed insufficiently complete.
@@ -64,7 +68,7 @@ Skip [story] screens and dialogue through the end of the \fBstart\fP event.
 .TP 
 \fB\-\-clock\fP
 Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+option for showing the GUI Test Dialogue.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 overrides the loaded core with the one whose id is specified.
@@ -86,7 +90,7 @@ enables some Lua debugging mechanisms
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 compares the two WML files; does not pre\-process them first (to do that, run
 them through \fB\-p\fP first). Outputs the difference as DiffWML on standard
 output or to the file indicated by \fI\-\-output\fP.
@@ -113,8 +117,7 @@ from \fIfile\fP open. If it is a directory, the editor will start with a load
 map dialogue opened there.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language
-ang_GB@latin\fP
+uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -144,8 +147,8 @@ log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+disables the anonymisation that's normally applied when logging, for example
+replacing user names with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -166,10 +169,6 @@ load the test mp scenarios.
 there is a new WIP widget tool\-kit, this option enables it. This is very
 experimental, don't fill bug reports since most are known. Parts of the
 library are deemed stable and will work without this switch.
-.TP 
-\fB\-\-nodelay\fP
-runs the game without any delays for graphic benchmarking. This is
-automatically enabled by \fB\-\-nogui\fP.
 .TP 
 \fB\-\-noaddons\fP
 disables loading of user add\-ons.
@@ -202,11 +201,11 @@ uses \fIpassword\fP when connecting to a server, ignoring other
 preferences. Unsafe.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental) load a \fIscript\fP which defines a Wesnoth plugin. Similar to
-\fB\-\-script\fP, but Lua file should return a function which will be run as a
-co\-routine and periodically woken up with updates.
+load a \fIscript\fP which defines a Wesnoth plug\-in. Lua file should return a
+function which will be run as a co\-routine and periodically woken up with
+updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not pre\-process either of the
 files. Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -216,26 +215,30 @@ preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP
-command. If \fBSKIP_CORE\fP is in the define list the "data/core" directory
-won't be preprocessed.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-used only by the \fB\-\-preprocess\fP command. Specifies a file that contains
-\fB[preproc_define]\fPs to be included before preprocessing.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command. Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command. The
-output file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch
-should be typed before the \fB\-\-preprocess\fP command.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 sets the screen resolution. Example: \fB\-r\fP \fB800x600\fP.
@@ -255,9 +258,6 @@ seeds the random number generator with \fInumber\fP.  Example: \fB\-\-rng\-seed\
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 saves a screenshot of \fImap\fP to \fIoutput\fP without initializing a screen.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(experimental)  \fIfile\fP containing a Lua script to control the client.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 connects to the specified host if any, otherwise connect to the first server
@@ -286,8 +286,8 @@ makes the \fBpackage\fP package available to lua scripts, so that they can load
 arbitrary packages. Do not do this with untrusted scripts! This action gives
 lua the same permissions as the wesnoth executable.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 sets the user data directory to \fIname\fP under $HOME or "My Documents\eMy
@@ -311,7 +311,7 @@ validates the WML of the given add\-on as you play.
 \fB\-\-validate\-core\fP
 validates the core WML as you play.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 validates a file as a WML schema.
 .TP 
 \fB\-\-validcache\fP
@@ -412,7 +412,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

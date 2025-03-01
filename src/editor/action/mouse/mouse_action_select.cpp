@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@ std::set<map_location> mouse_action_select::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
 	if (has_shift_modifier()) {
-		return disp.map().get_contiguous_terrain_tiles(hex);
+		return disp.get_map().get_contiguous_terrain_tiles(hex);
 	} else {
 		return brush_drag_mouse_action::affected_hexes(disp, hex);
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -112,7 +112,6 @@ builder_drawing::builder_drawing(const config& cfg)
 	, height(cfg["height"])
 	, draw(VALIDATE_WML_CHILD(cfg, "draw", missing_mandatory_wml_tag("drawing", "draw")))
 {
-	assert(!draw.empty());
 }
 
 std::unique_ptr<widget> builder_drawing::build() const

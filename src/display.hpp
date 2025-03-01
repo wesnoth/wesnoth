@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,6 +73,14 @@ namespace wb {
 #include <memory>
 #include <vector>
 
+namespace display_direction {
+	/**
+	 * @note needs to be defined after includes
+	 *       as it uses std::string
+	 */
+	const std::string& get_direction(std::size_t n);
+}
+
 struct submerge_data
 {
 	rect unsub_src;
@@ -104,14 +112,8 @@ public:
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
 
-	const gamemap& get_map() const { return dc_->map(); }
-
-	const std::vector<team>& get_teams() const {return dc_->teams();}
-
 	/** The playing team is the team whose turn it is. */
-	std::size_t playing_team() const { return activeTeam_; }
-
-	bool team_valid() const;
+	std::size_t playing_team_index() const { return playing_team_index_; }
 
 	/**
 	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
@@ -119,35 +121,33 @@ public:
 	 *
 	 * For players, it will be their side (or one of them, if they control multiple sides).
 	 *
-	 * The value returned is a 0-based index into the vector returned by get_teams().
+	 * The value returned is a 0-based index into the vector returned by dc_->teams().
 	 */
-	std::size_t viewing_team() const { return currentTeam_; }
-	/**
-	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
-	 * WML uses.
-	 *
-	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
-	 * class).
-	 */
-	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
+	std::size_t viewing_team_index() const { return viewing_team_index_; }
+
+	const team& playing_team() const;
+	const team& viewing_team() const;
+
+	bool viewing_team_is_playing() const
+	{
+		return viewing_team_index() == playing_team_index();
+	}
 
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(std::size_t team, bool observe=false);
+	void set_viewing_team_index(std::size_t team, bool observe=false);
 
 	/**
-	 * set_playing_team sets the team whose turn it currently is
+	 * sets the team whose turn it currently is
 	 */
-	void set_playing_team(std::size_t team);
-
+	void set_playing_team_index(std::size_t team);
 
 	/**
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	const unit_map& get_units() const {return dc_->units();}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -156,7 +156,8 @@ public:
 	 * @param unit The unit requesting exclusivity.
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
-	bool add_exclusive_draw(const map_location& loc, unit& unit);
+	bool add_exclusive_draw(const map_location& loc, const unit& unit);
+
 	/**
 	 * Cancels an exclusive draw request.
 	 * @return The id of the unit whose exclusive draw request was canceled, or else
@@ -164,15 +165,16 @@ public:
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
 
+	/** Returns true if there is no exclusive draw request for @a loc, or if there is, that it's for @a unit */
+	bool unit_can_draw_here(const map_location& loc, const unit& unit) const;
+
 	/**
 	 * Functions to add and remove overlays from locations.
 	 *
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true, float submerge = 0.0f, float z_order = 0);
+	void add_overlay(const map_location& loc, overlay&& ov);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
@@ -188,7 +190,7 @@ public:
 
 	void change_display_context(const display_context* dc);
 
-	const display_context& get_disp_context() const
+	const display_context& context() const
 	{
 		return *dc_;
 	}
@@ -218,7 +220,6 @@ public:
 
 	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
 	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
-	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
 	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**
@@ -289,14 +290,14 @@ public:
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const map_location hex_clicked_on(int x, int y) const;
+	map_location hex_clicked_on(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of a pixel on the map, will return the
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const map_location pixel_position_to_hex(int x, int y) const;
+	map_location pixel_position_to_hex(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of the mouse, will return the location of the
@@ -315,9 +316,10 @@ public:
 	void invalidate_game_status() { invalidateGameStatus_ = true; }
 
 	/** Functions to get the on-screen positions of hexes. */
-	int get_location_x(const map_location& loc) const;
-	int get_location_y(const map_location& loc) const;
 	point get_location(const map_location& loc) const;
+
+	/** Returns the on-screen rect corresponding to a @a loc */
+	rect get_location_rect(const map_location& loc) const;
 
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
@@ -357,7 +359,7 @@ public:
 	};
 
 	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
-	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
+	const rect_of_hexes hexes_under_rect(const rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
 	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());}
@@ -380,7 +382,7 @@ public:
 
 	/** Adds a redraw observer, a function object to be called when a
 	  * full rerender is queued. */
-	void add_redraw_observer(std::function<void(display&)> f);
+	void add_redraw_observer(const std::function<void(display&)>& f);
 
 	/** Clear the redraw observers */
 	void clear_redraw_observers();
@@ -481,11 +483,11 @@ public:
 	void bounds_check_position(int& xpos, int& ypos) const;
 
 	/**
-	 * Scrolls the display by xmov,ymov pixels.
+	 * Scrolls the display by @a amount pixels.
 	 * Invalidation and redrawing will be scheduled.
 	 * @return true if the map actually moved.
 	 */
-	bool scroll(int xmov, int ymov, bool force = false);
+	bool scroll(const point& amount, bool force = false);
 
 	/** Zooms the display in (true) or out (false). */
 	bool set_zoom(bool increase);
@@ -526,20 +528,10 @@ public:
 	                     double add_spacing=0.0, bool force=true);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
-	void scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-	                     const std::vector<map_location>::const_iterator & end,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     bool only_if_possible=false, double add_spacing=0.0,
-	                     bool force=true);
-	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<map_location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
-	                     double add_spacing=0.0, bool force=true)
-	{
-		scroll_to_tiles(locs.begin(), locs.end(), scroll_type, check_fogged,
-		                only_if_possible, add_spacing, force);
-	}
+	                     double add_spacing=0.0, bool force=true);
 
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
@@ -574,7 +566,7 @@ public:
 	void fade_tod_mask(const std::string& old, const std::string& new_);
 
 	/** Screen fade */
-	void fade_to(const color_t& color, int duration);
+	void fade_to(const color_t& color, const std::chrono::milliseconds& duration);
 	void set_fade(const color_t& color);
 
 private:
@@ -623,7 +615,7 @@ public:
 	struct announce_options
 	{
 		/** Lifetime measured in milliseconds. */
-		int lifetime;
+		std::chrono::milliseconds lifetime;
 
 		/**
 		 * An announcement according these options should replace the
@@ -661,8 +653,7 @@ private:
 	void draw_minimap();
 
 public:
-
-	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const = 0;
 
 	virtual bool has_time_area() const {return false;}
 
@@ -686,8 +677,6 @@ public:
 	}
 
 private:
-	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
-
 	int blindfold_ctr_;
 
 protected:
@@ -721,6 +710,8 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
+	void draw_overlays_at(const map_location& loc);
+
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
 	void get_terrain_images(const map_location &loc,
@@ -729,13 +720,11 @@ protected:
 
 	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
-	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
+	void scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_type, bool force = true);
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
-
-	std::size_t currentTeam_;
+	std::size_t viewing_team_index_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
 	 * Position of the top-left corner of the viewport, in pixels.
@@ -743,7 +732,7 @@ protected:
 	 * Dependent on zoom_.. For example, ypos_==72 only means we're one
 	 * hex below the top of the map when zoom_ == 72 (the default value).
 	 */
-	int xpos_, ypos_;
+	point viewport_origin_;
 	bool view_locked_;
 	theme theme_;
 	/**
@@ -768,12 +757,12 @@ protected:
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
 
-	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
 	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
-	std::chrono::seconds fps_start_;
+	std::chrono::steady_clock::time_point fps_start_;
 	unsigned int fps_actual_;
-	uint32_t last_frame_finished_ = 0u;
+	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;
@@ -823,7 +812,7 @@ public:
 protected:
 
 	//TODO sort
-	std::size_t activeTeam_;
+	std::size_t playing_team_index_;
 
 	/**
 	 * Helper for rendering the map by ordering draw operations.
@@ -909,6 +898,8 @@ protected:
 	reach_map reach_map_;
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
+	// The team assigned to the reachmap being drawn
+	std::size_t reach_map_team_index_;
 	void process_reachmap_changes();
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
@@ -964,10 +955,8 @@ private:
 	/** Currently set debug flags. */
 	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
 
-	typedef std::list<arrow*> arrows_list_t;
-	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
-	arrows_map_t arrows_map_;
+	std::map<map_location, std::list<arrow*>> arrows_map_;
 
 	tod_color color_adjust_;
 

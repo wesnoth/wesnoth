@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,7 +80,7 @@ class network_registrar
 public:
 	using handler = std::function<void(const config&)>;
 
-	network_registrar(handler func);
+	network_registrar(const handler& func);
 	~network_registrar();
 
 private:

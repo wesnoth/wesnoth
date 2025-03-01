@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -69,9 +69,6 @@ private:
 protected:
 	bool browse() const;
 	bool linger() const;
-
-	const team & viewing_team() const;
-	bool viewing_team_is_playing() const;
 
 public:
 	hotkey_handler(play_controller &, saved_game &);

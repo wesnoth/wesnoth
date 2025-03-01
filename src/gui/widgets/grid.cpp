@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -642,13 +642,12 @@ const widget* grid::find_at(const point& coordinate,
 			*this, coordinate, must_be_active);
 }
 
-widget* grid::find(const std::string& id, const bool must_be_active)
+widget* grid::find(const std::string_view id, const bool must_be_active)
 {
 	return grid_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* grid::find(const std::string& id, const bool must_be_active)
-		const
+const widget* grid::find(const std::string_view id, const bool must_be_active) const
 {
 	return grid_implementation::find<const widget>(*this, id, must_be_active);
 }

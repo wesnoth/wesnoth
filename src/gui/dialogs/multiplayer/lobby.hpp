@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -127,15 +127,13 @@ private:
 
 	void skip_replay_changed_callback();
 
-	bool exit_hook(window& window);
-
 	static bool logout_prompt();
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	listbox* gamelistbox_;
 
@@ -159,7 +157,7 @@ private:
 
 	bool gamelist_dirty_;
 
-	unsigned last_lobby_update_;
+	std::chrono::steady_clock::time_point last_lobby_update_;
 
 	bool gamelist_diff_update_;
 

@@ -447,6 +447,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         local unit_in_way = wesnoth.units.find_on_map { x = best_hex[1], y = best_hex[2],
             wml.tag["not"] { id = best_unit.id }
         }[1]
+        --- TODO: best_hex should be indexed as x and y!
         if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
             unit_in_way = nil
         end

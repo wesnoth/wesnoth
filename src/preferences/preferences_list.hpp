@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024 - 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,10 @@ struct preferences_list_defines
 	ADDPREF(_last_cache_cleaned_ver)
 	/** achievements completed for add-ons/UMC, are not steam achievements */
 	ADDPREF(achievements)
+	/** player names marked as either friends or as ignored */
+	ADDPREF(acquaintance)
+	/** whether to get the add-on icons when downloading the add-ons list */
+	ADDPREF(addon_icons)
 	/** the sort direction, ie: ascending */
 	ADDPREF(addon_manager_saved_order_direction)
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -77,8 +81,8 @@ struct preferences_list_defines
 	ADDPREF(dir_bookmarks)
 	/** whether to automatically move units that were previously told to move towards hexes more than one turn away */
 	ADDPREF(disable_auto_moves)
-	/** used to enforce the FPS limit - minimum time between frame updates if the player's PC is capable of updating the screen faster than this */
-	ADDPREF(draw_delay)
+	/** maximum FPS, if set, at which to refresh the screen */
+	ADDPREF(refresh_rate)
 	/** whether to have the editor automatically update terrain transitions when placing terrain immediately, after the mouse click is released, or not at all */
 	ADDPREF(editor_auto_update_transitions)
 	/** the current add-on being used in the editor */
@@ -172,6 +176,8 @@ struct preferences_list_defines
 	ADDPREF(mp_level)
 	/** most recently selected type of game: scenario, campaign, random map, etc */
 	ADDPREF(mp_level_type)
+	/** most recently selected mp playing mode/connection type */
+	ADDPREF(mp_connect_type)
 	/** list of the last selected multiplayer modifications */
 	ADDPREF(mp_modifications)
 	/** whether to use a random start time for the scenario */
@@ -216,6 +222,8 @@ struct preferences_list_defines
 	ADDPREF(scroll_threshold)
 	/** the most recently selected achievement group in the achievements dialog */
 	ADDPREF(selected_achievement_group)
+	/** contains the list of any player-entered multiplayer servers */
+	ADDPREF(server)
 	/** whether to show an orb over allied units */
 	ADDPREF(show_ally_orb)
 	/** whether to show an orb over disengaged units */
@@ -230,6 +238,8 @@ struct preferences_list_defines
 	ADDPREF(show_side_colors)
 	/** whether to show unit status (moved, unmoved, etc) for allied units as well */
 	ADDPREF(show_status_on_ally_orb)
+	/** whether to show the tips panel on titlescreen */
+	ADDPREF(show_tips)
 	/** whether to show an orb over units that haven't done anything */
 	ADDPREF(show_unmoved_orb)
 	/** whether to randomly assign sides in multiplayer games */
@@ -314,6 +324,14 @@ struct preferences_list_defines
 	ADDPREF(server_message_notif)
 	/** whether to show the enabled server message sound or notification in the lobby as well */
 	ADDPREF(server_message_lobby)
+	/** opacity of the reach map border, 100 being 100% of the original image opacity, 0 being invisible */
+	ADDPREF(reach_map_border_opacity)
+	/** the color of the reach map */
+	ADDPREF(reach_map_color)
+	/** the color of tile borders of the reach map that are next to an enemy */
+	ADDPREF(reach_map_enemy_color)
+	/** opacity of the reach map tint, 100 being 100% of the original image opacity, 0 being invisible */
+	ADDPREF(reach_map_tint_opacity)
 	/** whether to play a sound when the game is ready to be started */
 	ADDPREF(ready_for_start_sound)
 	/** whether to show a notification when the game is ready to be started */
@@ -383,6 +401,7 @@ struct preferences_list_defines
 	ENUM_AND_ARRAY(
 		_last_cache_cleaned_ver,
 		achievements,
+		acquaintance,
 		addon_manager_saved_order_direction,
 		addon_manager_saved_order_name,
 		alias,
@@ -405,7 +424,7 @@ struct preferences_list_defines
 		delete_saves,
 		dir_bookmarks,
 		disable_auto_moves,
-		draw_delay,
+		refresh_rate,
 		editor_auto_update_transitions,
 		editor_chosen_addon,
 		editor_draw_hex_coordinates,
@@ -441,6 +460,7 @@ struct preferences_list_defines
 		minimap_movement_coding,
 		minimap_terrain_coding,
 		moved_orb_color,
+		mp_connect_type,
 		mp_countdown,
 		mp_countdown_action_bonus,
 		mp_countdown_init_time,
@@ -472,6 +492,7 @@ struct preferences_list_defines
 		scroll,
 		scroll_threshold,
 		selected_achievement_group,
+		server,
 		show_ally_orb,
 		show_disengaged_orb,
 		show_enemy_orb,
@@ -479,6 +500,7 @@ struct preferences_list_defines
 		show_partial_orb,
 		show_side_colors,
 		show_status_on_ally_orb,
+		show_tips,
 		show_unmoved_orb,
 		shuffle_sides,
 		skip_ai_moves,
@@ -548,7 +570,12 @@ struct preferences_list_defines
 		turn_changed_lobby,
 		game_created_sound,
 		game_created_notif,
-		game_created_lobby
+		game_created_lobby,
+		addon_icons,
+		reach_map_border_opacity,
+		reach_map_tint_opacity,
+		reach_map_color,
+		reach_map_enemy_color
 	)
 };
 using prefs_list = string_enums::enum_base<preferences_list_defines>;

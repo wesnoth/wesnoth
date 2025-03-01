@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -78,7 +78,7 @@ public:
 
 	~loading_screen();
 
-	static void display(std::function<void()> f);
+	static void display(const std::function<void()>& f);
 	static bool displaying() { return singleton_ != nullptr; }
 
 	/**
@@ -118,12 +118,12 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** Inherited from events::pump_monitor. */
-	virtual void process(events::pump_info&) override;
+	virtual void process() override;
 
 	/** Called by draw_manager to assign concrete layout. */
 	virtual void layout() override;

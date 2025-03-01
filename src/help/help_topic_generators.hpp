@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,7 +41,6 @@ class unit_topic_generator: public topic_generator
 {
 	const unit_type& type_;
 	const std::string variation_;
-	void push_header(std::vector< help::item > &row,  const std::string& name) const;
 public:
 	unit_topic_generator(const unit_type &t, std::string variation="") : type_(t), variation_(variation) {}
 	virtual std::string operator()() const;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -130,7 +130,7 @@ public:
 	void edit_scenario_dialog();
 
 	/** Display a side edit dialog and process user input. */
-	void edit_side_dialog(int side_index);
+	void edit_side_dialog(const team& t);
 
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();

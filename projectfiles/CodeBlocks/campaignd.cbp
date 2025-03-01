@@ -40,8 +40,8 @@
 			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
-			<Add option="-D_WIN32_WINNT=0x0601" />
-			<Add option="-D_WIN32_IE=0x0601" />
+			<Add option="-D_WIN32_WINNT=0x0A00" />
+			<Add option="-D_WIN32_IE=0x0A00" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>

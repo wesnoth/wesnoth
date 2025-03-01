@@ -1,16 +1,14 @@
-#!/bin/bash
-
-OS="$(uname -s)"
+#!/bin/sh
 
 make -C data/tools reindent
 
-if [[ "$OS" == "Linux" ]]; then
-  find src/ -not -path "src/modules/*" -name \*.\[ch\]pp -print0 | xargs -0 sed -i -e '$a\'
-  find src/ -not -path "src/modules/*" -name \*.\[ch\]pp -print0 | xargs -0 sed -i 's/[[:blank:]]*$//'
-  find data/ -name \*.lua -print0 | xargs -0 sed -i 's/[[:blank:]]*$//'
-else
-  find src/ -not -path "src/modules/*" -name \*.\[ch\]pp -print0 | xargs -0 sed -i '' 's/[[:blank:]]*$//'
-  find data/ -name \*.lua -print0 | xargs -0 sed -i '' 's/[[:blank:]]*$//'
-fi
+# use -i for GNU sed and -i '' otherwise
+sed --version 2>/dev/null | grep -q 'GNU sed' || i=1
 
-find data/ -name \*.lua -print0 | xargs -0 data/tools/check_mixed_indent
+find src -path src/modules -prune -o \
+	\( -name '*.[cht]pp' -o -name '*.[ch]' -o -name '*.mm' \) -type f \
+	-exec sed -i ${i:+''} -e 's/[[:blank:]]*$//' -e '$a\' {} +
+
+find data -name '*.lua' -type f \
+	-exec sed -i ${i:+''} -e 's/[[:blank:]]*$//' -e '$a\' {} + \
+	-exec data/tools/check_mixed_indent {} +

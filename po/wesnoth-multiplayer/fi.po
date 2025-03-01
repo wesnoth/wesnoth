@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2023-01-07 12:07+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -37,12 +37,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:11
-msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>2p — Dark Forecast</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:12
-msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>2p — Dark Forecast</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
@@ -57,12 +57,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:22
-msgid "Complete the survival scenario <i>2p - Isle of Mists</i>."
+msgid "Complete the survival scenario <i>2p — Isle of Mists</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:23
-msgid "Completed the survival scenario <i>2p - Isle of Mists</i>."
+msgid "Completed the survival scenario <i>2p — Isle of Mists</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
@@ -72,12 +72,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:33
-msgid "Complete the survival scenario <i>6p - Team Survival</i>."
+msgid "Complete the survival scenario <i>6p — Team Survival</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:34
-msgid "Completed the survival scenario <i>6p - Team Survival</i>."
+msgid "Completed the survival scenario <i>6p — Team Survival</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
@@ -87,12 +87,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:44
-msgid "Complete the survival scenario <i>4p - A New Land</i>."
+msgid "Complete the survival scenario <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:45
-msgid "Completed the survival scenario <i>4p - A New Land</i>."
+msgid "Completed the survival scenario <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
@@ -102,12 +102,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:54
-msgid "Destroy all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroy all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:55
-msgid "Destroyed all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroyed all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
@@ -117,12 +117,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:65
-msgid "Rescue the trapped units in <i>4p - A New Land</i>."
+msgid "Rescue the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:66
-msgid "Rescued the trapped units in <i>4p - A New Land</i>."
+msgid "Rescued the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [era]: id=era_default, type=hybrid
@@ -213,15 +213,15 @@ msgstr "Osapuolet $winners ovat tasavertaisia."
 msgid "dialog^Turns Over"
 msgstr "Vuorot loppuivat"
 
-#. [multiplayer_side]: id=Drakes, type=random
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Draakit"
 
-#. [multiplayer_side]: id=Drakes, type=random
-#: data/multiplayer/factions/drakes-aoh.cfg:14
-#: data/multiplayer/factions/drakes-default.cfg:14
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/drakes-aoh.cfg:12
+#: data/multiplayer/factions/drakes-default.cfg:12
 msgid ""
 "The <bold>text='Drakes'</bold> are a faction of dragon-like "
 "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
@@ -240,15 +240,15 @@ msgstr ""
 "mutta kehno puolustus, joka johtaa eriskummallisiin taktiikoihin "
 "<ref>text='Taistelu Wesnothista' dst='..era_era_default'</ref> aikakaudella."
 
-#. [multiplayer_side]: id=Dunefolk, type=random
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
 msgstr "Dyynikansa"
 
-#. [multiplayer_side]: id=Dunefolk, type=random
-#: data/multiplayer/factions/dunefolk-aoh.cfg:14
-#: data/multiplayer/factions/dunefolk-default.cfg:14
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/dunefolk-aoh.cfg:12
+#: data/multiplayer/factions/dunefolk-default.cfg:12
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -267,24 +267,24 @@ msgstr ""
 "he korvaavat tämän ketterällä liikkuvuudellaan, erityisesti mäkisessä "
 "maastossa."
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgan liittokunta"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
-#: data/multiplayer/factions/knalgans-aoh.cfg:13
-#: data/multiplayer/factions/knalgans-default.cfg:13
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/knalgans-aoh.cfg:11
+#: data/multiplayer/factions/knalgans-default.cfg:11
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
-"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
-"race_human'</ref> allies. Dwarves are an old race who live underground and "
-"have tough, but short, warriors. The outlaws are humans who are not socially "
-"acceptable among others of their race, but have become allies of the dwarves "
-"due to common enemies. This leads to a combination of tough and defensive "
-"dwarves who are only good on certain terrain and humans who can cover ground "
-"that dwarves are not good at fighting in."
+"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' "
+"dst='..race_human'</ref> allies. Dwarves are an old race who live "
+"underground and have tough, but short, warriors. The outlaws are humans who "
+"are not socially acceptable among others of their race, but have become "
+"allies of the dwarves due to common enemies. This leads to a combination of "
+"tough and defensive dwarves who are only good on certain terrain and humans "
+"who can cover ground that dwarves are not good at fighting in."
 msgstr ""
 "<bold>text='Knalgan liittokunta'</bold> on liittouma, joka koostuu "
 "<ref>text='kääpiöistä' dst='..race_dwarf'</ref> sekä lainsuojattomista "
@@ -297,41 +297,41 @@ msgstr ""
 "ihmisiin, jotka pystyvät etenemään nopeasti, jossa kääpiöt eivät ole "
 "edukseen."
 
-#. [multiplayer_side]: id=Loyalists, type=random
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Uskolliset"
 
-#. [multiplayer_side]: id=Loyalists, type=random
-#: data/multiplayer/factions/loyalists-aoh.cfg:14
-#: data/multiplayer/factions/loyalists-default.cfg:14
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/loyalists-aoh.cfg:12
+#: data/multiplayer/factions/loyalists-default.cfg:12
 msgid ""
-"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
-"race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
-"versatile race who specialize in many different areas. Similarly, the "
+"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
+"dst='..race_human'</ref> who are loyal to the throne of Wesnoth. Humans are "
+"a versatile race who specialize in many different areas. Similarly, the "
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
-"<bold>text='Uskolliset'</bold> ovat liittouma <ref>text='ihmisiä' dst='.."
-"race_human'</ref>, jotka ovat uskollisia Wesnothin kruunulle. Ihmiset on "
-"monipuolinen rotu, joka on erikoistunut monille eri aloille. Samoin "
+"<bold>text='Uskolliset'</bold> ovat liittouma <ref>text='ihmisiä' "
+"dst='..race_human'</ref>, jotka ovat uskollisia Wesnothin kruunulle. Ihmiset "
+"on monipuolinen rotu, joka on erikoistunut monille eri aloille. Samoin "
 "uskollisten liittouma on erittäin monipuolinen lähitaisteluun suuntautunut "
 "liittouma, jonka jousimiehillä ja velhoilla on tärkeä tehtävä tukea muita "
 "yksiköitä."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Pohjalaiset"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
-#: data/multiplayer/factions/northerners-aoh.cfg:16
-#: data/multiplayer/factions/northerners-default.cfg:15
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/northerners-aoh.cfg:12
+#: data/multiplayer/factions/northerners-default.cfg:11
 msgid ""
-"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
-"race_orc'</ref> and their allies who live in the north of the Great "
+"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
+"dst='..race_orc'</ref> and their allies who live in the north of the Great "
 "Continent, thus their name. Northerners consist of the warrior orcs race, "
 "the enslaved <ref>text='goblins' dst='..race_goblin'</ref>, "
 "<ref>text='trolls' dst='..race_troll'</ref> who are tricked into combat by "
@@ -339,43 +339,43 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
-"<bold>text='Pohjalaiset'</bold> ovat liittouma <ref>text='örkkejä' dst='.."
-"race_orc'</ref> ja heidän liittolaisiaan, jotka asuvat Suurmantereen "
+"<bold>text='Pohjalaiset'</bold> ovat liittouma <ref>text='örkkejä' "
+"dst='..race_orc'</ref> ja heidän liittolaisiaan, jotka asuvat Suurmantereen "
 "pohjoisosassa. Pohjalaiset koostuvat sotaisista örkeistä, orjuutetuista "
-"<ref>text='hiisistä' dst='..race_goblin'</ref>, <ref>text='peikoista' dst='.."
-"race_troll'</ref>, joita örkit ovat huijanneet taistelemaan kanssaan, sekä "
-"käärmemäisistä <ref>text='nagoista' dst='..race_naga'</ref>. Pohjalaiset "
-"pelataan parhaiten, kun käytetään edukseen heidän halpoja, mutta korkeita EP-"
-"sotilaita."
+"<ref>text='hiisistä' dst='..race_goblin'</ref>, <ref>text='peikoista' "
+"dst='..race_troll'</ref>, joita örkit ovat huijanneet taistelemaan kanssaan, "
+"sekä käärmemäisistä <ref>text='nagoista' dst='..race_naga'</ref>. "
+"Pohjalaiset pelataan parhaiten, kun käytetään edukseen heidän halpoja, mutta "
+"korkeita EP-sotilaita."
 
-#. [multiplayer_side]: id=Rebels, type=random
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Kapinalliset"
 
-#. [multiplayer_side]: id=Rebels, type=random
-#: data/multiplayer/factions/rebels-aoh.cfg:14
-#: data/multiplayer/factions/rebels-default.cfg:14
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/rebels-aoh.cfg:12
+#: data/multiplayer/factions/rebels-default.cfg:12
 msgid ""
-"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
-"race_elf'</ref> and their various forest-dwelling allies. They get their "
-"human name, Rebels, from the time of Heir to the Throne, when they started "
-"the rebellion against the evil Queen Asheviere. Elves are a magical race "
-"that are masters of the bow and are capable of living many years longer than "
-"humans. In harmony with nature, the elves find allies with the "
+"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' "
+"dst='..race_elf'</ref> and their various forest-dwelling allies. They get "
+"their human name, Rebels, from the time of Heir to the Throne, when they "
+"started the rebellion against the evil Queen Asheviere. Elves are a magical "
+"race that are masters of the bow and are capable of living many years longer "
+"than humans. In harmony with nature, the elves find allies with the "
 "<ref>text='human' dst='..race_human'</ref> mages, certain "
 "<ref>text='merfolk' dst='..race_merman'</ref>, and tree creatures called "
 "<ref>text='Woses' dst='..race_wose'</ref>. Rebels are best played taking "
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
-"<bold>text='Kapinalliset'</bold> ovat liittouma <ref>text='haltioita' dst='.."
-"race_elf'</ref>, sekä heidän metsissään vaeltelevia liittolaisia. Tämän "
-"ihmisten antaman nimen, kapinalliset, he saivat \"Valtaistuimen perillinen\" "
-"-ajalta, jolloin he aloittivat kapinan kuningatar Asheviereä vastaan. "
-"Haltiat ovat maaginen rotu, joka hallitsevan jousen käytön ja kykenevät "
-"elämään monia vuosia pidempään kuin ihmiset. Luonnon sopusointua "
+"<bold>text='Kapinalliset'</bold> ovat liittouma <ref>text='haltioita' "
+"dst='..race_elf'</ref>, sekä heidän metsissään vaeltelevia liittolaisia. "
+"Tämän ihmisten antaman nimen, kapinalliset, he saivat \"Valtaistuimen "
+"perillinen\" -ajalta, jolloin he aloittivat kapinan kuningatar Asheviereä "
+"vastaan. Haltiat ovat maaginen rotu, joka hallitsevan jousen käytön ja "
+"kykenevät elämään monia vuosia pidempään kuin ihmiset. Luonnon sopusointua "
 "kunnioittavat myös haltioiden liittolaiset, joihin kuuluvat muutamia "
 "<ref>text='ihmisten' dst='..race_human'</ref> velhoja, "
 "<ref>text='merenväkeä' dst='..race_merman'</ref>, sekä puumaisia otuksia, "
@@ -383,24 +383,25 @@ msgstr ""
 "parhaiten hyödyntäen heidän metsistä saamaansa suurta etua puolustuksessa, "
 "kaukotaistelun taitoja, sekä haltioiden neutraalia suuntautumista."
 
-#. [multiplayer_side]: id=Undead, type=random
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Epäkuolleet"
 
-#. [multiplayer_side]: id=Undead, type=random
-#: data/multiplayer/factions/undead-aoh.cfg:14
-#: data/multiplayer/factions/undead-default.cfg:14
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/undead-aoh.cfg:12
+#: data/multiplayer/factions/undead-default.cfg:12
 msgid ""
-"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
-"race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
-"practitioners of dark arts that usually accompany them. Often, these “Dark "
-"Adepts” are the units that do the most damage for the faction, but they have "
-"a major vulnerability — their practicing of this forbidden, evil magic has "
-"consumed all their energy and so they have no melee attack at all. The "
-"Undead are a very aggressive faction and the most powerful "
-"<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
+"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' "
+"dst='..race_undead'</ref> creatures and <ref>text='human' "
+"dst='..race_human'</ref> practitioners of dark arts that usually accompany "
+"them. Often, these “Dark Adepts” are the units that do the most damage for "
+"the faction, but they have a major vulnerability — their practicing of this "
+"forbidden, evil magic has consumed all their energy and so they have no "
+"melee attack at all. The Undead are a very aggressive faction and the most "
+"powerful <ref>text='Default Era' dst='..era_era_default'</ref> faction at "
+"nighttime."
 msgstr ""
 "<bold>text='Epäkuolleet'</bold> ovat liittouma <ref>text='epäkuolleita' "
 "dst='..race_undead'</ref> olentoja sekä pimeyden taikuutta harjoittavia "
@@ -1373,8 +1374,8 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:229
 msgid ""
-"Cheers of your enemy are the last thing you hear as you slip into death..."
-"their joy fills your last moments with pure hate."
+"Cheers of your enemy are the last thing you hear as you slip into "
+"death...their joy fills your last moments with pure hate."
 msgstr ""
 "Vihollisesi kiitokset ovat viimeinen asia lipuessasi kuolemaan...heidän ilo "
 "täyttää sinun viimeiset hetkesi puhtaalla vihalla."
@@ -3104,7 +3105,9 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "3p - Elevation Test"
+#, fuzzy
+#| msgid "3p - Elevation Test"
+msgid "3p — Elevation Test"
 msgstr "3p - Korkeustaso testi"
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo

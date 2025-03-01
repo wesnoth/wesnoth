@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,12 +67,12 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void fetch_addons_list();
 	void load_addon_list();
 
-	void reload_list_and_reselect_item(const std::string id);
+	void reload_list_and_reselect_item(const std::string& id);
 
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
@@ -130,6 +130,7 @@ private:
 	}
 
 	void update_all_addons();
+	void info();
 
 	void apply_filters();
 	void order_addons();
@@ -143,7 +144,7 @@ private:
 	boost::dynamic_bitset<> get_lang_filter_visibility() const;
 
 	void on_selected_version_change();
-	bool exit_hook(window& window);
+	bool exit_hook();
 };
 
 } // namespace dialogs
