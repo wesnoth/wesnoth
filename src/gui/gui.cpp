@@ -55,7 +55,12 @@ public:
 	 */
 	void parse(const std::string& full_path, bool is_core)
 	{
-		for(config cfg = read_and_validate(full_path); const auto& def : cfg.child_range("gui")) {
+#if __cpp_range_based_for >= 202211L // lifetime extension of temporaries
+		for(const config& def : read_and_validate(full_path).child_range("gui")) {
+#else
+		config cfg = read_and_validate(full_path);
+		for(const config& def : cfg.child_range("gui")) {
+#endif
 			const bool is_default = def["id"] == "default";
 
 			if(is_default && !is_core) {
@@ -100,12 +105,12 @@ private:
 		if(is_unique) return iter;
 
 		ERR_GUI_P << "UI Theme '" << def["id"] << "' already exists.";
-		return utils::nullopt;
+		return {};
 
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << "Invalid UI theme: " << def["id"];
 		ERR_GUI_P << e.user_message;
-		return utils::nullopt;
+		return {};
 	}
 
 	/** GUI2 schema validator. */
