@@ -105,12 +105,12 @@ private:
 		if(is_unique) return iter;
 
 		ERR_GUI_P << "UI Theme '" << def["id"] << "' already exists.";
-		return {};
+		return utils::nullopt;
 
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << "Invalid UI theme: " << def["id"];
 		ERR_GUI_P << e.user_message;
-		return {};
+		return utils::nullopt;
 	}
 
 	/** GUI2 schema validator. */
