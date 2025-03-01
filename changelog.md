@@ -13,6 +13,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * `[unit]dismissable` and `[unit]block_dismiss_message` keys added that allow marking an unit as dismissable, and what message to show if user clicks `Dismiss` button in Unit Recall dialog.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.9
