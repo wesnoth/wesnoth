@@ -1376,7 +1376,7 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
 	const std::string initial_bans = create_game["ignored"].to_string();
-	const bool is_queue_game = create_game["ignored"].to_bool();
+	const bool is_queue_game = create_game["queue_game"].to_bool();
 
 	DBG_SERVER << player->client_ip() << "\t" << player->info().name()
 			   << "\tcreates a new game: \"" << game_name << "\".";
