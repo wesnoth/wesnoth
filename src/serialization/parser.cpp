@@ -637,6 +637,13 @@ void read(config& cfg, const std::string& in, abstract_validator* validator)
 	parser(cfg, ss, validator)();
 }
 
+config read(std::istream& in, abstract_validator* validator)
+{
+	config cfg;
+	parser(cfg, in, validator)();
+	return cfg;
+}
+
 template<typename decompressor>
 void read_compressed(config& cfg, std::istream& file, abstract_validator* validator)
 {
