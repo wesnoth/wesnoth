@@ -103,6 +103,7 @@ function wml_actions.modify_unit(cfg)
 	for current_unit = 0, max_index do
 		handle_unit(current_unit)
 	end
+	wesnoth.wml_actions.redraw{}
 
 	wml.variables[unit_variable] = nil
 end

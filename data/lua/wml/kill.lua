@@ -111,6 +111,7 @@ function wesnoth.wml_actions.kill(cfg)
 		end
 		number_killed = number_killed + #dead_men_sleeping
 	end
+	wesnoth.wml_actions.redraw{}
 
 	return number_killed
 end
