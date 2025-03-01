@@ -42,6 +42,8 @@
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
+#include "map/location.hpp"
+#include <iostream>
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
@@ -396,6 +398,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// and isolated mouse motion event when using drag&drop
 	sdl::get_mouse_state(&x, &y); // <-- modify x and y
 
+	std::cout << "Mouse moved to: " << x << ", " << y << std::endl;
+
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
 		return;
 	}
@@ -693,6 +697,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	}
 
 	bool wb_active = pc_.get_whiteboard()->is_active();
+	std::set<int> attackable_distances;
 
 	{
 		// Check the unit SOURCE of the attack
@@ -752,6 +757,37 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if(!target_eligible) {
 			return map_location();
 		}
+		const auto& attacks = source_unit->attacks();
+		for (const auto& attack : attacks) {
+			for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+				attackable_distances.insert(i);
+			}
+		}
+	}
+
+
+	// TODO: finalize behavior for ranged attacks
+	// if selected hex is in attack range, attack from current hex
+	// TODO: add a rating system there
+	int distance = distance_between(selected_hex_, loc);
+	if (distance!= 1 && attackable_distances.find(distance) != attackable_distances.end()) {
+		return selected_hex_;
+	}
+	const map_location* best_loc = nullptr;
+	int best_move = -1;
+	for (const pathfind::paths::step& step : current_paths_.destinations) {
+		const map_location& dst = step.curr;
+		// std::cout << "Destination: " << dst << ", Cost: " << step.move_left << std::endl;
+		int distance = distance_between(loc, dst);
+		if (distance!= 1 && attackable_distances.find(distance) != attackable_distances.end()) {
+			if (step.move_left > best_move){
+				best_move = step.move_left;
+				best_loc=&dst;
+			}
+		}
+	}
+	if (best_loc != nullptr){
+		return *best_loc;
 	}
 
 	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
@@ -944,7 +980,9 @@ void mouse_handler::move_action(bool browse)
 		}
 
 		if(((u != nullptr && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u != nullptr) {
-			if(attack_from == selected_hex_) { // no move needed
+			if(attack_from == selected_hex_)
+			{ // no move needed
+				//TODO still count move for ranged attacks
 				int choice = -1;
 				{
 					wb::future_map_if_active planned_unit_map; // start planned unit map scope
@@ -979,6 +1017,8 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
+						//TODO: check if temp_mover is neccesary,
+						//We don't want more than one same unit on map at once
 						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
@@ -1115,6 +1155,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		{
 			current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), path_turns_);
+			// used to highlight... and?
 		}
 
 		if(highlight) {
@@ -1147,6 +1188,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	}
 
 	if(selected_hex_.valid() && !unit) {
+		// if no old unit is selected
 		// Compute unit in range of the empty selected_hex field
 
 		gui_->unhighlight_reach();
@@ -1476,7 +1518,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 {
 	// Cannot attack if no attacks are left.
-	if(u->attacks_left() == 0) {
+	if(u->attacks_left() == 0 || u->attacks().empty()) {
 		return;
 	}
 
@@ -1484,8 +1526,62 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& cur_team = current_team();
 	const team& u_team = pc_.get_teams()[u->side() - 1];
 
-	// Check each adjacent hex.
-	for(const map_location& loc : get_adjacent_tiles(u->get_location())) {
+
+	// convert to cubical -> enumerate tiles -> convert back
+	// see https://www.redblobgames.com/grids/hexagons/ for detailed description
+
+
+	// convert to cubical coordinates
+	// cx == a.x, cy is not needed
+	const auto& attacks = u->attacks();
+	std::set<int> attackable_distances;
+
+    for (const auto& attack : attacks) {
+        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+            attackable_distances.insert(i);
+        }
+    }
+	if(attackable_distances.empty()) {
+		return;
+	}
+	// for optimalization, I think iterating over ranges here, would be better
+
+	int min = *attackable_distances.begin();
+	int n = *std::prev(attackable_distances.end());
+	const map_location& a = u->get_location();
+	std::vector<map_location> tiles;
+
+	// Convert start location to cubic coordinates
+	cubic_location center = a.to_cubic();
+
+	// Enumerate range in cubic coordinates
+	for (int dx = -n; dx <= n; ++dx) {
+		for (int dy = std::max(-n, -dx-n); dy <= std::min(n, -dx+n); ++dy) {
+			int dz = -dx - dy;
+
+			// Skip positions that are too close to center
+			if (std::abs(dx) + std::abs(dy) + std::abs(dz) < 2*min) {
+				continue;
+			}
+
+			// Create new cubic location
+			cubic_location neighbor{
+				center.q + dx,
+				center.r + dy,
+				center.s + dz
+			};
+
+			// Convert back to map coordinates and add to tiles
+			tiles.push_back(map_location::from_cubic(neighbor));
+		}
+	}
+	// tiles are tiles in range n, unchecked if existing
+
+	for(const map_location& loc : tiles) {
+		int distance = distance_between(u->get_location(), loc);
+		if (attackable_distances.find(distance) == attackable_distances.end()) {
+			continue;
+		}
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
 		if(!pc_.get_map().on_board(loc)) {

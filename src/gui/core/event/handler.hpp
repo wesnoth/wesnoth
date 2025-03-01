@@ -19,6 +19,8 @@
 #include <iosfwd>
 #include <vector>
 
+class play_controller;
+
 namespace gui2
 {
 class window;
@@ -30,7 +32,7 @@ class dispatcher;
 class manager
 {
 public:
-	manager();
+	manager(play_controller& pc);
 	~manager();
 };
 

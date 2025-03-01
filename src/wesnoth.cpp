@@ -53,6 +53,7 @@
 #include "wesconfig.h"        // for PACKAGE
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
+#include "resources.hpp"
 
 #include "utils/spritesheet_generator.hpp"
 #ifdef _WIN32
@@ -730,7 +731,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	gui2::init();
 	gui2::switch_theme(prefs::get().gui2_theme());
-	const gui2::event::manager gui_event_manager;
+	const gui2::event::manager gui_event_manager(*resources::controller);
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
