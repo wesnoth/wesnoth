@@ -1001,33 +1001,48 @@ void context_manager::revert_map()
 	load_map(filename, false);
 }
 
-void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
-{
+void context_manager::init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map) {
 	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, true, default_schedule, current_addon_);
+		int new_id = add_map_context(m, is_pure_map, default_schedule, current_addon_);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, true, default_schedule, current_addon_);
+		replace_map_context(m, is_pure_map, default_schedule, current_addon_);
 	}
+}
+
+void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
+{
+	init_context(width, height, fill, new_context, true);
 }
 
 void context_manager::new_scenario(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
-	auto default_schedule = game_config_.find_child("editor_times", "id", "empty");
-	editor_map m(width, height, fill);
-
-	if(new_context) {
-		int new_id = add_map_context(m, false, *default_schedule, current_addon_);
-		switch_context(new_id);
-	} else {
-		replace_map_context(m, false, *default_schedule, current_addon_);
-	}
+	init_context(width, height, fill, new_context, false);
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
+	gui().set_viewing_team_index(0, true);
+	gui().set_playing_team_index(0);
+	gui_.init_flags();
+}
+
+void context_manager::map_to_scenario()
+{
+	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
+	replace_map_context(get_map_context().map(), false, default_schedule, current_addon_);
+
+	// Give the converted scenario a number of sides
+	// equal to the number of valid starting positions.
+	int start_pos_count = get_map_context().map().num_valid_starting_positions();
+	if(start_pos_count == 0) {
+		start_pos_count = 1;
+	}
+	for(int i = 0; i < start_pos_count; i++) {
+		get_map_context().new_side();
+	}
 	gui().set_viewing_team_index(0, true);
 	gui().set_playing_team_index(0);
 	gui_.init_flags();
