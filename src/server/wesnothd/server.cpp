@@ -1445,7 +1445,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	// this is a game defined in an [mp_queue] in the client
 	// if there is no mp_queue defined game already existing with empty slots, tell the client to create one
 	// else update game_id to the game that already exists and have the client join that game
-	if(game_id == -1) {
+	if(game_id < 0) {
 		for(const auto& game_pair : games()) {
 			const auto game = game_pair.second;
 			if(game->is_queue_game() &&
@@ -1456,8 +1456,8 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 			}
 		}
 
-		// if it's still -1, then there's no existing game to join
-		if(game_id == -1) {
+		// if it's still negative, then there's no existing game to join
+		if(game_id < 0) {
 			simple_wml::document create_game_doc;
 			simple_wml::node& create_game_node = create_game_doc.root().add_child("create_game");
 			create_game_node.set_attr_dup("mp_scenario", join["mp_scenario"].to_string().c_str());
