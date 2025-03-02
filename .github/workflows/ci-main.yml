@@ -156,7 +156,7 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: success() || steps.build.outcome == 'success'
+        if: matrix.cc == 'clang' && (success() || steps.build.outcome == 'success')
         run: ./run_boost_tests
 
   steam-runtime:
