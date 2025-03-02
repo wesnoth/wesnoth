@@ -1550,7 +1550,7 @@ function_symbol_table::function_symbol_table(const std::shared_ptr<function_symb
 
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
-	custom_formulas_.emplace(name, std::move(fcn));
+	custom_formulas_.insert_or_assign(name, std::move(fcn));
 }
 
 expression_ptr function_symbol_table::create_function(
