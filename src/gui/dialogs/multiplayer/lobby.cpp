@@ -880,7 +880,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	join_data["mp_scenario"] = game.scenario_id;
 	mp::send_to_server(response);
 
-	if(game.id != -1) {
+	if(game.id >= 0) {
 		joined_game_id_ = game.id;
 
 		// We're all good. Close lobby and proceed to game!

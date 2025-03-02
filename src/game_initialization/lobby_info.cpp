@@ -122,12 +122,12 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 
-	// TODO: don't add if a matching game has already been created but has empty slots?
-	//       or keep this as a placeholder even if such a game exists?
+	int queued_id = 0;
 	for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
 		config qgame;
-		// id of -1 means a queue-defined game
-		qgame["id"] = -1;
+		// negative id means a queue-defined game
+		queued_id--;
+		qgame["id"] = queued_id;
 		// all are set as auto_hosted so they show up in that tab of the MP lobby
 		qgame["auto_hosted"] = true;
 

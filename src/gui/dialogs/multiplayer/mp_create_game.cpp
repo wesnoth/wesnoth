@@ -66,53 +66,53 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true,
-		[this]() {return prefs::get().mp_use_map_settings();},
+		[]() {return prefs::get().mp_use_map_settings();},
 		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, fog_(register_bool("fog", true,
-		[this]() {return prefs::get().mp_fog();},
+		[]() {return prefs::get().mp_fog();},
 		[](bool v) {prefs::get().set_mp_fog(v);}))
 	, shroud_(register_bool("shroud", true,
-		[this]() {return prefs::get().mp_shroud();},
+		[]() {return prefs::get().mp_shroud();},
 		[](bool v) {prefs::get().set_mp_shroud(v);}))
 	, start_time_(register_bool("random_start_time", true,
-		[this]() {return prefs::get().mp_random_start_time();},
+		[]() {return prefs::get().mp_random_start_time();},
 		[](bool v) {prefs::get().set_mp_random_start_time(v);}))
 	, time_limit_(register_bool("time_limit", true,
-		[this]() {return prefs::get().mp_countdown();},
+		[]() {return prefs::get().mp_countdown();},
 		[](bool v) {prefs::get().set_mp_countdown(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true,
-		[this]() {return prefs::get().shuffle_sides();},
+		[]() {return prefs::get().shuffle_sides();},
 		[](bool v) {prefs::get().set_shuffle_sides(v);}))
 	, observers_(register_bool("observers", true,
-		[this]() {return prefs::get().allow_observers();},
+		[]() {return prefs::get().allow_observers();},
 		[](bool v) {prefs::get().set_allow_observers(v);}))
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true,
-		[this]() {return prefs::get().mp_turns();},
+		[]() {return prefs::get().mp_turns();},
 		[](int v) {prefs::get().set_mp_turns(v);}))
 	, gold_(register_integer("village_gold", true,
-		[this]() {return prefs::get().village_gold();},
+		[]() {return prefs::get().village_gold();},
 		[](int v) {prefs::get().set_village_gold(v);}))
 	, support_(register_integer("village_support", true,
-		[this]() {return prefs::get().village_support();},
+		[]() {return prefs::get().village_support();},
 		[](int v) {prefs::get().set_village_support(v);}))
 	, experience_(register_integer("experience_modifier", true,
-		[this]() {return prefs::get().xp_modifier();},
+		[]() {return prefs::get().xp_modifier();},
 		[](int v) {prefs::get().set_xp_modifier(v);}))
 	, init_turn_limit_(register_integer("init_turn_limit", true,
-		[this]() {return prefs::get().countdown_init_time().count();},
+		[]() {return prefs::get().countdown_init_time().count();},
 		[](int v) {prefs::get().set_countdown_init_time(std::chrono::seconds{v});}))
 	, turn_bonus_(register_integer("turn_bonus", true,
-		[this]() {return prefs::get().countdown_turn_bonus().count();},
+		[]() {return prefs::get().countdown_turn_bonus().count();},
 		[](int v) {prefs::get().set_countdown_turn_bonus(std::chrono::seconds{v});}))
 	, reservoir_(register_integer("reservoir", true,
-		[this]() {return prefs::get().countdown_reservoir_time().count();},
+		[]() {return prefs::get().countdown_reservoir_time().count();},
 		[](int v) {prefs::get().set_countdown_reservoir_time(std::chrono::seconds{v});}))
 	, action_bonus_(register_integer("action_bonus", true,
-		[this]() {return prefs::get().countdown_action_bonus().count();},
+		[]() {return prefs::get().countdown_action_bonus().count();},
 		[](int v) {prefs::get().set_countdown_action_bonus(std::chrono::seconds{v});}))
 	, mod_list_()
 	, eras_menu_button_()
