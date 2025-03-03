@@ -120,9 +120,10 @@ private:
 
 	/**
 	 * Opens the MP Create screen for hosts to configure a new game.
-	 * @param preset trie if the game's settings are defined in an [mp_queue], false otherwise
+	 * @param preset true if the game's settings are defined in an [mp_queue], false otherwise
+	 * @param preset_scenario contains a scenario id if preset is true, an empty string otherwise
 	 */
-	void enter_create_mode(bool preset);
+	void enter_create_mode(bool preset, const std::string& preset_scenario);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
 	void enter_staging_mode(bool preset);
@@ -539,19 +540,21 @@ bool mp_manager::enter_lobby_mode()
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
+		std::string preset_scenario = "";
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
+			preset_scenario = dlg.queue_game_scenario_id();
 		}
 
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(true);
+				enter_create_mode(true, preset_scenario);
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
-				enter_create_mode(false);
+				enter_create_mode(false, "");
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
 				[[fallthrough]];
@@ -578,13 +581,12 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode(bool preset)
+void mp_manager::enter_create_mode(bool preset, const std::string& preset_scenario)
 {
 	DBG_MP << "entering create mode";
 
 	config presets;
 	if(preset) {
-		const std::string& preset_scenario = gui2::dialogs::mp_lobby::queue_game_scenario_id;
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
 			if(game["mp_scenario"] == preset_scenario) {
 				presets = game;
@@ -710,7 +712,7 @@ void start_local_game()
 
 	prefs::get().set_message_private(false);
 
-	mp_manager(utils::nullopt).enter_create_mode(false);
+	mp_manager(utils::nullopt).enter_create_mode(false, "");
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)

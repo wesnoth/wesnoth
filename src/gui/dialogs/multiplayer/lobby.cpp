@@ -757,7 +757,7 @@ void mp_lobby::process_network_data(const config& data)
 			return;
 		}
 	} else if(auto create = data.optional_child("create_game")) {
-		queue_game_scenario_id = create["mp_scenario"];
+		queue_game_scenario_id_ = create["mp_scenario"];
 		set_retval(CREATE_PRESET);
 		return;
 	} else if(auto join = data.optional_child("join_redirect")) {
