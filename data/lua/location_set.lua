@@ -15,7 +15,8 @@ end
 ---@alias location_set_resolver fun(x:integer, y:integer, old:any, new:any):any
 
 ---A set of locations, with an optional associated value for each one.
----@class location_set : { [location]: any }
+---@class location_set
+---@field [location] any
 ---@field private values table<integer, any>
 ---@operator bnot:location_set
 ---@operator band:location_set
