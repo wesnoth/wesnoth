@@ -12,6 +12,7 @@
    * Updated translations: Bengali, British English, Finnish, Italian
 ### Units
 ### User interface
+   * It is now possible to search help topics by name/id in the Help Browser.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
 
