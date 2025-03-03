@@ -66,7 +66,7 @@ public:
 		CREATE_PRESET /** player clicked Join button on an [mp_queue] game, but there was no existing game to join */
 	};
 
-	static inline std::string queue_game_scenario_id = "";
+	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; };
 
 private:
 	void update_selected_game();
@@ -176,6 +176,8 @@ private:
 	bool delay_gamelist_update_;
 
 	int& joined_game_id_;
+
+	std::string queue_game_scenario_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 
