@@ -265,7 +265,7 @@ private:
 
 	/** The text to draw. */
 	t_string text_;
-	
+
 	/** Whether to parse text_ as WFL formula */
 	bool parse_text_as_formula_;
 
