@@ -6,6 +6,7 @@
    * `Convert To Scenario` menu item added to `File` menu that allows converting an already opened map to a scenario.
 ### Multiplayer
 ### Lua API
+   * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
 ### Packaging
    * Boost 1.70 or later is now required
 ### Terrain
