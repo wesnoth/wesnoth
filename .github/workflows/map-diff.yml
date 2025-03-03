@@ -10,7 +10,7 @@ jobs:
     permissions:
       pull-requests: write
     continue-on-error: true
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: utils/wesnoth-map-diff
@@ -56,6 +56,7 @@ jobs:
           identify diff_image.png
 
           log 'Uploading diff_image.png...'
+          # https://api.imgur.com/endpoints/image/#image-upload https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
           json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr)
 
           log 'Generating HTML comment...'
