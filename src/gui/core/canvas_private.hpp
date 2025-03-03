@@ -264,7 +264,10 @@ private:
 	typed_formula<color_t> color_;
 
 	/** The text to draw. */
-	typed_formula<t_string> text_;
+	t_string text_;
+	
+	/** Whether to parse text_ as WFL formula */
+	bool parse_text_as_formula_;
 
 	/** The text markup switch of the text. */
 	typed_formula<bool> text_markup_;

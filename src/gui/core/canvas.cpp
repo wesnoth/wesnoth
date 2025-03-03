@@ -395,12 +395,6 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 namespace
 {
-/** For cases where we want a string wrapped in formula parentheses. */
-auto maybe_literal(const config::attribute_value& val, bool normal_formula)
-{
-	return typed_formula<t_string>{ normal_formula ? val : "('" + val + "')" };
-}
-
 /** Populates the attribute list from the given config child range. */
 auto parse_attributes(const config::const_child_itors& range)
 {
@@ -456,7 +450,8 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
-	, text_(maybe_literal(cfg["text"], cfg["parse_text_as_formula"].to_bool(true)))
+	, text_(cfg["text"].t_str())
+	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
@@ -483,9 +478,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	const t_string text = text_(variables);
+	if (parse_text_as_formula_) {
+		text_ = typed_formula<t_string>(text_)(variables);
+	}
 
-	if(text.empty()) {
+	if(text_.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
@@ -506,7 +503,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	text_renderer
 		.set_link_aware(link_aware_(variables))
 		.set_link_color(link_color_(variables))
-		.set_text(text, text_markup_(variables));
+		.set_text(text_, text_markup_(variables));
 
 	text_renderer.set_family_class(font_family_)
 		.set_font_size(font_size_(variables))
@@ -548,7 +545,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
-		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
+		DBG_GUI_D << "Text: Rendering '" << text_ << "' resulted in an empty canvas, leave.";
 		return;
 	}
 
