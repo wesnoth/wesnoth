@@ -5,6 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
 ### Packaging
    * Boost 1.70 or later is now required
 ### Terrain
