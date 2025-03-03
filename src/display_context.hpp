@@ -115,6 +115,8 @@ public:
 	/** Check if we are an observer in this game */
 	bool is_observer() const;
 
+	bool is_singleplayer() const;
+
 	// Dtor
 	virtual ~display_context() {}
 };
