@@ -395,10 +395,14 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 namespace
 {
-/** For cases where we want a string wrapped in formula parentheses. */
+template<typename Variant>
 auto maybe_literal(const config::attribute_value& val, bool normal_formula)
 {
-	return typed_formula<t_string>{ normal_formula ? val : "('" + val + "')" };
+	if(normal_formula) {
+		return Variant{ std::in_place_type<typed_formula<t_string>>, val.str() };
+	} else {
+		return Variant{ std::in_place_type<t_string>, val.t_str() };
+	}
 }
 
 /** Populates the attribute list from the given config child range. */
@@ -456,7 +460,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
-	, text_(maybe_literal(cfg["text"], cfg["parse_text_as_formula"].to_bool(true)))
+	, text_(maybe_literal<decltype(text_)>(cfg["text"], cfg["parse_text_as_formula"].to_bool(true)))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
@@ -483,7 +487,15 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	const t_string text = text_(variables);
+	const auto&& text = utils::visit(
+		[&variables](const auto& val) {
+			if constexpr(utils::decayed_is_same<decltype(val), t_string>) {
+				return val;
+			} else {
+				return val(variables);
+			}
+		},
+		text_);
 
 	if(text.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";

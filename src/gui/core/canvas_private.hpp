@@ -17,6 +17,7 @@
 #include "gui/auxiliary/typed_formula.hpp"
 
 #include "font/attributes.hpp"
+#include "utils/variant.hpp"
 
 namespace gui2
 {
@@ -264,7 +265,7 @@ private:
 	typed_formula<color_t> color_;
 
 	/** The text to draw. */
-	typed_formula<t_string> text_;
+	utils::variant<typed_formula<t_string>, t_string> text_;
 
 	/** The text markup switch of the text. */
 	typed_formula<bool> text_markup_;
