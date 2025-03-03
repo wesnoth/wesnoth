@@ -58,7 +58,8 @@ private:
 	void on_topic_select();
 	void on_history_navigate(bool backwards);
 
-	void add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node);
+	void update_list(const std::string&);
+	bool add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node, const std::string& filter_text = "");
 	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
 			bool expands, tree_view_node& parent);
 	void show_topic(std::string topic_id, bool add_to_history = true);
