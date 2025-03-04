@@ -291,6 +291,9 @@ wesnoth.scenario = {}
 ---@field castle boolean
 ---@field keep boolean
 ---@field healing boolean
+---@field bases string[]
+---@field mvt_bases string[]
+---@field def_bases string[]
 
 ---@type table<string, terrain_info>
 wesnoth.terrain_types = {}

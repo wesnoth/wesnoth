@@ -5,6 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * Add `bases`, `mvt_bases`, `def_bases` to `wesnoth.terrain_types`.
 ### Packaging
    * Boost 1.70 or later is now required
 ### Terrain
