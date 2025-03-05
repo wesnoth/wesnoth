@@ -3,6 +3,7 @@
 ### Add-ons server
 ### Campaigns
 ### Editor
+   * `Convert To Scenario` menu item added to `File` menu that allows converting an already opened map to a scenario.
 ### Multiplayer
 ### Lua API
 ### Packaging
