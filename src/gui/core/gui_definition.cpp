@@ -72,13 +72,12 @@ gui_definition::gui_definition(const config& cfg)
 			styled_widget_definition_ptr def_ptr = widget_parser.parser(definition);
 
 			const std::string& def_id = def_ptr->id;
+			auto [_, success] = def_map.emplace(def_id, std::move(def_ptr));
 
-			if(def_map.find(def_id) != def_map.end()) {
+			if(!success) {
 				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'";
 				continue;
 			}
-
-			def_map.emplace(def_id, std::move(def_ptr));
 
 			if(def_id == "default") {
 				found_default_def = true;
@@ -300,12 +299,8 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 		throw std::invalid_argument("widget '" + widget_type + "' doesn't exist");
 	}
 
-	if(def_map.find(definition_id) != def_map.end()) {
-		return false;
-	}
-
-	def_map.emplace(definition_id, parser->second.parser(cfg));
-	return true;
+	auto [_, success] = def_map.emplace(definition_id, parser->second.parser(cfg));
+	return success;
 }
 
 void remove_single_widget_definition(const std::string& widget_type, const std::string& definition_id)
