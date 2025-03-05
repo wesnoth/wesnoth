@@ -4,7 +4,7 @@ from subprocess import run
 from pathlib import Path
 from os import environ
 
-api = environ.get("API", 35)
+api = environ.get("API", 28)
 sdk = Path(environ.get("ANDROID_HOME", environ.get("ANDROID_SDK", "/opt/android-sdk-update-manager")))
 ndk = Path(environ.get("ANDROID_NDK_ROOT", environ.get("ANDROID_NDK_HOME", sdk / "ndk/23.1.7779620")))
 
