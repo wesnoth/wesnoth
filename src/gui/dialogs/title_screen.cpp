@@ -199,11 +199,11 @@ void title_screen::init_callbacks()
 			tip_pages->add_page({
 				{ "tip", {
 					{ "use_markup", "true" },
-					{ "label", tip.text() }
+					{ "label", tip.text }
 				}},
 				{ "source", {
 					{ "use_markup", "true" },
-					{ "label", tip.source() }
+					{ "label", tip.source }
 				}}
 			});
 		}
