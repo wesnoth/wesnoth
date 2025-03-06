@@ -451,7 +451,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
 	, ftext_(cfg["text"])
-	, text_(cfg["text"])
+	, text_(cfg["text"].t_str())
 	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
