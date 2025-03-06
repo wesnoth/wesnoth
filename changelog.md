@@ -13,6 +13,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * Added [have_side] as a conditional tag. It takes the same arguments as [filter_side]. It returns true if a side matching the SSF exists, false otherwise.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.9
