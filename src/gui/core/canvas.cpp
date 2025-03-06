@@ -450,7 +450,8 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
-	, text_(cfg["text"].t_str())
+	, ftext_(cfg["text"])
+	, text_(cfg["text"])
 	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
@@ -479,7 +480,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
 	if (parse_text_as_formula_) {
-		text_ = typed_formula<t_string>(text_)(variables);
+		text_ = ftext_(variables);
 	}
 
 	if(text_.empty()) {
