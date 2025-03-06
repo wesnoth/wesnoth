@@ -720,7 +720,7 @@ std::string unit_topic_generator::operator()() const {
 				}
 				attack_ss << markup::tag("col", specials_ss.str());
 			} else {
-				attack_ss << markup::tag("col", "none");
+				attack_ss << markup::tag("col", font::unicode_em_dash);
 			}
 
 			table_ss << markup::tag("row", attack_ss.str());
