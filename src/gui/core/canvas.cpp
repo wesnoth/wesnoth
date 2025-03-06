@@ -450,7 +450,6 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
-	, ftext_(cfg["text"])
 	, text_(cfg["text"])
 	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
@@ -479,11 +478,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	if (parse_text_as_formula_) {
-		text_ = ftext_(variables);
-	}
+	const auto text = parse_text_as_formula_
+		? typed_formula<t_string>{text_}(variables)
+		: text_.t_str();
 
-	if(text_.empty()) {
+	if(text.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
@@ -504,7 +503,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	text_renderer
 		.set_link_aware(link_aware_(variables))
 		.set_link_color(link_color_(variables))
-		.set_text(text_, text_markup_(variables));
+		.set_text(text, text_markup_(variables));
 
 	text_renderer.set_family_class(font_family_)
 		.set_font_size(font_size_(variables))
@@ -546,7 +545,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
-		DBG_GUI_D << "Text: Rendering '" << text_ << "' resulted in an empty canvas, leave.";
+		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
 		return;
 	}
 

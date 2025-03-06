@@ -17,7 +17,6 @@
 #include "gui/auxiliary/typed_formula.hpp"
 
 #include "font/attributes.hpp"
-#include "tstring.hpp"
 
 namespace gui2
 {
@@ -265,8 +264,7 @@ private:
 	typed_formula<color_t> color_;
 
 	/** The text to draw. */
-	typed_formula<t_string> ftext_;
-	t_string text_;
+	config::attribute_value text_;
 
 	/** Whether to parse text_ as WFL formula */
 	bool parse_text_as_formula_;
