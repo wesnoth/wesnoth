@@ -15,14 +15,17 @@
 #include "draw.hpp"
 
 #include "color.hpp"
+#include "font/cairo.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // sdl::runtime_at_least
 #include "video.hpp"
 
+#include <boost/math/constants/constants.hpp>
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
+#include <cairo.h>
 
 static lg::log_domain log_draw("draw");
 #define DBG_D LOG_STREAM(debug, log_draw)
@@ -308,6 +311,67 @@ void draw::disc(int cx, int cy, int r, uint8_t octants)
 	}
 }
 
+/********************/
+/* Cairo primitives */
+/********************/
+
+void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
+{
+	if (r <= 0) {
+		return;
+	}
+
+	int size = 2*r;
+	surface sdl_surf(size, size);
+	auto cairo_surface = cairo::create_surface(
+		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+	auto cairo_context = cairo::create_context(cairo_surface);
+	cairo_t* ctx = cairo_context.get();
+
+	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
+
+	cairo_set_source_rgba(ctx, 0.0, 0.0, 0.0, 0.0);
+	cairo_paint(ctx);
+
+	cairo_set_line_width(ctx, thickness);
+	cairo_set_source_rgba(ctx,
+		c.r / 255.0,
+		c.g / 255.0,
+		c.b / 255.0,
+		c.a / 255.0
+	);
+	cairo_arc(ctx, r, r, r-thickness, 0, 2*boost::math::constants::pi<double>());
+	cairo_stroke(ctx);
+
+	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+}
+
+void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
+{
+	if (r <= 0) {
+		return;
+	}
+
+	int size = 2*r;
+	surface sdl_surf(size, size);
+	auto cairo_surface = cairo::create_surface(
+		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+	auto cairo_context = cairo::create_context(cairo_surface);
+	cairo_t* ctx = cairo_context.get();
+
+	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
+
+	cairo_set_source_rgba(ctx,
+		c.r / 255.0,
+		c.g / 255.0,
+		c.b / 255.0,
+		c.a / 255.0
+	);
+	cairo_arc(ctx, r, r, r, 0, 2*2*boost::math::constants::pi<double>());
+	cairo_fill(ctx);
+
+	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+}
 
 /*******************/
 /* texture drawing */
