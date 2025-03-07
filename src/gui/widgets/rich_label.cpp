@@ -573,7 +573,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			} else if(key == "header" || key == "h") {
 
 				const auto [start, end] = add_text(*curr_item, line);
-				add_attribute(*curr_item, "face", start, end, "serif");
+				add_attribute(*curr_item, "weight", start, end, "heavy");
 				add_attribute(*curr_item, "color", start, end, font::string_to_color("white").to_hex_string());
 				add_attribute(*curr_item, "size", start, end, std::to_string(font::SIZE_TITLE - 2));
 
