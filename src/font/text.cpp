@@ -18,6 +18,7 @@
 #include "font/text.hpp"
 
 #include "font/attributes.hpp"
+#include "font/cairo.hpp"
 #include "font/font_config.hpp"
 
 #include "font/pango/escape.hpp"
@@ -710,20 +711,20 @@ static void from_cairo_format(uint32_t & c)
 
 void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride)
 {
-	cairo_format_t format = CAIRO_FORMAT_ARGB32;
-
 	uint8_t* buffer = &surface_buffer_[0];
 
-	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
-		cairo_image_surface_create_for_data(buffer, format, viewport.w, viewport.h, stride), cairo_surface_destroy);
-	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
+	auto cairo_surface = cairo::create_surface(buffer, point{ viewport.w, viewport.h }); // TODO: use rect::size
+	auto cairo_context = cairo::create_context(cairo_surface);
 
-	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
+	// Convenience pointer
+	cairo_t* cr = cairo_context.get();
+
+	if(cairo_status(cr) == CAIRO_STATUS_INVALID_SIZE) {
 		throw std::length_error("Text is too long to render");
 	}
 
 	// The top-left of the text, which can be outside the area to be rendered
-	cairo_move_to(cr.get(), -viewport.x, -viewport.y);
+	cairo_move_to(cr, -viewport.x, -viewport.y);
 
 	//
 	// TODO: the outline may be slightly cut off around certain text if it renders too
@@ -736,27 +737,27 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const uns
 	//
 	if(add_outline_) {
 		// Add a path to the cairo context tracing the current text.
-		pango_cairo_layout_path(cr.get(), &layout);
+		pango_cairo_layout_path(cr, &layout);
 
 		// Set color for background outline (black).
-		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
+		cairo_set_source_rgba(cr, 0.0, 0.0, 0.0, 1.0);
 
-		cairo_set_line_join(cr.get(), CAIRO_LINE_JOIN_ROUND);
-		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary
+		cairo_set_line_join(cr, CAIRO_LINE_JOIN_ROUND);
+		cairo_set_line_width(cr, 3.0); // Adjust as necessary
 
 		// Stroke path to draw outline.
-		cairo_stroke(cr.get());
+		cairo_stroke(cr);
 	}
 
 	// Set main text color.
-	cairo_set_source_rgba(cr.get(),
+	cairo_set_source_rgba(cr,
 		foreground_color_.r / 255.0,
 		foreground_color_.g / 255.0,
 		foreground_color_.b / 255.0,
 		foreground_color_.a / 255.0
 	);
 
-	pango_cairo_show_layout(cr.get(), &layout);
+	pango_cairo_show_layout(cr, &layout);
 }
 
 surface pango_text::create_surface()
