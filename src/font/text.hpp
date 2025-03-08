@@ -454,7 +454,7 @@ private:
 	 * This is part of create_surface(viewport). The separation is a legacy
 	 * from workarounds to the size limits of cairo_surface_t.
 	 */
-	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
+	void render(PangoLayout& layout, const SDL_Rect& viewport);
 
 	/**
 	 * Buffer to store the image on.

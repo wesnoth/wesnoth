@@ -709,7 +709,7 @@ static void from_cairo_format(uint32_t & c)
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
 
-void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride)
+void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 {
 	uint8_t* buffer = &surface_buffer_[0];
 
@@ -794,7 +794,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 	// Try rendering the whole text in one go. If this throws a length_error
 	// then leave it to the caller to handle; one reason it may throw is that
 	// cairo surfaces are limited to approximately 2**15 pixels in height.
-	render(*layout_, viewport, stride);
+	render(*layout_, viewport);
 
 	// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 	// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
