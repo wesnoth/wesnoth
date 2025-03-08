@@ -711,9 +711,7 @@ static void from_cairo_format(uint32_t & c)
 
 void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 {
-	uint8_t* buffer = &surface_buffer_[0];
-
-	auto cairo_surface = cairo::create_surface(buffer, point{ viewport.w, viewport.h }); // TODO: use rect::size
+	auto cairo_surface = cairo::create_surface(&surface_buffer_[0], point{ viewport.w, viewport.h }); // TODO: use rect::size
 	auto cairo_context = cairo::create_context(cairo_surface);
 
 	// Convenience pointer
