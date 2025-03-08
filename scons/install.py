@@ -9,20 +9,21 @@ import os
 def install_filtered_hook(target, source, env):
     copy_filter = env["copy_filter"]
     target = Flatten(target)
-    source = Flatten(source)
     if len(target) != len(source):
-        raise ValueError("Number of targets doesn't match number of sources")
+        raise ValueError(
+            f"Number of targets ({len(target)}) doesn't match number of sources ({len(source)})"
+        )
 
     def do_copy(target, source):
         if copy_filter(source):
             if os.path.isfile(source):
                 if env["verbose"]:
-                    print("cp %s %s" % (source, target))
+                    print(f"cp {source} {target}")
                 shutil.copy2(source, target)
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
-                        print("Make directory {}".format(target))
+                        print(f"Make directory {target}")
                     os.makedirs(target)
                 for file in os.listdir(source):
                     do_copy(os.path.join(target, file),
@@ -35,7 +36,7 @@ def install_filtered_hook(target, source, env):
             os.makedirs(target_path)
         for d in (target_path, source_path):
             if not os.path.isdir(d):
-                raise ValueError("%s is not a directory" % d)
+                raise ValueError(f"{d} is not a directory")
         do_copy(target_path, source_path)
 
 
@@ -55,9 +56,8 @@ def hard_link(dest, src, symlink=False):
         copy2(src, dest)
 
 
-HardLink = ActionFactory(
-    hard_link, lambda dest, src: "Hardlinking %s to %s" % (src, dest)
-)
+HardLink = ActionFactory(hard_link, lambda dest,
+                         src: f"Hardlinking {src} to {dest}")
 
 
 def install_binary(env, source):
@@ -70,8 +70,9 @@ def install_binary(env, source):
         env["destdir"], env["bindir"].lstrip("/")))
     env.Alias(
         "install-" + binary,
-        env.InstallAs(os.path.join(install_dir, binary +
-                      env["program_suffix"]), source),
+        env.InstallAs(
+            os.path.join(install_dir, binary + env["program_suffix"]), source
+        ),
     )
 
 
@@ -86,8 +87,10 @@ def install_data(env, datadir, component, source, subdir="", **kwargs):
         if isinstance(source, SCons.Node.FS.Dir) or source.isdir():
             dirs.append(source)
         else:
-            env.Alias("install-" + component,
-                      env.Install(install_dir, source, **kwargs))
+            env.Alias(
+                "install-" +
+                component, env.Install(install_dir, source, **kwargs)
+            )
     if dirs:
         if len(dirs) == 1:
             install = env.InstallFiltered(
