@@ -333,12 +333,9 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 				<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
 
-		if(markedup) {
-			if (!set_markup(narrow, *layout_)) {
-				pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
-			}
-		} else {
+		if(!markedup || !set_markup(narrow, *layout_)) {
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+			clear_attributes();
 		}
 
 		text_ = std::move(narrow);
