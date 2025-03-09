@@ -28,7 +28,7 @@ jobs:
       env:
         SHA: ${{ github.event.pull_request.head.sha }}
       run: |
-        sudo apt-get -y -q install pngquant
+        sudo apt-get -y -q install pngquant imagemagick
         comment_body=""
         log() { printf '\e[1m%s\e[m\n' "$*"; } # write log message in bold
         err() { printf '\e[1;31m%s\e[m\n' "$*"; exit 1; } # write error message in bold red and exit
