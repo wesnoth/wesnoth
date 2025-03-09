@@ -661,7 +661,9 @@ std::string unit_topic_generator::operator()() const {
 	if (!type_.attacks().empty()) {
 		// Print headers for the table.
 		table_ss << markup::tag("row",
-			markup::tag("col", markup::bold(_("Icon"))),
+			//FIXME space/tab does not work, but nbsp does
+			//empty tags will be skipped by rich_label
+			markup::tag("col", font::nbsp),
 			markup::tag("col", markup::bold(_("Name"))),
 			markup::tag("col", markup::bold(_("Strikes"))),
 			markup::tag("col", markup::bold(_("Range"))),
