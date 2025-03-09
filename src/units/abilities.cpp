@@ -1590,15 +1590,18 @@ namespace
 		return (apply_to == "one_side" || apply_to == "both_sides");
 	}
 
-	double parse_priority(const config& cfg)
+	double parse_priority(optional_config_impl<const config>& cfg)
 	{
-		if(cfg["priority"] == "priority_min") {
-			return 0.0;
-		} else if(cfg["priority"] == "priority_max") {
-			return std::numeric_limits<double>::max();
-		} else {
-			return cfg["priority"].to_double(0.0);
+		if(cfg && !cfg["priority"].empty()){
+			if(cfg["priority"] == "priority_min") {
+				return 0.00;
+			} else if(cfg["priority"] == "priority_max") {
+				return std::numeric_limits<double>::max();
+			} else {
+				return cfg["priority"].to_double(0.00);
+			}
 		}
+		return 0.00;
 	}
 }
 
@@ -1619,15 +1622,9 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 		// sort them by overwrite priority from highest to lowest (default priority is 0)
 		utils::sort_if(overwriters,[](const unit_ability& i, const unit_ability& j){
 			auto oi = (*i.ability_cfg).optional_child("overwrite");
-			double l = 0;
-			if(oi && !oi["priority"].empty()){
-				l = parse_priority(*oi);
-			}
+			double l = parse_priority(oi);
 			auto oj = (*j.ability_cfg).optional_child("overwrite");
-			double r = 0;
-			if(oj && !oj["priority"].empty()){
-				r = parse_priority(*oj);
-			}
+			double r = parse_priority(oj);
 			return l > r;
 		});
 		// remove any that need to be overwritten
@@ -1649,16 +1646,10 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		bool affect_side = ((*j.ability_cfg)["overwrite_specials"] == "one_side");
 		// the overwriter's priority, default of 0
 		auto overwrite_specials = (*j.ability_cfg).optional_child("overwrite");
-		double priority = 0.00;
-		if(overwrite_specials && !overwrite_specials["priority"].empty()){
-			priority = parse_priority(*overwrite_specials);
-		}
+		double priority = parse_priority(overwrite_specials);
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = cfg.optional_child("overwrite");
-		double cfg_priority = 0.00;
-		if(has_overwrite_specials && !has_overwrite_specials["priority"].empty()){
-			cfg_priority = parse_priority(*has_overwrite_specials);
-		}
+		double cfg_priority = parse_priority(has_overwrite_specials);
 		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
 		// else true
 		bool prior = (priority > 0) ? (cfg_priority >= priority) : true;
