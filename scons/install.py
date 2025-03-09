@@ -4,26 +4,25 @@ from shutil import copy2
 from SCons.Script import Flatten, Dir, Entry, Builder, AlwaysBuild
 import shutil
 import os
+from SCons.Node import FS
 
 
 def install_filtered_hook(target, source, env):
     copy_filter = env["copy_filter"]
     target = Flatten(target)
     if len(target) != len(source):
-        raise ValueError(
-            f"Number of targets ({len(target)}) doesn't match number of sources ({len(source)})"
-        )
+        raise ValueError("Number of targets doesn't match number of sources")
 
     def do_copy(target, source):
         if copy_filter(source):
             if os.path.isfile(source):
                 if env["verbose"]:
-                    print(f"cp {source} {target}")
+                    print("cp %s %s" % (source, target))
                 shutil.copy2(source, target)
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
-                        print(f"Make directory {target}")
+                        print("Make directory {}".format(target))
                     os.makedirs(target)
                 for file in os.listdir(source):
                     do_copy(os.path.join(target, file),
@@ -84,7 +83,7 @@ def install_data(env, datadir, component, source, subdir="", **kwargs):
     sources = map(Entry, Flatten([source]))
     dirs = []
     for source in sources:
-        if isinstance(source, SCons.Node.FS.Dir) or source.isdir():
+        if isinstance(source, FS.Dir) or source.isdir():
             dirs.append(source)
         else:
             env.Alias(
