@@ -27,7 +27,7 @@ using context_ptr = std::unique_ptr<cairo_t, void(*)(cairo_t*)>;
 /** Color format for cairo surfaces. Should be equivalent to the format used by SDL. */
 constexpr cairo_format_t format = CAIRO_FORMAT_ARGB32;
 
-surface_ptr create_surface(uint8_t* buffer, const point& size)
+inline surface_ptr create_surface(uint8_t* buffer, const point& size)
 {
 	const auto& [width, height] = size;
 	const int stride = cairo_format_stride_for_width(format, width);
@@ -38,7 +38,7 @@ surface_ptr create_surface(uint8_t* buffer, const point& size)
 	};
 }
 
-context_ptr create_context(const surface_ptr& surf)
+inline context_ptr create_context(const surface_ptr& surf)
 {
 	return {
 		cairo_create(surf.get()),
