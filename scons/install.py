@@ -2,7 +2,6 @@
 from SCons.Action import ActionFactory
 from shutil import copy2
 from SCons.Script import Flatten, Dir, Entry, Builder, AlwaysBuild
-import shutil
 import os
 from SCons.Node import FS
 
@@ -18,15 +17,14 @@ def install_filtered_hook(target, source, env):
             if os.path.isfile(source):
                 if env["verbose"]:
                     print("cp %s %s" % (source, target))
-                shutil.copy2(source, target)
+                copy2(source, target)
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
                         print("Make directory {}".format(target))
                     os.makedirs(target)
                 for file in os.listdir(source):
-                    do_copy(os.path.join(target, file),
-                            os.path.join(source, file))
+                    do_copy(os.path.join(target, file), os.path.join(source, file))
 
     for target_dir, source_dir in zip(target, source):
         target_path = str(target_dir)
@@ -35,7 +33,7 @@ def install_filtered_hook(target, source, env):
             os.makedirs(target_path)
         for d in (target_path, source_path):
             if not os.path.isdir(d):
-                raise ValueError(f"{d} is not a directory")
+                raise ValueError("%s is not a directory" % d)
         do_copy(target_path, source_path)
 
 
@@ -55,8 +53,7 @@ def hard_link(dest, src, symlink=False):
         copy2(src, dest)
 
 
-HardLink = ActionFactory(hard_link, lambda dest,
-                         src: f"Hardlinking {src} to {dest}")
+HardLink = ActionFactory(hard_link, lambda dest, src: f"Hardlinking {src} to {dest}")
 
 
 def install_binary(env, source):
@@ -65,21 +62,12 @@ def install_binary(env, source):
 
     binary = source[0].name
     binary = binary.split("-")[0]
-    install_dir = env.subst(os.path.join(
-        env["destdir"], env["bindir"].lstrip("/")))
-    env.Alias(
-        "install-" + binary,
-        env.InstallAs(
-            os.path.join(install_dir, binary + env["program_suffix"]), source
-        ),
-    )
+    install_dir = env.subst(os.path.join(env["destdir"], env["bindir"].lstrip("/")))
+    env.Alias("install-" + binary, env.InstallAs(os.path.join(install_dir, binary + env["program_suffix"]), source))
 
 
 def install_data(env, datadir, component, source, subdir="", **kwargs):
-    install_dir = Dir(
-        env.subst(os.path.join(env["destdir"],
-                  env[datadir].lstrip("/"), subdir))
-    )
+    install_dir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
     sources = map(Entry, Flatten([source]))
     dirs = []
     for source in sources:
@@ -87,20 +75,13 @@ def install_data(env, datadir, component, source, subdir="", **kwargs):
             dirs.append(source)
         else:
             env.Alias(
-                "install-" +
-                component, env.Install(install_dir, source, **kwargs)
+                "install-" + component, env.Install(install_dir, source, **kwargs)
             )
     if dirs:
         if len(dirs) == 1:
-            install = env.InstallFiltered(
-                install_dir.path, dirs[0].path, **kwargs)
+            install = env.InstallFiltered(install_dir.path, dirs[0].path, **kwargs)
         else:
-            install = [
-                env.InstallFiltered(
-                    os.path.join(install_dir.path, x.name, **kwargs), x.path
-                )
-                for x in dirs
-            ]
+            install = [env.InstallFiltered(os.path.join(install_dir.path, x.name, **kwargs), x.path) for x in dirs]
         AlwaysBuild(install)
         env.Alias("install-" + component, install)
 
@@ -109,13 +90,7 @@ def generate(env):
     env.AddMethod(install_binary)
     env.AddMethod(install_data)
 
-    env.Append(
-        BUILDERS={
-            "InstallFiltered": Builder(
-                action=install_filtered_hook, target_factory=Dir, source_factory=Dir
-            )
-        }
-    )
+    env.Append(BUILDERS={"InstallFiltered": Builder(action=install_filtered_hook, target_factory=Dir, source_factory=Dir)})
 
 
 def exists():
