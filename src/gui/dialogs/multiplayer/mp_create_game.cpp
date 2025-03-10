@@ -142,7 +142,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	set_allow_plugin_skip(false);
 }
 
-void mp_create_game::quick_mp_setup(saved_game& state, config presets)
+void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 {
 	// from constructor
 	ng::create_engine create(state);
@@ -159,7 +159,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, config presets)
 		}
 	}
 
-	create.set_current_era_id(presets["era"].str());
+	create.set_current_era_id(presets["era"]);
 
 	// from post_show
 	create.prepare_for_era_and_mods();
@@ -167,10 +167,9 @@ void mp_create_game::quick_mp_setup(saved_game& state, config presets)
 	create.get_parameters();
 	create.prepare_for_new_level();
 
-	PLAIN_LOG << presets.debug();
 	mp_game_settings& params = create.get_state().mp_settings();
 	params.use_map_settings = true;
-	params.num_turns = -1;
+	params.num_turns = presets["turn_count"].to_int(-1);
 	params.village_gold = presets["village_gold"].to_int();
 	params.village_support = presets["village_support"].to_int();
 	params.xp_modifier = presets["experience_modifier"].to_int();

@@ -41,7 +41,10 @@ public:
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
 
-	static void quick_mp_setup(saved_game& state, config presets);
+	/**
+	 * @a presets needs to be a copy! Otherwise you'll get segfaults when clicking the Join button.
+	 */
+	static void quick_mp_setup(saved_game& state, const config presets);
 
 private:
 	virtual const std::string& window_id() const override;

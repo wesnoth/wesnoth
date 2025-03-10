@@ -585,11 +585,11 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario)
 	DBG_MP << "entering create mode";
 
 	if(preset_scenario) {
-		for(config game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
-			PLAIN_LOG << game.debug();
-			if(game["scenario"].str() == preset_scenario.value_or("")) {
+		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+			if(game["scenario"].str() == preset_scenario.value()) {
 				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
 				enter_staging_mode(true);
+				break;
 			}
 		}
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
