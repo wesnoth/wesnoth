@@ -44,7 +44,7 @@ jobs:
           log "Check out $map_path from $SHA..."
           new_map=${map_path##*/}
           git show "$SHA":"$map_path" > "$new_map"
-          old_dim=$(dim "$map_path")
+          old_dim=$(dim "../../$map_path")
           new_dim=$(dim "$new_map")
 
           log "Generate map diff image for $map_path..."
@@ -69,17 +69,17 @@ jobs:
         done
 
         [[ $comment_body ]] || err Failed to generate comment
-        printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
+        printf '%s\n' "$comment_body" > body.html
     - name: Find comment
-      uses: peter-evans/find-comment@v2
+      uses: peter-evans/find-comment@v3
       id: fc
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
     - name: Add comment
-      uses: peter-evans/create-or-update-comment@v3
+      uses: peter-evans/create-or-update-comment@v4
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-id: ${{ steps.fc.outputs.comment-id }}
         edit-mode: replace
-        body: ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}
+        body-path: utils/wesnoth-map-diff/body.html
