@@ -57,7 +57,7 @@ def hard_link(dest, src, symlink=False):
 HardLink = ActionFactory(hard_link, lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
 
-def install_binary(env, source):
+def InstallBinary(env, source):
     if not source:
         return source
 
@@ -67,7 +67,7 @@ def install_binary(env, source):
     env.Alias("install-" + binary, env.InstallAs(os.path.join(install_dir, binary + env["program_suffix"]), source))
 
 
-def install_data(env, datadir, component, source, subdir="", **kwargs):
+def InstallData(env, datadir, component, source, subdir="", **kwargs):
     install_dir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
     sources = map(Entry, Flatten([source]))
     dirs = []
@@ -88,8 +88,8 @@ def install_data(env, datadir, component, source, subdir="", **kwargs):
 
 
 def generate(env):
-    env.AddMethod(install_binary)
-    env.AddMethod(install_data)
+    env.AddMethod(InstallBinary)
+    env.AddMethod(InstallData)
 
     env.Append(BUILDERS={"InstallFiltered": Builder(action=install_filtered_hook, target_factory=Dir, source_factory=Dir)})
 
