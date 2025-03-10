@@ -20,6 +20,7 @@
 #include "display_context.hpp"
 #include "config.hpp"
 #include "game_data.hpp"
+#include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "map/map.hpp"
 #include "map/location.hpp"
@@ -441,6 +442,27 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					}
+					std::optional<int> max_radius;
+					if(resources::gameboard){
+						max_radius = resources::gameboard->affect_distant_max_radius();
+					}
+					if(max_radius){
+						std::vector<map_location> surrounding;
+						get_tiles_in_radius(args.loc, *max_radius, surrounding);
+						for(unsigned j = 0; j < surrounding.size(); ++j){
+							unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+							if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == args.u.shared_from_this().get()) {
+								continue;
+							}
+							std::vector<ability_match> ability_id_matches_dist;
+							get_ability_children_id(ability_id_matches_dist, unit_itor->abilities(), ability);
+							for(const ability_match& entry : ability_id_matches_dist) {
+								if(args.u.get_dist_ability_bool(*entry.cfg, entry.tag_name, args.loc, *unit_itor, surrounding[j])){
+									return true;
+								}
+							}
+						}
+					}
 				}
 				return false;
 			}
@@ -813,6 +835,25 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							for(const auto [key, cfg] : it->abilities().all_children_view()) {
 								if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
 									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
+										return true;
+									}
+								}
+							}
+						}
+						std::optional<int> max_radius;
+						if(resources::gameboard){
+							max_radius = resources::gameboard->affect_distant_max_radius();
+						}
+						if(max_radius){
+							std::vector<map_location> surrounding;
+							get_tiles_in_radius(args.loc, *max_radius, surrounding);
+							for(unsigned j = 0; j < surrounding.size(); ++j){
+								unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+								if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == (args.u.shared_from_this()).get()) {
+									continue;
+								}
+								for(const auto [key, cfg] : unit_itor->abilities().all_children_view()) {
+									if(args.u.get_dist_ability_bool(cfg, key, args.loc, *unit_itor, surrounding[j])){
 										return true;
 									}
 								}

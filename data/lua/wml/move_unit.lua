@@ -122,4 +122,5 @@ function wesnoth.wml_actions.move_unit(cfg)
 			end
 		end
 	end
+	wesnoth.wml_actions.redraw {}
 end
