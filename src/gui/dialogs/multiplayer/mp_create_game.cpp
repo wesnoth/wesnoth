@@ -142,7 +142,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	set_allow_plugin_skip(false);
 }
 
-void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
+void mp_create_game::quick_mp_setup(saved_game& state, config presets)
 {
 	// from constructor
 	ng::create_engine create(state);
@@ -154,12 +154,12 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 	create.set_current_level_type(level_type::type::scenario);
 	const auto& levels = create.get_levels_by_type(level_type::type::scenario);
 	for(std::size_t i = 0; i < levels.size(); i++) {
-		if(levels[i]->id() == presets["mp_scenario"].str()) {
+		if(levels[i]->id() == presets["scenario"].str()) {
 			create.set_current_level(i);
 		}
 	}
 
-	create.set_current_era_id(presets["mp_era"]);
+	create.set_current_era_id(presets["era"].str());
 
 	// from post_show
 	create.prepare_for_era_and_mods();
@@ -167,15 +167,16 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 	create.get_parameters();
 	create.prepare_for_new_level();
 
+	PLAIN_LOG << presets.debug();
 	mp_game_settings& params = create.get_state().mp_settings();
 	params.use_map_settings = true;
-	params.num_turns = presets["turn_count"].to_int(-1);
-	params.village_gold = presets["mp_village_gold"].to_int();
-	params.village_support = presets["mp_village_support"].to_int();
+	params.num_turns = -1;
+	params.village_gold = presets["village_gold"].to_int();
+	params.village_support = presets["village_support"].to_int();
 	params.xp_modifier = presets["experience_modifier"].to_int();
 	params.random_start_time = presets["random_start_time"].to_bool();
-	params.fog_game = presets["mp_fog"].to_bool();
-	params.shroud_game = presets["mp_shroud"].to_bool();
+	params.fog_game = presets["fog"].to_bool();
+	params.shroud_game = presets["shroud"].to_bool();
 
 	// write to scenario
 	// queue games are supposed to all use the same settings, not be modified by the user
@@ -205,11 +206,11 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config& presets)
 		side["village_support"] = params.village_support;
 	}
 
-	params.mp_countdown = presets["mp_countdown"].to_bool();
-	params.mp_countdown_init_time = std::chrono::seconds{presets["mp_countdown_init_time"].to_int()};
-	params.mp_countdown_turn_bonus = std::chrono::seconds{presets["mp_countdown_turn_bonus"].to_int()};
-	params.mp_countdown_reservoir_time = std::chrono::seconds{presets["mp_countdown_reservoir_time"].to_int()};
-	params.mp_countdown_action_bonus = std::chrono::seconds{presets["mp_countdown_action_bonus"].to_int()};
+	params.mp_countdown = presets["countdown"].to_bool();
+	params.mp_countdown_init_time = std::chrono::seconds{presets["countdown_init_time"].to_int()};
+	params.mp_countdown_turn_bonus = std::chrono::seconds{presets["countdown_turn_bonus"].to_int()};
+	params.mp_countdown_reservoir_time = std::chrono::seconds{presets["countdown_reservoir_time"].to_int()};
+	params.mp_countdown_action_bonus = std::chrono::seconds{presets["countdown_action_bonus"].to_int()};
 
 	params.allow_observers = true;
 	params.private_replay = false;

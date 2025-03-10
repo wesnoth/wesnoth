@@ -41,7 +41,7 @@ public:
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
 
-	static void quick_mp_setup(saved_game& state, const config& presets);
+	static void quick_mp_setup(saved_game& state, config presets);
 
 private:
 	virtual const std::string& window_id() const override;

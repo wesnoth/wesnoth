@@ -120,10 +120,9 @@ private:
 
 	/**
 	 * Opens the MP Create screen for hosts to configure a new game.
-	 * @param preset true if the game's settings are defined in an [mp_queue], false otherwise
-	 * @param preset_scenario contains a scenario id if preset is true, an empty string otherwise
+	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(bool preset, const std::string& preset_scenario);
+	void enter_create_mode(utils::optional<std::string> preset_scenario);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
 	void enter_staging_mode(bool preset);
@@ -551,10 +550,10 @@ bool mp_manager::enter_lobby_mode()
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(true, preset_scenario);
+				enter_create_mode(utils::make_optional(preset_scenario));
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
-				enter_create_mode(false, "");
+				enter_create_mode({});
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
 				[[fallthrough]];
@@ -581,24 +580,20 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode(bool preset, const std::string& preset_scenario)
+void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario)
 {
 	DBG_MP << "entering create mode";
 
-	config presets;
-	if(preset) {
-		for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
-			if(game["mp_scenario"] == preset_scenario) {
-				presets = game;
+	if(preset_scenario) {
+		for(config game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+			PLAIN_LOG << game.debug();
+			if(game["scenario"].str() == preset_scenario.value_or("")) {
+				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
+				enter_staging_mode(true);
 			}
 		}
-	}
-
-	if(preset) {
-		gui2::dialogs::mp_create_game::quick_mp_setup(state, presets);
-		enter_staging_mode(preset);
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode(preset);
+		enter_staging_mode(false);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
@@ -712,7 +707,7 @@ void start_local_game()
 
 	prefs::get().set_message_private(false);
 
-	mp_manager(utils::nullopt).enter_create_mode(false, "");
+	mp_manager(utils::nullopt).enter_create_mode({});
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)

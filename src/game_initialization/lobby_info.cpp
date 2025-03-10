@@ -123,46 +123,55 @@ void lobby_info::process_gamelist(const config& data)
 
 
 	int queued_id = 0;
-	for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
+	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 		config qgame;
+		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
+		int human_sides = 0;
+		for(const auto& side : scenario.child_range("side")) {
+			if(side["controller"].str() == "human") {
+				human_sides++;
+			}
+		}
+		if(human_sides == 0) {
+			ERR_LB << "No human sides for scenario " << game["scenario"];
+			continue;
+		}
 		// negative id means a queue-defined game
 		queued_id--;
 		qgame["id"] = queued_id;
 		// all are set as auto_hosted so they show up in that tab of the MP lobby
 		qgame["auto_hosted"] = true;
 
-		qgame["name"] = game["name"];
-		qgame["mp_scenario"] = game["mp_scenario"];
-		qgame["mp_era"] = game["mp_era"];
-		qgame["mp_use_map_settings"] = game["mp_use_map_settings"];
-		qgame["mp_fog"] = game["mp_fog"];
-		qgame["mp_shroud"] = game["mp_shroud"];
-		qgame["mp_village_gold"] = game["mp_village_gold"];
+		qgame["name"] = scenario["name"];
+		qgame["mp_scenario"] = game["scenario"];
+		qgame["mp_era"] = game["era"];
+		qgame["mp_use_map_settings"] = game["use_map_settings"];
+		qgame["mp_fog"] = game["fog"];
+		qgame["mp_shroud"] = game["shroud"];
+		qgame["mp_village_gold"] = game["village_gold"];
 		qgame["experience_modifier"] = game["experience_modifier"];
 
-		qgame["mp_countdown"] = game["mp_countdown"];
-		if(qgame["mp_countdown"].to_bool()) {
-			qgame["mp_countdown_reservoir_time"] = game["mp_countdown_reservoir_time"];
-			qgame["mp_countdown_init_time"] = game["mp_countdown_init_time"];
-			qgame["mp_countdown_action_bonus"] = game["mp_countdown_action_bonus"];
-			qgame["mp_countdown_turn_bonus"] = game["mp_countdown_turn_bonus"];
+		qgame["mp_countdown"] = game["countdown"];
+		if(qgame["countdown"].to_bool()) {
+			qgame["mp_countdown_reservoir_time"] = game["countdown_reservoir_time"];
+			qgame["mp_countdown_init_time"] = game["countdown_init_time"];
+			qgame["mp_countdown_action_bonus"] = game["countdown_action_bonus"];
+			qgame["mp_countdown_turn_bonus"] = game["countdown_turn_bonus"];
 		}
 
 		qgame["observer"] = game["observer"];
-		qgame["human_sides"] = game["human_sides"];
+		qgame["human_sides"] = human_sides;
 
-
-		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["mp_scenario"].str());
 		if(scenario.has_attribute("map_data")) {
 			qgame["map_data"] = scenario["map_data"];
 		} else {
 			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
 		}
-		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["mp_scenario"].str()];
+		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["scenario"].str()];
 
 		config& qchild = qgame.add_child("slot_data");
-		qchild["vacant"] = game.mandatory_child("slot_data")["vacant"];
-		qchild["max"] = game.mandatory_child("slot_data")["max"];
+		qchild["vacant"] = human_sides;
+		qchild["max"] = human_sides;
 
 		game_info g(qgame, installed_addons_);
 		games_by_id_.emplace(g.id, std::move(g));

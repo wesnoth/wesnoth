@@ -193,14 +193,18 @@ private:
 
 	player_connections player_connections_;
 
-	std::map<int, std::shared_ptr<game>> games() const
+	std::deque<std::shared_ptr<game>> games() const
 	{
-		std::map<int, std::shared_ptr<game>> result;
+		std::deque<std::shared_ptr<game>> result;
 
 		for(const auto& iter : player_connections_.get<game_t>()) {
-			if(iter.get_game()) {
-				result.try_emplace(iter.get_game()->id(), iter.get_game());
+			if(result.empty() || iter.get_game() != result.back()) {
+				result.push_back(iter.get_game());
 			}
+		}
+
+		if(!result.empty() && result.front() == nullptr) {
+			result.pop_front();
 		}
 
 		return result;
