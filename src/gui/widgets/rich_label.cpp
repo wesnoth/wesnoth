@@ -20,12 +20,9 @@
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include "cursor.hpp"
-#include "desktop/clipboard.hpp"
-#include "desktop/open.hpp"
 #include "font/constants.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"
@@ -57,6 +54,8 @@ using namespace std::string_literals;
 /** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
 const std::array format_tags{ "bold"s, "b"s, "italic"s, "i"s, "underline"s, "u"s };
 }
+
+// TODO Get rid of set_var calls, calculate and inject position values from C++ instead.
 
 // ------------ WIDGET -----------{
 
@@ -172,7 +171,13 @@ void rich_label::add_image(config& curr_item, const std::string& name, std::stri
 	actions << "])";
 
 	curr_item["actions"] = actions.str();
-	actions.str("");
+
+	// Correction in y coordinate of image
+	if (!floating) {
+		unsigned dy = baseline_correction(get_image_size(curr_item).y);
+		curr_item["y"] = "(pos_y + " + std::to_string(dy) + ")";
+	}
+
 }
 
 void rich_label::add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width) {
@@ -550,6 +555,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				DBG_GUI_RL << "ref: dst=" << child["dst"];
 
 			} else if(std::find(format_tags.begin(), format_tags.end(), key) != format_tags.end()) {
+				// TODO only the formatting tags here support nesting
 
 				add_text_with_attribute(*curr_item, line, key);
 				config parsed_children = get_parsed_text(child, point(x, prev_blk_height), init_width).first;
@@ -573,7 +579,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			} else if(key == "header" || key == "h") {
 
 				const auto [start, end] = add_text(*curr_item, line);
-				add_attribute(*curr_item, "face", start, end, "serif");
+				add_attribute(*curr_item, "weight", start, end, "heavy");
 				add_attribute(*curr_item, "color", start, end, font::string_to_color("white").to_hex_string());
 				add_attribute(*curr_item, "size", start, end, std::to_string(font::SIZE_TITLE - 2));
 

@@ -261,7 +261,9 @@ public:
 	 * @returns                   The number of lines in the text.
 	 *
 	 */
-	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
+	unsigned get_lines_count() const {
+		return pango_layout_get_line_count(layout_.get());
+	};
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -270,6 +272,13 @@ public:
 	 * of the text.
 	 */
 	std::size_t get_length() const { return length_; }
+
+	unsigned get_text_height() const {
+		// return pango_layout_get_baseline(layout_.get())/PANGO_SCALE;
+		int height;
+		pango_layout_get_pixel_size(layout_.get(), nullptr, &height);
+		return height;
+	}
 
 	/**
 	 * Sets the text to render.
@@ -454,7 +463,7 @@ private:
 	 * This is part of create_surface(viewport). The separation is a legacy
 	 * from workarounds to the size limits of cairo_surface_t.
 	 */
-	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
+	void render(PangoLayout& layout, const SDL_Rect& viewport);
 
 	/**
 	 * Buffer to store the image on.
