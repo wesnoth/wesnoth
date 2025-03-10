@@ -51,7 +51,7 @@ function wesnoth.wml_conditionals.have_side(cfg)
 	local sides = wesnoth.sides.find(cfg)
 	if cfg.count then
 		if #sides == cfg.count then return true else return false end
-	else 
+	else
 		if sides[1] then return true else return false end
 	end
 end
