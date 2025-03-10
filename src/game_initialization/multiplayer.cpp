@@ -118,11 +118,15 @@ private:
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
 
-	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode();
+	/**
+	 * Opens the MP Create screen for hosts to configure a new game.
+	 * @param preset true if the game's settings are defined in an [mp_queue], false otherwise
+	 * @param preset_scenario contains a scenario id if preset is true, an empty string otherwise
+	 */
+	void enter_create_mode(bool preset, const std::string& preset_scenario);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode();
+	void enter_staging_mode(bool preset);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -536,16 +540,21 @@ bool mp_manager::enter_lobby_mode()
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
+		std::string preset_scenario = "";
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
+			preset_scenario = dlg.queue_game_scenario_id();
 		}
 
 		try {
 			switch(dlg_retval) {
+			case gui2::dialogs::mp_lobby::CREATE_PRESET:
+				enter_create_mode(true, preset_scenario);
+				break;
 			case gui2::dialogs::mp_lobby::CREATE:
-				enter_create_mode();
+				enter_create_mode(false, "");
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
 				[[fallthrough]];
@@ -572,18 +581,30 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode()
+void mp_manager::enter_create_mode(bool preset, const std::string& preset_scenario)
 {
 	DBG_MP << "entering create mode";
 
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
+	config presets;
+	if(preset) {
+		for(const config& game : game_config_manager::get()->game_config().mandatory_child("mp_queue").child_range("game")) {
+			if(game["mp_scenario"] == preset_scenario) {
+				presets = game;
+			}
+		}
+	}
+
+	if(preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, presets);
+		enter_staging_mode(preset);
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode(preset);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode()
+void mp_manager::enter_staging_mode(bool preset)
 {
 	DBG_MP << "entering connect mode";
 
@@ -594,6 +615,7 @@ void mp_manager::enter_staging_mode()
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
+		metadata->is_queue_game = preset;
 	}
 
 	bool dlg_ok = false;
@@ -690,7 +712,7 @@ void start_local_game()
 
 	prefs::get().set_message_private(false);
 
-	mp_manager(utils::nullopt).enter_create_mode();
+	mp_manager(utils::nullopt).enter_create_mode(false, "");
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)

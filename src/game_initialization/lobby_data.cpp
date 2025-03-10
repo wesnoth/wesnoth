@@ -114,6 +114,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, map_data(game["map_data"])
 	, name(font::escape_text(game["name"].str()))
 	, scenario()
+	, scenario_id()
 	, type_marker()
 	, remote_scenario(false)
 	, map_info()
@@ -261,6 +262,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		if(level_cfg) {
 			type_marker = make_game_type_marker(_("scenario_abbreviation^S"), false);
 			scenario = (*level_cfg)["name"].str();
+			scenario_id = (*level_cfg)["id"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
