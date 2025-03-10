@@ -1,7 +1,7 @@
 # vi: syntax=python:et:ts=4
 from SCons.Action import ActionFactory
 import shutil
-from SCons.Script import Flatten, Dir, Entry, Builder, AlwaysBuild
+from SCons.Script import *
 import os
 import SCons.Node.FS
 from subprocess import call, Popen, PIPE
