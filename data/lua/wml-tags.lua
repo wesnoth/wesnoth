@@ -476,8 +476,8 @@ function wml_actions.terrain(cfg)
 	cfg.terrain = nil
 	for i, loc in ipairs(wesnoth.map.find(cfg)) do
 		local replacement = cfg.replace_if_failed
-			and wesnoth.map.replace_if_failed(terrain, layer)
-			or wesnoth.map['replace_' .. layer](terrain)
+			and wesnoth.map.replace.if_failed(terrain, layer)
+			or wesnoth.map.replace[layer](terrain)
 		wesnoth.current.map[loc] = replacement
 	end
 end
