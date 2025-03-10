@@ -1411,15 +1411,25 @@ void console_handler::do_refresh()
 
 void console_handler::do_droid()
 {
-	// :droid [<side> [on/off/full]]
-	const std::string side_s = get_arg(1);
+	// :droid [side] [on/off/full]
+	std::string side_s = get_arg(1);
 	std::string action = get_arg(2);
+	utils::string_map symbols;
+	// deal with the possibly skipped side param, give more convenience
+	if(side_s[0] < '0' || side_s[0] > '9') {
+		if(action == "") {
+			action = side_s;
+			side_s = "";
+		} else {
+			symbols["side"] = side_s;
+			command_failed(VGETTEXT("No such side: ‘$side’.", symbols));
+		}
+	}
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
+	const bool is_your_turn = menu_handler_.pc_.is_singleplayer() ? true : menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
 
-	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
 
 	if(side < 1 || side > menu_handler_.pc_.get_teams().size()) {
