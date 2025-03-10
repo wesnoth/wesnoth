@@ -79,8 +79,7 @@
             android:launchMode="singleInstance"
             android:configChanges="layoutDirection|locale|orientation|uiMode|screenLayout|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:exported="true"
-            android:screenOrientation="sensorLandscape"
-            >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -99,7 +98,8 @@
             -->
         </activity>
         
-        <activity android:name=".WesnothActivity">
+        <activity android:name=".WesnothActivity"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
