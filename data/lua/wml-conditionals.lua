@@ -48,6 +48,10 @@ function wesnoth.wml_conditionals.has_sub_achievement(cfg)
 end
 
 function wesnoth.wml_conditionals.have_side(cfg)
-	local side = wesnoth.sides.find(cfg)[1]
-	if side then return true else return false end
+	local sides = wesnoth.sides.find(cfg)
+	if cfg.count then
+		if #sides == cfg.count then return true else return false end
+	else 
+		if sides[1] then return true else return false end
+	end
 end
