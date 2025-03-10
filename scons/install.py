@@ -1,9 +1,10 @@
 # vi: syntax=python:et:ts=4
 from SCons.Action import ActionFactory
-from shutil import copy2
+import shutil
 from SCons.Script import Flatten, Dir, Entry, Builder, AlwaysBuild
 import os
-from SCons.Node import FS
+import SCons.Node.FS
+from subprocess import call, Popen, PIPE
 
 
 def install_filtered_hook(target, source, env):
@@ -17,7 +18,7 @@ def install_filtered_hook(target, source, env):
             if os.path.isfile(source):
                 if env["verbose"]:
                     print("cp %s %s" % (source, target))
-                copy2(source, target)
+                shutil.copy2(source, target)
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
@@ -50,10 +51,10 @@ def hard_link(dest, src, symlink=False):
             os.remove(dest)
             os.link(src, dest)
     except AttributeError:
-        copy2(src, dest)
+        shutil.copy2(src, dest)
 
 
-HardLink = ActionFactory(hard_link, lambda dest, src: f"Hardlinking {src} to {dest}")
+HardLink = ActionFactory(hard_link, lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
 
 def install_binary(env, source):
@@ -71,7 +72,7 @@ def install_data(env, datadir, component, source, subdir="", **kwargs):
     sources = map(Entry, Flatten([source]))
     dirs = []
     for source in sources:
-        if isinstance(source, FS.Dir) or source.isdir():
+        if isinstance(source, SCons.Node.FS.Dir) or source.isdir():
             dirs.append(source)
         else:
             env.Alias(
