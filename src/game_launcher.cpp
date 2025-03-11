@@ -226,10 +226,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 
 	if(!cmdline_opts.nobanner) {
 		PLAIN_LOG
-			<< "\nData directory:               " << game_config::path
-			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
-			<< "\nCache directory:              " << filesystem::get_cache_dir()
-			<< "\n\n";
+			<< "\nGame data:    " << game_config::path
+			<< "\nUser data:    " << filesystem::get_user_data_dir()
+			<< "\nCache:        " << filesystem::get_cache_dir()
+			<< "\n";
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
