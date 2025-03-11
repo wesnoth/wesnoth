@@ -28,6 +28,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/iostreams/stream.hpp>
 
+#include <chrono> // MSVC needs this
 #include <map>
 #include <ctime>
 #include <mutex>
