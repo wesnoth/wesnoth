@@ -55,7 +55,6 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, config_(get_control(control_type, definition_))
 	, canvases_(config_->state.size()) // One canvas per state
 	, renderer_()
-	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
@@ -418,8 +417,7 @@ int styled_widget::get_text_maximum_width() const
 {
 	assert(config_);
 
-	return text_maximum_width_ != 0 ? text_maximum_width_
-									: get_width() - config_->text_extra_width;
+	return get_width() - config_->text_extra_width;
 }
 
 int styled_widget::get_text_maximum_height() const
@@ -454,9 +452,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	assert(!label_.empty());
 
 	// Try with the minimum wanted size.
-	const int maximum_width = text_maximum_width_ != 0
-		? text_maximum_width_
-		: maximum_size.x;
+	const int maximum_width = maximum_size.x;
 
 	/*
 	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
@@ -487,7 +483,6 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "Status:\n"
 		<< "minimum_size: " << minimum_size << "\n"
 		<< "maximum_size: " << maximum_size << "\n"
-		<< "maximum width of text: " << text_maximum_width_ << "\n"
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"
