@@ -760,7 +760,7 @@ void mp_lobby::process_network_data(const config& data)
 		queue_game_scenario_id_ = create["mp_scenario"];
 		set_retval(CREATE_PRESET);
 		return;
-	} else if(auto join_game = data.optional_child("join_redirect")) {
+	} else if(auto join_game = data.optional_child("join_game")) {
 		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
 		return;
 	}

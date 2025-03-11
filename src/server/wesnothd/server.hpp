@@ -19,7 +19,6 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
-#include "server/wesnothd/game.hpp"
 #include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"

@@ -1465,12 +1465,12 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 			send_to_player(player, create_game_doc);
 			return;
 		} else {
-			simple_wml::document join_redirect_doc;
-			simple_wml::node& join_redirect_node = join_redirect_doc.root().add_child("join_redirect");
-			join_redirect_node.set_attr_int("id", game_id);
+			simple_wml::document join_game_doc;
+			simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
+			join_game_node.set_attr_int("id", game_id);
 
 			// tell the client to create a game since there is no suitable existing game to join
-			send_to_player(player, join_redirect_doc);
+			send_to_player(player, join_game_doc);
 			return;
 		}
 	}
