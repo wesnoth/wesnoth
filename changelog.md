@@ -13,6 +13,7 @@
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Fix failure to build with recent versions of Visual Studio due to missing `<chrono>` include.
 
 ## Version 1.18.4
 ### Campaigns
