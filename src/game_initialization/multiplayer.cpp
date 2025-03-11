@@ -587,7 +587,6 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario)
 	if(preset_scenario) {
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 			if(game["scenario"].str() == preset_scenario.value()) {
-				// NOLINTNEXTLINE(performance-unnecessary-value-param)
 				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
 				enter_staging_mode(true);
 				break;

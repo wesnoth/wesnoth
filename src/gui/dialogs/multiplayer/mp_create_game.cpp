@@ -142,6 +142,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	set_allow_plugin_skip(false);
 }
 
+// NOLINTNEXTLINE(performance-unnecessary-value-param)
 void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 {
 	// from constructor
