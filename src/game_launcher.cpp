@@ -148,8 +148,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.editor) {
 		jump_to_editor_ = true;
 		if(!cmdline_opts_.editor->empty()) {
-			load_data_ = savegame::load_game_metadata{
-				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor};
+			load_data_.emplace(savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor);
 		}
 	}
 	if(cmdline_opts_.fps)
@@ -157,8 +156,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fullscreen)
 		prefs::get().set_fullscreen(true);
 	if(cmdline_opts_.load)
-		load_data_ = savegame::load_game_metadata{
-			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
+		load_data_.emplace(savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load);
 	if(cmdline_opts_.max_fps) {
 		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
@@ -534,8 +532,8 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
-	load_data_ = savegame::load_game_metadata{
-		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
+	load_data_.emplace(
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false);
 
 	if(!load_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
