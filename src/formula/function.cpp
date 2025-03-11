@@ -309,19 +309,23 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 	}
 
 	const variant value = args()[i_value]->evaluate(variables, fdb);
+	const int run_count = 1000;
 	std::chrono::steady_clock::duration run_time;
 
-	for(int i = 1; i < 1000; i++) {
+	for(int i = 0; i < run_count; i++) {
 		const auto start = std::chrono::steady_clock::now();
 		args()[i_value]->evaluate(variables, fdb);
 		run_time += std::chrono::steady_clock::now() - start;
 	}
 
+	// Average execution time over all runs
+	auto average_ms = std::chrono::duration_cast<std::chrono::milliseconds>(run_time / run_count);
+
 	std::ostringstream str;
 #ifdef __cpp_lib_format
-	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time) << " on average";
+	str << "Evaluated in " << average_ms << " on average";
 #else
-	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time).count() << " ms on average";
+	str << "Evaluated in " << average_ms.count() << " ms on average";
 #endif
 
 	LOG_SF << speaker << ": " << str.str();
