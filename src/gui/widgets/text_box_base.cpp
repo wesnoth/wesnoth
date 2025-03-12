@@ -50,8 +50,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_alpha_(0)
 	, cursor_blink_rate_(750ms)
 {
-	auto cfg = get_control(control_type, builder.definition);
-	set_font_family(cfg->text_font_family);
+	set_font_family(get_config()->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
