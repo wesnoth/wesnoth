@@ -552,7 +552,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
-canvas::canvas()
+canvas::canvas(const config& cfg)
 	: shapes_()
 	, blur_depth_(0)
 	, blur_region_(sdl::empty_rect)
@@ -562,18 +562,7 @@ canvas::canvas()
 	, variables_()
 	, functions_()
 {
-}
-
-canvas::canvas(canvas&& c) noexcept
-	: shapes_(std::move(c.shapes_))
-	, blur_depth_(c.blur_depth_)
-	, blur_region_(c.blur_region_)
-	, deferred_(c.deferred_)
-	, w_(c.w_)
-	, h_(c.h_)
-	, variables_(c.variables_)
-	, functions_(c.functions_)
-{
+	parse_cfg(cfg);
 }
 
 // It would be better if the blur effect was managed at a higher level.

@@ -83,10 +83,13 @@ public:
 		bool immutable_;
 	};
 
-	canvas();
+	explicit canvas(const config& cfg);
+
 	canvas(const canvas&) = delete;
 	canvas& operator=(const canvas&) = delete;
-	canvas(canvas&& c) noexcept;
+
+	canvas(canvas&& c) noexcept = default;
+	canvas& operator=(canvas&&) noexcept = default;
 
 	/**
 	 * Update the background blur texture, if relevant and necessary.

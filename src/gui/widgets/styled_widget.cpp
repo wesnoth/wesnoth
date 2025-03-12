@@ -53,22 +53,12 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
 	, config_(get_control(control_type, definition_))
-	, canvases_(config_->state.size()) // One canvas per state
+	, canvases_(config_->state.begin(), config_->state.end())
 	, renderer_()
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
-	/*
-	 * Fill in each canvas from the widget state definitons.
-	 *
-	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
-	 * and toggle_button have a variable canvas count determined by their definitions.
-	 */
-	for(unsigned i = 0; i < config_->state.size(); ++i) {
-		canvases_[i].set_shapes(config_->state[i].canvas_cfg_);
-	}
-
 	// Initialize all the canvas variables.
 	update_canvas();
 

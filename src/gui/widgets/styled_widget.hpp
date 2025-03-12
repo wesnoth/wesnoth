@@ -306,11 +306,6 @@ protected:
 		return std::static_pointer_cast<const typename T::resolution>(get_config());
 	}
 
-	void set_config(resolution_definition_ptr config)
-	{
-		config_ = std::move(config);
-	}
-
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
 	/**
