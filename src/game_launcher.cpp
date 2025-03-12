@@ -183,7 +183,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
-		prefs::get().set_fullscreen(true);
+		preferences::_set_fullscreen(true);
 	if(cmdline_opts_.load)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
@@ -254,7 +254,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
-		prefs::get().set_fullscreen(false);
+		preferences::_set_fullscreen(false);
 	if(cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
 	if(cmdline_opts_.translation_percent)
