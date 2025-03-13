@@ -36,71 +36,70 @@ static lg::log_domain log_font("font");
 #define WRN_FT LOG_STREAM(warn, log_font)
 #define ERR_FT LOG_STREAM(err, log_font)
 
-namespace font {
-
-
+namespace font
+{
 namespace
 {
 
-// Current font family for sanserif and monospace fonts in the game
+/** Records the game's families for sans serif, script, and monospace fonts */
+struct font_families
+{
+	font_families() = default;
 
-t_string family_order_sans;
-t_string family_order_mono;
-t_string family_order_script;
+	explicit font_families(const config& cfg)
+		: sans(cfg["family_order"].t_str())
+		, mono(cfg["family_order_monospace"].t_str())
+		, script(cfg["family_order_script"].t_str())
+	{
+		if(mono.empty()) {
+			ERR_FT << "No monospace font family defined, falling back to sans serif";
+			mono = sans;
+		}
 
-} // end anon namespace
+		if(script.empty()) {
+			ERR_FT << "No script font family defined, falling back to sans serif";
+			script = sans;
+		}
+	}
+
+	t_string sans;
+	t_string mono;
+	t_string script;
+};
+
+font_families families;
+
+} //namespace
 
 /***
  * Public interface
  */
 
 bool load_font_config()
-{
-	config cfg;
-	try {
-		const auto cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
-		if(!cfg_path) {
-			ERR_FT << "could not resolve path to fonts.cfg, file not found";
-			return false;
-		}
-
-		filesystem::scoped_istream stream = preprocess_file(cfg_path.value());
-		read(cfg, *stream);
-	} catch(const config::error &e) {
-		ERR_FT << "could not read fonts.cfg:\n" << e.message;
-		return false;
-	}
-
-	auto fonts_config = cfg.optional_child("fonts");
-	if (!fonts_config)
-		return false;
-
-	family_order_sans = fonts_config["family_order"];
-	family_order_mono = fonts_config["family_order_monospace"];
-	family_order_script = fonts_config["family_order_script"];
-
-	if(family_order_mono.empty()) {
-		ERR_FT << "No monospace font family order defined, falling back to sans serif order";
-		family_order_mono = family_order_sans;
-	}
-
-	if(family_order_script.empty()) {
-		ERR_FT << "No script font family order defined, falling back to sans serif order";
-		family_order_script = family_order_sans;
-	}
-
+try {
+	auto stream = preprocess_file(filesystem::get_wml_location("hardwired/fonts.cfg").value());
+	const config cfg = read(*stream);
+	families = font_families{ cfg.mandatory_child("fonts") };
 	return true;
+
+} catch(const utils::bad_optional_access&) {
+	ERR_FT << "could not resolve path to fonts.cfg, file not found";
+	return false;
+
+} catch(const config::error& e) {
+	ERR_FT << "could not read fonts.cfg:\n" << e.message;
+	return false;
 }
 
 const t_string& get_font_families(family_class fclass)
 {
 	switch(fclass) {
 	case family_class::monospace:
-		return family_order_mono;
+		return families.mono;
 	case family_class::script:
-		return family_order_script;
+		return families.script;
 	default:
-		return family_order_sans;
+		return families.sans;
 	}
 }
 
