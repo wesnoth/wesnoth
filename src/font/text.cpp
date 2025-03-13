@@ -320,10 +320,6 @@ void pango_text::apply_attributes(const font::attribute_list& attrs)
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
-		if(layout_ == nullptr) {
-			layout_.reset(pango_layout_new(context_.get()));
-		}
-
 		const std::u32string wide = unicode_cast<std::u32string>(text);
 		std::string narrow = unicode_cast<std::string>(wide);
 		if(text != narrow) {
