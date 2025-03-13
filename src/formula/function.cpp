@@ -266,36 +266,25 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 {
-	variant var1 = args()[0]->evaluate(variables, fdb);
+	std::string speaker = "WFL";
+	int i_value = 0;
 
-	std::string str1, str2;
-
-	if(args().size() == 1) {
-		str1 = var1.to_debug_string(true);
-
-		LOG_SF << str1;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var1;
-	} else {
-		str1 = var1.string_cast();
-
-		const variant var2 = args()[1]->evaluate(variables, fdb);
-		str2 = var2.to_debug_string(true);
-
-		LOG_SF << str1 << ": " << str2;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var2;
+	if(args().size() == 2) {
+		speaker = args()[0]->evaluate(variables, fdb).string_cast();
+		i_value = 1;
 	}
+
+	variant value = args()[i_value]->evaluate(variables, fdb);
+	const std::string str = value.to_debug_string(true);
+
+	LOG_SF << speaker << ": " << str;
+
+	if(game_config::debug && game_display::get_singleton()) {
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::time(nullptr), "WFL", 0, str, events::chat_handler::MESSAGE_PUBLIC, false);
+	}
+
+	return value;
 }
 
 DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
