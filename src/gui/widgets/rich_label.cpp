@@ -289,7 +289,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				x = (align == "left") ? float_size.x : 0;
 				float_size.x = curr_img_size.x + padding_;
-				float_size.y += curr_img_size.y;
+				float_size.y += curr_img_size.y + padding_;
 
 				wrap_mode = true;
 				is_float = true;
