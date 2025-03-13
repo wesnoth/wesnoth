@@ -1425,7 +1425,7 @@ void display::draw_label(const theme::label& label)
 	} else if(text.empty() == false) {
 		font::pango_text& renderer = font::get_text_renderer();
 		renderer.set_text(text, false);
-		renderer.set_family_class(font::FONT_SANS_SERIF);
+		renderer.set_family_class(font::family_class::sans_serif);
 		renderer.set_font_size(label.font_size());
 		renderer.set_font_style(font::pango_text::STYLE_NORMAL);
 		renderer.set_foreground_color(text_color);
@@ -2960,7 +2960,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 			}
 			text.set_link_aware(false)
 				.set_text(t, true);
-			text.set_family_class(font::FONT_SANS_SERIF)
+			text.set_family_class(font::family_class::sans_serif)
 				.set_font_size(item->font_size())
 				.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(PANGO_ALIGN_LEFT)

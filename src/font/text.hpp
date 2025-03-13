@@ -534,7 +534,7 @@ pango_text& get_text_renderer();
  *                                font. More specifically, the result is the sum of the maximum
  *                                ascent and descent lengths.
  */
-int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+int get_max_height(unsigned size, font::family_class fclass = font::family_class::sans_serif, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 /* Returns the default line spacing factor
  * For now hardcoded here */

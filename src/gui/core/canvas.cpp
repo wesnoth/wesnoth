@@ -415,7 +415,7 @@ auto parse_attributes(const config::const_child_itors& range)
 		} else if (name == "font_size" || name == "size") {
 			add_attribute_size(text_attributes, start, end, attr["value"].to_int(font::SIZE_NORMAL));
 		} else if (name == "font_family" || name == "face") {
-			add_attribute_font_family(text_attributes, start, end, font::str_to_family_class(attr["value"]));
+			add_attribute_font_family(text_attributes, start, end, font::decode_family_class(attr["value"]));
 		} else if (name == "weight") {
 			add_attribute_weight(text_attributes, start, end, decode_text_weight(attr["value"]));
 		} else if (name == "style") {
@@ -440,7 +440,7 @@ auto parse_attributes(const config::const_child_itors& range)
 
 text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
-	, font_family_(font::str_to_family_class(cfg["font_family"]))
+	, font_family_(font::decode_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])

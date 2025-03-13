@@ -95,9 +95,9 @@ bool load_font_config()
 const t_string& get_font_families(family_class fclass)
 {
 	switch(fclass) {
-	case FONT_MONOSPACE:
+	case family_class::monospace:
 		return family_order_mono;
-	case FONT_SCRIPT:
+	case family_class::script:
 		return family_order_script;
 	default:
 		return family_order_sans;

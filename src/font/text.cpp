@@ -51,7 +51,7 @@ pango_text::pango_text()
 	, markedup_text_(false)
 	, link_aware_(false)
 	, link_color_()
-	, font_class_(font::FONT_SANS_SERIF)
+	, font_class_(font::family_class::sans_serif)
 	, font_size_(14)
 	, font_style_(STYLE_NORMAL)
 	, foreground_color_() // solid white
