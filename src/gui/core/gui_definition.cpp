@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+using namespace std::chrono_literals;
+
 gui_theme_map_t guis;
 gui_theme_map_t::iterator current_gui = guis.end();
 gui_theme_map_t::iterator default_gui = guis.end();
@@ -36,16 +38,7 @@ gui_definition::gui_definition(const config& cfg)
 	, window_types()
 	, id_(cfg["id"])
 	, description_(cfg["description"].t_str())
-	, popup_show_delay_(0)
-	, popup_show_time_(0)
-	, help_show_time_(0)
-	, double_click_time_(0)
-	, repeat_button_repeat_time_(0)
-	, sound_button_click_()
-	, sound_toggle_button_click_()
-	, sound_toggle_panel_click_()
-	, sound_slider_adjust_()
-	, has_helptip_message_()
+	, settings_(cfg.mandatory_child("settings"))
 	, tips_(tip_of_the_day::load(cfg))
 {
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("gui", "id"));
@@ -111,51 +104,39 @@ gui_definition::gui_definition(const config& cfg)
 			VALIDATE(window_types.find(window_type) != window_types.end(), error_msg);
 		}
 	}
+}
 
-	/***** settings *****/
+gui_definition::settings_helper::settings_helper(const config& cfg)
+	: popup_show_delay(chrono::parse_duration(cfg["popup_show_delay"], 0ms))
+	, popup_show_time(chrono::parse_duration(cfg["popup_show_time"], 0ms))
+	, help_show_time(chrono::parse_duration(cfg["help_show_time"], 0ms))
+	, double_click_time(chrono::parse_duration(cfg["double_click_time"], 0ms))
+	, repeat_button_repeat_time(chrono::parse_duration(cfg["repeat_button_repeat_time"], 0ms))
+	, sound_button_click(cfg["sound_button_click"])
+	, sound_toggle_button_click(cfg["sound_toggle_button_click"])
+	, sound_toggle_panel_click(cfg["sound_toggle_panel_click"])
+	, sound_slider_adjust(cfg["sound_slider_adjust"])
+	, has_helptip_message(cfg["has_helptip_message"].t_str())
+{
+	VALIDATE(double_click_time > 0ms,
+		missing_mandatory_wml_key("settings", "double_click_time"));
 
-	/**
-	 * @todo Regarding sounds:
-	 * Need to evaluate but probably we want the widget definition be able to:
-	 * - Override the default (and clear it). This will allow toggle buttons in a
-	 *   listbox to sound like a toggle panel.
-	 * - Override the default and above per instance of the widget, some buttons
-	 *   can give a different sound.
-	 */
-	const config& settings = cfg.mandatory_child("settings");
-
-	using namespace std::chrono_literals;
-	popup_show_delay_ = chrono::parse_duration(settings["popup_show_delay"], 0ms);
-	popup_show_time_ = chrono::parse_duration(settings["popup_show_time"], 0ms);
-	help_show_time_ = chrono::parse_duration(settings["help_show_time"], 0ms);
-	double_click_time_ = chrono::parse_duration(settings["double_click_time"], 0ms);
-
-	repeat_button_repeat_time_ = chrono::parse_duration(settings["repeat_button_repeat_time"], 0ms);
-
-	VALIDATE(!settings["double_click_time"].blank(), missing_mandatory_wml_key("settings", "double_click_time"));
-
-	sound_button_click_ = settings["sound_button_click"].str();
-	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
-	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
-	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
-
-	has_helptip_message_ = settings["has_helptip_message"].t_str();
-
-	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("settings", "has_helptip_message"));
+	VALIDATE(!has_helptip_message.empty(),
+		missing_mandatory_wml_key("settings", "has_helptip_message"));
 }
 
 void gui_definition::activate() const
 {
-	settings::popup_show_delay = popup_show_delay_;
-	settings::popup_show_time = popup_show_time_;
-	settings::help_show_time = help_show_time_;
-	settings::double_click_time = double_click_time_;
-	settings::repeat_button_repeat_time = repeat_button_repeat_time_;
-	settings::sound_button_click = sound_button_click_;
-	settings::sound_toggle_button_click = sound_toggle_button_click_;
-	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
-	settings::sound_slider_adjust = sound_slider_adjust_;
-	settings::has_helptip_message = has_helptip_message_;
+	settings::popup_show_delay = settings_.popup_show_delay;
+	settings::popup_show_time = settings_.popup_show_time;
+	settings::help_show_time = settings_.help_show_time;
+	settings::double_click_time = settings_.double_click_time;
+	settings::repeat_button_repeat_time = settings_.repeat_button_repeat_time;
+	settings::sound_button_click = settings_.sound_button_click;
+	settings::sound_toggle_button_click = settings_.sound_toggle_button_click;
+	settings::sound_toggle_panel_click = settings_.sound_toggle_panel_click;
+	settings::sound_slider_adjust = settings_.sound_slider_adjust;
+	settings::has_helptip_message = settings_.has_helptip_message;
 	settings::tips = tips_;
 }
 
