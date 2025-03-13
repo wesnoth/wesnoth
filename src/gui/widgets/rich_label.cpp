@@ -333,9 +333,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 		} else if(key == "table") {
 			if (curr_item == nullptr) {
 				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item);
-				(*curr_item)["x"] = pos.x;
-				(*curr_item)["y"] = pos.y;
+				default_text_config(curr_item, pos, init_width);
 				new_text_block = false;
 			}
 
@@ -449,7 +447,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 		} else if(key == "break" || key == "br") {
 			if (curr_item == nullptr) {
 				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item);
+				default_text_config(curr_item, pos, init_width);
 				new_text_block = false;
 			}
 
@@ -529,10 +527,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			if (curr_item == nullptr || new_text_block) {
 				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item);
-				(*curr_item)["x"] = pos.x;
-				(*curr_item)["y"] = pos.y;
-				(*curr_item)["maximum_width"] = init_width - pos.x - float_size.x;
+				default_text_config(curr_item, pos, init_width - pos.x - float_size.x);
 				new_text_block = false;
 			}
 
@@ -652,10 +647,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					// rest of the text
 					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item);
-					(*curr_item)["x"] = pos.x;
-					(*curr_item)["y"] = pos.y;
-					(*curr_item)["maximum_width"] = init_width - pos.x - float_size.x;
+					default_text_config(curr_item, pos, init_width - pos.x - float_size.x);
 					tmp_h = get_text_size(*curr_item, init_width).y;
 					add_text_with_attribute(*curr_item, removed_part);
 
@@ -733,7 +725,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 	return { text_dom, point(w, h - origin.y) };
 } // function ends
 
-void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
+void rich_label::default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
 		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
@@ -741,12 +733,12 @@ void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 		(*txt_ptr)["font_size"] = font_size_;
 		(*txt_ptr)["font_style"] = font_style_;
 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
+		(*txt_ptr)["x"] = pos.x;
+		(*txt_ptr)["y"] = pos.y;
 		(*txt_ptr)["w"] = "(text_width)";
 		(*txt_ptr)["h"] = "(text_height)";
+		(*txt_ptr)["maximum_width"] = max_width;
 		(*txt_ptr)["parse_text_as_formula"] = false;
-		// tw -> table width, used for wrapping text inside table cols
-		// ww -> wrap width, used for wrapping around floating image
-		// max text width shouldn't go beyond the rich_label's specified width
 	}
 }
 

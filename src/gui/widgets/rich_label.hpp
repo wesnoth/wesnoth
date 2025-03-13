@@ -246,7 +246,7 @@ private:
 	unsigned padding_;
 
 	/** Create template for text config that can be shown in canvas */
-	void default_text_config(config* txt_ptr, const t_string& text = "");
+	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
 
 	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
 	void add_attribute(config& curr_item, const std::string& attr_name, size_t start = 0, size_t end = 0, const std::string& extra_data = "");
@@ -281,7 +281,7 @@ private:
 	// A correction to allow inline image to stay at the same height
 	// as the text following it.
 	unsigned baseline_correction(unsigned img_height) {
-		unsigned text_height = font::get_text_renderer().get_text_height();
+		unsigned text_height = font::get_text_renderer().get_size().y;
 		return (text_height > img_height) ? (text_height - img_height)/2 : 0;
 	}
 
