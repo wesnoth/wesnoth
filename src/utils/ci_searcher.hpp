@@ -41,13 +41,16 @@ inline auto make_ci_matcher(const std::vector<std::string>& keywords)
 			return true;
 		}
 
+		bool matched = false;
 		for(const auto& keyword : keywords) {
-			if (translation::ci_search(keyword, text)) {
-				return true;
+			bool matched2 = true;
+			for(const auto& word : utils::split(text, ' ')) {
+				matched2 = matched2 && translation::ci_search(keyword, word);
 			}
+			matched = matched || matched2;
 		}
 
-		return false;
+		return matched;
 	};
 }
 
