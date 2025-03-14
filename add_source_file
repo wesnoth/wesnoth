@@ -24,7 +24,6 @@ This only supports files inside the "src" directory.
 """
 
 import argparse
-import sys
 import inspect
 import pathlib
 
@@ -38,13 +37,12 @@ except:
     )))
     exit(1)
 
-#=========#
+
 # Globals #
-#=========#
 
 # Either the executable directory or the current working directory
 # should be the wesnoth root directory
-rootdir = pathlib.Path(inspect.getsourcefile(lambda:0))
+rootdir = pathlib.Path(inspect.getsourcefile(lambda: 0))
 if not rootdir.joinpath("projectfiles").exists():
     rootdir = pathlib.Path()
 if not rootdir.joinpath("projectfiles").exists():
@@ -77,9 +75,8 @@ code_blocks_target_translations = {
     "tests": "tests",
 }
 
-#=======#
 # XCode #
-#=======#
+
 
 def modify_xcode(filename, targets, remove):
     """Add the given file to the specified targets.
@@ -121,7 +118,7 @@ def modify_xcode(filename, targets, remove):
             raise Exception(f"problem finding '{d}' group in '{groupname}'")
         parent_group = found_groups[0]
 
-    if remove :
+    if remove:
         # Remove from all targets if we want to remove
         for file in project.get_files_by_name(filename.name, parent=parent_group):
             project.remove_file_by_id(file.get_id())
@@ -139,19 +136,19 @@ def modify_xcode(filename, targets, remove):
         # a different place will block addition of the new file.
         # the rest is just to match existing project file structure.
         project.add_file(filename.name,
-            force=True,
-            tree="<group>",
-            parent=parent_group,
-            target_name=translated_targets,
-        )
+                         force=True,
+                         tree="<group>",
+                         parent=parent_group,
+                         target_name=translated_targets,
+                         )
 
     # that's done, save the file
     project.save()
     return
 
-#==============#
+
 # source_lists #
-#==============#
+
 
 def modify_source_list(filename, source_list, remove):
     source_list_file = rootdir.joinpath("source_lists", source_list)
@@ -163,7 +160,8 @@ def modify_source_list(filename, source_list, remove):
         return
 
     if remove:
-        if file_line in sl_lines: sl_lines.remove(file_line)
+        if file_line in sl_lines:
+            sl_lines.remove(file_line)
     else:
         # if the target already has an entry with the same filename, loudly skip
         if file_line in sl_lines:
@@ -175,20 +173,22 @@ def modify_source_list(filename, source_list, remove):
     sl_lines.sort()
     open(source_list_file, 'w').writelines(sl_lines)
 
+
 def add_to_source_lists(filename, targets):
     translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
         modify_source_list(filename, t, False)
 
+
 def remove_from_source_lists(filename):
     # remove from all tagerts if -r was specified.
     for t in source_list_target_translations.values():
         modify_source_list(filename, t, True)
 
-#==============#
+
 # Code::Blocks #
-#==============#
+
 
 def modify_code_blocks_target(filename, target, remove):
     cbp_file = rootdir.joinpath(
@@ -205,7 +205,8 @@ def modify_code_blocks_target(filename, target, remove):
     elem = f"\t\t<Unit filename=\"{filename_for_cbp}\" />\n"
 
     if remove:
-        if elem in cbp_lines: cbp_lines.remove(elem)
+        if elem in cbp_lines:
+            cbp_lines.remove(elem)
     else:
         # if the target already has an entry with the same filename, loudly skip
         if elem in cbp_lines:
@@ -226,11 +227,13 @@ def modify_code_blocks_target(filename, target, remove):
 
     open(cbp_file, 'w').writelines(cbp_lines)
 
+
 def modify_code_blocks(filename, targets, remove):
     translated_targets = code_blocks_target_translations.values() if remove else [code_blocks_target_translations[t] for t in targets]
     print(" code::blocks targets:", translated_targets)
     for t in translated_targets:
         modify_code_blocks_target(filename, t, remove)
+
 
 def sanity_check_existing_cpp_hpp(filenames):
     """
@@ -264,6 +267,7 @@ def sanity_check_existing_cpp_hpp(filenames):
         print("ERROR: Not making changes, as checks failed and --no-checks option was not used.")
         exit(1)
 
+
 def canonicalise_filenames(original_filenames):
     """
     The script supports giving the filenames with or without the "src/" prefix.
@@ -288,22 +292,22 @@ def canonicalise_filenames(original_filenames):
 
     return filenames
 
-#======#
+
 # main #
-#======#
+
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     # a file argument is mandatory
     ap.add_argument("filename", action="store", nargs="+",
-        help="the .cpp and .hpp files to add")
+                    help="the .cpp and .hpp files to add")
     ap.add_argument("--target", action="store", nargs=1,
-        default=["wesnoth"],
-        help="which build targets to add the file to")
+                    default=["wesnoth"],
+                    help="which build targets to add the file to")
     ap.add_argument("--no-checks", action="store_true",
-        help="do not check whether the files exist, etc")
+                    help="do not check whether the files exist, etc")
     ap.add_argument("-r", "--remove", action="store_true",
-        help="remove the specified files from projectfiles instead of adding them, --target is then ignored")
+                    help="remove the specified files from projectfiles instead of adding them, --target is then ignored")
     # By default, recognise --help too
     options = ap.parse_args()
 
