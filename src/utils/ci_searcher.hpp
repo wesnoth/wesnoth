@@ -42,10 +42,8 @@ inline auto make_ci_matcher(const std::vector<std::string>& keywords)
 		}
 
 		for(const auto& keyword : keywords) {
-			for(const auto& word: utils::split(text, ' ')) {
-				if (translation::ci_search(keyword, word)) {
-					return true;
-				}
+			if (translation::ci_search(keyword, text)) {
+				return true;
 			}
 		}
 
