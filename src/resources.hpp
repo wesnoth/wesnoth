@@ -55,5 +55,5 @@ namespace resources
 	extern pathfind::manager      *tunnels;
 	extern actions::undo_list     *undo_stack;
 	extern std::shared_ptr<wb::manager> whiteboard;
-	extern bool                   simulation_;
+	extern bool                   simulation;
 }

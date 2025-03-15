@@ -422,7 +422,7 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 }
 
 void manager::raise_user_interact() {
-	if(resources::simulation_){
+	if(resources::simulation){
 		return;
 	}
 
