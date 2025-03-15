@@ -42,8 +42,11 @@
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
+#include "map/location.hpp"
+
 #include "language.hpp"
 #include "serialization/markup.hpp"
+
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
@@ -395,6 +398,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// and isolated mouse motion event when using drag&drop
 	sdl::get_mouse_state(&x, &y); // <-- modify x and y
 
+	std::cout << "Mouse moved to: " << x << ", " << y << std::endl;
+
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
 		return;
 	}
@@ -690,6 +695,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	}
 
 	bool wb_active = pc_.get_whiteboard()->is_active();
+	std::set<int> attackable_distances;
 
 	{
 		// Check the unit SOURCE of the attack
@@ -749,47 +755,84 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if(!target_eligible) {
 			return map_location();
 		}
-	}
-
-	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
-	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
-
-	int best_rating = 100; // smaller is better
-
-	map_location res;
-	const auto adj = get_adjacent_tiles(loc);
-
-	for(std::size_t n = 0; n < adj.size(); ++n) {
-		if(pc_.get_map().on_board(adj[n]) == false) {
-			continue;
-		}
-
-		if(adj[n] != selected_hex_ && find_unit(adj[n])) {
-			continue;
-		}
-
-		if(current_paths_.destinations.contains(adj[n])) {
-			static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
-
-			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
-			if(difference > ndirections / 2) {
-				difference = ndirections - difference;
-			}
-
-			unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
-			if(second_difference > ndirections / 2) {
-				second_difference = ndirections - second_difference;
-			}
-
-			const int rating = difference * 2 + (second_difference > difference);
-			if(rating < best_rating || res.valid() == false) {
-				best_rating = rating;
-				res = adj[n];
+		const auto& attacks = source_unit->attacks();
+		for (const auto& attack : attacks) {
+			for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+				attackable_distances.insert(i);
 			}
 		}
 	}
 
-	return res;
+
+	//TODO when moving, tiles with highlighted enemies are considered as valid position RN, highlighting them differently might help
+	//TODO highlight enemies in range, when hovered over
+
+
+	// TODO: finalize behavior for ranged attacks
+	// if selected hex is in attack range, attack from current hex
+	// TODO: add a rating system there
+
+	if(*attackable_distances.rbegin() <= 1){
+		const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
+		const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
+
+		int best_rating = 100; // smaller is better
+
+		map_location res;
+		const auto adj = get_adjacent_tiles(loc);
+
+		for(std::size_t n = 0; n < adj.size(); ++n) {
+			if(pc_.get_map().on_board(adj[n]) == false) {
+				continue;
+			}
+
+			if(adj[n] != selected_hex_ && find_unit(adj[n])) {
+				continue;
+			}
+
+			if(current_paths_.destinations.contains(adj[n])) {
+				static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
+
+				unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+				if(difference > ndirections / 2) {
+					difference = ndirections - difference;
+				}
+
+				unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
+				if(second_difference > ndirections / 2) {
+					second_difference = ndirections - second_difference;
+				}
+
+				const int rating = difference * 2 + (second_difference > difference);
+				if(rating < best_rating || res.valid() == false) {
+					best_rating = rating;
+					res = adj[n];
+				}
+			}
+		}
+
+		return res;
+	}
+
+	int distance = distance_between(selected_hex_, loc);
+	if (attackable_distances.find(distance) != attackable_distances.end() ) {
+		return selected_hex_;
+	}
+	const map_location* best_loc = nullptr;
+	int best_move = -1;
+	for (const pathfind::paths::step& step : current_paths_.destinations) {
+		const map_location& dst = step.curr;
+		// std::cout << "Destination: " << dst << ", Cost: " << step.move_left << std::endl;
+		int distance = distance_between(loc, dst);
+		if (attackable_distances.find(distance) != attackable_distances.end()) {
+			if (step.move_left > best_move){
+				best_move = step.move_left;
+				best_loc=&dst;
+			}
+		}
+	}
+	return *best_loc;
+
 }
 
 pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_to, const team& team) const
@@ -926,7 +969,7 @@ void mouse_handler::move_action(bool browse)
 
 		src = selected_hex_;
 		orig_paths = current_paths_;
-		attack_from = current_unit_attacks_from(hex);
+		attack_from = current_unit_attacks_from(hex); //Where does the attack dialog gonna be showed from, only one tile now
 	} // end planned unit map scope
 
 	// See if the teleport option is toggled
@@ -941,7 +984,9 @@ void mouse_handler::move_action(bool browse)
 		}
 
 		if(((u != nullptr && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u != nullptr) {
-			if(attack_from == selected_hex_) { // no move needed
+			if(attack_from == selected_hex_)
+			{ // no move needed
+				//TODO still count move for ranged attacks
 				int choice = -1;
 				{
 					wb::future_map_if_active planned_unit_map; // start planned unit map scope
@@ -961,7 +1006,7 @@ void mouse_handler::move_action(bool browse)
 				}
 
 				return;
-			} else {
+			} else {		// This is the move&attack
 				int choice = -1; // for the attack dialog
 
 				{
@@ -976,11 +1021,14 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
+						//TODO: check if temp_mover is neccesary,
+						//We don't want more than one same unit on map at once
+						// temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location(), src);
 					}
 
 					if(choice < 0) {
-						// user hit cancel, don't start move+attack
+						// user hit cancel or invalid, don't start move+attack
 						return;
 					}
 				} // end planned unit map scope
@@ -1113,9 +1161,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		{
 			current_paths_ = pathfind::paths(*unit, false, true, gui().viewing_team(), path_turns_);
+			// used to highlight... and?
 		}
 
 		if(highlight) {
+			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
 		}
 
@@ -1144,6 +1194,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	}
 
 	if(selected_hex_.valid() && !unit) {
+		// if no old unit is selected
 		// Compute unit in range of the empty selected_hex field
 
 		gui_->unhighlight_reach();
@@ -1337,7 +1388,7 @@ int mouse_handler::fill_weapon_choices(
 	return best;
 }
 
-int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src)
+int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src) //HERE
 {
 	game_board& board = pc_.gamestate().board_;
 	unit_map::iterator attacker;
@@ -1354,7 +1405,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		defender = board.units().find(defender_loc);
 
 		if(!attacker || !defender) {
-			ERR_NG << "One fighter is missing, can't attack";
+			if (!attacker) ERR_NG << "Attacker is missing, can't attack";
+			if (!defender) ERR_NG << "Defender is missing, can't attack";
 			return -1; // abort, click will do nothing
 		}
 
@@ -1525,7 +1577,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	// bc_widget_data_vector won't be empty when it reaches here.
 	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
 
-	if(dlg.show()) {
+	if(dlg.show()) { //without dlg.show(), the dialog doesn't show
 		return dlg.get_selected_weapon();
 	}
 
@@ -1628,6 +1680,76 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 	}
 
 	return res;
+}
+
+/**
+ * Causes attackable hexes to be highlighted.
+ *
+ * This checks the hexes that the provided unit can attack. If there is a valid
+ * target there, that location is inserted into current_paths_.destinations.
+ */
+void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
+{
+	// Cannot attack if no attacks are left.
+	if(u->attacks_left() == 0 || u->attacks().empty()) {
+		return;
+	}
+
+	// Get the teams involved.
+	const team& cur_team = current_team();
+	const team& u_team = pc_.get_teams()[u->side() - 1];
+
+
+	// convert to cubical -> enumerate tiles -> convert back
+	// see https://www.redblobgames.com/grids/hexagons/ for detailed description
+
+
+	// convert to cubical coordinates
+	// cx == a.x, cy is not needed
+	const auto& attacks = u->attacks();
+	std::set<int> attackable_distances;
+
+    for (const auto& attack : attacks) {
+        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+            attackable_distances.insert(i);
+        }
+    }
+	if(attackable_distances.empty()) {
+		return;
+	}
+	if (*attackable_distances.rbegin() <= 1) {
+	// 	gui2::show_transient_message(_("DEBUG"), _("ATTACK ON RANGE 1"));
+    // 	return; // this may be useful to leave the melee attacks same, if something is going to be added to ranged attacks
+	}
+
+	int min = *attackable_distances.begin();
+	int n = *std::prev(attackable_distances.end());
+	const map_location& center = u->get_location();
+	std::vector<map_location> tiles = center.get_ring(min,n);
+
+	for(const map_location& loc : tiles) {
+		int distance = distance_between(u->get_location(), loc);
+		if (attackable_distances.find(distance) == attackable_distances.end()) {
+			continue;
+		}
+		// No attack option shown if no visible unit present.
+		// (Visible to current team, not necessarily the unit's team.)
+		if(!pc_.get_map().on_board(loc)) {
+			continue;
+		}
+
+		unit_map::const_iterator i = pc_.get_units().find(loc);
+		if(!i || !i->is_visible_to_team(cur_team, false)) {
+			continue;
+		}
+
+		const unit& target = *i;
+
+		// Can only attack non-petrified enemies.
+		if(u_team.is_enemy(target.side()) && !target.incapacitated()) {
+			// current_paths_.destinations.insert(loc); // Higlights all units attackable from the current tile - keeping for future work with ranged attacks
+		}
+	}
 }
 
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)

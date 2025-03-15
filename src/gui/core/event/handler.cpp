@@ -17,6 +17,12 @@
 
 #include "gui/core/event/handler.hpp"
 
+#include "scripting/lua_wml.hpp"
+#include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_common.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "play_controller.hpp"
+
 #include "events.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
@@ -27,6 +33,8 @@
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
 #include "utils/ranges.hpp"
+
+#include <iostream>
 
 #include <cassert>
 
@@ -121,7 +129,7 @@ class sdl_event_handler : public events::sdl_handler
 	friend bool gui2::is_in_dialog();
 
 public:
-	sdl_event_handler();
+	sdl_event_handler(play_controller& pc);
 
 	~sdl_event_handler();
 
@@ -130,6 +138,8 @@ public:
 
 	/** Inherited from events::sdl_handler. */
 	void handle_window_event(const SDL_Event& event) override;
+
+	void call_lua_mouse_move(int x, int y);
 
 	/**
 	 * Connects a dispatcher.
@@ -154,6 +164,8 @@ public:
 	dispatcher* mouse_focus;
 
 private:
+
+
 	/**
 	 * Reinitializes the state of all dispatchers.
 	 *
@@ -338,14 +350,29 @@ private:
 	 * NOTE the keyboard events aren't really wired in yet so doesn't do much.
 	 */
 	dispatcher* keyboard_focus_;
+
+	play_controller& pc_;
+
 	friend void capture_keyboard(dispatcher* dispatcher);
 };
 
-sdl_event_handler::sdl_event_handler()
+void sdl_event_handler::call_lua_mouse_move(int x, int y)
+{
+    // This is where you'd call into the Lua state
+    // For now, let's just log the event
+    LOG_GUI_E << "Mouse moved to: " << x << ", " << y;
+	// std::cout << "Mouse moved to: " << x << ", " << y << std::endl;
+
+    // TODO: Implement actual Lua call
+    // This will require access to the Lua state and proper error handling
+}
+
+sdl_event_handler::sdl_event_handler(play_controller& pc)
 	: events::sdl_handler(false)
 	, mouse_focus(nullptr)
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
+	, pc_(pc)
 {
 	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
@@ -383,6 +410,15 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 #endif
 			{
 				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+				call_lua_mouse_move(event.motion.x, event.motion.y);
+					// game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get();
+					// std::cout << "Debug 3: After get()" << std::endl;
+					// if (lk) {
+					// 	std::cout << "MEOW2" << std::endl;
+					// } else {
+					// 	std::cout << "Debug 4: lk is null" << std::endl;
+					// }
+
 			}
 			break;
 
@@ -831,9 +867,9 @@ void sdl_event_handler::close_window(const unsigned window_id)
 
 /***** manager class. *****/
 
-manager::manager()
+manager::manager(play_controller& pc)
 {
-	handler_.reset(new sdl_event_handler());
+	handler_.reset(new sdl_event_handler(pc));
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 30;

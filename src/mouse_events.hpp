@@ -148,6 +148,7 @@ protected:
 			, const map_location& defender_loc
 			, int choice);
 
+	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
 	/*
