@@ -1376,15 +1376,16 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
 	const std::string initial_bans = create_game["ignored"].to_string();
+	const bool is_queue_game = create_game["queue_game"].to_bool();
 
 	DBG_SERVER << player->client_ip() << "\t" << player->info().name()
 			   << "\tcreates a new game: \"" << game_name << "\".";
 
 	// Create the new game, remove the player from the lobby
 	// and set the player as the host/owner.
-	player_connections_.modify(player, [this, player, &game_name](player_record& host_record) {
+	player_connections_.modify(player, [this, player, &game_name, is_queue_game](player_record& host_record) {
 		host_record.get_game().reset(
-			new wesnothd::game(*this, player_connections_, player, game_name, save_replays_, replay_save_path_),
+			new wesnothd::game(*this, player_connections_, player, is_queue_game, game_name, save_replays_, replay_save_path_),
 			std::bind(&server::cleanup_game, this, std::placeholders::_1)
 		);
 	});
@@ -1439,9 +1440,43 @@ void server::cleanup_game(game* game_ptr)
 
 void server::handle_join_game(player_iterator player, simple_wml::node& join)
 {
+	int game_id = join["id"].to_int();
+
+	// this is a game defined in an [mp_queue] in the client
+	// if there is no mp_queue defined game already existing with empty slots, tell the client to create one
+	// else update game_id to the game that already exists and have the client join that game
+	if(game_id < 0) {
+		for(const auto& game : games()) {
+			if(game->is_queue_game() &&
+			   !game->started() &&
+			   join["mp_scenario"].to_string() == game->get_scenario_id() &&
+			   game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
+				game_id = game->id();
+			}
+		}
+
+		// if it's still negative, then there's no existing game to join
+		if(game_id < 0) {
+			simple_wml::document create_game_doc;
+			simple_wml::node& create_game_node = create_game_doc.root().add_child("create_game");
+			create_game_node.set_attr_dup("mp_scenario", join["mp_scenario"].to_string().c_str());
+
+			// tell the client to create a game since there is no suitable existing game to join
+			send_to_player(player, create_game_doc);
+			return;
+		} else {
+			simple_wml::document join_game_doc;
+			simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
+			join_game_node.set_attr_int("id", game_id);
+
+			// tell the client to create a game since there is no suitable existing game to join
+			send_to_player(player, join_game_doc);
+			return;
+		}
+	}
+
 	const bool observer = join.attr("observe").to_bool();
 	const std::string& password = join["password"].to_string();
-	int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
 
