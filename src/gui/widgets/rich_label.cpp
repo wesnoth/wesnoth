@@ -346,31 +346,31 @@ std::pair<config, point> rich_label::get_parsed_text(
 			pos = point(origin.x, prev_blk_height);
 
 			// init table vars
-			unsigned col_idx = 0;
+			unsigned col_idx = 0, row_idx = 0;
 			unsigned rows = child.child_count("row");
 			unsigned columns = 1;
 			if (rows > 0) {
 				columns = child.mandatory_child("row").child_count("col");
 			}
 			columns = (columns == 0) ? 1 : columns;
-			unsigned width = child["width"].to_int(init_width);
-			unsigned col_x = 0;
-			unsigned row_y = prev_blk_height;
-			unsigned max_row_height = 0;
+			unsigned init_cell_width = child["width"].to_int(init_width)/columns;
 			std::vector<unsigned> col_widths(columns, 0);
+			std::vector<unsigned> row_heights(rows, 0);
 
 			is_text = false;
 			new_text_block = true;
 			is_image = false;
 
-			DBG_GUI_RL << __LINE__ << "start table : " << "row= " << rows << " col=" << columns << " width=" << width;
+			DBG_GUI_RL << "start table : " << "row= " << rows << " col=" << columns
+			           << " width=" << init_cell_width*columns;
 
 			// optimal col width calculation
 			for(const config& row : child.child_range("row")) {
-				col_x = 0;
+				pos.x = origin.x;
 				col_idx = 0;
 
 				for(const config& col : row.child_range("col")) {
+					DBG_GUI_RL << "table cell origin (pre-layout): " << pos.x << ", " << pos.y;
 					config col_cfg;
 					col_cfg.append_children(col);
 
@@ -379,26 +379,37 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					// attach data
 					auto links = links_;
-					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), width/columns);
+					const auto& [table_elem, size] = get_parsed_text(col_cfg, pos, init_cell_width);
 					links_ = links;
-					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
-					col_widths[col_idx] = std::min(col_widths[col_idx], width/columns);
 
-					col_x += width/columns;
+					// column post-processing
+					row_heights[row_idx] = std::max(row_heights[row_idx], static_cast<unsigned>(size.y));
+					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
+					col_widths[col_idx] = std::min(col_widths[col_idx], init_cell_width);
+
+					DBG_GUI_RL << "table row " << row_idx << " height: " << row_heights[row_idx]
+					           << "col " << col_idx << " width: " << col_widths[col_idx];
+
+					pos.x += init_cell_width;
 					col_idx++;
 				}
 
-				row_y += max_row_height + padding_;
+				pos.y += row_heights[row_idx] + padding_;
+				row_idx++;
 			}
 
 			// table layouting
-			row_y = prev_blk_height;
+			row_idx = 0;
+			pos = point(origin.x, prev_blk_height);
 			for(const config& row : child.child_range("row")) {
-				col_x = 0;
+				pos.x = origin.x;
 				col_idx = 0;
-				max_row_height = 0;
 
 				for(const config& col : row.child_range("col")) {
+					DBG_GUI_RL << "table row " << row_idx << " height: " << row_heights[row_idx]
+					           << "col " << col_idx << " width: " << col_widths[col_idx];
+					DBG_GUI_RL << "cell origin: " << pos;
+
 					config col_cfg;
 					col_cfg.append_children(col);
 
@@ -406,16 +417,12 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_txt_cfg.append_attributes(col);
 
 					// attach data
-					auto [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), col_widths[col_idx]);
+					auto [table_elem, size] = get_parsed_text(col_cfg, pos, col_widths[col_idx]);
 					text_dom.append(std::move(table_elem));
 
-					// column post-processing
-					max_row_height = std::max(max_row_height, static_cast<unsigned>(size.y));
-
-					col_x += col_widths[col_idx] + 2 * padding_;
+					pos.x += col_widths[col_idx] + 2 * padding_;
 					auto [_, end_cfg] = text_dom.all_children_view().back();
 					end_cfg["maximum_width"] = col_widths[col_idx];
-					pos = point(col_x, row_y);
 
 					DBG_GUI_RL << "jump to next column";
 
@@ -426,23 +433,19 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_idx++;
 				}
 
-				row_y += max_row_height + padding_;
-				pos = point(0, row_y);
-				DBG_GUI_RL << "row height: " << max_row_height;
+				pos.y += row_heights[row_idx] + padding_;
+				DBG_GUI_RL << "row height: " << row_heights[row_idx];
+				row_idx++;
 			}
 
-			prev_blk_height = row_y;
+			prev_blk_height = pos.y;
 			text_height = 0;
-
-			pos = point(0, row_y);
+			pos.x = origin.x;
 
 			is_image = false;
 			is_text = false;
 
 			x = origin.x;
-			col_x = 0;
-			row_y = 0;
-			max_row_height = 0;
 
 		} else if(key == "break" || key == "br") {
 			if (curr_item == nullptr) {
@@ -455,7 +458,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			if (is_image && !is_float) {
 				prev_blk_height += text_height + padding_;
 				text_height = 0;
-				pos = point(0, prev_blk_height);
+				pos = point(origin.x, prev_blk_height);
 			} else {
 				add_text_with_attribute(*curr_item, "\n");
 			}
@@ -636,7 +639,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					text_height += ah - tmp_h;
 
 					prev_blk_height += text_height + 0.3*font::get_max_height(font_size_);
-					pos = point(0, prev_blk_height);
+					pos = point(origin.x, prev_blk_height);
 
 					DBG_GUI_RL << "wrap: " << prev_blk_height << "," << text_height;
 					text_height = 0;
@@ -666,15 +669,14 @@ std::pair<config, point> rich_label::get_parsed_text(
 			}
 
 			point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
-			int ah = size.y;
 			// update text size and widget height
-			if (tmp_h > ah) {
+			if (tmp_h > size.y) {
 				tmp_h = 0;
 			}
 			w = std::max(w, x + static_cast<unsigned>(size.x));
 
-			text_height += ah - tmp_h;
-			pos.y += ah - tmp_h;
+			text_height += size.y - tmp_h;
+			pos.y += size.y - tmp_h;
 
 			if (remaining_item) {
 				x = origin.x;
