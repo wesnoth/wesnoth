@@ -156,13 +156,12 @@ end
 
 -- make unit advancement tree viewable in the ingame help
 local known_units = {}
-local function make_unit_known(unit)  -- can be both unit or unit type
-	local type = unit.type or unit.id
+local function make_unit_type_known(type, advances_to)
 	if known_units[type] then return end
 	known_units[type] = true
 	wesnoth.add_known_unit(type)
-	for _, advance in ipairs(unit.advances_to) do
-		make_unit_known(wesnoth.unit_types[advance])
+	for _, advance in ipairs(advances_to) do
+		make_unit_type_known(wesnoth.unit_types[advance].id, wesnoth.unit_types[advance].advances_to)
 	end
 end
 
@@ -174,7 +173,7 @@ local function initialize_unit_x1y1()
 	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)
-	make_unit_known(unit)
+	make_unit_type_known(unit.type, unit.advances_to)
 	if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and unit.side == wesnoth.current.side then
 		pickadvance.pick_advance(unit)
 	end
