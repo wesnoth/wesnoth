@@ -19,6 +19,7 @@
    * `[unit]dismissable` and `[unit]block_dismiss_message` keys added that allow marking an unit as dismissable, and what message to show if user clicks `Dismiss` button in Unit Recall dialog.
    * Added [have_side] as a conditional tag. It takes the same arguments as [filter_side]. It returns true if a side matching the SSF exists, false otherwise. Added to the schema.
 ### Miscellaneous and Bug Fixes
+   * GUI.pyw: use the Windows API through the `ctypes` library to detect the user's language on Windows (#9972).
 
 ## Version 1.19.9
 ### Campaigns
