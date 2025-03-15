@@ -667,8 +667,6 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	enum visibility { REACH = 0, ENEMY = 1, CLEAR = 2 };
 	std::array<visibility, 6> tiles;
 
-	const std::string* image_prefix_ = &game_config::reach_map_prefix;
-
 	for(int i = 0; i < 6; ++i) {
 		// look for units adjacent to loc
 		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
@@ -706,7 +704,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	if(s == 6) {
 		// Completely surrounded by reach. This may have a special graphic.
 		DBG_DP << "Tried completely surrounding";
-		std::string name = *image_prefix_ + "-all.png";
+		std::string name = game_config::reach_map_prefix + "-all.png";
 		if(image::exists(name)) {
 			names.push_back(std::move(name));
 		}
@@ -718,7 +716,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			std::ostringstream stream;
 			std::string suffix;
 			std::string name;
-			stream << *image_prefix_;
+			stream << game_config::reach_map_prefix;
 
 			std::string color = prefs::get().reach_map_color();
 			std::string enemy_color = prefs::get().reach_map_enemy_color();
