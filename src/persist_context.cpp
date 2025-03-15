@@ -28,7 +28,7 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + filesystem::wml_extension);
+	return (filesystem::get_dir(filesystem::get_wml_persist_dir() + "/persist/") + name_space + filesystem::wml_extension);
 }
 
 void persist_file_context::load()
