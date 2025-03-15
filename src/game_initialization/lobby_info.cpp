@@ -121,7 +121,6 @@ void lobby_info::process_gamelist(const config& data)
 
 	games_by_id_.clear();
 
-
 	int queued_id = 0;
 	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 		config qgame;
@@ -176,7 +175,6 @@ void lobby_info::process_gamelist(const config& data)
 		game_info g(qgame, installed_addons_);
 		games_by_id_.emplace(g.id, std::move(g));
 	}
-
 
 	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		game_info game(c, installed_addons_);

@@ -218,7 +218,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	params.shuffle_sides = presets["shuffle_sides"].to_bool();
 
 	params.mode = random_faction_mode::type::no_mirror;
-	params.name = presets["name"].str();
+	params.name = settings::game_name_default();
 }
 
 void mp_create_game::pre_show()

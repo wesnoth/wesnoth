@@ -122,7 +122,7 @@ private:
 	 * Opens the MP Create screen for hosts to configure a new game.
 	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(utils::optional<std::string> preset_scenario);
+	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
 	void enter_staging_mode(bool preset);
@@ -553,7 +553,7 @@ bool mp_manager::enter_lobby_mode()
 				enter_create_mode(utils::make_optional(preset_scenario));
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
-				enter_create_mode({});
+				enter_create_mode();
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
 				[[fallthrough]];
