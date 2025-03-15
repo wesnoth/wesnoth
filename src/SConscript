@@ -124,8 +124,11 @@ env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config"))
 env_lua.Append(CCFLAGS = Split("-x c++"))
 
 objs_lua = env_lua.Object(lua_sources)
+shobjs_lua = env_lua.SharedObject(lua_sources)
 for obj in objs_lua:
     env_lua.Depends(obj, env_lua["wesnoth_lua_config"])
+for shobj in shobjs_lua:
+    env_lua.Depends(shobj, env_lua["wesnoth_lua_config"])
 
 liblua = env_lua.Library("lua", objs_lua)
 
@@ -173,6 +176,11 @@ if env["PLATFORM"] == 'darwin':
 elif env["PLATFORM"] == 'win32':
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["#/packaging/windows/wesnoth.o"], have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+elif env["PLATFORM"] == 'android':
+    #client_env["CPPDEFINES"].remove("SDL_MAIN_HANDLED")
+    wesnoth = client_env.SharedLibrary("#packaging/android/lib/libmain.so", ["wesnoth.cpp"] + sorted(list(set(wesnoth_client_sources).union(set(libwesnoth_sdl_sources)).union(libwesnoth_widgets_sources).union(libwesnoth_core_sources).union(libwesnoth_game_sources))) + shobjs_lua)
+    Alias("native-lib", wesnoth)
+    Export("wesnoth")
 else:
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
