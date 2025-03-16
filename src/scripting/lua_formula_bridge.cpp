@@ -266,8 +266,8 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 	return 1;
 }
 
-lua_formula_bridge::fwrapper::fwrapper(const std::string& code, function_symbol_table* functions)
-	: formula_ptr(new formula(code, functions))
+lua_formula_bridge::fwrapper::fwrapper(const std::string& code)
+	: formula_ptr(new formula(code))
 {
 }
 

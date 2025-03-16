@@ -36,7 +36,7 @@ namespace lua_formula_bridge {
 	class fwrapper {
 		std::shared_ptr<wfl::formula> formula_ptr;
 	public:
-		fwrapper(const std::string& code, wfl::function_symbol_table* functions = nullptr);
+		fwrapper(const std::string& code);
 		std::string str() const;
 		wfl::variant evaluate(const wfl::formula_callable& variables, wfl::formula_debugger* fdb = nullptr) const;
 	};

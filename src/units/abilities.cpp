@@ -698,7 +698,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
 					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
-				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
+				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table, true), callable);
 			} catch(const wfl::formula_error& e) {
 				lg::log_to_chat() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 				ERR_WML << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")";

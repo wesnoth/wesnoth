@@ -699,7 +699,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c)
 			{
 				//TODO: catch syntax error.
-				return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+				return wfl::formula(c, new wfl::gamestate_function_symbol_table(), true);
 			},
 			[](const wfl::formula& form, const unit_filter_args& args)
 			{
