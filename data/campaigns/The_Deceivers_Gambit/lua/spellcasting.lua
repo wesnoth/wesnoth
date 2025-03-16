@@ -1,11 +1,6 @@
 local _ = wesnoth.textdomain "wesnoth-tdg"
 local utils = wesnoth.require "wml-utils"
-
-
-local spell_data = wesnoth.dofile('campaigns/The_Deceivers_Gambit/lua/spell_set.lua')
-local locked = spell_data.locked
-local skill_set = spell_data.spell_set
-
+local skill_data = wesnoth.dofile('campaigns/The_Deceivers_Gambit/lua/skill_set.lua')
 
 -- to make code shorter
 local wml_actions = wesnoth.wml_actions
@@ -44,8 +39,8 @@ function display_skills_dialog(selecting)
         T.tooltip{ id="tooltip_large" }, -- mandatory field
         T.grid{} }
     local grid = dialog[3]
-	
-    local skill_set_copy = deep_copy(skill_set)
+
+    local skill_set_copy = deep_copy(skill_data.skill_set)
 
     -------------------------
     -- HEADER
@@ -77,8 +72,8 @@ function display_skills_dialog(selecting)
             -- menu button for selecting skills
             button = T.menu_button{  id="button"..i, use_markup=true  }
             for j=1,#skill_set_copy[i],1 do
-			    if not wml.variables["unlock_" .. string.sub(skill_set_copy[i][j].id, 7, -1)] then
-                    skill_set_copy[i][j] = locked
+                if not wml.variables["unlock_" .. string.sub(skill_set_copy[i][j].id, 7, -1)] then
+                    skill_set_copy[i][j] = skill_data.locked
                 else
                     skill_set_copy[i][j] = skill_set_copy[i][j]
                 end

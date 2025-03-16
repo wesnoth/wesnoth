@@ -9,7 +9,7 @@ function label(text)     return "<span size='1000'> \n</span><span size='large'>
 --                                                                  DEFINE SKILLS
 --###########################################################################################################################################################
 function label(text)     return "<span size='1000'> \n</span><span size='large'>"..text.."</span><span size='8000'>\n </span>"  end
-local spell_set = {
+local skill_set = {
     --###############################
     -- GROUP 0 SKILLS
     --###############################
@@ -277,6 +277,6 @@ local locked = {
 }
 	
 return {
-	locked = locked,
-	spell_set = spell_set,
+    locked = locked,
+    skill_set = skill_set,
 }
