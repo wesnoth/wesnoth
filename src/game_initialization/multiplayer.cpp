@@ -707,7 +707,7 @@ void start_local_game()
 
 	prefs::get().set_message_private(false);
 
-	mp_manager(utils::nullopt).enter_create_mode({});
+	mp_manager(utils::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
