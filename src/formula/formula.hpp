@@ -34,7 +34,7 @@ namespace tk = tokenizer;
 class formula
 {
 public:
-	formula(const std::string& str, function_symbol_table* symbols = nullptr);
+	formula(const std::string& str, function_symbol_table* symbols = nullptr, bool manage_symbols = false);
 	formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols = nullptr);
 
 	static variant evaluate(

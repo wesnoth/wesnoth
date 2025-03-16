@@ -667,7 +667,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c)
 			{
 				try {
-					return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+					return wfl::formula(c, new wfl::gamestate_function_symbol_table(), true);
 				} catch(const wfl::formula_error& e) {
 					lg::log_to_chat() << "Formula error while evaluating formula in unit filter: " << e.type << " at "
 									  << e.filename << ':' << e.line << ")\n";
