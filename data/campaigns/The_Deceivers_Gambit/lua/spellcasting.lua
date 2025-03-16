@@ -45,7 +45,7 @@ function display_skills_dialog(selecting)
         T.grid{} }
     local grid = dialog[3]
 	
-	local skill_set_copy = deep_copy(skill_set)
+    local skill_set_copy = deep_copy(skill_set)
 
     -------------------------
     -- HEADER
