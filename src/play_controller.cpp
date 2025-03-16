@@ -682,6 +682,7 @@ void play_controller::enter_textbox()
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		if (menu_handler_.do_speak()) {
+			menu_handler_.get_textbox().memorize_command(str);
 			menu_handler_.get_textbox().close();
 		}
 		break;
@@ -704,12 +705,6 @@ void play_controller::enter_textbox()
 void play_controller::textbox_move_vertically(bool up)
 {
 	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
-		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
-		// Not handling messages to avoid spam
 		return;
 	}
 
