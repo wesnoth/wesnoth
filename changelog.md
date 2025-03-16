@@ -2,9 +2,11 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Fixed campaigns not using the correct map settings
 ### Editor
    * `Convert To Scenario` menu item added to `File` menu that allows converting an already opened map to a scenario.
 ### Multiplayer
+   * Added the foundation for multiplayer queueing
 ### Lua API
    * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
 ### Packaging
@@ -20,6 +22,7 @@
    * Added [have_side] as a conditional tag. It takes the same arguments as [filter_side]. It returns true if a side matching the SSF exists, false otherwise. Added to the schema.
 ### Miscellaneous and Bug Fixes
    * GUI.pyw: use the Windows API through the `ctypes` library to detect the user's language on Windows (#9972).
+   * Fixed persistent WML being stored in the wrong folder
 
 ## Version 1.19.9
 ### Campaigns
