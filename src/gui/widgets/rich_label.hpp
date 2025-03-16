@@ -243,7 +243,7 @@ private:
 	point size_;
 
 	/** Padding */
-	unsigned padding_;
+	int padding_;
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");

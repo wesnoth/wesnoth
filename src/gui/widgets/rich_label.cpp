@@ -37,6 +37,7 @@
 
 #include <boost/format.hpp>
 #include <functional>
+#include <numeric>
 #include <string>
 #include <utility>
 
@@ -341,9 +342,9 @@ std::pair<config, point> rich_label::get_parsed_text(
 			img_size = point(0,0);
 			float_size = point(0,0);
 			x = origin.x;
-			prev_blk_height += text_height;
+			prev_blk_height += text_height + padding_;
 			text_height = 0;
-			pos = point(origin.x, prev_blk_height);
+			pos = point(origin.x, prev_blk_height + padding_);
 
 			// init table vars
 			unsigned col_idx = 0, row_idx = 0;
@@ -373,7 +374,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 					DBG_GUI_RL << "table cell origin (pre-layout): " << pos.x << ", " << pos.y;
 					config col_cfg;
 					col_cfg.append_children(col);
-
 					config& col_txt_cfg = col_cfg.add_child("text");
 					col_txt_cfg.append_attributes(col);
 
@@ -398,12 +398,37 @@ std::pair<config, point> rich_label::get_parsed_text(
 				row_idx++;
 			}
 
+			const auto get_padding = [this](const config::attribute_value& val) {
+				if(val.blank()) {
+					return std::array{ padding_, padding_ };
+				} else {
+					auto paddings = utils::split(val.str(), ' ');
+					return std::array{ std::stoi(paddings[0]), std::stoi(paddings[1]) };
+				}
+			};
+
 			// table layouting
 			row_idx = 0;
 			pos = point(origin.x, prev_blk_height);
 			for(const config& row : child.child_range("row")) {
 				pos.x = origin.x;
 				col_idx = 0;
+
+				// order: top padding|bottom padding
+				std::array<int, 2> row_paddings = get_padding(row["padding"]);
+
+				if (!row["bgcolor"].blank()) {
+					config bg_base;
+					config& bgbox = bg_base.add_child("rectangle");
+					bgbox["x"] = origin.x;
+					bgbox["y"] = pos.y;
+					bgbox["w"] = std::accumulate(col_widths.begin(), col_widths.end(), 0) + 2*(row_paddings[0] + row_paddings[1])*columns;
+					bgbox["h"] = row_paddings[0] + row_heights[row_idx] + row_paddings[1];
+					bgbox["fill_color"] = font::string_to_color(row["bgcolor"]).to_rgba_string();
+					text_dom.append(std::move(bg_base));
+				}
+
+				pos.y += row_paddings[0];
 
 				for(const config& col : row.child_range("col")) {
 					DBG_GUI_RL << "table row " << row_idx << " height: " << row_heights[row_idx]
@@ -412,15 +437,19 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					config col_cfg;
 					col_cfg.append_children(col);
-
 					config& col_txt_cfg = col_cfg.add_child("text");
 					col_txt_cfg.append_attributes(col);
 
+					// order: left padding|right padding
+					std::array<int, 2> col_paddings = get_padding(col["padding"]);
+
+					pos.x += col_paddings[0];
 					// attach data
 					auto [table_elem, size] = get_parsed_text(col_cfg, pos, col_widths[col_idx]);
 					text_dom.append(std::move(table_elem));
+					pos.x += col_widths[col_idx];
+					pos.x += col_paddings[1];
 
-					pos.x += col_widths[col_idx] + 2 * padding_;
 					auto [_, end_cfg] = text_dom.all_children_view().back();
 					end_cfg["maximum_width"] = col_widths[col_idx];
 
@@ -433,7 +462,8 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_idx++;
 				}
 
-				pos.y += row_heights[row_idx] + padding_;
+				pos.y += row_heights[row_idx];
+				pos.y += row_paddings[1];
 				DBG_GUI_RL << "row height: " << row_heights[row_idx];
 				row_idx++;
 			}
