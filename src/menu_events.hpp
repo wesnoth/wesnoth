@@ -115,7 +115,7 @@ public:
 
 	/** @return Whether or not the recruit was successful */
 	bool do_recruit(const std::string& name, int side_num, map_location& target_hex);
-	void do_speak();
+	bool do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str);
 	void do_ai_formula(const std::string& str, int side_num, mouse_handler& mousehandler);

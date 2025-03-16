@@ -681,8 +681,9 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
+		if (menu_handler_.do_speak()) {
+			menu_handler_.get_textbox().close();
+		}
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
