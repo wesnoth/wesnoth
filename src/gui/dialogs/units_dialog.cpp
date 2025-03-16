@@ -343,11 +343,10 @@ void units_dialog::post_show()
 
 void units_dialog::filter_text_changed(const std::string& text)
 {
-	auto& list = find_widget<listbox>("main_list");
-	const std::size_t shown = list.filter_rows_by([this, &text](std::size_t row) {
-		const auto& match = translation::make_ci_matcher(filter_options_[row]);
-		return match(text);
-	});
+	const std::size_t shown = find_widget<listbox>("main_list")
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+			return match(filter_options_[row]);
+		});
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);

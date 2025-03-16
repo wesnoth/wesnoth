@@ -565,12 +565,18 @@ std::string strftime(const std::string& format, const std::tm* time)
 bool ci_search(const std::string& s1, const std::string& s2)
 {
 	const std::locale& locale = get_manager().get_locale();
-
 	std::string ls1 = bl::to_lower(s1, locale);
 	std::string ls2 = bl::to_lower(s2, locale);
+	return std::search(ls1.begin(), ls1.end(), ls2.begin(), ls2.end()) != ls1.end();
+}
 
-	return std::search(ls1.begin(), ls1.end(),
-	                   ls2.begin(), ls2.end()) != ls1.end();
+#ifdef __cpp_lib_span
+bool ci_search(std::span<std::string> s1, const std::string& s2)
+#else
+bool ci_search(const std::vector<std::string>& s1, const std::string& s2)
+#endif
+{
+	return std::any_of(s1.begin(), s1.end(), [&s2](const auto& s1) { return ci_search(s1, s2); });
 }
 
 const boost::locale::info& get_effective_locale_info()

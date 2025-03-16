@@ -40,6 +40,10 @@
 #include <ctime>
 #include <boost/locale/info.hpp>
 
+#ifdef __cpp_lib_span
+#include <span>
+#endif
+
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
 #endif
@@ -78,7 +82,15 @@ namespace translation
 
 	std::string strftime(const std::string& format, const std::tm* time);
 
+	/** Case-insensitive search. @a s2 will be checked against @a s1. */
 	bool ci_search(const std::string& s1, const std::string& s2);
+
+	/** Case-insensitive search. @a s2 will be checked against any element of @a s1. */
+#ifdef __cpp_lib_span
+	bool ci_search(std::span<std::string> s1, const std::string& s2);
+#else
+	bool ci_search(const std::vector<std::string>& s1, const std::string& s2);
+#endif
 
 	/**
 	 * A facet that holds general information about the effective locale.
