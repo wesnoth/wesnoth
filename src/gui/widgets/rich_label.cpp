@@ -67,6 +67,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, can_wrap_(true)
 	, link_aware_(builder.link_aware)
 	, link_color_(font::YELLOW_COLOR)
+	, predef_colors_()
 	, font_size_(font::SIZE_NORMAL)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
@@ -75,9 +76,27 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, size_(0, 0)
 	, padding_(builder.padding)
 {
+	const auto conf = cast_config_to<rich_label_definition>();
+	assert(conf);
+	text_color_enabled_ = conf->text_color_enabled;
+	text_color_disabled_ = conf->text_color_disabled;
+	font_family_ = conf->font_family;
+	font_size_ = conf->font_size;
+	font_style_ = conf->font_style;
+	link_color_ = conf->link_color;
+	predef_colors_.insert(conf->colors.begin(), conf->colors.end());
+	set_text_alignment(builder.text_alignment);
+	set_label(get_label());
 }
 
-wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) const {
+color_t rich_label::get_color(const std::string& color)
+{
+	const auto iter = predef_colors_.find(color);
+	return (iter != predef_colors_.end()) ? iter->second : font::string_to_color(color);
+}
+
+wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) const
+{
 	// Set up fake render to calculate text position
 	static wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
@@ -89,7 +108,8 @@ wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsig
 	return variables;
 }
 
-point rich_label::get_text_size(config& text_cfg, unsigned width) const {
+point rich_label::get_text_size(config& text_cfg, unsigned width) const
+{
 	wfl::map_formula_callable variables = setup_text_renderer(text_cfg, width);
 	return {
 		variables.query_value("text_width").as_int(),
@@ -97,7 +117,8 @@ point rich_label::get_text_size(config& text_cfg, unsigned width) const {
 	};
 }
 
-point rich_label::get_image_size(config& img_cfg) const {
+point rich_label::get_image_size(config& img_cfg) const
+{
 	static wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
 	variables.add("fake_draw", wfl::variant(true));
@@ -108,7 +129,8 @@ point rich_label::get_image_size(config& img_cfg) const {
 	};
 }
 
-std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
+std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text)
+{
 	auto& attr = curr_item["text"];
 	size_t start = attr.str().size();
 	attr = attr.str() + text;
@@ -116,7 +138,13 @@ std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::str
 	return { start, end };
 }
 
-void rich_label::add_attribute(config& curr_item, const std::string& attr_name, size_t start, size_t end, const std::string& extra_data) {
+void rich_label::add_attribute(
+	config& curr_item,
+	const std::string& attr_name,
+	size_t start,
+	size_t end,
+	const std::string& extra_data)
+{
 	curr_item.add_child("attribute", config{
 		"name"  , attr_name,
 		"start" , start,
@@ -125,13 +153,24 @@ void rich_label::add_attribute(config& curr_item, const std::string& attr_name, 
 	});
 }
 
-std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name, const std::string& extra_data) {
+std::pair<size_t, size_t> rich_label::add_text_with_attribute(
+	config& curr_item,
+	const std::string& text,
+	const std::string& attr_name,
+	const std::string& extra_data)
+{
 	const auto [start, end] = add_text(curr_item, text);
 	add_attribute(curr_item, attr_name, start, end, extra_data);
 	return { start, end };
 }
 
-void rich_label::add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width) {
+void rich_label::add_link(
+	config& curr_item,
+	const std::string& name,
+	const std::string& dest,
+	const point& origin,
+	int img_width)
+{
 	// TODO algorithm needs to be text_alignment independent
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
@@ -177,8 +216,8 @@ void rich_label::add_link(config& curr_item, const std::string& name, const std:
 	}
 }
 
-size_t rich_label::get_split_location(std::string_view text, const point& pos) {
-
+size_t rich_label::get_split_location(std::string_view text, const point& pos)
+{
 	size_t len = get_offset_from_xy(pos);
 	len = (len > text.size()-1) ? text.size()-1 : len;
 
@@ -194,7 +233,11 @@ size_t rich_label::get_split_location(std::string_view text, const point& pos) {
 	return len;
 }
 
-std::vector<std::string> rich_label::split_in_width(const std::string &s, const int font_size, const unsigned width) {
+std::vector<std::string> rich_label::split_in_width(
+	const std::string &s,
+	const int font_size,
+	const unsigned width)
+{
 	std::vector<std::string> res;
 	try {
 		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
@@ -445,7 +488,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					bgbox["y"] = pos.y;
 					bgbox["w"] = std::accumulate(col_widths.begin(), col_widths.end(), 0) + 2*(row_paddings[0] + row_paddings[1])*columns;
 					bgbox["h"] = row_paddings[0] + row_heights[row_idx] + row_paddings[1];
-					bgbox["fill_color"] = font::string_to_color(row["bgcolor"]).to_rgba_string();
+					bgbox["fill_color"] = get_color(row["bgcolor"].str()).to_rgba_string();
 					text_dom.append(std::move(bg_base));
 				}
 
@@ -793,7 +836,12 @@ std::pair<config, point> rich_label::get_parsed_text(
 	return { text_dom, point(w, h - origin.y) };
 } // function ends
 
-void rich_label::default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text) {
+void rich_label::default_text_config(
+	config* txt_ptr,
+	const point& pos,
+	const int max_width,
+	const t_string& text)
+{
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
 		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
@@ -977,7 +1025,14 @@ rich_label_definition::resolution::resolution(const config& cfg)
 	, font_family(cfg["text_font_family"].str())
 	, font_size(cfg["text_font_size"].to_int(font::SIZE_NORMAL))
 	, font_style(cfg["text_font_style"].str("normal"))
+	, colors()
 {
+	if(auto colors_cfg = cfg.optional_child("colors")) {
+		for (const auto& [name, value] : colors_cfg->attribute_range()) {
+			colors.try_emplace(name, color_t::from_rgba_string(value.str()));
+		}
+	}
+
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_disabled")));
@@ -999,24 +1054,10 @@ builder_rich_label::builder_rich_label(const config& cfg)
 
 std::unique_ptr<widget> builder_rich_label::build() const
 {
-	auto lbl = std::make_unique<rich_label>(*this);
-
-	const auto conf = lbl->cast_config_to<rich_label_definition>();
-	assert(conf);
-
-	lbl->set_text_alignment(text_alignment);
-	lbl->set_text_color(conf->text_color_enabled, true);
-	lbl->set_text_color(conf->text_color_disabled, false);
-	lbl->set_link_color(conf->link_color);
-	lbl->set_font_family(conf->font_family);
-	lbl->set_font_size(conf->font_size);
-	lbl->set_font_style(conf->font_style);
-	lbl->set_label(lbl->get_label());
-
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
 			  << definition << "'.";
 
-	return lbl;
+	return std::make_unique<rich_label>(*this);
 }
 
 } // namespace implementation
