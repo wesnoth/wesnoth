@@ -1,6 +1,4 @@
-## Version 1.19.9+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.10
 ### Campaigns
    * Fixed campaigns not using the correct map settings
 ### Editor
@@ -11,10 +9,8 @@
    * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
 ### Packaging
    * Boost 1.70 or later is now required
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Finnish, Italian
-### Units
 ### User interface
    * It is now possible to search help topics by name/id in the Help Browser.
 ### WML Engine
