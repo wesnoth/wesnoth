@@ -384,8 +384,13 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					// column post-processing
 					row_heights[row_idx] = std::max(row_heights[row_idx], static_cast<unsigned>(size.y));
+					if (!child["width"].empty()) {
+						col_widths[col_idx] = init_cell_width;
+					}
 					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
-					col_widths[col_idx] = std::min(col_widths[col_idx], init_cell_width);
+					if (child["width"].empty()) {
+						col_widths[col_idx] = std::min(col_widths[col_idx], init_cell_width);
+					}
 
 					DBG_GUI_RL << "table row " << row_idx << " height: " << row_heights[row_idx]
 					           << "col " << col_idx << " width: " << col_widths[col_idx];
@@ -969,7 +974,7 @@ std::unique_ptr<widget> builder_rich_label::build() const
 
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_text_color(conf->text_color_enabled, true);
-	lbl->set_text_color(conf->text_color_enabled, false);
+	lbl->set_text_color(conf->text_color_disabled, false);
 	lbl->set_link_color(conf->link_color);
 	lbl->set_font_family(conf->font_family);
 	lbl->set_font_size(conf->font_size);
