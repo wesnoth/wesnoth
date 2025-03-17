@@ -700,9 +700,14 @@ void window::render()
 	if (awaiting_rerender_.empty()) {
 		return;
 	}
+
 	DBG_DP << "window::render() local " << awaiting_rerender_;
 	auto target_setter = draw::set_render_target(render_buffer_);
 	auto clip_setter = draw::override_clip(awaiting_rerender_);
+
+	// Clear the to-be-rendered area unconditionally
+	draw::clear();
+
 	draw();
 	awaiting_rerender_ = sdl::empty_rect;
 }
