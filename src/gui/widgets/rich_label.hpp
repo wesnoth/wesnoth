@@ -93,11 +93,6 @@ public:
 		can_wrap_ = wrap;
 	}
 
-	void set_characters_per_line(const unsigned characters_per_line)
-	{
-		characters_per_line_ = characters_per_line;
-	}
-
 	void set_link_aware(bool l);
 
 	void set_link_color(const color_t& color);
@@ -123,15 +118,6 @@ public:
 	}
 
 	void set_text_alpha(unsigned short alpha);
-
-	void set_text_color(const color_t& color, bool enabled)
-	{
-		if (enabled) {
-			text_color_enabled_ = color;
-		} else {
-			text_color_disabled_ = color;
-		}
-	}
 
 	const t_string& get_label() const
 	{
@@ -208,6 +194,11 @@ private:
 	color_t link_color_;
 
 	/**
+	 * Color variables that can be used in place of colors strings, like `<row bgcolor=color1>`
+	 */
+	std::map<std::string, color_t> predef_colors_;
+
+	/**
 	 * Base font family
 	 */
 	std::string font_family_;
@@ -244,6 +235,9 @@ private:
 
 	/** Padding */
 	int padding_;
+
+	/** If color is a predefined color set in resolution, return it, otherwise decode using `font::string_to_color`. */
+	color_t get_color(const std::string& color);
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
@@ -341,6 +335,7 @@ struct rich_label_definition : public styled_widget_definition
 		std::string font_family;
 		int font_size;
 		std::string font_style;
+		std::map<std::string, color_t> colors;
 	};
 };
 

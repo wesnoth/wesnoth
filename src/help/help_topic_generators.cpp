@@ -676,6 +676,7 @@ std::string unit_topic_generator::operator()() const {
 
 		// Print headers for the table.
 		table_ss << markup::tag("row",
+			{ {"bgcolor", "table_header"} },
 			//FIXME space/tab does not work, but nbsp does
 			//empty tags will be skipped by rich_label
 			markup::tag("col", font::nbsp),
@@ -742,7 +743,7 @@ std::string unit_topic_generator::operator()() const {
 				}
 			}
 
-			table_ss << markup::tag("row", {{"valign", "center"}}, attack_ss.str());
+			table_ss << markup::tag("row", { {"valign", "center"} }, attack_ss.str());
 		}
 
 		ss << markup::tag("table", table_ss.str());
@@ -777,10 +778,12 @@ std::string unit_topic_generator::operator()() const {
 
 	std::stringstream().swap(table_ss);
 	table_ss << markup::tag("row",
+		{ {"bgcolor", "table_header"} },
 		markup::tag("col", markup::bold(_("Attack Type"))),
 		markup::tag("col", markup::bold(_("Resistance"))));
 
 	utils::string_map_res dam_tab = movement_type.damage_table();
+	bool odd_row = true;
 	for(std::pair<std::string, std::string> dam_it : dam_tab) {
 		int resistance = 100;
 		try {
@@ -795,8 +798,11 @@ std::string unit_topic_generator::operator()() const {
 		const std::string lang_type = string_table["type_" + dam_it.first];
 		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
 		table_ss << markup::tag("row",
+			{ {"bgcolor", (odd_row ? "table_row1" : "table_row2")} },
 			markup::tag("col", markup::img(type_icon), lang_type),
 			markup::tag("col", markup::span_color(color, resist)));
+
+		odd_row = !odd_row;
 	}
 	ss << markup::tag("table", table_ss.str());
 
@@ -816,7 +822,7 @@ std::string unit_topic_generator::operator()() const {
 		if (has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap"))); }
 		if (has_vision)				  { row_ss << markup::tag("col", markup::bold(_("Vision Cost"))); }
 		if (has_jamming)			  { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
-		table_ss << markup::tag("row", row_ss.str());
+		table_ss << markup::tag("row", { {"bgcolor", "table_header"} }, row_ss.str());
 
 		// Organize terrain movetype data
 		std::set<terrain_movement_info> terrain_moves;
@@ -848,6 +854,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		// Add movement table rows
+		odd_row = true;
 		for(const terrain_movement_info& m : terrain_moves)
 		{
 			std::stringstream().swap(row_ss);
@@ -887,7 +894,9 @@ std::string unit_topic_generator::operator()() const {
 				row_ss << markup::tag("col", format_mp_entry(type_.jamming(), m.jamming_cost));
 			}
 
-			table_ss << markup::tag("row", row_ss.str());
+			table_ss << markup::tag("row", { {"bgcolor", (odd_row ? "table_row1" : "table_row2")} }, row_ss.str());
+
+			odd_row = !odd_row;
 		}
 
 		ss << markup::tag("table", table_ss.str());
