@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-02-17 15:53-0600\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2012-02-20 16:40-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -3778,14 +3778,14 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:384
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
 msgstr "Ceo"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:387
-#: src/game_initialization/lobby_data.cpp:390
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
 msgstr "Dorcha"
 
@@ -4113,22 +4113,17 @@ msgid "Screenshot"
 msgstr ""
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:28
+#: data/hardwired/fonts.cfg:18
 msgid "Lato"
 msgstr ""
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:29
+#: data/hardwired/fonts.cfg:19
 msgid "DejaVu Sans Mono"
 msgstr ""
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:30
-msgid "Lato Light"
-msgstr ""
-
-#. [fonts]
-#: data/hardwired/fonts.cfg:31
+#: data/hardwired/fonts.cfg:20
 msgid "Oldania ADF Std"
 msgstr ""
 
@@ -4437,8 +4432,8 @@ msgstr "ní féidir a shlánú"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3693
-#: src/scripting/game_lua_kernel.cpp:3728
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3717
+#: src/scripting/game_lua_kernel.cpp:3752
 msgid "input"
 msgstr ""
 
@@ -5783,7 +5778,7 @@ msgid "Do you really wish to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
 #: src/addon/client.cpp:721 src/addon/manager_ui.cpp:171
-#: src/game_initialization/multiplayer.cpp:359
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Deimhnigh"
 
@@ -6544,39 +6539,39 @@ msgstr "Eolas: "
 msgid "Team"
 msgstr "Foireann"
 
-#: src/game_initialization/connect_engine.cpp:941
+#: src/game_initialization/connect_engine.cpp:943
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Imreoir áitiúil dí-ainm"
 
-#: src/game_initialization/connect_engine.cpp:946
-#: src/game_initialization/connect_engine.cpp:1189
+#: src/game_initialization/connect_engine.cpp:948
+#: src/game_initialization/connect_engine.cpp:1191
 msgid "Computer Player"
 msgstr "Imreoir Ríomhaire"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:990
 msgid "$playername $side"
 msgstr "$side $playername"
 
-#: src/game_initialization/connect_engine.cpp:1185
+#: src/game_initialization/connect_engine.cpp:1187
 msgid "Network Player"
 msgstr "Imreoir Líonra"
 
-#: src/game_initialization/connect_engine.cpp:1188
+#: src/game_initialization/connect_engine.cpp:1190
 msgid "Local Player"
 msgstr "Imreoir Áitiúil"
 
-#: src/game_initialization/connect_engine.cpp:1190
+#: src/game_initialization/connect_engine.cpp:1192
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1193
+#: src/game_initialization/connect_engine.cpp:1195
 msgid "Reserved"
 msgstr "In áirithe"
 
 #: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:666
+#: src/game_initialization/create_engine.cpp:675
 msgid "Map could not be loaded: "
 msgstr ""
 
@@ -6596,46 +6591,46 @@ msgstr " Ní infhaighte é cabhair."
 msgid "Custom map."
 msgstr "Ordú:"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:505
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
 msgstr "Suiteáil spleáchais"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:505
 msgid "OK"
 msgstr "Tá go maith"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:530
 msgid "Scenario can’t be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:584
+#: src/game_initialization/depcheck.cpp:707
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "Níor aimsíodh aoiseanna."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:599
 msgid "Era can’t be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:652
+#: src/game_initialization/depcheck.cpp:744
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
 msgstr "Níor aimsíodh foirne ilimreora"
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:681
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
 
-#: src/game_initialization/depcheck.hpp:309
-#: src/game_initialization/depcheck.hpp:321
+#: src/game_initialization/depcheck.hpp:310
+#: src/game_initialization/depcheck.hpp:322
 msgid "A component"
 msgstr ""
 
@@ -6651,47 +6646,47 @@ msgstr ""
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:161
+#: src/game_initialization/lobby_data.cpp:162
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Argóint ar iarraidh $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:163
+#: src/game_initialization/lobby_data.cpp:164
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Argóint ar iarraidh $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:195
+#: src/game_initialization/lobby_data.cpp:196
 msgid "Unknown era"
 msgstr "Aois anaithnid"
 
-#: src/game_initialization/lobby_data.cpp:262
-#: src/game_initialization/lobby_data.cpp:296
+#: src/game_initialization/lobby_data.cpp:263
+#: src/game_initialization/lobby_data.cpp:298
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Foireann"
 
-#: src/game_initialization/lobby_data.cpp:282
+#: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
 msgstr "Cianmhisean"
 
-#: src/game_initialization/lobby_data.cpp:303
-#: src/game_initialization/lobby_data.cpp:329
+#: src/game_initialization/lobby_data.cpp:305
+#: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:335
+#: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
 msgstr "Misean anaithnid"
 
-#: src/game_initialization/lobby_data.cpp:349
+#: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
 msgstr "Cluiche athlódáilte"
 
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Sliotán Folamh:"
@@ -6700,34 +6695,34 @@ msgstr[2] "Sliotáin Fholamha:"
 msgstr[3] "Sliotáin Fholamha:"
 msgstr[4] "Sliotáin Fholamha:"
 
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:377
-#: src/game_initialization/lobby_data.cpp:379 src/savegame.cpp:654
+#: src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:654
 msgid "Turn"
 msgstr "Seal"
 
-#: src/game_initialization/lobby_data.cpp:392
+#: src/game_initialization/lobby_data.cpp:394
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Leagan: "
 
-#: src/game_initialization/lobby_data.cpp:401
+#: src/game_initialization/lobby_data.cpp:403
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Teorainn ama"
 
-#: src/game_initialization/lobby_data.cpp:445
+#: src/game_initialization/lobby_data.cpp:447
 msgid ""
 "The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:461
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6742,125 +6737,125 @@ msgstr "Buaigh ar (an/na) ceannfo(i)rt naimhdeach(a)"
 msgid "Cannot find era ‘$era’"
 msgstr "Aois anaithnid: $era_id"
 
-#: src/game_initialization/multiplayer.cpp:234
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:269
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions ‘$required_version’, but you are using version "
 "‘$your_version’"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:282
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:332
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/game_initialization/multiplayer.cpp:407
+#: src/game_initialization/multiplayer.cpp:410
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:409
+#: src/game_initialization/multiplayer.cpp:412
 msgid "You must login first."
 msgstr "Tá ort logáil isteach i dtosach."
 
-#: src/game_initialization/multiplayer.cpp:411
+#: src/game_initialization/multiplayer.cpp:414
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:413
+#: src/game_initialization/multiplayer.cpp:416
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:417
+#: src/game_initialization/multiplayer.cpp:420
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:419
+#: src/game_initialization/multiplayer.cpp:422
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:421
+#: src/game_initialization/multiplayer.cpp:424
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:425
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:425
+#: src/game_initialization/multiplayer.cpp:428
 msgid "Your IP address is banned on this server for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:427
+#: src/game_initialization/multiplayer.cpp:430
 msgid "Your IP address is banned on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:431
+#: src/game_initialization/multiplayer.cpp:434
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:433
+#: src/game_initialization/multiplayer.cpp:436
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:437
+#: src/game_initialization/multiplayer.cpp:440
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:439
+#: src/game_initialization/multiplayer.cpp:442
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:443
+#: src/game_initialization/multiplayer.cpp:446
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:448
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:448
-#: src/game_initialization/multiplayer.cpp:450
+#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:453
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:454
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:454
+#: src/game_initialization/multiplayer.cpp:457
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:456
+#: src/game_initialization/multiplayer.cpp:459
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:458
+#: src/game_initialization/multiplayer.cpp:461
 msgid "Password hashing failed."
 msgstr ""
 
@@ -7089,38 +7084,6 @@ msgstr "Tú"
 #: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "Error"
 msgstr "Earráid"
-
-#: src/gui/dialogs/unit_attack.cpp:149 src/gui/dialogs/unit_attack.cpp:164
-#, fuzzy
-#| msgid "Observe Game"
-msgid "Other aspects: "
-msgstr "Féach ar an gCluiche"
-
-#: src/gui/dialogs/unit_attack.cpp:176 src/gui/dialogs/unit_attack.cpp:189
-#: src/reports.cpp:819 src/reports.cpp:1107 src/reports.cpp:1119
-msgid "Weapon: "
-msgstr "Arm: "
-
-#: src/gui/dialogs/unit_attack.cpp:177 src/gui/dialogs/unit_attack.cpp:190
-#: src/reports.cpp:195
-msgid "Type: "
-msgstr "Sórt: "
-
-#: src/gui/dialogs/unit_attack.cpp:178 src/gui/dialogs/unit_attack.cpp:191
-#: src/reports.cpp:820 src/reports.cpp:1108
-msgid "Damage: "
-msgstr "Damáiste: "
-
-#: src/gui/dialogs/unit_attack.cpp:179 src/gui/dialogs/unit_attack.cpp:192
-#: src/reports.cpp:841
-msgid "Attacks: "
-msgstr "Ionsaithe: "
-
-#: src/gui/dialogs/unit_attack.cpp:180 src/gui/dialogs/unit_attack.cpp:193
-#, fuzzy
-#| msgid "Advances to:"
-msgid "Chance to hit: "
-msgstr "Ardaíonn go:"
 
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "no"
@@ -7969,23 +7932,53 @@ msgstr "Ordú:"
 msgid "prompt^Formula:"
 msgstr "Ordú:"
 
-#: src/mouse_events.cpp:1260
+#: src/mouse_events.cpp:1261
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
 
-#: src/mouse_events.cpp:1355
+#: src/mouse_events.cpp:1364
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Ionsaitheoir"
 
-#: src/mouse_events.cpp:1355
+#: src/mouse_events.cpp:1364
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Níl arm inúsáidte aige"
+
+#: src/mouse_events.cpp:1446 src/mouse_events.cpp:1462
+#, fuzzy
+#| msgid "Observe Game"
+msgid "Other aspects: "
+msgstr "Féach ar an gCluiche"
+
+#: src/mouse_events.cpp:1475 src/mouse_events.cpp:1489 src/reports.cpp:819
+#: src/reports.cpp:1107 src/reports.cpp:1119
+msgid "Weapon: "
+msgstr "Arm: "
+
+#: src/mouse_events.cpp:1476 src/mouse_events.cpp:1490 src/reports.cpp:195
+msgid "Type: "
+msgstr "Sórt: "
+
+#: src/mouse_events.cpp:1477 src/mouse_events.cpp:1491 src/reports.cpp:820
+#: src/reports.cpp:1108
+msgid "Damage: "
+msgstr "Damáiste: "
+
+#: src/mouse_events.cpp:1478 src/mouse_events.cpp:1492 src/reports.cpp:841
+msgid "Attacks: "
+msgstr "Ionsaithe: "
+
+#: src/mouse_events.cpp:1479 src/mouse_events.cpp:1493
+#, fuzzy
+#| msgid "Advances to:"
+msgid "Chance to hit: "
+msgstr "Ardaíonn go:"
 
 #: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
@@ -8948,28 +8941,28 @@ msgstr "Tráth an lae"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1059
+#: src/units/abilities.cpp:1052
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "moillithe: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1063
+#: src/units/abilities.cpp:1056
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1067
+#: src/units/abilities.cpp:1060
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1080
+#: src/units/abilities.cpp:1073
 msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:546
+#: src/units/attack_type.cpp:547
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8977,14 +8970,14 @@ msgid "$number min range"
 msgstr "damáiste"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:553
+#: src/units/attack_type.cpp:554
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "sa sheal"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:560
+#: src/units/attack_type.cpp:561
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8992,14 +8985,14 @@ msgid "$number max range"
 msgstr "damáiste"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:567
+#: src/units/attack_type.cpp:568
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "sa sheal"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:574
+#: src/units/attack_type.cpp:575
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9010,7 +9003,7 @@ msgstr[2] "sa sheal"
 msgstr[3] "sa sheal"
 msgstr[4] "sa sheal"
 
-#: src/units/attack_type.cpp:583
+#: src/units/attack_type.cpp:584
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9023,7 +9016,7 @@ msgstr[3] "ndamáiste"
 msgstr[4] "damáiste"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:592
+#: src/units/attack_type.cpp:593
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -9035,7 +9028,7 @@ msgstr[3] "sa sheal"
 msgstr[4] "sa sheal"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:601
+#: src/units/attack_type.cpp:602
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -9048,35 +9041,35 @@ msgstr[3] "mbualadh"
 msgstr[4] "bualadh"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:610
+#: src/units/attack_type.cpp:611
 #, fuzzy
 #| msgid "% parry"
 msgid "$number| accuracy"
 msgstr "% cosc"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:617
+#: src/units/attack_type.cpp:618
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "sa sheal"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:624
+#: src/units/attack_type.cpp:625
 #, fuzzy
 #| msgid "% parry"
 msgid "$number parry"
 msgstr "% cosc"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:631
+#: src/units/attack_type.cpp:632
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "sa sheal"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:638
+#: src/units/attack_type.cpp:639
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] ""
@@ -9086,7 +9079,7 @@ msgstr[3] ""
 msgstr[4] ""
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:647
+#: src/units/attack_type.cpp:648
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -9098,7 +9091,7 @@ msgstr[3] "sa sheal"
 msgstr[4] "sa sheal"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:656
+#: src/units/attack_type.cpp:657
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9111,7 +9104,7 @@ msgstr[3] "ndamáiste"
 msgstr[4] "damáiste"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:665
+#: src/units/attack_type.cpp:666
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
@@ -9190,17 +9183,28 @@ msgstr "díbheargach"
 msgid "liminal"
 msgstr "clapsholas"
 
-#: src/units/unit.cpp:1967
+#: src/units/unit.cpp:358
+#, fuzzy
+#| msgid "No usable weapon"
+msgid "This unit cannot be dismissed."
+msgstr "Níl arm inúsáidte aige"
+
+#: src/units/unit.cpp:722
+#, fuzzy
+msgid "This unit is a leader and cannot be dismissed."
+msgstr "Tá an aonad seo clochraithe. Ní bhféidir dó gluaiseacht nó ionsaí."
+
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1973
+#: src/units/unit.cpp:1990
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "sa sheal"
 
-#: src/units/unit.cpp:1983
+#: src/units/unit.cpp:2000
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9211,25 +9215,25 @@ msgstr[2] "sa sheal"
 msgstr[3] "sa sheal"
 msgstr[4] "sa sheal"
 
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "sa sheal"
 
-#: src/units/unit.cpp:1993
+#: src/units/unit.cpp:2010
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "sa sheal"
 
-#: src/units/unit.cpp:1998
+#: src/units/unit.cpp:2015
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "sa sheal"
 
-#: src/units/unit.cpp:2002
+#: src/units/unit.cpp:2019
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9241,13 +9245,13 @@ msgstr[2] "sa sheal"
 msgstr[3] "sa sheal"
 msgstr[4] "sa sheal"
 
-#: src/units/unit.cpp:2009
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "sa sheal"
 
-#: src/units/unit.cpp:2488
+#: src/units/unit.cpp:2505
 msgid "$effect_description per level"
 msgstr "$effect_description sa leibhéal"
 

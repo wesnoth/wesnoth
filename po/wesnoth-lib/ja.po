@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-02-17 15:53-0600\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -2310,7 +2310,7 @@ msgid "Players"
 msgstr "プレイヤー"
 
 #. [settings]
-#: data/gui/themes/celes/celes.cfg:25 data/gui/themes/default/default.cfg:23
+#: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr "（詳しくは「 $hotkey 」を押してください）"
 
@@ -2426,7 +2426,7 @@ msgstr "他のプレイヤーやAIと対戦します"
 #. [button]: id=ok
 #: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
-#: data/gui/themes/default/dialogs/game_load.cfg:639
+#: data/gui/themes/default/dialogs/game_load.cfg:638
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load"
 msgstr "再開"
@@ -2504,7 +2504,7 @@ msgstr "ゲームの設定を行います"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:772
+#: data/gui/themes/default/dialogs/lobby_main.cfg:776
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2516,7 +2516,7 @@ msgstr "設定"
 #. [button]: id=help
 #: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #: data/gui/themes/default/dialogs/title_screen.cfg:178
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -2575,7 +2575,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:288
+#: data/gui/themes/default/dialogs/help_browser.cfg:296
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2655,7 +2655,7 @@ msgstr "パスワードを暗号化して保存する"
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
 #: data/gui/themes/default/dialogs/wml_message.cfg:444
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
-#: src/gui/dialogs/units_dialog.cpp:70
+#: src/gui/dialogs/units_dialog.cpp:71
 msgid "OK"
 msgstr "OK"
 
@@ -2687,7 +2687,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/file_dialog.cfg:519
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
-#: data/gui/themes/default/dialogs/game_load.cfg:654
+#: data/gui/themes/default/dialogs/game_load.cfg:653
 #: data/gui/themes/default/dialogs/game_save.cfg:134
 #: data/gui/themes/default/dialogs/label_settings.cfg:149
 #: data/gui/themes/default/dialogs/language_selection.cfg:305
@@ -2714,7 +2714,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
 #: data/gui/themes/default/dialogs/units_dialog.cfg:575
-#: src/gui/dialogs/units_dialog.cpp:71 src/hotkey/hotkey_command.cpp:79
+#: src/gui/dialogs/units_dialog.cpp:72 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2813,7 +2813,7 @@ msgstr "アップデート時刻"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:582
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:661
 msgid "No description available."
 msgstr "解説はありません。"
 
@@ -3269,7 +3269,7 @@ msgstr "難易度選択："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/chat_log.cfg:36
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Chat Log"
 msgstr "チャットログ"
 
@@ -3392,7 +3392,7 @@ msgstr "タイムスケジュールの編集"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:225
+#: src/gui/dialogs/units_dialog.cpp:227
 msgid "Name:"
 msgstr "名前："
 
@@ -3785,7 +3785,7 @@ msgstr "追加"
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/dialogs/file_dialog.cfg:349
-#: data/gui/themes/default/dialogs/game_load.cfg:606
+#: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
 msgstr "削除"
@@ -3847,7 +3847,7 @@ msgstr "アドオンの解説の翻訳です。"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:42
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Edit Scenario Settings"
 msgstr "シナリオ設定の編集"
 
@@ -4209,7 +4209,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Generate Map"
 msgstr "マップ生成"
 
@@ -4261,14 +4261,14 @@ msgstr "高さ："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:432
+#: src/gui/dialogs/units_dialog.cpp:438
 msgid "Create"
 msgstr "作成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Resize Map"
 msgstr "マップのリサイズ"
 
@@ -4469,49 +4469,49 @@ msgstr "日付"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/themes/default/dialogs/game_load.cfg:309
+#: data/gui/themes/default/dialogs/game_load.cfg:308
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:944
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "ゲームを再開"
 
 #. [button]: id=browse_saves_folder
-#: data/gui/themes/default/dialogs/game_load.cfg:350
+#: data/gui/themes/default/dialogs/game_load.cfg:349
 msgid "Open saves folder"
 msgstr "保存フォルダを開く"
 
 #. [menu_button]: id=dirList
-#: data/gui/themes/default/dialogs/game_load.cfg:362
+#: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
 msgstr "異なるバージョンの Wesnoth のセーブデータを表示します"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:538
+#: data/gui/themes/default/dialogs/game_load.cfg:537
 msgid "Change difficulty"
 msgstr "難易度変更"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:539
+#: data/gui/themes/default/dialogs/game_load.cfg:538
 msgid "Change campaign difficulty before loading"
 msgstr "読み込む前にキャンペーンの難易度を変更します"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:561
+#: data/gui/themes/default/dialogs/game_load.cfg:560
 msgid "Show replay"
 msgstr "リプレイを見る"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:562
+#: data/gui/themes/default/dialogs/game_load.cfg:561
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr "セーブデータの中のリプレイを再生します"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:584
+#: data/gui/themes/default/dialogs/game_load.cfg:583
 msgid "Cancel orders"
 msgstr "命令の取り消し"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:585
+#: data/gui/themes/default/dialogs/game_load.cfg:584
 msgid "Cancel any pending unit movements in the saved game"
 msgstr "セーブデータ中の、まだ未解決のユニットの移動命令を取り消します"
 
@@ -4655,7 +4655,7 @@ msgstr "シナリオ設定"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:516
+#: src/gui/dialogs/units_dialog.cpp:522
 msgid "Scroll To"
 msgstr "スクロール"
 
@@ -4949,16 +4949,21 @@ msgid "Show Labels"
 msgstr "ラベルを表示する"
 
 #. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:148
+#: data/gui/themes/default/dialogs/help_browser.cfg:143
 msgid "Battle For Wesnoth Help"
 msgstr "Battle For Wesnoth ヘルプ"
 
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:160
+#: data/gui/themes/default/dialogs/help_browser.cfg:155
 #, fuzzy
 #| msgid "Show Credits"
 msgid "Show Topics"
 msgstr "クレジットの表示"
+
+#. [text_box]: id=filter_box
+#: data/gui/themes/default/dialogs/help_browser.cfg:168
+msgid "Search help topic names"
+msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5077,7 +5082,7 @@ msgstr "フィルターを反転"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:784
+#: data/gui/themes/default/dialogs/lobby_main.cfg:788
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5090,30 +5095,30 @@ msgstr "ゲームを作成"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:796
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: data/gui/themes/default/dialogs/lobby_main.cfg:800
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "参加"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:819
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: data/gui/themes/default/dialogs/lobby_main.cfg:823
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "観戦"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:807
+#: data/gui/themes/default/dialogs/lobby_main.cfg:811
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "アナウンスメント"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:618
+#: data/gui/themes/default/dialogs/lobby_main.cfg:621
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
@@ -5123,50 +5128,50 @@ msgstr "プロフィール"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:629
+#: data/gui/themes/default/dialogs/lobby_main.cfg:633
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "マッチ履歴"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:646
-#: data/gui/themes/default/dialogs/lobby_main.cfg:746
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/lobby_main.cfg:750
 msgid "Log Out"
 msgstr "ログアウト"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:666
-#: data/gui/themes/default/dialogs/lobby_main.cfg:834
+#: data/gui/themes/default/dialogs/lobby_main.cfg:670
+#: data/gui/themes/default/dialogs/lobby_main.cfg:838
 msgid "Normal Replays"
 msgstr "通常リプレイ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
+#: data/gui/themes/default/dialogs/lobby_main.cfg:674
+#: data/gui/themes/default/dialogs/lobby_main.cfg:842
 msgid "Quick Replays"
 msgstr "高速リプレイ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:671
-#: data/gui/themes/default/dialogs/lobby_main.cfg:839
+#: data/gui/themes/default/dialogs/lobby_main.cfg:675
+#: data/gui/themes/default/dialogs/lobby_main.cfg:843
 msgid "Skip quickly to the active turn when observing"
 msgstr "観戦を始めたとき、現在のターンまで高速でリプレイを行います"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
+#: data/gui/themes/default/dialogs/lobby_main.cfg:847
 msgid "Enter Blindfolded"
 msgstr "目隠しで入る"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:676
-#: data/gui/themes/default/dialogs/lobby_main.cfg:844
+#: data/gui/themes/default/dialogs/lobby_main.cfg:680
+#: data/gui/themes/default/dialogs/lobby_main.cfg:848
 msgid "Do not show the map until given control of a side"
 msgstr "陣営のコントロールを得るまで、マップを表示しません"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:734
-#: data/gui/themes/default/dialogs/lobby_main.cfg:957
+#: data/gui/themes/default/dialogs/lobby_main.cfg:738
+#: data/gui/themes/default/dialogs/lobby_main.cfg:961
 msgid "Multiplayer Lobby"
 msgstr "マルチプレイヤーロビー"
 
@@ -7120,7 +7125,7 @@ msgstr "$prefix、$next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix または $last"
 
-#: src/gui/core/canvas.cpp:264
+#: src/gui/core/canvas.cpp:258
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7162,8 +7167,14 @@ msgstr ""
 "グリッド「$grid」の行 $row は異なる列数を持ちます（$found が見つかりました, "
 "$expected が期待されます。）"
 
-#: src/gui/dialogs/achievements_dialog.cpp:137
-msgid "Completed"
+#: src/gui/dialogs/achievements_dialog.cpp:97
+msgid "$title ($count/$total)"
+msgstr ""
+
+#: src/gui/dialogs/achievements_dialog.cpp:138
+#, fuzzy
+#| msgid "Completed"
+msgid "Completed $count/$total"
 msgstr "完了率"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
@@ -7514,23 +7525,23 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "url^None"
 msgstr "なし"
 
-#: src/gui/dialogs/attack_predictions.cpp:119
+#: src/gui/dialogs/attack_predictions.cpp:121
 msgid "No usable weapon"
 msgstr "使用できる武器：無し"
 
-#: src/gui/dialogs/attack_predictions.cpp:197
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender resistance vs"
 msgstr "防御側の耐性："
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:201
 msgid "Defender vulnerability vs"
 msgstr "防御側の弱点："
 
-#: src/gui/dialogs/attack_predictions.cpp:203
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker resistance vs"
 msgstr "攻撃側の耐性："
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:207
 msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
@@ -8181,7 +8192,7 @@ msgstr "観戦不可"
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8190,7 +8201,7 @@ msgid ""
 msgstr ""
 "このゲームでは観戦が許可されていません。管理者権限を使用して観戦しますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:839
+#: src/gui/dialogs/multiplayer/lobby.cpp:846
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8198,7 +8209,7 @@ msgstr ""
 "マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
 "合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "このゲームはパスワードで保護されています。管理者権限を使用して参加しますか？"
@@ -8243,41 +8254,41 @@ msgstr "カスタムシナリオ"
 msgid "Random Maps"
 msgstr "ランダムマップ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:191
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
 msgid "No games found."
 msgstr "ゲームが存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:258
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:337
 msgid "No eras found."
 msgstr "時代が存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
 msgid "No eras found"
 msgstr "時代が存在しません"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:528
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:607
 msgid "No eras available for this game."
 msgstr "このゲームには時代を適用できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
 msgid "number of players^$min to $max"
 msgstr "$min ～ $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:845
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:924
 msgid "The selected game has no sides!"
 msgstr "選択したゲームには陣営がありません！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:852
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:931
 msgid "The selected game cannot be created."
 msgstr "選択したゲームを作成できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
 msgid "Choose Starting Scenario"
 msgstr "開始シナリオの選択"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
 msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
@@ -8457,69 +8468,69 @@ msgstr "スクリーンショット"
 msgid "Version $version"
 msgstr "バージョン $version"
 
-#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:310
+#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "テストシナリオを選択"
 
-#: src/gui/dialogs/units_dialog.cpp:225 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:227 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/gui/dialogs/units_dialog.cpp:253
+#: src/gui/dialogs/units_dialog.cpp:260
 msgid "This unit is loyal and requires no upkeep."
 msgstr "忠義ユニットには維持費が必要ありません。"
 
-#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
-#: src/gui/dialogs/units_dialog.cpp:264
+#: src/gui/dialogs/units_dialog.cpp:261 src/gui/dialogs/units_dialog.cpp:266
+#: src/gui/dialogs/units_dialog.cpp:271
 msgid "Do you really want to dismiss him?"
 msgstr "本当に彼を解雇しますか？"
 
-#: src/gui/dialogs/units_dialog.cpp:255 src/gui/dialogs/units_dialog.cpp:260
-#: src/gui/dialogs/units_dialog.cpp:265
+#: src/gui/dialogs/units_dialog.cpp:262 src/gui/dialogs/units_dialog.cpp:267
+#: src/gui/dialogs/units_dialog.cpp:272
 msgid "Do you really want to dismiss her?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/gui/dialogs/units_dialog.cpp:258
+#: src/gui/dialogs/units_dialog.cpp:265
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "このユニットは熟練しており、高レベルです。"
 
-#: src/gui/dialogs/units_dialog.cpp:263
+#: src/gui/dialogs/units_dialog.cpp:270
 msgid "This unit is close to advancing a level."
 msgstr "レベルアップが近いユニットです。"
 
-#: src/gui/dialogs/units_dialog.cpp:269
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Dismiss Unit"
 msgstr "ユニットの解雇"
 
-#: src/gui/dialogs/units_dialog.cpp:395
+#: src/gui/dialogs/units_dialog.cpp:401
 msgid "unit_variation^Default Variation"
 msgstr "デフォルトのバリエーション"
 
-#: src/gui/dialogs/units_dialog.cpp:431
+#: src/gui/dialogs/units_dialog.cpp:437
 msgid "Create Unit"
 msgstr "ユニット作成"
 
-#: src/gui/dialogs/units_dialog.cpp:497
+#: src/gui/dialogs/units_dialog.cpp:503
 msgid "Recruit Unit"
 msgstr "ユニットの雇用"
 
-#: src/gui/dialogs/units_dialog.cpp:498 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:504 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "雇用"
 
-#: src/gui/dialogs/units_dialog.cpp:515 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:521 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "ユニット一覧"
 
-#: src/gui/dialogs/units_dialog.cpp:652
+#: src/gui/dialogs/units_dialog.cpp:658
 msgid "Recall Unit"
 msgstr "ユニットの召還"
 
-#: src/gui/dialogs/units_dialog.cpp:653 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:659 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "召還"
 
-#: src/gui/dialogs/units_dialog.cpp:769
+#: src/gui/dialogs/units_dialog.cpp:778
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8527,11 +8538,11 @@ msgstr ""
 "計画中のこの時点では、ゴールドが不足しているためこのユニットを召還できませ"
 "ん。"
 
-#: src/gui/dialogs/units_dialog.cpp:771
+#: src/gui/dialogs/units_dialog.cpp:780
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "ゴールドが不足しているため、このユニットを召還することはできません。"
 
-#: src/gui/gui.cpp:132
+#: src/gui/gui.cpp:131
 msgid "No default gui defined."
 msgstr "デフォルトの GUI が定義されていません。"
 
@@ -8644,7 +8655,7 @@ msgstr "未選択"
 msgid "Need at least 1 parallel item."
 msgstr "少なくとも1つのparallel itemが必要です。"
 
-#: src/gui/widgets/rich_label.cpp:250
+#: src/gui/widgets/rich_label.cpp:205
 msgid "corrupted original file"
 msgstr ""
 
@@ -8666,7 +8677,7 @@ msgstr "value_labels と values の数が合いません。"
 msgid "No stack layers defined."
 msgstr "stack layerが定義されていません。"
 
-#: src/gui/widgets/styled_widget.cpp:606
+#: src/gui/widgets/styled_widget.cpp:591
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "helptipがあるのにtooltipの無いwidgetが見つかりました。"
 
@@ -9142,58 +9153,64 @@ msgid "Save Map As"
 msgstr "名前をつけてマップを保存"
 
 #: src/hotkey/hotkey_command.cpp:187
+#, fuzzy
+#| msgid "Choose Test Scenario"
+msgid "Convert To Scenario"
+msgstr "テストシナリオを選択"
+
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
 msgstr "名前を付けてシナリオを保存"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Save All Maps"
 msgstr "全てのマップを保存"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Revert All Changes"
 msgstr "全ての変更を取り消す"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Map Information"
 msgstr "マップ情報"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Clear Selected Item Set"
 msgstr "選択したアイテムセットの消去"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Swap Foreground/Background Palette Item"
 msgstr "パレットのメイン/サブの切り替え"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Change Palette Group"
 msgstr "パレットグループの変更"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Scroll Palette Left"
 msgstr "パレットを下にスクロール"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Scroll Palette Right"
 msgstr "パレットを上にスクロール"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Remove Location"
 msgstr "開始位置の削除"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Add New Side"
 msgstr "新しい陣営の追加"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Next Tool"
 msgstr "次のツール"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Paint Tool"
 msgstr "ペイントツール"
 
-#: src/hotkey/hotkey_command.cpp:203 src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:204 src/hotkey/hotkey_command.cpp:205
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -9202,11 +9219,11 @@ msgstr ""
 "押しっぱなしにすることで、ベースレイヤのみに描くことができます。Ctrl+クリック"
 "でカーソル下の地形のサンプルを取ります。"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Fill Tool"
 msgstr "塗り潰しツール"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -9215,11 +9232,11 @@ msgstr ""
 "リックでコンテキストメニューを表示します。シフトキーを押すことで、同じ地形の"
 "タイルを選択することができます。"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Selection Tool"
 msgstr "選択ツール"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -9230,20 +9247,20 @@ msgstr ""
 "とができます。また、deleteキーでカーソル下の開始地点を消去することもできま"
 "す。"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Starting Positions Tool"
 msgstr "開始地点ツール"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Label Tool"
 msgstr "ラベルツール"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 "左クリックでラベルのセット / ドラッグ、右クリックでラベルの消去を行えます。"
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -9252,21 +9269,21 @@ msgstr ""
 "す。右クリックでコンテキストメニューが開きます。使用の前に陣営を定義しておく"
 "必要があります。"
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Unit Tool"
 msgstr "ユニットツール"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Item Tool"
 msgstr "アイテムツール"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 #, fuzzy
 #| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "左マウスボタンで新しいアイテムを設置します。"
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -9274,350 +9291,350 @@ msgstr ""
 "左クリックで村の所有権を現在の陣営に設定し、右クリックで取り消します。陣営を"
 "定義しておく必要があります。"
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Village Tool"
 msgstr "村ツール"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Can Recruit"
 msgstr "雇用の可否の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle the recruit attribute of a unit."
 msgstr "ユニットの雇用属性を切り替えます。"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Can be Renamed"
 msgstr "リネームの可否の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle the unit being renameable."
 msgstr "ユニット名の変更の可否を切り替えます。"
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Change Unit ID"
 msgstr "ユニットIDの変更"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Loyal"
 msgstr "忠義の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Server Information"
 msgid "Show Tool Information"
 msgstr "サーバー情報"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
 msgstr "ミニマップ上のユニット表示色の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Toggle Minimap Terrain Coding"
 msgstr "ミニマップ上の地形表示形式の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Toggle Minimap Unit Drawing"
 msgstr "ミニマップ上でのユニットの表示/非表示"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Toggle Minimap Village Drawing"
 msgstr "ミニマップ上での村の表示/非表示"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "ミニマップ上での地形の表示/非表示"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Next Brush"
 msgstr "次のブラシ"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Default Brush"
 msgstr "デフォルトブラシ"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Single Tile"
 msgstr "シングルヘクスブラシ"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Radius One"
 msgstr "半径1ヘクスブラシ"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Radius Two"
 msgstr "半径2ヘクスブラシ"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Brush NW-SE"
 msgstr "北西-南東ブラシ"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Brush SW-NE"
 msgstr "南西-北東ブラシ"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Copy"
 msgstr "コピー"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "左クリックでクリップボードから貼り付け、右クリックでコンテキストメニューを表"
 "示します。"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "選択した座標をクリップボードにコピー"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Select All"
 msgstr "全て選択"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Select Inverse"
 msgstr "選択部分を反転"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Select None"
 msgstr "選択解除"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Rotate Clipboard Clockwise"
 msgstr "クリップボードの内容を時計回りに回転"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "クリップボードの内容を反時計回りに回転"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Flip Clipboard Horizontally"
 msgstr "クリップボードの内容を水平反転"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Flip Clipboard Vertically"
 msgstr "クリップボードの内容を垂直反転"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Rotate Selection"
 msgstr "選択部分を回転"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Flip Selection"
 msgstr "選択部分を反転する"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Fill Selection"
 msgstr "選択部分を塗りつぶす"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Randomize Tiles in Selection"
 msgstr "選択部分のタイルをランダム化"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Apply a Mask"
 msgstr "マスクを適用"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Create Mask"
 msgstr "マスクを作成"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Refresh Display"
 msgstr "画面を再描画"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Update Terrain Transitions"
 msgstr "地形の繋ぎ目を更新"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Toggle Terrain Transition Update"
 msgstr "地形の繋ぎ目の自動更新の切り替え"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Auto-update Terrain Transitions"
 msgstr "地形の繋ぎ目の自動更新"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Auto-update Terrain Transitions: No"
 msgstr "地形の繋ぎ目の自動更新：OFF"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "地形の繋ぎ目の自動更新：一部"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Draw Hex Coordinates"
 msgstr "ヘクスの座標を描画"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Draw Terrain Codes"
 msgstr "地形コードを描画"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Draw Number of Bitmaps"
 msgstr "ビットマップの数を表示"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Save Selection to Area"
 msgstr "選択部分を領域として保存"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Rename Selected Area"
 msgstr "選択領域のリネーム"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Remove Selected Area"
 msgstr "選択領域の削除"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Add New Area"
 msgstr "新たな領域の追加"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
 msgstr "アドオン公開エディタ"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Change Add-on ID"
 msgstr "アドオン ID の変更"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 #| msgid "Select the add-on version"
 msgid "Select active Add-on"
 msgstr "アドオンのバージョンを選択します"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 #, fuzzy
 #| msgid "Open saves folder"
 msgid "Open Add-on folder"
 msgstr "保存フォルダを開く"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
 msgstr "陣営の編集"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Remove Side"
 msgstr "陣営の削除"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Continue Interrupted Move"
 msgstr "中断された移動の続行"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
 msgstr "ラベルまたはユニットの検索"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Speak to Ally"
 msgstr "同盟軍とチャット"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Speak to All"
 msgstr "全員とチャット"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
 msgstr "保存と再開に関するヘルプ"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
 msgstr "ヒント：保存と再開は不要です"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Enter Command"
 msgstr "コマンドの入力"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Custom Command"
 msgstr "カスタムコマンド"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Run Formula"
 msgstr "フォーミュラの実行"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Clear Chat"
 msgstr "チャットの消去"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
 msgstr "言語の変更"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Starting game"
 msgid "Start Game (MP)"
 msgstr "ゲーム開始"
 
-#: src/hotkey/hotkey_command.cpp:301
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
 msgstr "WMLのリフレッシュ"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Next Tip of the Day"
 msgstr "次のヒント"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:304
 msgid "Previous Tip of the Day"
 msgstr "前のヒント"
 
-#: src/hotkey/hotkey_command.cpp:304
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Start Campaign"
 msgstr "キャンペーンの開始"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:306
 msgid "Start Multiplayer Game"
 msgstr "マルチプレイヤーゲームの開始"
 
-#: src/hotkey/hotkey_command.cpp:306
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Manage Add-ons"
 msgstr "アドオンの管理"
 
-#: src/hotkey/hotkey_command.cpp:307
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Manage Cores"
 msgstr "コアの管理"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:309
 msgid "Start Editor"
 msgstr "エディタの起動"
 
-#: src/hotkey/hotkey_command.cpp:309
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Show Credits"
 msgstr "クレジットの表示"
 
-#: src/hotkey/hotkey_command.cpp:312
+#: src/hotkey/hotkey_command.cpp:313
 msgid "Show Helptip"
 msgstr "ヘルプチップの表示"
 
-#: src/hotkey/hotkey_command.cpp:314
+#: src/hotkey/hotkey_command.cpp:315
 msgid "Show Lua Console"
 msgstr "Luaコンソールの表示"
 
-#: src/hotkey/hotkey_command.cpp:317
+#: src/hotkey/hotkey_command.cpp:318
 msgid "Unrecognized Command"
 msgstr "認識できないコマンド"
 
@@ -9686,6 +9703,9 @@ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missin
 msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
+
+#~ msgid "Completed"
+#~ msgstr "完了率"
 
 #, fuzzy
 #~| msgid "Show next tip of the day"
