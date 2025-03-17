@@ -266,17 +266,16 @@ local skill_set = {
         },
     },
 }
---###############################
--- LOCKED INDICATOR
---###############################
-local locked = {
+
+return {
+    --###############################
+    -- LOCKED INDICATOR
+    --###############################
+    locked = {
     id          = "skill_locked",
     label       = label("<span color='grey'>Locked</span>"),
     image       = "icons/locked.png",
     description = "<span color='grey'>This option is not available yet.</span>",
-}
-	
-return {
-    locked = locked,
+    },
     skill_set = skill_set,
 }
