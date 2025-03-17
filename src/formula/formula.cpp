@@ -249,6 +249,9 @@ formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table
 	}
 }
 
+// Explicitly defaulted out-of-line destructor (see header comment)
+formula::~formula() = default;
+
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
 	if(str.empty()) {
