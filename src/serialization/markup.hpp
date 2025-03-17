@@ -21,9 +21,9 @@
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"
 
-#include <map>
 #include <string>
 #include <string_view>
+#include <vector>
 
 class config;
 
@@ -55,32 +55,34 @@ std::string tag(std::string_view tag, Args&&... data)
 	return formatter() << "<" << tag << ">" << input << "</" << tag << ">";
 }
 
+/** @todo is it safe to use a string_view for both key and value */
+using tag_attributes = std::vector<std::pair<std::string_view, std::string_view>>;
+
 /**
  * Wraps the given data in the specified tag.
  *
  * @param tag       The tag ("b", "i", etc).
- * @param attrs     A map containing the attribute key-value pairs.
+ * @param attrs     A vector containing the attribute key-value pairs.
  * @param data      The content to wrap with @a tag.
  *                  Each argument must be writable to a stringstream.
- *
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
  *                  If the concatenation of @a data results in an empty string,
  *                  an empty string is returned in lieu of formatting tags.
  */
-template<typename Value, typename... Args>
-std::string tag(std::string_view tag, std::map<std::string_view, Value> attrs, Args&&... data)
+template<typename... Args>
+std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... data)
 {
 	std::string input = (formatter() << ... << data);
 	if(input.empty()) return {};
-	std::stringstream outss;
-	outss << "<" << tag << " ";
+	std::stringstream ss;
+	ss << "<" << tag << " ";
 	for (const auto& [key, value] : attrs) {
-		outss << key << "='" << value << "' ";
+		ss << key << "='" << value << "' ";
 	}
-	outss << ">" << input << "</" << tag << ">";
-	return outss.str();
+	ss << ">" << input << "</" << tag << ">";
+	return ss.str();
 }
 
 /**
@@ -95,7 +97,7 @@ std::string tag(std::string_view tag, std::map<std::string_view, Value> attrs, A
 template<typename Value, typename... Args>
 std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
 {
-	return tag("span", std::map{ std::pair{ key, value } }, std::forward<Args>(data)...);
+	return tag("span", {{ key, value }}, std::forward<Args>(data)...);
 }
 
 /**
