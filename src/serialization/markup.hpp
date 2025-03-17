@@ -21,6 +21,7 @@
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"
 
+#include <map>
 #include <string>
 #include <string_view>
 
@@ -35,9 +36,9 @@ namespace markup
 constexpr std::string_view br{"<br/>"};
 
 /**
- * Wraps the given data in the specified formatting tag.
+ * Wraps the given data in the specified tag.
  *
- * @param tag       The formatting tag ("b", "i", etc).
+ * @param tag       The tag ("b", "i", etc).
  * @param data      The content to wrap with @a tag.
  *                  Each argument must be writable to a stringstream.
  *
@@ -55,6 +56,34 @@ std::string tag(std::string_view tag, Args&&... data)
 }
 
 /**
+ * Wraps the given data in the specified tag.
+ *
+ * @param tag       The tag ("b", "i", etc).
+ * @param attrs     A map containing the attribute key-value pairs.
+ * @param data      The content to wrap with @a tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
+ *                  If the concatenation of @a data results in an empty string,
+ *                  an empty string is returned in lieu of formatting tags.
+ */
+template<typename Value, typename... Args>
+std::string tag(std::string_view tag, std::map<std::string_view, Value> attrs, Args&&... data)
+{
+	std::string input = (formatter() << ... << data);
+	if(input.empty()) return {};
+	std::stringstream outss;
+	outss << "<" << tag << " ";
+	for (const auto& [key, value] : attrs) {
+		outss << key << "='" << value << "' ";
+	}
+	outss << ">" << input << "</" << tag << ">";
+	return outss.str();
+}
+
+/**
  * Wraps the given data in a @c span tag with the specified attribute and value.
  *
  * @param key       The span attribute ("color", "size", etc).
@@ -66,9 +95,7 @@ std::string tag(std::string_view tag, Args&&... data)
 template<typename Value, typename... Args>
 std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
 {
-	std::string input = (formatter() << ... << data);
-	if(input.empty()) return {};
-	return formatter() << "<span " << key << "='" << value << "'>" << input << "</span>";
+	return tag("span", std::map{ std::pair{ key, value } }, std::forward<Args>(data)...);
 }
 
 /**
