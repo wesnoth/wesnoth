@@ -473,6 +473,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				row_idx++;
 			}
 
+			w = std::max(w, static_cast<unsigned>(pos.x));
 			prev_blk_height = pos.y;
 			text_height = 0;
 			pos.x = origin.x;
