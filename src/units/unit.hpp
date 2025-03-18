@@ -1899,8 +1899,11 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
-	//when used define radius max for check distant unit who own a ability with [affect_distant] tag.
-	utils::optional<int> affect_distant_max_radius() const;
+	/**
+	 * @returns game_board affect_distant_max_radius_[tag_name] or affect_distant_max_radius_for_filtering_
+	 * @param tag_name the type of ability corresponding to the variable used, if empty return affect_distant_max_radius_for_filtering_.
+	 */
+	utils::optional<int> affect_distant_max_radius(const std::string& tag_name = "") const;
 
 private:
 
