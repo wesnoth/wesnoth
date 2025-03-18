@@ -491,6 +491,38 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 			return false;
 		}
 	}
+
+	for (const config &i : cfg.child_range("filter_distant"))
+	{
+		std::vector<map_location> surrounding;
+		int radius = i["radius"].to_int(0);
+		std::size_t count = 0;
+		unit_filter ufilt{ vconfig(i) };
+		ufilt.set_use_flat_tod(illuminates);
+
+
+		get_tiles_in_radius(loc, radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || !ufilt(*unit_itor, *this)) {
+				continue;
+			}
+			if (i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if (i["is_enemy"].to_bool() != dc.get_team(unit_itor->side()).is_enemy(side_)) {
+					continue;
+				}
+			}
+			++count;
+		}
+
+		if (i["count"].empty() && count == 0) {
+			return false;
+		}
+		if (!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+			return false;
+		}
+	}
 	return true;
 }
 
