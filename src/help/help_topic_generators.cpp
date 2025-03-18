@@ -664,6 +664,16 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n" << markup::tag("header", _("Attacks"));
 
 	if (!type_.attacks().empty()) {
+		// Check if at least one attack has special.
+		// Otherwise the Special column will be hidden.
+		bool has_special = false;
+		for(const attack_type& attack : type_.attacks()) {
+			if (!attack.special_tooltips().empty()) {
+				has_special = true;
+			}
+		}
+
+
 		// Print headers for the table.
 		table_ss << markup::tag("row",
 			//FIXME space/tab does not work, but nbsp does
@@ -673,7 +683,7 @@ std::string unit_topic_generator::operator()() const {
 			markup::tag("col", markup::bold(_("Strikes"))),
 			markup::tag("col", markup::bold(_("Range"))),
 			markup::tag("col", markup::bold(_("Type"))),
-			markup::tag("col", markup::bold(_("Special"))));
+			has_special ? markup::tag("col", markup::bold(_("Special"))) : "");
 
 		// Print information about every attack.
 		for(const attack_type& attack : type_.attacks()) {
@@ -711,23 +721,25 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss << markup::tag("col", markup::img(type_icon), lang_type);
 
 			// special
-			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
-			if (!specials.empty()) {
-				std::stringstream specials_ss;
-				std::string lang_special = "";
-				const std::size_t specials_size = specials.size();
-				for (std::size_t i = 0; i != specials_size; ++i) {
-					const std::string ref_id = std::string("weaponspecial_")
-						+ specials[i].first.base_str();
-					lang_special = (specials[i].first);
-					specials_ss << markup::make_link(lang_special, ref_id);
-					if (i+1 != specials_size) {
-						specials_ss << ", "; //comma placed before next special
+			if (has_special) {
+				std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
+				if (!specials.empty()) {
+					std::stringstream specials_ss;
+					std::string lang_special = "";
+					const std::size_t specials_size = specials.size();
+					for (std::size_t i = 0; i != specials_size; ++i) {
+						const std::string ref_id = std::string("weaponspecial_")
+							+ specials[i].first.base_str();
+						lang_special = (specials[i].first);
+						specials_ss << markup::make_link(lang_special, ref_id);
+						if (i+1 != specials_size) {
+							specials_ss << ", "; //comma placed before next special
+						}
 					}
+					attack_ss << markup::tag("col", specials_ss.str());
+				} else {
+					attack_ss << markup::tag("col", font::unicode_em_dash);
 				}
-				attack_ss << markup::tag("col", specials_ss.str());
-			} else {
-				attack_ss << markup::tag("col",  {{"halign", "center"}}, font::unicode_em_dash);
 			}
 
 			table_ss << markup::tag("row", {{"valign", "center"}}, attack_ss.str());
