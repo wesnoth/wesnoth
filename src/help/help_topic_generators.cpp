@@ -727,10 +727,10 @@ std::string unit_topic_generator::operator()() const {
 				}
 				attack_ss << markup::tag("col", specials_ss.str());
 			} else {
-				attack_ss << markup::tag("col", font::unicode_em_dash);
+				attack_ss << markup::tag("col",  {{"halign", "center"}}, font::unicode_em_dash);
 			}
 
-			table_ss << markup::tag("row", attack_ss.str());
+			table_ss << markup::tag("row", {{"valign", "center"}}, attack_ss.str());
 		}
 
 		ss << markup::tag("table", table_ss.str());

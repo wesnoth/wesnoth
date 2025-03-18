@@ -36,6 +36,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/format.hpp>
+#include <boost/multi_array.hpp>
 #include <functional>
 #include <numeric>
 #include <string>
@@ -354,14 +355,14 @@ std::pair<config, point> rich_label::get_parsed_text(
 				columns = child.mandatory_child("row").child_count("col");
 			}
 			columns = (columns == 0) ? 1 : columns;
-			unsigned init_cell_width;
+			int init_cell_width;
 			if (child["width"] == "fill") {
 				init_cell_width = init_width/columns;
 			} else {
 				init_cell_width = child["width"].to_int(init_width)/columns;
 			}
-			std::vector<unsigned> col_widths(columns, 0);
-			std::vector<unsigned> row_heights(rows, 0);
+			std::vector<int> col_widths(columns, 0);
+			std::vector<int> row_heights(rows, 0);
 
 			is_text = false;
 			new_text_block = true;
@@ -380,6 +381,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			};
 
 			std::array<int, 2> row_paddings;
+			boost::multi_array<point, 2> cell_sizes(boost::extents[rows][columns]);
 
 			// optimal col width calculation
 			for(const config& row : child.child_range("row")) {
@@ -399,20 +401,20 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					// order: left padding|right padding
 					std::array<int, 2> col_paddings = get_padding(col["padding"]);
-					unsigned cell_width = init_cell_width - col_paddings[0] - col_paddings[1];
+					int cell_width = init_cell_width - col_paddings[0] - col_paddings[1];
 
 					pos.x += col_paddings[0];
 					// attach data
 					auto links = links_;
-					const auto& [table_elem, size] = get_parsed_text(col_cfg, pos, init_cell_width);
+					cell_sizes[row_idx][col_idx] = get_parsed_text(col_cfg, pos, init_cell_width).second;
 					links_ = links;
 
 					// column post-processing
-					row_heights[row_idx] = std::max(row_heights[row_idx], static_cast<unsigned>(size.y));
+					row_heights[row_idx] = std::max(row_heights[row_idx], cell_sizes[row_idx][col_idx].y);
 					if (!child["width"].empty()) {
 						col_widths[col_idx] = cell_width;
 					}
-					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
+					col_widths[col_idx] = std::max(col_widths[col_idx], cell_sizes[row_idx][col_idx].x);
 					if (child["width"].empty()) {
 						col_widths[col_idx] = std::min(col_widths[col_idx], cell_width);
 					}
@@ -463,8 +465,22 @@ std::pair<config, point> rich_label::get_parsed_text(
 					std::array<int, 2> col_paddings = get_padding(col["padding"]);
 
 					pos.x += col_paddings[0];
+
+					// set position according to alignment keys
+					point text_pos(pos);
+					if (row["valign"] == "center" || row["valign"] == "middle") {
+						text_pos.y += (row_heights[row_idx] - cell_sizes[row_idx][col_idx].y)/2;
+					} else if (row["valign"] == "bottom") {
+						text_pos.y += row_heights[row_idx] - cell_sizes[row_idx][col_idx].y;
+					}
+					if (col["halign"] == "center" || col["halign"] == "middle") {
+						text_pos.x += (col_widths[col_idx] - cell_sizes[row_idx][col_idx].x)/2;
+					} else if (col["halign"] == "right") {
+						text_pos.x += col_widths[col_idx] - cell_sizes[row_idx][col_idx].x;
+					}
+
 					// attach data
-					auto [table_elem, size] = get_parsed_text(col_cfg, pos, col_widths[col_idx]);
+					auto [table_elem, size] = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]);
 					text_dom.append(std::move(table_elem));
 					pos.x += col_widths[col_idx];
 					pos.x += col_paddings[1];
