@@ -51,7 +51,17 @@ class game_board : public display_context
 	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
-	utils::optional<int> affect_distant_max_radius_;
+
+	/**
+	 * Variables used for define radius for abilities [affect_distant]radius= checking.
+	 *
+	 * @ affect_distant_max_radius_ is used for checking in abilities of defined type.
+	 * @ affect_distant_max_radius_for_filtering_ used when checking abilities in [filter] or animations.
+	 * @ affect_distant_max_radius_for_image_ define radius for images in abilities.
+	 **/
+	std::map<std::string, utils::optional<int>> affect_distant_max_radius_;
+	utils::optional<int> affect_distant_max_radius_for_filtering_;
+	utils::optional<int> affect_distant_max_radius_for_image_;
 
 	/**
 	 * Temporary unit move structs:
@@ -133,8 +143,11 @@ public:
 	friend void swap(game_board & one, game_board & other);
 
 	//when used define radius max for check unit who own a ability with [affect_distant] tag.
-	utils::optional<int> affect_distant_max_radius() const {return affect_distant_max_radius_;}
-	void set_affect_distant_max_radius(utils::optional<int> value);
+	utils::optional<int> affect_distant_max_radius(const std::string& value){return affect_distant_max_radius_[value];}
+	utils::optional<int> affect_distant_max_radius_for_filtering() const {return affect_distant_max_radius_for_filtering_;}
+	utils::optional<int> affect_distant_max_radius_for_image() const {return affect_distant_max_radius_for_image_;}
+	void set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name = "");
+	void set_affect_distant_max_radius_image(utils::optional<int> value);
 
 	// Saving
 

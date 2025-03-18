@@ -210,7 +210,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 			}
 		}
 	}
-	utils::optional<int> max_radius = affect_distant_max_radius();
+	utils::optional<int> max_radius = affect_distant_max_radius(tag_name);
 	if(max_radius){
 		std::vector<map_location> surrounding;
 		get_tiles_in_radius(loc, *max_radius, surrounding);
@@ -263,7 +263,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			}
 		}
 	}
-	utils::optional<int> max_radius = affect_distant_max_radius();
+	utils::optional<int> max_radius = affect_distant_max_radius(tag_name);
 	if(max_radius){
 		std::vector<map_location> surrounding;
 		get_tiles_in_radius(loc, *max_radius, surrounding);
@@ -623,13 +623,24 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
-//these two functions below are used in order to add to the unit
+//these functions below are used in order to add to the unit
 //a second set of halo encoded in the abilities (like illuminates halo in [illuminates] ability for example)
-static void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
+namespace
 {
-	auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
-	if(ret == image_list.end()){
-		image_list.push_back(cfg[attribute_name].str());
+	void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
+	{
+		auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
+		if(ret == image_list.end()){
+			image_list.push_back(cfg[attribute_name].str());
+		}
+	}
+
+	utils::optional<int> affect_distant_max_radius_image()
+	{
+		if(resources::gameboard) {
+			return resources::gameboard->affect_distant_max_radius_for_image();
+		}
+		return utils::nullopt;
 	}
 }
 
@@ -666,7 +677,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 			}
 		}
 	}
-	utils::optional<int> max_radius = affect_distant_max_radius();
+	utils::optional<int> max_radius = affect_distant_max_radius_image();
 	if(max_radius){
 		std::vector<map_location> surrounding;
 		get_tiles_in_radius(loc_, *max_radius, surrounding);
@@ -1893,7 +1904,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 {
 	const unit_map& units = get_unit_map();
 	if(self_){
-		utils::optional<int> max_radius = self_->affect_distant_max_radius();
+		utils::optional<int> max_radius = self_->affect_distant_max_radius(special_tags ? special : "");
 		std::vector<special_match> special_tag_matches_self;
 		std::vector<special_match> special_id_matches_self;
 		get_ability_children(special_tag_matches_self, special_id_matches_self, (*self_).abilities(), special, special_id , special_tags);
@@ -1970,7 +1981,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	}
 
 	if(other_){
-		utils::optional<int> max_radius = other_->affect_distant_max_radius();
+		utils::optional<int> max_radius = other_->affect_distant_max_radius(special_tags ? special : "");
 		std::vector<special_match> special_tag_matches_other;
 		std::vector<special_match> special_id_matches_other;
 		get_ability_children(special_tag_matches_other, special_id_matches_other, (*other_).abilities(), special, special_id , special_tags);
