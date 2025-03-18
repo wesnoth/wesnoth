@@ -360,6 +360,7 @@ struct builder_rich_label : public builder_styled_widget
 	PangoAlignment text_alignment;
 	bool link_aware;
 	typed_formula<unsigned> width;
+	unsigned padding;
 };
 
 } // namespace implementation
