@@ -760,13 +760,31 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 	}
 
-	if(*attackable_distances.rbegin() <= 1){
+	map_location res;
+
+	if(attackable_distances.empty()) {return res} 	//invalid attack ranges
+	if(*attackable_distances.rbegin() > 1){			//ranged attack
+		int distance = distance_between(selected_hex_, loc);
+		if (attackable_distances.find(distance) != attackable_distances.end() ) {
+			return selected_hex_;
+		}
+		int best_move = -1;
+		for (const pathfind::paths::step& step : current_paths_.destinations) {
+			map_location dst = step.curr;
+			int distance = distance_between(loc, dst);
+			if (attackable_distances.find(distance) != attackable_distances.end()) {
+				if (step.move_left > best_move){
+					best_move = step.move_left;
+					res=dst;
+				}
+			}
+		}
+	} else{											//no ranged attack
 		const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
 		const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 		int best_rating = 100; // smaller is better
 
-		map_location res;
 		const auto adj = get_adjacent_tiles(loc);
 
 		for(std::size_t n = 0; n < adj.size(); ++n) {
@@ -798,28 +816,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 				}
 			}
 		}
-
-		return res;
 	}
-
-	int distance = distance_between(selected_hex_, loc);
-	if (attackable_distances.find(distance) != attackable_distances.end() ) {
-		return selected_hex_;
-	}
-	map_location best_loc;
-	int best_move = -1;
-	for (const pathfind::paths::step& step : current_paths_.destinations) {
-		map_location dst = step.curr;
-		// std::cout << "Destination: " << dst << ", Cost: " << step.move_left << std::endl;
-		int distance = distance_between(loc, dst);
-		if (attackable_distances.find(distance) != attackable_distances.end()) {
-			if (step.move_left > best_move){
-				best_move = step.move_left;
-				best_loc=dst;
-			}
-		}
-	}
-	return best_loc;
+	return res;
 
 }
 
@@ -1386,8 +1384,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		defender = board.units().find(defender_loc);
 
 		if(!attacker || !defender) {
-			if (!attacker) ERR_NG << "Attacker is missing, can't attack";
-			if (!defender) ERR_NG << "Defender is missing, can't attack";
+			if (!attacker) {ERR_NG << "Attacker is missing, can't attack";}
+			if (!defender) {ERR_NG << "Defender is missing, can't attack";}
 			return -1; // abort, click will do nothing
 		}
 
