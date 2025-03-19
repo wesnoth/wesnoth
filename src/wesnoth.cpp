@@ -333,6 +333,29 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 /** Process commandline-arguments */
 static int process_command_args(commandline_options& cmdline_opts)
 {
+	// Options that output info unaffected by other options and return.
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		return 0;
+	}
+
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+		return 0;
+	}
+
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+		return 0;
+	}
+
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.no_log_sanitize) {
@@ -362,10 +385,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 			&& !cmdline_opts.data_path
 			&& !cmdline_opts.userdata_path
 			&& !cmdline_opts.usercache_path
-			&& !cmdline_opts.version
-			&& !cmdline_opts.simple_version
-			&& !cmdline_opts.logdomains
-			&& !cmdline_opts.help
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -466,16 +485,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::strict_lua = true;
 	}
 
-	if(cmdline_opts.help) {
-		std::cout << cmdline_opts;
-		return 0;
-	}
-
-	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
-		return 0;
-	}
-
 	if(cmdline_opts.log_precise_timestamps) {
 		lg::precise_timestamps(true);
 	}
@@ -490,20 +499,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	if(cmdline_opts.strict_validation) {
 		strict_validation_enabled = true;
-	}
-
-	if(cmdline_opts.version) {
-		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
-		std::cout << "Optional features:\n" << game_config::optional_features_report();
-
-		return 0;
-	}
-
-	if(cmdline_opts.simple_version) {
-		std::cout << game_config::wesnoth_version.str() << "\n";
-
-		return 0;
 	}
 
 	if(cmdline_opts.report) {
