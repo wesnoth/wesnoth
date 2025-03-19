@@ -762,7 +762,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 	map_location res;
 
-	if(attackable_distances.empty()) {return res} 	//invalid attack ranges
+	if(attackable_distances.empty()) {return res;} 	//invalid attack ranges
 	if(*attackable_distances.rbegin() > 1){			//ranged attack
 		int distance = distance_between(selected_hex_, loc);
 		if (attackable_distances.find(distance) != attackable_distances.end() ) {
