@@ -779,41 +779,41 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 				}
 			}
 		}
-	} else{											//no ranged attack
-		const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
-		const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
+		return res;
+	}										//no ranged attack
+	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
+	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
-		int best_rating = 100; // smaller is better
+	int best_rating = 100; // smaller is better
 
-		const auto adj = get_adjacent_tiles(loc);
+	const auto adj = get_adjacent_tiles(loc);
 
-		for(std::size_t n = 0; n < adj.size(); ++n) {
-			if(pc_.get_map().on_board(adj[n]) == false) {
-				continue;
+	for(std::size_t n = 0; n < adj.size(); ++n) {
+		if(pc_.get_map().on_board(adj[n]) == false) {
+			continue;
+		}
+
+		if(adj[n] != selected_hex_ && find_unit(adj[n])) {
+			continue;
+		}
+
+		if(current_paths_.destinations.contains(adj[n])) {
+			static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
+
+			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+			if(difference > ndirections / 2) {
+				difference = ndirections - difference;
 			}
 
-			if(adj[n] != selected_hex_ && find_unit(adj[n])) {
-				continue;
+			unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
+			if(second_difference > ndirections / 2) {
+				second_difference = ndirections - second_difference;
 			}
 
-			if(current_paths_.destinations.contains(adj[n])) {
-				static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
-
-				unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
-				if(difference > ndirections / 2) {
-					difference = ndirections - difference;
-				}
-
-				unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
-				if(second_difference > ndirections / 2) {
-					second_difference = ndirections - second_difference;
-				}
-
-				const int rating = difference * 2 + (second_difference > difference);
-				if(rating < best_rating || res.valid() == false) {
-					best_rating = rating;
-					res = adj[n];
-				}
+			const int rating = difference * 2 + (second_difference > difference);
+			if(rating < best_rating || res.valid() == false) {
+				best_rating = rating;
+				res = adj[n];
 			}
 		}
 	}
