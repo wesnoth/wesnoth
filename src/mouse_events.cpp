@@ -760,14 +760,20 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 	}
 
-	map_location res;
 
-	if(attackable_distances.empty()) {return res;} 	//invalid attack ranges
-	if(*attackable_distances.rbegin() > 1){			//ranged attack
+
+	//invalid attack ranges
+	if(attackable_distances.empty()) {
+		return map_location{};
+	}
+
+	//ranged attack
+	if(*attackable_distances.rbegin() > 1){
 		int distance = distance_between(selected_hex_, loc);
 		if (attackable_distances.find(distance) != attackable_distances.end() ) {
 			return selected_hex_;
 		}
+		map_location res;
 		int best_move = -1;
 		for (const pathfind::paths::step& step : current_paths_.destinations) {
 			map_location dst = step.curr;
@@ -780,12 +786,15 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 			}
 		}
 		return res;
-	}										//no ranged attack
+	}
+
+	//no ranged attack
 	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
 	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 	int best_rating = 100; // smaller is better
 
+	map_location res;
 	const auto adj = get_adjacent_tiles(loc);
 
 	for(std::size_t n = 0; n < adj.size(); ++n) {
