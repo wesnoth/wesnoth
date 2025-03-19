@@ -168,6 +168,11 @@ public:
 		return gamestate().board_.is_observer();
 	}
 
+	bool is_singleplayer() const
+	{
+		return gamestate().board_.is_singleplayer();
+	}
+
 	bool do_healing() const
 	{
 		return gamestate().do_healing_;
