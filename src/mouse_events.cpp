@@ -964,7 +964,7 @@ void mouse_handler::move_action(bool browse)
 
 		src = selected_hex_;
 		orig_paths = current_paths_;
-		attack_from = current_unit_attacks_from(hex); //Where does the attack dialog gonna be showed from, only one tile now
+		attack_from = current_unit_attacks_from(hex); //the attack dialog is showed like if the unit is standing at the hex, this may be not the best approach
 	} // end planned unit map scope
 
 	// See if the teleport option is toggled
@@ -1154,7 +1154,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 
 		if(highlight) {
-			show_attack_options(unit); //keeping for work on ranged attacks
 			gui().highlight_reach(current_paths_);
 		}
 
@@ -1565,7 +1564,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	// bc_widget_data_vector won't be empty when it reaches here.
 	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
 
-	if(dlg.show()) { //dlg.show() is what actually shows the dialog
+	if(dlg.show()) {
 		return dlg.get_selected_weapon();
 	}
 
@@ -1668,69 +1667,6 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 	}
 
 	return res;
-}
-
-/**
- * NOT NEEDED now, keeping for future work on ranged attacks UI
- *
- * This checks the hexes that the provided unit can attack. If there is a valid
- * target there, that location is inserted into current_paths_.destinations.
- */
-void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
-{
-	// Cannot attack if no attacks are left, or unit has no attacks
-	if(u->attacks_left() == 0 || u->attacks().empty()) {
-		return;
-	}
-
-	// Get the teams involved.
-	const team& cur_team = current_team();
-	const team& u_team = pc_.get_teams()[u->side() - 1];
-
-	const auto& attacks = u->attacks();
-	std::set<int> attackable_distances;
-
-    for (const auto& attack : attacks) {
-        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
-            attackable_distances.insert(i);
-        }
-    }
-	if(attackable_distances.empty()) {
-		return;
-	}
-	if (*attackable_distances.rbegin() <= 1) {
-	// 	gui2::show_transient_message(_("DEBUG"), _("ATTACK ON RANGE 1"));
-    // 	return; // this may be very useful to leave the melee attacks same, if something is going to be added to ranged attacks
-	}
-
-	int min = *attackable_distances.begin();
-	int n = *std::prev(attackable_distances.end());
-	const map_location& center = u->get_location();
-	std::vector<map_location> tiles = center.get_ring(min,n);
-
-	for(const map_location& loc : tiles) {
-		int distance = distance_between(u->get_location(), loc);
-		if (attackable_distances.find(distance) == attackable_distances.end()) {
-			continue;
-		}
-		// No attack option shown if no visible unit present.
-		// (Visible to current team, not necessarily the unit's team.)
-		if(!pc_.get_map().on_board(loc)) {
-			continue;
-		}
-
-		unit_map::const_iterator i = pc_.get_units().find(loc);
-		if(!i || !i->is_visible_to_team(cur_team, false)) {
-			continue;
-		}
-
-		const unit& target = *i;
-
-		// Can only attack non-petrified enemies.
-		if(u_team.is_enemy(target.side()) && !target.incapacitated()) {
-			// current_paths_.destinations.insert(loc); // Higlights all units attackable from the current tile - keeping for future work with ranged attacks (since how highlight works changed)
-		}
-	}
 }
 
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)
