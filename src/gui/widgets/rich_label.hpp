@@ -20,7 +20,6 @@
 
 #include "gui/core/canvas_private.hpp"
 #include "gui/core/widget_definition.hpp"
-#include "help/help_impl.hpp"
 
 namespace gui2
 {
@@ -84,6 +83,8 @@ public:
 		return !tooltip().empty() || get_link_aware();
 	}
 
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) override {};
+
 	virtual void update_canvas() override;
 
 	/* **** ***** ***** setters / getters for members ***** ****** **** */
@@ -119,16 +120,11 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
-	const t_string& get_label() const
-	{
-		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
-	}
-
 	// Show text marked up with help markup
 	void set_label(const t_string& text) override;
 
-	// Show a help topic
-	void set_topic(const help::topic* topic);
+	// Show a given DOM (given as a config)
+	void set_dom(const config& dom);
 
 	// Given a parsed config from help markup,
 	// layout it into a config that can be understood by canvas
@@ -223,11 +219,8 @@ private:
 		return can_shrink_;
 	}
 
-	/** structure tree of the marked up text after parsing */
-	config text_dom_;
-
-	/** The unparsed/raw text */
-	t_string unparsed_text_;
+	/** Final list of shapes to be drawn on the canvas. */
+	config shapes_;
 
 	/** Width and height of the canvas */
 	const unsigned init_w_;
@@ -279,14 +272,7 @@ private:
 		return (text_height > img_height) ? (text_height - img_height)/2 : 0;
 	}
 
-	point calculate_best_size() const override
-	{
-		if(size_ == point{}) {
-			return styled_widget::calculate_best_size();
-		} else {
-			return size_;
-		}
-	}
+	point calculate_best_size() const override { return size_; };
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

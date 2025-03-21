@@ -25,7 +25,6 @@
 #include "cursor.hpp"
 #include "font/constants.hpp"
 #include "font/sdl_ttf_compat.hpp"
-#include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/markup.hpp"
@@ -71,7 +70,6 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, font_size_(font::SIZE_NORMAL)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
-	, unparsed_text_()
 	, init_w_(builder.width(get_screen_size_variables()))
 	, size_(0, 0)
 	, padding_(builder.padding)
@@ -86,7 +84,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	link_color_ = conf->link_color;
 	predef_colors_.insert(conf->colors.begin(), conf->colors.end());
 	set_text_alignment(builder.text_alignment);
-	set_label(get_label());
+	set_label(builder.label_string);
 }
 
 color_t rich_label::get_color(const std::string& color)
@@ -246,22 +244,18 @@ std::vector<std::string> rich_label::split_in_width(
 			res.push_back(s.substr(first_line.size()));
 		}
 	} catch (utf8::invalid_utf8_exception&) {
-		throw markup::parse_error (_("corrupted original file"));
+		throw markup::parse_error(_("corrupted original file"));
 	}
 
 	return res;
 }
 
-void rich_label::set_topic(const help::topic* topic) {
-	styled_widget::set_label(topic->text.parsed_text().debug());
-	std::tie(text_dom_, size_) = get_parsed_text(topic->text.parsed_text(), point(0,0), init_w_, true);
+void rich_label::set_dom(const config& dom) {
+	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
 }
 
 void rich_label::set_label(const t_string& text) {
-	styled_widget::set_label(text);
-	unparsed_text_ = text;
-	help::topic_text marked_up_text(text);
-	std::tie(text_dom_, size_) = get_parsed_text(marked_up_text.parsed_text(), point(0,0), init_w_, true);
+	set_dom(markup::parse_text(text));
 }
 
 std::pair<config, point> rich_label::get_parsed_text(
@@ -861,7 +855,7 @@ void rich_label::default_text_config(
 void rich_label::update_canvas()
 {
 	for(canvas& tmp : get_canvases()) {
-		tmp.set_shapes(text_dom_, true);
+		tmp.set_shapes(shapes_, true);
 		tmp.set_variable("width", wfl::variant(init_w_));
 		tmp.set_variable("padding", wfl::variant(padding_));
 		// Disable ellipsization so that text wrapping can work

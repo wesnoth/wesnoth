@@ -215,9 +215,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 void styled_widget::request_reduce_height(const unsigned maximum_height)
 {
-	if(!label_.empty()) {
-		// Do nothing
-	} else {
+	if(label_.empty()) {
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
 		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));

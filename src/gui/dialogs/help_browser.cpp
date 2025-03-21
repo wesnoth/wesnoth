@@ -181,7 +181,7 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		data.emplace("topic_title", item);
 
 		find_widget<label>("topic_title").set_label(topic->title);
-		find_widget<rich_label>("topic_text").set_topic(topic);
+		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
 
 		invalidate_layout();
 		scrollbar_panel& scroll = find_widget<scrollbar_panel>("topic_scroll_panel");
