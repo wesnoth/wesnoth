@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <string>
 
 #include "scripting/lua_ptr.hpp"
 #include "serialization/string_utils.hpp"

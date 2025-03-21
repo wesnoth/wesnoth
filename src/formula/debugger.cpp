@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
-#include "gui/widgets/settings.hpp"
 
 static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define DBG_FDB LOG_STREAM(debug, log_formula_debugger)

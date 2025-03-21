@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,21 +19,12 @@
  */
 
 #include "ai/composite/component.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/property_handler.hpp"
 #include "config.hpp"
 #include "log.hpp"
-#include "units/unit.hpp"
 
-#include "ai/formula/ai.hpp"
 
 #include <boost/regex.hpp>
-
-namespace pathfind {
-
-struct pathfind;
-
-} //of namespace pathfind
 
 namespace ai {
 
@@ -134,7 +125,7 @@ static component *find_component(component *root, const std::string &path, path_
 	}
 
 	//match path elements in [modify_ai] tag
-	boost::regex re(R"""(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))""");
+	boost::regex re(R"(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))");
 	const int sub_matches[] {1,3,4};
 	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
 	boost::sregex_token_iterator j;
@@ -185,11 +176,11 @@ bool component_manager::add_component(component *root, const std::string &path, 
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	auto ch = cfg.optional_child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->add_child(tail, ch);
+	return c->add_child(tail, *ch);
 
 }
 
@@ -200,11 +191,11 @@ bool component_manager::change_component(component *root, const std::string &pat
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	auto ch = cfg.optional_child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->change_child(tail,ch);
+	return c->change_child(tail, *ch);
 }
 
 bool component_manager::delete_component(component *root, const std::string &path)

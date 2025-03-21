@@ -108,7 +108,7 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     if abilities then
         for _,ability in ipairs(abilities) do
             if ability[1] == 'regenerate' then
-                single_unit_info[ability[1]] = ability[2].value
+                single_unit_info[ability[1]] = (tonumber(ability[2].value) or 0)
             else
                 single_unit_info[ability[1]] = true
             end

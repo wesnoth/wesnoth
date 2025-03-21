@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -219,7 +219,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_c
 			// This line is easily reachable, after the player has played multiple
 			// campaigns. The code for showing movetypes for discovered terrains in the
 			// sidebar will query every terrain listed in
-			// preferences::encountered_terrains(), even those that are campaign-specific.
+			// prefs::get().encountered_terrains(), even those that are campaign-specific.
 			// ERR_G << "couldn't find base or overlay for " << terrain;
 			return tcodeToTerrain_.end();
 		}
@@ -267,7 +267,7 @@ t_translation::terrain_code terrain_type_data::merge_terrains(const t_translatio
 		if(new_t.base != t_translation::NO_LAYER) {
 			result = new_t;
 		}
-		else if (get_terrain_info(new_t).default_base() != t_translation::NONE_TERRAIN) {
+		else if (get_terrain_info(new_t).has_default_base()) {
 			result = get_terrain_info(new_t).terrain_with_default_base();
 		}
 	}

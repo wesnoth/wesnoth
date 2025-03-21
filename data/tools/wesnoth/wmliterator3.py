@@ -25,7 +25,7 @@ Limitations:
 from functools import total_ordering
 import sys, re, copy, codecs
 import fnmatch
-keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
+keyPattern = re.compile(r'(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w|}]))(\[/?\+?[a-z _]+\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}\{]*)')

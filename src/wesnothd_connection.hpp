@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,14 +40,12 @@
 #include <boost/asio/ssl.hpp>
 
 #include <condition_variable>
-#include <deque>
 #include <future>
 #include <list>
 #include <mutex>
 #include <queue>
 #include <thread>
 
-class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection
@@ -163,7 +161,7 @@ private:
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
 
-	void handle_resolve(const boost::system::error_code& ec, results_type results);
+	void handle_resolve(const boost::system::error_code& ec, const results_type& results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
 
 	void handshake();

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,8 +73,7 @@ public:
 
 	/** Returns the menu items that can be shown for the given location. */
 	void get_items(const map_location& hex,
-			std::vector<std::shared_ptr<const wml_menu_item>>& items,
-			std::vector<config>& descriptions,
+			std::vector<config>& items,
 			filter_context& fc,
 			game_data& gamedata,
 			unit_map& units) const;

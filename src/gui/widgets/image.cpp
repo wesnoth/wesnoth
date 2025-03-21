@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,10 @@
 #include "picture.hpp" // We want the file in src/
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
-
-#include <functional>
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -110,7 +108,7 @@ image_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in image.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("image_definition][resolution", "state_enabled")));
 }
 
 // }---------- BUILDER -----------{

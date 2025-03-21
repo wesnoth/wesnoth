@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,10 +25,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-	struct builder_styled_widget;
-}
 
 /**
  * Abstract base class for text items.
@@ -65,10 +61,69 @@ public:
 
 	void set_maximum_length(const std::size_t maximum_length);
 
+	/**
+	 * Wrapper function, returns length of the text in pango column offsets.
+	 * See @ref font::pango_text::get_length.
+	 */
 	std::size_t get_length() const
 	{
 		return text_.get_length();
 	}
+
+	/**
+	 * Wrapper function, returns a vector with the lines.
+	 * See @ref font::pango_text::get_lines.
+	 */
+	std::vector<std::string> get_lines()
+	{
+		return text_.get_lines();
+	}
+
+	/**
+	 * Wrapper function, returns the line corresponding
+	 * to index.
+	 * See @ref font::pango_text::get_line.
+	 */
+	PangoLayoutLine* get_line(int index)
+	{
+		return text_.get_line(index);
+	}
+
+	/**
+	 * Wrapper function, return the line number
+	 * given the byte index.
+	 * See @ref font::pango_text::get_line_num_from_offset.
+	 */
+	int get_line_number(const unsigned offset)
+	{
+		return text_.get_line_num_from_offset(offset);
+	}
+
+	/**
+	 * Wrapper function, return the cursor position
+	 * given the byte index.
+	 * See @ref font::pango_text::get_cursor_pos_from_index.
+	 */
+	point get_cursor_pos_from_index(const unsigned offset) const
+	{
+		return text_.get_cursor_pos_from_index(offset);
+	}
+
+	/**
+	 * Wrapper function, return number of lines.
+	 * See @ref font::pango_text::get_lines_count.
+	 */
+	unsigned get_lines_count() const
+	{
+		return text_.get_lines_count();
+	}
+
+	/**
+	 * Wrapper function, sets the area between column start and end
+	 * offset to be highlighted in a specific color.
+	 * See @ref font::add_attribute_bg_color.
+	 */
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -89,11 +144,26 @@ public:
 		return text_.text();
 	}
 
-	/** Set the text_changed callback. */
-	void set_text_changed_callback(
-			std::function<void(text_box_base* textbox, const std::string text)> cb)
+	std::string plain_text()
 	{
-		text_changed_callback_ = cb;
+		char* plain_text = nullptr;
+		pango_parse_markup(text().c_str(), text().size(), 0, nullptr, &plain_text, nullptr, nullptr);
+		return plain_text ? std::string(plain_text) : std::string();
+	}
+
+	/**
+	 * Registers a NOTIFY_MODIFIED handler.
+	 *
+	 * For convenience, the handler is invoked with a text_box_base reference
+	 * as its first (and only) argument, rather than the usual widget reference.
+	 *
+	 * @todo Should we pass the other callback parameters to the handler?
+	 */
+	template<typename Func>
+	void on_modified(const Func& f)
+	{
+		connect_signal<event::NOTIFY_MODIFIED>(
+			[f](widget& w, auto&&...) { f(dynamic_cast<text_box_base&>(w)); });
 	}
 
 	/**
@@ -118,6 +188,24 @@ public:
 	 */
 	void set_selection(std::size_t start, int length);
 
+	/**
+	 * Set or unset whether text can be edited or not
+	 * Text can only be copied and scrolled through when editable is false.
+	 */
+	void set_editable(bool editable)
+	{
+		editable_ = editable;
+		update_canvas();
+	}
+
+	/**
+	 * Check whether text can be edited or not
+	 */
+	bool is_editable() const
+	{
+		return editable_;
+	}
+
 protected:
 	/** Get length of composition text by IME **/
 	size_t get_composition_length() const;
@@ -138,7 +226,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the end of the data?
 	 */
-	void goto_end_of_data(const bool select = false)
+	virtual void goto_end_of_data(const bool select = false)
 	{
 		set_cursor(text_.get_length(), select);
 	}
@@ -157,7 +245,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the beginning of the data?
 	 */
-	void goto_start_of_data(const bool select = false)
+	virtual void goto_start_of_data(const bool select = false)
 	{
 		set_cursor(0, select);
 	}
@@ -176,7 +264,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the new position?
 	 */
-	void set_cursor(const std::size_t offset, const bool select);
+	virtual void set_cursor(const std::size_t offset, const bool select);
 
 	/**
 	 * Inserts a character at the cursor.
@@ -201,10 +289,10 @@ protected:
 	virtual void delete_selection() = 0;
 
 	/** Copies the current selection. */
-	virtual void copy_selection(const bool mouse);
+	virtual void copy_selection();
 
 	/** Pastes the current selection. */
-	virtual void paste_selection(const bool mouse);
+	virtual void paste_selection();
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
@@ -217,6 +305,11 @@ protected:
 	point get_column_line(const point& position) const
 	{
 		return text_.get_column_line(position);
+	}
+
+	void set_font_family(font::family_class fclass)
+	{
+		text_.set_family_class(fclass);
 	}
 
 	void set_font_size(const unsigned font_size)
@@ -318,6 +411,9 @@ private:
 	 */
 	int selection_length_;
 
+	/** If this text_box_base is editable */
+	bool editable_;
+
 	// Values to support input method editors
 	bool ime_composing_;
 	int ime_start_point_;
@@ -325,7 +421,7 @@ private:
 	std::size_t cursor_timer_;
 
 	unsigned short cursor_alpha_;
-	unsigned short cursor_blink_rate_ms_;
+	std::chrono::milliseconds cursor_blink_rate_;
 
 	/****** handling of special keys first the pure virtuals *****/
 
@@ -377,7 +473,7 @@ private:
 	 * Alt                        Ignored.
 	 */
 	virtual void handle_key_clear_line(SDL_Keymod modifier, bool& handled) = 0;
-
+protected:
 	/**
 	 * Left arrow key pressed.
 	 *
@@ -400,6 +496,7 @@ private:
 	 */
 	virtual void handle_key_right_arrow(SDL_Keymod modifier, bool& handled);
 
+private:
 	/**
 	 * Home key pressed.
 	 *
@@ -483,6 +580,18 @@ private:
 	{
 	}
 
+	/**
+	 * Enter key.
+	 *
+	 * Unmodified                 Handled by Window.
+	 * Control                    Implementation defined.
+	 * Shift                      Implementation defined.
+	 * Alt                        Implementation defined.
+	 */
+	virtual void handle_key_enter(SDL_Keymod /*modifier*/, bool& /*handled*/)
+	{
+	}
+
 protected:
 	virtual void handle_commit(bool& handled,
 									const std::string& unicode);
@@ -492,17 +601,6 @@ protected:
 								int32_t length);
 
 private:
-	/**
-	 * Text changed callback.
-	 *
-	 * This callback is called in key_press after the key_press event has been
-	 * handled by the styled_widget. The parameters to the function are:
-	 * - The widget invoking the callback
-	 * - The new text of the textbox.
-	 */
-	std::function<void(text_box_base* textbox, const std::string text)>
-	text_changed_callback_;
-
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_middle_button_click(const event::ui_event event,

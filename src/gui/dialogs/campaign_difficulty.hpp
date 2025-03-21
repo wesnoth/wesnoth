@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include <vector>
 
 namespace gui2::dialogs
 {
@@ -29,19 +28,6 @@ namespace gui2::dialogs
  */
 config generate_difficulty_config(const config& source);
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * The campaign mode difficulty menu.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * title             | @ref label   |yes      |Dialog title label.
- * message           | scroll_label |no       |Text label displaying a description or instructions.
- * listbox           | @ref listbox |yes      |Listbox displaying user choices, defined by WML for each campaign.
- * icon              | control      |yes      |Widget which shows a listbox item icon, first item markup column.
- * label             | control      |yes      |Widget which shows a listbox item label, second item markup column.
- * description       | control      |yes      |Widget which shows a listbox item description, third item markup column.
- */
 class campaign_difficulty : public modal_dialog
 {
 public:
@@ -66,8 +52,8 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 } // namespace dialogs

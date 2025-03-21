@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -107,15 +107,13 @@ bool wmi_manager::fire_item(
  * Returns the menu items that can be shown for the given location.
  *
  * @param hex               The current hex.
- * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
- * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
+ * @param[out] items        Menu items. consisting of  menu text, menu icons, and action ids.
  * @param fc                Used to check whether the menu's filter matches.
  * @param gamedata          Used to check whether to show if selecting is required.
  * @param units             Used to highlight a unit if needed.
  */
 void wmi_manager::get_items(const map_location& hex,
-		std::vector<std::shared_ptr<const wml_menu_item>>& items,
-		std::vector<config>& descriptions,
+		std::vector<config>& items,
 		filter_context& fc,
 		game_data& gamedata,
 		unit_map& units) const
@@ -142,8 +140,7 @@ void wmi_manager::get_items(const map_location& hex,
 		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())
 				&& item->can_show(hex, gamedata, fc)) {
 			// Include this item.
-			items.push_back(item);
-			descriptions.emplace_back("id", item->menu_text());
+			items.emplace_back("id", item->hotkey_id() , "label", item->menu_text(), "icon", item->image());
 		}
 	}
 	gamedata.get_variable("x1") = x1;

@@ -13,7 +13,14 @@ from pywmlx.state.wml_states import setup_wmlstates
 import pywmlx.nodemanip
 import pdb
 
+# Universe - convenient singleton for which
+# `x in Universe` is always True
+# Passing it to a filter is equivalent to not filtering.
+class UniversalSet:
+    def __contains__(self, any):
+        return True
 
+Universe = UniversalSet()
 
 # --------------------------------------------------------------------
 #  PART 1: machine.py global variables
@@ -30,12 +37,12 @@ _fdebug = None
 _dictionary = None
 # dictionary containing lua and WML states
 _states = None
-# initialdomain value (setted with --initialdomain command line option)
+# initialdomain value (set with --initialdomain command line option)
 _initialdomain = None
 # the current domain value when parsing file (changed by #textdomain text)
 _currentdomain = None
-# the domain value (setted with --domain command line option)
-_domain = None
+# the domain value (set with --domain command line option)
+_domains = Universe
 # this boolean value will be usually:
 #   True (when the file is a WML .cfg file)
 #   False (when the file is a .lua file)
@@ -47,14 +54,19 @@ _on_luatag = False
 
 # ---------
 
-# pending additional infos for translators (# po: addedinfo)
-_pending_addedinfo = None
-# pending override wmlinfo for translators (# po-override: overrideinfo)
-_pending_overrideinfo = None
+# pending additional infos for translators collected from # po
+# or # po-override comments.
+_pending_cinfo = {
+    # pending additional infos for translators (# po: addedinfo)
+    "po": None,
+    # pending override wmlinfo for translators (# po-override: overrideinfo)
+    "po-override": None,
+}
+
 # type of pending wmlinfo:
 # it can be None or it can have an actual value.
 # Possible actual values are: 'speaker', 'id', 'role', 'description',
-#                             'condition', 'type', or 'race'
+#                             'condition', 'type', 'race' or 'gender'
 _pending_winfotype = None
 
 # ----------
@@ -84,19 +96,36 @@ _linenosub = 0
 # --------------------------------------------------------------------
 
 
+def clear_pending_infos(lineno, error=False):
+    global _pending_cinfo
+    for key in _pending_cinfo:
+        if error and _pending_cinfo[key] is not None:
+            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
+                "#%s directive(s) not applied: %s" % (key, _pending_cinfo[key]))
+        _pending_cinfo[key] = None
 
-def checkdomain():
+
+
+def after_pending_info(lineno, error):
+    clear_pending_infos(lineno, error=error)
+
+
+
+def checkdomain(lineno):
     global _currentdomain
-    global _domain
-    global _pending_addedinfo
-    global _pending_overrideinfo
-    if _currentdomain == _domain:
+    global _domains
+    if _currentdomain in _domains:
         return True
     else:
-        _pending_addedinfo = None
-        _pending_overrideinfo = None
+        clear_pending_infos(lineno, error=True)
         return False
 
+
+def switchdomain(lineno, domain):
+    global _currentdomain
+    if _currentdomain != domain:
+        clear_pending_infos(lineno, error=True)
+        _currentdomain = domain
 
 
 def checksentence(mystring, finfo, *, islua=False):
@@ -116,7 +145,8 @@ def checksentence(mystring, finfo, *, islua=False):
         return 0
 
 
-
+# When handling a PendingLuaString, if the string has a plural version then
+# this class is used for the PendingLuaString.plural object.
 class PendingPlural:
     def __init__(self):
         self.string = ''
@@ -127,14 +157,21 @@ class PendingPlural:
         #                         close parenthesis
         #    'wait_close'     --> expect close parenthesis
         self.status = 'wait_string'
+        # pluraltype values, used for both single-line and multiline strings
+        #    0: initial value, should have been changed if a string was found
+        #    1: delimited by double-quotes
+        #    2: delimited by single-quotes
+        #    3: delimited by long brackets, self.numequals is the level of brackets
         self.pluraltype = 0
         self.numequals = 0
         self.ismultiline = False
 
     def addline(self, value, isfirstline=False):
-        if self.pluraltype != 3:
-            value = re.sub('\\\s*$', '', value)
-        else:
+        if self.pluraltype == 3 and isfirstline and value == "":
+            # This should be handled by not adding (self.string + '\n') on the next call,
+            # but someone can implement that if they start using long-bracket strings.
+            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+        if self.pluraltype == 3:
             value = value.replace('\\', r'\\')
         if isfirstline:
             self.string = value
@@ -173,9 +210,11 @@ class PendingLuaString:
         self.plural = plural
 
     def addline(self, value, isfirstline=False):
-        if self.luatype != 'luastr3':
-            value = re.sub('\\\s*$', '', value)
-        else:
+        if self.luatype == 'luastr3' and isfirstline and value == "":
+            # This should be handled by not adding (self.string + '\n') on the next call,
+            # but someone can implement that if they start using long-bracket strings.
+            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+        if self.luatype == 'luastr3':
             value = value.replace('\\', r'\\')
         if isfirstline:
             self.luastring = value
@@ -191,10 +230,11 @@ class PendingLuaString:
             return self.plural.convert()
 
     def store(self):
-        global _pending_addedinfo
-        global _pending_overrideinfo
+        global _pending_cinfo
         global _linenosub
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             _linenosub += 1
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             fileno = pywmlx.nodemanip.fileno
@@ -211,20 +251,23 @@ class PendingLuaString:
                     self.luastring = self.luastring.replace('"', r'\"')
                 loc_wmlinfos = []
                 loc_addedinfos = None
-                if _pending_overrideinfo is not None:
-                    loc_wmlinfos.append(_pending_overrideinfo)
+                if _pending_cinfo["po-override"] is not None:
+                    loc_wmlinfos.append(_pending_cinfo["po-override"])
                 if (_pending_luafuncname is not None and
-                        _pending_overrideinfo is None):
+                        _pending_cinfo["po-override"] is None):
                     winf = '[lua]: ' + _pending_luafuncname
                     loc_wmlinfos.append(winf)
-                if _pending_addedinfo is None:
+                if _pending_cinfo["po"] is None:
                     loc_addedinfos = []
-                if _pending_addedinfo is not None:
-                    loc_addedinfos = _pending_addedinfo
-                loc_posentence = _dictionary.get(self.luastring)
+                if _pending_cinfo["po"] is not None:
+                    loc_addedinfos = _pending_cinfo["po"]
+                if not _currentdomain in _dictionary:
+                    _dictionary[_currentdomain] = dict()
+                loc_posentence = _dictionary[_currentdomain].get(self.luastring)
                 if loc_posentence is None:
-                    _dictionary[self.luastring] = PoCommentedString(
+                    _dictionary[_currentdomain][self.luastring] = PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -234,16 +277,17 @@ class PendingLuaString:
                     loc_posentence.update_with_commented_string(
                            PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
                                 addedinfos=loc_addedinfos,
                                 plural=self.storePlural()
                     ) )
-        # finally PendingLuaString.store() will clear pendinginfos,
+
+        # finally PendingLuaString.store() will clear pendinginfos
         # in any case (even if the pending string is not translatable)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+        after_pending_info(self.lineno, not self.istranslatable)
 
 
 
@@ -260,16 +304,17 @@ class PendingWmlString:
         self.wmlstring = self.wmlstring + '\n' + value.replace('\\', r'\\')
 
     def store(self):
-        global _pending_addedinfo
-        global _pending_overrideinfo
         global _linenosub
+        global _pending_cinfo
         global _pending_winfotype
         if _pending_winfotype is not None:
             if self.ismultiline is False and self.istranslatable is False:
                 winf = _pending_winfotype + '=' + self.wmlstring
                 pywmlx.nodemanip.addWmlInfo(winf)
             _pending_winfotype = None
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             errcode = checksentence(self.wmlstring, finfo, islua=False)
             if errcode != 1:
@@ -282,13 +327,13 @@ class PendingWmlString:
                 else:
                     self.wmlstring = re.sub('""', r'\"', self.wmlstring)
                 pywmlx.nodemanip.addNodeSentence(self.wmlstring,
+                                             domain=_currentdomain,
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,
                                              lineno_sub=_linenosub,
-                                             override=_pending_overrideinfo,
-                                             addition=_pending_addedinfo)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+                                             override=_pending_cinfo["po-override"],
+                                             addition=_pending_cinfo["po"])
+        after_pending_info(self.lineno, not self.istranslatable)
 
 
 
@@ -300,16 +345,17 @@ def addstate(name, value):
 
 
 
-def setup(dictionary, initialdomain, domain, wall, fdebug):
+def setup(dictionary, initialdomain, domains, wall, fdebug):
     global _dictionary
     global _initialdomain
-    global _domain
+    global _domains
     global _warnall
     global _debugmode
     global _fdebug
     _dictionary = dictionary
     _initialdomain = initialdomain
-    _domain = domain
+    if domains is not None:
+        _domains = set(domains)
     _warnall = wall
     _fdebug = fdebug
     if fdebug is None:

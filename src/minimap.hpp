@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,27 +15,20 @@
 
 #pragma once
 
-#include <cstddef>
+#include <functional>
 #include <map>
 
 class gamemap;
-class surface;
 class team;
 class unit_map;
 struct map_location;
+struct rect;
 
 namespace image {
-	/**
-	 * function to create the minimap for a given map
-	 * the surface returned must be freed by the user
-	 */
-	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr, bool ignore_terrain_disabled = false);
-
 /**
- * Renders the minimap to the screen.
+ * Prepares the minimap texture and returns a function which will render it to the current rendering target when invoked.
  */
-void render_minimap(unsigned dst_w,
-	unsigned dst_h,
+std::function<rect(rect)> prep_minimap_for_rendering(
 	const gamemap& map,
 	const team* vw = nullptr,
 	const unit_map* units = nullptr,

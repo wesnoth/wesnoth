@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,15 +16,10 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
-#include "gettext.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
-#include "map/exception.hpp"
-#include "map/map.hpp"
 #include "mp_ui_alerts.hpp"
-#include "preferences/game.hpp"
-#include "wesnothd_connection.hpp"
 
-#include <iterator>
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -126,13 +121,68 @@ void lobby_info::process_gamelist(const config& data)
 
 	games_by_id_.clear();
 
-	for(const auto& c : gamelist_.child("gamelist").child_range("game")) {
+	int queued_id = 0;
+	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+		config qgame;
+		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
+		int human_sides = 0;
+		for(const auto& side : scenario.child_range("side")) {
+			if(side["controller"].str() == "human") {
+				human_sides++;
+			}
+		}
+		if(human_sides == 0) {
+			ERR_LB << "No human sides for scenario " << game["scenario"];
+			continue;
+		}
+		// negative id means a queue-defined game
+		queued_id--;
+		qgame["id"] = queued_id;
+		// all are set as auto_hosted so they show up in that tab of the MP lobby
+		qgame["auto_hosted"] = true;
+
+		qgame["name"] = scenario["name"];
+		qgame["mp_scenario"] = game["scenario"];
+		qgame["mp_era"] = game["era"];
+		qgame["mp_use_map_settings"] = game["use_map_settings"];
+		qgame["mp_fog"] = game["fog"];
+		qgame["mp_shroud"] = game["shroud"];
+		qgame["mp_village_gold"] = game["village_gold"];
+		qgame["experience_modifier"] = game["experience_modifier"];
+
+		qgame["mp_countdown"] = game["countdown"];
+		if(qgame["countdown"].to_bool()) {
+			qgame["mp_countdown_reservoir_time"] = game["countdown_reservoir_time"];
+			qgame["mp_countdown_init_time"] = game["countdown_init_time"];
+			qgame["mp_countdown_action_bonus"] = game["countdown_action_bonus"];
+			qgame["mp_countdown_turn_bonus"] = game["countdown_turn_bonus"];
+		}
+
+		qgame["observer"] = game["observer"];
+		qgame["human_sides"] = human_sides;
+
+		if(scenario.has_attribute("map_data")) {
+			qgame["map_data"] = scenario["map_data"];
+		} else {
+			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
+		}
+		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["scenario"].str()];
+
+		config& qchild = qgame.add_child("slot_data");
+		qchild["vacant"] = human_sides;
+		qchild["max"] = human_sides;
+
+		game_info g(qgame, installed_addons_);
+		games_by_id_.emplace(g.id, std::move(g));
+	}
+
+	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		game_info game(c, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
 
 	DBG_LB << dump_games_map(games_by_id_);
-	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	process_userlist();
 }
@@ -155,7 +205,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "prediff " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	try {
 		gamelist_.apply_diff(data, true);
@@ -164,13 +214,13 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "postdiff " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 	DBG_LB << dump_games_map(games_by_id_);
 
-	for(config& c : gamelist_.child("gamelist").child_range("game")) {
+	for(config& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")";
 
-		const int game_id = c["id"];
+		const int game_id = c["id"].to_int();
 		if(game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config";
 			return false;
@@ -219,7 +269,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "postclean " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	process_userlist();
 	return true;

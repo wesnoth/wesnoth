@@ -9,6 +9,8 @@
 
 EnsureSConsVersion(0,98,3)
 
+lua_ver = "5.4"
+
 import os, sys, shutil, re, subprocess
 from glob import glob
 from subprocess import Popen, PIPE, call, check_output
@@ -57,7 +59,8 @@ opts.AddVariables(
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('harden', 'Whether to enable options to harden the executables', True),
-    BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
+    BoolVariable('glibcxx_assertions', 'Whether to define _GLIBCXX_ASSERTIONS for build=debug', False),
+    BoolVariable('glibcxx_debug', "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug. Requires a version of Boost's program_options that's compiled with __GLIBCXX_DEBUG too.", False),
     EnumVariable('profiler', 'profiler to be used', "", ["", "gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
     BoolVariable('use_srcdir', 'Whether to place object files in src/ or not', False),
@@ -67,6 +70,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
+    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml", PathVariable.PathAccept),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
@@ -100,6 +104,7 @@ opts.AddVariables(
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathVariable('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath),
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
+    BoolVariable('system_lua', 'Enable use of system Lua ' + lua_ver + ' (compiled as C++, only for non-Windows systems).', False),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
     EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
@@ -116,6 +121,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('compile_db', 'Produce a compile_commands.json file.', False),
     )
 
 #
@@ -185,7 +191,12 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = "1.66"
+if env['compile_db']:
+    env.Tool('compilation_db')
+    cdb = env.CompilationDatabase()
+    Alias('cdb', cdb)
+
+boost_version = "1.70"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -201,9 +212,7 @@ Important switches include:
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant
-                    binaries will be copied with -debug suffix
     build=profile   build with instrumentation for a supported profiler
-                    binaries will be copied with -profile suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -224,6 +233,7 @@ You can make the following special build targets:
     update-po = merge message catalog templates with localized message catalogs for particular lingua
     update-po4a = update translations of manual and manpages
     af bg ca ... = linguas for update-po
+    translations = build all translations
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
@@ -313,7 +323,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -330,6 +340,15 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 if "gcc" in env["TOOLS"]:
     env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
     env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
+
+    # GCC-13 added this new warning, and included it in -Wextra,
+    # however in GCC-13 it has a lot of false positives.
+    #
+    # It's likely to generate false postives with GCC-14 too, but
+    # I'm using a narrow version check as GCC-14 is still in dev.
+    # See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+    if "CXXVERSION" in env and env["CXXVERSION"].startswith("13."):
+      env.AppendUnique(CXXFLAGS = "-Wno-dangling-reference")
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
@@ -352,7 +371,7 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2('2.0.18') & \
             conf.CheckSDL2Mixer() & \
             conf.CheckSDL2Image()
 
@@ -360,13 +379,14 @@ if env["prereqs"]:
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "7") & \
+        conf.CheckCPlusPlus(gcc_version = "8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
@@ -397,12 +417,20 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.44.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+    have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
 
-    if not File("#/src/modules/lua/.git").rfile().exists():
-        have_client_prereqs = False
-        Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+    if env["system_lua"]:
+        if env["PLATFORM"] == 'win32':
+            Warning("System Lua cannot be used on Windows.")
+        if not conf.CheckLua(lua_ver):
+            have_client_prereqs = False
     else:
-        print("Lua submodule found.")
+        if not File("#/src/modules/lua/.git").rfile().exists():
+            have_client_prereqs = False
+            Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+        else:
+            print("Lua submodule found.")
 
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
@@ -481,6 +509,8 @@ for env in [test_env, client_env, env]:
     if os.path.isabs(env["build_dir"]):
         build_root = ""
     env.Prepend(CPPPATH = [build_root + "$build_dir", "#/src"])
+    if env["system_lua"]:
+        env.Append(CPPDEFINES = ["HAVE_SYSTEM_LUA"])
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
@@ -552,10 +582,11 @@ for env in [test_env, client_env, env]:
             debug_flags = Split(debug_flags)
             debug_flags.append("${ '-O3' if TARGET.name == 'gettext.o' else '' }") # workaround for "File too big" errors
 
+        glibcxx_debug_flags = ""
+        if env["glibcxx_assertions"] == True:
+            glibcxx_debug_flags = " ".join([glibcxx_debug_flags, "_GLIBCXX_ASSERTIONS"])
         if env["glibcxx_debug"] == True:
-            glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
-        else:
-            glibcxx_debug_flags = ""
+            glibcxx_debug_flags = " ".join([glibcxx_debug_flags, "_GLIBCXX_DEBUG", "_GLIBCXX_DEBUG_PEDANTIC"])
 
 # #
 # End determining options for debug build
@@ -608,7 +639,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags += " -flto=" + str(env["jobs"])
-                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_link_flags += rel_comp_flags + " -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
@@ -642,7 +673,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0A00"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
@@ -685,9 +716,6 @@ if env["use_srcdir"] == True:
 else:
     build_dir = os.path.join("$build_dir", build)
 
-if build == "release" : build_suffix = ""
-else                  : build_suffix = "-" + build
-Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = [eval(binary) for binary in binaries]
@@ -716,7 +744,7 @@ env.Clean(all, 'TAGS')
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
-# directory structure and FreeDesktop standard locations foicon, app,
+# directory structure and FreeDesktop standard locations for icon, app,
 # and doc files.
 #
 
@@ -763,7 +791,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", env["appdata_filepath"])
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])
@@ -783,7 +811,8 @@ if not access(fifodir, F_OK):
     env.Alias("install-wesnothd", fifodir)
 if env["systemd"]:
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
-    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.tmpfiles.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.sysusers.conf", "lib/sysusers.d")
 
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
@@ -792,7 +821,7 @@ env.InstallBinary(campaignd)
 install = env.Alias('install', [])
 for installable in ('wesnoth',
                     'wesnothd', 'campaignd'):
-    if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
+    if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 
 #

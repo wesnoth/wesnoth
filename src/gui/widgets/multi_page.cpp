@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,13 +17,12 @@
 
 #include "gui/widgets/multi_page.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -37,8 +36,23 @@ REGISTER_WIDGET(multi_page)
 multi_page::multi_page(const implementation::builder_multi_page& builder)
 	: container_base(builder, type())
 	, generator_(nullptr)
-	, page_builders_()
+	, page_builders_(builder.builders)
 {
+	const auto conf = cast_config_to<multi_page_definition>();
+	assert(conf);
+
+	init_grid(*conf->grid);
+
+	auto generator = generator_base::build(true, true, generator_base::independent, false);
+
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	generator->create_items(-1, *page_builders_.begin()->second, builder.data, nullptr);
+
+	// TODO: can we use the replacements system here?
+	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 }
 
 grid& multi_page::add_page(const widget_item& item)
@@ -81,8 +95,8 @@ void multi_page::remove_page(const unsigned page, unsigned count)
 		return;
 	}
 
-	if(!count || count > get_page_count()) {
-		count = get_page_count();
+	if(!count || (page + count) > get_page_count()) {
+		count = get_page_count() - page;
 	}
 
 	for(; count; --count) {
@@ -139,19 +153,10 @@ unsigned multi_page::get_state() const
 	return 0;
 }
 
-void multi_page::finalize(std::unique_ptr<generator_base> generator, const std::vector<widget_item>& page_data)
-{
-	// Save our *non-owning* pointer before this gets moved into the grid.
-	generator_ = generator.get();
-	assert(generator_);
-
-	generator->create_items(-1, *page_builders_.begin()->second, page_data, nullptr);
-	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
-}
-
-void multi_page::impl_draw_background()
+bool multi_page::impl_draw_background()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 void multi_page::set_self_active(const bool /*active*/)
@@ -172,10 +177,10 @@ multi_page_definition::multi_page_definition(const config& cfg)
 multi_page_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -195,49 +200,36 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	VALIDATE(!builders.empty(), _("No page defined."));
 
 	/** @todo This part is untested. */
-	const config& d = cfg.child("page_data");
+	auto d = cfg.optional_child("page_data");
 	if(!d) {
 		return;
 	}
 
 	auto builder = builders.begin()->second;
-	for(const auto & row : d.child_range("row"))
+	for(const auto & row : d->child_range("row"))
 	{
 		unsigned col = 0;
 
 		for(const auto & column : row.child_range("column"))
 		{
 			data.emplace_back();
-			for(const auto & i : column.attribute_range())
+			for(const auto& [key, value] : column.attribute_range())
 			{
-				data.back()[i.first] = i.second;
+				data.back()[key] = value;
 			}
 			++col;
 		}
 
 		VALIDATE(col == builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+				 _("‘list_data’ must have "
+				   "the same number of columns as the ‘list_definition’."));
 	}
 }
 
 std::unique_ptr<widget> builder_multi_page::build() const
 {
 	auto widget = std::make_unique<multi_page>(*this);
-
-	widget->set_page_builders(builders);
-
-	DBG_GUI_G << "Window builder: placed multi_page '" << id
-			  << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<multi_page_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(true, true, generator_base::independent, false);
-	widget->finalize(std::move(generator), data);
-
+	DBG_GUI_G << "Window builder: placed multi_page '" << id << "' with definition '" << definition << "'.";
 	return widget;
 }
 

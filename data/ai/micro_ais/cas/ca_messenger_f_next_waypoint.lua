@@ -10,7 +10,7 @@ return function(cfg)
     -- Returns nil for all arguments if there are no messengers on the map
 
     local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
-    local messengers = wesnoth.units.find_on_map { side = wesnoth.current.side, { "and", filter } }
+    local messengers = wesnoth.units.find_on_map { side = wesnoth.current.side, wml.tag["and"] ( filter ) }
     if (not messengers[1]) then return end
 
     local waypoints = AH.get_multi_named_locs_xy('waypoint', cfg)

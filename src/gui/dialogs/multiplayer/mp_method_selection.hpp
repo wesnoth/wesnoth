@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,15 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to select the kind of MP game the user wants to play.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * user_name         | text_box     |yes      |This text contains the name the user on the MP server. This widget will get a fixed maximum length by the engine.
- * method_list       | @ref listbox |yes      |The list with possible game methods.
- */
 class mp_method_selection : public modal_dialog
 {
 public:
@@ -36,32 +27,18 @@ public:
 	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
 
 	mp_method_selection()
-		: modal_dialog(window_id()) , user_name_(), choice_()
+		: modal_dialog(window_id())
 	{
 	}
 
-	const std::string& user_name() const
-	{
-		return user_name_;
-	}
-
-	choice get_choice() const
-	{
-		return choice_;
-	}
+	choice get_choice() const;
 
 private:
-	/** The name to use on the MP server. */
-	std::string user_name_;
-
-	/** The selected method to `connect' to the MP server. */
-	choice choice_;
-
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace dialogs

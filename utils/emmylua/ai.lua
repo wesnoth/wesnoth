@@ -85,81 +85,104 @@ function ai.suitable_keep(unit) end
 ---@field result string
 
 ---Attack a unit
----@param attacker unit
----@param defender unit
+---@param attacker location
+---@param defender location
 ---@param weapon? integer
 ---@param aggression? number
 ---@return ai_result
+---@overload fun(attacker:location, defender_x:integer, defender_y:integer, weapon?:integer, aggression?:number):ai_result
+---@overload fun(attacker_x:integer, attacker_y:integer, defender:location, weapon?:integer, aggression?:number):ai_result
+---@overload fun(attacker_x:integer, attacker_y:integer, defender_x:integer, defender_y:integer, weapon?:integer, aggression?:number):ai_result
 function ai.attack(attacker, defender, weapon, aggression) end
 
 ---Check if attacking a unit is possible
----@param attacker unit
----@param defender unit
+---@param attacker location
+---@param defender location
 ---@param weapon? integer
 ---@param aggression? number
 ---@return ai_result
+---@overload fun(attacker:location, defender_x:integer, defender_y:integer, weapon?:integer, aggression?:number):ai_result
+---@overload fun(attacker_x:integer, attacker_y:integer, defender:location, weapon?:integer, aggression?:number):ai_result
+---@overload fun(attacker_x:integer, attacker_y:integer, defender_x:integer, defender_y:integer, weapon?:integer, aggression?:number):ai_result
 function ai.check_attack(attacker, defender, weapon, aggression) end
 
 ---Move a unit
----@param unit unit
+---@param unit location
 ---@param to location
 ---@return ai_result
+---@overload fun(unit:unit, to_x:integer, to_y:integer):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to:location):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to_x:integer, to_y:integer):ai_result
 function ai.move(unit, to) end
 
 ---Move a unit and set its remaining moves to 0
 ---@param unit unit
 ---@param to location
 ---@return ai_result
+---@overload fun(unit:unit, to_x:integer, to_y:integer):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to:location):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to_x:integer, to_y:integer):ai_result
 function ai.move_full(unit, to) end
 
 ---Check if moving a unit is possible
 ---@param unit unit
 ---@param to location
 ---@return ai_result
+---@overload fun(unit:unit, to_x:integer, to_y:integer):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to:location):ai_result
+---@overload fun(unit_x:integer, unit_y:integer, to_x:integer, to_y:integer):ai_result
 function ai.check_move(unit, to) end
 
 ---Recall a unit
 ---@param unit_id string
 ---@param at? location
 ---@return ai_result
+---@overload fun(unit_id:string, x:integer, y:integer):ai_result
 function ai.recall(unit_id, at) end
 
 ---Check if recalling a unit is possible
 ---@param unit_id string
 ---@param at? location
 ---@return ai_result
+---@overload fun(unit_id:string, x:integer, y:integer):ai_result
 function ai.check_recall(unit_id, at) end
 
 ---Recruit a unit
 ---@param unit_type string
 ---@param at? location
 ---@return ai_result
+---@overload fun(unit_type:string, x:integer, y:integer):ai_result
 function ai.recruit(unit_type, at) end
 
 ---Check if recruiting a unit is possible
 ---@param unit_type string
 ---@param at? location
 ---@return ai_result
+---@overload fun(unit_type:string, x:integer, y:integer):ai_result
 function ai.check_recruit(unit_type, at) end
 
 ---Set a unit's attacks left to 0
----@param unit unit
+---@param unit location
 ---@return ai_result
+---@overload fun(unit_x:integer, unit_y:integer):ai_result
 function ai.stopunit_attacks(unit) end
 
 ---Set a unit's remaining moves to 0
----@param unit unit
+---@param unit location
 ---@return ai_result
+---@overload fun(unit_x:integer, unit_y:integer):ai_result
 function ai.stopunit_moves(unit) end
 
 ---Set a unit's remaining moves and attacks left to 0
----@param unit unit
+---@param unit location
 ---@return ai_result
+---@overload fun(unit_x:integer, unit_y:integer):ai_result
 function ai.stopunit_all(unit) end
 
 ---Check if setting a units remaining moves and/or attacks left to 0 is possible
----@param unit unit
+---@param unit location
 ---@return ai_result
+---@overload fun(unit_x:integer, unit_y:integer):ai_result
 function ai.check_stopunit(unit) end
 
 ---Give control to a human player for the rest of the turn

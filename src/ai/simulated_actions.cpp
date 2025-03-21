@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Guorui Xi <kevin.xgr@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -192,12 +192,12 @@ void helper_check_village(const map_location& loc, int side){
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i){
-		int i_side = std::distance(teams.begin(), i) + 1;
+	for(team& tm : teams) {
+		int i_side = tm.side();
 		if(!t || has_leader || t->is_enemy(i_side)){
-			if(i->owns_village(loc)){
+			if(tm.owns_village(loc)){
 				old_owner_side = i_side;
-				i->lose_village(loc);
+				tm.lose_village(loc);
 				DBG_AI_SIM_ACTIONS << "side " << i_side << " losts village at " << loc;
 			}
 		}
@@ -250,7 +250,7 @@ void helper_advance_unit(const map_location& loc){
 		const unit_type *advanced_type = unit_types.find(advance_unit_typename);
 		if(!advanced_type) {
 			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;
-			assert(false && "simulating to unknown unit type");
+			return;
 		}
 		advanced_unit->set_experience(advanced_unit->experience_overflow());
 		advanced_unit->advance_to(*advanced_type);

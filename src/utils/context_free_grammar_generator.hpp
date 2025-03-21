@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Ján Dugáček
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "utils/name_generator.hpp"
 
-#include <list>
 #include <vector>
 #include <cstdint>
 

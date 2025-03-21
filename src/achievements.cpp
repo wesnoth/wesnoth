@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,14 +16,85 @@
 #include "achievements.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
+
+sub_achievement::sub_achievement(const config& cfg, bool achieved)
+		: id_(cfg["id"].str())
+		, description_(cfg["description"].t_str())
+		, icon_(cfg["icon"].str()+"~GS()")
+		, icon_completed_(cfg["icon"].str())
+		, achieved_(achieved)
+{}
+
+achievement::achievement(const config& cfg, const std::string& content_for, bool achieved, int progress)
+		: id_(cfg["id"].str())
+		, name_(cfg["name"].t_str())
+		, name_completed_(cfg["name_completed"].t_str())
+		, description_(cfg["description"].t_str())
+		, description_completed_(cfg["description_completed"].t_str())
+		, icon_(cfg["icon"].str()+"~GS()")
+		, icon_completed_(cfg["icon_completed"].str())
+		, hidden_(cfg["hidden"].to_bool())
+		, achieved_(achieved)
+		, max_progress_(cfg["max_progress"].to_int(0))
+		, current_progress_(progress)
+		, sound_path_(cfg["sound"].str())
+		, sub_achievements_()
+{
+	if(name_completed_.empty()) {
+		name_completed_ = name_;
+	}
+	if(description_completed_.empty()) {
+		description_completed_ = description_;
+	}
+	if(icon_completed_.empty()) {
+		// avoid the ~GS() appended to icon_
+		icon_completed_ = cfg["icon"].str();
+	}
+
+	for(const config& sub_ach : cfg.child_range("sub_achievement"))
+	{
+		std::string sub_id = sub_ach["id"].str();
+
+		if(sub_id.empty()) {
+			ERR_CONFIG << "Achievement " << id_ << " has a sub-achievement missing the id attribute:\n" << sub_ach.debug();
+		} else {
+			sub_achievements_.emplace_back(sub_ach, achieved_ || prefs::get().sub_achievement(content_for, id_, sub_id));
+			max_progress_++;
+		}
+	}
+}
+
+achievement_group::achievement_group(const config& cfg)
+	: display_name_(cfg["display_name"].t_str())
+	, content_for_(cfg["content_for"].str())
+	, achievements_()
+{
+	for(const config& ach : cfg.child_range("achievement")) {
+		std::string id = ach["id"].str();
+
+		if(id.empty()) {
+			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
+		} else if(id.find(',') != std::string::npos) {
+			ERR_CONFIG << content_for_ + " achievement id " << id << " contains a comma, skipping.";
+			continue;
+		} else {
+			achievements_.emplace_back(ach, content_for_, prefs::get().achievement(content_for_, id), prefs::get().progress_achievement(content_for_, id));
+		}
+	}
+}
+
+achievements::achievements()
+	: achievement_list_()
+{
+	reload();
+}
 
 /**
  * Reads the mainline achievements.cfg and then all the achievements of each installed add-on.
@@ -34,9 +105,9 @@ static lg::log_domain log_config("config");
  *
  * NOTE: These are *not* in any way related to Steam achievements!
  */
-achievements::achievements()
-	: achievement_list_()
+void achievements::reload()
 {
+	achievement_list_.clear();
 	// mainline
 	try {
 		config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");
@@ -88,21 +159,5 @@ void achievements::process_achievements_file(const config& cfg, const std::strin
 			continue;
 		}
 		achievement_list_.emplace_back(achgrp);
-	}
-}
-
-achievement_group::achievement_group(const config& cfg)
-	: display_name_(cfg["display_name"].t_str())
-	, content_for_(cfg["content_for"].str())
-	, achievements_()
-{
-	for(const config& ach : cfg.child_range("achievement")) {
-		std::string id = ach["id"].str();
-
-		if(id.empty()) {
-			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
-		} else {
-			achievements_.emplace_back(ach, preferences::achievement(content_for_, id));
-		}
 	}
 }

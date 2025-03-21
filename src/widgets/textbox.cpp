@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -322,7 +322,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 			visible_string = "";
 		}
 
-		int w = font::pango_line_width(visible_string, font_size_);
+		auto [w, _] = font::pango_line_size(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
@@ -553,7 +553,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				if(is_selection())
 					erase_selection();
 
-				std::string str = desktop::clipboard::copy_from_clipboard(false);
+				std::string str = desktop::clipboard::copy_from_clipboard();
 
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
@@ -581,7 +581,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
-					desktop::clipboard::copy_to_clipboard(s, false);
+					desktop::clipboard::copy_to_clipboard(s);
 				}
 			}
 			break;
@@ -595,7 +595,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
-					desktop::clipboard::copy_to_clipboard(s, false);
+					desktop::clipboard::copy_to_clipboard(s);
 					erase_selection();
 				}
 				break;

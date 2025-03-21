@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,14 +19,13 @@
 
 #include <set>
 #include <sstream>
-#include <iterator>
+#include <utility>
 
 #include "whiteboard/side_actions.hpp"
 
 #include "whiteboard/action.hpp"
 #include "whiteboard/attack.hpp"
 #include "whiteboard/manager.hpp"
-#include "whiteboard/mapbuilder.hpp"
 #include "whiteboard/move.hpp"
 #include "whiteboard/recall.hpp"
 #include "whiteboard/recruit.hpp"
@@ -34,12 +33,10 @@
 #include "whiteboard/highlighter.hpp"
 #include "whiteboard/utility.hpp"
 
-#include "actions/create.hpp"
 #include "actions/undo.hpp"
 #include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
@@ -124,7 +121,7 @@ side_actions_container::const_iterator side_actions_container::turn_begin(std::s
 	}
 }
 
-side_actions_container::iterator side_actions_container::push_front(std::size_t turn, action_ptr action){
+side_actions_container::iterator side_actions_container::push_front(std::size_t turn, const action_ptr& action){
 	if(turn_size(turn) == 0) {
 		return queue(turn, action);
 	}
@@ -141,7 +138,7 @@ side_actions_container::iterator side_actions_container::push_front(std::size_t 
 	return res;
 }
 
-side_actions_container::iterator side_actions_container::insert(iterator position, action_ptr action)
+side_actions_container::iterator side_actions_container::insert(iterator position, const action_ptr& action)
 {
 	assert(position <= end());
 
@@ -158,7 +155,7 @@ side_actions_container::iterator side_actions_container::insert(iterator positio
 	return res.first;
 }
 
-side_actions_container::iterator side_actions_container::queue(std::size_t turn_num, action_ptr action)
+side_actions_container::iterator side_actions_container::queue(std::size_t turn_num, const action_ptr& action)
 {
 	// Are we inserting an action in the future while the current turn is empty?
 	// That is, are we in the sole case where an empty turn can be followed by a non-empty one.
@@ -412,7 +409,7 @@ void side_actions::show()
 	}
 }
 
-side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
+side_actions::iterator side_actions::insert_action(iterator position, const action_ptr& action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
@@ -424,7 +421,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	return valid_position;
 }
 
-side_actions::iterator side_actions::queue_action(std::size_t turn_num, action_ptr action)
+side_actions::iterator side_actions::queue_action(std::size_t turn_num, const action_ptr& action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
@@ -443,7 +440,7 @@ namespace
 	struct swapable_with_move: public visitor
 	{
 	public:
-		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(second) {}
+		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(std::move(second)) {}
 		bool valid() const { return valid_; }
 
 		void visit(move_ptr first) {
@@ -705,7 +702,7 @@ void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
 	}
 }
 
-side_actions::iterator side_actions::safe_insert(std::size_t turn, std::size_t pos, action_ptr act)
+side_actions::iterator side_actions::safe_insert(std::size_t turn, std::size_t pos, const action_ptr& act)
 {
 	assert(act);
 	if(pos == 0) {
@@ -721,13 +718,13 @@ side_actions::iterator side_actions::synced_erase(iterator itor)
 	return safe_erase(itor);
 }
 
-side_actions::iterator side_actions::synced_insert(iterator itor, action_ptr act)
+side_actions::iterator side_actions::synced_insert(iterator itor, const action_ptr& act)
 {
 	resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_insert(itor, act));
 	return actions_.insert(itor, act);
 }
 
-side_actions::iterator side_actions::synced_enqueue(std::size_t turn_num, action_ptr act)
+side_actions::iterator side_actions::synced_enqueue(std::size_t turn_num, const action_ptr& act)
 {
 	//raw_enqueue() creates actions_[turn_num] if it doesn't exist already, so we
 	//have to do it first -- before subsequently calling actions_[turn_num].size().
@@ -747,15 +744,15 @@ side_actions::iterator side_actions::safe_erase(const iterator& itor)
 	resources::whiteboard->post_delete_action(action);
 	return return_itor;
 }
-side_actions::iterator side_actions::queue_move(std::size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(std::size_t turn, const unit& mover, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, std::move(fake_unit)));
+	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, mover, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_move);
 }
 
-side_actions::iterator side_actions::queue_attack(std::size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_attack(std::size_t turn, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
+	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_attack);
 }
 
@@ -771,9 +768,9 @@ side_actions::iterator side_actions::queue_recall(std::size_t turn, const unit& 
 	return queue_action(turn, new_recall);
 }
 
-side_actions::iterator side_actions::queue_suppose_dead(std::size_t turn, unit& curr_unit, const map_location& loc)
+side_actions::iterator side_actions::queue_suppose_dead(std::size_t turn, const unit& curr_unit, const map_location& loc)
 {
-	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
+	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, curr_unit, loc));
 	return queue_action(turn, new_suppose_dead);
 }
 
@@ -784,7 +781,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 	if(type=="insert") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.child("action"), hidden_);
+		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
@@ -806,7 +803,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 	} else if(type=="replace") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.child("action"), hidden_);
+		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
@@ -877,7 +874,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 	resources::whiteboard->validate_viewer_actions();
 }
 
-side_actions::net_cmd side_actions::make_net_cmd_insert(std::size_t turn_num, std::size_t pos, action_const_ptr act) const
+side_actions::net_cmd side_actions::make_net_cmd_insert(std::size_t turn_num, std::size_t pos, const action_const_ptr& act) const
 {
 	net_cmd result;
 	result["type"] = "insert";
@@ -886,7 +883,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(std::size_t turn_num, st
 	result.add_child("action", act->to_config());
 	return result;
 }
-side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& pos, action_const_ptr act) const
+side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& pos, const action_const_ptr& act) const
 {
 	if(pos == begin()) {
 		return make_net_cmd_insert(0,0,act);
@@ -895,7 +892,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& po
 		return make_net_cmd_insert(get_turn(prec), actions_.position_in_turn(prec)+1, act);
 	}
 }
-side_actions::net_cmd side_actions::make_net_cmd_replace(const const_iterator& pos, action_const_ptr act) const
+side_actions::net_cmd side_actions::make_net_cmd_replace(const const_iterator& pos, const action_const_ptr& act) const
 {
 	net_cmd result;
 	result["type"] = "replace";

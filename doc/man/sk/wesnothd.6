@@ -1,0 +1,308 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "Démon na sieťovú hru Bitky o Wesnoth"
+.
+.SH NÁZOV
+.
+wesnothd \- Démon na sieťovú hru Bitky o \fBWesnoth\fP
+.
+.SH ZHRNUTIE
+.
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH POPIS
+.
+Spravuje hry pre viacerých hráčov Bitky o Wesnoth. Na stránke
+https://www.wesnoth.org/wiki/ServerAdministration nájdete informácie o tom,
+aké príkazy prijíma server prostredníctvom klienta wesnoth (/query ...)
+alebo fifo.
+.
+.SH MOŽNOSTI
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ cesta\fP
+povie wesnothd, kde má hľadať konfiguračný súbor. Syntax, viď sekciu
+\fBKONFIGURÁCIA SERVERA\fP nižšie. Konfiguráciu môžete znovunačítať poslaním
+SIGHUP serverovému procesu.
+.TP 
+\fB\-d, \-\-daemon\fP
+spustí wesnothd ako démona.
+.TP 
+\fB\-h, \-\-help\fP
+povie, čo robia jednotlivé možnosti príkazového riadku.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
+nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
+zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Štandardne sa používa úroveň \fBerror\fP a \fBinfo\fP pre doménu
+\fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+zavesí server na daný port. Ak nie je daný port, použije sa port \fB15000\fP.
+.TP 
+\fB\-V, \-\-version\fP
+vypíše číslo verzie a skončí.
+.TP 
+\fB\-v, \-\-verbose\fP
+zapne zaznamenávanie ladiacich informácií.
+.
+.SH "KONFIGURÁCIA SERVERA"
+.
+.SS "Všeobecná syntax je:"
+.
+.P
+[\fIznačka\fP]
+.IP
+\fIkľúč\fP="\fIhodnota\fP"
+.IP
+\fIkľúč\fP="\fIhodnota\fP,\fIhodnota\fP,..."
+.P
+[/\fIznačka\fP]
+.
+.SS "Globálne kľúče:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Ak je nastavené na \fBno\fP (predvolené), príkazy na vypnutie alebo
+reštartovanie servera budú ignorované ak neprichádzajú zo soketu
+(fifo). Nastavenie na \fByes\fP povolí vypnutie servera po sieti cez /query od
+administrátora.
+.TP 
+\fBban_save_file\fP
+Plná alebo relatívna cesta k súboru (komprimovanému gzipom), ktorý môže
+server čítať a zapisovať. Zákazy budú ukladané do tohto súboru a načítané
+pri štarte.
+.TP 
+\fBconnections_allowed\fP
+Počet povolených spojení z rovnakej IP adresy. \fB0\fP znamená
+nekonečno. (štandardne: \fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+Či sa má zabrániť prihláseniu používateľov, ktorí nie sú zaregistrovaní v
+používanom \fBuser_handler\fP. (predvolené: false)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server
+(rovnaké ako /query ... from wesnoth). Ak nie je uvedená, použije sa cesta
+zadaná pri kompilácii (predvolená: \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+ID servera pri použití funkcie databázy na ukladanie informácií o
+hre. Všeobecne je to major.minor verzia akceptovaných klientov, napríklad
+1.16 alebo 1.17.
+.TP 
+\fBmax_messages\fP
+Počet povolených správ počas \fBmessages_time_period\fP. (štandardne: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Časové obdobie (v sekundách), v ktorom sa meria zasypávanie
+správami. (štandardne: \fB10\fP sekúnd)
+.TP 
+\fBmotd\fP
+Správa dňa.
+.TP 
+\fBpasswd\fP
+Heslo používané na získanie administrátorských práv (pomocou \fB/query admin \fP\fIheslo\fP) .
+.TP 
+\fBreplay_save_path\fP
+Adresár kam server ukladá záznamy hier. (Nezabudnite na posledné /!)
+Predvolené je `', čo znamená adresár, v ktorom bol wesnothd spustený.
+.TP 
+\fBrestart_command\fP
+Príkaz, ktorý server použije na spustenie nového serverovského procesu po
+príkaze \fBrestart\fP. (Môže byť použité iba cez soket (fifo). Pozri tiež
+nastavenie \fBallow_remote_shutdown\fP.)
+.TP 
+\fBsave_replays\fP
+Určuje či bude server automaticky ukladať záznamy hier. (predvolené:
+\fBfalse\fP)
+.TP 
+\fBtls_enabled\fP
+Umožní používať TLS. Ak bude nastavený na hodnotu true, je treba nastaviť aj
+3 ďalšie prepínače uvedené hneď pod týmto.
+.TP 
+\fBtls_fullchain\fP
+Úplný reťazec certifikátov TLS vo formáte .pem
+.TP 
+\fBtls_private_key\fP
+privátny kľúč pre TLS v .pem formáte
+.TP 
+\fBtls_dh\fP
+Parametre TLS DH ako súbor .pem. Generujte pomocou \fBopenssl dhparam \-out filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
+zástupné znaky \fB*\fP and \fB?\fP. (štandardne je to zodpovedajúca verzia
+wesnothu)
+.br
+Napríklad: \fBversions_accepted="*"\fP prijme hocijakú verziu.
+.
+.SS "Globálne značky:"
+.
+.P
+\fB[redirect]\fP Značka na zadanie servera, na ktorý sa majú presmerovať určité
+verzie klientov. Nepoužíva sa, ak nie je nastavený parameter
+\fBversions_accepted\fP.
+.RS
+.TP 
+\fBhost\fP
+Adresa servera, kam sa presmerujú.
+.TP 
+\fBport\fP
+Port, na ktorý sa majú pripojiť.
+.TP 
+\fBversion\fP
+Čiarkami oddelený zoznam verzií, ktoré sa majú presmerovať. Podporuje
+zástupné znaky rovnako ako \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Značka na pohodlné definovanie kľúčových slov pre dĺžku
+dočasných zákazov.
+.RS
+.TP 
+\fBname\fP
+Názov použitý na pomenovanie času zákazu.
+.TP 
+\fBtime\fP
+Definícia dĺžky trvania.  Formát je: %d[%s[%d%s[...]]] kde %s sú s
+(sekundy), m (minúty), h (hodiny), D (dni), M (mesiace) alebo Y (roky) a %d
+je číslo.  Ak nie je zadaná jednotka času, použije sa minúta (m).  Príklad:
+\fBčas="1D12h30m"\fP znamená zákaz trvajúci 1 deň, 12 hodín a 30 minút.
+.RE
+.P
+\fB[proxy]\fP Značka, ktorá povie serveru, aby sa správal ako proxy a
+preposielal požiadavky pripojených klientov na daný server. Podporuje
+rovnaké kľúče ako \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Konfiguruje obsluhu používateľa. Ak v konfigurácii nie je
+prítomná žiadna sekcia \fB[user_handler]\fP, server bude bežať bez akejkoľvek
+služby registrácie nickom. Všetky ďalšie tabuľky, ktoré sú potrebné na
+fungovanie \fBforum_user_handler\fP, nájdete v súbore table_definitions.sql v
+úložisku zdrojov Wesnoth. Vyžaduje zapnutú podporu mysql. Pre cmake je to
+\fBENABLE_MYSQL\fP a pre scons je to \fBforum_user_handler.\fP
+.RS
+.TP 
+\fBdb_host\fP
+Hostname databázového servera
+.TP 
+\fBdb_name\fP
+Názov databázy
+.TP 
+\fBdb_user\fP
+Nickname na prihlásenie sa do databázy
+.TP 
+\fBdb_password\fP
+Heslo tohto používateľa
+.TP 
+\fBdb_users_table\fP
+Názov tabuľky, do ktorej vaše phpbb fórum ukladá údaje o používateľoch. S
+najväčšou pravdepodobnosťou to bude <table\-prefix>_users
+(napr. phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
+o užívateľoch.
+.TP 
+\fBdb_game_info_table\fP
+Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
+o hrách.
+.TP 
+\fBdb_game_player_info_table\fP
+Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
+o hráčoch v hre.
+.TP 
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
+.TP 
+\fBdb_user_group_table\fP
+Názov tabuľky, do ktorej vaše phpbb fórum ukladá údaje o skupinách
+používateľov. S najväčšou pravdepodobnosťou to bude
+<table\-prefix>_user_group (napr. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+.TP 
+\fBdb_connection_history_table\fP
+Názov databázovej tabuľky na ukladanie časov prihlásení/odhlásení. Tiež sa
+používa na priraďovanie IPčiek k užívateľom a naopak.
+.TP 
+\fBdb_topics_table\fP
+Názov tabuľky, do ktorej vaše phpbb fórum ukladá informácie o témach
+(vláknach). S najväčšou pravdepodobnosťou to bude
+<table\-prefix>_topics (napr. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+Názov tabuľky, do ktorej vaše phpbb fórum ukladá údaje o zákazoch
+užívateľov. S najväčšou pravdepodobnosťou to bude
+<table\-prefix>_banlist (napr. phpbb3_banlist).
+.TP 
+\fBmp_mod_group\fP
+ID skupiny fóra, ktorá sa má považovať za skupinu s moderátorskými
+právomocami.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.RE
+.
+.SH "NÁVRATOVÝ KÓD"
+.
+Normálny návratový kód je 0, keď bol server správne ukončený. Návratový kód
+2 znamená chybu v parametroch zadaných na príkazovom riadku.
+.
+.SH AUTOR
+.
+Napísal David White <davidnwhite@verizon.net>. Editovali Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton@gmail.com> a Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. Preložil Viliam Búr
+<viliam@bur.sk>.  Túto manuálovú stránku pôvodne napísal Cyril
+Bouthors <cyril@bouthors.org>.
+.br
+Navštívte oficiálny web: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+.br
+Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného
+softvéru (Free Software Foundation). Nie je naň ŽIADNA záruka; dokonca ani
+PREDATEĽNOSTI či VHODNOSTI NA DANÝ ÚČEL.
+.
+.SH "VIĎ AJ"
+.
+\fBwesnoth\fP(6)
+

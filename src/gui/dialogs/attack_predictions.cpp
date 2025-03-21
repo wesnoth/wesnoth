@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,16 +20,13 @@
 #include "attack_prediction.hpp"
 #include "color.hpp"
 #include "config.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/variant.hpp"
 #include "game_board.hpp"
 #include "game_config.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "resources.hpp"
@@ -37,6 +34,7 @@
 #include "units/unit.hpp"
 
 #include <iomanip>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -47,17 +45,19 @@ const unsigned int attack_predictions::graph_width = 270;
 const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
-attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
+attack_predictions::attack_predictions(
+	battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender, const int leadership_bonus)
 	: modal_dialog(window_id())
-	, attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
-	, defender_data_(defender, bc.get_defender_combatant(), bc.get_defender_stats())
+	, attacker_data_(std::move(attacker), bc.get_attacker_combatant(), bc.get_attacker_stats())
+	, defender_data_(std::move(defender), bc.get_defender_combatant(), bc.get_defender_stats())
+	, leadership_bonus_(leadership_bonus)
 {
 }
 
-void attack_predictions::pre_show(window& window)
+void attack_predictions::pre_show()
 {
-	set_data(window, attacker_data_, defender_data_);
-	set_data(window, defender_data_, attacker_data_);
+	set_data(attacker_data_, defender_data_, leadership_bonus_);
+	set_data(defender_data_, attacker_data_);
 }
 
 static std::string get_probability_string(const double prob)
@@ -73,7 +73,7 @@ static std::string get_probability_string(const double prob)
 	return ss.str();
 }
 
-void attack_predictions::set_data(window& window, const combatant_data& attacker, const combatant_data& defender) const
+void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender, int leadership_bonus)
 {
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
@@ -83,13 +83,18 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	};
 
 	// Helpers for setting or hiding labels
-	const auto set_label_helper = [&](const std::string& id, const std::string& value) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_label(value);
+	const auto set_label_helper = [&, this](const std::string& id, const std::string& value) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_label(value);
 	};
 
-	const auto hide_label_helper = [&](const std::string& id) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_visible(widget::visibility::invisible);
-		find_widget<label>(&window, get_prefixed_widget_id(id) + "_label" , false).set_visible(widget::visibility::invisible);
+	const auto hide_label_helper = [&, this](const std::string& id) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_visible(widget::visibility::invisible);
+		label& lbl2 = this->find_widget<label>(get_prefixed_widget_id(id)  + "_label");
+		lbl2.set_visible(widget::visibility::invisible);
 	};
 
 	std::stringstream ss;
@@ -101,11 +106,11 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Unscathed probability
 	const color_t ndc_color = game_config::red_to_green(attacker.combatant_.untouched * 100);
 
-	ss << font::span_color(ndc_color) << get_probability_string(attacker.combatant_.untouched) << "</span>";
+	ss << markup::span_color(ndc_color, get_probability_string(attacker.combatant_.untouched));
 	set_label_helper("chance_unscathed", ss.str());
 
 	// HP probability graph
-	drawing& graph_widget = find_widget<drawing>(&window, get_prefixed_widget_id("hp_graph"), false);
+	drawing& graph_widget = find_widget<drawing>(get_prefixed_widget_id("hp_graph"));
 	draw_hp_graph(graph_widget, attacker, defender);
 
 	//
@@ -128,7 +133,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
@@ -145,10 +150,10 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 	// Either user the SET modifier or the base weapon damage.
 	if(set_dmg_effect == dmg_effect.end()) {
-		ss << weapon->damage() << " (<i>" << weapon->name() << "</i>)";
+		ss << weapon->damage() << " (" << markup::italic(weapon->name()) << ")";
 	} else {
 		assert(set_dmg_effect->ability);
-		ss << set_dmg_effect->value << " (<i>" << (*set_dmg_effect->ability)["name"] << "</i>)";
+		ss << set_dmg_effect->value << " (" << markup::italic((*set_dmg_effect->ability)["name"]) << ")";
 	}
 
 	// Process the ADD damage modifiers.
@@ -161,7 +166,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 			}
 
 			ss << e.value;
-			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
+			ss << " (" << markup::italic((*e.ability)["name"]) << ")";
 		}
 	}
 
@@ -178,7 +183,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 				}
 			}
 
-			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
+			ss << " (" << markup::italic((*e.ability)["name"]) << ")";
 		}
 	}
 
@@ -203,7 +208,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 			}
 		}
 
-		ss << string_table["type_" + weapon->type()];
+		ss << string_table["type_" + weapon->effective_damage_type().first];
 
 		set_label_helper("resis_label", ss.str());
 
@@ -220,8 +225,9 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Time of day modifier.
 	const unit& u = *attacker.unit_;
 
+	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
-		u.get_location(), u.alignment(), u.is_fearless());
+		u.get_location(), alignment, u.is_fearless());
 
 	if(tod_modifier != 0) {
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));
@@ -230,8 +236,10 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
-
+	// defender unit won't move before attack so just do calculation here
+	if (leadership_bonus == 0){
+		leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
+	}
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
 	} else {
@@ -255,7 +263,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		dmg_color = font::bad_dmg_color;
 	}
 
-	ss << font::span_color(dmg_color) << attacker.stats_.damage << "</span>"
+	ss << markup::span_color(dmg_color, attacker.stats_.damage)
 	   << font::weapon_numbers_sep    << attacker.stats_.num_blows;
 
 	set_label_helper("total_damage", ss.str());
@@ -264,12 +272,12 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	const color_t cth_color = game_config::red_to_green(attacker.stats_.chance_to_hit);
 
 	ss.str("");
-	ss << font::span_color(cth_color) << attacker.stats_.chance_to_hit << "%</span>";
+	ss << markup::span_color(cth_color, attacker.stats_.chance_to_hit, "%");
 
 	set_label_helper("chance_to_hit", ss.str());
 }
 
-void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender) const
+void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender)
 {
 	// Font size. If you change this, you must update the separator space.
 	// TODO: probably should remove this.

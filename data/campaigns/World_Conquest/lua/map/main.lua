@@ -10,7 +10,7 @@ wesnoth.dofile("./scenario_utils/plot.lua")
 wesnoth.dofile("./scenario_utils/side_definitions.lua")
 settings = globals.settings or {}
 
-local n_villages = {27, 40, 53, 63}
+local early_victory_bonus = {27, 40, 53, 63}
 
 local function get_map_generator(scenario_data)
 	if globals.settings.default_id then
@@ -31,6 +31,10 @@ local function get_map_generator(scenario_data)
 	end
 end
 
+local function get_scenario_data(nplayers, scenario_num)
+	return wesnoth.dofile(string.format("./scenarios/WC_II_%dp_scenario%d.lua", nplayers, scenario_num))
+end
+
 
 function wc_ii_generate_scenario(nplayers, gen_args)
 	nplayers = settings.nplayers or nplayers
@@ -38,9 +42,12 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 	local scenario_num = settings.scenario_num or wml.variables.wc2_scenario or 1
 	--todo: does this work properly in the first scenario?
 	local enemy_stength = wml.variables["wc2_difficulty.enemy_power"] or 6
-	local scenario_data = wesnoth.dofile(string.format("./scenarios/WC_II_%dp_scenario%d.lua", nplayers, scenario_num))
+	std_print("test_nplayers", wml.variables.test_nplayers)
+	local scenario_data = get_scenario_data(nplayers, scenario_num)
 
-	local prestart_event = { name = "prestart" }
+	local prestart_event = {
+		name = "prestart",
+	}
 	-- our [scenario] skeleton
 	local scenario = {
 		event = {
@@ -63,13 +70,13 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 				id="wc2_config_enable_unitmarker",
 				default=true,
 				name="Enable unitmarker",
-				description="enables the buildin mod to mark units, disable this to be compatible with other mods that do the same thing",
+				description="enables the built-in mod to mark units, disable this to be compatible with other mods that do the same thing",
 			},
 		},
+		-- note: in later scenarios these variables will probably be overwritten by whatever is present in the carryover.
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
-			wc2_host_version = "0.8.4"
 		},
 		side = {},
 		id = gen_args.id,
@@ -77,29 +84,16 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		description = "WC_II_" .. nplayers .. "p_desc",
 		modify_placing = false,
 		turns = scenario_data.turns,
+		carryover_percentage = 15,
+		carryover_add = true,
 	}
 
 	-- add [side]s to the [scenario]
 	local enemy_data = scenario_data.get_enemy_data(enemy_stength)
-	wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_stength, enemy_data, scenario_data)
+	wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_data, scenario_data)
 
 	-- add plot (that is [event] with [message]s)
 	add_plot(scenario, scenario_num, nplayers)
-
-	-- add the gold carryover event
-	if scenario_num < #n_villages then
-		table.insert(scenario.event, {
-			name = "victory",
-			wml.tag.wc2_store_carryover {
-				nvillages = n_villages[scenario_num] + 2 * nplayers,
-				wml.tag.sides {
-					side="1,2,3",
-					wml.tag.has_unit {
-					}
-				}
-			}
-		})
-	end
 
 	-- add some wc2 specific wml [event]s
 	for side_num = 1, nplayers do
@@ -113,19 +107,28 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		})
 	end
 
+	if early_victory_bonus[scenario_num] then
+		table.insert(prestart_event,
+			wml.tag.set_variable {
+				name = "wc2_early_victory_bonus",
+				value = early_victory_bonus[scenario_num] + 2 * nplayers,
+			}
+		)
+	end
+
 	-- generate the map. (this also adds certain events for example to create [item]s or [sound_source]s)
 	local mapgen_func = get_map_generator(scenario_data)
 	mapgen_func(scenario, nplayers)
 
 	-- set the correct scenario name.
 	if scenario_num == 1 then --first map
-		scenario.name = "WC_II_" .. nplayers .. " - " .. _"Start"
+		scenario.name = _"Start"
 	else
-		local scenario_desc = _ "Scenario" .. scenario_num
+		local scenario_desc = _ "Scenario " .. scenario_num
 		if scenario_num == 5 then
 			scenario_desc = _"Final Battle"
 		end
-		scenario.name = "WC_II_" .. nplayers .. " " .. scenario_desc .. " - "--.. scenario.map_name
+		scenario.name = scenario_desc
 	end
 
 	local res = wc2_convert.lon_to_wml(scenario, "scenario")

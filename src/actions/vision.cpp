@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,9 +34,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
-class unit_animation;
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -591,18 +589,15 @@ void shroud_clearer::invalidate_after_clear()
  */
 std::vector<int> get_sides_not_seeing(const unit & target)
 {
-	const std::vector<team> & teams = resources::gameboard->teams();
 	std::vector<int> not_seeing;
-
-	std::size_t team_size = teams.size();
-	for ( std::size_t i = 0; i != team_size; ++i)
-		if ( !target.is_visible_to_team(teams[i], false) )
-			// not_see contains side numbers; i is a team index, so add 1.
-			not_seeing.push_back(i+1);
+	for(const team& t : resources::gameboard->teams()) {
+		if(!target.is_visible_to_team(t, false)) {
+			not_seeing.push_back(t.side());
+		}
+	}
 
 	return not_seeing;
 }
-
 
 /**
  * Fires sighted events for the sides that can see @a target.
@@ -653,7 +648,7 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
 
 	// Look for units that can be used as the second unit in sighted events.
 	std::vector<const unit *> second_units(teams_size, nullptr);
-	std::vector<std::size_t> distances(teams_size, UINT_MAX);
+	std::vector<std::size_t> distances(teams_size, std::numeric_limits<unsigned>::max());
 	for (const unit & viewer : resources::gameboard->units()) {
 		const std::size_t index = viewer.side() - 1;
 		// Does viewer belong to a team for which we still need a unit?

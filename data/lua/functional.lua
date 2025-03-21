@@ -8,15 +8,15 @@ local functional = {}
 ---@param condition fun(val:T):boolean
 ---@return T[]
 function functional.filter(input, condition)
-    local filtered_table = {}
+	local filtered_table = {}
 
-    for _,v in ipairs(input) do
-        if condition(v) then
-            table.insert(filtered_table, v)
-        end
-    end
+	for _,v in ipairs(input) do
+		if condition(v) then
+			table.insert(filtered_table, v)
+		end
+	end
 
-    return filtered_table
+	return filtered_table
 end
 
 ---Filter a map for elements matching a certain condition
@@ -26,22 +26,22 @@ end
 ---@param condition fun(key:K, val:V):boolean
 ---@return table<K, V>
 function functional.filter_map(input, condition)
-    local filtered_table = {}
+	local filtered_table = {}
 
-    for k,v in pairs(input) do
-        if condition(k, v) then
-            filtered_table[k] = v
-        end
-    end
+	for k,v in pairs(input) do
+		if condition(k, v) then
+			filtered_table[k] = v
+		end
+	end
 
-    return filtered_table
+	return filtered_table
 end
 
 ---Search an array for an element matching a certain condition
 ---@generic T
 ---@param input T[]
 ---@param condition fun(val:T):boolean
----@return T[]
+---@return T?
 function functional.find(input, condition)
 	for _,v in ipairs(input) do
 		if condition(v) then
@@ -55,8 +55,8 @@ end
 ---@generic V
 ---@param input table<K, V>
 ---@param condition fun(key:K, val:V):boolean
----@return K
----@return V
+---@return K?
+---@return V?
 function functional.find_map(input, condition)
 	for k,v in pairs(input) do
 		if condition(k,v) then
@@ -73,9 +73,9 @@ end
 ---@return number
 ---@return integer
 function functional.choose(input, value)
-    -- Equivalent of choose() function in Formula AI
-    -- Returns element of a table with the largest @value (a function)
-    -- Also returns the max value and the index
+	-- Equivalent of choose() function in Formula AI
+	-- Returns element of a table with the largest @value (a function)
+	-- Also returns the max value and the index
 	if value == nil then
 		value = function(v) return v end
 	elseif type(value) ~= 'function' then
@@ -83,15 +83,15 @@ function functional.choose(input, value)
 		value = function(v) return v[key] end
 	end
 
-    local max_value, best_input, best_key = -math.huge, nil, nil
-    for k,v in ipairs(input) do
+	local max_value, best_input, best_key = -math.huge, nil, nil
+	for k,v in ipairs(input) do
 		local v2 = value(v)
-        if v2 > max_value then
-            max_value, best_input, best_key = v2, v, k
-        end
-    end
+		if v2 > max_value then
+			max_value, best_input, best_key = v2, v, k
+		end
+	end
 
-    return best_input, max_value, best_key
+	return best_input, max_value, best_key
 end
 
 ---Find the key-value pair in a map with the largest value
@@ -102,9 +102,9 @@ end
 ---@return {[1]:K, [2]:V}
 ---@return number
 function functional.choose_map(input, value)
-    -- Equivalent of choose() function in Formula AI
-    -- Returns element of a table with the largest @value (a function)
-    -- Also returns the max value and the index
+	-- Equivalent of choose() function in Formula AI
+	-- Returns element of a table with the largest @value (a function)
+	-- Also returns the max value and the index
 	if value == nil then
 		value = function(k, v) return v end
 	elseif type(value) ~= 'function' then
@@ -112,15 +112,15 @@ function functional.choose_map(input, value)
 		value = function(k, v) return v[key] end
 	end
 
-    local max_value, best_input, best_key = -math.huge, nil, nil
-    for k,v in pairs(input) do
+	local max_value, best_input, best_key = -math.huge, nil, nil
+	for k,v in pairs(input) do
 		local v2 = value(k, v)
-        if v2 > max_value then
-            max_value, best_input, best_key = v2, v, k
-        end
-    end
+		if v2 > max_value then
+			max_value, best_input, best_key = v2, v, k
+		end
+	end
 
-    return {key = best_key, value = best_input}, max_value
+	return {key = best_key, value = best_input}, max_value
 end
 
 ---Map the elements of an array according to an operation
@@ -186,7 +186,7 @@ local known_operators = {
 ---@generic T
 ---@param input T[]
 ---@param operator string|fun(a:T, b:T):T
----@param identity? T
+---@param ... T The initial value of the accumulator, typically the identity element.
 ---@return T
 function functional.reduce(input, operator, ...)
 	local f <const> = known_operators[operator] or operator

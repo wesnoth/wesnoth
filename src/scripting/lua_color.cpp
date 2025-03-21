@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 #include "scripting/lua_color.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
-#include "lua/lauxlib.h"
 #include "log.hpp"
 #include "game_config.hpp"
 
@@ -142,6 +141,10 @@ static int impl_colors_table_dir(lua_State* L)
 {
 	std::vector<std::string> all_colours;
 	for(const auto& [key, value] : game_config::team_rgb_range) {
+		if(std::all_of(key.begin(), key.end(), [](char c) {return isdigit(c);})) {
+			// These colors are deprecated, don't show them
+			continue;
+		}
 		all_colours.push_back(key);
 	}
 	lua_push(L, all_colours);
@@ -153,7 +156,7 @@ namespace lua_colors {
 	{
 		std::ostringstream cmd_out;
 
-		// Create the getunit metatable.
+		// Create the color metatable.
 		cmd_out << "Adding color metatable...\n";
 
 		luaL_newmetatable(L, colorKey);
@@ -173,7 +176,7 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__metatable");
 
 
-		// Create the current variable with its metatable.
+		// Create the colors variable with its metatable.
 		cmd_out << "Adding wesnoth.colors table...\n";
 
 		lua_getglobal(L, "wesnoth");
@@ -185,6 +188,8 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "colors table");
 		lua_setfield(L, -2, "__metatable");
+		lua_pushboolean(L, true);
+		lua_setfield(L, -2, "__dir_tablelike");
 		lua_setmetatable(L, -2);
 		lua_setfield(L, -2, "colors");
 		lua_pop(L, 1);

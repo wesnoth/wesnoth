@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>, Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,11 +19,9 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "serialization/unicode.hpp"
 
 #include "desktop/clipboard.hpp"
-#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -91,9 +89,9 @@ void password_box::insert_char(const std::string& unicode)
 	utf8::insert(real_value_, sel, unicode);
 }
 
-void password_box::paste_selection(const bool mouse)
+void password_box::paste_selection()
 {
-	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	const std::string& text = desktop::clipboard::copy_from_clipboard();
 	if(text.empty()) {
 		return;
 	}

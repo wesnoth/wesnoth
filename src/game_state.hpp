@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@ class config;
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "tod_manager.hpp"
-#include "units/id.hpp"
 
 class game_display;
 class play_controller;
@@ -30,11 +29,9 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; class wmi_manager; }
-namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
 
-namespace wb { class manager; }
 
 namespace actions { class undo_list; }
 
@@ -61,23 +58,18 @@ public:
 	int next_player_number_;
 	/** True if healing should be done at the beginning of the next side turn */
 	bool do_healing_;
+	bool victory_when_enemies_defeated_;
+	bool remove_from_carryover_on_defeat_;
 
-	std::optional<end_level_data> end_level_data_;
-	bool init_side_done_;
-	bool start_event_fired_;
+	utils::optional<end_level_data> end_level_data_;
 	// used to sync with the mpserver
 	int server_request_number_;
-	bool& init_side_done() { return init_side_done_; }
 
 
 	game_events::wmi_manager& get_wml_menu_items();
 	const game_events::wmi_manager& get_wml_menu_items() const;
-	int first_human_team_; //needed to initialize the viewpoint during setup
-	bool has_human_sides() const { return first_human_team_ != -1; }
 
 	game_state(const config & level, play_controller &);
-	/** The third parameter is an optimisation. */
-	game_state(const config & level, play_controller &, game_board& board);
 
 	~game_state();
 
@@ -113,6 +105,18 @@ public:
 		return lua_kernel_.get();
 	}
 
+
+	bool in_phase(game_data::PHASE phase) const
+	{
+		return gamedata_.phase() == phase;
+	}
+
+	template< typename... Arguments >
+	bool in_phase(game_data::PHASE phase, Arguments ... args) const
+	{
+		return in_phase(phase) || in_phase(args...);
+	}
+
 	/** Checks to see if a leader at @a leader_loc could recruit somewhere. */
 	bool can_recruit_from(const map_location& leader_loc, int side) const;
 	/** Checks to see if @a leader (assumed a leader) can recruit somewhere. */
@@ -131,6 +135,8 @@ public:
 	/** Checks if any of the sides leaders can recruit at a location */
 	bool side_can_recruit_on(int side, map_location loc) const;
 
+	/** Checks whether this is not the last scenario (usually of a campaign)*/
+	bool has_next_scenario() const;
 	/** creates a new side during a game. @todo: maybe add parameters like id etc? */
 	void add_side_wml(config cfg);
 };

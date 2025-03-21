@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,11 +15,10 @@
 #ifdef HAVE_MYSQLPP
 
 #include "server/common/dbconn.hpp"
-#include "server/common/resultsets/tournaments.hpp"
-#include "server/common/resultsets/ban_check.hpp"
-#include "server/common/resultsets/game_history.hpp"
 
 #include "log.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
 static lg::log_domain log_sql_handler("sql_executor");
@@ -80,7 +79,7 @@ int dbconn::async_test_query(int limit)
 					  "select T+1 from TEST where T < ? "
 					  ") "
 					  "select count(*) from TEST";
-	int t = get_single_long(create_connection(), sql, limit);
+	int t = get_single_long(create_connection(), sql, { limit });
 	return t;
 }
 
@@ -88,7 +87,7 @@ std::string dbconn::get_uuid()
 {
 	try
 	{
-		return get_single_string(connection_, "SELECT UUID()");
+		return get_single_string(connection_, "SELECT UUID()", {});
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -104,11 +103,28 @@ std::string dbconn::get_tournaments()
 		return "";
 	}
 
+	auto tournaments_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		while(rslt->next()) {
+			config& child = c.add_child("tournament");
+			child["title"] = rslt->get_string("TITLE");
+			child["status"] = rslt->get_string("STATUS");
+			child["url"] = rslt->get_string("URL");
+		}
+
+		return c;
+	};
+
 	try
 	{
-		tournaments t;
-		get_complex_results(connection_, t, db_tournament_query_);
-		return t.str();
+		config t = get_complex_results(connection_, &tournaments_handler, db_tournament_query_, {});
+		std::string text;
+		for(const auto& child : t.child_range("tournament"))
+		{
+			text += "\nThe tournament "+child["title"].str()+" is "+child["status"].str()+". More information can be found at "+child["url"].str();
+		}
+		return text;
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -117,59 +133,190 @@ std::string dbconn::get_tournaments()
 	}
 }
 
-std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset)
+std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
+	auto game_history_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		while(rslt->next())
+		{
+			config& child = c.add_child("game");
+			child["game_name"] = rslt->get_string("GAME_NAME");
+			child["game_start"] = rslt->get_date_time("START_TIME").str();
+			child["scenario_name"] = rslt->get_string("SCENARIO_NAME");
+			child["era_name"] = rslt->get_string("ERA_NAME");
+			for(const auto& player_info : utils::split(rslt->get_string("PLAYERS")))
+			{
+				std::vector<std::string> info = utils::split(player_info, ':');
+				config& pchild = child.add_child("player");
+				if(info.size() == 2)
+				{
+					pchild["name"] = info[0];
+					pchild["faction"] = info[1];
+				}
+				else
+				{
+					ERR_SQL << "Expected player information to split into two fields, instead found the value `" << player_info << "`.";
+				}
+			}
+			for(const std::string& mod : utils::split(rslt->get_string("MODIFICATION_NAMES")))
+			{
+				config& mchild = child.add_child("modification");
+				mchild["name"] = mod;
+			}
+			child["replay_url"] = rslt->get_string("REPLAY_URL");
+			child["version"] = rslt->get_string("VERSION");
+		}
+
+		return c;
+	};
+
 	try
 	{
+		// if no parameters populated, return an error
+		if(player_id == 0 && search_game_name.empty() && search_content.empty())
+		{
+			ERR_SQL << "Skipping game history query due to lack of search parameters.";
+			auto doc = std::make_unique<simple_wml::document>();
+			doc->set_attr("error", "No search parameters provided.");
+			return doc;
+		}
+
+		sql_parameters params;
+
 		std::string game_history_query = "select "
 "  game.GAME_NAME, "
-"  game.RELOAD, "
 "  game.START_TIME, "
 "  GROUP_CONCAT(CONCAT(player.USER_NAME, ':', player.FACTION)) as PLAYERS, "
 "  IFNULL(scenario.NAME, '') as SCENARIO_NAME, "
-"  IFNULL(scenario.ID, '') as SCENARIO_ID, "
 "  IFNULL(era.NAME, '') as ERA_NAME, "
-"  IFNULL(era.ID, '') as ERA_ID, "
-"  IFNULL(GROUP_CONCAT(distinct mods.NAME, '') as MODIFICATION_NAMES, "
-"  IFNULL(GROUP_CONCAT(distinct mods.ID), '') as MODIFICATION_IDS, "
+"  IFNULL((select GROUP_CONCAT(distinct mods.NAME) from "+db_game_content_info_table_+" mods where mods.TYPE = 'modification' and mods.INSTANCE_UUID = game.INSTANCE_UUID and mods.GAME_ID = game.GAME_ID), '') as MODIFICATION_NAMES, "
 "  case "
-"  when game.PUBLIC = 1 "
+"  when game.PUBLIC = 1 and game.INSTANCE_VERSION != 'trunk' "
 "  then concat('https://replays.wesnoth.org/', substring(game.INSTANCE_VERSION, 1, 4), '/', year(game.END_TIME), '/', lpad(month(game.END_TIME), 2, '0'), '/', lpad(day(game.END_TIME), 2, '0'), '/', game.REPLAY_NAME) "
+"  when game.PUBLIC = 1 and game.INSTANCE_VERSION = 'trunk' "
+"  then concat('https://replays.wesnoth.org/', game.INSTANCE_VERSION, '/', year(game.END_TIME), '/', lpad(month(game.END_TIME), 2, '0'), '/', lpad(day(game.END_TIME), 2, '0'), '/', game.REPLAY_NAME) "
 "  else '' "
-"  end as REPLAY_URL "
-"from "+db_game_info_table_+" game "
-"inner join "+db_game_player_info_table_+" player "
-"   on exists "
+"  end as REPLAY_URL, "
+"  case "
+"  when game.INSTANCE_VERSION != 'trunk' "
+"  then SUBSTRING(game.INSTANCE_VERSION, 1, 4) "
+"  else 'trunk' "
+"  end as VERSION "
+"from "+db_game_player_info_table_+" player , "+db_game_content_info_table_+" scenario , "+db_game_content_info_table_+" era , "+db_game_info_table_+" game ";
+	// modification id optional parameter
+	if(search_content_type == 2 && !search_content.empty())
+	{
+		game_history_query += ", "+db_game_content_info_table_+" mods "
+"  where mods.TYPE = 'modification' "
+"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and mods.GAME_ID = game.GAME_ID "
+"  and mods.ID like ? ";
+
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
+	}
+	else
+	{
+		// put the where clause with an always true condition here so I don't need to check again a couple lines down whether it needs "where" vs "and"
+		game_history_query += "where true ";
+	}
+
+	game_history_query += "and exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
 "    where game.INSTANCE_UUID = player1.INSTANCE_UUID "
-"      and game.GAME_ID = player1.GAME_ID "
-"      and player1.USER_ID = ? "
-"  ) "
+"      and game.GAME_ID = player1.GAME_ID ";
+
+	if(player_id != 0)
+	{
+		game_history_query += " and player1.USER_ID = ? ";
+		params.emplace_back(player_id);
+	}
+
+	game_history_query += "  ) "
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
 "  and player.USER_ID != -1 "
 "  and game.END_TIME is not NULL "
-"inner join "+db_game_content_info_table_+" scenario "
-"   on scenario.TYPE = 'scenario' "
+"  and scenario.TYPE = 'scenario' "
 "  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
 "  and scenario.GAME_ID = game.GAME_ID "
-"inner join "+db_game_content_info_table_+" era "
-"   on era.TYPE = 'era' "
+"  and era.TYPE = 'era' "
 "  and era.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and era.GAME_ID = game.GAME_ID "
-"left join "+db_game_content_info_table_+" mods "
-"   on mods.TYPE = 'modification' "
-"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and mods.GAME_ID = game.GAME_ID "
-"group by game.INSTANCE_UUID, game.GAME_ID "
+"  and era.GAME_ID = game.GAME_ID ";
+	// game name optional paramenter
+	if(!search_game_name.empty())
+	{
+		game_history_query += "and game.GAME_NAME like ? ";
+
+		utils::to_sql_wildcards(search_game_name, false);
+		params.emplace_back(search_game_name);
+	}
+
+	// scenario id optional parameter
+	if(search_content_type == 0 && !search_content.empty())
+	{
+		game_history_query += "and scenario.ID like ? ";
+
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
+	}
+
+	// era id optional parameter
+	if(search_content_type == 1 && !search_content.empty())
+	{
+		game_history_query += "and era.ID like ? ";
+
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
+	}
+
+	game_history_query += "group by game.INSTANCE_UUID, game.GAME_ID, SCENARIO_NAME, ERA_NAME "
 "order by game.START_TIME desc "
 "limit 11 offset ? ";
+		params.emplace_back(offset);
 
-		game_history gh;
-		get_complex_results(create_connection(), gh, game_history_query, player_id, offset);
-		return gh.to_doc();
+		DBG_SQL << "before getting connection for game history query for player " << player_id;
+
+		mariadb::connection_ref connection = create_connection();
+
+		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
+
+		config history = get_complex_results(connection, &game_history_handler, game_history_query, params);
+
+		DBG_SQL << "after game history query for player " << player_id;
+
+		auto doc = std::make_unique<simple_wml::document>();
+
+		simple_wml::node& results_wml = doc->root().add_child("game_history_results");
+
+		for(const auto& result : history.child_range("game"))
+		{
+			simple_wml::node& ghr = results_wml.add_child("game_history_result");
+			ghr.set_attr_dup("game_name", result["game_name"].str().c_str());
+			ghr.set_attr_dup("game_start", result["game_start"].str().c_str());
+			ghr.set_attr_dup("scenario_name", result["scenario_name"].str().c_str());
+			ghr.set_attr_dup("era_name", result["era_name"].str().c_str());
+			ghr.set_attr_dup("replay_url", result["replay_url"].str().c_str());
+			ghr.set_attr_dup("version", result["version"].str().c_str());
+			for(const auto& player : result.child_range("player"))
+			{
+				simple_wml::node& p = ghr.add_child("player");
+				p.set_attr_dup("name", player["name"].str().c_str());
+				p.set_attr_dup("faction", player["faction"].str().c_str());
+			}
+			for(const auto& mod : result.child_range("modification"))
+			{
+				simple_wml::node& m = ghr.add_child("modification");
+				m.set_attr_dup("name", mod["name"].str().c_str());
+			}
+		}
+
+		DBG_SQL << "after parsing results of game history query for player " << player_id;
+
+		return doc;
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -184,7 +331,7 @@ bool dbconn::user_exists(const std::string& name)
 {
 	try
 	{
-		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)", name);
+		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)", { name });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -197,7 +344,7 @@ long dbconn::get_forum_id(const std::string& name)
 {
 	try
 	{
-		return get_single_long(connection_, "SELECT IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)), 0)", name);
+		return get_single_long(connection_, "SELECT IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)), 0)", { name });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -210,7 +357,7 @@ bool dbconn::extra_row_exists(const std::string& name)
 {
 	try
 	{
-		return exists(connection_, "SELECT 1 FROM `"+db_extra_table_+"` WHERE UPPER(username)=UPPER(?)", name);
+		return exists(connection_, "SELECT 1 FROM `"+db_extra_table_+"` WHERE UPPER(username)=UPPER(?)", { name });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -219,34 +366,54 @@ bool dbconn::extra_row_exists(const std::string& name)
 	}
 }
 
-bool dbconn::is_user_in_group(const std::string& name, int group_id)
+bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& group_ids)
 {
+	std::vector<std::string> group_params;
+
+	sql_parameters params;
+	params.emplace_back(name);
+	for(int group_id : group_ids) {
+		group_params.emplace_back("?");
+		params.emplace_back(group_id);
+	}
+
 	try
 	{
-		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID = ?",
-		name, group_id);
+		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID in ("+utils::join(group_params)+")",
+		params);
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		log_sql_exception("Unable to check if the user '"+name+"' is in group '"+std::to_string(group_id)+"'!", e);
+		log_sql_exception("Unable to check if the user '"+name+"' is in groups!", e);
 		return false;
 	}
 }
 
-ban_check dbconn::get_ban_info(const std::string& name, const std::string& ip)
+config dbconn::get_ban_info(const std::string& name, const std::string& ip)
 {
+	// selected ban_type value must be part of user_handler::BAN_TYPE
+	auto ban_info_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		if(rslt->next()) {
+			c["ban_type"] = rslt->get_signed32("ban_type");
+			c["ban_end"] = rslt->get_signed32("ban_end");
+			c["user_id"] = rslt->get_signed32("ban_userid");
+			c["email"] = rslt->get_string("ban_email");
+		}
+
+		return c;
+	};
+
 	try
 	{
-		// selected ban_type value must be part of user_handler::BAN_TYPE
-		ban_check b;
-		get_complex_results(connection_, b, "select ban_userid, ban_email, case when ban_ip != '' then 1 when ban_userid != 0 then 2 when ban_email != '' then 3 end as ban_type, ban_end from `"+db_banlist_table_+"` where (ban_ip = ? or ban_userid = (select user_id from `"+db_users_table_+"` where UPPER(username) = UPPER(?)) or UPPER(ban_email) = (select UPPER(user_email) from `"+db_users_table_+"` where UPPER(username) = UPPER(?))) AND ban_exclude = 0 AND (ban_end = 0 OR ban_end >= ?)",
-			ip, name, name, std::time(nullptr));
-		return b;
+		return get_complex_results(connection_, &ban_info_handler, "select ban_userid, ban_email, case when ban_ip != '' then 1 when ban_userid != 0 then 2 when ban_email != '' then 3 end as ban_type, ban_end from `"+db_banlist_table_+"` where (ban_ip = ? or ban_userid = (select user_id from `"+db_users_table_+"` where UPPER(username) = UPPER(?)) or UPPER(ban_email) = (select UPPER(user_email) from `"+db_users_table_+"` where UPPER(username) = UPPER(?))) AND ban_exclude = 0 AND (ban_end = 0 OR ban_end >= ?)",
+			{ ip, name, name, std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) });
 	}
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to check ban info for user '"+name+"' connecting from ip '"+ip+"'!", e);
-		return ban_check();
+		return {};
 	}
 }
 
@@ -254,7 +421,7 @@ std::string dbconn::get_user_string(const std::string& table, const std::string&
 {
 	try
 	{
-		return get_single_string(connection_, "SELECT `"+column+"` from `"+table+"` WHERE UPPER(username)=UPPER(?)", name);
+		return get_single_string(connection_, "SELECT `"+column+"` from `"+table+"` WHERE UPPER(username)=UPPER(?)", { name });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -266,7 +433,7 @@ int dbconn::get_user_int(const std::string& table, const std::string& column, co
 {
 	try
 	{
-		return static_cast<int>(get_single_long(connection_, "SELECT `"+column+"` from `"+table+"` WHERE UPPER(username)=UPPER(?)", name));
+		return static_cast<int>(get_single_long(connection_, "SELECT `"+column+"` from `"+table+"` WHERE UPPER(username)=UPPER(?)", { name }));
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -280,9 +447,9 @@ void dbconn::write_user_int(const std::string& column, const std::string& name, 
 	{
 		if(!extra_row_exists(name))
 		{
-			modify(connection_, "INSERT INTO `"+db_extra_table_+"` VALUES(?,?,'0')", name, value);
+			modify(connection_, "INSERT INTO `"+db_extra_table_+"` VALUES(?,?,'0')", { name, value });
 		}
-		modify(connection_, "UPDATE `"+db_extra_table_+"` SET "+column+"=? WHERE UPPER(username)=UPPER(?)", value, name);
+		modify(connection_, "UPDATE `"+db_extra_table_+"` SET "+column+"=? WHERE UPPER(username)=UPPER(?)", { value, name });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -295,7 +462,7 @@ void dbconn::insert_game_info(const std::string& uuid, int game_id, const std::s
 	try
 	{
 		modify(connection_, "INSERT INTO `"+db_game_info_table_+"`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-			uuid, game_id, version, name, reload, observers, is_public, has_password);
+			{ uuid, game_id, version, name, reload, observers, is_public, has_password });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -307,19 +474,19 @@ void dbconn::update_game_end(const std::string& uuid, int game_id, const std::st
 	try
 	{
 		modify(connection_, "UPDATE `"+db_game_info_table_+"` SET END_TIME = CURRENT_TIMESTAMP, REPLAY_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-			replay_location, uuid, game_id);
+			{ replay_location, uuid, game_id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to update the game end for game info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user)
+void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_player_info_table_+"`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE, USER_NAME) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?, ?, ?, ?)",
-			uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
+		modify(connection_, "INSERT INTO `"+db_game_player_info_table_+"`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE, USER_NAME, LEADERS) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?, ?, ?, ?, ?)",
+			{ uuid, game_id, username, side_number, is_host, faction, version, source, current_user, leaders });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -331,7 +498,7 @@ unsigned long long dbconn::insert_game_content_info(const std::string& uuid, int
 	try
 	{
 		return modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, ADDON_ID, ADDON_VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			uuid, game_id, type, name, id, addon_id, addon_version);
+			{ uuid, game_id, type, name, id, addon_id, addon_version });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -344,7 +511,7 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 	try
 	{
 		modify(connection_, "UPDATE `"+db_game_info_table_+"` SET OOS = 1 WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-			uuid, game_id);
+			{ uuid, game_id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -356,7 +523,7 @@ bool dbconn::topic_id_exists(int topic_id) {
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_topics_table_+"` WHERE TOPIC_ID = ?",
-			topic_id);
+			{ topic_id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -365,12 +532,12 @@ bool dbconn::topic_id_exists(int topic_id) {
 	}
 }
 
-void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader)
+void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string& uploader)
 {
 	try
 	{
 		modify(connection_, "INSERT INTO `"+db_addon_info_table_+"`(INSTANCE_VERSION, ADDON_ID, ADDON_NAME, TYPE, VERSION, FORUM_AUTH, FEEDBACK_TOPIC, UPLOADER) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-			instance_version, id, name, type, version, forum_auth, topic_id, uploader);
+			{ instance_version, id, name, type, version, forum_auth, topic_id, uploader });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -383,7 +550,7 @@ unsigned long long dbconn::insert_login(const std::string& username, const std::
 	try
 	{
 		return modify_get_id(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
-			username, ip, version);
+			{ username, ip, version });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -397,7 +564,7 @@ void dbconn::update_logout(unsigned long long login_id)
 	try
 	{
 		modify(connection_, "UPDATE `"+db_connection_history_table_+"` SET LOGOUT_TIME = CURRENT_TIMESTAMP WHERE LOGIN_ID = ?",
-			login_id);
+			{ login_id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -410,7 +577,7 @@ void dbconn::get_users_for_ip(const std::string& ip, std::ostringstream* out)
 	try
 	{
 		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE IP LIKE ? order by LOGIN_TIME",
-			ip);
+			{ ip });
 
 		*out << "\nCount of results for ip: " << rslt->row_count();
 
@@ -431,7 +598,7 @@ void dbconn::get_ips_for_user(const std::string& username, std::ostringstream* o
 	try
 	{
 		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE USER_NAME LIKE ? order by LOGIN_TIME",
-			utf8::lowercase(username));
+			{ utf8::lowercase(username) });
 
 		*out << "\nCount of results for user: " << rslt->row_count();
 
@@ -452,7 +619,7 @@ void dbconn::update_addon_download_count(const std::string& instance_version, co
 	try
 	{
 		modify(connection_, "UPDATE `"+db_addon_info_table_+"` SET DOWNLOAD_COUNT = DOWNLOAD_COUNT+1 WHERE INSTANCE_VERSION = ? AND ADDON_ID = ? AND VERSION = ?",
-			instance_version, id, version);
+			{ instance_version, id, version });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -464,7 +631,7 @@ bool dbconn::is_user_author(const std::string& instance_version, const std::stri
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ? AND AUTHOR = ? AND IS_PRIMARY = ?",
-			instance_version, id, username, is_primary);
+			{ instance_version, id, username, is_primary });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -477,7 +644,7 @@ void dbconn::delete_addon_authors(const std::string& instance_version, const std
 	try
 	{
 		modify(connection_, "DELETE FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
-			instance_version, id);
+			{ instance_version, id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -485,11 +652,11 @@ void dbconn::delete_addon_authors(const std::string& instance_version, const std
 	}
 }
 
-void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string author, int is_primary) {
+void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string& author, int is_primary) {
 	try
 	{
 		modify(connection_, "INSERT INTO `"+db_addon_authors_table_+"`(INSTANCE_VERSION, ADDON_ID, AUTHOR, IS_PRIMARY) VALUES(?,?,?,?)",
-			instance_version, id, author, is_primary);
+			{ instance_version, id, author, is_primary });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -501,7 +668,7 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
-			instance_version, id);
+			{ instance_version, id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -510,22 +677,100 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 	}
 }
 
+config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
+	auto addon_downloads_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		while(rslt->next()) {
+			config& child = c.add_child("download_info");
+			child["name"] = rslt->get_string("ADDON_NAME");
+			child["version"] = rslt->get_string("VERSION");
+			child["uploaded"] = rslt->get_date_time("UPLOADED_ON").str();
+			child["downloads"] = rslt->get_unsigned32("DOWNLOAD_COUNT");
+		}
+
+		return c;
+	};
+
+	try
+	{
+		return get_complex_results(connection_, &addon_downloads_handler, "select ADDON_NAME, VERSION, UPLOADED_ON, DOWNLOAD_COUNT from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and ADDON_ID = ? order by ADDON_NAME, UPLOADED_ON",
+			{ instance_version, id });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to get addon download info!", e);
+		return {};
+	}
+}
+
+config dbconn::get_forum_auth_usage(const std::string& instance_version) {
+	auto forum_auth_usage_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		if(rslt->next()) {
+			c["all_count"] = rslt->get_signed64("ALL_COUNT");
+			c["forum_auth_count"] = rslt->get_signed64("FORUM_AUTH_COUNT");
+		} else {
+			throw mariadb::exception::base("Count query somehow returned no rows!");
+		}
+
+		return c;
+	};
+
+	try
+	{
+		return get_complex_results(connection_, &forum_auth_usage_handler, "select (select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ?) as ALL_COUNT, "
+			"(select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and FORUM_AUTH = 1) as FORUM_AUTH_COUNT from dual",
+			{ instance_version, instance_version });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to get forum_auth usage!", e);
+		return {};
+	}
+}
+
+config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
+	auto addon_admin_handler = [](const mariadb::result_set_ref& rslt) {
+		config c;
+
+		while(rslt->next()) {
+			config& child = c.add_child("admin");
+			child["username"] = rslt->get_string("USERNAME");
+		}
+
+		return c;
+	};
+
+	try
+	{
+		return get_complex_results(connection_, &addon_admin_handler, "SELECT u.USERNAME FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE u.USER_ID = ug.USER_ID AND ug.GROUP_ID in (?, ?)",
+			{ site_admin_group, forum_admin_group });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to get addon admins for groups '"+std::to_string(site_admin_group)+"' and '"+std::to_string(forum_admin_group)+"'!", e);
+		return {};
+	}
+}
+
 //
 // handle complex query results
 //
-template<typename... Args>
-void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args)
+template <typename F>
+config dbconn::get_complex_results(const mariadb::connection_ref& connection, F* handler, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, args...);
-	base.read(rslt);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
+	config c = (*handler)(rslt);
+	return c;
 }
 //
 // handle single values
 //
-template<typename... Args>
-std::string dbconn::get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+std::string dbconn::get_single_string(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, args...);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		return rslt->get_string(0);
@@ -535,10 +780,9 @@ std::string dbconn::get_single_string(mariadb::connection_ref connection, const 
 		throw mariadb::exception::base("No string value found in the database!");
 	}
 }
-template<typename... Args>
-long dbconn::get_single_long(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+long dbconn::get_single_long(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, args...);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
@@ -569,22 +813,20 @@ long dbconn::get_single_long(mariadb::connection_ref connection, const std::stri
 		throw mariadb::exception::base("No long value found in the database!");
 	}
 }
-template<typename... Args>
-bool dbconn::exists(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+bool dbconn::exists(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, args...);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	return rslt->next();
 }
 
 //
 // select or modify values
 //
-template<typename... Args>
-mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+mariadb::result_set_ref dbconn::select(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, args...);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		mariadb::result_set_ref rslt = mariadb::result_set_ref(stmt->query());
 		return rslt;
 	}
@@ -594,12 +836,11 @@ mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const
 		throw e;
 	}
 }
-template<typename... Args>
-unsigned long long dbconn::modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+unsigned long long dbconn::modify(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, args...);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		unsigned long long count = stmt->execute();
 		return count;
 	}
@@ -609,12 +850,11 @@ unsigned long long dbconn::modify(mariadb::connection_ref connection, const std:
 		throw e;
 	}
 }
-template<typename... Args>
-unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+unsigned long long dbconn::modify_get_id(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, args...);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		unsigned long long count = stmt->insert();
 		return count;
 	}
@@ -625,61 +865,37 @@ unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, con
 	}
 }
 
-
-
-
-template<typename... Args>
-mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	mariadb::statement_ref stmt = connection->create_statement(sql);
-	prepare(stmt, 0, args...);
+
+	unsigned i = 0;
+	for(const auto& param : params)
+	{
+		if(std::holds_alternative<bool>(param))
+		{
+			stmt->set_boolean(i, std::get<bool>(param));
+		}
+		else if(std::holds_alternative<int>(param))
+		{
+			stmt->set_signed32(i, std::get<int>(param));
+		}
+		else if(std::holds_alternative<unsigned long long>(param))
+		{
+			stmt->set_signed64(i, std::get<unsigned long long>(param));
+		}
+		else if(std::holds_alternative<std::string>(param))
+		{
+			stmt->set_string(i, std::get<std::string>(param));
+		}
+		else if(std::holds_alternative<const char*>(param))
+		{
+			stmt->set_string(i, std::get<const char*>(param));
+		}
+		i++;
+	}
+
 	return stmt;
 }
-
-template<typename Arg, typename... Args>
-void dbconn::prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args)
-{
-	i = prepare(stmt, i, arg);
-	prepare(stmt, i, args...);
-}
-
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, bool arg)
-{
-	stmt->set_boolean(i++, arg);
-	return i;
-}
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, int arg)
-{
-	stmt->set_signed32(i++, arg);
-	return i;
-}
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, long arg)
-{
-	stmt->set_signed64(i++, arg);
-	return i;
-}
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, unsigned long long arg)
-{
-	stmt->set_unsigned64(i++, arg);
-	return i;
-}
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, const char* arg)
-{
-	stmt->set_string(i++, arg);
-	return i;
-}
-template<>
-int dbconn::prepare(mariadb::statement_ref stmt, int i, std::string arg)
-{
-	stmt->set_string(i++, arg);
-	return i;
-}
-
-void dbconn::prepare(mariadb::statement_ref, int){}
 
 #endif //HAVE_MYSQLPP

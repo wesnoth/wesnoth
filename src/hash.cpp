@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -70,7 +70,7 @@ md5::md5(const std::string& input) {
 	assert(utils::md5::DIGEST_SIZE == md5_digest_len);
 
 	// MD5_Init
-	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
+	EVP_DigestInit_ex(mdctx, EVP_md5(), nullptr);
 
 	// MD5_Update
 	EVP_DigestUpdate(mdctx, input.c_str(), input.size());

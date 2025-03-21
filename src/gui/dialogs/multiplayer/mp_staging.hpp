@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
-class config;
 class wesnothd_connection;
 
 namespace ai
@@ -48,14 +47,14 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	template<typename... T>
-	tree_view_node& add_side_to_team_node(ng::side_engine_ptr side, T&&... params);
+	tree_view_node& add_side_to_team_node(const ng::side_engine_ptr& side, T&&... params);
 
-	void add_side_node(ng::side_engine_ptr side);
+	void add_side_node(const ng::side_engine_ptr& side);
 
 	/**
 	 * Find an appropriate position to insert a side node.
@@ -63,19 +62,19 @@ private:
 	 * This ensures the side nodes are always arranged by descending index order
 	 * in each team group.
 	 */
-	int get_side_node_position(ng::side_engine_ptr side) const;
+	int get_side_node_position(const ng::side_engine_ptr& side) const;
 
-	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game);
-	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_team_select(ng::side_engine_ptr side, menu_button& team_menu);
+	void on_controller_select(const ng::side_engine_ptr& side, grid& row_grid);
+	void on_ai_select(const ng::side_engine_ptr& side, menu_button& ai_menu, const bool saved_game);
+	void on_color_select(const ng::side_engine_ptr& side, grid& row_grid);
+	void on_team_select(const ng::side_engine_ptr& side, menu_button& team_menu);
 
 	template<void(ng::side_engine::*fptr)(int)>
-	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);
+	void on_side_slider_change(const ng::side_engine_ptr& side, slider& slider);
 
-	void select_leader_callback(ng::side_engine_ptr side, grid& row_grid);
+	void select_leader_callback(const ng::side_engine_ptr& side, grid& row_grid);
 
-	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);
+	void update_leader_display(const ng::side_engine_ptr& side, grid& row_grid);
 	void update_status_label_and_buttons();
 
 	void network_handler();
@@ -83,6 +82,11 @@ private:
 	void set_state_changed()
 	{
 		state_changed_ = true;
+	}
+
+	void start_game()
+	{
+		set_retval(retval::OK);
 	}
 
 	ng::connect_engine& connect_engine_;

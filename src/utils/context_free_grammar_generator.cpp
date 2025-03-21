@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Ján Dugáček
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 
 #include "log.hpp"
 #include "random.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 

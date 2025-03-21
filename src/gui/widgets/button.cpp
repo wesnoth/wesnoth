@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,12 @@
 #include "gui/core/log.hpp"
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "wml_exception.hpp"
 
 #include "sound.hpp"
 
@@ -46,6 +46,7 @@ button::button(const implementation::builder_button& builder)
 	, clickable_item()
 	, state_(ENABLED)
 	, retval_(retval::NONE)
+	, success_(false)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
@@ -85,6 +86,13 @@ void button::set_state(const state_t state)
 	}
 }
 
+void button::set_success(bool success) {
+	success_ = success;
+	if (success) {
+		set_state(SUCCESS);
+	}
+}
+
 void button::signal_handler_mouse_enter(const event::ui_event event,
 										 bool& handled)
 {
@@ -99,7 +107,11 @@ void button::signal_handler_mouse_leave(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	set_state(ENABLED);
+	if (success_) {
+		set_state(SUCCESS);
+	} else {
+		set_state(ENABLED);
+	}
 	handled = true;
 }
 
@@ -159,10 +171,15 @@ button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in button.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_pressed"));
-	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("button_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("button_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("button_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("button_definition][resolution", "state_focused")));
+	// state_success is optional, so error message not needed.
+	if (cfg.optional_child("state_success")) {
+		state.emplace_back(cfg.mandatory_child("state_success"));
+	}
+
 }
 
 // }---------- BUILDER -----------{
@@ -173,7 +190,7 @@ namespace implementation
 builder_button::builder_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 }
 

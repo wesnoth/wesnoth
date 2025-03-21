@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2022
+	Copyright (C) 2018 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,21 +13,16 @@
 */
 
 #include "scripting/lua_terrainmap.hpp"
-#include "scripting/lua_terrainfilter.hpp"
 
-#include "formatter.hpp"
-#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "resources.hpp"
 #include "game_board.hpp"
 #include "play_controller.hpp"
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)

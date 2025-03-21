@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,17 +22,17 @@
 #include "serialization/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "generators/map_generator.hpp" // mapgen_exception
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
 #include "utils/name_generator_factory.hpp"
+#include "utils/optimer.hpp"
 #include "seed_rng.hpp"
 #include "wml_exception.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <chrono>
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -109,7 +109,7 @@ namespace {
 		static std::string terrain;
 		terrain = t_translation::write_terrain_code(c);
 		double res = getNoPathValue();
-		if(const config &child = cfg_.find_child("road_cost", "terrain", terrain)) {
+		if(auto child = cfg_.find_child("road_cost", "terrain", terrain)) {
 			res = child["cost"].to_double();
 		}
 
@@ -166,7 +166,7 @@ namespace {
 	};
 
 	terrain_height_mapper::terrain_height_mapper(const config& cfg) :
-		terrain_height(cfg["height"]),
+		terrain_height(cfg["height"].to_int()),
 		to(t_translation::GRASS_LAND)
 	{
 		const std::string& terrain = cfg["terrain"];
@@ -628,7 +628,7 @@ static map_location place_village(const t_translation::ter_map& map,
 
 		const t_translation::terrain_code t = map[i.x][i.y];
 		const std::string str = t_translation::write_terrain_code(t);
-		if(const config &child = cfg.find_child("village", "terrain", str)) {
+		if(auto child = cfg.find_child("village", "terrain", str)) {
 			tcode_list_cache::iterator l = adj_liked_cache.find(t);
 			t_translation::ter_list *adjacent_liked;
 			if(l != adj_liked_cache.end()) {
@@ -638,7 +638,7 @@ static map_location place_village(const t_translation::ter_map& map,
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
-			int rating = child["rating"];
+			int rating = child["rating"].to_int();
 			for(const map_location& adj : get_adjacent_tiles({i.x, i.y})) {
 				if(adj.x < 0 || adj.y < 0 || adj.x >= map.w || adj.y >= map.h) {
 					continue;
@@ -704,12 +704,12 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		<< " show_labels=" << data.show_labels;
 
 	// Odd widths are nasty
-	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));
+	VALIDATE(is_even(data.width), _("Random maps with an odd width aren’t supported."));
 
 	// Try to find configuration for castles
-	const config& castle_config = cfg.child("castle");
+	auto castle_config = cfg.optional_child("castle");
 
-	int ticks = SDL_GetTicks();
+	utils::ms_optimer timer;
 
 	// We want to generate a map that is 9 times bigger than the actual size desired.
 	// Only the middle part of the map will be used, but the rest is so that the map we
@@ -721,8 +721,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	config naming;
 
 	if(cfg.has_child("naming")) {
-		naming = game_config_.child("naming");
-		naming.append_attributes(cfg.child("naming"));
+		naming = game_config_.mandatory_child("naming");
+		naming.append_attributes(cfg.mandatory_child("naming"));
 	}
 
 	// If the [naming] child is empty, we cannot provide good names.
@@ -752,8 +752,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	// Generate the height of everything.
 	const height_map heights = generate_height_map(data.width, data.height, data.iterations, data.hill_size, data.island_size, data.island_off_center);
 
-	LOG_NG << "Done generating height map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
+	LOG_NG << "Done generating height map. " << timer << " ticks elapsed";
 
 	// Find out what the 'flatland' on this map is, i.e. grassland.
 	std::string flatland = cfg["default_flatland"];
@@ -782,8 +781,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	t_translation::starting_positions starting_positions;
 	LOG_NG << output_map(terrain, starting_positions);
-	LOG_NG << "Placed landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
+	LOG_NG << "Placed landforms. " << timer << " ticks elapsed";
 
 	/* Now that we have our basic set of flatland/hills/mountains/water,
 	 * we can place lakes and rivers on the map.
@@ -811,7 +809,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				continue;
 			}
 
-			std::vector<map_location> river = generate_river(heights, terrain, x, y, cfg["river_frequency"]);
+			std::vector<map_location> river = generate_river(heights, terrain, x, y, cfg["river_frequency"].to_int());
 
 			if(!river.empty() && misc_labels != nullptr) {
 				const std::string base_name = base_name_generator->generate();
@@ -833,7 +831,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			LOG_NG << "Generating lake...";
 
 			std::set<map_location> locs;
-			if(generate_lake(terrain, x, y, cfg["lake_size"], locs) && misc_labels != nullptr) {
+			if(generate_lake(terrain, x, y, cfg["lake_size"].to_int(), locs) && misc_labels != nullptr) {
 				bool touches_other_lake = false;
 
 				std::string base_name = base_name_generator->generate();
@@ -872,8 +870,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Generated rivers. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
+	LOG_NG << "Generated rivers. " << timer << " ticks elapsed";
 
 	const std::size_t default_dimensions = 40*40*9;
 
@@ -886,19 +883,15 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * more interesting types than the default.
 	 */
 	const height_map temperature_map = generate_height_map(data.width,data.height,
-		cfg["temperature_iterations"].to_int() * data.width * data.height / default_dimensions,
-		cfg["temperature_size"], 0, 0);
+		cfg["temperature_iterations"].to_size_t() * data.width * data.height / default_dimensions,
+		cfg["temperature_size"].to_size_t(), 0, 0);
 
-	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
+	LOG_NG << "Generated temperature map. " << timer << " ticks elapsed";
 
 	std::vector<terrain_converter> converters;
 	for(const config& cv : cfg.child_range("convert")) {
 		converters.emplace_back(cv);
 	}
-
-	LOG_NG << "Created terrain converters. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
 
 	// Iterate over every flatland tile, and determine what type of flatland it is, based on our [convert] tags.
 	for(int x = 0; x != data.width; ++x) {
@@ -912,6 +905,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
+	LOG_NG << "Converted terrain. " << timer << " ticks elapsed";
 	LOG_NG << "Placing castles...";
 
 	/*
@@ -942,7 +936,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			const int min_y = data.height/3 + 3;
 			const int max_x = (data.width/3)*2 - 4;
 			const int max_y = (data.height/3)*2 - 4;
-			int min_distance = castle_config["min_distance"];
+			int min_distance = castle_config["min_distance"].to_int();
 
 			map_location best_loc;
 			int best_ranking = 0;
@@ -967,7 +961,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 			if(best_ranking == 0) {
 				ERR_NG << "No castle location found, for " << data.nplayers << " players aborting. ";
-				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
+				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the ‘max hill size’ parameter)");
 				throw mapgen_exception(error);
 			}
 
@@ -978,15 +972,14 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			failed_locs.insert(best_loc);
 		}
 
-		LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
+		LOG_NG << "Placed castles. " << timer << " ticks elapsed";
 	}
 	LOG_NG << "Placing roads...";
-	ticks = SDL_GetTicks();
 
 	// Place roads.
 	// We select two tiles at random locations on the borders of the map
 	// and try to build roads between them.
-	int nroads = cfg["roads"];
+	int nroads = cfg["roads"].to_int();
 	if(data.link_castles) {
 		nroads += castles.size()*castles.size();
 	}
@@ -1055,8 +1048,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			}
 
 			// Find the configuration which tells us what to convert this tile to, to make it into a road.
-			const config& child = cfg.find_child("road_cost", "terrain", t_translation::write_terrain_code(terrain[x][y]));
-			if(child.empty()){
+			auto child = cfg.find_child("road_cost", "terrain", t_translation::write_terrain_code(terrain[x][y]));
+			if(!child || child->empty()){
 				continue;
 			}
 
@@ -1166,8 +1159,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placed roads. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	ticks = SDL_GetTicks();
+	LOG_NG << "Placed roads. " << timer << " ticks elapsed";
 
 	/* Random naming for landforms: mountains, forests, swamps, hills
 	 * we name these now that everything else is placed (as e.g., placing
@@ -1224,9 +1216,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Named landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
+	LOG_NG << "Named landforms. " << timer << " ticks elapsed";
 	LOG_NG << "Placing villages...";
-	ticks = SDL_GetTicks();
 
 	/*
 	 * Place villages in a 'grid', to make placing fair, but with villages
@@ -1255,10 +1246,10 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		std::set<std::string> used_names;
 		tcode_list_cache adj_liked_cache;
 
-		config village_naming = game_config_.child("village_naming");
+		config village_naming = game_config_.mandatory_child("village_naming");
 
 		if(cfg.has_child("village_naming")) {
-			village_naming.append_attributes(cfg.child("village_naming"));
+			village_naming.append_attributes(cfg.mandatory_child("village_naming"));
 		}
 
 		// If the [village_naming] child is empty, we cannot provide good names.
@@ -1283,7 +1274,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				const std::string str = t_translation::write_terrain_code(terrain[res.x][res.y]);
 
-				const std::string& convert_to = cfg.find_child("village", "terrain", str)["convert_to"].str();
+				const std::string& convert_to = cfg.find_mandatory_child("village", "terrain", str)["convert_to"].str();
 				if(convert_to.empty()) {
 					continue;
 				}
@@ -1411,7 +1402,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placed villages. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
+	LOG_NG << "Placed villages. " << timer << " ticks elapsed";
 
 	return output_map(terrain, starting_positions);
 }

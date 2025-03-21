@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,10 +20,11 @@
 
 #pragma once
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <boost/program_options/options_description.hpp>
 #include <map>
+#include "log.hpp"
 
 namespace campaignd {
 
@@ -52,16 +53,16 @@ public:
 	bool version;
 
 	/** Path to the add-ons server configuration file. */
-	std::optional<std::string> config_file;
+	utils::optional<std::string> config_file;
 	/** Path to the add-ons server storage dir. */
-	std::optional<std::string> server_dir;
+	utils::optional<std::string> server_dir;
 	/** Port number on which the server will listen for incoming connections. */
-	std::optional<unsigned short> port;
+	utils::optional<unsigned short> port;
 
 	/** True if --logdomains was passed. */
 	bool show_log_domains;
 	/** Log domain/severity configuration. */
-	std::map<std::string, int> log_domain_levels;
+	std::map<std::string, lg::severity> log_domain_levels;
 	/** Whether to use higher precision for log timestamps. */
 	bool log_precise_timestamps;
 	/** Whether to report timing information for server requests. */

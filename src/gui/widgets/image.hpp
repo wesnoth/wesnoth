@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,14 +29,6 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * An image shows a static image.
- *
- * The label field of the widget is used as the name of file to show. The widget normally has no event interaction so only one state is defined:
- * * state_enabled - the image is enabled.
- */
 class image : public styled_widget
 {
 public:

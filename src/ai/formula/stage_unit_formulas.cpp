@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "ai/formula/ai.hpp"
 
 #include "formula/formula.hpp"
-#include "formula/function.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"

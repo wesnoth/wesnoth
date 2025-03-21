@@ -110,10 +110,12 @@ function artifacts.give_item(unit, index, visualize)
 	for i, effect in ipairs(aftifact_data.effect) do
 		table.insert(object, wml.tag.effect (effect) )
 	end
-	local unit_initial_hp = unit.hitpoints
 	unit:add_modification("object", object)
+	local unit_initial_hp = unit.hitpoints
 	--rebuild unit, to reduce savefile size.
 	unit:transform(unit.type)
+	-- restore unit hitpoints to before they picked up the artifact
+	unit.hitpoints = unit_initial_hp
 
 	-- slot in traits if any artifacts grant any
 	for trait in wml.child_range(artifacts.list[index], "trait") do
@@ -122,8 +124,6 @@ function artifacts.give_item(unit, index, visualize)
 		end
 	end
 
-	-- restore unit hitpoints to before they picked up the artifact
-	unit.hitpoints = unit_initial_hp
 	-- the artifact might reduce the max xp.
 	unit:advance(true, true)
 end

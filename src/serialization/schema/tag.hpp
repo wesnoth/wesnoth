@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,13 +21,13 @@
 
 #pragma once
 
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
 #include <queue>
 
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/range/iterator.hpp>
 #include "config.hpp"
 #include "serialization/schema/key.hpp"
 
@@ -51,15 +51,15 @@ public:
 	using key_map  = std::map<std::string, wml_key>;
 	using link_map = std::map<std::string, std::string>;
 	using condition_list = std::vector<wml_condition>;
-	using super_list = std::vector<wml_tag*>;
+	using super_list = std::map<std::string, const wml_tag*>;
 private:
 	static void push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
-	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
+	class iterator : public boost::iterator_facade<iterator<T, Map>, const typename Map::value_type, std::forward_iterator_tag>
 	{
 		std::queue<const wml_tag*> condition_queue;
 		typename Map::const_iterator current;
-		const config& match;
+		std::reference_wrapper<const config> match;
 	public:
 		// Construct a begin iterator
 		iterator(const wml_tag& base_tag, const config& match) : match(match)
@@ -69,8 +69,7 @@ private:
 			ensure_valid_or_end();
 		}
 		// Construct an end iterator
-		// That weird expression is to get a reference to an "invalid" config.
-		iterator() : match(config().child("a")) {}
+		iterator() : match(config().child_or_empty("fsdfsdf")) {}
 	private:
 		friend class boost::iterator_core_access;
 		void init(const wml_tag& base_tag);
@@ -82,7 +81,7 @@ private:
 		}
 		void push_new_tag_conditions(const wml_tag& tag)
 		{
-			wml_tag::push_new_tag_conditions(condition_queue, match, tag);
+			wml_tag::push_new_tag_conditions(condition_queue, match.get(), tag);
 		}
 		bool equal(const iterator<T, Map>& other) const
 		{
@@ -108,43 +107,14 @@ private:
 	template<typename T, typename Map> friend class iterator;
 	using tag_iterator = iterator<wml_tag>;
 	using key_iterator = iterator<wml_key>;
+	using super_iterator = iterator<const wml_tag*>;
 public:
 
-	wml_tag()
-		: name_("")
-		, min_(0)
-		, max_(0)
-		, min_children_(0)
-		, max_children_(INT_MAX)
-		, super_("")
-		, tags_()
-		, keys_()
-		, links_()
-		, fuzzy_(false)
-		, any_tag_(false)
-	{
-	}
+	wml_tag() = default;
 
-	wml_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false)
-		: name_(name)
-		, min_(min)
-		, max_(max)
-		, min_children_(0)
-		, max_children_(INT_MAX)
-		, super_(super)
-		, tags_()
-		, keys_()
-		, links_()
-		, fuzzy_(name.find_first_of("*?") != std::string::npos)
-		, any_tag_(any)
-	{
-	}
+	wml_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false);
 
 	wml_tag(const config&);
-
-	~wml_tag()
-	{
-	}
 
 	/** Prints information about tag to outputstream, recursively
 	 * is used to print tag info
@@ -308,6 +278,10 @@ public:
 		return {key_iterator(*this, cfg_match), key_iterator()};
 	}
 
+	boost::iterator_range<super_iterator> super(const config& cfg_match) const {
+		return {super_iterator(*this, cfg_match), super_iterator()};
+	}
+
 	const link_map& links() const
 	{
 		return links_;
@@ -328,19 +302,19 @@ public:
 
 private:
 	/** name of tag. */
-	std::string name_;
+	std::string name_ = "";
 
 	/** minimum number of occurrences. */
-	int min_;
+	int min_ = 0;
 
 	/** maximum number of occurrences. */
-	int max_;
+	int max_ = 0;
 
 	/** minimum number of children. */
-	int min_children_;
+	int min_children_ = 0;
 
 	/** maximum number of children. */
-	int max_children_;
+	int max_children_ = std::numeric_limits<int>::max();
 
 	/**
 	 * name of tag to extend "super-tag"
@@ -349,7 +323,7 @@ private:
 	 * keys, children, etc. But you also want to allow extra subtags of that tags,
 	 * so just linking that tag wouldn't help at all.
 	 */
-	std::string super_;
+	std::string super_ = "";
 
 	/** children tags*/
 	tag_map tags_;
@@ -367,10 +341,10 @@ private:
 	super_list super_refs_;
 
 	/** whether this is a "fuzzy" tag. */
-	bool fuzzy_;
+	bool fuzzy_ = false;
 
 	/** whether this tag allows arbitrary subtags. */
-	bool any_tag_;
+	bool any_tag_ = false;
 
 	/**
 	 * the same as wml_tag::print(std::ostream&)
@@ -405,6 +379,12 @@ private:
 
 	/** Expands all "super", storing direct references for easier access. */
 	void expand(wml_tag& root);
+
+	/** Finds a key with super bookkeeping to handle super cycles. */
+	const wml_key* find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
+
+	/** Finds a tag with super bookkeeping to handle super cycles. */
+	const wml_tag* find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
 };
 
 /**

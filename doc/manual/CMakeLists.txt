@@ -34,7 +34,9 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 	add_custom_command(
 		OUTPUT ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/wesnoth-manual.pot
-		COMMAND ${PO4A-GETTEXTIZE_EXECUTABLE} ${PO4A-GETTEXTIZE_OPTIONS}
+		COMMAND ${PO4A-UPDATEPO_EXECUTABLE} ${PO4A-UPDATEPO_OPTIONS}
+				--copyright-holder "Wesnoth Development Team"
+				-f docbook
 				-m ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 				-p wesnoth-manual.pot
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,8 +18,6 @@
 #include "editor/editor_display.hpp"
 #include "editor/editor_main.hpp"
 #include "editor/map/context_manager.hpp"
-#include "editor/map/map_context.hpp"
-#include "editor/map/map_fragment.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "controller_base.hpp"
@@ -30,27 +28,19 @@
 
 #include "sound_music_track.hpp"
 
-class map_generator;
-
-namespace tooltips {
-class manager;
-}
-
 namespace font {
 struct floating_label_context;
 }
 
 namespace editor {
 
-class editor_map;
-
-std::string get_left_button_function();
 
 enum menu_type {
 	MAP,
 	LOAD_MRU,
 	PALETTE,
 	AREA,
+	ADDON,
 	SIDE,
 	TIME,
 	LOCAL_TIME,
@@ -75,12 +65,9 @@ class editor_controller : public controller_base,
 		editor_controller& operator=(const editor_controller&) = delete;
 
 		/**
-		 * The constructor. A initial map context can be specified here, the controller
-		 * will assume ownership and delete the pointer during destruction, but changes
-		 * to the map can be retrieved between the main loop's end and the controller's
-		 * destruction.
+		 * The constructor.
 		 */
-		editor_controller();
+		editor_controller(bool clear_id);
 
 		~editor_controller();
 
@@ -90,26 +77,29 @@ class editor_controller : public controller_base,
 		/** Takes a screenshot **/
 		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
 
-		/** Process a hotkey quit command */
-		void hotkey_quit();
-
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
 
+		/** Show Unit Editor dialog */
+		void unit_editor_dialog();
+
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();
+
+		/** Updates schedule and the map display */
+		void update_map_schedule(const std::vector<time_of_day>& schedule);
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map() override {context_manager_->save_map();}
 
 		/** command_executor override */
-		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const override;
+		bool can_execute_command(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+		hotkey::ACTION_STATE get_action_state(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		bool do_execute_command(const hotkey::hotkey_command& command, int index = -1, bool press = true, bool release = false) override;
+		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;
 
 		/** controller_base override */
 		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
@@ -145,8 +135,6 @@ class editor_controller : public controller_base,
 		/** Export the WML-compatible list of selected tiles to the system clipboard */
 		void export_selection_coords();
 
-		void update_mouse_action_highlights();
-
 		/** Save the current selection to the active area. */
 		void save_area();
 
@@ -173,6 +161,11 @@ class editor_controller : public controller_base,
 		{
 			return context_manager_->get_map_context();
 		}
+
+		/** Initialize an addon if the addon id is empty
+		 * @return    If the initialization succeeded.
+		 * */
+		bool initialize_addon();
 
 	protected:
 		/* controller_base overrides */
@@ -211,9 +204,6 @@ class editor_controller : public controller_base,
 		/** init background music for the editor */
 		void init_music(const game_config_view& game_config);
 
-		/** Load editor-specific tooltips */
-		void load_tooltips();
-
 		/** Reload images */
 		void refresh_image_cache();
 
@@ -248,6 +238,8 @@ class editor_controller : public controller_base,
 		/* managers */
 	public:
 		const std::unique_ptr<context_manager> context_manager_;
+
+		static std::string current_addon_id_;
 	private:
 		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;

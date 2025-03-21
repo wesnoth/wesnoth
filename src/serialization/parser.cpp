@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -27,8 +27,8 @@
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
-#include "serialization/tokenizer.hpp"
 #include "serialization/validator.hpp"
+#include "utils/charconv.hpp"
 #include "wesconfig.h"
 
 #include <boost/algorithm/string/replace.hpp>
@@ -75,10 +75,6 @@ public:
 		, tok_(in)
 		, validator_(validator)
 		, elements()
-	{
-	}
-
-	~parser()
 	{
 	}
 
@@ -132,10 +128,10 @@ void parser::operator()()
 		tok_.next_token();
 
 		switch(tok_.current_token().type) {
-		case token::LF:
+		case token::NEWLINE:
 			continue;
 
-		case '[':
+		case token::OPEN_BRACKET:
 			parse_element();
 			break;
 
@@ -199,7 +195,7 @@ void parser::parse_element()
 	case token::STRING: // [element]
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != ']') {
+		if(tok_.next_token().type != token::CLOSE_BRACKET) {
 			error(_("Unterminated [element] tag"));
 		}
 
@@ -214,21 +210,21 @@ void parser::parse_element()
 
 		break;
 
-	case '+': // [+element]
+	case token::PLUS: // [+element]
 		if(tok_.next_token().type != token::STRING) {
 			error(_("Invalid tag name"));
 		}
 
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != ']') {
+		if(tok_.next_token().type != token::CLOSE_BRACKET) {
 			error(_("Unterminated [+element] tag"));
 		}
 
 		// Find the last child of the current element whose name is element
 		parent = elements.top().cfg;
-		if(config& c = parent->child(elname, -1)) {
-			current_element = &c;
+		if(auto c = parent->optional_child(elname, -1)) {
+			current_element = c.ptr();
 
 			if(validator_) {
 				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file(), true);
@@ -244,14 +240,14 @@ void parser::parse_element()
 		elements.emplace(current_element, elname, tok_.get_start_line(), tok_.get_file());
 		break;
 
-	case '/': // [/element]
+	case token::SLASH: // [/element]
 		if(tok_.next_token().type != token::STRING) {
 			error(_("Invalid closing tag name"));
 		}
 
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != ']') {
+		if(tok_.next_token().type != token::CLOSE_BRACKET) {
 			error(_("Unterminated closing tag"));
 		}
 
@@ -294,7 +290,7 @@ void parser::parse_variable()
 	std::vector<std::string> variables;
 	variables.emplace_back();
 
-	while(tok_.current_token().type != '=') {
+	while(tok_.current_token().type != token::EQUALS) {
 		switch(tok_.current_token().type) {
 		case token::STRING:
 			if(!variables.back().empty()) {
@@ -304,7 +300,7 @@ void parser::parse_variable()
 			variables.back() += tok_.current_token().value;
 			break;
 
-		case ',':
+		case token::COMMA:
 			if(variables.back().empty()) {
 				error(_("Empty variable name"));
 			} else {
@@ -336,7 +332,7 @@ void parser::parse_variable()
 		assert(curvar != variables.end());
 
 		switch(tok_.current_token().type) {
-		case ',':
+		case token::COMMA:
 			if((curvar + 1) != variables.end()) {
 				if(buffer.translatable()) {
 					cfg[*curvar] = t_string(buffer);
@@ -356,7 +352,7 @@ void parser::parse_variable()
 
 			break;
 
-		case '_':
+		case token::UNDERSCORE:
 			tok_.next_token();
 
 			switch(tok_.current_token().type) {
@@ -374,14 +370,14 @@ void parser::parse_variable()
 				break;
 
 			case token::END:
-			case token::LF:
+			case token::NEWLINE:
 				buffer += "_";
 				goto finish;
 			}
 
 			break;
 
-		case '+':
+		case token::PLUS:
 			ignore_next_newlines = true;
 			continue;
 
@@ -404,7 +400,7 @@ void parser::parse_variable()
 			error(_("Unterminated quoted string"));
 			break;
 
-		case token::LF:
+		case token::NEWLINE:
 			if(ignore_next_newlines) {
 				continue;
 			}
@@ -481,7 +477,7 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	i18n_symbols["value"] = tok_.current_token().value;
 	i18n_symbols["previous_value"] = tok_.previous_token().value;
 
-	const std::string& tok_state = _("Value: '$value' Previous: '$previous_value'");
+	const std::string& tok_state = _("Value: ‘$value’ Previous: ‘$previous_value’");
 #else
 	const std::string& tok_state = "";
 #endif
@@ -542,7 +538,13 @@ public:
 	void operator()(const T& v) const
 	{
 		indent();
-		out_ << key_ << '=' << v << '\n';
+		if constexpr(std::is_arithmetic_v<T>) {
+			// for number values, this has to use the same method as in from_string_verify
+			auto buf = utils::charconv_buffer(v);
+			out_ << key_ << '=' << buf.get_view() << '\n';
+		} else {
+			out_ << key_ << '=' << v << '\n';
+		}
 	}
 
 	//
@@ -635,6 +637,13 @@ void read(config& cfg, const std::string& in, abstract_validator* validator)
 	parser(cfg, ss, validator)();
 }
 
+config read(std::istream& in, abstract_validator* validator)
+{
+	config cfg;
+	parser(cfg, in, validator)();
+	return cfg;
+}
+
 template<typename decompressor>
 void read_compressed(config& cfg, std::istream& file, abstract_validator* validator)
 {
@@ -716,24 +725,24 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		throw config::error("Too many recursion levels in config write");
 	}
 
-	for(const config::attribute& i : cfg.attribute_range()) {
-		if(!config::valid_attribute(i.first)) {
-			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...";
+	for(const auto& [key, value] : cfg.attribute_range()) {
+		if(!config::valid_attribute(key)) {
+			ERR_CF << "Config contains invalid attribute name '" << key << "', skipping...";
 			continue;
 		}
 
-		write_key_val(out, i.first, i.second, tab, textdomain);
+		write_key_val(out, key, value, tab, textdomain);
 	}
 
-	for(const config::any_child item : cfg.all_children_range()) {
-		if(!config::valid_tag(item.key)) {
-			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...";
+	for(const auto [key, item_cfg] : cfg.all_children_view()) {
+		if(!config::valid_tag(key)) {
+			ERR_CF << "Config contains invalid tag name '" << key << "', skipping...";
 			continue;
 		}
 
-		write_open_child(out, item.key, tab);
-		write_internal(item.cfg, out, textdomain, tab + 1);
-		write_close_child(out, item.key, tab);
+		write_open_child(out, key, tab);
+		write_internal(item_cfg, out, textdomain, tab + 1);
+		write_close_child(out, key, tab);
 	}
 }
 

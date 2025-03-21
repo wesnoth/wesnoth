@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,14 +21,12 @@
 
 #pragma once
 
-class  config;
 class vconfig;
 
 
 namespace game_events
 {
 	bool conditional_passed(const vconfig& cond);
-	bool matches_special_filter(const config &cfg, const vconfig& filter);
 
 	namespace builtin_conditions {
 		bool have_unit(const vconfig& cfg);

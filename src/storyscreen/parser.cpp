@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "game_data.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/pump.hpp"
-#include "log.hpp"
 #include "resources.hpp"
 #include "variable.hpp"
 #include "deprecation.hpp"

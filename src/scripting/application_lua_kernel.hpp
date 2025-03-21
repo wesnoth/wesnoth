@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,13 +33,14 @@ public:
 	typedef std::vector<std::function<bool(void)>> request_list;
 
 	class thread {
+		application_lua_kernel& owner_;
 		lua_State * T_;
 		bool started_;
 
 		thread(const thread&) = delete;
 		thread& operator=(const thread&) = delete;
 
-		thread(lua_State *);
+		thread(application_lua_kernel&, lua_State *);
 	public :
 		bool is_running();
 		std::string status();

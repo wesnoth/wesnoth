@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
-#include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -48,32 +47,31 @@ terrain_filter::~terrain_filter()
 {
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod) :
-	cfg_(cfg),
-	fc_(fc),
-	cache_(),
-	max_loop_(game_config::max_loop),
-	flat_(flat_tod)
+terrain_filter::terrain_filter(const vconfig& cfg, const filter_context* fc, const bool flat_tod)
+	: cfg_(cfg)
+	, fc_(fc)
+	, cache_()
+	, max_loop_(game_config::max_loop)
+	, flat_(flat_tod)
 {
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
-	cfg_(cfg),
-	fc_(original.fc_),
-	cache_(),
-	max_loop_(original.max_loop_),
-	flat_(original.flat_)
+terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original)
+	: cfg_(cfg)
+	, fc_(original.fc_)
+	, cache_()
+	, max_loop_(original.max_loop_)
+	, flat_(original.flat_)
 {
 }
 
-terrain_filter::terrain_filter(const terrain_filter& other) :
-	xy_pred(), // We should construct this too, since it has no datamembers
-	           // use the default constructor.
-	cfg_(other.cfg_),
-	fc_(other.fc_),
-	cache_(),
-	max_loop_(other.max_loop_),
-	flat_(other.flat_)
+terrain_filter::terrain_filter(const terrain_filter& other)
+	: xy_pred() // We should construct this too, since it has no datamembers use the default constructor.
+	, cfg_(other.cfg_)
+	, fc_(other.fc_)
+	, cache_()
+	, max_loop_(other.max_loop_)
+	, flat_(other.flat_)
 {
 }
 
@@ -87,12 +85,13 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 	return *this ;
 }
 
-terrain_filter::terrain_filter_cache::terrain_filter_cache() :
-	parsed_terrain(nullptr),
-	adjacent_matches(nullptr),
-	adjacent_match_cache(),
-	ufilter_()
-{}
+terrain_filter::terrain_filter_cache::terrain_filter_cache()
+	: parsed_terrain(nullptr)
+	, adjacent_matches(nullptr)
+	, adjacent_match_cache()
+	, ufilter_()
+{
+}
 
 bool terrain_filter::match_internal(const map_location& loc, const unit* ref_unit, const bool ignore_xy) const
 {
@@ -213,11 +212,11 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		for (i = i_begin, i_end = adj_cfgs.end(); i != i_end; ++i) {
 			int match_count = 0;
 			vconfig::child_list::difference_type index = i - i_begin;
-			std::vector<map_location::DIRECTION> dirs = (*i).has_attribute("adjacent")
-				? map_location::parse_directions((*i)["adjacent"]) : map_location::default_dirs();
-			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
+			std::vector<map_location::direction> dirs = (*i).has_attribute("adjacent")
+				? map_location::parse_directions((*i)["adjacent"]) : map_location::all_directions();
+			std::vector<map_location::direction>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
-				const map_location &adj = adjacent[*j];
+				const map_location &adj = adjacent[static_cast<int>(*j)];
 				if (fc_->get_disp_context().map().on_board(adj)) {
 					if(cache_.adjacent_matches == nullptr) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
@@ -249,9 +248,9 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 					}
 				}
 			}
-			static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-6");
+			static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 			std::vector<std::pair<int,int>> counts = (*i).has_attribute("count")
-				? utils::parse_ranges((*i)["count"]) : default_counts;
+				? utils::parse_ranges_unsigned((*i)["count"]) : default_counts;
 			if(!in_ranges(match_count, counts)) {
 				return false;
 			}

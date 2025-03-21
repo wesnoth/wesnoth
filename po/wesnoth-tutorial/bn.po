@@ -1,0 +1,2419 @@
+# #-#-#-#-#  wesnoth-tutorial  #-#-#-#-#
+# Bengali translation of Wesnoth.
+# Copyright (C) 2024 Wesnoth development team
+# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: bn\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"PO-Revision-Date: 2024-02-21 09:49+0530\n"
+"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
+"Language-Team: Bengali < >\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  wesnoth-tutorial  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:11
+#, fuzzy
+#| msgid "Battle Training"
+msgid "Battle Training — Old Tutorial"
+msgstr "লড়াইয়ের প্রশিক্ষণ"
+
+#. [difficulty]
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
+msgid "Tutorial"
+msgstr "প্রশিক্ষণ"
+
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#| "first-time players."
+msgid ""
+"Learn the basics of Wesnoth gameplay with a tutorial.\n"
+"    \n"
+msgstr ""
+"একটি প্রশিক্ষণের মাধ্যমে ওয়েসনথ খেলার সাধারণ নিয়মগুলি শিখুন । প্রথম যারা ওয়েসনথ "
+"খেলছেন তাঁদের জন্য ।"
+
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:23
+msgid ""
+"Note: No longer recommended for first-time players. Try <i>The South Guard</"
+"i> instead."
+msgstr ""
+
+#. [difficulty]
+#: data/campaigns/tutorial/_main.cfg:33
+msgid "Beginner"
+msgstr "শিক্ষানবিস"
+
+#. [achievement_group]
+#: data/campaigns/tutorial/achievements.cfg:3
+#, fuzzy
+#| msgid "Tutorial"
+msgid "Old Tutorial"
+msgstr "প্রশিক্ষণ"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:7
+msgid "Completed the Tutorial"
+msgstr "প্রশিক্ষণ সম্পূর্ণ"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:8
+msgid "Complete the Battle Training."
+msgstr "লড়াইয়ের প্রশিক্ষণ সম্পূর্ণ ।"
+
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:19
+msgid "Select Character"
+msgstr "চরিত্র নির্বাচন"
+
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:30
+msgid "Who do you want to play as?"
+msgstr "আপনি কোনো চরিত্রের হয়ে খেলতে চান?"
+
+#. [widget]: id=name
+#. [side]: type=Fighter, id=student
+#: data/campaigns/tutorial/gui/character_selection.cfg:106
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
+msgid "Konrad"
+msgstr "কনরাড"
+
+#. [widget]: id=name
+#. [lua]: wml_actions.select_character
+#. [modify_side]
+#: data/campaigns/tutorial/gui/character_selection.cfg:118
+#: data/campaigns/tutorial/lua/character_selection.lua:34
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
+msgid "Li’sar"
+msgstr "লি'সার"
+
+#. [scenario]: id=tutorial
+#. Hello, translators! The tutorial is meant to be a bit funny at the start,
+#. welcoming new players. Please keep the friendly fun feeling!
+#. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
+#. or https://discord.gg/battleforwesnoth.
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
+msgid "Wesnoth Tutorial — Part I"
+msgstr "ওয়েসনথ প্রশিক্ষণ — প্রথম অংশ"
+
+#. [side]: type=Fighter, id=student
+#. [side]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
+msgid "team_name^Student"
+msgstr "শিক্ষার্থী"
+
+#. [unit]: id=Delfador, type=Elder Mage
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
+msgid "Delfador"
+msgstr "ডেল্‌ফাডোর"
+
+#. [objectives]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
+msgid ""
+"You will learn the basics of:\n"
+"• <small>Movement</small>\n"
+"• <small>Attacking</small>\n"
+"• <small>Healing</small>\n"
+"• <small>Recruiting</small>"
+msgstr ""
+"আপনি\n"
+"• <small>চলা</small>\n"
+"• <small>আক্রমণ</small>\n"
+"• <small>চিকিৎসা</small>\n"
+"• <small>নতুন সৈন্য নিয়োগ</small>\n"
+"এর মূল নিয়মগুলি শিখবেন ।"
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
+msgid "Destroy a fierce enemy"
+msgstr "ভয়ংকর শত্রুকে ধ্বংস করুন"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
+msgid "Get yourself killed"
+msgstr "নিজে মৃত "
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
+msgid ""
+"You cannot end your turn until you have completed the lesson on movement!"
+msgstr "চলাফেরার ওপর অধ্যায়টি সম্পূর্ণ না করে আপনি নিজের দান শেষ করতে পারবেন না!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:160
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:168
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
+msgid "Welcome to Wesnoth!"
+msgstr "ওয়েসনথ-এ স্বাগতম"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:148
+msgid ""
+"This is a two-part tutorial intended for people who are new to the game. "
+"Part 1 will teach you the basics about movement, attacking, healing, and "
+"recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
+msgstr ""
+"এই দুই অংশের প্রশিক্ষণটি মূলত যারা এই খেলায় নতুন তাদের জন্য । প্রথম অংশে আপনি চলা, "
+"আক্রমণ, চিকিৎসা এবং নতুন সৈন্য নিয়োগের মূল নিয়মগুলি শিখবেন । প্রথমে, একজন নায়ক "
+"পছন্দ করুন (খেলার দিকে থেকে দুজনেই সমান) ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:162
+msgid ""
+"For this tutorial, you are playing as Konrad. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
+msgstr ""
+"এই প্রশিক্ষণে আপনি কনরাড-এর হয়ে খেলছেন । আপনি দূর্গে-এ দাঁড়িয়ে রয়েছেন, এবং আপনার "
+"প্রশিক্ষক ডেলফাডোর নদীর পূর্বদিকে রয়েছেন । আপনি একটি ইউনিটের ওপর মাউস নিয়ে গেলে "
+"স্ক্রিনের ডানদিকে তার দক্ষতা এবং পরিসংখানগুলি দেখতে পাবেন ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:170
+msgid ""
+"For this tutorial, you are playing as Li’sar. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
+msgstr ""
+"এই প্রশিক্ষণে আপনি লি'সার-এর হয়ে খেলছেন । আপনি দূর্গে-এ দাঁড়িয়ে রয়েছেন, এবং আপনার "
+"প্রশিক্ষক ডেলফাডোর নদীর পূর্বদিকে রয়েছেন । আপনি একটি ইউনিটের ওপর মাউস নিয়ে গেলে "
+"স্ক্রিনের ডানদিকে তার দক্ষতা এবং পরিসংখানগুলি দেখতে পাবেন ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:176
+msgid "Click on Konrad"
+msgstr "কনরাড-এর ওপর ক্লিক করুন"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:178
+msgid "Click on Li’sar"
+msgstr "লি'সার-এর ওপর ক্লিক করুন"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:320
+msgid "To undo your last move, press <b>u</b> or use the right-click menu."
+msgstr ""
+"আপনার শেষ দানটি ফিরিয়ে নিতে <b>u</b> টিপুন অথবা রাইট-ক্লিক মেনু ব্যবহার করুন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
+msgid "Movement"
+msgstr "চলা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
+msgid ""
+"When you hover over or select a unit, in this case Konrad, the places he can "
+"move to are highlighted. All units have a certain number of <i>movement "
+"points</i>, which dictate how many hexes that unit can move per turn. "
+"Normally, moving one hex on flat terrain uses one movement point. To move, "
+"simply click on Konrad and then your destination. (You can press <b>u</b> to "
+"undo a move if you move to the wrong place.)"
+msgstr ""
+"যখন আপনি একটি ইউনিটের ওপরে মাউস নিয়ে যান, এক্ষেত্রে কনরাড, তখন সে যেখানে যেতে "
+"পারে সেই স্থানগুলি উজ্জ্বল হয়ে ওঠে । প্রত্যেক ইউনিটের একটি নির্দিষ্ট সংখ্যাক "
+"<i>স্থানান্তর সংখ্যা</i> রয়েছে, যা নির্দিষ্ট করে দেয় যে সেই ইউনিট এক দানে কতগুলি "
+"ঘর যেতে পারবে । সাধারণত সমতল ভূমিতে এক ষড়ভুজ যেতে একটি স্থানান্তর সংখ্যা খরচ হয় । "
+"সরানোর জন্য, কনরাডের ওপর ক্লিক করে আপনার গন্তব্য স্থানটিতে ক্লিক করুন । (ভুল স্থানে "
+"চলে গেলে আপনি <b>u</b> টিপে দানটি ফিরিয়ে নিতে পারেন ।)"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:366
+msgid ""
+"When you hover over or select a unit, in this case Li’sar, the places she "
+"can move to are highlighted. All units have a certain number of <i>movement "
+"points</i>, which dictate how many hexes that unit can move per turn. "
+"Normally, moving one hex on flat terrain uses one movement point. To move, "
+"simply click on Li’sar and then your destination. (You can press <b>u</b> to "
+"undo a move if you move to the wrong place.)"
+msgstr ""
+"যখন আপনি একটি ইউনিটের ওপরে মাউস নিয়ে যান, এক্ষেত্রে লি'সার, তখন সে যেখানে যেতে "
+"পারে সেই স্থানগুলি উজ্জ্বল হয়ে ওঠে । প্রত্যেক ইউনিটের একটি নির্দিষ্ট সংখ্যাক "
+"<i>স্থানান্তর সংখ্যা</i> রয়েছে, যা নির্দিষ্ট করে দেয় যে সেই ইউনিট এক দানে কতগুলি "
+"ঘর যেতে পারবে । সাধারণত সমতল ভূমিতে এক ষড়ভুজ যেতে একটি স্থানান্তর সংখ্যা খরচ হয় । "
+"সরানোর জন্য, লি'সারের ওপর ক্লিক করে আপনার গন্তব্য স্থানটিতে ক্লিক করুন । (ভুল স্থানে "
+"চলে গেলে আপনি <b>u</b> টিপে দানটি ফিরিয়ে নিতে পারেন ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:376
+msgid "Move Konrad next to Delfador"
+msgstr "কনরাডকে ডেলফাডোরের পাশে সরান"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:378
+msgid "Move Li’sar next to Delfador"
+msgstr "লি'সারকে ডেলফাডোরের পাশে সরান"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
+msgid "Good morning, Delfador! Is it time to attack things?"
+msgstr "সুপ্রভাত, ডেলফাডোর মহাশয়! কোনোকিছুকে আক্রমণের সময় হয়েছে কি?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:407
+msgid "female^Good morning, Delfador! Is it time to attack things?"
+msgstr "সুপ্রভাত, ডেলফাডোর মহাশয়! কোনোকিছুকে আক্রমণের সময় হয়েছে কি?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
+msgid "Um, well..."
+msgstr "হুম্, আসলে..."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
+msgid "Have you found an orc for me to fight, huh? A troll?"
+msgstr "আপনি কী আমার সঙ্গে লড়াইয়ের জন্য একজন ওর্ক-কে খুঁজে পেয়েছেন? নাকি ট্রোলকে ?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:418
+msgid "female^Have you found an orc for me to fight, huh? A troll?"
+msgstr ""
+"আপনি আমার সঙ্গে লড়াইয়ের জন্য একজন ওর্ক-কে খুঁজে পেয়েছেন কী? নাকি একজন ট্রোলকে "
+"পেয়েছেন?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:423
+msgid "Quiet! I will summon an enemy for you..."
+msgstr "কথা নয়! আমি তোমার জন্য এক শত্রুকে ডেকে আনছি ..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
+msgid "... this quintain!"
+msgstr "... এই কুইন্টেনটা!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
+msgid "A quintain? You want me to fight a dummy?"
+msgstr "কুইন্টেন? আপনি চান আমি একটা নকলের সঙ্গে লড়াই করি?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:487
+msgid "female^A quintain? You want me to fight a dummy?"
+msgstr "কুইন্টেন? আপনি চান আমি একটা নকলের সঙ্গে লড়াই করি?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:493
+msgid ""
+"Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
+"you’ll win."
+msgstr ""
+"যুবক, তোমার কাছে $student_hp জীবনসংখ্যা এবং একটা তলোয়ার রয়েছে । আমি প্রায় "
+"নিশ্চিত তুমি জিতবে ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:498
+msgid ""
+"female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
+"sure you’ll win."
+msgstr ""
+"তরুণী, তোমার কাছে $student_hp জীবনসংখ্যা এবং একটা তলোয়ার রয়েছে । আমি প্রায় "
+"নিশ্চিত তুমি জিতবে ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:504
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:509
+msgid "Attacking"
+msgstr "আক্রমণ করা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
+msgid ""
+"To attack the quintain, first select the attacker (Konrad), then the target "
+"(the quintain). You will see an attack description. Click <b>Attack</b> when "
+"you’re ready."
+msgstr ""
+"কুইন্টেনটিকে আক্রমণ করার জন্য প্রথমে আক্রমণকারীকে (কনরাড), তারপর আক্রান্তকে "
+"(কুইন্টেনটি) পছন্দ করুন । আপনি আক্রমণের একটি বর্ণনা দেখতে পাবেন । প্রস্তুত হলে "
+"<b>আক্রমণ</b> টিপুন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:510
+msgid ""
+"To attack the quintain, first select the attacker (Li’sar), then the target "
+"(the quintain). You will see an attack description. Click <b>Attack</b> when "
+"you’re ready."
+msgstr ""
+"কুইন্টেনটিকে আক্রমণ করার জন্য প্রথমে আক্রমণকারীকে (লি'সার), তারপর আক্রান্তকে "
+"(কুইন্টেনটি) পছন্দ করুন । আপনি আক্রমণের একটি বর্ণনা দেখতে পাবেন । প্রস্তুত হলে "
+"<b>আক্রমণ</b> টিপুন ।"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
+msgid "You cannot end your turn until you have attacked the dummy!"
+msgstr "আপনি নকলটিকে আক্রমণ না করে আপনার দান শেষ করতে পারবেন না !"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:534
+msgid "Hey! This quintain fights back!"
+msgstr "আশ্চর্য! কুইন্টেনটা পাল্টা আক্রমণ করছে!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
+msgid "Hmm, perhaps we should have started with a doll."
+msgstr "হুম, মনে হয় আমাদের একটা পুতুলকে নিয়ে শুরু করা উচিত ছিল ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:544
+msgid "Should I retreat?"
+msgstr "আমার কী পালানো উচিত?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:545
+msgid "female^Should I retreat?"
+msgstr "আমার কী পালানো উচিত?"
+
+#. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1078
+msgid "Good idea!"
+msgstr "ভালো বুদ্ধি!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:576
+msgid ""
+"Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
+"now gets to attack."
+msgstr ""
+"দূর্ভাগ্যক্রমে, কুইন্টেনটিকে আক্রমণ করে তুমি তোমার দানটি ব্যয় করে ফেলেছ । এখন "
+"কুইন্টেনটি আক্রমণ করার সুযোগ পাবে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:581
+msgid "The <i>dummy</i> gets a turn?"
+msgstr "এই <i>নকল মূর্তিটা</i> একটা দান পাবে?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
+msgid ""
+"Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
+msgstr ""
+"হ্যাঁ । এটা একটা জাদুচালিত কুইন্টেন! এটা তোমাকে আঘাত করলে 3 একক ক্ষতি করবে, এবং "
+"আঘাত করার 5টি সুযোগ পাবে । যদি এটার আঘাত প্রত্যেকবার সফল হয়, তাহলে তোমার "
+"জীবনসংখ্যা $student_hp থেকে $($student_hp-15) -তে নেমে যাবে । নিজেকে সামলাও!"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:592
+msgid "Turns"
+msgstr "দান"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
+msgid ""
+"Every turn, each side in a scenario gets a chance to make their move. Once "
+"you’ve completed everything you wish to do this turn, click on the <b>End "
+"Turn</b> button in the bottom right of the screen. The other sides, whether "
+"controlled by the AI or other human players, will then make their move. Some "
+"scenarios must be completed in a certain number of turns. You can see what "
+"turn it is, and any applicable turn limit, next to the flag icon at the top "
+"of the screen."
+msgstr ""
+"প্রত্যেক দানে, সেই ঘটনাক্রমের প্রত্যেক পক্ষ কিছু করার একটি সুযোগ পায় । আপনার সবকিছু "
+"করা হয়ে যাওয়ার পর, স্ক্রিনের নীচে ডানদিকে থাকা <b>দান শেষ</b> বাটনটি টিপুন । "
+"এখন অন্য পক্ষগুলি, মানুষ বা এ-আই নিয়ন্ত্রিত, কিছু করার সুযোগ পাবে । কিছু ঘটনাক্রম একটি "
+"সুনির্দিষ্ট সংখ্যাক দানের মধ্যেই শেষ করতে হয় । স্ক্রিনের ওপরে থাকা পতাকা ছবির পাশে "
+"আপনি বর্তমান দান এবং দানের যদি কোনো সীমা থেকে থাকে, তা দেখতে পাবেন ।"
+
+#. [event]
+#. [else]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:678
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:790
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:498
+msgid "End your turn"
+msgstr "দান শেষ করুন ।"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:619
+msgid ""
+"You cannot end your turn until you have completed the lesson on healing!"
+msgstr "আপনি চিকিৎসার ওপর অধ্যায়টি সম্পূর্ণ না করে আপনার দান শেষ করতে পারবেন না!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:634
+msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
+msgstr "আহ্! আমাকে সুস্থ হতে হবে! আর মাত্র $student_hp সংখ্যক জীবন সংখ্যা অবশিষ্ট!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:635
+msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
+msgstr "আহ্! আমাকে সুস্থ হতে হবে! আর মাত্র $student_hp সংখ্যক জীবন সংখ্যা অবশিষ্ট!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:640
+msgid ""
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
+msgstr ""
+"তোমার নাগালের মধ্যে দুটি গ্রাম রয়েছে । গ্রামে যাওয়া ভালো, এবং একটি গ্রামে তোমার "
+"দান শেষ করলে সেটি তোমাকে সুস্থ করবে । গ্রামে চলো!"
+
+#. [label]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:645
+msgid "Village"
+msgstr "গ্রাম"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:658
+msgid "Move Konrad to a nearby village"
+msgstr "কনরাডকে একটি নিকটবর্তী গ্রামে সরান ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
+msgid "Move Li’sar to a nearby village"
+msgstr "লি'সারকে একটি নিকটবর্তী গ্রামে সরান ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
+msgid "Villages"
+msgstr "গ্রাম"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:673
+msgid ""
+"You have captured a village! It now flies your colors and has been added to "
+"your total village count (the house icon at the top of the screen shows how "
+"many villages you currently control). Villages provide the gold needed to "
+"recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
+msgstr ""
+"তুমি একটি গ্রামকে নিজের নিয়ন্ত্রণে এনেছ! এটি এখন তোমার রঙের পতাকা ওড়াচ্ছে এবং "
+"তোমার মোট গ্রামের সংখ্যায় যোগ হয়ে গিয়েছে (স্ক্রিনের ওপরে থাকা গ্রামের ছবির পাশে "
+"বর্তমানে নিয়ন্ত্রণে থাকা গ্রামের সংখ্যা দেখতে পাবে) । নতুন ইউনিট নিয়োগের জন্য "
+"প্রয়োজনীয় স্বর্ণ গ্রাম থেকে আসে । প্রত্যেক দানে আপনি 2 স্বর্ণ এবং প্রত্যেক নিয়ন্ত্রিত "
+"গ্রামের জন্য 1 স্বর্ণ পাবেন ।"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
+msgid ""
+"You cannot end your turn until you have completed the lesson on recruiting!"
+msgstr ""
+"আপনি সৈন্য নিয়োগের ওপর অধ্যায়টি সম্পূর্ণ না করে আপনার দান শেষ করতে পারবেন না!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+msgid ""
+"Since you started your turn on a village, you regained some health! Villages "
+"heal units 8 hitpoints per turn, or enough to top off their health, "
+"whichever is less. In your case, you regained $student_hp_heal_amount "
+"hitpoints."
+msgstr ""
+"যেহেতু তুমি একটি গ্রামে নিজের দান শুরু করেছিলেন, তাই তুমি কিছুটা সুস্থ হয়েছ! প্রত্যেক "
+"দানে একটি গ্রাম হয় তোমার 8 জীবনসংখ্যা ফিরিয়ে দেবে, নতুবা তোমার জীবনসংখ্যা সম্পূর্ণ "
+"ভর্তি করে দেবে, যেটি এর মধ্যে কম । তুমি $student_hp_heal_amount সংখ্যক জীবন "
+"সংখ্যা ফিরে পেয়েছ ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:702
+msgid "Now, it’s time to summon some help against that quintain."
+msgstr "এখন, ওই কুইন্টেনের বিরুদ্ধে কিছুটা সাহায্য নেওয়ার সময় হয়েছে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
+msgid "I’ll recruit some elves!"
+msgstr "আমি কয়েকজন এল্ফকে নিয়োগ করব!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:708
+msgid "female^I’ll recruit some elves!"
+msgstr "আমি কয়েকজন এল্ফকে নিয়োগ করব!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:713
+msgid ""
+"A splendid idea! It’s probably best not to attempt attacking the quintain "
+"this turn. Instead, you should return to the keep and recruit two units; you "
+"have plenty of gold for that."
+msgstr ""
+"খুব ভালো বুদ্ধি! এই দানে কুইন্টেনটিকে আক্রমণ করা হয়তো ঠিক হবে না । তার পরিবর্তে, "
+"তোমার উচিত দূর্গে ফিরে গিয়ে দুজন ইউনিটকে নিয়োগ করা; তোমার কাছে যথেষ্ট স্বর্ণ রয়েছে "
+"।"
+
+#. [label]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
+msgid "Keep"
+msgstr "দূর্গ"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:732
+msgid "Move Konrad to the keep"
+msgstr "কনরাডকে দূর্গে সরান"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:734
+msgid "Move Li’sar to the keep"
+msgstr "লি'সারকে দূর্গে সরান"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:751
+msgid "Recruiting"
+msgstr "সৈন্য নিয়োগ"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:752
+msgid ""
+"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
+"tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
+"newly recruited units cannot act the turn you recruit them; you will be able "
+"to use them next turn. For this scenario, you have only one type of unit to "
+"choose from: the Elvish Fighter."
+msgstr ""
+"<i>দূর্গে</i> দাঁড়িয়ে থাকাকালীন, আপনি তার চারপাশে থাকা প্রাসাদ টাইলগুলির ওপর রাইট-"
+"ক্লিক করে <i>নিয়োগ</i> পছন্দ করে নতুন ইউনিট <i>নিয়োগ</i> করতে পারেন । মনে "
+"রাখবেন নতুন নিয়োগ করা ইউনিটগুলি নিয়োগ করার দানে কিছু করতে পারবে না; আপনি পরবর্তী "
+"দান থেকে তাদের ব্যবহার করতে পারবেন । এই ঘটনাক্রমের জন্য, আপনার কাছে নিয়োগ করার "
+"জন্য একটিমাত্র ইউনিট রয়েছে: এল্ফ যোদ্ধা ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
+msgid "Recruit two Elvish Fighters"
+msgstr "দুজন এল্ফ যোদ্ধাকে নিয়োগ করুন"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
+msgid "Crowns"
+msgstr "মুকুট"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:776
+msgid ""
+"The tiny golden crown above your leader (Konrad) indicates he is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep him safe!"
+msgstr ""
+"আপনার দলনেতার মাথার ওপরে থাকা ছোট সোনালি মুকুটটি জানিয়ে দেয় যে সে (কনরাড) এক "
+"পক্ষের দলনেতা । অধিকাংশ ঘটনাক্রমেই আপনার লিডার মারা পড়লে আপনি হেরে যাবেন । তাই "
+"তাকে সুরক্ষিত রাখুন!"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:781
+msgid ""
+"The tiny golden crown above your leader (Li’sar) indicates she is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep her safe!"
+msgstr ""
+"আপনার দলনেতার মাথার ওপরে থাকা ছোট সোনালি মুকুটটি জানিয়ে দেয় যে সে (লি‌'সার) এক "
+"পক্ষের দলনেতা । অধিকাংশ ঘটনাক্রমেই আপনার লিডার মারা পড়লে আপনি হেরে যাবেন । তাই "
+"তাকে সুরক্ষিত রাখুন!"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:824
+msgid ""
+"You cannot end your turn until you have completed the lesson on attacking!"
+msgstr "আক্রমণের ওপরে অধ্যায়টি সম্পূর্ণ না করে আপনি আপনার দান শেষ করতে পারবেন না!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:833
+msgid ""
+"Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
+msgstr "কুইন্টেনটা তো 2টি জীবনসংখ্যা ফিরে পেল! আমাকে ওটাকে এক্ষুণি আক্রমণ করতে হবে!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:834
+msgid ""
+"female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
+"once!"
+msgstr "কুইন্টেনটা তো 2টি জীবনসংখ্যা ফিরে পেল! আমাকে ওটাকে এক্ষুণি আক্রমণ করতে হবে!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
+msgstr ""
+"হ্যাঁ, একটা ইউনিট যদি কোনো দানে কিছু না করে, তাহলে সেটি ক্রমশ সুস্থ হতে থাকবে ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:844
+msgid ""
+"Before you send your fighters against the quintain, you should know they "
+"have two kinds of attacks..."
+msgstr ""
+"তোমার যোদ্ধাদের কুইন্টেনটার বিরুদ্ধে লড়াই করতে পাঠাবার আগে তোমার জানা উচিত, তাদের "
+"দুই ধরণের আক্রমণ রয়েছে..."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:849
+msgid "I’ll tell them to use the one that does more damage!"
+msgstr "যে আক্রমণটায় বেশী ক্ষতি হয় আমি তাদের সেটা ব্যবহার করতে বলব!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
+msgid "female^I’ll tell them to use the one that does more damage!"
+msgstr "যে আক্রমণটায় বেশী ক্ষতি হয় আমি তাদের সেটা ব্যবহার করতে বলব!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+msgid ""
+"And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
+"attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
+"suppose you’ll find out..."
+msgstr ""
+"আর সেটি কোনটি? তলোয়ার  (5×4; বা প্রত্যেক আঘাতে 5 ক্ষতি, এরকম 4টি আক্রমণ) নাকি "
+"ধনুক (3×3; বা প্রত্যেক আঘাতে 3 ক্ষতি, এরকম 3টি  আক্রমণ)? আমার অনুমান তুমি বুঝতে "
+"পারবে..."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
+msgid "Attack the quintain with your fighters"
+msgstr "আপনার যোদ্ধাদের দিয়ে কুইন্টেনটার ওপর আক্রমণ করুন"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:862
+msgid "Traits"
+msgstr "বৈশিষ্ট্য"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+msgid ""
+"Be sure to examine the <i>traits</i> of your new recruits. They are listed "
+"under its race in the sidebar. Traits can subtly affect how you use your "
+"troops. For example, units with the <i>quick</i> trait can move an extra hex "
+"each turn, and units with the <i>intelligent</i> trait require 20% less "
+"experience to level up."
+msgstr ""
+"নতুন নিযুক্ত ইউনিটগুলির <i>বৈশিষ্ট্যগুলি</i> দেখে নিতে ভুলবেন না । সেগুলি সাইডবারে "
+"তার প্রজাতির নীচে লেখা থাকে । আপনি কীভাবে আপনার সৈন্যগুলিকে চালনা করবেন "
+"বৈশিষ্ট্যগুলি তা পরোক্ষভাবে প্রভাবিত করে । উদাহরণস্বরূপ, <i>দ্রুত</i> বৈশিষ্ট্য বিশিষ্ট "
+"ইউনিটগুলি প্রত্যেক দানে একটি ঘর বেশী যেতে পারে, আর <i>বুদ্ধিমান</i> বৈশিষ্ট্যের "
+"ইউনিটগুলির পরবর্তী পর্যায়ে উন্নীত হতে 20% কম অভিজ্ঞতা লাগে ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
+msgid ""
+"You wouldn’t do anything stupid like charging that quintain yourself again, "
+"now would you? Use the fighters you recruited first; they’ll be a lot of "
+"help."
+msgstr ""
+"তুমি নিশ্চয়ই আবার বোকার মতো নিজে কুইন্টেনটাকে আক্রমণ করতে যাবে না, যাবে কি? তুমি "
+"যে যোদ্ধাদের নিয়োগ করেছ তাদের ব্যবহার করো; তারা অনেক সাহায্য করবে ।"
+
+#. [message]: speaker=Delfador
+#. a strong elf, so +1 damage
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+msgid ""
+"Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
+"is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
+"or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
+"have been safer."
+msgstr ""
+"তোমার এল্ফ তলোয়ার দিয়ে আক্রমণ করেছে (6×4; বা প্রত্যেক আঘাতে 6 ক্ষতি, এরকম 4টি "
+"আক্রমণ), যা একটি <i>নিকট</i> আক্রমণ । কুইন্টেনটি নিজের নিকট আক্রমণ দিয়ে নিজের "
+"সুরক্ষা করেছে (3×5; বা প্রত্যেক আঘাতে 3 ক্ষতি, এরকম 5টি আক্রমণ) । দূরবর্তী আক্রমণটি "
+"(ধনুক) বেশী নিরাপদ হত ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+msgid ""
+"Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
+"the <i>strong</i> trait, which increases the damage output of melee attacks."
+msgstr ""
+"এল্ফ যোদ্ধারা সাধারণ তাদের তলোয়ার দিয়ে 5×4 ক্ষতি করে থাকে, কিন্তু এই এল্ফটির "
+"<i>শক্তিশালী</i> বৈশিষ্ট্যটি রয়েছে, যা নিকট আক্রমণের শক্তিকে বাড়িয়ে দেয় ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
+msgid ""
+"Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
+"is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
+"or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
+"have been safer."
+msgstr ""
+"তোমার এল্ফ তলোয়ার দিয়ে আক্রমণ করেছে (5×4; বা প্রত্যেক আঘাতে 5 ক্ষতি, এরকম 4টি "
+"আক্রমণ), যা একটি নিকট আক্রমণ । কুইন্টেনটি নিজের নিকট আক্রমণ দিয়ে নিজের সুরক্ষা "
+"করেছে (3×5; বা প্রত্যেক আঘাতে 3 ক্ষতি, এরকম 5টি আক্রমণ) । দূরবর্তী আক্রমণটি (ধনুক) "
+"বেশী নিরাপদ হত ।"
+
+#. [message]: speaker=Delfador
+#. a dextrous elf, so +1 damage
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
+msgid ""
+"Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
+"each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
+"attack, so it could not defend itself."
+msgstr ""
+"তোমার এল্ফ ধনুক দিয়ে আক্রমণ করেছে (4×3; বা প্রত্যেক আঘাতে 4 ক্ষতি, এরকম 3টি "
+"আক্রমণ), যা একটি দূরবর্তী আক্রমণ । কুইন্টেনটির কোনো দূরবর্তী আক্রমণ নেই, শুধু একটি নিকট "
+"আক্রমণ রয়েছে, তাই সেটি নিজেকে বাঁচাতে পারেনি ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+msgid ""
+"Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
+"<i>dextrous</i> trait, which increases the damage output of ranged attacks."
+msgstr ""
+"এল্ফ যোদ্ধারা সাধারণ তাদের ধনুক দিয়ে 3×3 ক্ষতি করে থাকে, কিন্তু এই এল্ফটির <i>দক্ষ</"
+"i> বৈশিষ্ট্যটি রয়েছে, যা দূরবর্তী আক্রমণের শক্তিকে বাড়িয়ে দেয় ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
+msgid ""
+"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
+"each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
+"attack, so it could not defend itself."
+msgstr ""
+"তোমার এল্ফ ধনুক দিয়ে আক্রমণ করেছে (3×3; বা প্রত্যেক আঘাতে 3 ক্ষতি, এরকম 3টি "
+"আক্রমণ), যা একটি দূরবর্তী আক্রমণ । কুইন্টেনটির কোনো দূরবর্তী আক্রমণ নেই, শুধু একটি নিকট "
+"আক্রমণ রয়েছে, তাই সেটি নিজেকে বাঁচাতে পারেনি ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
+msgid "Keep attacking with both elves until the quintain is finished!"
+msgstr ""
+"উভয় এল্ফকে দিয়ে আক্রমণ করাতে থাকো যতক্ষণ পর্যন্ত না কুইন্টেনটি পরাজিত হয়ে যাচ্ছে!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
+msgid "Maybe you should recruit another elf?"
+msgstr "হয়তো তোমার আরও একটি এল্ফকে নিয়োগ করা উচিত?"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1000
+msgid "Unit Descriptions"
+msgstr "ইউনিটের বর্ণনা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+msgid ""
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
+msgstr ""
+"আপনি একটি ইউনিট রাইট-ক্লিক করে একটি বিস্তৃত <b>ইউনিটের বর্ণনা</b> দেখতে পারেন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1010
+msgid "Protect Your Troops"
+msgstr "নিজের সেনাদের রক্ষা করো"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1011
+msgid ""
+"Remember to pull back wounded units into villages and recruit more if "
+"needed. Take special care of units with the highest <i>experience points "
+"(XP)</i> so they can gain levels and become more powerful."
+msgstr ""
+"ভুলে যেও না, আহত ইউনিটদের গ্রামে ফিরিয়ে আনবে এবং প্রয়োজন পড়লে আরও নিয়োগ করবে । "
+"সর্বাধিক <i>অভিজ্ঞতা সংখ্যা</i> বিশিষ্ট ইউনিটদের বিশেষ যত্নে রাখবে যেন তারা "
+"পরবর্তী পর্যায়ে গিয়ে আরও শক্তিশালী হয়ে উঠতে পারে ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1020
+msgid "Support"
+msgstr "সাহায্য"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1021
+msgid ""
+"Each village you control will <i>support</i> one unit for free. After that, "
+"each unit costs you one gold per turn."
+msgstr ""
+"প্রত্যেক গ্রাম বিনামূল্যে আপনার একটি ইউনিটের <i>ভারবহন</i> করবে । তারপর, প্রত্যেক "
+"ইউনিটের জন্য আপনার প্রত্যেক দানে এক স্বর্ণ ব্যয় হবে ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1031
+msgid "You had really better finish off that quintain."
+msgstr "তোমার ওই কুইন্টেনটাকে হারিয়ে ফেলা ভালো হবে ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
+msgid "Advancement"
+msgstr "উন্নয়ণ"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
+msgid ""
+"When a unit gains enough experience points (the <i>experience bar</i>, if "
+"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
+"level. Elvish Fighters have two advancement options, and you will be able to "
+"choose which one you want. However, second level units cost twice as much to "
+"support as first level units."
+msgstr ""
+"যখন একটি ইউনিট যথেষ্ট অভিজ্ঞতা লাভ করে (<i>অভিজ্ঞতার বার</i> যদি থাকে তাহলে তা "
+"<i>জীবনসংখ্যার বারের</i> <i>ডানদিকে</i> থাকবে), সে এক পর্যায় এগিয়ে যাবে । এল্ফ "
+"যোদ্ধাদের দুটি উন্নয়ণের পথ রয়েছে, এবং আপনি তাদের মধ্যে যেকোনো একটি পছন্দ করতে "
+"পারবেন । তবে, দ্বিতীয় পর্যায়ের ইউনিটদের ভারবহনের খরচ প্রথম পর্যায়ের ইউনিটদের "
+"দ্বিগুণ ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
+msgid "Defenses"
+msgstr "সুরক্ষা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1052
+msgid ""
+"Whenever one of your units is selected, you’ll see varying percentages as "
+"you move the mouse over the map. The higher the percentage, the more "
+"<i>defense</i> that unit has in that kind of terrain. For example, most "
+"units have good defenses in castles and villages but poor defenses in "
+"rivers. Some units, like these quintains, have a <i>magical</i> attack, "
+"which always has a 70% chance of hitting no matter what terrain their "
+"targets occupy."
+msgstr ""
+"আপনার কোনো ইউনিট নির্বাচিত হয়ে থাকলে, আপনি মাউসটিকে মানচিত্রের ওপর সরালে "
+"নানারকম শতাংশ দেখতে পাবেন । এই শতাংশটি যত বেশী হবে, ওই ইউনিটটি ওই ভূমিতে তত "
+"বেশী  <i>সুরক্ষা </i> পাবে । উদাহরণ স্বরূপ, অধিকাংশ ইউনিট প্রাসাদ এবং গ্রামে অধিক "
+"সুরক্ষা পায় কিন্তু নদীতে তাদের সুরক্ষা খুবই কম ।  লক্ষ্য যে ভূমিতেই দাঁড়িয়ে থাকুক, কিছু "
+"ইউনিটদের, যেমন এই কুইন্টেনদের, একটি  <i>জাদু </i> আক্রমণ থাকতে পারে, যার আঘাত "
+"করার সম্ভাবনা সবসময়েই 70% ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1064
+msgid "Agh! This training is too much for me..."
+msgstr "আহ্! এই প্রশিক্ষণটা আমার জন্য খুব কঠিন হয়ে যাচ্ছে..."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1065
+msgid "female^Agh! This training is too much for me..."
+msgstr "আহ্! এই প্রশিক্ষণটা আমার জন্য খুব কঠিন হয়ে যাচ্ছে..."
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1101
+msgid "The quintain is destroyed, and I have gained more experience!"
+msgstr "কুইন্টেনটা ধ্বংস হয়েছে, এবং আমি আরও অভিজ্ঞতা অর্জন করেছি!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1106
+msgid ""
+"Yes, you gain experience through battle, especially by killing an opponent. "
+"Gain enough experience and you’ll become more powerful."
+msgstr ""
+"হ্যাঁ, তুমি লড়াইয়ের মাধ্যমে অভিজ্ঞতা অর্জন করতে পারো, বিশেষত একটি প্রতিপক্ষকে নিহত "
+"করে । যথেষ্ট অভিজ্ঞতা অর্জন করলে তুমি আরও শক্তিশালী হয়ে উঠবে ।"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1112
+msgid ""
+"Now, Konrad, I will leave you with more dummies to practice on! After that, "
+"we have real work to do..."
+msgstr ""
+"কনরাড, এখন আমি তোমাকে অভ্যাসের জন্য আরও কিছু নকল মূর্তি দিয়ে যাচ্ছি! তারপর, আমাদের "
+"সত্যি সত্যি কিছু কাজ করতে হবে..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1117
+msgid ""
+"Now, Li’sar, I will leave you with more dummies to practice on! After that, "
+"we have real work to do..."
+msgstr ""
+"লি'সার, এখন আমি তোমাকে অভ্যাসের জন্য আরও কিছু নকল মূর্তি দিয়ে যাচ্ছি! তারপর, "
+"আমাদের সত্যি সত্যি কিছু কাজ করতে হবে..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1179
+msgid "Note"
+msgstr "টীকা"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1181
+msgid ""
+"These dummies only attack if you are a single tile away. With care, you "
+"should be able to kill them one at a time."
+msgstr ""
+"তুমি ওদের এক ঘরের মধ্যে থাকলে তবেই এই নকল মূর্তিগুলি তোমাকে আক্রমণ করবে । সতর্কভাবে "
+"খেললে, তুমি এক এক করে তাদের ধ্বংস করতে পারবে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1190
+msgid ""
+"Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
+"next?"
+msgstr ""
+"আমার মনে হয় আমি মূল নিয়মগুলো শিখতে পেরেছি! এগিয়ে যাওয়া যাক! হয়তো এবারে আমি "
+"একটা সত্যি লড়াইয়ে অংশগ্রহণ করতে পারি?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1191
+msgid ""
+"female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
+"battle next?"
+msgstr ""
+"আমার মনে হয় আমি মূল নিয়মগুলো শিখতে পেরেছি! এগিয়ে যাওয়া যাক! হয়তো এবারে আমি "
+"একটা সত্যি লড়াইয়ে অংশগ্রহণ করতে পারি?"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1206
+msgid "Victory"
+msgstr "জয়"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1207
+msgid ""
+"After your victory notice, the map will be grayed out to indicate that the "
+"scenario is over; this is called <i>linger mode</i>. You will still be able "
+"to examine the final positions and state of your troops and any surviving "
+"enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
+"to the next scenario in the campaign."
+msgstr ""
+"ঘটনাক্রম শেষ হওয়ার বোঝাবার জন্য, জয়ের বার্তার পর, মানচিত্রটি ধূসর হয়ে যাবে; এটি "
+"হল <i>অপেক্ষমান অবস্থা</i>. আপনি এখন আপনার এবং বেঁচে থাকা প্রতিপক্ষ সৈন্যদের চুড়ান্ত "
+"অবস্থা এবং পরিস্থিতি দেখতে পারবেন । সবকিছু দেখে নেওয়ার পর, <b>ঘটনাক্রম শেষ</b> "
+"বাটনটি টিপে আপনি পরবর্তী ঘটনাক্রমে যেতে পারেন ।"
+
+#. [scenario]: id=2_Tutorial
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
+msgid "Wesnoth Tutorial — Part II"
+msgstr "ওয়েসনথ প্রশিক্ষণ — দ্বিতীয় অংশ"
+
+#. [side]: type=Orcish Warrior, id=Thrag
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
+msgid "team_name^Orcs"
+msgstr "ওর্করা"
+
+#. [side]: type=Orcish Warrior, id=Thrag
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
+msgid "Thrag"
+msgstr "থ্রাগ"
+
+#. [unit]: id=Galdrad, type=Elvish Champion
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:110
+msgid "Galdrad"
+msgstr "গ্যালড্রাড"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:124
+msgid "I hope I have a chance to retreat after this!"
+msgstr "আশা করছি এর পর আমি বেঁচে ফেরার একটা সুযোগ পাবো!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:125
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
+msgstr "একজন ওর্ক গ্রান্টের সঠিক আক্রমণ, আর আমি শেষ!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
+msgid "I could make use of some healing in a village."
+msgstr "গ্রামে কিছুটা সুস্থ হতে পারলে আমার ভালো হত ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:127
+msgid "I had better retreat, before I get caught out with such low health!"
+msgstr "এত দূর্বল অবস্থায় ধরা পড়া আগে, আমার পালানো শ্রেয়!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:128
+msgid "female^I hope I have a chance to retreat after this!"
+msgstr "আশা করছি এর পর আমি বেঁচে ফেরার একটা সুযোগ পাবো!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
+msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
+msgstr "একজন ওর্ক গ্রান্টের সঠিক আক্রমণ, আর আমি শেষ !"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
+msgid "female^I could make use of some healing in a village."
+msgstr "গ্রামে কিছুটা সুস্থ হতে পারলে আমার ভালো হত ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:131
+msgid ""
+"female^I had better retreat, before I get caught out with such low health!"
+msgstr "এত দূর্বল অবস্থায় ধরা পড়ার আগে, আমার পালানো শ্রেয়!"
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:136
+msgid "Defeat the Orc Leader"
+msgstr "ওর্ক দলনেতাকে পরাজিত করুন"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:141
+msgid "Death of Konrad"
+msgstr "কনরাডের মৃত্যু"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:152
+msgid "Death of Li’sar"
+msgstr "লি'সার-এর মৃত্যু"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
+msgid "Death of Galdrad"
+msgstr "গ্যালড্রাডের মৃত্যু"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:184
+msgid ""
+"You cannot end your turn until you have recruited troops and captured a "
+"village!"
+msgstr ""
+"আপনি সৈন্য নিয়োগ এবং কোনো গ্রামকে নিয়ন্ত্রণে না এনে নিজের দান শেষ করতে পারবেন না!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
+msgid ""
+"Welcome back! This is the second part of the two-part tutorial. Part 2 will "
+"teach you about recalling units, abilities and weapon specials, income and "
+"upkeep, long-distance movement, zone of control, and time of day."
+msgstr ""
+"পুনরায় স্বাগত! এটি দুই-অংশবিশিষ্ট প্রশিক্ষণের দ্বিতীয়াংশ । দ্বিতীয় এই অংশে আপনি "
+"ইউনিটদের পুনরায় ডাকা, বিশেষ দক্ষতা এবং অস্ত্রের বিশেষত্ব, আয় এবং ব্যয়, বেশী দূরত্বে "
+"চলাফেরা, নিয়ন্ত্রণের ক্ষেত্র এবং দিনের সময়ের সম্পর্কে শিখবেন ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
+msgid ""
+"Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
+"of scarecrows, perhaps?"
+msgstr ""
+"এই যে, গ্যালড্রাড! ডেলফাডোর মহাশয় কী আমাকে হারাবার জন্য নতুন কিছু তৈরী করেছেন? "
+"কাকতাড়ুয়াদের একটা দল, হয়তো?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:204
+msgid ""
+"female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
+"flock of scarecrows, perhaps?"
+msgstr ""
+"এই যে, গ্যালড্রাড! ডেলফাডোর মহাশয় কী আমাকে হারাবার জন্য নতুন কিছু তৈরী করেছেন? "
+"কাকতাড়ুয়াদের একটা দল, হয়তো?"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
+msgid ""
+"This is no game, Konrad! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
+msgstr ""
+"এটা কোনো খেলা নয়, কনরাড! ওর্করা নদীর অপর পারে সৈন্যশিবির স্থাপন করেছে । এটা "
+"এল্ফদের এলাকা; ওরা এখানে প্রবেশ করে মূর্খের মতো কাজ করেছে । আমরা এল্ফরা দ্রুত এবং "
+"জঙ্গলে আমাদের আঘাত করা অত্যন্ত কঠিন । ওরা যেন আমাদের পুনরায় বিপদে না ফেলতে পারে "
+"তার জন্য তোমাকে ওদের দলনেতাকে পরাজিত করতেই হবে । আমি তোমাকে সাহায্য করব ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
+msgid ""
+"This is no game, Li’sar! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
+msgstr ""
+"এটা কোনো খেলা নয়, লি'সার! ওর্করা নদীর অপর পারে সৈন্যশিবির স্থাপন করেছে । এটা "
+"এল্ফদের এলাকা; ওরা এখানে প্রবেশ করে মূর্খের মতো কাজ করেছে । আমরা এল্ফরা দ্রুত এবং "
+"জঙ্গলে আমাদের আঘাত করা অত্যন্ত কঠিন । ওরা যেন আমাদের পুনরায় বিপদে না ফেলতে পারে "
+"তার জন্য তোমাকে ওদের দলনেতাকে পরাজিত করতেই হবে । আমি তোমাকে সাহায্য করব ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
+msgid "What should I do?"
+msgstr "আমার কী করা উচিত?"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:222
+msgid "female^What should I do?"
+msgstr "আমার কী করা উচিত?"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:225
+msgid ""
+"First, we will have to deal with the Orcish Grunt stationed in the middle of "
+"the river. He should be little trouble."
+msgstr ""
+"প্রথমে, আমাদের নদীর মাঝে থাকা ওর্ক গ্রান্টটির ব্যবস্থা করতে হবে । এতে খুব বেশী "
+"অসুবিধা হওয়ার কথা নয় ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:227
+msgid ""
+"By then, their leader will have recruited more units to send against us and "
+"the real fight will begin."
+msgstr ""
+"ততক্ষণে ওদের দলনেতা আরও ইউনিট নিয়োগ করে আমাদের বিরুদ্ধে পাঠিয়ে দেবে এবং প্রকৃত "
+"লড়াই শুরু হবে ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
+msgid ""
+"See this dark blue water? It’s too deep for either side to cross. The orcs "
+"could slowly wade through that narrow band of shallow lighter-blue water in "
+"the north; but we could stand on the shore and force them to fight us from "
+"the water, where they are exposed and we are protected by the forest."
+msgstr ""
+"ওই ঘন নীল রঙের জল দেখতে পাচ্ছ? এটা এতটাই গভীর যে দুই দলের পক্ষেই এটাকে অতিক্রম "
+"করা সম্ভব নয় । ওর্করা ওই মাঝে থাকা হালকা নীল রঙের অগভীর জল দিয়ে কোনো রকমে হেঁটে "
+"উত্তরে আসতে পারে; কিন্তু আমরা নদীর ধারে দাঁড়িয়ে ওদের জল দাঁড়ানো অবস্থাতেই লড়াই "
+"করতে বাধ্য করতে পারি, যেখানে ওদের কোনো সুরক্ষা নেই, কিন্তু আমরা অরণ্যের দ্বারা "
+"সম্পূর্ণ সুরক্ষিত ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
+msgid ""
+"The more likely attack, then, is across the bridge. That middle island is "
+"the key: it has a village for healing injured units and forests in which we "
+"fight so well."
+msgstr ""
+"তাই সেতুটির ওপর দিয়েই আক্রমণ হওয়ার সম্ভাবনা বেশী । মাঝের ওই দ্বীপটি এই সমস্যার "
+"চাবিকাঠি: ওখানে আহত ইউনিটদের সুস্থ করার জন্য একটি গ্রাম এবং অরণ্য রয়েছে, যেখান "
+"থেকে আমরা খুব ভালো লড়াই করতে পারি ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:235
+msgid "Let’s go! Attack!"
+msgstr "তাহলে চলো! আক্রমণ!"
+
+#. [message]: speaker=student
+#. The "us" in "let's" refers to Galdrad and Li'sar.
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
+msgid "female^Let’s go! Attack!"
+msgstr "তাহলে চলো! আক্রমণ!"
+
+#. [message]: speaker=Galdrad
+#. Addressing Konrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:244
+msgid ""
+"Hang on! You need to gather your forces. Or do you intend to fight the orcs "
+"single-handedly?"
+msgstr ""
+"দাঁড়াও! আগে তোমাকে নিজের সৈন্যদের ডাকতে হবে । তুমি একা-হাতে ওর্কদের সঙ্গে লড়াই "
+"করবে নাকি?"
+
+#. [message]: speaker=Galdrad
+#. Addressing Li'sar
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:250
+msgid ""
+"female^Hang on! You need to gather your forces. Or do you intend to fight "
+"the orcs single-handedly?"
+msgstr ""
+"দাঁড়াও! আগে তোমাকে নিজের সৈন্যদের ডাকতে হবে । তুমি একা-হাতে ওর্কদের সঙ্গে লড়াই "
+"করবে নাকি?"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
+msgid ""
+"I see you have veteran troops from your training! You should <i>recall</i> "
+"them so as to start off the battle with more experienced units. Think "
+"carefully, though; if a unit has too little experience, it might be better "
+"to recruit a new one."
+msgstr ""
+"আমি দেখতে পাচ্ছি তোমার কাছে প্রশিক্ষণ থেকে পাওয়া অভিজ্ঞ সৈন্য রয়েছে! তোমাকে তাদের "
+"<i>পুনরায় ডাকা</i> উচিত, এতে তুমি অভিজ্ঞ সৈন্য নিয়ে লড়াই শুরু করার সুযোগ পাবে । তবে "
+"ভালোভাবে ভেবে কাজ করবে; যদি কোনো ইউনিটের খুব কম অভিজ্ঞতা থাকে, তাহলে তাকে "
+"ডাকার থেকে নতুন ইউনিটকে নিয়োগ করা ভালো হবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
+msgid ""
+"Some of your units have also managed to level up. They’re even more "
+"formidable, so you should recall them as well."
+msgstr ""
+"তোমার কিছু ইউনিট পরবর্তী পর্যায়ে উন্নীত হতে পেরেছে । তারা আরও বিপজ্জনক, তাই তোমার "
+"তাদের পুনরায় ডাকা উচিত ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
+msgid ""
+"Unfortunately, none of your troops survived your training, so you will have "
+"to recruit new units. If you had any veteran troops, you could have "
+"<i>recalled</i> them to battle this scenario. More experienced units would "
+"have been of help against these orcs."
+msgstr "দূর্ভাগ্যক্রমে, তোমার সৈন্যদের কেউই"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:291
+msgid "Recalling"
+msgstr "পুনরায় ডাকা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
+msgid ""
+"In addition to recruiting new units each scenario, you can also <i>recall</"
+"i> your experienced veterans from previous scenarios, for the cost of 20 "
+"gold each. This allows you to build up a formidable army over the course of "
+"multiple scenarios by recalling your highest leveled troops or those with "
+"good combinations of traits and abilities. To recall a unit, right-click "
+"while your leader stands on a keep and select the <i>Recall</i> option. "
+"Remember to also recruit new troops in addition to recalling old ones."
+msgstr ""
+"প্রত্যেক ঘটনাক্রমে নতুন ইউনিট নিয়োগ করা ছাড়াও, আপনি 20 স্বর্ণের বিনিময়ে পূর্ববর্তী "
+"ঘটনাক্রম থেকে আপনার <i>অভিজ্ঞ সৈন্যদের</i> পুনরায় ডাকতে পারেন । এভাবে আপনার যে "
+"সকল ইউনিটদের ভালো বৈশিষ্ট্য এবং বিশেষ দক্ষতা রয়েছে তাদের পুনরায় ডেকে আপনি একাধিক "
+"ঘটনাক্রম ধরে একটি শক্তিশালী সেনাবাহিনী তৈরী করতে পারেন । একটি ইউনিটকে পুনরায় "
+"ডাকার জন্য যখন আপনার দলনেতা একটি দূর্গের ওপর দাঁড়িয়ে রয়েছে, তখন ডানদিকে ক্লিক করে "
+"পুনরায় নিয়োগ অপশনটি নির্বাচন করুন ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:297
+msgid ""
+"You also have two new types of units to recruit this scenario: Elvish "
+"Archers and Elvish Shamans. I’ll tell you more about them when you recruit "
+"them. Personally, I would recommend a balanced force of two archers, two "
+"fighters, and a shaman."
+msgstr ""
+"এই ঘটনাক্রম তুমি দুটি নতুন ধরণের ইউনিটকে নিয়োগ করতে পারো: এল্ফ ধনুর্ধর এবং এল্ফ "
+"শামান । তুমি তাদের নিয়োগ করলে আমি তাদের সম্পর্কে তোমাকে আরও জানাবো । আমার নিজের "
+"অভিমত অনুযায়ী, আমি তোমাকে দুজন ধনুর্ধর, দুজন যোদ্ধা এবং একজন শামানের একটি "
+"সামঞ্জস্যপূর্ণ দল নিয়োগ করতে বলব ।"
+
+#. [event]
+#. [on_undo]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:300
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:551
+msgid "Recruit or recall your troops"
+msgstr "সৈন্য নিয়োগ করুন বা পুনরায় ডাকুন"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:314
+msgid "Elvish Shaman"
+msgstr "এল্ফ শামান"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:315
+msgid ""
+"The Shaman has the ability to <i>heal</i> friendly units around her. She "
+"also has a special attack which <i>slows</i> enemies, halving the damage "
+"they do for one turn. However, she’s physically weaker than fighters and "
+"archers, so be careful when sending her into battle."
+msgstr ""
+"শামান তার চারপাশে থাকা মিত্র ইউনিটদের <i>সুস্থ</i> করতে পারে । তাছাড়া তার একটা "
+"বিশেষ আক্রমণ আছে যা প্রতিপক্ষ ইউনিটদের <i>ধীরগতি</i> করে দিতে পারে, এতে "
+"প্রতিপক্ষরা এক দানের জন্য অর্ধেক ক্ষতি করবে । তবে, শামান যোদ্ধা এবং ধনুর্ধরদের থেকে "
+"শারীরিকভাবে দূর্বল, তাই তাকে সতর্কভাবে লড়াইয়ে পাঠিও ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:320
+msgid "The <i>Heal</i> Ability"
+msgstr "বিশেষ দক্ষতা <i>চিকিৎসা</i>"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
+msgid ""
+"At the start of each turn, allied units adjacent to a Shaman will recover 4 "
+"hitpoints, which is only half of the amount that a village would provide. "
+"The Shaman doesn’t gain experience from healing, only from combat, but "
+"advancing her is worthwhile — her second-level Elvish Druid advancement has "
+"healing equivalent to a village.\n"
+"\n"
+"A detailed explanation of healing may be found in the <i>Gameplay</i> "
+"section of the help (default hotkey: <b>F1</b>)."
+msgstr ""
+"প্রত্যেক দানের শুরুতে, শামানের কাছে থাকা মিত্র ইউনিটরা 4 জীবনসংখ্যা ফিরে পাবে, যা "
+"গ্রাম থেকে ফিরে পাওয়া জীবনসংখ্যার অর্ধেক । শামান শুধু লড়াই থেকে অভিজ্ঞতা পায়, সুস্থ "
+"করার জন্য নয়, কিন্তু তাকে পরবর্তী পর্যায়ে উন্নীত করা লাভজনক -- তার দ্বিতীয় পর্যায়, "
+"এল্ফ অরণ্যযাজক সুস্থ করার ক্ষমতা গ্রামের সমপরিমাণ ।\n"
+"\n"
+"আরোগ্যকরণ সংক্রান্ত বিস্তারিত তথ্য সাহায্যের <i>খেলা</i> বিভাগে পাওয়া যাবে "
+"(স্বাভাবিক হট-কি: <b>F1</b>)."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:329
+msgid "Weapon Specials"
+msgstr "অস্ত্রের বিশেষত্ব"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
+msgid ""
+"Weapon specials are special attack modifiers that make certain attacks more "
+"powerful. In this case, the Shaman has the Slows special on her entangle "
+"attack. When this attack successfully hits an enemy, it will halve the "
+"damage they do for one turn. Other weapon specials include First Strike, "
+"which allows that attack to always hit first no matter who attacks first, "
+"and Magical, which gives that attack a constant 70% chance to hit.\n"
+"\n"
+"A full list of abilities and weapon specials, along with traits, may be "
+"found in the help (default hotkey: <b>F1</b>)."
+msgstr ""
+"অস্ত্রের বিশেষত্ব হল বিশেষ আক্রমণ পরিবর্তক যা কিছু আক্রমণকে আরও শক্তিশালী করে তোলে । "
+"এক্ষেত্রে, শামানের জড়িয়ে ফেলা আক্রমণে ধীরগতি বিশেষত্বটি রয়েছে । যখন এই আক্রমণটি "
+"সফলকে একজন শত্রুকে আঘাত করবে, তখন এক দানের জন্য তারা যা ক্ষতি করবে তা অর্ধেক হয়ে "
+"যাবে । অন্যান্য অস্ত্রের বিশেষত্বের মধ্যে রয়েছে প্রথম আঘাত, যেটি যে-ই প্রথমে আক্রমণ "
+"শুরু করুক না কেন, প্রথম-আঘাত যুক্ত আক্রমণটিকে প্রথমে আঘাত করতে দেয় এবং জাদু, যা "
+"সবসময়েই আক্রমণটির আঘাত করার সম্ভাবনা 70% করে দেয় ।\n"
+"দক্ষতা এবং অস্ত্রের বিশেষত্বের একটি সম্পূর্ণ তালিকা সাহায্যে পাওয়া যাবে(স্বাভাবিক "
+"হটকি: <b>F1</b>)."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:372
+msgid "Multiple Healers"
+msgstr "একাধিক আরোগ্যকারক"
+
+#. [message]: speaker=narrator
+#. both healers are level one elvish shamans
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
+msgid ""
+"You now have two healers. However, each unit can only receive healing from "
+"one healer — a unit will still only be healed 4 hitpoints per turn even when "
+"adjacent to both Shamans.\n"
+"\n"
+"If either Shaman advances to become a Druid, then she’ll be able to heal "
+"adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
+"healed by the most advanced one."
+msgstr ""
+"তোমার কাছে এখন দুজন আরোগ্যকারক রয়েছে । তবে একটি ইউনিট শুধুমাত্র একজন আরোগ্যকারকের "
+"কাছে থেকেই চিকিৎসা পেরে পারে — দুজন শামানের কাছে থাকলেও একটি ইউনিট দানের শুরুতে "
+"শুধুমাত্র 4 জীবনসংখ্যাই ফিরে পাবে ।\n"
+"\n"
+"যদি যেকোনো একজন শামান অরণ্যযাজকে উন্নীত হয়, তাহলে সে কাছে থাকা ইউনিটগুলিকে "
+"প্রত্যেক দানে 8 জীবনসংখ্যা পরিমাণ সুস্থ করতে পারবে । একটি ইউনিট যদি একাধিক "
+"আরোগ্যকারকের কাছে থাকে, তাহলে সে সবচেয়ে ভালো আরোগ্যকারকের কাছে থেকে চিকিৎসা "
+"পাবে ।"
+
+#. [message]: speaker=narrator
+#. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
+msgid ""
+"You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
+"per turn compared to your Shaman’s 4. However, each unit can only receive "
+"healing from one healer — a unit next to multiple healers is healed by the "
+"most advanced one."
+msgstr ""
+"আপনার কাছে এখন দুজন আরোগ্যকারক রয়েছে । শামানের 4 সংখ্যার তুলনায় আপনার অরণ্যযাজক "
+"নিকটবর্তী ইউনিটদের প্রত্যেক দানে 8 জীবনসংখ্যা পরিমাণ সুস্থ করতে পারে । তবে প্রত্যেক "
+"ইউনিট কেবলমাত্র একজন আরোগ্যকারকের কাছে থেকেই চিকিৎসা পেতে পারে—একটি ইউনিট "
+"একাধিক আরোগ্যকারকের পাশে থাকলে সে সবচেয়ে ভালো আরোগ্যকারকের কাছে থেকে চিকিৎসা "
+"পাবে ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
+msgid "Healers and Villages"
+msgstr "আরোগ্যকারক এবং গ্রাম"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:382
+msgid ""
+"A unit in a village will receive healing from the village instead of from "
+"adjacent healers."
+msgstr "গ্রাম থাকা কোনো ইউনিট আরোগ্যকারকদের পরিবর্তে গ্রাম থেকে চিকিৎসা পাবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:386
+msgid ""
+"Having more than one healer allows them to heal each other or to cover "
+"separate areas of the battlefield. It can also allow better tactical "
+"movement — the 2 hitpoints from rest-healing does combine with other sources "
+"of healing, so it’s often better to move a healer instead of an injured unit."
+msgstr ""
+"একাধিক আরোগ্যকারকরা পরস্পরকে সুস্থ করতে পারে বা যুদ্ধক্ষেত্রের আলাদা আলাদা এলাকায় "
+"কাজ করতে পারে । এতে যুদ্ধনীতি অনুসারে ভালো সৈন্যচালনা করা সম্ভব — দাঁড়িয়ে থাকার "
+"জন্য পাওয়া 2 জীবনসংখ্যা অন্যান্য উৎস থেকে ফিরে পাওয়া জীবনসংখ্যার সঙ্গে যোগ হল, তাই "
+"অনেক সময়েই আহত ইউনিটের পরিবর্তে আরোগ্যকারককে সরানো শ্রেয় ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:401
+msgid "Elvish Archer"
+msgstr "এল্ফ ধনুর্ধর"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:402
+msgid ""
+"Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
+"has strong ranged attacks. It’s useful to attack enemy units with strong "
+"melee attacks with strong ranged attacks, and vice versa. This allows your "
+"units to take less damage overall when your enemy counterattacks."
+msgstr ""
+"এল্ফ যোদ্ধা, যার শক্তিশালী নিকটবর্তী আক্রমণ রয়েছে, তার তুলনায় এল্ফ ধনুর্ধরের শক্তিশালী "
+"দূরবর্তী আক্রমণ আছে । প্রতিপক্ষের শক্তিশালী নিকট আক্রমণ বিশিষ্ট ইউনিটদের শক্তিশালী দূর "
+"আক্রমণ দিয়ে আঘাত করা সুবিধাজনক, এবং এর বিপরীতটিও সত্য । এতে প্রতিপক্ষ পাল্টা আক্রমণ "
+"করলে আপনার ইউনিটগুলির কম ক্ষতি হবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
+msgid ""
+"You certainly have a fondness for shamans, I see. They will provide a lot of "
+"healing, but not much offensive potential."
+msgstr ""
+"আমি দেখতে পাচ্ছি তুমি শামানদের ব্যবহার করতে পছন্দ করো । তারা খুব ভালো চিকিৎসা "
+"করতে পারে, কিন্তু তাদের আক্রমণের ক্ষমতা খুব একটা বেশী নয় ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
+msgid ""
+"While none of your recruited units can move yet, you still can. You need "
+"more income; there are some villages near the keep you can capture."
+msgstr ""
+"যদিও তোমার নিয়োগ করা ইউনিটরা কেউ এখন চলতে পারবে না, কিন্তু তুমি নিজে চলতে পারো "
+"। তোমার আরও আয়ের প্রয়োজন; তোমার দূর্গের কাছাকাছি কিছু দূর্গ আছে যেগুলি তুমি নিয়ন্ত্রণ "
+"করতে পারো ।"
+
+#. [event]
+#. [on_undo]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:564
+msgid "Capture a village"
+msgstr "গ্রাম নিয়ন্ত্রণ"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:445
+msgid "You still have to capture a village!"
+msgstr "আপনাকে এখনও একটা গ্রামকে নিয়ন্ত্রণে আনতে হবে!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:477
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:544
+msgid ""
+"You forgot to recruit troops! You can press <b>u</b> to undo your last move."
+msgstr ""
+"আপনি সৈন্যনিয়োগ করতে ভুলে গিয়েছেন! আপনি <b>u</b> টিপে আপনার শেষ দান ফিরিয়ে "
+"নিয়ে পারেন ।"
+
+#. [disallow_end_turn]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:480
+msgid "You still have to recruit troops!"
+msgstr "আপনাকে এখনও সৈন্যনিয়োগ করতে হবে!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:488
+msgid ""
+"Excellent! As Delfador mentioned earlier, each captured village will support "
+"one unit and provide you with 1 extra gold per turn."
+msgstr ""
+"আসাধারণ! ঠিক যেমন ডেলফাডোর বলেছিলেন, প্রত্যেক নিয়ন্ত্রিত গ্রাম একটি ইউনিটের "
+"ভারবহণ করবে এবং প্রত্যেক দানে তুমি 1 স্বর্ণ পাবে ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
+msgid "Income and Upkeep"
+msgstr "আয় এবং ব্যয়"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:493
+msgid ""
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
+"<i>upkeep</i> is subtracted from that. You can support as many levels worth "
+"of units as the number of villages you own; beyond that, you must pay 1 gold "
+"per turn. Be careful, as owning too many units can cause you to have "
+"negative income and lose gold each turn!"
+msgstr "প্রত্যেক দানে, আপনি নিজের নিয়ন্ত্রিত প্রত্যেক গ্রামের জন্য 2 স্বর্ণ পাবেন ।"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
+msgid ""
+"You forgot to capture a village! You can press <b>u</b> to undo your last "
+"move."
+msgstr ""
+"আপনি একটি গ্রামকে নিয়ন্ত্রণে আনতে ভুলে গিয়েছেন! আপনি <b>u</b> টিপে দানটি ফিরিয়ে "
+"নিতে পারেন ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
+msgid ""
+"Now, young man, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
+msgstr ""
+"যুবক, এখন পরিকল্পনা নিয়ে আলোচনা করা যাক । তোমার ইউনিটরা আক্রমণের জন্য প্রস্তুত, এবং "
+"ওই ওর্ক দলনেতাও তার নিজের সেনাদের একত্রিত করতে শুরু করেছে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
+msgid ""
+"Now, young lady, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
+msgstr ""
+"তরুণী, এখন পরিকল্পনা নিয়ে আলোচনা করা যাক । তোমার ইউনিটরা আক্রমণের জন্য প্রস্তুত, "
+"এবং ওই ওর্ক দলনেতাও তার নিজের সেনাদের একত্রিত করতে শুরু করেছে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
+msgid ""
+"Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
+"him quickly."
+msgstr ""
+"গ্যালড্রাড, যদি আমি ফোর্ড দিয়ে যাই, তাহলে আমি লুকিয়ে তার দূর্গের কাছে গিয়ে তাকে "
+"দ্রুত শেষ করতে পারি ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
+msgid ""
+"female^Galdrad, if I go by the ford, I could sneak up near his keep and "
+"dispatch him quickly."
+msgstr ""
+"গ্যালড্রাড, যদি আমি ফোর্ড দিয়ে যাই, তাহলে আমি লুকিয়ে তার দূর্গের কাছে গিয়ে তাকে "
+"দ্রুত শেষ করতে পারি ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
+msgid ""
+"You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+"You’ll be more vulnerable as you try to wade slowly across the ford; the "
+"enemy will have an 80% chance to hit you. Since elves have good defense in "
+"the forest, I would advise you keep to the trees and attack the orcs from "
+"there; your Fighters will only suffer a 40% chance of being hit in return, "
+"while Shamans and Archers will only incur a 30% chance."
+msgstr ""
+"সম্ভব । কিন্তু এল্ফদের (এবং ওর্কদের) জলে <i>সুরক্ষা</i> খুবই কম । জল ঠেলে ধীরে এগিয়ে "
+"যাওয়ার সময় তোমার বিপদের সম্ভাবনা বেশী; শত্রুর আঘাত লাগার 80% সম্ভবনা রয়েছে । "
+"যেহেতু অরণ্যে এল্ফদের সুরক্ষা বেশী, তাই আমি তোমাকে বলব গাছের আড়ালের মধ্যেই থাকো "
+"এবং সেখান থেকে ওর্কদের আক্রমণ করো; এতে তোমার যোদ্ধাদের আঘাত লাগার সম্ভাবনা 40%, "
+"এবং শামান ও ধনুর্ধরদের আঘাত লাগার সম্ভাবনা মাত্র 30% ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:598
+msgid ""
+"However, keep an eye on that ford. The orcs may try to sneak around behind "
+"our forces. It might do to send a few units to defend the banks, and the "
+"village there."
+msgstr ""
+"তবে ওই ফোর্ডটার ওপর নজর রাখবে । ওর্করা লুকিয়ে আমাদের সৈন্যদের পিছনে চলে আসার "
+"চেষ্টা করতে পারে । তাই নদীর ধার এবং সেখানের গ্রামটিকে সুরক্ষিত রাখা জন্য কয়েকটি "
+"ইউনিটকে সেখানে পাঠালে ভালো হয় ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:603
+msgid ""
+"Alright. The bridge it is, then, but I’ll be careful about the crossing."
+msgstr ""
+"ঠিক আছে । তাহলে সেতু দিয়েই আমরা যাচ্ছি, কিন্তু আমি ওই ফোর্ডটার ব্যাপারে সতর্ক থাকব ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
+msgid ""
+"female^Alright. The bridge it is, then, but I’ll be careful about the "
+"crossing."
+msgstr ""
+"ঠিক আছে । তাহলে সেতু দিয়েই আমরা যাচ্ছি, কিন্তু আমি ওই ফোর্ডটার ব্যাপারে সতর্ক থাকব ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
+msgid ""
+"That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
+"your archers should be able to engage him with little risk. Unfortunately, "
+"your units cannot reach him this turn, but you should not let them languish! "
+"Move them into position so they can attack next turn. There are also other "
+"villages on this side of the river. You should secure them for income and "
+"healing."
+msgstr ""
+"ওই ওর্ক গ্রান্টটি এখনও আমাদের পথরোধ করে দাঁড়িয়ে আছে । ওর কোনো দূর আক্রমণ নেই, তাই "
+"আমাদের ধনুর্ধরেরা খুব একটা ঝুঁকি ছাড়াই তার সঙ্গে লড়াই করতে পারবে । দূর্ভাগ্যক্রমে, "
+"তোমার ইউনিটরা এই দানে ওর কাছে পৌঁছতে পারবে না, কিন্তু তাই বলে তুমি তাদের বসে "
+"থাকতে দিও না! তাদেরকে সঠিক অবস্থানে পাঠাও, যেন তারা পরবর্তী দানে আক্রমণ করতে "
+"পারে । নদীর এই দিকে আরও গ্রাম আছে । আয় এবং চিকিৎসার জন্য সেগুলিকে তোমার নিজের "
+"নিয়ন্ত্রণে নিয়ে আসা উচিত ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:998
+msgid "Long-distance Movement"
+msgstr "লম্বা-দূরত্বে চলাফেরা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
+msgid ""
+"You can order a unit to move for multiple turns by selecting the unit and "
+"clicking on the destination. A number will indicate how many turns it will "
+"take to get there."
+msgstr ""
+"আপনি একটি ইউনিটকে নির্বাচন করে তার গন্তব্যে ক্লিক করে তাকে একাধিক দানের জন্য চলার "
+"নির্দেশ দিতে পারেন । একটি সংখ্যা আপনাকে দেখাবে যে সেখানে পৌঁছতে কতগুলি দান লাগবে "
+"।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:616
+msgid ""
+"I think I’ll stick around the keep for now, in order to recruit more units."
+msgstr "আমি ভাবছি আরও ইউনিট নিয়োগ করার জন্য আমি এখান দূর্গেই থাকব ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
+msgid ""
+"female^I think I’ll stick around the keep for now, in order to recruit more "
+"units."
+msgstr "আমি ভাবছি আরও ইউনিট নিয়োগ করার জন্য আমি এখান দূর্গেই থাকব ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:623
+msgid ""
+"You’ve learned well, Konrad. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+"তুমি ঠিকই শিখেছ, কনরাড । খেলার শুরুতে তোমার দলনেতাকে সুরক্ষিত এবং তোমার দূর্গের "
+"কাছাকাছি রাখাই ভালো । লড়াইয়ের গতি যেকোনো মুহূর্তে পাল্টে যেতে পারে, এবং সেক্ষেত্রে "
+"অতিরিক্ত সেনানিয়োগের সুযোগ না হারানোই শ্রেয় ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
+msgid ""
+"You’ve learned well, Li’sar. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+"তুমি ঠিকই শিখেছ, লি'সার । খেলার শুরুতে তোমার দলনেতাকে সুরক্ষিত এবং তোমার দূর্গের "
+"কাছাকাছি রাখাই ভালো । লড়াইয়ের গতি যেকোনো মুহূর্তে পাল্টে যেতে পারে, এবং সেক্ষেত্রে "
+"অতিরিক্ত সেনানিয়োগের সুযোগ না হারানোই শ্রেয় ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
+msgid "The tutorial isn’t meant to be this difficult"
+msgstr "প্রশিক্ষণটা এতটাও কঠিন হওয়ার কথা নয়"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:700
+msgid ""
+"The orc on the island was supposed to move over the bridge, so that he could "
+"be attacked by several elves at once. Something’s broken the scripted event, "
+"which will make the scenario harder by leaving him in a defensive position.\n"
+"\n"
+"Please report the bug."
+msgstr ""
+"দ্বীপে থাকা ওর্কটির সেতুর ওপরে চলে আসার কথা ছিল, যেন একাধিক এল্ফরা তাকে একসঙ্গে "
+"আঘাত করতে পারে । কোনো কারণে এই প্রোগ্রাম করা ঘটনাটি কাজ করছে না, এবং তার অধিক "
+"সুরক্ষিত স্থানে থাকার কারণ ঘটনাক্রমটি আরও কঠিন হয়ে যাবে ।\n"
+"\n"
+"অনুগ্রহ করে ত্রুটি-টি রিপোর্ট করুন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
+msgid "Tracking Enemy Movement"
+msgstr "প্রতিপক্ষের গতিবিধির ওপর নজর রাখা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
+msgid ""
+"You can see where an enemy can reach by moving the mouse over them. You can "
+"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
+"command from the <b>Actions</b> menu."
+msgstr ""
+"শত্রুর ওপরে মাউস নিয়ে গিয়ে আপনি দেখতে পারেন যে সে কতদূর যেতে পারে । একসঙ্গে শত্রুর "
+"সকল সম্ভাব্য দান দেখার জন্য <b>কাজগুলি</b> মেনু থেকে <b>শত্রুর দান দেখান</b> কমান্ড "
+"ব্যবহার করুন ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:716
+msgid "We must occupy that island before the Wolf Riders reach it!"
+msgstr "নেকড়ে আরোহীরা পৌঁছবার আগেই দ্বীপটা আমাদের নিয়ন্ত্রণে আনতে হবে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:721
+msgid "Can’t we just move around the orcs?"
+msgstr "আমরা কী ওর্কদের পাশে দিয়ে যেতে পারি না?"
+
+#. [message]: speaker=student
+#. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:723
+msgid "female^Can’t we just move around the orcs?"
+msgstr "আমরা কী ওর্কদের পাশে দিয়ে যেতে পারি না?"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
+msgid ""
+"No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
+"i> and cannot move further that turn. To move your troops onto that island "
+"without wading slowly through the water, you’ll have to kill the Grunt."
+msgstr ""
+"না । তুমি শত্রু ইউনিটের কাছে গেলেই তার <i>নিয়ন্ত্রণের ক্ষেত্রে</i> প্রবেশ করবে এবং "
+"সেই দানে আর সরতে পারবে না । জল না ঠেলে তোমার ইউনিটগুলিকে ওই দ্বীপে নিয়ে যেতে "
+"হলে তোমাকে আগে ওই গ্রান্টটিকে নিহত করতে হবে ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
+msgid "Zone of Control"
+msgstr "নিয়ন্ত্রণের ক্ষেত্র"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
+msgid ""
+"The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
+"When an enemy unit enters those hexes, they cannot move any further that "
+"turn. (An exception are units with the <i>skirmisher</i> ability, who are "
+"unaffected by zones of control.) This can be used to create a blockade to "
+"prevent stronger enemies from reaching key locations, such as villages, even "
+"if you have limited manpower."
+msgstr ""
+"একটি ইউনিটের <i>নিয়ন্ত্রণের ক্ষেত্র</i> তার ঠিক চারপাশে থাকা ষড়ভূজগুলি । কোনো শত্রু "
+"ইউনিট এই ষড়ভূজগুলিতে প্রবেশ করলে সে সেই দানে আর সরতে পারবে না । (একটি ব্যতিক্রম "
+"হল <i>লড়াকু</i> দক্ষতার ইউনিটগুলি, যাদের ওপর নিয়ন্ত্রণের ক্ষেত্র কাজ করে না ।) "
+"আপনার কাছে সীমিত সেনা থাকলেও এভাবে শক্তিশালী শত্রুদের গুরুত্বপূর্ণ স্থানে যাওয়ার পথে "
+"অবরোধ সৃষ্টি করা যেতে পারে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:769
+msgid ""
+"I hope I will survive the counter-attack if my units can’t take this grunt "
+"out this turn. I should order them to grab more villages if they can and "
+"move everyone closer for next turn."
+msgstr ""
+"আমি আশা করছি আমার ইউনিটগুলো এই দানে গ্রান্টটটাকে না হারাতে পারলে আমি পাল্টা "
+"আক্রমণটা সামলাতে পারব । সম্ভব হলে আমার তাদের আরও বেশী গ্রাম নিয়ন্ত্রণে আনার এবং "
+"সবাইকে পরবর্তী দানের জন্য কাছাকাছি আনার নির্দেশ দেওয়া উচিত ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
+msgid ""
+"If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
+"at the beginning of the next turn."
+msgstr ""
+"যদি তোমার একজন শামান তোমার ঠিক পিছনে দাঁড়ায়, তাহলে সে তোমাকে পরবর্তী দানের "
+"শুরুতে 4 জীবনসংখ্যা পরিমাণ সুস্থ করবে ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
+msgid ""
+"I hope my units will survive the counter-attack if I can’t take this grunt "
+"out this turn. I’d better grab more villages if I can and move everyone "
+"closer for next turn."
+msgstr ""
+"আমি আশা করছি আমার ইউনিটগুলো এই দানে গ্রান্টটাকে না হারাতে পারলে আমি পাল্টা "
+"আক্রমণটা সামলাতে পারব । সম্ভব হলে আমার তাদের আরও বেশী গ্রাম নিয়ন্ত্রণে আনার এবং "
+"সবাইকে পরবর্তী দানের জন্য কাছাকাছি আনার নির্দেশ দেওয়া উচিত ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:785
+msgid ""
+"If one of your Shamans stands just behind your wounded units, she will heal "
+"each of them 4 hitpoints at the beginning of the next turn."
+msgstr ""
+"যদি তোমার একজন শামান তোমার ঠিক পিছনে দাঁড়ায়, তাহলে সে তোমাকে পরবর্তী দানের "
+"শুরুতে 4 জীবনসংখ্যা পরিমাণ সুস্থ করবে ।"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
+msgid ""
+"One fewer orc to deal with, and our way across the bridge is clear! I also "
+"gained experience from striking the killing blow!"
+msgstr ""
+"একটা ওর্ক কমল, আর সেতুর ওপর আমাদের পথটাও পরিস্কার হল! আর আমি ওকে মারার জন্য "
+"অভিজ্ঞতা পেলাম!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:822
+msgid ""
+"female^One fewer orc to deal with, and our way across the bridge is clear! I "
+"also gained experience from striking the killing blow!"
+msgstr ""
+"একটা ওর্ক কমল, আর সেতুর ওপর আমাদের পথটাও পরিস্কার হল! আর আমি ওকে মারার জন্য "
+"অভিজ্ঞতা পেলাম!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:843
+msgid ""
+"Be careful! If you stand on the bridge you are exposed to attack from "
+"multiple directions! Even though the orcs have low defense in water, they "
+"will overwhelm you with their numbers."
+msgstr ""
+"খুব সাবধান! তুমি যদি সেতুর ওপরে দাঁড়িয়ে থাকো তাহলে তোমার ওপর একাধিক দিক থেকে "
+"আক্রমণ হতে পারে! যদিও ওর্কদের নদীতে সুরক্ষা কম, তবুও ওদের অধিক সংখ্যা দিয়ে ওরা "
+"তোমাকে হারিয়ে দেবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:859
+msgid ""
+"Well done! The island village is ours. You can use the trees to set up a "
+"blockade against the orcs; they can only come across the bridge one by one "
+"without wading through the water, and you will be securely on a terrain with "
+"good defense."
+msgstr ""
+"খুব ভালো! দ্বীপের এই গ্রামটি এখন আমাদের । তুমি এখানের গাছগুলিকে ব্যবহার করে ওর্কদের "
+"বাধা দিতে পারো; তারা জল দিয়ে আসার পরিবর্তে শুধু এক এক করে সেতুর ওপর দিয়েই আসতে "
+"পারবে, এবং তুমি ভালো সুরক্ষাবিশিষ্ট ভূমির ওপর নিরাপদে থাকবে ।"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:871
+msgid ""
+"Don’t forget about that last village near the channel. The orcs will capture "
+"it if they try to sneak around via the ford! It will be hard to dislodge "
+"them if they do."
+msgstr ""
+"খালের কাছে শেষ গ্রামটির কথা ভুলে যেও না । ওর্করা ওটা নিয়ন্ত্রণে নিয়ে নেবে যদি "
+"তারা ফোর্ড দিয়ে ঘুরে আসে! এরকম হলে ওখান থেকে তাদের সরানো খুব কঠিন হয়ে পড়বে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:888
+msgid ""
+"It’s very dangerous to stand in water when there are enemies about! Your "
+"unit will have an 80% chance of being hit. Get back, and wait for them to "
+"attack you!"
+msgstr ""
+"চারপাশে শত্রু থাকলে জলে দাঁড়িয়ে থাকা অত্যন্ত বিপজ্জনক! তোমার ইউনিটদের আক্রান্ত হওয়ার "
+"80% সম্ভাবনা থাকবে । পিছিয়ে এসো, এবং ওদের তোমাকে আক্রমণ করার অপেক্ষা করো!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:914
+msgid ""
+"You’re venturing away from your keep. You might need to recruit more units, "
+"and I doubt the orc leader will let you use his! Careful!"
+msgstr ""
+"তুমি তোমার দূর্গ থেকে দূরে চলে যাচ্ছো । তুমি হয়তো আরও ইউনিট নিয়োগ করতে চাইবে, কারণ "
+"ওর্ক দলনেতা নিশ্চয়ই তোমাকে তারগুলি ব্যবহার করতে দেবে না! সতর্ক!"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+msgid ""
+"When moving a unit, the percentages shown are the unit’s defense on that "
+"hex. The higher the number, the less likely they are to get hit."
+msgstr ""
+"একটি ইউনিটকে সরাবার সময়, ষড়ভূজগুলির ওপরে ফুটে ওঠা সংখ্যাগুলি হল সেই স্থানে "
+"ইউনিটটির সুরক্ষা । এই সংখ্যাটি যত বেশী হবে, তত ইউনিটটির সেখান আক্রান্ত হওয়ার "
+"সম্ভাবনা কমবে ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
+msgid ""
+"We need to occupy that village, otherwise they will take it soon! Move a "
+"unit into the village to stop the orcs capturing it. Whichever unit you "
+"choose will benefit from the village’s healing, too."
+msgstr ""
+"আমাদের ওই গ্রামটিকে নিয়ন্ত্রণে আনতে হবে, নয়তো ওরা খুব তাড়াতাড়ি ওটি নিয়ে নেবে! "
+"ওর্কদের গ্রামটিকে দখলে নেওয়া থামাবার জন্য একটি ইউনিটকে গ্রামে সরাও ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:944
+msgid ""
+"Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
+"attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
+"a noticeable difference. You are <i>lawful</i>: stronger by day and weaker "
+"at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
+"day."
+msgstr ""
+"সতর্ক! এখন রাত্রিবেলা । ওর্করা <i>বিশৃঙ্খল</i>, অর্থাৎ এখন তাদের আক্রমণ আরও 25% "
+"শক্তিশালী ।দিনের বেলায় তাদের আক্রমণ 25% দূর্বল, একটি বড় পার্থক্য । আপনি <i>নৈতিক</"
+"i>: দিনে শক্তিশালী, রাত্রে দূর্বল ।আপনার এল্ফ যোদ্ধারা <i>নিরপেক্ষ</i>: তারা দিনের "
+"সময়ের দ্বারা প্রভাবিত হয় না ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:947
+msgid "Time of Day"
+msgstr "দিনের সময়"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:948
+msgid ""
+"During a scenario, the time of day will shift as turns pass. There are four "
+"<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
+"alignment gets a different bonus or handicap depending on the time of day. "
+"You can hover over the sky image below the minimap on the right to see the "
+"current time of day and who has the advantage."
+msgstr ""
+"একটি ঘটনাক্রমের মধ্যে, দানগুলি অতিক্রান্ত হওয়ার সঙ্গে সঙ্গে দিনের সময়ও পাল্টাবে । "
+"একটি ইউনিটের চারটির মধ্যে যেকোনো একটি <i>স্বভাব</i> থাকতে পারে: নৈতিক, "
+"নিরপেক্ষ, বিশৃঙ্খল বা মধ্যবর্তী । দিনের সময়ের ওপর নির্ভর করে প্রত্যেক স্বভাব আলাদা "
+"সুবিধা বা অসুবিধা ভোগ করে । আপনি ডানদিক ছোটো ম্যাপের নীচে থাকা আকাশের ছবির ওপর "
+"মাউস নিয়ে গিয়ে বর্তমান দিনের সময় এবং কে সুবিধা পাচ্ছে তা দেখতে পারেন ।"
+
+#. [then]
+#. [else]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:977
+msgid ""
+"Remember to retreat your wounded units to villages. Shamans can only heal 4 "
+"hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
+"\n"
+"Different sources of healing are generally not combined. If a unit starts "
+"its turn next to multiple healers, or on a village and next to a healer, it "
+"will still be healed only once.\n"
+"\n"
+"Rest-healing is an exception to the rule — if a unit doesn’t do anything for "
+"a turn, it will heal 2 hitpoints in addition to any healing it may receive "
+"from villages or healers, combining for a total of up to 10 hitpoints per "
+"turn."
+msgstr ""
+"আপনার আহত ইউনিটদের গ্রামে ফিরিয়ে নিয়ে আসতে ভুলবেন না । শামানরা প্রত্যেক দানে শুধু "
+"4 জীবনসংখ্যা ফিরিয়ে দিতে পারে, কিন্তু গ্রামে তারা আরও দ্রুত 8 সংখ্যা প্রতি দান হারে "
+"সুস্থ হতে পারে ।\n"
+"\n"
+"সাধারণত একাধিক উৎস থেকে পাওয়া চিকিৎসা একসঙ্গে যোগ হয় না । যদি একটি ইউনিট "
+"একাধিক আরোগ্যকারকের পাশে নিজের দান শুরু করে, অথবা একজন আরোগ্যকারকের পাশে একটি "
+"গ্রামে দাঁড়িয়ে থাকে, তবুও সে শুধুমাত্র একবারই চিকিৎসা পাবে ।\n"
+"\n"
+"স্থির দাঁড়িয়ে থাকার কারণে ফিরে পাওয়া জীবনসংখ্যা এই নিয়মের ব্যতিক্রম — একটি ইউনিট "
+"যদি কোনো দানে কিছু না করে, তাহলে সেটি গ্রাম বা আরোগ্যকারকদের কাছে থেকে পাওয়া "
+"চিকিৎসার ওপরে আরও 2 পরিমাণ, অর্থাৎ দানে মোট 10 পরিমাণ জীবনসংখ্যা ফিরে পাবে ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1007
+msgid "Tracking Unused Units"
+msgstr "অব্যবহৃত ইউনিটদের ওপর নজর রাখা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
+msgid ""
+"You can ensure you use all your troops by pressing <b>n</b> to step from one "
+"unit to the next. If you press <b>space</b>, you can mark the currently "
+"selected unit as having finished its turn, which stops you moving it by "
+"accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
+"end your turn."
+msgstr ""
+"<b>n</b> টিপে এক ইউনিট থেকে পরবর্তী ইউনিটে গিয়ে আপনি নিশ্চিত করতে পারেন যে "
+"আপনার সব সেনাদের আপনি ব্যবহার করেছেন । <b>স্পেস</b> টিপে আপনি বর্তমানে নির্বাচিত "
+"ইউনিটটি নিজের দান শেষ করেছে বলে চিহ্নিত করতে পারেন, এতে আপনি পরে ভুল করে "
+"সেটিকে সরাতে পারবেন না । যখন <b>n</b> আর কোনো নতুন ইউনিটকে চিহ্নিত করছে না, "
+"তখন আপনি নিরাপদে আপনার দান শেষ করতে পারেন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
+msgid "Status Table"
+msgstr "অবস্থার টেবিল"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
+msgid ""
+"The Status Table details the sides’ current status and starting conditions. "
+"Fog and shroud will affect what you can see in this table, and occasionally "
+"a side may be hidden; however, it is still useful to check this table when a "
+"scenario begins. You can access it in the <b>Menu</b> menu."
+msgstr ""
+"অবস্থার টেবিল দলগুলির বর্তমান অবস্থা এবং তাদের শুরুর অবস্থার বিস্তারিত বিবরণ দেয় । "
+"এই টেবিলে আপনি কী দেখতে পাবেন তা কুয়াশা এবং ছায়ার দ্বারা প্রভাবিত হয়, এবং কখনও "
+"কখনও একটি দল লুকোনোও থাকতে পারে; তবে, ঘটনাক্রমের শুরু এটি একবার দেখে নেওয়াই ভালো "
+"। আপনি এটিকে <b>মেনু</b> মেনু থেকে খুলতে পারেন ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
+msgid "Speeding Up Animations"
+msgstr "অ্যানিমেশন দ্রুত করা"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1026
+msgid ""
+"Holding down <b>shift</b> will make the animations for moving and fighting "
+"quicker. The <b>acceleration factor</b> can be set, and turned on by "
+"default, in the <b>Preferences</b> menu’s <b>General</b> tab."
+msgstr ""
+"<b>সিফ্ট</b> টিপে রাখলে চলা এবং লড়াইয়ের অ্যানিমেশনগুলি দ্রুত হবে । "
+"<b>প্রেফারেন্সেস্</b> মেনুর <b>সাধারণ</b> ট্যাবে <b>দ্রুততার গুণিতক</b> কত হবে তা "
+"ঠিক করা সম্ভব ।"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1034
+msgid "Victory Conditions"
+msgstr "জেতার শর্ত"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1035
+msgid ""
+"In this scenario, you only need to defeat the orc leader to win. Victory "
+"conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
+"b> menu."
+msgstr "এই ঘটনাক্রমে, আপনাকে জেতার জন্য শুধু ওর্ক দলনেতাকে পরাজিত করতে হবে । "
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1044
+msgid "Hurry up and defeat the orcs before they become entrenched!"
+msgstr "জায়গাটা দখল করার আগেই তাড়াতাড়ি ওর্কদের পরাজিত করো ।"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
+msgid "I have enough gold to recruit more units!"
+msgstr "আরও ইউনিট নিয়োগ করার জন্য আমার কাছে পর্যাপ্ত স্বর্ণ আছে!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
+msgid "female^I have enough gold to recruit more units!"
+msgstr "আরও ইউনিট নিয়োগ করার জন্য আমার কাছে পর্যাপ্ত স্বর্ণ আছে!"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1082
+msgid "Recruit the Right Units"
+msgstr "সঠিক ইউনিট নিয়োগ"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1083
+msgid ""
+"Remember to recruit troops useful for the situation. Archers are "
+"particularly effective against Grunts, Wolf Riders and the orcish leader."
+msgstr ""
+"পরিস্থিতি অনুসারে ইউনিট নিয়োগ করার কথাটা মনে রাখবে । ধনুর্ধরেরা গ্রান্ট, নেকড়ে "
+"আরোহী এবং ওর্ক দলনেতার ওপর বিশেষভাবে কার্যকরী ।"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1122
+msgid ""
+"Beware of those orcs crossing the river! If they get into the forest they’ll "
+"be hard to dislodge!"
+msgstr ""
+"ওর্কদের নদী অতিক্রম করার বিষয়ে সতর্ক থাকবে! ওরা একবার অরণ্যে প্রবেশ করলে ওদের "
+"সরানো খুব কঠিন হয়ে পড়বে!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1162
+msgid ""
+"That unit is about one kill (8 experience points) away from gaining a level! "
+"Do not let it die!"
+msgstr ""
+"ওই ইউনিটটি আর একজনে নিহত করলেই (8টি অভিজ্ঞতা সংখ্যা) পরবর্তী পর্যায়ে উন্নীত হতে "
+"পারবে! ওকে মারা পড়তে দিও না!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1184
+msgid ""
+"Their leader has moved into that village! He’s not as stupid as I thought. "
+"The village heals him each turn and provides good defense."
+msgstr ""
+"ওদের দলনেতা ওই গ্রামে প্রবেশ করেছে! ওকে আমি যতটা বোকা ভেবেছিলাম ততটা নয় । "
+"গ্রামটি ওকে প্রত্যেক দানে কিছুটা সুস্থ করবে এবং ভালো সুরক্ষা দেবে ।"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1195
+msgid ""
+"That unit has captured our village! You’d better get him out; it heals him "
+"each turn and provides good defense."
+msgstr ""
+"ওই ইউনিটটি আমাদের গ্রামকে নিয়ন্ত্রণে নিয়ে নিয়েছে! তোমার ওকে ওখান থেকে বের করা "
+"উচিত হবে; গ্রামটি ওকে প্রত্যেক দানে সুস্থ করবে এবং ওকে ভালো সুরক্ষা দেবে ।"
+
+#. [message]: speaker=unit
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1208
+msgid ""
+"Using me to attack is risky! I can slow the opponent with my ranged attack, "
+"but I hope you have a plan if I miss!"
+msgstr ""
+"আমাকে দিয়ে আক্রমণ করানো ঝুঁকির কাজ! আমি প্রতিপক্ষকে আমার দূর আক্রমণ দিয়ে ধীরগতি "
+"করতে পারি, কিন্তু আমি আশা করব আক্রমণটি না লাগলে তার জন্যও আপনি কিছু ভেবে রেখেছেন!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
+msgid ""
+"You are close to killing their leader! Because he is second level, the unit "
+"who finishes him will gain 16 experience points. In a campaign, it’s "
+"important to decide which units you want to advance, and give those units "
+"the best chances to gain experience."
+msgstr ""
+"আপনি তাদের দলনেতাকে নিহত করার খুব কাছাকাছি! যেহেতু সে দ্বিতীয় পর্যায়ের ইউনিট, যে "
+"ইউনিট তাকে হারাবে সে 16 পরিমাণ অভিজ্ঞতা সংখ্যা পাবে । কোন ইউনিটদের আপনি পরবর্তী "
+"পর্যায়ে উন্নীত করতে চান সেটি ঠিক করা, এবং তাদের অভিজ্ঞতা অর্জনের সবচেয়ে ভালো "
+"সুযোগগুলি দেওয়া একটি ঘটনাক্রমে খুব জরুরী ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1228
+msgid "You have almost finished the tutorial"
+msgstr "আপনি এই প্রশিক্ষণটি প্রায় শেষ করে এনেছেন"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1230
+msgid ""
+"In a campaign you may have ten or even twenty scenarios to build your army, "
+"but this tutorial will conclude after you defeat Thrag."
+msgstr ""
+"একটি অভিযানে আপনি আপনার সেনাবাহিনী তৈরী করার জন্য দশ, এমনকী কুড়িটি ঘটনাক্রমও "
+"পেতে পারেন, কিন্তু আপনি থ্রাগকে হারালেই এই প্রশিক্ষণটি শেষ হয়ে যাবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
+msgid ""
+"We will miss $unit.name| because he had $unit.experience experience points. "
+"He would have advanced a level soon."
+msgstr ""
+"$unit.name|-এর কথা আমাদের খুব মনে পড়বে কারণ তার $unit.experience সংখ্যক "
+"অভিজ্ঞতা ছিল । সে শীঘ্রই পরবর্তী পর্যায়ে উন্নীত হত ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1262
+msgid ""
+"We will miss $unit.name| because she had $unit.experience experience points. "
+"She would have advanced a level soon."
+msgstr ""
+"$unit.name|-এর কথা আমাদের খুব মনে পড়বে কারণ তার $unit.experience সংখ্যক "
+"অভিজ্ঞতা ছিল । সে শীঘ্রই পরবর্তী পর্যায়ে উন্নীত হত ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
+msgid ""
+"We will miss $unit.name|, but at least he was not one of our experienced "
+"troops!"
+msgstr ""
+"আমাদের $unit.name|-এর কথা মনে পড়বে, তবে অন্ততপক্ষে সে আমাদের অভিজ্ঞ সেনাদের কেউ "
+"ছিল না ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1297
+msgid ""
+"We will miss $unit.name|, but at least she was not one of our experienced "
+"troops!"
+msgstr ""
+"আমাদের $unit.name|-এর কথা মনে পড়বে, তবে অন্ততপক্ষে সে আমাদের অভিজ্ঞ সেনাদের কেউ "
+"ছিল না ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
+msgid ""
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
+msgstr ""
+"উচ্চপর্যায়ের ইউনিটরা শক্তিশালী, কিন্তু অমর নয় । $unit.name|, তোমার কথা আমাদের মনে "
+"পড়বে ।."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1328
+msgid ""
+"Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
+msgstr ""
+"একজন আরোগ্যকারকে হারানে সম্পূর্ণ সেনাবাহিনীর ক্ষতি হয়! তাদের শত্রুদের নাগালের বাইরে "
+"রাখো!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1342
+msgid ""
+"Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
+"with many units at once during the day."
+msgstr ""
+"ওই ওর্ক দলনেতার থেকে সাবধান: সে রাত্রে 36 জীবনসংখ্যা পরিমাণ ক্ষতি করতে পারে! "
+"দিনের বেলায় একাধিক ইউনিট নিয়ে আক্রমণ করো ।"
+
+#. [message]: speaker=unit
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1356
+msgid ""
+"Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
+"per turn, instead of just 4, and may also cure them of poison if they cannot "
+"reach a village! I also have gained a new <i>magical</i> attack, meaning it "
+"always has a 70% chance to hit, but it is not as powerful as the similar "
+"attack wielded by the Elvish Sorceress."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি এখন 4-এর পরিবর্তে, প্রত্যেক "
+"দানে 8 জীবনসংখ্যা পরিমাণ সুস্থ করতে পারি, এবং বিষ থেকেও সুস্থ করতে পারি যদি কেউ "
+"গ্রামে না পৌঁছতে পারে! তাছাড়া আমি একটা নতুন <i>জাদু</i> আক্রমণ পেয়েছি, অর্থাৎ এটার "
+"আঘাতের সম্ভবনা সবসময়েই 70%, কিন্তু এটা এল্ফ জাদুকরীদের একই ধরণের আক্রমণটার মতো "
+"অতটা শক্তিশালী নয় ।"
+
+#. [message]: speaker=unit
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1370
+msgid ""
+"Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
+"but to compensate, I have a new, powerful faerie fire attack that deals 7 "
+"damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
+"meaning it always has a 70% chance to hit."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি এখন আর নিকটবর্তী ইউনিটদের "
+"চিকিৎসা করতে পারি না, কিন্তু তার পরিবর্তে আমার একটা নতুন, শক্তিশালী পরীর আগুন "
+"আক্রমণ আছে, যা 4-বার 7 পরিমাণ ক্ষতি করে । এটার বিশেষ বৈশিষ্ট্য হল <i>জাদু</i>, "
+"অর্থাৎ এটার আঘাত করার সম্ভাবনা সব সময়েই 70% ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1384
+msgid ""
+"Advancing a level has fully healed me! When attacking, I always have at "
+"least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
+"ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
+"hit units."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমার <i>লক্ষ্যবিদ</i> দক্ষতার "
+"কারণে লম্বা ধনুক দিয়ে আক্রমণের সময় আমার আক্রমণ লাগার সম্ভাবনা অন্ততপক্ষে 60%, এবং "
+"আমি 4-টি আক্রমণের প্রত্যেকটিতে 9 পরিমাণ ক্ষতি করি । যে ইউনিটদের আঘাত করা কঠিন "
+"তাদের সরাবার জন্য আমাকে ব্যবহার করো ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1385
+msgid ""
+"female^Advancing a level has fully healed me! When attacking, I always have "
+"at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
+"i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
+"to-hit units."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমার <i>লক্ষ্যবিদ</i> দক্ষতার "
+"কারণে লম্বা ধনুক দিয়ে আক্রমণের সময় আমার আক্রমণ লাগার সম্ভাবনা অন্ততপক্ষে 60%, এবং "
+"আমি 4-টি আক্রমণের প্রত্যেকটিতে 9 পরিমাণ ক্ষতি করি । যে ইউনিটদের আঘাত করা কঠিন "
+"তাদের সরাবার জন্য আমাকে ব্যবহার করো ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1398
+msgid ""
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Ambush</i>. I can hide in forests where "
+"enemies can only see me if they are right next to me."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি ধনুক এবং তরবারি উভয়ের "
+"চালনাতেই দক্ষ, এবং আমার একটা বিশেষ দক্ষতা আছে: <i>অতর্কিত আক্রমণ</i>. আমি অরণ্যে "
+"লুকিয়ে থাকতে পারি এবং শত্রুরা আমাকে তখনই দেখতে পাবে যখন তারা আমার ঠিক পাশে "
+"থাকবে ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1399
+msgid ""
+"female^Advancing a level has fully healed me! I am good with both bow and "
+"sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
+"where enemies can only see me if they are right next to me."
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি ধনুক এবং তরবারি দুটোই ভালো "
+"চালাতে পারি, এবং আমার একটা বিশেষ দক্ষতা আছে: <i>অতর্কিত আক্রমণ</i>. আমি অরণ্যে "
+"লুকিয়ে থাকতে পারি এবং শত্রুরা আমাকে তখনই দেখতে পাবে যখন তারা আমার ঠিক পাশে "
+"থাকবে ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1413
+msgid ""
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Leadership</i>. I do less damage myself "
+"than the Elvish Hero, but my ability allows my allies to fight better. First "
+"level units around me do 25% more damage, so position me carefully!"
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি ধনুক এবং তরবারি দুটোই ভালো "
+"চালাতে পারি, এবং আমার একটা বিশেষ দক্ষতা আছে: <i>নেতৃত্ব</i> । আমি নিজে এল্ফ "
+"নায়কের তুলনায় কম ক্ষতি করি, কিন্তু আমার দক্ষতা স্বপক্ষের সেনাদের আরও ভালো লড়াই করতে "
+"সাহায্য করে । আমার চারপাশে থাকা প্রথম পর্যায়ের ইউনিটরা 25% বেশী ক্ষতি করবে, তাই "
+"সতর্কভাবে আমাকে দাঁড় করাও ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1426
+msgid ""
+"Advancing a level has fully healed me! I am particularly good with the "
+"sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
+"abilities of the Elvish Captain, my superior fighting skills allow my "
+"attacks to do more damage!"
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি তরবারি চালনায় খুব ভালো, 4 "
+"আক্রমণে 8 পরিমাণ ক্ষতি করি । যদিও আমার এল্ফ কাপ্তেনের নেতৃত্ব দক্ষতাটা নেই, কিন্তু "
+"আমার লড়াইয়ের কুশলতা কারণে আমার আক্রমণগুলো বেশী ক্ষতি করতে পারে!"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
+msgid ""
+"Advancing a level has fully healed me! I have become better at using the "
+"sword, dealing 9 damage in 4 attacks. Although I do not have any special "
+"abilities, my fighting skills will allow me to beat the orcs by dealing more "
+"damage!"
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি তরবারি চালনায় আরও ভালো, "
+"9 পরিমাণ ক্ষতির 4 আক্রমণ করি । যদিও আমার কোনো বিশেষ দক্ষতা নেই, আমার লড়াইয়ের "
+"কুশলতা ওর্কদের বেশী ক্ষতি করার মাধ্যমে আমাকে জিততে সাহায্য করবে ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1440
+msgid ""
+"female^Advancing a level has fully healed me! I have become better at using "
+"the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
+"abilities, my fighting skills will allow me to beat the orcs by dealing more "
+"damage!"
+msgstr ""
+"একটা পর্যায় উন্নীত হওয়ার কারণে আমি এখন সম্পূর্ণ সুস্থ! আমি তরবারি চালনায় আরও ভালো, "
+"9 পরিমাণ ক্ষতির 4 আক্রমণ করি । যদিও আমার কোনো বিশেষ দক্ষতা নেই, আমার লড়াইয়ের "
+"কুশলতা ওর্কদের বেশী ক্ষতি করার মাধ্যমে আমাকে জিততে সাহায্য করবে ।"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1449
+msgid "You took too long! Now we’ll never be rid of these orcs!"
+msgstr ""
+"তুমি বড্ড বেশী সময় নিয়ে নিয়েছ! এবারে আমরা আর কখনও এই ওর্কদের হাত থেকে মুক্তি পাব "
+"না!"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1465
+msgid "That... was foolish. Next time I should be more careful."
+msgstr "এটা... ঠিক হল না । পরের বার আমাকে আরও সতর্ক হতে হবে ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1466
+msgid "female^That... was foolish. Next time I should be more careful."
+msgstr "এটা... ঠিক হল না । পরের বার আমাকে আরও সতর্ক হতে হবে ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
+msgid "Agh! Who will guide you to victory now?"
+msgstr "আহ্! এবারে কে তোমাকে জয়ের পথে এগিয়ে নিয়ে যাবে?"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1499
+#, fuzzy
+#| msgid ""
+#| "You have beaten the orcs! You may want to try one of the rookie-level "
+#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
+#| "i> is the easiest and is the recommended first campaign."
+msgid ""
+"You have beaten the orcs! You may want to try one of the novice-level "
+"campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
+"recommended first campaign."
+msgstr ""
+"আপনি ওর্কদের পরাজিত করেছেন! এরপর আপনি নতুনদের জন্য অভিযানগুলির কোনো একটি খেলার "
+"চেষ্টা করতে পারেন, যেগুলি পরিকল্পনা করার জন্য সহায়তা রয়েছে । <i>দুই ভ্রাতার "
+"কাহিনী</i> সবচেয়ে সহজ এবং আমরা সেটা দিয়ে শুরু করার পরামর্শ দেব ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1504
+msgid ""
+"You can also refer to the in-game help browser if you ever need to refresh "
+"your memory on gameplay mechanics."
+msgstr ""
+"খেলার নিয়মগুলি মনে করার জন্য আপনি খেলার মধ্যে থাকা সাহায্যের ব্যবহার করতে পারেন ।"
+
+#. [unit_type]: id=Fighter, race=human
+#: data/campaigns/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "যোদ্ধা"
+
+#. [unit_type]: id=Fighter, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
+#: data/campaigns/tutorial/units/Fighter.cfg:18
+#: data/campaigns/tutorial/units/Fighteress.cfg:20
+msgid ""
+"Young and brash, Fighters are skilled with swords and are vulnerable to "
+"attack from enemies. However, they have the potential to become great "
+"warriors one day."
+msgstr ""
+"কমবয়সী এবং হঠকারী, যোদ্ধারা অসিচালনায় নিপুণ এবং শত্রুদের থেকে তাদের আক্রান্ত হওয়ার "
+"সম্ভবনা বেশী । তবে, একদিন তাদের দক্ষ যোদ্ধা হয়ে ওঠার ক্ষমতা রয়েছে ।"
+
+#. [unit_type]: id=Fighteress, gender=female, race=human
+#: data/campaigns/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "যোদ্ধা"
+
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/units/Quintain.cfg:4
+msgid "Quintain"
+msgstr "কুইন্টেন"
+
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/units/Quintain.cfg:16
+msgid ""
+"Quintains are used to practice swordplay and jousting on. It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+"কুইন্টেনদের ওপরে অসিচালনা এবং ভেদন অভ্যাস করা হয় । একটি কুইন্টেনের দ্বারা আক্রান্ত "
+"হওয়া অত্যন্ত অস্বাভাবিক ঘটনা ।"
+
+#. [unit_type]: id=Warrior, race=human
+#: data/campaigns/tutorial/units/Warrior.cfg:4
+msgid "Warrior"
+msgstr "অভিজ্ঞ যোদ্ধা"
+
+#. [unit_type]: id=Warrior, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
+#: data/campaigns/tutorial/units/Warrior.cfg:19
+#: data/campaigns/tutorial/units/Warrioress.cfg:21
+msgid ""
+"With more experience, Fighters have honed their skills with the sword and "
+"become powerful Warriors."
+msgstr ""
+"অভিজ্ঞতা অর্জন করে, যোদ্ধারা অসিচালনায় আরও নিপুণ হয়ে শক্তিশালী অভিজ্ঞ যোদ্ধায় পরিণত "
+"হয়েছে ।"
+
+#. [unit_type]: id=Warrioress, gender=female, race=human
+#: data/campaigns/tutorial/units/Warrioress.cfg:4
+msgid "female^Warrior"
+msgstr "অভিজ্ঞ যোদ্ধা"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:63
+msgid "Undo"
+msgstr "ফিরিয়ে নিন"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:65
+msgid ""
+"Don’t forget, you can press <b>u</b> to undo most things if you make a "
+"mistake."
+msgstr "ভুলবেন না, ভুল করলে আপনি <b>u</b> টিপে অনেককিছুই ফিরিয়ে নিয়ে পারেন ।"
+
+#: data/campaigns/tutorial/utils/utils.cfg:126
+msgid ""
+"\n"
+"\n"
+"<big>Click a mouse button or press the spacebar to continue...</big>"
+msgstr ""
+"\n"
+"\n"
+"<big>এগিয়ে যাওয়ার জন্য মাউসে ক্লিক করুন বা স্পেসবার টিপুন...</big>"

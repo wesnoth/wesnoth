@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -506,9 +506,7 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	std::u32string water_u4;
 	water_u4.push_back(0x6C34);
 	std::string water_u8 = unicode_cast<std::string>(water_u4);
-	std::u16string water_u16 = unicode_cast<std::u16string>(water_u4);
 
-	BOOST_CHECK_EQUAL(water_u4[0], static_cast<char32_t>(water_u16[0]));
 #if defined(_WIN32) || defined(_WIN64)
 	// Windows complains it can't be represented in the currentl code-page.
 	// So instead, check directly for its UTF-8 representation.
@@ -527,9 +525,6 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	std::u16string nonbmp_u16 = unicode_cast<std::u16string>(nonbmp_u4);
 
 	BOOST_CHECK_EQUAL(nonbmp_u8.size(), 4u);
-	BOOST_CHECK_EQUAL(nonbmp_u4[0], 0x10000u);
-	BOOST_CHECK_EQUAL(nonbmp_u16[0], 0xD800);
-	BOOST_CHECK_EQUAL(nonbmp_u16[1], 0xDC00);
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<std::string>(nonbmp_u4));
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<std::string>(nonbmp_u16));
 	BOOST_CHECK(nonbmp_u16 == unicode_cast<std::u16string>(nonbmp_u4));

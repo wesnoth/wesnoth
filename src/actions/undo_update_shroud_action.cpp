@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,31 +13,29 @@
 */
 
 #include "actions/undo_update_shroud_action.hpp"
-#include "replay.hpp"
 
-namespace actions
+#include "play_controller.hpp"
+#include "resources.hpp"      // for screen, teams, units, etc
+#include "synced_context.hpp" // for set_scontext_synced
+#include "team.hpp"           // for team
+
+namespace actions::undo
 {
-namespace undo
-{
-
-
 /**
  * Writes this into the provided config.
  */
 void auto_shroud_action::write(config & cfg) const
 {
-	undo_action_base::write(cfg);
+	undo_action::write(cfg);
 	cfg["active"] = active;
 }
 
-/**
- * Writes this into the provided config.
- */
-void update_shroud_action::write(config & cfg) const
+bool auto_shroud_action::undo(int)
 {
-	undo_action_base::write(cfg);
+	resources::controller->current_team().set_auto_shroud_updates(!active);
+	return true;
 }
 
+static auto reg_auto_shroud = undo_action_container::subaction_factory<auto_shroud_action>();
 
-}
 }

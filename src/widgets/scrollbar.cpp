@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -272,9 +272,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEWHEEL:
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
-		int x, y;
-		sdl::get_mouse_state(&x, &y);
-		bool on_groove = groove.contains(x, y);
+		bool on_groove = groove.contains(sdl::get_mouse_location());
 		if (on_groove && e.y < 0) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.y > 0) {

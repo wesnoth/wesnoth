@@ -6,22 +6,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+dev\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2014-10-26 22:29+0100\n"
-"Last-Translator: Vlado Zelik <v.zelik@gmail.com>\n"
+"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"PO-Revision-Date: 2023-10-18 21:32+0200\n"
+"Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none <>\n"
-"Language: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
+"X-Generator: Poedit 3.4\n"
 
 #. type: Content of: outside any tag (error?)
 #: doc/manual/manual.en.xml:3
 msgid "<?asciidoc-toc?> <?asciidoc-numbered?>"
-msgstr ""
+msgstr "<?asciidoc-toc?> <?asciidoc-numbered?>"
 
 # type: Attribute 'lang' of: <book>#: ../../doc/manual/manual.en.xml:4
 #. type: Attribute 'lang' of: <book>
@@ -264,15 +263,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -378,13 +373,6 @@ msgstr "Načítaj"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>#: ../../doc/manual/manual.en.xml:157
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -476,20 +464,16 @@ msgstr "Poďakovanie"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>#: ../../doc/manual/manual.en.xml:208
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.libera.chat:6667 on #wesnoth or at "
 "<ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
 "battleforwesnoth</ulink>"
 msgstr ""
-"Po stlačení tohoto tlačidla sa zobrazí zoznam významných prispievateľov do "
-"Wesnothu. Viacerých z nich môžeš stretnúť na irc.freenode.org:6667 na kanáli "
-"#wesnoth."
+"Kliknutím na toto tlačidlo zobrazíte zoznam hlavných prispievateľov "
+"spoločnosti Wesnoth. Často ich budete môcť nájsť v reálnom čase na irc."
+"libera.chat:6667 na #wesnoth alebo na <ulink url=\"https://discord.gg/"
+"battleforwesnoth\">https://discord.gg/battleforwesnoth</ulink>"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -543,8 +527,8 @@ msgstr "Dozadu"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:259
 msgid ""
-"Click this button to read the previous little tip from the \"Tome of Wesnoth"
-"\"."
+"Click this button to read the previous little tip from the \"Tome of "
+"Wesnoth\"."
 msgstr "Stlačením tohoto tlačidla zobrazíš ďalšiu radu z \"Knihy o Wesnothe\"."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -558,6 +542,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Kliknutím na toto tlačidlo zobrazíte verziu hry a technické informácie. Môže "
+"to byť užitočné pri riešení problémov."
 
 # type: Content of: <book><chapter><section><title>#: ../../doc/manual/manual.en.xml:261
 #. type: Content of: <book><chapter><section><title>
@@ -590,10 +576,8 @@ msgstr "Hraj jeden scenár proti počítaču alebo ľudskému súperovi."
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>#: ../../doc/manual/manual.en.xml:675
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Správa pre iného hráča (pri hre viacerých hráčov)"
+msgstr "Existujú aj kampane, ktoré sa dajú hrať v multiplayeri."
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:278
 #. type: Content of: <book><chapter><section><section><title>
@@ -655,18 +639,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:300
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -679,14 +651,15 @@ msgid ""
 "units won&#8217;t carry to future games and building up your army&#8217;s "
 "strength is possible only within the scenario."
 msgstr ""
-"Vo všeobecnosti sa zápasové mapy hrajú proti iným hráčom cez internet (alebo "
-"ich môžete spustiť na lokálnej sieti, ak máte). Tieto hry sa sú koordinované "
-"cez zápasový server Wesnothu. Zápasy zvyknú trvať od 1 hodiny do 10 hodín, "
-"podľa toho, koľko hráčov hrá (a aká veľká je mapa). Priemerný čas je 3 až 7 "
-"hodín. Hru si možno hocikoľkokrát uložiť a načitať. Takže niektoré hry môžu "
-"trvať aj týždeň alebo dva, hoci samotné hranie trvá iba pár hodín. Pri "
-"zápase si nemôžeš presúvať jednotky z jedného scenára do ďalšieho, takže "
-"silu armády si môžeš budovať len v rámci scenára."
+"Vo všeobecnosti sa hry pre viacerých hráčov hrajú proti iným hráčom cez "
+"internet (môžete ich spustiť aj vo vašej sieti LAN, ak ju máte). Všetky "
+"tieto hry sú koordinované prostredníctvom multiplayerového servera Wesnoth. "
+"Hry pre viacerých hráčov môžu trvať od 1 hodiny do 10 hodín v závislosti od "
+"počtu hráčov (a veľkosti mapy). Priemerný čas je 3 až 7 hodín. Hry je možné "
+"uložiť a načítať toľkokrát, koľkokrát chcete. Je teda možné, že niektoré hry "
+"vydržia 1 alebo 2 týždne, aj keď hranie trvá len niekoľko hodín. Keď hráte "
+"iba jeden scenár, vaše jednotky sa neprenesú do budúcich hier a budovanie "
+"sily vašej armády je možné iba v rámci scenára."
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:311
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -699,15 +672,11 @@ msgstr "Keď stlačíš tlačidlo \"Zápas\", zobrazí sa niekoľko možností:"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -724,14 +693,6 @@ msgstr "Prihlásenie"
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -739,12 +700,11 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
-"Toto bude tvoje meno na serveri hry pre viac hráčov. Ak máš vlastné konto na "
-"<ulink url=\"http://www.wesnoth.org/forum\">fóre bitky o Wesnoth </ulink>, "
-"môžeš pri pripájaní na oficiálny server použiť rovnaké uživateľské meno a "
-"heslo. Ak je ku konkrétnemu uživateľskému menu potrebné zadať heslo, na "
-"obrazovku vybehne patričné okno. Nie je možné použiť už zaregistrované meno "
-"bez zadania hesla."
+"Toto bude vaše meno na serveri pre viacerých hráčov. Ak máte účet na <ulink "
+"url=\"https://forums.wesnoth.org/\">fórach Wesnoth</ulink>, môžete na "
+"pripojenie k oficiálnemu serveru použiť rovnaké používateľské meno a heslo. "
+"Ak sa pre aktuálne používateľské meno vyžaduje heslo, zobrazí sa okno s "
+"heslom. Bez hesla nemôžete použiť registrované meno."
 
 # type: Content of: <book><chapter><section><section><section><title>#: ../../doc/manual/manual.en.xml:322
 #. type: Content of: <book><chapter><section><section><section><title>
@@ -789,19 +749,14 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><simpara>#: ../../doc/manual/manual.en.xml:336
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
-"website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
-"\">Multiplayer servers</ulink>."
+"website: <ulink url=\"https://wiki.wesnoth.org/"
+"MultiplayerServers\">Multiplayer servers</ulink>."
 msgstr ""
-"Pomerne úplný zoznam oficiálnych a užívateľských serverov je na tejto "
-"webovej stránke: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-"\">Multiplayer servers</ulink> (po anglicky)."
+"Úplný zoznam oficiálnych serverov a serverov na nastavenie používateľov je "
+"uvedený na tejto webovej stránke: <ulink url=\"https://wiki.wesnoth.org/"
+"MultiplayerServers\">Servery pre viacerých hráčov</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
@@ -892,15 +847,11 @@ msgstr "Obrazovky hry"
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:369
@@ -927,15 +878,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1007,15 +954,11 @@ msgstr "Čas, alebo zostávajúci čas (pri zápase s obmedzeným časom)"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>#: ../../doc/manual/manual.en.xml:608
@@ -1287,6 +1230,8 @@ msgid ""
 "To view and change the hotkey settings open the Preferences menu and choose "
 "the Hotkeys tab."
 msgstr ""
+"Ak chcete zobraziť a zmeniť nastavenia klávesových skratiek, otvorte ponuku "
+"Predvoľby a vyberte kartu Klávesové skratky."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:581
@@ -1315,15 +1260,11 @@ msgstr "Verbovanie a privolávanie"
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:591
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>#: ../../doc/manual/manual.en.xml:635
@@ -1368,8 +1309,8 @@ msgid ""
 msgstr ""
 "Ak chceš privolať jednotku z predchádzajúcej scény, klikni pravým tlačítkom "
 "na prázdne hradné políčko a zvoľ možnosť Privolaj. Privolanie stojí vždy 20 "
-"zlatých za jednotku. Pre viac informácii sa pozri na <link linkend="
-"\"unit_recall\">privolávanie jednotiek</link>."
+"zlatých za jednotku. Pre viac informácii sa pozri na <link "
+"linkend=\"unit_recall\">privolávanie jednotiek</link>."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:618
@@ -1381,11 +1322,11 @@ msgstr "Žold"
 #: doc/manual/manual.en.xml:619
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
-"level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
-"\"traits\">see below</link>). Units that are not initially recruited — i.e. "
-"the leader or those that join voluntarily — usually have the Loyal trait. "
-"Upkeep is only paid if the total upkeep of a side&#8217;s units is greater "
-"than the number of villages that side controls. Upkeep paid is the "
+"level of the unit, unless the unit has the \"Loyal\" trait (<link "
+"linkend=\"traits\">see below</link>). Units that are not initially recruited "
+"— i.e. the leader or those that join voluntarily — usually have the Loyal "
+"trait. Upkeep is only paid if the total upkeep of a side&#8217;s units is "
+"greater than the number of villages that side controls. Upkeep paid is the "
 "difference between the number of villages and the upkeep cost."
 msgstr ""
 "Vydržiavanie jednotky stojí peniaze. Obyčajne je výška žoldu rovná úrovni "
@@ -1990,16 +1931,12 @@ msgstr "Divoký"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:987
-#, fuzzy
-#| msgid ""
-#| "Units with the Feral trait only receive 50% defense in villages "
-#| "regardless of the base terrain the village is on."
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
-"Jednotky s vlastnosťou Divoký majú najviac 50% obranu v dedinách bez ohľadu "
-"na terén dediny."
+"Jednotky s vlastnosťou Feral dostávajú iba 50% obrany v dedinách bez ohľadu "
+"na terén, na ktorom sa dedina nachádza (netopiere, sokoly)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>#: ../../doc/manual/manual.en.xml:1386
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2796,10 +2733,10 @@ msgstr ""
 "jednotka príde. Ak nechceš s jednotkou pohnúť, tento režim opustíš "
 "jednoducho kliknutím na inú jednotku (kliknutím na ňu alebo použitím klávesy "
 "<literal>n</literal> či <literal>N</literal>) alebo kliknutím pravým "
-"tlačidlom (tlačidlom command na Mac-u) kdekoľvek na mape. <link linkend="
-"\"orbs\">Kruhy</link> nad ukazovateľom životnosti jednotky poskytujú rýchly "
-"prehľad o tom, ktoré jednotky sa už pohli, či sa ešte môžu v danom kole "
-"hýbať."
+"tlačidlom (tlačidlom command na Mac-u) kdekoľvek na mape. <link "
+"linkend=\"orbs\">Kruhy</link> nad ukazovateľom životnosti jednotky poskytujú "
+"rýchly prehľad o tom, ktoré jednotky sa už pohli, či sa ešte môžu v danom "
+"kole hýbať."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -2986,41 +2923,33 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:482
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1678
-#, fuzzy
-#| msgid "Recruit and Recall"
 msgid "Red and yellow"
-msgstr "Verbovanie a privolávanie"
+msgstr "Červená a žltá"
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:1682
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:1685
 msgid "Two color orb"
-msgstr ""
+msgstr "Dvojfarebná guľa"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:1967
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1689
-#, fuzzy
-#| msgid ""
-#| "If you control the unit and it has moved this turn, but could still move "
-#| "further or attack"
 msgid ""
 "If you control the unit and it has attacked this turn, and could still move "
 "further but could not attack again"
 msgstr ""
-"Ak ovládaš túto jednotku, a už si ňou v tomto kole ťahal, ale ešte môžeš "
-"ďalej ťahať alebo útočiť"
+"Ak ovládate jednotku a zaútočila v tomto kole, stále sa môže posunúť ďalej, "
+"ale nemôže znova zaútočiť"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>#: ../../doc/manual/manual.en.xml:1544
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3048,6 +2977,8 @@ msgid ""
 "If the unit is an ally you do not control. On the ally&#8217;s own turn "
 "these will be shown with green, yellow and red orbs"
 msgstr ""
+"Ak je jednotka spojencom, nemáte kontrolu. Na vlastnom ťahu spojenca sa "
+"tieto zobrazia so zelenými, žltými a červenými guľami"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>#: ../../doc/manual/manual.en.xml:864
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3071,10 +3002,9 @@ msgstr "Žiadny kruh"
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:1991
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1721
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "Nepriateľské jednotky majú nad ich ukazovateľom energie červený kruh"
+msgstr ""
+"Nepriateľské jednotky nemajú v hornej časti energetickej tyče žiadnu guľu"
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:1995
 #. type: Content of: <book><chapter><section><section><title>
@@ -3085,21 +3015,14 @@ msgstr "Placky, tímové farby, a znaky hrdinov"
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:1996
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1730
-#, fuzzy
-#| msgid ""
-#| "Below each unit there will normally be a colored ellipses or base. The "
-#| "color identifies its team; in a campaign game, the human-player color is "
-#| "red. The team color will also show up in parts of the unit&#8217;s "
-#| "clothing, or possibly on a shield insignia."
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team. The team color will also show up in parts of the "
 "unit&#8217;s clothing, or possibly on a shield insignia."
 msgstr ""
-"Pod každou jednotkou je zvyčajne farebná placka, čiže podklad. Jej farba "
-"označuje tím; pri hraní príbehu je farba ľudského hráča (väčšinou) červená. "
-"Farba tímu sa ukazuje aj na častiach oblečenia jednotky, prípadne na jej "
-"štíte."
+"Pod každou jednotkou budú zvyčajne farebné elipsy alebo základňa. Farba "
+"identifikuje jeho tím. Tímová farba sa objaví aj na častiach oblečenia "
+"jednotky, prípadne na odznakoch štítu."
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2001
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3119,29 +3042,23 @@ msgid ""
 "Units that can recruit will always have a star-shaped base. Other units "
 "normally have an elliptic base."
 msgstr ""
+"Jednotky, ktoré môžu verbovať, budú mať vždy základňu v tvare hviezdy. "
+"Ostatné jednotky majú zvyčajne eliptickú základňu."
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2006
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1738
-#, fuzzy
-#| msgid ""
-#| "Some campaigns use a star-shaped base to indicate leaders and heroes "
-#| "(units which are somehow special and for example not allowed to die in "
-#| "the course of the scenario); others use a silver crown icon above the "
-#| "energy bar to mark heroes. Still others have no specific hero indicator "
-#| "at all. Which (if any) is used is a stylistic choice left to campaign "
-#| "designers."
 msgid ""
 "Some campaigns use a smaller star-shaped base and a silver crown icon above "
 "the energy bar to indicate heroes (units which are somehow special and for "
 "example not allowed to die in the course of the scenario).  Whether to do "
 "this is a stylistic choice left to campaign designers."
 msgstr ""
-"Niektoré príbehy používajú placky v tvare hviezdy na označenie veliteľov; "
-"iné používajú pre hrdinov znak v tvare štítu v pravom hornom rohu jednotky. "
-"Niektoré iné zase nemajú pre hrdinov žiadne špeciálne označenie. Ktoré "
-"označenie (a či vôbec nejaké) sa použije, je ponechané na vkus tvorcov "
-"príbehu."
+"Niektoré kampane používajú menšiu základňu v tvare hviezdy a ikonu "
+"striebornej koruny nad energetickou lištou na označenie hrdinov (jednotky, "
+"ktoré sú nejakým spôsobom špeciálne a napríklad nemajú dovolené zomrieť v "
+"priebehu scenára). Či to urobíte, je štylistická voľba ponechaná na "
+"dizajnérov kampane."
 
 # type: Content of: <book><chapter><section><title>#: ../../doc/manual/manual.en.xml:2014
 #. type: Content of: <book><chapter><section><title>
@@ -3184,13 +3101,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara>#: ../../doc/manual/manual.en.xml:2029
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1758
-#, fuzzy
-#| msgid ""
-#| "Different types of attacks do different amounts of damage, and a certain "
-#| "number of strikes may be made with each weapon. For instance, an Elvish "
-#| "Fighter does 5 points of damage with its sword every time it hits, and "
-#| "can strike 4 blows with the sword in one exchange. This is written as 5–"
-#| "4, meaning 5 damage per hit, and 4 strikes."
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -3198,10 +3108,11 @@ msgid ""
 "strike 4 blows with the sword in one exchange. This is written as 5&times;4, "
 "meaning 5 damage per hit, and 4 strikes."
 msgstr ""
-"Rôzne druhy útokov pôsobia rôzne množstvo škôd, a každá zbraň má určitý "
-"počet útokov. Napríklad elfský bojovník pôsobí s každým úderom meča 5 bodov "
-"poškodenia, pričom môže v súboji udrieť až 4-krát  Toto je zapísané ako 5-4, "
-"čo teda znamená 5 bodov poškodenia za zásah a 4 údery."
+"Rôzne typy útokov spôsobujú rôzne škody a s každou zbraňou je možné vykonať "
+"určitý počet úderov. Napríklad elfský bojovník spôsobí svojim mečom 5 bodov "
+"poškodenia zakaždým, keď zasiahne, a môže zasadiť 4 údery mečom pri jednej "
+"výmene. Toto je napísané ako 5&time;4, čo znamená 5 zranení na zásah a 4 "
+"údery."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -3883,21 +3794,14 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2042
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
 "dies."
 msgstr ""
-"Zvlášť je dobré používať svoje jednotky na diaľku vtedy, keď súper nemá taký "
-"útok. Štandardná voľba zbrane počítača sa sústredí na spôsobenie maximálneho "
-"zranenia, často sa tak stane, že tvoje jednotky sú po boji poškodené viac, "
-"ako bolo nevyhnutné."
+"Svoje zbrane na diaľku používajte najmä vtedy, ak nepriateľ neútočí na "
+"diaľku. Jeho použitie často zníži poškodenie, ktoré utrpia vaše jednotky, "
+"kým nepriateľ nezomrie."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2047

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,7 @@ namespace wb
 class attack: public move
 {
 public:
-	attack(std::size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(std::size_t team_index, bool hidden, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	attack(const config&, bool hidden); // For deserialization
 	virtual ~attack();
@@ -82,10 +82,12 @@ private:
 	int weapon_choice_;
 	int attack_movement_cost_;
 	int temp_movement_subtracted_;
+	int attack_count_;
+	int temp_attacks_subtracted_;
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream& operator<<(std::ostream &s, attack_ptr attack);
-std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
+std::ostream& operator<<(std::ostream &s, const attack_ptr& attack);
+std::ostream& operator<<(std::ostream &s, const attack_const_ptr& attack);
 
 } // end namespace wb

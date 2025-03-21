@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
-"PO-Revision-Date: 2023-01-05 14:35+0200\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-12-28 16:47+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -49,46 +49,55 @@ msgstr "Mahtiritari"
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
-"as planned. Can you help?\n"
-"\n"
+"as planned. Can you help?"
 msgstr ""
 "Paha manaaja uhkaa pientä Maghren kylää ja sen asukkaita. Kylän velho kutsuu "
 "veljensä apuun, mutta kaikki ei mene suunnitelmien mukaan. Pystytkö sinä "
-"auttamaan?\n"
-"\n"
+"auttamaan?"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
+msgid ""
+"This campaign has two difficulties, with a large difference between them. "
+"The Grand Knight difficulty is intended for players who’ve already completed "
+"Liberty and Heir to the Throne."
+msgstr ""
+"Tässä kampanjassa on kaksi vaikeustasoa, joiden välillä on suuri ero. "
+"Mahtiritarin vaikeustaso on tarkoitettu pelaajille, jotka ovat jo "
+"suorittaneet Vapaus ja Valtaistuimen perillinen kampanjat."
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:25
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Aloittelijatasoa, 4 skenaariota.)"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:30
+#: data/campaigns/Two_Brothers/_main.cfg:32
 msgid "Campaign Design"
 msgstr "Kampanjasuunnittelu"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:39
+#: data/campaigns/Two_Brothers/_main.cfg:41
 msgid "Prose and Story Edits"
 msgstr "Tarina"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:48
+#: data/campaigns/Two_Brothers/_main.cfg:50
 msgid "Campaign Maintenance"
 msgstr "Kampanjan ylläpito"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:57
+#: data/campaigns/Two_Brothers/_main.cfg:59
 msgid "Artwork and Graphics Design"
 msgstr "Taide ja graafinen suunnittelu"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:73
+#: data/campaigns/Two_Brothers/_main.cfg:75
 msgid "Miscellaneous"
 msgstr "Sekalainen"
 
 #. [entry]
-#: data/campaigns/Two_Brothers/_main.cfg:87
+#: data/campaigns/Two_Brothers/_main.cfg:89
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Ja erityiskiitokset kaikille muille, jotka unohdin mainita."
 
@@ -98,23 +107,28 @@ msgid "Rooting Out a Mage"
 msgstr "Velhon kitkeminen"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
+#. This text is shown with the journey map, showing the village in the foothills along the route between Aldril and Dan’Tonk.
+#. I'm assuming the beacons either use smoke signals or basic fire signals, with a few agreed ones to request goods or indicate that surplus is for sale.
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:52
 msgid ""
 "The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
-"them not, until the day a dark mage settled in the region and began seeking "
-"sacrifices for his evil summonings."
+"them not. Even merchants were rarely seen, although caravans between Aldril "
+"and Dan’Tonk might send a wagon when called by the beacon tower."
 msgstr ""
 "Maghren kylä etäällä Wesnothin kuningaskunnan läntisillä mailla oli "
 "rauhallinen paikka. Sen asukkaat eivät kummemmin välittäneet muun maailman "
-"menosta. Heitä eivät koskettaneet sodat eikä edes huhut sodista. Sitten "
-"koitti päivä, jolloin pimeyden velho asettui alueelle ja alkoi etsiä "
-"ihmisuhreja kutsuakseen paikalle lisää pahuutta."
+"menosta. Heitä eivät koskettaneet sodat eikä edes huhut sodista. Jopa "
+"kauppiaita nähtiin harvoin, vaikka Aldrilin ja Dan’Tonkin väliset karavaanit "
+"saattoivat lähettää vaunun merkkitulen kutsuessa."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:54
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:57
 msgid ""
+"Then came the day that a dark mage settled in the region and began seeking "
+"sacrifices for his summonings.\n"
+"\n"
 "Skeletons and zombies killed cattle and fired fields. <i>“Fear and obey "
 "Mordak the Mage!”</i> they cried in fell voices as they did their foul "
 "deeds. People vanished from isolated farmsteads. Men and women began to fear "
@@ -122,6 +136,9 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"Sitten koitti päivä, jolloin pimeyden velho asettui alueelle ja alkoi etsiä "
+"ihmisuhreja kutsuakseen paikalle lisää pahuutta.\n"
+"\n"
 "Luurangot ja elävät kuolleet tappoivat naudat ja polttivat pellot. "
 "<i>”Pelätkää ja totelkaa Mordak-maagia!”</i> ne karjuivat karmeilla "
 "äänillään tehdessään ilkeitä töitään. Ihmisiä katosi yksinäisiltä "
@@ -131,7 +148,7 @@ msgstr ""
 "apuaan, eivät palanneet."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:58
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
 msgid ""
 "There was a man named Baran who had shown talent as a mage when he was "
 "young, gone to the great Academy on the Isle of Alduin, and returned to work "
@@ -150,61 +167,59 @@ msgstr ""
 "keihäänkärkiä ja kirveenteriä lopuille kyläläisille."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:62
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:68
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
-"as guards to merchant caravans. Fortunate it was for all that when Baran was "
-"but an apprentice mage, he had made a pair of amulets for himself and his "
-"brother, with which they might call to each other when in dire need. Baran "
-"sent out that call."
+"as guards to merchant caravans. Fortunate it was for all that, in better "
+"times, the brothers had talked of using trade beacons for other signals when "
+"in dire need. Baran sent out that call."
 msgstr ""
 "Baranilla oli veli nimeltä Arvith, joka myös oli lähtenyt Maghresta onneaan "
 "etsimään. Hän johti pientä hevosmiesjoukkoa, joka oli palkattu vartioimaan "
-"kauppakaravaaneja. Hän oli onnekas, kun hänen veljensä oli maagikokelas, "
-"joka oli tehnyt heille kummallekin amuletit, joilla he pystyivät kutsumaan "
-"toisiaan hädän hetkellä. Ja juuri tuon kutsun Baran nyt lähetti."
+"kauppakaravaaneja. Oli onnea, että rauhan aikoina veljekset olivat "
+"keskustelleet merkkitulien käytöstä muuhunkin kuin karavaanien kutsumiseen. "
+"He olivat sopineet viestistä, jolla pystyivät kutsumaan toisiaan hädän "
+"hetkellä. Ja juuri tuon vietsin Baran nyt lähetti."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:66
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:72
 msgid ""
-"12 V, 363 YW\n"
+"12 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "If I could but face this ‘Mordak’! I think my magic might prove stronger "
 "than his. But he bides in the hills, well-guarded by his servants, and I "
-"muster frightened peasants to fight his minions with blades and sticks. I "
-"need my brother; he always had a better head for battle than I.\n"
+"muster frightened peasants to fight his minions with blades and sticks.\n"
 "\n"
-"Will he heed the call? I do not know if he has kept the amulet; we have not "
-"spoken since that evil day at Toen Caric. If he will not come for me, "
-"perhaps he will return to aid our village in its hour of desperate need."
+"I need my brother; he always had a better head for battle than I. Yet we "
+"have not spoken since that evil day at Toen Caric. If he will not come for "
+"me, perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
-"12. toukokuuta 363 WV\n"
+"12. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
 "Jos vain voisin kohdata tämän ‘Mordakin’! Luulen, että taikuuteni voisi olla "
 "hänen taikuuttaan vahvempaa. Mutta hän piileskelee kukkuloilla "
 "palvelijoidensa vartioimana, ja minä joudun kokoamaan joukkoni pelästyneistä "
-"talonpojista, joilla on aseinaan kirveitä ja nuijia. Tarvitsen veljeäni, hän "
-"oli aina minua parempi sotapäällikkö.\n"
+"talonpojista, joilla on aseinaan kirveitä ja nuijia.\n"
 "\n"
-"Vastaako hän kutsuuni? En tiedä onko hän pitänyt amuletin, emme ole puhuneet "
-"Toen Carecin pahan päivän jälkeen. Jos hän ei tule minun takiani, ehkä hän "
-"silti palaa auttamaan kyläämme nyt kun häntä eniten tarvitaan."
+"Tarvitsen veljeäni, hän oli aina minua parempi sotapäällikkö. Emme ole "
+"puhuneet Toen Carecin pahan päivän jälkeen. Jos hän ei tule minun takiani, "
+"ehkä hän silti palaa auttamaan kyläämme nyt suurimman hädän hetkellä."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:75
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:81
 msgid ""
-"Heeding the call of his amulet, Arvith gathered such men as he could and "
-"hurried to Maghre to help Baran."
+"Heeding the call, Arvith gathered such men as he could and hurried to Maghre "
+"to help Baran."
 msgstr ""
-"Tuntiessaan amulettinsa kutsun Arvith keräsi kaikki miehet, jotka vain "
-"pystyi, ja kiiruhti Maghreen auttamaan Barania."
+"Huomatessaan avunpyynnön, Arvith keräsi kaikki miehet, jotka vain pystyi, ja "
+"kiiruhti Maghreen auttamaan Barania."
 
 #. [side]
 #. [side]: type=Longbowman, id=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:93
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:99
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:66
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:56
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:58
@@ -216,7 +231,7 @@ msgstr "Ihmiset"
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
 #. [side]: type=Orcish Warlord, id=Tairach
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:120
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:82
@@ -224,62 +239,62 @@ msgid "Enemies"
 msgstr "Viholliset"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:119
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:125
 msgid "Mordak"
 msgstr "Mordak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:146
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
 msgid "Alwyn"
 msgstr "Alwyn"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:153
 msgid "Brent"
 msgstr "Brent"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:148
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:154
 msgid "Cadell"
 msgstr "Cadell"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:149
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
 msgid "Dannen"
 msgstr "Dannen"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:150
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
 msgid "Efran"
 msgstr "Efran"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
 msgid "Faren"
 msgstr "Faren"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:154
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:160
 msgid "Tarek"
 msgstr "Tarek"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
 msgid "Hann"
 msgstr "Hann"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:162
 msgid "Magrid"
 msgstr "Magrid"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:167
 msgid "Slay Mordak, the evil mage"
 msgstr "Surmaa paha velho Mordak"
 
 #. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:171
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:270
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:339
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
@@ -288,7 +303,7 @@ msgid "Death of Arvith"
 msgstr "Arvith kuolee"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:176
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:182
 msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
@@ -297,28 +312,28 @@ msgstr ""
 "päivän aikana. Näin vähennät joukkojesi kärsimää vahinkoa."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:192
 msgid "Greetings, brother, and welcome home."
 msgstr "Tervehdys veljeni, ja tervetuloa kotiin."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:191
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:197
 msgid "Hail."
 msgstr "Tervehdys."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:196
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:202
 msgid "Is that all, Arvith? I understand, but..."
 msgstr "Onko siinä kaikki, Arvith? Ymmärrän kyllä, mutta..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:201
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
 msgid "You called, and I came; be content with that. What ails Maghre?"
 msgstr ""
 "Sinä kutsuit ja minä tulin, ole siihen tyytyväinen. Mikä Maghrea vaivaa?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:212
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
@@ -332,7 +347,7 @@ msgstr ""
 "johtamaan."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:217
 msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
@@ -342,7 +357,7 @@ msgstr ""
 "kahden päivän ratsastusmatkan päässä."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:216
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:222
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
@@ -350,7 +365,7 @@ msgstr ""
 "Hyvä on. Teen tämän kylän vuoksi. Voitteko pitää velhon poissa häiritsemästä?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:221
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
 msgid ""
 "I will go stealthily with a handful of our best scouts and woodsmen. While "
 "you demonstrate against him and kill his creatures, I will try to defeat "
@@ -363,12 +378,12 @@ msgstr ""
 "oikea käsi, minä olen vasen... sopiiko tämä, veljeni?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:226
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:232
 msgid "... Aye. Just make sure you’re there when we need you."
 msgstr "... Kyllä. Varmista vain, että olet paikalla, kun tarvitsemme sinua."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:237
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:243
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
@@ -377,17 +392,17 @@ msgstr ""
 "Baran saa viritettyä ansansa!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:248
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:254
 msgid "Baran has not made his attack!"
 msgstr "Baran ei ole hyökännyt!"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:253
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:259
 msgid "Could he have abandoned us?"
 msgstr "Olisiko hän voinut hylätä meidät?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:264
 msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
@@ -396,29 +411,29 @@ msgstr ""
 "juuri nyt meidän on itse hoideltava Mordak."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:270
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:276
 msgid "Argh!"
 msgstr "Aarg!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:275
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:281
 msgid "Good work, men! But what has become of my brother?"
 msgstr "Hyvää työtä, miehet! Mutta mitä on tapahtunut veljelleni?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:280
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:286
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
 msgstr "Oletko huolissasi hänestä? E-he-he..hergh...gaargh..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:290
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:296
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
 msgstr "Tästä ei enää ole mitään hyötyä. Meidän on etsittävä Baran itse!"
 
 #. [message]: role=Reporter
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:312
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:318
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
@@ -427,17 +442,17 @@ msgstr ""
 "kauemmaksi pohjoiseen!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:317
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
 msgid "That they should dare this! We will give chase at once."
 msgstr "Kuinka he kehtaavat! Perään! Lähdemme takaa-ajoon välittömästi."
 
 #. [message]: speaker=Mordak
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:343
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:349
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
 msgstr "Veljesi väijytyssuunnitelmat menivät pieleen. Hän on nyt vankimme."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:348
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:354
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
@@ -446,14 +461,14 @@ msgstr ""
 "hyökkäävät kylään!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:364
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:370
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
 "Olen kuullut, että nämä olennot ovat liki haavoittumattomia aseillemme, nyt "
 "näemme sen!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:380
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:386
 msgid "That was not so hard!"
 msgstr "Ei se ollut niin vaikeaa!"
 
@@ -472,7 +487,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
 msgid ""
-"16 V, 363 YW\n"
+"16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "We’ve been searching three days for Baran, and turned up nothing. My best "
@@ -489,7 +504,7 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
-"16. toukokuuta, 363 WV\n"
+"16. Näkijän kukka, 363 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
 "Olemme etsineet Barania kolme päivää, emmekä ole löytäneet häntä. Paras "
@@ -510,7 +525,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
 msgid ""
-"16 V, 363 YW\n"
+"16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "But I’m past superstitions now; I’ve seen enough of the world to guess at "
@@ -525,7 +540,7 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
-"16. toukokuuta, 363 WV\n"
+"16. Näkijän kukka, 363 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
 "Mutta olen kyllästynyt taikauskoon. Olen nähnyt maailmaa tarpeeksi, joten "
@@ -949,7 +964,7 @@ msgstr "Vartioitu linna"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
 msgid ""
-"19 V, 363 YW\n"
+"19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "The last of Mordak’s servants arrived this morning bearing the news of his "
@@ -968,7 +983,7 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19. huhtikuuta, 363 WV\n"
+"19. Näkijän kukka, 363 WV\n"
 "Ote Rotharik Klaanittoman päiväkirjasta\n"
 "\n"
 "Viimeiset Mordakin palvelijat saapuivat tänään tuoden uutisen hänen "
@@ -991,7 +1006,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
 msgid ""
-"19 V, 363 YW\n"
+"19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "I have done what I can to fortify this dilapidated castle. The orcs who came "
@@ -1004,7 +1019,7 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19. huhtikuuta, 363 WV\n"
+"19. Näkijän kukka, 363 WV\n"
 "Ote Rotharik Klaanittoman päiväkirjasta\n"
 "\n"
 "Olen tehnyt voitavani linnoittaakseni tätä surkeaa linnaa. Mukanani tulleet "
@@ -1435,7 +1450,7 @@ msgstr "Paluu kylään"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:26
 msgid ""
-"27 V, 363 YW\n"
+"27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "Almost home now. The last week has been full of mixed feelings for me — "
@@ -1451,7 +1466,7 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
-"27. toukokuuta, 363 WV\n"
+"27. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
 "Olen nyt melkein kotona. Viime viikko on ollut täynnä sekavia tunteita. "
@@ -1470,7 +1485,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
 msgid ""
-"27 V, 363 YW\n"
+"27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "Though I am more at ease now, my thoughts often turn back to Toen Caric. We "
@@ -1488,7 +1503,7 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
-"27. toukokuuta, 363 WV\n"
+"27. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
 "Vaikka olen nyt levollisempi, ajattelen silti usein Toen Caricia. Olisimme "
@@ -1683,22 +1698,23 @@ msgstr ""
 "joskus."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:365
+#. "you have my word" is a idiom for promising to do something
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:366
 msgid ""
-"I must go back to earning my living. But we have our amulets, little "
-"brother. If you are beset again, I will come."
+"I must go back to earning my living. But you have my word, little brother; "
+"if you are beset again, I will come."
 msgstr ""
-"Minun on mentävä takaisin ansaitakseni elantoni. Mutta meillä on "
-"amulettimme, pikkuveli. Jos teidät piiritetään jälleen, tulen apuun."
+"Minun on mentävä takaisin ansaitakseni elantoni. Mutta sinulla on sanani, "
+"pikkuveli. Jos joudutte pulaan jälleen, tulen apuun."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:383
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:384
 msgid "I don’t think we can rescue anyone from these villages. It is too late."
 msgstr ""
 "En usko, että voimme pelastaa ketään näistä kylistä. On liian myöhäistä."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:388
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:389
 msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
 msgstr ""
 "Olin liian heikko suojellakseni näitä ihmisiä. Oi, miksi tämän piti tapahtua "
@@ -1712,7 +1728,7 @@ msgstr "Kahden veljeksen tarina – Loppunäytös"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
 msgid ""
-"22 IX, 365 YW\n"
+"22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "Maghre is looking much better than the last time I saw it. Baran has done "
@@ -1725,7 +1741,7 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"22. syyskuuta, 355 WV\n"
+"22. Hiljansiemen, 355 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
 "Maghre näyttää paljon paremmalta kuin viime näkemältä. Baran on tehnyt "
@@ -1741,7 +1757,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
 msgid ""
-"22 IX, 365 YW\n"
+"22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "This patron is, of all things, an elf. I never thought I’d befriend one, but "
@@ -1751,13 +1767,13 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"22. syyskuuta, 365 WV\n"
+"22. Hiljansiemen, 365 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
 "Isäntäni on haltia. En koskaan uskonut, että ystävystyisin sellaisen kanssa, "
 "mutta hän ei ole niin ylimielinen kuin muut. Kalenz on hänen nimensä. Hän on "
-"nähnyt liikaa pahuutta, sen pystyy sanomaan, kun vain vilkaisee hänen "
-"silmiinsä. Luulenpa, että meidän pitää kohta alkaa ansaita elantomme.\n"
+"nähnyt liikaa pahuutta, sen näkee, kun vain vilkaisee hänen silmiinsä. "
+"Luulenpa, että meidän pitää kohta alkaa ansaita elantomme.\n"
 "\n"
 "Ennen sitä on kuitenkin hyvä levätä ja nauttia rauhasta."
 

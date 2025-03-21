@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,17 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Asks the user to confirm a change required to proceed. Currently used for enabling/disabling modifications.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * message           | @ref label   |yes      |displays the details of the required changes
- * itemlist          | scroll_label |yes      |displays the list of affected items
- * cancel            | @ref button  |yes      |refuse to apply changes
- * ok                | @ref button  |yes      |agree to apply changes
- */
 class depcheck_confirm_change : public modal_dialog
 {
 public:

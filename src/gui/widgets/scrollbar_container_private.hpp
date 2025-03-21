@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -85,7 +85,7 @@ struct scrollbar_container_implementation
 	static W*
 	find(utils::const_clone_ref<scrollbar_container, W>
 				 scrollbar_container,
-		 const std::string& id,
+		 const std::string_view id,
 		 const bool must_be_active)
 	{
 		// Inherited.

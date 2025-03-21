@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,6 +38,9 @@ extern const color_t
 	TITLE_COLOR,
 	DISABLED_COLOR,
 	LABEL_COLOR,
+	INACTIVE_COLOR,
+	GREEN_COLOR,
+	BLUE_COLOR,
 
 	// General purpose color values
 	weapon_color,
@@ -48,4 +51,11 @@ extern const color_t
 	inactive_ability_color,
 	unit_type_color,
 	race_color;
+
+/**
+ * Return the color the string represents. Return font::NORMAL_COLOR if
+ * the string is empty or can't be matched against any other color.
+ */
+color_t string_to_color(const std::string &s);
+
 }

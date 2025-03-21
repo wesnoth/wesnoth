@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,29 +22,37 @@
 
 #include "map/location.hpp"
 
-#include <ctime>
-#include <deque>
+#include <chrono>
 #include <iterator>
-#include <map>
-#include <set>
 class replay_recorder_base;
 class terrain_label;
 class config;
-struct time_of_day;
 
 class chat_msg {
 public:
 	const std::string &text() const { return text_; }
 	const std::string &nick() const { return nick_; }
 	const std::string &color() const { return color_; }
-	const std::time_t &time() const { return time_; }
+	const auto& time() const { return time_; }
 	chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
 	std::string color_;
 	std::string nick_;
 	std::string text_;
-	std::time_t time_;
+	std::chrono::system_clock::time_point time_;
+};
+
+enum class REPLAY_ACTION_TYPE
+{
+	// Chat and similar actions that don't change the gamestate
+	UNSYNCED,
+	// Local choices
+	DEPENDENT,
+	// Commands the invoke a synced user actions
+	SYNCED,
+	// The actions has a wrong format.
+	INVALID
 };
 
 class replay
@@ -97,7 +105,7 @@ public:
 	//undoable data includes moves such as placing a label or speaking, which is
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
-	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA) const;
+	config get_unsent_commands(DATA_TYPE data_type);
 
 	void undo();
 	/*
@@ -114,6 +122,7 @@ public:
 	void start_replay();
 	void revert_action();
 	config* get_next_action();
+	config* peek_next_action();
 
 	bool at_end() const;
 	void set_to_end();
@@ -150,6 +159,7 @@ private:
 	 */
 	config& add_nonundoable_command();
 	replay_recorder_base* base_;
+	int sent_upto_;
 	std::vector<int> message_locations;
 };
 
@@ -162,21 +172,11 @@ enum REPLAY_RETURN
 	REPLAY_FOUND_END_MOVE,
 	REPLAY_FOUND_END_LEVEL
 };
+
+REPLAY_ACTION_TYPE get_replay_action_type(const config& command);
+
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
 REPLAY_RETURN do_replay(bool one_move = false);
 
 REPLAY_RETURN do_replay_handle(bool one_move = false);
-
-class replay_network_sender
-{
-public:
-	replay_network_sender(replay& obj);
-	~replay_network_sender();
-
-	void sync_non_undoable();
-	void commit_and_sync();
-private:
-	replay& obj_;
-	int upto_;
-};

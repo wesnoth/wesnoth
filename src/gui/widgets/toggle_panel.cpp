@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -193,18 +193,18 @@ void toggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void toggle_panel::impl_draw_background()
+bool toggle_panel::impl_draw_background()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_background();
+	return styled_widget::impl_draw_background();
 }
 
-void toggle_panel::impl_draw_foreground()
+bool toggle_panel::impl_draw_foreground()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_foreground();
+	return styled_widget::impl_draw_foreground();
 }
 
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
@@ -291,17 +291,17 @@ toggle_panel_definition::toggle_panel_definition(const config& cfg)
 
 toggle_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, top_border(cfg["top_border"])
-	, bottom_border(cfg["bottom_border"])
-	, left_border(cfg["left_border"])
-	, right_border(cfg["right_border"])
+	, top_border(cfg["top_border"].to_unsigned())
+	, bottom_border(cfg["bottom_border"].to_unsigned())
+	, left_border(cfg["left_border"].to_unsigned())
+	, right_border(cfg["right_border"].to_unsigned())
 {
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "enabled", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "enabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "disabled", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "disabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "focused", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "focused")));
 	}
 }
 
@@ -314,13 +314,13 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	: builder_styled_widget(cfg)
 	, grid(nullptr)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
-	const config& c = cfg.child("grid");
+	auto c = cfg.optional_child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 }
 
 std::unique_ptr<widget> builder_toggle_panel::build() const

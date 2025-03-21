@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -62,20 +62,20 @@ candidate_action_with_filters::candidate_action_with_filters(
 	: base_candidate_action(name, type, cfg, function_table)
 	, filter_map_()
 {
-	const config & filter_params = cfg.child("filter");
+	auto filter_params = cfg.optional_child("filter");
 
 	if( filter_params ) {
-		for(const config::attribute& filter_param : filter_params.attribute_range())
+		for(const auto& [key, value] : filter_params->attribute_range())
 		{
 			const_formula_ptr filter_formula(
-					new formula(filter_param.second, function_table));
+					new formula(value, function_table));
 
-			filter_map_[filter_param.first]=filter_formula;
+			filter_map_[key]=filter_formula;
 		}
 	}
 }
 
-variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula)
+variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const const_formula_ptr& formula)
 {
 	map_formula_callable callable(ai->fake_ptr());
 	callable.add("input", input);

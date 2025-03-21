@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,11 +17,9 @@
 
 #include "server/wesnothd/player.hpp"
 #include "server/common/server_base.hpp"
-#include "server/common/simple_wml.hpp"
 
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/mem_fun.hpp>
-#include <boost/multi_index/member.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index_container.hpp>
 
@@ -72,7 +70,7 @@ public:
 
 	void enter_lobby();
 
-	const std::chrono::time_point<std::chrono::steady_clock> login_time;
+	const std::chrono::steady_clock::time_point login_time;
 
 private:
 	const any_socket_ptr socket_;

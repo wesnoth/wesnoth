@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,14 +25,14 @@ std::ostream& operator<<(std::ostream& s, const tod_color& c)
 }
 
 time_of_day::time_of_day(const config& cfg)
-	: lawful_bonus(cfg["lawful_bonus"])
+	: lawful_bonus(cfg["lawful_bonus"].to_int())
 	, bonus_modified(0)
 	, image(cfg["image"])
 	, name(cfg["name"].t_str())
 	, description(cfg["description"].t_str())
 	, id(cfg["id"])
 	, image_mask(cfg["mask"])
-	, color(cfg["red"], cfg["green"], cfg["blue"])
+	, color(cfg["red"].to_int(), cfg["green"].to_int(), cfg["blue"].to_int())
 	, sounds(cfg["sound"])
 {
 }
@@ -50,18 +50,18 @@ time_of_day::time_of_day()
 {
 }
 
-void time_of_day::write(config& cfg) const
+void time_of_day::write(config& cfg, const std::string& textdomain) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
 	cfg["red"] = color.r;
 	cfg["green"] = color.g;
 	cfg["blue"] = color.b;
 	cfg["image"] = image;
-	cfg["name"] = name;
+	cfg["name"] = textdomain.empty() ? name : t_string(name, textdomain);
 	cfg["id"] = id;
 
 	// Optional keys
-	cfg["description"].write_if_not_empty(description);
+	cfg["description"].write_if_not_empty(textdomain.empty() ? description : t_string(description, textdomain));
 	cfg["mask"].write_if_not_empty(image_mask);
 	cfg["sound"].write_if_not_empty(sounds);
 }

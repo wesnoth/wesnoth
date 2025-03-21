@@ -19,7 +19,7 @@ function ca_ogres_flee:execution()
     }
 
     -- Need the enemy map and enemy attack map if avoid_enemies is set
-    local enemies = wesnoth.units.find_on_map {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
+    local enemies = wesnoth.units.find_on_map { wml.tag.filter_side { wml.tag.enemy_of {side = wesnoth.current.side} } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
     local max_rating, best_hex, best_unit = - math.huge, nil, nil
@@ -42,14 +42,15 @@ function ca_ogres_flee:execution()
                 local rating = - dist
 
                 -- If we can reach the edge, we do so
-                if (dist == 0) then
-                    rating = rating + 1000
-                end
+                if (dist == 0) then rating = rating + 1000 end
+
+                local enemy_weight = 0.5
+                -- local enemy_rating = - (enemy_attack_map.units:get(r[1], r[2]) or 0) * enemy_weight
 
                 local enemy_rating = 0
                 for k,e in ipairs(enemies) do
-                    local enemy_dist = M.distance_between(r[1], r[2], e.x, e.y)
-                    enemy_rating = enemy_rating + math.sqrt(enemy_dist)
+                    dist = M.distance_between(r[1], r[2], e.x, e.y)
+                    enemy_rating = enemy_rating + math.sqrt(dist)
                 end
 
                 rating = rating + enemy_rating
@@ -57,9 +58,9 @@ function ca_ogres_flee:execution()
                 -- Also, maximize distance from own units that have already moved
                 local own_unit_weight = 0.5
                 local own_unit_rating = 0
-                for k,u_no_mp in ipairs(units_no_mp) do
-                    local no_mp_dist = M.distance_between(r[1], r[2], u_no_mp.x, u_no_mp.y)
-                    own_unit_rating = own_unit_rating + math.sqrt(no_mp_dist)
+                for k,u_noMP in ipairs(units_no_mp) do
+                    dist = M.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
+                    own_unit_rating = own_unit_rating + math.sqrt(dist)
                 end
 
                 rating = rating + own_unit_rating * own_unit_weight

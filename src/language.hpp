@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,11 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <iterator>
 
 class game_config_view;
 
 //this module controls internationalization.
 
-class config;
 
 struct language_def
 {
@@ -122,4 +120,5 @@ bool init_strings(const game_config_view& cfg);
 
 bool load_language_list();
 
+int get_min_translation_percent();
 void set_min_translation_percent(int percent);

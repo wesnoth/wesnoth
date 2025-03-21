@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -20,7 +20,7 @@
 #include "floating_label.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 
 #include <ctime>
@@ -45,7 +45,7 @@ namespace gui{
 		}
 		if(check_ != nullptr) {
 			if(mode_ == TEXTBOX_MESSAGE) {
-				preferences::set_message_private(check_->checked());
+				prefs::get().set_message_private(check_->checked());
 			}
 		}
 		box_.reset(nullptr);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -60,6 +60,11 @@ struct point : SDL_Point
 		x += point.x;
 		y += point.y;
 		return *this;
+	}
+
+	constexpr point operator-() const
+	{
+		return {-x, -y};
 	}
 
 	constexpr point operator-(const point& point) const

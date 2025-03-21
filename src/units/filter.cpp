@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,19 +17,17 @@
 
 #include "log.hpp"
 
-#include "display.hpp"
 #include "display_context.hpp"
 #include "config.hpp"
 #include "game_data.hpp"
+#include "game_version.hpp" // for version_info
 #include "map/map.hpp"
 #include "map/location.hpp"
 #include "scripting/game_lua_kernel.hpp" //Needed for lua kernel
 #include "side_filter.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
-#include "units/formula_manager.hpp"
 #include "units/types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
 #include "formula/callable_objects.hpp"
@@ -37,6 +35,7 @@
 #include "formula/function_gamestate.hpp"
 #include "formula/string_utils.hpp"
 #include "resources.hpp"
+#include "deprecation.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -48,7 +47,7 @@ static lg::log_domain log_wml("wml");
 
 using namespace unit_filter_impl;
 
-unit_filter::unit_filter(vconfig cfg)
+unit_filter::unit_filter(const vconfig& cfg)
 	: cfg_(cfg)
 	, fc_(resources::filter_con)
 	, use_flat_tod_(false)
@@ -133,14 +132,14 @@ struct unit_filter_adjacent : public unit_filter_base
 		int match_count=0;
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
-		std::vector<map_location::DIRECTION> dirs;
+		std::vector<map_location::direction> dirs;
 		if (i_adjacent.empty()) {
-			dirs = map_location::default_dirs();
+			dirs = map_location::all_directions();
 		} else {
 			dirs = map_location::parse_directions(i_adjacent);
 		}
-		for (map_location::DIRECTION dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);
+		for (map_location::direction dir : dirs) {
+			unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
 			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
@@ -151,9 +150,9 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-6");
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count = cfg_["count"];
-		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
+		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
 	}
 
 	const unit_filter_compound child_;
@@ -223,7 +222,7 @@ public:
 }
 
 
-unit_filter_compound::unit_filter_compound(vconfig cfg)
+unit_filter_compound::unit_filter_compound(const vconfig& cfg)
 	: children_()
 	, cond_children_()
 {
@@ -304,17 +303,17 @@ namespace {
 
 	void get_ability_children_id(std::vector<ability_match>& id_result,
 	                           const config& parent, const std::string& id) {
-		for (const config::any_child sp : parent.all_children_range())
+		for (const auto [key, cfg] : parent.all_children_view())
 		{
-			if(sp.cfg["id"] == id) {
-				ability_match special = { sp.key, &sp.cfg };
+			if(cfg["id"] == id) {
+				ability_match special = { key, &cfg };
 				id_result.push_back(special);
 			}
 		}
 	}
 }
 
-void unit_filter_compound::fill(vconfig cfg)
+void unit_filter_compound::fill(const vconfig& cfg)
 	{
 		const config& literal = cfg.get_config();
 
@@ -416,8 +415,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
 			{
-				assert(display::get_singleton());
-				const unit_map& units = display::get_singleton()->get_units();
+				const unit_map& units = args.context().get_disp_context().units();
 				for(const std::string& ability : abilities) {
 					std::vector<ability_match> ability_id_matches_self;
 					get_ability_children_id(ability_id_matches_self, args.u.abilities(), ability);
@@ -603,84 +601,54 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["recall_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				for(auto cost : ranges) {
-					if(cost.first <= args.u.recall_cost() && args.u.recall_cost() <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(args.u.recall_cost(), ranges);
 			}
 		);
 
 		create_attribute(literal["level"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				for(auto lvl : ranges) {
-					if(lvl.first <= args.u.level() && args.u.level() <= lvl.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(args.u.level(), ranges);
 			}
 		);
 
 		create_attribute(literal["defense"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_defense = args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto def : ranges) {
-					if(def.first <= actual_defense && actual_defense <= def.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(actual_defense, ranges);
 			}
 		);
 
 		create_attribute(literal["movement_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(actual_cost, ranges);
 			}
 		);
 
 		create_attribute(literal["vision_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(actual_cost, ranges);
 			}
 		);
 
 		create_attribute(literal["jamming_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges(actual_cost, ranges);
 			}
 		);
 
@@ -698,8 +666,15 @@ void unit_filter_compound::fill(vconfig cfg)
 		create_attribute(literal["formula"],
 			[](const config::attribute_value& c)
 			{
-				//TODO: catch syntax error.
-				return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+				try {
+					return wfl::formula(c, new wfl::gamestate_function_symbol_table(), true);
+				} catch(const wfl::formula_error& e) {
+					lg::log_to_chat() << "Formula error while evaluating formula in unit filter: " << e.type << " at "
+									  << e.filename << ':' << e.line << ")\n";
+					ERR_WML << "Formula error while evaluating formula in unit filter: " << e.type << " at "
+							<< e.filename << ':' << e.line << ")";
+					return wfl::formula("");
+				}
 			},
 			[](const wfl::formula& form, const unit_filter_args& args)
 			{
@@ -707,7 +682,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					const wfl::unit_callable main(args.loc, args.u);
 					wfl::map_formula_callable callable(main.fake_ptr());
 					if (args.u2) {
-						std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*args.u2));
+						auto secondary = std::make_shared<wfl::unit_callable>(*args.u2);
 						callable.add("other", wfl::variant(secondary));
 						// It's not destroyed upon scope exit because the variant holds a reference
 					}
@@ -804,6 +779,47 @@ void unit_filter_compound::fill(vconfig cfg)
 			else if (child.first == "filter_side") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					return side_filter(c, args.fc).match(args.u.side());
+				});
+			}
+			else if ((child.first == "filter_ability") || (child.first == "experimental_filter_ability")) {
+				if(child.first == "experimental_filter_ability"){
+					deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
+				}
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
+					if(!(c.get_parsed_config())["active"].to_bool()){
+						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
+							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+								return true;
+							}
+						}
+					} else {
+						const unit_map& units = args.context().get_disp_context().units();
+						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
+							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
+									return true;
+								}
+							}
+						}
+
+						const auto adjacent = get_adjacent_tiles(args.loc);
+						for(unsigned i = 0; i < adjacent.size(); ++i) {
+							const unit_map::const_iterator it = units.find(adjacent[i]);
+							if (it == units.end() || it->incapacitated())
+								continue;
+							if (&*it == (args.u.shared_from_this()).get())
+								continue;
+
+							for(const auto [key, cfg] : it->abilities().all_children_view()) {
+								if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
+									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
+										return true;
+									}
+								}
+							}
+						}
+					}
+				return false;
 				});
 			}
 			else if (child.first == "has_attack") {

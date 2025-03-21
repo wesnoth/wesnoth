@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,6 @@
 #include <vector>
 
 class surface;
-class texture;
 
 namespace video
 {
@@ -38,10 +37,11 @@ namespace video
 /**
  * For describing the type of faked display, if any.
  *
- * fake::window never tries to create a window, or draw anything.
- * fake::draw does create an offscreen window, but does not draw to it.
+ * fake::no_window never tries to create a window, or draw anything.
+ * fake::no_draw does create an offscreen window, but does not draw to it.
+ * fake::hide_window creates a window as normal, but does not display it.
  */
-enum class fake { none, window, draw };
+enum class fake { none, no_window, no_draw, hide_window };
 
 /**
  * Initialize the video subsystem.
@@ -135,10 +135,16 @@ std::vector<std::string> enumerate_drivers();
 /**
  * The refresh rate of the screen.
  *
+ * In most cases, this will be the native refresh rate of the display, but
+ * could be lower if FPS has been artificially capped (i.e., through --max-fps).
+ *
  * If a refresh cannot be detected, this may return 0, or it may return a
  * substitute value.
  */
 int current_refresh_rate();
+
+/** The native refresh rate of display, not taking any user preferences into account. */
+int native_refresh_rate();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();
@@ -225,7 +231,7 @@ rect input_area();
  * This is equal to output_size() / game_canvas_size().
  * Currently it is always integer, and the same in both dimensions.
  *
- * This may differ from preferences::pixel_scale() in some cases,
+ * This may differ from prefs::get().pixel_scale() in some cases,
  * For example if the window is too small to fit the desired scale.
  *
  * @returns     The currently active pixel scale multiplier.
@@ -290,6 +296,9 @@ void force_render_target(const texture& t);
 /** Reset the render target to the main window / screen. */
 void clear_render_target();
 
+/** Reset the render target to the primary render buffer. */
+void reset_render_target();
+
 /** Get the current render target.
  *
  * Will return an empty texture if the render target is the underlying
@@ -310,12 +319,13 @@ struct error : public game::error
 };
 
 /** Type that can be thrown as an exception to quit to desktop. */
-class quit : public lua_jailbreak_exception
+class quit final : public lua_jailbreak_exception
 {
 public:
 	quit()
 		: lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:

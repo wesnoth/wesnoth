@@ -58,13 +58,12 @@ function wct_hunging_bridge(bridge, directions)
 				f.adjacent(f.terrain("C*,K*,Hh^*,M*^*"), directions, 2)
 			),
 			f.all(
-				f.terrain("*^Bw" .. bridge,
-					f.adjacent(f.terrain("C*,K*,Hh^*,M*^*"), directions, 1),
-					f.adjacent(f.all(
-						f.terrain("*^Bw" .. bridge),
-						f.adjacent(f.terrain("C*,K*,Hh^*,M*^*"), directions, 1)
-					), directions, 1)
-				)
+				f.terrain("*^Bw" .. bridge),
+				f.adjacent(f.terrain("C*,K*,Hh^*,M*^*"), directions, 1),
+				f.adjacent(f.all(
+					f.terrain("*^Bw" .. bridge),
+					f.adjacent(f.terrain("C*,K*,Hh^*,M*^*"), directions, 1)
+				), directions, 1)
 			)
 		),
 		layer = "overlay",

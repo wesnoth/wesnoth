@@ -3,7 +3,7 @@
 print("Loading GUI module...")
 
 ---Show a basic alert dialog with a single button
----@param title string Dialog title string
+---@param title? string Dialog title string
 ---@param msg string Detail message
 function gui.alert(title, msg)
 	if not msg then
@@ -14,7 +14,7 @@ function gui.alert(title, msg)
 end
 
 ---Show a basic prompt dialog with two buttons
----@param title string Dialog title string
+---@param title? string Dialog title string
 ---@param msg string Detail message
 ---@return boolean #True if OK or Yes was clicked
 function gui.confirm(title, msg)

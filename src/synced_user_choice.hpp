@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -119,6 +119,6 @@ public:
 	 */
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
 	/** Inherited from events::pump_monitor */
-	void process(events::pump_info&);
+	void process();
 	events::generic_event changed_event_;
 };

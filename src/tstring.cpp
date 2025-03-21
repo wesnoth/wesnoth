@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -27,7 +27,6 @@
 #include <boost/multi_index/hashed_index.hpp>
 
 #include <map>
-#include <mutex>
 #include <vector>
 
 static lg::log_domain log_config("config");
@@ -242,6 +241,15 @@ t_string_base::t_string_base(const t_string_base& string)
 
 t_string_base::t_string_base(const std::string& string)
 	: value_(string)
+	, translated_value_()
+	, translation_timestamp_(0)
+	, translatable_(false)
+	, last_untranslatable_(false)
+{
+}
+
+t_string_base::t_string_base(std::string&& string)
+	: value_(std::move(string))
 	, translated_value_()
 	, translation_timestamp_(0)
 	, translatable_(false)
@@ -615,6 +623,11 @@ t_string::t_string(const char* o)
 
 t_string::t_string(const std::string& o)
 	: val_(new base(o))
+{
+}
+
+t_string::t_string(std::string&& o)
+	: val_(new base(std::move(o)))
 {
 }
 

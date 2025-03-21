@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -14,12 +14,11 @@
 	See the COPYING file for more details.
 */
 
+#include "display.hpp"
 #include "log.hpp"
-#include "units/id.hpp"
 #include "units/unit.hpp"
 
 #include "units/map.hpp"
-#include <functional>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -126,12 +125,14 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 		return std::pair(make_unit_iterator(uit), false);
 	}
 
+	display::get_singleton()->invalidate(src);
+
 	self_check();
 
 	return std::pair(make_unit_iterator(uit), true);
 }
 
-unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
+unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 {
 	// 1. Construct a unit_pod.
 	// 2. Try insertion into the umap.
@@ -212,7 +213,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 	return std::pair(make_unit_iterator(uinsert.first), true);
 }
 
-unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, unit_ptr p)
+unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, const unit_ptr& p)
 {
 	self_check();
 	p->set_location(l);

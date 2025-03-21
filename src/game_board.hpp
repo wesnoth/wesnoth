@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,22 +18,16 @@
 #include "display_context.hpp"
 #include "side_controller.hpp"
 #include "team.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <set>
 #include <vector>
 
 class config;
-class gamemap;
-
-namespace events {
-	class mouse_handler;
-	class menu_handler;
-}
 
 /**
  *
@@ -158,8 +152,8 @@ public:
 
 	// Manipulator from actionwml
 
-	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	std::optional<std::string> replace_map(const gamemap & r);
+	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr& u);
+	utils::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t, const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
 	bool change_terrain(const map_location &loc, const t_translation::terrain_code &t, terrain_type_data::merge_mode& mode, bool replace_if_failed); //used only by lua and debug commands
@@ -170,8 +164,6 @@ public:
 	unit_map::iterator find_visible_unit(const map_location & loc, std::size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
 	bool has_visible_unit (const map_location & loc, const team & team, bool see_all = false) const;
 	bool has_visible_unit (const map_location & loc, std::size_t team, bool see_all = false) const { return has_visible_unit(loc, teams_[team], see_all); }
-
-	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
@@ -229,15 +221,8 @@ private:
  */
 struct temporary_unit_mover
 {
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst);
-	virtual  ~temporary_unit_mover();
+	temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves, bool stand);
+	virtual ~temporary_unit_mover();
 
 private:
 	unit_map& m_;
@@ -245,4 +230,5 @@ private:
 	const map_location dst_;
 	int old_moves_;
 	unit_ptr temp_;
+	bool stand_;
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -155,7 +155,7 @@ bool manager::exists(const elem& e) const
 
 std::string manager::find_name_for(const elem& e) const
 {
-	const config& cfg = depinfo_.find_child(e.type, "id", e.id);
+	auto cfg = depinfo_.find_mandatory_child(e.type, "id", e.id);
 	return cfg["name"];
 }
 
@@ -182,7 +182,7 @@ std::vector<std::string> manager::get_required(const elem& e) const
 		return result;
 	}
 
-	config data = depinfo_.find_child(e.type, "id", e.id);
+	config data = depinfo_.find_mandatory_child(e.type, "id", e.id);
 
 	if(data.has_attribute("force_modification")) {
 		result = utils::split(data["force_modification"].str(), ',');
@@ -230,8 +230,8 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 		return false;
 	}
 
-	config data1 = depinfo_.find_child(elem1.type, "id", elem1.id);
-	config data2 = depinfo_.find_child(elem2.type, "id", elem2.id);
+	config data1 = depinfo_.find_mandatory_child(elem1.type, "id", elem1.id);
+	config data2 = depinfo_.find_mandatory_child(elem2.type, "id", elem2.id);
 
 	// Whether we should skip the check entirely
 	if(data1.has_attribute("ignore_incompatible_" + elem2.type)) {
@@ -323,7 +323,7 @@ bool manager::does_require(const elem& elem1, const elem& elem2) const
 		return false;
 	}
 
-	config data = depinfo_.find_child(elem1.type, "id", elem1.id);
+	config data = depinfo_.find_mandatory_child(elem1.type, "id", elem1.id);
 
 	if(data.has_attribute("force_modification")) {
 		std::vector<std::string> required = utils::split(data["force_modification"]);
@@ -367,9 +367,8 @@ void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 	}
 }
 
-void manager::try_modification_by_index(int index, bool activate, bool force)
+void manager::try_modification_by_id(const std::string& id, bool activate, bool force)
 {
-	std::string id = depinfo_.child("modification", index)["id"];
 	std::vector<std::string> mods_copy = mods_;
 
 	if(activate) {
@@ -388,12 +387,12 @@ void manager::try_modification_by_index(int index, bool activate, bool force)
 
 void manager::try_era_by_index(int index, bool force)
 {
-	try_era(depinfo_.child("era", index)["id"], force);
+	try_era(depinfo_.mandatory_child("era", index)["id"], force);
 }
 
 void manager::try_scenario_by_index(int index, bool force)
 {
-	try_scenario(depinfo_.child("scenario", index)["id"], force);
+	try_scenario(depinfo_.mandatory_child("scenario", index)["id"], force);
 }
 
 int manager::get_era_index() const
@@ -401,6 +400,20 @@ int manager::get_era_index() const
 	int result = 0;
 	for(const config& i : depinfo_.child_range("era")) {
 		if(i["id"] == era_) {
+			return result;
+		}
+
+		result++;
+	}
+
+	return -1;
+}
+
+int manager::get_era_index(const std::string& id) const
+{
+	int result = 0;
+	for(const config& i : depinfo_.child_range("era")) {
+		if(i["id"] == id) {
 			return result;
 		}
 
@@ -427,11 +440,11 @@ int manager::get_scenario_index() const
 
 bool manager::is_modification_active(int index) const
 {
-	std::string id = depinfo_.child("modification", index)["id"];
+	std::string id = depinfo_.mandatory_child("modification", index)["id"];
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
-bool manager::is_modification_active(const std::string id) const
+bool manager::is_modification_active(const std::string& id) const
 {
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
@@ -440,7 +453,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods, const std
 {
 	std::vector<std::string> items;
 	for(const std::string& mod : mods) {
-		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
+		items.push_back(depinfo_.find_mandatory_child("modification", "id", mod)["name"]);
 	}
 
 	return gui2::dialogs::depcheck_confirm_change::execute(true, items, requester);
@@ -450,7 +463,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const st
 {
 	std::vector<std::string> items;
 	for(const std::string& mod : mods) {
-		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
+		items.push_back(depinfo_.find_mandatory_child("modification", "id", mod)["name"]);
 	}
 
 	return gui2::dialogs::depcheck_confirm_change::execute(false, items, requester);
@@ -460,7 +473,7 @@ std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 {
 	std::vector<std::string> items;
 	for(const std::string& era : eras) {
-		items.push_back(depinfo_.find_child("era", "id", era)["name"]);
+		items.push_back(depinfo_.find_mandatory_child("era", "id", era)["name"]);
 	}
 
 	gui2::dialogs::depcheck_select_new dialog(ERA, items);
@@ -476,7 +489,7 @@ std::string manager::change_scenario_dialog(const std::vector<std::string>& scen
 {
 	std::vector<std::string> items;
 	for(const std::string& scenario : scenarios) {
-		items.push_back(depinfo_.find_child("scenario", "id", scenario)["name"]);
+		items.push_back(depinfo_.find_mandatory_child("scenario", "id", scenario)["name"]);
 	}
 
 	gui2::dialogs::depcheck_select_new dialog(SCENARIO, items);
@@ -514,7 +527,7 @@ bool manager::change_scenario(const std::string& id)
 {
 	// Checking for missing dependencies
 	if(!get_required_not_installed(elem(id, "scenario")).empty()) {
-		std::string msg = _("Scenario can't be activated. Some dependencies are missing: ");
+		std::string msg = _("Scenario can’t be activated. Some dependencies are missing: ");
 
 		msg += utils::join(get_required_not_installed(elem(id, "scenario")), ", ");
 
@@ -583,7 +596,7 @@ bool manager::change_era(const std::string& id)
 {
 	// Checking for missing dependencies
 	if(!get_required_not_installed(elem(id, "era")).empty()) {
-		std::string msg = _("Era can't be activated. Some dependencies are missing: ");
+		std::string msg = _("Era can’t be activated. Some dependencies are missing: ");
 
 		msg += utils::join(get_required_not_installed(elem(id, "era")), ", ");
 		failure_dialog(msg);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,6 @@ public:
 
 };
 
-class rca_context;
 class rca_context : public virtual ai_context {
 public:
 
@@ -66,7 +65,6 @@ private:
 	static bool strategy_set_;
 };
 
-class candidate_action_context;
 class candidate_action_context : public virtual rca_context {
 public:
 

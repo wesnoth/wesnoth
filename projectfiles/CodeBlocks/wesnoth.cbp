@@ -43,8 +43,8 @@
 			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
 			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-D_WIN32_WINDOWS" />
-			<Add option="-D_WIN32_WINNT=0x0601" />
-			<Add option="-D_WIN32_IE=0x0601" />
+			<Add option="-D_WIN32_WINNT=0x0A00" />
+			<Add option="-D_WIN32_IE=0x0A00" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
@@ -67,6 +67,7 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add library="libcurl" />
 			<Add library="libpng" />
 			<Add library="libjpeg" />
 			<Add library="libwebp" />
@@ -369,6 +370,9 @@
 		<Unit filename="../../src/floating_label.hpp" />
 		<Unit filename="../../src/floating_textbox.cpp" />
 		<Unit filename="../../src/floating_textbox.hpp" />
+		<Unit filename="../../src/font/attributes.cpp" />
+		<Unit filename="../../src/font/attributes.hpp" />
+		<Unit filename="../../src/font/cairo.hpp" />
 		<Unit filename="../../src/font/constants.cpp" />
 		<Unit filename="../../src/font/constants.hpp" />
 		<Unit filename="../../src/font/error.hpp" />
@@ -386,8 +390,6 @@
 		<Unit filename="../../src/font/standard_colors.hpp" />
 		<Unit filename="../../src/font/text.cpp" />
 		<Unit filename="../../src/font/text.hpp" />
-		<Unit filename="../../src/font/text_formatting.cpp" />
-		<Unit filename="../../src/font/text_formatting.hpp" />
 		<Unit filename="../../src/format_time_summary.cpp" />
 		<Unit filename="../../src/format_time_summary.hpp" />
 		<Unit filename="../../src/formatter.hpp" />
@@ -451,8 +453,6 @@
 		<Unit filename="../../src/game_events/wmi_manager.cpp" />
 		<Unit filename="../../src/game_events/wmi_manager.hpp" />
 		<Unit filename="../../src/game_initialization/component_availability.hpp" />
-		<Unit filename="../../src/game_initialization/configure_engine.cpp" />
-		<Unit filename="../../src/game_initialization/configure_engine.hpp" />
 		<Unit filename="../../src/game_initialization/connect_engine.cpp" />
 		<Unit filename="../../src/game_initialization/connect_engine.hpp" />
 		<Unit filename="../../src/game_initialization/create_engine.cpp" />
@@ -501,7 +501,6 @@
 		<Unit filename="../../src/global.hpp" />
 		<Unit filename="../../src/gui/auxiliary/field-fwd.hpp" />
 		<Unit filename="../../src/gui/auxiliary/field.hpp" />
-		<Unit filename="../../src/gui/auxiliary/find_widget.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/exception.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/iterator.cpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/iterator.hpp" />
@@ -566,6 +565,8 @@
 		<Unit filename="../../src/gui/dialogs/achievements_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/addon_auth.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/addon_auth.hpp" />
+		<Unit filename="../../src/gui/dialogs/addon/addon_server_info.cpp" />
+		<Unit filename="../../src/gui/dialogs/addon/addon_server_info.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/connect.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/connect.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.cpp" />
@@ -598,14 +599,22 @@
 		<Unit filename="../../src/gui/dialogs/edit_label.hpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.cpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_side.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_side.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_unit.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_unit.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/generate_map.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/generate_map.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/generator_settings.cpp" />
@@ -614,8 +623,14 @@
 		<Unit filename="../../src/gui/dialogs/editor/new_map.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/tod_new_schedule.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/tod_new_schedule.hpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.cpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.hpp" />
+		<Unit filename="../../src/gui/dialogs/gui_test_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/gui_test_dialog.hpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.cpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.cpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_progress.cpp" />
@@ -705,6 +720,8 @@
 		<Unit filename="../../src/gui/dialogs/outro.hpp" />
 		<Unit filename="../../src/gui/dialogs/preferences_dialog.cpp" />
 		<Unit filename="../../src/gui/dialogs/preferences_dialog.hpp" />
+		<Unit filename="../../src/gui/dialogs/reachmap_options.cpp" />
+		<Unit filename="../../src/gui/dialogs/reachmap_options.hpp" />
 		<Unit filename="../../src/gui/dialogs/screenshot_notification.cpp" />
 		<Unit filename="../../src/gui/dialogs/screenshot_notification.hpp" />
 		<Unit filename="../../src/gui/dialogs/select_orb_colors.cpp" />
@@ -735,14 +752,8 @@
 		<Unit filename="../../src/gui/dialogs/unit_advance.hpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.cpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.hpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
@@ -758,6 +769,8 @@
 		<Unit filename="../../src/gui/widgets/chatbox.cpp" />
 		<Unit filename="../../src/gui/widgets/chatbox.hpp" />
 		<Unit filename="../../src/gui/widgets/clickable_item.hpp" />
+		<Unit filename="../../src/gui/widgets/combobox.cpp" />
+		<Unit filename="../../src/gui/widgets/combobox.hpp" />
 		<Unit filename="../../src/gui/widgets/container_base.cpp" />
 		<Unit filename="../../src/gui/widgets/container_base.hpp" />
 		<Unit filename="../../src/gui/widgets/debug.cpp" />
@@ -791,6 +804,8 @@
 		<Unit filename="../../src/gui/widgets/minimap.hpp" />
 		<Unit filename="../../src/gui/widgets/multi_page.cpp" />
 		<Unit filename="../../src/gui/widgets/multi_page.hpp" />
+		<Unit filename="../../src/gui/widgets/multiline_text.cpp" />
+		<Unit filename="../../src/gui/widgets/multiline_text.hpp" />
 		<Unit filename="../../src/gui/widgets/multimenu_button.cpp" />
 		<Unit filename="../../src/gui/widgets/multimenu_button.hpp" />
 		<Unit filename="../../src/gui/widgets/pane.cpp" />
@@ -804,8 +819,12 @@
 		<Unit filename="../../src/gui/widgets/repeating_button.cpp" />
 		<Unit filename="../../src/gui/widgets/repeating_button.hpp" />
 		<Unit filename="../../src/gui/widgets/retval.hpp" />
+		<Unit filename="../../src/gui/widgets/rich_label.cpp" />
+		<Unit filename="../../src/gui/widgets/rich_label.hpp" />
 		<Unit filename="../../src/gui/widgets/scroll_label.cpp" />
 		<Unit filename="../../src/gui/widgets/scroll_label.hpp" />
+		<Unit filename="../../src/gui/widgets/scroll_text.cpp" />
+		<Unit filename="../../src/gui/widgets/scroll_text.hpp" />
 		<Unit filename="../../src/gui/widgets/scrollbar.cpp" />
 		<Unit filename="../../src/gui/widgets/scrollbar.hpp" />
 		<Unit filename="../../src/gui/widgets/scrollbar_container.cpp" />
@@ -824,11 +843,15 @@
 		<Unit filename="../../src/gui/widgets/slider_base.hpp" />
 		<Unit filename="../../src/gui/widgets/spacer.cpp" />
 		<Unit filename="../../src/gui/widgets/spacer.hpp" />
+		<Unit filename="../../src/gui/widgets/spinner.cpp" />
+		<Unit filename="../../src/gui/widgets/spinner.hpp" />
 		<Unit filename="../../src/gui/widgets/stacked_widget.cpp" />
 		<Unit filename="../../src/gui/widgets/stacked_widget.hpp" />
 		<Unit filename="../../src/gui/widgets/status_label_helper.hpp" />
 		<Unit filename="../../src/gui/widgets/styled_widget.cpp" />
 		<Unit filename="../../src/gui/widgets/styled_widget.hpp" />
+		<Unit filename="../../src/gui/widgets/tab_container.cpp" />
+		<Unit filename="../../src/gui/widgets/tab_container.hpp" />
 		<Unit filename="../../src/gui/widgets/text_box.cpp" />
 		<Unit filename="../../src/gui/widgets/text_box.hpp" />
 		<Unit filename="../../src/gui/widgets/text_box_base.cpp" />
@@ -860,14 +883,8 @@
 		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/help/help.cpp" />
 		<Unit filename="../../src/help/help.hpp" />
-		<Unit filename="../../src/help/help_browser.cpp" />
-		<Unit filename="../../src/help/help_browser.hpp" />
 		<Unit filename="../../src/help/help_impl.cpp" />
 		<Unit filename="../../src/help/help_impl.hpp" />
-		<Unit filename="../../src/help/help_menu.cpp" />
-		<Unit filename="../../src/help/help_menu.hpp" />
-		<Unit filename="../../src/help/help_text_area.cpp" />
-		<Unit filename="../../src/help/help_text_area.hpp" />
 		<Unit filename="../../src/help/help_topic_generators.cpp" />
 		<Unit filename="../../src/help/help_topic_generators.hpp" />
 		<Unit filename="../../src/hotkey/command_executor.cpp" />
@@ -892,7 +909,6 @@
 		<Unit filename="../../src/language.hpp" />
 		<Unit filename="../../src/level_result.hpp" />
 		<Unit filename="../../src/lexical_cast.hpp" />
-		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
@@ -952,6 +968,8 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/network_download_file.cpp" />
+		<Unit filename="../../src/network_download_file.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
@@ -975,24 +993,11 @@
 		<Unit filename="../../src/playmp_controller.hpp" />
 		<Unit filename="../../src/playsingle_controller.cpp" />
 		<Unit filename="../../src/playsingle_controller.hpp" />
-		<Unit filename="../../src/playturn.cpp" />
-		<Unit filename="../../src/playturn.hpp" />
 		<Unit filename="../../src/playturn_network_adapter.cpp" />
 		<Unit filename="../../src/playturn_network_adapter.hpp" />
-		<Unit filename="../../src/preferences/advanced.cpp" />
-		<Unit filename="../../src/preferences/advanced.hpp" />
-		<Unit filename="../../src/preferences/credentials.cpp" />
-		<Unit filename="../../src/preferences/credentials.hpp" />
-		<Unit filename="../../src/preferences/display.cpp" />
-		<Unit filename="../../src/preferences/display.hpp" />
-		<Unit filename="../../src/preferences/editor.cpp" />
-		<Unit filename="../../src/preferences/editor.hpp" />
-		<Unit filename="../../src/preferences/game.cpp" />
-		<Unit filename="../../src/preferences/game.hpp" />
-		<Unit filename="../../src/preferences/general.cpp" />
-		<Unit filename="../../src/preferences/general.hpp" />
-		<Unit filename="../../src/preferences/lobby.cpp" />
-		<Unit filename="../../src/preferences/lobby.hpp" />
+		<Unit filename="../../src/preferences/preferences.cpp" />
+		<Unit filename="../../src/preferences/preferences.hpp" />
+		<Unit filename="../../src/preferences/preferences_list.hpp" />
 		<Unit filename="../../src/quit_confirmation.cpp" />
 		<Unit filename="../../src/quit_confirmation.hpp" />
 		<Unit filename="../../src/random.cpp" />
@@ -1029,6 +1034,8 @@
 		<Unit filename="../../src/scripting/debug_lua.hpp" />
 		<Unit filename="../../src/scripting/game_lua_kernel.cpp" />
 		<Unit filename="../../src/scripting/game_lua_kernel.hpp" />
+		<Unit filename="../../src/scripting/lua_attributes.cpp" />
+		<Unit filename="../../src/scripting/lua_attributes.hpp" />
 		<Unit filename="../../src/scripting/lua_audio.cpp" />
 		<Unit filename="../../src/scripting/lua_audio.hpp" />
 		<Unit filename="../../src/scripting/lua_color.cpp" />
@@ -1109,6 +1116,8 @@
 		<Unit filename="../../src/serialization/binary_or_text.cpp" />
 		<Unit filename="../../src/serialization/binary_or_text.hpp" />
 		<Unit filename="../../src/serialization/compression.hpp" />
+		<Unit filename="../../src/serialization/markup.cpp" />
+		<Unit filename="../../src/serialization/markup.hpp" />
 		<Unit filename="../../src/serialization/parser.cpp" />
 		<Unit filename="../../src/serialization/parser.hpp" />
 		<Unit filename="../../src/serialization/preprocessor.cpp" />
@@ -1130,8 +1139,6 @@
 		<Unit filename="../../src/serialization/unicode.hpp" />
 		<Unit filename="../../src/serialization/validator.cpp" />
 		<Unit filename="../../src/serialization/validator.hpp" />
-		<Unit filename="../../src/show_dialog.cpp" />
-		<Unit filename="../../src/show_dialog.hpp" />
 		<Unit filename="../../src/side_controller.hpp" />
 		<Unit filename="../../src/side_filter.cpp" />
 		<Unit filename="../../src/side_filter.hpp" />
@@ -1153,6 +1160,8 @@
 		<Unit filename="../../src/spirit_po/version.hpp" />
 		<Unit filename="../../src/statistics.cpp" />
 		<Unit filename="../../src/statistics.hpp" />
+		<Unit filename="../../src/statistics_record.cpp" />
+		<Unit filename="../../src/statistics_record.hpp" />
 		<Unit filename="../../src/storyscreen/controller.cpp" />
 		<Unit filename="../../src/storyscreen/controller.hpp" />
 		<Unit filename="../../src/storyscreen/parser.cpp" />
@@ -1167,13 +1176,11 @@
 		<Unit filename="../../src/synced_context.hpp" />
 		<Unit filename="../../src/synced_user_choice.cpp" />
 		<Unit filename="../../src/synced_user_choice.hpp" />
-		<Unit filename="../../src/syncmp_handler.cpp" />
-		<Unit filename="../../src/syncmp_handler.hpp" />
 		<Unit filename="../../src/team.cpp" />
 		<Unit filename="../../src/team.hpp" />
+		<Unit filename="../../src/team_shared_vision.hpp" />
 		<Unit filename="../../src/teambuilder.cpp" />
 		<Unit filename="../../src/teambuilder.hpp" />
-		<Unit filename="../../src/team_shared_vision.hpp" />
 		<Unit filename="../../src/terrain/builder.cpp" />
 		<Unit filename="../../src/terrain/builder.hpp" />
 		<Unit filename="../../src/terrain/filter.cpp" />
@@ -1218,8 +1225,6 @@
 		<Unit filename="../../src/units/helper.hpp" />
 		<Unit filename="../../src/units/id.cpp" />
 		<Unit filename="../../src/units/id.hpp" />
-		<Unit filename="../../src/units/make.cpp" />
-		<Unit filename="../../src/units/make.hpp" />
 		<Unit filename="../../src/units/map.cpp" />
 		<Unit filename="../../src/units/map.hpp" />
 		<Unit filename="../../src/units/orb_status.cpp" />
@@ -1235,6 +1240,12 @@
 		<Unit filename="../../src/units/unit.cpp" />
 		<Unit filename="../../src/units/unit.hpp" />
 		<Unit filename="../../src/units/unit_alignments.hpp" />
+		<Unit filename="../../src/utils/any.hpp" />
+		<Unit filename="../../src/utils/back_edge_detector.hpp" />
+		<Unit filename="../../src/utils/charconv.cpp" />
+		<Unit filename="../../src/utils/charconv.hpp" />
+		<Unit filename="../../src/utils/config_filters.cpp" />
+		<Unit filename="../../src/utils/config_filters.hpp" />
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
@@ -1254,6 +1265,8 @@
 		<Unit filename="../../src/utils/reference_counter.hpp" />
 		<Unit filename="../../src/utils/scope_list.hpp" />
 		<Unit filename="../../src/utils/smart_list.hpp" />
+		<Unit filename="../../src/utils/spritesheet_generator.cpp" />
+		<Unit filename="../../src/utils/spritesheet_generator.hpp" />
 		<Unit filename="../../src/utils/type_trait_aliases.hpp" />
 		<Unit filename="../../src/utils/wesnoth_epoch.hpp" />
 		<Unit filename="../../src/variable.cpp" />
@@ -1296,9 +1309,6 @@
 		<Unit filename="../../src/whiteboard/visitor.hpp" />
 		<Unit filename="../../src/widgets/button.cpp" />
 		<Unit filename="../../src/widgets/button.hpp" />
-		<Unit filename="../../src/widgets/menu.cpp" />
-		<Unit filename="../../src/widgets/menu.hpp" />
-		<Unit filename="../../src/widgets/menu_style.cpp" />
 		<Unit filename="../../src/widgets/scrollarea.cpp" />
 		<Unit filename="../../src/widgets/scrollarea.hpp" />
 		<Unit filename="../../src/widgets/scrollbar.cpp" />

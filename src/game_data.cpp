@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,6 +39,7 @@ game_data::game_data(const config& level)
 	, variables_(level.child_or_empty("variables"))
 	, phase_(INITIAL)
 	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, end_turn_forced_(level["end_turn"].to_bool())
 	, cannot_end_turn_reason_(level["cannot_end_turn_reason"].t_str())
 	, next_scenario_(level["next_scenario"])
 	, id_(level["id"])
@@ -56,8 +57,10 @@ game_data::game_data(const game_data& data)
 	, variables_(data.variables_)
 	, phase_(data.phase_)
 	, can_end_turn_(data.can_end_turn_)
+	, end_turn_forced_(data.end_turn_forced_)
 	, next_scenario_(data.next_scenario_)
 {
+	//TODO: is there a reason why this cctor is not "=default" ? (or whether it is used in the first place)
 }
 //throws
 config::attribute_value &game_data::get_variable(const std::string& key)
@@ -126,6 +129,7 @@ void game_data::clear_variable(const std::string& varname)
 
 void game_data::write_snapshot(config& cfg) const
 {
+	write_phase(cfg, phase_);
 	cfg["next_scenario"] = next_scenario_;
 	cfg["id"] = id_;
 	cfg["theme"] = theme_;
@@ -158,7 +162,7 @@ void game_data::activate_scope_variable(std::string var_name) const
 		var_name.erase(itor, var_name.end());
 	}
 
-	for (scoped_wml_variable* v : utils::reversed_view(scoped_variables)) {
+	for (scoped_wml_variable* v : scoped_variables | utils::views::reverse) {
 		if (v->name() == var_name) {
 			recursive_activation = true;
 			if (!v->activated()) {
@@ -168,4 +172,39 @@ void game_data::activate_scope_variable(std::string var_name) const
 			break;
 		}
 	}
+}
+
+game_data::PHASE game_data::read_phase(const config& cfg)
+{
+	if(cfg["playing_team"].empty()) {
+		return game_data::PRELOAD;
+	}
+	if(!cfg["init_side_done"].to_bool()) {
+		return game_data::TURN_STARTING_WAITING;
+	}
+	if(cfg.has_child("end_level_data")) {
+		return game_data::GAME_ENDED;
+	}
+	return game_data::TURN_PLAYING;
+}
+
+
+bool game_data::has_current_player() const
+{
+	return phase() == TURN_STARTING || phase() == TURN_PLAYING || phase() == TURN_ENDED;
+}
+
+bool game_data::is_before_screen() const
+{
+	return phase() == INITIAL || phase() == PRELOAD || phase() == PRESTART;
+}
+
+bool game_data::is_after_start() const
+{
+	return !(phase() == INITIAL || phase() == PRELOAD || phase() == PRESTART || phase() == START);
+}
+
+void game_data::write_phase(config& cfg, game_data::PHASE phase)
+{
+	cfg["init_side_done"] = !(phase == INITIAL || phase == PRELOAD || phase == PRESTART || phase == TURN_STARTING_WAITING);
 }

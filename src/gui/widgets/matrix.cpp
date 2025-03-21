@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,16 +17,14 @@
 
 #include "gui/widgets/matrix.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
-
-#include <functional>
+#include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -86,7 +84,7 @@ matrix::matrix(const implementation::builder_matrix& builder)
 	cfg->content->build(content_, replacements);
 	content_.set_parent(this);
 
-	pane_ = find_widget<pane>(&content_, "pane", false, true);
+	pane_ = content_.find_widget<pane>("pane", false, true);
 }
 
 unsigned
@@ -133,7 +131,7 @@ const widget* matrix::find_at(const point& coordinate,
 	return content_.find_at(coordinate, must_be_active);
 }
 
-widget* matrix::find(const std::string& id, const bool must_be_active)
+widget* matrix::find(const std::string_view id, const bool must_be_active)
 {
 	if(widget* result = widget::find(id, must_be_active)) {
 		return result;
@@ -142,7 +140,7 @@ widget* matrix::find(const std::string& id, const bool must_be_active)
 	}
 }
 
-const widget* matrix::find(const std::string& id, const bool must_be_active)
+const widget* matrix::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	if(const widget* result = widget::find(id, must_be_active)) {
@@ -184,11 +182,11 @@ matrix_definition::matrix_definition(const config& cfg)
 
 matrix_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
+	, content(new builder_grid(VALIDATE_WML_CHILD(cfg, "content", missing_mandatory_wml_tag("matrix", "content"))))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("matrix_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("matrix_definition][resolution", "state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -206,22 +204,22 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_bottom(nullptr)
 	, builder_left(nullptr)
 	, builder_right(nullptr)
-	, builder_main(create_widget_builder(cfg.child("main", "[matrix]")))
+	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", missing_mandatory_wml_tag("matrix", "main"))))
 {
-	if(const config& top = cfg.child("top")) {
-		builder_top = std::make_shared<builder_grid>(top);
+	if(auto top = cfg.optional_child("top")) {
+		builder_top = std::make_shared<builder_grid>(*top);
 	}
 
-	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = std::make_shared<builder_grid>(bottom);
+	if(auto bottom = cfg.optional_child("bottom")) {
+		builder_bottom = std::make_shared<builder_grid>(*bottom);
 	}
 
-	if(const config& left = cfg.child("left")) {
-		builder_left = std::make_shared<builder_grid>(left);
+	if(auto left = cfg.optional_child("left")) {
+		builder_left = std::make_shared<builder_grid>(*left);
 	}
 
-	if(const config& right = cfg.child("right")) {
-		builder_right = std::make_shared<builder_grid>(right);
+	if(auto right = cfg.optional_child("right")) {
+		builder_right = std::make_shared<builder_grid>(*right);
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,42 +20,25 @@
  */
 
 #include "game_events/action_wml.hpp"
-#include "game_events/conditional_wml.hpp"
-#include "game_events/pump.hpp"
 
-#include "actions/attack.hpp"
 #include "actions/create.hpp"
-#include "actions/move.hpp"
-#include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
-#include "map/label.hpp"
 #include "pathfind/teleport.hpp"
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
-#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
-#include "replay.hpp"
-#include "random.hpp"
 #include "mouse_handler_base.hpp" // for events::commands_disabled
 #include "resources.hpp"
-#include "scripting/game_lua_kernel.hpp"
-#include "side_filter.hpp"
-#include "soundsource.hpp"
 #include "synced_context.hpp"
 #include "synced_user_choice.hpp"
 #include "team.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
@@ -264,12 +247,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-static void on_replay_error(const std::string& message)
-{
-	ERR_NG << "Error via [do_command]:";
-	ERR_NG << message;
-}
-
 // This tag exposes part of the code path used to handle [command]'s in replays
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command,, cfg)
@@ -286,27 +263,17 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "custom_command"};
 
-	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
+	const bool is_too_early = resources::gamedata->phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+	const bool is_during_turn = resources::gamedata->phase() == game_data::TURN_PLAYING;
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
-	if(is_unsynced && resources::controller->is_lingering())
+	if(is_unsynced && !is_during_turn)
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode";
-		return;
-	}
-	if(is_unsynced && !resources::controller->gamestate().init_side_done())
-	{
-		ERR_NG << "[do_command] cannot be used before the turn has started";
-		return;
-	}
-	if(is_unsynced && is_unsynced_too_early)
-	{
-		ERR_NG << "[do_command] called too early";
+		ERR_NG << "[do_command] can only be used during a turn when a user woudl also be able to invoke commands";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)
@@ -333,12 +300,14 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 		//Note that this fires related events and everything else that also happens normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
+		auto spectator = action_spectator([](const std::string& message) {
+			ERR_NG << "Error via [do_command]:";
+			ERR_NG << message;
+		});
 		synced_context::run_in_synced_context_if_not_already(
-			/*commandname*/ key,
-			/*data*/ child.get_parsed_config(),
-			/*use_undo*/ true,
-			/*show*/ true,
-			/*error_handler*/ &on_replay_error
+			key,
+			child.get_parsed_config(),
+			spectator
 		);
 		ai::manager::get_singleton().raise_gamestate_changed();
 	}
@@ -401,7 +370,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty()) {
 		// Always scroll.
-		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 	}
 }
 
@@ -426,7 +395,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	for (const vconfig& config : unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
-		int skip_steps = config["skip_steps"];
+		int skip_steps = config["skip_steps"].to_int();
 		fake_unit_ptr u = create_fake_unit(config);
 		units.push_back(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
@@ -451,7 +420,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step;
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 			units[un]->set_location(path_step[1]);
 			units[un]->anim_comp().set_standing(false);
 		}
@@ -483,18 +452,18 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
-	for(int index = 0; index < static_cast<int>(resources::gameboard->teams().size()); ++index) {
-		LOG_NG << "for side " << index + 1 << "...";
-		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
+	for(team& t : resources::gameboard->teams()) {
+		LOG_NG << "for side " << t.side() << "...";
+		const std::string player_id = t.save_id_or_number();
 
-		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
+		if(t.recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!";
-			DBG_NG << "player_id: " << player_id << " side: " << index+1;
+			DBG_NG << "player_id: " << player_id << " side: " << t.side();
 			continue;
 		}
 
-		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
+		recall_list_manager & avail = t.recall_list();
+		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(t.side());
 
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
@@ -641,7 +610,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::log_to_chat() << *errmsg << '\n';
@@ -665,7 +634,7 @@ WML_HANDLER_FUNCTION(set_global_variable,,pcfg)
 
 WML_HANDLER_FUNCTION(set_variables,, cfg)
 {
-	const t_string& name = cfg["name"];
+	const std::string name = cfg["name"];
 	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
@@ -858,6 +827,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 		        << cfg.get_config().debug();
+	} else if (cfg.get_children("source").size() > 1 ||
+		cfg.get_children("target").size() > 1 ||
+		cfg.get_children("filter").size() > 1) {
+		ERR_WML << "[tunnel] should have exactly one of each mandatory tag:\n"
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
@@ -916,16 +890,15 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		.allow_rename_side(true)
 		.allow_show(true);
 
-	uc.add_unit(parsed_cfg, &cfg);
+	try
+	{
+		uc.add_unit(parsed_cfg, &cfg);
+	}
+	catch(const unit_type::error& e)
+	{
+		ERR_WML << "Error occured inside [unit]: " << e.what();
 
-}
-
-WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
-{
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
+		throw;
 	}
 }
 

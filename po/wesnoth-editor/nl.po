@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2021-10-28 17:23+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2024-03-12 17:01+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
 
 #. [brush]: id=brush-1
@@ -122,13 +122,13 @@ msgstr "speciaal"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "verhoging"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr "time of day^Geen"
+msgstr "Geen"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
@@ -163,7 +163,7 @@ msgstr "Na de Herfst"
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
 msgid "theme^Editor"
-msgstr "theme^Editor"
+msgstr "Editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -195,80 +195,90 @@ msgstr "Transitie Update"
 msgid "Window"
 msgstr "Venster"
 
-#. [menu]: id=menu-editor-areas
+#. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
+msgid "Add-on"
+msgstr "Add-on"
+
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:119
 msgid "Areas"
 msgstr "Gebieden"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:118
+#: data/themes/editor.cfg:127
 msgid "Assign Local Time"
 msgstr "Lokale Tijd Toewijzen"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:124
+#: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
 msgstr "Lokaal Tijd Schema Toewijzen"
 
+#. [menu]: id=menu-editor-unit
+#: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:132
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Kant"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:149
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "dorpen"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:165
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "eenheden"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:444
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Tijd Schema Menu"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:455
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Afspeellijst"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Wijs Tijd Schema Toe"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "Identificatie: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "Naam: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "Soort: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "Rang: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "Kosten: "
 
-#: src/editor/controller/editor_controller.cpp:180
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/controller/editor_controller.cpp:212
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -276,7 +286,7 @@ msgstr ""
 "Wil je echt afsluiten? Wijzigingen van de kaart sinds de laatste keer "
 "opslaan gaan verloren."
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -284,136 +294,167 @@ msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
 "wijzigingen sinds de laatste save gaan verloren:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden."
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:886
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "Add-on"
+
+#: src/editor/controller/editor_controller.cpp:899
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
+
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Change Unit ID"
 msgstr "Verander Eenheid ID"
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1341
 msgid "Rename Unit"
 msgstr "Hernoem Eenheid"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1342
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/editor/map/context_manager.cpp:211
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "Laad Kaart"
 
-#: src/editor/map/context_manager.cpp:279 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Nieuwe Kaart"
 
-#: src/editor/map/context_manager.cpp:292 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Nieuw Scenario"
 
-#: src/editor/map/context_manager.cpp:348
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "Geen Recente Bestanden"
 
-#: src/editor/map/context_manager.cpp:386
+#: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
 msgstr "Naamloos Gebied"
 
-#: src/editor/map/context_manager.cpp:417
+#: src/editor/map/context_manager.cpp:451
 msgid "New Side"
 msgstr "Nieuwe Kant"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr "Pas Masker Toe"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Fout bij het laden van het masker"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "Identificatie:"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "Hernoem Gebied"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Kies doelkaart"
 
-#: src/editor/map/context_manager.cpp:525
-#: src/editor/map/context_manager.cpp:934
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:984
 msgid "Error loading map"
 msgstr "Fout bij het laden van de kaart"
 
-#: src/editor/map/context_manager.cpp:651
+#: src/editor/map/context_manager.cpp:691
 msgid "Save Map As"
 msgstr "Sla Kaart Op Als"
 
-#: src/editor/map/context_manager.cpp:672
-msgid "Save Scenario As"
-msgstr "Sla Scenario Op Als"
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr "Fout"
 
-#: src/editor/map/context_manager.cpp:704
-msgid "No random map generators found."
-msgstr "Geen generator van willekeurige kaarten gevonden."
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Wil je echt afsluiten?"
 
 #: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:722
-msgid "Map creation failed."
-msgstr "Kaart aanmaken mislukt."
-
-#: src/editor/map/context_manager.cpp:737
-msgid "Unsaved Changes"
-msgstr "Onopgeslagen wijzigingen"
-
-#: src/editor/map/context_manager.cpp:738
-msgid "Do you want to discard all changes made to the map since the last save?"
-msgstr "Wilt u alle wijzigingen sinds de laatste keer opslaan ongedaan maken?"
-
-#: src/editor/map/context_manager.cpp:794
-msgid "This scenario is already open."
-msgstr "Dit scenario is al geopend."
-
-#: src/editor/map/context_manager.cpp:817
-#: src/editor/map/context_manager.cpp:880
+#: src/editor/map/context_manager.cpp:925
 msgid "This map is already open."
 msgstr "Deze kaart is al geopend."
 
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:740
+msgid "Save Scenario As"
+msgstr "Sla Scenario Op Als"
+
+#: src/editor/map/context_manager.cpp:766
+msgid "This scenario is already open."
+msgstr "Dit scenario is al geopend."
+
+#: src/editor/map/context_manager.cpp:799
+msgid "No random map generators found."
+msgstr "Geen generator van willekeurige kaarten gevonden."
+
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
+msgid "Map creation failed."
+msgstr "Kaart aanmaken mislukt."
+
+#: src/editor/map/context_manager.cpp:832
+msgid "Unsaved Changes"
+msgstr "Onopgeslagen wijzigingen"
+
+#: src/editor/map/context_manager.cpp:833
+msgid "Do you want to discard all changes made to the map since the last save?"
+msgstr "Wilt u alle wijzigingen sinds de laatste keer opslaan ongedaan maken?"
+
+#: src/editor/map/context_manager.cpp:886
 msgid "Scenario saved."
 msgstr "Scenario opgeslagen."
 
-#: src/editor/map/context_manager.cpp:856
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:901
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Kaart opgeslagen."
 
-#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:976
 msgid "Loaded embedded map data"
 msgstr "Ingebedde kaartgegevens geladen"
 
-#: src/editor/map/context_manager.cpp:914
-#: src/editor/map/context_manager.cpp:927
+#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:980
 msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/map/context_manager.cpp:924
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-"Geladen gerefereerde kaartbestand:\n"
-"$new"
+#: src/editor/map/context_manager.cpp:980
+msgid "Loaded referenced map file:"
+msgstr "Geladen gerefereerde kaartbestand:"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Speler $side_num"
 
@@ -421,15 +462,21 @@ msgstr "Speler $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
-#: src/editor/map/map_context.cpp:147
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: src/editor/map/map_context.cpp:154
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Leeg bestand"
 
-#: src/editor/map/map_context.cpp:210
+#: src/editor/map/map_context.cpp:202
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr "Bestand heeft geen .map of .cfg extensie"
+
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -437,51 +484,89 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:622
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "Found the characters '<<' indicating inline lua is present - aborting"
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+msgstr ""
+"De karakters '<<' zijn gevonden, dit duidt op een aanwezige lua - afbreken"
+
+#: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr "Niet gelukt om scenario te laden, probeer nu enkel de kaart te laden."
+
+#: src/editor/map/map_context.cpp:280
+msgid ""
+"The map file looks like a scenario, but the map_file value does not point to "
+"an existing file"
+msgstr ""
+"Het kaartbestand lijkt op een scenario, maar de map_file waarde wijst niet "
+"naar een bestaand bestand"
+
+#: src/editor/map/map_context.cpp:295
+msgid "Unable to parse file to find map data"
+msgstr "Niet in staat om bestand te verwerken om kaart data te vinden"
+
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Opslaan van scenario mislukt: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Tijd Schema Menu"
+
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Opslaan van scenario mislukt: $msg"
 
-#: src/editor/map/map_context.cpp:657
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Kaart opslaan in scenario mislukt"
 
-#: src/editor/map/map_context.cpp:667
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Kaart opslaan mislukt: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:53
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Onbekende Groep)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(niet-kern)"
 
-#: src/editor/palette/editor_palettes.cpp:316
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "Zal niet in het spel werken zonder extra werk."
 
-#: src/editor/palette/location_palette.cpp:250
+#: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid "Right-click: "
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr "Rechter-muisknop: "
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr "Ga Naar"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr "Voeg Toe"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr "Nieuwe Locatie Identificatie"
 
-#: src/editor/palette/location_palette.cpp:266
-msgid "Error"
-msgstr "Fout"
-
-#: src/editor/palette/location_palette.cpp:267
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr "Ongeldige locatie id"
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -512,17 +597,19 @@ msgstr "Cmd + klik: kopieer terrein"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + klik: kopieer terrein"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
-msgid "Clipboard support not found, contact your packager"
-msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
+#~ msgid "Choose File"
+#~ msgstr "Kies Bestand"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
-msgid "Choose File"
-msgstr "Kies Bestand"
+#~ msgid "Select"
+#~ msgstr "Selecteer"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
-msgid "Select"
-msgstr "Selecteer"
+#, fuzzy
+#~| msgid "Left-click: "
+#~ msgid "Left-click: Place item "
+#~ msgstr "Linker-muisknop: "
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
 
 #~ msgid "player^None"
 #~ msgstr "Geen"

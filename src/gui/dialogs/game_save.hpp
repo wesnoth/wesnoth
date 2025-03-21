@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,15 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to create a savegame file.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * lblTitle          | @ref label   |yes      |The title of the window.
- * txtFilename       | text_box     |yes      |The name of the savefile.
- */
 class game_save : public modal_dialog
 {
 public:

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,6 +32,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "events.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -63,6 +64,7 @@ struct wesnoth_global_fixture {
 	{
 		using namespace boost::unit_test;
 		using namespace std::literals;
+		events::set_main_thread();
 		boost::filesystem::path file("boost_test_result.xml");
 		for(int i = 1; i < framework::master_test_suite().argc; i++) {
 			if(framework::master_test_suite().argv[i - 1] == "--output_file"s) {
@@ -77,6 +79,7 @@ struct wesnoth_global_fixture {
 		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
+		filesystem::set_user_data_dir(std::string());
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
@@ -86,6 +89,7 @@ struct wesnoth_global_fixture {
 		test_utils::get_fake_display(1024, 768);
 
 		gui2::init();
+		gui2::switch_theme("default");
 		static const gui2::event::manager gui_event_manager;
 
 		// TODO: For some reason this fails on MacOS and prevents any tests from running

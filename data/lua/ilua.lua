@@ -95,7 +95,7 @@ function ilua.val2str(val)
     elseif tp == 'string' then
         return "'"..val.."'"
     elseif tp == 'number' then
-	-- removed numeric precision features, but we might actually want these... might put them back
+        -- removed numeric precision features, but we might actually want these... might put them back
         return tostring(val)
     else
         return tostring(val)

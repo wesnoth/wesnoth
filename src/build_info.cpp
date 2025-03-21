@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "build_info.hpp"
 
 #include "desktop/version.hpp"
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -34,9 +33,8 @@
 #include <fstream>
 #include <iomanip>
 
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
@@ -48,6 +46,8 @@
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
 #endif
+
+#include <curl/curl.h>
 
 #include <pango/pangocairo.h>
 
@@ -72,12 +72,10 @@ struct version_table_manager
 
 const version_table_manager versions;
 
-#if 0
 std::string format_version(unsigned a, unsigned b, unsigned c)
 {
 	return formatter() << a << '.' << b << '.' << c;
 }
-#endif
 
 std::string format_version(const SDL_version& v)
 {
@@ -171,7 +169,6 @@ std::string format_openssl_version(long v)
 	}
 
 	return fmt.str();
-
 }
 
 #endif
@@ -183,7 +180,6 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-
 
 	//
 	// SDL
@@ -249,6 +245,22 @@ version_table_manager::version_table_manager()
 	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
 #endif
+
+	//
+	// libcurl
+	//
+
+	compiled[LIB_CURL] = format_version(
+		(LIBCURL_VERSION_NUM & 0xFF0000) >> 16,
+		(LIBCURL_VERSION_NUM & 0x00FF00) >> 8,
+		LIBCURL_VERSION_NUM & 0x0000FF);
+	curl_version_info_data *curl_ver = curl_version_info(CURLVERSION_NOW);
+	if(curl_ver && curl_ver->version) {
+		linked[LIB_CURL] = curl_ver->version;
+	}
+	// This is likely to upset somebody out there, but the cURL authors
+	// consistently call it 'libcurl' (all lowercase) in all documentation.
+	names[LIB_CURL] = "libcurl";
 
 	//
 	// Cairo
@@ -322,6 +334,7 @@ std::string build_arch()
 #elif BOOST_ARCH_SPARC
 	return "sparc";
 #else
+	#warning Unrecognized platform or Boost.Predef broken/unavailable
 	// Congratulations, you're running Wesnoth on an exotic platform -- either that or you live in
 	// the foretold future where x86 and ARM stopped being the dominant CPU architectures for the
 	// general-purpose consumer market. If you want to add label support for your platform, check
@@ -580,7 +593,8 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
-	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
+	fmt.insert("Render refresh rate", std::to_string(video::current_refresh_rate()));
+	fmt.insert("Screen refresh rate", std::to_string(video::native_refresh_rate()));
 	fmt.insert("Screen dpi", dpi_report);
 
 	const auto& renderer_report = video::renderer_report();
@@ -653,7 +667,6 @@ std::string full_build_report()
 {
 	list_formatter::contents_list paths{
 		{"Data dir",        game_config::path},
-		{"User config dir", filesystem::get_user_config_dir()},
 		{"User data dir",   filesystem::get_user_data_dir()},
 		{"Saves dir",       filesystem::get_saves_dir()},
 		{"Add-ons dir",     filesystem::get_addons_dir()},

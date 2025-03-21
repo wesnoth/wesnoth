@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,60 +17,13 @@
 
 #include <string>
 
-/**
- * @file
- * Log file control routines for Windows.
- *
- * During static object initialization, stdout and stderr are redirected to a
- * uniquely-named log file located in the user's temporary directory as defined
- * by the platform (e.g. C:/Users/username/AppData/Local/Temp/wesnoth-XXXX.log).
- * Later, a request may be issued to relocate the log file to a more permanent
- * and user-accessible location (such as the Wesnoth user data directory).
- *
- * Because Wesnoth is normally built with the GUI subsystem option, there is no
- * console on startup and thus no way to see stdout/stderr output. Since
- * version 1.13.1, we can allocate a console during initialization when started
- * with the --wconsole option, but that is a somewhat clunky hack that does not
- * help with post mortem debugging.
- *
- * SDL 1.2 used to redirect stdout and stderr to stdout.txt and stderr.txt in
- * the process working directory automatically, but this approach too had its
- * own shortcomings by assuming the pwd was writable by the process (or in Vista
- * and later versions, requiring UAC virtualization to be enabled).
- */
-
 namespace lg
 {
 
 /**
- * Sets up the initial temporary log file.
- *
- * This has to be done on demand (preferably as early as possible) from a
- * function rather than during static initialization, otherwise things go
- * horribly wrong as soon as we try to use the logging facilities internally
- * for debug messages.
+ * Allocates a console if needed and redirects output to CONOUT.
  */
-void early_log_file_setup(bool disable);
-
-/**
- * Relocates the stdout+stderr log file to the user data directory.
- *
- * This function exits the process if something goes wrong (including calling
- * it when the user data directory isn't known yet).
- */
-void finish_log_file_setup();
-
-/**
- * Switches to using a native console instead of log file redirection.
- *
- * In this mode, the log file is closed (if it was created in the first place)
- * and output is sent directly to an attached or allocated console instead.
- * This is used to implement the --wconsole command line option.
- *
- * Using a native console instead of a file has the benefit of allowing to see
- * output in real time or redirecting it to a user-specified file.
- */
-void enable_native_console_output();
+void do_console_redirect();
 
 /**
  * Returns true if a console was allocated by the Wesnoth process.

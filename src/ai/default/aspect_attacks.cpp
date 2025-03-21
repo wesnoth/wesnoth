@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,13 +24,12 @@
 #include "ai/manager.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "resources.hpp"
 #include "scripting/lua_unit.hpp"
 #include "team.hpp"
-#include "tod_manager.hpp"
 #include "units/filter.hpp"
 #include "units/unit.hpp"
 
@@ -53,14 +52,14 @@ aspect_attacks::aspect_attacks(readonly_context& context, const config& cfg, con
 	, filter_own_()
 	, filter_enemy_()
 {
-	if(const config& filter_own = cfg.child("filter_own")) {
-		vconfig vcfg(filter_own);
+	if(auto filter_own = cfg.optional_child("filter_own")) {
+		vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}
 
-	if(const config& filter_enemy = cfg.child("filter_enemy")) {
-		vconfig vcfg(filter_enemy);
+	if(auto filter_enemy = cfg.optional_child("filter_enemy")) {
+		vconfig vcfg(*filter_enemy);
 		vcfg.make_safe();
 		filter_enemy_.reset(new unit_filter(vcfg));
 	}

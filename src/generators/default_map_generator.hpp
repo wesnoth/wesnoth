@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,11 +50,11 @@ public:
 
 	std::string config_name() const override;
 
-	std::string create_map(std::optional<uint32_t> randomseed) override;
-	config create_scenario(std::optional<uint32_t> randomseed) override;
+	std::string create_map(utils::optional<uint32_t> randomseed) override;
+	config create_scenario(utils::optional<uint32_t> randomseed) override;
 
 private:
-	std::string generate_map(std::map<map_location,std::string>* labels, std::optional<uint32_t> randomseed);
+	std::string generate_map(std::map<map_location,std::string>* labels, utils::optional<uint32_t> randomseed);
 
 	config cfg_;
 

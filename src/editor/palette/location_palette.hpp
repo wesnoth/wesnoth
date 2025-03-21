@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "editor/editor_display.hpp"
 #include "editor/palette/common_palette.hpp"
-#include "editor/palette/tristate_button.hpp"
 
 class location_palette_item;
 class location_palette_button;
@@ -34,8 +33,7 @@ class location_palette : public common_palette {
 
 public:
 
-	location_palette(editor_display &gui, const game_config_view& /*cfg*/,
-	                 editor_toolkit &toolkit);
+	location_palette(editor_display &gui, editor_toolkit &toolkit);
 
 
 	virtual sdl_handler_vector handler_members() override;
@@ -72,10 +70,10 @@ public:
 	virtual bool scroll_down() override;
 	virtual bool can_scroll_down() override;
 
-	void swap() override {}
-	bool can_swap() { return false; }
+	virtual void swap() override {}
+	virtual bool supports_swap() override { return false; }
 
-	virtual std::string get_help_string() { return ""; }
+	std::string get_help_string() const { return ""; }
 
 	/** Return the currently selected item. */
 	const std::string& selected_item() const { return selected_item_; }
@@ -89,9 +87,6 @@ public:
 private:
 	/** Scroll the editor-palette to the top. */
 	void scroll_top();
-
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
 
 	virtual bool is_selected_item(const std::string& id);
 

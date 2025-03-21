@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,6 @@
 #include "config.hpp"                   // for config
 #include "formula/callable.hpp"         // for formula_callable, etc
 #include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc
-#include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
 #include "units/map.hpp"
 #include <set>                          // for multiset
@@ -36,12 +35,10 @@
 #include <vector>                       // for vector
 
 namespace ai { class ai_context; }
-namespace pathfind { struct plain_route; }  // lines 57-57
 struct map_location;
 
 namespace wfl {
 	struct formula_error;
-	class variant;
 }
 
 namespace wfl {
@@ -80,7 +77,7 @@ public:
 
 	std::string evaluate(const std::string& formula_str);
 
-	virtual void add_formula_function(const std::string& name, wfl::const_formula_ptr formula, wfl::const_formula_ptr precondition, const std::vector<std::string>& args);
+	virtual void add_formula_function(const std::string& name, const wfl::const_formula_ptr& formula, const wfl::const_formula_ptr& precondition, const std::vector<std::string>& args);
 
 #if 0
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
@@ -136,18 +133,18 @@ public:
 	wfl::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
 
 	/** Evaluate the fai candidate action */
-	void evaluate_candidate_action(wfl::candidate_action_ptr fai_ca);
+	void evaluate_candidate_action(const wfl::candidate_action_ptr& fai_ca);
 
 	/**
 	 * Execute the fai candidate action
 	 * @return true if game state was changed
 	 * @return false if game state was not changed
 	 */
-	bool execute_candidate_action(wfl::candidate_action_ptr fai_ca);
+	bool execute_candidate_action(const wfl::candidate_action_ptr& fai_ca);
 
 	void set_ai_context(ai_context *context);
 
-	wfl::variant make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables);
+	wfl::variant make_action(const wfl::const_formula_ptr& formula_, const wfl::formula_callable& variables);
 
 private:
 	ai_context *ai_ptr_;
@@ -168,7 +165,7 @@ private:
 	mutable wfl::ai_function_symbol_table function_table_;
 
 	friend class ai_default;
-	friend ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
+	friend ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai);
 };
 
 } //end of namespace ai

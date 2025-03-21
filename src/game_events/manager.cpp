@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,10 +17,8 @@
 
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp"
-#include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 
-#include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -67,21 +65,27 @@ namespace game_events
 /** Create an event handler. */
 void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel& lk, bool is_menu_item)
 {
-	auto new_handler = event_handlers_->add_event_handler(handler["name"], handler["id"], !handler["first_time_only"].to_bool(true), is_menu_item);
+	auto new_handler = event_handlers_->add_event_handler(
+		handler["name"],
+		handler["id"],
+		!handler["first_time_only"].to_bool(true),
+		handler["priority"].to_double(0.),
+		is_menu_item
+	);
 	if(new_handler.valid()) {
 		new_handler->read_filters(handler);
 
 		// Strip out anything that's used by the event system itself.
 		config args;
 		for(const auto& [attr, val] : handler.attribute_range()) {
-			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr.compare(0, 6, "filter") == 0) {
+			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr == "priority" || attr.compare(0, 6, "filter") == 0) {
 				continue;
 			}
 			args[attr] = val;
 		}
-		for(auto child : handler.all_children_range()) {
-			if(child.key.compare(0, 6, "filter") != 0) {
-				args.add_child(child.key, child.cfg);
+		for(auto [key, cfg] : handler.all_children_view()) {
+			if(key.compare(0, 6, "filter") != 0) {
+				args.add_child(key, cfg);
 			}
 		}
 		new_handler->set_arguments(args);
@@ -90,6 +94,7 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 			<< (new_handler->names_raw().empty() ? "" : "'" + new_handler->names_raw() + "'")
 			<< (new_handler->id().empty() ? "" : "{id=" + new_handler->id() + "}")
 			<< (new_handler->repeatable() ? " (repeating" : " (first time only")
+			<< "; priority " + std::to_string(new_handler->priority())
 			<< (is_menu_item ? "; menu item)" : ")")
 			<< " with the following actions:\n"
 			<< args.debug();
@@ -98,9 +103,9 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 	}
 }
 
-pending_event_handler manager::add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat, bool is_menu_item)
+pending_event_handler manager::add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat, double priority, bool is_menu_item)
 {
-	return event_handlers_->add_event_handler(name, id, repeat, is_menu_item);
+	return event_handlers_->add_event_handler(name, id, repeat, priority, is_menu_item);
 }
 
 /** Removes an event handler. */
@@ -157,7 +162,7 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 
 	for(const config& new_ev : cfgs) {
 		if(type.empty() && new_ev["id"].empty()) {
-			WRN_NG << "attempt to add an [event] with empty id=, ignoring ";
+			WRN_NG << "attempt to add an [event] with empty id= from [unit], ignoring ";
 			continue;
 		}
 
@@ -197,22 +202,18 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 	wml_menu_items_.to_config(cfg);
 }
 
-void manager::execute_on_events(const std::string& event_id, manager::event_func_t func)
+void manager::execute_on_events(const std::string& event_id, const manager::event_func_t& func)
 {
 	const std::string standardized_event_id = event_handlers::standardize_name(event_id);
 	const game_data* gd = resources::gamedata;
-	auto& active_handlers = event_handlers_->get_active();
-
-	// Save the end outside the loop so the end point remains constant,
-	// even if new events are added to the queue.
-	const unsigned saved_end = active_handlers.size();
-
+	// Copy the list so that new events added during processing are not executed.
+	auto active_handlers = event_handlers_->get_active();
 
 	{
 		// Ensure that event handlers won't be cleaned up while we're iterating them.
 		event_handler_list_lock lock;
 
-		for (unsigned i = 0; i < saved_end; ++i) {
+		for (unsigned i = 0; i < active_handlers.size(); ++i) {
 			handler_ptr handler = nullptr;
 
 			try {

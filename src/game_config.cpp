@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,35 +19,21 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "utils/math.hpp"
 #include "game_version.hpp"
-#include "wesconfig.h"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <cmath>
+#include <random>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
+using namespace std::chrono_literals;
+
 namespace game_config
 {
-//
-// Path info
-//
-#ifdef WESNOTH_PATH
-std::string path = WESNOTH_PATH;
-#else
-std::string path = "";
-#endif
-
-#ifdef DEFAULT_PREFS_PATH
-std::string default_preferences_path = DEFAULT_PREFS_PATH;
-#else
-std::string default_preferences_path = "";
-#endif
-bool check_migration = false;
-
-std::string wesnoth_program_dir;
-
 //
 // Gameplay constants
 //
@@ -69,7 +55,7 @@ const int gold_carryover_percentage = 80;
 unsigned int tile_size = 72;
 
 std::string default_terrain;
-std::string shroud_prefix, fog_prefix;
+std::string shroud_prefix, fog_prefix, reach_map_prefix;
 
 std::vector<unsigned int> zoom_levels {36, 72, 144};
 
@@ -82,18 +68,15 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-int cache_compression_level = 6;
-
-unsigned lobby_network_timer  = 100;
-unsigned lobby_refresh        = 4000;
-
-const std::string observer_team_name = "observer";
+std::chrono::milliseconds lobby_network_timer  = 100ms;
+std::chrono::milliseconds lobby_refresh        = 4000ms;
 
 const std::size_t max_loop = 65536;
 
 std::vector<server_info> server_list;
 
 bool allow_insecure = false;
+bool addon_server_info = false;
 
 //
 // Gamestate flags
@@ -106,24 +89,26 @@ bool
 	ignore_replay_errors = false,
 	mp_debug             = false,
 	exit_at_end          = false,
-	no_delay             = false,
 	disable_autosave     = false,
 	no_addons            = false;
 
 const bool& debug = debug_impl;
 
 void set_debug(bool new_debug) {
+    // TODO: remove severity static casts and fix issue #7894
 	if(debug_impl && !new_debug) {
 		// Turning debug mode off; decrease deprecation severity
-		int severity;
+		lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity - 2);
+            int severityInt = static_cast<int>(severity);
+			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt - 2));
 		}
 	} else if(!debug_impl && new_debug) {
 		// Turning debug mode on; increase deprecation severity
-		int severity;
+        lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity + 2);
+            int severityInt = static_cast<int>(severity);
+			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt + 2));
 		}
 	}
 	debug_impl = new_debug;
@@ -141,6 +126,13 @@ bool show_status_on_ally_orb;
 bool show_unmoved_orb;
 
 //
+// Reach map opacity variables
+//
+
+int reach_map_border_opacity;
+int reach_map_tint_opacity;
+
+//
 // Music constants
 //
 std::string title_music, lobby_music;
@@ -156,25 +148,26 @@ std::string flag_rgb, unit_rgb;
 std::vector<color_t> red_green_scale;
 std::vector<color_t> red_green_scale_text;
 
-static std::vector<color_t> blue_white_scale;
-static std::vector<color_t> blue_white_scale_text;
+std::vector<color_t> blue_white_scale;
+std::vector<color_t> blue_white_scale_text;
 
-std::map<std::string, color_range> team_rgb_range;
+std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
-std::map<std::string, t_string> team_rgb_name;
+std::map<std::string, t_string, std::less<>> team_rgb_name;
 
-std::map<std::string, std::vector<color_t>> team_rgb_colors;
+std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
 std::vector<std::string> default_colors;
 
 namespace colors
 {
 std::string ally_orb_color;
-std::string disengaged_orb_color;
 std::string enemy_orb_color;
 std::string moved_orb_color;
 std::string partial_orb_color;
 std::string unmoved_orb_color;
+std::string reach_map_color;
+std::string reach_map_enemy_color;
 std::string default_color_list;
 } // namespace colors
 
@@ -213,7 +206,6 @@ std::string
 	mouseover,
 	selected,
 	editor_brush,
-	unreachable,
 	linger,
 	// GUI elements
 	observer,
@@ -289,15 +281,20 @@ void load_config(const config &v)
 	recall_cost      = v["recall_cost"].to_int(20);
 	kill_experience  = v["kill_experience"].to_int(8);
 	combat_experience= v["combat_experience"].to_int(1);
-	lobby_refresh    = v["lobby_refresh"].to_int(2000);
+	lobby_refresh    = chrono::parse_duration(v["lobby_refresh"], 2000ms);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);
 
 	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
-		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
-			return static_cast<int>(std::stold(zoom) * tile_size);
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom) {
+			int z = std::stoi(zoom);
+			if((z / 4) * 4 != z) {
+				ERR_NG << "zoom level " << z << " is not divisible by 4."
+					<< " This will cause graphical glitches!";
+			}
+			return z;
 		});
 	}
 
@@ -307,30 +304,42 @@ void load_config(const config &v)
 	default_victory_music = utils::split(v["default_victory_music"].str());
 	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
-	if(const config& i = v.child("colors")){
+	if(auto i = v.optional_child("colors")){
 		using namespace game_config::colors;
 
-		moved_orb_color    = i["moved_orb_color"].str();
-		unmoved_orb_color  = i["unmoved_orb_color"].str();
-		partial_orb_color  = i["partial_orb_color"].str();
-		enemy_orb_color    = i["enemy_orb_color"].str();
-		ally_orb_color     = i["ally_orb_color"].str();
-		disengaged_orb_color = i["disengaged_orb_color"].str();
+		moved_orb_color       = i["moved_orb_color"].str();
+		unmoved_orb_color     = i["unmoved_orb_color"].str();
+		partial_orb_color     = i["partial_orb_color"].str();
+		enemy_orb_color       = i["enemy_orb_color"].str();
+		ally_orb_color        = i["ally_orb_color"].str();
+		reach_map_color       = i["reach_map_color"].str();
+		reach_map_enemy_color = i["reach_map_enemy_color"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
 	show_enemy_orb    = v["show_enemy_orb"].to_bool(false);
 	show_moved_orb    = v["show_moved_orb"].to_bool(true);
-	show_partial_orb  = v["show_partly_orb"].to_bool(true);
+	show_partial_orb  = v["show_partial_orb"].to_bool(true);
 	show_status_on_ally_orb = v["show_status_on_ally_orb"].to_bool(true);
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
 	show_disengaged_orb = v["show_disengaged_orb"].to_bool(true);
 
-	if(const config& i = v.child("images")){
+	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
+		if (!i["game_title_background"].blank()) {
+			// Select a background at random
+			const auto backgrounds = utils::split(i["game_title_background"].str());
+			if (backgrounds.size() > 1) {
+				int r = rand() % (backgrounds.size());
+				game_title_background = backgrounds.at(r);
+			} else if (backgrounds.size() == 1) {
+				game_title_background = backgrounds.at(0);
+			}
+		}
+
+		// Allow game_title to be empty
 		game_title            = i["game_title"].str();
-		game_title_background = i["game_title_background"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 
@@ -354,7 +363,6 @@ void load_config(const config &v)
 		mouseover    = i["mouseover"].str();
 		selected     = i["selected"].str();
 		editor_brush = i["editor_brush"].str();
-		unreachable  = i["unreachable"].str();
 		linger       = i["linger"].str();
 
 		observer   = i["observer"].str();
@@ -375,6 +383,9 @@ void load_config(const config &v)
 
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
+	reach_map_prefix 	= v["reach_map_prefix"].str();
+	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(100);
+	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(50);//tint is at 50% by default instead of 100% to allow players to make it more opaque than normal
 
 	add_color_info(game_config_view::wrap(v), true);
 
@@ -418,7 +429,7 @@ void load_config(const config &v)
 		server_list.push_back(sinf);
 	}
 
-	if(const config& s = v.child("sounds")) {
+	if(auto s = v.optional_child("sounds")) {
 		using namespace game_config::sounds;
 
 		const auto load_attribute = [](const config& c, const std::string& key, std::string& member) {
@@ -427,26 +438,26 @@ void load_config(const config &v)
 			}
 		};
 
-		load_attribute(s, "turn_bell",        turn_bell);
-		load_attribute(s, "timer_bell",       timer_bell);
-		load_attribute(s, "public_message",   public_message);
-		load_attribute(s, "private_message",  private_message);
-		load_attribute(s, "friend_message",   friend_message);
-		load_attribute(s, "server_message",   server_message);
-		load_attribute(s, "player_joins",     player_joins);
-		load_attribute(s, "player_leaves",    player_leaves);
-		load_attribute(s, "game_created",     game_created);
-		load_attribute(s, "game_user_arrive", game_user_arrive);
-		load_attribute(s, "game_user_leave",  game_user_leave);
-		load_attribute(s, "ready_for_start",  ready_for_start);
-		load_attribute(s, "game_has_begun",   game_has_begun);
+		load_attribute(*s, "turn_bell",        turn_bell);
+		load_attribute(*s, "timer_bell",       timer_bell);
+		load_attribute(*s, "public_message",   public_message);
+		load_attribute(*s, "private_message",  private_message);
+		load_attribute(*s, "friend_message",   friend_message);
+		load_attribute(*s, "server_message",   server_message);
+		load_attribute(*s, "player_joins",     player_joins);
+		load_attribute(*s, "player_leaves",    player_leaves);
+		load_attribute(*s, "game_created",     game_created);
+		load_attribute(*s, "game_user_arrive", game_user_arrive);
+		load_attribute(*s, "game_user_leave",  game_user_leave);
+		load_attribute(*s, "ready_for_start",  ready_for_start);
+		load_attribute(*s, "game_has_begun",   game_has_begun);
 
-		if(const config & ss = s.child("status")) {
+		if(auto ss = s->optional_child("status")) {
 			using namespace game_config::sounds::status;
 
-			load_attribute(ss, "poisoned",  poisoned);
-			load_attribute(ss, "slowed",    slowed);
-			load_attribute(ss, "petrified", petrified);
+			load_attribute(*ss, "poisoned",  poisoned);
+			load_attribute(*ss, "slowed",    slowed);
+			load_attribute(*ss, "petrified", petrified);
 		}
 	}
 }
@@ -481,11 +492,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Ggenerate palette of same name;
-		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(!tp.empty()) {
-			team_rgb_colors.emplace(id, tp);
-		}
+		// Generate palette of same name;
+		team_rgb_colors.emplace(id, palette(team_rgb_range[id]));
 
 		if(build_defaults && teamC["default"].to_bool()) {
 			default_colors.push_back(*a1);
@@ -493,18 +501,18 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
-		for(const config::attribute& rgb : cp.attribute_range()) {
+		for(const auto& [key, value] : cp.attribute_range()) {
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(rgb.second)) {
+			for(const auto& s : utils::split(value)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s;
+				} catch(const std::invalid_argument& e) {
+					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
 
-			team_rgb_colors.emplace(rgb.first, temp);
-			LOG_NG << "registered color palette: " << rgb.first;
+			team_rgb_colors.emplace(key, temp);
+			LOG_NG << "registered color palette: " << key;
 		}
 	}
 }
@@ -517,7 +525,7 @@ void reset_color_info()
 	team_rgb_range.clear();
 }
 
-const color_range& color_info(const std::string& name)
+const color_range& color_info(std::string_view name)
 {
 	auto i = team_rgb_range.find(name);
 	if(i != team_rgb_range.end()) {
@@ -537,7 +545,7 @@ const color_range& color_info(const std::string& name)
 	return color_info(name);
 }
 
-const std::vector<color_t>& tc_info(const std::string& name)
+const std::vector<color_t>& tc_info(std::string_view name)
 {
 	auto i = team_rgb_colors.find(name);
 	if(i != team_rgb_colors.end()) {
@@ -548,9 +556,9 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	for(const auto& s : utils::split(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument& e) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s;
+			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;
 		}
 	}
@@ -564,7 +572,7 @@ color_t red_to_green(double val, bool for_text)
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
 	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
-	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
+	const int lvl = int(std::nearbyint((color_scale.size() - 1) * val_scaled));
 
 	return color_scale[lvl];
 }
@@ -574,7 +582,7 @@ color_t blue_to_white(double val, bool for_text)
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
 	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
-	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
+	const int lvl = int(std::nearbyint((color_scale.size() - 1) * val_scaled));
 
 	return color_scale[lvl];
 }

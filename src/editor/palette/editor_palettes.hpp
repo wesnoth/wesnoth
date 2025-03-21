@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,8 +28,7 @@ class editor_palette : public tristate_palette {
 
 public:
 
-	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
-	             , std::size_t item_size, std::size_t columns, editor_toolkit &toolkit)
+	editor_palette(editor_display &gui, int item_size, std::size_t columns, editor_toolkit &toolkit)
 		: tristate_palette()
 		, groups_()
 		, gui_(gui)
@@ -49,8 +48,6 @@ public:
 	{
 	}
 
-
-
 	virtual sdl_handler_vector handler_members() override;
 
 	void set_start_item(std::size_t index) override { items_start_ = index; }
@@ -61,7 +58,6 @@ public:
 	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
 	void set_group(std::size_t index) override;
-//	int active_group();
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
 
@@ -91,7 +87,7 @@ public:
 
 	void swap() override;
 
-	virtual std::string get_help_string() = 0;
+	virtual std::string get_help_string() const = 0;
 
 	/** Return the currently selected foreground/background item. */
 	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; }
@@ -150,10 +146,13 @@ protected:
 
 	/**
 	 * Both the width and the height of the square buttons.
+	 *
+	 * This is a size measured in pixels, and should match the type of
+	 * SDL_rect.w and SDL_rect.h.
 	 */
 	int item_size_;
 	/**
-	 * item_space_ plus some padding.
+	 * item_size_ plus some padding.
 	 */
 	int item_space_;
 

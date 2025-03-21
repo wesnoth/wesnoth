@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -32,12 +32,12 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
+#include <array>
 #include <vector>
 
+#include <SDL2/SDL_render.h>
+
 struct color_t;
-class surface;
-class texture;
-struct SDL_Texture;
 
 namespace draw
 {
@@ -46,11 +46,22 @@ namespace draw
 /* basic drawing and pixel primatives */
 /**************************************/
 
+/**
+ * Clear the current render target.
+ *
+ * Sets all pixel values in the current render target to (0, 0, 0, 0),
+ * that is both black and fully transparent.
+ *
+ * To clear to a fully opaque colour in stead, use fill().
+ */
+void clear();
 
 /**
  * Fill an area with the given colour.
  *
  * If the alpha component is not specified, it defaults to fully opaque.
+ * If not fully opaque, the fill colour will apply according to the current
+ * blend mode, by default SDL_BLENDMODE_BLEND.
  *
  * If a fill area is not specified, it will fill the entire render target.
  *
@@ -66,6 +77,8 @@ void fill(const SDL_Rect& rect, const color_t& color);
 void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void fill(uint8_t r, uint8_t g, uint8_t b);
 void fill(const color_t& color);
+
+void fill(const SDL_FRect& rect, const color_t& color);
 
 /**
  * Fill an area.
@@ -197,6 +210,12 @@ void circle(int x, int y, int r, uint8_t octants = 0xff);
 void disc(int x, int y, int r, const color_t& c, uint8_t octants = 0xff);
 void disc(int x, int y, int r, uint8_t octants = 0xff);
 
+/** Draw outline of circle using Cairo */
+void cairo_circle(int cx, int cy, int r, const color_t& c, int thickness);
+
+/** Draw filled circle using Cairo */
+void cairo_disc(int cx, int cy, int r, const color_t& c);
+
 
 /*******************/
 /* texture drawing */
@@ -276,6 +295,40 @@ void tiled_highres(const texture& tex,
 	bool mirrored = false
 );
 
+/**
+ * Draw a texture with smoothly varying colour and alpha modification,
+ * specified at the four corners of the drawing destination.
+ *
+ * The UV texture coordinates at each corner may also be specified.
+ * If unspecified, the full texture will be drawn.
+ *
+ * Colour modifiers multiply the output colour and alpha by their value
+ * after mapping to the range [0,1]. A value of 255 will have no effect.
+ *
+ * @param tex   The texture to draw
+ * @param dst   Where to draw the texture, in draw space
+ * @param cTL   The colour modifier at the top-left corner
+ * @param cTR   The colour modifier at the top-right corner
+ * @param cBL   The colour modifier at the bottom-left corner
+ * @param cBR   The colour modifier at the bottom-right corner
+ * @param uvTL  The UV texture coordinate at the top-left corner
+ * @param uvTR  The UV texture coordinate at the top-right corner
+ * @param uvBL  The UV texture coordinate at the bottom-left corner
+ * @param uvBR  The UV texture coordinate at the bottom-right corner
+ */
+void smooth_shaded(const texture& tex, const SDL_Rect& dst,
+	const SDL_Color& cTL, const SDL_Color& cTR,
+	const SDL_Color& cBL, const SDL_Color& cBR,
+	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
+	const SDL_FPoint& uvBL, const SDL_FPoint& uvBR
+);
+void smooth_shaded(const texture& tex, const SDL_Rect& dst,
+	const SDL_Color& cTL, const SDL_Color& cTR,
+	const SDL_Color& cBL, const SDL_Color& cBR
+);
+void smooth_shaded(const texture& tex,
+	const std::array<SDL_Vertex, 4>& verts
+);
 
 /***************************/
 /* RAII state manipulation */
@@ -312,7 +365,7 @@ private:
  *                      the clipping region will be restored to whatever
  *                      it was before this call.
  */
-clip_setter override_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter override_clip(const SDL_Rect& clip);
 
 /**
  * Set the clipping area to the intersection of the current clipping
@@ -320,7 +373,7 @@ clip_setter override_clip(const SDL_Rect& clip);
  *
  * Otherwise acts as override_clip().
  */
-clip_setter reduce_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter reduce_clip(const SDL_Rect& clip);
 
 /**
  * Set the clipping area, without any provided way of setting it back.
@@ -391,7 +444,7 @@ private:
  *                      destroyed the viewport will be restored to whatever
  *                      it was before this call.
  */
-viewport_setter set_viewport(const SDL_Rect& viewport);
+[[nodiscard]] viewport_setter set_viewport(const SDL_Rect& viewport);
 
 /**
  * Set the viewport, without any provided way of setting it back.
@@ -430,6 +483,7 @@ public:
 private:
 	texture target_;
 	::rect viewport_;
+	::rect clip_;
 };
 
 /**
@@ -446,12 +500,14 @@ private:
  * SDL_TEXTUREACCESS_TARGET access mode.
  *
  * @param t     The new render target. This must be a texture created
- *              with SDL_TEXTUREACCESS_TARGET.
+ *              with SDL_TEXTUREACCESS_TARGET, or an empty texture.
+ *              If empty, it will set the render target to Wesnoth's
+ *              primary render buffer.
  * @returns     A render_target_setter object. When this object is
  *              destroyed the render target will be restored to
  *              whatever it was before this call.
  */
-render_target_setter set_render_target(const texture& t);
+[[nodiscard]] render_target_setter set_render_target(const texture& t);
 
 
 } // namespace draw

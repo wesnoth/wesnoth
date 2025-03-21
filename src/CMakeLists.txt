@@ -1,16 +1,14 @@
 # store the specified sources list in the specified variable
 function(GetSources source_list store_in_var)
-	file(STRINGS "../source_lists/${source_list}" sources)
-	set(${store_in_var} ${sources} PARENT_SCOPE)
+	file(STRINGS "${CMAKE_SOURCE_DIR}/source_lists/${source_list}" sources)
+	foreach(source IN LISTS sources)
+	    list(APPEND loaded_sources "${CMAKE_SOURCE_DIR}/src/${source}")
+		set(${store_in_var} ${loaded_sources} PARENT_SCOPE)
+	endforeach()
 endfunction()
 
-if(ENABLE_MYSQL)
-	execute_process(COMMAND mysql_config --cflags OUTPUT_VARIABLE MYSQL_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
-	string(REGEX REPLACE "-I" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
-	string(REGEX REPLACE "-DNDEBUG" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
-	execute_process(COMMAND mysql_config --libs OUTPUT_VARIABLE MYSQL_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
-	add_subdirectory("modules/mariadbpp/")
-endif()
+# external git submodules
+add_subdirectory("modules")
 
 ## some includes ##
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
@@ -48,6 +46,12 @@ if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
 	set(common-external-libs ${common-external-libs} socket)
 endif()
 
+if(ENABLE_SYSTEM_LUA)
+	add_compile_definitions(HAVE_SYSTEM_LUA=1)
+	include_directories( SYSTEM ${LUA_INCLUDE_DIR} )
+	set(common-external-libs ${common-external-libs} ${LUA_LIBRARIES})
+endif()
+
 set(game-external-libs
 	${common-external-libs}
 	${PANGOCAIRO_LIBRARIES}
@@ -68,39 +72,15 @@ if(HISTORY_FOUND)
 endif()
 
 # get source lists
-GetSources("lua" lua_sources)
 GetSources("libwesnoth_sdl" wesnoth_sdl_sources)
 GetSources("libwesnoth_widgets" wesnoth_widget-sources)
 GetSources("libwesnoth" wesnoth_game_sources)
 GetSources("libwesnoth_core" wesnoth_core_sources)
 GetSources("wesnoth" wesnoth_sources)
 
-# Inject a header into the Lua sources for Wesnoth-specific changes
-# makedepend won't see it so we have to specifically add it as a dependency.
-file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
-set_source_files_properties(${lua_sources} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
-
 if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
-endif()
-
-set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
-
-# We explicitly want lua compiled as C++ version
-if(MSVC)
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
-	# silence an implicit bitshift conversion warning
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334 /TP")
-else()
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -x c++ -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
-endif()
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	# silence a Clang specific warning due to extra parenthesis in if statements
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
-	# silence a Clang specific warning when compiling the lua code
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
 endif()
 
 # On apple only
@@ -122,7 +102,7 @@ endif()
 # Depending on the flag create a real file or an empty dummy.
 #
 # Since the code is executed every build run of Wesnoth we need to make sure
-# that no modifications don't turn into a rebuild. Therefore a the dummy is
+# that no modifications don't turn into a rebuild. Therefore a dummy is
 # created and the second target only copies the file if modified.
 if(ENABLE_DISPLAY_REVISION)
 	add_custom_target(wesnoth-revision_dummy
@@ -137,7 +117,7 @@ if(ENABLE_DISPLAY_REVISION)
 	)
 
 	add_dependencies(wesnoth-revision wesnoth-revision_dummy)
-	set_source_files_properties(game_config.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
+	set_source_files_properties(game_version.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
 endif()
 
 ########### Conf Tests ###########
@@ -203,8 +183,10 @@ endif()
 
 add_library(wesnoth-common STATIC ${wesnoth_core_sources})
 if(ENABLE_GAME OR ENABLE_TESTS)
-	add_library(wesnoth-client STATIC ${wesnoth_sources} ${lua_sources} ${wesnoth_game_sources} ${wesnoth_sdl_sources})
-
+	add_library(wesnoth-client STATIC ${wesnoth_sources} ${wesnoth_game_sources} ${wesnoth_sdl_sources})
+	if(NOT ENABLE_SYSTEM_LUA)
+    	target_link_libraries(wesnoth-client lua)
+	endif()
 	# widgets need special handling since otherwise the way they're registered causes the linker to remove them since it incorrectly thinks they're unused
 	add_library(wesnoth-widgets STATIC ${wesnoth_widget-sources})
 	if(APPLE)
@@ -230,7 +212,6 @@ if(ENABLE_GAME)
 	endif()
 
 	target_link_libraries(wesnoth
-		wesnoth-common
 		${WIDGETS_LIB}
 		wesnoth-client
 		wesnoth-common
@@ -248,6 +229,7 @@ if(ENABLE_GAME)
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
+		CURL::libcurl
 	)
 	if(MSVC)
 		target_link_libraries(wesnoth SDL2_image::SDL2_image)
@@ -255,7 +237,7 @@ if(ENABLE_GAME)
 	endif()
 
 	if(ENABLE_DISPLAY_REVISION)
-		add_dependencies(wesnoth wesnoth-revision)
+		add_dependencies(wesnoth-common wesnoth-revision) # game_version.cpp, where LOAD_REVISION is used, is in wesnoth-common
 	endif()
 
 	set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX})
@@ -276,7 +258,6 @@ if(ENABLE_TESTS)
 	endif()
 
 	target_link_libraries(boost_unit_tests
-		wesnoth-common
 		${WIDGETS_LIB}
 		wesnoth-client
 		wesnoth-common
@@ -295,6 +276,7 @@ if(ENABLE_TESTS)
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
+		CURL::libcurl
 	)
 	if(MSVC)
 		target_link_libraries(boost_unit_tests SDL2_image::SDL2_image)

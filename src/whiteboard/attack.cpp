@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,10 @@
 
 #include "whiteboard/attack.hpp"
 
-#include "whiteboard/visitor.hpp"
-#include "whiteboard/utility.hpp"
+#include <utility>
 
-#include "arrow.hpp"
+#include "whiteboard/visitor.hpp"
+
 #include "config.hpp"
 #include "draw.hpp"
 #include "fake_unit_ptr.hpp"
@@ -35,13 +35,13 @@
 namespace wb
 {
 
-std::ostream &operator<<(std::ostream &s, attack_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);
 }
 
-std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_const_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);
@@ -54,23 +54,27 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+attack::attack(std::size_t team_index, bool hidden, const unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, hidden, u, route, arrow, std::move(fake_unit)),
+	: move(team_index, hidden, u, route, std::move(arrow), std::move(fake_unit)),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(u.attacks()[weapon_choice_].movement_used()),
-	temp_movement_subtracted_(0)
+	temp_movement_subtracted_(0),
+	attack_count_(u.attacks()[weapon_choice_].attacks_used()),
+	temp_attacks_subtracted_(0)
 {
 	this->init();
 }
 
 attack::attack(const config& cfg, bool hidden)
 	: move(cfg,hidden)
-	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
+	, target_hex_(cfg.mandatory_child("target_hex_")["x"], cfg.mandatory_child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
+	, attack_count_()
+	, temp_attacks_subtracted_(0)
 {
 	// Validate target_hex
 	if(!tiles_adjacent(target_hex_,get_dest_hex()))
@@ -83,6 +87,7 @@ attack::attack(const config& cfg, bool hidden)
 	// Construct attack_movement_cost_
 	assert(get_unit());
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
+	attack_count_ = get_unit()->attacks()[weapon_choice_].attacks_used();
 
 	this->init();
 }
@@ -155,16 +160,17 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	assert(get_unit());
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
-					<< "] has " << unit.attacks_left() << " attacks, decreasing by one";
+					<< "] has " << unit.attacks_left() << " attacks, decreasing by " << attack_count_;
 	assert(unit.attacks_left() > 0);
-	unit.set_attacks(unit.attacks_left() - 1);
 
 	//Calculate movement to subtract
 	temp_movement_subtracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
+	temp_attacks_subtracted_ = unit.attacks_left() >= attack_count_ ? attack_count_ : 0 ;
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() - temp_movement_subtracted_ << ".";
 	unit.set_movement(unit.movement_left() - temp_movement_subtracted_, true);
+	unit.set_attacks(unit.attacks_left() - temp_attacks_subtracted_);
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
@@ -180,48 +186,37 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, increasing by one";
-	unit.set_attacks(unit.attacks_left() + 1);
+	unit.set_attacks(unit.attacks_left() + temp_attacks_subtracted_);
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() + temp_movement_subtracted_ << ".";
 	unit.set_movement(unit.movement_left() + temp_movement_subtracted_, true);
 	temp_movement_subtracted_ = 0;
+	temp_attacks_subtracted_ = 0;
 	move::remove_temp_modifier(unit_map);
 }
 
 // Draws the attack indicator.
 void attack::draw_hex(const map_location& hex)
 {
-	if (hex != get_dest_hex() && hex != target_hex_) {
+	if(hex != get_dest_hex() && hex != target_hex_) {
 		return;
 	}
 
-	//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+	//@todo: replace this by either the use of transparency + drawing_layer::attack_indicator,
 	//or a dedicated layer
-	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+	const drawing_layer layer = drawing_layer::footsteps;
 
 	//calculate direction (valid for both hexes)
-	std::string direction_text = map_location::write_direction(
-			get_dest_hex().get_relative_dir(target_hex_));
+	const std::string direction_text = map_location::write_direction(get_dest_hex().get_relative_dir(target_hex_));
 
-	if (hex == get_dest_hex()) //add symbol to attacker hex
-	{
-		auto disp = display::get_singleton();
+	texture indicator = (hex == get_dest_hex())
+		? image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)
+		: image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED);
 
-		disp->drawing_buffer_add(layer, get_dest_hex(),
-			[=, tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
-			});
-	}
-	else if (hex == target_hex_) //add symbol to defender hex
-	{
-		auto disp = display::get_singleton();
-
-		disp->drawing_buffer_add(layer, target_hex_,
-			[=, tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
-			});
-	}
+	// hex is either the dst or target here. Whichever it is, we want to draw there.
+	display::get_singleton()->drawing_buffer_add(
+		layer, hex, [tex = std::move(indicator)](const rect& d) { draw::blit(tex, d); });
 }
 
 void attack::redraw()

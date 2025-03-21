@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,35 +15,42 @@
 
 #include "hotkey/hotkey_handler.hpp"
 
-#include "actions/create.hpp"
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
-#include "game_errors.hpp"
-#include "game_events/menu_item.hpp"
 #include "game_events/wmi_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
-#include "preferences/display.hpp"
 #include "savegame.hpp"
-#include "saved_game.hpp"
 #include "whiteboard/manager.hpp"
+
+#include <boost/algorithm/string/predicate.hpp>
+
+namespace balg = boost::algorithm;
 
 #include "units/unit.hpp"
 
+
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define WRN_G  LOG_STREAM(warn,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
+
 const std::string play_controller::hotkey_handler::wml_menu_hotkey_prefix = "wml_menu:";
+
+static const std::string quickload_prefix = "quickload:";
+static const std::string quickreplay_prefix = "quickreplay:";
 
 play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game & sg)
 	: play_controller_(pc)
 	, menu_handler_(pc.get_menu_handler())
 	, mouse_handler_(pc.get_mouse_handler_base())
 	, saved_game_(sg)
-	, savenames_()
-	, wml_commands_()
 	, last_context_menu_x_(0)
 	, last_context_menu_y_(0)
 {}
@@ -63,17 +70,14 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 }
 
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
-bool play_controller::hotkey_handler::linger() const { return play_controller_.is_lingering(); }
-
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
-bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
+bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team()+1);
+	menu_handler_.show_statistics(gui()->viewing_team().side());
 }
 
 void play_controller::hotkey_handler::unit_list(){
@@ -105,9 +109,7 @@ void play_controller::hotkey_handler::preferences(){
 }
 
 void play_controller::hotkey_handler::left_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 1;
@@ -140,9 +142,7 @@ void play_controller::hotkey_handler::select_hex(){
 }
 
 void play_controller::hotkey_handler::right_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 3;
@@ -213,12 +213,12 @@ void play_controller::hotkey_handler::search(){
 
 void play_controller::hotkey_handler::toggle_accelerated_speed()
 {
-	preferences::set_turbo(!preferences::turbo());
+	prefs::get().set_turbo(!prefs::get().turbo());
 
 	display::announce_options ao;
 	ao.discard_previous = true;
 
-	if (preferences::turbo())
+	if (prefs::get().turbo())
 	{
 		utils::string_map symbols;
 		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).id);
@@ -250,42 +250,34 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 	play_controller_.set_scroll_right(on);
 }
 
-bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
+bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
-	if(index >= 0) {
-		unsigned i = static_cast<unsigned>(index);
-		if(i < savenames_.size() && !savenames_[i].empty()) {
-			// Load the game by throwing load_game_exception
-			load_autosave(savenames_[i]);
-
-		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
-			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(), gamestate().gamedata_);
-			return true;
-		}
+	DBG_G << "play_controller::do_execute_command: Found command:" << cmd.id;
+	if(balg::starts_with(cmd.id, quickload_prefix)) {
+		std::string savename = std::string(cmd.id.substr(quickload_prefix.size()));
+		// Load the game by throwing load_game_exception
+		load_autosave(savename, false);
 	}
-	int prefixlen = wml_menu_hotkey_prefix.length();
-	if(command == hotkey::HOTKEY_WML && cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
-	{
-		std::string name = cmd.id.substr(prefixlen);
+	if(balg::starts_with(cmd.id, quickreplay_prefix)) {
+		std::string savename = std::string(cmd.id.substr(quickreplay_prefix.size()));
+		// Load the game by throwing load_game_exception
+		load_autosave(savename, true);
+	}
+	// TODO c++20: Use string::starts_with
+	// wml commands that don't allow hotkey bindings use hotkey::HOTKEY_NULL. othes use HOTKEY_WML
+	if(balg::starts_with(cmd.id, wml_menu_hotkey_prefix)) {
+		std::string name = std::string(cmd.id.substr(wml_menu_hotkey_prefix.length()));
 		const map_location& hex = mouse_handler_.get_last_hex();
 
 		return gamestate().get_wml_menu_items().fire_item(
 			name, hex, gamestate().gamedata_, gamestate(), play_controller_.get_units(), !press);
 	}
-	return command_executor::do_execute_command(cmd, index, press, release);
+	return command_executor::do_execute_command(cmd, press, release);
 }
 
-bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	if(index >= 0) {
-		unsigned i = static_cast<unsigned>(index);
-		if((i < savenames_.size() && !savenames_[i].empty())
-		|| (i < wml_commands_.size() && wml_commands_[i])) {
-			return true;
-		}
-	}
-	switch(cmd.command) {
+	switch(cmd.hotkey_command) {
 
 	// Commands we can always do:
 	case hotkey::HOTKEY_LEADER:
@@ -328,7 +320,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-	case hotkey::HOTKEY_NULL:
+	case hotkey::HOTKEY_NULL: // HOTKEY_NULL is used for menu items that don't allow hotkey bindings (for example load autosave, wml menu items and menus)
 	case hotkey::HOTKEY_SAVE_REPLAY:
 	case hotkey::HOTKEY_LABEL_SETTINGS:
 	case hotkey::LUA_CONSOLE:
@@ -357,6 +349,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return !linger() && play_controller_.enemies_visible();
 
+	case hotkey::HOTKEY_LOAD_AUTOSAVES:
 	case hotkey::HOTKEY_LOAD_GAME:
 		return !play_controller_.is_networked_mp(); // Can only load games if not in a network game
 
@@ -381,7 +374,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 		return !events::commands_disabled &&
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
-			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
+			menu_handler_.current_unit()->side() == gui()->viewing_team().side() &&
 			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
@@ -403,53 +396,69 @@ static void trim_items(std::vector<T>& newitems)
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items, int i)
-{
-	const compression::format comp_format = preferences::save_compression_format();
+template<typename F>
+static void foreach_autosave(int turn, saved_game& sg, F func) {
 
-	savenames_.resize(i);
+	const compression::format comp_format = prefs::get().save_compression_format();
 
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> newitems;
-	std::vector<std::string> newsaves;
-
-	compression::format compression_format = preferences::save_compression_format();
-	savegame::autosave_savegame autosave(saved_game_, compression_format);
-	savegame::scenariostart_savegame scenariostart_save(saved_game_, compression_format);
+	compression::format compression_format = prefs::get().save_compression_format();
+	savegame::autosave_savegame autosave(sg, compression_format);
+	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
 
 	const std::string start_name = scenariostart_save.create_filename();
 
-	for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
+	for(; turn != 0; turn--) {
 		const std::string name = autosave.create_filename(turn);
 
 		if(savegame::save_game_exists(name, comp_format)) {
-			newsaves.emplace_back(name + compression::format_extension(comp_format));
-			newitems.emplace_back("label", _("Back to Turn ") + std::to_string(turn));
+			func(turn, name + compression::format_extension(comp_format));
 		}
 	}
 
 	if(savegame::save_game_exists(start_name, comp_format)) {
-		newsaves.emplace_back(start_name + compression::format_extension(comp_format));
-		newitems.emplace_back("label", _("Back to Start"));
+		func(0, start_name + compression::format_extension(comp_format));
 	}
+}
 
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items, int i)
+{
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+
+	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
+		// TODO: should this use variable substitution instead?
+		std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
+		newitems.emplace_back("label", label, "id", quickload_prefix + filename);
+	});
 	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
 	trim_items(newitems);
-	trim_items(newsaves);
 
 	items.insert(pos, newitems.begin(), newitems.end());
-	savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
+}
+
+void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items, int i)
+{
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+
+	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
+		// TODO: should this use variable substitution instead?
+		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
+		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
+	});
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	trim_items(newitems);
+
+	items.insert(pos, newitems.begin(), newitems.end());
 }
 
 void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
 {
-	// Pad the commands with null pointers (keeps the indices of items and wml_commands_ synced).
-	wml_commands_.resize(i);
 
 	auto pos = items.erase(items.begin() + i);
 	std::vector<config> newitems;
 
-	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
+	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), newitems,
 		gamestate(), gamestate().gamedata_, play_controller_.get_units());
 
 	// Replace this placeholder entry with available menu items.
@@ -465,22 +474,22 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 
 	std::vector<config> items;
 	for(const auto& item : items_arg) {
-		const std::string& id = item["id"];
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if(id == "wml" || (can_execute_command(command) && (!context_menu || in_context_menu(command.command)))) {
+		std::string id = item["id"];
+		hotkey::ui_command cmd = hotkey::ui_command(id);
+
+		if(id == "wml" || (can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))) {
 			items.emplace_back("id", id);
 		}
 	}
 
-	// Add special non-hotkey items to the menu and remember their indices
-	// Iterate in reverse to avoid also iterating over the new inserted items
-	savenames_.clear();
-	wml_commands_.clear();
 
+	// Iterate in reverse to avoid also iterating over the new inserted items
 	for(int i = items.size() - 1; i >= 0; i--) {
 		if(items[i]["id"] == "AUTOSAVES") {
 			expand_autosaves(items, i);
+		} else if(items[i]["id"] == "QUICKREPLAY") {
+			expand_quickreplay(items, i);
 		} else if(items[i]["id"] == "wml") {
 			expand_wml_commands(items, i);
 		}
@@ -493,16 +502,16 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
 }
 
-bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND command) const
+bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& cmd) const
 {
-	switch(command) {
+	switch(cmd.hotkey_command) {
 	// Only display these if the mouse is over a castle or keep tile
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by mouse_events::mouse_motion
 		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = gui()->viewing_side();
+		const int viewing_side = gui()->viewing_team().side();
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
@@ -519,41 +528,35 @@ bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND com
 	}
 }
 
-std::string play_controller::hotkey_handler::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
+std::string play_controller::hotkey_handler::get_action_image(const hotkey::ui_command& cmd) const
 {
-	if(index >= 0 && index < static_cast<int>(wml_commands_.size())) {
-		const const_item_ptr wmi = wml_commands_[index];
-		if ( wmi ) {
-			return wmi->image();
-		}
-	}
-	return command_executor::get_action_image(command, index);
+	return command_executor::get_action_image(cmd);
 }
 
-hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::HOTKEY_COMMAND command, int /*index*/) const
+hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
-	switch(command) {
+	switch(cmd.hotkey_command) {
 
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gui()->viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}
 }
 
-void play_controller::hotkey_handler::load_autosave(const std::string& filename)
+void play_controller::hotkey_handler::load_autosave(const std::string& filename, bool)
 {
 	throw savegame::load_game_exception({savegame::save_index_class::default_saves_dir(), filename});
 }

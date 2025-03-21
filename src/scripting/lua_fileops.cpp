@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,14 +16,11 @@
 #include "scripting/lua_fileops.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" //for game_config::debug_lua
-#include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
 #include "picture.hpp"
 #include "sdl/point.hpp"
-#include "sdl/surface.hpp"
 
 #include <algorithm>
 #include <exception>
@@ -45,7 +42,7 @@ static int intf_get_image_size(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	image::locator img(m);
-	if(!img.file_exists()) return 0;
+	if(!image::exists(img)) return 0;
 	const point s = get_size(img);
 	lua_pushinteger(L, s.x);
 	lua_pushinteger(L, s.y);
@@ -60,7 +57,7 @@ static int intf_get_image_size(lua_State *L)
 static int intf_have_asset(lua_State* L)
 {
 	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
-	lua_pushboolean(L, !filesystem::get_binary_file_location(type, name).empty());
+	lua_pushboolean(L, filesystem::get_binary_file_location(type, name).has_value());
 	return 1;
 }
 
@@ -73,7 +70,7 @@ static int intf_have_asset(lua_State* L)
 static int intf_resolve_asset(lua_State* L)
 {
 	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
-	lua_push(L, filesystem::get_independent_binary_file_path(type, name));
+	lua_push(L, filesystem::get_independent_binary_file_path(type, name).value_or(""));
 	return 1;
 }
 
@@ -158,14 +155,14 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
 	if(!canonical_path(filename, currentdir)) {
 		return false;
 	}
-	std::string p = filesystem::get_wml_location(filename);
-	if(p.empty()) {
+	auto p = filesystem::get_wml_location(filename);
+	if(!p) {
 		return false;
 	}
 	if(rel) {
 		*rel = filename;
 	}
-	filename = p;
+	filename = p.value();
 	return true;
 }
 

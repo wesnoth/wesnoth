@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,20 +21,19 @@
 #include "generators/map_generator.hpp"
 
 #include "config.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
-config map_generator::create_scenario(std::optional<uint32_t> randomseed)
+config map_generator::create_scenario(utils::optional<uint32_t> randomseed)
 {
 	config res;
 	res["map_data"] = create_map(randomseed);
 	return res;
 }
-std::string map_generator::create_map(std::optional<uint32_t> randomseed)
+std::string map_generator::create_map(utils::optional<uint32_t> randomseed)
 {
 	return create_scenario(randomseed)["map_data"];
 }

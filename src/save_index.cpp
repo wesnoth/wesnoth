@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,14 +18,13 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "format_time_summary.hpp"
-#include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
-#include "serialization/binary_or_text.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -130,7 +129,7 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::format::none) {
+		if(prefs::get().save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {
@@ -160,9 +159,9 @@ save_index_class::save_index_class(create_for_default_saves_dir)
 config& save_index_class::data(const std::string& name)
 {
 	config& cfg = data();
-	if(config& sv = cfg.find_child("save", "save", name)) {
-		fix_leader_image_path(sv);
-		return sv;
+	if(auto sv = cfg.find_child("save", "save", name)) {
+		fix_leader_image_path(*sv);
+		return *sv;
 	}
 
 	config& res = cfg.add_child("save");
@@ -221,7 +220,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	const auto should_remove = [filter](const std::string& filename) {
+	utils::erase_if(filenames, [filter](const std::string& filename) {
 		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
 		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
 		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
@@ -233,9 +232,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 		}
 
 		return false;
-	};
-
-	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), should_remove), filenames.end());
+	});
 
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(), std::back_inserter(result), creator);
@@ -252,7 +249,7 @@ const config& save_info::summary() const
 std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
-		const std::string format = preferences::use_twelve_hour_clock_format()
+		const std::string format = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 			? _("%a %b %d %Y, %I:%M %p")
 			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
@@ -402,16 +399,16 @@ save_info create_save_info::operator()(const std::string& filename) const
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
-	const config& cfg_snapshot = cfg_save.child("snapshot");
+	auto cfg_snapshot = cfg_save.optional_child("snapshot");
 
 	// Servergenerated replays contain [scenario] and no [replay_start]
-	const config& cfg_replay_start = cfg_save.child("replay_start")
-		? cfg_save.child("replay_start")
-		: cfg_save.child("scenario");
+	auto cfg_replay_start = cfg_save.has_child("replay_start")
+		? cfg_save.optional_child("replay_start")
+		: cfg_save.optional_child("scenario");
 
-	const config& cfg_replay = cfg_save.child("replay");
-	const bool has_replay = cfg_replay && !cfg_replay.empty();
-	const bool has_snapshot = cfg_snapshot && cfg_snapshot.has_child("side");
+	auto cfg_replay = cfg_save.optional_child("replay");
+	const bool has_replay = cfg_replay && !cfg_replay->empty();
+	const bool has_snapshot = cfg_snapshot && cfg_snapshot->has_child("side");
 
 	cfg_summary["replay"] = has_replay;
 	cfg_summary["snapshot"] = has_snapshot;
@@ -420,7 +417,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 
 	if(cfg_save.has_child("carryover_sides_start")) {
-		cfg_summary["scenario"] = cfg_save.child("carryover_sides_start")["next_scenario"];
+		cfg_summary["scenario"] = cfg_save.mandatory_child("carryover_sides_start")["next_scenario"];
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
 	}
@@ -448,13 +445,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	bool shrouded = false;
 
-	if(const config& snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start)) {
-		for(const config& side : snapshot.child_range("side")) {
+	if(auto snapshot = (has_snapshot ? cfg_snapshot : cfg_replay_start)) {
+		for(const config& side : snapshot->child_range("side")) {
 			std::string leader;
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
 			std::string leader_name;
-			int gold = side["gold"];
+			int gold = side["gold"].to_int();
 			int units = 0, recall_units = 0;
 
 			if(side["controller"] != side_controller::human) {
@@ -489,16 +486,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
 			// for campaign-specific units even when the campaign isn't loaded yet.
-			std::string leader_image_path = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto leader_image_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// If the image path was found, we append the leader TC modifier. If it's not (such as in
 			// the case where the binary path hasn't been loaded yet, perhaps due to save_index being
 			// deleted), the unaltered image path is used and will be parsed by get_independent_binary_file_path
 			// at runtime.
-			if(!leader_image_path.empty()) {
-				leader_image_path += leader_image_tc_modifier;
-
-				leader_image = leader_image_path;
+			if(leader_image_path) {
+				leader_image = leader_image_path.value() + leader_image_tc_modifier;
 			}
 
 			leader_config["leader"] = leader;
@@ -515,13 +510,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if(!cfg_snapshot.find_child("side", "shroud", "yes") && cfg_snapshot.has_attribute("map_data")) {
+			if(!cfg_snapshot->find_child("side", "shroud", "yes") && cfg_snapshot->has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		} else if(has_replay) {
-			if(!cfg_replay_start.find_child("side", "shroud", "yes") && cfg_replay_start.has_attribute("map_data")) {
+			if(!cfg_replay_start->find_child("side", "shroud", "yes") && cfg_replay_start->has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";

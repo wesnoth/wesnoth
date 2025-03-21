@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -52,31 +52,42 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
-#include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
+#include <chrono>
 #include <ctime>
+#include <cstdint>
 
 #include "formatter.hpp"
 
 namespace lg {
 
-// Prefix and extension for log files. This is used both to generate the unique
-// log file name during startup and to find old files to delete.
+// Prefix and extension for log files.
+// This is used to find old files to delete.
 const std::string log_file_prefix = "wesnoth-";
 const std::string log_file_suffix = ".log";
+// stdout file for Windows; needs to end in log_file_suffix so log rotation works for both
+const std::string out_log_file_suffix = ".out" + log_file_suffix;
 
 // Maximum number of older log files to keep intact. Other files are deleted.
 // Note that this count does not include the current log file!
-const unsigned max_logs = 8;
+// double for Windows due to the separate .log and .out.log files
+const unsigned max_logs = 8
+#ifdef _WIN32
+*2
+#endif
+;
 
-enum severity
+enum class severity
 {
+    LG_NONE=-1,
 	LG_ERROR=0,
 	LG_WARN=1,
 	LG_INFO=2,
 	LG_DEBUG=3
 };
+std::ostringstream& operator<<(std::ostringstream& oss, lg::severity severity);
 
 /**
  * Helper class to redirect the output of the logger in a certain scope.
@@ -109,27 +120,66 @@ private:
 
 class logger;
 
-typedef std::pair<const std::string, int> logd;
+typedef std::pair<const std::string, severity> logd;
 
 class log_domain {
 	logd *domain_;
 public:
-	explicit log_domain(char const *name, int severity = 1);
+	explicit log_domain(char const *name, severity severity = severity::LG_WARN);
 	friend class logger;
 };
 
-bool set_log_domain_severity(const std::string& name, int severity);
+bool set_log_domain_severity(const std::string& name, severity severity);
 bool set_log_domain_severity(const std::string& name, const logger &lg);
-bool get_log_domain_severity(const std::string& name, int &severity);
-std::string list_logdomains(const std::string& filter);
+bool get_log_domain_severity(const std::string& name, severity &severity);
+std::string list_log_domains(const std::string& filter);
 
-void set_strict_severity(int severity);
+void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
-void set_log_to_file();
 
+/** toggle log sanitization */
+void set_log_sanitize(bool sanitize);
+
+/**
+ * Do the initial redirection to a log file if the logs directory is writable.
+ * Also performs log rotation to delete old logs.
+ * NOTE: This runs before command line arguments are processed.
+ *       Therefore the log file is initially written under the default userdata directory
+ */
+void set_log_to_file();
+/**
+ * Move the log file to another directory.
+ * Used if a custom userdata directory is given as a command line option to move it to the new location.
+ */
+void move_log_file();
+/**
+ * Checks that a dummy file can be written to and deleted from the logs directory.
+ */
+void check_log_dir_writable();
+/**
+ * Returns the result set by check_log_dir_writable().
+ * Will not be set if called before log redirection is done.
+ *
+ * @return true if the log directory is writable, false otherwise.
+ */
+utils::optional<bool> log_dir_writable();
+
+/**
+ * Use the defined prefix and suffix to determine if a filename is a log file.
+ *
+ * @return true if it's a log file, false otherwise
+ */
 bool is_not_log_file(const std::string& filename);
+/**
+ * Check how many log files exist and delete the oldest when there's too many.
+ */
 void rotate_logs(const std::string& log_dir);
+/**
+ * Generate a unique file name using the current timestamp and a randomly generated number.
+ *
+ * @return A unique file name to use for the current log file.
+ */
 std::string unique_log_filename();
 
 // A little "magic" to surround the logging operation in a mutex.
@@ -147,7 +197,7 @@ class log_in_progress {
 	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
-	void operator|(formatter&& message);
+	void operator|(const formatter& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
@@ -156,9 +206,9 @@ public:
 
 class logger {
 	char const *name_;
-	int severity_;
+    severity severity_;
 public:
-	logger(char const *name, int severity): name_(name), severity_(severity) {}
+	logger(char const *name, severity severity): name_(name), severity_(severity) {}
 	log_in_progress operator()(const log_domain& domain,
 		bool show_names = true, bool do_indent = false, bool show_timestamps = true, bool break_strict = true, bool auto_newline = true) const;
 
@@ -167,15 +217,7 @@ public:
 		return severity_ > domain.domain_->second;
 	}
 
-	/**
-	 * Returns following values depending on the logger:
-	 * error: 0
-	 * warn: 1
-	 * info: 2
-	 * debug: 3
-	 * See also the lg::severity enum.
-	 */
-	int get_severity() const
+	severity get_severity() const
 	{
 		return severity_;
 	}
@@ -188,30 +230,27 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
-std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
-std::string& get_log_file_path();
-void set_log_file_path(const std::string& path);
+std::string get_log_file_path();
 
 logger &err(), &warn(), &info(), &debug();
 log_domain& general();
 
 class scope_logger
 {
-	int64_t ticks_;
+	std::chrono::steady_clock::time_point start_;
 	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{

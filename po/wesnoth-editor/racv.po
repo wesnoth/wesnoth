@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: racv\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2016-05-15 14:31+0100\n"
 "Last-Translator: Software Valencià <info@softwarevalencia.com>\n"
 "Language-Team: Valencian (RACV) Team\n"
@@ -196,80 +196,90 @@ msgstr "Actualisació de transició"
 msgid "Window"
 msgstr "Finestra"
 
-#. [menu]: id=menu-editor-areas
+#. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
+msgid "Add-on"
+msgstr ""
+
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:119
 msgid "Areas"
 msgstr "Àrees"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:118
+#: data/themes/editor.cfg:127
 msgid "Assign Local Time"
 msgstr "Assignar fase horària local"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:124
+#: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
 msgstr "Assignar planificació de les fases horàries locals"
 
+#. [menu]: id=menu-editor-unit
+#: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:132
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Bando"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:149
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "llogarets"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:165
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "unitats"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:444
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Menú de planificació de fases horàries"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:455
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Assignar la planificació de fases horàries"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "Identificador: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "Nom: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "Tipo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "Nivell: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "Cost: "
 
-#: src/editor/controller/editor_controller.cpp:180
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Error greu"
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "¿Realment desija eixir?"
 
-#: src/editor/controller/editor_controller.cpp:212
+#: src/editor/controller/editor_controller.cpp:219
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -281,7 +291,7 @@ msgstr ""
 "¿Realment desija eixir? Es perdran els canvis realisats en el mapa des de "
 "l'última volta que el va guardar."
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -289,109 +299,147 @@ msgstr ""
 "¿Realment desija eixir? Es perdran els canvis realisats en els següents "
 "mapes des de l'última volta que els va guardar:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "No es varen trobar senyes de «l'hora del dia» per a l'editor."
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:886
+msgid "Add-on Files"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:899
+msgid "Opening files is not supported, contact your packager"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Change Unit ID"
 msgstr "Canviar l'ID de l'unitat"
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1341
 msgid "Rename Unit"
 msgstr "Renomenar unitat"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1342
 msgid "Name:"
 msgstr "Nom:"
 
-#: src/editor/map/context_manager.cpp:211
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:279 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nou mapa)"
 
-#: src/editor/map/context_manager.cpp:292 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
 msgstr "(Nou escenari)"
 
-#: src/editor/map/context_manager.cpp:348
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "Sense archius recents"
 
-#: src/editor/map/context_manager.cpp:386
+#: src/editor/map/context_manager.cpp:420
 #, fuzzy
 #| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
 msgstr "(Àrea sense nom)"
 
-#: src/editor/map/context_manager.cpp:417
+#: src/editor/map/context_manager.cpp:451
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Side"
 msgstr "(Nou bando)"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Error en carregar la màixquera"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "Renomenar àrea"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Seleccionar mapa de destí"
 
-#: src/editor/map/context_manager.cpp:525
-#: src/editor/map/context_manager.cpp:934
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:984
 msgid "Error loading map"
 msgstr "Error en carregar el mapa"
 
-#: src/editor/map/context_manager.cpp:651
+#: src/editor/map/context_manager.cpp:691
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Guardar el mapa com"
 
-#: src/editor/map/context_manager.cpp:672
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "¿Realment desija eixir?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:925
+msgid "This map is already open."
+msgstr "Este mapa ya es troba obert."
+
+#: src/editor/map/context_manager.cpp:740
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Guardar l'escenari com"
 
-#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:766
+msgid "This scenario is already open."
+msgstr "Este escenari ya es troba obert."
+
+#: src/editor/map/context_manager.cpp:799
 msgid "No random map generators found."
 msgstr "No es varen trobar generadors de mapes aleatoris."
 
-#: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
 msgid "Map creation failed."
 msgstr "Va fallar la creació del mapa."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:832
 msgid "Unsaved Changes"
 msgstr "Canvis sense guardar"
 
-#: src/editor/map/context_manager.cpp:738
+#: src/editor/map/context_manager.cpp:833
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -401,42 +449,37 @@ msgstr ""
 "¿Desija abandonar tots els canvis efectuats en el mapa des de que el va "
 "guardar per última volta?"
 
-#: src/editor/map/context_manager.cpp:794
-msgid "This scenario is already open."
-msgstr "Este escenari ya es troba obert."
-
-#: src/editor/map/context_manager.cpp:817
-#: src/editor/map/context_manager.cpp:880
-msgid "This map is already open."
-msgstr "Este mapa ya es troba obert."
-
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:886
 msgid "Scenario saved."
 msgstr "Escenari guardat."
 
-#: src/editor/map/context_manager.cpp:856
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:901
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Mapa guardat."
 
-#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:976
 msgid "Loaded embedded map data"
 msgstr "Carregades les senyes de mapa incrustats"
 
-#: src/editor/map/context_manager.cpp:914
-#: src/editor/map/context_manager.cpp:927
+#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:980
 msgid "Map loaded from scenario"
 msgstr "Mapa carregat des d'escenari"
 
-#: src/editor/map/context_manager.cpp:924
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
+#: src/editor/map/context_manager.cpp:980
+#, fuzzy
+#| msgid ""
+#| "Loaded referenced map file:\n"
+#| "$new"
+msgid "Loaded referenced map file:"
 msgstr ""
 "Carregat l'archiu de mapa indicat:\n"
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:118
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
@@ -446,15 +489,19 @@ msgstr "Jugador $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "El tamany del mapa de destí diferix del mapa actual"
 
-#: src/editor/map/map_context.cpp:147
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Archiu no trobat"
 
-#: src/editor/map/map_context.cpp:154
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Archiu buit"
 
-#: src/editor/map/map_context.cpp:210
+#: src/editor/map/map_context.cpp:202
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr ""
+
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -462,51 +509,87 @@ msgstr ""
 "El mapa sembla un escenari, pero el valor de map_data no apunta a un archiu "
 "existent"
 
-#: src/editor/map/map_context.cpp:622
+#: src/editor/map/map_context.cpp:268
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+msgstr ""
+
+#: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:280
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The map file looks like a scenario, but the map_file value does not point to "
+"an existing file"
+msgstr ""
+"El mapa sembla un escenari, pero el valor de map_data no apunta a un archiu "
+"existent"
+
+#: src/editor/map/map_context.cpp:295
+msgid "Unable to parse file to find map data"
+msgstr ""
+
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "No es va poder guardar l'escenari: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Menú de planificació de fases horàries"
+
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "No es va poder guardar l'escenari: $msg"
 
-#: src/editor/map/map_context.cpp:657
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "No es va poder guardar en l'escenari"
 
-#: src/editor/map/map_context.cpp:667
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "No es va poder guardar el mapa: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:53
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Grup desconegut)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(no principal)"
 
-#: src/editor/palette/editor_palettes.cpp:316
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "No funcionarà en un joc sense atenció adicional."
 
-#: src/editor/palette/location_palette.cpp:250
+#: src/editor/palette/item_palette.cpp:33
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:266
-msgid "Error"
-msgstr ""
-
-#: src/editor/palette/location_palette.cpp:267
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr ""
 
@@ -537,17 +620,8 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
-msgid "Clipboard support not found, contact your packager"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:158
-msgid "Choose File"
-msgstr "Seleccionar un archiu"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:159
-msgid "Select"
-msgstr ""
+#~ msgid "Choose File"
+#~ msgstr "Seleccionar un archiu"
 
 #~ msgid "player^None"
 #~ msgstr "Cap"

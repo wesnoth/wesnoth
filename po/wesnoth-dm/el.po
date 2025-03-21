@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:47 UTC\n"
+"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
 "PO-Revision-Date: 2012-09-30 12:18+0200\n"
 "Last-Translator: byron <georgalasbyr@gmail.com>\n"
 "Language-Team: none\n"
@@ -519,7 +519,7 @@ msgstr "Νικήστε τον Γκρόγκορ-Τουκ"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:193
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:184
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:416
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:419
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:157
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:101
@@ -4523,7 +4523,7 @@ msgstr "Νικήστε τον Γκρουβ-Μάλαλ"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:114
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:188
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:420
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:423
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 msgid "Death of Ulrek"
 msgstr "Θάνατος του Ούλρεκ "
@@ -4821,7 +4821,10 @@ msgstr ""
 "θάνατο και θα επιστρέψω για να σε καταστρέψω!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:335
+#. The same text is used both before and after closing the portal.
+#. Shown if the player kills Iliah-Malal instead of following the hints to run away,
+#. this is his last breath event, but he gets fully healed and the battle continues.
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:338
 msgid ""
 "We cannot defeat him now. We must allow some time to pass after the portal "
 "has been closed. By then, his power will have weakened, rendering him "
@@ -4829,22 +4832,22 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:357
 msgid "Earth, rise and shut this gate of evil for good!"
 msgstr "Ω Γη, σήκω και σφάλισε αυτή την πύλη του κακού, στο όνομα του καλού!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:367
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:370
 msgid "Portal, reopen! No! What have you done?"
 msgstr "Πύλη, άνοιξε ξανά! Όχι! Τι έκανες;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:372
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:375
 msgid "Your portal is shut. And you cannot open another one."
 msgstr "Η πύλη σου έκλεισε και δεν μπορείς να ανοίξεις άλλη."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:376
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Delfador, you have proven your skill. I have an offer for you. Join me "
@@ -4860,19 +4863,19 @@ msgstr ""
 "είμαστε ακατανίκητοι."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:383
 msgid "Join you?"
 msgstr "Να έρθω μαζί σου;"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:384
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:387
 msgid "Or, fight me and die. I will then resurrect you as my slave."
 msgstr ""
 "Ή, μπορείς να μου αντισταθείς και να πεθάνεις. Το αναστημένο πτώμα σου θα "
 "γίνει σκλάβος μου."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:388
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:391
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
@@ -4881,7 +4884,7 @@ msgstr ""
 "όρκους μου ούτε θα εγκαταλείψω τους φίλους και την πατρίδα μου."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:392
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:395
 msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
@@ -4891,7 +4894,7 @@ msgstr ""
 "αντισταθεί."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:396
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:399
 #, fuzzy
 #| msgid ""
 #| "(<i>To the dwarves</i>). Quickly, back in the tunnel! I will stay last to "
@@ -4906,7 +4909,7 @@ msgstr ""
 "σφραγίσω την είσοδο."
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:412
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:415
 msgid "All the player’s units must reach the tunnel. Then Delfador."
 msgstr ""
 "Όλες οι μονάδες του παίχτη πρέπει να φτάσουν στο τούνελ και μετά ο "

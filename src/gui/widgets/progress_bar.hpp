@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
@@ -29,14 +28,6 @@ struct builder_progress_bar;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * This object shows the progress of a certain action, or the value state of a certain item.
- *
- * The following states exist:
- * * state_enabled - the progress bar is enabled.
- */
 class progress_bar : public styled_widget
 {
 public:

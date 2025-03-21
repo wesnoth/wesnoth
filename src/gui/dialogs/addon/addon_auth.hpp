@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,15 +19,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to provide a password when uploading an add-on.
- *
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * password          | text_box      |yes      |The password used to verify the uploader.
- */
 class addon_auth : public modal_dialog
 {
 public:
@@ -38,9 +29,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	config& cfg_;
 };

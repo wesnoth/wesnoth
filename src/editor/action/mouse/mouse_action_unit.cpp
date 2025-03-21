@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,10 @@
 
 #include "editor/editor_display.hpp"
 #include "formula/string_utils.hpp"
-#include "gui/dialogs/unit_create.hpp"
 #include "tooltips.hpp"
 #include "gettext.hpp"
 
 #include "map/location.hpp"
-#include "sdl/rect.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
@@ -49,17 +47,13 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 	disp.invalidate(adjacent_set);
 	previous_move_hex_ = hex;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(hex);
 	if (unit_it != units.end()) {
 
 		disp.clear_mouseover_hex_overlay();
 
-		SDL_Rect rect;
-		rect.x = disp.get_location_x(hex);
-		rect.y = disp.get_location_y(hex);
-		rect.h = disp.hex_size();
-		rect.w = disp.hex_size();
+		SDL_Rect rect = disp.get_location_rect(hex);
 		std::stringstream str;
 		str << _("Identifier: ") << unit_it->id()     << "\n";
 		if(unit_it->name() != "") {
@@ -83,7 +77,7 @@ std::unique_ptr<editor_action> mouse_action_unit::click_left(editor_display& dis
 		return nullptr;
 	}
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it != units.end())
 		set_unit_mouse_overlay(disp, unit_it->type());
@@ -124,7 +118,7 @@ std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, 
 	const unit_type &ut = *new_unit_type;
 	unit_race::GENDER gender = ut.genders().front();
 
-	unit_ptr new_unit = unit::create(ut, disp.viewing_side(), true, gender);
+	unit_ptr new_unit = unit::create(ut, disp.viewing_team().side(), true, gender);
 	auto action = std::make_unique<editor_action_unit>(hex, *new_unit);
 	return action;
 }
@@ -137,7 +131,7 @@ std::unique_ptr<editor_action> mouse_action_unit::drag_end_left(editor_display& 
 	if (!disp.get_map().on_board(hex))
 		return nullptr;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it == units.end())
 		return nullptr;
@@ -155,7 +149,7 @@ void mouse_action_unit::set_unit_mouse_overlay(editor_display& disp, const unit_
 {
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-			<< team::get_side_color_id(disp.viewing_side()) << ')';
+			<< team::get_side_color_id(disp.viewing_team().side()) << ')';
 
 	disp.set_mouseover_hex_overlay(image::get_texture(filename.str()));
 }

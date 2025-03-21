@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,12 +80,12 @@ command_line::command_line(const std::vector<std::string>& args)
 	po::variables_map vm;
 	po::store(po::command_line_parser(args_).options(opts).style(style).run(), vm);
 
-	static const std::map<std::string, int> log_levels = {
+	static const std::map<std::string, lg::severity> log_levels = {
 		{ "error",   lg::err().get_severity() },
 		{ "warning", lg::warn().get_severity() },
 		{ "info",    lg::info().get_severity() },
 		{ "debug",   lg::debug().get_severity() },
-		{ "none",    -1 }
+		{ "none",    lg::severity::LG_NONE }
 	};
 
 	if(vm.count("help")) {

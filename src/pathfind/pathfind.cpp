@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -300,7 +300,7 @@ static void find_routes(
 		search_counter = 1;
 	}
 	// Initialize the nodes for this search.
-	nodes.resize(map.w() * map.h());
+	nodes.resize(static_cast<size_t>(map.w()) * map.h());
 	findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
 
@@ -415,7 +415,7 @@ static void find_routes(
 				}
 			}
 
-			if ( viewing_team && current_team && viewing_team != current_team && viewing_team->shrouded(next_hex) ) {
+			if ( !see_all && viewing_team && current_team && viewing_team != current_team && viewing_team->shrouded(next_hex) ) {
 				// bug #2199: in "Show Enemy Moves", don't pathfind enemy units through the player's shroud
 				continue;
 			}
@@ -681,7 +681,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
-		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
+		const team& viewing_team = display::get_singleton()->viewing_team();
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -893,7 +893,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(static_cast<size_t>(map.w()) * map.h(), std::pair(-1, 0));
 	add_unit(u);
 }
 
@@ -908,7 +908,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(static_cast<size_t>(map.w()) * map.h(), std::pair(-1, 0));
 }
 
 /**

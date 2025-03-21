@@ -64,36 +64,34 @@ LDFLAGS="$LDFLAGS"
 BUILD_PRESET="release"
 
 case "$VERSION" in
-  1.6|1.8|1.10|1.12|1.16) # TODO: also 1.14 but not yet, see below
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+  1.6|1.8|1.10|1.12)
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
 	;;
-  1.14)
-	# We need an unoptimized build for debugging issues with 1.14. Remove this later.
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-	BUILD_PRESET=debug
+  1.1[468])
+	CXXFLAGS="$CXXFLAGS -ggdb3"
 	;;
   1.9)
 	[ "$TYPE" = "campaignd" ] || die "1.9 is currently a special case for the 1.10 campaignd only"
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
 	SOURCE_VERSION="1.10"
 	;;
   1.11)
 	# Same flags as 1.12, but we need to build from 1.12 because there is no
 	# 1.11 branch. This is really only used for wesnothd.
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
 	SOURCE_VERSION="1.12"
 	;;
   1.13)
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
 	SOURCE_VERSION="1.14"
 	;;
   trunk|master)
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
+	CXXFLAGS="$CXXFLAGS -ggdb3 -O0"
 	SOURCE_VERSION="master"
 	BUILD_PRESET=debug
 	;;
   *)
-	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	CXXFLAGS="$CXXFLAGS -ggdb3"
 	echo "Unrecognized version, building from 'master'..."
 	SOURCE_VERSION="master"
 	;;

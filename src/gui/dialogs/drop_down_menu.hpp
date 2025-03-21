@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,12 +16,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "sdl/rect.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
-#include <functional>
 
 class config;
 
@@ -46,6 +44,11 @@ public:
 		return selected_item_;
 	}
 
+	point selected_item_pos() const
+	{
+		return selected_item_pos_;
+	}
+
 	/** If a toggle button widget is present, returns the toggled state of each row's button. */
 	boost::dynamic_bitset<> get_toggle_states() const;
 
@@ -56,19 +59,19 @@ private:
 		entry_data(const config& cfg);
 
 		/** If present, column 1 will have a toggle button. The value indicates its initial state. */
-		std::optional<bool> checkbox;
+		utils::optional<bool> checkbox;
 
 		/** If no checkbox is present, the icon at this path will be shown in column 1. */
 		std::string icon;
 
 		/** Is present, column 2 will display the image at this path. */
-		std::optional<std::string> image;
+		utils::optional<std::string> image;
 
 		/** If no image is present, this text will be shown in column 2. */
 		t_string label;
 
 		/** If present, this text will be shown in column 3. */
-		std::optional<t_string> details;
+		utils::optional<t_string> details;
 
 		/** Tooltip text for the entire row. */
 		t_string tooltip;
@@ -88,6 +91,7 @@ private:
 	SDL_Rect button_pos_;
 
 	int selected_item_;
+	point selected_item_pos_;
 
 	bool use_markup_;
 
@@ -105,9 +109,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void mouse_up_callback(bool&, bool&, const point& coordinate);
 

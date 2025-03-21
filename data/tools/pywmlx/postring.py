@@ -14,9 +14,10 @@ class PoCommentedStringPL:
 
 
 class PoCommentedString:
-    def __init__(self, sentence, *, orderid, ismultiline,
+    def __init__(self, sentence, domain, *, orderid, ismultiline,
                  wmlinfos, finfos, addedinfos, plural=None):
         self.sentence = sentence
+        self.domain = domain
         self.wmlinfos = wmlinfos
         self.addedinfos = addedinfos
         self.finfos = finfos
@@ -79,9 +80,10 @@ class PoCommentedString:
 
 # WmlNodeSentence use PoCommentedStringPL for 'plural' parameter
 class WmlNodeSentence:
-    def __init__(self, sentence, *, ismultiline, lineno, lineno_sub=0,
+    def __init__(self, sentence, *, domain, ismultiline, lineno, lineno_sub=0,
                  plural=None, override=None, addition=None):
         self.sentence = sentence
+        self.domain = domain
         # Say if it is multiline or not.
         self.ismultiline = ismultiline
         self.lineno = lineno
@@ -126,7 +128,7 @@ class WmlNode:
         self.wmlinfos = None
         self.autowml = autowml
 
-    def add_sentence(self, sentence, *, ismultiline, lineno,
+    def add_sentence(self, sentence, *, domain, ismultiline, lineno,
                      lineno_sub=0, plural=None, override=None, addition=None):
         if self.sentences is None:
             self.sentences = []
@@ -154,6 +156,7 @@ class WmlNode:
                 plural_value = plural
                 plural = None
         self.sentences.append( WmlNodeSentence(sentence,
+                                          domain=domain,
                                           ismultiline=ismultiline,
                                           lineno=lineno,
                                           lineno_sub=lineno_sub,
@@ -199,6 +202,7 @@ class WmlNode:
                 if(nodesentence.addedinfo is not None and
                               nodesentence.addedinfo != ""):
                     return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[],
@@ -208,6 +212,7 @@ class WmlNode:
                                plural=nodesentence.plural )
                 else:
                     return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[],
@@ -219,6 +224,7 @@ class WmlNode:
                 if(nodesentence.addedinfo is not None and
                               nodesentence.addedinfo != ""):
                     return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[nodesentence.overrideinfo],
@@ -228,6 +234,7 @@ class WmlNode:
                                plural=nodesentence.plural )
                 else:
                     return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[nodesentence.overrideinfo],
@@ -241,6 +248,7 @@ class WmlNode:
             if(nodesentence.addedinfo is not None and
                           nodesentence.addedinfo != ""):
                 return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[self.assemble_wmlinfo()],
@@ -250,6 +258,7 @@ class WmlNode:
                                plural=nodesentence.plural )
             else:
                 return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[self.assemble_wmlinfo()],
@@ -263,6 +272,7 @@ class WmlNode:
             if(nodesentence.addedinfo is not None and
                           nodesentence.addedinfo != ""):
                 return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wmlinfos=[],
@@ -272,6 +282,7 @@ class WmlNode:
                                plural=nodesentence.plural )
             else:
                 return PoCommentedString(nodesentence.sentence,
+                               nodesentence.domain,
                                ismultiline=nodesentence.ismultiline,
                                orderid=self.assemble_orderid(nodesentence),
                                wml_infos=[],

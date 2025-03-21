@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,7 @@
 #include "editor/map/map_context.hpp"
 #include "editor/map/map_fragment.hpp"
 #include "filter_context.hpp"
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 
 class map_generator;
 class game_config_view;
@@ -29,9 +29,7 @@ namespace editor
 class context_manager : public filter_context
 {
 public:
-	using context_ptr = std::unique_ptr<map_context>;
-
-	context_manager(editor_display& gui, const game_config_view& game_config);
+	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
@@ -41,7 +39,7 @@ public:
 	void set_update_transitions_mode(int mode)
 	{
 		auto_update_transitions_ = mode;
-		preferences::editor::set_auto_update_transitions(mode);
+		prefs::get().set_editor_auto_update_transitions(mode);
 	}
 
 	bool toggle_update_transitions();
@@ -75,15 +73,15 @@ public:
 	 */
 	void perform_refresh(const editor_action& action, bool drag_part = false);
 
-	/**
-	 * Save all maps, open dialog if not named yet, except when using
-	 * auto_save_windows which will name unnamed maps "windows_N".
-	 * Also record all filenames for future reopening.
-	 */
-	void save_all_maps(bool auto_save_windows = false);
+
+	/** Save all open map_contexts to memory */
+	void save_contexts();
+
+	/** Save all maps, show save dialogs for unsaved ones */
+	void save_all_maps();
 
 	/** Save the map, open dialog if not named yet. */
-	void save_map();
+	void save_map(bool show_confirmation = true);
 
 	editor_display& gui()
 	{
@@ -132,7 +130,7 @@ public:
 	void edit_scenario_dialog();
 
 	/** Display a side edit dialog and process user input. */
-	void edit_side_dialog(int side_index);
+	void edit_side_dialog(const team& t);
 
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();
@@ -163,11 +161,22 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
+	void set_addon_id(const std::string& id)
+	{
+		current_addon_ = id;
+		for(auto& map : map_contexts_) {
+			map->set_addon_id(id);
+		}
+	}
+
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str)
 	{
 		default_dir_ = str;
 	}
+
+	void edit_pbl();
+	void change_addon_id();
 
 	/** Inherited from @ref filter_context. */
 	virtual const display_context& get_disp_context() const override
@@ -218,7 +227,7 @@ private:
 	template<typename... T>
 	int add_map_context(const T&... args);
 
-	int add_map_context_of(context_ptr&& mc);
+	int add_map_context_of(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Replace the current map context and refresh accordingly
@@ -226,13 +235,15 @@ private:
 	template<typename... T>
 	void replace_map_context(const T&... args);
 
-	void replace_map_context_with(context_ptr&& mc);
+	void replace_map_context_with(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
-	 * Except when we saved windows, in which case reopen them
+	 * When we have saved contexts, reopen them instead.
 	 */
 	void create_default_context();
+
+	void create_blank_context();
 
 	/** Performs the necessary housekeeping necessary when switching contexts. */
 	void refresh_on_context_change();
@@ -250,21 +261,20 @@ public:
 	/** Switches the context to the one under the specified index. */
 	void switch_context(const int index, const bool force = false);
 
-private:
 	/**
-	 * Save the map under a given filename.
-	 * @return true on success
+	 * Convert existing map to scenario.
 	 */
-	bool save_map_as(const std::string& filename);
-	//TODO
-	bool save_scenario_as(const std::string& filename);
+	void map_to_scenario();
 
+private:
 	/**
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
-	bool write_map(bool display_confirmation = false);
-	bool write_scenario(bool display_confirmation = false);
+	bool write_map(bool display_confirmation = true);
+	bool write_scenario(bool display_confirmation = true);
+
+	void init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map = true);
 
 	/**
 	 * Create a new map.
@@ -319,6 +329,9 @@ private:
 	/** Default directory for map load/save as dialogs */
 	std::string default_dir_;
 
+	/** The currently selected add-on */
+	std::string current_addon_;
+
 	/** Available random map generators */
 	std::vector<std::unique_ptr<map_generator>> map_generators_;
 	map_generator* last_map_generator_;
@@ -329,7 +342,7 @@ private:
 	int auto_update_transitions_;
 
 	/** The currently opened map context object */
-	std::vector<context_ptr> map_contexts_;
+	std::vector<std::unique_ptr<map_context>> map_contexts_;
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;

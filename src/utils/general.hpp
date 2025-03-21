@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,14 +16,10 @@
 
 #include <algorithm>
 #include <cctype>
-#include <functional>
 #include <string>
 
 namespace utils
 {
-inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
-inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
-
 /**
  * Equivalent to as @c std::is_same_v except both types are passed through std::decay first.
  *
@@ -39,6 +35,12 @@ inline constexpr bool decayed_is_same = std::is_same_v<std::decay_t<T1>, std::de
  */
 template<typename>
 inline constexpr bool dependent_false_v = false;
+
+template<typename Enum>
+constexpr std::underlying_type_t<Enum> to_underlying(Enum e) noexcept
+{
+	return static_cast<std::underlying_type_t<Enum>>(e);
+}
 
 namespace detail
 {
@@ -104,6 +106,41 @@ template<typename Container, typename Predicate>
 void erase_if(Container& container, const Predicate& predicate)
 {
 	container.erase(std::remove_if(container.begin(), container.end(), predicate), container.end());
+}
+
+/**
+ * Convenience wrapper for using std::remove on a container.
+ *
+ * @todo C++20: use std::erase
+ */
+template<typename Container, typename Value>
+std::size_t erase(Container& container, const Value& value)
+{
+	auto iter = std::remove(container.begin(), container.end(), value);
+	auto num_removed = container.end() - iter;
+	container.erase(iter, container.end());
+	return num_removed;
+}
+
+/**
+ * Convenience wrapper for using std::sort on a container.
+ *
+ */
+template<typename Container, typename Predicate>
+void sort_if(Container& container, const Predicate& predicate)
+{
+	std::sort(container.begin(), container.end(), predicate);
+}
+
+/**
+ * Convenience wrapper for using find on a container without needing to comare to end()
+ *
+ */
+template<typename Container, typename Value>
+auto* find(Container& container, const Value& value)
+{
+	auto res = container.find(value);
+	return (res == container.end()) ? nullptr : &*res;
 }
 
 } // namespace utils

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,47 +23,16 @@
 
 namespace gui {
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A button is a control that can be pushed to start an action or close a dialog.
- *
- * When a button has a return value it sets the return value for the window.
- * Normally this closes the window and returns this value to the caller.
- * The return value can either be defined by the user or determined from the id of the button.
- * The return value has a higher precedence as the one defined by the id.
- * (Of course it's weird to give a button an id and then override its return value.)
- *
- * When the button doesn't have a standard id, but you still want to use the return value of that id, use return_value_id instead.
- * This has a higher precedence as return_value.
- *
- * List with the button specific variables:
- * Key            |Type                            |Default|Description
- * ---------------|--------------------------------|-------|-----------
- * return_value_id| @ref guivartype_string "string"|""     |The return value id.
- * return_value   | @ref guivartype_int "int"      |0      |The return value.
- * The following states exist:
- * * state_enabled - the button is enabled.
- * * state_disabled - the button is disabled.
- * * state_pressed - the left mouse button is down.
- * * state_focussed - the mouse is over the button.
- */
 class button : public widget
 {
 public:
-	struct error : public game::error {
-		error()
-			: game::error("GUI1 button error")
-			{}
-	};
-
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
 	button(const std::string& label, TYPE type=TYPE_PRESS,
-	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
+	       const std::string& button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 

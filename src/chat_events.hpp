@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -34,7 +34,7 @@ public:
 
 	virtual void send_to_server(const config& cfg) = 0;
 protected:
-	void do_speak(const std::string& message, bool allies_only=false);
+	bool do_speak(const std::string& message, bool allies_only=false);
 
 	//called from do_speak
 	virtual void add_chat_message(const std::time_t& time,

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,18 +19,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows a dialog to report players on the multiplayer server.
- *
- * Key                   |Type           |Mandatory|Description
- * ----------------------|---------------|---------|-----------
- * reportee              | text_box      |yes      |The person being reported.
- * report_reason         | text_box      |yes      |Why they're being reported.
- * occurrence_location   | menu_button   |yes      |Where in-game it happened.
- * additional_information| text_box      |yes      |Any additional information to add.
- */
 class mp_report : public modal_dialog
 {
 public:
@@ -41,9 +29,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void reportee_changed(const std::string& text);
 	void report_reason_changed(const std::string& text);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,6 @@
 #include "ai/composite/aspect.hpp"         // for typesafe_aspect, aspect, etc
 #include "ai/composite/engine.hpp"         // for engine, engine_factory, etc
 #include "ai/composite/goal.hpp"           // for goal
-#include "ai/composite/stage.hpp"       // for ministage
 #include "ai/game_info.hpp"             // for typesafe_aspect_ptr, etc
 #include "ai/lua/aspect_advancements.hpp"
 #include "ai/manager.hpp"                  // for manager
@@ -51,8 +50,6 @@
 #include "units/unit.hpp"                  // for unit
 #include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
-#include "units/ptr.hpp"                 // for unit_ptr
-#include "units/types.hpp"  // for attack_type, unit_type, etc
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
@@ -400,10 +397,10 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(std::size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
-					if(resources::gameboard->teams()[n].owns_village(dst)) {
-						int side = n + 1;
-						if (get_side() != side && !current_team().is_enemy(side)) {
+				for(const team& t : resources::gameboard->teams()) {
+					if(t.owns_village(dst)) {
+						int side = t.side();
+						if(get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
 						}
 

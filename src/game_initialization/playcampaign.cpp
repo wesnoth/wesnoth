@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,30 +21,24 @@
 
 #include "game_initialization/playcampaign.hpp"
 
-#include "carryover.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_initialization/connect_engine.hpp"
-#include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
-#include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/outro.hpp"
-#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
-#include "map/map.hpp"
-#include "persist_manager.hpp"
 #include "playmp_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
@@ -57,138 +51,15 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-void campaign_controller::show_carryover_message(
-	playsingle_controller& playcontroller, const end_level_data& end_level, const level_result::type res)
-{
-	// We need to write the carryover amount to the team that's why we need non const
-	std::vector<team>& teams = playcontroller.get_teams();
-
-	// maybe this can be the case for scenario that only contain a story and end during the prestart event ?
-	if(teams.size() < 1) {
-		return;
-	}
-
-	std::ostringstream report;
-	std::string title;
-
-	bool obs = playcontroller.is_observer();
-
-	if(obs) {
-		title = _("Scenario Report");
-	} else if(res == level_result::type::victory) {
-		title = _("Victory");
-		report << "<b>" << _("You have emerged victorious!") << "</b>";
-	} else {
-		title = _("Defeat");
-		report << _("You have been defeated!");
-	}
-
-	const std::string& next_scenario = playcontroller.gamestate().get_game_data()->next_scenario();
-	const bool has_next_scenario = !next_scenario.empty() && next_scenario != "null";
-
-	int persistent_teams = 0;
-	for(const team& t : teams) {
-		if(t.persistent()) {
-			++persistent_teams;
-		}
-	}
-
-	if(persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level) || state_.classification().is_test())) {
-		const gamemap& map = playcontroller.get_map();
-		const tod_manager& tod = playcontroller.get_tod_manager();
-
-		const int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
-		for(team& t : teams) {
-			if(!t.persistent() || t.lost()) {
-				continue;
-			}
-
-			const int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
-			const int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
-
-			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
-
-			if(!t.is_local_human()) {
-				continue;
-			}
-
-			if(persistent_teams > 1) {
-				report << "\n\n<b>" << t.side_name() << "</b>";
-			}
-
-			report << "<small>\n" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
-
-			if(t.carryover_bonus() != 0) {
-				if(turns_left > -1) {
-					report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
-						<< "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-						<< "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
-				}
-
-				report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
-			}
-
-			if(t.gold() > 0) {
-				report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
-			}
-
-			if(t.carryover_add()) {
-				report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-			} else {
-				report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-			}
-
-			std::string goldmsg;
-			utils::string_map symbols;
-
-			symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
-
-			// Note that both strings are the same in English, but some languages will
-			// want to translate them differently.
-			if(t.carryover_add()) {
-				if(t.carryover_gold() > 0) {
-					goldmsg = VNGETTEXT(
-						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
-						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
-						t.carryover_gold(), symbols
-					);
-
-				} else {
-					goldmsg = VNGETTEXT(
-						"You will start the next scenario with the defined minimum starting gold.",
-						"You will start the next scenario with the defined minimum starting gold.",
-						t.carryover_gold(), symbols
-					);
-				}
-			} else {
-				goldmsg = VNGETTEXT(
-					"You will start the next scenario with $gold or its defined minimum starting gold, "
-					"whichever is higher.",
-					"You will start the next scenario with $gold or its defined minimum starting gold, "
-					"whichever is higher.",
-					t.carryover_gold(), symbols
-				);
-			}
-
-			// xgettext:no-c-format
-			report << "\n" << goldmsg;
-		}
-	}
-
-	if(end_level.transient.carryover_report) {
-		gui2::show_transient_message(title, report.str(), "", true);
-	}
-}
-
 level_result::type campaign_controller::playsingle_scenario(end_level_data &end_level)
 {
 	const config& starting_point = is_replay_
 		? state_.get_replay_starting_point()
 		: state_.get_starting_point();
 
-	playsingle_controller playcontroller(starting_point, state_, false);
+	playsingle_controller playcontroller(starting_point, state_);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
+	LOG_NG << "created objects... " << playcontroller.timer();
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
@@ -207,12 +78,6 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 	}
 
 	end_level = playcontroller.get_end_level_data();
-	show_carryover_message(playcontroller, end_level, res);
-
-	if(!video::headless()) {
-		playcontroller.maybe_linger();
-	}
-
 	state_.set_snapshot(playcontroller.to_config());
 	return res;
 }
@@ -229,13 +94,6 @@ level_result::type campaign_controller::playmp_scenario(end_level_data &end_leve
 
 	end_level = playcontroller.get_end_level_data();
 
-	if(res != level_result::type::observer_end) {
-		// We need to call this before linger because it prints the defeated/victory message.
-		//(we want to see that message before entering the linger mode)
-		show_carryover_message(playcontroller, end_level, res);
-	}
-
-	playcontroller.maybe_linger();
 	playcontroller.update_savegame_snapshot();
 
 	if(mp_info_) {
@@ -325,12 +183,12 @@ level_result::type campaign_controller::play_game()
 			return res;
 		}
 
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 
-		if(preferences::save_replays() && end_level.replay_save) {
-			savegame::replay_savegame save(state_, preferences::save_compression_format());
+		if(prefs::get().save_replays() && end_level.replay_save) {
+			savegame::replay_savegame save(state_, prefs::get().save_compression_format());
 			save.save_game_automatic(true);
 		}
 
@@ -340,14 +198,13 @@ level_result::type campaign_controller::play_game()
 		if(state_.get_scenario_id().empty()) {
 			// Don't show The End for multiplayer scenarios.
 			if(res == level_result::type::victory && !state_.classification().is_normal_mp_game()) {
-				preferences::add_completed_campaign(
+				prefs::get().add_completed_campaign(
 					state_.classification().campaign, state_.classification().difficulty);
 
 				if(state_.classification().end_credits) {
 					gui2::dialogs::outro::display(state_.classification());
 				}
 			}
-
 			return res;
 		} else if(res == level_result::type::observer_end && mp_info_ && !mp_info_->is_host) {
 			const int dlg_res = gui2::show_message(_("Game Over"),
@@ -388,7 +245,7 @@ level_result::type campaign_controller::play_game()
 
 				ng::connect_engine connect_engine(state_, false, mp_info_);
 
-				if(!connect_engine.can_start_game() || (game_config::debug && state_.classification().is_multiplayer())) {
+				if(!connect_engine.can_start_game()) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
 					if(!mp::goto_mp_staging(connect_engine)) {
 						return level_result::type::quit;
@@ -409,7 +266,7 @@ level_result::type campaign_controller::play_game()
 				// For multiplayer, we want the save to contain the starting position.
 				// For campaigns however, this is the start-of-scenario save and the
 				// starting position needs to be empty, to force a reload of the scenario config.
-				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
+				savegame::scenariostart_savegame save(state_, prefs::get().save_compression_format());
 				save.save_game_automatic();
 			}
 		}
@@ -419,7 +276,7 @@ level_result::type campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 
-		std::string message = _("Unknown scenario: '$scenario|'");
+		std::string message = _("Unknown scenario: ‘$scenario|’");
 		message = utils::interpolate_variables_into_string(message, &symbols);
 
 		gui2::show_error_message(message);
@@ -427,10 +284,17 @@ level_result::type campaign_controller::play_game()
 	}
 
 	if(state_.classification().is_scenario()) {
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 	}
 
 	return level_result::type::victory;
+}
+
+campaign_controller::~campaign_controller()
+{
+	// If the scenario changed the current gui2 theme,
+	// change it back to the value stored in preferences
+	gui2::switch_theme(prefs::get().gui2_theme());
 }

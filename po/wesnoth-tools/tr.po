@@ -1,0 +1,547 @@
+# Turkish translations for wesnoth package.
+# Copyright (C) 2023 Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2023.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wesnoth-tools\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2024-09-15 17:08+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
+"Language-Team: Turkish <->\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/tools/GUI.pyw:78
+msgid "Open a Graphical User Interface (GUI) to WML Tools"
+msgstr "WML Araçlarına Grafiksel Kullanıcı Arayüzünü (GKA) Aç"
+
+#: data/tools/GUI.pyw:82
+msgid ""
+"Launch GUI.pyw in the specified language. Language code is expected as a "
+"POSIX locale name, refer to gettext.wesnoth.org for a full list."
+msgstr ""
+"GUI.pyw'yi belirtilen dilde başlatır. Dil kodunun POSIX yerelinin adı olması "
+"gerekir, tam liste gettext.wesnoth.org adresinde bulunabilir."
+
+#: data/tools/GUI.pyw:88 data/tools/GUI.pyw:102 data/tools/GUI.pyw:1411
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1503 data/tools/GUI.pyw:1532
+#: data/tools/GUI.pyw:1568 data/tools/GUI.pyw:1592 data/tools/GUI.pyw:1635
+#: data/tools/GUI.pyw:1654 data/tools/GUI.pyw:1980
+msgid "Error"
+msgstr "Hata"
+
+#. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
+#: data/tools/GUI.pyw:90
+#, python-brace-format
+msgid ""
+"‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
+"Wesnoth installation."
+msgstr ""
+"‘{0}’ dizini bulunamadı. Lütfen Wesnoth kurulumuyla birlikte paketlenmiş GUI."
+"pyw programını çalıştırın."
+
+#. TRANSLATORS: {0} is the language argument entered by the user.
+#: data/tools/GUI.pyw:104
+#, python-brace-format
+msgid "Locale {0} not recognized."
+msgstr "{0} yereli tanınmıyor."
+
+#. TRANSLATORS: {0} is the name of command being executed.
+#: data/tools/GUI.pyw:385
+#, python-brace-format
+msgid ""
+"Running: {0}\n"
+"Please wait..."
+msgstr ""
+"Çalışan: {0}\n"
+"Lütfen bekleyin..."
+
+#: data/tools/GUI.pyw:399
+msgid "Terminate script"
+msgstr "Betiği sonlandır"
+
+#: data/tools/GUI.pyw:450
+msgid "Cut"
+msgstr "Kes"
+
+#: data/tools/GUI.pyw:455
+msgid "Copy"
+msgstr "Kopyala"
+
+#: data/tools/GUI.pyw:461
+msgid "Paste"
+msgstr "Yapıştır"
+
+#: data/tools/GUI.pyw:467
+msgid "Select All"
+msgstr "Yümünü Seç"
+
+#: data/tools/GUI.pyw:540
+msgid "Working directory"
+msgstr "Çalışma dizini"
+
+#: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
+msgid "Browse..."
+msgstr "Tara..."
+
+#. TRANSLATORS: Clear button for clearing the directory text box.
+#: data/tools/GUI.pyw:559 data/tools/GUI.pyw:602
+msgid "Clear"
+msgstr "Temizle"
+
+#: data/tools/GUI.pyw:652
+msgid "wmllint mode"
+msgstr "wmllint kipi"
+
+#. TRANSLATORS: Normal run mode for the WML tool.
+#: data/tools/GUI.pyw:659 data/tools/GUI.pyw:1079
+msgid "Normal"
+msgstr "Normal"
+
+#. TRANSLATORS: Tooltip explanation for normal run mode.
+#: data/tools/GUI.pyw:668 data/tools/GUI.pyw:1088
+msgid "Perform conversion and save changes to file"
+msgstr "Dönüşümü gerçekleştir ve değişiklikleri dosyaya kaydet"
+
+#: data/tools/GUI.pyw:671 data/tools/GUI.pyw:1091
+msgid "Dry run"
+msgstr "Kuru çalışma"
+
+#. TRANSLATORS: Tooltip explanation for dry run mode.
+#: data/tools/GUI.pyw:680 data/tools/GUI.pyw:1100
+msgid "Perform conversion without saving changes to file"
+msgstr "Dönüşümü gerçekleştir ama değişiklikleri dosyaya kaydetme"
+
+#: data/tools/GUI.pyw:683
+msgid "Clean"
+msgstr "Temizle"
+
+#. TRANSLATORS: Tooltip explanation for clean mode.
+#: data/tools/GUI.pyw:692
+msgid "Delete back-up files"
+msgstr "Yedekleme dosyalarını sil"
+
+#: data/tools/GUI.pyw:695
+msgid "Diff"
+msgstr "Fark"
+
+#. TRANSLATORS: Tooltip explanation for diff run mode.
+#: data/tools/GUI.pyw:704
+msgid "Show differences in converted files"
+msgstr "Dönüştürülen dosyalardaki farkları göster"
+
+#: data/tools/GUI.pyw:707
+msgid "Revert"
+msgstr "Geri Al"
+
+#. TRANSLATORS: Tooltip explanation for revert run mode.
+#: data/tools/GUI.pyw:716
+msgid "Revert conversions using back-up files"
+msgstr "Dönüşümleri yedek dosyalarını kullanarak geri al"
+
+#: data/tools/GUI.pyw:719 data/tools/GUI.pyw:1103
+msgid "Verbosity level"
+msgstr "Ayrıntı seviyesi"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:727 data/tools/GUI.pyw:1111
+msgid "Terse"
+msgstr "Kısa ve öz"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:738
+msgid "Show changes"
+msgstr "Değişiklikleri göster"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:748
+msgid "Name files before processing"
+msgstr "İşleme başlamadan önce dosyaları adlandırın"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:758
+msgid "Show parse details"
+msgstr "Ayrıştırma ayrıntılarını göster"
+
+#: data/tools/GUI.pyw:767
+msgid "wmllint options"
+msgstr "wmllint seçenekleri"
+
+#. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
+#: data/tools/GUI.pyw:775
+msgid "Convert EOL characters to Unix format"
+msgstr "Satır sonu karakterlerini Unix biçemine dönüştür"
+
+#. TRANSLATORS: 'side=' in this context refers to WML and should not be
+#. translated.
+#: data/tools/GUI.pyw:786
+#, fuzzy
+#| msgid "Do not warn about tags without side= keys"
+msgid "Warn about tags without side= keys"
+msgstr "Side= anahtarları olmayan etiketler hakkında uyarma"
+
+#: data/tools/GUI.pyw:795
+msgid "Disable checks for unknown units"
+msgstr "Bilinmeyen birimler için denetimleri devre dışı bırak"
+
+#: data/tools/GUI.pyw:804
+msgid "Disable spellchecking"
+msgstr "Yazım denetimini devre dışı bırak"
+
+#: data/tools/GUI.pyw:813
+msgid "Skip core directory"
+msgstr "Çekirdek dizini atla"
+
+#: data/tools/GUI.pyw:840
+msgid "wmlscope options"
+msgstr "wmlscope seçenekleri"
+
+#: data/tools/GUI.pyw:852
+msgid "Check for duplicate macro definitions"
+msgstr "Yinelenen makro tanımlarına bakın"
+
+#: data/tools/GUI.pyw:861
+msgid "Check for duplicate resource files"
+msgstr "Yinelenen kaynak dosyalarına bakın"
+
+#: data/tools/GUI.pyw:870
+msgid "Make definition list"
+msgstr "Tanım listesi oluştur"
+
+#: data/tools/GUI.pyw:879
+msgid "List files that will be processed"
+msgstr "İşlenecek dosyaları listele"
+
+#: data/tools/GUI.pyw:888
+msgid "Report unresolved macro references"
+msgstr "Çözülmemiş makro başvurularını bildir"
+
+#: data/tools/GUI.pyw:897
+msgid "Extract help from macro definition comments"
+msgstr "Makro tanım yorumlarından yardım metni çıkar"
+
+#: data/tools/GUI.pyw:906
+msgid "Report all macros with untyped formals"
+msgstr "Türsüz biçimli tüm makroları bildir"
+
+#: data/tools/GUI.pyw:915
+msgid "Show progress"
+msgstr "İlerlemeyi göster"
+
+#: data/tools/GUI.pyw:935 data/tools/GUI.pyw:1147
+msgid "Exclude file names matching regular expression:"
+msgstr "Düzenli ifadeyle eşleşen dosya adlarını hariç tut:"
+
+#: data/tools/GUI.pyw:953
+msgid "Exclude file names not matching regular expression:"
+msgstr "Düzenli ifadeyle eşleşmeyen dosya adlarını hariç tut:"
+
+#. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
+#. files'.
+#: data/tools/GUI.pyw:973
+msgid "Report only on macros referenced in exactly n files:"
+msgstr "Yalnızca tam olarak n dosyada başvurulan makroları bildir:"
+
+#: data/tools/GUI.pyw:993
+msgid "Report macro definitions and usages in file:"
+msgstr "Dosyadaki makro tanımlarını ve kullanımlarını bildir:"
+
+#: data/tools/GUI.pyw:1011
+msgid "Allow unused macros with names matching regular expression:"
+msgstr "Düzenli ifadeyle eşleşen adları olan kullanılmayan makrolara izin ver:"
+
+#: data/tools/GUI.pyw:1073
+msgid "wmlindent mode"
+msgstr "wmlindent kipi"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:1121
+msgid "Verbose"
+msgstr "Ayrıntılı"
+
+#. TRANSLATORS: Verbosity level.
+#: data/tools/GUI.pyw:1131
+msgid "Report unchanged files"
+msgstr "Değiştirilmemiş dosyaları bildir"
+
+#: data/tools/GUI.pyw:1140
+msgid "wmlindent options"
+msgstr "wmlindent seçenekleri"
+
+#. TRANSLATORS: Option to run 'quietly'.
+#: data/tools/GUI.pyw:1167
+msgid "Quiet mode"
+msgstr "Sessiz lip"
+
+#. TRANSLATORS: Tooltip explanation for quiet option.
+#: data/tools/GUI.pyw:1175
+msgid "Do not generate output messages"
+msgstr "Çıktı iletileri üretme"
+
+#: data/tools/GUI.pyw:1195
+msgid "Output directory:"
+msgstr "Çıktı dizini:"
+
+#: data/tools/GUI.pyw:1201
+msgid "Options"
+msgstr "Seçenekler"
+
+#: data/tools/GUI.pyw:1206
+msgid "Scan subdirectories"
+msgstr "Alt dizinleri tara"
+
+#: data/tools/GUI.pyw:1211
+msgid "Show optional warnings"
+msgstr "İsteğe bağlı uyarıları göster"
+
+#. TRANSLATORS: Also called "Needs work".
+#: data/tools/GUI.pyw:1217
+msgid "Mark all strings as fuzzy"
+msgstr "Tüm dizgeleri bulanık olarak işaretle"
+
+#: data/tools/GUI.pyw:1221
+msgid "Advanced options"
+msgstr "Gelişmiş seçenekler"
+
+#: data/tools/GUI.pyw:1225
+msgid "Package version"
+msgstr "Paket sürümü"
+
+#: data/tools/GUI.pyw:1242
+msgid "Initial textdomain:"
+msgstr "İlk metinalanı:"
+
+#: data/tools/GUI.pyw:1288 data/tools/GUI.pyw:1394
+msgid "Run wmllint"
+msgstr "wmllint çalıştır"
+
+#: data/tools/GUI.pyw:1295
+msgid "Save as text..."
+msgstr "Metin olarak kaydet..."
+
+#: data/tools/GUI.pyw:1302
+msgid "Clear output"
+msgstr "Çıktıyı temizle"
+
+#: data/tools/GUI.pyw:1309
+msgid "About..."
+msgstr "Hakkında..."
+
+#: data/tools/GUI.pyw:1316
+msgid "Exit"
+msgstr "Çık"
+
+#: data/tools/GUI.pyw:1332 data/tools/GUI.pyw:1466
+msgid "wmllint"
+msgstr "wmllint"
+
+#: data/tools/GUI.pyw:1336 data/tools/GUI.pyw:1538
+msgid "wmlscope"
+msgstr "wmlscope"
+
+#: data/tools/GUI.pyw:1340 data/tools/GUI.pyw:1574
+msgid "wmlindent"
+msgstr "wmlindent"
+
+#: data/tools/GUI.pyw:1344 data/tools/GUI.pyw:1624
+msgid "wmlxgettext"
+msgstr "wmlxgettext"
+
+#: data/tools/GUI.pyw:1347
+msgid "Output"
+msgstr "Çıktı"
+
+#: data/tools/GUI.pyw:1397
+msgid "Run wmlscope"
+msgstr "wmlscope çalıştır"
+
+#: data/tools/GUI.pyw:1400
+msgid "Run wmlindent"
+msgstr "wmlindent çalıştır"
+
+#: data/tools/GUI.pyw:1403
+msgid "Run wmlxgettext"
+msgstr "wmlxgettext çalıştır"
+
+#: data/tools/GUI.pyw:1411
+msgid ""
+"No directory selected.\n"
+"\n"
+"Please select a directory or disable the \"Skip core directory\" option."
+msgstr ""
+"Hiçbir dizin seçilmedi.\n"
+"\n"
+"Lütfen bir dizin seçin veya \"Çekirdek dizini atla\" seçeneğini devre dışı "
+"bırakın."
+
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1518
+msgid ""
+"Core directory or one of its subdirectories selected in the add-on selection "
+"box.\n"
+"\n"
+"The tool will be run only on the Wesnoth core directory."
+msgstr ""
+"Eklenti seçim kutusunda seçilen çekirdek dizin veya alt dizinlerinden biri.\n"
+"\n"
+"Araç yalnızca Wesnoth çekirdek dizininde çalıştırılacaktır."
+
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1518
+#: data/tools/GUI.pyw:1526 data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1587
+#: data/tools/GUI.pyw:1606
+msgid "Warning"
+msgstr "Uyarı"
+
+#: data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1526
+msgid ""
+"No directory selected.\n"
+"\n"
+"The tool will be run only on the Wesnoth core directory."
+msgstr ""
+"Hiçbir dizin seçilmedi.\n"
+"\n"
+"Araç yalnızca Wesnoth çekirdek dizininde çalıştırılacak."
+
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1532 data/tools/GUI.pyw:1568
+#: data/tools/GUI.pyw:1592
+msgid "The selected directory does not exist."
+msgstr "The selected directory does not exist."
+
+#: data/tools/GUI.pyw:1503
+msgid "Invalid value. Value must be an integer in the range 0-999."
+msgstr "Geçersiz değer. Değer 0-999 aralığında bir tam sayı olmalıdır."
+
+#: data/tools/GUI.pyw:1561
+msgid ""
+"No directory selected.\n"
+"\n"
+"The tool will be run on the Wesnoth core directory."
+msgstr ""
+"Hiçbir dizin seçilmedi.\n"
+"\n"
+"Araç Wesnoth çekirdek dizininde çalıştırılacak."
+
+#: data/tools/GUI.pyw:1587
+msgid ""
+"No directory selected.\n"
+"\n"
+"The tool will not be run."
+msgstr ""
+"Hiçbir dizin seçilmedi.\n"
+"\n"
+"Araç çalıştırılmayacak."
+
+#. TRANSLATORS: Dialogue box title.
+#: data/tools/GUI.pyw:1599
+msgid "Overwrite Confirmation"
+msgstr "Geçersiz Kılma Onayı"
+
+#. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
+#: data/tools/GUI.pyw:1601
+#, python-brace-format
+msgid ""
+"File {0} already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"{0} dosyası zaten mevcut.\n"
+"Üzerine yazmak ister misiniz?"
+
+#: data/tools/GUI.pyw:1606
+msgid ""
+"No output file selected.\n"
+"\n"
+"The tool will not be run."
+msgstr ""
+"Hiçbir çıktı dosyası seçilmedi.\n"
+"\n"
+"Araç çalıştırılmayacak."
+
+#: data/tools/GUI.pyw:1635
+#, python-brace-format
+msgid ""
+"There was an error while executing {0}.\n"
+"\n"
+"Error code: {1}"
+msgstr ""
+"{0} yürütülürken bir hata oluştu.\n"
+"\n"
+"Hata kodu: {1}"
+
+#: data/tools/GUI.pyw:1646
+msgid "Text file"
+msgstr "Metin dosyası"
+
+#: data/tools/GUI.pyw:1654
+#, python-brace-format
+msgid ""
+"Error while writing to:\n"
+"{0}\n"
+"\n"
+"Error code: {1}\n"
+"\n"
+"{2}"
+msgstr ""
+"Şuraya yazarken hata oluştu:\n"
+"{0}\n"
+"\n"
+"Hata kodu: {1}\n"
+"\n"
+"{2}"
+
+#: data/tools/GUI.pyw:1671
+msgid "About Maintenance Tools GUI"
+msgstr "Bakım Araçları GKA Hakkında"
+
+#. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
+#: data/tools/GUI.pyw:1673
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "© Elvish_Hunter, 2014-2016\n"
+#| "\n"
+#| "Version: {0}\n"
+#| "\n"
+#| "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
+#| "license\n"
+#| "\n"
+#| "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+#| "org), and are released in the Public Domain."
+msgid ""
+"© Elvish_Hunter, 2014-2025\n"
+"\n"
+"Version: {0}\n"
+"\n"
+"Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
+"license\n"
+"\n"
+"Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+"org), and are released in the Public Domain."
+msgstr ""
+"© Elvish_Hunter, 2014-2016\n"
+"\n"
+"Sürün: {0}\n"
+"\n"
+"The Battle for Wesnoth projesinin bir parçası olup GNU GPL v2 lisansı "
+"altında yayınlanmıştır.\n"
+"\n"
+"Simgeler Tango Masaüstü Projesi'nden (http://tango.freedesktop.org) alınmış "
+"olup Kamu Malı olarak yayınlanmıştır."
+
+#. TRANSLATORS: Dialogue box title.
+#: data/tools/GUI.pyw:1687
+msgid "Exit Confirmation"
+msgstr "Çıkış Onayı"
+
+#: data/tools/GUI.pyw:1688
+msgid "Do you really want to quit?"
+msgstr "Gerçekten çıkmak istiyor musunuz?"
+
+#: data/tools/GUI.pyw:1980
+msgid "This application must be placed into the wesnoth/data/tools directory."
+msgstr "Bu uygulama wesnoth/data/tools dizinine yerleştirilmelidir."

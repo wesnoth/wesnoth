@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,18 +16,14 @@
 #pragma once
 
 #include "game_events/pump.hpp" // for queued_event
-#include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
 #include "random.hpp"
-#include "random_synced.hpp"
-#include "replay.hpp"
 #include "synced_checkup.hpp"
 #include "synced_commands.hpp"
+#include "actions/undo_action.hpp"
 
 #include <deque>
-#include <functional>
 
-class config;
 
 // only static methods.
 class synced_context
@@ -41,50 +37,27 @@ public:
 	 * However, if you cannot call this function you can also use set_scontext_synced directly
 	 * (use it like it's used in this method).
 	 *
-	 * Movement commands are currently treated specially because actions::move_unit returns a
-	 * value and some function use that value. Maybe I should add a way to return a value here.
-	 *
-	 * AI attacks are also treated special because the ai wants to pass advancement_aspects.
-	 *
-	 * Redoing does normally not take place in a synced context, because we saved the dependent=true
-	 * replay commands in the replay stack data. There are also no events of similar fired when
-	 * redoing an action (in most cases).
-	 *
 	 * @param commandname   The command to run.
 	 * @param data          The data to use with the command.
-	 * @param use_undo      This parameter is used to ignore undos during an ai move to optimize.
-	 * @param show
-	 * @param error_handler An error handler for the case that data contains invalid data.
+	 * @param spectator An error handler for the case that data contains invalid data.
 	 *
 	 * @return              True if the action was successful.
 	 */
-	static bool run(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run(
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
-	static bool run_and_store(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_store(
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
-	static bool run_and_throw(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_throw(
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	/**
 	 * Checks whether we are currently running in a synced context, and if not we enters it.
 	 * This is never called from so_replay_handle.
 	 */
-	static bool run_in_synced_context_if_not_already(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_in_synced_context_if_not_already(
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	/**
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,
@@ -131,35 +104,25 @@ public:
 	 */
 	static void send_user_choice();
 
-	/** A function to be passed to run_in_synced_context to assert false on error (the default). */
-	static void default_error_function(const std::string& message);
-
-	/** A function to be passed to run_in_synced_context to log the error. */
-	static void just_log_error_function(const std::string& message);
-
-	/** A function to be passed to run_in_synced_context to ignore the error. */
-	static void ignore_error_function(const std::string& message);
+	/** An object to be passed to run_in_synced_context to assert false on error (the default). */
+	static action_spectator& get_default_spectator();
 
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
-	/** @return whether we already sent data about the current action to other clients. which means we cannot undo it. */
-	static bool is_simultaneous()
+	/**
+	 * @a set this to false to prevent clearing the undo stack, this is important when we cannot change the gamestate
+	 * becasue with dsu clearing the undo stack changes the gamestate, which we for example don't want during formula
+	 * evaluation, when it used the dice operator. TODO: consider removing this parameter when dsu is removed.
+	 */
+	static void block_undo(bool do_block = true, bool clear_undo = true);
+	static void reset_block_undo()
 	{
-		return is_simultaneous_;
+		is_undo_blocked_ = false;
 	}
 
-	/** Sets is_simultaneous_ = false, called when entering the synced context. */
-	static void reset_is_simultaneous()
-	{
-		is_simultaneous_ = false;
-	}
-
-	/** Sets is_simultaneous_ = true, called using a user choice that is not the currently playing side. */
-	static void set_is_simultaneous();
-
-	/** @return Whether there were recently no methods called that prevent undoing. */
-	static bool can_undo();
+	/** @return Whether we tracked something that can never be undone. */
+	static bool undo_blocked();
 
 	static void set_last_unit_id(int id)
 	{
@@ -182,25 +145,15 @@ public:
 		virtual config request() const = 0;
 
 		virtual const char* name() const = 0;
+
+		int request_id() const;
 		void send_request() const;
 	};
 
 	/** If we are in a mp game, ask the server, otherwise generate the answer ourselves. */
 	static config ask_server_choice(const server_choice&);
 
-	typedef std::deque<std::pair<config, game_events::queued_event>> event_list;
-	static event_list& get_undo_commands()
-	{
-		return undo_commands_;
-	}
-
-	static void add_undo_commands(const config& commands, const game_events::queued_event& ctx);
-
-	static void reset_undo_commands()
-	{
-		undo_commands_.clear();
-	}
-
+	static bool ignore_undo();
 private:
 	/** Weather we are in a synced move, in a user_choice, or none of them. */
 	static inline synced_state state_ = synced_context::UNSYNCED;
@@ -211,16 +164,11 @@ private:
 	 * been sent over the network.
 	 *
 	 * false = we are on a local turn and haven't sent anything yet.
-	 *
-	 * TODO: it would be better if the following variable were not static.
 	 */
-	static inline bool is_simultaneous_ = false;
+	static inline bool is_undo_blocked_ = false;
 
 	/** Used to restore the unit id manager when undoing. */
 	static inline int last_unit_id_ = 0;
-
-	/** Actions wml to be executed when the current action is undone. */
-	static inline event_list undo_commands_ {};
 };
 
 class set_scontext_synced_base

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,15 +18,13 @@
 
 #include "actions/attack.hpp" // for battle_context_unit_stats
 #include "font/constants.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
@@ -53,22 +51,22 @@ namespace gui2::dialogs
 {
 REGISTER_DIALOG(statistics_dialog)
 
-statistics_dialog::statistics_dialog(const team& current_team)
+statistics_dialog::statistics_dialog(statistics_t& statistics, const team& current_team)
 	: modal_dialog(window_id())
 	, current_team_(current_team)
-	, campaign_(statistics::calculate_stats(current_team.save_id_or_number()))
-	, scenarios_(statistics::level_stats(current_team.save_id_or_number()))
+	, campaign_(statistics.calculate_stats(current_team.save_id_or_number()))
+	, scenarios_(statistics.level_stats(current_team.save_id_or_number()))
 	, selection_index_(scenarios_.size()) // The extra All Scenarios menu entry makes size() a valid initial index.
 	, main_stat_table_()
 {
 }
 
-void statistics_dialog::pre_show(window& window)
+void statistics_dialog::pre_show()
 {
 	//
 	// Set title
 	//
-	label& title = find_widget<label>(&window, "title", false);
+	label& title = find_widget<label>("title");
 	title.set_label((formatter() << title.get_label() << (current_team_.side_name().empty() ? "" : " (" + current_team_.side_name() + ")")).str());
 
 	//
@@ -83,7 +81,7 @@ void statistics_dialog::pre_show(window& window)
 		menu_items.emplace_back("label", *scenario.first);
 	}
 
-	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);
+	menu_button& scenario_menu = find_widget<menu_button>("scenario_menu");
 
 	scenario_menu.set_values(menu_items, selection_index_);
 
@@ -93,7 +91,7 @@ void statistics_dialog::pre_show(window& window)
 	//
 	// Set up primary stats list
 	//
-	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
+	listbox& stat_list = find_widget<listbox>("stats_list_main");
 
 	connect_signal_notify_modified(stat_list,
 		std::bind(&statistics_dialog::on_primary_list_select, this));
@@ -101,14 +99,14 @@ void statistics_dialog::pre_show(window& window)
 	update_lists();
 }
 
-inline const statistics::stats& statistics_dialog::current_stats()
+inline const statistics_t::stats& statistics_dialog::current_stats()
 {
 	return selection_index_ == 0 ? campaign_ : *scenarios_[selection_index_ - 1].second;
 }
 
-void statistics_dialog::add_stat_row(const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost)
+void statistics_dialog::add_stat_row(const std::string& type, const statistics_t::stats::str_int_map& value, const bool has_cost)
 {
-	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
+	listbox& stat_list = find_widget<listbox>("stats_list_main");
 
 	widget_data data;
 	widget_item item;
@@ -116,10 +114,10 @@ void statistics_dialog::add_stat_row(const std::string& type, const statistics::
 	item["label"] = type;
 	data.emplace("stat_type", item);
 
-	item["label"] = std::to_string(statistics::sum_str_int_map(value));
+	item["label"] = std::to_string(statistics_t::sum_str_int_map(value));
 	data.emplace("stat_detail", item);
 
-	item["label"] = has_cost ? std::to_string(statistics::sum_cost_str_int_map(value)) : font::unicode_em_dash;
+	item["label"] = has_cost ? std::to_string(statistics_t::sum_cost_str_int_map(value)) : font::unicode_em_dash;
 	data.emplace("stat_cost", item);
 
 	stat_list.add_row(data);
@@ -150,7 +148,7 @@ void statistics_dialog::add_damage_row(
 		const long long& turn_expected,
 		const bool show_this_turn)
 {
-	listbox& damage_list = find_widget<listbox>(get_window(), "stats_list_damage", false);
+	listbox& damage_list = find_widget<listbox>("stats_list_damage");
 
 	widget_data data;
 	widget_item item;
@@ -158,7 +156,7 @@ void statistics_dialog::add_damage_row(
 	item["label"] = type;
 	data.emplace("damage_type", item);
 
-	static const int shift = statistics::stats::decimal_shift;
+	static const int shift = statistics_t::stats::decimal_shift;
 
 	const auto damage_str = [](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
@@ -174,7 +172,7 @@ void statistics_dialog::add_damage_row(
 	data.emplace("overall_score", item);
 
 	if(show_this_turn) {
-		label& this_turn_header = find_widget<label>(get_window(), "damage_this_turn_header", false);
+		label& this_turn_header = find_widget<label>("damage_this_turn_header");
 		this_turn_header.set_label(_("This Turn"));
 
 		item["label"] = damage_str(turn_damage, turn_expected);
@@ -184,7 +182,7 @@ void statistics_dialog::add_damage_row(
 		data.emplace("this_turn_score", item);
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenario view, so set the label to " " (a single space) instead.
-		label& this_turn_header = find_widget<label>(get_window(), "damage_this_turn_header", false);
+		label& this_turn_header = find_widget<label>("damage_this_turn_header");
 		this_turn_header.set_label(" ");
 	}
 
@@ -203,7 +201,7 @@ struct hitrate_table_element
 };
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
-static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth, const bool more_is_better)
+static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_cth, const bool more_is_better)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -238,7 +236,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		unit_types.build_unit_type(defender_type, unit_type::BUILD_STATUS::FULL);
 
 		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
-		std::unique_ptr<combatant> current_defender(new combatant(defender_bc));
+		auto current_defender = std::make_unique<combatant>(defender_bc);
 
 		for(const auto& i : by_cth) {
 			int cth = i.first;
@@ -288,8 +286,9 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 			str2 << font::unicode_em_dash;
 		} else {
 			const auto add_probability = [&str2](double probability, bool more_is_better) {
-				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
-					<< get_probability_string(probability) << "</span>";
+				str2 << markup::span_color(
+					game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true),
+					get_probability_string(probability));
 			};
 
 			// Take the average. At the end of a scenario or a campaign the sum of
@@ -306,11 +305,11 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 void statistics_dialog::add_hits_row(
 		const std::string& type,
 		const bool more_is_better,
-		const statistics::stats::hitrate_map& by_cth,
-		const statistics::stats::hitrate_map& turn_by_cth,
+		const statistics_t::stats::hitrate_map& by_cth,
+		const statistics_t::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn)
 {
-	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
+	listbox& hits_list = find_widget<listbox>("stats_list_hits");
 
 	widget_data data;
 	widget_item item;
@@ -333,7 +332,7 @@ void statistics_dialog::add_hits_row(
 	data.emplace("overall_score", widget_item { { "label", element.pvalue_str } });
 
 	if(show_this_turn) {
-		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
+		label& this_turn_header = find_widget<label>("hits_this_turn_header");
 		this_turn_header.set_label(_("This Turn"));
 
 		element = tally(turn_by_cth, more_is_better);
@@ -345,7 +344,7 @@ void statistics_dialog::add_hits_row(
 		data.emplace("this_turn_score", widget_item { { "label", element.pvalue_str } });
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenario view, so set the label to " " (a single space) instead.
-		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
+		label& this_turn_header = find_widget<label>("hits_this_turn_header");
 		this_turn_header.set_label(" ");
 	}
 
@@ -357,13 +356,13 @@ void statistics_dialog::update_lists()
 	//
 	// Update primary stats list
 	//
-	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
+	listbox& stat_list = find_widget<listbox>("stats_list_main");
 	const int last_selected_stat_row = stat_list.get_selected_row();
 
 	stat_list.clear();
 	main_stat_table_.clear();
 
-	const statistics::stats& stats = current_stats();
+	const statistics_t::stats& stats = current_stats();
 
 	add_stat_row(_("stats^Recruits"),     stats.recruits);
 	add_stat_row(_("Recalls"),      stats.recalls);
@@ -384,11 +383,11 @@ void statistics_dialog::update_lists()
 	//
 	const bool show_this_turn = selection_index_ == scenarios_.size();
 
-	listbox& damage_list = find_widget<listbox>(get_window(), "stats_list_damage", false);
+	listbox& damage_list = find_widget<listbox>("stats_list_damage");
 
 	damage_list.clear();
 
-	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
+	listbox& hits_list = find_widget<listbox>("stats_list_hits");
 	hits_list.clear();
 
 	add_damage_row(_("Inflicted"),
@@ -420,7 +419,7 @@ void statistics_dialog::update_lists()
 
 void statistics_dialog::on_scenario_select()
 {
-	const std::size_t new_index = find_widget<menu_button>(get_window(), "scenario_menu", false).get_value();
+	const std::size_t new_index = find_widget<menu_button>("scenario_menu").get_value();
 
 	if(selection_index_ != new_index) {
 		selection_index_ = new_index;
@@ -430,12 +429,12 @@ void statistics_dialog::on_scenario_select()
 
 void statistics_dialog::on_primary_list_select()
 {
-	const int selected_row = find_widget<listbox>(get_window(), "stats_list_main", false).get_selected_row();
+	const int selected_row = find_widget<listbox>("stats_list_main").get_selected_row();
 	if(selected_row == -1) {
 		return;
 	}
 
-	listbox& unit_list = find_widget<listbox>(get_window(), "stats_list_units", false);
+	listbox& unit_list = find_widget<listbox>("stats_list_units");
 
 	unit_list.clear();
 

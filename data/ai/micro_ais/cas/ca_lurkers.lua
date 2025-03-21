@@ -28,8 +28,8 @@ function ca_lurkers:execution(cfg)
     local lurk_area = wml.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
          LS.of_pairs(wesnoth.map.find  {
-            { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-            { "and", lurk_area }
+            wml.tag["and"] { x = lurker.x, y = lurker.y, radius = lurker.moves },
+            wml.tag["and"] ( lurk_area )
         })
     reachable_attack_terrain:inter(reach)
 
@@ -37,7 +37,7 @@ function ca_lurkers:execution(cfg)
     reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
         local occ_hex = AH.get_visible_units(wesnoth.current.side, {
             x = x, y = y,
-            { "not", { x = lurker.x, y = lurker.y } }
+            wml.tag["not"] { x = lurker.x, y = lurker.y }
         })[1]
         return not occ_hex
     end)
@@ -64,8 +64,8 @@ function ca_lurkers:execution(cfg)
     if (lurker.moves > 0) and (not cfg.stationary) then
         local reachable_wander_terrain =
             LS.of_pairs( wesnoth.map.find {
-                { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-                { "and", wml.get_child(cfg, "filter_location_wander") or lurk_area }
+                wml.tag["and"] { x = lurker.x, y = lurker.y, radius = lurker.moves },
+                wml.tag["and"] ( wml.get_child(cfg, "filter_location_wander") or lurk_area )
             })
         reachable_wander_terrain:inter(reach)
 
@@ -73,7 +73,7 @@ function ca_lurkers:execution(cfg)
         reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
             local occ_hex = AH.get_visible_units(wesnoth.current.side, {
                 x = x, y = y,
-                { "not", { x = lurker.x, y = lurker.y } }
+                wml.tag["not"] { x = lurker.x, y = lurker.y }
             })[1]
             return not occ_hex
         end)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "synced_checkup.hpp"
 #include "log.hpp"
-#include "replay.hpp"
 #include "synced_user_choice.hpp"
 
 static lg::log_domain log_replay("replay");
@@ -67,7 +66,7 @@ bool synced_checkup::local_checkup(const config& expected_data, config& real_dat
 	if(buffer_.child_count("result") > pos_)
 	{
 		//copying objects :o
-		real_data = buffer_.child("result",pos_);
+		real_data = buffer_.mandatory_child("result",pos_);
 		pos_ ++;
 		return real_data == expected_data;
 	}

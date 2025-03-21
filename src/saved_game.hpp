@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #include "game_classification.hpp"
 #include "mp_game_settings.hpp"
 #include "replay_recorder_base.hpp"
+#include "statistics_record.hpp"
 
 class config_writer;
 
@@ -106,6 +107,10 @@ public:
 	{
 		return starting_point_type_ == starting_point::SNAPSHOT;
 	}
+	bool is_start_of_scenario() const
+	{
+		return !has_carryover_expanded_;
+	}
 	/**
 	 * converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
 	 * The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
@@ -135,6 +140,8 @@ public:
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }
 
+	statistics_record::campaign_stats_t& statistics() { return statistics_; }
+	const statistics_record::campaign_stats_t& statistics() const { return statistics_; }
 	/** Whether to play [story] tags */
 	bool skip_story() const { return skip_story_; }
 	void set_skip_story(bool skip_story) { skip_story_ = skip_story; }
@@ -161,6 +168,8 @@ private:
 	config starting_point_;
 
 	replay_recorder_base replay_data_;
+
+	statistics_record::campaign_stats_t statistics_;
 
 	bool skip_story_;
 };

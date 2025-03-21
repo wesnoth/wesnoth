@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	by Amir Hassan <amir@viel-zu.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,6 @@ namespace gui2::dialogs
 {
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * This shows the dialog to confirm surrender and/or quitting the game.
  */
 class surrender_quit : public modal_dialog

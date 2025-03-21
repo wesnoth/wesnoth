@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "scripting/plugins/manager.hpp"
 
 #include "scripting/application_lua_kernel.hpp"
-#include "scripting/plugins/context.hpp"
 #include <cassert>
 #include <stdexcept>
 #include <string>

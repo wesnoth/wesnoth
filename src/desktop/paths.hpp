@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,7 @@
 #include "tstring.hpp"
 
 #include <iosfwd>
+#include <set>
 #include <vector>
 
 namespace desktop
@@ -54,17 +55,17 @@ std::ostream& operator<<(std::ostream& os, const path_info& pinf);
 
 enum GAME_PATH_TYPES
 {
-	GAME_BIN_DIR = 0x1,				/**< Game executable dir. */
-	GAME_CORE_DATA_DIR = 0x2,		/**< Game data dir. */
-	GAME_USER_PREFS_DIR = 0x4,		/**< User preferences dir. */
-	GAME_USER_DATA_DIR = 0x8,		/**< User data dir. */
+	GAME_BIN_DIR = 0,				/**< Game executable dir. */
+	GAME_CORE_DATA_DIR = 1,			/**< Game data dir. */
+	GAME_USER_DATA_DIR = 3,			/**< User data dir. */
+	GAME_EDITOR_MAP_DIR = 4,		/**< Editor map dir */
 };
 
 enum SYSTEM_PATH_TYPES
 {
-	SYSTEM_ALL_DRIVES = 0x1,		/**< Paths for each storage media found (Windows), /media and/or /mnt (X11, if non-empty). */
-	SYSTEM_USER_PROFILE = 0x2,		/**< Path to the user's profile dir (e.g. /home/username or X:\\Users\\Username). */
-	SYSTEM_ROOTFS = 0x4				/**< Path to the root of the filesystem hierarchy (ignored on Windows). */
+	SYSTEM_ALL_DRIVES = 0,			/**< Paths for each storage media found (Windows), /media and/or /mnt (X11, if non-empty). */
+	SYSTEM_USER_PROFILE = 1,		/**< Path to the user's profile dir (e.g. /home/username or X:\\Users\\Username). */
+	SYSTEM_ROOTFS = 2				/**< Path to the root of the filesystem hierarchy (ignored on Windows). */
 };
 
 /**
@@ -73,7 +74,7 @@ enum SYSTEM_PATH_TYPES
  * These paths are guaranteed to be their canonical forms (with links and dot
  * entries resolved) and using the platform's preferred path delimiter.
  */
-std::vector<path_info> game_paths(unsigned path_types = GAME_CORE_DATA_DIR | GAME_USER_DATA_DIR);
+std::vector<path_info> game_paths(const std::set<GAME_PATH_TYPES>& paths);
 
 /**
  * Returns a list of system-defined paths.
@@ -86,7 +87,7 @@ std::vector<path_info> game_paths(unsigned path_types = GAME_CORE_DATA_DIR | GAM
  * These paths are guaranteed to be their canonical forms (with links and dot
  * entries resolved) and using the platform's preferred path delimiter.
  */
-std::vector<path_info> system_paths(unsigned path_types = SYSTEM_ALL_DRIVES | SYSTEM_USER_PROFILE | SYSTEM_ROOTFS);
+std::vector<path_info> system_paths(const std::set<SYSTEM_PATH_TYPES>& paths);
 
 struct bookmark_info
 {

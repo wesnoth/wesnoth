@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,15 +24,19 @@
 #include "gui/core/canvas_private.hpp"
 
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "font/font_config.hpp"
+#include "font/standard_colors.hpp"
 #include "picture.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // blur_surface
 #include "video.hpp" // read_pixels_low_res, only used for blurring
@@ -50,7 +54,7 @@ line_shape::line_shape(const config& cfg)
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
 	, color_(cfg["color"])
-	, thickness_(cfg["thickness"])
+	, thickness_(cfg["thickness"].to_unsigned())
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -82,7 +86,7 @@ void line_shape::draw(wfl::map_formula_callable& variables)
 
 rectangle_shape::rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -99,10 +103,12 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const int x = x_(variables);
-	const int y = y_(variables);
-	const int w = w_(variables);
-	const int h = h_(variables);
+	const rect area {
+		x_(variables),
+		y_(variables),
+		w_(variables),
+		h_(variables)
+	};
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -110,32 +116,16 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	if(!fill_color.null()) {
 		DBG_GUI_D << "fill " << fill_color;
 		draw::set_color(fill_color);
-
-		const SDL_Rect area {
-			x +  border_thickness_,
-			y +  border_thickness_,
-			w - (border_thickness_ * 2),
-			h - (border_thickness_ * 2)
-		};
-
-		draw::fill(area);
+		draw::fill(area.padded_by(-border_thickness_));
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	draw::set_color(border_color);
-	DBG_GUI_D << "border thickness " << border_thickness_
-		<< ", colour " << border_color;
+	DBG_GUI_D << "border thickness " << border_thickness_ << ", colour " << border_color;
 	for(int i = 0; i < border_thickness_; ++i) {
-		const SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		draw::rect(dimensions);
+		draw::rect(area.padded_by(-i));
 	}
 }
 
@@ -144,7 +134,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
 	, r_(cfg["corner_radius"])
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -228,22 +218,18 @@ void circle_shape::draw(wfl::map_formula_callable& variables)
 	 * silly unless there has been a resize. So to optimize we should use an
 	 * extra flag or do the calculation in a separate routine.
 	 */
-
 	const int x = x_(variables);
 	const int y = y_(variables);
 	const unsigned radius = radius_(variables);
-
-	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
-
 	const color_t fill_color = fill_color_(variables);
-	if(!fill_color.null() && radius) {
-		draw::disc(x, y, radius, fill_color);
+	if (!fill_color.null()) {
+		draw::cairo_disc(x, y, radius, fill_color);
 	}
 
 	const color_t border_color = border_color_(variables);
-	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw::circle(x, y, radius - i, border_color);
-	}
+	draw::cairo_circle(x, y, radius, border_color, border_thickness_);
+
+	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
@@ -269,7 +255,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 {
 	const int as_int = static_cast<int>(value);
 
-	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn’t fit on canvas."),
 		formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
 	);
 }
@@ -286,7 +272,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: formula returned no value, will not be drawn.";
+		DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
 		return;
 	}
 
@@ -324,6 +310,14 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	// used in gui/dialogs/story_viewer.cpp
 	local_variables.add("clip_x", wfl::variant(x));
 	local_variables.add("clip_y", wfl::variant(y));
+
+	if (variables.has_key("fake_draw") && variables.query_value("fake_draw").as_bool()) {
+		variables.add("image_original_width", wfl::variant(tex.w()));
+		variables.add("image_original_height", wfl::variant(tex.h()));
+		variables.add("image_width", wfl::variant(w ? w : tex.w()));
+		variables.add("image_height", wfl::variant(h ? h : tex.h()));
+		return;
+	}
 
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
@@ -394,25 +388,78 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
-text_shape::text_shape(const config& cfg)
+namespace
+{
+/** Populates the attribute list from the given config child range. */
+auto parse_attributes(const config::const_child_itors& range)
+{
+	// TODO: most of the time this will be empty, unless you're using rich_label.
+	// It's a lot of memory allocations to always have a valid object here...
+	// Do we need store it as an optional?
+	font::attribute_list text_attributes;
+
+	for(const config& attr : range) {
+		const std::string name = attr["name"];
+
+		if(name.empty()) {
+			continue;
+		}
+
+		const unsigned start = attr["start"].to_int(0);
+		const unsigned end = attr["end"].to_int(/* text.size() */); // TODO: do we need to restore this default?
+
+		if (name == "color" || name == "fgcolor" || name == "foreground") {
+			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "bgcolor" || name == "background") {
+			add_attribute_bg_color(text_attributes, start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "font_size" || name == "size") {
+			add_attribute_size(text_attributes, start, end, attr["value"].to_int(font::SIZE_NORMAL));
+		} else if (name == "font_family" || name == "face") {
+			add_attribute_font_family(text_attributes, start, end, font::decode_family_class(attr["value"]));
+		} else if (name == "weight") {
+			add_attribute_weight(text_attributes, start, end, decode_text_weight(attr["value"]));
+		} else if (name == "style") {
+			add_attribute_style(text_attributes, start, end, decode_text_style(attr["value"]));
+		} else if (name == "bold" || name == "b") {
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_BOLD);
+		} else if (name == "italic" || name == "i") {
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
+		} else if (name == "underline" || name == "u") {
+			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
+		} else {
+			// Unsupported formatting or normal text
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
+		}
+	}
+
+	return text_attributes;
+}
+
+} // anon namespace
+
+text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
-	, font_family_(font::str_to_family_class(cfg["font_family"]))
-	, font_size_(cfg["font_size"])
+	, font_family_(font::decode_family_class(cfg["font_family"]))
+	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
 	, text_(cfg["text"])
+	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
 	, maximum_width_(cfg["maximum_width"], -1)
-	, characters_per_line_(cfg["text_characters_per_line"])
+	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
 	, maximum_height_(cfg["maximum_height"], -1)
+	, highlight_start_(cfg["highlight_start"])
+	, highlight_end_(cfg["highlight_end"])
+	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, outline_(cfg["outline"], false)
+	, actions_formula_(cfg["actions"], &functions)
+	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
 {
-	if(!font_size_.has_formula()) {
-		VALIDATE(font_size_(), _("Text has a font size of 0."));
-	}
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
@@ -426,14 +473,27 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	const t_string text = text_(variables);
+	const auto text = parse_text_as_formula_
+		? typed_formula<t_string>{text_}(variables)
+		: text_.t_str();
 
 	if(text.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
 
+	//
+	// Highlight
+	//
+	const int highlight_start = highlight_start_(variables);
+	const int highlight_end = highlight_end_(variables);
+
+	if(highlight_start != highlight_end) {
+		add_attribute_bg_color(text_attributes_, highlight_start, highlight_end, highlight_color_(variables));
+	}
+
 	font::pango_text& text_renderer = font::get_text_renderer();
+	text_renderer.clear_attributes();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
@@ -450,7 +510,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
-		.set_characters_per_line(characters_per_line_);
+		.set_characters_per_line(characters_per_line_)
+		.set_add_outline(outline_(variables));
+
+	// Do this last so it can merge with attributes from markup
+	text_renderer.apply_attributes(text_attributes_);
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();
@@ -459,11 +523,20 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	local_variables.add("text_width", wfl::variant(tw));
 	local_variables.add("text_height", wfl::variant(th));
 
+	if (variables.has_key("fake_draw") && variables.query_value("fake_draw").as_bool()) {
+		variables.add("text_width", wfl::variant(tw));
+		variables.add("text_height", wfl::variant(th));
+		return;
+	}
+
 	const int x = x_(local_variables);
 	const int y = y_(local_variables);
 	const int w = w_(local_variables);
 	const int h = h_(local_variables);
 	rect dst_rect{x, y, w, h};
+
+	// Execute the provided actions for this context.
+	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
@@ -479,24 +552,79 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
-canvas::canvas()
+canvas::canvas(const config& cfg)
 	: shapes_()
 	, blur_depth_(0)
+	, blur_region_(sdl::empty_rect)
+	, deferred_(false)
 	, w_(0)
 	, h_(0)
 	, variables_()
 	, functions_()
 {
+	parse_cfg(cfg);
 }
 
-canvas::canvas(canvas&& c) noexcept
-	: shapes_(std::move(c.shapes_))
-	, blur_depth_(c.blur_depth_)
-	, w_(c.w_)
-	, h_(c.h_)
-	, variables_(c.variables_)
-	, functions_(c.functions_)
+// It would be better if the blur effect was managed at a higher level.
+// But for now this works and should be both general and robust.
+bool canvas::update_blur(const rect& screen_region, bool force)
 {
+	if(!blur_depth_) {
+		// No blurring needed.
+		return true;
+	}
+
+	if(screen_region != blur_region_) {
+		DBG_GUI_D << "blur region changed from " << blur_region_
+			<< " to " << screen_region;
+		// something has changed. regenerate the texture.
+		blur_texture_.reset();
+		blur_region_ = screen_region;
+	}
+
+	if(blur_texture_ && !force) {
+		// We already made the blur. It's expensive, so don't do it again.
+		return true;
+	}
+
+	// To blur what is underneath us, it must already be rendered somewhere.
+	// This is okay for sub-elements of an opaque window (panels on the main
+	// title screen for example) as the window will already have rendered
+	// its background to the render buffer before we get here.
+	// If however we are blurring elements behind the window, such as if
+	// the window itself is translucent (objectives popup), or it is
+	// transparent with a translucent element (character dialogue),
+	// then we need to render what will be behind it before capturing that
+	// and rendering a blur.
+	// We could use the previous render frame, but there could well have been
+	// another element there last frame such as a popup window which we
+	// don't want to be part of the blur.
+	// The stable solution is to render in multiple passes,
+	// so that is what we shall do.
+
+	// For the first pass, this element and its children are not rendered.
+	if(!deferred_) {
+		DBG_GUI_D << "Deferring blur at " << screen_region;
+		deferred_ = true;
+		draw_manager::request_extra_render_pass();
+		return false;
+	}
+
+	// For the second pass we read the result of the first pass at
+	// this widget's location, and blur it.
+	DBG_GUI_D << "Blurring " << screen_region << " depth " << blur_depth_;
+	rect read_region = screen_region;
+	auto setter = draw::set_render_target({});
+	surface s = video::read_pixels_low_res(&read_region);
+	blur_surface(s, {0, 0, s->w, s->h}, blur_depth_);
+	blur_texture_ = texture(s);
+	deferred_ = false;
+	return true;
+}
+
+void canvas::queue_reblur()
+{
+	blur_texture_.reset();
 }
 
 void canvas::draw()
@@ -508,18 +636,15 @@ void canvas::draw()
 		return;
 	}
 
-	// Note: this doesn't update if whatever is underneath changes.
-	if(blur_depth_ && !blur_texture_) {
-		// Cache a blurred image of whatever is underneath.
-		SDL_Rect rect = draw::get_viewport();
-		surface s = video::read_pixels_low_res(&rect);
-		s = blur_surface(s, blur_depth_);
-		blur_texture_ = texture(s);
+	if(deferred_) {
+		// We will draw next frame.
+		return;
 	}
 
 	// Draw blurred background.
 	// TODO: hwaccel - this should be able to be removed at some point with shaders
 	if(blur_depth_ && blur_texture_) {
+		DBG_GUI_D << "blitting blur size " << blur_texture_.draw_size();
 		draw::blit(blur_texture_);
 	}
 
@@ -534,11 +659,8 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto shape : cfg.all_children_range())
+	for(const auto [type, data] : cfg.all_children_view())
 	{
-		const std::string& type = shape.key;
-		const config& data = shape.cfg;
-
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
 		if(type == "line") {
@@ -552,15 +674,14 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "image") {
 			shapes_.emplace_back(std::make_unique<image_shape>(data, functions_));
 		} else if(type == "text") {
-			shapes_.emplace_back(std::make_unique<text_shape>(data));
+			shapes_.emplace_back(std::make_unique<text_shape>(data, functions_));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto function : data.all_children_range())
+			for(const auto [func_key, func_cfg] : data.all_children_view())
 			{
-
-				if(function.key == "blur") {
-					blur_depth_ = function.cfg["depth"];
+				if(func_key == "blur") {
+					blur_depth_ = func_cfg["depth"].to_unsigned();
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
 							  << " of an invalid type " << type << ".";
@@ -570,8 +691,6 @@ void canvas::parse_cfg(const config& cfg)
 		} else {
 			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type
 					  << ".";
-
-			assert(false);
 		}
 	}
 }
@@ -595,10 +714,7 @@ void canvas::clear_shapes(const bool force)
 	if(force) {
 		shapes_.clear();
 	} else {
-		auto conditional = [](const std::unique_ptr<shape>& s)->bool { return !s->immutable(); };
-
-		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
-		shapes_.erase(iter, shapes_.end());
+		utils::erase_if(shapes_, [](const std::unique_ptr<shape>& s) { return !s->immutable(); });
 	}
 }
 

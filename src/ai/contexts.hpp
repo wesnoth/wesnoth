@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include "generic_event.hpp"         // for observer
 #include "units/ptr.hpp"              // for unit_ptr
 #include "map/location.hpp"       // for map_location
-#include "utils/variant.hpp"
 
 #include <map>                          // for map, map<>::value_compare
 #include <set>                          // for set
@@ -44,9 +43,6 @@ class unit_type;  // lines 46-46
 namespace wfl { class variant; }
 namespace ai { class ai_context; }  // lines 51-51
 namespace ai { class unit_advancements_aspect; }
-namespace ai { template <typename T> class typesafe_aspect; }
-namespace boost { template <class T> class shared_ptr; }
-namespace pathfind { struct paths; }
 struct battle_context_unit_stats;  // lines 39-39
 
 namespace ai {
@@ -120,7 +116,6 @@ private:
 
 // side context
 
-class side_context;
 
 class side_context{
 public:
@@ -162,7 +157,6 @@ public:
 
 };
 
-class readonly_context;
 class readonly_context : public virtual side_context {
 public:
 	readonly_context(){}
@@ -350,7 +344,6 @@ public:
 
 };
 
-class readwrite_context;
 class readwrite_context : public virtual readonly_context {
 public:
 	readwrite_context(){}

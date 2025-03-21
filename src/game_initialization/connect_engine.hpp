@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,6 @@ enum controller {
 	CNTR_RESERVED,
 };
 
-class connect_engine;
 class side_engine;
 
 typedef std::shared_ptr<side_engine> side_engine_ptr;
@@ -82,10 +81,10 @@ public:
 	const config& level() const { return level_; }
 	config& scenario()
 	{
-		if(config& scenario = level_.child("scenario"))
-			return scenario;
-		else if(config& snapshot = level_.child("snapshot"))
-			return snapshot;
+		if(auto scenario = level_.optional_child("scenario"))
+			return *scenario;
+		else if(auto snapshot = level_.optional_child("snapshot"))
+			return *snapshot;
 		else
 			throw "No scenariodata found";
 	}
@@ -197,7 +196,7 @@ public:
 	unsigned team() const { return team_; }
 	void set_team(unsigned team) { team_ = team; }
 	std::multimap<std::string, config> get_side_children();
-	void set_side_children(std::multimap<std::string, config> children);
+	void set_side_children(const std::multimap<std::string, config>& children);
 	int color() const { return color_; }
 	void set_color(int color) { color_ = color; color_id_ = color_options_[color]; }
 	int gold() const { return gold_; }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@ std::string get_unknown_exception_type()
 #if defined(__clang__) || defined(__GNUG__)
 	std::string to_demangle = __cxxabiv1::__cxa_current_exception_type()->name();
 	int status = 0;
-	char* buff = __cxxabiv1::__cxa_demangle(to_demangle.c_str(), NULL, NULL, &status);
+	char* buff = __cxxabiv1::__cxa_demangle(to_demangle.c_str(), nullptr, nullptr, &status);
 	if(status == 0)
 	{
 		std::string demangled = buff;

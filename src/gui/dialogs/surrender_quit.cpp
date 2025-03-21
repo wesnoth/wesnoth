@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	by Amir Hassan <amir@viel-zu.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "gui/dialogs/surrender_quit.hpp"
-#include "../widgets/settings.hpp"
 
 
 namespace gui2::dialogs

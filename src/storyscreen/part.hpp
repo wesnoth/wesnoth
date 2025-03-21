@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,8 +22,8 @@
 
 #include "storyscreen/parser.hpp"
 
+#include <chrono>
 #include <string>
-#include <utility>
 #include <vector>
 
 class config;
@@ -100,7 +100,7 @@ public:
 	 * Delay after displaying this image and before displaying the next image,
 	 * in milliseconds.
 	 */
-	int display_delay() const
+	const std::chrono::milliseconds& display_delay() const
 	{
 		return delay_;
 	}
@@ -108,7 +108,7 @@ public:
 private:
 	std::string file_;
 	int x_, y_; // referential (non corrected) x,y
-	int delay_;
+	std::chrono::milliseconds delay_;
 	bool resize_with_background_;
 	bool centered_;
 

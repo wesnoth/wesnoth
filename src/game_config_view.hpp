@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,11 @@
 
 using config_array_view = std::vector<std::reference_wrapper<const config>>;
 
+/**
+ * A class grating read only view to a vector of config objects, viewed as one config
+ * with all children appended, used by the game_config class to read data from addons
+ * config, and from the main config.
+ **/
 class game_config_view
 {
 
@@ -36,9 +41,12 @@ public:
 
 	config_array_view child_range(config_key_type key) const;
 
-	const config& find_child(config_key_type key, const std::string &name, const std::string &value) const;
+	optional_const_config find_child(config_key_type key, const std::string &name, const std::string &value) const;
+	const config& find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const;
 
-	const config& child(config_key_type key) const;
+	// const config& child(config_key_type key) const;
+	const config& mandatory_child(config_key_type key) const;
+	optional_const_config optional_child(config_key_type key) const;
 
 	const config& child_or_empty(config_key_type key) const;
 

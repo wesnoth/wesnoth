@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Dominic Bolin <dominic.bolin@exong.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,6 +25,8 @@ bool filter_base_matches(const config& cfg, int def);
 
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
+enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MAX=3 };
+
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
@@ -39,13 +41,15 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), bool is_cumulable = false);
+		effect(const unit_ability_list& list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;
 
 		int get_composite_value() const
 		{ return composite_value_; }
+		double get_composite_double_value() const
+		{ return composite_double_value_; }
 		const_iterator begin() const
 		{ return effect_list_.begin(); }
 		const_iterator end() const
@@ -53,6 +57,7 @@ class effect
 	private:
 		std::vector<individual_effect> effect_list_;
 		int composite_value_;
+		double composite_double_value_;
 };
 
 

@@ -1,23 +1,24 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2019 Wesnoth development team
+# Copyright (C) 2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Akın <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2019.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2021-07-01 02:30+0300\n"
-"Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2024-11-07 16:16+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -122,13 +123,13 @@ msgstr "özel"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "yükseklik"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr "günün vakti"
+msgstr "Yok"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
@@ -195,80 +196,90 @@ msgstr "Geçiş Güncellemesi"
 msgid "Window"
 msgstr "Pencere"
 
-#. [menu]: id=menu-editor-areas
+#. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
+msgid "Add-on"
+msgstr "Eklenti"
+
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:119
 msgid "Areas"
 msgstr "Alanlar"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:118
+#: data/themes/editor.cfg:127
 msgid "Assign Local Time"
 msgstr "Yerel Zamanı Ata"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:124
+#: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
 msgstr "Yerel Zaman Çizelgesini Ata"
 
+#. [menu]: id=menu-editor-unit
+#: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:132
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Taraf"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:149
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "köyler"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:165
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "birimler"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:444
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Zaman Çizelgesi Menüsü"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:455
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Çalma Listesi"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Zaman Çizelgesini Ata"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "Tanımlayıcı: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "Ad: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "Tür: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "Seviye: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "Bedel: "
 
-#: src/editor/controller/editor_controller.cpp:180
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
-msgstr "Ölümcül hata"
+msgstr "Kurtarılamaz hata"
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/editor/controller/editor_controller.cpp:212
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -276,7 +287,7 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri bu haritada yaptığınız "
 "değişiklikleri kaybedeceksiniz."
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -284,138 +295,167 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız tüm "
 "değişiklikleri kaybedeceksiniz. Değiştirdiğiniz haritalar:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Bir vakit düzenleyici yok."
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:886
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "Eklenti"
+
+#: src/editor/controller/editor_controller.cpp:899
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "Pano desteği yok, paketleyicinize başvurun"
+
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Change Unit ID"
 msgstr "Birim Kimliğini Değiştir"
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "ID:"
 msgstr "Kimlik:"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1341
 msgid "Rename Unit"
 msgstr "Birim Adını Değiştir"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1342
 msgid "Name:"
 msgstr "Ad:"
 
-#: src/editor/map/context_manager.cpp:211
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "Harita yükle"
 
-#: src/editor/map/context_manager.cpp:279 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Yeni Harita"
 
-#: src/editor/map/context_manager.cpp:292 src/editor/map/map_context.cpp:856
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Yeni Senaryo"
 
-#: src/editor/map/context_manager.cpp:348
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "Dosya Yok"
 
-#: src/editor/map/context_manager.cpp:386
+#: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
 msgstr "İsimsiz Alan"
 
-#: src/editor/map/context_manager.cpp:417
+#: src/editor/map/context_manager.cpp:451
 msgid "New Side"
 msgstr "Yeni Taraf"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr "Maske Uygula"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Örüntü yüklenirken hata"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "Tanımlayıcı:"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "Alan Adını Değiştir"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Hedef haritayı seçiniz"
 
-#: src/editor/map/context_manager.cpp:525
-#: src/editor/map/context_manager.cpp:934
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:984
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
-#: src/editor/map/context_manager.cpp:651
+#: src/editor/map/context_manager.cpp:691
 msgid "Save Map As"
 msgstr "Haritayı Şöyle Kaydet"
 
-#: src/editor/map/context_manager.cpp:672
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr "Hata"
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Gerçekten $type1'i $type2 dizinine kaydetmek istiyor musunuz?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:925
+msgid "This map is already open."
+msgstr "Bu harita zaten açık."
+
+#: src/editor/map/context_manager.cpp:740
 msgid "Save Scenario As"
 msgstr "Senaryoyu Şöyle Kaydet"
 
-#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:766
+msgid "This scenario is already open."
+msgstr "Bu senaryo zaten açık."
+
+#: src/editor/map/context_manager.cpp:799
 msgid "No random map generators found."
 msgstr "Bir rasgele harita üreteci yok."
 
-#: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
 msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:832
 msgid "Unsaved Changes"
 msgstr "Kaydedilmemiş Değişiklikler"
 
-#: src/editor/map/context_manager.cpp:738
+#: src/editor/map/context_manager.cpp:833
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Son kayıttan beri haritada yaptığınız tüm değişiklikleri iptal etmek istiyor "
 "musunuz?"
 
-#: src/editor/map/context_manager.cpp:794
-msgid "This scenario is already open."
-msgstr "Bu senaryo zaten açık."
-
-#: src/editor/map/context_manager.cpp:817
-#: src/editor/map/context_manager.cpp:880
-msgid "This map is already open."
-msgstr "Bu harita zaten açık."
-
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:886
 msgid "Scenario saved."
 msgstr "Senaryo kaydedildi."
 
-#: src/editor/map/context_manager.cpp:856
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:901
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Harita kaydedildi."
 
-#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:976
 msgid "Loaded embedded map data"
 msgstr "Gömülü harita verisi yüklendi"
 
-#: src/editor/map/context_manager.cpp:914
-#: src/editor/map/context_manager.cpp:927
+#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:980
 msgid "Map loaded from scenario"
 msgstr "Harita senaryodan yüklendi"
 
-#: src/editor/map/context_manager.cpp:924
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-"Başvurulan harita dosyası yüklendi:\n"
-"$new"
+#: src/editor/map/context_manager.cpp:980
+msgid "Loaded referenced map file:"
+msgstr "Yüklü başvurulan harita dosyası:"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "$side_num. taraf oyuncusu"
 
@@ -423,77 +463,122 @@ msgstr "$side_num. taraf oyuncusu"
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
-#: src/editor/map/map_context.cpp:147
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Dosya bulunamadı"
 
-#: src/editor/map/map_context.cpp:154
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Boş dosya"
 
-#: src/editor/map/map_context.cpp:210
+#: src/editor/map/map_context.cpp:202
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr "Dosyanın .map veya .cfg uzantısı yok"
+
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "Harita dosyası bir senaryo gibi görünüyor, fakat map_data değeri mevcut bir "
-"dosyaya ait değil."
+"dosyaya ait değil"
 
-#: src/editor/map/map_context.cpp:622
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "Found the characters '<<' indicating inline lua is present - aborting"
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+msgstr ""
+"Satır içi lua'nın varlığını gösteren '<<' karakterleri bulundu - iptal "
+"ediliyor"
+
+#: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr "Senaryo yüklenemedi, yalnızca harita yüklenmeye çalışılıyor."
+
+#: src/editor/map/map_context.cpp:280
+msgid ""
+"The map file looks like a scenario, but the map_file value does not point to "
+"an existing file"
+msgstr ""
+"Harita dosyası bir senaryo gibi görünüyor, fakat map_file değeri mevcut bir "
+"dosyaya ait değil"
+
+#: src/editor/map/map_context.cpp:295
+msgid "Unable to parse file to find map data"
+msgstr "Harita verilerini bulmak için dosya ayrıştırılamıyor"
+
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Senaryo kaydedilemedi: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Zaman Çizelgesi Menüsü"
+
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Senaryo kaydedilemedi: $msg"
 
-#: src/editor/map/map_context.cpp:657
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Senaryoya kaydedilemedi"
 
-#: src/editor/map/map_context.cpp:667
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:53
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Bilinmeyen Grup)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(Çekidek-dışı)"
 
-#: src/editor/palette/editor_palettes.cpp:316
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "Elden geçirilmedikçe oyunda çalışmaz."
 
-#: src/editor/palette/location_palette.cpp:250
+#: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid " | Right-click to remove"
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr " | Sağ tuş siler"
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr "Git"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr "Ekle"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr "Yeni Konum Belirteci"
 
-#: src/editor/palette/location_palette.cpp:266
-msgid "Error"
-msgstr "Hata"
-
-#: src/editor/palette/location_palette.cpp:267
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr "Konum kimliği geçersiz"
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr "Sil"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr "Sol-tıklama:"
+msgstr "Sol-tıklama: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr "Sağ-tıklama:"
+msgstr "Sağ-tıklama: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
@@ -514,146 +599,11 @@ msgstr "Cmd + tıklama: araziyi kopyalar"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + tıklama: araziyi kopyalar"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
-msgid "Clipboard support not found, contact your packager"
-msgstr "Pano desteği yok, paketleyicinize başvurun"
+#~ msgid "Choose File"
+#~ msgstr "Dosya seçiniz"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
-msgid "Choose File"
-msgstr "Dosya seçiniz"
+#~ msgid "Select"
+#~ msgstr "Seç"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
-msgid "Select"
-msgstr "Seç"
-
-#~ msgid "player^None"
-#~ msgstr "Hiçbiri"
-
-#~ msgid "Player $player_number"
-#~ msgstr "$player_number. Oyuncu"
-
-#~ msgid "(Unknown unit type: $type)"
-#~ msgstr "(Bilinmeyen birim türü: $type)"
-
-#~ msgid "Recruit: "
-#~ msgstr "Askere Alım: "
-
-#~ msgid "FG: "
-#~ msgstr "ÖY:"
-
-#~ msgid "BG: "
-#~ msgstr "AY:"
-
-#~ msgid "Underground"
-#~ msgstr "Yeraltı"
-
-#~ msgid "Deep Underground"
-#~ msgstr "Derin Yeraltı"
-
-#~ msgid "Indoors"
-#~ msgstr "içerde"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Yeni Harita)"
-
-#, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "(New Scenario)"
-#~ msgstr "(Yeni Harita)"
-
-#, fuzzy
-#~| msgid "Choose a Map to Open"
-#~ msgid "Choose a File to Open"
-#~ msgstr "Açmak için Harita Seç"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Uygulanacak örüntüyü seçiniz"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Bu isimde bir dosya zaten var. Üzerine yazmak ister misiniz?"
-
-#~ msgid "Player"
-#~ msgstr "Oyuncu"
-
-#~ msgid "Quit"
-#~ msgstr "Çık"
-
-#, fuzzy
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Arazinin ön ve art alanlarını çizmek için farenin sol ve sağ düğmelerini "
-#~ "kullanın. Sadece zemin katmanını boyamak isterseniz Shift tuşunu basılı "
-#~ "tutun."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Farenin sol düğmesi yakalar, sağ düğmesi bırakır. Çok sayıda arazi "
-#~ "altıgeni seçmek için Shift tuşunu basılı tutun."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Farenin sol düğmesi seçili oyunculu gösterir, sağ bunu siler. Sayısal "
-#~ "tuşlar başlangıç yerini kaydırır. Alt+sayı ise imlecin altındaki yeri "
-#~ "ilgili tarafın başlangıç noktası yapar."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Yapıştırmak için tıklayın. Büyük alanları yapıştırırken doğruluğu "
-#~ "arttırmak için büyütme/küçültme yapın. Pano içeriğinde dönüşüm yapmak "
-#~ "(döndürmek, yansılamak gibi) için düzenleme menüsünü kullanın."
-
-#, fuzzy
-#~| msgid "Action not implemented"
-#~ msgid "Not implemented yet."
-#~ msgstr "Eylem gerçeklenmedi"
-
-#, fuzzy
-#~ msgid "Empty map file"
-#~ msgstr "Harita dosyası ya boş ya da yok."
-
-#~ msgid "Custom setting"
-#~ msgstr "Özel Ayarlar"
-
-#~ msgid "Edit"
-#~ msgstr "Düzenle"
-
-#~ msgid "Undo"
-#~ msgstr "Geri al"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Geri Alınamaz"
-
-#~ msgid "Redo"
-#~ msgstr "Tekrar yap"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Tekrarlanamaz"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Buradan hangi oyuncu başlayacak?Bir oyuncunun başlangıç konumunu "
-#~ "belirtmek için sayı tuşlarını alt tuşu ile birlikte kullanın ve imlecin "
-#~ "altındaki başlangıç konumunu kaldırmak için del tuşunu kullanın. Bir sayı "
-#~ "tuşuna basarak o oyuncunun başlangıç konumuna gidebilirsiniz."
-
-#~ msgid "FG"
-#~ msgstr "ÖP"
-
-#~ msgid "BG"
-#~ msgstr "AP"
-
-#~ msgid "Error creating action object"
-#~ msgstr "Eylem nesnesi oluşturulurken hata"
+#~ msgid "Left-click: Place item "
+#~ msgstr "Sol tuş öğeyi yerleştirir: "

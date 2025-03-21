@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -180,14 +180,14 @@ config vconfig::get_parsed_config() const
 
 	config res;
 
-	for (const config::attribute &i : cfg_->attribute_range()) {
-		res[i.first] = expand(i.first);
+	for(const auto& [key, _] : cfg_->attribute_range()) {
+		res[key] = expand(key);
 	}
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
+		if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
 			std::string name = insert_cfg["name"];
 			std::string vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
@@ -217,23 +217,23 @@ config vconfig::get_parsed_config() const
 			}
 			vconfig_recursion.erase(vname);
 		} else {
-			res.add_child(child.key, vconfig(child.cfg, *variables_).get_parsed_config());
+			res.add_child(key, vconfig(cfg, *variables_).get_parsed_config());
 		}
 	}
 	return res;
 }
 
-vconfig::child_list vconfig::get_children(const std::string& key) const
+vconfig::child_list vconfig::get_children(const std::string& key_to_get) const
 {
 	vconfig::child_list res;
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == key) {
-			res.push_back(vconfig(child.cfg, cache_, *variables_));
-		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
-			if(insert_cfg["name"] == key)
+		if (key == key_to_get) {
+			res.push_back(vconfig(cfg, cache_, *variables_));
+		} else if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
+			if(insert_cfg["name"] == key_to_get)
 			{
 				try
 				{
@@ -253,17 +253,17 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	return res;
 }
 
-std::size_t vconfig::count_children(const std::string& key) const
+std::size_t vconfig::count_children(const std::string& key_to_count) const
 {
 	std::size_t n = 0;
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == key) {
+		if (key == key_to_count) {
 			n++;
-		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
-			if(insert_cfg["name"] == key)
+		} else if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
+			if(insert_cfg["name"] == key_to_count)
 			{
 				try
 				{
@@ -287,8 +287,8 @@ std::size_t vconfig::count_children(const std::string& key) const
  */
 vconfig vconfig::child(const std::string& key) const
 {
-	if (const config &natural = cfg_->child(key)) {
-		return vconfig(natural, cache_, *variables_);
+	if (auto natural = cfg_->optional_child(key)) {
+		return vconfig(*natural, cache_, *variables_);
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
@@ -314,7 +314,7 @@ vconfig vconfig::child(const std::string& key) const
  */
 bool vconfig::has_child(const std::string& key) const
 {
-	if (cfg_->child(key)) {
+	if (cfg_->has_child(key)) {
 		return true;
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
@@ -559,7 +559,7 @@ void scoped_xy_unit::activate()
 void scoped_weapon_info::activate()
 {
 	if (data_) {
-		store(data_);
+		store(*data_);
 	}
 }
 

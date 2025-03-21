@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -79,11 +79,6 @@ void surface::free_surface()
 	if(surface_) {
 		SDL_FreeSurface(surface_);
 	}
-}
-
-bool operator<(const surface& a, const surface& b)
-{
-	return a.get() < b.get();
 }
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf)

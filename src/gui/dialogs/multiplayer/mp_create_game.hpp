@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,10 +20,7 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
-#include "mp_game_settings.hpp"
 
-class config;
 
 namespace gui2
 {
@@ -44,15 +41,20 @@ public:
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
 
+	/**
+	 * @a presets needs to be a copy!
+	 * Otherwise you'll get segfaults when clicking the Join button since it results in the configs getting reloaded.
+	 */
+	static void quick_mp_setup(saved_game& state, const config presets);
+
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
 	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
@@ -101,7 +103,7 @@ private:
 	void on_game_select();
 	void on_tab_select();
 	void on_era_select();
-	void on_mod_toggle(const int index, toggle_button* sender);
+	void on_mod_toggle(const std::string& id, toggle_button* sender);
 	void on_random_faction_mode_select();
 
 	std::vector<std::string> get_active_mods();
@@ -121,7 +123,7 @@ private:
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(window&);
+	bool dialog_exit_hook();
 
 	int convert_to_game_filtered_index(const unsigned int initial_index);
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "events.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 
 #include <string>
 
@@ -61,10 +60,8 @@ public:
 	const std::string& id() const;
 	void set_id(const std::string& id);
 
-	void set_help_string(const std::string& str);
 	void set_tooltip_string(const std::string& str);
 
-	virtual void process_help_string(int mousex, int mousey) override;
 	virtual void process_tooltip_string(int mousex, int mousey) override;
 
 protected:
@@ -106,9 +103,7 @@ private:
 	bool clip_;
 	rect clip_rect_;
 
-	std::string help_text_;
 	std::string tooltip_text_;
-	bool has_help_;
 	std::string id_;
 
 	bool mouse_lock_local_;

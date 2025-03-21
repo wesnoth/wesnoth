@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Karol Kozub <karol.alt@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -122,31 +122,38 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 	environment_setup env_setup;
 
 	modification_queue queue;
-	modification* low_priority_mod = new fl_modification();
-	modification* high_priority_mod = new rc_modification();
 
-	queue.push(low_priority_mod);
-	queue.push(high_priority_mod);
+	auto low_priority_mod = std::make_unique<fl_modification>();
+	auto high_priority_mod = std::make_unique<rc_modification>();
+
+	modification* lptr = low_priority_mod.get();
+	modification* hptr = high_priority_mod.get();
+
+	queue.push(std::move(low_priority_mod));
+	queue.push(std::move(high_priority_mod));
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 2);
 
-	BOOST_CHECK_EQUAL(queue.top(), high_priority_mod);
+	BOOST_CHECK_EQUAL(queue.top(), hptr);
 	queue.pop();
-	BOOST_CHECK_EQUAL(queue.top(), low_priority_mod);
+	BOOST_CHECK_EQUAL(queue.top(), lptr);
 	queue.pop();
 
-	low_priority_mod = new fl_modification();
-	high_priority_mod = new rc_modification();
+	low_priority_mod = std::make_unique<fl_modification>();
+	high_priority_mod = std::make_unique<rc_modification>();
+
+	lptr = low_priority_mod.get();
+	hptr = high_priority_mod.get();
 
 	// reverse insertion order now
-	queue.push(high_priority_mod);
-	queue.push(low_priority_mod);
+	queue.push(std::move(high_priority_mod));
+	queue.push(std::move(low_priority_mod));
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 2);
 
-	BOOST_CHECK_EQUAL(queue.top(), high_priority_mod);
+	BOOST_CHECK_EQUAL(queue.top(), hptr);
 	queue.pop();
-	BOOST_CHECK_EQUAL(queue.top(), low_priority_mod);
+	BOOST_CHECK_EQUAL(queue.top(), lptr);
 	queue.pop();
 }
 

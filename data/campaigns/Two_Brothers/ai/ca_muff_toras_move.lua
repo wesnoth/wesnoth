@@ -16,7 +16,7 @@ end
 
 function muff_toras_move:execution()
     local muff_toras = wesnoth.units.find_on_map { id = 'Muff Toras' }[1]
-    local units = wesnoth.units.find_on_map { side = 3, { 'not', { id = 'Muff Toras' } } }
+    local units = wesnoth.units.find_on_map { side = 3, wml.tag['not'] { id = 'Muff Toras' } }
     local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
 

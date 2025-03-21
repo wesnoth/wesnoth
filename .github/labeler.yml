@@ -1,130 +1,294 @@
+Achievements:
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/achievements.hpp
+      - src/achievements.cpp
+      - src/gui/dialogs/achievements_dialog.hpp
+      - src/gui/dialogs/achievements_dialog.cpp
+      - data/achievements.cfg
+      - data/campaigns/*/achievements.cfg
+
 Add-ons:
-  - src/server/campaignd/**
-  - src/server/common/**
-  - src/addon/**
-  - src/gui/dialogs/addon/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/server/campaignd/**
+      - src/server/common/**
+      - src/addon/**
+      - src/gui/dialogs/addon/**
 
 AI:
-  - data/ai/**/*
-  - data/campaigns/*/ai/**
-  - src/ai/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/ai/**/*
+      - data/campaigns/*/ai/**
+      - src/ai/**/*
 
 Audio:
-  - data/campaigns/*/sounds/**
-  - data/core/music/*
-  - data/core/sounds/**/*
-  - sounds/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/*/sounds/**
+      - data/core/music/*
+      - data/core/sounds/**/*
+      - sounds/*
 
 Building:
-  - projectfiles/**/*
-  - source_lists/*
-  - CMakeLists.txt
-  - cmake/*
-  - src/CMakeLists.txt
-  - SConstruct
-  - scons/*
-  - src/SConscript
-  - src/SConstruct
+  - changed-files:
+    - any-glob-to-any-file:
+      - projectfiles/**/*
+      - source_lists/*
+      - CMakeLists.txt
+      - cmake/*
+      - src/CMakeLists.txt
+      - SConstruct
+      - scons/*
+      - src/SConscript
+      - src/SConstruct
 
-Campaign:
-  - data/campaigns/**/*
+Campaign AToTB:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Two_Brothers/**
+
+Campaign DW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Dead_Water/**
+
+Campaign DM:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Delfadors_Memoirs/**
+
+Campaign DiD:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Descent_Into_Darkness/**
+
+Campaign EI:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Eastern_Invasion/**
+
+Campaign HttT:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Heir_To_The_Throne/**
+
+Campaign LoW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Legend_of_Wesmere/**
+
+Campaign L:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Liberty/**
+
+Campaign NR:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Northern_Rebirth/**
+
+Campaign SoF:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Sceptre_of_Fire/**
+
+Campaign SotA:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Secrets_of_the_Ancients/**
+
+Campaign SotBE:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Son_Of_The_Black_Eye/**
+
+Campaign TDG:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_Deceivers_Gambit/**
+
+Campaign THoT:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_Hammer_of_Thursagan/**
+
+Campaign TRoW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_Rise_Of_Wesnoth/**
+
+Campaign TSG:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_South_Guard/**
+
+Campaign Tutorial:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/tutorial/**
+
+Campaign UtBS:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Under_the_Burning_Suns/**
+
+Campaign WoF:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Winds_of_Fate/**
+
+Campaign WC:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/World_Conquest/**
+
+CI:
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/workflows/**
 
 CMake:
-  - CMakeLists.txt
-  - cmake/*
-  - src/CMakeLists.txt
+  - changed-files:
+    - any-glob-to-any-file:
+      - CMakeLists.txt
+      - cmake/*
+      - src/CMakeLists.txt
 
 Docker:
-  - .dockerignore
-  - utils/dockerbuilds/travis/*
-  - utils/travis/docker_run.sh
+  - changed-files:
+    - any-glob-to-any-file:
+      - .dockerignore
+      - utils/dockerbuilds/travis/*
+      - utils/travis/docker_run.sh
 
 Docs:
-  - doc/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - doc/**/*
 
 Editor:
-  - data/core/editor/*
-  - src/editor/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/core/editor/*
+      - src/editor/**/*
 
 Graphics:
-  - images/**/*
-  - data/campaigns/*/images/**
-  - data/core/images/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - images/**/*
+      - data/campaigns/*/images/**
+      - data/core/images/**/*
 
 Help:
-  - data/tips.cfg
-  - data/core/help.cfg
-  - src/help/*
-  - src/gui/dialogs/help_browser.*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/tips.cfg
+      - data/core/help.cfg
+      - src/help/*
+      - src/gui/dialogs/help_browser.*
 
 Input:
-  - data/core/hotkeys.cfg
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/core/hotkeys.cfg
 
 Lua API:
-  - src/scripting/**/*
-  - data/lua/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/scripting/**/*
+      - data/lua/**/*
 
 macOS:
-  - projectfiles/Xcode/**/*
-  - src/macosx/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - projectfiles/Xcode/**/*
+      - src/macosx/*
 
 MP:
-  - data/multiplayer/**/*
-  - src/server/wesnothd/**
-  - src/server/common/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/multiplayer/**/*
+      - src/server/wesnothd/**
+      - src/server/common/**
 
 Packaging:
-  - packaging/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - packaging/**/*
 
 Schema:
-  - utils/travis/schema_validation.sh
-  - data/schema/**/*
-  - src/serialization/schema/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - utils/travis/schema_validation.sh
+      - data/schema/**/*
+      - src/serialization/schema/*
 
 SCons:
-  - SConstruct
-  - scons/*
-  - src/SConscript
-  - src/SConstruct
+  - changed-files:
+    - any-glob-to-any-file:
+      - SConstruct
+      - scons/*
+      - src/SConscript
+      - src/SConstruct
 
 Services:
-  - utils/mp-server/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - utils/mp-server/**
 
 Terrain:
-  - src/terrain/**/*
-  - data/campaigns/*/images/terrain/**
-  - data/campaigns/**/terrain.cfg
-  - data/campaigns/**/terrain_graphics.cfg
-  - data/core/images/terrain/**
-  - data/core/terrain.cfg
-  - data/core/terrain-graphics.cfg
-  - data/core/terrain-graphics/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/terrain/**/*
+      - data/campaigns/*/images/terrain/**
+      - data/campaigns/**/terrain.cfg
+      - data/campaigns/**/terrain_graphics.cfg
+      - data/core/images/terrain/**
+      - data/core/terrain.cfg
+      - data/core/terrain-graphics.cfg
+      - data/core/terrain-graphics/**
 
 Translations:
-  - po/**/*
-  - data/languages/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - po/**/*
+      - data/languages/*
 
 Travis:
-  - utils/travis/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - utils/travis/**/*
 
 UI:
-  - src/gui/**/*
-  - data/gui/**/*
-  - data/schema/gui.cfg
-  - data/themes/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/gui/**/*
+      - data/gui/**/*
+      - data/schema/gui.cfg
+      - data/themes/*
 
 Unit Tests:
-  - data/test/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/test/**/*
 
 Units:
-  - src/units/**/*
-  - data/campaigns/*/units/**
-  - data/core/units/**/*
-  - data/core/images/units/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/units/**/*
+      - data/campaigns/*/units/**
+      - data/core/units/**/*
+      - data/core/images/units/**/*
 
 WML Tools:
-  - data/tools/**/*
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/tools/**/*
 
 WFL:
-  - src/formula/**
-  - src/ai/formula/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - src/formula/**
+      - src/ai/formula/**

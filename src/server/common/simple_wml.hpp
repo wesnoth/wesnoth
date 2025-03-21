@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 #include <cstddef>
 #include <iosfwd>
-#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -154,6 +153,8 @@ public:
 
 	node* child(const char* name);
 	const node* child(const char* name) const;
+
+	node& child_or_add(const char* name);
 
 	const child_list& children(const char* name) const;
 

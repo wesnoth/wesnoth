@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@
 #include "playsingle_controller.hpp"
 
 #include "hotkey/hotkey_handler.hpp"
-
+#include "replay_controller.hpp"
 class playsingle_controller::hotkey_handler : public play_controller::hotkey_handler {
 
 protected:
@@ -41,13 +41,14 @@ public:
 	virtual void recruit() override;
 	virtual void repeat_recruit() override;
 	virtual void recall() override;
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
+	virtual bool can_execute_command(const hotkey::ui_command& cmd) const override;
 	virtual void toggle_shroud_updates() override;
 	virtual void update_shroud_now() override;
 	virtual void end_turn() override;
 	virtual void rename_unit() override;
 	virtual void create_unit() override;
 	virtual void change_side() override;
+	virtual void select_teleport() override;
 	virtual void kill_unit() override;
 	virtual void label_terrain(bool) override;
 	virtual void clear_labels() override;
@@ -93,6 +94,6 @@ public:
 	virtual void reset_replay() override
 	{ return playsingle_controller_.reset_replay(); }
 	virtual void replay_exit() override;
-	virtual void load_autosave(const std::string& filename) override;
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+	virtual void load_autosave(const std::string& filename, bool start_replay = false) override;
+	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
 };

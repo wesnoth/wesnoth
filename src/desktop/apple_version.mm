@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2022
+	Copyright (C) 2018 - 2025
 	by Martin Hrubý <hrubymar10@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,25 +37,18 @@ namespace apple {
 		// Standard Apple version
 		//
 
-		std::string version_string = "";
-
-		NSArray *version_array = [[[NSProcessInfo processInfo] operatingSystemVersionString] componentsSeparatedByString:@" "];
-
+		std::string version_string;
 #if defined(__IPHONEOS__)
-		std::string version_string = "iOS ";
+		version_string = "Apple iOS ";
 #else
-		const version_info version_info([[version_array objectAtIndex:1] UTF8String]);
-
-		if (version_info.major_version() == 10 && version_info.minor_version() < 12) {
-			version_string = "Apple OS X ";
-		} else {
+		if (@available(macOS 10.12, *)) {
 			version_string = "Apple macOS ";
+		} else {
+			version_string = "Apple OS X ";
 		}
 #endif
-
-		version_string += [[version_array objectAtIndex:1] UTF8String];
-		version_string += " (";
-		version_string += [[version_array objectAtIndex:3] UTF8String];
+		NSOperatingSystemVersion os_ver = [[NSProcessInfo processInfo] operatingSystemVersion];
+		version_string += version_info(os_ver.majorVersion, os_ver.minorVersion, os_ver.patchVersion);
 
 		return version_string;
 	}

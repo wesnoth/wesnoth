@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,7 @@
 #include "tod_manager.hpp"
 
 #include "actions/attack.hpp"
-#include "display_context.hpp"
 #include "game_data.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
@@ -28,9 +26,9 @@
 #include "units/abilities.hpp"
 #include "units/unit.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
-#include <functional>
 #include <iterator>
 
 static lg::log_domain log_engine("engine");
@@ -82,7 +80,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	}
 
 	// Remove non-positive times
-	output.erase(std::remove_if(output.begin(), output.end(), [](int time) { return time <= 0; }), output.end());
+	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];
@@ -95,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config() const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
@@ -114,7 +112,10 @@ config tod_manager::to_config() const
 	}
 
 	for(const time_of_day& tod : times_) {
-		tod.write(cfg.add_child("time"));
+		// Don't write stub ToD
+		if(tod.id != "nulltod") {
+			tod.write(cfg.add_child("time"), textdomain);
+		}
 	}
 
 	for(const area_time_of_day& a_tod : areas_) {
@@ -131,7 +132,7 @@ config tod_manager::to_config() const
 		for(const time_of_day& tod : a_tod.times) {
 			// Don't write the stub default ToD if it happens to be present.
 			if(tod.id != "nulltod") {
-				tod.write(area.add_child("time"));
+				tod.write(area.add_child("time"), textdomain);
 			}
 		}
 
@@ -241,7 +242,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 			if(itor != units.end() && !itor->incapacitated()) {
 				unit_ability_list illum = itor->get_abilities("illuminates");
 				if(!illum.empty()) {
-					unit_abilities::effect illum_effect(illum, terrain_light);
+					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
 
 					// Record this value.

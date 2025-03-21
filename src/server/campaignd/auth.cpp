@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,7 @@ namespace
 
 std::string generate_salt(std::size_t len)
 {
-	boost::mt19937 mt(std::time(0));
+	boost::mt19937 mt(std::time(nullptr));
 	auto salt = std::string(len, '0');
 	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
 	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,20 +28,6 @@ namespace implementation
 struct builder_viewport;
 } // namespace implementation
 
-class grid;
-
-/**
- * @ingroup GUIWidgetWML
- *
- * A viewport is an special widget used to view only a part of the widget it 'holds'.
- *
- * List with the viewport specific variables:
- * Key            |Type                                            |Default  |Description
- * ---------------|------------------------------------------------|---------|-----------
- * grow_direction | @ref guivartype_grow_direction "grow_direction"|mandatory|The direction in which new items grow.
- * parallel_items | @ref guivartype_unsigned "unsigned"            |mandatory|The number of items that are growing in parallel.
- * item_definition| @ref guivartype_section "section"              |mandatory|The definition of a new item.
- */
 class viewport : public widget
 {
 	friend struct viewport_implementation;
@@ -73,11 +59,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 private:
 	/** See @ref widget::calculate_best_size. */

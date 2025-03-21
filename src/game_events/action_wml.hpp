@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,13 +29,7 @@
 #include <map>
 #include <string>
 
-class  config;
 class  vconfig;
-
-namespace t_translation {
-	struct terrain_code;
-}
-
 
 namespace game_events
 {

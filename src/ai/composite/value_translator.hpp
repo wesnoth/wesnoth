@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -192,8 +192,8 @@ public:
 
 	static void cfg_to_value(const config &cfg, config &value)
 	{
-		if (const config &v = cfg.child("value")) {
-			value = v;
+		if (auto v = cfg.optional_child("value")) {
+			value = *v;
 		} else {
 			value.clear();
 		}
@@ -223,8 +223,8 @@ public:
 
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
-		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), resources::filter_con, false);
+		if (auto v = cfg.optional_child("value")) {
+			return terrain_filter(vconfig(*v), resources::filter_con, false);
 		}
 		static config c("not");
 		return terrain_filter(vconfig(c),resources::filter_con, false);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "gui/core/event/handler.hpp"
 
-#include "draw_manager.hpp"
 #include "events.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
@@ -27,8 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
-#include "serialization/unicode_cast.hpp"
-#include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
 
 #include <cassert>
@@ -62,7 +59,7 @@ namespace event
 
 /***** Static data. *****/
 static std::unique_ptr<class sdl_event_handler> handler_ = nullptr;
-static events::event_context* event_context = nullptr;
+static std::unique_ptr<events::event_context> event_context = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
 static unsigned draw_interval = 0;
@@ -281,7 +278,7 @@ private:
 	 *                            which to execute the hotkey callback, false
 	 *                            otherwise.
 	 */
-	bool hotkey_pressed(const hotkey::hotkey_ptr key);
+	bool hotkey_pressed(const hotkey::hotkey_ptr& key);
 
 	/**
 	 * Fires a key down event.
@@ -441,7 +438,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
-				case SDL_WINDOWEVENT_RESIZED:
+				// Always precedes SDL_WINDOWEVENT_RESIZED, but the latter does not always
+				// happen; in particular when we change the game resolution via
+				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
+				case SDL_WINDOWEVENT_SIZE_CHANGED:
 					video_resize(video::game_canvas_size());
 					break;
 
@@ -532,7 +532,7 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 
 	if(dispatchers_.empty()) {
 		LOG_GUI_E << "creating new dispatcher event context";
-		event_context = new events::event_context();
+		event_context = std::make_unique<events::event_context>();
 		join();
 	}
 
@@ -567,7 +567,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	if(dispatchers_.empty()) {
 		LOG_GUI_E << "deleting unused dispatcher event context";
 		leave();
-		delete event_context;
 		event_context = nullptr;
 	}
 }
@@ -608,7 +607,7 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 		return;
 	}
 
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
@@ -688,7 +687,7 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 		return keyboard_focus_;
 	}
 
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		if(dispatcher->get_want_keyboard_input()) {
 			return dispatcher;
 		}
@@ -699,28 +698,28 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 
 void sdl_event_handler::touch_motion(const point& position, const point& distance)
 {
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
 	}
 }
 
 void sdl_event_handler::touch_up(const point& position)
 {
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		dispatcher->fire(SDL_TOUCH_UP, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_down(const point& position)
 {
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		dispatcher->fire(SDL_TOUCH_DOWN, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
-	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		dispatcher->fire(SDL_TOUCH_MULTI_GESTURE, dynamic_cast<widget&>(*dispatcher), center, dTheta, dDist, numFingers);
 	}
 }
@@ -787,7 +786,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 	}
 }
 
-bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
+bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
@@ -1070,21 +1069,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 
 } // namespace event
 
-std::vector<window*> open_window_stack {};
-
-void remove_from_window_stack(window* window)
-{
-	for(auto iter = open_window_stack.rbegin(); iter != open_window_stack.rend(); ++iter) {
-		if(*iter == window) {
-			open_window_stack.erase(std::next(iter).base());
-			break;
-		}
-	}
-}
-
 bool is_in_dialog()
 {
-	return !open_window_stack.empty();
+	return !event::get_all_dispatchers().empty();
 }
 
 } // namespace gui2

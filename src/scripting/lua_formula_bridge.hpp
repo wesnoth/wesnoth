@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <string>
 
@@ -36,9 +37,11 @@ namespace lua_formula_bridge {
 	class fwrapper {
 		std::shared_ptr<wfl::formula> formula_ptr;
 	public:
-		fwrapper(const std::string& code, wfl::function_symbol_table* functions = nullptr);
+		fwrapper(const std::string& code);
 		std::string str() const;
 		wfl::variant evaluate(const wfl::formula_callable& variables, wfl::formula_debugger* fdb = nullptr) const;
 	};
 
+	using fpointer = std::unique_ptr<fwrapper, std::function<void(fwrapper*)>>;
 } // end namespace lua_formula_bridge
+lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allow_str);

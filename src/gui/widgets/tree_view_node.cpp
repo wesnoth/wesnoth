@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,13 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
 #include "gui/core/log.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
+
 #include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + get_tree_view().id() + "] " + __func__
@@ -74,10 +74,10 @@ tree_view_node::tree_view_node(const std::string& id,
 			toggle_widget->set_visible(widget::visibility::hidden);
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2));
+				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2));
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2),
+				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2),
 				event::dispatcher::back_post_child);
 
 			if(unfolded_) {
@@ -194,8 +194,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 	int width_modification = 0;
 
 	for(const auto& d : data) {
-		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d);
-		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
+		auto& node = children_.emplace_back(std::make_shared<tree_view_node>(id, this, get_tree_view(), d));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
 		// just ensures that wasn't tried. Remove this if we implement support for that.
@@ -320,6 +319,22 @@ void tree_view_node::unfold(const bool recursive)
 
 void tree_view_node::fold_internal()
 {
+	/**
+	 * Important! Set this first. See issues #8689 and #9146.
+	 *
+	 * For context, when the unfolded_ flag was introduced in 21001bcb3201b46f4c4b15de1388d4bb843a2403, it
+	 * was set at the end of this function, and of unfold_internal. Commentary in #8689 indicates that there
+	 * were no folding issues until recently, and it seems possible tha the graphics overhaul was caused a
+	 * subtly-hidden flaw to reveal itself.
+	 *
+	 * The bugs above technically only involve this function (not unfold_internal), and *only* if unfolded_
+	 * is set after the call to resize_content. My best guess is because tree_view::resize_content calls
+	 * queue_redraw, and that somehow still being in an "unfolded state" causes things to draw incorrectly.
+	 *
+	 * - vultraz, 2024-08-12
+	 */
+	unfolded_ = false;
+
 	const point current_size(get_current_size().x, get_unfolded_size().y);
 	const point new_size = get_folded_size();
 
@@ -328,11 +343,13 @@ void tree_view_node::fold_internal()
 	assert(height_modification <= 0);
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-	unfolded_ = false;
 }
 
 void tree_view_node::unfold_internal()
 {
+	/** Important! Set this first. See comment in @ref fold_internal */
+	unfolded_ = true;
+
 	const point current_size(get_current_size().x, get_folded_size().y);
 	const point new_size = get_unfolded_size();
 
@@ -341,7 +358,6 @@ void tree_view_node::unfold_internal()
 	assert(height_modification >= 0);
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-	unfolded_ = true;
 }
 
 void tree_view_node::clear()
@@ -408,7 +424,7 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 	return tree_view_node_implementation::find_at<const widget>(*this, coordinate, must_be_active);
 }
 
-widget* tree_view_node::find(const std::string& id, const bool must_be_active)
+widget* tree_view_node::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
 	if(result) {
@@ -430,7 +446,7 @@ widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const widget* tree_view_node::find(const std::string& id, const bool must_be_active) const
+const widget* tree_view_node::find(const std::string_view id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
 	if(result) {
@@ -629,7 +645,7 @@ void tree_view_node::impl_draw_children()
 	}
 }
 
-void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
+void tree_view_node::signal_handler_toggle_left_click(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -719,7 +735,7 @@ tree_view_node& tree_view_node::get_child_at(int index)
 	return *children_[index];
 }
 
-std::vector<int> tree_view_node::describe_path()
+std::vector<int> tree_view_node::describe_path() const
 {
 	if(is_root_node()) {
 		return std::vector<int>();

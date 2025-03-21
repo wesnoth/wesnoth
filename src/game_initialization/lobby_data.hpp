@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,6 @@
 #pragma once
 
 #include <ctime>
-#include <set>
-#include <deque>
-#include <functional>
 #include <vector>
 #include <string>
 
@@ -73,6 +70,7 @@ struct game_info
 	std::string map_data;
 	std::string name;
 	std::string scenario;
+	std::string scenario_id;
 	std::string type_marker;
 	bool remote_scenario;
 	std::string map_info;
@@ -99,6 +97,7 @@ struct game_info
 	bool shuffle_sides;
 	bool use_map_settings;
 	bool private_replay;
+	// TODO: what does it do? it doesn't seem to be used.
 	bool verified;
 	bool password_required;
 	bool have_era;

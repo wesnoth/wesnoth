@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "ai/manager.hpp"
 #include "ai/default/contexts.hpp"
 #include "ai/actions.hpp"
-#include "ai/formula/ai.hpp"
 #include "ai/composite/contexts.hpp"
 
 #include "actions/attack.hpp"
@@ -41,7 +40,7 @@ static lg::log_domain log_ai("ai/attack");
 
 namespace ai {
 
-extern ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
+extern ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,

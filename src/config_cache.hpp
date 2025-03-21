@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #pragma once
 
 #include <cassert>
-#include <list>
 #include <memory>
 
 #include "serialization/preprocessor.hpp"
@@ -161,8 +160,8 @@ private:
 	std::string cache_file_prefix_;
 
 	void read_file(const std::string& file, config& cfg);
-	void write_file(std::string file, const config& cfg);
-	void write_file(std::string file, const preproc_map& defines);
+	void write_file(const std::string& file, const config& cfg);
+	void write_file(const std::string& file, const preproc_map& defines);
 
 	void read_cache(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 
@@ -186,8 +185,6 @@ protected:
 
 	void set_force_invalid_cache(bool);
 };
-
-class fake_transaction;
 
 /**
  * Used to share macros between cache objects

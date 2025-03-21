@@ -429,7 +429,6 @@ int divide(int a, int b)
 /**	@file wesnothd/game.hpp */
 /**	@file language.hpp */
 /**	@file multiplayer.hpp */
-/**	@file playturn.hpp */
 /**	@file race.hpp */
 /**	@file replay.hpp */
 /**	@file team.hpp */

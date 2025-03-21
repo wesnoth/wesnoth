@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,13 +31,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream& s, action_ptr action)
+std::ostream& operator<<(std::ostream& s, const action_ptr& action)
 {
 	assert(action);
 	return action->print(s);
 }
 
-std::ostream& operator<<(std::ostream& s, action_const_ptr action)
+std::ostream& operator<<(std::ostream& s, const action_const_ptr& action)
 {
 	assert(action);
 	return action->print(s);
@@ -62,19 +62,20 @@ action_ptr action::from_config(const config& cfg, bool hidden)
 	std::string type = cfg["type"];
 
 	try {
-		if(type=="move")
-			return action_ptr(new move(cfg,hidden));
-		else if(type=="attack")
-			return action_ptr(new attack(cfg,hidden));
-		else if(type=="recruit")
-			return action_ptr(new recruit(cfg,hidden));
-		else if(type=="recall")
-			return action_ptr(new recall(cfg,hidden));
-		else if(type=="suppose_dead")
-			return action_ptr(new suppose_dead(cfg,hidden));
-	} catch(const action::ctor_err&) {}
+		if(type == "move")
+			return std::make_shared<move>(cfg, hidden);
+		else if(type == "attack")
+			return std::make_shared<attack>(cfg, hidden);
+		else if(type == "recruit")
+			return std::make_shared<recruit>(cfg, hidden);
+		else if(type == "recall")
+			return std::make_shared<recall>(cfg, hidden);
+		else if(type == "suppose_dead")
+			return std::make_shared<suppose_dead>(cfg, hidden);
+	} catch(const action::ctor_err&) {
+	}
 
-	return action_ptr();
+	return nullptr;
 }
 
 void action::hide()

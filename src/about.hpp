@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,7 @@
 
 #include "tstring.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
 #include <vector>
@@ -60,7 +60,7 @@ using credits_data = std::vector<credits_group>;
 const credits_data& get_credits_data();
 
 /** Gets credits for a given campaign. Returns a null optional if that campaign has no credits. */
-std::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign);
+utils::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign);
 
 /** Gets credit background images for a given campaign. */
 std::vector<std::string> get_background_images(const std::string& campaign);

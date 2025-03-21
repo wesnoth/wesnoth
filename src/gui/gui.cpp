@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/widgets/settings.hpp"
-#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -31,69 +30,139 @@
 
 namespace gui2
 {
-static bool initialized = false;
+namespace
+{
+config read_and_validate(const std::string& path)
+try {
+	preproc_map defines;
+	schema_validation::schema_validator validator{filesystem::get_wml_location("schema/gui.cfg").value()};
+	filesystem::scoped_istream stream = preprocess_file(path, &defines);
+	return ::read(*stream, &validator);
+
+} catch(const utils::bad_optional_access&) {
+	FAIL("GUI2: schema/gui.cfg not found.");
+
+} catch(const abstract_validator::error& e) {
+	FAIL("GUI2: could not read schema file: " + e.message);
+
+} catch(const config::error& e) {
+	ERR_GUI_P << "Could not read gui file: " << path;
+	ERR_GUI_P << e.what();
+	return {};
+}
+
+/**
+ * Adds a theme definition object to the global registry.
+ *
+ * @param def         A valid gui_definition config.
+ *
+ * @returns           An optional iterator to the newly-constructed definition.
+ *                    If gui_definition throws wml_exception or a theme with the
+ *                    given ID already exists, returns nullopt.
+ */
+auto register_theme(const config& def) -> utils::optional<gui_theme_map_t::iterator>
+try {
+	auto [iter, is_unique] = guis.try_emplace(def["id"], def);
+	if(is_unique) return iter;
+
+	ERR_GUI_P << "UI Theme '" << def["id"] << "' already exists.";
+	return utils::nullopt;
+
+} catch(const wml_exception& e) {
+	ERR_GUI_P << "Invalid UI theme: " << def["id"];
+	ERR_GUI_P << e.user_message;
+	return utils::nullopt;
+}
+
+/**
+ * Parses any GUI2 theme definitions at the file path specified.
+ *
+ * @param full_path   Path to file containing one or more [gui] tags.
+ * @param is_core     If true, look for the default theme here.
+ */
+void parse(const std::string& full_path, bool is_core)
+{
+#if __cpp_range_based_for >= 202211L // lifetime extension of temporaries
+	for(const config& def : read_and_validate(full_path).child_range("gui")) {
+#else
+	config cfg = read_and_validate(full_path);
+	for(const config& def : cfg.child_range("gui")) {
+#endif
+		const bool is_default = def["id"] == "default";
+
+		if(is_default && !is_core) {
+			ERR_GUI_P << "UI theme id 'default' is reserved for core themes.";
+			continue;
+		}
+
+		const auto iter = register_theme(def);
+		if(!iter) continue;
+
+		if(is_default && is_core) {
+			default_gui = *iter;
+			current_gui = default_gui;
+		}
+	}
+}
+
+} // namespace
 
 void init()
 {
-	if(initialized) {
-		return;
-	}
-
 	LOG_GUI_G << "Initializing UI subststem.";
+
+	// Reset the registry in case we're re-initializing
+	guis.clear();
 
 	// Save current screen size.
 	settings::update_screen_size_variables();
 
 	//
-	// Read and validate the WML files.
+	// Parse GUI definitions from mainline
 	//
-	config cfg;
+
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg"));
-
-		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
-
-		read(cfg, *stream, &validator);
-	} catch(const config::error& e) {
-		ERR_GUI_P << e.what();
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
-	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
-		ERR_GUI_P << e.message;
+		parse(filesystem::get_wml_location("gui/_main.cfg").value(), true);
+	} catch(const utils::bad_optional_access&) {
+		FAIL("GUI2: gui/_main.cfg not found.");
 	}
 
-	//
-	// Parse GUI definitions.
-	//
-	const std::string& current_theme = preferences::gui_theme();
-
-	for(const config& g : cfg.child_range("gui")) {
-		const std::string id = g["id"];
-
-		auto iter = guis.emplace(id, gui_definition(g)).first;
-
-		if(id == "default") {
-			default_gui = iter;
-		}
-
-		if(!current_theme.empty() && id == current_theme) {
-			current_gui = iter;
-		}
-	}
-
+	// The default GUI must be in mainline
 	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
 
-	if(current_theme.empty()) {
+	//
+	// Parse GUI definitions from addons
+	//
+
+	std::vector<std::string> addon_dirs;
+	const std::string umc_dir = filesystem::get_addons_dir();
+	filesystem::get_files_in_dir(umc_dir, nullptr, &addon_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
+
+	// Search for all $user_campaign_dir/*/gui-theme.cfg files
+	for(const std::string& umc : addon_dirs) {
+		const std::string gui_file = umc + "/gui-theme.cfg";
+
+		if(filesystem::file_exists(gui_file)) {
+			parse(gui_file, false);
+		}
+	}
+}
+
+void switch_theme(const std::string& theme_id)
+{
+	if(theme_id.empty() || theme_id == "default") {
 		current_gui = default_gui;
-	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
-		current_gui = default_gui;
+	} else {
+		current_gui = std::find_if(guis.begin(), guis.end(),
+			[&](const auto& theme) { return theme.first == theme_id; });
+
+		if(current_gui == guis.end()) {
+			ERR_GUI_P << "Missing [gui] definition for '" << theme_id << "'";
+			current_gui = default_gui;
+		}
 	}
 
 	current_gui->second.activate();
-
-	initialized = true;
 }
 
 } // namespace gui2

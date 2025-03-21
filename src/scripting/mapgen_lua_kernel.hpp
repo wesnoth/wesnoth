@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,7 @@
 #pragma once
 
 #include "scripting/lua_kernel_base.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <cstdint>
 #include <random>
@@ -32,8 +32,8 @@ public:
 	virtual std::string my_name() { return "Mapgen Lua Kernel"; }
 
 	void user_config(const char * prog, const config & generator); // throws game::lua_error
-	std::string create_map(const char * prog, const config & generator, std::optional<uint32_t> seed); // throws game::lua_error
-	config create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed); // throws game::lua_error
+	std::string create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
+	config create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
 
 	virtual uint32_t get_random_seed();
 	std::mt19937& get_default_rng();
@@ -41,7 +41,7 @@ private:
 	void run_generator(const char * prog, const config & generator);
 	int intf_get_variable(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
-	std::optional<uint32_t> random_seed_;
-	std::optional<std::mt19937> default_rng_;
+	utils::optional<uint32_t> random_seed_;
+	utils::optional<std::mt19937> default_rng_;
 	const config* vars_;
 };

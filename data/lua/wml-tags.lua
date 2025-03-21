@@ -12,9 +12,6 @@ Note: When adding new WML tags, unless they're very simple, it's preferred to
 add a new file in the "data/lua/wml" directory rather than implementing it in this file.
 The file will then automatically be loaded by the above require statement.
 
-Also note: The above on_load event needs to be registered before any other on_load events.
-That means before loading the WML tags via wesnoth.require "wml".
-
 ]]
 
 function wml_actions.sync_variable(cfg)
@@ -72,7 +69,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.sides.find()
+		local all_sides = wesnoth.sides.find{}
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
@@ -103,11 +100,12 @@ function wml_actions.store_gold(cfg)
 	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
+---@diagnostic disable-next-line: redundant-parameter
 function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
-	for _,w in ipairs(names:split()) do
+	for _,w in ipairs(tostring(names):split()) do
 		variables[w:trim()] = nil
 	end
 end
@@ -118,8 +116,7 @@ function wml_actions.store_unit_type_ids(cfg)
 		table.insert(types, k)
 	end
 	table.sort(types)
-	types = table.concat(types, ',')
-	wml.variables[cfg.variable or "unit_type_ids"] = types
+	wml.variables[cfg.variable or "unit_type_ids"] = table.concat(types, ',')
 end
 
 function wml_actions.store_unit_type(cfg)
@@ -149,6 +146,9 @@ function wml_actions.fire_event(cfg)
 	local data = wml.get_child(cfg, "data") or {}
 	if w1 then table.insert(data, wml.tag.first(w1)) end
 	if w2 then table.insert(data, wml.tag.second(w2)) end
+
+	local scoped_data <close> = utils.scoped_var("data")
+	scoped_data:set({wml.parsed(data)})
 
 	if cfg.id and cfg.id ~= "" then wesnoth.game_events.fire_by_id(cfg.id, x1, y1, x2, y2, data)
 	elseif cfg.name and cfg.name ~= "" then wesnoth.game_events.fire(cfg.name, x1, y1, x2, y2, data)
@@ -194,7 +194,7 @@ function wml_actions.disallow_recruit(cfg)
 			end
 			team.recruit = v
 		else
-			team.recruit = nil
+			team.recruit = {}
 		end
 	end
 end
@@ -373,7 +373,7 @@ function wml_actions.remove_unit_overlay(cfg)
 		end
 		if has_already then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
 				wml.tag.effect {
 					apply_to = "overlay",
 					remove = img,
@@ -457,6 +457,8 @@ function wml_actions.capture_village(cfg)
 	local locs = wesnoth.map.find(cfg)
 
 	for i, loc in ipairs(locs) do
+		-- The fire_event parameter doesn't currently exist but probably should someday
+		---@diagnostic disable-next-line : redundant-parameter
 		wesnoth.map.set_owner(loc[1], loc[2], side, fire_event)
 	end
 end
@@ -464,6 +466,9 @@ end
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
 	local layer = cfg.layer or 'both'
+	if not (wesnoth.terrain_types[terrain] or (layer == "overlay" and terrain == "^")) then
+		wml.error("[terrain] invalid terrain="..terrain)
+	end
 	if layer ~= 'both' and layer ~= 'overlay' and layer ~= 'base' then
 		wml.error('[terrain] invalid layer=')
 	end
@@ -648,7 +653,11 @@ function wml_actions.put_to_recall_list(cfg)
 end
 
 function wml_actions.allow_undo(cfg)
-	wesnoth.allow_undo()
+	wesnoth.experimental.game_events.set_undoable(true)
+end
+
+function wml_actions.disallow_undo(cfg)
+	wesnoth.experimental.game_events.set_undoable(false)
 end
 
 function wml_actions.allow_end_turn(cfg)
@@ -722,8 +731,8 @@ function wml_actions.color_adjust(cfg)
 end
 
 function wml_actions.screen_fade(cfg)
-	local color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0, cfg.alpha}
-	wesnoth.interface.screen_fade(color, cfg.duration)
+	local color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0, tonumber(cfg.alpha) or wml.error("invalid alpha in [screen_fade]")}
+	wesnoth.interface.screen_fade(color, tonumber(cfg.duration) or wml.error("invalid duration in [screen_fade]"))
 end
 
 function wml_actions.end_turn(cfg)
@@ -748,7 +757,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	gui.show_inspector(cfg)
+	gui.show_inspector(cfg.name)
 end
 
 function wml_actions.label( cfg )
@@ -986,8 +995,8 @@ function wml_actions.terrain_mask(cfg)
 		-- tile to the northwest from the specified hex.
 		-- todo: deprecate this strange behaviour or at least not make it
 		--       the default behaviour anymore.
-		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
-		x, y = new_loc[1], new_loc[2]
+		local new_loc = wesnoth.map.get_direction(x, y, "nw")
+		x, y = new_loc.x, new_loc.y
 	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
@@ -998,7 +1007,7 @@ function wml_actions.terrain_mask(cfg)
 		resolved = resolved:sub(6) -- strip off 'data/' prefix
 		mask = filesystem.read_file(resolved)
 	end
-	wesnoth.current.map:terrain_mask({x, y}, mask, {
+	wesnoth.current.map:terrain_mask(x, y, mask, {
 		is_odd = is_odd,
 		rules = rules,
 		ignore_special_locations = cfg.ignore_special_locations,
@@ -1013,10 +1022,26 @@ function wml_actions.remove_trait(cfg)
 end
 
 function wml_actions.set_achievement(cfg)
-	local achievement = wesnoth.achievements.get(cfg.content_for, cfg.id)
-	-- don't show the achievement popup for an achievement they already have
-	if not achievement.achieved then
-		wesnoth.achievements.set(cfg.content_for, cfg.id)
-		gui.show_popup(achievement.name_completed, achievement.description_completed, achievement.icon_completed)
+	wesnoth.achievements.set(cfg.content_for, cfg.id)
+end
+
+function wml_actions.set_sub_achievement(cfg)
+	wesnoth.achievements.set_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id)
+end
+
+function wml_actions.progress_achievement(cfg)
+	if not tonumber(cfg.amount) then
+		wml.error("[progress_achievement] amount attribute not a number for content '"..cfg.content_for.."' and achievement '"..cfg.id.."'")
+		return
+	end
+
+	wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
+end
+
+function wml_actions.on_undo(cfg)
+	if cfg.delayed_variable_substitution then
+		wesnoth.experimental.game_events.add_undo_actions(wml.literal(cfg));
+	else
+		wesnoth.experimental.game_events.add_undo_actions(wml.parsed(cfg));
 	end
 end

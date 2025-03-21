@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -237,7 +237,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 
 namespace {
 
-void validate_seed_string(std::string seed_str)
+void validate_seed_string(const std::string& seed_str)
 {
 	config cfg;
 	cfg["random_seed"] = seed_str;

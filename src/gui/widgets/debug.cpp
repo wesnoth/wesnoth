@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,7 +94,7 @@ std::string get_base_filename()
 }
 /***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 
-const unsigned ALL = UINT_MAX; /**< All levels/domains */
+const unsigned ALL = std::numeric_limits<unsigned>::max(); /**< All levels/domains */
 
 const unsigned SIZE_INFO = 1 << 0; /**<
 									* Shows the size info of

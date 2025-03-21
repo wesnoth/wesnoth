@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,13 +17,11 @@
 
 #include "variable.hpp"
 
-#include <set>
 #include <string>
 #include <vector>
 
 class config;
 class filter_context;
-class unit;
 class unit_filter;
 class team;
 

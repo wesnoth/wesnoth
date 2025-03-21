@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #pragma once
 
 class team;
-class config;
 #include <vector>
 #include <string>
 #include <set>
@@ -36,7 +35,6 @@ public:
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover(const config& side);
-	carryover(const team& t, const int gold, const bool add);
 	~carryover(){}
 
 	const std::string& get_save_id() const{ return save_id_; }

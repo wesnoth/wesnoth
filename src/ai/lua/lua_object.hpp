@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Dmitry Kovalenko <nephro.wes@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 #include "map/location.hpp"
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"
@@ -31,7 +31,6 @@
 #include "ai/default/contexts.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
-#include <iterator>
 #include <string>
 #include <vector>
 
@@ -290,7 +289,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		std::optional<ai_target::type> type = ai_target::type::xplicit;
+		utils::optional<ai_target::type> type = ai_target::type::xplicit;
 		if(lua_isnumber(L, -1)) {
 			int target = static_cast<int>(lua_tointeger(L, -1));
 			type = ai_target::get_enum(target);  // st n + 2

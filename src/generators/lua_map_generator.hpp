@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,8 +35,8 @@ public:
 	std::string config_name() const override { return config_name_; }
 
 	virtual void user_config() override;
-	virtual std::string create_map(std::optional<uint32_t> randomseed) override;
-	virtual config create_scenario(std::optional<uint32_t> randomseed) override;
+	virtual std::string create_map(utils::optional<uint32_t> randomseed) override;
+	virtual config create_scenario(utils::optional<uint32_t> randomseed) override;
 
 private:
 	std::string id_, config_name_;

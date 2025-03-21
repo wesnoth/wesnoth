@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,6 @@
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"
 #include "ai/game_info.hpp"             // for attacks_vector
-#include "ai/composite/ai.hpp"             // for ai_composite
 #include "ai/composite/aspect.hpp"         // for composite_aspect, etc
 #include "ai/default/engine_cpp.hpp"  // for engine_cpp
 #include "ai/formula/engine_fai.hpp"     // for engine_fai

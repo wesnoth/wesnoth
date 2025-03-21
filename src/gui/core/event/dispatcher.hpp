@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,11 +21,9 @@
 
 #include <SDL2/SDL_events.h>
 
-#include <cassert>
 #include <functional>
 #include <list>
 #include <map>
-#include <type_traits>
 
 struct point;
 
@@ -679,9 +677,6 @@ void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal
 
 /** Connects a signal handler for getting a notification upon modification. */
 void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification& signal);
-
-/** Connects a signal handler for a callback when the widget is drawn. */
-void connect_signal_on_draw(dispatcher& dispatcher, const signal& signal);
 
 } // namespace event
 

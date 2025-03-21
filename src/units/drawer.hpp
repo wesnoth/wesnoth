@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,23 +25,17 @@
 #pragma once
 
 #include "map/location.hpp"
-#include "sdl/rect.hpp"
-#include "utils/math.hpp"
 
-#include <map>
 #include <vector>
 
 class display;
 class display_context;
+struct frame_parameters;
 class gamemap;
 namespace halo { class manager; }
 class team;
 class unit;
 
-struct color_t;
-struct SDL_Rect;
-struct point;
-class surface;
 
 class unit_drawer
 {
@@ -52,10 +46,7 @@ private:
 	display & disp;
 	const display_context & dc;
 	const gamemap & map;
-	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	std::size_t viewing_team;
-	std::size_t playing_team;
 	const team & viewing_team_ref;
 	const team & playing_team_ref;
 	bool is_blindfolded;
@@ -67,6 +58,11 @@ private:
 
 	int hex_size;
 	int hex_size_by_2;
+
+	/** @todo: better name... unclear what the reachable part actually means */
+	bool selected_or_reachable(const map_location& loc) const;
+
+	void draw_ellipses(const unit& u, const frame_parameters& params) const;
 
 public:
 	/** draw a unit.  */

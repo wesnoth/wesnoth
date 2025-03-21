@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,11 @@
 #include "gui/widgets/scrollbar_panel.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/core/window_builder/helper.hpp"
 
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <functional>
 
 namespace gui2
 {
@@ -67,12 +65,10 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("scrollbar_panel_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("scrollbar_panel_definition][resolution", "foreground")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scrollbar_panel][definition", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 
@@ -82,26 +78,19 @@ namespace implementation
 {
 
 builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, grid_(nullptr)
 {
-	const config& grid_definition = cfg.child("definition");
+	auto grid_definition = cfg.optional_child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid_ = std::make_shared<builder_grid>(grid_definition);
+	grid_ = std::make_shared<builder_grid>(*grid_definition);
 	assert(grid_);
 }
 
 std::unique_ptr<widget> builder_scrollbar_panel::build() const
 {
 	auto panel = std::make_unique<scrollbar_panel>(*this);
-
-	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.";

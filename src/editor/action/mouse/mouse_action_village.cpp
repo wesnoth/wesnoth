@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,7 @@ std::unique_ptr<editor_action> mouse_action_village::up_left(editor_display& dis
 	if (!disp.get_map().on_board(hex))   return nullptr;
 	if (!disp.get_map().is_village(hex)) return nullptr;
 
-	return std::make_unique<editor_action_village>(hex, disp.playing_team());
+	return std::make_unique<editor_action_village>(hex, disp.playing_team_index());
 }
 
 std::unique_ptr<editor_action> mouse_action_village::up_right(editor_display& disp, int x, int y)

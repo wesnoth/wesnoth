@@ -1,0 +1,80 @@
+#!/bin/bash
+# Add-ons server static web generation (addons.wesnoth.org)
+
+die() { printf '%s\n' "$*" >&2; exit 1; }
+[ $# -eq 1 ] || die "Syntax: $0 <addon server version>"
+
+version=$1
+
+addon_files=$HOME/WWW/html/files/addons/$version
+addon_cache=$HOME/addons-unpacked/$version
+addon_list=$HOME/WWW/html/addons/$version
+#deleted_addons=/backup/deleted-addons/$version
+deleted_addons=$HOME/deleted-addons/$version
+url=https://files.wesnoth.org/addons/$version/
+manager=$HOME/source/$version/data/tools/wesnoth_addon_manager
+campaignd_host="192.168.1.20"
+#campaignd_host="add-ons.wesnoth.org"
+options=(-a "$campaignd_host" --port "$version".x)
+
+
+case $version in
+1.2)    cd "$HOME/source/1.4" || exit
+        manager=utils/campaigns_client.py;;
+1.4)    cd "$HOME/source/1.4" || exit
+        manager=utils/campaigns_client.py;;
+1.8)    options+=(--port 1.8.x);;
+1.9)    options+=(--port 1.9.x --datadir "$HOME/source/1.10")
+        manager=$HOME/source/master/data/tools/wesnoth_addon_manager;;
+1.14)   options+=(--port 1.14.x --datadir "$HOME/source/$version");;
+trunk)  options=(--port trunk --verbose)
+        manager=$HOME/source/master/data/tools/wesnoth_addon_manager;;
+*)      [[ -d "$HOME/source/$version" ]] && options+=(--port "$version".x --datadir "$HOME/source/$version")
+        manager=$HOME/source/master/data/tools/wesnoth_addon_manager;;
+esac
+
+mkdir -p "$addon_files" "$addon_list" || exit
+
+# delete unpacked files without tar archive so it gets regenerated
+[[ -d $addon_cache ]] && for file in "$addon_cache"/*;
+do
+        addon=$(basename "${file%.cfg}")
+        [[ -e $addon_files/$addon.tar.bz2 ]] || rm -rfv "$file";
+done
+
+"$manager" "${options[@]}" --download='.*' -c "$addon_cache" --html="$addon_list" --url="$url" --tar="$addon_files" || exit
+
+# improve parsing for newer manager versions
+ifs=$IFS
+[[ $manager = $HOME/source/master/data/tools/wesnoth_addon_manager ]] && ifs=$'\t'
+# add addons to an associative array for easy existence check
+declare -A addons
+while IFS=$ifs read -r type addon rest
+do
+        [[ $addon ]] && addons[$addon]=1
+done < <("$manager" "${options[@]}" --list 2> /dev/null | sed 1d) # ignore header
+
+# debug
+#(cd "$addon_files" && printf '%s\n' * | sort > "$HOME/log/addon-files-list-$version")
+#printf '%s\n' "${!addons[@]}" | sort > "$HOME/log/addon-names-list-$version"
+
+mkdir -p "$deleted_addons"
+((${#addons[@]} > 0)) || exit 0
+# move deleted addons
+for file in "$addon_files"/*.tar.bz2;
+do
+        addon=$(basename "${file%.tar.bz2}")
+        if [[ $addon && ${addons[$addon]} != 1 ]]
+        then
+                # ignore addons with spaces since the list output the addon names are checked against is space separated
+                if [[ $IFS = $ifs && $addon = *\ * ]]
+                then
+                        echo "Skipping deletion for $addon"
+                        continue
+                fi
+                echo "Archiving files for deleted add-on $addon..."
+                mv "$file" "$deleted_addons/";
+                rm -rf "$addon_cache/$addon";
+                rm -f  "$addon_cache/$addon.cfg";
+        fi
+done

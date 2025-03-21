@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -251,7 +251,7 @@ namespace {
 		while ( !unit_list.empty() )
 		{
 			std::list<heal_unit>::iterator nearest;
-			int min_dist = INT_MAX;
+			int min_dist = std::numeric_limits<int>::max();
 
 			// Next unit to be healed is the entry in list nearest to last_loc.
 			for ( std::list<heal_unit>::iterator check_it = unit_list.begin();

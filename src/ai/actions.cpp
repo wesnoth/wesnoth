@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,13 +41,12 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "attack_prediction.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
-#include "playsingle_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -56,7 +55,6 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
-#include "whiteboard/manager.hpp"
 
 namespace ai {
 
@@ -281,7 +279,7 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::gameboard->units().find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -289,27 +287,20 @@ void attack_result::do_execute()
 		return;
 	}
 
-	if(!synced_context::is_synced())
-	{
-		synced_context::run_and_throw("attack",
-			replay_helper::get_attack(
-				attacker_loc_,
-				defender_loc_,
-				attacker_weapon,
-				defender_weapon,
-				a_->type_id(),
-				d_->type_id(),
-				a_->level(),
-				d_->level(),
-				resources::tod_manager->turn(),
-				resources::tod_manager->get_time_of_day()
-			)
-		);
-	}
-	else
-	{
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true);
-	}
+	synced_context::run_in_synced_context_if_not_already("attack",
+		replay_helper::get_attack(
+			attacker_loc_,
+			defender_loc_,
+			attacker_weapon,
+			defender_weapon,
+			a_->type_id(),
+			d_->type_id(),
+			a_->level(),
+			d_->level(),
+			resources::tod_manager->turn(),
+			resources::tod_manager->get_time_of_day()
+		)
+	);
 
 
 	set_gamestate_changed();
@@ -451,7 +442,7 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this;
 	assert(is_success());
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = false;
 		if(from_ != to_){
 			int step = route_->steps.size();
@@ -472,17 +463,15 @@ void move_result::do_execute()
 
 	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
 	move_spectator.set_unit(resources::gameboard->units().find(from_));
+	move_spectator.set_ai_move(true);
 
 	if (from_ != to_) {
-		std::size_t num_steps = ::actions::move_unit_and_record(
+		::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
-			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true,
-			/*bool show_move*/ !preferences::skip_ai_moves(),
-			/*bool* interrupted*/ nullptr,
-			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
+			/*::actions::move_unit_spectator* move_spectator*/ move_spectator);
 
-		if ( num_steps > 0 ) {
+		if( move_spectator.get_tiles_entered() > 0) {
 			set_gamestate_changed();
 		} else if ( move_spectator.get_ambusher().valid() ) {
 			// Unlikely, but some types of strange WML (or bad pathfinding)
@@ -645,7 +634,7 @@ void recall_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -654,14 +643,9 @@ void recall_result::do_execute()
 	}
 
 	// Do the actual recalling.
-	// We ignore possible errors (=unit doesn't exist on the recall list)
-	// because that was the previous behavior.
 	resources::undo_stack->clear();
 	synced_context::run_in_synced_context_if_not_already("recall",
-		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
-		false,
-		!preferences::skip_ai_moves(),
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(unit_id_, recall_location_, recall_from_));
 
 	set_gamestate_changed();
 	try {
@@ -797,7 +781,7 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != nullptr);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -806,7 +790,7 @@ void recruit_result::do_execute()
 	}
 
 	resources::undo_stack->clear();
-	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
+	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_));
 
 	set_gamestate_changed();
 	try {
@@ -898,7 +882,7 @@ void stopunit_result::do_execute()
 	assert(is_success());
 	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -956,7 +940,7 @@ std::string synced_command_result::do_describe() const
 
 void synced_command_result::do_execute()
 {
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_synced_command();
 
 		sim_gamestate_changed(this, gamestate_changed);

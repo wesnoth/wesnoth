@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 
-#include "gui/widgets/settings.hpp"
 
 namespace gui2::dialogs
 {

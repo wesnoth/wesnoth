@@ -1,4 +1,5 @@
 #!/bin/bash
+
 gdb -q -batch -return-child-result -ex "set disable-randomization off" -ex "set style enabled on" -ex "run" -ex "thread apply all bt" -ex "quit" --args ./wesnoth -m --controller 1:ai --controller 2:ai --nogui 2> error.log
 error_code="$?"
 while grep -q 'Could not initialize SDL_video' error.log; do

@@ -1,4 +1,4 @@
-﻿# set minimum version
+# set minimum version
 cmake_minimum_required(VERSION 3.14)
 
 project(wesnoth)
@@ -6,7 +6,7 @@ project(wesnoth)
 include(CheckCXXCompilerFlag)
 include(CTest)
 
-# use our own version of FindBoost.cmake and other Find* scripts
+# use our own version of Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
@@ -28,12 +28,6 @@ endfunction()
 #
 # Options
 #
-
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
-	message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
-else()
-	message("-- Lua submodule found.")
-endif()
 
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
@@ -58,7 +52,27 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.66")
+set(BOOST_VERSION "1.70")
+
+if(NOT WIN32)
+	set(Lua_FIND_VERSION_MAJOR 5)
+	set(Lua_FIND_VERSION_MINOR 4)
+	option(ENABLE_SYSTEM_LUA "Enable use of system Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} (compiled as C++)" OFF)
+endif()
+if(ENABLE_SYSTEM_LUA)
+	set(Lua_FIND_VERSION_EXACT ON)
+	set(Lua_FIND_VERSION_COUNT 2)
+	include(FindLua)
+	if(NOT LUA_FOUND)
+		message(FATAL_ERROR "Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} C++ not found. Try setting 'LUA_DIR'.")
+	endif()
+else()
+	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
+		message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+	else()
+		message("-- Lua submodule found.")
+	endif()
+endif()
 
 # set what std version to use
 if(NOT CXX_STD)
@@ -79,15 +93,16 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem)
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
+find_package(Python)
 
 find_package(X11)
 
-if(NOT WIN32)
+if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
 endif()
@@ -152,9 +167,11 @@ option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
 option(ENABLE_LTO "Sets Link Time Optimization for Release builds" OFF)
-option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC" OFF)
+option(GLIBCXX_ASSERTIONS "Whether to define _GLIBCXX_ASSERTIONS" OFF)
+option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC. Requires a version of Boost's program_options that's compiled with __GLIBCXX_DEBUG too." OFF)
 option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 option(FORCE_COLOR_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+option(CLANG_TIDY "Enable clang-tidy linter checks." OFF)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
@@ -187,6 +204,18 @@ if(NOT MSVC)
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
+	endif()
+
+	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 14)
+		# GCC-13 added this new warning, and included it in -Wextra,
+		# however in GCC-13 it has a lot of false positives.
+		#
+		# It's likely to generate false postives with GCC-14 too, but
+		# I'm using a narrow version check as GCC-14 is still in dev.
+		# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Wno-dangling-reference")
 	endif()
 
 ### Set strict compiler flags.
@@ -225,6 +254,11 @@ if(NOT MSVC)
 		elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 			set(COMPILER_FLAGS "${COMPILER_FLAGS} -fcolor-diagnostics")
 		endif()
+	endif()
+
+### Enable clang-tidy linting
+	if (CLANG_TIDY)
+		set(CMAKE_CXX_CLANG_TIDY "clang-tidy -Wno-unknown-warning-option")
 	endif()
 
 ### Set the final compiler flags.
@@ -399,7 +433,14 @@ if(NOT MSVC)
 	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
 	set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_DEBUG}" CACHE STRING "" FORCE)
 
-# adds GLIBCXX_DEBUG definitions
+# Enabling GLIBCXX_ASSERTIONS puts bounds-checks on std::vector::operator[], etc
+	if(GLIBCXX_ASSERTIONS)
+		MESSAGE("Defining _GLIBCXX_ASSERTIONS")
+		add_definitions(-D_GLIBCXX_ASSERTIONS)
+	endif()
+
+# GLIBCXX_DEBUG enables more checks that GLIBCXX_ASSERTIONS, but changes the ABI of Boost's program_options library.
+# When _GLIBCXX_DEBUG is defined, _GLIBCXX_ASSERTIONS is automatically implied (Gnu's c++config.h will define it).
 	if(GLIBCXX_DEBUG)
 		MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
 		add_definitions(-D_GLIBCXX_DEBUG)
@@ -439,7 +480,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_definitions(-D_WIN32_WINNT=0x0A00 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -488,10 +529,11 @@ endif()
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
+	find_package(CURL REQUIRED)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
-	find_package(SDL2 2.0.10 REQUIRED)
+	find_package(SDL2 2.0.18 REQUIRED)
 	if(NOT MSVC)
 		# for everything else, use pkgconfig
 		# SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all
@@ -510,7 +552,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 endif()
 
 if(ENABLE_TESTS)
-	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
+	find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS unit_test_framework)
 endif()
 
 if(ENABLE_GAME)
@@ -548,7 +590,7 @@ endif()
 
 add_subdirectory(doc)
 
-if(GETTEXT_FOUND AND ENABLE_NLS)
+if(GETTEXT_FOUND AND Python_FOUND AND ENABLE_NLS)
 	add_subdirectory(po)
 endif()
 

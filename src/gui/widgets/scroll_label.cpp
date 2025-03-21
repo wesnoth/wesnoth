@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,15 +18,12 @@
 #include "gui/widgets/scroll_label.hpp"
 
 #include "gui/widgets/label.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -176,12 +173,10 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("scroll_label_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("scroll_label_definition][resolution", "state_disabled")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scroll_label_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 
@@ -191,9 +186,7 @@ namespace implementation
 {
 
 builder_scroll_label::builder_scroll_label(const config& cfg)
-	: implementation::builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, wrap_on(cfg["wrap"].to_bool(true))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(false))
@@ -203,9 +196,6 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 std::unique_ptr<widget> builder_scroll_label::build() const
 {
 	auto widget = std::make_unique<scroll_label>(*this);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	const auto conf = widget->cast_config_to<scroll_label_definition>();
 	assert(conf);

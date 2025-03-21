@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@ class config;
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <cstdint>
 
@@ -64,7 +64,7 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(std::optional<uint32_t> randomseed = {}) = 0;
+	virtual std::string create_map(utils::optional<uint32_t> randomseed = {}) = 0;
 
-	virtual config create_scenario(std::optional<uint32_t> randomseed = {});
+	virtual config create_scenario(utils::optional<uint32_t> randomseed = {});
 };

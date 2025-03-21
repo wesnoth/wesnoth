@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -115,7 +115,7 @@ private:
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
-	time_t update_pack_lifespan_;
+	std::chrono::seconds update_pack_lifespan_;
 
 	bool strict_versions_;
 
@@ -178,7 +178,7 @@ private:
 	void fire(const std::string& hook, const std::string& addon);
 
 	/** Retrieves an addon by id if found, or a null config otherwise. */
-	config& get_addon(const std::string& id);
+	optional_config get_addon(const std::string& id);
 
 	void delete_addon(const std::string& id);
 
@@ -207,10 +207,7 @@ private:
 									  std::string& error_data);
 
 	/** Retrieves the contents of the [server_info] WML node. */
-	const config& server_info() const { return cfg_.child("server_info"); }
-
-	/** Retrieves the contents of the [server_info] WML node. */
-	config& server_info() { return cfg_.child("server_info"); }
+	const config& server_info() const { return cfg_.child_or_empty("server_info"); }
 
 	/** Checks if the specified address should never bump download counts. */
 	bool ignore_address_stats(const std::string& addr) const;
@@ -231,14 +228,20 @@ private:
 	 */
 	void register_handlers();
 
-	void handle_server_id(const request&);
-	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
-	void handle_request_campaign(const request&);
-	void handle_request_campaign_hash(const request&);
-	void handle_request_terms(const request&);
-	void handle_upload(const request&);
-	void handle_delete(const request&);
-	void handle_change_passphrase(const request&);
+	void handle_server_id(const request& req);
+	void handle_request_campaign_list(const request& req);//#TODO: rename with 'addon' later?
+	void handle_request_campaign(const request& req);
+	void handle_request_campaign_hash(const request& req);
+	void handle_request_terms(const request& req);
+	void handle_upload(const request& req);
+	void handle_delete(const request& req);
+	void handle_change_passphrase(const request& req);
+	void handle_list_hidden(const server::request& req);
+	void handle_hide_addon(const request& req);
+	void handle_unhide_addon(const request& req);
+	void handle_addon_downloads_by_version(const request& req);
+	void handle_forum_auth_usage(const request& req);
+	void handle_admins_list(const request& req);
 
 	/**
 	 * Send a client an informational message.
@@ -279,6 +282,13 @@ private:
 	 * @return Whether the provided information matches what's in the forum database.
 	 */
 	bool authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete);
+
+	/**
+	 * @param username The username to check the passphrase against.
+	 * @param passphrase The passphrase to use for authentication.
+	 * @return Whether the provided username is an admin and the provided password matches.
+	 */
+	bool authenticate_admin(const std::string& username, const std::string& passphrase);
 };
 
 } // end namespace campaignd

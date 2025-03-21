@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,16 @@ namespace schema_validation
 
 wml_tag any_tag("", 0, -1, "", true);
 
+wml_tag::wml_tag(const std::string& name, int min, int max, const std::string& super, bool any)
+	: name_(name)
+	, min_(min)
+	, max_(max)
+	, super_(super)
+	, fuzzy_(name.find_first_of("*?") != std::string::npos)
+	, any_tag_(any)
+{
+}
+
 wml_tag::wml_tag(const config& cfg)
 	: name_(cfg["name"].str())
 	, min_(cfg["min"].to_int())
@@ -43,10 +53,10 @@ wml_tag::wml_tag(const config& cfg)
 	, any_tag_(cfg["any_tag"].to_bool())
 {
 	if(max_ < 0) {
-		max_ = INT_MAX;
+		max_ = std::numeric_limits<int>::max();
 	}
 	if(max_children_ < 0) {
-		max_children_ = INT_MAX;
+		max_children_ = std::numeric_limits<int>::max();
 	}
 
 	if(cfg.has_attribute("super")) {
@@ -108,10 +118,24 @@ void wml_tag::add_link(const std::string& link)
 
 const wml_key* wml_tag::find_key(const std::string& name, const config& match, bool ignore_super) const
 {
+	auto visited = std::vector<const wml_tag*>();
+	return find_key(name, match, ignore_super, visited);
+}
+
+const wml_key* wml_tag::find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
+{
+	// Returns nullptr if a super cycle is detected.
+	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
+		return nullptr;
+	}
+
+	visited.push_back(this);
+
 	// Check the conditions first, so that conditional definitions
 	// override base definitions in the event of duplicates.
 	for(auto& cond : conditions_) {
 		if(cond.matches(match)) {
+			// Not considered for super cycle detection as super tags are ignored.
 			if(auto key = cond.find_key(name, match, true)) {
 				return key;
 			}
@@ -137,13 +161,13 @@ const wml_key* wml_tag::find_key(const std::string& name, const config& match, b
 		for(auto& cond : conditions_) {
 			if(cond.matches(match)) {
 				// This results in a little redundancy (checking things twice) but at least it still works.
-				if(auto key = cond.find_key(name, match, false)) {
+				if(auto key = cond.find_key(name, match, false, visited)) {
 					return key;
 				}
 			}
 		}
-		for(auto& super_tag : super_refs_) {
-			if(const wml_key* found_key = super_tag->find_key(name, match)) {
+		for(auto& [_, super_tag] : super_refs_) {
+			if(const wml_key* found_key = super_tag->find_key(name, match, false, visited)) {
 				return found_key;
 			}
 		}
@@ -164,6 +188,19 @@ const std::string* wml_tag::find_link(const std::string& name) const
 
 const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super) const
 {
+	auto visited = std::vector<const wml_tag*>();
+	return find_tag(fullpath, root, match, ignore_super, visited);
+}
+
+const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
+{
+	// Returns nullptr if a super cycle is detected.
+	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
+		return nullptr;
+	}
+
+	visited.push_back(this);
+
 	if(fullpath.empty()) {
 		return nullptr;
 	}
@@ -183,6 +220,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 	// override base definitions in the event of duplicates.
 	for(auto& cond : conditions_) {
 		if(cond.matches(match)) {
+			// Not considered for super cycle detection as super tags are ignored.
 			if(auto tag = cond.find_tag(fullpath, root, match, true)) {
 				return tag;
 			}
@@ -194,16 +232,17 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 		if(next_path.empty()) {
 			return &(it_tags->second);
 		} else {
-			return it_tags->second.find_tag(next_path, root, match);
+			return it_tags->second.find_tag(next_path, root, match, false, visited);
 		}
 	}
 
 	const auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
-		return root.find_tag(it_links->second + "/" + next_path, root, match);
+		// Reset cycle detection on links as we restart from the root.
+		return root.find_tag(it_links->second + "/" + next_path, root, match, false);
 	}
 
-	const auto it_fuzzy = std::find_if(tags_.begin(), tags_.end(), [&name](const tag_map::value_type& tag){
+	const auto it_fuzzy = std::find_if(tags_.begin(), tags_.end(), [&name](const tag_map::value_type& tag) {
 		if(!tag.second.fuzzy_) {
 			return false;
 		}
@@ -213,7 +252,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 		if(next_path.empty()) {
 			return &(it_fuzzy->second);
 		} else {
-			return it_tags->second.find_tag(next_path, root, match);
+			return it_tags->second.find_tag(next_path, root, match, false, visited);
 		}
 	}
 
@@ -221,13 +260,13 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 		for(auto& cond : conditions_) {
 			if(cond.matches(match)) {
 				// This results in a little redundancy (checking things twice) but at least it still works.
-				if(auto tag = cond.find_tag(fullpath, root, match, false)) {
+				if(auto tag = cond.find_tag(fullpath, root, match, false, visited)) {
 					return tag;
 				}
 			}
 		}
-		for(auto& super_tag : super_refs_) {
-			if(const wml_tag* found_tag = super_tag->find_tag(fullpath, root, match)) {
+		for(auto& [_, super_tag] : super_refs_) {
+			if(const wml_tag* found_tag = super_tag->find_tag(fullpath, root, match, false, visited)) {
 				return found_tag;
 			}
 		}
@@ -358,13 +397,9 @@ void wml_tag::expand(wml_tag& root)
 		wml_tag* super_tag = root.find_tag(super, root, config());
 		if(super_tag) {
 			if(super_tag != this) {
-				super_refs_.push_back(super_tag);
-			} else {
-				// TODO: Detect super cycles too!
-				//PLAIN_LOG << "the same" << super_tag->name_;
+				super_refs_.emplace(super, super_tag);
 			}
 		}
-		// TODO: Warn if the super doesn't exist
 	}
 }
 
@@ -407,7 +442,7 @@ void wml_tag::add_switch(const config& switch_cfg)
 			// So just add an [and] tag that matches any other value
 			default_cfg.add_child("and")["glob_on_" + key] = "*";
 		}
-		conditions_.emplace_back(switch_cfg.child("else"), default_cfg);
+		conditions_.emplace_back(switch_cfg.mandatory_child("else"), default_cfg);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}
@@ -421,7 +456,7 @@ void wml_tag::add_filter(const config& cond_cfg)
 	// DO NOT MOVE THIS! It needs to be copied!
 	else_filter.add_child("not", filter);
 	if(cond_cfg.has_child("then")) {
-		conditions_.emplace_back(cond_cfg.child("then"), filter);
+		conditions_.emplace_back(cond_cfg.mandatory_child("then"), filter);
 		const std::string name = formatter() << get_name() << "[then]";
 		conditions_.back().set_name(name);
 	}
@@ -437,7 +472,7 @@ void wml_tag::add_filter(const config& cond_cfg)
 		conditions_.back().set_name(name);
 	}
 	if(cond_cfg.has_child("else")) {
-		conditions_.emplace_back(cond_cfg.child("else"), else_filter);
+		conditions_.emplace_back(cond_cfg.mandatory_child("else"), else_filter);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}
@@ -495,7 +530,29 @@ void wml_tag::key_iterator::ensure_valid_or_end() {
 	}
 }
 
-void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag) {
+template<>
+void wml_tag::super_iterator::init(const wml_tag& base_tag)
+{
+	current = base_tag.super_refs_.begin();
+	condition_queue.push(&base_tag);
+}
+
+template<>
+void wml_tag::super_iterator::ensure_valid_or_end()
+{
+	while(current == condition_queue.front()->super_refs_.end()) {
+		condition_queue.pop();
+		if(condition_queue.empty()) {
+			return;
+		}
+		const wml_tag& new_base = *condition_queue.front();
+		current = new_base.super_refs_.begin();
+		push_new_tag_conditions(new_base);
+	}
+}
+
+void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag)
+{
 	for(const auto& condition : tag.conditions_) {
 		if(condition.matches(match)) {
 			q.push(&condition);

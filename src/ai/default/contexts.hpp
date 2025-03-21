@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -122,7 +122,6 @@ public:
 	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
-class default_ai_context;
 class default_ai_context : public virtual readwrite_context{
 public:
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-09-03 10:08+0800\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"PO-Revision-Date: 2023-09-10 09:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -74,31 +74,31 @@ msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
 msgstr "总是消耗60经验值来获得满级奖励，并提升6点最大生命值。"
 
 #. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:150
 msgid "Max HP bonus +6%"
 msgstr "最大HP加成+6%"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:165
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:209
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:173
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:217
 msgid "legendary"
 msgstr "传奇"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:166
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:210
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:174
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:218
 msgid "female^legendary"
 msgstr "传奇"
 
 #. [trait]: id=legendary_zombie
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:167
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:175
 msgid "Special advancement to Chocobone enabled."
 msgstr "已启用特殊升级，可升级为骷髅鸟骑手。"
 
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:211
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:219
 msgid "Special advancement to Goblin Pillager enabled."
 msgstr "已启用特殊升级，可升级为地精掠夺者。"
 
@@ -211,7 +211,7 @@ msgstr "托拉斯"
 #. [label]: id=title
 #. [lua]: root_node.on_modified
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:45
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:234
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:233
 msgid "WoCopedia"
 msgstr "世界征服百科全书"
 
@@ -226,19 +226,15 @@ msgstr "神器"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
 msgid "Recruits"
-msgstr ""
+msgstr "新兵"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
 msgstr "逃兵"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
 msgstr "指挥官"
 
@@ -251,10 +247,8 @@ msgstr "英雄"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
-#, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "随机"
+msgstr "随机首领"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -265,32 +259,23 @@ msgstr "设置"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "世界征服 1p"
+msgstr "使用世界征服的单位标记"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "使用<b>世界征服</b>的试验性物品捡取机制"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "显示捡取确认框"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
 msgstr "难度"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-#, fuzzy
-#| msgid "World Conquest"
-msgid "World Conquest version"
-msgstr "世界征服"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -314,7 +299,7 @@ msgstr "之后："
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "获取此物品"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -366,63 +351,64 @@ msgstr "地图："
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "地图尺寸"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "村庄密度"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "主楼尺寸"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "派系"
+msgstr "迭代次数"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "水"
+msgstr "地形因子"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "岛屿因子"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "秘密典籍"
+msgstr "主楼数量"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-msgid "$name|'s pet"
+#, fuzzy
+#| msgid "$name|'s pet"
+msgid "$name|’s pet"
 msgstr "$name|的宠物"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:5
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Defeat all enemy leaders and commanders"
 msgstr "击败所有敌方首领和指挥官"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
 msgid "Turns run out"
 msgstr "回合耗尽"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:8
 msgid "Lose your leader and all your commanders"
 msgstr "失去你的首领和所有指挥官"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
 msgstr "游戏中有帮助可用：右击任意空六角格即可。"
+
+#. [lua]: carryover.remaining_gold_message
+#: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
+msgid "Average remaining gold: "
+msgstr ""
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -1320,7 +1306,7 @@ msgid "Tower"
 msgstr "塔"
 
 #. [lua]: wc2_invest.invest
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:142
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:144
 msgid "WC2 Invest"
 msgstr "WC2投资"
 
@@ -1928,76 +1914,80 @@ msgstr ""
 "Zzupde"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:111
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:114
 msgid "$name Training Maximum Level"
 msgstr "$name|训练最高级"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:115
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:118
 msgid "$name Training level $level"
 msgstr "$name|训练$level|级"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:124
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:127
 msgid "Maximum Level"
 msgstr "最高级"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:126
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:129
 msgid "level $level"
 msgstr "等级$level"
 
 #. [lua]: training.generate_message
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:143
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:146
 msgid "$chance| chance to $arrow $desc"
 msgstr "有$chance|机率将$arrow|$desc"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:219
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:216
 msgid "trained"
 msgstr "训练有素"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:220
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:217
 msgid "female^trained"
 msgstr "训练有素"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:272
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:269
 msgid "Nothing to learn here"
 msgstr "这里没什么可学的"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:271
 msgid "From $level_before to $level_after"
 msgstr "从$level_before|到$level_after"
 
+#. an Elvish Archer joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:5
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:68
 msgid ""
 "You look like you could use some help. Mind if I join in? It’s been a while "
 "since I had a good fight!"
 msgstr "你看起来可能需要一些帮助。介意我加入吗？我已经很久没打过一场好仗了！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:273
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:293
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:320
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:330
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:340
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:349
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:322
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:391
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:403
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:412
 msgid "Excellent. We could always use more help."
 msgstr "很好。我们得到的帮助越多越好。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
+#. an Orcish Grunt joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:10
 msgid "’bout time. Been forever since I had a good fight, eh?"
 msgstr "是时候了，我已经很久没有打过一场好仗了，呃？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
+#. a Troll Whelp joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:16
 msgid "Who you? I help you smash!"
 msgstr "你谁？我帮你打碎！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:19
+#. an Orcish Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:22
 msgid ""
 "My clan was destroyed long ago, leaving me to fend for myself. Let me join "
 "your army and I will fight as though your clan was my own!"
@@ -2005,64 +1995,77 @@ msgstr ""
 "我的部族很久以前就被毁了，只剩下我一人自生自灭。让我加入你的军队吧，我将奋力"
 "战斗，如同你的部族是我的部族一般！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:24
+#. an Orcish Assassin joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:28
 msgid "Hey boss. Looks like you’ve got some prey that need killing."
 msgstr "嘿老大，看起来你有些猎物要杀。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:29
+#. a Wolf Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
 msgid "I hunts. I join you, I hunts good for you!"
 msgstr "我打猎，我加入，我为你好打好猎！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
+#. speaker is a Wose, just after a Wolf Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:40
 msgid "Very well. But take care where your dog does its stuff."
 msgstr "很好。但你的狗干活的时候可给我看好了。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:38
+#. an Orcish Leader joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:45
 msgid ""
 "Heh, looks like you whelps might be getting in over your heads. Good thing "
 "I’m here now to win this fight for ya, huh?"
 msgstr ""
 "呵，看来你们这些小东西是力有不逮啦。好在俺来了，俺会帮你们赢下这次的，怎样？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:43
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
+#. a Naga Fighter joins a player's side
+#. a Dune Soldier joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:51
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:428
 msgid ""
 "I too have come a long way to this strange land. Perhaps we were destined to "
 "join blades here."
 msgstr "我也是远道而来，来到这片陌生的土地。也许我们注定要在这里合力战斗。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:48
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:86
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:95
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:152
+#. speaker is a Gryphon, just after a naga or merfolk joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:102
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:112
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:179
 msgid "Looks like we fished some tasty help."
 msgstr "看来我们钓到了很不错的帮助啊。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:52
+#. an Elvish Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
 msgid "Need a friendly blade?"
 msgstr "需要友好的协助吗？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
+#. an Elvish Shaman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:74
 msgid ""
 "The mother forest sends you her blessings. Let us join together against her "
 "foes."
 msgstr "森林之母向你们送上祝福。我们一起对抗她的敌人吧。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:67
+#. speaker is an elf or wose, just after a shaman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:80
 msgid "Yeah, flower power!"
 msgstr "是的，花的力量!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
+#. an Elvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:85
 msgid ""
 "I offer you the service of my arrows and my steed. You will find none that "
 "fly faster than either."
 msgstr "我的弓箭与我的战马为你服务。你不会见到有比它们飞得更快的了。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:76
+#. a Wose joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:91
 msgid "Hmm! Welcome, tree-friends. We will pound our enemies into dust!"
 msgstr "嗯！欢迎啊，树友们。我们要把敌人碾成渣渣！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:81
+#. a Merman Hunter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:97
 msgid ""
 "Greetings, friends. I am a lone hunter and have no legions of warriors to "
 "offer you, but I will gladly lend my arms to your cause."
@@ -2070,14 +2073,17 @@ msgstr ""
 "朋友们，你们好。我是个孤独的猎人，没法带来个战士军团给你们，但我很乐意为你们"
 "的事业出力。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:90
+#. a Mermaid Initiate joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:107
 msgid ""
 "You have come a long way over the ocean, yet I see that you know little of "
 "her ways. Let me show you."
 msgstr "你远渡重洋而来，然而我看出你对海洋知之甚少。让我展示给你看吧。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:99
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:137
+#. a Cavalryman joins a player's side
+#. a Sergeant joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:162
 msgid ""
 "You’re not from around here, but I seem to find myself between employers at "
 "the moment and I’m not picky. I’ll fight for you, if you’ll have me."
@@ -2085,19 +2091,24 @@ msgstr ""
 "你不是这里的人，但我似乎现时并没有雇主，而我也不挑剔。如果你愿意，那我可以为"
 "你而战。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:104
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:113
+#. speaker is female, just after a Cavalryman or Horseman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:123
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:133
 msgid "Of course. How could a girl say no to a man riding a horse?"
 msgstr "当然了。一个女孩怎么能对一个骑马的男人说不呢？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
+#. a Horseman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:128
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr "棒极了！<b>这</b>现在是场不容错过的伟大战斗了。给我留点吧，嗯？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:353
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:367
+#. a Spearman joins a player's side
+#. a Woodsman joins a player's side
+#. a Dune Rover joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:138
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:417
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:434
 msgid ""
 "Ho there, friends! I am but a soldier of humble circumstances, yet long have "
 "I dreamed of joining great wars beyond our shores. Let me join your mission!"
@@ -2105,14 +2116,16 @@ msgstr ""
 "朋友们，你们好！我只是个出身卑微的士兵，但长久以来，我一直梦想着参与海外的伟"
 "大战争。让我加入你们的征程吧！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:122
+#. a Fencer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:144
 msgid ""
 "Looks like you’re a bit down on your luck, my friends. But now that I am "
 "here, there’s nothing to worry about!"
 msgstr ""
 "看来你的运气有点不好，我的朋友们。但现在我在这里了，那就没有什么可担心的了！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:127
+#. a Heavy Infantryman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:150
 msgid ""
 "Finally reinforcements are here! I’ve been pinned down for days. Help me "
 "fight my way out of here and I’ll gladly follow you!"
@@ -2120,7 +2133,8 @@ msgstr ""
 "援军终于来了！我已经被压制了好几天了。要是能帮我杀出一条路来，那我很乐意追随"
 "你！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:132
+#. a Bowman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
 msgid ""
 "Greetings, my lords. I have watched your battle from afar and yearn to join "
 "such a glorious campaign. I pledge myself to your service!"
@@ -2128,8 +2142,10 @@ msgstr ""
 "你们好，诸位阁下。我从远处观看了你们的战斗，渴望加入这场光荣的战役。我承诺将"
 "为你们而战！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:142
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
+#. a Mage joins a player's side
+#. a Dune Herbalist joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:168
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:422
 msgid ""
 "Long have I studied the ways of lore, and I have much wisdom to offer. Allow "
 "me to guide you on your quest and together we will accomplish great things!"
@@ -2137,7 +2153,8 @@ msgstr ""
 "我研究代代相传的知识很久了，我的智慧可以与你分享。请允许我在你的征程之中给予"
 "指导，我们将一起成就大业！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:147
+#. a Merman Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:174
 msgid ""
 "I bring greetings from the merfolk. We have heard your plight, and though we "
 "have few warriors to spare among us, I would gladly lend my trident to your "
@@ -2146,12 +2163,15 @@ msgstr ""
 "我带来了人鱼的问候。我们听说了你的困境，虽然我们没法派出多少战士，但我很乐意"
 "为你的事业献上我的三叉戟。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:210
+#. a Dwarvish Fighter joins a player's side
+#. a Dwarvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:184
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:246
 msgid "Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!"
 msgstr "遇到麻烦了，是吗？别担心，伙计们，我们很快就会解决掉的！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:161
+#. a Thief joins a player's side. This one's British slang for "you've caught me stealing, let me work for you instead", with extra words that are just parts of the idiom.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:190
 msgid ""
 "You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You "
 "won’t regret it, guv, I promise!"
@@ -2159,7 +2179,8 @@ msgstr ""
 "你抓住我了，头儿，这算依法逮捕！那就让我为你工作吧。你不会后悔的，头儿，我保"
 "证！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:166
+#. a Dwarvish Thunderer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:196
 msgid ""
 "Listen up, ye primitive screwheads! This... is me BOOM STICK. Lemme show you "
 "what this baby can do!"
@@ -2167,21 +2188,26 @@ msgstr ""
 "听好了，你们这些原始的螺丝脑袋！这……是我的<b>爆炸棍<b>。我来展示一下这宝贝儿"
 "能做什么吧！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:171
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:306
+#. a Poacher joins a player's side
+#. a Thug joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:202
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
 msgid ""
 "What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s "
 "give it a shot, eh?"
 msgstr ""
 "什么，你要我帮忙？要像我这样的人帮忙？哼，可笑。哦行吧……我们试试看，嗯？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:176
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:377
+#. a Dwarvish Guardsman joins a player's side
+#. a Dune Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:208
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:446
 msgid ""
 "A soldier is no good without something to fight for. Let me fight for you!"
 msgstr "一个士兵没有为之奋斗的东西是不行的。让我为你而战！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:181
+#. a Footpad joins a player's side. The first half is "please don’t attack me", the second is "you seem to be in a difficult situation too, I’m good at talking or fighting my way out".
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:214
 msgid ""
 "Hey, hey, easy there! I done nothin’ to hurt you. We’re all friends here, "
 "right? Looks like you might be in a tight spot, but don’t worry. No one’s "
@@ -2190,44 +2216,52 @@ msgstr ""
 "嘿，嘿，别紧张！我没做任何会伤害你的事。我们都是朋友，对吗？看来你可能陷入了"
 "困境，但别担心。没人比我更擅长摆脱困境了，老大！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:186
+#. an Ulfserker joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
 msgid "Chin up, lads. Today is a good day to die!"
 msgstr "振作起来，伙计们。今天是个赴死的好日子！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:191
+#. the speaker is another dwarf, after an Ulf joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:226
 msgid "Brave words. Welcome to The Fight Club..."
 msgstr "这话很勇敢。欢迎来到搏击俱乐部……"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:194
-msgid "Brave words. Welcome little big man."
-msgstr "这话很勇敢。欢迎你，小个子真男人。"
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:198
+#. a Gryphon Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:231
 msgid "Need a hand? Me an’ me bird can get just about anywheres you need."
 msgstr "需要帮忙吗？我和我的鸟可以到你想到的任何地方。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:203
+#. the speaker is a naga or merfolk, after a Gryphon Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:237
 msgid "Sounds good. You scared me for a moment."
 msgstr "听起来不错。刚才你吓了我一跳。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:206
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:248
+#. the speaker is a bat or a gryphon, after a Gryphon Rider or Drake Glider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:241
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:291
 msgid "Cool. We could always need more air power."
 msgstr "酷。我们的空中力量总是越强越好。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:215
+#. a Drake Fighter joins a player's side; they will have their standard weapon (a "war blade" in English)
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
+#, fuzzy
+#| msgid ""
+#| "The ancient spirits tell me my destiny lies with yours. My sword is at "
+#| "your command."
 msgid ""
-"The ancient spirits tell me my destiny lies with yours. My sword is at your "
+"The ancient spirits tell me my destiny lies with yours. My blade is at your "
 "command."
 msgstr "古老灵魂告诉我，我的命运与你同在。我的剑听从你的指挥。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
+#. a Drake Clasher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:258
 msgid ""
 "Stand fast, for I bring you the strength of dragons to assist you in your "
 "battle!"
 msgstr "站稳脚跟，因为我为你带来了龙的力量，将协助你战斗！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:225
+#. a Drake Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:264
 msgid ""
 "Today is a most auspicious day for you, for I deem you worthy of the power "
 "of dragonfire. Show me your foes and I will incinerate them!"
@@ -2235,20 +2269,24 @@ msgstr ""
 "今天对你来说是个很吉祥的日子，我认为你有资格拥有龙火之力。让我看看你的敌人，"
 "我将焚烧他们！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:230
+#. the speaker is another drake, after a Drake Burner joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
 msgid "Perfect. We can always use more firepower."
 msgstr "完美。我们的火力总是越强越好。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:234
+#. a Saurian Augur joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:275
 msgid ""
 "You no fight good enough, no have saurian way. I show you way of saurian!"
 msgstr "你战斗力不足，又不走蜥蜴人之道。我来给你看看蜥蜴人之道吧！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:239
+#. the speaker is another saurian, after a Saurian Augur joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:281
 msgid "Sure, bro..."
 msgstr "当然了，兄弟……"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:243
+#. a Drake Glider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:286
 msgid ""
 "You may be out to take over the land and the seas, but you’ll never get "
 "anywhere without control of the skies. Fortunately I’m here to help you!"
@@ -2256,7 +2294,8 @@ msgstr ""
 "你可能会去占领陆地和海洋，但要是不控制天空，就永远不会有任何进展。幸运的是，"
 "我来帮你了！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
+#. a Saurian Skirmisher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:296
 msgid ""
 "Tribe fall long time ago, now tribe lost. This last fight of tribe. I fight "
 "with you, make last very great!"
@@ -2264,7 +2303,8 @@ msgstr ""
 "部落很久以前就衰败了，而现在部落已不再。这是部落的最后一次战斗。我和你一起战"
 "斗，让最后一战成为伟大一战吧！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:257
+#. a Skeleton joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
 msgid ""
 "Don’t hit me! I’m just your average regular friendly talking skeleton, see? "
 "Looks like you fellows could use some help!"
@@ -2272,14 +2312,16 @@ msgstr ""
 "别打我！我只是一个普通的友好的会说话的骷髅而已，看到了吧？看来你们这些家伙需"
 "要一些帮助！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:262
+#. a Skeleton Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:308
 msgid ""
 "I am called forth from eternal rest, bound to follow he who called me. Show "
 "me the enemy, master!"
 msgstr ""
 "我从永恒的安息之中应召而来，注定要跟随召唤我之人。让我面对敌人吧，主人！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:267
+#. a Ghoul joins a player's side, and this line does not fit a Ghoul at all, it’s a pantomime-level stereotype of a British hero.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:315
 msgid ""
 "I say, old sport! It looks like you’ve got a spot of bother. Well, chin up, "
 "I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot "
@@ -2288,12 +2330,15 @@ msgstr ""
 "我说，老伙计！看来你有麻烦了。行了，我说啊，振作起来！我相信我们会成为非常好"
 "的团队的。到茶点儿之前就能搞定了，怎么？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
+#. response to the Ghoul’s introduction line
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:319
 msgid "Have at thee, unholy abomin... wait, huh?"
 msgstr "准备受死，渎圣的怪……等等，哈？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:277
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
+#. a Dark Adept joins a player's side
+#. a Dune Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:440
 msgid ""
 "You may not trust me or my reasons, but it seems you are not in a position "
 "to be choosy about your allies. Let me assist you and you just may survive."
@@ -2301,7 +2346,8 @@ msgstr ""
 "你可能不信任我，也不信我的说辞，但看来你没资格对盟友挑三拣四。让我帮你吧，你"
 "就可能活下来。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:282
+#. a Ghost joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:333
 msgid ""
 "Who calls me from my slumber? I sense a great battle being joined. Point me "
 "towards the enemy and I will feast upon their very souls!"
@@ -2309,51 +2355,62 @@ msgstr ""
 "是谁把我从睡梦中唤醒？我感到有很多人正参与一场伟大的战斗。指出敌人的所在吧，"
 "我将用他们的灵魂大快朵颐！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:287
+#. a Vampire Bat joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
 msgid "Skreeeeeeee!"
 msgstr "斯克利噫噫噫！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:290
+#. after a Vampire Bat joins the player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:343
 msgid ""
 "This creature seems unusually intelligent for its kind. Perhaps it will help "
 "us!"
 msgstr "这个生物相比其同类而言，似乎异常聪明。也许它能帮助我们！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:297
+#. a Young Ogre joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:351
 msgid "You friend are? I friend help!"
 msgstr "朋友你们是？我朋友帮忙！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
+#. the speaker is an ogre or troll, after a Young Ogre joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
 msgid "Me friend. We can play together."
 msgstr "我，朋友。我们可以一起玩。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:311
+#. a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:368
 msgid "Ah, please no hurtings me! I helps you, see?"
 msgstr "啊，请不伤我！我帮你，看啦？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:314
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
 msgid "Fine. We could need a small help."
 msgstr "很好。我们正需要有人帮点小忙。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:317
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:376
 msgid "Excellent. We could always need cannon fodder."
 msgstr "好极了。我们的炮灰越多越好。"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:324
+#. a Walking Corpse joins a player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:384
 msgid "..."
 msgstr "……"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
+#. after a Walking Corpse joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:388
 msgid "Odd, it doesn’t seem to attack. I wonder if we can use it?"
 msgstr "奇怪，它似乎并不攻击。我很好奇能不能利用它？"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:335
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:344
+#. a Peasant or Ruffian joins a player's side. This line is the speech of an overeager schoolchild.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:397
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:407
 msgid "Oooh oooh oooh! I want to help! Pick me, pick me!"
 msgstr "哦哦哦！我想帮忙！选我，选我！"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:337
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
+#. after a Peasant or Ruffian joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:400
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:409
 msgid "...fine. I guess."
 msgstr "……很好。我觉得很好。"
 
@@ -2549,18 +2606,20 @@ msgstr "（玩家不可使用）"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:122
+#: data/campaigns/World_Conquest/lua/map/main.lua:125
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "开始"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:124
-msgid "Scenario"
+#: data/campaigns/World_Conquest/lua/map/main.lua:127
+#, fuzzy
+#| msgid "Scenario"
+msgid "Scenario "
 msgstr "场景"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 msgid "Final Battle"
 msgstr "决战"
 
@@ -2833,7 +2892,7 @@ msgid "The End"
 msgstr "结局"
 
 #. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:37
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:36
 msgid "Enemies"
 msgstr "敌军"
 
@@ -2905,13 +2964,17 @@ msgstr ""
 "这颗神奇的宝石可以让持有者在水中呼吸和移动，就像在空气中一样。这强有力地提升"
 "了他们的水中机动性，并赋予了他们潜水能力。"
 
+#. [dummy]: id=bezoar
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:80
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:91
 msgid "Bezoar"
 msgstr "牛黄"
 
+#. [dummy]: id=bezoar
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:93
 msgid "fearless, undead, healthy, tenacity"
 msgstr ""
 
@@ -2925,36 +2988,36 @@ msgstr ""
 "抗性也会提升。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:96
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
 msgid "Blood ring"
 msgstr "血戒"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:98
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:138
 msgid "melee: drains"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:99
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:139
 msgid ""
 "This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
 msgstr "这枚脉动的指环会让佩戴者近战攻击获得吸取受害者生命力的能力。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:115
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
 msgid "Cruel spike"
 msgstr "残忍之刺"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:157
 #, fuzzy
 #| msgid "melee: optional charge"
 msgid "melee: charge"
 msgstr "近战：可选择冲锋"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:158
 msgid ""
 "This enchanted spear drives the owner to commit himself to his rage. A "
 "unit’s melee strikes are doubled in power when attacking, but the same is "
@@ -2964,35 +3027,35 @@ msgstr ""
 "的反击威力也会加倍。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:134
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:174
 msgid "Cursed symbol of life"
 msgstr "被诅咒的生命象征"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:176
 msgid "ranged: drains"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:137
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:177
 msgid ""
 "This vampiric amulet allows a unit to drain enemy life from a safe distance."
 msgstr "这个吸血鬼护身符可以让单位在安全距离上吸取敌人的生命。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:153
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:193
 msgid "Eagle eye longbow"
 msgstr "鹰眼长弓"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:195
 #, fuzzy
 #| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
 msgstr "$range|：奥术且+25%伤害"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:196
 msgid ""
 "This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
 "precision and increased damage."
@@ -3000,19 +3063,19 @@ msgstr ""
 "这把附魔长弓会增强装备者的远程攻击，让其变得不可思议地精确，并会增加伤害。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:177
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:217
 msgid "Forbidden grimoire"
 msgstr "禁忌法书"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:219
 #, fuzzy
 #| msgid "melee: optional charge"
 msgid "melee: plague"
 msgstr "近战：可选择冲锋"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:220
 msgid ""
 "This unholy manual gives the user the arcane knowledge to resurrect enemies "
 "slain in melee combat as the walking dead."
@@ -3021,17 +3084,17 @@ msgstr ""
 "肉。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:197
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:237
 msgid "Forcefield"
 msgstr "力场"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:199
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:239
 msgid "adjacent enemies do 13% less damage"
 msgstr "相邻敌人造成的伤害减少13%"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:200
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:240
 msgid ""
 "Charged with intense magic, this shield generates a forcefield causing "
 "adjacent enemies to inflict less damage around the wielder."
@@ -3039,28 +3102,28 @@ msgstr ""
 "这面盾中充盈着强烈的魔力，将产生力场，使相邻敌人在装备者周围造成的伤害减少。"
 
 #. [leadership]: id=forcefield
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:209
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:210
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
 msgstr "力场"
 
 #. [leadership]: id=forcefield
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:211
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:251
 msgid "Adjacent enemies do 13% less damage."
 msgstr "相邻敌人造成的伤害降低13%。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:226
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:266
 msgid "Ghast’s marrow"
 msgstr "食尸妖鬼精华"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:228
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:268
 msgid "feeding, +3 HP"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:229
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:269
 msgid ""
 "This grisly concoction instills the drinker with an insatiable unholy hunger "
 "for more blood. Every time a foe is slain, a part of his lifeforce is "
@@ -3070,17 +3133,17 @@ msgstr ""
 "分生命力就会被神秘的食尸鬼之力永远夺走。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:290
 msgid "Heart of fire"
 msgstr "火之心"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:252
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:292
 msgid "melee: fire and +25% damage, +30 resistance vs fire"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:253
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:293
 msgid ""
 "This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
@@ -3089,17 +3152,17 @@ msgstr ""
 "性。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:270
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
 msgid "Herald armor"
 msgstr "先驱者铠甲"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:272
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:312
 msgid "illuminates, lawful, heals +4, firststrike"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:273
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:313
 msgid ""
 "This holy armor of thin gold radiates pure light, illuminating the bearer’s "
 "body and soul. This effect will heal allies, blind evil, and preemptively "
@@ -3109,17 +3172,17 @@ msgstr ""
 "可以治愈盟友，让邪恶目盲，并先发制人地击倒企图伤害他人者。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:308
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:348
 msgid "Holy water"
 msgstr "圣水"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:350
 msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:311
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:351
 msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
@@ -3128,52 +3191,56 @@ msgstr ""
 "术抗性。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:329
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:372
 msgid "Ice bow"
 msgstr "冰弓"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:374
 msgid "19-1 ranged-cold slows"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
+#, fuzzy
+#| msgid ""
+#| "Draw this magical bow summon an ice arrow that will freeze and slow its "
+#| "target upon hit."
 msgid ""
-"Draw this magical bow summon an ice arrow that will freeze and slow its "
+"Draw this magical bow to summon an ice arrow that will freeze and slow its "
 "target upon hit."
 msgstr "拉开这把神奇的弓，便能召唤出一支冰箭，命中后会冻结目标并减缓其速度。"
 
 #. [effect]: type=cold
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:337
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:380
 msgid "ice bow"
 msgstr "冰弓"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:418
 msgid "Medicinal herbs"
 msgstr "药草"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
 msgid "heals +8, cures"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:421
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
 msgstr "这些强力草药赋予持有者治疗相邻单位并解毒的能力。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:396
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:439
 msgid "Melange"
 msgstr "奇妙混合物"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:441
 #, fuzzy
 #| msgid "no undead^consumed by a living being:"
 msgid ""
@@ -3182,7 +3249,7 @@ msgid ""
 msgstr "被活物吃掉："
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:442
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
@@ -3190,17 +3257,17 @@ msgstr ""
 "这种来自有机物的奇异药物可以增强使用者的活力和觉知。亡灵服用时没有效果。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:426
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
 msgid "Ointment of venom"
 msgstr "毒液药膏"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:471
 msgid "blade/pierce: poison and +20% damage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:472
 msgid ""
 "This deadly poison envenoms the user’s blade and pierce attacks, increasing "
 "damage and allowing them to inflict poison."
@@ -3209,17 +3276,17 @@ msgstr ""
 "果。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:446
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:489
 msgid "Ring of frostbite"
 msgstr "霜冻指环"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:491
 msgid "melee: cold and slows"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:492
 msgid ""
 "This frigid ring envelops the user’s melee attacks with icy cold, changing "
 "their damage to cold and allowing them to inflict deathly chills that slow "
@@ -3229,17 +3296,17 @@ msgstr ""
 "他们能造成让敌人减速的死亡之寒。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:466
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:509
 msgid "Ring of power"
 msgstr "力量指环"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:511
 msgid "arcane/cold/fire: disengage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:512
 msgid ""
 "Wearing this ring enhances damage with arcane and elemental attacks, "
 "allowing using them with supernatural skill and presence."
@@ -3248,72 +3315,72 @@ msgstr ""
 "用这些攻击。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:483
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:526
 msgid "Root of the Elder Wose"
 msgstr "年长树人的根"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:528
 #, fuzzy
 #| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
 msgstr "$range|：奥术且+25%伤害"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:529
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr "矮人锻造的这一钝器，模仿了树人的粉碎性力量。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:500
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:543
 msgid "Runic sword"
 msgstr "符文剑"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:545
 msgid "melee: magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:546
 msgid ""
 "This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
 msgstr "这把魔剑将使持剑者的近战攻击附魔。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:519
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:562
 msgid "Staff of radiance"
 msgstr "光芒之杖"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:564
 msgid "11-3 ranged-arcane magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
 msgid "This sacred rod can unleash brilliant bursts of luminous energy."
 msgstr "这根神圣的棒子可以释放辉煌的光芒能量。"
 
 #. [effect]: type=arcane
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:527
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:570
 msgid "staff of radiance"
 msgstr "光芒之杖"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:608
 msgid "Stormbringer"
 msgstr "风暴使者"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
 msgid "melee: fury"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
 msgid ""
 "This tormented sword causes rage in any who wield it. Melee attacks will "
 "gain the fury ability pressing engagement for 3 rounds."
@@ -3322,13 +3389,13 @@ msgstr ""
 "合。"
 
 #. [berserk]: id=wct_fury
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:581
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:582
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
 msgstr "狂怒"
 
 #. [berserk]: id=wct_fury
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:583
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:626
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 3 rounds of attacks have occurred."
@@ -3337,17 +3404,17 @@ msgstr ""
 "交战。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:590
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:633
 msgid "Sylph bow"
 msgstr "风仙子弓"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:635
 msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:636
 msgid ""
 "A runic bow. This elvish heirloom, passed from Queen to Princess, gathers "
 "power with each generation and speeds up the wielders movements so that more "
@@ -3357,30 +3424,30 @@ msgstr ""
 "加快装备者的动作，在交战结束前可以进行更多次打击。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:608
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:651
 msgid "Terror disguise"
 msgstr "恐怖伪装"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:653
 msgid "darkness, chaotic, corruption, distract"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:654
 msgid ""
 "This cursed outfit spreads a trail of darkness, harming those who get too "
 "close."
 msgstr "这件被诅咒的外装会散布黑暗之痕迹，伤害那些过于接近者。"
 
 #. [illuminates]: id=darkness
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:631
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:632
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
 msgstr "黑暗"
 
 #. [illuminates]: id=darkness
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:633
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:676
 msgid ""
 "This unit darkens the surrounding area, making chaotic units fight better, "
 "and lawful units fight worse. Any units adjacent to this unit will fight as "
@@ -3390,13 +3457,13 @@ msgstr ""
 "此单位相邻的单位，在昼间如同在黄昏战斗，而在黄昏则如同在夜间战斗。"
 
 #. [dummy]: id=wc2_corruption
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:638
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:639
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
 msgstr "腐蚀"
 
 #. [dummy]: id=wc2_corruption
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:640
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
 msgid ""
 "This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
 "units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
@@ -3406,89 +3473,89 @@ msgstr ""
 "1点生命值。腐蚀本身不能杀死单位。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:653
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:696
 msgid "The Key"
 msgstr "神钥"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:658
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:701
 msgid "This magical object opens the gateway between dimensions."
 msgstr "这个魔法物件能打开维度之间的通道。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:680
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:723
 msgid "Tome of secrets"
 msgstr "秘密典籍"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:725
 #, fuzzy
 #| msgid "XP to advance"
 msgid "-50% XP to advance"
 msgstr "经验值后升级"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:726
 msgid "This forgotten book imparts ancient knowledge to the reader."
 msgstr "这本被遗忘的书向读者传授古老的知识。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:691
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:734
 msgid "Trident of storms"
 msgstr "风暴三叉戟"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:736
 msgid "17-2 ranged-fire magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:737
 msgid ""
 "This legendary trident can summon lightning from the heavens, granting its "
 "wielder magical ranged fire attack."
 msgstr "这把传奇的三叉戟可以从天上召唤闪电，赋予持戟者远程魔法火焰攻击能力。"
 
 #. [effect]: type=fire
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:742
 msgid "storm trident"
 msgstr "风暴三叉戟"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:714
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
 msgid "Trolls blood potion"
 msgstr "巨魔血药"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:719
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:762
 msgid "This foul-smelling potion allows the imbiber to regenerate health."
 msgstr "这种散发着恶臭的药剂可以让服用者的健康再生。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:729
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:772
 msgid "War banner"
 msgstr "战旗"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:731
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:774
 msgid "adjacent allies do 20% more damage"
 msgstr "相邻友军的伤害增加20%。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:732
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:775
 msgid ""
 "This inspiring banner rallies the bearer’s allies to war, imparting a damage "
 "bonus to the allied units around it."
 msgstr "这面鼓舞人心的旗帜使持旗者的友军集结开战，使周围的友军单位伤害上升。"
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:742
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:743
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
 msgid "banner"
 msgstr "战旗"
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:744
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:787
 msgid ""
 "This unit can lead ~allied~ units that are next to it, making them fight "
 "better. Adjacent allied units will do 20% more damage. This is cumulative "
@@ -3498,19 +3565,19 @@ msgstr ""
 "20%。此能力效果可与领导能力效果累积。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:755
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
 msgid "Winged scepter"
 msgstr "有翼权杖"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
 msgstr "在除洞穴或蘑菇林以外的所有地形上都可以全速移动，并获得最高50%的防御。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:758
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
 msgid ""
 "This wondrous rod imparts the user the ability to soar through the skies, "
 "making it a breeze to move through most terrain. Units that can already fly "
@@ -3520,34 +3587,34 @@ msgstr ""
 "本就能飞行的单位，其防御将提升。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:841
 msgid "Winter’s bloom"
 msgstr "冬日繁花"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:843
 msgid "+15 HP, up to 20% resistance vs cold"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:844
 msgid ""
 "This delicate blossom rarely found in snowy peaks, is strongly appreciated "
 "for its beneficial effects on health."
 msgstr "这精致的花簇很少在雪峰上出现，它有益健康，因此很受重视。"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:816
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:859
 msgid "Zephyr cloak"
 msgstr "西风斗篷"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:861
 msgid "skirmisher, ambush, nightstalk, +2 moves"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:862
 msgid ""
 "This lightweight cloak renders its wearer almost invisible in the darkness "
 "and lets them move with fluid grace past enemies with ease."
@@ -3570,15 +3637,22 @@ msgstr ""
 "还是能克服的。"
 
 #. [trainer]: type=Duelist
-#: data/campaigns/World_Conquest/resources/data/training.cfg:59
+#: data/campaigns/World_Conquest/resources/data/training.cfg:60
 msgid "Movement"
 msgstr "移动"
 
 #. [trainer]: type=Duelist
-#: data/campaigns/World_Conquest/resources/data/training.cfg:60
+#: data/campaigns/World_Conquest/resources/data/training.cfg:61
+#, fuzzy
+#| msgid ""
+#| "What, you want me to join the fight? Quite out of the question, old boy! "
+#| "I’m afraid battlefields just aren’t my scene - no drama, no style, no "
+#| "romance! No finesse at all! You probably wouldn’t understand, so let me "
+#| "show you. I’ll teach you how to break out of those dreary marching "
+#| "formations and step light as a feather!"
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
-"afraid battlefields just aren’t my scene - no drama, no style, no romance! "
+"afraid battlefields just aren’t my scene — no drama, no style, no romance! "
 "No finesse at all! You probably wouldn’t understand, so let me show you. "
 "I’ll teach you how to break out of those dreary marching formations and step "
 "light as a feather!"
@@ -3588,12 +3662,12 @@ msgstr ""
 "何弃用那些沉闷的行军队形，像羽毛一样轻盈迈步！"
 
 #. [trainer]: type=Orcish Warrior
-#: data/campaigns/World_Conquest/resources/data/training.cfg:77
+#: data/campaigns/World_Conquest/resources/data/training.cfg:78
 msgid "Melee Combat"
 msgstr "近身战斗"
 
 #. [trainer]: type=Orcish Warrior
-#: data/campaigns/World_Conquest/resources/data/training.cfg:78
+#: data/campaigns/World_Conquest/resources/data/training.cfg:79
 msgid ""
 "Looks like you could use some help. A grizzled old veteran like me won’t be "
 "much use on the field, but I bet I can teach your men a thing or two about "
@@ -3603,17 +3677,17 @@ msgstr ""
 "士兵一些剑术。"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:102
+#: data/campaigns/World_Conquest/resources/data/training.cfg:103
 msgid "melee: +1 strikes"
 msgstr ""
 
 #. [trainer]: type=Elvish Ranger
-#: data/campaigns/World_Conquest/resources/data/training.cfg:120
+#: data/campaigns/World_Conquest/resources/data/training.cfg:121
 msgid "Ranger Tactics"
 msgstr "游侠战术"
 
 #. [trainer]: type=Elvish Ranger
-#: data/campaigns/World_Conquest/resources/data/training.cfg:121
+#: data/campaigns/World_Conquest/resources/data/training.cfg:122
 msgid ""
 "I sympathize with your cause, but this is not my battle. I will not fight "
 "for you, but I will gladly instruct your recruits in the art of the ranger, "
@@ -3623,12 +3697,12 @@ msgstr ""
 "游侠的技艺，让他们能更好地独立作战。"
 
 #. [trainer]: type=Drake Flare
-#: data/campaigns/World_Conquest/resources/data/training.cfg:159
+#: data/campaigns/World_Conquest/resources/data/training.cfg:160
 msgid "Combat Experience"
 msgstr "战斗经验"
 
 #. [trainer]: type=Drake Flare
-#: data/campaigns/World_Conquest/resources/data/training.cfg:160
+#: data/campaigns/World_Conquest/resources/data/training.cfg:161
 msgid ""
 " Join the battle? Nay, lads, my talents would be wasted on the frontlines. "
 "Give me some raw recruits to work with, though, and I’ll whip ’em into shape "
@@ -3640,12 +3714,12 @@ msgstr ""
 "点儿。"
 
 #. [trainer]: type=Dwarvish Runesmith
-#: data/campaigns/World_Conquest/resources/data/training.cfg:186
+#: data/campaigns/World_Conquest/resources/data/training.cfg:187
 msgid "Health"
 msgstr "健康"
 
 #. [trainer]: type=Dwarvish Runesmith
-#: data/campaigns/World_Conquest/resources/data/training.cfg:187
+#: data/campaigns/World_Conquest/resources/data/training.cfg:188
 msgid ""
 "Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
 "troubles of my own to join in, but stick about a while and I’ll put some "
@@ -3657,128 +3731,128 @@ msgstr ""
 "续前进了！"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:220
+#: data/campaigns/World_Conquest/resources/data/training.cfg:221
 #, fuzzy
 #| msgid "disengage"
 msgid "ranged: disengage"
 msgstr "脱战"
 
 #. [dummy]: id=wc2_disengage
-#: data/campaigns/World_Conquest/resources/data/training.cfg:234
+#: data/campaigns/World_Conquest/resources/data/training.cfg:235
 msgid "disengage"
 msgstr "脱战"
 
 #. [dummy]: id=wc2_disengage
-#: data/campaigns/World_Conquest/resources/data/training.cfg:235
+#: data/campaigns/World_Conquest/resources/data/training.cfg:236
 msgid ""
 "Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
 "gain a new attack)."
 msgstr "使用此武器发起攻击，在战斗结束后，单位可以移动1次（但不可再次攻击）。"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:246
+#: data/campaigns/World_Conquest/resources/data/training.cfg:247
 msgid "Full movement on turn recruited or recalled"
 msgstr "在被征募或召回的回合可全速移动。"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:312
+#: data/campaigns/World_Conquest/resources/data/training.cfg:313
 msgid "$range|: $special|"
 msgstr "$range|：$special|"
 
 #. [chance]
 #. [skirmisher]: id=distract
-#: data/campaigns/World_Conquest/resources/data/training.cfg:377
-#: data/campaigns/World_Conquest/resources/data/training.cfg:402
+#: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "分神"
 
 #. [chance]
 #. [resistance]: id=tenacity
-#: data/campaigns/World_Conquest/resources/data/training.cfg:389
-#: data/campaigns/World_Conquest/resources/data/training.cfg:426
+#: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "顽强"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+#: data/campaigns/World_Conquest/resources/data/training.cfg:405
 msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr "友方单位无视与此单位相邻的敌方控制区域。"
 
 #. [resistance]: id=tenacity
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+#: data/campaigns/World_Conquest/resources/data/training.cfg:429
 msgid "This unit’s vulnerabilities are halved when defending."
 msgstr "防御时，此单位的脆弱程度减半。"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:468
+#: data/campaigns/World_Conquest/resources/data/training.cfg:469
 msgid "heals +4, cures"
 msgstr ""
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:544
+#: data/campaigns/World_Conquest/resources/data/training.cfg:545
 msgid "+$boost| moves"
 msgstr "+$boost|行动次数"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:558
+#: data/campaigns/World_Conquest/resources/data/training.cfg:559
 msgid "$range|: +$boost| damage"
 msgstr "$range|：+$boost|伤害"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:574
+#: data/campaigns/World_Conquest/resources/data/training.cfg:575
 msgid "$range|: +1 damage per level"
 msgstr "$range|：每级+1伤害"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:590
+#: data/campaigns/World_Conquest/resources/data/training.cfg:591
 msgid "+$hitpoints| hitpoints"
 msgstr "+$hitpoints|生命值"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:605
+#: data/campaigns/World_Conquest/resources/data/training.cfg:606
 msgid "+$hitpoints| hitpoints per level"
 msgstr "每级+$hitpoints|生命值"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:621
+#: data/campaigns/World_Conquest/resources/data/training.cfg:622
 msgid "$value| XP to advance"
 msgstr "获得$value|经验值后升级"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:635
+#: data/campaigns/World_Conquest/resources/data/training.cfg:636
 msgid "free upkeep"
 msgstr "免费维护"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:645
+#: data/campaigns/World_Conquest/resources/data/training.cfg:646
 msgid "Village/Castle: +5 defense"
 msgstr "村庄/城堡：+5防御"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:677
+#: data/campaigns/World_Conquest/resources/data/training.cfg:678
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr "$terrain|：+$def|防御并可全速移动，+$res|对$dmg_type|的抗性"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:706
+#: data/campaigns/World_Conquest/resources/data/training.cfg:707
 msgid "$terrain|: +10 defense and full movement"
 msgstr "$terrain|：+10防御并可全速移动"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:717
+#: data/campaigns/World_Conquest/resources/data/training.cfg:718
 msgid "+moves defense"
 msgstr "+相当于行动次数的防御"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+#: data/campaigns/World_Conquest/resources/data/training.cfg:728
 msgid "melee: optional charge"
 msgstr "近战：可选择冲锋"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:752
+#: data/campaigns/World_Conquest/resources/data/training.cfg:753
 msgid "$range|: arcane and +25% damage"
 msgstr "$range|：奥术且+25%伤害"
 
@@ -3801,6 +3875,22 @@ msgid "World Conquest 4p"
 msgstr "世界征服 1p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid "WC1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
+msgid "WC2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
+msgid "WC3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
+msgid "WC4p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 #, fuzzy
 #| msgid ""
 #| "A randomly generated campaign for 1 player. It has 6 level of "
@@ -3813,7 +3903,7 @@ msgstr ""
 "一个随机生成的单人战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:33
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 2 players. It has 6 level "
@@ -3827,7 +3917,7 @@ msgstr ""
 "一个随机生成的2人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:37
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 3 players. It has 6 level "
@@ -3841,113 +3931,133 @@ msgstr ""
 "一个随机生成的3人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 2 players. It has 6 level "
 #| "of difficulties.\n"
 #| "(Expert level, 5 scenarios.)"
 msgid ""
-"A randomly generated cooperative campaign for 4 players. It has 6 level of "
-"difficulties.\n"
+"A randomly generated cooperative campaign for 4 players. It has 6 levels of "
+"difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 "一个随机生成的2人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
-msgid "WC"
-msgstr "WC"
-
-#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Beginner"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Peasant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Easy"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Sergeant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Lieutenant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Medium"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "General"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Hard"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Challenging"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 #, fuzzy
 #| msgid "Granary"
 msgid "Grand Marshal"
 msgstr "粮仓"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 #, fuzzy
 #| msgid "expert"
 msgid "Expert"
 msgstr "专家"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Nightmare"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:125
 msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:132
 msgid "Prose, Grammatical and Text Assistance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:148
 msgid "Minor Code Contributors"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:158
 msgid "Playtesting"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "A randomly generated cooperative campaign for 2 players. It has 6 level "
+#~| "of difficulties.\n"
+#~| "(Expert level, 5 scenarios.)"
+#~ msgid ""
+#~ "A randomly generated cooperative campaign for 4 players. It has 6 level "
+#~ "of difficulties.\n"
+#~ "(Expert level, 5 scenarios.)"
+#~ msgstr ""
+#~ "一个随机生成的2人合作战役。有6个级别的难度。\n"
+#~ "（专家级别，5幕场景。）"
+
+#~ msgid "WC"
+#~ msgstr "WC"
+
+#~ msgid "Use World Conquest PYA mod"
+#~ msgstr "使用世界征服的PYA模组"
+
+#~ msgid "World Conquest version"
+#~ msgstr "世界征服版本"
+
+#~ msgid "Brave words. Welcome little big man."
+#~ msgstr "这话很勇敢。欢迎你，小个子真男人。"
 
 #~ msgid "Preset Advancement"
 #~ msgstr "预设升级"
@@ -3960,6 +4070,9 @@ msgstr ""
 #~ "目前，指定给我的升级目标是：$name\n"
 #~ "\n"
 #~ "你的新命令是什么？"
+
+#~ msgid "Random"
+#~ msgstr "随机"
 
 #~ msgid " and "
 #~ msgstr " 和 "
@@ -3987,6 +4100,9 @@ msgstr ""
 
 #~ msgid "full movement"
 #~ msgstr "全速移动"
+
+#~ msgid "terrain^water"
+#~ msgstr "水"
 
 #~ msgid "improved defenses"
 #~ msgstr "防御力改善"

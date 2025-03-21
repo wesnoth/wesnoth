@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "game_version.hpp"
 
 #include "tests/utils/game_config_manager_tests.hpp"
@@ -35,10 +36,6 @@ static preproc_map setup_test_preproc_map()
 
 #if defined(__APPLE__)
 	defines_map["APPLE"] = preproc_define();
-#endif
-
-#if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
-	defines_map["IPHONEOS"] = preproc_define();
 #endif
 
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
@@ -169,7 +166,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	cache.get_config(test_data_path, cached_config);
 	BOOST_CHECK_EQUAL(test_config, cached_config);
 
-	BOOST_CHECK_EQUAL(test_config.child("test_key2")["define"].str(), cached_config.child("test_key2")["define"].str());
+	BOOST_CHECK_EQUAL(test_config.mandatory_child("test_key2")["define"].str(), cached_config.mandatory_child("test_key2")["define"].str());
 }
 
 BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )

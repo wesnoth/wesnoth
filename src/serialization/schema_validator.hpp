@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,14 +19,13 @@
 #include "serialization/parser.hpp"
 #include "serialization/schema/type.hpp"
 #include "serialization/schema/tag.hpp"
-#include "serialization/schema/key.hpp"
 #include "serialization/validator.hpp"
 
-#include <queue>
+#include <boost/graph/adjacency_list.hpp>
+#include "utils/optional_fwd.hpp"
 #include <stack>
 #include <string>
 
-class config;
 
 /** @file
  *  One of the realizations of serialization/validator.hpp abstract validator.
@@ -51,6 +50,11 @@ public:
 	void set_create_exceptions(bool value)
 	{
 		create_exceptions_ = value;
+	}
+
+	const std::vector<std::string>& get_errors() const
+	{
+		return errors_;
 	}
 
 	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
@@ -78,7 +82,7 @@ private:
 
 protected:
 	using message_type = int;
-	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, NEXT_ERROR };
+	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, MISSING_SUPER, SUPER_CYCLE, NEXT_ERROR };
 
 	/**
 	 * Messages are cached.
@@ -145,6 +149,8 @@ private:
 
 	bool validate_schema_;
 
+	std::vector<std::string> errors_;
+
 protected:
 	template<typename... T>
 	void queue_message(const config& cfg, T&&... args)
@@ -157,6 +163,52 @@ protected:
 	bool have_active_tag() const;
 	bool is_valid() const {return config_read_;}
 	wml_type::ptr find_type(const std::string& type) const;
+
+private:
+	using derivation_graph_t = boost::adjacency_list<boost::vecS,
+		boost::vecS,
+		boost::directedS,
+		std::pair<const wml_tag*, std::string>,
+		std::tuple<config, std::string, int>>;
+
+	derivation_graph_t derivation_graph_;
+	std::map<const wml_tag*, derivation_graph_t::vertex_descriptor> derivation_map_;
+
+	void detect_derivation_cycles();
+
+	/**
+	 * Collects all mandatory keys for a tag, including the super keys and overrides.
+	 *
+	 * The returned map can contain non-mandatory keys if they are overriden, please check the is_mandatory() result.
+	 */
+	utils::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg) const;
+	utils::optional<std::map<std::string, wml_key>> find_mandatory_keys(
+		const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const;
+
+	/**
+	 * Validates that all mandatory keys for a tag are present.
+	 */
+	void validate_mandatory_keys(
+		const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file);
+	void validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys,
+		const wml_tag* tag,
+		const config& cfg,
+		const std::string& name,
+		int start_line,
+		const std::string& file,
+		std::vector<const wml_tag*>& visited);
+
+	using link_graph_t = boost::adjacency_list<boost::vecS,
+		boost::vecS,
+		boost::directedS,
+		std::string>;
+
+	using link_graph_map_t = std::map<const wml_type_alias*,
+		link_graph_t::vertex_descriptor>;
+
+	void detect_link_cycles(const std::string& filename);
+	void collect_link_source(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type);
+	void collect_link_target(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type, const wml_type_alias* alias);
 };
 
 // A validator specifically designed for validating a schema
@@ -179,8 +231,8 @@ private:
 		{}
 		std::string value_, file_, tag_;
 		int line_;
-		bool match(const std::set<std::string>& with);
-		bool can_find(const wml_tag& root, const config& cfg);
+		bool match(const std::set<std::string>& with) const;
+		bool can_find(const wml_tag& root, const config& cfg) const;
 		bool operator<(const reference& other) const;
 	};
 	std::string current_path() const;
@@ -196,6 +248,14 @@ private:
 
 	void print(message_info& message) override;
 	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, SUPER_LOOP, NEXT_ERROR };
+
+	using schema_derivation_graph_t
+		= boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, std::string, std::pair<config, reference>>;
+
+	schema_derivation_graph_t schema_derivation_graph_;
+	std::map<std::string, schema_derivation_graph_t::vertex_descriptor> schema_derivation_map_;
+
+	void detect_schema_derivation_cycles();
 };
 
 } // namespace schema_validation{

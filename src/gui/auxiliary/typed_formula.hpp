@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,7 @@
 #include "tstring.hpp"
 
 #include <cassert>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 namespace gui2
 {
@@ -58,7 +58,7 @@ public:
 	 *                            be converted to the type T.
 	 * @param value               The default value for the object.
 	 */
-	explicit typed_formula<T>(const std::string& str, const T value = T());
+	explicit typed_formula(const std::string& str, const T value = T());
 
 	/**
 	 * Returns the value, can only be used if the data is no formula.
@@ -127,7 +127,7 @@ private:
 	 *
 	 * If without value, there's no formula.
 	 */
-	std::optional<std::string> formula_;
+	utils::optional<std::string> formula_;
 
 	/** If there's no formula it contains the value. */
 	T value_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gui/core/notifiee.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
@@ -25,6 +24,7 @@ class spacer;
 
 namespace implementation
 {
+struct builder_scrollbar_container;
 struct builder_scroll_label;
 struct builder_scrollbar_panel;
 struct builder_styled_widget;
@@ -49,7 +49,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
+	explicit scrollbar_container(const implementation::builder_scrollbar_container& builder, const std::string& control_type);
 
 	virtual ~scrollbar_container()
 	{
@@ -101,7 +101,7 @@ public:
 	 */
 	virtual bool can_wrap() const override;
 
-private:
+protected:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
@@ -130,10 +130,10 @@ public:
 	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id, const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
@@ -222,6 +222,20 @@ public:
 	 * @param scroll              The position to scroll to.
 	 */
 	void scroll_horizontal_scrollbar(const scrollbar_base::scroll_mode scroll);
+
+	/**
+	 * Scrolls the vertical scrollbar by pixel.
+	 *
+	 * @param pixels              The number of pixels the bar scrolls by.
+	 */
+	void scroll_vertical_scrollbar_by(const int pixels);
+
+	/**
+	 * Scrolls the horizontal scrollbar by pixel.
+	 *
+	 * @param pixels              The number of pixels the bar scrolls by.
+	 */
+	void scroll_horizontal_scrollbar_by(const int pixels);
 
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
@@ -448,6 +462,10 @@ protected:
 	 */
 	virtual void handle_key_right_arrow(SDL_Keymod modifier, bool& handled);
 
+protected:
+	/** The builder needs to call us so we do our setup. */
+	void finalize_setup();
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -494,9 +512,6 @@ private:
 	 */
 	SDL_Rect content_visible_area_;
 
-	/** The builder needs to call us so we do our setup. */
-	void finalize_setup(); // FIXME make protected
-
 	/**
 	 * Function for the subclasses to do their setup.
 	 *
@@ -523,10 +538,14 @@ private:
 	 */
 	virtual void set_content_size(const point& origin, const point& size);
 
-	/** Helper function which needs to be called after the scollbar moved. */
+	/** Helper function which needs to be called after the scollbar moves by item. */
 	void scrollbar_moved();
 
 public:
+	/** To be called after the scollbar moves manually (by pixel) to move the viewport.
+	 *  Shifts the viewport origin pixels_x left and pixels_y right.*/
+	void move_viewport(const int pixels_x, const int pixels_y);
+
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
 
@@ -567,5 +586,17 @@ public:
 		return vertical_scrollbar_grid_;
 	}
 };
+
+namespace implementation
+{
+struct builder_scrollbar_container : public builder_styled_widget
+{
+	explicit builder_scrollbar_container(const config& cfg);
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+};
+
+} // namespace implementation
 
 } // namespace gui2

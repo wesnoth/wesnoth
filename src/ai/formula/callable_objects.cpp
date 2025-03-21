@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "ai/formula/ai.hpp"
-#include "attack_prediction.hpp"
 #include "game_board.hpp"
 #include "ai/formula/callable_objects.hpp"
 #include "ai/composite/contexts.hpp"
@@ -35,7 +34,7 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 
 namespace ai {
 
-ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai) {
+ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai) {
 	auto fai = std::dynamic_pointer_cast<const formula_ai>(for_fai);
 	assert(fai != nullptr);
 	return *std::const_pointer_cast<formula_ai>(fai)->ai_ptr_;

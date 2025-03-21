@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,14 +29,11 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "side_filter.hpp"
-#include "units/map.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
 #include "video.hpp" // only for faked
 #include "whiteboard/manager.hpp"
 
-#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -150,10 +147,10 @@ namespace
 
 pump_manager::pump_manager(pump_impl& impl)
 	: impl_(impl)
-	, x1_(resources::gamedata->get_variable("x1"))
-	, x2_(resources::gamedata->get_variable("x2"))
-	, y1_(resources::gamedata->get_variable("y1"))
-	, y2_(resources::gamedata->get_variable("y2"))
+	, x1_(resources::gamedata->get_variable("x1").to_int())
+	, x2_(resources::gamedata->get_variable("x2").to_int())
+	, y1_(resources::gamedata->get_variable("y1").to_int())
+	, y2_(resources::gamedata->get_variable("y2").to_int())
 	, queue_()
 	, pumped_count_(0) // Filled later with a swap().
 {
@@ -208,8 +205,8 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	unit_map& units = resources::gameboard->units();
 	scoped_xy_unit first_unit("unit", ev.loc1, units);
 	scoped_xy_unit second_unit("second_unit", ev.loc2, units);
-	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+	scoped_weapon_info first_weapon("weapon", ev.data.optional_child("first"));
+	scoped_weapon_info second_weapon("second_weapon", ev.data.optional_child("second"));
 
 	if(!handler_p->filter_event(ev)) {
 		return;

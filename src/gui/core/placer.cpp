@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include "gui/core/placer/horizontal_list.hpp"
 #include "gui/core/placer/vertical_list.hpp"
 
-#include <cassert>
 #include <stdexcept>
 
 namespace gui2

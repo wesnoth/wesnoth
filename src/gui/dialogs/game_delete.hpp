@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,14 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to confirm deleting a savegame file.
- * Key               |Type              |Mandatory|Description
- * ------------------|------------------|---------|-----------
- * dont_ask_again    | boolean_selector |yes      |A checkbox to not show this dialog again.
- */
 class game_delete : public modal_dialog
 {
 public:

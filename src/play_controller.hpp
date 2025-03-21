@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -25,14 +25,12 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include <optional>
+#include "utils/optimer.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 
-class game_display;
-class game_data;
 class team;
-class unit;
 class replay;
 class replay_controller;
 class saved_game;
@@ -49,41 +47,22 @@ namespace font {
 }
 
 namespace game_events {
-	class manager;
 	class wml_event_pump;
-	class wml_menu_item;
 } // namespace game_events
 
-namespace soundsource {
-	class manager;
-} // namespace soundsource
-
-namespace statistics {
-	struct scenario_context;
-} // namespace statistics
-
-namespace pathfind {
-	class manager;
-}
-
-namespace tooltips {
-	class manager;
-} // namespace tooltips
+class statistics_t;
 
 namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
 // Holds gamestate related objects
-class game_state;
 
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
 	play_controller(const config& level,
-			saved_game& state_of_game,
-			bool skip_replay,
-			bool start_faded = false);
+			saved_game& state_of_game);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -120,6 +99,7 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
+	virtual void require_end_turn() = 0;
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
@@ -130,6 +110,8 @@ public:
 	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
+
+	bool reveal_map_default() const;
 
 	void set_end_level_data(const end_level_data& data)
 	{
@@ -228,8 +210,8 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_; }
+	bool is_skipping_actions() const;
 	void toggle_skipping_replay();
-	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 
 	bool is_skipping_story() const { return skip_story_; }
@@ -247,8 +229,6 @@ public:
 
 	game_events::wml_event_pump& pump();
 
-	int get_ticks() const;
-
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;
 	hotkey::command_executor* get_hotkey_command_executor() override;
@@ -256,12 +236,13 @@ public:
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const override;
-	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;
 
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
 	bool is_replay() const { return get_replay_controller() != nullptr; }
+
+	replay& recorder() const { return *replay_; }
 
 	t_string get_scenario_name() const
 	{
@@ -288,23 +269,14 @@ public:
 		return is_regular_game_end();
 	}
 
-	void maybe_throw_return_to_play_side() const
-	{
-		if(should_return_to_play_side() && !linger_ ) {
-			throw return_to_play_side_exception();
-		}
-	}
-
-	virtual void play_side_impl() {}
-
-	void play_side();
+	void maybe_throw_return_to_play_side() const;
 
 	team& current_team();
 	const team& current_team() const;
 
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
-	int ticks() const { return ticks_; }
+	const auto& timer() const { return timer_; }
 	game_display& get_display() override;
 
 	void update_savegame_snapshot() const;
@@ -312,6 +284,11 @@ public:
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
+
+	/// Sends replay [command]s to the server
+	virtual void send_actions() { }
+	/// Reads and executes replay [command]s from the server
+	virtual void receive_actions() { }
 
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
@@ -329,6 +306,10 @@ public:
 
 	saved_game& get_saved_game() { return saved_game_; }
 
+	statistics_t& statistics() { return *statistics_context_; }
+	bool is_during_turn() const;
+	bool is_linger_mode() const;
+
 protected:
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
@@ -344,7 +325,7 @@ protected:
 	void fire_start();
 	void start_game();
 	virtual void init_gui();
-	void finish_side_turn();
+	void finish_side_turn_events();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
@@ -352,13 +333,11 @@ protected:
 	void textbox_move_vertically(bool up);
 	void tab();
 
-
-	bool is_team_visible(int team_num, bool observer) const;
+public:
 	/** returns 0 if no such team was found. */
-	int find_last_visible_team() const;
-
+	virtual int find_viewing_side() const = 0;
 private:
-	const int ticks_;
+	utils::ms_optimer timer_;
 
 protected:
 	//gamestate
@@ -387,19 +366,19 @@ protected:
 	//other objects
 	std::unique_ptr<game_display> gui_;
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
-	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
+	const std::unique_ptr<statistics_t> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; }
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; }
 	std::unique_ptr<replay> replay_;
 
 	bool skip_replay_;
 	bool skip_story_;
-	bool linger_;
 	/**
 	 * Whether we did init sides in this session
 	 * (false = we did init sides before we reloaded the game).
 	 */
-	bool init_side_done_now_;
+	bool did_autosave_this_turn_;
+	bool did_tod_sound_this_turn_;
 	//the displayed location when we load a game.
 	map_location map_start_;
 	// Whether to start with the display faded to black
@@ -418,8 +397,6 @@ private:
 	 */
 	void check_next_scenario_is_known();
 
-	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
@@ -427,9 +404,14 @@ private:
 
 protected:
 	mutable bool ignore_replay_errors_;
+	/// true when the controller of the currently playing side has changed.
+	/// this can mean for example:
+	/// - The currently active side was reassigned from/to another player in a mp game
+	/// - The replay controller was disabled ('continue play' button)
+	/// - The currently active side was droided / undroided.
+	/// - A side was set to idle.
 	bool player_type_changed_;
 	virtual void sync_end_turn() {}
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;
-	void play_turn();
 };

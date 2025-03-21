@@ -26,8 +26,7 @@ wesnothd \- Servidor de partidas multijugador para La batalla por \fBWesnoth\fP
 .
 .SH SINOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIpuerto\fP\|] [\|\fB\-t\fP
-\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -62,14 +61,6 @@ utilizarse para seleccionar todos los dominios. Los niveles disponibles son:
 conecta al servidor al puerto especificado. Si no se especifica ningún
 puerto, se usará el puerto \fB15000\fP.
 .TP 
-\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-establece el número máximo de subprocesos de trabajo en espera para E/S de
-red (por defecto: \fB5\fP,\ máx:\ \fB30\fP).
-.TP 
-\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-establece el número máximo de subprocesos de trabajo que se crearán. Si se
-establece como \fB0\fP, no habrá ningún límite. (Por defecto: \fB0\fP).
-.TP 
 \fB\-V, \-\-version\fP
 muestra el número de versión y finaliza.
 .TP 
@@ -103,10 +94,6 @@ Ruta completa o relativa a un archivo (comprimido con gzip) que el servidor
 pueda leer y escribir. Los vetos del servidor serán almacenados en este
 archivo y leídos nuevamente al iniciar.
 .TP 
-\fBcompress_stored_rooms\fP
-Determina si el archivo de salones debe ser leído y escrito como un archivo
-comprimido. Activado por defecto (\fByes\fP).
-.TP 
 \fBconnections_allowed\fP
 El número máximo de conexiones permitidas desde la misma IP. \fB0\fP significa
 infinitas. (Por defecto: \fB5\fP.)
@@ -116,16 +103,21 @@ Para evitar que los usuarios que no están registrados con \fBuser_handler\fP
 sean usados para acceder. (predeterminado: false)
 .TP 
 \fBdisallow_names\fP
-Nombres/ápodos rechazados por el servidor. \fB*\fP y \fB?\fP sirven de
-comodines. Vea \fBglob\fP(7) para más detalles. Los valores por defecto
-(utilizados si no especifica nada) son:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 La ruta al FIFO a través del cual puede enviarle comandos al servidor
 (equivalente a /query ... en Wesnoth). Si no se especifica, se usará por
 omisión la ruta del momento de la compilación (por omisión:
 \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+El ID del servidor cuando se usa la funcionalidad de la base de datos para
+almacenar información del juego. Generalmente es la versión mayor.menor de
+los clientes aceptados, como 1.16 o 1.17.
 .TP 
 \fBmax_messages\fP
 El número máximo de mensajes permitidos en un lapso de tiempo definido por
@@ -137,13 +129,6 @@ mensajes. (Por defecto: \fB10\fP segundos.)
 .TP 
 \fBmotd\fP
 El mensaje del día.
-.TP 
-\fBnew_room_policy\fP
-Determina quién puede crear salones nuevos en el servidor. Los valores
-disponibles son \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP y \fBnobody\fP, y
-respectivamente otorgan permiso a todos, usuarios registrados,
-administradores o deshabilita la creación de salones. El valor por defecto
-es \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
 La contraseña utilizada para obtener privilegios de administrador (mediante
@@ -159,27 +144,22 @@ El comando que ejecuta el servidor para iniciar un nuevo proceso al recibir
 el comando \fBrestart\fP. (Sólo puede ser enviado a través del FIFO; vea la
 opción \fBallow_remote_shutdown\fP arriba.)
 .TP 
-\fBroom_save_file\fP
-Ruta a un archivo donde la información de salones será almacenada. Este
-archivo es procesado al inicio del servidor y guardado posteriormente. Si la
-ruta está vacía o ausente, no se cargarán ni almacenarán salones.
-.TP 
 \fBsave_replays\fP
 Define si el servidor almacenará automáticamente las repeticiones de las
 partidas. (Por defecto: \fBfalse\fP.)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Habilite el uso de TLS. Si es verdadero, también requiere que se configuren
+las siguientes 3 opciones.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+Cadena de certificados TLS completa en formato .pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+clave privada para TLS en formato .pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Parámetros TLS DH como archivo .pem. Generar con \fBopenssl dhparam \-out filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Una lista separada por comas de patrones de números de versión que serán
@@ -187,17 +167,13 @@ admitidos por el servidor. \fB*\fP y \fB?\fP sirven de comodines. (Por defecto e
 la versión de Wesnoth correspondiente al servidor.)
 .br
 Ejemplo: \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
-.TP 
-\fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
 .
 .SS "Etiquetas globales:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
+redirigirán ciertas versiones de clientes. No es usado si
+\fBversions_accepted\fP no está establecido.
 .RS
 .TP 
 \fBhost\fP
@@ -231,12 +207,13 @@ reenvíe las solicitudes de los clientes conectados al servidor
 especificado.  Acepta las mismas opciones que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configura el servicio de usuarios. Si no hay ninguna
+sección \fB[user_handler]\fP en la configuración, el servidor funcionará sin
+ningún servicio de registro de usuarios. Todas las tablas adicionales que se
+necesitan para que funcione \fBforum_user_handler\fP pueden encontrarse en
+table_definitions.sql en el repositorio de fuentes de Wesnoth. Requiere
+soporte mysql activado. Para cmake es \fBENABLE_MYSQL\fP y por scons es
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -252,8 +229,9 @@ El nombre del usuario con el cual iniciar sesión en la base de datos
 La contraseña de este usuario
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
+usuarios. Generalmente éste será <table\-prefix>_users (por ej.:
+phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 El nombre de la tabla en la que wesnothd guardará sus propios datos sobre
@@ -267,32 +245,45 @@ las partidas.
 El nombre de la tabla en la que wesnothd guardará sus propios datos acerca
 de los jugadores en una partida.
 .TP 
-\fBdb_game_modification_info_table\fP
-El nombre de la tabla en la que wesnothd guardará sus propios datos acerca
-de las modificaciones usadas en una partida.
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
+grupos de usuarios. Generalmente éste será <table\-prefix>_user_group
+(por ej.: phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+El nombre de la tabla en la que almacenar los tiempos de inicio/cierre de
+sesión. También se utiliza para hacer coincidir las direcciones IP con los
+usuarios y viceversa.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+El nombre de la tabla en la que sus foros phpBB almacenan la información de
+sus conversaciones (hilos). Generalmente éste será
+<table\-prefix>_topics (por ej.: phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
+usuarios baneados. Generalmente éste será <table\-prefix>_banlist
+(por ej.: phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 El ID del grupo del foro que se considera que tiene autorización para
 moderar.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH "ESTADO DE SALIDA"
@@ -313,7 +304,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

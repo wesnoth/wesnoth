@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,10 +15,7 @@
 
 #pragma once
 
-#include "gui/core/notifier.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "sdl/rect.hpp"
-#include <functional>
 
 namespace gui2
 {
@@ -179,13 +176,13 @@ public:
 		return pixels_per_step_;
 	}
 
-protected:
-	void finalize_setup();
-
 	unsigned get_positioner_offset() const
 	{
 		return positioner_offset_;
 	}
+
+protected:
+	void finalize_setup();
 
 	unsigned get_positioner_length() const
 	{

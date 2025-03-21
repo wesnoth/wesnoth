@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -98,7 +98,7 @@ private:
 	unit_ptr create_corresponding_unit();
 };
 
-std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);
-std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit);
+std::ostream& operator<<(std::ostream& s, const recruit_ptr& recruit);
+std::ostream& operator<<(std::ostream& s, const recruit_const_ptr& recruit);
 
 }

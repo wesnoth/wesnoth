@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <string>
+
 struct lua_State;
 class lua_kernel_base;
 class vconfig;
@@ -26,11 +28,14 @@ namespace lua_gui2 {
 int intf_add_widget_definition(lua_State *L);
 int show_message_dialog(lua_State *L);
 int show_popup_dialog(lua_State *L);
+int switch_theme(lua_State* L);
 int show_menu(lua_State* L);
 int show_story(lua_State* L);
 int show_message_box(lua_State* L);
 int show_lua_console(lua_State*L, lua_kernel_base * lk);
-int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state);
+int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state);
+int intf_show_recruit_dialog(lua_State* L);
+int intf_show_recall_dialog(lua_State* L);
 int luaW_open(lua_State *L);
 
 } // end namespace lua_gui2

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,19 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * A simple one-column listbox with OK and Cancel buttons.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * title             | @ref label   |yes      |Dialog title label.
- * message           | control      |yes      |Text label displaying a description or instructions.
- * listbox           | @ref listbox |yes      |Listbox displaying user choices.
- * item              | control      |yes      |Widget which shows a listbox item label.
- * ok                | @ref button  |yes      |OK button.
- * cancel            | @ref button  |yes      |Cancel button.
- */
 class simple_item_selector : public modal_dialog
 {
 public:
@@ -101,8 +88,8 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 } // namespace dialogs

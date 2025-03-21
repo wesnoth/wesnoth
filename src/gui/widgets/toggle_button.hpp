@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,29 +27,6 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Class for a toggle button.
- *
- * A toggle button is a button with two states 'up' and 'down' or 'selected' and 'deselected'.
- * When the mouse is pressed on it the state changes.
- *
- * The following states exist:
- * * state_enabled - the button is enabled and not selected.
- * * state_disabled - the button is disabled and not selected.
- * * state_focussed - the mouse is over the button and not selected.
- * * state_enabled_selected - the button is enabled and selected.
- * * state_disabled_selected - the button is disabled and selected.
- * * state_focussed_selected - the mouse is over the button and selected.
- *
- * Variables:
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * icon                | @ref guivartype_string "string"        |""       |The name of the icon file to show.
- * return_value_id     | @ref guivartype_string "string"        |""       |The return value id.
- * return_value        | @ref guivartype_int "int"              |0        |The return value.
- */
 class toggle_button : public styled_widget, public selectable_item
 {
 public:
@@ -189,8 +166,9 @@ struct builder_toggle_button : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	std::string icon_name;
+
 private:
-	std::string icon_name_;
 	std::string retval_id_;
 	int retval_;
 };

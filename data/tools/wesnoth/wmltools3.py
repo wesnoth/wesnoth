@@ -11,14 +11,33 @@ import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 import enum
 
+# Extensions
+# Ordering is important, see default extensions below
 map_extensions   = ("map", "mask")
+wml_extensions   = ("cfg",)
 image_extensions = ("png", "jpg", "jpeg", "webp")
 sound_extensions = ("ogg", "wav")
-vc_directories = (".git", ".svn")
-misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
-l10n_directories = ("l10n",)
+
+# Default extensions
+default_map_extension  = "." + map_extensions[0] # ".map" at the moment
+default_mask_extension = "." + map_extensions[1] # ".mask" at the moment
+default_wml_extension  = "." + wml_extensions[0] # ".cfg" at the moment
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g|webp)(?=(~.*)?)"
+
+# Directories
+l10n_directories = ("l10n",)
+vc_directories   = (".git", ".svn")
+
+# Misc files and extensions
+misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
+
+EQUALS = '='
+QUOTE = '"'
+OPEN_BRACE = '{'
+CLOSE_BRACE = '}'
+OPEN_PARENS = '('
+CLOSE_PARENS = ')'
 
 class Substitution(object):
     __slots__ = ["sub", "start", "end"]
@@ -61,12 +80,12 @@ if no expansion could be performed"""
         for i, match in enumerate(re.finditer(r"\[(.*?)\]", path)): # stop on the first closed square braces, to allow multiple substitutions
             substitutions.append([]) # a new list which will host all the substitutions for the current expansion
             for token in match.group(1).split(","):
-                match_mult = re.match("(.+)\*(\d+)", token) # repeat syntax, eg. [melee*3]
+                match_mult = re.match(r"(.+)\*(\d+)", token) # repeat syntax, eg. [melee*3]
                 if match_mult:
                     substitutions[i].extend([Substitution(match_mult.group(1), match.start(0), match.end(0))] *
                                          int(match_mult.group(2)))
                     continue
-                match_range = re.match("(\d+)~(\d+)", token) # range syntax, eg [1~4]
+                match_range = re.match(r"(\d+)~(\d+)", token) # range syntax, eg [1~4]
                 if match_range:
                     before, after = int(match_range.group(1)), int(match_range.group(2))
                     # does one of the limits have leading zeros? If so, detect the length of the numbers used
@@ -119,10 +138,6 @@ def string_strip(value):
         value = value[1:]
         if value.endswith('"'):
             value = value[:-1]
-    if value.startswith("'"):
-        value = value[1:]
-        if value.endswith("'"):
-            value = value[:-1]
     return value
 
 def attr_strip(value):
@@ -142,7 +157,7 @@ def comma_split(csstring, list=None, strip="r"):
     # lstrip() only, the other to warn about trailing whitespace.
     if 'w' in strip:
         for item in vallist:
-            if re.search('\s$', item):
+            if re.search(r"\s$", item):
                 print('Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring))
     if 'l' not in strip:
         vallist = [x.rstrip() for x in vallist]
@@ -153,13 +168,14 @@ def comma_split(csstring, list=None, strip="r"):
 
 def parse_attribute(line):
     "Parse a WML key-value pair from a line."
-    if '=' not in line or line.find("#") > -1 and line.find("#") < line.find("="):
-        return None
     where = line.find("=")
+    # Ignore lines with a # or " before the first =. They're likely line continuations that won't be parsed correctly.
+    if '=' not in line or -1 < line.find("#") < where or -1 < line.find("\"") < where:
+        return None
     leader = line[:where]
     after = line[where+1:]
-    if re.search("\s#", after):
-        where = len(re.split("\s+#", after)[0])
+    if re.search(r"\s#", after):
+        where = len(re.split(r"\s+#", after)[0])
         value = after[:where].lstrip()
         comment = after[where:]
     else:
@@ -180,7 +196,7 @@ class Forest:
             subtree = []
             rooted = False
             if os.path.isdir(directory): # So we skip .cfgs in a UMC mirror
-                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + '.cfg')
+                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + default_wml_extension)
                 if os.path.isfile(oldmain):
                     subtree.append(oldmain)
                 base = os.path.basename(os.path.dirname(os.path.abspath(directory)))
@@ -195,8 +211,8 @@ class Forest:
                             rooted = True
                         elif os.path.basename(root) in roots:
                             for subdir in dirlist:
-                                if subdir + '.cfg' in files:
-                                    files.remove(subdir + '.cfg')
+                                if subdir + default_wml_extension in files:
+                                    files.remove(subdir + default_wml_extension)
                                 dirs.remove(subdir)
                                 dirpath.append(os.path.join(root, subdir))
                             rooted = True
@@ -215,8 +231,8 @@ class Forest:
                             if count >= (stop // 2):
                                 roots.append(os.path.basename(root))
                                 for subdir in dirlist:
-                                    if subdir + '.cfg' in files:
-                                        files.remove(subdir + '.cfg')
+                                    if subdir + default_wml_extension in files:
+                                        files.remove(subdir + default_wml_extension)
                                     dirs.remove(subdir)
                                     dirpath.append(os.path.join(root, subdir))
                     subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
@@ -254,15 +270,20 @@ class Forest:
         for tree in self.forest:
             allfiles += tree
         return allfiles
-    def generator(self):
+
+    def __iter__(self):
         "Return a generator that walks through all files."
         for (directory, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
                 yield (directory, filename)
 
+def ismap(filename):
+    "Is this file a map?"
+    return filename.split('.')[-1] in map_extensions
+
 def iswml(filename):
     "Is the specified filename WML?"
-    return filename.endswith(".cfg")
+    return filename.split('.')[-1] in wml_extensions
 
 def issave(filename):
     "Is the specified filename a WML save? (Detects compressed saves too.)"
@@ -289,66 +310,138 @@ def isresource(filename):
     return ext and ext[1:] in resource_extensions
 
 def parse_macroref(start, line):
-    def handle_argument():
-        nonlocal opt_arg
-        nonlocal arg
-        nonlocal optional_args
+    def handle_argument(buffer):
         nonlocal args
+        nonlocal optional_args
 
-        arg = arg.strip()
+        opt_arg = ""
+
+        arg = "".join(buffer)
+        # arg may be empty, so arg[0] may be OOB.
+        if arg[0:1].isspace():
+            arg = arg[1:]
+
         # is this an optional argument?
         # argument names are usually made of uppercase letters, numbers and underscores
         # if they're optional, they're followed by an equal sign
         # stop matching on the first one, because the argument value might contain one too
         if re.match(r"^([A-Z0-9_]+?)=", arg):
             opt_arg, arg = arg.split("=", 1)
-        if arg.startswith('"') and arg.endswith('"'):
-            arg = arg[1:-1].strip()
         if opt_arg:
             optional_args[opt_arg] = arg
             opt_arg = ""
         else:
             args.append(arg)
-        arg = ""
+        buffer.clear()
+        return True
 
-    brackdepth = parendepth = 0
-    instring = False
-    optional_args = {}
+    buffer = []
     args = []
-    opt_arg = ""
-    arg = ""
+    optional_args = {}
+
+    depth = {
+        EQUALS: 0,
+        OPEN_BRACE: 0,
+        OPEN_PARENS: 0,
+        QUOTE: 0,
+    }
+    wrapper_stack = []
+    prev_added_arg = False
+
+    # close_token - Closes all active scopes, until the matching scope is found.
+    # This is useful, for example, in {MACRO OPT_NAME=VAL}
+    # In this example, close_token("}") will implicitly close the
+    # optional argument scope.
+    def close_token(token):
+        while len(wrapper_stack) > 0:
+            last_token = wrapper_stack.pop()
+            depth[last_token] -= 1
+            if last_token == token:
+                break
+        else:
+            return False
+        return True
+
+    # close_if_token - Closes the current scope, if it matches the given token.
+    # Atomic version of close_token, which provides expressivity.
+    def close_if_token(token):
+        if wrapper_stack[-1] == token:
+            wrapper_stack.pop()
+            depth[token] -= 1
+            return True
+        return False
+
+    def open_token(token):
+        wrapper_stack.append(token)
+        depth[token] += 1
+
     for i in range(start, len(line)):
-        if instring:
-            if line[i] == '"':
-                instring = False
-            arg += line[i]
-        elif line[i] == '"':
-            instring = not instring
-            arg += line[i]
-        elif line[i] == "{":
-            if brackdepth > 0:
-                arg += line[i]
-            brackdepth += 1
-        elif line[i] == "}":
-            brackdepth -= 1
-            if brackdepth == 0:
-                if not line[i-1].isspace():
-                    handle_argument()
+        added_arg = False
+        if depth[QUOTE] > 0:
+            # If EOL, line[i+1] may be OOB, but slice is valid.
+            if line[i] == QUOTE and line[i+1:i+2] != QUOTE:
+                close_token(QUOTE)
+            buffer.append(line[i])
+        elif line[i] == QUOTE:
+            open_token(QUOTE)
+            buffer.append(line[i])
+        elif line[i] == OPEN_BRACE:
+            open_token(OPEN_BRACE)
+            buffer.append(line[i])
+        elif line[i] == CLOSE_BRACE:
+            if wrapper_stack[-1] != OPEN_PARENS:
+                close_token(OPEN_BRACE)
+            if depth[OPEN_BRACE] == 0:
+                # Flush at end
+                if not prev_added_arg and len(buffer) > 0:
+                    added_arg = handle_argument(buffer)
                 break
             else:
-                arg += line[i]
-        elif line[i] == "(":
-            parendepth += 1
-        elif line[i] == ")":
-            parendepth -= 1
-        elif not line[i-1].isspace() and \
-             line[i].isspace() and \
-             brackdepth == 1 and \
-             parendepth == 0:
-            handle_argument()
-        elif not line[i].isspace() or parendepth > 0:
-            arg += line[i]
-    return (args, optional_args, brackdepth, parendepth)
+                buffer.append(line[i])
+        elif line[i] == OPEN_PARENS:
+            if wrapper_stack[-1] == OPEN_PARENS or wrapper_stack[-2:] == [OPEN_PARENS, EQUALS]:
+                # Char in an argument
+                buffer.append(line[i])
+            else:
+                if wrapper_stack[-1] == EQUALS or (wrapper_stack[-1] == OPEN_BRACE and \
+                    not line[i-1].isspace()):
+                    close_if_token(EQUALS)
+                    if depth[OPEN_BRACE] == 1 and not prev_added_arg:
+                        added_arg = handle_argument(buffer)
+                open_token(OPEN_PARENS)
+                if depth[OPEN_BRACE] != 1:
+                    buffer.append(line[i])
+        elif line[i] == CLOSE_PARENS:
+            # Source has too many closing parens.
+            quit = not close_token(OPEN_PARENS)
+            if depth[OPEN_BRACE] != 1:
+                buffer.append(line[i])
+            elif not prev_added_arg or line[i-1] == OPEN_PARENS:
+                # {MACRO arg1()} has two arguments
+                added_arg = handle_argument(buffer)
+            if quit:
+                added_arg = handle_argument(buffer)
+                break
+        elif line[i] == EQUALS and re.match(r"^([A-Z0-9_]+?)", line[i-1]):
+            open_token(EQUALS)
+            buffer.append(line[i])
+        elif line[i].isspace():
+            if line[i-1].isspace():
+                # Ignore consecutive spaces
+                continue
+            if not prev_added_arg and \
+             depth[OPEN_BRACE] == 1 and \
+             depth[OPEN_PARENS] == 0:
+                close_if_token(EQUALS)
+                added_arg = handle_argument(buffer)
+            buffer.append(line[i])
+        else:
+            buffer.append(line[i])
+
+        prev_added_arg = added_arg
+
+    args.pop(0)
+    return (args, optional_args, depth[OPEN_BRACE] > 0)
 
 def formaltype(f):
     # Deduce the expected type of the formal
@@ -409,7 +502,7 @@ def actualtype(a):
         atype = "percentage"
     elif re.match(r"-?[0-9]+,-?[0-9]+\Z", a):
         atype = "position"
-    elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
+    elif re.match(r"(([0-9]+-)?[0-9]+,)*([0-9]+-)?[0-9]+\Z", a):
         atype = "span"
     elif a in ("melee", "ranged"):
         atype = "range"
@@ -491,14 +584,17 @@ def argmatch(formals, optional_formals, actuals, optional_actuals):
 @total_ordering
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None,
+    def __init__(self, namespace, filename, lineno=None, lineno_end=None, docstring=None, args=None,
                  optional_args=None, deprecated=False, deprecation_level=0, removal_version=None):
         self.namespace = namespace
         self.filename = filename
         self.lineno = lineno
+        self.lineno_end = lineno_end
         self.docstring = docstring
         self.args = args
-        self.optional_args = optional_args
+        self._raw_optional_args = optional_args
+        self.optional_args = {}
+        self.body = []
         self.deprecated = deprecated
         self.deprecation_level = deprecation_level
         self.removal_version = removal_version
@@ -526,7 +622,7 @@ class Reference:
             return self.filename > other.filename
 
     def mismatches(self):
-        copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args, self.optional_args)
+        copy = Reference(self.namespace, self.filename, self.lineno, self.lineno_end, self.docstring, self.args, self._raw_optional_args)
         copy.undef = self.undef
         for filename in self.references:
             mis = [(ln,a,oa) for (ln,a,oa) in self.references[filename] if a is not None and not argmatch(self.args, self.optional_args, a, oa)]
@@ -549,8 +645,8 @@ class States(enum.Enum):
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
-    tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
+    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + r"))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
+    tag_parse = re.compile(r"\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
@@ -578,7 +674,7 @@ class CrossRef:
         if self.exports(defn.namespace):
             # Macros and resources in subtrees with export=yes are global
             return True
-        elif not self.filelist.neighbors(defn.filename, fn):
+        elif defn.filename != fn and not self.filelist.neighbors(defn.filename, fn):
             # Otherwise, must be in the same subtree.
             return False
         else:
@@ -658,7 +754,7 @@ class CrossRef:
                                   % (filename, n+1), file=sys.stderr)
                         else:
                             name = tokens[1]
-                            here = Reference(namespace, filename, n+1, line, args=tokens[2:], optional_args=[])
+                            here = Reference(namespace, filename, n+1, line, None, args=tokens[2:], optional_args=[])
                             here.hash = hashlib.md5()
                             here.docstring = line.lstrip()[8:] # Strip off #define_
                             current_docstring = None
@@ -692,6 +788,8 @@ class CrossRef:
                             current_docstring = None
                             state = States.OUTSIDE
                     elif state != States.OUTSIDE and line.strip().endswith("#enddef"):
+                        end_def_index = line.index("#enddef")
+                        here.body.append(line[0:end_def_index])
                         here.hash.update(line.encode("utf8"))
                         here.hash = here.hash.digest()
                         if name in self.xref:
@@ -708,15 +806,22 @@ class CrossRef:
                                             % (here, name, defn), file=sys.stderr)
                         if name not in self.xref:
                             self.xref[name] = []
+
+                        here.lineno_end = n+1
                         self.xref[name].append(here)
                         state = States.OUTSIDE
                     elif state == States.MACRO_HEADER and line.strip():
                         if line.strip().startswith("#arg"):
                             state = States.MACRO_OPTIONAL_ARGUMENT
-                            here.optional_args.append(line.strip().split()[1])
+                            here._raw_optional_args.append([line.strip().split()[1],""])
                         elif line.strip()[0] != "#":
                             state = States.MACRO_BODY
-                    elif state == States.MACRO_OPTIONAL_ARGUMENT and "#endarg" in line:
+                    elif state == States.MACRO_OPTIONAL_ARGUMENT and not "#endarg" in line:
+                        here._raw_optional_args[-1][1] += line
+                    elif state == States.MACRO_OPTIONAL_ARGUMENT:
+                        end_arg_index = line.index("#endarg")
+                        here._raw_optional_args[-1][1] += line[0:end_arg_index]
+                        here.optional_args = dict(here._raw_optional_args)
                         state = States.MACRO_HEADER
                         continue
                     if state == States.MACRO_HEADER:
@@ -741,6 +846,8 @@ class CrossRef:
                                 print("Deprecation line not matched found in {}, line {}".format(filename, n+1), file=sys.stderr)
                         else:
                             here.docstring += line.lstrip()[1:]
+                    if state == States.MACRO_BODY:
+                        here.body.append(line)
                     if state in (States.MACRO_HEADER, States.MACRO_OPTIONAL_ARGUMENT, States.MACRO_BODY):
                         here.hash.update(line.encode("utf8"))
                     elif line.strip().startswith("#undef"):
@@ -784,10 +891,16 @@ class CrossRef:
         except UnicodeDecodeError as e:
             print('wmlscope: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
 
-    def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
+    def __init__(self, dirpath=[], filelist=None, exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
-        self.filelist = Forest(dirpath, exclude)
-        self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
+        if filelist is None:
+            self.filelist = Forest(dirpath, exclude)
+            self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
+        else:
+            # All specified files share the same namespace
+            self.filelist = [("src", filename) for filename in filelist]
+            self.dirpath = ["src"]
+            
         self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
@@ -797,7 +910,7 @@ class CrossRef:
         all_in = []
         if self.warnlevel >=2 or progress:
             print("*** Beginning definition-gathering pass...")
-        for (namespace, filename) in self.filelist.generator():
+        for (namespace, filename) in self.filelist:
             all_in.append((namespace, filename))
             if self.warnlevel > 1:
                 print(filename + ":")
@@ -881,12 +994,10 @@ class CrossRef:
                                     # Count the number of actual arguments.
                                     # Set args to None if the call doesn't
                                     # close on this line
-                                    (args, optional_args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
-                                    if brackdepth > 0 or parendepth > 0:
+                                    (args, optional_args, is_unfinished) = parse_macroref(match.start(0), line)
+                                    if is_unfinished:
                                         args = None
                                         optional_args = None
-                                    else:
-                                        args.pop(0)
                                     #if args:
                                     #    print('"%s", line %d: args of %s is %s' \
                                     #          % (fn, n+1, name, args))
@@ -909,7 +1020,7 @@ class CrossRef:
                                 for pattern in split_filenames(match):
                                     for name in expand_square_braces(pattern):
                                         # Catches maps that look like macro names.
-                                        if (name.endswith(".map") or name.endswith(".mask")):
+                                        if (ismap(name)):
                                             if name.startswith("{~"):
                                                 name = name[2:]
                                             elif name.startswith("{"):
@@ -971,9 +1082,10 @@ class CrossRef:
                 except UnicodeDecodeError as e:
                     pass # to not have the invalid UTF-8 file warning printed twice
         # Check whether each namespace has a defined export property
-        for namespace in self.dirpath:
-            if namespace not in self.properties or "export" not in self.properties[namespace]:
-                print("warning: %s has no export property" % namespace)
+        if self.warnlevel >= 1:
+            for namespace in self.dirpath:
+                if namespace not in self.properties or "export" not in self.properties[namespace]:
+                    print("warning: %s has no export property" % namespace)
     def exports(self, namespace):
         return namespace in self.properties and self.properties[namespace].get("export") == "yes"
     def subtract(self, filelist):
@@ -994,91 +1106,6 @@ class CrossRef:
             return len(self.fileref[name].references)
         except KeyError:
             return 0
-
-#
-# String translations from po files.  The advantage of this code is that it
-# does not require the gettext binary message catalogs to have been compiled.
-# The disadvantage is that it eats lots of core!
-#
-
-
-class TranslationError(Exception):
-    def __init__(self, textdomain, isocode):
-        self.isocode = isocode
-        self.textdomain = textdomain
-    def __str__(self):
-        return "No translations found for %s/%s.\n" % (
-            self.textdomain, self.isocode)
-
-class Translation(dict):
-    "Parses a po file to create a translation dictionary."
-    def __init__(self, textdomain, isocode, topdir=""):
-        self.textdomain = textdomain
-        self.isocode = isocode
-        self.gettext = {}
-        if self.isocode != "C":
-            isocode2 = isocode[:isocode.rfind("_")]
-            for code in [isocode, isocode2]:
-                fn = "po/%s/%s.po" % (textdomain, code)
-                if topdir: fn = os.path.join(topdir, fn)
-                try:
-                    f = file(fn)
-                    break
-                except IOError:
-                    pass
-            else:
-                raise TranslationError(textdomain, self.isocode)
-
-            expect = False
-            fuzzy = "#, fuzzy\n"
-            gettext = f.read().decode("utf8")
-            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").finditer(gettext)
-            msgid = ""
-            for match in matches:
-                text = "".join(re.compile('"(.*?)"').findall(match.group(2)))
-                if match.group(1) == "msgid":
-                    msgid = text.replace("\\n", "\n")
-                    expect = gettext[match.start(1) - len(fuzzy):match.start(1)] != fuzzy
-                elif expect:
-                    self.gettext[msgid] = text.replace("\\n", "\n")
-    def get(self, key, dflt):
-        if self.isocode == "C":
-            if key:
-                return key[key.find("^") + 1:]
-            return "?"
-        else:
-            t = self.gettext.get(key, dflt)
-            if not t:
-                if key:
-                    return key[key.find("^") + 1:]
-                return "?"
-            return t
-    def __getitem__(self, key):
-        if self.isocode == "C":
-            return key
-        else:
-            return self.gettext[key]
-    def __contains__(self, key):
-        if self.isocode == "C":
-            return True
-        else:
-            return key in self.gettext
-
-class Translations:
-    "Wraps around Translation to support multiple languages and domains."
-    def __init__(self, topdir = ""):
-        self.translations = {}
-        self.topdir = topdir
-    def get(self, textdomain, isocode, key, default):
-        t = (textdomain, isocode)
-        if not t in self.translations:
-            try:
-                self.translations[t] = Translation(textdomain, isocode, self.topdir)
-            except TranslationError as e:
-                print(str(e), file=sys.stderr)
-                self.translations[t] = Translation(textdomain, "C", self.topdir)
-        result = self.translations[t].get(key, default)
-        return result
 
 ## Namespace management
 #
@@ -1121,8 +1148,8 @@ def resolve_unit_cfg(namespace, utype, resource=None):
     else:
         resource = utype
     loc = namespace_directory(namespace) + "units/" + resource
-    if not loc.endswith(".cfg"):
-        loc += ".cfg"
+    if not loc.endswith(default_wml_extension):
+        loc += default_wml_extension
     return loc
 
 def resolve_unit_image(namespace, subdir, resource):

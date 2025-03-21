@@ -12,7 +12,7 @@ import urllib.parse
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser3 as wmlparser3
 
-PICS_LOCATION = "../../pics"
+PICS_LOCATION = os.path.join("..", "..", "pics")
 
 # Icons for mainline terrains used on the unit details page
 TERRAIN_ICONS = {
@@ -50,7 +50,7 @@ RESISTANCES = [
     ("arcane", "attacks/faerie-fire.png")
 ]
 
-WESMERE_CSS_VERSION = "1.1.1"
+WESMERE_CSS_VERSION = "1.2.0"
 WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
 
 WESMERE_HEADER = '''\
@@ -61,7 +61,6 @@ WESMERE_HEADER = '''\
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
 	<link rel="stylesheet" type="text/css" href="%(cssprefix)s/wesmere/css/wesmere-%(cssver)s.css" />
@@ -119,8 +118,8 @@ WESMERE_FOOTER = '''\
 
 <div id="footer"><div id="footer-content"><div>
 	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
-	Copyright &copy; 2003&ndash;2021 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
-	Site design Copyright &copy; 2017&ndash;2021 by Iris Morelle.
+	Copyright &copy; 2003&ndash;2025 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
+	Site design Copyright &copy; 2017&ndash;2025 by Iris Morelle
 </div></div></div>
 
 </body></html>
@@ -132,8 +131,8 @@ HTML_ENTITY_HORIZONTAL_BAR = '&#8213;'
 HTML_ENTITY_MULTIPLICATION_SIGN = '&#215;'
 HTML_ENTITY_FIGURE_DASH = '&#8210;'
 
-PRE_PLACEHOLDER_CAMPAIGNS = "PLACE CAMPAIGNS HERE\n"
-PRE_PLACEHOLDER_ERAS = "PLACE ERAS HERE\n"
+PRE_PLACEHOLDER_CAMPAIGNS = b"PLACE CAMPAIGNS HERE\n"
+PRE_PLACEHOLDER_ERAS = b"PLACE ERAS HERE\n"
 
 def website_header(title='', path='../../', classes=[]):
     """Returns the website header with the specified parameters."""
@@ -177,6 +176,11 @@ def int_fallback(str_value, int_fallback=0):
     except ValueError:
         return int_fallback
 
+
+def path2url(url):
+    if url is None:
+        return url
+    return re.sub(r'\\', '/', url)
 
 def cleanurl(url):
     """
@@ -563,12 +567,12 @@ class HTMLOutput:
 
         # Campaigns
         add_menu("campaigns_menu", _("addon_type^Campaign"))
-        write(PRE_PLACEHOLDER_CAMPAIGNS)
+        write(PRE_PLACEHOLDER_CAMPAIGNS.decode('utf-8'))
         end_menu()
 
         # Eras
         add_menu("eras_menu", _("Era"))
-        write(PRE_PLACEHOLDER_ERAS)
+        write(PRE_PLACEHOLDER_ERAS.decode('utf-8'))
         end_menu()
 
         # Races / Factions
@@ -665,7 +669,7 @@ class HTMLOutput:
                     name = self.wesnoth.get_unit_value(un, "name",
                                                        translation=self.translation.translate)
                     if not name:
-                        error_message("Warning: Unit uid=" + uid + " has no name.\n")
+                        error_message("Warning: Unit uid=%s has no name.\n" % uid)
                         name = uid
                     add_menuitem(link, name)
                 end_menu()
@@ -732,7 +736,7 @@ class HTMLOutput:
             error_message("Warning: Missing image for unit %s(%s).\n" %
                           (u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
-        icpic = image_collector.add_image_check(self.addon, image)
+        icpic = image_collector.add_image_check(self.addon, os.path.normpath(image))
         if not icpic.ipath:
             error_message("Warning: No picture %s for unit %s.\n" %
                           (image, u.get_text_val("id")))
@@ -744,7 +748,7 @@ class HTMLOutput:
                                                 no_tc=True,
                                                 check_transparent=True)
             portrait = os.path.join(PICS_LOCATION, picname)
-        return image, portrait
+        return path2url(image), path2url(portrait)
 
     def get_abilities(self, u):
         anames = []
@@ -758,7 +762,7 @@ class HTMLOutput:
                 try:
                     id = ability.get_text_val("id")
                 except AttributeError as e:
-                    error_message("Error: Ignoring ability " + ability.debug())
+                    error_message("Error: Ignoring ability %s" % ability.debug())
                     continue
                 if id in already:
                     continue
@@ -808,10 +812,12 @@ class HTMLOutput:
             write('<col class="col%d" />' % i)
         write('</colgroup>')
 
-        pic = image_collector.add_image("general",
-                                        "../../../images/misc/leader-crown.png",
-                                        no_tc=True)
-        crownimage = cleanurl(os.path.join(PICS_LOCATION, pic))
+        pic = image_collector.add_image(
+            "general",
+            os.path.join("..", "..", "..", "images", "misc", "leader-crown.png"),
+            no_tc=True
+        )
+        crownimage = cleanurl(path2url(os.path.join(PICS_LOCATION, pic)))
         ms = None
         for row in range(len(rows)):
             write('<tr>\n')
@@ -926,11 +932,11 @@ class HTMLOutput:
 
                                 r = T(attack, "range")
                                 t = T(attack, "type")
-                                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
-                                range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
+                                range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
+                                range_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, range_icon.id_name)))
                                 range_alt_text = 'attack range %s' % cleantext(_(r), quote=False)
-                                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
-                                type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
+                                type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
+                                type_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, type_icon.id_name)))
                                 type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
                                 x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
                                 write (x)
@@ -950,9 +956,15 @@ class HTMLOutput:
                                         sname = T(special, "name")
                                         if sname:
                                             s.append(sname)
+                                accuracy = attack.get_text_val("accuracy", default="0")
+                                parry = attack.get_text_val("parry", default="0")
+                                if accuracy != "0":
+                                    s.append("accuracy "+accuracy+"%")
+                                if parry != "0":
+                                    s.append("parry "+parry+"%")
+                                if s:
                                     s = ", ".join(s)
-                                    if s:
-                                        write(" (%s)" % cleantext(s, quote=False))
+                                    write(" (%s)" % cleantext(s, quote=False))
                             write('</div>')
 
                         write('</div>')
@@ -1187,11 +1199,12 @@ class HTMLOutput:
                 if not icon:
                     icon = "attacks/%s.png" % aid
 
-                image_add = image_collector.add_image_check(self.addon, icon, no_tc=True)
+                image_add = image_collector.add_image_check(self.addon, os.path.normpath(icon), no_tc=True)
                 if not image_add.ipath:
                     error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                         icon, uid))
-                    icon = os.path.join(PICS_LOCATION, "unit$elves-wood$shaman.png")
+                    # core/images/units/elves-wood/shaman.png
+                    icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA.png")
                 else:
                     icon = os.path.join(PICS_LOCATION, image_add.id_name)
                 write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
@@ -1199,7 +1212,7 @@ class HTMLOutput:
                 write('<td><b>%s</b></td>' % cleantext(aname, quote=False))
 
                 t = T(attack, "type")
-                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
+                type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
                 type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
                 type_alt_text = cleantext('%s attack' % t, quote=False)
                 x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_(t), quote=False))
@@ -1211,7 +1224,7 @@ class HTMLOutput:
                 write('<td><i>%s</i></td>' % x)
 
                 r = T(attack, "range")
-                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
+                range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
                 range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
                 range_alt_text = cleantext('%s attack' % r, quote=False)
                 x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (range_icon, range_alt_text, cleantext(_(r), quote=False))
@@ -1224,9 +1237,12 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
-                        else:
-                            error_message("Warning: Weapon special %s has no name for %s.\n" %
-                                          (special.name.decode("utf8"), uid))
+                accuracy = attack.get_text_val("accuracy", default="0")
+                parry = attack.get_text_val("parry", default="0")
+                if accuracy != "0":
+                    s.append(cleantext("accuracy "+accuracy+"%"))
+                if parry != "0":
+                    s.append(cleantext("parry "+parry+"%"))
                 if s:
                     write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')
@@ -1256,7 +1272,7 @@ class HTMLOutput:
                 write('<tr>\n')
             else:
                 write('<td></td>')
-            picname = image_collector.add_image(self.addon, ricon, no_tc=True)
+            picname = image_collector.add_image(self.addon, os.path.normpath(ricon), no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
             write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_(rid), quote=False), ' '.join(resist_classes), resist_str))
@@ -1299,7 +1315,7 @@ class HTMLOutput:
             if ticon:
                 terrainlist.append((name, tid, ticon))
             else:
-                error_message("Terrain " + tid + " has no symbol_image\n")
+                error_message("Terrain %s has no symbol_image\n" % tid)
         terrainlist.sort()
 
         for tname, tid, ticon in terrainlist:
@@ -1340,7 +1356,7 @@ class HTMLOutput:
 
             write('<tr>\n')
             picname = image_collector.add_image(self.addon,
-                                                "terrain/" + ticon + ".png",
+                                                os.path.normpath("terrain/%s.png" % ticon),
                                                 no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
@@ -1368,9 +1384,9 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     else:
         cid = "mainline"
     if not cid:
-        cid = addon + "_" + campaign.get_text_val("define")
+        cid = "%s_%s" % (addon, campaign.get_text_val("define"))
 
-    print(("campaign " + addon + " " + cid + " " + isocode))
+    print("campaign %s %s %s" % (addon, cid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1396,7 +1412,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
 
-    print("era " + addon + " " + eid + " " + isocode)
+    print("era %s %s %s" % (addon, eid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1452,11 +1468,14 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         html.write_unit_report(output, unit)
         output.close()
 
-def html_postprocess_file(filename, isocode, batchlist):
-    print("postprocessing " + repr(filename))
-    chtml = ""
-    ehtml = ""
+popup_campaigns_html = {}
+popup_eras_html = {}
 
+def get_popup_campaigns_html(isocode, batchlist):
+    if isocode in popup_campaigns_html:
+        return popup_campaigns_html[isocode]
+
+    chtml = ""
     cids = [[], []]
     for addon in batchlist:
         for campaign in addon.get("campaigns", []):
@@ -1481,6 +1500,14 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and cids[1]:
             chtml += '</ul><ul>'
 
+    popup_campaigns_html[isocode] = bytes(chtml, "utf-8")
+    return popup_campaigns_html[isocode]
+
+def get_popup_eras_html(isocode, batchlist):
+    if isocode in popup_eras_html:
+        return popup_eras_html[isocode]
+
+    ehtml = ""
     eids = [[], []]
     for addon in batchlist:
         for era in addon.get("eras", []):
@@ -1505,17 +1532,26 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and eids[1]:
             ehtml += '</ul><ul>'
 
+    popup_eras_html[isocode] = bytes(ehtml, "utf-8")
+    return popup_eras_html[isocode]
+
+def html_postprocess_file(filename, isocode, batchlist):
     f = open(filename, "r+b")
-    html = f.read().decode("utf8")
-    html = html.replace(PRE_PLACEHOLDER_CAMPAIGNS, chtml)
-    html = html.replace(PRE_PLACEHOLDER_ERAS, ehtml)
+    b_html = f.read()
+    b_html = b_html.replace(PRE_PLACEHOLDER_CAMPAIGNS, get_popup_campaigns_html(isocode, batchlist))
+    b_html = b_html.replace(PRE_PLACEHOLDER_ERAS, get_popup_eras_html(isocode, batchlist))
     f.seek(0)
-    f.write(html.encode("utf8"))
+    f.write(b_html)
     f.close()
 
 def html_postprocess_all(batchlist):
+    print("Postprocessing HTML...")
     for isocode, filename in all_written_html_files:
         html_postprocess_file(filename, isocode, batchlist)
+
+    popup_eras_html.clear()
+    popup_campaigns_html.clear()
+
 
 def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")

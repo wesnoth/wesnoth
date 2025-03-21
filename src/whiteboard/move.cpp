@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,14 +19,14 @@
 
 #include "whiteboard/move.hpp"
 
+#include <utility>
+
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "font/standard_colors.hpp"
 #include "game_board.hpp"
@@ -34,7 +34,6 @@
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -44,13 +43,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_ptr& move)
 {
 	assert(move);
 	return move->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_const_ptr& move)
 {
 	assert(move);
 	return move->print(s);
@@ -68,7 +67,7 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
+move::move(std::size_t team_index, bool hidden, const unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
   unit_underlying_id_(u.underlying_id()),
@@ -76,7 +75,7 @@ move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
   turn_number_(0),
-  arrow_(arrow),
+  arrow_(std::move(arrow)),
   fake_unit_(std::move(fake_unit)),
   arrow_brightness_(),
   arrow_texture_(),
@@ -106,22 +105,22 @@ move::move(const config& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("move: Invalid underlying_id");
 	unit_underlying_id_ = unit_itor->underlying_id();
 
 	// Construct and validate route_
-	const config& route_cfg = cfg.child("route_");
+	auto route_cfg = cfg.optional_child("route_");
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
-	route_->move_cost = route_cfg["move_cost"];
-	for(const config& loc_cfg : route_cfg.child_range("step")) {
+	route_->move_cost = route_cfg["move_cost"].to_int();
+	for(const config& loc_cfg : route_cfg->child_range("step")) {
 		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
-	for(const config& mark_cfg : route_cfg.child_range("mark")) {
+	for(const config& mark_cfg : route_cfg->child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
-			= pathfind::marked_route::mark(mark_cfg["turns"],
+			= pathfind::marked_route::mark(mark_cfg["turns"].to_int(),
 				mark_cfg["zoc"].to_bool(),
 				mark_cfg["capture"].to_bool(),
 				mark_cfg["invisible"].to_bool());
@@ -364,7 +363,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")";
-	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
+	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit), false));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
@@ -401,7 +400,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::move_info, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 	}
 }
 
@@ -481,7 +480,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::gameboard->teams().at(viewer_team())) != nullptr) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(), display::get_singleton()->viewing_team()) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 
@@ -548,7 +547,7 @@ int move::calculate_moves_left(unit& u)
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
+				&& resources::controller->current_side() == display::get_singleton()->viewing_team().side()) {
 			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 

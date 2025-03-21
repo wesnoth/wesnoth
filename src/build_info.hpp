@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,7 @@ enum LIBRARY_ID
 	LIB_LUA,
 
 	LIB_CRYPTO,
+	LIB_CURL,
 
 	LIB_CAIRO,
 	LIB_PANGO,
@@ -34,7 +35,6 @@ enum LIBRARY_ID
 	LIB_SDL,
 	LIB_SDL_IMAGE,
 	LIB_SDL_MIXER,
-	LIB_PNG,
 
 	LIB_COUNT
 };

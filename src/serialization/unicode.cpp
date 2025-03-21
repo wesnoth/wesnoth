@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -20,13 +20,11 @@
  * Unicode support functions.
  */
 
-#include "serialization/ucs4_convert_impl.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"
 
-#include <cassert>
 #include <limits>
 
 static lg::log_domain log_engine("engine");
@@ -49,7 +47,7 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 	return count;
 }
 
-std::string lowercase(const std::string& s)
+std::string lowercase(std::string_view s)
 {
 	if(!s.empty()) {
 		utf8::iterator itor(s);
@@ -66,10 +64,10 @@ std::string lowercase(const std::string& s)
 		res.append(itor.substr().second, s.end());
 		return res;
 	}
-	return s;
+	return std::string();
 }
 
-std::size_t index(const std::string& str, const std::size_t index)
+std::size_t index(std::string_view str, const std::size_t index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
@@ -84,7 +82,7 @@ std::size_t index(const std::string& str, const std::size_t index)
 	return i;
 }
 
-std::size_t size(const std::string& str)
+std::size_t size(std::string_view str)
 {
 	unsigned int chr, i = 0, len = str.size();
 	try {

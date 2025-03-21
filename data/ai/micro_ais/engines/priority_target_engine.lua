@@ -20,15 +20,15 @@ return {
                 -- 1. next to target
                 -- 2. not occupied by an allied unit (except for unit itself)
                 W.store_reachable_locations {
-                    { "filter", { id = attacker.id } },
-                    { "filter_location", {
-                        { "filter_adjacent_location", {
-                            { "filter", { id = target_id } }
-                        } },
-                        { "not", {
-                            { "filter", { { "not", { id = attacker.id } } } }
-                        } }
-                    } },
+                    wml.tag.filter { id = attacker.id },
+                    wml.tag.filter_location {
+                        wml.tag.filter_adjacent_location {
+                            wml.tag.filter { id = target_id }
+                        },
+                        wml.tag["not"] {
+                            wml.tag.filter { wml.tag["not"] { id = attacker.id } }
+                        }
+                    },
                     moves = "current",
                     variable = "tmp_locs"
                 }
@@ -51,7 +51,7 @@ return {
                        name = "ai_default_rca::aspect_attacks",
                        id = "limited_attack",
                        invalidate_on_gamestate_change = "yes",
-                       { "filter_enemy", { id = target_id } }
+                       wml.tag.filter_enemy { id = target_id }
                     }
                 )
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -47,7 +46,7 @@ static lg::log_domain log_wml("wml");
 namespace game_events {
 
 namespace builtin_conditions {
-	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-infinity");
+	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-infinity");
 
 	bool have_unit(const vconfig& cfg)
 	{
@@ -55,7 +54,7 @@ namespace builtin_conditions {
 			return false;
 		}
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-			? utils::parse_ranges(cfg["count"]) : default_counts;
+			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
 		for(const unit &i : resources::gameboard->units()) {
@@ -92,7 +91,7 @@ namespace builtin_conditions {
 		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-		? utils::parse_ranges(cfg["count"]) : default_counts;
+		? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		return in_ranges<int>(res.size(), counts);
 	}
 
@@ -210,19 +209,6 @@ bool conditional_passed(const vconfig& cond)
 	}
 
 	return matches;
-}
-
-bool matches_special_filter(const config &cfg, const vconfig& filter)
-{
-	if (!cfg) {
-		WRN_NG << "attempt to filter attack for an event with no attack data.";
-		// better to not execute the event (so the problem is more obvious)
-		return false;
-	}
-	// Though it may seem wasteful to put this on the heap, it's necessary.
-	// matches_filter() could potentially call a WFL formula, which would call shared_from_this().
-	auto attack = std::make_shared<const attack_type>(cfg);
-	return attack->matches_filter(filter.get_parsed_config());
 }
 
 } // end namespace game_events

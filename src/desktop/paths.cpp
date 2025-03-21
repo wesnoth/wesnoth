@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,11 +17,10 @@
 
 #include "desktop/paths.hpp"
 
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
@@ -33,7 +32,6 @@
 
 // For username stuff on Unix:
 #include <pwd.h>
-#include <sys/types.h>
 
 #else // _WIN32
 
@@ -106,7 +104,15 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 	// reasoning here is that if any or all of them are non-empty, they are
 	// probably used for _something_ that might be of interest to the user (if not
 	// directly and actively controlled by the user themselves).
-	static const std::vector<std::string> candidates { "/media", "/mnt" };
+	// Note that the first candidate is actually /run/media/USERNAME -- we need
+	// to fetch the username at runtime from passwd to complete the path.
+	std::vector<std::string> candidates { "/media", "/mnt" };
+
+	// Fetch passwd entry for the effective user the current process runs as
+	if(const passwd* pw = getpwuid(geteuid()); pw && pw->pw_name && pw->pw_name[0]) {
+		candidates.emplace(candidates.begin(), "/run/media/");
+		candidates.front() += pw->pw_name;
+	}
 
 	for(const auto& mnt : candidates) {
 		bsys::error_code e;
@@ -144,13 +150,15 @@ inline std::string pretty_path(const std::string& path)
 
 inline config get_bookmarks_config()
 {
-	const config& cfg = preferences::get_child("dir_bookmarks");
-	return cfg ? cfg : config{};
+	const auto& cfg = prefs::get().dir_bookmarks();
+	return cfg.has_value() ? cfg.value() : config();
+
+//	return cfg ? *cfg : config{};
 }
 
 inline void commit_bookmarks_config(config& cfg)
 {
-	preferences::set_child("dir_bookmarks", cfg);
+	prefs::get().set_dir_bookmarks(cfg);
 }
 
 } // unnamed namespace
@@ -189,50 +197,50 @@ std::ostream& operator<<(std::ostream& os, const path_info& pinf)
 	return os << pinf.name << " [" << pinf.label << "] - " << pinf.path;
 }
 
-std::vector<path_info> game_paths(unsigned path_types)
+std::vector<path_info> game_paths(const std::set<GAME_PATH_TYPES>& paths)
 {
 	static const std::string& game_bin_dir = pretty_path(filesystem::get_exe_dir());
 	static const std::string& game_data_dir = pretty_path(game_config::path);
 	static const std::string& game_user_data_dir = pretty_path(filesystem::get_user_data_dir());
-	static const std::string& game_user_pref_dir = pretty_path(filesystem::get_user_config_dir());
+	static const std::string& game_editor_map_dir = pretty_path(filesystem::get_legacy_editor_dir() + "/maps");
 
 	std::vector<path_info> res;
 
-	if(path_types & GAME_BIN_DIR && !have_path(res, game_bin_dir)) {
+	if(paths.count(GAME_BIN_DIR) > 0 && !have_path(res, game_bin_dir)) {
 		res.push_back({{ N_("filesystem_path_game^Game executables"), GETTEXT_DOMAIN }, "", game_bin_dir});
 	}
 
-	if(path_types & GAME_CORE_DATA_DIR && !have_path(res, game_data_dir)) {
+	if(paths.count(GAME_CORE_DATA_DIR) > 0 && !have_path(res, game_data_dir)) {
 		res.push_back({{ N_("filesystem_path_game^Game data"), GETTEXT_DOMAIN }, "", game_data_dir});
 	}
 
-	if(path_types & GAME_USER_DATA_DIR && !have_path(res, game_user_data_dir)) {
+	if(paths.count(GAME_USER_DATA_DIR) > 0 && !have_path(res, game_user_data_dir)) {
 		res.push_back({{ N_("filesystem_path_game^User data"), GETTEXT_DOMAIN }, "", game_user_data_dir});
 	}
 
-	if(path_types & GAME_USER_PREFS_DIR && !have_path(res, game_user_pref_dir)) {
-		res.push_back({{ N_("filesystem_path_game^User preferences"), GETTEXT_DOMAIN }, "", game_user_pref_dir});
+	if(paths.count(GAME_EDITOR_MAP_DIR) > 0 && !have_path(res, game_editor_map_dir)) {
+		res.push_back({{ N_("filesystem_path_game^Editor maps"), GETTEXT_DOMAIN }, "", game_editor_map_dir});
 	}
 
 	return res;
 }
 
-std::vector<path_info> system_paths(unsigned path_types)
+std::vector<path_info> system_paths(const std::set<SYSTEM_PATH_TYPES>& paths)
 {
 	static const std::string& home_dir = user_profile_dir();
 
 	std::vector<path_info> res;
 
-	if(path_types & SYSTEM_USER_PROFILE && !home_dir.empty()) {
+	if(paths.count(SYSTEM_USER_PROFILE) > 0 && !home_dir.empty()) {
 		res.push_back({{ N_("filesystem_path_system^Home"), GETTEXT_DOMAIN }, "", home_dir});
 	}
 
-	if(path_types & SYSTEM_ALL_DRIVES) {
+	if(paths.count(SYSTEM_ALL_DRIVES) > 0) {
 		enumerate_storage_devices(res);
 	}
 
 #ifndef _WIN32
-	if(path_types & SYSTEM_ROOTFS) {
+	if(paths.count(SYSTEM_ROOTFS) > 0) {
 		res.push_back({{ N_("filesystem_path_system^Root"), GETTEXT_DOMAIN }, "", "/"});
 	}
 #endif

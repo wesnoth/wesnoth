@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,6 @@
 
 #include <string>
 #include <vector>
-
-namespace ai {
-	class readonly_context_impl;
-}
 
 /** This class encapsulates the recall list of a team. */
 class recall_list_manager {
@@ -69,7 +65,7 @@ public:
 	/** Erase by index. */
 	iterator erase_index(std::size_t index);
 	/** Erase an iterator to this object. */
-	iterator erase(iterator it);
+	iterator erase(const iterator& it);
 
 	/** Find the index of a unit by its id. */
 	std::size_t find_index(const std::string & unit_id) const;

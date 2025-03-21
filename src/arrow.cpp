@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "arrow.hpp"
 
 #include "draw.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_arrows("arrows");
@@ -31,8 +30,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(bool hidden)
-	: layer_(display::LAYER_ARROWS)
-	, color_("red")
+	: color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()
 	, previous_path_()
@@ -137,13 +135,12 @@ bool arrow::path_contains(const map_location& hex) const
 	return contains;
 }
 
-void arrow::draw_hex(const map_location& hex)
+image::locator arrow::get_image_for_loc(const map_location& hex) const
 {
-	if(path_contains(hex)) {
-		display* disp = display::get_singleton();
-		disp->drawing_buffer_add(layer_, hex, [disp, tex = image::get_texture(symbols_map_[hex])](const rect& dest) {
-			draw::blit(tex, disp->scaled_to_zoom({dest.x, dest.y, tex.w(), tex.h()}));
-		});
+	if(auto iter = symbols_map_.find(hex); iter != symbols_map_.end()) {
+		return iter->second;
+	} else {
+		return {}; // TODO: optional<locator>? Practically I don't think this path gets hit
 	}
 }
 
@@ -199,12 +196,12 @@ void arrow::update_symbols()
 			teleport_out = true;
 
 		// calculate enter and exit directions, if available
-		map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
+		map_location::direction enter_dir = map_location::direction::indeterminate;
 		if (!start && !teleport_in)
 		{
 			enter_dir = hex->get_relative_dir(*(hex-1));
 		}
-		map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
+		map_location::direction exit_dir = map_location::direction::indeterminate;
 		if (!end && !teleport_out)
 		{
 			exit_dir = hex->get_relative_dir(*(hex+1));
@@ -214,7 +211,7 @@ void arrow::update_symbols()
 		if (teleport_out)
 		{
 			prefix = "teleport-out";
-			if (enter_dir != map_location::NDIRECTIONS)
+			if (enter_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(enter_dir);
 			}
@@ -222,7 +219,7 @@ void arrow::update_symbols()
 		else if (teleport_in)
 		{
 			prefix = "teleport-in";
-			if (exit_dir != map_location::NDIRECTIONS)
+			if (exit_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(exit_dir);
 			}
@@ -251,7 +248,7 @@ void arrow::update_symbols()
 				exit = exit + "_ending";
 			}
 
-			assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
+			//assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
 			if (enter_dir < exit_dir)
 			{
 				prefix = enter;
@@ -273,7 +270,7 @@ void arrow::update_symbols()
 		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
-		if (!image.file_exists())
+		if (!image::exists(image))
 		{
 			ERR_ARR << "Image " << image_filename << " not found.";
 			image = image::locator(game_config::images::missing);

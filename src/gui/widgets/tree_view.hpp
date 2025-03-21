@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,28 +35,6 @@ namespace implementation {
 
 // ------------ WIDGET -----------{
 
-class tree_view_node;
-
-/**
- * @ingroup GUIWidgetWML
- *
- * A tree view is a control that holds several items of the same or different types.
- * The items shown are called tree view nodes and when a node has children, these can be shown or hidden.
- * Nodes that contain children need to provide a clickable button in order to fold or unfold the children.
- *
- * The following states exist:
- * * state_enabled - the listbox is enabled.
- * * state_disabled - the listbox is disabled.
- * List with the tree view specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-------------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * indention_step_size      | @ref guivartype_unsigned "unsigned"            |0           |The number of pixels every level of nodes is indented from the previous level.
- * node                     | @ref guivartype_unsigned "unsigned"            |mandatory   |The tree view can contain multiple node sections. This part needs more documentation.
- * id                       | @ref guivartype_unsigned "unsigned"            |""          |.
- * return_value_id          | @ref guivartype_unsigned "unsigned"            |""          |.
- */
 class tree_view : public scrollbar_container
 {
 	friend struct implementation::builder_tree_view;
@@ -71,6 +49,11 @@ public:
 	~tree_view();
 
 	using scrollbar_container::finalize_setup;
+
+	const tree_view_node& get_root_node() const
+	{
+		return *root_node_;
+	}
 
 	tree_view_node& get_root_node()
 	{
@@ -105,6 +88,11 @@ public:
 	void set_indentation_step_size(const unsigned indentation_step_size)
 	{
 		indentation_step_size_ = indentation_step_size;
+	}
+
+	unsigned get_indentation_step_size() const
+	{
+		return indentation_step_size_;
 	}
 
 	tree_view_node* selected_item()
@@ -189,11 +177,11 @@ public:
 	static const std::string& type();
 
 	/** Optionally returns the node definition with the given id, or nullopt if not found. */
-	std::optional<decltype(node_definitions_)::const_iterator> get_node_definition(const std::string& id) const
+	utils::optional<decltype(node_definitions_)::const_iterator> get_node_definition(const std::string& id) const
 	{
 		const auto def = std::find_if(
 			node_definitions_.begin(), node_definitions_.end(), [&id](const auto& d) { return d.id == id; });
-		return def != node_definitions_.end() ? std::optional{def} : std::nullopt;
+		return def != node_definitions_.end() ? utils::make_optional(def) : utils::nullopt;
 	}
 
 private:
@@ -231,16 +219,13 @@ struct tree_view_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_tree_view : public builder_styled_widget
+struct builder_tree_view : public builder_scrollbar_container
 {
 	explicit builder_tree_view(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indentation_step_size;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Jody Northup
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
-#include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 
@@ -29,7 +28,7 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + ".cfg");
+	return filesystem::get_wml_persist_dir() + "/" + name_space + filesystem::wml_extension;
 }
 
 void persist_file_context::load()
@@ -70,7 +69,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 
 	bool ret = active->has_child("variables");
 	if (ret) {
-		config &cfg = active->child("variables");
+		config &cfg = active->mandatory_child("variables");
 		bool exists = cfg.has_attribute(global);
 		if (!exists) {
 			if (cfg.has_child(global)) {
@@ -100,7 +99,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 					name_space prev = working.prev();
 					active = get_node(cfg_, prev);
 					active->clear_children(working.node_);
-					if (active->has_child("variables") && active->child("variables").empty()) {
+					if (active->has_child("variables") && active->mandatory_child("variables").empty()) {
 						active->clear_children("variables");
 						active->remove_attribute("variables");
 					}
@@ -149,7 +148,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 			break;
 		}
 		active->clear_children(namespace_.node_);
-		if (active->has_child("variables") && active->child("variables").empty()) {
+		if (active->has_child("variables") && active->mandatory_child("variables").empty()) {
 			active->clear_children("variables");
 			active->remove_attribute("variables");
 		}
@@ -163,11 +162,11 @@ config persist_file_context::get_var(const std::string &global) const
 	config ret;
 	const config *active = get_node(cfg_, namespace_);
 	if (active && (active->has_child("variables"))) {
-		const config &cfg = active->child("variables");
+		const config &cfg = active->mandatory_child("variables");
 		std::size_t arrsize = cfg.child_count(global);
 		if (arrsize > 0) {
 			for (std::size_t i = 0; i < arrsize; i++)
-				ret.add_child(global,cfg.child(global,i));
+				ret.add_child(global, cfg.mandatory_child(global,i));
 		} else {
 			ret = pack_scalar(global,cfg[global]);
 		}

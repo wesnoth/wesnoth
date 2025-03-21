@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -250,11 +250,10 @@ public:
 			add_facet(-1,cfg_element);
 		}
 
-		config _default = this->cfg_.child("default");
-		if (_default) {
-			_default["id"] = "default_facet";
+		if (auto cfg_default = this->cfg_.optional_child("default")) {
+			cfg_default["id"] = "default_facet";
 			std::vector< aspect_ptr > default_aspects;
-			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));
+			engine::parse_aspect_from_config(*this, *cfg_default, parent_id_, std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
 				typesafe_aspect_ptr<T> b = std::dynamic_pointer_cast< typesafe_aspect<T>>(default_aspects.front());
 				if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
@@ -286,7 +285,7 @@ public:
 
 	virtual void recalculate() const
 	{
-		for(const auto& f : utils::reversed_view(facets_)) {
+		for(const auto& f : facets_ | utils::views::reverse) {
 			if (f->active()) {
 				this->value_ = f->get_ptr();
 				this->valid_ = true;

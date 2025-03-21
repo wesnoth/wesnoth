@@ -42,17 +42,23 @@ local function original_advances(unit)
 	return split_comma_units(variable), clean_type_func(variable)
 end
 
--- replace the unit's current advancements with the new set of units via object/effect
+-- forget previously chosen advancements
+-- replace the unit's current advancements with the new unit via object/effect
 local function set_advances(unit, array)
-	unit:add_modification("object", {
-		pickadvance = true,
-		take_only_once = false,
-		T.effect {
-			apply_to = "new_advancement",
-			replace = true,
-			types = array
-		}
-	})
+	unit:remove_modifications{
+		pickadvance = true
+	}
+	if #array == 1 then
+		unit:add_modification("object", {
+			pickadvance = true,
+			take_only_once = false,
+			T.effect {
+				apply_to = "new_advancement",
+				replace = true,
+				types = array
+			}
+		})
+	end
 end
 
 -- for table "arr" containing sets of [index,unit_type]
@@ -142,18 +148,20 @@ function pickadvance.pick_advance(unit)
 	if dialog_result.is_game_override then
 		local key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
 		wml.variables[key] = table.concat(dialog_result.game_override, ",")
+		for _, u in ipairs(wesnoth.units.find_on_map{side=unit.side, type=unit.type}) do
+			set_advances(u, dialog_result.unit_override)
+		end
 	end
 end
 
 -- make unit advancement tree viewable in the ingame help
 local known_units = {}
-local function make_unit_known(unit)  -- can be both unit or unit type
-	local type = unit.type or unit.id
+local function make_unit_type_known(type, advances_to)
 	if known_units[type] then return end
 	known_units[type] = true
 	wesnoth.add_known_unit(type)
-	for _, advance in ipairs(unit.advances_to) do
-		make_unit_known(wesnoth.unit_types[advance])
+	for _, advance in ipairs(advances_to) do
+		make_unit_type_known(wesnoth.unit_types[advance].id, wesnoth.unit_types[advance].advances_to)
 	end
 end
 
@@ -165,7 +173,7 @@ local function initialize_unit_x1y1()
 	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)
-	make_unit_known(unit)
+	make_unit_type_known(unit.type, unit.advances_to)
 	if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and unit.side == wesnoth.current.side then
 		pickadvance.pick_advance(unit)
 	end
@@ -197,28 +205,19 @@ on_event("start", function()
 	wml.variables.pickadvance_force_choice = wml.variables.pickadvance_force_choice or not map_has_recruits
 end)
 
--- set "fresh_turn" for the moveto event at the start of each side turn
-local fresh_turn = false
+-- check if there are any new units that need to be forced to make an advancement choice
 on_event("turn refresh", function()
-	fresh_turn = true
-end)
-
--- the first time a unit moves at the start of each side's turn, check if there are any new units that need to be forced to make an advancement choice
-on_event("moveto", function()
-	if fresh_turn then
-		fresh_turn = false
-		if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
-		for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
-			if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
-				pickadvance.pick_advance(unit)
-				if #unit.advances_to > 1 then
-					local len = #unit.advances_to
-					local rand = mathx.random(len)
-					unit.advances_to = { unit.advances_to[rand] }
-				end
-			else
-				initialize_unit(unit)
+	if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
+	for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
+		if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
+			pickadvance.pick_advance(unit)
+			if #unit.advances_to > 1 then
+				local len = #unit.advances_to
+				local rand = mathx.random(len)
+				unit.advances_to = { unit.advances_to[rand] }
 			end
+		else
+			initialize_unit(unit)
 		end
 	end
 end)

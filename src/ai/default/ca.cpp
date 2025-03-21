@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,9 +21,7 @@
 #include "ai/default/ca.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/rca.hpp"
-#include "ai/composite/stage.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
@@ -35,7 +33,6 @@
 #include "pathfind/teleport.hpp"
 
 #include <numeric>
-#include <boost/dynamic_bitset.hpp>
 
 #include <SDL2/SDL_timer.h>
 
@@ -277,15 +274,11 @@ move_leader_to_goals_phase::~move_leader_to_goals_phase()
 double move_leader_to_goals_phase::evaluate()
 {
 
-	const config &goal = get_leader_goal();
+	config goal = get_leader_goal();
 	//passive leader can reach a goal
-	if (!goal) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found";
-		return BAD_SCORE;
-	}
 
 	if (goal.empty()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty goal found";
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty or Nonexistent goal found";
 		return BAD_SCORE;
 	}
 
@@ -677,7 +670,6 @@ void get_villages_phase::find_villages(
 
 	std::size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> &teams_ = resources::gameboard->teams();
 
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.
@@ -706,9 +698,9 @@ void get_villages_phase::find_villages(
 		}
 
 		bool want_village = true, owned = false;
-		for(std::size_t n = 0; n != teams_.size(); ++n) {
-			owned = teams_[n].owns_village(current_loc);
-			if(owned && !current_team().is_enemy(n+1)) {
+		for(const team& t : resources::gameboard->teams()) {
+			owned = t.owns_village(current_loc);
+			if(owned && !current_team().is_enemy(t.side())) {
 				want_village = false;
 			}
 
@@ -941,7 +933,7 @@ bool get_villages_phase::remove_village(
 	bool result = false;
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
-		itor->second.erase(std::remove(itor->second.begin(), itor->second.end(), village), itor->second.end());
+		utils::erase(itor->second, village);
 		if(itor->second.empty()) {
 			result = true;
 			itor = remove_unit(reachmap, moves, itor);

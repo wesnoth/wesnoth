@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,14 +20,12 @@
 #include "draw.hpp"
 #include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
-#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "tooltips.hpp"
 
 #include <boost/regex.hpp>
 
@@ -159,8 +157,7 @@ protected:
 
 };
 namespace editor {
-location_palette::location_palette(editor_display &gui, const game_config_view& /*cfg*/,
-                                   editor_toolkit &toolkit)
+location_palette::location_palette(editor_display &gui, editor_toolkit &toolkit)
 		: common_palette()
 		, item_size_(20)
 		//TODO avoid magic number
@@ -197,7 +194,7 @@ void location_palette::hide(bool hidden)
 {
 	widget::hide(hidden);
 
-	font::clear_help_string();
+	disp_.clear_help_string();
 
 	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
 	palette_menu_button->set_overlay("");
@@ -302,14 +299,13 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {
 		dstrect.x = target.x;
-		dstrect.y = target.y + i * item_space_;
+		dstrect.y = target.y + static_cast<int>(i) * item_space_;
 		buttons_[i].set_location(dstrect);
 	}
 
 	set_location(target);
 	set_dirty(true);
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	disp_.set_help_string(get_help_string());
 }
 
 void location_palette::select_item(const std::string& item_id)
@@ -318,8 +314,7 @@ void location_palette::select_item(const std::string& item_id)
 		selected_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	disp_.set_help_string(get_help_string());
 }
 
 std::size_t location_palette::num_items()

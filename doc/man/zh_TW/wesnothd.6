@@ -26,8 +26,7 @@ wesnothd \- 韋諾之戰多人網路伺服器
 .
 .SH 摘要
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -54,12 +53,6 @@ wesnothd \- 韋諾之戰多人網路伺服器
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 綁定伺服器到指定的連接埠。如果不指定埠號，將會使用連接埠 \fB15000\fP。
-.TP 
-\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-為網路 I/O 設定工作執行緒的最大數量為 n（預設值：\fB5\fP；最大值：\fB30\fP）。
-.TP 
-\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-設定會被建立的工作執行緒的最大數量。如果設定為 \fB0\fP，則將沒有限制（預設值：\fB0\fP）。
 .TP 
 \fB\-V, \-\-version\fP
 顯示版本號碼並退出。
@@ -90,9 +83,6 @@ wesnothd \- 韋諾之戰多人網路伺服器
 \fBban_save_file\fP
 伺服器可讀可寫的（經gzip壓縮的）檔案的完整路徑或相對路徑。封禁清單將會被保存到這個檔案裡，並在伺服器啟動時再次讀取。
 .TP 
-\fBcompress_stored_rooms\fP
-指定房間檔案是否應該以壓縮形式讀寫。預設值為 \fByes\fP。
-.TP 
 \fBconnections_allowed\fP
 同一IP允許的連接數。（預設值：\fB5\fP）
 .TP 
@@ -100,12 +90,17 @@ wesnothd \- 韋諾之戰多人網路伺服器
 是否在 \fBuser_handler\fP 被使用時，防止沒有註冊的玩家進行登入。（預設值：false）
 .TP 
 \fBdisallow_names\fP
-伺服器不允許使用的名稱/暱稱。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。參閱 \fBglob\fP(7)
-來了解細節。預設值（如果沒有東西被指定就會用這個值）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 你可以送出伺服器指令到（與透過韋諾客戶端使用「/query ...」相同）的 fifo
 檔案的路徑。如果不指定，則預設為編譯階段所設定的路徑（預設：\fB/var/run/wesnothd/socket\fP）。
+.TP 
+\fBid\fP
+使用資料庫功能儲存遊戲資訊時伺服器的ID。 一般是接受客戶端的 major.minor 版本，例如1.16或1.17。
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP 中允許的訊息數量。（預設：\fB4\fP）
@@ -115,10 +110,6 @@ wesnothd \- 韋諾之戰多人網路伺服器
 .TP 
 \fBmotd\fP
 當天的消息。
-.TP 
-\fBnew_room_policy\fP
-指定誰能在伺服器上建立新房間。可使用的值為 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP,
-\fBnobody\fP，分別給所有人、有註冊的使用者、管理員使用者、沒有人，建立新房間的權限。預設值為 \fBeveryone\fP。
 .TP 
 \fBpasswd\fP
 用來取得管理員權限的密碼（透過 \fB/query admin \fP\fIpassword\fP）。
@@ -130,34 +121,25 @@ wesnothd \- 韋諾之戰多人網路伺服器
 這是伺服器用來透過 \fBrestart\fP 命令開啟新的伺服器行程的命令。（只能通過 fifo 來調用。參見
 \fBallow_remote_shutdown\fP 設定。）
 .TP 
-\fBroom_save_file\fP
-房間資訊應該要被存到哪的檔案路徑。這個檔案在伺服器啟動時被讀取，之後會被寫入。如果留空或者不設置，房間不會被讀取，也不會被保存。
-.TP 
 \fBsave_replays\fP
 設置伺服器是否自動保存遊戲錄影。（預設值：\fBfalse\fP）
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+啟用 TLS 時。 如果為 true，則還需要設定以下 3 個選項。
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+TLS 完整的信任鍊，格式為.pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+TLS私鑰，格式為.pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+TLS Diffie\-Hellman 參數，為.pem檔案。使用 \fBopenssl dhparam \-out filename.pem 4096\fP生成
 .TP 
 \fBversions_accepted\fP
 用逗號分隔的版本字串清單，伺服器會接受清單上面的版本。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。（預設為對應的韋諾版本）
 .br
 例如：\fBversions_accepted="*"\fP 允許任意版本字串。
-.TP 
-\fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
 .
 .SS 全域標籤：
 .
@@ -193,7 +175,7 @@ as 1.16 or 1.17.
 \fB[user_handler]\fP 配置使用者處理程序。如果配置中沒有 \fB[user_handler]\fP
 區塊，伺服器將以不提供任何暱稱註冊服務的方式來運行。所有額外的 \fBforum_user_handler\fP
 所需要用來運行的表格可以在韋諾的原始碼倉庫中的 table_definitions.sql 中被找到。需要啟用 MySQL 支援，以 cmake
-來說要使用 \fBENABLE_MYSQL\fP；以 scons 來說要使用 \fBforum_user_handler\fP。
+來說要使用 \fBENABLE_MYSQL\fP；以 scons 來說要使用 \fBforum_user_handler\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -209,42 +191,49 @@ as 1.16 or 1.17.
 這個使用者的密碼
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbb 論壇中存放使用者資料的表單。很可能是 <table\-prefix>_users（例如：phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-wesnothd 將在其中保存其自己的有關使用者資料的表格名稱。
+wesnothd 將在其中保存其自己的有關使用者資料的表格。
 .TP 
 \fBdb_game_info_table\fP
-wesnothd 將在其中保存其自己的有關遊戲資料的表格名稱。
+wesnothd 將在其中保存其自己的有關遊戲資料的表格。
 .TP 
 \fBdb_game_player_info_table\fP
-wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的表格名稱。
+wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的表格。
 .TP 
-\fBdb_game_modification_info_table\fP
-wesnothd 將在其中保存其自己的有關每場遊戲中被使用的模組的資料的表格名稱。
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+phpbb 論壇中存放使用者群組資料的表單。很可能是
+<table\-prefix>_user_group（例如：phpbb3_user_group）。
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+用於儲存登入/登出時間的表單。也用於將IP與使用者交互比對。
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+phpbb 論壇中存放主題（帖子）資訊的表單。很可能是 <table\-prefix>_topics（例如：phpbb3_topics）。
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+phpbb 論壇中存放封鎖使用者資料的表單。很可能是
+<table\-prefix>_banlist（例如：phpbb3_banlist）。
 .TP 
 \fBmp_mod_group\fP
 被視為具有審核權限的論壇組的 ID。
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH 退出狀態碼
@@ -262,7 +251,7 @@ data. Most likely this will be <table\-prefix>_banlist
 .
 .SH 著作權
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 這是一個自由軟體，這個軟體採用由自由軟體協會(FSF)所發佈的GPLv2授權協議。沒有保證，甚至對「可銷售性」和「對某一特定目的的適用性」也沒有保證。本段翻譯文字不具法律效力，如有需要請參閱原文或者是
 GPLv2 授權條款。

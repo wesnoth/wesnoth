@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -81,19 +81,19 @@ namespace t_translation {
 		ter_map(const ter_map&) = default;
 		ter_map(ter_map&&) = default;
 
-		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(w * h, fill), w(w), h(h) {}
+		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<size_t>(w) * h, fill), w(w), h(h) {}
 
 		ter_map & operator= (const ter_map &) = default;
 		ter_map & operator= (ter_map &&) = default;
 
-		terrain_code& get(int x, int y) { std::size_t index = x * h + y; return data.at(index); }
-		const terrain_code& get(int x, int y) const { std::size_t index = x * h + y; return data.at(index); }
+		terrain_code& get(int x, int y) { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
+		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
 
 		std::vector<terrain_code> data;
 		int w;
 		int h;
-		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + h * x; }
-		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + h * x; }
+		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<size_t>(h) * x; }
+		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<size_t>(h) * x; }
 	};
 
 	/**
@@ -164,14 +164,13 @@ namespace t_translation {
 	 * Reads a single terrain from a string.
 	 *
 	 * @param str       The string which should contain 1 terrain code;
-	 *                  the new format of a terrain code
+	 *                  the format of a terrain code
 	 *                  is 2 to 4 characters in the set
 	 *@verbatim
-	 *                  [a-Z][A-Z]/|\_
+	 *                  [a-zA-Z/|\_]
 	 *@endverbatim
 	 *                  The underscore is intended for internal use.
-	 *                  Other letters and characters are not validated but
-	 *                  users of these letters can get nasty surprises.
+	 *                  Other characters are reserved for future use.
 	 *                  The * is used as wildcard in some cases.
 	 *                  The terrain code can be two groups separated by a caret,
 	 *                  the first group is the base terrain,

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,17 +18,13 @@
 #include "exceptions.hpp"
 #include "log.hpp"
 #include "gui/core/top_level_drawable.hpp"
-#include "preferences/general.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_timer.h>
-
+#include <thread>
 #include <algorithm>
 #include <vector>
-#include <map>
 
 static lg::log_domain log_draw_man("draw/manager");
 #define ERR_DM LOG_STREAM(err, log_draw_man)
@@ -37,6 +33,8 @@ static lg::log_domain log_draw_man("draw/manager");
 #define DBG_DM LOG_STREAM(debug, log_draw_man)
 
 using gui2::top_level_drawable;
+using std::chrono::steady_clock;
+using namespace std::chrono_literals;
 
 // This is not publically exposed, because nobody else should be using it.
 // Implementation is in video.cpp.
@@ -47,7 +45,8 @@ std::vector<top_level_drawable*> top_level_drawables_;
 std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
 bool tlds_need_tidying_ = false;
-uint32_t last_sparkle_ = 0;
+steady_clock::time_point last_sparkle_;
+bool extra_pass_requested_ = false;
 } // namespace
 
 namespace draw_manager {
@@ -81,7 +80,7 @@ void invalidate_region(const rect& region)
 		if (region.contains(r)) {
 			// This region contains a previously invalidated region,
 			// might as well supercede it with this.
-			DBG_DM << "superceding previous invalidation " << r
+			DBG_DM << "superseding previous invalidation " << r
 				<< " with " << region;
 			//STREAMING_LOG << '\'';
 			r = region;
@@ -123,6 +122,11 @@ void invalidate_all()
 	invalidate_region(video::game_canvas());
 }
 
+void request_extra_render_pass()
+{
+	extra_pass_requested_ = true;
+}
+
 void sparkle()
 {
 	if (drawing_) {
@@ -153,17 +157,26 @@ void sparkle()
 	draw_manager::render();
 
 	// Draw to the screen.
-	if (draw_manager::expose()) {
+	bool drew_something = draw_manager::expose();
+
+	// If extra render passes are requested, render and draw again.
+	while (extra_pass_requested_) {
+		extra_pass_requested_ = false;
+		draw_manager::render();
+		drew_something |= draw_manager::expose();
+	}
+
+	if (drew_something) {
 		// We only need to flip the screen if something was drawn.
 		video::render_screen();
 	} else {
 		wait_for_vsync();
 	}
 
-	last_sparkle_ = SDL_GetTicks();
+	last_sparkle_ = steady_clock::now();
 }
 
-int get_frame_length()
+std::chrono::milliseconds get_frame_length()
 {
 	int rr = video::current_refresh_rate();
 	if (rr <= 0) {
@@ -171,17 +184,17 @@ int get_frame_length()
 		rr = 60;
 	}
 	// allow 1ms for general processing
-	int vsync_delay = (1000 / rr) - 1;
-	// if there's a preferred limit, limit to that
-	return std::clamp(vsync_delay, preferences::draw_delay(), 1000);
+	auto vsync_delay = (1000ms / rr) - 1ms;
+	return std::min(vsync_delay, 1000ms);
 }
 
 static void wait_for_vsync()
 {
-	int time_to_wait = last_sparkle_ + get_frame_length() - SDL_GetTicks();
-	if (time_to_wait > 0) {
+	auto now = steady_clock::now();
+	auto next_frame = last_sparkle_ + get_frame_length();
+	if (now < next_frame) {
 		// delay a maximum of 1 second in case something crazy happens
-		SDL_Delay(std::min(time_to_wait, 1000));
+		std::this_thread::sleep_for(std::min<steady_clock::duration>(next_frame - now, 1s));
 	}
 }
 
@@ -282,7 +295,7 @@ void deregister_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		WRN_DM << "attempted to deregister nonexistant TLD "
+		WRN_DM << "attempted to deregister nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}
@@ -299,7 +312,7 @@ void raise_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		ERR_DM << "attempted to raise nonexistant TLD "
+		ERR_DM << "attempted to raise nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}
@@ -316,8 +329,7 @@ static void tidy_drawables()
 {
 	// Remove all invalidated TLDs from the list.
 	DBG_DM << "tidying " << top_level_drawables_.size() << " drawables";
-	auto& vec = top_level_drawables_;
-	vec.erase(std::remove(vec.begin(), vec.end(), nullptr), vec.end());
+	utils::erase(top_level_drawables_, nullptr);
 	DBG_DM << top_level_drawables_.size() << " after tidying";
 }
 

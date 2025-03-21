@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,10 +17,8 @@
 
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
-#include <functional>
 
 namespace gui2
 {
@@ -109,20 +107,20 @@ vertical_scrollbar_definition::vertical_scrollbar_definition(
 
 vertical_scrollbar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, minimum_positioner_length(cfg["minimum_positioner_length"])
-	, maximum_positioner_length(cfg["maximum_positioner_length"])
-	, top_offset(cfg["top_offset"])
-	, bottom_offset(cfg["bottom_offset"])
+	, minimum_positioner_length(cfg["minimum_positioner_length"].to_unsigned())
+	, maximum_positioner_length(cfg["maximum_positioner_length"].to_unsigned())
+	, top_offset(cfg["top_offset"].to_unsigned())
+	, bottom_offset(cfg["bottom_offset"].to_unsigned())
 {
 	VALIDATE(minimum_positioner_length,
 			 missing_mandatory_wml_key("resolution",
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t in scrollbar.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_pressed"));
-	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("scrollbar_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("scrollbar_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("scrollbar_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("scrollbar_definition][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{

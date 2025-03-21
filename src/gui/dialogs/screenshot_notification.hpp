@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,18 +21,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Notification dialog used after saving a game or map screenshot to display information about it for the user.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * path              | text_box     |yes      |Read-only textbox containing the screenshot path.
- * filesize          | @ref label   |no       |Optional label to display the file size.
- * copy              | @ref button  |yes      |Button to copy the path to clipboard.
- * open              | @ref button  |yes      |Button to open the screnshot using the default application.
- * browse_dir        | @ref button  |yes      |Button to browse the screenshots directory in the file manager.
- */
 class screenshot_notification : public modal_dialog
 {
 public:
@@ -61,6 +49,6 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 };
 } // namespace dialogs

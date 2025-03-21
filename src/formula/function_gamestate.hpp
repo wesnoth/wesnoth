@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@ namespace wfl {
 
 class gamestate_function_symbol_table : public function_symbol_table {
 public:
-	gamestate_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	gamestate_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent = nullptr);
 };
 
 }

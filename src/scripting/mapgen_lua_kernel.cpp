@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,18 +19,15 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_rng.hpp"
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
-#include <ostream>
 #include <string>
 #include <functional>
 
-#include "lua/lauxlib.h"
 #include "scripting/push_check.hpp"
 #include "generators/default_map_generator_job.hpp"
 
@@ -39,7 +36,6 @@ static lg::log_domain log_mapgen("mapgen");
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 #define DBG_NG LOG_STREAM(debug, log_mapgen)
 
-struct lua_State;
 
 
 // Template which allows to push member functions to the lua kernel into lua as C functions, using a shim
@@ -188,7 +184,7 @@ static int intf_find_path(lua_State *L)
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
 		return luaL_argerror(L, 3, msg);
 	}
-	std::optional<lua_pathfind_cost_calculator> calc;
+	utils::optional<lua_pathfind_cost_calculator> calc;
 	int width, height;
 	bool border = false;
 	if(lua_istable(L, 3)) {
@@ -326,7 +322,7 @@ int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
 	return 1;
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -342,7 +338,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());

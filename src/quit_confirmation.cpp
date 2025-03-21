@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		for(quit_confirmation* blocker : utils::reversed_view(blockers_))
+		for(quit_confirmation* blocker : blockers_ | utils::views::reverse)
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;
@@ -75,7 +75,7 @@ bool quit_confirmation::default_prompt()
 		int retval = sq.get_retval();
 		if(retval == 1)
 		{
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 			return true;
 		}
 		else if(retval == 2)

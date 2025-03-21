@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,13 +15,11 @@
 
 #pragma once
 
-#include "chat_events.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "gui/widgets/tree_view.hpp"
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;
@@ -63,9 +61,12 @@ public:
 		QUIT,
 		JOIN,
 		OBSERVE,
-		CREATE,
-		RELOAD_CONFIG
+		CREATE, /** player clicked the Create button */
+		RELOAD_CONFIG,
+		CREATE_PRESET /** player clicked Join button on an [mp_queue] game, but there was no existing game to join */
 	};
+
+	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; };
 
 private:
 	void update_selected_game();
@@ -115,6 +116,8 @@ private:
 
 	void open_profile_url();
 
+	void open_match_history();
+
 	void tab_switch_callback();
 
 	void refresh_lobby();
@@ -127,15 +130,13 @@ private:
 
 	void skip_replay_changed_callback();
 
-	bool exit_hook(window& window);
-
 	static bool logout_prompt();
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	listbox* gamelistbox_;
 
@@ -159,7 +160,7 @@ private:
 
 	bool gamelist_dirty_;
 
-	unsigned last_lobby_update_;
+	std::chrono::steady_clock::time_point last_lobby_update_;
 
 	bool gamelist_diff_update_;
 
@@ -175,6 +176,8 @@ private:
 	bool delay_gamelist_update_;
 
 	int& joined_game_id_;
+
+	std::string queue_game_scenario_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,7 +50,7 @@ public:
 	//		~fake_display_manager();
 };
 
-fake_display_manager* fake_display_manager::manager_ = 0;
+fake_display_manager* fake_display_manager::manager_ = nullptr;
 
 fake_display_manager* fake_display_manager::get_manager()
 {
@@ -68,7 +68,7 @@ fake_display_manager::fake_display_manager()
 	, main_event_context_()
 	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
-	video::init(video::fake::draw);
+	video::init(video::fake::no_draw);
 }
 
 game_display& fake_display_manager::get_display()

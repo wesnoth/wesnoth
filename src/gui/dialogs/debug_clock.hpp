@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/core/top_level_drawable.hpp"
 
 namespace gui2
 {
@@ -31,22 +30,6 @@ class integer_selector;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Clock to test the draw events.
- *
- * This shows the dialog for keeping track of the drawing events related to the current time. (This window is used for debug purposes only.)
- * Key               |Type              |Mandatory|Description
- * ------------------|------------------|---------|-----------
- * hour_percentage   | progress_bar     |no       |This shows the hours as a percentage, where 24 hours is 100%.
- * minute_percentage | progress_bar     |no       |This shows the minutes as a percentage, where 60 minutes is 100%.
- * second_percentage | progress_bar     |no       |This shows the seconds as a percentage, where 60 seconds is 100%.
- * hour              | integer_selector |no       |This shows the seconds since the beginning of the day. The control should have a minimum_value of 0 and a maximum_value of 86399 (246060 - 1).
- * minute            | integer_selector |no       |This shows the seconds since the beginning of the current hour. The control should have a minimum_value of 0 and a maximum_value of 3599 (6060 - 1).
- * second            | integer_selector |no       |This shows the seconds since the beginning of the current minute. The control should have a minimum_value of 0 and a maximum_value of 59.
- * clock             | control          |no       |A control which will have set three variables in its canvas:<ul><li>hour - the same value as the hour integer_selector.</li><li>minute - the same value as the minute integer_selector.</li><li>second - the same value as the second integer_selector.</li></ul>The control can then show the time in its own preferred format(s).
- */
 class debug_clock : public modeless_dialog
 {
 public:

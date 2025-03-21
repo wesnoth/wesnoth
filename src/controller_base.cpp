@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,11 +21,9 @@
 #include "game_config_manager.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "mouse_handler_base.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
@@ -35,7 +33,8 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-static const int long_touch_duration_ms = 800;
+using namespace std::chrono_literals;
+static constexpr auto long_touch_duration = 800ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
@@ -45,7 +44,7 @@ controller_base::controller_base()
 	, scroll_down_(false)
 	, scroll_left_(false)
 	, scroll_right_(false)
-	, last_scroll_tick_(0)
+	, last_scroll_tick_()
 	, scroll_carry_x_(0.0)
 	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
@@ -98,7 +97,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog()) {
+	if(gui2::is_in_dialog()) {
 		return;
 	}
 
@@ -183,7 +182,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
 			long_touch_timer_ = gui2::add_timer(
-					long_touch_duration_ms,
+					long_touch_duration,
 					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
 		}
 
@@ -232,10 +231,35 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEWHEEL:
+		// Right and down are positive in Wesnoth's map.
+		// Right and up are positive in SDL_MouseWheelEvent on all platforms:
+		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
 #if defined(_WIN32) || defined(__APPLE__)
-		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
+		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 #else
-		mh_base.mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
+		// Except right is wrongly negative on X11 in SDL < 2.0.18:
+		//     https://github.com/libsdl-org/SDL/pull/4700
+		//     https://github.com/libsdl-org/SDL/commit/515b7e9
+		// and on Wayland in SDL < 2.0.20:
+		//     https://github.com/libsdl-org/SDL/commit/3e1b3bc
+		// Fixes issues #3362 and #7404, which are a regression caused by pull #2481 that fixed issue #2218.
+		{
+			static int xmul = 0;
+			if(xmul == 0) {
+				xmul = 1;
+				const char* video_driver = SDL_GetCurrentVideoDriver();
+				SDL_version ver;
+				SDL_GetVersion(&ver);
+				if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0) {
+					if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18) {
+						xmul = -1;
+					} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20) {
+						xmul = -1;
+					}
+				}
+			}
+			mh_base.mouse_wheel(xmul * event.wheel.x, -event.wheel.y, is_browsing());
+		}
 #endif
 		break;
 
@@ -250,7 +274,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
-void controller_base::process(events::pump_info&)
+void controller_base::process()
 {
 	if(gui2::is_in_dialog()) {
 		return;
@@ -275,13 +299,13 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
 		video::window_has_mouse_focus()
-		|| preferences::get("scroll_when_mouse_outside", true);
+		|| prefs::get().get_scroll_when_mouse_outside(true);
 
-	int scroll_speed = preferences::scroll_speed();
+	int scroll_speed = prefs::get().scroll_speed();
 	double dx = 0.0, dy = 0.0;
 
-	int scroll_threshold = preferences::mouse_scroll_enabled()
-		? preferences::mouse_scroll_threshold()
+	int scroll_threshold = prefs::get().mouse_scrolling()
+		? prefs::get().mouse_scroll_threshold()
 		: 0;
 
 	for(const theme::menu& m : get_display().get_theme().menus()) {
@@ -291,16 +315,18 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	}
 
 	// Scale scroll distance according to time passed
-	uint32_t tick_now = SDL_GetTicks();
+	auto tick_now = std::chrono::steady_clock::now();
+
 	// If we weren't previously scrolling, start small.
-	int dt = 1;
+	auto dt = 1ms;
 	if (scrolling_) {
-		dt = tick_now - last_scroll_tick_;
+		dt = std::chrono::duration_cast<std::chrono::milliseconds>(tick_now - last_scroll_tick_);
 	}
+
 	// scroll_speed is in percent. Ticks are in milliseconds.
 	// Let's assume the maximum speed (100) moves 50 hexes per second,
 	// i.e. 3600 pixels per 1000 ticks.
-	double scroll_amount = double(dt) * 0.036 * double(scroll_speed);
+	double scroll_amount = dt.count() * 0.036 * double(scroll_speed);
 	last_scroll_tick_ = tick_now;
 
 	// Apply keyboard scrolling
@@ -331,7 +357,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
 
 	// Scroll with middle-mouse if enabled
-	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
+	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
 		const SDL_Point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {
@@ -368,20 +394,19 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		dx += scroll_carry_x_;
 		dy += scroll_carry_y_;
 	}
-	int dx_int = int(dx);
-	int dy_int = int(dy);
-	scroll_carry_x_ = dx - double(dx_int);
-	scroll_carry_y_ = dy - double(dy_int);
+	point dist{int(dx), int(dy)};
+	scroll_carry_x_ = dx - double(dist.x);
+	scroll_carry_y_ = dy - double(dist.y);
 
 	// Scroll the display
-	get_display().scroll(dx_int, dy_int);
+	get_display().scroll(dist);
 
 	// Even if the integer parts are both zero, we are still scrolling.
 	// The subpixel amounts will add up.
 	return true;
 }
 
-void controller_base::play_slice(bool is_delay_enabled)
+void controller_base::play_slice()
 {
 	CKey key;
 
@@ -429,11 +454,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	map_location highlighted_hex = get_display().mouseover_hex();
 
-	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !video::window_is_visible()) {
-		SDL_Delay(200);
-	}
-
 	// Scrolling ended, update the cursor and the brightened hex
 	if(!scrolling_ && was_scrolling) {
 		get_mouse_handler_base().mouse_update(is_browsing(), highlighted_hex);
@@ -451,10 +471,10 @@ void controller_base::show_menu(
 	std::vector<config> items;
 	for(const config& c : items_arg) {
 		const std::string& id = c["id"];
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
+		const hotkey::ui_command cmd = hotkey::ui_command(id);
 
-		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.command))) {
-			items.emplace_back("id", id);
+		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
+			items.emplace_back(c);
 		}
 	}
 
@@ -474,8 +494,8 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 
 	std::vector<std::string> items;
 	for(const std::string& item : items_arg) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
-		if(cmd_exec->can_execute_command(command)) {
+		hotkey::ui_command cmd = hotkey::ui_command(item);
+		if(cmd_exec->can_execute_command(cmd)) {
 			items.push_back(item);
 		}
 	}
@@ -487,7 +507,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 	cmd_exec->execute_action(items, xloc, yloc, context_menu, get_display());
 }
 
-bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
+bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
 {
 	return true;
 }

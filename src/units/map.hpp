@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,7 +21,6 @@
 #include "utils/reference_counter.hpp"
 
 #include <cassert>
-#include <list>
 #include <map>
 #include <unordered_map>
 
@@ -482,7 +481,7 @@ public:
 	 * @note            If the unit::underlying_id is already in use, a new one will be generated.
 	 * @note            The map takes ownership of the pointed object only if the operation succeeds.
 	 */
-	umap_retval_pair_t insert(unit_ptr p);
+	umap_retval_pair_t insert(const unit_ptr& p);
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
@@ -502,7 +501,7 @@ public:
 	 * @returns         A pair consisting of an iterator pointing to the new unit (or the unit
 	 *                  already occupying that location) and a bool indicating success.
 	 */
-	umap_retval_pair_t replace(const map_location& l, unit_ptr p);
+	umap_retval_pair_t replace(const map_location& l, const unit_ptr& p);
 
 	/**
 	 * Erases the unit at location @a l, if any.

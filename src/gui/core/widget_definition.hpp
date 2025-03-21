@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,42 +38,14 @@ struct state_definition
 	explicit state_definition(const config& cfg);
 
 	config canvas_cfg_;
+
+	/** Allows us to use this object in vector's range constructor */
+	operator const config&() const
+	{
+		return canvas_cfg_;
+	}
 };
 
-/**
- * Base class of a resolution, contains the common keys for a resolution.
- *
- * Depending on the resolution a widget can look different. Resolutions are evaluated in order of appearance.
- * The window_width and window_height are the upper limit this resolution is valid for.
- * When one of the sizes gets above the limit, the next resolution is selected.
- * There's one special case where both values are 0. This resolution always matches.
- * (Resolution definitions behind that one will never be picked.)
- * This resolution can be used as upper limit or if there's only one resolution.
- *
- * The default (and also minimum) size of a button is determined by two items, the wanted default size and the size needed for the text.
- * The size of the text differs per used widget so needs to be determined per button.
- *
- * Container widgets like panels and windows have other rules for their sizes.
- * Their sizes are based on the size of their children (and the border they need themselves).
- * It's wise to set all sizes to 0 for these kind of widgets.
- *
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-------------
- * window_width     | @ref guivartype_unsigned "unsigned"|0        |Width of the application window.
- * window_height    | @ref guivartype_unsigned "unsigned"|0        |Height of the application window.
- * min_width        | @ref guivartype_unsigned "unsigned"|0        |The minimum width of the widget.
- * min_height       | @ref guivartype_unsigned "unsigned"|0        |The minimum height of the widget.
- * default_width    | @ref guivartype_unsigned "unsigned"|0        |The default width of the widget.
- * default_height   | @ref guivartype_unsigned "unsigned"|0        |The default height of the widget.
- * max_width        | @ref guivartype_unsigned "unsigned"|0        |TThe maximum width of the widget.
- * max_height       | @ref guivartype_unsigned "unsigned"|0        |The maximum height of the widget.
- * text_extra_width | @ref guivartype_unsigned "unsigned"|0        |The extra width needed to determine the minimal size for the text.
- * text_extra_height| @ref guivartype_unsigned "unsigned"|0        |The extra height needed to determine the minimal size for the text.
- * text_font_family | font_family                        |""       |The font family, needed to determine the minimal size for the text.
- * text_font_size   | @ref guivartype_unsigned "unsigned"|0        |The font size, which needs to be used to determine the minimal size for the text.
- * text_font_style  | font_style                         |""       |The font style, which needs to be used to determine the minimal size for the text.
- * state            | @ref guivartype_section "section"  |mandatory|Every widget has one or more state sections. Note they aren't called state but state_xxx the exact names are listed per widget.
- */
 struct resolution_definition
 {
 	explicit resolution_definition(const config& cfg);

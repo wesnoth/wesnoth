@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -144,7 +144,6 @@ private:
 
 typedef std::shared_ptr<candidate_action> candidate_action_ptr;
 
-class candidate_action_factory;
 
 class candidate_action_factory{
 	bool is_duplicate(const std::string &name);

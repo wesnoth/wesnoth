@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,10 +15,8 @@
 #pragma once
 
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "mouse_handler_base.hpp" //events::command_disabler
 
-#include <vector>
 
 class replay_controller : public events::observer
 {
@@ -41,11 +39,11 @@ public:
 	void replay_next_turn();
 	void replay_next_side();
 	void replay_next_move();
-	REPLAY_RETURN play_side_impl();
+	void play_side_impl();
 
 	bool recorder_at_end() const;
 	bool should_stop() const { return stop_condition_->should_stop(); }
-	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
+	bool can_execute_command(const hotkey::ui_command& cmd) const;
 	bool is_controlling_view() const {
 		return vision_.has_value();
 	}
@@ -85,8 +83,12 @@ private:
 		CURRENT_TEAM,
 		SHOW_ALL,
 	};
-	std::optional<REPLAY_VISION> vision_;
+	utils::optional<REPLAY_VISION> vision_;
+	/// When the "Reset" button is pressed reset the gamestate to this
+	/// serialized gamestaten, the initial gamestate.
 	std::shared_ptr<config> reset_state_;
+	/// Called when there are no more moves in the [replay] to process
 	std::function<void()> on_end_replay_;
+	/// Used by unit tests.
 	bool return_to_play_side_;
 };

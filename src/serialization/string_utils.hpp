@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -21,7 +21,6 @@
 
 #include <algorithm>
 #include <map>
-#include <ostream>
 #include <set>
 #include <sstream>
 #include <string>
@@ -94,11 +93,11 @@ void split_foreach(std::string_view s, char sep, const int flags, const F& f)
 	});
 }
 
-
-
 /** Splits a (comma-)separated string into a vector of pieces. */
 std::vector<std::string> split(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 std::set<std::string> split_set(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+
+std::vector<std::string_view> split_view(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the
@@ -109,16 +108,6 @@ std::set<std::string> split_set(std::string_view val, const char c = ',', const 
  * @todo Why not change split()? That would change the methods post condition.
  */
 std::vector<std::string> quoted_split(const std::string& val, char c= ',', int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
-
-/**
- * Splits a (comma-)separated string into a set of pieces.
- * See split() for the meanings of the parameters.
- */
-inline std::set<std::string> set_split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
-{
-	std::vector<std::string> vec_split = split(val, c, flags);
-	return std::set< std::string >(vec_split.begin(), vec_split.end());
-}
 
 /**
  * Splits a string based on two separators into a map.
@@ -159,10 +148,10 @@ std::map<std::string, std::string> map_split(
  * RETURNS: {"a", "b", "c", "d", "e", "f{g}", "h"}
  */
 std::vector< std::string > parenthetical_split(
-	const std::string& val,
+	std::string_view val,
 	const char separator = 0,
-	const std::string& left = "(",
-	const std::string& right = ")",
+	std::string_view left = "(",
+	std::string_view right = ")",
 	const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
@@ -282,11 +271,42 @@ std::string bullet_list(const T& v, std::size_t indent = 4, const std::string& b
  */
 std::string indent(const std::string& string, std::size_t indent_size = 4);
 
-std::pair<int, int> parse_range(const std::string& str);
+/**
+ * Recognises the following patterns, and returns a {min, max} pair.
+ *
+ * * "1" returns {1, 1}
+ * * "1-3" returns {1, 3}
+ * * "1-infinity" returns {1, maximum int}
+ * * "-1" returns {-1, -1}
+ * * "-3--1" returns {-3, -1}
+ *
+ * Note that:
+ *
+ * * "3-1" returns {3, 3} and does not log an error
+ * * "-1--3" returns {-1, -1} and does not log an error
+ * * Although "-infinity--1", "2-infinity" and "-infinity-infinity" are all supported,
+ * * ranges that can't match a reasonable number, e.g. "-infinity" or "infinity..infinity", may be treated as errors.
+ */
+std::pair<int, int> parse_range(std::string_view str);
 
-std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
+/**
+ * Handles a comma-separated list of inputs to parse_range, in a context that does not expect
+ * negative values. Will return an empty list if any of the ranges have a minimum that's below
+ * zero.
+ */
+std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str);
 
-std::pair<double, double> parse_range_real(const std::string& str);
+/**
+ * Handles a comma-separated list of inputs to parse_range.
+ */
+std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str);
+
+/**
+ * Recognises similar patterns to parse_range, and returns a {min, max} pair.
+ *
+ * For this function, "infinity" results in std::numeric_limits<double>::infinity.
+ */
+std::pair<double, double> parse_range_real(std::string_view str);
 
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
 
@@ -299,7 +319,7 @@ inline std::string print_modifier(const std::string &mod)
 }
 
 /** Prepends a configurable set of characters with a backslash */
-std::string escape(const std::string &str, const char *special_chars);
+std::string escape(std::string_view str, const char *special_chars);
 
 /**
  * Prepend all special characters with a backslash.
@@ -307,21 +327,21 @@ std::string escape(const std::string &str, const char *special_chars);
  * Special characters are:
  * #@{}+-,\*=
  */
-inline std::string escape(const std::string &str)
+inline std::string escape(std::string_view str)
 {
 	return escape(str, "#@{}+-,\\*=");
 }
 
 /** Remove all escape characters (backslash) */
-std::string unescape(const std::string &str);
+std::string unescape(std::string_view str);
 
 /** Percent-escape characters in a UTF-8 string intended to be part of a URL. */
-std::string urlencode(const std::string &str);
+std::string urlencode(std::string_view str);
 
 /** Surround the string 'str' with double quotes. */
-inline std::string quote(const std::string &str)
+inline std::string quote(std::string_view str)
 {
-	return '"' + str + '"';
+	return '"' + std::string(str) + '"';
 }
 
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */

@@ -43,17 +43,13 @@ unidades, cenários e campanhas e compartilhe\-os com os outros.
 .SH OPÇÕES
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Mostra todas as traduções na lista de seleção de línguas do jogo, mesmo que
 elas não sejam consideradas como suficientemente completas.
-.TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-descomprime um arquivo que deve estar no formato bzip2 e guarda\-o sem o
-sufixo .bz2. O \fIinfile.bz2\fP será removido.
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-comprime um arquivo em formato bzip2 , guarda\-o como \fIinfile\fP.bz2 e remove
-o \fIinfile\fP.
 .TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 vai diretamente para a campanha com o id \fIid_campaign\fP. Um menu de seleção
@@ -70,13 +66,8 @@ O id do cenário da campanha especificada. O padrão é o primeiro cena´rio.
 Pula as [história] janelas e diálogos ate o fim pelo \fBstart\fP evento.
 .TP 
 \fB\-\-clock\fP
-Adiciona a opção para mostrar um relógio para testar o cronômetro.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Depreciação, usa \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Depreciação, usa \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 sobrescreve o core carregado com o id do core especificado.
@@ -98,7 +89,7 @@ habilita alguns mecanismos de deb da Lua
 \fB\-\-strict\-lua\fP
 proibi chamadas de depreciação de Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs os dois arquivos WML; não pre\-processa eles primeiro (para fazer isso,
 primeiro use \fB\-p\fP). Diff sai como DiffWML na saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -114,14 +105,6 @@ grava estes valores em um arquivo no diretório de dados do usuário.
 \fB\-f, \-\-fullscreen\fP
 executa o jogo em modo tela cheia.
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-descomprime um arquivo que está em formato gzip e armazena\-o sem o sufixo
-\&.gz. O arquivo \fIinfile.gz\fP é então removido.
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-comprime um arquivo em formato gzip, guarda\-o como \fIinfile\fP.gz e remove
-\fIinfile\fP.
-.TP 
 \fB\-h, \-\-help\fP
 exibe um resumo das opções de linha de comando para saída padrão, e sai.
 .TP 
@@ -132,8 +115,7 @@ aberto. se for um diretório, o editor iniciará com uma janela para escolher
 qual mapa carregar.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-usa língua \fIlang\fP (símbolo) essa sessão.  Exemplo: \fB\-\-language
-ang_GB@latin\fP
+usa língua \fIlang\fP (símbolo) essa sessão.  Exemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 ajusta o nível de gravidade dos log domains.  \fBall\fP pode ser usado para
@@ -144,19 +126,31 @@ ser que seja combinado com a opção \fB\-d\fP.
 \fB\-\-log\-precise\fP
 mostra as timestamps no log de saída com mais precisão.
 .TP 
-\fB\-\-log\-strict\fP
-define o nível strict para o logger. Qualquer mensagem enviada para os log
-domains deste nível, ou de níveis mais severos, fará com que o teste de
-unidade falhe independentemente do resultado da vitória. Apenas relevante
-quando usado juto de \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lista dos log domains definidos (apenas os que contêm \fIfilter\fP se usad0) e
 sai
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
+.TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 o número de frames por segundo que o jogo pode mostrr, o valor deve estar
@@ -175,10 +169,6 @@ há um novo kit de ferramentas widget experimental, esta opção
 habilita\-o. Isto é muito experimental, portanto não relate bugs pois a
 maioria deles já são conhecidos. Partes da biblioteca são consideradas
 estáveis e funcionarão sem esta troca.
-.TP 
-\fB\-\-nodelay\fP
-executa o jogo sem atrasos para benchmark de gráficos. Isto é ativado
-automaticamente pela opção \fB\-\-nogui\fP.
 .TP 
 \fB\-\-noaddons\fP
 desabilida o carregamento de addons de usuários.
@@ -211,11 +201,11 @@ usa \fIpassword\fP quando conectar a um servidor, ignorando as outras
 preferências. Perigoso.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental)carrega um \fIscript\fP que define um plugin para o
-wesnoth. Identico ao \fB\-\-script\fP, mas arquivos Lua devem retornar uma função
-que irá agir como uma co\-rotina e periodicamente despertar com atualizações.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica um patch DiffWML para um arquivo WML; não pré\-processa nenhum dos
 dois arquivos.  Aloca o WML patched para a saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -226,26 +216,29 @@ texto simples .cfg e um arquivo processado .cfg serão escritos no diretório
 alvo especificado. Se uma pasta for especificada, ele será pré\-processado
 recursivmente com base nas regras conhecidas d pré\-processador. Os macros
 comuns do diretório "data/core/macros" serão pré\-processados antes dos
-recursos especificados.  Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial
-~/result.\fP Para mais detalhes sobre o Pré\-processador, visite:
+recursos especificados.  Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Para mais detalhes sobre o Pré\-processador, visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-vírgula separada lista as definições para serem usadas pelo \fB\-\-preprocess\fP
-comando. Se \fBSKIP_CORE\fP estiver na lista de definição, o diretório
-"data/core" não será pré\-processado.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-usado apenas pelo comando \fB\-\-preprocess\fP. Específica um arquivo que
-contenha \fB[preproc_define]\fP para ser incluido antes do processamento.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-usado apenas pelo comando \fB\-\-preprocess\fP. Colocará todos os macros
-processados no arquivo alvo. Se o arquivo não for especificado, o resultado
-será arquvio '_MACROS_.cfg' no diretório alvo do comando do
-pré\-processador. O arquivo resultante pode ser passado para
-\fB\-\-preprocess\-input\-macros\fP.  Esta opção deve ser digitada antes do comando
-\fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 define a resolução da tela. Exemplo: \fB\-r\fP \fB800x600\fP.
@@ -266,9 +259,6 @@ preenche o gerador de números aleatórios com \fInumber\fP.  Exemplo:
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 salva uma screenshot de \fImap\fP para \fIoutput\fP sem iniciar a tela.
 .TP 
-\fB\-\-script\fP\fI\ file\fP
-(experimental)  \fIfile\fP contem um script Lua para controlar o cliente.
-.TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 conecta com o host especificado, caso um tenha sido especificado. Caso
 contrário, conecta ao primeiro servidor nas preferências. Exemplo:
@@ -281,9 +271,9 @@ roda o jogo sem GUI, substituindo qualquer \fB\-\-nogui\fP implícito.
 erros de validação são tratados como erros fatais.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-roda o jogo num pequeno cenário de teste. Este cenário deve ser definido com
-uma \fB[test]\fP WML tag. O padrão é \fBtest\fP.  Uma demonstração da
-\fB[micro_ai]\fP pode ser iniciada por \fBmicro_ai_test\fP.  Implica \fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Define o padrão para considerar uma tradução como completa o suficiente para
@@ -300,20 +290,8 @@ possam carregar pacotes arbitrários. Não use isso com scripts não
 confiáveis! Esta ação faz dá ao lua o mesmo nível de permissão que o
 executável do wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-configura o WML schema para ser usado com \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-define o diretório das configurações do usuário para \fIname\fP em $HOME ou "My
-Documents\eMy Games" para windows.  Você também pode especificar um caminho
-absoluto para este diretório fora da $HOME ou "My Documents\eMy Games". No
-Windows também é possível especificar um diretório relativo ao processode
-trabalho ao usar um caminho que comece com ".\e" ou "..\e".  Sob X11 o
-padrão é $XDG_CONFIG_HOME ou $HOME/.config/wesnoth, em outros sistemas para
-o caminho dos dados do usuário.
-.TP 
-\fB\-\-userconfig\-path\fP
-imprime o caminho da pasta de configurações de usuário e sai.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 define o diretório dos dados do usuário para \fIname\fP em $HOME ou "My
@@ -337,7 +315,7 @@ valida o WML do addon enquanto você joga.
 \fB\-\-validate\-core\fP
 valida o core WML enquanto você joga.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 valida um arquivo como WML schema.
 .TP 
 \fB\-\-validcache\fP
@@ -440,7 +418,7 @@ Visite a página oficial: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Este Software é Gratuito; este software é licenciado sob a versão GPL 2,
 conforme publicada pela Free Software Foundation. Não há NENHUMA garantia;

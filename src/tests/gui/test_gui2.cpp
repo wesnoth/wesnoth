@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,7 @@
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -49,14 +50,19 @@
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/editor/choose_addon.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/edit_label.hpp"
+#include "gui/dialogs/editor/edit_pbl.hpp"
+#include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
+#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
+#include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
@@ -68,6 +74,7 @@
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
@@ -76,6 +83,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
@@ -85,13 +93,16 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/match_history.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
+#include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
@@ -104,10 +115,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -150,7 +158,7 @@ struct test_gui2_fixture {
 		const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
 
 		load_language_list();
-		game_config::load_config(main_config.child("game_config"));
+		game_config::load_config(main_config.mandatory_child("game_config"));
 	}
 	~test_gui2_fixture()
 	{
@@ -404,6 +412,14 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_chat_log)
 {
 	test<chat_log>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_choose_addon)
+{
+	test<editor_choose_addon>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_prompt)
+{
+	test<prompt>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_core_selection)
 {
 	test<core_selection>();
@@ -423,6 +439,14 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_depcheck_select_new)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_label)
 {
 	test<edit_label>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_pbl)
+{
+	test<editor_edit_pbl>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_pbl_translation)
+{
+	test<editor_edit_pbl_translation>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_text)
 {
@@ -496,6 +520,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_generator_settings)
 {
 	test<generator_settings>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_gui_test_dialog)
+{
+	test<gui_test_dialog>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 {
 	test<hotkey_bind>();
@@ -560,6 +588,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
 {
 	test<select_orb_colors>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_reachmap_options)
+{
+	test<reachmap_options>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
 {
 	test<statistics_dialog>();
@@ -575,10 +607,6 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_theme_list)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_transient_message)
 {
 	test<transient_message>();
-}
-BOOST_AUTO_TEST_CASE(modal_dialog_test_unit_create)
-{
-	test<unit_create>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_error)
 {
@@ -600,6 +628,18 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_server_info)
+{
+	test<addon_server_info>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
+{
+	test<mp_match_history>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
+{
+	test<gui2::dialogs::migrate_version_selection>();
+}
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
 	test_popup<debug_clock>();
@@ -611,6 +651,15 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip_large)
 BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 {
 	test_tip("tooltip");
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
+{
+	test<tod_new_schedule>();
+}
+
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_unit)
+{
+	test<editor_edit_unit>();
 }
 
 // execute last - checks that there aren't any unaccounted for GUIs
@@ -640,9 +689,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"synched_choice_wait",
 		"drop_down_menu",
 		"preferences_dialog",
-		"unit_recruit",
-		"unit_recall",
-		"unit_list",
+		"units_dialog",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
@@ -693,7 +740,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn't fit on the screen."));
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn’t fit on the screen."));
 		return;
 	} catch(...) {
 		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
@@ -704,6 +751,18 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
+
+template<>
+struct dialog_tester<addon_server_info>
+{
+	std::string s = "";
+	bool b = false;
+	addon_server_info* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_server_info(client, s, b);
+	}
+};
 
 template<>
 struct dialog_tester<addon_auth>
@@ -728,9 +787,9 @@ struct dialog_tester<addon_connect>
 template<>
 struct dialog_tester<addon_license_prompt>
 {
-	std::string license_terms = R"""(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
+	std::string license_terms = R"(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
 
-Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)""";
+Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)";
 	addon_license_prompt* create()
 	{
 		return new addon_license_prompt(license_terms);
@@ -787,6 +846,26 @@ struct dialog_tester<chat_log>
 	chat_log* create()
 	{
 		return new chat_log(vcfg, r);
+	}
+};
+
+template<>
+struct dialog_tester<editor_choose_addon>
+{
+	std::string temp;
+	editor_choose_addon* create()
+	{
+		return new editor_choose_addon(temp);
+	}
+};
+
+template<>
+struct dialog_tester<prompt>
+{
+	std::string temp;
+	prompt* create()
+	{
+		return new prompt(temp);
 	}
 };
 
@@ -850,6 +929,29 @@ struct dialog_tester<editor_edit_label>
 	editor_edit_label* create()
 	{
 		return new editor_edit_label(label, immutable, fog, shroud, color, category);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_pbl>
+{
+	std::string temp;
+	std::string temp1;
+	editor_edit_pbl* create()
+	{
+		return new editor_edit_pbl(temp, temp1);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_pbl_translation>
+{
+	std::string temp1;
+	std::string temp2;
+	std::string temp3;
+	editor_edit_pbl_translation* create()
+	{
+		return new editor_edit_pbl_translation(temp1, temp2, temp3);
 	}
 };
 
@@ -980,6 +1082,28 @@ struct dialog_tester<mp_lobby>
 	mp_lobby* create()
 	{
 		return new mp_lobby(li, connection, selected_game);
+	}
+};
+
+template<>
+struct dialog_tester<mp_match_history>
+{
+	wesnothd_connection connection;
+	dialog_tester() : connection("", "")
+	{
+	}
+	mp_match_history* create()
+	{
+		return new mp_match_history("", connection, false);
+	}
+};
+
+template<>
+struct dialog_tester<gui2::dialogs::migrate_version_selection>
+{
+	gui2::dialogs::migrate_version_selection* create()
+	{
+		return new gui2::dialogs::migrate_version_selection();
 	}
 };
 
@@ -1136,9 +1260,9 @@ struct dialog_tester<editor_generate_map>
 	{
 		for(const config &i : test_gui2_fixture::main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
-				const config &generator_cfg = i.child("generator");
+				auto generator_cfg = i.optional_child("generator");
 				if (generator_cfg) {
-					map_generators.emplace_back(create_map_generator("", generator_cfg));
+					map_generators.emplace_back(create_map_generator("", *generator_cfg));
 				}
 			}
 		}
@@ -1287,12 +1411,10 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(state)
-		, config_eng(create_eng.get_state()) {}
+	dialog_tester() : create_eng(state) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(create_eng, config_eng);
+		return new sp_options_configure(create_eng);
 	}
 };
 
@@ -1300,10 +1422,12 @@ template<>
 struct dialog_tester<statistics_dialog>
 {
 	team t;
-	dialog_tester() : t() {}
+	statistics_record::campaign_stats_t stats_record;
+	statistics_t stats;
+	dialog_tester() : t() , stats_record(), stats(stats_record) {}
 	statistics_dialog* create()
 	{
-		return new statistics_dialog(t);
+		return new statistics_dialog(stats, t);
 	}
 };
 
@@ -1314,6 +1438,49 @@ struct dialog_tester<surrender_quit>
 	surrender_quit* create()
 	{
 		return new surrender_quit();
+	}
+};
+
+template<>
+struct dialog_tester<tod_new_schedule>
+{
+	std::string id = "id";
+	t_string name = "name";
+	dialog_tester() {}
+	tod_new_schedule* create()
+	{
+		return new tod_new_schedule(id, name);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_unit>
+{
+	config cfg;
+	game_config_view view;
+
+	dialog_tester() {}
+	editor_edit_unit* create()
+	{
+		config& units = cfg.add_child("units");
+		cfg.add_child("race");
+		config& movetype = units.add_child("movetype");
+		movetype["name"] = "Test Movetype";
+		movetype.add_child("defense");
+		movetype.add_child("resistance");
+		movetype.add_child("movement_costs");
+		view = game_config_view::wrap(cfg);
+		return new editor_edit_unit(view, "test_addon");
+	}
+};
+
+template<>
+struct dialog_tester<gui_test_dialog>
+{
+	dialog_tester() {}
+	gui_test_dialog* create()
+	{
+		return new gui_test_dialog();
 	}
 };
 

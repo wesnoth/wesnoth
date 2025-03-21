@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,23 +17,19 @@
 
 #include "gui/dialogs/gamestate_inspector.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
+#include "serialization/markup.hpp"
 
-#include "game_board.hpp"
-#include "game_data.hpp"
 #include "gettext.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"
@@ -42,7 +38,7 @@
 #include "ai/manager.hpp"
 
 #include "display_context.hpp"
-#include "filter_context.hpp"
+#include "video.hpp"
 
 #include <vector>
 #include <functional>
@@ -57,7 +53,7 @@ inline std::string config_to_string(const config& cfg)
 	return s.str();
 }
 
-inline std::string config_to_string(const config& cfg, std::string only_children)
+inline std::string config_to_string(const config& cfg, const std::string& only_children)
 {
 	config filtered;
 	for(const config& child : cfg.child_range(only_children)) {
@@ -92,6 +88,7 @@ public:
 	void clear_data()
 	{
 		data.clear();
+		pages.clear();
 	}
 
 	void set_data(const std::string& new_data)
@@ -110,13 +107,13 @@ private:
 	{
 		pages.clear();
 		std::size_t start = 0;
-		while(start + max_inspect_win_len < data.size()) {
+		while(start + page_characters < data.size()) {
 			// This could search into data that's already on a previous page, which is why the result
 			// is then checked for end < start.
-			std::size_t end = data.find_last_of('\n', start + max_inspect_win_len);
+			std::size_t end = data.find_last_of('\n', start + page_characters);
 			int len;
 			if(end == std::string::npos || end < start) {
-				len = max_inspect_win_len;
+				len = page_characters;
 			} else {
 				len = end - start + 1;
 			}
@@ -127,7 +124,7 @@ private:
 			pages.emplace_back(start, data.size() - start);
 		}
 	}
-	static const unsigned int max_inspect_win_len = 20000;
+	unsigned int page_characters = 10000 / video::get_pixel_scale();
 	std::string data;
 	std::vector<std::pair<std::size_t,int>> pages;
 };
@@ -164,11 +161,11 @@ class gamestate_inspector::view
 {
 public:
 	view(window& window)
-		: stuff_list_(find_widget<tree_view>(&window, "stuff_list", false, true))
-		, inspect_(find_widget<styled_widget>(&window, "inspect", false, true))
-		, pages_(find_widget<styled_widget>(&window, "page_count", false, true))
-		, left_(find_widget<styled_widget>(&window, "page_left", false, true))
-		, right_(find_widget<styled_widget>(&window, "page_right", false, true))
+		: stuff_list_(window.find_widget<tree_view>("stuff_list", false, true))
+		, inspect_(window.find_widget<styled_widget>("inspect", false, true))
+		, pages_(window.find_widget<styled_widget>("page_count", false, true))
+		, left_(window.find_widget<styled_widget>("page_left", false, true))
+		, right_(window.find_widget<styled_widget>("page_right", false, true))
 	{
 	}
 
@@ -188,6 +185,8 @@ public:
 			pages_->set_label(out.str());
 			left_->set_visible(widget::visibility::visible);
 			right_->set_visible(widget::visibility::visible);
+			left_->set_active(current_page_ > 0);
+			right_->set_active(current_page_ < n_pages - 1);
 		} else {
 			pages_->set_label("");
 			left_->set_visible(widget::visibility::invisible);
@@ -329,7 +328,7 @@ public:
 
 	void handle_copy_button_clicked()
 	{
-		desktop::clipboard::copy_to_clipboard(model_.get_data_full(), false);
+		desktop::clipboard::copy_to_clipboard(model_.get_data_full());
 	}
 
 	void handle_lua_button_clicked(window& window)
@@ -379,11 +378,11 @@ public:
 
 	void bind(window& window)
 	{
-		auto stuff_list = find_widget<tree_view>(&window, "stuff_list", false, true);
-		auto copy_button = find_widget<button>(&window, "copy", false, true);
-		auto lua_button = find_widget<button>(&window, "lua", false, true);
-		auto left_button = find_widget<button>(&window, "page_left", false, true);
-		auto right_button = find_widget<button>(&window, "page_right", false, true);
+		auto stuff_list = window.find_widget<tree_view>("stuff_list", false, true);
+		auto copy_button = window.find_widget<button>("copy", false, true);
+		auto lua_button = window.find_widget<button>("lua", false, true);
+		auto left_button = window.find_widget<button>("page_left", false, true);
+		auto right_button = window.find_widget<button>("page_right", false, true);
 
 		connect_signal_notify_modified(*stuff_list,
 			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, std::placeholders::_1));
@@ -410,12 +409,6 @@ public:
 
 		left_button->set_visible(widget::visibility::invisible);
 		right_button->set_visible(widget::visibility::invisible);
-
-		if (!desktop::clipboard::available()) {
-			copy_button->set_active(false);
-			copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
-
 		build_stuff_list(window);
 	}
 
@@ -459,7 +452,7 @@ public:
 				side);
 		}
 		// Expand initially selected node
-		callbacks[{0}](find_widget<tree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
+		callbacks[{0}](window.find_widget<tree_view>("stuff_list").get_root_node().get_child_at(0));
 	}
 
 private:
@@ -519,18 +512,17 @@ void variable_mode_controller::show_list(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : vars().all_children_range())
+	for(const auto [key, cfg] : vars().all_children_view())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
 				.add(),
 			&variable_mode_controller::show_array);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 
@@ -550,7 +542,7 @@ void variable_mode_controller::show_array(tree_view_node& node)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(vars().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -585,7 +577,7 @@ void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 void event_mode_controller::show_event(tree_view_node& node, bool is_wmi)
 {
 	int n = node.describe_path().back();
-	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
+	model().set_data(config_to_string(events.mandatory_child(is_wmi ? "menu_item" : "event", n)));
 }
 
 static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)
@@ -598,12 +590,11 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	progress.widget("loc", s.str());
 
 	s.str("");
-	s << font::span_color(team_color);
-	s << "side=" << u.side() << "</span>";
+	s << markup::span_color(team_color, "side=", u.side());
 	progress.widget("side", s.str(), true);
 
 	if(u.can_recruit()) {
-		progress.widget("leader", "<span color='yellow'>LEADER</span> ", true);
+		progress.widget("leader", markup::span_color("yellow", "LEADER "), true);
 	}
 
 	s.str("");
@@ -668,18 +659,17 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : u->variables().all_children_range())
+	for(const auto [key, cfg] : u->variables().all_children_view())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
 				.add(),
 			&unit_mode_controller::show_array);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 
@@ -705,7 +695,7 @@ void unit_mode_controller::show_array(tree_view_node& node)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(u->variables().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(u->variables().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -873,11 +863,10 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : t.variables().all_children_range())
+	for(const auto [key, cfg] : t.variables().all_children_view())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
@@ -885,7 +874,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 				.add(),
 			&team_mode_controller::show_array,
 			side);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 
@@ -907,7 +896,7 @@ void team_mode_controller::show_array(tree_view_node& node, int side)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(t.variables().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(t.variables().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -923,15 +912,15 @@ gamestate_inspector::gamestate_inspector(const config& vars, const game_events::
 	model_.reset(new model);
 }
 
-void gamestate_inspector::pre_show(window& window)
+void gamestate_inspector::pre_show()
 {
-	view_.reset(new view(window));
+	view_.reset(new view(*this));
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
 	if(!title_.empty()) {
-		find_widget<styled_widget>(&window, "inspector_name", false).set_label(title_);
+		find_widget<styled_widget>("inspector_name").set_label(title_);
 	}
-	controller_->bind(window);
+	controller_->bind(*this);
 	view_->update(*model_);
 }
 

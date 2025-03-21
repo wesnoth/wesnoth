@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -93,7 +93,7 @@ private:
 	int original_recall_pos_;
 };
 
-std::ostream& operator<<(std::ostream& s, recall_ptr recall);
-std::ostream& operator<<(std::ostream& s, recall_const_ptr recall);
+std::ostream& operator<<(std::ostream& s, const recall_ptr& recall);
+std::ostream& operator<<(std::ostream& s, const recall_const_ptr& recall);
 
 }

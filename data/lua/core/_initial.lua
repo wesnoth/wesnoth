@@ -11,7 +11,7 @@ local _ = wesnoth.textdomain "wesnoth"
 ---@param elem_name string the full name of the element being deprecated (including the module), to be shown in the deprecation message
 ---@param replacement_name string the name of the element that will replace it (including the module), to be shown in the deprecation message
 --- Can be nil if there is not replacement, though this should be an unlikely situation
----@param level '1'|'2'|'3'|'4' deprecation level (1-4)
+---@param level 1|2|3|4 deprecation level (1-4)
 ---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
 --- Set to nil if deprecation level is 1 or 4
 --- Will be shown in the deprecation message

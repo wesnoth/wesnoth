@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Fabian Müller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,16 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap scenarios.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the map label.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class editor_edit_scenario : public modal_dialog
 {
 public:
@@ -47,6 +37,6 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 };
 } // namespace dialogs

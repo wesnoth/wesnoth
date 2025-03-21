@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -22,6 +22,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <ctime>
+#include <string_view>
 
 class variable_set;
 
@@ -77,27 +78,6 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
  */
 std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
 
-/**
- * Formats a timespan into human-readable text for player authentication functions.
- *
- * This is intentionally not a very thorough representation of time intervals.
- * See <https://github.com/wesnoth/wesnoth/issues/6036> for more information.
- *
- * @param time     The timespan in seconds.
- * @param detailed Whether to display more specific values such as "3 months, 2 days,
- *                 30 minutes, and 1 second". If not specified or set to @a false, the
- *                 return value will ONLY include most significant time unit (e.g. "3
- *                 months").
- * @return         A human-readable timespan description.
- *
- * @note The implementation is not very precise because not all months in the Gregorian
- *       calendar have 30 days. Furthermore, it doesn't take into account leap years or
- *       leap seconds. If you need to account for those, you are better off importing
- *       a new library and providing it with more specific information about the start and
- *       end times of the interval; otherwise your next best option is to hire a fortune
- *       teller to manually service your requests every time instead of this function.
- */
-std::string format_timespan(std::time_t time, bool detailed = false);
 }
 
 /**
@@ -131,17 +111,13 @@ std::string vngettext_impl(const char* domain,
 	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
 
 /**
- * Approximately calculates the distance between two strings
+ * @brief Calculate the approximate edit distance of two strings.
  *
- * Inspired in the Levenshtein distance, but made simpler
- * to avoid using recursion and wasting resources.
+ * @param str_1 First string to compare.
+ * @param str_2 Second string to compare.
  *
- * The consequence is that the function gets "lost"
- * after two consecutive differences.
+ * @returns A score indicating how different the two strings are--the lower the score, the more similar the strings are.
  *
- * @param str_1 First string to compare
- * @param str_2 Second string to compare
+ * @note To avoid dynamic allocation, this function limits the number of characters that participate in the comparison.
  */
-
-int edit_distance_approx(const std::string &str_1, const std::string &str_2);
-
+[[nodiscard]] std::size_t edit_distance_approx(std::string_view str_1, std::string_view str_2) noexcept;

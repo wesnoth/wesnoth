@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "editor/palette/palette_manager.hpp"
 #include "widgets/widget.hpp"
 
-#include "tooltips.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {
@@ -29,11 +28,11 @@ palette_manager::palette_manager(editor_display& gui, const game_config_view& cf
 		  gui_(gui),
 		  palette_start_(0),
 		  toolkit_(toolkit),
-		  terrain_palette_(new terrain_palette(gui, cfg, toolkit)),
-		  unit_palette_(new unit_palette(gui, cfg, toolkit)),
+		  terrain_palette_(new terrain_palette(gui, toolkit)),
+		  unit_palette_(new unit_palette(gui, toolkit)),
 		  empty_palette_(new empty_palette(gui)),
-		  item_palette_(new item_palette(gui, cfg, toolkit))
-		, location_palette_(new location_palette(gui, cfg, toolkit))
+		  item_palette_(new item_palette(gui, toolkit))
+		, location_palette_(new location_palette(gui, toolkit))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
@@ -92,16 +91,6 @@ void palette_manager::scroll_top()
 common_palette& palette_manager::active_palette()
 {
 	return toolkit_.get_palette();
-}
-
-void palette_manager::scroll_bottom()
-{
-	unsigned int old_start   = active_palette().num_items();
-	unsigned int items_start = active_palette().start_num();
-	while (old_start != items_start) {
-		old_start = items_start;
-		scroll_down();
-	}
 }
 
 void palette_manager::layout()

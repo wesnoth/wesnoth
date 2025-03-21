@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,12 +24,11 @@
 
 #include "config.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
-#include "gettext.hpp"
+#include "game_version.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
@@ -37,7 +36,6 @@
 #include "team.hpp" //for team
 #include "units/unit.hpp" // for unit
 #include "units/udisplay.hpp" // for unit_display
-#include "variable.hpp" // for vconfig
 #include "deprecation.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -195,7 +193,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			//add to recall list
 			team_.recall_list().add(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side();
-			preferences::encountered_units().insert(new_unit->type_id());
+			prefs::get().encountered_units().insert(new_unit->type_id());
 		}
 	} else {
 		//get unit from recall list
@@ -203,9 +201,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		if ( loc.valid() ) {
 			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id;
-			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 			//if id is not empty, delete units with this ID from recall list
 			team_.recall_list().erase_if_matches_id( id);
+			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
 		else if ( add_to_recall_ ) {
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id;
@@ -219,7 +217,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 {
 
 	if (discover_) {
-		preferences::encountered_units().insert(new_unit.type_id());
+		prefs::get().encountered_units().insert(new_unit.type_id());
 	}
 
 	bool show = show_ && (display::get_singleton() !=nullptr) && !display::get_singleton()->fogged(loc);

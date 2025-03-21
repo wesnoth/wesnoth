@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,8 +17,6 @@
  * @file
  */
 
-#include <algorithm>
-#include <iterator>
 #include <limits>
 
 #include "whiteboard/utility.hpp"
@@ -26,7 +24,6 @@
 #include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 
-#include "actions/create.hpp"
 #include "display.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
@@ -37,21 +34,14 @@
 #include "utils/iterable_pair.hpp"
 
 namespace wb {
-
-std::size_t viewer_team()
-{
-	return display::get_singleton()->viewing_team();
-}
-
 int viewer_side()
 {
-	return display::get_singleton()->viewing_side();
+	return display::get_singleton()->viewing_team().side();
 }
 
 side_actions_ptr viewer_actions()
 {
-	side_actions_ptr side_actions =
-			resources::gameboard->teams()[display::get_singleton()->viewing_team()].get_side_actions();
+	side_actions_ptr side_actions = display::get_singleton()->viewing_team().get_side_actions();
 	return side_actions;
 }
 
@@ -90,7 +80,7 @@ unit* find_recruiter(std::size_t team_index, const map_location& hex)
 	return nullptr;
 }
 
-bool any_recruiter(int team_num, const map_location& loc, std::function<bool(unit&)> func)
+bool any_recruiter(int team_num, const map_location& loc, const std::function<bool(unit&)>& func)
 {
 	if ( !resources::gameboard->map().is_castle(loc) ) {
 		return false;
@@ -106,7 +96,7 @@ bool any_recruiter(int team_num, const map_location& loc, std::function<bool(uni
 	return false;
 }
 
-unit* future_visible_unit(map_location hex, int viewer_side)
+const unit* future_visible_unit(map_location hex, int viewer_side)
 {
 	future_map planned_unit_map;
 	if(!resources::whiteboard->has_planned_unit_map())
@@ -118,9 +108,9 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 	return resources::gameboard->get_visible_unit(hex, resources::gameboard->get_team(viewer_side), false);
 }
 
-unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
+const unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 {
-	unit* unit = future_visible_unit(hex, viewer_side);
+	const unit* unit = future_visible_unit(hex, viewer_side);
 	if (unit && unit->side() == on_side)
 		return unit;
 	else
@@ -183,7 +173,7 @@ bool team_has_visible_plan(team &t)
 	return !t.get_side_actions()->hidden();
 }
 
-void for_each_action(std::function<void(action*)> function, team_filter team_filter)
+void for_each_action(const std::function<void(action*)>& function, const team_filter& team_filter)
 {
 	bool end = false;
 	for(std::size_t turn=0; !end; ++turn) {
@@ -200,7 +190,7 @@ void for_each_action(std::function<void(action*)> function, team_filter team_fil
 	}
 }
 
-action_ptr find_action_at(map_location hex, team_filter team_filter)
+action_ptr find_action_at(map_location hex, const team_filter& team_filter)
 {
 	action_ptr result;
 	std::size_t result_turn = std::numeric_limits<std::size_t>::max();

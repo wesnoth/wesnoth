@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,10 +15,8 @@
 #include "utils/irdya_datetime.hpp"
 
 #include "formula/string_utils.hpp"
-#include "gettext.hpp"
 #include "tstring.hpp"
 
-#include <exception>
 
 using namespace utils;
 

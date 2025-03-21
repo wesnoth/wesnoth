@@ -584,9 +584,9 @@ linechanges = (
         ("swing=", "value_second="),
         # Changed just before 1.7.3
         ("Drake Gladiator", "Drake Thrasher"),
-        ("gladiator-", "thrasher-"),
+        ("units/drakes/gladiator-", "units/drakes/thrasher-"),
         ("Drake Slasher", "Drake Arbiter"),
-        ("slasher-", "arbiter-"),
+        ("units/drakes/slasher-", "units/drakes/arbiter-"),
         # Changes after 1.7.5
         ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
         # Changes after 1.8rc1
@@ -1289,7 +1289,36 @@ linechanges = (
         ("portraits/monsters/big-icemonax.png", "portraits/monsters/big-icemonax.webp"),
         ("portraits/monsters/ogre.png", "portraits/monsters/ogre.webp"),
 
-        # Changed in 1.17.x: Fire Ghost/Guardian sprites moved into elementals folder
+        # grouping of sprites sharing a color map in 1.17.4
+        # bats
+        ("units/undead/bat-", "units/bats/bat-"),
+        ("units/undead/bloodbat-", "units/bats/bloodbat-"),
+        ("units/undead/dreadbat-", "units/bats/dreadbat-"),
+        # spirits
+        ("units/undead/ghost-", "units/undead-spirit/ghost-"),
+        ("units/undead/wraith-", "units/undead-spirit/wraith-"),
+        ("units/undead/shadow-", "units/undead-spirit/shadow-"),
+        ("units/undead/spectre", "units/undead-spirit/spectre"),
+        ("units/undead/nightgaunt", "units/undead-spirit/nightgaunt"),
+        # nagas
+        ("units/nagas/fighter.png", "units/nagas/fighter/fighter.png"),
+        ("units/nagas/fighter-", "units/nagas/fighter/fighter-"),
+        ("units/nagas/warrior", "units/nagas/fighter/warrior"),
+        ("units/nagas/myrmidon", "units/nagas/fighter/myrmidon"),
+        ("units/nagas/guardian.png", "units/nagas/guardian/guardian.png"),
+        ("units/nagas/guardian-", "units/nagas/guardian/guardian-"),
+        ("units/nagas/warden", "units/nagas/guardian/warden"),
+        ("units/nagas/sentinel", "units/nagas/guardian/sentinel"),
+        ("units/nagas/dirkfang", "units/nagas/mixed/dirkfang"),
+        ("units/nagas/ringcaster", "units/nagas/mixed/ringcaster"),
+        ("units/nagas/ophidian", "units/nagas/mixed/ophidian"),
+        ("units/nagas/sicarius", "units/nagas/mixed/sicarius"),
+        ("units/nagas/zephyr", "units/nagas/mixed/zephyr"),
+
+        # introduced in wesnoth 1.17.19
+        ("units/elves-wood/fighter.png", "units/elves-wood/fighter/fighter.png"),
+
+        # Changed in 1.19.x: Fire Ghost/Guardian sprites moved into elementals folder
         ("units/monsters/fireghost.png", "units/elementals/fireghost.png"),
         ("units/monsters/fireghost-attack1.png", "units/elementals/fireghost-attack1.png"),
         ("units/monsters/fireghost-attack2.png", "units/elementals/fireghost-attack2.png"),
@@ -1303,7 +1332,7 @@ linechanges = (
         ("units/monsters/fireghost-death[1~6].png", "units/elementals/fireghost-death[1~6].png"),
         ("units/monsters/fireghost-defend.png", "units/elementals/fireghost-defend.png"),
         ("units/monsters/fireghost-ranged2.png", "units/elementals/fireghost-ranged2.png"),
-        
+
         )
 
 # helper function to reduce code duplication and allow easy checking
@@ -1378,6 +1407,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
               (filename, lineno, closer))
     if closer == "variation" and "variation_id" not in attributes:
         print('"%s", line %d: [variation] is missing required variation_id attribute' % \
+              (filename, lineno))
+    if closer == "filter" and "kill" in ancestors:
+        print('"%s", line %d: [kill] should have an inline StandardUnitFilter instead of using [filter]' % \
               (filename, lineno))
 
 def within(tag):
@@ -1477,7 +1509,6 @@ def is_translatable(key):
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
 mainline = ("Dead_Water",
-            "Delfadors_Memoirs",
             "Descent_Into_Darkness",
             "Eastern_Invasion",
             "Heir_To_The_Throne",
@@ -1487,6 +1518,7 @@ mainline = ("Dead_Water",
             "Sceptre_of_Fire",
             "Secrets_of_the_Ancients",
             "Son_Of_The_Black_Eye",
+            "The_Deceivers_Gambit",
             "The_Hammer_of_Thursagan",
             "The_Rise_Of_Wesnoth",
             "The_South_Guard",
@@ -1711,9 +1743,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                 if "add-ons" in filename:
                     if campaign_rank < 300:
                         print(errlead + "rank for add-on campaigns should be greater than or equal to 300")
-                else:
-                    if campaign_rank >= 300 or (campaign_rank % 5) != 0:
-                        print(errlead + "rank for mainline campaigns should be a multiple of 5 between 0 and 299 (included)")  
+                elif "campaigns" in filename:
+                    if campaign_rank >= 300:
+                        print(errlead + "rank for mainline campaigns should be between 0 and 299 (included)")  
             except ValueError:
                 print(errlead + "rank must be a numeric value")
 
@@ -2409,38 +2441,39 @@ to be called on their own".format(filename, num))
                 # this here rather than hack_syntax so the character can be
                 # recognized.
                 if macname == 'LOYAL_UNIT':
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    if len(args) == 7:
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
+                    if len(args) == 6:
                         lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
                 # Auto-recognize the people in the {NAMED_*UNIT} macros.
                 if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    if len(args) >= 7 and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[1]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[3]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[4]) and \
-                       len(args[5]) > 0:
-                        present.append(args[5])
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
+                    if len(args) >= 6 and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[0]) and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[2]) and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[3]) and \
+                       len(args[4]) > 0:
+                        present.append(args[4])
                 elif macname == 'RECALL':
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    if len(args) == 2 and brack == 0:
-                        present.append(args[1])
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
+                    if len(args) == 1 and not is_unfinished:
+                        present.append(args[0])
                 elif macname == 'RECALL_XY':
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    if len(args) == 4:
-                        present.append(args[1])
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
+                    if len(args) == 3:
+                        present.append(args[0])
                 elif macname == 'CLEAR_VARIABLE':
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
                     # having CLEAR_VARIABLE on a line and its arguments in the following lines
-                    # leads to an args list with length 1
+                    # leads to an args list with length 0
                     # skip the check and avoid a crash if that's the case
-                    if len(args) > 1:
-                        for arg in [x.lstrip() for x in args[1].split(',')]:
+                    if len(args) > 0:
+                        for arg in [x.lstrip() for x in args[0].split(',')]:
                             if arg in storedids:
                                 del storedids[arg]
                 elif macname in whomacros:
-                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    present.append(args[whomacros[macname]])
+                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
+                    if len(args) >= whomacros[macname]:
+                        present.append(args[whomacros[macname] - 1])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
@@ -3037,10 +3070,6 @@ must be converted manually".format(filename, baseline + y + 1, old, name))
 
 # Generic machinery starts here
 
-def is_map(filename):
-    "Is this file a map?"
-    return filename.endswith(".map") or filename.endswith(".mask")
-
 if 0: # Not used, as there are currently no defined map transforms
     class maptransform_error(BaseException):
         "Error object to be thrown by maptransform."
@@ -3090,7 +3119,7 @@ def translator(filename, mapxforms, textxform):
             return
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
-    map_only = filename.endswith(".map")
+    map_only = filename.endswith(default_map_extension)
     terminator = "\n"
     UTF8_BOM = "\ufeff"
     for i, line in enumerate(unmodified):
@@ -3127,9 +3156,9 @@ def translator(filename, mapxforms, textxform):
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 pass
-            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(".mask")):
-                print('"%s", line %d: mask file without .mask extension or not a mask file (%s)' \
-                      % (filename, lineno+1, refname))
+            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
+                print('"%s", line %d: mask file without %s extension or not a mask file (%s)' \
+                      % (filename, lineno+1, default_mask_extension, refname))
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
@@ -3145,7 +3174,7 @@ def translator(filename, mapxforms, textxform):
             maskwarn = False
             maptype = None
             if map_only:
-                if filename.endswith(".mask"):
+                if filename.endswith(default_mask_extension):
                     maptype = "mask"
                 else:
                     maptype = "map"
@@ -3221,8 +3250,8 @@ def translator(filename, mapxforms, textxform):
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
                 mapfile = refre.group(1)
-                if not mapfile.endswith(".map") and is_map(mapfile):
-                    newline = newline.replace(mapfile, mapfile + ".map")
+                if not mapfile.endswith(default_map_extension) and ismap(mapfile):
+                    newline = newline.replace(mapfile, mapfile + default_map_extension)
             newdata.append(newline + terminator)
             if newline != line:
                 if verbose > 0:
@@ -3487,8 +3516,8 @@ vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return (fn.endswith(".cfg") and not fn.endswith("_info.cfg")) \
-           or is_map(fn) or issave(fn)
+    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) \
+           or ismap(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
@@ -3532,8 +3561,8 @@ See also: https://wiki.wesnoth.org/Maintenance_tools.''',
     mode.add_argument("-r", "--revert", action="store_true",
                       help="Revert the conversion from the -bak files.")
     parser.add_argument("-m", "--missing", action="store_true",
-                        help="""Don't warn about tags without side= keys now applying
-to all sides.""")
+                        help="""Warn about tags without side= keys now applying to all
+sides.""")
     parser.add_argument("-s", "--stripcr", action="store_true",
                         help="Convert DOS-style CR/LF to Unix-style LF.")
     parser.add_argument("-v", "--verbose", action="count", default=0,
@@ -3611,6 +3640,11 @@ directory.""")
                 line = line.replace("[unit]", "[unit_type]")
                 line = line.replace("[+unit]", "[+unit_type]")
                 line = line.replace("[/unit]", "[/unit_type]")
+
+        # putting the ignore check here to allow setting the post15 flag
+        if "wmllint: ignore" in original:
+            return original
+
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.

@@ -16,28 +16,28 @@ def main():
 
     punits = {}
 
-    defines = "NORMAL,ENABLE_ARMAGEDDON_DRAKE,ENABLE_DWARVISH_ARCANISTER," +\
-        "ENABLE_DWARVISH_RUNESMITH,ENABLE_ANCIENT_LICH,ENABLE_DEATH_KNIGHT," +\
-        "ENABLE_TROLL_SHAMAN,ENABLE_WOLF_ADVANCEMENT"
+    base_defines = ["NORMAL"]
 
     sys.stderr.write("Parsing core units...\n")
-    wesnoth.parser.parse_text("{core/units.cfg}", defines)
+    wesnoth.parser.parse_text("{core/units.cfg}", ",".join(base_defines))
     punits["mainline"] = wesnoth.parser.get_all(tag = "units")
     punits["mainline"] += wesnoth.parser.get_all(tag = "+units")
 
     all_campaigns = {}
     sys.stderr.write("Parsing campaigns...\n")
-    wesnoth.parser.parse_text("{campaigns}", defines)
+    wesnoth.parser.parse_text("{campaigns}", ",".join(base_defines))
     campaigns = wesnoth.parser.get_all(tag = "campaign")
     for campaign in campaigns:
+        campaign_defines = base_defines[:]
         define = campaign.get_text_val("define")
         ed = campaign.get_text_val("extra_defines")
-        if ed: define += "," + ed
+        if define is not None: campaign_defines.append(define)
+        if ed is not None: campaign_defines.extend(ed.split(","))
         name = campaign.get_text_val("name", translation = translated.translate)
         sys.stderr.write("Parsing " + name + "...\n")
         campaign.name = name
         all_campaigns[campaign.get_text_val("id")] = campaign
-        wesnoth.parser.parse_text("{campaigns}", defines + "," + define)
+        wesnoth.parser.parse_text("{campaigns}", ",".join(campaign_defines))
         punits[name] = wesnoth.parser.get_all(tag = "units")
         punits[name] += wesnoth.parser.get_all(tag = "+units")
 
@@ -46,7 +46,12 @@ def main():
     for campaign, unitslists in list(punits.items()):
         for unitlist in unitslists:
             for race in unitlist.get_all(tag = "race"):
-                races[race.get_text_val("id")] = race
+                race_id = race.get_text_val("id")
+                if race_id is None: race_id = race.get_text_val("name")
+                if race_id is None:
+                    continue
+                else:
+                    races[race_id] = race
 
     # Go through all units and put them into a dictionary.
     all_units = {}
@@ -56,6 +61,8 @@ def main():
                 if unit.get_text_val("do_not_list") in ["yes", "true"]: continue
                 if unit.get_text_val("hide_help") in ["yes", "true"]: continue
                 unit.id = unit.get_text_val("id")
+                if unit.id is None:
+                    continue
                 unit.campaign = campaign
                 all_units[unit.id] = unit
                 unit.children = []
@@ -65,7 +72,10 @@ def main():
         x = unit.get_text_val(val, translation = translation)
         if x: return x
         for base_unit in unit.get_all(tag = "base_unit"):
-            base = all_units[base_unit.get_text_val("id")]
+            base_uid = base_unit.get_text_val("id")
+            if base_uid is None or not base_uid in all_units:
+                continue
+            base = all_units[base_uid]
             x = base_val(base, val, translation = translation)
             if x: return x
         return None
@@ -90,12 +100,15 @@ def main():
     # Find children and parents of all units.
     for unit in list(all_units.values()):
         for aid in unit.advances_to:
+            if not aid in all_units:
+                continue
             unit.children.append(all_units[aid])
             all_units[aid].parents.append(unit)
-        for af in unit.get_all(tag = "advancefrom"):
-            afid = af.get_text_val("unit")
-            all_units[afid].children.append(unit)
-            unit.parents.append(all_units[afid])
+        # [advancefrom] was removed
+        # for af in unit.get_all(tag = "advancefrom"):
+        #    afid = af.get_text_val("unit")
+        #    all_units[afid].children.append(unit)
+        #    unit.parents.append(all_units[afid])
 
     def race_key(unit):
         if unit.campaign == "mainline": return 0, unit.race

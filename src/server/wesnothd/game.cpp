@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,17 +16,17 @@
 #include "server/wesnothd/game.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" // game_config::observer_team_name
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "preferences/credentials.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/chrono.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
+#include "utils/math.hpp"
 
-#include <cstdio>
 #include <iomanip>
 #include <sstream>
+
+#include <boost/coroutine/exceptions.hpp>
 
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
@@ -77,6 +77,7 @@ int game::db_id_num = 1;
 
 game::game(wesnothd::server& server, player_connections& player_connections,
 		player_iterator host,
+		bool is_queue_game,
 		const std::string& name,
 		bool save_replays,
 		const std::string& replay_save_path)
@@ -96,9 +97,12 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, started_(false)
 	, level_()
 	, history_()
+	, chat_history_()
 	, description_(nullptr)
+	, description_updated_(false)
 	, current_turn_(0)
 	, current_side_index_(0)
+	, next_side_index_(0)
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
@@ -109,6 +113,7 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, replay_save_path_(replay_save_path)
 	, rng_()
 	, last_choice_request_id_(-1) /* or maybe 0 ? it shouldn't matter*/
+	, is_queue_game_(is_queue_game)
 {
 	players_.push_back(owner_);
 
@@ -145,6 +150,11 @@ static const simple_wml::node& get_multiplayer(const simple_wml::node& root)
 	}
 }
 
+const std::string game::get_scenario_id() const
+{
+	return get_multiplayer(level_.root())["mp_scenario"].to_string();
+}
+
 bool game::allow_observers() const
 {
 	return get_multiplayer(level_.root())["observer"].to_bool(true);
@@ -178,7 +188,7 @@ std::string game::username(player_iterator iter) const
 	return iter->info().name();
 }
 
-std::string game::list_users(user_vector users) const
+std::string game::list_users(const user_vector& users) const
 {
 	std::string list;
 
@@ -306,19 +316,29 @@ void game::start_game(player_iterator starter)
 	DBG_GAME << "Number of sides: " << nsides_;
 	int turn = 1;
 	int side = 0;
+	int next_side = 0;
 
 	// Savegames have a snapshot that tells us which side starts.
 	if(const simple_wml::node* snapshot = level_.root().child("snapshot")) {
 		turn = lexical_cast_default<int>((*snapshot)["turn_at"], 1);
 		side = lexical_cast_default<int>((*snapshot)["playing_team"], 0);
-		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ".";
+		if((*snapshot)["init_side_done"].to_bool(false)) {
+			next_side = -1;
+		} else {
+			next_side = side;
+		}
+		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ". Next side is: " << next_side + 1;
 	}
+
 	current_turn_ = turn;
 	current_side_index_ = side;
+	next_side_index_ = next_side;
+
 	num_turns_ = lexical_cast_default<int>((*starting_pos(level_.root()))["turns"], -1);
 
 	update_turn_data();
 	clear_history();
+	clear_chat_history();
 
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
@@ -549,7 +569,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 		observers_.push_back(*old_player);
 
 		(*old_player)->info().set_status(player::OBSERVING);
-		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
+		utils::erase(players_, old_player);
 
 		// Tell others that the player becomes an observer.
 		send_and_record_server_message(old_player_name + " becomes an observer.");
@@ -566,7 +586,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(is_observer(*newplayer)) {
 		players_.push_back(*newplayer);
 		(*newplayer)->info().set_status(player::PLAYING);
-		observers_.erase(std::remove(observers_.begin(), observers_.end(), newplayer), observers_.end());
+		utils::erase(observers_, newplayer);
 		// Send everyone but the new player the observer_quit message.
 		send_observerquit(*newplayer);
 	}
@@ -631,10 +651,10 @@ void game::notify_new_host()
 	send_and_record_server_message(message);
 }
 
-bool game::describe_slots()
+void game::describe_slots()
 {
 	if(started_ || description_ == nullptr) {
-		return false;
+		return;
 	}
 
 	int available_slots = 0;
@@ -651,15 +671,10 @@ bool game::describe_slots()
 		++i;
 	}
 
-	simple_wml::node* slots_cfg = description_->child("slot_data");
-	if(!slots_cfg) {
-		slots_cfg = &description_->add_child("slot_data");
-	}
+	simple_wml::node& slots_cfg = description_for_writing()->child_or_add("slot_data");
 
-	slots_cfg->set_attr_int("vacant", available_slots);
-	slots_cfg->set_attr_int("max", num_sides);
-
-	return true;
+	slots_cfg.set_attr_int("vacant", available_slots);
+	slots_cfg.set_attr_int("max", num_sides);
 }
 
 bool game::player_is_banned(player_iterator player, const std::string& name) const
@@ -761,7 +776,7 @@ void game::unmute_observer(const simple_wml::node& unmute, player_iterator unmut
 	LOG_GAME << unmuter->client_ip() << "\t" << game::username(unmuter) << " unmuted: " << username << " ("
 	         << (*user)->client_ip() << ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
 
-	muted_observers_.erase(std::remove(muted_observers_.begin(), muted_observers_.end(), user), muted_observers_.end());
+	utils::erase(muted_observers_, user);
 	send_and_record_server_message(username.to_string() + " has been unmuted.");
 }
 
@@ -771,7 +786,7 @@ void game::send_leave_game(player_iterator user) const
 	server.send_to_player(user, leave_game);
 }
 
-std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
+utils::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
 {
 	if(kicker != owner_) {
 		send_server_message("You cannot kick: not the game host", kicker);
@@ -803,7 +818,7 @@ std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, p
 	return user;
 }
 
-std::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
+utils::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
 {
 	if(banner != owner_) {
 		send_server_message("You cannot ban: not the game host", banner);
@@ -870,8 +885,8 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 		<< "\tunbanned: " << username << " (" << (*user)->client_ip() << ")\tfrom game:\t\"" << name_ << "\" ("
 		<< id_ << ", " << db_id_ << ")";
 
-	bans_.erase(std::remove(bans_.begin(), bans_.end(), (*user)->client_ip()), bans_.end());
-	name_bans_.erase(std::remove(name_bans_.begin(), name_bans_.end(), username.to_string()), name_bans_.end());
+	utils::erase(bans_, (*user)->client_ip());
+	utils::erase(name_bans_, username.to_string());
 	send_and_record_server_message(username.to_string() + " has been unbanned.");
 }
 
@@ -880,10 +895,10 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
 	message->set_attr_dup("sender", user->info().name().c_str());
-
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-
+	// Save chat as history to be sent to newly joining players
+	chat_history_.push_back(data.clone());
 	send_data(data, user);
 }
 
@@ -901,9 +916,14 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 			return false;
 		}
 
-		if(from_side_index >= sides_.size() || sides_[from_side_index] != user) {
+		if(get_side_player(from_side_index) != user) {
 			return false;
 		}
+	}
+
+	if(command.child("init_side")) {
+		// If side init was already done, the rhs returns nullopt so this also return fale in this case.
+		return get_side_player(get_next_side_index()) == user;
 	}
 
 	if(is_current) {
@@ -928,7 +948,7 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 		}
 
 		std::size_t side_number = sn.to_int();
-		if(side_number >= sides_.size() || sides_[side_number] != user) {
+		if(get_side_player(side_number) != user) {
 			return false;
 		} else {
 			return true;
@@ -1051,7 +1071,10 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
 			simple_wml::node& endturn = *(*command).child("end_turn");
-			turn_ended = end_turn(endturn["next_player_number"].to_int());
+			end_turn(endturn["next_player_number"].to_int());
+		} else if(command->child("init_side")) {
+			//["side_number"]
+			init_turn();
 		}
 
 		++index;
@@ -1123,6 +1146,7 @@ void game::handle_random_choice()
 	simple_wml::node& random_seed = command.add_child("random_seed");
 
 	random_seed.set_attr_dup("new_seed", stream.str().c_str());
+	random_seed.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1188,6 +1212,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	change_controller_wml.set_attr_dup("controller", side_controller::get_string(*new_controller).c_str());
 	change_controller_wml.set_attr("is_local", "yes");
+	change_controller_wml.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1292,46 +1317,34 @@ void game::process_change_turns_wml(simple_wml::document& data, player_iterator 
 
 	assert(static_cast<int>(this->current_turn()) == current_turn);
 
-	simple_wml::node* turns_cfg = description_->child("turn_data");
-	if(!turns_cfg) {
-		turns_cfg = &description_->add_child("turn_data");
-	}
+	simple_wml::node& turns_cfg = description_for_writing()->child_or_add("turn_data");
 
-	ctw_node.copy_into(*turns_cfg);
+	ctw_node.copy_into(turns_cfg);
 
 	// Don't send or store this change, all players should have gotten it by wml.
 }
 
-bool game::end_turn(int new_side)
+void game::end_turn(int new_side)
 {
 	if(new_side > 0) {
-		current_side_index_ = new_side - 1;
+		next_side_index_ = new_side - 1;
+	} else {
+		next_side_index_ = current_side_index_ + 1;
 	}
-	else {
-		++current_side_index_;
+}
+
+void game::init_turn()
+{
+	int new_side = get_next_side_index();
+	if(new_side > current_side_index_) {
+		++current_turn_;
 	}
 
-	// Skip over empty sides.
-	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == side_controller::type::none; ++i) {
-		++current_side_index_;
-	}
-
-	auto res = std::div(current_side_index_, nsides_ > 0 ? nsides_ : 1);
-
-	if(res.quot == 0) {
-		return false;
-	}
-	current_side_index_ = res.rem;
-	current_turn_ += res.quot;
-
-	if(description_ == nullptr) {
-		// TODO: why do we need this?
-		return false;
-	}
+	current_side_index_ = new_side;
+	next_side_index_ = -1;
 
 	update_turn_data();
 
-	return true;
 }
 
 void game::update_turn_data()
@@ -1340,13 +1353,10 @@ void game::update_turn_data()
 		return;
 	}
 
-	simple_wml::node* turns_cfg = description_->child("turn_data");
-	if(!turns_cfg) {
-		turns_cfg = &description_->add_child("turn_data");
-	}
+	simple_wml::node& turns_cfg = description_for_writing()->child_or_add("turn_data");
 
-	turns_cfg->set_attr_int("current", current_turn());
-	turns_cfg->set_attr_int("max", num_turns_);
+	turns_cfg.set_attr_int("current", current_turn());
+	turns_cfg.set_attr_int("max", num_turns_);
 }
 
 bool game::add_player(player_iterator player, bool observer)
@@ -1416,6 +1426,8 @@ bool game::add_player(player_iterator player, bool observer)
 		send_history(player);
 	} else {
 		send_user_list();
+		// Send the game chat log, regardless if observer or not
+		send_chat_history(player);
 	}
 
 	const std::string clones = has_same_ip(player);
@@ -1445,8 +1457,8 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	const bool host = (player == owner_);
 	const bool observer = is_observer(player);
 
-	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
-	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
+	utils::erase(players_, player);
+	utils::erase(observers_, player);
 	players_not_advanced_.erase(&*player);
 
 	const bool game_ended = players_.empty() || (host && !started_);
@@ -1513,7 +1525,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 		if(!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...";
 			owner_->info().set_status(player::PLAYING);
-			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
+			utils::erase(observers_, owner_);
 			players_.push_back(owner_);
 			send_observerquit(owner_);
 		}
@@ -1542,7 +1554,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	return false;
 }
 
-void game::send_user_list(std::optional<player_iterator> exclude)
+void game::send_user_list(utils::optional<player_iterator> exclude)
 {
 	// If the game hasn't started yet, then send all players a list of the users in the game.
 	if(started_ /*|| description_ == nullptr*/) {
@@ -1630,7 +1642,7 @@ void game::load_next_scenario(player_iterator user)
 }
 
 template<typename Container>
-void game::send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude)
+void game::send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude)
 {
 	for(const auto& player : players) {
 		if(player != exclude) {
@@ -1639,14 +1651,14 @@ void game::send_to_players(simple_wml::document& data, const Container& players,
 	}
 }
 
-void game::send_data(simple_wml::document& data, std::optional<player_iterator> exclude)
+void game::send_data(simple_wml::document& data, utils::optional<player_iterator> exclude)
 {
 	send_to_players(data, all_game_users(), exclude);
 }
 
 void game::send_data_sides(simple_wml::document& data,
 		const simple_wml::string_span& sides,
-		std::optional<player_iterator> exclude)
+		utils::optional<player_iterator> exclude)
 {
 	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl);
 
@@ -1688,7 +1700,7 @@ std::string game::has_same_ip(player_iterator user) const
 	return clones;
 }
 
-void game::send_observerjoins(std::optional<player_iterator> player)
+void game::send_observerjoins(utils::optional<player_iterator> player)
 {
 	for(auto ob : observers_) {
 		if(ob == player) {
@@ -1747,6 +1759,17 @@ void game::send_history(player_iterator player) const
 	}
 }
 
+void game::send_chat_history(player_iterator player) const
+{
+	if(chat_history_.empty()) {
+		return;
+	}
+	for(auto& h : chat_history_) {
+		server.send_to_player(player, *h);
+	}
+}
+
+
 static bool is_invalid_filename_char(char c)
 {
 	return !(isalnum(c) ||
@@ -1773,7 +1796,7 @@ std::string game::get_replay_filename()
 	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << db_id_ << ").bz2";
 	std::string filename(name.str());
 	std::replace(filename.begin(), filename.end(), ' ', '_');
-	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+	utils::erase_if(filename, is_invalid_filename_char);
 	return filename;
 }
 
@@ -1844,6 +1867,11 @@ void game::clear_history()
 	history_.clear();
 }
 
+void game::clear_chat_history()
+{
+	chat_history_.clear();
+}
+
 void game::set_description(simple_wml::node* desc)
 {
 	description_ = desc;
@@ -1911,7 +1939,7 @@ std::string game::debug_sides_info() const
 	return result.str();
 }
 
-std::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
+utils::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
 {
 	auto player { player_connections_.get<name_t>().find(name.to_string()) };
 	if(player != player_connections_.get<name_t>().end()) {
@@ -1921,7 +1949,7 @@ std::optional<player_iterator> game::find_user(const simple_wml::string_span& na
 	}
 }
 
-void game::send_and_record_server_message(const char* message, std::optional<player_iterator> exclude)
+void game::send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude)
 {
 	auto doc = std::make_unique<simple_wml::document>();
 	send_server_message(message, {}, doc.get());
@@ -1932,14 +1960,14 @@ void game::send_and_record_server_message(const char* message, std::optional<pla
 	}
 }
 
-void game::send_server_message_to_all(const char* message, std::optional<player_iterator> exclude)
+void game::send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude)
 {
 	simple_wml::document doc;
 	send_server_message(message, {}, &doc);
 	send_data(doc, exclude);
 }
 
-void game::send_server_message(const char* message, std::optional<player_iterator> player, simple_wml::document* docptr) const
+void game::send_server_message(const char* message, utils::optional<player_iterator> player, simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
 	if(docptr == nullptr) {
@@ -1957,7 +1985,7 @@ void game::send_server_message(const char* message, std::optional<player_iterato
 		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
 		std::stringstream ss;
-		ss << ::std::time(nullptr);
+		ss << chrono::serialize_timestamp(std::chrono::system_clock::now());
 		msg.set_attr_dup("time", ss.str().c_str());
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");
@@ -1975,6 +2003,28 @@ bool game::is_reload() const
 {
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
 	return multiplayer.has_attr("savegame") && multiplayer["savegame"].to_bool();
+}
+
+int game::get_next_side_index() const
+{
+	return get_next_nonempty(next_side_index_);
+}
+
+int game::get_next_nonempty(int side_index) const
+{
+	if(side_index == -1) {
+		return -1;
+	}
+	if(nsides_ == 0) {
+		return 0;
+	}
+	for(int i = 0; i < nsides_; ++i) {
+		int res = modulo(side_index + i, nsides_, 0);
+		if(side_controllers_[res] != side_controller::type::none) {
+			return res;
+		}
+	}
+	return -1;
 }
 
 } // namespace wesnothd

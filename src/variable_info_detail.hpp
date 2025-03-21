@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -42,8 +42,8 @@ public:
 	{
 		assert(index >= 0);
 		// cfg.child_or_empty does not support index parameter
-		if(const config& child = cfg.child(key, index)) {
-			return child;
+		if(auto child = cfg.optional_child(key, index)) {
+			return *child;
 		}
 
 		static const config empty_const_cfg;
@@ -68,7 +68,7 @@ public:
 			cfg.add_child(key);
 		}
 
-		return cfg.child(key, index);
+		return cfg.mandatory_child(key, index);
 	}
 
 	static std::string error_message(const std::string& name)
@@ -87,8 +87,8 @@ public:
 	static config& get_child_at(config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-		if(config& child = cfg.child(key, index)) {
-			return child;
+		if(auto child = cfg.optional_child(key, index)) {
+			return *child;
 		}
 
 		throw invalid_variablename_exception();

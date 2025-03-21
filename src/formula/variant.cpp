@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,14 +16,11 @@
 #include <cassert>
 #include <cmath>
 #include <cstring>
-#include <cassert>
-#include <cmath>
 #include <memory>
 #include <stack>
 
 #include "formatter.hpp"
 #include "formula/function.hpp"
-#include "utils/math.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");

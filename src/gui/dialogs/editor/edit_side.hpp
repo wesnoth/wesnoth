@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Fabian Müller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,24 +19,9 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "side_controller.hpp"
-#include "team.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap sides.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the id.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class editor_edit_side : public modal_dialog
 {
 public:
@@ -46,8 +31,8 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_side)
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	side_controller::type& controller_;
 	group<side_controller::type> controller_group;
@@ -57,5 +42,5 @@ private:
 
 	virtual const std::string& window_id() const override;
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

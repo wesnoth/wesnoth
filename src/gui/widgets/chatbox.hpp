@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include "chat_events.hpp"
 #include "chat_log.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/widgets/container_base.hpp"
 

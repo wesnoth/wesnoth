@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,6 +25,7 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "sdl/texture.hpp"
+#include "sdl/rect.hpp"
 
 namespace wfl { class variant; }
 struct point;
@@ -82,10 +83,29 @@ public:
 		bool immutable_;
 	};
 
-	canvas();
+	explicit canvas(const config& cfg);
+
 	canvas(const canvas&) = delete;
 	canvas& operator=(const canvas&) = delete;
-	canvas(canvas&& c) noexcept;
+
+	canvas(canvas&& c) noexcept = default;
+	canvas& operator=(canvas&&) noexcept = default;
+
+	/**
+	 * Update the background blur texture, if relevant and necessary.
+	 *
+	 * This should be called sometime before draw().
+	 * Updating it later is less important as it's quite expensive.
+	 *
+	 * @param screen_region     The area of the screen underneath the canvas.
+	 * @param force             Regenerate the blur even if we already did it.
+	 *
+	 * @returns                 True if draw should continue, false otherwise.
+	 */
+	bool update_blur(const rect& screen_region, const bool force = false);
+
+	/** Clear the cached blur texture, forcing it to regenerate. */
+	void queue_reblur();
 
 	/**
 	 * Draw the canvas' shapes onto the screen.
@@ -101,7 +121,7 @@ public:
 	 * @param cfg                 The config object with the data to draw.
 	 * @param force               Whether to clear all shapes or not.
 	 */
-	void set_cfg(const config& cfg, const bool force = false)
+	void set_shapes(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
 		parse_cfg(cfg);
@@ -112,7 +132,7 @@ public:
 	 *
 	 * @param cfg                 The config object with the data to draw.
 	 */
-	void append_cfg(const config& cfg)
+	void append_shapes(const config& cfg)
 	{
 		parse_cfg(cfg);
 	}
@@ -139,6 +159,11 @@ public:
 		variables_.add(key, std::move(value));
 	}
 
+	wfl::variant get_variable(const std::string& key)
+	{
+		return variables_.query_value(key);
+	}
+
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<std::unique_ptr<shape>> shapes_;
@@ -155,6 +180,12 @@ private:
 
 	/** Blurred background texture. */
 	texture blur_texture_;
+
+	/** The region of the screen we have blurred (if any). */
+	rect blur_region_;
+
+	/** Whether we have deferred rendering so we can capture for blur. */
+	bool deferred_;
 
 	/** The full width of the canvas. */
 	unsigned w_;
@@ -175,7 +206,7 @@ private:
 	 * the config object is no longer required and thus not stored in the
 	 * object.
 	 *
-	 * @param cfg                 The config object with the data to draw, see @ref GUICanvasWML
+	 * @param cfg                 The config object with the data to draw
 	 */
 	void parse_cfg(const config& cfg);
 

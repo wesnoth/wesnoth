@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -421,7 +421,7 @@ public:
 		}
 
 		for(; index < datasource_.size(); ++index) {
-			child.child(key, startindex + index).swap(datasource_[index]);
+			child.mandatory_child(key, startindex + index).swap(datasource_[index]);
 		}
 
 		return get_child_range(child, key, startindex, datasource_.size());

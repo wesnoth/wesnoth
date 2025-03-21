@@ -19,7 +19,7 @@ config=$dir/config
 src=$SOURCES/$VERSION
 data=$src
 log=$dir/logs
-tmpout=$dir/output
+tmpout=${TMPOUT:-$dir/output}
 OUT=${OUT:-"/srv/www/html/units/$VERSION"}
 trans=$dir/translations
 build=$dir/build
@@ -55,7 +55,6 @@ python3 -u "$TOOLS/wmlunits" -t "$trans" -D "$data" -o "$tmpout" -w "$exe" \
     -C "$config" -a "$addons" -L "$dir/overview.txt" -B "$dir/overview.txt" \
     -T "$TIMEOUT" $EXTRA_WMLUNITS_OPTIONS > "$log/wmlunits.txt" 2>&1
 test -f "$tmpout"/mainline/en_US/mainline.html
-test -f "$tmpout"/'pics/core$images$units$woses$wose.png'
 rsync -vaz --delete "$tmpout/" "$OUT" > "$log/rsync.txt" 2>&1
 rm -rf "$TEMP"
 rm -rf "$tmpout"

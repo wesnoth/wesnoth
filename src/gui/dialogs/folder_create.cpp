@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,9 +18,7 @@
 #include "gui/dialogs/folder_create.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2::dialogs
@@ -35,10 +33,10 @@ folder_create::folder_create(std::string& folder_name)
 	register_text("name", true, folder_name, true);
 }
 
-void folder_create::pre_show(window& window)
+void folder_create::pre_show()
 {
 	if(bookmark_mode_) {
-		find_widget<styled_widget>(&window, "title", false).set_label(_("New Bookmark"));
+		find_widget<styled_widget>("title").set_label(_("New Bookmark"));
 	}
 }
 

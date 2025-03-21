@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,19 +19,14 @@
 
 #pragma once
 
-struct map_location;
-class  team;
 class  unit;
 class  config;
 
 #include "map/location.hpp"
-#include "units/attack_type.hpp"
 #include "units/ptr.hpp"
-#include "units/race.hpp"
 #include "utils/variant.hpp"
 
 #include <string>
-#include <vector>
 
 /**
 	advances the unit at loc if it has enough experience, maximum 20 times.

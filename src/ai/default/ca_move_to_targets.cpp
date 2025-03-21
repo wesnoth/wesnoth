@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 
 #include "ai/default/ca_move_to_targets.hpp"
 
-#include "ai/composite/ai.hpp"
 #include "ai/actions.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
@@ -145,7 +144,7 @@ void move_to_targets_phase::execute()
 			}
 		}
 
-		targets.erase( std::remove_if(targets.begin(),targets.end(),remove_wrong_targets(*this)), targets.end() );
+		utils::erase_if(targets, remove_wrong_targets{*this});
 
 		if(targets.empty()) {
 			break;

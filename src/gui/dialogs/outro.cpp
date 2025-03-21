@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,12 +21,21 @@
 #include "formula/variant.hpp"
 #include "game_classification.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/timer.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/chrono.hpp"
+#include "serialization/markup.hpp"
 
 #include <cmath>
+
+using namespace std::chrono_literals;
+
+namespace
+{
+
+// How long text fading should take - currently a hardcoded value.
+constexpr auto fade_duration = 500ms;
+
+}
 
 namespace gui2::dialogs
 {
@@ -35,11 +44,10 @@ REGISTER_DIALOG(outro)
 outro::outro(const game_classification& info)
 	: modal_dialog(window_id())
 	, text_()
-	, current_text_()
-	, duration_(info.end_text_duration)
-	, fade_step_(0)
-	, fading_in_(true)
-	, timer_id_(0)
+	, text_index_(0)
+	, display_duration_(info.end_text_duration)
+	, stage_(stage::fading_in)
+	, stage_start_()
 {
 	if(!info.end_text.empty()) {
 		text_.push_back(info.end_text);
@@ -48,7 +56,7 @@ outro::outro(const game_classification& info)
 	}
 
 	if(info.end_credits) {
-		text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
+		text_.push_back(markup::span_size("large", info.campaign_name));
 
 		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)) {
 			for(const auto& about : (*campaign_credits)->sections) {
@@ -71,7 +79,7 @@ outro::outro(const game_classification& info)
 					}
 
 					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
-						ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+						ss << markup::span_size("xx-small", about.names[k].first) << "\n";
 					}
 
 					// Clean up the trailing newline
@@ -84,73 +92,81 @@ outro::outro(const game_classification& info)
 		}
 	}
 
-	current_text_ = text_.begin();
-
-	if(!duration_) {
-		duration_ = 3500; // 3.5 seconds
+	if(display_duration_ == 0ms) {
+		display_duration_ = 3500ms; // 3.5 seconds
 	}
 }
 
-void outro::pre_show(window& window)
+void outro::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
+	set_enter_disabled(true);
+	get_canvas(0).set_variable("outro_text", wfl::variant(text_[0]));
+	get_canvas(0).set_variable("fade_alpha", wfl::variant(0));
 }
 
 void outro::update()
 {
-	/* If we've faded fully in...
-	 *
-	 * NOTE: we want fading to take around half a second. Given this function runs about every 3 frames, we
-	 * limit ourselves to a reasonable 10 fade steps with an alpha difference (rounded up) of 25.5 each cycle.
-	 * The actual calculation for alpha is done in the window definition in WFL.
-	 */
-	if(fading_in_ && fade_step_ > 10) {
-		// Schedule the fadeout after the provided delay.
-		if(timer_id_ == 0) {
-			timer_id_ = add_timer(duration_, [this](std::size_t) { fading_in_ = false; });
-		}
-
+	// window doesn't immediately close, keep returning until it does
+	if(text_index_ >= text_.size()) {
 		return;
 	}
 
+	const auto now = std::chrono::steady_clock::now();
 	canvas& window_canvas = window::get_canvas(0);
 
-	// If we've faded fully out...
-	if(!fading_in_ && fade_step_ < 0) {
-		std::advance(current_text_, 1);
+	// TODO: Setting this in pre_show doesn't work, since it looks like it gets
+	// overwritten by styled_widget::update_canvas. But it's also weird to have
+	// this here. Find a better way to do this...
+	window_canvas.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 
-		// ...and we've just showed the last text bit, close the window.
-		if(current_text_ == text_.end()) {
-			window::close();
-			return;
-		}
+	const auto goto_stage = [this, &now](stage new_stage) {
+		stage_ = new_stage;
+		stage_start_ = now;
+	};
 
-		// ...else show the next bit.
-		window_canvas.set_variable("outro_text", wfl::variant(*current_text_));
-
-		fading_in_ = true;
-		fade_step_ = 0;
-
-		remove_timer(timer_id_);
-		timer_id_ = 0;
+	if(stage_start_ == std::chrono::steady_clock::time_point{}) {
+		stage_start_ = now;
 	}
 
-	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
+	switch(stage_) {
+	case stage::fading_in:
+		if(now <= stage_start_ + fade_duration) {
+			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(get_fade_progress(now))));
+		} else {
+			goto_stage(stage::waiting);
+		}
+		break;
+
+	case stage::waiting:
+		if(now <= stage_start_ + display_duration_) {
+			return; // zzzzzzz....
+		} else {
+			goto_stage(stage::fading_out);
+		}
+		break;
+
+	case stage::fading_out:
+		if(now <= stage_start_ + fade_duration) {
+			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(1.0 - get_fade_progress(now))));
+		} else if(++text_index_ < text_.size()) {
+			window_canvas.set_variable("outro_text", wfl::variant(text_[text_index_]));
+			goto_stage(stage::fading_in);
+		} else {
+			window::close();
+		}
+		break;
+
+	default:
+		break;
+	}
+
 	window_canvas.update_size_variables();
 	queue_redraw();
-
-	if(fading_in_) {
-		fade_step_++;
-	} else {
-		fade_step_--;
-	}
 }
 
-void outro::post_show(window& /*window*/)
+double outro::get_fade_progress(const std::chrono::steady_clock::time_point& now) const
 {
-	remove_timer(timer_id_);
-	timer_id_ = 0;
+	return chrono::normalize_progress(now - stage_start_, fade_duration);
 }
 
 } // namespace dialogs

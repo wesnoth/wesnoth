@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -17,6 +17,7 @@
 #pragma once
 
 #include "map/location.hpp"
+#include "sdl/point.hpp"
 
 #include <SDL2/SDL_events.h>
 
@@ -96,6 +97,7 @@ public:
 			= 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual bool mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc, bool click = false);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
@@ -216,6 +218,7 @@ public:
 protected:
 	void cancel_dragging();
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
+	void clear_drag_from_hex();
 	void init_dragging(bool& dragging_flag);
 
 	/** MMB click (on game map) state flag */
@@ -236,13 +239,10 @@ protected:
 	/** RMB drag init flag */
 	bool dragging_right_;
 
-	/** Drag start position x */
-	int drag_from_x_;
+	/** Drag start position */
+	point drag_from_;
 
-	/** Drag start position y */
-	int drag_from_y_;
-
-	/** Drag start map location */
+	/** Drag start or mouse-down map location */
 	map_location drag_from_hex_;
 
 	/** last highlighted hex */

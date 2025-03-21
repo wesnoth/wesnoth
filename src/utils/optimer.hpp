@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,8 +18,9 @@
 #include <chrono>
 #include <functional>
 #include <iosfwd>
+#include <utility>
 
-namespace util {
+namespace utils {
 
 /**
  * Reports time elapsed at the end of an object scope.
@@ -64,10 +65,10 @@ struct optimer
 		}
 	}
 
-	/** Resets the timer back to zero. */
-	void reset()
+	/** Resets the timer back to zero and returns the previous tick value. */
+	point reset()
 	{
-		start_ = clock::now();
+		return std::exchange(start_, clock::now());
 	}
 
 	/** Returns the start time point. */
@@ -82,6 +83,19 @@ struct optimer
 		return clock::now() - start_;
 	}
 
+	/**
+	 * Resets the starting tick and returns the elapsed time.
+	 *
+	 * @note This method is preferred to calling elapsed() followed by reset()
+	 * since it guarantees resetting to the same tick as is used for duration
+	 * (or, in other words, clock::now() is called only once.)
+	 */
+	interval lap()
+	{
+		auto prev_start = reset();
+		return start_ - prev_start;
+	}
+
 private:
 	point				start_;
 	report_callback		repf_;
@@ -92,10 +106,10 @@ private:
  *
  * @note The resulting output does <b>not</b> include a time unit suffix.
  */
-template<typename OpTimerType>
-inline std::ostream& operator<<(std::ostream& o, const OpTimerType& tm)
+template<typename... OpTimerArgs>
+inline std::ostream& operator<<(std::ostream& o, const optimer<OpTimerArgs...>& tm)
 {
-	o << std::chrono::duration_cast<typename OpTimerType::resolution>(tm.elapsed()).count();
+	o << std::chrono::duration_cast<typename optimer<OpTimerArgs...>::resolution>(tm.elapsed()).count();
 	return o;
 }
 
@@ -104,4 +118,4 @@ inline std::ostream& operator<<(std::ostream& o, const OpTimerType& tm)
  */
 using ms_optimer = optimer<std::chrono::milliseconds>;
 
-} // end namespace util
+} // end namespace utils

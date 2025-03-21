@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@ struct overlay
 
 	overlay(const std::string& img,
 			const std::string& halo_img,
-			halo::handle handle,
 			const std::string& overlay_team_name,
 			const std::string& item_id,
 			const bool fogged,
@@ -31,8 +30,9 @@ struct overlay
 		: image(img)
 		, halo(halo_img)
 		, team_name(overlay_team_name)
+		, name()
 		, id(item_id)
-		, halo_handle(handle)
+		, halo_handle()
 		, visible_in_fog(fogged)
 		, submerge(submerge)
 		, z_order(item_z_order)

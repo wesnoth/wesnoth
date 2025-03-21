@@ -330,6 +330,7 @@ on_event("die", function()
 		message = _"The screams and pleas for mercy are finally silenced, as you remove your blood soaked blade from the last of the rebels. There will be no more resistance from the local scum. Your reign has finally earned stability.",
 		image ="wesnoth-icon.png",
 	}
+	wesnoth.achievements.set("wesnoth_MP_survivals","Wesnoth_MP_Dark_Forecast")
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 	}

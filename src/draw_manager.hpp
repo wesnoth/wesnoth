@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,8 @@
 #pragma once
 
 #include "sdl/rect.hpp"
+
+#include <chrono>
 
 namespace gui2 { class top_level_drawable; }
 
@@ -93,6 +95,17 @@ void invalidate_region(const rect& region);
 void invalidate_all();
 
 /**
+ * Request an extra render pass.
+ *
+ * This is used for blur effects, which need to first render what's
+ * underneath so that it can be blurred.
+ *
+ * There is not currently any limit to the number of extra render passes,
+ * but do try to keep it finite.
+ */
+void request_extra_render_pass();
+
+/**
  * Ensure that everything which needs to be drawn is drawn.
  *
  * This includes making sure window sizes and locations are up to date,
@@ -110,7 +123,7 @@ void sparkle();
  *
  * This will usually be determined by the active monitor's refresh rate.
  */
-int get_frame_length();
+std::chrono::milliseconds get_frame_length();
 
 /** Register a top-level drawable.
  *

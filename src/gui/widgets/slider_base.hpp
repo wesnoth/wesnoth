@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,10 +15,8 @@
 
 #pragma once
 
-#include "gui/core/notifier.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
-#include <functional>
 
 namespace gui2
 {

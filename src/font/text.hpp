@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,8 @@
 #include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <pango/pango.h>
 #include <pango/pangocairo.h>
+
 
 #include <functional>
 #include <memory>
@@ -33,13 +33,11 @@
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */
 
-struct language_def;
 struct point;
 
-namespace font {
-
-/** Flush the rendered text cache. */
-void flush_texture_cache();
+namespace font
+{
+class attribute_list;
 
 // add background color and also font markup.
 
@@ -84,11 +82,8 @@ public:
 	pango_text(const pango_text&) = delete;
 	pango_text& operator=(const pango_text&) = delete;
 
-	/** Returns the cached texture, or creates a new one otherwise. */
-	texture render_and_get_texture();
-
 	/**
-	 * Returns the rendered text as a texture.
+	 * Returns the cached texture, or creates a new one otherwise.
 	 *
 	 * texture::w() and texture::h() methods will return the expected
 	 * width and height of the texture in draw space. This may differ
@@ -96,13 +91,26 @@ public:
 	 *
 	 * In almost all cases, use w() and h() to get the size of the
 	 * rendered text for drawing.
+	 */
+	texture render_and_get_texture();
+
+private:
+	/**
+	 * Wrapper around render_surface which sets texture::w() and texture::h()
+	 * in the same way that render_and_get_texture does.
 	 *
-	 * This function is otherwise identical to render().
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 */
 	texture render_texture(const SDL_Rect& viewport);
 
 	/**
 	 * Returns the rendered text.
+	 *
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 *
 	 * @param viewport Only this area needs to be drawn - the returned
 	 * surface's origin will correspond to viewport.x and viewport.y, the
@@ -111,16 +119,7 @@ public:
 	 */
 	surface render_surface(const SDL_Rect& viewport);
 
-	/**
-	 * Equivalent to render(viewport), where the viewport's top-left is at
-	 * (0,0) and the area is large enough to contain the full text.
-	 *
-	 * The top-left of the viewport will be at (0,0), regardless of the values
-	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
-	 * y rows of blank space are included in the amount of memory allocated.
-	 */
-	surface render_surface();
-
+public:
 	/** Returns the size of the text, in drawing coordinates. */
 	point get_size();
 
@@ -132,10 +131,11 @@ public:
 	 *
 	 * @param offset              The position to insert the text.
 	 * @param text                The UTF-8 text to insert.
+	 * @param use_markup          If the text is formatted or not.
 	 *
 	 * @returns                   The number of characters inserted.
 	 */
-	unsigned insert_text(const unsigned offset, const std::string& text);
+	unsigned insert_text(const unsigned offset, const std::string& text, const bool use_markup = false);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -161,8 +161,8 @@ public:
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column offset of the cursor.
-	 * @param line                The line offset of the cursor.
+	 * @param column              The column character index of the cursor.
+	 * @param line                The line character index of the cursor.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
@@ -170,6 +170,17 @@ public:
 	 */
 	point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
+
+	/**
+	 * Gets the location for the cursor, in drawing coordinates.
+	 *
+	 * @param offset              The column byte index of the cursor.
+	 *
+	 * @returns                   The position of the top of the cursor. It the
+	 *                            requested location is out of range 0,0 is
+	 *                            returned.
+	 */
+	point get_cursor_pos_from_index(const unsigned offset) const;
 
 	/**
 	 * Get maximum length.
@@ -212,6 +223,8 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
+	int xy_to_index(const point& position) const;
+
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.
 	 *
@@ -222,6 +235,35 @@ public:
 	 *       least once.
 	 */
 	std::vector<std::string> get_lines() const;
+
+	/**
+	 * Get a specific line from the pango layout
+	 *
+	 * @param index    the line number of the line to retrieve
+	 *
+	 * @returns        the PangoLayoutLine* corresponding to line number index
+	 */
+	PangoLayoutLine* get_line(int index);
+
+	/**
+	 * Given a byte index, find out at which line the corresponding character
+	 * is located.
+	 *
+	 * @param offset   the byte index
+	 *
+	 * @returns        the line number corresponding to the given index
+	 */
+	int get_line_num_from_offset(const unsigned offset);
+
+	/**
+	 * Get number of lines in the text.
+	 *
+	 * @returns                   The number of lines in the text.
+	 *
+	 */
+	unsigned get_lines_count() const {
+		return pango_layout_get_line_count(layout_.get());
+	};
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -276,6 +318,9 @@ public:
 	pango_text& set_link_color(const color_t& color);
 
 	pango_text& set_add_outline(bool do_add);
+
+	void clear_attributes();
+	void apply_attributes(const font::attribute_list& attrs);
 
 private:
 
@@ -383,14 +428,35 @@ private:
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
 
-	/** Allow specialization of std::hash for pango_text. */
-	friend struct std::hash<pango_text>;
-
-	/** Renders the text to a surface. */
+	/**
+	 * Equivalent to create_surface(viewport), where the viewport's top-left is
+	 * at (0,0) and the area is large enough to contain the full text.
+	 *
+	 * The top-left of the viewport will be at (0,0), regardless of the values
+	 * of x and y in the rect_ member variable. If the x or y co-ordinates are
+	 * non-zero, then x columns and y rows of blank space are included in the
+	 * amount of memory allocated.
+	 */
 	surface create_surface();
+
+	/**
+	 * Renders the text to a surface that uses surface_buffer_ as its data store,
+	 * the buffer will be allocated or reallocated as necessary.
+	 *
+	 * The surface's origin will correspond to viewport.x and viewport.y, the
+	 * width and height will be at least viewport.w and viewport.h (although
+	 * they may be larger).
+	 *
+	 * @param viewport The area to draw, which can be a subset of the text. This
+	 * rectangle's coordinates use render-space's scale.
+	 */
 	surface create_surface(const SDL_Rect& viewport);
 
-	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
+	/**
+	 * This is part of create_surface(viewport). The separation is a legacy
+	 * from workarounds to the size limits of cairo_surface_t.
+	 */
+	void render(PangoLayout& layout, const SDL_Rect& viewport);
 
 	/**
 	 * Buffer to store the image on.
@@ -461,17 +527,10 @@ pango_text& get_text_renderer();
  *                                font. More specifically, the result is the sum of the maximum
  *                                ascent and descent lengths.
  */
-int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+int get_max_height(unsigned size, font::family_class fclass = font::family_class::sans_serif, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
+/* Returns the default line spacing factor
+ * For now hardcoded here */
+constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
-
-// Specialize std::hash for pango_text
-namespace std
-{
-template<>
-struct hash<font::pango_text>
-{
-	std::size_t operator()(const font::pango_text&) const;
-};
-
-} // namespace std

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,7 @@
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"
-#include "sdl/input.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
 
 #include <SDL2/SDL_render.h>
 
@@ -40,11 +38,17 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
-	if(sdl::runtime_at_least(2,0,10)) {
-		// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
-		// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
-		SDL_SetHint(SDL_HINT_RENDER_BATCHING, "0");
-	}
+#ifdef _WIN32
+	// SDL uses Direct3D v9 by default on Windows systems. However, returning
+	// from the Windows lock screen causes issues with rendering. Resolution
+	// is either to rebuild render textures on the SDL_RENDER_TARGETS_RESET
+	// event or use an alternative renderer that does not have this issue.
+	// Suitable options are Direct3D v11+ or OpenGL.
+	// See https://github.com/wesnoth/wesnoth/issues/8038 for details.
+	// Note that SDL_HINT_RENDER_DRIVER implies SDL_HINT_RENDER_BATCHING is
+	// disabled, according to https://discourse.libsdl.org/t/a-couple-of-questions-regarding-batching-in-sdl-2-0-10/26453/2.
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
+#endif
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);

@@ -1,0 +1,612 @@
+# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# Bengali translations for PACKAGE package.
+# Copyright (C) 2024 Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bn\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2024-06-06 19:04+0530\n"
+"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
+"Language-Team: Bengali < >\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  wesnoth-editor.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#. [brush]: id=brush-1
+#: data/core/editor/brushes.cfg:6
+msgid "Single Hex"
+msgstr "একক ষড়ভুজ"
+
+#. [brush]: id=brush-2
+#: data/core/editor/brushes.cfg:16
+msgid "Radius 1 Hex"
+msgstr "ব্যাসার্ধ 1 ষড়ভুজ"
+
+#. [brush]: id=brush-3
+#: data/core/editor/brushes.cfg:26
+msgid "Radius 2 Hex"
+msgstr "ব্যাসার্ধ 2 ষড়ভুজ"
+
+#. [brush]: id=brush-nw-se
+#: data/core/editor/brushes.cfg:47
+msgid "Hex Line NW-SE"
+msgstr "ষড়ভুজ রেখা উ.প.-দ.পূ."
+
+#. [brush]: id=brush-sw-ne
+#: data/core/editor/brushes.cfg:63
+msgid "Hex Line SW-NE"
+msgstr "ষড়ভুজ রেখা দ.প.-উ.পূ."
+
+#. [editor_group]: id=all
+#: data/core/editor/terrain-groups.cfg:11
+msgid "all"
+msgstr "সকল"
+
+#. [editor_group]: id=water
+#: data/core/editor/terrain-groups.cfg:17
+msgid "water"
+msgstr "জল"
+
+#. [editor_group]: id=flat
+#: data/core/editor/terrain-groups.cfg:24
+msgid "flat"
+msgstr "সমতল"
+
+#. [editor_group]: id=desert
+#: data/core/editor/terrain-groups.cfg:31
+msgid "desert"
+msgstr "মরু"
+
+#. [editor_group]: id=embellishments
+#: data/core/editor/terrain-groups.cfg:38
+msgid "embellishments"
+msgstr "অলঙ্করণ"
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:45
+msgid "forest"
+msgstr "অরণ্য"
+
+#. [editor_group]: id=fall
+#: data/core/editor/terrain-groups.cfg:52
+msgid "fall"
+msgstr "পাতাঝরা"
+
+#. [editor_group]: id=frozen
+#: data/core/editor/terrain-groups.cfg:59
+msgid "frozen"
+msgstr "বরফ"
+
+#. [editor_group]: id=rough
+#: data/core/editor/terrain-groups.cfg:66
+msgid "rough"
+msgstr "অসমতল"
+
+#. [editor_group]: id=cave
+#: data/core/editor/terrain-groups.cfg:73
+msgid "cave"
+msgstr "গুহা"
+
+#. [editor_group]: id=obstacle
+#: data/core/editor/terrain-groups.cfg:80
+msgid "obstacle"
+msgstr "বাধা"
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:87
+msgid "village"
+msgstr "গ্রাম"
+
+#. [editor_group]: id=castle
+#: data/core/editor/terrain-groups.cfg:94
+msgid "castle"
+msgstr "প্রাসাদ"
+
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:101
+msgid "bridge"
+msgstr "সেতু"
+
+#. [editor_group]: id=special
+#: data/core/editor/terrain-groups.cfg:108
+msgid "special"
+msgstr "বিশেষ"
+
+#. [editor_group]: id=elevation
+#: data/core/editor/terrain-groups.cfg:115
+msgid "elevation"
+msgstr "উচ্চতা"
+
+#. [editor_times]: id=empty
+#. Describes a scenario in the editor that has not set a time of day schedule
+#: data/core/editor/time-of-day.cfg:6
+msgid "time of day^None"
+msgstr "নেই"
+
+#. [editor_times]: id=test
+#: data/core/editor/time-of-day.cfg:11
+msgid "Test"
+msgstr "পরীক্ষা"
+
+#. [editor_times]: id=default
+#: data/core/editor/time-of-day.cfg:22
+msgid "Default"
+msgstr "স্বাভাবিক"
+
+#. [editor_times]: id=summer
+#: data/core/editor/time-of-day.cfg:28
+msgid "Summer"
+msgstr "গ্রীষ্ম"
+
+#. [editor_times]: id=winter
+#: data/core/editor/time-of-day.cfg:34
+msgid "Winter"
+msgstr "শীত"
+
+#. [editor_times]: id=24
+#: data/core/editor/time-of-day.cfg:60
+msgid "24 Hour Schedule"
+msgstr "24 ঘন্টার সময়সূচী"
+
+#. [editor_times]: id=after_the_fall
+#: data/core/editor/time-of-day.cfg:66
+msgid "After the Fall"
+msgstr "পতনের পরে"
+
+#. [theme]: id=editor
+#: data/themes/editor.cfg:11
+msgid "theme^Editor"
+msgstr "পরিমার্জক"
+
+#. [menu]: id=menu-editor-file, type=turbo
+#: data/themes/editor.cfg:61
+msgid "File"
+msgstr "ফাইল"
+
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr "শেষ ব্যবহৃত খুলুন"
+
+#. [menu]: id=menu-editor-map
+#: data/themes/editor.cfg:80
+msgid "Map"
+msgstr "মানচিত্র"
+
+#. [menu]: id=menu-unit-facing
+#: data/themes/editor.cfg:88
+msgid "Unit Facing"
+msgstr "ইউনিটের দিক"
+
+#. [menu]: id=menu-editor-transitions
+#: data/themes/editor.cfg:94
+msgid "Transition Update"
+msgstr "পরিবর্তন আপডেট"
+
+#. [menu]: id=menu-editor-window
+#: data/themes/editor.cfg:101
+msgid "Window"
+msgstr "উইন্ডো"
+
+#. [menu]: id=menu-editor-addon
+#: data/themes/editor.cfg:110
+msgid "Add-on"
+msgstr "অ্যাড-অন"
+
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:119
+msgid "Areas"
+msgstr "এলাকা"
+
+#. [menu]: id=menu-editor-local-time
+#: data/themes/editor.cfg:127
+msgid "Assign Local Time"
+msgstr "স্থানীয় সময় বসান"
+
+#. [menu]: id=menu-editor-local-schedule
+#: data/themes/editor.cfg:133
+msgid "Assign Local Time Schedule"
+msgstr "স্থানীয় সময়সূচী বসান"
+
+#. [menu]: id=menu-editor-unit
+#: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr "ইউনিট"
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:151
+msgid "Side"
+msgstr "দল"
+
+#. [label]: id=villages-icon
+#: data/themes/editor.cfg:168
+msgid "villages"
+msgstr "গ্রাম"
+
+#. [label]: id=units-icon
+#: data/themes/editor.cfg:184
+msgid "units"
+msgstr "ইউনিট"
+
+#. [menu]: id=switch_time
+#: data/themes/editor.cfg:479
+msgid "Time Schedule Menu"
+msgstr "সময়সূচী মেনু"
+
+#. [menu]: id=menu-playlist
+#: data/themes/editor.cfg:490
+msgid "Playlist"
+msgstr "সঙ্গীতের তালিকা"
+
+#. [menu]: id=menu-editor-schedule
+#: data/themes/editor.cfg:496
+msgid "Assign Time Schedule"
+msgstr "সময়সূচী বসান"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
+msgid "Identifier: "
+msgstr "আইডি:"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
+msgid "Name: "
+msgstr "নাম: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Type: "
+msgstr "প্রকৃতি: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
+msgid "Level: "
+msgstr "পর্যায়: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
+msgid "Cost: "
+msgstr "মূল্য: "
+
+#: src/editor/controller/editor_controller.cpp:187
+msgid "Fatal error"
+msgstr "মারাত্মক ত্রুটি"
+
+#: src/editor/controller/editor_controller.cpp:217
+msgid "Do you really want to quit?"
+msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
+
+#: src/editor/controller/editor_controller.cpp:219
+msgid ""
+"Do you really want to quit? Changes to this map since the last save will be "
+"lost."
+msgstr ""
+"আপনি কী সত্যিই বেরিয়ে যেতে চান? এতে শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে "
+"যাবে ।"
+
+#: src/editor/controller/editor_controller.cpp:221
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+"আপনি কী সত্যিই বেরিয়ে যেতে চান? পরবর্তী মানচিত্রগুলি পাল্টানো হয়েছে এবং সেগুলিতে "
+"শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে যাবে ।"
+
+#: src/editor/controller/editor_controller.cpp:238
+msgid "No editor time-of-day found."
+msgstr "পরিমার্জকের জন্য কোনো সময়সূচী পাওয়া যায়নি ।"
+
+#: src/editor/controller/editor_controller.cpp:886
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "অ্যাড-অন"
+
+#: src/editor/controller/editor_controller.cpp:899
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
+
+#: src/editor/controller/editor_controller.cpp:1324
+msgid "Change Unit ID"
+msgstr "ইউনিটের আইডি পাল্টান"
+
+#: src/editor/controller/editor_controller.cpp:1325
+msgid "ID:"
+msgstr "আইডি:"
+
+#: src/editor/controller/editor_controller.cpp:1341
+msgid "Rename Unit"
+msgstr "ইউনিটের নাম পাল্টান"
+
+#: src/editor/controller/editor_controller.cpp:1342
+msgid "Name:"
+msgstr "নাম:"
+
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
+msgid "Load Map"
+msgstr "মানচিত্র খুলুন"
+
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
+msgid "New Map"
+msgstr "নতুন মানচিত্র"
+
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
+msgid "New Scenario"
+msgstr "নতুন ঘটনাক্রম"
+
+#: src/editor/map/context_manager.cpp:382
+msgid "No Recent Files"
+msgstr "কোনো শেষ ব্যবহৃত ফাইল নেই"
+
+#: src/editor/map/context_manager.cpp:420
+msgid "Unnamed Area"
+msgstr "নামহীন এলাকা"
+
+#: src/editor/map/context_manager.cpp:451
+msgid "New Side"
+msgstr "নতুন দল"
+
+#: src/editor/map/context_manager.cpp:507
+msgid "Apply Mask"
+msgstr "মাস্ক প্রয়োগ করুন"
+
+#: src/editor/map/context_manager.cpp:516
+msgid "Error loading mask"
+msgstr "মাস্ক খোলায় ত্রুটি"
+
+#: src/editor/map/context_manager.cpp:536
+msgid "Identifier:"
+msgstr "আইডি:"
+
+#: src/editor/map/context_manager.cpp:536
+msgid "Rename Area"
+msgstr "এলাকার নাম পাল্টান"
+
+#: src/editor/map/context_manager.cpp:550
+msgid "Choose Target Map"
+msgstr "মানচিত্র পছন্দ করুন"
+
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:984
+msgid "Error loading map"
+msgstr "মানচিত্র খোলায় ত্রুটি"
+
+#: src/editor/map/context_manager.cpp:691
+msgid "Save Map As"
+msgstr "মানচিত্র সঞ্চয় করুন এভাবে"
+
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr "ত্রুটি"
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:925
+msgid "This map is already open."
+msgstr "এই মানচিত্রটি আগে থেকেই খোলা রয়েছে ।"
+
+#: src/editor/map/context_manager.cpp:740
+msgid "Save Scenario As"
+msgstr "ঘটনাক্রম সঞ্চয় করুন এভাবে"
+
+#: src/editor/map/context_manager.cpp:766
+msgid "This scenario is already open."
+msgstr "এই ঘটনাক্রমটি আগে থেকেই খোলা রয়েছে ।"
+
+#: src/editor/map/context_manager.cpp:799
+msgid "No random map generators found."
+msgstr "কোনো ইতস্তত মানচিত্র সৃষ্টিকারক পাওয়া যাচ্ছে না ।"
+
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
+msgid "Map creation failed."
+msgstr "মানচিত্র তৈরী করা যায়নি ।"
+
+#: src/editor/map/context_manager.cpp:832
+msgid "Unsaved Changes"
+msgstr "অসঞ্চিত পরিবর্তন"
+
+#: src/editor/map/context_manager.cpp:833
+msgid "Do you want to discard all changes made to the map since the last save?"
+msgstr "শেষ সঞ্চয়ের পর মানচিত্র করা সকল পরিবর্তন বাতিল করতে চান?"
+
+#: src/editor/map/context_manager.cpp:886
+msgid "Scenario saved."
+msgstr "ঘটনাক্রম সঞ্চিত হয়েছে ।"
+
+#: src/editor/map/context_manager.cpp:901
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
+msgstr "মানচিত্র সঞ্চিত হয়েছে ।"
+
+#: src/editor/map/context_manager.cpp:976
+msgid "Loaded embedded map data"
+msgstr "অন্তর্নিহিত মানচিত্রের তথ্য খোলা হয়েছে"
+
+#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:980
+msgid "Map loaded from scenario"
+msgstr "ঘটনাক্রম থেকে মানচিত্র খোলা হয়েছে"
+
+#: src/editor/map/context_manager.cpp:980
+msgid "Loaded referenced map file:"
+msgstr "নির্দেশিত মানচিত্র খোলা হয়েছে:"
+
+#: src/editor/map/editor_map.cpp:146
+#: src/editor/palette/location_palette.cpp:118
+msgid "Player $side_num"
+msgstr "খেলোয়াড় $side_num"
+
+#: src/editor/map/editor_map.cpp:281
+msgid "The size of the target map is different from the current map"
+msgstr "বর্তমান মানচিত্রের থেকে পছন্দ করা মানচিত্রের আকার আলাদা"
+
+#: src/editor/map/map_context.cpp:186
+msgid "File not found"
+msgstr "ফাইল খুঁজে পাওয়া যায়নি"
+
+#: src/editor/map/map_context.cpp:193
+msgid "Empty file"
+msgstr "ফাঁকা ফাইল"
+
+#: src/editor/map/map_context.cpp:202
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr "ফাইলটির .map, .cfg, বা .mask এক্সটেনশন নেই"
+
+#: src/editor/map/map_context.cpp:249
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+"মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_data-র মান অস্তিত্ব আছে এমন "
+"কোনো ফাইলের দিকে নির্দেশ করে না"
+
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "Found the characters '<<' indicating inline lua is present - aborting"
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+msgstr "ইনালাইন লুয়া নির্দেশকারী '<<' অক্ষরগুলি পাওয়া গিয়েছে - বেরিয়ে যাওয়া হচ্ছে"
+
+#: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr "ঘটনাক্রম খোলা যায়নি, মানচিত্র খোলার চেষ্টা করা হচ্ছে ।"
+
+#: src/editor/map/map_context.cpp:280
+msgid ""
+"The map file looks like a scenario, but the map_file value does not point to "
+"an existing file"
+msgstr ""
+"মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_file-র মান অস্তিত্ব আছে এমন "
+"কোনো ফাইলের দিকে নির্দেশ করে না"
+
+#: src/editor/map/map_context.cpp:295
+msgid "Unable to parse file to find map data"
+msgstr "মানচিত্র ফাইল পড়ে মানচিত্রের তথ্য পাওয়া যায়নি"
+
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "সময়সূচী মেনু"
+
+#: src/editor/map/map_context.cpp:909
+msgid "Could not save the scenario: $msg"
+msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
+
+#: src/editor/map/map_context.cpp:940
+msgid "Could not save into scenario"
+msgstr "ঘটনাক্রমের মধ্যে সঞ্চয় করা যাচ্ছে না"
+
+#: src/editor/map/map_context.cpp:950
+msgid "Could not save the map: $msg"
+msgstr "মানচিত্র সঞ্চয় করা যাচ্ছে না: $msg"
+
+#: src/editor/palette/editor_palettes.cpp:50
+msgid "(Unknown Group)"
+msgstr "(অজানা শ্রেণী)"
+
+#: src/editor/palette/editor_palettes.cpp:308
+msgid "(non-core)"
+msgstr "(কোর নয়)"
+
+#: src/editor/palette/editor_palettes.cpp:309
+msgid "Will not work in game without extra care."
+msgstr "অতিরিক্ত সতর্কতা ছাড়া খেলার মধ্যে কাজ করবে না ।"
+
+#: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid "Right-click: "
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr "ডানদিকে ক্লিক:"
+
+#: src/editor/palette/location_palette.cpp:247
+msgid "Go To"
+msgstr "এখানে যান"
+
+#: src/editor/palette/location_palette.cpp:254
+msgid "Add"
+msgstr "যোগ করুন"
+
+#: src/editor/palette/location_palette.cpp:256
+msgid "New Location Identifier"
+msgstr "নতুন অবস্থানের আইডি"
+
+#: src/editor/palette/location_palette.cpp:264
+msgid "Invalid location id"
+msgstr "অবস্থানের আইডি অবৈধ"
+
+#: src/editor/palette/location_palette.cpp:271
+msgid "Delete"
+msgstr "মুছুন"
+
+#: src/editor/palette/terrain_palettes.cpp:224
+msgid "Left-click: "
+msgstr "বামদিকে ক্লিক:"
+
+#: src/editor/palette/terrain_palettes.cpp:225
+msgid "Right-click: "
+msgstr "ডানদিকে ক্লিক:"
+
+#. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
+#. because the logic of whether to show the "overlay only" or "base only" version depends on the
+#. terrain currently selected for the left button.
+#: src/editor/palette/terrain_palettes.cpp:230
+msgid "Shift + left-click: paint overlay layer only"
+msgstr "শিফট + বামদিকে ক্লিক: শুধু অভিলিপ্ত স্তর রঙ করুন"
+
+#: src/editor/palette/terrain_palettes.cpp:232
+msgid "Shift + left-click: paint base layer only"
+msgstr "শিফট + ডানদিকে ক্লিক: শুধু মূল স্তর রঙ করুন"
+
+#: src/editor/palette/terrain_palettes.cpp:235
+msgid "Cmd + click: copy terrain"
+msgstr "Cmd + ক্লিক: ভূমিরূপ প্রতিলিপি"
+
+#: src/editor/palette/terrain_palettes.cpp:237
+msgid "Ctrl + click: copy terrain"
+msgstr "Ctrl + ক্লিক: ভূমিরূপ প্রতিলিপি"
+
+#~ msgid "Choose File"
+#~ msgstr "ফাইল পছন্দ করুন"
+
+#~ msgid "Select"
+#~ msgstr "নির্বাচন"
+
+#, fuzzy
+#~| msgid "Left-click: "
+#~ msgid "Left-click: Place item "
+#~ msgstr "বামদিকে ক্লিক:"
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"

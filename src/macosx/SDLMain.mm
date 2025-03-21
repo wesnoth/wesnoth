@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -77,7 +77,9 @@ static std::vector<char*> gArgs;
 - (IBAction) openChangelog:(id)sender
 {
 	(void) sender;
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/master/changelog.md"]];
+	NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+	NSString* url = [NSString stringWithFormat:@"https://changelog.wesnoth.org/%@", version];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
 }
 
 /* Called when the internal event loop has just started running */

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -78,7 +78,7 @@ struct color_t : SDL_Color
 	 *
 	 * @throw        std::invalid_argument if the string is not correctly formatted
 	 */
-	static color_t from_rgba_string(const std::string& c);
+	static color_t from_rgba_string(std::string_view c);
 
 	/**
 	 * Creates a new opaque color_t object from a string variable in "R,G,B" format.
@@ -89,7 +89,7 @@ struct color_t : SDL_Color
 	 *
 	 * @throw        std::invalid_argument if the string is not correctly formatted
 	 */
-	static color_t from_rgb_string(const std::string& c);
+	static color_t from_rgb_string(std::string_view c);
 
 	/**
 	 * Creates a new color_t object from a string variable in hex format.
@@ -99,7 +99,7 @@ struct color_t : SDL_Color
 	 *
 	 * @throw        std::invalid_argument if the string is not correctly formatted
 	 */
-	static color_t from_hex_string(const std::string& c);
+	static color_t from_hex_string(std::string_view c);
 
 	/**
 	 * Creates a new color_t object from a uint32_t variable.

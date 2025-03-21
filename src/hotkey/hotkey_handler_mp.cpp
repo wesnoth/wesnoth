@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "hotkey/hotkey_handler_mp.hpp"
 
 #include "hotkey/hotkey_command.hpp"
-#include "hotkey/hotkey_item.hpp"
 #include "playsingle_controller.hpp"
 #include "playmp_controller.hpp"
 
@@ -43,21 +42,19 @@ void playmp_controller::hotkey_handler::stop_network(){
 	playmp_controller_.stop_network();
 }
 
-bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
+	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:
 			if  (linger())
 			{
-				bool has_next_scenario = !gamestate().gamedata_.next_scenario().empty() &&
-					gamestate().gamedata_.next_scenario() != "null";
-				return playmp_controller_.is_host() || !has_next_scenario;
+				return playmp_controller_.is_host() || !gamestate().has_next_scenario();
 			}
 			else
 			{
-				return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
+				return playsingle_controller::hotkey_handler::can_execute_command(cmd);
 			}
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
@@ -72,7 +69,7 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 			res = is_observer() && !playmp_controller_.network_processing_stopped_;
 			break;
 	    default:
-			return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
+			return playsingle_controller::hotkey_handler::can_execute_command(cmd);
 	}
 	return res;
 }

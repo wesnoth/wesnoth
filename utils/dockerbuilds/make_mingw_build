@@ -1,7 +1,9 @@
-#!/bin/sh -xe
+#!/bin/sh
+
+set -xeu
 
 cd mingw
 docker build -t mingw-wesnoth .
 rm -rf ../mingwbuild
 mkdir ../mingwbuild
-docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output --tmpfs /build -u "$UID" mingw-wesnoth
+docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output --tmpfs /build -u "$(id -u)" mingw-wesnoth

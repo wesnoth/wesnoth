@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -142,6 +142,20 @@ void replay_recorder_base::write(config& out) const
 void replay_recorder_base::delete_upcoming_commands()
 {
 	commands_.resize(pos_);
+}
+
+bool replay_recorder_base::is_ancestor(const config& other_replay) const
+{
+	auto other_commands = other_replay.child_range("command");
+	if(other_commands.size() > commands_.size()) {
+		return false;
+	}
+	for(size_t index = 0; index < other_commands.size(); ++index) {
+		if(commands_[index] != other_commands[index]) {
+			return false;
+		}
+	}
+	return true;
 }
 
 void swap(replay_recorder_base& lhs, replay_recorder_base& rhs)

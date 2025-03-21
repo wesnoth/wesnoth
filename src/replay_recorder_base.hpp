@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,7 +13,6 @@
 */
 
 #pragma once
-#include <cassert>
 #include <boost/ptr_container/ptr_vector.hpp>
 
 #include "config.hpp"
@@ -54,6 +53,10 @@ public:
 	void write(config& out) const;
 
 	void delete_upcoming_commands();
+
+	/// checks whether the parameter is an earlier state in the
+	/// same "savegame gamestate branch"
+	bool is_ancestor(const config& other_replay) const;
 protected:
 	config upload_log_;
 	boost::ptr_vector<config> commands_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/window_builder/helper.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include <functional>
 #include "wml_exception.hpp"
@@ -38,7 +37,7 @@ REGISTER_WIDGET(tree_view)
 tree_view::tree_view(const implementation::builder_tree_view& builder)
 	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
-	, indentation_step_size_(0)
+	, indentation_step_size_(builder.indentation_step_size)
 	, need_layout_(false)
 	, root_node_(nullptr)
 	, selected_item_(nullptr)
@@ -265,11 +264,10 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("tree_view_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("tree_view_definition][resolution", "state_disabled")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("tree_view_definition][resolution", "grid"));
 
 	grid = std::make_shared<builder_grid>(child);
 }
@@ -279,10 +277,8 @@ tree_view_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 builder_tree_view::builder_tree_view(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indentation_step_size(cfg["indentation_step_size"])
+	: builder_scrollbar_container(cfg)
+	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
 	, nodes()
 {
 	for(const auto& node : cfg.child_range("node")) {
@@ -299,11 +295,6 @@ std::unique_ptr<widget> builder_tree_view::build() const
 	 *  building in several steps.
 	 */
 	auto widget = std::make_unique<tree_view>(*this);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	widget->set_indentation_step_size(indentation_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '" << id << "' with definition '" << definition << "'.";
 
@@ -324,12 +315,9 @@ tree_node::tree_node(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
 	// TODO: interpolate this value into the error message
-	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
+	VALIDATE(id != tree_view::root_node_id, _("[node]id ‘root’ is reserved for the implementation."));
 
-	const config& node_definition = cfg.child("node_definition");
-
-	VALIDATE(node_definition, _("No node defined."));
-
+	auto node_definition = VALIDATE_WML_CHILD(cfg, "node_definition", missing_mandatory_wml_tag("node", "node_definition"));
 	builder = std::make_shared<builder_grid>(node_definition);
 }
 

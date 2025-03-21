@@ -2,102 +2,103 @@
 die() { printf '%s\n' "$*" >&2; exit 1; }
 dietail() {
 	printf '%s\n' "$*" >&2
-	printf 'tail %s:\n' "$LOG" >&2
-	tail "$SERVERBASE/logs/$LOG"
+	printf 'tail %s:\n' "$log" >&2
+	tail "$serverbase/logs/$log"
 	exit 1
 }
 [ $# -ge 1 ] || die "Syntax: $(basename "$0") <server version> [--test] [<additional parameters for wesnothd>]"
 set -o nounset
 set -o noclobber
 
-SERVER=$1
-SERVERBASE="$HOME/servers/$SERVER"
-[ -d "$SERVERBASE" ] || die "Server '$SERVER' not found."
-[ -d "$SERVERBASE"/logs ] || mkdir "$SERVERBASE"/logs
-[ -d "$SERVERBASE"/replays ] || mkdir "$SERVERBASE"/replays
+server=$1
+serverbase="$HOME/servers/$server"
+[ -d "$serverbase" ] || die "Server '$server' not found."
+[ -d "$serverbase"/logs ] || mkdir "$serverbase"/logs
+[ -d "$serverbase"/replays ] || mkdir "$serverbase"/replays
 
 shift
 if [ $# -ge 1 ] && [ "$1" = "--test" ]; then
 	shift
-	cd "$SERVERBASE"/build || exit 1
-	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port 15001 "$@"
+	cd "$serverbase"/build || exit 1
+	bin/wesnothd-"$server" -c "$serverbase"/wesnothd.cfg --port 15001 "$@"
 	# remove the socket so it looks like we never ran the server
 	rm var/run/socket
 	exit 0
 fi
 
-THREADS=4
-PORT=15000
-case $SERVER in
+port=15000
+case $server in
 1.4|1.8)
-       PORT=14998
-       THREADS=8  ;;
-1.6)   PORT=14999
-       THREADS=8  ;;
-1.5*)  PORT=14999
-       THREADS=16 ;;
-1.7*)  PORT=14997
-       THREADS=16 ;;
+	port=14998
+	set -- --threads 8 "$@";;
+1.6)    port=14999
+	set -- --threads 8 "$@";;
+1.5*)   port=14999
+	set -- --threads 16 "$@";;
+1.7*)   port=14997
+	set -- --threads 16 "$@";;
 1.9*|1.10*)
-       PORT=14996
-       THREADS=8 ;;
+	port=14996
+	set -- --threads 8 "$@";;
 1.12*)
-       THREADS=30 ;;
-1.14*)
-       set -- --keepalive ;;
-1.16*)
-       set -- --keepalive ;;
-1.13*|trunk)
-       # TODO: loonycyborg wants to test this with asio builds
-       set -- --keepalive ;;
+	set -- --threads 30 "$@";;
+1.1[3468]*)
+	set -- --keepalive "$@";;
+trunk)
+	set -- --keepalive --log-debug=sql_executor "$@";;
+*)
+	printf 'Unrecognized version %s, using default options...\n' "$server"
+	set -- --keepalive "$@";;
 esac
 
 ulimit -Ss 2048
 ulimit -c unlimited
 
 # send the standard server message to the appropriate server when killing it with ctrl+c
-#trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
+#trap "$HOME/bin/send_server_message $server; sleep 2; echo -n 'terminated: '; date; exit 0" INT
 trap 'printf "terminated: "; date; exit' INT
 
 while true
 do
-	cd "$SERVERBASE"/build || exit 1
-	[ -x bin/wesnothd-$SERVER ] || die "Executable 'bin/wesnothd-$SERVER' not found."
+	cd "$serverbase"/build || exit 1
+	[ -x "bin/wesnothd-$server" ] || die "Executable 'bin/wesnothd-$server' not found."
 
-	DATE=$(date +"%Y%m%d-%H%M%S")
-	[ -r "$SERVERBASE"/redirect.cfg ] && PORT=$(sed -nE '/port=/s/[[:blank:]]*port="?([0-9]+)"?/\1/p' "$SERVERBASE"/redirect.cfg)
-	BUILDDIR=$(readlink "$SERVERBASE"/build)
-	#REV=r$(echo $BUILDDIR | sed -nre "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER$,\1,p")
-	REV=${BUILDDIR#*wesnothd-*-git-}
-	LOG="wesnothd.$DATE.$REV.log"
-	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port "$PORT" --threads "$THREADS" "$@" > "$SERVERBASE/logs/$LOG" 2>&1 &
-	PID=$!
-	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT --threads $THREADS $*' (commit: $REV, pid: $PID) logging to: $LOG"
+	date=$(date +"%Y%m%d-%H%M%S")
+	[ -r "$serverbase"/redirect.cfg ] && port=$(sed -nE '/port=/s/[[:blank:]]*port="?([0-9]+)"?/\1/p' "$serverbase"/redirect.cfg)
+	builddir=$(readlink "$serverbase"/build)
+	#rev=r$(echo $builddir | sed -nre "s,.*wesnothd-svn-([0-9:SM]+)_$server$,\1,p")
+	rev=${builddir#*wesnothd-*-git-}
+	log="wesnothd.$date.$rev.log"
+	bin/wesnothd-"$server" -c "$serverbase"/wesnothd.cfg --port "$port" "$@" > "$serverbase/logs/$log" 2>&1 &
+	pid=$!
+	trap 'kill "$pid"; trap - INT; kill -s INT "$$"' INT # kill backgrounded wesnothd on INT (background processes ignores INT so kill with TERM) and properly die from the signal
+	printf 'started %s server with command: '\''wesnothd-%s -c "%s"/wesnothd.cfg --port %s %s'\'' (commit: %s, pid: %s) logging to: %s\n' "$server" "$server" "$serverbase" "$port" "$*" "$rev" "$pid" "$log"
 	# wait a bit in case the process dies immediately
 	sleep 5
-	if ps -p $PID > /dev/null 2>&1
+	if kill -0 "$pid"
 	then # create some convenient links
-		ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
-		rm -f "$SERVERBASE"/old.log "$SERVERBASE"/old.pid
-		mv "$SERVERBASE"/current.log "$SERVERBASE"/old.log > /dev/null 2>&1
-		mv "$SERVERBASE"/current.pid "$SERVERBASE"/old.pid > /dev/null 2>&1
-		echo $PID > "$SERVERBASE"/current.pid
-		ln -s "logs/$LOG" "$SERVERBASE"/current.log
+		ln -s "$serverbase/logs/$log" "$log.$pid"
+		rm -f "$serverbase"/old.log "$serverbase"/old.pid
+		mv "$serverbase"/current.log "$serverbase"/old.log > /dev/null 2>&1
+		mv "$serverbase"/current.pid "$serverbase"/old.pid > /dev/null 2>&1
+		printf %s "$pid" > "$serverbase"/current.pid
+		ln -s "logs/$log" "$serverbase"/current.log
 	fi
 
 	# wait for the server to terminate
-	wait $PID
-	EXIT_CODE=$?
-	printf '%s wesnothd exited with code: %s\n' "$(date +'%Y%m%d %T')" "$EXIT_CODE"
+	wait "$pid"
+	exit_code=$?
+	printf '%s wesnothd exited with code: %s\n' "$(date +'%Y%m%d %T')" "$exit_code"
+	trap - INT
 	# need to use the recorded path since the build/ symlink might have changed
-	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" > /dev/null 2>&1
+	mv "$serverbase/$builddir/gmon.out" "$serverbase/$builddir/gmon.$date.$rev.out" > /dev/null 2>&1
 	# check for return code if not zero or 98 (port in use) the server should be restarted
-	case $EXIT_CODE in
-	0)   exit ;;
+	case $exit_code in
+	0)          exit ;;
 	98|127|128) dietail ;; #Could not bind to port #Command not found #Invalid argument to exit
 	esac
 
-	printf '%s tail %s:\n'  "$(date +'%Y%m%d %T')" "$LOG"
-	tail "$SERVERBASE/logs/$LOG"
+	printf '%s tail %s:\n'  "$(date +'%Y%m%d %T')" "$log"
+	tail "$serverbase/logs/$log"
 	echo
 done

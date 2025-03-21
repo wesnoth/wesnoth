@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "generators/lua_map_generator.hpp"
 #include "log.hpp"
 
-#include <cassert>
 #include <sstream>
 
 static lg::log_domain log_config("config");

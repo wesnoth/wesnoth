@@ -1,0 +1,1920 @@
+#
+# Tahsin J Khalid <>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: unnamed project\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-03-08 12:29+0530\n"
+"Last-Translator: Tahsin J Khalid\n"
+"Language-Team: Bengali\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:13
+msgid "A Tale of Two Brothers"
+msgstr "দুই ভাইয়ের একটি গল্প"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:14
+msgid "AToTB"
+msgstr "AToTB"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:18
+msgid "Beginner"
+msgstr "শিক্ষানবিস"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:18
+msgid "Horseman"
+msgstr "অশ্বারোহী"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:19
+msgid "Challenging"
+msgstr "ঝুঁকিপূর্ণ"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:19
+msgid "Grand Knight"
+msgstr "মহান নাইট"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "An evil mage is threatening the small village of Maghre and its "
+#| "inhabitants. The village’s mage sends to his warrior brother for help, "
+#| "but not all goes as planned. Can you help?\n"
+#| "\n"
+msgid ""
+"An evil mage is threatening the small village of Maghre and its inhabitants. "
+"The village’s mage sends to his warrior brother for help, but not all goes "
+"as planned. Can you help?"
+msgstr ""
+"একটি দুষ্টতা ম্যাজ মাগরে এবং এর বাসিন্দাদের ছোট্ট গ্রামকে হুমকি দিচ্ছে।গ্রামের ম্যাজ "
+"তার যোদ্ধা ভাইকে সাহায্যের জন্য প্রেরণ করে, তবে সব কিছু পরিকল্পনা করা যায় না।তুমি "
+"কি সাহায্য করতে পারো?\n"
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:23
+msgid ""
+"This campaign has two difficulties, with a large difference between them. "
+"The Grand Knight difficulty is intended for players who’ve already completed "
+"Liberty and Heir to the Throne."
+msgstr ""
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:25
+msgid "(Novice level, 4 scenarios.)"
+msgstr "(নব্য স্তর, 4 পরিস্থিতি।)"
+
+#. [about]
+#: data/campaigns/Two_Brothers/_main.cfg:32
+msgid "Campaign Design"
+msgstr "অভিযানের পরিকল্পনা"
+
+#. [about]
+#: data/campaigns/Two_Brothers/_main.cfg:41
+msgid "Prose and Story Edits"
+msgstr "গদ্য এবং গল্প সম্পাদনা"
+
+#. [about]
+#: data/campaigns/Two_Brothers/_main.cfg:50
+msgid "Campaign Maintenance"
+msgstr "অভিযান রক্ষণাবেক্ষণ"
+
+#. [about]
+#: data/campaigns/Two_Brothers/_main.cfg:59
+msgid "Artwork and Graphics Design"
+msgstr "শিল্পকর্ম এবং গ্রাফিক্স ডিজাইন"
+
+#. [about]
+#: data/campaigns/Two_Brothers/_main.cfg:75
+msgid "Miscellaneous"
+msgstr "বিবিধ"
+
+#. [entry]
+#: data/campaigns/Two_Brothers/_main.cfg:89
+msgid "And special thanks to everyone else who I forgot to mention."
+msgstr "এবং আমি উল্লেখ করতে ভুলে গেছি এমন প্রত্যেককে বিশেষ ধন্যবাদ।"
+
+#. [scenario]: id=01_Rooting_Out_a_Mage
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
+msgid "Rooting Out a Mage"
+msgstr "জাদুবিদকে বের করা"
+
+#. [part]
+#. This text is shown with the journey map, showing the village in the foothills along the route between Aldril and Dan’Tonk.
+#. I'm assuming the beacons either use smoke signals or basic fire signals, with a few agreed ones to request goods or indicate that surplus is for sale.
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:52
+msgid ""
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
+"Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
+"comings and goings of the wider world. Wars and the rumor of wars touched "
+"them not. Even merchants were rarely seen, although caravans between Aldril "
+"and Dan’Tonk might send a wagon when called by the beacon tower."
+msgstr ""
+"ওয়েসনথ রাজ্যের পশ্চিমাঞ্চলে দূরবর্তী মুক্ত জনপদ মাঘরে একসময় শান্তিপূর্ণ জায়গা ছিল, এর "
+"বাসিন্দারা বৃহত্তর বিশ্বের পরিস্থিতির সম্পর্কে জানত না বললেই চলে । যুদ্ধ এবং যুদ্ধের "
+"গুজব তাদের স্পর্শ করে নি । এমনকি বণিকদেরও এখানে খুব কমই দেখা যায়, যদিও সংকেত "
+"মিনারের মারফত ডাকা হলে অ্যালড্রিল এবং ড্যানটোনকের মধ্যে চলা ক্যারাভেনগুলি এখানে "
+"একটি ওয়াগন পাঠাতে পারে ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:57
+msgid ""
+"Then came the day that a dark mage settled in the region and began seeking "
+"sacrifices for his summonings.\n"
+"\n"
+"Skeletons and zombies killed cattle and fired fields. <i>“Fear and obey "
+"Mordak the Mage!”</i> they cried in fell voices as they did their foul "
+"deeds. People vanished from isolated farmsteads. Men and women began to fear "
+"the night, and their children even the bright day. But the nearest lord was "
+"more than a day’s ride distant, and messengers sent to seek his help did not "
+"return."
+msgstr ""
+"তারপরে সেই দিনটি এসেছিল যখন একজন তমস জাদুবিদ এই অঞ্চলে বসতি স্থাপন করেছিল এবং "
+"সে তার জাদু-আবাহনের জন্য বলি চাইতে শুরু করে ।\n"
+"\n"
+"কঙ্কাল এবং জম্বিগুলি গবাদি পশুদের হত্যা করেছিল এবং ক্ষেতগুলি জ্বালিয়ে দিয়েছিল । তারা "
+"তাদের নিষ্ঠুর স্বরে <i>“জাদুবিদ মোরডাককে ভয় করুন এবং মেনে চলুন!”</i> ধ্বনি দিয়ে "
+"কুকর্মগুলি করতে থাকে । লোকেরা বিচ্ছিন্ন খামার থেকে নিখোঁজ হতে থাকে । পুরুষ এবং "
+"মহিলারা রাতকে এবং তাদের সন্তানেরা এমনকি উজ্জ্বল দিনকেও ভয় করতে শুরু করে । নিকটতম "
+"লর্ডের বাড়ি এক দিনের যাত্রার চেয়ে বেশি দূরে এবং তাঁর সাহায্য খুঁজতে যাওয়া "
+"বার্তাবাহকরা আর ফিরে আসেনি ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
+msgid ""
+"There was a man named Baran who had shown talent as a mage when he was "
+"young, gone to the great Academy on the Isle of Alduin, and returned to work "
+"his magic in the land where he was born. The people looked to him for help "
+"and leadership. He found weapons half-forgotten from the times of their "
+"sires and grandsires hanging in many houses, and bade the villagers to take "
+"them down and clean and oil them. He set the smiths of Maghre to making "
+"spearheads and ax-blades for the rest."
+msgstr ""
+"সেখানে বারান নামে এক ব্যক্তি ছিলেন যিনি ছোটোবেলায় জাদুবিদ্যায় দক্ষতা পরিচয় "
+"দিয়েছিলেন, তারপর আলডুইন দ্বীপের বিখ্যাত অ্যাকডেমিতে শিক্ষালাভ করতে গিয়েছিলেন, এবং "
+"শেষে তাঁর জন্মভুমিকে জাদুবিদ্যার দ্বারা সাহায্য করতে ফিরে এসেছিলেন । লোকেরা তাঁর "
+"দিকে সাহায্য ও নেতৃত্বের জন্য তাকিয়ে ছিল । তিনি অনেক বাড়িতে তাঁদের বাবা-ঠাকুর্দাদের "
+"সময় থেকে অর্ধ-ভুলে যাওয়া অস্ত্রগুলি ঝুলন্ত অবস্থায় খুঁজে পেয়েছিলেন এবং সেই বাড়ির "
+"মানুষদের সেগুলিকে নামিয়ে এবং পরিষ্কার করে তেল দেওয়ার ব্যবস্থা করেছিলেন । এছাড়া "
+"তিনি মাঘরের লৌহকারদের বাকীদের জন্য বর্শার এবং কুঠারের ফলা তৈরি করতে লাগিয়ে "
+"দিয়েছিলেন ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:68
+msgid ""
+"Now Baran had a brother named Arvith who had also left Maghre to seek his "
+"fortune, and had become the leader of a small band of horsemen who hired out "
+"as guards to merchant caravans. Fortunate it was for all that, in better "
+"times, the brothers had talked of using trade beacons for other signals when "
+"in dire need. Baran sent out that call."
+msgstr ""
+"এখন বারানের আরভিথ নামে এক ভাই ছিলেন যিনি নিজের ভাগ্য অর্জনের জন্য মাঘরে ছেড়ে "
+"চলে গিয়েছিলেন এবং বণিক ক্যারাভানেগুলি রক্ষী হিসাবে নিয়োগপ্রাপ্ত ঘোড়সওয়ারদের একটি "
+"ছোট্ট দলের নেতা হয়েছিলেন । ভাগ্যক্রমে, অতীতের এক ভালো সময়ে, দুইভাই গুরুতর প্রয়োজনে "
+"ব্যবসার সংকেতটিকে ব্যবহার করার কথা বলেছিলেন । বারান সেই সংকেতটি প্রেরণ করলেন ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:72
+#, fuzzy
+#| msgid ""
+#| "12 V, 363 YW\n"
+#| "Excerpt from the journal of Baran of Maghre\n"
+#| "\n"
+#| "If I could but face this ‘Mordak’! I think my magic might prove stronger "
+#| "than his. But he bides in the hills, well-guarded by his servants, and I "
+#| "muster frightened peasants to fight his minions with blades and sticks.\n"
+#| "\n"
+#| "I need my brother; he always had a better head for battle than I. Yet we "
+#| "have not spoken since that evil day at Toen Caric. If he will not come "
+#| "for me, perhaps he will return to aid our village in its hour of "
+#| "desperate need."
+msgid ""
+"12 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Baran of Maghre\n"
+"\n"
+"If I could but face this ‘Mordak’! I think my magic might prove stronger "
+"than his. But he bides in the hills, well-guarded by his servants, and I "
+"muster frightened peasants to fight his minions with blades and sticks.\n"
+"\n"
+"I need my brother; he always had a better head for battle than I. Yet we "
+"have not spoken since that evil day at Toen Caric. If he will not come for "
+"me, perhaps he will return to aid our village in its hour of desperate need."
+msgstr ""
+"12 ভি, 363 yw\n"
+"মাঘরের বারানের দিনপঞ্জী থেকে উদ্ধৃত\n"
+"\n"
+"আমি যদি একবার এই ‘মোরডাকের’ এর মুখোমুখি হতে পারতাম! আমার অনুমান আমার জাদু তার "
+"চেয়ে শক্তিশালী । তবে সে তাঁর চাকরদের দ্বারা ভালভাবে সুরক্ষিত হয়ে পাহাড়গুলিতে লুকিয়ে "
+"থাকে, এবং আমি কৃষকদের ব্লেড এবং লাঠি দিয়ে তার মাইনগুলির সাথে লড়াই করার জন্য "
+"আতঙ্কিত হয়েছি।\n"
+"\n"
+"আমার ভাইকে এখন দরকার; যুদ্ধের জন্য তার মাথা আমার থেকেও ভালো ছিল । তবুও আমরা  টেন "
+"ক্যারিক-এর সেই অভিশপ্ত দিনটির পর আর কথা বলিনি । সে যদি আমার জন্য নাও আসে, তবুও "
+"হয়তো সে আমাদের গ্রামকে এই জরুরী প্রয়োজনের সময়ে সহায়তা করতে ফিরে আসবে ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:81
+msgid ""
+"Heeding the call, Arvith gathered such men as he could and hurried to Maghre "
+"to help Baran."
+msgstr ""
+"আহ্বান শুনে, অরভিথ যতজন সম্ভব লোককে জড়ো করলেন এবং বারানকে সাহায্য করার জন্য "
+"তাড়াতাড়ি মাঘরে ফিরে গেলেন ।"
+
+#. [side]
+#. [side]: type=Longbowman, id=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:99
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:66
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:56
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:58
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:111
+msgid "Humans"
+msgstr "মানুষেরা"
+
+#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
+#. [side]
+#. [side]: type=Orcish Warlord, id=Tairach
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:120
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:82
+msgid "Enemies"
+msgstr "শত্রুরা"
+
+#. [side]: type=Dark Sorcerer, id=Mordak
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:125
+msgid "Mordak"
+msgstr "মোরডাক"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
+msgid "Alwyn"
+msgstr "অ্যালউইন"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:153
+msgid "Brent"
+msgstr "ব্রেন্ট"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:154
+msgid "Cadell"
+msgstr "ক্যাডেল"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
+msgid "Dannen"
+msgstr "ডান্নেন"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
+msgid "Efran"
+msgstr "ইফ্রান"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
+msgid "Faren"
+msgstr "ফারেন"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:160
+msgid "Tarek"
+msgstr "টারেক"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
+msgid "Hann"
+msgstr "হান"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:162
+msgid "Magrid"
+msgstr "ম্যাগ্রিড"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:167
+msgid "Slay Mordak, the evil mage"
+msgstr "তমস জাদুবিদ, মোরডাককে নিহত করুন"
+
+#. [objective]: condition=lose
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:171
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:270
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:339
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
+msgid "Death of Arvith"
+msgstr "আরভিথের মৃত্যু"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:182
+msgid ""
+"Use footpads as fodder to protect your loyal units and attack during the day "
+"to minimize the damage your forces take."
+msgstr ""
+"আপনার বিশ্বস্ত ইউনিটগুলিকে রক্ষা করতে টোপ হিসাবে ফুটপ্যাডগুলি ব্যবহার করুন এবং আপনার "
+"বাহিনী যে ক্ষয়ক্ষতি নেয় তা হ্রাস করতে দিনের বেলা আক্রমণ করুন ।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:192
+msgid "Greetings, brother, and welcome home."
+msgstr "শুভেচ্ছা, ভাই, এবং বাড়িতে স্বাগত ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:197
+msgid "Hail."
+msgstr "ধন্যবাদ ।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:202
+msgid "Is that all, Arvith? I understand, but..."
+msgstr "এটাই কি সব, আরভিথ? আমি বুঝতে পেরেছি, কিন্তু ..."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
+msgid "You called, and I came; be content with that. What ails Maghre?"
+msgstr "তুমি ডেকেছিলে, এবং আমি এসেছি; তা নিয়ে সন্তুষ্ট থাকো । মাঘরের কী সমস্যা?"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:212
+msgid ""
+"A dark mage has come upon us; his creatures call him Mordak. They have been "
+"terrorizing outlying farms, and we fear they may soon attack the village "
+"itself! The villagers of Maghre have taken up weapons but they are not "
+"trained fighters; we need your men, and you to lead them."
+msgstr ""
+"আমাদের উপর একজন তমস জাদুবিদের ছায়া নেমে এসেছে; তার জীবেরা তাকে মোরডাক বলে । "
+"তারা বহির্মুখী খামারগুলিকে আতঙ্কিত করে চলেছে এবং আমরা আশঙ্কা করছি যে তারা শীঘ্রই "
+"গ্রামে আক্রমণ করতে পারে! মাঘরে গ্রামবাসীরা হাতে অস্ত্র তুলে নিয়েছে, তবে তারা "
+"প্রশিক্ষিত যোদ্ধা নয়; আমাদের তোমার লোকেদের এবং তাদের নেতৃত্ব দেওয়ার জন্য তোমাকে "
+"দরকার ।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:217
+msgid ""
+"I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
+"He is somewhere due north of here, I would say not more than two days’ ride."
+msgstr ""
+"আমি পৃথিবী এবং বাতাসের লুকানো স্রোতগুলিতে মোরডাকের জঘন্য স্পর্শ অনুভব করতে পারি। সে "
+"এখন উত্তরে কোথাও রয়েছে, আমি বলব যে দুই দিনের বেশি যাত্রাপথের মধ্যেই ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:222
+msgid ""
+"All right. I will do this for the village. Can you keep the mage off our "
+"backs?"
+msgstr ""
+"ঠিক আছে । আমি গ্রামের জন্য এটা করব । তুমি কী ওই জাদুবিদকে আমাদের পিছনে থেকে "
+"আক্রমণ করার থেকে থামিয়ে রাখতে পারবে?"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
+msgid ""
+"I will go stealthily with a handful of our best scouts and woodsmen. While "
+"you demonstrate against him and kill his creatures, I will try to defeat "
+"Mordak himself with magic at an unguarded moment. You shall be the right "
+"hand, I the left... aye, brother?"
+msgstr ""
+"আমি আমাদের সেরা সন্ধানী এবং শিকারীদের সঙ্গে লুকিয়ে যাবো । তুমি যখন তার বিরুদ্ধে "
+"লড়াই করবে এবং তার জীবেদের নিহত করবে, তখন আমি নিজে তার অরক্ষিত থাকার মুহুর্তে যাদু "
+"দিয়ে তাকে পরাস্ত করার চেষ্টা করব । তুমি ডান হাত হবে, আমি বাম ... ঠিক আছে, ভাই?"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:232
+msgid "... Aye. Just make sure you’re there when we need you."
+msgstr "... ঠিক আছে । শুধু প্রয়োজনের সময়ে যেন তোমাকে আমরা ওখানে পাই ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:243
+msgid ""
+"Baran should be in position by now. Press them, distract the adept so Baran "
+"can spring his trap!"
+msgstr ""
+"বারানের এতক্ষণে সঠিক স্থানে পৌঁছে যাওয়া উচিত । ওদের ব্যস্ত করে রাখো, যেন বারান "
+"সঠিক মুহূর্তে তাকে ফাঁদে ফেলতে পারে ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:254
+msgid "Baran has not made his attack!"
+msgstr "বারান এখনও তার আক্রমণ করেনি!"
+
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:259
+msgid "Could he have abandoned us?"
+msgstr "সে কি আমাদের ছেড়ে চলে গেছে?"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:264
+msgid ""
+"No... No. This is something else. I’m worried about him... but right now it "
+"means we have to deal with this Mordak ourselves."
+msgstr ""
+"না ... না। এটা অন্য কিছু। আমি তাকে নিয়ে উদ্বিগ্ন ... তবে এই মুহুর্তে এর অর্থ আমাদের "
+"নিজেদেরই এই মোরডাকের কোনো একটা ব্যবস্থা করতে হবে।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:276
+msgid "Argh!"
+msgstr "আহ্!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:281
+msgid "Good work, men! But what has become of my brother?"
+msgstr "ভাল কাজ, সকলে! কিন্তু আমার ভাইয়ের কী হল?"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:286
+msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
+msgstr "তুমি তাকে নিয়ে চিন্তিত,? এ-হে-হে... হাহ্... আহ্হা..."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:296
+msgid ""
+"There’s nothing more to be had from this one; we will have to search for "
+"Baran ourselves!"
+msgstr "এর থেকে আর কিছু জানার নেই; আমাদের নিজেরাই বারানের সন্ধান করতে হবে!"
+
+#. [message]: role=Reporter
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:318
+msgid ""
+"Sir, our scouts report that Baran was seen captured and carried away further "
+"north!"
+msgstr ""
+"স্যার, আমাদের সন্ধানীরা জানাচ্ছে যে তারা বারানকে ধরা পড়তে এবং আরও উত্তর দিকে "
+"নিয়ে যেতে দেখেছে!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
+msgid "That they should dare this! We will give chase at once."
+msgstr "তাদের এই সাহস ! আমরা এক্ষুণি ওদের তাড়া করব।"
+
+#. [message]: speaker=Mordak
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:349
+msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
+msgstr ""
+"আপনার ভাইয়ের আমাকে আক্রমণ করার পরিকল্পনা ব্যর্থ হয়েছে । সে এখন আমাদের বন্দী ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:354
+msgid ""
+"My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
+"forces descend upon the village!"
+msgstr ""
+"আমার ভাই, অপহৃত? আমি অসফল হয়েছি, বারান! এতক্ষণে মোরডাকের বাহিনী গ্রামে আক্রমণ "
+"করতে নেমে পড়েছে!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:370
+msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
+msgstr ""
+"আমি শুনছে এই জীবেদের ওপর আমাদের অস্ত্রের খুব একটা প্রভাব পড়ে না, চলো সেটা পরীক্ষা "
+"করে দেখা যাক!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:386
+msgid "That was not so hard!"
+msgstr "অতটাও কঠিন ছিল না!"
+
+#. [scenario]: id=02_The_Chase
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:5
+msgid "The Chase"
+msgstr "অনুসরণ"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
+msgid "Arvith and his band rode north in search of his missing brother."
+msgstr "আরভিথ এবং তার দল তার নিখোঁজ ভাইয়ের সন্ধানে উত্তর দিকে ছুটেছিল ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "We’ve been searching three days for Baran, and turned up nothing. My best "
+#| "hunch was to head north into the borderlands, where the necromancer’s "
+#| "minions could safely hide; everywhere else is more farmland. At first I "
+#| "thought the search might be useless, but late in the first day we found a "
+#| "set of tracks. Some of them had been made by skeletal feet, although "
+#| "after their first campsite the tracks were merely those of men carrying "
+#| "heavy loads.\n"
+#| "\n"
+#| "We’re close enough to be certain now: those tracks are heading into the "
+#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
+#| "that forest in living memory. Stories have been passed down for "
+#| "generations warning against it. Supposedly the place is haunted by lost "
+#| "souls who hunger for the living, and anyone who dies there is doomed to "
+#| "join them."
+msgid ""
+"16 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Arvith of Maghre\n"
+"\n"
+"We’ve been searching three days for Baran, and turned up nothing. My best "
+"hunch was to head north into the borderlands, where the necromancer’s "
+"minions could safely hide; everywhere else is more farmland. At first I "
+"thought the search might be useless, but late in the first day we found a "
+"set of tracks. Some of them had been made by skeletal feet, although after "
+"their first campsite the tracks were merely those of men carrying heavy "
+"loads.\n"
+"\n"
+"We’re close enough to be certain now: those tracks are heading into the Grey "
+"Woods. No one from Maghre or any of the other villages has gone into that "
+"forest in living memory. Stories have been passed down for generations "
+"warning against it. Supposedly the place is haunted by lost souls who hunger "
+"for the living, and anyone who dies there is doomed to join them."
+msgstr ""
+"16 ভি, 363 yw\n"
+"মাঘরের আরভিথের দিনপঞ্জী থেকে উদ্ধৃত\n"
+"\n"
+"আমরা বারানের জন্য তিন দিন অনুসন্ধান করছি, এবং কিছুই খুঁজে পাইনি । আমার সেরা অনুমান "
+"ছিল সীমান্তভূমিগুলির উত্তর দিকে যাত্রা করা, যেখানে শব জাদুবিদের অনুচরেরা নিরাপদে "
+"লুকিয়ে থাকতে পারে; অন্যত্র শুধু খামার জমি। প্রথমে আমি ভেবেছিলাম অনুসন্ধান নিস্ফল হবে, "
+"তবে প্রথম দিনের শেষে আমরা তাদের চিহ্ন দেখতে পাই । তাদের মধ্যে কিছু কঙ্কালের পা "
+"দিয়ে তৈরি করা হয়েছিল, যদিও তাদের প্রথম শিবিরের পরে কেবলমাত্র ভারী বোঝা বহনকারী "
+"মানুষদের চিহ্নই ছিল ।\n"
+"\n"
+"আমরা এখন নিশ্চিত হওয়ার জন্য যথেষ্ট কাছে এসেছি: চিহ্নগুলি ধূসর বনের দিকে চলেছে । "
+"মাঘরে বা অন্য কোনও গ্রাম থেকে কেউ কোন জন্মেও সেই বনে যায়নি । প্রজন্মের পর প্রজন্ম "
+"ধরে গল্পের মাধ্যমে এখানে যাওয়ার বিরুদ্ধে সবাইকে সতর্ক করা হয়েছে । সবার অনুমান ওই "
+"বন পথভ্রষ্ট আত্মাদের বাস, এবং যে ওখানে মারা যাবে সে-ও তাদের দলে যোগ দিতে বাধ্য "
+"হবে ।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "But I’m past superstitions now; I’ve seen enough of the world to guess at "
+#| "the truth behind these sorts of tales. The forest is home to elves — "
+#| "unfriendly ones, if the stories have any basis at all. I worry for my "
+#| "men; horses don’t fight well in forests, and the elves will be more "
+#| "dangerous in their own territory. But there are things that need done and "
+#| "questions that need answered. Something bigger is happening. One "
+#| "necromancer terrorizing townsfolk is nothing new, but why didn’t his "
+#| "servants scatter when he was killed? Where are they headed now? And most "
+#| "importantly, why did they take Baran with them?\n"
+#| "\n"
+#| "Besides... I want my brother back."
+msgid ""
+"16 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Arvith of Maghre\n"
+"\n"
+"But I’m past superstitions now; I’ve seen enough of the world to guess at "
+"the truth behind these sorts of tales. The forest is home to elves — "
+"unfriendly ones, if the stories have any basis at all. I worry for my men; "
+"horses don’t fight well in forests, and the elves will be more dangerous in "
+"their own territory. But there are things that need done and questions that "
+"need answered. Something bigger is happening. One necromancer terrorizing "
+"townsfolk is nothing new, but why didn’t his servants scatter when he was "
+"killed? Where are they headed now? And most importantly, why did they take "
+"Baran with them?\n"
+"\n"
+"Besides... I want my brother back."
+msgstr ""
+"16 ভি, 363 yw\n"
+"মাঘরের আরভিথের দিনপঞ্জী থেকে উদ্ধৃত\n"
+"\n"
+"তবে আমি এখন কুসংস্কারের ঘেরাটোপের বাইরে; আমি বাইরের জগতের অনেকটাই দেখছি তাই এই "
+"ধরণের গল্পগুলির পিছনে থাকা সত্যিকে অনুমান করতে পারি । গল্পগুলির কোনও ভিত্তি থাকলে "
+"বনটি এল্ফদের বাসস্থান - তবে তারা বন্ধুত্বপূর্ণ নয় । আমি আমার লোকদের জন্য উদ্বিগ্ন; "
+"ঘোড়া বনাঞ্চলে ভাল লড়াই করে না এবং এল্ফরা তাদের নিজস্ব অঞ্চলে আরও বিপজ্জনক । তবে "
+"এমন কিছু কাজ রয়েছে যা করা প্রয়োজন এবং এমন কিছু প্রশ্ন রয়েছে যাদের উত্তর প্রয়োজন। বড় "
+"কিছু একটা ঘটছে। একজন শব জাদুবিদ শহরবাসীদের ভীতসন্ত্রস্ত করে চলেছে তা নতুন কিছু নয়, "
+"কিন্তু তার মারা যাওয়ার পরও তার অনুচরেরা কেন চারদিকে ছড়িয়ে পড়ছে না? তারা এখন "
+"কোথায় চলেছে? এবং সবচেয়ে গুরুত্বপূর্ণ, তারা বারানকে তাদের সাথে নিয়ে গেল কেন?\n"
+"\n"
+"তাছাড়া ... আমি আমার ভাইকে ফিরে পেতে চাই।"
+
+#. [side]: type=Elvish Rider, id=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:88
+msgid "Elves"
+msgstr "এল্ফরা"
+
+#. [side]: type=Elvish Rider, id=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:93
+msgid "Nil-Galion"
+msgstr "নিল-গ্যালিয়ন"
+
+#. [side]: type=Dark Adept, id=Muff Toras
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
+msgid "Kidnappers"
+msgstr "অপহরণকারীরা"
+
+#. [side]: type=Dark Adept, id=Muff Toras
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
+msgid "Muff Toras"
+msgstr "মাফ টোরাস"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:239
+msgid "Fight your way through the woods before the kidnappers escape"
+msgstr "অপহরণকারীরা পালানোর আগে বনের মধ্যে দিয়ে লড়াই করে বেরিয়ে আসুন"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
+msgid "Catch the kidnappers"
+msgstr "অপহরণকারীদের ধরুন"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
+msgid "Kill the Dark Adept before more elves arrive"
+msgstr "আরও এল্ফরা আসার আগে তমস শিক্ষানবিসকে নিহত করুন"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+msgid ""
+"The elvish forces are spread out. Seek to fight them one at a time with "
+"several of your units."
+msgstr ""
+"এল্ফদের বাহিনী চারদিকে ছড়িয়ে রয়েছে । একাধিক ইউনিট দিয়ে এক-এক করে তাদের সঙ্গে "
+"লড়াই করার চেষ্টা করুন ।"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:295
+msgid ""
+"Use horsemen or footpads to quickly explore the shrouded woods to locate the "
+"kidnappers."
+msgstr ""
+"দ্রুত অন্ধকারাচ্ছন্ন বনভূমিতে সন্ধান চালিয়ে অপহরণকারীদের খুঁজে বের করতে অশ্বারোহী বা "
+"ফুটপ্যাডদের ব্যবহার করুন।"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:310
+msgid ""
+"Separate the Dark Adept from his guards and attack in force for an easy kill."
+msgstr ""
+"সহজে তমস শিক্ষানবিসকে নিহত করার জন্য তাকে তার প্রহরীদের থেকে আলাদা করে সর্বশক্তি "
+"দিয়ে আক্রমণ করুন ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:353
+msgid ""
+"Come on, men. A stroll through such lovely green woods, what could be finer?"
+msgstr ""
+"আসুন, সকলে । এত সুন্দর সবুজ অরণ্যের মধ্যে ভ্রমণের থেকে ভালো আর কী-ই বা হতে পারে?"
+
+#. [message]: speaker=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:358
+msgid "You there! Halt and explain yourself."
+msgstr "এই যে আপনি! থামুন এবং আসার কারণ বলুন ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:363
+msgid "We’re chasing after some men who kidnapped my brother!"
+msgstr "আমরা আমার ভাইকে অপহরণকারী কয়েকজনের পিছনে তাড়া করছি!"
+
+#. [message]: speaker=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:368
+msgid ""
+"Those men caught their prisoner practicing necromancy; for your sake, I hope "
+"he was not your brother. Assume that the man they caught was your brother’s "
+"murderer, and rest assured that the grey mages will release all of the souls "
+"that their prisoner’s evil magic has bound to this world."
+msgstr ""
+"এই লোকেরা তাদের বন্দীকে মৃত্যু-জাদু অনুশীলন করার সময় ধরেছিল; আপনার খাতিরে আমি আশা "
+"করি তিনি আপনার ভাই নন । ধরে নিন যে তারা যে লোকটিকে ধরেছে সে আপনার ভাইয়ের "
+"খুনি, এবং আশ্বস্ত থাকুন যে ধূসর জাদুবিদেরা তাদের বন্দীর দুষ্ট যাদুর মাধ্যমে এই পৃথিবীতে "
+"আবদ্ধ সমস্ত আত্মাদের মুক্ত করবে ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
+msgid ""
+"We killed the necromancer on the battlefield! I struck the killing blow "
+"myself."
+msgstr ""
+"আমরা যুদ্ধক্ষেত্রে ওই মৃত্যু-জাদুবিদকে হত্যা করেছি! আমি নিজের হাতে তাকে নিহত করেছি ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
+msgid ""
+"We killed the necromancer on the battlefield! I saw the killing blow with my "
+"own eyes."
+msgstr ""
+"আমরা যুদ্ধক্ষেত্রে ওই মৃত্যু-জাদুবিদকে হত্যা করেছি! আমি নিজের চোখে তাকে নিহত হতে "
+"দেখেছি ।"
+
+#. [message]: speaker=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
+msgid ""
+"We heard the sounds of battle three days ago, but the foul reek of death was "
+"unmistakable as the prisoner passed us; if your brother really is the "
+"prisoner then he is also a necromancer. Remember your brother as we all hope "
+"he was, and know that the prisoner’s fate will be revenge as dire as you "
+"could wish.\n"
+"\n"
+"Either way, nothing will be gained by your intrusion into our woods. Now "
+"advance no further, for we will defend our land."
+msgstr ""
+"আমরা তিন দিন আগে যুদ্ধের শব্দ শুনেছি, তবে বন্দী আমাদের পাশ দিয়ে যাওয়ার সময় মৃত্যুর "
+"কুৎসিত গন্ধ আমরা পেয়েছি; যদি আপনার ভাই সত্যিই বন্দী হন তবে তিনি একজন মৃত্যু-"
+"জাদুবিদও। যেভাবে তিনি অতীতে ছিলেন সেভাবেই আপনার ভাইকে মনে রাখবেন, এবং জেনে "
+"রাখুন যে বন্দীর ভাগ্য আপনি যতটা অনুমান করেছেন ততটাই ভয়াবহ হবে ।\n"
+"\n"
+"উভয় ক্ষেত্রেই, আমাদের বনের মধ্যে অনুপ্রবেশ করে আপনি কিছুই পাবেন না । এখন আর অগ্রসর "
+"হবে না, কারণ আমরা আমাদের এলাকাকে রক্ষা করব ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
+msgid ""
+"So much for those ghost stories, but even ghosts might have been more "
+"observant than these elves. Still, they will not stop me from freeing Baran!"
+msgstr ""
+"এই তাহলে ভুতের গল্পের সত্যতা, তবে ভুতদেরও পর্যবেক্ষণ ক্ষমতা এই এল্ফদের থেকে বেশী । "
+"তবে, এরা আমাকে বারানকে মুক্ত করার থেকে থামাতে পারবে না!"
+
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
+msgid ""
+"I am glad at least that we will not have to face ghosts. But those elves "
+"will have us at a disadvantage; our horses will not maneuver well in the "
+"trees."
+msgstr ""
+"আমি কমপক্ষে আনন্দিত যে আমাদের ভূতের মুখোমুখি হতে হবে না । তবে এল্ফদের সাপেক্ষে আমরা "
+"একটা অসুবিধায় থাকব; আমাদের ঘোড়াগুলি এই অরণ্য ভালোভাবে চলাফেরা করতে পারবে না ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:409
+msgid ""
+"Bah, just stay on the paths; our spearmen and bowmen can fight in the deeper "
+"woods. We have faced and won through greater perils than those amateurs can "
+"offer."
+msgstr ""
+"ধুর, শুধু পথে থাকুন; আমাদের বর্শাবিদ এবং ধনুর্বিদেরা গভীর অরণ্যে লড়াই করতে পারে । "
+"আমরা এই অপেশাদারদের থেকে অনেকগুণ বেশি বিপদের মুখোমুখি হয়েছি এবং জিতেছি।"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:450
+msgid "I see them! There they are!"
+msgstr "আমি তাদের দেখতে পাচ্ছি! ওই যে তারা!"
+
+#. [message]: speaker=Muff Toras
+#. There are no undead on the map yet, but Muff Toras summons some immediately after saying this
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
+msgid ""
+"Curses! Had they been a few hours slower, I might have covered our tracks "
+"without arousing the elves’ suspicions. Still, no need for the disguise any "
+"more."
+msgstr ""
+"অভিশাপে পড়ুক ওরা! ওরা আর কয়েক ঘন্টা দেরী করে এলে, আমি এল্ফদের মনে সন্দেহ না "
+"জাগিয়ে আমাদের যাওয়ার চিহ্নগুলো মুছে ফেলতে পারতাম । তবে, ছদ্মবেশের আর প্রয়োজন নেই ।"
+
+#. [message]: speaker=Arvith
+#. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
+msgid "Well, elves? Now do you see who the necromancers are?"
+msgstr "তাহলে, এল্ফগণেরা? এখন আপনরা দেখতে পাচ্ছেন যে প্রকৃত মৃত্যু-জাদুবিদ কে?"
+
+#. [message]: speaker=messenger_elf
+#. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
+msgid ""
+"I heard sounds of battle, but did not expect to see this. I will inform the "
+"Council, they can work out who the necromancers are."
+msgstr ""
+"আমি যুদ্ধের শব্দ শুনেছি, তবে এটি দেখার আশা করি নি । আমি পরিষদকে অবহিত করব, তাঁরা "
+"বিচার করে দেখবেন যে মৃত্যু-জাদুবিদ কারা ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
+msgid "Come on, men, let’s catch those kidnappers!"
+msgstr "আসুন, সবাই, অপহরণকারীদের ধরতে হবে!"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
+msgid ""
+"Hah! You have captured me, but it will avail you nothing. I sent your "
+"precious brother the mage north with half my men a day since; he will be "
+"safely locked away in our master’s dungeons by now."
+msgstr ""
+"হাহা! আপনি আমাকে বন্দী করেছেন, তবে এতে আপনার কিছুই উপকার হবে না। আপনার মূল্যবান "
+"ভাইকে আমি আমার অর্ধেক অনুচরদের সঙ্গে একদিনের আগে প্রেরণ করেছি; এখন তিনি নিরাপদে "
+"আমাদের প্রভুর অন্ধকূপে বন্ধ হয়ে পড়েছেন নিশ্চয়ই ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
+msgid ""
+"My blade is at your throat. Give us the way to my brother now, or I will "
+"spill your wretched blood on the ground."
+msgstr ""
+"আমার তরোয়াল তোর গলায়। আমাদের এখনই আমার ভাইয়ের কাছে যাওয়ার পথ বল, নয়তো এক্ষুণি "
+"তোর এই বিষাক্ত রক্তে মাটি লাল হয়ে যাবে ।"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
+msgid "Sithrak"
+msgstr "সিথ্রাক"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
+msgid "Eleben"
+msgstr "এলেবেন"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+msgid "Jarlom"
+msgstr "জারলম"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+msgid "Hamik"
+msgstr "হামিক"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
+msgid "Akranbral"
+msgstr "আক্রানব্রাল"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
+msgid "Drakanal"
+msgstr "ড্রাকানাল"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+msgid "Xaskanat"
+msgstr "জ়াস্কানাট"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+msgid "Katklagad"
+msgstr "কাটক্লাগাড"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
+msgid ""
+"Three days ride to the northeast, in a deserted castle. The passwords to the "
+"guards are $first_password_$first_password and "
+"$second_password_$second_password|."
+msgstr ""
+"তিন দিন উত্তর-পূর্ব দিকে যাত্রা করে একটি নির্জন দুর্গে । গার্ডদের পাসওয়ার্ডগুলি হল "
+"$first_password_$first_password এবং $second_password_$second_password|."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
+msgid "Bind him and take him with us. If he has played us false, he will die."
+msgstr ""
+"একে বেঁধে আমাদের সাথে নিয়ে চলো । এ যদি আমাদের সঙ্গে মিথ্যা অভিনয় করে থাকে তবে এ "
+"মরবে ।"
+
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:602
+msgid ""
+"Captain, what are we riding into? I thought you wanted nothing to do with "
+"Baran any more, not since Toen Caric."
+msgstr ""
+"ক্যাপ্টেন, আমরা কোথায় যাচ্ছি? আমি ভেবেছিলাম টোয়েন ক্যারিকের সময় থেকে আপনি আর "
+"বারানের সঙ্গে নিজেকে জড়াতে চাননি ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
+msgid ""
+"I’m no longer sure. What’s between us remains, but knowing someone else has "
+"lain hands on him changes things. Mount up, and let’s get moving."
+msgstr ""
+"আমি আর নিশ্চিত নই। আমাদের মধ্যে যা হয়েছে তা এখনও আছে, তবে সবকিছু পাল্টে যাচ্ছে "
+"অন্য কেউ তার গায়ে হাত দিয়েছে । ঘোড়ায় চড়ুন, আমাদের যেতে হবে ।"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
+msgid "Brena"
+msgstr "ব্রেনা"
+
+#. [message]: speaker=Brena
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:631
+msgid ""
+"Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
+"foul undead. Are there more of them to be destroyed?"
+msgstr ""
+"আপনাদের শুভেচ্ছা । আমি ব্রেনা, একজন নাইট । আমি আপনাদের ওই ঘৃণ্য না-মৃতদের অনুসরণ "
+"এবং ধ্বংস করতে দেখেছি । ধ্বংস করার জন্য আরও না-মৃত আছে কী?"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
+msgid ""
+"Aye. We think there’s a nest of them north-east of here. They’ve captured my "
+"brother."
+msgstr ""
+"হ্যাঁ । আমাদের অনুমান, উত্তর-পূর্বে তাদের একটি বাসা রয়েছে। তারা আমার ভাইকে বন্দী "
+"করেছে।"
+
+#. [message]: speaker=Brena
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:641
+msgid ""
+"I bear a great hatred towards their kind. I will follow and fight them with "
+"you, if you permit."
+msgstr ""
+"আমি তাদের প্রচন্ড ঘৃণা করি । আপনি যদি অনুমতি দেন, তবে আমি আপনাদের সঙ্গে আসতে চাইব "
+"এবং তাদের সাথে লড়াই করব ।"
+
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
+msgid "He would only slow us down!"
+msgstr "এনার জন্য আমাদের গতি কমে যাবে মাত্র!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
+msgid "It is my place to decide this."
+msgstr "আমি সেটার সিদ্ধান্ত নেব ।"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
+msgid "Oh, all right then. Come along with us."
+msgstr "ওহ, ঠিক আছে তাহলে । আমাদের সাথে আসুন ।"
+
+#. [message]: speaker=Brena
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
+msgid "Thank you. My comrades and I will help you on your noble quest."
+msgstr "ধন্যবাদ । আমার সহযোদ্ধারা এবং আমি আপনাকে আপনার মহৎ অভিযানে সাহায্য করব।"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:662
+msgid "I am sorry. We have not the time to spare."
+msgstr "আমি দুঃখিত । আমাদের কাছে অতটা সময় নেই ।"
+
+#. [message]: speaker=Brena
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:666
+msgid ""
+"Take this, then, for I see that you are on a quest. My comrades will help "
+"you whenever you call for them."
+msgstr ""
+"তবে এটি গ্রহণ করুন । আমি দেখতে পাচ্ছি যে আপনি একটি অভিযানে রয়েছেন । যখনই আপনি "
+"তাদের জন্য ডাকবেন তখন আমার সহযোদ্ধারা আপনাকে সহায়তা করতে আসবে ।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
+msgid "You receive 70 pieces of gold!"
+msgstr "আপনি 70 টি স্বর্ণ পেলেন!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
+msgid ""
+"These elves have delayed us too long, the kidnappers’ trail will have faded "
+"by now."
+msgstr ""
+"এল্ফেরা আমাদের খুব দীর্ঘ সময় ধরে থামিয়ে রেখেছিল, অপহরণকারীদের চিহ্ন এতক্ষণে মুছে "
+"গিয়েছে বোধহয় ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
+msgid ""
+"More elves are arriving; even if they believe me, the kidnappers’ trail is "
+"sure to fade before we can follow."
+msgstr ""
+"আরও এল্ফেরা আসছে; ওরা আমাদের বিশ্বাস করলেও, আমরা অনুসরণ করার আগেই অপহরণকারীদের "
+"যাওয়া চিহ্নগুলি মুছে যাবে ।"
+
+#. [message]: speaker=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
+msgid ""
+"Deluded fool, you are rescuing a necromancer. I can only hope that you are "
+"too late, and that our souls will rest in peace."
+msgstr ""
+"অজ্ঞান মূর্খ, আপনি একজন মৃত্যু-জাদুবিদকে উদ্ধার করেছেন। আমি কেবল আশা করতে পারি যে "
+"আপনি অনেক দেরী করেছেন এবং আমাদের আত্মারা শান্তিতে বিশ্রাম নিতে পারবে ।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
+msgid "Follow their back trail!"
+msgstr "তাদের পিছনে ফেলা যাওয়া চিহ্নগুলি অনুসরণ করুন!"
+
+#. [scenario]: id=03_Guarded_Castle
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:5
+msgid "Guarded Castle"
+msgstr "সুরক্ষিত দুর্গ"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
+#, fuzzy
+#| msgid ""
+#| "19 V, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "The last of Mordak’s servants arrived this morning bearing the news of "
+#| "his death, as well as a bundle so well-bound it was barely recognizable "
+#| "as a man. Mordak was always reckless. This whole desperate scheme was "
+#| "his, and I suppose I could blame him for everything that we have suffered "
+#| "through if it still mattered. It was he who brought the wrath of the orcs "
+#| "down on us, too. But all the same, he managed to accomplish what he set "
+#| "out to do. I still cannot believe the finality of what has happened; "
+#| "until now we had always managed to make it through somehow.\n"
+#| "\n"
+#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
+#| "not know what the warlord wants with this man, but he matches the "
+#| "description. I suppose that Mordak’s plan would have worked perfectly if "
+#| "not for the appearance of the horse warriors. Now they are coming here, "
+#| "led by a man rumored to be this mage’s brother. If that is true, he will "
+#| "stop at nothing, no more than would I if they held Mordak."
+msgid ""
+"19 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Rotharik the Clanless\n"
+"\n"
+"The last of Mordak’s servants arrived this morning bearing the news of his "
+"death, as well as a bundle so well-bound it was barely recognizable as a "
+"man. Mordak was always reckless. This whole desperate scheme was his, and I "
+"suppose I could blame him for everything that we have suffered through if it "
+"still mattered. It was he who brought the wrath of the orcs down on us, too. "
+"But all the same, he managed to accomplish what he set out to do. I still "
+"cannot believe the finality of what has happened; until now we had always "
+"managed to make it through somehow.\n"
+"\n"
+"We had hoped to deliver the mage to Tairach in return for our lives. I do "
+"not know what the warlord wants with this man, but he matches the "
+"description. I suppose that Mordak’s plan would have worked perfectly if not "
+"for the appearance of the horse warriors. Now they are coming here, led by a "
+"man rumored to be this mage’s brother. If that is true, he will stop at "
+"nothing, no more than would I if they held Mordak."
+msgstr ""
+"19 ভি, 363 yw\n"
+"জার্নাল অফ রথারিক দ্য ক্ল্যানলেস থেকে উদ্ধৃত\n"
+"\n"
+"মর্ডাকের শেষ দাসদের মধ্যে সর্বশেষ তার মৃত্যুর সংবাদ বহন করে এসে পৌঁছেছিল, পাশাপাশি "
+"একটি বান্ডিল এত ভাল সীমাবদ্ধ ছিল যে এটি একজন মানুষ হিসাবে সবেমাত্র স্বীকৃত ছিল।"
+"মর্ডাক সবসময় বেপরোয়া ছিল।এই পুরো মরিয়া স্কিমটি তাঁর ছিল এবং আমি মনে করি যে এটি "
+"এখনও গুরুত্বপূর্ণ হলে আমরা যা কিছু ভোগ করেছি তার জন্য আমি তাকে দোষ দিতে পারি।তিনিই "
+"আমাদের উপরও অর্কেসের ক্রোধ নিয়ে এসেছিলেন।তবে সব মিলিয়ে তিনি যা করতে চেয়েছিলেন "
+"তা সম্পাদন করতে পেরেছিলেন।আমি এখনও যা ঘটেছে তার চূড়ান্ততা বিশ্বাস করতে পারি "
+"না;এখনও অবধি আমরা সর্বদা এটি কোনওভাবে তৈরি করতে সক্ষম হয়েছি।\n"
+"\n"
+"আমরা আমাদের জীবনের বিনিময়ে টায়রাচকে ম্যাজটি পৌঁছে দেওয়ার আশা করেছিলাম।আমি জানি "
+"না যে যুদ্ধবাজ এই ব্যক্তির সাথে কী চায় তবে সে বর্ণনার সাথে মেলে।আমি মনে করি যে "
+"ঘোড়া যোদ্ধাদের উপস্থিতি না থাকলে মর্ডাকের পরিকল্পনাটি পুরোপুরি কাজ করবে।এখন তারা "
+"এখানে আসছেন, একজন ব্যক্তির নেতৃত্বে এই ম্যাজের ভাই হওয়ার গুজব।যদি এটি সত্য হয় তবে "
+"সে কিছুই থামবে না, তারা মর্দককে ধরে রাখলে আমি ছাড়া আর কিছু হবে না।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
+#, fuzzy
+#| msgid ""
+#| "19 V, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "I have done what I can to fortify this dilapidated castle. The orcs who "
+#| "came with us stand guard at the gates, and I am gathering all of my "
+#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
+#| "defeat this horse-warrior or no, the orcs will still come for me; they "
+#| "have been scouring the borderlands and raiding the northern farm country "
+#| "in search of us.\n"
+#| "\n"
+#| "Yet for some reason I fear these brothers more. If Mordak were here it "
+#| "would be different, but we are broken... and these two men are whole. In "
+#| "each other, in the ties that bind them, they have strength."
+msgid ""
+"19 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Rotharik the Clanless\n"
+"\n"
+"I have done what I can to fortify this dilapidated castle. The orcs who came "
+"with us stand guard at the gates, and I am gathering all of my servants to "
+"me in the inner sanctum. But ill fate awaits. Whether I defeat this horse-"
+"warrior or no, the orcs will still come for me; they have been scouring the "
+"borderlands and raiding the northern farm country in search of us.\n"
+"\n"
+"Yet for some reason I fear these brothers more. If Mordak were here it would "
+"be different, but we are broken... and these two men are whole. In each "
+"other, in the ties that bind them, they have strength."
+msgstr ""
+"19 ভি, 363 yw\n"
+"জার্নাল অফ রথারিক দ্য ক্ল্যানলেস থেকে উদ্ধৃত\n"
+"\n"
+"এই জরাজীর্ণ দুর্গটি শক্তিশালী করতে আমি যা করতে পারি তা করেছি।আমাদের সাথে আসা "
+"orcs গেটগুলিতে রক্ষী দাঁড়িয়ে আছে এবং আমি আমার সমস্ত চাকরকে আমার কাছে অভ্যন্তরীণ "
+"অভয়ারণ্যে জড়ো করছি।তবে অসুস্থ ভাগ্য অপেক্ষা করছে।আমি এই ঘোড়া-যোদ্ধাকে পরাস্ত করি বা "
+"না, অর্কস এখনও আমার জন্য আসবে;তারা সীমান্তভূমিগুলিকে ঘায়েল করছে এবং আমাদের সন্ধানে "
+"উত্তর খামার দেশে অভিযান চালাচ্ছে।\n"
+"\n"
+"তবুও কিছু কারণে আমি এই ভাইদের আরও ভয় করি।মর্দাক যদি এখানে থাকতেন তবে এটি আলাদা "
+"হবে তবে আমরা ভেঙে পড়েছি ... এবং এই দু'জন লোক পুরো।একে অপরের মধ্যে, তাদের আবদ্ধ "
+"সম্পর্কগুলিতে তাদের শক্তি রয়েছে।"
+
+#. [side]: type=Dark Sorcerer, id=Rotharik
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
+msgid "Rotharik"
+msgstr "রথিক"
+
+#. [unit]: role=Guard, id=Guard_leader, type=Assassin
+#. [unit]: role=Guard, type=Bandit
+#. [unit]: role=Guard2, id=Guard2_leader, type=Rogue
+#. [unit]: role=Guard2, type=Thug
+#. [unit]: role=Guard2, type=Bandit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:94
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:111
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:119
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:583
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:593
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:602
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
+msgid "Guard"
+msgstr "প্রহরী"
+
+#. [unit]: id=Knago-Brek, type=Orcish Warrior
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:138
+msgid "Knago-Brek"
+msgstr "নাগো ব্রেচ"
+
+#. [unit]: type=Orcish Grunt
+#. [unit]: type=Orcish Warrior
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:146
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:154
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:163
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:171
+msgid "Castle Guard"
+msgstr "ক্যাসেল গার্ড"
+
+#. [time]: id=indoors_dark_castle
+#. similar string in the wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:236
+msgid "Indoors (dark castle)"
+msgstr "বাড়ির ভিতরে (গা dark ় দুর্গ)"
+
+#. [time]: id=indoors_dark_castle_lit
+#. similar string in th4e wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:252
+msgid "Indoors (lit)"
+msgstr "বাড়ির ভিতরে (লিট)"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
+msgid "Rescue Baran"
+msgstr "উদ্ধার বারান"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:321
+msgid "Kill the dark sorcerer to get the cell key"
+msgstr "সেল কী পেতে গা dark ় যাদুকরকে হত্যা করুন"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:335
+msgid "Move Arvith to the cell with his brother to free him"
+msgstr "তাকে মুক্ত করার জন্য তার ভাইয়ের সাথে অরভিথকে কক্ষে সরিয়ে দিন"
+
+#. [objective]: condition=lose
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
+msgid "Death of Baran"
+msgstr "বারানের মৃত্যু"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:360
+msgid ""
+"When facing an unknown situation, take into account details from story and "
+"dialog to inform your strategy."
+msgstr ""
+"কোনও অজানা পরিস্থিতির মুখোমুখি হওয়ার সময়, আপনার কৌশলটি অবহিত করতে গল্প এবং "
+"কথোপকথন থেকে বিশদ বিবরণ নিন।"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:369
+msgid ""
+"The dark sorcerer is a strong unit; attack him with multiple units at once "
+"and try to force him off his keep."
+msgstr ""
+"গা dark ় যাদুকর একটি শক্তিশালী ইউনিট;একবারে একাধিক ইউনিট দিয়ে তাকে আক্রমণ করুন "
+"এবং তাকে তার রাখার জন্য জোর করে দেওয়ার চেষ্টা করুন।"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:379
+msgid ""
+"Markings or decorations on hexes may indicate something to be found. If you "
+"can, it is usually a good idea to investigate."
+msgstr ""
+"হেক্সসে চিহ্নিত বা সজ্জা খুঁজে পাওয়া কিছু নির্দেশ করতে পারে।আপনি যদি পারেন তবে এটি "
+"সাধারণত তদন্ত করা ভাল ধারণা।"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
+msgid ""
+"Arvith and his men halt outside of the castle, gazing for a moment at the "
+"hulking mass of stone looming in the fog. There is movement in the mist."
+msgstr ""
+"আরভিথ এবং তার লোকেরা দুর্গের বাইরে থামল, কুয়াশায় পাথরের হুলিং ভরতে এক মুহুর্তের জন্য "
+"তাকিয়ে।কুয়াশায় আন্দোলন আছে।"
+
+#. [message]: speaker=Guard_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:421
+msgid "Halt! Friend or foe? Give the password."
+msgstr "থাম!বন্ধু অথবা শত্রু?পাসওয়ার্ড দিন।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
+msgid "The password is"
+msgstr "পাসওয়ার্ড হয়"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
+msgid "Sithrak!"
+msgstr "সিতরাক!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
+msgid "Eleben!"
+msgstr "বেহরার!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
+msgid "Jarlom!"
+msgstr "জারলুম!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:438
+msgid "Hamik!"
+msgstr "হামিক!"
+
+#. [message]: speaker=Guard_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:451
+msgid "Pass, friend."
+msgstr "পাস, বন্ধু।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:466
+msgid ""
+"The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
+"it may be; cut him loose, and let’s be rid of him."
+msgstr ""
+"পারদর্শী আমাদের সর্বোপরি বিপথগামী করে না।আমি আমার কথাটি রাখব, এটি যেমন হতে "
+"পারে ততই বিরক্তিকর;তাকে loose িলে .ালা কেটে ফেলুন, এবং আসুন তাকে থেকে মুক্তি দিন।"
+
+#. [message]: speaker=Guard_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:477
+msgid "Wrong! Die!"
+msgstr "ভুল!মরে!"
+
+#. [message]: speaker=Knago-Brek
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:495
+msgid ""
+"Haha! We not kill people for long time. Weapon wants blood. We now kill "
+"humans!"
+msgstr ""
+"হাহাহা!আমরা দীর্ঘদিন মানুষকে হত্যা করি না।অস্ত্র রক্ত চায়।আমরা এখন মানুষকে হত্যা করি!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
+msgid ""
+"My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
+"kill some orcs."
+msgstr ""
+"আমার তরোয়াল-বাহুতে এমন একটি বক্তব্য থাকবে যে কে মারা যাবে । আসুন, পুরুষরা, আসুন কিছু "
+"অর্ককে মেরে ফেলি।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
+msgid "One less braggart orc in the world."
+msgstr "বিশ্বের একটি দাম্ভিক ওর্ক কমল ।"
+
+#. [message]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:520
+msgid "Captain, what are <i>orcs</i> doing this far south?"
+msgstr "ক্যাপ্টেন, <i>ওর্করা</i> এতটা দক্ষিণে কী করছে?"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:525
+msgid "Good question. Perhaps my brother will have found out."
+msgstr "ভাল প্রশ্ন.সম্ভবত আমার ভাই খুঁজে পেয়েছেন।"
+
+#. [message]: speaker=Guard2_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:625
+msgid "Are you our relief arriving? Does this mean we get to leave here now?"
+msgstr "আপনি কি আমাদের ত্রাণ আসছেন?এর অর্থ কি আমরা এখন এখানে চলে যাব?"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:630
+msgid "Um, yes. Fine. You can go."
+msgstr "উম, হ্যাঁ । ভাল । আপনি যেতে পারেন."
+
+#. [message]: speaker=Guard2_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:635
+msgid "Um, you’re supposed to give the password."
+msgstr "উম, আপনার পাসওয়ার্ড দেওয়ার কথা।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:640
+msgid "Oh, of course. I had nearly forgotten."
+msgstr "ওহ অবশ্যই । আমি প্রায় ভুলে গিয়েছিলাম ।"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:643
+msgid "Akranbral!"
+msgstr "আখারামব্রাল!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:646
+msgid "Drakanal!"
+msgstr "উপেক্ষা!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:649
+msgid "Xaskanat!"
+msgstr "হাশকানাত!"
+
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
+msgid "Katklagad!"
+msgstr "ক্যাটলগাদ!"
+
+#. [message]: speaker=Guard2_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:665
+msgid "Thanks! Irritating little formality, isn’t it?"
+msgstr "ধন্যবাদ!সামান্য আনুষ্ঠানিকতা বিরক্ত, তাই না?"
+
+#. [message]: speaker=Guard2_leader
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:675
+msgid "That’s the wrong password! These aren’t our relief! Get them!"
+msgstr "এটাই ভুল পাসওয়ার্ড!এগুলি আমাদের স্বস্তি নয়!তাদের ধর!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:683
+msgid ""
+"I think I should better support my men at the front to make sure we can free "
+"my brother."
+msgstr ""
+"আমি মনে করি যে আমরা আমার ভাইকে মুক্ত করতে পারি তা নিশ্চিত করার জন্য আমার সামনে "
+"আমার পুরুষদের আরও ভাল সমর্থন করা উচিত।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
+msgid "Your hand or Tairach’s, death is still death... (argh)"
+msgstr "আপনার হাত বা তাইরাচের, মৃত্যু এখনও মৃত্যু ... (আরগ)"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:705
+msgid "‘Tairach’? Who or what is Tairach?"
+msgstr "‘তাইরাচ’?কে বা কি তাইরাচ?"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:710
+msgid "There’s a key in his robes."
+msgstr "তাঁর পোশাকের একটি কী আছে।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:720
+msgid ""
+"That may well be the key to the cell they’re holding Baran in! I will take "
+"it."
+msgstr ""
+"তারা বারানকে ধরে রেখেছে এমন কক্ষের মূল চাবিকাঠি হতে পারে!আমার এটি নিতে হবে."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:748
+msgid "It may be important, I best take it."
+msgstr "এটি গুরুত্বপূর্ণ হতে পারে, আমি এটি সেরা গ্রহণ করি।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
+msgid "This castle seems as dark as a cave!"
+msgstr "এই দুর্গটি গুহার মতো অন্ধকার বলে মনে হচ্ছে!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:772
+msgid ""
+"This castle is under a constant, <i>chaotic</i> time of day (equivalent to "
+"permanent night), except for illuminated hexes adjacent to lit stone walls "
+"(neutral time of day). Place your units carefully, as your troops will be "
+"weaker and enemy units stronger."
+msgstr ""
+"এই দুর্গটি একটি ধ্রুবক, <i> বিশৃঙ্খল</i> দিনের সময়ের অধীনে (স্থায়ী রাতের সমতুল্য), "
+"জ্বলন্ত পাথরের দেয়াল (দিনের নিরপেক্ষ সময়) সংলগ্ন আলোকিত ষড়ভূজ ব্যতীত। আপনার "
+"ইউনিটগুলি সাবধানতার সাথে রাখুন, কারণ আপনার সৈন্যরা দুর্বল এবং শত্রু ইউনিটগুলি "
+"শক্তিশালী হবে।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
+msgid "Look what I have found in here! I can count a hundred pieces of gold."
+msgstr "আমি এখানে কি পেয়েছি দেখুন! আমি একশো টুকরো স্বর্ণ গুনতে পারছি ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
+msgid "Look what I have found in here! I can count fifty pieces of gold."
+msgstr "আমি এখানে কি পেয়েছি দেখুন!আমি পঞ্চাশ টুকরো গুণতে পারছি ।"
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:845
+msgid "I found Baran. He is in this cell."
+msgstr "আমি বারানকে পেয়েছি। তিনি এই কক্ষে আছেন।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:856
+msgid "It’s good to see you, Arvith."
+msgstr "আরভিথ, আপনাকে দেখে ভাল লাগল।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:861
+msgid "And you too, brother."
+msgstr "এবং আপনিও ভাই।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:867
+msgid ""
+"You must be one of Arvith’s men. Please help me get out of this dungeon."
+msgstr ""
+"আপনি অবশ্যই অরভিথের পুরুষদের একজন হতে হবে।দয়া করে আমাকে এই অন্ধকূপ থেকে বেরিয়ে "
+"আসতে সহায়তা করুন।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:874
+msgid ""
+"The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
+"enhanced iron gate. It can only be opened with the correct key. You must get "
+"it from him to free me."
+msgstr ""
+"অভিশপ্ত গা dark ় যাদুকর রথারিক আমাকে এই জাদুকরীভাবে বর্ধিত লোহার গেটের পিছনে "
+"কারাগারে বন্দী করেছে।এটি কেবল সঠিক কী দিয়ে খোলা যেতে পারে।আমাকে মুক্ত করার জন্য "
+"আপনাকে অবশ্যই এটি তার কাছ থেকে পেতে হবে।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:886
+msgid ""
+"I have already met, and killed, the sorcerer. Is this the key to which you "
+"referred?"
+msgstr ""
+"আমি ইতিমধ্যে যাদুকরকে দেখা করেছি এবং হত্যা করেছি।এটি কি আপনি যা উল্লেখ করেছেন?"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:890
+msgid ""
+"Yes, it is. Come, unlock this cell door, and let us depart this place, "
+"brother!"
+msgstr ""
+"হ্যাঁ, এটা।আসুন, এই ঘরের দরজাটি আনলক করুন, এবং আমাদের এই জায়গাটি ছেড়ে দিন, ভাই!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:944
+msgid "Thank you for saving me. I... was not certain you would come."
+msgstr "আমাকে বাঁচানোর জন্য ধন্যবাদ।আমি ... নিশ্চিত ছিল না আপনি আসবেন।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:949
+msgid "Have you no faith in your brother, Baran?"
+msgstr "আপনার ভাই বারানের প্রতি আপনার বিশ্বাস নেই?"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:954
+msgid ""
+"It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
+"again."
+msgstr ""
+"এটা যে না.সম্ভবত আমি এখানে পচা প্রাপ্য।আমি তোমাকে ব্যর্থ করেছিআমি তোমাকে আবার "
+"ব্যর্থ করেছি।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:959
+msgid ""
+"That is as may be. But you are my brother still. And... I never doubted you "
+"would have come for me."
+msgstr ""
+"এটা যেমন হতে পারে।তবে আপনি এখনও আমার ভাই।এবং ... আমি কখনই সন্দেহ করি নি আপনি "
+"আমার জন্য আসতেন।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:964
+msgid ""
+"It was no great trial, after all. A few elves, one or two dark sorcerers, a "
+"gang of orcs and some undead. Really just a day’s work for the company."
+msgstr ""
+"সর্বোপরি এটি কোনও দুর্দান্ত পরীক্ষা ছিল না।কয়েকটি এলভস, এক বা দুটি গা dark ় যাদুকর, "
+"একটি অর্কেসের একটি গ্যাং এবং কিছু আনডেড।সত্যিই সংস্থার জন্য কেবল একটি দিনের কাজ।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:969
+msgid "Thank you for coming to my aid. Let us return to the village."
+msgstr "আমার সহায়তায় আসার জন্য আপনাকে ধন্যবাদ।আসুন আমরা গ্রামে ফিরে আসি।"
+
+#. [unit]: id=Rotharik, type=Orcish Assassin
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1003
+msgid "Minion of Tairach"
+msgstr "তাইরাচের মিনিয়ন"
+
+#. [message]: speaker=Rotharik
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1015
+msgid "You are too late! Your brother is already dead! Muahahaha...!"
+msgstr "তুমি খুব দেরি করেছ!আপনার ভাই ইতিমধ্যে মারা গেছেন!মুয়াহাহাহা ...!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1020
+msgid "Argh!!"
+msgstr "আরগ !!"
+
+#. [scenario]: id=04_Return_to_the_Village
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:5
+msgid "Return to the Village"
+msgstr "গ্রামে ফিরে আসুন"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:26
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Baran of Maghre\n"
+#| "\n"
+#| "Almost home now. The last week has been full of mixed feelings for me — "
+#| "blissful and difficult by turns. It was wonderful to be out of that "
+#| "dungeon cell and in the sunlight again without the threat of death or "
+#| "worse hanging over my head... but with that behind me, I turned to the "
+#| "almost equally daunting task of making amends with my brother.\n"
+#| "\n"
+#| "Arvith had largely forgiven me by the time he freed me from my cell. All "
+#| "the same, it has taken all of the past week for us to rebuild the sense "
+#| "of comfort in each other we once had. It is fortunate that we have been "
+#| "able to take our time getting back — we gave the Grey Woods a wide berth, "
+#| "and on our way around it we traveled through some truly beautiful "
+#| "countryside. It has given us plenty of time to talk."
+msgid ""
+"27 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Baran of Maghre\n"
+"\n"
+"Almost home now. The last week has been full of mixed feelings for me — "
+"blissful and difficult by turns. It was wonderful to be out of that dungeon "
+"cell and in the sunlight again without the threat of death or worse hanging "
+"over my head... but with that behind me, I turned to the almost equally "
+"daunting task of making amends with my brother.\n"
+"\n"
+"Arvith had largely forgiven me by the time he freed me from my cell. All the "
+"same, it has taken all of the past week for us to rebuild the sense of "
+"comfort in each other we once had. It is fortunate that we have been able to "
+"take our time getting back — we gave the Grey Woods a wide berth, and on our "
+"way around it we traveled through some truly beautiful countryside. It has "
+"given us plenty of time to talk."
+msgstr ""
+"27 ভি, 363 yw\n"
+"মাগরে বারান জার্নাল থেকে উদ্ধৃত\n"
+"\n"
+"এখন প্রায় বাড়ি।গত সপ্তাহটি আমার জন্য মিশ্র অনুভূতিতে পূর্ণ ছিল - পালা দ্বারা সুখী এবং "
+"কঠিন।এই অন্ধকূপটি সেল থেকে বেরিয়ে আসা এবং আমার মাথার উপর আরও খারাপ ঝুলন্ত হুমকি "
+"ছাড়াই আবার সূর্যের আলোতে থাকা খুব সুন্দর লাগছিল ... তবে আমার পিছনে আমি আমার "
+"ভাইয়ের সাথে সংশোধন করার প্রায় সমানভাবে দু: খজনক কাজের দিকে ফিরে গেলাম।\n"
+"\n"
+"তিনি যখন আমাকে আমার ঘর থেকে মুক্তি দিয়েছিলেন তখনই আরভিথ আমাকে অনেকাংশে ক্ষমা "
+"করেছিলেন।সব মিলিয়ে, আমরা একবারে একে অপরের মধ্যে স্বাচ্ছন্দ্যের বোধটি পুনর্নির্মাণ "
+"করতে আমাদের গত সপ্তাহের সমস্ত সময় নিয়েছে।ভাগ্যবান যে আমরা আমাদের সময় ফিরে পেতে "
+"সক্ষম হয়েছি - আমরা ধূসর কাঠগুলিকে একটি প্রশস্ত বার্থ দিয়েছি এবং এর আশেপাশে আমরা "
+"কিছু সত্যিকারের সুন্দর গ্রামাঞ্চলে ভ্রমণ করেছি।এটি আমাদের কথা বলার জন্য প্রচুর সময় "
+"দিয়েছে।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Baran of Maghre\n"
+#| "\n"
+#| "Though I am more at ease now, my thoughts often turn back to Toen Caric. "
+#| "We should have been able to repel the orcs without great loss — the "
+#| "pincer attack Arvith devised would surely have carried the day but for "
+#| "me. It was reckless of me to leave my men behind — I wounded the warlord "
+#| "and forced him to flee the field, but the cost far outweighed the gain. "
+#| "Those under my command could have been saved if I had remained with "
+#| "them.\n"
+#| "\n"
+#| "I can hardly blame Arvith for having taken their deaths ill, and I can "
+#| "never undo the wrong that I have done, but I suppose that time heals some "
+#| "things. We return to the village as brothers once more.\n"
+#| "\n"
+#| "But I am still troubled. I wonder... is this sense of foreboding I feel "
+#| "merely a remnant of my time locked away in that dungeon, or is it a sign "
+#| "of something real?"
+msgid ""
+"27 Scryer’s Bloom, 363 YW\n"
+"Excerpt from the journal of Baran of Maghre\n"
+"\n"
+"Though I am more at ease now, my thoughts often turn back to Toen Caric. We "
+"should have been able to repel the orcs without great loss — the pincer "
+"attack Arvith devised would surely have carried the day but for me. It was "
+"reckless of me to leave my men behind — I wounded the warlord and forced him "
+"to flee the field, but the cost far outweighed the gain. Those under my "
+"command could have been saved if I had remained with them.\n"
+"\n"
+"I can hardly blame Arvith for having taken their deaths ill, and I can never "
+"undo the wrong that I have done, but I suppose that time heals some things. "
+"We return to the village as brothers once more.\n"
+"\n"
+"But I am still troubled. I wonder... is this sense of foreboding I feel "
+"merely a remnant of my time locked away in that dungeon, or is it a sign of "
+"something real?"
+msgstr ""
+"27 ভি, 363 yw\n"
+"মাগরে বারান জার্নাল থেকে উদ্ধৃত\n"
+"\n"
+"যদিও আমি এখন আরও স্বাচ্ছন্দ্য বোধ করি, আমার চিন্তাভাবনাগুলি প্রায়শই টেন ক্যারিকের "
+"দিকে ফিরে যায়।আমাদের খুব ক্ষতি ছাড়াই orcsকে পিছিয়ে দিতে সক্ষম হওয়া উচিত ছিল - "
+"আরভিথ যে পিন্সার আক্রমণটি তৈরি করেছিলেন তা অবশ্যই দিনটি বহন করত তবে আমার জন্য।"
+"আমার লোকদের পিছনে ফেলে রাখা আমার পক্ষে বেপরোয়া ছিল - আমি যুদ্ধবাজকে আহত করে "
+"তাকে মাঠে পালাতে বাধ্য করেছিলাম, তবে ব্যয়টি লাভের চেয়ে অনেক বেশি।আমি যদি তাদের "
+"সাথে থাকতাম তবে আমার কমান্ডের অধীনে যারা রক্ষা করা যেত।\n"
+"\n"
+"আমি তাদের মৃত্যু অসুস্থ করার জন্য আরভিথকে খুব কমই দোষ দিতে পারি এবং আমি যে ভুলটি "
+"করেছি তা আমি কখনই পূর্বাবস্থায় ফিরিয়ে আনতে পারি না, তবে আমি মনে করি যে সময়টি "
+"কিছু জিনিস নিরাময় করে।আমরা আরও একবার ভাই হিসাবে গ্রামে ফিরে আসি।\n"
+"\n"
+"তবে আমি এখনও সমস্যায় পড়েছি।আমি ভাবছি ... এই ভবিষ্যদ্বাণী করার এই অনুভূতিটি কি আমি "
+"কেবল আমার সময়ের এক বিরক্তি অনুভব করি যে সেই অন্ধকূপটিতে লক হয়ে গেছে, নাকি এটি "
+"সত্যিকারের কোনও চিহ্নের চিহ্ন?"
+
+#. [side]: type=Orcish Warlord, id=Tairach
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:87
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:56
+msgid "Tairach"
+msgstr "তাইরাচ"
+
+#. [side]: type=Longbowman, id=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:116
+msgid "Reeve Hoban"
+msgstr "রিভ হোবান"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:139
+msgid "Find out what is happening in the village"
+msgstr "গ্রামে কী ঘটছে তা সন্ধান করুন"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:155
+msgid ""
+"Recruit or Recall some high-move units to be able to see as far as possible "
+"through the fog for approaching units."
+msgstr ""
+"ইউনিটগুলির কাছে কুয়াশার মাধ্যমে যতদূর সম্ভব দেখতে সক্ষম হতে কিছু উচ্চ-মুভ ইউনিট নিয়োগ "
+"বা স্মরণ করুন।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
+msgid ""
+"There. The village is just across those hills, and already I see men coming "
+"to greet us!"
+msgstr ""
+"সেখানে।গ্রামটি ঠিক সেই পাহাড়গুলি জুড়ে, এবং ইতিমধ্যে আমি দেখছি পুরুষরা আমাদের "
+"শুভেচ্ছা জানাতে আসছে!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:176
+msgid ""
+"No, they are fleeing from something. We must find out what is happening over "
+"there!"
+msgstr ""
+"না, তারা কিছু থেকে পালিয়ে যাচ্ছে।আমাদের অবশ্যই সেখানে কী ঘটছে তা খুঁজে বের করতে "
+"হবে!"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:181
+msgid "Men! Ready your arms!"
+msgstr "পুরুষ!আপনার অস্ত্র প্রস্তুত!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
+msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
+msgstr "আমাদের রিভ হোবানকে খুঁজে পাওয়া উচিত।এখানে কী চলছে সে জানে।"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
+msgid "We’re almost there!"
+msgstr "আমরা প্রায় সেখানে আছি!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:206
+msgid "That warlord! It’s..."
+msgstr "সেই যুদ্ধবাজ!এটা ..."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:211
+msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
+msgstr ""
+"হ্যাঁ, আমি যে কোনও জায়গায় সেই মুখটি জানতাম।বিশেষত আপনি এটি যা করেছেন তার পরে।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
+msgid "The warlord from Toen Caric."
+msgstr "টেন ক্যারিক থেকে ওয়ার্ল্ডার।"
+
+#. [message]: speaker=Tairach
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
+msgid "You! The mage who scarred me with fire! KILL THEM!"
+msgstr "আপনি!যে ম্যাজ আমাকে আগুন দিয়ে দাগ দিয়েছে!তাদের মেরে ফেল!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
+msgid "Let’s finish what we started, brother."
+msgstr "আমরা যা শুরু করেছি তা শেষ করা যাক ভাই।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
+msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
+msgstr "আয়েআমি ডান বাহু হব, এবং আপনি বাম হবেন।চলো যাই!"
+
+#. [message]: speaker=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:250
+msgid "I am glad to see you returned."
+msgstr "আপনি ফিরে এসে দেখে আমি আনন্দিত।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
+msgid "No gladder than I am to be here. But what has happened to Maghre?"
+msgstr "আমি এখানে থাকতে চাই না।তবে মাগরে কি হয়েছে?"
+
+#. [message]: speaker=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:260
+msgid ""
+"Soon after you departed we were beset by orcs. With half the men of Maghre "
+"gone, we could not stop them."
+msgstr ""
+"আপনি চলে যাওয়ার পরপরই আমরা orcs দ্বারা ঘিরে ছিলাম।মাগরেবের অর্ধেক লোক চলে "
+"যাওয়ার সাথে সাথে আমরা তাদের থামাতে পারিনি।"
+
+#. [message]: speaker=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:265
+msgid ""
+"The orcish warlord aims to enslave us. We will not be able to hold out for "
+"much longer."
+msgstr ""
+"অর্কিশ ওয়ার্লর্ডের লক্ষ্য আমাদের দাসত্ব করা।আমরা বেশি দিন ধরে রাখতে সক্ষম হব না।"
+
+#. [message]: speaker=Reeve Hoban
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
+msgid ""
+"Have a care, his men are fell fighters and have killed many. Very few remain "
+"who can bear arms, but I will send them to aid you in battle."
+msgstr ""
+"একটি যত্ন আছে, তার লোকেরা যোদ্ধা পড়েছে এবং অনেককে হত্যা করেছে।খুব কম লোকই রয়ে "
+"গেছে যারা অস্ত্র বহন করতে পারে তবে আমি তাদেরকে যুদ্ধে সহায়তা করার জন্য তাদের "
+"প্রেরণ করব।"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
+msgid "Slay the Orcish Warlord to free the village"
+msgstr "গ্রাম মুক্ত করতে অর্কিশ ওয়ার্লর্ডকে হত্যা করুন"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
+msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
+msgstr ""
+"আপনি অতিরিক্ত ইউনিট নিয়োগ বা স্মরণ করতে রিভ হোবনের কিপ ব্যবহার করতে পারেন।"
+
+#. [message]: speaker=Tairach
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
+msgid "Today, you shall pay for disfiguring my face, mage!"
+msgstr "আজ, আপনি আমার মুখটি বিকৃত করার জন্য অর্থ প্রদান করবেন, ম্যাজ!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:346
+msgid ""
+"I have already paid with the lives of my men at Toen Caric. It is time I "
+"righted that mistake and finished this once and for all."
+msgstr ""
+"আমি ইতিমধ্যে আমার পুরুষদের জীবন দিয়ে টেন ক্যারিকে অর্থ প্রদান করেছি।এখন সময় এসেছে "
+"আমি সেই ভুলটি ঠিক করেছি এবং এটি একবার এবং সকলের জন্য শেষ করেছি।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355
+msgid ""
+"It is finished. We’ve defeated him at last. It was good to have you at my "
+"side, Baran."
+msgstr ""
+"এটা শেষ.আমরা শেষ পর্যন্ত তাকে পরাজিত করেছি।বারান, আমার পাশে তোমাকে পেয়ে ভাল "
+"লাগল।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:360
+msgid ""
+"So much has been destroyed. It will be difficult to repair all that the orcs "
+"and undead have wrecked. And they could come again."
+msgstr ""
+"এত কিছু ধ্বংস হয়ে গেছে।অর্কস এবং আনডেড ধ্বংসস্তূপে যা কিছু হয়েছে তা মেরামত করা কঠিন "
+"হবে।এবং তারা আবার আসতে পারে।"
+
+#. [message]: speaker=Arvith
+#. "you have my word" is a idiom for promising to do something
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:366
+msgid ""
+"I must go back to earning my living. But you have my word, little brother; "
+"if you are beset again, I will come."
+msgstr ""
+"আমাকে অবশ্যই আমার জীবিকা উপার্জনে ফিরে যেতে হবে।তবে তোমার আমার কথা আছে, ছোট "
+"ভাই;আপনি যদি আবার ঘেরাও করেন তবে আমি আসব।"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:384
+msgid "I don’t think we can rescue anyone from these villages. It is too late."
+msgstr ""
+"আমি মনে করি না যে আমরা এই গ্রামগুলি থেকে কাউকে উদ্ধার করতে পারি।অনেক দেরি হয়ে "
+"গেছে।"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:389
+msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
+msgstr "আমি এই লোকদের রক্ষা করতে খুব দুর্বল ছিলাম।ওহ, আমার সাথে কেন এমন হয়েছিল?!"
+
+#. [scenario]: id=05_Epilogue
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
+msgid "A Tale of Two Brothers — Epilogue"
+msgstr "দুই ভাইয়ের একটি গল্প - এপিলোগ"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "Maghre is looking much better than the last time I saw it. Baran has done "
+#| "wonders in two years. The village is rebuilt, and the surrounding "
+#| "farmlands are restored and reoccupied. Despite my brother’s worries, our "
+#| "people have faced no new threats in that time.\n"
+#| "\n"
+#| "It has been more difficult to stay away in those two years, but I have my "
+#| "calling and Baran has his, and we have had little opportunity to meet "
+#| "again. But as the company and I are passing through this part of the "
+#| "kingdom with a new patron, I have asked leave of him to visit my brother "
+#| "and he gave it."
+msgid ""
+"22 Stillseed, 365 YW\n"
+"Excerpt from the journal of Arvith of Maghre\n"
+"\n"
+"Maghre is looking much better than the last time I saw it. Baran has done "
+"wonders in two years. The village is rebuilt, and the surrounding farmlands "
+"are restored and reoccupied. Despite my brother’s worries, our people have "
+"faced no new threats in that time.\n"
+"\n"
+"It has been more difficult to stay away in those two years, but I have my "
+"calling and Baran has his, and we have had little opportunity to meet again. "
+"But as the company and I are passing through this part of the kingdom with a "
+"new patron, I have asked leave of him to visit my brother and he gave it."
+msgstr ""
+"22 ix, 365 yw\n"
+"মাগরে জার্নাল অফ আরভিথ থেকে উদ্ধৃত\n"
+"\n"
+"আমি শেষবারের মতো দেখেছি তার চেয়ে মাগরে অনেক ভাল দেখাচ্ছে।বারান দুই বছরে আশ্চর্য "
+"কাজ করেছে।গ্রামটি পুনর্নির্মাণ করা হয়েছে, এবং আশেপাশের খামার জমিগুলি পুনরুদ্ধার করা "
+"হয়েছে এবং পুনরায় কাজ করা হয়েছে।আমার ভাইয়ের উদ্বেগ সত্ত্বেও, আমাদের লোকেরা সেই "
+"সময়ে কোনও নতুন হুমকির মুখোমুখি হয়নি।\n"
+"\n"
+"এই দুই বছরে দূরে থাকা আরও কঠিন হয়ে পড়েছে, তবে আমার কলিং রয়েছে এবং বারান তার "
+"রয়েছে এবং আমাদের আবার দেখা করার খুব কম সুযোগ ছিল।তবে আমি এবং সংস্থাটি যখন নতুন "
+"পৃষ্ঠপোষককে নিয়ে রাজ্যের এই অংশটি পেরিয়ে যাচ্ছি, তখন আমি তাকে আমার ভাইয়ের সাথে "
+"দেখা করতে ছুটি বলেছি এবং তিনি তা দিয়েছিলেন।"
+
+#. [part]
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "This patron is, of all things, an elf. I never thought I’d befriend one, "
+#| "but he is less arrogant than the rest. Kalenz, he calls himself. He’s "
+#| "seen too much; I can tell that just by meeting his eyes. I think we will "
+#| "have to work for our pay soon.\n"
+#| "\n"
+#| "In the meantime, though, it’s good to relax and enjoy the peace."
+msgid ""
+"22 Stillseed, 365 YW\n"
+"Excerpt from the journal of Arvith of Maghre\n"
+"\n"
+"This patron is, of all things, an elf. I never thought I’d befriend one, but "
+"he is less arrogant than the rest. Kalenz, he calls himself. He’s seen too "
+"much; I can tell that just by meeting his eyes. I think we will have to work "
+"for our pay soon.\n"
+"\n"
+"In the meantime, though, it’s good to relax and enjoy the peace."
+msgstr ""
+"22 ix, 365 yw\n"
+"মাগরে জার্নাল অফ আরভিথ থেকে উদ্ধৃত\n"
+"\n"
+"এই পৃষ্ঠপোষক হ'ল, সমস্ত কিছু, একটি এলফ।আমি কখনই ভাবিনি যে আমি একজনের সাথে বন্ধুত্ব "
+"করব, তবে তিনি বাকিদের চেয়ে কম অহংকারী।কালেনজ, তিনি নিজেকে ডেকেছেন।সে খুব বেশি "
+"দেখা যায়;আমি কেবল তার চোখের সাথে দেখা করে বলতে পারি।আমি মনে করি শীঘ্রই আমাদের "
+"বেতনের জন্য আমাদের কাজ করতে হবে।\n"
+"\n"
+"এর মধ্যে, যদিও, শান্তি উপভোগ করা এবং উপভোগ করা ভাল।"
+
+#: data/campaigns/Two_Brothers/utils/characters.cfg:6
+msgid "Arvith"
+msgstr "আরভিথ"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/utils/characters.cfg:21
+msgid "All is lost now that I am dead..."
+msgstr "আমি মারা গেছি এখন সব হারিয়ে গেছে ..."
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/utils/characters.cfg:39
+msgid "It is over, I am vanquished."
+msgstr "এটা শেষ, আমি পরাজিত।"
+
+#. [unit]: id=Baran, type=Red Mage
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
+msgid "Baran"
+msgstr "বারান"
+
+#: data/campaigns/Two_Brothers/utils/macros.cfg:4
+msgid "Hint:"
+msgstr "ইঙ্গিত:"

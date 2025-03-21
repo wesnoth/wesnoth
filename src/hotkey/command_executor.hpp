@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #pragma once
 
 #include "hotkey_command.hpp"
-#include "game_end_exceptions.hpp"
 
 #include <SDL2/SDL_events.h>
 
@@ -25,6 +24,38 @@ class display;
 namespace hotkey {
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF, ACTION_SELECTED, ACTION_DESELECTED };
+
+/// Used as the main paramneter for can_execute_command/do_execute_command
+/// These functions are used to execute hotkeys but also to execute menu items,
+/// (Most menu items point to the same action as a hotkey but not all)
+struct ui_command
+{
+	/// The hotkey::HOTKEY_COMMAND associated with this action, HOTKEY_NULL for actions that don't allow hotkey binding.
+	/// different actions of the ame type might have the same HOTKEY_COMMAND (like different wml menu items that allow
+	//  hotkey bindings.). This is prefered to be used for comparision over id (for example being an enum makes it
+	/// imposible to make typos in the id and its faster, plus c++ unfortunateley doesn't allow switch statements with
+	//  strings)
+	hotkey::HOTKEY_COMMAND hotkey_command;
+	/// The string command, never empty, describes the action uniquely. when the action is the result of a menu click
+	//  this matches the id element of the clicked item (the id paraemter of show_menu)
+	std::string id;
+	/// When this action was the result of a menu click, this is the index of the clicked item in the menu.
+	int index;
+	ui_command(hotkey::HOTKEY_COMMAND hotkey_command, std::string_view id, int index = -1)
+		: hotkey_command(hotkey_command)
+		, id(id)
+		, index(index)
+	{ }
+	explicit ui_command(const hotkey::hotkey_command& cmd, int index = -1)
+		: ui_command(cmd.command, cmd.id, index)
+	{ }
+	// the string @param id references must live longer than this object.
+	explicit ui_command(std::string_view id, int index = -1)
+		: ui_command(hotkey::HOTKEY_NULL, id, index)
+	{
+		hotkey_command = hotkey::get_hotkey_command(std::string(id)).command;
+	}
+};
 
 // Abstract base class for objects that implement the ability
 // to execute hotkey commands.
@@ -105,6 +136,7 @@ public:
 	virtual void deselect_hex() {}
 	virtual void move_action() {}
 	virtual void select_and_action() {}
+	virtual void select_teleport() {}
 	virtual void touch_hex() {}
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
@@ -125,24 +157,31 @@ public:
 
 	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsistent.
 	// Gets the action's image (if any). Displayed left of the action text in menus.
-	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
+	virtual std::string get_action_image(const hotkey::ui_command&) const { return ""; }
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
-	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ACTION_STATELESS; }
+	virtual ACTION_STATE get_action_state(const hotkey::ui_command&) const { return ACTION_STATELESS; }
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(display& disp, const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
 	void get_menu_images(display &, std::vector<config>& items);
 	void surrender_game();
+	// @a items_arg the items in the menus to be shows, each item can have the folliwng attributes:
+	//   'id':    The id describing the action, will be passed to do_execute_commnd and can_execute_commnd,
+	//            If 'id' specifies a known hotkey command or theme item the other attributes can be generated from it.
+	//   'label': The label for this menu entry.
+	//   'icon':  The icon for this menu entry.
 	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	// @a items_arg the actions to be exceuted, exceutes all of the actions, it looks like the idea is to associate
+	//  multiple actions with a single menu button, not sure whether it is actually used.
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
-	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
+	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
 	void queue_command(const SDL_Event& event, int index = -1);
 	bool run_queued_commands();
 	void execute_quit_command()
 	{
 		const hotkey_command& quit_hotkey = hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
-		do_execute_command(quit_hotkey);
+		do_execute_command(ui_command(quit_hotkey));
 	}
 
 	void handle_keyup()
@@ -151,7 +190,7 @@ public:
 	}
 
 protected:
-	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true, bool release=false);
+	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false);
 
 private:
 	struct queued_command

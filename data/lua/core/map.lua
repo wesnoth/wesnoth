@@ -11,9 +11,9 @@ end
 
 ---Read a location from the front of a variable argument list.
 ---@alias read_location_count
----| '0' #Indicates no location was found.
----| '1' #A location-like object was found - either an array of two integers, or a table or userdata with x and y keys.
----| '2' #Two integer arguments were found and interpreted as the x and y coordinates respectively.
+---| 0 #Indicates no location was found.
+---| 1 #A location-like object was found - either an array of two integers, or a table or userdata with x and y keys.
+---| 2 #Two integer arguments were found and interpreted as the x and y coordinates respectively.
 ---@return location|nil #The location, if one was found, or nil otherwise
 ---@return read_location_count count #The number of arguments used to extract the location.
 function wesnoth.map.read_location(...)
@@ -27,9 +27,9 @@ function wesnoth.map.read_location(...)
 		else
 			return nil, 0
 		end
-		return {x = x, y = y}, 1
+		return wesnoth.named_tuple({x, y}, {'x', 'y'}), 1
 	elseif type(x) == 'number' and type(y) == 'number' then
-		return {x = x, y = y}, 2
+		return wesnoth.named_tuple({x, y}, {'x', 'y'}), 2
 	end
 	return nil, 0
 end
@@ -92,9 +92,9 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 
 	---Iterate over on-map hexes adjacent to a given hex.
 	---@param map terrain_map
-	---@return fun()
-	---@overload fun(map:terrain_map, loc:location)
-	---@overload fun(map:terrain_map, x:integer, y:integer)
+	---@return fun():integer?,integer?
+	---@overload fun(map:terrain_map, loc:location) : fun():integer?,integer?
+	---@overload fun(map:terrain_map, x:integer, y:integer) : fun():integer?,integer?
 	function wesnoth.map.iter_adjacent(map, ...)
 		local where, n = wesnoth.map.read_location(...)
 		if n == 0 then error('wesnoth.map.iter_adjacent: missing location') end
@@ -116,9 +116,7 @@ end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---Represents a reference to a single hex on the map
-	---@class terrain_hex
-	---@field x integer
-	---@field y integer
+	---@class terrain_hex : location
 	---@field fogged boolean Whether the hex is fogged
 	---@field shrouded boolean Whether the hex is shrouded
 	---@field team_label? string|tstring The label on this hex visible to the current team
@@ -250,7 +248,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	---Get a label placed by a specific side
 	---@param who integer
-	---@return label_info
+	---@return label_info?
 	function hex_methods:label_for(who)
 		return wesnoth.map.get_label(self.x, self.y, who)
 	end
@@ -271,9 +269,13 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@return terrain_hex
 	---@overload fun(loc:location):terrain_hex
 	function wesnoth.map.get(x, y)
+		-- Make the linter assume the location is non-nil.
+		-- It's not smart enough to realize that n==0 means that loc is non-nil.
+		---@type location
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
-		return setmetatable(loc, hex_mt)
+		---@diagnostic disable-next-line: return-type-mismatch
+		return setmetatable({x = loc.x, y = loc.y}, hex_mt)
 	end
 
 	local find_locations = wesnoth.map.find
@@ -281,7 +283,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param cfg WML
 	---@param ref_unit? unit
 	---@return terrain_hex[]
-	function wesnoth.map.find(cfg, ref_unit)
+	function wesnoth.map.find(cfg, ref_unit) ---@diagnostic disable-line: duplicate-set-field
 		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
@@ -304,7 +306,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if new_ter == '' or type(new_ter) ~= 'string' then error('set_terrain: expected terrain string') end
 		if replace_if_failed then
 			mode = mode or 'both'
-			new_ter = wesnoth.map.replace_if_failed(new_ter, mode, true)
+			new_ter = wesnoth.map.replace_if_failed(new_ter, mode)
 		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
 			new_ter = wesnoth.map['replace_' .. mode](new_ter)
 		elseif mode ~= nil then
@@ -326,6 +328,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 			return n
 		end,
+		---@diagnostic disable-next-line: redundant-return-value
 		__pairs = function(_) return pairs(wesnoth.current.map.special_locations) end,
 	}), 'Note: the length operator has been removed')
 
@@ -374,24 +377,40 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return { "notall", ... }
 		end,
 		---Match adjacent hexes
-		---@param f terrain_filter
-		---@param adj direction[]
-		---@param count integer|string A range list
+		---@param f terrain_filter_tag
+		---@param adj? direction[]|string
+		---@param count? integer|string A range list
 		---@return terrain_filter_tag
 		adjacent =  function(f, adj, count)
+			if type(adj) == 'table' then
+				adj = stringx.join(',', adj)
+			end
 			return { "adjacent",  f, adjacent = adj, count = count }
 		end,
 		---Match hexes from a separate list.
-		---Specify the list in the second argument to wesnoth.map.filter()
-		---@param terrain string
+		---When passing a locset_ref, specify the list
+		---in the second argument to wesnoth.map.filter()
+		---
+		---For example:
+		---```
+		---local M = wesnoth.map.create(128, 128, 'Gg')
+		---local f = wesnoth.map.filter_tags
+		---local found = M:find(f.find_in("choices"), {choices = {{1,2}, {5,6}}})
+		---```
+		---@param x integer
+		---@param y integer
 		---@return terrain_filter_tag
-		find_in =  function(terrain)
-			return { "find_in", terrain }
+		---@overload fun(xs:string, ys:string):terrain_filter_tag
+		---@overload fun(loc:location):terrain_filter_tag
+		---@overload fun(locs:location[]):terrain_filter_tag
+		---@overload fun(locset_ref:string):terrain_filter_tag
+		find_in = function(x, y)
+			return { "find_in", x, y }
 		end,
 		---Match hexes within a given distance
 		---@param r integer
 		---@param f terrain_filter_tag
-		---@param f_r terrain_filter_tag
+		---@param f_r? terrain_filter_tag
 		---@return terrain_filter_tag
 		radius =  function(r, f, f_r)
 			return { "radius", r, f, filter_radius = f_r}
@@ -409,11 +428,27 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return { "y", terrain }
 		end,
 		---Match a specific location
-		---@param loc location
+		---@param x integer
+		---@param y integer
 		---@return terrain_filter_tag
-		is_loc = function(loc)
-			return f.all(f.x(loc[1]), f.y(loc[2]))
-		end
+		---@overload fun(loc:location):terrain_filter_tag
+		is_loc = function(x, y)
+			local loc = wesnoth.map.read_location(x, y)
+			if not loc then return { "any" } end
+			return f.all(f.x(loc.x), f.y(loc.y))
+		end,
+		---Match terrain by Wesnoth Formula Language
+		---@param formula string|formula
+		---@return terrain_filter_tag
+		formula = function(formula)
+			return { "formula", formula }
+		end,
+		---Match any hex not on the playable area of the map,
+		---ie hexes on the border.
+		---@return terrain_filter_tag
+		onborder = function()
+			return { "onborder" }
+		end,
 	}
 
 	-- More map module stuff
@@ -426,6 +461,9 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 	wesnoth.map.get_tiles_radius = wesnoth.deprecate_api('map:get_tiles_radius', 'map:find_in_radius', 1, nil, function(map, locs, filter, radius)
 		return wesnoth.map.find_in_radius(map, locs, radius, filter)
 	end, 'The filter is now the last parameter, instead of the radius')
+	wesnoth.map.vector_sum = wesnoth.deprecate_api('wesnoth.map.vector_sum', 'wesnoth.map.hex_vector_sum', 1, nil, wesnoth.map.hex_vector_sum)
+	wesnoth.map.vector_diff = wesnoth.deprecate_api('wesnoth.map.vector_diff', 'wesnoth.map.hex_vector_dif', 1, nil, wesnoth.map.hex_vector_diff)
+	wesnoth.map.vector_negation = wesnoth.deprecate_api('wesnoth.map.vector_negation', 'wesnoth.map.hex_vector_negation', 1, nil, wesnoth.map.hex_vector_negation)
 end
 
 wesnoth.map.tiles_adjacent = wesnoth.deprecate_api('wesnoth.map.tiles_adjacent', 'wesnoth.map.are_hexes_adjacent', 1, nil, wesnoth.map.are_hexes_adjacent)

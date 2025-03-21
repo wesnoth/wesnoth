@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include "variable_info.hpp"
 
 class scoped_wml_variable;
-class t_string;
 
 class game_data  : public variable_set  {
 public:
@@ -69,15 +68,50 @@ public:
 	randomness::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
+		/// creating intitial [unit]s, executing toplevel [lua] etc.
+		/// next phase: PRELOAD
 		INITIAL,
+		/// the preload [event] is fired
+		/// next phase: PRESTART (normal game), TURN_STARTING_WAITING (reloaded game), TURN_PLAYING (reloaded game) or GAME_ENDED (reloadedgame)
 		PRELOAD,
+		/// the prestart [event] is fired
+		/// next phase: START (default), GAME_ENDING
 		PRESTART,
+		/// the start [event] is fired
+		/// next phase: TURN_STARTING_WAITING (default), GAME_ENDING
 		START,
-		PLAY
+		/// we are waiting for the turn to start.
+		/// The game can be saved here.
+		/// next phase: TURN_STARTING
+		TURN_STARTING_WAITING,
+		/// the turn, side turn etc. [event]s are being fired
+		/// next phase: TURN_PLAYING (default), GAME_ENDING
+		TURN_STARTING,
+		/// The User is controlling the game and invoking actions
+		/// The game can be saved here.
+		/// next phase: TURN_PLAYING (default), GAME_ENDING
+		TURN_PLAYING,
+		/// The turn_end, side_turn_end etc [events] are fired
+		/// next phase: TURN_STARTING_WAITING (default), GAME_ENDING
+		TURN_ENDED,
+		/// The victory etc. [event]s are fired.
+		/// next phase: GAME_ENDED
+		GAME_ENDING,
+		/// The game has ended and the user is observing the final state "lingering"
+		/// The game can be saved here.
+		GAME_ENDED,
 	};
 
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
+	/// returns where there is currently a well defiend "current player",
+	/// that is for example not the case during start events or during linger mode.
+	bool has_current_player() const;
+	bool is_before_screen() const;
+	bool is_after_start() const;
+
+	static PHASE read_phase(const config& cfg);
+	static void write_phase(config& cfg, game_data::PHASE phase);
 
 	const t_string& cannot_end_turn_reason() {
 		return cannot_end_turn_reason_;
@@ -108,6 +142,8 @@ public:
 	const std::vector<std::string>& get_victory_music() const { return victory_music_; }
 	void set_victory_music(std::vector<std::string> value) { victory_music_ = std::move(value); }
 
+	void set_end_turn_forced(bool v) { end_turn_forced_ = v; }
+	bool end_turn_forced() const { return end_turn_forced_; }
 private:
 	void activate_scope_variable(std::string var_name) const;
 	/** Used to delete variables. */
@@ -121,6 +157,7 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
+	bool end_turn_forced_;
 	t_string cannot_end_turn_reason_;
 	/** the scenario coming next (for campaigns) */
 	std::string next_scenario_;

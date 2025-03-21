@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,8 +17,6 @@
 
 #include "gui/dialogs/transient_message.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
@@ -45,15 +43,15 @@ transient_message::transient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void transient_message::pre_show(window& window)
+void transient_message::pre_show()
 {
 	if(hide_title_) {
-		widget& title = find_widget<widget>(&window, "title", false);
+		widget& title = find_widget<widget>("title");
 		title.set_visible(widget::visibility::invisible);
 	}
 
 	if(hide_image_) {
-		widget& image = find_widget<widget>(&window, "image", false);
+		widget& image = find_widget<widget>("image");
 		image.set_visible(widget::visibility::invisible);
 	}
 }

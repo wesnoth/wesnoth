@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,8 +37,8 @@ namespace wfl
 		variant execute(const formula_callable& variables, formula_debugger* fdb) const;                               \
 	};                                                                                                                 \
                                                                                                                        \
-	variant name##_function::execute(const formula_callable& variables, formula_debugger* fdb) const
-
+	variant name##_function::execute(                                                                                  \
+		[[maybe_unused]] const formula_callable& variables, [[maybe_unused]] formula_debugger* fdb) const
 
 /**
  * Declares a function `name` in the local function table `functions_table`.
@@ -232,7 +232,7 @@ typedef std::map<std::string, formula_function_ptr> functions_map;
 class function_symbol_table
 {
 public:
-	explicit function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	explicit function_symbol_table(const std::shared_ptr<function_symbol_table>& parent = nullptr);
 
 	void add_function(const std::string& name, formula_function_ptr&& fcn);
 
@@ -260,7 +260,7 @@ private:
 class action_function_symbol_table : public function_symbol_table
 {
 public:
-	action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent = nullptr);
 };
 
 class wrapper_formula : public formula_expression

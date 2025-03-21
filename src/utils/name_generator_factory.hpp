@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Marius Spix
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,7 +42,7 @@ public:
 	 * @param name generator id, e.g. a gender or a terrain type
 	 * @returns a name generator
 	 */
-	std::shared_ptr<name_generator> get_name_generator(const std::string name);
+	std::shared_ptr<name_generator> get_name_generator(const std::string& name);
 
 private:
 	std::map<std::string, std::shared_ptr<name_generator>> name_generators_;
@@ -54,5 +54,5 @@ private:
 	 * @param id the generator id to use
 	 * @param prefix the prefix to look for
 	 */
-	void add_name_generator_from_config(const config& config, const std::string id, const std::string prefix);
+	void add_name_generator_from_config(const config& config, const std::string& id, const std::string& prefix);
 };

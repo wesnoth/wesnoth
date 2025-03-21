@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,19 +22,6 @@ class config;
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog which allows the user to choose which core to play.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * core_list         | @ref listbox |yes      |A listbox that contains all available cores.
- * icon              | @ref image   |no       |The icon for the core.
- * name              | control      |no       |The name of the core.
- * core_details      | multi_page   |yes      |A multi page widget that shows more details for the selected core.
- * image             | @ref image   |no       |The image for the core.
- * description       | control      |no       |The description of the core.
- */
 class core_selection : public modal_dialog
 {
 public:
@@ -57,9 +44,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** Contains the config objects for all cores. */
 	const std::vector<config>& cores_;

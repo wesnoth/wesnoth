@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2022
+	Copyright (C) 2018 - 2025
 	by Martin Hrubý <hrubymar10@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -92,7 +92,7 @@ double get_battery_percentage() {
 
     NSNumber *maxCapacity = [battery objectForKey:@kIOPSMaxCapacityKey];
     NSNumber *currentCapacity = [battery objectForKey:@kIOPSCurrentCapacityKey];
-    
+
     if (maxCapacity && currentCapacity) {
         return ([currentCapacity doubleValue] / [maxCapacity doubleValue]) * 100;
     } else {

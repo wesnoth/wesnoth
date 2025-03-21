@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,8 +26,6 @@
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/iterable_pair.hpp" //equal_range returns a std:pair instead of sometihng iterable for some reason.
-#include "wml_exception.hpp"
-
 
 #define ERR_G LOG_STREAM(err, lg::general())
 #define WRN_G LOG_STREAM(warn, lg::general())

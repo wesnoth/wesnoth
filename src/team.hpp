@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,11 +25,10 @@
 #include "side_controller.hpp"
 #include "side_proxy_controller.hpp"
 #include "team_shared_vision.hpp"
-#include "units/ptr.hpp"
 
+#include <chrono>
 #include <set>
 
-#include <cstdint>
 #include <boost/dynamic_bitset.hpp>
 
 class game_data;
@@ -154,8 +153,13 @@ public:
 	 * from a side's config before using it to create the side's leader.
 	 */
 	static const std::set<std::string> attributes;
+	/**
+	 * Stores the child tags recognized by [side]. These should be stripped
+	 * from a side's config before using it to create the side's leader.
+	 */
+	static const std::set<std::string> tags;
 
-	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
+	void build(const config &cfg, const gamemap &map);
 
 	void write(config& cfg) const;
 
@@ -174,30 +178,29 @@ public:
 		{ return villages_.count(loc) > 0; }
 
 	int side() const { return info_.side; }
-	int gold() const { return gold_; }
+	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
 	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
 	int recall_cost() const { return info_.recall_cost; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	void set_recall_cost(int cost) { info_.recall_cost = cost; }
-	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
+	int total_income() const { return base_income() + static_cast<int>(villages_.size()) * info_.income_per_village; }
 	/** @return The number of unit levels each village can support,
 	    i.e. how much upkeep each village can bear. */
 	int village_support() const { return info_.support_per_village; }
 	/** @param support The number of unit levels each village can support */
 	void set_village_support(int support) { info_.support_per_village = support; }
 	/** Calculate total support capacity, based on support_per_village. */
-	int support() const { return villages_.size()*village_support(); }
-	void new_turn() { gold_ += total_income(); }
+	int support() const { return static_cast<int>(villages_.size()) * village_support(); }
+	void new_turn() { info_.gold += total_income(); }
 	void get_shared_maps();
-	void set_gold(int amount) { gold_ = amount; }
+	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
-	void spend_gold(const int amount) { gold_ -= amount; }
+	void spend_gold(const int amount) { info_.gold -= amount; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
-	int countdown_time() const {  return countdown_time_; }
-	void set_countdown_time (const int amount) const
-		{ countdown_time_ = amount; }
+	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
+	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
 	recall_list_manager& recall_list() {return recall_list_;}
@@ -404,7 +407,6 @@ private:
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
 	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
 
-	int gold_;
 	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;
@@ -415,7 +417,7 @@ private:
 
 	team_info info_;
 
-	mutable int countdown_time_;
+	mutable std::chrono::milliseconds countdown_time_;
 	int action_bonus_count_;
 
 	recall_list_manager recall_list_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>, Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,10 +15,8 @@
 
 #pragma once
 
-#include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include <functional>
 #include "log.hpp"
 
 extern lg::log_domain log_config_pn;

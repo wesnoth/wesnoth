@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -28,7 +28,7 @@ end_level_data::end_level_data()
 	, replay_save(true)
 	, proceed_to_next_level(false)
 	, is_victory(true)
-	, test_result(level_result::result_not_set)
+	, test_result("")
 	, transient()
 {
 }

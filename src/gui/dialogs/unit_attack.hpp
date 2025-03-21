@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,29 +22,15 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog for attacking units.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * attacker_portrait | @ref image   |no       |Shows the portrait of the attacking unit.
- * attacker_icon     | @ref image   |no       |Shows the icon of the attacking unit.
- * attacker_name     | control      |no       |Shows the name of the attacking unit.
- * defender_portrait | @ref image   |no       |Shows the portrait of the defending unit.
- * defender_icon     | @ref image   |no       |Shows the icon of the defending unit.
- * defender_name     | control      |no       |Shows the name of the defending unit.
- * weapon_list       | @ref listbox |yes      |The list with weapons to choose from.
- * attacker_weapon   | control      |no       |The weapon for the attacker to use.
- * defender_weapon   | control      |no       |The weapon for the defender to use.
- */
 class unit_attack : public modal_dialog
 {
 public:
 	unit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
 				 std::vector<battle_context>&& weapons,
-				 const int best_weapon);
+				 const int best_weapon,
+				 std::vector<gui2::widget_data>& bc_widget_data_vector,
+				 const int leadership_bonus);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -56,9 +42,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void damage_calc_callback();
 
@@ -76,6 +62,10 @@ private:
 
 	/** The best weapon, aka the one high-lighted. */
 	int best_weapon_;
+
+	std::vector<gui2::widget_data> bc_widget_data_vector_;
+
+	const int leadership_bonus_;
 };
 
 } // namespace dialogs

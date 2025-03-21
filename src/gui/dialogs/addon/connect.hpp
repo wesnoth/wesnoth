@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,16 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog for managing addons and connecting to the addon server.
- * Key               |Type      |Mandatory|Description
- * ------------------|----------|---------|-----------
- * hostname          | text_box |yes      |This text contains the name of the server to connect to.
- * show_help         | @ref gui::button   |yes      |Thus button shows the in-game help about add-ons management when triggered.
- * free to choose (2)| button   |no       |This button closes the dialog to display a dialog for removing installed add-ons.
- */
 class addon_connect : public modal_dialog
 {
 public:
@@ -53,9 +43,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace dialogs

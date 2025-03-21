@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
+#include "serialization/markup.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -72,11 +73,9 @@ config initial_level_config(saved_game& state)
 	if(scenario["objectives"].empty()) {
 		// Generic victory objectives.
 		std::ostringstream ss;
-		ss << "<big>";
-		ss << t_string(N_("Victory:"), "wesnoth") << "</big>\n";
-		ss << "<span color='#00ff00'>" << font::unicode_bullet << " ";
-		ss << t_string(N_("Defeat enemy leader(s)"), "wesnoth") << "</span>";
-
+		ss << markup::tag("big", t_string(N_("Victory:"), "wesnoth")) << "\n";
+		ss << markup::span_color("#00ff00",
+			font::unicode_bullet, " ", t_string(N_("Defeat enemy leader(s)"), "wesnoth"));
 		scenario["objectives"] = ss.str();
 	}
 
@@ -96,31 +95,31 @@ config initial_level_config(saved_game& state)
 	 */
 
 	const game_config_view& game_config = game_config_manager::get()->game_config();
-	const config& era_cfg = game_config.find_child("era", "id", era);
+	auto era_cfg = game_config.find_child("era", "id", era);
 
 	if(!era_cfg) {
 		if(params.saved_game == saved_game_mode::type::no) {
-			throw config::error(VGETTEXT("Cannot find era '$era'", {{"era", era}}));
+			throw config::error(VGETTEXT("Cannot find era ‘$era’", {{"era", era}}));
 		}
 
 		// FIXME: @todo We should tell user about missing era but still load game...
 		WRN_CF << "Missing era in MP load game '" << era << "'";
 
 	} else {
-		level.add_child("era", era_cfg);
+		level.add_child("era", *era_cfg);
 
 		// Initialize the list of sides available for the current era.
 		// We also need this so not to get a segfault in mp_staging for ai configuration.
-		const config& custom_side = game_config.find_child("multiplayer_side", "id", "Custom");
-		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
+		const config& custom_side = game_config.find_mandatory_child("multiplayer_side", "id", "Custom");
+		level.mandatory_child("era").add_child_at("multiplayer_side", custom_side, 0);
 	}
 
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.
 	const std::vector<std::string>& mods = state.classification().active_mods;
 
 	for(unsigned i = 0; i < mods.size(); ++i) {
-		if(const config& mod_cfg = game_config.find_child("modification", "id", mods[i])) {
-			level.add_child("modification", mod_cfg);
+		if(auto mod_cfg = game_config.find_child("modification", "id", mods[i])) {
+			level.add_child("modification", *mod_cfg);
 		}
 	}
 

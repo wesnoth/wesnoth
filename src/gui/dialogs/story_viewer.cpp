@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,11 @@
 
 #include "display.hpp"
 #include "formula/variant.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -80,18 +81,21 @@ story_viewer::~story_viewer()
 	clear_image_timer();
 }
 
-void story_viewer::pre_show(window& window)
+void story_viewer::pre_show()
 {
-	window.set_enter_disabled(true);
+	set_enter_disabled(true);
 
 	// Special callback handle key presses
-	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
+	connect_signal_pre_key_press(*this, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
+	connect_signal_mouse_left_click(find_widget<button>("next"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
+	connect_signal_mouse_left_click(find_widget<button>("prev"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
+
+	find_widget<scroll_label>("part_text")
+		.connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD), queue_position::front_pre_child);
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
@@ -100,7 +104,7 @@ void story_viewer::pre_show(window& window)
 	display_part();
 }
 
-void story_viewer::post_show(window& /*window*/)
+void story_viewer::post_show()
 {
 	// Bring the game display back again, if appropriate
 	display::get_singleton()->set_prevent_draw(game_was_already_hidden_);
@@ -115,7 +119,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "back", false).set_active(part_index_ != 0);
+	find_widget<button>("prev").set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -201,7 +205,7 @@ void story_viewer::display_part()
 		}
 	}
 
-	canvas& window_canvas = get_window()->get_canvas(0);
+	canvas& window_canvas = get_canvas(0);
 
 	/* In order to avoid manually loading the image and calculating the scaling factor, we instead
 	 * delegate the task of setting the necessary variables to the canvas once the calculations
@@ -229,16 +233,16 @@ void story_viewer::display_part()
 
 	cfg.add_child("image", get_title_area_decor_config());
 
-	window_canvas.set_cfg(cfg);
+	window_canvas.set_shapes(cfg);
 
 	// Needed to make the background redraw correctly.
 	window_canvas.update_size_variables();
-	get_window()->queue_redraw();
+	queue_redraw();
 
 	//
 	// Title
 	//
-	label& title_label = find_widget<label>(get_window(), "title", false);
+	label& title_label = find_widget<label>("title");
 
 	std::string title_text = current_part_->title();
 	bool showing_title;
@@ -260,11 +264,12 @@ void story_viewer::display_part()
 	//
 	// Story text
 	//
-	stacked_widget& text_stack = find_widget<stacked_widget>(get_window(), "text_and_control_stack", false);
+	stacked_widget& text_stack = find_widget<stacked_widget>("text_and_control_stack");
 
 	std::string new_panel_mode;
 
 	switch(current_part_->story_text_location()) {
+
 		case storyscreen::part::BLOCK_TOP:
 			new_panel_mode = "top";
 			break;
@@ -283,7 +288,7 @@ void story_viewer::display_part()
 	 * We use get_layer_grid here to ensure the widget is always found regardless of
 	 * whether the background is visible or not.
 	 */
-	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(LAYER_BACKGROUND), "text_panel", false).get_canvas(0);
+	canvas& panel_canvas = text_stack.get_layer_grid(LAYER_BACKGROUND)->find_widget<panel>("text_panel").get_canvas(0);
 
 	panel_canvas.set_variable("panel_position", wfl::variant(new_panel_mode));
 	panel_canvas.set_variable("title_present", wfl::variant(static_cast<int>(showing_title))); // cast to 0/1
@@ -301,11 +306,13 @@ void story_viewer::display_part()
 	// Convert the story part text alignment types into the Pango equivalents
 	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
-	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
-
+	scroll_label& text_label = find_widget<scroll_label>("part_text");
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
+
+	// Regenerate any background blur texture
+	panel_canvas.queue_reblur();
 
 	begin_fade_draw(true);
 	// if the previous page was skipped, it is possible that we already have a timer running.
@@ -328,7 +335,7 @@ void story_viewer::display_part()
 void story_viewer::draw_floating_image(floating_image_list::const_iterator image_iter, int this_part_index)
 {
 	const auto& images = current_part_->get_floating_images();
-	canvas& window_canvas = get_window()->get_canvas(0);
+	canvas& window_canvas = get_canvas(0);
 
 	// If the current part has changed or we're out of images to draw, exit the draw loop.
 	while((this_part_index == part_index_) && (image_iter != images.end())) {
@@ -363,16 +370,15 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["name"] = floating_image.file();
 		config cfg{"image", std::move(image)};
 
-		cfg.add_child("image", std::move(image));
-		window_canvas.append_cfg(std::move(cfg));
+		window_canvas.append_shapes(cfg);
 
 		// Needed to make the background redraw correctly.
 		window_canvas.update_size_variables();
-		get_window()->queue_redraw();
+		queue_redraw();
 
 		// If a delay is specified, schedule the next image draw and break out of the loop.
-		const unsigned int draw_delay = floating_image.display_delay();
-		if(draw_delay != 0) {
+		const auto& draw_delay = floating_image.display_delay();
+		if(draw_delay != std::chrono::milliseconds{0}) {
 			// This must be a non-repeating timer
 			timer_id_ = add_timer(draw_delay, std::bind(&story_viewer::draw_floating_image, this, image_iter, this_part_index), false);
 			return;
@@ -390,7 +396,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 
 		// Only set full alpha if Forward was pressed.
 		if(direction == DIR_FORWARD) {
-			find_widget<scroll_label>(get_window(), "part_text", false).set_text_alpha(ALPHA_OPAQUE);
+			find_widget<scroll_label>("part_text").set_text_alpha(ALPHA_OPAQUE);
 			flag_stack_as_dirty();
 			return;
 		}
@@ -408,7 +414,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 
 	// If we've viewed all the parts, close the dialog.
 	if(part_index_ >= controller_.max_parts()) {
-		get_window()->close();
+		close();
 		return;
 	}
 
@@ -487,7 +493,7 @@ void story_viewer::update()
 	}
 
 	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
-	find_widget<scroll_label>(get_window(), "part_text", false).set_text_alpha(new_alpha);
+	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	flag_stack_as_dirty();
@@ -503,7 +509,7 @@ void story_viewer::update()
 
 void story_viewer::flag_stack_as_dirty()
 {
-	find_widget<stacked_widget>(get_window(), "text_and_control_stack", false).queue_redraw();
+	find_widget<stacked_widget>("text_and_control_stack").queue_redraw();
 }
 
 } // namespace dialogs

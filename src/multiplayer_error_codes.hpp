@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,7 @@
 #define MP_NAME_AUTH_BAN_USER_ERROR    "107"
 #define MP_NAME_AUTH_BAN_IP_ERROR      "108"
 #define MP_NAME_AUTH_BAN_EMAIL_ERROR   "109"
+#define MP_SERVER_IP_BAN_ERROR         "110"
 
 #define MP_PASSWORD_REQUEST                     "200"
 #define MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME  "201"

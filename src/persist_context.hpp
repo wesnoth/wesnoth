@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Jody Northup
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -125,7 +125,7 @@ protected:
 			if (force)
 				return get_node(cfg.child_or_add(next.root_), next, true);
 			else if (cfg.has_child(next.root_))
-				return get_node(cfg.child(next.root_), next);
+				return get_node(cfg.mandatory_child(next.root_), next);
 			else
 				return nullptr;
 		}
@@ -137,7 +137,7 @@ protected:
 		name_space next = ns.next();
 		if (next) {
 			if (cfg.has_child(next.root_))
-				return get_node(cfg.child(next.root_), next);
+				return get_node(cfg.mandatory_child(next.root_), next);
 			else
 				return nullptr;
 		}

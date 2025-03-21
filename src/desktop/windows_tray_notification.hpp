@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2025
 	by Maxim Biro <nurupo.contributions@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,19 +20,6 @@
 //forces to call Unicode winapi functions instead of ASCII (default)
 #ifndef UNICODE
 #define UNICODE
-#endif
-//defines that mingw misses
-#ifndef _WIN32_IE
-    #define _WIN32_IE _WIN32_WINNT_WIN7 //specifying target platform to be Windows 7 and higher
-#endif
-#ifndef NIIF_USER
-    #define NIIF_USER 0x00000004
-#endif
-#ifndef NIN_BALLOONTIMEOUT
-    #define NIN_BALLOONTIMEOUT (WM_USER + 4)
-#endif
-#ifndef NIN_BALLOONUSERCLICK
-    #define NIN_BALLOONUSERCLICK (WM_USER + 5)
 #endif
 // ShellAPI.h should be included after Windows.h only!
 #include <windows.h>

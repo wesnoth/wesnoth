@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,8 +15,7 @@
 
 #include "gui/dialogs/game_delete.hpp"
 
-#include "preferences/game.hpp"
-#include "gui/widgets/settings.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
@@ -24,23 +23,23 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_delete)
 
 /**
- * Helper to invert @ref preferences::ask_delete_saves.
+ * Helper to invert @ref prefs::get().ask_delete_saves.
  *
  * The value stored and the way shown is inverted.
  */
 static bool get_dont_ask_again()
 {
-	return !preferences::ask_delete_saves();
+	return !prefs::get().ask_delete();
 }
 
 /**
- * Helper to invert @ref preferences::set_ask_delete_saves.
+ * Helper to invert @ref prefs::get().set_ask_delete_saves.
  *
  * The value stored and the way shown is inverted.
  */
 static void set_dont_ask_again(const bool ask_again)
 {
-	preferences::set_ask_delete_saves(!ask_again);
+	prefs::get().set_ask_delete(!ask_again);
 }
 
 game_delete::game_delete()

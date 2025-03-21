@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -78,16 +78,7 @@ std::string missing_mandatory_wml_key(
 		, const std::string& primary_value)
 {
 	utils::string_map symbols;
-	if(!section.empty()) {
-		if(section[0] == '[') {
-			symbols["section"] = section;
-		} else {
-			WRN_NG << __func__
-					<< " parameter 'section' should contain brackets."
-					<< " Added them.";
-			symbols["section"] = "[" + section + "]";
-		}
-	}
+	symbols["section"] = section;
 	symbols["key"] = key;
 	if(!primary_key.empty()) {
 		assert(!primary_value.empty());
@@ -95,71 +86,21 @@ std::string missing_mandatory_wml_key(
 		symbols["primary_key"] = primary_key;
 		symbols["primary_value"] = primary_value;
 
-		return VGETTEXT("In section '[$section|]' where '$primary_key| = "
-			"$primary_value' the mandatory key '$key|' isn't set.", symbols);
+		return VGETTEXT("In section ‘[$section|]’ where ‘$primary_key|’ = "
+			"‘$primary_value’ the mandatory key ‘$key|’ isn’t set.", symbols);
 	} else {
-		return VGETTEXT("In section '[$section|]' the "
-			"mandatory key '$key|' isn't set.", symbols);
+		return VGETTEXT("In section ‘[$section|]’ the "
+			"mandatory key ‘$key|’ isn’t set.", symbols);
 	}
 }
 
-std::string deprecate_wml_key_warning(
-		  const std::string& key
-		, const std::string& removal_version)
+std::string missing_mandatory_wml_tag(
+		  const std::string &section
+		, const std::string &tag)
 {
-	assert(!key.empty());
-	assert(!removal_version.empty());
-
 	utils::string_map symbols;
-	symbols["key"] = key;
-	symbols["removal_version"] = removal_version;
-
-	return VGETTEXT("The key '$key' is deprecated and support "
-			"will be removed in version $removal_version.", symbols);
-}
-
-std::string deprecated_renamed_wml_key_warning(
-		  const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version)
-{
-	assert(!deprecated_key.empty());
-	assert(!key.empty());
-	assert(!removal_version.empty());
-
-	utils::string_map symbols;
-	symbols["deprecated_key"] = deprecated_key;
-	symbols["key"] = key;
-	symbols["removal_version"] = removal_version;
-
-	return VGETTEXT(
-			  "The key '$deprecated_key' has been renamed to '$key'. "
-				"Support for '$deprecated_key' will be removed in version "
-				"$removal_version."
-			, symbols);
-}
-
-const config::attribute_value& get_renamed_config_attribute(
-		  const config& cfg
-		, const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version)
-{
-
-	const config::attribute_value* result = cfg.get(key);
-	if(result) {
-		return *result;
-	}
-
-	result = cfg.get(deprecated_key);
-	if(result) {
-		std::string msg = deprecated_renamed_wml_key_warning(deprecated_key, key, removal_version);
-		lg::log_to_chat() << msg << '\n';
-		ERR_WML << msg;
-
-		return *result;
-	}
-
-	static const config::attribute_value empty_attribute;
-	return empty_attribute;
+	symbols["section"] = section;
+	symbols["tag"] = tag;
+	return VGETTEXT("In section ‘[$section|]’ the "
+				"mandatory subtag ‘[$tag|]’ is missing.", symbols);
 }

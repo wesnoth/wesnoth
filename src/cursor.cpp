@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,7 @@
 #include "cursor.hpp"
 
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/utils.hpp"
 
 #include <boost/logic/tribool.hpp>
@@ -83,7 +83,7 @@ bool have_focus = true;
 
 bool use_color_cursors()
 {
-	return game_config::editor == false && preferences::use_color_cursors();
+	return game_config::editor == false && prefs::get().use_color_cursors();
 }
 
 SDL_Cursor* create_cursor(surface surf)

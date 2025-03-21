@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "color.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 
 #include <string>
 
@@ -29,7 +30,7 @@ inline bool looks_like_url(std::string_view str)
 	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
 }
 
-inline std::string format_as_link(const std::string & link, color_t color) {
+inline std::string format_as_link(const std::string& link, color_t color) {
 	return "<span underline=\'single\' color=\'" + color.to_hex_string() + "\'>" + link + "</span>";
 }
 

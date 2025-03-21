@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,8 +17,6 @@
 
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 

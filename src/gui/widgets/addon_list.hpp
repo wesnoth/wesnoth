@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,13 +15,11 @@
 #pragma once
 
 #include "addon/info.hpp"
-#include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 #include <functional>
 #include <string>
 #include <vector>
@@ -111,7 +109,7 @@ public:
 		get_listbox().set_row_shown(shown);
 	}
 
-	void set_addon_order(addon_sort_func func);
+	void set_addon_order(const addon_sort_func& func);
 
 	/**
 	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
@@ -212,16 +210,14 @@ namespace implementation
 
 struct builder_addon_list : public builder_styled_widget
 {
-public:
 	explicit builder_addon_list(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
 
-private:
-	widget::visibility install_status_visibility_;
-	widget::visibility install_buttons_visibility_;
+	widget::visibility install_status_visibility;
+	widget::visibility install_buttons_visibility;
 };
 }
 }

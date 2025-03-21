@@ -24,49 +24,13 @@ class WmlIdleState:
 
 
 
-'''
-class WmlDefineState:
-    def __init__(self):
-        self.regex = re.compile('\s*#(define|enddef|\s+wmlxgettext:\s+)', re.I)
-        self.iffail = 'wml_checkdom'
-
-    def run(self, xline, lineno, match):
-        if match.group(1).lower() == 'define':
-            # define
-            xline = None
-            if pywmlx.nodemanip.onDefineMacro is False:
-                pywmlx.nodemanip.onDefineMacro = True
-            else:
-                err_message = ("expected an #enddef before opening ANOTHER " +
-                               "macro definition with #define")
-                finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
-                wmlerr(finfo, err_message)
-        elif match.group(1).lower() == 'enddef':
-            # enddef
-            xline = None
-            if pywmlx.nodemanip.onDefineMacro is True:
-                pywmlx.nodemanip.onDefineMacro = False
-            else:
-                err_message = ("found an #enddef, but no macro definition " +
-                               "is pending. Perhaps you forgot to put a " +
-                               "#define somewhere?")
-                finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
-                wmlerr(finfo, err_message)
-        else:
-            # wmlxgettext: {WML CODE}
-            xline = xline [ match.end(): ]
-        return (xline, 'wml_idle')
-'''
-
-
-
 class WmlCheckdomState:
     def __init__(self):
         self.regex = re.compile(r'\s*#textdomain\s+(\S+)', re.I)
         self.iffail = 'wml_checkpo'
 
     def run(self, xline, lineno, match):
-        pywmlx.state.machine._currentdomain = match.group(1)
+        pywmlx.state.machine.switchdomain(lineno, match.group(1))
         xline = None
         return (xline, 'wml_idle')
 
@@ -81,19 +45,15 @@ class WmlCheckpoState:
     def run(self, xline, lineno, match):
         if match.group(1) == 'wmlxgettext':
             xline = match.group(2)
-        # on  #po: addedinfo
-        elif match.group(1) == "po":
-            xline = None
-            if pywmlx.state.machine._pending_addedinfo is None:
-                pywmlx.state.machine._pending_addedinfo = [ match.group(2) ]
-            else:
-                pywmlx.state.machine._pending_addedinfo.append(match.group(2))
-        # on -- #po-override: overrideinfo
-        elif pywmlx.state.machine._pending_overrideinfo is None:
-            pywmlx.state.machine._pending_overrideinfo = [ match.group(2) ]
+        elif not pywmlx.state.machine.checkdomain(lineno):
             xline = None
         else:
-            pywmlx.state.machine._pending_overrideinfo.append(match.group(2))
+            # on #po: addedinfo, or #po-override: overrideinfo
+            pending_infos = pywmlx.state.machine._pending_cinfo[match.group(1)]
+            if pending_infos is None:
+                pywmlx.state.machine._pending_cinfo[match.group(1)] = [ match.group(2) ]
+            else:
+                pending_infos.append(match.group(2))
             xline = None
         return (xline, 'wml_idle')
 
@@ -203,8 +163,7 @@ class WmlTagState:
             # xdebug_str = opentag + ': ' + str(lineno)
         # print(xdebug_str, file=xdebug)
         # xdebug.close()
-        pywmlx.state.machine._pending_addedinfo = None
-        pywmlx.state.machine._pending_overrideinfo = None
+        pywmlx.state.machine.clear_pending_infos(lineno, error=True)
         xline = xline [ match.end(): ]
         return (xline, 'wml_idle')
 
@@ -212,7 +171,7 @@ class WmlTagState:
 
 class WmlGetinfState:
     def __init__(self):
-        rx = ( r'\s*(speaker|id|role|description|condition|type|race)' +
+        rx = ( r'\s*(speaker|id|role|description|condition|type|race|gender)' +
                r'\s*=\s*(.*)' )
         self.regex = re.compile(rx, re.I)
         self.iffail = 'wml_str01'

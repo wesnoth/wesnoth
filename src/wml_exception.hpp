@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 
 #pragma once
 
-#include "config.hpp"
 #include "lua_jailbreak_exception.hpp"
 
 #include <string>
@@ -44,6 +43,12 @@
 			throw_wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
 		}                                                                 \
 	} while(false)
+
+#define VALIDATE_WML_CHILD(cfg, key, message)                                             \
+    ([](auto c, auto k) {                                                             \
+        if(auto child = c.optional_child(k)) { return *child; }                       \
+        throw_wml_exception( "Missing [" key "]", __FILE__, __LINE__, __func__, message); \
+    })(cfg, key)                                                                          \
 
 #define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
 	do {                                                                  \
@@ -91,13 +96,14 @@
 		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
-struct wml_exception
+struct wml_exception final
 	: public lua_jailbreak_exception
 {
 	wml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)
 		, dev_message(dev_msg)
 	{
+		this->store();
 	}
 
 	~wml_exception() noexcept {}
@@ -124,13 +130,14 @@ private:
 };
 
 /**
- * Returns a standard message for a missing wml key.
+ * Returns a standard message for a missing wml key (attribute).
  *
- * @param section                 The section is which the key should appear
- *                                (this should include the section brackets).
- *                                It may contain parent sections to make it
- *                                easier to find the wanted sections. They are
- *                                listed like [parent][child][section].
+ * @param section                 The section in which the key should appear.
+ *                                Shouldn't include leading or trailing brackets,
+ *                                as they're already in the translatable string;
+ *                                but if it has to include brackets in the middle,
+ *                                for example "parent][child][section", then it
+ *                                seems reasonable include the outer ones too.
  * @param key                     The omitted key.
  * @param primary_key             The primary key of the section.
  * @param primary_value           The value of the primary key (mandatory if
@@ -144,56 +151,15 @@ std::string missing_mandatory_wml_key(
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
 
-// TODO: In 1.15 we could rework these two to provide standard detail messages
-// for the deprecated_message() function.
-
 /**
- * Returns a standard warning message for using a deprecated wml key.
+ * Returns a standard message for a missing wml child (tag).
  *
- * @param key                     The deprecated key.
- * @param removal_version         The version in which the key will be removed.
+ * @param section                 The section in which the child should appear.
+ *                                Same meaning as for missing_mandatory_wml_key().
+ * @param tag                     The omitted tag.
  *
- * @returns                       The warning message.
+ * @returns                       The error message.
  */
-std::string deprecate_wml_key_warning(
-		  const std::string& key
-		, const std::string& removal_version);
-
-/**
- * Returns a standard warning message for using a deprecated renamed wml key.
- *
- * @param deprecated_key          The deprecated key.
- * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be removed.
- *
- * @returns                       The warning message.
- */
-std::string deprecated_renamed_wml_key_warning(
-		  const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version);
-
-/**
- * Returns a config attribute, using either the old name or the new one.
- *
- * The function first tries the find the attribute using @p key and if that
- * doesn't find the attribute it tries @p deprecated_key. If that test finds
- * an attribute it will issue a warning and return the result. Else returns
- * an empty attribute.
- *
- * @note This function is not a member of @ref config, since that would add
- * additional dependencies to the core library.
- *
- * @param cfg                     The config to get the attribute from.
- * @param deprecated_key          The deprecated key.
- * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be
- *                                removed key.
- *
- * @returns                       The attribute found as described above.
- */
-const config::attribute_value& get_renamed_config_attribute(
-		  const config& cfg
-		, const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version);
+std::string missing_mandatory_wml_tag(
+		  const std::string& section
+		, const std::string& tag);

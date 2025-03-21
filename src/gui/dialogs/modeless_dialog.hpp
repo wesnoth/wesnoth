@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,11 +19,8 @@
 
 #include <string>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
 /**
  * The popup class shows windows that are shown non-modal.
  *
@@ -69,5 +66,4 @@ private:
 	virtual const std::string& window_id() const { return widget::id(); }
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

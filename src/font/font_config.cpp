@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "font/font_config.hpp"
-#include "font/font_description.hpp"
 #include "font/error.hpp"
 
 #include "config.hpp"
@@ -22,21 +21,12 @@
 #include "tstring.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp"
 
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
 
-#include <list>
-#include <set>
-#include <stack>
 #include <sstream>
-#include <vector>
 
-#include <cairo-features.h>
 
 #include <fontconfig/fontconfig.h>
 
@@ -46,101 +36,70 @@ static lg::log_domain log_font("font");
 #define WRN_FT LOG_STREAM(warn, log_font)
 #define ERR_FT LOG_STREAM(err, log_font)
 
-namespace font {
-
-
-bool check_font_file(std::string name) {
-	if(game_config::path.empty() == false) {
-		if(!filesystem::file_exists(game_config::path + "/fonts/" + name)) {
-			if(!filesystem::file_exists("fonts/" + name)) {
-				if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
-				return false;
-				}
-			}
-		}
-	} else {
-		if(!filesystem::file_exists("fonts/" + name)) {
-			if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
-				return false;
-			}
-		}
-	}
-	return true;
-}
-
+namespace font
+{
 namespace
 {
 
-// Current font family for sanserif and monospace fonts in the game
+/** Records the game's families for sans serif, script, and monospace fonts */
+struct font_families
+{
+	font_families() = default;
 
-t_string family_order_sans;
-t_string family_order_mono;
-t_string family_order_light;
-t_string family_order_script;
+	explicit font_families(const config& cfg)
+		: sans(cfg["family_order"].t_str())
+		, mono(cfg["family_order_monospace"].t_str())
+		, script(cfg["family_order_script"].t_str())
+	{
+		if(mono.empty()) {
+			ERR_FT << "No monospace font family defined, falling back to sans serif";
+			mono = sans;
+		}
 
-} // end anon namespace
+		if(script.empty()) {
+			ERR_FT << "No script font family defined, falling back to sans serif";
+			script = sans;
+		}
+	}
+
+	t_string sans;
+	t_string mono;
+	t_string script;
+};
+
+font_families families;
+
+} //namespace
 
 /***
  * Public interface
  */
 
 bool load_font_config()
-{
-	config cfg;
-	try {
-		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
-		if(cfg_path.empty()) {
-			ERR_FT << "could not resolve path to fonts.cfg, file not found";
-			return false;
-		}
-
-		filesystem::scoped_istream stream = preprocess_file(cfg_path);
-		read(cfg, *stream);
-	} catch(const config::error &e) {
-		ERR_FT << "could not read fonts.cfg:\n" << e.message;
-		return false;
-	}
-
-	const config &fonts_config = cfg.child("fonts");
-	if (!fonts_config)
-		return false;
-
-	family_order_sans = fonts_config["family_order"];
-	family_order_mono = fonts_config["family_order_monospace"];
-	family_order_light = fonts_config["family_order_light"];
-	family_order_script = fonts_config["family_order_script"];
-
-	if(family_order_mono.empty()) {
-		ERR_FT << "No monospace font family order defined, falling back to sans serif order";
-		family_order_mono = family_order_sans;
-	}
-
-	if(family_order_light.empty()) {
-		ERR_FT << "No light font family order defined, falling back to sans serif order";
-		family_order_light = family_order_sans;
-	}
-
-	if(family_order_script.empty()) {
-		ERR_FT << "No script font family order defined, falling back to sans serif order";
-		family_order_script = family_order_sans;
-	}
-
+try {
+	auto stream = preprocess_file(filesystem::get_wml_location("hardwired/fonts.cfg").value());
+	const config cfg = read(*stream);
+	families = font_families{ cfg.mandatory_child("fonts") };
 	return true;
+
+} catch(const utils::bad_optional_access&) {
+	ERR_FT << "could not resolve path to fonts.cfg, file not found";
+	return false;
+
+} catch(const config::error& e) {
+	ERR_FT << "could not read fonts.cfg:\n" << e.message;
+	return false;
 }
 
 const t_string& get_font_families(family_class fclass)
 {
 	switch(fclass) {
-	case FONT_MONOSPACE:
-		return family_order_mono;
-	case FONT_LIGHT:
-		return family_order_light;
-	case FONT_SCRIPT:
-		return family_order_script;
+	case family_class::monospace:
+		return families.mono;
+	case family_class::script:
+		return families.script;
 	default:
-		return family_order_sans;
+		return families.sans;
 	}
 }
 
@@ -159,8 +118,18 @@ manager::manager()
 	}
 
 	std::string font_file = font_path + "/fonts.conf";
-	if(!FcConfigParseAndLoad(FcConfigGetCurrent(),
-							 reinterpret_cast<const FcChar8*>(font_file.c_str()),
+	std::string font_file_contents = filesystem::read_file(font_file);
+
+// msys2 crosscompiling for windows for whatever reason makes the cache directory prefer using drives other than C:
+// ie - D:\a\msys64\var\cache\fontconfig
+// fontconfig also does not seem to provide a way to set the cachedir for a specific platform
+// so load the fonts.conf file into memory and only for windows insert the cachedir configuration
+#ifdef _WIN32
+	font_file_contents.insert(font_file_contents.find("</fontconfig>"), "<cachedir>"+filesystem::get_cache_dir()+"</cachedir>\n");
+#endif
+
+	if(!FcConfigParseAndLoadFromMemory(FcConfigGetCurrent(),
+							 reinterpret_cast<const FcChar8*>(font_file_contents.c_str()),
 							 FcFalse))
 	{
 		ERR_FT << "Could not load local font configuration";

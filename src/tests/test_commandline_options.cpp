@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,8 +41,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(!co.fps);
 	BOOST_CHECK(!co.fullscreen);
-	BOOST_CHECK(!co.gunzip);
-	BOOST_CHECK(!co.gzip);
 	BOOST_CHECK(!co.help);
 	BOOST_CHECK(!co.load);
 	BOOST_CHECK(!co.log);
@@ -60,7 +58,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
@@ -79,8 +76,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);
@@ -116,8 +111,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(co.editor && co.editor->empty());
 	BOOST_CHECK(!co.fps);
 	BOOST_CHECK(!co.fullscreen);
-	BOOST_CHECK(!co.gunzip);
-	BOOST_CHECK(!co.gzip);
 	BOOST_CHECK(!co.help);
 	BOOST_CHECK(!co.load);
 	BOOST_CHECK(!co.log);
@@ -136,7 +129,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
@@ -154,8 +146,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(co.test && co.test->empty());
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);
@@ -191,8 +181,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--exit-at-end",
 		"--fps",
 		"--fullscreen",
-		"--gunzip=gunzipfoo.gz",
-		"--gzip=gzipfoo",
 		"--help",
 		"--ignore-map-settings",
 		"--label=labelfoo",
@@ -206,7 +194,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--multiplayer",
 		"--new-widgets",
 		"--nocache",
-		"--nodelay",
 		"--nomusic",
 		"--nosound",
 		"--nogui",
@@ -225,8 +212,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--server=servfoo",
 		"--test=testfoo",
 		"--turns=42",
-		"--userconfig-dir=userconfigdirfoo",
-		"--userconfig-path",
 		"--userdata-dir=userdatadirfoo",
 		"--userdata-path",
 		"--validcache",
@@ -251,19 +236,18 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.editor && *co.editor == "editfoo");
 	BOOST_CHECK(co.fps);
 	BOOST_CHECK(co.fullscreen);
-	BOOST_CHECK(co.gunzip && *co.gunzip == "gunzipfoo.gz");
-	BOOST_CHECK(co.gzip && *co.gzip == "gzipfoo");
 	BOOST_CHECK(co.help);
 	BOOST_CHECK(co.load && *co.load == "loadfoo");
 	BOOST_CHECK(co.log);
 	BOOST_CHECK(co.log->size()==8);
-	BOOST_CHECK(co.log->at(0).first  == 0         && co.log->at(1).first  == 0);
+	BOOST_CHECK(co.log->at(0).first  == lg::severity::LG_ERROR && co.log->at(1).first == lg::severity::LG_ERROR);
 	BOOST_CHECK(co.log->at(0).second == "errfoo"  && co.log->at(1).second == "errbar/*");
-	BOOST_CHECK(co.log->at(2).first  == 1         && co.log->at(3).first == 1);
+	BOOST_CHECK(co.log->at(2).first  == lg::severity::LG_WARN && co.log->at(3).first == lg::severity::LG_WARN);
 	BOOST_CHECK(co.log->at(2).second == "warnfoo" && co.log->at(3).second == "warnfoo/bar");
-	BOOST_CHECK(co.log->at(4).first  == 2);
+	BOOST_CHECK(co.log->at(4).first  == lg::severity::LG_INFO);
 	BOOST_CHECK(co.log->at(4).second == "infofoo");
-	BOOST_CHECK(co.log->at(5).first  == 3         && co.log->at(6).first == 3        && co.log->at(7).first == 3);
+	BOOST_CHECK(co.log->at(5).first  == lg::severity::LG_DEBUG &&
+        co.log->at(6).first == lg::severity::LG_DEBUG && co.log->at(7).first == lg::severity::LG_DEBUG);
 	BOOST_CHECK(co.log->at(5).second == "dbgfoo"  && co.log->at(6).second == "dbgbar" && co.log->at(7).second == "dbg/foo/bar/baz");
 	BOOST_CHECK(co.logdomains && *co.logdomains == "filterfoo");
 	BOOST_CHECK(co.multiplayer);
@@ -292,7 +276,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
-	BOOST_CHECK(co.nodelay);
 	BOOST_CHECK(co.nogui);
 	BOOST_CHECK(co.nomusic);
 	BOOST_CHECK(co.nosound);
@@ -310,8 +293,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
 	BOOST_CHECK(co.test && *co.test == "testfoo");
-	BOOST_CHECK(co.userconfig_dir && *co.userconfig_dir == "userconfigdirfoo");
-	BOOST_CHECK(co.userconfig_path);
 	BOOST_CHECK(co.userdata_dir && *co.userdata_dir == "userdatadirfoo");
 	BOOST_CHECK(co.userdata_path);
 	BOOST_CHECK(co.validcache);
@@ -343,8 +324,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(!co.fps);
 	BOOST_CHECK(!co.fullscreen);
-	BOOST_CHECK(!co.gunzip);
-	BOOST_CHECK(!co.gzip);
 	BOOST_CHECK(!co.help);
 	BOOST_CHECK(!co.load);
 	BOOST_CHECK(!co.log);
@@ -363,7 +342,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
@@ -381,14 +359,34 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
 	BOOST_CHECK(!co.windowed);
 	BOOST_CHECK(!co.with_replay);
+}
+
+BOOST_AUTO_TEST_CASE (test_log_domain_severity_override_order)
+{
+	std::vector<std::string> args {
+		"wesnoth",
+		"--log-error=gui/draw",
+		"--log-info=all,gui/general",
+		"--log-debug=gui/*",
+		"--log-none=all,gui/general,gui/draw",
+		"--log-error=gui/general"};
+
+	commandline_options co(args);
+
+	BOOST_CHECK(co.log->at(0).first == lg::severity::LG_ERROR && co.log->at(0).second == "gui/draw");
+	BOOST_CHECK(co.log->at(1).first == lg::severity::LG_INFO && co.log->at(1).second == "all");
+	BOOST_CHECK(co.log->at(2).first == lg::severity::LG_INFO && co.log->at(2).second == "gui/general");
+	BOOST_CHECK(co.log->at(3).first == lg::severity::LG_DEBUG && co.log->at(3).second == "gui/*");
+	BOOST_CHECK(co.log->at(4).first == lg::severity::LG_NONE && co.log->at(4).second == "all");
+	BOOST_CHECK(co.log->at(5).first == lg::severity::LG_NONE && co.log->at(5).second == "gui/general");
+	BOOST_CHECK(co.log->at(6).first == lg::severity::LG_NONE && co.log->at(6).second == "gui/draw");
+	BOOST_CHECK(co.log->at(7).first == lg::severity::LG_ERROR && co.log->at(7).second == "gui/general");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

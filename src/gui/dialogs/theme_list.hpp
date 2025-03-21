@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,16 +22,6 @@ struct theme_info;
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for selecting a GUI theme.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * themes            | @ref listbox |yes      |Listbox displaying user choices.
- * name              | control      |yes      |Widget which shows a theme item name.
- * description       | control      |yes      |Widget which shows a theme item description.
- */
 class theme_list : public modal_dialog
 {
 public:
@@ -60,8 +50,8 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 } // namespace dialogs

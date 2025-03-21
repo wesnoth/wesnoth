@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/clickable_item.hpp"
@@ -49,6 +48,8 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
+	void set_success(bool success);
+
 	/** Inherited from clickable_item. */
 	virtual void connect_click_handler(const event::signal& signal) override
 	{
@@ -79,6 +80,7 @@ private:
 		DISABLED,
 		PRESSED,
 		FOCUSED,
+		SUCCESS
 	};
 
 	void set_state(const state_t state);
@@ -97,6 +99,11 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
+
+	/**
+	 * Action performed by this button succeeded.
+	 */
+	bool success_;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -135,8 +142,6 @@ struct button_definition : public styled_widget_definition
 };
 
 // }---------- BUILDER -----------{
-
-class styled_widget;
 
 namespace implementation
 {

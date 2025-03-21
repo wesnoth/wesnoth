@@ -25,6 +25,8 @@
 ---@param ref location|string|nil
 ---@param turn? integer
 ---@return time_info
+---@overload fun(x:integer, y:integer)
+---@overload fun(x:integer, y:integer, turn:integer)
 function wesnoth.schedule.get_time_of_day(ref, turn) end
 
 ---Get the time of day on the given hex, accounting for illumination

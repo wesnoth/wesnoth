@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
-class config;
 class saved_game;
 class wesnothd_connection;
 
@@ -43,9 +42,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** @returns false if an error ocurred. */
 	bool show_flg_select(int side_num, bool first_time = false);

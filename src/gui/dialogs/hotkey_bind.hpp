@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "hotkey/hotkey_item.hpp"
 
-#include <SDL2/SDL_keycode.h>
 
 #include <string>
 
@@ -43,7 +42,7 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 };
 
 } // namespace dialogs

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -86,6 +86,12 @@ public:
 	 */
 	surface clone() const;
 
+	/** Total area of the surface in square pixels. */
+	int area() const
+	{
+		return surface_ ? surface_->w * surface_->h : 0;
+	}
+
 	operator SDL_Surface*() const { return surface_; }
 
 	SDL_Surface* get() const { return surface_; }
@@ -108,8 +114,6 @@ private:
 
 	static const SDL_PixelFormat neutral_pixel_format;
 };
-
-bool operator<(const surface& a, const surface& b);
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
 
@@ -148,36 +152,3 @@ private:
 
 using surface_lock = surface_locker<surface>;
 using const_surface_lock = surface_locker<const surface>;
-
-struct clip_rect_setter
-{
-	// if r is nullptr, clip to the full size of the surface.
-	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
-	{
-		if(operate_ && surface_.get()){
-			SDL_GetClipRect(surface_, &rect_);
-			SDL_Rect final_rect = { 0, 0, 0, 0 };
-
-			if(r) {
-				SDL_IntersectRect(&rect_, r, &final_rect);
-			} else {
-				final_rect.w = surface_->w;
-				final_rect.h = surface_->h;
-			}
-
-			SDL_SetClipRect(surface_, &final_rect);
-		}
-	}
-
-	~clip_rect_setter()
-	{
-		if(operate_ && surface_.get()) {
-			SDL_SetClipRect(surface_, &rect_);
-		}
-	}
-
-private:
-	surface surface_;
-	SDL_Rect rect_;
-	const bool operate_;
-};

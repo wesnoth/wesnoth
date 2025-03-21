@@ -212,11 +212,6 @@ game_stringfixes = {
 ("a noble of the line of Kings should utter the following....", "a noble of the line of Kings should utter the following..."),
 ),
 
-"wesnoth-tutorial" : (
-# conversion added in 1.11.0-dev
-("$unit.type", "$unit.language_name"),
-),
-
 "wesnoth-units" : (
 # conversion added in 1.12.5+dev
 ("Ghazis are", "Ghazi are"),

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,6 +14,8 @@
 */
 
 #include "server/wesnothd/player_connection.hpp"
+
+#include <utility>
 
 #include "server/wesnothd/game.hpp"
 
@@ -36,7 +38,7 @@ int player_record::game_id() const
 
 void player_record::set_game(std::shared_ptr<game> new_game)
 {
-	game_ = new_game;
+	game_ = std::move(new_game);
 }
 
 void player_record::enter_lobby()

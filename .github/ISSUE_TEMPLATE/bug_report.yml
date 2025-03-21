@@ -1,5 +1,5 @@
 name: Bug Report
-description: Create a report to help us improve the game,
+description: Create a bug report to help us improve the game.
 labels: ['Bug']
 
 body:
@@ -8,17 +8,11 @@ body:
     attributes:
       label: Game and System Information
       description: |
-        - What version of the game are you running?
-        - Where did you download it from? (Steam, Mac App Store, our website, built from source, etc.)
-        - If you're using a custom build, what compiler did you use, and what commit did you build at?
+        - What version of the game are you running? (If you built wesnoth yourself, mention the exact commit)
         - What OS are you running?
       value: |
         - **Version:**
-        - **Downloaded from:**
-        - **Build info:**
         - **OS:**
-    validations:
-      required: true
 
   - type: textarea
     id: description

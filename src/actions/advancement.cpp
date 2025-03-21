@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 #include "ai/manager.hpp"  // for manager, holder
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gettext.hpp"
 #include "gui/dialogs/unit_advance.hpp"
@@ -36,18 +36,15 @@
 #include "synced_user_choice.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include "units/abilities.hpp"
 #include "units/animation_component.hpp"
-#include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
-#include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
-#define WRN_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
@@ -70,7 +67,7 @@ namespace
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
-			preferences::encountered_units().insert(advance);
+			prefs::get().encountered_units().insert(advance);
 			previews.push_back(get_advanced_unit(u, advance));
 		}
 
@@ -78,7 +75,7 @@ namespace
 		bool always_display = false;
 
 		for (const config& advance : u.get_modification_advances()) {
-			if (advance["always_display"]) {
+			if (advance["always_display"].to_bool()) {
 				always_display = true;
 			}
 			previews.push_back(get_amla_unit(u, advance));
@@ -124,7 +121,7 @@ namespace
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !video::headless()) {
+		if (animate && !video::headless() && !resources::controller->is_skipping_replay()) {
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -145,7 +142,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		game_display::get_singleton()->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !video::headless()) {
+		if (animate && u != resources::gameboard->units().end() && !video::headless() && !resources::controller->is_skipping_replay()) {
 			unit_animator animator;
 			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -294,11 +291,12 @@ void advance_unit_at(const advance_unit_params& params)
 			}
 		}
 		//we don't want to let side 1 decide it during start/prestart.
-		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		//The "0" parameter here is the default and gets resolves to "current player"
+		int side_for = resources::gamedata->has_current_player() ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
-		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
+		bool result = animate_unit_advancement(params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
@@ -387,8 +385,8 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
-		statistics::advance_unit(*new_unit);
-		preferences::encountered_units().insert(new_unit->type_id());
+		resources::controller->statistics().advance_unit(*new_unit);
+		prefs::get().encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}
 	u->anim_comp().clear_haloes();

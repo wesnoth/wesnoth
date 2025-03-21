@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,8 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+
+#include "desktop/paths.hpp"
 
 /**
  * Generic file dialog.
@@ -112,20 +114,26 @@ public:
 	file_dialog& set_filename(const std::string& value);
 
 	/**
-	 * Sets the default file extension for file names in save mode.
+	 * Sets allowed file extensions for file names in save mode.
 	 *
 	 * When this is set to a non-empty string and save mode is active, selecting
 	 * file entries will cause their name portions to be highlighted in the name
 	 * text box if their extensions match the provided template, and any time the
 	 * text box is cleared it will position the cursor before the extension as a
-	 * hint for the user.
+	 * hint for the user. Additionally, the user will not be able to save the file
+	 * with a wrong extension if this is set.
+	 *
+	 * In case of multiple extension, the first set extension is the default.
 	 *
 	 * The value provided to this method should be preceded by a dot if
 	 * applicable (e.g. ".cfg").
 	 */
 	file_dialog& set_extension(const std::string& value)
 	{
-		extension_ = value;
+		if (extension_.empty()) {
+			extension_ = value;
+		}
+		extensions_.push_back(value);
 		return *this;
 	}
 
@@ -186,6 +194,12 @@ public:
 		return *this;
 	}
 
+	file_dialog& add_extra_path(desktop::GAME_PATH_TYPES path)
+	{
+		extra_paths_.emplace(path);
+		return *this;
+	}
+
 private:
 	std::string title_;
 	std::string msg_;
@@ -198,19 +212,22 @@ private:
 	bool read_only_;
 	bool save_mode_;
 
+	std::vector<std::string> extensions_;
+
 	std::vector<std::string> dir_files_;
 	std::vector<std::string> dir_subdirs_;
 
 	std::vector<std::string> bookmark_paths_;
 	int current_bookmark_;
 	int user_bookmarks_begin_;
+	std::set<desktop::GAME_PATH_TYPES> extra_paths_;
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
-	bool on_exit(window& window);
+	bool on_exit();
 	/** Handles file/directory selection on single-click. */
 	void on_row_selected();
 	/** Handles selection or deselection of bookmarks. */
@@ -247,6 +264,11 @@ private:
 	bool process_textbox_submit();
 
 	bool process_submit_common(const std::string& name);
+
+	/**
+	 * Check if the filename is valid and disable save button if invalid
+	 */
+	void check_filename();
 
 	/**
 	 * Updates the bookmarks bar state to reflect the internal state.

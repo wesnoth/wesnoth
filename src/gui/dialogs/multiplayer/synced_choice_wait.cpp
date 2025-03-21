@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,16 +15,11 @@
 
 #include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "quit_confirmation.hpp"
 
-#include "gui/dialogs/message.hpp"
-#include "game_end_exceptions.hpp"
-#include "gettext.hpp"
 
 
 #include <functional>
@@ -47,20 +42,18 @@ synched_choice_wait::~synched_choice_wait()
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void synched_choice_wait::pre_show(window& window)
+void synched_choice_wait::pre_show()
 {
-	message_ = find_widget<label>(&window, "lblMessage", false, true);
+	message_ = find_widget<label>("lblMessage", false, true);
 
-
-	button& quit_button = find_widget<button>(
-				&window, "btn_quit_game", false);
+	button& quit_button = find_widget<button>("btn_quit_game");
 
 	connect_signal_mouse_left_click(quit_button,
 		std::bind(&quit_confirmation::quit_to_title));
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		window.close();
+		close();
 	}
 }
 
@@ -70,7 +63,7 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 	assert(message_);
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		get_window()->close();
+		close();
 	}
 }
 

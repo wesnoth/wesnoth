@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -239,11 +239,11 @@ private:
 class scoped_weapon_info : public scoped_wml_variable
 {
 public:
-	scoped_weapon_info(const std::string& var_name, const config &data)
+	scoped_weapon_info(const std::string& var_name, optional_const_config data)
 		: scoped_wml_variable(var_name), data_(data) {}
 	void activate();
 private:
-	const config& data_;
+	optional_const_config data_;
 };
 
 class scoped_xy_unit : public scoped_wml_variable

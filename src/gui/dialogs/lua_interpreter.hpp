@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,7 @@ public:
 
 	lua_interpreter(lua_kernel_base & lk);
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	enum WHICH_KERNEL { APP, GAME };
 	static void display(lua_kernel_base * lk);

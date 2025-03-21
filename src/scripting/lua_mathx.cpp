@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,14 +14,10 @@
 
 #include "scripting/lua_mathx.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "random.hpp"
-#include "SDL2/SDL_timer.h" // for SDL_GetTicks
 
-#include "lua/lauxlib.h"
 
-#include <cstdio>
 #include <cmath>
 
 namespace lua_mathx {

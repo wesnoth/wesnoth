@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,14 +17,9 @@
 
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
-namespace implementation
-{
-struct builder_styled_widget;
-}
 
 /**
  * A generic container base class.
@@ -124,11 +119,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;

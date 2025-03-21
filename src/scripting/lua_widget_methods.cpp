@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,42 +15,30 @@
 
 #include "config.hpp"
 #include "gui/core/canvas.hpp"
-#include "gui/core/gui_definition.hpp"
-#include "gui/core/event/handler.hpp" // for open_window_stack
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
-#include "serialization/string_utils.hpp"
-#include "tstring.hpp"
+#include "utils/scope_exit.hpp"
 #include <functional>
 
-#include <type_traits>
-#include <map>
-#include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -67,7 +55,7 @@ int intf_show_dialog(lua_State* L)
 	config def_cfg = luaW_checkconfig(L, 1);
 	gui2::builder_window::window_resolution def(def_cfg);
 
-	std::unique_ptr<gui2::window> wp(gui2::build(def));
+	auto wp = std::make_unique<gui2::window>(def);
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
@@ -75,9 +63,7 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
-	gui2::open_window_stack.push_back(wp.get());
 	int v = wp->show();
-	gui2::remove_from_window_stack(wp.get());
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -205,6 +191,44 @@ static int intf_find_widget(lua_State* L)
 
 namespace
 {
+	int number_of_items(gui2::listbox& mp)
+	{
+		return mp.get_item_count();
+	}
+	int number_of_items(gui2::multi_page& mp)
+	{
+		return mp.get_page_count();
+	}
+
+	int number_of_items(gui2::tree_view_node& mp)
+	{
+		return mp.count_children();
+	}
+
+	int number_of_items(gui2::tree_view& mp)
+	{
+		return number_of_items(mp.get_root_node());
+	}
+
+	// converts a 1-based index given as lua paraemter to a 0-based index to be used in the c++ api.
+	// and checks that it is in range
+	template<typename TWidget>
+	int check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, utils::optional<int>& index)
+	{
+		int nitems = number_of_items(w);
+
+		// index == nitems + 1 -> insert at the end.
+		int max = for_insertion ? nitems + 1 : nitems;
+		if(!index) {
+			index = max;
+		}
+
+		if(*index <= 0 || *index > max) {
+			luaL_argerror(L, arg, "widget child index out of range");
+		}
+		return *index - 1;
+	}
+
 	void remove_treeview_node(gui2::tree_view_node& node, std::size_t pos, int number)
 	{
 		//Not tested yet.
@@ -224,29 +248,55 @@ namespace
 /**
  * Removes an entry from a list.
  * - Arg 1: widget
- * - Arg 2: number, index of the element to delete.
- * - Arg 3: number, number of the elements to delete. (0 to delete all elements after index)
+ * - Arg 2: number (optional), index of the element to delete.
+ * - Arg 3: number (optional), number of the elements to delete. (0 to delete all elements after index)
  */
 static int intf_remove_dialog_item(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	int pos = luaL_checkinteger(L, 2) - 1;
-	int number = luaL_checkinteger(L, 3);
+	utils::optional<int> pos = lua_check<utils::optional<int>>(L, 2);
+	int number = lua_check<utils::optional<int>>(L, 3).value_or(1);
 
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-	{
-		list->remove_row(pos, number);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
+		int realpos = check_index(L, 2, *list, false, pos);
+		list->remove_row(realpos, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		multi_page->remove_page(pos, number);
+		int realpos = check_index(L, 2, *multi_page,false, pos);
+		multi_page->remove_page(realpos, number);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		remove_treeview_node(tree_view->get_root_node(), pos, number);
+		int realpos = check_index(L, 2, *tree_view, false, pos);
+		remove_treeview_node(tree_view->get_root_node(), realpos, number);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		remove_treeview_node(*tree_view_node, pos, number);
+		int realpos = check_index(L, 2, *tree_view_node, false, pos);
+		remove_treeview_node(*tree_view_node, realpos, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 
-	return 1;
+	return 0;
+}
+
+/**
+ * Removes all entries from a list.
+ * - Arg 1: widget
+*/
+static int intf_clear_items(lua_State* L)
+{
+	gui2::widget* w = &luaW_checkwidget(L, 1);
+
+	if(auto* lb = dynamic_cast<gui2::listbox*>(w)) {
+		lb->clear();
+	} else if(auto* mp = dynamic_cast<gui2::multi_page*>(w)) {
+		mp->clear();
+	} else if(auto* tv = dynamic_cast<gui2::tree_view*>(w)) {
+		tv->clear();
+	} else if(auto* tvn = dynamic_cast<gui2::tree_view_node*>(w)) {
+		tvn->clear();
+	} else {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
+
+	return 0;
 }
 
 namespace { // helpers of intf_set_dialog_callback()
@@ -279,6 +329,9 @@ static int intf_set_dialog_callback(lua_State* L)
 	gui2::window* wd = w->get_window();
 	if(!wd) {
 		throw std::invalid_argument("the widget has no window assigned");
+	}
+	if(!lua_isfunction(L, 2)) {
+		return luaL_argerror(L, 2, "callback must be a function");
 	}
 
 	lua_pushvalue(L, 2);
@@ -329,7 +382,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	cv[i - 1].set_cfg(cfg);
+	cv[i - 1].set_shapes(cfg);
 	c->queue_redraw();
 	return 0;
 }
@@ -349,57 +402,61 @@ static int intf_set_dialog_focus(lua_State* L)
 
 
 /**
- * Sets a widget's state to active or inactive
+ * Adds an item to a container widget that supports different types of items, for example a treeview.
  * - Arg 1: widget.
- * - Arg 2: string, the type (id of [node_definition]) of the new node.
- * - Arg 3: integer, where to insert the new node.
+ * - Arg 2: string, the type (id of [node_definition]) of the new item.
+ * - Arg 3: integer (optional), where to insert the new item.
  */
 static int intf_add_item_of_type(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 	gui2::widget* res = nullptr;
 	const std::string node_type = luaL_checkstring(L, 2);
-	int insert_pos = -1;
-	if(lua_isnumber(L, 3)) {
-		insert_pos = luaL_checkinteger(L, 3);
-	}
+	utils::optional<int> insert_pos = lua_check<utils::optional<int>>(L, 3);
 	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
-		res = &twn->add_child(node_type, data, insert_pos);
+		int realpos = check_index(L, 2, *twn, true, insert_pos);
+		res = &twn->add_child(node_type, data, realpos);
 	} else if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view*>(w)) {
-		res = &tw->get_root_node().add_child(node_type, data, insert_pos);
+		int realpos = check_index(L, 2, *tw, true, insert_pos);
+		res = &tw->get_root_node().add_child(node_type, data, realpos);
 	} else if(gui2::multi_page* mp = dynamic_cast<gui2::multi_page*>(w)) {
-		res = &mp->add_page(node_type, insert_pos, data);
+		int realpos = check_index(L, 2, *mp, true, insert_pos);
+		res = &mp->add_page(node_type, realpos, data);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 	if(res) {
 		luaW_pushwidget(L, *res);
-		lua_push(L, insert_pos);
+		lua_push(L, insert_pos.value());
 		return 2;
 	}
 	return 0;
 }
 /**
- * Sets a widget's state to active or inactive
+ * Adds an item to a container widget, for example a listbox
  * - Arg 1: widget.
+ * - Arg 2: integer (optional), where to insert the new item.
  */
 static int intf_add_dialog_item(lua_State* L)
 {
-
 	gui2::widget* w = &luaW_checkwidget(L, 1);
+	utils::optional<int> insert_pos = lua_check<utils::optional<int>>(L, 2);
+
 	gui2::widget* res = nullptr;
 	static const gui2::widget_data data;
 
 	if(gui2::listbox* lb = dynamic_cast<gui2::listbox*>(w)) {
-		res = &lb->add_row(data);
+		int realpos = check_index(L, 2, *lb, true, insert_pos);
+		res = &lb->add_row(data, realpos);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 	if(res) {
 		luaW_pushwidget(L, *res);
-		return 1;
+		lua_push(L, insert_pos.value());
+		return 2;
 	}
 	return 0;
 }
@@ -422,14 +479,15 @@ int luaW_open(lua_State* L)
 	lk.add_log("Adding widgets module...\n");
 	static luaL_Reg const gui_callbacks[] = {
 		//TODO: the naming is a bit arbitrary: widgets with different
-		//      types of elements use add_node, eidgets with only
+		//      types of elements use add_node, widgets with only
 		//      one type of element use add_element
 		{ "add_item_of_type",   &intf_add_item_of_type },
 		{ "add_item",           &intf_add_dialog_item },
 		{ "focus",              &intf_set_dialog_focus },
 		{ "set_canvas",         &intf_set_dialog_canvas },
 		{ "set_callback",       &intf_set_dialog_callback },
-		{ "remove_items_at",     &intf_remove_dialog_item },
+		{ "remove_items_at",    &intf_remove_dialog_item },
+		{ "clear_items",     	&intf_clear_items },
 		{ "find",               &intf_find_widget },
 		{ "close",              &intf_dialog_close },
 		{ nullptr, nullptr },

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,16 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap labels.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the map label.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class edit_label : public modal_dialog
 {
 public:

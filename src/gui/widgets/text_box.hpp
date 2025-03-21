@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -119,24 +119,7 @@ private:
 };
 
 /**
- * @ingroup GUIWidgetWML
- *
- * Class for a single line text area.
- *
- * The resolution for a text box also contains the following keys:
- * Key          |Type                                    |Default  |Description
- * -------------|----------------------------------------|---------|-----------
- * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the text box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
- * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the text box.
- * The following states exist:
- * * state_enabled - the text box is enabled.
- * * state_disabled - the text box is disabled.
- * * state_focussed - the text box has the focus of the keyboard.
- * The following variables exist:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the text box.
- * history      | @ref guivartype_string "string"    |""       |The name of the history for the text box. A history saves the data entered in a text box between the games. With the up and down arrow it can be accessed. To create a new history item just add a new unique name for this field and the engine will handle the rest.
+ * A widget that allows the user to input text in single line
  */
 class text_box : public text_box_base
 {
@@ -161,6 +144,33 @@ public:
 	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
+	}
+
+	std::size_t get_max_input_length() const
+	{
+		return max_input_length_;
+	}
+
+	void set_hint_text(const std::string& text)
+	{
+		hint_text_ = text;
+		update_canvas();
+	}
+
+	std::string get_hint_text() const
+	{
+		return hint_text_;
+	}
+
+	void set_hint_image(const std::string& image)
+	{
+		hint_image_ = image;
+		update_canvas();
+	}
+
+	std::string get_hint_image() const
+	{
+		return hint_image_;
 	}
 
 	void set_hint_data(const std::string& text, const std::string& image)
@@ -351,6 +361,8 @@ public:
 
 	t_string hint_text;
 	std::string hint_image;
+
+	bool editable;
 };
 
 } // namespace implementation

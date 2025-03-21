@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,14 +20,11 @@ class game_config_view;
 
 #include "default_map_generator.hpp"
 #include "map/location.hpp"
-#include "serialization/string_utils.hpp"
 #include "terrain/translation.hpp"
-#include "utils/name_generator.hpp"
 
 #include <random>
 #include <cstdint>
 #include <map>
-#include <memory>
 
 class default_map_generator_job
 {

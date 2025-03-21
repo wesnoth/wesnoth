@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -213,6 +213,32 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(x_sll, 123456789123ll);
 	x_str = c["x"].str();
 	BOOST_CHECK_EQUAL(x_str, "123456789123");
+
+// check heterogeneous comparison
+	c["x"] = 987654321;
+	BOOST_CHECK_EQUAL(c["x"], 987654321);
+	c["x"] = "1";
+	BOOST_CHECK_EQUAL(c["x"], "1");
+	c["x"] = 222;
+	BOOST_CHECK_EQUAL(c["x"], "222");
+	c["x"] = "test";
+	BOOST_CHECK_EQUAL(c["x"], "test");
+	c["x"] = "33333";
+	BOOST_CHECK_EQUAL(c["x"], 33333);
+	c["x"] = "yes";
+	BOOST_CHECK_EQUAL(c["x"], true);
+	c["x"] = false;
+	BOOST_CHECK_EQUAL(c["x"], "no");
+	c["x"] = 1.23456789;
+	BOOST_CHECK_EQUAL(c["x"], 1.23456789);
+#if 1 // FIXME: this should work. it doesn't work. looks like it's getting stored as 9.8765432099999995
+	c["x"] = "9.87654321";
+	BOOST_CHECK_EQUAL(c["x"], 9.87654321);
+#endif
+	c["x"] = "sfvsdgdsfg";
+	BOOST_CHECK_NE(c["x"], 0);
+	BOOST_CHECK_NE(c["x"], true);
+	BOOST_CHECK_NE(c["x"], "a random string");
 
 	// blank != "" test.
 	c.clear();

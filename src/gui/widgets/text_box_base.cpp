@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,17 +19,20 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "font/attributes.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 
 #include <functional>
-
 #include <limits>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
+using namespace std::chrono_literals;
 
 namespace gui2
 {
@@ -40,15 +43,14 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
+	, editable_(true)
 	, ime_composing_(false)
 	, ime_start_point_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
-	, cursor_blink_rate_ms_(750)
-	, text_changed_callback_()
+	, cursor_blink_rate_(750ms)
 {
-	auto cfg = get_control(control_type, builder.definition);
-	text_.set_family_class(cfg->text_font_family);
+	set_font_family(get_config()->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
@@ -120,10 +122,17 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 	}
 }
 
+void text_box_base::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
+	font::attribute_list attrs;
+	add_attribute_bg_color(attrs, start_offset, end_offset, color);
+	text_.apply_attributes(attrs);
+}
+
 void text_box_base::set_value(const std::string& text)
 {
 	if(text != text_.text()) {
-		text_.set_text(text, false);
+		text_.set_text(text, get_use_markup());
 
 		// default to put the cursor at the end of the buffer.
 		selection_start_ = text_.get_length();
@@ -138,38 +147,33 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 	reset_cursor_state();
 
 	if(select) {
-
-		if(selection_start_ == offset) {
-			selection_length_ = 0;
-		} else {
-			selection_length_ = -static_cast<int>(selection_start_ - offset);
-		}
-
-#ifdef __unix__
-		// selecting copies on UNIX systems.
-		copy_selection(true);
-#endif
-		update_canvas();
-		queue_redraw();
-
+		selection_length_ = (selection_start_ == offset) ? 0 : -static_cast<int>(selection_start_ - offset);
 	} else {
-		assert(offset <= text_.get_length());
-		selection_start_ = offset;
+		selection_start_ = (offset <= text_.get_length()) ? offset : 0;
 		selection_length_ = 0;
-
-		update_canvas();
-		queue_redraw();
 	}
+
+	update_canvas();
+	queue_redraw();
 }
 
 void text_box_base::insert_char(const std::string& unicode)
 {
+	if(!editable_)
+	{
+		return;
+	}
+
 	delete_selection();
 
-	if(text_.insert_text(selection_start_, unicode)) {
-
+	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		set_cursor(selection_start_ + utf8::size(unicode), false);
+		size_t plain_text_len = utf8::size(plain_text());
+		size_t cursor_pos = selection_start_ + utf8::size(unicode);
+		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
+			cursor_pos = plain_text_len;
+		}
+		set_cursor(cursor_pos, false);
 		update_canvas();
 		queue_redraw();
 	}
@@ -198,14 +202,14 @@ void text_box_base::interrupt_composition()
 	SDL_StartTextInput();
 }
 
-void text_box_base::copy_selection(const bool mouse)
+void text_box_base::copy_selection()
 {
 	if(selection_length_ == 0) {
 		return;
 	}
 
 	unsigned end, start = selection_start_;
-	const std::string txt = text_.text();
+	const std::string txt = get_use_markup() ? plain_text() : text_.text();
 
 	if(selection_length_ > 0) {
 		end = utf8::index(txt, start + selection_length_);
@@ -215,19 +219,24 @@ void text_box_base::copy_selection(const bool mouse)
 		end = utf8::index(txt, start);
 		start = utf8::index(txt, start + selection_length_);
 	}
-	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
+	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start));
 }
 
-void text_box_base::paste_selection(const bool mouse)
+void text_box_base::paste_selection()
 {
-	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	if(!editable_)
+	{
+		return;
+	}
+
+	const std::string& text = desktop::clipboard::copy_from_clipboard();
 	if(text.empty()) {
 		return;
 	}
 
 	delete_selection();
 
-	selection_start_ += text_.insert_text(selection_start_, text);
+	selection_start_ += text_.insert_text(selection_start_, text, get_use_markup());
 
 	update_canvas();
 	queue_redraw();
@@ -292,7 +301,7 @@ void text_box_base::set_state(const state_t state)
 
 void text_box_base::toggle_cursor_timer(bool enable)
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 
@@ -301,7 +310,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 	}
 
 	cursor_timer_ = enable
-			? add_timer(cursor_blink_rate_ms_, std::bind(&text_box_base::cursor_timer_callback, this), true)
+			? add_timer(cursor_blink_rate_, std::bind(&text_box_base::cursor_timer_callback, this), true)
 			: 0;
 }
 
@@ -316,8 +325,10 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
+			// FIXME: very hacky way to check if the widget's owner is the top window
 			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
-			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
+			const auto& dispatchers = event::get_all_dispatchers();
+			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
@@ -337,7 +348,7 @@ void text_box_base::cursor_timer_callback()
 
 void text_box_base::reset_cursor_state()
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 
@@ -370,7 +381,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
-	if(offset <= text_.get_length()) {
+	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
@@ -447,10 +458,6 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 		}
 		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-		if(text_changed_callback_) {
-			text_changed_callback_(this, this->text());
-		}
 	}
 }
 
@@ -485,13 +492,13 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		// SDL_TextEditingEvent.
 		// start is start position of the separated event in entire composition text
 		if(start == 0) {
-			text_.set_text(text_cached_, false);
+			text_.set_text(text_cached_, get_use_markup());
 		}
-		text_.insert_text(ime_start_point_ + start, unicode);
+		text_.insert_text(ime_start_point_ + start, unicode, get_use_markup());
 #else
 		std::string new_text(text_cached_);
 		utf8::insert(new_text, ime_start_point_, unicode);
-		text_.set_text(new_text, false);
+		text_.set_text(new_text, get_use_markup());
 
 #endif
 		int maximum_length = text_.get_length();
@@ -511,7 +518,7 @@ void text_box_base::signal_handler_middle_button_click(const event::ui_event eve
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	paste_selection(true);
+	paste_selection();
 
 	handled = true;
 }
@@ -584,17 +591,28 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_BACKSPACE:
+			if (!is_editable())
+			{
+				return;
+			}
+
 			handle_key_backspace(modifier, handled);
 			break;
 
 		case SDLK_u:
-			if(!(modifier & KMOD_CTRL)) {
+			if( !(modifier & KMOD_CTRL) || !is_editable() ) {
 				return;
 			}
+
 			handle_key_clear_line(modifier, handled);
 			break;
 
 		case SDLK_DELETE:
+			if (!is_editable())
+			{
+				return;
+			}
+
 			handle_key_delete(modifier, handled);
 			break;
 
@@ -605,36 +623,42 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// atm we don't care whether there is something to copy or paste
 			// if nothing is there we still don't want to be chained.
-			copy_selection(false);
+			copy_selection();
 			handled = true;
 			break;
 
 		case SDLK_x:
-			if(!(modifier & modifier_key)) {
+			if( !(modifier & modifier_key) ) {
 				return;
 			}
 
-			copy_selection(false);
-			delete_selection();
+			copy_selection();
+
+			if ( is_editable() ) {
+				delete_selection();
+			}
 			handled = true;
 			break;
 
 		case SDLK_v:
-			if(!(modifier & modifier_key)) {
+			if( !(modifier & modifier_key) || !is_editable() ) {
 				return;
 			}
 
-			paste_selection(false);
+			paste_selection();
 			handled = true;
 			break;
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
-				return;
-			}
-			// The IME will handle it, we just need to make sure nothing else handles it too.
-			handled = true;
+
+//	TODO: check if removing the following check causes any side effects
+//	To be removed if there aren't any text rendering problems.
+//			if(!is_composing()) {
+//				return;
+//			}
+
+			handle_key_enter(modifier, handled);
 			break;
 
 		case SDLK_ESCAPE:
@@ -645,13 +669,12 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handled = true;
 			break;
 
-		default:
-			// Don't call the text changed callback if nothing happened.
-			return;
-	}
+		case SDLK_TAB:
+			handle_key_tab(modifier, handled);
+			break;
 
-	if(text_changed_callback_) {
-		text_changed_callback_(this, this->text());
+		default:
+			return;
 	}
 }
 

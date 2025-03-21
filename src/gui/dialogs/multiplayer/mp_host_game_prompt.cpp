@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -16,8 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 
-#include "preferences/game.hpp"
-#include "gui/widgets/settings.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
@@ -25,19 +24,19 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_host_game_prompt)
 
 /**
- * Helper for @ref preferences::ask_delete_saves.
+ * Helper for @ref prefs::get().ask_delete_saves.
  */
 static bool get_do_not_show_again()
 {
-	return preferences::mp_server_warning_disabled() != 1;
+	return prefs::get().mp_server_warning_disabled() != 1;
 }
 
 /**
- * Helper for @ref preferences::set_ask_delete_saves.
+ * Helper for @ref prefs::get().set_ask_delete_saves.
  */
 static void set_do_not_show_again(const bool do_not_show_again)
 {
-	preferences::set_mp_server_warning_disabled(do_not_show_again ? 2 : 1);
+	prefs::get().set_mp_server_warning_disabled(do_not_show_again ? 2 : 1);
 }
 
 mp_host_game_prompt::mp_host_game_prompt()

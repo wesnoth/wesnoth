@@ -1,61 +1,52 @@
-#!/bin/sh
-die() { echo >&2 "$@"; exit 1; }
+#!/bin/bash
+die() { printf '%s\n' "$*" >&2; exit 1; }
 
-ARGS=$(getopt --options cdmlo --longoptions color,colour,dry-run,debug,logged,mod,old --name `basename $0` -- "$@")
-[ $? = 0 ] || die "Syntax: $0 [-c|--color|colour] [-d|--debug|--dry-run] [-l|--logged] [-m|--mod] [-o|--old] <server version>"
-set -o errexit
-set -o nounset
+color=
+logged=
+mod=
+old=
+file=current.log
 
-COLOR=
-EVAL=eval
-LOGGED=
-MOD=
-OLD=
-FILE=current.log
+args=$(getopt --options cdmlo --longoptions color,colour,dry-run,debug,logged,mod,old --name "$(basename "$0")" -- "$@") || die "Syntax: $0 [-c|--color|colour] [-l|--logged] [-m|--mod] [-o|--old] <server version>"
+eval set -- "$args"
 
-eval set -- "$ARGS"
 while true
 do
-	case "$1" in
-	-c|--color|--colour)
-		COLOR=_color; shift ;;
-	-l|--logged)
-		LOGGED=_logged; shift ;;
-	-m|--mod)
-		MOD=_mod; shift ;;
-	-d|--debug|--dry-run)
-		EVAL=echo; shift ;;
-	-o|--old)
-		OLD=OLD:; FILE=old.log; shift ;;
-	--) shift; break ;;
-	*) echo "Unhandled option '$1'!"; shift ;;
-	esac
+        case "$1" in
+        -c|--color|--colour)
+                color=_color;;
+        -l|--logged)
+                logged=_logged;;
+        -m|--mod)
+                mod=_mod;;
+        -o|--old)
+                old=OLD: file=old.log;;
+        --) shift; break;;
+        *) printf 'Unhandled option "%s"!\n' "$1" >&2;;
+        esac
+        shift
 done
 
 [ $# -ge 1 ] || die "No server version specified!"
-VERSION=$1
+version=$1
 
-# on the alternates use the trunk server as the dev server and always show logged on/off messages
-case $(hostname) in gonzo.dicp.de|basilic)
-	LOGGED=_logged
-	[ $VERSION = dev ] && VERSION=trunk ;;
-esac
+params=(-n 0 -F)
+[ "$old" ] && params=(-n 0 --pid="$(cat "$HOME/servers/$version/old.pid")" -f)
 
-PARAMS="-n 0 -F"
-[ -n "$OLD" ] && PARAMS="-n 0 --pid=\$(cat \"$HOME/servers/$VERSION/old.pid\") -f"
+log="$HOME/servers/$version/$file"
+#[ -r "$log" ] || die "Server log file '$log' is not readable!"
 
-LOG="$HOME/servers/$VERSION/$FILE"
-#[ -r "$LOG" ] || die "Server log file '$LOG' is not readable!"
+filter=logfilter_irc$logged$color
 
-FILTER=logfilter_irc$LOGGED$COLOR
+prev=
+case $version in *prev) prev=PREV: ;; esac
 
-PREV=
-case $VERSION in *prev) PREV=PREV: ;; esac
+prefix=
+[ "$mod" ] && prefix="$version:" && filter=logfilter_irc$mod
+prefix="$prefix$prev$old"
 
-PREFIX=
-[ -n "$MOD" ] && PREFIX="$VERSION:" && FILTER=logfilter_irc$MOD
-PREFIX="$PREFIX$PREV$OLD"
-[ -n "$PREFIX" ] && PREFIX=" | sed --unbuffered \"s/^/$PREFIX &/\""
+[ "$prefix" ] && fparams=(-e "s/^/$prefix /")
 
-COMMAND="tail $PARAMS \"$LOG\" | \"$HOME/bin/$FILTER\" --unbuffered$PREFIX"
-$EVAL $COMMAND
+# keep only the pipeline around
+shopt -s lastpipe
+tail "${params[@]}" "$log" | exec "$filter" --unbuffered "${fparams[@]}"

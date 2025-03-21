@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -76,6 +76,7 @@ namespace test_utils {
 
 			font::load_font_config();
 			gui2::init();
+			gui2::switch_theme("default");
 			load_language_list();
 			game_config::config_cache::instance().add_define("TEST");
 			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);
@@ -88,7 +89,7 @@ namespace test_utils {
 
 			unit_types.set_config(game_config_view_.merged_children_view("units"));
 
-			game_config::load_config(cfg_.child("game_config"));
+			game_config::load_config(cfg_.mandatory_child("game_config"));
 			const hotkey::scope_changer hk_scope{hotkey::scope_game, false};
 
 			hotkey::load_default_hotkeys(game_config_view_);

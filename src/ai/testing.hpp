@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include <vector>
 
 class ai_testing{
 public:
@@ -43,7 +42,7 @@ public:
 	 * Log in case of victory
 	 * teams vector of winner teams
 	 */
-	static void log_victory( std::set<unsigned int> teams );
+	static void log_victory( const std::set<unsigned int>& teams );
 
 	/*
 	 * Log at game start

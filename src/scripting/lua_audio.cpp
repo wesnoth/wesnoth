@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,15 @@
 #include "lua_audio.hpp"
 
 #include "log.hpp"
-#include "lua/lauxlib.h"
+#include "preferences/preferences.hpp"
+#include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
-#include "preferences/general.hpp"
-#include "resources.hpp"
 #include "soundsource.hpp"
 #include <set>
+#include <utility>
 
 static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
@@ -37,7 +37,7 @@ class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
 	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
-	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(new_track) {}
+	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(std::move(new_track)) {}
 	bool valid() const {
 		return track && track->valid();
 	}
@@ -62,7 +62,7 @@ static lua_music_track* push_track(lua_State* L, int i) {
 }
 
 static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
-	lua_music_track* trk = new(L) lua_music_track(new_track);
+	lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
 	luaL_setmetatable(L, Track);
 	return trk;
 }
@@ -146,7 +146,7 @@ static int impl_music_get(lua_State* L) {
 	}
 	// This calculation reverses the one used in [volume] to get back the relative volume level.
 	// (Which is the same calculation that's duplicated in impl_music_set.)
-	return_float_attrib("volume", sound::get_music_volume() * 100.0 / preferences::music_volume());
+	return_float_attrib("volume", sound::get_music_volume() * 100.0 / prefs::get().music_volume());
 	return luaW_getmetafield(L, 1, m);
 }
 
@@ -162,7 +162,7 @@ static int impl_music_set(lua_State* L) {
 			// Don't clear the playlist
 			cfg["append"] = true;
 			// Don't allow play_once=yes
-			if(cfg["play_once"]) {
+			if(cfg["play_once"].to_bool()) {
 				return luaL_argerror(L, 3, "For play_once, use wesnoth.music_list.play instead");
 			}
 			if(i >= sound::get_num_tracks()) {
@@ -185,7 +185,7 @@ static int impl_music_set(lua_State* L) {
 		return 0;
 	}
 	const char* m = luaL_checkstring(L, 2);
-	modify_float_attrib_check_range("volume", sound::set_music_volume(value * preferences::music_volume() / 100.0), 0.0, 100.0);
+	modify_float_attrib_check_range("volume", sound::set_music_volume(value * prefs::get().music_volume() / 100.0), 0.0, 100.0);
 	modify_int_attrib_check_range("current_i", sound::play_track(value - 1), 1, static_cast<int>(sound::get_num_tracks()));
 	return 0;
 }
@@ -280,8 +280,8 @@ static int impl_track_get(lua_State* L) {
 	return_bool_attrib("shuffle", (*track)->shuffle());
 	return_bool_attrib("immediate", (*track)->immediate());
 	return_bool_attrib("once", (*track)->play_once());
-	return_int_attrib("ms_before", (*track)->ms_before());
-	return_int_attrib("ms_after", (*track)->ms_after());
+	return_int_attrib("ms_before", (*track)->ms_before().count());
+	return_int_attrib("ms_after", (*track)->ms_after().count());
 	return_string_attrib("name", (*track)->id());
 	return_string_attrib("title", (*track)->title());
 
@@ -306,8 +306,8 @@ static int impl_track_set(lua_State* L) {
 	const char* m = luaL_checkstring(L, 2);
 	modify_bool_attrib("shuffle", (*track)->set_shuffle(value));
 	modify_bool_attrib("once", (*track)->set_play_once(value));
-	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
-	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_int_attrib("ms_before", (*track)->set_ms_before(std::chrono::milliseconds{value}));
+	modify_int_attrib("ms_after", (*track)->set_ms_after(std::chrono::milliseconds{value}));
 	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
@@ -388,7 +388,7 @@ static int impl_source_get(lua_State* L) {
 	const char* m = luaL_checkstring(L, 2);
 	return_string_attrib("id", src->id());
 	return_vector_string_attrib("sounds", utils::split(src->files()));
-	return_int_attrib("delay", src->minimum_delay());
+	return_int_attrib("delay", src->minimum_delay().count());
 	return_int_attrib("chance", src->chance());
 	return_int_attrib("loop", src->loops());
 	return_int_attrib("range", src->full_range());
@@ -412,7 +412,7 @@ static int impl_source_get(lua_State* L) {
 static int impl_source_set(lua_State* L) {
 	lua_sound_source& src = get_source(L, 1);
 	const char* m = luaL_checkstring(L, 2);
-	modify_int_attrib("delay", src->set_minimum_delay(value));
+	modify_int_attrib("delay", src->set_minimum_delay(std::chrono::milliseconds{value}));
 	modify_int_attrib("chance", src->set_chance(value));
 	modify_int_attrib("loop", src->set_loops(value));
 	modify_int_attrib("range", src->set_full_range(value));
@@ -479,7 +479,7 @@ static int impl_audio_get(lua_State* L)
 {
 	std::string m = luaL_checkstring(L, 2);
 	if(m != "volume") return 0;
-	int vol = preferences::sound_volume();
+	int vol = prefs::get().sound_volume();
 	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
 	return 1;
 }
@@ -495,7 +495,7 @@ static int impl_audio_set(lua_State* L)
 		lua_rawset(L, 1);
 		return 0;
 	}
-	int vol = preferences::sound_volume();
+	int vol = prefs::get().sound_volume();
 	float rel = lua_tonumber(L, 3);
 	if(rel < 0.0f || rel > 100.0f) {
 		return luaL_argerror(L, 1, "volume must be in range 0..100");

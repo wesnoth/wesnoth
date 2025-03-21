@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "ai/composite/component.hpp"
 #include "ai/contexts.hpp"
 
-#include <algorithm>
 #include <iterator>
 
 //============================================================================
@@ -31,8 +30,6 @@
 namespace ai {
 
 class rca_context;
-class ai_context;
-class component;
 
 class engine : public component {
 public:
@@ -102,7 +99,6 @@ protected:
 	std::string name_;
 };
 
-class engine_factory;
 
 class engine_factory{
 	bool is_duplicate(const std::string &name);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "editor/palette/common_palette.hpp"
 
 #include "editor/palette/empty_palette.hpp"
 #include "editor/palette/terrain_palettes.hpp"
@@ -50,10 +49,6 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
-	void scroll_bottom();
-
-//TODO
-//	void swap();
 
 	void adjust_size();
 

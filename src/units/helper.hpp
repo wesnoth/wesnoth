@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,9 @@
 
 #pragma once
 
+#include "team.hpp"
 #include "units/map.hpp"
+#include "units/types.hpp"
 
 namespace unit_helper {
 
@@ -49,4 +51,61 @@ std::string unit_level_tooltip(const unit &u);
  * advance to.
  */
 std::string unit_level_tooltip(const unit_type &u);
+
+/**
+ * @return If active, do nothing. If inactive, surround with pango tag that
+ * changes font color to grey.
+ */
+std::string maybe_inactive(const std::string& str, bool active);
+
+/**
+ * @return If unit recall cost is greater than team's recall cost,
+ * return a help markup string that shows the unit recall cost
+ * in red font color. If unit recall cost is less than team's cost,
+ * color in green instead. If equal, default color.
+ * In all cases, a gold icon using `<img>` tag is prepended to the formatted cost.
+ * Icon is greyscaled when unit recall cost > team recall cost.
+ * Eg. `<img src='themes/gold.png~GS()'/><span color='#ff0000'>40</span>`.
+ */
+std::string format_cost_string(int unit_recall_cost, const int team_recall_cost);
+
+/**
+ * @return Help markup string with gold icon followed by unit_cost.
+ * Eg. `<img src='themes/gold.png'/>40`
+ * If active, do nothing. If inactive, surround with pango tag that
+ * changes font color to grey and grayscales the gold icon.
+ */
+std::string format_cost_string(int unit_cost, bool active = true);
+
+/**
+ * @return A pango formatted string representation of level.
+ * The applied formatting is different for each level.
+ * L0: level number in normal text, grey color
+ * L1: level number in normal text
+ * L2: level number in bold text
+ * L3: level number in bold, font color `#e2b776`
+ * L3+: level number in bold, font color `#dd6600`.
+ * If not recallable, return greyscaled versions.
+ * So, L0, L1: normal text, L2+: bold text
+ */
+std::string format_level_string(const int level, bool recallable);
+
+/**
+ * @return A pango formatted string representation of "moves_left/moves_max",
+ * colored based on condition below:
+ * moves_left is zero: "moves_left/moves_max" colored in red
+ * moves_left is less than/equal to moves_max: "moves_left/moves_max" colored in green
+ * moves_left is greater than moves_max: "moves_left/moves_max" colored in yellow
+ * active = false: "moves_left/moves_max" colored in grey,
+ * regardless of the previous conditions.
+ */
+std::string format_movement_string(const int moves_left, const int moves_max, const bool active = true);
+
+/** @return If the recruit is possible, an empty optional and set @a recruited_from;
+	otherwise, return an error message string describing the reason. */
+t_string recruit_message(
+	const std::string& type_id,
+	map_location& target_hex,
+	map_location& recruited_from,
+	team& current_team);
 }

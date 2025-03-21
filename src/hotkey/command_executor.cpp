@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,32 +16,27 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
-#include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/retval.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
-#include "game_end_exceptions.hpp"
+#include "preferences/preferences.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
-#include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 #include "video.hpp" // toggle_fullscreen
 
-#include <functional>
 
-#include <SDL2/SDL_image.h>
 
-#include <cassert>
 #include <ios>
 #include <set>
 
@@ -70,11 +65,11 @@ namespace hotkey {
 
 static void event_queue(const SDL_Event& event, command_executor* executor);
 
-bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*index*/, bool press, bool release)
+bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
 	// hotkey release handling
 	if (release) {
-		switch(cmd.command) {
+		switch(cmd.hotkey_command) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
 				scroll_up(false);
@@ -96,7 +91,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// handling of hotkeys which activate even on hold events
-	switch(cmd.command) {
+	switch(cmd.hotkey_command) {
 		case HOTKEY_REPEAT_RECRUIT:
 			repeat_recruit();
 			return true;
@@ -121,7 +116,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// hotkey press handling
-	switch(cmd.command) {
+	switch(cmd.hotkey_command) {
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -202,6 +197,9 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 			break;
 		case HOTKEY_KILL_UNIT:
 			kill_unit();
+			break;
+		case HOTKEY_TELEPORT_UNIT:
+			select_teleport();
 			break;
 		case HOTKEY_PREFERENCES:
 			preferences();
@@ -364,29 +362,30 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
+			gui2::switch_theme(prefs::get().gui2_theme());
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:
 			surrender_game();
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
-			preferences::toggle_minimap_draw_terrain();
+			prefs::get().set_minimap_draw_terrain(!prefs::get().minimap_draw_terrain());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
-			preferences::toggle_minimap_terrain_coding();
+			prefs::get().set_minimap_terrain_coding(!prefs::get().minimap_terrain_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
-			preferences::toggle_minimap_movement_coding();
+			prefs::get().set_minimap_movement_coding(!prefs::get().minimap_movement_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
-			preferences::toggle_minimap_draw_units();
+			prefs::get().set_minimap_draw_units(!prefs::get().minimap_draw_units());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
-			preferences::toggle_minimap_draw_villages();
+			prefs::get().set_minimap_draw_villages(!prefs::get().minimap_draw_villages());
 			recalculate_minimap();
 			break;
 		case HOTKEY_ACHIEVEMENTS:
@@ -405,7 +404,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
 }
@@ -418,23 +417,30 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	get_menu_images(gui, items);
 
 	int res = -1;
+	point selection_pos;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
+			if(res >= 0) {
+				// Get selection coordinates for a potential submenu below
+				selection_pos = mmenu.selected_item_pos();
+				// Compensate for borders
+				selection_pos.x--;
+				selection_pos.y--;
+			}
 		}
 	} // This will kill the dialog.
 	if (res < 0 || std::size_t(res) >= items.size()) return;
 
-	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
+	std::string id = items[res]["id"];
+	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
-		int y,x;
-		sdl::get_mouse_state(&x,&y);
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context(), gui);
 	} else {
-		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
-		do_execute_command(cmd, res);
+		hotkey::ui_command cmd = hotkey::ui_command(id, res);
+		do_execute_command(cmd);
 		set_button_state();
 	}
 }
@@ -448,29 +454,22 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		const hotkey_command &command = hotkey::get_hotkey_command(*i);
-		if (can_execute_command(command)) {
-			do_execute_command(command);
+		hotkey::ui_command cmd = hotkey::ui_command(*i);
+		if (can_execute_command(cmd)) {
+			do_execute_command(cmd);
 			set_button_state();
 		}
 		++i;
 	}
 }
 
-std::string command_executor::get_menu_image(display& disp, const std::string& command, int index) const {
-
-	// TODO: Find a way to do away with the fugly special markup
-	if(command[0] == '&') {
-		std::size_t n = command.find_first_of('=');
-		if(n != std::string::npos)
-			return command.substr(1, n - 1);
-	}
-
+std::string command_executor::get_menu_image(display& disp, const std::string& command, int index) const
+{
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
-	const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(command).command;
-	const hotkey::ACTION_STATE state = get_action_state(hk, index);
+	hotkey::ui_command cmd = hotkey::ui_command(command, index);
+	const hotkey::ACTION_STATE state = get_action_state(cmd);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
 	if (menu) {
@@ -487,7 +486,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 		}
 	}
 
-	switch (get_action_state(hk, index)) {
+	switch (get_action_state(cmd)) {
 		case ACTION_ON:
 			return game_config::images::checked_menu;
 		case ACTION_OFF:
@@ -496,7 +495,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 			return game_config::images::selected_menu;
 		case ACTION_DESELECTED:
 			return game_config::images::deselected_menu;
-		default: return get_action_image(hk, index);
+		default: return get_action_image(cmd);
 	}
 }
 
@@ -528,12 +527,6 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 
 			item["label"] = desc;
 			item["details"] = hotkey::get_names(item_id);
-		} else if(item["label"].empty()) {
-			// If no matching hotkey was found and a custom label wasn't already set, treat
-			// the id as a plaintext description. This is because either type of value can
-			// be written to the id field by the WMI manager. The plaintext description is
-			// used in the case the menu item specifies the relevant entry is *not* a hotkey.
-			item["label"] = item_id;
 		}
 	}
 }
@@ -625,8 +618,9 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 
 void command_executor::execute_command_wrap(const command_executor::queued_command& command)
 {
-	if (!can_execute_command(*command.command, command.index)
-			|| do_execute_command(*command.command, command.index, command.press, command.release)) {
+	auto ui_cmd = hotkey::ui_command(*command.command, command.index);
+	if (!can_execute_command(ui_cmd)
+			|| do_execute_command(ui_cmd, command.press, command.release)) {
 		return;
 	}
 
@@ -642,10 +636,10 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			make_screenshot(_("Screenshot"), false);
 			break;
 		case HOTKEY_ANIMATE_MAP:
-			preferences::set_animate_map(!preferences::animate_map());
+			prefs::get().set_animate_map(!prefs::get().animate_map());
 			break;
 		case HOTKEY_MOUSE_SCROLL:
-			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
+			prefs::get().set_mouse_scrolling(!prefs::get().mouse_scrolling());
 			break;
 		case HOTKEY_MUTE:
 			{
@@ -655,19 +649,19 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 					bool playing_sound,playing_music;
 					before_muted_s() : playing_sound(false),playing_music(false){}
 				} before_muted;
-				if (preferences::music_on() || preferences::sound_on())
+				if (prefs::get().music_on() || prefs::get().sound())
 				{
 					// then remember settings and mute both
-					before_muted.playing_sound = preferences::sound_on();
-					before_muted.playing_music = preferences::music_on();
-					preferences::set_sound(false);
-					preferences::set_music(false);
+					before_muted.playing_sound = prefs::get().sound();
+					before_muted.playing_music = prefs::get().music_on();
+					prefs::get().set_sound(false);
+					prefs::get().set_music(false);
 				}
 				else
 				{
 					// then set settings before mute
-					preferences::set_sound(before_muted.playing_sound);
-					preferences::set_music(before_muted.playing_music);
+					prefs::get().set_sound(before_muted.playing_sound);
+					prefs::get().set_music(before_muted.playing_music);
 				}
 			}
 			break;
@@ -687,7 +681,7 @@ void command_executor_default::set_button_state()
 		bool enabled = false;
 		for (const auto& command : menu.items()) {
 
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command["id"]);
+			ui_command command_obj = ui_command(command["id"].str());
 			bool can_execute = can_execute_command(command_obj);
 			if (can_execute) {
 				enabled = true;
@@ -705,7 +699,7 @@ void command_executor_default::set_button_state()
 		int i = 0;
 		for (const std::string& command : action.items()) {
 
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			ui_command command_obj = ui_command(command);
 			std::string tooltip = action.tooltip(i);
 			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
 				button->set_overlay("icons/action/" + command);
@@ -717,7 +711,7 @@ void command_executor_default::set_button_state()
 			if (!can_execute) continue;
 			enabled = true;
 
-			ACTION_STATE state = get_action_state(command_obj.command, -1);
+			ACTION_STATE state = get_action_state(command_obj);
 			switch (state) {
 			case ACTION_SELECTED:
 			case ACTION_ON:

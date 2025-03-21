@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,24 +19,18 @@
  *
  */
 
-#include <cassert>
 #include <cstring>
 
 #include "ai/lua/core.hpp"
 #include "ai/composite/aspect.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/push_check.hpp"
 #include "ai/lua/lua_object.hpp" // (Nephro)
 
-#include "attack_prediction.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "ai/actions.hpp"
@@ -44,7 +38,6 @@
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)
@@ -132,7 +125,7 @@ void lua_ai_context::push_ai_table()
 	lua_ai_load ctx(*this, false);
 }
 
-static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
+static int transform_ai_action(lua_State *L, const ai::action_result_ptr& action_result)
 {
 	lua_newtable(L);
 	lua_pushboolean(L,action_result->is_ok());
@@ -165,8 +158,8 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 		return 0;
 	}
 	else {
-		lua_pushnumber(L, res.wml_x());
-		lua_pushnumber(L, res.wml_y());
+		lua_pushinteger(L, res.wml_x());
+		lua_pushinteger(L, res.wml_y());
 		return 2;
 	}
 }
@@ -1105,7 +1098,7 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, const lua_object_ptr& l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
 

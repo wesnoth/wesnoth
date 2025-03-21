@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@ std::set<map_location> mouse_action_select::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
 	if (has_shift_modifier()) {
-		return disp.map().get_contiguous_terrain_tiles(hex);
+		return disp.get_map().get_contiguous_terrain_tiles(hex);
 	} else {
 		return brush_drag_mouse_action::affected_hexes(disp, hex);
 	}
@@ -64,9 +64,9 @@ void mouse_action_select::set_mouse_overlay(editor_display& disp)
 {
 	texture tex;
 	if (has_shift_modifier()) {
-		tex = image::get_texture("editor/tool-overlay-select-wand.png");
+		tex = image::get_texture(image::locator{"editor/tool-overlay-select-wand.png"});
 	} else {
-		tex = image::get_texture("editor/tool-overlay-select-brush.png");
+		tex = image::get_texture(image::locator{"editor/tool-overlay-select-brush.png"});
 	}
 	disp.set_mouseover_hex_overlay(tex);
 }

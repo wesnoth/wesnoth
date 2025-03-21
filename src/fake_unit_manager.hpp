@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 class display;
 class unit;
-class fake_unit_ptr;
 
 /** Manages a list of fake units for the display object. */
 class fake_unit_manager {

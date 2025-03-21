@@ -1,4 +1,6 @@
 arrow.cpp
+color.cpp
+color_range.cpp
 cursor.cpp
 desktop/clipboard.cpp
 deprecation.cpp
@@ -6,13 +8,14 @@ display.cpp
 display_context.cpp
 events.cpp
 floating_label.cpp
+font/attributes.cpp
 font/font_config.cpp
 font/sdl_ttf_compat.cpp
 font/standard_colors.cpp
 font/text.cpp
-font/text_formatting.cpp
 format_time_summary.cpp
 formula/string_utils.cpp
+game_config.cpp
 game_end_exceptions.cpp
 generators/cave_map_generator.cpp
 generators/default_map_generator.cpp
@@ -27,8 +30,7 @@ hotkey/hotkey_item.cpp
 hotkey/hotkey_manager.cpp
 picture.cpp
 image_modifications.cpp
-preferences/credentials.cpp
-preferences/general.cpp
+preferences/preferences.cpp
 key.cpp
 language.cpp
 map/label.cpp
@@ -39,7 +41,7 @@ pathfind/astarsearch.cpp
 pathutils.cpp
 quit_confirmation.cpp
 reports.cpp
-show_dialog.cpp
+serialization/markup.cpp
 sound.cpp
 sound_music_track.cpp
 soundsource.cpp
@@ -52,8 +54,6 @@ time_of_day.cpp
 tooltips.cpp
 video.cpp
 widgets/button.cpp
-widgets/menu.cpp
-widgets/menu_style.cpp
 widgets/scrollarea.cpp
 widgets/scrollbar.cpp
 widgets/textbox.cpp

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,10 +21,7 @@
 #include "utils/general.hpp"
 
 #include <functional>
-#include <iterator>
 #include <map>
-#include <sstream>
-#include <utility>
 #include <vector>
 #include <boost/range/iterator_range.hpp>
 
@@ -491,14 +488,12 @@ private:
 class variant_list : public variant_container<variant_vector>
 {
 public:
-	explicit variant_list(const variant_vector& vec)
-		: variant_container<variant_vector>(vec)
-	{}
+	explicit variant_list(const variant_vector& vec);
 
 	/**
 	 * Applies the provided function to the corresponding variants in this and another list.
 	 */
-	variant list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func);
+	variant list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func);
 
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;

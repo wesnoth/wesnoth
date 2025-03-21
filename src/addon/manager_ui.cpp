@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -22,7 +22,7 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
@@ -55,11 +55,7 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	list.clear();
 
 	config cfg;
-	client.request_addons_list(cfg);
-
-	if(!cfg) {
-		return false;
-	}
+	client.request_addons_list(cfg, prefs::get().addon_icons());
 
 	read_addons_list(cfg, list);
 
@@ -70,7 +66,7 @@ bool addons_manager_ui(const std::string& remote_address)
 {
 	bool need_wml_cache_refresh = false;
 
-	preferences::set_campaign_server(remote_address);
+	prefs::get().set_campaign_server(remote_address);
 
 	try {
 		addons_client client(remote_address);
@@ -235,7 +231,7 @@ bool manage_addons()
 	// NOTE: the following two values are also known by WML, so don't change them.
 	static const int addon_uninstall = 2;
 
-	std::string host_name = preferences::campaign_server();
+	std::string host_name = prefs::get().campaign_server();
 	const bool have_addons = !installed_addons().empty();
 
 	gui2::dialogs::addon_connect addon_dlg(host_name, have_addons);
@@ -258,7 +254,7 @@ bool manage_addons()
 
 bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 {
-	std::string remote_address = preferences::campaign_server();
+	std::string remote_address = prefs::get().campaign_server();
 
 	// These exception handlers copied from addon_manager_ui fcn above.
 	try {

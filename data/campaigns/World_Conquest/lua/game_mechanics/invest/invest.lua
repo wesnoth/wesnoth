@@ -8,9 +8,11 @@ function wc2_invest.add_items(side_num, num_items)
 	local items_left = stringx.split(side.variables["wc2.items_left"] or "")
 	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
-		local i = mathx.random(#items_left)
-		table.insert(items_available, items_left[i])
-		table.remove(items_left, i)
+		if #items_left > 0 then
+			local i = mathx.random(#items_left)
+			table.insert(items_available, items_left[i])
+			table.remove(items_left, i)
+		end
 	end
 
 	side.variables["wc2.items_left"] = table.concat(items_left, ",")
@@ -135,7 +137,7 @@ function wc2_invest.invest()
 	local heroes_available = stringx.split(side.variables["wc2.heroes"] or "")
 	local commanders_available = stringx.split(side.variables["wc2.commanders"] or "")
 	local deserters_available = stringx.split(side.variables["wc2.deserters"] or "")
-	local trainings_available = wc2_training.list_available(side_num, {2,3,4,5,6})
+	local trainings_available = wc2_training.list_available(side_num)
 	local gold_available = true
 	for i = 1,2 do
 		local is_local = false

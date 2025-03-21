@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,9 +24,9 @@
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
 
-#include "lua/lauxlib.h"
 
 #include <type_traits>
+#include <utility>
 
 static const char uattacksKey[] = "unit attacks table";
 static const char uattackKey[] = "unit attack";
@@ -34,8 +34,8 @@ static const char uattackKey[] = "unit attack";
 struct attack_ref {
 	attack_ptr attack;
 	const_attack_ptr cattack;
-	attack_ref(attack_ptr atk) : attack(atk), cattack(atk) {}
-	attack_ref(const_attack_ptr atk) : cattack(atk) {}
+	attack_ref(const attack_ptr& atk) : attack(atk), cattack(atk) {}
+	attack_ref(const_attack_ptr atk) : cattack(std::move(atk)) {}
 };
 
 void push_unit_attacks_table(lua_State* L, int idx)
@@ -48,7 +48,7 @@ void push_unit_attacks_table(lua_State* L, int idx)
 	luaL_setmetatable(L, uattacksKey);
 }
 
-void luaW_pushweapon(lua_State* L, attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
@@ -58,7 +58,7 @@ void luaW_pushweapon(lua_State* L, attack_ptr weapon)
 	}
 }
 
-void luaW_pushweapon(lua_State* L, const_attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
@@ -258,13 +258,17 @@ static int impl_unit_attack_get(lua_State *L)
 	return_string_attrib("type", attack.type());
 	return_string_attrib("icon", attack.icon());
 	return_string_attrib("range", attack.range());
+	return_string_attrib("alignment", attack.alignment_str());
 	return_int_attrib("damage", attack.damage());
 	return_int_attrib("number", attack.num_attacks());
 	return_float_attrib("attack_weight", attack.attack_weight());
 	return_float_attrib("defense_weight", attack.defense_weight());
 	return_int_attrib("accuracy", attack.accuracy());
 	return_int_attrib("movement_used", attack.movement_used());
+	return_int_attrib("attacks_used", attack.attacks_used());
 	return_int_attrib("parry", attack.parry());
+	return_int_attrib("max_range", attack.max_range());
+	return_int_attrib("min_range", attack.min_range());
 	return_cfgref_attrib("specials", attack.specials());
 	return_cfgref_attrib("__cfg", attack.to_config());
 	if(luaW_getmetafield(L, 1, m)) {
@@ -290,13 +294,17 @@ static int impl_unit_attack_set(lua_State *L)
 	modify_string_attrib("type", attack.set_type(value));
 	modify_string_attrib("icon", attack.set_icon(value));
 	modify_string_attrib("range", attack.set_range(value));
+	modify_string_attrib("alignment", attack.set_range(value));
 	modify_int_attrib("damage", attack.set_damage(value));
 	modify_int_attrib("number", attack.set_num_attacks(value));
 	modify_int_attrib("attack_weight", attack.set_attack_weight(value));
 	modify_int_attrib("defense_weight", attack.set_defense_weight(value));
 	modify_int_attrib("accuracy", attack.set_accuracy(value));
 	modify_int_attrib("movement_used", attack.set_movement_used(value));
+	modify_int_attrib("attacks_used", attack.set_attacks_used(value));
 	modify_int_attrib("parry", attack.set_parry(value));
+	modify_int_attrib("max_range", attack.set_max_range(value));
+	modify_int_attrib("min_range", attack.set_min_range(value));
 
 	if(strcmp(m, "specials") == 0) {
 		attack.set_specials(luaW_checkconfig(L, 3));

@@ -41,6 +41,10 @@ function set_terrain_impl(data)
 	end
 end
 
+
+--- Similar to multiple set_terrain calls (see below), but it first runs all the
+--- filters, and then changes the terrain so that the eariler changes have no
+--- effect on the later filters.
 function set_terrain_simul(cfg)
 	local data = {}
 	for i, r in ipairs(cfg) do
@@ -68,6 +72,31 @@ function set_terrain_simul(cfg)
 	set_terrain_impl(data)
 end
 
+--- Filter based terrain modification of the global map object.
+--- @param a a table suppoting the following keys:
+--- a[1] (or a.terrain)       : The terrain code that we want to set terain to.
+---                             This can be a comma-seperated list, then a terrain is randomly
+---                             chosen from that list (a independent draw for each tile that
+---                             maches the filter)
+--- a[2] (or a.filter)        : the filter.
+--- a.locs          (optional): a list of locations to change. If present only locations
+---                             match the filter that are also in that list are considered.
+--- a.layer         (optional): change only the background or the foreground of a terrain
+--- a.nlocs         (optional): change at most a.nlocs tiles.
+--- a.per_thousand  (optional): give every matching tile a change of (a.per_thousand / 1000) to be changed.
+--- a.precentage    (optional): give every matching tile a change of (a.precentage / 100) to be changed.
+--- a.fraction      (optional): give every matching tile a change of (1 / a.fraction) to be changed.
+--- a.fraction_rand (optional): pick a random element from fraction_rand, then same as a.fraction.
+--- a.exact         (optional): When a.per_thousand, a.percentage, or a.fraction is used, change exact
+---                             number_of_matches  * (a.per_thousand / 1000) files instead of
+---                             drawing the chance for each tile to be changed independenly.
+--- Example:
+--- set_terrain { "Ww",
+---   f.terrain("Wo"),
+---   per_thousand = 200,
+---   exact = true,
+--- }
+--- Changes Exactly one fifth of the "Wo" terrain to "Ww"
 function set_terrain(a)
 	set_terrain_simul({a})
 end

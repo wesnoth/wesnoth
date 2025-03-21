@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,12 +19,10 @@
 
 #include "whiteboard/recruit.hpp"
 
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 #include "whiteboard/visitor.hpp"
 
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
@@ -37,12 +35,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recruit_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_const_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);
@@ -68,7 +66,7 @@ recruit::recruit(std::size_t team_index, bool hidden, const std::string& unit_na
 recruit::recruit(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_name_(cfg["unit_name_"])
-	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"], wml_loc())
+	, recruit_hex_(cfg.mandatory_child("recruit_hex_")["x"],cfg.mandatory_child("recruit_hex_")["y"], wml_loc())
 	, temp_unit_()
 	, fake_unit_()
 	, cost_(0)
@@ -177,7 +175,7 @@ void recruit::draw_hex(const map_location& hex)
 		number_text << font::unicode_minus << cost_;
 		std::size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }

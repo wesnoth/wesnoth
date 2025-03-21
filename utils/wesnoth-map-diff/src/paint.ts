@@ -100,7 +100,7 @@ const paint = async (
         return `${player}${tile.baseCode}${miscCode}`
       }
 
-      const getLineY = (line: number) => (diffImageHeight - slicedDiffs.length * 36) + (line - 1) * 36
+      const getLineY = (line: number) => (diffImageHeight - slicedDiffs.length * 36) + line * 36
 
       const slicedDiffs = diffs.slice(0, maxLinesOnNotes - 1)
 

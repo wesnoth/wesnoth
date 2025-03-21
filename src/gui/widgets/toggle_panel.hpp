@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,41 +28,6 @@ struct builder_toggle_panel;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Class for a toggle button.
- *
- * Quite some code looks like toggle_button maybe we should inherit from that but let's test first.
- * the problem is that the toggle_button has an icon we don't want, but maybe look at refactoring later.
- * but maybe we should also ditch the icon, not sure however since it's handy for checkboxes...
- *
- * A toggle panel is an item which can hold multiple other items.
- * The difference between a grid and a panel is that it's possible to define how a panel looks.
- * A grid in an invisible container to just hold the items.
- * The toggle panel is a combination of the panel and a toggle button, it allows a toggle button with its own grid.
- *
- * The resolution for a toggle panel also contains the following keys:
- * Key          |Type                                |Default|Description
- * -------------|------------------------------------|-------|-------------
- * top_border   | @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
- * bottom_border| @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
- * left_border  | @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
- * right_border | @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
- * The following states exist:
- * * state_enabled - the button is enabled and not selected.
- * * state_disabled - the button is disabled and not selected.
- * * state_focussed - the mouse is over the button and not selected.
- * * state_enabled_selected - the button is enabled and selected.
- * * state_disabled_selected - the button is disabled and selected.
- * * state_focussed_selected - the mouse is over the button and selected.
- * Variables:
- * Key            |Type                            |Default  |Description
- * ---------------|--------------------------------|---------|-----------
- * grid           | @ref guivartype_grid "grid"    |mandatory|Defines the grid with the widgets to place on the panel.
- * return_value_id| @ref guivartype_string "string"|""       |The return value id.
- * return_value   | @ref guivartype_int "int"      |0        |The return value.
- */
 class toggle_panel : public panel, public selectable_item
 {
 public:
@@ -175,10 +140,10 @@ private:
 	std::function<void(widget&)> callback_mouse_left_double_click_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background() override;
+	virtual bool impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground() override;
+	virtual bool impl_draw_foreground() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

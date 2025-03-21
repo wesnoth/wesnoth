@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -28,10 +28,10 @@
 #include "log.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "game_config.hpp"
 #include "addon/validation.hpp"
 #include "server/campaignd/addon_utils.hpp"
 #include "server/campaignd/auth.hpp"
@@ -51,6 +51,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -102,7 +103,7 @@ const std::string default_web_url = "https://add-ons.wesnoth.org/";
  * The text is intended for display on the client with Pango markup enabled and
  * sent by the server as-is, so it ought to be formatted accordingly.
  */
-const std::string default_license_notice = R"""(<span size='x-large'>General Rules</span>
+const std::string default_license_notice = R"(<span size='x-large'>General Rules</span>
 
 The current version of the server rules can be found at: https://r.wesnoth.org/t51347
 
@@ -118,11 +119,11 @@ All content within add-ons uploaded to this server must be licensed under the te
 <b>By uploading content to this server, you certify that you have the right to:</b>
 
   a) release all included art and audio explicitly denoted with a Creative Commons license in the prescribed manner under that license; <b>and</b>
-  b) release all other included content under the terms of the chosen versions of the GNU GPL.)""";
+  b) release all other included content under the terms of the chosen versions of the GNU GPL.)";
 
 bool timing_reports_enabled = false;
 
-void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
+void timing_report_function(const utils::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
 {
 	if(timing_reports_enabled) {
 		if(label.empty()) {
@@ -133,9 +134,9 @@ void timing_report_function(const util::ms_optimer& tim, const campaignd::server
 	}
 }
 
-inline util::ms_optimer service_timer(const campaignd::server::request& req, const std::string& label = {})
+inline utils::ms_optimer service_timer(const campaignd::server::request& req, const std::string& label = {})
 {
-	return util::ms_optimer{std::bind(timing_report_function, std::placeholders::_1, req, label)};
+	return utils::ms_optimer{std::bind(timing_report_function, std::placeholders::_1, req, label)};
 }
 
 //
@@ -230,13 +231,15 @@ bool have_wml(const utils::optional_reference<const config>& cfg)
  *
  * Null WML objects are skipped.
  */
-template<typename... Vals>
-std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... args)
+std::vector<std::string> multi_find_illegal_names(const std::initializer_list<optional_const_config>& cfgs)
 {
 	std::vector<std::string> names;
-	((args && check_names_legal(*args, &names)), ...);
-
-	return !names.empty() ? std::optional(names) : std::nullopt;
+	for(auto cfg : cfgs) {
+		if(cfg) {
+			check_names_legal(*cfg, &names);
+		}
+	}
+	return names;
 }
 
 /**
@@ -244,13 +247,15 @@ std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... 
  *
  * Null WML objects are skipped.
  */
-template<typename... Vals>
-std::optional<std::vector<std::string>> multi_find_case_conflicts(const Vals&... args)
+std::vector<std::string> multi_find_case_conflicts(const std::initializer_list<optional_const_config>& cfgs)
 {
 	std::vector<std::string> names;
-	((args && check_case_insensitive_duplicates(*args, &names)), ...);
-
-	return !names.empty() ? std::optional(names) : std::nullopt;
+	for(auto cfg : cfgs) {
+		if(cfg) {
+			check_case_insensitive_duplicates(*cfg, &names);
+		}
+	}
+	return names;
 }
 
 /**
@@ -345,14 +350,15 @@ void server::load_config()
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
 	// One month probably will be fine (#TODO: testing needed)
-	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
+	constexpr std::chrono::seconds seconds_in_a_month{30 * 24 * 60 * 60};
+	update_pack_lifespan_ = chrono::parse_duration(cfg_["update_pack_lifespan"], seconds_in_a_month);
 
-	if(const auto& svinfo_cfg = server_info()) {
-		server_id_ = svinfo_cfg["id"].str();
-		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
-		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
-		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
-	}
+	const auto& svinfo_cfg = server_info();
+
+	server_id_ = svinfo_cfg["id"].str();
+	feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+	web_url_ = svinfo_cfg["web_url"].str(default_web_url);
+	license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
 	load_blacklist();
@@ -415,7 +421,7 @@ void server::load_config()
 
 	// Convert all legacy addons to the new format on load
 	if(cfg_.has_child("campaigns")) {
-		config& campaigns = cfg_.child("campaigns");
+		config& campaigns = cfg_.mandatory_child("campaigns");
 		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! "
 		       << campaigns.child_count("campaign") << " entries to be processed.";
 		for(config& campaign : campaigns.child_range("campaign")) {
@@ -433,10 +439,9 @@ void server::load_config()
 			config data;
 			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
 			read_gz(data, *in);
-			if(!data) {
+			if (data.empty()) {
 				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
-
 			config version_cfg = config("version", campaign["version"].str());
 			version_cfg["filename"] = make_full_pack_filename(campaign["version"]);
 			campaign.add_child("version", version_cfg);
@@ -469,12 +474,12 @@ void server::load_config()
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.";
 
 #ifdef HAVE_MYSQLPP
-	if(const config& user_handler = cfg_.child("user_handler")) {
+	if(auto user_handler = cfg_.optional_child("user_handler")) {
 		if(server_id_ == "") {
 			ERR_CS << "The server id must be set when database support is used.";
 			exit(1);
 		}
-		user_handler_.reset(new fuh(user_handler));
+		user_handler_.reset(new fuh(*user_handler));
 		LOG_CS << "User handler initialized.";
 	}
 #endif
@@ -490,16 +495,22 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
+#if BOOST_VERSION >= 108000
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
+#if BOOST_VERSION >= 108000
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 template<class Socket>
@@ -589,16 +600,17 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			delete_addon(addon_id);
 		}
 	} else if(ctl == "hide" || ctl == "unhide") {
+		// there are also hides/unhides handler methods
 		if(ctl.args_count() != 1) {
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'";
 		} else {
 			const std::string& addon_id = ctl[1];
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd();
 			} else {
-				addon["hidden"] = ctl.cmd() == "hide";
+				addon["hidden"] = (ctl.cmd() == "hide");
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden");
@@ -610,7 +622,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& newpass = ctl[2];
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase";
@@ -620,7 +632,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			} else if(addon["forum_auth"].to_bool()) {
 				ERR_CS << "Can't set passphrase for add-on using forum_auth.";
 			} else {
-				set_passphrase(addon, newpass);
+				set_passphrase(*addon, newpass);
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "New passphrase set for '" << addon_id << "'";
@@ -640,7 +652,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				value += ctl[i];
 			}
 
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute";
@@ -648,7 +660,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "setattr cannot be used to rename add-ons or change their version";
 			} else if(key == "passhash"|| key == "passsalt") {
 				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead";
-			} else if(!addon.has_attribute(key)) {
+			} else if(!addon->has_attribute(key)) {
 				// NOTE: This is a very naive approach for validating setattr's
 				//       input, but it should generally work since add-on
 				//       uploads explicitly set all recognized attributes to
@@ -665,12 +677,12 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			}
 		}
 	} else if(ctl == "log") {
-		static const std::map<std::string, int> log_levels = {
+		static const std::map<std::string, lg::severity> log_levels = {
 			{ "error",   lg::err().get_severity() },
 			{ "warning", lg::warn().get_severity() },
 			{ "info",    lg::info().get_severity() },
 			{ "debug",   lg::debug().get_severity() },
-			{ "none",    -1 }
+			{ "none",    lg::severity::LG_NONE }
 		};
 
 		if(ctl.args_count() != 2) {
@@ -731,7 +743,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 void server::flush_cfg()
 {
-	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.expires_after(std::chrono::minutes(10));
 	flush_timer_.async_wait(std::bind(&server::handle_flush, this, std::placeholders::_1));
 }
 
@@ -776,10 +788,10 @@ void server::write_config()
 	out.commit();
 
 	for(const std::string& name : dirty_addons_) {
-		const config& addon = get_addon(name);
+		auto addon = get_addon(name);
 		if(addon && !addon["filename"].empty()) {
 			filesystem::atomic_commit addon_out(filesystem::normalize_path(addon["filename"].str() + "/addon.cfg"));
-			write(*addon_out.ostream(), addon);
+			write(*addon_out.ostream(), *addon);
 			addon_out.commit();
 		}
 	}
@@ -881,27 +893,27 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-config& server::get_addon(const std::string& id)
+optional_config server::get_addon(const std::string& id)
 {
 	auto addon = addons_.find(id);
 	if(addon != addons_.end()) {
 		return addon->second;
 	} else {
-		return config::get_invalid();
+		return optional_config();
 	}
 }
 
 void server::delete_addon(const std::string& id)
 {
-	config& cfg = get_addon(id);
-
-	if(cfg["forum_auth"].to_bool()) {
-		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
-	}
+	optional_const_config cfg = get_addon(id);
 
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
 		return;
+	}
+
+	if(cfg["forum_auth"].to_bool()) {
+		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
 	}
 
 	std::string fn = cfg["filename"].str();
@@ -937,6 +949,12 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(hide_addon);
+	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
+	REGISTER_CAMPAIGND_HANDLER(list_hidden);
+	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
+	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
+	REGISTER_CAMPAIGND_HANDLER(admins_list);
 }
 
 void server::handle_server_id(const server::request& req)
@@ -963,26 +981,32 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << req << "Sending add-ons list";
 
-	std::time_t epoch = std::time(nullptr);
+	auto now = std::chrono::system_clock::now();
+	const bool relative_to_now = req.cfg["times_relative_to"] == "now";
+
 	config addons_list;
+	addons_list["timestamp"] = chrono::serialize_timestamp(now);
 
-	addons_list["timestamp"] = epoch;
-	if(req.cfg["times_relative_to"] != "now") {
-		epoch = 0;
+	bool before_flag = !req.cfg["before"].empty();
+	std::chrono::system_clock::time_point before;
+	if(before_flag) {
+		if(relative_to_now) {
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["before"]);
+			before = now + time_delta; // delta may be negative
+		} else {
+			before = chrono::parse_timestamp(req.cfg["before"]);
+		}
 	}
 
-	bool before_flag = false;
-	std::time_t before = epoch;
-	if(!req.cfg["before"].empty()) {
-		before += req.cfg["before"].to_time_t();
-		before_flag = true;
-	}
-
-	bool after_flag = false;
-	std::time_t after = epoch;
-	if(!req.cfg["after"].empty()) {
-		after += req.cfg["after"].to_time_t();
-		after_flag = true;
+	bool after_flag = !req.cfg["after"].empty();
+	std::chrono::system_clock::time_point after;
+	if(after_flag) {
+		if(relative_to_now) {
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["after"]);
+			after = now + time_delta; // delta may be negative
+		} else {
+			after = chrono::parse_timestamp(req.cfg["after"]);
+		}
 	}
 
 	const std::string& name = req.cfg["name"];
@@ -1002,10 +1026,10 @@ void server::handle_request_campaign_list(const server::request& req)
 
 		const auto& tm = i["timestamp"];
 
-		if(before_flag && (tm.empty() || tm.to_time_t(0) >= before)) {
+		if(before_flag && (tm.empty() || chrono::parse_timestamp(tm) >= before)) {
 			continue;
 		}
-		if(after_flag && (tm.empty() || tm.to_time_t(0) <= after)) {
+		if(after_flag && (tm.empty() || chrono::parse_timestamp(tm) <= after)) {
 			continue;
 		}
 
@@ -1033,6 +1057,11 @@ void server::handle_request_campaign_list(const server::request& req)
 		// Remove attributes containing information that's considered sensitive
 		// or irrelevant to clients
 		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
+
+		// don't include icons if requested
+		if(!req.cfg["send_icons"].to_bool(true)) {
+			j.remove_attribute("icon");
+		}
 
 		// Build a feedback_url string attribute from the internal [feedback]
 		// data or deliver an empty value, in case clients decide to assume its
@@ -1062,7 +1091,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	config& addon = get_addon(req.cfg["name"]);
+	auto addon = get_addon(req.cfg["name"]);
 
 	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -1070,7 +1099,7 @@ void server::handle_request_campaign(const server::request& req)
 	}
 
 	const auto& name = req.cfg["name"].str();
-	auto version_map = get_version_map(addon);
+	auto version_map = get_version_map(*addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + name + "' are available on the server.", req.sock);
@@ -1125,7 +1154,7 @@ void server::handle_request_campaign(const server::request& req)
 			const auto& prev_version_cfg = iter->second;
 			const auto& next_version_cfg = (++iter)->second;
 
-			for(const config& pack : addon.child_range("update_pack")) {
+			for(const config& pack : addon->child_range("update_pack")) {
 				if(pack["from"].str() != prev_version_cfg["version"].str() ||
 				   pack["to"].str() != next_version_cfg["version"].str()) {
 					continue;
@@ -1206,7 +1235,7 @@ void server::handle_request_campaign(const server::request& req)
 
 void server::handle_request_campaign_hash(const server::request& req)
 {
-	config& addon = get_addon(req.cfg["name"]);
+	auto addon = get_addon(req.cfg["name"]);
 
 	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -1215,7 +1244,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 
 	std::string path = addon["filename"].str() + '/';
 
-	auto version_map = get_version_map(addon);
+	auto version_map = get_version_map(*addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
@@ -1326,6 +1355,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 			}
 
+			for(const std::string& primary_author : utils::split(upload["primary_authors"].str(), ',')) {
+				if(!user_handler_->user_exists(primary_author)) {
+					LOG_CS << "Validation error: forum auth requested for a primary author who doesn't exist";
+					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
+				}
+			}
+
 			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
 				if(!user_handler_->user_exists(secondary_author)) {
 					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
@@ -1391,6 +1427,11 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_TITLE;
 	}
 
+	if(addon_icon_too_large(upload["icon"].str())) {
+		LOG_CS << "Validation error: icon too large";
+		return ADDON_CHECK_STATUS::ICON_TOO_LARGE;
+	}
+
 	if(is_text_markup_char(upload["title"].str()[0])) {
 		LOG_CS << "Validation error: add-on title starts with an illegal formatting character.";
 		return ADDON_CHECK_STATUS::TITLE_HAS_MARKUP;
@@ -1432,15 +1473,15 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_EMAIL;
 	}
 
-	if(const auto badnames = multi_find_illegal_names(data, addlist, removelist)) {
-		error_data = utils::join(*badnames, "\n");
-		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames->size() << " entries)";
+	if(std::vector<std::string> badnames = multi_find_illegal_names({data, addlist, removelist}); !badnames.empty()) {
+		error_data = utils::join(badnames, "\n");
+		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(const auto badnames = multi_find_case_conflicts(data, addlist, removelist)) {
-		error_data = utils::join(*badnames, "\n");
-		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames->size() << " entries)";
+	if(std::vector<std::string> badnames = multi_find_case_conflicts({data, addlist, removelist}); !badnames.empty()) {
+		error_data = utils::join(badnames, "\n");
+		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
 	}
 
@@ -1449,7 +1490,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
 	}
 
-	if(const config& url_params = upload.child("feedback")) {
+	if(auto url_params = upload.optional_child("feedback")) {
 		try {
 			int topic_id = std::stoi(url_params["topic_id"].str("0"));
 			if(user_handler_ && topic_id != 0) {
@@ -1469,7 +1510,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 void server::handle_upload(const server::request& req)
 {
-	const std::time_t upload_ts = std::time(nullptr);
+	const auto upload_ts = std::chrono::system_clock::now();
 	const config& upload = req.cfg;
 	const auto& name = upload["name"].str();
 
@@ -1497,7 +1538,7 @@ void server::handle_upload(const server::request& req)
 
 	if(!is_existing_upload) {
 		// Create a new add-ons list entry and work with that from now on
-		auto entry = addons_.emplace(name, config("original_timestamp", upload_ts));
+		auto entry = addons_.emplace(name, config("original_timestamp", chrono::serialize_timestamp(upload_ts)));
 		addon_ptr = &(*entry.first).second;
 	}
 
@@ -1510,7 +1551,7 @@ void server::handle_upload(const server::request& req)
 	// Write general metadata attributes
 
 	addon.copy_or_remove_attributes(upload,
-		"title", "name", "uploader", "author", "secondary_authors", "description", "version", "icon",
+		"title", "name", "uploader", "author", "primary_authors", "secondary_authors", "description", "version", "icon",
 		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth"
 	);
 
@@ -1526,13 +1567,13 @@ void server::handle_upload(const server::request& req)
 		addon["downloads"] = 0;
 	}
 
-	addon["timestamp"] = upload_ts;
+	addon["timestamp"] = chrono::serialize_timestamp(upload_ts);
 	addon["uploads"] = 1 + addon["uploads"].to_int();
 
 	addon.clear_children("feedback");
 	int topic_id = 0;
-	if(const config& url_params = upload.child("feedback")) {
-		addon.add_child("feedback", url_params);
+	if(auto url_params = upload.optional_child("feedback")) {
+		addon.add_child("feedback", *url_params);
 		// already validated that this can be converted to an int in validate_addon()
 		topic_id = url_params["topic_id"].to_int();
 	}
@@ -1552,7 +1593,7 @@ void server::handle_upload(const server::request& req)
 				// if p1 is primary, p2 is secondary, and p2 uploads, then this is skipped because the uploader is not the primary author
 				// if next time p2 is primary, p1 is secondary, and p1 uploads, then p1 is both uploader and secondary author
 				//   therefore p2's author information would not be reinserted if the uploader attribute were used instead
-				user_handler_->db_insert_addon_authors(server_id_, name, addon["author"].str(), utils::split(addon["secondary_authors"].str(), ','));
+				user_handler_->db_insert_addon_authors(server_id_, name, utils::split(addon["primary_authors"].str(), ','), utils::split(addon["secondary_authors"].str(), ','));
 			}
 		}
 		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id, upload["uploader"].str());
@@ -1647,7 +1688,7 @@ void server::handle_upload(const server::request& req)
 
 		pack_info["from"] = prev_version;
 		pack_info["to"] = new_version;
-		pack_info["expire"] = upload_ts + update_pack_lifespan_;
+		pack_info["expire"] = chrono::serialize_timestamp(upload_ts + update_pack_lifespan_);
 		pack_info["filename"] = update_pack_fn;
 
 		// Write the update pack to disk
@@ -1749,7 +1790,7 @@ void server::handle_upload(const server::request& req)
 	std::set<std::string> expire_packs;
 
 	for(const config& pack : addon.child_range("update_pack")) {
-		if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
+		if(upload_ts > chrono::parse_timestamp(pack["expire"]) || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
 			LOG_CS << "Expiring upate pack for " << pack["from"].str() << " -> " << pack["to"].str();
 			const auto& pack_filename = pack["filename"].str();
 			filesystem::delete_file(pathstem + '/' + pack_filename);
@@ -1804,7 +1845,7 @@ void server::handle_upload(const server::request& req)
 		config& pack_info = addon.add_child("update_pack");
 		pack_info["from"] = prev_version_name;
 		pack_info["to"] = next_version_name;
-		pack_info["expire"] = upload_ts + update_pack_lifespan_;
+		pack_info["expire"] = chrono::serialize_timestamp(upload_ts + update_pack_lifespan_);
 		pack_info["filename"] = update_pack_fn;
 
 		// Generate the update pack from both full packs
@@ -1848,9 +1889,7 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << req << "Deleting add-on '" << id << "'";
 
-	config& addon = get_addon(id);
-	PLAIN_LOG << erase.debug() << "\n\n" << addon.debug();
-
+	auto addon = get_addon(id);
 	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
@@ -1863,15 +1902,22 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!addon["forum_auth"].to_bool()) {
-		if(!authenticate(addon, pass)) {
+	if(erase["admin"].to_bool()) {
+		if(!authenticate_admin(erase["uploader"].str(), pass.str())) {
 			send_error("The passphrase is incorrect.", req.sock);
 			return;
 		}
 	} else {
-		if(!authenticate_forum(erase, pass, true)) {
-			send_error("The passphrase is incorrect.", req.sock);
-			return;
+		if(addon["forum_auth"].to_bool()) {
+			if(!authenticate_forum(erase, pass, true)) {
+				send_error("The passphrase is incorrect.", req.sock);
+				return;
+			}
+		} else {
+			if(!authenticate(*addon, pass)) {
+				send_error("The passphrase is incorrect.", req.sock);
+				return;
+			}
 		}
 	}
 
@@ -1896,13 +1942,13 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& addon = get_addon(cpass["name"]);
+	auto addon = get_addon(cpass["name"]);
 
 	if(!addon) {
 		send_error("No add-on with that name exists.", req.sock);
 	} else if(addon["forum_auth"].to_bool()) {
 		send_error("Changing the password for add-ons using forum_auth is not supported.", req.sock);
-	} else if(!authenticate(addon, cpass["passphrase"])) {
+	} else if(!authenticate(*addon, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
 	} else if(addon["hidden"].to_bool()) {
 		LOG_CS << "Passphrase change denied - hidden add-on.";
@@ -1910,11 +1956,149 @@ void server::handle_change_passphrase(const server::request& req)
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
-		set_passphrase(addon, cpass["new_passphrase"]);
+		set_passphrase(*addon, cpass["new_passphrase"]);
 		dirty_addons_.emplace(addon["name"]);
 		write_config();
 		send_message("Passphrase changed.", req.sock);
 	}
+}
+
+// the fifo handler also hides add-ons
+void server::handle_hide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot hide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = true;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now hidden";
+	}
+
+	send_message("Add-on hidden.", req.sock);
+}
+
+// the fifo handler also unhides add-ons
+void server::handle_unhide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot unhide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = false;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now unhidden";
+	}
+
+	send_message("Add-on unhidden.", req.sock);
+}
+
+void server::handle_list_hidden(const server::request& req)
+{
+	config response;
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	if(!authenticate_admin(username, passphrase)) {
+		send_error("The passphrase is incorrect.", req.sock);
+		return;
+	}
+
+	for(const auto& addon : addons_) {
+		if(addon.second["hidden"].to_bool()) {
+			config& child = response.add_child("hidden");
+			child["addon"] = addon.second["name"].str();
+		}
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_addon_downloads_by_version(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_downloads_info(server_id_, req.cfg["addon"].str());
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_forum_auth_usage(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_forum_auth_usage(server_id_);
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_admins_list(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_admins();
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 bool server::authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete) {
@@ -1942,9 +2126,21 @@ bool server::authenticate_forum(const config& addon, const std::string& passphra
 	return user_handler_->login(author, hashed_password);
 }
 
+bool server::authenticate_admin(const std::string& username, const std::string& passphrase)
+{
+	if(!user_handler_ || !user_handler_->user_is_addon_admin(username)) {
+		return false;
+	}
+
+	std::string salt = user_handler_->extract_salt(username);
+	std::string hashed_password = hash_password(passphrase, salt, username);
+
+	return user_handler_->login(username, hashed_password);
+}
+
 } // end namespace campaignd
 
-int run_campaignd(int argc, char** argv)
+static int run_campaignd(int argc, char** argv)
 {
 	campaignd::command_line cmdline{argc, argv};
 	std::string server_path = filesystem::get_cwd();
@@ -1997,12 +2193,12 @@ int run_campaignd(int argc, char** argv)
 	}
 
 	if(cmdline.show_log_domains) {
-		std::cout << lg::list_logdomains("");
+		std::cout << lg::list_log_domains("");
 		return 0;
 	}
 
 	for(const auto& ldl : cmdline.log_domain_levels) {
-		if(!lg::set_log_domain_severity(ldl.first, ldl.second)) {
+		if(!lg::set_log_domain_severity(ldl.first, static_cast<lg::severity>(ldl.second))) {
 			PLAIN_LOG << "Unknown log domain: " << ldl.first;
 			return 2;
 		}
@@ -2051,8 +2247,8 @@ int main(int argc, char** argv)
 	} catch(const boost::program_options::error& e) {
 		PLAIN_LOG << "Error in command line: " << e.what();
 		return 10;
-	} catch(const config::error& /*e*/) {
-		PLAIN_LOG << "Could not parse config file";
+	} catch(const config::error& e) {
+		PLAIN_LOG << "Could not parse config file: " << e.message;
 		return 1;
 	} catch(const filesystem::io_exception& e) {
 		PLAIN_LOG << "File I/O error: " << e.what();

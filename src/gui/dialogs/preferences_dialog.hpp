@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -15,29 +15,15 @@
 */
 #pragma once
 
-#include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "preferences/advanced.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
+#include "theme.hpp"
 
-// This file is not named preferences.hpp in order -I conflicts with
-// src/preferences.hpp.
+// This file is not named preferences.hpp in order -I conflicts with src/preferences.hpp.
 
-namespace hotkey {
-	struct hotkey_command;
-}
-
-struct point;
-
-namespace preferences {
-	enum PREFERENCE_VIEW {
-		VIEW_DEFAULT,
-		VIEW_FRIENDS
-	};
-
+namespace {
 	/**
 	 * Map containing page mappings that can be used to set the initially displayed page
 	 * of the dialog. The pair is in an 0-indexed toplevel stack/substack format, where
@@ -49,9 +35,9 @@ namespace preferences {
 	 * widget would allow specifying page by string id, but that would require changes to
 	 * generator. It's something to look into, however.
 	 */
-	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map {
-		{VIEW_DEFAULT, {0,0}},
-		{VIEW_FRIENDS, {4,1}}
+	static std::map<pref_constants::PREFERENCE_VIEW, std::pair<int,int>> pef_view_map {
+		{pref_constants::VIEW_DEFAULT, {0,0}},
+		{pref_constants::VIEW_FRIENDS, {4,1}}
 	};
 }
 
@@ -60,7 +46,6 @@ namespace gui2
 
 class listbox;
 class menu_button;
-class slider;
 class text_box;
 
 namespace dialogs
@@ -69,7 +54,7 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT);
+	preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view = pref_constants::VIEW_DEFAULT);
 
 	/** The display function -- see @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
@@ -77,13 +62,15 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& /*window*/) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	/** Initializers */
 	void initialize_callbacks();
 	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
+	void set_theme_list(menu_button& theme_list);
+	void set_gui2_theme_list(menu_button& theme_list);
 	listbox& setup_hotkey_list();
 
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
@@ -108,19 +95,23 @@ private:
 
 	/** Special callback functions */
 	void handle_res_select();
+	void handle_theme_select();
+	void handle_gui2_theme_select();
 	void fullscreen_toggle_callback();
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback();
 	void hotkey_filter_callback();
 
-	group<preferences::lobby_joins> lobby_joins_group;
-
-	const preferences::advanced_pref_list& adv_preferences_;
+	group<pref_constants::lobby_joins> lobby_joins_group;
 
 	std::vector<point> resolutions_;
+	std::vector<theme_info> themes_;
+	std::vector<std::string> gui2_themes_;
 
 	int last_selected_item_;
+	unsigned current_gui_theme_;
+	bool is_reload_needed_;
 
 	std::vector<double> accl_speeds_;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,14 +15,13 @@
 
 #pragma once
 
+#include "global.hpp"
 #include "tooltips.hpp"
 #include "tstring.hpp"
 
 #include <bitset>
 #include <functional>
-#include <list>
 #include <map>
-#include <vector>
 
 class config;
 
@@ -55,10 +54,10 @@ enum HOTKEY_COMMAND {
 	HOTKEY_FULLSCREEN, HOTKEY_SCREENSHOT, HOTKEY_MAP_SCREENSHOT, HOTKEY_ACCELERATED,
 	HOTKEY_TERRAIN_DESCRIPTION,
 	HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_DELETE_UNIT,
-	HOTKEY_SAVE_GAME, HOTKEY_SAVE_REPLAY, HOTKEY_SAVE_MAP, HOTKEY_LOAD_GAME,
+	HOTKEY_SAVE_GAME, HOTKEY_SAVE_REPLAY, HOTKEY_SAVE_MAP, HOTKEY_LOAD_GAME, HOTKEY_LOAD_AUTOSAVES,
 	HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
 	HOTKEY_TOGGLE_ELLIPSES, HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE, HOTKEY_MOUSE_SCROLL,
-	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_SIDE, HOTKEY_KILL_UNIT, HOTKEY_PREFERENCES,
+	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_SIDE, HOTKEY_KILL_UNIT, HOTKEY_PREFERENCES, HOTKEY_TELEPORT_UNIT,
 	HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_STOP_NETWORK, HOTKEY_START_NETWORK, HOTKEY_SURRENDER, HOTKEY_QUIT_GAME, HOTKEY_QUIT_TO_DESKTOP,
 	HOTKEY_LABEL_TEAM_TERRAIN, HOTKEY_LABEL_TERRAIN, HOTKEY_CLEAR_LABELS,HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
 	HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
@@ -102,6 +101,9 @@ enum HOTKEY_COMMAND {
 	HOTKEY_MINIMAP_CODING_TERRAIN, HOTKEY_MINIMAP_CODING_UNIT,
 	HOTKEY_MINIMAP_DRAW_UNITS, HOTKEY_MINIMAP_DRAW_VILLAGES, HOTKEY_MINIMAP_DRAW_TERRAIN,
 
+	// Multiplayer
+	HOTKEY_MP_START_GAME,
+
 	/* Gui2 specific hotkeys. */
 	TITLE_SCREEN__RELOAD_WML,
 	TITLE_SCREEN__NEXT_TIP,
@@ -121,6 +123,7 @@ enum HOTKEY_COMMAND {
 	/* Editor commands */
 	HOTKEY_EDITOR_CUSTOM_TODS,
 	HOTKEY_EDITOR_PARTIAL_UNDO,
+	HOTKEY_EDITOR_EDIT_UNIT,
 
 	// Palette
 	HOTKEY_EDITOR_PALETTE_ITEM_SWAP, HOTKEY_EDITOR_PALETTE_ITEMS_CLEAR,
@@ -131,6 +134,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_SCHEDULE,
 	HOTKEY_EDITOR_LOCAL_TIME,
 	HOTKEY_EDITOR_UNIT_FACING,
+
+	HOTKEY_EDITOR_HELP_TEXT_SHOWN,
 
 	// Unit
 	HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE,
@@ -168,6 +173,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_MAP_RESIZE,
 	HOTKEY_EDITOR_MAP_GENERATE, HOTKEY_EDITOR_MAP_APPLY_MASK,
 	HOTKEY_EDITOR_MAP_CREATE_MASK_TO,
+	HOTKEY_EDITOR_MAP_TO_SCENARIO,
 
 	// Transitions
 	HOTKEY_EDITOR_UPDATE_TRANSITIONS, HOTKEY_EDITOR_TOGGLE_TRANSITIONS,
@@ -190,6 +196,12 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_AREA_ADD,
 	HOTKEY_EDITOR_AREA_SAVE,
 	HOTKEY_EDITOR_AREA_RENAME,
+
+	// Addons
+	HOTKEY_EDITOR_PBL,
+	HOTKEY_EDITOR_CHANGE_ADDON_ID,
+	HOTKEY_EDITOR_SELECT_ADDON,
+	HOTKEY_EDITOR_OPEN_ADDON,
 
 	// Scenario
 	HOTKEY_EDITOR_SCENARIO_EDIT,
@@ -217,13 +229,8 @@ enum HOTKEY_CATEGORY {
 	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-/**
- * Returns the map of hotkey categories and their display names.
- *
- * These aren't translated and need be converted to a t_string before
- * being displayed to the player.
- */
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
+/** Gets the display name for a given hotkey category. */
+t_string get_translatable_category_name(HOTKEY_CATEGORY category);
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
@@ -307,7 +314,7 @@ private:
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
 /** returns the hotkey_command with the given name */
-const hotkey_command& get_hotkey_command(const std::string& command);
+NOT_DANGLING const hotkey_command& get_hotkey_command(const std::string& command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
@@ -320,11 +327,13 @@ bool has_hotkey_command(const std::string& id);
 class wml_hotkey_record
 {
 public:
-	wml_hotkey_record() = default;
-
 	/** Don't allow copying so objects don't get erased early. */
 	wml_hotkey_record(const wml_hotkey_record&) = delete;
 	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
+
+	/** But we *do* want move semantics. */
+	wml_hotkey_record(wml_hotkey_record&&) = default;
+	wml_hotkey_record& operator=(wml_hotkey_record&&) = default;
 
 	/** Registers a hotkey_command for a WML hotkey with the given ID if one does not already exist. */
 	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);

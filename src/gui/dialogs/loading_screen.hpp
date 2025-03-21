@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,17 +14,15 @@
 
 #pragma once
 
-#include "gui/core/top_level_drawable.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "events.hpp"
 #include "tstring.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <future>
 #include <map>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <vector>
 
 namespace cursor
@@ -80,7 +78,7 @@ public:
 
 	~loading_screen();
 
-	static void display(std::function<void()> f);
+	static void display(const std::function<void()>& f);
 	static bool displaying() { return singleton_ != nullptr; }
 
 	/**
@@ -120,12 +118,12 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** Inherited from events::pump_monitor. */
-	virtual void process(events::pump_info&) override;
+	virtual void process() override;
 
 	/** Called by draw_manager to assign concrete layout. */
 	virtual void layout() override;
@@ -139,7 +137,7 @@ private:
 	label* progress_stage_label_;
 	drawing* animation_;
 
-	std::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
+	utils::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
 
 	std::atomic<loading_stage> current_stage_;
 

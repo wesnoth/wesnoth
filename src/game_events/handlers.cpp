@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,6 +36,7 @@
 #include "side_filter.hpp"
 #include "sound.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -56,6 +57,11 @@ event_handler::event_handler(const std::string& types, const std::string& id)
 	, is_menu_item_(false)
 	, disabled_(false)
 	, is_lua_(false)
+	, has_preloaded_(false)
+	, event_ref_(0)
+	, priority_(0.0)
+	, args_()
+	, filters_()
 	, id_(id)
 	, types_(types)
 {}
@@ -162,6 +168,7 @@ void event_handler::write_config(config &cfg, bool include_nonserializable) cons
 	if(!types_.empty()) cfg["name"] = types_;
 	if(!id_.empty()) cfg["id"] = id_;
 	cfg["first_time_only"] = first_time_only_;
+	cfg["priority"] = priority_;
 	for(const auto& filter : filters_) {
 		filter->serialize(cfg);
 	}
@@ -241,10 +248,29 @@ struct filter_attack : public event_filter {
 	{
 		const unit_map& units = resources::gameboard->units();
 		const auto& loc = first_ ? event_info.loc1 : event_info.loc2;
-		auto unit = units.find(loc);
-		if(unit != units.end() && loc.matches_unit(unit)) {
-			const config& attack = event_info.data.child(first_ ? "first" : "second");
-			return swf_.empty() || matches_special_filter(attack, swf_);
+		const auto& loc_d = first_ ? event_info.loc2 : event_info.loc1;
+		auto unit_a = units.find(loc);
+		auto unit_d = units.find(loc_d);
+		if(unit_a != units.end() && loc.matches_unit(unit_a)) {
+			const auto u = unit_a->shared_from_this();
+			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
+			if(temp_weapon){
+				const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
+				if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
+					const auto opp = unit_d->shared_from_this();
+					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
+					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
+					auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
+					utils::optional<decltype(ctx)> opp_ctx;
+					if(second_attack){
+						opp_ctx.emplace(second_attack->specials_context(opp, u, loc_d, loc, !first_, attack));
+					}
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+				} else {
+					auto ctx = attack->specials_context(u, loc, first_);
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+				}
+			}
 		}
 		return false;
 	}
@@ -336,11 +362,11 @@ private:
 
 void event_handler::read_filters(const config &cfg)
 {
-	for(auto filter : cfg.all_children_range()) {
-		vconfig vcfg(filter.cfg);
-		if(auto filter_ptr = make_filter(filter.key, vcfg)) {
+	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()) {
+		vconfig vcfg(filter_cfg);
+		if(auto filter_ptr = make_filter(filter_key, vcfg)) {
 			add_filter(std::move(filter_ptr));
-		} else if(filter.key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
+		} else if(filter_key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
 			add_filter(std::make_unique<filter_dynamic>(vcfg["name"], vcfg["variable"]));
 		}
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/core/log.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
@@ -44,7 +43,7 @@ REGISTER_WIDGET(slider)
 
 slider::slider(const implementation::builder_slider& builder)
 	: slider_base(builder, type())
-	, best_slider_length_(0)
+	, best_slider_length_(builder.best_slider_length)
 	, minimum_value_(0)
 	, step_size_(1)
 	, minimum_value_label_()
@@ -303,17 +302,17 @@ slider_definition::slider_definition(const config& cfg)
 
 slider_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, positioner_length(cfg["minimum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
+	, positioner_length(cfg["minimum_positioner_length"].to_unsigned())
+	, left_offset(cfg["left_offset"].to_unsigned())
+	, right_offset(cfg["right_offset"].to_unsigned())
 {
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_pressed"));
-	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("slider_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("slider_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("slider_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("slider_definition][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -322,21 +321,21 @@ namespace implementation
 {
 builder_slider::builder_slider(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
-	, best_slider_length_(cfg["best_slider_length"])
-	, minimum_value_(cfg["minimum_value"])
-	, maximum_value_(cfg["maximum_value"])
+	, best_slider_length(cfg["best_slider_length"].to_unsigned())
+	, minimum_value_(cfg["minimum_value"].to_int())
+	, maximum_value_(cfg["maximum_value"].to_int())
 	, step_size_(cfg["step_size"].to_int(1))
-	, value_(cfg["value"])
+	, value_(cfg["value"].to_int())
 	, minimum_value_label_(cfg["minimum_value_label"].t_str())
 	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()
 {
-	const config& labels = cfg.child("value_labels");
+	auto labels = cfg.optional_child("value_labels");
 	if(!labels) {
 		return;
 	}
 
-	for(const auto& label : labels.child_range("value")) {
+	for(const auto& label : labels->child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -345,7 +344,6 @@ std::unique_ptr<widget> builder_slider::build() const
 {
 	auto widget = std::make_unique<slider>(*this);
 
-	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);
 	widget->set_step_size(step_size_);
 	widget->set_value(value_);
@@ -354,7 +352,7 @@ std::unique_ptr<widget> builder_slider::build() const
 
 	if(!value_labels_.empty()) {
 		VALIDATE(value_labels_.size() == static_cast<std::size_t>(widget->get_item_count()),
-				 _("The number of value_labels and values don't match."));
+				 _("The number of value_labels and values don’t match."));
 
 		widget->set_value_labels(value_labels_);
 

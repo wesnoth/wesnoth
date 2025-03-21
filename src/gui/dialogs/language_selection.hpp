@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,26 +17,17 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
+struct language_def;
+
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to select the language to use.
- * When the dialog is closed with the OK button it also updates the selected language in the preferences.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * language_list     | @ref listbox |yes      |This listbox contains the list with available languages.
- * free to choose    | control      |no       |Show the name of the language in the current row.
- */
 class language_selection : public modal_dialog
 {
 public:
-	language_selection()
-		: modal_dialog(window_id())
-	{
-	}
+	language_selection();
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(language_selection)
@@ -44,9 +35,14 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
+
+	void shown_filter_callback();
+
+	const std::vector<language_def> langs_;
+	boost::dynamic_bitset<> complete_langs_;
 };
 
 } // namespace dialogs
