@@ -15,6 +15,7 @@
 
 #include "generators/map_create.hpp"
 
+#include "filesystem.hpp"
 #include "generators/cave_map_generator.hpp"
 #include "generators/default_map_generator.hpp"
 #include "generators/lua_map_generator.hpp"
@@ -29,13 +30,8 @@ map_generator* create_map_generator(const std::string& name, const config &cfg, 
 {
 	if(name == "default" || name.empty()) {
 		return new default_map_generator(cfg);
-	} else if(name == "cave") {
-		ERR_CF << "map/scenario_generation=cave is deprecatd and will be removed soon, use map/scenario_generation=lua with lua/cave_map_generator.lua instead.";
-		return new cave_map_generator(cfg);
-	} else if(name == "lua") {
-		return new lua_map_generator(cfg, vars);
 	} else {
-		return nullptr;
+		return new lua_map_generator(name, cfg, vars);
 	}
 }
 
