@@ -964,7 +964,9 @@ void mouse_handler::move_action(bool browse)
 
 		src = selected_hex_;
 		orig_paths = current_paths_;
-		attack_from = current_unit_attacks_from(hex); //the attack dialog is showed like if the unit is standing at the hex, this may be not the best approach
+		attack_from = current_unit_attacks_from(hex);
+		// the attack dialog is showed like if the unit is standing at the hex,
+		// this may be not the best approach for units with multiple attacks with different attack ranges
 	} // end planned unit map scope
 
 	// See if the teleport option is toggled
