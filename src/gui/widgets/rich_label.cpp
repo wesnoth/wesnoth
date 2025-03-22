@@ -252,6 +252,8 @@ std::vector<std::string> rich_label::split_in_width(
 
 void rich_label::set_dom(const config& dom) {
 	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
+	update_canvas();
+	queue_redraw();
 }
 
 void rich_label::set_label(const t_string& text) {
