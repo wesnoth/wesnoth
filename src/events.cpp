@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -226,7 +226,7 @@ pump_monitor::pump_monitor()
 
 pump_monitor::~pump_monitor()
 {
-	pump_monitors.erase(std::remove(pump_monitors.begin(), pump_monitors.end(), this), pump_monitors.end());
+	utils::erase(pump_monitors, this);
 }
 
 event_context::event_context()
@@ -260,7 +260,7 @@ sdl_handler::sdl_handler(const sdl_handler &that)
 		event_contexts.front().add_handler(this);
 	} else if(has_joined_) {
 		bool found_context = false;
-		for(auto &context : utils::reversed_view(event_contexts)) {
+		for(auto &context : event_contexts | utils::views::reverse) {
 			if(context.has_handler(&that)) {
 				found_context = true;
 				context.add_handler(this);
@@ -279,7 +279,7 @@ sdl_handler &sdl_handler::operator=(const sdl_handler &that)
 	if(that.has_joined_global_) {
 		join_global();
 	} else if(that.has_joined_) {
-		for(auto &context : utils::reversed_view(event_contexts)) {
+		for(auto &context : event_contexts | utils::views::reverse) {
 			if(context.has_handler(&that)) {
 				join(context);
 				break;
@@ -340,7 +340,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 		leave(); // should not be in multiple event contexts
 	}
 
-	for(auto& context : utils::reversed_view(event_contexts)) {
+	for(auto& context : event_contexts | utils::views::reverse) {
 		if(context.has_handler(parent)) {
 			join(context);
 			return;
@@ -362,7 +362,7 @@ void sdl_handler::leave()
 		member->leave();
 	}
 
-	for(auto& context : utils::reversed_view(event_contexts)) {
+	for(auto& context : event_contexts | utils::views::reverse) {
 		if(context.remove_handler(this)) {
 			break;
 		}
@@ -466,8 +466,12 @@ static void raise_window_event(const SDL_Event& event)
 	}
 }
 
-// TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
-static const std::thread::id main_thread = std::this_thread::get_id();
+static std::thread::id main_thread;
+
+void set_main_thread()
+{
+	 main_thread = std::this_thread::get_id();
+}
 
 // this should probably be elsewhere, but as the main thread is already
 // being tracked here, this went here.
@@ -482,12 +486,6 @@ void pump()
 		// Can only call this on the main thread!
 		return;
 	}
-
-	pump_info info;
-
-	// Used to keep track of double click events
-	static int last_mouse_down = -1;
-	static int last_click_x = -1, last_click_y = -1;
 
 	SDL_Event temp_event;
 	int poll_count = 0;
@@ -618,8 +616,6 @@ void pump()
 			case SDL_WINDOWEVENT_RESIZED:
 				LOG_DP << "events/RESIZED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				info.resize_dimensions.first = event.window.data1;
-				info.resize_dimensions.second = event.window.data2;
 				prefs::get().set_resolution(video::window_size());
 				break;
 
@@ -660,24 +656,10 @@ void pump()
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
 			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
-				static const int DoubleClickTime = 500;
-#ifdef __IPHONEOS__
-				static const int DoubleClickMaxMove = 15;
-#else
-				static const int DoubleClickMaxMove = 3;
-#endif
-
-				if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime
-						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
-						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
-				) {
+				if(event.button.clicks == 2) {
 					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
-
-				last_mouse_down = info.ticks();
-				last_click_x = event.button.x;
-				last_click_y = event.button.y;
 			}
 			break;
 		}
@@ -736,7 +718,7 @@ void pump()
 
 	// Inform the pump monitors that an events::pump() has occurred
 	for(auto monitor : pump_monitors) {
-		monitor->process(info);
+		monitor->process();
 	}
 }
 
@@ -776,15 +758,6 @@ void process_tooltip_strings(int mousex, int mousey)
 			handler->process_tooltip_string(mousex, mousey);
 		}
 	}
-}
-
-int pump_info::ticks(unsigned* refresh_counter, unsigned refresh_rate)
-{
-	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
-		ticks_ = ::SDL_GetTicks();
-	}
-
-	return ticks_;
 }
 
 /* The constants for the minimum and maximum are picked from the headers. */

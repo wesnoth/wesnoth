@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/gui_test_dialog.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 
 namespace gui2::dialogs
@@ -29,11 +28,11 @@ gui_test_dialog::gui_test_dialog()
 {
 }
 
-void gui_test_dialog::pre_show(window& /*win*/)
+void gui_test_dialog::pre_show()
 {
 }
 
-void gui_test_dialog::post_show(window& /*win*/)
+void gui_test_dialog::post_show()
 {
 }
 

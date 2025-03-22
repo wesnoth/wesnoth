@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,12 +74,8 @@ class unit_adapter {
 		 */
 		int damage_from(const attack_type& attack) const {
 			if(unit_type_ != nullptr) {
-				std::pair<std::string, std::string> types = attack.damage_type();
-				int res = unit_type_->movement_type().resistance_against(types.first);
-				if(!(types.second).empty()){
-					// max not min, resistance_against() returns the percentage taken, so higher means more damage
-					res = std::max(res, unit_type_->movement_type().resistance_against(types.second));
-				}
+				std::string type = attack.effective_damage_type().first;
+				int res = unit_type_->movement_type().resistance_against(type);
 				return res;
 			} else {
 				return unit_->damage_from(attack, false, map_location());

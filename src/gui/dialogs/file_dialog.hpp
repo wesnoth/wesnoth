@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -224,10 +224,10 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
-	bool on_exit(window& window);
+	bool on_exit();
 	/** Handles file/directory selection on single-click. */
 	void on_row_selected();
 	/** Handles selection or deselection of bookmarks. */

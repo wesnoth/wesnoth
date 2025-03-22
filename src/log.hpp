@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -197,7 +197,7 @@ class log_in_progress {
 	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
-	void operator|(formatter&& message);
+	void operator|(const formatter& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
@@ -230,8 +230,6 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
-std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
 std::string get_log_file_path();
 

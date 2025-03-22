@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
 #include "floating_label.hpp"
-#include "font/sdl_ttf_compat.hpp" // for pango_line_width
+#include "font/sdl_ttf_compat.hpp" // for pango_line_size
 #include "formula/string_utils.hpp"
 #include "lexical_cast.hpp"
 #include "overlay.hpp"
@@ -74,11 +74,11 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	display::draw_hex(loc);
 
-	if(!map().on_board_with_border(loc) || map_screenshot_) {
+	if(!get_map().on_board_with_border(loc) || map_screenshot_) {
 		return;
 	}
 
-	if(map().in_selection(loc)) {
+	if(get_map().in_selection(loc)) {
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, d);
@@ -122,7 +122,7 @@ void editor_display::layout()
 		refresh_report("position", &element);
 	}
 
-	if (dc_->teams().empty()) {
+	if (context().teams().empty()) {
 		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {
@@ -172,12 +172,13 @@ void editor_display::set_status(const std::string& str, const bool is_success)
 		formatted_str = VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>", {{"msg", str}});
 	}
 
+	using namespace std::chrono_literals;
 	font::floating_label flabel(formatted_str);
 	flabel.set_font_size(size);
 	flabel.set_position(0, canvas_size.y);
 	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
-	flabel.set_lifetime(1000, 10);
+	flabel.set_lifetime(1000ms, 10ms);
 	flabel.use_markup(true);
 
 	const int f_handle = font::add_floating_label(flabel);
@@ -220,7 +221,7 @@ void editor_display::set_help_string(const std::string& str)
 	point canvas_size = video::game_canvas_size();
 
 	while(size > 0) {
-		if(font::pango_line_width(str, size) * 2 > canvas_size.x) {
+		if(auto [lw, _] = font::pango_line_size(str, size); lw * 2 > canvas_size.x) {
 			size--;
 		} else {
 			break;

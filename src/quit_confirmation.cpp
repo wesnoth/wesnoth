@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2024
+	Copyright (C) 2015 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		for(quit_confirmation* blocker : utils::reversed_view(blockers_))
+		for(quit_confirmation* blocker : blockers_ | utils::views::reverse)
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;

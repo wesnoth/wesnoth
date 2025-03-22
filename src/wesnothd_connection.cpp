@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,7 +135,7 @@ wesnothd_connection::~wesnothd_connection()
 }
 
 // worker thread
-void wesnothd_connection::handle_resolve(const error_code& ec, results_type results)
+void wesnothd_connection::handle_resolve(const error_code& ec, const results_type& results)
 {
 	MPTEST_LOG;
 	if(ec) {

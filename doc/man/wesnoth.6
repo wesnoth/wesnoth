@@ -43,6 +43,9 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
+.B --addon-info
+Shows a button on the add-ons manager to query the add-ons server for various information.
+.TP
 .B --all-translations
 Show all translations in the in-game language selection list,
 even if they are deemed insufficiently complete.
@@ -130,11 +133,12 @@ Example:
 .B --language ang_GB@latin
 .TP
 .BI --log- level = domain1 , domain2 , ...
-sets the severity level of the log domains.
-.B all
-can be used to match any log domain. Available levels:
+sets the severity level of the log domains. The wildcard
+.B *
+may be used to match a subset of domains, e.g. gui/* or conf* or * (the latter matches all domains).
+Available levels:
 .BR error ,\  warning ,\  info ,\  debug ,\  none .
-By default the
+By default, the
 .B warning
 level is used for most domains, but
 .B deprecation
@@ -143,6 +147,7 @@ defaults to
 unless combined with the
 .B -d
 option.
+This option can be specified multiple times.
 .TP
 .B --log-precise
 shows the timestamps in log output with more precision.
@@ -192,10 +197,6 @@ load the test mp scenarios.
 .B --new-widgets
 there is a new WIP widget toolkit, this option enables it. This is very experimental, don't fill bug reports since most are known. Parts of the library are deemed stable and will work without this switch.
 .TP
-.B --nodelay
-runs the game without any delays for graphic benchmarking. This is automatically enabled by
-.BR --nogui .
-.TP
 .B --noaddons
 disables loading of user addons.
 .TP
@@ -232,11 +233,9 @@ uses
 when connecting to a server, ignoring other preferences. Unsafe.
 .TP
 .BI --plugin \ script
-(experimental) load a
+load a
 .I script
-which defines a Wesnoth plugin. Similar to
-.BR --script ,
-but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+which defines a Wesnoth plugin. Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
 .TP
 .BI -P,\ --patch \ base-file \  patch-file
 applies a DiffWML patch to a WML file; does not preprocess either of the files.
@@ -253,9 +252,14 @@ Example:
 For details regarding the preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor.
 .TP
+.BI --preprocess-string \ source-string
+preprocesses a given string and writes the output to stdout.
+.TP
 .BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
 comma separated list of defines to be used by the
 .B --preprocess
+or
+.B --preprocess-string
 command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
@@ -263,6 +267,8 @@ is in the define list the "data/core" directory won't be preprocessed.
 .BI --preprocess-input-macros \ source-file
 used only by the
 .B --preprocess
+or
+.B --preprocess-string
 command. Specifies a file that contains
 .BR [preproc_define] s
 to be included before preprocessing.
@@ -270,7 +276,9 @@ to be included before preprocessing.
 .BI --preprocess-output-macros[ =target-file ]
 used only by the
 .B --preprocess
-command. Will output all preprocessed macros in the target file. If the file is not specified
+command (But not by the
+.B --preprocess-string
+command). Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command. The
 output file can be passed to
 .BR --preprocess-input-macros .
@@ -302,11 +310,6 @@ saves a screenshot of
 to
 .I output
 without initializing a screen.
-.TP
-.BI --script \ file
-(experimental)
-.I file
-containing a Lua script to control the client.
 .TP
 .BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
@@ -498,7 +501,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2025 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

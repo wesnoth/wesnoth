@@ -70,6 +70,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
+    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml", PathVariable.PathAccept),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
@@ -120,6 +121,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('compile_db', 'Produce a compile_commands.json file.', False),
     )
 
 #
@@ -189,7 +191,12 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = "1.67"
+if env['compile_db']:
+    env.Tool('compilation_db')
+    cdb = env.CompilationDatabase()
+    Alias('cdb', cdb)
+
+boost_version = "1.70"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -379,6 +386,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
@@ -631,7 +639,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags += " -flto=" + str(env["jobs"])
-                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_link_flags += rel_comp_flags + " -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
@@ -665,7 +673,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0A00"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
@@ -783,7 +791,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", env["appdata_filepath"])
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])

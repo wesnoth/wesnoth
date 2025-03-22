@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,6 +14,8 @@
 */
 
 #include "image_modifications.hpp"
+
+#include <utility>
 
 #include "color.hpp"
 #include "config.hpp"
@@ -537,7 +539,7 @@ struct parse_mod_registration
 {
 	parse_mod_registration(const char* name, mod_parser parser)
 	{
-		mod_parsers[name] = parser;
+		mod_parsers[name] = std::move(parser);
 	}
 };
 

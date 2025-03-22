@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,8 @@
 
 #include <boost/logic/tribool.hpp>
 
+#include <chrono>
+
 class config;
 
 constexpr int get_abs_frame_layer(drawing_layer layer)
@@ -40,7 +42,7 @@ constexpr int get_abs_frame_layer(drawing_layer layer)
 /** All parameters from a frame at a given instant */
 struct frame_parameters
 {
-	int duration = 0;
+	std::chrono::milliseconds duration{0};
 
 	image::locator image;
 	image::locator image_diagonal;
@@ -85,7 +87,7 @@ public:
 	frame_builder(const config& cfg, const std::string& frame_string = "");
 
 	/** Allow easy chained modifications. Will raised assert if used after initialization */
-	frame_builder& duration(const int duration);
+	frame_builder& duration(const std::chrono::milliseconds& duration);
 	frame_builder& image(const std::string& image, const std::string& image_mod = "");
 	frame_builder& image_diagonal(const std::string& image_diagonal, const std::string& image_mod = "");
 	frame_builder& sound(const std::string& sound);
@@ -107,7 +109,7 @@ public:
 private:
 	friend class frame_parsed_parameters;
 
-	int duration_;
+	std::chrono::milliseconds duration_;
 
 	std::string image_;
 	std::string image_diagonal_;
@@ -145,9 +147,10 @@ private:
 class frame_parsed_parameters
 {
 public:
-	frame_parsed_parameters(const frame_builder& builder = frame_builder(), int override_duration = 0);
+	frame_parsed_parameters(const frame_builder& builder = frame_builder(),
+		const std::chrono::milliseconds& override_duration = std::chrono::milliseconds{0});
 
-	void override(int duration,
+	void override(const std::chrono::milliseconds& duration,
 		const std::string& highlight = "",
 		const std::string& blend_ratio = "",
 		color_t blend_color = {0,0,0},
@@ -156,9 +159,9 @@ public:
 		const std::string& modifiers = "");
 
 	/** Getters for the different parameters */
-	frame_parameters parameters(int current_time) const;
+	frame_parameters parameters(const std::chrono::milliseconds& current_time) const;
 
-	int duration() const{ return duration_;}
+	const std::chrono::milliseconds& duration() const { return duration_; }
 	bool does_not_change() const;
 	bool need_update() const;
 
@@ -166,7 +169,7 @@ public:
 	std::vector<std::string> debug_strings() const;
 
 private:
-	int duration_;
+	std::chrono::milliseconds duration_;
 
 	progressive_image image_;
 	progressive_image image_diagonal_;
@@ -207,13 +210,14 @@ public:
 	// Constructors
 	unit_frame(const frame_builder& builder = frame_builder()) : builder_(builder) {}
 
-	void redraw(const int frame_time, bool on_start_time, bool in_scope_of_frame, const map_location& src, const map_location& dst,
+	void redraw(const std::chrono::milliseconds& frame_time, bool on_start_time, bool in_scope_of_frame, const map_location& src, const map_location& dst,
 		halo::handle& halo_id, halo::manager& halo_man, const frame_parameters& animation_val, const frame_parameters& engine_val) const;
 
-	frame_parameters merge_parameters(int current_time, const frame_parameters& animation_val,
+	frame_parameters merge_parameters(const std::chrono::milliseconds& current_time,
+		const frame_parameters& animation_val,
 		const frame_parameters& engine_val = frame_parameters()) const;
 
-	frame_parameters parameters(int current_time) const
+	frame_parameters parameters(const std::chrono::milliseconds& current_time) const
 	{
 		return builder_.parameters(current_time);
 	}
@@ -223,7 +227,7 @@ public:
 		return builder_.parameters(duration());
 	}
 
-	int duration() const
+	const std::chrono::milliseconds& duration() const
 	{
 		return builder_.duration();
 	}
@@ -244,7 +248,7 @@ public:
 		return builder_.debug_strings();
 	}
 
-	std::set<map_location> get_overlaped_hex(const int frame_time, const map_location& src, const map_location& dst,
+	std::set<map_location> get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
 		const frame_parameters& animation_val, const frame_parameters& engine_val) const;
 
 private:

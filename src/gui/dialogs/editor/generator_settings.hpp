@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,7 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(generator_settings)
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void adjust_minimum_size_by_players();
 

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:10 UTC\n"
-"PO-Revision-Date: 2024-07-23 13:12+0800\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"PO-Revision-Date: 2025-02-07 22:43+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:11
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:248
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:244
 msgid "Under the Burning Suns"
 msgstr "灼热双日之下"
 
@@ -55,6 +55,8 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"注：这个战役改变了一些标准机制，例如昼夜循环，召回费用以及对困难级别的通用方"
+"法。奎诺精灵包括可以每回合攻击数次的单位，以及可以攻击后移动的单位。"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -132,11 +134,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "昏迷: 此单位已昏迷，无法确保其控制区域。"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:27
 msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
@@ -321,9 +318,14 @@ msgstr "我告诉你了，天空清静了。快来，傻瓜，有人需要帮助
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:275
+#, fuzzy
+#| msgid ""
+#| "What’s happened? Oh Eloh, the craters are everywhere, everything is gone, "
+#| "ruined. I can hardly recognize our village. I didn’t think it could be "
+#| "this bad."
 msgid ""
-"What’s happened? Oh Eloh, the craters are everywhere, everything is gone, "
-"ruined. I can hardly recognize our village. I didn’t think it could be this "
+"What’s happened? Oh Eloh! The craters are everywhere. Everything is gone, "
+"ruined! I can hardly recognize our village. I didn’t think it could be this "
 "bad."
 msgstr ""
 "到底发生了什么？噢，伊洛，到处都是陨石坑，一切都完了，都毁了。我都认不出我们"
@@ -399,15 +401,15 @@ msgstr "赛尔"
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:398
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:598
 msgid "Kaleh, Nym, help us!"
 msgstr "卡勒， 妮慕， 来帮我们！"
 
 #. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:403
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:604
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:603
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:834
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4574
 msgid "What in Uria’s name is that?"
 msgstr "那尤里安的是什么？"
@@ -415,7 +417,7 @@ msgstr "那尤里安的是什么？"
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:409
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:610
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:609
 msgid ""
 "They came with the stones that fell from the sky. I know not what they are, "
 "but more seem to be emerging from the craters. If we don’t stop them there "
@@ -426,7 +428,7 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:414
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:615
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:614
 msgid "To battle, my friends! There are still those left who can fight."
 msgstr "上吧，伙伴们！我们有人可以继续战斗。"
 
@@ -462,34 +464,34 @@ msgid "More of these muddy crawlies, let’s get rid of them with haste."
 msgstr "更多的土傀儡，我们快点解决它们。"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:575
 msgid "Jorazan"
 msgstr "乔拉森"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:577
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:576
 msgid "Zyar"
 msgstr "泽亚"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:585
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:584
 msgid ""
 "This is our training ground. And look, there is Garak, the captain of the "
 "guard. He and his fighters have survived the night!"
 msgstr "这是我们的训练场。看，警卫队长伽拉克和他的战士们活下来了！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:620
 msgid "But they are fighting many mud creatures. Quick, we must help them!"
 msgstr "但是他们对付的泥怪更多。 赶快， 我们必须帮忙！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:649
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:648
 msgid "Ha! They’re destroyed at last."
 msgstr "哈！ 它们终于覆灭了。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:654
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:653
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
@@ -499,48 +501,48 @@ msgstr ""
 "人，粉碎这些土里冒出来的怪物。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:683
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:682
 msgid "This bridge leads to the holy island at the center of our lake."
 msgstr "桥通向湖中央的圣岛。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:687
 msgid ""
 "Hmmmm. Some of the druids that worship on the island may still be alive. We "
 "should go check."
 msgstr "啊。岛上做礼拜的德鲁伊们有可能有人存活。 我们应当去看看。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:693
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:692
 msgid ""
 "Be careful. The bridge is broken, so we’ll have to wade through the shallow "
 "water."
 msgstr "小心。桥坏了，我们得涉水过去。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:724
 msgid ""
 "The great tree! It has been buried under the rocks. Our most holy sanctuary, "
 "defiled. Oh, Eloh, what shall we do?"
 msgstr "圣树在石头下燃烧！我们的圣地被玷污了。哦，神啊，我们怎么办？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:730
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:729
 msgid "Is anyone still alive?"
 msgstr "有人活着吗？"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:740
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:739
 msgid "Ryoko"
 msgstr "瑞寇"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:742
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:741
 msgid "Yuni"
 msgstr "由妮"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:745
 msgid "Finally! We were worried that no one else had survived."
 msgstr "终于看到活人了！我们还担心大家都死了。"
 
@@ -548,12 +550,12 @@ msgstr "终于看到活人了！我们还担心大家都死了。"
 # 是怎么翻呢?
 # 祭司?
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:751
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:750
 msgid "Mother priestess, are you all right?"
 msgstr "祭司，您好吗？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:756
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:755
 msgid ""
 "There’s no time to stand on ceremony. I’m fine. I’m afraid only a few of us "
 "survived, but we will lend you what skills we have. Show me to those who "
@@ -563,12 +565,12 @@ msgstr ""
 "中去。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:760
 msgid "But the great tree, it has been destroyed!"
 msgstr "但是圣树毁了！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:765
 msgid ""
 "All things of this world come to an end, but the power of Eloh endures. A "
 "new one shall grow in its place. Come now, let us see to the needs of our "
@@ -578,12 +580,12 @@ msgstr ""
 "们所需。"
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:798
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:797
 msgid "Deep One"
 msgstr "深渊乌贼"
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:799
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:798
 msgid ""
 "The Deep Ones are gigantic aquatic monsters that lurk in the dark places of "
 "the world. Rarely do they come to the surface, and when they do the best way "
@@ -595,7 +597,7 @@ msgstr ""
 "施就是呆在岸上。它们能用触须抓住对手，或者远程喷射有毒墨汁。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:829
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:828
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
 "swarm of tentacles the moment the first elf set foot off the island."
@@ -603,46 +605,46 @@ msgstr ""
 "湖水突然变得昏暗浑浊， 深处涌出一大堆怪物触手——就在第一个精灵的脚踏入水中时。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:841
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:840
 msgid ""
 "I felt a great darkness in this lake, but I knew not what it was. The "
 "falling rocks must have woken it from its sleep."
 msgstr "我感到湖里强大的黑暗力量，但不知道那是什么。肯定是落下的陨石唤醒了它。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:846
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:845
 msgid ""
 "Protect the priestesses, we shall send this monstrosity back to the depths "
 "it came from!"
 msgstr "保护圣女， 我们把这个大怪物打回去！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:863
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:862
 msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "奇怪，牧场空荡荡的。尘步兽都去哪儿了？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:868
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:867
 msgid "Maybe they’re hiding in the stables. Let’s go check."
 msgstr "可能正藏在马厩里呢。我们去看看。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:905
 msgid "Naru"
 msgstr "那努"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:910
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:909
 msgid "Is it safe to come out? I was so scared."
 msgstr "外面安全了吗？ 我刚才很害怕。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:915
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:914
 msgid "Where are all the other dustboks?"
 msgstr "剩下的尘步兽都去哪儿了？"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:920
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:919
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
@@ -653,7 +655,7 @@ msgstr ""
 "的尘步兽昨晚受陨石惊吓跑散了。我使尽解数安抚了亚希，他才没有跑掉。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:925
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:924
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
@@ -664,51 +666,51 @@ msgstr ""
 "失。也许在沙漠里的人们已经圈住了一些走失的羚儿。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:930
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:929
 msgid "We can only hope that hunting party returns soon."
 msgstr "我们只能指望狩猎队快些回来。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:940
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:939
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgstr "喂，尼森，陨石雨停了。你可以出来了！"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:944
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:943
 msgid "Nisen"
 msgstr "尼森"
 
 #. [message]: speaker=Nisen
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:954
 msgid "Oh, thank Eloh, I thought they would never stop."
 msgstr "哦， 感谢伊洛。我还以为它们不会停呢。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1086
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1085
 msgid ""
 "Oh good, some elves have survived in this outer settlement. They’ve agreed "
 "to help us search for other survivors."
 msgstr "哦好极了， 有些住在外边的精灵活着。。他们愿意帮助我们搜索幸存者。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1094
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1093
 msgid "The encampment is empty. I wonder what happened to the inhabitants?"
 msgstr "营地是空的。。居民们到底发生了什么？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1109
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1108
 msgid ""
 "This encampment has been abandoned. There are signs of a struggle and a few "
 "bloodstains but nothing else. I fear for those elves who lived out here."
 msgstr "这个营地已被废弃。只能看到一些战斗的痕迹和血迹。可能是外围精灵留下的。"
 
 #. [unit]: type=Necromancer, type=Dark Sorcerer, id=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1157
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1156
 msgid "Xanthos"
 msgstr "赞瑟斯"
 
 #. [message]: speaker=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1177
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1176
 msgid ""
 "This place reeks of death, I could smell it from miles away. Oh, how I love "
 "it, it is the smell of power, the inevitable triumph of death over life. "
@@ -720,7 +722,7 @@ msgstr ""
 "对死灵法师赞瑟斯臣服！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1181
 msgid ""
 "His timing couldn’t be worse. I know that undead cultists often prey on "
 "small targets, but they haven’t had the guts to attack us for years. Why has "
@@ -730,7 +732,7 @@ msgstr ""
 "为何神会降下如此磨难？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1188
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1187
 msgid ""
 "Have some more faith, girl, the goddess does not send us more than we can "
 "handle. With Eloh’s grace we shall yet triumph over this pretender."
@@ -739,7 +741,7 @@ msgstr ""
 "狂妄的家伙。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1193
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1192
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our riders can easily defeat their skeleton armies."
@@ -748,7 +750,7 @@ msgstr ""
 "手可以轻易击败他们的骷髅军团。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1198
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1197
 msgid ""
 "I have heard of your kind, foul necromancer. You travel the sands, daring to "
 "bring back and enslave those who have passed on. But we will prove to you "
@@ -761,7 +763,7 @@ msgstr ""
 "的愤怒而恐惧吧！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1229
 msgid ""
 "Some of our people felt crowded in the village, and wanted to live out on "
 "the open sands. They thought they could flee to the safety of our walls if "
@@ -771,17 +773,17 @@ msgstr ""
 "的村庄围墙里面。想象他们的劫难我就不寒而栗。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1259
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1258
 msgid "The necromancer is finally vanquished."
 msgstr "死灵法师终于被击倒了。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1264
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1263
 msgid "And at last the dead shall have their rest."
 msgstr "而逝者终于可得安息。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1275
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1274
 msgid ""
 "The necromancer is dead, but I don’t think we’ve explored the entire "
 "village. There may still be elves that need rescuing. We should go back and "
@@ -791,44 +793,44 @@ msgstr ""
 "去查看吧。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1292
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1291
 msgid ""
 "We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
 msgstr "整个村庄搜遍了， 我们已经救出了最后的幸存者。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1328
 msgid "Pythos"
 msgstr "派瑟斯"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1330
 msgid "Shea"
 msgstr "舒伊"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1333
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1332
 msgid "Narn"
 msgstr "那安"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1335
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1334
 msgid "Jokli"
 msgstr "乔克利"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1337
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1336
 msgid "Lyer"
 msgstr "莱尔"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1344
 msgid "Hail, is anyone still alive?"
 msgstr "喂－有人活着吗？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1350
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1349
 msgid ""
 "Yes, and we could certainly use your help. A necromancer has been attacking "
 "us, he intends to use our fallen comrades as fodder for his evil magics. "
@@ -838,7 +840,7 @@ msgstr ""
 "者作为他邪恶魔法的炮灰。你们去哪儿了？"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1355
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1354
 msgid ""
 "We were out far in the sands, searching for prey and roaming orcs. As soon "
 "as we saw the rock storm we raced back as fast as we could. I only wish we "
@@ -848,32 +850,32 @@ msgstr ""
 "要是能更早一点回来就好了。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1360
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1359
 msgid "No use crying over spilt water. But we’re sure glad you’re here now."
 msgstr "不要做无意的后悔。你们回来我们相当高兴。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1374
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1373
 msgid "It seems that we finally have some peace. But what do we do now?"
 msgstr "似乎我们暂得片刻安宁。现在我们做什么好？"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1379
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1378
 msgid "Where is Tanuil and his family?"
 msgstr "泰纽和他家人在哪？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1384
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1383
 msgid "The keep has been crushed by the rocks. We could find no survivors."
 msgstr "要塞毁了。没人活下来。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1389
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1388
 msgid "Too many have died this night."
 msgstr "今晚死去的…………太多了。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1393
 msgid ""
 "Our village is in ruins. The walls that were built by our ancestors over "
 "generations have been demolished in a space of hours. Most of our dwellings "
@@ -884,7 +886,7 @@ msgstr ""
 "也没了。显而易见，我们不能呆在这里。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1400
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1399
 msgid ""
 "You are a fool to despair. This has always been our home. The water here is "
 "good, we know this land. We can rebuild; Eloh willing, we can thrive again."
@@ -893,7 +895,7 @@ msgstr ""
 "建并且再次兴盛， 以伊洛之志。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1405
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1404
 msgid ""
 "Think for a moment. Who else has seen the rock storm? What other foes are "
 "coming to pick over the remains of our people? There is no mercy in the "
@@ -904,18 +906,18 @@ msgstr ""
 "有仁慈可言，我们敌人众多，瞅着我们虚弱的机会。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1411
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1410
 msgid ""
 "Impudent girl, you should not speak so to your elders, or to your betters."
 msgstr "无礼的姑娘，不要对长辈们这样说话，学学其他人的谦逊。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1415
 msgid "I have a right to speak my mind!"
 msgstr "我有发表看法的权利！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1422
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1421
 msgid ""
 "Peace, please calm yourselves. In chaos there is nothing but death and "
 "destruction. Even in this time of trial we must show our fortitude, and "
@@ -928,7 +930,7 @@ msgstr ""
 "的血统最近，成为我们的领导。你有何高见，卡勒？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1427
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1426
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
@@ -948,7 +950,7 @@ msgstr ""
 "为我们准备新家园，我将带你们前去。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1432
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1431
 msgid ""
 "I fear what dangers lurk in the harsh sands and beyond to the north, but "
 "because you are our leader, I will follow where you go."
@@ -957,7 +959,7 @@ msgstr ""
 "领。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1437
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1436
 msgid ""
 "Then let us collect what supplies we can from the wreckage and head north "
 "with great haste. Our home is protection no longer, we must find a new haven "
@@ -967,14 +969,14 @@ msgstr ""
 "子民找到新的天堂。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1441
 msgid ""
 "What about the bodies of the dead? We can’t leave them to be torn by crows "
 "or desecrated by other dark mages."
 msgstr "尸体怎么办？ 我们不能让他们受鸦鹫欺辱，或遭黑暗法师亵渎。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1448
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1447
 msgid ""
 "I agree, we should not forget our dead. We should build a huge pyre and burn "
 "them with proper ceremony, so that the smoke may carry them on to the next "
@@ -982,7 +984,7 @@ msgid ""
 msgstr "同意，我们不能忘记死难者。垒起柴堆，祭其火葬，青烟将携彼魂魄至天国。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1453
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1452
 msgid ""
 "Kaleh, I don’t want to tarry longer than necessary, but I agree that we must "
 "see to the dead before we leave. Garak, you and your men start collecting "
@@ -992,7 +994,7 @@ msgstr ""
 "和我找油和柴火建柴堆。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1458
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1457
 msgid ""
 "And so it was done. The dead were laid reverently on top of what little wood "
 "we could find. But the fire was big enough to burn the bodies to ashes and "
@@ -1005,7 +1007,7 @@ msgstr ""
 "不是前路的好兆头。他们走在了所有人的前头， 但远不是结束。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1514
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1513
 msgid ""
 "What’s that to the north? It looks like even more undead! The rock storm "
 "must have attracted other necromancers. There’s no way we can defeat them "
@@ -2136,7 +2138,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "伽拉克在防守时抗性增加20%."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2530,7 +2532,7 @@ msgstr "伽拉克怎么办？"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1760
 msgid "I’ve asked and looked around, there is no sign of him or his body"
-msgstr "我问过了，也找过了，但没有发现他，也没看见他的尸体。"
+msgstr "我问过了，也找过了，但没有发现他，也没看见他的尸体"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1764
@@ -2818,6 +2820,9 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"说到这些地方，我们可能没有伽拉克来指引我们，但这个地区的所有地形都与我们昨晚"
+"从兽人那里得到的地图完美匹配！它显示前方就有一个兽人营地！我想知道我们是否可"
+"以在不让他们发现的情况下偷偷溜过去。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:380
@@ -2934,6 +2939,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"就往里走了几步，所有的这些地精就知道我们在这里了！我想在别人的地盘上溜走并不"
+"容易。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:544
@@ -9521,32 +9528,22 @@ msgstr "自然。你是正确的。原谅我。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1103
-#, fuzzy
-#| msgid ""
-#| "No, too many merfolk have died! There are not enough of them left to "
-#| "divine the location of their master. We should have protected the merfolk "
-#| "more carefully. Now our search is hopeless."
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
 "the location of their leader. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
-"不，太多人鱼死去了！人鱼数量不足，不能推测出他们主人的下落了。我们应该更小心"
+"不，太多人鱼死去了！人鱼数量不足，不能推测出他们首领的下落了。我们应该更小心"
 "保护人鱼才对。现在我们的搜索已经没有希望了。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Too many merfolk have died! Even if we save the rest, there will not be "
-#| "enough for them to divine the location of their master. We should have "
-#| "protected the merfolk more carefully. Now our search is hopeless."
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
 "enough for them to divine the location of their leader. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
-"太多人鱼死去了！即使我们救了其他人鱼，剩下的人鱼数量也不足以推测出他们主人的"
+"太多人鱼死去了！即使我们救了其他人鱼，剩下的人鱼数量也不足以推测出他们首领的"
 "下落了。我们应该更小心保护人鱼才对。现在我们的搜索已经没有希望了。"
 
 #. [message]: speaker=unit
@@ -10465,17 +10462,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
-#, fuzzy
-#| msgid ""
-#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-#| "friends. If it is possible, I would like to meet with your master. Your "
-#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
-"谢谢你。我可能忘了与人鱼朋友的约定。可以的话，我乐意见见你们的主人。你们这么"
+"谢谢你。我可能忘了与人鱼朋友的约定。可以的话，我乐意见见你们的首领。你们这么"
 "好，你们的同胞肯定也不差，至少，我可以相信你们。"
 
 #. [message]: race=merman
@@ -10541,16 +10533,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
-#, fuzzy
-#| msgid ""
-#| "Before I decide, I have just one question: How did you merfolk plan on "
-#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
 "我做决定之前，还有一个问题要问：人鱼的主人远在海里，你们打算怎么带我们去见你"
-"们的主人？"
+"们的首领？"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2469
@@ -13572,10 +13560,16 @@ msgstr "人类指挥官"
 
 #. [unit_type]: id=Human Commander, race=human
 #: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:31
+#, fuzzy
+#| msgid ""
+#| "In this new harsh world, might often makes right and these commanders are "
+#| "strong enough to rise to positions of leadership. Leading small groups of "
+#| "warriors, commanders rally their troops around them and show no mercy to "
+#| "their enemies, striking fiercely with both sword and bow."
 msgid ""
-"In this new harsh world, might often makes right and these commanders are "
+"In this new harsh world, might often makes right and these Commanders are "
 "strong enough to rise to positions of leadership. Leading small groups of "
-"warriors, commanders rally their troops around them and show no mercy to "
+"warriors, Commanders rally their troops around them and show no mercy to "
 "their enemies, striking fiercely with both sword and bow."
 msgstr ""
 "弱肉强食的新世界里，力量就是一切，这些指挥官足够强大因此成为领袖。领导着一小"
@@ -13734,9 +13728,16 @@ msgstr "肉魔像"
 
 #. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Flesh_Golem.cfg:25
+#, fuzzy
+#| msgid ""
+#| "Incredibly strong constructs, flesh golems are created by powerful "
+#| "necromancers from the bodies of fallen warriors. Though these golems "
+#| "dutifully follow every command, and attack their enemies with ceaseless "
+#| "rage, the madness that possesses them has occasionally caused them to "
+#| "turn on their masters."
 msgid ""
-"Incredibly strong constructs, flesh golems are created by powerful "
-"necromancers from the bodies of fallen warriors. Though these golems "
+"Incredibly strong constructs, Flesh Golems are created by powerful "
+"necromancers from the bodies of fallen warriors. Though these Golems "
 "dutifully follow every command, and attack their enemies with ceaseless "
 "rage, the madness that possesses them has occasionally caused them to turn "
 "on their masters."
@@ -13840,9 +13841,17 @@ msgstr "奎诺弓手"
 
 #. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:22
+#, fuzzy
+#| msgid ""
+#| "With the open sands providing much less protection than the old forests "
+#| "did, the wide ranks of elvish archers that once formed the core of the "
+#| "elvish military have all but disappeared. Instead, the few who still "
+#| "dedicate themselves to the traditional weapon of their ancestors practice "
+#| "the art from the saddle, allowing them to more easily avoid the perils of "
+#| "melee combat."
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
-"the wide ranks of elvish archers that once formed the core of the elvish "
+"the wide ranks of Elvish Archers that once formed the core of the elvish "
 "military have all but disappeared. Instead, the few who still dedicate "
 "themselves to the traditional weapon of their ancestors practice the art "
 "from the saddle, allowing them to more easily avoid the perils of melee "
@@ -13891,8 +13900,14 @@ msgstr "堕落精灵"
 
 #. [unit_type]: id=Corrupted Quenoth Elf, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Imbued with a dark spirit these corrupted elves combine unhuman strength "
+#| "with potent magics to create formidable opponents. Though the elvish body "
+#| "often decays quickly, these abominations are potent weapons of the undead "
+#| "lords."
 msgid ""
-"Imbued with a dark spirit these corrupted elves combine unhuman strength "
+"Imbued with a dark spirit these Corrupted Elves combine unhuman strength "
 "with potent magics to create formidable opponents. Though the elvish body "
 "often decays quickly, these abominations are potent weapons of the undead "
 "lords."
@@ -13909,7 +13924,7 @@ msgstr "魔法"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "被击败"
 
 #. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
@@ -13973,13 +13988,23 @@ msgstr "尘步兽"
 
 #. [unit_type]: id=Quenoth Dustbok, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Dustboks are nimble, graceful creatures whose timid and peaceful nature "
+#| "stands in sharp contrast to the harsh land in which they live. Because "
+#| "the scorched land cannot support herds or even territorial neighbors, "
+#| "dustboks are solitary wanderers and yet still social, curious, and "
+#| "willing to cooperate with anyone if it leads to food. While this behavior "
+#| "has led to the death of many a foolish dustbok, it has made them "
+#| "excellent partners to the Quenoth Elves, who value their speed and "
+#| "agility."
 msgid ""
 "Dustboks are nimble, graceful creatures whose timid and peaceful nature "
 "stands in sharp contrast to the harsh land in which they live. Because the "
-"scorched land cannot support herds or even territorial neighbors, dustboks "
+"scorched land cannot support herds or even territorial neighbors, Dustboks "
 "are solitary wanderers and yet still social, curious, and willing to "
 "cooperate with anyone if it leads to food. While this behavior has led to "
-"the death of many a foolish dustbok, it has made them excellent partners to "
+"the death of many a foolish Dustbok, it has made them excellent partners to "
 "the Quenoth Elves, who value their speed and agility."
 msgstr ""
 "尘步兽是灵活而优雅的生物，其胆小而和平的天性与它们生活的严酷土地形成了鲜明对"
@@ -13995,16 +14020,6 @@ msgstr "奎诺战士"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -14018,8 +14033,9 @@ msgid ""
 msgstr ""
 "很久以前，在更繁荣的时期，相比其他近战武器，精灵战士更喜欢剑。它们更优雅、更"
 "全能。然而近来，由于缺乏锻造材料，刃器加工变少了，因此必须制造更便宜、更容易"
-"修复的武器。奎诺战士在互相配合的战斗团队中惊人地熟练，他们组成的强大长矛队伍"
-"能够抵消缺乏精致武器的劣势，并击退几乎任何正面进攻。"
+"修复的武器。为了弥补武器质量的下降，奎诺在武器的使用上采取了更大的灵活性。在"
+"开阔的沙地上，战士经过训练，可以培养出将注意力分散在多个敌人之间的敏锐度，无"
+"论是土匪、野生生物还是亡灵。"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -14028,8 +14044,17 @@ msgstr "奎诺侧击士"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Some fighters find that their true talents lie not within rigid spear "
+#| "ranks, but out in the sands, striking at the flanks and rear of enemy "
+#| "forces. Fast and nimble, these elves make use of the weaknesses in enemy "
+#| "formations to disrupt their lines and sow chaos on the battlefield. In "
+#| "more cutthroat conflicts, Flankers even rely on the use of poison — a "
+#| "tool whose use was frowned on by their ancestors — to cripple their foes "
+#| "before charging in for the finish."
 msgid ""
-"Some fighters find that their true talents lie not within rigid spear ranks, "
+"Some Fighters find that their true talents lie not within rigid spear ranks, "
 "but out in the sands, striking at the flanks and rear of enemy forces. Fast "
 "and nimble, these elves make use of the weaknesses in enemy formations to "
 "disrupt their lines and sow chaos on the battlefield. In more cutthroat "
@@ -14253,16 +14278,6 @@ msgstr "奎诺旭日歌者"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Faerie and elven magic have oft been aptly associated with life, from "
-#| "which they draw the majority of their power. However, with the death of "
-#| "much of Irdya’s flora, the Quenoth Elves were forced to seek another "
-#| "source for their sorcery. In time, they learned to harness the power of "
-#| "the suns Sela and Naia - the twin stars that had razed the forests of "
-#| "Irdya to ashes, yet still spring forth the energy required for sparking "
-#| "life. Those who master this new magic sing of the dual nature of these "
-#| "embodiments of fire: flames that are both life and life’s demise."
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
 "they draw the majority of their power. However, with the death of much of "
@@ -14283,13 +14298,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
-msgstr ""
+msgstr "旭日召令"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "旭日光束"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -14318,7 +14333,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
-msgstr ""
+msgstr "旭日具现"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -14606,19 +14621,17 @@ msgstr ""
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:474
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "精准打击"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:491
-#, fuzzy
-#| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "准确打击"
+msgstr "更快的打击"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:503
 msgid "Sword Dance"
-msgstr ""
+msgstr "剑舞"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:527
@@ -14825,10 +14838,16 @@ msgstr "蜘蛛巫妖"
 
 #. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:18
+#, fuzzy
+#| msgid ""
+#| "No one is quite sure how spider liches are created, but they are a "
+#| "horrific sight to behold. Crawling around on huge skeletal legs, and "
+#| "wielding huge magical staves, these abominations are fearsome undead "
+#| "foes. "
 msgid ""
-"No one is quite sure how spider liches are created, but they are a horrific "
+"No one is quite sure how Spider Liches are created, but they are a horrific "
 "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
-"magical staves, these abominations are fearsome undead foes. "
+"magical staves, these abominations are fearsome undead foes."
 msgstr ""
 "没有谁能确定蜘蛛巫妖是如何诞生的，它们的模样甚为可怖。它们用粗大的骨腿爬行，"
 "并挥舞巨大的魔杖，这些可憎的怪物是可怕的亡灵敌手。"
@@ -14876,53 +14895,53 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "使用1个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "使用2个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "使用3个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "使用4个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "使用5个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "使用6个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "这个攻击使用1个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "这个攻击使用2个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "这个攻击使用3个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "这个攻击使用4个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "这个攻击使用5个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "这个攻击使用6个攻击次数"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:78
 msgid ""
 "This attack is the first verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -14930,8 +14949,13 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"此攻击为《日升颂歌》的第一乐章，每当该单位发动乐章攻击时，其对应的乐章会在此"
+"回合推进一节。\n"
+"\n"
+"当最后一节乐章被咏唱完毕，或因一回合未发动攻击导致乐章循环中断时，整首乐曲会"
+"重新从第一乐章开始。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
 msgid ""
 "This attack is the second verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -14939,8 +14963,13 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"此攻击为《日升颂歌》的第二乐章，每当该单位发动乐章攻击时，其对应的乐章会在此"
+"回合推进一节。\n"
+"\n"
+"当最后一节乐章被咏唱完毕，或因一回合未发动攻击导致乐章循环中断时，整首乐曲会"
+"重新从第一乐章开始。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -14949,34 +14978,38 @@ msgid ""
 "\n"
 "Using this song will also grant illuminates for three turns."
 msgstr ""
+"此攻击为《日升颂歌》的第三乐章，每当该单位发动乐章攻击时，其对应的乐章会在此"
+"回合推进一节。\n"
+"\n"
+"在下一回合，整首乐曲会重新从第一乐章开始。\n"
+"\n"
+"使用这首乐曲还会提供持续三回合的照明能力。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:95
 msgid "first verse"
-msgstr ""
+msgstr "第一乐章"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:98
 msgid "second verse"
-msgstr ""
+msgstr "第二乐章"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 msgid "third verse"
-msgstr ""
+msgstr "第三乐章"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
 msgid "third verse illuminates"
-msgstr ""
+msgstr "第三乐章可照明"
 
 #. [illuminates]: id=illumination_song_verse
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:349
 msgid "female^third verse illuminates"
-msgstr "口渴"
+msgstr "第三乐章可照明"
 
 #. [illuminates]: id=illumination_song_verse
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:350
 msgid ""
 "When this ability is active after using the sun incarnate attack, this unit "
 "illuminates the surrounding area for three turns.\n"
@@ -14987,37 +15020,37 @@ msgstr ""
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:351
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:354
 msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
-msgstr ""
+msgstr "照明增加相邻区域的亮度。这个效果在激活后持续三回合。"
 
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:369
 msgid "once per turn"
 msgstr "每回合一次"
 
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:370
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "此攻击在进攻时只能每回合使用一次"
 
 #. [dummy]: id=nova
 #. weapon special
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
 msgid "nova"
-msgstr ""
+msgstr "新星"
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:451
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
-msgstr ""
+msgstr "这个武器，在进攻时使用时，在命中时会对所有与施法者相邻的单位造成伤害。"
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:453
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension. After using it, "
 "the first verse is available in the next turn. Furthermore, invoking this "
@@ -15025,65 +15058,67 @@ msgid ""
 msgstr ""
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:454
 msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
+msgstr "这个单位具有以施法者为中心的大范围攻击。"
 
 #. [dummy]: id=ray
 #. weapon special
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:494
 msgid "ray"
-msgstr ""
+msgstr "光束"
 
 #. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:495
 msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
-msgstr ""
+msgstr "这件武器，当用于进攻时，也会对目标身后的一个单位造成伤害。"
 
 #. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:491
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:497
 msgid ""
 "This is the second verse of the Song of Sun Ascension. It is available only "
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"这是《日升颂歌》的第二乐章。它只在前一回合唱了第一乐章的时候才能使用。如果这"
+"是最后一个乐章，那么下一回合就可以使用第一乐章。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:656
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
-msgstr ""
+msgstr "在回合开始，这个单位为周围的单位增加+1移动点数"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:659
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
-msgstr ""
+msgstr "在回合开始，这个单位为周围的单位增加+2移动点数"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:663
 msgid "tailwind +"
-msgstr ""
+msgstr "顺风+"
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr "此单位可以穿越坚固的石墙。"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:792
 msgid "teaching"
 msgstr "传授"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:793
 msgid "female^teaching"
 msgstr "传授"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:786
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:794
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -15093,12 +15128,12 @@ msgstr ""
 "身边没有符合条件的单位，那么就只是它的经验值会降为零而已。"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:804
 msgid "shock"
 msgstr "震慑"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:796
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:805
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -15107,24 +15142,24 @@ msgstr ""
 "一次。"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:806
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr "此单位的近战攻击可以压垮敌方的防御，使其无法全力反击。"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:828
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:837
 msgid "formation"
 msgstr "布阵"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:838
 msgid "female^formation"
 msgstr "布阵"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:830
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:839
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -15134,22 +15169,22 @@ msgstr ""
 "无法让单位的防御升到70%以上。"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:831
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:840
 msgid "Groups of units of this type are able to shield each other in combat."
 msgstr "此种类型的单位成群时，可以在战斗中互相保护。"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:854
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:863
 msgid "disengage"
 msgstr "脱战"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:855
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:864
 msgid "female^disengage"
 msgstr "脱战"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:856
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:865
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -15157,17 +15192,17 @@ msgstr ""
 "如果此单位在进攻之前没有移动，那么在进攻之后它仍然会保有自己的移动点数。"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:857
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:866
 msgid "This unit can move either before or after attacking."
 msgstr "此单位可以在进攻前移动，也可以在进攻后移动。"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:864
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:874
 msgid "daze"
 msgstr "眩晕"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:865
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:875
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -15183,31 +15218,31 @@ msgstr ""
 "只有当命中率大于60%时，精准攻击才会受到影响。"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:869
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:879
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr "此单位可以让敌方眩晕，降低他们的命中和防御，直到他们的回合结束。"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:876
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:887
 msgid "distract"
 msgstr "分神"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:877
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:888
 msgid "female^distract"
 msgstr "分神"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:878
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:889
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr "此单位将使得其身周的敌方控制区域对友方单位失效（但对其自身仍然有效）。"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:879
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:890
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -15216,78 +15251,78 @@ msgstr ""
 "动。"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:890
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:901
 msgid "support"
 msgstr "支援"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:891
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:902
 msgid "female^support"
 msgstr "支援"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:892
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:903
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "身周的友好单位的维护费用降低1。"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:941
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:953
 msgid "dazed"
 msgstr "眩晕"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:942
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:954
 msgid "female^dazed"
 msgstr "眩晕"
 
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1411
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1423
 msgid "opportunist"
 msgstr ""
 
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1412
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1424
 msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
 msgstr ""
 
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1498
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunt"
 msgstr "怨灵"
 
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1499
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
 
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1521
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1535
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunted"
 msgstr "怨灵"
 
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1536
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
 msgid "inspire"
 msgstr "鼓舞"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1546
 msgid "female^inspire"
 msgstr "鼓舞"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1547
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
@@ -15295,77 +15330,82 @@ msgid ""
 msgstr ""
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1534
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
 msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1559
 msgid "cooldown 1"
-msgstr ""
+msgstr "冷却1"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1562
 msgid "cooldown 2"
-msgstr ""
+msgstr "冷却2"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-msgid "After using this attack, you can't use it during your next turn."
-msgstr ""
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1565
+#, fuzzy
+#| msgid "After using this attack, you can't use it during your next turn."
+msgid "After using this attack, you can’t use it during your next turn."
+msgstr "在使用这个攻击之后，你在下一回合不能用它。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-msgid "After using this attack, you can't use it during your next two turns."
-msgstr ""
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1568
+#, fuzzy
+#| msgid ""
+#| "After using this attack, you can't use it during your next two turns."
+msgid "After using this attack, you can’t use it during your next two turns."
+msgstr "在使用这个攻击之后，你在接下来两回合不能用它。"
 
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1629
 msgid "pierce"
 msgstr "穿刺"
 
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1630
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
-msgstr ""
+msgstr "这个武器，当在进攻时使用时，也可以对目标身后的一个单位造成伤害。"
 
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1684
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1700
 msgid "puncture"
 msgstr ""
 
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1685
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1701
 msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
-msgstr ""
+msgstr "这个武器，当在进攻时使用时，也可以对目标身后的两个单位造成伤害。"
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1767
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1784
 msgid "rain of arrows"
-msgstr ""
+msgstr "箭雨"
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1768
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1785
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
+"这个武器，当在进攻时使用时，也可以对目标身后的一个单位以及目标身后的单位的所"
+"有相邻单位造成伤害。"
 
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
-#, fuzzy
-#| msgid "Good riddance."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1906
 msgid "sword dance"
-msgstr "太好了。"
+msgstr "剑舞"
 
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1907
 msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
-msgstr ""
+msgstr "每次妮慕击中敌人时，她都会获得+10%的精确度和10%的闪避，直到战斗结束。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -15484,15 +15524,6 @@ msgstr "+$amount|经验值"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -15502,10 +15533,11 @@ msgid ""
 "that you occasionally save your game mid-scenario, so you won’t lose all "
 "your progress if you get stuck and have to start over."
 msgstr ""
-"说明：本战役可能不适合初学者，它改变了韦诺的常规规则，比如精灵的能力数据以及"
-"昼夜循环等。本战役更强调角色扮演的成分，具有连绵的剧情场景，而且场景目标可能"
-"会在中途改变。鉴于以上原因，我们强烈建议玩家在游戏中经常保存进度， 这样当您在"
-"某处失败的时候，可以顺利地重新挑战，而不会丢失您的全部进度。"
+"说明：本战役可能不适合初学者，它改变了韦诺的常规规则，比如精灵的能力数据，昼"
+"夜循环，召回费用以及对困难级别的通用方法。本战役更强调角色扮演的成分，具有连"
+"绵的剧情场景，而且场景目标可能会在中途改变。鉴于以上原因，我们强烈建议玩家在"
+"游戏中经常保存进度， 这样当您在某处失败的时候，可以顺利地重新挑战，而不会丢失"
+"您的全部进度。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -16088,20 +16120,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Which brings me to the other alien concept I was trying to comprehend: "
-#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
-#| "the humans? Do the humans worship her as well? The humans seem so brutish "
-#| "and vile, that I can’t imagine them worshiping the same god as us. I "
-#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
-#| "races worshiping her after the Great Fall, though perhaps things had "
-#| "changed in the intervening years. Her commands don’t make any sense; she "
-#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
-#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
-#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
-#| "pray to whatever gods may be left that I’m not leading my people into a "
-#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -16119,7 +16137,7 @@ msgstr ""
 "么？她为什么要我向人类投降？人类也信奉她么？人类看起来如此残暴邪恶，我很难想"
 "象他们和我们信奉着同一个神。我以为伊洛只是我们的神，朱尔没有提过大陨落以后有"
 "其他种族也信奉她，当然也许这些年来事情已经发生了变化。她的命令毫无道理，她一"
-"点也不像朱尔和我讲过的那个神。还有伊瑟努说的是什么？他的主人怎么会知道“耶柯纳"
+"点也不像朱尔和我讲过的那个神。还有伊瑟努说的是什么？他的首领怎么会知道“耶柯纳"
 "戈斯”和“战戈”？如果伊洛不帮助我，那我急切地需要一些解答。我祈祷神能留下任何启"
 "示，来告诉我，我不是在把我的同胞带向一个陷阱……"
 
@@ -16214,17 +16232,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
-#, fuzzy
-#| msgid ""
-#| "That afternoon three of the merfolk sat in a circle and performed their "
-#| "ritual to determine the location of their master. Apparently it was a "
-#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"那天下午，三个人鱼坐成一圈，用他们的仪式来确定主人的方位。最后显然成功了，因"
+"那天下午，三个人鱼坐成一圈，用他们的仪式来确定首领的方位。最后显然成功了，因"
 "为他们引导我们朝太阳升起的方向开去。"
 
 #. [part]
@@ -16352,6 +16365,10 @@ msgstr "幻影城堡"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "幻影主楼"
+
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr "昏迷: 此单位已昏迷，无法确保其控制区域。"
 
 #~ msgid "Hunter"
 #~ msgstr "猎手"

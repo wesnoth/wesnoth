@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -106,9 +106,10 @@ void playmp_controller::play_human_turn()
 
 	remove_blindfold();
 
-	const std::unique_ptr<countdown_clock> timer(saved_game_.mp_settings().mp_countdown
-		? new countdown_clock(current_team())
-		: nullptr);
+	utils::optional<countdown_clock> timer;
+	if(saved_game_.mp_settings().mp_countdown) {
+		timer.emplace(current_team());
+	}
 
 	show_turn_dialog();
 
@@ -128,49 +129,40 @@ void playmp_controller::play_human_turn()
 	end_turn_enable(true);
 
 	while(!should_return_to_play_side()) {
-		try {
-			process_network_data();
-			check_objectives();
-			play_slice_catch();
-			if(player_type_changed_) {
-				// Clean undo stack if turn has to be restarted (losing control)
-				if(undo_stack().can_undo()) {
-					gui_->announce(_("Undoing moves not yet transmitted to the server."), font::NORMAL_COLOR);
-				}
-
-				while(undo_stack().can_undo()) {
-					undo_stack().undo();
-				}
+		process_network_data();
+		check_objectives();
+		play_slice_catch();
+		if(player_type_changed_) {
+			// Clean undo stack if turn has to be restarted (losing control)
+			if(undo_stack().can_undo()) {
+				gui_->announce(_("Undoing moves not yet transmitted to the server."), font::NORMAL_COLOR);
 			}
 
-			if(timer) {
-				bool time_left = timer->update();
-				if(!time_left) {
-					end_turn_requested_ = true;
-				}
+			while(undo_stack().can_undo()) {
+				undo_stack().undo();
 			}
-		} catch(...) {
-			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
-			throw;
+		}
+
+		if(timer) {
+			bool time_left = timer->update();
+			if(!time_left) {
+				end_turn_requested_ = true;
+			}
 		}
 	}
 }
 
 void playmp_controller::play_idle_loop()
 {
-	LOG_NG << "playmp::play_human_turn...";
+	LOG_NG << "playmp::play_idle_loop...";
 
 	remove_blindfold();
 
 	while(!should_return_to_play_side()) {
-		try {
-			process_network_data();
-			play_slice_catch();
-			SDL_Delay(1);
-		} catch(...) {
-			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
-			throw;
-		}
+		process_network_data();
+		play_slice_catch();
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(1ms); // TODO: why?
 	}
 }
 
@@ -182,7 +174,8 @@ void playmp_controller::wait_for_upload()
 		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
 		while(!next_scenario_notified_ && !is_host()) {
 			process_network_data();
-			SDL_Delay(10);
+			using namespace std::chrono_literals;
+			std::this_thread::sleep_for(10ms);
 			gui2::dialogs::loading_screen::spin();
 		}
 	});
@@ -192,17 +185,17 @@ void playmp_controller::after_human_turn()
 {
 	if(saved_game_.mp_settings().mp_countdown) {
 		// time_left + turn_bonus + (action_bonus * number of actions done)
-		const int new_time_in_secs = (current_team().countdown_time() / 1000)
+		auto new_time = current_team().countdown_time()
 			+ saved_game_.mp_settings().mp_countdown_turn_bonus
 			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
 
-		const int new_time
-			= 1000 * std::min<int>(new_time_in_secs, saved_game_.mp_settings().mp_countdown_reservoir_time);
+		new_time
+			= std::min<std::chrono::milliseconds>(new_time, saved_game_.mp_settings().mp_countdown_reservoir_time);
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
 
-		recorder().add_countdown_update(new_time, current_side());
+		recorder().add_countdown_update(new_time.count(), current_side());
 	}
 
 	LOG_NG << "playmp::after_human_turn...";
@@ -316,7 +309,7 @@ void playmp_controller::receive_actions()
 }
 
 
-void playmp_controller::play_slice(bool is_delay_enabled)
+void playmp_controller::play_slice()
 {
 	if(!is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
@@ -327,7 +320,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 		send_actions();
 	}
 
-	playsingle_controller::play_slice(is_delay_enabled);
+	playsingle_controller::play_slice();
 }
 
 bool playmp_controller::is_networked_mp() const
@@ -403,7 +396,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"].to_int(),
 				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
 				prefs::get().message_bell());
 	}

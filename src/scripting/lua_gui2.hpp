@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,8 @@ int show_story(lua_State* L);
 int show_message_box(lua_State* L);
 int show_lua_console(lua_State*L, lua_kernel_base * lk);
 int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state);
+int intf_show_recruit_dialog(lua_State* L);
+int intf_show_recall_dialog(lua_State* L);
 int luaW_open(lua_State *L);
 
 } // end namespace lua_gui2

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -102,9 +102,9 @@ private:
 
 	void update_expand_direction();
 
-	void set_direction_icon(int index, std::string icon);
+	void set_direction_icon(int index, const std::string& icon);
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 };

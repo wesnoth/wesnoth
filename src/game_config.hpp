@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@ class color_range;
 #include "tstring.hpp"
 #include "game_config_view.hpp"
 
+#include <chrono>
 #include <vector>
 #include <map>
 
@@ -37,8 +38,8 @@ namespace game_config
 	extern int kill_experience;
 	extern int combat_experience;
 	extern unsigned int tile_size;
-	extern unsigned lobby_network_timer;
-	extern unsigned lobby_refresh;
+	extern std::chrono::milliseconds lobby_network_timer;
+	extern std::chrono::milliseconds lobby_refresh;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
 
@@ -58,9 +59,10 @@ namespace game_config
 	extern const int gold_carryover_percentage;
 
 	extern bool debug_lua, strict_lua, editor, ignore_replay_errors, mp_debug,
-		exit_at_end, no_delay, disable_autosave, no_addons;
+		exit_at_end, disable_autosave, no_addons;
 
 	extern bool allow_insecure;
+	extern bool addon_server_info;
 
 	extern const bool& debug;
 	void set_debug(bool new_debug);
@@ -85,6 +87,8 @@ namespace game_config
 	extern std::string moved_orb_color;
 	extern std::string partial_orb_color;
 	extern std::string unmoved_orb_color;
+	extern std::string reach_map_color;
+	extern std::string reach_map_enemy_color;
 	extern std::string default_color_list;
 	} // colors
 
@@ -95,6 +99,8 @@ namespace game_config
 	extern bool show_partial_orb;
 	extern bool show_status_on_ally_orb;
 	extern bool show_unmoved_orb;
+	extern int reach_map_border_opacity;
+	extern int reach_map_tint_opacity;
 
 	namespace images {
 	extern std::string game_title,
@@ -121,7 +127,6 @@ namespace game_config
 			mouseover,
 			selected,
 			editor_brush,
-			unreachable,
 			linger,
 			// GUI elements
 			observer,
@@ -141,7 +146,7 @@ namespace game_config
 	} //images
 
 
-	extern std::string shroud_prefix, fog_prefix;
+	extern std::string shroud_prefix, fog_prefix, reach_map_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
 

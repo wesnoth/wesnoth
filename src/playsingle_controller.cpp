@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -25,7 +25,6 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
-#include "carryover_show_gold.hpp"
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
@@ -50,6 +49,7 @@
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <thread>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -95,7 +95,7 @@ std::string playsingle_controller::describe_result() const
 
 void playsingle_controller::init_gui()
 {
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "Initializing GUI... " << timer();
 	// If we are retarting replay from linger mode.
 	update_gui_linger();
 	play_controller::init_gui();
@@ -131,7 +131,7 @@ void playsingle_controller::init_gui()
 	gui_->set_prevent_draw(false);
 	gui_->queue_repaint();
 	if(!video::headless() && !video::testing()) {
-		gui_->fade_to({0,0,0,0}, 500);
+		gui_->fade_to({0,0,0,0}, std::chrono::milliseconds{500});
 	} else {
 		gui_->set_fade({0,0,0,0});
 	}
@@ -180,7 +180,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 		gui2::show_transient_message(
 			// TODO: find a better title
 			_("Game Error"),
-			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then "
+			_("This multiplayer game uses an alternative random mode, if you don’t know what this message means, then "
 			  "most likely someone is cheating or someone reloaded a corrupt game."));
 	}
 }
@@ -308,7 +308,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
+	LOG_NG << "starting main loop\n" << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
@@ -330,7 +330,7 @@ void playsingle_controller::play_scenario_main_loop()
 				get_saved_game().statistics().clear_current_scenario();
 			}
 
-			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			reset_gamestate(*ex.level, (*ex.level)["replay_pos"].to_int());
 
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				resources::gameboard->teams()[i].set_local(local_players[i]);
@@ -409,8 +409,6 @@ void playsingle_controller::do_end_level()
 	}
 
 	persist_.end_transaction();
-	carryover_show_gold(gamestate(), is_observer() || is_replay(), is_observer(), saved_game_.classification().is_test());
-
 }
 
 level_result::type playsingle_controller::play_scenario(const config& level)
@@ -480,7 +478,8 @@ void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
 		play_slice_catch();
-		SDL_Delay(10);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(10ms);
 	}
 }
 
@@ -623,20 +622,14 @@ void playsingle_controller::linger()
 
 	update_gui_linger();
 
-	try {
-		if(replay_controller_.get() != nullptr) {
-			replay_controller_->play_side_impl();
-			if(player_type_changed_) {
-				replay_controller_.reset();
-			}
+	if(replay_controller_.get() != nullptr) {
+		replay_controller_->play_side_impl();
+		if(player_type_changed_) {
+			replay_controller_.reset();
 		}
-		while(!end_turn_requested_) {
-			play_slice();
-		}
-	} catch(const savegame::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		saved_game_.clear();
-		throw;
+	}
+	while(!end_turn_requested_) {
+		play_slice();
 	}
 
 	LOG_NG << "ending end-of-scenario linger";
@@ -720,7 +713,7 @@ void playsingle_controller::play_network_turn()
 void playsingle_controller::handle_generic_event(const std::string& name)
 {
 	if(name == "ai_user_interact") {
-		play_slice(false);
+		play_slice();
 	}
 }
 
@@ -853,7 +846,7 @@ bool playsingle_controller::should_return_to_play_side() const
 		return true;
 	} else if(gamestate().in_phase(game_data::TURN_ENDED)) {
 		return true;
-	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == 0 && current_team().is_local() && !current_team().is_idle()) {
+	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == nullptr && current_team().is_local() && !current_team().is_idle()) {
 		// When we are a locally controlled side and havent done init_side yet also return to play_side
 		return true;
 	} else {

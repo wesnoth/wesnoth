@@ -127,23 +127,33 @@ WESMERE_FOOTER = '''\
 
 <div id="footer"><div id="footer-content"><div>
 	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
-	Copyright &copy; 2003&ndash;2024 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
-	Site design Copyright &copy; 2017&ndash;2024 by Iris Morelle
+	Copyright &copy; 2003&ndash;2025 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
+	Site design Copyright &copy; 2017&ndash;2025 by Iris Morelle
 </div></div></div>
 </body>
 </html>
 '''
 
 ADDON_TYPES_INFO = {
-    "scenario": {
-        "short": "Scenario",
-        "long": "Singleplayer scenario",
-        "help": "After install the scenario will show up in the list you get when choosing “Campaign” in the main menu. (Basically it is just a campaign with only one scenario.)",
+    "unknown": {
+        "short": "Unknown",
+        "long": "Unknown Add-on Type",
+        "help": "Add-ons with an invalid add-on type field.",
+    },
+    "core": {
+        "short": "Core",
+        "long": "Core/Total Conversion",
+        "help": "Cores enable total conversion of The Battle for Wesnoth. A core can replace all the content in Wesnoth: when a different core is loaded, the regular units, terrains and the like do not exist. This can be used to provide a completely different game experience.",
     },
     "campaign": {
         "short": "Campaign",
         "long": "Singleplayer campaign",
         "help": "After install the campaign will show up in the list you get when choosing “Campaign” in the main menu.",
+    },
+    "scenario": {
+        "short": "Scenario",
+        "long": "Singleplayer scenario",
+        "help": "After install the scenario will show up in the list you get when choosing “Campaign” in the main menu. (Basically it is just a campaign with only one scenario.)",
     },
     "campaign_sp_mp": {
         "short": "SP/MP Campaign",
@@ -185,20 +195,15 @@ ADDON_TYPES_INFO = {
         "long": "Miscellaneous content/media",
         "help": "Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.",
     },
-    "core": {
-        "short": "Core",
-        "long": "Core/Total Conversion",
-        "help": "Cores enable total conversion of The Battle for Wesnoth. A core can replace all the content in Wesnoth: when a different core is loaded, the regular units, terrains and the like do not exist. This can be used to provide a completely different game experience.",
+    "theme": {
+        "short": "Theme",
+        "long": "UI or in-game theme",
+        "help": "UI or in-game themes that can be enabled in preferences.",
     },
     "other": {
         "short": "Other",
         "long": "Other",
         "help": "Add-ons which do not fit any other category.",
-    },
-    "unknown": {
-        "short": "Unknown",
-        "long": "Unknown Add-on Type",
-        "help": "Add-ons with an invalid add-on type field.",
     },
 }
 
@@ -297,11 +302,11 @@ def output(path, url, datadir, data):
 
         if icon:
             icon = icon.strip()
-            uri_manifest = re.match('^data:(image/(?:png|jpeg));base64,', icon)
+            uri_manifest = re.match('^data:(image/.*?);base64,', icon)
 
             if uri_manifest:
                 if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
-                    sys.stderr.write("Data URI icon using unsupported content type " + uri_manifest.group(1))
+                    print("Data URI icon using unsupported content type " + uri_manifest.group(1), file=sys.stderr)
                 else:
                     imgurl = icon
             else:

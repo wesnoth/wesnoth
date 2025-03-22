@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -273,7 +273,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 					if(is_enemy) {
 						status = orb_status::enemy;
 					} else if(vw && vw->side() == side) {
-						status = disp->get_disp_context().unit_orb_status(u);
+						status = disp->context().unit_orb_status(u);
 					} else {
 						// no-op, status is already set to orb_status::allied;
 					}

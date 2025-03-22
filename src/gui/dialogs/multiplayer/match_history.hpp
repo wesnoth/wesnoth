@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2024
+	Copyright (C) 2021 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	/**
 	 * Requests game history from the server based on the offset.

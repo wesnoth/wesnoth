@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -48,8 +48,8 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	void clear_image_timer();
 

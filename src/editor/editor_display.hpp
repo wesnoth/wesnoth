@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,7 +31,7 @@ public:
 	void set_brush_locs(const std::set<map_location>& hexes);
 	void clear_brush_locs();
 	void remove_brush_loc(const map_location& hex);
-	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
+	const editor_map& get_map() const { return static_cast<const editor_map&>(context().map()); }
 	void rebuild_terrain(const map_location &loc);
 
 	/** Inherited from display. */

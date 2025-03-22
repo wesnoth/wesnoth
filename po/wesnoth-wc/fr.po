@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:05 UTC\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
 "PO-Revision-Date: 2024-02-28 13:49+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -383,7 +383,9 @@ msgstr "nombre de châteaux"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-msgid "$name|'s pet"
+#, fuzzy
+#| msgid "$name|'s pet"
+msgid "$name|’s pet"
 msgstr "le joujou de $name"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
@@ -403,6 +405,11 @@ msgid "An in-game help is available: right-click on any empty hex."
 msgstr ""
 "Une aide en ligne est disponible : ouvrez par un clic droit sur un hexagone "
 "vide"
+
+#. [lua]: carryover.remaining_gold_message
+#: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
+msgid "Average remaining gold: "
+msgstr ""
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -1913,47 +1920,47 @@ msgstr ""
 "Zzupde"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:111
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:114
 msgid "$name Training Maximum Level"
 msgstr "Niveau maximal d'entraînement en $name"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:115
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:118
 msgid "$name Training level $level"
 msgstr "Niveau $level d'entraînement en $name"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:124
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:127
 msgid "Maximum Level"
 msgstr "Niveau maximal"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:126
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:129
 msgid "level $level"
 msgstr "niveau $level"
 
 #. [lua]: training.generate_message
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:143
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:146
 msgid "$chance| chance to $arrow $desc"
 msgstr "$chance| de chance de $arrow $desc"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:219
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:216
 msgid "trained"
 msgstr "entraîné"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:220
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:217
 msgid "female^trained"
 msgstr "entraînée"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:272
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:269
 msgid "Nothing to learn here"
 msgstr "Rien à apprendre ici"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:271
 msgid "From $level_before to $level_after"
 msgstr "De $level_before à $level_after"
 
@@ -2672,18 +2679,20 @@ msgstr " (indisponible pour les joueurs)."
 # Dans le sens de "premier scénario"
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:125
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "Début"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:128
-msgid "Scenario"
+#: data/campaigns/World_Conquest/lua/map/main.lua:127
+#, fuzzy
+#| msgid "Scenario"
+msgid "Scenario "
 msgstr "Scénario"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:130
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 msgid "Final Battle"
 msgstr "Bataille finale"
 
@@ -2990,7 +2999,7 @@ msgid "Enemies"
 msgstr "Ennemis"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
 msgid "Allies"
 msgstr "Alliés"
 
@@ -3774,12 +3783,12 @@ msgstr ""
 "ténèbres à vos hommes."
 
 #. [trainer]: type=Duelist
-#: data/campaigns/World_Conquest/resources/data/training.cfg:59
+#: data/campaigns/World_Conquest/resources/data/training.cfg:60
 msgid "Movement"
 msgstr "Déplacement"
 
 #. [trainer]: type=Duelist
-#: data/campaigns/World_Conquest/resources/data/training.cfg:60
+#: data/campaigns/World_Conquest/resources/data/training.cfg:61
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
 "afraid battlefields just aren’t my scene — no drama, no style, no romance! "
@@ -3795,12 +3804,12 @@ msgstr ""
 "feuille."
 
 #. [trainer]: type=Orcish Warrior
-#: data/campaigns/World_Conquest/resources/data/training.cfg:77
+#: data/campaigns/World_Conquest/resources/data/training.cfg:78
 msgid "Melee Combat"
 msgstr "Combat au corps à corps"
 
 #. [trainer]: type=Orcish Warrior
-#: data/campaigns/World_Conquest/resources/data/training.cfg:78
+#: data/campaigns/World_Conquest/resources/data/training.cfg:79
 msgid ""
 "Looks like you could use some help. A grizzled old veteran like me won’t be "
 "much use on the field, but I bet I can teach your men a thing or two about "
@@ -3811,17 +3820,17 @@ msgstr ""
 "enseigner à vos hommes une chose ou deux dans l'art de l'épée."
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:102
+#: data/campaigns/World_Conquest/resources/data/training.cfg:103
 msgid "melee: +1 strikes"
 msgstr "corps à corps : +1 attaque"
 
 #. [trainer]: type=Elvish Ranger
-#: data/campaigns/World_Conquest/resources/data/training.cfg:120
+#: data/campaigns/World_Conquest/resources/data/training.cfg:121
 msgid "Ranger Tactics"
 msgstr "Arts du rôdeur"
 
 #. [trainer]: type=Elvish Ranger
-#: data/campaigns/World_Conquest/resources/data/training.cfg:121
+#: data/campaigns/World_Conquest/resources/data/training.cfg:122
 msgid ""
 "I sympathize with your cause, but this is not my battle. I will not fight "
 "for you, but I will gladly instruct your recruits in the art of the ranger, "
@@ -3832,12 +3841,12 @@ msgstr ""
 "avec vos recrues, et elles pourront se battre mieux seules."
 
 #. [trainer]: type=Drake Flare
-#: data/campaigns/World_Conquest/resources/data/training.cfg:159
+#: data/campaigns/World_Conquest/resources/data/training.cfg:160
 msgid "Combat Experience"
 msgstr "Experience du combat"
 
 #. [trainer]: type=Drake Flare
-#: data/campaigns/World_Conquest/resources/data/training.cfg:160
+#: data/campaigns/World_Conquest/resources/data/training.cfg:161
 msgid ""
 " Join the battle? Nay, lads, my talents would be wasted on the frontlines. "
 "Give me some raw recruits to work with, though, and I’ll whip ’em into shape "
@@ -3851,12 +3860,12 @@ msgstr ""
 "auront aussi une petite idée."
 
 #. [trainer]: type=Dwarvish Runesmith
-#: data/campaigns/World_Conquest/resources/data/training.cfg:186
+#: data/campaigns/World_Conquest/resources/data/training.cfg:187
 msgid "Health"
 msgstr "Santé"
 
 #. [trainer]: type=Dwarvish Runesmith
-#: data/campaigns/World_Conquest/resources/data/training.cfg:187
+#: data/campaigns/World_Conquest/resources/data/training.cfg:188
 msgid ""
 "Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
 "troubles of my own to join in, but stick about a while and I’ll put some "
@@ -3869,18 +3878,18 @@ msgstr ""
 "vous, vous saurez faire face à tout ce que le sort jettera à vous."
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:220
+#: data/campaigns/World_Conquest/resources/data/training.cfg:221
 msgid "ranged: disengage"
 msgstr "à distance : repli"
 
 # Reprend la traduction de la campagne SlSB/UtBS
 #. [dummy]: id=wc2_disengage
-#: data/campaigns/World_Conquest/resources/data/training.cfg:234
+#: data/campaigns/World_Conquest/resources/data/training.cfg:235
 msgid "disengage"
 msgstr "repli"
 
 #. [dummy]: id=wc2_disengage
-#: data/campaigns/World_Conquest/resources/data/training.cfg:235
+#: data/campaigns/World_Conquest/resources/data/training.cfg:236
 msgid ""
 "Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
 "gain a new attack)."
@@ -3889,93 +3898,93 @@ msgstr ""
 "mouvement (sans possibilité d'une nouvelle attaque)."
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:246
+#: data/campaigns/World_Conquest/resources/data/training.cfg:247
 msgid "Full movement on turn recruited or recalled"
 msgstr ""
 "Points de mouvement complets durant le tour de recrutement ou de rappel."
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:312
+#: data/campaigns/World_Conquest/resources/data/training.cfg:313
 msgid "$range|: $special|"
 msgstr "$range| : $special|"
 
 #. [chance]
 #. [skirmisher]: id=distract
-#: data/campaigns/World_Conquest/resources/data/training.cfg:377
-#: data/campaigns/World_Conquest/resources/data/training.cfg:402
+#: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distraction"
 
 #. [chance]
 #. [resistance]: id=tenacity
-#: data/campaigns/World_Conquest/resources/data/training.cfg:389
-#: data/campaigns/World_Conquest/resources/data/training.cfg:426
+#: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "ténacité"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+#: data/campaigns/World_Conquest/resources/data/training.cfg:405
 msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Les unités alliées ignorent la zone de contrôle des ennemis adjacents à "
 "cette unité."
 
 #. [resistance]: id=tenacity
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+#: data/campaigns/World_Conquest/resources/data/training.cfg:429
 msgid "This unit’s vulnerabilities are halved when defending."
 msgstr ""
 "Les vulnérabilités de cette unité sont réduites de moitié quand elle défend."
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:468
+#: data/campaigns/World_Conquest/resources/data/training.cfg:469
 msgid "heals +4, cures"
 msgstr "soins +4, guérison"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:544
+#: data/campaigns/World_Conquest/resources/data/training.cfg:545
 msgid "+$boost| moves"
 msgstr "+$boost| de mouvement"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:558
+#: data/campaigns/World_Conquest/resources/data/training.cfg:559
 msgid "$range|: +$boost| damage"
 msgstr "$range| : +$boost| dégâts"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:574
+#: data/campaigns/World_Conquest/resources/data/training.cfg:575
 msgid "$range|: +1 damage per level"
 msgstr "$range| : +1 de dégâts par niveau"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:590
+#: data/campaigns/World_Conquest/resources/data/training.cfg:591
 msgid "+$hitpoints| hitpoints"
 msgstr "+$hitpoints| points de vie"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:605
+#: data/campaigns/World_Conquest/resources/data/training.cfg:606
 msgid "+$hitpoints| hitpoints per level"
 msgstr "+$hitpoints| points de vie par niveau"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:621
+#: data/campaigns/World_Conquest/resources/data/training.cfg:622
 msgid "$value| XP to advance"
 msgstr "$value | de XP pour évoluer"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:635
+#: data/campaigns/World_Conquest/resources/data/training.cfg:636
 msgid "free upkeep"
 msgstr "pas d'entretien"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:645
+#: data/campaigns/World_Conquest/resources/data/training.cfg:646
 msgid "Village/Castle: +5 defense"
 msgstr "Village/Château : +5 % de défense"
 
 #  « Point de mouvement » doit être abrégé sinon la chaîne est tronquée dans le dialogue.
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:677
+#: data/campaigns/World_Conquest/resources/data/training.cfg:678
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
@@ -3983,22 +3992,22 @@ msgstr ""
 " résistance contre $dmg_type|"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:706
+#: data/campaigns/World_Conquest/resources/data/training.cfg:707
 msgid "$terrain|: +10 defense and full movement"
 msgstr "$terrain| : +10 % de défense et déplacement sans pénalité"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:717
+#: data/campaigns/World_Conquest/resources/data/training.cfg:718
 msgid "+moves defense"
 msgstr "+points de mouvement en défense"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+#: data/campaigns/World_Conquest/resources/data/training.cfg:728
 msgid "melee: optional charge"
 msgstr "corps à corps : charge facultative"
 
 #. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:752
+#: data/campaigns/World_Conquest/resources/data/training.cfg:753
 msgid "$range|: arcane and +25% damage"
 msgstr "$range| : arcane et +25% dégâts"
 
@@ -4019,6 +4028,22 @@ msgid "World Conquest 4p"
 msgstr "Conquête du monde à 4 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid "WC1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
+msgid "WC2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
+msgid "WC3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
+msgid "WC4p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
@@ -4027,7 +4052,7 @@ msgstr ""
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:33
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
@@ -4037,7 +4062,7 @@ msgstr ""
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:37
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
@@ -4047,7 +4072,7 @@ msgstr ""
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 2 players. It has 6 levels "
@@ -4063,94 +4088,92 @@ msgstr ""
 "(Niveau expert, 5 scénarios)."
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
-msgid "WC"
-msgstr "WC"
-
-#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Beginner"
 msgstr "Débutant"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Peasant"
 msgstr "Paysan"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Easy"
 msgstr "Facile"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Sergeant"
 msgstr "Sergent"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Lieutenant"
 msgstr "Lieutenant"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Medium"
 msgstr "Moyen"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "General"
 msgstr "Général"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Hard"
 msgstr "Difficile"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Challenging"
 msgstr "Relevé"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Grand Marshal"
 msgstr "Maréchal"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Expert"
 msgstr "Expert"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Nightmare"
 msgstr "Cauchemar"
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:125
 msgid "Campaign Design"
 msgstr "Conception de la campagne"
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:132
 msgid "Prose, Grammatical and Text Assistance"
 msgstr "Aide pour le texte, prose et grammaire"
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:148
 msgid "Minor Code Contributors"
 msgstr "Contributeurs de code"
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:158
 msgid "Playtesting"
 msgstr "Test"
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr "Maintenance de la campagne"
+
+#~ msgid "WC"
+#~ msgstr "WC"
 
 #~ msgid ""
 #~ "A randomly generated cooperative campaign for 4 players. It has 6 level "

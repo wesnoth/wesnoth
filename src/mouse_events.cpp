@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -42,6 +42,8 @@
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
+#include "language.hpp"
+#include "serialization/markup.hpp"
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
@@ -56,13 +58,13 @@ static lg::log_domain log_wml("wml");
 
 namespace events
 {
-mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
+mouse_handler::mouse_handler(play_controller& pc)
 	: mouse_handler_base()
-	, gui_(gui)
+	, gui_(nullptr)
 	, pc_(pc)
 	, previous_hex_()
 	, previous_free_hex_()
-	, selected_hex_()
+	, selected_hex_(map_location::null_location())
 	, next_unit_()
 	, current_route_()
 	, current_paths_()
@@ -128,13 +130,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
-			sdl::get_mouse_state(&mx, &my);
-			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
-										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
+			point pos = sdl::get_mouse_location();
+			const double drag_distance =
+				std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
+				std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
+
 			if(drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 			}
@@ -145,15 +148,11 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	const auto found_unit = find_unit(selected_hex_);
 	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
-		sdl::get_mouse_state(&mx, &my);
 
 		if(gui().map_area().contains(x, y)) {
-			int dx = drag_from_x_ - mx;
-			int dy = drag_from_y_ - my;
-
-			gui().scroll(dx, dy);
-			drag_from_x_ = mx;
-			drag_from_y_ = my;
+			point pos = sdl::get_mouse_location();
+			gui().scroll(drag_from_ - pos);
+			drag_from_ = pos;
 		}
 		return;
 	}
@@ -616,7 +615,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (event.state > SDL_PRESSED || !pc_.get_map().on_board(loc)) {
 		return false;
 	}
 
@@ -675,9 +674,7 @@ const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
 
 const map_location mouse_handler::hovered_hex() const
 {
-	int x = -1;
-	int y = -1;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 	return gui_->hex_clicked_on(x, y);
 }
 
@@ -754,8 +751,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 	}
 
-	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
-	const map_location::DIRECTION second_preferred = loc.get_relative_dir(previous_free_hex_);
+	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
+	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 	int best_rating = 100; // smaller is better
 
@@ -772,16 +769,16 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 
 		if(current_paths_.destinations.contains(adj[n])) {
-			static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
+			static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
 
-			unsigned int difference = std::abs(static_cast<int>(preferred - n));
-			if(difference > NDIRECTIONS / 2) {
-				difference = NDIRECTIONS - difference;
+			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+			if(difference > ndirections / 2) {
+				difference = ndirections - difference;
 			}
 
-			unsigned int second_difference = std::abs(static_cast<int>(second_preferred - n));
-			if(second_difference > NDIRECTIONS / 2) {
-				second_difference = NDIRECTIONS - second_difference;
+			unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
+			if(second_difference > ndirections / 2) {
+				second_difference = ndirections - second_difference;
 			}
 
 			const int rating = difference * 2 + (second_difference > difference);
@@ -866,7 +863,7 @@ void mouse_handler::teleport_action()
 void mouse_handler::select_or_action(bool browse)
 {
 	if(!pc_.get_map().on_board(last_hex_)) {
-		tooltips::click(drag_from_x_, drag_from_y_);
+		tooltips::click(drag_from_.x, drag_from_.y);
 		return;
 	}
 
@@ -948,7 +945,7 @@ void mouse_handler::move_action(bool browse)
 				int choice = -1;
 				{
 					wb::future_map_if_active planned_unit_map; // start planned unit map scope
-					choice = show_attack_dialog(attack_from, clicked_u->get_location());
+					choice = show_attack_dialog(attack_from, clicked_u->get_location(), src);
 				} // end planned unit map scope
 
 				if(choice >= 0) {
@@ -979,8 +976,7 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
-						choice = show_attack_dialog(attack_from, clicked_u->get_location());
+						choice = show_attack_dialog(attack_from, clicked_u->get_location(), src);
 					}
 
 					if(choice < 0) {
@@ -1096,8 +1092,10 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 	}
 }
 
-void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
+void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event, const bool force_unhighlight)
 {
+	bool unhighlight = selected_hex_.valid() && force_unhighlight;
+
 	selected_hex_ = hex;
 
 	gui().select_hex(selected_hex_);
@@ -1118,7 +1116,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 
 		if(highlight) {
-			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
 		}
 
@@ -1173,7 +1170,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		if(!pc_.get_units().find(last_hex_)) {
+		// unhighlight is needed because the highlight_reach here won't be reset with highlight assigned false.
+		if(!pc_.get_units().find(last_hex_) || unhighlight) {
 			unselected_reach_ = gui_->unhighlight_reach();
 		}
 
@@ -1266,7 +1264,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 	}
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back();
-	std::size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
+	std::size_t moves = actions::move_unit_and_record(steps, false, &interrupted);
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
@@ -1314,7 +1312,7 @@ void mouse_handler::save_whiteboard_attack(
 }
 
 int mouse_handler::fill_weapon_choices(
-		std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
+		std::vector<battle_context>& bc_vector, const unit_map::iterator& attacker, const unit_map::iterator& defender)
 {
 	int best = 0;
 	for(unsigned int i = 0; i < attacker->attacks().size(); i++) {
@@ -1339,28 +1337,193 @@ int mouse_handler::fill_weapon_choices(
 	return best;
 }
 
-int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
+int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src)
 {
 	game_board& board = pc_.gamestate().board_;
-
-	unit_map::iterator attacker = board.units().find(attacker_loc);
-	unit_map::iterator defender = board.units().find(defender_loc);
-
-	if(!attacker || !defender) {
-		ERR_NG << "One fighter is missing, can't attack";
-		return -1; // abort, click will do nothing
-	}
-
+	unit_map::iterator attacker;
+	unit_map::iterator defender;
 	std::vector<battle_context> bc_vector;
-	const int best = fill_weapon_choices(bc_vector, attacker, defender);
+	std::vector<gui2::widget_data> bc_widget_data_vector;
+	int best;
+	int leadership_bonus = 0;
+	{
+		pathfind::paths::dest_vect::const_iterator itor = current_paths_.destinations.find(attacker_loc);
+		temporary_unit_mover temp_mover(pc_.get_units(), attacker_src, attacker_loc, itor->move_left, true);
 
-	if(bc_vector.empty()) {
-		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
+		attacker = board.units().find(attacker_loc);
+		defender = board.units().find(defender_loc);
 
-		return -1;
+		if(!attacker || !defender) {
+			ERR_NG << "One fighter is missing, can't attack";
+			return -1; // abort, click will do nothing
+		}
+
+		best = fill_weapon_choices(bc_vector, attacker, defender);
+
+		if (bc_vector.empty()) {
+			gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
+
+			return -1;
+		}
+
+		static const config empty;
+		static const_attack_ptr no_weapon(new attack_type(empty));
+
+		// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
+		for(const auto& weapon : bc_vector) {
+			const battle_context_unit_stats& attacker_stats = weapon.get_attacker_stats();
+			const battle_context_unit_stats& defender_stats = weapon.get_defender_stats();
+
+			const attack_type& attacker_weapon = *attacker_stats.weapon;
+			const attack_type& defender_weapon = defender_stats.weapon ? *defender_stats.weapon : *no_weapon;
+
+			if(leadership_bonus == 0) {
+				leadership_bonus
+					= under_leadership(*attacker, attacker_loc, attacker_stats.weapon, defender_stats.weapon);
+			}
+
+			const color_t a_cth_color = game_config::red_to_green(attacker_stats.chance_to_hit);
+			const color_t d_cth_color = game_config::red_to_green(defender_stats.chance_to_hit);
+
+			const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
+			const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";
+
+			std::string range = attacker_weapon.range().empty() ? defender_weapon.range() : attacker_weapon.range();
+			if(!range.empty()) {
+				range = string_table["range_" + range];
+			}
+
+			auto a_ctx = attacker_weapon.specials_context(attacker.get_shared_ptr(), defender.get_shared_ptr(),
+				attacker->get_location(), defender->get_location(), true, defender_stats.weapon);
+
+			auto d_ctx = defender_weapon.specials_context(defender.get_shared_ptr(), attacker.get_shared_ptr(),
+				defender->get_location(), attacker->get_location(), false, attacker_stats.weapon);
+
+			std::string types = attacker_weapon.effective_damage_type().first;
+			std::string attw_type = !(types).empty() ? types : attacker_weapon.type();
+			if(!attw_type.empty()) {
+				attw_type = string_table["type_" + attw_type];
+			}
+			std::string def_types = defender_weapon.effective_damage_type().first;
+			std::string defw_type = !(def_types).empty() ? def_types : defender_weapon.type();
+			if(!defw_type.empty()) {
+				defw_type = string_table["type_" + defw_type];
+			}
+
+			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
+				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+			std::string attw_specials = attacker_weapon.weapon_specials();
+			std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
+			std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
+			std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
+			std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
+			bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0
+				&& defender_weapon.num_attacks() == 0 && defender_stats.chance_to_hit == 0);
+			std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
+			std::string defw_specials_dmg
+				= defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
+			std::string defw_specials_atk
+				= defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";
+			std::string defw_specials_cth
+				= defender_attack ? defender_weapon.weapon_specials_value({"chance_to_hit"}) : "";
+			std::string defw_specials_others
+				= defender_attack ? defender_weapon.weapon_specials_value(checking_tags_other) : "";
+
+			if(!attw_specials.empty()) {
+				attw_specials = " " + attw_specials;
+			}
+			if(!attw_specials_dmg.empty()) {
+				attw_specials_dmg = " " + attw_specials_dmg;
+			}
+			if(!attw_specials_atk.empty()) {
+				attw_specials_atk = " " + attw_specials_atk;
+			}
+			if(!attw_specials_cth.empty()) {
+				attw_specials_cth = " " + attw_specials_cth;
+			}
+			if(!attw_specials_others.empty()) {
+				attw_specials_others
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(attw_specials_others);
+			}
+			if(!defw_specials.empty()) {
+				defw_specials = " " + defw_specials;
+			}
+			if(!defw_specials_dmg.empty()) {
+				defw_specials_dmg = " " + defw_specials_dmg;
+			}
+			if(!defw_specials_atk.empty()) {
+				defw_specials_atk = " " + defw_specials_atk;
+			}
+			if(!defw_specials_cth.empty()) {
+				defw_specials_cth = " " + defw_specials_cth;
+			}
+			if(!defw_specials_others.empty()) {
+				defw_specials_others
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(defw_specials_others);
+			}
+
+			std::stringstream attacker_stats_str, defender_stats_str, attacker_tooltip, defender_tooltip;
+
+			// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does
+			// not consider the swarm weapon special
+			attacker_stats_str << markup::bold(attw_name) << "\n"
+							   << attw_type << "\n"
+							   << attacker_stats.damage << font::weapon_numbers_sep << attacker_stats.num_blows
+							   << attw_specials << "\n"
+							   << markup::span_color(a_cth_color,  attacker_stats.chance_to_hit, "%");
+
+			attacker_tooltip << _("Weapon: ") << markup::bold(attw_name) << "\n"
+							 << _("Type: ") << attw_type << "\n"
+							 << _("Damage: ") << attacker_stats.damage << markup::italic(attw_specials_dmg) << "\n"
+							 << _("Attacks: ") << attacker_stats.num_blows << markup::italic(attw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(a_cth_color, attacker_stats.chance_to_hit, "%")
+							 << markup::italic(attw_specials_cth) << attw_specials_others;
+
+			defender_stats_str << markup::bold(defw_name) << "\n"
+							   << defw_type << "\n"
+							   << defender_stats.damage << font::weapon_numbers_sep << defender_stats.num_blows
+							   << defw_specials << "\n"
+							   << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%");
+
+			defender_tooltip << _("Weapon: ") << markup::bold(defw_name) << "\n"
+							 << _("Type: ") << defw_type << "\n"
+							 << _("Damage: ") << defender_stats.damage << markup::italic(defw_specials_dmg) << "\n"
+							 << _("Attacks: ") << defender_stats.num_blows << markup::italic(defw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%")
+							 << markup::italic(defw_specials_cth) << defw_specials_others;
+
+			gui2::widget_data data;
+			gui2::widget_item item;
+
+			item["use_markup"] = "true";
+
+			item["label"] = attacker_weapon.icon();
+			data.emplace("attacker_weapon_icon", item);
+
+			item["tooltip"] = attacker_tooltip.str();
+			item["label"] = attacker_stats_str.str();
+			data.emplace("attacker_weapon", item);
+			item["tooltip"] = "";
+
+			item["label"]
+				= markup::span_color("#a69275", font::unicode_em_dash, " ", range, " ", font::unicode_em_dash);
+			data.emplace("range", item);
+
+			item["tooltip"] = defender_attack ? defender_tooltip.str() : "";
+			item["label"] = defender_stats_str.str();
+			data.emplace("defender_weapon", item);
+
+			item["tooltip"] = "";
+			item["label"] = defender_weapon.icon();
+			data.emplace("defender_weapon_icon", item);
+
+			bc_widget_data_vector.emplace_back(data);
+		}
 	}
-
-	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best);
+	// bc_widget_data_vector won't be empty when it reaches here.
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
 
 	if(dlg.show()) {
 		return dlg.get_selected_weapon();
@@ -1467,46 +1630,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 	return res;
 }
 
-/**
- * Causes attackable hexes to be highlighted.
- *
- * This checks the hexes that the provided unit can attack. If there is a valid
- * target there, that location is inserted into current_paths_.destinations.
- */
-void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
-{
-	// Cannot attack if no attacks are left.
-	if(u->attacks_left() == 0) {
-		return;
-	}
-
-	// Get the teams involved.
-	const team& cur_team = current_team();
-	const team& u_team = pc_.get_teams()[u->side() - 1];
-
-	// Check each adjacent hex.
-	for(const map_location& loc : get_adjacent_tiles(u->get_location())) {
-		// No attack option shown if no visible unit present.
-		// (Visible to current team, not necessarily the unit's team.)
-		if(!pc_.get_map().on_board(loc)) {
-			continue;
-		}
-
-		unit_map::const_iterator i = pc_.get_units().find(loc);
-		if(!i || !i->is_visible_to_team(cur_team, false)) {
-			continue;
-		}
-
-		const unit& target = *i;
-
-		// Can only attack non-petrified enemies.
-		if(u_team.is_enemy(target.side()) && !target.incapacitated()) {
-			current_paths_.destinations.insert(loc);
-		}
-	}
-}
-
-bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
+bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)
 {
 	game_board& board = pc_.gamestate().board_;
 

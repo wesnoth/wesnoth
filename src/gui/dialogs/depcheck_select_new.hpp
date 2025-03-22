@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,9 +49,9 @@ public:
 protected:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 private:
 	/** the options available */

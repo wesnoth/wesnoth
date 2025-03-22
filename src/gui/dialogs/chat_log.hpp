@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,7 @@ public:
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(chat_log)
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	std::shared_ptr<view> get_view() const;
 

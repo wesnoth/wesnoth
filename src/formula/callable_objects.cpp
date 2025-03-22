@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,8 +87,10 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->id());
 	} else if(key == "description") {
 		return variant(att_->name());
-	} else if(key == "type") {
+	} else if(key == "base_type") {
 		return variant(att_->type());
+	} else if(key == "type") {
+		return variant(att_->effective_damage_type().first);
 	} else if(key == "icon") {
 		return variant(att_->icon());
 	} else if(key == "range") {
@@ -118,9 +120,9 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
-		for(const auto special : att_->specials().all_children_range()) {
-			if(!special.cfg["id"].empty()) {
-				res.emplace_back(special.cfg["id"].str());
+		for(const auto [_, special_cfg] : att_->specials().all_children_view()) {
+			if(!special_cfg["id"].empty()) {
+				res.emplace_back(special_cfg["id"].str());
 			}
 		}
 		return variant(res);
@@ -133,6 +135,7 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "name");
 	add_input(inputs, "type");
+	add_input(inputs, "base_type");
 	add_input(inputs, "description");
 	add_input(inputs, "icon");
 	add_input(inputs, "range");
@@ -333,12 +336,12 @@ variant unit_callable::get_value(const std::string& key) const
 			needs_flip = true;
 		}
 		std::map<variant, variant> res;
-		for(const auto& p : cfg.attribute_range()) {
-			int val = p.second;
+		for(const auto& [key, value] : cfg.attribute_range()) {
+			int val = value.to_int();
 			if(needs_flip) {
 				val = 100 - val;
 			}
-			res.emplace(variant(p.first), variant(val));
+			res.emplace(variant(key), variant(val));
 		}
 
 		return variant(res);
@@ -549,18 +552,18 @@ variant config_callable::get_value(const std::string& key) const
 		return variant(result);
 	} else if(key == "__all_children") {
 		std::vector<variant> result;
-		for(const auto child : cfg_.all_children_range()) {
-			const variant cfg_child(std::make_shared<config_callable>(child.cfg));
-			const variant kv(std::make_shared<key_value_pair>(variant(child.key), cfg_child));
+		for(const auto [child_key, child_cfg] : cfg_.all_children_view()) {
+			const variant cfg_child(std::make_shared<config_callable>(child_cfg));
+			const variant kv(std::make_shared<key_value_pair>(variant(child_key), cfg_child));
 			result.push_back(kv);
 		}
 
 		return variant(result);
 	} else if(key == "__children") {
 		std::map<std::string, std::vector<variant>> build;
-		for(const auto child : cfg_.all_children_range()) {
-			const variant cfg_child(std::make_shared<config_callable>(child.cfg));
-			build[child.key].push_back(cfg_child);
+		for(const auto [child_key, child_cfg] : cfg_.all_children_view()) {
+			const variant cfg_child(std::make_shared<config_callable>(child_cfg));
+			build[child_key].push_back(cfg_child);
 		}
 
 		std::map<variant,variant> result;
@@ -571,8 +574,8 @@ variant config_callable::get_value(const std::string& key) const
 		return variant(result);
 	} else if(key == "__attributes") {
 		std::map<variant,variant> result;
-		for(const auto& val : cfg_.attribute_range()) {
-			result[variant(val.first)] = val.second.apply_visitor(fai_variant_visitor());
+		for(const auto& [key, value] : cfg_.attribute_range()) {
+			result[variant(key)] = value.apply_visitor(fai_variant_visitor());
 		}
 
 		return variant(result);
@@ -587,9 +590,9 @@ void config_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "__children");
 	add_input(inputs, "__attributes");
 
-	for(const auto& val : cfg_.attribute_range()) {
-		if(val.first.find_first_not_of(formula::id_chars) != std::string::npos) {
-			add_input(inputs, val.first);
+	for(const auto& [key, _] : cfg_.attribute_range()) {
+		if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
+			add_input(inputs, key);
 		}
 	}
 }

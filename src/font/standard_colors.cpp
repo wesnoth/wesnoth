@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,7 +30,9 @@ const color_t
 	TITLE_COLOR     {186, 172, 125},
 	LABEL_COLOR     {107, 140, 255},
 	BIGMAP_COLOR    {255, 255, 255},
-	BLUE_COLOR      {0  , 0  , 255};
+	GREEN_COLOR     {0  , 255, 0  },
+	BLUE_COLOR      {0  , 0  , 255},
+	INACTIVE_COLOR  {150, 150, 150};
 
 const color_t DISABLED_COLOR = PETRIFIED_COLOR.inverse();
 

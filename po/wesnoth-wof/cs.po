@@ -1,13 +1,13 @@
 # Martin Hrubý <hrubymar10@gmail.com>, 2019 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019, 2022 - 2024
+# Michal Žejdl <lachim@emer.cz>, 2019, 2022 - 2025
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2022 - 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
-"PO-Revision-Date: 2024-06-08 07:20+0200\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"PO-Revision-Date: 2025-01-26 09:55+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5067,7 +5067,7 @@ msgstr "„Ssourozzenci zzapadajícího ssslunce“"
 #. [message]: speaker=Arinexis
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:262
 msgid "‘Union of Saurgrath and Morogor’"
-msgstr "„Ješštěrácko Morogorsská unie“"
+msgstr "„Pakt Saurgrat–Morogor“"
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:268
@@ -5747,8 +5747,6 @@ msgstr "Je to... Prapředek..."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:363
-#, fuzzy
-#| msgid "Shek'kahan, do you not recognize Khrakrahs...?"
 msgid "Shek’kahan, do you not recognize Khrakrahs...?"
 msgstr "Ty nepoznávášš Krakrašše, Ššekekahane...?"
 
@@ -5789,8 +5787,6 @@ msgstr "Krakrašši, on je tady..."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:486
-#, fuzzy
-#| msgid "Behold, mighty Shek'kahan!"
 msgid "Behold, mighty Shek’kahan!"
 msgstr "Zadržž, mocný Ššekekahane!"
 
@@ -5801,12 +5797,6 @@ msgstr "Opovážlivče, jak mi můžeš představovat takového podvodníka!"
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:496
-#, fuzzy
-#| msgid ""
-#| "Impossster?!\n"
-#| "\n"
-#| "I am elder of Green Swamp Clan and all my years Shek'kahan protected "
-#| "usss. I could never missstake sssome impossster for him!"
 msgid ""
 "Impossster?!\n"
 "\n"
@@ -5892,11 +5882,6 @@ msgstr "Odcházím."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:570
-#, fuzzy
-#| msgid ""
-#| "Ancestor, you spoke that Shek'kahan grew weak...\n"
-#| "\n"
-#| "Yet to his last breath, he was fearless."
 msgid ""
 "Ancestor, you spoke that Shek’kahan grew weak...\n"
 "\n"
@@ -5908,8 +5893,6 @@ msgstr ""
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:578
-#, fuzzy
-#| msgid "Yes, Shek'kahan was fearless."
 msgid "Yes, Shek’kahan was fearless."
 msgstr "Ano, Šekekahan byl nebojácný."
 
@@ -7260,8 +7243,22 @@ msgstr "Karavela"
 
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sturdy and reliable caravel is the mainstay of human oceanic "
+#| "exploration, shipping and projection of influence. More seaworthy than "
+#| "lighter vessels, one might yet be spied navigating deeper rivers, where "
+#| "the maneuverabilty and shallow draft somewhat compensate for the tonnage "
+#| "of the vessel.\n"
+#| "\n"
+#| "While its modest speed compared to the vessels of other races makes "
+#| "evasion difficult, its tall fore and aft castles hold a powerful arsenal "
+#| "of ballistae to fend against pirate and sea monster alike.\n"
+#| "\n"
+#| "The caravel can dock at coastal villages, though this makes it entirely "
+#| "vulnerable."
 msgid ""
-"The sturdy and reliable caravel is the mainstay of human oceanic "
+"The sturdy and reliable Caravel is the mainstay of human oceanic "
 "exploration, shipping and projection of influence. More seaworthy than "
 "lighter vessels, one might yet be spied navigating deeper rivers, where the "
 "maneuverabilty and shallow draft somewhat compensate for the tonnage of the "
@@ -7271,7 +7268,7 @@ msgid ""
 "difficult, its tall fore and aft castles hold a powerful arsenal of "
 "ballistae to fend against pirate and sea monster alike.\n"
 "\n"
-"The caravel can dock at coastal villages, though this makes it entirely "
+"The Caravel can dock at coastal villages, though this makes it entirely "
 "vulnerable."
 msgstr ""
 "Pevná a spolehlivá karavela je stěžejním prostředkem lidského průzkumu "
@@ -7306,13 +7303,22 @@ msgstr "Delfín"
 # Trochu nedoslovné, protože slohová úroveň originálu je slabá.
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+#| "and the Ka’lian rated the creature’s sensibility nearly on par with that "
+#| "of an elf. Among coastal orcish tribes the meat is consumed as a "
+#| "delicacy.\n"
+#| "\n"
+#| "One of the rare air breathing fish, the dolphin is never too long below "
+#| "the surface of the sea."
 msgid ""
-"The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+"The sight of a Dolphin is seen as a good omen by the sailors of Elensefar "
 "and the Ka’lian rated the creature’s sensibility nearly on par with that of "
 "an elf. Among coastal orcish tribes the meat is consumed as a delicacy.\n"
 "\n"
-"One of the rare air breathing fish, the dolphin is never too long below the "
-"surface of the sea."
+"As an aquatic mammal, the Dolphin is never too long below the surface of the "
+"sea."
 msgstr ""
 "Námořníci z Elensefaru pohlíží na delfína jako na dobré znamení, příslušníci "
 "rady Kalianu kladou jeho smysly na téměr stejnou úroveň jako elfí a pobřežní "
@@ -7343,8 +7349,13 @@ msgstr "Leopard"
 
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The leopard is a fast and powerful ambush predator of the distant and "
+#| "mysterious jungle realms. While dangerous in any circumstance, it is most "
+#| "lethal when hidden in wooded areas."
 msgid ""
-"The leopard is a fast and powerful ambush predator of the distant and "
+"The Leopard is a fast and powerful ambush predator of the distant and "
 "mysterious jungle realms. While dangerous in any circumstance, it is most "
 "lethal when hidden in wooded areas."
 msgstr ""
@@ -7459,14 +7470,42 @@ msgstr "jehlový zobák"
 msgid "bladed feathers"
 msgstr "čepelové peří"
 
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:5
+msgid "Wyrm"
+msgstr "Wyrm"
+
+#. [unit_type]: id=Wyrm, race=monster
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:9
+msgid ""
+"Wyrms are strange beasts, stout serpents with wings, but no legs. They are "
+"relatively rare, and their presence is attributed to some eccentric wizard "
+"or dragon. Mature Wyrms have excellent control of their fire breath attack, "
+"as if they are themselves miniature dragons."
+msgstr ""
+"Wyrmové jsou podivná zvířata. Jsou to v podstatě statní hadi s křídly, ale "
+"bez nohou. Jsou poměrně vzácní a jejich výskyt se připisuje nějakému "
+"výstřednímu čaroději či drakovi. Dospělí wyrmové výborně ovládají svůj útok "
+"ohnivým dechem, jako by sami byli miniaturními draky."
+
+#. [attack]: type=pierce
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:74
+msgid "fangs"
+msgstr "jedové zuby"
+
+#. [attack]: type=fire
+#: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:86
+msgid "breath"
+msgstr "dech"
+
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:10
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:6
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:7
 msgid "blast"
 msgstr "výbušná střela"
 
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:11
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:8
 msgid "This attack also harms everyone near the opponent."
 msgstr ""
 "Tento útok kromě cílového protivníka zasáhne také každou sousedící jednotku."

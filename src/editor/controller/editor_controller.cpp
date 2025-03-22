@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,12 +38,12 @@
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "wml_exception.hpp"
 
 #include "resources.hpp"
 #include "reports.hpp"
+#include "wml_exception.hpp"
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
@@ -55,6 +55,7 @@
 #include "units/animation_component.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
+#include "serialization/chrono.hpp"
 
 #include <functional>
 
@@ -254,7 +255,8 @@ void editor_controller::custom_tods_dialog()
 	tod_dlg.register_callback(update_func);
 
 	/* Autogenerate schedule id */
-	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	static constexpr std::string_view ts_format = "%Y-%m-%d_%H-%M-%S";
+	std::string timestamp = chrono::format_local_timestamp(std::chrono::system_clock::now(), ts_format);
 	std::string sch_id = current_addon_id_+"-schedule";
 	/* Set correct textdomain */
 	t_string sch_name("", "wesnoth-"+current_addon_id_);
@@ -272,14 +274,14 @@ void editor_controller::custom_tods_dialog()
 
 		/* In case the ID or Name field is blank and user presses OK */
 		if (sch_id.empty()) {
-			sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
+			sch_id = current_addon_id_ + "-schedule-" + timestamp;
 		} else {
 			/* Check if the id entered is same as any of the existing ids
 			 * If so, replace */
 			// TODO : Notify the user if they enter an already existing schedule ID
 			for (auto map_elem : tods_) {
 				if (sch_id == map_elem.first) {
-					sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
+					sch_id = current_addon_id_ + "-schedule-" + timestamp;
 				}
 			}
 		}
@@ -295,7 +297,7 @@ void editor_controller::custom_tods_dialog()
 	}
 }
 
-void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
+void editor_controller::update_map_schedule(const std::vector<time_of_day>& schedule)
 {
 	get_current_map_context().replace_schedule(schedule);
 	gui_->update_tod();
@@ -405,6 +407,10 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		// Can be enabled as long as a valid addon_id is set
 		case HOTKEY_EDITOR_EDIT_UNIT:
 			return !current_addon_id_.empty();
+
+		// Only enable when editing a scenario
+		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+			return get_current_map_context().is_pure_map();
 
 		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
@@ -668,7 +674,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 			{
 				unit_map::const_unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
 				assert(un != get_current_map_context().units().end());
-				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
+				return un->facing() == map_location::direction{index} ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
 		return ACTION_ON;
@@ -720,9 +726,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					get_current_map_context().set_active_area(index);
 					const std::set<map_location>& area =
 							get_current_map_context().get_time_manager()->get_area_by_index(index);
-					std::vector<map_location> locs(area.begin(), area.end());
 					get_current_map_context().select_area(index);
-					gui_->scroll_to_tiles(locs.begin(), locs.end());
+					gui_->scroll_to_tiles({ area.begin(), area.end() });
 					return true;
 				}
 			case ADDON:
@@ -769,8 +774,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				{
 					unit_map::unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
 					assert(un != get_current_map_context().units().end());
-					un->set_facing(map_location::DIRECTION(index));
+					un->set_facing(map_location::direction(index));
 					un->anim_comp().set_standing();
+					active_menu_ = MAP;
 					return true;
 				}
 			}
@@ -1055,6 +1061,11 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			context_manager_->save_map_as_dialog();
 			return true;
+		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+			if(initialize_addon()) {
+				context_manager_->map_to_scenario();
+			}
+			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			if(initialize_addon()) {
 				context_manager_->save_scenario_as_dialog();
@@ -1237,8 +1248,8 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		active_menu_ = editor::UNIT_FACING;
 		auto pos = items.erase(items.begin());
 		int dir = 0;
-		std::generate_n(std::inserter<std::vector<config>>(items, pos), static_cast<int>(map_location::NDIRECTIONS), [&dir]() -> config {
-			return config {"label", map_location::write_translated_direction(map_location::DIRECTION(dir++))};
+		std::generate_n(std::inserter<std::vector<config>>(items, pos), static_cast<int>(map_location::direction::indeterminate), [&dir]() -> config {
+			return config {"label", map_location::write_translated_direction(map_location::direction(dir++))};
 		});
 	}
 
@@ -1341,7 +1352,23 @@ void editor_controller::rename_unit()
 
 void editor_controller::unit_list()
 {
-	gui2::dialogs::show_unit_list(*gui_);
+	std::vector<unit_const_ptr> unit_list;
+
+	const unit_map& units = gui().context().units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui().viewing_team().side()) {
+			continue;
+		}
+		unit_list.push_back(i.get_shared_ptr());
+	}
+
+	const auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
+
+	if (unit_dlg->show() && unit_dlg->is_selected()) {
+		const map_location& loc = unit_list[unit_dlg->get_selected_index()]->get_location();
+		gui().scroll_to_tile(loc, display::WARP);
+		gui().select_hex(loc);
+	}
 }
 
 void editor_controller::cut_selection()

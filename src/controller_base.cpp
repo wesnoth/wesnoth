@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -24,7 +24,6 @@
 #include "mouse_handler_base.hpp"
 #include "preferences/preferences.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
@@ -34,7 +33,8 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-static const int long_touch_duration_ms = 800;
+using namespace std::chrono_literals;
+static constexpr auto long_touch_duration = 800ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
@@ -44,7 +44,7 @@ controller_base::controller_base()
 	, scroll_down_(false)
 	, scroll_left_(false)
 	, scroll_right_(false)
-	, last_scroll_tick_(0)
+	, last_scroll_tick_()
 	, scroll_carry_x_(0.0)
 	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
@@ -97,7 +97,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog()) {
+	if(gui2::is_in_dialog()) {
 		return;
 	}
 
@@ -182,7 +182,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
 			long_touch_timer_ = gui2::add_timer(
-					long_touch_duration_ms,
+					long_touch_duration,
 					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
 		}
 
@@ -274,7 +274,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
-void controller_base::process(events::pump_info&)
+void controller_base::process()
 {
 	if(gui2::is_in_dialog()) {
 		return;
@@ -315,16 +315,18 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	}
 
 	// Scale scroll distance according to time passed
-	uint32_t tick_now = SDL_GetTicks();
+	auto tick_now = std::chrono::steady_clock::now();
+
 	// If we weren't previously scrolling, start small.
-	int dt = 1;
+	auto dt = 1ms;
 	if (scrolling_) {
-		dt = tick_now - last_scroll_tick_;
+		dt = std::chrono::duration_cast<std::chrono::milliseconds>(tick_now - last_scroll_tick_);
 	}
+
 	// scroll_speed is in percent. Ticks are in milliseconds.
 	// Let's assume the maximum speed (100) moves 50 hexes per second,
 	// i.e. 3600 pixels per 1000 ticks.
-	double scroll_amount = double(dt) * 0.036 * double(scroll_speed);
+	double scroll_amount = dt.count() * 0.036 * double(scroll_speed);
 	last_scroll_tick_ = tick_now;
 
 	// Apply keyboard scrolling
@@ -392,20 +394,19 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		dx += scroll_carry_x_;
 		dy += scroll_carry_y_;
 	}
-	int dx_int = int(dx);
-	int dy_int = int(dy);
-	scroll_carry_x_ = dx - double(dx_int);
-	scroll_carry_y_ = dy - double(dy_int);
+	point dist{int(dx), int(dy)};
+	scroll_carry_x_ = dx - double(dist.x);
+	scroll_carry_y_ = dy - double(dist.y);
 
 	// Scroll the display
-	get_display().scroll(dx_int, dy_int);
+	get_display().scroll(dist);
 
 	// Even if the integer parts are both zero, we are still scrolling.
 	// The subpixel amounts will add up.
 	return true;
 }
 
-void controller_base::play_slice(bool is_delay_enabled)
+void controller_base::play_slice()
 {
 	CKey key;
 
@@ -452,11 +453,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 
 	map_location highlighted_hex = get_display().mouseover_hex();
-
-	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !video::window_is_visible()) {
-		SDL_Delay(200);
-	}
 
 	// Scrolling ended, update the cursor and the brightened hex
 	if(!scrolling_ && was_scrolling) {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -446,6 +446,22 @@ public:
 		unrenamable_ = unrenamable;
 	}
 
+	/**
+	 * Whether this unit can be dismissed.
+	 *
+	 * This flag is used by the Unit Recall dialog.
+	 */
+	bool dismissable() const
+	{
+		return dismissable_;
+	}
+
+	/** A message of why this unit cannot be dismissed. */
+	t_string block_dismiss_message() const
+	{
+		return dismiss_message_;
+	}
+
 	/** A detailed description of this unit. */
 	t_string unit_description() const
 	{
@@ -727,21 +743,14 @@ public:
 
 	/**
 	 * The factor by which the HP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double hp_bar_scaling() const
-	{
-		return hp_bar_scaling_;
-	}
-
+	double hp_bar_scaling() const;
 	/**
 	 * The factor by which the XP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double xp_bar_scaling() const
-	{
-		return xp_bar_scaling_;
-	}
+	double xp_bar_scaling() const;
 
 	/**
 	 * Whether the unit has been instructed to hold its position.
@@ -958,7 +967,7 @@ public:
 	 * @param atk A pointer to the attack to remove
 	 * @return true if the attack was removed, false if it didn't exist on the unit
 	 */
-	bool remove_attack(attack_ptr atk);
+	bool remove_attack(const attack_ptr& atk);
 
 	/**
 	 * Set the unit to have no attacks left for this turn.
@@ -1046,7 +1055,7 @@ public:
 	 * @param weapon The weapon to check for any abilities or weapon specials
 	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 
 	/**
 	 * The unit's resistance against a given attack
@@ -1417,13 +1426,13 @@ public:
 	}
 
 	/** The current direction this unit is facing within its hex. */
-	map_location::DIRECTION facing() const
+	map_location::direction facing() const
 	{
 		return facing_;
 	}
 
 	/** The this unit's facing. */
-	void set_facing(map_location::DIRECTION dir) const;
+	void set_facing(map_location::direction dir) const;
 
 	/** Gets whether this unit has a multi-turn destination set. */
 	bool has_goto() const
@@ -1591,14 +1600,14 @@ public:
 	 * @param type The effect to apply. Must be one of the effects in @ref builtin_effects.
 	 * @param effect The details of the effect
 	 */
-	void apply_builtin_effect(std::string type, const config& effect);
+	void apply_builtin_effect(const std::string& type, const config& effect);
 
 	/**
 	 * Construct a string describing a built-in effect.
 	 * @param type The effect to describe. Must be one of the effects in @ref builtin_effects.
 	 * @param effect The details of the effect
 	 */
-	std::string describe_builtin_effect(std::string type, const config& effect);
+	std::string describe_builtin_effect(const std::string& type, const config& effect);
 
 	/** Re-apply all saved modifications. */
 	void apply_modifications();
@@ -1628,10 +1637,10 @@ public:
 		return halo_.value_or("");
 	}
 
-	const std::vector<std::string> halo_or_icon_abilities(const std::string& image_type) const;
+	std::vector<std::string> halo_or_icon_abilities(const std::string& image_type) const;
 
 	/** Get the [halo] abilities halo image(s). */
-	const std::vector<std::string> halo_abilities() const
+	std::vector<std::string> halo_abilities() const
 	{
 		return halo_or_icon_abilities("halo");
 	}
@@ -1680,10 +1689,11 @@ public:
 	}
 
 	/** Get the [overlay] ability overlay images. */
-	const std::vector<std::string> overlays_abilities() const
+	std::vector<std::string> overlays_abilities() const
 	{
 		return halo_or_icon_abilities("overlay");
 	}
+
 	/**
 	 * Color for this unit's *current* hitpoints.
 	 *
@@ -1741,13 +1751,13 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
-	/** Checks whether this unit currently possesses a given ability used like weapon
+	/** Checks whether this unit currently possesses a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
-	 * @param special the const config to one of abilities @a tag_name checked.
-	 * @param tag_name name of ability type checked.
+	 * @param cfg the const config to one of abilities @a tag_name checked.
+	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
 	 */
-	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	bool get_self_ability_bool(const config& cfg, const std::string& ability, const map_location& loc) const;
 	/** Checks whether this unit currently possesses a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1756,16 +1766,16 @@ public:
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
-	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
-	/** Checks whether this unit is affected by a given ability  used like weapon
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
+	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
-	 * @param special the const config to one of abilities @a tag_name checked.
-	 * @param tag_name name of ability type checked.
+	 * @param cfg the const config to one of abilities @a ability checked.
+	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
 	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
 	 * @param dir direction to research a unit adjacent to @a this.
 	 */
-	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	bool get_adj_ability_bool(const config& cfg, const std::string& ability, int dir, const map_location& loc, const unit& from) const;
 	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1776,7 +1786,7 @@ public:
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const const_attack_ptr& weapon=nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1868,6 +1878,9 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
+
+private:
+
 	/**
 	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
 	 * have entered infinite recursion.
@@ -1880,7 +1893,7 @@ public:
 		/**
 		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
 		 */
-		explicit recursion_guard(const unit& u);
+		explicit recursion_guard(const unit& u, const config& ability);
 	public:
 		/**
 		 * Construct an empty instance, only useful for extending the lifetime of a
@@ -1904,20 +1917,25 @@ public:
 		std::shared_ptr<const unit> parent;
 	};
 
-	recursion_guard update_variables_recursion() const;
-
-
-private:
+	recursion_guard update_variables_recursion(const config& ability) const;
 
 	const std::set<std::string> checking_tags_{"disable", "attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
-	 * Check if an ability is active.
+	 * Check if an ability is active. Includes checks to prevent excessive recursion.
 	 * @param ability The type (tag name) of the ability
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @returns true if it is active
 	 */
 	bool ability_active(const std::string& ability, const config& cfg, const map_location& loc) const;
+	/**
+	 * Check if an ability is active. The caller is responsible for preventing excessive recursion, so must hold a recursion_guard.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 * @returns true if it is active
+	 */
+	bool ability_active_impl(const std::string& ability, const config& cfg, const map_location& loc) const;
 
 	/**
 	 * Check if an ability affects adjacent units.
@@ -1941,7 +1959,7 @@ private:
 	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
 	 * (deprecated in two last cases)
 	 */
-	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
+	bool ability_affects_weapon(const config& cfg, const const_attack_ptr& weapon, bool is_opp) const;
 
 public:
 	/** Get the unit formula manager. */
@@ -2018,6 +2036,8 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
+	bool dismissable_;
+	t_string dismiss_message_;
 
 	int side_;
 
@@ -2056,13 +2076,17 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
-	mutable unsigned int num_recursion_ = 0;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
 	// but it's not easy to separate this guy from the animation code right now.
-	mutable map_location::DIRECTION facing_;
+	mutable map_location::direction facing_;
 
 private:
 	std::vector<t_string> trait_names_;
@@ -2082,7 +2106,6 @@ private:
 	std::unique_ptr<unit_animation_component> anim_comp_;
 
 	mutable bool hidden_;
-	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
 	config abilities_;

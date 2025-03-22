@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,10 +87,10 @@ std::string missing_mandatory_wml_key(
 		symbols["primary_value"] = primary_value;
 
 		return VGETTEXT("In section ‘[$section|]’ where ‘$primary_key|’ = "
-			"$primary_value’ the mandatory key ‘$key|’ isn't set.", symbols);
+			"‘$primary_value’ the mandatory key ‘$key|’ isn’t set.", symbols);
 	} else {
 		return VGETTEXT("In section ‘[$section|]’ the "
-			"mandatory key ‘$key|’ isn't set.", symbols);
+			"mandatory key ‘$key|’ isn’t set.", symbols);
 	}
 }
 

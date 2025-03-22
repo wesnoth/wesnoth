@@ -2,13 +2,13 @@
 # Copyright (C) 2023 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2023.
-# Antonio Rosella <arosella@yahoo.com>, 2023-2024.
+# Antonio Rosella <arosella@yahoo.com>, 2023-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-09-16 19:25+0200\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2025-02-19 18:48+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/tools/GUI.pyw:77
+#: data/tools/GUI.pyw:78
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
 msgstr ""
 "Apre una Interfaccia Utente Grafica (GUI, Graphical User Interface) per gli "
 "Strumenti WML"
 
-#: data/tools/GUI.pyw:81
+#: data/tools/GUI.pyw:82
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
@@ -33,15 +33,15 @@ msgstr ""
 "suppone sia un nome locale POSIX. Per una lista completa dei codici, fate "
 "riferimento a gettext.wesnoth.org."
 
-#: data/tools/GUI.pyw:87 data/tools/GUI.pyw:101 data/tools/GUI.pyw:1404
-#: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1496 data/tools/GUI.pyw:1525
-#: data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1585 data/tools/GUI.pyw:1628
-#: data/tools/GUI.pyw:1647 data/tools/GUI.pyw:1973
+#: data/tools/GUI.pyw:88 data/tools/GUI.pyw:102 data/tools/GUI.pyw:1411
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1503 data/tools/GUI.pyw:1532
+#: data/tools/GUI.pyw:1568 data/tools/GUI.pyw:1592 data/tools/GUI.pyw:1635
+#: data/tools/GUI.pyw:1654 data/tools/GUI.pyw:1980
 msgid "Error"
 msgstr "Errore"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
-#: data/tools/GUI.pyw:89
+#: data/tools/GUI.pyw:90
 #, python-brace-format
 msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
@@ -51,13 +51,13 @@ msgstr ""
 "fornito con l’istallazione di Wesnoth."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
-#: data/tools/GUI.pyw:103
+#: data/tools/GUI.pyw:104
 #, python-brace-format
 msgid "Locale {0} not recognized."
 msgstr "Localizzazione {0} non riconosciuta."
 
 #. TRANSLATORS: {0} is the name of command being executed.
-#: data/tools/GUI.pyw:378
+#: data/tools/GUI.pyw:385
 #, python-brace-format
 msgid ""
 "Running: {0}\n"
@@ -66,119 +66,119 @@ msgstr ""
 "In esecuzione: {0}\n"
 "Attendere prego..."
 
-#: data/tools/GUI.pyw:392
+#: data/tools/GUI.pyw:399
 msgid "Terminate script"
 msgstr "Termina lo script"
 
-#: data/tools/GUI.pyw:443
+#: data/tools/GUI.pyw:450
 msgid "Cut"
 msgstr "Taglia"
 
-#: data/tools/GUI.pyw:448
+#: data/tools/GUI.pyw:455
 msgid "Copy"
 msgstr "Copia"
 
-#: data/tools/GUI.pyw:454
+#: data/tools/GUI.pyw:461
 msgid "Paste"
 msgstr "Incolla"
 
-#: data/tools/GUI.pyw:460
+#: data/tools/GUI.pyw:467
 msgid "Select All"
 msgstr "Seleziona tutto"
 
-#: data/tools/GUI.pyw:533
+#: data/tools/GUI.pyw:540
 msgid "Working directory"
 msgstr "Cartella di lavoro"
 
-#: data/tools/GUI.pyw:545 data/tools/GUI.pyw:588
+#: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
 msgid "Browse..."
 msgstr "Sfoglia..."
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
-#: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
+#: data/tools/GUI.pyw:559 data/tools/GUI.pyw:602
 msgid "Clear"
 msgstr "Cancella"
 
-#: data/tools/GUI.pyw:645
+#: data/tools/GUI.pyw:652
 msgid "wmllint mode"
 msgstr "modalità wmllint"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
-#: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
+#: data/tools/GUI.pyw:659 data/tools/GUI.pyw:1079
 msgid "Normal"
 msgstr "Normale"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
-#: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
+#: data/tools/GUI.pyw:668 data/tools/GUI.pyw:1088
 msgid "Perform conversion and save changes to file"
 msgstr "Esegue la conversione salvando i cambiamenti nel file"
 
-#: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
+#: data/tools/GUI.pyw:671 data/tools/GUI.pyw:1091
 msgid "Dry run"
 msgstr "Esecuzione di prova"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
-#: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
+#: data/tools/GUI.pyw:680 data/tools/GUI.pyw:1100
 msgid "Perform conversion without saving changes to file"
 msgstr "Esegue la conversione senza salvare i cambiamenti nel file"
 
-#: data/tools/GUI.pyw:676
+#: data/tools/GUI.pyw:683
 msgid "Clean"
 msgstr "Pulisci"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
-#: data/tools/GUI.pyw:685
+#: data/tools/GUI.pyw:692
 msgid "Delete back-up files"
 msgstr "Elimina file di back-up"
 
-#: data/tools/GUI.pyw:688
+#: data/tools/GUI.pyw:695
 msgid "Diff"
 msgstr "Diff"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
-#: data/tools/GUI.pyw:697
+#: data/tools/GUI.pyw:704
 msgid "Show differences in converted files"
 msgstr "Evidenzia le differenze nei files convertiti"
 
-#: data/tools/GUI.pyw:700
+#: data/tools/GUI.pyw:707
 msgid "Revert"
 msgstr "Inverti"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
-#: data/tools/GUI.pyw:709
+#: data/tools/GUI.pyw:716
 msgid "Revert conversions using back-up files"
 msgstr "Inverte le conversioni utilizzando i files di back-up"
 
-#: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
+#: data/tools/GUI.pyw:719 data/tools/GUI.pyw:1103
 msgid "Verbosity level"
 msgstr "Livello verbosità"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
+#: data/tools/GUI.pyw:727 data/tools/GUI.pyw:1111
 msgid "Terse"
 msgstr "Coinciso"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:731
+#: data/tools/GUI.pyw:738
 msgid "Show changes"
 msgstr "Visualizza cambiamenti"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:741
+#: data/tools/GUI.pyw:748
 msgid "Name files before processing"
 msgstr "Mostrare il nome dei file prima della modifica"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:751
+#: data/tools/GUI.pyw:758
 msgid "Show parse details"
 msgstr "Mostra i dettagli di analisi"
 
-#: data/tools/GUI.pyw:760
+#: data/tools/GUI.pyw:767
 msgid "wmllint options"
 msgstr "opzioni wmllint"
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
-#: data/tools/GUI.pyw:768
+#: data/tools/GUI.pyw:775
 msgid "Convert EOL characters to Unix format"
 msgstr ""
 "Converti i caratteri speciali EOL (End-of_Line, i.e. fine-riga) in formato "
@@ -186,196 +186,196 @@ msgstr ""
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
-#: data/tools/GUI.pyw:779
-msgid "Do not warn about tags without side= keys"
-msgstr "Non mostrare avvertimenti per i tag senza le chiavi side="
+#: data/tools/GUI.pyw:786
+msgid "Warn about tags without side= keys"
+msgstr "Mostrare avvertimenti per i tag senza le chiavi side="
 
-#: data/tools/GUI.pyw:788
+#: data/tools/GUI.pyw:795
 msgid "Disable checks for unknown units"
 msgstr "Disabilita verifiche per le unità sconosciute"
 
-#: data/tools/GUI.pyw:797
+#: data/tools/GUI.pyw:804
 msgid "Disable spellchecking"
 msgstr "Disabilita controllo ortografico"
 
-#: data/tools/GUI.pyw:806
+#: data/tools/GUI.pyw:813
 msgid "Skip core directory"
 msgstr "Salta la cartella del nucleo"
 
-#: data/tools/GUI.pyw:833
+#: data/tools/GUI.pyw:840
 msgid "wmlscope options"
 msgstr "opzioni wmlscope"
 
-#: data/tools/GUI.pyw:845
+#: data/tools/GUI.pyw:852
 msgid "Check for duplicate macro definitions"
 msgstr "Verifica definizioni macro duplicate"
 
-#: data/tools/GUI.pyw:854
+#: data/tools/GUI.pyw:861
 msgid "Check for duplicate resource files"
 msgstr "Verifica file risorse duplicati"
 
-#: data/tools/GUI.pyw:863
+#: data/tools/GUI.pyw:870
 msgid "Make definition list"
 msgstr "Crea un elenco delle definizioni"
 
-#: data/tools/GUI.pyw:872
+#: data/tools/GUI.pyw:879
 msgid "List files that will be processed"
 msgstr "Elenca file che verranno processati"
 
-#: data/tools/GUI.pyw:881
+#: data/tools/GUI.pyw:888
 msgid "Report unresolved macro references"
 msgstr "Riporta i riferimenti a macro non risolti"
 
-#: data/tools/GUI.pyw:890
+#: data/tools/GUI.pyw:897
 msgid "Extract help from macro definition comments"
 msgstr ""
 "Estrai informazioni di aiuto dai commenti delle definizioni delle macro"
 
-#: data/tools/GUI.pyw:899
+#: data/tools/GUI.pyw:906
 msgid "Report all macros with untyped formals"
 msgstr "Riporta tutte le macro con formalismo non tipizzato"
 
-#: data/tools/GUI.pyw:908
+#: data/tools/GUI.pyw:915
 msgid "Show progress"
 msgstr "Mostra avanzamento"
 
-#: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
+#: data/tools/GUI.pyw:935 data/tools/GUI.pyw:1147
 msgid "Exclude file names matching regular expression:"
 msgstr "Escludi i file che corrispondono all’espressione regolare:"
 
-#: data/tools/GUI.pyw:946
+#: data/tools/GUI.pyw:953
 msgid "Exclude file names not matching regular expression:"
 msgstr "Escludi i file che non corrispondono all’espressione regolare:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
-#: data/tools/GUI.pyw:966
+#: data/tools/GUI.pyw:973
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "Riporta soltanto le macro referenziate in esattamente n file:"
 
-#: data/tools/GUI.pyw:986
+#: data/tools/GUI.pyw:993
 msgid "Report macro definitions and usages in file:"
 msgstr "Riporta le definizioni e gli utilizzi delle macro nel file:"
 
-#: data/tools/GUI.pyw:1004
+#: data/tools/GUI.pyw:1011
 msgid "Allow unused macros with names matching regular expression:"
 msgstr ""
 "Permetti macro non utilizzate il cui nome soddisfa l’espressione regolare:"
 
-#: data/tools/GUI.pyw:1066
+#: data/tools/GUI.pyw:1073
 msgid "wmlindent mode"
 msgstr "modalità wmlindent"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1114
+#: data/tools/GUI.pyw:1121
 msgid "Verbose"
 msgstr "Prolisso"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1124
+#: data/tools/GUI.pyw:1131
 msgid "Report unchanged files"
 msgstr "Elenca file non modificati"
 
-#: data/tools/GUI.pyw:1133
+#: data/tools/GUI.pyw:1140
 msgid "wmlindent options"
 msgstr "opzioni wmlindent"
 
 #. TRANSLATORS: Option to run 'quietly'.
-#: data/tools/GUI.pyw:1160
+#: data/tools/GUI.pyw:1167
 msgid "Quiet mode"
 msgstr "Modalità silenziosa"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
-#: data/tools/GUI.pyw:1168
+#: data/tools/GUI.pyw:1175
 msgid "Do not generate output messages"
 msgstr "Non genera alcun messaggio di uscita"
 
-#: data/tools/GUI.pyw:1188
+#: data/tools/GUI.pyw:1195
 msgid "Output directory:"
 msgstr "Cartella di destinazione:"
 
-#: data/tools/GUI.pyw:1194
+#: data/tools/GUI.pyw:1201
 msgid "Options"
 msgstr "Opzioni"
 
-#: data/tools/GUI.pyw:1199
+#: data/tools/GUI.pyw:1206
 msgid "Scan subdirectories"
 msgstr "Scorri sotto cartelle"
 
-#: data/tools/GUI.pyw:1204
+#: data/tools/GUI.pyw:1211
 msgid "Show optional warnings"
 msgstr "Mostra avvertimenti opzionali"
 
 #. TRANSLATORS: Also called "Needs work".
-#: data/tools/GUI.pyw:1210
+#: data/tools/GUI.pyw:1217
 msgid "Mark all strings as fuzzy"
 msgstr "Segna tutte le stringhe come da elaborare"
 
-#: data/tools/GUI.pyw:1214
+#: data/tools/GUI.pyw:1221
 msgid "Advanced options"
 msgstr "Opzioni avanzate"
 
-#: data/tools/GUI.pyw:1218
+#: data/tools/GUI.pyw:1225
 msgid "Package version"
 msgstr "Versione del package"
 
-#: data/tools/GUI.pyw:1235
+#: data/tools/GUI.pyw:1242
 msgid "Initial textdomain:"
 msgstr "Dominio di testo iniziale:"
 
-#: data/tools/GUI.pyw:1281 data/tools/GUI.pyw:1387
+#: data/tools/GUI.pyw:1288 data/tools/GUI.pyw:1394
 msgid "Run wmllint"
 msgstr "Esegui wmllint"
 
-#: data/tools/GUI.pyw:1288
+#: data/tools/GUI.pyw:1295
 msgid "Save as text..."
 msgstr "Salva come testo..."
 
-#: data/tools/GUI.pyw:1295
+#: data/tools/GUI.pyw:1302
 msgid "Clear output"
 msgstr "Pulisci uscita"
 
-#: data/tools/GUI.pyw:1302
+#: data/tools/GUI.pyw:1309
 msgid "About..."
 msgstr "Informazioni..."
 
-#: data/tools/GUI.pyw:1309
+#: data/tools/GUI.pyw:1316
 msgid "Exit"
 msgstr "Esci"
 
-#: data/tools/GUI.pyw:1325 data/tools/GUI.pyw:1459
+#: data/tools/GUI.pyw:1332 data/tools/GUI.pyw:1466
 msgid "wmllint"
 msgstr "wmllint"
 
-#: data/tools/GUI.pyw:1329 data/tools/GUI.pyw:1531
+#: data/tools/GUI.pyw:1336 data/tools/GUI.pyw:1538
 msgid "wmlscope"
 msgstr "wmlscope"
 
-#: data/tools/GUI.pyw:1333 data/tools/GUI.pyw:1567
+#: data/tools/GUI.pyw:1340 data/tools/GUI.pyw:1574
 msgid "wmlindent"
 msgstr "wmlindent"
 
-#: data/tools/GUI.pyw:1337 data/tools/GUI.pyw:1617
+#: data/tools/GUI.pyw:1344 data/tools/GUI.pyw:1624
 msgid "wmlxgettext"
 msgstr "wmlxgettext"
 
-#: data/tools/GUI.pyw:1340
+#: data/tools/GUI.pyw:1347
 msgid "Output"
 msgstr "Risultato"
 
-#: data/tools/GUI.pyw:1390
+#: data/tools/GUI.pyw:1397
 msgid "Run wmlscope"
 msgstr "Esegui wmlscope"
 
-#: data/tools/GUI.pyw:1393
+#: data/tools/GUI.pyw:1400
 msgid "Run wmlindent"
 msgstr "Esegui wmlindent"
 
-#: data/tools/GUI.pyw:1396
+#: data/tools/GUI.pyw:1403
 msgid "Run wmlxgettext"
 msgstr "Esegui wmlxgettext"
 
-#: data/tools/GUI.pyw:1404
+#: data/tools/GUI.pyw:1411
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -384,7 +384,7 @@ msgstr ""
 "Nessuna cartella selezionata. Si prega di scegliere una cartella o "
 "disabilitare l’opzione \"Salta la cartella del nucleo\"."
 
-#: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1518
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
@@ -396,13 +396,13 @@ msgstr ""
 "\n"
 "Il tool verrà eseguito soltanto della cartella del nucleo di Wesnoth."
 
-#: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
-#: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
-#: data/tools/GUI.pyw:1599
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1518
+#: data/tools/GUI.pyw:1526 data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1587
+#: data/tools/GUI.pyw:1606
 msgid "Warning"
 msgstr "Attenzione"
 
-#: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
+#: data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1526
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -412,16 +412,16 @@ msgstr ""
 "\n"
 "Lo strumento verrà eseguito soltanto nella cartella del nucleo di Wesnoth."
 
-#: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
-#: data/tools/GUI.pyw:1585
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1532 data/tools/GUI.pyw:1568
+#: data/tools/GUI.pyw:1592
 msgid "The selected directory does not exist."
 msgstr "La cartella selezionata non esiste."
 
-#: data/tools/GUI.pyw:1496
+#: data/tools/GUI.pyw:1503
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "Valore non valido. Deve essere un intero compreso tra 0 e 999."
 
-#: data/tools/GUI.pyw:1554
+#: data/tools/GUI.pyw:1561
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -431,7 +431,7 @@ msgstr ""
 "\n"
 "Lo strumento verrà eseguito nella cartella del nucleo di Wesnoth."
 
-#: data/tools/GUI.pyw:1580
+#: data/tools/GUI.pyw:1587
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -442,12 +442,12 @@ msgstr ""
 "Lo strumento non verrà eseguito."
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1592
+#: data/tools/GUI.pyw:1599
 msgid "Overwrite Confirmation"
 msgstr "Conferma sovrascrittura"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
-#: data/tools/GUI.pyw:1594
+#: data/tools/GUI.pyw:1601
 #, python-brace-format
 msgid ""
 "File {0} already exists.\n"
@@ -456,7 +456,7 @@ msgstr ""
 "Il file {0} già esiste.\n"
 "Vuoi sovrascriverlo ?"
 
-#: data/tools/GUI.pyw:1599
+#: data/tools/GUI.pyw:1606
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -466,7 +466,7 @@ msgstr ""
 "\n"
 "Lo strumento non verrà eseguito."
 
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1635
 #, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
@@ -477,11 +477,11 @@ msgstr ""
 "\n"
 "Codice di errore: {1}"
 
-#: data/tools/GUI.pyw:1639
+#: data/tools/GUI.pyw:1646
 msgid "Text file"
 msgstr "File di testo"
 
-#: data/tools/GUI.pyw:1647
+#: data/tools/GUI.pyw:1654
 #, python-brace-format
 msgid ""
 "Error while writing to:\n"
@@ -498,15 +498,15 @@ msgstr ""
 "\n"
 "{2}"
 
-#: data/tools/GUI.pyw:1664
+#: data/tools/GUI.pyw:1671
 msgid "About Maintenance Tools GUI"
 msgstr "Informazioni sulla GUI degli Strumenti di Manutenzione"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-#: data/tools/GUI.pyw:1666
+#: data/tools/GUI.pyw:1673
 #, python-brace-format
 msgid ""
-"© Elvish_Hunter, 2014-2024\n"
+"© Elvish_Hunter, 2014-2025\n"
 "\n"
 "Version: {0}\n"
 "\n"
@@ -516,7 +516,7 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
-"© Elvish_Hunter, 2014-2024\n"
+"© Elvish_Hunter, 2014-2025\n"
 "\n"
 "Versione: {0}\n"
 "\n"
@@ -527,15 +527,15 @@ msgstr ""
 "org), e rilasciate in Dominio Pubblico."
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1680
+#: data/tools/GUI.pyw:1687
 msgid "Exit Confirmation"
 msgstr "Conferma uscita"
 
-#: data/tools/GUI.pyw:1681
+#: data/tools/GUI.pyw:1688
 msgid "Do you really want to quit?"
 msgstr "Vuoi veramente uscire ?"
 
-#: data/tools/GUI.pyw:1973
+#: data/tools/GUI.pyw:1980
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr ""
 "Questa applicazione deve essere posizionata nella cartella wesnoth/data/"

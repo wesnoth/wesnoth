@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
@@ -56,6 +55,7 @@
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <functional>
@@ -86,14 +86,14 @@ title_screen::~title_screen()
 {
 }
 
-void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback)
+void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
 		register_hotkey(hk, std::bind(callback));
 	}
 
 	try {
-		button& btn = find_widget<button>(this, id, false);
+		button& btn = find_widget<button>(id);
 		connect_signal_mouse_left_click(btn, std::bind(callback));
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << e.user_message;
@@ -188,49 +188,24 @@ void title_screen::init_callbacks()
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
-	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
-	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
+	find_widget<image>("logo-bg").set_image(game_config::images::game_logo_background);
+	find_widget<image>("logo").set_image(game_config::images::game_logo);
 
 	//
 	// Tip-of-the-day browser
 	//
-	multi_page* tip_pages = find_widget<multi_page>(this, "tips", false, false);
-
-	if(tip_pages != nullptr) {
-		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
-		if(tips.empty()) {
-			WRN_CF << "There are no tips of day available.";
-		}
-		for(const auto& tip : tips)	{
-			widget_item widget;
-			widget_data page;
-
-			widget["use_markup"] = "true";
-
-			// Use pango markup to insert drop cap
-			// Example: Lawful units -> <span ...>L</span>awful units
-			// If tip starts with a tag, we need to insert the <span> after it
-			// then insert the </span> tag after the first character of the text
-			// after markup. Assumes that the tags themselves don't
-			// contain non-ASCII characters.
-			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
-			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
-			std::string tip_text = tip.text().str();
-			std::size_t pos = 0;
-			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
-				pos = tip_text.find_first_of(">", pos) + 1;
-			}
-			utf8::insert(tip_text, pos+1, "</span>");
-			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
-
-			widget["label"] = tip_text;
-
-			page.emplace("tip", widget);
-
-			widget["label"] = tip.source();
-			page.emplace("source", widget);
-
-			tip_pages->add_page(page);
+	if(auto tip_pages = find_widget<multi_page>("tips", false, false)) {
+		for(const game_tip& tip : tip_of_the_day::shuffle(settings::tips))	{
+			tip_pages->add_page({
+				{ "tip", {
+					{ "use_markup", "true" },
+					{ "label", tip.text }
+				}},
+				{ "source", {
+					{ "use_markup", "true" },
+					{ "label", tip.source }
+				}}
+			});
 		}
 
 		update_tip(true);
@@ -241,6 +216,26 @@ void title_screen::init_callbacks()
 
 	register_button("previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
+
+	// Tip panel visiblity and close button
+	panel& tip_panel = find_widget<panel>("tip_panel");
+
+	tip_panel.set_visible(prefs::get().show_tips()
+		? widget::visibility::visible
+		: widget::visibility::hidden);
+
+	if(auto toggle_tips = find_widget<button>("toggle_tip_panel", false, false)) {
+		connect_signal_mouse_left_click(*toggle_tips, [&tip_panel](auto&&...) {
+			const bool currently_hidden = tip_panel.get_visible() == widget::visibility::hidden;
+
+			tip_panel.set_visible(currently_hidden
+				? widget::visibility::visible
+				: widget::visibility::hidden);
+
+			// If previously hidden, will now be visible, so we can reuse the same value
+			prefs::get().set_show_tips(currently_hidden);
+		});
+	}
 
 	//
 	// Help
@@ -346,7 +341,7 @@ void title_screen::init_callbacks()
 	//
 	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
-	find_widget<button>(this, "quit", false, true);
+	find_widget<button>("quit", false, true);
 
 	//
 	// Debug clock
@@ -354,9 +349,9 @@ void title_screen::init_callbacks()
 	register_button("clock", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_debug_clock_window, this));
 
-	auto clock = find_widget<button>(this, "clock", false, false);
+	auto clock = find_widget<button>("clock", false, false);
 	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		clock->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -365,9 +360,9 @@ void title_screen::init_callbacks()
 	register_button("test_dialog", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_gui_test_dialog, this));
 
-	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
-		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		test_dialog->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -383,16 +378,16 @@ void title_screen::update_static_labels()
 	//
 	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
 
-	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+	if(label* version_label = find_widget<label>("revision_number", false, false)) {
 		version_label->set_label(version_string);
 	}
 
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+	get_canvas(1).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Language menu label
 	//
-	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
+	if(auto* lang_button = find_widget<button>("language", false, false); lang_button) {
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
@@ -425,7 +420,7 @@ void title_screen::on_resize()
 
 void title_screen::update_tip(const bool previous)
 {
-	multi_page* tip_pages = find_widget<multi_page>(get_window(), "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>("tips", false, false);
 	if(tip_pages == nullptr) {
 		return;
 	}
@@ -515,12 +510,12 @@ void title_screen::show_preferences()
 	// preferences will cause the title screen tip and menu panels to
 	// capture the prefs dialog in their blur. This workaround simply
 	// forces them to re-capture the blur after the dialog closes.
-	panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
+	panel* tip_panel = find_widget<panel>("tip_panel", false, false);
 	if(tip_panel != nullptr) {
 		tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
 		tip_panel->queue_redraw();
 	}
-	panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
+	panel* menu_panel = find_widget<panel>("menu_panel", false, false);
 	if(menu_panel != nullptr) {
 		menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
 		menu_panel->queue_redraw();
@@ -548,18 +543,18 @@ void title_screen::button_callback_multiplayer()
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			get_window()->set_retval(MP_HOST);
+			set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
-			get_window()->set_retval(MP_LOCAL);
+			set_retval(MP_LOCAL);
 			break;
 		}
 
@@ -585,7 +580,7 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		prefs::get().set_core(core_id);
-		get_window()->set_retval(RELOAD_GAME_DATA);
+		set_retval(RELOAD_GAME_DATA);
 	}
 }
 

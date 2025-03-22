@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -582,8 +582,8 @@ point table::calculate_best_size() const
 
 		point row_size, total_size;
 
-		for(std::size_t n = 0; n < item_sizes.size(); n++) {
-			if(row_size.x + item_sizes[n].x > row_max_width) {
+		for(const auto& item_size : item_sizes) {
+			if(row_size.x + item_size.x > row_max_width) {
 
 				total_size.y += row_size.y;
 
@@ -594,10 +594,10 @@ point table::calculate_best_size() const
 				row_size = point();
 			}
 
-			row_size.x += item_sizes[n].x;
+			row_size.x += item_size.x;
 
-			if(row_size.y < item_sizes[n].y) {
-				row_size.y = item_sizes[n].y;
+			if(row_size.y < item_size.y) {
+				row_size.y = item_size.y;
 			}
 		}
 
@@ -976,7 +976,7 @@ const widget* independent::find_at(const point& coordinate, const bool must_be_a
 	return grid.find_at(coordinate, must_be_active);
 }
 
-widget* independent::find(const std::string& id, const bool must_be_active)
+widget* independent::find(const std::string_view id, const bool must_be_active)
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
@@ -989,7 +989,7 @@ widget* independent::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const widget* independent::find(const std::string& id, const bool must_be_active) const
+const widget* independent::find(const std::string_view id, const bool must_be_active) const
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
@@ -1062,7 +1062,7 @@ void selection::init(grid* g,
 			} else if(child_grid) {
 				init(child_grid, data, callback);
 			} else {
-				FAIL("Only toggle buttons and panels are allowed as the cells of a list definition.");
+				FAIL("In widget '" + widget->id() + "': only toggle buttons and panels are allowed as the cells of a list definition.");
 			}
 		}
 	}
@@ -1157,7 +1157,7 @@ static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 	}
 #endif
 
-std::unique_ptr<generator_base>  generator_base::build(
+std::unique_ptr<generator_base> generator_base::build(
 		const bool has_minimum, const bool has_maximum, const placement placement, const bool select)
 {
 	std::unique_ptr<generator_base> result = nullptr;
@@ -1171,27 +1171,22 @@ namespace {
 
 void pointer_test()
 {
-	generator_base *a = generator_base::build(
+	auto a = generator_base::build(
 			true, true, generator_base::horizontal_list, true);
 
-	generator_base *b = generator_base::build(
+	auto b = generator_base::build(
 			true, false, generator_base::horizontal_list, true);
 
-	generator_base *c = generator_base::build(
+	auto c = generator_base::build(
 			false, true, generator_base::horizontal_list, true);
 
-	generator_base *d = generator_base::build(
+	auto d = generator_base::build(
 			false, false, generator_base::horizontal_list, true);
 
 	a->clear();
 	b->clear();
 	c->clear();
 	d->clear();
-
-	delete a;
-	delete b;
-	delete c;
-	delete d;
 }
 
 void direct_test()

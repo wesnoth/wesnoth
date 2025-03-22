@@ -1,14 +1,14 @@
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2008, 2009.
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2008, 2009, 2020
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2008 - 2011.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2021, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 17:05 UTC\n"
-"PO-Revision-Date: 2021-09-12 08:28+0200\n"
+"PO-Revision-Date: 2024-12-28 23:50+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -379,7 +379,7 @@ msgid ""
 "scholars to further your understanding of agriculture."
 msgstr ""
 "Protože moudrost mých lidí přesahuje tu vaši $sf_player_name|e, dal jsem "
-"pokyn mým učencům, aby vás podpořili v pochopení zemědělství."
+"pokyn svým učencům, aby vás podpořili v pochopení zemědělství."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:155
@@ -389,7 +389,7 @@ msgid ""
 "mining."
 msgstr ""
 "Protože moudrost mých lidí přesahuje tu vaši $sm_player_name|e, dal jsem "
-"pokyn mým učencům, aby vám pomohli ve vašem snažení pro poznání znalosti "
+"pokyn svým učencům, aby vám pomohli ve vašem snažení pro poznání znalosti "
 "těžby."
 
 # předpoklad jména
@@ -534,19 +534,18 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr "V tomto scénáři budujete ekonomiku"
+msgstr "V tomto scénáři buduješ ekonomiku"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
-msgstr "Přesuňte jakoukoli jednotku vedle zajatců a připojí se k vaší straně"
+msgstr "Přesuň jakoukoli jednotku vedle zajatců a oni se připojí k tvé straně"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
 msgstr ""
-"Klikněte pravým tlačítkem myši na vůdce a přečtěte si informace o herní "
-"mechanice"
+"Klikni pravým tlačítkem myši na vůdce a přečti si informace o herní mechanice"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
@@ -610,9 +609,9 @@ msgstr "Výzkum"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:125
 msgid ""
-"We are currently studying $player_$side_number|.research."
-"target_language_name|. To which end would you have our scholars devote their "
-"minds?\n"
+"We are currently studying "
+"$player_$side_number|.research.target_language_name|. To which end would you "
+"have our scholars devote their minds?\n"
 "\n"
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
@@ -653,13 +652,13 @@ msgstr "zemědělství"
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
-"Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Study Progress: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 msgstr ""
 "<span color='green'>Těžba</span>\n"
 "Horníci produkují 1 zlato navíc\n"
-"Vývoj zkoumání: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Vývoj zkoumání: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -687,8 +686,8 @@ msgstr "válečnictví"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:207
 msgid ""
-"$player_$side_number|.name|’s farms now produce $player_$side_number|."
-"farming.gold gold."
+"$player_$side_number|.name|’s farms now produce "
+"$player_$side_number|.farming.gold gold."
 msgstr ""
 "Farmy, které vlastní $player_$side_number|.name|, nyní produkují "
 "$player_$side_number|.farming.gold zlatých."
@@ -696,8 +695,8 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
 msgid ""
-"$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
-"gold gold."
+"$player_$side_number|.name|’s mines now produce "
+"$player_$side_number|.mining.gold gold."
 msgstr ""
 "Doly, které vlastní $player_$side_number|.name|, nyní produkují "
 "$player_$side_number|.mining.gold zlatých."

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -86,6 +86,7 @@ unit_type::unit_type(const unit_type& o)
 	, hide_help_(o.hide_help_)
 	, do_not_list_(o.do_not_list_)
 	, advances_to_(o.advances_to_)
+	, advancements_(o.advancements_)
 	, experience_needed_(o.experience_needed_)
 	, alignment_(o.alignment_)
 	, movement_type_(o.movement_type_)
@@ -137,6 +138,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, hide_help_(false)
 	, do_not_list_()
 	, advances_to_()
+	, advancements_(cfg.child_range("advancement"))
 	, experience_needed_(0)
 	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
@@ -247,7 +249,7 @@ void unit_type::build_help_index(
 	type_name_ = cfg["name"];
 	description_ = cfg["description"];
 	hitpoints_ = cfg["hitpoints"].to_int(1);
-	level_ = cfg["level"];
+	level_ = cfg["level"].to_int();
 	recall_cost_ = cfg["recall_cost"].to_int(-1);
 	movement_ = cfg["movement"].to_int(1);
 	vision_ = cfg["vision"].to_int(-1);
@@ -300,8 +302,8 @@ void unit_type::build_help_index(
 	}
 
 	if(auto abil_cfg = cfg.optional_child("abilities")) {
-		for(const config::any_child ab : abil_cfg->all_children_range()) {
-			abilities_.emplace_back(ab.cfg);
+		for(const auto [key, cfg] : abil_cfg->all_children_view()) {
+			abilities_.emplace_back(cfg);
 		}
 	}
 
@@ -313,8 +315,8 @@ void unit_type::build_help_index(
 				continue;
 			}
 
-			for(const config::any_child ab : abil_cfg->all_children_range()) {
-				adv_abilities_.emplace_back(ab.cfg);
+			for(const auto [key, cfg] : abil_cfg->all_children_view()) {
+				adv_abilities_.emplace_back(cfg);
 			}
 		}
 	}
@@ -450,7 +452,7 @@ void unit_type::build(BUILD_STATUS status,
 	}
 }
 
-const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+const unit_type& unit_type::get_gender_unit_type(const std::string& gender) const
 {
 	if(gender == unit_race::s_female) {
 		return get_gender_unit_type(unit_race::FEMALE);
@@ -504,21 +506,21 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	notes.push_back(new_note);
 }
 
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+std::vector<t_string> combine_special_notes(const std::vector<t_string>& direct, const config& abilities, const const_attack_itors& attacks, const movetype& mt)
 {
 	std::vector<t_string> notes;
 	for(const auto& note : direct) {
 		append_special_note(notes, note);
 	}
-	for(const config::any_child ability : abilities.all_children_range()) {
-		if(ability.cfg.has_attribute("special_note")) {
-			append_special_note(notes, ability.cfg["special_note"].t_str());
+	for(const auto [key, cfg] : abilities.all_children_view()) {
+		if(cfg.has_attribute("special_note")) {
+			append_special_note(notes, cfg["special_note"].t_str());
 		}
 	}
 	for(const auto& attack : attacks) {
-		for(const config::any_child ability : attack.specials().all_children_range()) {
-			if(ability.cfg.has_attribute("special_note")) {
-				append_special_note(notes, ability.cfg["special_note"].t_str());
+		for(const auto [key, cfg] : attack.specials().all_children_view()) {
+			if(cfg.has_attribute("special_note")) {
+				append_special_note(notes, cfg["special_note"].t_str());
 			}
 		}
 		if(auto attack_type_note = string_table.find("special_note_damage_type_" + attack.type()); attack_type_note != string_table.end()) {
@@ -591,8 +593,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(auto abil = get_cfg().optional_child("abilities")) {
-		for(const config::any_child ab : abil->all_children_range()) {
-			if(ab.cfg["id"] == ability) {
+		for(const auto [key, cfg] : abil->all_children_view()) {
+			if(cfg["id"] == ability) {
 				return true;
 			}
 		}
@@ -610,8 +612,8 @@ std::vector<std::string> unit_type::get_ability_list() const
 		return res;
 	}
 
-	for(const config::any_child ab : abilities->all_children_range()) {
-		std::string id = ab.cfg["id"];
+	for(const auto [key, cfg] : abilities->all_children_view()) {
+		std::string id = cfg["id"];
 
 		if(!id.empty()) {
 			res.push_back(std::move(id));
@@ -1395,19 +1397,34 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		}
 	}
 
+	if(cfg.has_child("advancement")) {
+		advancements_ = cfg.child_range("advancement");
+	}
+
 	// apply recursively to subtypes.
 	for(int gender = 0; gender <= 1; ++gender) {
 		if(!gender_types_[gender]) {
 			continue;
 		}
 		gender_types_[gender]->apply_scenario_fix(cfg);
+		std::string gender_str = gender == 0 ? "male" : "female";
+		if(cfg.has_child(gender_str)) {
+			auto gender_cfg = cfg.optional_child(gender_str);
+			if(gender_cfg){
+				gender_types_[gender]->apply_scenario_fix(*gender_cfg);
+			}
+		}
 	}
 
 	if(get_cfg().has_child("variation")) {
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
-		for(auto& v : variations_) {
-			v.second.apply_scenario_fix(cfg);
+		for (auto& cv : cfg.child_range("variation")){
+			for(auto& v : variations_) {
+				if(v.first == cv["variation_id"]){
+					v.second.apply_scenario_fix(cv);
+				}
+			}
 		}
 	}
 }
@@ -1444,6 +1461,7 @@ void unit_type::remove_scenario_fixes()
 	for(auto& v : variations_) {
 		v.second.remove_scenario_fixes();
 	}
+	advancements_ = get_cfg().child_range("advancement");
 }
 
 void unit_type_data::remove_scenario_fixes()
@@ -1460,6 +1478,10 @@ void unit_type::check_id(std::string& id)
 	// We don't allow leading whitepaces.
 	if(id[0] == ' ') {
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
+	}
+
+	if(id == "random" || id == "null") {
+		throw error("Found unit type using a 'random' or 'null' as an id");
 	}
 
 	bool gave_warning = false;

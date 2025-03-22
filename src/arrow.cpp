@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -196,12 +196,12 @@ void arrow::update_symbols()
 			teleport_out = true;
 
 		// calculate enter and exit directions, if available
-		map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
+		map_location::direction enter_dir = map_location::direction::indeterminate;
 		if (!start && !teleport_in)
 		{
 			enter_dir = hex->get_relative_dir(*(hex-1));
 		}
-		map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
+		map_location::direction exit_dir = map_location::direction::indeterminate;
 		if (!end && !teleport_out)
 		{
 			exit_dir = hex->get_relative_dir(*(hex+1));
@@ -211,7 +211,7 @@ void arrow::update_symbols()
 		if (teleport_out)
 		{
 			prefix = "teleport-out";
-			if (enter_dir != map_location::NDIRECTIONS)
+			if (enter_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(enter_dir);
 			}
@@ -219,7 +219,7 @@ void arrow::update_symbols()
 		else if (teleport_in)
 		{
 			prefix = "teleport-in";
-			if (exit_dir != map_location::NDIRECTIONS)
+			if (exit_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(exit_dir);
 			}
@@ -248,7 +248,7 @@ void arrow::update_symbols()
 				exit = exit + "_ending";
 			}
 
-			assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
+			//assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
 			if (enter_dir < exit_dir)
 			{
 				prefix = enter;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "help/help_topic_generators.hpp"
 
-#include "font/sdl_ttf_compat.hpp"
 #include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -26,6 +25,7 @@
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
 #include "preferences/preferences.hpp"  // for encountered_terrains, etc
 #include "units/race.hpp"               // for unit_race, etc
+#include "serialization/markup.hpp"     // for markup related utilities
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
@@ -46,7 +46,7 @@ namespace help {
 struct terrain_movement_info
 {
 	const t_string name;
-	const t_string id;
+	const std::string id;
 	const int defense;
 	const int movement_cost;
 	const int vision_cost;
@@ -59,20 +59,58 @@ struct terrain_movement_info
 	}
 };
 
-static std::string best_str(bool best) {
+namespace {
+
+std::string best_str(bool best) {
 	std::string lang_policy = (best ? _("Best of") : _("Worst of"));
 	std::string color_policy = (best ? "green": "red");
 
-	return "<span color='" + color_policy + "'>" + lang_policy + "</span>";
+	return markup::span_color(color_policy, lang_policy);
+}
+
+std::string format_mp_entry(const int cost, const int max_cost) {
+	std::stringstream str_unformatted;
+	const bool cannot = cost < max_cost;
+
+	// passing true to select the less saturated red-to-green scale
+	color_t color = game_config::red_to_green(100.0 - 25.0 * max_cost, true);
+
+	// A 5 point margin; if the costs go above
+	// the unit's mp cost + 5, we replace it with dashes.
+	if (cannot && max_cost > cost + 5) {
+		str_unformatted << font::unicode_figure_dash;
+	} else if(cannot) {
+		str_unformatted << "(" << max_cost << ")";
+	} else {
+		str_unformatted << max_cost;
+	}
+	if(max_cost != 0) {
+		const int hexes_per_turn = cost / max_cost;
+		str_unformatted << " ";
+		for(int i = 0; i < hexes_per_turn; ++i) {
+			// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+			str_unformatted << "\u2b23\u200b";
+		}
+	}
+
+	return markup::span_color(color, str_unformatted.str());
 }
 
 typedef t_translation::ter_list::const_iterator ter_iter;
 // Gets an english description of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(ter_iter start, ter_iter end, const std::shared_ptr<terrain_type_data> & tdata, bool first_level = true, bool begin_best = true)
+std::string print_behavior_description(
+	const ter_iter& start,
+	const ter_iter& end,
+	const std::shared_ptr<terrain_type_data>& tdata,
+	bool first_level = true,
+	bool begin_best = true)
 {
 
 	if (start == end) return "";
-	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
+	if (*start == t_translation::MINUS || *start == t_translation::PLUS) {
+		//absorb any leading mode changes by calling again, with a new default value begin_best.
+		return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS);
+	}
 
 	utils::optional<ter_iter> last_change_pos;
 
@@ -104,12 +142,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 
 		ss << best_str(best) << " ";
 		if (!first_level) ss << "( ";
-		ss << names.at(0);
-
-		for (std::size_t i = 1; i < names.size(); i++) {
-			ss << ", " << names.at(i);
-		}
-
+		ss << utils::join(names, ", ");
 		if (!first_level) ss << " )";
 	} else {
 		std::vector<std::string> names;
@@ -127,7 +160,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 		if (!first_level) ss << "( ";
 		ss << print_behavior_description(start, *last_change_pos-1, tdata, false, begin_best);
 		// Printed the (parenthesized) leading part from before the change, now print the remaining names in this group.
-		for (const std::string & s : names) {
+		for (const std::string& s : names) {
 			ss << ", " << s;
 		}
 		if (!first_level) ss << " )";
@@ -135,20 +168,56 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	return ss.str();
 }
 
+std::vector<std::string> get_special_notes(const terrain_type& type) {
+	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
+	// to add their own via a [special_note] tag.
+	std::vector<std::string> special_notes;
+
+	if(type.is_village()) {
+		special_notes.push_back(_("Villages allow any unit stationed therein to heal, or to be cured of poison."));
+	} else if(type.gives_healing() > 0) {
+		auto symbols = utils::string_map{{"amount", std::to_string(type.gives_healing())}};
+		// TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+		// For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+		auto message = VNGETTEXT("This terrain allows units to be cured of poison, or to heal a single hitpoint.",
+			"This terrain allows units to heal $amount hitpoints, or to be cured of poison, as if stationed in a village.",
+			type.gives_healing(), symbols);
+		special_notes.push_back(std::move(message));
+	}
+
+	if(type.is_castle()) {
+		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
+	}
+	if(type.is_keep() && type.is_castle()) {
+		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
+	} else if(type.is_keep() && !type.is_castle()) {
+		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
+	}
+
+	return special_notes;
+}
+
+}
+
 std::string terrain_topic_generator::operator()() const {
 	std::stringstream ss;
 
-	if (!type_.icon_image().empty())
-		ss << "<img>src='images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
-			<< ")~BLIT("<< "terrain/" << type_.icon_image() << "_30.png)" << "'</img>";
+	if (!type_.icon_image().empty()) {
+		ss << markup::img(formatter()
+			<< "images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
+			<< ")~BLIT(" << "terrain/" << type_.icon_image() << "_30.png)");
+	}
 
-	if (!type_.editor_image().empty())
-		ss << "<img>src='" << type_.editor_image() << "'</img><br/>";
+	if (!type_.editor_image().empty()) {
+		ss << markup::img(type_.editor_image()) << markup::br;
+	}
 
-	if (!type_.help_topic_text().empty())
-		ss << "\n" << type_.help_topic_text().str() << "\n";
-	else
-		ss << "\n";
+	ss << "\n";
+	if (!type_.help_topic_text().empty()) {
+		ss << type_.help_topic_text().str() << "\n";
+	}
 
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
@@ -157,36 +226,25 @@ std::string terrain_topic_generator::operator()() const {
 		return ss.str();
 	}
 
-	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
-	// to add their own via a [special_note] tag.
-	std::vector<std::string> special_notes;
-
-	if(type_.is_village()) {
-		special_notes.push_back(_("Villages allow any unit stationed therein to heal, or to be cured of poison."));
-	} else if(type_.gives_healing() > 0) {
-		auto symbols = utils::string_map{{"amount", std::to_string(type_.gives_healing())}};
-		// TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
-		// For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-		auto message = VNGETTEXT("This terrain allows units to be cured of poison, or to heal a single hitpoint.",
-			"This terrain allows units to heal $amount hitpoints, or to be cured of poison, as if stationed in a village.",
-			type_.gives_healing(), symbols);
-		special_notes.push_back(std::move(message));
+	if (type_.is_combined()) {
+		ss << "Base terrain: ";
+		const auto base_t = tdata->get_terrain_info(
+			t_translation::terrain_code(type_.number().base, t_translation::NO_LAYER));
+		ss << markup::make_link(base_t.editor_name(),
+			(base_t.hide_help() ? "." : "") + terrain_prefix + base_t.id());
+		ss << ", ";
+		ss << "Overlay terrain: ";
+		const auto overlay_t = tdata->get_terrain_info(
+			t_translation::terrain_code(t_translation::NO_LAYER, type_.number().overlay));
+		ss << markup::make_link(overlay_t.editor_name(),
+			(overlay_t.hide_help() ? "." : "") + terrain_prefix + overlay_t.id());
+		ss << "\n";
 	}
 
-	if(type_.is_castle()) {
-		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
-	}
-	if(type_.is_keep() && type_.is_castle()) {
-		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
-	} else if(type_.is_keep() && !type_.is_castle()) {
-		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
-	}
-
-	if(!special_notes.empty()) {
-		ss << "\n\n" << _("<header>Special Notes</header>") << "\n\n";
-		for(const auto& note : special_notes) {
+	const auto& notes = get_special_notes(type_);
+	if(!notes.empty()) {
+		ss << "\n\n" << markup::tag("header", _("Special Notes")) << "\n\n";
+		for(const auto& note : notes) {
 			ss << font::unicode_bullet << " " << note << '\n';
 		}
 	}
@@ -198,7 +256,7 @@ std::string terrain_topic_generator::operator()() const {
 		for (const auto& underlying_terrain : type_.union_type()) {
 			const terrain_type& base = tdata->get_terrain_info(underlying_terrain);
 			if (!base.editor_name().empty()) {
-				underlying.push_back(make_link(base.editor_name(), ".." + terrain_prefix + base.id()));
+				underlying.push_back(markup::make_link(base.editor_name(), ".." + terrain_prefix + base.id()));
 			}
 		}
 		utils::string_map symbols;
@@ -212,11 +270,8 @@ std::string terrain_topic_generator::operator()() const {
 			const terrain_type& base = tdata->get_terrain_info(type_.default_base());
 
 			symbols.clear();
-			if (base.is_indivisible()) {
-				symbols["type"] = make_link(base.editor_name(), ".." + terrain_prefix + base.id());
-			} else {
-				symbols["type"] = make_link(base.editor_name(), terrain_prefix + base.id());
-			}
+			symbols["type"] = markup::make_link(base.editor_name(),
+				(base.is_indivisible() ? ".." : "") + terrain_prefix + base.id());
 			// TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 			ss << "\n" << VGETTEXT("Typical base terrain: $type", symbols);
 		}
@@ -245,6 +300,7 @@ std::string terrain_topic_generator::operator()() const {
 
 		ss << "Overlay: "     << (type_.is_overlay()   ? "Yes" : "No") << "\n";
 		ss << "Combined: "    << (type_.is_combined()  ? "Yes" : "No") << "\n";
+
 		ss << "Nonnull: "     << (type_.is_nonnull()   ? "Yes" : "No") << "\n";
 
 		ss << "Terrain string: " << type_.number() << "\n";
@@ -256,21 +312,20 @@ std::string terrain_topic_generator::operator()() const {
 
 		ss << type_.income_description();
 
-		if (type_.editor_image().empty()) { // Note: this is purely temporary to help make a different help entry
-			ss << "\nEditor Image: Empty\n";
-		} else {
-			ss << "\nEditor Image: " << type_.editor_image() << "\n";
-		}
+		ss << "\nEditor Image: ";
+		// Note: this is purely temporary to help make a different help entry
+		ss << (type_.editor_image().empty() ? "Empty" : type_.editor_image());
+		ss << "\n";
 
 		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		for (const t_translation::terrain_code & t : underlying_mvt_terrains) {
+		for (const t_translation::terrain_code& t : underlying_mvt_terrains) {
 			ss << " " << t;
 		}
 
 		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		for (const t_translation::terrain_code & t : underlying_def_terrains) {
+		for (const t_translation::terrain_code& t : underlying_def_terrains) {
 			ss << " " << t;
 		}
 
@@ -278,7 +333,6 @@ std::string terrain_topic_generator::operator()() const {
 
 	return ss.str();
 }
-
 
 //Typedef to help with formatting list of traits
 // Maps localized trait name to trait help topic ID
@@ -288,11 +342,11 @@ typedef std::pair<std::string, std::string> trait_data;
 static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
 {
 	std::size_t i = 0;
-	ss << make_link(l[i].first, l[i].second);
+	ss << markup::make_link(l[i].first, l[i].second);
 
 	// This doesn't skip traits with empty names
 	for(i++; i < l.size(); i++) {
-		ss << ", " << make_link(l[i].first,l[i].second);
+		ss << ", " << markup::make_link(l[i].first,l[i].second);
 	}
 }
 
@@ -301,7 +355,6 @@ std::string unit_topic_generator::operator()() const {
 	unit_types.build_unit_type(type_, unit_type::FULL);
 
 	std::stringstream ss;
-	std::string clear_stringstream;
 	const std::string detailed_description = type_.unit_description();
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
@@ -319,37 +372,24 @@ std::string unit_topic_generator::operator()() const {
 	const bool has_male_portrait = !male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image";
 	const bool has_female_portrait = !female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image";
 
-	int sz = (has_male_portrait && has_female_portrait ? 300 : 400);
-	if (screen_width <= 1366) {
-		sz = (has_male_portrait && has_female_portrait ? 200 : 300);
-	} else if (screen_width >= 1920) {
-		sz = 400;
-	}
-
-	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
-	// can't use the preferences value since it may be different than the actual value
-	sz *= video::get_pixel_scale();
-
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
-		ss << "<img src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes' />";
+		ss << markup::img(male_portrait + "~FL(horiz)", "right", true);
 	}
 
 	if (has_female_portrait) {
-		ss << "<img src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes' />";
+		ss << markup::img(female_portrait + "~FL(horiz)", "right", true);
 	}
 
 	// Unit Images
-	ss << "<img src='" << male_type.image();
-	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1200) { ss << "~SCALE_SHARP(200%,200%)"; };
-	ss << "' box='no' />";
+	ss << markup::img(formatter()
+		<< male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)"
+		<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
 
 	if (female_type.image() != male_type.image()) {
-		ss << "<img src='" << female_type.image();
-		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1200) { ss << "~SCALE_SHARP(200%,200%)"; };
-		ss << "' box='no' />";
+		ss << markup::img(formatter()
+			<< female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)"
+			<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
 	}
 
 	ss << "\n";
@@ -390,7 +430,7 @@ std::string unit_topic_generator::operator()() const {
 					ref_id = unknown_unit_topic;
 					lang_unit += " (?)";
 				}
-				ss << make_link(lang_unit, ref_id);
+				ss << markup::make_link(lang_unit, ref_id);
 			}
 			if (!first) {
 				ss << "\n";
@@ -403,7 +443,7 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type* parent = variation_.empty() ? &type_ :
 		unit_types.find(type_.id(), unit_type::HELP_INDEXED);
 	if (!variation_.empty()) {
-		ss << _("Base unit: ") << make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
+		ss << _("Base unit: ") << markup::make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
 	} else {
 		bool first = true;
 		for (const std::string& base_id : utils::split(type_.get_cfg()["base_ids"])) {
@@ -413,7 +453,7 @@ std::string unit_topic_generator::operator()() const {
 			}
 			const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
 			const std::string section_prefix = base_type->show_variations_in_help() ? ".." : "";
-			ss << make_link(base_type->type_name(), section_prefix + unit_prefix + base_id) << "\n";
+			ss << markup::make_link(base_type->type_name(), section_prefix + unit_prefix + base_id) << "\n";
 		}
 	}
 
@@ -442,7 +482,7 @@ std::string unit_topic_generator::operator()() const {
 			var_name += " (?)";
 		}
 
-		ss << make_link(var_name, ref_id);
+		ss << markup::make_link(var_name, ref_id);
 	}
 
 	// Print the race of the unit, cross-reference it to the respective topic.
@@ -452,7 +492,7 @@ std::string unit_topic_generator::operator()() const {
 		race_name = _ ("race^Miscellaneous");
 	}
 	ss << _("Race: ");
-	ss << make_link(race_name, "..race_" + race_id);
+	ss << markup::make_link(race_name, "..race_" + race_id);
 	ss << "\n";
 
 	// Print the possible traits of the unit, cross-reference them
@@ -534,7 +574,7 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			std::string lang_ability = translation::gettext(iter->name.c_str());
-			ss << make_link(lang_ability, ref_id);
+			ss << markup::make_link(lang_ability, ref_id);
 		}
 
 		ss << "\n\n";
@@ -560,7 +600,7 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			std::string lang_ability = translation::gettext(iter->name.c_str());
-			ss << make_link(lang_ability, ref_id);
+			ss << markup::make_link(lang_ability, ref_id);
 		}
 
 		ss << "\n\n";
@@ -597,7 +637,7 @@ std::string unit_topic_generator::operator()() const {
 		// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 		// unpleasant line breaks (issue #3256).
 		<< _("Alignment:") << font::nbsp
-		<< make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
+		<< markup::make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
 		<< "  ";
 	if (type_.can_advance() || type_.modification_advancements()) {
 		// TRANSLATORS: This string is used in the help page of a single unit.  It uses
@@ -610,89 +650,108 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n" << detailed_description;
 
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
-		ss << "\n<header>" << _("Special Notes") << "</header>\n";
+		ss << "\n" << markup::tag("header", _("Special Notes")) << "\n";
 		for(const auto& note : notes) {
-			ss << font::unicode_bullet << " <i>" << note << "</i>" << '\n';
+			ss << font::unicode_bullet << " " << markup::italic(note) << '\n';
 		}
 	}
 
-	// Print the attacks table
-	ss << "\n<header>" << _("Attacks") << "</header>";
+	std::stringstream table_ss;
+
+	//
+	// Attacks table
+	//
+	ss << "\n" << markup::tag("header", _("Attacks"));
 
 	if (!type_.attacks().empty()) {
-		// Start table
-		ss << "<table>";
+		// Check if at least one attack has special.
+		// Otherwise the Special column will be hidden.
+		bool has_special = false;
+		for(const attack_type& attack : type_.attacks()) {
+			if (!attack.special_tooltips().empty()) {
+				has_special = true;
+			}
+		}
+
 
 		// Print headers for the table.
-		ss
-		<< "<row>"
-		<< "<col><b>" << _("Icon") << "</b></col>"
-		<< "<col><b>" << _("Name") << "</b></col>"
-		<< "<col><b>" << _("Strikes") << "</b></col>"
-		<< "<col><b>" << _("Range") << "</b></col>"
-		<< "<col><b>" << _("Type") << "</b></col>"
-		<< "<col><b>" << _("Special") << "</b></col>"
-		<< "</row>";
-
-		std::stringstream attack_ss;
+		table_ss << markup::tag("row",
+			{ {"bgcolor", "table_header"} },
+			//FIXME space/tab does not work, but nbsp does
+			//empty tags will be skipped by rich_label
+			markup::tag("col", font::nbsp),
+			markup::tag("col", markup::bold(_("Name"))),
+			markup::tag("col", markup::bold(_("Strikes"))),
+			markup::tag("col", markup::bold(_("Range"))),
+			markup::tag("col", markup::bold(_("Type"))),
+			has_special ? markup::tag("col", markup::bold(_("Special"))) : "");
 
 		// Print information about every attack.
 		for(const attack_type& attack : type_.attacks()) {
+			std::stringstream attack_ss;
+
 			std::string lang_weapon = attack.name();
 			std::string lang_type = string_table["type_" + attack.type()];
 
-			attack_ss << "<row>";
-
 			// Attack icon
-			attack_ss << "<col><img src='" << attack.icon() << "'/></col>";
+			attack_ss << markup::tag("col", markup::img(attack.icon()));
 
 			// attack name
-			attack_ss << "<col>" << lang_weapon << "</col>";
+			attack_ss << markup::tag("col", lang_weapon);
 
 			// damage x strikes
-			attack_ss << "<col>" << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
-				<< " " << attack.accuracy_parry_description() << "</col>";
+			attack_ss << markup::tag("col",
+				attack.damage(), font::weapon_numbers_sep, attack.num_attacks(),
+				" ", attack.accuracy_parry_description());
 
 			// range
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
-			attack_ss << "<col>" << "<img src='" << range_icon << "'/>";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
-				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
+				attack_ss << markup::tag("col",
+					markup::img(range_icon),
+					attack.min_range(), "-", attack.max_range(), ' ',
+					string_table["range_" + attack.range()]);
+			} else {
+				attack_ss << markup::tag("col",
+					markup::img(range_icon),
+					string_table["range_" + attack.range()]);
 			}
-			attack_ss << string_table["range_" + attack.range()] << "</col>";
 
 			// type
 			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO(16,16)";
-			attack_ss << "<col>" << "<img src='" << type_icon << "'/>";
-			attack_ss << lang_type << "</col>";
+			attack_ss << markup::tag("col", markup::img(type_icon), lang_type);
 
 			// special
-			attack_ss << "<col>";
-			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
-			if (!specials.empty()) {
-				std::string lang_special = "";
-				const std::size_t specials_size = specials.size();
-				for (std::size_t i = 0; i != specials_size; ++i) {
-					const std::string ref_id = std::string("weaponspecial_")
-						+ specials[i].first.base_str();
-					lang_special = (specials[i].first);
-					attack_ss << make_link(lang_special, ref_id);
-					if (i+1 != specials_size) {
-						attack_ss << ", "; //comma placed before next special
+			if (has_special) {
+				std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
+				if (!specials.empty()) {
+					std::stringstream specials_ss;
+					std::string lang_special = "";
+					const std::size_t specials_size = specials.size();
+					for (std::size_t i = 0; i != specials_size; ++i) {
+						const std::string ref_id = std::string("weaponspecial_")
+							+ specials[i].first.base_str();
+						lang_special = (specials[i].first);
+						specials_ss << markup::make_link(lang_special, ref_id);
+						if (i+1 != specials_size) {
+							specials_ss << ", "; //comma placed before next special
+						}
 					}
+					attack_ss << markup::tag("col", specials_ss.str());
+				} else {
+					attack_ss << markup::tag("col", font::unicode_em_dash);
 				}
-			} else {
-				attack_ss << "none";
 			}
-			attack_ss << "</col>";
-			attack_ss << "</row>";
+
+			table_ss << markup::tag("row", { {"valign", "center"} }, attack_ss.str());
 		}
 
-		ss << attack_ss.str();
-		ss << "</table>";
+		ss << markup::tag("table", table_ss.str());
 	}
 
-	// Generate the movement type of the unit, with resistance, defense, movement, jamming and vision data updated according to any 'musthave' traits which always apply
+	// Generate the movement type of the unit,
+	// with resistance, defense, movement, jamming and vision data
+	// updated according to any 'musthave' traits which always apply.
 	movetype movement_type = type_.movement_type();
 	config::const_child_itors traits = type_.possible_traits();
 	if (!traits.empty() && type_.num_traits() > 0) {
@@ -712,17 +771,19 @@ std::string unit_topic_generator::operator()() const {
 	const bool has_vision = type_.movement_type().has_vision_data();
 	const bool has_jamming = type_.movement_type().has_jamming_data();
 
-	// Print the resistance table of the unit.
-	ss << "\n<header>" << _("Resistances") << "</header>";
+	//
+	// Resistances table
+	//
+	ss << "\n" << markup::tag("header", _("Resistances"));
 
-	// Start table
-	ss << "<table>";
-	ss << "<row>";
-	ss << "<col><b>" << _("Attack Type") << "</b></col>";
-	ss << "<col><b>" << _("Resistance") << "</b></col>";
-	ss << "</row>";
+	std::stringstream().swap(table_ss);
+	table_ss << markup::tag("row",
+		{ {"bgcolor", "table_header"} },
+		markup::tag("col", markup::bold(_("Attack Type"))),
+		markup::tag("col", markup::bold(_("Resistance"))));
 
 	utils::string_map_res dam_tab = movement_type.damage_table();
+	bool odd_row = true;
 	for(std::pair<std::string, std::string> dam_it : dam_tab) {
 		int resistance = 100;
 		try {
@@ -736,31 +797,35 @@ std::string unit_topic_generator::operator()() const {
 		std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + dam_it.first];
 		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
-		ss << "<row>";
-		ss << "<col>" << "<img src='" << type_icon << "'/>" << lang_type << "</col>";
-		std::stringstream str;
-		str << "<span color='" << color << "' text='"<< resist << "'/>";
-		ss << "<col>" << str.str() << "</col>";
-		ss << "</row>";
+		table_ss << markup::tag("row",
+			{ {"bgcolor", (odd_row ? "table_row1" : "table_row2")} },
+			markup::tag("col", markup::img(type_icon), lang_type),
+			markup::tag("col", markup::span_color(color, resist)));
+
+		odd_row = !odd_row;
 	}
+	ss << markup::tag("table", table_ss.str());
 
-	ss << "</table>";
-
+	//
+	// Terrain Modifiers table
+	//
+	std::stringstream().swap(table_ss);
 	if (std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
-		ss << "\n<header>" << _("Terrain Modifiers") << "</header>";
-		ss << "<table>";
-		ss << "<row>";
-		ss << "<col><b>" << _("Terrain") << "</b></col>";
-		ss << "<col><b>" << _("Defense") << "</b></col>";
-		ss << "<col><b>" << _("Movement Cost") << "</b></col>";
-		if (has_terrain_defense_caps) { ss << "<col><b>" << _("Defense Cap") << "</b></col>"; }
-		if (has_vision)				  { ss << "<col><b>" << _("Vision Cost") << "</b></col>"; }
-		if (has_jamming)			  { ss << "<col><b>" << _("Jamming Cost") << "</b></col>"; }
-		ss << "</row>";
+		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 
+		// Header row
+		std::stringstream row_ss;
+		row_ss << markup::tag("col", markup::bold(_("Terrain")));
+		row_ss << markup::tag("col", markup::bold(_("Defense")));
+		row_ss << markup::tag("col", markup::bold(_("Movement Cost")));
+		if (has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap"))); }
+		if (has_vision)				  { row_ss << markup::tag("col", markup::bold(_("Vision Cost"))); }
+		if (has_jamming)			  { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
+		table_ss << markup::tag("row", { {"bgcolor", "table_header"} }, row_ss.str());
+
+		// Organize terrain movetype data
 		std::set<terrain_movement_info> terrain_moves;
-
 		for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
@@ -788,147 +853,59 @@ std::string unit_topic_generator::operator()() const {
 			}
 		}
 
-		for(const terrain_movement_info &m : terrain_moves)
+		// Add movement table rows
+		odd_row = true;
+		for(const terrain_movement_info& m : terrain_moves)
 		{
-
+			std::stringstream().swap(row_ss);
 			bool high_res = false;
 			const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
 			const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
-
 			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
 
-			ss << "<row>";
-			ss << "<col>" << "<img src='" + final_image + "'/>" + make_link(m.name, "..terrain_" + m.id) << "</col>";
+			row_ss << markup::tag("col", markup::img(final_image), markup::make_link(m.name, "..terrain_" + m.id));
 
-			//defense  -  range: +10 % .. +70 %
+			// Defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
-			std::string color = game_config::red_to_green(m.defense, false).to_hex_string();
+			color_t def_color = game_config::red_to_green(m.defense, false);
+			row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
 
-			std::stringstream str;
-			std::stringstream str_unformatted;
-			str << "<span color='" << color << "'>"<< m.defense << "%</span>";
-			str_unformatted << m.defense << "%";
-			ss << "<col>" << str.str() << "</col>";
+			// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+			row_ss << markup::tag("col", format_mp_entry(type_.movement(), m.movement_cost));
 
-			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			str.str(clear_stringstream);
-			str_unformatted.str(clear_stringstream);
-			const bool cannot_move = m.movement_cost > type_.movement();        // cannot move in this terrain
-			double movement_red_to_green = 100.0 - 25.0 * m.movement_cost;
-
-			// passing true to select the less saturated red-to-green scale
-			std::string movement_color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
-			str << "<span color='" << movement_color << "'>";
-			// A 5 MP margin; if the movement costs go above
-			// the unit's max moves + 5, we replace it with dashes.
-			if(cannot_move && (m.movement_cost > type_.movement() + 5)) {
-				str_unformatted << font::unicode_figure_dash;
-			} else if(cannot_move) {
-				str_unformatted << "(" << m.movement_cost << ")";
-			} else {
-				str_unformatted << m.movement_cost;
-			}
-			if(m.movement_cost != 0) {
-				const int movement_hexes_per_turn = type_.movement() / m.movement_cost;
-				str_unformatted << " ";
-				for(int i = 0; i < movement_hexes_per_turn; ++i) {
-					// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
-					str_unformatted << "\u2b23\u200b";
-				}
-			}
-			str << str_unformatted.str() << "</span>";
-			ss << "<col>" << str.str() << "</col>";
-
-			//defense cap
+			// Defense cap
 			if (has_terrain_defense_caps) {
-				str.str(clear_stringstream);
-				str_unformatted.str(clear_stringstream);
 				if (m.defense_cap) {
-					str << "<span color='"<< color <<"'>" << m.defense << "%</span>";
-					str_unformatted << m.defense << "%";
+					row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
 				} else {
-					str << "<span color='white'>" << font::unicode_figure_dash << "</span>";
-					str_unformatted << font::unicode_figure_dash;
+					row_ss << markup::tag("col", markup::span_color("white", font::unicode_figure_dash));
 				}
-				ss << "<col>" << str.str() << "</col>";
 			}
 
-			//vision
+			// Vision
+			// uses same formatting as MP
 			if (has_vision) {
-				str.str(clear_stringstream);
-				str_unformatted.str(clear_stringstream);
-				const bool cannot_view = m.vision_cost > type_.vision();        // cannot view in this terrain
-				double vision_red_to_green = 100.0 - 25.0 * m.vision_cost;
-
-				// passing true to select the less saturated red-to-green scale
-				std::string vision_color = game_config::red_to_green(vision_red_to_green, true).to_hex_string();
-				str << "<span color='" << vision_color << "'>";
-				// A 5 MP margin; if the vision costs go above
-				// the unit's vision + 5, we replace it with dashes.
-				if(cannot_view && (m.vision_cost > type_.vision() + 5)) {
-					str_unformatted << font::unicode_figure_dash;
-				} else if(cannot_view) {
-					str_unformatted << "(" << m.vision_cost << ")";
-				} else {
-					str_unformatted << m.vision_cost;
-				}
-				if(m.vision_cost != 0) {
-					const int vision_hexes_per_turn = type_.vision() / m.vision_cost;
-					str_unformatted << " ";
-					for(int i = 0; i < vision_hexes_per_turn; ++i) {
-						// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
-						str_unformatted << "\u2b23\u200b";
-					}
-				}
-				str << str_unformatted.str() << "</span>";
-				ss << "<col>" << str.str() << "</col>";
+				row_ss << markup::tag("col", format_mp_entry(type_.vision(), m.vision_cost));
 			}
 
-			//jamming
+			// Jamming
+			// uses same formatting as MP
 			if (has_jamming) {
-				str.str(clear_stringstream);
-				str_unformatted.str(clear_stringstream);
-				const bool cannot_jam = m.jamming_cost > type_.jamming();       // cannot jam in this terrain
-				double jamming_red_to_green = 100.0 - 25.0 * m.jamming_cost;
-
-				// passing true to select the less saturated red-to-green scale
-				std::string jamming_color = game_config::red_to_green(jamming_red_to_green, true).to_hex_string();
-				str << "<span color='" << jamming_color << "'>";
-				// A 5 MP margin; if the jamming costs go above
-				// the unit's jamming + 5, we replace it with dashes.
-				if (cannot_jam && m.jamming_cost > type_.jamming() + 5) {
-					str_unformatted << font::unicode_figure_dash;
-				} else if(cannot_jam) {
-					str_unformatted << "(" << m.jamming_cost << ")";
-				} else {
-					str_unformatted << m.jamming_cost;
-				}
-				if(m.jamming_cost != 0) {
-					const int jamming_hexes_per_turn = type_.jamming() / m.jamming_cost;
-					str_unformatted << " ";
-					for(int i = 0; i < jamming_hexes_per_turn; ++i) {
-						// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
-						str_unformatted << "\u2b23\u200b";
-					}
-				}
-				str << str_unformatted.str() << "</span>";
-				ss << "<col>" << str.str() << "</col>";
+				row_ss << markup::tag("col", format_mp_entry(type_.jamming(), m.jamming_cost));
 			}
 
-			ss << "</row>";
+			table_ss << markup::tag("row", { {"bgcolor", (odd_row ? "table_row1" : "table_row2")} }, row_ss.str());
+
+			odd_row = !odd_row;
 		}
 
-		ss << "</table>";
+		ss << markup::tag("table", table_ss.str());
 
 	} else {
-		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.";
+		WRN_HP << "When building unit help topics, we couldn't get the terrain info we need.";
 	}
 
 	return ss.str();
-}
-
-void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
-	row.emplace_back(bold(name), font::pango_line_width(name, normal_font_size, font::pango_text::STYLE_BOLD));
 }
 
 } // end namespace help

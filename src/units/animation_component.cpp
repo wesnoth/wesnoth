@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,23 +25,25 @@
 
 #include <set>
 
+using namespace std::chrono_literals;
+
 namespace
 {
-int get_next_idle_time()
+std::chrono::steady_clock::time_point get_next_idle_tick()
 {
 	if(!prefs::get().idle_anim()) {
-		return std::numeric_limits<int>::max();
+		return std::chrono::steady_clock::time_point::max();
 	}
 
 	const double rate = std::pow(2.0, -prefs::get().idle_anim_rate() / 10.0);
-	return get_current_animation_tick()
-		+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * rate);
+	const int duration = randomness::rng::default_instance().get_random_int(20000, 39999) * rate;
+	return get_current_animation_tick() + std::chrono::milliseconds{duration};
 }
 } // namespace
 
 const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const strike_result::type hit,
-		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
+		const const_attack_ptr& attack, const const_attack_ptr& second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -66,45 +68,45 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 void unit_animation_component::set_standing(bool with_bars)
 {
 	if (prefs::get().show_standing_animations()&& !u_.incapacitated()) {
-		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "standing"),
+		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
-		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_"),
+		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "_disabled_"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
 void unit_animation_component::set_ghosted(bool with_bars)
 {
-	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_ghosted_"),
+	start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
 
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
-	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_ghosted_"),
+	start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
 void unit_animation_component::set_idling()
 {
-	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "idling"),
+	start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "idling"),
 		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
 {
 	if (prefs::get().show_standing_animations() && !u_.incapacitated()) {
-		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "selected"),
+		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {
-		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_selected_"),
+		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "_disabled_selected_"),
 			true, "", {0,0,0}, STATE_FORGET);
 	}
 }
 
-void unit_animation_component::start_animation (int start_time, const unit_animation *animation,
+void unit_animation_component::start_animation(const std::chrono::milliseconds& start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
 	if (!animation) {
@@ -119,11 +121,11 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
 	anim_.reset(new unit_animation(*animation));
-	const int real_start_time = start_time == std::numeric_limits<int>::max() ? anim_->get_begin_time() : start_time;
+	const auto real_start_time = start_time == std::chrono::milliseconds::max() ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
-	frame_begin_time_ = anim_->get_begin_time() -1;
-	next_idling_ = get_next_idle_time();
+	frame_begin_time_ = anim_->get_begin_time() - 1ms;
+	next_idling_ = get_next_idle_tick();
 }
 
 void unit_animation_component::refresh()
@@ -139,10 +141,10 @@ void unit_animation_component::refresh()
 	{
 		return;
 	}
-	if (get_current_animation_tick() > next_idling_ + 1000)
+	if (get_current_animation_tick() > next_idling_ + 1000ms)
 	{
 		// prevent all units animating at the same time
-		next_idling_ = get_next_idle_time();
+		next_idling_ = get_next_idle_tick();
 	} else {
 		set_idling();
 	}
@@ -163,7 +165,7 @@ bool unit_animation_component::invalidate (const display & disp)
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
 		frame_parameters params;
-		const gamemap & map = disp.get_map();
+		const gamemap& map = disp.context().map();
 		const t_translation::terrain_code terrain = map.get_terrain(u_.loc_);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
@@ -211,7 +213,7 @@ std::vector<std::string> unit_animation_component::get_flags() {
 	std::set<std::string> result;
 	for(const auto& anim : animations_) {
 		const std::vector<std::string>& flags = anim.get_flags();
-		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string flag) {
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string& flag) {
 			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
 		});
 	}

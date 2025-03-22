@@ -36,6 +36,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 .SH 选项
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显示。
 .TP 
@@ -138,9 +142,6 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-\-new\-widgets\fP
 现在有一个正在制作中的窗口部件工具库，此选项将启用此工具库。这个工具库还处在很早期的试验阶段，请不要发起缺陷报告，因为大多数缺陷是已知的。库的一部分被认为是稳定的，即使不使用本开关也会启用。
 .TP 
-\fB\-\-nodelay\fP
-无延迟地运行游戏，以执行图像基准测试。使用 \fB\-\-nogui\fP 时会自动启用本选项。
-.TP 
 \fB\-\-noaddons\fP
 禁止读取用户附加组件。
 .TP 
@@ -169,8 +170,9 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 在连接服务器时使用 \fIpassword\fP ，忽略其他首选项。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（实验性）读取定义了韦诺插件的
-\fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
@@ -180,17 +182,26 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
 有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP 命令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-仅供 \fB\-\-preprocess\fP 命令使用。用于指定一个包含了一个或多个 \fB[preproc_define]\fP
-的文件，其中的定义将在预处理开始前生效。
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-仅供 \fB\-\-preprocess\fP
-命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给
-\fB\-\-preprocess\-input\-macros\fP 。这个开关选项必须出现在 \fB\-\-preprocess\fP 命令之前。
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 设定屏幕分辨率。例如：\fB\-r\fP \fB800x600\fP。
@@ -206,9 +217,6 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 将 \fImap\fP 的截图存入 \fIoutput\fP 而不初始化屏幕显示。
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-（试验性）指定一个\fB文件\fP，其中包含了用于控制客户端的Lua脚本。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server\fP \fBserver.wesnoth.org\fP。
@@ -337,7 +345,7 @@ Soliton <soliton.de@gmail.com> 编辑。
 .
 .SH 版权
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

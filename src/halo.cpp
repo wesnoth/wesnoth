@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -161,7 +161,7 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 	set_location(xpos, ypos);
 
-	images_.start_animation(0, infinite);
+	images_.start_animation(std::chrono::milliseconds{0}, infinite);
 
 	update();
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "units/abilities.hpp"
 #include "units/unit.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -79,7 +80,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	}
 
 	// Remove non-positive times
-	output.erase(std::remove_if(output.begin(), output.end(), [](int time) { return time <= 0; }), output.end());
+	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];
@@ -92,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config(std::string textdomain) const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@
 #include "exceptions.hpp"          // for error
 #include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
-#include "game_config.hpp"         // for path, no_delay, revision, etc
+#include "game_config.hpp"         // for path, etc
 #include "game_config_manager.hpp" // for game_config_manager
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc
@@ -57,13 +57,12 @@
 #include <boost/process.hpp>
 #include <cstdlib>   // for system
 #include <new>
+#include <thread>
 #include <utility> // for pair
-
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -156,18 +155,12 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fps)
 		prefs::get().set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
-		start_in_fullscreen_ = true;
+		prefs::get().set_fullscreen(true);
 	if(cmdline_opts_.load)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
 	if(cmdline_opts_.max_fps) {
-		int fps = std::clamp(*cmdline_opts_.max_fps, 1, 1000);
-		fps = 1000 / fps;
-		// increase the delay to avoid going above the maximum
-		if(1000 % fps != 0) {
-			++fps;
-		}
-		prefs::get().set_draw_delay(fps);
+		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		no_sound = true;
@@ -175,8 +168,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 	if(cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
-	if(cmdline_opts_.nodelay)
-		game_config::no_delay = true;
 	if(cmdline_opts_.nomusic)
 		no_music = true;
 	if(cmdline_opts_.nosound)
@@ -227,7 +218,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
-		start_in_fullscreen_ = false;
+		prefs::get().set_fullscreen(false);
 	if(cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
 	if(cmdline_opts_.translation_percent)
@@ -235,10 +226,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 
 	if(!cmdline_opts.nobanner) {
 		PLAIN_LOG
-			<< "\nData directory:               " << game_config::path
-			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
-			<< "\nCache directory:              " << filesystem::get_cache_dir()
-			<< "\n\n";
+			<< "\nGame data:    " << game_config::path
+			<< "\nUser data:    " << filesystem::get_user_data_dir()
+			<< "\nCache:        " << filesystem::get_cache_dir()
+			<< "\n";
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
@@ -306,7 +297,6 @@ bool game_launcher::init_video()
 			// Other functions don't require a window at all.
 			video::init(video::fake::no_window);
 		}
-		game_config::no_delay = true;
 		return true;
 	}
 
@@ -336,27 +326,6 @@ bool game_launcher::init_lua_script()
 	if(cmdline_opts_.script_unsafe_mode) {
 		// load the "package" package, so that scripts can get what packages they want
 		plugins_manager::get()->get_kernel_base()->load_package();
-	}
-
-	// get the application lua kernel, load and execute script file, if script file is present
-	if(cmdline_opts_.script_file) {
-		filesystem::scoped_istream sf = filesystem::istream_file(*cmdline_opts_.script_file);
-
-		if(!sf->fail()) {
-			/* Cancel all "jumps" to editor / campaign / multiplayer */
-			jump_to_multiplayer_ = false;
-			jump_to_editor_ = false;
-			jump_to_campaign_.jump = false;
-
-			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
-
-			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file;
-
-			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
-		} else {
-			PLAIN_LOG << "Encountered failure when opening script '" << *cmdline_opts_.script_file << '\'';
-			error = true;
-		}
 	}
 
 	if(cmdline_opts_.plugin_file) {
@@ -751,17 +720,20 @@ std::string game_launcher::jump_to_campaign_id() const
 	return jump_to_campaign_.campaign_id;
 }
 
+bool game_launcher::play_campaign() {
+	jump_to_campaign_.jump = false;
+	if(new_campaign()) {
+		state_.set_skip_story(jump_to_campaign_.skip_story);
+		launch_game(reload_mode::NO_RELOAD_DATA);
+		return true;
+	}
+	return false;
+}
+
 bool game_launcher::goto_campaign()
 {
 	if(jump_to_campaign_.jump) {
-		if(new_campaign()) {
-			state_.set_skip_story(jump_to_campaign_.skip_story);
-			jump_to_campaign_.jump = false;
-			launch_game(reload_mode::NO_RELOAD_DATA);
-		} else {
-			jump_to_campaign_.jump = false;
-			return false;
-		}
+		return play_campaign();
 	}
 
 	return true;
@@ -769,16 +741,12 @@ bool game_launcher::goto_campaign()
 
 bool game_launcher::goto_multiplayer()
 {
-	if(jump_to_multiplayer_) {
-		jump_to_multiplayer_ = false;
-		if(play_multiplayer(mp_mode::CONNECT)) {
-			;
-		} else {
-			return false;
-		}
+	if(!jump_to_multiplayer_) {
+		return true;
 	}
 
-	return true;
+	jump_to_multiplayer_ = false;
+	return play_multiplayer(mp_mode::CONNECT);
 }
 
 bool game_launcher::goto_editor()
@@ -822,7 +790,8 @@ void game_launcher::start_wesnothd()
 #endif
 		c.detach();
 		// Give server a moment to start up
-		SDL_Delay(50);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(50ms);
 		return;
 	}
 	catch(const bp::process_error& e)
@@ -837,6 +806,7 @@ void game_launcher::start_wesnothd()
 
 bool game_launcher::play_multiplayer(mp_mode mode)
 {
+	game_config::set_debug(game_config::mp_debug);
 	try {
 		if(mode == mp_mode::HOST) {
 			try {

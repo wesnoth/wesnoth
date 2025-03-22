@@ -43,8 +43,8 @@
 			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
 			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-D_WIN32_WINDOWS" />
-			<Add option="-D_WIN32_WINNT=0x0601" />
-			<Add option="-D_WIN32_IE=0x0601" />
+			<Add option="-D_WIN32_WINNT=0x0A00" />
+			<Add option="-D_WIN32_IE=0x0A00" />
 			<Add option="-DBOOST_TEST_DYN_LINK=1" />
 			<Add directory="../../src" />
 		</Compiler>
@@ -233,8 +233,6 @@
 		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
-		<Unit filename="../../src/carryover_show_gold.cpp" />
-		<Unit filename="../../src/carryover_show_gold.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
 		<Unit filename="../../src/chat_command_handler.hpp" />
 		<Unit filename="../../src/chat_events.cpp" />
@@ -393,8 +391,6 @@
 		<Unit filename="../../src/font/standard_colors.hpp" />
 		<Unit filename="../../src/font/text.cpp" />
 		<Unit filename="../../src/font/text.hpp" />
-		<Unit filename="../../src/font/text_formatting.cpp" />
-		<Unit filename="../../src/font/text_formatting.hpp" />
 		<Unit filename="../../src/format_time_summary.cpp" />
 		<Unit filename="../../src/format_time_summary.hpp" />
 		<Unit filename="../../src/formatter.hpp" />
@@ -459,8 +455,6 @@
 		<Unit filename="../../src/game_events/wmi_manager.cpp" />
 		<Unit filename="../../src/game_events/wmi_manager.hpp" />
 		<Unit filename="../../src/game_initialization/component_availability.hpp" />
-		<Unit filename="../../src/game_initialization/configure_engine.cpp" />
-		<Unit filename="../../src/game_initialization/configure_engine.hpp" />
 		<Unit filename="../../src/game_initialization/connect_engine.cpp" />
 		<Unit filename="../../src/game_initialization/connect_engine.hpp" />
 		<Unit filename="../../src/game_initialization/create_engine.cpp" />
@@ -509,7 +503,6 @@
 		<Unit filename="../../src/global.hpp" />
 		<Unit filename="../../src/gui/auxiliary/field-fwd.hpp" />
 		<Unit filename="../../src/gui/auxiliary/field.hpp" />
-		<Unit filename="../../src/gui/auxiliary/find_widget.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/exception.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/iterator.cpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/iterator.hpp" />
@@ -751,14 +744,8 @@
 		<Unit filename="../../src/gui/dialogs/unit_advance.hpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.cpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.hpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
@@ -876,14 +863,8 @@
 		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/help/help.cpp" />
 		<Unit filename="../../src/help/help.hpp" />
-		<Unit filename="../../src/help/help_browser.cpp" />
-		<Unit filename="../../src/help/help_browser.hpp" />
 		<Unit filename="../../src/help/help_impl.cpp" />
 		<Unit filename="../../src/help/help_impl.hpp" />
-		<Unit filename="../../src/help/help_menu.cpp" />
-		<Unit filename="../../src/help/help_menu.hpp" />
-		<Unit filename="../../src/help/help_text_area.cpp" />
-		<Unit filename="../../src/help/help_text_area.hpp" />
 		<Unit filename="../../src/help/help_topic_generators.cpp" />
 		<Unit filename="../../src/help/help_topic_generators.hpp" />
 		<Unit filename="../../src/hotkey/command_executor.cpp" />
@@ -1121,8 +1102,6 @@
 		<Unit filename="../../src/serialization/validator.hpp" />
 		<Unit filename="../../src/server/common/simple_wml.cpp" />
 		<Unit filename="../../src/server/common/simple_wml.hpp" />
-		<Unit filename="../../src/show_dialog.cpp" />
-		<Unit filename="../../src/show_dialog.hpp" />
 		<Unit filename="../../src/side_controller.hpp" />
 		<Unit filename="../../src/side_filter.cpp" />
 		<Unit filename="../../src/side_filter.hpp" />
@@ -1161,8 +1140,6 @@
 		<Unit filename="../../src/synced_context.hpp" />
 		<Unit filename="../../src/synced_user_choice.cpp" />
 		<Unit filename="../../src/synced_user_choice.hpp" />
-		<Unit filename="../../src/syncmp_handler.cpp" />
-		<Unit filename="../../src/syncmp_handler.hpp" />
 		<Unit filename="../../src/team.cpp" />
 		<Unit filename="../../src/team.hpp" />
 		<Unit filename="../../src/team_shared_vision.hpp" />
@@ -1197,6 +1174,7 @@
 		<Unit filename="../../src/tests/test_image_modifications.cpp" />
 		<Unit filename="../../src/tests/test_irdya_date.cpp" />
 		<Unit filename="../../src/tests/test_lexical_cast.cpp" />
+		<Unit filename="../../src/tests/test_lua_ptr.cpp" />
 		<Unit filename="../../src/tests/test_map_location.cpp" />
 		<Unit filename="../../src/tests/test_mp_connect.cpp" />
 		<Unit filename="../../src/tests/test_recall_list.cpp" />
@@ -1253,8 +1231,6 @@
 		<Unit filename="../../src/units/helper.hpp" />
 		<Unit filename="../../src/units/id.cpp" />
 		<Unit filename="../../src/units/id.hpp" />
-		<Unit filename="../../src/units/make.cpp" />
-		<Unit filename="../../src/units/make.hpp" />
 		<Unit filename="../../src/units/map.cpp" />
 		<Unit filename="../../src/units/map.hpp" />
 		<Unit filename="../../src/units/orb_status.cpp" />
@@ -1339,9 +1315,6 @@
 		<Unit filename="../../src/whiteboard/visitor.hpp" />
 		<Unit filename="../../src/widgets/button.cpp" />
 		<Unit filename="../../src/widgets/button.hpp" />
-		<Unit filename="../../src/widgets/menu.cpp" />
-		<Unit filename="../../src/widgets/menu.hpp" />
-		<Unit filename="../../src/widgets/menu_style.cpp" />
 		<Unit filename="../../src/widgets/scrollarea.cpp" />
 		<Unit filename="../../src/widgets/scrollarea.hpp" />
 		<Unit filename="../../src/widgets/scrollbar.cpp" />

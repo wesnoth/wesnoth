@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "units/ptr.hpp"
 #include "units/strike_result.hpp"
 
-
 class unit_animation
 {
 public:
@@ -35,8 +34,8 @@ public:
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "",
-		const int value = 0, strike_result::type hit = strike_result::type::invalid, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr,
+	int matches(const map_location& loc, const map_location& second_loc, const unit_const_ptr& my_unit, const std::string& event = "",
+		const int value = 0, strike_result::type hit = strike_result::type::invalid, const const_attack_ptr& attack = nullptr, const const_attack_ptr& second_attack = nullptr,
 		int value2 = 0) const;
 
 	const unit_frame& get_last_frame() const
@@ -44,7 +43,7 @@ public:
 		return unit_anim_.get_last_frame();
 	}
 
-	void add_frame(int duration, const unit_frame& value, bool force_change = false)
+	void add_frame(const std::chrono::milliseconds& duration, const unit_frame& value, bool force_change = false)
 	{
 		unit_anim_.add_frame(duration,value,force_change);
 	}
@@ -59,30 +58,30 @@ public:
 	bool animation_finished() const;
 	bool animation_finished_potential() const;
 	void update_last_draw_time();
-	int get_begin_time() const;
-	int get_end_time() const;
+	std::chrono::milliseconds get_begin_time() const;
+	std::chrono::milliseconds get_end_time() const;
 
-	int time_to_tick(int animation_time) const
+	auto time_to_tick(const std::chrono::milliseconds& animation_time) const
 	{
 		return unit_anim_.time_to_tick(animation_time);
 	}
 
-	int get_animation_time() const
+	auto get_animation_time() const
 	{
 		return unit_anim_.get_animation_time();
 	}
 
-	void set_max_animation_time(int time)
+	void set_max_animation_time(const std::chrono::milliseconds& time)
 	{
 		unit_anim_.set_max_animation_time(time);
 	}
 
-	int get_animation_time_potential() const
+	auto get_animation_time_potential() const
 	{
 		return unit_anim_.get_animation_time_potential();
 	}
 
-	void start_animation(int start_time
+	void start_animation(const std::chrono::milliseconds& start_time
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
 		, const std::string& text = ""
@@ -92,10 +91,9 @@ public:
 	void update_parameters(const map_location& src, const map_location& dst);
 	void pause_animation();
 	void restart_animation();
-	int get_current_frame_begin_time() const
+	auto get_current_frame_begin_time() const
 	{
 		return unit_anim_.get_current_frame_begin_time();
-
 	}
 	void redraw(frame_parameters& value, halo::manager& halo_man);
 	void clear_haloes();
@@ -114,7 +112,7 @@ protected:
 	}
 
 private:
-	explicit unit_animation(int start_time
+	explicit unit_animation(const std::chrono::milliseconds& start_time
 		, const unit_frame &frame
 		, const std::string& event = ""
 		, const int variation=DEFAULT_ANIM
@@ -123,7 +121,7 @@ private:
 	class particle : public animated<unit_frame>
 	{
 	public:
-		explicit particle(int start_time = 0, const frame_builder& builder = frame_builder())
+		explicit particle(const std::chrono::milliseconds& start_time = std::chrono::milliseconds{0}, const frame_builder& builder = frame_builder())
 			: animated<unit_frame>(start_time)
 			, accelerate(true)
 			, parameters_(builder)
@@ -137,8 +135,8 @@ private:
 		bool need_update() const;
 		bool need_minimal_update() const;
 		enum cycle_state {UNSET, CYCLE, NO_CYCLE};
-		void override(int start_time
-			, int duration
+		void override(const std::chrono::milliseconds& start_time
+			, const std::chrono::milliseconds& duration
 			, const cycle_state cycles
 			, const std::string& highlight = ""
 			, const std::string& blend_ratio =""
@@ -148,7 +146,7 @@ private:
 			, const std::string& modifiers = "");
 		void redraw(const frame_parameters& value, const map_location& src, const map_location& dst, halo::manager& halo_man);
 		std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location& src, const map_location& dst);
-		void start_animation(int start_time);
+		void start_animation(const std::chrono::milliseconds& start_time);
 		frame_parameters parameters(const frame_parameters& default_val) const
 		{
 			return get_current_frame().merge_parameters(get_current_frame_time(), parameters_.parameters(get_animation_time() - get_begin_time()), default_val);
@@ -160,14 +158,14 @@ private:
 		//animation params that can be locally overridden by frames
 		frame_parsed_parameters parameters_;
 		halo::handle halo_id_;
-		int last_frame_begin_time_;
+		std::chrono::milliseconds last_frame_begin_time_;
 		bool cycles_;
 	};
 
 	t_translation::ter_list terrain_types_;
 	std::vector<config> unit_filter_;
 	std::vector<config> secondary_unit_filter_;
-	std::vector<map_location::DIRECTION> directions_;
+	std::vector<map_location::direction> directions_;
 	int frequency_;
 	int base_score_;
 	std::vector<std::string> event_;
@@ -206,8 +204,8 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0);
 
 	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
@@ -222,17 +220,17 @@ public:
 	 * @param second_attack weapon used by opponent.
 	 * @param value2 i don't understand myself.but this value is used in choose_animation.
 	 */
-	bool has_animation(unit_const_ptr animated_unit
+	bool has_animation(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
 		, const int value = 0
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0) const;
 
-	void replace_anim_if_invalid(unit_const_ptr animated_unit
+	void replace_anim_if_invalid(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
@@ -241,8 +239,8 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const strike_result::type hit_type = strike_result::type::invalid
-		, const_attack_ptr attack = nullptr
-		, const_attack_ptr second_attack = nullptr
+		, const const_attack_ptr& attack = nullptr
+		, const const_attack_ptr& second_attack = nullptr
 		, int value2 = 0);
 	void start_animations();
 	void pause_animation();
@@ -250,18 +248,18 @@ public:
 
 	void clear()
 	{
-		start_time_ = std::numeric_limits<int>::min();
+		start_time_ = std::chrono::milliseconds::min();
 		animated_units_.clear();
 	}
 
 	void set_all_standing();
 
 	bool would_end() const;
-	int get_animation_time() const;
-	int get_animation_time_potential() const;
-	int get_end_time() const;
+	std::chrono::milliseconds get_animation_time() const;
+	std::chrono::milliseconds get_animation_time_potential() const;
+	std::chrono::milliseconds get_end_time() const;
 	void wait_for_end() const;
-	void wait_until( int animation_time) const;
+	void wait_until(const std::chrono::milliseconds& animation_time) const;
 
 private:
 	struct anim_elem
@@ -275,5 +273,5 @@ private:
 	};
 
 	std::vector<anim_elem> animated_units_;
-	int start_time_ = std::numeric_limits<int>::min();
+	std::chrono::milliseconds start_time_ = std::chrono::milliseconds::min();
 };

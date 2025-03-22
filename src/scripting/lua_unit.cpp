@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -390,7 +390,7 @@ UNIT_GETTER("id", std::string) {
 
 LATTR_SETTER("id", std::string, lua_unit*, lu) {
 	if(!lu->get()) return;
-	if(!lu->on_map()) luaL_argerror(L, 3, "can't modify id of on-map unit");
+	if(lu->on_map()) luaL_argerror(L, 3, "can't modify id of on-map unit");
 	(*lu)->set_id(value);
 }
 
@@ -931,8 +931,8 @@ static int impl_unit_variables_dir(lua_State *L)
 	for(const auto& attr : vars.attribute_range()) {
 		variables.push_back(attr.first);
 	}
-	for(auto attr : vars.all_children_range()) {
-		variables.push_back(attr.key);
+	for(auto [key, cfg] : vars.all_children_view()) {
+		variables.push_back(key);
 	}
 	lua_push(L, variables);
 	return 1;

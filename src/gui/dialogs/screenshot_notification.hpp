@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,6 +49,6 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 };
 } // namespace dialogs

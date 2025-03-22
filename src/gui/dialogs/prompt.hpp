@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class prompt : public modal_dialog
 {
 public:
@@ -31,13 +27,12 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(prompt)
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
 	std::string& value_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

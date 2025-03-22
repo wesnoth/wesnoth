@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,7 +38,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 game_board::game_board(const config& level)
 	: teams_()
 	, map_(std::make_unique<gamemap>(level["map_data"]))
-	, unit_id_manager_(level["next_underlying_unit_id"])
+	, unit_id_manager_(level["next_underlying_unit_id"].to_size_t())
 	, units_()
 {
 }
@@ -210,16 +210,6 @@ bool game_board::has_visible_unit(const map_location& loc, const team& current_t
 	return true;
 }
 
-unit* game_board::get_visible_unit(const map_location& loc, const team& current_team, bool see_all)
-{
-	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
-	if(ui == units_.end()) {
-		return nullptr;
-	}
-
-	return &*ui;
-}
-
 void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_proxy_controller::type proxy)
 {
 	team& tm = get_team(side_num);
@@ -283,7 +273,7 @@ bool game_board::team_is_defeated(const team& t) const
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr u)
+bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr& u)
 {
 	get_team(u->side()).recall_list().add(u);
 	return true;

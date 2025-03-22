@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -42,14 +42,6 @@ bool bool_matches_if_present(const config& filter, const config& cfg, const std:
  */
 bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<double> def = utils::nullopt);
 bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def = utils::nullopt);
-
-/**
- * Restricts filters to only looking for values that are zero or more.
- *
- * A filter such as "-1-10" or "-10--1,1-10" is considered invalid and never matches anything, not
- * even a positive value that would be accepted by a stricter subset of the filter.
- */
-bool unsigned_matches_if_present(const config& filter, const config& cfg, const std::string& attribute);
 
 /**
  * Supports filters using "add" and "sub" attributes, for example a filter `add=1` matching a cfg containing either

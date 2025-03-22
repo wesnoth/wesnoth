@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-09-13 20:41+0800\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"PO-Revision-Date: 2024-09-21 17:10+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -116,10 +116,8 @@ msgstr "喂一个食尸鬼太多的老鼠。"
 #. [achievement]: id=did_drogan
 #. you can interpret this as a Harry Potter reference or you can think about it as Malin making fun of Drogan's country accent, or you can take artistic liberty with the translation
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:19
-#, fuzzy
-#| msgid "Death of Drogan"
 msgid "Yer a Ghoul, Drogan"
-msgstr "德罗甘死亡"
+msgstr "你是个食尸鬼，德罗甘"
 
 #. [achievement]: id=did_drogan
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:20
@@ -139,7 +137,7 @@ msgstr "将一个普通的游泳僵尸升级为一个超级僵尸。"
 #. [achievement]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:33
 msgid "Drunken Fist Style"
-msgstr ""
+msgstr "醉拳风格"
 
 #. [achievement]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:34
@@ -3016,10 +3014,8 @@ msgstr "守卫"
 #. Unit name
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:265
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:347
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Guard"
-msgstr "伤残"
+msgstr "守卫"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:419
@@ -5048,12 +5044,12 @@ msgstr "这真是一个噩梦……"
 msgid ""
 "...unless it was not one? No. No no no. I don’t even want to think about "
 "that."
-msgstr ""
+msgstr "…除非它不是？不。不不不。我甚至不想去想那件事。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:973
 msgid "I need to go slaughter some foolish heroes to purge that from my mind."
-msgstr ""
+msgstr "我需要去宰杀一些愚蠢的英雄，以从我的脑海中清除它。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:989
@@ -5214,9 +5210,13 @@ msgstr "俺的斧头砍不坏这纸头。有魔法保护的！"
 #. [message]: role=speakinghero
 #. regular english: Yes, but the lich still seems to be hurt. Let's take it and retreat. Maybe the forge can destroy it.
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1266
+#, fuzzy
+#| msgid ""
+#| "Aye, but the lich still seems ta be hurtin’. Let’s take it ’n retreat. "
+#| "Maybe tha forge ken destroy it."
 msgid ""
 "Aye, but the lich still seems ta be hurtin’. Let’s take it ’n retreat. Maybe "
-"tha forge ken destroy it."
+"tha forge can destroy it."
 msgstr "但看来还是能伤到那巫妖。俺们带上它就撤吧。说不定熔炉可以毁掉它。"
 
 #. [message]: speaker=unit
@@ -5336,20 +5336,18 @@ msgstr "我们又见面了，小墨鱼。"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1452
 msgid "Get these tentacles off of me!"
-msgstr ""
+msgstr "把这些触手从我身上拿开！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1465
 msgid "Release me at once you oversized piece of calamari— eeeeaaaaaaaaa!"
-msgstr ""
+msgstr "马上放了我，你这块超大的乌贼——咿呀啊啊啊啊啊啊！"
 
 #. [message]: speaker=narrator
 #. Mal Keshar is sinking...
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1470
-#, fuzzy
-#| msgid "<i>It’s... so... cold...</i>"
 msgid "<i>Blub... blub... blub...</i>"
-msgstr "<b>好……冷……</b>"
+msgstr "<i>卜噜…卜噜…卜噜…</i>"
 
 #. [message]: speaker=Inky
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1495
@@ -5616,7 +5614,9 @@ msgstr ""
 #. [message]: role=second
 #. regular english - I don't know. You think the lich's castle can be useful
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1895
-msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
+#, fuzzy
+#| msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
+msgid "I dinna know. Ye think tha lich’s castle can be useful?"
 msgstr "俺咋知道。你觉着这巫妖的城堡能用不？"
 
 #. [message]: role=speakinghero
@@ -5729,7 +5729,7 @@ msgstr "这只乌贼再也逃不过我了！追捕她！"
 msgid ""
 "Right, I got dragged down here without any of my minions. I suppose I will "
 "have to do this myself."
-msgstr ""
+msgstr "是的，我没有带上下属就被拖到了这里。我想我必须自己做这件事。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:161
@@ -5744,7 +5744,7 @@ msgstr "为什么这些触手这么大…？"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:230
 msgid "(<i>huff huff huff</i>)"
-msgstr ""
+msgstr "（<i>呼呼呼</i>）"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:250
@@ -5754,7 +5754,7 @@ msgstr "我可以看到……宇宙的颜色…！"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:269
 msgid "The stars go whirly whirl and turn into..."
-msgstr ""
+msgstr "星星打着旋儿变成了…"
 
 #. [message]: speaker=Mal Keshar
 #. He's high so basically this is gibberish describing mushrooms
@@ -5762,22 +5762,22 @@ msgstr ""
 msgid ""
 "... glowy mushrooms lighting up this dank gloom, blue and green, loomy "
 "bloomy big shroomy..."
-msgstr ""
+msgstr "…闪闪发光的照亮了这阴暗潮湿的地方的蘑菇，蓝色和绿色，阴森恐怖的大蘑菇…"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:289
 msgid "... hi hi ho ho the shrooms go marching lo..."
-msgstr ""
+msgstr "…嗨，嗨，嚯，嚯，蘑菇在前进…"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:293
 msgid "... wait for me shroomies..!"
-msgstr ""
+msgstr "…等等我蘑菇…！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:324
 msgid "(<i>huff huff</i>)"
-msgstr ""
+msgstr "（<i>呼呼</i>）"
 
 #. [message]: speaker=Mal Keshar
 #. He breaks the fourth wall here because he's enlightened from the shrooms of course, so he talks directly to the player
@@ -5790,16 +5790,20 @@ msgid ""
 "entertainment? How revolting. I hope your sick enjoyment at my predicament "
 "is worth it, you monster."
 msgstr ""
+"…等等，我在干什么？骷髅不能尝，不能闻，也不能吃任何东西。这些蘑菇对我没用。你"
+"以为我是傻瓜吗？我只是个被雇来消遣的坏演员吗？什么样的虐待狂的更高的力量让我"
+"这样可怜孤独的老巫妖为了娱乐而受尽折磨？真是令人作呕。我希望你对我的窘境的变"
+"态享受是值得的，你这个怪物。"
 
 #. [floating_text]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:352
 msgid "ENLIGHTENED"
-msgstr ""
+msgstr "觉悟"
 
 #. [unit]: type=Necrophage Necron, id=Necron
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:390
 msgid "Necron"
-msgstr ""
+msgstr "Necron"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:400
@@ -5808,6 +5812,8 @@ msgid ""
 "disgusting. Maybe I can send it to a quick death against all those Foolish "
 "Heroes."
 msgstr ""
+"…多么可怕的一堆肉。即使对于食尸鬼来说，这件事也超出了恶心的范畴。也许我可以让"
+"它死得痛快点，对付那些愚蠢的英雄们。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:428
@@ -5817,14 +5823,14 @@ msgstr "你不是我要找的生物！"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:467
 msgid "Oh for the love of... not these slimy things again..."
-msgstr ""
+msgstr "哦，为了爱…不再是这些黏糊糊的东西了……"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:499
 msgid ""
 "... wait a second, is this creature even supposed to live in this kind of "
 "habitat?"
-msgstr ""
+msgstr "…等等，这种生物应该生活在这种栖息地吗？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:531
@@ -5839,7 +5845,7 @@ msgstr "啊哈！"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:576
 msgid "Finally, I have found you! Now hold still for just a moment..."
-msgstr ""
+msgstr "终于，我找到你了！现在请稍等片刻……"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:597
@@ -5854,12 +5860,12 @@ msgstr "…那是什么声音？"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:636
 msgid "Where did you come from? Get off of me!"
-msgstr ""
+msgstr "你哪来的？放开我！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:675
 msgid "Uh oh."
-msgstr ""
+msgstr "啊哦。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:714
@@ -5869,7 +5875,7 @@ msgstr "我要离开这里！"
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:739
 msgid "Aaargh, so many tentacles! Aieeeeee!!!"
-msgstr ""
+msgstr "啊，这么多触手！哎呀呀！！！"
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:749
@@ -5884,6 +5890,8 @@ msgid ""
 "no more than a few decorative elements around the watery backdrop of the "
 "village of squids for all eternity."
 msgstr ""
+"不幸的是，玛尔-凯沙被一群触手淹没了。他的妄想破灭了，他那骨瘦如柴的遗体只能永"
+"远成为乌贼村水域背景中的一些装饰品。"
 
 #. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
@@ -6033,28 +6041,28 @@ msgstr "从附近敌人身上吸取生命，但每回合都会损失生命"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:211
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:350
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:347
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:357
 msgid "touch"
 msgstr "灵触"
 
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:223
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:362
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:359
 msgid "chill tempest"
 msgstr "寒冰暴"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:235
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:374
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:371
 msgid "shadow wave"
 msgstr "暗影波"
 
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:326
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:323
 msgid "Ancient Lich"
 msgstr "上古巫妖"
 
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:342
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:339
 msgid ""
 "A lich that accrues enough power over its newfound immortal lifespan becomes "
 "one who can stain souls with despair and sow ruin across the world. "
@@ -6255,164 +6263,164 @@ msgid "Allied undead units within a 5 hex radius are hidden."
 msgstr "隐藏半径5个六角格之内的友方亡灵单位。"
 
 #. [dummy]: id=did_frost_nova
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:238
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:239
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:240
 msgid "frost nova"
 msgstr "霜冻新星"
 
 #. [dummy]: id=did_frost_nova
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:240
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:241
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:242
 msgid ""
 "On offense, this attack will additionally deal 70% of its damage in cold "
 "damage to all enemies adjacent to the target."
 msgstr "在进攻时，此攻击将额外对目标附近的所有敌人造成其伤害70%的寒冰伤害。"
 
 #. [damage]: id=did_spellbind
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:307
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:308
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:309
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:310
 msgid "spell bind"
 msgstr "咒缚"
 
 #. [damage]: id=did_spellbind
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:309
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:310
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:311
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:312
 msgid ""
 "When this attack is used, the damage taken from fire, cold, and arcane "
 "attacks will be reduced by 60%."
 msgstr "当使用此攻击时，受到的火焰、寒冰和奥术攻击伤害将减少60%。"
 
 #. [drains]: id=did_reap
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:325
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:327
 msgid "reap"
 msgstr "收割"
 
 #. [drains]: id=did_reap
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:326
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:328
 msgid "This unit heals for 70% of the damage this attack deals."
 msgstr "此单位的生命值回复此攻击造成的伤害的70%。"
 
 #. [dummy]: id=did_soul_rend
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:333
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:334
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:335
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:336
 msgid "soul rend"
 msgstr "灵魂撕裂"
 
 #. [dummy]: id=did_soul_rend
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:335
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:336
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:337
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:338
 msgid ""
 "Every turn, this unit loses 3 hitpoints, but drains 6 hitpoints from each "
 "adjacent enemy."
 msgstr "每一回合，此单位失去3点生命值，但会吸取每个相邻敌人6点生命值。"
 
 #. [damage]: id=did_malevolence
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:432
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:433
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:435
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:436
 msgid "malevolence"
 msgstr "怨毒"
 
 #. [damage]: id=did_malevolence
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:434
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:435
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:437
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:438
 msgid ""
 "This attack gains 50% damage on offense, but causes this unit to lose 1 hp "
 "per hit."
 msgstr "此攻击在进攻时获得50%伤害加成，但每次命中会使此单位损失1点生命值。"
 
 #. [swarm]: id=did_hysteria
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:449
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:452
 msgid "hysteria"
 msgstr "歇斯底里"
 
 #. [swarm]: id=did_hysteria
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:450
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:453
 msgid "This attack gains up to 10 strikes when this unit is wounded."
 msgstr "当此单位受伤时，此攻击的打击次数最多增加为10次。"
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:460
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:476
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:463
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:479
 msgid "sorrow"
 msgstr "悲哀"
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:461
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:464
 msgid "Adjacent enemy units do 20% less damage."
 msgstr "相邻敌方单位造成的伤害减少20%。"
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:477
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:480
 msgid "Adjacent enemy units do 40% less damage."
 msgstr "相邻敌方单位造成的伤害减少40%。"
 
 #. [teleport]: id=did_enlightened
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:492
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:495
 msgid "enlightened"
-msgstr "开明"
+msgstr "觉悟"
 
 #. [teleport]: id=did_enlightened
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:493
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:496
 msgid "female^enlightened"
-msgstr "开明"
+msgstr "觉悟"
 
 #. [teleport]: id=did_enlightened
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:494
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:497
 msgid "This unit can teleport between mushroom groves."
 msgstr "这个单位可在蘑菇丛之间传送。"
 
 #. [heal_on_hit]: id=did_vitalize1
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:518
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:527
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:521
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:530
 msgid "vitalize"
 msgstr "活化"
 
 #. [heal_on_hit]: id=did_vitalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:519
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:522
 msgid "This unit heals 2 HP every time this attack hits."
 msgstr "每次此攻击命中时，此单位回复2点生命值。"
 
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:528
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:531
 msgid "This unit heals 4 HP every time this attack hits."
 msgstr "每次此攻击命中时，此单位回复4点生命值。"
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:535
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:536
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:538
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:539
 msgid "fervor"
 msgstr "狂热"
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:537
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:538
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:540
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:541
 msgid ""
 "This attack gains 2 attacks on offense, but causes this unit to lose 4 hp "
 "per hit."
 msgstr "此攻击在进攻时打击次数增加2次，但每次命中会使次单位损失4点生命值。"
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:552
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:553
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:555
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:556
 msgid "impetuity"
 msgstr "鲁莽"
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:554
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:555
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:557
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:558
 msgid ""
 "This attack loses one strike on offense but deals three times the normal "
 "damage."
 msgstr "此在进攻时打击次数减少一次，但造成的伤害是正常值的三倍。"
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:569
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:572
 msgid "corpse launcher"
 msgstr "尸体发射器"
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:570
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:573
 msgid ""
 "On offense, enemies cannot retaliate against this attack. This attack "
 "consumes 3 HP from each nearby allied corpse to deal 15 impact damage (per "
@@ -6422,12 +6430,12 @@ msgstr ""
 "础伤害之上，附近每有一具友方僵尸，就对目标造成15点额外的冲击伤害。"
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:696
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:699
 msgid "consumption"
 msgstr "消耗"
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:697
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:700
 msgid ""
 "At night, this unit and adjacent allied undead gain 25% damage. However, "
 "this unit loses 2 HP per turn."
@@ -6436,36 +6444,36 @@ msgstr ""
 "值。"
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:761
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:764
 msgid "corpse master"
 msgstr "尸主"
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:762
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:765
 msgid ""
 "Adjacent allied corpses heal 8 HP per turn and gain 30% resistance to blade, "
 "impact, and pierce."
 msgstr "相邻的友方僵尸每回合回复8点生命值，并获得30%刃器、冲击和穿刺抗性。"
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:796
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:799
 msgid "zombie frenzy"
 msgstr "僵尸狂热"
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:797
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:800
 msgid "Adjacent allied corpses gain 30% damage and are berserk."
 msgstr "相邻的友方僵尸获得30%伤害加成，并且狂暴。"
 
 #. [regenerate]: id=did_cannibalize1
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:827
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:912
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:830
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:915
 msgid "cannibalize"
 msgstr "同类相食"
 
 #. [regenerate]: id=did_cannibalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:828
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:831
 msgid ""
 "On each turn, this unit regenerates 2 HP per adjacent allied ghoul-type "
 "unit, but consumes 1 HP from each ally in the process."
@@ -6474,7 +6482,7 @@ msgstr ""
 "程中会消耗每名友军的1点生命值。"
 
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:913
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:916
 msgid ""
 "On each turn, this unit regenerates 4 HP per adjacent allied ghoul-type "
 "unit, but consumes 2 HP from each ally in the process."
@@ -6483,84 +6491,84 @@ msgstr ""
 "程中会消耗每名友军的2点生命值。"
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:995
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:998
 msgid "death cloud"
 msgstr "死亡之云"
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:996
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:999
 msgid ""
 "This unit poisons all nearby enemy units on the start of every new turn."
 msgstr "在每个新回合开始时，此单位会毒害附近的所有敌方单位。"
 
 #. [plague]: id=ghoulfication, type=Ghoul
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1039
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1042
 msgid "ghoulfication"
 msgstr "食尸鬼化"
 
 #. [plague]: id=ghoulfication, type=Ghoul
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1040
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1043
 msgid "When a unit is killed by this attack, it turns into a ghoul."
 msgstr "当一个单位被这种攻击杀死时，变成一个食尸鬼。"
 
 #. [dummy]: id=did_starving
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1048
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1049
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1052
 msgid "starving"
 msgstr "饥饿"
 
 #. [dummy]: id=did_starving
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1050
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1053
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1054
 msgid "This unit loses 1 hitpoint every turn."
 msgstr "这个单位每回合损失1点生命。"
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1094
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1106
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1097
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1109
 msgid "masochism"
 msgstr "受虐狂"
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1095
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1107
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1098
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1110
 msgid "female^masochism"
 msgstr "受虐狂"
 
 #. [leadership]: id=masochism1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1096
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1099
 msgid "This unit gains up to 50% damage as its hitpoints are reduced."
 msgstr "这个单位在生命值减少时可增加最多50%的伤害输出。"
 
 #. [leadership]: id=masochism2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1108
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1111
 msgid "This unit gains up to 100% damage as its hitpoints are reduced."
 msgstr "这个单位在生命值减少时可增加最多100%的伤害输出。"
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1120
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1123
 msgid "drunk"
 msgstr "醉酒"
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1121
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1124
 msgid "female^drunk"
 msgstr "醉酒"
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1122
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1125
 msgid "This unit is drunk and has 10% increased resistances."
 msgstr "此单位喝醉了，其所有抗性获得10%加成。"
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1130
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1133
 msgid "drunken rage"
 msgstr "酒后狂怒"
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1131
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1134
 msgid "On offense, this attack presses the engagement for 4 rounds of attacks."
 msgstr "在进攻时，此攻击会逼迫双方交战，进行4轮攻击。"
 

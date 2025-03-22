@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,13 +21,14 @@
 #include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 namespace gui2
 {
-game_tip::game_tip(const t_string& text, const t_string& source, const std::string& unit_filter)
-	: text_(text)
-	, source_(source)
-	, unit_filter_(utils::split(unit_filter))
+game_tip::game_tip(const config& cfg)
+	: text(cfg["text"].t_str())
+	, source(cfg["source"].t_str())
+	, unit_filter(utils::split(cfg["encountered_units"]))
 {
 }
 
@@ -35,13 +36,8 @@ namespace tip_of_the_day
 {
 std::vector<game_tip> load(const config& cfg)
 {
-	std::vector<game_tip> result;
-
-	for(const auto& tip : cfg.child_range("tip")) {
-		result.emplace_back(tip["text"], tip["source"], tip["encountered_units"]);
-	}
-
-	return result;
+	const auto range = cfg.child_range("tip");
+	return { range.begin(), range.end() };
 }
 
 std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
@@ -50,28 +46,24 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 	const std::set<std::string>& units = prefs::get().encountered_units();
 
 	// Remove entries whose filters do not match from the tips list.
-	const auto iter = std::remove_if(result.begin(), result.end(), [&units](const game_tip& tip) {
-		const auto& filters = tip.unit_filter_;
+	utils::erase_if(result, [&units](const game_tip& tip) {
+		const auto& must_have_seen = tip.unit_filter;
 
-		// Filter passes there's no filter at all or if every unit specified has already been
-		// encountered in-game.
-		const bool passes_filter = filters.empty()
-			? true
-			: std::any_of(filters.begin(), filters.end(), [&units](const std::string& u) {
-				return units.find(u) != units.end();
-			});
+		// No units to encounter, tip is always visible.
+		if(must_have_seen.empty()) {
+			return false;
+		}
 
-		return !passes_filter;
+		// At least one given unit type must have been encountered.
+		return std::none_of(must_have_seen.begin(), must_have_seen.end(),
+			[&units](const std::string& u) { return utils::contains(units, u); });
 	});
-
-	// Prune invalid entries.
-	result.erase(iter, result.end());
 
 	// Shuffle the list.
 	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
 	return result;
 }
 
-} // namespace tips
+} // namespace tip_of_the_day
 
 } // namespace gui2

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -66,14 +66,13 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
-	void set_link_aware(bool l);
+    /** See @ref styled_widget::get_link_aware. */
+    virtual bool get_link_aware() const override
+    {
+        return link_aware_;
+    }
 
-	void set_text_max_width(int max_width) {
-		label* text_label = get_internal_label();
-		if (text_label) {
-			text_label->set_text_maximum_width(max_width);
-		}
-	}
+	void set_link_aware(bool l);
 
 private:
 	/**
@@ -141,7 +140,7 @@ struct scroll_label_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_label : public builder_styled_widget
+struct builder_scroll_label : public builder_scrollbar_container
 {
 	explicit builder_scroll_label(const config& cfg);
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -50,7 +50,7 @@ namespace events
 class menu_handler : private chat_handler
 {
 public:
-	menu_handler(game_display* gui, play_controller& pc);
+	menu_handler(play_controller& pc);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();
@@ -113,11 +113,9 @@ public:
 			int side_num,
 			mouse_handler& mousehandler);
 
-	/** @return If the recruit is possible, an empty string and set @a recruited_from; otherwise, return an error message string. */
-	t_string can_recruit(const std::string& name, int side_num, map_location& target_hex, map_location& recruited_from);
 	/** @return Whether or not the recruit was successful */
 	bool do_recruit(const std::string& name, int side_num, map_location& target_hex);
-	void do_speak();
+	bool do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str);
 	void do_ai_formula(const std::string& str, int side_num, mouse_handler& mousehandler);

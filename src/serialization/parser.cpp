@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -28,6 +28,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"
+#include "utils/charconv.hpp"
 #include "wesconfig.h"
 
 #include <boost/algorithm/string/replace.hpp>
@@ -476,7 +477,7 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	i18n_symbols["value"] = tok_.current_token().value;
 	i18n_symbols["previous_value"] = tok_.previous_token().value;
 
-	const std::string& tok_state = _("Value: '$value' Previous: '$previous_value'");
+	const std::string& tok_state = _("Value: ‘$value’ Previous: ‘$previous_value’");
 #else
 	const std::string& tok_state = "";
 #endif
@@ -537,7 +538,13 @@ public:
 	void operator()(const T& v) const
 	{
 		indent();
-		out_ << key_ << '=' << v << '\n';
+		if constexpr(std::is_arithmetic_v<T>) {
+			// for number values, this has to use the same method as in from_string_verify
+			auto buf = utils::charconv_buffer(v);
+			out_ << key_ << '=' << buf.get_view() << '\n';
+		} else {
+			out_ << key_ << '=' << v << '\n';
+		}
 	}
 
 	//
@@ -630,6 +637,13 @@ void read(config& cfg, const std::string& in, abstract_validator* validator)
 	parser(cfg, ss, validator)();
 }
 
+config read(std::istream& in, abstract_validator* validator)
+{
+	config cfg;
+	parser(cfg, in, validator)();
+	return cfg;
+}
+
 template<typename decompressor>
 void read_compressed(config& cfg, std::istream& file, abstract_validator* validator)
 {
@@ -720,15 +734,15 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		write_key_val(out, key, value, tab, textdomain);
 	}
 
-	for(const config::any_child item : cfg.all_children_range()) {
-		if(!config::valid_tag(item.key)) {
-			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...";
+	for(const auto [key, item_cfg] : cfg.all_children_view()) {
+		if(!config::valid_tag(key)) {
+			ERR_CF << "Config contains invalid tag name '" << key << "', skipping...";
 			continue;
 		}
 
-		write_open_child(out, item.key, tab);
-		write_internal(item.cfg, out, textdomain, tab + 1);
-		write_close_child(out, item.key, tab);
+		write_open_child(out, key, tab);
+		write_internal(item_cfg, out, textdomain, tab + 1);
+		write_close_child(out, key, tab);
 	}
 }
 

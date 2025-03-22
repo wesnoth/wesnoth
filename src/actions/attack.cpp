@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,8 @@
  */
 
 #include "actions/attack.hpp"
+
+#include <utility>
 
 #include "actions/advancement.hpp"
 #include "actions/vision.hpp"
@@ -77,7 +79,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const_attack_ptr opp_weapon)
+		const const_attack_ptr& opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -181,14 +183,15 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
 
 	// Time of day bonus.
+	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
 	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, weapon->alignment(), u.is_fearless());
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment, u.is_fearless());
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -228,10 +231,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
 		bool attacking,
 		const unit_type* opp_type,
-		const_attack_ptr opp_weapon,
+		const const_attack_ptr& opp_weapon,
 		unsigned int opp_terrain_defense,
 		int lawful_bonus)
-	: weapon(att_weapon)
+	: weapon(std::move(att_weapon))
 	, attack_num(-2) // This is and stays invalid. Always use weapon when using this constructor.
 	, is_attacker(attacking)
 	, is_poisoned(false)
@@ -314,10 +317,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
+	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
 	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, weapon->alignment(), u_type->musthave_status("fearless"), 0);
+			+= generic_combat_modifier(lawful_bonus, alignment, u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -521,7 +525,7 @@ bool battle_context::better_combat(const combatant& us_a,
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
-		nonempty_unit_const_ptr defender,
+		const nonempty_unit_const_ptr& defender,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,
@@ -668,7 +672,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 
 namespace
 {
-void refresh_weapon_index(int& weap_index, const std::string& weap_id, attack_itors attacks)
+void refresh_weapon_index(int& weap_index, const std::string& weap_id, const attack_itors& attacks)
 {
 	// No attacks to choose from.
 	if(attacks.empty()) {
@@ -1307,7 +1311,7 @@ void attack::unit_killed(unit_info& attacker,
 			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
 			newunit->set_attacks(0);
 			newunit->set_movement(0, true);
-			newunit->set_facing(map_location::get_opposite_dir(attacker.get_unit().facing()));
+			newunit->set_facing(map_location::get_opposite_direction(attacker.get_unit().facing()));
 
 			// Apply variation
 			if(undead_variation != "null") {
@@ -1505,9 +1509,9 @@ void attack::perform()
 void attack::check_replay_attack_result(
 		bool& hits, int ran_num, int& damage, config replay_results, unit_info& attacker)
 {
-	int results_chance = replay_results["chance"];
+	int results_chance = replay_results["chance"].to_int();
 	bool results_hits = replay_results["hits"].to_bool();
-	int results_damage = replay_results["damage"];
+	int results_damage = replay_results["damage"].to_int();
 
 #if 0
 	errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
@@ -1588,7 +1592,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
+	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, std::move(weapon), std::move(opp_weapon));
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,8 @@
 #include "sdl/point.hpp"
 
 #include <SDL2/SDL_rect.h>
+
+#include <algorithm>
 
 namespace sdl
 {
@@ -61,7 +63,7 @@ public:
 	{}
 
 	// subcomponent access
-	constexpr point pos() const { return {x, y}; }
+	constexpr point origin() const { return {x, y}; }
 	constexpr point size() const { return {w, h}; }
 
 	// Comparisons
@@ -151,6 +153,55 @@ public:
 	/** Returns a new rectangle shifted by the given relative position. */
 	rect shifted_by(int x, int y) const;
 	rect shifted_by(const point& p) const;
+
+	/** Returns a new rectangle with @a dx horizontal padding and @a dy vertical padding. */
+	constexpr rect padded_by(int dx, int dy) const
+	{
+		return { x - dx, y - dy, w + dx * 2, h + dy * 2 };
+	}
+
+	/** Returns a new rectangle with equal @a amount horizontal and vertical padding. */
+	constexpr rect padded_by(int amount) const
+	{
+		return padded_by(amount, amount);
+	}
+
+	/** Returns the proper point that corresponds to the given [0.0, 1.0] coordinates. */
+	point point_at(double x, double y) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);
+
+namespace sdl
+{
+#ifdef __cpp_concepts
+template<typename T>
+concept Rectangle = requires(T r)
+{
+	r.x;
+	r.y;
+	r.w;
+	r.h;
+};
+
+/** Returns the sub-rect bounded to the top left and bottom right by the given [0.0, 1.0] coordinates. */
+constexpr SDL_FRect precise_subrect(const Rectangle auto& base, const SDL_FPoint& tl, const SDL_FPoint& br)
+#else
+template<typename Rect>
+constexpr SDL_FRect precise_subrect(const Rect& base, const SDL_FPoint& tl, const SDL_FPoint& br)
+#endif
+{
+	const auto point_at = [&base](auto x, auto y) -> SDL_FPoint {
+		return {
+			base.x + base.w * std::clamp(x, 0.0f, 1.0f),
+			base.y + base.h * std::clamp(y, 0.0f, 1.0f)
+		};
+	};
+
+	SDL_FPoint p1 = point_at(tl.x, tl.y);
+	SDL_FPoint p2 = point_at(br.x, br.y);
+
+	return { p1.x, p1.y, p2.x - p1.x, p2.y - p1.y };
+}
+
+} // namespace sdl

@@ -45,6 +45,10 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 .SH OPTIONS
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Affiche toutes les traductions dans le menu du jeu, même si elles sont
 jugées insuffisamment complètes.
@@ -177,10 +181,6 @@ pas de rapport de bogue, car ils sont généralement connus. Certaines parties
 de la bibliothèque sont réputées stables et fonctionneront sans ce
 paramètre.
 .TP 
-\fB\-\-nodelay\fP
-Lance le jeu sans pause pour mesurer les performances graphiques. Cette
-option est activée automatiquement par \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 Désactive le chargement des extensions utilisateurs.
 .TP 
@@ -213,10 +213,9 @@ Utilise \fImot de passe\fP lors de la connexion à un serveur, en ignorant
 d'autres préférences. Dangereux.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(expérimental) charge un \fIscript\fP qui défini un plugin Wesnoth. Similaire à
-\fB\-\-script\fP, mais le fichier Lua devrait retourner une fonction qui sera
-exécutée comme une coroutine et réveillée périodiquement avec des mises à
-jour.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Applique une différence au format DiffWML à un fichier WML sans résolution
@@ -233,22 +232,26 @@ spécifiées. Exemple : \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Po
 plus de détails concernant le prétraitement visiter :
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINITION1\fP\fB,\fP\fIDEFINITION2\fP\fB,\fP\fI...\fP
-Une liste séparée par des virgules de définitions pour être utilisée par la
-commande \fB\-\-preprocess\fP. Si \fBSKIP_CORE\fP est définie dans la liste le
-répertoire « data/core » ne sera pas prétraité.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ fichier source\fP
-Utilisé uniquement par la commande \fB\-\-preprocess\fP. Spécifie un fichier qui
-contient des \fB[définition pour préprocesseur]\fP à inclure avant le
-prétraitement.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=fichier cible\fP\fB]\fP
-Utilisé uniquement par la commande \fB\-\-preprocess\fP.  La sortie des macros
-prétraitées sera envoyée dans le fichier cible. Si le fichier n'est pas
-spécifié, la sortie sera envoyée dans «\ _MACROS_.cfg\ » situé dans le
-répertoire cible de la commande du préprocesseur.  Cette commande doit être
-saisie avant \fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r\fP \fB800x600\fP.
@@ -270,9 +273,6 @@ Initialise le générateur de nombre aléatoire avec le nombre
 \fB\-\-screenshot\fP\fI\ carte\fP\fB\ \fP\fIsortiee\fP
 Sauvegarde une capture d'écran de \fIcarte\fP vers \fIsortie\fP sans initialiser
 d'écran.
-.TP 
-\fB\-\-script\fP\fI\ fichier_d'entrée\fP
-(expérimental)  \fIfile\fP contenant un script Lua qui contrôle le client.
 .TP 
 \fB\-s[\fP\fIhôte\fP\fB],\ \-\-server[\fP\fI=hôte\fP\fB]\fP
 Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
@@ -436,7 +436,7 @@ Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

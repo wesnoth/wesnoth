@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -180,7 +180,7 @@ public:
 	/** Build the filename according to the specific savegame's needs. */
 	std::string create_filename() const
 	{
-		return create_filename(gamestate().get_starting_point()["turn_at"]);
+		return create_filename(gamestate().get_starting_point()["turn_at"].to_int());
 	}
 
 	/** Build the filename for the specified turn. */

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -138,7 +138,7 @@ public:
 	 *
 	 * @return true if activated, false is not
 	 */
-	bool is_modification_active(const std::string id) const;
+	bool is_modification_active(const std::string& id) const;
 
 	/**
 	 * Returns the selected era
@@ -146,6 +146,7 @@ public:
 	 * @return the index of the era
 	 */
 	int get_era_index() const;
+	int get_era_index(const std::string& id) const;
 
 	/**
 	 * Returns the selected scenario

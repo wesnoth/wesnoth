@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -59,7 +59,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 
 	playsingle_controller playcontroller(starting_point, state_);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.ticks());
+	LOG_NG << "created objects... " << playcontroller.timer();
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
@@ -245,7 +245,7 @@ level_result::type campaign_controller::play_game()
 
 				ng::connect_engine connect_engine(state_, false, mp_info_);
 
-				if(!connect_engine.can_start_game() || (game_config::debug && state_.classification().is_multiplayer())) {
+				if(!connect_engine.can_start_game()) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
 					if(!mp::goto_mp_staging(connect_engine)) {
 						return level_result::type::quit;
@@ -276,7 +276,7 @@ level_result::type campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 
-		std::string message = _("Unknown scenario: '$scenario|'");
+		std::string message = _("Unknown scenario: ‘$scenario|’");
 		message = utils::interpolate_variables_into_string(message, &symbols);
 
 		gui2::show_error_message(message);

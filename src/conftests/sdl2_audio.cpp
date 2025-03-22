@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ int main(int, char** argv)
     }
 
     Mix_Music* music = Mix_LoadMUS(argv[1]);
-    if (music == NULL) {
+    if (music == nullptr) {
         fprintf(stdout, "Cannot load music file: %s\\n", Mix_GetError());
         Mix_CloseAudio();
         return (EXIT_FAILURE);

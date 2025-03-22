@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 
 
 #include <type_traits>
+#include <utility>
 
 static const char uattacksKey[] = "unit attacks table";
 static const char uattackKey[] = "unit attack";
@@ -33,8 +34,8 @@ static const char uattackKey[] = "unit attack";
 struct attack_ref {
 	attack_ptr attack;
 	const_attack_ptr cattack;
-	attack_ref(attack_ptr atk) : attack(atk), cattack(atk) {}
-	attack_ref(const_attack_ptr atk) : cattack(atk) {}
+	attack_ref(const attack_ptr& atk) : attack(atk), cattack(atk) {}
+	attack_ref(const_attack_ptr atk) : cattack(std::move(atk)) {}
 };
 
 void push_unit_attacks_table(lua_State* L, int idx)
@@ -47,7 +48,7 @@ void push_unit_attacks_table(lua_State* L, int idx)
 	luaL_setmetatable(L, uattacksKey);
 }
 
-void luaW_pushweapon(lua_State* L, attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
@@ -57,7 +58,7 @@ void luaW_pushweapon(lua_State* L, attack_ptr weapon)
 	}
 }
 
-void luaW_pushweapon(lua_State* L, const_attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
@@ -188,7 +189,6 @@ static int impl_unit_attacks_set(lua_State* L)
 		if(iter == end) {
 			atk = u.add_attack(end, cfg);
 		} else {
-		    auto ctx = atk->specials_context(u.shared_from_this(), map_location::null_location(), true);
 			iter.base()->reset(new attack_type(cfg));
 			atk = *iter.base();
 		}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2024
+	Copyright (C) 2021 - 2025
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,7 +46,7 @@ texture pango_render_text(const std::string& text, int size, const color_t& colo
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, use_markup);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_height(-1, false)
@@ -62,7 +62,7 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 	auto& ptext = private_renderer();
 
 	ptext.set_text(line, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(font_size)
 		 .set_font_style(font_style)
 		 .set_maximum_height(-1, false)
@@ -71,37 +71,6 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 
 	auto s = ptext.get_size();
 	return { s.x, s.y };
-}
-
-std::string pango_line_ellipsize(const std::string& text, int font_size, int max_width, font::pango_text::FONT_STYLE font_style)
-{
-	if(pango_line_width(text, font_size, font_style) <= max_width) {
-		return text;
-	}
-	if(pango_line_width(font::ellipsis, font_size, font_style) > max_width) {
-		return "";
-	}
-
-	std::string current_substring;
-
-	try {
-		utf8::iterator itor(text);
-		for(; itor != utf8::iterator::end(text); ++itor) {
-			std::string tmp = current_substring;
-			tmp.append(itor.substr().first, itor.substr().second);
-
-			if(pango_line_width(tmp + font::ellipsis, font_size, font_style) > max_width) {
-				return current_substring + font::ellipsis;
-			}
-
-			current_substring = std::move(tmp);
-		}
-	} catch(const utf8::invalid_utf8_exception&) {
-		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"";
-		return "";
-	}
-
-	return text; // Should not happen
 }
 
 std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines, bool /*partial_line*/)
@@ -115,7 +84,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	auto& ptext = private_renderer();
 
 	ptext.set_text(unwrapped_text, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(font_size)
 		 .set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_maximum_height(max_height, true)
@@ -141,7 +110,7 @@ rect pango_draw_text(bool actually_draw, const rect& area, int size, const color
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_width(-1)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -362,11 +362,11 @@ private:
 
 void event_handler::read_filters(const config &cfg)
 {
-	for(auto filter : cfg.all_children_range()) {
-		vconfig vcfg(filter.cfg);
-		if(auto filter_ptr = make_filter(filter.key, vcfg)) {
+	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()) {
+		vconfig vcfg(filter_cfg);
+		if(auto filter_ptr = make_filter(filter_key, vcfg)) {
 			add_filter(std::move(filter_ptr));
-		} else if(filter.key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
+		} else if(filter_key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
 			add_filter(std::make_unique<filter_dynamic>(vcfg["name"], vcfg["variable"]));
 		}
 	}

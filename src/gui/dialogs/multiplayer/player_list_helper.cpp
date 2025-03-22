@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,7 +14,6 @@
 
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
@@ -22,7 +21,7 @@
 namespace gui2
 {
 player_list_helper::player_list_helper(window* window)
-	: list_(find_widget<listbox>(window, "player_list", false))
+	: list_(window->find_widget<listbox>("player_list"))
 {
 	// add ourselves as the host
 	widget_data data = {

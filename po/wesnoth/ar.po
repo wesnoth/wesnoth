@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-04-03 12:01+0100\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2024-10-31 12:08+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -23,6 +23,11 @@ msgstr ""
 #: data/_main.cfg:22
 msgid "Custom"
 msgstr "الضيف"
+
+#. [editor_group]: id=urban_jungle
+#: data/_main.cfg:65
+msgid "Urban Jungle (Internal)"
+msgstr ""
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -61,53 +66,65 @@ msgstr "ملفات نصية عريضة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
+msgid "Show icons in the Add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:27
+msgid ""
+"Disabling saves bandwidth by not sending icons for the add-ons list in the "
+"add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:34
 msgid "Confirm deleting saves"
 msgstr "تأكيد محو الحالة المسجلة للعبة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:33
+#: data/advanced_preferences.cfg:41
 msgid "Mouse scrolling"
 msgstr "تحريك الفأرة لتمرير الشاشة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
+#: data/advanced_preferences.cfg:48
 msgid "Middle-click scrolling"
 msgstr "ضغط الزر الأوسط للفأرة لتحريك الشاشة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:55
 msgid "Keep scrolling when mouse leaves window"
 msgstr "مواصلة تحريك الفأرة عند مغادرة الشاشة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:62
 msgid "Show combat"
 msgstr "إظهار المعارك"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:69
 msgid "Auto-open whisper windows in lobby"
 msgstr "الفتح الآلي لنوافذ الهمس في اللعب الجماعي"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:68
+#: data/advanced_preferences.cfg:76
 msgid "Follow unit actions"
 msgstr "متابعة حركة الوحدات"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:69
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr "إختيار إذا كانت الشاشة تتحرك نحو الوحدة التي تقوم بحركة ما"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:76
+#: data/advanced_preferences.cfg:84
 msgid "Chat message aging"
 msgstr "تتابع عرض الرسائل"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:77
+#: data/advanced_preferences.cfg:85
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -115,22 +132,22 @@ msgstr ""
 "عدد الدقائق قبل محو الرسائل. ضع رقم صفر لإيقاف محو الرسائل القديمة آليا."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:95
 msgid "Use 12-hour clock format"
 msgstr "إستخدام نظام 12 ساعة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:94
+#: data/advanced_preferences.cfg:102
 msgid "Confirm loading saves from a different version"
 msgstr "تأكيد تحميل الألعاب المسجلة من نسخ قديمة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:101
+#: data/advanced_preferences.cfg:109
 msgid "Show all unit types in help"
 msgstr "إظهار كل الوحدات في صفحة المساعدة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:102
+#: data/advanced_preferences.cfg:110
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -139,55 +156,60 @@ msgstr ""
 "بإختيار فسيتم عرض الوحدات التي اعترضتك في صفحة المساعدة."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:109
+#: data/advanced_preferences.cfg:117
 msgid "Editor recent files limit"
 msgstr "حدود اخر الملفات المفتوحة في المحرر"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:118
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr "العدد الأقصى لعرض اخر الملفات المفتوحة في المحرر"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:120
+#: data/advanced_preferences.cfg:128
 msgid "Show color cursors"
 msgstr "إظهار الألوان المفتاحية سهم التوجيه"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:129
 msgid "Use colored mouse cursors"
 msgstr "إستخدام فأرة ملونة عند التوجيه"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:136
 msgid "Customize orb colors"
 msgstr "الألوان المعتادة للكرات الخاصة للوحدات"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:134
+#: data/advanced_preferences.cfg:142
+msgid "Customize Reach Map (Unit Movement UI)"
+msgstr ""
+
+#. [advanced_preference]: type=custom
+#: data/advanced_preferences.cfg:148
 msgid "Logging"
 msgstr "التسجيل"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:140
+#: data/advanced_preferences.cfg:154
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "السماح بحساب الإصابات عبر محاكاة مونت كارلو"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:141
+#: data/advanced_preferences.cfg:155
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr "السماح لنافذة حساب الإصابات بمحاكاة المعارك عوض حساب العدد المحتمل"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:162
 msgid "Show deprecation messages in-game"
 msgstr "إظهار رسائل الكودات التي ستمحى في النسخ القادمة للعبة"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:163
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -198,12 +220,12 @@ msgstr ""
 "ذلك، يتحكم مجال سجل الإهمال في عدد الرسائل المطبوعة."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:170
 msgid "Font size scale (experimental)"
 msgstr "مقياس حجم الخط (تجريبي)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:171
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
@@ -212,12 +234,12 @@ msgstr ""
 "قد يؤدي تغيير حجم النص إلى حدوث مشكلات في الشريط الجانبي داخل اللعبة."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:181
 msgid "Server disconnect timeout"
 msgstr "مهلة قطع اتصال الخادم"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:168
+#: data/advanced_preferences.cfg:182
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
@@ -230,7 +252,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1066
 msgid "poisoned"
 msgstr "تم تسميمه"
 
@@ -358,7 +380,7 @@ msgid "Miscellaneous Contributors"
 msgstr "مشاركون في مجالات غير محددة"
 
 #. [about]
-#: data/core/about.cfg:1882
+#: data/core/about.cfg:1889
 msgid "Bots"
 msgstr "مداخل"
 
@@ -389,10 +411,8 @@ msgstr "الترجمة الباسكية"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
-#, fuzzy
-#| msgid "Bulgarian Translation"
 msgid "Bengali Translation"
-msgstr "الترجمة البلغارية"
+msgstr "الترجمة البنغالية"
 
 #. [about]
 #: data/core/about_i18n.cfg:77
@@ -435,218 +455,218 @@ msgid "Dutch Translation"
 msgstr "الترجمة الألمانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:454
+#: data/core/about_i18n.cfg:457
 msgid "English (GB) Translation"
 msgstr "الترجمة الانجليزية البريطانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:479
+#: data/core/about_i18n.cfg:482
 msgid "English (Shaw) Translation"
 msgstr "الترجمة الانجليزية الشاوية"
 
 #. [about]
-#: data/core/about_i18n.cfg:497
+#: data/core/about_i18n.cfg:500
 msgid "Esperanto Translation"
 msgstr "الترجمة إلى الاسبرانتو"
 
 #. [about]
-#: data/core/about_i18n.cfg:516
+#: data/core/about_i18n.cfg:519
 msgid "Estonian Translation"
 msgstr "الترجمة الاستونية"
 
 #. [about]
-#: data/core/about_i18n.cfg:526
+#: data/core/about_i18n.cfg:529
 msgid "Filipino Translation"
 msgstr "الترجمة الفلبينية"
 
 #. [about]
-#: data/core/about_i18n.cfg:536
+#: data/core/about_i18n.cfg:539
 msgid "Finnish Translation"
 msgstr "الترجمة الفنلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:601
+#: data/core/about_i18n.cfg:604
 msgid "French Translation"
 msgstr "الترجمة الفرنسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:769
+#: data/core/about_i18n.cfg:772
 msgid "Friulian Translation"
 msgstr "الترجمة الى الفريوليان"
 
 #. [about]
-#: data/core/about_i18n.cfg:773
+#: data/core/about_i18n.cfg:776
 msgid "Galician Translation"
 msgstr "الترجمة الغالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:809
+#: data/core/about_i18n.cfg:812
 msgid "German Translation"
 msgstr "الترجمة الجرمانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:934
+#: data/core/about_i18n.cfg:941
 msgid "Greek Translation"
 msgstr "الترجمة اليونانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:977
+#: data/core/about_i18n.cfg:984
 msgid "Hebrew Translation"
 msgstr "الترجمة العبرية"
 
 #. [about]
-#: data/core/about_i18n.cfg:990
+#: data/core/about_i18n.cfg:997
 msgid "Hungarian Translation"
 msgstr "الترجمة الهنغارية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1051
+#: data/core/about_i18n.cfg:1058
 msgid "Icelandic Translation"
 msgstr "الترجمة الايسلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1061
+#: data/core/about_i18n.cfg:1068
 msgid "Indonesian Translation"
 msgstr "الترجمة الاندونيسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1089
+#: data/core/about_i18n.cfg:1096
 msgid "Irish Translation"
 msgstr "الترجمة الايرلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1096
+#: data/core/about_i18n.cfg:1103
 msgid "Italian Translation"
 msgstr "الترجمة الايطالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1143
+#: data/core/about_i18n.cfg:1150
 msgid "Japanese Translation"
 msgstr "الترجمة اليابانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1236
+#: data/core/about_i18n.cfg:1243
 msgid "Korean Translation"
 msgstr "الترجمة الكورية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1244
+#: data/core/about_i18n.cfg:1251
 msgid "Latin Translation"
 msgstr "الترجمة اللاتينية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1270
+#: data/core/about_i18n.cfg:1277
 msgid "Latvian Translation"
 msgstr "الترجمة اللاتفية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1285
+#: data/core/about_i18n.cfg:1292
 msgid "Lithuanian Translation"
 msgstr "الترجمة الليتوانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1310
+#: data/core/about_i18n.cfg:1317
 msgid "Macedonian Translation"
 msgstr "الترجمة المقدونية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1317
+#: data/core/about_i18n.cfg:1324
 msgid "Marathi Translation"
 msgstr "الترجمة إلى الماراثي"
 
 #. [about]
-#: data/core/about_i18n.cfg:1326
+#: data/core/about_i18n.cfg:1333
 msgid "Norwegian Translation"
 msgstr "الترجمة النرويجية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1355
+#: data/core/about_i18n.cfg:1362
 msgid "Old English Translation"
 msgstr "الترجمة البريطانية القديمة"
 
 #. [about]
-#: data/core/about_i18n.cfg:1373
+#: data/core/about_i18n.cfg:1380
 msgid "Polish Translation"
 msgstr "الترجمة البولونية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1448
+#: data/core/about_i18n.cfg:1455
 msgid "Portuguese Translation"
 msgstr "الترجمة البرتغالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1462
+#: data/core/about_i18n.cfg:1469
 msgid "Portuguese (Brazil) Translation"
 msgstr "الترجمة البرتغالية البرازيلية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1520
+#: data/core/about_i18n.cfg:1527
 msgid "Romanian Translation"
 msgstr "الترجمة الرومانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1528
+#: data/core/about_i18n.cfg:1535
 msgid "Russian Translation"
 msgstr "الترجمة الروسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1635
+#: data/core/about_i18n.cfg:1642
 msgid "Scottish Gaelic Translation"
 msgstr "الترجمة الاسكتلاندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1644
+#: data/core/about_i18n.cfg:1651
 msgid "Serbian Translation"
 msgstr "الترجمة الصربية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1670
 msgid "Slovak Translation"
 msgstr "الترجمة السلوفاكية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1698
+#: data/core/about_i18n.cfg:1705
 msgid "Slovenian Translation"
 msgstr "الترجمة السلوفينية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1714
+#: data/core/about_i18n.cfg:1721
 msgid "Spanish Translation"
 msgstr "الترجمة الاسبانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1804
+#: data/core/about_i18n.cfg:1811
 msgid "Swedish Translation"
 msgstr "الترجمة السويدية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1849
+#: data/core/about_i18n.cfg:1856
 msgid "Turkish Translation"
 msgstr "الترجمة التركية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1874
+#: data/core/about_i18n.cfg:1881
 msgid "Ukrainian Translation"
 msgstr "الترجمة الاوكرانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1908
+#: data/core/about_i18n.cfg:1915
 msgid "Valencian (southern Catalan) Translation"
 msgstr "الترجمة الفالنسية الكاتالونية الجنوبية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1921
+#: data/core/about_i18n.cfg:1928
 msgid "Vietnamese Translation"
 msgstr "الترجمة الفيتنامية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1940
+#: data/core/about_i18n.cfg:1947
 msgid "Welsh Translation"
 msgstr "الترجمة الويلزية"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1949
+#: data/core/about_i18n.cfg:1956
 msgid "RACV’s Translation"
 msgstr "الترجمة إلى راكف"
 
@@ -1698,6 +1718,43 @@ msgstr ""
 "\n"
 "تم نقل 20% من الذهب إلى السيناريو التالي."
 
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/deprecated-utils.cfg:400
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/deprecated-utils.cfg:401
+msgid ""
+"When used defensively, this attack reduces the opponent’s chance to hit by "
+"10%."
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/deprecated-utils.cfg:402
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/deprecated-utils.cfg:416
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/deprecated-utils.cfg:417
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/deprecated-utils.cfg:418
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
@@ -2671,84 +2728,6 @@ msgstr ""
 "centre_v=نا|لا|نا|راي|لي|ني|ري|راي|بري\n"
 
 #: data/core/macros/names.cfg:144
-#, fuzzy
-#| msgid ""
-#| "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-#| "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-#| "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
-#| "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
-#| "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
-#| "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
-#| "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
-#| "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
-#| "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
-#| "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
-#| "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
-#| "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
-#| "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
-#| "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
-#| "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
-#| "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
-#| "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
-#| "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
-#| "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
-#| "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
-#| "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
-#| "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
-#| "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
-#| "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
-#| "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
-#| "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
-#| "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
-#| "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
-#| "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
-#| "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-#| "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-#| "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
-#| "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
-#| "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
-#| "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
-#| "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
-#| "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
-#| "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
-#| "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
-#| "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
-#| "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
-#| "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
-#| "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
-#| "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
-#| "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
-#| "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
-#| "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
-#| "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
-#| "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
-#| "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
-#| "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
-#| "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
-#| "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
-#| "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
-#| "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
-#| "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
-#| "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
-#| "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-#| "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
-#| "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
-#| "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
-#| "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
-#| "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
-#| "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
-#| "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
-#| "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
-#| "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
-#| "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
-#| "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
-#| "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
-#| "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
-#| "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
-#| "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
-#| "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
-#| "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
-#| "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2894,17 +2873,16 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
-#| "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
-#| "Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,"
-#| "Jamila,Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,"
-#| "Khawla,Khawlah,Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,"
-#| "Mahmuna,Mai,Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,"
-#| "Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,"
-#| "Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,"
-#| "Sarah,Shahd,Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,"
-#| "Zakiya,Zaynab"
+#| "Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
+#| "Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,"
+#| "Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,"
+#| "Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,"
+#| "Maryam,Maya,Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,"
+#| "Nezha,Niusha,Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,"
+#| "Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,"
+#| "Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgid ""
-"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
 "Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,"
 "Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,"
@@ -3011,18 +2989,6 @@ msgstr ""
 "مال|كيب\n"
 
 #: data/core/macros/names.cfg:179
-#, fuzzy
-#| msgid ""
-#| "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-#| "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-#| "Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,"
-#| "Kerx,Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,"
-#| "Laizix,Lazki,Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,"
-#| "Presch,Sailik,Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,"
-#| "Skeely,Skeezix,Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,"
-#| "Sterizz,Talerez,Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,"
-#| "Vriss,Waks,Xaffrasz,Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,"
-#| "Xirtrez,Xirz,Zandler,Zedrix,Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3329,7 +3295,50 @@ msgstr ""
 "ending_consonnant=ب|ز|ص|ش|ك\n"
 "ending_vowel=س|ش\n"
 
-#: data/core/macros/names.cfg:250
+#. Generator for ship names
+#: data/core/macros/names.cfg:251
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+#| "{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+#| "{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+#| "{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+#| "starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
+#| "starting_vowel=A|I|O|U\n"
+#| "consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|"
+#| "gd|shn\n"
+#| "vowel=a|i|o|u\n"
+#| "ending_consonnant=b|g|r|sh|k\n"
+#| "ending_vowel=o|u\n"
+msgid ""
+"\n"
+"main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
+"{ending_consonnant}|{prefix} {starting_vowel}{consonnant}{ending_vowel}|"
+"{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
+"{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}{consonnant}"
+"{vowel}{consonnant}{ending_vowel}\n"
+"prefix=Blessed|Golden|Fearless|Mighty|Lucky|Old|The|The|Valiant\n"
+"starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+"starting_vowel=A|E|I|O|U\n"
+"consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+"vowel=a|ae|é|i|o|u\n"
+"ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+"ending_vowel=a|ae|o|u\n"
+msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=ب|ر|د|دك|ز|غ|غ|ح|خ|م|ن|ف|بي|ص|ق|ش|ت|كس\n"
+"starting_vowel=أ|أنا|س|و\n"
+"consonnant=ب|ر|د|د|ز|غ|غ|خ|م|ن|ع|رب|ص|ق|ش|ر|ت|غز|زغ|رب|ر|د|في|خ|جد|شين\n"
+"vowel=أ|أنا|س|ش\n"
+"ending_consonnant=ب|ز|ص|ش|ك\n"
+"ending_vowel=س|ش\n"
+
+#: data/core/macros/names.cfg:264
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3342,7 +3351,7 @@ msgstr ""
 "تورج,تروك,تسوك,توه,توك-روه,أوغ,أوه,حث,أورغ,أورك,فاك,زوغ,زوغ"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:252
+#: data/core/macros/names.cfg:266
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3362,7 +3371,7 @@ msgstr ""
 "beginning=آي|أو|أ|ش\n"
 "suffix=رب|ز|غ|ك|رف|كك|ص|ز|ال|ح|رغ\n"
 
-#: data/core/macros/names.cfg:263
+#: data/core/macros/names.cfg:277
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3390,7 +3399,7 @@ msgstr ""
 "تمتمغامتومتوم,وودرودمالديد,ودادودوبل"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:265
+#: data/core/macros/names.cfg:279
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3416,7 +3425,7 @@ msgstr ""
 "suffix=مين|تيل|تور|نم|بوم|دي|أك|لول|دوم|تام|نور|دوم|ديوم|بيل|الرخ|ريلم|ديم|"
 "نوم|دان|مون|توم|دين\n"
 
-#: data/core/macros/names.cfg:275
+#: data/core/macros/names.cfg:289
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3425,7 +3434,7 @@ msgstr ""
 "أول،أولد،أولف،أول،أوكس،روك،سال،سيل،سين،سيل،تال،واتر،وات،يورك"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:277
+#: data/core/macros/names.cfg:291
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -3812,7 +3821,7 @@ msgstr "فطر"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:186
+#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:185
 msgid "Village"
 msgstr "مدينة"
 
@@ -3843,19 +3852,21 @@ msgstr "لا يمكن عبوره"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:383
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
 msgstr "ضباب"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:386
-#: src/game_initialization/lobby_data.cpp:389
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
 msgstr "ظلام"
 
 #. [color_range]: id=urbanjungle
-#: data/core/team-colors.cfg:256
+#. [terrain_type]: id=urbanjungle
+#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
+#: data/internal/Urban_Jungle/terrain.cfg:7
 msgid "Urban"
 msgstr ""
 
@@ -4218,46 +4229,291 @@ msgid "Alternate Wesnoth Server"
 msgstr "سيرفر تعويضي لويسنوث"
 
 #. [label]: id=title
-#: data/gui/themes/default/window/install_dependencies.cfg:37
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "تنزيل الملفات المرتبطة"
 
 #. [button]: id=ok
-#: data/gui/themes/default/window/install_dependencies.cfg:84
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "نعم"
 
 #. [button]: id=cancel
-#: data/gui/themes/default/window/install_dependencies.cfg:95
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
 msgid "No"
 msgstr "لا"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/themes/default/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:630
+#: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
+#: src/hotkey/command_executor.cpp:636
 msgid "Screenshot"
 msgstr "لقطة"
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:28
+#: data/hardwired/fonts.cfg:18
 msgid "Lato"
 msgstr "لاتو"
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:29
+#: data/hardwired/fonts.cfg:19
 msgid "DejaVu Sans Mono"
 msgstr "ديجافو بلا مونو"
 
 #. [fonts]
-#: data/hardwired/fonts.cfg:30
-msgid "Lato Light"
-msgstr "ضوء لاتو"
-
-#. [fonts]
-#: data/hardwired/fonts.cfg:31
+#: data/hardwired/fonts.cfg:20
 msgid "Oldania ADF Std"
 msgstr "أولدانيا ADF Std"
+
+#. [terrain_type]: id=urbanjungle
+#: data/internal/Urban_Jungle/terrain.cfg:8
+msgid ""
+"Densely packed structures are less suitable for garrison than traditional "
+"villages, providing no income or healing. They are difficult to navigate "
+"quickly, but offer significant protection."
+msgstr ""
+
+#. [terrain_type]: id=urbanjungleA
+#. [terrain_type]: id=urbanjungle{ID}
+#: data/internal/Urban_Jungle/terrain.cfg:15
+#: data/internal/Urban_Jungle/terrain.cfg:16
+#: data/internal/Urban_Jungle/terrain.cfg:17
+#: data/internal/Urban_Jungle/terrain.cfg:30
+#: data/internal/Urban_Jungle/terrain.cfg:31
+#: data/internal/Urban_Jungle/terrain.cfg:32
+msgid "Urban Jungle"
+msgstr ""
+
+#. [time]: id=dawn_noweather
+#: data/internal/Weather/_main.cfg:143
+msgid "Dawn"
+msgstr ""
+
+#. [time]: id=morning_noweather
+#: data/internal/Weather/_main.cfg:154
+#, fuzzy
+#| msgid "Warning"
+msgid "Morning"
+msgstr "تحذير"
+
+#. [time]: id=midday_noweather
+#: data/internal/Weather/_main.cfg:162
+msgid "Midday"
+msgstr ""
+
+#. [time]: id=afternoon_noweather
+#: data/internal/Weather/_main.cfg:170
+msgid "Afternoon"
+msgstr ""
+
+#. [time]: id=dusk_noweather
+#: data/internal/Weather/_main.cfg:178
+msgid "Dusk"
+msgstr ""
+
+#. [time]: id=first_watch_noweather
+#: data/internal/Weather/_main.cfg:189
+msgid "First Watch"
+msgstr ""
+
+#. [time]: id=midnight_noweather
+#: data/internal/Weather/_main.cfg:200
+msgid "Midnight"
+msgstr ""
+
+#. [time]: id=second_watch_noweather
+#: data/internal/Weather/_main.cfg:211
+msgid "Second Watch"
+msgstr ""
+
+#. [advancement]: id=amla_default
+#: data/internal/resources/AMLAs/_main.cfg:73
+msgid "Max HP bonus +3, Max XP +20%"
+msgstr ""
+
+#. [advancement]: id=hitpoints_increase
+#: data/internal/resources/AMLAs/_main.cfg:95
+msgid "Gain +8 hitpoints."
+msgstr ""
+
+#. [advancement]: id=melee_increase1
+#: data/internal/resources/AMLAs/_main.cfg:121
+msgid "Gain +4 melee damage."
+msgstr ""
+
+#. [advancement]: id=melee_increase2
+#: data/internal/resources/AMLAs/_main.cfg:154
+msgid "Gain +2 melee damage."
+msgstr ""
+
+#. [advancement]: id=melee_increase3
+#: data/internal/resources/AMLAs/_main.cfg:187
+msgid "Gain +1 melee damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase1
+#: data/internal/resources/AMLAs/_main.cfg:217
+msgid "Gain +4 ranged damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase2
+#: data/internal/resources/AMLAs/_main.cfg:250
+msgid "Gain +2 ranged damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase3
+#: data/internal/resources/AMLAs/_main.cfg:283
+msgid "Gain +1 ranged damage."
+msgstr ""
+
+#. [message]: speaker=narrator
+#. newlines at the end are deliberate, and function as spacers before the [option]s
+#: data/internal/resources/AMLAs/_main.cfg:357
+msgid ""
+"Congratulations, your $unit.language_name has leveled up... but they’re "
+"already at their max level!\n"
+"\n"
+"When this happens, <span color='#0D87B6'><b>some campaigns</b></span> — like "
+"this one — allow you to select a minor bonus to hitpoints or damage. These "
+"bonuses are called “AMLAs”: “After Maximum Level Advancements”. If your max-"
+"level units have normal, <span color='#0D87B6'><b>blue experience bars</b></"
+"span>, that means these AMLAs are available.\n"
+"\n"
+"<span color='#9608CF'><b><i>Other campaigns</i></b></span> don’t have these "
+"AMLA options, and instead always give max-level units +3 max hp when they "
+"level up. If your max-level units have <span color='#9608CF'><b>purple "
+"experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
+"\n"
+msgstr ""
+
+#. [option]
+#: data/internal/resources/AMLAs/_main.cfg:365
+msgid "Ok, continue with the game"
+msgstr ""
+
+#. [option]
+#: data/internal/resources/AMLAs/_main.cfg:368
+#, fuzzy
+#| msgid "Chat message aging"
+msgid "Don’t show this message again"
+msgstr "تتابع عرض الرسائل"
+
+#. [lua]: carryover.get_popup_text_basic
+#: data/lua/carryover_gold.lua:112
+msgid "Scenario Report"
+msgstr "تقرير السيناريو"
+
+#. [lua]: carryover.get_popup_text_basic
+#: data/lua/carryover_gold.lua:114
+msgid "Victory"
+msgstr "انتصار"
+
+#. [lua]: carryover.get_popup_text_basic
+#: data/lua/carryover_gold.lua:115
+msgid "You have emerged victorious!"
+msgstr "لقد خرجت منتصرا!"
+
+#. [lua]: carryover.get_popup_text_basic
+#: data/lua/carryover_gold.lua:117
+msgid "Defeat"
+msgstr "الهزيمة"
+
+#. [lua]: carryover.get_popup_text_basic
+#: data/lua/carryover_gold.lua:118
+msgid "You have been defeated!"
+msgstr "لقد هُزمت!"
+
+#. [lua]: carryover.remaining_gold_message
+#: data/lua/carryover_gold.lua:127
+msgid "Remaining gold: "
+msgstr "الذهب المتبقي: "
+
+#. [lua]: carryover.bonus_gold_message
+#: data/lua/carryover_gold.lua:136
+msgid "Turns finished early: "
+msgstr "الأدوار المتبقية: "
+
+#. [lua]: carryover.bonus_gold_message
+#: data/lua/carryover_gold.lua:139
+msgid " per turn"
+msgstr " لكل دور"
+
+#. [lua]: carryover.bonus_gold_message
+#: data/lua/carryover_gold.lua:139
+msgid "Early finish bonus: "
+msgstr "مكافأة النهاية المبكرة: "
+
+#. [lua]: carryover.bonus_gold_message
+#: data/lua/carryover_gold.lua:141
+msgid "Total bonus: "
+msgstr "إجمالي المكافأة: "
+
+#. [lua]: carryover.total_gold_message
+#: data/lua/carryover_gold.lua:150
+msgid "Total gold: "
+msgstr "إجمالي الذهب: "
+
+#. [lua]: carryover.percentage_remaining_message
+#: data/lua/carryover_gold.lua:157
+msgid "Carryover percentage: "
+msgstr "نسبة الترحيل: "
+
+#. [lua]: carryover.carryover_mesage
+#: data/lua/carryover_gold.lua:166
+msgid "Bonus gold: "
+msgstr "مكافأة الذهب: "
+
+#. [lua]: carryover.carryover_mesage
+#: data/lua/carryover_gold.lua:168
+msgid "Retained gold: "
+msgstr "الذهب المحتجز: "
+
+#. [lua]: carryover.carryover_mesage
+#: data/lua/carryover_gold.lua:175
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+msgstr[1] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+msgstr[2] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+msgstr[3] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+msgstr[4] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+msgstr[5] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
+
+#. [lua]: carryover.carryover_mesage
+#: data/lua/carryover_gold.lua:179
+#, fuzzy
+#| msgid ""
+#| "You will start the next scenario with the defined minimum starting gold."
+#| msgid_plural ""
+#| "You will start the next scenario with the defined minimum starting gold."
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
+
+#. [lua]: carryover.carryover_mesage
+#: data/lua/carryover_gold.lua:182
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
+msgstr[1] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
+msgstr[2] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
+msgstr[3] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
+msgstr[4] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
+msgstr[5] ""
+"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:32
@@ -4271,37 +4527,37 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "مستوى الإهمال $level غير صالح (يجب أن يكون 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:884
+#: data/lua/wml-tags.lua:887
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "مستوى الإهمال غير صالح (يجب أن يكون 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1066
 msgid "female^poisoned"
 msgstr "تم تسميمها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1073
 msgid "female^slowed"
 msgstr "تم إبطائها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1073
 msgid "slowed"
 msgstr "تم إبطائه"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
 msgid "female^petrified"
 msgstr "تم تجميدها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
 msgid "petrified"
 msgstr "تم تجميده"
 
@@ -4317,8 +4573,8 @@ msgstr "غير قابل للشفاء"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3689
-#: src/scripting/game_lua_kernel.cpp:3724
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3717
+#: src/scripting/game_lua_kernel.cpp:3752
 msgid "input"
 msgstr "مدخل"
 
@@ -4797,11 +5053,19 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:64
+#, fuzzy
+#| msgid ""
+#| "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you "
+#| "won’t know what you’re facing. In this case, long-range scouting units "
+#| "are worth their cost. Try to choose scouts that can easily move across "
+#| "the surrounding terrain, because units can only see as far as they can "
+#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
+"terrain, because usually units can only see as far as they can move in one "
+"turn."
 msgstr ""
 "إذا كنت تلعب مع <b>الظلام</b> أو <b>ضباب المعركة</b> نشط، فلن تعرف ما الذي "
 "تواجهه. في هذه الحالة، تستحق وحدات الاستطلاع بعيدة المدى تكلفتها. حاول "
@@ -4810,11 +5074,18 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:68
+#, fuzzy
+#| msgid ""
+#| "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</"
+#| "i>, <i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have "
+#| "weaknesses against different types of attacks. Right-click on a unit and "
+#| "select <b>Unit Description</b> to see which attacks it is resistant to, "
+#| "and which will affect it the most."
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
 "against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
+"Type Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
 "هناك ستة أنواع من الهجوم: <i>المخترق</i>، <i>الشفرة</i>، <i>الصادم</i>، "
@@ -5452,7 +5723,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "اختيار التقدم"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1383
+#: src/actions/attack.cpp:588 src/actions/attack.cpp:1387
 msgid "An invalid attacker weapon got selected."
 msgstr "تم اختيار سلاح مهاجم غير صالح."
 
@@ -5500,16 +5771,16 @@ msgstr "شفي"
 msgid "female^cured"
 msgstr "شفيت"
 
-#: src/actions/move.cpp:650
+#: src/actions/move.cpp:739
 msgid "Ambushed!"
 msgstr "كمين!"
 
-#: src/actions/move.cpp:1194
+#: src/actions/move.cpp:1281
 msgid "Failed teleport! Exit not empty"
 msgstr "فشل النقل الآني! لا يوجد مكان خالي"
 
 #. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1210
+#: src/actions/move.cpp:1297
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "حليف"
@@ -5520,7 +5791,7 @@ msgstr[4] "$friends حلفاء"
 msgstr[5] "$friends حلفاء"
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1212
+#: src/actions/move.cpp:1299
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "عدوّ"
@@ -5532,13 +5803,13 @@ msgstr[5] "$enemies أعداء"
 
 #. TRANSLATORS: Both friends and enemies sighted -- neutral message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1215
+#: src/actions/move.cpp:1302
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "شُوهدت وحدات! ($friendphrase, $enemyphrase)"
 
 #. TRANSLATORS: Only enemies sighted -- bad message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1220
+#: src/actions/move.cpp:1307
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "شُوهدت وحدة عدو!"
@@ -5550,7 +5821,7 @@ msgstr[5] "$enemies وحدات عدو شُوهدت!"
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1225
+#: src/actions/move.cpp:1312
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "وحدة صديقة شُوهدت"
@@ -5560,15 +5831,15 @@ msgstr[3] "$enemies وحدات صديقة شُوهدت"
 msgstr[4] "$enemies وحدات صديقة شُوهدت"
 msgstr[5] "$enemies وحدات صديقة شُوهدت"
 
-#: src/actions/move.cpp:1240
+#: src/actions/move.cpp:1327
 msgid "(press $hotkey to keep moving)"
 msgstr "(اضغط على $hotkey لمتابعة التحرك)"
 
-#: src/actions/undo.cpp:401
+#: src/actions/undo.cpp:330
 msgid "Redo Error"
 msgstr "خطأ في التراجع"
 
-#: src/actions/undo.cpp:402
+#: src/actions/undo.cpp:331
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -5580,22 +5851,67 @@ msgstr ""
 msgid "Connecting to $server_address|..."
 msgstr "الاتصال بـ $server_address|..."
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:124
+msgid "Requesting add-on counts by type..."
+msgstr ""
+
+#: src/addon/client.cpp:131 src/addon/client.cpp:149 src/addon/client.cpp:167
+#: src/addon/client.cpp:185 src/addon/client.cpp:205 src/addon/client.cpp:226
+#: src/addon/client.cpp:246 src/addon/client.cpp:576
+#: src/gui/dialogs/multiplayer/match_history.cpp:248
+msgid "The server responded with an error:"
+msgstr "خطأ أثناء بدء تشغيل الخادم:"
+
+#: src/addon/client.cpp:146
+msgid "Requesting add-on downloads by version..."
+msgstr ""
+
+#: src/addon/client.cpp:164
+#, fuzzy
+#| msgid "Requesting file index..."
+msgid "Requesting forum_auth usage..."
+msgstr "طلب فهرس الملفات..."
+
+#: src/addon/client.cpp:182
+#, fuzzy
+#| msgid "Requesting distribution terms..."
+msgid "Requesting list of admins..."
+msgstr "طلب شروط التوزيع..."
+
+#: src/addon/client.cpp:202
+#, fuzzy
+#| msgid "Downloading list of add-ons..."
+msgid "Getting list of hidden add-ons..."
+msgstr "جاري تحميل قائمة الإضافات..."
+
+#: src/addon/client.cpp:223
+#, fuzzy
+#| msgid "Downloading list of add-ons..."
+msgid "Hiding add-on..."
+msgstr "جاري تحميل قائمة الإضافات..."
+
+#: src/addon/client.cpp:243
+#, fuzzy
+#| msgid "Downloading list of add-ons..."
+msgid "Unhiding add-on..."
+msgstr "جاري تحميل قائمة الإضافات..."
+
+#: src/addon/client.cpp:267
 msgid "Downloading list of add-ons..."
 msgstr "جاري تحميل قائمة الإضافات..."
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:288
 msgid "Requesting distribution terms..."
 msgstr "طلب شروط التوزيع..."
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:312
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
 "الإضافة <i>$addon_title</i> بها معرف غير صالح '$addon_id' ولا يمكن نشرها."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:324
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5603,7 +5919,7 @@ msgstr ""
 "الإضافة <i>$addon_title</i> بها ملف أو دليل يحتوي على أحرف غير صالحة ولا "
 "يمكن نشرها."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:332
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5619,7 +5935,7 @@ msgstr ""
 "\n"
 "&quot; * / :&lt; &gt; ؟ \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:343
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5628,42 +5944,49 @@ msgstr ""
 "تحتوي الإضافة <i>$addon_title</i> على ملفات أو أدلة بها حالات تعارض. لا يجوز "
 "أن تكون أسماء الملفات أو الدلائل عبارة عن إصدارات مختلفة من نفس السلسلة."
 
-#: src/addon/client.cpp:208
+#: src/addon/client.cpp:350
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 "الاتصال بالخادم البعيد غير آمن. لا يمكن تحميل الإضافة <i>$addon_title</i> ."
 
-#: src/addon/client.cpp:221
+#: src/addon/client.cpp:355
+#, fuzzy
+#| msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
+msgid ""
+"The file size for the icon for the add-on <i>$addon_title</i> is too large."
+msgstr "إرسال حزمة تحديث الإضافة <i>$addon_title</i> ..."
+
+#: src/addon/client.cpp:368
 msgid "Requesting file index..."
 msgstr "طلب فهرس الملفات..."
 
-#: src/addon/client.cpp:237
+#: src/addon/client.cpp:384
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "إرسال حزمة تحديث الإضافة <i>$addon_title</i> ..."
 
-#: src/addon/client.cpp:258
+#: src/addon/client.cpp:405
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "إرسال الإضافة <i>$addon_title</i> ..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:460
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "جارٍ إزالة الإضافة <i>$addon_title</i> من الخادم..."
 
-#: src/addon/client.cpp:335
+#: src/addon/client.cpp:488
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "جارٍ تنزيل الإضافة <i>$addon_title</i> ..."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:708
+#: src/addon/client.cpp:500 src/addon/client.cpp:861
 msgid "Add-ons Manager"
 msgstr "إدارة قائمة الإضافات"
 
-#: src/addon/client.cpp:347
+#: src/addon/client.cpp:500
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "تثبيت الإضافة <i>$addon_title</i> ..."
 
-#: src/addon/client.cpp:359 src/addon/client.cpp:385
+#: src/addon/client.cpp:512 src/addon/client.cpp:538
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5671,7 +5994,7 @@ msgstr ""
 "الإضافة <i>$addon_title</i> بها ملف أو دليل يحتوي على أحرف غير صالحة ولا "
 "يمكن نشرها."
 
-#: src/addon/client.cpp:364 src/addon/client.cpp:390
+#: src/addon/client.cpp:517 src/addon/client.cpp:543
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5679,11 +6002,7 @@ msgstr ""
 "تحتوي الإضافة <i>$addon_title</i> على أسماء ملفات أو أدلة بها حالات تعارض. "
 "وهذا قد يسبب مشاكل."
 
-#: src/addon/client.cpp:423 src/gui/dialogs/multiplayer/match_history.cpp:248
-msgid "The server responded with an error:"
-msgstr "خطأ أثناء بدء تشغيل الخادم:"
-
-#: src/addon/client.cpp:478
+#: src/addon/client.cpp:631
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5709,11 +6028,11 @@ msgstr[5] ""
 "تحتوي الإضافة المحددة على الملحقات التالية، وهو غير مثبّتة أو متاحة حاليًا من "
 "الخادم. هل ترغب في الاستمرار؟"
 
-#: src/addon/client.cpp:487
+#: src/addon/client.cpp:640
 msgid "Broken Dependencies"
 msgstr "الإضافات المرتبطة تالفة"
 
-#: src/addon/client.cpp:527
+#: src/addon/client.cpp:680
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5727,11 +6046,11 @@ msgstr[3] "لا يمكن تثبيت الملحقات التالية. هل ماز
 msgstr[4] "لا يمكن تثبيت الملحقات التالية. هل مازلت ترغب في الاستمرار؟"
 msgstr[5] "لا يمكن تثبيت الملحقات التالية. هل مازلت ترغب في الاستمرار؟"
 
-#: src/addon/client.cpp:531
+#: src/addon/client.cpp:684
 msgid "Dependencies Installation Failed"
 msgstr "فشل في تنزيل الإضافات التابعة"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:707
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5739,76 +6058,76 @@ msgstr ""
 "الإضافة '$addon|' تم تثبيتها بالفعل ويحتوي على معلومات إضافية ستفقد نهائيًا "
 "إذا تابعت:"
 
-#: src/addon/client.cpp:558
+#: src/addon/client.cpp:711
 msgid "Publishing information file (.pbl)"
 msgstr "نشر ملف المعلومات (.pbl)"
 
-#: src/addon/client.cpp:562
+#: src/addon/client.cpp:715
 msgid "Version control system (VCS) information"
 msgstr "معلومات نظام التحكم في الإصدار (VCS)"
 
-#: src/addon/client.cpp:566
+#: src/addon/client.cpp:719
 msgid "Do you really wish to continue?"
 msgstr "هل ترغب حقا في الاستمرار؟"
 
-#: src/addon/client.cpp:568 src/addon/manager_ui.cpp:171
-#: src/game_initialization/multiplayer.cpp:358
+#: src/addon/client.cpp:721 src/addon/manager_ui.cpp:171
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:256
 msgid "addon_type^Campaign"
 msgstr "حملة"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:258
 msgid "addon_type^Scenario"
 msgstr "سيناريو"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:260
 msgid "addon_type^SP/MP Campaign"
 msgstr "حملة متعددة/فردية اللعب"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:262
 msgid "addon_type^MP era"
 msgstr "عصر متعدد اللاعبين"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:264
 msgid "addon_type^MP faction"
 msgstr "اتحاد متعدد اللاعبين"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:266
 msgid "addon_type^MP map-pack"
 msgstr "مجموعة خرائط متعددة اللاعبين"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:268
 msgid "addon_type^MP scenario"
 msgstr "سيناريو متعدد اللاعبين"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:270
 msgid "addon_type^MP campaign"
 msgstr "حملة متعددة اللاعبين"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:272
 msgid "addon_type^Modification"
 msgstr "تغييرات"
 
-#: src/addon/info.cpp:270
+#: src/addon/info.cpp:274
 msgid "addon_type^Core"
 msgstr "لب"
 
-#: src/addon/info.cpp:272
+#: src/addon/info.cpp:276
 msgid "addon_type^Resources"
 msgstr "إضافات تابعة"
 
-#: src/addon/info.cpp:274
+#: src/addon/info.cpp:278
 msgid "addon_type^Other"
 msgstr "مختلفات"
 
-#: src/addon/info.cpp:276
+#: src/addon/info.cpp:280
 msgid "addon_type^(unknown)"
 msgstr "(غير مصنف)"
 
-#: src/addon/info.cpp:313
+#: src/addon/info.cpp:317
 msgid "unit_byte^B"
 msgstr "بايت"
 
@@ -5922,45 +6241,45 @@ msgid ""
 msgstr ""
 "تعذر العثور على الإضافة المطابقة للمعرفات $addon_ids على خادم الإضافات."
 
-#: src/addon/validation.cpp:389
+#: src/addon/validation.cpp:392
 msgid "Success."
 msgstr "النجاح."
 
-#: src/addon/validation.cpp:393
+#: src/addon/validation.cpp:396
 msgid "Incorrect add-on passphrase."
 msgstr "عبارة مرور الإضافة غير صحيحة."
 
-#: src/addon/validation.cpp:397
+#: src/addon/validation.cpp:400
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr "تم طلب مصادقة المنتدى لمستخدم غير مسجل في المنتديات."
 
-#: src/addon/validation.cpp:401
+#: src/addon/validation.cpp:404
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr "تم رفض التحميل. يرجى الاتصال بإدارة الخادم للحصول على المساعدة."
 
-#: src/addon/validation.cpp:405
+#: src/addon/validation.cpp:408
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr "تمت محاولة تحميل حزمة تحديث لإضافة غير موجودة."
 
-#: src/addon/validation.cpp:414
+#: src/addon/validation.cpp:417
 msgid "No add-on data was supplied by the client."
 msgstr "لم يتم توفير أي معلومات إضافة من قبل العميل."
 
-#: src/addon/validation.cpp:418
+#: src/addon/validation.cpp:421
 msgid "Invalid upload pack."
 msgstr "حزمة التحميل غير صالحة."
 
-#: src/addon/validation.cpp:422
+#: src/addon/validation.cpp:425
 msgid "Invalid add-on name."
 msgstr "اسم الإضافة غير صالح."
 
-#: src/addon/validation.cpp:426
+#: src/addon/validation.cpp:429
 msgid "Formatting character in add-on name."
 msgstr "احرف تنسيق في اسم الإضافة."
 
-#: src/addon/validation.cpp:430
+#: src/addon/validation.cpp:433
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5982,7 +6301,7 @@ msgstr ""
 "بالإضافة إلى ذلك، لا يجوز أن تزيد الأسماء عن 255 حرفًا، أو تحتوي على \"..\"، "
 "أو تنتهي بـ \".\"."
 
-#: src/addon/validation.cpp:440
+#: src/addon/validation.cpp:443
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -5994,191 +6313,97 @@ msgstr ""
 "لا يجوز أن تكون الأسماء الموجودة في نفس الدليل عبارة عن إصدارات مختلفة عن "
 "بعضها البعض."
 
-#: src/addon/validation.cpp:446
+#: src/addon/validation.cpp:449
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "يحتوي اسم الإضافة على تسلسل UTF-8 غير صالح."
 
-#: src/addon/validation.cpp:455
+#: src/addon/validation.cpp:458
 msgid "No add-on title specified."
 msgstr "لم يتم تحديد عنوان الإضافة."
 
-#: src/addon/validation.cpp:459
+#: src/addon/validation.cpp:462
 msgid "No add-on author/maintainer name specified."
 msgstr "لم يتم تحديد اسم المؤلف/المشرف على الإضافة."
 
-#: src/addon/validation.cpp:463
+#: src/addon/validation.cpp:466
 msgid "No add-on version specified."
 msgstr "لم يتم تحديد إصدار الإضافة."
 
-#: src/addon/validation.cpp:467
+#: src/addon/validation.cpp:470
 msgid "No add-on description specified."
 msgstr "لم يتم تحديد وصف الإضافة."
 
-#: src/addon/validation.cpp:471
+#: src/addon/validation.cpp:474
 msgid "No add-on author/maintainer email specified."
 msgstr "لم يتم تحديد بريد إلكتروني للمؤلف/المشرف على الإضافة."
 
-#: src/addon/validation.cpp:475
+#: src/addon/validation.cpp:478
 msgid "Missing passphrase."
 msgstr "عبارة المرور مفقودة."
 
-#: src/addon/validation.cpp:479
+#: src/addon/validation.cpp:482
 msgid "Formatting character in add-on title."
 msgstr "احرف تنسيق في عنوان الإضافة."
 
-#: src/addon/validation.cpp:483
+#: src/addon/validation.cpp:486
 msgid "Invalid or unspecified add-on type."
 msgstr "نوع الإضافة غير صالح أو غير محدد."
 
-#: src/addon/validation.cpp:487
+#: src/addon/validation.cpp:490
 msgid "Version number not greater than the latest uploaded version."
 msgstr "رقم الإصدار ليس أكبر من الإصدار الأخير الذي تم تحميله."
 
-#: src/addon/validation.cpp:491
+#: src/addon/validation.cpp:494
 msgid "Feedback topic id is not a number."
 msgstr "معرف موضوع التعليقات ليس رقمًا."
 
-#: src/addon/validation.cpp:495
+#: src/addon/validation.cpp:498
 msgid "Feedback topic does not exist."
 msgstr "موضوع الملاحظات غير موجود."
 
-#: src/addon/validation.cpp:499
+#: src/addon/validation.cpp:502
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr "تحتوي معلومات نشر الوظيفة الإضافية على تسلسل UTF-8 غير صالح."
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:506
+#, fuzzy
+#| msgid ""
+#| "The add-on's forum_auth attribute does not match what was previously "
+#| "uploaded."
 msgid ""
-"The add-on's forum_auth attribute does not match what was previously "
+"The add-on’s forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
 "خاصية forum_auth الخاصة بالوظيفة الإضافية لا تتطابق مع ما تم تحميله مسبقًا."
 
-#: src/addon/validation.cpp:512
+#: src/addon/validation.cpp:510
+msgid "The add-on’s icon’s file size is too large."
+msgstr ""
+
+#: src/addon/validation.cpp:519
 msgid "Unspecified server error."
 msgstr "خطأ غير محدد في الخادم."
 
-#: src/addon/validation.cpp:516
+#: src/addon/validation.cpp:523
 msgid "Server is in read-only mode."
 msgstr "الخادم في وضع القراءة فقط."
 
-#: src/addon/validation.cpp:520
+#: src/addon/validation.cpp:527
 msgid "Corrupted server add-ons list."
 msgstr "قائمة الوظائف الإضافية للخادم تالفة."
 
-#: src/addon/validation.cpp:524
+#: src/addon/validation.cpp:531
 msgid "Empty add-on version list on the server."
 msgstr "قائمة إصدارات الإضافات الفارغة على الخادم."
 
-#: src/addon/validation.cpp:528
+#: src/addon/validation.cpp:535
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr "لا يدعم هذا الخادم استخدام خاصية forum_auth في pbl الخاص بك."
 
-#: src/addon/validation.cpp:538
+#: src/addon/validation.cpp:545
 msgid "Unspecified validation failure."
 msgstr "فشل التحقق من الصحة غير محدد."
-
-#: src/carryover_show_gold.cpp:51
-msgid "Scenario Report"
-msgstr "تقرير السيناريو"
-
-#: src/carryover_show_gold.cpp:53
-msgid "Victory"
-msgstr "انتصار"
-
-#: src/carryover_show_gold.cpp:54
-msgid "You have emerged victorious!"
-msgstr "لقد خرجت منتصرا!"
-
-#: src/carryover_show_gold.cpp:56
-msgid "Defeat"
-msgstr "الهزيمة"
-
-#: src/carryover_show_gold.cpp:57
-msgid "You have been defeated!"
-msgstr "لقد هُزمت!"
-
-#: src/carryover_show_gold.cpp:93
-msgid "Remaining gold: "
-msgstr "الذهب المتبقي: "
-
-#: src/carryover_show_gold.cpp:97
-msgid "Turns finished early: "
-msgstr "الأدوار المتبقية: "
-
-#: src/carryover_show_gold.cpp:98
-msgid " per turn"
-msgstr " لكل دور"
-
-#: src/carryover_show_gold.cpp:98
-msgid "Early finish bonus: "
-msgstr "مكافأة النهاية المبكرة: "
-
-#: src/carryover_show_gold.cpp:99
-msgid "Total bonus: "
-msgstr "إجمالي المكافأة: "
-
-#: src/carryover_show_gold.cpp:102
-msgid "Total gold: "
-msgstr "إجمالي الذهب: "
-
-#: src/carryover_show_gold.cpp:106
-msgid "Carryover percentage: "
-msgstr "نسبة الترحيل: "
-
-#: src/carryover_show_gold.cpp:110
-msgid "Bonus gold: "
-msgstr "مكافأة الذهب: "
-
-#: src/carryover_show_gold.cpp:112
-msgid "Retained gold: "
-msgstr "الذهب المحتجز: "
-
-#: src/carryover_show_gold.cpp:125
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-msgstr[1] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-msgstr[2] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-msgstr[3] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-msgstr[4] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-msgstr[5] "ستبدأ السيناريو التالي بـ $gold فوق الحد الأدنى المحدد للذهب."
-
-#: src/carryover_show_gold.cpp:132
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-msgstr[1] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-msgstr[2] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-msgstr[3] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-msgstr[4] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-msgstr[5] "ستبدأ السيناريو التالي بالحد الأدنى المحدد من الذهب."
-
-#: src/carryover_show_gold.cpp:139
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
-msgstr[1] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
-msgstr[2] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
-msgstr[3] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
-msgstr[4] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
-msgstr[5] ""
-"ستبدأ السيناريو التالي $gold ذهب أو الحد الأدنى المحدد للذهب، أيهما أعلى."
 
 #: src/chat_command_handler.cpp:81
 msgid "Added to ignore list: $nick"
@@ -6224,7 +6449,7 @@ msgstr "طلب معلومات للمستخدم $nick"
 msgid "(A) — admin command"
 msgstr "(أ) — أمر المشرف"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1188
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1144
 msgid "(admin only)"
 msgstr "(المسؤول فقط)"
 
@@ -6344,7 +6569,7 @@ msgstr "عرض معلومات الإصدار."
 msgid "Request information about a nickname."
 msgstr "طلب معلومات حول اللقب."
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1238
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1194
 msgid "Clear chat history."
 msgstr "مسح سجل الدردشة."
 
@@ -6396,13 +6621,9 @@ msgstr "تم إهمال $elem وإزالته."
 msgid "Chat message"
 msgstr "رسالة دردشة"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:577
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:592
 msgid "The Battle for Wesnoth"
 msgstr "ملحمة ويسنوث"
-
-#: src/font/text_formatting.cpp:51
-msgid "Invalid Color"
-msgstr "لون غير صالح"
 
 #. TRANSLATORS: 24-hour time, eg '13:59'
 #: src/format_time_summary.cpp:48
@@ -6434,7 +6655,89 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:525
+#. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
+#. as the string with this comment MUST be translated following the usual rules
+#. for WML variable interpolation -- that is, without including or translating
+#. the caret^ prefix, and leaving the $num variable specification intact, since
+#. it is technically code. The only translatable natural word to be found here
+#. is the time unit (year, month, etc.) For example, for French you would
+#. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
+#. generate output such as "39 ans" after variable interpolation.
+#: src/formula/format_timespan.hpp:38
+msgid "timespan^$num year"
+msgid_plural "timespan^$num years"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:39
+msgid "timespan^$num month"
+msgid_plural "timespan^$num months"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:40
+msgid "timespan^$num week"
+msgid_plural "timespan^$num weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:41
+msgid "timespan^$num day"
+msgid_plural "timespan^$num days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:42
+msgid "timespan^$num hour"
+msgid_plural "timespan^$num hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:43
+msgid "timespan^$num minute"
+msgid_plural "timespan^$num minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:44
+msgid "timespan^$num second"
+msgid_plural "timespan^$num seconds"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
+msgid "timespan^expired"
+msgstr ""
+
+#: src/game_config.cpp:540
 msgid "Invalid color in range: "
 msgstr "لون غير صالح في النطاق: "
 
@@ -6482,7 +6785,9 @@ msgid "Falling back to the default core."
 msgstr "الرجوع إلى النواة الافتراضية."
 
 #: src/game_config_manager.cpp:301
-msgid "Can't locate the default core."
+#, fuzzy
+#| msgid "Can't locate the default core."
+msgid "Can’t locate the default core."
 msgstr "لا يمكن تحديد موقع المركز الافتراضي."
 
 #: src/game_config_manager.cpp:302
@@ -6529,7 +6834,7 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "بدلاً من ذلك، استخدم الماكرو الذي يحمل نفس الاسم في علامة [campaign]"
 
-#: src/game_config_manager.cpp:635
+#: src/game_config_manager.cpp:634
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "تحتوي الإضافة التالية على أخطاء ولا يمكن تحميلها:"
@@ -6539,7 +6844,7 @@ msgstr[3] "تحتوي الإضافات التالية على أخطاء ولا �
 msgstr[4] "تحتوي الإضافات التالية على أخطاء ولا يمكن تحميلها:"
 msgstr[5] "تحتوي الإضافات التالية على أخطاء ولا يمكن تحميلها:"
 
-#: src/game_config_manager.cpp:639
+#: src/game_config_manager.cpp:638
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6550,7 +6855,7 @@ msgstr[3] "يرجى الإبلاغ عن هذا إلى المؤلف أو المش
 msgstr[4] "يرجى الإبلاغ عن هذا إلى المؤلف أو المشرف على هذه الإضافات."
 msgstr[5] "يرجى الإبلاغ عن هذا إلى المؤلف أو المشرف على هذه الإضافات."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:935
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:905
 msgid "Error: "
 msgstr "خطأ: "
 
@@ -6566,144 +6871,144 @@ msgstr "وضع تصحيح الأخطاء: "
 msgid "Info: "
 msgstr "معلومات: "
 
-#: src/game_initialization/configure_engine.cpp:61
-msgid "$login|’s game"
-msgstr "لعبة $login|"
-
 #: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
 msgstr "فريق"
 
-#: src/game_initialization/connect_engine.cpp:935
+#: src/game_initialization/connect_engine.cpp:943
 msgid "Anonymous player"
 msgstr "لاعب مجهول"
 
-#: src/game_initialization/connect_engine.cpp:940
-#: src/game_initialization/connect_engine.cpp:1238
+#: src/game_initialization/connect_engine.cpp:948
+#: src/game_initialization/connect_engine.cpp:1191
 msgid "Computer Player"
 msgstr "مشغل الكمبيوتر"
 
-#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:990
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1234
+#: src/game_initialization/connect_engine.cpp:1187
 msgid "Network Player"
 msgstr "مشغل الشبكة"
 
-#: src/game_initialization/connect_engine.cpp:1237
+#: src/game_initialization/connect_engine.cpp:1190
 msgid "Local Player"
 msgstr "لاعب محلي"
 
-#: src/game_initialization/connect_engine.cpp:1239
+#: src/game_initialization/connect_engine.cpp:1192
 msgid "Nobody"
 msgstr "لا أحد"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1195
 msgid "Reserved"
 msgstr "محجوز"
 
-#: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:665
+#: src/game_initialization/create_engine.cpp:74
+#: src/game_initialization/create_engine.cpp:675
 msgid "Map could not be loaded: "
 msgstr "تعذر تحميل الخريطة. "
 
-#: src/game_initialization/create_engine.cpp:77
+#: src/game_initialization/create_engine.cpp:78
 msgid "Map could not be loaded."
 msgstr "تعذر تحميل الخريطة."
 
-#: src/game_initialization/create_engine.cpp:94
+#: src/game_initialization/create_engine.cpp:95
 msgid "not available."
 msgstr "غير متوفر."
 
-#: src/game_initialization/create_engine.cpp:149
+#: src/game_initialization/create_engine.cpp:150
 msgid "Custom map."
 msgstr "خريطة مخصصة."
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:505
 msgid "Failed to resolve dependencies"
 msgstr "فشل في حل التبعيات"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:505
 msgid "OK"
 msgstr "حسنا"
 
-#: src/game_initialization/depcheck.cpp:516
-msgid "Scenario can't be activated. Some dependencies are missing: "
+#: src/game_initialization/depcheck.cpp:530
+#, fuzzy
+#| msgid "Scenario can't be activated. Some dependencies are missing: "
+msgid "Scenario can’t be activated. Some dependencies are missing: "
 msgstr "لا يمكن تنشيط السيناريو. بعض الإضافات المرتبطة مفقودة: "
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:584
+#: src/game_initialization/depcheck.cpp:707
 msgid "No compatible eras found."
 msgstr "لم يتم العثور على عصور متوافقة."
 
-#: src/game_initialization/depcheck.cpp:585
-msgid "Era can't be activated. Some dependencies are missing: "
+#: src/game_initialization/depcheck.cpp:599
+#, fuzzy
+#| msgid "Era can't be activated. Some dependencies are missing: "
+msgid "Era can’t be activated. Some dependencies are missing: "
 msgstr "لا يمكن تفعيل العصر. بعض الإضافات المرتبطة مفقودة: "
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:652
+#: src/game_initialization/depcheck.cpp:744
 msgid "No compatible scenarios found."
 msgstr "لم يتم العثور على سيناريوهات متوافقة."
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:681
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr "ليست كل التعديلات المختارة متوافقة. سيتم تعطيل البعض منهم."
 
-#: src/game_initialization/depcheck.hpp:309
-#: src/game_initialization/depcheck.hpp:321
+#: src/game_initialization/depcheck.hpp:310
+#: src/game_initialization/depcheck.hpp:322
 msgid "A component"
 msgstr "مكون"
 
-#: src/game_initialization/flg_manager.cpp:212
+#: src/game_initialization/flg_manager.cpp:216
 msgid "Only random sides in the current era."
 msgstr "الجوانب العشوائية فقط في العصر الحالي."
 
-#: src/game_initialization/flg_manager.cpp:234
+#: src/game_initialization/flg_manager.cpp:238
 msgid "Unable to find a leader type for faction $faction"
 msgstr "غير قادر على العثور على نوع قائد للفصيل $faction"
 
-#: src/game_initialization/flg_manager.cpp:257
+#: src/game_initialization/flg_manager.cpp:261
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "لا يمكن الحصول على الأجناس للزعيم $leader غير الصالح"
 
-#: src/game_initialization/lobby_data.cpp:160
+#: src/game_initialization/lobby_data.cpp:162
 msgid "Missing addon: $name"
 msgstr "الملحق مفقود: $name"
 
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:164
 msgid "Missing addon: $id"
 msgstr "الملحق مفقود: $id"
 
-#: src/game_initialization/lobby_data.cpp:194
+#: src/game_initialization/lobby_data.cpp:196
 msgid "Unknown era"
 msgstr "عصر غير معروف"
 
-#: src/game_initialization/lobby_data.cpp:261
-#: src/game_initialization/lobby_data.cpp:295
+#: src/game_initialization/lobby_data.cpp:263
+#: src/game_initialization/lobby_data.cpp:298
 msgid "scenario_abbreviation^S"
 msgstr "س"
 
-#: src/game_initialization/lobby_data.cpp:281
+#: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
 msgstr "السيناريو البعيد"
 
-#: src/game_initialization/lobby_data.cpp:302
-#: src/game_initialization/lobby_data.cpp:328
+#: src/game_initialization/lobby_data.cpp:305
+#: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
 msgstr "ح"
 
-#: src/game_initialization/lobby_data.cpp:334
+#: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
 msgstr "سيناريو غير معروف"
 
-#: src/game_initialization/lobby_data.cpp:348
+#: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
 msgstr "لعبة معاد تحميلها"
 
-#: src/game_initialization/lobby_data.cpp:363
+#: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "فتحة فارغة:"
@@ -6713,32 +7018,36 @@ msgstr[3] "فتحات فارغة:"
 msgstr[4] "فتحة فارغة:"
 msgstr[5] "فتحة فارغة:"
 
-#: src/game_initialization/lobby_data.cpp:365
+#: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
 msgstr "كامل"
 
-#: src/game_initialization/lobby_data.cpp:376
-#: src/game_initialization/lobby_data.cpp:378 src/savegame.cpp:652
+#: src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:654
 msgid "Turn"
 msgstr "دور"
 
-#: src/game_initialization/lobby_data.cpp:391
+#: src/game_initialization/lobby_data.cpp:394
 msgid "vision^none"
 msgstr "لا شيء"
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:403
 msgid "time limit^none"
 msgstr "لا شيء"
 
-#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:447
+#, fuzzy
+#| msgid ""
+#| "The host's version of <i>$addon</i> is incompatible. They have version "
+#| "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version "
+"The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "إصدار المضيف من <i>$addon</i> غير متوافق. لديهم الإصدار <b>$host_ver</b> "
 "بينما لديك الإصدار <b>$local_ver</b> ."
 
-#: src/game_initialization/lobby_data.cpp:458
+#: src/game_initialization/lobby_data.cpp:461
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6750,27 +7059,33 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "هزيمة زعيم (قادة) العدو"
 
-#: src/game_initialization/mp_game_utils.cpp:103
-msgid "Cannot find era '$era'"
+#: src/game_initialization/mp_game_utils.cpp:102
+#, fuzzy
+#| msgid "Cannot find era '$era'"
+msgid "Cannot find era ‘$era’"
 msgstr "لا يمكن العثور على العصر '$era'"
 
-#: src/game_initialization/multiplayer.cpp:233
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr "تم تحديد عنوان غير صالح لخادم متعدد اللاعبين"
 
-#: src/game_initialization/multiplayer.cpp:268
+#: src/game_initialization/multiplayer.cpp:272
+#, fuzzy
+#| msgid ""
+#| "The server accepts versions '$required_version', but you are using "
+#| "version '$your_version'"
 msgid ""
-"The server accepts versions '$required_version', but you are using version "
-"'$your_version'"
+"The server accepts versions ‘$required_version’, but you are using version "
+"‘$your_version’"
 msgstr ""
 "الخادم يقبل الإصدارات '$required_version'، لكنك تستخدم الإصدار "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:281
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "حلقة إعادة التوجيه من جانب الخادم"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6779,28 +7094,28 @@ msgstr ""
 "اللقب \"$nick\" غير نشط. لا يمكنك المطالبة بملكية هذا اللقب حتى تقوم بتنشيط "
 "حسابك عبر البريد الإلكتروني أو تطلب من مسؤول القيام بذلك نيابةً عنك."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "هل تريد المتابعة؟"
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "تحذير"
 
-#: src/game_initialization/multiplayer.cpp:405
+#: src/game_initialization/multiplayer.cpp:410
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr "طلب الخادم البعيد كلمة مرور أثناء استخدام اتصال غير آمن."
 
-#: src/game_initialization/multiplayer.cpp:407
+#: src/game_initialization/multiplayer.cpp:412
 msgid "You must login first."
 msgstr "يجب عليك تسجيل الدخول أولا."
 
-#: src/game_initialization/multiplayer.cpp:409
+#: src/game_initialization/multiplayer.cpp:414
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "اللقب '$nick' مأخوذ بالفعل."
 
-#: src/game_initialization/multiplayer.cpp:411
+#: src/game_initialization/multiplayer.cpp:416
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6808,39 +7123,51 @@ msgstr ""
 "يحتوي اللقب '$nick' على أحرف غير صالحة. يُسمح فقط بالأحرف الأبجدية الرقمية "
 "(واحد على الأقل)، والشرطات السفلية والواصلات."
 
-#: src/game_initialization/multiplayer.cpp:415
+#: src/game_initialization/multiplayer.cpp:420
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "اللقب \"$nick\" طويل جدًا. يجب أن تتكون الألقاب من 20 حرفًا أو أقل."
 
-#: src/game_initialization/multiplayer.cpp:417
+#: src/game_initialization/multiplayer.cpp:422
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "اللقب '$nick' محجوز ولا يمكن للاعبين استخدامه."
 
-#: src/game_initialization/multiplayer.cpp:419
+#: src/game_initialization/multiplayer.cpp:424
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "اللقب '$nick' غير مسجل على هذا الخادم."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:425
 msgid " This server disallows unregistered nicknames."
 msgstr " لا يسمح هذا الخادم بالألقاب غير المسجلة."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:428
+#, fuzzy
+#| msgid "Your IP address is banned on this server’s forums for $duration|."
+msgid "Your IP address is banned on this server for $duration|."
+msgstr "تم حظر عنوان IP الخاص بك في منتديات هذا الخادم لمدة $duration|."
+
+#: src/game_initialization/multiplayer.cpp:430
+#, fuzzy
+#| msgid "Your IP address is banned on this server’s forums."
+msgid "Your IP address is banned on this server."
+msgstr "تم حظر عنوان IP الخاص بك في منتديات هذا الخادم."
+
+#: src/game_initialization/multiplayer.cpp:434
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "الاسم المستعار '$nick' محظور في منتديات هذا الخادم لمدة $duration|."
 
-#: src/game_initialization/multiplayer.cpp:425
+#: src/game_initialization/multiplayer.cpp:436
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "الاسم المستعار '$nick' محظور في منتديات هذا الخادم."
 
-#: src/game_initialization/multiplayer.cpp:429
+#: src/game_initialization/multiplayer.cpp:440
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "تم حظر عنوان IP الخاص بك في منتديات هذا الخادم لمدة $duration|."
 
-#: src/game_initialization/multiplayer.cpp:431
+#: src/game_initialization/multiplayer.cpp:442
 msgid "Your IP address is banned on this server’s forums."
 msgstr "تم حظر عنوان IP الخاص بك في منتديات هذا الخادم."
 
-#: src/game_initialization/multiplayer.cpp:435
+#: src/game_initialization/multiplayer.cpp:446
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6848,18 +7175,18 @@ msgstr ""
 "عنوان البريد الإلكتروني للاسم المستعار '$nick' محظور في منتديات هذا الخادم "
 "لمدة $duration|."
 
-#: src/game_initialization/multiplayer.cpp:437
+#: src/game_initialization/multiplayer.cpp:448
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "عنوان البريد الإلكتروني للاسم المستعار '$nick' محظور في منتديات هذا الخادم."
 
-#: src/game_initialization/multiplayer.cpp:440
-#: src/game_initialization/multiplayer.cpp:442
+#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:453
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "تم تسجيل اللقب '$nick' على هذا الخادم."
 
-#: src/game_initialization/multiplayer.cpp:443
+#: src/game_initialization/multiplayer.cpp:454
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6867,32 +7194,32 @@ msgstr ""
 "تحذير: يوجد بالفعل لاعب يستخدم هذا اللقب، وتسجيل الدخول سيؤدي إلى طرد هذا "
 "اللاعب!"
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:457
 msgid "The password you provided was incorrect."
 msgstr "كلمة المرور التي قدمتها غير صحيحة."
 
-#: src/game_initialization/multiplayer.cpp:448
+#: src/game_initialization/multiplayer.cpp:459
 msgid "You have made too many login attempts."
 msgstr "لقد قمت بمحاولات كثيرة لتسجيل الدخول."
 
-#: src/game_initialization/multiplayer.cpp:450
+#: src/game_initialization/multiplayer.cpp:461
 msgid "Password hashing failed."
 msgstr "فشل تجزئة كلمة المرور."
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:888
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:858
 msgid "The game could not be loaded: "
 msgstr "تعذر تحميل اللعبة: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:890
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:860
 msgid "Error while playing the game: "
 msgstr "خطأ أثناء تشغيل اللعبة: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:927
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:897
 msgid "The game map could not be loaded: "
 msgstr "تعذر تحميل خريطة اللعبة: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:892
-#: src/game_launcher.cpp:1013
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:862
+#: src/game_launcher.cpp:983
 msgid "Map generator error: "
 msgstr "خطأ في مولد الخريطة: "
 
@@ -6910,47 +7237,55 @@ msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "لقد انتهى هذا السيناريو. هل تريد مواصلة الحملة؟"
 
 #: src/game_initialization/playcampaign.cpp:279
-msgid "Unknown scenario: '$scenario|'"
+#, fuzzy
+#| msgid "Unknown scenario: '$scenario|'"
+msgid "Unknown scenario: ‘$scenario|’"
 msgstr "سيناريو غير معروف: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:43
 msgid "No campaigns are available."
 msgstr "لا توجد حملات متاحة."
 
-#: src/game_launcher.cpp:691 src/game_launcher.cpp:710 src/replay.cpp:678
+#: src/game_launcher.cpp:660 src/game_launcher.cpp:679 src/replay.cpp:663
 msgid "The file you have tried to load is corrupt"
 msgstr "الملف الذي حاولت تحميله تالف"
 
-#: src/game_launcher.cpp:693 src/game_launcher.cpp:712
-#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
-#: src/savegame.cpp:308
+#: src/game_launcher.cpp:662 src/game_launcher.cpp:681
+#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:148
+#: src/savegame.cpp:309
 msgid "The file you have tried to load is corrupt: '"
 msgstr "الملف الذي حاولت تحميله تالف:'"
 
-#: src/game_launcher.cpp:702
+#: src/game_launcher.cpp:671
 msgid "File I/O Error while reading the game"
 msgstr "خطأ في إدخال/إخراج الملف أثناء قراءة اللعبة"
 
-#: src/game_launcher.cpp:704
+#: src/game_launcher.cpp:673
 msgid "File I/O Error while reading the game: '"
 msgstr "خطأ في إدخال/إخراج الملف أثناء قراءة اللعبة:'"
 
-#: src/game_launcher.cpp:886
+#: src/game_launcher.cpp:856
 msgid "Error while starting server: "
 msgstr "خطأ أثناء بدء تشغيل الخادم: "
 
-#: src/game_launcher.cpp:908
+#: src/game_launcher.cpp:878
 msgid "Connection failed: "
 msgstr "فشل الاتصال: "
 
-#: src/generators/default_map_generator_job.cpp:706
-msgid "Random maps with an odd width aren't supported."
+#: src/generators/default_map_generator_job.cpp:707
+#, fuzzy
+#| msgid "Random maps with an odd width aren't supported."
+msgid "Random maps with an odd width aren’t supported."
 msgstr "الخرائط العشوائية ذات العرض الغير قياسي غير مدعومة."
 
-#: src/generators/default_map_generator_job.cpp:969
+#: src/generators/default_map_generator_job.cpp:964
+#, fuzzy
+#| msgid ""
+#| "No valid castle location found. Too many or too few mountain hexes? "
+#| "(please check the 'max hill size' parameter)"
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
-"check the 'max hill size' parameter)"
+"check the ‘max hill size’ parameter)"
 msgstr ""
 "لم يتم العثور على موقع قلعة صالح. عدد كبير جدًا أو قليل جدًا من السداسيات "
 "الجبلية؟ (يرجى التحقق من معلمة \"الحد الأقصى لحجم التل\")"
@@ -6960,7 +7295,7 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "تحتاج المجموعة المرتبطة '$id' إلى مفتاح 'fixed_width' أو 'fixed_height'."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:34
+#: src/gui/dialogs/addon/install_dependencies.cpp:32
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6986,19 +7321,19 @@ msgstr[5] ""
 "تحتوي الإضافة المحددة على الملحقات التالية، وهي قديمة أو غير مثبتة حاليًا. هل "
 "ترغب في تثبيته قبل المتابعة؟"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:77
+#: src/gui/dialogs/editor/choose_addon.cpp:73
 msgid "Create a new add-on"
 msgstr "إنشاء إضافة جديدة"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:77
+#: src/gui/dialogs/editor/choose_addon.cpp:73
 msgid "New Add-on"
 msgstr "إضافة جديدة"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:84
+#: src/gui/dialogs/editor/choose_addon.cpp:80
 msgid "Mainline"
 msgstr "الخط الرئيسي"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:84
+#: src/gui/dialogs/editor/choose_addon.cpp:80
 msgid "Mainline multiplayer scenarios"
 msgstr "سيناريوهات متعددة اللاعبين في الخط الرئيسي"
 
@@ -7006,15 +7341,15 @@ msgstr "سيناريوهات متعددة اللاعبين في الخط الر�
 msgid "No visible sides found."
 msgstr "لم يتم العثور على جوانب مرئية."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:171
 msgid "Selected Game"
 msgstr "لعبة مختارة"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
 msgid "Lobby"
 msgstr "الردهة"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 msgid "Other Games"
 msgstr "ألعاب أخرى"
 
@@ -7055,73 +7390,41 @@ msgstr "انتهت مهلة الطلب."
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr "واجه الطلب خطأ غير متوقع، يرجى التحقق من السجلات."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:105
+#: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
 msgstr "في اللعبة:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:107
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "(observing)"
 msgstr "(مراقبة)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:109
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(playing)"
 msgstr "(يلعب)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "In lobby"
 msgstr "في الردهة"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:141
+#: src/gui/dialogs/multiplayer/player_info.cpp:140
 msgid "On friends list"
 msgstr "في قائمة الأصدقاء"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:145
 msgid "On ignores list"
 msgstr "في قائمة التجاهل"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "Neither a friend nor ignored"
 msgstr "لا صديق ولا تجاهل"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "You"
 msgstr "أنت"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:159
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "Error"
 msgstr "خطأ"
-
-#: src/gui/dialogs/unit_attack.cpp:158 src/gui/dialogs/unit_attack.cpp:173
-msgid "Other aspects: "
-msgstr "خواص أخرى: "
-
-#: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
-#: src/reports.cpp:818 src/reports.cpp:1090 src/reports.cpp:1102
-msgid "Weapon: "
-msgstr "السلاح: "
-
-#: src/gui/dialogs/unit_attack.cpp:186 src/gui/dialogs/unit_attack.cpp:199
-#: src/reports.cpp:191
-msgid "Type: "
-msgstr "الصنف: "
-
-#: src/gui/dialogs/unit_attack.cpp:187 src/gui/dialogs/unit_attack.cpp:200
-#: src/reports.cpp:819 src/reports.cpp:1091
-msgid "Damage: "
-msgstr "الضرر: "
-
-#: src/gui/dialogs/unit_attack.cpp:188 src/gui/dialogs/unit_attack.cpp:201
-#: src/reports.cpp:840
-msgid "Attacks: "
-msgstr "عدد الهجمات: "
-
-#: src/gui/dialogs/unit_attack.cpp:189 src/gui/dialogs/unit_attack.cpp:202
-msgid "Chance to hit: "
-msgstr "فرصة الإصابة: "
-
-#: src/gui/dialogs/unit_list.hpp:40
-msgid "No units found."
-msgstr "لم يتم العثور على وحدات."
 
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "no"
@@ -7131,85 +7434,81 @@ msgstr "لا"
 msgid "yes"
 msgstr "نعم"
 
-#: src/help/help_browser.cpp:155
-msgid "Reference to unknown topic: "
-msgstr "إشارة إلى موضوع غير معروف: "
-
-#: src/help/help_impl.cpp:407
+#: src/help/help_impl.cpp:401
 msgid "Only available during a scenario."
 msgstr "متوفر فقط أثناء السيناريو."
 
-#: src/help/help_impl.cpp:408 src/help/help_impl.cpp:444
+#: src/help/help_impl.cpp:402 src/help/help_impl.cpp:441
 msgid "Time of Day Schedule"
 msgstr "جدول الوقت من اليوم"
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:432
 msgid "Lawful Bonus:"
 msgstr "مكافأة النهار:"
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:433
 msgid "Neutral Bonus:"
 msgstr "مكافأة المحايدة:"
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:434
 msgid "Chaotic Bonus:"
 msgstr "مكافأة اللليلية:"
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:435
 msgid "Liminal Bonus:"
 msgstr "مكافأة الحدية:"
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:436
 msgid "Schedule"
 msgstr "الجدول الزمني"
 
-#: src/help/help_impl.cpp:531
+#: src/help/help_impl.cpp:528
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='الوحدات ذات الهجوم الخاص'</header>"
 
-#: src/help/help_impl.cpp:595
+#: src/help/help_impl.cpp:592
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='الوحدات التي تتمتع بهذه القدرة'</header>"
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:622
 msgid "Era:"
 msgstr "العصر:"
 
-#: src/help/help_impl.cpp:633
+#: src/help/help_impl.cpp:630
 msgid "Factions"
 msgstr "الفصائل"
 
-#: src/help/help_impl.cpp:681
+#: src/help/help_impl.cpp:678
 msgid "Races: "
 msgstr "الأعراق: "
 
-#: src/help/help_impl.cpp:690 src/help/help_impl.cpp:1138
+#: src/help/help_impl.cpp:687 src/help/help_impl.cpp:1135
 msgid "Alignments: "
 msgstr "التوجهات: "
 
-#: src/help/help_impl.cpp:697
+#: src/help/help_impl.cpp:694
 msgid "Leaders"
 msgstr "القادة"
 
-#: src/help/help_impl.cpp:706
+#: src/help/help_impl.cpp:703
 msgid "Recruits"
 msgstr "المجندين"
 
-#: src/help/help_impl.cpp:791 src/units/types.cpp:487
+#: src/help/help_impl.cpp:788 src/units/types.cpp:489
 msgid "No description available."
 msgstr "لا يوجد وصف متوفر."
 
-#: src/help/help_impl.cpp:901 src/help/help_impl.cpp:1115
+#: src/help/help_impl.cpp:898 src/help/help_impl.cpp:1112
 msgid "race^Miscellaneous"
 msgstr "عرق غير مصنف"
 
-#: src/help/help_impl.cpp:1138 src/reports.cpp:389
+#: src/help/help_impl.cpp:1135 src/reports.cpp:392 src/reports.cpp:972
 msgid "Alignment: "
 msgstr "التوجه: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1157
+#: src/help/help_impl.cpp:1154
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
@@ -7217,25 +7516,21 @@ msgstr ""
 "هذه مجموعة من الوحدات، جميعها <ref>dst='$topic_id' text='$help_taxonomy'</"
 "ref>."
 
-#: src/help/help_impl.cpp:1162
+#: src/help/help_impl.cpp:1159
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='مجموعات فرعية من الوحدات ضمن هذه المجموعة'</header>"
 
-#: src/help/help_impl.cpp:1164
+#: src/help/help_impl.cpp:1161
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='مجموعات الوحدات ضمن هذا السباق'</header>"
 
-#: src/help/help_impl.cpp:1173
+#: src/help/help_impl.cpp:1170
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='وحدات هذه المجموعة'</header>"
 
-#: src/help/help_impl.cpp:1175
+#: src/help/help_impl.cpp:1172
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='وحدات هذا السباق'</header>"
-
-#: src/help/help_impl.cpp:1525
-msgid "corrupted original file"
-msgstr "الملف الأصلي تالف"
 
 #: src/hotkey/command_executor.cpp:404
 msgid "Do you really want to surrender the game?"
@@ -7245,7 +7540,7 @@ msgstr "هل تريد حقًا التنازل عن اللعب؟"
 msgid "Surrender"
 msgstr "الاستسلام"
 
-#: src/hotkey/command_executor.cpp:806
+#: src/hotkey/command_executor.cpp:812
 msgid "Map-Screenshot"
 msgstr "لقطة شاشة للخريطة"
 
@@ -7261,19 +7556,19 @@ msgstr "تم تفعيل السرعة المتسارعة!"
 msgid "Accelerated speed disabled!"
 msgstr "تم تعطيل السرعة المتسارعة!"
 
-#: src/hotkey/hotkey_handler.cpp:429
+#: src/hotkey/hotkey_handler.cpp:430
 msgid "Back to Start"
 msgstr "العودة إلى البداية"
 
-#: src/hotkey/hotkey_handler.cpp:429
+#: src/hotkey/hotkey_handler.cpp:430
 msgid "Back to Turn "
 msgstr "العودة إلى الدور "
 
-#: src/hotkey/hotkey_handler.cpp:445
+#: src/hotkey/hotkey_handler.cpp:446
 msgid "Replay from Start"
 msgstr "الإعادة من البداية"
 
-#: src/hotkey/hotkey_handler.cpp:445
+#: src/hotkey/hotkey_handler.cpp:446
 msgid "Replay from Turn "
 msgstr "اعادة اللعب انطلاقا من دور "
 
@@ -7281,11 +7576,11 @@ msgstr "اعادة اللعب انطلاقا من دور "
 msgid "(press $hotkey to deactivate)"
 msgstr "(اضغط على $hotkey لإلغاء التنشيط)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2047
 msgid "Planning mode activated!"
 msgstr "تم تفعيل وضع التخطيط!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2050
 msgid "Planning mode deactivated!"
 msgstr "تم تعطيل وضع التخطيط!"
 
@@ -7305,27 +7600,27 @@ msgstr "الملف الذي حاولت تحميله ليس من الجلسة ا�
 msgid "System default language"
 msgstr "لغة النظام القياسية"
 
-#: src/map/location.cpp:165
+#: src/map/location.cpp:179
 msgid "North"
 msgstr "شمال"
 
-#: src/map/location.cpp:167
+#: src/map/location.cpp:181
 msgid "North East"
 msgstr "شمال شرق"
 
-#: src/map/location.cpp:169
+#: src/map/location.cpp:183
 msgid "North West"
 msgstr "شمال غرب"
 
-#: src/map/location.cpp:171
+#: src/map/location.cpp:185
 msgid "South"
 msgstr "الجنوب"
 
-#: src/map/location.cpp:173
+#: src/map/location.cpp:187
 msgid "South East"
 msgstr "الجنوب الشرقي"
 
-#: src/map/location.cpp:175
+#: src/map/location.cpp:189
 msgid "South West"
 msgstr "الجنوب الغربي"
 
@@ -7334,16 +7629,24 @@ msgid "This command is currently unavailable."
 msgstr "هذا الأمر غير متوفر حاليًا."
 
 #: src/map_command_handler.hpp:225
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', did you mean '$command_proposal'? try "
+#| "$help_command for a list of available commands."
 msgid ""
-"Unknown command '$command', did you mean '$command_proposal'? try "
+"Unknown command ‘$command’, did you mean ‘$command_proposal’? try "
 "$help_command for a list of available commands."
 msgstr ""
 "أمر غير معروف \"$command\"، هل تقصد \"$command_proposal\"؟ جرب $help_command "
 "للحصول على قائمة بالأوامر المتاحة."
 
 #: src/map_command_handler.hpp:229
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
 msgid ""
-"Unknown command '$command', try $help_command for a list of available "
+"Unknown command ‘$command’, try $help_command for a list of available "
 "commands."
 msgstr ""
 "أمر غير معروف '$command'، جرب $help_command للحصول على قائمة بالأوامر "
@@ -7414,34 +7717,38 @@ msgstr[3] "أسماء أخرى:"
 msgstr[4] "أسماء أخرى:"
 msgstr[5] "أسماء أخرى:"
 
-#: src/menu_events.cpp:157
+#: src/map_settings.cpp:87
+msgid "$login|’s game"
+msgstr "لعبة $login|"
+
+#: src/menu_events.cpp:177
 msgid "Save Map As"
 msgstr "حفظ الخريطة ك"
 
-#: src/menu_events.cpp:168
+#: src/menu_events.cpp:188
 msgid "Map saved."
 msgstr "خريطة تم تسجيلها."
 
-#: src/menu_events.cpp:172
+#: src/menu_events.cpp:192
 msgid "Could not save the map: $msg"
 msgstr "تعذر حفظ الخريطة: $msg"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:219
 msgid "Message:"
 msgstr "الرسالة:"
 
-#: src/menu_events.cpp:202
+#: src/menu_events.cpp:221
 msgid "Send to observers only"
 msgstr "إرسال للمراقبين فقط"
 
-#: src/menu_events.cpp:203
+#: src/menu_events.cpp:222
 msgid "Send to allies only"
 msgstr "إرسال إلى الحلفاء فقط"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:262
+#: src/menu_events.cpp:287
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7459,39 +7766,15 @@ msgstr[4] ""
 msgstr[5] ""
 "خطأ: هناك أنواع وحدات غير معروفة في قائمة المجندين الخاصة بك: $unknown_ids"
 
-#: src/menu_events.cpp:270
+#: src/menu_events.cpp:295
 msgid "You have no units available to recruit."
 msgstr "ليس لديك أي وحدات متاحة للتجنيد."
 
-#: src/menu_events.cpp:280
-msgid "No unit recruited."
-msgstr "لم يتم تجنيد أي وحدة."
-
-#: src/menu_events.cpp:305
-msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr "خطأ داخلي. يرجى الإبلاغ عن هذا باعتباره خطأ! تفاصيل:\n"
-
-#: src/menu_events.cpp:311
-msgid "You cannot recruit a $unit_type_name at this time."
-msgstr "لا يمكنك تجنيد $unit_type_name في هذا الوقت."
-
-#. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:325
-msgid ""
-"At this point in your plan, you will not have enough gold to recruit this "
-"unit."
-msgstr ""
-"في هذه المرحلة من خطتك، لن يكون لديك ما يكفي من الذهب لتجنيد هذه الوحدة."
-
-#: src/menu_events.cpp:327
-msgid "You do not have enough gold to recruit this unit."
-msgstr "ليس لديك ما يكفي من الذهب لتجنيد هذه الوحدة."
-
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:342
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "أنت منفصل عن جنودك وقد لا يمكنك استدعائهم."
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:361
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7499,15 +7782,13 @@ msgstr ""
 "لا توجد قوات متاحة للاستدعاء.\n"
 "(يجب أن يكون لديك ناجين باقين من السيناريو السابق.)"
 
-#: src/menu_events.cpp:395
-msgid "You currently can't recall at the highlighted location."
+#: src/menu_events.cpp:366
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
+msgid "You currently can’t recall at the highlighted location."
 msgstr "لا يمكنك حاليًا الاستدعاء في الموقع المميز."
 
-#: src/menu_events.cpp:407
-msgid "No unit recalled."
-msgstr "لم يتم استدعاء أي وحدة."
-
-#: src/menu_events.cpp:424
+#: src/menu_events.cpp:394
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
@@ -7523,71 +7804,71 @@ msgstr[4] ""
 msgstr[5] ""
 "يجب أن يكون لديك $cost قطعة ذهبية على الأقل لتتمكن من استدعاء الوحدة."
 
-#: src/menu_events.cpp:570
+#: src/menu_events.cpp:539
 msgid "You cannot end your turn yet!"
 msgstr "لا يمكنك إنهاء دورك بعد!"
 
-#: src/menu_events.cpp:585
+#: src/menu_events.cpp:554
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "أنت لم تبدأ دورك بعد. هل تريد حقًا إنهاء دورك؟"
 
-#: src/menu_events.cpp:594
+#: src/menu_events.cpp:563
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "بعض الوحدات لديها نقاط حركة متبقية. هل تريد حقًا إنهاء دورك؟"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:572
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "بعض الوحدات لم تتحرك هل تريد حقًا إنهاء دورك؟"
 
-#: src/menu_events.cpp:659
+#: src/menu_events.cpp:628
 msgid "Rename Unit"
 msgstr "إعادة تسمية الوحدة"
 
-#: src/menu_events.cpp:660
+#: src/menu_events.cpp:629
 msgid "Name:"
 msgstr "اسم:"
 
-#: src/menu_events.cpp:836
+#: src/menu_events.cpp:790
 msgid "Clear Labels"
 msgstr "محو اللصائق"
 
-#: src/menu_events.cpp:837
+#: src/menu_events.cpp:791
 msgid "Are you sure you want to clear map labels?"
 msgstr "هل أنت متأكد أنك تريد مسح تسميات الخريطة؟"
 
-#: src/menu_events.cpp:1039
+#: src/menu_events.cpp:995
 msgid "Search"
 msgstr "بحث"
 
-#: src/menu_events.cpp:1179
+#: src/menu_events.cpp:1135
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(د) — التصحيح فقط، (ن) — الشبكة فقط، (أ) — المسؤول فقط"
 
-#: src/menu_events.cpp:1186
+#: src/menu_events.cpp:1142
 msgid "(debug command)"
 msgstr "(أمر التصحيح)"
 
-#: src/menu_events.cpp:1187
+#: src/menu_events.cpp:1143
 msgid "(network only)"
 msgstr "(الشبكة فقط)"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1145
 msgid "(not during other events)"
 msgstr "(ليس خلال الأحداث الأخرى)"
 
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1175
 msgid "Refresh gui."
 msgstr "تحديث واجهة المستخدم الرسومية."
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1176
 msgid "Switch a side to/from AI control."
 msgstr "تبديل جانب من/إلى التحكم في الذكاء الاصطناعي."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1224
+#: src/menu_events.cpp:1180
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
@@ -7597,110 +7878,116 @@ msgstr ""
 "“on” = تمكين ولكن مع الاحتفاظ بالرؤية, “full” = كما لو أنه يتم التحكم فيه من "
 "قبل لاعب آخر"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1181
 msgid "Change terrain type of current hex"
 msgstr "تغيير نوع التضاريس للسداسي الحالي"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1227
+#: src/menu_events.cpp:1183
 msgid "<terrain type> [both|base|overlay]"
 msgstr "<نوع التضاريس> [كلاهما|القاعدة|التراكب]"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1184
 msgid "Switch a side to/from idle state."
 msgstr "تبديل جانب من/إلى حالة الخمول."
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1188
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<جانب> [تشغيل/إيقاف]]"
 
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1189
 msgid "Change the in-game theme."
 msgstr "تغيير مشهد اللعبة."
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1191
 msgid "<side> <nickname>"
 msgstr "<الجانب> <اللقب>"
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1191
 msgid "Assign control of a side to a different player or observer."
 msgstr "تعيين السيطرة على جانب للاعب أو مراقب."
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1192
 msgid "Query the controller status of a side."
 msgstr "الاستعلام عن حالة متحكم لأحد الجوانب."
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1193
 msgid "<side>"
 msgstr "<الجانب>"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1195
 msgid "Debug foreground terrain."
 msgstr "وضع تصحيح أخطاء التضاريس الأمامية."
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1197
 msgid "Debug layers from terrain under the mouse."
 msgstr "وضع تصحيح طبقات من التضاريس الموجودة أسفل الفأرة."
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1198
 msgid "Display and log fps (Frames Per Second)."
 msgstr "عرض وتسجيل الإطارات في الثانية (إطارات في الثانية)."
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1199
+#, fuzzy
+#| msgid ""
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed."
 msgid ""
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 "مشابه للأمر 'صورة في الثانية'، ولكنه يفرض أيضًا إعادة رسم كل شيء بدلاً من "
 "الأشياء التي تغيرت فقط."
 
-#: src/menu_events.cpp:1244
+#: src/menu_events.cpp:1200
 msgid "Save game."
 msgstr "حفظ اللعبة."
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1202
 msgid "Quit game."
 msgstr "قم بإنهاء اللعبة."
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1205
 msgid "Save and quit."
 msgstr "حفظ وإنهاء."
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1207
 msgid "Ignore replay errors."
 msgstr "تجاهل أخطاء إعادة اللعب."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1208
 msgid "Disable autosaves."
 msgstr "تعطيل الحفظ التلقائي."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1210
 msgid "<id>"
 msgstr "<معرف>"
 
-#: src/menu_events.cpp:1254
-msgid "Advance to the next scenario, or scenario identified by 'id'"
+#: src/menu_events.cpp:1210
+#, fuzzy
+#| msgid "Advance to the next scenario, or scenario identified by 'id'"
+msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "التقدم إلى السيناريو التالي، أو السيناريو المحدد بواسطة 'المعرف'"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1212
 msgid "Choose next scenario"
 msgstr "اختر السيناريو التالي"
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1215
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 "تغيير رقم الدور (والوقت من اليوم)، أو زيادة بمقدار واحد إذا لم يتم تحديد رقم."
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1215
 msgid "[turn]"
 msgstr "[turn]"
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1218
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7708,244 +7995,286 @@ msgstr ""
 "قم بتغيير حد الأدوار، أو قم بإيقاف تشغيل حد الأدوار إذا لم يتم تحديد رقم أو "
 "كان −1."
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1218
 msgid "[limit]"
 msgstr "[limit]"
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1220
 msgid "Turn debug mode on."
 msgstr "قم بتشغيل وضع التصحيح."
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1221
 msgid "Turn debug mode off."
 msgstr "قم بإيقاف تشغيل وضع التصحيح."
 
-#: src/menu_events.cpp:1267 src/menu_events.cpp:1271
+#: src/menu_events.cpp:1223 src/menu_events.cpp:1227
 msgid "<command>[;<command>...]"
 msgstr "<command>[;<command>...]"
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1223
 msgid "Execute a Lua statement."
 msgstr "تنفيذ عبارة Lua."
 
-#: src/menu_events.cpp:1269
+#: src/menu_events.cpp:1225
 msgid "Grant higher privileges to Lua scripts."
 msgstr "منح امتيازات أعلى لنصوص Lua."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1226
 msgid "Set the command used by the custom command hotkey"
 msgstr "قم بتعيين الأمر الذي يستخدمه مفتاح التشغيل السريع للأوامر المخصصة"
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1229
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "استدعاء مربع حوار يسمح بتغيير التحكم في جوانب اللعب المتعدد."
 
-#: src/menu_events.cpp:1274
+#: src/menu_events.cpp:1230
 msgid "Launch the gamestate inspector"
 msgstr "قم بتشغيل مفتش حالة اللعبة"
 
-#: src/menu_events.cpp:1276
+#: src/menu_events.cpp:1232
 msgid "<name>[=<command>]"
 msgstr "<name>[=<command>]"
 
-#: src/menu_events.cpp:1276
+#: src/menu_events.cpp:1232
 msgid "Set or show alias to a command"
 msgstr "تعيين أو إظهار الاسم المستعار لأمر"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1234 src/menu_events.cpp:1239
 msgid "<var>=<value>"
 msgstr "<المتغير>=<القيمة>"
 
-#: src/menu_events.cpp:1278
+#: src/menu_events.cpp:1234
 msgid "Set a scenario variable."
 msgstr "قم بتعيين متغير سيناريو."
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1235
 msgid "<var>"
 msgstr "<متغير>"
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1235
 msgid "Show a scenario variable."
 msgstr "إظهار متغير سيناريو."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1238
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr "تعديل متغير وحدة. (يتم دعم مفاتيح المستوى الأعلى فقط، والتقدم=<رقم>.)"
 
-#: src/menu_events.cpp:1289
+#: src/menu_events.cpp:1245
 msgid "Discover all units in help."
 msgstr "اكتشف جميع الوحدات في المساعدة."
 
-#: src/menu_events.cpp:1290
-msgid "'Undiscover' all units in help."
+#: src/menu_events.cpp:1246
+#, fuzzy
+#| msgid "'Undiscover' all units in help."
+msgid "‘Undiscover’ all units in help."
 msgstr "'اكشف' كافة الوحدات في المساعدة."
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1247
 msgid "<unit type id>"
 msgstr "<معرف نوع الوحدة>"
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1247
 msgid "Create a unit."
 msgstr "إنشاء وحدة."
 
-#: src/menu_events.cpp:1292
+#: src/menu_events.cpp:1248
 msgid "Toggle fog for the current player."
 msgstr "تبديل الضباب للاعب الحالي."
 
-#: src/menu_events.cpp:1293
+#: src/menu_events.cpp:1249
 msgid "Toggle shroud for the current player."
 msgstr "تبديل الظلام للاعب الحالي."
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1250
 msgid "<amount>"
 msgstr "<المبلغ>"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1250
 msgid "Give gold to the current player."
 msgstr "منح الذهب للاعب الحالي."
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1251
 msgid "<event name>"
 msgstr "<اسم الحدث>"
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1251
 msgid "Fire a game event."
 msgstr "اطلاق حدث لعبة."
 
-#: src/menu_events.cpp:1298
+#: src/menu_events.cpp:1254
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "تبديل تراكب إحداثيات x,y على السداسيات."
 
-#: src/menu_events.cpp:1301
+#: src/menu_events.cpp:1257
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "تبديل تراكب رموز التضاريس على السداسيات."
 
-#: src/menu_events.cpp:1304
+#: src/menu_events.cpp:1260
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "تبديل تراكب عدد الصور النقطية على السداسيات."
 
-#: src/menu_events.cpp:1306
+#: src/menu_events.cpp:1262
 msgid "Toggle planning mode."
 msgstr "تبديل وضع التخطيط."
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1265
 msgid "Access whiteboard options dialog."
 msgstr "الوصول إلى مربع حوار خيارات لوحة المعلومات."
 
-#: src/menu_events.cpp:1424
+#: src/menu_events.cpp:1379
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "تعذر العثور على التسمية أو الوحدة التي تحتوي على السلسلة '$search'."
 
-#: src/menu_events.cpp:1471
-msgid "Can't droid invalid side: '$side'."
+#: src/menu_events.cpp:1426
+#, fuzzy
+#| msgid "Can't droid invalid side: '$side'."
+msgid "Can’t droid invalid side: ‘$side’."
 msgstr "لا يمكن تغيير تعريف الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1474
-msgid "Can't droid networked side: '$side'."
+#: src/menu_events.cpp:1429
+#, fuzzy
+#| msgid "Can't droid networked side: '$side'."
+msgid "Can’t droid networked side: ‘$side’."
 msgstr "لا يمكن إعادة تعريف الجانب المتصل بالشبكة: '$side'."
 
-#: src/menu_events.cpp:1486 src/menu_events.cpp:1502 src/menu_events.cpp:1534
+#: src/menu_events.cpp:1441 src/menu_events.cpp:1457 src/menu_events.cpp:1489
+#, fuzzy
+#| msgid ""
+#| "It is not allowed to change a side from AI to human control when it's not "
+#| "your turn."
 msgid ""
-"It is not allowed to change a side from AI to human control when it's not "
+"It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr "لا يجوز تغيير الجانب من الذكاء الاصطناعي إلى التحكم البشري خارج دورك."
 
-#: src/menu_events.cpp:1496 src/menu_events.cpp:1552
-msgid "Side '$side' controller is now controlled by: AI."
+#: src/menu_events.cpp:1451 src/menu_events.cpp:1507
+#, fuzzy
+#| msgid "Side '$side' controller is now controlled by: AI."
+msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "يتم الآن التحكم في الجانب '$side' بواسطة: الذكاء الصناعي."
 
-#: src/menu_events.cpp:1498
-msgid "Side '$side' is already droided."
+#: src/menu_events.cpp:1453
+#, fuzzy
+#| msgid "Side '$side' is already droided."
+msgid "Side ‘$side’ is already droided."
 msgstr "الجانب '$side' تم إعادة تعريفه بالفعل."
 
-#: src/menu_events.cpp:1512 src/menu_events.cpp:1544
-msgid "Side '$side' controller is now controlled by: human."
+#: src/menu_events.cpp:1467 src/menu_events.cpp:1499
+#, fuzzy
+#| msgid "Side '$side' controller is now controlled by: human."
+msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "يتم الآن التحكم في الجانب '$side' بواسطة: الانسان."
 
-#: src/menu_events.cpp:1514
-msgid "Side '$side' is already not droided."
+#: src/menu_events.cpp:1469
+#, fuzzy
+#| msgid "Side '$side' is already not droided."
+msgid "Side ‘$side’ is already not droided."
 msgstr "الجانب '$side' لم يتم إعادة تعريفه بالفعل."
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1473
+#, fuzzy
+#| msgid ""
+#| "It is not allowed to change a side from human to AI control when it's not "
+#| "your turn."
 msgid ""
-"It is not allowed to change a side from human to AI control when it's not "
+"It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 "لا يجوز تغيير الجانب من التحكم البشري إلى تحكم الذكاء الاصطناعي خارج دورك."
 
-#: src/menu_events.cpp:1528
-msgid "Side '$side' controller is now fully controlled by: AI."
+#: src/menu_events.cpp:1483
+#, fuzzy
+#| msgid "Side '$side' controller is now fully controlled by: AI."
+msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "يتم الآن التحكم بالكامل في الجانب '$side' بواسطة: الذكاء الصناعي."
 
-#: src/menu_events.cpp:1530
-msgid "Side '$side' is already fully AI controlled."
+#: src/menu_events.cpp:1485
+#, fuzzy
+#| msgid "Side '$side' is already fully AI controlled."
+msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "الجانب '$side' يتم التحكم فيه بالكامل بواسطة الذكاء الاصطناعي."
 
-#: src/menu_events.cpp:1555
+#: src/menu_events.cpp:1510
+#, fuzzy
+#| msgid ""
+#| "Invalid action provided for side '$side'. Valid actions are: on, off, "
+#| "full."
 msgid ""
-"Invalid action provided for side '$side'. Valid actions are: on, off, full."
+"Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 "تم توفير إجراء غير صالح للجانب '$side'. الإجراءات الصالحة هي: تشغيل، إيقاف، "
 "الكل."
 
-#: src/menu_events.cpp:1564
-#, fuzzy
-#| msgid "Side '$side' is already fully AI controlled."
-msgid "Side '$side' is not a human or AI player."
-msgstr "الجانب '$side' يتم التحكم فيه بالكامل بواسطة الذكاء الاصطناعي."
+#: src/menu_events.cpp:1519
+msgid "Side ‘$side’ is not a human or AI player."
+msgstr ""
 
-#: src/menu_events.cpp:1600
-msgid "Can't idle invalid side: '$side'."
+#: src/menu_events.cpp:1555
+#, fuzzy
+#| msgid "Can't idle invalid side: '$side'."
+msgid "Can’t idle invalid side: ‘$side’."
 msgstr "لا يمكن تفعيل خمول الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1605
-msgid "Can't idle networked side: '$side'."
+#: src/menu_events.cpp:1560
+#, fuzzy
+#| msgid "Can't idle networked side: '$side'."
+msgid "Can’t idle networked side: ‘$side’."
 msgstr "لا يمكن تفعيل خمول الجانب المتصل بالشبكة: '$side'."
 
-#: src/menu_events.cpp:1610
-msgid "Can't idle local ai side: '$side'."
+#: src/menu_events.cpp:1565
+#, fuzzy
+#| msgid "Can't idle local ai side: '$side'."
+msgid "Can’t idle local ai side: ‘$side’."
 msgstr "لا يمكن تفعيل الخمول لجانب الذكاء الاصطناعي المحلي: '$side'."
 
-#: src/menu_events.cpp:1671
-msgid "Can't change control of invalid side: '$side'."
+#: src/menu_events.cpp:1626
+#, fuzzy
+#| msgid "Can't change control of invalid side: '$side'."
+msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "لا يمكن تغيير التحكم في الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1681
-msgid "Can't change control of out-of-bounds side: '$side'."
+#: src/menu_events.cpp:1636
+#, fuzzy
+#| msgid "Can't change control of out-of-bounds side: '$side'."
+msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "لا يمكن تغيير التحكم في الجانب خارج الحدود: '$side'."
 
-#: src/menu_events.cpp:1698
-msgid "Can't query control of invalid side: '$side'."
+#: src/menu_events.cpp:1653
+#, fuzzy
+#| msgid "Can't query control of invalid side: '$side'."
+msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "لا يمكن الاستعلام عن التحكم في الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1705
-msgid "Can't query control of out-of-bounds side: '$side'."
+#: src/menu_events.cpp:1660
+#, fuzzy
+#| msgid "Can't query control of out-of-bounds side: '$side'."
+msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "لا يمكن الاستعلام عن التحكم في الجانب خارج الحدود: '$side'."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1782
 msgid "Choose Scenario (Debug!)"
 msgstr "اختيار السيناريو (تصحيح!)"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1818
 msgid "Debug mode activated!"
 msgstr "تم تفعيل وضع التصحيح!"
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1821
 msgid "Debug mode not available in network games"
 msgstr "وضع التصحيح غير متوفر في ألعاب الشبكة"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1828
 msgid "Debug mode deactivated!"
 msgstr "تم إلغاء وضع التصحيح!"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1848
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "تحذير! وضع Lua غير الآمن"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1849
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7958,50 +8287,57 @@ msgstr ""
 "\n"
 "لا تستمر إلا إذا كنت تعرف حقًا ما تفعله."
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1854
 msgid "Unsafe mode enabled!"
 msgstr "تم تمكين الوضع غير الآمن!"
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1903
 msgid "Variable not found"
 msgstr "لم يتم العثور على المتغير"
 
-#: src/menu_events.cpp:1981
-msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
+#: src/menu_events.cpp:1936
+#, fuzzy
+#| msgid ""
+#| "Debug command 'unit: $unit' failed: no unit selected or hovered over."
+msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr "فشل أمر التصحيح 'الوحدة: $unit': لم يتم تحديد أو المرور فوق أي وحدةا."
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:1954
+#, fuzzy
+#| msgid ""
+#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+#| "chaotic, or liminal."
 msgid ""
-"Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+"Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 "توجّه غير صالح: '$alignment'، يجب أن تكون قانونية أو محايدة أو فوضوية أو حدية."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:1980
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "هل ترغب في مسح كافة الوحدات المكتشفة لديك من المساعدة؟"
 
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:1994
 msgid "Invalid unit type"
 msgstr "نوع الوحدة غير صالح"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2001
 msgid "Invalid location"
 msgstr "موقع غير صالح"
 
 # #po: arabic try to force LtR reading of :الامر
-#: src/menu_events.cpp:2119
+#: src/menu_events.cpp:2074
 msgid "prompt^Command:"
 msgstr "command(امر تصحيح):"
 
 # #po: arabic try to force LtR reading of :الامر
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2100
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
 msgstr "command(امر تصحيح):"
 
-#: src/mouse_events.cpp:1263
+#: src/mouse_events.cpp:1261
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -8009,13 +8345,39 @@ msgstr ""
 "لا يمكنك نقل قائدك خارج المعسكر مع بقاء بعض المجندين أو عمليات الاستدعاء "
 "المخطط لها."
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1364
 msgid "No Attacks"
 msgstr "لا هجمات"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1364
 msgid "This unit has no usable weapons."
 msgstr "هذه الوحدة ليس لديها أسلحة قابلة للاستخدام."
+
+#: src/mouse_events.cpp:1446 src/mouse_events.cpp:1462
+msgid "Other aspects: "
+msgstr "خواص أخرى: "
+
+#: src/mouse_events.cpp:1475 src/mouse_events.cpp:1489 src/reports.cpp:819
+#: src/reports.cpp:1107 src/reports.cpp:1119
+msgid "Weapon: "
+msgstr "السلاح: "
+
+#: src/mouse_events.cpp:1476 src/mouse_events.cpp:1490 src/reports.cpp:195
+msgid "Type: "
+msgstr "الصنف: "
+
+#: src/mouse_events.cpp:1477 src/mouse_events.cpp:1491 src/reports.cpp:820
+#: src/reports.cpp:1108
+msgid "Damage: "
+msgstr "الضرر: "
+
+#: src/mouse_events.cpp:1478 src/mouse_events.cpp:1492 src/reports.cpp:841
+msgid "Attacks: "
+msgstr "عدد الهجمات: "
+
+#: src/mouse_events.cpp:1479 src/mouse_events.cpp:1493
+msgid "Chance to hit: "
+msgstr "فرصة الإصابة: "
 
 #: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
@@ -8089,36 +8451,36 @@ msgstr "تضاريس ذات تكلفة الحركة أقل من 1 عٌثر عل�
 msgid "waiting for^a global variable"
 msgstr "متغير عام"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "الوقت المتبقي للدور الحالي"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "التوقيت المحلي الحالي"
 
-#: src/play_controller.cpp:560
+#: src/play_controller.cpp:608
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr "محاولة إنشاء ملف تالف، يرجى الإبلاغ عن هذا الخطأ"
 
-#: src/play_controller.cpp:1023
+#: src/play_controller.cpp:1071
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "اللعبة غير متزامنة. قد لا يكون من المنطقي الاستمرار. هل تريد حفظ لعبتك؟"
 
-#: src/play_controller.cpp:1024
+#: src/play_controller.cpp:1072
 msgid "Error details:"
 msgstr "تفاصيل الخطأ:"
 
-#: src/play_controller.cpp:1205
+#: src/play_controller.cpp:1253
 msgid "Warning: broken campaign branches"
 msgstr "تحذير: حملة تحتوي قسما مكسورا"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1211
+#: src/play_controller.cpp:1259
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8131,7 +8493,7 @@ msgstr[3] "السيناريوهات التالية مفقودة، لن تتمك�
 msgstr[4] "السيناريوهات التالية مفقودة، لن تتمكن من إنهاء هذه الحملة."
 msgstr[5] "السيناريوهات التالية مفقودة، لن تتمكن من إنهاء هذه الحملة."
 
-#: src/play_controller.cpp:1218
+#: src/play_controller.cpp:1266
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8157,11 +8519,11 @@ msgstr[5] ""
 "يرجى الإبلاغ عن السيناريوهات المفقودة التالية إلى مؤلف الحملة:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1222
+#: src/play_controller.cpp:1270
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "حالما يتم اصلاح الحملة، ستضطر لإعادة آخر سيناريو لعبته فيها."
 
-#: src/play_controller.cpp:1301
+#: src/play_controller.cpp:1349
 msgid "No objectives available"
 msgstr "لا أهداف محددة"
 
@@ -8169,7 +8531,7 @@ msgstr "لا أهداف محددة"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "الحركات التي تم التراجع عنها لم ترسل بعد للسيرفر."
 
-#: src/playmp_controller.cpp:245
+#: src/playmp_controller.cpp:238
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8185,7 +8547,7 @@ msgstr ""
 "\n"
 "هل تريد حفظ سجل أخطاء لعبتك؟"
 
-#: src/playmp_controller.cpp:276
+#: src/playmp_controller.cpp:269
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -8194,31 +8556,31 @@ msgstr ""
 "هذا الجانب في حالة خمول. لمتابعة اللعبة، يجب تعيينها إلى وحدة تحكم أخرى. "
 "يمكنك استخدام :droid، :control أو :give_control على سبيل المثال."
 
-#: src/playmp_controller.cpp:546
+#: src/playmp_controller.cpp:539
 msgid "Give control to their ally $player"
 msgstr "منح السيطرة لحليفهم $player"
 
-#: src/playmp_controller.cpp:555
+#: src/playmp_controller.cpp:548
 msgid "Give control to observer $player"
 msgstr "منح التحكم للمراقب $player"
 
-#: src/playmp_controller.cpp:560
+#: src/playmp_controller.cpp:553
 msgid "Replace with AI"
 msgstr "التعويض بالذكاء الصناعي"
 
-#: src/playmp_controller.cpp:561
+#: src/playmp_controller.cpp:554
 msgid "Replace with local player"
 msgstr "التعويض بلاعب محلي"
 
-#: src/playmp_controller.cpp:562
+#: src/playmp_controller.cpp:555
 msgid "Set side to idle"
 msgstr "تحديد الطرف كغير فاعل"
 
-#: src/playmp_controller.cpp:563
+#: src/playmp_controller.cpp:556
 msgid "Save and abort game"
 msgstr "تسجيل ومغادرة"
 
-#: src/playmp_controller.cpp:567
+#: src/playmp_controller.cpp:560
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8230,8 +8592,13 @@ msgid "Game Error"
 msgstr "خطأ في اللعبة"
 
 #: src/playsingle_controller.cpp:183
+#, fuzzy
+#| msgid ""
+#| "This multiplayer game uses an alternative random mode, if you don't know "
+#| "what this message means, then most likely someone is cheating or someone "
+#| "reloaded a corrupt game."
 msgid ""
-"This multiplayer game uses an alternative random mode, if you don't know "
+"This multiplayer game uses an alternative random mode, if you don’t know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
@@ -8243,7 +8610,7 @@ msgstr ""
 msgid "The game is over."
 msgstr "اللعبة انتهت."
 
-#: src/playsingle_controller.cpp:463
+#: src/playsingle_controller.cpp:461
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8251,7 +8618,7 @@ msgstr ""
 "وقع انفصال عن السيرفر ولا يمكن استكمال اللعب. هل تريد تسجيل اللعبة حتى هذه "
 "النقطة؟"
 
-#: src/playsingle_controller.cpp:467
+#: src/playsingle_controller.cpp:465
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8259,7 +8626,7 @@ msgstr ""
 "\n"
 "هل تريد حفظ اللعبة؟"
 
-#: src/playsingle_controller.cpp:467
+#: src/playsingle_controller.cpp:465
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8267,7 +8634,7 @@ msgstr ""
 "لقد وقع إنهاء هذه اللعبة.\n"
 "السبب: "
 
-#: src/playsingle_controller.cpp:558
+#: src/playsingle_controller.cpp:557
 msgid "It is now $name|’s turn"
 msgstr "حان دور $name| الآن"
 
@@ -8279,39 +8646,39 @@ msgstr "المغادرة"
 msgid "Do you really want to quit?"
 msgstr "هل ترغب حقا في المغادرة؟"
 
-#: src/reports.cpp:170 src/savegame.cpp:423
+#: src/reports.cpp:174 src/savegame.cpp:424
 msgid "Name: "
 msgstr "الاسم: "
 
-#: src/reports.cpp:194
+#: src/reports.cpp:198
 msgid "Special Notes:"
 msgstr "ملاحظات خاصة:"
 
-#: src/reports.cpp:217
+#: src/reports.cpp:221
 msgid "Race: "
 msgstr "العرق: "
 
-#: src/reports.cpp:236
+#: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "الجانب: <b>$side_name</b> ($color_name)"
 
-#: src/reports.cpp:314
+#: src/reports.cpp:318
 msgid "Trait: "
 msgstr "الصفات الشخصية: "
 
-#: src/reports.cpp:337
+#: src/reports.cpp:341
 msgid "invisible: "
 msgstr "غير مرئي: "
 
-#: src/reports.cpp:338
+#: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "هذه الوحدة غير مرئية. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
-#: src/reports.cpp:341
+#: src/reports.cpp:345
 msgid "slowed: "
 msgstr "تم ابطائه: "
 
-#: src/reports.cpp:342
+#: src/reports.cpp:346
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -8319,11 +8686,11 @@ msgstr ""
 "هذه الوحدة تم ابطائها. هجماتها لها نصف المفعول وتنقلها يحتاج ضعف نقاط الحركة "
 "المعتادة."
 
-#: src/reports.cpp:345
+#: src/reports.cpp:349
 msgid "poisoned: "
 msgstr "تم تسميمها: "
 
-#: src/reports.cpp:346
+#: src/reports.cpp:350
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8336,19 +8703,19 @@ msgstr ""
 "قدرة علاج السم أو بالبقاء في مدينة لمدة دور. السم لن يقتل الوحدة ولن تنزل "
 "نقاط حياتها إلى ما تحت نقطة واحدة."
 
-#: src/reports.cpp:349
+#: src/reports.cpp:353
 msgid "petrified: "
 msgstr "تم تجميدها: "
 
-#: src/reports.cpp:350
+#: src/reports.cpp:354
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "هذه الوحدة تم تجميدها ولا يمكنها بالتالي التحرك أو الهجوم."
 
-#: src/reports.cpp:353
+#: src/reports.cpp:357
 msgid "unhealable: "
 msgstr "غير قابل للشفاء "
 
-#: src/reports.cpp:354
+#: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
@@ -8356,135 +8723,135 @@ msgstr ""
 "هذه الوحدة غير قابلة للشفاء. لا يمكن شفاءها بواسطة المعالجين أو القرى ولا "
 "تستفيد من الراحة."
 
-#: src/reports.cpp:357
+#: src/reports.cpp:361
 msgid "invulnerable: "
 msgstr "غير قابل للاصابة: "
 
-#: src/reports.cpp:358
+#: src/reports.cpp:362
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "هذه الوحدة منيعة. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
-#: src/reports.cpp:436
+#: src/reports.cpp:439
 msgid "Ability: "
 msgstr "القدرات: "
 
-#: src/reports.cpp:438 src/reports.cpp:1001
+#: src/reports.cpp:441 src/reports.cpp:1015
 msgid " (inactive)"
 msgstr " (غير مفعل)"
 
-#: src/reports.cpp:506
+#: src/reports.cpp:505
 msgid "Resistances: "
 msgstr "المقاومة: "
 
-#: src/reports.cpp:508
+#: src/reports.cpp:507
 msgid "(Att / Def)"
 msgstr "(الهجوم/الدفاع)"
 
-#: src/reports.cpp:539
+#: src/reports.cpp:536
 msgid "Experience Modifier: "
 msgstr "تغيير الخبرة اللازمة: "
 
-#: src/reports.cpp:589
+#: src/reports.cpp:586
 msgid "Terrain: "
 msgstr "الارضية: "
 
-#: src/reports.cpp:606
+#: src/reports.cpp:603
 msgid "maximum^max."
 msgstr "الأقصى."
 
-#: src/reports.cpp:606
+#: src/reports.cpp:603
 msgid "minimum^min."
 msgstr "الأدنى."
 
-#: src/reports.cpp:611
+#: src/reports.cpp:608
 msgid "Defense: "
 msgstr "الدفاع: "
 
-#: src/reports.cpp:646 src/reports.cpp:647
+#: src/reports.cpp:643 src/reports.cpp:644
 msgid "vision:"
 msgstr "الرؤية:"
 
-#: src/reports.cpp:651 src/reports.cpp:652
+#: src/reports.cpp:648 src/reports.cpp:649
 msgid "jamming:"
 msgstr "القفز:"
 
-#: src/reports.cpp:681
+#: src/reports.cpp:678
 msgid "Movement Costs:"
 msgstr "تكلفة الحركة:"
 
-#: src/reports.cpp:823
+#: src/reports.cpp:824
 msgid "Base damage: "
 msgstr "الضرر القاعدي: "
 
-#: src/reports.cpp:825 src/reports.cpp:859 src/reports.cpp:869
+#: src/reports.cpp:826 src/reports.cpp:860 src/reports.cpp:870
 msgid "With specials: "
 msgstr "مع خاصية: "
 
-#: src/reports.cpp:828
+#: src/reports.cpp:829
 msgid "Time of day: "
 msgstr "وقت اليوم: "
 
-#: src/reports.cpp:832
+#: src/reports.cpp:833
 msgid "Leadership: "
 msgstr "القيادة: "
 
-#: src/reports.cpp:836
+#: src/reports.cpp:837
 msgid "Slowed: "
 msgstr "تم ابطائه: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:845
 msgid "Max swarm bonus: "
 msgstr "الحد الاقصى للعزم: "
 
-#: src/reports.cpp:845 src/reports.cpp:864
+#: src/reports.cpp:846 src/reports.cpp:865
 msgid "Swarm: "
 msgstr "العزم: "
 
-#: src/reports.cpp:846 src/reports.cpp:857 src/reports.cpp:868
+#: src/reports.cpp:847 src/reports.cpp:858 src/reports.cpp:869
 msgid "Base attacks: "
 msgstr "عدد الهجمات القاعدي: "
 
-#: src/reports.cpp:852
+#: src/reports.cpp:853
 msgid "Specials: "
 msgstr "الخاصية: "
 
-#: src/reports.cpp:862
+#: src/reports.cpp:863
 msgid "Subject to swarm: "
 msgstr "موضوع العزم: "
 
-#: src/reports.cpp:902
+#: src/reports.cpp:903
 msgid "Weapon range: "
 msgstr "مجال السلاح: "
 
-#: src/reports.cpp:903
+#: src/reports.cpp:904
 msgid "Damage type: "
 msgstr "نوع الضرر: "
 
-#: src/reports.cpp:904
+#: src/reports.cpp:905
 msgid "Damage versus: "
 msgstr "ضرر ضد: "
 
-#: src/reports.cpp:968
+#: src/reports.cpp:984
 msgid "Accuracy:"
 msgstr "الدقة:"
 
-#: src/reports.cpp:973
+#: src/reports.cpp:988
 msgid "Parry:"
 msgstr "التحدي:"
 
-#: src/reports.cpp:999
+#: src/reports.cpp:1013
 msgid "Weapon special: "
 msgstr "خاصية السلاح: "
 
-#: src/reports.cpp:1074
+#: src/reports.cpp:1090
 msgid "weapon^None"
 msgstr "لا سلاح"
 
-#: src/reports.cpp:1103
+#: src/reports.cpp:1120
 msgid "Total damage"
 msgstr "الضرر الجملي"
 
-#: src/reports.cpp:1167
+#: src/reports.cpp:1178
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "هجمة"
@@ -8495,74 +8862,74 @@ msgstr[4] "هجوما"
 msgstr[5] "هجمة"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1175
+#: src/reports.cpp:1185
 msgid "Remaining: $left/$max"
 msgstr "المتبقي: $left/$max"
 
-#: src/reports.cpp:1179
+#: src/reports.cpp:1189
 msgid "This unit can attack multiple times per turn."
 msgstr "هذه الوحدة يمكنها الهجوم عدة مرات في الدور الواحد."
 
-#: src/reports.cpp:1271
+#: src/reports.cpp:1281
 msgid "Time of day schedule:"
 msgstr "جدول توقيت اليوم:"
 
-#: src/reports.cpp:1320
+#: src/reports.cpp:1332
 msgid "Time of day:"
 msgstr "توقيت اليوم:"
 
-#: src/reports.cpp:1321 src/reports.cpp:1375
+#: src/reports.cpp:1333 src/reports.cpp:1387
 msgid "Lawful units: "
 msgstr "الوحدات النهارية: "
 
-#: src/reports.cpp:1323 src/reports.cpp:1377
+#: src/reports.cpp:1335 src/reports.cpp:1389
 msgid "Neutral units: "
 msgstr "الوحدات المحايدة "
 
-#: src/reports.cpp:1324 src/reports.cpp:1378
+#: src/reports.cpp:1336 src/reports.cpp:1390
 msgid "Chaotic units: "
 msgstr "الوحدات الليلية "
 
-#: src/reports.cpp:1326 src/reports.cpp:1380
+#: src/reports.cpp:1338 src/reports.cpp:1392
 msgid "Liminal units: "
 msgstr "الوحدات الفجرية "
 
-#: src/reports.cpp:1439
+#: src/reports.cpp:1453
 msgid "Turn Number"
 msgstr "رقم الدور"
 
-#: src/reports.cpp:1441
+#: src/reports.cpp:1457
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "عند تجاوز عدد الأدوار الاقصى المحدد تنتهي اللعبة."
 
-#: src/reports.cpp:1466
+#: src/reports.cpp:1480
 msgid "Gold"
 msgstr "الذهب"
 
-#: src/reports.cpp:1466
+#: src/reports.cpp:1480
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "كمية الذهب المتوفرة لتجنيد وصيانة الوحدات."
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1498
 msgid "The fraction of known villages that your side has captured."
 msgstr "عدد المدن التي يسيطر عليها طرفك."
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1498
 msgid "Villages"
 msgstr "المدن"
 
-#: src/reports.cpp:1489
+#: src/reports.cpp:1503
 msgid "The total number of units on your side."
 msgstr "عدد الوحدات في طرفك."
 
-#: src/reports.cpp:1489
+#: src/reports.cpp:1503
 msgid "Units"
 msgstr "الوحدات"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1512
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8575,15 +8942,15 @@ msgstr ""
 "هو التكلفة الإجمالية للصيانة، بما في ذلك تلك التي تغطيها القرى - وبعبارة "
 "أخرى، كمية الذهب التي سيتم خصمها إذا فقدت جميع القرى."
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1512
 msgid "Upkeep"
 msgstr "الصيانة"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1542
 msgid "Net Income"
 msgstr "المدخول الخام"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1542
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8591,58 +8958,58 @@ msgstr ""
 "صافي مبلغ الذهب الذي تكسبه أو تخسره في كل دور، مع الأخذ في الاعتبار الدخل من "
 "القرى الخاضعة للسيطرة ودفع الصيانة."
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1743
 msgid "Observers:"
 msgstr "المراقبون:"
 
-#: src/reports.cpp:1751
+#: src/reports.cpp:1763
 msgid "Clock"
 msgstr "الساعة"
 
-#: src/reports.cpp:1762
+#: src/reports.cpp:1774
 msgid "Battery"
 msgstr "البطارية"
 
-#: src/reports.cpp:1792
+#: src/reports.cpp:1819
 msgid "Countdown until your turn automatically ends."
 msgstr "ميقات يحدد الزمن قبل نهاية دورك آليا."
 
-#: src/reports.cpp:1792
+#: src/reports.cpp:1819
 msgid "Turn Countdown"
 msgstr "ميقات الدور"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
-#: src/save_index.cpp:255
+#: src/save_index.cpp:254
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
-#: src/save_index.cpp:257
+#: src/save_index.cpp:256
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:277 src/savegame.cpp:578
+#: src/save_index.cpp:276 src/savegame.cpp:580
 msgid "replay"
 msgstr "إعادة عرض"
 
-#: src/save_index.cpp:361 src/savegame.cpp:64 src/savegame.cpp:614
-#: src/savegame.cpp:616
+#: src/save_index.cpp:360 src/savegame.cpp:65 src/savegame.cpp:616
+#: src/savegame.cpp:618
 msgid "Auto-Save"
 msgstr "حفظ آلي"
 
-#: src/savegame.cpp:198 src/savegame.cpp:200
+#: src/savegame.cpp:199 src/savegame.cpp:201
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "تحذير: الملف الذي حاولت تحميله تالف. جاري التحميل على أية حال.\n"
 
-#: src/savegame.cpp:244
+#: src/savegame.cpp:245
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 "هذا الحفظ من إصدار قديم وغير مدعوم في ($version_number|) ولا يمكن تحميله."
 
-#: src/savegame.cpp:253
+#: src/savegame.cpp:254
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -8668,36 +9035,39 @@ msgstr ""
 "السيناريوهات المبكرة، ولكن توقع أن تتمتع قائمة الاستدعاء الخاصة بك بخبرة أقل "
 "في السيناريوهات التالية. هل ترغب في الاستمرار؟"
 
-#: src/savegame.cpp:267 src/savegame.cpp:313
+#: src/savegame.cpp:268 src/savegame.cpp:314
 msgid "Load Game"
 msgstr "تحميل اللعبة"
 
-#: src/savegame.cpp:313
+#: src/savegame.cpp:314
 msgid "Replays are not supported in multiplayer mode."
 msgstr "الإعادة غير مدعومة في وضع اللعب المتعدد."
 
-#: src/savegame.cpp:320
+#: src/savegame.cpp:321
 msgid "This is not a multiplayer save."
 msgstr "هذا ليس حفظًا متعدد اللاعبين."
 
-#: src/savegame.cpp:354
+#: src/savegame.cpp:355
 msgid "The game could not be saved: "
 msgstr "تعذر حفظ اللعبة: "
 
-#: src/savegame.cpp:423
+#: src/savegame.cpp:424
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "المحفوظ موجود بالفعل. هل تريد الكتابة عليه؟"
 
-#: src/savegame.cpp:424
+#: src/savegame.cpp:425
 msgid "Overwrite?"
 msgstr "إعادة الكتابة؟"
 
-#: src/savegame.cpp:431
+#: src/savegame.cpp:432
+#, fuzzy
+#| msgid ""
+#| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgid ""
-"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
+"Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr "يجب ألا تنتهي أسماء الحفظ بـ '.gz' أو '.bz2'. من فضلك امسح الامتداد."
 
-#: src/savegame.cpp:436
+#: src/savegame.cpp:437
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -8707,31 +9077,31 @@ msgstr ""
 "التالية:\n"
 " \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:483
+#: src/savegame.cpp:485
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: src/savegame.cpp:483
+#: src/savegame.cpp:485
 msgid "The game has been saved."
 msgstr "تم حفظ اللعبة."
 
-#: src/savegame.cpp:515 src/savegame.cpp:532
+#: src/savegame.cpp:517 src/savegame.cpp:534
 msgid "Could not write to file"
 msgstr "تعذرت الكتابة إلى الملف"
 
-#: src/savegame.cpp:567
+#: src/savegame.cpp:569
 msgid "Save Replay"
 msgstr "حفظ الإعادة"
 
-#: src/savegame.cpp:596
+#: src/savegame.cpp:598
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "تعذر حفظ اللعبة تلقائيًا. الرجاء حفظ اللعبة يدويا."
 
-#: src/savegame.cpp:646
+#: src/savegame.cpp:648
 msgid "Save Game"
 msgstr "حفظ اللعبة"
 
-#: src/savegame.cpp:660
+#: src/savegame.cpp:662
 msgid "Game state is corrupted"
 msgstr "حالة اللعبة تالفة"
 
@@ -8800,92 +9170,94 @@ msgid "at $pos"
 msgstr "في $pos"
 
 #: src/serialization/parser.cpp:480
-msgid "Value: '$value' Previous: '$previous_value'"
+#, fuzzy
+#| msgid "Value: '$value' Previous: '$previous_value'"
+msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "القيمة: '$value' السابقة: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:557
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_milli^m"
 msgstr "ملي"
 
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_micro^µ"
 msgstr "ميكرو"
 
-#: src/serialization/string_utils.cpp:559
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_nano^n"
 msgstr "نانو"
 
-#: src/serialization/string_utils.cpp:560
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_pico^p"
 msgstr "بيكو"
 
-#: src/serialization/string_utils.cpp:561
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_femto^f"
 msgstr "فيمتو"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_atto^a"
 msgstr "آتو"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_zepto^z"
 msgstr "زيبتو"
 
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_yocto^y"
 msgstr "يوكتو"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_kibi^K"
 msgstr "كيبي"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_kilo^k"
 msgstr "كيلو"
 
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_mega^M"
 msgstr "ميغا"
 
-#: src/serialization/string_utils.cpp:581
+#: src/serialization/string_utils.cpp:582
 msgid "prefix_giga^G"
 msgstr "جيغا"
 
-#: src/serialization/string_utils.cpp:582
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_tera^T"
 msgstr "تيرا"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_peta^P"
 msgstr "بيتا"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_exa^E"
 msgstr "ايكسا"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:586
 msgid "prefix_zetta^Z"
 msgstr "زيتا"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_yotta^Y"
 msgstr "يوتا"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:601
+#: src/serialization/string_utils.cpp:602
 msgid "infix_binary^i"
 msgstr "إ"
 
-#: src/synced_commands.cpp:411
+#: src/synced_commands.cpp:380
 msgid "(unknown player)"
 msgstr "(لاعب غير معروف)"
 
-#: src/synced_commands.cpp:416
+#: src/synced_commands.cpp:385
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "تم استخدام الأمر :$command التصحيحي أثناء دور $player"
 
-#: src/synced_commands.cpp:424
+#: src/synced_commands.cpp:393
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
@@ -8893,23 +9265,23 @@ msgstr ""
 "استخدم أحد اللاعبين أمر التصحيح أثناء اللعبة. إذا كان هذا غير متوقع، فمن "
 "الممكن أن اللاعب المعني يغش."
 
-#: src/synced_commands.cpp:426
+#: src/synced_commands.cpp:395
 msgid "Details:"
 msgstr "التفاصيل:"
 
-#: src/synced_commands.cpp:429
+#: src/synced_commands.cpp:398
 msgid "Do you wish to save the game before continuing?"
 msgstr "هل ترغب في حفظ اللعبة قبل المتابعة؟"
 
-#: src/synced_commands.cpp:431
+#: src/synced_commands.cpp:400
 msgid "Debug Command Used"
 msgstr "أمر تصحيح مستخدم"
 
-#: src/synced_commands.cpp:543
+#: src/synced_commands.cpp:506
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "تم إنشاء وحدة باستخدام وضع التصحيح أثناء دور $player"
 
-#: src/synced_user_choice.cpp:341
+#: src/synced_user_choice.cpp:343
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "في انتظار $desc من الجانب $side"
@@ -8928,19 +9300,19 @@ msgstr "الإدخال"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1005
+#: src/team.cpp:995
 msgid "“$color_id”"
 msgstr "“$color_id”"
 
-#: src/terrain/terrain.cpp:191
+#: src/terrain/terrain.cpp:190
 msgid "Allied village"
 msgstr "قرية حلفاء"
 
-#: src/terrain/terrain.cpp:196
+#: src/terrain/terrain.cpp:195
 msgid "Enemy village"
 msgstr "قرية عدو"
 
-#: src/terrain/terrain.cpp:201
+#: src/terrain/terrain.cpp:200
 msgid "Owned village"
 msgstr "قرية مملوكة"
 
@@ -8961,26 +9333,26 @@ msgstr "روتين الوقت من اليوم"
 msgid "This Time of Day is only a Stub!"
 msgstr "هذا الوقت من اليوم هو مجرد روتين!"
 
-#: src/units/abilities.cpp:1075
+#: src/units/abilities.cpp:1052
 msgid "Owned: "
 msgstr "يملكه: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1079
+#: src/units/abilities.cpp:1056
 msgid "Taught: "
 msgstr "علم: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1083
+#: src/units/abilities.cpp:1060
 msgid "Taught: (by an enemy): "
 msgstr "علّمت: (من قبل عدو): "
 
-#: src/units/abilities.cpp:1096
+#: src/units/abilities.cpp:1073
 msgid "Used by opponent: "
 msgstr "يستخدمه الخصم: "
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:567
+#: src/units/attack_type.cpp:547
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -8988,7 +9360,7 @@ msgid "$number min range"
 msgstr "$number ضرر"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:574
+#: src/units/attack_type.cpp:554
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8996,7 +9368,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضرر"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:581
+#: src/units/attack_type.cpp:561
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9004,7 +9376,7 @@ msgid "$number max range"
 msgstr "$number ضرر"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:588
+#: src/units/attack_type.cpp:568
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9012,7 +9384,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضرر"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:575
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ضرر"
@@ -9022,7 +9394,7 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> أضرار"
 
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:584
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number ضرر"
@@ -9033,7 +9405,7 @@ msgstr[4] "$number أضرار"
 msgstr[5] "$number أضرار"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:613
+#: src/units/attack_type.cpp:593
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> إصابة"
@@ -9044,7 +9416,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> إصابات"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> إصابات"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:622
+#: src/units/attack_type.cpp:602
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number إصابة"
@@ -9055,27 +9427,27 @@ msgstr[4] "$number إصابات"
 msgstr[5] "$number إصابات"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:631
+#: src/units/attack_type.cpp:611
 msgid "$number| accuracy"
 msgstr "$number| الدقة"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:638
+#: src/units/attack_type.cpp:618
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> الدقة"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:645
+#: src/units/attack_type.cpp:625
 msgid "$number parry"
 msgstr "$number تحدي"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:652
+#: src/units/attack_type.cpp:632
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> تحدي"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:659
+#: src/units/attack_type.cpp:639
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number نقطة حركة"
@@ -9086,7 +9458,7 @@ msgstr[4] "$number نقاط حركة"
 msgstr[5] "$number نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:668
+#: src/units/attack_type.cpp:648
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> نقطة حركة"
@@ -9097,7 +9469,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:677
+#: src/units/attack_type.cpp:657
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number هجوم مستخدم"
@@ -9108,7 +9480,7 @@ msgstr[4] "$number هجوم مستخدم"
 msgstr[5] "$number هجوم مستخدم"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:686
+#: src/units/attack_type.cpp:666
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> هجوم مستخدم"
@@ -9118,49 +9490,81 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> هجومات مست�
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> هجوم مستخدم"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> هجوم مستخدم"
 
-#: src/units/helper.cpp:57
+#: src/units/helper.cpp:63
 msgid "Level: "
 msgstr "المستوى: "
 
-#: src/units/helper.cpp:60
+#: src/units/helper.cpp:66
 msgid "Advancements:"
 msgstr "التطورات:"
 
-#: src/units/helper.cpp:73
+#: src/units/helper.cpp:78
 msgid "No advancement"
 msgstr "لا تطور"
 
-#: src/units/types.cpp:845 src/units/types.cpp:853
+#: src/units/helper.cpp:178
+msgid "Internal error. Please report this as a bug! Details:\n"
+msgstr "خطأ داخلي. يرجى الإبلاغ عن هذا باعتباره خطأ! تفاصيل:\n"
+
+#: src/units/helper.cpp:184
+msgid "You cannot recruit a $unit_type_name at this time."
+msgstr "لا يمكنك تجنيد $unit_type_name في هذا الوقت."
+
+#. TRANSLATORS: "plan" refers to Planning Mode
+#: src/units/helper.cpp:200
+msgid ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
+msgstr ""
+"في هذه المرحلة من خطتك، لن يكون لديك ما يكفي من الذهب لتجنيد هذه الوحدة."
+
+#: src/units/helper.cpp:202
+msgid "You do not have enough gold to recruit this unit."
+msgstr "ليس لديك ما يكفي من الذهب لتجنيد هذه الوحدة."
+
+#: src/units/types.cpp:847 src/units/types.cpp:855
 msgid "female^lawful"
 msgstr "نهارية"
 
-#: src/units/types.cpp:847
+#: src/units/types.cpp:849
 msgid "female^neutral"
 msgstr "الوحدات المحايدة"
 
-#: src/units/types.cpp:849
+#: src/units/types.cpp:851
 msgid "female^chaotic"
 msgstr "ظلامي"
 
-#: src/units/types.cpp:851
+#: src/units/types.cpp:853
 msgid "female^liminal"
 msgstr "فجرية"
 
-#: src/units/types.cpp:859 src/units/types.cpp:867
+#: src/units/types.cpp:861 src/units/types.cpp:869
 msgid "lawful"
 msgstr "نهاري"
 
-#: src/units/types.cpp:861
+#: src/units/types.cpp:863
 msgid "neutral"
 msgstr "محايد"
 
-#: src/units/types.cpp:863
+#: src/units/types.cpp:865
 msgid "chaotic"
 msgstr "ظلامي"
 
-#: src/units/types.cpp:865
+#: src/units/types.cpp:867
 msgid "liminal"
 msgstr "حدي"
+
+#: src/units/unit.cpp:358
+#, fuzzy
+#| msgid "This unit has no usable weapons."
+msgid "This unit cannot be dismissed."
+msgstr "هذه الوحدة ليس لديها أسلحة قابلة للاستخدام."
+
+#: src/units/unit.cpp:722
+#, fuzzy
+#| msgid "This unit is invulnerable. It cannot be harmed by any attack."
+msgid "This unit is a leader and cannot be dismissed."
+msgstr "هذه الوحدة منيعة. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
 #: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
@@ -9207,7 +9611,7 @@ msgstr[5] "<span color=\"$color\">$number_or_percent</span> هجوم في الد
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> تكلفة الاستدعاء"
 
-#: src/units/unit.cpp:2507
+#: src/units/unit.cpp:2505
 msgid "$effect_description per level"
 msgstr "$effect_description لكل مستوى"
 
@@ -9231,7 +9635,7 @@ msgstr "$year قبل الانهيار"
 msgid "$year AF"
 msgstr "$year بعد الانهيار"
 
-#: src/wesnoth.cpp:720
+#: src/wesnoth.cpp:790
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9241,7 +9645,7 @@ msgstr ""
 "المجلد غير الصحيحة، أو برنامج مكافحة الفيروسات الذي يقيد الوصول إلى المجلد، "
 "أو استخدام OneDrive لإدارة مجلد المستندات."
 
-#: src/wesnoth.cpp:721
+#: src/wesnoth.cpp:791
 msgid "Logging Failure"
 msgstr "فشل التسجيل"
 
@@ -9268,6 +9672,27 @@ msgstr "إخفاء مخططات اللاعب $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "خيارات اللوحة"
+
+#~ msgid "Lato Light"
+#~ msgstr "ضوء لاتو"
+
+#~ msgid "No units found."
+#~ msgstr "لم يتم العثور على وحدات."
+
+#~ msgid "No unit recruited."
+#~ msgstr "لم يتم تجنيد أي وحدة."
+
+#~ msgid "No unit recalled."
+#~ msgstr "لم يتم استدعاء أي وحدة."
+
+#~ msgid "Invalid Color"
+#~ msgstr "لون غير صالح"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "إشارة إلى موضوع غير معروف: "
+
+#~ msgid "corrupted original file"
+#~ msgstr "الملف الأصلي تالف"
 
 #, fuzzy
 #~| msgid ""

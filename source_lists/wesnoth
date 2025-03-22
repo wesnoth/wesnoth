@@ -61,7 +61,6 @@ animated.cpp
 attack_prediction.cpp
 build_info.cpp
 carryover.cpp
-carryover_show_gold.cpp
 chat_command_handler.cpp
 chat_events.cpp
 chat_log.cpp
@@ -131,7 +130,6 @@ game_events/manager_impl.cpp
 game_events/menu_item.cpp
 game_events/pump.cpp
 game_events/wmi_manager.cpp
-game_initialization/configure_engine.cpp
 game_initialization/connect_engine.cpp
 game_initialization/create_engine.cpp
 game_initialization/depcheck.cpp
@@ -164,12 +162,14 @@ gui/core/placer/vertical_list.cpp
 gui/core/static_registry.cpp
 gui/core/timer.cpp
 gui/core/top_level_drawable.cpp
+gui/core/tracked_drawable.cpp
 gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
 gui/core/window_builder/instance.cpp
 gui/dialogs/achievements_dialog.cpp
 gui/dialogs/addon/addon_auth.cpp
+gui/dialogs/addon/addon_server_info.cpp
 gui/dialogs/addon/connect.cpp
 gui/dialogs/addon/install_dependencies.cpp
 gui/dialogs/addon/license_prompt.cpp
@@ -204,6 +204,7 @@ gui/dialogs/file_dialog.cpp
 gui/dialogs/file_progress.cpp
 gui/dialogs/folder_create.cpp
 gui/dialogs/formula_debugger.cpp
+gui/dialogs/fps_report.cpp
 gui/dialogs/game_cache_options.cpp
 gui/dialogs/game_delete.cpp
 gui/dialogs/game_load.cpp
@@ -248,6 +249,7 @@ gui/dialogs/preferences_dialog.cpp
 gui/dialogs/prompt.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
+gui/dialogs/reachmap_options.cpp
 gui/dialogs/server_info_dialog.cpp
 gui/dialogs/simple_item_selector.cpp
 gui/dialogs/sp_options_configure.cpp
@@ -261,10 +263,7 @@ gui/dialogs/tooltip.cpp
 gui/dialogs/transient_message.cpp
 gui/dialogs/unit_advance.cpp
 gui/dialogs/unit_attack.cpp
-gui/dialogs/unit_create.cpp
-gui/dialogs/unit_list.cpp
-gui/dialogs/unit_recall.cpp
-gui/dialogs/unit_recruit.cpp
+gui/dialogs/units_dialog.cpp
 gui/dialogs/wml_error.cpp
 gui/dialogs/wml_message.cpp
 gui/gui.cpp
@@ -309,7 +308,6 @@ play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
 playturn_network_adapter.cpp
-preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp
@@ -366,7 +364,6 @@ synced_checkup.cpp
 synced_commands.cpp
 synced_context.cpp
 synced_user_choice.cpp
-syncmp_handler.cpp
 team.cpp
 teambuilder.cpp
 terrain/filter.cpp
@@ -382,13 +379,13 @@ units/formula_manager.cpp
 units/frame.cpp
 units/helper.cpp
 units/id.cpp
-units/make.cpp
 units/map.cpp
 units/orb_status.cpp
 units/race.cpp
 units/types.cpp
 units/udisplay.cpp
 units/unit.cpp
+utils/charconv.cpp
 utils/config_filters.cpp
 utils/context_free_grammar_generator.cpp
 utils/irdya_datetime.cpp

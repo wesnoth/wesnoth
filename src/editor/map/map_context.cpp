@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,6 +56,10 @@ editor_team_info::editor_team_info(const team& t)
 }
 
 const std::size_t map_context::max_action_stack_size_ = 100;
+
+namespace {
+	static const int editor_team_default_gold = 100;
+}
 
 map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
 	: filename_()
@@ -261,7 +265,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 				try {
 					// 5.1 The file can be loaded by the editor as a scenario
 					if(file_string.find("<<") != std::string::npos) {
-						throw editor_map_load_exception(filename, _("Found the characters '<<' indicating inline lua is present - aborting"));
+						throw editor_map_load_exception(filename, _("Found the characters ‘<<’ indicating inline lua is present — aborting"));
 					}
 					load_scenario();
 				} catch(const std::exception&) {
@@ -307,6 +311,7 @@ void map_context::new_side()
 	config cfg;
 	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
 	cfg["hidden"] = false;
+	cfg["gold"] = editor_team_default_gold;
 
 	teams_.back().build(cfg, map());
 
@@ -419,29 +424,29 @@ config map_context::convert_scenario(const config& old_scenario)
 	//   if [unit], set the unit's side
 	// for [time]:
 	//   keep under [multiplayer]
-	for(const config::any_child child : old_scenario.all_children_range()) {
-		if(child.key != "side" && child.key != "time") {
-			config& c = event.add_child(child.key);
-			c.append_attributes(child.cfg);
-			c.append_children(child.cfg);
-		} else if(child.key == "side") {
+	for(const auto [child_key, child_cfg]: old_scenario.all_children_view()) {
+		if(child_key != "side" && child_key != "time") {
+			config& c = event.add_child(child_key);
+			c.append_attributes(child_cfg);
+			c.append_children(child_cfg);
+		} else if(child_key == "side") {
 			config& c = multiplayer.add_child("side");
-			c.append_attributes(child.cfg);
-			for(const config::any_child side_child : child.cfg.all_children_range()) {
-				if(side_child.key == "village") {
+			c.append_attributes(child_cfg);
+			for(const auto [side_key, side_cfg] : child_cfg.all_children_view()) {
+				if(side_key == "village") {
 					config& c1 = c.add_child("village");
-					c1.append_attributes(side_child.cfg);
+					c1.append_attributes(side_cfg);
 				} else {
-					config& c1 = event.add_child(side_child.key);
-					c1.append_attributes(side_child.cfg);
-					if(side_child.key == "unit") {
-						c1["side"] = child.cfg["side"];
+					config& c1 = event.add_child(side_key);
+					c1.append_attributes(side_cfg);
+					if(side_key == "unit") {
+						c1["side"] = child_cfg["side"];
 					}
 				}
 			}
-		} else if(child.key == "time") {
+		} else if(child_key == "time") {
 			config& c = multiplayer.add_child("time");
-			c.append_attributes(child.cfg);
+			c.append_attributes(child_cfg);
 		}
 	}
 
@@ -732,7 +737,7 @@ config map_context::to_config()
 	// [unit]s
 	config traits;
 	preproc_map traits_map;
-	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+	read(traits, *(preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map)));
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -756,10 +761,11 @@ config map_context::to_config()
 			u["unrenamable"] = unit.unrenamable();
 		}
 
+		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
 			config trait_loyal;
-			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
-			u.append(trait_loyal);
+			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
+			mods.append(trait_loyal);
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.

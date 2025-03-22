@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2024
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 
 #include "config.hpp"
 #include "gui/core/canvas.hpp"
-#include "gui/core/event/handler.hpp" // for open_window_stack
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -56,7 +55,7 @@ int intf_show_dialog(lua_State* L)
 	config def_cfg = luaW_checkconfig(L, 1);
 	gui2::builder_window::window_resolution def(def_cfg);
 
-	std::unique_ptr<gui2::window> wp(gui2::build(def));
+	auto wp = std::make_unique<gui2::window>(def);
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
@@ -64,13 +63,7 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
-	int v = [&wp]() {
-		gui2::open_window_stack.push_back(wp.get());
-		ON_SCOPE_EXIT(&wp) {
-			gui2::remove_from_window_stack(wp.get());
-		};
-		return wp->show();
-	}();
+	int v = wp->show();
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -280,7 +273,30 @@ static int intf_remove_dialog_item(lua_State* L)
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 
-	return 1;
+	return 0;
+}
+
+/**
+ * Removes all entries from a list.
+ * - Arg 1: widget
+*/
+static int intf_clear_items(lua_State* L)
+{
+	gui2::widget* w = &luaW_checkwidget(L, 1);
+
+	if(auto* lb = dynamic_cast<gui2::listbox*>(w)) {
+		lb->clear();
+	} else if(auto* mp = dynamic_cast<gui2::multi_page*>(w)) {
+		mp->clear();
+	} else if(auto* tv = dynamic_cast<gui2::tree_view*>(w)) {
+		tv->clear();
+	} else if(auto* tvn = dynamic_cast<gui2::tree_view_node*>(w)) {
+		tvn->clear();
+	} else {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
+
+	return 0;
 }
 
 namespace { // helpers of intf_set_dialog_callback()
@@ -366,7 +382,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	cv[i - 1].set_cfg(cfg);
+	cv[i - 1].set_shapes(cfg);
 	c->queue_redraw();
 	return 0;
 }
@@ -463,14 +479,15 @@ int luaW_open(lua_State* L)
 	lk.add_log("Adding widgets module...\n");
 	static luaL_Reg const gui_callbacks[] = {
 		//TODO: the naming is a bit arbitrary: widgets with different
-		//      types of elements use add_node, eidgets with only
+		//      types of elements use add_node, widgets with only
 		//      one type of element use add_element
 		{ "add_item_of_type",   &intf_add_item_of_type },
 		{ "add_item",           &intf_add_dialog_item },
 		{ "focus",              &intf_set_dialog_focus },
 		{ "set_canvas",         &intf_set_dialog_canvas },
 		{ "set_callback",       &intf_set_dialog_callback },
-		{ "remove_items_at",     &intf_remove_dialog_item },
+		{ "remove_items_at",    &intf_remove_dialog_item },
+		{ "clear_items",     	&intf_clear_items },
 		{ "find",               &intf_find_widget },
 		{ "close",              &intf_dialog_close },
 		{ nullptr, nullptr },

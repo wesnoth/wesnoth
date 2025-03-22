@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -190,7 +190,7 @@ namespace implementation
 builder_button::builder_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 }
 

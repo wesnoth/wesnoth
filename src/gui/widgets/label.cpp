@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -246,7 +246,7 @@ namespace implementation
 builder_label::builder_label(const config& cfg)
 	: builder_styled_widget(cfg)
 	, wrap(cfg["wrap"].to_bool())
-	, characters_per_line(cfg["characters_per_line"])
+	, characters_per_line(cfg["characters_per_line"].to_unsigned())
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, can_shrink(cfg["can_shrink"].to_bool(false))
 	, link_aware(cfg["link_aware"].to_bool(false))

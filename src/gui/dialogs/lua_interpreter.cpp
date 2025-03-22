@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/lua_interpreter.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -31,9 +30,10 @@
 #include "play_controller.hpp"
 #include "resources.hpp" //for help fetching lua kernel pointers
 #include "scripting/plugins/manager.hpp" //needed for the WHICH_KERNEL version of display
-#include "scripting/game_lua_kernel.hpp"	//needed for the WHICH_KERNEL version of display
+#include "scripting/game_lua_kernel.hpp" //needed for the WHICH_KERNEL version of display
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
@@ -71,7 +71,7 @@ public:
 	/** Bind the scroll label widget to my pointer, and configure */
 	void bind(window& window) {
 		window_ = &window;
-		msg_label = find_widget<scroll_label>(&window, "msg", false, true);
+		msg_label = window_->find_widget<scroll_label>("msg", false, true);
 		msg_label->set_use_markup(true);
 		msg_label->set_vertical_scrollbar_mode(scrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
@@ -352,8 +352,8 @@ public:
 	/** Bind my pointers to the widgets found in the window */
 	void bind(window& window);
 
-	void handle_copy_button_clicked(window & window);
-	void handle_clear_button_clicked(window & window);
+	void handle_copy_button_clicked();
+	void handle_clear_button_clicked();
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
@@ -384,7 +384,7 @@ bool lua_interpreter::lua_model::execute (const std::string & cmd)
 
 /** Add a dialog message, which will appear in blue. */
 void lua_interpreter::lua_model::add_dialog_message(const std::string & msg) {
-	log_ << "<span color='#8888FF'>" << font::escape_text(msg) << "</span>\n";
+	log_ << markup::span_color("#8888FF", font::escape_text(msg)) << "\n";
 	raw_log_ << msg << '\n';
 }
 
@@ -411,9 +411,7 @@ void lua_interpreter::controller::bind(window& window)
 	assert(view_);
 	view_->bind(window);
 
-	text_entry = find_widget<text_box>(&window, "text_entry", false, true);
-	//text_entry->set_text_changed_callback(
-	//		std::bind(&view::filter, this, std::ref(window)));
+	text_entry = window.find_widget<text_box>("text_entry", false, true);
 	window.keyboard_capture(text_entry);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
@@ -427,32 +425,28 @@ void lua_interpreter::controller::bind(window& window)
 						std::placeholders::_5,
 						std::ref(window)));
 
-	copy_button = find_widget<button>(&window, "copy", false, true);
+	copy_button = window.find_widget<button>("copy", false, true);
 	connect_signal_mouse_left_click(
 			*copy_button,
-			std::bind(&lua_interpreter::controller::handle_copy_button_clicked,
-						this,
-						std::ref(window)));
+			std::bind(&lua_interpreter::controller::handle_copy_button_clicked, this));
 
-	clear_button = find_widget<button>(&window, "clear", false, true);
+	clear_button = window.find_widget<button>("clear", false, true);
 	connect_signal_mouse_left_click(
 			*clear_button,
-			std::bind(&lua_interpreter::controller::handle_clear_button_clicked,
-						this,
-						std::ref(window)));
+			std::bind(&lua_interpreter::controller::handle_clear_button_clicked, this));
 
 	LOG_LUA << "Exiting lua_interpreter::controller::bind";
 }
 
 /** Copy text to the clipboard */
-void lua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_copy_button_clicked()
 {
 	assert(lua_model_);
 	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log());
 }
 
 /** Clear the text */
-void lua_interpreter::controller::handle_clear_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_clear_button_clicked()
 {
 	assert(lua_model_);
 	lua_model_->clear_log();
@@ -631,7 +625,7 @@ void lua_interpreter::display(lua_kernel_base * lk) {
 #ifndef ALWAYS_HAVE_LUA_CONSOLE
 	if(!game_config::debug && resources::controller) {
 		display_chat_manager& chat_man = resources::controller->get_display().get_chat_manager();
-		const std::string& message = _("The lua console can only be used in debug mode! (Run ':debug' first)");
+		const std::string& message = _("The lua console can only be used in debug mode! (Run ‘:debug’ first)");
 		chat_man.add_chat_message(time(nullptr), _("lua console"), 0, message, events::chat_handler::MESSAGE_PRIVATE, false);
 		return;
 	}
@@ -654,13 +648,13 @@ void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
 }
 
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
-void lua_interpreter::pre_show(window& window)
+void lua_interpreter::pre_show()
 {
 	LOG_LUA << "Entering lua_interpreter::view::pre_show";
 	register_text("text_entry", false, controller_->text_entry_, true);
-	controller_->bind(window);
+	controller_->bind(*this);
 
-	label *kernel_type_label = find_widget<label>(&window, "kernel_type", false, true);
+	label *kernel_type_label = find_widget<label>("kernel_type", false, true);
 	kernel_type_label->set_label(controller_->lua_model_->get_name());
 
 	controller_->update_view();

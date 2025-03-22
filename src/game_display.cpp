@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,8 @@
  */
 
 #include "game_display.hpp"
+
+#include <utility>
 
 
 #include "cursor.hpp"
@@ -50,22 +52,13 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location, int> game_display::debugHighlights_;
-
-/**
- * Function to return 2 half-hex footsteps images for the given location.
- * Only loc is on the current route set by set_route.
- *
- * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
- */
-std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
 game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
 		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_id, level)
+	: display(&board, std::move(wb), reports_object, theme_id, level)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -118,15 +111,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
+	const unit *u = context().get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = dc_->get_visible_unit(mouseoverHex_, viewing_team(), !dont_show_all_);
+		u = context().get_visible_unit(mouseoverHex_, viewing_team(), !dont_show_all_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (dc_->units().count(selectedHex_)) {
+			if (context().units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -145,7 +138,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
+	const unit *u = context().get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -162,7 +155,7 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 
 void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force)
 {
-	unit_map::const_iterator leader = dc_->units().find_leader(side);
+	unit_map::const_iterator leader = context().units().find_leader(side);
 
 	if(leader.valid() && leader->is_visible_to_team(viewing_team(), false)) {
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
@@ -202,12 +195,11 @@ void game_display::draw_invalidated()
 	}
 	unit_drawer drawer = unit_drawer(*this);
 
-	for (const unit* temp_unit : *fake_unit_man_) {
+	for(const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (invalidated_.find(loc) != invalidated_.end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
+		if(utils::contains(invalidated_, loc) && unit_can_draw_here(loc, *temp_unit)) {
 			drawer.redraw_unit(*temp_unit);
+		}
 	}
 }
 
@@ -224,11 +216,83 @@ const std::string mouseover_self_bot = "misc/hover-hex-bottom.png~RC(magenta>gre
 
 const std::string mouseover_ally_top = "misc/hover-hex-top.png~RC(magenta>lightblue)";
 const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+
+/**
+ * Function to return 2 half-hex footsteps images for the given location.
+ * Only loc is on the current route set by set_route.
+ */
+std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route& route, const display_context* dc)
+{
+	std::vector<texture> res;
+
+	if (route.steps.size() < 2) {
+		return res; // no real "route"
+	}
+
+	std::vector<map_location>::const_iterator i =
+			 std::find(route.steps.begin(),route.steps.end(),loc);
+
+	if( i == route.steps.end()) {
+		return res; // not on the route
+	}
+
+	// Check which footsteps images of game_config we will use
+	int move_cost = 1;
+	const unit_map::const_iterator u = dc->units().find(route.steps.front());
+	if(u != dc->units().end()) {
+		move_cost = u->movement_cost(dc->map().get_terrain(loc));
+	}
+	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
+	if (image_number < 1) {
+		return res; // Invalid movement cost or no images
+	}
+	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
+
+	texture teleport;
+
+	// We draw 2 half-hex (with possibly different directions),
+	// but skip the first for the first step.
+	const int first_half = (i == route.steps.begin()) ? 1 : 0;
+	// and the second for the last step
+	const int second_half = (i+1 == route.steps.end()) ? 0 : 1;
+
+	for (int h = first_half; h <= second_half; ++h) {
+		const std::string sense( h==0 ? "-in" : "-out" );
+
+		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
+			std::string teleport_image =
+			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
+			teleport = image::get_texture(teleport_image, image::HEXED);
+			continue;
+		}
+
+		// In function of the half, use the incoming or outgoing direction
+		map_location::direction dir = (i+(h-1))->get_relative_dir(*(i+h));
+
+		std::string rotate;
+		if (dir > map_location::direction::south_east) {
+			// No image, take the opposite direction and do a 180 rotation
+			dir = i->get_opposite_direction(dir);
+			rotate = "~FL(horiz)~FL(vert)";
+		}
+
+		const std::string image = foot_speed_prefix
+			+ sense + "-" + i->write_direction(dir)
+			+ ".png" + rotate;
+
+		res.push_back(image::get_texture(image, image::HEXED));
+	}
+
+	// we draw teleport image (if any) in last
+	if (teleport != nullptr) res.push_back(teleport);
+
+	return res;
 }
+} //anonymous namespace
 
 void game_display::draw_hex(const map_location& loc)
 {
-	const bool on_map = get_map().on_board(loc);
+	const bool on_map = context().map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 
 	display::draw_hex(loc);
@@ -240,7 +304,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = drawing_layer::mouseover_bottom;
-		const unit* u = dc_->get_visible_unit(loc, viewing_team());
+		const unit* u = context().get_visible_unit(loc, viewing_team());
 		if(u != nullptr) {
 			hex_top_layer = drawing_layer::mouseover_top;
 		}
@@ -270,11 +334,23 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw reach_map information.
-	// We remove the reachability mask of the unit that we want to attack.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
-		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(drawing_layer::reachmap, loc,
-			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
+		// draw the reachmap tint below units and high terrain graphics
+		std::string color = prefs::get().reach_map_color();
+		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());
+
+		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png~RC(magenta>"+color+")~O("+tint_opacity+"%)", image::HEXED)](const rect& dest) {
+			draw::blit(tex, dest);
+		});
+		// We remove the reachmap border mask of the hovered hex to avoid weird interactions with other visual objects.
+		if(loc != mouseoverHex_) {
+			// draw the highlight borders on top of units and terrain
+			drawing_buffer_add(drawing_layer::reachmap_border, loc, [images = get_reachmap_images(loc)](const rect& dest) {
+				for(const texture& t : images) {
+					draw::blit(t, dest);
+				}
+			});
+		}
 	}
 
 	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
@@ -323,14 +399,6 @@ void game_display::draw_hex(const map_location& loc)
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
 	}
-
-	if(game_config::debug) {
-		int debugH = debugHighlights_[loc];
-		if (debugH) {
-			std::string txt = std::to_string(debugH);
-			draw_text_in_hex(loc, drawing_layer::move_info, txt, 18, font::BAD_COLOR);
-		}
-	}
 }
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
@@ -346,6 +414,11 @@ bool game_display::has_time_area() const
 void game_display::layout()
 {
 	display::layout();
+
+	// We need teams for the reports below
+	if(context().teams().empty()) {
+		return;
+	}
 
 	refresh_report("report_clock");
 	refresh_report("report_battery");
@@ -385,12 +458,12 @@ void game_display::draw_movement_info(const map_location& loc)
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
 				(wb && wb->get_temp_move_unit().valid()) ?
-						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
-		if(un != dc_->units().end()) {
+						wb->get_temp_move_unit() : context().units().find(route_.steps.front());
+		if(un != context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = un->movement_cost(get_map().get_terrain(loc));
+			int move_cost = un->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - un->defense_modifier(context().map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -431,11 +504,11 @@ void game_display::draw_movement_info(const map_location& loc)
 	{
 		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,viewing_team());
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
-		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
+		if(selectedUnit != context().units().end() && mouseoveredUnit == context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
+			int move_cost = selectedUnit->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -455,76 +528,6 @@ void game_display::draw_movement_info(const map_location& loc)
 		}
 	}
 }
-
-std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
-{
-	std::vector<texture> res;
-
-	if (route_.steps.size() < 2) {
-		return res; // no real "route"
-	}
-
-	std::vector<map_location>::const_iterator i =
-	         std::find(route_.steps.begin(),route_.steps.end(),loc);
-
-	if( i == route_.steps.end()) {
-		return res; // not on the route
-	}
-
-	// Check which footsteps images of game_config we will use
-	int move_cost = 1;
-	const unit_map::const_iterator u = dc_->units().find(route_.steps.front());
-	if(u != dc_->units().end()) {
-		move_cost = u->movement_cost(dc_->map().get_terrain(loc));
-	}
-	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
-	if (image_number < 1) {
-		return res; // Invalid movement cost or no images
-	}
-	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
-
-	texture teleport;
-
-	// We draw 2 half-hex (with possibly different directions),
-	// but skip the first for the first step.
-	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
-	// and the second for the last step
-	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
-
-	for (int h = first_half; h <= second_half; ++h) {
-		const std::string sense( h==0 ? "-in" : "-out" );
-
-		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
-			std::string teleport_image =
-			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-			teleport = image::get_texture(teleport_image, image::HEXED);
-			continue;
-		}
-
-		// In function of the half, use the incoming or outgoing direction
-		map_location::DIRECTION dir = (i+(h-1))->get_relative_dir(*(i+h));
-
-		std::string rotate;
-		if (dir > map_location::SOUTH_EAST) {
-			// No image, take the opposite direction and do a 180 rotation
-			dir = i->get_opposite_dir(dir);
-			rotate = "~FL(horiz)~FL(vert)";
-		}
-
-		const std::string image = foot_speed_prefix
-			+ sense + "-" + i->write_direction(dir)
-			+ ".png" + rotate;
-
-		res.push_back(image::get_texture(image, image::HEXED));
-	}
-
-	// we draw teleport image (if any) in last
-	if (teleport != nullptr) res.push_back(teleport);
-
-	return res;
-}
-
-
 
 void game_display::highlight_reach(const pathfind::paths &paths_list)
 {
@@ -588,21 +591,17 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 		return;
 	}
 
+	rect loc_rect = get_location_rect(loc);
+
 	font::floating_label flabel(text);
 	flabel.set_font_size(int(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
 	flabel.set_color(color);
-	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
+	flabel.set_position(loc_rect.center().x, loc_rect.y); // middle of top edge
 	flabel.set_move(0, -0.1 * turbo_speed() * get_zoom_factor());
-	flabel.set_lifetime(1000/turbo_speed());
+	flabel.set_lifetime(std::chrono::milliseconds{static_cast<int>(1000 / turbo_speed())});
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);
-}
-
-int& game_display::debug_highlight(const map_location& loc)
-{
-	assert(game_config::debug);
-	return debugHighlights_[loc];
 }
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
@@ -622,11 +621,6 @@ void game_display::set_attack_indicator(const map_location& src, const map_locat
 void game_display::clear_attack_indicator()
 {
 	set_attack_indicator(map_location::null_location(), map_location::null_location());
-}
-
-std::string game_display::current_team_name() const
-{
-	return viewing_team().team_name();
 }
 
 void game_display::begin_game()
@@ -656,4 +650,111 @@ bool game_display::maybe_rebuild() {
 display::overlay_map& game_display::get_overlays()
 {
 	return overlay_map_;
+}
+
+std::vector<texture> game_display::get_reachmap_images(const map_location& loc) const
+{
+	// Use get_direction() from display.cpp namespace display_direction
+	using namespace display_direction;
+	std::vector<std::string> names;
+	const auto adjacent = get_adjacent_tiles(loc);
+
+	enum visibility { REACH = 0, ENEMY = 1, CLEAR = 2 };
+	std::array<visibility, 6> tiles;
+
+	for(int i = 0; i < 6; ++i) {
+		// look for units adjacent to loc
+		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
+		const unit *u = context().get_visible_unit(adjacent[i], viewing_team());
+		if(reach_map_.find(adjacent[i]) != reach_map_.end()) {
+			DBG_DP << test_location << " is REACHABLE";
+			tiles[i] = REACH;
+		}
+		/**
+		 * Make sure there is a unit selected or displayed when drawing the reachmap with enemy detection.
+		 * Enemy detection needs to be "disabled" when the reach_map_team_index_ failsafes to viewing_team_index.
+		 */
+		else if(display::reach_map_team_index_ == display::viewing_team_index_) {
+			DBG_DP << test_location << " is NOT REACHABLE";
+			tiles[i] = CLEAR;
+		}
+		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
+		else if(u != nullptr && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
+			DBG_DP << test_location << " has an ENEMY";
+			tiles[i] = ENEMY;
+		} else {
+			DBG_DP << test_location << " is NOT REACHABLE";
+			tiles[i] = CLEAR;
+		}
+	}
+
+	// Find out if location is in the inner part of reachmap (surrounded by reach)
+	int s;
+	for(s = 0; s != 6; ++s) {
+		if(tiles[s] != REACH) {
+			break;
+		}
+	}
+
+	if(s == 6) {
+		// Completely surrounded by reach. This may have a special graphic.
+		DBG_DP << "Tried completely surrounding";
+		std::string name = game_config::reach_map_prefix + "-all.png";
+		if(image::exists(name)) {
+			names.push_back(std::move(name));
+		}
+	}
+
+	// Find all the directions overlap occurs from
+	for(int i = 0, cap1 = 0; cap1 != 6; ++cap1) {
+		if(tiles[i] != REACH) {
+			std::ostringstream stream;
+			std::string suffix;
+			std::string name;
+			stream << game_config::reach_map_prefix;
+
+			std::string color = prefs::get().reach_map_color();
+			std::string enemy_color = prefs::get().reach_map_enemy_color();
+			std::string border_opacity = std::to_string(prefs::get().reach_map_border_opacity());
+
+			if(tiles[i] == ENEMY) {
+				suffix = ".png~RC(magenta>"+enemy_color+")~O("+border_opacity+"%)";
+			} else {
+				suffix = ".png~RC(magenta>"+color+")~O("+border_opacity+"%)";
+			}
+
+			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
+				stream << get_direction(i);
+				if(!image::exists(stream.str() + ".png")) {
+					DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
+					// If we don't have any surface at all,
+					// then move onto the next overlapped area
+					if(name.empty()) {
+						i = (i + 1) % 6;
+					}
+					break;
+				} else {
+					name = stream.str();
+				}
+			}
+
+			if(!name.empty()) {
+				names.push_back(name + suffix);
+			}
+		} else {
+			i = (i + 1) % 6;
+		}
+	}
+
+	// now get the textures
+	std::vector<texture> res;
+
+	for(const std::string& name : names) {
+		DBG_DP << "Pushing: " << name;
+		if(texture tex = image::get_texture(name, image::HEXED)) {
+			res.push_back(std::move(tex));
+		}
+	}
+
+	return res;
 }

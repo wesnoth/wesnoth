@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,6 +20,8 @@
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
+
+#include <chrono>
 #include <string>
 
 namespace font {
@@ -40,6 +42,8 @@ enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 
 class floating_label
 {
+	using clock = std::chrono::steady_clock;
+
 public:
 	floating_label(const std::string& text);
 
@@ -56,7 +60,7 @@ public:
 		ymove_ = ymove;
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
-	void set_lifetime(int lifetime, int fadeout = 100);
+	void set_lifetime(const std::chrono::milliseconds& lifetime, const std::chrono::milliseconds& fadeout = std::chrono::milliseconds{100});
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
@@ -75,7 +79,7 @@ public:
 	/** Change the floating label's position. */
 	void move(double xmove, double ymove);
 	/** Finalize draw position and alpha, and queue redrawing if changed. */
-	void update(int time);
+	void update(const clock::time_point& time);
 	/** Draw the label to the screen. */
 	void draw();
 
@@ -94,32 +98,35 @@ public:
 		return get_bg_rect({0, 0, tex_.w(), tex_.h()}).size();
 	}
 
-	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
+	bool expired(const clock::time_point& time) const
+	{
+		return lifetime_ >= std::chrono::milliseconds{0} && get_time_alive(time) > lifetime_ + fadeout_;
+	}
 
 	void show(const bool value) { visible_ = value; }
 
 	LABEL_SCROLL_MODE scroll() const { return scroll_; }
 
 	// TODO: Might be good to have more getters, right?
-	int get_fade_time() const { return fadeout_; }
+	auto get_fade_time() const { return fadeout_; }
 
 private:
 
-	int get_time_alive(int current_time) const { return current_time - time_start_; }
+	std::chrono::milliseconds get_time_alive(const clock::time_point& current_time) const;
 	int xpos(std::size_t width) const;
-	point get_pos(int time);
-	uint8_t get_alpha(int time);
+	point get_pos(const clock::time_point& time);
+	uint8_t get_alpha(const clock::time_point& time);
 	rect get_bg_rect(const rect& text_rect) const;
 	texture tex_;
 	rect screen_loc_;
 	uint8_t alpha_;
-	int fadeout_;
-	int time_start_;
+	std::chrono::milliseconds fadeout_;
+	clock::time_point time_start_;
 	std::string text_;
 	int font_size_;
 	color_t color_, bgcolor_;
 	double xpos_, ypos_, xmove_, ymove_;
-	int lifetime_;
+	std::chrono::milliseconds lifetime_;
 	int width_, height_;
 	SDL_Rect clip_rect_;
 	bool visible_;
@@ -146,7 +153,7 @@ void scroll_floating_labels(double xmove, double ymove);
 /** removes the floating label given by 'handle' from the screen */
 /** if fadeout is given, the label fades out over that duration */
 /** if fadeout is less than 0, it uses the fadeout setting from the label */
-void remove_floating_label(int handle, int fadeout = 0);
+void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout = std::chrono::milliseconds{0});
 
 /** hides or shows a floating label */
 void show_floating_label(int handle, bool show);

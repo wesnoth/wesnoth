@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,9 +46,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void update_relation();
 

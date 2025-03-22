@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,8 +27,6 @@
 #include "serialization/utf8_exception.hpp"
 #include "video.hpp" // only for faked
 
-#include <SDL2/SDL_timer.h>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
@@ -40,7 +38,7 @@ namespace {
 }
 
 display_chat_manager::chat_message::chat_message(int speaker, int h)
-	: speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
+	: speaker_handle(speaker), handle(h), created_at(std::chrono::steady_clock::now())
 {}
 
 
@@ -70,7 +68,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	bool is_observer = false;
 	{ //TODO: Clean this block up somehow
 
-		const game_board * board = dynamic_cast<const game_board*>(&my_disp_.get_disp_context());
+		const game_board * board = dynamic_cast<const game_board*>(&my_disp_.context());
 
 		if (board) {
 			is_observer = board->is_observer();
@@ -111,9 +109,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	}
 
 	int ypos = chat_message_x;
-	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += std::max(font::get_floating_label_rect(m->handle).h,
-			font::get_floating_label_rect(m->speaker_handle).h);
+	for(const auto& m : chat_messages_) {
+		ypos += std::max(font::get_floating_label_rect(m.handle).h,
+			font::get_floating_label_rect(m.speaker_handle).h);
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
@@ -148,7 +146,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
+	message_complete << prefs::get().get_chat_timestamp(std::chrono::system_clock::from_time_t(time)) << str.str();
 
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
@@ -182,20 +180,18 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	prune_chat_messages();
 }
 
-static unsigned int safe_subtract(unsigned int a, unsigned int b)
-{
-	return (a > b) ? a - b : 0;
-}
-
 void display_chat_manager::prune_chat_messages(bool remove_all)
 {
 	//NOTE: prune_chat_messages(false) seems to be only called when a new message is added, which in
 	//      particular means the aging feature won't work unless new messages are addded regularly
-	const unsigned message_aging = prefs::get().chat_message_aging();
+	const auto message_aging = prefs::get().chat_message_aging();
 	const unsigned max_chat_messages = prefs::get().chat_lines();
-	const bool enable_aging = message_aging != 0;
+	const bool enable_aging = message_aging != std::chrono::minutes{0};
 
-	const unsigned remove_before = enable_aging ? safe_subtract(SDL_GetTicks(), message_aging * 60 * 1000) : 0;
+	const auto remove_before = enable_aging
+		? std::chrono::steady_clock::now() - message_aging
+		: std::chrono::steady_clock::time_point::min();
+
 	int movement = 0;
 
 	if(enable_aging || remove_all || chat_messages_.size() > max_chat_messages) {

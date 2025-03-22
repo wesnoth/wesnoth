@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 #include "serialization/schema/type.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/back_edge_detector.hpp"
+#include "utils/general.hpp"
 #include "wml_exception.hpp"
 #include <boost/graph/adjacency_list.hpp>
 #include <tuple>
@@ -808,10 +809,10 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 	} else if(name == "tag") {
 		bool first_tag = true, first_key = true;
 		std::vector<std::string> tag_names, key_names;
-		for(auto current : cfg.all_children_range()) {
-			if(current.key == "tag" || current.key == "link") {
-				std::string tag_name = current.cfg["name"];
-				if(current.key == "link") {
+		for(const auto [current_key, current_cfg] : cfg.all_children_view()) {
+			if(current_key == "tag" || current_key == "link") {
+				std::string tag_name = current_cfg["name"];
+				if(current_key == "link") {
 					tag_name.erase(0, tag_name.find_last_of('/') + 1);
 				}
 				if(first_tag) {
@@ -819,22 +820,22 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 					first_tag = false;
 					continue;
 				}
-				check_for_duplicates(tag_name, tag_names, current.cfg, DUPLICATE_TAG, file, start_line, current.key);
-			} else if(current.key == "key") {
-				std::string key_name = current.cfg["name"];
+				check_for_duplicates(tag_name, tag_names, current_cfg, DUPLICATE_TAG, file, start_line, current_key);
+			} else if(current_key == "key") {
+				std::string key_name = current_cfg["name"];
 				if(first_key) {
 					key_names.push_back(key_name);
 					first_key = false;
 					continue;
 				}
-				check_for_duplicates(key_name, key_names, current.cfg, DUPLICATE_KEY, file, start_line, current.key);
+				check_for_duplicates(key_name, key_names, current_cfg, DUPLICATE_KEY, file, start_line, current_key);
 			}
 		}
 	} else if(name == "wml_schema") {
 		using namespace std::placeholders;
 		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
 		// Remove all the known types
-		missing_types.erase(std::remove_if(missing_types.begin(), missing_types.end(), std::bind(&reference::match, std::placeholders::_1, std::cref(defined_types_))), missing_types.end());
+		utils::erase_if(missing_types, [this](const reference& ref) { return ref.match(defined_types_); });
 		// Remove all the known tags. This is more complicated since links behave similar to a symbolic link.
 		// In other words, the presence of links means there may be more than one way to refer to a given tag.
 		// But that's not all! It's possible to refer to a tag through a derived tag even if it's actually defined in the base tag.
@@ -946,12 +947,12 @@ bool schema_self_validator::reference::operator<(const reference& other) const
 	return std::tie(file_, line_) < std::tie(other.file_, other.line_);
 }
 
-bool schema_self_validator::reference::match(const std::set<std::string>& with)
+bool schema_self_validator::reference::match(const std::set<std::string>& with) const
 {
 	return with.count(value_) > 0;
 }
 
-bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg)
+bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg) const
 {
 	// The problem is that the schema being validated is that of the schema!!!
 	return root.find_tag(value_, root, cfg) != nullptr;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2024
+	Copyright (C) 2018 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -63,7 +63,7 @@ namespace {
 			return 0;
 		}
 
-		char** end = 0;
+		char** end = nullptr;
 		int res = strtol(&s[0], end, 10);
 		return res;
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
 #include "events.hpp"
+#include "formula/format_timespan.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -112,16 +113,19 @@ private:
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+	std::unique_ptr<wesnothd_connection> open_connection(const std::string& host);
 
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
 
-	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode();
+	/**
+	 * Opens the MP Create screen for hosts to configure a new game.
+	 * @param preset_scenario contains a scenario id if present
+	 */
+	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode();
+	void enter_staging_mode(bool preset);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -151,7 +155,7 @@ public:
 		return session_info;
 	}
 
-	auto add_network_handler(decltype(process_handlers)::value_type func)
+	auto add_network_handler(const decltype(process_handlers)::value_type& func)
 	{
 		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
@@ -215,7 +219,7 @@ mp_manager::mp_manager(const utils::optional<std::string> host)
 	manager = this;
 }
 
-std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::string& host)
 {
 	DBG_MP << "opening connection";
 
@@ -265,7 +269,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			i18n_symbols["required_version"] = version;
 			i18n_symbols["your_version"] = game_config::wesnoth_version.str();
 
-			const std::string errorstring = VGETTEXT("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
+			const std::string errorstring = VGETTEXT("The server accepts versions ‘$required_version’, but you are using version ‘$your_version’", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 
@@ -396,7 +400,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const auto extra_data = error->optional_child("data");
 				if(extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"]);
+					using namespace std::chrono_literals;
+					i18n_symbols["duration"] = utils::format_timespan(chrono::parse_duration((*extra_data)["duration"], 0s));
 				}
 
 				const std::string ec = (*error)["error_code"];
@@ -418,6 +423,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				} else if(ec == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if(ec == MP_SERVER_IP_BAN_ERROR) {
+					if(extra_data) {
+						error_message = VGETTEXT("Your IP address is banned on this server for $duration|.", i18n_symbols);
+					} else {
+						error_message = _("Your IP address is banned on this server.");
+					}
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
 					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
@@ -528,14 +539,19 @@ bool mp_manager::enter_lobby_mode()
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
+		std::string preset_scenario = "";
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
+			preset_scenario = dlg.queue_game_scenario_id();
 		}
 
 		try {
 			switch(dlg_retval) {
+			case gui2::dialogs::mp_lobby::CREATE_PRESET:
+				enter_create_mode(utils::make_optional(preset_scenario));
+				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
 				break;
@@ -564,18 +580,26 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode()
+void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario)
 {
 	DBG_MP << "entering create mode";
 
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
+	if(preset_scenario) {
+		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+			if(game["scenario"].str() == preset_scenario.value()) {
+				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
+				enter_staging_mode(true);
+				break;
+			}
+		}
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode(false);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode()
+void mp_manager::enter_staging_mode(bool preset)
 {
 	DBG_MP << "entering connect mode";
 
@@ -586,6 +610,7 @@ void mp_manager::enter_staging_mode()
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
+		metadata->is_queue_game = preset;
 	}
 
 	bool dlg_ok = false;
@@ -764,7 +789,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// Should number of turns be determined from scenario data?
 	if(parameters.use_map_settings && state.get_starting_point().has_attribute("turns")) {
 		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
-		parameters.num_turns = state.get_starting_point()["turns"];
+		parameters.num_turns = state.get_starting_point()["turns"].to_int();
 	}
 
 	DBG_MP << "entering connect mode";
@@ -824,7 +849,7 @@ void send_to_server(const config& data)
 	}
 }
 
-network_registrar::network_registrar(handler func)
+network_registrar::network_registrar(const handler& func)
 {
 	if(manager /*&& manager->connection*/) {
 		remove_handler = manager->add_network_handler(func);

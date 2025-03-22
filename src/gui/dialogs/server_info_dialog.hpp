@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2024
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-
-namespace dialogs
+namespace gui2::dialogs
 {
 class server_info : public modal_dialog
 {
@@ -42,12 +39,12 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void tab_switch_callback();
 
 	const std::string& server_information_;
 	const std::string& announcements_;
 };
-}
-}
+
+} // namespace gui2::dialogs

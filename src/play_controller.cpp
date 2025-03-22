@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -51,6 +51,7 @@
 #include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
@@ -132,7 +133,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
-	, ticks_(SDL_GetTicks())
+	, timer_()
 	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
@@ -141,8 +142,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, plugins_context_()
 	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
-	, mouse_handler_(nullptr, *this)
-	, menu_handler_(nullptr, *this)
+	, mouse_handler_(*this)
+	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()
@@ -209,7 +210,7 @@ void play_controller::init(const config& level)
 	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
-		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing game_state..." << timer();
 		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
@@ -224,19 +225,19 @@ void play_controller::init(const config& level)
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
-		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing whiteboard..." << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::init_whiteboard);
 		whiteboard_manager_.reset(new wb::manager());
 		resources::whiteboard = whiteboard_manager_;
 
-		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "loading units..." << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		prefs::get().encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing theme... " << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
 
-		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "building terrain rules... " << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
 
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
@@ -261,9 +262,9 @@ void play_controller::init(const config& level)
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
-		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "done initializing display... " << timer();
 
-		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "building gamestate to gui and whiteboard... " << timer();
 		// This *needs* to be created before the show_intro and show_map_scene
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
@@ -280,7 +281,54 @@ void play_controller::init(const config& level)
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
-		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
+		plugins_context_->set_callback_execute(*resources::lua_kernel);
+		plugins_context_->set_accessor_string("scenario_name", [this](const config&) { return get_scenario_name(); });
+		plugins_context_->set_accessor_int("current_side", [this](const config&) { return current_side(); });
+		plugins_context_->set_accessor_int("current_turn", [this](const config&) { return turn(); });
+		plugins_context_->set_accessor_bool("can_move", [this](const config&) { return !events::commands_disabled && gamestate().gamedata_.phase() == game_data::TURN_PLAYING; });
+		plugins_context_->set_callback("end_turn", [this](const config&) { require_end_turn(); }, false);
+		plugins_context_->set_callback("synced_command", [this](const config& cmd) {
+			auto& pm = *plugins_manager::get();
+			if(resources::whiteboard->has_planned_unit_map())
+			{
+				ERR_NG << "plugin called synced command while whiteboard is applied, ignoring";
+				pm.notify_event("synced_command_error", config{"error", "whiteboard"});
+				return;
+			}
+
+			auto& gamedata = gamestate().gamedata_;
+			const bool is_too_early = gamedata.phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+			const bool is_during_turn = gamedata.phase() == game_data::TURN_PLAYING;
+			const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
+			if(is_too_early) {
+				ERR_NG << "synced command called too early, only allowed at START or later";
+				pm.notify_event("synced_command_error", config{"error", "too-early"});
+				return;
+			}
+			if(is_unsynced && !is_during_turn) {
+				ERR_NG << "synced command can only be used during a turn when a user would also be able to invoke commands";
+				pm.notify_event("synced_command_error", config{"error", "not-your-turn"});
+				return;
+			}
+			if(is_unsynced && events::commands_disabled) {
+				ERR_NG << "synced command cannot be invoked while commands are blocked";
+				pm.notify_event("synced_command_error", config{"error", "disabled"});
+				return;
+			}
+			if(is_unsynced && !resources::controller->current_team().is_local()) {
+				ERR_NG << "synced command can only be used from clients that control the currently playing side";
+				pm.notify_event("synced_command_error", config{"error", "not-your-turn"});
+				return;
+			}
+			action_spectator spectator([&pm](const std::string& message) {
+				ERR_NG << "synced command from plugin raised an error: " << message;
+				pm.notify_event("synced_command_error", config{"error", "error", "message", message});
+			});
+			for(const auto [key, child] : cmd.all_children_range()) {
+				synced_context::run_in_synced_context_if_not_already(key, child, spectator);
+				ai::manager::get_singleton().raise_gamestate_changed();
+			}
+		}, false);
 	});
 }
 
@@ -328,11 +376,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 void play_controller::init_managers()
 {
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "initializing managers... " << timer();
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "done initializing managers... " << timer();
 }
 
 void play_controller::fire_preload()
@@ -633,8 +681,10 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
+		if (menu_handler_.do_speak()) {
+			menu_handler_.get_textbox().memorize_command(str);
+			menu_handler_.get_textbox().close();
+		}
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
@@ -655,12 +705,6 @@ void play_controller::enter_textbox()
 void play_controller::textbox_move_vertically(bool up)
 {
 	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
-		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
-		// Not handling messages to avoid spam
 		return;
 	}
 
@@ -1137,7 +1181,7 @@ void play_controller::start_game()
 		// Initialize countdown clock.
 		for(const team& t : get_teams()) {
 			if(saved_game_.mp_settings().mp_countdown) {
-				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+				t.set_countdown_time(saved_game_.mp_settings().mp_countdown_init_time);
 			}
 		}
 		did_autosave_this_turn_ = false;
@@ -1158,8 +1202,8 @@ static void find_next_scenarios(const config& parent, std::set<std::string>& res
 			result.insert(endlevel["next_scenario"]);
 		}
 	}
-	for(const auto cfg : parent.all_children_range()) {
-		find_next_scenarios(cfg.cfg, result);
+	for(const auto [key, cfg] : parent.all_children_view()) {
+		find_next_scenarios(cfg, result);
 	}
 };
 
@@ -1311,6 +1355,11 @@ void play_controller::toggle_skipping_replay()
 	if(skip_animation_button) {
 		skip_animation_button->set_check(skip_replay_);
 	}
+}
+
+bool play_controller::is_skipping_actions() const
+{
+	return is_skipping_replay() || (prefs::get().skip_ai_moves() && current_team().is_ai() && !is_replay());
 }
 
 bool play_controller::is_during_turn() const

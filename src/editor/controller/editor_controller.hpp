@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,7 +87,7 @@ class editor_controller : public controller_base,
 		void custom_tods_dialog();
 
 		/** Updates schedule and the map display */
-		void update_map_schedule(std::vector<time_of_day> schedule);
+		void update_map_schedule(const std::vector<time_of_day>& schedule);
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map() override {context_manager_->save_map();}

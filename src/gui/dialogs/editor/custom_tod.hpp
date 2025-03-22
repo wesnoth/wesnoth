@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,16 +21,12 @@
 #include <vector>
 #include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class custom_tod : public modal_dialog
 {
 public:
-	custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id = "");
+	custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string& addon_id = "");
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(custom_tod)
@@ -50,9 +46,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** Callback for the next tod button */
 	void do_next_tod();
@@ -82,7 +78,7 @@ private:
 
 	void update_selected_tod_info();
 
-	void copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data);
+	void copy_to_clipboard_callback(const std::pair<std::string, tod_attribute_getter>& data);
 
 	/** Update current TOD with values from the GUI */
 	void update_schedule();
@@ -107,5 +103,4 @@ private:
 	field_integer* color_field_b_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -27,6 +27,7 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -165,24 +166,9 @@ void config::remove_attribute(config_key_type key)
 
 void config::append_children(const config& cfg)
 {
-	for(const any_child value : cfg.all_children_range()) {
-		add_child(value.key, value.cfg);
+	for(const auto [key, cfg] : cfg.all_children_view()) {
+		add_child(key, cfg);
 	}
-}
-
-void config::append_children(config&& cfg)
-{
-	if(children_.empty()) {
-		//optimisation
-		children_ = std::move(cfg.children_);
-		ordered_children = std::move(cfg.ordered_children);
-		cfg.clear_all_children();
-		return;
-	}
-	for(const any_child value : cfg.all_children_range()) {
-		add_child(value.key, std::move(value.cfg));
-	}
-	cfg.clear_all_children();
 }
 
 void config::append_attributes(const config& cfg)
@@ -209,7 +195,18 @@ void config::append(const config& cfg)
 
 void config::append(config&& cfg)
 {
-	append_children(std::move(cfg));
+	if(children_.empty()) {
+		//optimisation
+		children_ = std::move(cfg.children_);
+		ordered_children = std::move(cfg.ordered_children);
+		cfg.clear_all_children();
+	}
+	else {
+		for(const auto [child_key, child_value] : cfg.all_children_view()) {
+			add_child(child_key, std::move(child_value));
+		}
+		cfg.clear_all_children();
+	}
 
 	if(values_.empty()) {
 		//optimisation.
@@ -573,10 +570,7 @@ void config::clear_children_impl(config_key_type key)
 	if(i == children_.end())
 		return;
 
-	ordered_children.erase(
-		std::remove_if(ordered_children.begin(), ordered_children.end(), remove_ordered(i)),
-		ordered_children.end());
-
+	utils::erase_if(ordered_children, remove_ordered{i});
 	children_.erase(i);
 }
 
@@ -587,9 +581,7 @@ void config::splice_children(config& src, config_key_type key)
 		return;
 	}
 
-	src.ordered_children.erase(
-		std::remove_if(src.ordered_children.begin(), src.ordered_children.end(), remove_ordered(i_src)),
-		src.ordered_children.end());
+	utils::erase_if(src.ordered_children, remove_ordered{i_src});
 
 	auto i_dst = map_get(children_, key);
 	child_list& dst = i_dst->second;
@@ -655,7 +647,7 @@ void config::remove_child(config_key_type key, std::size_t index)
 	remove_child(i, index);
 }
 
-void config::remove_children(config_key_type key, std::function<bool(const config&)> p)
+void config::remove_children(config_key_type key, const std::function<bool(const config&)>& p)
 {
 	child_map::iterator pos = children_.find(key);
 	if(pos == children_.end()) {
@@ -1047,24 +1039,24 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 	for(const config& i : diff.child_range("change_child")) {
 		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
-		for(const any_child item : i.all_children_range()) {
-			if(item.key.empty()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
+			if(key.empty()) {
 				continue;
 			}
 
-			const child_map::iterator itor = children_.find(item.key);
+			const child_map::iterator itor = children_.find(key);
 			if(itor == children_.end() || index >= itor->second.size()) {
-				throw error("error in diff: could not find element '" + item.key + "'");
+				throw error("error in diff: could not find element '" + key + "'");
 			}
 
-			itor->second[index]->apply_diff(item.cfg, track);
+			itor->second[index]->apply_diff(cfg, track);
 		}
 	}
 
 	for(const config& i : diff.child_range("insert_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const any_child item : i.all_children_range()) {
-			config& inserted = add_child_at(item.key, item.cfg, index);
+		for(const auto [key, cfg] : i.all_children_view()) {
+			config& inserted = add_child_at(key, cfg, index);
 			if(track) {
 				inserted[diff_track_attribute] = "new";
 			}
@@ -1073,13 +1065,13 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 	for(const config& i : diff.child_range("delete_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const any_child item : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			if(!track) {
-				remove_child(item.key, index);
+				remove_child(key, index);
 			} else {
-				const child_map::iterator itor = children_.find(item.key);
+				const child_map::iterator itor = children_.find(key);
 				if(itor == children_.end() || index >= itor->second.size()) {
-					throw error("error in diff: could not find element '" + item.key + "'");
+					throw error("error in diff: could not find element '" + key + "'");
 				}
 
 				itor->second[index]->values_[diff_track_attribute] = "deleted";
@@ -1093,24 +1085,24 @@ void config::clear_diff_track(const config& diff)
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const any_child item : i.all_children_range()) {
-			remove_child(item.key, index);
+		for(const auto [key, cfg] : i.all_children_view()) {
+			remove_child(key, index);
 		}
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
 		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
-		for(const any_child item : i.all_children_range()) {
-			if(item.key.empty()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
+			if(key.empty()) {
 				continue;
 			}
 
-			const child_map::iterator itor = children_.find(item.key);
+			const child_map::iterator itor = children_.find(key);
 			if(itor == children_.end() || index >= itor->second.size()) {
-				throw error("error in diff: could not find element '" + item.key + "'");
+				throw error("error in diff: could not find element '" + key + "'");
 			}
 
-			itor->second[index]->clear_diff_track(item.cfg);
+			itor->second[index]->clear_diff_track(cfg);
 		}
 	}
 
@@ -1215,21 +1207,21 @@ bool config::matches(const config& filter) const
 		}
 	}
 
-	for(const any_child i : filter.all_children_range()) {
-		if(i.key == "not") {
-			result = result && !matches(i.cfg);
+	for(const auto [key, cfg] : filter.all_children_view()) {
+		if(key == "not") {
+			result = result && !matches(cfg);
 			continue;
-		} else if(i.key == "and") {
-			result = result && matches(i.cfg);
+		} else if(key == "and") {
+			result = result && matches(cfg);
 			continue;
-		} else if(i.key == "or") {
-			result = result || matches(i.cfg);
+		} else if(key == "or") {
+			result = result || matches(cfg);
 			continue;
 		}
 
 		bool found = false;
-		for(const config& j : child_range(i.key)) {
-			if(j.matches(i.cfg)) {
+		for(const config& j : child_range(key)) {
+			if(j.matches(cfg)) {
 				found = true;
 				break;
 			}
@@ -1265,19 +1257,19 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 		outstream << key << " = " << value << '\n';
 	}
 
-	for(const config::any_child child : cfg.all_children_range()) {
+	for(const auto [key, cfg] : cfg.all_children_view()) {
 		for(int j = 0; j < i - 1; ++j) {
 			outstream << '\t';
 		}
 
-		outstream << "[" << child.key << "]\n";
-		outstream << child.cfg;
+		outstream << "[" << key << "]\n";
+		outstream << cfg;
 
 		for(int j = 0; j < i - 1; ++j) {
 			outstream << '\t';
 		}
 
-		outstream << "[/" << child.key << "]\n";
+		outstream << "[/" << key << "]\n";
 	}
 
 	i--;
@@ -1319,8 +1311,8 @@ std::string config::hash() const
 		}
 	}
 
-	for(const any_child ch : all_children_range()) {
-		std::string child_hash = ch.cfg.hash();
+	for(const auto [key, cfg] : all_children_view()) {
+		std::string child_hash = cfg.hash();
 		for(char c : child_hash) {
 			hash_str[i] ^= c;
 			++i;

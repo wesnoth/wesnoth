@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,6 +20,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/palette/item_palette.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config_view.hpp"
 
@@ -27,9 +28,9 @@
 
 namespace editor {
 
-std::string item_palette::get_help_string()
+std::string item_palette::get_help_string() const
 {
-	return _("Left-click: Place item ") + selected_fg_item().name + _(" | Right-click to remove");
+	return VGETTEXT("Left-click: Place item $item | Right-click to remove", {{ "item", selected_fg_item().name }});
 }
 
 void item_palette::setup(const game_config_view& cfg)
@@ -82,10 +83,9 @@ void item_palette::setup_item(
 	tooltip_text << item.name;
 }
 
-item_palette::item_palette(editor_display &gui, const game_config_view& cfg,
-                           editor_toolkit &toolkit)
+item_palette::item_palette(editor_display &gui, editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<overlay>(gui, cfg, 36, 4, toolkit)
+	:	editor_palette<overlay>(gui, 36, 4, toolkit)
 {
 }
 

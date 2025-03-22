@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,8 @@
 
 #include "game_initialization/singleplayer.hpp"
 
+#include "addon/manager_ui.hpp"
 #include "config.hpp"
-#include "game_initialization/configure_engine.hpp"
 #include "game_initialization/connect_engine.hpp"
 #include "game_initialization/create_engine.hpp"
 #include "game_launcher.hpp"
@@ -57,29 +57,32 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 				return false;
 			}
 
-			if(dlg.get_retval() != gui2::retval::OK) {
+			if(dlg.get_retval() == gui2::retval::OK) {
+				switch(dlg.get_rng_mode()) {
+					case gui2::dialogs::campaign_selection::RNG_DEFAULT:
+						random_mode = "";
+						break;
+					case gui2::dialogs::campaign_selection::RNG_SAVE_SEED:
+						random_mode = "deterministic";
+						break;
+					case gui2::dialogs::campaign_selection::RNG_BIASED:
+						random_mode = "biased";
+						break;
+				}
+				difficulty = dlg.get_difficulty();
+			} else {
+				if (dlg.get_retval() == gui2::dialogs::campaign_selection::OPEN_ADDON_MANAGER) {
+					manage_addons();
+				}
 				return false;
 			}
 
-			switch(dlg.get_rng_mode()) {
-				case gui2::dialogs::campaign_selection::RNG_DEFAULT:
-					random_mode = "";
-					break;
-				case gui2::dialogs::campaign_selection::RNG_SAVE_SEED:
-					random_mode = "deterministic";
-					break;
-				case gui2::dialogs::campaign_selection::RNG_BIASED:
-					random_mode = "biased";
-					break;
-			}
-
-			difficulty = dlg.get_difficulty();
 		} else {
 			// Don't reset the campaign_id_ so we can know
 			// if we should quit the game or return to the main menu
 
 			// Checking for valid campaign name
-			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](ng::create_engine::level_ptr level) {
+			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](const ng::create_engine::level_ptr& level) {
 				return level->data()["id"] == jump_to_campaign.campaign_id;
 			});
 
@@ -130,14 +133,8 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 bool configure_campaign(saved_game& state, ng::create_engine& create_eng)
 {
-	// We create the config engine here in order to ensure values like use_map_settings are set correctly
-	// TODO: should this be passed to this function instead of created here?
-	ng::configure_engine config_eng(create_eng.get_state());
-
-	// TODO: needed?
-	config_eng.update_initial_cfg(create_eng.current_level().data());
-
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng)) {
+	create_eng.get_state().mp_settings().use_map_settings = true;
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng)) {
 		return false;
 	}
 
