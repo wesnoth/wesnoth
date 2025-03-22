@@ -35,6 +35,12 @@
 #include <cassert>
 #include <vector>
 
+#ifdef __ANDROID__
+extern "C" {
+	SDL_Surface* Android_AP_getFrameBuffer();
+}
+#endif
+
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -371,6 +377,10 @@ void init_window(bool hidden)
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
+#ifdef __ANDROID__
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
+#endif
+
 	if(hidden) {
 		LOG_DP << "hiding main window";
 		window_flags |= SDL_WINDOW_HIDDEN;
@@ -397,6 +407,10 @@ void init_window(bool hidden)
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+
+#ifdef __ANDROID__
+	window->set_size(w, h);
+#endif
 
 	update_framebuffer();
 }
@@ -540,8 +554,10 @@ void reset_render_target()
 
 texture get_render_target()
 {
+#ifndef __ANDROID__
 	// This should always be up-to-date, but assert for sanity.
 	assert(current_render_target_ == SDL_GetRenderTarget(get_renderer()));
+#endif
 	return current_render_target_;
 }
 

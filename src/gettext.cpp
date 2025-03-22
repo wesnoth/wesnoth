@@ -518,6 +518,10 @@ int compare(const std::string& s1, const std::string& s2)
 
 int icompare(const std::string& s1, const std::string& s2)
 {
+#ifdef __ANDROID__
+	return ascii_to_lowercase(s1).compare(ascii_to_lowercase(s2));
+#endif
+
 	// todo: maybe we should replace this preprocessor check with a std::has_facet<bl::collator<char>> check?
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
