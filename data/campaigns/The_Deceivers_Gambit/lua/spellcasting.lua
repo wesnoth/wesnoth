@@ -83,7 +83,7 @@ function display_skills_dialog(selecting)
             for j=1,#skill_set_copy[i],1 do
                 local skill = skill_set_copy[i][j]
                 if (wml.variables[skill.id]) then
-                    if (not skill.xp_cost) then button=T.label{  id="button"..i, use_markup=true, label=skill.label }
+                    if (not (skill.xp_cost or skill.gold_cost)) then button=T.label{  id="button"..i, use_markup=true, label=skill.label }
                     else                        button=T.button{ id="button"..i, use_markup=true, label=skill.label } end
                     -- handle one skill with multiple buttons
                     if (skill.subskills) then
@@ -216,9 +216,11 @@ function display_skills_dialog(selecting)
                             elseif (wml.variables['counterspell_active']) then -- delfador counterspell
                                 dialog2[buttonid].label = small and _"<span size='small'>Counterspelled</span>" or _"<span>  Blocked by\n Counterspell</span>"
                                 dialog2[buttonid].enabled = false
-
                             elseif (skill.xp_cost and skill.xp_cost>delfador.experience) then
                                 dialog2[buttonid].label = small and _"<span size='small'>No XP</span>" or label('Insufficient XP')
+                                dialog2[buttonid].enabled = false
+                            elseif (skill.gold_cost and skill.gold_cost>wesnoth.sides[delfador.side].gold) then
+                                dialog2[buttonid].label = small and _"<span size='small'>No Gold</span>" or label('Insufficient Gold')
                                 dialog2[buttonid].enabled = false
                             elseif (skill.atk_cost and skill.atk_cost>delfador.attacks_left) then
                                 dialog2[buttonid].label = small and _"<span size='small'>No Attack</span>" or label('No Attack')
@@ -228,6 +230,7 @@ function display_skills_dialog(selecting)
                             else
                                 dialog2[buttonid].on_button_click = function()
                                     if (skill.xp_cost)  then delfador.experience  =delfador.experience  -skill.xp_cost  end
+                                    if (skill.gold_cost)  then wesnoth.sides[delfador.side].gold =wesnoth.sides[delfador.side].gold  -skill.gold_cost  end
                                     if (skill.atk_cost) then delfador.attacks_left=delfador.attacks_left-skill.atk_cost end
                                     wml.variables['skill_id'] = skill.id
                                     wml.variables['spellcasted_this_turn'] = skill.id
