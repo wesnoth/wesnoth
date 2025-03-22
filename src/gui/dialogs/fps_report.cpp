@@ -21,7 +21,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
 #include "gui/widgets/rich_label.hpp"
-#include "serialization/markup.hpp"
 #include "utils/rate_counter.hpp"
 
 #include <tuple>
