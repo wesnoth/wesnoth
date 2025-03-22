@@ -711,6 +711,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"campaign_selection",// segfault with LTO
 		"game_load",// segfault after disabling the above tests
 		"file_progress",
+		"fps_report", // needs something to report...
 	};
 	filesystem::delete_file(test_gui2_fixture::widgets_file);
 
