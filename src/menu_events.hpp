@@ -50,7 +50,7 @@ namespace events
 class menu_handler : private chat_handler
 {
 public:
-	menu_handler(game_display* gui, play_controller& pc);
+	menu_handler(play_controller& pc);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();

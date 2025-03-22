@@ -89,8 +89,8 @@ using namespace gui2::dialogs;
 
 namespace events
 {
-menu_handler::menu_handler(game_display* gui, play_controller& pc)
-	: gui_(gui)
+menu_handler::menu_handler(play_controller& pc)
+	: gui_(nullptr)
 	, pc_(pc)
 	, game_config_(game_config_manager::get()->game_config())
 	, textbox_info_()

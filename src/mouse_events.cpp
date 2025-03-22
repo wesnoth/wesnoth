@@ -58,9 +58,9 @@ static lg::log_domain log_wml("wml");
 
 namespace events
 {
-mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
+mouse_handler::mouse_handler(play_controller& pc)
 	: mouse_handler_base()
-	, gui_(gui)
+	, gui_(nullptr)
 	, pc_(pc)
 	, previous_hex_()
 	, previous_free_hex_()
