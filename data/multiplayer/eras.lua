@@ -13,7 +13,7 @@ res.quick_4mp_leaders = function(args)
 
 	local trait_quick = args[1][2]
 	for i, unit in ipairs(wesnoth.units.find_on_map { canrecruit = true, T.filter_wml { max_moves = 4 } }) do
-		if not unit.variables.dont_make_me_quick then
+		if not unit.variables.dont_make_me_quick and not wesnoth.sides[unit.side].variables.dont_make_me_quick then
 			unit:add_modification("trait", trait_quick )
 			unit.moves = unit.max_moves
 			unit.hitpoints = unit.max_hitpoints
