@@ -619,8 +619,6 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		}
 
 		std::stringstream text;
-		text << markup::tag("header", _("Era:"), " ", era["name"]) << "\n";
-		text << "\n";
 		const config::attribute_value& description = era["description"];
 		if (!description.empty()) {
 			text << description.t_str() << "\n";
