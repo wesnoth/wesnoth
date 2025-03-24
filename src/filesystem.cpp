@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
@@ -506,8 +507,8 @@ void get_files_in_dir(const std::string& dir,
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
 				if(ec) {
 					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message();
-				} else if(mtime > checksum->modified) {
-					checksum->modified = mtime;
+				} else if(auto t = std::chrono::system_clock::from_time_t(mtime); t > checksum->modified) { // TODO: no from_time_t
+					checksum->modified = t;
 				}
 
 				uintmax_t size = bfs::file_size(di->path(), ec);
@@ -1243,7 +1244,7 @@ bool file_exists(const std::string& name)
 	return file_exists(bfs::path(name));
 }
 
-std::time_t file_modified_time(const std::string& fname)
+std::chrono::system_clock::time_point file_modified_time(const std::string& fname)
 {
 	error_code ec;
 	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);
@@ -1251,7 +1252,7 @@ std::time_t file_modified_time(const std::string& fname)
 		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message();
 	}
 
-	return mtime;
+	return chrono::parse_timestamp(mtime);
 }
 
 bool is_map(const std::string& filename)

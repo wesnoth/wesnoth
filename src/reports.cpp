@@ -29,6 +29,7 @@
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -1752,15 +1753,12 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	config report;
 	add_image(report, game_config::images::time_icon, "");
 
-	std::ostringstream ss;
-
 	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 
-	std::time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), format);
-	add_text(report, ss.str(), _("Clock"));
+	const auto now = std::chrono::system_clock::now();
+	add_text(report, chrono::format_local_timestamp(now, format), _("Clock"));
 
 	return report;
 }

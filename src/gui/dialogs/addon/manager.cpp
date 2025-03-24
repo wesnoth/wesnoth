@@ -21,7 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-
 #include "help/help.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -38,6 +37,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
@@ -1097,8 +1097,7 @@ static std::string format_addon_time(const std::chrono::system_clock::time_point
 		// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 		: _("%B %d %Y, %H:%M");
 
-	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	return translation::strftime(format, std::localtime(&as_time_t));
+	return chrono::format_local_timestamp(time, format);
 }
 
 void addon_manager::on_addon_select()

@@ -20,6 +20,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <ctime>
 #include <cstdint>
 #include <fstream>
@@ -274,7 +275,7 @@ bool is_directory(const std::string& fname);
 bool file_exists(const std::string& name);
 
 /** Get the modification time of a file. */
-std::time_t file_modified_time(const std::string& fname);
+std::chrono::system_clock::time_point file_modified_time(const std::string& fname);
 
 /** Returns true if the file ends with the mapfile extension. */
 bool is_map(const std::string& filename);
@@ -309,13 +310,12 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace = tr
 
 struct file_tree_checksum
 {
-	file_tree_checksum();
+	file_tree_checksum() = default;
 	explicit file_tree_checksum(const config& cfg);
 	void write(config& cfg) const;
-	void reset() {nfiles = 0;modified = 0;sum_size=0;}
 	// @todo make variables private!
-	std::size_t nfiles, sum_size;
-	std::time_t modified;
+	std::size_t nfiles{}, sum_size{};
+	std::chrono::system_clock::time_point modified{};
 	bool operator==(const file_tree_checksum &rhs) const;
 	bool operator!=(const file_tree_checksum &rhs) const
 	{ return !operator==(rhs); }

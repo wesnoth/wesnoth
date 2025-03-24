@@ -298,11 +298,6 @@ std::size_t config_attribute_value::to_size_t(std::size_t def) const
 	return apply_visitor(attribute_numeric_visitor<std::size_t>(def));
 }
 
-std::time_t config_attribute_value::to_time_t(std::time_t def) const
-{
-	return apply_visitor(attribute_numeric_visitor<std::time_t>(def));
-}
-
 double config_attribute_value::to_double(double def) const
 {
 	return apply_visitor(attribute_numeric_visitor<double>(def));
