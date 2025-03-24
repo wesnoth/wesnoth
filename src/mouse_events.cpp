@@ -684,6 +684,7 @@ bool mouse_handler::hex_hosts_unit(const map_location& hex) const
 	return find_unit(hex).valid();
 }
 
+// the attack dialog is shown as if the unit is standing at the hex, this may be not the best approach for units possessing weapons of different ranges
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const
 {
 	if(loc == selected_hex_) {
@@ -965,8 +966,6 @@ void mouse_handler::move_action(bool browse)
 		src = selected_hex_;
 		orig_paths = current_paths_;
 		attack_from = current_unit_attacks_from(hex);
-		// the attack dialog is showed like if the unit is standing at the hex,
-		// this may be not the best approach for units with multiple attacks with different attack ranges
 	} // end planned unit map scope
 
 	// See if the teleport option is toggled
