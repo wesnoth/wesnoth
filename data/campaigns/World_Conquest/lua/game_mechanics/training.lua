@@ -251,9 +251,8 @@ end
 function wesnoth.wml_actions.wc2_give_random_training(cfg)
 	local side_num = cfg.side
 	local amount = cfg.amount or 1
-	local among = cfg.among and stringx.split(cfg.among or "")
 	for i = 1, amount do
-		local traintype = training.find_available(side_num, among)
+		local traintype = training.find_available(side_num)
 		if traintype == nil then error("wc2_give_random_training: everything alerady maxed") end
 		training.inc_level(side_num, traintype, 1)
 	end
