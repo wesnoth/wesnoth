@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2024
+# RatArmy, 2025
 #
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
-"Last-Translator: RatArmy, 2024\n"
+"Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -399,10 +399,8 @@ msgstr "エラー"
 
 #: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:758
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "本当に終了してもよろしいですか？"
+msgstr "本当に $type2 フォルダの中に $type1 を保存しますか？"
 
 #: src/editor/map/context_manager.cpp:717
 #: src/editor/map/context_manager.cpp:925
@@ -550,9 +548,9 @@ msgstr "更に手を入れなければゲームで動作しません。"
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid "Right-click: "
+#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "右クリック："
+msgstr " | 右クリックで削除"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -601,18 +599,11 @@ msgstr "Cmd＋クリック：地形をコピー"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl＋クリック：地形をコピー"
 
+#~ msgid "Left-click: Place item "
+#~ msgstr "左クリック：アイテムの設置"
+
 #~ msgid "Choose File"
 #~ msgstr "ファイルを選択"
 
 #~ msgid "Select"
 #~ msgstr "選択"
-
-#, fuzzy
-#~| msgid "Left-click: "
-#~ msgid "Left-click: Place item "
-#~ msgstr "左クリック："
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr ""
-#~ "クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
-#~ "い。"

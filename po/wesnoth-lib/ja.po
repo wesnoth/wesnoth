@@ -8,7 +8,7 @@
 # tamanegi, 2024
 # k konami, 2024
 # h22, 2024
-# RatArmy, 2024
+# RatArmy, 2025
 #
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
-"Last-Translator: RatArmy, 2024\n"
+"Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -4183,9 +4183,9 @@ msgstr "画像："
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1170
 #, fuzzy
-#| msgid "Next Unit"
+#| msgid "Map Editor"
 msgid "Unit Type Editor"
-msgstr "次のユニット"
+msgstr "マップエディタ"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
@@ -7172,10 +7172,8 @@ msgid "$title ($count/$total)"
 msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed $count/$total"
-msgstr "完了率"
+msgstr ""
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -9278,10 +9276,10 @@ msgid "Item Tool"
 msgstr "アイテムツール"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "左マウスボタンで新しいアイテムを設置します。"
+msgstr ""
+"左マウスボタンで新しいアイテムを設置します。右クリックでアイテムを削除しま"
+"す。"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9320,10 +9318,8 @@ msgid "Loyal"
 msgstr "忠義の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "サーバー情報"
+msgstr "ツール情報を表示"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
@@ -9704,16 +9700,81 @@ msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
 
-#~ msgid "Completed"
-#~ msgstr "完了率"
+#~ msgid "Rocky Sands"
+#~ msgstr "岩混じりの砂地"
 
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "次のヒントを表示します"
+#~ msgid "Sands"
+#~ msgstr "砂地"
 
-#~ msgid "Race"
-#~ msgstr "種族"
+#~ msgid "Connected Players"
+#~ msgstr "接続済みプレイヤー"
+
+#~ msgid "Reloading alters future combat outcomes"
+#~ msgstr "再開すると未来の戦闘結果が変化します"
+
+#~ msgid "Combat outcomes remain constant when reloading"
+#~ msgstr "再開しても戦闘結果は変化しません。"
+
+#~ msgid "Biased RNG (experimental)"
+#~ msgstr "偏った RNG（試験的）"
+
+#~ msgid ""
+#~ "Combat outcomes are more in line with displayed probabilities and "
+#~ "unaffected by reloading"
+#~ msgstr ""
+#~ "表示されている確率に近づくように戦闘結果が制御され、再開しても結果は変化し"
+#~ "ません。"
+
+#~ msgid "Add-on ID"
+#~ msgstr "アドオンの ID"
+
+#~ msgid "Configuration:"
+#~ msgstr "設定："
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "リポートを全てクリップボードにコピーします"
+
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>党派：</b>"
+
+#~ msgid "Limit FPS"
+#~ msgstr "FPS 制限"
+
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "無効化するとCPU使用率が上がりますが、パフォーマンスが僅かに向上します（適"
+#~ "用するには再起動が必要です）"
+
+#~ msgid "View the credits"
+#~ msgstr "クレジットを表示します"
+
+#~ msgid "filesystem_path_game^User preferences"
+#~ msgstr "ユーザ設定"
+
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<ピリオド以外から始まる相対パス>"
+
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr ""
+#~ "絶対パスまたはピリオドとバックスラッシュから始まる相対パスを使用してくださ"
+#~ "い。"
+
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<相対パス>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "絶対パスを使用してください。$HOME を基準として解釈されるため、相対パスは非"
+#~ "推奨です。"
+
+#~ msgid "The text contains invalid Pango markup: "
+#~ msgstr "テキストに無効な Pango マークアップが含まれています："
 
 #~ msgid "timespan^expired"
 #~ msgstr "期限切れ"
@@ -9746,22 +9807,6 @@ msgstr ""
 #~ msgid_plural "timespan^$num seconds"
 #~ msgstr[0] "$num 秒"
 
-#~ msgid "Limit FPS"
-#~ msgstr "FPS 制限"
-
-#~ msgid ""
-#~ "Disabling this increases CPU usage, but may slightly improve performance "
-#~ "(requires restart to take effect)"
-#~ msgstr ""
-#~ "無効化するとCPU使用率が上がりますが、パフォーマンスが僅かに向上します（適"
-#~ "用するには再起動が必要です）"
-
-#~ msgid "Connected Players"
-#~ msgstr "接続済みプレイヤー"
-
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "テキストに無効な Pango マークアップが含まれています："
-
 #~ msgid "Text has a font size of 0."
 #~ msgstr "テキストのフォントサイズが 0 です。"
 
@@ -9770,81 +9815,8 @@ msgstr ""
 #~ "クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
 #~ "い。"
 
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>党派：</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>性別：</b>"
-
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "コピー"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "ステータス"
-
-#~ msgid "Configuration:"
-#~ msgstr "設定："
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "ユーザ設定"
-
-#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
-#~ msgstr "--userdata-dir=<ピリオド以外から始まる相対パス>"
-
-#~ msgid ""
-#~ "Use an absolute path, or a relative path that starts with a period and a "
-#~ "backslash"
-#~ msgstr ""
-#~ "絶対パスまたはピリオドとバックスラッシュから始まる相対パスを使用してくださ"
-#~ "い。"
-
-#~ msgid "--userdata-dir=<relative path>"
-#~ msgstr "--userdata-dir=<相対パス>"
-
-#~ msgid ""
-#~ "Use absolute paths. Relative paths are deprecated because they are "
-#~ "interpreted relative to $HOME"
-#~ msgstr ""
-#~ "絶対パスを使用してください。$HOME を基準として解釈されるため、相対パスは非"
-#~ "推奨です。"
+#~ msgid "Running on $os"
+#~ msgstr "$os 上で動作中"
 
 #~ msgid "Load Map"
 #~ msgstr "マップ読み込み"
-
-#~ msgid "Rocky Sands"
-#~ msgstr "岩混じりの砂地"
-
-#~ msgid "Sands"
-#~ msgstr "砂地"
-
-#~ msgid "Reloading alters future combat outcomes"
-#~ msgstr "再開すると未来の戦闘結果が変化します"
-
-#~ msgid "Combat outcomes remain constant when reloading"
-#~ msgstr "再開しても戦闘結果は変化しません。"
-
-#~ msgid "Biased RNG (experimental)"
-#~ msgstr "偏った RNG（試験的）"
-
-#~ msgid ""
-#~ "Combat outcomes are more in line with displayed probabilities and "
-#~ "unaffected by reloading"
-#~ msgstr ""
-#~ "表示されている確率に近づくように戦闘結果が制御され、再開しても結果は変化し"
-#~ "ません。"
-
-#~ msgid "Add-on ID"
-#~ msgstr "アドオンの ID"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "リポートを全てクリップボードにコピーします"
-
-#~ msgid "View the credits"
-#~ msgstr "クレジットを表示します"
-
-#~ msgid "Running on $os"
-#~ msgstr "$os 上で動作中"
