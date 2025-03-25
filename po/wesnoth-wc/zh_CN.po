@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:13+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2025-03-11 14:58+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -110,7 +110,7 @@ msgstr "联盟"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:16
 msgid "Young Ogre, Undead and Northerners"
-msgstr ""
+msgstr "幼年食人魔、亡灵和北陆之民"
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
@@ -127,7 +127,7 @@ msgstr "邪教"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:16
 msgid "Young Ogre, Drakes and Northerners"
-msgstr ""
+msgstr "幼年食人魔、 龙人和北陆之民"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
@@ -2433,7 +2433,7 @@ msgstr "刺客指环"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:30
 msgid "melee: backstab"
-msgstr ""
+msgstr "近战：背刺"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:31
@@ -2496,7 +2496,7 @@ msgstr "血戒"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:138
 msgid "melee: drains"
-msgstr ""
+msgstr "近战：吸血"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:139
@@ -2512,10 +2512,8 @@ msgstr "残忍之刺"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:157
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "近战：可选择冲锋"
+msgstr "近战：冲锋"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:158
@@ -2570,10 +2568,8 @@ msgstr "禁忌法书"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:219
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "近战：可选择冲锋"
+msgstr "近战：瘟疫"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:220
@@ -2726,7 +2722,7 @@ msgstr "药草"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
 msgid "heals +8, cures"
-msgstr ""
+msgstr "疗伤 +8，疗毒"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:421
@@ -3112,7 +3108,7 @@ msgstr "西风斗篷"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:861
 msgid "skirmisher, ambush, nightstalk, +2 moves"
-msgstr ""
+msgstr "散兵，伏击，夜遁，+2 移动"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:862
@@ -3289,7 +3285,7 @@ msgstr "防御时，此单位的脆弱程度减半。"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:468
 msgid "heals +4, cures"
-msgstr ""
+msgstr "疗伤 +4，疗毒"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:544
@@ -3370,17 +3366,10 @@ msgid "World Conquest 3p"
 msgstr "世界征服 3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "世界征服 1p"
+msgstr "世界征服 4p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-#, fuzzy
-#| msgid ""
-#| "A randomly generated campaign for 1 player. It has 6 level of "
-#| "difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
@@ -3389,11 +3378,6 @@ msgstr ""
 "（专家级别，5幕场景。）"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
@@ -3403,11 +3387,6 @@ msgstr ""
 "（专家级别，5幕场景。）"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
@@ -3417,11 +3396,6 @@ msgstr ""
 "（专家级别，5幕场景。）"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
@@ -3438,76 +3412,72 @@ msgstr "WC"
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Beginner"
-msgstr ""
+msgstr "新手"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Peasant"
-msgstr ""
+msgstr "农民"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Easy"
-msgstr ""
+msgstr "简单"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Sergeant"
-msgstr ""
+msgstr "军士"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Lieutenant"
-msgstr ""
+msgstr "尉官"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Medium"
-msgstr ""
+msgstr "中等"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "General"
-msgstr ""
+msgstr "将军"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "Hard"
-msgstr ""
+msgstr "困难"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
 msgid "Challenging"
-msgstr ""
+msgstr "挑战"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
-#, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "粮仓"
+msgstr "大元帅"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
-#, fuzzy
-#| msgid "expert"
 msgid "Expert"
 msgstr "专家"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
 msgid "Nightmare"
-msgstr ""
+msgstr "噩梦"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
 msgid "Campaign Design"
-msgstr ""
+msgstr "战役设计"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Prose, Grammatical and Text Assistance"
-msgstr ""
+msgstr "散文、语法和文字助理"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
@@ -3517,12 +3487,12 @@ msgstr ""
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
 msgid "Playtesting"
-msgstr ""
+msgstr "游戏测试"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "战役维护"
 
 #~ msgid "Use World Conquest PYA mod"
 #~ msgstr "使用世界征服的PYA模组"
