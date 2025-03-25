@@ -80,8 +80,6 @@ namespace translation
 	/** Case-insensitive lexicographical comparison. */
 	int icompare(const std::string& s1,const std::string& s2);
 
-	std::string strftime(const std::string& format, const std::tm* time);
-
 	/** Case-insensitive search. @a s2 will be checked against @a s1. */
 	bool ci_search(const std::string& s1, const std::string& s2);
 
