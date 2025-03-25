@@ -41,7 +41,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/format.hpp>
-#include <ctime>
 #include <iomanip>
 #include <utility>
 

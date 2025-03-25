@@ -18,7 +18,7 @@
 #include "gettext.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/chrono.hpp"
-#undef CPP20_CHRONO_SUPPORT
+
 #include <cassert>
 #ifndef CPP20_CHRONO_SUPPORT
 #include <ctime>
@@ -61,10 +61,6 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 		// TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
 		format_string = _("%b %d %Y");
 	}
-
-	// TODO: make sure this doesn't result in #1709 coming back
-	assert(!format_string.empty());
-	return chrono::format_local_timestamp(t, format_string);
 #else
 	const auto now = std::chrono::system_clock::now();
 
@@ -118,10 +114,10 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 		// TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
 		format_string = _("%b %d %Y");
 	}
-	assert(!format_string.empty());
-
-	return translation::strftime(format_string, &save_time);
 #endif
+	// TODO: make sure this doesn't result in #1709 coming back
+	assert(!format_string.empty());
+	return chrono::format_local_timestamp(t, format_string);
 }
 
 } // namespace utils

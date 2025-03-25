@@ -30,7 +30,6 @@
 #include <boost/algorithm/string.hpp>
 
 #include <map>
-#include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>

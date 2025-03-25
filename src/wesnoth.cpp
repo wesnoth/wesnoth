@@ -421,9 +421,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(!cmdline_opts.nobanner) {
+		const auto now = std::chrono::system_clock::now();
 		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-		static constexpr std::string_view format = "%a %b %d %T %Y"; // equivalent to std::ctime
-		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(std::chrono::system_clock::now(), format) << '\n';
+		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
 	if(cmdline_opts.usercache_path) {

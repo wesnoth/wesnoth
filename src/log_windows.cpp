@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 
