@@ -441,7 +441,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					}
-					for(const unit& unit_itor : units){
+					const unit_map& units_distant = args.context().get_disp_context().units_distant();
+					for(const unit& unit_itor : units_distant){
 						if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
 							continue;
 						}
@@ -830,7 +831,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 								}
 							}
 						}
-						for(const unit& unit_itor : units){
+						const unit_map& units_distant = args.context().get_disp_context().units_distant();
+						for(const unit& unit_itor : units_distant){
 							if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
 								continue;
 							}

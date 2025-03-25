@@ -77,6 +77,7 @@ public:
 		um_ = &empty_unit_map;
 	}
 	const unit_map & units() const override { return *um_; }
+	const unit_map & units_distant() const override { return *udm_; }
 	const gamemap & map() const override { return *gm_; }
 	const std::vector<team> & teams() const override { return *tm_; }
 	const std::vector<std::string> & hidden_label_categories() const override { return *lbls_; }
@@ -84,6 +85,7 @@ public:
 
 private:
 	const unit_map * um_;
+	const unit_map * udm_;
 	const gamemap * gm_;
 	const std::vector<team> * tm_;
 	const std::vector<std::string> * lbls_;

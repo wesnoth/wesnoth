@@ -37,6 +37,7 @@ public:
 	virtual const std::vector<team> & teams() const = 0;
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
+	virtual const unit_map & units_distant() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
 	virtual std::vector<std::string> & hidden_label_categories() = 0;
 

@@ -177,7 +177,7 @@ const unit_map& get_unit_distant_map()
 
 	// If we get here, we're in the scenario editor
 	assert(display::get_singleton());
-	return display::get_singleton()->context().units();
+	return display::get_singleton()->context().units_distant();
 }
 
 const team& get_team(std::size_t side)

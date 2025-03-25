@@ -122,6 +122,7 @@ public:
 
 	// Import symbols from base class.
 	using display_context::units;
+	using display_context::units_distant;
 	using display_context::teams;
 	using display_context::map;
 
@@ -135,6 +136,16 @@ public:
 	unit_map& units()
 	{
 		return units_;
+	}
+
+	virtual const unit_map& units_distant() const override
+	{
+		return units_distant_;
+	}
+
+	unit_map& units_distant()
+	{
+		return units_distant_;
 	}
 
 	/** Const teams accessor. */
@@ -508,6 +519,7 @@ private:
 
 	map_labels labels_;
 	unit_map units_;
+	unit_map units_distant_;
 	std::vector<team> teams_;
 	std::vector<std::string> lbl_categories_;
 	std::unique_ptr<tod_manager> tod_manager_;

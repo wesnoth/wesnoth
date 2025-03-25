@@ -116,6 +116,11 @@ public:
 		return units_;
 	}
 
+	virtual const unit_map& units_distant() const override
+	{
+		return units_distant_;
+	}
+
 	unit_map& units_distant()
 	{
 		return units_distant_;
