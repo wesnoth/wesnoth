@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-17 04:21 UTC\n"
-"PO-Revision-Date: 2025-02-07 22:43+0800\n"
+"PO-Revision-Date: 2025-03-09 21:46+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -14564,31 +14564,29 @@ msgstr "剑士"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:145
-#, fuzzy
-#| msgid "Haunt"
 msgid "Taunt"
-msgstr "怨灵"
+msgstr "嘲讽"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:286
 msgid "Stronger Grip"
-msgstr ""
+msgstr "更强的控制力"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:299
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "压倒性的力量"
 
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:635
 msgid "Stamina Training"
-msgstr "耐力训练"
+msgstr "持久力训练"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:339
 msgid "Endurance Training"
-msgstr ""
+msgstr "耐受力训练"
 
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:359
@@ -14611,12 +14609,12 @@ msgstr "减速"
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:418
 msgid "Opportunist"
-msgstr ""
+msgstr "机会主义者"
 
 #. [advancement]: id=inspiring
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:437
 msgid "Inspiring"
-msgstr ""
+msgstr "鼓舞"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:474
@@ -14641,7 +14639,7 @@ msgstr "弓术训练"
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:544
 msgid "Quickdraw"
-msgstr ""
+msgstr "快速拉弓"
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:556
@@ -14661,12 +14659,12 @@ msgstr "毒雨"
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:621
 msgid "Twin Arrows"
-msgstr ""
+msgstr "双箭"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:650
 msgid "Footwork"
-msgstr ""
+msgstr "步法"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:715
@@ -15017,6 +15015,9 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"在使用旭日具现攻击后激活此能力时，这个单位照明周边区域持续三回合。\n"
+"\n"
+"任何与此单位相邻的单位，在夜间如同在黄昏战斗，而在黄昏则如同在昼间战斗。"
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -15056,6 +15057,8 @@ msgid ""
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
+"此攻击为《日升颂歌》的第三乐章。在使用它之后，下一回合即可使用第一乐章。此"
+"外，发动此攻击会提供持续三回合的照明。"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:454
@@ -15278,38 +15281,34 @@ msgstr "眩晕"
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1423
 msgid "opportunist"
-msgstr ""
+msgstr "机会主义者"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1424
 msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
-msgstr ""
+msgstr "这个能力使得卡勒在敌人离开他的控制区时，用一击流星锤攻击敌人。"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1498
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunt"
-msgstr "怨灵"
+msgstr "嘲讽"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1499
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
-msgstr ""
+msgstr "嘲讽敌人使得他们尝试攻击卡勒一回合。"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1535
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunted"
-msgstr "怨灵"
+msgstr "被嘲讽"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1536
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
-msgstr ""
+msgstr "这个单位被卡勒嘲讽，它会尝试攻击他一回合。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
@@ -15328,6 +15327,8 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"此单位能鼓舞在他周围的己方单位，让他们更好地战斗。相邻的己方单位中，等级与其"
+"相同或比其低的单位将多输出25%伤害，等级每多差一级，则再多输出25%伤害。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
@@ -15335,6 +15336,8 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"此单位的存在使周围的己方单位在战斗中造成更多伤害，虽然这只对比其低等级或与其"
+"同等级的单位有效。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1559
 msgid "cooldown 1"

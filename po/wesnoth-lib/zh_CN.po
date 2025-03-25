@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
-"PO-Revision-Date: 2024-07-10 11:00+0800\n"
+"PO-Revision-Date: 2025-03-11 20:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -160,10 +160,8 @@ msgstr "沼泽"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "棕榈树林"
+msgstr "巨藻森林"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -432,14 +430,12 @@ msgstr "铁篱笆"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:532
 msgid "Palisade"
-msgstr ""
+msgstr "栅栏"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:533
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "木桥"
+msgstr "木栅栏"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:542
@@ -459,7 +455,7 @@ msgstr "盛开的睡莲"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:571
 msgid "Seashells"
-msgstr ""
+msgstr "贝壳"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:582
@@ -474,7 +470,7 @@ msgstr "残骸"
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:601
 msgid "Window"
-msgstr ""
+msgstr "窗"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -1022,10 +1018,8 @@ msgstr "天然泥土洞穴墙"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "天然洞穴墙"
+msgstr "受损的洞穴墙"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1433
@@ -1102,17 +1096,13 @@ msgstr "蔓生石墙"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "石墙"
+msgstr "受损的石墙"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "矿中墙"
+msgstr "毁坏的墙"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1340,10 +1330,8 @@ msgstr "龙人村庄"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "龙人村庄"
+msgstr "雪中龙人村庄"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1823,10 +1811,8 @@ msgstr "基本石桥"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
 #: data/core/terrain.cfg:2955
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "基本石桥"
+msgstr "雪中石桥"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -2300,10 +2286,8 @@ msgstr "默认"
 #. [widget]: id=tab_label
 #: data/gui/macros/player_list_panel.cfg:22
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "玩家："
+msgstr "玩家"
 
 #. [settings]
 #: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
@@ -2481,7 +2465,7 @@ msgstr "启动地图编辑器"
 #: data/gui/themes/default/dialogs/game_version.cfg:904
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "社区"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
@@ -2831,10 +2815,8 @@ msgstr "网站："
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID："
+msgstr "Id："
 
 #. [button]: id=install
 #. [button]: id=single_install
@@ -3542,10 +3524,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:162
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "显示友军状态球"
+msgstr "显示所有"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:174
@@ -3595,7 +3575,7 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "标题："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:151
@@ -3607,7 +3587,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:162
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:661
 msgid "Icon:"
-msgstr ""
+msgstr "图标："
 
 #. [button]: id=select_icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:182
@@ -3625,10 +3605,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
-#, fuzzy
-#| msgid "Author"
 msgid "Author:"
-msgstr "作者"
+msgstr "作者："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
@@ -3696,9 +3674,9 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
 #, fuzzy
-#| msgid "Author"
+#| msgid "Author:"
 msgid "Primary Authors:"
-msgstr "作者"
+msgstr "作者："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -3737,10 +3715,8 @@ msgstr ""
 
 #. [label]: id=translations_description
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:292
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "描述："
+msgstr "描述"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3777,24 +3753,18 @@ msgstr "保存"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "翻译："
+msgstr "翻译"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "需要输入密码"
+msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "语言"
+msgstr "* 语言："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
@@ -3806,7 +3776,7 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* 标题："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
@@ -4731,10 +4701,8 @@ msgstr "日志："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:405
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "截屏"
+msgstr "截图："
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:439
@@ -5476,7 +5444,7 @@ msgstr "当选择随机派系时，允许镜像匹配"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:177
 msgid "Independent"
-msgstr ""
+msgstr "独立"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:178
@@ -5486,7 +5454,7 @@ msgstr "独立：将随机阵营独立地指定给玩家"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "无镜像"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:183
@@ -5496,7 +5464,7 @@ msgstr "无镜像：任意两位玩家都不会被指定到同一个派系"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "无友方镜像"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:188
@@ -5764,9 +5732,9 @@ msgstr "选择此阵营的派系和首领"
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:155
 #: data/gui/themes/default/dialogs/mp_staging.cfg:157
 #, fuzzy
-#| msgid "Action"
+#| msgid "Faction"
 msgid "Faction:"
-msgstr "动作"
+msgstr "阵营"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -5812,10 +5780,8 @@ msgstr "账号："
 
 #. [button]: id=replay_download
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "下载数"
+msgstr "下载"
 
 #. [label]: id=players
 #. [label]: id=modifications
@@ -5833,10 +5799,8 @@ msgstr "模组"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "玩家："
+msgstr "玩家"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5854,10 +5818,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "团队名称："
+msgstr "游戏名称："
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:137
@@ -6350,10 +6312,8 @@ msgstr "显示水面动画效果（可能会很慢）"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "显示单位站立动画"
+msgstr "单位站立动画"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
@@ -6362,10 +6322,8 @@ msgstr "让战场上站立的单位持续地做小动作"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "显示单位空闲动画"
+msgstr "单位空闲动画"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
@@ -6639,8 +6597,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
-"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
-"动”和“已完全移动”的颜色。"
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移动”和"
+"“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -7604,10 +7562,8 @@ msgid "Multiplayer Scenario"
 msgstr "多人场景"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:184
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "动作"
+msgstr "阵营"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
 #: src/gui/dialogs/multiplayer/lobby.cpp:421
@@ -7616,11 +7572,9 @@ msgstr "时代"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:186
 msgid "Map Pack"
-msgstr ""
+msgstr "地图包"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:187
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
 msgstr "模组"
 
@@ -7633,20 +7587,14 @@ msgid "Theme"
 msgstr "主题"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "其它游戏"
+msgstr "其它"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:196
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "协作"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:197
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "装饰性"
 
@@ -7672,13 +7620,11 @@ msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:394
 msgid "Success"
-msgstr ""
+msgstr "成功"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:424
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose an icon"
-msgstr "选择起始场景"
+msgstr "选择一个图标"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:192
 msgid "scout"
@@ -8154,8 +8100,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
-"wesnoth.org报告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://"
+"bugs.wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -9635,15 +9581,8 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
 
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "显示后一条每日提示"
-
-#, fuzzy
-#~| msgid "Beach Sands"
 #~ msgid "Rocky Sands"
-#~ msgstr "海滩沙砾"
+#~ msgstr "岩石沙砾"
 
 #~ msgid "Sands"
 #~ msgstr "沙地"
