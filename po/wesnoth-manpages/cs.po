@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-02-17 15:53-0600\n"
-"PO-Revision-Date: 2025-01-29 21:01+0100\n"
+"PO-Revision-Date: 2025-02-20 21:35+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -883,8 +883,8 @@ msgstr "B<--render-image>I<\\ obrázek>B<\\ >I<výstup>"
 #: doc/man/wesnoth.6:294
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "vezme pro wesnoth platný „řetězec cesty obrázku“, který obsahuje funkce "
 "cesty obrázku, a zapíše výstup do .png souboru. Funkce cesty obrázku jsou "
@@ -1301,8 +1301,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "použij tuto volbu pro hraní ve vybrané éře namísto éry B<Default>. Éra je "
-"dána identifikátorem. Éry jsou popsány v souboru B<data/multiplayer/eras."
-"cfg>."
+"dána identifikátorem. Éry jsou popsány v souboru B<data/multiplayer/"
+"eras.cfg>."
 
 # type: TP
 #. type: TP
@@ -1483,11 +1483,11 @@ msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:495
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1496,8 +1496,8 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Tuto manuálovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Tuto manuálovou stránku původně vytvořil Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1515,12 +1515,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:503 doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003–2024 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003–2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1606,9 +1603,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Součást Bitvy o Wesnoth spravující hry více hráčů. Na https://www.wesnoth."
-"org/wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a "
-"to jak přes fifo, tak přímo od klienta wesnoth."
+"Součást Bitvy o Wesnoth spravující hry více hráčů. Na https://"
+"www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které server "
+"akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth."
 
 # type: TP
 #. type: TP
@@ -1830,13 +1827,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky B<*> "
 "a B<?>. Pro více podrobností viz B<glob>(7). Výchozí hodnoty (použité, když "
-"není nic určeno) jsou: B<*admin*,*admln*,*moderator*,*server*,ai,ai?,"
-"computer,human,network,player>."
+"není nic určeno) jsou: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2162,10 +2159,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
-"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
-"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
-"12 hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
+"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
+"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
+"hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text
@@ -2472,15 +2469,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>. Upravili Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton@sonnenkinder.orgE<gt> a Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>. Tuto manuálovou stránku původně vytvořil Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt> a Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. Tuto manuálovou stránku původně "
+"vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text
