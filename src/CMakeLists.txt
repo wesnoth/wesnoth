@@ -226,6 +226,7 @@ if(ENABLE_GAME)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		boost_charconv
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
@@ -273,6 +274,7 @@ if(ENABLE_TESTS)
 		Boost::locale
 		Boost::filesystem
 		Boost::unit_test_framework
+		boost_charconv
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
@@ -321,6 +323,7 @@ if(ENABLE_SERVER)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		boost_charconv
 	)
 	if(MSVC)
 		target_link_options(wesnothd PRIVATE /WX)
@@ -362,6 +365,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		boost_charconv
 	)
 	if(MSVC)
 		target_link_options(campaignd PRIVATE /WX)
