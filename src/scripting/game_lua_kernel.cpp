@@ -2750,6 +2750,44 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	return 1;
 }
 
+namespace
+{
+	const unit_map& get_unit_map()
+	{
+		// Used if we're in the game, including during the construction of the display_context
+		if(resources::gameboard) {
+			return resources::gameboard->units();
+		}
+
+		// If we get here, we're in the scenario editor
+		assert(display::get_singleton());
+		return display::get_singleton()->context().units();
+	}
+	void reset_affect_adjacent(const unit& u_)
+	{
+		bool affect_adjacent = false;
+		for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+			bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
+			if(image_or_hides && cfg.has_child("affect_adjacent")){
+				affect_adjacent = true;
+				break;
+			}
+		}
+		const unit_map& units = get_unit_map();
+		if(affect_adjacent){
+			const auto adjacent = get_adjacent_tiles(u_.get_location());
+			for(unsigned i = 0; i < adjacent.size(); ++i) {
+				const unit_map::const_iterator it = units.find(adjacent[i]);
+				if (it == units.end() || it->incapacitated())
+					continue;
+				if ( &*it == &u_ )
+					continue;
+				it->anim_comp().set_standing();
+			}
+		}
+	}
+}
+
 void game_lua_kernel::put_unit_helper(const map_location& loc)
 {
 	if(game_display_) {
@@ -2795,6 +2833,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
+		reset_affect_adjacent(*u);
 	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
@@ -2810,6 +2849,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		reset_affect_adjacent(*u);
 	}
 
 	// Fire event if using the deprecated version or if the final argument is not false
@@ -2838,6 +2878,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			reset_affect_adjacent(*u);
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
@@ -2900,6 +2941,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
+			reset_affect_adjacent(*u);
 		}
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
@@ -2924,6 +2966,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
+		reset_affect_adjacent(*u);
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
 		unit_ptr v = u->clone();
@@ -2956,6 +2999,9 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u = unit::create(cfg, false, vcfg);
+			if (u->get_location().valid()) {
+				reset_affect_adjacent(*u);
+			}
 		}
 	}
 
@@ -2999,6 +3045,9 @@ static int intf_create_unit(lua_State *L)
 	const vconfig* vcfg = nullptr;
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u  = unit::create(cfg, true, vcfg);
+	if (u->get_location().valid()) {
+		reset_affect_adjacent(*u);
+	}
 	luaW_pushunit(L, u);
 	return 1;
 }
@@ -3159,6 +3208,9 @@ static int intf_transform_unit(lua_State *L)
 		utp = &utp->get_variation(m2);
 	}
 	u.advance_to(*utp);
+	if (u.get_location().valid()) {
+		reset_affect_adjacent(u);
+	}
 
 	return 0;
 }

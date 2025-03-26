@@ -17,9 +17,11 @@
 
 #include "config.hpp"
 #include "display.hpp"
+#include "game_board.hpp"
 #include "map/map.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
@@ -194,6 +196,30 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 	refreshing_ = false;
 	anim_.reset();
+}
+
+void unit_animation_component::reset_affect_adjacent(const display & disp)
+{
+	bool affect_adjacent = false;
+	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
+		if(image_or_hides && cfg.has_child("affect_adjacent")){
+			affect_adjacent = true;
+			break;
+		}
+	}
+	const unit_map& units = disp.context().units();
+	if(affect_adjacent){
+		const auto adjacent = get_adjacent_tiles(u_.get_location());
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == &u_ )
+				continue;
+			it->anim_comp().set_standing();
+		}
+	}
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {
