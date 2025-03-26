@@ -774,7 +774,7 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set& constrain
 
 {
 	terrain_constraint& constraint = add_constraints(
-			constraints, loc, t_translation::ter_match(cfg["type"].str(), t_translation::WILDCARD), global_images);
+			constraints, loc, t_translation::ter_match(cfg["type"].str()), global_images);
 
 	std::vector<std::string> item_string = utils::square_parenthetical_split(cfg["set_flag"], ',', "[", "]");
 	constraint.set_flag.insert(constraint.set_flag.end(), item_string.begin(), item_string.end());

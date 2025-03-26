@@ -78,18 +78,18 @@ namespace t_translation {
 
 	/**
 	 * Converts a terrain string to a number.
+	 * If the terrain has only a base layer then the overlay will be NO_LAYER.
+	 *
 	 * @param str               The terrain string with an optional number.
 	 * @param start_positions   Returns the start_positions, the caller should
 	 *                          set it on -1 and it's only changed it there is
 	 *                          a starting position found.
-	 * @param filler            If the terrain has only 1 layer then the filler
-	 *                          will be used as the second layer.
 	 *
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions, const ter_layer filler);
-	static terrain_code string_to_number_(std::string_view str, const ter_layer filler = NO_LAYER);
+	static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions);
+	static terrain_code string_to_number_(std::string_view str);
 
 	/**
 	 * Converts a terrain number to a string
@@ -171,8 +171,8 @@ ter_match::ter_match() :
 	is_empty(true)
 {}
 
-ter_match::ter_match(std::string_view str, const ter_layer filler) :
-	terrain(t_translation::read_list(str, filler)),
+ter_match::ter_match(std::string_view str) :
+	terrain(t_translation::read_list(str)),
 	mask(),
 	masked_terrain(),
 	has_wildcard(t_translation::has_wildcard(terrain)),
@@ -204,9 +204,9 @@ ter_match::ter_match(const terrain_code& tcode):
 	}
 }
 
-terrain_code read_terrain_code(std::string_view str, const ter_layer filler)
+terrain_code read_terrain_code(std::string_view str)
 {
-	return string_to_number_(str, filler);
+	return string_to_number_(str);
 }
 
 std::string write_terrain_code(const terrain_code& tcode)
@@ -214,7 +214,7 @@ std::string write_terrain_code(const terrain_code& tcode)
 	return number_to_string_(tcode);
 }
 
-ter_list read_list(std::string_view str, const ter_layer filler)
+ter_list read_list(std::string_view str)
 {
 	// Handle an empty string
 	ter_list result;
@@ -232,7 +232,7 @@ ter_list read_list(std::string_view str, const ter_layer filler)
 		std::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
-		const terrain_code tile = string_to_number_(terrain, filler);
+		const terrain_code tile = string_to_number_(terrain);
 
 		// Add the resulting terrain number
 		result.push_back(tile);
@@ -316,7 +316,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		// Process the chunk
 		std::vector<std::string> sp;
 		// The gamemap never has a wildcard
-		const terrain_code tile = string_to_number_(terrain, sp, NO_LAYER);
+		const terrain_code tile = string_to_number_(terrain, sp);
 
 		// Add to the resulting starting position
 		for(const auto& starting_position : sp) {
@@ -731,12 +731,12 @@ static ter_layer string_to_layer_(std::string_view str)
 	return result;
 }
 
-static terrain_code string_to_number_(std::string_view str, const ter_layer filler) {
+static terrain_code string_to_number_(std::string_view str) {
 	std::vector<std::string> dummy;
-	return string_to_number_(str, dummy, filler);
+	return string_to_number_(str, dummy);
 }
 
-static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions, const ter_layer filler)
+static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions)
 {
 	terrain_code result;
 
@@ -759,14 +759,7 @@ static terrain_code string_to_number_(std::string_view str, std::vector<std::str
 	if(offset !=  std::string::npos) {
 		result = terrain_code { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
 	} else {
-		result = terrain_code { string_to_layer_(str), filler };
-
-		// Ugly hack
-		if(filler == WILDCARD && (result.base == NOT.base ||
-				result.base == STAR.base)) {
-
-			result.overlay = NO_LAYER;
-		}
+		result = terrain_code { string_to_layer_(str), NO_LAYER };
 	}
 
 	return result;
