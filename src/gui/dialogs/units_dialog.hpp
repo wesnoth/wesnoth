@@ -46,16 +46,31 @@ public:
 		return selected_index_ != -1;
 	}
 
+	void set_selected_index(int selected)
+	{
+		selected_index_ = selected;
+	}
+
 	/** Gender choice from the user. */
 	unit_race::GENDER gender() const
 	{
 		return gender_;
 	}
 
+	void set_gender(const unit_race::GENDER gender)
+	{
+		gender_ = gender;
+	}
+
 	/** Variation choice from the user. */
 	std::string variation() const
 	{
 		return variation_;
+	}
+
+	void set_variation(const std::string& variation)
+	{
+		variation_ = variation;
 	}
 
 	void clear_variation()

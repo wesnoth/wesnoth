@@ -209,6 +209,10 @@ void units_dialog::show_list(listbox& list)
 
 	const auto [sorter_id, order] = sort_last.value_or(sort_order_);
 	list.set_active_sorter(sorter_id, order, true);
+	if (is_selected()) { // In this case, is an entry preselected by caller?
+		list.select_row(selected_index_);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
 }
 
 void units_dialog::rename_unit(std::vector<unit_const_ptr>& unit_list)
@@ -449,8 +453,12 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto& {
 		const unit_type* ut = types_list[index];
 
-		dlg->get_toggle().set_members_enabled(
-			[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
+		if (dlg->is_selected() && (static_cast<int>(index) == dlg->get_selected_index())) {
+			dlg->get_toggle().set_member_states(dlg->gender());
+		} else {
+			dlg->get_toggle().set_members_enabled(
+				[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
+		}
 
 		populate_variations(*ut);
 

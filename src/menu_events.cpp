@@ -87,6 +87,14 @@ static lg::log_domain log_engine("engine");
 // This file acts as launcher for many gui2 dialogs
 using namespace gui2::dialogs;
 
+namespace
+{
+	std::string last_created_unit = "";
+	std::string last_recruit = "";
+	std::string last_variation = "";
+	unit_race::GENDER last_gender = unit_race::MALE;
+}
+
 namespace events
 {
 menu_handler::menu_handler(play_controller& pc)
@@ -262,6 +270,8 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	std::vector<t_string> unknown_units;
 	team& current_team = board().get_team(side_num);
 
+	int selected = -1, i = 0;
+
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
@@ -277,6 +287,10 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			err_msgs_map[type] = err_msg;
 		}
 		recruit_list.push_back(type);
+		if (type->id() == last_recruit) {
+			selected = i;
+		}
+		i++;
 	}
 
 	if(!unknown_units.empty()) {
@@ -297,9 +311,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	}
 
 	const auto& dlg = units_dialog::build_recruit_dialog(recruit_list, err_msgs_map, current_team);
+	dlg->set_selected_index(selected);
+	dlg->show();
+	const auto& type = recruit_list[dlg->get_selected_index()];
+	last_recruit = type->id();
 
-	if(dlg->show() && dlg->is_selected()) {
-		const auto& type = recruit_list[dlg->get_selected_index()];
+	if((dlg->get_retval() == gui2::retval::OK) && dlg->is_selected()) {
 		map_location recruit_hex = last_hex;
 		do_recruit(type->id(), side_num, recruit_hex);
 	}
@@ -664,17 +681,34 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
 type_gender_variation choose_unit()
 {
 	const auto& types_list = unit_types.types_list();
-	const auto& create_dlg = units_dialog::build_create_dialog(types_list);
 
-	if (!create_dlg->show() || !create_dlg->is_selected()) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
-		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
+	const auto& create_dlg = units_dialog::build_create_dialog(types_list);
+	// Restore saved choices
+	for (size_t i = 0; i < types_list.size(); i++) {
+		if (types_list[i]->id() == last_created_unit) {
+			create_dlg->set_selected_index(i);
+			create_dlg->set_gender(last_gender);
+			create_dlg->set_variation(last_variation);
+			break;
+		}
 	}
 
+	auto info = type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
+	create_dlg->show();
 	const unit_type* ut = types_list[create_dlg->get_selected_index()];
+	last_created_unit = ut->id();
+	last_gender = create_dlg->gender();
+	last_variation = create_dlg->variation();
 
-	unit_race::GENDER gender = create_dlg->gender();
-	return type_gender_variation(ut, gender, create_dlg->variation());
+	if (create_dlg->get_retval() == gui2::retval::OK) {
+		if (create_dlg->is_selected()) {
+			info = type_gender_variation(ut, last_gender, last_variation);
+		} else {
+			ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
+		}
+	}
+
+	return info;
 }
 
 /**
