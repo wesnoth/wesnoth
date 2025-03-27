@@ -43,6 +43,7 @@
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
 #include "serialization/binary_or_text.hpp" // for config_writer
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
@@ -77,7 +78,6 @@
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
 #include <cstdlib>   // for srand, exit
-#include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
 #include <vector>
 #include <iostream>
@@ -421,9 +421,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(!cmdline_opts.nobanner) {
+		const auto now = std::chrono::system_clock::now();
 		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-		const std::time_t t = std::time(nullptr);
-		PLAIN_LOG << "Started on " << ctime(&t);
+		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
 	if(cmdline_opts.usercache_path) {

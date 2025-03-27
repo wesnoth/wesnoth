@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
@@ -443,6 +444,9 @@ static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix_pa
 	return rest;
 }
 
+// Forward declaration, implemented below
+std::chrono::system_clock::time_point file_modified_time(const bfs::path& path);
+
 void get_files_in_dir(const std::string& dir,
 		std::vector<std::string>* files,
 		std::vector<std::string>* dirs,
@@ -503,10 +507,7 @@ void get_files_in_dir(const std::string& dir,
 			push_if_exists(files, di->path(), mode == name_mode::ENTIRE_FILE_PATH);
 
 			if(checksum != nullptr) {
-				std::time_t mtime = bfs::last_write_time(di->path(), ec);
-				if(ec) {
-					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message();
-				} else if(mtime > checksum->modified) {
+				if(auto mtime = file_modified_time(di->path()); mtime > checksum->modified) {
 					checksum->modified = mtime;
 				}
 
@@ -1243,15 +1244,21 @@ bool file_exists(const std::string& name)
 	return file_exists(bfs::path(name));
 }
 
-std::time_t file_modified_time(const std::string& fname)
+/** @todo expose to public interface. Most string functions should take a path object */
+std::chrono::system_clock::time_point file_modified_time(const bfs::path& path)
 {
 	error_code ec;
-	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);
+	std::time_t mtime = bfs::last_write_time(path, ec);
 	if(ec) {
-		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message();
+		LOG_FS << "Failed to read modification time of " << path.string() << ": " << ec.message();
 	}
 
-	return mtime;
+	return chrono::parse_timestamp(mtime);
+}
+
+std::chrono::system_clock::time_point file_modified_time(const std::string& fname)
+{
+	return file_modified_time(bfs::path(fname));
 }
 
 bool is_map(const std::string& filename)

@@ -48,7 +48,6 @@
 #endif
 
 #include <csignal>
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <utility>

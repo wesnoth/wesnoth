@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
@@ -264,14 +265,10 @@ bool looks_like_pbl(const std::string& file)
 	return utils::wildcard_string_match(utf8::lowercase(file), "*.pbl");
 }
 
-file_tree_checksum::file_tree_checksum()
-	: nfiles(0), sum_size(0), modified(0)
-{}
-
-file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles	(cfg["nfiles"].to_size_t()),
-	sum_size(cfg["size"].to_size_t()),
-	modified(cfg["modified"].to_time_t())
+file_tree_checksum::file_tree_checksum(const config& cfg)
+	: nfiles(cfg["nfiles"].to_size_t())
+	, sum_size(cfg["size"].to_size_t())
+	, modified(chrono::parse_timestamp(cfg["modified"]))
 {
 }
 
@@ -279,7 +276,7 @@ void file_tree_checksum::write(config& cfg) const
 {
 	cfg["nfiles"] = nfiles;
 	cfg["size"] = sum_size;
-	cfg["modified"] = modified;
+	cfg["modified"] = chrono::serialize_timestamp(modified);
 }
 
 bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
@@ -341,7 +338,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 {
 	static file_tree_checksum checksum;
 	if (reset)
-		checksum.reset();
+		checksum = file_tree_checksum{};
 	if(checksum.nfiles == 0) {
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);

@@ -21,7 +21,6 @@
 
 #include "serialization/string_utils.hpp"
 
-#include <ctime>
 #include <string_view>
 
 class variable_set;

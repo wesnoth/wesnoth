@@ -30,7 +30,6 @@
 #include <boost/algorithm/string.hpp>
 
 #include <map>
-#include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>
@@ -133,11 +132,11 @@ void rotate_logs(const std::string& log_dir)
 std::string unique_log_filename()
 {
 	std::ostringstream o;
-	const std::time_t cur = std::time(nullptr);
+	const auto now = std::chrono::system_clock::now();
 	randomness::mt_rng rng;
 
 	o << lg::log_file_prefix
-	  << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-")
+	  << chrono::format_local_timestamp(now, "%Y%m%d-%H%M%S-")
 	  << rng.get_next_random();
 
 	return o.str();
