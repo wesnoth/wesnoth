@@ -36,6 +36,7 @@
 #include "synced_context.hpp"
 #include "team.hpp" // for team
 #include "tod_manager.hpp"
+#include "map/location.hpp"
 #include "units/animation_component.hpp"
 #include "units/ptr.hpp"           // for unit_const_ptr
 #include "units/unit.hpp"          // for unit
@@ -683,6 +684,7 @@ bool mouse_handler::hex_hosts_unit(const map_location& hex) const
 	return find_unit(hex).valid();
 }
 
+// the attack dialog is shown as if the unit is standing at the hex, this may be not the best approach for units possessing weapons of different ranges
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const
 {
 	if(loc == selected_hex_) {
@@ -690,6 +692,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	}
 
 	bool wb_active = pc_.get_whiteboard()->is_active();
+	std::set<int> attackable_distances;
 
 	{
 		// Check the unit SOURCE of the attack
@@ -749,8 +752,39 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if(!target_eligible) {
 			return map_location();
 		}
+
+		for (const auto& attack : source_unit->attacks()) {
+			for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+				attackable_distances.insert(i);
+			}
+		}
 	}
 
+	//invalid attack ranges
+	if(attackable_distances.empty()) {
+		return map_location{};
+	}
+
+	//ranged attack
+	if(*attackable_distances.rbegin() > 1){
+		if(utils::contains(attackable_distances, distance_between(selected_hex_, loc))) {
+			return selected_hex_;
+		}
+		map_location res;
+		int best_move = -1;
+		for (const pathfind::paths::step& step : current_paths_.destinations) {
+			map_location dst = step.curr;
+			if(utils::contains(attackable_distances, distance_between(loc, dst))) {
+				if (step.move_left > best_move){
+					best_move = step.move_left;
+					res=dst;
+				}
+			}
+		}
+		return res;
+	}
+
+	//no ranged attack
 	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
 	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
@@ -980,7 +1014,7 @@ void mouse_handler::move_action(bool browse)
 					}
 
 					if(choice < 0) {
-						// user hit cancel, don't start move+attack
+						// user hit cancel or attack is invalid, don't start move&attack
 						return;
 					}
 				} // end planned unit map scope
@@ -1144,7 +1178,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	}
 
 	if(selected_hex_.valid() && !unit) {
-		// Compute unit in range of the empty selected_hex field
+		// When no unit is selected, compute unit in range of the empty selected_hex field
 
 		gui_->unhighlight_reach();
 
@@ -1354,7 +1388,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		defender = board.units().find(defender_loc);
 
 		if(!attacker || !defender) {
-			ERR_NG << "One fighter is missing, can't attack";
+			if (!attacker) {ERR_NG << "Attacker is missing, can't attack";}
+			if (!defender) {ERR_NG << "Defender is missing, can't attack";}
 			return -1; // abort, click will do nothing
 		}
 
