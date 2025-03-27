@@ -25,7 +25,6 @@
 #include <boost/math/constants/constants.hpp>
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
-#include <cairo.h>
 
 static lg::log_domain log_draw("draw");
 #define DBG_D LOG_STREAM(debug, log_draw)
