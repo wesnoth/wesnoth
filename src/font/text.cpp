@@ -29,6 +29,7 @@
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
+#include "log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/preferences.hpp"
@@ -43,6 +44,29 @@ static lg::log_domain log_font("font");
 
 namespace font
 {
+
+namespace
+{
+void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
+{
+	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
+	double dx, dy;
+
+	cairo_get_current_point(cr, &dx, &dy);
+	dy -= cairo_image_surface_get_height(img);
+	cairo_set_source_surface(cr, img, dx, dy);
+	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
+	cairo_fill(cr);
+
+	// debug outline
+	cairo_set_source_rgba(cr, 1, 1, 1, 1);
+	cairo_set_line_join(cr, CAIRO_LINE_JOIN_ROUND);
+	cairo_set_line_width(cr, 2.0);
+	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
+	cairo_stroke(cr);
+}
+}
+
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
@@ -82,6 +106,8 @@ pango_text::pango_text()
 
 	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
+
+	pango_cairo_context_set_shape_renderer(context_.get(), render_image_shape, nullptr, nullptr);
 }
 
 texture pango_text::render_texture(const SDL_Rect& viewport)

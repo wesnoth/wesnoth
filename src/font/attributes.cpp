@@ -13,11 +13,14 @@
 */
 
 #include "font/attributes.hpp"
+#include "font/cairo.hpp"
 #include "font/font_config.hpp"
 
 #include "color.hpp"
 #include "gui/core/log.hpp"
+#include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "sdl/surface.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
 
@@ -165,6 +168,31 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
 	};
 
 	DBG_GUI_D << "attribute: font family";
+	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+
+	attr.add_to(list);
+}
+
+void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path)
+{
+	::image::locator locator(image_path);
+	point size = ::image::get_size(locator);
+	surface surf = ::image::get_surface(locator);
+	auto cairo_surface = cairo::create_surface(
+		reinterpret_cast<uint8_t*>(surf->pixels), point(surf->w, surf->h));
+	PangoRectangle bounds {
+		0,
+		-PANGO_SCALE * size.y,
+		PANGO_SCALE * size.x,
+		PANGO_SCALE * size.y
+	};
+
+	attribute attr {
+		pango_attr_shape_new_with_data(&bounds, &bounds, cairo_surface.release(), nullptr, nullptr),
+		offset_start, offset_end
+	};
+
+	DBG_GUI_D << "attribute: shape, image path: " << image_path;
 	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
 
 	attr.add_to(list);

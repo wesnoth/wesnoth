@@ -159,4 +159,17 @@ void add_attribute_size(attribute_list& list, unsigned offset_start, unsigned of
  */
 void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsigned offset_end, font::family_class family);
 
+/**
+ * Add Pango shape attribute to a specific portion of text. This replaces
+ * the text within the start and end offsets with an inline image.
+ * The caller should ensure that the portion of text between the given offset
+ * range is filled with dummy characters, such as
+ *
+ * @param list                The attribute list to which to append this attribute.
+ * @param offset_start        Byte index of the cursor where size change starts
+ * @param offset_end          Byte index of the cursor where size change ends
+ * @param image_path         Path to the image to be shown inline
+ */
+void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path);
+
 } // namespace font
