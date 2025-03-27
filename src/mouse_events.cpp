@@ -753,15 +753,12 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 			return map_location();
 		}
 
-		const auto& attacks = source_unit->attacks();
-		for (const auto& attack : attacks) {
+		for (const auto& attack : source_unit->attacks()) {
 			for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
 				attackable_distances.insert(i);
 			}
 		}
 	}
-
-
 
 	//invalid attack ranges
 	if(attackable_distances.empty()) {
@@ -770,16 +767,14 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 	//ranged attack
 	if(*attackable_distances.rbegin() > 1){
-		int distance = distance_between(selected_hex_, loc);
-		if (attackable_distances.find(distance) != attackable_distances.end() ) {
+		if(utils::contains(attackable_distances, distance_between(selected_hex_, loc))) {
 			return selected_hex_;
 		}
 		map_location res;
 		int best_move = -1;
 		for (const pathfind::paths::step& step : current_paths_.destinations) {
 			map_location dst = step.curr;
-			int distance = distance_between(loc, dst);
-			if (attackable_distances.find(distance) != attackable_distances.end()) {
+			if(utils::contains(attackable_distances, distance_between(loc, dst))) {
 				if (step.move_left > best_move){
 					best_move = step.move_left;
 					res=dst;
@@ -827,8 +822,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 			}
 		}
 	}
-	return res;
 
+	return res;
 }
 
 pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_to, const team& team) const
