@@ -434,13 +434,15 @@ auto parse_attributes(const config::const_child_itors& range)
 		} else if (name == "underline" || name == "u") {
 			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
 		} else if (name == "image") { // An inline image that behave as a custom text glyph
-			font::add_attribute_image_shape(text_attributes, start, end, attr["value"]);
+			add_attribute_image_shape(text_attributes, start, end, attr["value"]);
 		} else {
 			// Unsupported formatting or normal text
 			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
 			add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
 		}
 	}
+
+	text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
 
 	return text_attributes;
 }
