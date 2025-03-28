@@ -106,7 +106,10 @@ void help_browser::pre_show()
 void help_browser::update_list(const std::string& filter_text) {
 	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 	topic_tree.clear();
-	add_topics_for_section(toplevel_, topic_tree.get_root_node(), filter_text);
+	if(!add_topics_for_section(toplevel_, topic_tree.get_root_node(), filter_text)) {
+		// Add everything if nothing matches
+		add_topics_for_section(toplevel_, topic_tree.get_root_node());
+	}
 }
 
 bool help_browser::add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node, const std::string& filter_text)
@@ -118,7 +121,7 @@ bool help_browser::add_topics_for_section(const help::section& parent_section, t
 		tree_view_node& section_node = add_topic(section.id, section.title, true, parent_node);
 		bool subtopics_added = add_topics_for_section(section, section_node, filter_text);
 
-		if (subtopics_added || match(section.id)) {
+		if (subtopics_added || (match(section.id) || match(section.title))) {
 			if (!filter_text.empty()) {
 				section_node.unfold();
 			}
