@@ -170,6 +170,15 @@ bool display_context::is_observer() const
 	return true;
 }
 
+bool display_context::is_singleplayer() const
+{
+	for (const team &t : teams()) {
+		if (t.is_network())
+			return false;
+	}
+	return true;
+}
+
 // Static info getters previously declared at global scope in unit.?pp
 
 int display_context::side_units(int side) const
