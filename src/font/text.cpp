@@ -97,7 +97,8 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
-	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
+
+	// pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
