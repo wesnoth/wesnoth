@@ -18,7 +18,6 @@
  * Implementation of canvas.hpp.
  */
 
-#include "font/attributes.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/core/canvas.hpp"
