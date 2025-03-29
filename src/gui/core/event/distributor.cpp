@@ -401,6 +401,22 @@ constexpr std::array mouse_data{
 		RIGHT_BUTTON_CLICK,
 		RIGHT_BUTTON_DOUBLE_CLICK,
 	},
+	data_pod{
+		SDL_BACK_BUTTON_DOWN,
+		SDL_BACK_BUTTON_UP,
+		BACK_BUTTON_DOWN,
+		BACK_BUTTON_UP,
+		BACK_BUTTON_CLICK,
+		BACK_BUTTON_DOUBLE_CLICK,
+	},
+	data_pod{
+		SDL_FORWARD_BUTTON_DOWN,
+		SDL_FORWARD_BUTTON_UP,
+		FORWARD_BUTTON_DOWN,
+		FORWARD_BUTTON_UP,
+		FORWARD_BUTTON_CLICK,
+		FORWARD_BUTTON_DOUBLE_CLICK,
+	},
 };
 
 } // namespace
@@ -528,7 +544,8 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	// will reach here with mouse_captured_ == false.
 	widget* mouse_over = owner_.find_at(coordinate, true);
 	if(mouse_captured_) {
-		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK;
+		const unsigned mask
+			= SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK | SDL_BUTTON_X1MASK | SDL_BUTTON_X2MASK;
 
 		if((sdl::get_mouse_button_mask() & mask) == 0) {
 			mouse_captured_ = false;
@@ -584,6 +601,8 @@ distributor::distributor(widget& owner,const dispatcher::queue_position queue_po
 	, mouse_button_left(owner, queue_position)
 	, mouse_button_middle(owner, queue_position)
 	, mouse_button_right(owner, queue_position)
+	, mouse_button_back(owner, queue_position)
+	, mouse_button_forward(owner, queue_position)
 	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {
@@ -668,6 +687,8 @@ void distributor::initialize_state()
 	mouse_button_left::initialize_state(button_state);
 	mouse_button_middle::initialize_state(button_state);
 	mouse_button_right::initialize_state(button_state);
+	mouse_button_back::initialize_state(button_state);
+	mouse_button_forward::initialize_state(button_state);
 
 	init_mouse_location();
 }
@@ -818,6 +839,20 @@ void distributor::signal_handler_notify_removal(dispatcher& w, const ui_event ev
 	}
 	if(mouse_button_right::focus_ == &w) {
 		mouse_button_right::focus_ = nullptr;
+	}
+
+	if(mouse_button_back::last_clicked_widget_ == &w) {
+		mouse_button_back::last_clicked_widget_ = nullptr;
+	}
+	if(mouse_button_back::focus_ == &w) {
+		mouse_button_back::focus_ = nullptr;
+	}
+
+	if(mouse_button_forward::last_clicked_widget_ == &w) {
+		mouse_button_forward::last_clicked_widget_ = nullptr;
+	}
+	if(mouse_button_forward::focus_ == &w) {
+		mouse_button_forward::focus_ = nullptr;
 	}
 
 	if(mouse_focus_ == &w) {

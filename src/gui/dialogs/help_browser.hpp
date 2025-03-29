@@ -50,7 +50,7 @@ private:
 	std::map<std::string, int> parsed_pages_;
 
 	std::vector<std::string> history_;
-	unsigned history_pos_;
+	std::size_t history_pos_;
 
 	virtual const std::string& window_id() const override;
 
