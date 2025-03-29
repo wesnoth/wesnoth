@@ -106,6 +106,9 @@ public:
 	/** Resets the animations list after the unit is advanced. */
 	void reset_after_advance(const unit_type * newtype = nullptr);
 
+	/** Refresh map around unit if has ability with [affect_adjacent/distant] tag */
+	void reset_affect_adjacent(const display & disp);
+
 	/** Adds an animation described by a config. Uses an internal cache to avoid redoing work. */
 	void apply_new_animation_effect(const config & effect);
 

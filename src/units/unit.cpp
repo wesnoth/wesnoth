@@ -406,6 +406,70 @@ unit::unit(unit_ctor_t)
 {
 }
 
+namespace
+{
+	void config_object(const std::string& tag_name, config& cfg)
+	{
+		config& object_modify = cfg.add_child("object");
+		object_modify["duration"] = "scenario";
+		config& effect_obj = object_modify.add_child("effect");
+		effect_obj["apply_to"] = "new_ability";
+		config& effect_ab = effect_obj.add_child("abilities");
+		effect_ab.add_child(tag_name + "_distant");
+	}
+
+	void config_unit_placed(const std::string& tag_name, config& cfg, const config& ability_type)
+	{
+		config& event_child = cfg.add_child("event");
+		event_child["id"] = tag_name + "_unit_placed";
+		event_child["name"] = "unit_placed";
+		event_child["first_time_only"] = false;
+		config& filter_placed = event_child.add_child("filter");
+		filter_placed.add_child("not", ability_type);
+		config& filter_condition = event_child.add_child("filter_condition");
+		config& have_unit = filter_condition.add_child("have_unit");
+		have_unit["ability"] = cfg["id"];
+		config& modify_unit = event_child.add_child("modify_unit");
+		config& filter_modify = modify_unit.add_child("filter");
+		filter_modify["x"] = "$x1";
+		filter_modify["y"] = "$y1";
+		filter_modify.add_child("not", ability_type);
+		config_object(tag_name, modify_unit);
+	}
+
+	void config_affect_distant_placed(const std::string& tag_name, config& cfg, const config& ability_type)
+	{
+		config& event_child2 = cfg.add_child("event");
+		event_child2["id"] = tag_name + "_post_advance_unit_placed";
+		event_child2["name"] = "unit_placed";
+		event_child2["first_time_only"] = false;
+		config& filter_placed2 = event_child2.add_child("filter");
+		filter_placed2["ability"] = cfg["id"];
+		config& modify_unit2 = event_child2.add_child("modify_unit");
+		config& filter_modify2 = modify_unit2.add_child("filter");
+		filter_modify2.add_child("not", ability_type);
+		config_object(tag_name, modify_unit2);
+	}
+
+	config config_affect_distant(const std::string& tag_name, const config& ability)
+	{
+		config cfg = ability;
+		if(ability.has_child("affect_distant")) {
+			config ability_type;
+			ability_type["ability_type"] = tag_name + "_distant";
+			config_unit_placed(tag_name, cfg, ability_type);
+			config_affect_distant_placed(tag_name, cfg, ability_type);
+		}
+		return cfg;
+	}
+	vconfig vconfig_affect_distant(const std::string& tag_name, const vconfig* vability)
+	{
+		config cfg = vability->get_config();
+		cfg = config_affect_distant(tag_name, cfg);
+		return vconfig(cfg);
+	}
+}
+
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 {
 	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
@@ -444,7 +508,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		const vconfig::child_list& abilities_tags = vcfg->get_children("abilities");
 		for(const vconfig& abilities_tag : abilities_tags) {
 			for(const auto& [key, child] : abilities_tag.all_ordered()) {
-				const vconfig::child_list& ability_events = child.get_children("event");
+				config ab = child.get_config();
+				set_distant(key, ab);
+				vconfig vab = vconfig_affect_distant(key, &child);
+				const vconfig::child_list& ability_events = vab.get_children("event");
 				for(const vconfig& ability_event : ability_events) {
 					events_.add_child("event", ability_event.get_config());
 				}
@@ -470,7 +537,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
 			for(const auto [key, ability] : abilities.all_children_view()) {
-				for(const config& ability_event : ability.child_range("event")) {
+				set_distant(key, ability);
+				const config& ab = config_affect_distant(key, ability);
+				for(const config& ability_event : ab.child_range("event")) {
 					events_.add_child("event", ability_event);
 				}
 			}
@@ -1095,7 +1164,9 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
 			for(const auto [key, ability] : abilities.all_children_view()) {
-				for(const config& ability_event : ability.child_range("event")) {
+				set_distant(key, ability);
+				const config& ab = config_affect_distant(key, ability);
+				for(const config& ability_event : ab.child_range("event")) {
 					events.add_child("event", ability_event);
 				}
 			}
@@ -2248,7 +2319,9 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			for(const auto [key, cfg] : ab_effect->all_children_view()) {
 				if(!has_ability_by_id(cfg["id"])) {
 					to_append.add_child(key, cfg);
-					for(const config& event : cfg.child_range("event")) {
+					set_distant(key, cfg);
+					const config& ab = config_affect_distant(key, cfg);
+					for(const config& event : ab.child_range("event")) {
 						events.add_child("event", event);
 					}
 				}
