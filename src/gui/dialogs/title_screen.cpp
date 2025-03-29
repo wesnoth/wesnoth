@@ -89,7 +89,7 @@ title_screen::~title_screen()
 void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		register_hotkey(hk, std::bind(callback));
+		register_hotkey(hk, [callback](auto&&...) { callback(); return true; });
 	}
 
 	try {
@@ -102,12 +102,14 @@ void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND
 	}
 }
 
-static void launch_lua_console()
+namespace
+{
+void show_lua_console()
 {
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 }
 
-static void make_screenshot()
+void make_screenshot()
 {
 	surface screenshot = video::read_pixels();
 	if(screenshot) {
@@ -116,6 +118,8 @@ static void make_screenshot()
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
 	}
 }
+
+} // anon namespace
 
 #ifdef DEBUG_TOOLTIP
 /*
@@ -163,19 +167,20 @@ void title_screen::init_callbacks()
 	// General hotkeys
 	//
 	register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
-		std::bind(&gui2::window::set_retval, std::ref(*this), RELOAD_GAME_DATA, true));
-
-	register_hotkey(hotkey::HOTKEY_ACHIEVEMENTS,
-		std::bind(&title_screen::show_achievements, this));
+		[this](auto&&...) { set_retval(RELOAD_GAME_DATA); return true; });
 
 	register_hotkey(hotkey::TITLE_SCREEN__TEST,
-		std::bind(&title_screen::hotkey_callback_select_tests, this));
+		[this](auto&&...) { hotkey_callback_select_tests(); return true; });
 
-	// A wrapper is needed here since the relevant display function is overloaded, and
-	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
-	register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
+	register_hotkey(hotkey::TITLE_SCREEN__CORES,
+		[this](auto&&...) { button_callback_cores(); return true; });
 
-	register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot));
+	register_hotkey(hotkey::LUA_CONSOLE,
+		[](auto&&...) { show_lua_console(); return true; });
+
+	/** @todo: should eventually become part of global hotkey handling. */
+	register_hotkey(hotkey::HOTKEY_SCREENSHOT,
+		[](auto&&...) { make_screenshot(); return true; });
 
 	//
 	// Background and logo images
@@ -299,12 +304,6 @@ void title_screen::init_callbacks()
 	register_button("editor", hotkey::TITLE_SCREEN__EDITOR, [this]() { set_retval(MAP_EDITOR); });
 
 	//
-	// Cores
-	//
-	register_hotkey(hotkey::TITLE_SCREEN__CORES,
-		std::bind(&title_screen::button_callback_cores, this));
-
-	//
 	// Language
 	//
 	register_button("language", hotkey::HOTKEY_LANGUAGE, [this]() {
@@ -328,13 +327,13 @@ void title_screen::init_callbacks()
 	// Achievements
 	//
 	register_button("achievements", hotkey::HOTKEY_ACHIEVEMENTS,
-		std::bind(&title_screen::show_achievements, this));
+		[] { dialogs::achievements_dialog::display(); });
 
 	//
 	// Community
 	//
 	register_button("community", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_community, this));
+		[] { dialogs::game_version::display(4); }); // shows the 5th tab, community
 
 	//
 	// Quit
@@ -358,7 +357,7 @@ void title_screen::init_callbacks()
 	// GUI Test and Debug Window
 	//
 	register_button("test_dialog", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_gui_test_dialog, this));
+		[] { dialogs::gui_test_dialog::display(); });
 
 	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
@@ -477,24 +476,6 @@ void title_screen::hotkey_callback_select_tests()
 		game_.set_test(options[choice]);
 		set_retval(LAUNCH_GAME);
 	}
-}
-
-void title_screen::show_achievements()
-{
-	achievements_dialog ach;
-	ach.show();
-}
-
-void title_screen::show_community()
-{
-	game_version dlg;
-	// shows the 5th tab, community, when the dialog is shown
-	dlg.display(4);
-}
-
-void title_screen::show_gui_test_dialog()
-{
-	gui2::dialogs::gui_test_dialog::execute();
 }
 
 void title_screen::show_preferences()
