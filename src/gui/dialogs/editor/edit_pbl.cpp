@@ -212,12 +212,17 @@ void editor_edit_pbl::pre_show()
 	button& translations_delete = find_widget<button>("translations_delete");
 
 	for(const config& child : pbl.child_range("translation")) {
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", child["language"].str()}}},
-			{"translations_title", widget_item{{"label", child["title"].str()}}},
-			{"translations_description", widget_item{{"label", child["description"].str()}}},
-		};
-		translations.add_row(entry);
+		translations.add_row(widget_data{
+			{ "translations_language", {
+				{ "label", child["language"].str() }
+			}},
+			{ "translations_title", {
+				{ "label", child["title"].str() }
+			}},
+			{ "translations_description", {
+				{ "label", child["description"].str() }
+			}},
+		});
 	}
 
 	if(translations.get_item_count() == 0) {
@@ -354,13 +359,18 @@ void editor_edit_pbl::add_translation()
 	editor_edit_pbl_translation::execute(language, title, description);
 
 	if(!language.empty() && !title.empty()) {
-		listbox& translations = find_widget<listbox>("translations");
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", language}}},
-			{"translations_title", widget_item{{"label", title}}},
-			{"translations_description", widget_item{{"label", description}}},
-		};
-		translations.add_row(entry);
+		find_widget<listbox>("translations").add_row(widget_data{
+			{ "translations_language", {
+				{ "label", language }
+			}},
+			{ "translations_title", {
+				{ "label", title }
+			}},
+			{ "translations_description", {
+				{ "label", description }
+			}},
+		});
+
 		find_widget<button>("translations_delete").set_active(true);
 	}
 }

@@ -249,12 +249,9 @@ void file_dialog::pre_show()
 	bookmark_paths_.clear();
 	current_bookmark_ = user_bookmarks_begin_ = -1;
 
-	widget_data data;
-
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
-		data["bookmark"]["label"] = pinfo.display_name();
-		bookmarks_bar.add_row(data);
+		bookmarks_bar.add_row(widget_data{{ "bookmark", {{ "label", pinfo.display_name() }}}});
 	}
 
 	//
@@ -269,8 +266,7 @@ void file_dialog::pre_show()
 
 	for(const auto& bookmark : user_bookmarks) {
 		bookmark_paths_.push_back(bookmark.path);
-		data["bookmark"]["label"] = bookmark.label;
-		bookmarks_bar.add_row(data);
+		bookmarks_bar.add_row(widget_data{{ "bookmark", {{ "label", bookmark.label }}}});
 	}
 
 	sync_bookmarks_bar();
@@ -596,11 +592,10 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	std::string label = name;
 	utils::ellipsis_truncate(label, FILE_DIALOG_MAX_ENTRY_LENGTH);
 
-	widget_data data;
-	data["icon"]["label"] = icon;
-	data["file"]["label"] = label;
-
-	grid& last_grid = filelist.add_row(data);
+	grid& last_grid = filelist.add_row(widget_data{
+		{ "icon", {{ "label", icon }}},
+		{ "file", {{ "label", label }}},
+	});
 
 	//
 	// Crummy hack around the lack of an option to hook into row double click

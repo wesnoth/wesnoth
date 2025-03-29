@@ -298,13 +298,7 @@ void mp_create_game::pre_show()
 
 	const auto& activemods = prefs::get().modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		widget_data data;
-		widget_item item;
-
-		item["label"] = mod->name;
-		data.emplace("mod_name", item);
-
-		grid* row_grid = &mod_list_->add_row(data);
+		grid* row_grid = &mod_list_->add_row(widget_data{{ "mod_name", {{ "label", mod->name }}}});
 
 		row_grid->find_widget<toggle_panel>("panel").set_tooltip(mod->description);
 

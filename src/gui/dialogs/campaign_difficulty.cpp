@@ -68,14 +68,6 @@ void campaign_difficulty::pre_show()
 	unsigned difficulty_count = 0;
 	const unsigned difficulty_max = difficulties_.child_count("difficulty");
 	for(const config& d : difficulties_.child_range("difficulty")) {
-		widget_data data;
-		widget_item item;
-
-		item["label"] = d["image"];
-		data.emplace("icon", item);
-
-		item["use_markup"] = "true";
-
 		std::ostringstream ss;
 		ss << d["label"];
 
@@ -89,10 +81,15 @@ void campaign_difficulty::pre_show()
 			}
 		}
 
-		item["label"] = ss.str();
-		data.emplace("label", item);
-
-		grid& grid = list.add_row(data);
+		grid& grid = list.add_row(widget_data{
+			{ "icon", {
+				{ "label", d["image"] }
+			}},
+			{ "label", {
+				{ "label", ss.str() },
+				{ "use_markup", "true" }
+			}},
+		});
 
 		if(d["default"].to_bool(false)) {
 			list.select_last_row();
