@@ -600,7 +600,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 }
 
 // Hook for notifying lua game kernel of mouse button events. We pass button as
-// a serpaate argument than the original SDL event in order to manage touch
+// a separate argument than the original SDL event in order to manage touch
 // emulation (e.g., long touch = right click) and such.
 bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
 									   map_location loc, bool click)
