@@ -17,7 +17,6 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
-#include "font/attributes.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -448,10 +447,6 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	 * canvas class. Instead, this just leverages the pango text rendering engine to
 	 * calculate the area this widget will need to successfully render its text later.
 	 */
-	font::attribute_list attrs;
-	attrs.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
-	renderer_
-		.apply_attributes(attrs);
 	renderer_
 		.set_link_aware(get_link_aware())
 		.set_link_color(get_link_color())

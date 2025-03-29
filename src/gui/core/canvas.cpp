@@ -442,8 +442,6 @@ auto parse_attributes(const config::const_child_itors& range)
 		}
 	}
 
-	text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
-
 	return text_attributes;
 }
 

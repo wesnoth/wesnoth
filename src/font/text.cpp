@@ -337,7 +337,7 @@ void pango_text::clear_attributes()
 	pango_layout_set_attributes(layout_.get(), nullptr);
 }
 
-void pango_text::apply_attributes(const font::attribute_list& attrs)
+void pango_text::apply_attributes(const font::attribute_list& attrs) const
 {
 	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
 		attrs.splice_into(current_attrs);
@@ -599,14 +599,12 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
 	pango_layout_set_font_description(&layout, font.get());
 
+	font::attribute_list list;
 	if(font_style_ & pango_text::STYLE_UNDERLINE) {
-		PangoAttrList *attribute_list = pango_attr_list_new();
-		pango_attr_list_insert(attribute_list
-			, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
-
-		pango_layout_set_attributes(&layout, attribute_list);
-		pango_attr_list_unref(attribute_list);
+		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
 	}
+	list.insert(pango_attr_line_height_new(get_line_spacing_factor()));
+	apply_attributes(list);
 
 	int maximum_width = 0;
 	if(characters_per_line_ != 0) {
