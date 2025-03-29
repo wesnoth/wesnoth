@@ -68,24 +68,6 @@ static lg::log_domain log_config("config");
 
 namespace gui2::dialogs
 {
-namespace
-{
-void show_lua_console()
-{
-	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
-}
-
-void make_screenshot()
-{
-	surface screenshot = video::read_pixels();
-	if(screenshot) {
-		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
-		filename = filesystem::get_next_filename(filename, ".jpg");
-		gui2::dialogs::screenshot_notification::display(filename, screenshot);
-	}
-}
-
-} // anon namespace
 
 REGISTER_DIALOG(title_screen)
 
@@ -119,6 +101,25 @@ void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND
 		set_retval(RELOAD_UI);
 	}
 }
+
+namespace
+{
+void show_lua_console()
+{
+	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
+}
+
+void make_screenshot()
+{
+	surface screenshot = video::read_pixels();
+	if(screenshot) {
+		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
+		filename = filesystem::get_next_filename(filename, ".jpg");
+		gui2::dialogs::screenshot_notification::display(filename, screenshot);
+	}
+}
+
+} // anon namespace
 
 #ifdef DEBUG_TOOLTIP
 /*
