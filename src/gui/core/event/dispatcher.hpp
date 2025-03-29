@@ -440,7 +440,11 @@ public:
 	 * @param id                  The hotkey to register.
 	 * @param function            The callback function to call.
 	 */
-	void register_hotkey(const hotkey::HOTKEY_COMMAND id, hotkey_function&& function);
+	template<typename Func>
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id, Func&& function)
+	{
+		hotkeys_[id] = std::move(function);
+	}
 
 	/**
 	 * Executes a hotkey.
