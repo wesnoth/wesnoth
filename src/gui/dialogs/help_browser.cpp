@@ -27,11 +27,15 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
+#include "help/help.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/ci_searcher.hpp"
 #include "video.hpp"
 
-#include "help/help.hpp"
+static lg::log_domain log_help("help");
+#define ERR_HP LOG_STREAM(err, log_help)
+#define WRN_HP LOG_STREAM(warn, log_help)
+#define DBG_HP LOG_STREAM(debug, log_help)
 
 namespace gui2::dialogs
 {
@@ -169,10 +173,12 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 	if(iter == parsed_pages_.end()) {
 		const help::topic* topic = help::find_topic(toplevel_, topic_id);
 		if(!topic) {
-			ERR_GUI_P << "Help browser tried to show topic with id '" << topic_id
+			ERR_HP << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 			return;
 		}
+
+		DBG_HP << "Showing topic: " << topic->id << ": " << topic->title;
 
 		widget_data data;
 		widget_item item;
@@ -197,7 +203,6 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		history_.push_back(topic_id);
 
 		find_widget<button>("back").set_active(history_pos_ != 0);
-
 	}
 }
 
