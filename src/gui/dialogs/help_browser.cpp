@@ -76,9 +76,7 @@ void help_browser::pre_show()
 	if (video::window_size().x <= 800) {
 		contents.set_value(false);
 		connect_signal_mouse_left_click(contents, [&](auto&&...) {
-			topic_tree.set_visible(topic_tree.get_visible() == widget::visibility::visible
-				? widget::visibility::invisible
-				: widget::visibility::visible);
+			topic_tree.set_visible(topic_tree.get_visible());
 			invalidate_layout();
 		});
 		topic_tree.set_visible(widget::visibility::invisible);
@@ -196,8 +194,12 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 
 	if (add_to_history) {
 		// history pos is 0 initially, so it's already at first entry
-		// no need increment first time
+		// no need to increment first time
 		if (!history_.empty()) {
+			// don't add duplicate entries back-to-back
+			if (history_.back() == topic_id) {
+				return;
+			}
 			history_pos_++;
 		}
 		history_.push_back(topic_id);
@@ -235,8 +237,7 @@ void help_browser::on_history_navigate(bool backwards)
 	find_widget<button>("back").set_active(!history_.empty() && history_pos_ != 0);
 	find_widget<button>("next").set_active(!history_.empty() && history_pos_ != (history_.size()-1));
 
-	const std::string topic_id = history_.at(history_pos_);
-	show_topic(topic_id, false);
+	show_topic(history_.at(history_pos_), false);
 }
 
 } // namespace dialogs
