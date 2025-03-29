@@ -441,15 +441,24 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					}
-					for(const unit& unit_itor : units){
-						if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
-							continue;
+					bool affect_distant = false;
+					for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
+						if (key.find("_distant") != std::string::npos) {
+							affect_distant = true;
+							break;
 						}
-						std::vector<ability_match> ability_id_matches_dist;
-						get_ability_children_id(ability_id_matches_dist, unit_itor.abilities(), ability);
-						for(const ability_match& entry : ability_id_matches_dist) {
-							if(args.u.get_dist_ability_bool(*entry.cfg, entry.tag_name, args.loc, unit_itor, unit_itor.get_location())){
-								return true;
+					}
+					if(affect_distant){
+						for(const unit& unit_itor : units){
+							if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
+								continue;
+							}
+							std::vector<ability_match> ability_id_matches_dist;
+							get_ability_children_id(ability_id_matches_dist, unit_itor.abilities(), ability);
+							for(const ability_match& entry : ability_id_matches_dist) {
+								if(args.u.get_dist_ability_bool(*entry.cfg, entry.tag_name, args.loc, unit_itor, unit_itor.get_location())){
+									return true;
+								}
 							}
 						}
 					}
@@ -805,12 +814,16 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					} else {
+						bool affect_distant = false;
 						const unit_map& units = args.context().get_disp_context().units();
 						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
 							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
 									return true;
 								}
+							}
+							if (!affect_distant && key.find("_distant") != std::string::npos) {
+								affect_distant = true;
 							}
 						}
 
@@ -830,13 +843,15 @@ void unit_filter_compound::fill(const vconfig& cfg)
 								}
 							}
 						}
-						for(const unit& unit_itor : units){
-							if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
-								continue;
-							}
-							for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
-								if(args.u.get_dist_ability_bool(cfg, key, args.loc, unit_itor, unit_itor.get_location())){
-									return true;
+						if(affect_distant){
+							for(const unit& unit_itor : units){
+								if (unit_itor.incapacitated() || &(unit_itor) == args.u.shared_from_this().get()) {
+									continue;
+								}
+								for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
+									if(args.u.get_dist_ability_bool(cfg, key, args.loc, unit_itor, unit_itor.get_location())){
+										return true;
+									}
 								}
 							}
 						}
