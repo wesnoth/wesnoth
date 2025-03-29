@@ -191,6 +191,8 @@ private:
 using mouse_button_left    = mouse_button<0>;
 using mouse_button_middle  = mouse_button<1>;
 using mouse_button_right   = mouse_button<2>;
+using mouse_button_back    = mouse_button<3>;
+using mouse_button_forward = mouse_button<4>;
 
 /**
  * The event handler class for the widget library.
@@ -205,7 +207,9 @@ using mouse_button_right   = mouse_button<2>;
 class distributor :
 	public mouse_button_left,
 	public mouse_button_middle,
-	public mouse_button_right
+	public mouse_button_right,
+	public mouse_button_back,
+	public mouse_button_forward
 {
 public:
 	distributor(widget& owner, const dispatcher::queue_position queue_position);

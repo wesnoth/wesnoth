@@ -638,6 +638,12 @@ void sdl_event_handler::mouse_button_up(const point& position, const uint8_t but
 		case SDL_BUTTON_RIGHT:
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
+		case SDL_BUTTON_X1:
+			mouse(SDL_BACK_BUTTON_UP, position);
+			break;
+		case SDL_BUTTON_X2:
+			mouse(SDL_FORWARD_BUTTON_UP, position);
+			break;
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
@@ -658,6 +664,12 @@ void sdl_event_handler::mouse_button_down(const point& position, const uint8_t b
 			break;
 		case SDL_BUTTON_RIGHT:
 			mouse(SDL_RIGHT_BUTTON_DOWN, position);
+			break;
+		case SDL_BUTTON_X1:
+			mouse(SDL_BACK_BUTTON_DOWN, position);
+			break;
+		case SDL_BUTTON_X2:
+			mouse(SDL_FORWARD_BUTTON_DOWN, position);
 			break;
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
@@ -993,6 +1005,42 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case RIGHT_BUTTON_DOUBLE_CLICK:
 			stream << "right button double click";
+			break;
+		case SDL_FORWARD_BUTTON_DOWN:
+			stream << "SDL forward/5 button down";
+			break;
+		case SDL_FORWARD_BUTTON_UP:
+			stream << "SDL forward/5 button up";
+			break;
+		case FORWARD_BUTTON_DOWN:
+			stream << "forward/5 button down";
+			break;
+		case FORWARD_BUTTON_UP:
+			stream << "forward/5 button up";
+			break;
+		case FORWARD_BUTTON_CLICK:
+			stream << "forward/5 button click";
+			break;
+		case FORWARD_BUTTON_DOUBLE_CLICK:
+			stream << "forward/5 button double click";
+			break;
+		case SDL_BACK_BUTTON_DOWN:
+			stream << "SDL back/4 button down";
+			break;
+		case SDL_BACK_BUTTON_UP:
+			stream << "SDL back/4 button up";
+			break;
+		case BACK_BUTTON_DOWN:
+			stream << "back/4 button down";
+			break;
+		case BACK_BUTTON_UP:
+			stream << "back/4 button up";
+			break;
+		case BACK_BUTTON_CLICK:
+			stream << "back/4 button click";
+			break;
+		case BACK_BUTTON_DOUBLE_CLICK:
+			stream << "back/4 button double click";
 			break;
 		case SDL_WHEEL_LEFT:
 			stream << "SDL wheel left";
