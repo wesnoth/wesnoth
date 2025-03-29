@@ -151,7 +151,7 @@ static void delay_event(const SDL_Event& event, const uint32_t delay)
  *
  * The event is used to show the helptip for the currently focused widget.
  */
-static void helptip()
+static bool helptip()
 {
 	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.";
 
@@ -162,6 +162,7 @@ static void helptip()
 	event.user = data;
 
 	SDL_PushEvent(&event);
+	return true;
 }
 
 /**
@@ -361,11 +362,12 @@ window::window(const builder_window::window_resolution& definition)
 
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
 
-	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
+	register_hotkey(hotkey::GLOBAL__HELPTIP,
+		[](auto&&...) { return helptip(); });
 
-	/** @todo: should eventally become part of global hotkey handling. */
+	/** @todo: should eventually become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&video::toggle_fullscreen));
+		[](auto&&...) { video::toggle_fullscreen(); return true; });
 }
 
 window::~window()

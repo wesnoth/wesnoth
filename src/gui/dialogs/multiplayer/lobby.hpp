@@ -108,8 +108,6 @@ private:
 	/** Enter game by index, where index is the selected game listbox row. */
 	void enter_selected_game(JOIN_MODE mode);
 
-	void show_help_callback();
-
 	void show_preferences_button_callback();
 
 	void show_server_info();

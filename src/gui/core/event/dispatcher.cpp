@@ -144,29 +144,20 @@ bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 	return fire_event<event_category::message>(event, this, &target, msg);
 }
 
-void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function)
+void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, hotkey_function&& function)
 {
-	hotkeys_[id] = function;
+	hotkeys_[id] = std::move(function);
 }
 
 bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
-	std::map<hotkey::HOTKEY_COMMAND, hotkey_function>::iterator itor = hotkeys_.find(id);
+	auto itor = hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
 		return false;
 	}
 
-	itor->second(dynamic_cast<widget&>(*this), id);
-
-	/* NOTE: hotkey events used to return bool to indicate was-handled status. However,
-	 * every single usecase was returning true and cluttering up the code. I changed
-	 * the signature to return void, but if there's ever a need to restore the bool
-	 * retval on the hotkey functions, this is where it should be handled.
-	 *
-	 * -- vultraz, 2017-11-27
-	 */
-	return true;
+	return itor->second(dynamic_cast<widget&>(*this), id);
 }
 
 void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard& signal)

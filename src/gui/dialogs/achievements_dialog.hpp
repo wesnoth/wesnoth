@@ -25,7 +25,7 @@ namespace gui2::dialogs
 class achievements_dialog : public modal_dialog
 {
 public:
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(achievements_dialog)
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(achievements_dialog)
 
 	achievements_dialog();
 

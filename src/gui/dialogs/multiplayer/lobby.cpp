@@ -112,10 +112,10 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 
 	/*** Local hotkeys. ***/
 	window::register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
+		[](auto&&...) { help::show_help(); return true; });
 
 	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
+		[this](auto&&...) { show_preferences_button_callback(); return true; });
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -919,11 +919,6 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 void mp_lobby::refresh_lobby()
 {
 	mp::send_to_server(config("refresh_lobby"));
-}
-
-void mp_lobby::show_help_callback()
-{
-	help::show_help();
 }
 
 void mp_lobby::show_preferences_button_callback()

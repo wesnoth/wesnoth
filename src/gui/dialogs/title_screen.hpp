@@ -90,17 +90,10 @@ private:
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
-	/** Shows the gui test window. */
-	void show_gui_test_dialog();
-
 	/** Shows the preferences dialog. */
 	void show_preferences();
 
 	void hotkey_callback_select_tests();
-
-	void show_achievements();
-
-	void show_community();
 
 	void button_callback_multiplayer();
 

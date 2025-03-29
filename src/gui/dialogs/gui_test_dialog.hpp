@@ -28,8 +28,8 @@ class gui_test_dialog : public modal_dialog
 public:
 	gui_test_dialog();
 
-	/** The execute function. See @ref modal_dialog for more information. */
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(gui_test_dialog)
+	/** The display function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(gui_test_dialog)
 
 private:
 	virtual void pre_show() override;
