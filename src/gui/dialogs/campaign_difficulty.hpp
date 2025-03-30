@@ -18,16 +18,8 @@
 #include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
-
 namespace gui2::dialogs
 {
-
-/**
- * Helper function to convert old difficulty markup. Declared outside class to allow other
- * classes to make use of it.
- */
-config generate_difficulty_config(const config& source);
-
 class campaign_difficulty : public modal_dialog
 {
 public:

@@ -34,30 +34,14 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(campaign_difficulty)
 
-config generate_difficulty_config(const config& source)
-{
-	config result;
-
-	// Populate local config with difficulty children
-	result.append_children(source, "difficulty");
-
-	// Issue deprecation warnings about the old difficulties syntax
-	if(result.empty() && source.has_attribute("difficulties")) {
-		deprecated_message("[campaign]difficulties", DEP_LEVEL::REMOVED, {1, 15, 0}, "Use [difficulty] instead.");
-		if(source.has_attribute("difficulty_descriptions")) {
-			deprecated_message("[campaign]difficulty_descriptions", DEP_LEVEL::REMOVED, {1, 15, 0}, "Use [difficulty] instead.");
-		}
-	}
-
-	return result;
-}
-
 campaign_difficulty::campaign_difficulty(const config& campaign)
 	: modal_dialog(window_id())
-	, difficulties_(generate_difficulty_config(campaign))
+	, difficulties_()
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_("CANCEL")
 {
+	// Populate local config with difficulty children
+	difficulties_.append_children(campaign, "difficulty");
 }
 
 void campaign_difficulty::pre_show()
@@ -74,10 +58,8 @@ void campaign_difficulty::pre_show()
 		if(!d["description"].empty()) {
 			if (d["auto_markup"].to_bool(true) == false) {
 				ss << "\n" << d["description"].str();
-			} else if (!d["old_markup"].to_bool()) {
-				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, "(", d["description"], ")"));
 			} else {
-				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, d["description"]));
+				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, "(", d["description"], ")"));
 			}
 		}
 

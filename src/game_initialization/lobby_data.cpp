@@ -25,7 +25,6 @@
 #include "game_initialization/multiplayer.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
@@ -310,11 +309,9 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::dialogs::generate_difficulty_config(*campaign_cfg);
-			for(const config& difficulty : difficulties.child_range("difficulty")) {
+			for(const config& difficulty : campaign_cfg->child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << spaced_em_dash() << difficulty["description"];
-
 					break;
 				}
 			}

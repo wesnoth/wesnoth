@@ -18,7 +18,6 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "filesystem.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
@@ -93,14 +92,16 @@ void campaign_selection::campaign_selected()
 
 		auto& diff_menu = find_widget<menu_button>("difficulty_menu");
 
-		const auto& diff_config = generate_difficulty_config(engine_.current_level().data());
-		diff_menu.set_active(diff_config.child_count("difficulty") > 1);
+		auto diff_config_range = engine_.current_level().data().child_range("difficulty");
+		const std::size_t difficulty_count = diff_config_range.size();
 
-		if(!diff_config.empty()) {
+		diff_menu.set_active(difficulty_count > 1);
+
+		if(!diff_config_range.empty()) {
 			std::vector<config> entry_list;
-			unsigned n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
+			std::size_t n = 0, selection = 0;
 
-			for(const auto& cfg : diff_config.child_range("difficulty")) {
+			for(const auto& cfg : diff_config_range) {
 				config entry;
 
 				// FIXME: description may have markup that will display weird on the menu_button proper
@@ -110,7 +111,7 @@ void campaign_selection::campaign_selected()
 				if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
 					std::string laurel;
 
-					if(n + 1 >= max_n) {
+					if(n + 1 >= difficulty_count) {
 						laurel = game_config::images::victory_laurel_hardest;
 					} else if(n == 0) {
 						laurel = game_config::images::victory_laurel_easy;
@@ -126,11 +127,7 @@ void campaign_selection::campaign_selected()
 					if(cfg["auto_markup"].to_bool(true) == false) {
 						desc = cfg["description"].str();
 					} else {
-						if(!cfg["old_markup"].to_bool()) {
-							desc += markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
-						} else {
-							desc += markup::span_color(font::GRAY_COLOR, cfg["description"].str());
-						}
+						desc = markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
 					}
 
 					// Icons get displayed instead of the labels on the dropdown menu itself,
