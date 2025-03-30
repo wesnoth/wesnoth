@@ -66,91 +66,94 @@ void campaign_selection::campaign_selected()
 	assert(tree.selected_item());
 
 	const std::string& campaign_id = tree.selected_item()->id();
+	if(campaign_id.empty()) {
+		return;
+	}
 
-	if(!campaign_id.empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
 
-		button& ok_button = find_widget<button>("proceed");
-		ok_button.set_active(campaign_id != missing_campaign_);
-		ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
+	button& ok_button = find_widget<button>("proceed");
+	ok_button.set_active(campaign_id != missing_campaign_);
+	ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
 
-		const int choice = std::distance(page_ids_.begin(), iter);
-		if(iter == page_ids_.end()) {
-			return;
-		}
+	const int choice = std::distance(page_ids_.begin(), iter);
+	if(iter == page_ids_.end()) {
+		return;
+	}
 
-		multi_page& pages = find_widget<multi_page>("campaign_details");
-		pages.select_page(choice);
+	multi_page& pages = find_widget<multi_page>("campaign_details");
+	pages.select_page(choice);
 
-		engine_.set_current_level(choice);
+	engine_.set_current_level(choice);
 
-		styled_widget& background = find_widget<styled_widget>("campaign_background");
-		background.set_label(engine_.current_level().data()["background"].str());
+	styled_widget& background = find_widget<styled_widget>("campaign_background");
+	background.set_label(engine_.current_level().data()["background"].str());
 
-		// Rebuild difficulty menu
-		difficulties_.clear();
+	// Rebuild difficulty menu
+	difficulties_.clear();
 
-		auto& diff_menu = find_widget<menu_button>("difficulty_menu");
+	auto& diff_menu = find_widget<menu_button>("difficulty_menu");
 
-		auto diff_config_range = engine_.current_level().data().child_range("difficulty");
-		const std::size_t difficulty_count = diff_config_range.size();
+	auto diff_config_range = engine_.current_level().data().child_range("difficulty");
+	const std::size_t difficulty_count = diff_config_range.size();
 
-		diff_menu.set_active(difficulty_count > 1);
+	diff_menu.set_active(difficulty_count > 1);
 
-		if(!diff_config_range.empty()) {
-			std::vector<config> entry_list;
-			std::size_t n = 0, selection = 0;
+	if(diff_config_range.empty()) {
+		return;
+	}
 
-			for(const auto& cfg : diff_config_range) {
-				config entry;
+	std::vector<config> entry_list;
+	std::size_t n = 0, selection = 0;
 
-				// FIXME: description may have markup that will display weird on the menu_button proper
-				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
-				entry["image"] = cfg["image"].str("misc/blank-hex.png");
+	for(const auto& cfg : diff_config_range) {
+		config entry;
 
-				if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
-					std::string laurel;
+		// FIXME: description may have markup that will display weird on the menu_button proper
+		entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
+		entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-					if(n + 1 >= difficulty_count) {
-						laurel = game_config::images::victory_laurel_hardest;
-					} else if(n == 0) {
-						laurel = game_config::images::victory_laurel_easy;
-					} else {
-						laurel = game_config::images::victory_laurel;
-					}
+		if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
+			std::string laurel;
 
-					entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
-				}
-
-				if(!cfg["description"].empty()) {
-					std::string desc;
-					if(cfg["auto_markup"].to_bool(true) == false) {
-						desc = cfg["description"].str();
-					} else {
-						desc = markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
-					}
-
-					// Icons get displayed instead of the labels on the dropdown menu itself,
-					// so we want to prepend each label to its description here
-					desc = cfg["label"].str() + "\n" + desc;
-
-					entry["details"] = std::move(desc);
-				}
-
-				entry_list.emplace_back(std::move(entry));
-				difficulties_.emplace_back(cfg["define"].str());
-
-				if(cfg["default"].to_bool(false)) {
-					selection = n;
-				}
-
-				++n;
+			if(n + 1 >= difficulty_count) {
+				laurel = game_config::images::victory_laurel_hardest;
+			} else if(n == 0) {
+				laurel = game_config::images::victory_laurel_easy;
+			} else {
+				laurel = game_config::images::victory_laurel;
 			}
 
-			diff_menu.set_values(entry_list);
-			diff_menu.set_selected(selection);
+			entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
 		}
+
+		if(!cfg["description"].empty()) {
+			std::string desc;
+			if(cfg["auto_markup"].to_bool(true) == false) {
+				desc = cfg["description"].str();
+			} else {
+				desc = markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
+			}
+
+			// Icons get displayed instead of the labels on the dropdown menu itself,
+			// so we want to prepend each label to its description here
+			desc = cfg["label"].str() + "\n" + desc;
+
+			entry["details"] = std::move(desc);
+		}
+
+		entry_list.emplace_back(std::move(entry));
+		difficulties_.emplace_back(cfg["define"].str());
+
+		if(cfg["default"].to_bool(false)) {
+			selection = n;
+		}
+
+		++n;
 	}
+
+	diff_menu.set_values(entry_list);
+	diff_menu.set_selected(selection);
 }
 
 void campaign_selection::difficulty_selected()
