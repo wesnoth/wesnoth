@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-lib  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
-"PO-Revision-Date: 2024-11-07 16:32+0530\n"
+"PO-Revision-Date: 2025-03-21 22:08+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -3172,7 +3172,7 @@ msgstr "ছবি দেখুন"
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:108
 msgid "Play sound"
-msgstr ""
+msgstr "শব্দ শুনুন"
 
 #. [label]
 #: data/gui/themes/default/dialogs/custom_tod.cfg:186
@@ -3264,7 +3264,7 @@ msgstr "দিনের সময় মুছুন"
 #. [button]: id=preview_color
 #: data/gui/themes/default/dialogs/custom_tod.cfg:498
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "রঙ পরিবর্তন মানচিত্রে দেখুন"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3313,12 +3313,12 @@ msgstr "না"
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_select_new.cfg:40
 msgid "User Interaction Required"
-msgstr ""
+msgstr "ব্যবহারকারীর যোগদান প্রয়োজন"
 
 #. [label]: id=message
 #: data/gui/themes/default/dialogs/depcheck_select_new.cfg:59
 msgid "User interaction required"
-msgstr ""
+msgstr "ব্যবহারকারীর যোগদান প্রয়োজন"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/edit_label.cfg:42
@@ -3368,7 +3368,7 @@ msgstr "শ্রেণী:"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_label.cfg:152
 msgid "Properties"
-msgstr ""
+msgstr "বৈশিষ্ট্যগুলি"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_label.cfg:164
@@ -3393,12 +3393,12 @@ msgstr "ছায়ার মধ্যে দৃশ্যমান"
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "অ্যাড-অন প্রকাশনা সেটাপ"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "খেলার মধ্যে অ্যাড-অনটির যে নাম দেখানো হবে ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
@@ -3408,7 +3408,7 @@ msgstr "শিরোনাম:"
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "অ্যাড-অন ম্যানেজারে অ্যাড-অনটির যে বর্ণনা দেখানো হবে ।"
 
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
@@ -3427,7 +3427,7 @@ msgstr "আইকন ফাইল নির্বাচন করুন"
 msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
-msgstr ""
+msgstr "অ্যাড-অন ম্যানেজারে দেখানো হবে এমন আইকন ছবির পথ । মেইনলাইন ছবি হতে হবে ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
@@ -3440,11 +3440,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"এই অ্যাড-অনের লেখক । ফোরাম অথেন্টিকেশন ব্যবহার করা হলে, এটি আপনার ফোরাম "
+"ইউজারনেম ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "অ্যাড-অনটির বর্তমান সংস্করণ । এটি X.Y.Z এই আকারের হতে হবে ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:208
@@ -3465,6 +3467,8 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"ওয়েসনথ ফোরমে এমন একটি থ্রেডের টপিক আইডি সংখ্যা যেখানে খেলোয়াড়েরা ফিডব্যাক দিতে "
+"পারবে ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
@@ -3479,7 +3483,7 @@ msgstr "ফোরামে আপনার ফিডব্যাক থ্রে
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
 msgid "Forum Authentication:"
-msgstr ""
+msgstr "ফোরাম অথেন্টিকেশন:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
@@ -3490,10 +3494,16 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
+#, fuzzy
+#| msgid ""
+#| "Comma delimited list of forum usernames of other people who are allowed "
+#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
+"এই অ্যাড-অনের নতুন সংস্করণ আপলোড করতে পারবে এমন অন্য ব্যক্তিদের কমা দিয়ে আলাদা করা "
+"ফোরাম ইউজারনেমের তালিকা ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
@@ -3508,6 +3518,8 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"এই অ্যাড-অনের নতুন সংস্করণ আপলোড করতে পারবে এমন অন্য ব্যক্তিদের কমা দিয়ে আলাদা করা "
+"ফোরাম ইউজারনেমের তালিকা ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -3519,6 +3531,8 @@ msgstr "গৌণ লেখক:"
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"একটি ইমেল অ্যাড্রেস যেখানে আপনার অ্যাড-অন দিয়ে কোনো সমস্যা হলে আপনাকে যোগাযোগ "
+"করা যেতে পারে ।"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
@@ -3531,6 +3545,8 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"অ্যাড-অনের বর্তমান পাসওয়ার্ড । পরিবর্তে ফোরাম অথেন্টিকেশন ব্যবহার করা শ্রেয় কারণ এই "
+"পাসওয়ার্ডটি সুরক্ষিতভাবে সংরক্ষিত হয় না ।"
 
 #. [label]: id=translations_title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:275
@@ -3563,7 +3579,7 @@ msgstr "মুছুন"
 #. [button]: id=validate
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:452
 msgid "Validate"
-msgstr ""
+msgstr "যাচাই করুন"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3622,7 +3638,7 @@ msgstr "ঘটনাক্রমের সেটিং পাল্টান"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "আইডেন্টিফায়ার:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3644,12 +3660,12 @@ msgstr "সকল শত্রু পরাজিত হওয়ার পর জ�
 #. [toggle_button]: id=random_start_time
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:259
 msgid "Random starting time"
-msgstr ""
+msgstr "ইতস্তত শুরুর সময়"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr ""
+msgstr "দলের সেটাপ"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:83
@@ -3659,7 +3675,7 @@ msgstr "সংখ্যা:"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:110
 msgid "Team identifier:"
-msgstr ""
+msgstr "দলের আইডেন্টিফায়ার:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:137
@@ -3684,7 +3700,7 @@ msgstr "যুদ্ধের কুয়াশা"
 #. [toggle_button]: id=hidden
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:246
 msgid "Hide in status table"
-msgstr ""
+msgstr "স্ট্যাটাস টেবিলে দেখাবেন না"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:275
@@ -3735,22 +3751,22 @@ msgstr "নেই"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:422
 msgid "Share Vision:"
-msgstr ""
+msgstr "দৃষ্টির অংশীদারীত্ব:"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:432
 msgid "vision^All"
-msgstr ""
+msgstr "সব"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:434
 msgid "vision^Shroud"
-msgstr ""
+msgstr "ছায়া"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:436
 msgid "vision^None"
-msgstr ""
+msgstr "কেউ নয়"
 
 #. [button]: id=load_unit_type
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:174
@@ -3932,7 +3948,7 @@ msgstr "উন্নত"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1213
 msgid "WML View"
-msgstr ""
+msgstr "ডব্লুএমএল দেখা"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4063,12 +4079,14 @@ msgstr "বর্তমান ফোল্ডার থেকে বুকমা
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open External"
-msgstr ""
+msgstr "বাইরে খুলুন"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:321
+#, fuzzy
+#| msgid "Open selected using platform's default applications"
 msgid "Open selected using platform’s default applications"
-msgstr ""
+msgstr "নির্বাচিতটিকে প্ল্যাটফর্মের স্বাভাবিক অ্যাপ্লিকেশন দিয়ে খুলুন"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4260,12 +4278,12 @@ msgstr "খেলা থেকে প্রস্থান"
 #. [label]: id=lblTitle
 #: data/gui/themes/default/dialogs/game_save_overwrite.cfg:40
 msgid "Overwrite?"
-msgstr ""
+msgstr "ওপরে লিখুন?"
 
 #. [label]: id=lblMessage
 #: data/gui/themes/default/dialogs/game_save_overwrite.cfg:60
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "সঞ্চয় ইতিমধ্যেই রয়েছে । আপনি কী সেটির ওপরে লিখতে চান?"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/themes/default/dialogs/game_stats.cfg:35
@@ -4505,7 +4523,7 @@ msgstr "লগ ফাইল"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr ""
+msgstr "বর্তমান সিসনের লগ ফাইলটি খুলবে, যেটিতে গুরুত্বপূর্ণ ডিবাগ তথ্য থাকতে পারে"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:470
@@ -5312,7 +5330,7 @@ msgstr ""
 #. [toggle_button]: id=fog
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:389
 msgid "Fog of War"
-msgstr ""
+msgstr "যুদ্ধের কুয়াশা"
 
 #. [toggle_button]: id=fog
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:390
@@ -7375,8 +7393,10 @@ msgid "healer"
 msgstr "চিকিৎসক"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1034
+#, fuzzy
+#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr ""
+msgstr "সঞ্চয় ইতিমধ্যেই রয়েছে । আপনি কী সেটির ওপরে লিখতে চান?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1053
 msgid "Unit type saved."
@@ -9230,14 +9250,6 @@ msgstr ""
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr ""
 
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "দিনের পরবর্তী সুত্র দেখান"
-
-#~ msgid "Race"
-#~ msgstr "জাতি"
-
 #~ msgid "Connected Players"
 #~ msgstr "সংযুক্ত খেলোয়াড়"
 
@@ -9249,6 +9261,9 @@ msgstr ""
 
 #~ msgid "Limit FPS"
 #~ msgstr "এফপিএস সীমিত করুন"
+
+#~ msgid "Race"
+#~ msgstr "জাতি"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr "ক্লিপবোর্ড সাপোর্ট পাওয়া যায়নি, আপনার প্যাকেজারকে জানান"
