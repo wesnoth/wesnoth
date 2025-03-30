@@ -397,12 +397,7 @@ void campaign_selection::pre_show()
 
 	add_campaign_to_tree(addons);
 
-	widget_data data;
-	widget_item item;
-
-	item["label"] = _("In addition to the mainline campaigns, Wesnoth also has an ever-growing list of add-on content created by other players available via the Add-ons server, included but not limited to more single and multiplayer campaigns, multiplayer maps, additional media and various other content! Be sure to give it a try!");
-	data.emplace("description", item);
-	pages.add_page(data);
+	pages.add_page("go_download_more_stuff", -1, widget_data{});
 	page_ids_.push_back(addons_);
 
 	std::vector<std::string> dirs;
@@ -416,15 +411,7 @@ void campaign_selection::pre_show()
 
 		add_campaign_to_tree(missing);
 
-		widget_data data;
-		widget_item item;
-
-		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
-		data.emplace("description", item);
-
-		pages.add_page(data);
+		pages.add_page("missing_campaign_warning", -1, widget_data{});
 		page_ids_.push_back(missing_campaign_);
 	}
 
