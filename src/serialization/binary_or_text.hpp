@@ -44,7 +44,7 @@ public:
 	{
 		config::attribute_value v;
 		v = value;
-		::write_key_val(out_, key, v, level_, textdomain_);
+		io::write_key_val(out_, key, v, level_, textdomain_);
 	}
 
 private:

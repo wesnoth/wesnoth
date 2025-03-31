@@ -191,12 +191,11 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 		if(!filesystem::file_exists(filesystem::get_synced_prefs_file())) {
 			filesystem::copy_file(migrate_prefs_file, filesystem::get_synced_prefs_file());
 		} else {
-			config current_cfg;
-			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
-			read(current_cfg, *current_stream);
-			config old_cfg;
-			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
-			read(old_cfg, *old_stream);
+			auto current_stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
+			config current_cfg = io::read(*current_stream);
+
+			auto old_stream = filesystem::istream_file(migrate_prefs_file, false);
+			config old_cfg = io::read(*old_stream);
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
 			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
@@ -246,18 +245,18 @@ void prefs::load_preferences()
 		// NOTE: the system preferences file is only ever relevant for the first time wesnoth starts
 		//	   any default values will subsequently be written to the normal preferences files, which takes precedence over any values in the system preferences file
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(), false);
-			read(default_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_default_prefs_file(), false);
+			default_prefs = io::read(*stream);
 		}
 #endif
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_unsynced_prefs_file(), false);
-			read(unsynced_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_unsynced_prefs_file(), false);
+			unsynced_prefs = io::read(*stream);
 		}
 
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
-			read(synced_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
+			synced_prefs = io::read(*stream);
 		}
 
 		preferences_.merge_with(default_prefs);
@@ -389,15 +388,13 @@ void prefs::write_preferences()
 	}
 
 	try {
-		filesystem::scoped_ostream synced_prefs_file = filesystem::ostream_file(filesystem::get_synced_prefs_file());
-		write(*synced_prefs_file, synced);
+		io::write(*filesystem::ostream_file(filesystem::get_synced_prefs_file()), synced);
 	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to synced preferences file '" << filesystem::get_synced_prefs_file() << "'";
 	}
 
 	try {
-		filesystem::scoped_ostream unsynced_prefs_file = filesystem::ostream_file(filesystem::get_unsynced_prefs_file());
-		write(*unsynced_prefs_file, unsynced);
+		io::write(*filesystem::ostream_file(filesystem::get_unsynced_prefs_file()), unsynced);
 	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to unsynced preferences file '" << filesystem::get_unsynced_prefs_file() << "'";
 	}

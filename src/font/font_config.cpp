@@ -78,8 +78,7 @@ font_families families;
 bool load_font_config()
 try {
 	auto stream = preprocess_file(filesystem::get_wml_location("hardwired/fonts.cfg").value());
-	const config cfg = read(*stream);
-	families = font_families{ cfg.mandatory_child("fonts") };
+	families = font_families{ io::read(*stream).mandatory_child("fonts") };
 	return true;
 
 } catch(const utils::bad_optional_access&) {

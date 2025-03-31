@@ -101,7 +101,7 @@ void editor_edit_pbl::pre_show()
 	config pbl;
 	if(filesystem::file_exists(pbl_)) {
 		try {
-			read(pbl, *preprocess_file(pbl_));
+			pbl = io::read(*preprocess_file(pbl_));
 		} catch(const config::error& e) {
 			ERR_ED << "Caught a config error while parsing file " << pbl_ << "\n" << e.message;
 		}
@@ -392,10 +392,10 @@ void editor_edit_pbl::validate()
 	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg").value()));
 	validator->set_create_exceptions(false);
 
-	config temp;
 	std::stringstream ss;
 	ss << create_cfg();
-	read(temp, ss.str(), validator.get());
+	config temp = io::read(ss, validator.get());
+
 	if(!validator->get_errors().empty()) {
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
 	} else if(addon_icon_too_large(temp["icon"].str())) {

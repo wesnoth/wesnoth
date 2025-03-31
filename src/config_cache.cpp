@@ -121,8 +121,7 @@ void config_cache::write_file(const std::string& file_path, const preproc_map& d
 
 void config_cache::read_file(const std::string& file_path, config& cfg)
 {
-	filesystem::scoped_istream stream = filesystem::istream_file(file_path);
-	read_gz(cfg, *stream);
+	cfg = io::read_gz(*filesystem::istream_file(file_path));
 }
 
 preproc_map& config_cache::make_copy_map()
@@ -142,8 +141,7 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map, abstract_validator* validator)
 {
 	//read the file and then write to the cache
-	filesystem::scoped_istream stream = preprocess_file(file_path, &defines_map);
-	read(cfg, *stream, validator);
+	cfg = io::read(*preprocess_file(file_path, &defines_map), validator);
 }
 
 void config_cache::read_cache(const std::string& file_path, config& cfg, abstract_validator* validator)

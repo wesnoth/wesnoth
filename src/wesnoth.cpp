@@ -143,8 +143,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 		config cfg;
 
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(file);
-			read(cfg, *stream);
+			cfg = io::read(*filesystem::istream_file(file));
 		} catch(const config::error& e) {
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
@@ -201,8 +200,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		config cfg;
 
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(file);
-			read(cfg, *stream);
+			cfg = io::read(*filesystem::istream_file(file));
 		} catch(const config::error& e) {
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
@@ -319,9 +317,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
-	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
-	config result;
-	read(result, *stream, &validator);
+	config result = io::read(*preprocess_file(file, &defines_map), &validator);
 	if(lg::broke_strict()) {
 		std::cout << "validation failed\n";
 	} else {
@@ -513,11 +509,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_diff) {
-		config left, right;
 		std::ifstream in_left(cmdline_opts.diff_left);
 		std::ifstream in_right(cmdline_opts.diff_right);
-		read(left, in_left);
-		read(right, in_right);
+		config left = io::read(in_left);
+		config right = io::read(in_right);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
@@ -529,11 +524,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_patch) {
-		config base, diff;
 		std::ifstream in_base(cmdline_opts.diff_left);
 		std::ifstream in_diff(cmdline_opts.diff_right);
-		read(base, in_base);
-		read(diff, in_diff);
+		config base = io::read(in_base);
+		config diff = io::read(in_diff);
 		base.apply_diff(diff);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {
