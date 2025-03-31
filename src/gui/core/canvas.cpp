@@ -441,7 +441,10 @@ auto parse_attributes(const config::const_child_itors& range)
 		}
 	}
 
-	text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
+	// range is empty == not rich label, so don't add this attribute
+	if (!range.empty()) {
+		text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
+	}
 	return text_attributes;
 }
 
@@ -509,7 +512,8 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_link_color(link_color_(variables))
 		.set_text(text, text_markup_(variables));
 
-	text_renderer.set_family_class(font_family_)
+	text_renderer
+		.set_family_class(font_family_)
 		.set_font_size(font_size_(variables))
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
