@@ -282,7 +282,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	config text_dom;
 	config* curr_item = nullptr;
-	config* remaining_item = nullptr;
 
 	bool is_text = false;
 	bool is_image = false;
@@ -298,78 +297,44 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	for(const auto [orig_key, child] : parsed_text.all_children_view()) {
 
-		const std::string key = (orig_key == "img" && !child["float"].to_bool(false)) ? "inline" : orig_key;
+		const std::string key = (orig_key == "img" && !child["float"].to_bool(false)) ? "inline_image" : orig_key;
 
+		DBG_GUI_RL << "\n Trying to layout tag: " << key;
 
 		if(key == "img") {
 			prev_blk_height += text_height;
 			text_height = 0;
 
-			// if (child["float"].to_bool(false)) {
-				std::string align = child["align"].str("left");
+			std::string align = child["align"].str("left");
 
-				curr_item = &(text_dom.add_child("image"));
-				(*curr_item)["name"] = child["src"];
-				(*curr_item)["x"] = 0;
-				(*curr_item)["y"] = 0;
-				(*curr_item)["w"] = "(image_width)";
-				(*curr_item)["h"] = "(image_height)";
+			curr_item = &(text_dom.add_child("image"));
+			(*curr_item)["name"] = child["src"];
+			(*curr_item)["x"] = 0;
+			(*curr_item)["y"] = 0;
+			(*curr_item)["w"] = "(image_width)";
+			(*curr_item)["h"] = "(image_height)";
 
-				const point& curr_img_size = get_image_size(*curr_item);
+			const point& curr_img_size = get_image_size(*curr_item);
 
-				if(align == "right") {
-					float_pos.x = init_width - curr_img_size.x;
-				} else if(align == "middle" || align == "center") {
-					// works for single image only
-					float_pos.x = float_size.x + (init_width - curr_img_size.x)/2;
-				}
+			if (align == "right") {
+				float_pos.x = init_width - curr_img_size.x;
+			} else if (align == "middle" || align == "center") {
+				// works for single image only
+				float_pos.x = float_size.x + (init_width - curr_img_size.x)/2;
+			}
 
-				if(is_image) {
-					float_pos.y += float_size.y;
-				}
+			if (is_image) {
+				float_pos.y += float_size.y;
+			}
 
-				(*curr_item)["x"] = float_pos.x;
-				(*curr_item)["y"] = pos.y + float_pos.y;
+			(*curr_item)["x"] = float_pos.x;
+			(*curr_item)["y"] = pos.y + float_pos.y;
 
-				x = (align == "left") ? float_size.x : 0;
-				float_size.x = curr_img_size.x + padding_;
-				float_size.y += curr_img_size.y + padding_;
+			x = (align == "left") ? float_size.x : 0;
+			float_size.x = curr_img_size.x + padding_;
+			float_size.y += curr_img_size.y + padding_;
 
-				wrap_mode = true;
-				// is_float = true;
-
-			// } else {
-
-			// 	// if (align == "right") {
-			// 	// 	(*curr_item)["x"] = init_width - curr_img_size.x - pos.x;
-			// 	// } else if (align == "middle" || align == "center") {
-			// 	// 	// works for single image only
-			// 	// 	(*curr_item)["x"] = pos.x + (init_width - curr_img_size.x)/2;
-			// 	// } else {
-			// 	// 	(*curr_item)["x"] = pos.x;
-			// 	// }
-
-			// 	// (*curr_item)["y"] = pos.y;
-
-			// 	// img_size.x += curr_img_size.x + padding_;
-			// 	// img_size.y = std::max(img_size.y, curr_img_size.y);
-
-			// 	// x = img_size.x;
-			// 	// pos.x = origin.x + img_size.x;
-
-			// 	// if (!is_image || is_float) {
-			// 	// 	prev_blk_height += curr_img_size.y;
-			// 	// 	float_size.y -= curr_img_size.y;
-			// 	// }
-
-			// 	if (curr_item == nullptr) {
-			// 		curr_item = &(text_dom.add_child("text"));
-			// 		default_text_config(curr_item, pos, init_width);
-			// 		new_text_block = false;
-			// 	}
-
-			// 	is_float = false;
-			// }
+			wrap_mode = true;
 
 			w = std::max(w, x);
 
@@ -592,59 +557,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 		} else {
 			std::string line = child["text"];
 
-			if (!finalize && (line.empty() && key == "inline")) {
+			if (!finalize && (line.empty() && key == "text")) {
 				continue;
 			}
 
-
-			config part2_cfg;
-			// if (is_image && (!is_float)) {
-			// 	if (!line.empty() && line.at(0) == '\n') {
-
-			// 		// Text following inline image starts with linebreak
-			// 		x = origin.x;
-			// 		prev_blk_height += padding_;
-			// 		pos = point(origin.x, prev_blk_height);
-			// 		line = line.substr(1);
-
-			// 	} else if (!line.empty() && line.at(0) != '\n') {
-
-			// 		// Text following inline image does not start with linebreak
-			// 		// Add y correction to previous image so that it aligns with the line of text
-			// 		(*curr_item)["y"] = pos.y + baseline_correction(img_size.y);
-
-			// 		// Break the text into two parts:
-			// 		// the first part is a single line of text that fit in the area after the image
-			// 		// the rest goes on a new paragraph just below the image
-			// 		// -------------
-			// 		// |   Inline  | as much of text you can fit in a single line goes here...
-			// 		// |   Image   |
-			// 		// -------------
-			// 		// rest goes here.....
-			// 		std::vector<std::string> parts = split_in_width(line, font_size_, (init_width-x));
-			// 		// First line
-			// 		if (!parts.front().empty()) {
-			// 			line = parts.front();
-			// 		}
-
-			// 		std::string& part2 = parts.back();
-			// 		if (!part2.empty() && parts.size() > 1) {
-			// 			part2 = (part2[0] == '\n') ? part2.substr(1) : part2;
-			// 			part2_cfg.add_child("text")["text"] = parts.back();
-			// 			part2_cfg = get_parsed_text(part2_cfg, point(origin.x, prev_blk_height), init_width, false).first;
-			// 			remaining_item = &part2_cfg;
-			// 		}
-
-			// 		if (parts.size() == 1) {
-			// 			prev_blk_height -= img_size.y;
-			// 		}
-
-			// 	} else {
-			// 		prev_blk_height -= img_size.y;
-			// 	}
-			// }
-
-			if(curr_item == nullptr || new_text_block) {
+			if (curr_item == nullptr || new_text_block) {
 				curr_item = &(text_dom.add_child("text"));
 				default_text_config(curr_item, pos, init_width - pos.x - float_size.x);
 				new_text_block = false;
@@ -656,22 +573,23 @@ std::pair<config, point> rich_label::get_parsed_text(
 			if(is_text && key == "text") {
 				add_text_with_attribute(*curr_item, "\n\n");
 			}
-			is_text = false;
 
-			if (key == "inline") {
+			is_text = false;
+			is_image = false;
+
+			if (key == "inline_image") {
 
 				// Inline image rendered as a custom text glyph
 				add_text(*curr_item, line);
 				add_text_with_attribute(*curr_item, "\ufffc", "image", child["src"]);
 
-				DBG_GUI_RL << "inline image: src=" << child["src"];
+				DBG_GUI_RL << key << ": src=" << child["src"];
 
 			} else if(key == "ref") {
 
 				add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
-				is_image = false;
 
-				DBG_GUI_RL << "ref: dst=" << child["dst"];
+				DBG_GUI_RL << key << ": dst=" << child["dst"];
 
 			} else if(std::find(format_tags.begin(), format_tags.end(), key) != format_tags.end()) {
 				// TODO only the formatting tags here support nesting
@@ -691,8 +609,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 					}
 				}
 
-				is_image = false;
-
 				DBG_GUI_RL << key << ": text=" << gui2::debug_truncate(line);
 
 			} else if(key == "header" || key == "h") {
@@ -702,9 +618,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				add_attribute(*curr_item, "color", start, end, font::string_to_color("white").to_hex_string());
 				add_attribute(*curr_item, "size", start, end, std::to_string(font::SIZE_TITLE - 2));
 
-				is_image = false;
-
-				DBG_GUI_RL << "h: text=" << line;
+				DBG_GUI_RL << key << ": text=" << line;
 
 			} else if(key == "character_entity") {
 				line = "&" + child["name"].str() + ";";
@@ -713,9 +627,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				add_attribute(*curr_item, "face", start, end, "monospace");
 				add_attribute(*curr_item, "color", start, end, font::string_to_color("red").to_hex_string());
 
-				is_image = false;
-
-				DBG_GUI_RL << "entity: text=" << line;
+				DBG_GUI_RL << key << ": text=" << line;
 
 			} else if(key == "span" || key == "format") {
 
@@ -730,9 +642,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					}
 				}
 
-				is_image = false;
-
-			} else if(key == "text") {
+			} else if (key == "text") {
 
 				DBG_GUI_RL << "text: text=" << gui2::debug_truncate(line) << "...";
 
@@ -790,8 +700,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if(!wrap_mode) {
 					float_size = point(0,0);
 				}
-
-				is_image = false;
 			}
 
 			point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
@@ -803,14 +711,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			text_height += size.y - tmp_h;
 			pos.y += size.y - tmp_h;
-
-			if(remaining_item) {
-				x = origin.x;
-				pos = point(origin.x, pos.y + img_size.y);
-				text_dom.append(*remaining_item);
-				remaining_item = nullptr;
-				curr_item = &text_dom.all_children_view().back().second;
-			}
 		}
 
 		if(!is_image && !wrap_mode && img_size.y > 0) {
@@ -848,6 +748,8 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	// TODO float and a mix of floats and images and tables
 	h = std::max(static_cast<unsigned>(img_size.y), h);
+
+	DBG_GUI_RL << "[\n" << text_dom.debug() << "]\n";
 
 	DBG_GUI_RL << "Width: " << w << " Height: " << h << " Origin: " << origin;
 	return { text_dom, point(w, h - origin.y) };
