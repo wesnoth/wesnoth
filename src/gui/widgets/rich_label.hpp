@@ -277,13 +277,6 @@ private:
 		return font::get_text_renderer().get_cursor_position(offset);
 	}
 
-	// A correction to allow inline image to stay at the same height
-	// as the text following it.
-	unsigned baseline_correction(unsigned img_height) {
-		unsigned text_height = font::get_text_renderer().get_size().y;
-		return (text_height > img_height) ? (text_height - img_height)/2 : 0;
-	}
-
 	point calculate_best_size() const override { return size_; };
 
 public:
