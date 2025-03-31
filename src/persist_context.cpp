@@ -38,7 +38,7 @@ void persist_file_context::load()
 		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
-				read(cfg_,*file_stream);
+				cfg_ = io::read(*file_stream);
 			} catch (const config::error &err) {
 				LOG_PERSIST << err.message;
 			}

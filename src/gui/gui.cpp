@@ -36,8 +36,7 @@ config read_and_validate(const std::string& path)
 try {
 	preproc_map defines;
 	schema_validation::schema_validator validator{filesystem::get_wml_location("schema/gui.cfg").value()};
-	filesystem::scoped_istream stream = preprocess_file(path, &defines);
-	return ::read(*stream, &validator);
+	return io::read(*preprocess_file(path, &defines), &validator);
 
 } catch(const utils::bad_optional_access&) {
 	FAIL("GUI2: schema/gui.cfg not found.");

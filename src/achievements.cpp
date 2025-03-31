@@ -137,12 +137,11 @@ void achievements::reload()
  */
 config achievements::read_achievements_file(const std::string& path)
 {
-	config cfg;
 	if(filesystem::file_exists(path)) {
-		filesystem::scoped_istream stream = preprocess_file(path);
-		read(cfg, *stream);
+		return io::read(*preprocess_file(path));
+	} else {
+		return {};
 	}
-	return cfg;
 }
 
 /**

@@ -104,8 +104,7 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg").value());
-		read(cfg, *stream);
+		cfg = io::read(*preprocess_file(filesystem::get_wml_location("hardwired/language.cfg").value()));
 	} catch(const config::error &) {
 		return false;
 	}

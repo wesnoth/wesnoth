@@ -60,14 +60,12 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 	, addon_id_(addon_id)
 {
 	//TODO some weapon specials can have args (PLAGUE_TYPE)
-	config specials;
-
-	read(specials, *(preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", &specials_map_)));
+	io::read(*preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", &specials_map_));
 	for (const auto& x : specials_map_) {
 		specials_list_.emplace_back("label", x.first, "checkbox", false);
 	}
 
-	read(specials, *(preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", &abilities_map_)));
+	io::read(*preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", &abilities_map_));
 	for (const auto& x : abilities_map_) {
 		// Don't add any macros that have INTERNAL
 		if (x.first.find("INTERNAL") == std::string::npos) {
@@ -881,7 +879,7 @@ void editor_edit_unit::update_wml_view() {
 
 		level++;
 		for (const auto& [key, value] : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			::write_key_val(wml_stream, key, value, level, current_textdomain);
+			io::write_key_val(wml_stream, key, value, level, current_textdomain);
 		}
 
 		// Abilities
@@ -902,7 +900,7 @@ void editor_edit_unit::update_wml_view() {
 				level++;
 				for (const auto& [key, value] : atk.second.attribute_range()) {
 					if (!value.empty()) {
-						::write_key_val(wml_stream, key, value, level, current_textdomain);
+						io::write_key_val(wml_stream, key, value, level, current_textdomain);
 					}
 				}
 
@@ -932,7 +930,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& [key, value] : movement_.attribute_range()) {
 				if (move_toggles_[i] == 1) {
-					::write_key_val(wml_stream, key, value, level, current_textdomain);
+					io::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}
@@ -947,7 +945,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& [key, value] : defenses_.attribute_range()) {
 				if (def_toggles_[i] == 1) {
-					::write_key_val(wml_stream, key, value, level, current_textdomain);
+					io::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}
@@ -962,7 +960,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& [key, value] : resistances_.attribute_range()) {
 				if (res_toggles_[i] == 1) {
-					::write_key_val(wml_stream, key, value, level, current_textdomain);
+					io::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}

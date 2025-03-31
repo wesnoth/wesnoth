@@ -273,10 +273,9 @@ void ban_manager::read()
 	}
 
 	LOG_SERVER << "Reading bans from " <<  filename_;
-	config cfg;
 	dirty_ = false;
 	filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
-	read_gz(cfg, *ban_file);
+	config cfg = io::read_gz(*ban_file);
 
 	for(const config& b : cfg.child_range("ban")) {
 		try {

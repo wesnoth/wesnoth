@@ -413,23 +413,19 @@ void server::setup_handlers()
 
 config server::read_config() const
 {
-	config configuration;
-
 	if(config_file_.empty()) {
-		return configuration;
+		return {};
 	}
 
 	try {
 		// necessary to avoid assert since preprocess_file() goes through filesystem::get_short_wml_path()
 		filesystem::set_user_data_dir(std::string());
-		filesystem::scoped_istream stream = preprocess_file(config_file_);
-		read(configuration, *stream);
+		return io::read(*preprocess_file(config_file_));
 		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.";
 	} catch(const config::error& e) {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '" << config_file_ << "': '" << e.message << "'.";
+		return {};
 	}
-
-	return configuration;
 }
 
 void server::load_config()

@@ -49,7 +49,7 @@ namespace
 inline std::string config_to_string(const config& cfg)
 {
 	std::ostringstream s;
-	write(s, cfg);
+	io::write(s, cfg);
 	return s.str();
 }
 

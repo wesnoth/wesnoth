@@ -132,9 +132,9 @@ void save_index_class::write_save_index()
 
 		if(prefs::get().save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
-			write_gz(*stream, data());
+			io::write_gz(*stream, data());
 		} else {
-			write(*stream, data());
+			io::write(*stream, data());
 		}
 	} catch(const filesystem::io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'";
@@ -179,10 +179,10 @@ config& save_index_class::data()
 		try {
 			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
 			try {
-				read_gz(data_, *stream);
+				data_ = io::read_gz(*stream);
 			} catch(const boost::iostreams::gzip_error&) {
 				stream->seekg(0);
-				read(data_, *stream);
+				data_ = io::read(*stream);
 			}
 		} catch(const filesystem::io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'";
@@ -310,18 +310,17 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 	static const std::vector<std::string> suffixes{"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(dir, name, suffixes);
 
-	cfg.clear();
 	try {
 		/*
 		 * Test the modified name, since it might use a .gz
 		 * file even when not requested.
 		 */
 		if(filesystem::is_gzip_file(name)) {
-			read_gz(cfg, *file_stream);
+			cfg = io::read_gz(*file_stream);
 		} else if(filesystem::is_bzip2_file(name)) {
-			read_bz2(cfg, *file_stream);
+			cfg = io::read_bz2(*file_stream);
 		} else {
-			read(cfg, *file_stream);
+			cfg = io::read(*file_stream);
 		}
 	} catch(const std::ios_base::failure& e) {
 		LOG_SAVE << e.what();
