@@ -2147,6 +2147,15 @@ namespace
 			}
 		}
 
+		//when affect_distant=yes detect presence of [affect_distant] in abilities, if no
+		//then matches when tag not present.
+		if(!filter["affect_distant"].empty()){
+			bool distant = cfg.has_child("affect_distant");
+			if(filter["affect_distant"].to_bool() != distant){
+				return false;
+			}
+		}
+
 		//these attributs below filter attribute used in all engine abilities.
 		//matches if filter attribute have same boolean value what attribute
 		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
