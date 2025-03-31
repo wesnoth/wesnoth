@@ -57,13 +57,6 @@ void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, 
 	cairo_set_source_surface(cr, img, dx, dy);
 	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
 	cairo_fill(cr);
-
-	// debug outline
-	cairo_set_source_rgba(cr, 1, 1, 1, 1);
-	cairo_set_line_join(cr, CAIRO_LINE_JOIN_ROUND);
-	cairo_set_line_width(cr, 2.0);
-	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
-	cairo_stroke(cr);
 }
 }
 
