@@ -98,7 +98,7 @@ pango_text::pango_text()
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
 
-	// pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
+	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
@@ -339,6 +339,7 @@ void pango_text::clear_attributes()
 
 void pango_text::apply_attributes(const font::attribute_list& attrs) const
 {
+	pango_layout_set_line_spacing(layout_.get(), 0);
 	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
 		attrs.splice_into(current_attrs);
 	} else {
@@ -599,12 +600,11 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
 	pango_layout_set_font_description(&layout, font.get());
 
-	font::attribute_list list;
 	if(font_style_ & pango_text::STYLE_UNDERLINE) {
+		font::attribute_list list;
 		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+		apply_attributes(list);
 	}
-	list.insert(pango_attr_line_height_new(get_line_spacing_factor()));
-	apply_attributes(list);
 
 	int maximum_width = 0;
 	if(characters_per_line_ != 0) {
