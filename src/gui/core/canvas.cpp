@@ -433,7 +433,7 @@ auto parse_attributes(const config::const_child_itors& range)
 		} else if (name == "underline" || name == "u") {
 			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
 		} else if (name == "line_height") {
-			add_attribute_line_height(text_attributes, start, end, attr["value"].to_int());
+			add_attribute_line_height(text_attributes, start, end, attr["value"].to_double());
 		} else if (name == "image") { // An inline image that behave as a custom text glyph
 			add_attribute_image_shape(text_attributes, start, end, attr["value"]);
 		} else {

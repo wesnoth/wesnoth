@@ -139,16 +139,26 @@ std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::str
 void rich_label::add_attribute(
 	config& curr_item,
 	const std::string& attr_name,
+	const std::string& extra_data,
 	size_t start,
-	size_t end,
-	const std::string& extra_data)
+	size_t end)
 {
-	curr_item.add_child("attribute", config{
-		"name"  , attr_name,
-		"start" , start,
-		"end"   , end == 0 ? curr_item["text"].str().size() : end,
-		"value" , extra_data
-	});
+	if (start == end && start != 0) {
+		return;
+	}
+
+	config& cfg = curr_item.add_child("attribute");
+	cfg["name"] = attr_name;
+	// No need to set any keys that's aren't given
+	if (start != 0) {
+		cfg["start"] = start;
+	}
+	if (end != 0) {
+		cfg["end"] = end;
+	}
+	if (!extra_data.empty()) {
+		cfg["value"] = extra_data;
+	}
 }
 
 std::pair<size_t, size_t> rich_label::add_text_with_attribute(
@@ -158,7 +168,7 @@ std::pair<size_t, size_t> rich_label::add_text_with_attribute(
 	const std::string& extra_data)
 {
 	const auto [start, end] = add_text(curr_item, text);
-	add_attribute(curr_item, attr_name, start, end, extra_data);
+	add_attribute(curr_item, attr_name, extra_data, start, end);
 	return { start, end };
 }
 
@@ -600,10 +610,10 @@ std::pair<config, point> rich_label::get_parsed_text(
 				for(const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
 					if(parsed_key == "text") {
 						const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
-						for(const config& attr : parsed_cfg.child_range("attribute")) {
-							add_attribute(*curr_item, attr["name"], start + attr["start"].to_int(), start + attr["end"].to_int(), attr["value"]);
+						for (const config& attr : parsed_cfg.child_range("attribute")) {
+							add_attribute(*curr_item, attr["name"], attr["value"], start + attr["start"].to_int(), start + attr["end"].to_int());
 						}
-						add_attribute(*curr_item, key, start, end);
+						add_attribute(*curr_item, key, "", start, end);
 					} else {
 						text_dom.add_child(parsed_key, parsed_cfg);
 					}
@@ -614,18 +624,19 @@ std::pair<config, point> rich_label::get_parsed_text(
 			} else if(key == "header" || key == "h") {
 
 				const auto [start, end] = add_text(*curr_item, line);
-				add_attribute(*curr_item, "weight", start, end, "heavy");
-				add_attribute(*curr_item, "color", start, end, font::string_to_color("white").to_hex_string());
-				add_attribute(*curr_item, "size", start, end, std::to_string(font::SIZE_TITLE - 2));
+				add_attribute(*curr_item, "weight", "heavy", start, end);
+				add_attribute(*curr_item, "color", font::string_to_color("white").to_hex_string(), start, end);
+				add_attribute(*curr_item, "size", std::to_string(font::SIZE_TITLE - 2), start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
 
 			} else if(key == "character_entity") {
+
 				line = "&" + child["name"].str() + ";";
 
 				const auto [start, end] = add_text(*curr_item, line);
-				add_attribute(*curr_item, "face", start, end, "monospace");
-				add_attribute(*curr_item, "color", start, end, font::string_to_color("red").to_hex_string());
+				add_attribute(*curr_item, "face",  "monospace", start, end);
+				add_attribute(*curr_item, "color", font::string_to_color("red").to_hex_string(), start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
 
@@ -635,9 +646,9 @@ std::pair<config, point> rich_label::get_parsed_text(
 				DBG_GUI_RL << "span/format: text=" << line;
 				DBG_GUI_RL << "attributes:";
 
-				for(const auto& [key, value] : child.attribute_range()) {
-					if(key != "text") {
-						add_attribute(*curr_item, key, start, end, value);
+				for (const auto& [key, value] : child.attribute_range()) {
+					if (key != "text") {
+						add_attribute(*curr_item, key, value, start, end);
 						DBG_GUI_RL << key << "=" << value;
 					}
 				}
@@ -775,6 +786,7 @@ void rich_label::default_text_config(
 		(*txt_ptr)["h"] = "(text_height)";
 		(*txt_ptr)["maximum_width"] = max_width;
 		(*txt_ptr)["parse_text_as_formula"] = false;
+		add_attribute(*txt_ptr, "line_height", std::to_string(1.3));
 	}
 }
 

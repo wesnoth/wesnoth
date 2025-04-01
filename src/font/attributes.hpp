@@ -168,7 +168,7 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
  * @param offset_end          Byte index of the cursor where size change ends
  * @param factor              The line height factor, i.e., `new_line_height/old_line_height`
  */
-void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const int factor);
+void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const double factor);
 
 /**
  * Add Pango shape attribute to a specific portion of text. This replaces
