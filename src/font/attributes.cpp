@@ -183,22 +183,21 @@ void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsi
 
 	DBG_GUI_D << "attribute: line height (relative)";
 	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+	DBG_GUI_D << "factor: " << factor;
 
 	attr.add_to(list);
 }
 
 void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path)
 {
-	::image::locator locator(image_path);
-	point size = ::image::get_size(locator);
-	surface surf = ::image::get_surface(locator);
+	surface surf = ::image::get_surface(image_path);
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(surf->pixels), point(surf->w, surf->h));
 	PangoRectangle bounds {
 		0,
-		-PANGO_SCALE * size.y,
-		PANGO_SCALE * size.x,
-		PANGO_SCALE * size.y
+		-PANGO_SCALE * surf->h,
+		PANGO_SCALE * surf->w,
+		PANGO_SCALE * surf->h
 	};
 
 	attribute attr {
@@ -206,8 +205,9 @@ void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsi
 		offset_start, offset_end
 	};
 
-	DBG_GUI_D << "attribute: shape, image path: " << image_path;
+	DBG_GUI_D << "attribute: shape";
 	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+	DBG_GUI_D << "image path: " << image_path;
 
 	attr.add_to(list);
 }
