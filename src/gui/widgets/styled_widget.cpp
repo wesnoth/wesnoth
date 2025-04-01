@@ -17,7 +17,6 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
-#include "font/attributes.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
