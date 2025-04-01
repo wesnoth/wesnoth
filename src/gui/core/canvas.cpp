@@ -433,7 +433,7 @@ auto parse_attributes(const config::const_child_itors& range)
 		} else if (name == "underline" || name == "u") {
 			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
 		} else if (name == "line_height") {
-			font::add_attribute_line_height(text_attributes, start, end, attr["value"].to_int());
+			add_attribute_line_height(text_attributes, start, end, attr["value"].to_int());
 		} else if (name == "image") { // An inline image that behave as a custom text glyph
 			add_attribute_image_shape(text_attributes, start, end, attr["value"]);
 		} else {
@@ -443,10 +443,6 @@ auto parse_attributes(const config::const_child_itors& range)
 		}
 	}
 
-	// range is empty == not rich label, so don't add this attribute
-	// if (!range.empty()) {
-	// 	text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
-	// }
 	return text_attributes;
 }
 
