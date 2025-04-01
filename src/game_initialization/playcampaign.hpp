@@ -24,6 +24,12 @@
 class saved_game;
 class wesnothd_connection;
 
+enum QUEUE_TYPE {
+	NORMAL,
+	CLIENT_PRESET,
+	SERVER_PRESET,
+};
+
 struct mp_game_metadata
 {
 	mp_game_metadata(wesnothd_connection& wdc)
@@ -33,7 +39,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
-		, is_queue_game(false)
+		, queue_type(NORMAL)
 	{
 	}
 
@@ -44,7 +50,7 @@ struct mp_game_metadata
 	bool skip_replay;
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
-	bool is_queue_game;
+	QUEUE_TYPE queue_type;
 };
 
 class campaign_controller

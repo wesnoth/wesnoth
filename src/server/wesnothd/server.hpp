@@ -66,6 +66,7 @@ private:
 	void handle_create_game(player_iterator player, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
 	void handle_join_game(player_iterator player, simple_wml::node& join);
+	void handle_join_server_queue(player_iterator player, simple_wml::node& join_server_queue);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
 
@@ -130,6 +131,25 @@ private:
 		}
 	};
 
+	struct queue_info
+	{
+		queue_info(const std::string& id, const std::string& name, int required, config game)
+		: scenario_id(id)
+		, queue_display_name(name)
+		, players_required(required)
+		, players_in_queue()
+		, settings(game)
+		{
+
+		}
+
+		std::string scenario_id;
+		std::string queue_display_name;
+		std::size_t players_required;
+		std::vector<std::string> players_in_queue;
+		config settings;
+	};
+
 	std::deque<login_log> failed_logins_;
 
 	std::unique_ptr<user_handler> user_handler_;
@@ -155,6 +175,7 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
+	std::vector<queue_info> queue_info_;
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;
