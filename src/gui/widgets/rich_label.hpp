@@ -248,7 +248,7 @@ private:
 	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
 
 	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
-	void add_attribute(config& curr_item, const std::string& attr_name, size_t start = 0, size_t end = 0, const std::string& extra_data = "");
+	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", size_t start = 0, size_t end = 0);
 	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
 
 	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);

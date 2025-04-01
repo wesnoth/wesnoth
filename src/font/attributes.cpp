@@ -169,11 +169,12 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
 
 	DBG_GUI_D << "attribute: font family";
 	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+	DBG_GUI_D << "font family: " << family_name;
 
 	attr.add_to(list);
 }
 
-void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const int factor)
+void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const double factor)
 {
 	attribute attr {
 		pango_attr_line_height_new(factor),
