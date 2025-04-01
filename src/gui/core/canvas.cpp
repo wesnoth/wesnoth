@@ -432,6 +432,8 @@ auto parse_attributes(const config::const_child_itors& range)
 			add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
 		} else if (name == "underline" || name == "u") {
 			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
+		} else if (name == "line_height") {
+			font::add_attribute_line_height(text_attributes, start, end, attr["value"].to_int());
 		} else if (name == "image") { // An inline image that behave as a custom text glyph
 			add_attribute_image_shape(text_attributes, start, end, attr["value"]);
 		} else {
@@ -442,9 +444,9 @@ auto parse_attributes(const config::const_child_itors& range)
 	}
 
 	// range is empty == not rich label, so don't add this attribute
-	if (!range.empty()) {
-		text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
-	}
+	// if (!range.empty()) {
+	// 	text_attributes.insert(pango_attr_line_height_new(font::get_line_spacing_factor()));
+	// }
 	return text_attributes;
 }
 
@@ -468,6 +470,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, line_spacing_(cfg["line_spacing"].to_int(-1))
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
 	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
@@ -526,6 +529,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_characters_per_line(characters_per_line_)
 		.set_add_outline(outline_(variables));
 
+	if (line_spacing_ > -1) { // why? -1 = don't set and 0 and greater are valid values
+		text_renderer.set_line_spacing(line_spacing_);
+	}
 	// Do this last so it can merge with attributes from markup
 	text_renderer.apply_attributes(text_attributes_);
 

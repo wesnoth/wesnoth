@@ -332,7 +332,6 @@ void pango_text::clear_attributes()
 
 void pango_text::apply_attributes(const font::attribute_list& attrs) const
 {
-	pango_layout_set_line_spacing(layout_.get(), 0);
 	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
 		attrs.splice_into(current_attrs);
 	} else {

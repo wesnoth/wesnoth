@@ -173,6 +173,19 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
 	attr.add_to(list);
 }
 
+void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const int factor)
+{
+	attribute attr {
+		pango_attr_line_height_new(factor),
+		offset_start, offset_end
+	};
+
+	DBG_GUI_D << "attribute: line height (relative)";
+	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+
+	attr.add_to(list);
+}
+
 void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path)
 {
 	::image::locator locator(image_path);

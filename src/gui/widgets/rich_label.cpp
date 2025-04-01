@@ -768,6 +768,7 @@ void rich_label::default_text_config(
 		(*txt_ptr)["font_size"] = font_size_;
 		(*txt_ptr)["font_style"] = font_style_;
 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
+		(*txt_ptr)["line_spacing"] = 0;
 		(*txt_ptr)["x"] = pos.x;
 		(*txt_ptr)["y"] = pos.y;
 		(*txt_ptr)["w"] = "(text_width)";
