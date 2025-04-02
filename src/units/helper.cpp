@@ -102,9 +102,9 @@ std::string format_cost_string(int unit_recall_cost, bool active)
 {
 	std::stringstream str;
 	if (active) {
-		str << markup::img("themes/gold.png") << unit_recall_cost;
+		str << markup::img("themes/gold.png") << ' ' << unit_recall_cost;
 	} else {
-		str << markup::img("themes/gold.png~GS()")
+		str << markup::img("themes/gold.png~GS()") << ' '
 			<< maybe_inactive(std::to_string(unit_recall_cost), false);
 	}
 	return str.str();
@@ -117,7 +117,7 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	}
 
 	std::stringstream str;
-	str << markup::img("themes/gold.png");
+	str << markup::img("themes/gold.png") << ' ';
 
 	if(unit_recall_cost > team_recall_cost) {
 		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
