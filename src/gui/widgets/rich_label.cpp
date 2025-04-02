@@ -241,25 +241,6 @@ size_t rich_label::get_split_location(std::string_view text, const point& pos)
 	return len;
 }
 
-std::vector<std::string> rich_label::split_in_width(
-	const std::string &s,
-	const int font_size,
-	const unsigned width)
-{
-	std::vector<std::string> res;
-	try {
-		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
-		res.push_back(first_line);
-		if(s.size() > first_line.size()) {
-			res.push_back(s.substr(first_line.size()));
-		}
-	} catch (utf8::invalid_utf8_exception&) {
-		throw markup::parse_error(_("corrupted original file"));
-	}
-
-	return res;
-}
-
 void rich_label::set_dom(const config& dom) {
 	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
 	update_canvas();
@@ -589,8 +570,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			if (key == "inline_image") {
 
-				// Inline image rendered as a custom text glyph
-				add_text(*curr_item, line);
+				// Inline image is rendered as a custom text glyph (pango shape attribute)
+				// FIXME: If linebreak (\n) is followed by an inline image
+				// the text size is calculated wrongly as being decreased.
+				// Workaround: append a zero width space always in front of the image.
+				add_text(*curr_item, "\u200b");
 				add_text_with_attribute(*curr_item, "\ufffc", "image", child["src"]);
 
 				DBG_GUI_RL << key << ": src=" << child["src"];
