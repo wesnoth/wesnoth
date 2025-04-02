@@ -224,16 +224,12 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 			it->anim_comp().set_standing();
 		}
 	}
-	utils::optional<int> max_radius = u_.affect_distant_max_radius();
-	if(max_radius && affect_distant){
-		std::vector<map_location> surrounding;
-		get_tiles_in_radius(u_.get_location(), (*max_radius + 1), surrounding);
-		for(unsigned j = 0; j < surrounding.size(); ++j){
-			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
-			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &u_) {
+	if(affect_distant){
+		for(const unit& unit_itor : units){
+			if (unit_itor.incapacitated() || &(unit_itor) == &u_) {
 				continue;
 			}
-			unit_itor->anim_comp().set_standing();
+			unit_itor.anim_comp().set_standing();
 		}
 	}
 }
