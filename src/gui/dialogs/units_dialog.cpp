@@ -505,6 +505,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		// Does the unit have error message? If so, grey out text here.
 		bool recruitable = err_msgs_map[recruit].empty();
 		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
+			+ '\n'
 			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
 
@@ -707,7 +708,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	set_column("unit_details",
 		[recallable, &team](const auto& unit) {
 			std::stringstream details;
-			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit));
+			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit)) << '\n';
 			const int recall_cost = unit->recall_cost() == -1 ? team.recall_cost() : unit->recall_cost();
 			if (recallable(*unit)) {
 				details << unit_helper::format_cost_string(recall_cost, team.recall_cost());
