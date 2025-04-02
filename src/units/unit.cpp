@@ -408,7 +408,7 @@ unit::unit(unit_ctor_t)
 
 namespace
 {
-	void set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name)
+	void set_affect_distant_max_radius(int value, const std::string& tag_name)
 	{
 		if(resources::gameboard) {
 			resources::gameboard->set_affect_distant_max_radius(value, tag_name);
@@ -418,11 +418,9 @@ namespace
 	void set_affect_distant_max_radius(const config& cfg, const std::string& tag_name)
 	{
 		for(const config& affect_distant : cfg.child_range("affect_distant")) {
-			if(affect_distant.has_attribute("radius")){
-				set_affect_distant_max_radius(affect_distant["radius"].to_int(), tag_name);
-				if(resources::gameboard && (cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"))){
-					resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int());
-				}
+			set_affect_distant_max_radius(affect_distant["radius"].to_int(-1), tag_name);
+			if(resources::gameboard && (cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"))){
+				resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int(-1));
 			}
 		}
 	}
@@ -480,11 +478,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				}
 				const vconfig::child_list& affect_distants = child.get_children("affect_distant");
 				for(const vconfig& affect_distant : affect_distants) {
-					if(affect_distant.has_attribute("radius")){
-						set_affect_distant_max_radius(affect_distant["radius"].to_int(), key);
-						if(resources::gameboard && (child.has_attribute("halo_image") || child.has_attribute("overlay_image"))){
-							resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int());
-						}
+					set_affect_distant_max_radius(affect_distant["radius"].to_int(-1), key);
+					if(resources::gameboard && (child.has_attribute("halo_image") || child.has_attribute("overlay_image"))){
+						resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int(-1));
 					}
 				}
 			}

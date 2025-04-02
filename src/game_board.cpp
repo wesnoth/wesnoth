@@ -182,24 +182,29 @@ void game_board::check_victory(bool& continue_level,
 	continue_level = false;
 }
 
-void game_board::set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name)
+void game_board::set_affect_distant_max_radius(int value, const std::string& tag_name)
 {
-	if(value){
-		if(!affect_distant_max_radius_[tag_name] || *affect_distant_max_radius_[tag_name] < *value){
+	if(value >= 0){
+		if(!affect_distant_max_radius_[tag_name] || (*affect_distant_max_radius_[tag_name] >=0 && *affect_distant_max_radius_[tag_name] < value)){
 			affect_distant_max_radius_[tag_name] = value;
 		}
-		if(!affect_distant_max_radius_for_filtering_ || *affect_distant_max_radius_for_filtering_ < *value){
+		if(!affect_distant_max_radius_for_filtering_ || (*affect_distant_max_radius_for_filtering_ >=0 && *affect_distant_max_radius_for_filtering_ < value)){
 			affect_distant_max_radius_for_filtering_ = value;
 		}
+	} else {
+		affect_distant_max_radius_[tag_name] = value;
+		affect_distant_max_radius_for_filtering_ = value;
 	}
 }
 
-void game_board::set_affect_distant_max_radius_image(utils::optional<int> value)
+void game_board::set_affect_distant_max_radius_image(int value)
 {
-	if(value){
-		if(!affect_distant_max_radius_for_image_ || *affect_distant_max_radius_for_image_ < *value){
+	if(value >= 0){
+		if(!affect_distant_max_radius_for_image_ || (*affect_distant_max_radius_for_image_ >=0 && *affect_distant_max_radius_for_image_ < value)){
 			affect_distant_max_radius_for_image_ = value;
 		}
+	} else {
+		affect_distant_max_radius_for_image_ = value;
 	}
 }
 

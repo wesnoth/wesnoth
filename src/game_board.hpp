@@ -146,8 +146,8 @@ public:
 	utils::optional<int> affect_distant_max_radius(const std::string& value){return affect_distant_max_radius_[value];}
 	utils::optional<int> affect_distant_max_radius_for_filtering() const {return affect_distant_max_radius_for_filtering_;}
 	utils::optional<int> affect_distant_max_radius_for_image() const {return affect_distant_max_radius_for_image_;}
-	void set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name = "");
-	void set_affect_distant_max_radius_image(utils::optional<int> value);
+	void set_affect_distant_max_radius(int value, const std::string& tag_name = "");
+	void set_affect_distant_max_radius_image(int value);
 
 	// Saving
 
