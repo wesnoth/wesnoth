@@ -30,7 +30,6 @@
 #include "help/help.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/ci_searcher.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_help("help");
 #define ERR_HP LOG_STREAM(err, log_help)
@@ -39,6 +38,12 @@ static lg::log_domain log_help("help");
 
 namespace gui2::dialogs
 {
+
+namespace
+{
+	int win_w = 0;
+	int tree_w = 0;
+}
 
 REGISTER_DIALOG(help_browser)
 
@@ -73,17 +78,27 @@ void help_browser::pre_show()
 
 	toggle_button& contents = find_widget<toggle_button>("contents");
 
-	if (video::window_size().x <= 800) {
-		contents.set_value(false);
-		connect_signal_mouse_left_click(contents, [&](auto&&...) {
-			topic_tree.set_visible(topic_tree.get_visible());
-			invalidate_layout();
-		});
-		topic_tree.set_visible(widget::visibility::invisible);
-	} else {
-		contents.set_value(true);
-		contents.set_visible(widget::visibility::invisible);
-	}
+	contents.set_value(true);
+	topic_tree.set_visible(true);
+	connect_signal_mouse_left_click(contents, [&](auto&&...) {
+		auto parent = topic_text.get_window();
+		// Cache the initial values, get_best_size() keeps changing
+		if ((parent != nullptr) && (win_w == 0)) {
+			win_w = parent->get_best_size().x;
+		}
+		if (tree_w == 0) {
+			tree_w = topic_tree.get_best_size().x;
+		}
+
+		// Set RL's width and reshow
+		bool is_contents_visible = (topic_tree.get_visible() == widget::visibility::visible);
+		if (topic_text.get_window()) {
+			topic_text.set_width(win_w - (is_contents_visible ? 0 : tree_w) - 20 /* Padding */);
+			show_topic(history_.at(history_pos_), false);
+		}
+		topic_tree.set_visible(!is_contents_visible);
+		invalidate_layout();
+	});
 
 	text_box& filter = find_widget<text_box>("filter_box");
 	add_to_keyboard_chain(&filter);
@@ -221,11 +236,6 @@ void help_browser::on_topic_select()
 
 	tree_view_node* selected = topic_tree.selected_item();
 	assert(selected);
-
-	if (selected->id()[0] != '+' && video::window_size().x <= 800) {
-		find_widget<toggle_button>("contents").set_value(false);
-		topic_tree.set_visible(widget::visibility::invisible);
-	}
 
 	show_topic(selected->id());
 }

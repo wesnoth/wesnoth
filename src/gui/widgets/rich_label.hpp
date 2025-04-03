@@ -126,6 +126,18 @@ public:
 	// Show a given DOM (given as a config)
 	void set_dom(const config& dom);
 
+	int get_width()
+	{
+		return init_w_;
+	}
+
+	// NOTE: set_label() must be done after this so the text can be
+	// laid out with the new width.
+	void set_width(const int width)
+	{
+		init_w_ = width;
+	}
+
 	// Given a parsed config from help markup,
 	// layout it into a config that can be understood by canvas
 	std::pair<config, point> get_parsed_text(
@@ -223,7 +235,7 @@ private:
 	config shapes_;
 
 	/** Width and height of the canvas */
-	const unsigned init_w_;
+	unsigned init_w_;
 	point size_;
 
 	/** Padding */
