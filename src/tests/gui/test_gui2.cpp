@@ -249,10 +249,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				// debug clock doesn't work at 800x600
-				if(resolution.first == 800 && resolution.second == 600) {
-					continue;
-				}
 				test_utils::get_fake_display(resolution.first, resolution.second);
 
 				dialog_tester<T> ctor;
@@ -340,7 +336,6 @@ namespace {
 const resolution_list& get_gui_resolutions()
 {
 	static resolution_list result {
-		{800,  600},
 		{1024, 768},
 		{1280, 1024},
 		{1680, 1050},
