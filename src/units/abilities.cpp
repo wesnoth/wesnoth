@@ -513,6 +513,10 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 				if(i["is_enemy"].to_bool() != dc.get_team(unit_itor->side()).is_enemy(side_)) {
 					continue;
 				}
+			} else if(i.has_attribute("is_same_side")) {
+				if(i["is_same_side"].to_bool() != (unit_itor->side() == side_)) {
+					continue;
+				}
 			}
 			++count;
 		}
@@ -2447,6 +2451,10 @@ bool attack_type::special_active_impl(
 			if(i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
 				if(i["is_enemy"].to_bool() != dc.get_team(unit_itor->side()).is_enemy(self->side())) {
+					continue;
+				}
+			} else if(i.has_attribute("is_same_side")) {
+				if(i["is_same_side"].to_bool() != (unit_itor->side() == self->side())) {
 					continue;
 				}
 			}
