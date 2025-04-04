@@ -406,6 +406,34 @@ unit::unit(unit_ctor_t)
 {
 }
 
+namespace
+{
+	void set_affect_distant(const std::string& tag_name)
+	{
+		if(resources::gameboard) {
+			resources::gameboard->set_affect_distant(tag_name);
+		}
+	}
+
+	void set_affect_distant(const config& cfg, const std::string& tag_name)
+	{
+		if(cfg.has_child("affect_distant")) {
+			set_affect_distant(tag_name);
+			if(resources::gameboard && (cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"))){
+				resources::gameboard->set_affect_distant_image();
+			}
+		}
+	}
+}
+
+bool unit::affect_distant(const std::string& tag_name) const
+{
+	if(resources::gameboard) {
+		return !tag_name.empty() ? resources::gameboard->affect_distant(tag_name) : resources::gameboard->affect_distant_for_filtering();
+	}
+	return false;
+}
+
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 {
 	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
@@ -448,6 +476,12 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				for(const vconfig& ability_event : ability_events) {
 					events_.add_child("event", ability_event.get_config());
 				}
+				if(child.has_child("affect_distant")) {
+					set_affect_distant(key);
+					if(resources::gameboard && (child.has_attribute("halo_image") || child.has_attribute("overlay_image"))){
+						resources::gameboard->set_affect_distant_image();
+					}
+				}
 			}
 		}
 		const vconfig::child_list& attacks = vcfg->get_children("attack");
@@ -473,6 +507,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				for(const config& ability_event : ability.child_range("event")) {
 					events_.add_child("event", ability_event);
 				}
+				set_affect_distant(ability, key);
 			}
 		}
 		for(const config& attack : cfg.child_range("attack")) {
@@ -1098,6 +1133,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 				for(const config& ability_event : ability.child_range("event")) {
 					events.add_child("event", ability_event);
 				}
+				set_affect_distant(ability, key);
 			}
 		}
 		for(const config& attack : cfg.child_range("attack")) {
@@ -2251,6 +2287,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
 					}
+					set_affect_distant(cfg, key);
 				}
 			}
 			abilities_.append(to_append);

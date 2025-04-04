@@ -2795,6 +2795,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
@@ -2810,6 +2811,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		u->anim_comp().reset_affect_adjacent(units());
 	}
 
 	// Fire event if using the deprecated version or if the final argument is not false
@@ -2838,6 +2840,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			u->anim_comp().reset_affect_adjacent(units());
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
@@ -2900,6 +2903,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
+			u->anim_comp().reset_affect_adjacent(units());
 		}
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
@@ -2924,6 +2928,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
 		unit_ptr v = u->clone();
@@ -2956,6 +2961,9 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u = unit::create(cfg, false, vcfg);
+			if (u->get_location().valid()) {
+				u->anim_comp().reset_affect_adjacent(units());
+			}
 		}
 	}
 
@@ -2989,6 +2997,25 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	return 0;
 }
 
+namespace
+{
+	const unit_map& get_unit_map()
+	{
+		// Used if we're in the game, including during the construction of the display_context
+		if(resources::gameboard) {
+			return resources::gameboard->units();
+		}
+
+		// If we get here, we're in the scenario editor
+		assert(display::get_singleton());
+		return display::get_singleton()->context().units();
+	}
+	void reset_affect_adjacent(const unit& unit)
+	{
+		unit.anim_comp().reset_affect_adjacent(get_unit_map());
+	}
+}
+
 /**
  * Creates a unit from its WML description.
  * - Arg 1: WML table.
@@ -3000,6 +3027,9 @@ static int intf_create_unit(lua_State *L)
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u  = unit::create(cfg, true, vcfg);
 	luaW_pushunit(L, u);
+	if (u->get_location().valid()) {
+		reset_affect_adjacent(*u);
+	}
 	return 1;
 }
 
@@ -3159,6 +3189,9 @@ static int intf_transform_unit(lua_State *L)
 		utp = &utp->get_variation(m2);
 	}
 	u.advance_to(*utp);
+	if (u.get_location().valid()) {
+		reset_affect_adjacent(u);
+	}
 
 	return 0;
 }
