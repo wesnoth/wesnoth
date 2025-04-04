@@ -37,7 +37,7 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
-			bool is_queue_game,
+			int queue_type,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -614,13 +614,13 @@ public:
 		observers_.clear();
 	}
 
-	bool is_queue_game() const
+	int queue_type() const
 	{
-		return is_queue_game_;
+		return queue_type_;
 	}
-	void is_queue_game(bool is_queue_game)
+	void queue_type(int queue_type)
 	{
-		is_queue_game_ = is_queue_game;
+		queue_type_ = queue_type;
 	}
 
 private:
@@ -970,7 +970,7 @@ private:
 	int last_choice_request_id_;
 
 	/** Whether this game was created by joining a game defined client-side in an [mp_queue] */
-	bool is_queue_game_;
+	int queue_type_;
 };
 
 } // namespace wesnothd

@@ -169,6 +169,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	create.prepare_for_new_level();
 
 	mp_game_settings& params = create.get_state().mp_settings();
+	params.mp_scenario = presets["scenario"].str();
 	params.use_map_settings = true;
 	params.num_turns = presets["turn_count"].to_int(-1);
 	params.village_gold = presets["village_gold"].to_int();

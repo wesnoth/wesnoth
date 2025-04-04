@@ -26,6 +26,14 @@ namespace ng { class connect_engine; }
 /** Main entry points of multiplayer mode. */
 namespace mp
 {
+struct queue_info
+{
+	std::string scenario_id;
+	std::string queue_display_name;
+	int players_required;
+	int current_players;
+};
+
 /** Max length of a player name. */
 const std::size_t max_login_size = 20;
 
@@ -67,6 +75,9 @@ bool logged_in_as_moderator();
 
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
+
+/** Gets the list of server-side queues received on login */
+std::vector<queue_info>& get_server_queues();
 
 /** Returns the lobby_info object for the given session. */
 class lobby_info* get_lobby_info();

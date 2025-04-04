@@ -105,6 +105,8 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
+	, queue_game_scenario_id_()
+	, queue_game_server_preset_()
 {
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
@@ -653,6 +655,27 @@ void mp_lobby::pre_show()
 	listbox& tab_bar = find_widget<listbox>("games_list_tab_bar");
 	connect_signal_notify_modified(tab_bar, std::bind(&mp_lobby::tab_switch_callback, this));
 
+	// server-side queue join button
+	button* queue_join_button = find_widget<button>("join_queue", false, true);
+	connect_signal_mouse_left_click(*queue_join_button, std::bind(&mp_lobby::join_queue, this));
+
+	// server-side queues list
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	queues_listbox->clear();
+
+	for(const mp::queue_info& info : mp::get_server_queues()) {
+		widget_data data;
+		widget_item item;
+
+		item["label"] = info.queue_display_name;
+		data.emplace("queue_name", item);
+
+		item["label"] = std::to_string(info.current_players)+"/"+std::to_string(info.players_required);
+		data.emplace("queue_player_count", item);
+
+		queues_listbox->add_row(data);
+	}
+
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
@@ -686,6 +709,22 @@ void mp_lobby::open_profile_url()
 	const mp::user_info* info = player_list_.get_selected_info();
 	if(info && info->forum_id != 0) {
 		desktop::open_object(mp::get_profile_link(info->forum_id));
+	}
+}
+
+void mp_lobby::join_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		config join_server_queue;
+
+		config& queue_req = join_server_queue.add_child("join_server_queue");
+		queue_req["scenario_id"] = queue.scenario_id;
+		mp::send_to_server(join_server_queue);
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}
 }
 
@@ -757,11 +796,32 @@ void mp_lobby::process_network_data(const config& data)
 			return;
 		}
 	} else if(auto create = data.optional_child("create_game")) {
-		queue_game_scenario_id_ = create["mp_scenario"];
+		queue_game_scenario_id_ = create["mp_scenario"].str();
+		queue_game_server_preset_ = create.value().mandatory_child("game");
 		set_retval(CREATE_PRESET);
 		return;
 	} else if(auto join_game = data.optional_child("join_game")) {
 		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
+		return;
+	} else if(auto queue_update = data.optional_child("queue_update")) {
+		listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+		queues_listbox->clear();
+
+		for(mp::queue_info& info : mp::get_server_queues()) {
+			if(info.scenario_id == queue_update["scenario_id"].str()) {
+				info.current_players = queue_update["current_players"].to_int();
+			}
+			widget_data data;
+			widget_item item;
+
+			item["label"] = info.queue_display_name;
+			data.emplace("queue_name", item);
+
+			item["label"] = std::to_string(info.current_players)+"/"+std::to_string(info.players_required);
+			data.emplace("queue_player_count", item);
+
+			queues_listbox->add_row(data);
+		}
 		return;
 	}
 

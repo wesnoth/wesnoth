@@ -66,7 +66,8 @@ public:
 		CREATE_PRESET /** player clicked Join button on an [mp_queue] game, but there was no existing game to join */
 	};
 
-	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; };
+	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; }
+	const config queue_game_server_preset() const { return queue_game_server_preset_; }
 
 private:
 	void update_selected_game();
@@ -113,6 +114,8 @@ private:
 	void show_server_info();
 
 	void open_profile_url();
+
+	void join_queue();
 
 	void open_match_history();
 
@@ -176,6 +179,7 @@ private:
 	int& joined_game_id_;
 
 	std::string queue_game_scenario_id_;
+	config queue_game_server_preset_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 

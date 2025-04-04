@@ -102,7 +102,18 @@ private:
 		session_metadata(const config& cfg)
 			: is_moderator(cfg["is_moderator"].to_bool(false))
 			, profile_url_prefix(cfg["profile_url_prefix"].str())
+			, queues()
 		{
+			if(cfg.has_child("queues")) {
+				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
+					queue_info info;
+					info.scenario_id = queue["scenario_id"].str();
+					info.queue_display_name = queue["queue_display_name"].str();
+					info.players_required = queue["players_required"].to_int();
+					info.current_players = queue["current_players"].to_int();
+					queues.emplace_back(info);
+				}
+			}
 		}
 
 		/** Whether you are logged in as a server moderator. */
@@ -110,6 +121,9 @@ private:
 
 		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
 		std::string profile_url_prefix;
+
+		/** The list of server-side queues */
+		std::vector<queue_info> queues;
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
@@ -122,10 +136,10 @@ private:
 	 * Opens the MP Create screen for hosts to configure a new game.
 	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt);
+	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode(bool preset);
+	void enter_staging_mode(QUEUE_TYPE queue_type);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -151,6 +165,10 @@ private:
 
 public:
 	const session_metadata& get_session_info() const
+	{
+		return session_info;
+	}
+	session_metadata& get_session_info()
 	{
 		return session_info;
 	}
@@ -540,17 +558,19 @@ bool mp_manager::enter_lobby_mode()
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
 		std::string preset_scenario = "";
+		config server_preset;
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
 			preset_scenario = dlg.queue_game_scenario_id();
+			server_preset = dlg.queue_game_server_preset();
 		}
 
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(utils::make_optional(preset_scenario));
+				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset));
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
@@ -580,26 +600,31 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario)
+void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset)
 {
 	DBG_MP << "entering create mode";
 
-	if(preset_scenario) {
+	// if this is using pre-determined settings and the settings came from the server, use those
+	// else look for them locally
+	if(preset_scenario && server_preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
+		enter_staging_mode(SERVER_PRESET);
+	} else if(preset_scenario && !server_preset) {
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 			if(game["scenario"].str() == preset_scenario.value()) {
 				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(true);
-				break;
+				enter_staging_mode(CLIENT_PRESET);
+				return;
 			}
 		}
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode(false);
+		enter_staging_mode(NORMAL);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode(bool preset)
+void mp_manager::enter_staging_mode(QUEUE_TYPE queue_type)
 {
 	DBG_MP << "entering connect mode";
 
@@ -610,7 +635,7 @@ void mp_manager::enter_staging_mode(bool preset)
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
-		metadata->is_queue_game = preset;
+		metadata->queue_type = queue_type;
 	}
 
 	bool dlg_ok = false;
@@ -840,6 +865,15 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
+}
+
+std::vector<queue_info>& get_server_queues()
+{
+	static std::vector<queue_info> queues;
+	if(manager) {
+		return manager->get_session_info().queues;
+	}
+	return queues;
 }
 
 void send_to_server(const config& data)
