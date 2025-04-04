@@ -471,16 +471,19 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					pos.x += col_paddings[0];
 
+					const std::string& valign = row["valign"].str("center");
+					const std::string& halign = col["halign"].str("left");
+
 					// set position according to alignment keys
 					point text_pos(pos);
-					if(row["valign"] == "center" || row["valign"] == "middle") {
+					if (valign == "center" || valign == "middle") {
 						text_pos.y += (row_heights[row_idx] - cell_sizes[row_idx][col_idx].y)/2;
-					} else if(row["valign"] == "bottom") {
+					} else if (valign == "bottom") {
 						text_pos.y += row_heights[row_idx] - cell_sizes[row_idx][col_idx].y;
 					}
-					if(col["halign"] == "center" || col["halign"] == "middle") {
+					if (halign == "center" || halign == "middle") {
 						text_pos.x += (col_widths[col_idx] - cell_sizes[row_idx][col_idx].x)/2;
-					} else if(col["halign"] == "right") {
+					} else if (halign == "right") {
 						text_pos.x += col_widths[col_idx] - cell_sizes[row_idx][col_idx].x;
 					}
 
