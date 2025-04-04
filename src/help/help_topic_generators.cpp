@@ -745,7 +745,7 @@ std::string unit_topic_generator::operator()() const {
 				}
 			}
 
-			table_ss << markup::tag("row", { {"valign", "center"} }, attack_ss.str());
+			table_ss << markup::tag("row", { {"bgcolor", "table_row1"} }, attack_ss.str());
 		}
 
 		ss << markup::tag("table", table_ss.str());
