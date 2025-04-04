@@ -453,10 +453,13 @@ void server::load_config()
 		: filesystem::read_file(cfg_["tor_ip_list_path"]), '\n');
 
 	queue_info_.clear();
-	for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
-		queue_info_.emplace_back(queue["scenario_id"].str(), queue["queue_display_name"].str(), queue["players_required"].to_int(), queue.mandatory_child("game"));
+	// mp tests script doesn't have a config at all, so this child won't be here
+	if(cfg_.has_child("queues")) {
+		for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
+			queue_info_.emplace_back(queue["scenario_id"].str(), queue["queue_display_name"].str(), queue["players_required"].to_int(), queue.mandatory_child("game"));
+		}
 	}
-	utils::sort_if(queue_info_, [](queue_info a, queue_info b){return a.queue_display_name < b.queue_display_name;});
+	utils::sort_if(queue_info_, [](const queue_info& a, const queue_info& b){return a.queue_display_name < b.queue_display_name;});
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
