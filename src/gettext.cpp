@@ -560,11 +560,7 @@ bool ci_search(const std::string& s1, const std::string& s2)
 	return std::search(ls1.begin(), ls1.end(), ls2.begin(), ls2.end()) != ls1.end();
 }
 
-#ifdef __cpp_lib_span
-bool ci_search(std::span<std::string> s1, const std::string& s2)
-#else
-bool ci_search(const std::vector<std::string>& s1, const std::string& s2)
-#endif
+bool ci_search(utils::span<const std::string> s1, const std::string& s2)
 {
 	return std::any_of(s1.begin(), s1.end(), [&s2](const auto& s1) { return ci_search(s1, s2); });
 }
