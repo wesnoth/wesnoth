@@ -604,18 +604,18 @@ BOOST_AUTO_TEST_CASE( test_base64_encodings )
 		many_bytes[i] = i % 256;
 	}
 
-	BOOST_CHECK(base64::encode({empty.data(), empty.size()}).empty());
-	BOOST_CHECK_EQUAL(base64::encode({foo.data(), foo.size()}), foo_b64);
-	BOOST_CHECK_EQUAL(base64::encode({foob.data(), foob.size()}), foob_b64);
+	BOOST_CHECK(base64::encode(empty).empty());
+	BOOST_CHECK_EQUAL(base64::encode(foo), foo_b64);
+	BOOST_CHECK_EQUAL(base64::encode(foob), foob_b64);
 
 	BOOST_CHECK(base64::decode(empty_b64).empty());
 	// Not using CHECK_EQUAL because vector<uint8_t> is not printable
 	BOOST_CHECK(base64::decode(foo_b64) == foo);
 	BOOST_CHECK(base64::decode(foob_b64) == foob);
 
-	BOOST_CHECK(crypt64::encode({empty.data(), empty.size()}).empty());
-	BOOST_CHECK_EQUAL(crypt64::encode({foo.data(), foo.size()}), foo_c64);
-	BOOST_CHECK_EQUAL(crypt64::encode({foob.data(), foob.size()}), foob_c64);
+	BOOST_CHECK(crypt64::encode(empty).empty());
+	BOOST_CHECK_EQUAL(crypt64::encode(foo), foo_c64);
+	BOOST_CHECK_EQUAL(crypt64::encode(foob), foob_c64);
 
 	BOOST_CHECK(crypt64::decode(empty_c64).empty());
 	// Not using CHECK_EQUAL because vector<uint8_t> is not printable
@@ -627,8 +627,8 @@ BOOST_AUTO_TEST_CASE( test_base64_encodings )
 	BOOST_CHECK_EQUAL(crypt64::encode(0), '.');
 	BOOST_CHECK_EQUAL(crypt64::encode(63), 'z');
 
-	BOOST_CHECK(base64::decode(base64::encode({many_bytes.data(), many_bytes.size()})) == many_bytes);
-	BOOST_CHECK(crypt64::decode(crypt64::encode({many_bytes.data(), many_bytes.size()})) == many_bytes);
+	BOOST_CHECK(base64::decode(base64::encode(many_bytes)) == many_bytes);
+	BOOST_CHECK(crypt64::decode(crypt64::encode(many_bytes)) == many_bytes);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
