@@ -1,0 +1,86 @@
+name: Android CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: wesnoth/wesnoth:android
+    env:
+      API: 23
+      BUILDBASEDIR: ${{ github.WORKSPACE }}/packaging/android
+
+    steps:
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+
+      - name: Restore Wesnoth dependencies cache
+        id: restore-deps-cache
+        uses: actions/cache/restore@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          key: wesnoth-android-deps-${{ hashFiles('packaging/android/build-android-dependencies/*') }}
+          path: ${{ env.PREFIXDIR }}
+
+      - name: Download and build wesnoth dependencies
+        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+        env:
+          API: ${{ env.API }}
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+          DOWNLOADDIR: ${{ env.BUILDBASEDIR }}/download
+          BUILDDIR: ${{ env.BUILDBASEDIR }}/build
+        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppDepends;
+
+      - name: Save Wesnoth dependencies cache
+        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+        uses: actions/cache/save@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          key: ${{ steps.restore-deps-cache.outputs.cache-primary-key }}
+          path: ${{ env.PREFIXDIR }}
+          
+      - name: Upload Deps
+        uses: actions/upload-artifact@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          name: dependencies
+          path: ${{ env.PREFIXDIR }}
+
+      - name: Build Wesnoth and create APKs and AAB
+        env:
+          API: ${{ env.API }}
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleDebug bundleDebug;
+
+      - name: Upload APK (armeabi-v7a)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-armeabi-v7a.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk"
+
+      - name: Upload APK (arm64-v8a)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-arm64-v8a.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk"
+
+      - name: Upload APK (x86)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-x86.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-x86-debug.apk"
+
+      - name: Upload APK (x86_64)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-x86_64.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-x86_64-debug.apk"
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth.aab"
+          path: "packaging/android/app/build/outputs/bundle/debug/app-debug.aab"

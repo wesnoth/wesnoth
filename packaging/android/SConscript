@@ -1,0 +1,38 @@
+# vi: syntax=python:et:ts=4
+
+Import("*")
+
+if not env.get("AAPT"):
+    Return()
+
+resources = Glob("res/*/*")
+compiled_resources = []
+compiled = []
+for resource in resources:
+    flat = str(resource.dir.name) + "_" + resource.name
+    if flat.endswith(".xml"):
+        flat = flat.rstrip(".xml") + ".arsc"
+    compiled_resources.append("compiled/" + flat + ".flat")
+
+for target, source in zip(compiled_resources, resources):
+    compiled += env.AaptCompile(target, source)
+
+apk = env.AaptLink(["base.apk", "gen/org/wesnoth/Wesnoth/R.java"], ["AndroidManifest.xml"] + compiled, AAPTJAVADIR = Dir("gen"))
+
+classes = env.Java("classes", "java", JAVASOURCEPATH=Dir("gen"))
+bytecode = env.Dex("classes.dex", classes, DEXCLASSPATH=Dir("classes"))
+
+def add_libraries_to_archive(target, source, env):
+    from zipfile import ZipFile
+    with ZipFile(target[0].path, 'a') as apk:
+        for library in source[2:]:
+            apk.write(library.path, env.subst("lib/$ANDROID_ABI/") + library.name)
+
+unaligned = env.Command("wesnoth.apk.unaligned", [apk[0]] + bytecode + env.Glob("$prefix/lib/*.so*") + ["$ndkdir/sources/cxx-stl/llvm-libc++/libs/$ANDROID_ABI/libc++_shared.so", "lib/libmain.so"], [
+    "cp ${SOURCES[0]} $TARGET && zip -j $TARGET ${SOURCES[1]}",
+    add_libraries_to_archive
+    ])
+
+debug_apk = env.Command("wesnoth-debug.apk", unaligned, "zipalign -p 4 $SOURCE $TARGET")
+
+Alias("apk", debug_apk)
