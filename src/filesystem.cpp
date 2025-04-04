@@ -1114,13 +1114,12 @@ std::vector<uint8_t> read_file_binary(const std::string& fname)
 std::string read_file_as_data_uri(const std::string& fname)
 {
 	std::vector<uint8_t> file_contents = filesystem::read_file_binary(fname);
-	utils::byte_string_view view = {file_contents.data(), file_contents.size()};
 	std::string name = filesystem::base_name(fname);
 	std::string img = "";
 
 	if(name.find(".") != std::string::npos) {
 		// convert to web-safe base64, since the + symbols will get stripped out when reading this back in later
-		img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(view);
+		img = "data:image/" + name.substr(name.find(".") + 1) + ";base64," + base64::encode(file_contents);
 	}
 
 	return img;
