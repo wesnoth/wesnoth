@@ -530,26 +530,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			x = origin.x;
 
-		} else if(key == "break" || key == "br") {
-			if(curr_item == nullptr) {
-				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item, pos, init_width);
-				new_text_block = false;
-			}
-
-			add_text_with_attribute(*curr_item, "\n");
-
-			x = origin.x;
-			is_image = false;
-			img_size = point(0,0);
-
-			DBG_GUI_RL << "linebreak";
-
-			if(!is_image) {
-				new_text_block = true;
-			}
-			is_text = false;
-
 		} else {
 			std::string line = child["text"];
 
