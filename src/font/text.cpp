@@ -29,6 +29,7 @@
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
+#include "log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/preferences.hpp"
@@ -43,6 +44,22 @@ static lg::log_domain log_font("font");
 
 namespace font
 {
+
+namespace
+{
+void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
+{
+	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
+	double dx, dy;
+
+	cairo_get_current_point(cr, &dx, &dy);
+	dy -= cairo_image_surface_get_height(img);
+	cairo_set_source_surface(cr, img, dx, dy);
+	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
+	cairo_fill(cr);
+}
+}
+
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
@@ -73,6 +90,7 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
+
 	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
@@ -82,6 +100,8 @@ pango_text::pango_text()
 
 	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
+
+	pango_cairo_context_set_shape_renderer(context_.get(), render_image_shape, nullptr, nullptr);
 }
 
 texture pango_text::render_texture(const SDL_Rect& viewport)
@@ -308,7 +328,7 @@ void pango_text::clear_attributes()
 	pango_layout_set_attributes(layout_.get(), nullptr);
 }
 
-void pango_text::apply_attributes(const font::attribute_list& attrs)
+void pango_text::apply_attributes(const font::attribute_list& attrs) const
 {
 	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
 		attrs.splice_into(current_attrs);
@@ -571,12 +591,9 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	pango_layout_set_font_description(&layout, font.get());
 
 	if(font_style_ & pango_text::STYLE_UNDERLINE) {
-		PangoAttrList *attribute_list = pango_attr_list_new();
-		pango_attr_list_insert(attribute_list
-			, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
-
-		pango_layout_set_attributes(&layout, attribute_list);
-		pango_attr_list_unref(attribute_list);
+		font::attribute_list list;
+		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+		apply_attributes(list);
 	}
 
 	int maximum_width = 0;

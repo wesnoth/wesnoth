@@ -248,7 +248,7 @@ private:
 	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
 
 	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
-	void add_attribute(config& curr_item, const std::string& attr_name, size_t start = 0, size_t end = 0, const std::string& extra_data = "");
+	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", size_t start = 0, size_t end = 0);
 	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
 
 	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
@@ -260,7 +260,6 @@ private:
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
 
 	size_t get_split_location(std::string_view text, const point& pos);
-	std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
@@ -275,13 +274,6 @@ private:
 	point get_xy_from_offset(const unsigned offset) const
 	{
 		return font::get_text_renderer().get_cursor_position(offset);
-	}
-
-	// A correction to allow inline image to stay at the same height
-	// as the text following it.
-	unsigned baseline_correction(unsigned img_height) {
-		unsigned text_height = font::get_text_renderer().get_size().y;
-		return (text_height > img_height) ? (text_height - img_height)/2 : 0;
 	}
 
 	point calculate_best_size() const override { return size_; };
