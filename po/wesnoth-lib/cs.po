@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
-"PO-Revision-Date: 2025-02-22 10:44+0100\n"
+"PO-Revision-Date: 2025-03-20 20:17+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -7112,10 +7112,8 @@ msgid "$title ($count/$total)"
 msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed: Gold"
 msgid "Completed $count/$total"
-msgstr "Dokončeno: zlato"
+msgstr "Dokončeno $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -9046,10 +9044,8 @@ msgid "Save Map As"
 msgstr "Uložit mapu jako"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Vybrat testovací scénář"
+msgstr "Převést na scénář"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9574,9 +9570,6 @@ msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."
-
-#~ msgid "Completed"
-#~ msgstr "Dokončeno"
 
 #~ msgid "Hide"
 #~ msgstr "Skrýt"
