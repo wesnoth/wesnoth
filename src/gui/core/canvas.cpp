@@ -391,7 +391,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 namespace
 {
 /** Populates the attribute list from the given config child range. */
-auto parse_attributes(const config::const_child_itors& range)
+auto parse_attributes(font::pango_text& text, const config::const_child_itors& range)
 {
 	// TODO: most of the time this will be empty, unless you're using rich_label.
 	// It's a lot of memory allocations to always have a valid object here...
@@ -405,8 +405,14 @@ auto parse_attributes(const config::const_child_itors& range)
 			continue;
 		}
 
-		const unsigned start = attr["start"].to_int(0);
-		const unsigned end = attr["end"].to_int(/* text.size() */); // TODO: do we need to restore this default?
+		const unsigned start = text.get_byte_index(attr["start"].to_int(PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING));
+		const unsigned end = text.get_byte_index(attr["end"].to_int(PANGO_ATTR_INDEX_TO_TEXT_END));
+
+		// Attributes with start == end set won't do anything, so skip
+		if (start == end) {
+			WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
+			continue;
+		}
 
 		if (name == "color" || name == "fgcolor" || name == "foreground") {
 			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
@@ -458,7 +464,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
-	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
+	, text_attributes_(cfg.child_range("attribute"))
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -488,10 +494,6 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int highlight_start = highlight_start_(variables);
 	const int highlight_end = highlight_end_(variables);
 
-	if(highlight_start != highlight_end) {
-		add_attribute_bg_color(text_attributes_, highlight_start, highlight_end, highlight_color_(variables));
-	}
-
 	font::pango_text& text_renderer = font::get_text_renderer();
 	text_renderer.clear_attributes();
 
@@ -514,7 +516,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_add_outline(outline_(variables));
 
 	// Do this last so it can merge with attributes from markup
-	text_renderer.apply_attributes(text_attributes_);
+	auto attr_list = parse_attributes(text_renderer, text_attributes_);
+	if(highlight_start != highlight_end) {
+		add_attribute_bg_color(attr_list, highlight_start, highlight_end, highlight_color_(variables));
+	}
+	text_renderer.apply_attributes(attr_list);
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();

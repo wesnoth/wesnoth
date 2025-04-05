@@ -130,9 +130,9 @@ point rich_label::get_image_size(config& img_cfg) const
 std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text)
 {
 	auto& attr = curr_item["text"];
-	size_t start = attr.str().size();
+	size_t start = utf8::size(attr.str());
 	attr = attr.str() + text;
-	size_t end = attr.str().size();
+	size_t end = utf8::size(attr.str());
 	return { start, end };
 }
 
