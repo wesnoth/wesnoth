@@ -158,6 +158,8 @@ public:
 	 */
 	int get_max_glyph_height() const;
 
+	unsigned get_byte_index(const unsigned column, const unsigned line = 0) const;
+
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
