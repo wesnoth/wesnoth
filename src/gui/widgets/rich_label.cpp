@@ -44,6 +44,8 @@
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
 
+// Enable this to draw borders around links.
+// Useful for debugging misplaced links.
 #define LINK_DEBUG_BORDER false
 
 namespace gui2
@@ -276,7 +278,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	bool is_text = false;
 	bool is_image = false;
-	bool is_float = false;
 	bool wrap_mode = false;
 	bool new_text_block = false;
 
@@ -329,14 +330,22 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			w = std::max(w, x);
 
-			is_float = true;
 			is_image = true;
 			is_text = false;
 			new_text_block = true;
 
-			DBG_GUI_RL << "image: src=" << child["src"] << ", size=" << img_size;
-			DBG_GUI_RL << "wrap mode: " << wrap_mode << ", floating: " << is_float;
+			DBG_GUI_RL << key << ": src=" << child["src"] << ", size=" << img_size;
+			DBG_GUI_RL << "wrap turned on.";
+		} else if(key == "clear") {
+			// Moves the text below the preceding floating image and turns off wrapping
+			wrap_mode = false;
+			prev_blk_height += float_size.y;
+			pos.y += float_size.y;
+			float_size = point(0, 0);
+			pos.x = origin.x;
 
+			DBG_GUI_RL << key;
+			DBG_GUI_RL << "wrap turned off";
 		} else if(key == "table") {
 			if(curr_item == nullptr) {
 				curr_item = &(text_dom.add_child("text"));
@@ -528,14 +537,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				new_text_block = false;
 			}
 
-			// TODO correct height update
-			if(is_image && !is_float) {
-				prev_blk_height += text_height + padding_;
-				text_height = 0;
-				pos = point(origin.x, prev_blk_height);
-			} else {
-				add_text_with_attribute(*curr_item, "\n");
-			}
+			add_text_with_attribute(*curr_item, "\n");
 
 			x = origin.x;
 			is_image = false;
