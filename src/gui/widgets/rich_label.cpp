@@ -297,7 +297,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			prev_blk_height += text_height;
 			text_height = 0;
 
-			std::string align = child["align"].str("left");
+			const std::string& align = child["align"].str("left");
 
 			curr_item = &(text_dom.add_child("image"));
 			(*curr_item)["name"] = child["src"];
@@ -322,9 +322,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 			(*curr_item)["x"] = float_pos.x;
 			(*curr_item)["y"] = pos.y + float_pos.y;
 
-			x = (align == "left") ? float_size.x : 0;
 			float_size.x = curr_img_size.x + padding_;
 			float_size.y += curr_img_size.y + padding_;
+
+			x = ((align == "left") ? float_size.x : 0);
+			pos.x += ((align == "left") ? float_size.x : 0);
 
 			wrap_mode = true;
 
