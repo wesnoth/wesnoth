@@ -139,7 +139,7 @@ private:
 	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode(QUEUE_TYPE queue_type);
+	void enter_staging_mode(cssv::QUEUE_TYPE queue_type);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -608,23 +608,23 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario,
 	// else look for them locally
 	if(preset_scenario && server_preset) {
 		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(SERVER_PRESET);
+		enter_staging_mode(cssv::QUEUE_TYPE::SERVER_PRESET);
 	} else if(preset_scenario && !server_preset) {
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 			if(game["scenario"].str() == preset_scenario.value()) {
 				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(CLIENT_PRESET);
+				enter_staging_mode(cssv::QUEUE_TYPE::CLIENT_PRESET);
 				return;
 			}
 		}
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode(NORMAL);
+		enter_staging_mode(cssv::QUEUE_TYPE::NORMAL);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode(QUEUE_TYPE queue_type)
+void mp_manager::enter_staging_mode(cssv::QUEUE_TYPE queue_type)
 {
 	DBG_MP << "entering connect mode";
 

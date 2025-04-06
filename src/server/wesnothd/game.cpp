@@ -77,7 +77,7 @@ int game::db_id_num = 1;
 
 game::game(wesnothd::server& server, player_connections& player_connections,
 		player_iterator host,
-		int queue_type,
+		cssv::QUEUE_TYPE queue_type,
 		const std::string& name,
 		bool save_replays,
 		const std::string& replay_save_path)

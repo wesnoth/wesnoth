@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "client_server_shared_values.hpp"
 #include "mt_rng.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
@@ -37,7 +38,7 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
-			int queue_type,
+			cssv::QUEUE_TYPE queue_type,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -614,11 +615,11 @@ public:
 		observers_.clear();
 	}
 
-	int queue_type() const
+	cssv::QUEUE_TYPE queue_type() const
 	{
 		return queue_type_;
 	}
-	void queue_type(int queue_type)
+	void queue_type(cssv::QUEUE_TYPE queue_type)
 	{
 		queue_type_ = queue_type;
 	}
@@ -969,8 +970,8 @@ private:
 	 */
 	int last_choice_request_id_;
 
-	/** Whether this game was created by joining a game defined client-side in an [mp_queue] */
-	int queue_type_;
+	/** Whether this game was created manually or by joining a queue */
+	cssv::QUEUE_TYPE queue_type_;
 };
 
 } // namespace wesnothd

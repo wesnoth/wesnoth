@@ -175,7 +175,7 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
-	std::vector<queue_info> queue_info_;
+	std::map<std::string, queue_info> queue_info_;
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;
