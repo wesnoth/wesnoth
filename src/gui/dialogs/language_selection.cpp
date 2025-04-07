@@ -104,7 +104,7 @@ void language_selection::pre_show()
 				{ "use_markup", "true" }
 			}},
 			{ "translated_total", {
-				{ "label", lang.language },
+				{ "label", markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%") },
 				{ "use_markup", "true" }
 			}},
 		});
