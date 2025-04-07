@@ -210,6 +210,8 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if (it == units.end() || it->incapacitated())
 				continue;
+			//assert that the checked adjacent unit is never u_,
+			//even if this is highly improbable.
 			if ( &*it == &u_ )
 				continue;
 			it->anim_comp().set_standing();
