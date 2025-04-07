@@ -24,7 +24,6 @@
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
 #include "terrain/type_data.hpp"
