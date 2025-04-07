@@ -156,10 +156,8 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text,
 	return len;
 }
 
-point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
+unsigned pango_text::get_byte_index(const unsigned offset, const unsigned line) const
 {
-	recalculate();
-
 	// Determing byte offset
 	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
 		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
@@ -168,7 +166,7 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 	if(line != 0) {
 
 		if(static_cast<int>(line) >= pango_layout_get_line_count(layout_.get())) {
-			return point(0, 0);
+			return 0;
 		}
 
 		for(std::size_t i = 0; i < line; ++i) {
@@ -177,28 +175,32 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 	}
 
 	// Go the wanted column.
-	for(std::size_t i = 0; i < column; ++i) {
+	for(std::size_t i = 0; i < offset; ++i) {
 		if(!pango_layout_iter_next_char(itor.get())) {
 			// It seems that the documentation is wrong and causes and off by
 			// one error... the result should be false if already at the end of
 			// the data when started.
-			if(i + 1 == column) {
+			if(i + 1 == offset) {
 				break;
 			}
 			// Beyond data.
-			return point(0, 0);
+			return 0;
 		}
 	}
 
 	// Get the byte offset
-	const int offset = pango_layout_iter_get_index(itor.get());
+	return pango_layout_iter_get_index(itor.get());
+}
 
-	return get_cursor_pos_from_index(offset);
+point pango_text::get_cursor_position(const unsigned offset, const unsigned line) const
+{
+	recalculate();
+	return get_cursor_pos_from_index(get_byte_index(offset, line));
 }
 
 point pango_text::get_cursor_pos_from_index(const unsigned offset) const
 {
-	// Convert the byte offset in a position.
+	// Convert the byte offset to a position.
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
 

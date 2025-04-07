@@ -159,22 +159,35 @@ public:
 	int get_max_glyph_height() const;
 
 	/**
+	 * Given a character index and optionally the starting line,
+	 * returns the corresponding byte index.
+	 * @param offset              The character index of the cursor position.
+	 *                            Can be bigger than the line, in which case it
+	 *                            spills over to the next line and so on.
+	 * @param line                The line from which the offset counting should start.
+	 *
+	 * @returns                   The corresponding byte index.
+	 */
+	unsigned get_byte_index(const unsigned offset, const unsigned line = 0) const;
+
+	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column character index of the cursor.
-	 * @param line                The line character index of the cursor.
+	 * @param offset              The character index of the cursor position.
+	 *                            Can be bigger than the line, in which case it
+	 *                            spills over to the next line and so on.
+	 * @param line                The line from which the offset counting should start.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
 	 *                            returned.
 	 */
-	point get_cursor_position(
-		const unsigned column, const unsigned line = 0) const;
+	point get_cursor_position(const unsigned offset, const unsigned line = 0) const;
 
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param offset              The column byte index of the cursor.
+	 * @param offset              The byte index corresponding to the cursor position.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
