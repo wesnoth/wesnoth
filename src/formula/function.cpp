@@ -411,7 +411,7 @@ DEFINE_WFL_FUNCTION(substring, 2, 3)
 			offset = std::max(0, offset - size + 1);
 		}
 
-		return variant(result.substr(offset, utf8::index(result, offset + size)));
+		return variant(result.substr(offset, size));
 	}
 
 	return variant(result.substr(offset));
@@ -443,7 +443,7 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 			offset = std::max(0, offset - size + 1);
 		}
 
-		return variant(result.replace(offset, utf8::index(result, offset + size), replacement));
+		return variant(result.replace(offset, size, replacement));
 	}
 
 	return variant(result.replace(offset, std::string::npos, replacement));
@@ -494,6 +494,13 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
 	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
+}
+
+DEFINE_WFL_FUNCTION(byte_index, 2, 2)
+{
+	return variant(utf8::index(
+		args()[0]->evaluate(variables, fdb).as_string(),
+		args()[1]->evaluate(variables, fdb).as_int()));
 }
 
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
@@ -1641,6 +1648,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(starts_with);
 		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(byte_index);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
 		DECLARE_WFL_FUNCTION(cos);
