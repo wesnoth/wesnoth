@@ -332,7 +332,7 @@ public:
 
 	pango_text& set_add_outline(bool do_add);
 
-	pango_text& set_line_spacing(const int line_spacing)
+	pango_text& set_line_spacing(int line_spacing)
 	{
 		pango_layout_set_line_spacing(layout_.get(), line_spacing);
 		return *this;
