@@ -405,8 +405,14 @@ auto parse_attributes(const config::const_child_itors& range)
 			continue;
 		}
 
-		const unsigned start = attr["start"].to_int(0);
-		const unsigned end = attr["end"].to_int(/* text.size() */); // TODO: do we need to restore this default?
+		const unsigned start = attr["start"].to_int(PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING);
+		const unsigned end = attr["end"].to_int(PANGO_ATTR_INDEX_TO_TEXT_END);
+
+		// Attributes with start == end set won't do anything, so skip
+		if (start == end) {
+			WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
+			continue;
+		}
 
 		if (name == "color" || name == "fgcolor" || name == "foreground") {
 			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
