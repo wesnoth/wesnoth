@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -410,7 +411,7 @@ DEFINE_WFL_FUNCTION(substring, 2, 3)
 			offset = std::max(0, offset - size + 1);
 		}
 
-		return variant(result.substr(offset, size));
+		return variant(result.substr(offset, utf8::index(result, offset + size)));
 	}
 
 	return variant(result.substr(offset));
@@ -442,7 +443,7 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 			offset = std::max(0, offset - size + 1);
 		}
 
-		return variant(result.replace(offset, size, replacement));
+		return variant(result.replace(offset, utf8::index(result, offset + size), replacement));
 	}
 
 	return variant(result.replace(offset, std::string::npos, replacement));
