@@ -339,7 +339,7 @@ public:
 	}
 
 	void clear_attributes();
-	void apply_attributes(const font::attribute_list& attrs) const;
+	void apply_attributes(const font::attribute_list& attrs);
 
 private:
 

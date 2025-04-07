@@ -330,7 +330,7 @@ void pango_text::clear_attributes()
 	pango_layout_set_attributes(layout_.get(), nullptr);
 }
 
-void pango_text::apply_attributes(const font::attribute_list& attrs) const
+void pango_text::apply_attributes(const font::attribute_list& attrs)
 {
 	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
 		attrs.splice_into(current_attrs);
@@ -592,12 +592,6 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
 	pango_layout_set_font_description(&layout, font.get());
 
-	if(font_style_ & pango_text::STYLE_UNDERLINE) {
-		font::attribute_list list;
-		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
-		apply_attributes(list);
-	}
-
 	int maximum_width = 0;
 	if(characters_per_line_ != 0) {
 		PangoFont* f = pango_font_map_load_font(
@@ -766,6 +760,12 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 		foreground_color_.b / 255.0,
 		foreground_color_.a / 255.0
 	);
+
+	if(font_style_ & pango_text::STYLE_UNDERLINE) {
+		font::attribute_list list;
+		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+		apply_attributes(list);
+	}
 
 	pango_cairo_show_layout(cr, &layout);
 }
