@@ -65,9 +65,7 @@ struct symbol_table
 };
 
 //table of strings which are displayed to the user. Maps ids -> text.
-//this table should be consulted whenever something is to be
-//displayed on screen.
-extern inline auto string_table = symbol_table{};
+inline auto string_table = symbol_table{};
 
 bool& time_locale_correct();
 
