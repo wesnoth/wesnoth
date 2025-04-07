@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -493,6 +494,13 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
 	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
+}
+
+DEFINE_WFL_FUNCTION(byte_index, 2, 2)
+{
+	return variant(utf8::index(
+		args()[0]->evaluate(variables, fdb).as_string(),
+		args()[1]->evaluate(variables, fdb).as_int()));
 }
 
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
@@ -1640,6 +1648,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(starts_with);
 		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(byte_index);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
 		DECLARE_WFL_FUNCTION(cos);
