@@ -210,6 +210,9 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if (it == units.end() || it->incapacitated())
 				continue;
+			//for the -very unlikely- case where the unit is adjacent to itself,
+			//it is advisable to avoid the standing animation being applied to it
+			//at the risk of disrupting the animation of the action it performs
 			if ( &*it == &u_ )
 				continue;
 			it->anim_comp().set_standing();
