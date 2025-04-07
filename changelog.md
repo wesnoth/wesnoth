@@ -12,7 +12,7 @@
 ### Units
 ### User interface
 ### WML Engine
-   * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-codepoint characters
+   * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-byte characters
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.10
