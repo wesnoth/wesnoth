@@ -243,14 +243,6 @@ public:
 	const t_translation::ter_list& get_terrain_list() const;
 
 private:
-
-	/**
-	 * Reads the header of a map which is saved in the deprecated map_data format.
-	 *
-	 * @param data		          The mapdata to load.
-	 */
-	int read_header(const std::string& data);
-
 	std::shared_ptr<terrain_type_data> tdata_;
 
 protected:
