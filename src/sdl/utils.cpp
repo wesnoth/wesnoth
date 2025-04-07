@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cstring>
+#include "utils/span.hpp"
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -402,26 +403,22 @@ void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg) >> 0;
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel >> 0;
 
 				r = std::clamp(static_cast<int>(r) + red, 0, 255);
 				g = std::clamp(static_cast<int>(g) + green, 0, 255);
 				b = std::clamp(static_cast<int>(b) + blue, 0, 255);
 
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -430,17 +427,15 @@ void greyscale_image(surface& nsurf)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 				//const uint8_t avg = (red+green+blue)/3;
 
 				// Use the correct formula for RGB to grayscale conversion.
@@ -452,10 +447,8 @@ void greyscale_image(surface& nsurf)
 					150 * static_cast<uint16_t>(g) +
 					29  * static_cast<uint16_t>(b)  ) / 256);
 
-				*beg = (alpha << 24) | (avg << 16) | (avg << 8) | avg;
+				pixel = (alpha << 24) | (avg << 16) | (avg << 8) | avg;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -464,27 +457,23 @@ void monochrome_image(surface& nsurf, const int threshold)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b, result;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 
 				// first convert the pixel to grayscale
 				// if the resulting value is above the threshold make it black
 				// else make it white
 				result = static_cast<uint8_t>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
 
-				*beg = (alpha << 24) | (result << 16) | (result << 8) | result;
+				pixel = (alpha << 24) | (result << 16) | (result << 8) | result;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -493,17 +482,15 @@ void sepia_image(surface& nsurf)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 
 				// this is the formula for applying a sepia effect
 				// that can be found on various web sites
@@ -512,10 +499,8 @@ void sepia_image(surface& nsurf)
 				uint8_t outGreen = std::min(255, static_cast<int>((r * 0.349) + (g * 0.686) + (b * 0.168)));
 				uint8_t outBlue = std::min(255, static_cast<int>((r * 0.272) + (g * 0.534) + (b * 0.131)));
 
-				*beg = (alpha << 24) | (outRed << 16) | (outGreen << 8) | (outBlue);
+				pixel = (alpha << 24) | (outRed << 16) | (outGreen << 8) | (outBlue);
 			}
-
-			++beg;
 		}
 	}
 }
@@ -524,17 +509,15 @@ void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, 
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b, newR, newG, newB;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 
 				// invert he channel only if its value is greater than the supplied threshold
 				// this can be used for solarization effects
@@ -544,10 +527,8 @@ void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, 
 				newG = g > thresholdG ? 255 - g : g;
 				newB = b > thresholdB ? 255 - b : b;
 
-				*beg = (alpha << 24) | (newR << 16) | (newG << 8) | (newB);
+				pixel = (alpha << 24) | (newR << 16) | (newG << 8) | (newB);
 			}
-
-			++beg;
 		}
 	}
 }
@@ -556,15 +537,11 @@ void alpha_to_greyscale(surface& nsurf)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
-			*beg = (0xff << 24) | (alpha << 16) | (alpha << 8) | alpha;
-
-			++beg;
+			pixel = (0xff << 24) | (alpha << 16) | (alpha << 8) | alpha;
 		}
 	}
 }
@@ -573,14 +550,9 @@ void wipe_alpha(surface& nsurf)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-
-			*beg = 0xff000000 | *beg;
-
-			++beg;
+		for(auto& pixel : lock.pixel_span()) {
+			pixel = 0xff000000 | pixel;
 		}
 	}
 }
@@ -596,22 +568,19 @@ void shadow_image(surface& surf, int scale)
 
 	{
 		surface_lock lock(surf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + surf->w*surf->h;
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				// increase alpha and color in black (RGB=0)
 				// with some stupid optimization for handling maximum values
-				if (alpha < 255/4)
-					*beg = (alpha*4) << 24;
-				else
-					*beg = 0xFF000000; // we hit the maximum
+				if(alpha < 255 / 4) {
+					pixel = (alpha * 4) << 24;
+				} else {
+					pixel = 0xFF000000; // we hit the maximum
+				}
 			}
-
-			++beg;
 		}
 	}
 }
@@ -620,17 +589,15 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t red, green, blue, newRed, newGreen, newBlue, newAlpha;
-				red = (*beg) >> 16;
-				green = (*beg) >> 8;
-				blue = (*beg);
+				red = pixel >> 16;
+				green = pixel >> 8;
+				blue = pixel;
 
 				switch (r) {
 					case RED:
@@ -700,10 +667,8 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 						return;
 				}
 
-				*beg = (newAlpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
+				pixel = (newAlpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -718,24 +683,20 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	}
 
 	surface_lock lock(nsurf);
-	uint32_t* beg = lock.pixels();
-	uint32_t* end = beg + nsurf.area();
 
-	while(beg != end) {
-		uint8_t alpha = (*beg) >> 24;
+	for(auto& pixel : lock.pixel_span()) {
+		uint8_t alpha = pixel >> 24;
 
 		// Don't recolor invisible pixels.
 		if(alpha) {
 			// Palette use only RGB channels, so remove alpha
-			uint32_t oldrgb = (*beg) | 0xFF000000;
+			uint32_t oldrgb = pixel | 0xFF000000;
 
 			auto i = map_rgb.find(color_t::from_argb_bytes(oldrgb));
 			if(i != map_rgb.end()) {
-				*beg = (alpha << 24) | (i->second.to_argb_bytes() & 0x00FFFFFF);
+				pixel = (alpha << 24) | (i->second.to_argb_bytes() & 0x00FFFFFF);
 			}
 		}
-
-		++beg;
 	}
 }
 
@@ -743,27 +704,23 @@ void brighten_image(surface& nsurf, int32_t amount)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
 		if (amount < 0) amount = 0;
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 
 				r = std::min<unsigned>(fixed_point_multiply(r, amount),255);
 				g = std::min<unsigned>(fixed_point_multiply(g, amount),255);
 				b = std::min<unsigned>(fixed_point_multiply(b, amount),255);
 
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -781,23 +738,19 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t alpha = pixel >> 24;
 
 			if(alpha) {
 				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
+				r = pixel >> 16;
+				g = pixel >> 8;
+				b = pixel;
 
 				alpha = uint8_t(std::clamp(static_cast<int>(alpha) + amount, 0, 255));
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
-
-			++beg;
 		}
 	}
 }
@@ -1275,8 +1228,6 @@ void blend_surface(surface& nsurf, const double amount, const color_t color)
 {
 	if(nsurf) {
 		surface_lock lock(nsurf);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
 
 		uint16_t ratio = amount * 256;
 		const uint16_t red   = ratio * color.r;
@@ -1284,15 +1235,13 @@ void blend_surface(surface& nsurf, const double amount, const color_t color)
 		const uint16_t blue  = ratio * color.b;
 		ratio = 256 - ratio;
 
-		while(beg != end) {
-			uint8_t a = static_cast<uint8_t>(*beg >> 24);
-			uint8_t r = (ratio * static_cast<uint8_t>(*beg >> 16) + red)   >> 8;
-			uint8_t g = (ratio * static_cast<uint8_t>(*beg >> 8)  + green) >> 8;
-			uint8_t b = (ratio * static_cast<uint8_t>(*beg)       + blue)  >> 8;
+		for(auto& pixel : lock.pixel_span()) {
+			uint8_t a = static_cast<uint8_t>(pixel >> 24);
+			uint8_t r = (ratio * static_cast<uint8_t>(pixel >> 16) + red)   >> 8;
+			uint8_t g = (ratio * static_cast<uint8_t>(pixel >> 8)  + green) >> 8;
+			uint8_t b = (ratio * static_cast<uint8_t>(pixel)       + blue)  >> 8;
 
-			*beg = (a << 24) | (r << 16) | (g << 8) | b;
-
-			++beg;
+			pixel = (a << 24) | (r << 16) | (g << 8) | b;
 		}
 	}
 }

@@ -16,6 +16,7 @@
 
 #include "sdl/rect.hpp"
 #include "utils/const_clone.hpp"
+#include "utils/span.hpp"
 
 #include <SDL2/SDL.h>
 
@@ -87,7 +88,7 @@ public:
 	surface clone() const;
 
 	/** Total area of the surface in square pixels. */
-	int area() const
+	std::size_t area() const
 	{
 		return surface_ ? surface_->w * surface_->h : 0;
 	}
@@ -143,7 +144,15 @@ public:
 		}
 	}
 
-	pixel_t* pixels() const { return reinterpret_cast<pixel_t*>(surface_->pixels); }
+	pixel_t* pixels() const
+	{
+		return reinterpret_cast<pixel_t*>(surface_->pixels);
+	}
+
+	utils::span<pixel_t> pixel_span() const
+	{
+		return { pixels(), surface_.area() };
+	}
 
 private:
 	T& surface_;
