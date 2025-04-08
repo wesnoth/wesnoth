@@ -230,6 +230,8 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		}
 	}
 
+	new_unit.set_affect_distant_max_radius(loc);
+
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
 	if (fire_event && resources::lua_kernel != nullptr) {
 		resources::game_events->pump().fire("unit_placed", loc);
