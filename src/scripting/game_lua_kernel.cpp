@@ -2810,6 +2810,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		u->set_affect_distant_max_radius(loc);
 		u->anim_comp().reset_affect_adjacent(units());
 	}
 
