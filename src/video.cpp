@@ -30,6 +30,7 @@
 #include "game_version.hpp"
 #endif
 
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h> // SDL_Texture
 
 #include <cassert>

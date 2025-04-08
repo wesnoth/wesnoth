@@ -14,106 +14,49 @@
 
 #pragma once
 
-#include "sdl/rect.hpp"
 #include "utils/const_clone.hpp"
 #include "utils/span.hpp"
 
-#include <SDL2/SDL.h>
+#include <SDL2/SDL_surface.h>
 
 #include <ostream>
 
 class surface
 {
 public:
-	surface() : surface_(nullptr)
-	{}
-
+	surface() = default;
 	surface(SDL_Surface* surf);
 
 	/** Allocates a new surface with the given dimensions. */
 	surface(int w, int h);
 
-	surface(const surface& s) : surface_(s.get())
-	{
-		add_surface_ref(surface_);
-	}
+	surface(const surface& s);
+	surface(surface&& s) noexcept;
 
-	surface(surface&& s) noexcept : surface_(s.get())
-	{
-		s.surface_ = nullptr;
-	}
+	~surface();
 
-	~surface()
-	{
-		free_surface();
-	}
-
-	surface& operator=(const surface& s)
-	{
-		assign_surface_internal(s.get());
-		return *this;
-	}
-
-	surface& operator=(surface&& s) noexcept
-	{
-		free_surface();
-		surface_ = s.surface_;
-		s.surface_ = nullptr;
-		return *this;
-	}
+	surface& operator=(const surface& s);
+	surface& operator=(surface&& s) noexcept;
 
 	/**
-	 * Check that the surface is neutral bpp 32.
+	 * Creates a new, duplicate surface in memory using the 'neutral' pixel format.
 	 *
-	 * The surface may have an empty alpha channel.
-	 *
-	 * @returns                       The status @c true if neutral, @c false if not.
-	 */
-	bool is_neutral() const;
-
-	/**
-	 * Converts this surface to a neutral format if it is not already.
-	 *
-	 * @returns                       A reference to this object for chaining convenience.
-	 */
-	surface& make_neutral();
-
-	/**
-	 * Makes a copy of this surface. The copy will be in the 'neutral' pixel format.
-	 *
-	 * Note this is creates a new, duplicate surface in memory. Making a copy of this
-	 * 'surface' object will *not* duplicate the surface itself since we only hold a
-	 * pointer to the actual surface.
+	 * @note Making a copy of a surface object does *not* duplicate its pixel data,
+	 * since we only hold a pointer to the actual buffer. For a true deep copy, use
+	 * this method.
 	 */
 	surface clone() const;
 
 	/** Total area of the surface in square pixels. */
-	std::size_t area() const
-	{
-		return surface_ ? surface_->w * surface_->h : 0;
-	}
+	std::size_t area() const;
 
 	operator SDL_Surface*() const { return surface_; }
 
 	SDL_Surface* get() const { return surface_; }
-
 	SDL_Surface* operator->() const { return surface_; }
 
 private:
-	static void add_surface_ref(SDL_Surface* surf)
-	{
-		if(surf) {
-			++surf->refcount;
-		}
-	}
-
-	void assign_surface_internal(SDL_Surface* surf);
-
-	void free_surface();
-
-	SDL_Surface* surface_;
-
-	static const SDL_PixelFormat neutral_pixel_format;
+	SDL_Surface* surface_{};
 };
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);

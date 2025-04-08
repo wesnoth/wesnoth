@@ -18,6 +18,7 @@
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 
+#include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_render.h>
 
 namespace sdl

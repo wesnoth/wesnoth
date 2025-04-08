@@ -24,6 +24,8 @@
 #include <cstdlib>
 #include <string>
 
+struct rect;
+
 namespace sdl
 {
 

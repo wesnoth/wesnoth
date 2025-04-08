@@ -28,6 +28,8 @@
 #include "video.hpp"
 #include "utils/ranges.hpp"
 
+#include <SDL2/SDL.h>
+
 #include <cassert>
 
 /**

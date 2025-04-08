@@ -60,9 +60,10 @@
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
-#include <functional>
+#include <SDL2/SDL_timer.h>
 
 #include <algorithm>
+#include <functional>
 
 
 static lg::log_domain log_gui("gui/layout");

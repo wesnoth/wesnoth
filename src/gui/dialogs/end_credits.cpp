@@ -25,8 +25,9 @@
 #include "gettext.hpp"
 #include "serialization/markup.hpp"
 
-#include <functional>
+#include <SDL2/SDL_timer.h>
 
+#include <functional>
 #include <sstream>
 
 namespace gui2::dialogs
