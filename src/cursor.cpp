@@ -89,7 +89,7 @@ bool use_color_cursors()
 	return game_config::editor == false && prefs::get().use_color_cursors();
 }
 
-SDL_Cursor* create_cursor(surface surf)
+SDL_Cursor* create_cursor(const surface& surf)
 {
 	if(surf == nullptr) {
 		return nullptr;
