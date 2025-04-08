@@ -1904,6 +1904,11 @@ public:
 	 * @param tag_name the type of ability corresponding to the variable used, if empty return affect_distant_max_radius_for_filtering_.
 	 */
 	utils::optional<int> affect_distant_max_radius(const std::string& tag_name = "") const;
+	/**
+	 * set game_board affect_distant_max_radius_[tag_name] or affect_distant_max_radius_for_filtering_ when location is valid.
+	 * @param loc location of unit with ability with [affect_distant for verify what unit is on the map.
+	 */
+	void set_affect_distant_max_radius(const map_location& loc) const;
 
 private:
 

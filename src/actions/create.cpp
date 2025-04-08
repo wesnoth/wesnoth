@@ -657,6 +657,7 @@ place_recruit_result place_recruit(const unit_ptr& u, const map_location &recrui
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
+	new_unit_itor->set_affect_distant_max_radius(current_loc);
 	std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire("unit_placed", current_loc));
 	if(!new_unit_itor.valid()) {
 		return place_recruit_result { true, 0, false };

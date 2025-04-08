@@ -400,6 +400,7 @@ void play_controller::fire_prestart()
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
 	for(const unit& u : get_units()) {
+		u.set_affect_distant_max_radius(u.get_location());
 		pump().fire("unit_placed", map_location(u.get_location()));
 	}
 
