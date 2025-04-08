@@ -18,6 +18,7 @@
  *  Support-routines for the SDL-graphics-library.
  */
 
+#include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
@@ -27,6 +28,8 @@
 #include <cassert>
 #include <cstring>
 #include "utils/span.hpp"
+
+#include <SDL2/SDL_version.h>
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>

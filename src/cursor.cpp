@@ -26,6 +26,9 @@
 
 #include <boost/logic/tribool.hpp>
 
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_mouse.h>
+
 #include <array>
 #include <memory>
 
@@ -88,7 +91,6 @@ bool use_color_cursors()
 
 SDL_Cursor* create_cursor(surface surf)
 {
-	surf.make_neutral();
 	if(surf == nullptr) {
 		return nullptr;
 	}

@@ -26,6 +26,8 @@
 #include "serialization/string_utils.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 
+#include <SDL2/SDL_timer.h>
+
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
 #define DBG_G LOG_STREAM(debug, lg::general())
