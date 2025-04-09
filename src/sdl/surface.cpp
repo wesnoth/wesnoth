@@ -16,9 +16,15 @@
 
 #include "color.hpp"
 #include "sdl/rect.hpp"
+#include "log.hpp"
 
+#include <cassert>
 #include <utility>
 
+#ifdef DEBUG_SDL_SURFACES
+#undef DEBUG_SDL_SURFACES
+#endif
+#define DEBUG_SDL_SURFACES
 namespace
 {
 void add_refcount(surface& surf)
@@ -37,9 +43,15 @@ void free_surface(surface& surf)
 
 void make_neutral(surface& surf)
 {
-	if(surf && surf->format->format != SDL_PIXELFORMAT_ARGB8888) {
-		surf = surf.clone();
+	// We're already good to go
+	if(surf->format->format == SDL_PIXELFORMAT_ARGB8888) {
+		return;
 	}
+
+#ifdef DEBUG_SDL_SURFACES
+	PLAIN_LOG << surf->format->format;
+#endif
+	surf = surf.clone();
 }
 
 } // namespace
@@ -47,7 +59,13 @@ void make_neutral(surface& surf)
 surface::surface(SDL_Surface* surf)
 	: surface_(surf)
 {
-	make_neutral(*this); // EXTREMELY IMPORTANT!
+	if(surface_) {
+		make_neutral(*this); // EXTREMELY IMPORTANT!
+	} else {
+#ifdef DEBUG_SDL_SURFACES
+		PLAIN_LOG << "Null surface created from raw SDL_Surface pointer";
+#endif
+	}
 }
 
 surface::surface(int w, int h)
