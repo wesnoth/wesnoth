@@ -133,21 +133,23 @@ private:
 
 	struct queue_info
 	{
-		queue_info(const std::string& id, const std::string& name, int required, config game)
-		: scenario_id(id)
-		, queue_display_name(name)
-		, players_required(required)
-		, players_in_queue()
-		, settings(game)
+		queue_info(int id, const std::string& scenario_id, const std::string& name, int required, config game)
+		: id_(id)
+		, scenario_id_(scenario_id)
+		, queue_display_name_(name)
+		, players_required_(required)
+		, players_in_queue_()
+		, settings_(game)
 		{
 
 		}
 
-		std::string scenario_id;
-		std::string queue_display_name;
-		std::size_t players_required;
-		std::vector<std::string> players_in_queue;
-		config settings;
+		int id_;
+		std::string scenario_id_;
+		std::string queue_display_name_;
+		std::size_t players_required_;
+		std::vector<std::string> players_in_queue_;
+		config settings_;
 	};
 
 	std::deque<login_log> failed_logins_;
@@ -175,7 +177,7 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
-	std::map<std::string, queue_info> queue_info_;
+	std::map<int, queue_info> queue_info_;
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;

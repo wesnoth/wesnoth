@@ -16,6 +16,7 @@
 #pragma once
 
 #include <functional>
+#include <set>
 #include <string>
 
 class commandline_options;
@@ -28,10 +29,11 @@ namespace mp
 {
 struct queue_info
 {
+	int id;
 	std::string scenario_id;
 	std::string queue_display_name;
 	int players_required;
-	int current_players;
+	std::set<std::string> current_players;
 };
 
 /** Max length of a player name. */

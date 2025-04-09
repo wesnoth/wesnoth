@@ -107,10 +107,11 @@ private:
 			if(cfg.has_child("queues")) {
 				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
 					queue_info info;
+					info.id = queue["id"].to_int();
 					info.scenario_id = queue["scenario_id"].str();
 					info.queue_display_name = queue["queue_display_name"].str();
 					info.players_required = queue["players_required"].to_int();
-					info.current_players = queue["current_players"].to_int();
+					info.current_players = utils::split_set(queue["current_players"].str());
 					queues.emplace_back(info);
 				}
 			}
@@ -136,10 +137,10 @@ private:
 	 * Opens the MP Create screen for hosts to configure a new game.
 	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt);
+	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode(cssv::QUEUE_TYPE queue_type);
+	void enter_staging_mode(cssv::QUEUE_TYPE queue_type, int queue_id = 0);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -559,18 +560,20 @@ bool mp_manager::enter_lobby_mode()
 		int dlg_joined_game_id = 0;
 		std::string preset_scenario = "";
 		config server_preset;
+		int queue_id = 0;
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
 			preset_scenario = dlg.queue_game_scenario_id();
 			server_preset = dlg.queue_game_server_preset();
+			queue_id = dlg.queue_id();
 		}
 
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset));
+				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset), queue_id);
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
@@ -600,7 +603,7 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset)
+void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
@@ -608,7 +611,7 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario,
 	// else look for them locally
 	if(preset_scenario && server_preset) {
 		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(cssv::QUEUE_TYPE::SERVER_PRESET);
+		enter_staging_mode(cssv::QUEUE_TYPE::SERVER_PRESET, queue_id);
 	} else if(preset_scenario && !server_preset) {
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 			if(game["scenario"].str() == preset_scenario.value()) {
@@ -624,7 +627,7 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario,
 	}
 }
 
-void mp_manager::enter_staging_mode(cssv::QUEUE_TYPE queue_type)
+void mp_manager::enter_staging_mode(cssv::QUEUE_TYPE queue_type, int queue_id)
 {
 	DBG_MP << "entering connect mode";
 
@@ -636,6 +639,7 @@ void mp_manager::enter_staging_mode(cssv::QUEUE_TYPE queue_type)
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
 		metadata->queue_type = queue_type;
+		metadata->queue_id = queue_id;
 	}
 
 	bool dlg_ok = false;

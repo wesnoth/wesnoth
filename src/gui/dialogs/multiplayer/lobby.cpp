@@ -667,10 +667,13 @@ void mp_lobby::pre_show()
 		widget_data data;
 		widget_item item;
 
+		item["label"] = "o";
+		data.emplace("is_in_queue", item);
+
 		item["label"] = info.queue_display_name;
 		data.emplace("queue_name", item);
 
-		item["label"] = std::to_string(info.current_players)+"/"+std::to_string(info.players_required);
+		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
 		data.emplace("queue_player_count", item);
 
 		queues_listbox->add_row(data);
@@ -721,7 +724,7 @@ void mp_lobby::join_queue()
 		config join_server_queue;
 
 		config& queue_req = join_server_queue.add_child("join_server_queue");
-		queue_req["scenario_id"] = queue.scenario_id;
+		queue_req["queue_id"] = queue.id;
 		mp::send_to_server(join_server_queue);
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
@@ -798,6 +801,7 @@ void mp_lobby::process_network_data(const config& data)
 	} else if(auto create = data.optional_child("create_game")) {
 		queue_game_scenario_id_ = create["mp_scenario"].str();
 		queue_game_server_preset_ = create.value().mandatory_child("game");
+		queue_id_ = create["queue_id"].to_int();
 		set_retval(CREATE_PRESET);
 		return;
 	} else if(auto join_game = data.optional_child("join_game")) {
@@ -808,16 +812,19 @@ void mp_lobby::process_network_data(const config& data)
 		queues_listbox->clear();
 
 		for(mp::queue_info& info : mp::get_server_queues()) {
-			if(info.scenario_id == queue_update["scenario_id"].str()) {
-				info.current_players = queue_update["current_players"].to_int();
+			if(info.id == queue_update["queue_id"].to_int()) {
+				info.current_players = utils::split_set(queue_update["current_players"].str());
 			}
 			widget_data data;
 			widget_item item;
 
+			item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
+			data.emplace("is_in_queue", item);
+
 			item["label"] = info.queue_display_name;
 			data.emplace("queue_name", item);
 
-			item["label"] = std::to_string(info.current_players)+"/"+std::to_string(info.players_required);
+			item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
 			data.emplace("queue_player_count", item);
 
 			queues_listbox->add_row(data);

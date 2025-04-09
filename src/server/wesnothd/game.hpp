@@ -39,6 +39,7 @@ public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
 			cssv::QUEUE_TYPE queue_type,
+			int queue_id,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -74,6 +75,11 @@ public:
 	void next_db_id()
 	{
 		db_id_ = db_id_num++;
+	}
+
+	int queue_id()
+	{
+		return queue_id_;
 	}
 
 	/**
@@ -972,6 +978,9 @@ private:
 
 	/** Whether this game was created manually or by joining a queue */
 	cssv::QUEUE_TYPE queue_type_;
+
+	/** Which server-side queue this game came from */
+	int queue_id_;
 };
 
 } // namespace wesnothd

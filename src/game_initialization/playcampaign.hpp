@@ -46,6 +46,7 @@ struct mp_game_metadata
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
 	cssv::QUEUE_TYPE queue_type;
+	int queue_id;
 };
 
 class campaign_controller

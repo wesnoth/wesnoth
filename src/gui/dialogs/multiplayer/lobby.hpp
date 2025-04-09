@@ -68,6 +68,7 @@ public:
 
 	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; }
 	const config queue_game_server_preset() const { return queue_game_server_preset_; }
+	int queue_id() const { return queue_id_; }
 
 private:
 	void update_selected_game();
@@ -180,6 +181,7 @@ private:
 
 	std::string queue_game_scenario_id_;
 	config queue_game_server_preset_;
+	int queue_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 
