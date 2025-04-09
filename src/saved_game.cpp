@@ -395,6 +395,11 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		for(const config& load_resource : cfg->child_range("load_resource")) {
 			starting_point_.add_child_at_total("load_resource", load_resource, pos++);
 		}
+
+		//copy liminal_bonus value
+		if(cfg->has_attribute("liminal_bonus")) {
+			starting_point_["liminal_bonus"] = cfg["liminal_bonus"].to_int();
+		}
 	} else {
 		// TODO: A user message instead?
 		ERR_NG << "Couldn't find [" << type << "] with id=" << id;
