@@ -13,6 +13,7 @@
 	See the COPYING file for more details.
 */
 
+#include "font/text.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/rich_label.hpp"
@@ -211,12 +212,14 @@ void rich_label::add_link(
 
 	} else {
 		//link straddles two lines, break into two rects
+		int text_height = font::get_max_height(font_size_);
+
 		point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
-		point link_start2(origin.x, t_start.y + 1.3*font::get_max_height(font_size_));
+		point link_start2(origin.x, t_start.y + font::get_line_spacing_factor() * text_height);
 		point t_size2(t_end.x, t_end.y - t_start.y);
 
-		rect link_rect{ t_start, point{ t_size.x, font::get_max_height(font_size_) } };
-		rect link_rect2{ link_start2, point{ t_size2.x, font::get_max_height(font_size_) } };
+		rect link_rect{ t_start, point{ t_size.x, text_height } };
+		rect link_rect2{ link_start2, point{ t_size2.x, text_height } };
 
 		links_.emplace_back(link_rect, dest);
 		links_.emplace_back(link_rect2, dest);
@@ -757,7 +760,9 @@ void rich_label::default_text_config(
 		(*txt_ptr)["h"] = "(text_height)";
 		(*txt_ptr)["maximum_width"] = max_width;
 		(*txt_ptr)["parse_text_as_formula"] = false;
-		add_attribute(*txt_ptr, "line_height", std::to_string(1.3));
+		add_attribute(*txt_ptr,
+			"line_height",
+			std::to_string(font::get_line_spacing_factor()));
 	}
 }
 

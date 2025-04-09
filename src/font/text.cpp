@@ -50,12 +50,20 @@ namespace
 void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
 {
 	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
-	double dx, dy;
 
-	cairo_get_current_point(cr, &dx, &dy);
-	dy -= cairo_image_surface_get_height(img);
-	cairo_set_source_surface(cr, img, dx, dy);
-	cairo_rectangle(cr, dx, dy, pShape->ink_rect.width/PANGO_SCALE, pShape->ink_rect.height/PANGO_SCALE);
+	cairo_rel_move_to (cr,
+		pShape->ink_rect.x/PANGO_SCALE,
+		pShape->ink_rect.y/PANGO_SCALE);
+	double x, y;
+	cairo_get_current_point (cr, &x, &y);
+	cairo_translate (cr, x, y);
+
+	cairo_set_source_surface(cr, img, 0, 0);
+	cairo_rectangle(cr,
+		0,
+		0,
+		pShape->ink_rect.width/PANGO_SCALE,
+		pShape->ink_rect.height/PANGO_SCALE);
 	cairo_fill(cr);
 }
 }
