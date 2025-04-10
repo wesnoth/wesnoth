@@ -1401,6 +1401,8 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		advancements_ = cfg.child_range("advancement");
 	}
 
+	movement_type_.merge(cfg);
+
 	// apply recursively to subtypes.
 	for(int gender = 0; gender <= 1; ++gender) {
 		if(!gender_types_[gender]) {
