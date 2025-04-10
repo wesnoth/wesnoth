@@ -410,12 +410,13 @@ std::string unit_topic_generator::operator()() const {
 					continue;
 				}
 
-				if (first) {
-					if (reverse) {
-						ss << _("Advances from: ");
+				if(first) {
+					if(reverse) {
+						ss << _("Advances from:");
 					} else {
-						ss << _("Advances to: ");
+						ss << _("Advances to:");
 					}
+					ss << font::nbsp;
 					first = false;
 				} else {
 					ss << ", ";
@@ -442,13 +443,13 @@ std::string unit_topic_generator::operator()() const {
 
 	const unit_type* parent = variation_.empty() ? &type_ :
 		unit_types.find(type_.id(), unit_type::HELP_INDEXED);
-	if (!variation_.empty()) {
-		ss << _("Base unit: ") << markup::make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
+	if(!variation_.empty()) {
+		ss << _("Base unit:") << font::nbsp << markup::make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
 	} else {
 		bool first = true;
-		for (const std::string& base_id : utils::split(type_.get_cfg()["base_ids"])) {
-			if (first) {
-				ss << _("Base units: ");
+		for(const std::string& base_id : utils::split(type_.get_cfg()["base_ids"])) {
+			if(first) {
+				ss << _("Base units:") << font::nbsp;
 				first = false;
 			}
 			const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
@@ -485,13 +486,17 @@ std::string unit_topic_generator::operator()() const {
 		ss << markup::make_link(var_name, ref_id);
 	}
 
+	if(!parent->variations().empty()) {
+		ss << "\n";
+	}
+
 	// Print the race of the unit, cross-reference it to the respective topic.
 	const std::string race_id = type_.race_id();
 	std::string race_name = type_.race()->plural_name();
 	if (race_name.empty()) {
 		race_name = _ ("race^Miscellaneous");
 	}
-	ss << _("Race: ");
+	ss << _("Race:") << font::nbsp;
 	ss << markup::make_link(race_name, "..race_" + race_id);
 	ss << "\n";
 
@@ -527,26 +532,24 @@ std::string unit_topic_generator::operator()() const {
 		bool line1 = !must_have_traits.empty();
 		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
 
-		if (line1) {
-			std::string traits_label = _("Traits");
-			ss << traits_label;
-			if (line2) {
-				std::stringstream must_have_count;
-				must_have_count << "\n (" << must_have_traits.size() << ") : ";
-				std::stringstream random_count;
-				random_count << " (" << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits) << ") : ";
-				ss << must_have_count.str();
+		if(line1) {
+			ss << _("Traits");
+			if(line2) {
+				ss << "\n(" << must_have_traits.size() << "):" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
-				ss << "\n" << random_count.str();
+
+				ss << "\n" << "("
+				   << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits)
+				   << "):" << font::nbsp;
 				print_trait_list(ss, random_traits);
 			} else {
-				ss << ": ";
+				ss << ":" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
 			}
 			ss << "\n";
 		} else {
-			if (line2) {
-				ss << _("Traits") << " (" << (type_.num_traits() - must_have_nameless_traits) << ") : ";
+			if(line2) {
+				ss << _("Traits") << " (" << (type_.num_traits() - must_have_nameless_traits) << "):" << font::nbsp;
 				print_trait_list(ss, random_traits);
 				ss << "\n";
 			}
@@ -556,7 +559,7 @@ std::string unit_topic_generator::operator()() const {
 	// Print the abilities the units has, cross-reference them
 	// to their respective topics. TODO: Update this according to musthave trait effects, similar to movetype below
 	if(!type_.abilities_metadata().empty()) {
-		ss << _("Abilities: ");
+		ss << _("Abilities:") << font::nbsp;
 
 		bool start = true;
 
@@ -582,7 +585,7 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the extra AMLA upgrade abilities, cross-reference them to their respective topics.
 	if(!type_.adv_abilities_metadata().empty()) {
-		ss << _("Ability Upgrades: ");
+		ss << _("Ability Upgrades:") << font::nbsp;
 
 		bool start = true;
 
@@ -819,9 +822,9 @@ std::string unit_topic_generator::operator()() const {
 		row_ss << markup::tag("col", markup::bold(_("Terrain")));
 		row_ss << markup::tag("col", markup::bold(_("Defense")));
 		row_ss << markup::tag("col", markup::bold(_("Movement Cost")));
-		if (has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap"))); }
-		if (has_vision)				  { row_ss << markup::tag("col", markup::bold(_("Vision Cost"))); }
-		if (has_jamming)			  { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
+		if(has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap")));  }
+		if(has_vision)               { row_ss << markup::tag("col", markup::bold(_("Vision Cost")));  }
+		if(has_jamming)              { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
 		table_ss << markup::tag("row", { {"bgcolor", "table_header"} }, row_ss.str());
 
 		// Organize terrain movetype data
