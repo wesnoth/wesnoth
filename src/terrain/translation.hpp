@@ -103,7 +103,7 @@ namespace t_translation {
 	 */
 	struct ter_match{
 		ter_match();
-		ter_match(std::string_view str);
+		ter_match(std::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
@@ -176,9 +176,11 @@ namespace t_translation {
 	 *                  the first group is the base terrain,
 	 *                  the second the overlay terrain.
 	 *
+	 * @param filler    if there's no layer this value will be used as the second layer
+	 *
 	 * @return          A single terrain code
 	 */
-	terrain_code read_terrain_code(std::string_view str);
+	terrain_code read_terrain_code(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
@@ -196,10 +198,11 @@ namespace t_translation {
 	 * Reads a list of terrains from a string, when reading the
 	 *
 	 * @param str		A string with one or more terrain codes (see read_terrain_code)
+	 * @param filler	If there's no layer, this value will be used as the second layer
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	ter_list read_list(std::string_view str);
+	 ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.
