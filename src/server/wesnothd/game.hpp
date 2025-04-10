@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "client_server_shared_values.hpp"
 #include "mt_rng.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
@@ -37,7 +38,8 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
-			bool is_queue_game,
+			cssv::QUEUE_TYPE queue_type,
+			int queue_id,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -73,6 +75,11 @@ public:
 	void next_db_id()
 	{
 		db_id_ = db_id_num++;
+	}
+
+	int queue_id()
+	{
+		return queue_id_;
 	}
 
 	/**
@@ -614,13 +621,13 @@ public:
 		observers_.clear();
 	}
 
-	bool is_queue_game() const
+	cssv::QUEUE_TYPE queue_type() const
 	{
-		return is_queue_game_;
+		return queue_type_;
 	}
-	void is_queue_game(bool is_queue_game)
+	void queue_type(cssv::QUEUE_TYPE queue_type)
 	{
-		is_queue_game_ = is_queue_game;
+		queue_type_ = queue_type;
 	}
 
 private:
@@ -969,8 +976,11 @@ private:
 	 */
 	int last_choice_request_id_;
 
-	/** Whether this game was created by joining a game defined client-side in an [mp_queue] */
-	bool is_queue_game_;
+	/** Whether this game was created manually or by joining a queue */
+	cssv::QUEUE_TYPE queue_type_;
+
+	/** Which server-side queue this game came from */
+	int queue_id_;
 };
 
 } // namespace wesnothd

@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "client_server_shared_values.hpp"
 #include "game_end_exceptions.hpp"
 
 #include <set>
@@ -33,7 +34,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
-		, is_queue_game(false)
+		, queue_type(cssv::QUEUE_TYPE::NORMAL)
 	{
 	}
 
@@ -44,7 +45,8 @@ struct mp_game_metadata
 	bool skip_replay;
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
-	bool is_queue_game;
+	cssv::QUEUE_TYPE queue_type;
+	int queue_id;
 };
 
 class campaign_controller
