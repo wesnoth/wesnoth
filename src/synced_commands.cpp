@@ -527,6 +527,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	std::tie(unit_it, std::ignore) = resources::gameboard->units().replace(loc, created);
 
 	game_display::get_singleton()->invalidate_unit();
+	unit_it->set_affect_distant_max_radius(loc);
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 

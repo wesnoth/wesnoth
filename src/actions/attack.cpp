@@ -1327,6 +1327,7 @@ void attack::unit_killed(unit_info& attacker,
 			units_.insert(newunit);
 
 			game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
+			newunit->set_affect_distant_max_radius(reanim_loc);
 			resources::game_events->pump().fire("unit_placed", reanim_loc);
 
 			prefs::get().encountered_units().insert(newunit->type_id());
