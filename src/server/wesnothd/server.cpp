@@ -331,6 +331,10 @@ void server::setup_fifo()
 		return;
 	}
 	int fifo = open(input_path_.c_str(), O_RDWR | O_NONBLOCK);
+	if(fifo == -1) {
+		ERR_SERVER << "could not open fifo at '" << input_path_ << "' (" << strerror(errno) << ")";
+		return;
+	}
 	input_.assign(fifo);
 	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.";
 	read_from_fifo();
