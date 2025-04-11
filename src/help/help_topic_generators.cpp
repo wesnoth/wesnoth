@@ -211,7 +211,7 @@ std::string terrain_topic_generator::operator()() const {
 	}
 
 	if(!type_.editor_image().empty()) {
-		ss << markup::img(type_.editor_image()) << markup::br;
+		ss << markup::img(type_.editor_image());
 	}
 
 	ss << "\n";
@@ -676,7 +676,6 @@ std::string unit_topic_generator::operator()() const {
 			}
 		}
 
-
 		// Print headers for the table.
 		table_ss << markup::tag("row",
 			{ {"bgcolor", "table_header"} },
@@ -711,18 +710,18 @@ std::string unit_topic_generator::operator()() const {
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
 			if(attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << markup::tag("col",
-					markup::img(range_icon),
+					markup::img(range_icon), ' ',
 					attack.min_range(), "-", attack.max_range(), ' ',
 					string_table["range_" + attack.range()]);
 			} else {
 				attack_ss << markup::tag("col",
-					markup::img(range_icon),
+					markup::img(range_icon), ' ',
 					string_table["range_" + attack.range()]);
 			}
 
 			// type
 			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO(16,16)";
-			attack_ss << markup::tag("col", markup::img(type_icon), lang_type);
+			attack_ss << markup::tag("col", markup::img(type_icon), ' ', lang_type);
 
 			// special
 			if(has_special) {
@@ -746,7 +745,7 @@ std::string unit_topic_generator::operator()() const {
 				}
 			}
 
-			table_ss << markup::tag("row", { {"valign", "center"} }, attack_ss.str());
+			table_ss << markup::tag("row", { {"bgcolor", "table_row1"} }, attack_ss.str());
 		}
 
 		ss << markup::tag("table", table_ss.str());
@@ -802,7 +801,7 @@ std::string unit_topic_generator::operator()() const {
 		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
 		table_ss << markup::tag("row",
 			{ {"bgcolor", (odd_row ? "table_row1" : "table_row2")} },
-			markup::tag("col", markup::img(type_icon), lang_type),
+			markup::tag("col", markup::img(type_icon), ' ', lang_type),
 			markup::tag("col", markup::span_color(color, resist)));
 
 		odd_row = !odd_row;
@@ -866,7 +865,7 @@ std::string unit_topic_generator::operator()() const {
 			const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
 			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
 
-			row_ss << markup::tag("col", markup::img(final_image), markup::make_link(m.name, "..terrain_" + m.id));
+			row_ss << markup::tag("col", markup::img(final_image), ' ', markup::make_link(m.name, "..terrain_" + m.id));
 
 			// Defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
