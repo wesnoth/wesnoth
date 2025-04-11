@@ -29,7 +29,6 @@
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
-#include "log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/preferences.hpp"
@@ -49,6 +48,7 @@ namespace
 {
 void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
 {
+	// NOTE: this data is owned by the underlying SDL_Surface. See add_attribute_image_shape
 	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
 
 	cairo_rel_move_to (cr,
@@ -99,6 +99,7 @@ pango_text::pango_text()
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
 
+	// TODO: phase this out in favor of a global line height attribute.
 	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();

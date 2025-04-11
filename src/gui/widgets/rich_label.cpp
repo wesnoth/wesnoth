@@ -13,7 +13,6 @@
 	See the COPYING file for more details.
 */
 
-#include "font/text.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/rich_label.hpp"
