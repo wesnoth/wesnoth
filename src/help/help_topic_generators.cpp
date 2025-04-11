@@ -211,7 +211,7 @@ std::string terrain_topic_generator::operator()() const {
 	}
 
 	if(!type_.editor_image().empty()) {
-		ss << markup::img(type_.editor_image()) << markup::br;
+		ss << markup::img(type_.editor_image());
 	}
 
 	ss << "\n";

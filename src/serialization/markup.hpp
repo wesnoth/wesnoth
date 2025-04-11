@@ -30,12 +30,6 @@ class config;
 namespace markup
 {
 /**
- * A Help markup tag corresponding to a linebreak.
- * @see gui2::rich_label for details on how this tag is parsed.
- */
-constexpr std::string_view br{"<br/>"};
-
-/**
  * Wraps the given data in the specified tag.
  *
  * @param tag       The tag ("b", "i", etc).
