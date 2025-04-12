@@ -231,7 +231,9 @@ void rich_label::add_link(
 size_t rich_label::get_split_location(std::string_view text, const point& pos)
 {
 	size_t len = get_offset_from_xy(pos);
-	len = (len > text.size()-1) ? text.size()-1 : len;
+	if (len >= text.size() - 1) {
+		return text.size() - 1;
+	}
 
 	// break only at word boundary
 	char c;
