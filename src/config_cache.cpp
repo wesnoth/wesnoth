@@ -45,6 +45,10 @@ void add_builtin_defines(preproc_map& target)
 	target["APPLE"] = preproc_define();
 #endif
 
+#ifdef __ANDROID__
+	target["ANDROID"] = preproc_define();
+#endif
+
 #if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
 	target["IPHONEOS"] = preproc_define();
 #endif
