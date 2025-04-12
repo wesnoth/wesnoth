@@ -633,7 +633,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 				add_text(*curr_item, line);
 
 				point text_size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
-				text_size.x -= x;
 
 				is_text = true;
 
@@ -658,7 +657,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 						tmp_h = 0;
 					}
 					text_height += ah - tmp_h;
-					prev_blk_height += text_height + 0.3*font::get_max_height(font_size_);
+					prev_blk_height += text_height;
 					pos = point(origin.x, prev_blk_height);
 
 					DBG_GUI_RL << "wrap: " << prev_blk_height << "," << text_height;
@@ -670,7 +669,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					// rest of the text
 					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item, pos, init_width - pos.x - float_size.x);
+					default_text_config(curr_item, pos, init_width - pos.x);
 					tmp_h = get_text_size(*curr_item, init_width).y;
 					add_text_with_attribute(*curr_item, removed_part);
 
