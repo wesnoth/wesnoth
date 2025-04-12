@@ -43,6 +43,31 @@ static lg::log_domain log_font("font");
 
 namespace font
 {
+
+namespace
+{
+void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
+{
+	// NOTE: this data is owned by the underlying SDL_Surface. See add_attribute_image_shape
+	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
+
+	cairo_rel_move_to (cr,
+		pShape->ink_rect.x/PANGO_SCALE,
+		pShape->ink_rect.y/PANGO_SCALE);
+	double x, y;
+	cairo_get_current_point (cr, &x, &y);
+	cairo_translate (cr, x, y);
+
+	cairo_set_source_surface(cr, img, 0, 0);
+	cairo_rectangle(cr,
+		0,
+		0,
+		pShape->ink_rect.width/PANGO_SCALE,
+		pShape->ink_rect.height/PANGO_SCALE);
+	cairo_fill(cr);
+}
+}
+
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
@@ -73,6 +98,8 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
+
+	// TODO: phase this out in favor of a global line height attribute.
 	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
@@ -82,6 +109,8 @@ pango_text::pango_text()
 
 	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
+
+	pango_cairo_context_set_shape_renderer(context_.get(), render_image_shape, nullptr, nullptr);
 }
 
 texture pango_text::render_texture(const SDL_Rect& viewport)
@@ -572,15 +601,6 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
 	pango_layout_set_font_description(&layout, font.get());
 
-	if(font_style_ & pango_text::STYLE_UNDERLINE) {
-		PangoAttrList *attribute_list = pango_attr_list_new();
-		pango_attr_list_insert(attribute_list
-			, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
-
-		pango_layout_set_attributes(&layout, attribute_list);
-		pango_attr_list_unref(attribute_list);
-	}
-
 	int maximum_width = 0;
 	if(characters_per_line_ != 0) {
 		PangoFont* f = pango_font_map_load_font(
@@ -749,6 +769,12 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 		foreground_color_.b / 255.0,
 		foreground_color_.a / 255.0
 	);
+
+	if(font_style_ & pango_text::STYLE_UNDERLINE) {
+		font::attribute_list list;
+		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+		apply_attributes(list);
+	}
 
 	pango_cairo_show_layout(cr, &layout);
 }

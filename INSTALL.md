@@ -26,7 +26,7 @@ order to build Wesnoth:
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
- * Pango                       >= 1.44.0 (with Cairo backend)
+ * Pango                       >= 1.50.0 (with Cairo backend)
  * Vorbisfile aka libvorbis
  * libbz2
  * libz

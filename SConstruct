@@ -414,7 +414,7 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
     have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
-    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.44.0")
+    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.50.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
