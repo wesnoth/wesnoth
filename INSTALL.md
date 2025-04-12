@@ -75,9 +75,34 @@ rebuild Wesnoth frequently (i.e. for development and testing).
 See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/README.md) for instructions on using Xcode.
 
 ### Windows
-Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
 
-NOTE 1: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
+Visual Studio with CMake is the preferred method for building on Windows.
+See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio)
+for more information on using Visual Studio with CMake.
+
+External dependencies are managed via vcpkg. As of Visual Studio 2022 17.6, this is
+available as an [installable component](https://devblogs.microsoft.com/cppblog/vcpkg-is-now-included-with-visual-studio/)
+through the Visual Studio installer. If you are using an older version or wish to keep
+a separate installation of vcpkg, you may clone the [vcpkg repository](https://github.com/microsoft/vcpkg)
+locally.
+
+**Note:** If installing vcpkg locally, the executable must be fetched separately:
+
+    $ cd vcpkg/
+    $ .\bootstrap-vcpkg.bat
+
+After installing vcpkg, it must be integrated with Visual Studio. This need only be done once.
+If Visual Studio is open when this command is run, close and re-open the application.
+
+    $ vcpkg integrate install
+
+Opening the Wesnoth source folder in Visual Studio will automatically configure the CMake
+cache and (if necessary) build all required dependencies. The latter step may take over an
+hour depending on your hardware; however, the result is cached for subsequent builds.
+
+**Note:** Antivirus software may potentially slow down (by scanning) or even interrupt the
+installation process by false-flagging libraries. If you are unable to install the dependencies
+while an antivirus is active, you may whitelist vcpkg AT YOUR OWN RISK.
 
 ## SCons Build
 
