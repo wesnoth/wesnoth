@@ -396,7 +396,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 					return std::array{ padding_, padding_ };
 				} else {
 					auto paddings = utils::split(val.str(), ' ');
-					return std::array{ std::stoi(paddings[0]), std::stoi(paddings[1]) };
+					if(paddings.size() == 1) {
+						return std::array{ std::stoi(paddings[0]), std::stoi(paddings[0]) };
+					} else {
+						return std::array{ std::stoi(paddings[0]), std::stoi(paddings[1]) };
+					}
 				}
 			};
 
