@@ -209,7 +209,7 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], stopgame <nick> [<reason>], unban <ipmask>\n"
+	" signout, stats, status [<mask>], stopgame <nick> [<reason>], reset_queues, unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -406,7 +406,8 @@ void server::setup_handlers()
 	SETUP_HANDLER("sl", &server::searchlog_handler);
 	SETUP_HANDLER("dul", &server::dul_handler);
 	SETUP_HANDLER("deny_unregistered_login", &server::dul_handler);
-	SETUP_HANDLER("stopgame", &server::stopgame);
+	SETUP_HANDLER("stopgame", &server::stopgame_handler);
+	SETUP_HANDLER("reset_queues", &server::reset_queues_handler);
 
 #undef SETUP_HANDLER
 }
@@ -3157,11 +3158,13 @@ void server::dul_handler(const std::string& /*issuer_name*/,
 	}
 }
 
-void server::stopgame(const std::string& /*issuer_name*/,
+void server::stopgame_handler(const std::string& /*issuer_name*/,
 		const std::string& /*query*/,
 		std::string& parameters,
 		std::ostringstream* out)
 {
+	assert(out != nullptr);
+
 	const std::string nick = parameters.substr(0, parameters.find(' '));
 	const std::string reason = parameters.length() > nick.length()+1 ? parameters.substr(nick.length()+1) : "";
 	auto player = player_connections_.get<name_t>().find(nick);
@@ -3177,6 +3180,31 @@ void server::stopgame(const std::string& /*issuer_name*/,
 	} else {
 		*out << "Player '" << nick << "' is not currently logged in.";
 	}
+}
+
+void server::reset_queues_handler(const std::string& /*issuer_name*/,
+		const std::string& /*query*/,
+		std::string& /*parameters*/,
+		std::ostringstream* out)
+{
+	assert(out != nullptr);
+
+	for(player_iterator player = player_connections_.begin(); player != player_connections_.end(); ++player) {
+		player->info().clear_queues();
+	}
+
+	for(auto& [id, info] : queue_info_) {
+		info.players_in_queue_.clear();
+
+		simple_wml::document queue_update;
+		simple_wml::node& update = queue_update.root().add_child("queue_update");
+		update.set_attr_int("queue_id", info.id_);
+		update.set_attr_dup("current_players", utils::join(info.players_in_queue_).c_str());
+
+		send_to_lobby(queue_update);
+	}
+
+	*out << "Reset all queues";
 }
 
 void server::delete_game(int gameid, const std::string& reason)
