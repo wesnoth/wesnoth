@@ -1182,6 +1182,11 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 		return;
 	}
 
+	if(simple_wml::node* leave_server_queue = data.child("leave_server_queue")) {
+		handle_leave_server_queue(player, *leave_server_queue);
+		return;
+	}
+
  	if(simple_wml::node* request = data.child("game_history_request")) {
 		if(user_handler_) {
 			int offset = request->attr("offset").to_int();
@@ -1646,6 +1651,31 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 		}
 	} else {
 		ERR_SERVER << "player " << p->info().name() << " attempted to join non-existing server-side queue for scenario " << data.attr("queue_id");
+	}
+}
+
+void server::handle_leave_server_queue(player_iterator p, simple_wml::node& data)
+{
+	int queue_id = data.attr("queue_id").to_int();
+	if(queue_info_.count(queue_id) > 0) {
+		queue_info& queue = queue_info_.at(queue_id);
+
+		// if they're in the queue, remove them
+		if(utils::contains(queue.players_in_queue_, p->info().name())) {
+			queue.players_in_queue_.erase(std::remove(queue.players_in_queue_.begin(), queue.players_in_queue_.end(), p->info().name()));
+			p->info().clear_queues();
+
+			simple_wml::document queue_update;
+			simple_wml::node& update = queue_update.root().add_child("queue_update");
+			update.set_attr_int("queue_id", queue.id_);
+			update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
+
+			send_to_lobby(queue_update);
+		} else {
+			DBG_SERVER << "player " << p->info().name() << " already not in server-side queue for scenario " << data.attr("queue_id");
+		}
+	} else {
+		ERR_SERVER << "player " << p->info().name() << " attempted to leave non-existing server-side queue for scenario " << data.attr("queue_id");
 	}
 }
 

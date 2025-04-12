@@ -59,6 +59,7 @@ public:
 
 	void add_queue(int queue_id) { in_queues_.emplace(queue_id); }
 	void clear_queues() { in_queues_.clear(); }
+	void remove_from_queue(int queue_id) { in_queues_.erase(queue_id); }
 	const std::set<int>& get_queues() const { return in_queues_; }
 
 private:

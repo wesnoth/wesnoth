@@ -659,6 +659,10 @@ void mp_lobby::pre_show()
 	button* queue_join_button = find_widget<button>("join_queue", false, true);
 	connect_signal_mouse_left_click(*queue_join_button, std::bind(&mp_lobby::join_queue, this));
 
+	// server-side queue leave button
+	button* queue_leave_button = find_widget<button>("leave_queue", false, true);
+	connect_signal_mouse_left_click(*queue_leave_button, std::bind(&mp_lobby::leave_queue, this));
+
 	// server-side queues list
 	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
 	queues_listbox->clear();
@@ -726,6 +730,22 @@ void mp_lobby::join_queue()
 		config& queue_req = join_server_queue.add_child("join_server_queue");
 		queue_req["queue_id"] = queue.id;
 		mp::send_to_server(join_server_queue);
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
+	}
+}
+
+void mp_lobby::leave_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		config leave_server_queue;
+
+		config& queue_req = leave_server_queue.add_child("leave_server_queue");
+		queue_req["queue_id"] = queue.id;
+		mp::send_to_server(leave_server_queue);
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}

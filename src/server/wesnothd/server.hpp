@@ -66,7 +66,8 @@ private:
 	void handle_create_game(player_iterator player, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
 	void handle_join_game(player_iterator player, simple_wml::node& join);
-	void handle_join_server_queue(player_iterator player, simple_wml::node& join_server_queue);
+	void handle_join_server_queue(player_iterator p, simple_wml::node& data);
+	void handle_leave_server_queue(player_iterator p, simple_wml::node& data);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
 

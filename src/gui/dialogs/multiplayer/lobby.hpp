@@ -118,6 +118,8 @@ private:
 
 	void join_queue();
 
+	void leave_queue();
+
 	void open_match_history();
 
 	void tab_switch_callback();
