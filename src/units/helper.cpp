@@ -122,7 +122,7 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	if(unit_recall_cost > team_recall_cost) {
 		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+		str << markup::span_color(font::GOOD_COLOR, unit_recall_cost);
 	} else {
 		// Default: show cost in white font color.
 		// Should handle the unit cost = team cost case.
@@ -160,7 +160,7 @@ std::string format_movement_string(const int moves_left, const int moves_max, bo
 	} else if(moves_left > moves_max) {
 		return markup::span_color(font::YELLOW_COLOR, moves_left, "/", moves_max);
 	} else {
-		return markup::span_color(font::GREEN_COLOR, moves_left, "/", moves_max);
+		return markup::span_color(font::GOOD_COLOR, moves_left, "/", moves_max);
 	}
 }
 
