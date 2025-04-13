@@ -604,7 +604,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				const auto [start, end] = add_text(*curr_item, line);
 				add_attribute(*curr_item, "weight", "heavy", start, end);
-				add_attribute(*curr_item, "color", font::string_to_color("white").to_hex_string(), start, end);
+				add_attribute(*curr_item, "color", "white", start, end);
 				add_attribute(*curr_item, "size", std::to_string(font::SIZE_TITLE - 2), start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
@@ -615,7 +615,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				const auto [start, end] = add_text(*curr_item, line);
 				add_attribute(*curr_item, "face",  "monospace", start, end);
-				add_attribute(*curr_item, "color", font::string_to_color("red").to_hex_string(), start, end);
+				add_attribute(*curr_item, "color", "red", start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
 

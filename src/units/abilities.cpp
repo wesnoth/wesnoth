@@ -22,6 +22,7 @@
 #include "display.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
+#include "font/standard_colors.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
@@ -984,7 +985,7 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += markup::span_color(font::BUTTON_COLOR, name);
+			temp_string += markup::span_color(font::TITLE_COLOR, name);
 		}
 	}
 }
@@ -1014,7 +1015,7 @@ std::string attack_type::weapon_specials() const
 			}
 
 			if (!active) {
-				res += markup::span_color(font::inactive_details_color, name);
+				res += markup::span_color(font::INACTIVE_COLOR, name);
 			} else {
 				res += name;
 			}

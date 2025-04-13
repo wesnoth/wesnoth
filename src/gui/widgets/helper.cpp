@@ -45,11 +45,6 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 	return font::pango_text::STYLE_NORMAL;
 }
 
-color_t decode_color(const std::string& color)
-{
-	return color_t::from_rgba_string(color);
-}
-
 PangoWeight decode_text_weight(const std::string& weight)
 {
 	if(weight == "thin") {
