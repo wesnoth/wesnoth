@@ -121,7 +121,6 @@
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
 #include <map>                          // for map, map<>::value_type, etc
-#include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
 #include <thread>

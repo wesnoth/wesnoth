@@ -20,6 +20,7 @@
 #include "color.hpp"
 #include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -429,7 +430,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 		if(active[i]) {
 			str << display_name;
 		} else {
-			str << span_color(font::inactive_ability_color, display_name);
+			str << span_color(font::INACTIVE_COLOR, display_name);
 		}
 
 		if(i + 1 != abilities_size) {
@@ -1006,7 +1007,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			const t_string &name = specials[i].first;
 			const t_string &description = specials[i].second;
 			const color_t &details_color =
-				active[i] ? font::weapon_details_color : font::inactive_details_color;
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
 			std::string help_page = "weaponspecial_" + name.base_str();

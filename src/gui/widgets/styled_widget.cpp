@@ -17,6 +17,7 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -167,7 +168,7 @@ bool styled_widget::get_link_aware() const
 
 color_t styled_widget::get_link_color() const
 {
-	return color_t::from_hex_string("ffff00");
+	return font::YELLOW_COLOR;
 }
 
 void styled_widget::layout_initialize(const bool full_initialization)

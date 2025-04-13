@@ -26,6 +26,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
@@ -45,7 +46,7 @@ label::label(const implementation::builder_label& builder)
 	, can_wrap_(builder.wrap)
 	, characters_per_line_(builder.characters_per_line)
 	, link_aware_(builder.link_aware)
-	, link_color_(color_t::from_hex_string("ffff00"))
+	, link_color_(font::YELLOW_COLOR)
 	, can_shrink_(builder.can_shrink)
 	, text_alpha_(ALPHA_OPAQUE)
 {
@@ -231,7 +232,7 @@ label_definition::label_definition(const config& cfg)
 
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
+	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("label_definition][resolution", "state_enabled")));
