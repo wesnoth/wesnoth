@@ -648,6 +648,7 @@ config map_context::to_config()
 
 	scenario.remove_children("side");
 	scenario.remove_children("event", [](config cfg){return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";});
+	scenario.remove_children("time");
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_, current_textdomain);
