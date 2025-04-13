@@ -408,14 +408,9 @@ void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel >> 0;
-
 				r = std::clamp(static_cast<int>(r) + red, 0, 255);
 				g = std::clamp(static_cast<int>(g) + green, 0, 255);
 				b = std::clamp(static_cast<int>(b) + blue, 0, 255);
@@ -432,13 +427,9 @@ void greyscale_image(surface& nsurf)
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
 				//const uint8_t avg = (red+green+blue)/3;
 
 				// Use the correct formula for RGB to grayscale conversion.
@@ -462,18 +453,13 @@ void monochrome_image(surface& nsurf, const int threshold)
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b, result;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
-
 				// first convert the pixel to grayscale
 				// if the resulting value is above the threshold make it black
 				// else make it white
-				result = static_cast<uint8_t>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
+				uint8_t result = static_cast<uint8_t>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
 
 				pixel = (alpha << 24) | (result << 16) | (result << 8) | result;
 			}
@@ -487,14 +473,9 @@ void sepia_image(surface& nsurf)
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
-
 				// this is the formula for applying a sepia effect
 				// that can be found on various web sites
 				// for example here: https://software.intel.com/sites/default/files/article/346220/sepiafilter-intelcilkplus.pdf
@@ -514,21 +495,16 @@ void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, 
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b, newR, newG, newB;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
-
 				// invert he channel only if its value is greater than the supplied threshold
 				// this can be used for solarization effects
 				// for a full negative effect, use a value of -1
 				// 255 is a no-op value (doesn't do anything, since a uint8_t cannot contain a greater value than that)
-				newR = r > thresholdR ? 255 - r : r;
-				newG = g > thresholdG ? 255 - g : g;
-				newB = b > thresholdB ? 255 - b : b;
+				uint8_t newR = r > thresholdR ? 255 - r : r;
+				uint8_t newG = g > thresholdG ? 255 - g : g;
+				uint8_t newB = b > thresholdB ? 255 - b : b;
 
 				pixel = (alpha << 24) | (newR << 16) | (newG << 8) | (newB);
 			}
@@ -594,13 +570,10 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [red, green, blue, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t red, green, blue, newRed, newGreen, newBlue, newAlpha;
-				red = pixel >> 16;
-				green = pixel >> 8;
-				blue = pixel;
+				uint8_t newRed, newGreen, newBlue, newAlpha;
 
 				switch (r) {
 					case RED:
@@ -710,14 +683,9 @@ void brighten_image(surface& nsurf, int32_t amount)
 
 		if (amount < 0) amount = 0;
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
-
 				r = std::min<unsigned>(fixed_point_multiply(r, amount),255);
 				g = std::min<unsigned>(fixed_point_multiply(g, amount),255);
 				b = std::min<unsigned>(fixed_point_multiply(b, amount),255);
@@ -743,14 +711,9 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 		surface_lock lock(nsurf);
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t alpha = pixel >> 24;
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			if(alpha) {
-				uint8_t r, g, b;
-				r = pixel >> 16;
-				g = pixel >> 8;
-				b = pixel;
-
 				alpha = uint8_t(std::clamp(static_cast<int>(alpha) + amount, 0, 255));
 				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -1239,10 +1202,11 @@ void blend_surface(surface& nsurf, const double amount, const color_t color)
 		ratio = 256 - ratio;
 
 		for(auto& pixel : lock.pixel_span()) {
-			uint8_t a = static_cast<uint8_t>(pixel >> 24);
-			uint8_t r = (ratio * static_cast<uint8_t>(pixel >> 16) + red)   >> 8;
-			uint8_t g = (ratio * static_cast<uint8_t>(pixel >> 8)  + green) >> 8;
-			uint8_t b = (ratio * static_cast<uint8_t>(pixel)       + blue)  >> 8;
+			auto [r, g, b, a] = color_t::from_argb_bytes(pixel);
+
+			r = (ratio * r + red)   >> 8;
+			g = (ratio * g + green) >> 8;
+			b = (ratio * b + blue)  >> 8;
 
 			pixel = (a << 24) | (r << 16) | (g << 8) | b;
 		}
