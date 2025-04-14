@@ -13,6 +13,7 @@
 ### User interface
 ### WML Engine
    * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-byte characters
+   * IPFs that affect color values no longer skip fully transparent pixels.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.10
