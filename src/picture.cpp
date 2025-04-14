@@ -555,7 +555,7 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 		}
 
 		// cache the result
-		surface_lightmaps_[hash] = std::move(base);
+		surface_lightmaps_[hash] = base;
 		return base;
 	};
 
