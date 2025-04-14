@@ -22,7 +22,7 @@
 #include "sound_music_track.hpp"
 #include "utils/rate_counter.hpp"
 
-#include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
 #include <list>
