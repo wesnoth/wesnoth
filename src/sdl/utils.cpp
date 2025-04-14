@@ -427,8 +427,6 @@ void greyscale_image(surface& nsurf)
 		for(auto& pixel : lock.pixel_span()) {
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
-			//const uint8_t avg = (red+green+blue)/3;
-
 			// Use the correct formula for RGB to grayscale conversion.
 			// Ok, this is no big deal :)
 			// The correct formula being:
@@ -471,12 +469,11 @@ void sepia_image(surface& nsurf)
 
 			// this is the formula for applying a sepia effect
 			// that can be found on various web sites
-			// for example here: https://software.intel.com/sites/default/files/article/346220/sepiafilter-intelcilkplus.pdf
-			uint8_t outRed = std::min(255, static_cast<int>((r * 0.393) + (g * 0.769) + (b * 0.189)));
-			uint8_t outGreen = std::min(255, static_cast<int>((r * 0.349) + (g * 0.686) + (b * 0.168)));
-			uint8_t outBlue = std::min(255, static_cast<int>((r * 0.272) + (g * 0.534) + (b * 0.131)));
+			uint8_t outR = std::min(255, static_cast<int>((r * 0.393) + (g * 0.769) + (b * 0.189)));
+			uint8_t outG = std::min(255, static_cast<int>((r * 0.349) + (g * 0.686) + (b * 0.168)));
+			uint8_t outB = std::min(255, static_cast<int>((r * 0.272) + (g * 0.534) + (b * 0.131)));
 
-			pixel = (alpha << 24) | (outRed << 16) | (outGreen << 8) | (outBlue);
+			pixel = (alpha << 24) | (outR << 16) | (outG << 8) | (outB);
 		}
 	}
 }
@@ -646,15 +643,22 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	surface_lock lock(nsurf);
 
 	for(auto& pixel : lock.pixel_span()) {
-		uint8_t alpha = pixel >> 24;
+		auto color = color_t::from_argb_bytes(pixel);
 
 		// Palette use only RGB channels, so remove alpha
-		uint32_t oldrgb = pixel | 0xFF000000;
+		uint8_t old_alpha = color.a;
+		color.a = ALPHA_OPAQUE;
 
-		auto i = map_rgb.find(color_t::from_argb_bytes(oldrgb));
-		if(i != map_rgb.end()) {
-			pixel = (alpha << 24) | (i->second.to_argb_bytes() & 0x00FFFFFF);
+		auto iter = map_rgb.find(color);
+		if(iter == map_rgb.end()) {
+			continue;
 		}
+
+		// Set new color, restore alpha
+		color = iter->second;
+		color.a = old_alpha;
+
+		pixel = color.to_argb_bytes();
 	}
 }
 
@@ -667,9 +671,9 @@ void brighten_image(surface& nsurf, int32_t amount)
 		for(auto& pixel : lock.pixel_span()) {
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
-			r = std::min<unsigned>(fixed_point_multiply(r, amount),255);
-			g = std::min<unsigned>(fixed_point_multiply(g, amount),255);
-			b = std::min<unsigned>(fixed_point_multiply(b, amount),255);
+			r = std::min<unsigned>(fixed_point_multiply(r, amount), 255);
+			g = std::min<unsigned>(fixed_point_multiply(g, amount), 255);
+			b = std::min<unsigned>(fixed_point_multiply(b, amount), 255);
 
 			pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 		}
@@ -734,11 +738,7 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		const uint32_t* mend = mbeg + nmask->w*nmask->h;
 
 		while(beg != end && mbeg != mend) {
-			uint8_t alpha = (*beg) >> 24;
-			uint8_t r, g, b;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
 
 			uint8_t malpha = (*mbeg) >> 24;
 			if (alpha > malpha) {
@@ -823,21 +823,13 @@ void light_surface(surface& nsurf, const surface &lightmap)
 		const uint32_t* lend = lbeg + lightmap.area();
 
 		while(beg != end && lbeg != lend) {
-			uint8_t alpha = (*beg) >> 24;
-			uint8_t lr, lg, lb;
-
-			lr = (*lbeg) >> 16;
-			lg = (*lbeg) >> 8;
-			lb = (*lbeg);
-
-			uint8_t r, g, b;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
+			auto [lr, lg, lb, la] = color_t::from_argb_bytes(*lbeg);
+			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
 
 			int dr = (static_cast<int>(lr) - 128) * 2;
 			int dg = (static_cast<int>(lg) - 128) * 2;
 			int db = (static_cast<int>(lb) - 128) * 2;
+
 			//note that r + dr will promote r to int (needed to avoid uint8_t math)
 			r = std::clamp(r + dr, 0, 255);
 			g = std::clamp(g + dg, 0, 255);

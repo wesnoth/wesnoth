@@ -243,9 +243,12 @@ void wipe_alpha_modification::operator()(surface& src) const
 class pixel_callable : public wfl::color_callable
 {
 public:
-	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
-		: color_callable(clr), p(p), w(w), h(h)
-	{}
+	pixel_callable(std::size_t index, color_t clr, int w, int h)
+		: color_callable(clr), coord(), w(w), h(h)
+	{
+		coord.x = index % w;
+		coord.y = index / w;
+	}
 
 	void get_inputs(wfl::formula_input_vector& inputs) const override
 	{
@@ -262,25 +265,25 @@ public:
 	{
 		using wfl::variant;
 		if(key == "x") {
-			return variant(p.x);
+			return variant(coord.x);
 		} else if(key == "y") {
-			return variant(p.y);
+			return variant(coord.y);
 		} else if(key == "width") {
 			return variant(w);
 		} else if(key == "height") {
 			return variant(h);
 		} else if(key == "u") {
-			return variant(p.x / static_cast<float>(w));
+			return variant(coord.x / static_cast<float>(w));
 		} else if(key == "v") {
-			return variant(p.y / static_cast<float>(h));
+			return variant(coord.y / static_cast<float>(h));
 		}
 
 		return color_callable::get_value(key);
 	}
 
 private:
-	SDL_Point p;
-	uint32_t w, h;
+	SDL_Point coord;
+	int w, h;
 };
 
 void adjust_alpha_modification::operator()(surface& src) const
@@ -289,27 +292,15 @@ void adjust_alpha_modification::operator()(surface& src) const
 		wfl::formula new_alpha(formula_);
 
 		surface_lock lock(src);
-		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src.area();
-		uint32_t* const beg = cur;
+		std::size_t index{0};
 
-		while(cur != end) {
-			color_t pixel;
-			pixel.a = (*cur) >> 24;
-			pixel.r = (*cur) >> 16;
-			pixel.g = (*cur) >> 8;
-			pixel.b = (*cur);
+		for(auto& pixel : lock.pixel_span()) {
+			auto color = color_t::from_argb_bytes(pixel);
 
-			int i = cur - beg;
-			SDL_Point p;
-			p.y = i / src->w;
-			p.x = i % src->w;
+			auto px = pixel_callable{index++, color, src->w, src->h};
+			color.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
 
-			pixel_callable px(p, pixel, src->w, src->h);
-			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
-			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
-
-			++cur;
+			pixel = color.to_argb_bytes();
 		}
 	}
 }
@@ -317,36 +308,24 @@ void adjust_alpha_modification::operator()(surface& src) const
 void adjust_channels_modification::operator()(surface& src) const
 {
 	if(src) {
-		wfl::formula new_red(formulas_[0]);
-		wfl::formula new_green(formulas_[1]);
-		wfl::formula new_blue(formulas_[2]);
-		wfl::formula new_alpha(formulas_[3]);
+		wfl::formula new_r(formulas_[0]);
+		wfl::formula new_g(formulas_[1]);
+		wfl::formula new_b(formulas_[2]);
+		wfl::formula new_a(formulas_[3]);
 
 		surface_lock lock(src);
-		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src.area();
-		uint32_t* const beg = cur;
+		std::size_t index{0};
 
-		while(cur != end) {
-			color_t pixel;
-			pixel.a = (*cur) >> 24;
-			pixel.r = (*cur) >> 16;
-			pixel.g = (*cur) >> 8;
-			pixel.b = (*cur);
+		for(auto& pixel : lock.pixel_span()) {
+			auto color = color_t::from_argb_bytes(pixel);
 
-			int i = cur - beg;
-			SDL_Point p;
-			p.y = i / src->w;
-			p.x = i % src->w;
+			auto px = pixel_callable{index++, color, src->w, src->h};
+			color.r = std::min<unsigned>(new_r.evaluate(px).as_int(), 255);
+			color.g = std::min<unsigned>(new_g.evaluate(px).as_int(), 255);
+			color.b = std::min<unsigned>(new_b.evaluate(px).as_int(), 255);
+			color.a = std::min<unsigned>(new_a.evaluate(px).as_int(), 255);
 
-			pixel_callable px(p, pixel, src->w, src->h);
-			pixel.r = std::min<unsigned>(new_red.evaluate(px).as_int(), 255);
-			pixel.g = std::min<unsigned>(new_green.evaluate(px).as_int(), 255);
-			pixel.b = std::min<unsigned>(new_blue.evaluate(px).as_int(), 255);
-			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
-			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
-
-			++cur;
+			pixel = color.to_argb_bytes();
 		}
 	}
 }
