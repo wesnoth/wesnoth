@@ -1033,7 +1033,9 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 {
 	terrain_image_vector_.clear();
 
-	std::vector<image::light_adjust> lighting;
+	static std::vector<image::light_adjust> lighting;
+	lighting.clear();
+
 	const time_of_day& tod = get_time_of_day(loc);
 
 	// get all the light transitions

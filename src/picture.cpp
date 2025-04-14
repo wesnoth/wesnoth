@@ -479,14 +479,20 @@ static surface load_image_data_uri(const image::locator& loc)
 	return surf;
 }
 
-namespace
+light_adjust::light_adjust(int op, int rr, int gg, int bb)
+	: l(op), r(), g(), b()
 {
-// small utility function to store an int from (-256,254) to an signed char
-int8_t to_int8(int i)
-{
-	return std::clamp<int8_t>(i >> 1, std::numeric_limits<int8_t>::min(), std::numeric_limits<int8_t>::max());
+	constexpr int min = std::numeric_limits<int8_t>::min();
+	constexpr int max = std::numeric_limits<int8_t>::max();
+
+	// Clamp in a wider type (int) to avoid truncating the input value prematurely
+	r = std::clamp(rr / 2, min, max);
+	g = std::clamp(gg / 2, min, max);
+	b = std::clamp(bb / 2, min, max);
 }
 
+namespace
+{
 std::size_t hash_light_range(const utils::span<const light_adjust>& range)
 {
 	std::size_t hash{0};
@@ -499,14 +505,6 @@ std::size_t hash_light_range(const utils::span<const light_adjust>& range)
 
 } // namespace
 
-light_adjust::light_adjust(int op, int r, int g, int b)
-	: l(op)
-	, r(to_int8(r))
-	, g(to_int8(g))
-	, b(to_int8(b))
-{
-}
-
 static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 {
 	// atomic lightmap operation are handled directly (important to end recursion)
@@ -518,15 +516,15 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 		return surf;
 	}
 
-	// check if the lightmap is already cached or need to be generated
-	surface lightmap = nullptr;
+	const auto get_lightmap = [&ls]
+	{
+		const auto hash = hash_light_range(ls);
+		const auto iter = surface_lightmaps_.find(hash);
 
-	auto hash = hash_light_range(ls);
-	auto iter = surface_lightmaps_.find(hash);
+		if(iter != surface_lightmaps_.end()) {
+			return iter->second;
+		}
 
-	if(iter != surface_lightmaps_.end()) {
-		lightmap = iter->second;
-	} else {
 		// build all the paths for lightmap sources
 		static const std::string p = "terrain/light/light";
 		static const std::string lm_img[19] {
@@ -539,28 +537,30 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 			p + "-convex-r-tr.png",  p + "-convex-br-r.png", p + "-convex-bl-br.png"
 		};
 
-		// decompose into atomic lightmap operations
+		// first image will be the base onto which we blit the others
+		surface base;
+
 		for(const light_adjust& adj : ls) {
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
 			surface lts = image::get_lighted_image(lm_img[adj.l], utils::span{ &adj, 1 });
 
-			// first image will be the base where we blit the others
-			if(lightmap == nullptr) {
+			if(base == nullptr) {
 				// copy the cached image to avoid modifying the cache
-				lightmap = lts.clone();
+				base = lts.clone();
 			} else {
-				sdl_blit(lts, nullptr, lightmap, nullptr);
+				sdl_blit(lts, nullptr, base, nullptr);
 			}
 		}
 
 		// cache the result
-		surface_lightmaps_[hash] = lightmap;
-	}
+		surface_lightmaps_[hash] = std::move(base);
+		return base;
+	};
 
 	// apply the final lightmap
-	light_surface(surf, lightmap);
+	light_surface(surf, get_lightmap());
 	return surf;
 }
 
