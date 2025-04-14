@@ -27,12 +27,20 @@ extern const color_t
 	// These are GUI1 formatting colors and should be removed when GUI1 is
 	NORMAL_COLOR,
 	GRAY_COLOR,
+	LOBBY_COLOR,
 	GOOD_COLOR,
 	BAD_COLOR,
+	BLACK_COLOR,
 	YELLOW_COLOR,
+	BUTTON_COLOR,
+	BIGMAP_COLOR,
+	PETRIFIED_COLOR,
 	TITLE_COLOR,
+	DISABLED_COLOR,
 	LABEL_COLOR,
 	INACTIVE_COLOR,
+	GREEN_COLOR,
+	BLUE_COLOR,
 
 	// General purpose color values
 	weapon_color,
@@ -40,12 +48,14 @@ extern const color_t
 	bad_dmg_color,
 	weapon_details_color,
 	inactive_details_color,
-	unit_type_color;
+	inactive_ability_color,
+	unit_type_color,
+	race_color;
 
 /**
  * Return the color the string represents. Return font::NORMAL_COLOR if
  * the string is empty or can't be matched against any other color.
  */
-color_t string_to_color(const std::string& color_str);
+color_t string_to_color(const std::string &s);
 
 }

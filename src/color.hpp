@@ -20,7 +20,6 @@
 #include <cstdint>
 #include <ostream>
 #include <string>
-#include <tuple>
 #include <utility>
 
 constexpr uint32_t SDL_ALPHA_MASK = 0xFF000000;
@@ -134,15 +133,6 @@ struct color_t : SDL_Color
 		};
 	}
 
-	static constexpr color_t from_48bit_color(uint16_t r, uint16_t g, uint16_t b)
-	{
-		return {
-			static_cast<uint8_t>(r * 255.0 / std::numeric_limits<uint16_t>::max()),
-			static_cast<uint8_t>(g * 255.0 / std::numeric_limits<uint16_t>::max()),
-			static_cast<uint8_t>(b * 255.0 / std::numeric_limits<uint16_t>::max())
-		};
-	}
-
 	/**
 	 * Returns the stored color in rrggbb hex format.
 	 *
@@ -192,20 +182,6 @@ struct color_t : SDL_Color
 	 * @return      The new color string.
 	 */
 	std::string to_rgb_string() const;
-
-	/**
-	 * Returns the color as a triplet of 16 bit integers, a format used by Pango.
-	 *
-	 * @return      A tuple containing R,G,B values as 16 bit integers
-	 */
-	constexpr std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16() const
-	{
-		return {
-			r / 255.0 * std::numeric_limits<uint16_t>::max(),
-			g / 255.0 * std::numeric_limits<uint16_t>::max(),
-			b / 255.0 * std::numeric_limits<uint16_t>::max()
-		};
-	}
 
 	constexpr bool null() const
 	{

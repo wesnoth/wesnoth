@@ -984,7 +984,7 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += markup::span_color(font::TITLE_COLOR, name);
+			temp_string += markup::span_color(font::BUTTON_COLOR, name);
 		}
 	}
 }

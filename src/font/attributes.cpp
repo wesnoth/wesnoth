@@ -59,6 +59,17 @@ public:
 private:
 	std::unique_ptr<PangoAttribute, void(*)(PangoAttribute*)> value_;
 };
+
+/** Pango sometimes handles colors as 16 bit integers. */
+constexpr std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16(const color_t& color)
+{
+	return {
+		color.r / 255.0 * std::numeric_limits<uint16_t>::max(),
+		color.g / 255.0 * std::numeric_limits<uint16_t>::max(),
+		color.b / 255.0 * std::numeric_limits<uint16_t>::max()
+	};
+}
+
 } // anon namespace
 
 void add_attribute_size(attribute_list& list, unsigned offset_start, unsigned offset_end, int size)
@@ -118,7 +129,7 @@ void add_attribute_underline(attribute_list& list, unsigned offset_start, unsign
 
 void add_attribute_fg_color(attribute_list& list, unsigned offset_start, unsigned offset_end, const color_t& color)
 {
-	auto [col_r, col_g, col_b] = color.color_to_uint16();
+	auto [col_r, col_g, col_b] = color_to_uint16(color);
 
 	attribute attr {
 		pango_attr_foreground_new(col_r, col_g, col_b),
@@ -134,7 +145,7 @@ void add_attribute_fg_color(attribute_list& list, unsigned offset_start, unsigne
 
 void add_attribute_bg_color(attribute_list& list, unsigned offset_start, unsigned offset_end, const color_t& color)
 {
-	auto [col_r, col_g, col_b] = color.color_to_uint16();
+	auto [col_r, col_g, col_b] = color_to_uint16(color);
 
 	attribute attr {
 		pango_attr_background_new(col_r, col_g, col_b),
