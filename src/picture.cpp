@@ -122,8 +122,8 @@ using texture_cache = cache_type<texture>;
 using bool_cache = cache_type<bool>;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-using lit_surface_variants = std::map<std::size_t, surface>;
-using lit_texture_variants = std::map<std::size_t, texture>;
+using lit_surface_variants = std::unordered_map<std::size_t, surface>;
+using lit_texture_variants = std::unordered_map<std::size_t, texture>;
 
 /** Lit variants for each locator. */
 using lit_surface_cache = cache_type<lit_surface_variants>;
