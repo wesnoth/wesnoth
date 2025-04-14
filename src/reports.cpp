@@ -1171,9 +1171,9 @@ static config unit_weapons(const reports::context& rc, const unit_const_ptr& att
  * Display the attacks of the displayed unit against the unit passed as argument.
  * 'hex' is the location the attacker will be at during combat.
  */
-static config unit_weapons(const reports::context& rc, const unit *u, const map_location &hex)
+static config unit_weapons(const reports::context& rc, const unit* u, const map_location& hex)
 {
-	config res = config();
+	config res;
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
@@ -1189,7 +1189,7 @@ static config unit_weapons(const reports::context& rc, const unit *u, const map_
 				_("This unit can attack multiple times per turn."));
 		}
 
-		for (const attack_type &at : u->attacks())
+		for (const attack_type& at : u->attacks())
 		{
 			attack_info(rc, at, res, *u, hex);
 		}

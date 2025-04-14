@@ -666,6 +666,10 @@ std::string unit_topic_generator::operator()() const {
 	//
 	ss << "\n" << markup::tag("header", _("Attacks"));
 
+	if (type_.max_attacks() > 1) {
+		ss << "\n" << markup::italic(_("Attacks per turn: ")) << type_.max_attacks();
+	}
+
 	if(!type_.attacks().empty()) {
 		// Check if at least one attack has special.
 		// Otherwise the Special column will be hidden.
@@ -702,9 +706,21 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss << markup::tag("col", lang_weapon);
 
 			// damage x strikes
-			attack_ss << markup::tag("col",
-				attack.damage(), font::weapon_numbers_sep, attack.num_attacks(),
-				" ", attack.accuracy_parry_description());
+			if (type_.max_attacks() > 1) {
+				attack_ss << markup::tag("col",
+					attack.damage(), font::weapon_numbers_sep, attack.num_attacks(),
+					" ", attack.accuracy_parry_description(),
+					"\n",
+					VNGETTEXT(
+						"uses $num attack",
+						"uses $num attacks",
+						attack.attacks_used(),
+						{ {"num", std::to_string(attack.attacks_used())} }));
+			} else {
+				attack_ss << markup::tag("col",
+					attack.damage(), font::weapon_numbers_sep, attack.num_attacks(),
+					" ", attack.accuracy_parry_description());
+			}
 
 			// range
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
