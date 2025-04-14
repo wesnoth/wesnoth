@@ -1033,7 +1033,9 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 {
 	terrain_image_vector_.clear();
 
-	image::light_string lt;
+	static std::vector<image::light_adjust> lighting;
+	lighting.clear();
+
 	const time_of_day& tod = get_time_of_day(loc);
 
 	// get all the light transitions
@@ -1065,15 +1067,15 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 1, acol.r, acol.g, acol.b);
 	}
 
 	for(int d = 0; d < 6; ++d) {
@@ -1097,15 +1099,15 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 7, acol.r, acol.g, acol.b);
 	}
 
 	for(int d = 0; d < 6; ++d) {
@@ -1129,22 +1131,22 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod2.color + color_adjust_;
-		lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 13, acol.r, acol.g, acol.b);
 	}
 
-	if(lt.empty()){
+	if(lighting.empty()){
 		tod_color col = tod.color + color_adjust_;
 		if(!col.is_zero()){
 			// no real lightmap needed but still color the hex
-			lt = image::get_light_string(-1, col.r, col.g, col.b);
+			lighting.emplace_back(-1, col.r, col.g, col.b);
 		}
 	}
 
@@ -1168,10 +1170,10 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 			if(off_map) {
 				tex = image::get_texture(image, image::HEXED);
-			} else if(lt.empty()) {
+			} else if(lighting.empty()) {
 				tex = image::get_texture(image, image::HEXED);
 			} else {
-				tex = image::get_lighted_texture(image, lt);
+				tex = image::get_lighted_texture(image, lighting);
 			}
 
 			if(tex) {
@@ -2667,7 +2669,7 @@ void display::draw_overlays_at(const map_location& loc)
 	const time_of_day& tod = get_time_of_day(loc);
 	tod_color tod_col = tod.color + color_adjust_;
 
-	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+	auto lt = image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b};
 
 	for(const overlay& ov : overlays) {
 		if(fogged(loc) && !ov.visible_in_fog) {
@@ -2687,7 +2689,7 @@ void display::draw_overlays_at(const map_location& loc)
 		}
 
 		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-			? image::get_lighted_texture(ov.image, lt)
+			? image::get_lighted_texture(ov.image, utils::span{&lt, 1})
 			: image::get_texture(ov.image, image::HEXED);
 
 		// Base submerge value for the terrain at this location

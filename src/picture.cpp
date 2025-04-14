@@ -122,8 +122,8 @@ using texture_cache = cache_type<texture>;
 using bool_cache = cache_type<bool>;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-using lit_surface_variants = std::map<light_string, surface>;
-using lit_texture_variants = std::map<light_string, texture>;
+using lit_surface_variants = std::map<std::size_t, surface>;
+using lit_texture_variants = std::map<std::size_t, texture>;
 
 /** Lit variants for each locator. */
 using lit_surface_cache = cache_type<lit_surface_variants>;
@@ -479,39 +479,52 @@ static surface load_image_data_uri(const image::locator& loc)
 	return surf;
 }
 
-// small utility function to store an int from (-256,254) to an signed char
-static int8_t col_to_uchar(int i)
+light_adjust::light_adjust(int op, int rr, int gg, int bb)
+	: l(op), r(), g(), b()
 {
-	return static_cast<int8_t>(std::clamp(i / 2, -128, 127));
+	constexpr int min = std::numeric_limits<int8_t>::min();
+	constexpr int max = std::numeric_limits<int8_t>::max();
+
+	// Clamp in a wider type (int) to avoid truncating the input value prematurely
+	r = std::clamp(rr / 2, min, max);
+	g = std::clamp(gg / 2, min, max);
+	b = std::clamp(bb / 2, min, max);
 }
 
-light_string get_light_string(int op, int r, int g, int b)
+namespace
 {
-	return {
-		static_cast<int8_t>(op),
-		col_to_uchar(r),
-		col_to_uchar(g),
-		col_to_uchar(b),
-	};
+std::size_t hash_light_range(const utils::span<const light_adjust>& range)
+{
+	std::size_t hash{0};
+	for(const auto& adjustment : range) {
+		hash += adjustment.l + adjustment.r + adjustment.g + adjustment.b;
+	}
+
+	return hash;
 }
 
-static surface apply_light(surface surf, const light_string& ls)
+} // namespace
+
+static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 {
 	// atomic lightmap operation are handled directly (important to end recursion)
-	if(ls.size() == 4) {
+	if(ls.size() == 1) {
 		// if no lightmap (first char = -1) then we need the initial value
 		//(before the halving done for lightmap)
-		int m = ls[0] == -1 ? 2 : 1;
-		adjust_surface_color(surf, ls[1] * m, ls[2] * m, ls[3] * m);
+		int m = ls[0].l == -1 ? 2 : 1;
+		adjust_surface_color(surf, ls[0].r * m, ls[0].g * m, ls[0].b * m);
 		return surf;
 	}
 
-	// check if the lightmap is already cached or need to be generated
-	surface lightmap = nullptr;
-	auto i = surface_lightmaps_.find(ls);
-	if(i != surface_lightmaps_.end()) {
-		lightmap = i->second;
-	} else {
+	const auto get_lightmap = [&ls]
+	{
+		const auto hash = hash_light_range(ls);
+		const auto iter = surface_lightmaps_.find(hash);
+
+		if(iter != surface_lightmaps_.end()) {
+			return iter->second;
+		}
+
 		// build all the paths for lightmap sources
 		static const std::string p = "terrain/light/light";
 		static const std::string lm_img[19] {
@@ -524,30 +537,30 @@ static surface apply_light(surface surf, const light_string& ls)
 			p + "-convex-r-tr.png",  p + "-convex-br-r.png", p + "-convex-bl-br.png"
 		};
 
-		// decompose into atomic lightmap operations (4 chars)
-		for(std::size_t c = 0; c + 3 < ls.size(); c += 4) {
-			light_string sls = ls.substr(c, 4);
+		// first image will be the base onto which we blit the others
+		surface base;
 
+		for(const light_adjust& adj : ls) {
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
-			surface lts = image::get_lighted_image(lm_img[sls[0]], sls);
+			surface lts = image::get_lighted_image(lm_img[adj.l], utils::span{ &adj, 1 });
 
-			// first image will be the base where we blit the others
-			if(lightmap == nullptr) {
+			if(base == nullptr) {
 				// copy the cached image to avoid modifying the cache
-				lightmap = lts.clone();
+				base = lts.clone();
 			} else {
-				sdl_blit(lts, nullptr, lightmap, nullptr);
+				sdl_blit(lts, nullptr, base, nullptr);
 			}
 		}
 
 		// cache the result
-		surface_lightmaps_[ls] = lightmap;
-	}
+		surface_lightmaps_[hash] = base;
+		return base;
+	};
 
 	// apply the final lightmap
-	light_surface(surf, lightmap);
+	light_surface(surf, get_lightmap());
 	return surf;
 }
 
@@ -720,7 +733,7 @@ surface get_surface(
 	return res;
 }
 
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls)
+surface get_lighted_image(const image::locator& i_locator, utils::span<const light_adjust> ls)
 {
 	if(i_locator.is_void()) {
 		return {};
@@ -729,24 +742,24 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	lit_surface_variants& lvar = lit_surfaces_.access_in_cache(i_locator);
 
 	// Check the matching list_string variants for this locator
-	if(auto lvi = lvar.find(ls); lvi != lvar.end()) {
-		return lvi->second;
-	}
+	const auto hash = hash_light_range(ls);
+	const auto iter = lvar.find(hash);
 
-	DBG_IMG << "lit surface cache miss: " << i_locator;
+	if(iter != lvar.end()) {
+		return iter->second;
+	} else {
+		DBG_IMG << "lit surface cache miss: " << i_locator;
+	}
 
 	// not cached yet, generate it
 	surface res = apply_light(get_surface(i_locator, HEXED).clone(), ls);
 
 	// record the lighted surface in the corresponding variants cache
-	lvar[ls] = res;
-
+	lvar[hash] = res;
 	return res;
 }
 
-texture get_lighted_texture(
-	const image::locator& i_locator,
-	const light_string& ls)
+texture get_lighted_texture(const image::locator& i_locator, utils::span<const light_adjust> ls)
 {
 	if(i_locator.is_void()) {
 		return texture();
@@ -755,18 +768,20 @@ texture get_lighted_texture(
 	lit_texture_variants& lvar = lit_textures_.access_in_cache(i_locator);
 
 	// Check the matching list_string variants for this locator
-	if(auto lvi = lvar.find(ls); lvi != lvar.end()) {
-		return lvi->second;
-	}
+	const auto hash = hash_light_range(ls);
+	const auto iter = lvar.find(hash);
 
-	DBG_IMG << "lit texture cache miss: " << i_locator;
+	if(iter != lvar.end()) {
+		return iter->second;
+	} else {
+		DBG_IMG << "lit texture cache miss: " << i_locator;
+	}
 
 	// not cached yet, generate it
 	texture tex(get_lighted_image(i_locator, ls));
 
 	// record the lighted texture in the corresponding variants cache
-	lvar[ls] = tex;
-
+	lvar[hash] = tex;
 	return tex;
 }
 
