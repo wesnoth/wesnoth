@@ -18,6 +18,7 @@
 
 #include <algorithm> // for max
 #include <cstdint>
+#include <limits>
 #include <ostream>
 #include <string>
 #include <tuple>
