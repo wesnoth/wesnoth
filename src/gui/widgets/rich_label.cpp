@@ -388,7 +388,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			new_text_block = true;
 			is_image = false;
 
-			DBG_GUI_RL << "start table : " << "row= " << rows << " col=" << columns
+			DBG_GUI_RL << "start table: " << "row=" << rows << " col=" << columns
 			           << " width=" << init_cell_width*columns;
 
 			const auto get_padding = [this](const config::attribute_value& val) {
@@ -473,6 +473,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					text_dom.append(std::move(bg_base));
 				}
 
+				row_paddings = get_padding(row["padding"]);
 				pos.y += row_paddings[0];
 
 				for(const config& col : row.child_range("col")) {
