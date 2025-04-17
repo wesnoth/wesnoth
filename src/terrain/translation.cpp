@@ -78,18 +78,17 @@ namespace t_translation {
 
 	/**
 	 * Converts a terrain string to a number.
-	 * If the terrain has only a base layer then the overlay will be NO_LAYER.
-	 *
 	 * @param str               The terrain string with an optional number.
 	 * @param start_positions   Returns the start_positions, the caller should
 	 *                          set it on -1 and it's only changed it there is
 	 *                          a starting position found.
+	 * @param filler            If no overlay is specified this value will be used.
 	 *
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions);
-	static terrain_code string_to_number_(std::string_view str);
+	static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions, const ter_layer filler);
+	static terrain_code string_to_number_(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Converts a terrain number to a string
@@ -171,8 +170,8 @@ ter_match::ter_match() :
 	is_empty(true)
 {}
 
-ter_match::ter_match(std::string_view str) :
-	terrain(t_translation::read_list(str)),
+ter_match::ter_match(std::string_view str, const ter_layer filler) :
+	terrain(t_translation::read_list(str, filler)),
 	mask(),
 	masked_terrain(),
 	has_wildcard(t_translation::has_wildcard(terrain)),
@@ -204,9 +203,9 @@ ter_match::ter_match(const terrain_code& tcode):
 	}
 }
 
-terrain_code read_terrain_code(std::string_view str)
+terrain_code read_terrain_code(std::string_view str, const ter_layer filler)
 {
-	return string_to_number_(str);
+	return string_to_number_(str, filler);
 }
 
 std::string write_terrain_code(const terrain_code& tcode)
@@ -214,7 +213,7 @@ std::string write_terrain_code(const terrain_code& tcode)
 	return number_to_string_(tcode);
 }
 
-ter_list read_list(std::string_view str)
+ter_list read_list(std::string_view str, const ter_layer filler)
 {
 	// Handle an empty string
 	ter_list result;
@@ -232,7 +231,7 @@ ter_list read_list(std::string_view str)
 		std::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
-		const terrain_code tile = string_to_number_(terrain);
+		const terrain_code tile = string_to_number_(terrain, filler);
 
 		// Add the resulting terrain number
 		result.push_back(tile);
@@ -316,7 +315,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		// Process the chunk
 		std::vector<std::string> sp;
 		// The gamemap never has a wildcard
-		const terrain_code tile = string_to_number_(terrain, sp);
+		const terrain_code tile = string_to_number_(terrain, sp, NO_LAYER);
 
 		// Add to the resulting starting position
 		for(const auto& starting_position : sp) {
@@ -451,7 +450,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 		}
 
 		// Match inverse symbol
-		if(*itor == NOT) {
+		if(itor->base == NOT.base) {
 			result = !result;
 			continue;
 		}
@@ -529,7 +528,7 @@ bool terrain_matches(const terrain_code& src, const ter_match& dest)
 		}
 
 		// Match inverse symbol
-		if(*terrain_itor == NOT) {
+		if(terrain_itor->base == NOT.base) {
 			result = !result;
 			continue;
 		}
@@ -731,12 +730,12 @@ static ter_layer string_to_layer_(std::string_view str)
 	return result;
 }
 
-static terrain_code string_to_number_(std::string_view str) {
+static terrain_code string_to_number_(std::string_view str, const ter_layer filler) {
 	std::vector<std::string> dummy;
-	return string_to_number_(str, dummy);
+	return string_to_number_(str, dummy, filler);
 }
 
-static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions)
+static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions, const ter_layer filler)
 {
 	terrain_code result;
 
@@ -759,7 +758,7 @@ static terrain_code string_to_number_(std::string_view str, std::vector<std::str
 	if(offset !=  std::string::npos) {
 		result = terrain_code { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
 	} else {
-		result = terrain_code { string_to_layer_(str), NO_LAYER };
+		result = terrain_code { string_to_layer_(str), filler };
 	}
 
 	return result;
