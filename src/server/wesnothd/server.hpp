@@ -203,7 +203,7 @@ private:
 	std::deque<login_log>::size_type failed_login_buffer_size_;
 
 	/** Parse the server config into local variables. */
-	void load_config();
+	void load_config(bool reload);
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
 	utils::optional<server_base::login_ban_info> is_ip_banned(const std::string& ip);

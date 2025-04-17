@@ -667,7 +667,9 @@ void mp_lobby::pre_show()
 	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
 	queues_listbox->clear();
 
-	for(const mp::queue_info& info : mp::get_server_queues()) {
+	std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
+	for(const mp::queue_info& info : queues) {
 		widget_data data;
 		widget_item item;
 
@@ -825,18 +827,49 @@ void mp_lobby::process_network_data(const config& data)
 		set_retval(CREATE_PRESET);
 		return;
 	} else if(auto join_game = data.optional_child("join_game")) {
-		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
+		enter_game_by_id(join_game["queue_id"].to_int(), JOIN_MODE::DO_JOIN);
 		return;
 	} else if(auto queue_update = data.optional_child("queue_update")) {
 		listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
 		queues_listbox->clear();
 
-		for(mp::queue_info& info : mp::get_server_queues()) {
-			if(info.id == queue_update["queue_id"].to_int()) {
-				info.current_players = utils::split_set(queue_update["current_players"].str());
+		std::vector<mp::queue_info>& queues = mp::get_server_queues();
+		if(queue_update["action"].str() == "add") {
+			mp::queue_info& new_info = queues.emplace_back();
+			new_info.id = queue_update["queue_id"].to_int();
+			new_info.players_required = queue_update["players_required"].to_int();
+			new_info.queue_display_name = queue_update["queue_display_name"].str();
+			new_info.scenario_id = queue_update["scenario_id"].str();
+		} else {
+			for(mp::queue_info& info : queues) {
+				if(info.id == queue_update["queue_id"].to_int()) {
+					if(queue_update["action"].str() == "remove") {
+						utils::erase_if(queues, [&](const mp::queue_info& i) { return i.id == queue_update["queue_id"].to_int(); });
+					} else if(queue_update["action"].str() == "update") {
+						if(queue_update->has_attribute("scenario_id")) {
+							info.scenario_id = queue_update["scenario_id"].str();
+						}
+						if(queue_update->has_attribute("queue_display_name")) {
+							info.queue_display_name = queue_update["queue_display_name"].str();
+						}
+						if(queue_update->has_attribute("players_required")) {
+							info.players_required = queue_update["players_required"].to_int();
+						}
+						if(queue_update->has_attribute("current_players")){
+							info.current_players = utils::split_set(queue_update["current_players"].str());
+						}
+					} else {
+						continue;
+					}
+				}
 			}
+		}
+		std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
+
+		for(const mp::queue_info& info : queues) {
 			widget_data data;
 			widget_item item;
+			PLAIN_LOG << info.id;
 
 			item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
 			data.emplace("is_in_queue", item);
@@ -849,6 +882,7 @@ void mp_lobby::process_network_data(const config& data)
 
 			queues_listbox->add_row(data);
 		}
+
 		return;
 	}
 
