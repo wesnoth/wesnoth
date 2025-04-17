@@ -585,7 +585,13 @@ std::pair<config, point> rich_label::get_parsed_text(
 				// TODO only the formatting tags here support nesting
 
 				add_text_with_attribute(*curr_item, line, key);
-				config parsed_children = get_parsed_text(child, point(x, prev_blk_height), init_width).first;
+
+				// Calculate the location of the nested children
+				setup_text_renderer(*curr_item, init_w_ - origin.x - float_size.x);
+				point child_origin = origin + get_xy_from_offset(utf8::size((*curr_item)["text"].str()));
+				child_origin.y += prev_blk_height;
+
+				config parsed_children = get_parsed_text(child, child_origin, init_width).first;
 
 				for(const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
 					if(parsed_key == "text") {
@@ -643,6 +649,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				is_text = true;
 
+				// Text wrapping around floating images
 				if(wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
