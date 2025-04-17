@@ -57,6 +57,11 @@ public:
 
 	unsigned long long get_login_id() const { return login_id_; };
 
+	void add_queue(int queue_id) { in_queues_.emplace(queue_id); }
+	void clear_queues() { in_queues_.clear(); }
+	void remove_from_queue(int queue_id) { in_queues_.erase(queue_id); }
+	const std::set<int>& get_queues() const { return in_queues_; }
+
 private:
 	const std::string name_;
 	std::string version_;
@@ -72,6 +77,7 @@ private:
 	STATUS status_;
 	bool moderator_;
 	unsigned long long login_id_;
+	std::set<int> in_queues_;
 };
 
 } //namespace wesnothd
