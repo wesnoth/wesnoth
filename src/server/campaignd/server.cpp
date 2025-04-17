@@ -257,24 +257,6 @@ std::vector<std::string> multi_find_case_conflicts(const std::initializer_list<o
 	return names;
 }
 
-/**
- * Escapes double quotes intended to be passed into simple_wml.
- *
- * Just why does simple_wml have to be so broken to force us to use this, though?
- */
-std::string simple_wml_escape(const std::string& text)
-{
-	std::string res;
-	auto it = text.begin();
-
-	while(it != text.end()) {
-		res.append(*it == '"' ? 2 : 1, *it);
-		++it;
-	}
-
-	return res;
-}
-
 } // end anonymous namespace
 
 server::server(const std::string& cfg_file, unsigned short port)
@@ -843,9 +825,8 @@ bool server::ignore_address_stats(const std::string& addr) const
 
 void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 {
-	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
-	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
+	doc.root().add_child("message").set_attr_esc("message", msg);
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
@@ -856,9 +837,8 @@ inline std::string client_address(const any_socket_ptr& sock) {
 void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 {
 	ERR_CS << "[" << client_address(sock) << "] " << msg;
-	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
-	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
+	doc.root().add_child("error").set_attr_esc("message", msg);
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
@@ -869,16 +849,12 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 		<< std::uppercase << status_code;
 	ERR_CS << "[" << client_address(sock) << "]: (" << status_hex << ") " << msg;
 
-	const auto& escaped_status_str = simple_wml_escape(std::to_string(status_code));
-	const auto& escaped_msg = simple_wml_escape(msg);
-	const auto& escaped_extra_data = simple_wml_escape(extra_data);
-
 	simple_wml::document doc;
 	simple_wml::node& err_cfg = doc.root().add_child("error");
 
-	err_cfg.set_attr_dup("message", escaped_msg.c_str());
-	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
-	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
+	err_cfg.set_attr_esc("message", msg);
+	err_cfg.set_attr_esc("extra_data", extra_data);
+	err_cfg.set_attr_int("status_code", status_code);
 
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }

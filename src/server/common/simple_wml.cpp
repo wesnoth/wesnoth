@@ -24,6 +24,7 @@
 #include "server/common/simple_wml.hpp"
 
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
@@ -436,6 +437,11 @@ node& node::set_attr_dup(const char* key, const string_span& value)
 	char* buf = value.duplicate();
 	doc_->take_ownership_of_buffer(buf);
 	return set_attr(key, buf);
+}
+
+node& node::set_attr_esc(const char* key, string_span value)
+{
+	return set_attr(key, doc_->esc_string(value));
 }
 
 node& node::set_attr_int(const char* key, int value)
@@ -1037,6 +1043,13 @@ const char* document::dup_string(const char* str)
 	const int len = strlen(str);
 	char* res = new char[len+1];
 	memcpy(res, str, len + 1);
+	buffers_.push_back(res);
+	return res;
+}
+
+const char* document::esc_string(string_span str)
+{
+	char* res = string_span(utils::wml_escape_string(str)).duplicate();
 	buffers_.push_back(res);
 	return res;
 }

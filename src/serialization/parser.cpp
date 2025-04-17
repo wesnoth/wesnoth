@@ -490,33 +490,6 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 // HELPERS FOR WRITE_KEY_VAL
 // ==================================================================================
 
-/**
- * Copies a string fragment and converts it to a suitable format for WML.
- * (I.e., quotes are doubled.)
- */
-std::string escaped_string(const std::string::const_iterator& begin, const std::string::const_iterator& end)
-{
-	std::string res;
-	std::string::const_iterator iter = begin;
-
-	while(iter != end) {
-		const char c = *iter;
-		res.append(c == '"' ? 2 : 1, c);
-		++iter;
-	}
-
-	return res;
-}
-
-/**
- * Copies a string and converts it to a suitable format for WML.
- * (I.e., quotes are doubled.)
- */
-inline std::string escaped_string(const std::string& value)
-{
-	return escaped_string(value.begin(), value.end());
-}
-
 class write_key_val_visitor
 #ifdef USING_BOOST_VARIANT
 	: public boost::static_visitor<void>
@@ -557,7 +530,7 @@ public:
 	void operator()(const std::string& s) const
 	{
 		indent();
-		out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n';
+		out_ << key_ << '=' << '"' << utils::wml_escape_string(s) << '"' << '\n';
 	}
 
 	void operator()(const t_string& s) const;
@@ -610,7 +583,7 @@ void write_key_val_visitor::operator()(const t_string& value) const
 			out_ << '_';
 		}
 
-		out_ << '"' << escaped_string(w.begin(), w.end()) << '"';
+		out_ << '"' << utils::wml_escape_string(w) << '"';
 		first = false;
 	}
 

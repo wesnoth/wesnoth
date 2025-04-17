@@ -1985,7 +1985,7 @@ template<class SocketPtr> void server::send_server_message(SocketPtr socket, con
 	simple_wml::document server_message;
 	simple_wml::node& msg = server_message.root().add_child("message");
 	msg.set_attr("sender", "server");
-	msg.set_attr_dup("message", message.c_str());
+	msg.set_attr_esc("message", message);
 	msg.set_attr_dup("type", type.c_str());
 
 	async_send_doc_queued(socket, server_message);
