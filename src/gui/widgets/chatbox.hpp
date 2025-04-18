@@ -115,6 +115,11 @@ protected:
 	virtual void add_chat_room_message_sent(const std::string& room,
 		const std::string& message) override;
 
+	void add_chat_room_message_received_general(const std::string& room,
+		const std::string& speaker,
+		const std::string& message,
+		bool whisper);
+
 	/** Inherited form @ref chat_handler */
 	virtual void add_chat_room_message_received(const std::string& room,
 		const std::string& speaker,
@@ -159,13 +164,13 @@ private:
 	bool whisper_window_active(const std::string& name);
 
 	/** @returns true if the room window for "room" is the active window. */
-	bool room_window_active(const std::string& room);
+	bool room_window_active(const std::string& room, bool whisper = false);
 
 	/** Mark the whisper window for "name" as having one more pending message. */
 	void increment_waiting_whispers(const std::string& name);
 
 	/** Mark the room window for "room" as having one more pending message. */
-	void increment_waiting_messages(const std::string& room);
+	void increment_waiting_messages(const std::string& room, bool whisper = false);
 
 	/** Add a whisper message to the whisper window. */
 	void add_whisper_window_whisper(const std::string& sender,
@@ -181,7 +186,8 @@ private:
 	/** Add a message to the window for room "room". */
 	void add_room_window_message(const std::string& room,
 		const std::string& sender,
-		const std::string& message);
+		const std::string& message,
+		bool whisper = false);
 
 	/** Add a message to the window for room "room". */
 	void add_active_window_message(const std::string& sender,
@@ -213,7 +219,7 @@ public:
 	 * @return valid ptr if the window was found or added, null otherwise
 	 */
 	lobby_chat_window* room_window_open(const std::string& room,
-		const bool open_new, const bool allow_close = true);
+		const bool open_new, const bool allow_close = true, bool whisper = false);
 
 	/**
 	 * Check if a whisper window for user "name" is open, if open_new is true
