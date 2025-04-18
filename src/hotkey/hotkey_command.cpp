@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -184,6 +184,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map/Scenario"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_TO_SCENARIO, "editor-to-scenario", N_("Convert To Scenario"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_SCENARIO_SAVE_AS, "editor-scenario-save-as", N_("Save Scenario As"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, scope_editor, HKCAT_MAP, "" },

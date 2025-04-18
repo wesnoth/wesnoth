@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -180,10 +180,11 @@ const config& configuration::get_ai_config_for(const std::string& id)
 	return cfg_it->second.cfg;
 }
 
-bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
+bool configuration::get_side_config_from_file(const std::string& file, config& cfg)
+{
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file).value());
-		read(cfg, *stream);
+		cfg = io::read(*stream);
 		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'";
 	} catch(const config::error&) {
 		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'";

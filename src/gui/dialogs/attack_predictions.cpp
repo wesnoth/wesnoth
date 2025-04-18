@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -45,16 +45,18 @@ const unsigned int attack_predictions::graph_width = 270;
 const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
-attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
+attack_predictions::attack_predictions(
+	battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender, const int leadership_bonus)
 	: modal_dialog(window_id())
 	, attacker_data_(std::move(attacker), bc.get_attacker_combatant(), bc.get_attacker_stats())
 	, defender_data_(std::move(defender), bc.get_defender_combatant(), bc.get_defender_stats())
+	, leadership_bonus_(leadership_bonus)
 {
 }
 
 void attack_predictions::pre_show()
 {
-	set_data(attacker_data_, defender_data_);
+	set_data(attacker_data_, defender_data_, leadership_bonus_);
 	set_data(defender_data_, attacker_data_);
 }
 
@@ -71,7 +73,7 @@ static std::string get_probability_string(const double prob)
 	return ss.str();
 }
 
-void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender)
+void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender, int leadership_bonus)
 {
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
@@ -234,8 +236,10 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
-
+	// defender unit won't move before attack so just do calculation here
+	if (leadership_bonus == 0){
+		leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
+	}
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
 	} else {

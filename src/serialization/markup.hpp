@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -23,21 +23,16 @@
 
 #include <string>
 #include <string_view>
+#include <vector>
 
 class config;
 
 namespace markup
 {
 /**
- * A Help markup tag corresponding to a linebreak.
- * @see gui2::rich_label for details on how this tag is parsed.
- */
-constexpr std::string_view br{"<br/>"};
-
-/**
- * Wraps the given data in the specified formatting tag.
+ * Wraps the given data in the specified tag.
  *
- * @param tag       The formatting tag ("b", "i", etc).
+ * @param tag       The tag ("b", "i", etc).
  * @param data      The content to wrap with @a tag.
  *                  Each argument must be writable to a stringstream.
  *
@@ -54,6 +49,36 @@ std::string tag(std::string_view tag, Args&&... data)
 	return formatter() << "<" << tag << ">" << input << "</" << tag << ">";
 }
 
+/** @todo is it safe to use a string_view for both key and value */
+using tag_attributes = std::vector<std::pair<std::string_view, std::string_view>>;
+
+/**
+ * Wraps the given data in the specified tag.
+ *
+ * @param tag       The tag ("b", "i", etc).
+ * @param attrs     A vector containing the attribute key-value pairs.
+ * @param data      The content to wrap with @a tag.
+ *                  Each argument must be writable to a stringstream.
+ *
+ * @note            Special formatting characters in the input are not escaped.
+ *                  If such behavior is needed, it must be handled by the caller.
+ *                  If the concatenation of @a data results in an empty string,
+ *                  an empty string is returned in lieu of formatting tags.
+ */
+template<typename... Args>
+std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... data)
+{
+	std::string input = (formatter() << ... << data);
+	if(input.empty()) return {};
+	std::stringstream ss;
+	ss << "<" << tag << " ";
+	for (const auto& [key, value] : attrs) {
+		ss << key << "='" << value << "' ";
+	}
+	ss << ">" << input << "</" << tag << ">";
+	return ss.str();
+}
+
 /**
  * Wraps the given data in a @c span tag with the specified attribute and value.
  *
@@ -66,9 +91,7 @@ std::string tag(std::string_view tag, Args&&... data)
 template<typename Value, typename... Args>
 std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
 {
-	std::string input = (formatter() << ... << data);
-	if(input.empty()) return {};
-	return formatter() << "<span " << key << "='" << value << "'>" << input << "</span>";
+	return tag("span", {{ key, value }}, std::forward<Args>(data)...);
 }
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,8 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/widget.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
+
+#include <SDL2/SDL.h>
 
 #include <array>
 #include <functional>

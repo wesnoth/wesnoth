@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,6 +126,13 @@ bool show_status_on_ally_orb;
 bool show_unmoved_orb;
 
 //
+// Reach map opacity variables
+//
+
+int reach_map_border_opacity;
+int reach_map_tint_opacity;
+
+//
 // Music constants
 //
 std::string title_music, lobby_music;
@@ -159,6 +166,8 @@ std::string enemy_orb_color;
 std::string moved_orb_color;
 std::string partial_orb_color;
 std::string unmoved_orb_color;
+std::string reach_map_color;
+std::string reach_map_enemy_color;
 std::string default_color_list;
 } // namespace colors
 
@@ -298,11 +307,13 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("colors")){
 		using namespace game_config::colors;
 
-		moved_orb_color    = i["moved_orb_color"].str();
-		unmoved_orb_color  = i["unmoved_orb_color"].str();
-		partial_orb_color  = i["partial_orb_color"].str();
-		enemy_orb_color    = i["enemy_orb_color"].str();
-		ally_orb_color     = i["ally_orb_color"].str();
+		moved_orb_color       = i["moved_orb_color"].str();
+		unmoved_orb_color     = i["unmoved_orb_color"].str();
+		partial_orb_color     = i["partial_orb_color"].str();
+		enemy_orb_color       = i["enemy_orb_color"].str();
+		ally_orb_color        = i["ally_orb_color"].str();
+		reach_map_color       = i["reach_map_color"].str();
+		reach_map_enemy_color = i["reach_map_enemy_color"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
@@ -373,6 +384,8 @@ void load_config(const config &v)
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
 	reach_map_prefix 	= v["reach_map_prefix"].str();
+	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(100);
+	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(50);//tint is at 50% by default instead of 100% to allow players to make it more opaque than normal
 
 	add_color_info(game_config_view::wrap(v), true);
 

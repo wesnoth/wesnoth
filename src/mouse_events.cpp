@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -36,12 +36,15 @@
 #include "synced_context.hpp"
 #include "team.hpp" // for team
 #include "tod_manager.hpp"
+#include "map/location.hpp"
 #include "units/animation_component.hpp"
 #include "units/ptr.hpp"           // for unit_const_ptr
 #include "units/unit.hpp"          // for unit
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
+#include "language.hpp"
+#include "serialization/markup.hpp"
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
@@ -56,9 +59,9 @@ static lg::log_domain log_wml("wml");
 
 namespace events
 {
-mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
+mouse_handler::mouse_handler(play_controller& pc)
 	: mouse_handler_base()
-	, gui_(gui)
+	, gui_(nullptr)
 	, pc_(pc)
 	, previous_hex_()
 	, previous_free_hex_()
@@ -597,7 +600,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 }
 
 // Hook for notifying lua game kernel of mouse button events. We pass button as
-// a serpaate argument than the original SDL event in order to manage touch
+// a separate argument than the original SDL event in order to manage touch
 // emulation (e.g., long touch = right click) and such.
 bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
 									   map_location loc, bool click)
@@ -681,6 +684,7 @@ bool mouse_handler::hex_hosts_unit(const map_location& hex) const
 	return find_unit(hex).valid();
 }
 
+// the attack dialog is shown as if the unit is standing at the hex, this may be not the best approach for units possessing weapons of different ranges
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const
 {
 	if(loc == selected_hex_) {
@@ -688,6 +692,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	}
 
 	bool wb_active = pc_.get_whiteboard()->is_active();
+	std::set<int> attackable_distances;
 
 	{
 		// Check the unit SOURCE of the attack
@@ -747,8 +752,39 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if(!target_eligible) {
 			return map_location();
 		}
+
+		for (const auto& attack : source_unit->attacks()) {
+			for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+				attackable_distances.insert(i);
+			}
+		}
 	}
 
+	//invalid attack ranges
+	if(attackable_distances.empty()) {
+		return map_location{};
+	}
+
+	//ranged attack
+	if(*attackable_distances.rbegin() > 1){
+		if(utils::contains(attackable_distances, distance_between(selected_hex_, loc))) {
+			return selected_hex_;
+		}
+		map_location res;
+		int best_move = -1;
+		for (const pathfind::paths::step& step : current_paths_.destinations) {
+			map_location dst = step.curr;
+			if(utils::contains(attackable_distances, distance_between(loc, dst))) {
+				if (step.move_left > best_move){
+					best_move = step.move_left;
+					res=dst;
+				}
+			}
+		}
+		return res;
+	}
+
+	//no ranged attack
 	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
 	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
@@ -943,7 +979,7 @@ void mouse_handler::move_action(bool browse)
 				int choice = -1;
 				{
 					wb::future_map_if_active planned_unit_map; // start planned unit map scope
-					choice = show_attack_dialog(attack_from, clicked_u->get_location());
+					choice = show_attack_dialog(attack_from, clicked_u->get_location(), src);
 				} // end planned unit map scope
 
 				if(choice >= 0) {
@@ -974,12 +1010,11 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
-						choice = show_attack_dialog(attack_from, clicked_u->get_location());
+						choice = show_attack_dialog(attack_from, clicked_u->get_location(), src);
 					}
 
 					if(choice < 0) {
-						// user hit cancel, don't start move+attack
+						// user hit cancel or attack is invalid, don't start move&attack
 						return;
 					}
 				} // end planned unit map scope
@@ -1143,7 +1178,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	}
 
 	if(selected_hex_.valid() && !unit) {
-		// Compute unit in range of the empty selected_hex field
+		// When no unit is selected, compute unit in range of the empty selected_hex field
 
 		gui_->unhighlight_reach();
 
@@ -1336,28 +1371,194 @@ int mouse_handler::fill_weapon_choices(
 	return best;
 }
 
-int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
+int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src)
 {
 	game_board& board = pc_.gamestate().board_;
-
-	unit_map::iterator attacker = board.units().find(attacker_loc);
-	unit_map::iterator defender = board.units().find(defender_loc);
-
-	if(!attacker || !defender) {
-		ERR_NG << "One fighter is missing, can't attack";
-		return -1; // abort, click will do nothing
-	}
-
+	unit_map::iterator attacker;
+	unit_map::iterator defender;
 	std::vector<battle_context> bc_vector;
-	const int best = fill_weapon_choices(bc_vector, attacker, defender);
+	std::vector<gui2::widget_data> bc_widget_data_vector;
+	int best;
+	int leadership_bonus = 0;
+	{
+		pathfind::paths::dest_vect::const_iterator itor = current_paths_.destinations.find(attacker_loc);
+		temporary_unit_mover temp_mover(pc_.get_units(), attacker_src, attacker_loc, itor->move_left, true);
 
-	if(bc_vector.empty()) {
-		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
+		attacker = board.units().find(attacker_loc);
+		defender = board.units().find(defender_loc);
 
-		return -1;
+		if(!attacker || !defender) {
+			if (!attacker) {ERR_NG << "Attacker is missing, can't attack";}
+			if (!defender) {ERR_NG << "Defender is missing, can't attack";}
+			return -1; // abort, click will do nothing
+		}
+
+		best = fill_weapon_choices(bc_vector, attacker, defender);
+
+		if (bc_vector.empty()) {
+			gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
+
+			return -1;
+		}
+
+		static const config empty;
+		static const_attack_ptr no_weapon(new attack_type(empty));
+
+		// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
+		for(const auto& weapon : bc_vector) {
+			const battle_context_unit_stats& attacker_stats = weapon.get_attacker_stats();
+			const battle_context_unit_stats& defender_stats = weapon.get_defender_stats();
+
+			const attack_type& attacker_weapon = *attacker_stats.weapon;
+			const attack_type& defender_weapon = defender_stats.weapon ? *defender_stats.weapon : *no_weapon;
+
+			if(leadership_bonus == 0) {
+				leadership_bonus
+					= under_leadership(*attacker, attacker_loc, attacker_stats.weapon, defender_stats.weapon);
+			}
+
+			const color_t a_cth_color = game_config::red_to_green(attacker_stats.chance_to_hit);
+			const color_t d_cth_color = game_config::red_to_green(defender_stats.chance_to_hit);
+
+			const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
+			const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";
+
+			std::string range = attacker_weapon.range().empty() ? defender_weapon.range() : attacker_weapon.range();
+			if(!range.empty()) {
+				range = string_table["range_" + range];
+			}
+
+			auto a_ctx = attacker_weapon.specials_context(attacker.get_shared_ptr(), defender.get_shared_ptr(),
+				attacker->get_location(), defender->get_location(), true, defender_stats.weapon);
+
+			auto d_ctx = defender_weapon.specials_context(defender.get_shared_ptr(), attacker.get_shared_ptr(),
+				defender->get_location(), attacker->get_location(), false, attacker_stats.weapon);
+
+			std::string types = attacker_weapon.effective_damage_type().first;
+			std::string attw_type = !(types).empty() ? types : attacker_weapon.type();
+			if(!attw_type.empty()) {
+				attw_type = string_table["type_" + attw_type];
+			}
+			std::string def_types = defender_weapon.effective_damage_type().first;
+			std::string defw_type = !(def_types).empty() ? def_types : defender_weapon.type();
+			if(!defw_type.empty()) {
+				defw_type = string_table["type_" + defw_type];
+			}
+
+			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
+				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+			std::string attw_specials = attacker_weapon.weapon_specials();
+			std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
+			std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
+			std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
+			std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
+			bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0
+				&& defender_weapon.num_attacks() == 0 && defender_stats.chance_to_hit == 0);
+			std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
+			std::string defw_specials_dmg
+				= defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
+			std::string defw_specials_atk
+				= defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";
+			std::string defw_specials_cth
+				= defender_attack ? defender_weapon.weapon_specials_value({"chance_to_hit"}) : "";
+			std::string defw_specials_others
+				= defender_attack ? defender_weapon.weapon_specials_value(checking_tags_other) : "";
+
+			if(!attw_specials.empty()) {
+				attw_specials = " " + attw_specials;
+			}
+			if(!attw_specials_dmg.empty()) {
+				attw_specials_dmg = " " + attw_specials_dmg;
+			}
+			if(!attw_specials_atk.empty()) {
+				attw_specials_atk = " " + attw_specials_atk;
+			}
+			if(!attw_specials_cth.empty()) {
+				attw_specials_cth = " " + attw_specials_cth;
+			}
+			if(!attw_specials_others.empty()) {
+				attw_specials_others
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(attw_specials_others);
+			}
+			if(!defw_specials.empty()) {
+				defw_specials = " " + defw_specials;
+			}
+			if(!defw_specials_dmg.empty()) {
+				defw_specials_dmg = " " + defw_specials_dmg;
+			}
+			if(!defw_specials_atk.empty()) {
+				defw_specials_atk = " " + defw_specials_atk;
+			}
+			if(!defw_specials_cth.empty()) {
+				defw_specials_cth = " " + defw_specials_cth;
+			}
+			if(!defw_specials_others.empty()) {
+				defw_specials_others
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(defw_specials_others);
+			}
+
+			std::stringstream attacker_stats_str, defender_stats_str, attacker_tooltip, defender_tooltip;
+
+			// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does
+			// not consider the swarm weapon special
+			attacker_stats_str << markup::bold(attw_name) << "\n"
+							   << attw_type << "\n"
+							   << attacker_stats.damage << font::weapon_numbers_sep << attacker_stats.num_blows
+							   << attw_specials << "\n"
+							   << markup::span_color(a_cth_color,  attacker_stats.chance_to_hit, "%");
+
+			attacker_tooltip << _("Weapon: ") << markup::bold(attw_name) << "\n"
+							 << _("Type: ") << attw_type << "\n"
+							 << _("Damage: ") << attacker_stats.damage << markup::italic(attw_specials_dmg) << "\n"
+							 << _("Attacks: ") << attacker_stats.num_blows << markup::italic(attw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(a_cth_color, attacker_stats.chance_to_hit, "%")
+							 << markup::italic(attw_specials_cth) << attw_specials_others;
+
+			defender_stats_str << markup::bold(defw_name) << "\n"
+							   << defw_type << "\n"
+							   << defender_stats.damage << font::weapon_numbers_sep << defender_stats.num_blows
+							   << defw_specials << "\n"
+							   << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%");
+
+			defender_tooltip << _("Weapon: ") << markup::bold(defw_name) << "\n"
+							 << _("Type: ") << defw_type << "\n"
+							 << _("Damage: ") << defender_stats.damage << markup::italic(defw_specials_dmg) << "\n"
+							 << _("Attacks: ") << defender_stats.num_blows << markup::italic(defw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%")
+							 << markup::italic(defw_specials_cth) << defw_specials_others;
+
+			gui2::widget_data data;
+			gui2::widget_item item;
+
+			item["use_markup"] = "true";
+
+			item["label"] = attacker_weapon.icon();
+			data.emplace("attacker_weapon_icon", item);
+
+			item["tooltip"] = attacker_tooltip.str();
+			item["label"] = attacker_stats_str.str();
+			data.emplace("attacker_weapon", item);
+			item["tooltip"] = "";
+
+			item["label"]
+				= markup::span_color("#a69275", font::unicode_em_dash, " ", range, " ", font::unicode_em_dash);
+			data.emplace("range", item);
+
+			item["tooltip"] = defender_attack ? defender_tooltip.str() : "";
+			item["label"] = defender_stats_str.str();
+			data.emplace("defender_weapon", item);
+
+			item["tooltip"] = "";
+			item["label"] = defender_weapon.icon();
+			data.emplace("defender_weapon_icon", item);
+
+			bc_widget_data_vector.emplace_back(data);
+		}
 	}
-
-	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best);
+	// bc_widget_data_vector won't be empty when it reaches here.
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
 
 	if(dlg.show()) {
 		return dlg.get_selected_weapon();

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -129,7 +129,6 @@ private:
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;
-	bool start_in_fullscreen_ = false;
 
 	font::manager font_manager_;
 	const image::manager image_manager_;

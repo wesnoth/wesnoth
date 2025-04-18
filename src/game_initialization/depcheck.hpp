@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -146,6 +146,7 @@ public:
 	 * @return the index of the era
 	 */
 	int get_era_index() const;
+	int get_era_index(const std::string& id) const;
 
 	/**
 	 * Returns the selected scenario

@@ -6,7 +6,7 @@ project(wesnoth)
 include(CheckCXXCompilerFlag)
 include(CTest)
 
-# use our own version of FindBoost.cmake and other Find* scripts
+# use our own version of Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
@@ -52,7 +52,7 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.67")
+set(BOOST_VERSION "1.70")
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)
@@ -93,7 +93,7 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -546,13 +546,13 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 		find_package(SDL2_mixer CONFIG REQUIRED)
 	endif()
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
-	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.44.0)
-	pkg_check_modules(PANGO REQUIRED pango>=1.44.0)
+	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.50.0)
+	pkg_check_modules(PANGO REQUIRED pango>=1.50.0)
 	pkg_check_modules(LIBREADLINE readline)
 endif()
 
 if(ENABLE_TESTS)
-	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
+	find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS unit_test_framework)
 endif()
 
 if(ENABLE_GAME)

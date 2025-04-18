@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -407,6 +407,10 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		// Can be enabled as long as a valid addon_id is set
 		case HOTKEY_EDITOR_EDIT_UNIT:
 			return !current_addon_id_.empty();
+
+		// Only enable when editing a scenario
+		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+			return get_current_map_context().is_pure_map();
 
 		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
@@ -1056,6 +1060,11 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			context_manager_->save_map_as_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+			if(initialize_addon()) {
+				context_manager_->map_to_scenario();
+			}
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			if(initialize_addon()) {

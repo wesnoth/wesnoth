@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,9 +15,9 @@
 
 #pragma once
 
-#include <ctime>
+#include <chrono>
 #include <string>
 
 namespace utils {
-	std::string format_time_summary(std::time_t t);
+	std::string format_time_summary(const std::chrono::system_clock::time_point& t);
 }

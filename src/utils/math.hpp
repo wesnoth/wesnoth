@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,7 +80,7 @@ constexpr T modulo(T num, int mod, T min = 0)
 constexpr int round_damage(double base_damage, int bonus, int divisor) {
 	if (base_damage==0) return 0;
 	const int rounding = divisor / 2 - (bonus <= divisor || divisor==1 ? 0 : 1);
-	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
+	return std::max<int>(1, static_cast<int>(base_damage * bonus + rounding) / divisor);
 }
 
 template<typename Cmp>

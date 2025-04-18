@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -278,7 +278,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
-		read(cfg, *stream, validator.get());
+		cfg = io::read(*stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
 		return false;

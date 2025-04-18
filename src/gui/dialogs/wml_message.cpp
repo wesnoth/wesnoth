@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,15 +94,20 @@ void wml_message_base::pre_show()
 	listbox& options = find_widget<listbox>("input_list", true);
 
 	if(!option_list_.empty()) {
-		widget_data data;
 		for(const wml_message_option& item : option_list_) {
-			// Add the data.
-			data["icon"]["label"] = item.image();
-			data["label"]["label"] = item.label();
-			data["label"]["use_markup"] = "true";
-			data["description"]["label"] = item.description();
-			data["description"]["use_markup"] = "true";
-			options.add_row(data);
+			options.add_row(widget_data{
+				{ "icon", {
+					{ "label", item.image() }
+				}},
+				{ "label", {
+					{ "label", item.label() },
+					{ "use_markup", "true" }
+				}},
+				{ "description", {
+					{ "label", item.description() },
+					{ "use_markup", "true" }
+				}},
+			});
 		}
 
 		// Avoid negative and 0 since item 0 is already selected.

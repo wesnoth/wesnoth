@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -273,10 +273,9 @@ void ban_manager::read()
 	}
 
 	LOG_SERVER << "Reading bans from " <<  filename_;
-	config cfg;
 	dirty_ = false;
 	filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
-	read_gz(cfg, *ban_file);
+	config cfg = io::read_gz(*ban_file);
 
 	for(const config& b : cfg.child_range("ban")) {
 		try {
@@ -333,9 +332,6 @@ std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> ban_mana
 	const std::string& duration, std::chrono::system_clock::time_point start_time) const
 {
 	if(duration.substr(0, 4) == "TIME") {
-		auto as_time_t = std::chrono::system_clock::to_time_t(start_time);
-		std::tm* loc = std::localtime(&as_time_t);
-
 		std::size_t number = 0;
 		for(auto i = duration.begin() + 4; i != duration.end(); ++i) {
 			if(is_digit(*i)) {
@@ -343,22 +339,22 @@ std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> ban_mana
 			} else {
 				switch(*i) {
 				case 'Y':
-					loc->tm_year = number;
+					start_time += chrono::years{number};
 					break;
 				case 'M':
-					loc->tm_mon = number;
+					start_time += chrono::months{number};
 					break;
 				case 'D':
-					loc->tm_mday = number;
+					start_time += chrono::days{number};
 					break;
 				case 'h':
-					loc->tm_hour = number;
+					start_time += std::chrono::hours{number};
 					break;
 				case 'm':
-					loc->tm_min = number;
+					start_time += std::chrono::minutes{number};
 					break;
 				case 's':
-					loc->tm_sec = number;
+					start_time += std::chrono::seconds{number};
 					break;
 				default:
 					LOG_SERVER << "Invalid time modifier given: '" << *i << "'.";
@@ -367,7 +363,7 @@ std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> ban_mana
 				number = 0;
 			}
 		}
-		return { true, std::chrono::system_clock::from_time_t(std::mktime(loc)) };
+		return { true, start_time };
 	}
 
 	std::string dur_lower;

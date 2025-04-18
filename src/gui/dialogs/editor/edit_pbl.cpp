@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -101,7 +101,7 @@ void editor_edit_pbl::pre_show()
 	config pbl;
 	if(filesystem::file_exists(pbl_)) {
 		try {
-			read(pbl, *preprocess_file(pbl_));
+			pbl = io::read(*preprocess_file(pbl_));
 		} catch(const config::error& e) {
 			ERR_ED << "Caught a config error while parsing file " << pbl_ << "\n" << e.message;
 		}
@@ -212,12 +212,17 @@ void editor_edit_pbl::pre_show()
 	button& translations_delete = find_widget<button>("translations_delete");
 
 	for(const config& child : pbl.child_range("translation")) {
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", child["language"].str()}}},
-			{"translations_title", widget_item{{"label", child["title"].str()}}},
-			{"translations_description", widget_item{{"label", child["description"].str()}}},
-		};
-		translations.add_row(entry);
+		translations.add_row(widget_data{
+			{ "translations_language", {
+				{ "label", child["language"].str() }
+			}},
+			{ "translations_title", {
+				{ "label", child["title"].str() }
+			}},
+			{ "translations_description", {
+				{ "label", child["description"].str() }
+			}},
+		});
 	}
 
 	if(translations.get_item_count() == 0) {
@@ -354,13 +359,18 @@ void editor_edit_pbl::add_translation()
 	editor_edit_pbl_translation::execute(language, title, description);
 
 	if(!language.empty() && !title.empty()) {
-		listbox& translations = find_widget<listbox>("translations");
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", language}}},
-			{"translations_title", widget_item{{"label", title}}},
-			{"translations_description", widget_item{{"label", description}}},
-		};
-		translations.add_row(entry);
+		find_widget<listbox>("translations").add_row(widget_data{
+			{ "translations_language", {
+				{ "label", language }
+			}},
+			{ "translations_title", {
+				{ "label", title }
+			}},
+			{ "translations_description", {
+				{ "label", description }
+			}},
+		});
+
 		find_widget<button>("translations_delete").set_active(true);
 	}
 }
@@ -382,10 +392,10 @@ void editor_edit_pbl::validate()
 	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg").value()));
 	validator->set_create_exceptions(false);
 
-	config temp;
 	std::stringstream ss;
 	ss << create_cfg();
-	read(temp, ss.str(), validator.get());
+	config temp = io::read(ss, validator.get());
+
 	if(!validator->get_errors().empty()) {
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
 	} else if(addon_icon_too_large(temp["icon"].str())) {

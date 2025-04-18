@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -337,12 +337,6 @@ std::string unescape(std::string_view str);
 
 /** Percent-escape characters in a UTF-8 string intended to be part of a URL. */
 std::string urlencode(std::string_view str);
-
-/** Surround the string 'str' with double quotes. */
-inline std::string quote(std::string_view str)
-{
-	return '"' + std::string(str) + '"';
-}
 
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);

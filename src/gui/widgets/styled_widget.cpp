@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -53,23 +54,12 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
 	, config_(get_control(control_type, definition_))
-	, canvases_(config_->state.size()) // One canvas per state
+	, canvases_(config_->state.begin(), config_->state.end())
 	, renderer_()
-	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
-	/*
-	 * Fill in each canvas from the widget state definitons.
-	 *
-	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
-	 * and toggle_button have a variable canvas count determined by their definitions.
-	 */
-	for(unsigned i = 0; i < config_->state.size(); ++i) {
-		canvases_[i].set_cfg(config_->state[i].canvas_cfg_);
-	}
-
 	// Initialize all the canvas variables.
 	update_canvas();
 
@@ -178,7 +168,7 @@ bool styled_widget::get_link_aware() const
 
 color_t styled_widget::get_link_color() const
 {
-	return color_t::from_hex_string("ffff00");
+	return font::YELLOW_COLOR;
 }
 
 void styled_widget::layout_initialize(const bool full_initialization)
@@ -226,9 +216,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 void styled_widget::request_reduce_height(const unsigned maximum_height)
 {
-	if(!label_.empty()) {
-		// Do nothing
-	} else {
+	if(label_.empty()) {
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
 		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
@@ -418,8 +406,7 @@ int styled_widget::get_text_maximum_width() const
 {
 	assert(config_);
 
-	return text_maximum_width_ != 0 ? text_maximum_width_
-									: get_width() - config_->text_extra_width;
+	return get_width() - config_->text_extra_width;
 }
 
 int styled_widget::get_text_maximum_height() const
@@ -454,9 +441,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	assert(!label_.empty());
 
 	// Try with the minimum wanted size.
-	const int maximum_width = text_maximum_width_ != 0
-		? text_maximum_width_
-		: maximum_size.x;
+	const int maximum_width = maximum_size.x;
 
 	/*
 	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
@@ -487,7 +472,6 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "Status:\n"
 		<< "minimum_size: " << minimum_size << "\n"
 		<< "maximum_size: " << maximum_size << "\n"
-		<< "maximum width of text: " << text_maximum_width_ << "\n"
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"

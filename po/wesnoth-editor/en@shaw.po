@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2009-10-08 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -306,27 +306,27 @@ msgstr ""
 msgid "No editor time-of-day found."
 msgstr "𐑯𐑴 𐑧𐑛𐑦𐑑𐑹 𐑑𐑲𐑥-𐑝-𐑛𐑱 𐑓𐑬𐑯𐑛."
 
-#: src/editor/controller/editor_controller.cpp:882
+#: src/editor/controller/editor_controller.cpp:886
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:895
+#: src/editor/controller/editor_controller.cpp:899
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1315
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1316
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1332
+#: src/editor/controller/editor_controller.cpp:1341
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1333
+#: src/editor/controller/editor_controller.cpp:1342
 msgid "Name:"
 msgstr ""
 
@@ -391,7 +391,7 @@ msgid "Choose Target Map"
 msgstr "𐑗𐑵𐑟 𐑑𐑸𐑜𐑧𐑑 𐑥𐑨𐑐"
 
 #: src/editor/map/context_manager.cpp:559
-#: src/editor/map/context_manager.cpp:985
+#: src/editor/map/context_manager.cpp:984
 msgid "Error loading map"
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑥𐑨𐑐"
 
@@ -415,7 +415,7 @@ msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑒𐑢𐑦𐑑?"
 
 #: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:926
+#: src/editor/map/context_manager.cpp:925
 msgid "This map is already open."
 msgstr "𐑞𐑦𐑕 𐑥𐑨𐑐 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑴𐑐𐑩𐑯."
 
@@ -431,20 +431,20 @@ msgstr "𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐 𐑨𐑟"
 msgid "This scenario is already open."
 msgstr "𐑞𐑦𐑕 𐑥𐑨𐑐 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑴𐑐𐑩𐑯."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:799
 msgid "No random map generators found."
 msgstr "𐑯𐑴 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑡𐑧𐑯𐑻𐑱𐑑𐑻𐑟 𐑓𐑬𐑯𐑛."
 
-#: src/editor/map/context_manager.cpp:813
-#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
 msgid "Map creation failed."
 msgstr "𐑥𐑨𐑐 𐑒𐑮𐑰𐑱𐑖𐑩𐑯 𐑓𐑱𐑤𐑛."
 
-#: src/editor/map/context_manager.cpp:833
+#: src/editor/map/context_manager.cpp:832
 msgid "Unsaved Changes"
 msgstr "𐑳𐑯𐑕𐑱𐑝𐑛 𐑗𐑱𐑯𐑡𐑩𐑟"
 
-#: src/editor/map/context_manager.cpp:834
+#: src/editor/map/context_manager.cpp:833
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -452,28 +452,28 @@ msgstr "𐑳𐑯𐑕𐑱𐑝𐑛 𐑗𐑱𐑯𐑡𐑩𐑟"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑦𐑕𐑒𐑸𐑛 𐑷𐑤 𐑗𐑱𐑯𐑡𐑩𐑟 𐑿 𐑥𐑱𐑛 𐑑 𐑞 𐑥𐑨𐑐 𐑕𐑦𐑯𐑕 𐑞 𐑤𐑭𐑕𐑑 𐑕𐑱𐑝?"
 
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:886
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "𐑥𐑨𐑐 𐑕𐑱𐑝𐑛."
 
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:901
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "𐑥𐑨𐑐 𐑕𐑱𐑝𐑛."
 
-#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:976
 msgid "Loaded embedded map data"
 msgstr "𐑤𐑴𐑛𐑩𐑛 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑥𐑨𐑐 𐑛𐑱𐑑𐑩"
 
-#: src/editor/map/context_manager.cpp:978
-#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:977
+#: src/editor/map/context_manager.cpp:980
 msgid "Map loaded from scenario"
 msgstr "𐑥𐑨𐑐 𐑤𐑴𐑛𐑩𐑛 𐑓𐑮𐑪𐑥 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:980
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"

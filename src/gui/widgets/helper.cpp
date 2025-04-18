@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,11 +43,6 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 	}
 
 	return font::pango_text::STYLE_NORMAL;
-}
-
-color_t decode_color(const std::string& color)
-{
-	return color_t::from_rgba_string(color);
 }
 
 PangoWeight decode_text_weight(const std::string& weight)

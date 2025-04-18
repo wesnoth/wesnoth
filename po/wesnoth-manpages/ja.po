@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-02-17 15:53-0600\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -394,10 +394,10 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
 "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
-"させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
-"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどの"
-"ログ領域に使用されるが、 B<-d> オプションと組み合わせた場合を除いて "
-"B<deprecation>は B<none>である。"
+"させるために利用される。有効なレベルは以下の通り。 B<error>、\\ B<warning>、"
+"\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどのログ領域に使"
+"用されるが、 B<-d> オプションと組み合わせた場合を除いて B<deprecation>は "
+"B<none>である。"
 
 #. type: TP
 #: doc/man/wesnoth.6:149
@@ -849,8 +849,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:294
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "画像パス関数を伴う有効な wesnoth 「画像パス文字列」を指定し、 .png ファイルと"
 "して出力する。画像パス関数については以下を参照：https://wiki.wesnoth.org/"
@@ -1392,8 +1392,8 @@ msgstr "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた�
 #. type: Plain text
 #: doc/man/wesnoth.6:495
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> "
 "と Soliton E<lt>soliton.de@gmail.comE<gt> によって編集された。"
@@ -1421,7 +1421,10 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:503 doc/man/wesnothd.6:286
-msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -1551,9 +1554,9 @@ msgid ""
 "the B<server> domain."
 msgstr ""
 "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
-"させるために利用できる。有効なレベルは以下の通り。 B<error>、\\ "
-"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<error> レベルが使用され、"
-"B<server> 領域には B<info> が使用される。"
+"させるために利用できる。有効なレベルは以下の通り。 B<error>、\\ B<warning>、"
+"\\ B<info>、\\ B<debug>。既定値では B<error> レベルが使用され、B<server> 領域"
+"には B<info> が使用される。"
 
 #. type: TP
 #: doc/man/wesnothd.6:68
@@ -1702,18 +1705,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "サーバーによって受けつけられない名前やニックネーム。 B<*> と B<?> からなるワ"
 "イルドカードのパターンに対応。詳細は B<glob>(7) を参照。既定の値(何も指定され"
-"なかった際に使用される)は B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
-"network,player>。"
+"なかった際に使用される)は "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2278,88 +2281,22 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた。 Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> と "
-"Soliton E<lt>soliton.de@gmail.comE<gt> と Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt> によって編集された。 このマニュアルページは Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt> によって最初に書かれた。 岡田信人 "
-"E<lt>okyada@gmail.comE<gt> によって日本語に翻訳され、いいむらなおき "
+"Soliton E<lt>soliton.de@gmail.comE<gt> と Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt> によって編集された。 このマニュアルペー"
+"ジは Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> によって最初に書かれた。 岡"
+"田信人 E<lt>okyada@gmail.comE<gt> によって日本語に翻訳され、いいむらなおき "
 "E<lt>amatubu@gmail.comE<gt> によって編集された。"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#, no-wrap
-#~ msgid "B<--script>I<\\ file>"
-#~ msgstr "B<--script>I<\\ file>"
-
-#~ msgid ""
-#~ "(experimental)  I<file> containing a Lua script to control the client."
-#~ msgstr "（試験的）I<file>：クライアントコントロール用の Lua スクリプト。"
-
-#, no-wrap
-#~ msgid "B<--nodelay>"
-#~ msgstr "B<--nodelay>"
-
-#~ msgid ""
-#~ "runs the game without any delays for graphic benchmarking. This is "
-#~ "automatically enabled by B<--nogui>."
-#~ msgstr ""
-#~ "グラフィックベンチマーク用にディレイなしでゲームを実行する。これは B<--"
-#~ "nogui> では自動的に有効になる。"
-
-#, no-wrap
-#~ msgid "B<--config-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ name>"
-
-#~ msgid "Deprecated, use B<--userdata-dir>."
-#~ msgstr "非推奨、B<--userdata-dir>を使用するべき。"
-
-#, no-wrap
-#~ msgid "B<--config-path>"
-#~ msgstr "B<--config-path>"
-
-#~ msgid "Deprecated, use B<--userdata-path>."
-#~ msgstr "非推奨。B<--userdata-path>を使用するべき。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ name>"
-
-#, fuzzy
-#~| msgid ""
-#~| "sets the userdata directory to I<name> under $HOME or \"My "
-#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~| "path for the userdata directory outside the $HOME or \"My Documents\\eMy "
-#~| "Games\". On Windows it is also possible to specify a directory relative "
-#~| "to the process working directory by using path starting with \".\\e\" or "
-#~| "\"..\\e\"."
-#~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
-#~ msgstr ""
-#~ "ユーザーデータディレクトリを $HOME 下または Windows の「My Documents\\eMy "
-#~ "Games」下の I<name> に設定する。ユーザーデータディレクトリのパスを $HOME "
-#~ "や 「My Documents\\eMy Games」の外に絶対パスで指定することもできる。"
-#~ "Windows では 「.\\e」あるいは「..\\e」を用いることで、ワーキングディレクト"
-#~ "リーからの相対パスで指定することもできる。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
-
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "ユーザー設定ディレクトリの名前を表示して、終了する。"
 
 #, no-wrap
 #~ msgid "B<--bunzip2>I<\\ infile.bz2>"
@@ -2384,6 +2321,20 @@ msgstr "B<wesnoth>(6)"
 #~ "を削除する。"
 
 #, no-wrap
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ name>"
+
+#~ msgid "Deprecated, use B<--userdata-dir>."
+#~ msgstr "非推奨、B<--userdata-dir>を使用するべき。"
+
+#, no-wrap
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "非推奨。B<--userdata-path>を使用するべき。"
+
+#, no-wrap
 #~ msgid "B<--gunzip>I<\\ infile.gz>"
 #~ msgstr "B<--gunzip>I<\\ infile.gz>"
 
@@ -2405,6 +2356,29 @@ msgstr "B<wesnoth>(6)"
 #~ "ファイルを gzip フォーマットで圧縮して I<infile>.gz に保存し、I<infile> を"
 #~ "削除する。"
 
+#, no-wrap
+#~ msgid "B<--nodelay>"
+#~ msgstr "B<--nodelay>"
+
+#~ msgid ""
+#~ "runs the game without any delays for graphic benchmarking. This is "
+#~ "automatically enabled by B<--nogui>."
+#~ msgstr ""
+#~ "グラフィックベンチマーク用にディレイなしでゲームを実行する。これは B<--"
+#~ "nogui> では自動的に有効になる。"
+
+#, no-wrap
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<--script>I<\\ file>"
+
+#~ msgid ""
+#~ "(experimental)  I<file> containing a Lua script to control the client."
+#~ msgstr "（試験的）I<file>：クライアントコントロール用の Lua スクリプト。"
+
+#, no-wrap
+#~ msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgstr "B<--userconfig-dir>I<\\ name>"
+
 #~ msgid ""
 #~ "sets the user configuration directory to I<name> under $HOME or \"My "
 #~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
@@ -2422,6 +2396,13 @@ msgstr "B<wesnoth>(6)"
 #~ "対パスで指定することもできる。X11 下では、このパスはデフォルトで "
 #~ "$XDG_CONFIG_HOME または $HOME/.config/wesnoth であり、他のシステムでユー"
 #~ "ザーデータパスがデフォルトであるのとは異なる。"
+
+#, no-wrap
+#~ msgid "B<--userconfig-path>"
+#~ msgstr "B<--userconfig-path>"
+
+#~ msgid "prints the path of the user configuration directory and exits."
+#~ msgstr "ユーザー設定ディレクトリの名前を表示して、終了する。"
 
 #, no-wrap
 #~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024
+	Copyright (C) 2024 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,11 +18,8 @@
 #include "color.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
-#include "font/standard_colors.hpp"
 #include "gui/core/canvas_private.hpp"
 #include "gui/core/widget_definition.hpp"
-#include "help/help_impl.hpp"
-#include "serialization/parser.hpp"
 
 namespace gui2
 {
@@ -86,6 +83,8 @@ public:
 		return !tooltip().empty() || get_link_aware();
 	}
 
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) override {};
+
 	virtual void update_canvas() override;
 
 	/* **** ***** ***** setters / getters for members ***** ****** **** */
@@ -93,11 +92,6 @@ public:
 	void set_can_wrap(const bool wrap)
 	{
 		can_wrap_ = wrap;
-	}
-
-	void set_characters_per_line(const unsigned characters_per_line)
-	{
-		characters_per_line_ = characters_per_line;
 	}
 
 	void set_link_aware(bool l);
@@ -126,25 +120,23 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
-	void set_text_color(const color_t& color, bool enabled)
-	{
-		if (enabled) {
-			text_color_enabled_ = color;
-		} else {
-			text_color_disabled_ = color;
-		}
-	}
-
-	const t_string& get_label() const
-	{
-		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
-	}
-
 	// Show text marked up with help markup
 	void set_label(const t_string& text) override;
 
-	// Show a help topic
-	void set_topic(const help::topic* topic);
+	// Show a given DOM (given as a config)
+	void set_dom(const config& dom);
+
+	int get_width()
+	{
+		return init_w_;
+	}
+
+	// NOTE: set_label() must be done after this so the text can be
+	// laid out with the new width.
+	void set_width(const int width)
+	{
+		init_w_ = width;
+	}
 
 	// Given a parsed config from help markup,
 	// layout it into a config that can be understood by canvas
@@ -210,6 +202,11 @@ private:
 	color_t link_color_;
 
 	/**
+	 * Color variables that can be used in place of colors strings, like `<row bgcolor=color1>`
+	 */
+	std::map<std::string, color_t> predef_colors_;
+
+	/**
 	 * Base font family
 	 */
 	std::string font_family_;
@@ -234,27 +231,26 @@ private:
 		return can_shrink_;
 	}
 
-	/** structure tree of the marked up text after parsing */
-	config text_dom_;
-
-	/** The unparsed/raw text */
-	t_string unparsed_text_;
+	/** Final list of shapes to be drawn on the canvas. */
+	config shapes_;
 
 	/** Width and height of the canvas */
-	const unsigned init_w_;
+	unsigned init_w_;
 	point size_;
 
 	/** Padding */
-	unsigned padding_;
+	int padding_;
+
+	/** If color is a predefined color set in resolution, return it, otherwise decode using `font::string_to_color`. */
+	color_t get_color(const std::string& color);
 
 	/** Create template for text config that can be shown in canvas */
-	void default_text_config(config* txt_ptr, const t_string& text = "");
+	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
 
 	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
-	void add_attribute(config& curr_item, const std::string& attr_name, size_t start = 0, size_t end = 0, const std::string& extra_data = "");
+	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", size_t start = 0, size_t end = 0);
 	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
 
-	void add_image(config& curr_item, const std::string& name, std::string align, bool has_prev_image, bool floating);
 	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
 
 	/** size calculation functions */
@@ -264,7 +260,6 @@ private:
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
 
 	size_t get_split_location(std::string_view text, const point& pos);
-	std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
@@ -281,14 +276,7 @@ private:
 		return font::get_text_renderer().get_cursor_position(offset);
 	}
 
-	point calculate_best_size() const override
-	{
-		if(size_ == point{}) {
-			return styled_widget::calculate_best_size();
-		} else {
-			return size_;
-		}
-	}
+	point calculate_best_size() const override { return size_; };
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -337,6 +325,7 @@ struct rich_label_definition : public styled_widget_definition
 		std::string font_family;
 		int font_size;
 		std::string font_style;
+		std::map<std::string, color_t> colors;
 	};
 };
 
@@ -356,6 +345,7 @@ struct builder_rich_label : public builder_styled_widget
 	PangoAlignment text_alignment;
 	bool link_aware;
 	typed_formula<unsigned> width;
+	unsigned padding;
 };
 
 } // namespace implementation

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -279,7 +279,7 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::gameboard->units().find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -442,7 +442,7 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this;
 	assert(is_success());
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = false;
 		if(from_ != to_){
 			int step = route_->steps.size();
@@ -634,7 +634,7 @@ void recall_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -781,7 +781,7 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != nullptr);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -882,7 +882,7 @@ void stopunit_result::do_execute()
 	assert(is_success());
 	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -940,7 +940,7 @@ std::string synced_command_result::do_describe() const
 
 void synced_command_result::do_execute()
 {
-	if(resources::simulation_){
+	if(resources::simulation){
 		bool gamestate_changed = simulated_synced_command();
 
 		sim_gamestate_changed(this, gamestate_changed);

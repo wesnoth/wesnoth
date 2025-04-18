@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -121,7 +121,6 @@
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
 #include <map>                          // for map, map<>::value_type, etc
-#include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
 #include <thread>
@@ -1125,6 +1124,30 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_setfield(L, -2, "keep");
 	lua_pushinteger(L, info.gives_healing());
 	lua_setfield(L, -2, "healing");
+
+	// movement alias
+	lua_newtable(L);
+	int idx = 1;
+	for (const auto& terrain : info.mvt_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "mvt_alias");
+
+	// defense alias
+	lua_newtable(L);
+	idx = 1;
+	for (const auto& terrain : info.def_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "def_alias");
 
 	return 1;
 }
@@ -5292,10 +5315,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create the unit_types table
 	cmd_log_ << lua_unit_type::register_table(L);
 
-	// Create the unit_types table
+	// Create the terrainmap metatables
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 
-	// Create the unit_types table
+	// Create the terrain_types table
 	cmd_log_ << "Adding terrain_types table...\n";
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdatauv(L, 0, 0);

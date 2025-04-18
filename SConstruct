@@ -196,7 +196,7 @@ if env['compile_db']:
     cdb = env.CompilationDatabase()
     Alias('cdb', cdb)
 
-boost_version = "1.67"
+boost_version = "1.70"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -414,7 +414,7 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
     have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
-    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.44.0")
+    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.50.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
@@ -639,7 +639,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags += " -flto=" + str(env["jobs"])
-                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_link_flags += rel_comp_flags + " -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"

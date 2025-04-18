@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Dominic Bolin <dominic.bolin@exong.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,9 +18,15 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "deprecation.hpp"
 #include "display.hpp"
 #include "display_context.hpp"
-#include "serialization/markup.hpp"
+#include "filter_context.hpp"
+#include "font/standard_colors.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "formula/function_gamestate.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "gettext.hpp"
@@ -28,20 +34,18 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
+#include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
+#include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/ability_tags.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
-#include "filter_context.hpp"
-#include "formula/callable_objects.hpp"
-#include "formula/formula.hpp"
-#include "formula/function_gamestate.hpp"
 #include "units/filter.hpp"
-#include "deprecation.hpp"
+
 #include <utility>
 
 
@@ -241,8 +245,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(get_adj_ability_bool(j, tag_name, i, loc,*it))
-			{
+			if(get_adj_ability_bool(j, tag_name, i, loc,*it)) {
 				res.emplace_back(&j, loc, adjacent[i]);
 			}
 		}
@@ -294,9 +297,7 @@ namespace {
 						ab["description"].t_str() );
 				return true;
 			}
-		}
-		else
-		{
+		} else {
 			// See if an inactive name was specified.
 			const config::attribute_value& inactive_value =
 				gender_value(ab, gender, "name_inactive",
@@ -446,18 +447,16 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 		std::size_t count = 0;
 		unit_filter ufilt{ vconfig(i) };
 		ufilt.set_use_flat_tod(illuminates);
-		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
 		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::direction::indeterminate)
-				continue;
 			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
 			if (unit == units.end())
-				return false;
+				continue;
 			if (!ufilt(*unit, *this))
-				return false;
+				continue;
 			if((*this).id() == (*unit).id())
-				return false;
+				continue;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
 				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(side_)) {
@@ -466,10 +465,9 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 			}
 			count++;
 		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count =i["count"];
+		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
 			return false;
 		}
 	}
@@ -480,21 +478,17 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		adj_filter.flatten(illuminates);
 
-		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
 		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::direction::indeterminate) {
-				continue;
-			}
 			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
-				return false;
+				continue;
 			}
 			count++;
 		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count =i["count"];
+		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
 			return false;
 		}
 	}
@@ -675,7 +669,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
 					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
-				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
+				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table, true), callable);
 			} catch(const wfl::formula_error& e) {
 				lg::log_to_chat() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 				ERR_WML << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")";
@@ -945,21 +939,30 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 {
 	//log_scope("special_tooltips");
 	std::vector<std::pair<t_string, t_string>> res;
-	if ( active_list )
+	if(active_list) {
 		active_list->clear();
+	}
 
-	for(const auto [key, cfg] : specials_.all_children_view())
-	{
-		if ( !active_list || special_active(cfg, AFFECT_EITHER, key) ) {
-			const t_string &name = cfg["name"];
-			if (!name.empty()) {
-				res.emplace_back(name, cfg["description"].t_str() );
-				if ( active_list )
+	for(const auto [key, cfg] : specials_.all_children_view()) {
+		if(!active_list || special_active(cfg, AFFECT_EITHER, key)) {
+			const t_string& name = cfg["name"];
+			if(!name.empty()) {
+				if(key == "plague") {
+					const unit_type type = unit_types.types().at(cfg["type"].str());
+					res.emplace_back(
+						VGETTEXT(cfg["name"].t_str().c_str(), {{"type", type.type_name()}}),
+						VGETTEXT(cfg["description"].t_str().c_str(), {{"type", type.type_name()}}));
+				} else {
+					res.emplace_back(name, cfg["description"].t_str());
+				}
+
+				if(active_list) {
 					active_list->push_back(true);
+				}
 			}
 		} else {
 			const t_string& name = cfg.get_or("name_inactive", "name").t_str();
-			if (!name.empty()) {
+			if(!name.empty()) {
 				res.emplace_back(name, cfg.get_or("description_inactive", "description").t_str() );
 				active_list->push_back(false);
 			}
@@ -982,7 +985,7 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += markup::span_color(font::BUTTON_COLOR, name);
+			temp_string += markup::span_color(font::TITLE_COLOR, name);
 		}
 	}
 }
@@ -1012,7 +1015,7 @@ std::string attack_type::weapon_specials() const
 			}
 
 			if (!active) {
-				res += markup::span_color(font::inactive_details_color, name);
+				res += markup::span_color(font::INACTIVE_COLOR, name);
 			} else {
 				res += name;
 			}
@@ -1554,13 +1557,13 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+			return special_active(*i.ability_cfg, AFFECT_SELF, ability, true);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true);
 		});
 	}
 
@@ -1757,7 +1760,7 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 		}
 	}
 	if((*u).checking_tags().count(tag_name) != 0){
-		if((*u).get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, "filter_student")) {
+		if((*u).get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
 			return true;
 		}
 	}
@@ -1777,7 +1780,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 		}
 	}
 	if((*u).checking_tags().count(tag_name) != 0){
-		if((*u).get_adj_ability_bool(special, tag_name, dir, loc, from) && special_active_impl(self_attack, other_attack, special, whom, tag_name, "filter_student")) {
+		if((*u).get_adj_ability_bool(special, tag_name, dir, loc, from) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
 			return true;
 		}
 	}
@@ -2197,9 +2200,9 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 }
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-                                 const std::string& filter_self) const
+                                 bool in_abilities_tag) const
 {
-	return special_active_impl(shared_from_this(), other_attack_, special, whom, tag_name, filter_self);
+	return special_active_impl(shared_from_this(), other_attack_, special, whom, tag_name, in_abilities_tag);
 }
 
 /**
@@ -2210,7 +2213,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  * @param special           a weapon special WML structure
  * @param whom              specifies which combatant we care about
  * @param tag_name          tag name of the special config
- *  @param filter_self      the filter to use
+ * @param in_abilities_tag  if special coded in [specials] or [abilities] tags
  */
 bool attack_type::special_active_impl(
 	const const_attack_ptr& self_attack,
@@ -2218,7 +2221,7 @@ bool attack_type::special_active_impl(
 	const config& special,
 	AFFECTS whom,
 	const std::string& tag_name,
-	const std::string& filter_self)
+	bool in_abilities_tag)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
@@ -2320,6 +2323,7 @@ bool attack_type::special_active_impl(
 	//the function of this special in matches_filter()
 	//In apply_to=both case, tag_name must be checked in all filter because special applied to both self and opponent.
 	bool applied_both = special["apply_to"] == "both";
+	const std::string& filter_self = in_abilities_tag ? "filter_student" : "filter_self";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? tag_name : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_check_if_recursion))
 		return false;
@@ -2337,21 +2341,25 @@ bool attack_type::special_active_impl(
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_check_if_recursion))
 		return false;
 
+	//if filter_self != "filter_self" then it's in [abilities] tags and
+	//[filter_student_adjacent] and [filter_student_adjacent] then designate 'the student' (which may be different from the owner of the ability),
+	//while in the tags[specials] the usual names are kept.
+	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
+	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
+
 	const auto adjacent = get_adjacent_tiles(self_loc);
 
 	// Filter the adjacent units.
-	for (const config &i : special.child_range("filter_adjacent"))
+	for (const config &i : special.child_range(filter_adjacent))
 	{
 		std::size_t count = 0;
-		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
 		unit_filter filter{ vconfig(i) };
 		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::direction::indeterminate)
-				continue;
 			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
 			if (unit == units.end() || !filter.matches(*unit, adjacent[static_cast<int>(index)], *self))
-				return false;
+				continue;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
 				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(self->side())) {
@@ -2360,33 +2368,29 @@ bool attack_type::special_active_impl(
 			}
 			count++;
 		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count =i["count"];
+		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
 			return false;
 		}
 	}
 
 	// Filter the adjacent locations.
-	for (const config &i : special.child_range("filter_adjacent_location"))
+	for (const config &i : special.child_range(filter_adjacent_location))
 	{
 		std::size_t count = 0;
-		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::direction::indeterminate)
-				continue;
 			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
-				return false;
+				continue;
 			}
 			count++;
 		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count =i["count"];
+		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
 			return false;
 		}
 	}

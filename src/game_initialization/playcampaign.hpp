@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -33,6 +33,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
+		, is_queue_game(false)
 	{
 	}
 
@@ -43,6 +44,7 @@ struct mp_game_metadata
 	bool skip_replay;
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
+	bool is_queue_game;
 };
 
 class campaign_controller

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -109,9 +109,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	}
 
 	int ypos = chat_message_x;
-	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += std::max(font::get_floating_label_rect(m->handle).h,
-			font::get_floating_label_rect(m->speaker_handle).h);
+	for(const auto& m : chat_messages_) {
+		ypos += std::max(font::get_floating_label_rect(m.handle).h,
+			font::get_floating_label_rect(m.speaker_handle).h);
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {

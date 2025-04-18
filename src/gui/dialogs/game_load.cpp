@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -161,18 +161,17 @@ void game_load::populate_game_list()
 	games_ = save_index_manager_->get_saves_list();
 
 	for(const auto& game : games_) {
-		widget_data data;
-		widget_item item;
-
 		std::string name = game.name();
 		utils::ellipsis_truncate(name, 40);
-		item["label"] = name;
-		data.emplace("filename", item);
 
-		item["label"] = game.format_time_summary();
-		data.emplace("date", item);
-
-		list.add_row(data);
+		list.add_row(widget_data{
+			{ "filename", {
+				{ "label", std::move(name) }
+			}},
+			{ "date", {
+				{ "label", game.format_time_summary() }
+			}},
+		});
 	}
 
 	find_widget<button>("delete").set_active(!save_index_manager_->read_only());

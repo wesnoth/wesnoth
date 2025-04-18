@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -173,6 +173,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_MAP_RESIZE,
 	HOTKEY_EDITOR_MAP_GENERATE, HOTKEY_EDITOR_MAP_APPLY_MASK,
 	HOTKEY_EDITOR_MAP_CREATE_MASK_TO,
+	HOTKEY_EDITOR_MAP_TO_SCENARIO,
 
 	// Transitions
 	HOTKEY_EDITOR_UPDATE_TRANSITIONS, HOTKEY_EDITOR_TOGGLE_TRANSITIONS,

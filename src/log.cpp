@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -30,7 +30,6 @@
 #include <boost/algorithm/string.hpp>
 
 #include <map>
-#include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>
@@ -133,11 +132,11 @@ void rotate_logs(const std::string& log_dir)
 std::string unique_log_filename()
 {
 	std::ostringstream o;
-	const std::time_t cur = std::time(nullptr);
+	const auto now = std::chrono::system_clock::now();
 	randomness::mt_rng rng;
 
 	o << lg::log_file_prefix
-	  << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-")
+	  << chrono::format_local_timestamp(now, "%Y%m%d-%H%M%S-")
 	  << rng.get_next_random();
 
 	return o.str();
@@ -346,23 +345,21 @@ log_domain::log_domain(char const *name, severity severity)
 
 bool set_log_domain_severity(const std::string& name, severity severity)
 {
-	std::string::size_type s = name.size();
 	if (name == "all") {
 		for(logd &l : *domains) {
 			l.second = severity;
 		}
-	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		for(logd &l : *domains) {
-			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
-				l.second = severity;
-		}
+		return true;
 	} else {
-		domain_map::iterator it = domains->find(name);
-		if (it == domains->end())
-			return false;
-		it->second = severity;
+		bool any_matched = false;
+		for (logd &l : *domains) {
+			if (utils::wildcard_string_match(l.first, name)) {
+				l.second = severity;
+				any_matched = true;
+			}
+		}
+		return any_matched;
 	}
-	return true;
 }
 bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());

@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2025-02-02 17:39+0100\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2025-03-15 11:12+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -44,7 +44,7 @@ msgstr "non-morto"
 #. [chance]
 #. [trait]: id=fearless
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/campaigns/World_Conquest/resources/data/training.cfg:286
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "impavido"
@@ -74,6 +74,204 @@ msgstr ""
 "un morto vivente che si schiera a fianco dell’unità che ha sferrato tale "
 "attacco. Non funziona sui non-morti e sulle unità nei villaggi."
 
+#. [trait]: id=loyal_dummy
+#. [trait]: id=loyal
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:679
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/core/macros/traits.cfg:12
+msgid "loyal"
+msgstr "leale"
+
+#. [trait]: id=loyal_dummy
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:680
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+msgid "Zero upkeep."
+msgstr "Nessun Mantenimento."
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:111
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Questo attacco ha sempre una probabilità di colpire del 70%, a prescindere "
+"dalle capacità difensive dell’unità attaccata."
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:110
+msgid "magical"
+msgstr "magico"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/core/macros/traits.cfg:190
+msgid "intelligent"
+msgstr "intelligente"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/core/macros/traits.cfg:192
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr ""
+"Le unità intelligenti necessitano del 20% d’esperienza in meno del consueto "
+"per avanzare di livello."
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:50
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:57
+msgid "Methor"
+msgstr "Methor"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:64
+msgid "Deoran"
+msgstr "Deoran"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:74
+msgid "Arand"
+msgstr "Arand"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:83
+msgid "Asheviere"
+msgstr "Asheviere"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:92
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:101
+msgid "Eldred"
+msgstr "Eldred"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:111
+msgid "Lionel"
+msgstr "Lionel"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:125
+msgid "Lord Maddock"
+msgstr "Lord Maddock"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:133
+msgid "Colonel Dommel"
+msgstr "Colonnello Dommel"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
+msgid "Captain Kestrel"
+msgstr "Capitan Gheppio"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:150
+msgid "Omaranth"
+msgstr "Omaranth"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:174
+msgid "Iliah-Malal"
+msgstr "Iliah-Malal"
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:210
+msgid "Garard II"
+msgstr "Garard II"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:515
+msgid "No, it can’t end yet! I have so much left to do..."
+msgstr "No! Non può ancora finire! Ho ancora così tanto da fare..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:526
+msgid "No! Magic, why have you failed me..."
+msgstr "No! Magia, perché mia hai deluso..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:537
+msgid "If only I had been a little wiser..."
+msgstr "Se fossi stato soltanto un pochino più saggio..."
+
+#. [message]: speaker=Methor
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:549
+msgid "War, pain, death... I tried so hard to change things..."
+msgstr ""
+"Guerra, dolore, morte... Ho provato così intensamente a cambiare le cose..."
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:561
+msgid "I have failed my kingdom and my duty..."
+msgstr "Ho mancato nei confronti del mio regno e dei miei doveri..."
+
+#. [message]: speaker=Garard
+#. reference to Shakespeare's Richard III
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:573
+msgid "A horse! A horse! My kingdom for a horse..."
+msgstr "Un cavallo! Un cavallo! Il mio regno per un cavallo..."
+
+#. [message]: speaker=Asheviere
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:583
+msgid "It’s finally over..."
+msgstr "Finalmente è finita..."
+
+#. [message]: speaker=Lionel
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:593
+msgid "Blasted orcs..."
+msgstr "Maledetti orchi..."
+
+#. [message]: speaker=Kalenz
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:605
+msgid "Nobody can cheat death forever..."
+msgstr "Nessuno può ingannare per sempre la morte..."
+
+#. [message]: speaker=Chantal
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:616
+msgid "Deoran, I never had a chance to tell you—"
+msgstr "Deoran, non son mai riuscita a dirti che—"
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:631
+msgid "Boss, I ain’t feelin’ too hot..."
+msgstr "Capo, non ho troppo caldo..."
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:636
+msgid "I ain’t feelin’ too hot..."
+msgstr "Non sento troppo caldo..."
+
+#. [message]: speaker=Barin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:647
+msgid "I shoulda never left my swamp..."
+msgstr "Non avrei mai dovuto lasciare la mia palude..."
+
+#. [message]: speaker=Kaylan
+#. since he reappears in HttT's blackwater port, he can't die here.
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:657
+msgid ""
+"I am grievously injured; I can be of no further aid in your quest. Fight on "
+"without me, Delfador!"
+msgstr ""
+"Sono ferito gravemente; non posso essere di ulteriore aiuto nella tua "
+"ricerca. Combatti senza di me, Delfador!"
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:666
+msgid ""
+"Many Knights choose the path of the Paladin, Delfador, but I am an heir of "
+"the Horse Lords. I shall be a Grand Knight."
+msgstr ""
+"Molti cavalieri scelgono il sentiero del paladino, Delfador, ma io sono uno "
+"degli eredi dei Signori dei Cavalli. Io diventerò Gran Cavaliere."
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:676
+msgid ""
+"I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
+"the Paladin, but such is unbecoming for an heir of the Horse Lords."
+msgstr ""
+"Sono felice di essere un Gran Cavaliere, Delfador.Molti cavalieri scelgono "
+"il sentiero del Paladino, ma ciò non è appropriato per un erede dei Signori "
+"dei Cavalli"
+
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
@@ -90,26 +288,26 @@ msgstr "fermezza"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
 #: data/core/macros/abilities.cfg:238
 msgid "female^illuminates"
 msgstr "illumina"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:682
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -129,28 +327,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:757
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Quest’unità è in grado di fornire cure di primo soccorso e rallentare la "
 "disidratazione."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:706
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:707
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -170,17 +368,17 @@ msgstr ""
 "“cura”."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:736
 msgid "heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:737
 msgid "female^heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:738
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -200,7 +398,7 @@ msgstr ""
 "“cura”."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:763
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -212,7 +410,7 @@ msgstr ""
 #. [chance]
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
-#: data/campaigns/World_Conquest/resources/data/training.cfg:785
+#: data/campaigns/World_Conquest/resources/data/training.cfg:786
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "teletrasporto"
@@ -227,28 +425,28 @@ msgstr "rigenerazione"
 
 #. [chance]
 #. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/data/training.cfg:257
+#: data/campaigns/World_Conquest/resources/data/training.cfg:258
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "Recupera sempre PF come se riposasse"
 
 #. [chance]
 #. [damage]: id=backstab
-#: data/campaigns/World_Conquest/resources/data/training.cfg:438
+#: data/campaigns/World_Conquest/resources/data/training.cfg:439
 #: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "attacco alle spalle"
 
 #. [chance]
 #. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/data/training.cfg:500
+#: data/campaigns/World_Conquest/resources/data/training.cfg:501
 #: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "nutrimento"
 
 #. [chance]
 #. [leadership]: id=leadership
-#: data/campaigns/World_Conquest/resources/data/training.cfg:527
+#: data/campaigns/World_Conquest/resources/data/training.cfg:528
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "comando"
@@ -1305,14 +1503,26 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:394
+#, fuzzy
+#| msgid ""
+#| "<header>Entering scenario mode</header>\n"
+#| "\n"
+#| "To start a new map in scenario mode, choose “New Scenario” from the "
+#| "“File” menu.\n"
+#| "\n"
+#| "If you’re already editing a map in terrain mode, use “Save Scenario As” "
+#| "from the “File” menu; this will switch to scenario mode.\n"
+#| "\n"
+#| "To load a map that was created in the scenario editor, use “Load Map” "
+#| "from the “File” menu, and select the .cfg file (not a .map file)."
 msgid ""
 "<header>Entering scenario mode</header>\n"
 "\n"
 "To start a new map in scenario mode, choose “New Scenario” from the “File” "
 "menu.\n"
 "\n"
-"If you’re already editing a map in terrain mode, use “Save Scenario As” from "
-"the “File” menu; this will switch to scenario mode.\n"
+"If you’re already editing a map in terrain mode, use “Convert to Scenario” "
+"from the “File” menu; this will switch to scenario mode.\n"
 "\n"
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
@@ -1853,7 +2063,7 @@ msgid ""
 "    • Mount Morogor: The highest active volcanic mountain in the central "
 "island of Morogor.\n"
 "    • Isle of Gaall: A dangerous island slightly north of the central Isle "
-"of Morogor, used mostly as hunting ground by the drakes, who inhabit only a "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only "
 "two small villages on the isle.\n"
 "    • Isle of Omarath: A major drakish island northwest of the main Isle of "
 "Morogor. It is the northernmost island of the Morogor Archipelago."
@@ -1887,7 +2097,7 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:70
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Southbay: The capital of the largest Islefolk Kingdom.\n"
+"    • Southbay: The capital of the largest Islefolk kingdom.\n"
 "    • Clearwater Port: The second largest Islefolk city and the location of "
 "a major port.\n"
 "    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
@@ -1901,8 +2111,8 @@ msgstr ""
 "    • Porto Clearwater: La seconda più grande città degli Isolani.\n"
 "    • Stormvale: Uno dei regni principali degli Isolani, un tempo governato "
 "dagli antenati di Haldric I.\n"
-"    • Rifugio di Jevyan: La capitale dei Wesnothiani e covo del famoso lich-"
-"signore Jevyan.\n"
+"    • Rifugio di Jevyan: La capitale dei Wesnothiani e covo del famigerato "
+"lich-signore Jevyan.\n"
 "    • Blackmore: Un piccolo insediamento situato a nord della Vecchia "
 "Foresta."
 
@@ -1913,23 +2123,29 @@ msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
 "Isle.\n"
-"    • Oldwood: A mysterious wood inhabited by some woses.\n"
-"    • Swamp of Esten: A small swamp located east of the Broken Mountains."
+"    • Midlands: A hilly and sparsely forested area south of the Swamp of "
+"Esten, once home to prosperous Islefolk kingdoms.\n"
+"    • Oldwood: A mysterious wood inhabited by some ancient woses. Dark old "
+"catacombs are located below a temple in the heart of the forest.\n"
+"    • Swamp of Esten: A small swamp located east of the Broken Mountains "
+"once home to Wesfolk-imitating cultists. The swamp was defiled in wars "
+"between Wesfolk and Islefolk long ago."
 msgstr ""
 "<header>text='Principali zone di interesse:'</header>\n"
-"    • Montagne Spaccate: Una imponente catena montuosa che attraversa tutta "
+"    • Montagne Spaccate: imponente catena montuosa che attraversa tutta "
 "l’Isola Verde.\n"
-"    • Vecchi Foresta: A mysterious wood inhabited by some woses.\n"
-"    • Palude di Esten: Una piccola palude situata ad est delle Montagne "
-"Spaccate."
+"    • Terre di Mezzo: zona collinosa, punteggiata da rade foreste a sud "
+"della palude di Esten, un tempo sede del prosperoso regno degli Isolani.\n"
+"    • Vecchi Foresta: misteriosa foresta abitata da alcuni wose.\n"
+"    • Palude di Esten: piccola palude situata ad est delle Montagne Spaccate."
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:87
+#: data/core/encyclopedia/geography.cfg:88
 msgid "Old Continent"
 msgstr "Vecchio Continente"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:88
+#: data/core/encyclopedia/geography.cfg:89
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
 "<ref>dst='green_isle' text='Green Isle'</ref> across the "
@@ -1942,12 +2158,12 @@ msgstr ""
 "degli umani che degli orchi."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:93
+#: data/core/encyclopedia/geography.cfg:94
 msgid "Great Continent"
 msgstr "Grande Continente"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:95
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -1958,12 +2174,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='Grande Oceano'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:99
+#: data/core/encyclopedia/geography.cfg:100
 msgid "Irdya"
 msgstr "Irdya"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:101
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -1977,12 +2193,12 @@ msgstr ""
 "poetica, “il grande mondo verde”."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:105
+#: data/core/encyclopedia/geography.cfg:106
 msgid "Kingdom of Wesnoth"
 msgstr "Regno di Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:107
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -2015,7 +2231,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:112
+#: data/core/encyclopedia/geography.cfg:113
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -2058,7 +2274,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:126
+#: data/core/encyclopedia/geography.cfg:127
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
@@ -2123,12 +2339,12 @@ msgstr ""
 "nord-ovest dei Boschi Grigi."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:143
+#: data/core/encyclopedia/geography.cfg:144
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:144
+#: data/core/encyclopedia/geography.cfg:145
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -2148,7 +2364,7 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:148
+#: data/core/encyclopedia/geography.cfg:149
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
@@ -2163,7 +2379,7 @@ msgstr ""
 "    • Carcyn: città al confine tra Wesnoth ed Elensefar, contesa con Wesnoth."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:153
+#: data/core/encyclopedia/geography.cfg:154
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
@@ -2174,12 +2390,12 @@ msgstr ""
 "molto largo, tanto che solo le navi possono attraversarlo."
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:159
+#: data/core/encyclopedia/geography.cfg:160
 msgid "Northlands"
 msgstr "Terre del Nord"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:161
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
@@ -2212,7 +2428,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:166
+#: data/core/encyclopedia/geography.cfg:167
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -2243,7 +2459,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:175
+#: data/core/encyclopedia/geography.cfg:176
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
@@ -2293,12 +2509,12 @@ msgstr ""
 "questo fiume si trova da qualche parte ad est delle Terre del Nord."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:188
+#: data/core/encyclopedia/geography.cfg:189
 msgid "Southwest Elven Lands"
 msgstr "Terre elfiche sud-occidentali"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:189
+#: data/core/encyclopedia/geography.cfg:190
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2314,10 +2530,10 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:193
+#: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, home to recluded "
+"    • Aethenwood: The largest southern forest, home to reclusive "
 "<ref>dst='..race_elf' text='elves'</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
@@ -2328,27 +2544,26 @@ msgid ""
 "enter it seldom return."
 msgstr ""
 "<header>text='Notable land features:'</header>\n"
-"    • Foresta di Aethen: la più grande foresta meridionale, The largest "
-"southern forest, casa degli <ref>dst='..race_elf' text='elves'</ref> "
-"reclusi.\n"
+"    • Foresta di Aethen: la più grande foresta meridionale, casa degli "
+"<ref>dst='..race_elf' text='elfi'</ref> reclusi.\n"
 "    • Valle degli Alberi in Fiore: una valle elfica situata ai confini "
 "meridionali della Foresti di Aethen. Al suo interno si trova l’isola sacra "
 "di Elrath.\n"
-"    • Lago Aelin: lago elfico al confine del loro territorio, lungo il fiume "
-"Aethen.\n"
+"    • Lago Aelin: lago elfico al confine del loro territorio, lungo il corso "
+"del fiume Aethen.\n"
 "    • Foresta Nera: antica foresta, probabilmente infestata, molto poco "
 "conosciuta. Si pensa che una volta fosse abitata dagli elfi. Chi vi si "
 "avventura raramente ne esce vivo."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:202
+#: data/core/encyclopedia/geography.cfg:203
 msgid "Heart Mountains"
 msgstr "Montagne Centrali"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:205
+#: data/core/encyclopedia/geography.cfg:206
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -2365,7 +2580,7 @@ msgstr ""
 "dato il loro distintivo aspetto."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:210
+#: data/core/encyclopedia/geography.cfg:211
 msgid "Far North"
 msgstr "Remoto nord"
 
@@ -2374,7 +2589,7 @@ msgstr "Remoto nord"
 # tolte le Steppe selvagge ("Wild Steppe");
 # aggiunte "Frosty Wastes" e "Barren Plains"
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:211
+#: data/core/encyclopedia/geography.cfg:212
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -2397,7 +2612,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:215
+#: data/core/encyclopedia/geography.cfg:216
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
@@ -2436,7 +2651,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:231
+#: data/core/encyclopedia/geography.cfg:232
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2493,50 +2708,49 @@ msgstr ""
 "    • Piane Aride: tundra nevosa, vasta e scarsamente popolata."
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:248
+#: data/core/encyclopedia/geography.cfg:249
 msgid "Far South"
 msgstr "Remoto sud"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:249
+#: data/core/encyclopedia/geography.cfg:250
 msgid ""
-"A vast region south of Kerlath home to many mysterious races, including the "
-"Jinn and Wyverns. Very little is known for certain about what lies here."
+"A vast region south of Kerlath home to many mysterious races, including jinn "
+"and wyverns. Very little is known for certain about what lies here."
 msgstr ""
 "Una vasta regione a sud di Kerlath, sede di numerose e misteriose razze, "
-"quali i Jinn e le viverne. Si conosce molto poco di ciò che ci abiti."
+"quali i Jinn e le viverne. Si conosce molto poco di ciò che vi abita."
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:253
+#: data/core/encyclopedia/geography.cfg:254
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
-"    • Sandy Wastes: A hot and dry desert located southeast of Kerlath. It is "
+"    • Sandy Wastes: A hot desert located southeast of Kerlath. It is "
 "considered an impassable barrier by Wesnothians, filled with very sparse "
 "vegetation consisting of no more than a few shrubs and cacti.\n"
 "    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
-"entirely by flatter desert. It is not part of any mountain range and its "
+"entirely by flat desert. It is not part of any mountain range and its "
 "existence is doubted by many.\n"
 "    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
 "remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
 "civilization is sometimes said to live around the desert."
 msgstr ""
 "<header>text='Principali zone di interesse:'</header>\n"
-"    • Montagne del Pericolo: una alta e mortale catena montuosa del remodo "
-"sud, infestata da bande di feroci barbari e mostri.\n"
-"    • Lande Sabbiose: un deserto dal caldo torrido situato a sud di Kerlath. "
+"    • Montagne del Pericolo: alta e mortale catena montuosa del Remodo Sud, "
+"infestata da bande di feroci barbari e mostri.\n"
+"    • Lande Sabbiose: deserto dal caldo torrido situato a sud di Kerlath. "
 "Viene considerato alla stregua di una barriera insormontabile dai "
 "Wesnothiani, essendo cosparso di una scarsissima vegetazione, costituita per "
 "la maggior parte da arbusti e cactus.\n"
-"    • Isanbar: una misteriosa montagna che si staglia nelle Lande Sabbiose, "
+"    • Isanbar: misteriosa montagna che si staglia nelle Lande Sabbiose, "
 "interamente circondata dal piatto deserto. Non fa parte di nessuna catena "
 "montuosa e molti dubitano della sua stessa esistenza.\n"
-"    • Deserto Terracénere: Un misterioso deserto che si mormora esista "
-"persino oltre le Lande Sabbiose, a volte chiamato semplicemente Terracénere. "
-"A far-off civilization is sometimes said to live around the desert. Alcune "
-"voci dicono he intorno a quel deserto viva una lontana civiltà."
+"    • Deserto Terracénere: misterioso deserto che si mormora esista persino "
+"oltre le Lande Sabbiose, a volte chiamato semplicemente Terracénere. Alcune "
+"voci dicono che da quelle parti viva una lontana civiltà."
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
@@ -2559,8 +2773,8 @@ msgstr "Struttura di gioco"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:546
-#: src/help/help_topic_generators.cpp:508
-#: src/help/help_topic_generators.cpp:526
+#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:549
 msgid "Traits"
 msgstr "Caratteristiche"
 
@@ -2790,17 +3004,21 @@ msgid ""
 "campaign, you often need to play more carefully, preserving your best troops "
 "for use again in later scenarios.\n"
 "\n"
-"The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-"Wesnoth gameplay in the context of a scenario. Most material covered in the "
-"tutorial is explained more in-depth in these pages, so you can always refer "
+"The interactive tutorial campaign <bold>text='The South Guard'</bold> "
+"introduces Wesnoth gameplay in the context of a campaign. Most material "
+"covered in the tutorial is explained in these pages, so you can always refer "
 "back here if you forget something.\n"
 "\n"
-"After you master the basics, try out a beginner campaign, such as "
-"<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-"Guard'</italic>. A full list of installed campaigns can be found via the "
-"<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-"quite challenging, you may wish to start on easy before progressing to "
-"higher difficulties.\n"
+"After you master the basics, be sure to try another novice campaign next! "
+"You can help two brothers overcome a deadly peril in <italic>text='A Tale of "
+"Two Brothers'</italic>, help the prince Konrad through a turning point in "
+"the history of Wesnoth in the epic <italic>text='Heir to the Throne'</"
+"italic> or guide the mage Delfador on his way to becoming a legend in the "
+"equally epic <italic>text='The Deceiver’s Gambit'</italic>. A full list of "
+"installed campaigns can be found via the <bold>text='Campaign'</bold> option "
+"on the main menu, which is full of equally interesting adventures in the "
+"long history of Wesnoth. We’d recommend playing them in the order they are "
+"listed, but feel free to skip any that’s not your cup of tea!\n"
 "\n"
 "Campaigns are grouped by <italic>text='level'</italic> and "
 "<italic>text='difficulty'</italic>. For example, <italic>text='Heir to the "
@@ -2809,11 +3027,10 @@ msgid ""
 "what degree of proficiency in the game mechanics (such as "
 "<ref>dst='movement' text='zones of control'</ref> and <ref>dst='time_of_day' "
 "text='time of day'</ref>) is assumed. The difficulty indicates how "
-"challenging the scenarios will be to a veteran player: at higher "
-"difficulties, the obstacles to victory will be higher and overcoming them "
-"will require more skillful play. For example, at higher difficulties the "
-"enemy may have higher incomes, higher-level units, more castle hexes, and so "
-"on."
+"challenging the scenarios will be: at higher difficulties, the obstacles to "
+"victory will be higher and overcoming them will require more skillful play. "
+"For example, at higher difficulties the enemy may have higher incomes, "
+"higher-level units, more castle hexes, and so on."
 msgstr ""
 "Wesnoth è composto da una serie di battaglie chiamate "
 "<italic>text='scenari'</italic>, che gettano le tue truppe contro quelle di "
@@ -2823,34 +3040,38 @@ msgstr ""
 "cercando di preservare le truppe migliori per utilizzarle negli scenari "
 "finali.\n"
 "\n"
-"Il <bold>text='Tutorial'</bold> interattivo ti introduce alle basi di gioco "
-"di Wesnoth nel contesto di uno scenario. La maggior parte del materiale "
-"utilizzato nel tutorial è spiegato più in dettaglio in queste pagine, così "
-"che possano essere sempre usate come riferimento nel caso tu voglia "
-"ripassare qualche dettaglio che ti è sfuggito.\n"
+"La campagna di addestramento interattiva <bold>text='ça Guardia del Sud'</"
+"bold> introduce le basi di gioco di Wesnoth nel contesto di una campagna. La "
+"maggior parte del materiale utilizzato nel tutorial è spiegato più in "
+"dettaglio in queste pagine, così che possano essere sempre usate come "
+"riferimento nel caso tu voglia ripassare qualche dettaglio che ti è "
+"sfuggito.\n"
 "\n"
-"Dopo aver dominato le basi, fai un tentativo con una campagna per "
-"principianti, tipo <italic>text='L’Erede al Trono'</italic> o "
-"<italic>text='La Guardia del Sud'</italic>. Un elenco esaustivo delle "
-"campagne disponibili è disponibile cliccando sull’opzione "
-"<bold>text='Campagna'</bold> nel menù principale. Siccome Wesnoth può essere "
-"decisamente impegnativo, è consigliabile iniziare a giocare scegliendo le "
-"modalità più semplici prima di affrontare quelle più impegnative e "
-"difficoltose.\n"
+"Dopo aver padroneggiato le basi, fai un tentativo con una campagna per "
+"principianti! Puoi aiutare de fratelli a sconfiggere un mortale pericolo in "
+"<italic>text='Racconto di due fratelli'</italic>, aiutare il principe Konrad "
+"attraverso uno dei puti di svolta nella storia di Wesnoth nell'epica o "
+"<italic>text='L’erede al trono'</italic> oppure guidare il mago Defador "
+"lungo il suo cammino per diventare una leggenda nell'altrettato epica "
+"<italic>text='Il Gambetto dell’Imbroglione'</italic>. Un elenco esaustivo "
+"delle campagne disponibili è disponibile cliccando sull’opzione "
+"<bold>text='Campagna'</bold> nel menù principale, pieno di avventure "
+"altrettanto interessanti nella lunga storia di Wesnoth. Il nostro "
+"suggerimento è quello di giocarle nell'ordine nel quale vengono proposte, ma "
+"sentiti libero di saltarne qualcuna se non sono di tuo gusto!\n"
 "\n"
 "Le campagne sono raggruppate per <italic>text='livello'</italic> e per "
 "<italic>text='difficoltà'</italic>. Ad esempio, <italic>text='L’Erede al "
-"Trono'</italic> è di livello ‘Novizio’, ed \n"
-"è giocabile con tre diverse difficoltà: ‘Principiante’, ‘Normale’, e "
-"‘Difficile’. Il livello della campagna indica quale grado di conoscenza dei "
-"meccanismi del gioco (quali <ref>dst='movement' text='zone di controllo'</"
-"ref> e <ref>dst='time_of_day' text='periodo del giorno'</ref>) è presunto. "
-"La difficoltà indica quando sarà impegnativo uno scenario per un giocatore "
-"veterano: ai massimi livelli di difficoltà, gli ostacoli per raggiungere la "
-"vittoria saranno superiori e per superarli saranno richieste maggiori "
-"competenze di gioco. Ad esempio, ad una difficoltà altra potrà corrispondere "
-"un nemico con ingenti entrate, con unità di alto livello, castelli con molti "
-"esagoni e così via."
+"Trono'</italic> è di livello ‘Novizio’, ed è giocabile con tre diverse "
+"difficoltà: ‘Principiante’, ‘Normale’, e ‘Difficile’. Il livello della "
+"campagna indica quale grado di conoscenza dei meccanismi del gioco (quali "
+"<ref>dst='movement' text='zone di controllo'</ref> e <ref>dst='time_of_day' "
+"text='periodo del giorno'</ref>) è presunto. La difficoltà indica quando "
+"sarà impegnativo uno scenario per un giocatore veterano: ai massimi livelli "
+"di difficoltà, gli ostacoli per raggiungere la vittoria saranno superiori e "
+"per superarli saranno richieste maggiori competenze di gioco. Ad esempio, ad "
+"una difficoltà altra potrà corrispondere un nemico con ingenti entrate, con "
+"unità di alto livello, castelli con molti esagoni e così via."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:174
@@ -4244,16 +4465,28 @@ msgstr "Periodo della giornata"
 # In inglese è "Liminal", non "Crepuscolar"... pone di più l'accento sul limite della percezione che non sull'aspetto alba/tramonto, anche se poi à quello che considera [NdA]
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:465
+#, fuzzy
+#| msgid ""
+#| "The time of day affects the damage of certain units as follows:\n"
+#| "\n"
+#| "• <span face='Serif' size='15'>LAWFUL</span> units get +25% damage in "
+#| "daytime, and −25% damage at night.\n"
+#| "• <span face='Serif' size='15'>CHAOTIC</span> units get +25% damage at "
+#| "night, and −25% in daytime.\n"
+#| "• <span face='Serif' size='15'>NEUTRAL</span> units are unaffected by the "
+#| "time of day.\n"
+#| "• <span face='Serif' size='15'>LIMINAL</span> units get +25% damage "
+#| "during twilight."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <span face='Serif' size='15'>LAWFUL</span> units get +25% damage in "
+"• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night.\n"
-"• <span face='Serif' size='15'>CHAOTIC</span> units get +25% damage at "
+"• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime.\n"
-"• <span face='Serif' size='15'>NEUTRAL</span> units are unaffected by the "
+"• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day.\n"
-"• <span face='Serif' size='15'>LIMINAL</span> units get +25% damage during "
+"• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
 "Il periodo della giornata influisce sui danni inflitti da alcune unità come "
@@ -6399,11 +6632,6 @@ msgstr ""
 "lista per evitare duplicazioni):"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:12
-msgid "loyal"
-msgstr "leale"
-
-#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:13
 msgid "female^loyal"
 msgstr "leale"
@@ -6671,11 +6899,6 @@ msgstr ""
 "il 5% di PF in meno del consueto."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:190
-msgid "intelligent"
-msgstr "intelligente"
-
-#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
 msgstr "intelligente"
@@ -6701,13 +6924,6 @@ msgstr ""
 "Livello Massimo'</italic> (AOLM) non dà variazioni così significative come "
 "un normale avanzamento di livello. Se possiedi molte unità di “livello "
 "massimo”, potresti voler richiamare unità con caratteristiche più utili."
-
-#. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:192
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Le unità intelligenti necessitano del 20% d’esperienza in meno del consueto "
-"per avanzare di livello."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -7026,20 +7242,6 @@ msgid ""
 msgstr ""
 "Usato in fase offensiva, questo attacco ha sempre una probabilità di colpire "
 "pari almeno al 60%."
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:110
-msgid "magical"
-msgstr "magico"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:111
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Questo attacco ha sempre una probabilità di colpire del 70%, a prescindere "
-"dalle capacità difensive dell’unità attaccata."
 
 #. [disable]: id=naval_ram
 #: data/core/macros/weapon_specials.cfg:123
@@ -9007,20 +9209,20 @@ msgstr "stordita"
 msgid "stunned"
 msgstr "stordito"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr "Meglio di"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr "Peggio di"
 
 #. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
-#: src/help/help_topic_generators.cpp:122
+#: src/help/help_topic_generators.cpp:132
 msgid "base terrain"
 msgstr "terreno base"
 
-#: src/help/help_topic_generators.cpp:197
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
@@ -9029,7 +9231,7 @@ msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:202
+#: src/help/help_topic_generators.cpp:182
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -9043,7 +9245,7 @@ msgstr[1] ""
 "Questo terreno permette alle unità di curare $amount punti ferita, o di "
 "guarire dal veleno, in maniera analoga alla sosta in un villaggio."
 
-#: src/help/help_topic_generators.cpp:209
+#: src/help/help_topic_generators.cpp:189
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
@@ -9052,7 +9254,7 @@ msgstr ""
 "una fortezza collegata."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:193
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -9061,7 +9263,7 @@ msgstr ""
 "reclutare unità negli esagoni castelli connessi."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:216
+#: src/help/help_topic_generators.cpp:196
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -9070,189 +9272,188 @@ msgstr ""
 "occupa, ma non permette ad un condottiero su una fortezza collegata di "
 "reclutare qu questo esagono."
 
-#: src/help/help_topic_generators.cpp:220
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:246
+#: src/help/help_topic_generators.cpp:653
 msgid "Special Notes"
 msgstr "Note speciali"
 
 #. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
-#: src/help/help_topic_generators.cpp:241
+#: src/help/help_topic_generators.cpp:267
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
 msgstr[0] "Terreno di base tipico: $types"
 msgstr[1] "Terreni di base tipici: $types"
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
-#: src/help/help_topic_generators.cpp:253
+#: src/help/help_topic_generators.cpp:276
 msgid "Typical base terrain: $type"
 msgstr "Terreno di base tipico: $type"
 
-#: src/help/help_topic_generators.cpp:259
+#: src/help/help_topic_generators.cpp:282
 msgid "Movement properties: "
 msgstr "Proprietà di movimento: "
 
-#: src/help/help_topic_generators.cpp:263
+#: src/help/help_topic_generators.cpp:286
 msgid "Defense properties: "
 msgstr "Proprietà di difesa: "
 
-#: src/help/help_topic_generators.cpp:341
+#: src/help/help_topic_generators.cpp:364
 msgid "Level"
 msgstr "Livello"
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:415
 msgid "Advances from: "
 msgstr "Avanza da: "
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:417
 msgid "Advances to: "
 msgstr "Avanza come: "
 
-#: src/help/help_topic_generators.cpp:423
+#: src/help/help_topic_generators.cpp:446
 msgid "Base unit: "
 msgstr "Unità base: "
 
-#: src/help/help_topic_generators.cpp:428
+#: src/help/help_topic_generators.cpp:451
 msgid "Base units: "
 msgstr "Unità base: "
 
-#: src/help/help_topic_generators.cpp:446
+#: src/help/help_topic_generators.cpp:469
 msgid "Variations: "
 msgstr "Varianti: "
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:492
 msgid "race^Miscellaneous"
 msgstr "Razze varie"
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:494
 msgid "Race: "
 msgstr "Razza: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:559
 msgid "Abilities: "
 msgstr "Abilità: "
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:585
 msgid "Ability Upgrades: "
 msgstr "Potenziamenti delle abilità: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:592
+#: src/help/help_topic_generators.cpp:615
 msgid "HP:"
 msgstr "PF:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:619
 msgid "Moves:"
 msgstr "Mosse:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:624
 msgid "Vision:"
 msgstr "Visione:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:607
+#: src/help/help_topic_generators.cpp:630
 msgid "Jamming:"
 msgstr "Disturbo:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:635
 msgid "Cost:"
 msgstr "Costo:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:639
 msgid "Alignment:"
 msgstr "Allineamento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:646
 msgid "Required XP:"
 msgstr "PE richiesti:"
 
-#: src/help/help_topic_generators.cpp:641
+#: src/help/help_topic_generators.cpp:664
 msgid "Attacks"
 msgstr "Attacchi"
 
-#: src/help/help_topic_generators.cpp:646
-msgid "Icon"
-msgstr "Icona"
-
-#: src/help/help_topic_generators.cpp:647
+#: src/help/help_topic_generators.cpp:672
 msgid "Name"
 msgstr "Nome"
 
-#: src/help/help_topic_generators.cpp:648
+#: src/help/help_topic_generators.cpp:673
 msgid "Strikes"
 msgstr "Colpi"
 
-#: src/help/help_topic_generators.cpp:649
+#: src/help/help_topic_generators.cpp:674
 msgid "Range"
 msgstr "Portata"
 
-#: src/help/help_topic_generators.cpp:650
+#: src/help/help_topic_generators.cpp:675
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help/help_topic_generators.cpp:651
+#: src/help/help_topic_generators.cpp:676
 msgid "Special"
 msgstr "Attacchi speciali"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:764
 msgid "Resistances"
 msgstr "Resistenze"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:768
 msgid "Attack Type"
 msgstr "Tipo di attacco"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:769
 msgid "Resistance"
 msgstr "Resistenza"
 
-#: src/help/help_topic_generators.cpp:772
+#: src/help/help_topic_generators.cpp:797
 msgid "Terrain Modifiers"
 msgstr "Modificatori di terreno"
 
-#: src/help/help_topic_generators.cpp:776
+#: src/help/help_topic_generators.cpp:801
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help/help_topic_generators.cpp:777
+#: src/help/help_topic_generators.cpp:802
 msgid "Defense"
 msgstr "Difesa"
 
-#: src/help/help_topic_generators.cpp:778
+#: src/help/help_topic_generators.cpp:803
 msgid "Movement Cost"
 msgstr "Costo di movimento"
 
-#: src/help/help_topic_generators.cpp:779
+#: src/help/help_topic_generators.cpp:804
 msgid "Defense Cap"
 msgstr "Limite Percentuale Difesa"
 
-#: src/help/help_topic_generators.cpp:780
+#: src/help/help_topic_generators.cpp:805
 msgid "Vision Cost"
 msgstr "Costo di visione"
 
-#: src/help/help_topic_generators.cpp:781
+#: src/help/help_topic_generators.cpp:806
 msgid "Jamming Cost"
 msgstr "Costo di disturbo"
+
+#~ msgid "Icon"
+#~ msgstr "Icona"
 
 #~ msgid ""
 #~ "<header>text='Notable land features:'</header>\n"

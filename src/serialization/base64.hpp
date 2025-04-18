@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,24 +16,25 @@
 #pragma once
 
 #include <cstdint>
+#include "utils/span.hpp"
 #include <string>
 #include <string_view>
 #include <vector>
 
 namespace utils
 {
-using byte_string_view = std::basic_string_view<uint8_t>;
+using byte_view = utils::span<const uint8_t>;
 }
 
 // Official Base64 encoding (RFC4648)
 namespace base64 {
 	std::vector<uint8_t> decode(std::string_view encoded);
-	std::string encode(utils::byte_string_view bytes);
+	std::string encode(utils::byte_view bytes);
 }
 // crypt()-compatible radix-64 encoding
 namespace crypt64 {
 	std::vector<uint8_t> decode(std::string_view encoded);
-	std::string encode(utils::byte_string_view bytes);
+	std::string encode(utils::byte_view bytes);
 	// Single character functions. For special use only
 	int decode(char encoded_char);
 	char encode(int value);

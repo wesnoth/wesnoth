@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,10 +80,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_add_time_area(lua_State *);
 	int intf_remove_time_area(lua_State *);
 	int intf_get_time_area(lua_State *);
-	int intf_animate_unit(lua_State *);
 	int intf_gamestate_inspector(lua_State *);
-	int intf_show_recruit_dialog(lua_State* L);
-	int intf_show_recall_dialog(lua_State* L);
 	int impl_run_animation(lua_State *);
 	int intf_create_animator(lua_State *);
 	int intf_get_unit(lua_State *);
@@ -121,7 +118,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
 	int intf_find_vision_range(lua_State *L);
-	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_set_achievement(lua_State *L);
@@ -155,7 +151,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
 	int intf_set_side_id(lua_State *L);
-	int intf_modify_ai_wml(lua_State *L);
 	int intf_get_sides(lua_State* L);
 	int intf_get_side(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);

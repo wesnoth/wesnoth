@@ -85,7 +85,7 @@ function wml_actions.chat(cfg)
 end
 
 function wml_actions.gold(cfg)
-	local amount = tonumber(cfg.amount) or
+	local amount = math.floor(tonumber(cfg.amount)) or
 		wml.error "[gold] missing required amount= attribute."
 	local sides = wesnoth.sides.find(cfg)
 	for index, team in ipairs(sides) do

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -103,25 +103,25 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	send_to_server(data);
 }
 
-void chat_handler::do_speak(const std::string& message, bool allies_only)
+bool chat_handler::do_speak(const std::string& message, bool allies_only)
 {
 	if (message.empty() || message == "/") {
-		return;
+		return false;
 	}
 	bool is_command = (message[0] == '/');
 	bool quoted_command = (is_command && message[1] == ' ');
 
 	if (!is_command) {
 		send_chat_message(message, allies_only);
-		return;
+		return true;
 	}
 	else if (quoted_command) {
 		send_chat_message(std::string(message.begin() + 2, message.end()), allies_only);
-		return;
+		return true;
 	}
 	std::string cmd(message.begin() + 1, message.end());
 	chat_command_handler cch(*this, allies_only);
-	cch.dispatch(cmd);
+	return cch.dispatch(cmd);
 }
 
 void chat_handler::user_relation_changed(const std::string& /*name*/)

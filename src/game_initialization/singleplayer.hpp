@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Nathan Walker <nathan.b.walker@vanderbilt.edu>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

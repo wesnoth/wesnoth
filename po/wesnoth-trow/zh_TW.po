@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
 "PO-Revision-Date: 2024-03-03 18:41+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -64,9 +64,15 @@ msgstr "領主"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
+#, fuzzy
+#| msgid ""
+#| "Lead Prince Haldric through the destruction of the Green Isle and across "
+#| "the Ocean to establish the very kingdom of Wesnoth itself. The "
+#| "confrontation with Lich-Lord Jevyan awaits...\n"
+#| "\n"
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
-"Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
+"Ocean to establish the very Kingdom of Wesnoth itself. The confrontation "
 "with Lich-Lord Jevyan awaits...\n"
 "\n"
 msgstr ""
@@ -3569,7 +3575,7 @@ msgstr "趕快，我們必須加固邊界，不然一切都會完蛋！"
 #. [event]
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:579
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:291
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:290
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:367
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:461
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:259
@@ -3781,7 +3787,7 @@ msgid "Kegrid"
 msgstr "凱格里德"
 
 #. [side]: type=Drake Flameheart, id=Kegrid
-#. [side]: type=Drake Flameheart, id=Gerrick
+#. [side]: type=Drake Flameheart, id=Garash
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:52
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:74
@@ -3789,10 +3795,10 @@ msgstr "凱格里德"
 msgid "Drakes"
 msgstr "龍族"
 
-#. [side]: type=Drake Flameheart, id=Gerrick
+#. [side]: type=Drake Flameheart, id=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:68
-msgid "Gerrick"
-msgstr "格里克"
+msgid "Garash"
+msgstr ""
 
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
@@ -3832,32 +3838,36 @@ msgstr "我們為和平而來，我們只是試著為給我們的船隊補給物
 msgid "I don’t think diplomacy is going to work."
 msgstr "我不認為交涉可以起作用。"
 
-#. [message]: speaker=Gerrick
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:221
+#. [message]: speaker=Garash
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
+#, fuzzy
+#| msgid ""
+#| "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
+#| "glory of the Lords of Morogor!"
 msgid ""
-"Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
-"glory of the Lords of Morogor!"
+"So, prey, you have come to trouble us again. Prepare to die! For the glory "
+"of Morogor!"
 msgstr ""
 "嘶嘶所以，人類，你們又來給我們找麻煩了。準備去死吧！為了摩洛格眾領主的榮耀！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:225
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:224
 msgid "Do I need to say, <i>“I told you so”</i>?"
 msgstr "我需要說，<i>我早就跟你說過</i>嗎？"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:243
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:242
 msgid "Bitey the Serpent"
 msgstr "大海蛇比泰"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:251
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:250
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:334
 msgid "Look out, a serpent has emerged from the deep."
 msgstr "小心，一條大海蛇從深處浮出來了。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:265
 msgid ""
 "Well, it looks like their warriors have given up the fight. We should be "
 "able to re-provision the ships now."
@@ -3866,7 +3876,7 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:269
 msgid ""
 "The nice thing is, they’ll go back to guarding this island after we’re gone "
 "for a while. It’ll make a good way of preventing others from following us."
@@ -3875,14 +3885,14 @@ msgstr ""
 "的一個好方式。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:274
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:273
 msgid ""
 "This island is slowly sinking. Hmm, I wonder what they’ll do when it gets "
 "too small for them?"
 msgstr "這座島正在緩慢地下沉。嗯，我想知道當它變得太小時他們會做什麼？"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:278
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:277
 msgid ""
 "They seem rather intelligent. They’re certainly belligerent and numerous. "
 "I’m sure they’ll eventually evacuate. Just like us right now."
@@ -3891,12 +3901,12 @@ msgstr ""
 "像我們現在一樣。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:282
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:281
 msgid "I don’t find that thought very comforting."
 msgstr "我認為這個想法讓人不太舒服。"
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:295
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:294
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:371
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:327
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:364
@@ -3905,7 +3915,7 @@ msgid "<i>Clack</i>! <i>Clack!</i>"
 msgstr "<i>啪嗒</i>！<i>啪嗒</i>！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:320
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:319
 msgid ""
 "The fleet is starving, we’ll never pacify this island before we all die!"
 msgstr "船隊正在挨餓，在我們全部餓死之前我們永遠無法平息這座島！"
@@ -6711,8 +6721,13 @@ msgstr ""
 
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Powerful magic users sometimes have familiars, creatures which have had a "
+#| "spirit or minor demon drawn into them. A familiar may act as a spy or "
+#| "messenger for its master."
 msgid ""
-"Powerful magic users sometimes have familiars, creatures which have had a "
+"Powerful magic users sometimes have Familiars, creatures which have had a "
 "spirit or minor demon drawn into them. A familiar may act as a spy or "
 "messenger for its master."
 msgstr ""
@@ -7038,6 +7053,9 @@ msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr "這的確是個好消息。我們的人數已經倍增。現在繼續完成手邊的工作。"
+
+#~ msgid "Gerrick"
+#~ msgstr "格里克"
 
 #~ msgid "Southbay Guard"
 #~ msgstr "南灣守衛"

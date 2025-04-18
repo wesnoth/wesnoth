@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,6 +38,7 @@
 #include "save_index.hpp"
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "utils/optimer.hpp"
 #include "video.hpp" // only for faked
@@ -572,10 +573,7 @@ replay_savegame::replay_savegame(saved_game& gamestate, const compression::forma
 
 std::string replay_savegame::create_initial_filename(unsigned int) const
 {
-	time_t t = std::time(nullptr);
-	tm tm = *std::localtime(&t);
-	auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
-
+	auto time = chrono::format_local_timestamp(std::chrono::system_clock::now(), "%Y%m%d-%H%M%S");
 	// TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 	return formatter() << gamestate().classification().label << " " << _("replay") << " " << time;
 }

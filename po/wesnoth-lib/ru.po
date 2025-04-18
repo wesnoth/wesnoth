@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2024-04-13 16:21+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -2337,11 +2337,13 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=reachmap_defaults
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:474
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
 msgstr "По умолчанию"
@@ -2354,58 +2356,93 @@ msgid "Players"
 msgstr "Игроки"
 
 #. [settings]
-#: data/gui/themes/celes/celes.cfg:25 data/gui/themes/default/default.cfg:23
+#: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Нажмите «$hotkey» для дополнительной информации)"
 
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:157
-msgid "Hide"
-msgstr ""
-
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Hide tip of the day"
-msgstr "Следующий совет"
-
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:171
+#: data/gui/themes/celes/dialogs/title_screen.cfg:165
 #: data/gui/themes/default/dialogs/chat_log.cfg:105
 #: data/gui/themes/default/dialogs/title_screen.cfg:194
 msgid "Previous"
 msgstr "Назад"
 
 #. [button]: id=previous_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:172
+#: data/gui/themes/celes/dialogs/title_screen.cfg:166
 #: data/gui/themes/default/dialogs/title_screen.cfg:195
 msgid "Show previous tip of the day"
 msgstr "Предыдущий совет"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:186
+#: data/gui/themes/celes/dialogs/title_screen.cfg:179
 #: data/gui/themes/default/dialogs/chat_log.cfg:114
 #: data/gui/themes/default/dialogs/title_screen.cfg:209
 msgid "Next"
 msgstr "Вперёд"
 
 #. [button]: id=next_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:187
+#: data/gui/themes/celes/dialogs/title_screen.cfg:180
 #: data/gui/themes/default/dialogs/title_screen.cfg:210
 msgid "Show next tip of the day"
 msgstr "Следующий совет"
 
+#. [button]: id=toggle_tip_panel
+#: data/gui/themes/celes/dialogs/title_screen.cfg:215
+#, fuzzy
+#| msgid "Next Tip of the Day"
+msgid "Tip of the Day"
+msgstr "Следующий совет"
+
+#. [button]: id=toggle_tip_panel
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/celes/dialogs/title_screen.cfg:216
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#, fuzzy
+#| msgid "Show next tip of the day"
+msgid "Show tip of the day"
+msgstr "Следующий совет"
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:229
+#: data/gui/themes/default/dialogs/title_screen.cfg:472
+msgid "About"
+msgstr ""
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:230
+#: data/gui/themes/default/dialogs/title_screen.cfg:473
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "General information about Battle for Wesnoth"
+msgstr "Битва за Веснот"
+
+#. [button]: id=language
+#. [label]
+#. [label]: id=translations_language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/default/dialogs/addon_manager.cfg:870
+#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
+#: data/gui/themes/default/dialogs/language_selection.cfg:227
+#: data/gui/themes/default/dialogs/title_screen.cfg:494
+msgid "Language"
+msgstr "Язык"
+
+#. [button]: id=language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/default/dialogs/title_screen.cfg:495
+msgid "Change the language"
+msgstr "Изменить язык игры"
+
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Campaigns"
 msgstr "Кампании"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Start a new single player campaign"
 msgstr "Начать новую однопользовательскую кампанию"
@@ -2414,7 +2451,7 @@ msgstr "Начать новую однопользовательскую кам�
 #. [grid]
 #. [label]
 #. [widget]: id=label
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
@@ -2423,7 +2460,7 @@ msgid "Multiplayer"
 msgstr "Мультиплеер"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
@@ -2435,27 +2472,27 @@ msgstr ""
 #. [grid]
 #. [button]: id=load_movetype
 #. [button]: id=ok
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
-#: data/gui/themes/default/dialogs/game_load.cfg:639
+#: data/gui/themes/default/dialogs/game_load.cfg:638
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load"
 msgstr "Загрузить"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load a saved game"
 msgstr "Загрузить сохраненную игру"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Add-ons"
 msgstr "Аддоны"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Загрузить пользовательские кампании, эры или карты"
@@ -2463,41 +2500,41 @@ msgstr "Загрузить пользовательские кампании, э
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:79
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Achievements"
 msgstr "Достижения"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 msgid "View achievements"
 msgstr "Посмотреть достижения"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Map Editor"
 msgstr "Редактор карт"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Start the map editor"
 msgstr "Запустить редактор карт"
 
 #. [grid]
 #. [tab]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/game_version.cfg:904
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 #, fuzzy
 #| msgid "The Battle for Wesnoth"
@@ -2505,7 +2542,7 @@ msgid "Places to talk about Wesnoth"
 msgstr "Битва за Веснот"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 msgid "Configure the game’s settings"
 msgstr "Изменить настройки игры"
@@ -2514,9 +2551,9 @@ msgstr "Изменить настройки игры"
 #. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:772
+#: data/gui/themes/default/dialogs/lobby_main.cfg:776
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2526,14 +2563,14 @@ msgstr "Настройки"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [button]: id=help
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #: data/gui/themes/default/dialogs/title_screen.cfg:178
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Help"
 msgstr "Помощь"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #, fuzzy
 #| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
@@ -2542,7 +2579,7 @@ msgstr "Изменить тему (оформление) для игры"
 #. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/formula_debugger.cfg:234
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
@@ -2550,41 +2587,10 @@ msgid "Quit"
 msgstr "Выйти"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit the game"
 msgstr "Выйти из игры"
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:461
-#: data/gui/themes/default/dialogs/title_screen.cfg:472
-msgid "About"
-msgstr ""
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:462
-#: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
-msgid "General information about Battle for Wesnoth"
-msgstr "Битва за Веснот"
-
-#. [button]: id=language
-#. [label]
-#. [label]: id=translations_language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:475
-#: data/gui/themes/default/dialogs/addon_manager.cfg:870
-#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
-#: data/gui/themes/default/dialogs/language_selection.cfg:227
-#: data/gui/themes/default/dialogs/title_screen.cfg:494
-msgid "Language"
-msgstr "Язык"
-
-#. [button]: id=language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:476
-#: data/gui/themes/default/dialogs/title_screen.cfg:495
-msgid "Change the language"
-msgstr "Изменить язык игры"
 
 #. [draw]
 #: data/gui/themes/celes/widgets/button_success.cfg:196
@@ -2609,7 +2615,7 @@ msgstr ""
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/themes/celes/widgets/window_default.cfg:106
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:306
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
@@ -2618,7 +2624,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:288
+#: data/gui/themes/default/dialogs/help_browser.cfg:296
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2688,6 +2694,7 @@ msgstr "Сохранять пароль в настройках (в зашифр
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
 #: data/gui/themes/default/dialogs/mp_report.cfg:235
 #: data/gui/themes/default/dialogs/prompt.cfg:86
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:171
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:181
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:145
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:105
@@ -2729,7 +2736,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/file_dialog.cfg:519
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
-#: data/gui/themes/default/dialogs/game_load.cfg:654
+#: data/gui/themes/default/dialogs/game_load.cfg:653
 #: data/gui/themes/default/dialogs/game_save.cfg:134
 #: data/gui/themes/default/dialogs/label_settings.cfg:149
 #: data/gui/themes/default/dialogs/language_selection.cfg:305
@@ -2747,6 +2754,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/mp_report.cfg:249
 #: data/gui/themes/default/dialogs/mp_staging.cfg:450
 #: data/gui/themes/default/dialogs/network_transmission.cfg:111
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:182
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:192
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:158
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:117
@@ -2854,7 +2862,7 @@ msgstr "Обновлён:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:661
 msgid "No description available."
 msgstr "Нет описания."
 
@@ -3311,7 +3319,7 @@ msgstr "Выберите уровень сложности:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/chat_log.cfg:36
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Chat Log"
 msgstr "Лог чата"
 
@@ -3360,7 +3368,7 @@ msgstr "Загрузить ядро"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1306
+#: src/preferences/preferences.cpp:1347
 msgid "Select"
 msgstr "Выбрать"
 
@@ -3434,7 +3442,7 @@ msgstr "Изменить расписание времени суток"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:219
+#: src/gui/dialogs/units_dialog.cpp:227
 msgid "Name:"
 msgstr "Имя:"
 
@@ -3823,7 +3831,7 @@ msgstr "Добавить"
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/dialogs/file_dialog.cfg:349
-#: data/gui/themes/default/dialogs/game_load.cfg:606
+#: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Удалить"
@@ -3885,7 +3893,7 @@ msgstr "Перевод описания аддона."
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:42
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Edit Scenario Settings"
 msgstr "Настроить редактор"
 
@@ -4245,7 +4253,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Generate Map"
 msgstr "Создать карту"
 
@@ -4297,14 +4305,14 @@ msgstr "Высота:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:426
+#: src/gui/dialogs/units_dialog.cpp:438
 msgid "Create"
 msgstr "Создать"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
@@ -4506,49 +4514,49 @@ msgstr "Дата"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/themes/default/dialogs/game_load.cfg:309
+#: data/gui/themes/default/dialogs/game_load.cfg:308
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:944
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "Загрузить игру"
 
 #. [button]: id=browse_saves_folder
-#: data/gui/themes/default/dialogs/game_load.cfg:350
+#: data/gui/themes/default/dialogs/game_load.cfg:349
 msgid "Open saves folder"
 msgstr "Открыть каталог с сохранениями"
 
 #. [menu_button]: id=dirList
-#: data/gui/themes/default/dialogs/game_load.cfg:362
+#: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
 msgstr "Показать сохранения из другой версии Веснота"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:538
+#: data/gui/themes/default/dialogs/game_load.cfg:537
 msgid "Change difficulty"
 msgstr "Изменить сложность"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:539
+#: data/gui/themes/default/dialogs/game_load.cfg:538
 msgid "Change campaign difficulty before loading"
 msgstr "Изменить сложность кампании перед загрузкой"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:561
+#: data/gui/themes/default/dialogs/game_load.cfg:560
 msgid "Show replay"
 msgstr "Показать повтор"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:562
+#: data/gui/themes/default/dialogs/game_load.cfg:561
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr "Проиграть вложенный повтор из сохраненной игры, если возможно"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:584
+#: data/gui/themes/default/dialogs/game_load.cfg:583
 msgid "Cancel orders"
 msgstr "Отменить приказы"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:585
+#: data/gui/themes/default/dialogs/game_load.cfg:584
 msgid "Cancel any pending unit movements in the saved game"
 msgstr "Отменить любые запланированные ходы в сохраненной игре"
 
@@ -4595,7 +4603,7 @@ msgstr "Команда"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:440
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Gold"
 msgstr "Золото"
 
@@ -4623,7 +4631,7 @@ msgstr "Содержание"
 #: data/gui/themes/default/dialogs/game_stats.cfg:118
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:281
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:294
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:446
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:447
 msgid "Income"
 msgstr "Доход"
 
@@ -4692,7 +4700,7 @@ msgstr "Параметры сценария"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:496
+#: src/gui/dialogs/units_dialog.cpp:522
 msgid "Scroll To"
 msgstr "Прокрутить к"
 
@@ -4990,16 +4998,21 @@ msgid "Show Labels"
 msgstr "Показывать метки"
 
 #. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:148
+#: data/gui/themes/default/dialogs/help_browser.cfg:143
 msgid "Battle For Wesnoth Help"
 msgstr "Помощь Битвы за Веснот"
 
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:160
+#: data/gui/themes/default/dialogs/help_browser.cfg:155
 #, fuzzy
 #| msgid "Show Credits"
 msgid "Show Topics"
 msgstr "Показать титры"
+
+#. [text_box]: id=filter_box
+#: data/gui/themes/default/dialogs/help_browser.cfg:168
+msgid "Search help topic names"
+msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5111,7 +5124,7 @@ msgstr "Инвертировать фильтр"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:784
+#: data/gui/themes/default/dialogs/lobby_main.cfg:788
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5124,30 +5137,30 @@ msgstr "Создать игру"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:796
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: data/gui/themes/default/dialogs/lobby_main.cfg:800
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "Подключиться"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:819
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: data/gui/themes/default/dialogs/lobby_main.cfg:823
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "Наблюдать"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:807
+#: data/gui/themes/default/dialogs/lobby_main.cfg:811
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Объявления"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:618
+#: data/gui/themes/default/dialogs/lobby_main.cfg:621
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
@@ -5157,50 +5170,50 @@ msgstr "Профиль"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:629
+#: data/gui/themes/default/dialogs/lobby_main.cfg:633
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "История игр"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:646
-#: data/gui/themes/default/dialogs/lobby_main.cfg:746
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/lobby_main.cfg:750
 msgid "Log Out"
 msgstr "Выйти"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:666
-#: data/gui/themes/default/dialogs/lobby_main.cfg:834
+#: data/gui/themes/default/dialogs/lobby_main.cfg:670
+#: data/gui/themes/default/dialogs/lobby_main.cfg:838
 msgid "Normal Replays"
 msgstr "Обычные реплеи"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
+#: data/gui/themes/default/dialogs/lobby_main.cfg:674
+#: data/gui/themes/default/dialogs/lobby_main.cfg:842
 msgid "Quick Replays"
 msgstr "Быстрые реплеи"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:671
-#: data/gui/themes/default/dialogs/lobby_main.cfg:839
+#: data/gui/themes/default/dialogs/lobby_main.cfg:675
+#: data/gui/themes/default/dialogs/lobby_main.cfg:843
 msgid "Skip quickly to the active turn when observing"
 msgstr "Быстро перейти к активному ходу в режиме наблюдателя"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
+#: data/gui/themes/default/dialogs/lobby_main.cfg:847
 msgid "Enter Blindfolded"
 msgstr "Войти в режиме \"завязанные глаза\""
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:676
-#: data/gui/themes/default/dialogs/lobby_main.cfg:844
+#: data/gui/themes/default/dialogs/lobby_main.cfg:680
+#: data/gui/themes/default/dialogs/lobby_main.cfg:848
 msgid "Do not show the map until given control of a side"
 msgstr "Не показывать карту пока не передан котроль над стороной"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:734
-#: data/gui/themes/default/dialogs/lobby_main.cfg:957
+#: data/gui/themes/default/dialogs/lobby_main.cfg:738
+#: data/gui/themes/default/dialogs/lobby_main.cfg:961
 msgid "Multiplayer Lobby"
 msgstr "Лобби мультиплеера"
 
@@ -6222,7 +6235,7 @@ msgstr "Горячие клавиши"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:908
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6235,7 +6248,7 @@ msgstr "Доступно в игре"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:909
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6248,7 +6261,7 @@ msgstr "Доступно в редакторе"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:910
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6367,13 +6380,6 @@ msgstr ""
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Применить"
-
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Show tip of the day"
-msgstr "Следующий совет"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
@@ -6657,6 +6663,33 @@ msgstr "Удалить этого игрока из списка"
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or blocked any other players."
 msgstr "Вы не добавляли в друзья и не блокировали никаких других игроков."
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:101
+#, fuzzy
+#| msgid "Random map options: "
+msgid "Reach Map Options"
+msgstr "Параметры случайной карты: "
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+msgid "Highlight Color"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+msgid "Enemy Highlight Color"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+msgid "Border Opacity:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:144
+msgid "Tint Opacity:"
+msgstr ""
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6989,7 +7022,7 @@ msgstr "Переименовать"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Ошибка"
@@ -7139,7 +7172,7 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix, или $last"
 
-#: src/gui/core/canvas.cpp:263
+#: src/gui/core/canvas.cpp:258
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7180,8 +7213,14 @@ msgstr ""
 "Количество столбцов строки $row не соответствует остальной таблице "
 "'$grid' (найдено $found, ожидалось $expected)"
 
-#: src/gui/dialogs/achievements_dialog.cpp:137
-msgid "Completed"
+#: src/gui/dialogs/achievements_dialog.cpp:97
+msgid "$title ($count/$total)"
+msgstr ""
+
+#: src/gui/dialogs/achievements_dialog.cpp:138
+#, fuzzy
+#| msgid "Completed"
+msgid "Completed $count/$total"
 msgstr "Завершено"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
@@ -7195,7 +7234,7 @@ msgstr "Сервер ответил с ошибкой:"
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
 #: src/gui/dialogs/addon/manager.cpp:1018
 #: src/gui/dialogs/addon/manager.cpp:1045
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Ответ"
 
@@ -7529,23 +7568,23 @@ msgstr "%d.%B.%Y %H:%M"
 msgid "url^None"
 msgstr "Нет"
 
-#: src/gui/dialogs/attack_predictions.cpp:119
+#: src/gui/dialogs/attack_predictions.cpp:121
 msgid "No usable weapon"
 msgstr "Нет используемого оружия"
 
-#: src/gui/dialogs/attack_predictions.cpp:197
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender resistance vs"
 msgstr "Сопротивление защитника против"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:201
 msgid "Defender vulnerability vs"
 msgstr "Уязвимость защищающегося против"
 
-#: src/gui/dialogs/attack_predictions.cpp:203
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker resistance vs"
 msgstr "Сопротивляемость атакующего против"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:207
 msgid "Attacker vulnerability vs"
 msgstr "Уязвимость атакующего против"
 
@@ -8198,7 +8237,7 @@ msgstr "Наблюдение запрещено"
 msgid "lobby"
 msgstr "лобби"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8208,7 +8247,7 @@ msgstr ""
 "Игра не разрешает наблюдателей. Всё равно наблюдать за ней, используя права "
 "модератора?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:839
+#: src/gui/dialogs/multiplayer/lobby.cpp:846
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8216,7 +8255,7 @@ msgstr ""
 "Что-то не так с базой проверки аддонов, поддерживающей многопользовательское "
 "лобби. Пожалуйста, сообщите об этом на https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Игра защищена паролем. Вступить в неё всё равно, используя права модератора?"
@@ -8261,65 +8300,65 @@ msgstr "Пользовательский сценарий"
 msgid "Random Maps"
 msgstr "Случайные карты"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:191
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
 msgid "No games found."
 msgstr "Игры не найдены."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:258
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:337
 msgid "No eras found."
 msgstr "Эры не найдены."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
 msgid "No eras found"
 msgstr "Эры не найдены"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:607
 msgid "No eras available for this game."
 msgstr "Нет эр, доступных для этой игры."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
 msgid "number of players^$min to $max"
 msgstr "от $min до $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:924
 msgid "The selected game has no sides!"
 msgstr "Выбранная игра не имеет сторон!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:931
 msgid "The selected game cannot be created."
 msgstr "Не получается создать выбранную игру."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
 msgid "Choose Starting Scenario"
 msgstr "Выберите стартовый сценарий"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
 msgid "Select at which point to begin this campaign."
 msgstr "Выберите, в какой момент начать эту кампанию."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Computer Player"
 msgstr "Компьютерный игрок"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Empty slot"
 msgstr "Пустой слот"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Reserved for $playername"
 msgstr "Зарезервировано за $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Vacant slot"
 msgstr "Свободное место"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:231
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:232
 msgid "empty"
 msgstr "пусто"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:107
 msgid "this game"
 msgstr "эта игра"
@@ -8346,33 +8385,33 @@ msgstr "Ждем игроков, чтобы выбрать фракции..."
 msgid "The End"
 msgstr "Конец"
 
-#: src/gui/dialogs/preferences_dialog.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:199
 msgid "friend"
 msgstr "друг"
 
-#: src/gui/dialogs/preferences_dialog.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:204
 msgid "ignored"
 msgstr "в игноре"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:257
+#: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "No username specified"
 msgstr "Имя пользователя не указано"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:272
 msgid "Invalid username"
 msgstr "Неверное имя пользователя"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:319
 msgid "Not on friends or ignore lists"
 msgstr "Не в друзьях или игнор листе"
 
-#: src/gui/dialogs/preferences_dialog.cpp:953
-#: src/gui/dialogs/preferences_dialog.cpp:1017
+#: src/gui/dialogs/preferences_dialog.cpp:954
+#: src/gui/dialogs/preferences_dialog.cpp:1018
 msgid "No hotkey selected"
 msgstr "Нет горячей клавишы"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8380,15 +8419,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” испрользуется “<b>$old_hotkey_action|</b>”.\n"
 "Вы хотите переназначить его с “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:988
 msgid "Reassign Hotkey"
 msgstr "Переназначить горячую клавишу"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "All hotkeys have been reset to their default values."
 msgstr "Все горячие клавиши изменены на свои значения по умолчанию."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "Hotkeys Reset"
 msgstr "Сбросить горячие клавиши"
 
@@ -8471,73 +8510,73 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Сделать скриншот"
 
-#: src/gui/dialogs/title_screen.cpp:398
+#: src/gui/dialogs/title_screen.cpp:379
 msgid "Version $version"
 msgstr "Версия $version"
 
-#: src/gui/dialogs/title_screen.cpp:491 src/hotkey/hotkey_command.cpp:310
+#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Выберите пробный сценарий"
 
-#: src/gui/dialogs/units_dialog.cpp:219 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:227 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:252
+#: src/gui/dialogs/units_dialog.cpp:260
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Это подразделение лояльно и не требует содержания."
 
-#: src/gui/dialogs/units_dialog.cpp:253 src/gui/dialogs/units_dialog.cpp:258
-#: src/gui/dialogs/units_dialog.cpp:263
+#: src/gui/dialogs/units_dialog.cpp:261 src/gui/dialogs/units_dialog.cpp:266
+#: src/gui/dialogs/units_dialog.cpp:271
 msgid "Do you really want to dismiss him?"
 msgstr "Вы действительно хотите уволить этого бойца?"
 
-#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
-#: src/gui/dialogs/units_dialog.cpp:264
+#: src/gui/dialogs/units_dialog.cpp:262 src/gui/dialogs/units_dialog.cpp:267
+#: src/gui/dialogs/units_dialog.cpp:272
 msgid "Do you really want to dismiss her?"
 msgstr "Вы действительно хотите уволить этого бойца?"
 
-#: src/gui/dialogs/units_dialog.cpp:257
+#: src/gui/dialogs/units_dialog.cpp:265
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Этот боец опытный, продвигался на следующие уровни."
 
-#: src/gui/dialogs/units_dialog.cpp:262
+#: src/gui/dialogs/units_dialog.cpp:270
 msgid "This unit is close to advancing a level."
 msgstr "Этот боец близок к продвижению на следующий уровень."
 
-#: src/gui/dialogs/units_dialog.cpp:268
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Dismiss Unit"
 msgstr "Уволить бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:389
+#: src/gui/dialogs/units_dialog.cpp:401
 msgid "unit_variation^Default Variation"
 msgstr "Вариация по умолчанию"
 
-#: src/gui/dialogs/units_dialog.cpp:425
+#: src/gui/dialogs/units_dialog.cpp:437
 msgid "Create Unit"
 msgstr "Создать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:482
+#: src/gui/dialogs/units_dialog.cpp:503
 msgid "Recruit Unit"
 msgstr "Вербовать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:483 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:504 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Вербовать"
 
-#: src/gui/dialogs/units_dialog.cpp:495 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:521 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Список бойцов"
 
-#: src/gui/dialogs/units_dialog.cpp:611
+#: src/gui/dialogs/units_dialog.cpp:658
 msgid "Recall Unit"
 msgstr "Призвать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:612 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:659 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Призвать"
 
-#: src/gui/dialogs/units_dialog.cpp:720
+#: src/gui/dialogs/units_dialog.cpp:778
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8545,11 +8584,11 @@ msgstr ""
 "Этот боец не может быть призван, потому что у вас не будет достаточно золота "
 "на данный момент согласно вашему плану."
 
-#: src/gui/dialogs/units_dialog.cpp:722
+#: src/gui/dialogs/units_dialog.cpp:780
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Этот боец не может быть призван, потому что у вас недостаточно золота."
 
-#: src/gui/gui.cpp:132
+#: src/gui/gui.cpp:131
 msgid "No default gui defined."
 msgstr "GUI по умолчанию не определён."
 
@@ -8660,11 +8699,11 @@ msgstr[2] "$excess других"
 msgid "multimenu^None Selected"
 msgstr "Ничего не выбрано"
 
-#: src/gui/widgets/pane.cpp:359
+#: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
 msgstr "Нужен хотя бы 1 параллельный предмет."
 
-#: src/gui/widgets/rich_label.cpp:250
+#: src/gui/widgets/rich_label.cpp:205
 msgid "corrupted original file"
 msgstr ""
 
@@ -8686,7 +8725,7 @@ msgstr "Количества value_labels и values не совпадают."
 msgid "No stack layers defined."
 msgstr "Слои стека не определены."
 
-#: src/gui/widgets/styled_widget.cpp:606
+#: src/gui/widgets/styled_widget.cpp:591
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Найден элемент управления с подсказкой но без всплывающей подсказки."
 
@@ -8768,7 +8807,7 @@ msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Закрытие по клику требует кнопки «click_dismiss» или «ok»."
 
 #: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:738
+#: src/tests/gui/test_gui2.cpp:743
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9164,58 +9203,64 @@ msgid "Save Map As"
 msgstr "Сохранить карту как"
 
 #: src/hotkey/hotkey_command.cpp:187
+#, fuzzy
+#| msgid "Choose Test Scenario"
+msgid "Convert To Scenario"
+msgstr "Выберите пробный сценарий"
+
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
 msgstr "Сохранить сценарий как"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Save All Maps"
 msgstr "Сохранить все карты"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Revert All Changes"
 msgstr "Просмотреть все изменения"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Map Information"
 msgstr "Информация о карте"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Clear Selected Item Set"
 msgstr "Очистить набор выбранных предметов"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Поменять местами передний план и фон"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Change Palette Group"
 msgstr "Сменить группу палитры"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Scroll Palette Left"
 msgstr "Прокрутить палитру влево"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Scroll Palette Right"
 msgstr "Прокрутить палитру вправо"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Remove Location"
 msgstr "Убрать локацию"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Add New Side"
 msgstr "Добавить сторону"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Next Tool"
 msgstr "Следующий инструмент"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Paint Tool"
 msgstr "Инструмент «кисть»"
 
-#: src/hotkey/hotkey_command.cpp:203 src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:204 src/hotkey/hotkey_command.cpp:205
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -9224,11 +9269,11 @@ msgstr ""
 "план местности. Удерживайте Shift, чтобы нарисовать только базовый слой. "
 "Ctrl+клик чтобы сохранить образец местности под курсором."
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Fill Tool"
 msgstr "Инструмент «заливка»"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -9237,11 +9282,11 @@ msgstr ""
 "контекстное меню. Удерживайте Shift для выбора волшебной палочкой ячеек "
 "одного типа."
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Selection Tool"
 msgstr "Инструмент выбора"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -9251,19 +9296,19 @@ msgstr ""
 "приводят в исходное положение, Alt+номер устанавливает соответствующее "
 "стартовое положение для курсора, delete очищает."
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Starting Positions Tool"
 msgstr "Инструмент «начальная позиция»"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Label Tool"
 msgstr "Инструмент «метка»"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr "Левая кнопка мыши задаёт или перемещает метку, правая удаляет."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -9271,21 +9316,21 @@ msgstr ""
 "Левая кнопка мыши задаёт нового бойца или перемещает существующего, правая "
 "вызывает контекстное меню. Нужно задать сторону."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Unit Tool"
 msgstr "Инструмент «боец»"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Item Tool"
 msgstr "Инструмент «предмет»"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 #, fuzzy
 #| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "Левая кнопка мыши кладёт новый предмет."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -9293,356 +9338,356 @@ msgstr ""
 "Левая кнопка мыши передаёт деревню текущей стороне, правая очищает владение. "
 "Нужно выбрать сторону."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Village Tool"
 msgstr "Инструмент «деревня»"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Can Recruit"
 msgstr "Может вербовать"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Изменить атрибут, определяющий, может ли боец вербовать."
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Can be Renamed"
 msgstr "Может быть переименован"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle the unit being renameable."
 msgstr "Сменить возможность переименования бойца."
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Loyal"
 msgstr "Верный"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Map Information"
 msgid "Show Tool Information"
 msgstr "Информация о карте"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
 msgstr "Коды бойцов на миникарте"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Коды местности на миникарте"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Отображение бойцов на миникарте"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Toggle Minimap Village Drawing"
 msgstr "Отображение деревень на миникарте"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Отображение местности на миникарте"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Next Brush"
 msgstr "Следующая кисть"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Default Brush"
 msgstr "Кисть по умолчанию"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Single Tile"
 msgstr "Одна ячейка"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Radius One"
 msgstr "Радиус 1"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Radius Two"
 msgstr "Радиус 2"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Brush NW-SE"
 msgstr "Кисть СЗ-ЮВ"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Brush SW-NE"
 msgstr "Кисть ЮЗ-СВ"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "Левая кнопка вставляет из буфера, правая вызывает контекстное меню."
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Экспортировать координаты выбора в буфер обмена"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Select All"
 msgstr "Выбрать всё"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Select Inverse"
 msgstr "Выбрать инверсно"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Select None"
 msgstr "Сбросить выбор"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Rotate Clipboard Clockwise"
 msgstr "Повернуть буфер по часовой"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Повернуть буфер против часовой"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Flip Clipboard Horizontally"
 msgstr "Перевернуть буфер горизонтали"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Flip Clipboard Vertically"
 msgstr "Перевернуть буфер по вертикали"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Rotate Selection"
 msgstr "Повернуть выделение"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Flip Selection"
 msgstr "Отразить выбранное"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Fill Selection"
 msgstr "Заполнить выделение"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Randomize Tiles in Selection"
 msgstr "Случайные ячейки в выбранном"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Apply a Mask"
 msgstr "Применить маску"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Create Mask"
 msgstr "Создать маску"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Refresh Display"
 msgstr "Обновить экран"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Update Terrain Transitions"
 msgstr "Обновить переходы местности"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Toggle Terrain Transition Update"
 msgstr "Режим обновления перехода местности"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Auto-update Terrain Transitions"
 msgstr "Автоматически обновлять переход тайлов"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Автоматически обновлять переходы тайлов: Нет"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Автоматически обновлять переходы тайлов: Частично"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Refresh Image Cache"
 msgstr "Обновить кэш изображений"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Draw Hex Coordinates"
 msgstr "Показывать координаты полей"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Draw Terrain Codes"
 msgstr "Показывать коды местностей"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Draw Number of Bitmaps"
 msgstr "Показывать количество растров"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Save Selection to Area"
 msgstr "Сохранить выделение в область"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Rename Selected Area"
 msgstr "Переименовать выбранную область"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Remove Selected Area"
 msgstr "Удалить выбранную область"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Add New Area"
 msgstr "Добавить область"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
 msgstr "Редактор публикации аддона"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Change Add-on ID"
 msgstr "Изменить ID аддона"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 #| msgid "Select the add-on version"
 msgid "Select active Add-on"
 msgstr "Выберите версию аддона"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 #, fuzzy
 #| msgid "Open saves folder"
 msgid "Open Add-on folder"
 msgstr "Открыть каталог с сохранениями"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
 msgstr "Править сторону"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Remove Side"
 msgstr "Удалить сторону"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Delay Shroud Updates"
 msgstr "Задержать обновление пелены"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Update Shroud Now"
 msgstr "Обновить пелену"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Continue Interrupted Move"
 msgstr "Продолжить движение"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
 msgstr "Найти метку или бойца"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Speak to Ally"
 msgstr "Сказать союзникам"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Speak to All"
 msgstr "Сказать всем"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
 msgstr "Больше о сохранениях и загрузке"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
 msgstr "Подсказка: загружаться из сохранений необязательно"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Enter Command"
 msgstr "Ввести команду"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Custom Command"
 msgstr "Пользовательская команда"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Run Formula"
 msgstr "Запустить формулу"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Clear Chat"
 msgstr "Очистить чат"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
 msgstr "Сменить язык"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Starting game"
 msgid "Start Game (MP)"
 msgstr "Запуск игры"
 
-#: src/hotkey/hotkey_command.cpp:301
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
 msgstr "Обновить WML"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Next Tip of the Day"
 msgstr "Следующий совет"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:304
 msgid "Previous Tip of the Day"
 msgstr "Предыдущий совет"
 
-#: src/hotkey/hotkey_command.cpp:304
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Start Campaign"
 msgstr "Начать кампанию"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:306
 msgid "Start Multiplayer Game"
 msgstr "Начать многопользовательскую игру"
 
-#: src/hotkey/hotkey_command.cpp:306
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Manage Add-ons"
 msgstr "Управление аддонами"
 
-#: src/hotkey/hotkey_command.cpp:307
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Manage Cores"
 msgstr "Управление базовыми ресурсами"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:309
 msgid "Start Editor"
 msgstr "Запустить редактор"
 
-#: src/hotkey/hotkey_command.cpp:309
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Show Credits"
 msgstr "Показать титры"
 
-#: src/hotkey/hotkey_command.cpp:312
+#: src/hotkey/hotkey_command.cpp:313
 msgid "Show Helptip"
 msgstr "Показать подсказку"
 
-#: src/hotkey/hotkey_command.cpp:314
+#: src/hotkey/hotkey_command.cpp:315
 msgid "Show Lua Console"
 msgstr "Показать Lua-консоль"
 
-#: src/hotkey/hotkey_command.cpp:317
+#: src/hotkey/hotkey_command.cpp:318
 msgid "Unrecognized Command"
 msgstr "Непонятная команда"
 
-#: src/preferences/preferences.cpp:1263
+#: src/preferences/preferences.cpp:1304
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/preferences/preferences.cpp:1300
+#: src/preferences/preferences.cpp:1341
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9652,15 +9697,15 @@ msgstr ""
 "многопользовательского сервера и требуется для размещения локальных сетевых "
 "игр. Оно обычно находится в той же папке, что и исполняемый файл игры."
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1345
 msgid "Find Server Application"
 msgstr "Найти серверное приложение"
 
-#: src/preferences/preferences.cpp:1759
+#: src/preferences/preferences.cpp:1800
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1761
+#: src/preferences/preferences.cpp:1802
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9700,6 +9745,14 @@ msgstr "В разделе '[$section|]' не задан обязательный
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+
+#~ msgid "Completed"
+#~ msgstr "Завершено"
+
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Hide tip of the day"
+#~ msgstr "Следующий совет"
 
 #~ msgid "Race"
 #~ msgstr "Раса"

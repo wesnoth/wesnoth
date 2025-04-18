@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,7 @@ namespace resources
 	game_data            *gamedata = nullptr;
 	filter_context	     *filter_con = nullptr;
 	game_events::manager *game_events = nullptr;
-	game_lua_kernel            *lua_kernel = nullptr;
+	game_lua_kernel      *lua_kernel = nullptr;
 	persist_manager      *persist = nullptr;
 	soundsource::manager *soundsources = nullptr;
 	replay               *recorder = nullptr;
@@ -32,5 +32,5 @@ namespace resources
 	actions::undo_list   *undo_stack = nullptr;
 	std::shared_ptr<wb::manager> whiteboard = std::shared_ptr<wb::manager>();
 	game_classification  *classification = nullptr;
-	bool                 simulation_ = false;
+	bool                 simulation = false;
 }

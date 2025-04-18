@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2025-01-27 21:04+0100\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"PO-Revision-Date: 2025-03-29 23:23+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -38,7 +38,7 @@ msgstr "nemrtvý"
 #. [chance]
 #. [trait]: id=fearless
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/campaigns/World_Conquest/resources/data/training.cfg:286
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "nebojácný"
@@ -68,6 +68,194 @@ msgstr ""
 "patřící však na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých "
 "či jednotek umístěných ve vesnicích."
 
+#. [trait]: id=loyal_dummy
+#. [trait]: id=loyal
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:679
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/core/macros/traits.cfg:12
+msgid "loyal"
+msgstr "věrný"
+
+#. [trait]: id=loyal_dummy
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:680
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+msgid "Zero upkeep."
+msgstr "Nulové výdaje."
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:111
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
+"možnosti cílové jednotky."
+
+#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/core/macros/weapon_specials.cfg:110
+msgid "magical"
+msgstr "magický"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/core/macros/traits.cfg:190
+msgid "intelligent"
+msgstr "chytrý"
+
+#. [trait]: id=intelligent_dummy
+#. [trait]: id=intelligent
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/core/macros/traits.cfg:192
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr "Chytré jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:50
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:57
+msgid "Methor"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:64
+msgid "Deoran"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:74
+msgid "Arand"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:83
+msgid "Asheviere"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:92
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:101
+msgid "Eldred"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:111
+msgid "Lionel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:125
+msgid "Lord Maddock"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:133
+msgid "Colonel Dommel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
+msgid "Captain Kestrel"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:150
+msgid "Omaranth"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:174
+msgid "Iliah-Malal"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:210
+msgid "Garard II"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:515
+msgid "No, it can’t end yet! I have so much left to do..."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:526
+msgid "No! Magic, why have you failed me..."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:537
+msgid "If only I had been a little wiser..."
+msgstr ""
+
+#. [message]: speaker=Methor
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:549
+msgid "War, pain, death... I tried so hard to change things..."
+msgstr ""
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:561
+msgid "I have failed my kingdom and my duty..."
+msgstr ""
+
+#. [message]: speaker=Garard
+#. reference to Shakespeare's Richard III
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:573
+msgid "A horse! A horse! My kingdom for a horse..."
+msgstr ""
+
+#. [message]: speaker=Asheviere
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:583
+msgid "It’s finally over..."
+msgstr ""
+
+#. [message]: speaker=Lionel
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:593
+msgid "Blasted orcs..."
+msgstr ""
+
+#. [message]: speaker=Kalenz
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:605
+msgid "Nobody can cheat death forever..."
+msgstr ""
+
+#. [message]: speaker=Chantal
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:616
+msgid "Deoran, I never had a chance to tell you—"
+msgstr ""
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:631
+msgid "Boss, I ain’t feelin’ too hot..."
+msgstr ""
+
+#. [message]: speaker=Lynyan
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:636
+msgid "I ain’t feelin’ too hot..."
+msgstr ""
+
+#. [message]: speaker=Barin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:647
+msgid "I shoulda never left my swamp..."
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. since he reappears in HttT's blackwater port, he can't die here.
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:657
+msgid ""
+"I am grievously injured; I can be of no further aid in your quest. Fight on "
+"without me, Delfador!"
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:666
+msgid ""
+"Many Knights choose the path of the Paladin, Delfador, but I am an heir of "
+"the Horse Lords. I shall be a Grand Knight."
+msgstr ""
+
+#. [message]: speaker=Kaylan
+#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:676
+msgid ""
+"I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
+"the Paladin, but such is unbecoming for an heir of the Horse Lords."
+msgstr ""
+
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
@@ -84,26 +272,26 @@ msgstr "vytrvalá"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
 #: data/core/macros/abilities.cfg:238
 msgid "female^illuminates"
 msgstr "osvětluje"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:682
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -122,27 +310,27 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:757
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Tato jednotka dokáže poskytnout základní léčení a zpomalit dehydrataci."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:706
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:707
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -161,17 +349,17 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:736
 msgid "heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:737
 msgid "female^heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:738
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -190,7 +378,7 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:763
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -202,7 +390,7 @@ msgstr ""
 #. [chance]
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
-#: data/campaigns/World_Conquest/resources/data/training.cfg:785
+#: data/campaigns/World_Conquest/resources/data/training.cfg:786
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "teleportace"
@@ -217,28 +405,28 @@ msgstr "regeneruje"
 
 #. [chance]
 #. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/data/training.cfg:257
+#: data/campaigns/World_Conquest/resources/data/training.cfg:258
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "Vždy odpočívá a léčí se"
 
 #. [chance]
 #. [damage]: id=backstab
-#: data/campaigns/World_Conquest/resources/data/training.cfg:438
+#: data/campaigns/World_Conquest/resources/data/training.cfg:439
 #: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "zezadu"
 
 #. [chance]
 #. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/data/training.cfg:500
+#: data/campaigns/World_Conquest/resources/data/training.cfg:501
 #: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "krmení"
 
 #. [chance]
 #. [leadership]: id=leadership
-#: data/campaigns/World_Conquest/resources/data/training.cfg:527
+#: data/campaigns/World_Conquest/resources/data/training.cfg:528
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "velení"
@@ -1257,8 +1445,8 @@ msgid ""
 "To start a new map in scenario mode, choose “New Scenario” from the “File” "
 "menu.\n"
 "\n"
-"If you’re already editing a map in terrain mode, use “Save Scenario As” from "
-"the “File” menu; this will switch to scenario mode.\n"
+"If you’re already editing a map in terrain mode, use “Convert to Scenario” "
+"from the “File” menu; this will switch to scenario mode.\n"
 "\n"
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
@@ -1268,7 +1456,7 @@ msgstr ""
 "Abys začal novou mapu v režimu scénáře, vyber „Nový scénář“ z menu "
 "„Soubor“.\n"
 "\n"
-"Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako“ z menu "
+"Pokud už upravuješ mapu v režimu terénu, použij „Převést na scénář“ z menu "
 "„Soubor“. To přepne do režimu scénáře.\n"
 "\n"
 "Pro načtení mapy, která byla vytvořena v editoru scénáře, použij „Načíst "
@@ -1622,28 +1810,6 @@ msgstr "Kalendář"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
-#, fuzzy
-#| msgid ""
-#| "Each year in the Wesnothian calendar is composed of 12 months. These are, "
-#| "in order:\n"
-#| "\n"
-#| "Whitefire\n"
-#| "Bleeding Moon\n"
-#| "Scatterseed\n"
-#| "Deeproot\n"
-#| "Scryer’s Bloom\n"
-#| "Thorntress\n"
-#| "Summit Star\n"
-#| "Kindlefire\n"
-#| "Stillseed\n"
-#| "Reaper’s Moon\n"
-#| "Verglas Bloom\n"
-#| "Blackfire\n"
-#| "\n"
-#| "The Wesnothian calendar begins with the founding of Wesnoth in the year 1 "
-#| "YW (Year of Wesnoth). Years before that are counted based on the number "
-#| "of years before the founding of Wesnoth using BW (Before Wesnoth). After "
-#| "the Fall of Wesnoth dates use AF (After the Fall)."
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1668,7 +1834,7 @@ msgid ""
 "After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
 "(Before the Fall)."
 msgstr ""
-"Každý rok wesnothského kalendáře sestává z 12 měsíců. Tak, jak jdou za "
+"Každý rok wesnothského kalendáře sestává z 12 měsíců. Tak, jak jdou za "
 "sebou, jsou to:\n"
 "\n"
 "Oběl\n"
@@ -1686,8 +1852,10 @@ msgstr ""
 "\n"
 "Wesnothský kalendář začíná založením Wesnothu v roce 1 w. l. (wesnothského "
 "letopočtu). Roky předtím se uvádějí na základě počtu let před založením "
-"Wesnothu pomocí př. w. l. (před wesnothským letopočtem). Data po pádu "
-"Wesnothu užívají zkratku po P. (po Pádu)."
+"Wesnothu pomocí př. w. l. (před wesnothským letopočtem).\n"
+"\n"
+"Po pádu Wesnothu mnozí přešli na používání zkratek po P. (po Pádu) a př. P. "
+"(před Pádem)."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1793,7 +1961,7 @@ msgid ""
 "    • Mount Morogor: The highest active volcanic mountain in the central "
 "island of Morogor.\n"
 "    • Isle of Gaall: A dangerous island slightly north of the central Isle "
-"of Morogor, used mostly as hunting ground by the drakes, who inhabit only a "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only "
 "two small villages on the isle.\n"
 "    • Isle of Omarath: A major drakish island northwest of the main Isle of "
 "Morogor. It is the northernmost island of the Morogor Archipelago."
@@ -1816,20 +1984,9 @@ msgstr ""
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
 #: data/core/encyclopedia/geography.cfg:70
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Southbay: The capital of the largest Islefolk Kingdom.\n"
-#| "    • Clearwater Port: The second largest Islefolk city and the location "
-#| "of a major port.\n"
-#| "    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
-#| "Haldric I.\n"
-#| "    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-"
-#| "lord Jevyan.\n"
-#| "    • Blackmore: A small Wesfolk settlement."
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Southbay: The capital of the largest Islefolk Kingdom.\n"
+"    • Southbay: The capital of the largest Islefolk kingdom.\n"
 "    • Clearwater Port: The second largest Islefolk city and the location of "
 "a major port.\n"
 "    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
@@ -1845,7 +2002,7 @@ msgstr ""
 "    • Bouřlivé údolí: Hlavní království Ostrovanů, kterému kdysi vládli "
 "předkové Haldrika I.\n"
 "    • Jevyanov: Hlavní město Wesanů a sídlo slavného lorda-licha Jevyana.\n"
-"    • Černín: Malá osada Wesanů."
+"    • Černín: Malá osada severně od Starého lesa."
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
@@ -1854,21 +2011,31 @@ msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
 "Isle.\n"
-"    • Oldwood: A mysterious wood inhabited by some woses.\n"
-"    • Swamp of Esten: A small swamp located east of the Broken Mountains."
+"    • Midlands: A hilly and sparsely forested area south of the Swamp of "
+"Esten, once home to prosperous Islefolk kingdoms.\n"
+"    • Oldwood: A mysterious wood inhabited by some ancient woses. Dark old "
+"catacombs are located below a temple in the heart of the forest.\n"
+"    • Swamp of Esten: A small swamp located east of the Broken Mountains "
+"once home to Wesfolk-imitating cultists. The swamp was defiled in wars "
+"between Wesfolk and Islefolk long ago."
 msgstr ""
 "<header>text='Významné krajinné prvky:'</header>\n"
 "    • Rozbité hory: Mohutné pohoří, které protíná Zelený ostrov.\n"
-"    • Starý les: Tajemný hvozd obývaný několika stromovými lidmi.\n"
-"    • Estenský močál: Malá bažina nacházející se východně od Rozbitých hor."
+"    • Středozemí: Kopcovitá a řídce zalesněná oblast jižně od Estenského "
+"močálu, kdysi domov bohatých království Ostrovanů.\n"
+"    • Starý les: Tajemný hvozd obývaný několika prastarými stromovými lidmi. "
+"Pod chrámem v srdci lesa se skrývají temné staré katakomby.\n"
+"    • Estenský močál: Malá bažina nacházející se východně od Rozbitých hor, "
+"která byla kdysi domovem kultistů napodobujících Wesany. Před dávnou dobou "
+"byla poznamenána válkami mezi Wesany a Ostrovany."
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:87
+#: data/core/encyclopedia/geography.cfg:88
 msgid "Old Continent"
 msgstr "Starý kontinent"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:88
+#: data/core/encyclopedia/geography.cfg:89
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
 "<ref>dst='green_isle' text='Green Isle'</ref> across the "
@@ -1880,12 +2047,12 @@ msgstr ""
 "text='Zeleného ostrova'</ref>. Je to původní domovina lidí i skřetů."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:93
+#: data/core/encyclopedia/geography.cfg:94
 msgid "Great Continent"
 msgstr "Velký kontinent"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:95
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -1896,12 +2063,12 @@ msgstr ""
 "text='Velký oceán'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:99
+#: data/core/encyclopedia/geography.cfg:100
 msgid "Irdya"
 msgstr "Irdye"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:101
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -1915,25 +2082,12 @@ msgstr ""
 "mají poetičtější náladu."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:105
+#: data/core/encyclopedia/geography.cfg:106
 msgid "Kingdom of Wesnoth"
 msgstr "Wesnothské království"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:106
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension."
+#: data/core/encyclopedia/geography.cfg:107
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1956,31 +2110,14 @@ msgstr ""
 "text='oceánu'</ref>, Aethenským lesem z <ref>dst='southwest_elven_lands' "
 "text='jihozápadu'</ref> a Štiplavým močálem na jihovýchodě.\n"
 "\n"
-"Wesnothská hranice je za řekou Aethen, jižně od pevnosti Tahn. Na jihu (mimo "
-"mapu) je ohraničena hustými lesy, jejichž nejsevernější část je právě "
-"Aethenský les."
+"Wesnothská hranice je za řekou Aethen, jižně od pevnosti Tahn. Na jihu je "
+"ohraničena hustými lesy, jejichž nejsevernější část je právě Aethenský les. "
+"Kerlath je jeho nejjižnější provincií, která vyznačuje konec Wesnothu "
+"a začátek tajemného <ref>dst='far_south' text='Dálného jihu'</ref>."
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:112
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "    • Westin: A small yet important town in Kerlath, a province of "
-#| "Southern Wesnoth. The old Citadel of Westin can be found there."
+#: data/core/encyclopedia/geography.cfg:113
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -2008,19 +2145,21 @@ msgstr ""
 "    • Carcyn: Leží mezi Šedým hvozdem a Vekou řekou.\n"
 "    • Dan’Tonk: Největší město Wesnothu, ležící v centru země severozápadně "
 "od Weldynu.\n"
-"    • Soradok: Nejseverněji ležící pevnost Wesnothu, ovládající soutok řeky "
-"Weldyn a Velké řeky.\n"
+"    • Soradok: Nejvýchodnější město Wesnothu, ovládající soutok řeky Weldyn "
+"a Velké řeky.\n"
 "    • Pevnost Tahn: Nejjižněji položená hraniční pevnost ovládající cestu "
 "z jihu na sever, která vede přes řeku Aethen.\n"
 "    • Tath: Důležité opevněné město severně od Dan’Tonku, které pomáhá "
 "kontrolovat divočinu na východ od Hnědých pahorků a severně od brodu "
 "u Abezu.\n"
-"    • Westin: Malé, ale důležité město v Kerlathu, provincii jižního "
-"Wesnothu. Nachází se zde stará westinská citadela."
+"    • Westin: Malé, ale důležité město v Kerlathu, nejjižnější provincii "
+"Wesnothu. Nachází se zde stará westinská citadela.\n"
+"    • Jižní Přístav: Městečko v nejjižnějším koutu Kerlathu, poblíž Černého "
+"lesa."
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:126
+#: data/core/encyclopedia/geography.cfg:127
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
@@ -2081,12 +2220,12 @@ msgstr ""
 "Šedého hvozdu."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:143
+#: data/core/encyclopedia/geography.cfg:144
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:144
+#: data/core/encyclopedia/geography.cfg:145
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -2105,13 +2244,7 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:148
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Elensefar: The capital, located on an island in the Great River "
-#| "delta.\n"
-#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
+#: data/core/encyclopedia/geography.cfg:149
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
@@ -2120,11 +2253,12 @@ msgid ""
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
 msgstr ""
 "<header>text='Významná města:'</header>\n"
-"    • Elensefar: Hlavní město, situované na ostrově v deltě Velké řeky.\n"
+"    • Elensefar: Hlavní město, situované na ostrově v deltě Velké řeky, "
+"ačkoli některé okrajové polnosti zabírají kousek obou jejích břehů.\n"
 "    • Carcyn: Město na hranici s Wesnothem, často sporného vlastnictví."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:153
+#: data/core/encyclopedia/geography.cfg:154
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
@@ -2135,27 +2269,12 @@ msgstr ""
 "již tak široká, že ji lze překročit pouze lodí."
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:159
+#: data/core/encyclopedia/geography.cfg:160
 msgid "Northlands"
 msgstr "Severní země"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:160
-#, fuzzy
-#| msgid ""
-#| "The Northlands are filled with unstable clans in endless conflict. It is "
-#| "an unlawful and perilous place plagued by its cold, icy terrain and "
-#| "constant war. Various groups of orcs, dwarves, men, gryphons, ogres, and "
-#| "even elves fight over the region. The northern and eastern borders of the "
-#| "Northlands are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='ocean'</ref>.\n"
-#| "\n"
-#| "Yet despite the sheer wilderness above the Northlands, the subterranean "
-#| "Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their "
-#| "chaotic surroundings, providing both heat and protection to their people. "
-#| "While they may often be in conflict with orcs and trolls, the heart of "
-#| "Dwarvish territory is considered relatively safe in comparison."
+#: data/core/encyclopedia/geography.cfg:161
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
@@ -2188,19 +2307,7 @@ msgstr ""
 # Wesmérie není město, ale oblast. Kalian je město. Chyba v originále.
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:166
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Glamdrol: An Orcish tribal capital.\n"
-#| "    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
-#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
-#| "in the southern Heart Mountains. A major trade center.\n"
-#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
-#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-#| "abandoned. The forested area northeast of <ref>dst='elensefar' "
-#| "text='Elensefar'</ref>, where these villages were located, was named the "
-#| "Annuvin province by men but was known by the elves as Wesmere."
+#: data/core/encyclopedia/geography.cfg:167
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -2219,6 +2326,7 @@ msgstr ""
 "    • Wesmérie: Místo konání Kalianu – Elfí rady.\n"
 "    • Trpasličí Dveře: Smíšené město lidí a trpaslíků blízko Knalgy na jihu "
 "Srdcových hor. Významné obchodní středisko.\n"
+"    • Saurgrat: Bývalé hlavní město ještěráků v Močálech děsu.\n"
 "    • Dallben and Delwyn: Vesnice lidí postavené osadníky, kteří překročili "
 "Velkou řeku během expanze během Zlatého věku Wesnothu. Nyní opuštěné. "
 "Lesnaté oblasti severovýchodně od <ref>dst='elensefar' text='Elensefaru'</"
@@ -2228,7 +2336,7 @@ msgstr ""
 # Elfské jméno u popisu názvu řeky jsem nechal, zní trochu patřičněji než elfí.
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:175
+#: data/core/encyclopedia/geography.cfg:176
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
@@ -2275,12 +2383,12 @@ msgstr ""
 "někde na východě severních zemí."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:188
+#: data/core/encyclopedia/geography.cfg:189
 msgid "Southwest Elven Lands"
 msgstr "Jihozápadní elfí země"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:189
+#: data/core/encyclopedia/geography.cfg:190
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2295,21 +2403,10 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:193
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Sandy Wastes: A hot desert located south of Kerlath home to various "
-#| "Dunefolk settlements, as well as nomadic tribes in between. The northern "
-#| "parts of this desert are home to many treacherous monsters.\n"
-#| "    • Mountains of Peril: A tall and deadly mountain range in the far "
-#| "south inhabited by bands of vicious barbarians and monsters.\n"
-#| "    • Black Forest: An ancient and likely haunted forest of which very "
-#| "little is known, believed to have been once inhabited by elves. Those who "
-#| "enter it seldom return."
+#: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, home to recluded "
+"    • Aethenwood: The largest southern forest, home to reclusive "
 "<ref>dst='..race_elf' text='elves'</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
@@ -2320,24 +2417,24 @@ msgid ""
 "enter it seldom return."
 msgstr ""
 "<header>text='Významné krajinné prvky:'</header>\n"
-"    • Písečné pustiny: Horká poušť na jihu Kerlathu, kde se nacházejí různé "
-"osady pouštního lidu a mezi nimi také kočovné kmeny. Severní části této "
-"pouště jsou domovem mnoha proradných nestvůr.\n"
-"    • Ošidné hory : Vysoké a smrtelně nebezpečné pohoří na dalekém jihu, "
-"které obývají tlupy krutých barbarů a nestvůr.\n"
+"    • Aethenský les: Největší hvozd na jihu, domov samotářských "
+"<ref>dst='..race_elf' text='elfů'</ref>.\n"
+"    • Údolí kvetoucích stromů: Elfí údolí na jižním okraji Aethenského lesa. "
+"Nachází se v něm posvátný ostrov Elrath.\n"
+"    • Jezero Aelin: Elfí jezero na pomezí jejich území podél řeky Aethen.\n"
 "    • Černý les: Prastarý a pravděpodobně strašidelný les, o kterém se toho "
 "ví jen velmi málo a o němž se věří, že jej kdysi obývali elfové. Ti, kdo do "
 "něj vstoupí, se z něj málokdy vracejí."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:202
+#: data/core/encyclopedia/geography.cfg:203
 msgid "Heart Mountains"
 msgstr "Srdcové hory"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:205
+#: data/core/encyclopedia/geography.cfg:206
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -2353,12 +2450,12 @@ msgstr ""
 "nazývají Bílé špičáky."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:210
+#: data/core/encyclopedia/geography.cfg:211
 msgid "Far North"
 msgstr "Dálný sever"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:211
+#: data/core/encyclopedia/geography.cfg:212
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -2380,21 +2477,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:215
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Barag Gor: A city home to the Orcish Council.\n"
-#| "    • Bitok\n"
-#| "    • Borstep\n"
-#| "    • Farzi\n"
-#| "    • Jotha: A large fortified capital of the local merfolk that lies "
-#| "within the bay of Jotha.\n"
-#| "    • Lmarig\n"
-#| "    • Melmog\n"
-#| "    • Prestim\n"
-#| "    • Tirigaz: A coastal orcish town that occasionally raids Jotha.\n"
-#| "    • Dorest: The northernmost human city."
+#: data/core/encyclopedia/geography.cfg:216
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
@@ -2417,44 +2500,20 @@ msgstr ""
 "    • Bitok\n"
 "    • Borstep\n"
 "    • Farzi\n"
-"    • Jota: Velké opevněné hlavní město místních mořských lidí, které leží v "
-"zátoce Jota.\n"
+"    • Jota: Velké opevněné hlavní město místních mořských lidí jižně od "
+"Bitoku.\n"
 "    • Lmarig\n"
 "    • Melmog\n"
 "    • Prestim\n"
 "    • Tirigaz: Pobřežní skřetí město, které občas podniká nájezdy na Jotu.\n"
-"    • Dorest: Nejseverněji položené město lidí."
+"    • Dorest: Nejseverněji položené město lidí.\n"
+"    • Citadela Arcanclave: Bájná pevnost daleko za lesy Lintaniru, o níž se "
+"věří, že ji uprostřed bitvy vytvořil elementál země. Její ruiny se nyní "
+"staly vojenskou tvrzí."
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:231
-#, fuzzy
-#| msgid ""
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Desert of Death: An unusually dry desert in the Far North filled "
-#| "with venomous Sand Scuttlers. It is extremely hot by day yet chilly by "
-#| "night.\n"
-#| "    • Black Marshes: A perilous swamp north of Tirigaz filled with "
-#| "violent monsters.\n"
-#| "    • Mountains of Dorth: A set of mountains north of the Heart "
-#| "Mountains. Though nowhere near as dangerous as its southern neighbour, it "
-#| "is nonetheless deadly to inexperienced travelers.\n"
-#| "    • Mountains of Haag: A group of high mountains inhabited by groups of "
-#| "orcs, trolls and dwarves.\n"
-#| "    • Greenwood: An elvish forest located near the Lintanir Forest. Some "
-#| "say it was once connected to it, until groups of savage orcs burned much "
-#| "of the forest.\n"
-#| "    • Silent Forest: A dense forest inhabited by a few elves, once known "
-#| "as Gitamoth.\n"
-#| "    • Forest of Thelien: A dense coniferous forest sometimes inhabited by "
-#| "elves.\n"
-#| "    • River Oumph: A river flowing from the Mountains of Haag to its "
-#| "delta just south of Bitok.\n"
-#| "    • River Bork: A river of the Far North flowing from a lake next to "
-#| "the Mourned Hills.\n"
-#| "    • Frosty Wastes: A cold, snowy desert in the far north inhabited only "
-#| "by the occasional monster.\n"
-#| "    • Barren Plains: A vast, sparsely populated snowy tundra."
+#: data/core/encyclopedia/geography.cfg:232
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2494,6 +2553,8 @@ msgstr ""
 "smrtící.\n"
 "    • pohoří Haag: Soubor vysokých hor osídlený skupinami skřetů, trollů "
 "a trpaslíků.\n"
+"    • Truchlivé vrchy: Řada zvlněných kopců táhnoucích se jižně od pohoří "
+"Haag. Na jejich jižním okraji se nachází skřetí město Lmarig.\n"
 "    • Zelený hvozd: Elfí les nacházející se v blízkosti Lintanirského lesa. "
 "Někteří říkají, že s ním byl kdysi spojen, dokud skupiny divokých skřetů "
 "velkou část lesa nespálily.\n"
@@ -2507,34 +2568,46 @@ msgstr ""
 "    • Pusté pláně: Rozlehlá, řídce osídlená zasněžená tundra."
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:248
+#: data/core/encyclopedia/geography.cfg:249
 msgid "Far South"
 msgstr "Dálný jih"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:249
+#: data/core/encyclopedia/geography.cfg:250
 msgid ""
-"A vast region south of Kerlath home to many mysterious races, including the "
-"Jinn and Wyverns. Very little is known for certain about what lies here."
+"A vast region south of Kerlath home to many mysterious races, including jinn "
+"and wyverns. Very little is known for certain about what lies here."
 msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:253
+#: data/core/encyclopedia/geography.cfg:254
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
-"    • Sandy Wastes: A hot and dry desert located southeast of Kerlath. It is "
+"    • Sandy Wastes: A hot desert located southeast of Kerlath. It is "
 "considered an impassable barrier by Wesnothians, filled with very sparse "
 "vegetation consisting of no more than a few shrubs and cacti.\n"
 "    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
-"entirely by flatter desert. It is not part of any mountain range and its "
+"entirely by flat desert. It is not part of any mountain range and its "
 "existence is doubted by many.\n"
 "    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
 "remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
 "civilization is sometimes said to live around the desert."
 msgstr ""
+"<header>text='Významné krajinné prvky:'</header>\n"
+"    • Ošidné hory: Vysoké a smrtelně nebezpečné pohoří na Dálném jihu, které "
+"obývají tlupy krutých barbarů a nestvůr.\n"
+"    • Písečné pustiny: Horká poušť na jihovýchodě Kerlathu. Wesnoťané ji "
+"považují na neprostupnou překážku, která je řídce poseta rostlinstvem "
+"sestávajícím z křovisek a kaktusů.\n"
+"    • Isanbar: Tajemná hora v Písečných pustinách, jež je celá obklopena "
+"rovinatou pouští. Není součástí žádného pohoří a o její existenci mnozí "
+"pochybují.\n"
+"    • Ashlandská poušť: Záhadná poušť, o které se říká, že leží ještě za "
+"vzdálenými Písečnými pustinami, někdy uváděná jen jako Ashland. Proslýchá "
+"se, že v okolí pouště žije dávná civilizace."
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
@@ -2557,8 +2630,8 @@ msgstr "Pravidla hry"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:546
-#: src/help/help_topic_generators.cpp:508
-#: src/help/help_topic_generators.cpp:526
+#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:549
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -2778,17 +2851,21 @@ msgid ""
 "campaign, you often need to play more carefully, preserving your best troops "
 "for use again in later scenarios.\n"
 "\n"
-"The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-"Wesnoth gameplay in the context of a scenario. Most material covered in the "
-"tutorial is explained more in-depth in these pages, so you can always refer "
+"The interactive tutorial campaign <bold>text='The South Guard'</bold> "
+"introduces Wesnoth gameplay in the context of a campaign. Most material "
+"covered in the tutorial is explained in these pages, so you can always refer "
 "back here if you forget something.\n"
 "\n"
-"After you master the basics, try out a beginner campaign, such as "
-"<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-"Guard'</italic>. A full list of installed campaigns can be found via the "
-"<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-"quite challenging, you may wish to start on easy before progressing to "
-"higher difficulties.\n"
+"After you master the basics, be sure to try another novice campaign next! "
+"You can help two brothers overcome a deadly peril in <italic>text='A Tale of "
+"Two Brothers'</italic>, help the prince Konrad through a turning point in "
+"the history of Wesnoth in the epic <italic>text='Heir to the Throne'</"
+"italic> or guide the mage Delfador on his way to becoming a legend in the "
+"equally epic <italic>text='The Deceiver’s Gambit'</italic>. A full list of "
+"installed campaigns can be found via the <bold>text='Campaign'</bold> option "
+"on the main menu, which is full of equally interesting adventures in the "
+"long history of Wesnoth. We’d recommend playing them in the order they are "
+"listed, but feel free to skip any that’s not your cup of tea!\n"
 "\n"
 "Campaigns are grouped by <italic>text='level'</italic> and "
 "<italic>text='difficulty'</italic>. For example, <italic>text='Heir to the "
@@ -2797,11 +2874,10 @@ msgid ""
 "what degree of proficiency in the game mechanics (such as "
 "<ref>dst='movement' text='zones of control'</ref> and <ref>dst='time_of_day' "
 "text='time of day'</ref>) is assumed. The difficulty indicates how "
-"challenging the scenarios will be to a veteran player: at higher "
-"difficulties, the obstacles to victory will be higher and overcoming them "
-"will require more skillful play. For example, at higher difficulties the "
-"enemy may have higher incomes, higher-level units, more castle hexes, and so "
-"on."
+"challenging the scenarios will be: at higher difficulties, the obstacles to "
+"victory will be higher and overcoming them will require more skillful play. "
+"For example, at higher difficulties the enemy may have higher incomes, "
+"higher-level units, more castle hexes, and so on."
 msgstr ""
 "Bitva o Wesnoth obsahuje nespočet úrovní složených z mnoha bitev zvaných "
 "<italic>text='scénáře'</italic>, ve kterých jsou tví vojáci postaveni proti "
@@ -2810,28 +2886,32 @@ msgstr ""
 "hrát opatrněji, protože jednotky, které ti zůstanou, můžeš povolat "
 "v pozdějších scénářích.\n"
 "\n"
-"Interaktivní <bold>text='tutoriál'</bold> tě naučí základy hraní Wesnothu za "
-"pomoci scénáře. Většina problematiky, kterou tutoriál pokrývá, se podrobněji "
+"Úvod do hraní Wesnothu představuje interaktivní výukové tažení "
+"<bold>text='Jižní hlídka'</bold>. Většina problematiky, kterou pokrývá, se "
 "rozebírá na těchto stránkách, takže když něco zapomeneš, můžeš se sem "
 "vždycky vrátit.\n"
 "\n"
-"Poté, co zvládneš základy, zkus některé ze začátečnických tažení, například "
-"<italic>text='Dědic trůnu'</italic> nebo <italic>text='Jižní hlídka'</"
-"italic>. Seznam všech dostupných tažení můžeš najít v hlavním menu v sekci "
-"<bold>text='Tažení'</bold>. Wesnoth může být docela náročný, takže bys měl "
-"začít na jednodušších obtížnostech a propracovat se k obtížnějším.\n"
+"Poté, co zvládneš základy, si určitě vyzkoušej nějaké další tažení pro "
+"začátečníky! Můžeš pomoci dvěma bratrům překonat smrtelné nebezpečí "
+"v <italic>text='Příběhu dvou bratrů'</italic>, provést prince Konráda "
+"rozhodujícím okamžikem v dějinách Wesnothu ve výpravném <italic>text='Dědici "
+"trůnu'</italic> nebo doprovodit mága Delfadora na jeho cestě stát se "
+"legendou v neméně epickém <italic>text='Podvodníkově gambitu'</italic>. "
+"Úplný seznam instalovaných tažení můžeš najít v hlavním menu pod volbou "
+"<bold>text='Tažení'</bold>, kde je plno stejně zajímavých dobrodružství "
+"v dlouhé historii Wesnothu. Doporučujeme je hrát v uvedeném pořadí, ale "
+"nerozpakuj se přeskočit takové, které ti nepůjde pod nos!\n"
 "\n"
 "Tažení jsou seskupena podle <italic>text='úrovně'</italic> "
 "a <italic>text='obtížnosti'</italic>. Například <italic>text='Dědic trůnu'</"
 "italic> je úrovně „nováček“ a je hratelný na tři obtížnosti: „začátečník“, "
 "„normální“ a „náročná“. Úroveň tažení naznačuje, jaká je předpokládána "
-"zběhlost v herních mechanikách (jako například v <ref>dst='movement' "
+"zběhlost v herních mechanikách (jako například v <ref>dst='movement' "
 "text='oblasti kontroly'</ref> či <ref>dst='time_of_day' text='denní době'</"
-"ref>). Obtížnost ukazuje, jak budou scénáře náročné pro ostříleného hráče: "
-"na vyšších obtížnostech budou překážky na cestě k vítězství vyšší a jejich "
-"překonání si vyžádá dovednější hraní. Na vyšších obtížnostech mohou mít "
-"nepřátelé například vyšší příjmy, jednotky vyšší úrovně, více políček hradu "
-"a tak dále."
+"ref>). Obtížnost ukazuje, jak budou scénáře náročné: na vyšších obtížnostech "
+"budou překážky na cestě k vítězství vyšší a jejich překonání si vyžádá "
+"dovednější hraní. Na vyšších obtížnostech mohou mít nepřátelé například "
+"vyšší příjmy, jednotky vyšší úrovně, více políček hradu a tak dále."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:174
@@ -4163,24 +4243,24 @@ msgstr "Denní doba"
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <span face='Serif' size='15'>LAWFUL</span> units get +25% damage in "
+"• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night.\n"
-"• <span face='Serif' size='15'>CHAOTIC</span> units get +25% damage at "
+"• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime.\n"
-"• <span face='Serif' size='15'>NEUTRAL</span> units are unaffected by the "
+"• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day.\n"
-"• <span face='Serif' size='15'>LIMINAL</span> units get +25% damage during "
+"• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
 "Denní doba ovlivňuje zranění způsobené určitými jednotkami takto:\n"
 "\n"
-"• <span face='Serif' size='15'>ZÁKONNÉ</span> jednotky udílí o 25 % větší "
+"• <span weight='heavy' size='15'>ZÁKONNÉ</span> jednotky udílí o 25 % větší "
 "zranění během dne a o 25 % menší v noci.\n"
-"• <span face='Serif' size='15'>CHAOTICKÉ</span> jednotky udílí o 25 % větší "
-"zranění v noci a o 25 % menší během dne.\n"
-"• <span face='Serif' size='15'>NEUTRÁLNÍ</span> jednotky nejsou denní dobou "
-"ovlivněny.\n"
-"• <span face='Serif' size='15'>ŠERÉ</span> jednotky udílí o 25 % větší "
+"• <span weight='heavy' size='15'>CHAOTICKÉ</span> jednotky udílí o 25 % "
+"větší zranění v noci a o 25 % menší během dne.\n"
+"• <span weight='heavy' size='15'>NEUTRÁLNÍ</span> jednotky nejsou denní "
+"dobou ovlivněny.\n"
+"• <span weight='heavy' size='15'>ŠERÉ</span> jednotky udílí o 25 % větší "
 "zranění za svítání a soumraku."
 
 #. [topic]: id=time_of_day
@@ -4889,17 +4969,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:638
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Cores enable total conversion of The Battle for Wesnoth. A core can "
-#| "replace all the content in Wesnoth: when a different core is loaded, the "
-#| "regular units, terrains and the like do not exist.\n"
-#| "\n"
-#| "Cores allow a significantly different game experience: for example, a "
-#| "World War II campaign, or even a different game altogether, as long as it "
-#| "can be represented as a hexagonal map with ’units’ in some way."
 msgid ""
 "\n"
 "\n"
@@ -6274,11 +6343,6 @@ msgstr ""
 "seznamu, aby ses vyhnul duplicitám):"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:12
-msgid "loyal"
-msgstr "věrný"
-
-#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:13
 msgid "female^loyal"
 msgstr "věrná"
@@ -6537,11 +6601,6 @@ msgstr ""
 "méně životů, než je obvyklé."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:190
-msgid "intelligent"
-msgstr "chytrý"
-
-#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
 msgstr "chytrá"
@@ -6566,11 +6625,6 @@ msgstr ""
 "nejvyšší úrovně'</italic> (AMLA) není až tak významná výhoda ve srovnání se "
 "zvýšením úrovně. Pokud máš hodně jednotek na hranici jejich možností, možná "
 "budeš chtít povolat jednotky s vhodnějšími vlastnostmi."
-
-#. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:192
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr "Chytré jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -6876,20 +6930,6 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:110
-msgid "magical"
-msgstr "magický"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:111
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
-"možnosti cílové jednotky."
-
 #. [disable]: id=naval_ram
 #: data/core/macros/weapon_specials.cfg:123
 msgid "naval ram"
@@ -6897,10 +6937,8 @@ msgstr "kloun"
 
 #. [disable]: id=naval_ram
 #: data/core/macros/weapon_specials.cfg:124
-#, fuzzy
-#| msgid "This attack can only be used offensively."
 msgid "This attack can only be used against units in water terrain."
-msgstr "Tento útok lze použít pouze ofenzivně."
+msgstr "Tento útok lze použít pouze proti jednotkám ve vodním terénu."
 
 #. [disable]: id=naval_ram
 #: data/core/macros/weapon_specials.cfg:132
@@ -8746,20 +8784,20 @@ msgstr "omráčená"
 msgid "stunned"
 msgstr "omráčený"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr "Nejlepší z/ze"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr "Nejhorší z/ze"
 
 #. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
-#: src/help/help_topic_generators.cpp:122
+#: src/help/help_topic_generators.cpp:132
 msgid "base terrain"
 msgstr "terén podloží"
 
-#: src/help/help_topic_generators.cpp:197
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
@@ -8768,7 +8806,7 @@ msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:202
+#: src/help/help_topic_generators.cpp:182
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8785,7 +8823,7 @@ msgstr[2] ""
 "Tento terén umožňuje jednotkám vyléčit $amount bodů života, nebo se uzdravit "
 "z otravy, jako by byly umístěny ve vesnici."
 
-#: src/help/help_topic_generators.cpp:209
+#: src/help/help_topic_generators.cpp:189
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
@@ -8793,7 +8831,7 @@ msgstr ""
 "Tento terén je hrad – lze do něj z připojené tvrze naverbovat jednotky."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:193
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8801,7 +8839,7 @@ msgstr ""
 "Tento terén je tvrz – vůdce z ní může verbovat na připojená políčka hradu."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:216
+#: src/help/help_topic_generators.cpp:196
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8809,15 +8847,15 @@ msgstr ""
 "Tato neobvyklá tvrz umožňuje vůdci verbovat, když v ní stojí, ale nedovoluje "
 "do ní samotné verbovat vůdci, který je v tvrzi připojené."
 
-#: src/help/help_topic_generators.cpp:220
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:246
+#: src/help/help_topic_generators.cpp:653
 msgid "Special Notes"
 msgstr "Zvláštní rysy"
 
 #. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
-#: src/help/help_topic_generators.cpp:241
+#: src/help/help_topic_generators.cpp:267
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
 msgstr[0] "Základní typ terénu: $types"
@@ -8825,175 +8863,174 @@ msgstr[1] "Základní typy terénů: $types"
 msgstr[2] "Základní typy terénů: $types"
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
-#: src/help/help_topic_generators.cpp:253
+#: src/help/help_topic_generators.cpp:276
 msgid "Typical base terrain: $type"
 msgstr "Typický terén podloží: $type"
 
-#: src/help/help_topic_generators.cpp:259
+#: src/help/help_topic_generators.cpp:282
 msgid "Movement properties: "
 msgstr "Vlastnosti pohybu: "
 
-#: src/help/help_topic_generators.cpp:263
+#: src/help/help_topic_generators.cpp:286
 msgid "Defense properties: "
 msgstr "Vlastnosti obrany: "
 
-#: src/help/help_topic_generators.cpp:341
+#: src/help/help_topic_generators.cpp:364
 msgid "Level"
 msgstr "Úroveň"
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:415
 msgid "Advances from: "
 msgstr "Povyšuje z: "
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:417
 msgid "Advances to: "
 msgstr "Povyšuje na: "
 
-#: src/help/help_topic_generators.cpp:423
+#: src/help/help_topic_generators.cpp:446
 msgid "Base unit: "
 msgstr "Základní jednotka: "
 
-#: src/help/help_topic_generators.cpp:428
+#: src/help/help_topic_generators.cpp:451
 msgid "Base units: "
 msgstr "Základní jednotky: "
 
-#: src/help/help_topic_generators.cpp:446
+#: src/help/help_topic_generators.cpp:469
 msgid "Variations: "
 msgstr "Variace: "
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:492
 msgid "race^Miscellaneous"
 msgstr "Různé"
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:494
 msgid "Race: "
 msgstr "Národ: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:559
 msgid "Abilities: "
 msgstr "Schopnosti: "
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:585
 msgid "Ability Upgrades: "
 msgstr "Vylepšení schopností: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:592
+#: src/help/help_topic_generators.cpp:615
 msgid "HP:"
 msgstr "Životy:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:619
 msgid "Moves:"
 msgstr "Kroky:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:624
 msgid "Vision:"
 msgstr "Rozhled:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:607
+#: src/help/help_topic_generators.cpp:630
 msgid "Jamming:"
 msgstr "Rušení:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:635
 msgid "Cost:"
 msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:639
 msgid "Alignment:"
 msgstr "Příslušnost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:646
 msgid "Required XP:"
 msgstr "Zkušenosti:"
 
-#: src/help/help_topic_generators.cpp:641
+#: src/help/help_topic_generators.cpp:664
 msgid "Attacks"
 msgstr "Útoky"
 
-#: src/help/help_topic_generators.cpp:646
-msgid "Icon"
-msgstr "Ikona"
-
-#: src/help/help_topic_generators.cpp:647
+#: src/help/help_topic_generators.cpp:672
 msgid "Name"
 msgstr "Název"
 
-#: src/help/help_topic_generators.cpp:648
+#: src/help/help_topic_generators.cpp:673
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help/help_topic_generators.cpp:649
+#: src/help/help_topic_generators.cpp:674
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help/help_topic_generators.cpp:650
+#: src/help/help_topic_generators.cpp:675
 msgid "Type"
 msgstr "Typ"
 
 # tabulka útoků
-#: src/help/help_topic_generators.cpp:651
+#: src/help/help_topic_generators.cpp:676
 msgid "Special"
 msgstr "Zvláštnosti"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:764
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:768
 msgid "Attack Type"
 msgstr "Druh útoku"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:769
 msgid "Resistance"
 msgstr "Odolnost"
 
-#: src/help/help_topic_generators.cpp:772
+#: src/help/help_topic_generators.cpp:797
 msgid "Terrain Modifiers"
 msgstr "Vliv terénu"
 
-#: src/help/help_topic_generators.cpp:776
+#: src/help/help_topic_generators.cpp:801
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help/help_topic_generators.cpp:777
+#: src/help/help_topic_generators.cpp:802
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help/help_topic_generators.cpp:778
+#: src/help/help_topic_generators.cpp:803
 msgid "Movement Cost"
 msgstr "Bodů pohybu"
 
-#: src/help/help_topic_generators.cpp:779
+#: src/help/help_topic_generators.cpp:804
 msgid "Defense Cap"
 msgstr "Omezení obrany"
 
-#: src/help/help_topic_generators.cpp:780
+#: src/help/help_topic_generators.cpp:805
 msgid "Vision Cost"
 msgstr "Cena rozhledu"
 
-#: src/help/help_topic_generators.cpp:781
+#: src/help/help_topic_generators.cpp:806
 msgid "Jamming Cost"
 msgstr "Cena rušení"
+
+#~ msgid "Icon"
+#~ msgstr "Ikona"
 
 #~ msgid ""
 #~ "<header>text='Notable land features:'</header>\n"
@@ -9002,19 +9039,6 @@ msgstr "Cena rušení"
 #~ msgstr ""
 #~ "<header>text='Významné krajinné prvky:'</header>\n"
 #~ "    • Hora Morogor: Aktivní sopečná hora na hlavním ostrově Morogoru."
-
-#~ msgid ""
-#~ "<header>text='Notable land features:'</header>\n"
-#~ "    • Aethenwood: The largest southern forest, it extends far to the "
-#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
-#~ "the elves make no such distinction, the southern part of the forest has "
-#~ "been named Southwood by denizens of Kerlath."
-#~ msgstr ""
-#~ "<header>text='Významné krajinné prvky:'</header>\n"
-#~ "    • Aethenský les: Velký hvozd na jihu, pokračující jižním směrem dále, "
-#~ "než bylo zmapováno. Je domovem <ref>dst='..race_elf' text='elfů'</ref>. "
-#~ "Ačkoliv ho tak elfové nikdy nenazývali, jižní část tohoto lesa byla "
-#~ "obyvateli Kerlathu pojmenována Jižní les."
 
 #~ msgid ""
 #~ "A vast region south of Kerlath home to the Dunefolk Civilization. It is "

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024 - 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -33,11 +33,11 @@ class game_board;
 
 namespace pref_constants
 {
-const int min_window_width  = 800;
-const int min_window_height = 540;
+const int min_window_width  = 1280;
+const int min_window_height = 720;
 
-const int def_window_width  = 1280;
-const int def_window_height = 720;
+const int def_window_width  = 1920;
+const int def_window_height = 1080;
 
 const int max_window_width = 1920;
 const int max_window_height = 1080;
@@ -312,6 +312,18 @@ public:
 
 	std::string moved_color();
 	void set_moved_color(const std::string& color_id);
+
+	std::string reach_map_color();
+	void set_reach_map_color(const std::string& color_id);
+
+	std::string reach_map_enemy_color();
+	void set_reach_map_enemy_color(const std::string& color_id);
+
+	int reach_map_border_opacity();
+	void set_reach_map_border_opacity(const int new_opacity);
+
+	int reach_map_tint_opacity();
+	void set_reach_map_tint_opacity(const int new_opacity);
 
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
@@ -816,6 +828,10 @@ private:
 		prefs_list::animate_map,
 		prefs_list::animate_water,
 		prefs_list::addon_icons,
+		prefs_list::reach_map_border_opacity,
+		prefs_list::reach_map_tint_opacity,
+		prefs_list::reach_map_color,
+		prefs_list::reach_map_enemy_color,
 	};
 	static constexpr std::array synced_children_{
 		prefs_list::acquaintance,
