@@ -525,7 +525,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::string id = "weaponspecial_" + s->first.base_str();
 		std::stringstream text;
 		text << s->second;
-		text << "\n\n" << _("<header>text='Units with this special attack'</header>") << "\n";
+		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
 		std::set<std::string, string_less> &units = special_units[s->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
 			text << font::unicode_bullet << " " << (*u) << "\n";
@@ -589,7 +589,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		}
 		std::ostringstream text;
 		text << a.second->description;
-		text << "\n\n" << _("<header>text='Units with this ability'</header>") << "\n";
+		text << "\n\n" << markup::tag("header", _("Units with this ability")) << "\n";
 
 		for(const auto& u : ability_units[a.first]) { // first is the topic ref id
 			text << font::unicode_bullet << " " << u << "\n";
@@ -1149,14 +1149,14 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		}
 		// TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 		// or "[Quenoth Elves are] a group of units, all of whom are Elves".
-		text << VGETTEXT("This is a group of units, all of whom are <ref>dst='$topic_id' text='$help_taxonomy'</ref>.", symbols) << "\n\n";
+		text << VGETTEXT("This is a group of units, all of whom are <ref dst='$topic_id'>$help_taxonomy</ref>.", symbols) << "\n\n";
 	}
 
 	if (!subgroups.empty()) {
 		if (!race_help_taxonomy.empty()) {
-			text << _("<header>text='Subgroups of units within this group'</header>") << "\n";
+			text << markup::tag("header", _("Subgroups of units within this group")) << "\n";
 		} else {
-			text << _("<header>text='Groups of units within this race'</header>") << "\n";
+			text << markup::tag("header", _("Groups of units within this race")) << "\n";
 		}
 		for (const auto &sg : subgroups) {
 			text << font::unicode_bullet << " " << markup::make_link(sg.second, "..race_" + sg.first) << "\n";
@@ -1165,9 +1165,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	}
 
 	if (!race_help_taxonomy.empty()) {
-		text << _("<header>text='Units of this group'</header>") << "\n";
+		text << markup::tag("header", _("Units of this group")) << "\n";
 	} else {
-		text << _("<header>text='Units of this race'</header>") << "\n";
+		text << markup::tag("header", _("Units of this race")) << "\n";
 	}
 	for (const auto &u : race_units) {
 		text << font::unicode_bullet << " " << u << "\n";
