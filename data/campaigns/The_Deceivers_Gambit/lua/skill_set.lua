@@ -139,7 +139,7 @@ local skill_set = {
             id          = "skill_counterspell",
             label       = label(_"Counterspell"),
             image       = "icons/counterspell.png",
-            description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-hex radius, until cancelled.\n           Prevents spellcasting, but not passive skills.",
+            description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-hex radius, until cancelled.\n           Disables Delfador’s spells, but not his passive skills.",
             xp_cost=16, --XP=16 is also used in S04
         },
         -------------------------
