@@ -130,6 +130,14 @@ enum ui_event : uint32_t {
 	RIGHT_BUTTON_CLICK             = encode_category(15, event_category::general),
 	RIGHT_BUTTON_DOUBLE_CLICK      = encode_category(16, event_category::general),
 
+	//Mouse forward/back buttons (buttons 4 and 5, SDL_BUTTON_X1/SDL_BUTTON_X2)
+	BACK_BUTTON_DOWN               = encode_category(49, event_category::mouse),
+	BACK_BUTTON_UP                 = encode_category(50, event_category::mouse),
+	BACK_BUTTON_CLICK              = encode_category(51, event_category::mouse),
+	FORWARD_BUTTON_DOWN            = encode_category(52, event_category::mouse),
+	FORWARD_BUTTON_UP              = encode_category(53, event_category::mouse),
+	FORWARD_BUTTON_CLICK           = encode_category(54, event_category::mouse),
+
 	SDL_VIDEO_RESIZE               = encode_category(17, event_category::mouse),
 	SDL_MOUSE_MOTION               = encode_category(18, event_category::mouse),
 	MOUSE_MOTION                   = encode_category(19, event_category::mouse),
