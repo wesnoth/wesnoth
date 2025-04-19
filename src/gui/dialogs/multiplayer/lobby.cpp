@@ -827,7 +827,7 @@ void mp_lobby::process_network_data(const config& data)
 		set_retval(CREATE_PRESET);
 		return;
 	} else if(auto join_game = data.optional_child("join_game")) {
-		enter_game_by_id(join_game["queue_id"].to_int(), JOIN_MODE::DO_JOIN);
+		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
 		return;
 	} else if(auto queue_update = data.optional_child("queue_update")) {
 		listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
@@ -869,7 +869,6 @@ void mp_lobby::process_network_data(const config& data)
 		for(const mp::queue_info& info : queues) {
 			widget_data data;
 			widget_item item;
-			PLAIN_LOG << info.id;
 
 			item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
 			data.emplace("is_in_queue", item);

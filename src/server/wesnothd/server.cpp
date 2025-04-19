@@ -1684,6 +1684,10 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 
 			send_to_lobby(queue_update);
 
+			// if there are enough players in the queue to start a game, then have the final player who joined the queue to host it
+			// else check if there's an existing game that was created for the queue which needs players (ie: player left or failed to join)
+			//   if yes, tell the player to immediately join that game
+			//   if no, leabe them in the queue
 			if(queue.players_required_ <= queue.players_in_queue_.size()) {
 				simple_wml::document create_game_doc;
 				simple_wml::node& create_game_node = create_game_doc.root().add_child("create_game");
@@ -1702,6 +1706,21 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 
 				// tell the final player to create and host the game
 				send_to_player(p, create_game_doc);
+			} else {
+				for(const auto& game : games()) {
+					if(game->queue_type() == cssv::QUEUE_TYPE::SERVER_PRESET &&
+					!game->started() &&
+					queue.scenario_id_ == game->get_scenario_id() &&
+					game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
+						simple_wml::document join_game_doc;
+						simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
+						join_game_node.set_attr_int("id", game->id());
+
+						// tell the client to create a game since there is no suitable existing game to join
+						send_to_player(p, join_game_doc);
+						return;
+					}
+				}
 			}
 			return;
 		} else {
