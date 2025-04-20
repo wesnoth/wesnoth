@@ -211,10 +211,10 @@ public:
 	 * @param delimiters
 	 *
 	 * @returns                   The token containing position, and none of the
-	 * 			      delimiter characters. If position is out of bounds,
-	 *			      it returns the empty string.
+	 *                            delimiter characters. If position is out of bounds,
+	 *                            it returns the empty string.
 	 */
-	std::string get_token(const point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_token(const point& position, std::string_view delimiters = " \n\r\t") const;
 
 	/**
 	 * Checks if position points to a character in a link in the text, returns it
@@ -223,7 +223,7 @@ public:
 	 *
 	 * @returns                   The link if one is found, the empty string otherwise.
 	 */
-	std::string get_link(const point & position) const;
+	std::string get_link(const point& position) const;
 
 	/**
 	 * Gets the column of line of the character at the position.
@@ -236,7 +236,7 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
-	int xy_to_index(const point& position) const;
+	std::pair<int, int> xy_to_index(const point& position) const;
 
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.

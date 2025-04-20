@@ -116,25 +116,20 @@ void label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "label click";
 
-	if (!get_link_aware()) {
+	if(!get_link_aware()) {
 		return; // without marking event as "handled".
 	}
 
-	if (!desktop::open_object_is_supported()) {
+	if(!desktop::open_object_is_supported()) {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		handled = true;
 		return;
 	}
 
-	point mouse = get_mouse_position();
+	std::string link = get_label_link(get_mouse_position());
 
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	std::string link = get_label_link(mouse);
-
-	if (link.length() == 0) {
-		return ; // without marking event as "handled"
+	if(link.empty()) {
+		return; // without marking event as "handled"
 	}
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
@@ -151,18 +146,12 @@ void label::signal_handler_right_button_click(bool& handled)
 {
 	DBG_GUI_E << "label right click";
 
-	if (!get_link_aware()) {
-		return ; // without marking event as "handled".
+	if(!get_link_aware()) {
+		return; // without marking event as "handled".
 	}
 
-	point mouse = get_mouse_position();
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	std::string link = get_label_link(mouse);
-
-	if (link.length() == 0) {
+	std::string link = get_label_link(get_mouse_position());
+	if(link.empty()) {
 		return ; // without marking event as "handled"
 	}
 
@@ -170,7 +159,7 @@ void label::signal_handler_right_button_click(bool& handled)
 
 	desktop::clipboard::copy_to_clipboard(link);
 
-	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
+	show_message("", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }
@@ -183,12 +172,7 @@ void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 		return; // without marking event as "handled"
 	}
 
-	point mouse = coordinate;
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	update_mouse_cursor(!get_label_link(mouse).empty());
+	update_mouse_cursor(!get_label_link(coordinate).empty());
 
 	handled = true;
 }
