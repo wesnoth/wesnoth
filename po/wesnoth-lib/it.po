@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-16 23:21-0500\n"
-"PO-Revision-Date: 2025-02-20 17:21+0100\n"
+"PO-Revision-Date: 2025-04-01 17:45+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -3027,7 +3027,7 @@ msgstr "Numero di scaricamenti dell’estensione per versione"
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr "Conta le estesioni usando forum_auth"
+msgstr "Conta le estensioni usando forum_auth"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
@@ -4976,7 +4976,7 @@ msgstr "Mostra gli argomenti"
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:168
 msgid "Search help topic names"
-msgstr ""
+msgstr "Ricerca negli argomenti della guida"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -7172,13 +7172,11 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed: Gold"
 msgid "Completed $count/$total"
-msgstr "Completate: Oro"
+msgstr "Completate $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -9130,10 +9128,8 @@ msgid "Save Map As"
 msgstr "Salva mappa come"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Scegli lo scenario di prova"
+msgstr "Converti come Scenario"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
