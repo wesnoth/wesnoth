@@ -493,14 +493,9 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 
 	// Get the resulting size.
 	point size = renderer_.get_size() + border;
-
-	if(size.x < minimum_size.x) {
-		size.x = minimum_size.x;
-	}
-
-	if(size.y < minimum_size.y) {
-		size.y = minimum_size.y;
-	}
+	size = point(
+		std::max(size.x, minimum_size.x),
+		std::max(size.y, minimum_size.y));
 
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_.str())
 			  << "' result " << size << ".";
@@ -557,14 +552,21 @@ void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event e
 	handled = true;
 }
 
-std::string styled_widget::get_label_token(const point & position, const char * delim) const
+std::string styled_widget::get_label_token(const point& position, std::string_view delim) const
 {
 	return renderer_.get_token(position, delim);
 }
 
-std::string styled_widget::get_label_link(const point & position) const
+std::string styled_widget::get_label_link(const point& position) const
 {
-	return renderer_.get_link(position);
+	// Without the following line, bounds for links in the case of non-left aligned text
+	// are incorrectly calculated. See issue #8915.
+	get_best_text_size(point(0, 0), get_size());
+
+	// Text renderer has no idea of the origin of text, i.e., where the resultant
+	// texture will get blitted. To it, every text chunk sent to it starts at (0,0).
+	// So the mouse coordinates need to be translated by the widget's origin.
+	return renderer_.get_link(position - get_origin());
 }
 
 // }---------- BUILDER -----------{

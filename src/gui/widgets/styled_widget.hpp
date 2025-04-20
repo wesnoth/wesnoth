@@ -440,7 +440,7 @@ protected:
 	virtual bool impl_draw_foreground() override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
-	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_label_token(const point & position, std::string_view delimiters = " \n\r\t") const;
 
 	std::string get_label_link(const point & position) const;
 

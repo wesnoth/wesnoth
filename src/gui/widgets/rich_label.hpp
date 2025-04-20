@@ -268,7 +268,7 @@ private:
 
 	int get_offset_from_xy(const point& position) const
 	{
-		return font::get_text_renderer().xy_to_index(position);
+		return font::get_text_renderer().xy_to_index(position).first;
 	}
 
 	point get_xy_from_offset(const unsigned offset) const

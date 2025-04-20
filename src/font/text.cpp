@@ -241,61 +241,43 @@ std::size_t pango_text::get_maximum_length() const
 	return maximum_length_;
 }
 
-std::string pango_text::get_token(const point & position, const char * delim) const
+std::string pango_text::get_token(const point& position, const std::string_view delim) const
 {
-	recalculate();
-
 	// Get the index of the character.
-	int index, trailing;
-	if (!pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
-		position.y * PANGO_SCALE, &index, &trailing)) {
-		return "";
-	}
-
+	int index = xy_to_index(position).first;
 	std::string txt = pango_layout_get_text(layout_.get());
 
-	std::string d(delim);
-
-	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
+	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
 	}
 
 	std::size_t l = index;
-	while (l > 0 && (d.find(txt.at(l-1)) == std::string::npos)) {
+	while (l > 0 && (delim.find(txt.at(l-1)) == std::string::npos)) {
 		--l;
 	}
 
 	std::size_t r = index + 1;
-	while (r < txt.size() && (d.find(txt.at(r)) == std::string::npos)) {
+	while (r < txt.size() && (delim.find(txt.at(r)) == std::string::npos)) {
 		++r;
 	}
 
 	return txt.substr(l,r-l);
 }
 
-std::string pango_text::get_link(const point & position) const
+std::string pango_text::get_link(const point& position) const
 {
 	if (!link_aware_) {
 		return "";
 	}
 
-	std::string tok = get_token(position, " \n\r\t");
-
-	if (looks_like_url(tok)) {
-		return tok;
-	} else {
-		return "";
-	}
+	std::string tok = get_token(position);
+	return looks_like_url(tok) ? tok : "";
 }
 
 point pango_text::get_column_line(const point& position) const
 {
-	recalculate();
-
 	// Get the index of the character.
-	int index, trailing;
-	pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
-		position.y * PANGO_SCALE, &index, &trailing);
+	const auto [index, trailing] = xy_to_index(position);
 
 	// Extract the line and the offset in pixels in that line.
 	int line, offset;
@@ -313,25 +295,29 @@ point pango_text::get_column_line(const point& position) const
 	 * text is available. Haven't found what the best thing to do would be.
 	 * Until that time leave it as is.
 	 */
-	for(std::size_t i = 0; ; ++i) {
+	for(std::size_t i = 0; ;++i) {
 		const int pos = get_cursor_position(i, line).x;
 
 		if(pos == offset) {
-			return  point(i, line);
+			// FIXME: return statement only inside if block.
+			return point(i, line);
 		}
 	}
 }
 
-int pango_text::xy_to_index(const point& position) const
+std::pair<int, int> pango_text::xy_to_index(const point& position) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
-	pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
-		position.y * PANGO_SCALE, &index, &trailing);
+	if(!pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE, position.y * PANGO_SCALE, &index, &trailing))
+	{
+		index = -1;
+		trailing = -1;
+	}
 
-	return index;
+	return { index, trailing };
 }
 
 void pango_text::clear_attributes()
