@@ -253,7 +253,9 @@ public:
 	bool is_network() const { return !is_empty() && !info_.is_local; }
 
 	bool is_human() const { return info_.controller == side_controller::type::human; }
-	bool is_ai() const { return info_.controller == side_controller::type::ai; }
+	bool is_ai() const { return is_initially_ai() || is_secondary_ai(); }
+	bool is_secondary_ai() const { return info_.controller == side_controller::type::secondary_ai; }
+	bool is_initially_ai() const { return info_.controller == side_controller::type::ai; }
 
 	bool is_local_human() const {  return is_human() && is_local(); }
 	bool is_local_ai() const { return is_ai() && is_local(); }
@@ -263,7 +265,9 @@ public:
 	void set_local(bool local) { info_.is_local = local; }
 	void make_human() { info_.controller = side_controller::type::human; }
 	void make_ai() { info_.controller = side_controller::type::ai; }
-	void change_controller(const std::string& new_controller) {
+	void make_secondary_ai() { info_.controller = side_controller::type::secondary_ai; }
+	void change_controller(const std::string& new_controller)
+	{
 		info_.controller = side_controller::get_enum(new_controller).value_or(side_controller::type::ai);
 	}
 	void change_controller(side_controller::type controller) { info_.controller = controller; }

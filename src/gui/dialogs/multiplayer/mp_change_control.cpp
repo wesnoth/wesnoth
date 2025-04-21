@@ -124,6 +124,24 @@ void mp_change_control::pre_show()
 		nicks_list.add_row(data);
 	}
 
+	// Add an AI option
+	{
+		nicks_.push_back("AI");
+
+		widget_data data;
+		widget_item item;
+
+		std::string nick_str = _("AI");
+		nick_str = markup::span_color(font::GREEN_COLOR, nick_str);
+
+		item["id"] = "AI";
+		item["label"] = nick_str;
+		item["use_markup"] = "true";
+		data.emplace("nick", item);
+
+		nicks_list.add_row(data);
+	}
+
 	handle_sides_list_item_clicked();
 	handle_nicks_list_item_clicked();
 }
@@ -165,14 +183,24 @@ void mp_change_control::highlight_side_nick()
 void mp_change_control::post_show()
 {
 	if(get_retval() == retval::OK) {
-		DBG_GUI << "Main: changing control of side "
-		        << sides_[selected_side_] << " to nick "
-		        << nicks_[selected_nick_];
-
-		menu_handler_.request_control_change(
-			sides_[selected_side_],
-			nicks_[selected_nick_]
-		);
+		// row of AI is always at the end.
+		if(selected_nick_ == nicks_.size() - 1) {
+			DBG_GUI << "Main: changing control of side "
+				<< sides_[selected_side_] << " to AI.";
+			menu_handler_.request_control_change(
+				sides_[selected_side_],
+				nicks_[selected_nick_],
+				true
+			);
+		} else {
+			DBG_GUI << "Main: changing control of side "
+				<< sides_[selected_side_] << " to nick "
+				<< nicks_[selected_nick_];
+			menu_handler_.request_control_change(
+				sides_[selected_side_],
+				nicks_[selected_nick_]
+			);
+		}
 	}
 }
 

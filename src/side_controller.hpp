@@ -20,9 +20,10 @@ struct side_controller_defines
 {
 	static constexpr const char* const none = "null";
 	static constexpr const char* const human = "human";
+	static constexpr const char* const secondary_ai = "secondary_ai";
 	static constexpr const char* const ai = "ai";
 	static constexpr const char* const reserved = "reserved";
 
-	ENUM_AND_ARRAY(none, human, ai, reserved)
+	ENUM_AND_ARRAY(none, human, secondary_ai, ai, reserved)
 };
 using side_controller = string_enums::enum_base<side_controller_defines>;

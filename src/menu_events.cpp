@@ -61,7 +61,7 @@
 #include "map_command_handler.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "playsingle_controller.hpp"
+#include "playmp_controller.hpp"
 #include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
@@ -1413,11 +1413,7 @@ void console_handler::do_droid()
 {
 	// :droid [<side> [on/off/full]]
 	const std::string side_s = get_arg(1);
-	std::string action = get_arg(2);
-	std::transform(action.begin(), action.end(), action.begin(), tolower);
-	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
@@ -1434,80 +1430,19 @@ void console_handler::do_droid()
 		const bool is_human = menu_handler_.board().get_team(side).is_human();
 		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
 		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
-		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
 
-		if(action == "on") {
-			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
-				return;
-			}
-			if(!is_human || !is_droid) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_droid();
-				changed = true;
-				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
-				}
-				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: AI.", symbols));
-			} else {
-				print(get_cmd(), VGETTEXT("Side ‘$side’ is already droided.", symbols));
-			}
-		} else if(action == "off") {
-			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
-				return;
-			}
-			if(!is_human || !is_proxy_human) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_proxy_human();
-				changed = true;
-				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
-				}
-				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: human.", symbols));
-			} else {
-				print(get_cmd(), VGETTEXT("Side ‘$side’ is already not droided.", symbols));
-			}
-		} else if(action == "full") {
-			if(!is_your_turn) {
-				command_failed(_("It is not allowed to change a side from human to AI control when it’s not your turn."));
-				return;
-			}
-			if(!is_ai || !is_droid) {
-				menu_handler_.board().get_team(side).make_ai();
-				menu_handler_.board().get_team(side).make_droid();
-				changed = true;
-				if(is_human || is_proxy_human) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::ai}});
-				}
-				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now fully controlled by: AI.", symbols));
-			} else {
-				print(get_cmd(), VGETTEXT("Side ‘$side’ is already fully AI controlled.", symbols));
-			}
-		} else if(action == "") {
-			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
-				return;
-			}
-			if(is_ai || is_droid) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_proxy_human();
-				changed = true;
-				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
-				}
-				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: human.", symbols));
-			} else {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_droid();
-				changed = true;
-				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
-				}
-				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: AI.", symbols));
-			}
-		} else {
-			print(get_cmd(), VGETTEXT("Invalid action provided for side ‘$side’. Valid actions are: on, off, full.", symbols));
+		// this command only servers as a tool for ai proxy. thus only humans can have a need to use it.
+		if(!is_human) {
+			command_failed(VGETTEXT("Can’t droid a side you don't control: ‘$side’", symbols));
+			return;
+		} else if(is_droid) {
+			changed = true;
+			menu_handler_.board().get_team(side).make_proxy_human();
+			print(get_cmd(), VGETTEXT("Side ‘$side’ is now back under human control.", symbols));
+		} else if(is_proxy_human) {
+			changed = true;
+			menu_handler_.board().get_team(side).make_droid();
+			print(get_cmd(), VGETTEXT("Side ‘$side’ is now represented by AI.", symbols));
 		}
 
 		if(team_num_ == side && changed) {
@@ -2074,16 +2009,74 @@ void menu_handler::user_command()
 	textbox_info_.show(gui::TEXTBOX_COMMAND, translation::sgettext("prompt^Command:"), "", false, *gui_);
 }
 
-void menu_handler::request_control_change(int side_num, const std::string& player)
+void menu_handler::request_control_change(int side_num, const std::string& player, bool to_ai)
 {
+	//mark newnewnew: we should make sure to seperate the situation by if the request is from the host. 
+	playmp_controller* pmc = dynamic_cast<playmp_controller*>(&pc_);
+	if(!board().get_team(side_num).is_local()) {
+		if(to_ai) {
+			// This is a private matter of another player.
+			ERR_NG << "You can't give a side you don't own to AI.";
+			return;
+		} else if (!pmc->is_host()) {
+			// even if we don't do it here, the request will also be rejected by the server later.
+			ERR_NG << "You can't operate on a side you don't own, when you are not the host.";
+			return;
+		}
+	}
+	// if we change the side to ai, the side won't be remote when it reaches here.
+	bool change_happens_locally = (player == prefs::get().login() || to_ai);
 	std::string side = std::to_string(side_num);
-	if(board().get_team(side_num).is_local_human() && player == prefs::get().login()) {
-		// this is already our side.
-		return;
+	bool side_is_ai = board().get_team(side_num).is_ai();
+	if(to_ai) {
+		if(side_is_ai) {
+			// changes of side ownership won't happen between AI sides:
+			// there is only one AI selection which represents all players' ai sides, including remote and local ones
+			// making the transfer ambiguous.
+			ERR_NG << "You can't assign an AI side to another.";
+			return;
+		}
+		pc_.send_to_wesnothd(config{ "change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::secondary_ai} });
+		//mark local OOS
+		//todo: make sure the make_droid() and set_player_type_changed() only happens in the affected client.
+		//proxy don't have to be the same, it won't cause OOS.(right ? )
+		//also, in theory the existing logic should prevent this from happening in AI side.
+		//so the pack and the lines below will surely work, and prevent oos.
+		//but in practice the pack will still be sent to the server, causing the `the side is already...` msg to pop out.
+		//need to solve this.
+		//edit: that's not sent by this block. the sender is the block below.
+		//the condition changed here is probably oos safe. the status changed by droid() don't need to be synchronized.
+		//because the server pack(not message) seems to be actually only sent to other player
+		//the lines below have to be executed here.
+		//mark now now: edit: the fix is made, then we test now.
+		board().get_team(side_num).make_secondary_ai();
+		board().get_team(side_num).make_droid();
+		if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&pc_)) {
+				psc->set_player_type_changed();
+		}
 	} else {
-		// The server will (or won't because we aren't allowed to change the controller)
-		// send us a [change_controller] back, which we then handle in playturn.cpp
-		pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", player}});
+		bool side_is_human = board().get_team(side_num).is_human();
+		if(change_happens_locally) {
+			if(side_is_ai) {
+				// inform the server we are going to change back to human.
+				pc_.send_to_wesnothd(config{ "change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human} });
+				board().get_team(side_num).make_human();
+				board().get_team(side_num).make_proxy_human();
+				if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&pc_)) {
+					psc->set_player_type_changed();
+				}
+			} else {
+				// the side is a human side then.
+				// changes of side ownership can happen between human sides,
+				// but this is already our side.
+				ERR_NG << "You can't assign a side you own to your self.";
+				return;
+			}
+		} else {
+			// The server will (or won't because we aren't allowed to change the controller)
+			// send us a [change_controller] back, which we then handle in playturn.cpp
+			pc_.send_to_wesnothd(config{ "change_controller", config {"side", side, "player", player} });
+		}
 	}
 }
 

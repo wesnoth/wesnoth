@@ -1837,6 +1837,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 	} else if(data.child("change_faction")) {
 		g.send_data(data, p);
 		return;
+		//mark send_wesnothd impl, call transfer side control
 		// If the owner of a side is changing the controller.
 	} else if(const simple_wml::node* change = data.child("change_controller")) {
 		g.transfer_side_control(p, *change);

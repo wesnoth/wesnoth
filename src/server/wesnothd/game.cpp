@@ -508,7 +508,12 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	auto old_player = sides_[side_num - 1];
 	const std::string& controller_type = cfg["to"].to_string();
-
+	// test if the controller type is valid
+	{
+		std::stringstream msg;
+		msg << "server status: controller_type = " << controller_type;
+		send_server_message(msg.str(), player);
+	}
 	const std::string old_player_name = old_player ? username(*old_player) : "null";
 
 	// Not supported anymore.
@@ -541,11 +546,26 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(newplayer == old_player) {
 		// if the player is unchanged and the controller type (human or ai) is also unchanged then nothing to do
 		// else only need to change the controller type rather than the player who controls the side
-		// :droid provides a valid controller_type; :control provides nothing since it's only tranferring control between players regardless of type
+		// :droid provides a valid controller_type; :control provides nothing since it's only transferring control between players regardless of type
 		auto type = side_controller::get_enum(controller_type);
 		if(!type || type == side_controllers_[side_num - 1]) {
 			std::stringstream msg;
-			msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
+			//mark the client side implementation is expected to make sure the side won't already be an AI side when it reaches here,
+			//if the change is making the side to become an AI side.
+			//so maybe remove these later.
+			if(side_controller::get_string(side_controllers_[side_num - 1]) == "secondary_ai") {
+				msg << "Side " << side_num << " is already controlled by AI team.";
+			} else {
+				//mark when type is null, here the msg will pop too
+				//mark the bug need to solve now: once convert to AI, there's no way to convert it back.
+				//because if convert to human, :droid is not usable now, and the `to` will be null, then
+				//obviously it will go here, pop this message. need to deal with it so that instead of
+				//popping out this msg again, the control will be reversed.
+				//solution: add a to value to control, when converting back.
+				msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
+				//mark need this to check what's happening here already
+				msg << "server status: controller_type = " << controller_type << " and side_controller is " << side_controller::get_string(side_controllers_[side_num - 1]);
+			}
 			send_server_message(msg.str(), player);
 			return;
 		} else {

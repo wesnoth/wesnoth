@@ -34,6 +34,7 @@ public:
 	class hotkey_handler;
 
 	bool is_networked_mp() const override;
+	virtual bool is_host() const override;
 	void send_to_wesnothd(const config& cfg, const std::string& packet_type = "unknown") const override;
 	bool receive_from_wesnothd(config& cfg) const override;
 
@@ -57,7 +58,6 @@ protected:
 	bool next_scenario_notified_;
 
 	virtual void on_not_observer() override;
-	virtual bool is_host() const override;
 	void remove_blindfold();
 
 	blindfold blindfold_;

@@ -225,7 +225,9 @@ void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_pro
 		leader->rename(side_controller::get_string(ctrl) + std::to_string(side_num));
 	}
 }
-
+//mark side_change_c
+//this will just be called in other players' sides, other than the side of player who transferred the control to ai.
+//so no make_droid() is making any sense here
 void game_board::side_change_controller(
 	int side_num, bool is_local, const std::string& pname, const std::string& controller_type)
 {
@@ -234,8 +236,12 @@ void game_board::side_change_controller(
 	tm.set_local(is_local);
 
 	// only changing the type of controller
-	if(controller_type == side_controller::ai && !tm.is_ai()) {
-		tm.make_ai();
+	if(controller_type == side_controller::secondary_ai && !tm.is_ai()) {
+		// the AI born from taking over control of a human team is considered secondary ai.
+		tm.make_secondary_ai();
+		// if in other players' sides, they don't need to be droided.
+		//tm.make_droid();
+		//mark bugfix
 		return;
 	} else if(controller_type == side_controller::human && !tm.is_human()) {
 		tm.make_human();
