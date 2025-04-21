@@ -32,7 +32,8 @@
 #include "gettext.hpp"
 
 #include <functional>
-#include "utils/span.hpp"
+#include "utils/iterable_pair.hpp"
+
 #include <vector>
 
 static lg::log_domain log_chat_log("chat_log");
@@ -103,10 +104,9 @@ public:
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
 		LOG_CHAT_LOG << "entering chat_log::model::stream_log";
 
-		for(const auto & t : utils::span{
-			chat_log_history.begin() + first,
-			chat_log_history.begin() + last
-		}) {
+		for(const auto & t : make_pair(chat_log_history.begin() + first,
+										  chat_log_history.begin() + last))
+		{
 			const std::string& timestamp
 					= prefs::get().get_chat_timestamp(t.time());
 
