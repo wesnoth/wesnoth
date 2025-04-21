@@ -34,29 +34,32 @@ class modification;
  * A modified priority queue used to order image modifications.
  * The priorities for this queue are to order modifications by priority(),
  * then by the order they are added to the queue.
+ *
+ * Invariant for this class:
+ *
+ * At the beginning and end of each member function call,
+ * there are no empty vectors in priorities_.
  */
 class modification_queue
 {
-	// Invariant for this class:
-	// At the beginning and end of each member function call, there
-	// are no empty vectors in priorities_.
 public:
-	modification_queue()
-		: priorities_()
-	{
-	}
+	bool empty() const { return priorities_.empty(); }
 
-	bool empty() const  { return priorities_.empty(); }
-	void push(std::unique_ptr<modification> mod);
+	/** Adds @a mod to the queue. */
+	void push(std::unique_ptr<modification>&& mod);
+
+	/** Removes the top element from the queue. */
 	void pop();
+
+	/** Returns the number of elements in the queue. */
 	std::size_t size() const;
-	modification * top() const;
+
+	/** Returns a const reference to the top element in the queue. */
+	const modification& top() const;
 
 private:
 	/** Map from a mod's priority() to the mods having that priority. */
-	typedef std::map<int, std::vector<std::unique_ptr<modification>>, std::greater<int>> map_type;
-	/** Map from a mod's priority() to the mods having that priority. */
-	map_type priorities_;
+	std::map<int, std::vector<std::unique_ptr<modification>>, std::greater<int>> priorities_;
 };
 
 /** Base abstract class for an image-path modification */
