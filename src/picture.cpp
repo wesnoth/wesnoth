@@ -391,10 +391,8 @@ static surface load_image_sub_file(const image::locator& loc)
 	modification_queue mods = modification::decode(loc.get_modifications());
 
 	while(!mods.empty()) {
-		modification* mod = mods.top();
-
 		try {
-			std::invoke(*mod, surf);
+			std::invoke(mods.top(), surf);
 		} catch(const image::modification::imod_exception& e) {
 			std::ostringstream ss;
 			ss << "\n";
@@ -409,7 +407,6 @@ static surface load_image_sub_file(const image::locator& loc)
 					<< "Error: " << e.message;
 		}
 
-		// NOTE: do this *after* applying the mod or you'll get crashes!
 		mods.pop();
 	}
 
