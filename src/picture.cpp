@@ -20,6 +20,7 @@
 
 #include "picture.hpp"
 
+#include "draw.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image_modifications.hpp"
@@ -28,10 +29,12 @@
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
+#include "video.hpp"
 
 #include <SDL2/SDL_image.h>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem/path.hpp>
 
 #if BOOST_VERSION >= 108100
 
@@ -324,72 +327,6 @@ bool locator::operator<(const locator& a) const
 	return false;
 }
 
-// Load overlay image and compose it with the original surface.
-static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
-{
-	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-	if(!ovr_surf) {
-		return;
-	}
-
-	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
-
-	sdl_blit(ovr_surf, nullptr, orig_surf, &area);
-}
-
-static surface load_image_file(const image::locator& loc)
-{
-	surface res;
-	const std::string& name = loc.get_filename();
-
-	auto location = filesystem::get_binary_file_location("images", name);
-
-	// Many images have been converted from PNG to WEBP format,
-	// but the old filename may still be saved in savegame files etc.
-	// If the file does not exist in ".png" format, also try ".webp".
-	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
-	if(!location && (boost::algorithm::ends_with(name, ".png") || boost::algorithm::ends_with(name, ".jpg"))) {
-		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
-		location = filesystem::get_binary_file_location("images", webp_name);
-		if(location) {
-			WRN_IMG << "Replaced missing '" << name << "' with found '"
-			        << webp_name << "'.";
-		}
-	}
-
-	{
-		if(location) {
-			// Check if there is a localized image.
-			const auto loc_location = filesystem::get_localized_path(location.value());
-			if(loc_location) {
-				location = loc_location.value();
-			}
-
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
-			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-
-			// If there was no standalone localized image, check if there is an overlay.
-			if(res && !loc_location) {
-				const auto ovr_location = filesystem::get_localized_path(location.value(), "--overlay");
-				if(ovr_location) {
-					add_localized_overlay(ovr_location.value(), res);
-				}
-			}
-		}
-	}
-
-	if(!res && !name.empty()) {
-		ERR_IMG << "could not open image '" << name << "'";
-		if(game_config::debug && name != game_config::images::missing)
-			return get_surface(game_config::images::missing, UNSCALED);
-		if(name != game_config::images::blank)
-			return get_surface(game_config::images::blank, UNSCALED);
-	}
-
-	return res;
-}
-
 static surface load_image_sub_file(const image::locator& loc)
 {
 	// Create a new surface in-memory on which to apply the modifications
@@ -421,6 +358,7 @@ static surface load_image_sub_file(const image::locator& loc)
 	}
 
 	if(loc.get_loc().valid()) {
+		using game_config::tile_size;
 		rect srcrect(
 			((tile_size * 3) / 4)                           *  loc.get_loc().x,
 			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
@@ -449,38 +387,6 @@ static surface load_image_sub_file(const image::locator& loc)
 		}
 
 		is_empty_hex_.add_to_cache(loc, is_empty);
-	}
-
-	return surf;
-}
-
-static surface load_image_data_uri(const image::locator& loc)
-{
-	surface surf;
-
-	parsed_data_URI parsed{loc.get_filename()};
-
-	if(!parsed.good) {
-		std::string_view fn = loc.get_filename();
-		std::string_view stripped = fn.substr(0, fn.find(","));
-		ERR_IMG << "Invalid data URI: " << stripped;
-	} else if(parsed.mime.substr(0, 5) != "image") {
-		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
-	} else {
-		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size())};
-
-		if(image_data.empty()) {
-			ERR_IMG << "Invalid encoding in data URI";
-		} else if(parsed.mime == "image/png") {
-			surf = IMG_LoadPNG_RW(rwops.release());
-		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadJPG_RW(rwops.release());
-		} else if(parsed.mime == "image/webp") {
-			surf = IMG_LoadWEBP_RW(rwops.release());
-		} else {
-			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
-		}
 	}
 
 	return surf;
@@ -575,14 +481,171 @@ static surface apply_light(surface surf, const std::vector<light_adjust>& ls)
 	return surf;
 }
 
+namespace
+{
+namespace implementation
+{
+namespace fs = boost::filesystem;
+
+utils::optional<std::string> get_binary_path(const fs::path& path)
+{
+	return filesystem::get_binary_file_location("images", path.string());
+}
+
+utils::optional<std::string> try_webp_fallback(fs::path filename)
+{
+	if(auto ext = filename.extension(); ext == ".png" || ext == ".jpg") {
+		return get_binary_path(filename.replace_extension("webp"));
+	} else {
+		return utils::nullopt;
+	}
+}
+
+/**
+ * Attempts to resolve the full binary path to the specified image. If the given
+ * path points to a nonexistant .png or .jpg file, a .webp file at the same path
+ * will also be checked. Most images were converted from PNG to WEBP format, but
+ * the old filenames may still be present in save files, etc.
+ */
+utils::optional<std::string> resolve_full_path(const fs::path& filename)
+{
+	if(auto path = get_binary_path(filename)) {
+		return path;
+	} else {
+		return try_webp_fallback(filename);
+	}
+}
+
+/**
+ * Returns a pair of optional paths to the given image's localized base and overlay,
+ * respectively.
+ */
+auto resolve_localization(const std::string& base_path)
+{
+	return std::pair{
+		filesystem::get_localized_path(base_path),
+		filesystem::get_localized_path(base_path, "--overlay")
+	};
+}
+
+} // namespace implementation
+
+template<typename T>
+class factory
+{
+public:
+	static T from_disk(const image::locator& loc);
+	static T from_data_uri(const image::locator& loc);
+
+private:
+	static constexpr bool to_texture = std::is_same_v<T, texture>;
+	static constexpr bool to_surface = std::is_same_v<T, surface>;
+
+	/** Wrapper around IMG_Load[Texture]_RW. SDL takes ownership of rwops. */
+	static T load(filesystem::rwops_ptr rwops)
+	{
+		if constexpr(to_texture) {
+			return T{IMG_LoadTexture_RW(video::get_renderer(), rwops.release(), true)};
+		} else {
+			return T{IMG_Load_RW(rwops.release(), true)};
+		}
+	}
+
+	/** Wrapper around IMG_Load[Texture]Typed_RW. SDL takes ownership of rwops. */
+	static T load_typed(filesystem::rwops_ptr rwops, std::string_view type)
+	{
+		if constexpr(to_texture) {
+			return T{IMG_LoadTextureTyped_RW(video::get_renderer(), rwops.release(), true, type.data())};
+		} else {
+			return T{IMG_LoadTyped_RW(rwops.release(), true, type.data())};
+		}
+	}
+
+	/** Load overlay image and compose it with the original surface or texture. */
+	static void compose_localized_overlay(T& base, const std::string& ovr_path)
+	{
+		// FIXME: overlays aren't subject to the webp fallback check :thinking:
+		T overlay = load(filesystem::make_read_RWops(ovr_path));
+
+		if constexpr(to_texture) {
+			const auto target = draw::set_render_target(base);
+			draw::blit(overlay, {0, 0, overlay.w(), overlay.h()});
+		} else {
+			rect dest{0, 0, overlay->w, overlay->h};
+			sdl_blit(overlay, nullptr, base, &dest);
+		}
+	}
+};
+
+template<typename T>
+T factory<T>::from_disk(const image::locator& loc)
+{
+	const auto path = implementation::resolve_full_path(loc.get_filename());
+	if(!path) {
+		ERR_IMG << "Could not resolve path for image '" << loc.get_filename() << "'";
+		return {};
+	}
+
+	// If there's a localized variant (notable case - game logo), load that instead.
+	// TODO: add a way to opt out of this? For most images, this doesn't apply...
+	const auto [i18n_base, i18n_overlay] = implementation::resolve_localization(*path);
+
+	T res = load(filesystem::make_read_RWops(i18n_base.value_or(*path)));
+	if(!res) {
+		ERR_IMG << "Could not load image '" << loc.get_filename() << "'";
+		return {};
+	}
+
+	if(i18n_overlay) {
+		compose_localized_overlay(res, *i18n_overlay);
+	}
+
+	return res;
+}
+
+template<typename T>
+T factory<T>::from_data_uri(const image::locator& loc)
+{
+	T res;
+	parsed_data_URI parsed{loc.get_filename()};
+
+	if(!parsed.good) {
+		std::string_view fn = loc.get_filename();
+		std::string_view stripped = fn.substr(0, fn.find(","));
+		ERR_IMG << "Invalid data URI: " << stripped;
+	} else if(parsed.mime.substr(0, 5) != "image") {
+		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
+	} else {
+		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
+		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size())};
+
+		if(image_data.empty()) {
+			ERR_IMG << "Invalid encoding in data URI";
+		} else if(parsed.mime == "image/png") {
+			res = load_typed(std::move(rwops), "PNG");
+		} else if(parsed.mime == "image/jpeg") {
+			res = load_typed(std::move(rwops), "JPG");
+		} else {
+			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
+		}
+	}
+
+	return res;
+}
+
+template class factory<texture>;
+template class factory<surface>;
+
+} // namespace
+
 static surface load_from_disk(const locator& loc)
 {
 	switch(loc.get_type()) {
 	case locator::FILE:
 		if(loc.is_data_uri()){
-			return load_image_data_uri(loc);
+			return factory<surface>::from_data_uri(loc);
 		} else {
-			return load_image_file(loc);
+			return factory<surface>::from_disk(loc);
 		}
 	case locator::SUB_FILE:
 		return load_image_sub_file(loc);
@@ -947,10 +1010,8 @@ texture get_texture(const image::locator& i_locator, TYPE type, bool skip_cache)
 /** Returns a texture for the corresponding image. */
 texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type, bool skip_cache)
 {
-	texture res;
-
 	if(i_locator.is_void()) {
-		return res;
+		return {};
 	}
 
 	type = simplify_type(i_locator, type);
@@ -972,9 +1033,6 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 		cache = &textures_[quality];
 	}
 
-	//
-	// Now attempt to find a cached texture. If found, return it.
-	//
 	if(const texture* cached_texture = cache->locate_in_cache(i_locator)) {
 		return *cached_texture;
 	} else {
@@ -987,13 +1045,25 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	// once we get OGL and shader support.
 	//
 
-	// Get it from the surface cache, also setting the desired scale quality.
-	const bool linear_scaling = quality == scale_quality::linear ? true : false;
-	if(i_locator.get_modifications().empty()) {
-		// skip cache if we're loading plain files with no modifications
-		res = texture(get_surface(i_locator, type, true), linear_scaling);
+	const bool linear_scaling = quality == scale_quality::linear;
+	texture res;
+
+	// If we have modifications, use the surface pipeline to handle loading.
+	// If we don't, this is either a direct load-from-disk or an URI.
+	// Note that get_type() will not be SUB_FILE unless we also have modifications.
+	if(type != UNSCALED || i_locator.get_type() == locator::SUB_FILE) {
+		res = texture{get_surface(i_locator, type, skip_cache), linear_scaling};
+	} else if(i_locator.is_data_uri()) {
+		res = factory<texture>::from_data_uri(i_locator);
 	} else {
-		res = texture(get_surface(i_locator, type, skip_cache), linear_scaling);
+		res = factory<texture>::from_disk(i_locator);
+	}
+
+	// If all ops failed, try and get a placeholder, if appropriate
+	// TODO: consider moving this render-side. It seems perfectly valid to just render the
+	// placeholder for null textures, but that might make the code more complicated.
+	if(!res && game_config::debug && i_locator.get_filename() != game_config::images::missing) {
+		res = get_texture(game_config::images::missing, UNSCALED);
 	}
 
 	// Cache the texture.
