@@ -1210,53 +1210,53 @@ std::string generate_contents_links(const std::string& section_name, config cons
 
 	std::ostringstream res;
 
-		std::vector<std::string> topics = utils::quoted_split(section_cfg["topics"]);
+	std::vector<std::string> topics = utils::quoted_split(section_cfg["topics"]);
 
-		// we use an intermediate structure to allow a conditional sorting
-		typedef std::pair<std::string,std::string> link;
-		std::vector<link> topics_links;
+	// we use an intermediate structure to allow a conditional sorting
+	typedef std::pair<std::string,std::string> link;
+	std::vector<link> topics_links;
 
-		std::vector<std::string>::iterator t;
-		// Find all topics in this section.
-		for (t = topics.begin(); t != topics.end(); ++t) {
-			if (auto topic_cfg = help_cfg->find_child("topic", "id", *t)) {
-				std::string id = topic_cfg["id"];
-				if (is_visible_id(id))
-					topics_links.emplace_back(topic_cfg["title"], id);
-			}
+	std::vector<std::string>::iterator t;
+	// Find all topics in this section.
+	for (t = topics.begin(); t != topics.end(); ++t) {
+		if (auto topic_cfg = help_cfg->find_child("topic", "id", *t)) {
+			std::string id = topic_cfg["id"];
+			if (is_visible_id(id))
+				topics_links.emplace_back(topic_cfg["title"], id);
 		}
+	}
 
-		if (section_cfg["sort_topics"] == "yes") {
-			std::sort(topics_links.begin(),topics_links.end());
-		}
+	if (section_cfg["sort_topics"] == "yes") {
+		std::sort(topics_links.begin(),topics_links.end());
+	}
 
-		std::vector<link>::iterator l;
-		for (l = topics_links.begin(); l != topics_links.end(); ++l) {
-			std::string link = markup::make_link(l->first, l->second);
-			res << font::unicode_bullet << " " << link << "\n";
-		}
+	std::vector<link>::iterator l;
+	for (l = topics_links.begin(); l != topics_links.end(); ++l) {
+		std::string link = markup::make_link(l->first, l->second);
+		res << font::unicode_bullet << " " << link << "\n";
+	}
 
-		return res.str();
+	return res.str();
 }
 
 std::string generate_contents_links(const section &sec)
 {
-		std::stringstream res;
+	std::stringstream res;
 
-		for (auto &s : sec.sections) {
-			if (is_visible_id(s.id)) {
-				std::string link = markup::make_link(s.title, ".."+s.id);
-				res << font::unicode_bullet << " " << link << "\n";
-			}
+	for (auto &s : sec.sections) {
+		if (is_visible_id(s.id)) {
+			std::string link = markup::make_link(s.title, ".."+s.id);
+			res << font::unicode_bullet << " " << link << "\n";
 		}
+	}
 
-		for(const topic& t : sec.topics) {
-			if (is_visible_id(t.id)) {
-				std::string link = markup::make_link(t.title, t.id);
-				res << font::unicode_bullet << " " << link << "\n";
-			}
+	for(const topic& t : sec.topics) {
+		if (is_visible_id(t.id)) {
+			std::string link = markup::make_link(t.title, t.id);
+			res << font::unicode_bullet << " " << link << "\n";
 		}
-		return res.str();
+	}
+	return res.str();
 }
 
 bool topic::operator==(const topic &t) const
