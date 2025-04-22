@@ -37,41 +37,38 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-/** Adds @a mod to the queue (unless mod is nullptr). */
-void modification_queue::push(std::unique_ptr<modification> mod)
+void modification_queue::push(std::unique_ptr<modification>&& mod)
 {
 	priorities_[mod->priority()].push_back(std::move(mod));
 }
 
-/** Removes the top element from the queue */
 void modification_queue::pop()
 {
-	map_type::iterator top_pair = priorities_.begin();
-	auto& top_vector = top_pair->second;
+	auto top_pair = priorities_.begin();
+	auto& mod_list = top_pair->second;
 
 	// Erase the top element.
-	top_vector.erase(top_vector.begin());
-	if(top_vector.empty()) {
-		// We need to keep the map clean.
+	mod_list.erase(mod_list.begin());
+
+	// We need to keep the map clean.
+	if(mod_list.empty()) {
 		priorities_.erase(top_pair);
 	}
 }
 
-/** Returns the number of elements in the queue. */
 std::size_t modification_queue::size() const
 {
 	std::size_t count = 0;
-	for(const map_type::value_type& pair : priorities_) {
-		count += pair.second.size();
+	for(const auto& [priority, mods] : priorities_) {
+		count += mods.size();
 	}
 
 	return count;
 }
 
-/** Returns the top element in the queue . */
-modification * modification_queue::top() const
+const modification& modification_queue::top() const
 {
-	return priorities_.begin()->second.front().get();
+	return *priorities_.begin()->second.front();
 }
 
 
