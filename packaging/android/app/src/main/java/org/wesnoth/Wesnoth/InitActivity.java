@@ -39,6 +39,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -61,6 +64,13 @@ public class InitActivity extends Activity {
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
+	}
+	
+	private boolean isUnpacked(File dataDir) {
+		return (new File(dataDir, "data").exists()
+			    && new File(dataDir, "fonts").exists()
+			    && new File(dataDir, "images").exists()
+			    && new File(dataDir, "sounds").exists());
 	}
 
 	@Override
@@ -93,40 +103,42 @@ public class InitActivity extends Activity {
 				Log.e("InitActivity", "IO exception", ioe);
 			}
 
-			for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
-				String uiname = entry.getKey();
-				String name = entry.getValue();
-
-				File f = new File(dataDir, name);
-				long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
-
-				// Download file
-				if (!f.exists()) {
-					Log.d("InitActivity", "Start download " + name);
-					try {
-						lastModified = downloadFile(
-							String.format(archiveURL, name),
-							f,
-							uiname,
-							lastModified
-						);
-						status.setProperty("modified." + name, "" + lastModified);
-					} catch (Exception e) {
-						Log.e("Download", "security error", e);
+			if (!isUnpacked(dataDir)) {
+				for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
+					String uiname = entry.getKey();
+					String name = entry.getValue();
+	
+					File f = new File(dataDir, name);
+					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
+	
+					// Download file
+					if (!f.exists()) {
+						Log.d("InitActivity", "Start download " + name);
+						try {
+							lastModified = downloadFile(
+								String.format(archiveURL, name),
+								f,
+								uiname,
+								lastModified
+							);
+							status.setProperty("modified." + name, "" + lastModified);
+						} catch (Exception e) {
+							Log.e("Download", "security error", e);
+						}
 					}
-				}
-
-				// Unpack archive
-				// TODO Checksum verification?
-				if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")
-					&& f.exists())
-				{
-					Log.d("InitActivity", "Start unpack " + name);
-
-					unpackArchive(f, dataDir, uiname);
-					f.delete();
-
-					status.setProperty("unpack." + name, "true");
+	
+					// Unpack archive
+					// TODO Checksum verification?
+					if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")
+						&& f.exists())
+					{
+						Log.d("InitActivity", "Start unpack " + name);
+	
+						unpackArchive(f, dataDir, uiname);
+						f.delete();
+	
+						status.setProperty("unpack." + name, "true");
+					}
 				}
 			}
 
@@ -165,13 +177,21 @@ public class InitActivity extends Activity {
 
 			// Launch Wesnoth
 			// TODO: check data existence
-			runOnUiThread(() -> progressText.setText("Launching Wesnoth..."));
-			Log.d("InitActivity", "Launch wesnoth");
-			runOnUiThread(() -> {
-				Intent launchIntent = new Intent(this, WesnothActivity.class);
-				launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(launchIntent);
-				finish();
+			runOnUiThread(()-> {
+				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+				progressBar.setVisibility(View.INVISIBLE);
+				progressText.setVisibility(View.INVISIBLE);
+				Button btnMain = (Button) findViewById(R.id.main_btn);
+				btnMain.setText("Launch");
+				btnMain.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+				btnMain.setOnClickListener(e -> {
+					progressText.setText("Launching Wesnoth...");
+					Log.d("InitActivity", "Launch wesnoth");
+					Intent launchIntent = new Intent(this, WesnothActivity.class);
+					launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(launchIntent);
+					finish();
+				});
 			});
 		});
 	}
