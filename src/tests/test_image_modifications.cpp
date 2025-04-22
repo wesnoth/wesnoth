@@ -134,9 +134,9 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 2);
 
-	BOOST_CHECK_EQUAL(queue.top(), hptr);
+	BOOST_CHECK_EQUAL(&queue.top(), hptr);
 	queue.pop();
-	BOOST_CHECK_EQUAL(queue.top(), lptr);
+	BOOST_CHECK_EQUAL(&queue.top(), lptr);
 	queue.pop();
 
 	low_priority_mod = std::make_unique<fl_modification>();
@@ -151,9 +151,9 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 2);
 
-	BOOST_CHECK_EQUAL(queue.top(), hptr);
+	BOOST_CHECK_EQUAL(&queue.top(), hptr);
 	queue.pop();
-	BOOST_CHECK_EQUAL(queue.top(), lptr);
+	BOOST_CHECK_EQUAL(&queue.top(), lptr);
 	queue.pop();
 }
 
