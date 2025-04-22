@@ -500,7 +500,8 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
-	map_location::direction direction{ dir };
+	//correct reversion of direction
+	map_location::direction direction{ dir = dir < 3 ? dir + 3 : dir - 3 };
 
 	for (const config &i : cfg.child_range("affect_adjacent"))
 	{
