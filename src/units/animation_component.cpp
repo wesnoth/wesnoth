@@ -16,14 +16,16 @@
 #include "units/animation_component.hpp"
 
 #include "config.hpp"
-#include "display.hpp"
-#include "map/map.hpp"
+#include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
 #include <set>
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 using namespace std::chrono_literals;
 
@@ -194,6 +196,32 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 	refreshing_ = false;
 	anim_.reset();
+}
+
+void unit_animation_component::reset_affect_adjacent(const unit_map& units)
+{
+	bool affect_adjacent = false;
+	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
+		if(image_or_hides && cfg.has_child("affect_adjacent")){
+			affect_adjacent = true;
+			break;
+		}
+	}
+	if(affect_adjacent) {
+		const auto adjacent = get_adjacent_tiles(u_.get_location());
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated()){
+				continue;
+			}
+			if ( &*it == &u_ ){
+				ERR_NG << "Impossible situation: the unit is adjacent to itself.";
+				continue;
+			}
+			it->anim_comp().set_standing();
+		}
+	}
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {
