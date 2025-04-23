@@ -16,16 +16,12 @@
 #include "units/animation_component.hpp"
 
 #include "config.hpp"
-#include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
 #include <set>
-
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
 
 using namespace std::chrono_literals;
 
@@ -209,17 +205,12 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 		}
 	}
 	if(affect_adjacent) {
-		const auto adjacent = get_adjacent_tiles(u_.get_location());
-		for(unsigned i = 0; i < adjacent.size(); ++i) {
-			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it == units.end() || it->incapacitated()){
+		for(const unit& unit_itor : units){
+			unsigned int distance = distance_between(u_.get_location(), unit_itor.get_location());
+			if (distance > 1 || unit_itor.incapacitated() || &(unit_itor) == &u_) {
 				continue;
 			}
-			if ( &*it == &u_ ){
-				ERR_NG << "Impossible situation: the unit is adjacent to itself.";
-				continue;
-			}
-			it->anim_comp().set_standing();
+			unit_itor.anim_comp().set_standing();
 		}
 	}
 }
