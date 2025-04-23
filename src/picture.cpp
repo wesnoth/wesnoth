@@ -551,16 +551,6 @@ private:
 		}
 	}
 
-	/** Wrapper around IMG_Load[Texture]Typed_RW. SDL takes ownership of rwops. */
-	static T load_typed(filesystem::rwops_ptr rwops, std::string_view type)
-	{
-		if constexpr(to_texture) {
-			return T{IMG_LoadTextureTyped_RW(video::get_renderer(), rwops.release(), true, type.data())};
-		} else {
-			return T{IMG_LoadTyped_RW(rwops.release(), true, type.data())};
-		}
-	}
-
 	/** Load overlay image and compose it with the original surface or texture. */
 	static void compose_localized_overlay(T& base, const std::string& ovr_path)
 	{
@@ -606,7 +596,6 @@ T factory<T>::from_disk(const image::locator& loc)
 template<typename T>
 T factory<T>::from_data_uri(const image::locator& loc)
 {
-	T res;
 	parsed_data_URI parsed{loc.get_filename()};
 
 	if(!parsed.good) {
@@ -622,15 +611,17 @@ T factory<T>::from_data_uri(const image::locator& loc)
 		if(image_data.empty()) {
 			ERR_IMG << "Invalid encoding in data URI";
 		} else if(parsed.mime == "image/png") {
-			res = load_typed(std::move(rwops), "PNG");
+			return T{IMG_LoadPNG_RW(rwops.release())};
 		} else if(parsed.mime == "image/jpeg") {
-			res = load_typed(std::move(rwops), "JPG");
+			return T{IMG_LoadJPG_RW(rwops.release())};
+		} else if(parsed.mime == "image/webp") {
+			return T{IMG_LoadWEBP_RW(rwops.release())};
 		} else {
 			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
 		}
 	}
 
-	return res;
+	return {};
 }
 
 template class factory<texture>;
