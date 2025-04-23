@@ -17,6 +17,7 @@
 
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
+#include "utils/span.hpp"
 
 #include <optional>
 #include <unordered_map>
@@ -181,22 +182,15 @@ extern mini_terrain_cache_map mini_highlighted_terrain_cache;
  *  7-12: convex half-corners 1
  * 13-19: convex half-corners 2
  */
-typedef std::basic_string<signed char> light_string;
+struct light_adjust
+{
+	light_adjust(int op, int r, int g, int b);
 
-/** Type used to pair light possibilities with the corresponding lit surface. */
-typedef std::map<light_string, surface> lit_surface_variants;
-typedef std::map<light_string, texture> lit_texture_variants;
-
-/** Lit variants for each locator. */
-typedef cache_type<lit_surface_variants> lit_surface_cache;
-typedef cache_type<lit_texture_variants> lit_texture_cache;
-
-/**
- * Returns the light_string for one light operation.
- *
- * See light_string for more information.
- */
-light_string get_light_string(int op, int r, int g, int b);
+	int8_t l;
+	int8_t r;
+	int8_t g;
+	int8_t b;
+};
 
 /**
  * Purges all image caches.
@@ -283,8 +277,8 @@ texture get_texture(const image::locator& i_locator, scale_quality quality,
  * @param i_locator            Image path.
  * @param ls                   Light map to apply to the image.
  */
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls);
-texture get_lighted_texture(const image::locator& i_locator, const light_string& ls);
+surface get_lighted_image(const image::locator& i_locator, utils::span<const light_adjust> ls);
+texture get_lighted_texture(const image::locator& i_locator, utils::span<const light_adjust> ls);
 
 /**
  * Retrieves the standard hexagonal tile mask.
