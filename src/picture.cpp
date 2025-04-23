@@ -150,6 +150,14 @@ void locator::add_to_cache(cache_type<T>& cache, T data) const
 
 namespace
 {
+/** Type used to pair light possibilities with the corresponding lit surface. */
+typedef std::map<std::size_t, surface> lit_surface_variants;
+typedef std::map<std::size_t, texture> lit_texture_variants;
+
+/** Lit variants for each locator. */
+typedef cache_type<lit_surface_variants> lit_surface_cache;
+typedef cache_type<lit_texture_variants> lit_texture_cache;
+
 /** Definition of all image maps */
 std::array<surface_cache, NUM_TYPES> surfaces_;
 
@@ -503,40 +511,49 @@ static surface load_image_data_uri(const image::locator& loc)
 	return surf;
 }
 
-// small utility function to store an int from (-256,254) to an signed char
-static signed char col_to_uchar(int i)
+light_adjust::light_adjust(int op, int rr, int gg, int bb)
+	: l(op), r(), g(), b()
 {
-	return static_cast<signed char>(std::min<int>(127, std::max<int>(-128, i / 2)));
+	constexpr int min = std::numeric_limits<int8_t>::min();
+	constexpr int max = std::numeric_limits<int8_t>::max();
+
+	// Clamp in a wider type (int) to avoid truncating the input value prematurely
+	r = std::clamp(rr / 2, min, max);
+	g = std::clamp(gg / 2, min, max);
+	b = std::clamp(bb / 2, min, max);
 }
 
-light_string get_light_string(int op, int r, int g, int b)
+namespace
 {
-	light_string ls;
-	ls.reserve(4);
-	ls.push_back(op);
-	ls.push_back(col_to_uchar(r));
-	ls.push_back(col_to_uchar(g));
-	ls.push_back(col_to_uchar(b));
-
-	return ls;
-}
-
-static surface apply_light(surface surf, const light_string& ls)
+std::size_t hash_light_range(const utils::span<const light_adjust>& range)
 {
-	// atomic lightmap operation are handled directly (important to end recursion)
-	if(ls.size() == 4) {
-		// if no lightmap (first char = -1) then we need the initial value
-		//(before the halving done for lightmap)
-		int m = ls[0] == -1 ? 2 : 1;
-		return adjust_surface_color(surf, ls[1] * m, ls[2] * m, ls[3] * m);
+	std::size_t hash{0};
+	for(const auto& adjustment : range) {
+		hash += adjustment.l + adjustment.r + adjustment.g + adjustment.b;
 	}
 
-	// check if the lightmap is already cached or need to be generated
-	surface lightmap = nullptr;
-	auto i = surface_lightmaps_.find(ls);
-	if(i != surface_lightmaps_.end()) {
-		lightmap = i->second;
-	} else {
+	return hash;
+}
+}
+
+static surface apply_light(surface surf, utils::span<const light_adjust> ls)
+{
+	// atomic lightmap operation are handled directly (important to end recursion)
+	if(ls.size() == 1) {
+		// if no lightmap (first char = -1) then we need the initial value
+		//(before the halving done for lightmap)
+		int m = ls[0].l == -1 ? 2 : 1;
+		return adjust_surface_color(surf, ls[0].r * m, ls[0].g * m, ls[0].b * m);
+	}
+
+	const auto get_lightmap = [&ls]
+	{
+		const auto hash = hash_light_range(ls);
+		const auto iter = surface_lightmaps_.find(hash);
+
+		if(iter != surface_lightmaps_.end()) {
+			return iter->second;
+		}
 		// build all the paths for lightmap sources
 		static const std::string p = "terrain/light/light";
 		static const std::string lm_img[19] {
@@ -550,29 +567,30 @@ static surface apply_light(surface surf, const light_string& ls)
 		};
 
 		// decompose into atomic lightmap operations (4 chars)
-		for(std::size_t c = 0; c + 3 < ls.size(); c += 4) {
-			light_string sls = ls.substr(c, 4);
+		// first image will be the base onto which we blit the others
+		surface base;
 
+		for(const light_adjust& adj : ls) {
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
-			surface lts = image::get_lighted_image(lm_img[sls[0]], sls);
+			surface lts = image::get_lighted_image(lm_img[adj.l], utils::span{ &adj, 1 });
 
 			// first image will be the base where we blit the others
-			if(lightmap == nullptr) {
+			if(base == nullptr) {
 				// copy the cached image to avoid modifying the cache
-				lightmap = lts.clone();
+				base = lts.clone();
 			} else {
-				sdl_blit(lts, nullptr, lightmap, nullptr);
+				sdl_blit(lts, nullptr, base, nullptr);
 			}
 		}
 
-		// cache the result
-		surface_lightmaps_[ls] = lightmap;
-	}
+		surface_lightmaps_[hash] = base;
+		return base;
+	};
 
 	// apply the final lightmap
-	return light_surface(surf, lightmap);
+	return light_surface(surf, get_lightmap());
 }
 
 bool locator::file_exists() const
@@ -747,7 +765,7 @@ surface get_surface(
 	return res;
 }
 
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls)
+surface get_lighted_image(const image::locator& i_locator, utils::span<const light_adjust> ls)
 {
 	surface res;
 	if(i_locator.is_void()) {
@@ -762,30 +780,27 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 		i_locator.add_to_cache(*imap, lit_surface_variants());
 	}
 
-	// need access to add it if not found
-	{ // enclose reference pointing to data stored in a changing vector
-		const lit_surface_variants& lvar = i_locator.locate_in_cache(*imap);
-		auto lvi = lvar.find(ls);
-		if(lvi != lvar.end()) {
-			return lvi->second;
-		}
-	}
+	const lit_surface_variants& lvar = i_locator.locate_in_cache(*imap);
+	const auto hash = hash_light_range(ls);
+	const auto iter = lvar.find(hash);
 
-	DBG_IMG << "lit surface cache miss: " << i_locator;
+	if(iter != lvar.end()) {
+		return iter->second;
+	} else {
+		DBG_IMG << "lit surface cache miss: " << i_locator;
+	}
 
 	// not cached yet, generate it
 	res = get_surface(i_locator, HEXED);
 	res = apply_light(res, ls);
 
 	// record the lighted surface in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[ls] = res;
+	i_locator.access_in_cache(*imap)[hash] = res;
 
 	return res;
 }
 
-texture get_lighted_texture(
-	const image::locator& i_locator,
-	const light_string& ls)
+texture get_lighted_texture(const image::locator& i_locator, utils::span<const light_adjust> ls)
 {
 	if(i_locator.is_void()) {
 		return texture();
@@ -799,22 +814,21 @@ texture get_lighted_texture(
 		i_locator.add_to_cache(*imap, lit_texture_variants());
 	}
 
-	// need access to add it if not found
-	{ // enclose reference pointing to data stored in a changing vector
-		const lit_texture_variants& lvar = i_locator.locate_in_cache(*imap);
-		auto lvi = lvar.find(ls);
-		if(lvi != lvar.end()) {
-			return lvi->second;
-		}
-	}
+	const lit_texture_variants& lvar = i_locator.locate_in_cache(*imap);
+	const auto hash = hash_light_range(ls);
+	const auto iter = lvar.find(hash);
 
-	DBG_IMG << "lit texture cache miss: " << i_locator;
+	if(iter != lvar.end()) {
+		return iter->second;
+	} else {
+		DBG_IMG << "lit texture cache miss: " << i_locator;
+	}
 
 	// not cached yet, generate it
 	texture tex(get_lighted_image(i_locator, ls));
 
 	// record the lighted texture in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[ls] = tex;
+	i_locator.access_in_cache(*imap)[hash] = tex;
 
 	return tex;
 }
