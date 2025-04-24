@@ -188,19 +188,26 @@ REPORT_GENERATOR(selected_unit_name, rc)
 
 static config unit_type(const unit* u)
 {
-	if (!u) return config();
-	std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
-	std::ostringstream str, tooltip;
-	str << u->type_name();
+	if(!u) return config();
+
+	std::ostringstream tooltip;
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
-		<< u->unit_description();
+	        << u->unit_description();
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
 			tooltip << font::unicode_bullet << " " << note << '\n';
 		}
 	}
-	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
+
+	std::string topic_id;
+	if(u->variation().empty()) {
+		topic_id = "unit_" + u->type_id();
+	} else {
+		topic_id = "variation_" + u->type_id() + "_" + u->variation();
+	}
+	topic_id = (u->type().show_variations_in_help() ? ".." : "") + topic_id;
+	return text_report(u->type_name(), tooltip.str(), topic_id);
 }
 REPORT_GENERATOR(unit_type, rc)
 {
