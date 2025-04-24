@@ -34,7 +34,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
-		, queue_type(cssv::QUEUE_TYPE::NORMAL)
+		, queue_type(cssv::queue_type::normal)
 	{
 	}
 
@@ -45,7 +45,7 @@ struct mp_game_metadata
 	bool skip_replay;
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
-	cssv::QUEUE_TYPE queue_type;
+	std::string queue_type;
 	int queue_id;
 };
 

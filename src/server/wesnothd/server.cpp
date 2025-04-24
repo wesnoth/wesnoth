@@ -1457,7 +1457,7 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
 	const std::string initial_bans = create_game["ignored"].to_string();
-	const cssv::QUEUE_TYPE queue_type = static_cast<cssv::QUEUE_TYPE>(create_game["queue_type"].to_int());
+	const cssv::queue_type::type queue_type = cssv::queue_type::get_enum(create_game["queue_type"].to_string()).value_or(cssv::queue_type::type::normal);
 	int queue_id = create_game["queue_id"].to_int();
 
 	DBG_SERVER << player->client_ip() << "\t" << player->info().name()
@@ -1545,7 +1545,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	// else update game_id to the game that already exists and have the client join that game
 	if(game_id < 0) {
 		for(const auto& game : games()) {
-			if(game->queue_type() == cssv::QUEUE_TYPE::CLIENT_PRESET &&
+			if(game->queue_type() == cssv::queue_type::type::client_preset &&
 			   !game->started() &&
 			   join["mp_scenario"].to_string() == game->get_scenario_id() &&
 			   game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
@@ -1708,7 +1708,7 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 				send_to_player(p, create_game_doc);
 			} else {
 				for(const auto& game : games()) {
-					if(game->queue_type() == cssv::QUEUE_TYPE::SERVER_PRESET &&
+					if(game->queue_type() == cssv::queue_type::type::server_preset &&
 					!game->started() &&
 					queue.scenario_id_ == game->get_scenario_id() &&
 					game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
@@ -1862,7 +1862,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		send_to_lobby(diff);
 
 		// if this is the creation of a game from a server-side queue, need to tell all the other players in the queue to join
-		if(g.queue_type() == cssv::QUEUE_TYPE::SERVER_PRESET) {
+		if(g.queue_type() == cssv::queue_type::type::server_preset) {
 			int queue_id = g.queue_id();
 			int game_id = g.id();
 
