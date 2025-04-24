@@ -1254,6 +1254,7 @@ void attack_type::weapon_specials_impl_adj(
 {
 	const unit_map& units = get_unit_map();
 	if(self){
+		utils::optional<int> max_radius = self->affect_distant_max_radius();
 		const auto adjacent = get_adjacent_tiles(self_loc);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
 			const unit_map::const_iterator it = units.find(adjacent[i]);
@@ -1267,6 +1268,38 @@ void attack_type::weapon_specials_impl_adj(
 				bool affect_allies = (!affect_adjacents.empty()) ? cfg[affect_adjacents].to_bool(default_bool) : true;
 				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, cfg, self, *it, i, self_loc, whom, key, leader_bool) && affect_allies;
 				add_name(temp_string, active, cfg["name"].str(), checking_name);
+			}
+		}
+		if(max_radius && *max_radius > 0){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(self_loc, *max_radius, surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated())
+					continue;
+				if ( &*unit_itor == self.get() )
+					continue;
+				for(const auto [key, cfg] : unit_itor->abilities().all_children_view()) {
+					bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(key) != 0) : true;
+					bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
+					bool affect_allies = (!affect_adjacents.empty()) ? cfg[affect_adjacents].to_bool(default_bool) : true;
+					const bool active = tag_checked && check_dist_abilities_impl(self_attack, other_attack, cfg, self, *unit_itor, self_loc, surrounding[j], whom, key, leader_bool) && affect_allies;
+					add_name(temp_string, active, cfg["name"].str(), checking_name);
+				}
+			}
+		} else if(max_radius && *max_radius < 0){
+			for(const unit& unit_itor : units){
+				if (unit_itor.incapacitated() || &(unit_itor) == self.get()) {
+					continue;
+				}
+
+				for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
+					bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(key) != 0) : true;
+					bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
+					bool affect_allies = (!affect_adjacents.empty()) ? cfg[affect_adjacents].to_bool(default_bool) : true;
+					const bool active = tag_checked && check_dist_abilities_impl(self_attack, other_attack, cfg, self, unit_itor, self_loc, unit_itor.get_location(), whom, key, leader_bool) && affect_allies;
+					add_name(temp_string, active, cfg["name"].str(), checking_name);
+				}
 			}
 		}
 	}
