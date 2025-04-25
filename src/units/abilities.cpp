@@ -216,7 +216,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	}
 
 	for(const unit& unit_itor : units){
-		if (unit_itor.incapacitated() || &unit_itor == this) {
+		if (!unit_itor.affect_distant(tag_name) || unit_itor.incapacitated() || &unit_itor == this) {
 			continue;
 		}
 		for(const config& i : unit_itor.abilities_.child_range(tag_name)){
@@ -263,7 +263,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	}
 
 	for(const unit& unit_itor : units){
-		if (unit_itor.incapacitated() || &unit_itor == this) {
+		if (!unit_itor.affect_distant(tag_name) || unit_itor.incapacitated() || &unit_itor == this) {
 			continue;
 		}
 		for(const config& i : unit_itor.abilities_.child_range(tag_name)) {
@@ -662,7 +662,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 	}
 
 	for(const unit& unit_itor : units){
-		if (unit_itor.incapacitated() || &unit_itor == this) {
+		if (!unit_itor.has_ability_distant_image() || unit_itor.incapacitated() || &unit_itor == this) {
 			continue;
 		}
 		for(const auto [key, cfg] : unit_itor.abilities_.all_children_view()) {
@@ -1211,7 +1211,7 @@ void attack_type::weapon_specials_impl_adj(
 		}
 
 		for(const unit& unit_itor : units){
-			if (unit_itor.incapacitated() || &unit_itor == self.get()) {
+			if (!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == self.get()) {
 				continue;
 			}
 			for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
@@ -1950,7 +1950,8 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 		}
 
 		for(const unit& unit_itor : units){
-			if (unit_itor.incapacitated() || &unit_itor == self_.get()) {
+			bool distant = special_tags ? unit_itor.affect_distant(special) : unit_itor.has_ability_distant();
+			if (!distant || unit_itor.incapacitated() || &unit_itor == self_.get()) {
 				continue;
 			}
 
@@ -2024,7 +2025,8 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 		}
 
 		for(const unit& unit_itor : units){
-			if (unit_itor.incapacitated() || &unit_itor == other_.get()) {
+			bool distant = special_tags ? unit_itor.affect_distant(special) : unit_itor.has_ability_distant();
+			if (!distant || unit_itor.incapacitated() || &unit_itor == other_.get()) {
 				continue;
 			}
 
@@ -2332,7 +2334,7 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 		}
 
 		for(const unit& unit_itor : units){
-			if (unit_itor.incapacitated() || &unit_itor == self_.get()) {
+			if (!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == self_.get()) {
 				continue;
 			}
 
@@ -2367,7 +2369,7 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 		}
 
 		for(const unit& unit_itor : units){
-			if (unit_itor.incapacitated() || &unit_itor == other_.get()) {
+			if (!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == other_.get()) {
 				continue;
 			}
 

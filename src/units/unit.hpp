@@ -1311,6 +1311,25 @@ public:
 		return is_healthy_;
 	}
 
+	/** Gets if this unit own ability of @a tag_name type with [affect_distant] subtags. */
+	bool affect_distant(const std::string& tag_name) const
+	{
+		std::map<std::string, bool> temp_ = affect_distant_;
+		return temp_[tag_name];
+	}
+
+	/** Gets if this unit own ability with [affect_distant] subtags. */
+	bool has_ability_distant() const
+	{
+		return has_ability_distant_;
+	}
+
+	/** Gets if this unit own ability with [affect_distant] subtags in same time what halo_image or overlay_image attributes. */
+	bool has_ability_distant_image() const
+	{
+		return has_ability_distant_image_;
+	}
+
 	/**
 	 * @}
 	 * @defgroup unit_mvmt Movement and location functions
@@ -2180,6 +2199,22 @@ private:
 	{
 		invisibility_cache_.clear();
 	}
+
+	/**
+	 * Used for easing checking if unit own a ability of specified type with [affect_distant] sub tag.
+	 *
+	 */
+	std::map<std::string, bool> affect_distant_;
+	/**
+	 * Used for easing checking if unit own a ability with [affect_distant] sub tag.
+	 *
+	 */
+	bool has_ability_distant_;
+	/**
+	 * used if ability own halo_image or overlay_image attributes in same time what [affect_distant].
+	 */
+	bool has_ability_distant_image_;
+	void set_has_ability_distant();
 };
 
 /**

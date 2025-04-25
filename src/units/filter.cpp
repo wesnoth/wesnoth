@@ -443,7 +443,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 					}
 
 					for(const unit& unit_itor : units){
-						if (unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
+						if (!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
 							continue;
 						}
 						std::vector<ability_match> ability_id_matches_dist;
@@ -833,7 +833,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 						}
 
 						for(const unit& unit_itor : units){
-							if (unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
+							if (!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
 								continue;
 							}
 							for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
