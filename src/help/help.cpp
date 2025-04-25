@@ -23,21 +23,16 @@
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "events.hpp"                   // for draw, pump, etc
-#include "font/constants.hpp"           // for relative_size
 #include "preferences/preferences.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/widgets/settings.hpp"
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
-#include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "units/unit.hpp"               // for unit
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for game_canvas_size
-#include "widgets/button.hpp"           // for button
 
 #include <cassert>                      // for assert
 #include <algorithm>                    // for min
