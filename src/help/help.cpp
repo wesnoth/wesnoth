@@ -78,9 +78,9 @@ void show_terrain_description(const terrain_type &t)
 void show_unit_description(const unit_type &t)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
-	std::string var_id = t.get_cfg()["variation_id"].str();
+	std::string var_id = t.variation_id();
 	if (var_id.empty())
-		var_id = t.get_cfg()["variation_name"].str();
+		var_id = t.variation_name();
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
 	if (!var_id.empty()) {
