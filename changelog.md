@@ -7,6 +7,7 @@
 ### Lua API
 ### Packaging
 ### Terrain
+   * Fix bluff/gulch terrain overlays being conspicuously visible on the minimap display (bug #8924).
 ### Translations
    * Updated translations: Bengali, Chinese (Simplified), Czech, Finnish, Italian, Japanese
 ### Units
