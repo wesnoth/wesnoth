@@ -203,9 +203,9 @@ static config unit_type(const unit* u)
 
 	std::string topic_id;
 	if(u->variation().empty()) {
-		topic_id = "unit_" + u->type_name();
+		topic_id = "unit_" + u->type_id();
 	} else {
-		topic_id = "variation_" + u->type_name() + "_" + u->variation();
+		topic_id = "variation_" + u->type_id() + "_" + u->variation();
 	}
 	topic_id = (u->type().show_variations_in_help() ? ".." : "") + topic_id;
 	return text_report(u->type_name(), tooltip.str(), topic_id);
