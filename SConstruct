@@ -112,7 +112,6 @@ opts.AddVariables(
     BoolVariable('ccache', "Use ccache", False),
     ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
-    EnumVariable('cxx_std', 'Target c++ std version', '17', ['17', '20']),
     ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("autorevision", 'Use autorevision tool to fetch current git revision that will be embedded in version string', True),
@@ -331,7 +330,7 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 # Some tests require at least C++11
 if "gcc" in env["TOOLS"]:
     env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
-    env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
+    env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++17"))
 
     # GCC-13 added this new warning, and included it in -Wextra,
     # however in GCC-13 it has a lot of false positives.
