@@ -465,7 +465,7 @@ void log_in_progress::operator|(const formatter& message)
 		stream_ << "  ";
 	if(timestamp_) {
 		auto now = std::chrono::system_clock::now();
-		stream_ << chrono::format_local_timestamp(now); // Truncates precision to seconds
+		stream_ << chrono::format_local_timestamp(now, "%Y%m%d %H:%M:%S"); // Truncates precision to seconds
 		if(precise_timestamp) {
 			auto as_seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
