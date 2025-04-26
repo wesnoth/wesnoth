@@ -305,6 +305,8 @@ private:
 	std::chrono::seconds dummy_player_timer_interval_;
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
+
+	void send_queue_update(const queue_info &queue, utils::optional<player_iterator> exclude = {});
 };
 
 }

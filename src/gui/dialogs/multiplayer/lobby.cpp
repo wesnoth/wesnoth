@@ -664,26 +664,7 @@ void mp_lobby::pre_show()
 	connect_signal_mouse_left_click(*queue_leave_button, std::bind(&mp_lobby::leave_queue, this));
 
 	// server-side queues list
-	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
-	queues_listbox->clear();
-
-	std::vector<mp::queue_info>& queues = mp::get_server_queues();
-	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
-	for(const mp::queue_info& info : queues) {
-		widget_data data;
-		widget_item item;
-
-		item["label"] = "o";
-		data.emplace("is_in_queue", item);
-
-		item["label"] = info.queue_display_name;
-		data.emplace("queue_name", item);
-
-		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
-		data.emplace("queue_player_count", item);
-
-		queues_listbox->add_row(data);
-	}
+	update_queue_list();
 
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
@@ -804,6 +785,31 @@ void mp_lobby::network_handler()
 	}
 }
 
+void mp_lobby::update_queue_list()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	queues_listbox->clear();
+
+	std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
+
+	for(const mp::queue_info& info : queues) {
+		widget_data data;
+		widget_item item;
+
+		item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
+		data.emplace("is_in_queue", item);
+
+		item["label"] = info.queue_display_name;
+		data.emplace("queue_name", item);
+
+		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
+		data.emplace("queue_player_count", item);
+
+		queues_listbox->add_row(data);
+	}
+}
+
 void mp_lobby::process_network_data(const config& data)
 {
 	if(auto error = data.optional_child("error")) {
@@ -830,9 +836,6 @@ void mp_lobby::process_network_data(const config& data)
 		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
 		return;
 	} else if(auto queue_update = data.optional_child("queue_update")) {
-		listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
-		queues_listbox->clear();
-
 		std::vector<mp::queue_info>& queues = mp::get_server_queues();
 		if(queue_update["action"].str() == "add") {
 			mp::queue_info& new_info = queues.emplace_back();
@@ -864,23 +867,8 @@ void mp_lobby::process_network_data(const config& data)
 				}
 			}
 		}
-		std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
 
-		for(const mp::queue_info& info : queues) {
-			widget_data data;
-			widget_item item;
-
-			item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
-			data.emplace("is_in_queue", item);
-
-			item["label"] = info.queue_display_name;
-			data.emplace("queue_name", item);
-
-			item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
-			data.emplace("queue_player_count", item);
-
-			queues_listbox->add_row(data);
-		}
+		update_queue_list();
 
 		return;
 	}

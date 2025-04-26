@@ -120,6 +120,8 @@ private:
 
 	void leave_queue();
 
+	void update_queue_list();
+
 	void open_match_history();
 
 	void tab_switch_callback();

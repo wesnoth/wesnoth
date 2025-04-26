@@ -453,17 +453,16 @@ void server::load_config(bool reload)
 		? ""
 		: filesystem::read_file(cfg_["tor_ip_list_path"]), '\n');
 
-	if(!reload) {
+	// mp tests script doesn't have a config at all, so this child won't be here
+	// LAN also presumably wouldn't have these
+	if(!reload && cfg_.has_child("queues")) {
 		queue_info_.clear();
-		// mp tests script doesn't have a config at all, so this child won't be here
-		if(cfg_.has_child("queues")) {
-			for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
-				const config& game = queue.mandatory_child("game");
-				queue_info q = queue_info(queue["id"].to_int(), game["scenario"].str(), queue["queue_display_name"].str(), queue["players_required"].to_int(), game);
-				queue_info_.emplace(q.id_, q);
-			}
+		for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
+			const config& game = queue.mandatory_child("game");
+			queue_info q = queue_info(queue["id"].to_int(), game["scenario"].str(), queue["queue_display_name"].str(), queue["players_required"].to_int(), game);
+			queue_info_.emplace(q.id_, q);
 		}
-	} else {
+	} else if(reload && cfg_.has_child("queues")) {
 		std::map<int, queue_info> new_queue_info;
 		for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
 			const config& game = queue.mandatory_child("game");
@@ -1440,6 +1439,17 @@ void server::handle_message(player_iterator user, simple_wml::node& message)
 	send_to_lobby(relay_message, user);
 }
 
+void server::send_queue_update(const queue_info &queue, utils::optional<player_iterator> exclude = {})
+{
+	simple_wml::document queue_update;
+	simple_wml::node& update = queue_update.root().add_child("queue_update");
+	update.set_attr_int("queue_id", queue.id_);
+	update.set_attr_dup("action", "update");
+	update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
+
+	send_to_lobby(queue_update, exclude);
+}
+
 void server::handle_create_game(player_iterator player, simple_wml::node& create_game)
 {
 	if(graceful_restart) {
@@ -1490,14 +1500,7 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 		queue_info& queue = queue_info_.at(q);
 		if(!queue.players_in_queue_.empty()) {
 			queue.players_in_queue_.erase(std::remove(queue.players_in_queue_.begin(), queue.players_in_queue_.end(), player->info().name()));
-
-			simple_wml::document queue_update;
-			simple_wml::node& update = queue_update.root().add_child("queue_update");
-			update.set_attr_int("queue_id", queue.id_);
-			update.set_attr_dup("action", "update");
-			update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
-
-			send_to_lobby(queue_update);
+			send_queue_update(queue);
 		}
 	}
 }
@@ -1652,14 +1655,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 		queue_info& queue = queue_info_.at(q);
 		if(!queue.players_in_queue_.empty()) {
 			queue.players_in_queue_.erase(std::remove(queue.players_in_queue_.begin(), queue.players_in_queue_.end(), player->info().name()));
-
-			simple_wml::document queue_update;
-			simple_wml::node& update = queue_update.root().add_child("queue_update");
-			update.set_attr_int("queue_id", queue.id_);
-			update.set_attr_dup("action", "update");
-			update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
-
-			send_to_lobby(queue_update);
+			send_queue_update(queue);
 		}
 	}
 }
@@ -1676,13 +1672,7 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 			p->info().add_queue(queue.id_);
 			DBG_SERVER << "incrementing " << queue.scenario_id_ << " to " << std::to_string(queue.players_in_queue_.size()) << "/" << std::to_string(queue.players_required_);
 
-			simple_wml::document queue_update;
-			simple_wml::node& update = queue_update.root().add_child("queue_update");
-			update.set_attr_int("queue_id", queue.id_);
-			update.set_attr_dup("action", "update");
-			update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
-
-			send_to_lobby(queue_update);
+			send_queue_update(queue);
 
 			// if there are enough players in the queue to start a game, then have the final player who joined the queue to host it
 			// else check if there's an existing game that was created for the queue which needs players (ie: player left or failed to join)
@@ -1742,13 +1732,7 @@ void server::handle_leave_server_queue(player_iterator p, simple_wml::node& data
 			queue.players_in_queue_.erase(std::remove(queue.players_in_queue_.begin(), queue.players_in_queue_.end(), p->info().name()));
 			p->info().clear_queues();
 
-			simple_wml::document queue_update;
-			simple_wml::node& update = queue_update.root().add_child("queue_update");
-			update.set_attr_int("queue_id", queue.id_);
-			update.set_attr_dup("action", "update");
-			update.set_attr_dup("current_players", utils::join(queue.players_in_queue_).c_str());
-
-			send_to_lobby(queue_update);
+			send_queue_update(queue);
 		} else {
 			DBG_SERVER << "player " << p->info().name() << " already not in server-side queue for scenario " << data.attr("queue_id");
 		}
@@ -1893,14 +1877,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				info.players_in_queue_.clear();
 
 				// send all other players the updated player counts for all queues
-				for(auto& [id, info] : queue_info_) {
-					simple_wml::document queue_update;
-					simple_wml::node& update = queue_update.root().add_child("queue_update");
-					update.set_attr_int("queue_id", info.id_);
-					update.set_attr_dup("action", "update");
-					update.set_attr_dup("current_players", utils::join(info.players_in_queue_).c_str());
-
-					send_to_lobby(queue_update);
+				for(auto& [id, queue] : queue_info_) {
+					send_queue_update(queue);
 				}
 			}
 		}
@@ -2100,7 +2078,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			send_to_player(p, games_and_users_list_);
 		}
 
-		// send the currenmt queue counts
+		// send the current queue counts
 		for(const auto& [id, info] : queue_info_) {
 			simple_wml::document queue_update;
 			simple_wml::node& update = queue_update.root().add_child("queue_update");
@@ -2302,17 +2280,11 @@ void server::remove_player(player_iterator iter)
 		}
 	}
 
-	for(auto& [id, info] : queue_info_) {
-		if(!info.players_in_queue_.empty()) {
-			info.players_in_queue_.erase(std::remove(info.players_in_queue_.begin(), info.players_in_queue_.end(), iter->info().name()));
+	for(auto& [id, queue] : queue_info_) {
+		if(!queue.players_in_queue_.empty()) {
+			queue.players_in_queue_.erase(std::remove(queue.players_in_queue_.begin(), queue.players_in_queue_.end(), iter->info().name()));
 		}
-		simple_wml::document queue_update;
-		simple_wml::node& update = queue_update.root().add_child("queue_update");
-		update.set_attr_int("queue_id", info.id_);
-		update.set_attr_dup("action", "update");
-		update.set_attr_dup("current_players", utils::join(info.players_in_queue_).c_str());
-
-		send_to_lobby(queue_update, iter);
+		send_queue_update(queue, iter);
 	}
 
 	player_connections_.erase(iter);
@@ -3273,16 +3245,9 @@ void server::reset_queues_handler(const std::string& /*issuer_name*/,
 		player->info().clear_queues();
 	}
 
-	for(auto& [id, info] : queue_info_) {
-		info.players_in_queue_.clear();
-
-		simple_wml::document queue_update;
-		simple_wml::node& update = queue_update.root().add_child("queue_update");
-		update.set_attr_int("queue_id", info.id_);
-		update.set_attr_dup("action", "update");
-		update.set_attr_dup("current_players", utils::join(info.players_in_queue_).c_str());
-
-		send_to_lobby(queue_update);
+	for(auto& [id, queue] : queue_info_) {
+		queue.players_in_queue_.clear();
+		send_queue_update(queue);
 	}
 
 	*out << "Reset all queues";
