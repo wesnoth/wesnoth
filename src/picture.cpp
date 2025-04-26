@@ -122,8 +122,8 @@ using texture_cache = cache_type<texture>;
 using bool_cache = cache_type<bool>;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-using lit_surface_variants = std::unordered_map<std::size_t, surface>;
-using lit_texture_variants = std::unordered_map<std::size_t, texture>;
+using lit_surface_variants = std::unordered_map<uint32_t, surface>;
+using lit_texture_variants = std::unordered_map<uint32_t, texture>;
 
 /** Lit variants for each locator. */
 using lit_surface_cache = cache_type<lit_surface_variants>;
@@ -490,9 +490,9 @@ light_adjust::light_adjust(int op, int rr, int gg, int bb)
 
 namespace
 {
-std::size_t hash_light_range(const utils::span<const light_adjust>& range)
+uint32_t hash_light_range(const utils::span<const light_adjust>& range)
 {
-	std::size_t hash{0};
+	uint32_t hash{0};
 	for(const auto& adjustment : range) {
 		hash += adjustment.l + adjustment.r + adjustment.g + adjustment.b;
 	}
