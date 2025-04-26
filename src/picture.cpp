@@ -494,7 +494,7 @@ uint32_t hash_light_range(const utils::span<const light_adjust>& range)
 {
 	uint32_t hash{0};
 	for(const auto& adjustment : range) {
-		hash += adjustment.l << 24 | adjustment.r << 16 | adjustment.g << 8 | adjustment.b;
+		hash |= adjustment.l << 24 | adjustment.r << 16 | adjustment.g << 8 | adjustment.b;
 	}
 
 	return hash;
