@@ -9,7 +9,7 @@
 ### Terrain
    * Fix bluff/gulch terrain overlays being conspicuously visible on the minimap display (bug #8924).
 ### Translations
-   * Updated translations: Bengali, Chinese (Simplified), Czech, Finnish, Italian, Japanese
+   * Updated translations: Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, Italian, Japanese
 ### Units
 ### User interface
 ### WML Engine
