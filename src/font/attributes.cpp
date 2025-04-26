@@ -180,13 +180,14 @@ void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsi
 void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path)
 {
 	surface surf = ::image::get_surface(image_path);
+	int scale = video::get_pixel_scale();
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(surf->pixels), point(surf->w, surf->h));
 	PangoRectangle bounds {
 		0,
-		-PANGO_SCALE * surf->h,
-		PANGO_SCALE * surf->w,
-		PANGO_SCALE * surf->h
+		-PANGO_SCALE * surf->h * scale,
+		PANGO_SCALE * surf->w * scale,
+		PANGO_SCALE * surf->h * scale
 	};
 
 	attribute attr {

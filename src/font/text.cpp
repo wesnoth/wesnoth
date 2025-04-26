@@ -46,10 +46,10 @@ namespace font
 
 namespace
 {
-void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, void* /* data */)
+void render_image_shape(cairo_t* cr, PangoAttrShape* pShape, int /* do_path */, void* /* data */)
 {
 	// NOTE: this data is owned by the underlying SDL_Surface. See add_attribute_image_shape
-	cairo_surface_t *img = static_cast<cairo_surface_t*>(pShape->data);
+	cairo_surface_t* img = static_cast<cairo_surface_t*>(pShape->data);
 
 	cairo_rel_move_to (cr,
 		pShape->ink_rect.x/PANGO_SCALE,
@@ -57,6 +57,7 @@ void render_image_shape(cairo_t *cr, PangoAttrShape *pShape, int /* do_path */, 
 	double x, y;
 	cairo_get_current_point (cr, &x, &y);
 	cairo_translate (cr, x, y);
+	cairo_scale(cr, video::get_pixel_scale(), video::get_pixel_scale());
 
 	cairo_set_source_surface(cr, img, 0, 0);
 	cairo_rectangle(cr,
