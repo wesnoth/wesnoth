@@ -494,10 +494,10 @@ uint32_t hash_light_range(const utils::span<const light_adjust>& range)
 {
 	uint32_t hash{0};
 	for(const auto& adjustment : range) {
-		hash |= static_cast<uint8_t>(~adjustment.l + 1) << 24;
-		hash |= static_cast<uint8_t>(~adjustment.r + 1) << 16;
-		hash |= static_cast<uint8_t>(~adjustment.g + 1) << 8;
-		hash |= static_cast<uint8_t>(~adjustment.b + 1);
+		hash ^= static_cast<uint8_t>(adjustment.l) << 24;
+		hash ^= static_cast<uint8_t>(adjustment.r) << 16;
+		hash ^= static_cast<uint8_t>(adjustment.g) << 8;
+		hash ^= static_cast<uint8_t>(adjustment.b);
 	}
 
 	return hash;
