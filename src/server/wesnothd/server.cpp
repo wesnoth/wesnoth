@@ -1439,7 +1439,7 @@ void server::handle_message(player_iterator user, simple_wml::node& message)
 	send_to_lobby(relay_message, user);
 }
 
-void server::send_queue_update(const queue_info &queue, utils::optional<player_iterator> exclude = {})
+void server::send_queue_update(const queue_info &queue, utils::optional<player_iterator> exclude)
 {
 	simple_wml::document queue_update;
 	simple_wml::node& update = queue_update.root().add_child("queue_update");
