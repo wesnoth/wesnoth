@@ -364,7 +364,7 @@ if env["prereqs"]:
         else:
             have_libpthread = conf.CheckLib("pthread")
         return have_libpthread & \
-            conf.CheckBoost("system") & \
+            conf.CheckBoost("system", header_only = True) & \
             conf.CheckBoost("asio", header_only = True) & \
             conf.CheckBoost("context") & \
             conf.CheckBoost("coroutine")
@@ -416,9 +416,9 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.50.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex", header_only = True)
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph", header_only = True)
 
     if env["system_lua"]:
         if env["PLATFORM"] == 'win32':
