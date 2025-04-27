@@ -297,7 +297,7 @@ private:
 	typed_formula<color_t> highlight_color_;
 
 	/** Spacing between lines */
-	int line_spacing_;
+	float line_spacing_;
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
