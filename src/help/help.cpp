@@ -71,29 +71,22 @@ namespace help {
  */
 void show_with_toplevel(const section &toplevel, const std::string& show_topic="", int xloc=-1, int yloc=-1);
 
-
-void show_unit_description(const unit &u)
+void show_terrain_description(const terrain_type& t)
 {
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	help::show_unit_description(u.type());
+	show_help(hidden_symbol(t.hide_help()) + terrain_prefix + t.id());
 }
 
-void show_terrain_description(const terrain_type &t)
+std::string get_unit_type_help_id(const unit_type& t)
 {
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	help::show_terrain_help(t.id(), t.hide_help());
-}
-
-void show_unit_description(const unit_type &t)
-{
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	std::string var_id = t.get_cfg()["variation_id"].str();
-	if (var_id.empty())
-		var_id = t.get_cfg()["variation_name"].str();
+	std::string var_id = t.variation_id();
+	if(var_id.empty()) {
+		var_id = t.variation_name();
+	}
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
-	if (!var_id.empty()) {
-		const unit_type *parent = unit_types.find(t.id());
+
+	if(!var_id.empty()) {
+		const unit_type* parent = unit_types.find(t.id());
 		assert(parent);
 		if (hide_help) {
 			hide_help = parent->hide_help();
@@ -102,10 +95,21 @@ void show_unit_description(const unit_type &t)
 		}
 	}
 
-	if (use_variation)
-		help::show_variation_help(t.id(), var_id, hide_help);
-	else
-		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
+	if(use_variation) {
+		return hidden_symbol(hide_help) + variation_prefix + t.id() + "_" + var_id;
+	} else {
+		return hidden_symbol(hide_help) + (t.show_variations_in_help() ? ".." : "") + unit_prefix + t.id();
+	}
+}
+
+void show_unit_description(const unit& u)
+{
+	show_unit_description(u.type());
+}
+
+void show_unit_description(const unit_type& t)
+{
+	show_help(get_unit_type_help_id(t));
 }
 
 help_manager::help_manager(const game_config_view *cfg)
@@ -148,44 +152,12 @@ void show_help(const std::string& show_topic, int xloc, int yloc)
 }
 
 /**
- * Open the help browser, show unit with id unit_id.
- *
- * If show_topic is the empty string, the default topic will be shown.
- */
-void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
-{
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel,
-			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
-}
-
-/**
- * Open the help browser, show terrain with id terrain_id.
- *
- * If show_topic is the empty string, the default topic will be shown.
- */
-void show_terrain_help(const std::string& show_topic, bool hidden, int xloc, int yloc)
-{
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
-}
-
-/**
- * Open the help browser, show the variation of the unit matching.
- */
-void show_variation_help(const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
-{
-	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
-}
-
-/**
  * Open a help dialog using a toplevel other than the default.
  *
  * This allows for complete customization of the contents, although not in a
  * very easy way.
  */
-void show_with_toplevel(const section &toplevel_sec,
+void show_with_toplevel(const section& toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
