@@ -2,19 +2,36 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * The Deceiver's Gambit
+     * Spells: clarified "Counterspell" description
+     * S05: the allied AIs now attack at Dawn instead of Second Watch
+     * S08: changed Trappers' dialogue to be less overtly hostile
+     * S14: the final boss now heals less on lower difficulties
 ### Editor
+   * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115)
 ### Multiplayer
+   * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
    * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Simplified), Czech, Italian, Japanese
 ### Units
+   * Necromancer:
+     * Changes to emphasize the Necro's thematic plague ability, while lowering his/her durability closer to that of other mages:
+     * hitpoints 76 -> 64, impact resist 10% -> 0%, cold resist 0% -> 10%
+     * plague staff (melee impact) 6-3 -> 7-3
+     * chill wave (ranged cold) 19-2 -> 20-2
+     * shadow wave (ranged arcane) 16-2 -> 13-2, added "plague" weapon special
 ### User interface
+   * UI support the multi-hex ranged attacks has been added
+   * Support for 800xN window sizes has been removed
 ### WML Engine
    * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-byte characters
    * IPFs that affect color values no longer skip fully transparent pixels.
 ### Miscellaneous and Bug Fixes
+   * Fixed the Pick Unit Advancement modification throwing lua errors on every recruitment
+   * Fixed unit appearance not being immediately updated when affected by an ability
 
 ## Version 1.19.10
 ### Campaigns
