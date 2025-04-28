@@ -1368,5 +1368,5 @@ bool operator==(const config& a, const config& b)
 		}
 	}
 
-	return x.empty() && y.empty();
+	return true;
 }
