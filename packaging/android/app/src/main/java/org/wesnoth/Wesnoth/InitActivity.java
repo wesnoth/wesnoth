@@ -42,6 +42,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -77,6 +79,16 @@ public class InitActivity extends Activity {
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		this.setContentView(R.layout.activity_init);
+		
+		ImageButton btnSettings = findViewById(R.id.settings_btn);
+		btnSettings.setOnClickListener(e -> {
+			PopupMenu settingsMenu = new PopupMenu(InitActivity.this, btnSettings);
+			settingsMenu.getMenuInflater().inflate(R.menu.main_menu, settingsMenu.getMenu());
+			settingsMenu.setOnMenuItemClickListener(menuItem -> {
+				return true;
+			});
+			settingsMenu.show();
+		});
 
 		// Initialize gamedata directory
 		dataDir = new File(getExternalFilesDir(null), "gamedata");
