@@ -67,17 +67,10 @@ std::unique_ptr<help_manager> ensure_cache_lifecycle();
  */
 void show_help(const std::string& show_topic="", int xloc=-1, int yloc=-1);
 
-/** wrapper to add unit prefix and hiding symbol */
-void show_unit_help(const std::string& unit_id, bool has_variations=false,
-				bool hidden = false, int xloc=-1, int yloc=-1);
-
-/** wrapper to add variation prefix and hiding symbol */
-void show_variation_help(const std::string &unit_id, const std::string &variation,
-				bool hidden = false, int xloc=-1, int yloc=-1);
-
-/** wrapper to add terrain prefix and hiding symbol */
-void show_terrain_help(const std::string& unit_id, bool hidden = false,
-				int xloc = -1, int yloc = -1);
+/**
+ * Given a unit type, find the corresponding help topic's id.
+ */
+std::string get_unit_type_help_id(const unit_type& t);
 
 void show_unit_description(const unit_type &t);
 void show_unit_description(const unit &u);
