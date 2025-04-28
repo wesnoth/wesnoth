@@ -15,7 +15,10 @@
 #include "sdl/surface.hpp"
 
 #include "color.hpp"
+#include "filesystem.hpp"
 #include "sdl/rect.hpp"
+
+#include <SDL2/SDL_image.h>
 
 #include <utility>
 
@@ -69,6 +72,12 @@ surface::surface(const surface& s)
 surface::surface(surface&& s) noexcept
 	: surface_(std::exchange(s.surface_, nullptr))
 {
+}
+
+surface surface::from_disk(const std::string& path)
+{
+	auto rwops = filesystem::make_read_RWops(path);
+	return surface(IMG_Load_RW(rwops.release(), true));
 }
 
 surface::~surface()

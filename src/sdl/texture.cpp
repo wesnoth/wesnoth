@@ -15,10 +15,13 @@
 #include "sdl/texture.hpp"
 
 #include "color.hpp"
+#include "filesystem.hpp"
 #include "log.hpp"
 #include "sdl/point.hpp"
 #include "sdl/surface.hpp"
 #include "video.hpp"
+
+#include <SDL2/SDL_image.h>
 
 static lg::log_domain log_sdl("SDL");
 #define ERR_SDL LOG_STREAM(err, log_sdl)
@@ -79,6 +82,17 @@ texture::texture(int width, int height, SDL_TextureAccess access)
 	: texture_()
 {
 	reset(width, height, access);
+}
+
+texture texture::from_disk(const std::string& path)
+{
+	SDL_Renderer* renderer = video::get_renderer();
+	if(!renderer) {
+		return {};
+	}
+
+	auto rwops = filesystem::make_read_RWops(path);
+	return texture(IMG_LoadTexture_RW(renderer, rwops.release(), true));
 }
 
 void texture::finalize()
