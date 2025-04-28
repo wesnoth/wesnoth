@@ -3,7 +3,10 @@
 ### Add-ons server
 ### Campaigns
 ### Editor
+   * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115).
 ### Multiplayer
+### Networking
+   * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
 ### Lua API
 ### Packaging
 ### Terrain
@@ -15,6 +18,7 @@
 ### WML Engine
 ### Miscellaneous and Bug Fixes
    * Fix failure to build with recent versions of Visual Studio due to missing `<chrono>` include.
+   * Support compilation with GCC 15.
 
 ## Version 1.18.4
 ### Campaigns
