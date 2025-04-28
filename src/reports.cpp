@@ -24,6 +24,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
@@ -201,14 +202,7 @@ static config unit_type(const unit* u)
 		}
 	}
 
-	std::string topic_id;
-	if(u->variation().empty()) {
-		topic_id = "unit_" + u->type_id();
-	} else {
-		topic_id = "variation_" + u->type_id() + "_" + u->variation();
-	}
-	topic_id = (u->type().show_variations_in_help() ? ".." : "") + topic_id;
-	return text_report(u->type_name(), tooltip.str(), topic_id);
+	return text_report(u->type_name(), tooltip.str(), help::get_unit_type_help_id(u->type()));
 }
 REPORT_GENERATOR(unit_type, rc)
 {
