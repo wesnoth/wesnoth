@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2011-04-30 20:33-0000\n"
 "Last-Translator: Len vanDalsen <l.dog.96@gmail.com>\n"
 "Language-Team: Afrikaans\n"
@@ -269,7 +269,7 @@ msgstr ""
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:388
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:390
 msgid "Notes:"
 msgstr ""
 
@@ -3644,14 +3644,14 @@ msgstr "Woestynberge"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:386
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:383
 msgid "Fog"
 msgstr "Mis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:389
-#: src/game_initialization/lobby_data.cpp:392
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:386
+#: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "Sluier"
 
@@ -4293,8 +4293,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3717
-#: src/scripting/game_lua_kernel.cpp:3752
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
+#: src/scripting/game_lua_kernel.cpp:3784
 msgid "input"
 msgstr ""
 
@@ -6048,7 +6048,7 @@ msgstr "Geen tydperke gevind"
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1144
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1178
 #, fuzzy
 msgid "(admin only)"
 msgstr "Span"
@@ -6165,7 +6165,7 @@ msgstr "Geen tydperke gevind"
 msgid "Request information about a nickname."
 msgstr "Geen tydperke gevind"
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1228
 msgid "Clear chat history."
 msgstr ""
 
@@ -6223,35 +6223,35 @@ msgstr "<boodskap>"
 msgid "The Battle for Wesnoth"
 msgstr "Die Stryd om Wesnoth"
 
-#. TRANSLATORS: 24-hour time, eg '13:59'
-#: src/format_time_summary.cpp:48
-msgid "%H:%M"
-msgstr "%H:%M"
-
 #. TRANSLATORS: 12-hour time, eg '1:59 PM'
-#: src/format_time_summary.cpp:52
+#: src/format_time_summary.cpp:42 src/format_time_summary.cpp:95
 msgid "%I:%M %p"
 msgstr ""
 
-#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
-#: src/format_time_summary.cpp:58
-msgid "%A, %H:%M"
-msgstr "%A, %H:%M"
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:44 src/format_time_summary.cpp:91
+msgid "%H:%M"
+msgstr "%H:%M"
 
 #. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
-#: src/format_time_summary.cpp:62
+#: src/format_time_summary.cpp:50 src/format_time_summary.cpp:105
 #, fuzzy
 #| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:52 src/format_time_summary.cpp:101
+msgid "%A, %H:%M"
+msgstr "%A, %H:%M"
+
 #. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
-#: src/format_time_summary.cpp:67
+#: src/format_time_summary.cpp:57 src/format_time_summary.cpp:110
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
-#: src/format_time_summary.cpp:72
+#: src/format_time_summary.cpp:62 src/format_time_summary.cpp:115
 #, fuzzy
 #| msgid "%b %d %y"
 msgid "%b %d %Y"
@@ -6555,46 +6555,46 @@ msgstr "Kon nie 'n leiersoort vasstel vir $faction|-stam"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:161
 msgid "Missing addon: $name"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:164
+#: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:196
+#: src/game_initialization/lobby_data.cpp:195
 #, fuzzy
 msgid "Unknown era"
 msgstr "Onbekende scenario: '"
 
-#: src/game_initialization/lobby_data.cpp:263
-#: src/game_initialization/lobby_data.cpp:298
+#: src/game_initialization/lobby_data.cpp:262
+#: src/game_initialization/lobby_data.cpp:297
 #, fuzzy
 msgid "scenario_abbreviation^S"
 msgstr "Scenario Begin"
 
-#: src/game_initialization/lobby_data.cpp:284
+#: src/game_initialization/lobby_data.cpp:283
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/game_initialization/lobby_data.cpp:305
-#: src/game_initialization/lobby_data.cpp:331
+#: src/game_initialization/lobby_data.cpp:304
+#: src/game_initialization/lobby_data.cpp:328
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:337
+#: src/game_initialization/lobby_data.cpp:334
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/game_initialization/lobby_data.cpp:351
+#: src/game_initialization/lobby_data.cpp:348
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Laai 'n enkel speler gestoorde spel"
 
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:363
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -6603,32 +6603,32 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Vakante Gleuf:"
 msgstr[1] "Vakante Gleuwe:"
 
-#: src/game_initialization/lobby_data.cpp:368
+#: src/game_initialization/lobby_data.cpp:365
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:379
-#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:654
+#: src/game_initialization/lobby_data.cpp:376
+#: src/game_initialization/lobby_data.cpp:378 src/savegame.cpp:652
 msgid "Turn"
 msgstr "Beurt"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:391
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Weergawe: "
 
-#: src/game_initialization/lobby_data.cpp:403
+#: src/game_initialization/lobby_data.cpp:400
 msgid "time limit^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:444
 msgid ""
 "The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:461
+#: src/game_initialization/lobby_data.cpp:458
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6824,8 +6824,8 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
 #: src/game_launcher.cpp:662 src/game_launcher.cpp:681
-#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:148
-#: src/savegame.cpp:309
+#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:149
+#: src/savegame.cpp:310
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die lêer wat jy probeer laai het, is beskadig: '"
 
@@ -6884,11 +6884,11 @@ msgstr "Skep 'n eenheid"
 msgid "New Add-on"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/gui/dialogs/editor/choose_addon.cpp:80
+#: src/gui/dialogs/editor/choose_addon.cpp:78
 msgid "Mainline"
 msgstr ""
 
-#: src/gui/dialogs/editor/choose_addon.cpp:80
+#: src/gui/dialogs/editor/choose_addon.cpp:78
 #, fuzzy
 #| msgid "No multiplayer sides."
 msgid "Mainline multiplayer scenarios"
@@ -7044,7 +7044,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:528
 #, fuzzy
-msgid "<header>text='Units with this special attack'</header>"
+msgid "Units with this special attack"
 msgstr ""
 "\n"
 "\n"
@@ -7052,75 +7052,79 @@ msgstr ""
 
 #: src/help/help_impl.cpp:592
 #, fuzzy
-msgid "<header>text='Units with this ability'</header>"
+msgid "Units with this ability"
 msgstr ""
 "\n"
 "\n"
 "&lt;header&gt;text='Kans om te tref'&lt;/header&gt;"
 
-#: src/help/help_impl.cpp:622
-msgid "Era:"
-msgstr "Tydperk:"
-
-#: src/help/help_impl.cpp:630
+#: src/help/help_impl.cpp:628
 #, fuzzy
 msgid "Factions"
 msgstr "Faksie"
 
-#: src/help/help_impl.cpp:678
+#: src/help/help_impl.cpp:676
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Ras:"
 
-#: src/help/help_impl.cpp:687 src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:685 src/help/help_impl.cpp:1133
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Orde: "
 
-#: src/help/help_impl.cpp:694
+#: src/help/help_impl.cpp:692
 #, fuzzy
 msgid "Leaders"
 msgstr "Leier: "
 
-#: src/help/help_impl.cpp:703
+#: src/help/help_impl.cpp:701
 msgid "Recruits"
 msgstr "Rekrute"
 
-#: src/help/help_impl.cpp:788 src/units/types.cpp:489
+#: src/help/help_impl.cpp:786 src/units/types.cpp:489
 #, fuzzy
 msgid "No description available."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/help/help_impl.cpp:898 src/help/help_impl.cpp:1112
+#: src/help/help_impl.cpp:896 src/help/help_impl.cpp:1110
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "+Algemeen"
 
-#: src/help/help_impl.cpp:1135 src/reports.cpp:392 src/reports.cpp:972
+#: src/help/help_impl.cpp:1133 src/reports.cpp:400 src/reports.cpp:980
 msgid "Alignment: "
 msgstr "Orde: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1154
+#: src/help/help_impl.cpp:1152
 msgid ""
-"This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>."
+"This is a group of units, all of whom are <ref "
+"dst='$topic_id'>$help_taxonomy</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1159
+#: src/help/help_impl.cpp:1157
 #, fuzzy
-msgid "<header>text='Subgroups of units within this group'</header>"
+msgid "Subgroups of units within this group"
 msgstr ""
 "\n"
 "\n"
 "&lt;header&gt;text='Kans om te tref'&lt;/header&gt;"
 
-#: src/help/help_impl.cpp:1161
+#: src/help/help_impl.cpp:1159
 #, fuzzy
-msgid "<header>text='Groups of units within this race'</header>"
+msgid "Groups of units within this race"
+msgstr ""
+"\n"
+"\n"
+"&lt;header&gt;text='Kans om te tref'&lt;/header&gt;"
+
+#: src/help/help_impl.cpp:1168
+#, fuzzy
+msgid "Units of this group"
 msgstr ""
 "\n"
 "\n"
@@ -7128,15 +7132,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:1170
 #, fuzzy
-msgid "<header>text='Units of this group'</header>"
-msgstr ""
-"\n"
-"\n"
-"&lt;header&gt;text='Kans om te tref'&lt;/header&gt;"
-
-#: src/help/help_impl.cpp:1172
-#, fuzzy
-msgid "<header>text='Units of this race'</header>"
+msgid "Units of this race"
 msgstr ""
 "\n"
 "\n"
@@ -7198,12 +7194,12 @@ msgstr "per beurt"
 msgid "(press $hotkey to deactivate)"
 msgstr "(druk $hotkey om voort te gaan)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2047
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2081
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Generaal"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2050
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2084
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Generaal"
@@ -7225,7 +7221,7 @@ msgstr "Die lêer wat jy probeer laai het is beskadig"
 msgid "The file you have tried to load is not from the current session."
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
-#: src/language.cpp:114
+#: src/language.cpp:96
 msgid "System default language"
 msgstr "Standaard stelseltaal"
 
@@ -7253,28 +7249,28 @@ msgstr ""
 msgid "South West"
 msgstr ""
 
-#: src/map_command_handler.hpp:188
+#: src/map_command_handler.hpp:189
 #, fuzzy
 msgid "This command is currently unavailable."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/map_command_handler.hpp:225
+#: src/map_command_handler.hpp:227
 msgid ""
 "Unknown command ‘$command’, did you mean ‘$command_proposal’? try "
 "$help_command for a list of available commands."
 msgstr ""
 
-#: src/map_command_handler.hpp:229
+#: src/map_command_handler.hpp:231
 msgid ""
 "Unknown command ‘$command’, try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/map_command_handler.hpp:246
+#: src/map_command_handler.hpp:248
 msgid "Error:"
 msgstr "Fout:"
 
-#: src/map_command_handler.hpp:252
+#: src/map_command_handler.hpp:254
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7283,45 +7279,45 @@ msgstr ""
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
 #. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
-#: src/map_command_handler.hpp:257
+#: src/map_command_handler.hpp:259
 msgid ""
 "[all|<command>]\n"
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
 
-#: src/map_command_handler.hpp:302
+#: src/map_command_handler.hpp:304
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/map_command_handler.hpp:355
+#: src/map_command_handler.hpp:357
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/map_command_handler.hpp:355 src/map_command_handler.hpp:356
-#: src/map_command_handler.hpp:396
+#: src/map_command_handler.hpp:357 src/map_command_handler.hpp:358
+#: src/map_command_handler.hpp:398
 msgid "help"
 msgstr "help"
 
-#: src/map_command_handler.hpp:356
+#: src/map_command_handler.hpp:358
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/map_command_handler.hpp:372
+#: src/map_command_handler.hpp:374
 #, fuzzy
 msgid " No help available."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/map_command_handler.hpp:379 src/map_command_handler.hpp:382
+#: src/map_command_handler.hpp:381 src/map_command_handler.hpp:384
 #, fuzzy
 msgid "Usage:"
 msgstr "Boodskap:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
-#: src/map_command_handler.hpp:394
+#: src/map_command_handler.hpp:396
 msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] ""
@@ -7331,37 +7327,37 @@ msgstr[1] ""
 msgid "$login|’s game"
 msgstr "$login se spel"
 
-#: src/menu_events.cpp:177
+#: src/menu_events.cpp:185
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Stoor die Kaart As"
 
-#: src/menu_events.cpp:188
+#: src/menu_events.cpp:196
 msgid "Map saved."
 msgstr "kaart gestoor"
 
-#: src/menu_events.cpp:192
+#: src/menu_events.cpp:200
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:219
+#: src/menu_events.cpp:227
 msgid "Message:"
 msgstr "Boodskap:"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:229
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Stuur slegs aan bondgenote"
 
-#: src/menu_events.cpp:222
+#: src/menu_events.cpp:230
 msgid "Send to allies only"
 msgstr "Stuur slegs aan bondgenote"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:287
+#: src/menu_events.cpp:301
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7369,17 +7365,17 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:295
+#: src/menu_events.cpp:309
 msgid "You have no units available to recruit."
 msgstr "Jy het geen eenhede om te werf nie."
 
-#: src/menu_events.cpp:342
+#: src/menu_events.cpp:359
 #, fuzzy
 #| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Jy het afgedwaal van jou soldate en kan hulle nie herroep nie"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:378
 #, fuzzy
 msgid ""
 "There are no troops available to recall.\n"
@@ -7388,442 +7384,442 @@ msgstr ""
 "Daar is geen troepe beskikbaar om te herroep nie\n"
 "(Jy moet veterane oorhê vanuit 'n vorige scenario)"
 
-#: src/menu_events.cpp:366
+#: src/menu_events.cpp:383
 msgid "You currently can’t recall at the highlighted location."
 msgstr ""
 
-#: src/menu_events.cpp:394
+#: src/menu_events.cpp:411
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 msgstr[1] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
-#: src/menu_events.cpp:539
+#: src/menu_events.cpp:556
 msgid "You cannot end your turn yet!"
 msgstr ""
 
-#: src/menu_events.cpp:554
+#: src/menu_events.cpp:571
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Jy het nog nie jou beurt begin nie. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:563
+#: src/menu_events.cpp:580
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:572
+#: src/menu_events.cpp:589
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:628
+#: src/menu_events.cpp:645
 msgid "Rename Unit"
 msgstr "Herdoop Eenheid"
 
-#: src/menu_events.cpp:629
+#: src/menu_events.cpp:646
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/menu_events.cpp:790
+#: src/menu_events.cpp:824
 #, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
 msgstr "Plaas Plakker"
 
-#: src/menu_events.cpp:791
+#: src/menu_events.cpp:825
 msgid "Are you sure you want to clear map labels?"
 msgstr ""
 
-#: src/menu_events.cpp:995
+#: src/menu_events.cpp:1029
 msgid "Search"
 msgstr "Soek"
 
-#: src/menu_events.cpp:1135
+#: src/menu_events.cpp:1169
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1176
 #, fuzzy
 msgid "(debug command)"
 msgstr "Generaal"
 
-#: src/menu_events.cpp:1143
+#: src/menu_events.cpp:1177
 #, fuzzy
 msgid "(network only)"
 msgstr "Netwerkspeler"
 
-#: src/menu_events.cpp:1145
+#: src/menu_events.cpp:1179
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1209
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:1176
+#: src/menu_events.cpp:1210
 msgid "Switch a side to/from AI control."
 msgstr ""
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1180
+#: src/menu_events.cpp:1214
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1215
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1217
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1218
 msgid "Switch a side to/from idle state."
 msgstr ""
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1222
 msgid "command_idle^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1223
 msgid "Change the in-game theme."
 msgstr ""
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1225
 msgid "<side> <nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1225
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1226
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1227
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1229
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1231
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1232
 msgid "Display and log fps (Frames Per Second)."
 msgstr ""
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1233
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1234
 msgid "Save game."
 msgstr "Stoor Spel."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1236
 msgid "Quit game."
 msgstr "Verlaat die spel."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1239
 msgid "Save and quit."
 msgstr "Stoor en sluit."
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1241
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1242
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1244
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1244
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "Wag vir spel om te begin..."
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1246
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "Besig om die volgende vlak af te laai"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1249
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1249
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1252
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1252
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1254
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Generaal"
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1255
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:1223 src/menu_events.cpp:1227
+#: src/menu_events.cpp:1257 src/menu_events.cpp:1261
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1257
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1259
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1260
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1263
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1264
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1266
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1266
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:1234 src/menu_events.cpp:1239
+#: src/menu_events.cpp:1268 src/menu_events.cpp:1273
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1268
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1269
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1269
 msgid "Show a scenario variable."
 msgstr ""
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1272
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1279
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1280
 msgid "‘Undiscover’ all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1247
+#: src/menu_events.cpp:1281
 msgid "<unit type id>"
 msgstr ""
 
-#: src/menu_events.cpp:1247
+#: src/menu_events.cpp:1281
 msgid "Create a unit."
 msgstr "Skep 'n eenheid"
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1282
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1283
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1284
 msgid "<amount>"
 msgstr ""
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1284
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1285
 #, fuzzy
 #| msgid "<message>"
 msgid "<event name>"
 msgstr "<boodskap>"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1285
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1288
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1291
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1294
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1296
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1299
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:1379
+#: src/menu_events.cpp:1413
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Kon nie die plakker of eenheid met die string '$search' kry nie."
 
-#: src/menu_events.cpp:1426
+#: src/menu_events.cpp:1460
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1429
+#: src/menu_events.cpp:1463
 msgid "Can’t droid networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1441 src/menu_events.cpp:1457 src/menu_events.cpp:1489
+#: src/menu_events.cpp:1475 src/menu_events.cpp:1491 src/menu_events.cpp:1523
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1451 src/menu_events.cpp:1507
+#: src/menu_events.cpp:1485 src/menu_events.cpp:1541
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1453
+#: src/menu_events.cpp:1487
 msgid "Side ‘$side’ is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1467 src/menu_events.cpp:1499
+#: src/menu_events.cpp:1501 src/menu_events.cpp:1533
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1469
+#: src/menu_events.cpp:1503
 msgid "Side ‘$side’ is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1473
+#: src/menu_events.cpp:1507
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1483
+#: src/menu_events.cpp:1517
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1485
+#: src/menu_events.cpp:1519
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1510
+#: src/menu_events.cpp:1544
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1553
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr ""
 
-#: src/menu_events.cpp:1555
+#: src/menu_events.cpp:1589
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1594
 msgid "Can’t idle networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1565
+#: src/menu_events.cpp:1599
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1626
+#: src/menu_events.cpp:1660
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1636
+#: src/menu_events.cpp:1670
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1653
+#: src/menu_events.cpp:1687
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1694
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1782
+#: src/menu_events.cpp:1816
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1818
+#: src/menu_events.cpp:1852
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Generaal"
 
-#: src/menu_events.cpp:1821
+#: src/menu_events.cpp:1855
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:1828
+#: src/menu_events.cpp:1862
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Generaal"
 
-#: src/menu_events.cpp:1848
+#: src/menu_events.cpp:1882
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1849
+#: src/menu_events.cpp:1883
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7832,92 +7828,92 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1888
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1937
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:1936
+#: src/menu_events.cpp:1970
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1988
 msgid ""
 "Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:1980
+#: src/menu_events.cpp:2014
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:1994
+#: src/menu_events.cpp:2028
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Onwettige tag naam"
 
-#: src/menu_events.cpp:2001
+#: src/menu_events.cpp:2035
 #, fuzzy
 msgid "Invalid location"
 msgstr "Ongeldige kleur"
 
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2108
 msgid "prompt^Command:"
 msgstr "Bevel:"
 
-#: src/menu_events.cpp:2100
+#: src/menu_events.cpp:2134
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
 msgstr "Bevel:"
 
-#: src/mouse_events.cpp:1261
+#: src/mouse_events.cpp:1295
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "Jou leier moet op 'n vesting wees om eenhede te kan werf of herroep."
 
-#: src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:1399
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Aanvaller"
 
-#: src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:1399
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Kies wapen:"
 
-#: src/mouse_events.cpp:1446 src/mouse_events.cpp:1462
+#: src/mouse_events.cpp:1481 src/mouse_events.cpp:1497
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "Spel Waarnemer"
 
-#: src/mouse_events.cpp:1475 src/mouse_events.cpp:1489 src/reports.cpp:819
-#: src/reports.cpp:1107 src/reports.cpp:1119
+#: src/mouse_events.cpp:1510 src/mouse_events.cpp:1524 src/reports.cpp:827
+#: src/reports.cpp:1115 src/reports.cpp:1127
 msgid "Weapon: "
 msgstr "Wapen:"
 
-#: src/mouse_events.cpp:1476 src/mouse_events.cpp:1490 src/reports.cpp:195
+#: src/mouse_events.cpp:1511 src/mouse_events.cpp:1525 src/reports.cpp:195
 msgid "Type: "
 msgstr "Tipe:"
 
-#: src/mouse_events.cpp:1477 src/mouse_events.cpp:1491 src/reports.cpp:820
-#: src/reports.cpp:1108
+#: src/mouse_events.cpp:1512 src/mouse_events.cpp:1526 src/reports.cpp:828
+#: src/reports.cpp:1116
 msgid "Damage: "
 msgstr "Skade:"
 
-#: src/mouse_events.cpp:1478 src/mouse_events.cpp:1492 src/reports.cpp:841
+#: src/mouse_events.cpp:1513 src/mouse_events.cpp:1527 src/reports.cpp:849
 #, fuzzy
 msgid "Attacks: "
 msgstr "Aanvaller"
 
-#: src/mouse_events.cpp:1479 src/mouse_events.cpp:1493
+#: src/mouse_events.cpp:1514 src/mouse_events.cpp:1528
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Chance to hit: "
@@ -8019,7 +8015,7 @@ msgstr "Huidige doelwit:"
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr ""
 
-#: src/play_controller.cpp:1071
+#: src/play_controller.cpp:1067
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -8028,18 +8024,18 @@ msgstr ""
 "Die spel is nie in pas nie en sal stop. Wil jy 'n foutregister van jou spel "
 "bêre?"
 
-#: src/play_controller.cpp:1072
+#: src/play_controller.cpp:1068
 #, fuzzy
 msgid "Error details:"
 msgstr "Fout"
 
-#: src/play_controller.cpp:1253
+#: src/play_controller.cpp:1249
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1255
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8048,7 +8044,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1262
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8058,11 +8054,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1270
+#: src/play_controller.cpp:1266
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1349
+#: src/play_controller.cpp:1345
 msgid "No objectives available"
 msgstr "Geen doelwitte beskikbaar nie"
 
@@ -8176,7 +8172,7 @@ msgstr "Verlaat"
 msgid "Do you really want to quit?"
 msgstr "Wil jy regtig hierdie spel uitvee?"
 
-#: src/reports.cpp:174 src/savegame.cpp:424
+#: src/reports.cpp:175 src/savegame.cpp:425
 msgid "Name: "
 msgstr "Naam:"
 
@@ -8185,45 +8181,45 @@ msgstr "Naam:"
 msgid "Special Notes:"
 msgstr "Spesiaal"
 
-#: src/reports.cpp:221
+#: src/reports.cpp:229
 msgid "Race: "
 msgstr "Ras:"
 
-#: src/reports.cpp:240
+#: src/reports.cpp:248
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:318
+#: src/reports.cpp:326
 #, fuzzy
 msgid "Trait: "
 msgstr "Karaktertrekke"
 
-#: src/reports.cpp:341
+#: src/reports.cpp:349
 msgid "invisible: "
 msgstr "onsigbaar: "
 
-#: src/reports.cpp:342
+#: src/reports.cpp:350
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Hierdie eenheid is onsigbaar. Dit kan nóg gesien nóg aangeval word deur die "
 "vyand nie."
 
-#: src/reports.cpp:345
+#: src/reports.cpp:353
 msgid "slowed: "
 msgstr "vertraag: "
 
-#: src/reports.cpp:346
+#: src/reports.cpp:354
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr "Hierdie eenheid is versteen. Dit mag nie skuif of aanval nie."
 
-#: src/reports.cpp:349
+#: src/reports.cpp:357
 msgid "poisoned: "
 msgstr "vergiftig: "
 
-#: src/reports.cpp:350
+#: src/reports.cpp:358
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8239,33 +8235,33 @@ msgstr ""
 "Eenhede kan nie doodgaan van die gif alleen nie. Die gif sal dit nie onder 1 "
 "LP verminder nie."
 
-#: src/reports.cpp:353
+#: src/reports.cpp:361
 msgid "petrified: "
 msgstr "versteen:"
 
-#: src/reports.cpp:354
+#: src/reports.cpp:362
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Hierdie eenheid is versteen. Dit mag nie skuif of aanval nie."
 
-#: src/reports.cpp:357
+#: src/reports.cpp:365
 #, fuzzy
 #| msgid "Era not available"
 msgid "unhealable: "
 msgstr "Tydperk nie beskikbaar"
 
-#: src/reports.cpp:358
+#: src/reports.cpp:366
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
 
-#: src/reports.cpp:361
+#: src/reports.cpp:369
 #, fuzzy
 #| msgid "invisible: "
 msgid "invulnerable: "
 msgstr "onsigbaar: "
 
-#: src/reports.cpp:362
+#: src/reports.cpp:370
 #, fuzzy
 #| msgid ""
 #| "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8274,142 +8270,142 @@ msgstr ""
 "Hierdie eenheid is onsigbaar. Dit kan nóg gesien nóg aangeval word deur die "
 "vyand nie."
 
-#: src/reports.cpp:439
+#: src/reports.cpp:447
 msgid "Ability: "
 msgstr "Vermoëns: "
 
-#: src/reports.cpp:441 src/reports.cpp:1015
+#: src/reports.cpp:449 src/reports.cpp:1023
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:505
+#: src/reports.cpp:513
 msgid "Resistances: "
 msgstr "Weerstande:"
 
-#: src/reports.cpp:507
+#: src/reports.cpp:515
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:536
+#: src/reports.cpp:544
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Ervaring Wysiger: "
 
-#: src/reports.cpp:586
+#: src/reports.cpp:594
 msgid "Terrain: "
 msgstr "Terrein:"
 
-#: src/reports.cpp:603
+#: src/reports.cpp:611
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:603
+#: src/reports.cpp:611
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:608
+#: src/reports.cpp:616
 msgid "Defense: "
 msgstr "Verdediging:"
 
-#: src/reports.cpp:643 src/reports.cpp:644
+#: src/reports.cpp:651 src/reports.cpp:652
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Weergawe: "
 
-#: src/reports.cpp:648 src/reports.cpp:649
+#: src/reports.cpp:656 src/reports.cpp:657
 #, fuzzy
 msgid "jamming:"
 msgstr "Oggend"
 
-#: src/reports.cpp:678
+#: src/reports.cpp:686
 #, fuzzy
 msgid "Movement Costs:"
 msgstr "Beweging"
 
-#: src/reports.cpp:824
+#: src/reports.cpp:832
 #, fuzzy
 msgid "Base damage: "
 msgstr "totale skade"
 
-#: src/reports.cpp:826 src/reports.cpp:860 src/reports.cpp:870
+#: src/reports.cpp:834 src/reports.cpp:868 src/reports.cpp:878
 #, fuzzy
 msgid "With specials: "
 msgstr "Wapen speciaal"
 
-#: src/reports.cpp:829
+#: src/reports.cpp:837
 msgid "Time of day: "
 msgstr "Tyd van Dag:"
 
-#: src/reports.cpp:833
+#: src/reports.cpp:841
 msgid "Leadership: "
 msgstr "Leierskap:"
 
-#: src/reports.cpp:837
+#: src/reports.cpp:845
 msgid "Slowed: "
 msgstr "Vertraag: "
 
-#: src/reports.cpp:845
+#: src/reports.cpp:853
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Maksimum LP bonus +"
 
-#: src/reports.cpp:846 src/reports.cpp:865
+#: src/reports.cpp:854 src/reports.cpp:873
 msgid "Swarm: "
 msgstr "Slaan toe:"
 
-#: src/reports.cpp:847 src/reports.cpp:858 src/reports.cpp:869
+#: src/reports.cpp:855 src/reports.cpp:866 src/reports.cpp:877
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:853
+#: src/reports.cpp:861
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesiaal"
 
-#: src/reports.cpp:863
+#: src/reports.cpp:871
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:903
+#: src/reports.cpp:911
 msgid "Weapon range: "
 msgstr ""
 
-#: src/reports.cpp:904
+#: src/reports.cpp:912
 msgid "Damage type: "
 msgstr "Skade soort: "
 
-#: src/reports.cpp:905
+#: src/reports.cpp:913
 #, fuzzy
 msgid "Damage versus: "
 msgstr "skade soort: "
 
-#: src/reports.cpp:984
+#: src/reports.cpp:992
 #, fuzzy
 msgid "Accuracy:"
 msgstr "totale skade"
 
-#: src/reports.cpp:988
+#: src/reports.cpp:996
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:1013
+#: src/reports.cpp:1021
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Wapen speciaal"
 
-#: src/reports.cpp:1090
+#: src/reports.cpp:1098
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1120
+#: src/reports.cpp:1128
 msgid "Total damage"
 msgstr "Totale skade"
 
-#: src/reports.cpp:1178
+#: src/reports.cpp:1186
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8418,85 +8414,85 @@ msgstr[0] "Aanvaller"
 msgstr[1] "Aanvaller"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1185
+#: src/reports.cpp:1193
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1189
+#: src/reports.cpp:1197
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1289
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Tyd van Dag:"
 
-#: src/reports.cpp:1332
+#: src/reports.cpp:1340
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Tyd van Dag:"
 
-#: src/reports.cpp:1333 src/reports.cpp:1387
+#: src/reports.cpp:1341 src/reports.cpp:1395
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Wettige eenhede: "
 
-#: src/reports.cpp:1335 src/reports.cpp:1389
+#: src/reports.cpp:1343 src/reports.cpp:1397
 msgid "Neutral units: "
 msgstr "Neutrale eenhede: "
 
-#: src/reports.cpp:1336 src/reports.cpp:1390
+#: src/reports.cpp:1344 src/reports.cpp:1398
 msgid "Chaotic units: "
 msgstr "Chaotiese eenhede: "
 
-#: src/reports.cpp:1338 src/reports.cpp:1392
+#: src/reports.cpp:1346 src/reports.cpp:1400
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Wettige eenhede: "
 
-#: src/reports.cpp:1453
+#: src/reports.cpp:1461
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Beurt"
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1465
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1480
+#: src/reports.cpp:1488
 msgid "Gold"
 msgstr "Goud"
 
-#: src/reports.cpp:1480
+#: src/reports.cpp:1488
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1506
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1506
 msgid "Villages"
 msgstr "Dorpies"
 
-#: src/reports.cpp:1503
+#: src/reports.cpp:1511
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1503
+#: src/reports.cpp:1511
 msgid "Units"
 msgstr "Eenhede"
 
-#: src/reports.cpp:1512
+#: src/reports.cpp:1520
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8505,73 +8501,75 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1512
+#: src/reports.cpp:1520
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1550
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Inkomste"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1550
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1743
+#: src/reports.cpp:1751
 msgid "Observers:"
 msgstr "Waarnemers:"
 
-#: src/reports.cpp:1763
+#: src/reports.cpp:1768
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1774
+#: src/reports.cpp:1779
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1819
+#: src/reports.cpp:1824
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1819
+#: src/reports.cpp:1824
 msgid "Turn Countdown"
 msgstr ""
 
-#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
-#: src/save_index.cpp:254
+#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'.
+#. Format for your locale.
+#: src/save_index.cpp:255
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %H:%M %Y"
 
-#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
-#: src/save_index.cpp:256
+#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'.
+#. Format for your locale.
+#: src/save_index.cpp:258
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:276 src/savegame.cpp:580
+#: src/save_index.cpp:273 src/savegame.cpp:578
 msgid "replay"
 msgstr "wys weer"
 
-#: src/save_index.cpp:360 src/savegame.cpp:65 src/savegame.cpp:616
-#: src/savegame.cpp:618
+#: src/save_index.cpp:356 src/savegame.cpp:66 src/savegame.cpp:614
+#: src/savegame.cpp:616
 msgid "Auto-Save"
 msgstr "Outo-stoor"
 
-#: src/savegame.cpp:199 src/savegame.cpp:201
+#: src/savegame.cpp:200 src/savegame.cpp:202
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Waarskuwing: Die lêer wat jy probeer laai het is beskadig. Laai in elk "
 "geval.\n"
 
-#: src/savegame.cpp:245
+#: src/savegame.cpp:246
 #, fuzzy
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
@@ -8580,7 +8578,7 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/savegame.cpp:254
+#: src/savegame.cpp:255
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -8598,34 +8596,34 @@ msgid ""
 "Do you wish to continue?"
 msgstr ""
 
-#: src/savegame.cpp:268 src/savegame.cpp:314
+#: src/savegame.cpp:269 src/savegame.cpp:315
 msgid "Load Game"
 msgstr "Laai Spel"
 
-#: src/savegame.cpp:314
+#: src/savegame.cpp:315
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:321
+#: src/savegame.cpp:322
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/savegame.cpp:355
+#: src/savegame.cpp:356
 msgid "The game could not be saved: "
 msgstr "Die spel kon nie gestoor word nie"
 
-#: src/savegame.cpp:424
+#: src/savegame.cpp:425
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Lêer bestaan reeds. Wil jy daar bo-oor skryf?"
 
-#: src/savegame.cpp:425
+#: src/savegame.cpp:426
 msgid "Overwrite?"
 msgstr "Stoor bo-oor?"
 
-#: src/savegame.cpp:432
+#: src/savegame.cpp:433
 #, fuzzy
 msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
@@ -8633,59 +8631,59 @@ msgstr ""
 "Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
 "'n ander naam."
 
-#: src/savegame.cpp:437
+#: src/savegame.cpp:438
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:486
 msgid "Saved"
 msgstr "Gestoor"
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:486
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Die spel is gestoor"
 
-#: src/savegame.cpp:517 src/savegame.cpp:534
+#: src/savegame.cpp:518 src/savegame.cpp:535
 msgid "Could not write to file"
 msgstr "Kon nie die lêer stoor nie"
 
-#: src/savegame.cpp:569
+#: src/savegame.cpp:570
 #, fuzzy
 msgid "Save Replay"
 msgstr "Wys weer"
 
-#: src/savegame.cpp:598
+#: src/savegame.cpp:596
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 
-#: src/savegame.cpp:648
+#: src/savegame.cpp:646
 msgid "Save Game"
 msgstr "Stoor Spel"
 
-#: src/savegame.cpp:662
+#: src/savegame.cpp:660
 msgid "Game state is corrupted"
 msgstr ""
 
-#: src/serialization/parser.cpp:152
+#: src/serialization/parser.cpp:150
 msgid "Unexpected characters at line start"
 msgstr "Onverwagte karakters by lyn begin"
 
-#: src/serialization/parser.cpp:179
+#: src/serialization/parser.cpp:177
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag]"
 msgstr "Vermis sluit tag for tag $tag at $pos"
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:178
 msgid "expected at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:181 src/serialization/parser.cpp:268
+#: src/serialization/parser.cpp:179 src/serialization/parser.cpp:268
 msgid "opened at $pos"
 msgstr ""
 
@@ -8900,23 +8898,32 @@ msgstr "Tyd van die Dag"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1052
+#: src/units/abilities.cpp:954
+msgid "name"
+msgstr ""
+
+#: src/units/abilities.cpp:955
+#, fuzzy
+msgid "description"
+msgstr "Geen doelwitte beskikbaar nie"
+
+#: src/units/abilities.cpp:1063
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "vertraag: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1056
+#: src/units/abilities.cpp:1067
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1060
+#: src/units/abilities.cpp:1071
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1073
+#: src/units/abilities.cpp:1084
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9209,18 +9216,18 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:790
+#: src/wesnoth.cpp:779
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:791
+#: src/wesnoth.cpp:780
 msgid "Logging Failure"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:548
+#: src/wesnothd_connection.cpp:547
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Disconnected from server."
@@ -9249,6 +9256,9 @@ msgstr "Vervang met $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "Era:"
+#~ msgstr "Tydperk:"
 
 #, fuzzy
 #~ msgid "No units found."

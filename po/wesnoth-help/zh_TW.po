@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2024-03-10 21:27+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -45,20 +45,18 @@ msgstr "無畏"
 
 #. [label]
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
-#. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:51
-#: data/core/macros/weapon_specials.cfg:62
+#: data/core/macros/weapon_specials.cfg:68
 msgid "plague"
 msgstr "瘟疫"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:63
+#: data/core/macros/weapon_specials.cfg:69
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -88,7 +86,7 @@ msgstr "無支出"
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
-#: data/core/macros/weapon_specials.cfg:111
+#: data/core/macros/weapon_specials.cfg:117
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -97,7 +95,7 @@ msgstr "這種攻擊總是有70%的命中率，不管被攻擊的單位的防禦
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
-#: data/core/macros/weapon_specials.cfg:110
+#: data/core/macros/weapon_specials.cfg:116
 msgid "magical"
 msgstr "魔法"
 
@@ -444,7 +442,7 @@ msgstr "隱藏"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:201
+#: data/core/macros/weapon_specials.cfg:207
 msgid "drains"
 msgstr "吸血"
 
@@ -466,7 +464,7 @@ msgstr "丘陵"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:96
+#: data/core/macros/weapon_specials.cfg:102
 msgid "marksman"
 msgstr "精準"
 
@@ -482,7 +480,7 @@ msgstr "夜行"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:223
+#: data/core/macros/weapon_specials.cfg:229
 msgid "poison"
 msgstr "毒素"
 
@@ -498,7 +496,7 @@ msgstr "游撃"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:74
+#: data/core/macros/weapon_specials.cfg:80
 msgid "slows"
 msgstr "緩速"
 
@@ -519,13 +517,13 @@ msgstr "地圖及章節編輯器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:374
 msgid "Terrain Editor"
 msgstr "地形編輯器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:386
 msgid "Scenario Editor"
 msgstr "章節編輯器"
 
@@ -679,7 +677,7 @@ msgid ""
 "cursor, and adjoining hexes of the same terrain type.\n"
 "• Control+mouse click: Unselect hexes.\n"
 "\n"
-"<bold>Brush Sizes</bold>\n"
+"<b>Brush Sizes</b>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
 "選取一系列的格子區域，用於選單列下方的剪下、複製、粘貼工具、填滿選取區域等按"
@@ -837,12 +835,11 @@ msgid ""
 "10”.\n"
 "\n"
 "Named locations can be accessed from WML using the Standard Location "
-"Filter’s <italic>location_id=</italic>. Player starts can also be accessed "
-"from WML using <italic>location_id=1</italic>, <italic>location_id=2</"
-"italic>, etc — use only the number, without adding “Player ” in front of the "
-"number.\n"
+"Filter’s <i>location_id=</i>. Player starts can also be accessed from WML "
+"using <i>location_id=1</i>, <i>location_id=2</i>, etc — use only the number, "
+"without adding “Player ” in front of the number.\n"
 "\n"
-"<bold>Keyboard Modifiers</bold>\n"
+"<b>Keyboard Modifiers</b>\n"
 "\n"
 "• Control+mouse click on a hex that already has a location: select that "
 "location for placing with a subsequent mouse click, as if it was selected in "
@@ -899,9 +896,9 @@ msgstr ""
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
 "<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))' align=here /><br/><bold>Impassable and Unwalkable</"
-"bold>\n"
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
+"<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -924,7 +921,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:139
+#: data/core/editor/help.cfg:140
 #, fuzzy
 #| msgid ""
 #| "editor^<bold>text='Castle Overlays'</bold>\n"
@@ -946,8 +943,8 @@ msgstr ""
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
 "<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here /><img src='terrain/grass/green.png~BLIT(terrain/"
-"castle/keep-overlay-editor.png~O(0.5))' align=here />\n"
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -974,7 +971,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:148
+#: data/core/editor/help.cfg:149
 #, fuzzy
 #| msgid ""
 #| "editor^<bold>text='Village Overlay'</bold>\n"
@@ -986,7 +983,7 @@ msgstr ""
 msgid ""
 "editor^<header>Village Overlay</header>\n"
 "<img src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
-"editor.png~O(0.5))' align=here />\n"
+"editor.png~O(0.5))'/>\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
 "<bold>text='村莊覆蓋層'</bold>\n"
@@ -998,7 +995,7 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:154
+#: data/core/editor/help.cfg:155
 #, fuzzy
 #| msgid ""
 #| "editor^<bold>text='Fake Shroud'</bold>\n"
@@ -1009,7 +1006,7 @@ msgstr ""
 #| "shroud disabled and even when the player’s units can see the hex."
 msgid ""
 "editor^<header>Fake Shroud</header>\n"
-"<img src=terrain/void/shroud-editor.png align=left />\n"
+"<img src=terrain/void/shroud-editor.png align=left/>\n"
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
@@ -1021,12 +1018,12 @@ msgstr ""
 "可以看到這個格子。"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:162
+#: data/core/editor/help.cfg:163
 msgid "Terrain Elevation Graphics"
 msgstr "地形高度圖形"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:164
+#: data/core/editor/help.cfg:165
 #, fuzzy
 #| msgid ""
 #| "A cosmetic elevation effect that looks a little different in the editor "
@@ -1042,14 +1039,14 @@ msgstr ""
 "這裡描述的所有疊加層都可以在地形調色盤的“高度”中找到。"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:167
+#: data/core/editor/help.cfg:168
 #, fuzzy
 #| msgid "editor^<bold>text='Direct Overlays'</bold>"
 msgid "editor^<header>Direct Overlays</header>"
 msgstr "editor^<bold>text='疊加覆蓋層'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:169
+#: data/core/editor/help.cfg:171
 #, fuzzy
 #| msgid ""
 #| "Bluffs and Gulch\n"
@@ -1077,26 +1074,26 @@ msgstr ""
 "一節中描述的「標記」結合。"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:177
 #, fuzzy
 #| msgid "editor^<bold>text='Elevation Floodfill'</bold>"
 msgid "editor^<header>Elevation Floodfill</header>"
 msgstr "editor^<bold>text='高度填充'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:179
+#: data/core/editor/help.cfg:181
 msgid "Raised elevation on-map marker"
 msgstr "地圖標記的上升高度"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:180
+#: data/core/editor/help.cfg:182
 #, fuzzy
 #| msgid "Raised elevation on-map marker"
 msgid "Raised elevation editor palette icon"
 msgstr "地圖標記的上升高度"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:189
 msgid ""
 "\n"
 "editor^<header>How to Use</header>\n"
@@ -1118,7 +1115,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:199
+#: data/core/editor/help.cfg:201
 msgid ""
 "editor^<span style='italic' font_size='15'>Note for UMC authors: The flood-"
 "filled tiles do not have their terrain codes changed, or any other "
@@ -1127,7 +1124,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:205
+#: data/core/editor/help.cfg:207
 msgid "Deprecated Terrain"
 msgstr "廢棄地形"
 
@@ -1135,7 +1132,7 @@ msgstr "廢棄地形"
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:208
+#: data/core/editor/help.cfg:210
 #, fuzzy
 #| msgid ""
 #| "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
@@ -1152,7 +1149,7 @@ msgstr "廢棄地形"
 #| "replacements."
 msgid ""
 "editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' />\n"
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1176,12 +1173,12 @@ msgstr ""
 "替代作法。"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:222
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr "標籤工具"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:225
 #, fuzzy
 #| msgid ""
 #| "Put text labels on the map.\n"
@@ -1202,7 +1199,7 @@ msgid ""
 "• Drag-and-drop with the left mouse button moves labels.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are "
-"implemented in the scenario using WML’s <italic>[label]</italic> tag."
+"implemented in the scenario using WML’s <i>[label]</i> tag."
 msgstr ""
 "在地圖上放置文字標籤。\n"
 "\n"
@@ -1214,12 +1211,12 @@ msgstr ""
 "標籤來實作。"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:237
+#: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
 msgstr "項目工具（章節工具）"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:238
+#: data/core/editor/help.cfg:240
 #, fuzzy
 #| msgid ""
 #| "The Item Tool allows placing decorations such as windmills, bookcases and "
@@ -1240,11 +1237,11 @@ msgid ""
 "• Left-click will place a decoration on the clicked hex.\n"
 "• Right-click will remove the decoration.\n"
 "\n"
-"<bold>Note:</bold> the tool doesn’t support undo.\n"
+"<b>Note:</b> the tool doesn’t support undo.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are not part "
-"of the terrain and are implemented in the scenario using WML’s "
-"<italic>[item]</italic> tag."
+"of the terrain and are implemented in the scenario using WML’s <i>[item]</i> "
+"tag."
 msgstr ""
 "項目工具允許放置像是風車、書架、獨石柱等裝飾品。多個項目可以被放置在同一個格"
 "子上。\n"
@@ -1256,13 +1253,13 @@ msgstr ""
 "過WML的<italic>text='[item]'</italic>標籤。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:257
 msgid "Village Ownership Tool"
 msgstr "村莊所有權工具"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:258
 #, fuzzy
 #| msgid ""
 #| "This tool assigns ownership of villages at the start of a scenario. The "
@@ -1284,8 +1281,7 @@ msgid ""
 "• Right-click will set the village back to unowned.\n"
 "\n"
 "This tool is only available in Scenario Mode; ownership information is "
-"stored by adding WML <italic>[village]</italic> tags to the appropriate "
-"<italic>[side]</italic>."
+"stored by adding WML <i>[village]</i> tags to the appropriate <i>[side]</i>."
 msgstr ""
 "這個工具能指派章節開始時村莊的所有權。村莊必須藉由"
 "<ref>dst='editor_tool_paint' text='繪圖工具'</ref>先被放置到地形上。\n"
@@ -1298,12 +1294,12 @@ msgstr ""
 "來儲存的。"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:271
+#: data/core/editor/help.cfg:273
 msgid "Unit Tool"
 msgstr "單位工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:274
 #, fuzzy
 #| msgid ""
 #| "Place units belonging to the currently-selected side.\n"
@@ -1323,8 +1319,8 @@ msgid ""
 "• Various operations are added to the right-click menu when the hex contains "
 "a unit.\n"
 "\n"
-"This tool is only available in Scenario Mode; it adds WML <italic>[unit]</"
-"italic> tags to the appropriate <italic>[side]</italic>."
+"This tool is only available in Scenario Mode; it adds WML <i>[unit]</i> tags "
+"to the appropriate <i>[side]</i>."
 msgstr ""
 "放置屬於目前被選取的陣營的單位。\n"
 "\n"
@@ -1336,12 +1332,12 @@ msgstr ""
 "到適當的<italic>text='[side]'</italic>上。"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:286
+#: data/core/editor/help.cfg:288
 msgid "Named Areas"
 msgstr "命名地區"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:289
 #, fuzzy
 #| msgid ""
 #| "This tool create sets of tiles that can be used in WML scripts’ Standard "
@@ -1369,7 +1365,7 @@ msgstr "命名地區"
 msgid ""
 "This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
-"area’s id in the filter’s <italic>area=</italic> attribute. For example:\n"
+"area’s id in the filter’s <i>area=</i> attribute. For example:\n"
 "\n"
 "• assigning a local time zone to this set of hexes\n"
 "• filtering the set of hexes which trigger an event when a unit moves on to "
@@ -1383,10 +1379,10 @@ msgid ""
 "• then in the Areas menu, select Rename Selected Area and choose a name for "
 "the area\n"
 "\n"
-"This tool is only available in Scenario Mode; it adds WML "
-"<italic>[time_area]</italic> tags to the scenario. Although the tag’s name "
-"implies time, it is now more generic and can be used for other purposes "
-"without needing to change the time-of-day schedule in the area."
+"This tool is only available in Scenario Mode; it adds WML <i>[time_area]</i> "
+"tags to the scenario. Although the tag’s name implies time, it is now more "
+"generic and can be used for other purposes without needing to change the "
+"time-of-day schedule in the area."
 msgstr ""
 "這個工具會建立一系列可以被用在WML腳本的標準位置過濾器（這個概念在Wiki中被詳細"
 "解釋）中的格子，藉由在過濾器的<italic>text='area='</italic>屬性中使用時代的"
@@ -1407,12 +1403,12 @@ msgstr ""
 "變地區中的時段才使用它。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:310
 msgid "Playlist Manager"
 msgstr "播放清單管理器"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:309
+#: data/core/editor/help.cfg:311
 #, fuzzy
 #| msgid ""
 #| "Shows a list of music tracks known to the editor, with toggle-boxes to "
@@ -1423,8 +1419,8 @@ msgstr "播放清單管理器"
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
-"This tool is only available in Scenario Mode; it adds WML <italic>[music]</"
-"italic> tags to the scenario."
+"This tool is only available in Scenario Mode; it adds WML <i>[music]</i> "
+"tags to the scenario."
 msgstr ""
 "將編輯器所找到的音軌顯示為清單，帶著核選方塊來啟用它們。\n"
 "\n"
@@ -1432,14 +1428,14 @@ msgstr ""
 "籤到章節。"
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:321
 #, fuzzy
 #| msgid "Using Add-ons"
 msgid "Change Add-on ID"
 msgstr "使用模組"
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:320
+#: data/core/editor/help.cfg:322
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
 "in. This will only rename that folder and update any references to it in the "
@@ -1447,12 +1443,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:329
+#: data/core/editor/help.cfg:331
 msgid "Add-on Publishing Editor"
 msgstr ""
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:330
+#: data/core/editor/help.cfg:332
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
 "publishing an add-on to the add-ons server for other players to download. "
@@ -1460,13 +1456,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:340
 msgid "Map/Scenario Editor"
 msgstr "地圖/章節編輯器"
 
 # 最後面的警告不照翻。
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:341
 #, fuzzy
 #| msgid ""
 #| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
@@ -1503,8 +1499,8 @@ msgid ""
 "of features for setting up a basic scenario as well as initializing an add-"
 "on which can be used to distribute the scenarios you create.\n"
 "\n"
-"The editor can be launched from the <italic>Map Editor</italic> option at "
-"the title screen.\n"
+"The editor can be launched from the <i>Map Editor</i> option at the title "
+"screen.\n"
 "\n"
 "<header>Editing Modes</header>\n"
 "\n"
@@ -1549,7 +1545,7 @@ msgstr ""
 "<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:351
+#: data/core/editor/help.cfg:353
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
 "scenarios you create. This can be an existing add-on or a brand new add-on. "
@@ -1561,7 +1557,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:353
+#: data/core/editor/help.cfg:355
 #, fuzzy
 #| msgid ""
 #| "<header>text='What you do *not* get'</header>\n"
@@ -1628,7 +1624,7 @@ msgstr ""
 "地形的地圖將會需要該模組來告訴編輯器它們的地形。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:373
+#: data/core/editor/help.cfg:375
 #, fuzzy
 #| msgid ""
 #| "The terrain editor’s functionality is similar to a simple paint "
@@ -1661,7 +1657,7 @@ msgstr ""
 "想要開始，就參考<ref>dst='editor_tool_paint' text='繪圖工具'</ref>的頁面。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:385
+#: data/core/editor/help.cfg:387
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1673,7 +1669,7 @@ msgstr ""
 "本的編輯。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:387
+#: data/core/editor/help.cfg:389
 #, fuzzy
 #| msgid ""
 #| "<header>text='Checking whether the editor is in scenario mode'</header>\n"
@@ -1698,7 +1694,7 @@ msgstr ""
 "• 在地形模式中，「地區」和「陣營」選單是禁用的，而呈灰色。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:396
 #, fuzzy
 #| msgid ""
 #| "<header>text='Entering scenario mode'</header>\n"
@@ -1733,7 +1729,7 @@ msgstr ""
 "cfg」檔案（不是「.map」檔案）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:404
 #, fuzzy
 #| msgid ""
 #| "<header>text='The files: .map and .cfg'</header>\n"
@@ -1778,12 +1774,12 @@ msgstr ""
 "案來開啟一樣。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:416
 msgid "Separate Event Files"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:415
+#: data/core/editor/help.cfg:417
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1819,12 +1815,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:440
 msgid "Editor Mask Usage"
 msgstr "編輯器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:439
+#: data/core/editor/help.cfg:441
 #, fuzzy
 #| msgid ""
 #| "Masks can be applied to a base map for reusal in several scenarios "
@@ -1837,12 +1833,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:447
+#: data/core/editor/help.cfg:449
 msgid "ToD and Schedule Editor"
 msgstr "時段編輯器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:448
+#: data/core/editor/help.cfg:450
 #, fuzzy
 #| msgid ""
 #| "This button at the top-right of the screen accesses the time-of-day "
@@ -1870,13 +1866,13 @@ msgstr ""
 "ref>編輯器，用來獨立設定時段。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:458
+#: data/core/editor/help.cfg:460
 msgid "Editor Palette"
 msgstr "編輯器調色盤"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:460
+#: data/core/editor/help.cfg:462
 #, fuzzy
 #| msgid ""
 #| "The editor palette contains the applicable items you may use with the "
@@ -1897,7 +1893,7 @@ msgid ""
 "available units. When using the Starting Locations Tool, the palette changes "
 "to a list of “Player 1”, “Player 2”, etc.\n"
 "\n"
-"<bold>Filter</bold>\n"
+"<b>Filter</b>\n"
 "\n"
 "There is a filter function to show only a subset of the available items — "
 "this is the leftmost of the four buttons at the top of the palette, and the "
@@ -1913,38 +1909,38 @@ msgstr ""
 "最左邊的那個，而且圖示會根據被選擇的東西而改變。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:466
+#: data/core/editor/help.cfg:468
 #, fuzzy
 #| msgid "Show all kinds of terrain"
 msgid "Show all kinds of terrain"
 msgstr "顯示所有種類的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:467
+#: data/core/editor/help.cfg:469
 #, fuzzy
 #| msgid "Show only water terrains"
 msgid "Show only water terrains"
 msgstr "只顯示水的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:468
+#: data/core/editor/help.cfg:470
 #, fuzzy
 #| msgid "Show only villages"
 msgid "Show only villages"
 msgstr "只顯示村莊"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:481
+#: data/core/editor/help.cfg:483
 msgid "Wesnoth Map Format"
 msgstr "韋諾地圖格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:482
+#: data/core/editor/help.cfg:484
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "韋諾將它的地圖存成人類可讀的純文字檔案。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:484
+#: data/core/editor/help.cfg:486
 #, fuzzy
 #| msgid ""
 #| "<header>text='Native'</header>\n"
@@ -1992,13 +1988,12 @@ msgid ""
 "providing additional information such as teams, custom events, and complex "
 "side setups. The .cfg file loads the map file with either of:\n"
 "\n"
-"• <span face='monospace'>map_file=maps/01_First_Map.map</span> <italic>— "
-"supported since Wesnoth 1.14</italic>\n"
+"• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
+"supported since Wesnoth 1.14</i>\n"
 "• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <italic>— a WML preprocessor include</italic>\n"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
-"The <italic>map_file</italic> method is preferred over using a preprocessor "
-"include."
+"The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
 "<header>text='原生'</header>\n"
 "\n"
@@ -2025,7 +2020,7 @@ msgstr ""
 
 # 看不懂「but this is rarely-used code」，不翻譯。
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:497
+#: data/core/editor/help.cfg:499
 #, fuzzy
 #| msgid ""
 #| "<header>text='Embedded'</header>\n"
@@ -2047,9 +2042,8 @@ msgid ""
 "<header>Embedded</header>\n"
 "\n"
 "The map data can be stored as part of a scenario’s .cfg file, directly in "
-"the <italic>map_data</italic> attribute. In other words, in the place that "
-"the preprocessor would include it when using the preprocessor-include "
-"method.\n"
+"the <i>map_data</i> attribute. In other words, in the place that the "
+"preprocessor would include it when using the preprocessor-include method.\n"
 "\n"
 "<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
@@ -2074,7 +2068,7 @@ msgstr ""
 "檔案會在視窗選單上被標示為「(E)」。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:505
+#: data/core/editor/help.cfg:507
 #, fuzzy
 #| msgid ""
 #| "<header>text='Files created by the Scenario Editor'</header>\n"
@@ -2212,9 +2206,13 @@ msgstr "亞肯-索利亞"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:27
+#, fuzzy
+#| msgid ""
+#| "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
+#| "ref> and running east to the Listra."
 msgid ""
-"A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
-"ref> and running east to the Listra."
+"A river rising in the <ref dst='heart_mountains'>Heart Mountains</ref> and "
+"running east to the Listra."
 msgstr ""
 "一條在<ref>dst='heart_mountains' text='心之山脈'</ref>中發源，向東流至利斯特"
 "拉的河流。"
@@ -2226,11 +2224,17 @@ msgstr "大河"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
+#| "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
+#| "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
+#| "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgid ""
-"The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
-"text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
-"text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-"text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
+"The Great River forms the boundary between the <ref "
+"dst='kingdom_wesnoth'>Kingdom of Wesnoth</ref> and the <ref "
+"dst='northlands'>Northlands</ref>. It empties to the <ref "
+"dst='great_ocean'>ocean</ref> at <ref dst='elensefar'>Elensefar</ref>."
 msgstr ""
 "大河形成<ref>dst='kingdom_wesnoth' text='韋諾王國'</ref>與"
 "<ref>dst='northlands' text='北方土地'</ref>的邊界。大河從"
@@ -2251,10 +2255,15 @@ msgstr "大洋"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:41
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
+#| "and all rivers eventually flow to it. Far to the west in the Great Ocean "
+#| "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgid ""
-"Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-"and all rivers eventually flow to it. Far to the west in the Great Ocean is "
-"a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
+"Lies to the west of the <ref dst='great_continent'>continent</ref> and all "
+"rivers eventually flow to it. Far to the west in the Great Ocean is a huge "
+"archipelago called <ref dst='morogor'>Morogor</ref>."
 msgstr ""
 "位於<ref>dst='great_continent' text='大陸'</ref>的西方，為所有河流的匯集地。"
 "大洋的最西端是被稱為<ref>dst='morogor' text='摩洛格'</ref>的巨大群島。"
@@ -2275,11 +2284,18 @@ msgstr "摩洛格"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:51
+#, fuzzy
+#| msgid ""
+#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
+#| "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> "
+#| "and west of the <ref>dst=great_continent text='Great Continent'</ref>.\n"
+#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
+#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
-"Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-"Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
-"west of the <ref>dst=great_continent text='Great Continent'</ref>.\n"
-"It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
+"Archipelago, located somewhere in the <ref dst='great_ocean'>Great Ocean</"
+"ref> east of the <ref dst='green_isle'>Green Isle</ref> and west of the <ref "
+"dst='great_continent'>Great Continent</ref>.\n"
+"It is mostly inhabited by <ref dst='..race_drake'>drakes</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
 "群島，位於<ref>dst='great_ocean' text='大洋'</ref>之中的某個地方，"
@@ -2292,7 +2308,7 @@ msgstr ""
 #. Geography of Morogor
 #: data/core/encyclopedia/geography.cfg:57
 msgid ""
-"<header>text='Notable land features:'</header>\n"
+"<header>Notable land features:</header>\n"
 "    • Mount Morogor: The highest active volcanic mountain in the central "
 "island of Morogor.\n"
 "    • Isle of Gaall: A dangerous island slightly north of the central Isle "
@@ -2314,15 +2330,15 @@ msgstr "綠島"
 #| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
 #| "ref>."
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
-"ref>, formerly home to the Islefolk and Wesfolk."
+"A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
+"formerly home to the Islefolk and Wesfolk."
 msgstr "<ref>dst='great_ocean' text='大洋'</ref>中的一個較大型的島嶼。"
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
 #: data/core/encyclopedia/geography.cfg:70
 msgid ""
-"<header>text='Notable cities:'</header>\n"
+"<header>Notable cities:</header>\n"
 "    • Southbay: The capital of the largest Islefolk kingdom.\n"
 "    • Clearwater Port: The second largest Islefolk city and the location of "
 "a major port.\n"
@@ -2337,7 +2353,7 @@ msgstr ""
 #. Geography of the Green Isle
 #: data/core/encyclopedia/geography.cfg:79
 msgid ""
-"<header>text='Notable land features:'</header>\n"
+"<header>Notable land features:</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
 "Isle.\n"
 "    • Midlands: A hilly and sparsely forested area south of the Swamp of "
@@ -2361,10 +2377,9 @@ msgstr "舊大陸"
 #| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 #| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
-"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
-"<ref>dst='green_isle' text='Green Isle'</ref> across the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>. It is the original homeland "
-"of both humans and orcs."
+"Lies to the west of <ref dst='morogor'>Morogor</ref> and the <ref "
+"dst='green_isle'>Green Isle</ref> across the <ref dst='great_ocean'>Great "
+"Ocean</ref>. It is the original homeland of both humans and orcs."
 msgstr ""
 "位於<ref>dst='morogor' text='摩洛格'</ref>西方，在<ref>dst='great_ocean' "
 "text='大洋'</ref>的對面。"
@@ -2376,10 +2391,15 @@ msgstr "大陸"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:95
+#, fuzzy
+#| msgid ""
+#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
+#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
+#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
-"The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-"Wesnoth'</ref> lies. Its west coast is surrounded by the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>."
+"The continent on which the <ref dst='kingdom_wesnoth'>Kingdom of Wesnoth</"
+"ref> lies. Its west coast is surrounded by the <ref dst='great_ocean'>Great "
+"Ocean</ref>."
 msgstr ""
 "<ref>dst='kingdom_wesnoth' text='韋諾王國'</ref>所在的大陸。西邊海岸被"
 "<ref>dst='great_ocean' text='大洋'</ref>環繞。"
@@ -2391,11 +2411,17 @@ msgstr "爾迪亞"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:101
+#, fuzzy
+#| msgid ""
+#| "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
+#| "rarely used in the era depicted by the main map. People normally just say "
+#| "“the world” or, poetically, “the wide green world”."
 msgid ""
-"The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
-"text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
-"rarely used in the era depicted by the main map. People normally just say "
-"“the world” or, poetically, “the wide green world”."
+"The name of the world in which the kingdom of <ref "
+"dst='kingdom_wesnoth'>Wesnoth</ref> is situated is ‘Irdya’. This term is, "
+"however, only rarely used in the era depicted by the main map. People "
+"normally just say “the world” or, poetically, “the wide green world”."
 msgstr ""
 "<ref>dst='kingdom_wesnoth' text='韋諾'</ref>王國所在的世界叫作「爾迪亞」。然"
 "而，這個名詞在主地圖所描述的時代裡很少被使用。人們通常只會稱「這個世界」，或"
@@ -2409,26 +2435,26 @@ msgstr "韋諾王國"
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:107
 msgid ""
-"The Kingdom of Wesnoth is located in the north-central portion of the "
-"<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-"mainline campaigns revolve around it. It is bounded on the map by the "
-"<ref>dst='great_river' text='Great River'</ref> to the north, the shore of "
-"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Aethenwood to "
-"the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the Bitter "
-"Swamp to the southeast.\n"
+"The Kingdom of Wesnoth is located in the north-central portion of the <ref "
+"dst='great_continent'>Great Continent</ref>. Most of the mainline campaigns "
+"revolve around it. It is bounded on the map by the <ref "
+"dst='great_river'>Great River</ref> to the north, the shore of the <ref "
+"dst='great_ocean'>ocean</ref> to the west, the Aethenwood to the <ref "
+"dst='southwest_elven_lands'>southwest</ref>, and the Bitter Swamp to the "
+"southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south by dense woods of which the Aethenwood may be "
 "considered a northernmost extension. Kerlath is its southernmost province, "
-"marking the end of Wesnoth and the start of the mysterious "
-"<ref>dst='far_south' text='Far South'</ref>."
+"marking the end of Wesnoth and the start of the mysterious <ref "
+"dst='far_south'>Far South</ref>."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
 #: data/core/encyclopedia/geography.cfg:113
 msgid ""
-"<header>text='Notable cities:'</header>\n"
+"<header>Notable cities:</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
 "    • Aldril: City lying on the Bay of Pearls.\n"
 "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
@@ -2505,7 +2531,7 @@ msgstr ""
 #| "    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, "
 #| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
-"<header>text='Notable land features:'</header>\n"
+"<header>Notable land features:</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
 "    • Ford of Abez: Shallow part of the Great River, it is usually "
 "controlled by Wesnothian forces.\n"
@@ -2599,13 +2625,12 @@ msgstr "艾倫索法"
 #| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
 #| "this point, and only ships can cross it."
 msgid ""
-"Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
-"text='Wesnoth'</ref>, at times an independent country, and at times in a "
-"treaty federation with Wesnoth. Its borders are the <ref>dst='great_river' "
-"text='Great River'</ref> to the north, a loosely defined line with Wesnoth "
-"to the east, the Bay of Pearls to the south, and the <ref>dst='great_ocean' "
-"text='ocean'</ref> to the west. More information is found in the historical "
-"narrative of Wesnoth."
+"Elensefar is at times a province of <ref dst='kingdom_wesnoth'>Wesnoth</"
+"ref>, at times an independent country, and at times in a treaty federation "
+"with Wesnoth. Its borders are the <ref dst='great_river'>Great River</ref> "
+"to the north, a loosely defined line with Wesnoth to the east, the Bay of "
+"Pearls to the south, and the <ref dst='great_ocean'>ocean</ref> to the west. "
+"More information is found in the historical narrative of Wesnoth."
 msgstr ""
 "艾倫索法有時是<ref>dst='kingdom_wesnoth' text='韋諾王國'</ref>的一個省，有時"
 "是一個獨立的國家，而有時會跟韋諾簽署條約結盟。它的北邊邊界是"
@@ -2626,7 +2651,7 @@ msgstr ""
 #. Geography of Elensefar area
 #: data/core/encyclopedia/geography.cfg:149
 msgid ""
-"<header>text='Notable cities:'</header>\n"
+"<header>Notable cities:</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
 "though some peripheral farmland extends slightly on both sides of the Great "
 "River.\n"
@@ -2636,9 +2661,9 @@ msgstr ""
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:154
 msgid ""
-"<header>text='Notable land features:'</header>\n"
-"    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
-"this point, and only ships can cross it."
+"<header>Notable land features:</header>\n"
+"    • <ref dst='great_river'>Great River</ref>: It is very wide at this "
+"point, and only ships can cross it."
 msgstr ""
 
 #. [topic]: id=northlands
@@ -2653,9 +2678,9 @@ msgid ""
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
 "war. Various groups of orcs, dwarves, humans, gryphons, ogres, and even "
 "elves fight over the region. The northern and eastern borders of the "
-"Northlands are not defined, the southern border is the "
-"<ref>dst='great_river' text='Great River'</ref>, and the western border is "
-"the <ref>dst='great_ocean' text='ocean'</ref>.\n"
+"Northlands are not defined, the southern border is the <ref "
+"dst='great_river'>Great River</ref>, and the western border is the <ref "
+"dst='great_ocean'>ocean</ref>.\n"
 "\n"
 "Yet despite the sheer wilderness above the Northlands, the subterranean "
 "Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
@@ -2668,7 +2693,7 @@ msgstr ""
 #. Geography of the Northlands
 #: data/core/encyclopedia/geography.cfg:167
 msgid ""
-"<header>text='Notable cities:'</header>\n"
+"<header>Notable cities:</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
 "    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
@@ -2676,9 +2701,9 @@ msgid ""
 "    • Saurgrath: A former saurian capital in the Swamp of Dread.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area northeast of <ref>dst='elensefar' "
-"text='Elensefar'</ref>, where these villages were located, was named the "
-"Annuvin province by men but was known by the elves as Wesmere."
+"abandoned. The forested area northeast of <ref dst='elensefar'>Elensefar</"
+"ref>, where these villages were located, was named the Annuvin province by "
+"men but was known by the elves as Wesmere."
 msgstr ""
 
 # 翻譯中Heart Mountains的描述與其獨立單元的描述是一致的，沒有按照這裡的原文翻。
@@ -2728,8 +2753,8 @@ msgstr ""
 #| "    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
 #| "river is somewhere in the east of the northern lands."
 msgid ""
-"<header>text='Notable land features:'</header>\n"
-"    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
+"<header>Notable land features:</header>\n"
+"    • <ref dst='heart_mountains'>Heart Mountains</ref>: A virtually "
 "impassable barrier between the river country and the Northern Plains.\n"
 "    • Heartfangs: The particularly forbidding stretch of high peaks "
 "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
@@ -2739,17 +2764,16 @@ msgid ""
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
-"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
-"comes out of Lake Vrug. This is the elvish name; among humans it is called "
-"Longlier.\n"
+"    • <ref dst='arkan_thoria'>Arkan-thoria</ref>: The river that comes out "
+"of Lake Vrug. This is the elvish name; among humans it is called Longlier.\n"
 "    • River Listra: The south-running tributary of the Great River into "
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
 "to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
-"    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
-"river is somewhere in the east of the northern lands."
+"    • <ref dst='great_river'>Great River</ref>: The origin of this river is "
+"somewhere in the east of the northern lands."
 msgstr ""
 "北方土地沒有政府存在。各式各樣的半獸人、矮人、野蠻人甚至是精靈的族群居住於"
 "此。北邊和東邊的邊界並沒有被定義，而南方邊界則是<ref>dst='great_river' "
@@ -2808,9 +2832,9 @@ msgstr "西南方精靈土地"
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
-"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black River "
-"to the south and southeast, the lands of Wesnoth to the north and the "
-"Kerlath province to the east."
+"the <ref dst='great_ocean'>ocean</ref> to the west, the Black River to the "
+"south and southeast, the lands of Wesnoth to the north and the Kerlath "
+"province to the east."
 msgstr ""
 "木精靈與北方精靈是區隔開來的，他們與大部分的其他國家只有斷斷續續的往來。西邊"
 "以<ref>dst='great_ocean' text='大洋'</ref>為界，南邊和東南邊以黑河為界，北邊"
@@ -2828,9 +2852,9 @@ msgstr ""
 #. Geography of the Southwest
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
-"<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref>dst='.."
-"race_elf' text='elves'</ref>.\n"
+"<header>Notable land features:</header>\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2850,12 +2874,11 @@ msgstr "心之山脈"
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
 #: data/core/encyclopedia/geography.cfg:206
 msgid ""
-"A virtually impassable barrier between the <ref>dst='arkan_thoria' "
-"text='river'</ref> country and the <ref>dst='far_north' text='Northern "
-"Plains'</ref>. The local orcs call them the Haggid-Dargor. The powerful "
-"Whitefang Clan in the region is named after the eastern edge of the "
-"mountains, which they call the Whitefang Mountains for their distinctive "
-"shape."
+"A virtually impassable barrier between the <ref dst='arkan_thoria'>river</"
+"ref> country and the <ref dst='far_north'>Northern Plains</ref>. The local "
+"orcs call them the Haggid-Dargor. The powerful Whitefang Clan in the region "
+"is named after the eastern edge of the mountains, which they call the "
+"Whitefang Mountains for their distinctive shape."
 msgstr ""
 
 #. [topic]: id=far_north
@@ -2902,8 +2925,8 @@ msgstr "遠北"
 #| "    • Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
-"Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
-"Mountains'</ref>, which the Orcs call the Haggid-Dargor and claim (without "
+"Orcish Clannate. It lies north of the <ref dst='heart_mountains'>Heart "
+"Mountains</ref>, which the Orcs call the Haggid-Dargor and claim (without "
 "merit) as their own. To the east lie the Unaligned Tribes of the Wild "
 "Steppe, who fell out of the control of the Clannate, instead roaming with "
 "wild human barbarians and clashing with the High Elves of the North Plains "
@@ -2944,7 +2967,7 @@ msgstr ""
 #. Geography of the Far North
 #: data/core/encyclopedia/geography.cfg:216
 msgid ""
-"<header>text='Notable cities:'</header>\n"
+"<header>Notable cities:</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
 "    • Bitok\n"
 "    • Borstep\n"
@@ -2965,7 +2988,7 @@ msgstr ""
 #. Geography of the Far North
 #: data/core/encyclopedia/geography.cfg:232
 msgid ""
-"<header>text='Notable land features:'</header>\n"
+"<header>Notable land features:</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
 "venomous Sand Scuttlers. It is extremely hot by day yet chilly by night.\n"
 "    • Black Marshes: A perilous swamp north of Tirigaz filled with violent "
@@ -3012,7 +3035,7 @@ msgstr ""
 #. Geography of the Far South
 #: data/core/encyclopedia/geography.cfg:254
 msgid ""
-"<header>text='Notable land features:'</header>\n"
+"<header>Notable land features:</header>\n"
 "    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
 "    • Sandy Wastes: A hot desert located southeast of Kerlath. It is "
@@ -3039,58 +3062,58 @@ msgstr "介紹"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:164
+#: data/core/help.cfg:23 data/core/help.cfg:165
 msgid "Gameplay"
 msgstr "玩法"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:546
-#: src/help/help_topic_generators.cpp:531
-#: src/help/help_topic_generators.cpp:549
+#: data/core/help.cfg:29 data/core/help.cfg:545
+#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 msgid "Traits"
 msgstr "特質"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:116
+#: data/core/help.cfg:37 data/core/help.cfg:117
 msgid "Units"
 msgstr "單位"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:136
+#: data/core/help.cfg:46 data/core/help.cfg:137
 msgid "Abilities"
 msgstr "技能"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:145
+#: data/core/help.cfg:54 data/core/help.cfg:146
 msgid "Weapon Specials"
 msgstr "攻擊效果"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:125
+#: data/core/help.cfg:62 data/core/help.cfg:126
 msgid "Eras"
 msgstr "時代"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:561
+#: data/core/help.cfg:70 data/core/help.cfg:560
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:604
+#: data/core/help.cfg:78 data/core/help.cfg:608
 msgid "Add-ons"
 msgstr "模組"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:677
+#: data/core/help.cfg:84 data/core/help.cfg:681
 msgid "Commands"
 msgstr "指令"
 
@@ -3114,12 +3137,13 @@ msgstr "指令"
 #| "across new aspects of the game. For more detailed information on special "
 #| "situations and exceptions, follow the included links."
 msgid ""
-"<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
-"somewhat unusual among modern strategy games. While other games strive for "
-"complexity, <italic>Battle for Wesnoth</italic> strives for simplicity of "
-"both rules and gameplay. This does not make the game simple, however — from "
-"these simple rules arises a wealth of strategy, making the game easy to "
-"learn but a challenge to master.\n"
+"\n"
+"<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
+"unusual among modern strategy games. While other games strive for "
+"complexity, <i>Battle for Wesnoth</i> strives for simplicity of both rules "
+"and gameplay. This does not make the game simple, however — from these "
+"simple rules arises a wealth of strategy, making the game easy to learn but "
+"a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -3137,31 +3161,50 @@ msgstr ""
 "資訊會被加至各個分類中。有關特殊名詞的更詳細資訊，可以點擊文中包含的連結。"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:104
+#: data/core/help.cfg:105
 msgid "About the Game"
 msgstr "關於遊戲"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:105
+#: data/core/help.cfg:106
+#, fuzzy
+#| msgid ""
+#| "The game takes place on a hex-based game field, where your units battle "
+#| "against those controlled by the computer, friends who each take turns on "
+#| "the same computer (hotseat play), other players on the same network, or "
+#| "players worldwide in multiplayer mode.\n"
+#| "\n"
+#| "Each of these battles is called a <italic>text='scenario'</italic>, which "
+#| "can be strung together to make <italic>text='campaigns'</italic>. Besides "
+#| "the campaigns that ship with the game, Wesnoth supports user-made "
+#| "content, and the add-on server boasts hundreds of custom maps, campaigns, "
+#| "eras, factions, and resources.\n"
+#| "\n"
+#| "The game also features a human-readable markup called Wesnoth Markup "
+#| "Language (WML) to easily allow users to create their own content, as well "
+#| "as a fully-featured Map and Scenario Editor for designing your own "
+#| "battlefields.\n"
+#| "\n"
+#| "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
+#| "and has been worked on by a multitude of volunteers ever since."
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
 "same computer (hotseat play), other players on the same network, or players "
 "worldwide in multiplayer mode.\n"
 "\n"
-"Each of these battles is called a <italic>text='scenario'</italic>, which "
-"can be strung together to make <italic>text='campaigns'</italic>. Besides "
-"the campaigns that ship with the game, Wesnoth supports user-made content, "
-"and the add-on server boasts hundreds of custom maps, campaigns, eras, "
-"factions, and resources.\n"
+"Each of these battles is called a <i>scenario</i>, which can be strung "
+"together to make <i>campaigns</i>. Besides the campaigns that ship with the "
+"game, Wesnoth supports user-made content, and the add-on server boasts "
+"hundreds of custom maps, campaigns, eras, factions, and resources.\n"
 "\n"
 "The game also features a human-readable markup called Wesnoth Markup "
 "Language (WML) to easily allow users to create their own content, as well as "
 "a fully-featured Map and Scenario Editor for designing your own "
 "battlefields.\n"
 "\n"
-"The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
-"and has been worked on by a multitude of volunteers ever since."
+"The <i>Battle for Wesnoth</i> project was begun in 2003, and has been worked "
+"on by a multitude of volunteers ever since."
 msgstr ""
 "本遊戲在六角格子組成的戰場上進行，在戰場上，你的單位會與電腦、用一台電腦輪流"
 "玩的朋友（單機多人）、區網的其他玩家或是多人模式裡世界各地的玩家所操控的單位"
@@ -3180,7 +3223,7 @@ msgstr ""
 # 這裡的「statistics」就是字面上的意思，即「a collection of information shown in numbers」，不翻成「統計」。
 # 為求工整「A unit’s page」不翻成「一個單位的頁面」。
 #. [topic]: id=..units
-#: data/core/help.cfg:117
+#: data/core/help.cfg:118
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -3197,7 +3240,7 @@ msgstr ""
 
 # 敘述不清，不照翻。
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:126
+#: data/core/help.cfg:127
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -3209,7 +3252,7 @@ msgstr ""
 
 # 敘述不清，不照翻。
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:128
+#: data/core/help.cfg:129
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -3220,7 +3263,7 @@ msgstr ""
 "其他派系戰鬥。除了遊戲內建的主線時代之外，模組中有很多玩家自製的派系能用。\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:137
+#: data/core/help.cfg:138
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -3235,7 +3278,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:146
+#: data/core/help.cfg:147
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -3251,12 +3294,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:155
+#: data/core/help.cfg:156
 msgid "Unknown Unit"
 msgstr "未知的單位"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:156
+#: data/core/help.cfg:157
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3274,7 +3317,7 @@ msgstr ""
 
 # Turotial的章節現在不只一個了，所以「in the context of a scenario」不照翻。
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:165
+#: data/core/help.cfg:166
 #, fuzzy
 #| msgid ""
 #| "Wesnoth is comprised of a series of battles, called "
@@ -3309,40 +3352,38 @@ msgstr ""
 #| "higher difficulties the enemy may have higher incomes, higher-level "
 #| "units, more castle hexes, and so on."
 msgid ""
-"Wesnoth is comprised of a series of battles, called "
-"<italic>text='scenarios'</italic>, that pit your troops against the troops "
-"of one or more adversaries. Multiple scenarios that follow on from each "
-"other, telling a story, make up <italic>text='campaigns'</italic>. In a "
-"campaign, you often need to play more carefully, preserving your best troops "
-"for use again in later scenarios.\n"
+"Wesnoth is comprised of a series of battles, called <i>scenarios</i>, that "
+"pit your troops against the troops of one or more adversaries. Multiple "
+"scenarios that follow on from each other, telling a story, make up "
+"<i>campaigns</i>. In a campaign, you often need to play more carefully, "
+"preserving your best troops for use again in later scenarios.\n"
 "\n"
-"The interactive tutorial campaign <bold>text='The South Guard'</bold> "
-"introduces Wesnoth gameplay in the context of a campaign. Most material "
-"covered in the tutorial is explained in these pages, so you can always refer "
-"back here if you forget something.\n"
+"The interactive tutorial campaign <b>The South Guard</b> introduces Wesnoth "
+"gameplay in the context of a campaign. Most material covered in the tutorial "
+"is explained in these pages, so you can always refer back here if you forget "
+"something.\n"
 "\n"
 "After you master the basics, be sure to try another novice campaign next! "
-"You can help two brothers overcome a deadly peril in <italic>text='A Tale of "
-"Two Brothers'</italic>, help the prince Konrad through a turning point in "
-"the history of Wesnoth in the epic <italic>text='Heir to the Throne'</"
-"italic> or guide the mage Delfador on his way to becoming a legend in the "
-"equally epic <italic>text='The Deceiver’s Gambit'</italic>. A full list of "
-"installed campaigns can be found via the <bold>text='Campaign'</bold> option "
-"on the main menu, which is full of equally interesting adventures in the "
-"long history of Wesnoth. We’d recommend playing them in the order they are "
-"listed, but feel free to skip any that’s not your cup of tea!\n"
+"You can help two brothers overcome a deadly peril in <i>A Tale of Two "
+"Brothers</i>, help the prince Konrad through a turning point in the history "
+"of Wesnoth in the epic <i>Heir to the Throne</i> or guide the mage Delfador "
+"on his way to becoming a legend in the equally epic <i>The Deceiver’s "
+"Gambit</i>. A full list of installed campaigns can be found via the "
+"<b>Campaign</b> option on the main menu, which is full of equally "
+"interesting adventures in the long history of Wesnoth. We’d recommend "
+"playing them in the order they are listed, but feel free to skip any that’s "
+"not your cup of tea!\n"
 "\n"
-"Campaigns are grouped by <italic>text='level'</italic> and "
-"<italic>text='difficulty'</italic>. For example, <italic>text='Heir to the "
-"Throne'</italic> is ‘Novice’ level, and is playable at three difficulties: "
-"‘Beginner’, ‘Normal’, and ‘Challenging’. The level of a campaign indicates "
-"what degree of proficiency in the game mechanics (such as "
-"<ref>dst='movement' text='zones of control'</ref> and <ref>dst='time_of_day' "
-"text='time of day'</ref>) is assumed. The difficulty indicates how "
-"challenging the scenarios will be: at higher difficulties, the obstacles to "
-"victory will be higher and overcoming them will require more skillful play. "
-"For example, at higher difficulties the enemy may have higher incomes, "
-"higher-level units, more castle hexes, and so on."
+"Campaigns are grouped by <i>level</i> and <i>difficulty</i>. For example, "
+"<i>Heir to the Throne</i> is ‘Novice’ level, and is playable at three "
+"difficulties: ‘Beginner’, ‘Normal’, and ‘Challenging’. The level of a "
+"campaign indicates what degree of proficiency in the game mechanics (such as "
+"<ref dst='movement'>zones of control</ref> and <ref dst='time_of_day'>time "
+"of day</ref>) is assumed. The difficulty indicates how challenging the "
+"scenarios will be: at higher difficulties, the obstacles to victory will be "
+"higher and overcoming them will require more skillful play. For example, at "
+"higher difficulties the enemy may have higher incomes, higher-level units, "
+"more castle hexes, and so on."
 msgstr ""
 "韋諾是由一系列稱為<italic>text='章節'</italic>的戰鬥所組成的，它使你的部隊與"
 "一個或多個敵方的部隊對戰。彼此接續的多個章節，講述著一個故事，組成"
@@ -3367,11 +3408,17 @@ msgstr ""
 "的難度下，敵人也許會有更高的收入、更高等級的單位、更多的城堡格子，諸如此類。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:174
+#: data/core/help.cfg:175
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Fundamentals of Gameplay'</header>\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
-"<header>text='Fundamentals of Gameplay'</header>\n"
+"<header>Fundamentals of Gameplay</header>\n"
 "\n"
 msgstr ""
 "\n"
@@ -3380,13 +3427,20 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:174
+#: data/core/help.cfg:175
+#, fuzzy
+#| msgid ""
+#| "While playing, keep in mind that you can mouse-over many items in the "
+#| "game, such as the information displayed in the status pane, to see a "
+#| "brief description explaining each item. This is especially useful when "
+#| "you encounter new elements, such as <ref>dst='..abilities_section' "
+#| "text='abilities'</ref>, for the first time."
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
 "description explaining each item. This is especially useful when you "
-"encounter new elements, such as <ref>dst='..abilities_section' "
-"text='abilities'</ref>, for the first time."
+"encounter new elements, such as <ref dst='..abilities_section'>abilities</"
+"ref>, for the first time."
 msgstr ""
 "在遊玩時，請記住，在遊戲中，要查看每個項目的簡短描述，你可以將滑鼠游標移動到"
 "該項目上，關於該項目的資訊就會被顯示在狀態面板上，許多項目都可以這樣做。當你"
@@ -3394,20 +3448,29 @@ msgstr ""
 "時，這個功能特別有用。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:186
+#: data/core/help.cfg:187
 msgid "Victory and Defeat"
 msgstr "勝利與失敗"
 
 # 不確定「changing your save options」是什麼意思，不照翻。
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:187
+#: data/core/help.cfg:188
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "When you win a scenario, the map grays over and the <bold>text='End "
+#| "Turn'</bold> button changes to <bold>text='End Scenario'</bold>. You can "
+#| "now do things like changing your save options or (if you are in a "
+#| "multiplayer game) chatting with other players before pressing that button "
+#| "to advance."
 msgid ""
 "\n"
 "\n"
-"When you win a scenario, the map grays over and the <bold>text='End Turn'</"
-"bold> button changes to <bold>text='End Scenario'</bold>. You can now do "
-"things like changing your save options or (if you are in a multiplayer game) "
-"chatting with other players before pressing that button to advance."
+"When you win a scenario, the map grays over and the <b>End Turn</b> button "
+"changes to <b>End Scenario</b>. You can now do things like changing your "
+"save options or (if you are in a multiplayer game) chatting with other "
+"players before pressing that button to advance."
 msgstr ""
 "\n"
 "\n"
@@ -3416,15 +3479,24 @@ msgstr ""
 "遊戲偏好設定，或是（如果你是在一場多人連線遊戲中）與其他玩家聊天之類的事情。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:187
+#: data/core/help.cfg:188
+#, fuzzy
+#| msgid ""
+#| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
+#| "the beginning of each scenario. In most scenarios, you will achieve "
+#| "victory by killing all enemy leaders ; likewise, the death of your own "
+#| "leader generally results in defeat. However, some scenarios may have "
+#| "other victory objectives, such as getting your leader to a designated "
+#| "point, rescuing an ally, solving a puzzle, or holding out against a siege "
+#| "until a certain number of turns have elapsed."
 msgid ""
-"Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
-"the beginning of each scenario. In most scenarios, you will achieve victory "
-"by killing all enemy leaders ; likewise, the death of your own leader "
-"generally results in defeat. However, some scenarios may have other victory "
-"objectives, such as getting your leader to a designated point, rescuing an "
-"ally, solving a puzzle, or holding out against a siege until a certain "
-"number of turns have elapsed."
+"Pay careful attention to the <b>Objectives</b> pop-up box at the beginning "
+"of each scenario. In most scenarios, you will achieve victory by killing all "
+"enemy leaders ; likewise, the death of your own leader generally results in "
+"defeat. However, some scenarios may have other victory objectives, such as "
+"getting your leader to a designated point, rescuing an ally, solving a "
+"puzzle, or holding out against a siege until a certain number of turns have "
+"elapsed."
 msgstr ""
 "請注意每個章節開始時出現的<bold>text='目標'</bold>彈出框。在大部分的章節中，"
 "藉由殺掉所有敵方首領，你將達成勝利，同樣地，你的首領的死亡通常會導致戰敗。然"
@@ -3432,12 +3504,12 @@ msgstr ""
 "謎或是在抵抗圍攻直到已經過了一定的回合數量。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:196
+#: data/core/help.cfg:197
 msgid "Recruiting and Recalling"
 msgstr "招募與招回"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:197
+#: data/core/help.cfg:198
 msgid ""
 "\n"
 "\n"
@@ -3454,18 +3526,30 @@ msgstr ""
 
 # 「choosing <bold>text='Recruit'</bold> from the menu」這裡的menu是指Actions menu。
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:197
+#: data/core/help.cfg:198
+#, fuzzy
+#| msgid ""
+#| "Each side begins with one leader in their keep. At the start of any "
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep hex of a <ref>dst='..terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the "
+#| "<bold>text='Recruit'</bold> button to recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
-"and at times during it, you will need to recruit <ref>dst='..units' "
-"text='units'</ref> into your army. To recruit, you must have your leader "
-"(for instance, Konrad in the <italic>text='Heir to the Throne'</italic> "
-"campaign) on the keep hex of a <ref>dst='..terrain_castle' text='castle'</"
-"ref>. Then you may recruit by either choosing <bold>text='Recruit'</bold> "
-"from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
-"bold>. This brings up the recruit menu, which lists units available for "
-"recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
+"and at times during it, you will need to recruit <ref dst='..units'>units</"
+"ref> into your army. To recruit, you must have your leader (for instance, "
+"Konrad in the <i>Heir to the Throne</i> campaign) on the keep hex of a <ref "
+"dst='..terrain_castle'>castle</ref>. Then you may recruit by either choosing "
+"<b>Recruit</b> from the menu or right-clicking on a hex and selecting "
+"<b>Recruit</b>. This brings up the recruit menu, which lists units available "
+"for recruitment, along with their gold cost. Click on a unit to see its "
+"statistics, then press the <b>Recruit</b> button to recruit it."
 msgstr ""
 "每一方的陣營在一開始會有一個首領在他們的主堡上。在戰鬥開始時，或是戰鬥的過程"
 "中，你將會需要招募<ref>dst='..units' text='單位'</ref>至你的軍隊中。要進行招"
@@ -3477,12 +3561,18 @@ msgstr ""
 "bold>按鈕就可招募他。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:200
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Recruited units come with two random <ref>dst='..traits_section' "
+#| "text='traits'</ref> which modify their statistics."
 msgid ""
 "\n"
 "\n"
-"Recruited units come with two random <ref>dst='..traits_section' "
-"text='traits'</ref> which modify their statistics."
+"Recruited units come with two random <ref dst='..traits_section'>traits</"
+"ref> which modify their statistics."
 msgstr ""
 "\n"
 "\n"
@@ -3491,7 +3581,7 @@ msgstr ""
 
 # 原文的最後一句順序反過來了。
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:201
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -3505,13 +3595,20 @@ msgstr ""
 "在先前章節中所有存活下來的單位的清單。招回一律花費20枚金幣。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:204
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Units not only cost gold to Recruit or Recall, they also require money to "
+#| "support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> "
+#| "for more information."
 msgid ""
 "\n"
 "\n"
 "Units not only cost gold to Recruit or Recall, they also require money to "
-"support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> for "
-"more information."
+"support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
+"information."
 msgstr ""
 "\n"
 "\n"
@@ -3519,13 +3616,13 @@ msgstr ""
 "<ref>dst='income_and_upkeep' text='收入與支出'</ref>以獲得更多資訊。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:212
+#: data/core/help.cfg:213
 msgid "Income and Upkeep"
 msgstr "收入與支出"
 
 # 「one additional gold each turn」這個不一定是1枚金幣，敘述有點不清楚，所以翻譯時加了括號補充說明。
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:213
+#: data/core/help.cfg:214
 msgid ""
 "\n"
 "\n"
@@ -3541,19 +3638,25 @@ msgstr ""
 "可以在每回合獲得12枚金幣。你的支出會由這筆收入來扣，詳情如下。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:213
+#: data/core/help.cfg:214
+#, fuzzy
+#| msgid ""
+#| "In Wesnoth, it is not enough simply to recruit units and fight. You must "
+#| "watch your gold as well, especially in campaigns, where you can carry "
+#| "extra gold over from one scenario to the next. There are two aspects to "
+#| "this; <italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
 "gold over from one scenario to the next. There are two aspects to this; "
-"<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
+"<i>income</i> and <i>upkeep</i>."
 msgstr ""
 "在韋諾中，只有招募單位並戰鬥是不夠的。你必須得注意你的金幣，特別是在戰役中。"
 "在戰役中你能將多餘的金幣從一個章節帶到下一個章節。對此有兩個方面："
 "<italic>text='收入'</italic>和<italic>text='支出'</italic>。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:217
+#: data/core/help.cfg:219
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3581,7 +3684,7 @@ msgstr ""
 "個村莊，你每回合就得花費2枚金幣作為維護費用。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:218
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -3595,7 +3698,7 @@ msgstr ""
 "後收入會是每回合10枚金幣。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:225
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3611,9 +3714,8 @@ msgid ""
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
 "configurable, but in campaigns they are almost always the values described "
-"above. The <italic>text='Scenario Settings'</italic> tab of the "
-"<italic>text='Status Table'</italic> dialog shows the values for the current "
-"scenario."
+"above. The <i>Scenario Settings</i> tab of the <i>Status Table</i> dialog "
+"shows the values for the current scenario."
 msgstr ""
 "\n"
 "\n"
@@ -3623,16 +3725,26 @@ msgstr ""
 "會顯示目前章節所設定的值。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:223
+#: data/core/help.cfg:226
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "There are two important exceptions to upkeep: units with the loyal trait "
+#| "and leaders never incur upkeep. Units you begin the scenario with (such "
+#| "as Delfador), or units who join you during a scenario (such as the "
+#| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
+#| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
+#| "unit you are playing (such as Konrad) will almost always be a leader."
 msgid ""
 "\n"
 "\n"
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <italic>text='Heir to the Throne'</italic>) will "
-"usually have the <italic>text='loyal'</italic> trait. The unit you are "
-"playing (such as Konrad) will almost always be a leader."
+"the second scenario of <i>Heir to the Throne</i>) will usually have the "
+"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
+"always be a leader."
 msgstr ""
 "\n"
 "\n"
@@ -3643,26 +3755,32 @@ msgstr ""
 "領。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:232
+#: data/core/help.cfg:235
 msgid "Hitpoints and Experience"
 msgstr "生命值與經驗值"
 
 # 由於翻譯不使用「HP」、「XP」等字眼，所以將「(HP)」、「(XP)」省略掉。
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:233
+#: data/core/help.cfg:236
+#, fuzzy
+#| msgid ""
+#| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
+#| "If the hitpoints of a unit drop below 1, the unit dies. Each unit also "
+#| "has a certain number of <italic>text='experience points'</italic> (XP). A "
+#| "freshly recruited unit starts with no experience points, and gains "
+#| "experience by fighting enemies."
 msgid ""
-"Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
-"the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
-"certain number of <italic>text='experience points'</italic> (XP). A freshly "
-"recruited unit starts with no experience points, and gains experience by "
-"fighting enemies."
+"Each unit has a certain number of <i>hitpoints</i> (HP). If the hitpoints of "
+"a unit drop below 1, the unit dies. Each unit also has a certain number of "
+"<i>experience points</i> (XP). A freshly recruited unit starts with no "
+"experience points, and gains experience by fighting enemies."
 msgstr ""
 "每個單位都有固定的<italic>text='生命值'</italic>。如果一個單位的生命值低於1，"
 "該單位就會死亡。每個單位也都有固定的<italic>text='經驗值'</italic>。新招募的"
 "單位一開始沒有經驗值，藉由與敵人戰鬥，他會獲得經驗值。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:240
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -3672,24 +3790,30 @@ msgstr ""
 "大可擁有的數值）。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:239
+#: data/core/help.cfg:242
+#, fuzzy
+#| msgid ""
+#| "The hitpoints are also indicated by an energy bar next to each unit, "
+#| "which is green, yellow or red. A unit with at least 1 experience point "
+#| "has a blue experience bar, which turns white as the unit is about to "
+#| "<ref>dst='advancement' text='advance'</ref>."
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
-"experience bar, which turns white as the unit is about to "
-"<ref>dst='advancement' text='advance'</ref>."
+"experience bar, which turns white as the unit is about to <ref "
+"dst='advancement'>advance</ref>."
 msgstr ""
 "生命值也在單位旁邊以能量條的形式被顯示出來。能量條可能是綠色、黃色或紅色。至"
 "少有1點經驗值的單位擁有一條藍色的經驗條，當該單位快<ref>dst='advancement' "
 "text='升級'</ref>時，經驗條會變成白色。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:249
 msgid "Advancement"
 msgstr "升級"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:250
 msgid ""
 "\n"
 "\n"
@@ -3705,7 +3829,7 @@ msgstr ""
 "你升級選項來選。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:250
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -3718,20 +3842,35 @@ msgstr ""
 
 # 「While most units have three levels, not all do.」有語病，不照翻。
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:252
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "While most units have three levels, not all do. Occasional units (such as "
+#| "<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
+#| "reached its maximum level, it may have an <italic>text='After Maximum "
+#| "Level Advancement'</italic> (AMLA) available to it. The AMLA will modify "
+#| "the unit each time the unit reaches the experience goal, but the unit "
+#| "will remain the same level. The typical AMLA effect is for the unit to "
+#| "raise the maximum HP by 3 and full-heal it. The first AMLA will normally "
+#| "be reached with 150 XP gained (120 XP for intelligent units). However, "
+#| "gaining an AMLA becomes progressively harder for each AMLA the unit "
+#| "receives, and so it is usually more useful to try to advance your lower "
+#| "level units."
 msgid ""
 "\n"
 "\n"
 "While most units have three levels, not all do. Occasional units (such as "
-"<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
-"reached its maximum level, it may have an <italic>text='After Maximum Level "
-"Advancement'</italic> (AMLA) available to it. The AMLA will modify the unit "
-"each time the unit reaches the experience goal, but the unit will remain the "
-"same level. The typical AMLA effect is for the unit to raise the maximum HP "
-"by 3 and full-heal it. The first AMLA will normally be reached with 150 XP "
-"gained (120 XP for intelligent units). However, gaining an AMLA becomes "
-"progressively harder for each AMLA the unit receives, and so it is usually "
-"more useful to try to advance your lower level units."
+"<ref dst='unit_Mage'>magi</ref>) may have four. Once a unit has reached its "
+"maximum level, it may have an <i>After Maximum Level Advancement</i> (AMLA) "
+"available to it. The AMLA will modify the unit each time the unit reaches "
+"the experience goal, but the unit will remain the same level. The typical "
+"AMLA effect is for the unit to raise the maximum HP by 3 and full-heal it. "
+"The first AMLA will normally be reached with 150 XP gained (120 XP for "
+"intelligent units). However, gaining an AMLA becomes progressively harder "
+"for each AMLA the unit receives, and so it is usually more useful to try to "
+"advance your lower level units."
 msgstr ""
 "\n"
 "\n"
@@ -3744,12 +3883,25 @@ msgstr ""
 "難，因此嘗試升級你較低等級的單位通常更有用。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:261
 msgid "Movement"
 msgstr "移動"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:262
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each unit has a certain number of movement points which are used up when "
+#| "moving into a new hex, depending on the Terrain of that particular hex. "
+#| "For instance, grassland nearly always costs 1 movement point to enter. "
+#| "Exactly how many movement points are spent entering a hex depends on the "
+#| "unit type — in forest, elvish units only spend 1 movement point, most "
+#| "human and orc units spend 2, while horsemen spend 3. You can learn how "
+#| "many movement points a unit requires to enter a certain terrain type by "
+#| "right-clicking on it, selecting <bold>text='Unit Description'</bold>, and "
+#| "then looking at <bold>text='Terrain Modifiers'</bold>."
 msgid ""
 "\n"
 "\n"
@@ -3760,8 +3912,8 @@ msgid ""
 "in forest, elvish units only spend 1 movement point, most human and orc "
 "units spend 2, while horsemen spend 3. You can learn how many movement "
 "points a unit requires to enter a certain terrain type by right-clicking on "
-"it, selecting <bold>text='Unit Description'</bold>, and then looking at "
-"<bold>text='Terrain Modifiers'</bold>."
+"it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
+"Modifiers</b>."
 msgstr ""
 "\n"
 "\n"
@@ -3773,20 +3925,35 @@ msgstr ""
 "<bold>text='單位描述'</bold>，然後查看<bold>text='地形影響'</bold>。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:262
+#, fuzzy
+#| msgid ""
+#| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
+#| "on the unit you wish to move to select it, then click on the hex you wish "
+#| "to move it to. When a unit is selected, everywhere it can move this turn "
+#| "will be highlighted, and all other hexes on the map are made dull. "
+#| "Mousing over a highlighted hex shows the defense rating the unit would "
+#| "have if you moved it to that hex. Mousing over a dull hex will also show "
+#| "the number of turns required to reach it, and clicking will cause the "
+#| "unit to move towards it by the fastest route over this and subsequent "
+#| "turns. If you don’t use up all of a unit’s movement when you first move a "
+#| "unit, you may move it again. This is useful when having two units switch "
+#| "places. Attacking with a unit will use up its movement. Ending a move in "
+#| "a village you don’t already own will also use up a unit’s movement, but "
+#| "will still allow it to attack."
 msgid ""
-"Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
-"the unit you wish to move to select it, then click on the hex you wish to "
-"move it to. When a unit is selected, everywhere it can move this turn will "
-"be highlighted, and all other hexes on the map are made dull. Mousing over a "
-"highlighted hex shows the defense rating the unit would have if you moved it "
-"to that hex. Mousing over a dull hex will also show the number of turns "
-"required to reach it, and clicking will cause the unit to move towards it by "
-"the fastest route over this and subsequent turns. If you don’t use up all of "
-"a unit’s movement when you first move a unit, you may move it again. This is "
-"useful when having two units switch places. Attacking with a unit will use "
-"up its movement. Ending a move in a village you don’t already own will also "
-"use up a unit’s movement, but will still allow it to attack."
+"Movement in <i>Battle for Wesnoth</i> is simple. Click on the unit you wish "
+"to move to select it, then click on the hex you wish to move it to. When a "
+"unit is selected, everywhere it can move this turn will be highlighted, and "
+"all other hexes on the map are made dull. Mousing over a highlighted hex "
+"shows the defense rating the unit would have if you moved it to that hex. "
+"Mousing over a dull hex will also show the number of turns required to reach "
+"it, and clicking will cause the unit to move towards it by the fastest route "
+"over this and subsequent turns. If you don’t use up all of a unit’s movement "
+"when you first move a unit, you may move it again. This is useful when "
+"having two units switch places. Attacking with a unit will use up its "
+"movement. Ending a move in a village you don’t already own will also use up "
+"a unit’s movement, but will still allow it to attack."
 msgstr ""
 "在<italic>text='韋諾之戰'</italic>中移動單位很簡單。點選你想要移動的單位，然"
 "後在你想要他移動到的格子上點擊滑鼠左鍵就行了。當一個單位被選中時，任何這個回"
@@ -3799,17 +3966,28 @@ msgstr ""
 "點數，但他仍然能發動攻擊。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:264
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Another thing to keep in mind while moving is <italic>text='zones of "
+#| "control'</italic>. Each unit — except for level 0 units — generates a "
+#| "zone of control in the hexes immediately surrounding it, and any enemy "
+#| "unit entering those hexes immediately ends its movement. Learning how to "
+#| "use zones of control to your advantage is an important part of Wesnoth, "
+#| "as only <ref>dst='ability_skirmisherskirmisher' text='skirmishers'</ref> "
+#| "can ignore zones of control."
 msgid ""
 "\n"
 "\n"
-"Another thing to keep in mind while moving is <italic>text='zones of "
-"control'</italic>. Each unit — except for level 0 units — generates a zone "
-"of control in the hexes immediately surrounding it, and any enemy unit "
-"entering those hexes immediately ends its movement. Learning how to use "
-"zones of control to your advantage is an important part of Wesnoth, as only "
-"<ref>dst='ability_skirmisherskirmisher' text='skirmishers'</ref> can ignore "
-"zones of control."
+"Another thing to keep in mind while moving is <i>zones of control</i>. Each "
+"unit — except for level 0 units — generates a zone of control in the hexes "
+"immediately surrounding it, and any enemy unit entering those hexes "
+"immediately ends its movement. Learning how to use zones of control to your "
+"advantage is an important part of Wesnoth, as only <ref "
+"dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
+"control."
 msgstr ""
 "\n"
 "\n"
@@ -3819,7 +3997,7 @@ msgstr ""
 "<ref>dst='ability_skirmisherskirmisher' text='游撃'</ref>可以忽視控制區域。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:263
+#: data/core/help.cfg:266
 msgid ""
 "\n"
 "\n"
@@ -3834,14 +4012,14 @@ msgstr ""
 "到哪。"
 
 #. [topic]: id=vision
-#: data/core/help.cfg:272
+#: data/core/help.cfg:275
 #, fuzzy
 #| msgid "Vision:"
 msgid "Vision"
 msgstr "視野："
 
 #. [topic]: id=vision
-#: data/core/help.cfg:273
+#: data/core/help.cfg:276
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -3850,22 +4028,43 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:280
+#: data/core/help.cfg:283
 msgid "Shroud and Fog of War"
 msgstr "戰場黑幕與戰爭迷霧"
 
 # 「Each unit clears locations adjacent to those within one turn’s move」寫得有點怪怪的，不照翻。
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:281
+#: data/core/help.cfg:284
+#, fuzzy
+#| msgid ""
+#| "In some scenarios, parts of the map will be hidden from you. There are "
+#| "two mechanisms that can be used separately or together. The "
+#| "<italic>text='shroud'</italic> hides both the terrain and any units at a "
+#| "location. However, once it is cleared, you can always see that location. "
+#| "The <italic>text='fog of war'</italic> only hides units and ownership of "
+#| "villages (other than by you or your allies). The fog of war is cleared "
+#| "temporarily when you have units nearby, but returns when they leave. Both "
+#| "the shroud and the fog of war are cleared by units. Each unit clears "
+#| "locations adjacent to those within one turn’s move (ignoring zones of "
+#| "control and enemy units).\n"
+#| "\n"
+#| "Normally you can undo a unit’s movement, as long as an event with a "
+#| "randomized result has not occurred, such as combat or recruitment (as "
+#| "most units receive random traits when recruited). Exploring hidden "
+#| "terrain by clearing shroud or fog will also prevent undos to a previous "
+#| "state. You may wish to activate <bold>text='Delay Shroud Updates'</bold> "
+#| "in the actions menu. This will prevent units from clearing shroud or fog "
+#| "until the next randomized event or a manual update via <bold>text='Update "
+#| "Shroud Now'</bold> (or the end of your turn) and thereby preserve your "
+#| "ability to undo movement."
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
-"mechanisms that can be used separately or together. The "
-"<italic>text='shroud'</italic> hides both the terrain and any units at a "
-"location. However, once it is cleared, you can always see that location. The "
-"<italic>text='fog of war'</italic> only hides units and ownership of "
-"villages (other than by you or your allies). The fog of war is cleared "
-"temporarily when you have units nearby, but returns when they leave. Both "
-"the shroud and the fog of war are cleared by units. Each unit clears "
+"mechanisms that can be used separately or together. The <i>shroud</i> hides "
+"both the terrain and any units at a location. However, once it is cleared, "
+"you can always see that location. The <i>fog of war</i> only hides units and "
+"ownership of villages (other than by you or your allies). The fog of war is "
+"cleared temporarily when you have units nearby, but returns when they leave. "
+"Both the shroud and the fog of war are cleared by units. Each unit clears "
 "locations adjacent to those within one turn’s move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
@@ -3873,11 +4072,10 @@ msgid ""
 "randomized result has not occurred, such as combat or recruitment (as most "
 "units receive random traits when recruited). Exploring hidden terrain by "
 "clearing shroud or fog will also prevent undos to a previous state. You may "
-"wish to activate <bold>text='Delay Shroud Updates'</bold> in the actions "
-"menu. This will prevent units from clearing shroud or fog until the next "
-"randomized event or a manual update via <bold>text='Update Shroud Now'</"
-"bold> (or the end of your turn) and thereby preserve your ability to undo "
-"movement."
+"wish to activate <b>Delay Shroud Updates</b> in the actions menu. This will "
+"prevent units from clearing shroud or fog until the next randomized event or "
+"a manual update via <b>Update Shroud Now</b> (or the end of your turn) and "
+"thereby preserve your ability to undo movement."
 msgstr ""
 "在一些章節中，部分的地圖將對你隱藏。有兩種機制可獨立或共同被用在這方面。"
 "<italic>text='戰場黑幕'</italic>會隱藏地形及在某個位置上的任何單位。然而，一"
@@ -3895,12 +4093,14 @@ msgstr ""
 "這一回合），藉此保留你還原移動的能力。"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:285
-msgid "<header>text='Multiplayer and undo'</header>"
+#: data/core/help.cfg:288
+#, fuzzy
+#| msgid "<header>text='Multiplayer and undo'</header>"
+msgid "<header>Multiplayer and undo</header>"
 msgstr "<header>text='多人與還原'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:287
+#: data/core/help.cfg:290
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -3915,13 +4115,13 @@ msgstr ""
 "作被傳送。"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:294
+#: data/core/help.cfg:297
 msgid "Save-loading"
 msgstr "儲存載入大法"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=saveload
-#: data/core/help.cfg:295
+#: data/core/help.cfg:298
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3936,13 +4136,20 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=saveload
-#: data/core/help.cfg:297
+#: data/core/help.cfg:300
+#, fuzzy
+#| msgid ""
+#| "One of the challenges of the game is to work out how to protect your "
+#| "heroes. Small risks quickly build up: if you have five important units, "
+#| "and they each have just a 1% chance of death each turn, you can "
+#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
+#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
-"each have just a 1% chance of death each turn, you can "
-"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
-"you’ll rarely make it through a scenario without having it happen."
+"each have just a 1% chance of death each turn, you can <i>expect</i> one of "
+"them to die about every 20 turns. So, you’ll rarely make it through a "
+"scenario without having it happen."
 msgstr ""
 "這個遊戲的其中一個挑戰就是要想出如何保護你的英雄。小風險累積得很快，舉例來"
 "說：如果你有五個重要的單位，而他們在每回合只有1%的死亡機率，那麼你可以"
@@ -3952,7 +4159,7 @@ msgstr ""
 # 為了描述更清楚一點，不照翻。
 # 看不懂「the game mechanics reward remembering that it’s just a game」。
 #. [topic]: id=saveload
-#: data/core/help.cfg:300
+#: data/core/help.cfg:303
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -3967,7 +4174,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=saveload
-#: data/core/help.cfg:302
+#: data/core/help.cfg:305
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -3981,7 +4188,7 @@ msgstr ""
 "衡的。"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:304
+#: data/core/help.cfg:307
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
@@ -3990,14 +4197,20 @@ msgstr ""
 "好的方式。"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:311
+#: data/core/help.cfg:314
 msgid "Learning from Losses"
 msgstr "從失敗中學習"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:312
+#: data/core/help.cfg:315
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Why did I lose that scenario?'</italic>\n"
+#| "\n"
+#| "One of the most difficult parts of Wesnoth is understanding why a "
+#| "scenario was lost."
 msgid ""
-"<italic>text='Why did I lose that scenario?'</italic>\n"
+"<i>Why did I lose that scenario?</i>\n"
 "\n"
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
@@ -4007,14 +4220,23 @@ msgstr ""
 "韋諾最難的部分之一就是了解為什麼會輸掉章節。"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:314
+#: data/core/help.cfg:317
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "When you first start playing, you will probably lose some scenarios. That "
+#| "is normal, and is part of learning the game. When that happens, try to "
+#| "learn from your mistakes: watch the replay, try to understand what you "
+#| "did wrong, then <ref>dst='saveload' text='restart the scenario'</ref> and "
+#| "try again."
 msgid ""
 "\n"
 "\n"
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
 "from your mistakes: watch the replay, try to understand what you did wrong, "
-"then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
+"then <ref dst='saveload'>restart the scenario</ref> and try again."
 msgstr ""
 "\n"
 "\n"
@@ -4023,7 +4245,7 @@ msgstr ""
 "作，然後<ref>dst='saveload' text='重新開始這個章節'</ref>再試一次。"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:316
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -4034,12 +4256,18 @@ msgstr ""
 "一些常見的輸掉章節的原因有："
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:318
+#: data/core/help.cfg:321
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
+#| "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgid ""
 "\n"
 "\n"
-"• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
-"level'</ref>. Try restarting the scenario at an easier difficulty."
+"• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
+"ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
 "\n"
 "\n"
@@ -4047,13 +4275,21 @@ msgstr ""
 "難度來重新開始章節。"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:320
+#: data/core/help.cfg:323
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "• Playing a poor strategy: for example, recruiting the wrong types of "
+#| "units, fighting at the wrong <ref>dst='time_of_day' text='time of day'</"
+#| "ref>, not taking advantage of terrain features or units’ special "
+#| "abilities, and so on."
 msgid ""
 "\n"
 "\n"
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
-"fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
-"taking advantage of terrain features or units’ special abilities, and so on."
+"fighting at the wrong <ref dst='time_of_day'>time of day</ref>, not taking "
+"advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
 "\n"
 "\n"
@@ -4062,7 +4298,7 @@ msgstr ""
 
 # 看不太懂「what to expect from a difficult scenario」，不照翻。
 #. [topic]: id=whylost
-#: data/core/help.cfg:322
+#: data/core/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -4079,20 +4315,33 @@ msgstr ""
 
 # 「 win them more convincingly」不好翻譯，不照翻。
 #. [topic]: id=whylost
-#: data/core/help.cfg:324
+#: data/core/help.cfg:327
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "• Barely scraping a victory in a previous scenario. Campaigns generally "
+#| "assume that you will have some <italic>text='carryover gold'</italic> and "
+#| "some experienced units on your <italic>text='recall list.'</italic> "
+#| "(These concepts are explained in the tutorial.) If you win a scenario but "
+#| "lose most of your experienced units and much of your gold, the following "
+#| "scenario may be very difficult to beat, even for a more experienced "
+#| "player. If you find yourself in this situation, you may try to go back a "
+#| "scenario or two and win them more convincingly, or change to an easier "
+#| "difficulty. (However, remember that <italic>text='some'</italic> losses "
+#| "are expected, particularly at higher difficulties.)"
 msgid ""
 "\n"
 "\n"
 "• Barely scraping a victory in a previous scenario. Campaigns generally "
-"assume that you will have some <italic>text='carryover gold'</italic> and "
-"some experienced units on your <italic>text='recall list.'</italic> (These "
-"concepts are explained in the tutorial.) If you win a scenario but lose most "
-"of your experienced units and much of your gold, the following scenario may "
-"be very difficult to beat, even for a more experienced player. If you find "
-"yourself in this situation, you may try to go back a scenario or two and win "
-"them more convincingly, or change to an easier difficulty. (However, "
-"remember that <italic>text='some'</italic> losses are expected, particularly "
-"at higher difficulties.)"
+"assume that you will have some <i>carryover gold</i> and some experienced "
+"units on your <i>recall list.</i> (These concepts are explained in the "
+"tutorial.) If you win a scenario but lose most of your experienced units and "
+"much of your gold, the following scenario may be very difficult to beat, "
+"even for a more experienced player. If you find yourself in this situation, "
+"you may try to go back a scenario or two and win them more convincingly, or "
+"change to an easier difficulty. (However, remember that <i>some</i> losses "
+"are expected, particularly at higher difficulties.)"
 msgstr ""
 "\n"
 "\n"
@@ -4105,7 +4354,7 @@ msgstr ""
 "的難度下）"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:326
+#: data/core/help.cfg:329
 msgid ""
 "\n"
 "\n"
@@ -4124,18 +4373,23 @@ msgstr ""
 "利」的一個例子。）"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:328
+#: data/core/help.cfg:331
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Unlikely reasons'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Unlikely reasons'</header>"
+"<header>Unlikely reasons</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='不太可能的原因'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:330
+#: data/core/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -4148,7 +4402,7 @@ msgstr ""
 "能。它們是："
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:332
+#: data/core/help.cfg:335
 msgid ""
 "\n"
 "\n"
@@ -4163,7 +4417,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=whylost
-#: data/core/help.cfg:334
+#: data/core/help.cfg:337
 msgid ""
 "\n"
 "\n"
@@ -4183,7 +4437,23 @@ msgstr ""
 
 # 最後一句不知道在寫什麼，不照翻。
 #. [topic]: id=whylost
-#: data/core/help.cfg:336
+#: data/core/help.cfg:339
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
+#| "could happen that the enemy was very lucky and had many hits, while you "
+#| "were very unlucky and had many misses. However, this is a very rare "
+#| "occurrence, virtually unheard of in all but the shortest, smallest "
+#| "scenarios. In fact, losses are more commonly caused by playing a "
+#| "<italic>text='bad'</italic> strategy despite having <italic>text='above-"
+#| "average'</italic> luck, than by playing a <italic>text='good'</italic> "
+#| "strategy but having <italic>text='below-average'</italic> luck. Moreover, "
+#| "merely having “below-average” luck does not excuse a loss; having below-"
+#| "average luck is perfectly normal, and scenarios are designed to be "
+#| "winnable even with below-average luck. It is only exceedingly bad luck, "
+#| "over multiple turns, that we mean here."
 msgid ""
 "\n"
 "\n"
@@ -4191,14 +4461,12 @@ msgid ""
 "could happen that the enemy was very lucky and had many hits, while you were "
 "very unlucky and had many misses. However, this is a very rare occurrence, "
 "virtually unheard of in all but the shortest, smallest scenarios. In fact, "
-"losses are more commonly caused by playing a <italic>text='bad'</italic> "
-"strategy despite having <italic>text='above-average'</italic> luck, than by "
-"playing a <italic>text='good'</italic> strategy but having "
-"<italic>text='below-average'</italic> luck. Moreover, merely having “below-"
-"average” luck does not excuse a loss; having below-average luck is perfectly "
-"normal, and scenarios are designed to be winnable even with below-average "
-"luck. It is only exceedingly bad luck, over multiple turns, that we mean "
-"here."
+"losses are more commonly caused by playing a <i>bad</i> strategy despite "
+"having <i>above-average</i> luck, than by playing a <i>good</i> strategy but "
+"having <i>below-average</i> luck. Moreover, merely having “below-average” "
+"luck does not excuse a loss; having below-average luck is perfectly normal, "
+"and scenarios are designed to be winnable even with below-average luck. It "
+"is only exceedingly bad luck, over multiple turns, that we mean here."
 msgstr ""
 "\n"
 "\n"
@@ -4212,15 +4480,24 @@ msgstr ""
 "氣。"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:338
+#: data/core/help.cfg:341
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Be wary of attributing a loss to any of these reasons. If you are not a "
+#| "veteran player, it is far more likely that your loss was caused by one of "
+#| "the <italic>text='common'</italic> errors, listed above, and is not "
+#| "indicative of a bug in the campaign. However, if you still think you "
+#| "found a bug, then by all means, report it!"
 msgid ""
 "\n"
 "\n"
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
-"the <italic>text='common'</italic> errors, listed above, and is not "
-"indicative of a bug in the campaign. However, if you still think you found a "
-"bug, then by all means, report it!"
+"the <i>common</i> errors, listed above, and is not indicative of a bug in "
+"the campaign. However, if you still think you found a bug, then by all "
+"means, report it!"
 msgstr ""
 "\n"
 "\n"
@@ -4230,7 +4507,7 @@ msgstr ""
 
 # 不確定「or small bits of luck at critical points in the engagement」的意思，不照翻。
 #. [topic]: id=whylost
-#: data/core/help.cfg:340
+#: data/core/help.cfg:343
 msgid ""
 "\n"
 "\n"
@@ -4247,16 +4524,21 @@ msgstr ""
 "交戰的關鍵時刻獲得一點運氣。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:349
+#: data/core/help.cfg:352
 msgid "Combat"
 msgstr "戰鬥"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:353
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Order and Number of Strikes'</header>"
+"<header>Order and Number of Strikes</header>"
 msgstr ""
 "\n"
 "\n"
@@ -4264,18 +4546,31 @@ msgstr ""
 
 # 由於weapon在英文中可以同時指「武器」以及「攻擊技能」，所以翻譯時不能將「火球」這種魔法技能併入「武器」當中。
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:353
+#, fuzzy
+#| msgid ""
+#| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
+#| "between units in adjacent hexes. Click on your unit, and click on the "
+#| "enemy you want to attack: your unit will move towards the enemy unit, and "
+#| "when they are next to each other, combat will begin. The attacker and "
+#| "defender alternate strikes until each has used their allotted number of "
+#| "strikes. The attacker chooses one of its weapons to attack with, and the "
+#| "defender retaliates with one of its attacks of the same type. There are "
+#| "two types of attacks: <italic>text='melee'</italic>, which usually "
+#| "involves weapons such as swords, axes or fangs; and "
+#| "<italic>text='ranged'</italic>, which usually involves weapons such as "
+#| "bows, spears and fireballs."
 msgid ""
-"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-"between units in adjacent hexes. Click on your unit, and click on the enemy "
-"you want to attack: your unit will move towards the enemy unit, and when "
-"they are next to each other, combat will begin. The attacker and defender "
-"alternate strikes until each has used their allotted number of strikes. The "
-"attacker chooses one of its weapons to attack with, and the defender "
-"retaliates with one of its attacks of the same type. There are two types of "
-"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
-"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
-"involves weapons such as bows, spears and fireballs."
+"Combat in <i>Battle for Wesnoth</i> always takes place between units in "
+"adjacent hexes. Click on your unit, and click on the enemy you want to "
+"attack: your unit will move towards the enemy unit, and when they are next "
+"to each other, combat will begin. The attacker and defender alternate "
+"strikes until each has used their allotted number of strikes. The attacker "
+"chooses one of its weapons to attack with, and the defender retaliates with "
+"one of its attacks of the same type. There are two types of attacks: "
+"<i>melee</i>, which usually involves weapons such as swords, axes or fangs; "
+"and <i>ranged</i>, which usually involves weapons such as bows, spears and "
+"fireballs."
 msgstr ""
 "在<italic>text='韋諾之戰'</italic>中的戰鬥總是發生在相鄰的兩個單位之間。點選"
 "你的單位，然後再點選你想攻撃的敵人。你的單位將會向敵人移動，而當他們與敵人單"
@@ -4286,7 +4581,7 @@ msgstr ""
 "火球等魔法。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:352
+#: data/core/help.cfg:355
 msgid ""
 "\n"
 "\n"
@@ -4306,28 +4601,45 @@ msgstr ""
 "點傷害，半獸人蠻兵使用9×2的攻擊只能攻擊2次（但每次撃中會造成9點傷害）。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:354
+#: data/core/help.cfg:357
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Chance to Hit'</header>"
+"<header>Chance to Hit</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text=命中率</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:356
+#: data/core/help.cfg:359
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Every unit has a chance of being hit, based on the "
+#| "<italic>text='terrain'</italic> it is in. This is shown in the status "
+#| "pane, and may also be found by right-clicking a unit, selecting "
+#| "<bold>text='Unit Description'</bold>, and then looking at "
+#| "<bold>text='Terrain Modifiers'</bold>. For instance, many elves have a "
+#| "defense rating of 70% in forest, so a unit attacking them has only a 30% "
+#| "chance of hitting. Conversely, the elf’s chance of hitting the attacker "
+#| "in return depends on what terrain the attacker is in."
 msgid ""
 "\n"
 "\n"
-"Every unit has a chance of being hit, based on the <italic>text='terrain'</"
-"italic> it is in. This is shown in the status pane, and may also be found by "
-"right-clicking a unit, selecting <bold>text='Unit Description'</bold>, and "
-"then looking at <bold>text='Terrain Modifiers'</bold>. For instance, many "
-"elves have a defense rating of 70% in forest, so a unit attacking them has "
-"only a 30% chance of hitting. Conversely, the elf’s chance of hitting the "
-"attacker in return depends on what terrain the attacker is in."
+"Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
+"This is shown in the status pane, and may also be found by right-clicking a "
+"unit, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
+"Modifiers</b>. For instance, many elves have a defense rating of 70% in "
+"forest, so a unit attacking them has only a 30% chance of hitting. "
+"Conversely, the elf’s chance of hitting the attacker in return depends on "
+"what terrain the attacker is in."
 msgstr ""
 "\n"
 "\n"
@@ -4338,15 +4650,24 @@ msgstr ""
 "攻擊者的機率取決於攻擊者所處的地形。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:358
+#: data/core/help.cfg:361
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
+#| "text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
+#| "text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
+#| "regardless of terrain, and, when used offensively, marksmen always have "
+#| "at least a 60% chance to hit, regardless of terrain."
 msgid ""
 "\n"
 "\n"
-"There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
-"text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
-"text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
-"regardless of terrain, and, when used offensively, marksmen always have at "
-"least a 60% chance to hit, regardless of terrain."
+"There are two exceptions to this rule: <ref "
+"dst='weaponspecial_magical'>magical attacks</ref> and <ref "
+"dst='weaponspecial_marksman'>marksmen</ref>. Magical attacks always have a "
+"70% chance to hit, regardless of terrain, and, when used offensively, "
+"marksmen always have at least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
 "\n"
@@ -4355,7 +4676,7 @@ msgstr ""
 "率，無視地形。而當被用於進攻時，精準總是有至少60%的命中率，無視地形。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:360
+#: data/core/help.cfg:363
 msgid ""
 "\n"
 "\n"
@@ -4367,17 +4688,28 @@ msgstr ""
 
 # 由於原文敘述有點不清楚，所以不照翻。
 #. [topic]: id=combat
-#: data/core/help.cfg:362
+#: data/core/help.cfg:365
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each strike which hits causes a base amount of damage depending on the "
+#| "attack type. For instance, an elvish fighter with a 5×4 attack does 5 "
+#| "base damage. This is usually modified by two things: "
+#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
+#| "is modified by the circumstances, select <bold>text='Damage "
+#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
 "Each strike which hits causes a base amount of damage depending on the "
 "attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
-"damage. This is usually modified by two things: "
-"<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
-"<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
-"modified by the circumstances, select <bold>text='Damage Calculations'</"
-"bold> in the attack selection menu."
+"damage. This is usually modified by two things: <ref "
+"dst='damage_types_and_resistance'>resistance</ref> and <ref "
+"dst='time_of_day'>time of day</ref>. To see how base damage is modified by "
+"the circumstances, select <b>Damage Calculations</b> in the attack selection "
+"menu."
 msgstr ""
 "\n"
 "\n"
@@ -4388,14 +4720,23 @@ msgstr ""
 "被計算，就在攻撃選單中選擇<bold>text='傷害計算'</bold>。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:364
+#: data/core/help.cfg:367
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "A few units have special <ref>dst='..abilities_section' text='abilities'</"
+#| "ref> which affect damage dealt in combat. The most common of these is "
+#| "<ref>dst='weaponspecial_charge' text='charge'</ref>, which doubles the "
+#| "damage dealt by both attacker and defender when the unit with charge "
+#| "attacks."
 msgid ""
 "\n"
 "\n"
-"A few units have special <ref>dst='..abilities_section' text='abilities'</"
-"ref> which affect damage dealt in combat. The most common of these is "
-"<ref>dst='weaponspecial_charge' text='charge'</ref>, which doubles the "
-"damage dealt by both attacker and defender when the unit with charge attacks."
+"A few units have special <ref dst='..abilities_section'>abilities</ref> "
+"which affect damage dealt in combat. The most common of these is <ref "
+"dst='weaponspecial_charge'>charge</ref>, which doubles the damage dealt by "
+"both attacker and defender when the unit with charge attacks."
 msgstr ""
 "\n"
 "\n"
@@ -4405,12 +4746,12 @@ msgstr ""
 "倍。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:372
+#: data/core/help.cfg:375
 msgid "Damage Types and Resistance"
 msgstr "傷害種類和抗性"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:376
 msgid ""
 "\n"
 "\n"
@@ -4428,14 +4769,21 @@ msgstr ""
 "害會增加100%。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:376
+#, fuzzy
+#| msgid ""
+#| "In Wesnoth, there are three types of damage usually associated with "
+#| "physical attacks: <italic>text='blade, pierce, and impact damage'</"
+#| "italic>. Additionally, there are three further types of damage usually "
+#| "associated with magical attacks: <italic>text='fire, cold, and arcane "
+#| "attacks'</italic>. Different units may have resistances which alter the "
+#| "damage which they take from certain damage types."
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
-"attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
-"Additionally, there are three further types of damage usually associated "
-"with magical attacks: <italic>text='fire, cold, and arcane attacks'</"
-"italic>. Different units may have resistances which alter the damage which "
-"they take from certain damage types."
+"attacks: <i>blade, pierce, and impact damage</i>. Additionally, there are "
+"three further types of damage usually associated with magical attacks: "
+"<i>fire, cold, and arcane attacks</i>. Different units may have resistances "
+"which alter the damage which they take from certain damage types."
 msgstr ""
 "在韋諾裡，與物理攻擊有關的傷害類型通常是這三種：<italic>text='劍刃、穿刺和衝"
 "撃'</italic>。此外，與魔法攻擊有關的傷害類型通常還有這三種：<italic>text='火"
@@ -4443,7 +4791,7 @@ msgstr ""
 "傷害類型中受到的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:375
+#: data/core/help.cfg:378
 msgid ""
 "\n"
 "\n"
@@ -4457,7 +4805,7 @@ msgstr ""
 "易受到秘法傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:377
+#: data/core/help.cfg:380
 msgid ""
 "\n"
 "\n"
@@ -4471,16 +4819,21 @@ msgstr ""
 "類型有100%的抗性也是適用這點。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:385
+#: data/core/help.cfg:388
 msgid "Orbs and ellipses"
 msgstr "狀態球和彩色圓環"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=orbs
-#: data/core/help.cfg:386
+#: data/core/help.cfg:389
+#, fuzzy
+#| msgid ""
+#| "There are colored indicators above the energy bars of some units, "
+#| "consisting of a colored orb (and sometimes a <ref>dst='crowns' "
+#| "text='crown'</ref>)."
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
-"of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
+"of a colored orb (and sometimes a <ref dst='crowns'>crown</ref>)."
 msgstr ""
 "一些單位的生命條上方會顯示出特定顏色的球體或是<ref>dst='crowns' text='王冠'</"
 "ref>，有時候兩個都會顯示出來。"
@@ -4488,29 +4841,53 @@ msgstr ""
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:397
+#: data/core/help.cfg:400
+#, fuzzy
+#| msgid ""
+#| "The orbs show whether the unit can move or attack. The statuses and their "
+#| "standard colors are:\n"
+#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
+#| "turn.\n"
+#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
+#| "attack. It might still be able to move further too.\n"
+#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
+#| "this turn.\n"
+#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
+#| "    • when a unit is in the middle of a multi-turn move (has been told to "
+#| "move further than it can in the current turn).\n"
+#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
+#| "still move further, but it can no longer attack.\n"
+#| "    • This can happen due to campaign-specific events or abilities, for "
+#| "example the <italic>text='disengage'</italic> ability in the campaign "
+#| "<italic>text='Under the Burning Suns'</italic>.\n"
+#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
+#| "own turn.\n"
+#| "    • During the ally’s own turn, their units will be shown with the "
+#| "colors showing whether the units can still move and attack; however their "
+#| "moves, and the corresponding orb changes, are delayed as explained in "
+#| "<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
+#| "• Enemy units normally don’t have orbs, however these can be enabled in "
+#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
-"• <bold>text='Green'</bold> if it has neither moved nor attacked this turn.\n"
-"• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-"attack. It might still be able to move further too.\n"
-"• <bold>text='Red'</bold> if it can neither move further nor attack again "
-"this turn.\n"
+"• <b>Green</b> if it has neither moved nor attacked this turn.\n"
+"• <b>Yellow</b> if it has moved (or attacked), and can still attack. It "
+"might still be able to move further too.\n"
+"• <b>Red</b> if it can neither move further nor attack again this turn.\n"
 "    • Red is also used after the ‘end unit turn’ command, and,\n"
 "    • when a unit is in the middle of a multi-turn move (has been told to "
 "move further than it can in the current turn).\n"
-"• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-"still move further, but it can no longer attack.\n"
+"• <b>Red and yellow</b> if it has moved (or attacked), can still move "
+"further, but it can no longer attack.\n"
 "    • This can happen due to campaign-specific events or abilities, for "
-"example the <italic>text='disengage'</italic> ability in the campaign "
-"<italic>text='Under the Burning Suns'</italic>.\n"
-"• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
-"turn.\n"
+"example the <i>disengage</i> ability in the campaign <i>Under the Burning "
+"Suns</i>.\n"
+"• <b>Blue</b> for allied units, except during that ally’s own turn.\n"
 "    • During the ally’s own turn, their units will be shown with the colors "
 "showing whether the units can still move and attack; however their moves, "
-"and the corresponding orb changes, are delayed as explained in "
-"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
+"and the corresponding orb changes, are delayed as explained in <ref "
+"dst='shroud_and_fog'>Shroud and Fog of War</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
@@ -4534,12 +4911,14 @@ msgstr ""
 "用。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:409
-msgid "<header>text='Ellipses'</header>"
+#: data/core/help.cfg:412
+#, fuzzy
+#| msgid "<header>text='Ellipses'</header>"
+msgid "<header>Ellipses</header>"
 msgstr "彩色圓環"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:412
+#: data/core/help.cfg:415
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -4550,14 +4929,25 @@ msgstr ""
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:422
+#: data/core/help.cfg:425
+#, fuzzy
+#| msgid ""
+#| "• Most units have a circular ellipse.\n"
+#| "• Units that can recruit have a seven-pointed star.\n"
+#| "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
+#| "seven-pointed star, these units can’t recruit.\n"
+#| "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
+#| "broken outline version of the shape.\n"
+#| "• Some campaigns start with a level zero leader. Able to recruit but "
+#| "lacking a ZoC, these units have a broken outline version of the seven-"
+#| "pointed star."
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
-"• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
-"seven-pointed star, these units can’t recruit.\n"
-"• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken outline version of the shape.\n"
+"• <ref dst='crowns'>Hero units</ref> have a smaller variant of the seven-"
+"pointed star, these units can’t recruit.\n"
+"• Units without a <ref dst='movement'>zone of control</ref> have a broken "
+"outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
@@ -4571,29 +4961,54 @@ msgstr ""
 "text='控制區域'</ref>，他們有一個破碎版本的七角星彩色圓環。"
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:433
+#: data/core/help.cfg:436
 msgid "Crowns and loyal markers"
 msgstr "王冠和忠誠標誌"
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:434
+#: data/core/help.cfg:437
+#, fuzzy
+#| msgid ""
+#| "Some units have an additional marker superimposed on their "
+#| "<ref>dst='orbs' text='orb'</ref>, and a corresponding shape to their "
+#| "<ref>dst='orbs' text='ellipses'</ref>:"
 msgid ""
-"Some units have an additional marker superimposed on their <ref>dst='orbs' "
-"text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
-"text='ellipses'</ref>:"
+"Some units have an additional marker superimposed on their <ref "
+"dst='orbs'>orb</ref>, and a corresponding shape to their <ref "
+"dst='orbs'>ellipses</ref>:"
 msgstr ""
 "某些單位有額外的標誌疊在他們的<ref>dst='orbs' text='狀態球'</ref>上，"
 "<ref>dst='orbs' text='彩色圓環'</ref>也會有相應的圖形："
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:446
+#: data/core/help.cfg:450
+#, fuzzy
+#| msgid ""
+#| "• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
+#| "• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
+#| "• Expendable leaders are shown with a <bold>text='silver crown'</bold>.\n"
+#| "• <ref>dst='traits_loyal' text='Loyal units'</ref> have the "
+#| "<bold>text='loyal icon'</bold>.\n"
+#| "\n"
+#| "Of these categories, only leaders are built into the basic game rules. "
+#| "The others are found in campaigns, and are characters that form part of "
+#| "the narration. The exact rules for them are set by their campaign, which "
+#| "might deviate from these standard expectations about them:\n"
+#| "\n"
+#| "• The death of any hero leads to immediate defeat.\n"
+#| "• The death of an expendable leader doesn’t lead to immediate defeat, "
+#| "even though they can recruit.\n"
+#| "• All of these units have the main advantage of the loyal trait, that "
+#| "they cost no upkeep.\n"
+#| "• Losing any of these units causes a disadvantage for the remainder of "
+#| "the campaign, assuming it doesn’t end immediately.\n"
+#| "• These units will never occur as random recruits."
 msgid ""
-"• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
-"• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
-"• Expendable leaders are shown with a <bold>text='silver crown'</bold>.\n"
-"• <ref>dst='traits_loyal' text='Loyal units'</ref> have the "
-"<bold>text='loyal icon'</bold>.\n"
+"• Leaders are shown with a <b>gold crown</b>.\n"
+"• Heroes have a <b>blueish-silver crown</b>.\n"
+"• Expendable leaders are shown with a <b>silver crown</b>.\n"
+"• <ref dst='traits_loyal'>Loyal units</ref> have the <b>loyal icon</b>.\n"
 "\n"
 "Of these categories, only leaders are built into the basic game rules. The "
 "others are found in campaigns, and are characters that form part of the "
@@ -4627,12 +5042,12 @@ msgstr ""
 "• 這些單位絕對不會作為新兵出現。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:464
+#: data/core/help.cfg:468
 msgid "Time of Day"
 msgstr "時段"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465
+#: data/core/help.cfg:469
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -4663,7 +5078,7 @@ msgstr ""
 "• <bold>text='邊緣'</bold>單位在晨昏 +25% 傷害。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:470
+#: data/core/help.cfg:474
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4686,15 +5101,46 @@ msgstr ""
 "\n"
 
 #. [topic]: id=time_of_day
+#: data/core/help.cfg:476
+msgid ""
+"\n"
+"<table>\n"
+"    <row>\n"
+"        <col>Dawn</col><col><img src='misc/time-schedules/default/schedule-"
+"dawn.png'/></col>\n"
+"    </row>\n"
+"    <row>\n"
+"        <col>Morning</col><col><img src='misc/time-schedules/default/"
+"schedule-morning.png'/></col>\n"
+"    </row>\n"
+"    <row>\n"
+"        <col>Afternoon</col><col><img src='misc/time-schedules/default/"
+"schedule-afternoon.png'/></col>\n"
+"    </row>\n"
+"    <row>\n"
+"        <col>Dusk</col><col><img src='misc/time-schedules/default/schedule-"
+"dusk.png'/></col>\n"
+"    </row>\n"
+"    <row>\n"
+"        <col>First Watch</col><col><img src='misc/time-schedules/default/"
+"schedule-firstwatch.png'/></col>\n"
+"    </row>\n"
+"    <row>\n"
+"        <col>Second Watch</col><col><img src='misc/time-schedules/default/"
+"schedule-secondwatch.png'/></col>\n"
+"    </row>\n"
+"</table>"
+msgstr ""
+
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:497
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
 #| "perpetually night!\n"
 msgid ""
-"\n"
 "Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!"
+"perpetually night!\n"
 msgstr "請記住，有些章節在地下進行，那裡永遠是晚上！\n"
 
 #. [topic]: id=time_of_day
@@ -4704,9 +5150,8 @@ msgstr "請記住，有些章節在地下進行，那裡永遠是晚上！\n"
 #| "Some underground locations are illuminated. They are perpetually "
 #| "intermediate between day and night.\n"
 msgid ""
-"\n"
 "Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night."
+"intermediate between day and night.\n"
 msgstr "有些地下的位置是被照亮的。那邊永遠是介於日夜之間。\n"
 
 #. [topic]: id=time_of_day
@@ -4716,9 +5161,8 @@ msgstr "有些地下的位置是被照亮的。那邊永遠是介於日夜之間
 #| "Some role-playing scenarios take place indoors — these regions are "
 #| "similarly intermediate.\n"
 msgid ""
-"\n"
 "Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate."
+"intermediate.\n"
 msgstr "有些角色扮演的章節在室內進行──那邊類似日夜之間。\n"
 
 #. [topic]: id=time_of_day
@@ -4730,28 +5174,33 @@ msgstr "有些角色扮演的章節在室內進行──那邊類似日夜之間
 #| "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 #| "around them."
 msgid ""
-"\n"
-"Finally, units with the <ref>dst='ability_illuminationilluminates' "
-"text='illuminates'</ref> ability and terrain features such as "
-"<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
-"around them."
+"Finally, units with the <ref "
+"dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
+"features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
+"bonus around them."
 msgstr ""
 "最後，擁有<ref>dst='ability_illuminationilluminates' text='照明'</ref>技能的"
 "單位及像是<ref>dst='terrain_lava' text='熔岩'</ref>這一類的地形會改變其周圍的"
 "時段加成。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
+#: data/core/help.cfg:510
 msgid "Healing"
 msgstr "治療"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:511
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor "
+#| "is attacked will heal 2 HP in its next turn."
 msgid ""
 "\n"
 "\n"
-"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
-"attacked will heal 2 HP in its next turn."
+"• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
+"heal 2 HP in its next turn."
 msgstr ""
 "\n"
 "\n"
@@ -4760,7 +5209,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:511
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -4770,12 +5219,18 @@ msgstr ""
 "之外，這些方法不能被重疊使用。每回合遊戲會自動選用一種治療量最多方法來治療。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:513
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <bold>text='Villages'</bold>: A unit which starts a turn in a village "
+#| "or <ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit "
+#| "is poisoned, the poison will be cured instead."
 msgid ""
 "\n"
-"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
-"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
-"poisoned, the poison will be cured instead."
+"• <b>Villages</b>: A unit which starts a turn in a village or <ref "
+"dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, the "
+"poison will be cured instead."
 msgstr ""
 "\n"
 "• <bold>text='村莊'</bold>：在村莊或<ref>dst='terrain_oasis' text='綠洲'</"
@@ -4783,26 +5238,39 @@ msgstr ""
 "替代。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:515
+#: data/core/help.cfg:514
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
+#| "Certain units (such as trolls) will automatically heal 8HP every turn. If "
+#| "the unit is poisoned, the poison will be cured instead."
 msgid ""
 "\n"
-"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
-"Certain units (such as trolls) will automatically heal 8HP every turn. If "
-"the unit is poisoned, the poison will be cured instead."
+"• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
+"units (such as trolls) will automatically heal 8HP every turn. If the unit "
+"is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='恢復'</ref>：某些單位（例如"
 "巨魔）會自動地在每回合恢復8點生命值。如果該單位中毒了，則以治癒中毒作為替代。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:515
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <bold>text='Healing units'</bold>: Units with the "
+#| "<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal "
+#| "each allied adjacent unit, usually <ref>dst='ability_healingheals +4' "
+#| "text='4HP'</ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> "
+#| "per turn, or prevent Poison from causing that unit damage."
 msgid ""
 "\n"
-"• <bold>text='Healing units'</bold>: Units with the "
-"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
-"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
-"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
-"prevent Poison from causing that unit damage."
+"• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
+"+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
+"dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
+"+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
 "• <bold>text='治療單位'</bold>：有<ref>dst='ability_healingheals +4' text='治"
@@ -4812,13 +5280,19 @@ msgstr ""
 "成傷害。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:517
+#: data/core/help.cfg:516
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <bold>text='Curing units'</bold>: Units with the "
+#| "<ref>dst='ability_curingcures' text='cures'</ref> ability will cure "
+#| "Poison in all allied adjacent units (in preference to healing, if it has "
+#| "that ability as well)."
 msgid ""
 "\n"
-"• <bold>text='Curing units'</bold>: Units with the "
-"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
-"in all allied adjacent units (in preference to healing, if it has that "
-"ability as well)."
+"• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
+"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"healing, if it has that ability as well)."
 msgstr ""
 "\n"
 "• <bold>text='治癒單位'</bold>：有<ref>dst='ability_curingcures' text='治"
@@ -4826,12 +5300,18 @@ msgstr ""
 "以治癒優先）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:518
+#: data/core/help.cfg:517
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
+#| "text='advances'</ref>, it will heal fully. This can happen as soon as "
+#| "your unit gains enough experience, whether it is your turn or not."
 msgid ""
 "\n"
-"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
-"text='advances'</ref>, it will heal fully. This can happen as soon as your "
-"unit gains enough experience, whether it is your turn or not."
+"• <b>Advancement</b>: When a unit <ref dst='advancement'>advances</ref>, it "
+"will heal fully. This can happen as soon as your unit gains enough "
+"experience, whether it is your turn or not."
 msgstr ""
 "\n"
 "• <bold>text='升級'</bold>：當一個單位<ref>dst='advancement' text='升級'</"
@@ -4839,7 +5319,7 @@ msgstr ""
 "不是你的回合。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:519
+#: data/core/help.cfg:518
 msgid ""
 "\n"
 "\n"
@@ -4853,18 +5333,23 @@ msgstr ""
 "療方式會自動被遊戲使用。最後，單位會在章節之間恢復所有生命。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:521
+#: data/core/help.cfg:520
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
 msgid ""
 "\n"
 "\n"
-"<bold>text='Advanced'</bold>"
+"<b>Advanced</b>"
 msgstr ""
 "\n"
 "\n"
 "<bold>text='進階'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:523
+#: data/core/help.cfg:522
 msgid ""
 "\n"
 "\n"
@@ -4881,18 +5366,26 @@ msgstr ""
 "療，而被數個同盟陣營的數名治療者包圍的單位，會在各陣營的回合中各被治療一次。"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:531
+#: data/core/help.cfg:530
 msgid "Wrap Up"
 msgstr "總結"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:532
+#: data/core/help.cfg:531
+#, fuzzy
+#| msgid ""
+#| "This concludes the fundamentals of Wesnoth. You might want to read up on "
+#| "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
+#| "text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
+#| "ref>, but you now know everything you need to know to play the "
+#| "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good "
+#| "luck!"
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
-"text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
-"ref>, but you now know everything you need to know to play the "
-"<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "韋諾之戰的基礎說明就此結束。你可能會想閲讀基本的遊戲策略，或再使自己熟悉一下"
 "<ref>dst='..traits_section' text='特質'</ref>和<ref>dst='.."
@@ -4901,20 +5394,27 @@ msgstr ""
 "運！"
 
 #. [topic]: id=license
-#: data/core/help.cfg:537
+#: data/core/help.cfg:536
 msgid "License"
 msgstr "授權"
 
 # 由於是中文，句子最後不加空格。
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:547
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Most units have two traits. However, goblins have only one trait, undead "
+#| "units are always assigned the single trait <italic>text='undead'</italic> "
+#| "and in some cases <italic>text='fearless'</italic>, and woses do not "
+#| "receive any traits. "
 msgid ""
 "\n"
 "\n"
 "Most units have two traits. However, goblins have only one trait, undead "
-"units are always assigned the single trait <italic>text='undead'</italic> "
-"and in some cases <italic>text='fearless'</italic>, and woses do not receive "
-"any traits. "
+"units are always assigned the single trait <i>undead</i> and in some cases "
+"<i>fearless</i>, and woses do not receive any traits. "
 msgstr ""
 "\n"
 "\n"
@@ -4923,26 +5423,39 @@ msgstr ""
 "得到任何特質。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:547
+#, fuzzy
+#| msgid ""
+#| "Traits are modifications that change a unit’s attributes slightly. They "
+#| "are usually randomly assigned to a unit when it is recruited. The traits "
+#| "available to a unit are largely determined by its <italic>text='race'</"
+#| "italic>."
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
-"available to a unit are largely determined by its <italic>text='race'</"
-"italic>."
+"available to a unit are largely determined by its <i>race</i>."
 msgstr ""
 "特質會略為改變一個單位的屬性。當一個單位被招募時，遊戲通常會隨機分配特質給"
 "他。一個單位可用的特質很大程度上是由他的<italic>text='種族'</italic>來決定"
 "的。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:550
+#: data/core/help.cfg:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "The traits that are available to most non‐undead units are "
+#| "<ref>dst='traits_intelligent' text='intelligent'</ref>, "
+#| "<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
+#| "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 msgid ""
 "\n"
 "\n"
-"The traits that are available to most non‐undead units are "
-"<ref>dst='traits_intelligent' text='intelligent'</ref>, "
-"<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
-"text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
+"The traits that are available to most non‐undead units are <ref "
+"dst='traits_intelligent'>intelligent</ref>, <ref dst='traits_quick'>quick</"
+"ref>, <ref dst='traits_resilient'>resilient</ref>, and <ref "
+"dst='traits_strong'>strong</ref>."
 msgstr ""
 "\n"
 "\n"
@@ -4952,16 +5465,27 @@ msgstr ""
 "text='強壯'</ref>。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:552
+#: data/core/help.cfg:551
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Elves may also receive <ref>dst='traits_dextrous' text='dextrous'</ref>, "
+#| "and dwarves may receive <ref>dst='traits_healthy' text='healthy'</ref>. "
+#| "Trolls and certain humans may receive <ref>dst='traits_fearless' "
+#| "text='fearless'</ref>. Other traits which may be assigned include "
+#| "<ref>dst='traits_loyal' text='loyal'</ref>, <ref>dst='traits_feral' "
+#| "text='feral'</ref> and <ref>dst='traits_undead' text='undead'</ref>.\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
-"Elves may also receive <ref>dst='traits_dextrous' text='dextrous'</ref>, and "
-"dwarves may receive <ref>dst='traits_healthy' text='healthy'</ref>. Trolls "
-"and certain humans may receive <ref>dst='traits_fearless' text='fearless'</"
-"ref>. Other traits which may be assigned include <ref>dst='traits_loyal' "
-"text='loyal'</ref>, <ref>dst='traits_feral' text='feral'</ref> and "
-"<ref>dst='traits_undead' text='undead'</ref>.\n"
+"Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
+"dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
+"certain humans may receive <ref dst='traits_fearless'>fearless</ref>. Other "
+"traits which may be assigned include <ref dst='traits_loyal'>loyal</ref>, "
+"<ref dst='traits_feral'>feral</ref> and <ref dst='traits_undead'>undead</"
+"ref>.\n"
 "\n"
 msgstr ""
 "\n"
@@ -4974,7 +5498,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:562
+#: data/core/help.cfg:561
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4984,15 +5508,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Terrains come in two types: <italic>basic</italic> and <italic>mixed</"
-"italic>."
+"Terrains come in two types: <i>basic</i> and <i>mixed</i>."
 msgstr ""
 "\n"
 "\n"
 "地形有兩種類型：<italic>text='基礎'</italic>及<italic>text='混合'</italic>。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:562
+#: data/core/help.cfg:561
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -5001,7 +5524,7 @@ msgstr ""
 "鬥中的防禦能力。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:564
+#: data/core/help.cfg:563
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5017,7 +5540,7 @@ msgstr ""
 "<header>text='基礎地形類型'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:566
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "\n"
@@ -5085,10 +5608,10 @@ msgid ""
 "\n"
 "\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
-"units generally receive the <italic>best defense</italic> and <italic>worst "
-"movement</italic> of the underlying basic types when they move onto a mixed "
-"type. For example, this is the case with <italic>forested hills</italic>, "
-"<italic>sand hills</italic>, and <italic>cave hills</italic>.\n"
+"units generally receive the <i>best defense</i> and <i>worst movement</i> of "
+"the underlying basic types when they move onto a mixed type. For example, "
+"this is the case with <i>forested hills</i>, <i>sand hills</i>, and <i>cave "
+"hills</i>.\n"
 "\n"
 msgstr ""
 "\n"
@@ -5101,7 +5624,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:576
+#: data/core/help.cfg:577
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5115,12 +5638,12 @@ msgstr ""
 #| "nonfliers (unsurprisingly).\n"
 #| "\n"
 msgid ""
-"One notable exception is bridge terrains, such as <italic>bridges over "
-"shallow water</italic>, <italic>fords</italic>, and <italic>bridges over "
-"chasms</italic>. Fords are easily passable to both merfolk and humans — all "
-"units moving on a ford enjoy the best defense and best movement out of flat "
-"and shallow water, rather than the worse movement of the two. Similarly, "
-"bridges over chasms are passable to nonfliers (unsurprisingly).\n"
+"One notable exception is bridge terrains, such as <i>bridges over shallow "
+"water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
+"passable to both merfolk and humans — all units moving on a ford enjoy the "
+"best defense and best movement out of flat and shallow water, rather than "
+"the worse movement of the two. Similarly, bridges over chasms are passable "
+"to nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
 "\n"
@@ -5133,7 +5656,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:578
+#: data/core/help.cfg:580
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5156,7 +5679,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:580
+#: data/core/help.cfg:583
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5179,7 +5702,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:582
+#: data/core/help.cfg:586
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5192,8 +5715,8 @@ msgid ""
 "\n"
 "\n"
 "You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <italic>terrain description</italic> by either "
-"pressing the hotkey, or right clicking and selecting from the context menu."
+"its hex and viewing the <i>terrain description</i> by either pressing the "
+"hotkey, or right clicking and selecting from the context menu."
 msgstr ""
 "\n"
 "\n"
@@ -5202,7 +5725,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:582
+#: data/core/help.cfg:586
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5221,7 +5744,7 @@ msgstr ""
 "查看組成它的基礎地形類型是什麼。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:584
+#: data/core/help.cfg:588
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5237,7 +5760,7 @@ msgstr ""
 "<header>text='防禦力上限'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
+#: data/core/help.cfg:590
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5248,8 +5771,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Some units have <italic>defense caps</italic> for a particular basic terrain "
-"type. These units suffer a penalty on mixed terrains with that type — their "
+"Some units have <i>defense caps</i> for a particular basic terrain type. "
+"These units suffer a penalty on mixed terrains with that type — their "
 "defense cannot exceed the cap."
 msgstr ""
 "\n"
@@ -5259,7 +5782,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:588
+#: data/core/help.cfg:592
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5283,7 +5806,7 @@ msgstr ""
 "而不是森林與丘陵兩者中最大的40%，因為混合地形的防禦率不能超過防禦率上限。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:590
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "\n"
@@ -5296,7 +5819,7 @@ msgstr ""
 "相同（上限值不會更高）。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:592
+#: data/core/help.cfg:596
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5315,7 +5838,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:605
+#: data/core/help.cfg:609
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -5327,37 +5850,50 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:615
+#: data/core/help.cfg:619
 msgid "Using Add-ons"
 msgstr "使用模組"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:620
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Campaigns and Scenarios'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Campaigns and Scenarios'</header>"
+"<header>Campaigns and Scenarios</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='戰役與章節'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:620
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr "遊戲支援不同類型的模組，但不是每個遊戲模式都可以使用這些模組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:622
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Single-player campaigns are collections of scenarios that fit together to "
+#| "tell a story. Both stand-alone scenarios—if intended to be played as such—"
+#| "and regular campaigns are available from the <italic>text='Campaigns'</"
+#| "italic> menu at the title screen."
 msgid ""
 "\n"
 "\n"
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
+"and regular campaigns are available from the <i>Campaigns</i> menu at the "
+"title screen."
 msgstr ""
 "\n"
 "\n"
@@ -5365,11 +5901,16 @@ msgstr ""
 "話──和正規戰役都可以在標題畫面中的<italic>text='戰役'</italic>選單中找到。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:624
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+"<header>Multiplayer Campaigns, Scenarios, and Map Packs</header>"
 msgstr ""
 "\n"
 "\n"
@@ -5377,13 +5918,20 @@ msgstr ""
 
 # 不確定最後一句的意思。
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:626
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<italic>text='Multiplayer'</italic> games can be played in fully "
+#| "customized, scripted scenarios or even specially designed campaigns. "
+#| "There are also packs providing sets of individual multiplayer scenarios."
 msgid ""
 "\n"
 "\n"
-"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
-"scripted scenarios or even specially designed campaigns. There are also "
-"packs providing sets of individual multiplayer scenarios."
+"<i>Multiplayer</i> games can be played in fully customized, scripted "
+"scenarios or even specially designed campaigns. There are also packs "
+"providing sets of individual multiplayer scenarios."
 msgstr ""
 "\n"
 "\n"
@@ -5391,11 +5939,16 @@ msgstr ""
 "役的形式來遊玩。也有提供一系列的獨特的多人章節的模組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:624
+#: data/core/help.cfg:628
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Eras and Factions'</header>"
+"<header>Multiplayer Eras and Factions</header>"
 msgstr ""
 "\n"
 "\n"
@@ -5403,7 +5956,19 @@ msgstr ""
 
 # 「Factions are grouped in balanced sets with a common theme」以及後面的舉例意思模糊，不照翻。
 #. [topic]: id=using_addons
-#: data/core/help.cfg:626
+#: data/core/help.cfg:630
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "For gameplay purposes, various races of creatures in the world cooperate "
+#| "with each other in factions. Factions are grouped in balanced sets with a "
+#| "common theme; for example, the main factions of Wesnoth can be found in "
+#| "the included Default Era.\n"
+#| "\n"
+#| "In <italic>text='Multiplayer'</italic> mode, you can choose an era when "
+#| "creating a new game, and players can pick from the available factions for "
+#| "that era when setting up their sides and teams."
 msgid ""
 "\n"
 "\n"
@@ -5412,9 +5977,9 @@ msgid ""
 "common theme; for example, the main factions of Wesnoth can be found in the "
 "included Default Era.\n"
 "\n"
-"In <italic>text='Multiplayer'</italic> mode, you can choose an era when "
-"creating a new game, and players can pick from the available factions for "
-"that era when setting up their sides and teams."
+"In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
+"and players can pick from the available factions for that era when setting "
+"up their sides and teams."
 msgstr ""
 "\n"
 "\n"
@@ -5427,12 +5992,18 @@ msgstr ""
 "後玩家在設定他們的陣營和隊伍的時候，就可以從該時代下可用的派系中挑選派系。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:630
+#: data/core/help.cfg:634
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "You can see what eras you have loaded in the <ref>text='eras' dst='.."
+#| "eras_section'</ref> of the help."
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' dst='.."
-"eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
+"ref> of the help."
 msgstr ""
 "\n"
 "\n"
@@ -5440,18 +6011,23 @@ msgstr ""
 "代。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:636
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Modifications'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Modifications'</header>"
+"<header>Modifications</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='模組'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:634
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "\n"
@@ -5465,18 +6041,23 @@ msgstr ""
 "戲時，可以選擇並設定模組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:636
+#: data/core/help.cfg:640
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Cores'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Cores'</header>"
+"<header>Cores</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='核心'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:638
+#: data/core/help.cfg:642
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5508,18 +6089,23 @@ msgstr ""
 "的遊戲，只要它在一定程度上可以被表示成六角格子地圖以及「單位」就可以。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:642
+#: data/core/help.cfg:646
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<header>Creator Resources</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='創作者資源'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:644
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "\n"
@@ -5536,13 +6122,13 @@ msgstr ""
 "它可玩的模組也許會相依於它們，並在下載時建議或要求它們的安裝。"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:653
+#: data/core/help.cfg:657
 msgid "Installing Add-ons"
 msgstr "安裝模組"
 
 # 「show them inline」意思模糊，不照翻。
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:654
+#: data/core/help.cfg:658
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -5570,27 +6156,26 @@ msgstr "安裝模組"
 #| "on, such as its full description, installation status, and available "
 #| "translations."
 msgid ""
-"User-made add-ons can be obtained and updated through the <italic>text='Add-"
-"ons'</italic> option in the main menu. After connecting to the add-ons "
-"server (by default <italic>text='add-ons.wesnoth.org'</italic>), you will be "
-"presented with a list of add-ons available on the server for downloading.\n"
+"User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
+"option in the main menu. After connecting to the add-ons server (by default "
+"<i>add-ons.wesnoth.org</i>), you will be presented with a list of add-ons "
+"available on the server for downloading.\n"
 "\n"
 "The installation status for each add-on is shown below each entry. For add-"
-"ons that are <italic>text='upgradable'</italic> or <italic>text='outdated'</"
-"italic> on the server, their installed and published versions will be shown "
-"in the <italic>text='Version'</italic> column.\n"
+"ons that are <i>upgradable</i> or <i>outdated</i> on the server, their "
+"installed and published versions will be shown in the <i>Version</i> "
+"column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
 "the search box, separated by spaces. You can also sort the add-on list by "
 "clicking the column headers. It is also possible to choose to only display "
-"add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
-"dropdown.\n"
+"add-ons of specific categories by clicking on the <b>Type</b> dropdown.\n"
 "\n"
-"To install an add-on, select it from the list and click the <bold>text='+'</"
-"bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
-"provides you with additional details about the add-on, such as its full "
-"description, installation status, and available translations."
+"To install an add-on, select it from the list and click the <b>+</b> icon, "
+"or simply double-click on the add-on’s title. If the window is too small to "
+"show them inline, the <b>Add-on Details</b> button provides you with "
+"additional details about the add-on, such as its full description, "
+"installation status, and available translations."
 msgstr ""
 "透過主選單中的<italic>text='模組'</italic>選項，玩家自製的模組可以被找到。在"
 "連線到模組伺服器（預設為 <italic>text='add-ons.wesnoth.org'</italic>）之後，"
@@ -5610,23 +6195,33 @@ msgstr ""
 "述、安裝狀態，以及可以使用的翻譯。"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:667
+#: data/core/help.cfg:671
 msgid "Removing Add-ons"
 msgstr "移除模組"
 
 # 「prevent its accidental loss」不太好翻，不照翻。
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:668
+#: data/core/help.cfg:672
+#, fuzzy
+#| msgid ""
+#| "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-"
+#| "ons server connection dialog. You will be presented with options to "
+#| "remove any number of add-ons you currently have installed.\n"
+#| "\n"
+#| "It is not possible to remove add-ons for which there is publishing "
+#| "information (<italic>text='.pbl'</italic> files) attached, in order to "
+#| "prevent its accidental loss. If necessary, you must manually delete the "
+#| "information files or the add-ons themselves using a file manager provided "
+#| "by your platform."
 msgid ""
-"To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
-"server connection dialog. You will be presented with options to remove any "
-"number of add-ons you currently have installed.\n"
+"To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
+"connection dialog. You will be presented with options to remove any number "
+"of add-ons you currently have installed.\n"
 "\n"
 "It is not possible to remove add-ons for which there is publishing "
-"information (<italic>text='.pbl'</italic> files) attached, in order to "
-"prevent its accidental loss. If necessary, you must manually delete the "
-"information files or the add-ons themselves using a file manager provided by "
-"your platform."
+"information (<i>.pbl</i> files) attached, in order to prevent its accidental "
+"loss. If necessary, you must manually delete the information files or the "
+"add-ons themselves using a file manager provided by your platform."
 msgstr ""
 "要移除模組，在模組伺服器連線對話框中選擇<bold>text='移除模組'</bold>。你將會"
 "看到一些選項來移除任意數量的你目前已經安裝的模組。\n"
@@ -5636,7 +6231,7 @@ msgstr ""
 "息檔案或是模組本身。"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:683
+#: data/core/help.cfg:687
 msgid "General Commands"
 msgstr "一般指令"
 
@@ -5644,7 +6239,7 @@ msgstr "一般指令"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:684 data/core/help.cfg:729 data/core/help.cfg:767
+#: data/core/help.cfg:688 data/core/help.cfg:733 data/core/help.cfg:771
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
@@ -5664,7 +6259,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:686
+#: data/core/help.cfg:690
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5682,7 +6277,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:693
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -5693,11 +6288,18 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:696
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Switch debug mode on (does not work in multiplayer). See "
+#| "<ref>dst='debug_commands' text='debug mode commands'</ref>.\n"
+#| "Debug mode is turned off by quitting the game or :nodebug.\n"
+#| "\n"
 msgid ""
 "\n"
-"Switch debug mode on (does not work in multiplayer). See "
-"<ref>dst='debug_commands' text='debug mode commands'</ref>.\n"
+"Switch debug mode on (does not work in multiplayer). See <ref "
+"dst='debug_commands'>debug mode commands</ref>.\n"
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
@@ -5709,7 +6311,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -5728,7 +6330,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:699
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -5739,7 +6341,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:702
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -5752,7 +6354,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -5763,7 +6365,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -5774,7 +6376,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -5785,7 +6387,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:718
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -5796,7 +6398,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:721
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -5807,7 +6409,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:724
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -5816,12 +6418,12 @@ msgstr ""
 "儲存遊戲並退出章節（無提示視窗）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:728
+#: data/core/help.cfg:732
 msgid "Multiplayer Commands"
 msgstr "多人連線遊戲指令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:731
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -5836,15 +6438,24 @@ msgstr ""
 
 # 這裡的巢狀括號很詭異，所以翻譯時已經把括號的內容展開了。
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:734
+#: data/core/help.cfg:738
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Change the controller for side (write here the number of the side) to "
+#| "username (write here the nickname of the player or observer). You can "
+#| "check what side belongs to which player in the <bold>text='Scenario "
+#| "Settings'</bold> dialog (Press the <bold>text='More'</bold> button in the "
+#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
+#| "host can change control of any side.\n"
+#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
+"what side belongs to which player in the <b>Scenario Settings</b> dialog "
+"(Press the <b>More</b> button in the <b>Status Table</b> (alt+s by default) "
+"to get there.). The host can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
@@ -5855,7 +6466,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:737
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -5867,7 +6478,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:740
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -5879,7 +6490,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -5894,7 +6505,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -5908,7 +6519,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -5920,7 +6531,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:756
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -5931,7 +6542,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:759
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -5944,7 +6555,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:762
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -5955,13 +6566,13 @@ msgstr ""
 "以發言了。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:766
+#: data/core/help.cfg:770
 msgid "Debug Mode Commands"
 msgstr "偵錯模式指令"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:769
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -5973,7 +6584,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:772
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -5984,7 +6595,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:775
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -5995,7 +6606,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:778
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -6006,7 +6617,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:781
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -6017,7 +6628,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:784
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -6028,7 +6639,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:787
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -6039,7 +6650,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:790
+#: data/core/help.cfg:794
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -6050,7 +6661,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:793
+#: data/core/help.cfg:797
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -6062,7 +6673,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:796
+#: data/core/help.cfg:800
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -7362,9 +7973,21 @@ msgstr ""
 "石化或麻痹），則這種攻擊可造成雙倍傷害。"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:52
+#: data/core/macros/weapon_specials.cfg:53
+#, fuzzy
+#| msgid "plague"
+msgid "plague ($type)"
+msgstr "瘟疫"
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:54
+#, fuzzy
+#| msgid ""
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "unit on the same side as the unit with the Plague attack. This doesn’t "
+#| "work on Undead or units in villages."
 msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"When a unit is killed by a Plague attack, that unit is replaced with a $type "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
@@ -7372,7 +7995,7 @@ msgstr ""
 "族或在村莊中的單位不起作用。"
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:75
+#: data/core/macros/weapon_specials.cfg:81
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -7384,49 +8007,49 @@ msgstr ""
 "牛圖示。"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:85
+#: data/core/macros/weapon_specials.cfg:91
 msgid "petrifies"
 msgstr "石化"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:86
+#: data/core/macros/weapon_specials.cfg:92
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr "這種攻擊會把目標變成石頭。被石化的單位不能移動或者攻擊。"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:97
+#: data/core/macros/weapon_specials.cfg:103
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
 
 #. [disable]: id=naval_ram
-#: data/core/macros/weapon_specials.cfg:123
+#: data/core/macros/weapon_specials.cfg:129
 msgid "naval ram"
 msgstr ""
 
 #. [disable]: id=naval_ram
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:130
 msgid "This attack can only be used against units in water terrain."
 msgstr ""
 
 #. [disable]: id=naval_ram
-#: data/core/macros/weapon_specials.cfg:132
+#: data/core/macros/weapon_specials.cfg:138
 msgid ""
 "This unit has an attack that can only be used against units in watery "
 "terrain."
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:136
-#: data/core/macros/weapon_specials.cfg:174
+#: data/core/macros/weapon_specials.cfg:142
+#: data/core/macros/weapon_specials.cfg:180
 msgid "charge"
 msgstr "衝鋒"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:137
-#: data/core/macros/weapon_specials.cfg:175
+#: data/core/macros/weapon_specials.cfg:143
+#: data/core/macros/weapon_specials.cfg:181
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -7435,28 +8058,28 @@ msgstr ""
 "目標的反擊的雙倍傷害。"
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:156
 msgid "honed"
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:151
+#: data/core/macros/weapon_specials.cfg:157
 msgid "This attack is 10% more accurate than other attacks."
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:152
+#: data/core/macros/weapon_specials.cfg:158
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:163
+#: data/core/macros/weapon_specials.cfg:169
 msgid "swarm"
 msgstr "連擊"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:164
+#: data/core/macros/weapon_specials.cfg:170
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -7468,24 +8091,24 @@ msgstr ""
 "數。"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:188
+#: data/core/macros/weapon_specials.cfg:194
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:189
+#: data/core/macros/weapon_specials.cfg:195
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:190
+#: data/core/macros/weapon_specials.cfg:196
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:202
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -7494,18 +8117,18 @@ msgstr ""
 "（無條件捨去）"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:212
+#: data/core/macros/weapon_specials.cfg:218
 msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:213
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "這個單位總是能優先發動這種攻擊，即便他正在防守。"
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:224
+#: data/core/macros/weapon_specials.cfg:230
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -7515,19 +8138,19 @@ msgstr ""
 "者生命值被扣到剩下1。光靠毒素無法殺死單位。"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:234
+#: data/core/macros/weapon_specials.cfg:240
 msgid "stun"
 msgstr "擊暈"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:235
+#: data/core/macros/weapon_specials.cfg:241
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:236
+#: data/core/macros/weapon_specials.cfg:242
 #, fuzzy
 #| msgid ""
 #| "This unit is able to slow its enemies, halving their movement speed and "
@@ -7539,19 +8162,19 @@ msgstr ""
 "合。"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:245
+#: data/core/macros/weapon_specials.cfg:251
 msgid "arcane"
 msgstr "奧術"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:246
+#: data/core/macros/weapon_specials.cfg:252
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:247
+#: data/core/macros/weapon_specials.cfg:253
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -9340,7 +9963,7 @@ msgstr ""
 "單位招募到這個格子上。"
 
 #: src/help/help_topic_generators.cpp:246
-#: src/help/help_topic_generators.cpp:653
+#: src/help/help_topic_generators.cpp:656
 #, fuzzy
 #| msgid "Special Notes:"
 msgid "Special Notes"
@@ -9375,156 +9998,185 @@ msgid "Level"
 msgstr "等級"
 
 #: src/help/help_topic_generators.cpp:415
-msgid "Advances from: "
+#, fuzzy
+#| msgid "Advances from: "
+msgid "Advances from:"
 msgstr "升級自："
 
 #: src/help/help_topic_generators.cpp:417
-msgid "Advances to: "
+#, fuzzy
+#| msgid "Advances to: "
+msgid "Advances to:"
 msgstr "升級成："
 
-#: src/help/help_topic_generators.cpp:446
-msgid "Base unit: "
+#: src/help/help_topic_generators.cpp:447
+#, fuzzy
+#| msgid "Base unit: "
+msgid "Base unit:"
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:451
-msgid "Base units: "
+#: src/help/help_topic_generators.cpp:452
+#, fuzzy
+#| msgid "Base units: "
+msgid "Base units:"
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:469
-msgid "Variations: "
+#: src/help/help_topic_generators.cpp:470
+#, fuzzy
+#| msgid "Variations: "
+msgid "Variations:"
 msgstr "變體："
 
-#: src/help/help_topic_generators.cpp:492
+#: src/help/help_topic_generators.cpp:497
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_topic_generators.cpp:494
-msgid "Race: "
+#: src/help/help_topic_generators.cpp:499
+#, fuzzy
+#| msgid "Race: "
+msgid "Race:"
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:559
-msgid "Abilities: "
+#: src/help/help_topic_generators.cpp:562
+#, fuzzy
+#| msgid "Abilities: "
+msgid "Abilities:"
 msgstr "技能："
 
-#: src/help/help_topic_generators.cpp:585
-msgid "Ability Upgrades: "
+#: src/help/help_topic_generators.cpp:588
+#, fuzzy
+#| msgid "Ability Upgrades: "
+msgid "Ability Upgrades:"
 msgstr "技能升級："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:618
 msgid "HP:"
 msgstr "生命值："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Moves:"
 msgstr "移動點數："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:627
 msgid "Vision:"
 msgstr "視野："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:633
 msgid "Jamming:"
 msgstr "干擾："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:635
+#: src/help/help_topic_generators.cpp:638
 msgid "Cost:"
 msgstr "價格："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:639
+#: src/help/help_topic_generators.cpp:642
 msgid "Alignment:"
 msgstr "立場："
 
-#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
-#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
+#. TRANSLATORS: This string is used in the help page of a single unit. It uses
+#. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:646
+#: src/help/help_topic_generators.cpp:649
 msgid "Required XP:"
 msgstr "升級所需經驗值："
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:667
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:672
+# 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
+#: src/help/help_topic_generators.cpp:670
+#, fuzzy
+#| msgid "Attack Type"
+msgid "Attacks per turn: "
+msgstr "傷害類型"
+
+#: src/help/help_topic_generators.cpp:689
 msgid "Name"
 msgstr ""
 
 # 這用來表示幫助中單位頁的「傷害×次數」那行。
-#: src/help/help_topic_generators.cpp:673
+#: src/help/help_topic_generators.cpp:690
 msgid "Strikes"
 msgstr "傷害×次數"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:691
 msgid "Range"
 msgstr "範圍"
 
-#: src/help/help_topic_generators.cpp:675
+#: src/help/help_topic_generators.cpp:692
 msgid "Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:676
+#: src/help/help_topic_generators.cpp:693
 msgid "Special"
 msgstr "特殊效果"
 
-#: src/help/help_topic_generators.cpp:764
+#: src/help/help_topic_generators.cpp:715
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/help/help_topic_generators.cpp:795
 msgid "Resistances"
 msgstr "抗性"
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:768
+#: src/help/help_topic_generators.cpp:800
 msgid "Attack Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:769
+#: src/help/help_topic_generators.cpp:801
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:797
+#: src/help/help_topic_generators.cpp:833
 msgid "Terrain Modifiers"
 msgstr "地形影響"
 
-#: src/help/help_topic_generators.cpp:801
+#: src/help/help_topic_generators.cpp:837
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:802
+#: src/help/help_topic_generators.cpp:838
 msgid "Defense"
 msgstr "防禦力"
 
-#: src/help/help_topic_generators.cpp:803
+#: src/help/help_topic_generators.cpp:839
 msgid "Movement Cost"
 msgstr "移動成本"
 
-#: src/help/help_topic_generators.cpp:804
+#: src/help/help_topic_generators.cpp:840
 msgid "Defense Cap"
 msgstr "防禦上限"
 
-#: src/help/help_topic_generators.cpp:805
+#: src/help/help_topic_generators.cpp:841
 msgid "Vision Cost"
 msgstr "視野成本"
 
-#: src/help/help_topic_generators.cpp:806
+#: src/help/help_topic_generators.cpp:842
 msgid "Jamming Cost"
 msgstr "干擾成本"
 

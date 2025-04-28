@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2025-03-11 20:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2391,7 +2391,7 @@ msgstr "开始新的单人战役"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:367
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -2485,7 +2485,6 @@ msgstr "配置游戏的各项设置"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:776
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2556,7 +2555,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:274
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2648,7 +2647,7 @@ msgstr "确定"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:533
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2792,7 +2791,7 @@ msgstr "最后更新于："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:661
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
 msgid "No description available."
 msgstr "没有可用的描述。"
 
@@ -2865,7 +2864,7 @@ msgstr "依赖项目："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1137
+#: src/gui/dialogs/addon/manager.cpp:1136
 msgid "addon_dependencies^None"
 msgstr "无"
 
@@ -2879,7 +2878,7 @@ msgstr "翻译："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1151
+#: src/gui/dialogs/addon/manager.cpp:1150
 msgid "translations^None"
 msgstr "无"
 
@@ -3042,12 +3041,31 @@ msgstr "进攻方"
 msgid "Defender"
 msgstr "防守方"
 
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
@@ -3057,97 +3075,97 @@ msgid "Name"
 msgstr "名字"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "按照战役全名的字母顺序排序"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
 msgid "Timeline"
 msgstr "时间线"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
 msgid "Sort in approximate chronological order of story events"
 msgstr "按照故事事件的大略时间顺序排序"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:235
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:238
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
 msgid "Not Completed"
 msgstr ""
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:240
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:244
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
 msgid "Completed: Bronze"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
 #, fuzzy
 #| msgid "Computer Player"
 msgid "Completed: Silver"
 msgstr "电脑玩家"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:250
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:254
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
 msgid "Completed: Gold"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:255
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:259
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
 msgid "Completed: All"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:311
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "模组："
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
 msgstr "战斗："
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:351
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
 msgid "Default RNG"
 msgstr "默认的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3156,12 +3174,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:357
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
 msgstr "可预测的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:358
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3171,14 +3189,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:363
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "可预测的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:364
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3188,36 +3206,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:381
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
 msgid "Difficulty:"
 msgstr "难度："
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:395
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
 msgstr "简单"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:398
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
 msgid "Normal"
 msgstr "普通"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
 msgstr "困难"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
 msgid "Play a Campaign"
 msgstr "玩一场战役"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:522
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 msgid "game^Play"
 msgstr "开始游玩"
 
@@ -3288,8 +3306,8 @@ msgstr "读取核心"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1347
+#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/preferences/preferences.cpp:1344
 msgid "Select"
 msgstr "选择"
 
@@ -3362,8 +3380,8 @@ msgstr "编辑日程表"
 #: data/gui/themes/default/dialogs/game_save_oos.cfg:90
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:227
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
+#: src/gui/dialogs/units_dialog.cpp:231
 msgid "Name:"
 msgstr "名字："
 
@@ -3443,11 +3461,11 @@ msgstr ""
 #: src/gui/dialogs/editor/custom_tod.cpp:183
 #: src/gui/dialogs/editor/custom_tod.cpp:190
 #: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:331
-#: src/gui/dialogs/editor/edit_unit.cpp:339
-#: src/gui/dialogs/editor/edit_unit.cpp:1035
-#: src/gui/dialogs/file_dialog.cpp:368 src/gui/dialogs/file_dialog.cpp:796
+#: src/gui/dialogs/editor/edit_unit.cpp:321
+#: src/gui/dialogs/editor/edit_unit.cpp:329
+#: src/gui/dialogs/editor/edit_unit.cpp:337
+#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "确认"
 
@@ -4023,7 +4041,7 @@ msgstr "移动花费："
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:216
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Attacks"
 msgstr "攻击手段"
 
@@ -4203,7 +4221,7 @@ msgstr "高度："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:438
+#: src/gui/dialogs/units_dialog.cpp:442
 msgid "Create"
 msgstr "创建"
 
@@ -4577,7 +4595,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Current Status"
 msgstr "当前状态"
 
@@ -4589,14 +4607,14 @@ msgstr "游戏统计"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Scenario Settings"
 msgstr "场景设置"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:522
+#: src/gui/dialogs/units_dialog.cpp:531
 msgid "Scroll To"
 msgstr "滚屏至"
 
@@ -4891,20 +4909,15 @@ msgstr "城堡之间的道路数"
 msgid "Show Labels"
 msgstr "显示标签"
 
-#. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:143
-msgid "Battle For Wesnoth Help"
-msgstr "韦诺之战帮助"
-
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:155
+#: data/gui/themes/default/dialogs/help_browser.cfg:125
 #, fuzzy
 #| msgid "Show Credits"
 msgid "Show Topics"
 msgstr "显示制作者名单"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/help_browser.cfg:168
+#: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
 msgstr ""
 
@@ -5020,7 +5033,6 @@ msgstr "反转过滤条件"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:788
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5033,7 +5045,6 @@ msgstr "创建游戏"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:800
 #: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "加入"
@@ -5041,7 +5052,6 @@ msgstr "加入"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:823
 #: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "观察"
@@ -5049,7 +5059,6 @@ msgstr "观察"
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:811
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "公告"
@@ -5073,43 +5082,36 @@ msgstr "匹配历史"
 
 #. [button]: id=quit
 #: data/gui/themes/default/dialogs/lobby_main.cfg:650
-#: data/gui/themes/default/dialogs/lobby_main.cfg:750
 msgid "Log Out"
 msgstr "登出"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
 msgid "Normal Replays"
 msgstr "普通回放"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:674
-#: data/gui/themes/default/dialogs/lobby_main.cfg:842
 msgid "Quick Replays"
 msgstr "快速回放"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
 msgid "Skip quickly to the active turn when observing"
 msgstr "进行观察时，快速跳进至活动回合"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:679
-#: data/gui/themes/default/dialogs/lobby_main.cfg:847
 msgid "Enter Blindfolded"
 msgstr "蒙眼进入"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:680
-#: data/gui/themes/default/dialogs/lobby_main.cfg:848
 msgid "Do not show the map until given control of a side"
 msgstr "直到获得某一阵营的控制权之前，不显示地图"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:738
-#: data/gui/themes/default/dialogs/lobby_main.cfg:961
+#: data/gui/themes/default/dialogs/lobby_main.cfg:729
 msgid "Multiplayer Lobby"
 msgstr "多人游戏大厅"
 
@@ -5739,8 +5741,7 @@ msgstr "阵营"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
-#: data/gui/themes/default/dialogs/mp_staging.cfg:631
-#: data/gui/themes/default/dialogs/mp_staging.cfg:860
+#: data/gui/themes/default/dialogs/mp_staging.cfg:671
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入……"
@@ -5752,8 +5753,7 @@ msgstr "离开"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:448
-#: data/gui/themes/default/dialogs/mp_staging.cfg:569
-#: data/gui/themes/default/dialogs/mp_staging.cfg:754
+#: data/gui/themes/default/dialogs/mp_staging.cfg:565
 msgid "Game Lobby"
 msgstr "游戏大厅"
 
@@ -6597,8 +6597,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
-"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移动”和"
-"“已完全移动”的颜色。"
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
+"动”和“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -6861,8 +6861,8 @@ msgstr "状态"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:132
-#: src/gui/widgets/unit_preview_pane.cpp:364
-#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:390
+#: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "特质"
 
@@ -6992,7 +6992,7 @@ msgstr "<未知>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1814
+#: src/filesystem.cpp:1820
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
@@ -7425,7 +7425,7 @@ msgstr "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1154
+#: src/gui/dialogs/addon/manager.cpp:1153
 msgid "url^None"
 msgstr "无"
 
@@ -7449,7 +7449,7 @@ msgstr "进攻方抗性 vs"
 msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点 vs"
 
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 #, fuzzy
 #| msgid "Remove Add-ons"
 msgid "game^Get Add-ons"
@@ -7461,32 +7461,13 @@ msgstr "移除附加组件"
 msgid "More campaigns..."
 msgstr "战役"
 
-#: src/gui/dialogs/campaign_selection.cpp:403
-msgid ""
-"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
-"of add-on content created by other players available via the Add-ons server, "
-"included but not limited to more single and multiplayer campaigns, "
-"multiplayer maps, additional media and various other content! Be sure to "
-"give it a try!"
-msgstr ""
-
-#: src/gui/dialogs/campaign_selection.cpp:413
+#: src/gui/dialogs/campaign_selection.cpp:408
 #, fuzzy
 #| msgid "Campaigns"
 msgid "Missing Campaigns"
 msgstr "战役"
 
-#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:424
-msgid ""
-"Wesnoth normally includes more than 15 mainline campaigns, even before "
-"installing any from the add-ons server. If you’ve installed the game via a "
-"package manager, there’s probably a separate package to install the complete "
-"game data."
-msgstr ""
-
-#: src/gui/dialogs/campaign_selection.cpp:455
+#: src/gui/dialogs/campaign_selection.cpp:442
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "无"
@@ -7524,14 +7505,14 @@ msgstr ""
 "请选择一个兼容的模组。"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:309
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 #, fuzzy
 #| msgid "Choose Test"
 msgid "Choose File"
 msgstr "选择测试"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:316
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7610,51 +7591,51 @@ msgstr "生存"
 msgid "Terraforming"
 msgstr "地形改造"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:392
+#: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
 msgstr "成功"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:424
+#: src/gui/dialogs/editor/edit_pbl.cpp:434
 msgid "Choose an icon"
 msgstr "选择一个图标"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:192
 #, fuzzy
 #| msgid "Search"
 msgid "archer"
 msgstr "搜索"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:195
+#: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:196
+#: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1034
+#: src/gui/dialogs/editor/edit_unit.cpp:1032
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "存档已经存在。你要覆盖吗？"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1053
+#: src/gui/dialogs/editor/edit_unit.cpp:1051
 msgid "Unit type saved."
 msgstr ""
 
@@ -7698,43 +7679,43 @@ msgstr ""
 msgid "Open"
 msgstr "打开"
 
-#: src/gui/dialogs/file_dialog.cpp:310
+#: src/gui/dialogs/file_dialog.cpp:306
 #, fuzzy
 #| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "不支持打开链接，请联系你的打包者"
 
-#: src/gui/dialogs/file_dialog.cpp:367
+#: src/gui/dialogs/file_dialog.cpp:363
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "文件已存在。你要覆盖吗？"
 
-#: src/gui/dialogs/file_dialog.cpp:391
+#: src/gui/dialogs/file_dialog.cpp:387
 msgid "The file or folder $path cannot be created."
 msgstr "文件或文件夹$path|无法创建。"
 
-#: src/gui/dialogs/file_dialog.cpp:397
+#: src/gui/dialogs/file_dialog.cpp:393
 msgid "The file or folder $path does not exist."
 msgstr "文件或文件夹$path|不存在。"
 
-#: src/gui/dialogs/file_dialog.cpp:774
+#: src/gui/dialogs/file_dialog.cpp:769
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr "无法在$path|处创建新文件夹。确保你拥有写入该位置的合适权限。"
 
-#: src/gui/dialogs/file_dialog.cpp:792
+#: src/gui/dialogs/file_dialog.cpp:787
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "下列文件夹及其内容将被永久删除："
 
-#: src/gui/dialogs/file_dialog.cpp:793
+#: src/gui/dialogs/file_dialog.cpp:788
 msgid "The following file will be permanently deleted:"
 msgstr "下列文件将被永久删除："
 
-#: src/gui/dialogs/file_dialog.cpp:794
+#: src/gui/dialogs/file_dialog.cpp:789
 msgid "Do you wish to continue?"
 msgstr "你希望继续吗？"
 
-#: src/gui/dialogs/file_dialog.cpp:806
+#: src/gui/dialogs/file_dialog.cpp:801
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7796,51 +7777,51 @@ msgid "game_version^Wesnoth $version"
 msgstr "韦诺 $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:233
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:288
 msgid "The selected file is corrupt: "
 msgstr "选定的文件是损坏的："
 
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:328
 msgid "(Invalid)"
 msgstr "（无效）"
 
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Campaign: $campaign_name"
 msgstr "战役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:371
+#: src/gui/dialogs/game_load.cpp:370
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/gui/dialogs/game_load.cpp:374
+#: src/gui/dialogs/game_load.cpp:373
 msgid "Test scenario"
 msgstr "测试场景"
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Replay"
 msgstr "录像"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:387
 msgid "Scenario start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Version: "
 msgstr "版本："
 
-#: src/gui/dialogs/game_load.cpp:435
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Modifications: "
 msgstr "模组："
 
@@ -7862,18 +7843,18 @@ msgstr "无"
 msgid "Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "no"
 msgstr "否"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "yes"
 msgstr "是"
 
-#: src/gui/dialogs/game_version_dialog.cpp:270
-#: src/gui/dialogs/game_version_dialog.cpp:284 src/gui/widgets/label.cpp:123
+#: src/gui/dialogs/game_version_dialog.cpp:273
+#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr "不支持打开链接，请联系你的打包者"
 
@@ -7995,7 +7976,7 @@ msgid ""
 "version was found on this device"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:137
+#: src/gui/dialogs/multiplayer/faction_select.cpp:134
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:500
 msgid "Random"
 msgstr "随机"
@@ -8100,8 +8081,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://"
-"bugs.wesnoth.org报告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
+"wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8113,11 +8094,11 @@ msgid ""
 "contact your package manager"
 msgstr "此韦诺构建不包含桌面提醒支持，请联系你的打包者"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:78
 msgid "Side $side"
 msgstr "阵营$side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
 msgid "Add Server"
 msgstr "添加服务器"
 
@@ -8150,36 +8131,36 @@ msgstr "随机地图"
 msgid "No games found."
 msgstr "未找到游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:337
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
 msgid "No eras found."
 msgstr "未找到时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found"
 msgstr "未找到时代"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:607
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
 msgid "No eras available for this game."
 msgstr "没有可用于此游戏的时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "number of players^$min to $max"
 msgstr "$min|至$max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:924
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
 msgid "The selected game has no sides!"
 msgstr "选定的游戏没有阵营！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:931
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "The selected game cannot be created."
 msgstr "无法创建选定的游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Choose Starting Scenario"
 msgstr "选择起始场景"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Select at which point to begin this campaign."
 msgstr "选择在何处开始此战役。"
 
@@ -8290,20 +8271,20 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "全部场景"
 
-#: src/gui/dialogs/statistics_dialog.cpp:176
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:174
+#: src/gui/dialogs/statistics_dialog.cpp:334
 msgid "This Turn"
 msgstr "此回合"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
 msgstr "实际命中率比期望命中率："
 
-#: src/gui/dialogs/statistics_dialog.cpp:214
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
 msgstr "（还没有进行攻击）"
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:321
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8316,123 +8297,123 @@ msgstr ""
 "括号中的第一个数字是期望命中/被命中数。\n"
 "括号中的两个数字之和（差）是实际命中/被命中数。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:365
 #, fuzzy
 #| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "次征募"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:366
 msgid "Recalls"
 msgstr "召回"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Advancements"
 msgstr "升级"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Losses"
 msgstr "损失"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Kills"
 msgstr "击杀"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:391
+#: src/gui/dialogs/statistics_dialog.cpp:398
 msgid "Inflicted"
 msgstr "造成的伤害"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:404
+#: src/gui/dialogs/statistics_dialog.cpp:411
 msgid "Taken"
 msgstr "受到的伤害"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:452
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/gui/dialogs/title_screen.cpp:379
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "版本$version"
 
-#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "选择测试场景"
 
-#: src/gui/dialogs/units_dialog.cpp:227 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/gui/dialogs/units_dialog.cpp:260
+#: src/gui/dialogs/units_dialog.cpp:264
 msgid "This unit is loyal and requires no upkeep."
 msgstr "此单位是忠诚的，不需要维护费用。"
 
-#: src/gui/dialogs/units_dialog.cpp:261 src/gui/dialogs/units_dialog.cpp:266
-#: src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:275
 msgid "Do you really want to dismiss him?"
 msgstr "你真的要开除他吗？"
 
-#: src/gui/dialogs/units_dialog.cpp:262 src/gui/dialogs/units_dialog.cpp:267
-#: src/gui/dialogs/units_dialog.cpp:272
+#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Do you really want to dismiss her?"
 msgstr "你真的要开除她吗？"
 
-#: src/gui/dialogs/units_dialog.cpp:265
+#: src/gui/dialogs/units_dialog.cpp:269
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "此单位富有经验，拥有高等级。"
 
-#: src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:274
 msgid "This unit is close to advancing a level."
 msgstr "此单位快要升级了。"
 
-#: src/gui/dialogs/units_dialog.cpp:276
+#: src/gui/dialogs/units_dialog.cpp:280
 msgid "Dismiss Unit"
 msgstr "开除单位"
 
-#: src/gui/dialogs/units_dialog.cpp:401
+#: src/gui/dialogs/units_dialog.cpp:405
 msgid "unit_variation^Default Variation"
 msgstr "默认变化"
 
-#: src/gui/dialogs/units_dialog.cpp:437
+#: src/gui/dialogs/units_dialog.cpp:441
 msgid "Create Unit"
 msgstr "创建单位"
 
-#: src/gui/dialogs/units_dialog.cpp:503
+#: src/gui/dialogs/units_dialog.cpp:512
 msgid "Recruit Unit"
 msgstr "征募单位"
 
-#: src/gui/dialogs/units_dialog.cpp:504 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "征募"
 
-#: src/gui/dialogs/units_dialog.cpp:521 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/gui/dialogs/units_dialog.cpp:658
+#: src/gui/dialogs/units_dialog.cpp:667
 msgid "Recall Unit"
 msgstr "召回单位"
 
-#: src/gui/dialogs/units_dialog.cpp:659 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "召回"
 
-#: src/gui/dialogs/units_dialog.cpp:778
+#: src/gui/dialogs/units_dialog.cpp:787
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr "不能召回此单位，因为到此时您的计划中的金币将不足。"
 
-#: src/gui/dialogs/units_dialog.cpp:780
+#: src/gui/dialogs/units_dialog.cpp:789
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "不能召回此单位，因为你的金币不足。"
 
-#: src/gui/gui.cpp:131
+#: src/gui/gui.cpp:130
 msgid "No default gui defined."
 msgstr "没有已定义的默认图形界面。"
 
@@ -8477,17 +8458,17 @@ msgstr ""
 "和<b>$name</b>的悄悄话开始。如果你不希望收到来自此玩家的消息，请输入<b>/"
 "ignore $name</b>"
 
-#: src/gui/widgets/helper.cpp:153
+#: src/gui/widgets/helper.cpp:148
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "必须的界面构件“$id|”尚未定义。"
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
+#: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "打开链接？"
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
 msgstr "已复制链接！"
 
@@ -8543,10 +8524,6 @@ msgstr "未选中"
 msgid "Need at least 1 parallel item."
 msgstr "还需要至少一件并行的物品。"
 
-#: src/gui/widgets/rich_label.cpp:205
-msgid "corrupted original file"
-msgstr ""
-
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
 msgstr "无效尺寸。"
@@ -8565,7 +8542,7 @@ msgstr "value_label的数量与值（value）的数量不匹配。"
 msgid "No stack layers defined."
 msgstr "没有已定义的堆栈层次。"
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:592
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "发现有帮助提示但却没有提示小标签的界面构件。"
 
@@ -8597,57 +8574,71 @@ msgstr "抗性："
 msgid "(Att / Def)"
 msgstr "（攻/防）"
 
-#: src/gui/widgets/unit_preview_pane.cpp:286
-#: src/gui/widgets/unit_preview_pane.cpp:317
-#: src/gui/widgets/unit_preview_pane.cpp:426
-#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:224
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:227
+msgid "This unit can attack multiple times per turn."
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:269
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:312
+#: src/gui/widgets/unit_preview_pane.cpp:343
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "等级$lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:324
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:465
-#: src/gui/widgets/unit_preview_pane.cpp:482
+#: src/gui/widgets/unit_preview_pane.cpp:350
+#: src/gui/widgets/unit_preview_pane.cpp:363
+#: src/gui/widgets/unit_preview_pane.cpp:491
+#: src/gui/widgets/unit_preview_pane.cpp:508
 msgid "HP: "
 msgstr "生命："
 
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:342
-#: src/gui/widgets/unit_preview_pane.cpp:468
-#: src/gui/widgets/unit_preview_pane.cpp:470
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:368
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:496
+#: src/gui/widgets/unit_preview_pane.cpp:513
 msgid "XP: "
 msgstr "经验："
 
-#: src/gui/widgets/unit_preview_pane.cpp:344
-#: src/gui/widgets/unit_preview_pane.cpp:489
+#: src/gui/widgets/unit_preview_pane.cpp:370
+#: src/gui/widgets/unit_preview_pane.cpp:515
 msgid "Experience Modifier: "
 msgstr "经验修正："
 
-#: src/gui/widgets/unit_preview_pane.cpp:347
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:373
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "MP: "
 msgstr "移动："
 
-#: src/gui/widgets/unit_preview_pane.cpp:374
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:539
 msgid "Abilities"
 msgstr "能力"
 
-#: src/gui/widgets/window.cpp:286
+#: src/gui/widgets/window.cpp:288
 #, fuzzy
 #| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "连接的“$id|”组有多个定义。"
 
-#: src/gui/widgets/window.cpp:879
+#: src/gui/widgets/window.cpp:887
 #, fuzzy
 #| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "单击“开除”需要一个“click_dismiss”或“ok”按钮。"
 
-#: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:743
+#: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
+#: src/tests/gui/test_gui2.cpp:739
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9520,11 +9511,11 @@ msgstr "显示Lua控制台"
 msgid "Unrecognized Command"
 msgstr "未识别的命令"
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1301
 msgid "No known themes. Try changing from within an existing game."
 msgstr "无已知主题。请尝试在游戏中切换主题。"
 
-#: src/preferences/preferences.cpp:1341
+#: src/preferences/preferences.cpp:1338
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9533,15 +9524,15 @@ msgstr ""
 "<b>$filename</b>服务器应用提供了多人游戏服务器机能，在主建本地联机游戏时是必"
 "须的。通常可以在游戏可执行文件的同一个目录下找到它。"
 
-#: src/preferences/preferences.cpp:1345
+#: src/preferences/preferences.cpp:1342
 msgid "Find Server Application"
 msgstr "查找服务器应用"
 
-#: src/preferences/preferences.cpp:1800
+#: src/preferences/preferences.cpp:1797
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1802
+#: src/preferences/preferences.cpp:1799
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9580,6 +9571,9 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
+
+#~ msgid "Battle For Wesnoth Help"
+#~ msgstr "韦诺之战帮助"
 
 #~ msgid "Rocky Sands"
 #~ msgstr "岩石沙砾"

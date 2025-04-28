@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-16 23:21-0500\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2025-01-31 00:06+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2443,7 +2443,7 @@ msgstr "Új egyjátékos hadjárat indítása"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:367
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -2539,7 +2539,6 @@ msgstr "A játék beállítása"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:776
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2608,7 +2607,7 @@ msgstr "<b><span font_family='DejaVu Sans'>✔</span> átmásolva</b>"
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:274
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2700,7 +2699,7 @@ msgstr "Rendben"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:533
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2848,7 +2847,7 @@ msgstr "Frissítve:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:661
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
 msgid "No description available."
 msgstr "Nincs elérhető leírás."
 
@@ -2921,7 +2920,7 @@ msgstr "Függőségek:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1137
+#: src/gui/dialogs/addon/manager.cpp:1136
 msgid "addon_dependencies^None"
 msgstr "Nincs"
 
@@ -2935,7 +2934,7 @@ msgstr "Fordítások:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1151
+#: src/gui/dialogs/addon/manager.cpp:1150
 msgid "translations^None"
 msgstr "Egy sincs"
 
@@ -3094,12 +3093,40 @@ msgstr "Támadó"
 msgid "Defender"
 msgstr "Védekező"
 
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+"A fő kampányok mellett a játéknak egyre bővülő listája van a más játékosok "
+"által készített kiegészítő tartalmakról is, amelyek elérhetők az Add-ons "
+"szerveren keresztül, beleértve, de nem kizárólagosan több egy- és "
+"többjátékos kampányt, többjátékos térképeket, kiegészítő eszközöket és "
+"különféle egyéb tartalmakat! Mindenképpen próbáld ki!"
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+"A Wesnoth általában több mint 15 fősodorbeli hadjáratot tartalmaz, még "
+"mielőtt bármit is telepítene a kiegészítő szerverről. Ha csomagkezelőn "
+"keresztül telepítette a játékot, valószínűleg van egy külön csomag a teljes "
+"játékadat telepítéséhez."
+
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
@@ -3109,95 +3136,95 @@ msgid "Name"
 msgstr "Név"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Hadjárat teljes neve szerinti ábécé-sorrendbe rendezés"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
 msgid "Timeline"
 msgstr "Idővonal"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
 msgid "Sort in approximate chronological order of story events"
 msgstr "Rendezés a történetbeli események közelítőleges időpontja szerint"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:235
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
 msgid "Filter by campaign completion status"
 msgstr "Hadjárat befejezettség szerinti szűrés"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:238
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
 msgid "Not Completed"
 msgstr "Nincs teljesítve"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:240
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
 msgid "Show campaigns not completed by player"
 msgstr "Befejezetlen hadjáratok megtekintése"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:244
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
 msgid "Completed: Bronze"
 msgstr "Teljesítve: Bronz"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
 msgid "Show campaigns completed at easiest difficulty"
 msgstr "Legkönnyebb fokozaton teljesített hadjáratok megtekintése"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
 msgid "Completed: Silver"
 msgstr "Teljesítve: Ezüst"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:250
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr "Közepes fokozaton teljesített hadjáratok megtekintése"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:254
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
 msgid "Completed: Gold"
 msgstr "Teljesítve: Arany"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:255
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
 msgid "Show campaigns completed at hardest difficulty"
 msgstr "Legnehezebb fokozaton teljesített hadjáratok megtekintése"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:259
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
 msgid "Completed: All"
 msgstr "Teljesítve: Mind"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
 msgid "Show completed campaigns"
 msgstr "Befejezett hadjáratok megtekintése"
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:311
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "Módosítók:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
 msgstr "Csata:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:351
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
 msgid "Default RNG"
 msgstr "Alapértelmezett véletlenszerűség"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3212,12 +3239,12 @@ msgstr ""
 "elvétheted."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:357
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
 msgstr "Kiszámítható véletlenszerűség"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:358
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3233,12 +3260,12 @@ msgstr ""
 "támadást. Újra mindkét csapás be fog találni."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:363
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
 msgid "Reduced RNG"
 msgstr "Csökkentett véletlenszerűség"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:364
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3253,36 +3280,36 @@ msgstr ""
 "találni fogsz és legalább egyszer véteni."
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:381
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
 msgid "Difficulty:"
 msgstr "Nehézség:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:395
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
 msgstr "Könnyű"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:398
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
 msgid "Normal"
 msgstr "Normál"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
 msgstr "Nehéz"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
 msgid "Play a Campaign"
 msgstr "Hadjárat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:522
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 msgid "game^Play"
 msgstr "Játék"
 
@@ -3353,8 +3380,8 @@ msgstr "Játékmag betöltése"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1347
+#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/preferences/preferences.cpp:1344
 msgid "Select"
 msgstr "Kiválasztás"
 
@@ -3423,8 +3450,8 @@ msgstr "Napszakrend szerkesztése"
 #: data/gui/themes/default/dialogs/game_save_oos.cfg:90
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:227
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
+#: src/gui/dialogs/units_dialog.cpp:231
 msgid "Name:"
 msgstr "Név:"
 
@@ -3504,11 +3531,11 @@ msgstr "Színváltozások előnézete a térképen"
 #: src/gui/dialogs/editor/custom_tod.cpp:183
 #: src/gui/dialogs/editor/custom_tod.cpp:190
 #: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:331
-#: src/gui/dialogs/editor/edit_unit.cpp:339
-#: src/gui/dialogs/editor/edit_unit.cpp:1035
-#: src/gui/dialogs/file_dialog.cpp:368 src/gui/dialogs/file_dialog.cpp:796
+#: src/gui/dialogs/editor/edit_unit.cpp:321
+#: src/gui/dialogs/editor/edit_unit.cpp:329
+#: src/gui/dialogs/editor/edit_unit.cpp:337
+#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "Megerősítés"
 
@@ -4082,7 +4109,7 @@ msgstr "Mozgás:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:216
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Attacks"
 msgstr "Támadások"
 
@@ -4241,7 +4268,7 @@ msgstr "Magasság:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:438
+#: src/gui/dialogs/units_dialog.cpp:442
 msgid "Create"
 msgstr "Pálya létrehozása"
 
@@ -4618,7 +4645,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Current Status"
 msgstr "Jelenlegi helyzet"
 
@@ -4630,14 +4657,14 @@ msgstr "Játék statisztika"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Scenario Settings"
 msgstr "Küldetés beállításai"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:522
+#: src/gui/dialogs/units_dialog.cpp:531
 msgid "Scroll To"
 msgstr "Odagörget"
 
@@ -4939,18 +4966,13 @@ msgstr "Várak összekötése utakkal"
 msgid "Show Labels"
 msgstr "Címkék megjelenítése"
 
-#. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:143
-msgid "Battle For Wesnoth Help"
-msgstr "Harc Wesnothért Súgó"
-
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:155
+#: data/gui/themes/default/dialogs/help_browser.cfg:125
 msgid "Show Topics"
 msgstr "Témakörök megjelenítése"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/help_browser.cfg:168
+#: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
 msgstr ""
 
@@ -5075,7 +5097,6 @@ msgstr "Szűrés megfordítása"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:788
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5088,7 +5109,6 @@ msgstr "Játék létrehozása"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:800
 #: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "Csatlakozás"
@@ -5096,7 +5116,6 @@ msgstr "Csatlakozás"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:823
 #: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "Megfigyelés"
@@ -5104,7 +5123,6 @@ msgstr "Megfigyelés"
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:811
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Bejelentések"
@@ -5128,43 +5146,36 @@ msgstr "A mérkőzés története"
 
 #. [button]: id=quit
 #: data/gui/themes/default/dialogs/lobby_main.cfg:650
-#: data/gui/themes/default/dialogs/lobby_main.cfg:750
 msgid "Log Out"
 msgstr "Kijelentkezés"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
 msgid "Normal Replays"
 msgstr "Normál visszajátszások"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:674
-#: data/gui/themes/default/dialogs/lobby_main.cfg:842
 msgid "Quick Replays"
 msgstr "Gyors visszajátszások"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
 msgid "Skip quickly to the active turn when observing"
 msgstr "Gyorsan az éppen aktív körre ugrik megfigyeléskor"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:679
-#: data/gui/themes/default/dialogs/lobby_main.cfg:847
 msgid "Enter Blindfolded"
 msgstr "Enter Blindfolded"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:680
-#: data/gui/themes/default/dialogs/lobby_main.cfg:848
 msgid "Do not show the map until given control of a side"
 msgstr "Ne mutassa a térképet, amíg nincs irányított oldal"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:738
-#: data/gui/themes/default/dialogs/lobby_main.cfg:961
+#: data/gui/themes/default/dialogs/lobby_main.cfg:729
 msgid "Multiplayer Lobby"
 msgstr "Többjátékos játékcsarnok"
 
@@ -5803,8 +5814,7 @@ msgstr "Szövetség:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
-#: data/gui/themes/default/dialogs/mp_staging.cfg:631
-#: data/gui/themes/default/dialogs/mp_staging.cfg:860
+#: data/gui/themes/default/dialogs/mp_staging.cfg:671
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to join..."
 msgstr "Várakozás a játékosok csatlakozására..."
@@ -5816,8 +5826,7 @@ msgstr "Vissza"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:448
-#: data/gui/themes/default/dialogs/mp_staging.cfg:569
-#: data/gui/themes/default/dialogs/mp_staging.cfg:754
+#: data/gui/themes/default/dialogs/mp_staging.cfg:565
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
@@ -6957,8 +6966,8 @@ msgstr "Állapot"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:132
-#: src/gui/widgets/unit_preview_pane.cpp:364
-#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:390
+#: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "Jellemvonások"
 
@@ -7086,7 +7095,7 @@ msgstr "<ismeretlen>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1814
+#: src/filesystem.cpp:1820
 msgid "language code for localized resources^en_US"
 msgstr "hu"
 
@@ -7513,7 +7522,7 @@ msgstr "%B %d %Y, %I:%M %p"
 msgid "%B %d %Y, %H:%M"
 msgstr "%B %d %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1154
+#: src/gui/dialogs/addon/manager.cpp:1153
 msgid "url^None"
 msgstr "Nincs"
 
@@ -7537,7 +7546,7 @@ msgstr "Támadó ellenállása vs"
 msgid "Attacker vulnerability vs"
 msgstr "Támadó sebezhetősége vs"
 
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 msgid "game^Get Add-ons"
 msgstr "Kiegészítők beszerzése"
 
@@ -7545,39 +7554,11 @@ msgstr "Kiegészítők beszerzése"
 msgid "More campaigns..."
 msgstr "Még több hadjárat..."
 
-#: src/gui/dialogs/campaign_selection.cpp:403
-msgid ""
-"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
-"of add-on content created by other players available via the Add-ons server, "
-"included but not limited to more single and multiplayer campaigns, "
-"multiplayer maps, additional media and various other content! Be sure to "
-"give it a try!"
-msgstr ""
-"A fő kampányok mellett a játéknak egyre bővülő listája van a más játékosok "
-"által készített kiegészítő tartalmakról is, amelyek elérhetők az Add-ons "
-"szerveren keresztül, beleértve, de nem kizárólagosan több egy- és "
-"többjátékos kampányt, többjátékos térképeket, kiegészítő eszközöket és "
-"különféle egyéb tartalmakat! Mindenképpen próbáld ki!"
-
-#: src/gui/dialogs/campaign_selection.cpp:413
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid "Missing Campaigns"
 msgstr "Hiányzó hadjáratok"
 
-#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:424
-msgid ""
-"Wesnoth normally includes more than 15 mainline campaigns, even before "
-"installing any from the add-ons server. If you’ve installed the game via a "
-"package manager, there’s probably a separate package to install the complete "
-"game data."
-msgstr ""
-"A Wesnoth általában több mint 15 fősodorbeli hadjáratot tartalmaz, még "
-"mielőtt bármit is telepítene a kiegészítő szerverről. Ha csomagkezelőn "
-"keresztül telepítette a játékot, valószínűleg van egy külön csomag a teljes "
-"játékadat telepítéséhez."
-
-#: src/gui/dialogs/campaign_selection.cpp:455
+#: src/gui/dialogs/campaign_selection.cpp:442
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "Nincs"
@@ -7615,12 +7596,12 @@ msgstr ""
 "Válassz egy másikat."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:309
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 msgid "Choose File"
 msgstr "Válassz fájlt"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:316
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7701,47 +7682,47 @@ msgstr "Túlélés"
 msgid "Terraforming"
 msgstr "Terraformálás"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:392
+#: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
 msgstr "Az ikonfájl mérete túl nagy"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
 msgstr "Nincs érvényesítési hiba"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
 msgstr "Siker"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:424
+#: src/gui/dialogs/editor/edit_pbl.cpp:434
 msgid "Choose an icon"
 msgstr "Válassz egy ikont"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
 msgstr "felderítő"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "fighter"
 msgstr "harcos"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:192
 msgid "archer"
 msgstr "íjász"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:195
+#: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
 msgstr "vegyes harcos"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:196
+#: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
 msgstr "gyógyító"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1034
+#: src/gui/dialogs/editor/edit_unit.cpp:1032
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "A nem mentett változtatások elvesznek. Vissza akarsz lépni?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1053
+#: src/gui/dialogs/editor/edit_unit.cpp:1051
 msgid "Unit type saved."
 msgstr "Egységtípus mentve."
 
@@ -7790,25 +7771,25 @@ msgstr ""
 msgid "Open"
 msgstr "Megnyit"
 
-#: src/gui/dialogs/file_dialog.cpp:310
+#: src/gui/dialogs/file_dialog.cpp:306
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "Fájlok megnyitása nem támogatott, vedd fel a kapcsolatot a csomagod "
 "készítőjével"
 
-#: src/gui/dialogs/file_dialog.cpp:367
+#: src/gui/dialogs/file_dialog.cpp:363
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Már van ilyen fájl. Felülírjam?"
 
-#: src/gui/dialogs/file_dialog.cpp:391
+#: src/gui/dialogs/file_dialog.cpp:387
 msgid "The file or folder $path cannot be created."
 msgstr "Nem sikerült létrehozni a fájlt vagy mappát: $path."
 
-#: src/gui/dialogs/file_dialog.cpp:397
+#: src/gui/dialogs/file_dialog.cpp:393
 msgid "The file or folder $path does not exist."
 msgstr "A fájl vagy mappa nem létezik: $path."
 
-#: src/gui/dialogs/file_dialog.cpp:774
+#: src/gui/dialogs/file_dialog.cpp:769
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7816,19 +7797,19 @@ msgstr ""
 "Nem sikerült új mappát létrehozni itt: $path|. Győződj meg róla, hogy "
 "rendelkezel a szükséges írási jogosultságokkal."
 
-#: src/gui/dialogs/file_dialog.cpp:792
+#: src/gui/dialogs/file_dialog.cpp:787
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "A következő mappa és tartalma végérvényesen törölve lesz:"
 
-#: src/gui/dialogs/file_dialog.cpp:793
+#: src/gui/dialogs/file_dialog.cpp:788
 msgid "The following file will be permanently deleted:"
 msgstr "A következő fájl végérvényesen törölve lesz:"
 
-#: src/gui/dialogs/file_dialog.cpp:794
+#: src/gui/dialogs/file_dialog.cpp:789
 msgid "Do you wish to continue?"
 msgstr "Szeretnéd folytatni?"
 
-#: src/gui/dialogs/file_dialog.cpp:806
+#: src/gui/dialogs/file_dialog.cpp:801
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7892,51 +7873,51 @@ msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:233
 msgid "$active active, $reserve reserve"
 msgstr "$active aktív, $reserve újra behívható"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:288
 msgid "The selected file is corrupt: "
 msgstr "A kiválasztott fájl hibás: "
 
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:328
 msgid "(Invalid)"
 msgstr "(Érvénytelen)"
 
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Campaign: $campaign_name"
 msgstr "Hadjárat: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:371
+#: src/gui/dialogs/game_load.cpp:370
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
-#: src/gui/dialogs/game_load.cpp:374
+#: src/gui/dialogs/game_load.cpp:373
 msgid "Test scenario"
 msgstr "Próbapálya"
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Replay"
 msgstr "Visszajátszás"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Turn"
 msgstr "Kör"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:387
 msgid "Scenario start"
 msgstr "Pálya indítása"
 
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Difficulty: "
 msgstr "Nehézség: "
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Version: "
 msgstr "Verzió: "
 
-#: src/gui/dialogs/game_load.cpp:435
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Modifications: "
 msgstr "Módosítók: "
 
@@ -7956,18 +7937,18 @@ msgstr "Fenntartva"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "no"
 msgstr "nem"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "yes"
 msgstr "igen"
 
-#: src/gui/dialogs/game_version_dialog.cpp:270
-#: src/gui/dialogs/game_version_dialog.cpp:284 src/gui/widgets/label.cpp:123
+#: src/gui/dialogs/game_version_dialog.cpp:273
+#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Linkek megnyitása nem támogatott, vedd fel a kapcsolatot a csomagod "
@@ -8091,7 +8072,7 @@ msgstr ""
 "A funkció importálja a Wesnoth előző verziójának beállításait, azonban nem "
 "található másik verzió az eszközön"
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:137
+#: src/gui/dialogs/multiplayer/faction_select.cpp:134
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:500
 msgid "Random"
 msgstr "Véletlen"
@@ -8208,11 +8189,11 @@ msgstr ""
 "A Wesnoth ezen változata nem tartalmaz támogatást asztali értesítésekhez. "
 "Vedd fel a kapcsolatot a Wesnoth csomagod készítőjével."
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:78
 msgid "Side $side"
 msgstr "$side oldal"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
 msgid "Add Server"
 msgstr "Kiszolgáló hozzáadása"
 
@@ -8245,36 +8226,36 @@ msgstr "Véletlenszerű pálya"
 msgid "No games found."
 msgstr "Játék nem található."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:337
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
 msgid "No eras found."
 msgstr "Korszak nem található."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found"
 msgstr "Korszak nem található"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:607
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
 msgid "No eras available for this game."
 msgstr "Nincsenek megfelelő korszakok ehhez a játékhoz."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "number of players^$min to $max"
 msgstr "$min–$max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:924
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
 msgid "The selected game has no sides!"
 msgstr "A kiválasztott játékban nincsenek oldalak!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:931
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "The selected game cannot be created."
 msgstr "A kiválasztott játékot nem lehet létrehozni."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Choose Starting Scenario"
 msgstr "Kezdő küldetés kiválasztása"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1004
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Select at which point to begin this campaign."
 msgstr "Válaszd ki, mely ponton kezdődjön a hadjárat."
 
@@ -8385,20 +8366,20 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Összes küldetés"
 
-#: src/gui/dialogs/statistics_dialog.cpp:176
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:174
+#: src/gui/dialogs/statistics_dialog.cpp:334
 msgid "This Turn"
 msgstr "Ez a kör"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
 msgstr "Találati arányok, találati esély:"
 
-#: src/gui/dialogs/statistics_dialog.cpp:214
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
 msgstr "(még nem történt támadás)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:321
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8413,111 +8394,111 @@ msgstr ""
 "A zárójelben lévő két szám összege (vagy különbsége) a bevitt/megtett ütések "
 "tényleges száma."
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:365
 msgid "stats^Recruits"
 msgstr "Toborzás"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:366
 msgid "Recalls"
 msgstr "Visszahívások"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Advancements"
 msgstr "Szintlépések"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Losses"
 msgstr "Veszteségek"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Kills"
 msgstr "Ölések"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:391
+#: src/gui/dialogs/statistics_dialog.cpp:398
 msgid "Inflicted"
 msgstr "Okozott"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:404
+#: src/gui/dialogs/statistics_dialog.cpp:411
 msgid "Taken"
 msgstr "Elszenvedett"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:452
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/gui/dialogs/title_screen.cpp:379
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "Verzió: $version"
 
-#: src/gui/dialogs/title_screen.cpp:472 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Próba küldetés kiválasztása"
 
-#: src/gui/dialogs/units_dialog.cpp:227 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/gui/dialogs/units_dialog.cpp:260
+#: src/gui/dialogs/units_dialog.cpp:264
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Ez az egység hűséges, így nincs fenntartási költsége."
 
-#: src/gui/dialogs/units_dialog.cpp:261 src/gui/dialogs/units_dialog.cpp:266
-#: src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:275
 msgid "Do you really want to dismiss him?"
 msgstr "Biztosan el akarod bocsátani?"
 
-#: src/gui/dialogs/units_dialog.cpp:262 src/gui/dialogs/units_dialog.cpp:267
-#: src/gui/dialogs/units_dialog.cpp:272
+#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Do you really want to dismiss her?"
 msgstr "Biztosan el akarod bocsátani?"
 
-#: src/gui/dialogs/units_dialog.cpp:265
+#: src/gui/dialogs/units_dialog.cpp:269
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Ez az egység magasabb szintű és tapasztalt."
 
-#: src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:274
 msgid "This unit is close to advancing a level."
 msgstr "Ez az egység közel van a szintlépéshez."
 
-#: src/gui/dialogs/units_dialog.cpp:276
+#: src/gui/dialogs/units_dialog.cpp:280
 msgid "Dismiss Unit"
 msgstr "Egység elbocsátása"
 
-#: src/gui/dialogs/units_dialog.cpp:401
+#: src/gui/dialogs/units_dialog.cpp:405
 msgid "unit_variation^Default Variation"
 msgstr "Alapértelmezett változat"
 
-#: src/gui/dialogs/units_dialog.cpp:437
+#: src/gui/dialogs/units_dialog.cpp:441
 msgid "Create Unit"
 msgstr "Egység létrehozása"
 
-#: src/gui/dialogs/units_dialog.cpp:503
+#: src/gui/dialogs/units_dialog.cpp:512
 msgid "Recruit Unit"
 msgstr "Egység toborzása"
 
-#: src/gui/dialogs/units_dialog.cpp:504 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/gui/dialogs/units_dialog.cpp:521 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Egységlista"
 
-#: src/gui/dialogs/units_dialog.cpp:658
+#: src/gui/dialogs/units_dialog.cpp:667
 msgid "Recall Unit"
 msgstr "Egység visszahívása"
 
-#: src/gui/dialogs/units_dialog.cpp:659 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/gui/dialogs/units_dialog.cpp:778
+#: src/gui/dialogs/units_dialog.cpp:787
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8525,11 +8506,11 @@ msgstr ""
 "Ezt az egységet nem lehet visszahívni, mert nem lesz elég aranyad a terved "
 "ezen pontján."
 
-#: src/gui/dialogs/units_dialog.cpp:780
+#: src/gui/dialogs/units_dialog.cpp:789
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Ezt az egységet nem lehet visszahívni, mert nincs elég aranyad."
 
-#: src/gui/gui.cpp:131
+#: src/gui/gui.cpp:130
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
@@ -8575,15 +8556,15 @@ msgstr ""
 "mégsem szeretnél üzeneteket kapni tőle, írd be a következő parancsot: <i>/"
 "ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:153
+#: src/gui/widgets/helper.cpp:148
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "Ez a nélkülözhetetlen vezérlőeszköz nincs megadva: „$id”."
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
+#: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "Hivatkozás megnyitása?"
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
 msgstr "Hivatkozás másolva!"
 
@@ -8636,10 +8617,6 @@ msgstr "Nincsenek kijelöltek"
 msgid "Need at least 1 parallel item."
 msgstr "Legalább egy párhuzamos elem szükséges."
 
-#: src/gui/widgets/rich_label.cpp:205
-msgid "corrupted original file"
-msgstr "hibás eredeti fájl"
-
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
 msgstr "Érvénytelen méret."
@@ -8656,7 +8633,7 @@ msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 msgid "No stack layers defined."
 msgstr "Nincsenek stack rétegek megadva."
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:592
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 "Találtam egy vezérlőeszközt, amelyikhez tartozik szöveg, de súgóbuborék nem."
@@ -8685,55 +8662,69 @@ msgstr "Ellenállások: "
 msgid "(Att / Def)"
 msgstr "(Tám / Véd)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:286
-#: src/gui/widgets/unit_preview_pane.cpp:317
-#: src/gui/widgets/unit_preview_pane.cpp:426
-#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:224
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:227
+msgid "This unit can attack multiple times per turn."
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:269
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:312
+#: src/gui/widgets/unit_preview_pane.cpp:343
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "$lvl. sz"
 
-#: src/gui/widgets/unit_preview_pane.cpp:324
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:465
-#: src/gui/widgets/unit_preview_pane.cpp:482
+#: src/gui/widgets/unit_preview_pane.cpp:350
+#: src/gui/widgets/unit_preview_pane.cpp:363
+#: src/gui/widgets/unit_preview_pane.cpp:491
+#: src/gui/widgets/unit_preview_pane.cpp:508
 msgid "HP: "
 msgstr "ÉP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:342
-#: src/gui/widgets/unit_preview_pane.cpp:468
-#: src/gui/widgets/unit_preview_pane.cpp:470
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:368
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:496
+#: src/gui/widgets/unit_preview_pane.cpp:513
 msgid "XP: "
 msgstr "TP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:344
-#: src/gui/widgets/unit_preview_pane.cpp:489
+#: src/gui/widgets/unit_preview_pane.cpp:370
+#: src/gui/widgets/unit_preview_pane.cpp:515
 msgid "Experience Modifier: "
 msgstr "Szintlépési küszöb: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:347
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:373
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "MP: "
 msgstr "LP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:374
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:539
 msgid "Abilities"
 msgstr "Képességek"
 
-#: src/gui/widgets/window.cpp:286
+#: src/gui/widgets/window.cpp:288
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "A következő csoport több definícióval is rendelkezik: „$id”."
 
-#: src/gui/widgets/window.cpp:879
+#: src/gui/widgets/window.cpp:887
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr ""
 "Az elvetésre kattintáshoz egy „kattints az elvetéshez” vagy egy „OK” gomb "
 "szükséges."
 
-#: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:743
+#: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
+#: src/tests/gui/test_gui2.cpp:739
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."
 
@@ -9592,12 +9583,12 @@ msgstr "Lua konzol megjelenítése"
 msgid "Unrecognized Command"
 msgstr "Ismeretlen parancs"
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1301
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni."
 
-#: src/preferences/preferences.cpp:1341
+#: src/preferences/preferences.cpp:1338
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9607,15 +9598,15 @@ msgstr ""
 "szükséges a helyi hálózati játékok nyitásához. Általában ugyanabban a "
 "mappában található, mint a játék programfájlja."
 
-#: src/preferences/preferences.cpp:1345
+#: src/preferences/preferences.cpp:1342
 msgid "Find Server Application"
 msgstr "Kiszolgáló alkalmazás keresése"
 
-#: src/preferences/preferences.cpp:1800
+#: src/preferences/preferences.cpp:1797
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1802
+#: src/preferences/preferences.cpp:1799
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9646,6 +9637,12 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "A kötelező ‘$tag|’ alcímke nincs beállítva itt: ‘[$section|]’."
+
+#~ msgid "Battle For Wesnoth Help"
+#~ msgstr "Harc Wesnothért Súgó"
+
+#~ msgid "corrupted original file"
+#~ msgstr "hibás eredeti fájl"
 
 #~ msgid "Completed"
 #~ msgstr "Teljesítve"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
 "PO-Revision-Date: 2011-12-29 21:21+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -6356,7 +6356,27 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:174
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:176
+msgid ""
+"I just made a <i><b>ranged attack</b></i>! I had to stand right next to this "
+"Quintain <i>(yes, this is different from how most games handle ranged "
+"attacks)</i>, but because the dummy has no ranged weapon of its own it was "
+"unable to retaliate."
+msgstr ""
+
+#. [message]: speaker=unit
+#. second_unit may be a Walking Corpse, Ghoul, Skeleton, or one of their advancements
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:184
+msgid ""
+"I just made a <i><b>ranged attack</b></i>! I had to stand right next to this "
+"$second_unit.language_name <i>(yes, this is different from how most games "
+"handle ranged attacks)</i>, but because the $second_unit.language_name has "
+"no ranged weapon of its own it was unable to retaliate."
+msgstr ""
+
+#. [message]: speaker=unit
+#. second_unit may be a Thug (always male) or one of its advancements
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:192
 msgid ""
 "I just made a <i><b>ranged attack</b></i>! I had to stand right next to this "
 "$second_unit.language_name <i>(yes, this is different from how most games "
@@ -6365,7 +6385,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:248
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:268
 msgid ""
 "Peasants and Woodsmen form the backbone of the rural economy. Frail and "
 "vulnerable, these are the Wesnoth armies’ soldiers of last resort.\n"
@@ -6375,7 +6395,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:267
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:287
 #, fuzzy
 #| msgid ""
 #| "Our weapons are useless against these skeletons! They have nothing for "
@@ -6387,19 +6407,19 @@ msgstr ""
 "Meie relvad ei hakka nende luukerede peale! Meie odad tabavad üksnes õhku!"
 
 #. [message]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:271
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:291
 msgid ""
 "To see what damage resistances and vulnerabilities a unit has, right-click "
 "it and select “Unit Description.”"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:293
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:313
 msgid "Alas, I perish! And with me, all my hard-won battle experience is lost."
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:298
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:318
 msgid ""
 "You will be missed, my veteran friend! If only we had kept him safe, he "
 "could have been a valuable asset in our fight."
@@ -6407,7 +6427,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. $consecutive_misses will be 3 or higher. Alternatively, can be translated along the lines of "I missed all my strikes!"
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:352
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:372
 msgid ""
 "I missed all $consecutive_misses strikes! I tried my best, but this enemy "
 "had high dodge, and I also got unlucky. I might have had better odds "
@@ -6415,7 +6435,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:356
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:376
 msgid ""
 "A good commander understands the odds, and knows how to both exploit good "
 "luck and mitigate bad luck. After all, both good and bad luck are equally "
@@ -6423,12 +6443,12 @@ msgid ""
 msgstr ""
 
 #. [display_tip]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:359
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:379
 msgid "Managing Luck"
 msgstr ""
 
 #. [display_tip]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:361
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:381
 msgid ""
 "Wesnoth is a game about flexible strategy,\n"
 "not deterministic calculation.\n"
@@ -6451,7 +6471,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. $consecutive_hits will be 3 or higher. Alternatively, can be translated along the lines of "I got lucky and hit all my strikes!"
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:399
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:419
 msgid ""
 "I got lucky and hit all $consecutive_hits strikes! Good luck will sometimes "
 "happen, but a good commander knows how to win without relying on it. After "
@@ -6459,7 +6479,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:420
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:440
 msgid ""
 "I missed all $consecutive_misses strikes, even though my enemy had low "
 "dodge! That’s unlucky, but bad luck happens just as often as good luck — a "
@@ -6467,7 +6487,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:441
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:461
 msgid ""
 "I hit all $consecutive_hits strikes, even though my enemy had high dodge! "
 "Luck works both ways — sometimes I miss strikes when I was likely to hit, "
@@ -6475,12 +6495,12 @@ msgid ""
 msgstr ""
 
 #. [display_tip]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:450
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:470
 msgid "Sacrificial Lambs"
 msgstr ""
 
 #. [display_tip]
-#: data/campaigns/The_South_Guard/utils/sg_help.cfg:452
+#: data/campaigns/The_South_Guard/utils/sg_help.cfg:472
 msgid ""
 "In challenging scenarios, it's often\n"
 "impossible to protect every unit.\n"

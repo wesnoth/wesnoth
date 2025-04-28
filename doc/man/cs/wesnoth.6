@@ -74,10 +74,11 @@ možnost zobrazení dialogového okna pro testování grafického uživatelskéh
 rozhraní.
 .TP 
 \fB\-\-core\fP\fI\ id_jádra\fP
-nahradí načtené jádro tím, jehož identifikátor je zadán.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ adresář\fP
-nahradí adresář s\ daty tím, který je zadán.
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 vypíše cestu k\ adresáři s\ daty a\ skončí.
@@ -122,10 +123,11 @@ načtení mapy v\ tomto umístění.
 pro toto sezení použije daný \fIjazyk\fP (symbol). Příklad: \fB\-\-language pl_PL\fP.
 .TP 
 \fB\-\-log\-\fP\fIúroveň\fP\fB=\fP\fIoblast1\fP\fB,\fP\fIoblast2\fP\fB,\fP\fI...\fP
-nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro zahrnutí všech
-oblastí zaznamenávání lze použít \fBall\fP. Dostupné úrovně: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Pro většinu oblastí je výchozí
-použitá úroveň \fBwarning\fP, ale pro oblast \fBdeprecation\fP, pokud není
-společně s\ volbou \fB\-d\fP, je výchozí úrovní \fBnone\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 použije v\ záznamech časové značky s\ větší přesností.
@@ -418,7 +420,7 @@ Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2025 David White <davidnwhite@verizon.net>
 .br
 Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a
