@@ -22,14 +22,12 @@
 #include "editor/action/action.hpp"
 #include "editor/action/action_unit.hpp"
 #include "editor/action/action_select.hpp"
+#include "editor/action/mouse/mouse_action.hpp"
 #include "editor/controller/editor_controller.hpp"
-
 #include "editor/palette/terrain_palettes.hpp"
 #include "editor/palette/location_palette.hpp"
 
-#include "editor/action/mouse/mouse_action.hpp"
-
-#include "preferences/preferences.hpp"
+#include "help/help.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/edit_unit.hpp"
@@ -41,6 +39,7 @@
 #include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 
+#include "preferences/preferences.hpp"
 #include "resources.hpp"
 #include "reports.hpp"
 #include "wml_exception.hpp"
@@ -102,8 +101,8 @@ editor_controller::editor_controller(bool clear_id)
 
 void editor_controller::init_gui()
 {
-	gui_->change_display_context(&get_current_map_context());
-	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
+	gui().change_display_context(&get_current_map_context());
+	gui().add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_debug_flag(display::DEBUG_COORDINATES, prefs::get().editor_draw_hex_coordinates());
 	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, prefs::get().editor_draw_terrain_codes());
@@ -1297,10 +1296,10 @@ void editor_controller::toggle_grid()
 void editor_controller::unit_description()
 {
 	map_location loc = gui_->mouseover_hex();
-	const unit_map & units = get_current_map_context().units();
+	const unit_map& units = get_current_map_context().units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
-		help::show_unit_help(un->type_id(), un->type().show_variations_in_help(), false);
+		help::show_unit_description(un->type());
 	} else {
 		help::show_help("..units");
 	}
