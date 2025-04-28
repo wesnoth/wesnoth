@@ -1,6 +1,4 @@
-## Version 1.19.10+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.11
 ### Campaigns
    * The Deceiver's Gambit
      * Spells: clarified "Counterspell" description
@@ -11,9 +9,6 @@
    * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115)
 ### Multiplayer
    * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Simplified), Czech, Italian, Japanese
 ### Units
