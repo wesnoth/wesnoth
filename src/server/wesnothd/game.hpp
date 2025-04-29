@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "client_server_shared_values.hpp"
+#include "queue_type.hpp"
 #include "mt_rng.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
@@ -38,7 +38,7 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
-			cssv::queue_type::type queue_type,
+			queue_type::type queue_type,
 			int queue_id,
 			const std::string& name = "",
 			bool save_replays = false,
@@ -621,11 +621,11 @@ public:
 		observers_.clear();
 	}
 
-	cssv::queue_type::type queue_type() const
+	queue_type::type q_type() const
 	{
 		return queue_type_;
 	}
-	void queue_type(cssv::queue_type::type queue_type)
+	void q_type(queue_type::type queue_type)
 	{
 		queue_type_ = queue_type;
 	}
@@ -977,7 +977,7 @@ private:
 	int last_choice_request_id_;
 
 	/** Whether this game was created manually or by joining a queue */
-	cssv::queue_type::type queue_type_;
+	queue_type::type queue_type_;
 
 	/** Which server-side queue this game came from */
 	int queue_id_;

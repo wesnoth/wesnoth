@@ -16,11 +16,6 @@
 
 #include "enum_base.hpp"
 
-/**
- * client server shared values - things that need to be referenced by the client and wesnothd/campaignd
- */
-namespace cssv
-{
 struct queue_type_defines
 {
 	static constexpr const char* const normal = "normal";
@@ -30,4 +25,3 @@ struct queue_type_defines
 	ENUM_AND_ARRAY(normal, client_preset, server_preset)
 };
 using queue_type = string_enums::enum_base<queue_type_defines>;
-}

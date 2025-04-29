@@ -742,8 +742,8 @@ void connect_engine::send_level_data() const
 				"password", params_.password,
 				"ignored", prefs::get().get_ignored_delim(),
 				// all queue games count as auto hosted, but not all auto hosted games are queue games
-				"auto_hosted", mp_metadata_ ? mp_metadata_->queue_type != cssv::queue_type::normal : false,
-				"queue_type", mp_metadata_ ? mp_metadata_->queue_type : cssv::queue_type::normal,
+				"auto_hosted", mp_metadata_ ? mp_metadata_->queue_type != queue_type::normal : false,
+				"queue_type", mp_metadata_ ? mp_metadata_->queue_type : queue_type::normal,
 				"queue_id", mp_metadata_ ? mp_metadata_->queue_id : 0,
 			},
 		});

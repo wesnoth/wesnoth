@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "client_server_shared_values.hpp"
+#include "queue_type.hpp"
 #include "game_end_exceptions.hpp"
 
 #include <set>
@@ -34,7 +34,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
-		, queue_type(cssv::queue_type::normal)
+		, queue_type(queue_type::normal)
 	{
 	}
 

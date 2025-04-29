@@ -140,7 +140,7 @@ private:
 	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode(cssv::queue_type::type queue_type, int queue_id = 0);
+	void enter_staging_mode(queue_type::type queue_type, int queue_id = 0);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -611,23 +611,23 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario,
 	// else look for them locally
 	if(preset_scenario && server_preset) {
 		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(cssv::queue_type::type::server_preset, queue_id);
+		enter_staging_mode(queue_type::type::server_preset, queue_id);
 	} else if(preset_scenario && !server_preset) {
 		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
 			if(game["scenario"].str() == preset_scenario.value()) {
 				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(cssv::queue_type::type::client_preset);
+				enter_staging_mode(queue_type::type::client_preset);
 				return;
 			}
 		}
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode(cssv::queue_type::type::normal);
+		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode(cssv::queue_type::type queue_type, int queue_id)
+void mp_manager::enter_staging_mode(queue_type::type queue_type, int queue_id)
 {
 	DBG_MP << "entering connect mode";
 
@@ -638,7 +638,7 @@ void mp_manager::enter_staging_mode(cssv::queue_type::type queue_type, int queue
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
-		metadata->queue_type = cssv::queue_type::get_string(queue_type);
+		metadata->queue_type = queue_type::get_string(queue_type);
 		metadata->queue_id = queue_id;
 	}
 
