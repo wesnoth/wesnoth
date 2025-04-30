@@ -1431,36 +1431,36 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 
 bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
-	std::string rel_path = "";
-	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);
-	std::string addon_asset_dir;
+	// datadir is absoulute path to where wesnoth's data is installed
+	// Case 1 example: datadir/data/core/images/misc/image.png -> misc/images
+	bfs::path datadir = game_config::path;
+	bfs::path core_asset_dir = datadir / "data" / "core" / asset_type;
+	// Case 2 example: datadir/images/misc/image.png -> misc/images
+	bfs::path core_asset_dir_2 = datadir / asset_type;
 
 	bool found = false;
-	bool is_in_core_dir = (path.find(core_asset_dir) != std::string::npos);
-	bool is_in_addon_dir = false;
 
-	if (is_in_core_dir) {
-		rel_path = path.erase(0, core_asset_dir.size()+1);
+	if(is_prefix(path, core_asset_dir)) {
+		path = bfs::relative(path, core_asset_dir).string();
 		found = true;
-	} else if (!addon_id.empty()) {
-		addon_asset_dir = get_current_editor_dir(addon_id) + "/" + asset_type;
-		is_in_addon_dir = (path.find(addon_asset_dir) != std::string::npos);
-		if (is_in_addon_dir) {
-			rel_path = path.erase(0, addon_asset_dir.size()+1);
+	} else if(is_prefix(path, core_asset_dir_2)) {
+		path = bfs::relative(path, core_asset_dir_2).string();
+		found = true;
+	} else if(!addon_id.empty()) {
+		bfs::path addon_asset_dir = get_current_editor_dir(addon_id);
+		addon_asset_dir /= asset_type;
+		// Case 3 example: addondir/images/misc/image.png -> misc/images
+		// addondir is absolute path to the addon's directory
+		if(is_prefix(path, addon_asset_dir)) {
+			path = bfs::relative(path, addon_asset_dir).string();
 			found = true;
 		} else {
 			// Not found in either core or addons dirs,
 			// return a possible path where the asset could be copied.
-			std::string filename = boost::filesystem::path(path).filename().string();
-			std::string asset_path = addon_asset_dir + "/" + filename;
-			rel_path = filename;
-			found = false;
+			path = bfs::path(path).filename().string();
 		}
-	} else {
-		found = false;
 	}
 
-	path = rel_path;
 	return found;
 }
 
