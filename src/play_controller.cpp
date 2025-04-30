@@ -234,12 +234,8 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		prefs::get().encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << timer();
-		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
-
-		LOG_NG << "building terrain rules... " << timer();
-		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-
+		LOG_NG << "initializing display (includes theme init and building terrain rules)... " << timer();
+		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if(start_faded_) {
@@ -258,7 +254,6 @@ void play_controller::init(const config& level)
 			}
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
