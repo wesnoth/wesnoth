@@ -218,14 +218,7 @@ if(ENABLE_GAME)
 		${game-external-libs}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+    ${Boost_LIBRARIES}
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main

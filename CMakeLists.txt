@@ -52,7 +52,7 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.70")
+set(BOOST_VERSION "1.85")
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)
@@ -93,7 +93,7 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph charconv)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
