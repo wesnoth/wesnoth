@@ -93,7 +93,8 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph charconv)
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph
+                                    OPTIONAL_COMPONENTS charconv)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
