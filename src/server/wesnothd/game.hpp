@@ -630,6 +630,17 @@ public:
 		queue_type_ = queue_type;
 	}
 
+	bool is_open_queue_game(int q_id) {
+		return queue_type_ == queue_type::type::server_preset &&
+			!started_ &&
+			q_id == queue_id_ &&
+			get_vacant_slots() != 0;
+	}
+
+	int get_vacant_slots() {
+		return description_->child("slot_data")->attr("vacant").to_int();
+	}
+
 private:
 	// forbidden operations
 	game(const game&) = delete;

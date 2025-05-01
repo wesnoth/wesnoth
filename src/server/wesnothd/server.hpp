@@ -135,22 +135,22 @@ private:
 	struct queue_info
 	{
 		queue_info(int id, const std::string& scenario_id, const std::string& name, int required, config game)
-		: id_(id)
-		, scenario_id_(scenario_id)
-		, queue_display_name_(name)
-		, players_required_(required)
-		, players_in_queue_()
-		, settings_(game)
+		: id(id)
+		, scenario_id(scenario_id)
+		, queue_display_name(name)
+		, players_required(required)
+		, players_in_queue()
+		, settings(game)
 		{
 
 		}
 
-		int id_;
-		std::string scenario_id_;
-		std::string queue_display_name_;
-		std::size_t players_required_;
-		std::vector<std::string> players_in_queue_;
-		config settings_;
+		int id;
+		std::string scenario_id;
+		std::string queue_display_name;
+		std::size_t players_required;
+		std::vector<std::string> players_in_queue;
+		config settings;
 	};
 
 	std::deque<login_log> failed_logins_;
