@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -112,10 +112,10 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 
 	/*** Local hotkeys. ***/
 	window::register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
+		[](auto&&...) { help::show_help(); return true; });
 
 	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
+		[this](auto&&...) { show_preferences_button_callback(); return true; });
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -756,6 +756,13 @@ void mp_lobby::process_network_data(const config& data)
 			announcements_ = info["message"].str();
 			return;
 		}
+	} else if(auto create = data.optional_child("create_game")) {
+		queue_game_scenario_id_ = create["mp_scenario"];
+		set_retval(CREATE_PRESET);
+		return;
+	} else if(auto join_game = data.optional_child("join_game")) {
+		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
+		return;
 	}
 
 	chatbox_->process_network_data(data);
@@ -870,11 +877,15 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
+	join_data["mp_scenario"] = game.scenario_id;
 	mp::send_to_server(response);
-	joined_game_id_ = game.id;
 
-	// We're all good. Close lobby and proceed to game!
-	set_retval(try_join ? JOIN : OBSERVE);
+	if(game.id >= 0) {
+		joined_game_id_ = game.id;
+
+		// We're all good. Close lobby and proceed to game!
+		set_retval(try_join ? JOIN : OBSERVE);
+	}
 }
 
 void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
@@ -908,11 +919,6 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 void mp_lobby::refresh_lobby()
 {
 	mp::send_to_server(config("refresh_lobby"));
-}
-
-void mp_lobby::show_help_callback()
-{
-	help::show_help();
 }
 
 void mp_lobby::show_preferences_button_callback()

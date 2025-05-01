@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -249,7 +249,7 @@ void multiline_text::update_offsets()
 	const auto conf = cast_config_to<multiline_text_definition>();
 	assert(conf);
 
-	text_height_ = font::get_max_height(get_text_font_size(), get_font_family());
+	text_height_ = font::get_max_height(get_text_font_size(), conf->text_font_family);
 
 	wfl::map_formula_callable variables;
 	variables.add("height", wfl::variant(get_height()));

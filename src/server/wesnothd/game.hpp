@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,6 +37,7 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
+			bool is_queue_game,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -138,6 +139,8 @@ public:
 	{
 		return level_.child("snapshot") || level_.child("scenario");
 	}
+
+	const std::string get_scenario_id() const;
 
 	/**
 	 * The non-const version.
@@ -611,6 +614,15 @@ public:
 		observers_.clear();
 	}
 
+	bool is_queue_game() const
+	{
+		return is_queue_game_;
+	}
+	void is_queue_game(bool is_queue_game)
+	{
+		is_queue_game_ = is_queue_game;
+	}
+
 private:
 	// forbidden operations
 	game(const game&) = delete;
@@ -956,6 +968,9 @@ private:
 	 * New requests should never have a lower value than this.
 	 */
 	int last_choice_request_id_;
+
+	/** Whether this game was created by joining a game defined client-side in an [mp_queue] */
+	bool is_queue_game_;
 };
 
 } // namespace wesnothd

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -123,7 +123,7 @@ bool floating_label::create_texture()
 	font::pango_text& text = font::get_text_renderer();
 
 	text.set_link_aware(false)
-		.set_family_class(font::FONT_SANS_SERIF)
+		.set_family_class(font::family_class::sans_serif)
 		.set_font_size(font_size_)
 		.set_font_style(font::pango_text::STYLE_NORMAL)
 		.set_alignment(PANGO_ALIGN_LEFT)

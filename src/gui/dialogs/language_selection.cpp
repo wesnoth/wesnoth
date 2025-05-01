@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,18 +94,20 @@ void language_selection::pre_show()
 	const language_def& current_language = get_language();
 
 	for(const auto& lang : langs_) {
-		widget_data data;
+		std::string lang_label = game_config::debug && !lang.localename.empty()
+			? lang.language + "\n" + markup::tag("small", markup::tag("tt", lang.localename))
+			: lang.language;
 
-		data["language"]["label"] = lang.language;
-		data["language"]["use_markup"] = "true";
-		data["translated_total"]["label"] = markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%");
-		data["translated_total"]["use_markup"] = "true";
-
-		if(game_config::debug && !lang.localename.empty()) {
-			data["language"]["label"] += "\n" + markup::tag("small", markup::tag("tt", lang.localename));
-		}
-
-		list.add_row(data);
+		list.add_row(widget_data{
+			{ "language", {
+				{ "label", std::move(lang_label) },
+				{ "use_markup", "true" }
+			}},
+			{ "translated_total", {
+				{ "label", markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%") },
+				{ "use_markup", "true" }
+			}},
+		});
 
 		if(lang == current_language) {
 			list.select_last_row();

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
 "PO-Revision-Date: 2024-06-28 11:59+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -68,11 +68,19 @@ msgstr "领主"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:24
+#, fuzzy
+#| msgid ""
+#| "In the first years of the Northern Alliance, an expedition from Knalga "
+#| "seeks out their kin at Kal Kartha and to learn the fate of the legendary "
+#| "Hammer of Thursagan. The perils of their journey through the wild "
+#| "Northern Lands, though great, pale beside the evil they will face at its "
+#| "end.\n"
+#| "\n"
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
 "out their kin at Kal Kartha and to learn the fate of the legendary Hammer of "
-"Thursagan. The perils of their journey through the wild Northern Lands, "
-"though great, pale beside the evil they will face at its end.\n"
+"Thursagan. The perils of their journey through the wild Northlands, though "
+"great, pale beside the evil they will face at its end.\n"
 "\n"
 msgstr ""
 "在北方联盟的头几年，一支从纳尔迦出发的探险队前去寻找他们在卡尔·卡萨的亲族，并"
@@ -227,7 +235,7 @@ msgstr "击败巴什纳克"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:100
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:125
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:149
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:106
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:121
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:364
@@ -334,9 +342,15 @@ msgstr "追溯往昔"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Following the victory against the orcs, Aiglondur was summoned to the "
+#| "audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+#| "Alliance. Beside the dais stood a stranger in the robes of the Order of "
+#| "Loremasters..."
 msgid ""
 "Following the victory against the orcs, Aiglondur was summoned to the "
-"audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+"audience hall of Hamel, Lord of Knalga and Lord Companion of the Northern "
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
@@ -605,22 +619,22 @@ msgid "Marth-Tak"
 msgstr "马斯-塔克"
 
 #. [side]: type=Orcish Slayer, id=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:82
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:101
 msgid "Invaders"
 msgstr "入侵者"
 
 #. [side]: type=Orcish Slayer, id=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:88
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:107
 msgid "Gorthas"
 msgstr "戈萨斯"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:121
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:145
 msgid "Help Marth-Tak defeat Gorthas"
 msgstr "帮助马斯-塔克击败戈萨斯"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:129
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:153
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:110
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:125
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:368
@@ -636,7 +650,7 @@ msgid "Death of Angarthing"
 msgstr "安伽辛死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:157
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:114
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:129
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:372
@@ -646,17 +660,22 @@ msgid "Death of Movrur"
 msgstr "莫夫鲁尔死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:161
 msgid "Death of Marth-Tak"
 msgstr "马斯-塔克死亡"
 
+#. [note]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:174
+msgid "Your ally will focus on defending."
+msgstr ""
+
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:167
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:196
 msgid "Movrur, I had meant to ask you this before, but why do you wear a mask?"
 msgstr "莫夫鲁尔，我之前就想问你这个问题，你为什么要戴面具？"
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:173
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:202
 msgid ""
 "Kal Kartha is the stronghold of numerous, ancient forges. We are at home in "
 "deep firepits, as smiths and craftsmen. The mask is a sign of our mastery of "
@@ -666,7 +685,7 @@ msgstr ""
 "是我们掌握锻造技术的标志。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:178
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:207
 msgid ""
 "And more practically, it shields the face from flying sparks and molten "
 "steel. Even the forgemasters of Knalga don the mask, though perhaps not as "
@@ -678,65 +697,65 @@ msgstr ""
 "一步讨论这个，我看到有麻烦正在酝酿之中！"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:183
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:212
 msgid "In the name of the Alliance, quit these lands now!"
 msgstr "以联盟的名义，马上离开这片土地！"
 
 #. [message]: speaker=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:188
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:217
 msgid ""
 "Stinkin’ weakling! No true orc would fight for somethin’ as stupid as the "
 "Alliance."
 msgstr "讨厌的弱者！没有一个真正的兽人会为像联盟这样愚蠢的东西而战。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:193
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:222
 msgid ""
 "You underestimate our strength. We shall see who the true orc is after this "
 "battle is over!"
 msgstr "你低估了我们的实力。这场战斗结束后，我们将看到谁才是真正的兽人！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:198
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:227
 msgid ""
 "Now that is a sight still strange to my eyes — an orc fighting for the "
 "Northern Alliance."
 msgstr "现在这倒是个我仍旧不太习惯见到的景象——一个兽人为北方联盟而战。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:203
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:232
 msgid ""
 "I’m surprised myself that so many of the orcish tribes came over to the "
 "Alliance."
 msgstr "我自己也很惊奇有这么多的兽人部落加入了联盟。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:210
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:239
 msgid "You, on the road! Are you of the Northern Alliance or not?"
 msgstr "你们，路过的！你们是不是北方联盟的？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:244
 msgid "We are."
 msgstr "我们是。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:220
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:249
 msgid "Well, then, honor the treaty as I have."
 msgstr "好，那就像我一样遵守盟约吧。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:225
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:254
 msgid "That is our duty. For the Alliance!"
 msgstr "这是我们的义务。为了联盟！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:237
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:266
 msgid "We have failed our duty to the Alliance."
 msgstr "我们没尽到自己对联盟的义务。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:253
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:282
 msgid ""
 "My thanks, dwarves. There have been many attacks on the border tribes of "
 "late, and though we have repelled them thus far, the assaults have gotten "
@@ -746,7 +765,7 @@ msgstr ""
 "攻击每天都变得比前一天更猛烈。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:258
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:287
 msgid ""
 "Indeed? What disturbs me is that these orcs bear arms and coins of dwarvish "
 "make. It intimates that this war-band was hired for this purpose."
@@ -755,7 +774,7 @@ msgstr ""
 "而被雇佣的。"
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:263
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:292
 msgid ""
 "Nonsense. It may very well be that these orcs defeated a garrison of dwarves "
 "and raided their supplies. You need not draw such drastic conclusions from "
@@ -765,7 +784,7 @@ msgstr ""
 "不足道的遭遇中得出如此激烈的结论。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:268
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:297
 msgid ""
 "And what of the orcs that Aiglondur fended off at the East Gate of Knalga? "
 "Their leader’s cloak-pin bore the emblem of Kal Kartha—"
@@ -774,7 +793,7 @@ msgstr ""
 "——"
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:273
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:302
 msgid ""
 "Several of our scouting bands were ambushed recently. These orcs must have "
 "been among those who slew our kinsmen. It is all the better we slaughtered "
@@ -784,12 +803,12 @@ msgstr ""
 "想，我们刚在这里杀了他们就更棒了！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:307
 msgid "Indeed..."
 msgstr "确实……"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:283
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:312
 msgid ""
 "What matters is that these raiders are defeated now. My thanks to you, Marth-"
 "Tak, for proving there are orcs I can fight alongside rather than against. "
@@ -799,7 +818,7 @@ msgstr ""
 "并肩作战，而不是互相砍杀的兽人。但我们不能留在这里庆祝了，我们得向东行进。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:288
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:317
 msgid "East, eh? You won’t find many friends in that direction. Travel safely."
 msgstr "东边，嗯？你不会在那个方向上碰到太多朋友的。祝一路顺风。"
 
@@ -2324,11 +2343,19 @@ msgstr "矮人博学士"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
+#| "valued by war-leaders and chieftains, and they are viewed with awe by "
+#| "ordinary dwarves, for they alone have plumbed the deepest and most "
+#| "closely-held secrets of dwarven knowledge. It is said that where a "
+#| "loremaster stands, there is the soul of the dwarves. To the abilities of "
+#| "the Annalist they add a limited ability to heal."
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
 "valued by war-leaders and chieftains, and they are viewed with awe by "
 "ordinary dwarves, for they alone have plumbed the deepest and most closely-"
-"held secrets of dwarven knowledge. It is said that where a loremaster "
+"held secrets of dwarven knowledge. It is said that where a Loremaster "
 "stands, there is the soul of the dwarves. To the abilities of the Annalist "
 "they add a limited ability to heal."
 msgstr ""
@@ -2396,12 +2423,12 @@ msgstr "戴面具的矮人铁甲兵"
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:17
 msgid ""
-"More experienced dwarvish fighters wear heavy chain mail and plate armor, "
-"for which they are rightly famous. In the dark dreams of dwarvenkind, some "
+"Outfitted in the strongest plate and mail of Knalgan forges, the Steelclads "
+"are the vanguard of dwarvish armies. They are renowned for their resilience "
+"in the heat of battle, and their mastery of both battleaxe and warhammer "
+"make them imposing foes indeed. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
-"更有经验的矮人战士们穿着沉重的锁子甲和板甲，他们因此而闻名并名副其实。在矮人"
-"们黑暗的梦境之中，有些人用铆接的面具把自己的脸隐藏起来。"
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:4
@@ -2513,6 +2540,14 @@ msgid ""
 msgstr ""
 "没有杜尔卡图洛斯来向卡尔·卡萨族人解释我们的行动，那我们就也得和他们开战。我们"
 "的任务失败了。"
+
+#~ msgid ""
+#~ "More experienced dwarvish fighters wear heavy chain mail and plate armor, "
+#~ "for which they are rightly famous. In the dark dreams of dwarvenkind, "
+#~ "some conceal their faces behind riveted masks."
+#~ msgstr ""
+#~ "更有经验的矮人战士们穿着沉重的锁子甲和板甲，他们因此而闻名并名副其实。在矮"
+#~ "人们黑暗的梦境之中，有些人用铆接的面具把自己的脸隐藏起来。"
 
 #~ msgid "Ratheln"
 #~ msgstr "拉什伦"

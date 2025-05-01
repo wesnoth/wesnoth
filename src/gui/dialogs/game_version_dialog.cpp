@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -165,24 +165,25 @@ void game_version::pre_show()
 	//
 	tabs.select_tab(2);
 
-	widget_data list_data;
-
 	listbox& deps_listbox = find_widget<listbox>("deps_listbox");
 
-	for(const auto& dep : deps_)
-	{
-		list_data["dep_name"]["label"] = dep[0];
-		list_data["dep_build_version"]["label"] = dep[1];
-		// The build version is always known, but runtime version isn't, esp.
-		// for header-only libraries like Boost for which the concept does not
-		// apply.
-		list_data["dep_rt_version"]["label"] = dep[2].empty() ? font::unicode_em_dash : dep[2];
-
-		deps_listbox.add_row(list_data);
+	for(const auto& dep : deps_) {
+		deps_listbox.add_row(widget_data{
+			{ "dep_name", {
+				{ "label", dep[0] }
+			}},
+			{ "dep_build_version",{
+				{ "label", dep[1] }
+			}},
+			// The build version is always known, but runtime version isn't, esp. for
+			// header-only libraries like Boost for which the concept does not apply.
+			{ "dep_rt_version", {
+				{ "label", dep[2].empty() ? font::unicode_em_dash : dep[2] }
+			}},
+		});
 	}
 
 	deps_listbox.select_row(0);
-	list_data.clear();
 
 	//
 	// Features tab.
@@ -191,17 +192,19 @@ void game_version::pre_show()
 
 	listbox& opts_listbox = find_widget<listbox>("opts_listbox");
 
-	for(const auto& opt : opts_)
-	{
-		list_data["opt_name"]["label"] = opt.name;
-		list_data["opt_status"]["label"] = opt.enabled ? text_feature_on : text_feature_off;
-		list_data["opt_status"]["use_markup"] = "true";
-
-		opts_listbox.add_row(list_data);
+	for(const auto& opt : opts_) {
+		opts_listbox.add_row(widget_data{
+			{ "opt_name", {
+				{ "label", opt.name }
+			}},
+			{ "opt_status", {
+				{ "label", opt.enabled ? text_feature_on : text_feature_off },
+				{ "use_markup", "true" }
+			}},
+		});
 	}
 
 	opts_listbox.select_row(0);
-	list_data.clear();
 
 	//
 	// Community tab

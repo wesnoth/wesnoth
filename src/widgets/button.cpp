@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -210,7 +210,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::BUTTON_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::TITLE_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
@@ -321,7 +321,7 @@ void button::draw_contents()
 		textx = loc.x + image.w() + checkbox_horizontal_padding_ / 2;
 	}
 
-	color_t button_color = font::BUTTON_COLOR;
+	color_t button_color = font::TITLE_COLOR;
 
 	if (!enabled()) {
 		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)

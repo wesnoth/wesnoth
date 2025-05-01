@@ -72,10 +72,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ çekirdek\fP
-kimliği belirtilen çekirdek yüklü olanın yerine geçer.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ dizin\fP
-data dizini olarak belirtilen dizin kullanılır
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 data dizininin yolunu basar ve çıkar.
@@ -120,10 +121,11 @@ geçerli oturumda \fIlisan\fP (dilin resmi sembolü) ile belirtilen dil
 kullanılır. Örnek: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
-günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
-kapsamak üzere \fBall\fP belirtilebilir. Olası önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Çoğu sunucu \fBwarning\fP öntanımlı
-değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
-\fBdeprecation\fP için \fBnone\fP öntanımlıdır.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 günlük çıktısında zaman damgaları daha ayrıntılı gösterilir.
@@ -424,7 +426,7 @@ Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

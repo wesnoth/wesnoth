@@ -144,6 +144,11 @@ Campaign WC:
     - any-glob-to-any-file:
       - data/campaigns/World_Conquest/**
 
+CI:
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/workflows/**
+
 CMake:
   - changed-files:
     - any-glob-to-any-file:

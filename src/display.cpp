@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -64,10 +64,6 @@
 #include <iomanip>
 #include <numeric>
 #include <utility>
-
-#ifdef __cpp_lib_format
-#include <format>
-#endif
 
 #ifdef _WIN32
 #include <windows.h>
@@ -169,10 +165,6 @@ display::display(const display_context* dc,
 	, map_labels_(new map_labels(nullptr))
 	, reports_object_(&reports_object)
 	, scroll_event_("scrolled")
-	, frametimes_(50)
-	, fps_counter_()
-	, fps_start_()
-	, fps_actual_()
 	, reportLocations_()
 	, reportSurfaces_()
 	, reports_()
@@ -196,7 +188,6 @@ display::display(const display_context* dc,
 	, reach_map_old_()
 	, reach_map_changed_(true)
 	, reach_map_team_index_(0)
-	, fps_handle_(0)
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
 	, redraw_observers_()
@@ -1042,7 +1033,7 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 {
 	terrain_image_vector_.clear();
 
-	image::light_string lt;
+	std::vector<image::light_adjust> lighting;
 	const time_of_day& tod = get_time_of_day(loc);
 
 	// get all the light transitions
@@ -1074,15 +1065,15 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 1, acol.r, acol.g, acol.b);
 	}
 
 	for(int d = 0; d < 6; ++d) {
@@ -1106,15 +1097,15 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 7, acol.r, acol.g, acol.b);
 	}
 
 	for(int d = 0; d < 6; ++d) {
@@ -1138,22 +1129,22 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			continue;
 		}
 
-		if(lt.empty()) {
+		if(lighting.empty()) {
 			// color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
+			lighting.emplace_back(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
 		tod_color acol = atod2.color + color_adjust_;
-		lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
+		lighting.emplace_back(d + 13, acol.r, acol.g, acol.b);
 	}
 
-	if(lt.empty()){
+	if(lighting.empty()){
 		tod_color col = tod.color + color_adjust_;
 		if(!col.is_zero()){
 			// no real lightmap needed but still color the hex
-			lt = image::get_light_string(-1, col.r, col.g, col.b);
+			lighting.emplace_back(-1, col.r, col.g, col.b);
 		}
 	}
 
@@ -1177,10 +1168,10 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 			if(off_map) {
 				tex = image::get_texture(image, image::HEXED);
-			} else if(lt.empty()) {
+			} else if(lighting.empty()) {
 				tex = image::get_texture(image, image::HEXED);
 			} else {
-				tex = image::get_lighted_texture(image, lt);
+				tex = image::get_lighted_texture(image, lighting);
 			}
 
 			if(tex) {
@@ -1290,93 +1281,6 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.clear();
 }
 
-static unsigned calculate_fps(std::chrono::milliseconds frametime)
-{
-	return frametime > 0ms ? 1s / frametime : 999u;
-}
-
-void display::update_fps_label()
-{
-	++current_frame_sample_;
-	constexpr int sample_freq = 10;
-
-	if(current_frame_sample_ != sample_freq) {
-		return;
-	} else {
-		current_frame_sample_ = 0;
-	}
-
-	const auto [min_iter, max_iter] = std::minmax_element(frametimes_.begin(), frametimes_.end());
-
-	const std::chrono::milliseconds render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0ms) / frametimes_.size();
-
-	// NOTE: max FPS corresponds to the *shortest* time between frames (that is, min_iter)
-	const int avg_fps = calculate_fps(render_avg);
-	const int max_fps = calculate_fps(*min_iter);
-	const int min_fps = calculate_fps(*max_iter);
-
-	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-
-	// flush out the stored fps values every so often
-	if(fps_history_.size() == 1000) {
-		std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
-		auto fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
-
-		for(const auto& [min, avg, max] : fps_history_) {
-			*fps_log << min << "," << avg << "," << max << "\n";
-		}
-
-		fps_history_.clear();
-	}
-
-	if(fps_handle_ != 0) {
-		font::remove_floating_label(fps_handle_);
-		fps_handle_ = 0;
-	}
-
-	std::ostringstream stream;
-#ifdef __cpp_lib_format
-	stream << "<tt>      " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", "min", "avg", "max", "act") << "</tt>\n";
-	stream << "<tt>FPS:  " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", min_fps, avg_fps, max_fps, fps_actual_) << "</tt>\n";
-	stream << "<tt>Time: " << std::format("{:5}|{:5}|{:5}", *max_iter, render_avg, *min_iter) << "</tt>\n";
-#else
-	stream << "<tt>      min  |avg  |max  |act  </tt>\n";
-	stream << "<tt>FPS:  " << std::left << std::setfill(' ') << std::setw(5) << min_fps << '|' << std::setw(5) << avg_fps << '|' << std::setw(5) << max_fps << '|' << std::setw(5) << fps_actual_ << "</tt>\n";
-	stream << "<tt>Time: " << std::left << std::setfill(' ') << std::setw(5) << max_iter->count() << '|' << std::setw(5) << render_avg.count() << '|' << std::setw(5) << min_iter->count() << "</tt>\n";
-#endif
-
-	if(game_config::debug) {
-		stream << "\nhex: " << drawn_hexes_ * 1.0 / sample_freq;
-		if(drawn_hexes_ != invalidated_hexes_) {
-			stream << " (" << (invalidated_hexes_ - drawn_hexes_) * 1.0 / sample_freq << ")";
-		}
-	}
-
-	drawn_hexes_ = 0;
-	invalidated_hexes_ = 0;
-
-	font::floating_label flabel(stream.str());
-	flabel.set_font_size(14);
-	flabel.set_color(debug_flag_set(DEBUG_BENCHMARK) ? font::BAD_COLOR : font::NORMAL_COLOR);
-	flabel.set_position(10, 100);
-	flabel.set_alignment(font::LEFT_ALIGN);
-	flabel.set_bg_color({0, 0, 0, float_to_color(0.6)});
-	flabel.set_border_size(5);
-
-	fps_handle_ = font::add_floating_label(flabel);
-}
-
-void display::clear_fps_label()
-{
-	if(fps_handle_ != 0) {
-		font::remove_floating_label(fps_handle_);
-		fps_handle_ = 0;
-		drawn_hexes_ = 0;
-		invalidated_hexes_ = 0;
-		last_frame_finished_.reset();
-	}
-}
-
 void display::draw_panel(const theme::panel& panel)
 {
 	// Most panels are transparent.
@@ -1425,7 +1329,7 @@ void display::draw_label(const theme::label& label)
 	} else if(text.empty() == false) {
 		font::pango_text& renderer = font::get_text_renderer();
 		renderer.set_text(text, false);
-		renderer.set_family_class(font::FONT_SANS_SERIF);
+		renderer.set_family_class(font::family_class::sans_serif);
 		renderer.set_font_size(label.font_size());
 		renderer.set_font_style(font::pango_text::STYLE_NORMAL);
 		renderer.set_foreground_color(text_color);
@@ -1516,22 +1420,6 @@ void display::set_diagnostic(const std::string& msg)
 		flabel.set_clip_rect(map_outside_area());
 
 		diagnostic_label_ = font::add_floating_label(flabel);
-	}
-}
-
-void display::update_fps_count()
-{
-	auto now = std::chrono::steady_clock::now();
-	if(last_frame_finished_) {
-		frametimes_.push_back(std::chrono::duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
-	}
-
-	last_frame_finished_ = now;
-	++fps_counter_;
-
-	if(now - fps_start_ >= 1s) {
-		fps_start_ = now;
-		fps_actual_ = std::exchange(fps_counter_, 0);
 	}
 }
 
@@ -2362,13 +2250,6 @@ void display::draw()
 		}
 		drawing_buffer_commit();
 	}
-
-	if(prefs::get().show_fps() || debug_flag_set(DEBUG_BENCHMARK)) {
-		update_fps_count();
-		update_fps_label();
-	} else if(fps_handle_ != 0) {
-		clear_fps_label();
-	}
 }
 
 void display::update()
@@ -2430,6 +2311,9 @@ void display::render()
 		DBG_DP << "render prevented";
 		return;
 	}
+
+	// Update our frametime values
+	tracked_drawable::update_count();
 
 	// render to the offscreen buffer
 	auto target_setter = draw::set_render_target(front_);
@@ -2783,7 +2667,7 @@ void display::draw_overlays_at(const map_location& loc)
 	const time_of_day& tod = get_time_of_day(loc);
 	tod_color tod_col = tod.color + color_adjust_;
 
-	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+	auto lt = image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b};
 
 	for(const overlay& ov : overlays) {
 		if(fogged(loc) && !ov.visible_in_fog) {
@@ -2803,7 +2687,7 @@ void display::draw_overlays_at(const map_location& loc)
 		}
 
 		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-			? image::get_lighted_texture(ov.image, lt)
+			? image::get_lighted_texture(ov.image, utils::span{&lt, 1})
 			: image::get_texture(ov.image, image::HEXED);
 
 		// Base submerge value for the terrain at this location
@@ -2960,7 +2844,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 			}
 			text.set_link_aware(false)
 				.set_text(t, true);
-			text.set_family_class(font::FONT_SANS_SERIF)
+			text.set_family_class(font::family_class::sans_serif)
 				.set_font_size(item->font_size())
 				.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(PANGO_ALIGN_LEFT)

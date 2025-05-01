@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -35,7 +35,7 @@ namespace events{
 
 class mouse_handler : public mouse_handler_base {
 public:
-	mouse_handler(game_display* gui, play_controller & pc);
+	mouse_handler(play_controller & pc);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -71,7 +71,7 @@ public:
 
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
-	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
+	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src);
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 

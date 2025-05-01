@@ -76,10 +76,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_modulo\fP
-reemplaza el módulo cargado con aquel cuya id se especifica.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directorio\fP
-reemplaza el directorio de datos con el directorio especificado
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 imprime la ruta del directorio de datos y sale.
@@ -126,12 +127,11 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-establece el nivel de gravedad del registro de los dominios. \fBall\fP puede
-utilizarse para coincidir con cualquier registro de un dominio. Los niveles
-disponibles son: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Por
-omisión se utiliza el nivel \fBwarning\fP para la mayoría de los dominios, pero
-\fBdeprecation\fP equivale por omisión a \fBnone\fP a no ser que se combine con la
-opción \fB\-d\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del archivo de registro con mayor
@@ -441,7 +441,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

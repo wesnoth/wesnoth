@@ -71,10 +71,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id\fP
-prepíše načítané jadro jadrom, ktorého id je zadané.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ priečinok\fP
-nastaví adresár s údajmi
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 vypíše cestu k priečinku s dátami.
@@ -118,10 +119,11 @@ tohto adresára.
 používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
-nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
-zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Štandardne sa používa úroveň \fBwarning\fP, ale
-\fBdeprecation\fP je predvolene \fBnone\fP, pokiaľ nie je kombinované s možnosťou
-\fB\-d\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
@@ -415,7 +417,7 @@ Navštívte oficiálny web: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou
 verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného

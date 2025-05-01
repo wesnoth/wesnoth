@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -101,12 +101,14 @@ void mp_connect::pre_show()
 
 void mp_connect::insert_into_server_listbox(listbox& listbox, const server_info& srv, int pos)
 {
-	const widget_data& entry{
-		{ "name",    widget_item{{"label", srv.name}} },
-		{ "address", widget_item{{"label", srv.address}} },
-	};
-
-	listbox.add_row(entry, pos);
+	listbox.add_row(widget_data{
+		{ "name", {
+			{ "label", srv.name }
+		}},
+		{ "address", {
+			{ "label", srv.address }
+		}},
+	}, pos);
 }
 
 void mp_connect::select_first_match()

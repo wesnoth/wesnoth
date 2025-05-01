@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -331,6 +331,10 @@ void server::setup_fifo()
 		return;
 	}
 	int fifo = open(input_path_.c_str(), O_RDWR | O_NONBLOCK);
+	if(fifo == -1) {
+		ERR_SERVER << "could not open fifo at '" << input_path_ << "' (" << strerror(errno) << ")";
+		return;
+	}
 	input_.assign(fifo);
 	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.";
 	read_from_fifo();
@@ -413,23 +417,19 @@ void server::setup_handlers()
 
 config server::read_config() const
 {
-	config configuration;
-
 	if(config_file_.empty()) {
-		return configuration;
+		return {};
 	}
 
 	try {
 		// necessary to avoid assert since preprocess_file() goes through filesystem::get_short_wml_path()
 		filesystem::set_user_data_dir(std::string());
-		filesystem::scoped_istream stream = preprocess_file(config_file_);
-		read(configuration, *stream);
+		return io::read(*preprocess_file(config_file_));
 		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.";
 	} catch(const config::error& e) {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '" << config_file_ << "': '" << e.message << "'.";
+		return {};
 	}
-
-	return configuration;
 }
 
 void server::load_config()
@@ -1376,15 +1376,16 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
 	const std::string initial_bans = create_game["ignored"].to_string();
+	const bool is_queue_game = create_game["queue_game"].to_bool();
 
 	DBG_SERVER << player->client_ip() << "\t" << player->info().name()
 			   << "\tcreates a new game: \"" << game_name << "\".";
 
 	// Create the new game, remove the player from the lobby
 	// and set the player as the host/owner.
-	player_connections_.modify(player, [this, player, &game_name](player_record& host_record) {
+	player_connections_.modify(player, [this, player, &game_name, is_queue_game](player_record& host_record) {
 		host_record.get_game().reset(
-			new wesnothd::game(*this, player_connections_, player, game_name, save_replays_, replay_save_path_),
+			new wesnothd::game(*this, player_connections_, player, is_queue_game, game_name, save_replays_, replay_save_path_),
 			std::bind(&server::cleanup_game, this, std::placeholders::_1)
 		);
 	});
@@ -1439,9 +1440,43 @@ void server::cleanup_game(game* game_ptr)
 
 void server::handle_join_game(player_iterator player, simple_wml::node& join)
 {
+	int game_id = join["id"].to_int();
+
+	// this is a game defined in an [mp_queue] in the client
+	// if there is no mp_queue defined game already existing with empty slots, tell the client to create one
+	// else update game_id to the game that already exists and have the client join that game
+	if(game_id < 0) {
+		for(const auto& game : games()) {
+			if(game->is_queue_game() &&
+			   !game->started() &&
+			   join["mp_scenario"].to_string() == game->get_scenario_id() &&
+			   game->description()->child("slot_data")->attr("vacant").to_int() != 0) {
+				game_id = game->id();
+			}
+		}
+
+		// if it's still negative, then there's no existing game to join
+		if(game_id < 0) {
+			simple_wml::document create_game_doc;
+			simple_wml::node& create_game_node = create_game_doc.root().add_child("create_game");
+			create_game_node.set_attr_dup("mp_scenario", join["mp_scenario"].to_string().c_str());
+
+			// tell the client to create a game since there is no suitable existing game to join
+			send_to_player(player, create_game_doc);
+			return;
+		} else {
+			simple_wml::document join_game_doc;
+			simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
+			join_game_node.set_attr_int("id", game_id);
+
+			// tell the client to create a game since there is no suitable existing game to join
+			send_to_player(player, join_game_doc);
+			return;
+		}
+	}
+
 	const bool observer = join.attr("observe").to_bool();
 	const std::string& password = join["password"].to_string();
-	int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
 
@@ -1950,7 +1985,7 @@ template<class SocketPtr> void server::send_server_message(SocketPtr socket, con
 	simple_wml::document server_message;
 	simple_wml::node& msg = server_message.root().add_child("message");
 	msg.set_attr("sender", "server");
-	msg.set_attr_dup("message", message.c_str());
+	msg.set_attr_esc("message", message);
 	msg.set_attr_dup("type", type.c_str());
 
 	async_send_doc_queued(socket, server_message);

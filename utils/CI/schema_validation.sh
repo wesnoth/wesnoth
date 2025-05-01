@@ -108,7 +108,7 @@ validate "Languages" ./wesnoth --validate=data/hardwired/language.cfg --use-sche
 validate_misc "Editor"         "EDITOR"                                  || RET=1
 validate_misc "Multiplayer"    "MULTIPLAYER,MULTIPLAYER_A_NEW_LAND_LOAD" || RET=1
 validate_misc "Test"           "TEST"                                    || RET=1
-validate_misc "World_Conquest" "MULTIPLAYER,LOAD_WC2,LOAD_WC2_EVEN_THOUGH_IT_NEEDS_A_NEW_MAINTAINER" || RET=1
+validate_misc "World_Conquest" "MULTIPLAYER,LOAD_WC2"                    || RET=1
 
 validate_campaign "Dead_Water"              "CAMPAIGN_DEAD_WATER"              "EASY" "NORMAL" "HARD" "NIGHTMARE" || RET=1
 validate_campaign "Descent_Into_Darkness"   "CAMPAIGN_DESCENT"                 "EASY" "NORMAL" "HARD"             || RET=1

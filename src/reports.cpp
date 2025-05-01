@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,15 +20,18 @@
 #include "color.hpp"
 #include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -40,7 +43,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/format.hpp>
-#include <ctime>
 #include <iomanip>
 #include <utility>
 
@@ -188,19 +190,19 @@ REPORT_GENERATOR(selected_unit_name, rc)
 
 static config unit_type(const unit* u)
 {
-	if (!u) return config();
-	std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
-	std::ostringstream str, tooltip;
-	str << u->type_name();
+	if(!u) return config();
+
+	std::ostringstream tooltip;
 	tooltip << _("Type: ") << markup::bold(u->type_name()) << "\n"
-		<< u->unit_description();
+	        << u->unit_description();
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
 			tooltip << font::unicode_bullet << " " << note << '\n';
 		}
 	}
-	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
+
+	return text_report(u->type_name(), tooltip.str(), help::get_unit_type_help_id(u->type()));
 }
 REPORT_GENERATOR(unit_type, rc)
 {
@@ -429,7 +431,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 		if(active[i]) {
 			str << display_name;
 		} else {
-			str << span_color(font::inactive_ability_color, display_name);
+			str << span_color(font::INACTIVE_COLOR, display_name);
 		}
 
 		if(i + 1 != abilities_size) {
@@ -1006,7 +1008,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			const t_string &name = specials[i].first;
 			const t_string &description = specials[i].second;
 			const color_t &details_color =
-				active[i] ? font::weapon_details_color : font::inactive_details_color;
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
 			std::string help_page = "weaponspecial_" + name.base_str();
@@ -1171,9 +1173,9 @@ static config unit_weapons(const reports::context& rc, const unit_const_ptr& att
  * Display the attacks of the displayed unit against the unit passed as argument.
  * 'hex' is the location the attacker will be at during combat.
  */
-static config unit_weapons(const reports::context& rc, const unit *u, const map_location &hex)
+static config unit_weapons(const reports::context& rc, const unit* u, const map_location& hex)
 {
-	config res = config();
+	config res;
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
@@ -1189,7 +1191,7 @@ static config unit_weapons(const reports::context& rc, const unit *u, const map_
 				_("This unit can attack multiple times per turn."));
 		}
 
-		for (const attack_type &at : u->attacks())
+		for (const attack_type& at : u->attacks())
 		{
 			attack_info(rc, at, res, *u, hex);
 		}
@@ -1752,15 +1754,12 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	config report;
 	add_image(report, game_config::images::time_icon, "");
 
-	std::ostringstream ss;
-
 	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 
-	std::time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), format);
-	add_text(report, ss.str(), _("Clock"));
+	const auto now = std::chrono::system_clock::now();
+	add_text(report, chrono::format_local_timestamp(now, format), _("Clock"));
 
 	return report;
 }

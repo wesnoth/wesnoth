@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -116,6 +116,8 @@ namespace
 		"experience",
 		"resting",
 		"unrenamable",
+		"dismissable",
+		"block_dismiss_message",
 		"alignment",
 		"canrecruit",
 		"extra_recruit",
@@ -270,6 +272,8 @@ unit::unit(const unit& o)
 	, flag_rgb_(o.flag_rgb_)
 	, image_mods_(o.image_mods_)
 	, unrenamable_(o.unrenamable_)
+	, dismissable_(o.dismissable_)
+	, dismiss_message_(o.dismiss_message_)
 	, side_(o.side_)
 	, gender_(o.gender_)
 	, formula_man_(new unit_formula_manager(o.formula_manager()))
@@ -350,6 +354,8 @@ unit::unit(unit_ctor_t)
 	, flag_rgb_()
 	, image_mods_()
 	, unrenamable_(false)
+	, dismissable_(true)
+	, dismiss_message_(_("This unit cannot be dismissed."))
 	, side_(0)
 	, gender_(unit_race::NUM_GENDERS)
 	, formula_man_(new unit_formula_manager())
@@ -709,6 +715,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	experience_ = cfg["experience"].to_int();
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
+
+	// leader units can't be dismissed by default
+	dismissable_ = cfg["dismissable"].to_bool(!canrecruit_);
+	if(canrecruit_) {
+		dismiss_message_ = _ ("This unit is a leader and cannot be dismissed.");
+	}
+	if(!cfg["block_dismiss_message"].blank()) {
+		dismiss_message_ = cfg["block_dismiss_message"].t_str();
+	}
 
 	// We need to check to make sure that the cfg is not blank and if it
 	// isn't pull that value otherwise it goes with the default of -1.
@@ -1637,6 +1652,8 @@ void unit::write(config& cfg, bool write_all) const
 	}
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
+	cfg["dismissable"] = dismissable_;
+	cfg["block_dismiss_message"] = dismiss_message_;
 
 	cfg["attacks_left"] = attacks_left_;
 	if(write_all || get_attr_changed(UA_MAX_AP)) {

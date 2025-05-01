@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@ class config;
 
 namespace gui2
 {
-class game_tip;
+struct game_tip;
 
 namespace tip_of_the_day
 {
@@ -49,31 +49,15 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips);
 
 } // namespace tip_of_the_day
 
-/** The tips of day structure. */
-class game_tip
+struct game_tip
 {
-public:
-	game_tip(const t_string& text, const t_string& source, const std::string& unit_filter);
-
-	const t_string& text() const
-	{
-		return text_;
-	}
-
-	const t_string& source() const
-	{
-		return source_;
-	}
-
-private:
-	friend std::vector<game_tip> tip_of_the_day::load(const config&);
-	friend std::vector<game_tip> tip_of_the_day::shuffle(const std::vector<game_tip>& tips);
+	game_tip(const config& cfg);
 
 	/** The text of the tip. */
-	t_string text_;
+	t_string text;
 
 	/** The source of the tip. */
-	t_string source_;
+	t_string source;
 
 	/**
 	 * List of units to filter the tip upon.
@@ -81,7 +65,7 @@ private:
 	 * If the list is empty the tip is shown.
 	 * Else the unit must have encountered at least one of the units in the list.
 	 */
-	std::vector<std::string> unit_filter_;
+	std::vector<std::string> unit_filter;
 };
 
 } // namespace gui2

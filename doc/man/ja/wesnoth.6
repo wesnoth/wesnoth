@@ -61,10 +61,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-読み込んだコアを指定の ID のものに置き換える。
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-データディレクトリを指定のものに置き換える。
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 データディレクリへのパスを表示し終了する。
@@ -104,9 +105,11 @@ FPSを画面の隅に表示し、ユーザーデータディレクトリ内の�
 このセッションで使用する言語 \fIlang\fP 例: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
-\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBwarning\fP
-レベルがほとんどのログ領域に使用されるが、 \fB\-d\fP オプションと組み合わせた場合を除いて \fBdeprecation\fPは \fBnone\fPである。
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 より正確にログ出力の時刻を表示する。
@@ -359,7 +362,7 @@ Soliton <soliton.de@gmail.com> によって編集された。
 .
 .SH 著作権
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

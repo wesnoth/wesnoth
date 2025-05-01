@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,6 +15,8 @@
 
 #include "gui/core/canvas.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
+
+#include "font/attributes.hpp"
 
 namespace gui2
 {
@@ -246,9 +248,6 @@ public:
 	void draw(wfl::map_formula_callable& variables) override;
 
 private:
-	/** the source config */
-	config cfg_;
-
 	/** The text font family. */
 	font::family_class font_family_;
 
@@ -265,7 +264,10 @@ private:
 	typed_formula<color_t> color_;
 
 	/** The text to draw. */
-	typed_formula<t_string> text_;
+	config::attribute_value text_;
+
+	/** Whether to parse text_ as WFL formula */
+	bool parse_text_as_formula_;
 
 	/** The text markup switch of the text. */
 	typed_formula<bool> text_markup_;
@@ -285,35 +287,26 @@ private:
 	/** The maximum height for the text. */
 	typed_formula<int> maximum_height_;
 
-	/** Start and end offsets for highlight */
-	std::string highlight_start_;
-	std::string highlight_end_;
+	/** Start offset for highlight */
+	typed_formula<int> highlight_start_;
+
+	/** End offset for highlight */
+	typed_formula<int> highlight_end_;
 
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
 
-	/** Generic start and end offsets for various attributes */
-	std::string attr_start_;
-	std::string attr_end_;
-
-	/**
-	 * The attribute type
-	 * Possible values :
-	 *  color/foreground, bgcolor/background, font_size/size,
-	 *  bold, italic, underline
-	 * The first three require extra data
-	 * the color for the first two, and font size for the last
-	 */
-	std::string attr_name_;
-
-	/** extra data for the attribute, if any */
-	std::string attr_data_;
+	/** Spacing between lines */
+	float line_spacing_;
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
 
 	/** Any extra WFL actions to execute. */
 	wfl::formula actions_formula_;
+
+	/** Any custom Pango text attributes. */
+	font::attribute_list text_attributes_;
 };
 
 }

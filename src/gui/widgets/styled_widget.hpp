@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -306,11 +306,6 @@ protected:
 		return std::static_pointer_cast<const typename T::resolution>(get_config());
 	}
 
-	void set_config(resolution_definition_ptr config)
-	{
-		config_ = std::move(config);
-	}
-
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
 	/**
@@ -345,17 +340,6 @@ protected:
 	 * maximum height is based on the height of the widget.
 	 */
 	int get_text_maximum_height() const;
-
-public:
-	/**
-	 * Set how wide the text can become. If the text is bigger
-	 * than this limit, it gets wrapped
-	 */
-	void set_text_maximum_width(int max_width) {
-		if (max_width > 0) {
-			text_maximum_width_ = max_width;
-		}
-	}
 
 private:
 	/**
@@ -456,7 +440,7 @@ protected:
 	virtual bool impl_draw_foreground() override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
-	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_label_token(const point & position, std::string_view delimiters = " \n\r\t") const;
 
 	std::string get_label_link(const point & position) const;
 
@@ -495,9 +479,6 @@ private:
 	 * as wanted.
 	 */
 	mutable font::pango_text renderer_;
-
-	/** The maximum width for the text in a styled_widget. */
-	int text_maximum_width_;
 
 	/** The alignment of the text in a styled_widget. */
 	PangoAlignment text_alignment_;

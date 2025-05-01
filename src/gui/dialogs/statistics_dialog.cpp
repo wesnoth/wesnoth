@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -106,21 +106,19 @@ inline const statistics_t::stats& statistics_dialog::current_stats()
 
 void statistics_dialog::add_stat_row(const std::string& type, const statistics_t::stats::str_int_map& value, const bool has_cost)
 {
-	listbox& stat_list = find_widget<listbox>("stats_list_main");
-
-	widget_data data;
-	widget_item item;
-
-	item["label"] = type;
-	data.emplace("stat_type", item);
-
-	item["label"] = std::to_string(statistics_t::sum_str_int_map(value));
-	data.emplace("stat_detail", item);
-
-	item["label"] = has_cost ? std::to_string(statistics_t::sum_cost_str_int_map(value)) : font::unicode_em_dash;
-	data.emplace("stat_cost", item);
-
-	stat_list.add_row(data);
+	find_widget<listbox>("stats_list_main").add_row(widget_data{
+		{ "stat_type", {
+			{ "label", type }
+		}},
+		{ "stat_detail", {
+			{ "label", std::to_string(statistics_t::sum_str_int_map(value)) }
+		}},
+		{ "stat_cost", {
+			{ "label", has_cost
+				? std::to_string(statistics_t::sum_cost_str_int_map(value))
+				: font::unicode_em_dash }
+		}},
+	});
 
 	main_stat_table_.push_back(&value);
 }

@@ -71,10 +71,10 @@ event.
 Adds the option to show a clock for testing the drawing timer. Also adds the option for showing the GUI Test Dialog.
 .TP
 .BI --core \ id_core
-overrides the loaded core with the one whose id is specified.
+Overrides the loaded core with the one whose id is specified.
 .TP
 .BI --data-dir \ directory
-overrides the data directory with the one specified
+Overrides the data directory with the one specified. The data directory is the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP
 .B --data-path
 prints the path of the data directory and exits.
@@ -133,11 +133,12 @@ Example:
 .B --language ang_GB@latin
 .TP
 .BI --log- level = domain1 , domain2 , ...
-sets the severity level of the log domains.
-.B all
-can be used to match any log domain. Available levels:
+sets the severity level of the log domains. The wildcard
+.B *
+may be used to match a subset of domains, e.g. gui/* or conf* or * (the latter matches all domains).
+Available levels:
 .BR error ,\  warning ,\  info ,\  debug ,\  none .
-By default the
+By default, the
 .B warning
 level is used for most domains, but
 .B deprecation
@@ -146,6 +147,7 @@ defaults to
 unless combined with the
 .B -d
 option.
+This option can be specified multiple times.
 .TP
 .B --log-precise
 shows the timestamps in log output with more precision.
@@ -499,7 +501,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2025 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

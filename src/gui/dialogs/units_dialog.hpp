@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,12 +15,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/button.hpp"
+#include "gui/sort_order.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "map/location.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
@@ -48,16 +46,31 @@ public:
 		return selected_index_ != -1;
 	}
 
+	void set_selected_index(int selected)
+	{
+		selected_index_ = selected;
+	}
+
 	/** Gender choice from the user. */
 	unit_race::GENDER gender() const
 	{
 		return gender_;
 	}
 
+	void set_gender(const unit_race::GENDER gender)
+	{
+		gender_ = gender;
+	}
+
 	/** Variation choice from the user. */
 	std::string variation() const
 	{
 		return variation_;
+	}
+
+	void set_variation(const std::string& variation)
+	{
+		variation_ = variation;
 	}
 
 	void clear_variation()
@@ -112,6 +125,12 @@ public:
 	units_dialog& set_row_num(const std::size_t row_num)
 	{
 		num_rows_ = row_num;
+		return *this;
+	}
+
+	units_dialog& set_sort_by(std::pair<std::string, sort_order::type> sort_order)
+	{
+		sort_order_ = sort_order;
 		return *this;
 	}
 
@@ -182,13 +201,21 @@ public:
 		return *this;
 	}
 
+	/** Sets the generator function for filter text. */
+	template<typename Generator>
+	units_dialog& set_filter_generator(const Generator& generator)
+	{
+		filter_gen_ = generator;
+		return *this;
+	}
+
 	// } -------------------- BUILDERS -------------------- {
+
+	using recruit_msgs_map = std::map<const unit_type*, t_string>;
 
 	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
 	static std::unique_ptr<units_dialog> build_recruit_dialog(
-		const std::vector<const unit_type*>& recruit_list,
-		const team& team,
-		const map_location& recruit_hex = map_location::null_location());
+		const std::vector<const unit_type*>& recruit_list, recruit_msgs_map& err_msgs_map, const team& team);
 	static std::unique_ptr<units_dialog> build_recall_dialog(std::vector<unit_const_ptr>& recall_list, const team& team);
 	static std::unique_ptr<units_dialog> build_unit_list_dialog(std::vector<unit_const_ptr>& units_list);
 
@@ -205,13 +232,15 @@ private:
 	bool show_dismiss_;
 	bool show_variations_;
 
+	std::pair<std::string, sort_order::type> sort_order_;
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
+	std::function<std::vector<std::string>(std::size_t)> filter_gen_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
 
-	std::vector<std::string> filter_options_;
+	std::vector<std::vector<std::string>> filter_options_;
 	group<unit_race::GENDER> gender_toggle_;
 
 	group<unit_race::GENDER>& get_toggle() {

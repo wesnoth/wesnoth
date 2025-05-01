@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -741,7 +741,9 @@ void connect_engine::send_level_data() const
 				"name", params_.name,
 				"password", params_.password,
 				"ignored", prefs::get().get_ignored_delim(),
-				"auto_hosted", false,
+				// all queue games count as auto hosted, but not all auto hosted games are queue games
+				"auto_hosted", mp_metadata_ ? mp_metadata_->is_queue_game : false,
+				"queue_game", mp_metadata_ ? mp_metadata_->is_queue_game : false,
 			},
 		});
 		mp::send_to_server(level_);

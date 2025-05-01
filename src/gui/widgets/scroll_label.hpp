@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,13 +73,6 @@ public:
     }
 
 	void set_link_aware(bool l);
-
-	void set_text_max_width(int max_width) {
-		label* text_label = get_internal_label();
-		if (text_label) {
-			text_label->set_text_maximum_width(max_width);
-		}
-	}
 
 private:
 	/**

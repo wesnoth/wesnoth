@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-03-16 23:21-0500\n"
 "PO-Revision-Date: 2023-12-18 15:31+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#: data/tools/GUI.pyw:77
+#: data/tools/GUI.pyw:78
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
 msgstr "Otvor grafické používateľské rozhranie (GUI) k nástrojom WML"
 
-#: data/tools/GUI.pyw:81
+#: data/tools/GUI.pyw:82
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
@@ -30,15 +30,15 @@ msgstr ""
 "Spusti GUI.pyw v zadanom jazyku. Kód jazyka sa očakáva ako názov POSIX "
 "locale, úplný zoznam nájdeš na gettext.wesnoth.org."
 
-#: data/tools/GUI.pyw:87 data/tools/GUI.pyw:101 data/tools/GUI.pyw:1404
-#: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1496 data/tools/GUI.pyw:1525
-#: data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1585 data/tools/GUI.pyw:1628
-#: data/tools/GUI.pyw:1647 data/tools/GUI.pyw:1973
+#: data/tools/GUI.pyw:88 data/tools/GUI.pyw:102 data/tools/GUI.pyw:1411
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1503 data/tools/GUI.pyw:1532
+#: data/tools/GUI.pyw:1568 data/tools/GUI.pyw:1592 data/tools/GUI.pyw:1635
+#: data/tools/GUI.pyw:1654 data/tools/GUI.pyw:1980
 msgid "Error"
 msgstr "Chyba"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
-#: data/tools/GUI.pyw:89
+#: data/tools/GUI.pyw:90
 #, python-brace-format
 msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
@@ -48,13 +48,13 @@ msgstr ""
 "pribalený k inštalácii Wesnothu."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
-#: data/tools/GUI.pyw:103
+#: data/tools/GUI.pyw:104
 #, python-brace-format
 msgid "Locale {0} not recognized."
 msgstr "Locale {0} nie je rozpoznané."
 
 #. TRANSLATORS: {0} is the name of command being executed.
-#: data/tools/GUI.pyw:378
+#: data/tools/GUI.pyw:385
 #, python-brace-format
 msgid ""
 "Running: {0}\n"
@@ -63,315 +63,315 @@ msgstr ""
 "Beží: {0}\n"
 "Počkajte prosím..."
 
-#: data/tools/GUI.pyw:392
+#: data/tools/GUI.pyw:399
 msgid "Terminate script"
 msgstr "Ukončiť skript"
 
-#: data/tools/GUI.pyw:443
+#: data/tools/GUI.pyw:450
 msgid "Cut"
 msgstr "Strih"
 
-#: data/tools/GUI.pyw:448
+#: data/tools/GUI.pyw:455
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: data/tools/GUI.pyw:454
+#: data/tools/GUI.pyw:461
 msgid "Paste"
 msgstr "Vložiť"
 
-#: data/tools/GUI.pyw:460
+#: data/tools/GUI.pyw:467
 msgid "Select All"
 msgstr "Zvoľ všetko"
 
-#: data/tools/GUI.pyw:533
+#: data/tools/GUI.pyw:540
 msgid "Working directory"
 msgstr "Pracovný adresár"
 
-#: data/tools/GUI.pyw:545 data/tools/GUI.pyw:588
+#: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
 msgid "Browse..."
 msgstr "Prehľadávať..."
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
-#: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
+#: data/tools/GUI.pyw:559 data/tools/GUI.pyw:602
 msgid "Clear"
 msgstr "Zmaž"
 
-#: data/tools/GUI.pyw:645
+#: data/tools/GUI.pyw:652
 msgid "wmllint mode"
 msgstr "wmllint mód"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
-#: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
+#: data/tools/GUI.pyw:659 data/tools/GUI.pyw:1079
 msgid "Normal"
 msgstr "Normálne"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
-#: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
+#: data/tools/GUI.pyw:668 data/tools/GUI.pyw:1088
 msgid "Perform conversion and save changes to file"
 msgstr "Vykonaj konverziu a ulož zmeny do súboru"
 
-#: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
+#: data/tools/GUI.pyw:671 data/tools/GUI.pyw:1091
 msgid "Dry run"
 msgstr "Suchá prevádzka"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
-#: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
+#: data/tools/GUI.pyw:680 data/tools/GUI.pyw:1100
 msgid "Perform conversion without saving changes to file"
 msgstr "Vykonaj konverziu bez uloženia zmien do súboru"
 
-#: data/tools/GUI.pyw:676
+#: data/tools/GUI.pyw:683
 msgid "Clean"
 msgstr "Vyčisti"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
-#: data/tools/GUI.pyw:685
+#: data/tools/GUI.pyw:692
 msgid "Delete back-up files"
 msgstr "Odstránenie záložných súborov"
 
-#: data/tools/GUI.pyw:688
+#: data/tools/GUI.pyw:695
 msgid "Diff"
 msgstr "Rozdiel"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
-#: data/tools/GUI.pyw:697
+#: data/tools/GUI.pyw:704
 msgid "Show differences in converted files"
 msgstr "Zobrazenie rozdielov v konvertovaných súboroch"
 
-#: data/tools/GUI.pyw:700
+#: data/tools/GUI.pyw:707
 msgid "Revert"
 msgstr "Vrátiť"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
-#: data/tools/GUI.pyw:709
+#: data/tools/GUI.pyw:716
 msgid "Revert conversions using back-up files"
 msgstr "Vrátenie konverzií pomocou záložných súborov"
 
-#: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
+#: data/tools/GUI.pyw:719 data/tools/GUI.pyw:1103
 msgid "Verbosity level"
 msgstr "Úroveň slovesnosti"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
+#: data/tools/GUI.pyw:727 data/tools/GUI.pyw:1111
 msgid "Terse"
 msgstr "Stručná"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:731
+#: data/tools/GUI.pyw:738
 msgid "Show changes"
 msgstr "Zobraziť zmeny"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:741
+#: data/tools/GUI.pyw:748
 msgid "Name files before processing"
 msgstr "Pomenovanie súborov pred spracovaním"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:751
+#: data/tools/GUI.pyw:758
 msgid "Show parse details"
 msgstr "Zobrazovať podrobnosti o rozbore"
 
-#: data/tools/GUI.pyw:760
+#: data/tools/GUI.pyw:767
 msgid "wmllint options"
 msgstr "wmllint možnosti"
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
-#: data/tools/GUI.pyw:768
+#: data/tools/GUI.pyw:775
 msgid "Convert EOL characters to Unix format"
 msgstr "Konvertovať znaky EOL do formátu Unix"
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
-#: data/tools/GUI.pyw:779
+#: data/tools/GUI.pyw:786
 #, fuzzy
 #| msgid "Do not warn about tags without side= keys"
 msgid "Warn about tags without side= keys"
 msgstr "Neupozorňovať na značky bez kľúčov side="
 
-#: data/tools/GUI.pyw:788
+#: data/tools/GUI.pyw:795
 msgid "Disable checks for unknown units"
 msgstr "Zakázanie kontrol neznámych jednotiek"
 
-#: data/tools/GUI.pyw:797
+#: data/tools/GUI.pyw:804
 msgid "Disable spellchecking"
 msgstr "Zakázať kontrolu pravopisu"
 
-#: data/tools/GUI.pyw:806
+#: data/tools/GUI.pyw:813
 msgid "Skip core directory"
 msgstr "Preskočiť hlavný adresár"
 
-#: data/tools/GUI.pyw:833
+#: data/tools/GUI.pyw:840
 msgid "wmlscope options"
 msgstr "wmlscope možnosti"
 
-#: data/tools/GUI.pyw:845
+#: data/tools/GUI.pyw:852
 msgid "Check for duplicate macro definitions"
 msgstr "Kontrola duplicitných definícií makier"
 
-#: data/tools/GUI.pyw:854
+#: data/tools/GUI.pyw:861
 msgid "Check for duplicate resource files"
 msgstr "Kontrola duplicitných súborov prostriedkov"
 
-#: data/tools/GUI.pyw:863
+#: data/tools/GUI.pyw:870
 msgid "Make definition list"
 msgstr "Vytvorte zoznam definícií"
 
-#: data/tools/GUI.pyw:872
+#: data/tools/GUI.pyw:879
 msgid "List files that will be processed"
 msgstr "Zoznam súborov, ktoré sa budú spracovávať"
 
-#: data/tools/GUI.pyw:881
+#: data/tools/GUI.pyw:888
 msgid "Report unresolved macro references"
 msgstr "Nahlásenie nevyriešených odkazov na makro"
 
-#: data/tools/GUI.pyw:890
+#: data/tools/GUI.pyw:897
 msgid "Extract help from macro definition comments"
 msgstr "Výpis nápovedy z komentárov definície makier"
 
-#: data/tools/GUI.pyw:899
+#: data/tools/GUI.pyw:906
 msgid "Report all macros with untyped formals"
 msgstr "Nahlásiť všetky makrá s netypizovanými formálnymi znakmi"
 
-#: data/tools/GUI.pyw:908
+#: data/tools/GUI.pyw:915
 msgid "Show progress"
 msgstr "Zobraziť pokrok"
 
-#: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
+#: data/tools/GUI.pyw:935 data/tools/GUI.pyw:1147
 msgid "Exclude file names matching regular expression:"
 msgstr "Vylúčenie názvov súborov zodpovedajúcich regulárnemu výrazu:"
 
-#: data/tools/GUI.pyw:946
+#: data/tools/GUI.pyw:953
 msgid "Exclude file names not matching regular expression:"
 msgstr "Vylúčenie názvov súborov, ktoré nezodpovedajú regulárnemu výrazu:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
-#: data/tools/GUI.pyw:966
+#: data/tools/GUI.pyw:973
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "Hlásiť len makrá, na ktoré sa odkazuje v presne n súboroch:"
 
-#: data/tools/GUI.pyw:986
+#: data/tools/GUI.pyw:993
 msgid "Report macro definitions and usages in file:"
 msgstr "Nahlásiť definície a použitie makier v súbore:"
 
-#: data/tools/GUI.pyw:1004
+#: data/tools/GUI.pyw:1011
 msgid "Allow unused macros with names matching regular expression:"
 msgstr ""
 "Povolenie nepoužívaných makier s názvami zodpovedajúcimi regulárnemu výrazu:"
 
-#: data/tools/GUI.pyw:1066
+#: data/tools/GUI.pyw:1073
 msgid "wmlindent mode"
 msgstr "wmlindent mód"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1114
+#: data/tools/GUI.pyw:1121
 msgid "Verbose"
 msgstr "Verbózne"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1124
+#: data/tools/GUI.pyw:1131
 msgid "Report unchanged files"
 msgstr "Nahlásenie nezmenených súborov"
 
-#: data/tools/GUI.pyw:1133
+#: data/tools/GUI.pyw:1140
 msgid "wmlindent options"
 msgstr "wmlindent možnosti"
 
 #. TRANSLATORS: Option to run 'quietly'.
-#: data/tools/GUI.pyw:1160
+#: data/tools/GUI.pyw:1167
 msgid "Quiet mode"
 msgstr "Tichý mód"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
-#: data/tools/GUI.pyw:1168
+#: data/tools/GUI.pyw:1175
 msgid "Do not generate output messages"
 msgstr "Nevytvárať výstupné správy"
 
-#: data/tools/GUI.pyw:1188
+#: data/tools/GUI.pyw:1195
 msgid "Output directory:"
 msgstr "Výstupný adresár:"
 
-#: data/tools/GUI.pyw:1194
+#: data/tools/GUI.pyw:1201
 msgid "Options"
 msgstr "Možnosti"
 
-#: data/tools/GUI.pyw:1199
+#: data/tools/GUI.pyw:1206
 msgid "Scan subdirectories"
 msgstr "Skenovanie podadresárov"
 
-#: data/tools/GUI.pyw:1204
+#: data/tools/GUI.pyw:1211
 msgid "Show optional warnings"
 msgstr "Zobraziť voliteľné upozornenia"
 
 #. TRANSLATORS: Also called "Needs work".
-#: data/tools/GUI.pyw:1210
+#: data/tools/GUI.pyw:1217
 msgid "Mark all strings as fuzzy"
 msgstr "Označiť všetky reťazce ako fuzzy"
 
-#: data/tools/GUI.pyw:1214
+#: data/tools/GUI.pyw:1221
 msgid "Advanced options"
 msgstr "Rozšírené možnosti"
 
-#: data/tools/GUI.pyw:1218
+#: data/tools/GUI.pyw:1225
 msgid "Package version"
 msgstr "Verzia balíka"
 
-#: data/tools/GUI.pyw:1235
+#: data/tools/GUI.pyw:1242
 msgid "Initial textdomain:"
 msgstr "Počiatočná textová doména:"
 
-#: data/tools/GUI.pyw:1281 data/tools/GUI.pyw:1387
+#: data/tools/GUI.pyw:1288 data/tools/GUI.pyw:1394
 msgid "Run wmllint"
 msgstr "Spustiť wmllint"
 
-#: data/tools/GUI.pyw:1288
+#: data/tools/GUI.pyw:1295
 msgid "Save as text..."
 msgstr "Uložiť ako text..."
 
-#: data/tools/GUI.pyw:1295
+#: data/tools/GUI.pyw:1302
 msgid "Clear output"
 msgstr "Vyčistiť výstup"
 
-#: data/tools/GUI.pyw:1302
+#: data/tools/GUI.pyw:1309
 msgid "About..."
 msgstr "Informácie o..."
 
-#: data/tools/GUI.pyw:1309
+#: data/tools/GUI.pyw:1316
 msgid "Exit"
 msgstr "Ukončenie"
 
-#: data/tools/GUI.pyw:1325 data/tools/GUI.pyw:1459
+#: data/tools/GUI.pyw:1332 data/tools/GUI.pyw:1466
 msgid "wmllint"
 msgstr "wmllint"
 
-#: data/tools/GUI.pyw:1329 data/tools/GUI.pyw:1531
+#: data/tools/GUI.pyw:1336 data/tools/GUI.pyw:1538
 msgid "wmlscope"
 msgstr "wmlscope"
 
-#: data/tools/GUI.pyw:1333 data/tools/GUI.pyw:1567
+#: data/tools/GUI.pyw:1340 data/tools/GUI.pyw:1574
 msgid "wmlindent"
 msgstr "wmlindent"
 
-#: data/tools/GUI.pyw:1337 data/tools/GUI.pyw:1617
+#: data/tools/GUI.pyw:1344 data/tools/GUI.pyw:1624
 msgid "wmlxgettext"
 msgstr "wmlxgettext"
 
-#: data/tools/GUI.pyw:1340
+#: data/tools/GUI.pyw:1347
 msgid "Output"
 msgstr "Výstup"
 
-#: data/tools/GUI.pyw:1390
+#: data/tools/GUI.pyw:1397
 msgid "Run wmlscope"
 msgstr "Spusti wmlscope"
 
-#: data/tools/GUI.pyw:1393
+#: data/tools/GUI.pyw:1400
 msgid "Run wmlindent"
 msgstr "Spusti wmlindent"
 
-#: data/tools/GUI.pyw:1396
+#: data/tools/GUI.pyw:1403
 msgid "Run wmlxgettext"
 msgstr "Spusti wmlxgettext"
 
-#: data/tools/GUI.pyw:1404
+#: data/tools/GUI.pyw:1411
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -381,7 +381,7 @@ msgstr ""
 "\n"
 "Vyber adresár alebo vypni možnosť \"Preskočiť hlavný adresár\"."
 
-#: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1518
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
@@ -392,13 +392,13 @@ msgstr ""
 "\n"
 "Nástroj sa spustí len v adresári jadra Wesnoth."
 
-#: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
-#: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
-#: data/tools/GUI.pyw:1599
+#: data/tools/GUI.pyw:1446 data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1518
+#: data/tools/GUI.pyw:1526 data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1587
+#: data/tools/GUI.pyw:1606
 msgid "Warning"
 msgstr "Varovanie"
 
-#: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
+#: data/tools/GUI.pyw:1454 data/tools/GUI.pyw:1526
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -408,16 +408,16 @@ msgstr ""
 "\n"
 "Nástroj sa spustí len v základnom adresári Wesnoth."
 
-#: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
-#: data/tools/GUI.pyw:1585
+#: data/tools/GUI.pyw:1460 data/tools/GUI.pyw:1532 data/tools/GUI.pyw:1568
+#: data/tools/GUI.pyw:1592
 msgid "The selected directory does not exist."
 msgstr "Vybraný adresár neexistuje."
 
-#: data/tools/GUI.pyw:1496
+#: data/tools/GUI.pyw:1503
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "Neplatná hodnota. Hodnota musí byť celé číslo v rozsahu 0-999."
 
-#: data/tools/GUI.pyw:1554
+#: data/tools/GUI.pyw:1561
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -427,7 +427,7 @@ msgstr ""
 "\n"
 "Nástroj sa spustí v základnom adresári Wesnoth."
 
-#: data/tools/GUI.pyw:1580
+#: data/tools/GUI.pyw:1587
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -438,12 +438,12 @@ msgstr ""
 "Nástroj sa nespustí."
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1592
+#: data/tools/GUI.pyw:1599
 msgid "Overwrite Confirmation"
 msgstr "Potvrdenie o prepísaní"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
-#: data/tools/GUI.pyw:1594
+#: data/tools/GUI.pyw:1601
 #, python-brace-format
 msgid ""
 "File {0} already exists.\n"
@@ -452,7 +452,7 @@ msgstr ""
 "Súbor {0} už existuje.\n"
 "Chceš ho prepísať?"
 
-#: data/tools/GUI.pyw:1599
+#: data/tools/GUI.pyw:1606
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -462,7 +462,7 @@ msgstr ""
 "\n"
 "Nástroj sa nespustí."
 
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1635
 #, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
@@ -473,11 +473,11 @@ msgstr ""
 "\n"
 "Kód chyby: {1}"
 
-#: data/tools/GUI.pyw:1639
+#: data/tools/GUI.pyw:1646
 msgid "Text file"
 msgstr "Textový súbor"
 
-#: data/tools/GUI.pyw:1647
+#: data/tools/GUI.pyw:1654
 #, python-brace-format
 msgid ""
 "Error while writing to:\n"
@@ -494,12 +494,12 @@ msgstr ""
 "\n"
 "{2}"
 
-#: data/tools/GUI.pyw:1664
+#: data/tools/GUI.pyw:1671
 msgid "About Maintenance Tools GUI"
 msgstr "O grafickom používateľskom rozhraní nástrojov údržby"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-#: data/tools/GUI.pyw:1666
+#: data/tools/GUI.pyw:1673
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "© Elvish_Hunter, 2014-2016\n"
@@ -512,7 +512,7 @@ msgstr "O grafickom používateľskom rozhraní nástrojov údržby"
 #| "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 #| "org), and are released in the Public Domain."
 msgid ""
-"© Elvish_Hunter, 2014-2024\n"
+"© Elvish_Hunter, 2014-2025\n"
 "\n"
 "Version: {0}\n"
 "\n"
@@ -532,14 +532,14 @@ msgstr ""
 "sú zverejnené vo Verejnej Doméne."
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1680
+#: data/tools/GUI.pyw:1687
 msgid "Exit Confirmation"
 msgstr "Potvrdenie ukončenia"
 
-#: data/tools/GUI.pyw:1681
+#: data/tools/GUI.pyw:1688
 msgid "Do you really want to quit?"
 msgstr "Naozaj si želáš skončiť?"
 
-#: data/tools/GUI.pyw:1973
+#: data/tools/GUI.pyw:1980
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr "Táto aplikácia musí byť umiestnená do adresára wesnoth/data/tools."

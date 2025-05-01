@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -98,10 +98,10 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 
 const char* const formula::id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
 
-formula::formula(const std::string& text, function_symbol_table* symbols)
+formula::formula(const std::string& text, function_symbol_table* symbols, bool manage_symbols)
 	: expr_()
 	, str_(text)
-	, managed_symbols_(symbols ? nullptr : new function_symbol_table)
+	, managed_symbols_(symbols ? (manage_symbols ? symbols : nullptr) : new function_symbol_table)
 	, symbols_(symbols ? symbols : managed_symbols_.get())
 {
 	std::vector<tk::token> tokens;
@@ -248,6 +248,9 @@ formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table
 		expr_ = std::make_shared<null_expression>();
 	}
 }
+
+// Explicitly defaulted out-of-line destructor (see header comment)
+formula::~formula() = default;
 
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {

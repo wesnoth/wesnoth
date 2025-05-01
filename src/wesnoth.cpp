@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,6 +43,7 @@
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
 #include "serialization/binary_or_text.hpp" // for config_writer
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
@@ -77,7 +78,6 @@
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
 #include <cstdlib>   // for srand, exit
-#include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
 #include <vector>
 #include <iostream>
@@ -143,8 +143,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 		config cfg;
 
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(file);
-			read(cfg, *stream);
+			cfg = io::read(*filesystem::istream_file(file));
 		} catch(const config::error& e) {
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
@@ -201,8 +200,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		config cfg;
 
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(file);
-			read(cfg, *stream);
+			cfg = io::read(*filesystem::istream_file(file));
 		} catch(const config::error& e) {
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
@@ -319,9 +317,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
-	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
-	config result;
-	read(result, *stream, &validator);
+	config result = io::read(*preprocess_file(file, &defines_map), &validator);
 	if(lg::broke_strict()) {
 		std::cout << "validation failed\n";
 	} else {
@@ -333,6 +329,29 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 /** Process commandline-arguments */
 static int process_command_args(commandline_options& cmdline_opts)
 {
+	// Options that output info unaffected by other options and return.
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		return 0;
+	}
+
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+		return 0;
+	}
+
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+		return 0;
+	}
+
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.no_log_sanitize) {
@@ -362,10 +381,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 			&& !cmdline_opts.data_path
 			&& !cmdline_opts.userdata_path
 			&& !cmdline_opts.usercache_path
-			&& !cmdline_opts.version
-			&& !cmdline_opts.simple_version
-			&& !cmdline_opts.logdomains
-			&& !cmdline_opts.help
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -402,9 +417,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(!cmdline_opts.nobanner) {
+		const auto now = std::chrono::system_clock::now();
 		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-		const std::time_t t = std::time(nullptr);
-		PLAIN_LOG << "Started on " << ctime(&t);
+		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
 	if(cmdline_opts.usercache_path) {
@@ -466,16 +481,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::strict_lua = true;
 	}
 
-	if(cmdline_opts.help) {
-		std::cout << cmdline_opts;
-		return 0;
-	}
-
-	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
-		return 0;
-	}
-
 	if(cmdline_opts.log_precise_timestamps) {
 		lg::precise_timestamps(true);
 	}
@@ -492,20 +497,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		strict_validation_enabled = true;
 	}
 
-	if(cmdline_opts.version) {
-		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
-		std::cout << "Optional features:\n" << game_config::optional_features_report();
-
-		return 0;
-	}
-
-	if(cmdline_opts.simple_version) {
-		std::cout << game_config::wesnoth_version.str() << "\n";
-
-		return 0;
-	}
-
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
@@ -518,11 +509,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_diff) {
-		config left, right;
 		std::ifstream in_left(cmdline_opts.diff_left);
 		std::ifstream in_right(cmdline_opts.diff_right);
-		read(left, in_left);
-		read(right, in_right);
+		config left = io::read(in_left);
+		config right = io::read(in_right);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
@@ -534,11 +524,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_patch) {
-		config base, diff;
 		std::ifstream in_base(cmdline_opts.diff_left);
 		std::ifstream in_diff(cmdline_opts.diff_right);
-		read(base, in_base);
-		read(diff, in_diff);
+		config base = io::read(in_base);
+		config diff = io::read(in_diff);
 		base.apply_diff(diff);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {

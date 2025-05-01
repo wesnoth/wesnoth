@@ -70,10 +70,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-sobrescreve o core carregado com o id do core especificado.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-sobrescreve o diretório de dados com o que foi especificado
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 imprime o caminho do diretória de dados e sai.
@@ -118,10 +119,11 @@ qual mapa carregar.
 usa língua \fIlang\fP (símbolo) essa sessão.  Exemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-ajusta o nível de gravidade dos log domains.  \fBall\fP pode ser usado para
-combinar com qualquer domínio de log. Níveis disponíveis: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por padrão o nível \fBwarning\fP é usado para
-a maioria dos domains, mas \fBdeprecation\fP vai para por padrão \fBnone\fP a não
-ser que seja combinado com a opção \fB\-d\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 mostra as timestamps no log de saída com mais precisão.
@@ -418,7 +420,7 @@ Visite a página oficial: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Este Software é Gratuito; este software é licenciado sob a versão GPL 2,
 conforme publicada pela Free Software Foundation. Não há NENHUMA garantia;

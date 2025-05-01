@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -66,18 +66,12 @@ void init_help();
  *@pre game_config_manager has been initialised, or the instance of help_manager
  * has been created with an alternative config.
  */
-void show_help(const std::string& show_topic="");
+void show_help(const std::string& show_topic = "");
 
-/** wrapper to add unit prefix and hiding symbol */
-void show_unit_help(const std::string& unit_id, bool has_variations=false,
-				bool hidden = false);
-
-/** wrapper to add variation prefix and hiding symbol */
-void show_variation_help(const std::string &unit_id, const std::string &variation,
-				bool hidden = false);
-
-/** wrapper to add terrain prefix and hiding symbol */
-void show_terrain_help(const std::string& unit_id, bool hidden = false);
+/**
+ * Given a unit type, find the corresponding help topic's id.
+ */
+std::string get_unit_type_help_id(const unit_type& t);
 
 void show_unit_description(const unit_type &t);
 void show_unit_description(const unit &u);

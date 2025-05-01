@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -142,8 +142,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, plugins_context_()
 	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
-	, mouse_handler_(nullptr, *this)
-	, menu_handler_(nullptr, *this)
+	, mouse_handler_(*this)
+	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()
@@ -681,8 +681,10 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
+		if (menu_handler_.do_speak()) {
+			menu_handler_.get_textbox().memorize_command(str);
+			menu_handler_.get_textbox().close();
+		}
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
@@ -703,12 +705,6 @@ void play_controller::enter_textbox()
 void play_controller::textbox_move_vertically(bool up)
 {
 	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
-		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
-		// Not handling messages to avoid spam
 		return;
 	}
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,6 +40,8 @@
 #include <ctime>
 #include <boost/locale/info.hpp>
 
+#include "utils/span.hpp"
+
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
 #endif
@@ -76,9 +78,11 @@ namespace translation
 	/** Case-insensitive lexicographical comparison. */
 	int icompare(const std::string& s1,const std::string& s2);
 
-	std::string strftime(const std::string& format, const std::tm* time);
-
+	/** Case-insensitive search. @a s2 will be checked against @a s1. */
 	bool ci_search(const std::string& s1, const std::string& s2);
+
+	/** Case-insensitive search. @a s2 will be checked against any element of @a s1. */
+	bool ci_search(utils::span<const std::string> s1, const std::string& s2);
 
 	/**
 	 * A facet that holds general information about the effective locale.

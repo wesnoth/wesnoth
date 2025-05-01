@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -356,6 +356,7 @@ public:
 	void set_current_level(const std::size_t index);
 
 	void set_current_era_index(const std::size_t index, bool force = false);
+	void set_current_era_id(const std::string& id, bool force = false);
 
 	std::size_t current_era_index() const
 	{
@@ -400,8 +401,6 @@ private:
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
 	void apply_level_filters();
-
-	std::size_t map_level_index(std::size_t index) const;
 
 	level_type::type current_level_type_;
 	std::size_t current_level_index_;

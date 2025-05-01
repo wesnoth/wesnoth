@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:57+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -65,11 +65,19 @@ msgstr "Chủ tướng"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:24
+#, fuzzy
+#| msgid ""
+#| "In the first years of the Northern Alliance, an expedition from Knalga "
+#| "seeks out their kin at Kal Kartha and to learn the fate of the legendary "
+#| "Hammer of Thursagan. The perils of their journey through the wild "
+#| "Northern Lands, though great, pale beside the evil they will face at its "
+#| "end.\n"
+#| "\n"
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
 "out their kin at Kal Kartha and to learn the fate of the legendary Hammer of "
-"Thursagan. The perils of their journey through the wild Northern Lands, "
-"though great, pale beside the evil they will face at its end.\n"
+"Thursagan. The perils of their journey through the wild Northlands, though "
+"great, pale beside the evil they will face at its end.\n"
 "\n"
 msgstr ""
 "Trong những năm đầu của liên minh phương Bắc, một đoàn thám hiểm từ Knalga "
@@ -241,7 +249,7 @@ msgstr "Đánh bại Bashnark"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:100
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:125
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:149
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:106
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:121
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:364
@@ -347,9 +355,15 @@ msgstr "Đòi lại quá khứ"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Following the victory against the orcs, Aiglondur was summoned to the "
+#| "audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+#| "Alliance. Beside the dais stood a stranger in the robes of the Order of "
+#| "Loremasters..."
 msgid ""
 "Following the victory against the orcs, Aiglondur was summoned to the "
-"audience hall of Hamel, lord of Knalga and Lord Companion of the Northern "
+"audience hall of Hamel, Lord of Knalga and Lord Companion of the Northern "
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
@@ -687,24 +701,24 @@ msgid "Marth-Tak"
 msgstr "Marth-Tak"
 
 #. [side]: type=Orcish Slayer, id=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:82
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:101
 msgid "Invaders"
 msgstr "Những kẻ xâm lược"
 
 #. [side]: type=Orcish Slayer, id=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:88
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:107
 msgid "Gorthas"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:121
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:145
 #, fuzzy
 #| msgid "Help Marth-Tak defeat Gothras"
 msgid "Help Marth-Tak defeat Gorthas"
 msgstr "Giúp Marth-Tak đánh bại Gothras"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:129
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:153
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:110
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:125
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:368
@@ -720,7 +734,7 @@ msgid "Death of Angarthing"
 msgstr "Angarthing chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:157
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:114
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:129
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:372
@@ -732,17 +746,22 @@ msgid "Death of Movrur"
 msgstr "Aiglondur chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:161
 msgid "Death of Marth-Tak"
 msgstr "Marth-Tak chết"
 
+#. [note]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:174
+msgid "Your ally will focus on defending."
+msgstr ""
+
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:167
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:196
 msgid "Movrur, I had meant to ask you this before, but why do you wear a mask?"
 msgstr ""
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:173
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:202
 msgid ""
 "Kal Kartha is the stronghold of numerous, ancient forges. We are at home in "
 "deep firepits, as smiths and craftsmen. The mask is a sign of our mastery of "
@@ -750,7 +769,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:178
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:207
 msgid ""
 "And more practically, it shields the face from flying sparks and molten "
 "steel. Even the forgemasters of Knalga don the mask, though perhaps not as "
@@ -759,26 +778,26 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:183
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:212
 msgid "In the name of the Alliance, quit these lands now!"
 msgstr "Nhân danh liên minh, hãy rời khỏi vùng đất này ngay!"
 
 #. [message]: speaker=Gorthas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:188
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:217
 msgid ""
 "Stinkin’ weakling! No true orc would fight for somethin’ as stupid as the "
 "Alliance."
 msgstr ""
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:193
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:222
 msgid ""
 "You underestimate our strength. We shall see who the true orc is after this "
 "battle is over!"
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:198
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:227
 msgid ""
 "Now that is a sight still strange to my eyes — an orc fighting for the "
 "Northern Alliance."
@@ -786,7 +805,7 @@ msgstr ""
 "Cảnh đó trông thật kỳ lạ - một người thú chiến đấu vì liên minh phương Bắc."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:203
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:232
 #, fuzzy
 #| msgid ""
 #| "I’m surprised myself that so many of the orcish tribes came over to the "
@@ -799,36 +818,36 @@ msgstr ""
 "minh. Tiếc là không quá lạ khi nhìn thấy con người tấn công chúng ta."
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:210
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:239
 msgid "You, on the road! Are you of the Northern Alliance or not?"
 msgstr ""
 "Các ngươi, những kẻ trên đường! Các ngươi có thuộc liên minh phương Bắc hay "
 "không?"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:244
 msgid "We are."
 msgstr "Chúng tôi có."
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:220
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:249
 msgid "Well, then, honor the treaty as I have."
 msgstr "Tốt, vậy thì, hãy tôn trọng hiệp ước giống như tôi."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:225
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:254
 #, fuzzy
 #| msgid "We have failed our duty to the Alliance."
 msgid "That is our duty. For the Alliance!"
 msgstr "Chúng ta đã thất bại trong nhiệm vụ của liên minh."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:237
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:266
 msgid "We have failed our duty to the Alliance."
 msgstr "Chúng ta đã thất bại trong nhiệm vụ của liên minh."
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:253
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:282
 msgid ""
 "My thanks, dwarves. There have been many attacks on the border tribes of "
 "late, and though we have repelled them thus far, the assaults have gotten "
@@ -836,14 +855,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:258
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:287
 msgid ""
 "Indeed? What disturbs me is that these orcs bear arms and coins of dwarvish "
 "make. It intimates that this war-band was hired for this purpose."
 msgstr ""
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:263
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:292
 msgid ""
 "Nonsense. It may very well be that these orcs defeated a garrison of dwarves "
 "and raided their supplies. You need not draw such drastic conclusions from "
@@ -851,14 +870,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:268
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:297
 msgid ""
 "And what of the orcs that Aiglondur fended off at the East Gate of Knalga? "
 "Their leader’s cloak-pin bore the emblem of Kal Kartha—"
 msgstr ""
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:273
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:302
 msgid ""
 "Several of our scouting bands were ambushed recently. These orcs must have "
 "been among those who slew our kinsmen. It is all the better we slaughtered "
@@ -866,12 +885,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:307
 msgid "Indeed..."
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:283
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:312
 #, fuzzy
 #| msgid ""
 #| "My thanks to you, for proving there are orcs I can fight alongside rather "
@@ -887,7 +906,7 @@ msgstr ""
 "chúng tôi đang tiến về phía đông."
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:288
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:317
 msgid "East, eh? You won’t find many friends in that direction. Travel safely."
 msgstr ""
 "Phía đông hả? Các anh sẽ không tìm thấy nhiều bạn bè ở hướng đó đâu. Chúc "
@@ -2519,11 +2538,19 @@ msgstr "Người lùn bậc thầy tri thức"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
+#| "valued by war-leaders and chieftains, and they are viewed with awe by "
+#| "ordinary dwarves, for they alone have plumbed the deepest and most "
+#| "closely-held secrets of dwarven knowledge. It is said that where a "
+#| "loremaster stands, there is the soul of the dwarves. To the abilities of "
+#| "the Annalist they add a limited ability to heal."
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
 "valued by war-leaders and chieftains, and they are viewed with awe by "
 "ordinary dwarves, for they alone have plumbed the deepest and most closely-"
-"held secrets of dwarven knowledge. It is said that where a loremaster "
+"held secrets of dwarven knowledge. It is said that where a Loremaster "
 "stands, there is the soul of the dwarves. To the abilities of the Annalist "
 "they add a limited ability to heal."
 msgstr ""
@@ -2606,19 +2633,13 @@ msgstr "Người lùn giáp sắt đeo mặt nạ"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:17
-#, fuzzy
-#| msgid ""
-#| "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
-#| "for which they are rightly famous. In the dark dreams of dwarvenkind, "
-#| "some conceal their faces behind riveted masks."
 msgid ""
-"More experienced dwarvish fighters wear heavy chain mail and plate armor, "
-"for which they are rightly famous. In the dark dreams of dwarvenkind, some "
+"Outfitted in the strongest plate and mail of Knalgan forges, the Steelclads "
+"are the vanguard of dwarvish armies. They are renowned for their resilience "
+"in the heat of battle, and their mastery of both battleaxe and warhammer "
+"make them imposing foes indeed. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
-"Các đấu sĩ người lùn có nhiều kinh nghiệm mặc những bộ áo giáp xích và bọc "
-"sắt, chính vì điều đó mà họ nổi tiếng. Trong giấc mơ đen tối của chủng tộc "
-"người lùn, một số người che giấu bộ mặt đằng sau những chiếc mặt nạ tán đinh."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:4
@@ -2753,6 +2774,21 @@ msgstr ""
 "Không có Dulcatulos giải thích các hành động của chúng ta cho những người "
 "Kal Kartha, chúng ta sẽ phải chiến đấu với họ. Nhiệm vụ của chúng ta đã thất "
 "bại."
+
+#, fuzzy
+#~| msgid ""
+#~| "More experienced Dwarvish fighters wear heavy chain mail and plate "
+#~| "armor, for which they are rightly famous. In the dark dreams of "
+#~| "dwarvenkind, some conceal their faces behind riveted masks."
+#~ msgid ""
+#~ "More experienced dwarvish fighters wear heavy chain mail and plate armor, "
+#~ "for which they are rightly famous. In the dark dreams of dwarvenkind, "
+#~ "some conceal their faces behind riveted masks."
+#~ msgstr ""
+#~ "Các đấu sĩ người lùn có nhiều kinh nghiệm mặc những bộ áo giáp xích và "
+#~ "bọc sắt, chính vì điều đó mà họ nổi tiếng. Trong giấc mơ đen tối của "
+#~ "chủng tộc người lùn, một số người che giấu bộ mặt đằng sau những chiếc "
+#~ "mặt nạ tán đinh."
 
 #~ msgid "Ratheln"
 #~ msgstr "Ratheln"

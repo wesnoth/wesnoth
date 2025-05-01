@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -455,8 +455,7 @@ config map_context::convert_scenario(const config& old_scenario)
 
 void map_context::load_scenario()
 {
-	config scen;
-	read(scen, *(preprocess_file(filename_)));
+	config scen = io::read(*preprocess_file(filename_));
 
 	config scenario;
 	if(scen.has_child("scenario")) {
@@ -658,6 +657,7 @@ config map_context::to_config()
 	scenario.remove_children("event", [](const config& cfg) {
 		return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";
 	});
+	scenario.remove_children("time");
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_, current_textdomain);
@@ -735,9 +735,8 @@ config map_context::to_config()
 	}
 
 	// [unit]s
-	config traits;
 	preproc_map traits_map;
-	read(traits, *(preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map)));
+	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map);
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -763,9 +762,8 @@ config map_context::to_config()
 
 		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
-			config trait_loyal;
-			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
-			mods.append(trait_loyal);
+			config trait_loyal = io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
+			mods.append(std::move(trait_loyal));
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
@@ -821,7 +819,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
 			editor_map["EDITOR"] = preproc_define("true");
-			read(schedule, *(preprocess_file(schedule_path, &editor_map)));
+			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
 		}
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;

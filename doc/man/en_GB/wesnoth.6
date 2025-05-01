@@ -71,10 +71,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialogue.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-overrides the loaded core with the one whose id is specified.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-overrides the data directory with the one specified
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 prints the path of the data directory and exits.
@@ -120,10 +121,11 @@ map dialogue opened there.
 uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP is set to \fBnone\fP by default unless combined with the \fB\-d\fP
-option.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 shows the time\-stamps in log output with more precision.
@@ -201,8 +203,8 @@ uses \fIpassword\fP when connecting to a server, ignoring other
 preferences. Unsafe.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
-function which will be run as a coroutine and periodically woken up with
+load a \fIscript\fP which defines a Wesnoth plug\-in. Lua file should return a
+function which will be run as a co\-routine and periodically woken up with
 updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
@@ -412,7 +414,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

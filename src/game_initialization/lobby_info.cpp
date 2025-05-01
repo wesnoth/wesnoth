@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 
@@ -119,6 +120,61 @@ void lobby_info::process_gamelist(const config& data)
 	gamelist_initialized_ = true;
 
 	games_by_id_.clear();
+
+	int queued_id = 0;
+	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+		config qgame;
+		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
+		int human_sides = 0;
+		for(const auto& side : scenario.child_range("side")) {
+			if(side["controller"].str() == "human") {
+				human_sides++;
+			}
+		}
+		if(human_sides == 0) {
+			ERR_LB << "No human sides for scenario " << game["scenario"];
+			continue;
+		}
+		// negative id means a queue-defined game
+		queued_id--;
+		qgame["id"] = queued_id;
+		// all are set as auto_hosted so they show up in that tab of the MP lobby
+		qgame["auto_hosted"] = true;
+
+		qgame["name"] = scenario["name"];
+		qgame["mp_scenario"] = game["scenario"];
+		qgame["mp_era"] = game["era"];
+		qgame["mp_use_map_settings"] = game["use_map_settings"];
+		qgame["mp_fog"] = game["fog"];
+		qgame["mp_shroud"] = game["shroud"];
+		qgame["mp_village_gold"] = game["village_gold"];
+		qgame["experience_modifier"] = game["experience_modifier"];
+
+		qgame["mp_countdown"] = game["countdown"];
+		if(qgame["countdown"].to_bool()) {
+			qgame["mp_countdown_reservoir_time"] = game["countdown_reservoir_time"];
+			qgame["mp_countdown_init_time"] = game["countdown_init_time"];
+			qgame["mp_countdown_action_bonus"] = game["countdown_action_bonus"];
+			qgame["mp_countdown_turn_bonus"] = game["countdown_turn_bonus"];
+		}
+
+		qgame["observer"] = game["observer"];
+		qgame["human_sides"] = human_sides;
+
+		if(scenario.has_attribute("map_data")) {
+			qgame["map_data"] = scenario["map_data"];
+		} else {
+			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
+		}
+		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["scenario"].str()];
+
+		config& qchild = qgame.add_child("slot_data");
+		qchild["vacant"] = human_sides;
+		qchild["max"] = human_sides;
+
+		game_info g(qgame, installed_addons_);
+		games_by_id_.emplace(g.id, std::move(g));
+	}
 
 	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		game_info game(c, installed_addons_);

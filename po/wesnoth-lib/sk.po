@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2023-11-22 15:07+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -2301,11 +2301,13 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=reachmap_defaults
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:474
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
 msgstr "Predvoľby"
@@ -2318,58 +2320,93 @@ msgid "Players"
 msgstr "Hráči"
 
 #. [settings]
-#: data/gui/themes/celes/celes.cfg:25 data/gui/themes/default/default.cfg:23
+#: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Stlačte '$hotkey' pre viac informácií)"
 
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:157
-msgid "Hide"
-msgstr ""
-
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Hide tip of the day"
-msgstr "Zobraz nasledujúci tip dňa"
-
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:171
+#: data/gui/themes/celes/dialogs/title_screen.cfg:165
 #: data/gui/themes/default/dialogs/chat_log.cfg:105
 #: data/gui/themes/default/dialogs/title_screen.cfg:194
 msgid "Previous"
 msgstr "Predchádzajúca"
 
 #. [button]: id=previous_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:172
+#: data/gui/themes/celes/dialogs/title_screen.cfg:166
 #: data/gui/themes/default/dialogs/title_screen.cfg:195
 msgid "Show previous tip of the day"
 msgstr "Zobraz predchádzajúci tip dňa"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:186
+#: data/gui/themes/celes/dialogs/title_screen.cfg:179
 #: data/gui/themes/default/dialogs/chat_log.cfg:114
 #: data/gui/themes/default/dialogs/title_screen.cfg:209
 msgid "Next"
 msgstr "Ďalšia"
 
 #. [button]: id=next_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:187
+#: data/gui/themes/celes/dialogs/title_screen.cfg:180
 #: data/gui/themes/default/dialogs/title_screen.cfg:210
 msgid "Show next tip of the day"
 msgstr "Zobraz nasledujúci tip dňa"
 
+#. [button]: id=toggle_tip_panel
+#: data/gui/themes/celes/dialogs/title_screen.cfg:215
+#, fuzzy
+#| msgid "Next Tip of the Day"
+msgid "Tip of the Day"
+msgstr "Ďalší tip dňa"
+
+#. [button]: id=toggle_tip_panel
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/celes/dialogs/title_screen.cfg:216
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#, fuzzy
+#| msgid "Show next tip of the day"
+msgid "Show tip of the day"
+msgstr "Zobraz nasledujúci tip dňa"
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:229
+#: data/gui/themes/default/dialogs/title_screen.cfg:472
+msgid "About"
+msgstr ""
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:230
+#: data/gui/themes/default/dialogs/title_screen.cfg:473
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "General information about Battle for Wesnoth"
+msgstr "Bitka o Wesnoth"
+
+#. [button]: id=language
+#. [label]
+#. [label]: id=translations_language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/default/dialogs/addon_manager.cfg:870
+#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
+#: data/gui/themes/default/dialogs/language_selection.cfg:227
+#: data/gui/themes/default/dialogs/title_screen.cfg:494
+msgid "Language"
+msgstr "Jazyk"
+
+#. [button]: id=language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/default/dialogs/title_screen.cfg:495
+msgid "Change the language"
+msgstr "Zmeň jazyk"
+
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Campaigns"
 msgstr "Výpravy"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Start a new single player campaign"
 msgstr "Spusti novú výpravu pre jedného hráča"
@@ -2378,16 +2415,16 @@ msgstr "Spusti novú výpravu pre jedného hráča"
 #. [grid]
 #. [label]
 #. [widget]: id=label
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:367
 msgid "Multiplayer"
 msgstr "Zápas"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
@@ -2399,27 +2436,27 @@ msgstr ""
 #. [grid]
 #. [button]: id=load_movetype
 #. [button]: id=ok
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
-#: data/gui/themes/default/dialogs/game_load.cfg:639
+#: data/gui/themes/default/dialogs/game_load.cfg:638
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load"
 msgstr "Načítať"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load a saved game"
 msgstr "Načítať uloženú hru"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Add-ons"
 msgstr "Doplnky"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Stiahni výpravy, éry alebo mapy od iných autorov"
@@ -2427,41 +2464,41 @@ msgstr "Stiahni výpravy, éry alebo mapy od iných autorov"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:79
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Achievements"
 msgstr "Úspechy"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 msgid "View achievements"
 msgstr "Zobraz úspechy"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Map Editor"
 msgstr "Editor máp"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Start the map editor"
 msgstr "Spustiť editor máp"
 
 #. [grid]
 #. [tab]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/game_version.cfg:904
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 #, fuzzy
 #| msgid "The Battle for Wesnoth"
@@ -2469,7 +2506,7 @@ msgid "Places to talk about Wesnoth"
 msgstr "Bitka o Wesnoth"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 msgid "Configure the game’s settings"
 msgstr "Nastaviť voľby hry"
@@ -2478,9 +2515,8 @@ msgstr "Nastaviť voľby hry"
 #. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:772
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2490,14 +2526,14 @@ msgstr "Nastavenia"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [button]: id=help
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #: data/gui/themes/default/dialogs/title_screen.cfg:178
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Help"
 msgstr "Pomoc"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Visit the in-game help"
@@ -2506,7 +2542,7 @@ msgstr "Nastav frekvenciu"
 #. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/formula_debugger.cfg:234
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
@@ -2514,41 +2550,10 @@ msgid "Quit"
 msgstr "Vypni hru"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit the game"
 msgstr "Vypni hru"
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:461
-#: data/gui/themes/default/dialogs/title_screen.cfg:472
-msgid "About"
-msgstr ""
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:462
-#: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
-msgid "General information about Battle for Wesnoth"
-msgstr "Bitka o Wesnoth"
-
-#. [button]: id=language
-#. [label]
-#. [label]: id=translations_language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:475
-#: data/gui/themes/default/dialogs/addon_manager.cfg:870
-#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
-#: data/gui/themes/default/dialogs/language_selection.cfg:227
-#: data/gui/themes/default/dialogs/title_screen.cfg:494
-msgid "Language"
-msgstr "Jazyk"
-
-#. [button]: id=language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:476
-#: data/gui/themes/default/dialogs/title_screen.cfg:495
-msgid "Change the language"
-msgstr "Zmeň jazyk"
 
 #. [draw]
 #: data/gui/themes/celes/widgets/button_success.cfg:196
@@ -2573,7 +2578,7 @@ msgstr ""
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/themes/celes/widgets/window_default.cfg:106
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:306
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
@@ -2582,7 +2587,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:288
+#: data/gui/themes/default/dialogs/help_browser.cfg:274
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2652,6 +2657,7 @@ msgstr "Uložiť heslo do nastavení (šifrované)"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
 #: data/gui/themes/default/dialogs/mp_report.cfg:235
 #: data/gui/themes/default/dialogs/prompt.cfg:86
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:171
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:181
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:145
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:105
@@ -2673,7 +2679,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:533
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2693,7 +2699,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/file_dialog.cfg:519
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
-#: data/gui/themes/default/dialogs/game_load.cfg:654
+#: data/gui/themes/default/dialogs/game_load.cfg:653
 #: data/gui/themes/default/dialogs/game_save.cfg:134
 #: data/gui/themes/default/dialogs/label_settings.cfg:149
 #: data/gui/themes/default/dialogs/language_selection.cfg:305
@@ -2711,6 +2717,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/mp_report.cfg:249
 #: data/gui/themes/default/dialogs/mp_staging.cfg:450
 #: data/gui/themes/default/dialogs/network_transmission.cfg:111
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:182
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:192
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:158
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:117
@@ -2818,7 +2825,7 @@ msgstr "Aktualizované:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
 msgid "No description available."
 msgstr "Nie je dostupný popis."
 
@@ -2891,7 +2898,7 @@ msgstr "Závislosti:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1137
+#: src/gui/dialogs/addon/manager.cpp:1136
 msgid "addon_dependencies^None"
 msgstr "Žiadne"
 
@@ -2905,7 +2912,7 @@ msgstr "Preklady:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1151
+#: src/gui/dialogs/addon/manager.cpp:1150
 msgid "translations^None"
 msgstr "Žiadne"
 
@@ -3068,12 +3075,35 @@ msgstr "Útočník"
 msgid "Defender"
 msgstr "Obranca"
 
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+"Wesnoth bežne obsahuje viac ako 15 hlavných kampaní, a to ešte pred "
+"inštaláciou niektorej zo servera doplnkov. Ak ste hru nainštalovali "
+"prostredníctvom správcu balíkov, pravdepodobne existuje samostatný balík na "
+"inštaláciu úplných údajov o hre."
+
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
@@ -3083,27 +3113,27 @@ msgid "Name"
 msgstr "Meno"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Zoradiť podľa úplného názvu kampane v abecednom poradí"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
 msgid "Timeline"
 msgstr "Časová os"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
 msgid "Sort in approximate chronological order of story events"
 msgstr "Zoraďte udalosti príbehu v približnom chronologickom poradí"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:235
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:238
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
 #, fuzzy
 #| msgid "Completed"
 msgid "Not Completed"
@@ -3111,77 +3141,77 @@ msgstr "Dokončené"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:240
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:244
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Bronze"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Silver"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:250
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:254
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Gold"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:255
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:259
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: All"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:311
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "Modifikácie:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
 msgstr "Boj:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:351
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
 msgid "Default RNG"
 msgstr "Predvolená náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3190,12 +3220,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:357
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
 msgstr "Predvídateľná náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:358
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3205,14 +3235,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:363
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "Predvídateľná náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:364
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3222,36 +3252,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:381
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
 msgid "Difficulty:"
 msgstr "Náročnosť:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:395
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
 msgstr "Ľahká"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:398
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
 msgid "Normal"
 msgstr "Normálna"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
 msgstr "Ťažká"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
 msgid "Play a Campaign"
 msgstr "Hrať výpravu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:522
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 msgid "game^Play"
 msgstr "Hraj"
 
@@ -3274,7 +3304,7 @@ msgstr "Vyber obtiažnosť:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/chat_log.cfg:36
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Chat Log"
 msgstr "Záznam rozhovoru"
 
@@ -3322,8 +3352,8 @@ msgstr "Načítať základ"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1306
+#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/preferences/preferences.cpp:1344
 msgid "Select"
 msgstr "Označiť"
 
@@ -3396,8 +3426,8 @@ msgstr "Upraviť plán dennej doby"
 #: data/gui/themes/default/dialogs/game_save_oos.cfg:90
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:219
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
+#: src/gui/dialogs/units_dialog.cpp:231
 msgid "Name:"
 msgstr "Meno:"
 
@@ -3477,11 +3507,11 @@ msgstr ""
 #: src/gui/dialogs/editor/custom_tod.cpp:183
 #: src/gui/dialogs/editor/custom_tod.cpp:190
 #: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:331
-#: src/gui/dialogs/editor/edit_unit.cpp:339
-#: src/gui/dialogs/editor/edit_unit.cpp:1035
-#: src/gui/dialogs/file_dialog.cpp:368 src/gui/dialogs/file_dialog.cpp:796
+#: src/gui/dialogs/editor/edit_unit.cpp:321
+#: src/gui/dialogs/editor/edit_unit.cpp:329
+#: src/gui/dialogs/editor/edit_unit.cpp:337
+#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "Potvrdiť"
 
@@ -3788,7 +3818,7 @@ msgstr "Pridať"
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/dialogs/file_dialog.cfg:349
-#: data/gui/themes/default/dialogs/game_load.cfg:606
+#: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Vymaž"
@@ -3850,7 +3880,7 @@ msgstr "Preklad popisu doplnku."
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:42
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Edit Scenario Settings"
 msgstr "Zmeniť nastavenia scény"
 
@@ -4080,7 +4110,7 @@ msgstr "Cena pohybu:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:216
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Attacks"
 msgstr "Útoky"
 
@@ -4210,7 +4240,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Generate Map"
 msgstr "Generuj mapu"
 
@@ -4262,14 +4292,14 @@ msgstr "Výška:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:426
+#: src/gui/dialogs/units_dialog.cpp:442
 msgid "Create"
 msgstr "Vytvoriť"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
 
@@ -4471,49 +4501,49 @@ msgstr "Dátum"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/themes/default/dialogs/game_load.cfg:309
+#: data/gui/themes/default/dialogs/game_load.cfg:308
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:944
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "Načítaj hru"
 
 #. [button]: id=browse_saves_folder
-#: data/gui/themes/default/dialogs/game_load.cfg:350
+#: data/gui/themes/default/dialogs/game_load.cfg:349
 msgid "Open saves folder"
 msgstr "Otvorte priečinok uložených súborov"
 
 #. [menu_button]: id=dirList
-#: data/gui/themes/default/dialogs/game_load.cfg:362
+#: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
 msgstr "Zobrazenie uložených súborov z inej verzie hry Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:538
+#: data/gui/themes/default/dialogs/game_load.cfg:537
 msgid "Change difficulty"
 msgstr "Zmeniť obtiažnosť"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:539
+#: data/gui/themes/default/dialogs/game_load.cfg:538
 msgid "Change campaign difficulty before loading"
 msgstr "Zmeniť obtiažnosť výpravy pred načítaním"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:561
+#: data/gui/themes/default/dialogs/game_load.cfg:560
 msgid "Show replay"
 msgstr "Zobraziť záznam"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:562
+#: data/gui/themes/default/dialogs/game_load.cfg:561
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr "Prehrať záznam uloženej hry ak je to možné"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:584
+#: data/gui/themes/default/dialogs/game_load.cfg:583
 msgid "Cancel orders"
 msgstr "Zrušiť rozkazy"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:585
+#: data/gui/themes/default/dialogs/game_load.cfg:584
 msgid "Cancel any pending unit movements in the saved game"
 msgstr "Zrušiť plánované pohyby jednotiek v uloženej hre"
 
@@ -4560,7 +4590,7 @@ msgstr "Tím"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:440
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Gold"
 msgstr "Zlato"
 
@@ -4588,7 +4618,7 @@ msgstr "Údržba"
 #: data/gui/themes/default/dialogs/game_stats.cfg:118
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:281
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:294
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:446
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:447
 msgid "Income"
 msgstr "Príjem"
 
@@ -4636,7 +4666,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Current Status"
 msgstr "Súčasný stav"
 
@@ -4648,14 +4678,14 @@ msgstr "Štatistiky hry"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Scenario Settings"
 msgstr "Nastavenia scény"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:496
+#: src/gui/dialogs/units_dialog.cpp:531
 msgid "Scroll To"
 msgstr "Rolovať k"
 
@@ -4953,17 +4983,17 @@ msgstr "Cesty medzi hradmi"
 msgid "Show Labels"
 msgstr "Zobraziť nápisy"
 
-#. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:148
-msgid "Battle For Wesnoth Help"
-msgstr "Návod pre Bitku o Wesnoth"
-
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:160
+#: data/gui/themes/default/dialogs/help_browser.cfg:125
 #, fuzzy
 #| msgid "Show Credits"
 msgid "Show Topics"
 msgstr "Zobraziť autorov hry"
+
+#. [text_box]: id=filter_box
+#: data/gui/themes/default/dialogs/help_browser.cfg:163
+msgid "Search help topic names"
+msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5075,7 +5105,6 @@ msgstr "Otoč výber"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:784
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5088,30 +5117,27 @@ msgstr "Vytvor hru"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:796
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "Vstúpiť"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:819
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "Pozoruj"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:807
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Oznámenia"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:618
+#: data/gui/themes/default/dialogs/lobby_main.cfg:621
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
@@ -5121,50 +5147,43 @@ msgstr "Profil"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:629
+#: data/gui/themes/default/dialogs/lobby_main.cfg:633
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "História zápasu"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:646
-#: data/gui/themes/default/dialogs/lobby_main.cfg:746
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
 msgid "Log Out"
 msgstr "Odhlásiť"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:666
-#: data/gui/themes/default/dialogs/lobby_main.cfg:834
+#: data/gui/themes/default/dialogs/lobby_main.cfg:670
 msgid "Normal Replays"
 msgstr "Normálne prehranie záznamov"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
+#: data/gui/themes/default/dialogs/lobby_main.cfg:674
 msgid "Quick Replays"
 msgstr "Rýchle prehranie záznamov"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:671
-#: data/gui/themes/default/dialogs/lobby_main.cfg:839
+#: data/gui/themes/default/dialogs/lobby_main.cfg:675
 msgid "Skip quickly to the active turn when observing"
 msgstr "Pri pozorovaní rýchlo prejdite na aktívny ťah"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
 msgid "Enter Blindfolded"
 msgstr "Vstup naslepo"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:676
-#: data/gui/themes/default/dialogs/lobby_main.cfg:844
+#: data/gui/themes/default/dialogs/lobby_main.cfg:680
 msgid "Do not show the map until given control of a side"
 msgstr "Nezobrazujte mapu, kým nezískate kontrolu nad stranou"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:734
-#: data/gui/themes/default/dialogs/lobby_main.cfg:957
+#: data/gui/themes/default/dialogs/lobby_main.cfg:729
 msgid "Multiplayer Lobby"
 msgstr "Čakáreň"
 
@@ -5800,8 +5819,7 @@ msgstr "Frakcia"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
-#: data/gui/themes/default/dialogs/mp_staging.cfg:631
-#: data/gui/themes/default/dialogs/mp_staging.cfg:860
+#: data/gui/themes/default/dialogs/mp_staging.cfg:671
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to join..."
 msgstr "Čakáme kým sa pridajú hráči..."
@@ -5813,8 +5831,7 @@ msgstr "Opustiť"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:448
-#: data/gui/themes/default/dialogs/mp_staging.cfg:569
-#: data/gui/themes/default/dialogs/mp_staging.cfg:754
+#: data/gui/themes/default/dialogs/mp_staging.cfg:565
 msgid "Game Lobby"
 msgstr "Čakáreň hry"
 
@@ -6184,7 +6201,7 @@ msgstr "Klávesa"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:908
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6197,7 +6214,7 @@ msgstr "Dostupné v hre"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:909
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6210,7 +6227,7 @@ msgstr "Dostupné v editore"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:910
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6328,13 +6345,6 @@ msgstr ""
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Použi"
-
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Show tip of the day"
-msgstr "Zobraz nasledujúci tip dňa"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
@@ -6617,6 +6627,33 @@ msgstr "Odstráň toto používateľské meno zo zoznamu"
 msgid "You have not befriended or blocked any other players."
 msgstr ""
 "Nepriatelili ste sa so žiadnym iným hráčom ani ste nikoho nezablokovali."
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:101
+#, fuzzy
+#| msgid "Random map options: "
+msgid "Reach Map Options"
+msgstr "Náhodné možnosti mapy: "
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+msgid "Highlight Color"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+msgid "Enemy Highlight Color"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+msgid "Border Opacity:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:144
+msgid "Tint Opacity:"
+msgstr ""
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6924,8 +6961,8 @@ msgstr "Stav"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:132
-#: src/gui/widgets/unit_preview_pane.cpp:364
-#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:390
+#: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -6949,7 +6986,7 @@ msgstr "Premenuj"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Chyba"
@@ -7055,7 +7092,7 @@ msgstr "<unknown>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1814
+#: src/filesystem.cpp:1820
 msgid "language code for localized resources^en_US"
 msgstr "sk,cz,en"
 
@@ -7099,7 +7136,7 @@ msgstr "$prefix, $ďalší"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix, or $posledný"
 
-#: src/gui/core/canvas.cpp:263
+#: src/gui/core/canvas.cpp:258
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7140,8 +7177,14 @@ msgstr ""
 "Riadok mriežky '$grid' $row má rôzny počet stĺpcov ($found nájdený, "
 "$expected očakávaný)"
 
-#: src/gui/dialogs/achievements_dialog.cpp:137
-msgid "Completed"
+#: src/gui/dialogs/achievements_dialog.cpp:97
+msgid "$title ($count/$total)"
+msgstr ""
+
+#: src/gui/dialogs/achievements_dialog.cpp:138
+#, fuzzy
+#| msgid "Completed"
+msgid "Completed $count/$total"
 msgstr "Dokončené"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
@@ -7155,7 +7198,7 @@ msgstr "Server odpovedal chybou:"
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
 #: src/gui/dialogs/addon/manager.cpp:1018
 #: src/gui/dialogs/addon/manager.cpp:1045
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Odpoveď"
 
@@ -7485,31 +7528,31 @@ msgstr "%B %d %Y, %I:%M %p"
 msgid "%B %d %Y, %H:%M"
 msgstr "%B %d %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1154
+#: src/gui/dialogs/addon/manager.cpp:1153
 msgid "url^None"
 msgstr "Nič"
 
-#: src/gui/dialogs/attack_predictions.cpp:119
+#: src/gui/dialogs/attack_predictions.cpp:121
 msgid "No usable weapon"
 msgstr "Žiadna zbraň nie je použiteľná"
 
-#: src/gui/dialogs/attack_predictions.cpp:197
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender resistance vs"
 msgstr "Odolnosť obrancu vs."
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:201
 msgid "Defender vulnerability vs"
 msgstr "Zraniteľnosť obrancu vs."
 
-#: src/gui/dialogs/attack_predictions.cpp:203
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker resistance vs"
 msgstr "Odolnosť útočníka vs."
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:207
 msgid "Attacker vulnerability vs"
 msgstr "Zraniteľnosť útočníka vs."
 
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 #, fuzzy
 #| msgid "Add-ons"
 msgid "game^Get Add-ons"
@@ -7521,34 +7564,11 @@ msgstr "Doplnky"
 msgid "More campaigns..."
 msgstr "Výprava"
 
-#: src/gui/dialogs/campaign_selection.cpp:403
-msgid ""
-"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
-"of add-on content created by other players available via the Add-ons server, "
-"included but not limited to more single and multiplayer campaigns, "
-"multiplayer maps, additional media and various other content! Be sure to "
-"give it a try!"
-msgstr ""
-
-#: src/gui/dialogs/campaign_selection.cpp:413
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid "Missing Campaigns"
 msgstr "Chýbajúce kampane"
 
-#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:424
-msgid ""
-"Wesnoth normally includes more than 15 mainline campaigns, even before "
-"installing any from the add-ons server. If you’ve installed the game via a "
-"package manager, there’s probably a separate package to install the complete "
-"game data."
-msgstr ""
-"Wesnoth bežne obsahuje viac ako 15 hlavných kampaní, a to ešte pred "
-"inštaláciou niektorej zo servera doplnkov. Ak ste hru nainštalovali "
-"prostredníctvom správcu balíkov, pravdepodobne existuje samostatný balík na "
-"inštaláciu úplných údajov o hre."
-
-#: src/gui/dialogs/campaign_selection.cpp:455
+#: src/gui/dialogs/campaign_selection.cpp:442
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "Žiadne"
@@ -7586,14 +7606,14 @@ msgstr ""
 "Prosím zvoľ nejakú kompatibilnú."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:309
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Choose File"
 msgstr "Vyber hráča"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:316
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7672,53 +7692,53 @@ msgstr "Prežitie"
 msgid "Terraforming"
 msgstr "Terraformovanie"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:392
+#: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
 msgstr "Žiadne chyby validácie"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
 msgstr "Úspech"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:424
+#: src/gui/dialogs/editor/edit_pbl.cpp:434
 msgid "Choose an icon"
 msgstr "Vyber si ikonu"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 #, fuzzy
 #| msgid "Right"
 msgid "fighter"
 msgstr "Doprava"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:192
 #, fuzzy
 #| msgid "Search"
 msgid "archer"
 msgstr "Hľadať"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:195
+#: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:196
+#: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1034
+#: src/gui/dialogs/editor/edit_unit.cpp:1032
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Uložená hra už existuje. Chceš ju prepísať?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1053
+#: src/gui/dialogs/editor/edit_unit.cpp:1051
 msgid "Unit type saved."
 msgstr ""
 
@@ -7762,26 +7782,26 @@ msgstr ""
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/gui/dialogs/file_dialog.cpp:310
+#: src/gui/dialogs/file_dialog.cpp:306
 #, fuzzy
 #| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "Otváranie odkazov nie je podporované, kontaktujte svojho dodávateľa balíkov"
 
-#: src/gui/dialogs/file_dialog.cpp:367
+#: src/gui/dialogs/file_dialog.cpp:363
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Súbor už existuje. Chceš ho prepísať?"
 
-#: src/gui/dialogs/file_dialog.cpp:391
+#: src/gui/dialogs/file_dialog.cpp:387
 msgid "The file or folder $path cannot be created."
 msgstr "Súbor alebo priečinok $path nemožno vytvoriť."
 
-#: src/gui/dialogs/file_dialog.cpp:397
+#: src/gui/dialogs/file_dialog.cpp:393
 msgid "The file or folder $path does not exist."
 msgstr "Súbor alebo priečinok $path neexistuje."
 
-#: src/gui/dialogs/file_dialog.cpp:774
+#: src/gui/dialogs/file_dialog.cpp:769
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7789,19 +7809,19 @@ msgstr ""
 "Nepodarilo sa vytvoriť nový priečinok na adrese $cesta|. Uistite sa, že máte "
 "príslušné oprávnenia na zápis do tohto umiestnenia."
 
-#: src/gui/dialogs/file_dialog.cpp:792
+#: src/gui/dialogs/file_dialog.cpp:787
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Nasledujúci priečinok a jeho obsah sa natrvalo odstráni:"
 
-#: src/gui/dialogs/file_dialog.cpp:793
+#: src/gui/dialogs/file_dialog.cpp:788
 msgid "The following file will be permanently deleted:"
 msgstr "Nasledujúci súbor bude natrvalo vymazaný:"
 
-#: src/gui/dialogs/file_dialog.cpp:794
+#: src/gui/dialogs/file_dialog.cpp:789
 msgid "Do you wish to continue?"
 msgstr "Chceš pokračovať?"
 
-#: src/gui/dialogs/file_dialog.cpp:806
+#: src/gui/dialogs/file_dialog.cpp:801
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7865,51 +7885,51 @@ msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:233
 msgid "$active active, $reserve reserve"
 msgstr "$active aktívny, $reserve rezerva"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:288
 msgid "The selected file is corrupt: "
 msgstr "Vybraný súbor je poškodený: "
 
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:328
 msgid "(Invalid)"
 msgstr "(Neplatné)"
 
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Campaign: $campaign_name"
 msgstr "Výprava: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:371
+#: src/gui/dialogs/game_load.cpp:370
 msgid "Tutorial"
 msgstr "Výcvik"
 
-#: src/gui/dialogs/game_load.cpp:374
+#: src/gui/dialogs/game_load.cpp:373
 msgid "Test scenario"
 msgstr "Testovacia scéna"
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Replay"
 msgstr "Prehrať záznam"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Turn"
 msgstr "Kolo"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:387
 msgid "Scenario start"
 msgstr "Začiatok scény"
 
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Difficulty: "
 msgstr "Náročnosť: "
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Version: "
 msgstr "Verzia: "
 
-#: src/gui/dialogs/game_load.cpp:435
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Modifications: "
 msgstr "Modifikácie: "
 
@@ -7929,18 +7949,18 @@ msgstr "Rezervované"
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "no"
 msgstr "nie"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "yes"
 msgstr "áno"
 
-#: src/gui/dialogs/game_version_dialog.cpp:270
-#: src/gui/dialogs/game_version_dialog.cpp:284 src/gui/widgets/label.cpp:123
+#: src/gui/dialogs/game_version_dialog.cpp:273
+#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Otváranie odkazov nie je podporované, kontaktujte svojho dodávateľa balíkov"
@@ -8064,7 +8084,7 @@ msgid ""
 "version was found on this device"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:137
+#: src/gui/dialogs/multiplayer/faction_select.cpp:134
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:500
 msgid "Random"
 msgstr "Náhodné"
@@ -8158,7 +8178,7 @@ msgstr "Diváci nie sú povolení"
 msgid "lobby"
 msgstr "čakáreň"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8168,7 +8188,7 @@ msgstr ""
 "Táto hra nepovoľuje pozorovateľov. Pozorovať aj tak pomocou moderátorských "
 "práv?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:839
+#: src/gui/dialogs/multiplayer/lobby.cpp:846
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8176,7 +8196,7 @@ msgstr ""
 "Niečo nie je v poriadku s databázou kontroly verzie doplnku, ktorá podporuje "
 "lobby pre viacerých hráčov. Nahláste to na adrese https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Táto hra je chránená heslom. Pripojiť sa aj tak pomocou moderátorských práv?"
@@ -8189,11 +8209,11 @@ msgstr ""
 "Tento wesnoth build neobsahuje podporu pre oznámenia na ploche, kontaktujte "
 "správcu balíkov"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:78
 msgid "Side $side"
 msgstr "Strana $side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
 msgid "Add Server"
 msgstr "Pridaj server"
 
@@ -8221,65 +8241,65 @@ msgstr "Vlastné scenáre"
 msgid "Random Maps"
 msgstr "Náhodné mapy"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:191
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
 msgid "No games found."
 msgstr "Neboli nájdené žiadne hry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:258
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
 msgid "No eras found."
 msgstr "Neboli nájdené žiadne éry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found"
 msgstr "Neboli nájdené žiadne éry"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
 msgid "No eras available for this game."
 msgstr "Pre túto hru nie sú k dispozícii žiadne éry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "number of players^$min to $max"
 msgstr "$min až $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
 msgid "The selected game has no sides!"
 msgstr "Vybraná hra nemá strany!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "The selected game cannot be created."
 msgstr "Vybranú hru nie je možné vytvoriť."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Choose Starting Scenario"
 msgstr "Výber východiskového scenára"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Select at which point to begin this campaign."
 msgstr "Vyber, v ktorom bode sa má táto kampaň začať."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Computer Player"
 msgstr "Počítač"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Empty slot"
 msgstr "Prázdne miesto"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Reserved for $playername"
 msgstr "Rezervované pre $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Vacant slot"
 msgstr "Voľné miesto"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:231
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:232
 msgid "empty"
 msgstr "prázdne"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:107
 msgid "this game"
 msgstr "táto hra"
@@ -8306,33 +8326,33 @@ msgstr "Čakáme, kým si hráči vyberú frakcie..."
 msgid "The End"
 msgstr "Koniec"
 
-#: src/gui/dialogs/preferences_dialog.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:199
 msgid "friend"
 msgstr "priateľ"
 
-#: src/gui/dialogs/preferences_dialog.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:204
 msgid "ignored"
 msgstr "ignorovaný"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:257
+#: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "No username specified"
 msgstr "Nezadané používateľské meno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:272
 msgid "Invalid username"
 msgstr "Neplatné používateľské meno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:319
 msgid "Not on friends or ignore lists"
 msgstr "Nie je v zoznamoch priateľov alebo ignorovaných"
 
-#: src/gui/dialogs/preferences_dialog.cpp:953
-#: src/gui/dialogs/preferences_dialog.cpp:1017
+#: src/gui/dialogs/preferences_dialog.cpp:954
+#: src/gui/dialogs/preferences_dialog.cpp:1018
 msgid "No hotkey selected"
 msgstr "Nie je vybratá žiadna klávesová skratka"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8340,15 +8360,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” je používaná “<b>$old_hotkey_action|</b>”.\n"
 "Chceš ju predefinovať na “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:988
 msgid "Reassign Hotkey"
 msgstr "Predefinovať klávesovú skratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všetky klávesové skratky boli nastavené na štandardné hodnoty."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "Hotkeys Reset"
 msgstr "Zrušiť klávesové skratky"
 
@@ -8366,20 +8386,20 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Všetky scény"
 
-#: src/gui/dialogs/statistics_dialog.cpp:176
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:174
+#: src/gui/dialogs/statistics_dialog.cpp:334
 msgid "This Turn"
 msgstr "Toto kolo"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
 msgstr "Skutočná miera zásahov podľa šance na zásah:"
 
-#: src/gui/dialogs/statistics_dialog.cpp:214
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
 msgstr "(zatiaľ sa neuskutočnili žiadne útoky)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:321
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8392,111 +8412,111 @@ msgstr ""
 "Prvé číslo v zátvorke je očakávaný počet spôsobených/odvedených zásahov.\n"
 "Súčet (alebo rozdiel) dvoch čísel v zátvorkách je skutočný počet zásahov."
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:365
 msgid "stats^Recruits"
 msgstr "Verbovania"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:366
 msgid "Recalls"
 msgstr "Privolania"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Advancements"
 msgstr "Povýšenia"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Losses"
 msgstr "Straty"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Kills"
 msgstr "Zabitia"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:391
+#: src/gui/dialogs/statistics_dialog.cpp:398
 msgid "Inflicted"
 msgstr "Spôsobené"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:404
+#: src/gui/dialogs/statistics_dialog.cpp:411
 msgid "Taken"
 msgstr "Zabraté"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:452
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Záber obrazovky"
 
-#: src/gui/dialogs/title_screen.cpp:398
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "Verzia $version"
 
-#: src/gui/dialogs/title_screen.cpp:491 src/hotkey/hotkey_command.cpp:310
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Zvoľ testovaciu scénu"
 
-#: src/gui/dialogs/units_dialog.cpp:219 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Premenuj jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:252
+#: src/gui/dialogs/units_dialog.cpp:264
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Táto jednotka je lojálna a nevyžaduje údržbu."
 
-#: src/gui/dialogs/units_dialog.cpp:253 src/gui/dialogs/units_dialog.cpp:258
-#: src/gui/dialogs/units_dialog.cpp:263
+#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:275
 msgid "Do you really want to dismiss him?"
 msgstr "Naozaj ho chceš prepustiť?"
 
-#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
-#: src/gui/dialogs/units_dialog.cpp:264
+#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Do you really want to dismiss her?"
 msgstr "Naozaj ju chceš prepustiť?"
 
-#: src/gui/dialogs/units_dialog.cpp:257
+#: src/gui/dialogs/units_dialog.cpp:269
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Táto jednotka je skúsená a na pokročilej úrovni."
 
-#: src/gui/dialogs/units_dialog.cpp:262
+#: src/gui/dialogs/units_dialog.cpp:274
 msgid "This unit is close to advancing a level."
 msgstr "Táto jednotka je blízko k postupu na vyššiu úroveň."
 
-#: src/gui/dialogs/units_dialog.cpp:268
+#: src/gui/dialogs/units_dialog.cpp:280
 msgid "Dismiss Unit"
 msgstr "Prepustiť jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:389
+#: src/gui/dialogs/units_dialog.cpp:405
 msgid "unit_variation^Default Variation"
 msgstr "Predvolená variácia"
 
-#: src/gui/dialogs/units_dialog.cpp:425
+#: src/gui/dialogs/units_dialog.cpp:441
 msgid "Create Unit"
 msgstr "Vytvor jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:482
+#: src/gui/dialogs/units_dialog.cpp:512
 msgid "Recruit Unit"
 msgstr "Verbuj jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:483 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Verbuj"
 
-#: src/gui/dialogs/units_dialog.cpp:495 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Zoznam jednotiek"
 
-#: src/gui/dialogs/units_dialog.cpp:611
+#: src/gui/dialogs/units_dialog.cpp:667
 msgid "Recall Unit"
 msgstr "Privolaj jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:612 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Privolaj"
 
-#: src/gui/dialogs/units_dialog.cpp:720
+#: src/gui/dialogs/units_dialog.cpp:787
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8504,11 +8524,11 @@ msgstr ""
 "Túto jednotku nemožno odvolať, pretože v tomto bode tvojho plánu nemáš "
 "dostatok zlata."
 
-#: src/gui/dialogs/units_dialog.cpp:722
+#: src/gui/dialogs/units_dialog.cpp:789
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Túto jednotku nemožno stiahnuť, pretože nemáš dostatok zlata."
 
-#: src/gui/gui.cpp:132
+#: src/gui/gui.cpp:130
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
@@ -8553,17 +8573,17 @@ msgstr ""
 "Začiatok súkromných správ s hráčom <i>\"$name\"</i>. Ak nechceš ďalej "
 "dostávať správy od tohto hráča, napíš <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:153
+#: src/gui/widgets/helper.cpp:148
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
+#: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "Otvor prepojenie?"
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
 msgstr "Skopírované prepojenie!"
 
@@ -8617,13 +8637,9 @@ msgstr[2] "$prebytky"
 msgid "multimenu^None Selected"
 msgstr "Žiadne vybrané"
 
-#: src/gui/widgets/pane.cpp:359
+#: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
 msgstr "Vyžaduje sa aspoň jeden súbežný predmet."
-
-#: src/gui/widgets/rich_label.cpp:250
-msgid "corrupted original file"
-msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
@@ -8643,7 +8659,7 @@ msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 msgid "No stack layers defined."
 msgstr "Nie sú definované žiadne vrstvy zásobníka."
 
-#: src/gui/widgets/styled_widget.cpp:606
+#: src/gui/widgets/styled_widget.cpp:592
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Našiel sa objekt s pomôckou bez tipu pod myšou."
 
@@ -8675,57 +8691,72 @@ msgstr "Odolnosti: "
 msgid "(Att / Def)"
 msgstr "(Útok / Obrana)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:286
-#: src/gui/widgets/unit_preview_pane.cpp:317
-#: src/gui/widgets/unit_preview_pane.cpp:426
-#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:224
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:227
+msgid "This unit can attack multiple times per turn."
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:269
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:312
+#: src/gui/widgets/unit_preview_pane.cpp:343
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:324
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:465
-#: src/gui/widgets/unit_preview_pane.cpp:482
+#: src/gui/widgets/unit_preview_pane.cpp:350
+#: src/gui/widgets/unit_preview_pane.cpp:363
+#: src/gui/widgets/unit_preview_pane.cpp:491
+#: src/gui/widgets/unit_preview_pane.cpp:508
 msgid "HP: "
 msgstr "Životy: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:342
-#: src/gui/widgets/unit_preview_pane.cpp:468
-#: src/gui/widgets/unit_preview_pane.cpp:470
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:368
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:496
+#: src/gui/widgets/unit_preview_pane.cpp:513
 msgid "XP: "
 msgstr "Skúsenosti: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:344
-#: src/gui/widgets/unit_preview_pane.cpp:489
+#: src/gui/widgets/unit_preview_pane.cpp:370
+#: src/gui/widgets/unit_preview_pane.cpp:515
 msgid "Experience Modifier: "
 msgstr "Modifikátor skúseností: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:347
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:373
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "MP: "
 msgstr "Pohyb: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:374
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:539
 msgid "Abilities"
 msgstr "Schopnosti"
 
-#: src/gui/widgets/window.cpp:286
+#: src/gui/widgets/window.cpp:288
 #, fuzzy
 #| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "Prepojená '$id' skupina má viac definícií."
 
-#: src/gui/widgets/window.cpp:879
+#: src/gui/widgets/window.cpp:887
 #, fuzzy
 #| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Zrušenie kliknutia vyžaduje tlačidlo 'click_dismiss' alebo 'ok'."
 
-#: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:738
+#: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
+#: src/tests/gui/test_gui2.cpp:739
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9122,58 +9153,64 @@ msgid "Save Map As"
 msgstr "Ulož mapu ako"
 
 #: src/hotkey/hotkey_command.cpp:187
+#, fuzzy
+#| msgid "Choose Test Scenario"
+msgid "Convert To Scenario"
+msgstr "Zvoľ testovaciu scénu"
+
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
 msgstr "Uložiť scénu ako"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Save All Maps"
 msgstr "Uložiť všetky mapy"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Revert All Changes"
 msgstr "Odvolaj všetky zmeny"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Map Information"
 msgstr "Informácie o mape"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Clear Selected Item Set"
 msgstr "Vymazať zoznam vybraných predmetov"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Vymeniť objekt palety v popredí a v pozadí"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Change Palette Group"
 msgstr "Zmeniť skupinu palety"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Scroll Palette Left"
 msgstr "Posunúť paletu doľava"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Scroll Palette Right"
 msgstr "Posunúť paletu doprava"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Remove Location"
 msgstr "Odstrániť lokácie"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Add New Side"
 msgstr "Pridať novú stranu"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Next Tool"
 msgstr "Ďalší nástroj"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Paint Tool"
 msgstr "Kresliaci nástroj"
 
-#: src/hotkey/hotkey_command.cpp:203 src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:204 src/hotkey/hotkey_command.cpp:205
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -9182,11 +9219,11 @@ msgstr ""
 "Shift pre kreslenie len na základnú vrstvu. Ctrl+klik prevezme terén pod "
 "kurzorom."
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Fill Tool"
 msgstr "Vypĺňací nástroj"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -9194,11 +9231,11 @@ msgstr ""
 "Ľavé tlačidlo myši označí alebo odznačí (s Ctrl), pravé zobrazí kontextové "
 "menu. Držte Shift pre označovanie polí s rovnakým terénom."
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Selection Tool"
 msgstr "Nástroj výberu"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -9208,19 +9245,19 @@ msgstr ""
 "posúvajú štartovaciu pozíciu, Alt+číslo nastaví štartovaciu pozíciu pod "
 "kurzorom, Delete vymaže."
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Starting Positions Tool"
 msgstr "Nástroj začiatočných pozícií"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Label Tool"
 msgstr "Nástroj nápisov"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr "Ľavé tlačidlo myši nastaví alebo posunie nápis, pravé vymaže."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -9228,21 +9265,21 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví novú jednotku alebo potiahne jednotku, pravé "
 "zobrazí kontextové menu. Musí byť určená strana."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Unit Tool"
 msgstr "Nástroj jednotiek"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Item Tool"
 msgstr "Nástroj predmetov"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 #, fuzzy
 #| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "Ľavé tlačidlo myši nastaví novú položku."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -9250,356 +9287,356 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví vlastníctvo dediny na aktuálnu stranu, pravé "
 "vymaže. Musí byť určená strana."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Village Tool"
 msgstr "Nástroj dedín"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Can Recruit"
 msgstr "Môže verbovať"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Prepnúť vlastnosť verbovania na jednotke."
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Can be Renamed"
 msgstr "Môže byť premenované"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle the unit being renameable."
 msgstr "Prepnúť premenovateľnosť jednotky."
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Change Unit ID"
 msgstr "Zmeniť ID jednotky"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Loyal"
 msgstr "Verný"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Map Information"
 msgid "Show Tool Information"
 msgstr "Informácie o mape"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
 msgstr "Prepnúť kódovanie jednotiek na minimape"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Prepnúť kódovanie terénu na minimape"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Prepnúť kreslenie jednotiek na minimape"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Toggle Minimap Village Drawing"
 msgstr "Prepnúť kreslenie dedín na minimape"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Prepnúť kreslenie terénu na minimape"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Next Brush"
 msgstr "Ďalší štetec"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Default Brush"
 msgstr "Predvolený štetec"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Single Tile"
 msgstr "Jedno pole"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Radius One"
 msgstr "Polomer 1"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Radius Two"
 msgstr "Polomer 2"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Brush NW-SE"
 msgstr "Štetec SZ-JV"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Brush SW-NE"
 msgstr "Štetec JZ-SV"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Cut"
 msgstr "Vystrihni"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "Ľavé tlačidlo myši prilepí zo schránky, pravé zobrazí kontextové menu."
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportovať vybrané súradnice do systémovej schránky"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Select All"
 msgstr "Označ všetko"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Select Inverse"
 msgstr "Označ inverzne"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Select None"
 msgstr "Zruš označenie"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Rotate Clipboard Clockwise"
 msgstr "Otočiť schránku doprava"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Otočiť schránku doľava"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Flip Clipboard Horizontally"
 msgstr "Prevrátiť schránku horizontálne"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Flip Clipboard Vertically"
 msgstr "Prevrátiť schránku vertikálne"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Rotate Selection"
 msgstr "Otoč výber"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Flip Selection"
 msgstr "Otoč výber"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Fill Selection"
 msgstr "Vyplň označené"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Randomize Tiles in Selection"
 msgstr "Premiešaj polia vo výbere"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Apply a Mask"
 msgstr "Aplikuj masku"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Create Mask"
 msgstr "Vytvor masku"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Refresh Display"
 msgstr "Prekresli obrazovku"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Update Terrain Transitions"
 msgstr "Prekresli prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Toggle Terrain Transition Update"
 msgstr "Prepnúť prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Auto-update Terrain Transitions"
 msgstr "Automaticky prekresľuj prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automaticky prekresľovať prechody terénu: Nie"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automaticky prekresľovať prechody terénu: Čiastočne"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Refresh Image Cache"
 msgstr "Obnov pamäť obrázkov"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Draw Hex Coordinates"
 msgstr "Zobraz súradnice hexov"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Draw Terrain Codes"
 msgstr "Kresli kódy terénu"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Draw Number of Bitmaps"
 msgstr "Kreslenie počtu bitových máp"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Save Selection to Area"
 msgstr "Uložiť označenie do oblasti"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Rename Selected Area"
 msgstr "Premenovať označenú oblasť"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Remove Selected Area"
 msgstr "Vymazať označenú oblasť"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Add New Area"
 msgstr "Pridať ďalšiu oblasť"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
 msgstr "Doplnkový editor publikovania"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Change Add-on ID"
 msgstr "Zmeň ID doplnku"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 #| msgid "Select the add-on version"
 msgid "Select active Add-on"
 msgstr "Vyberte verziu doplnku"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 #, fuzzy
 #| msgid "Open saves folder"
 msgid "Open Add-on folder"
 msgstr "Otvorte priečinok uložených súborov"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
 msgstr "Upraviť stranu"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Remove Side"
 msgstr "Odstrániť stranu"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Delay Shroud Updates"
 msgstr "Pozastav odkrývanie mapy"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Update Shroud Now"
 msgstr "Vykresli odkrytú mapu"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Continue Interrupted Move"
 msgstr "Pokračuj v neprerušenom pohybe"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
 msgstr "Nájdi značku alebo jednotku"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Speak to Ally"
 msgstr "Povedz spojencom"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
 msgstr "Pomoc pri ukladaní"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
 msgstr "Tip: ukladanie je zbytočné"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Enter Command"
 msgstr "Zadaj príkaz"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Custom Command"
 msgstr "Užívateľský príkaz"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Run Formula"
 msgstr "Spustiť vzorec AI"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Clear Chat"
 msgstr "Čistý rozhovor"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
 msgstr "Zmeň jazyk"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Starting game"
 msgid "Start Game (MP)"
 msgstr "Spúšťa sa hra"
 
-#: src/hotkey/hotkey_command.cpp:301
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
 msgstr "Aktualizovať WML"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Next Tip of the Day"
 msgstr "Ďalší tip dňa"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:304
 msgid "Previous Tip of the Day"
 msgstr "Predchádzajúci tip dňa"
 
-#: src/hotkey/hotkey_command.cpp:304
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Start Campaign"
 msgstr "Spustiť výpravu"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:306
 msgid "Start Multiplayer Game"
 msgstr "Spustiť zápas"
 
-#: src/hotkey/hotkey_command.cpp:306
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Manage Add-ons"
 msgstr "Spravovať doplnky"
 
-#: src/hotkey/hotkey_command.cpp:307
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Manage Cores"
 msgstr "Spravovať jadrá"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:309
 msgid "Start Editor"
 msgstr "Spustiť editor"
 
-#: src/hotkey/hotkey_command.cpp:309
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Show Credits"
 msgstr "Zobraziť autorov hry"
 
-#: src/hotkey/hotkey_command.cpp:312
+#: src/hotkey/hotkey_command.cpp:313
 msgid "Show Helptip"
 msgstr "Zobraziť pomôckou"
 
-#: src/hotkey/hotkey_command.cpp:314
+#: src/hotkey/hotkey_command.cpp:315
 msgid "Show Lua Console"
 msgstr "Zobraz konzolu Lua"
 
-#: src/hotkey/hotkey_command.cpp:317
+#: src/hotkey/hotkey_command.cpp:318
 msgid "Unrecognized Command"
 msgstr "Nerozpoznaný príkaz"
 
-#: src/preferences/preferences.cpp:1263
+#: src/preferences/preferences.cpp:1301
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/preferences/preferences.cpp:1300
+#: src/preferences/preferences.cpp:1338
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9609,15 +9646,15 @@ msgstr ""
 "hráčov a je potrebná na hosťovanie hier v miestnej sieti. Zvyčajne sa "
 "nachádza v rovnakom priečinku ako spustiteľný súbor hry."
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1342
 msgid "Find Server Application"
 msgstr "Nájdi serverovú aplikáciu"
 
-#: src/preferences/preferences.cpp:1759
+#: src/preferences/preferences.cpp:1797
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1761
+#: src/preferences/preferences.cpp:1799
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9656,6 +9693,17 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
+
+#~ msgid "Battle For Wesnoth Help"
+#~ msgstr "Návod pre Bitku o Wesnoth"
+
+#~ msgid "Completed"
+#~ msgstr "Dokončené"
+
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Hide tip of the day"
+#~ msgstr "Zobraz nasledujúci tip dňa"
 
 #~ msgid "Race"
 #~ msgstr "Rasa"

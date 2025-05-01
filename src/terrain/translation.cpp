@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -82,8 +82,7 @@ namespace t_translation {
 	 * @param start_positions   Returns the start_positions, the caller should
 	 *                          set it on -1 and it's only changed it there is
 	 *                          a starting position found.
-	 * @param filler            If the terrain has only 1 layer then the filler
-	 *                          will be used as the second layer.
+	 * @param filler            If no overlay is specified this value will be used.
 	 *
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
@@ -451,7 +450,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 		}
 
 		// Match inverse symbol
-		if(*itor == NOT) {
+		if(itor->base == NOT.base) {
 			result = !result;
 			continue;
 		}
@@ -529,7 +528,7 @@ bool terrain_matches(const terrain_code& src, const ter_match& dest)
 		}
 
 		// Match inverse symbol
-		if(*terrain_itor == NOT) {
+		if(terrain_itor->base == NOT.base) {
 			result = !result;
 			continue;
 		}
@@ -760,13 +759,6 @@ static terrain_code string_to_number_(std::string_view str, std::vector<std::str
 		result = terrain_code { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
 	} else {
 		result = terrain_code { string_to_layer_(str), filler };
-
-		// Ugly hack
-		if(filler == WILDCARD && (result.base == NOT.base ||
-				result.base == STAR.base)) {
-
-			result.overlay = NO_LAYER;
-		}
 	}
 
 	return result;

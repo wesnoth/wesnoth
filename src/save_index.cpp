@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
 #include "utils/general.hpp"
@@ -42,11 +43,11 @@ void extract_summary_from_config(config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
-	std::time_t modified = filesystem::file_modified_time(dir_ + "/" + name);
+	auto modified = filesystem::file_modified_time(dir_ + "/" + name);
 	rebuild(name, modified);
 }
 
-void save_index_class::rebuild(const std::string& name, const std::time_t& modified)
+void save_index_class::rebuild(const std::string& name, const std::chrono::system_clock::time_point& modified)
 {
 	log_scope("load_summary_from_file");
 
@@ -62,7 +63,7 @@ void save_index_class::rebuild(const std::string& name, const std::time_t& modif
 		summary["corrupt"] = true;
 	}
 
-	summary["mod_time"] = std::to_string(static_cast<int>(modified));
+	summary["mod_time"] = chrono::serialize_timestamp(modified);
 	write_save_index();
 }
 
@@ -73,7 +74,7 @@ void save_index_class::remove(const std::string& name)
 	write_save_index();
 }
 
-void save_index_class::set_modified(const std::string& name, const std::time_t& modified)
+void save_index_class::set_modified(const std::string& name, const std::chrono::system_clock::time_point& modified)
 {
 	modified_[name] = modified;
 }
@@ -81,10 +82,10 @@ void save_index_class::set_modified(const std::string& name, const std::time_t& 
 config& save_index_class::get(const std::string& name)
 {
 	config& result = data(name);
-	std::time_t m = modified_[name];
+	const auto& m = modified_[name];
 
 	config::attribute_value& mod_time = result["mod_time"];
-	if(mod_time.empty() || mod_time.to_time_t() != m) {
+	if(mod_time.empty() || chrono::parse_timestamp(mod_time) != m) {
 		rebuild(name, m);
 	}
 
@@ -131,9 +132,9 @@ void save_index_class::write_save_index()
 
 		if(prefs::get().save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
-			write_gz(*stream, data());
+			io::write_gz(*stream, data());
 		} else {
-			write(*stream, data());
+			io::write(*stream, data());
 		}
 	} catch(const filesystem::io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'";
@@ -178,10 +179,10 @@ config& save_index_class::data()
 		try {
 			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
 			try {
-				read_gz(data_, *stream);
+				data_ = io::read_gz(*stream);
 			} catch(const boost::iostreams::gzip_error&) {
 				stream->seekg(0);
-				read(data_, *stream);
+				data_ = io::read(*stream);
 			}
 		} catch(const filesystem::io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'";
@@ -248,24 +249,20 @@ const config& save_info::summary() const
 
 std::string save_info::format_time_local() const
 {
-	if(std::tm* tm_l = std::localtime(&modified())) {
-		const std::string format = prefs::get().use_twelve_hour_clock_format()
-			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
-			? _("%a %b %d %Y, %I:%M %p")
-			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
-			: _("%a %b %d %Y, %H:%M");
+	const std::string format = prefs::get().use_twelve_hour_clock_format()
+		// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'.
+		// Format for your locale.
+		? _("%a %b %d %Y, %I:%M %p")
+		// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'.
+		// Format for your locale.
+		: _("%a %b %d %Y, %H:%M");
 
-		return translation::strftime(format, tm_l);
-	}
-
-	LOG_SAVE << "localtime() returned null for time " << this->modified() << ", save " << name();
-	return "";
+	return chrono::format_local_timestamp(modified(), format);
 }
 
 std::string save_info::format_time_summary() const
 {
-	std::time_t t = modified();
-	return utils::format_time_summary(t);
+	return utils::format_time_summary(modified());
 }
 
 bool save_info_less_time::operator()(const save_info& a, const save_info& b) const
@@ -313,18 +310,17 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 	static const std::vector<std::string> suffixes{"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(dir, name, suffixes);
 
-	cfg.clear();
 	try {
 		/*
 		 * Test the modified name, since it might use a .gz
 		 * file even when not requested.
 		 */
 		if(filesystem::is_gzip_file(name)) {
-			read_gz(cfg, *file_stream);
+			cfg = io::read_gz(*file_stream);
 		} else if(filesystem::is_bzip2_file(name)) {
-			read_bz2(cfg, *file_stream);
+			cfg = io::read_bz2(*file_stream);
 		} else {
-			read(cfg, *file_stream);
+			cfg = io::read(*file_stream);
 		}
 	} catch(const std::ios_base::failure& e) {
 		LOG_SAVE << e.what();
@@ -392,7 +388,7 @@ create_save_info::create_save_info(const std::shared_ptr<save_index_class>& mana
 
 save_info create_save_info::operator()(const std::string& filename) const
 {
-	std::time_t modified = filesystem::file_modified_time(manager_->dir() + "/" + filename);
+	auto modified = filesystem::file_modified_time(manager_->dir() + "/" + filename);
 	manager_->set_modified(filename, modified);
 	return save_info(filename, manager_, modified);
 }
