@@ -31,8 +31,8 @@
 
 #include <SDL2/SDL_image.h>
 
-
 #include <boost/algorithm/string.hpp>
+#include <boost/unordered/unordered_flat_map.hpp>
 
 #include <array>
 #include <set>
@@ -48,31 +48,28 @@ static lg::log_domain log_config("config");
 
 using game_config::tile_size;
 
-template<>
-struct std::hash<image::locator>
-{
-	std::size_t operator()(const image::locator& val) const
-	{
-		std::size_t hash = std::hash<unsigned>{}(val.type_);
-
-		if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.filename_);
-		}
-
-		if(val.type_ == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.loc_.x);
-			boost::hash_combine(hash, val.loc_.y);
-			boost::hash_combine(hash, val.center_x_);
-			boost::hash_combine(hash, val.center_y_);
-			boost::hash_combine(hash, val.modifications_);
-		}
-
-		return hash;
-	}
-};
-
 namespace image
 {
+/** Hash function overload for boost::hash. Must be in the image namespace to satisfy ADL. */
+static std::size_t hash_value(const image::locator& val)
+{
+	std::size_t hash = std::hash<unsigned>{}(val.type_);
+
+	if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
+		boost::hash_combine(hash, val.filename_);
+	}
+
+	if(val.type_ == image::locator::SUB_FILE) {
+		boost::hash_combine(hash, val.loc_.x);
+		boost::hash_combine(hash, val.loc_.y);
+		boost::hash_combine(hash, val.center_x_);
+		boost::hash_combine(hash, val.center_y_);
+		boost::hash_combine(hash, val.modifications_);
+	}
+
+	return hash;
+}
+
 template<typename T>
 class cache_type
 {
@@ -112,7 +109,7 @@ public:
 	}
 
 private:
-	std::unordered_map<locator, T> content_;
+	boost::unordered_flat_map<locator, T> content_;
 };
 
 namespace
@@ -122,8 +119,8 @@ using texture_cache = cache_type<texture>;
 using bool_cache = cache_type<bool>;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-using lit_surface_variants = std::unordered_map<std::size_t, surface>;
-using lit_texture_variants = std::unordered_map<std::size_t, texture>;
+using lit_surface_variants = boost::unordered_flat_map<std::size_t, surface>;
+using lit_texture_variants = boost::unordered_flat_map<std::size_t, texture>;
 
 /** Lit variants for each locator. */
 using lit_surface_cache = cache_type<lit_surface_variants>;
