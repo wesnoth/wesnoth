@@ -180,6 +180,19 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK( !get_binary_file_location("music", "this_track_does_not_exist.aiff").has_value() );
 	BOOST_CHECK( !get_binary_file_location("sounds", "rude_noises.aiff").has_value() );
 	BOOST_CHECK( !get_independent_binary_file_path("images", "dopefish.txt").has_value() );
+
+	// to_asset_path checks
+	std::string path = gamedata + "/data/core/images/wesnoth-icon.png";
+	BOOST_CHECK( to_asset_path(path, "", "images") );
+	BOOST_CHECK_EQUAL( path, "wesnoth-icon.png" );
+	path = gamedata + "/images/icons/action/modern/language_25-active.png";
+	BOOST_CHECK( to_asset_path(path, "", "images") );
+	BOOST_CHECK_EQUAL( path, "icons/action/modern/language_25-active.png" );
+	path = gamedata + "/data/core/sounds/ambient/campfire.ogg";
+	BOOST_CHECK( to_asset_path(path, "", "sounds") );
+	BOOST_CHECK_EQUAL( path, "ambient/campfire.ogg" );
+	path = gamedata + "/images/this/path/doesn't/exist/campfire.ogg";
+	BOOST_CHECK( !to_asset_path(path, "", "images") );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
