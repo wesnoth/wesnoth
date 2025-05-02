@@ -591,8 +591,10 @@ surface get_surface(
 		switch(i_locator.get_type()) {
 		case locator::FILE:
 			res = factory<surface>::load(i_locator);
+			break;
 		case locator::SUB_FILE:
 			res = load_image_sub_file(i_locator);
+			break;
 		default:
 			throw game::error("Invalid image::locator type");
 		}
