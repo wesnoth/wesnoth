@@ -51,7 +51,7 @@ using game_config::tile_size;
 namespace image
 {
 /** Hash function overload for boost::hash. Must be in the image namespace to satisfy ADL. */
-static std::size_t hash_value(const image::locator& val)
+std::size_t hash_value(const image::locator& val)
 {
 	std::size_t hash = std::hash<unsigned>{}(val.type_);
 
