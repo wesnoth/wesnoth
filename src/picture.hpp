@@ -103,7 +103,7 @@ private:
 	int center_y_ = 0;
 
 public:
-	friend struct std::hash<locator>;
+	friend std::size_t hash_value(const locator&);
 };
 
 // write a readable representation of a locator, mostly for debugging
