@@ -488,19 +488,18 @@ light_adjust::light_adjust(int op, int rr, int gg, int bb)
 	b = std::clamp(bb / 2, min, max);
 }
 
-namespace
-{
-std::size_t hash_light_range(const utils::span<const light_adjust>& range)
+/** Hash function overload for boost::hash. Must be in the image namespace to satisfy ADL. */
+static std::size_t hash_value(const light_adjust& adj)
 {
 	std::size_t hash{0};
-	for(const auto& adjustment : range) {
-		hash += adjustment.l + adjustment.r + adjustment.g + adjustment.b;
-	}
+
+	boost::hash_combine(hash, adj.l);
+	boost::hash_combine(hash, adj.r);
+	boost::hash_combine(hash, adj.g);
+	boost::hash_combine(hash, adj.b);
 
 	return hash;
 }
-
-} // namespace
 
 static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 {
@@ -515,7 +514,7 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 
 	const auto get_lightmap = [&ls]
 	{
-		const auto hash = hash_light_range(ls);
+		const auto hash = boost::hash_range(ls.begin(), ls.end());
 		const auto iter = surface_lightmaps_.find(hash);
 
 		if(iter != surface_lightmaps_.end()) {
@@ -739,7 +738,7 @@ surface get_lighted_image(const image::locator& i_locator, utils::span<const lig
 	lit_surface_variants& lvar = lit_surfaces_.access_in_cache(i_locator);
 
 	// Check the matching list_string variants for this locator
-	const auto hash = hash_light_range(ls);
+	const auto hash = boost::hash_range(ls.begin(), ls.end());
 	const auto iter = lvar.find(hash);
 
 	if(iter != lvar.end()) {
@@ -765,7 +764,7 @@ texture get_lighted_texture(const image::locator& i_locator, utils::span<const l
 	lit_texture_variants& lvar = lit_textures_.access_in_cache(i_locator);
 
 	// Check the matching list_string variants for this locator
-	const auto hash = hash_light_range(ls);
+	const auto hash = boost::hash_range(ls.begin(), ls.end());
 	const auto iter = lvar.find(hash);
 
 	if(iter != lvar.end()) {
