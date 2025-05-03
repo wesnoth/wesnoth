@@ -876,20 +876,10 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	const bool linear_scaling = quality == scale_quality::linear;
 	texture res;
 
-	// If we have modifications, use the surface pipeline to handle loading.
-	// If we don't, this is either a direct load-from-disk or an URI.
-	// Note that get_type() will not be SUB_FILE unless we also have modifications.
-	if(type != UNSCALED || i_locator.get_type() == locator::SUB_FILE) {
-		res = texture{get_surface(i_locator, type, skip_cache), linear_scaling};
-	} else {
+	if(type == UNSCALED && i_locator.get_type() == locator::FILE) {
 		res = factory<texture>::load(i_locator);
-	}
-
-	// If all ops failed, try and get a placeholder, if appropriate
-	// TODO: consider moving this render-side. It seems perfectly valid to just render the
-	// placeholder for null textures, but that might make the code more complicated.
-	if(!res && game_config::debug && i_locator.get_filename() != game_config::images::missing) {
-		res = get_texture(game_config::images::missing, UNSCALED);
+	} else {
+		res = texture(get_surface(i_locator, type, skip_cache), linear_scaling);
 	}
 
 	// Cache the texture.
