@@ -1442,22 +1442,26 @@ bool to_asset_path(std::string& path, const std::string& addon_id, const std::st
 
 	if(is_prefix(path, core_asset_dir)) {
 		path = bfs::relative(path, core_asset_dir).string();
-		found = true;
+		found = file_exists(core_asset_dir / path);
 	} else if(is_prefix(path, core_asset_dir_2)) {
 		path = bfs::relative(path, core_asset_dir_2).string();
-		found = true;
-	} else if(!addon_id.empty()) {
+		found = file_exists(core_asset_dir_2 / path);
+	}
+
+	if(!addon_id.empty() && !found) {
 		bfs::path addon_asset_dir = get_current_editor_dir(addon_id);
 		addon_asset_dir /= asset_type;
 		// Case 3 example: addondir/images/misc/image.png -> misc/images
 		// addondir is absolute path to the addon's directory
 		if(is_prefix(path, addon_asset_dir)) {
 			path = bfs::relative(path, addon_asset_dir).string();
-			found = true;
-		} else {
+			found = file_exists(addon_asset_dir / path);
+		}
+
+		if(!found) {
 			// Not found in either core or addons dirs,
 			// return a possible path where the asset could be copied.
-			path = bfs::path(path).filename().string();
+			path = (addon_asset_dir / bfs::path(path).filename()).string();
 		}
 	}
 
