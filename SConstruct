@@ -397,6 +397,9 @@ if env["prereqs"]:
         conf.CheckBoostLocaleBackends(["icu", "winapi"]) \
             or Warning("Only icu and winapi backends of Boost Locale are supported. Bugs/crashes are very likely with other backends")
 
+    # Allowed to fail. We only need to link against process when using the v2 API
+    conf.CheckBoost("process", require_version = boost_version)
+
     if env['harden']:
         env["have_fortify"] = conf.CheckFortifySource()
 

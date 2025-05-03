@@ -54,7 +54,7 @@
             }
          ],
          "build-commands":[
-            "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph,charconv",
+            "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,process,program_options,regex,random,thread,coroutine,context,graph,charconv",
             "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
          ]
       },
