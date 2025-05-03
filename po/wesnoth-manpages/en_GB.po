@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2025-02-18 17:04+1100\n"
+"PO-Revision-Date: 2025-04-28 17:27+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -215,10 +215,8 @@ msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
-msgstr "overrides the loaded core with the one whose id is specified."
+msgstr "Overrides the loaded core with the one whose ID is specified."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
@@ -232,6 +230,8 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"Overrides the data directory with the one specified. The data directory is "
+"the one that contains sub-directories 'data', 'fonts', 'images' and others."
 
 #. type: TP
 #: doc/man/wesnoth.6:78
@@ -398,13 +398,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -413,11 +406,12 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"sets the severity level of the log domains.  B<all> can be used to match any "
-"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
-"\\ B<none>.  By default the B<warning> level is used for most domains, but "
-"B<deprecation> is set to B<none> by default unless combined with the B<-d> "
-"option."
+"sets the severity level of the log domains. The wildcard B<*> may be used to "
+"match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
+"domains). Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ "
+"B<none>. By default, the B<warning> level is used for most domains, but "
+"B<deprecation> defaults to B<none> unless combined with the B<-d> option. "
+"This option can be specified multiple times."
 
 #. type: TP
 #: doc/man/wesnoth.6:151
@@ -845,12 +839,12 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 
 #. type: TP
 #: doc/man/wesnoth.6:296
@@ -1392,11 +1386,11 @@ msgstr "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:499
@@ -1696,13 +1690,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wild-"
 "card patterns are supported. See B<glob>(7) for more details. Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2275,15 +2269,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293

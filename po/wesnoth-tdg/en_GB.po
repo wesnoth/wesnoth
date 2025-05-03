@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-03-17 23:38+1100\n"
+"PO-Revision-Date: 2025-04-28 17:32+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -469,12 +469,6 @@ msgid "Counterspell"
 msgstr "Counterspell"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:142
-#, fuzzy
-#| msgid ""
-#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-#| "color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in "
-#| "a 3-hex radius, until cancelled.\n"
-#| "           Prevents spellcasting, but not passive skills."
 msgid ""
 "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
 "color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-"
@@ -484,7 +478,7 @@ msgstr ""
 "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
 "color='#00bbe6'><i>16 XP</i></span> to <i>disallow magical attacks</i> in a "
 "3-hex radius, until cancelled.\n"
-"           Prevents spell-casting, but not passive skills."
+"           Disables Delfador’s spells, but not his passive skills."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:150
 msgid "Polymorph"
@@ -3581,10 +3575,9 @@ msgstr "Fail to rescue Asheviere before turns run out"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/06_Ring_of_Swords.cfg:443
-#, fuzzy
-#| msgid "Fail to rescue Asheviere before turns run out"
 msgid "Defeat Irbirch to recapture Asheviere, then survive until turns run out"
-msgstr "Fail to rescue Asheviere before turns run out"
+msgstr ""
+"Defeat Irbirch to recapture Asheviere, then survive until turns run out"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/06_Ring_of_Swords.cfg:450
@@ -4597,6 +4590,8 @@ msgid ""
 "There’s lizards out here... and robbers too. T’would be a shame if som’thin "
 "happened to you. Maybe you oughta have our protection — for a price."
 msgstr ""
+"There’s lizards out here... and robbers too. T’would be a shame if som’thin "
+"happened to you. Maybe you oughta have our protection — for a price."
 
 #. [option]
 #. $fee is very likely between 24 and 100
@@ -7069,19 +7064,14 @@ msgstr "<span size='x-small'>Father.</span>"
 
 #. [message]: speaker=Garard
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:410
-#, fuzzy
-#| msgid ""
-#| "Boy? This is pleasant surprise; I thought you were with your uncle, "
-#| "guarding my fort. Heard about Delfador’s heroics, did you? It is good to "
-#| "see you again."
 msgid ""
 "Boy? This is a pleasant surprise; I thought you were with your uncle, "
 "guarding my fort. Heard about Delfador’s heroics, did you? It is good to see "
 "you again."
 msgstr ""
-"Boy? This is pleasant surprise; I thought you were with your uncle, guarding "
-"my fort. Heard about Delfador’s heroics, did you? It is good to see you "
-"again."
+"Boy? This is a pleasant surprise; I thought you were with your uncle, "
+"guarding my fort. Heard about Delfador’s heroics, did you? It is good to see "
+"you again."
 
 #. [message]: speaker=Garard
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:415
@@ -7936,12 +7926,12 @@ msgstr "$gold_pickup gold"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:622
-#, fuzzy
-#| msgid "Defeat as many enemy leaders as possible (bonus gold next scenario)."
 msgid ""
 "Defeat as many enemy leaders as possible before Deoran is defeated (bonus "
 "gold next scenario)."
-msgstr "Defeat as many enemy leaders as possible (bonus gold next scenario)."
+msgstr ""
+"Defeat as many enemy leaders as possible before Deoran is defeated (bonus "
+"gold next scenario)."
 
 #. [objective]: condition=win
 #. $|escape_turns_remaining is probably between 0 and 10
@@ -9080,19 +9070,14 @@ msgstr ""
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:829
-#, fuzzy
-#| msgid ""
-#| "I didn’t come all this way just to fail now... not at the hand of some "
-#| "cheap conjurer. No, I prepared for this. After my last defeat, I took... "
-#| "precautions."
 msgid ""
 "I didn’t come all this way just to fail now... not at the hand of some cheap "
 "conjurer. No, I prepared for this. After my failed attack on Arand, I "
 "took... precautions."
 msgstr ""
 "I didn’t come all this way just to fail now... not at the hand of some cheap "
-"conjurer. No, I prepared for this. After my last defeat, I took... "
-"precautions."
+"conjurer. No, I prepared for this. After my failed attack on Arand, I "
+"took... precautions."
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:833
@@ -9938,19 +9923,6 @@ msgstr "Orcish Sorceress"
 
 #. [unit_type]: id=Orcish Sorceress, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Orcs are sometimes capable as living as long as humans, but very few "
-#| "individuals ever fully realize that potential, as the average orc only "
-#| "sees two or three decades before meeting their end either in battle. Only "
-#| "the Shamans, isolated from the daily strife of the major orcish clans, "
-#| "commonly live to reach old age.\n"
-#| "\n"
-#| "The greatest of these elders make up the Great Council, which may "
-#| "arbitrate the many conflicts that arise between clans of their "
-#| "argumentative brethren. Having practiced their mystical art to "
-#| "perfection, these aged orcs are held in the highest respect across the "
-#| "various clans."
 msgid ""
 "Orcs are sometimes capable of living as long as humans, but very few "
 "individuals ever fully realize that potential, as the average orc only sees "
@@ -9963,11 +9935,11 @@ msgid ""
 "Having practiced their mystical art to perfection, these aged orcs are held "
 "in the highest respect across the various clans."
 msgstr ""
-"Orcs are sometimes capable as living as long as humans, but very few "
+"Orcs are sometimes capable of living as long as humans, but very few "
 "individuals ever fully realize that potential, as the average orc only sees "
-"two or three decades before meeting their end either in battle. Only the "
-"Shamans, isolated from the daily strife of the major orcish clans, commonly "
-"live to reach old age.\n"
+"two or three decades before meeting their end either in war or by the hand "
+"of one of their kin. Only the Shamans, isolated from the daily strife of the "
+"major orcish clans, commonly live to reach old age.\n"
 "\n"
 "The greatest of these elders make up the Great Council, which may arbitrate "
 "the many conflicts that arise between clans of their argumentative brethren. "

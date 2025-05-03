@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-03-17 23:30+1100\n"
+"PO-Revision-Date: 2025-04-28 17:25+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -627,10 +627,8 @@ msgstr "Vugreddyr"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:297
-#, fuzzy
-#| msgid "Survive until turns run out"
 msgid "Survive until turns run out, then move any unit to 10,15"
-msgstr "Survive until turns run out"
+msgstr "Survive until turns run out, then move any unit to 10,15"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:307
@@ -2642,7 +2640,7 @@ msgstr "Owaec is a leader and can recruit units when standing on a keep."
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:303
 msgid "Capture any village to check it for outlaws."
-msgstr ""
+msgstr "Capture any village to check it for outlaws."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:355
@@ -5215,16 +5213,12 @@ msgstr "It is winter, daytime is shorter"
 #. The amount is likely between 1 and 10 per turn.
 #. With the current balancing it’s the same for every difficulty, starting at 1/turn and rising by 1 every 6 turns.
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:464
-#, fuzzy
-#| msgid ""
-#| "Living units take $|frostbite_amount cold damage every turn. Damage "
-#| "increases every 10 turns."
 msgid ""
 "Living units take $|frostbite_amount cold damage every turn. Damage "
 "increases every 6 turns."
 msgstr ""
 "Living units take $|frostbite_amount cold damage every turn. Damage "
-"increases every 10 turns."
+"increases every 6 turns."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:479
@@ -5802,7 +5796,7 @@ msgstr "Goblins"
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:261
 msgid "Injured Yeti"
-msgstr ""
+msgstr "Injured Yeti"
 
 #. [message]: speaker=unit
 #. a significant hint, exploring would take a long time with no reward
@@ -6195,15 +6189,13 @@ msgstr "May this unholy place be cleansed by the Light!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1200
 msgid "GROWWR!!"
-msgstr ""
+msgstr "GROWWR!!"
 
 #. [message]: speaker=unit
 #. 200, 160, or 130 gold
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1215
-#, fuzzy
-#| msgid "This wyvern was rich! I count $gold gold in its hoard."
 msgid "This yeti was rich! I count $gold gold in its hoard."
-msgstr "This wyvern was rich! I count $gold gold in its hoard."
+msgstr "This yeti was rich! I count $gold gold in its hoard."
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1220
@@ -9841,6 +9833,8 @@ msgid ""
 "Then we must reinforce the city at once. There is a relief tunnel nearby, "
 "its entrance still hidden from the dead. Come on men, follow me!"
 msgstr ""
+"Then we must reinforce the city at once. There is a relief tunnel nearby, "
+"its entrance still hidden from the dead. Come on men, follow me!"
 
 #. [time]: id=indoors
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:721
