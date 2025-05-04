@@ -131,6 +131,17 @@ struct light_adjust
 	int8_t b;
 };
 
+struct parsed_data_URI
+{
+	explicit parsed_data_URI(std::string_view data_URI);
+
+	std::string_view scheme;
+	std::string_view mime;
+	std::string_view base64;
+	std::string_view data;
+	bool good;
+};
+
 /**
  * Purges all image caches.
  */

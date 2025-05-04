@@ -21,6 +21,7 @@
 #include <SDL2/SDL_render.h>
 
 #include <memory>
+#include <string>
 
 class surface;
 struct color_t;
@@ -42,6 +43,9 @@ public:
 
 	/** Assigns the given texture to this one. */
 	explicit texture(SDL_Texture* txt);
+
+	/** Loads the specified image from disk directly to a texture. */
+	static texture from_disk(const std::string& path);
 
 	/**
 	 * Construct a texture from a surface.
