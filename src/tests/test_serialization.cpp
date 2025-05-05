@@ -562,7 +562,7 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 
 	superfluous_mask = std::string(str.length(), '?');
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
-	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '?'));
+	BOOST_CHECK(!utils::wildcard_string_match(str, superfluous_mask + '?'));
 
 	superfluous_mask = std::string(str.length(), '*');
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
@@ -583,6 +583,17 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 	BOOST_CHECK(!utils::wildcard_string_match("", "+++?++"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
+
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "*.txt"));
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "h*t"));
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "?ello.*"));
+	BOOST_CHECK(!utils::wildcard_string_match("hello.txt", "*.doc"));
+	BOOST_CHECK(utils::wildcard_string_match("file123.tmp", "file?2*.tmp"));
+	BOOST_CHECK(utils::wildcard_string_match("test", "t*t"));
+	BOOST_CHECK(utils::wildcard_string_match("multiple.dots.file", "*.dots.*"));
+	BOOST_CHECK(!utils::wildcard_string_match("case.txt", "CASE.TXT"));
+	BOOST_CHECK(utils::wildcard_string_match("single", "?ingle"));
+	BOOST_CHECK(!utils::wildcard_string_match("different", "diff*txt"));
 }
 
 BOOST_AUTO_TEST_CASE( test_base64_encodings )

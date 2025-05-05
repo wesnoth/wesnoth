@@ -396,10 +396,18 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 bool word_match(const std::string& message, const std::string& word);
 
 /**
- * Match using '*' as any number of characters (including none),
- * '+' as one or more characters, and '?' as any one character.
+ * @brief Performs pattern matching with wildcards.
+ *
+ * @param str Any byte-string.
+ * @param pat A string of characters with the following interpretation:
+ *            	- @c '*' represents zero or more characters.
+ *            	- @c '+' represents one or more characters.
+ *				- @c '?' represents exactly one character.
+ *				- All other characters are interpreted literally.
+ *
+ * @returns @c true if @p str matches @p pat
  */
-bool wildcard_string_match(const std::string& str, const std::string& match);
+[[nodiscard]] bool wildcard_string_match(std::string_view str, std::string_view pat) noexcept;
 
 /**
  * Converts '*' to '%' and optionally escapes '_'.
