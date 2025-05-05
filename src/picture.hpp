@@ -19,7 +19,6 @@
 #include "terrain/translation.hpp"
 
 #include "utils/optional_fwd.hpp"
-#include "utils/span.hpp"
 
 class surface;
 class texture;
@@ -129,6 +128,10 @@ struct light_adjust
 	int8_t r;
 	int8_t g;
 	int8_t b;
+
+	// TODO C++20: default these (╯°□°)╯︵ ┻━┻
+	bool operator==(const light_adjust& o) const;
+	bool operator!=(const light_adjust& o) const { return !operator==(o); }
 };
 
 /**
@@ -216,8 +219,8 @@ texture get_texture(const image::locator& i_locator, scale_quality quality,
  * @param i_locator            Image path.
  * @param ls                   Light map to apply to the image.
  */
-surface get_lighted_image(const image::locator& i_locator, utils::span<const light_adjust> ls);
-texture get_lighted_texture(const image::locator& i_locator, utils::span<const light_adjust> ls);
+surface get_lighted_image(const image::locator& i_locator, const std::vector<light_adjust>& ls);
+texture get_lighted_texture(const image::locator& i_locator, const std::vector<light_adjust>& ls);
 
 /**
  * Retrieves the standard hexagonal tile mask.

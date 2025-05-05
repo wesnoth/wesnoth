@@ -2667,7 +2667,7 @@ void display::draw_overlays_at(const map_location& loc)
 	const time_of_day& tod = get_time_of_day(loc);
 	tod_color tod_col = tod.color + color_adjust_;
 
-	auto lt = image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b};
+	std::vector lt{image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b}};
 
 	for(const overlay& ov : overlays) {
 		if(fogged(loc) && !ov.visible_in_fog) {
@@ -2687,7 +2687,7 @@ void display::draw_overlays_at(const map_location& loc)
 		}
 
 		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-			? image::get_lighted_texture(ov.image, utils::span{&lt, 1})
+			? image::get_lighted_texture(ov.image, lt)
 			: image::get_texture(ov.image, image::HEXED);
 
 		// Base submerge value for the terrain at this location
