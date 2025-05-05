@@ -120,6 +120,9 @@ public class InitActivity extends Activity {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
 
+		// Keep the screen on while this task runs
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
 
@@ -205,6 +208,8 @@ public class InitActivity extends Activity {
 
 			// Launch Wesnoth
 			// TODO: check data existence
+			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+			
 			runOnUiThread(()-> {
 				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 				progressBar.setVisibility(View.INVISIBLE);
