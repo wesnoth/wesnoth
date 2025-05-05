@@ -115,40 +115,36 @@ public class InitActivity extends Activity {
 				Log.e("InitActivity", "IO exception", ioe);
 			}
 
-			if (!isUnpacked(dataDir)) {
-				for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
-					String uiname = entry.getKey();
-					String name = entry.getValue();
+			for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
+				String name = entry.getValue();
+				String uiname = entry.getKey();
 	
-					File f = new File(dataDir, name);
-					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
-	
-					// Download file
-					if (!f.exists()) {
-						Log.d("InitActivity", "Start download " + name);
-						try {
-							lastModified = downloadFile(
-								String.format(archiveURL, name),
-								f,
-								uiname,
-								lastModified
-							);
-							status.setProperty("modified." + name, "" + lastModified);
-						} catch (Exception e) {
-							Log.e("Download", "security error", e);
-						}
+				File f = new File(dataDir, name);
+				long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
+
+				// Download file
+				if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
+					Log.d("InitActivity", "Start download " + name);
+					try {
+						lastModified = downloadFile(
+							String.format(archiveURL, name),
+							f,
+							uiname,
+							lastModified);
+						
+						status.setProperty("modified." + name, "" + lastModified);
+					} catch (Exception e) {
+						Log.e("Download", "security error", e);
 					}
-	
+
 					// Unpack archive
 					// TODO Checksum verification?
-					if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")
-						&& f.exists())
-					{
+					if (f.exists()) {
 						Log.d("InitActivity", "Start unpack " + name);
-	
+
 						unpackArchive(f, dataDir, uiname);
 						f.delete();
-	
+
 						status.setProperty("unpack." + name, "true");
 					}
 				}
