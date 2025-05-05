@@ -26,6 +26,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -40,12 +43,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InitActivity extends Activity {
 	private int length = 0;
@@ -79,19 +84,34 @@ public class InitActivity extends Activity {
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		this.setContentView(R.layout.activity_init);
+
+		// Initialize gamedata directory
+		dataDir = new File(getExternalFilesDir(null), "gamedata");
 		
 		ImageButton btnSettings = findViewById(R.id.settings_btn);
 		btnSettings.setOnClickListener(e -> {
 			PopupMenu settingsMenu = new PopupMenu(InitActivity.this, btnSettings);
 			settingsMenu.getMenuInflater().inflate(R.menu.main_menu, settingsMenu.getMenu());
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
-				return true;
+				if (menuItem.getItemId() == R.id.mnuClear) {
+					Toast.makeText(this, "Clearing data...", Toast.LENGTH_SHORT).show();
+					try {
+						Files.walk(dataDir.toPath())
+							.sorted(Comparator.reverseOrder())
+							.map(Path::toFile)
+							.forEach(File::delete);
+						Toast.makeText(this, "Cleared!", Toast.LENGTH_SHORT).show();
+						return true;
+					} catch (IOException ioe) {
+						Log.e("InitActivity", "IO exception", ioe);
+						return false;
+					}
+				}
+				return false;
 			});
 			settingsMenu.show();
 		});
-
-		// Initialize gamedata directory
-		dataDir = new File(getExternalFilesDir(null), "gamedata");
+		
 		if (!dataDir.exists()) {
 			dataDir.mkdir();
 		}
