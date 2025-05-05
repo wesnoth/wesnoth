@@ -32,7 +32,20 @@
 #include <SDL2/SDL_image.h>
 
 #include <boost/algorithm/string.hpp>
+
+#if BOOST_VERSION >= 108100
+
 #include <boost/unordered/unordered_flat_map.hpp>
+template<typename Key, typename Value>
+using cache_map = boost::unordered_flat_map<Key, Value>;
+
+#else
+
+#include <boost/unordered/unordered_map.hpp>
+template<typename Key, typename Value>
+using cache_map = boost::unordered_map<Key, Value>;
+
+#endif
 
 #include <array>
 #include <set>
@@ -109,7 +122,7 @@ public:
 	}
 
 private:
-	boost::unordered_flat_map<locator, T> content_;
+	cache_map<locator, T> content_;
 };
 
 namespace
@@ -119,8 +132,8 @@ using texture_cache = cache_type<texture>;
 using bool_cache = cache_type<bool>;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-using lit_surface_variants = boost::unordered_flat_map<std::size_t, surface>;
-using lit_texture_variants = boost::unordered_flat_map<std::size_t, texture>;
+using lit_surface_variants = cache_map<std::size_t, surface>;
+using lit_texture_variants = cache_map<std::size_t, texture>;
 
 /** Lit variants for each locator. */
 using lit_surface_cache = cache_type<lit_surface_variants>;
