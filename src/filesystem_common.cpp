@@ -223,7 +223,7 @@ std::string get_legacy_editor_dir()
 std::string get_current_editor_dir(const std::string& addon_id)
 {
 	if(addon_id == "mainline") {
-		return get_dir(game_config::path) + "/data/multiplayer";
+		return game_config::path + "/data/multiplayer";
 	} else {
 		return get_addons_dir() + "/" + addon_id;
 	}
@@ -231,7 +231,7 @@ std::string get_current_editor_dir(const std::string& addon_id)
 
 std::string get_core_images_dir()
 {
-	return get_dir(game_config::path + "/data/core/images");
+	return game_config::path + "/data/core/images";
 }
 
 std::string get_intl_dir()
