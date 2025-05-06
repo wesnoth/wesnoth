@@ -2736,7 +2736,7 @@ void display::draw_hex(const map_location& loc)
 			std::vector<overlay>& overlays = it->second;
 			if(overlays.size() != 0) {
 				tod_color tod_col = tod.color + color_adjust_;
-				auto lt = image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b};
+				std::vector lt{image::light_adjust{-1, tod_col.r, tod_col.g, tod_col.b}};
 
 				for(const overlay& ov : overlays) {
 					bool item_visible_for_team = true;
@@ -2764,7 +2764,7 @@ void display::draw_hex(const map_location& loc)
 						}
 
 						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-							? image::get_lighted_texture(ipf, utils::span{&lt, 1})
+							? image::get_lighted_texture(ipf, lt)
 							: image::get_texture(ipf, image::HEXED);
 
 						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [tex](const rect& dest) { draw::blit(tex, dest); });
