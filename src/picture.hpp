@@ -129,9 +129,13 @@ struct light_adjust
 	int8_t g;
 	int8_t b;
 
+#ifdef __cpp_impl_three_way_comparison
+	auto operator<=>(const light_adjust&) const = default;
+#else
 	// TODO C++20: default these (╯°□°)╯︵ ┻━┻
 	bool operator==(const light_adjust& o) const;
 	bool operator!=(const light_adjust& o) const { return !operator==(o); }
+#endif
 };
 
 /**
