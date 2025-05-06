@@ -31,7 +31,7 @@ struct queue_info
 {
 	int id;
 	std::string scenario_id;
-	std::string queue_display_name;
+	std::string display_name;
 	int players_required;
 	std::set<std::string> current_players;
 };

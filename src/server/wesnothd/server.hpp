@@ -137,7 +137,7 @@ private:
 		queue_info(int id, const std::string& scenario_id, const std::string& name, int required, config game)
 		: id(id)
 		, scenario_id(scenario_id)
-		, queue_display_name(name)
+		, display_name(name)
 		, players_required(required)
 		, players_in_queue()
 		, settings(game)
@@ -147,7 +147,7 @@ private:
 
 		int id;
 		std::string scenario_id;
-		std::string queue_display_name;
+		std::string display_name;
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;
 		config settings;
@@ -306,7 +306,7 @@ private:
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
 
-	void send_queue_update(const queue_info &queue, utils::optional<player_iterator> exclude = {});
+	void send_queue_update(const queue_info& queue, utils::optional<player_iterator> exclude = {});
 };
 
 }

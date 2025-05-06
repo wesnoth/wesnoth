@@ -791,7 +791,7 @@ void mp_lobby::update_queue_list()
 	queues_listbox->clear();
 
 	std::vector<mp::queue_info>& queues = mp::get_server_queues();
-	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.queue_display_name < q2.queue_display_name; });
+	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.display_name < q2.display_name; });
 
 	for(const mp::queue_info& info : queues) {
 		widget_data data;
@@ -800,7 +800,7 @@ void mp_lobby::update_queue_list()
 		item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
 		data.emplace("is_in_queue", item);
 
-		item["label"] = info.queue_display_name;
+		item["label"] = info.display_name;
 		data.emplace("queue_name", item);
 
 		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
@@ -841,7 +841,7 @@ void mp_lobby::process_network_data(const config& data)
 			mp::queue_info& new_info = queues.emplace_back();
 			new_info.id = queue_update["queue_id"].to_int();
 			new_info.players_required = queue_update["players_required"].to_int();
-			new_info.queue_display_name = queue_update["queue_display_name"].str();
+			new_info.display_name = queue_update["display_name"].str();
 			new_info.scenario_id = queue_update["scenario_id"].str();
 		} else {
 			for(mp::queue_info& info : queues) {
@@ -852,8 +852,8 @@ void mp_lobby::process_network_data(const config& data)
 						if(queue_update->has_attribute("scenario_id")) {
 							info.scenario_id = queue_update["scenario_id"].str();
 						}
-						if(queue_update->has_attribute("queue_display_name")) {
-							info.queue_display_name = queue_update["queue_display_name"].str();
+						if(queue_update->has_attribute("display_name")) {
+							info.display_name = queue_update["display_name"].str();
 						}
 						if(queue_update->has_attribute("players_required")) {
 							info.players_required = queue_update["players_required"].to_int();
