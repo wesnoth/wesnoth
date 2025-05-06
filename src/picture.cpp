@@ -498,10 +498,12 @@ light_adjust::light_adjust(int op, int rr, int gg, int bb)
 	b = std::clamp(bb / 2, min, max);
 }
 
+#ifndef __cpp_impl_three_way_comparison
 bool light_adjust::operator==(const light_adjust& o) const
 {
 	return std::tie(l, r, g, b) == std::tie(o.l, o.r, o.g, o.b);
 }
+#endif
 
 /** Hash function overload for boost::hash. Must be in the image namespace to satisfy ADL. */
 static std::size_t hash_value(const light_adjust& adj)
