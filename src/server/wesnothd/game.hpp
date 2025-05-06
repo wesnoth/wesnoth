@@ -625,10 +625,6 @@ public:
 	{
 		return queue_type_;
 	}
-	void q_type(queue_type::type queue_type)
-	{
-		queue_type_ = queue_type;
-	}
 
 	bool is_open_queue_game(int q_id) {
 		return queue_type_ == queue_type::type::server_preset &&

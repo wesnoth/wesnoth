@@ -1854,7 +1854,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			}
 
 			queue_info& info = queue_info_.at(queue_id);
-			std::size_t joined_count = 0;
+			std::size_t joined_count = 1;
 			for(const std::string& name : info.players_in_queue) {
 				auto player_ptr = player_connections_.get<name_t>().find(name);
 
@@ -1866,7 +1866,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 					send_to_player(player_ptr->socket(), join_game_doc);
 				}
 
-				// remove them from any other queues they joined
+				// remove them from any queues they joined
 				for(int queue : player_ptr->info().get_queues()) {
 					queue_info& other_queue = queue_info_.at(queue);
 					if(!other_queue.players_in_queue.empty()) {
