@@ -151,8 +151,8 @@ void locator::add_to_cache(cache_type<T>& cache, T data) const
 namespace
 {
 /** Type used to pair light possibilities with the corresponding lit surface. */
-typedef std::map<std::size_t, surface> lit_surface_variants;
-typedef std::map<std::size_t, texture> lit_texture_variants;
+typedef std::map<std::vector<light_adjust>, surface> lit_surface_variants;
+typedef std::map<std::vector<light_adjust>, texture> lit_texture_variants;
 
 /** Lit variants for each locator. */
 typedef cache_type<lit_surface_variants> lit_surface_cache;
@@ -523,18 +523,12 @@ light_adjust::light_adjust(int op, int rr, int gg, int bb)
 	b = std::clamp(bb / 2, min, max);
 }
 
-/** Hash function overload for boost::hash. Must be in the image namespace to satisfy ADL. */
-static std::size_t hash_value(const light_adjust& adj)
+bool light_adjust::operator==(const light_adjust& o) const
 {
-	std::size_t hash{0};
-	boost::hash_combine(hash, adj.l);
-	boost::hash_combine(hash, adj.r);
-	boost::hash_combine(hash, adj.g);
-	boost::hash_combine(hash, adj.b);
-	return hash;
+	return std::tie(l, r, g, b) == std::tie(o.l, o.r, o.g, o.b);
 }
 
-static surface apply_light(surface surf, utils::span<const light_adjust> ls)
+static surface apply_light(surface surf, const std::vector<light_adjust>& ls)
 {
 	// atomic lightmap operation are handled directly (important to end recursion)
 	if(ls.size() == 1) {
@@ -546,8 +540,7 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 
 	const auto get_lightmap = [&ls]
 	{
-		const auto hash = boost::hash_range(ls.begin(), ls.end());
-		const auto iter = surface_lightmaps_.find(hash);
+		const auto iter = surface_lightmaps_.find(ls);
 
 		if(iter != surface_lightmaps_.end()) {
 			return iter->second;
@@ -572,7 +565,7 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
-			surface lts = image::get_lighted_image(lm_img[adj.l], utils::span{ &adj, 1 });
+			surface lts = image::get_lighted_image(lm_img[adj.l], std::vector{adj});
 
 			// first image will be the base where we blit the others
 			if(base == nullptr) {
@@ -583,7 +576,7 @@ static surface apply_light(surface surf, utils::span<const light_adjust> ls)
 			}
 		}
 
-		surface_lightmaps_[hash] = base;
+		surface_lightmaps_[ls] = base;
 		return base;
 	};
 
@@ -763,7 +756,7 @@ surface get_surface(
 	return res;
 }
 
-surface get_lighted_image(const image::locator& i_locator, utils::span<const light_adjust> ls)
+surface get_lighted_image(const image::locator& i_locator, const std::vector<light_adjust>& ls)
 {
 	surface res;
 	if(i_locator.is_void()) {
@@ -779,10 +772,7 @@ surface get_lighted_image(const image::locator& i_locator, utils::span<const lig
 	}
 
 	const lit_surface_variants& lvar = i_locator.locate_in_cache(*imap);
-	const auto hash = boost::hash_range(ls.begin(), ls.end());
-	const auto iter = lvar.find(hash);
-
-	if(iter != lvar.end()) {
+	if(const auto iter = lvar.find(ls); iter != lvar.end()) {
 		return iter->second;
 	} else {
 		DBG_IMG << "lit surface cache miss: " << i_locator;
@@ -793,12 +783,12 @@ surface get_lighted_image(const image::locator& i_locator, utils::span<const lig
 	res = apply_light(res, ls);
 
 	// record the lighted surface in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[hash] = res;
+	i_locator.access_in_cache(*imap)[ls] = res;
 
 	return res;
 }
 
-texture get_lighted_texture(const image::locator& i_locator, utils::span<const light_adjust> ls)
+texture get_lighted_texture(const image::locator& i_locator, const std::vector<light_adjust>& ls)
 {
 	if(i_locator.is_void()) {
 		return texture();
@@ -813,10 +803,7 @@ texture get_lighted_texture(const image::locator& i_locator, utils::span<const l
 	}
 
 	const lit_texture_variants& lvar = i_locator.locate_in_cache(*imap);
-	const auto hash = boost::hash_range(ls.begin(), ls.end());
-	const auto iter = lvar.find(hash);
-
-	if(iter != lvar.end()) {
+	if(const auto iter = lvar.find(ls); iter != lvar.end()) {
 		return iter->second;
 	} else {
 		DBG_IMG << "lit texture cache miss: " << i_locator;
@@ -826,7 +813,7 @@ texture get_lighted_texture(const image::locator& i_locator, utils::span<const l
 	texture tex(get_lighted_image(i_locator, ls));
 
 	// record the lighted texture in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[hash] = tex;
+	i_locator.access_in_cache(*imap)[ls] = tex;
 
 	return tex;
 }
