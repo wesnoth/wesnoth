@@ -21,6 +21,10 @@
 #include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_render.h>
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_mouse.h>
+#endif
+
 namespace sdl
 {
 
@@ -175,30 +179,30 @@ void window::render()
 	SDL_RenderPresent(*this);
 }
 
+#ifndef __ANDROID__
 void window::set_title(const std::string& title)
 {
-#ifndef __ANDROID__
 	SDL_SetWindowTitle(window_, title.c_str());
-#endif
 }
 
 void window::set_icon(const surface& icon)
 {
-#ifndef __ANDROID__
 	SDL_SetWindowIcon(window_, icon);
-#endif
-}
-
-uint32_t window::get_flags()
-{
-	return SDL_GetWindowFlags(window_);
 }
 
 void window::set_minimum_size(int min_w, int min_h)
 {
-#ifndef __ANDROID__
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+}
+#else
+void window::set_title(const std::string&) {};
+void window::set_icon(const surface&) {};
+void window::set_minimum_size(int, int) {};
 #endif
+
+uint32_t window::get_flags()
+{
+	return SDL_GetWindowFlags(window_);
 }
 
 int window::get_display_index()
