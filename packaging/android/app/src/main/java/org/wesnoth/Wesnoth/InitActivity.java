@@ -165,10 +165,10 @@ public class InitActivity extends Activity {
 					if (f.exists()) {
 						Log.d("InitActivity", "Start unpack " + name);
 
-						unpackArchive(f, dataDir, uiname);
-						f.delete();
-
-						status.setProperty("unpack." + name, "true");
+						if (unpackArchive(f, dataDir, uiname)) {
+							f.delete();
+							status.setProperty("unpack." + name, "true");
+						}
 					}
 				}
 			}
@@ -292,6 +292,10 @@ public class InitActivity extends Activity {
 
 			out.close();
 			in.close();
+			
+			Log.d("Download", "Download success from URL: " + url);
+			return newModified;
+			
 		} catch (MalformedURLException mue) {
 			Log.e("Download", "Malformed url exception", mue);
 		} catch (IOException ioe) {
@@ -299,21 +303,19 @@ public class InitActivity extends Activity {
 		} catch (SecurityException se) {
 			Log.e("Download", "Security exception", se);
 		}
-
-		Log.d("Download", "Download success from URL: " + url);
-		return newModified;
+		
+		return 0;
 	}
 
-	private void unpackArchive(File zipfile, File destdir, String type) {
+	private boolean unpackArchive(File zipfile, File destdir, String type) {
 		Log.d("Unpack", "Start");
 
 		if (zipfile == null) {
 			Log.e("Unpack", "File for " + type + " is null!");
-			return;
+			return false;
 		}
 
-		try {
-			ZipFile zf = new ZipFile(zipfile);
+		try (ZipFile zf = new ZipFile(zipfile)) {
 			Enumeration<? extends ZipEntry> e = zf.entries();
 
 			progress = 0;
@@ -331,13 +333,13 @@ public class InitActivity extends Activity {
 				runOnUiThread(() -> updateUnpackProgress(progress, type));
 
 				if (ze.isDirectory()) {
-					File dir = new File(destdir + "/" + ze.getName());
+					File dir = new File(destdir, ze.getName());
 					if (!dir.exists()) {
 						dir.mkdir();
 					}
 				} else {
 					InputStream in = zf.getInputStream(ze);
-					OutputStream out = new FileOutputStream(new File(destdir + "/" + ze.getName()));
+					OutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
 					byte[] buffer = new byte[8192];
 					int length;
 					while ((length = in.read(buffer)) > 0) {
@@ -350,19 +352,18 @@ public class InitActivity extends Activity {
 				Log.d("Unpack", "Unpacking " + type + ":" + progress + "/" + max);
 				progress++;
 			}
+			
 			Log.d("Unpack", "Done unpacking " + type);
-			zf.close();
+			return true;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
 		} catch (FileNotFoundException e) {
 			Log.e("Unpack", "File not found", e);
 		} catch (IOException e) {
 			Log.e("Unpack", "IO exception", e);
-		} finally {
-			Log.e("Unpack", "Done (finally)");
 		}
-
-		Log.d("Unpack", "Exit function!");
+		
+		return false;
 	}
 
 }
