@@ -59,6 +59,12 @@ if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
 endif()
 
+# boost::process must be linked on 1.86 or later for process::v2 to work
+# Boost_VERSION (note lowercase) is set by BoostConfig.cmake
+if(Boost_VERSION VERSION_GREATER_EQUAL "1.86")
+	list(APPEND BOOST_REQ_COMPONENTS process)
+endif()
+
 find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
                                            OPTIONAL_COMPONENTS charconv)
 
