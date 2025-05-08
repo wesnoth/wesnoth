@@ -77,7 +77,8 @@ int game::db_id_num = 1;
 
 game::game(wesnothd::server& server, player_connections& player_connections,
 		player_iterator host,
-		bool is_queue_game,
+		queue_type::type queue_type,
+		int queue_id,
 		const std::string& name,
 		bool save_replays,
 		const std::string& replay_save_path)
@@ -113,7 +114,8 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, replay_save_path_(replay_save_path)
 	, rng_()
 	, last_choice_request_id_(-1) /* or maybe 0 ? it shouldn't matter*/
-	, is_queue_game_(is_queue_game)
+	, queue_type_(queue_type)
+	, queue_id_(queue_id)
 {
 	players_.push_back(owner_);
 
