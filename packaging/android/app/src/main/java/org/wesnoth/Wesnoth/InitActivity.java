@@ -39,8 +39,13 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -83,7 +88,19 @@ public class InitActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
-		this.setContentView(R.layout.activity_init);
+		setContentView(R.layout.activity_init);
+		
+		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		if (powerManager.isPowerSaveMode()) {
+			new AlertDialog.Builder(this)
+				.setTitle("Power Saver Detected")
+				.setMessage("Battery Saver is on. Data download may be interrupted. Consider whitelisting this app from battery saver or turn it off.")
+				.setPositiveButton("Settings", (DialogInterface dialog, int which) -> {
+					startActivity(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS));
+				})
+				.setNegativeButton("Ignore", null)
+				.show();
+		}
 
 		// Initialize gamedata directory
 		dataDir = new File(getExternalFilesDir(null), "gamedata");
