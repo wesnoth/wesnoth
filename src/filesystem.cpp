@@ -1429,25 +1429,26 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
+utils::optional<std::string> to_asset_path(const std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
 	// datadir is absoulute path to where wesnoth's data is installed
 	bfs::path datadir = game_config::path;
 	bfs::path core_asset_dir = datadir / "data" / "core" / asset_type;
 	bfs::path data_asset_dir = datadir / asset_type;
+	bfs::path outpath = path;
 
 	bool found = false;
 
 	if(is_prefix(path, core_asset_dir)) {
 		// Case 1: remove leading datadir/asset_type from given absolute path
-		// For example: given datadir/images/misc/image.png, returns misc/image.png
-		path = bfs::relative(path, core_asset_dir).string();
-		found = file_exists(core_asset_dir / path);
+		// For example: given  datadir/data/core/images/misc/image.png, returns misc/image.png
+		outpath = bfs::relative(path, core_asset_dir);
+		found = file_exists(core_asset_dir / outpath);
 	} else if(is_prefix(path, data_asset_dir)) {
 		// Case 2: remove leading datadir/data/core/asset_type from given absolute path
-		// For example: given datadir/data/core/images/misc/image.png, returns misc/image.png
-		path = bfs::relative(path, data_asset_dir).string();
-		found = file_exists(data_asset_dir / path);
+		// For example: given datadir/images/misc/image.png, returns misc/image.png
+		outpath = bfs::relative(path, data_asset_dir);
+		found = file_exists(data_asset_dir / outpath);
 	} else if(!addon_id.empty()) {
 		bfs::path addon_asset_dir = get_current_editor_dir(addon_id);
 		addon_asset_dir /= asset_type;
@@ -1456,18 +1457,12 @@ bool to_asset_path(std::string& path, const std::string& addon_id, const std::st
 		// where addondir is absolute path to the addon's directory
 		// For example: given addondir/images/misc/image.png, returns misc/image.png
 		if(is_prefix(path, addon_asset_dir)) {
-			path = bfs::relative(path, addon_asset_dir).string();
-			found = file_exists(addon_asset_dir / path);
-		}
-
-		if(!found) {
-			// Not found in either core or addons dirs,
-			// return a possible path where the asset could be copied.
-			path = (addon_asset_dir / bfs::path(path).filename()).string();
+			outpath = bfs::relative(path, addon_asset_dir);
+			found = file_exists(addon_asset_dir / outpath);
 		}
 	}
 
-	return found;
+	return found ? utils::optional<std::string>{ outpath.string() } : utils::nullopt;
 }
 
 /**
