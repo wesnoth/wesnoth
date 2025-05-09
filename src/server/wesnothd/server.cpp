@@ -873,7 +873,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	coro_send_doc(socket, join_lobby_response, yield);
 
 	boost::asio::spawn(io_service_,
-		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
+		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(std::move(yield), socket, new_player); }
 #if BOOST_VERSION >= 108000
 		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
