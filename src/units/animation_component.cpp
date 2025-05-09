@@ -222,6 +222,14 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 			it->anim_comp().set_standing();
 		}
 	}
+	if(u_.has_ability_distant_image()){
+		for(const unit& unit_itor : units){
+			if (unit_itor.incapacitated() || &unit_itor == &u_) {
+				continue;
+			}
+			unit_itor.anim_comp().set_standing();
+		}
+	}
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {
