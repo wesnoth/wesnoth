@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "font/attributes.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
@@ -49,8 +50,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_alpha_(0)
 	, cursor_blink_rate_(750ms)
 {
-	auto cfg = get_control(control_type, builder.definition);
-	set_font_family(cfg->text_font_family);
+	set_font_family(get_config()->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
@@ -120,6 +120,13 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 		update_canvas();
 		queue_redraw();
 	}
+}
+
+void text_box_base::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
+	font::attribute_list attrs;
+	add_attribute_bg_color(attrs, start_offset, end_offset, color);
+	text_.apply_attributes(attrs);
 }
 
 void text_box_base::set_value(const std::string& text)

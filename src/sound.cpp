@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,7 @@
 #include "sound_music_track.hpp"
 #include "utils/rate_counter.hpp"
 
-#include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
 #include <list>
@@ -33,10 +33,6 @@ static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
-
-#if (MIX_MAJOR_VERSION < 1) || (MIX_MAJOR_VERSION == 1) && ((MIX_MINOR_VERSION < 2) || (MIX_MINOR_VERSION == 2) && (MIX_PATCHLEVEL <= 11))
-#error "Please upgrade to SDL mixer version >= 1.2.12, we don't support older versions anymore."
-#endif
 
 namespace sound
 {

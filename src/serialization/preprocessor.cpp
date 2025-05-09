@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -1820,10 +1820,8 @@ void preprocess_resource(const std::string& res_name,
 	LOG_PREPROC << "processing finished";
 
 	if(write_cfg || write_plain_cfg) {
-		config cfg;
 		std::string streamContent = ss.str();
-
-		read(cfg, streamContent);
+		config cfg = io::read(streamContent);
 
 		const std::string preproc_res_name = parent_directory + "/" + filesystem::base_name(res_name);
 
@@ -1832,9 +1830,7 @@ void preprocess_resource(const std::string& res_name,
 			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
-			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
-
-			write(*outStream, cfg);
+			io::write(*filesystem::ostream_file(preproc_res_name), cfg);
 		}
 
 		// Write the plain cfg file

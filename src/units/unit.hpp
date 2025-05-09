@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -444,6 +444,22 @@ public:
 	void set_unrenamable(bool unrenamable)
 	{
 		unrenamable_ = unrenamable;
+	}
+
+	/**
+	 * Whether this unit can be dismissed.
+	 *
+	 * This flag is used by the Unit Recall dialog.
+	 */
+	bool dismissable() const
+	{
+		return dismissable_;
+	}
+
+	/** A message of why this unit cannot be dismissed. */
+	t_string block_dismiss_message() const
+	{
+		return dismiss_message_;
 	}
 
 	/** A detailed description of this unit. */
@@ -2020,6 +2036,8 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
+	bool dismissable_;
+	t_string dismiss_message_;
 
 	int side_;
 

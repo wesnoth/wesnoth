@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -90,20 +90,17 @@ void faction_select::pre_show()
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
 
-		widget_data data;
-		widget_item item;
-
-		const std::string name = side["name"].str();
 		// flag_rgb here is unrelated to any handling in the unit class
 		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
 
-		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
-		data.emplace("faction_image", item);
-
-		item["label"] = name;
-		data.emplace("faction_name", item);
-
-		list.add_row(data);
+		list.add_row(widget_data{
+			{ "faction_image", {
+				{ "label", (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str() }
+			}},
+			{ "faction_name", {
+				{ "label", side["name"].str() }
+			}},
+		});
 	}
 
 	list.select_row(flg_manager_.current_faction_index());

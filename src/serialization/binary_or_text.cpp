@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -78,24 +78,24 @@ config_writer::~config_writer()
 
 void config_writer::write(const config& cfg)
 {
-	::write(out_, cfg, level_);
+	io::write(out_, cfg, level_);
 }
 
 void config_writer::write_child(const std::string& key, const config& cfg)
 {
 	open_child(key);
-	::write(out_, cfg, level_);
+	io::write(out_, cfg, level_);
 	close_child(key);
 }
 
 void config_writer::open_child(const std::string& key)
 {
-	::write_open_child(out_, key, level_++);
+	io::write_open_child(out_, key, level_++);
 }
 
 void config_writer::close_child(const std::string& key)
 {
-	::write_close_child(out_, key, --level_);
+	io::write_close_child(out_, key, --level_);
 }
 
 bool config_writer::good() const

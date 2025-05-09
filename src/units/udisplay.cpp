@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -90,6 +90,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 		animator.add_animation(temp_unit.shared_from_this(),"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
+		temp_unit.anim_comp().reset_affect_adjacent(disp);
 	}
 
 	temp_unit.set_location(b);
@@ -104,6 +105,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 		animator.add_animation(temp_unit.shared_from_this(),"post_teleport",b);
 		animator.start_animations();
 		animator.wait_for_end();
+		temp_unit.anim_comp().reset_affect_adjacent(disp);
 	}
 
 	temp_unit.anim_comp().set_standing();
@@ -260,6 +262,7 @@ void unit_mover::start(const unit_ptr& u)
 	if ( !can_draw_ )
 		return;
 	// If no animation then hide unit until end of movement
+	u->anim_comp().reset_affect_adjacent(*disp_);
 	if ( !animate_ ) {
 		was_hidden_ = u->get_hidden();
 		u->set_hidden(true);
@@ -464,6 +467,7 @@ void unit_mover::finish(const unit_ptr& u, map_location::direction dir)
 		// Switch the display back to the real unit.
 		u->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
+		u->anim_comp().reset_affect_adjacent(*disp_);
 
 		if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 			mousehandler->invalidate_reachmap();
@@ -589,6 +593,7 @@ void unit_die(const map_location& loc, unit& loser,
 	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();
 	}
+	loser.anim_comp().reset_affect_adjacent(*disp);
 }
 
 
@@ -837,6 +842,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 			}
 		}
 	}
+	u->anim_comp().reset_affect_adjacent(*disp);
 	animator.add_animation(u.get_shared_ptr(), "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();

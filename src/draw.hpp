@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2024
+	Copyright (C) 2022 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -32,10 +32,10 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
+#include <array>
 #include <vector>
 
 #include <SDL2/SDL_render.h>
-#include <array>
 
 struct color_t;
 
@@ -209,6 +209,12 @@ void circle(int x, int y, int r, uint8_t octants = 0xff);
  */
 void disc(int x, int y, int r, const color_t& c, uint8_t octants = 0xff);
 void disc(int x, int y, int r, uint8_t octants = 0xff);
+
+/** Draw outline of circle using Cairo */
+void cairo_circle(int cx, int cy, int r, const color_t& c, int thickness);
+
+/** Draw filled circle using Cairo */
+void cairo_disc(int cx, int cy, int r, const color_t& c);
 
 
 /*******************/

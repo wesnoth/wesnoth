@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,8 +40,6 @@ namespace gui2
  *
  * Each widget definition and window layout may also define different variations of itself
  * to be used based on the current game resolution.
- *
- * As of December 2017 only the default theme is provided.
  */
 class gui_definition
 {
@@ -69,18 +67,36 @@ private:
 
 	t_string description_;
 
-	std::chrono::milliseconds popup_show_delay_;
-	std::chrono::milliseconds popup_show_time_;
-	std::chrono::milliseconds help_show_time_;
-	std::chrono::milliseconds double_click_time_;
-	std::chrono::milliseconds repeat_button_repeat_time_;
+	/**
+	 * Theme-specific settings. These are exposed via globals in the gui2::settings
+	 * namespace by calling @ref activate.
+	 *
+	 * @todo Regarding sounds:
+	 * Need to evaluate but probably we want the widget definition be able to:
+	 * - Override the default (and clear it). This will allow toggle buttons in a
+	 *   listbox to sound like a toggle panel.
+	 * - Override the default and above per instance of the widget, some buttons
+	 *   can give a different sound.
+	 */
+	struct settings_helper
+	{
+		explicit settings_helper(const config& cfg);
 
-	std::string sound_button_click_;
-	std::string sound_toggle_button_click_;
-	std::string sound_toggle_panel_click_;
-	std::string sound_slider_adjust_;
+		std::chrono::milliseconds popup_show_delay;
+		std::chrono::milliseconds popup_show_time;
+		std::chrono::milliseconds help_show_time;
+		std::chrono::milliseconds double_click_time;
+		std::chrono::milliseconds repeat_button_repeat_time;
 
-	t_string has_helptip_message_;
+		std::string sound_button_click;
+		std::string sound_toggle_button_click;
+		std::string sound_toggle_panel_click;
+		std::string sound_slider_adjust;
+
+		t_string has_helptip_message;
+	};
+
+	settings_helper settings_;
 
 	std::vector<game_tip> tips_;
 };

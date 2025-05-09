@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
 
 
 namespace gui2
@@ -42,6 +41,12 @@ public:
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
 
+	/**
+	 * @a presets needs to be a copy!
+	 * Otherwise you'll get segfaults when clicking the Join button since it results in the configs getting reloaded.
+	 */
+	static void quick_mp_setup(saved_game& state, const config presets);
+
 private:
 	virtual const std::string& window_id() const override;
 
@@ -50,7 +55,6 @@ private:
 	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
 	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;

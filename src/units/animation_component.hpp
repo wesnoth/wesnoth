@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,11 @@
 
 #pragma once
 
+#include "display.hpp"
+#include "game_board.hpp"
 #include "halo.hpp"
+#include "map/map.hpp"
+
 #include "units/animation.hpp" //Note: only needed for enum
 
 class config;
@@ -105,6 +109,11 @@ public:
 
 	/** Resets the animations list after the unit is advanced. */
 	void reset_after_advance(const unit_type * newtype = nullptr);
+
+	/** Refresh map around unit if has ability with [affect_adjacent/distant] tag */
+	void reset_affect_adjacent(const unit_map& units);
+
+	void reset_affect_adjacent(const display & disp) {reset_affect_adjacent(disp.context().units());}
 
 	/** Adds an animation described by a config. Uses an internal cache to avoid redoing work. */
 	void apply_new_animation_effect(const config & effect);

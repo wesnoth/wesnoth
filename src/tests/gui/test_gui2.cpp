@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -102,6 +102,7 @@
 #include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
@@ -248,10 +249,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				// debug clock doesn't work at 800x600
-				if(resolution.first == 800 && resolution.second == 600) {
-					continue;
-				}
 				test_utils::get_fake_display(resolution.first, resolution.second);
 
 				dialog_tester<T> ctor;
@@ -339,7 +336,6 @@ namespace {
 const resolution_list& get_gui_resolutions()
 {
 	static resolution_list result {
-		{800,  600},
 		{1024, 768},
 		{1280, 1024},
 		{1680, 1050},
@@ -587,6 +583,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
 {
 	test<select_orb_colors>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_reachmap_options)
+{
+	test<reachmap_options>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
 {
 	test<statistics_dialog>();
@@ -706,6 +706,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"campaign_selection",// segfault with LTO
 		"game_load",// segfault after disabling the above tests
 		"file_progress",
+		"fps_report", // needs something to report...
 	};
 	filesystem::delete_file(test_gui2_fixture::widgets_file);
 
@@ -1406,12 +1407,10 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(state)
-		, config_eng(create_eng.get_state()) {}
+	dialog_tester() : create_eng(state) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(create_eng, config_eng);
+		return new sp_options_configure(create_eng);
 	}
 };
 

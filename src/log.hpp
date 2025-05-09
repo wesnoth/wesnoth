@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -56,7 +56,6 @@
 #include <string>
 #include <utility>
 #include <chrono>
-#include <ctime>
 #include <cstdint>
 
 #include "formatter.hpp"

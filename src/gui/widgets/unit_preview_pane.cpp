@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -206,7 +206,11 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
  * attack data, meaning we can keep this as a helper function.
  */
 template<typename T>
-void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_node)
+void unit_preview_pane::print_attack_details(
+	T attacks,
+	const int attacks_left,
+	const int max_attacks,
+	tree_view_node& parent_node)
 {
 	if(attacks.empty()) {
 		return;
@@ -214,6 +218,14 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 
 
 	auto& header_node = add_name_tree_node(parent_node, "header", markup::bold(_("Attacks")));
+
+	if (max_attacks > 1) {
+		add_name_tree_node(header_node, "item",
+			VGETTEXT("Remaining: $left/$max",
+				{{"left", std::to_string(attacks_left)},
+				{"max",  std::to_string(max_attacks)}}),
+			_("This unit can attack multiple times per turn."));
+	}
 
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
@@ -244,6 +256,20 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 				subsection,
 				"item",
 				markup::span_color(font::weapon_details_color, range, font::weapon_details_sep, type)
+			);
+		}
+
+		if (max_attacks > 1) {
+			add_name_tree_node(
+				subsection,
+				"item",
+				markup::span_color(
+					font::weapon_details_color,
+					VNGETTEXT(
+					"uses $num attack",
+					"uses $num attacks",
+					a.attacks_used(),
+					{ {"num", std::to_string(a.attacks_used())} }))
 			);
 		}
 
@@ -385,7 +411,7 @@ void unit_preview_pane::set_display_data(const unit_type& type)
 			}
 		}
 
-		print_attack_details(type.attacks(), tree_details_->get_root_node());
+		print_attack_details(type.attacks(), type.max_attacks(), type.max_attacks(), tree_details_->get_root_node());
 	}
 }
 
@@ -521,7 +547,7 @@ void unit_preview_pane::set_display_data(const unit& u)
 				);
 			}
 		}
-		print_attack_details(u.attacks(), tree_details_->get_root_node());
+		print_attack_details(u.attacks(), u.attacks_left(), u.type().max_attacks(), tree_details_->get_root_node());
 	}
 }
 

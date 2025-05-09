@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -129,7 +129,7 @@ using signal_raw_event = dispatcher_callback<const SDL_Event&>;
 using signal_text_input = dispatcher_callback<const std::string&, int32_t, int32_t>;
 
 /** Hotkey function handler signature. */
-using hotkey_function = std::function<void(widget& dispatcher, hotkey::HOTKEY_COMMAND id)>;
+using hotkey_function = std::function<bool(widget& dispatcher, hotkey::HOTKEY_COMMAND id)>;
 
 /**
  * Base class for event handling.
@@ -440,7 +440,11 @@ public:
 	 * @param id                  The hotkey to register.
 	 * @param function            The callback function to call.
 	 */
-	void register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function);
+	template<typename Func>
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id, Func&& function)
+	{
+		hotkeys_[id] = std::move(function);
+	}
 
 	/**
 	 * Executes a hotkey.

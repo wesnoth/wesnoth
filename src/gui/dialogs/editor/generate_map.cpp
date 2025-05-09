@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -83,14 +83,9 @@ void editor_generate_map::pre_show()
 	listbox& list = find_widget<listbox>("generators_list");
 	keyboard_capture(&list);
 
-	widget_data lrow;
-	for(const auto & gen : map_generators_)
-	{
+	for(const auto& gen : map_generators_) {
 		assert(gen);
-		lrow["generator_name"]["label"] = gen->config_name();
-		// lrow["generator_id"]["label"] = gen->name();
-
-		list.add_row(lrow);
+		list.add_row(widget_data{{ "generator_name", {{ "label", gen->config_name() }}}});
 
 		if(gen.get() == last_map_generator_) {
 			list.select_last_row();

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-mapages_1.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2020-05-10 15:44+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -234,7 +234,7 @@ msgstr "B<--core>I<\\ mag_azonosító>"
 #: doc/man/wesnoth.6:75
 #, fuzzy
 #| msgid "overrides the data directory with the one specified"
-msgid "overrides the loaded core with the one whose id is specified."
+msgid "Overrides the loaded core with the one whose id is specified."
 msgstr "a megadott azonosítójú játékmagot tölti be az alapértelmezett helyett."
 
 #. type: TP
@@ -245,8 +245,10 @@ msgstr "B<--data-dir>I<\\ könyvtár>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
-msgid "overrides the data directory with the one specified"
-msgstr "a megadott könyvtárra módosítja az alapértelmezett adatkönyvtárat."
+msgid ""
+"Overrides the data directory with the one specified. The data directory is "
+"the one that contains subdirectories 'data', 'fonts', 'images' and others."
+msgstr ""
 
 # type: TP
 #. type: TP
@@ -433,12 +435,21 @@ msgstr "B<--log->I<szint>B<=>I<tartomány1>B<,>I<tartomány2>B<,>I<...>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:149
+#: doc/man/wesnoth.6:151
+#, fuzzy
+#| msgid ""
+#| "sets the severity level of the log domains.  B<all> can be used to match "
+#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
+#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
+#| "B<-d> option."
 msgid ""
-"sets the severity level of the log domains.  B<all> can be used to match any "
-"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
-"\\ B<none>.  By default the B<warning> level is used for most domains, but "
-"B<deprecation> defaults to B<none> unless combined with the B<-d> option."
+"sets the severity level of the log domains. The wildcard B<*> may be used to "
+"match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
+"domains).  Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
+"\\ B<none>.  By default, the B<warning> level is used for most domains, but "
+"B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
+"This option can be specified multiple times."
 msgstr ""
 "beállítja a naplózási tartományok szintjét. Az B<all> minden naplózási "
 "tartományra illeszkedik. Beállítható szintek: B<error>,\\ B<warning>,\\ "
@@ -448,13 +459,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:149
+#: doc/man/wesnoth.6:151
 #, no-wrap
 msgid "B<--log-precise>"
 msgstr "B<--log-precise>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:152
+#: doc/man/wesnoth.6:154
 #, fuzzy
 #| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
@@ -462,14 +473,14 @@ msgstr "nagyobb pontossággal mutatja az időbélyegeket a naplófájlban."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:152
+#: doc/man/wesnoth.6:154
 #, fuzzy, no-wrap
 #| msgid "B<--log-strict>"
 msgid "B<--log-strict>I<\\ level>"
 msgstr "B<--log-strict>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:161
+#: doc/man/wesnoth.6:163
 #, fuzzy
 #| msgid ""
 #| "sets the strict level of the logger. Any messages sent to log domains of "
@@ -486,13 +497,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:161
+#: doc/man/wesnoth.6:163
 #, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
 msgstr "B<--logdomains[>I<=szűrő>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:166
+#: doc/man/wesnoth.6:168
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
@@ -502,14 +513,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:166
+#: doc/man/wesnoth.6:168
 #, fuzzy, no-wrap
 #| msgid "B<--log-strict>"
 msgid "B<--no-log-to-file>"
 msgstr "B<--log-strict>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:169
+#: doc/man/wesnoth.6:171
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
@@ -518,14 +529,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:169
+#: doc/man/wesnoth.6:171
 #, fuzzy, no-wrap
 #| msgid "B<--log-strict>"
 msgid "B<--log-to-file>"
 msgstr "B<--log-strict>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:174
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
@@ -533,14 +544,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:174
 #, fuzzy, no-wrap
 #| msgid "B<--log-strict>"
 msgid "B<--no-log-sanitize>"
 msgstr "B<--log-strict>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:177
 msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
@@ -548,14 +559,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:177
 #, fuzzy, no-wrap
 #| msgid "B<--noaddons>"
 msgid "B<--wnoconsole>"
 msgstr "B<--noaddons>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:178
+#: doc/man/wesnoth.6:180
 msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
@@ -563,14 +574,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:178
+#: doc/man/wesnoth.6:180
 #, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
 msgstr "B<--max-fps>I<\\ fps>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:185
+#: doc/man/wesnoth.6:187
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between B<1> and B<1000>, the default is the monitor's refresh rate."
@@ -581,14 +592,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:185
+#: doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:191
+#: doc/man/wesnoth.6:193
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
@@ -598,25 +609,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:191
+#: doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--mp-test>"
 msgstr "B<--mp-test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:194
+#: doc/man/wesnoth.6:196
 msgid "load the test mp scenarios."
 msgstr "többjátékos tesztküldetések betöltése."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:194
+#: doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--new-widgets>"
 msgstr "B<--new-widgets>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:197
+#: doc/man/wesnoth.6:199
 msgid ""
 "there is a new WIP widget toolkit, this option enables it. This is very "
 "experimental, don't fill bug reports since most are known. Parts of the "
@@ -625,39 +636,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:197
+#: doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--noaddons>"
 msgstr "B<--noaddons>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:202
 msgid "disables loading of user addons."
 msgstr "letiltja a felhasználói kiegészítők betöltését."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:202
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:203
+#: doc/man/wesnoth.6:205
 msgid "disables caching of game data."
 msgstr "letiltja a játék gyorsítótárát."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:203
+#: doc/man/wesnoth.6:205
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:211
+#: doc/man/wesnoth.6:213
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
@@ -667,39 +678,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:211
+#: doc/man/wesnoth.6:213
 #, fuzzy, no-wrap
 #| msgid "B<--nocache>"
 msgid "B<--nobanner>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:216
 msgid "suppress the startup banner."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:216
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:217
+#: doc/man/wesnoth.6:219
 msgid "runs the game without music."
 msgstr "a játékot zene nélkül indítja el."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:217
+#: doc/man/wesnoth.6:219
 #, no-wrap
 msgid "B<--noreplaycheck>"
 msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:223
 msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
@@ -709,39 +720,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:223
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:226
 msgid "runs the game without sounds and music."
 msgstr "a játékot hangok nélkül indítja el."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:226
 #, fuzzy, no-wrap
 #| msgid "B<--gzip>I<\\ infile>"
 msgid "B<--output>I<\\ file>"
 msgstr "B<--gzip>I<\\ bemeneti_fájl>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:227
+#: doc/man/wesnoth.6:229
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:227
+#: doc/man/wesnoth.6:229
 #, no-wrap
 msgid "B<--password>I<\\ password>"
 msgstr "B<--password>I<\\ jelszó>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:232
+#: doc/man/wesnoth.6:234
 msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
@@ -751,13 +762,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:232
+#: doc/man/wesnoth.6:234
 #, no-wrap
 msgid "B<--plugin>I<\\ script>"
 msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:237
+#: doc/man/wesnoth.6:239
 msgid ""
 "load a I<script> which defines a Wesnoth plugin. Lua file should return a "
 "function which will be run as a coroutine and periodically woken up with "
@@ -765,14 +776,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:237
+#: doc/man/wesnoth.6:239
 #, fuzzy, no-wrap
 #| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-p,\\ --preprocess>I<\\ forrás-fájl/könyvtár>B<\\ >I<cél-könyvtár>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:242
+#: doc/man/wesnoth.6:244
 msgid ""
 "applies a DiffWML patch to a WML file; does not preprocess either of the "
 "files.  Outputs the patched WML to standard output or to the file indicated "
@@ -780,13 +791,13 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:242
+#: doc/man/wesnoth.6:244
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 msgstr "B<-p,\\ --preprocess>I<\\ forrás-fájl/könyvtár>B<\\ >I<cél-könyvtár>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:252
+#: doc/man/wesnoth.6:254
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -807,25 +818,25 @@ msgstr ""
 "található információ."
 
 #. type: TP
-#: doc/man/wesnoth.6:252
+#: doc/man/wesnoth.6:254
 #, fuzzy, no-wrap
 #| msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgid "B<--preprocess-string>I<\\ source-string>"
 msgstr "B<--preprocess-input-macros>I<\\ forrás-fájl>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:255
+#: doc/man/wesnoth.6:257
 msgid "preprocesses a given string and writes the output to stdout."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:255
+#: doc/man/wesnoth.6:257
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 msgstr "B<--preprocess-defines=>I<DEFINÍCIÓ1>B<,>I<DEFINÍCIÓ2>B<,>I<...>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:266
 #, fuzzy
 #| msgid ""
 #| "comma separated list of defines to be used by the B<--preprocess> "
@@ -841,13 +852,13 @@ msgstr ""
 "„data/core” könyvtár nem lesz előfeldolgozva."
 
 #. type: TP
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:266
 #, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgstr "B<--preprocess-input-macros>I<\\ forrás-fájl>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:273
+#: doc/man/wesnoth.6:275
 #, fuzzy
 #| msgid ""
 #| "used only by the B<--preprocess> command. Specifies a file that contains "
@@ -861,13 +872,13 @@ msgstr ""
 "előfeldolgozás előtt beolvasott B<[preproc_define]> szabályokat tartalmaz."
 
 #. type: TP
-#: doc/man/wesnoth.6:273
+#: doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
 msgstr "B<--preprocess-output-macros[>I<=cél-fájl>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:286
+#: doc/man/wesnoth.6:288
 #, fuzzy
 #| msgid ""
 #| "used only by the B<--preprocess> command. Will output all preprocessed "
@@ -891,29 +902,29 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:286
+#: doc/man/wesnoth.6:288
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:291
+#: doc/man/wesnoth.6:293
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "beállítja a képernyő felbontását. Példa: B<-r> B<800x600>."
 
 #. type: TP
-#: doc/man/wesnoth.6:291
+#: doc/man/wesnoth.6:293
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
 msgstr "B<--render-image>I<\\ kép>B<\\ >I<kimenet>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:294
+#: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "egy érvényes wesnoth „kép útvonal sztring”-et vár kép útvonal függvényekkel "
 "és kiír egy .png fájlt. A kép útvonal függvények dokumentációja a https://"
@@ -921,13 +932,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:294
+#: doc/man/wesnoth.6:296
 #, no-wrap
 msgid "B<-R,\\ --report>"
 msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:297
+#: doc/man/wesnoth.6:299
 msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
@@ -937,13 +948,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:297
+#: doc/man/wesnoth.6:299
 #, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--rng-seed>I<\\ érték>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:304
+#: doc/man/wesnoth.6:306
 msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
@@ -952,13 +963,13 @@ msgstr ""
 "B<--rng-seed> B<0>."
 
 #. type: TP
-#: doc/man/wesnoth.6:304
+#: doc/man/wesnoth.6:306
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
 msgstr "B<--screenshot>I<\\ térkép>B<\\ >I<kimenet>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:311
+#: doc/man/wesnoth.6:313
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr ""
@@ -967,14 +978,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:311
+#: doc/man/wesnoth.6:313
 #, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 msgstr "B<-s[>I<kiszolgáló>B<],\\ --server[>I<=kiszolgáló>B<]>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:316
+#: doc/man/wesnoth.6:318
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
@@ -985,37 +996,37 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:316
+#: doc/man/wesnoth.6:318
 #, no-wrap
 msgid "B<--showgui>"
 msgstr "B<--showgui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:320
+#: doc/man/wesnoth.6:322
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
 "grafikus felülettel futtatja a játékot, minden implicit B<--nogui> opció "
 "hatását felülírva."
 
 #. type: TP
-#: doc/man/wesnoth.6:320
+#: doc/man/wesnoth.6:322
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:323
+#: doc/man/wesnoth.6:325
 msgid "validation errors are treated as fatal errors."
 msgstr "az érvényességi hibákat végzetes hibaként kezeli."
 
 #. type: TP
-#: doc/man/wesnoth.6:323
+#: doc/man/wesnoth.6:325
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 msgstr "B<-t[>I<küldetés_azonosító>B<],\\ --test[>I<=küldetés_azonosító>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:333
+#: doc/man/wesnoth.6:335
 #, fuzzy
 #| msgid ""
 #| "runs the game in a small test scenario. The scenario should be one "
@@ -1032,13 +1043,13 @@ msgstr ""
 "a B<micro_ai_test>-tel indítható. Magába foglalja a B<--nogui> opciót."
 
 #. type: TP
-#: doc/man/wesnoth.6:333
+#: doc/man/wesnoth.6:335
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
 msgstr "B<--translations-over>I<\\ százalék>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:339
+#: doc/man/wesnoth.6:341
 msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
@@ -1049,13 +1060,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:339
+#: doc/man/wesnoth.6:341
 #, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
 msgstr "B<-u,\\ --unit>I<\\ küldetés-azonosító>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:345
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
 "futtatja a megadott teszt küldetést unit tesztként. Magába foglalja a B<--"
@@ -1063,13 +1074,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:345
 #, no-wrap
 msgid "B<--unsafe-scripts>"
 msgstr "B<--unsafe-scripts>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:348
+#: doc/man/wesnoth.6:350
 msgid ""
 "makes the B<package> package available to lua scripts, so that they can load "
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
@@ -1078,27 +1089,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:348
+#: doc/man/wesnoth.6:350
 #, fuzzy, no-wrap
 #| msgid "B<--scenario>I<\\ value>"
 msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario>I<\\ érték>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:352
+#: doc/man/wesnoth.6:354
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:352
+#: doc/man/wesnoth.6:354
 #, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
 msgstr "B<--userdata-dir>I<\\ név>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:361
+#: doc/man/wesnoth.6:363
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -1114,111 +1125,111 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:361
+#: doc/man/wesnoth.6:363
 #, no-wrap
 msgid "B<--userdata-path>"
 msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:364
+#: doc/man/wesnoth.6:366
 msgid "prints the path of the userdata directory and exits."
 msgstr ""
 "kiírja a játék felhasználói adatait tartalmazó könyvtár nevét, majd kilép."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:364
+#: doc/man/wesnoth.6:366
 #, fuzzy, no-wrap
 #| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--username>I<\\ username>"
 msgstr "B<--config-dir>I<\\ név>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:369
+#: doc/man/wesnoth.6:371
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:369
+#: doc/man/wesnoth.6:371
 #, fuzzy, no-wrap
 #| msgid "B<--data-path>"
 msgid "B<--validate>I<\\ path>"
 msgstr "B<--data-path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:372
+#: doc/man/wesnoth.6:374
 msgid "validates a file against the WML schema."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:372
+#: doc/man/wesnoth.6:374
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:375
+#: doc/man/wesnoth.6:377
 msgid "validates the WML of the given addon as you play."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:375
+#: doc/man/wesnoth.6:377
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
 msgid "B<--validate-core>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:378
+#: doc/man/wesnoth.6:380
 msgid "validates the core WML as you play."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:378
+#: doc/man/wesnoth.6:380
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
 msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:381
+#: doc/man/wesnoth.6:383
 msgid "validates a file as a WML schema."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:381
+#: doc/man/wesnoth.6:383
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:384
+#: doc/man/wesnoth.6:386
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "feltételezi, hogy a gyorsítótár érvényes. (veszélyes)"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:384
+#: doc/man/wesnoth.6:386
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:387
+#: doc/man/wesnoth.6:389
 msgid "shows the version number and exits."
 msgstr "kiírja a játék verziószámát, majd kilép."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:387
+#: doc/man/wesnoth.6:389
 #, fuzzy, no-wrap
 #| msgid "B<-v, --version>"
 msgid "B<--simple-version>"
@@ -1226,7 +1237,7 @@ msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:390
+#: doc/man/wesnoth.6:392
 #, fuzzy
 #| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
@@ -1234,40 +1245,40 @@ msgstr "kiírja a játék verziószámát, majd kilép."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:390
+#: doc/man/wesnoth.6:392
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:395
 msgid "runs the game in windowed mode."
 msgstr "a játékot ablakos módban indítja el."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:395
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:398
+#: doc/man/wesnoth.6:400
 msgid "replays the game loaded with the B<--load> option."
 msgstr "visszajátssza a B<--load> kapcsolóval betöltött játszmát."
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:399
+#: doc/man/wesnoth.6:401
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Opciók --multiplayer módban"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:406
+#: doc/man/wesnoth.6:408
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -1279,14 +1290,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:406
+#: doc/man/wesnoth.6:408
 #, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai_config>I<\\ szám>B<:>I<érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:409
+#: doc/man/wesnoth.6:411
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
@@ -1295,13 +1306,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:409
+#: doc/man/wesnoth.6:411
 #, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<\\ szám>B<:>I<érték>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:419
+#: doc/man/wesnoth.6:421
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1316,14 +1327,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:419
+#: doc/man/wesnoth.6:421
 #, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<\\ szám>B<:>I<érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:426
+#: doc/man/wesnoth.6:428
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
@@ -1333,14 +1344,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:426
+#: doc/man/wesnoth.6:428
 #, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era>I<\\ érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:433
+#: doc/man/wesnoth.6:435
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -1353,14 +1364,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:433
+#: doc/man/wesnoth.6:435
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:437
+#: doc/man/wesnoth.6:439
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1372,13 +1383,13 @@ msgstr ""
 "hasznos."
 
 #. type: TP
-#: doc/man/wesnoth.6:437
+#: doc/man/wesnoth.6:439
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:440
+#: doc/man/wesnoth.6:442
 msgid "do not use map settings, use default values instead."
 msgstr ""
 "az alapértelmezett térképbeállításokat használja a térkép saját beállításai "
@@ -1386,25 +1397,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:440
+#: doc/man/wesnoth.6:442
 #, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:445
+#: doc/man/wesnoth.6:447
 msgid "sets the I<label> for AIs."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:445
+#: doc/man/wesnoth.6:447
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--multiplayer-repeat>I<\\ érték>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:452
+#: doc/man/wesnoth.6:454
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
@@ -1414,14 +1425,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:452
+#: doc/man/wesnoth.6:454
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<\\ szám>B<:>I<név>B<:>I<érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:461
+#: doc/man/wesnoth.6:463
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1434,14 +1445,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:461
+#: doc/man/wesnoth.6:463
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario>I<\\ érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:465
+#: doc/man/wesnoth.6:467
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -1451,14 +1462,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:465
+#: doc/man/wesnoth.6:467
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<\\ szám>B<:>I<érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:470
+#: doc/man/wesnoth.6:472
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1469,14 +1480,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:470
+#: doc/man/wesnoth.6:472
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns>I<\\ érték>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:473
+#: doc/man/wesnoth.6:475
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
@@ -1485,13 +1496,13 @@ msgstr ""
 "kör korlát."
 
 #. type: SH
-#: doc/man/wesnoth.6:474 doc/man/wesnothd.6:271
+#: doc/man/wesnoth.6:476 doc/man/wesnothd.6:271
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "BEFEJEZÉSI ÁLLAPOT"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:479
+#: doc/man/wesnoth.6:481
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1502,7 +1513,7 @@ msgstr ""
 "Ha a kilépési kód 2, akkor a parancssori opciókkal van gond."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:489
+#: doc/man/wesnoth.6:491
 #, fuzzy
 #| msgid ""
 #| "When running unit tests (withB<\\ -u>), the exit status is different. An "
@@ -1532,44 +1543,44 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:490 doc/man/wesnothd.6:275
+#: doc/man/wesnoth.6:492 doc/man/wesnothd.6:275
 #, no-wrap
 msgid "AUTHOR"
 msgstr "SZERZŐ"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:493
+#: doc/man/wesnoth.6:495
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Írta: David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:495
+#: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Szerkesztették: Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> és Soliton E<lt>soliton.de@gmail.comE<gt>.\n"
 "Magyarra fordították: Gilluin E<lt>gilluin@citromail.huE<gt>, Széll Tamás "
 "E<lt>tomi@digiflex.huE<gt>, Pintér Csaba, Kádár-Németh Krisztián "
-"E<lt>krisztian.kad@gmail.comE<gt> és Udvari Gábor "
-"E<lt>gabor.udvari@gmail.comE<gt>."
+"E<lt>krisztian.kad@gmail.comE<gt> és Udvari Gábor E<lt>gabor.udvari@gmail."
+"comE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:497
+#: doc/man/wesnoth.6:499
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Ennek a dokumentumnak az eredetijét Cyril Bouthors "
-"E<lt>cyril@bouthors.orgE<gt> írta."
+"Ennek a dokumentumnak az eredetijét Cyril Bouthors E<lt>cyril@bouthors."
+"orgE<gt> írta."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:499 doc/man/wesnothd.6:282
+#: doc/man/wesnoth.6:501 doc/man/wesnothd.6:282
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr ""
 "Látogasd meg a hivatalos honlapot: https://www.wesnoth.org/ illetve a magyar "
@@ -1577,25 +1588,25 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:500 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:502 doc/man/wesnothd.6:283
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "SZERZŐI JOGOK"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:286
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:286
 #, fuzzy
 #| msgid ""
 #| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"A szerzői jogok \\(co 2003-2018 David White-ot "
-"E<lt>davidnwhite@verizon.netE<gt> illetik meg"
+"A szerzői jogok \\(co 2003-2018 David White-ot E<lt>davidnwhite@verizon."
+"netE<gt> illetik meg"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:289
+#: doc/man/wesnoth.6:508 doc/man/wesnothd.6:289
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1610,7 +1621,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:290
+#: doc/man/wesnoth.6:509 doc/man/wesnothd.6:290
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "LÁSD MÉG"
@@ -1911,18 +1922,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: "
-#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
+#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A B<*> és B<?> "
 "jelzések is használhatóak. Lásd a B<glob>(7) részt a részletekért. "
-"Alapértelmezett értékek (ha más nincsen megadva): B<*admin*, "
-"*admln*,*server*,ai,ai?,computer,human,network,player>."
+"Alapértelmezett értékek (ha más nincsen megadva): B<*admin*, *admln*,"
+"*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2627,9 +2638,9 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Írta: David White E<lt>davidnwhite@verizon.netE<gt>.  Szerkesztették: Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> és "
@@ -2638,14 +2649,17 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt> írta.\n"
 "Magyarra fordították: Gilluin E<lt>gilluin@citromail.huE<gt>, Széll Tamás "
 "E<lt>tomi@digiflex.huE<gt>, Pintér Csaba, Kádár-Németh Krisztián "
-"E<lt>krisztian.kad@gmail.comE<gt> és Udvari Gábor "
-"E<lt>gabor.udvari@gmail.comE<gt>."
+"E<lt>krisztian.kad@gmail.comE<gt> és Udvari Gábor E<lt>gabor.udvari@gmail."
+"comE<gt>."
 
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:293
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#~ msgid "overrides the data directory with the one specified"
+#~ msgstr "a megadott könyvtárra módosítja az alapértelmezett adatkönyvtárat."
 
 # type: TP
 #, fuzzy, no-wrap

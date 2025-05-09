@@ -130,7 +130,6 @@ game_events/manager_impl.cpp
 game_events/menu_item.cpp
 game_events/pump.cpp
 game_events/wmi_manager.cpp
-game_initialization/configure_engine.cpp
 game_initialization/connect_engine.cpp
 game_initialization/create_engine.cpp
 game_initialization/depcheck.cpp
@@ -163,6 +162,7 @@ gui/core/placer/vertical_list.cpp
 gui/core/static_registry.cpp
 gui/core/timer.cpp
 gui/core/top_level_drawable.cpp
+gui/core/tracked_drawable.cpp
 gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
@@ -204,6 +204,7 @@ gui/dialogs/file_dialog.cpp
 gui/dialogs/file_progress.cpp
 gui/dialogs/folder_create.cpp
 gui/dialogs/formula_debugger.cpp
+gui/dialogs/fps_report.cpp
 gui/dialogs/game_cache_options.cpp
 gui/dialogs/game_delete.cpp
 gui/dialogs/game_load.cpp
@@ -248,6 +249,7 @@ gui/dialogs/preferences_dialog.cpp
 gui/dialogs/prompt.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
+gui/dialogs/reachmap_options.cpp
 gui/dialogs/server_info_dialog.cpp
 gui/dialogs/simple_item_selector.cpp
 gui/dialogs/sp_options_configure.cpp
@@ -306,7 +308,6 @@ play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
 playturn_network_adapter.cpp
-preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp

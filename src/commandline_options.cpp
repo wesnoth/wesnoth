@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -175,8 +175,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	general_opts.add_options()
 		("all-translations", "Show all translations, even incomplete ones.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
-		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
-		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
+		("core", po::value<std::string>(), "Overrides the loaded core with the one whose id is specified.")
+		("data-dir", po::value<std::string>(), "Overrides the data directory with the one specified. The data directory is the one that contains subdirectories 'data', 'fonts', 'images' and others.")
 		("data-path", "prints the path of the data directory and exits." IMPLY_TERMINAL)
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")

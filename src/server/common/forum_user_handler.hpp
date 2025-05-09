@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

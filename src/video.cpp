@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,7 @@
 #include "game_version.hpp"
 #endif
 
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h> // SDL_Texture
 
 #include <cassert>

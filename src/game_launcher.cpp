@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -155,7 +155,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fps)
 		prefs::get().set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
-		start_in_fullscreen_ = true;
+		prefs::get().set_fullscreen(true);
 	if(cmdline_opts_.load)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
@@ -218,7 +218,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
-		start_in_fullscreen_ = false;
+		prefs::get().set_fullscreen(false);
 	if(cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
 	if(cmdline_opts_.translation_percent)
@@ -226,10 +226,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 
 	if(!cmdline_opts.nobanner) {
 		PLAIN_LOG
-			<< "\nData directory:               " << game_config::path
-			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
-			<< "\nCache directory:              " << filesystem::get_cache_dir()
-			<< "\n\n";
+			<< "\nGame data:    " << game_config::path
+			<< "\nUser data:    " << filesystem::get_user_data_dir()
+			<< "\nCache:        " << filesystem::get_cache_dir()
+			<< "\n";
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize

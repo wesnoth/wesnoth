@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -43,9 +43,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	config result;
-
-	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
 		return boost::algorithm::contains(e.dev_message, "Inheritance cycle from other/second to main/first found");
 	});
 }
@@ -64,9 +62,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_only_if_used)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-
-	config result;
-	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
+	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
 }
 
 BOOST_AUTO_TEST_CASE(test_super_cycle_crashes_on_unknown_key)
@@ -85,9 +81,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_crashes_on_unknown_key)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	config result;
-
-	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
 		return boost::algorithm::contains(e.dev_message, "Invalid key 'unknown=' in tag [first]");
 	});
 }
@@ -107,9 +101,7 @@ BOOST_AUTO_TEST_CASE(test_super_missing)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	config result;
-
-	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
 		return boost::algorithm::contains(e.dev_message, "Super not/here not found. Needed by other/second");
 	});
 }
@@ -128,9 +120,7 @@ BOOST_AUTO_TEST_CASE(test_super_missing_only_if_used)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-
-	config result;
-	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
+	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
 }
 
 BOOST_AUTO_TEST_CASE(test_super_mandatory)
@@ -147,9 +137,7 @@ BOOST_AUTO_TEST_CASE(test_super_mandatory)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-
-	config result;
-	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
+	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
 }
 
 BOOST_AUTO_TEST_CASE(test_super_mandatory_missing)
@@ -166,10 +154,7 @@ BOOST_AUTO_TEST_CASE(test_super_mandatory_missing)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-
-	config result;
-
-	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
 		return boost::algorithm::contains(e.dev_message, "Missing key 'id=' in tag [campaign]");
 	});
 }
@@ -188,9 +173,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_mandatory)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-
-	config result;
-	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
+	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
 }
 
 BOOST_AUTO_TEST_CASE(test_schema_link_cycle)

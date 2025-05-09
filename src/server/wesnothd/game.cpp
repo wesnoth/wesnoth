@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,6 +77,8 @@ int game::db_id_num = 1;
 
 game::game(wesnothd::server& server, player_connections& player_connections,
 		player_iterator host,
+		queue_type::type queue_type,
+		int queue_id,
 		const std::string& name,
 		bool save_replays,
 		const std::string& replay_save_path)
@@ -112,6 +114,8 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, replay_save_path_(replay_save_path)
 	, rng_()
 	, last_choice_request_id_(-1) /* or maybe 0 ? it shouldn't matter*/
+	, queue_type_(queue_type)
+	, queue_id_(queue_id)
 {
 	players_.push_back(owner_);
 
@@ -146,6 +150,11 @@ static const simple_wml::node& get_multiplayer(const simple_wml::node& root)
 		ERR_GAME << "no [multiplayer] found. Returning root";
 		return root;
 	}
+}
+
+const std::string game::get_scenario_id() const
+{
+	return get_multiplayer(level_.root())["mp_scenario"].to_string();
 }
 
 bool game::allow_observers() const

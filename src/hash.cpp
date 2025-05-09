@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,8 +44,7 @@ const std::string hash_prefix = "$H$";
 
 template<std::size_t len>
 std::string encode_hash(const std::array<uint8_t, len>& bytes) {
-	utils::byte_string_view view{bytes.data(), len};
-	return crypt64::encode(view);
+	return crypt64::encode(bytes);
 }
 
 template<std::size_t len>

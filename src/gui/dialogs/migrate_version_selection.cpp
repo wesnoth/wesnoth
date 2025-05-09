@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -71,13 +71,7 @@ void migrate_version_selection::pre_show()
 	listbox& version_list = find_widget<listbox>("versions_listbox");
 
 	for(const auto& version : versions_) {
-		widget_data data;
-		widget_item item_label;
-
-		item_label["label"] = version;
-		data["version_label"] = item_label;
-
-		version_list.add_row(data);
+		version_list.add_row(widget_data{{ "version_label", {{ "label", version }}}});
 	}
 }
 

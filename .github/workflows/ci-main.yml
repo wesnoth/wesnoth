@@ -30,7 +30,7 @@ jobs:
           ./utils/CI/utf8_bom_dog.sh
       - name: Whitespace and WML indentation check
         if: success() || failure()
-        run: ./utils/CI/fix_whitespace.sh; git status; git diff --exit-code
+        run: ./utils/CI/fix_whitespace.sh && git status && git diff --exit-code
       - name: WML missing images check
         if: success() || failure()
         run: utils/CI/check_wml_images.sh
@@ -156,7 +156,7 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: success() || steps.build.outcome == 'success'
+        if: matrix.cc == 'clang' && (success() || steps.build.outcome == 'success')
         run: ./run_boost_tests
 
   steam-runtime:

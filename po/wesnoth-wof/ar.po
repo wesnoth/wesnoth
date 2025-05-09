@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
 "PO-Revision-Date: 2024-04-03 12:19+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -7075,8 +7075,22 @@ msgstr "كارافيل"
 
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sturdy and reliable caravel is the mainstay of human oceanic "
+#| "exploration, shipping and projection of influence. More seaworthy than "
+#| "lighter vessels, one might yet be spied navigating deeper rivers, where "
+#| "the maneuverabilty and shallow draft somewhat compensate for the tonnage "
+#| "of the vessel.\n"
+#| "\n"
+#| "While its modest speed compared to the vessels of other races makes "
+#| "evasion difficult, its tall fore and aft castles hold a powerful arsenal "
+#| "of ballistae to fend against pirate and sea monster alike.\n"
+#| "\n"
+#| "The caravel can dock at coastal villages, though this makes it entirely "
+#| "vulnerable."
 msgid ""
-"The sturdy and reliable caravel is the mainstay of human oceanic "
+"The sturdy and reliable Caravel is the mainstay of human oceanic "
 "exploration, shipping and projection of influence. More seaworthy than "
 "lighter vessels, one might yet be spied navigating deeper rivers, where the "
 "maneuverabilty and shallow draft somewhat compensate for the tonnage of the "
@@ -7086,7 +7100,7 @@ msgid ""
 "difficult, its tall fore and aft castles hold a powerful arsenal of "
 "ballistae to fend against pirate and sea monster alike.\n"
 "\n"
-"The caravel can dock at coastal villages, though this makes it entirely "
+"The Caravel can dock at coastal villages, though this makes it entirely "
 "vulnerable."
 msgstr ""
 "تعتبر سفينة الكارافيل القوية والموثوقة الدعامة الأساسية لاستكشاف المحيطات "
@@ -7118,13 +7132,22 @@ msgstr "دولفين"
 
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+#| "and the Ka’lian rated the creature’s sensibility nearly on par with that "
+#| "of an elf. Among coastal orcish tribes the meat is consumed as a "
+#| "delicacy.\n"
+#| "\n"
+#| "One of the rare air breathing fish, the dolphin is never too long below "
+#| "the surface of the sea."
 msgid ""
-"The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+"The sight of a Dolphin is seen as a good omen by the sailors of Elensefar "
 "and the Ka’lian rated the creature’s sensibility nearly on par with that of "
 "an elf. Among coastal orcish tribes the meat is consumed as a delicacy.\n"
 "\n"
-"One of the rare air breathing fish, the dolphin is never too long below the "
-"surface of the sea."
+"As an aquatic mammal, the Dolphin is never too long below the surface of the "
+"sea."
 msgstr ""
 "يُنظر إلى مشهد الدلفين على أنه فأل خير من قبل بحارة إلينسفار، وصنف كاليان "
 "حساسية المخلوق على قدم المساواة تقريبًا مع حساسية الإلفي. بين القبائل "
@@ -7155,8 +7178,13 @@ msgstr "الفهد"
 
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The leopard is a fast and powerful ambush predator of the distant and "
+#| "mysterious jungle realms. While dangerous in any circumstance, it is most "
+#| "lethal when hidden in wooded areas."
 msgid ""
-"The leopard is a fast and powerful ambush predator of the distant and "
+"The Leopard is a fast and powerful ambush predator of the distant and "
 "mysterious jungle realms. While dangerous in any circumstance, it is most "
 "lethal when hidden in wooded areas."
 msgstr ""
@@ -7252,11 +7280,14 @@ msgstr "ستيمفاليان"
 #. [unit_type]: id=Stymphalian, race=monster
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:8
 msgid ""
-"A fiendish-tempered bird with a piercing, bronzy beak. It is covered in "
-"hard, blade-sharp feathers that it can fling at its victims."
+"Stymphalians are vicious and fiendish-tempered carnivorous birds that fly "
+"through the skies in search of their prey, which can range from small rats "
+"to large humans. Their piercing, bronzy beak can chew through even the "
+"hardest bone, and their mighty wingspans are covered in blade-sharp feathers "
+"which they can fling en masse towards their victims. Most humans would run "
+"from this bird’s call, though some drakes use their superior strength to "
+"hunt them."
 msgstr ""
-"طائر شيطاني المزاج ومنقاره برونزي خارق. وهو مغطى بريش صلب حاد يمكنه رميه على "
-"ضحاياه."
 
 #. [attack]: type=pierce
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:73
@@ -7295,13 +7326,13 @@ msgid "breath"
 msgstr "نفس ناري"
 
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:10
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:6
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:7
 msgid "blast"
 msgstr "انفجار"
 
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:11
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:8
 msgid "This attack also harms everyone near the opponent."
 msgstr "هذا الهجوم يضر أيضًا بكل من يقترب من الخصم."
 
@@ -7362,6 +7393,13 @@ msgstr "هذا الياقوت يمنح حامله هجومًا باردًا بع
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:179
 msgid "sapphire of ice"
 msgstr "ياقوتة الجليد"
+
+#~ msgid ""
+#~ "A fiendish-tempered bird with a piercing, bronzy beak. It is covered in "
+#~ "hard, blade-sharp feathers that it can fling at its victims."
+#~ msgstr ""
+#~ "طائر شيطاني المزاج ومنقاره برونزي خارق. وهو مغطى بريش صلب حاد يمكنه رميه "
+#~ "على ضحاياه."
 
 #~ msgid "When the heroes exit, anyone left on the map will die"
 #~ msgstr "عندما يخرج الأبطال، سيموت أي شخص يبقى على الخريطة"

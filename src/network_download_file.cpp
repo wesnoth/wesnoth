@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -54,7 +54,7 @@ namespace network
 			curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
 			curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, 5000L);
 			#if LIBCURL_VERSION_NUM >= 0x075500
-				curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, CURLPROTO_HTTPS);
+				curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, "https");
 			#else
 				curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);
 			#endif

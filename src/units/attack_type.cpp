@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -265,7 +265,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
-			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
+			wfl::gamestate_function_symbol_table symbols;
+			const wfl::formula form(filter_formula, &symbols);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}

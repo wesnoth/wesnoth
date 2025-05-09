@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 

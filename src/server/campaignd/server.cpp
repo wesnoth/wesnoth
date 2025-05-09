@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2024
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -48,7 +48,6 @@
 #endif
 
 #include <csignal>
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <utility>
@@ -258,24 +257,6 @@ std::vector<std::string> multi_find_case_conflicts(const std::initializer_list<o
 	return names;
 }
 
-/**
- * Escapes double quotes intended to be passed into simple_wml.
- *
- * Just why does simple_wml have to be so broken to force us to use this, though?
- */
-std::string simple_wml_escape(const std::string& text)
-{
-	std::string res;
-	auto it = text.begin();
-
-	while(it != text.end()) {
-		res.append(*it == '"' ? 2 : 1, *it);
-		++it;
-	}
-
-	return res;
-}
-
 } // end anonymous namespace
 
 server::server(const std::string& cfg_file, unsigned short port)
@@ -336,8 +317,7 @@ void server::load_config()
 {
 	LOG_CS << "Reading configuration from " << cfg_file_ << "...";
 
-	filesystem::scoped_istream in = filesystem::istream_file(cfg_file_);
-	read(cfg_, *in);
+	cfg_ = io::read(*filesystem::istream_file(cfg_file_));
 
 	read_only_ = cfg_["read_only"].to_bool(false);
 
@@ -408,10 +388,11 @@ void server::load_config()
 	addons_.clear();
 	std::vector<std::string> legacy_addons, dirs;
 	filesystem::get_files_in_dir("data", &legacy_addons, &dirs);
-	config meta;
+
 	for(const std::string& addon_dir : dirs) {
-		in = filesystem::istream_file(filesystem::normalize_path("data/" + addon_dir + "/addon.cfg"));
-		read(meta, *in);
+		auto addon_path = filesystem::normalize_path("data/" + addon_dir + "/addon.cfg");
+		config meta = io::read(*filesystem::istream_file(addon_path));
+
 		if(!meta.empty()) {
 			addons_.emplace(meta["name"].str(), meta);
 		} else {
@@ -436,9 +417,7 @@ void server::load_config()
 					   + "'. Check the file structure!\n");
 			}
 
-			config data;
-			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
-			read_gz(data, *in);
+			config data = io::read_gz(*filesystem::istream_file(filesystem::normalize_path(addon_file)));
 			if (data.empty()) {
 				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
@@ -523,10 +502,8 @@ void server::serve_requests(Socket socket, boost::asio::yield_context yield)
 			return;
 		}
 
-		config data;
-		read(data, doc->output());
-
-		config::all_children_iterator i = data.ordered_begin();
+		config data = io::read(doc->output());
+		auto i = data.ordered_begin();
 
 		if(i != data.ordered_end()) {
 			// We only handle the first child.
@@ -768,12 +745,7 @@ void server::load_blacklist()
 	}
 
 	try {
-		filesystem::scoped_istream in = filesystem::istream_file(blacklist_file_);
-		config blcfg;
-
-		read(blcfg, *in);
-
-		blacklist_.read(blcfg);
+		blacklist_.read(io::read(*filesystem::istream_file(blacklist_file_)));
 		LOG_CS << "using blacklist from " << blacklist_file_;
 	} catch(const config::error&) {
 		ERR_CS << "failed to read blacklist from " << blacklist_file_ << ", blacklist disabled";
@@ -784,14 +756,14 @@ void server::write_config()
 {
 	DBG_CS << "writing configuration and add-ons list to disk...";
 	filesystem::atomic_commit out(cfg_file_);
-	write(*out.ostream(), cfg_);
+	io::write(*out.ostream(), cfg_);
 	out.commit();
 
 	for(const std::string& name : dirty_addons_) {
 		auto addon = get_addon(name);
 		if(addon && !addon["filename"].empty()) {
 			filesystem::atomic_commit addon_out(filesystem::normalize_path(addon["filename"].str() + "/addon.cfg"));
-			write(*addon_out.ostream(), *addon);
+			io::write(*addon_out.ostream(), *addon);
 			addon_out.commit();
 		}
 	}
@@ -853,9 +825,8 @@ bool server::ignore_address_stats(const std::string& addr) const
 
 void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 {
-	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
-	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
+	doc.root().add_child("message").set_attr_esc("message", msg);
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
@@ -866,9 +837,8 @@ inline std::string client_address(const any_socket_ptr& sock) {
 void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 {
 	ERR_CS << "[" << client_address(sock) << "] " << msg;
-	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
-	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
+	doc.root().add_child("error").set_attr_esc("message", msg);
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
@@ -879,16 +849,12 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 		<< std::uppercase << status_code;
 	ERR_CS << "[" << client_address(sock) << "]: (" << status_hex << ") " << msg;
 
-	const auto& escaped_status_str = simple_wml_escape(std::to_string(status_code));
-	const auto& escaped_msg = simple_wml_escape(msg);
-	const auto& escaped_extra_data = simple_wml_escape(extra_data);
-
 	simple_wml::document doc;
 	simple_wml::node& err_cfg = doc.root().add_child("error");
 
-	err_cfg.set_attr_dup("message", escaped_msg.c_str());
-	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
-	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
+	err_cfg.set_attr_esc("message", msg);
+	err_cfg.set_attr_esc("extra_data", extra_data);
+	err_cfg.set_attr_int("status_code", status_code);
 
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
@@ -962,7 +928,7 @@ void server::handle_server_id(const server::request& req)
 	DBG_CS << req << "Sending server identification";
 
 	std::ostringstream ostr;
-	write(ostr, config{"server_id", config{
+	io::write(ostr, config{"server_id", config{
 		"id",					server_id_,
 		"cap",					utils::join(capabilities_),
 		"version",				game_config::revision,
@@ -1081,7 +1047,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	response.add_child("campaigns", std::move(addons_list));
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	io::write(ostr, response);
 	std::string wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
@@ -1160,11 +1126,10 @@ void server::handle_request_campaign(const server::request& req)
 					continue;
 				}
 
-				config step_delta;
 				const auto& update_pack_path = addon["filename"].str() + '/' + pack["filename"].str();
 				auto in = filesystem::istream_file(update_pack_path);
 
-				read_gz(step_delta, *in);
+				config step_delta = io::read_gz(*in);
 
 				if(!step_delta.empty()) {
 					// Don't copy arbitrarily large data around
@@ -1190,7 +1155,7 @@ void server::handle_request_campaign(const server::request& req)
 
 		if(!force_use_full && !delta.empty()) {
 			std::ostringstream ostr;
-			write(ostr, delta);
+			io::write(ostr, delta);
 			const auto& wml_text = ostr.str();
 
 			simple_wml::document doc(wml_text.c_str(), simple_wml::INIT_STATIC);
@@ -1725,8 +1690,7 @@ void server::handle_upload(const server::request& req)
 		}
 
 		auto in = filesystem::istream_file(pathstem + '/' + it->second["filename"].str());
-		rw_full_pack.clear();
-		read_gz(rw_full_pack, *in);
+		rw_full_pack = io::read_gz(*in);
 
 		if(have_wml(delta_remove)) {
 			data_apply_removelist(rw_full_pack, *delta_remove);
@@ -1850,13 +1814,12 @@ void server::handle_upload(const server::request& req)
 
 		// Generate the update pack from both full packs
 
-		config pack, from, to;
-
 		filesystem::scoped_istream in = filesystem::istream_file(prev_path);
-		read_gz(from, *in);
+		config from = io::read_gz(*in);
 		in = filesystem::istream_file(next_path);
-		read_gz(to, *in);
+		config to = io::read_gz(*in);
 
+		config pack;
 		make_updatepack(pack, from, to);
 
 		{
@@ -2038,7 +2001,7 @@ void server::handle_list_hidden(const server::request& req)
 	}
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	io::write(ostr, response);
 
 	const auto& wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
@@ -2056,7 +2019,7 @@ void server::handle_addon_downloads_by_version(const server::request& req)
 	}
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	io::write(ostr, response);
 
 	const auto& wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
@@ -2074,7 +2037,7 @@ void server::handle_forum_auth_usage(const server::request& req)
 	}
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	io::write(ostr, response);
 
 	const auto& wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
@@ -2092,7 +2055,7 @@ void server::handle_admins_list(const server::request& req)
 	}
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	io::write(ostr, response);
 
 	const auto& wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);

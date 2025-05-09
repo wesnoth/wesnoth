@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"POT-Creation-Date: 2025-04-27 22:22-0500\n"
 "PO-Revision-Date: 2024-03-17 17:34+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -2320,11 +2320,13 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=reachmap_defaults
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:474
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
 msgstr "Standaarden"
@@ -2337,58 +2339,93 @@ msgid "Players"
 msgstr "Spelers"
 
 #. [settings]
-#: data/gui/themes/celes/celes.cfg:25 data/gui/themes/default/default.cfg:23
+#: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Druk op '$hotkey' voor meer informatie)"
 
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:157
-msgid "Hide"
-msgstr ""
-
-#. [button]: id=close
-#: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Hide tip of the day"
-msgstr "Toon volgende tip van de dag"
-
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:171
+#: data/gui/themes/celes/dialogs/title_screen.cfg:165
 #: data/gui/themes/default/dialogs/chat_log.cfg:105
 #: data/gui/themes/default/dialogs/title_screen.cfg:194
 msgid "Previous"
 msgstr "Vorige"
 
 #. [button]: id=previous_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:172
+#: data/gui/themes/celes/dialogs/title_screen.cfg:166
 #: data/gui/themes/default/dialogs/title_screen.cfg:195
 msgid "Show previous tip of the day"
 msgstr "Toon vorige tip van de dag"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
-#: data/gui/themes/celes/dialogs/title_screen.cfg:186
+#: data/gui/themes/celes/dialogs/title_screen.cfg:179
 #: data/gui/themes/default/dialogs/chat_log.cfg:114
 #: data/gui/themes/default/dialogs/title_screen.cfg:209
 msgid "Next"
 msgstr "Volgende"
 
 #. [button]: id=next_tip
-#: data/gui/themes/celes/dialogs/title_screen.cfg:187
+#: data/gui/themes/celes/dialogs/title_screen.cfg:180
 #: data/gui/themes/default/dialogs/title_screen.cfg:210
 msgid "Show next tip of the day"
 msgstr "Toon volgende tip van de dag"
 
+#. [button]: id=toggle_tip_panel
+#: data/gui/themes/celes/dialogs/title_screen.cfg:215
+#, fuzzy
+#| msgid "Next Tip of the Day"
+msgid "Tip of the Day"
+msgstr "Volgende Tip van de Dag"
+
+#. [button]: id=toggle_tip_panel
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/celes/dialogs/title_screen.cfg:216
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#, fuzzy
+#| msgid "Show next tip of the day"
+msgid "Show tip of the day"
+msgstr "Toon volgende tip van de dag"
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:229
+#: data/gui/themes/default/dialogs/title_screen.cfg:472
+msgid "About"
+msgstr ""
+
+#. [button]: id=about
+#: data/gui/themes/celes/dialogs/title_screen.cfg:230
+#: data/gui/themes/default/dialogs/title_screen.cfg:473
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "General information about Battle for Wesnoth"
+msgstr "De Strijd om Wesnoth"
+
+#. [button]: id=language
+#. [label]
+#. [label]: id=translations_language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/default/dialogs/addon_manager.cfg:870
+#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
+#: data/gui/themes/default/dialogs/language_selection.cfg:227
+#: data/gui/themes/default/dialogs/title_screen.cfg:494
+msgid "Language"
+msgstr "Taal"
+
+#. [button]: id=language
+#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/default/dialogs/title_screen.cfg:495
+msgid "Change the language"
+msgstr "Verander de taal"
+
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Campaigns"
 msgstr "Veldtochten"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:235
+#: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Start a new single player campaign"
 msgstr "Begin een nieuwe veldtocht voor één speler"
@@ -2397,16 +2434,16 @@ msgstr "Begin een nieuwe veldtocht voor één speler"
 #. [grid]
 #. [label]
 #. [widget]: id=label
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:367
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:236
+#: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
@@ -2417,27 +2454,27 @@ msgstr ""
 #. [grid]
 #. [button]: id=load_movetype
 #. [button]: id=ok
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
-#: data/gui/themes/default/dialogs/game_load.cfg:639
+#: data/gui/themes/default/dialogs/game_load.cfg:638
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load"
 msgstr "Laden"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:237
+#: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load a saved game"
 msgstr "Laad een opgeslagen spel"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:241
+#: data/gui/themes/celes/dialogs/title_screen.cfg:292
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
@@ -2447,41 +2484,41 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:79
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Achievements"
 msgstr "Prestaties"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:242
+#: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 msgid "View achievements"
 msgstr "Toon prestaties"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Map Editor"
 msgstr "Kaarteditor"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:243
+#: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Start the map editor"
 msgstr "Start de kaarteditor"
 
 #. [grid]
 #. [tab]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/game_version.cfg:904
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:244
+#: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 #, fuzzy
 #| msgid "The Battle for Wesnoth"
@@ -2489,7 +2526,7 @@ msgid "Places to talk about Wesnoth"
 msgstr "De Strijd om Wesnoth"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 msgid "Configure the game’s settings"
 msgstr "Configureer de instellingen van het spel"
@@ -2498,9 +2535,8 @@ msgstr "Configureer de instellingen van het spel"
 #. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
-#: data/gui/themes/celes/dialogs/title_screen.cfg:245
+#: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:571
-#: data/gui/themes/default/dialogs/lobby_main.cfg:772
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2510,14 +2546,14 @@ msgstr "Instellingen"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [button]: id=help
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #: data/gui/themes/default/dialogs/title_screen.cfg:178
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Help"
 msgstr "Help"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:246
+#: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #, fuzzy
 #| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
@@ -2526,7 +2562,7 @@ msgstr "Verander het thema in het spel"
 #. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/formula_debugger.cfg:234
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
@@ -2534,41 +2570,10 @@ msgid "Quit"
 msgstr "Afsluiten"
 
 #. [grid]
-#: data/gui/themes/celes/dialogs/title_screen.cfg:247
+#: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit the game"
 msgstr "Verlaat het spel"
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:461
-#: data/gui/themes/default/dialogs/title_screen.cfg:472
-msgid "About"
-msgstr ""
-
-#. [button]: id=about
-#: data/gui/themes/celes/dialogs/title_screen.cfg:462
-#: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
-msgid "General information about Battle for Wesnoth"
-msgstr "De Strijd om Wesnoth"
-
-#. [button]: id=language
-#. [label]
-#. [label]: id=translations_language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:475
-#: data/gui/themes/default/dialogs/addon_manager.cfg:870
-#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:258
-#: data/gui/themes/default/dialogs/language_selection.cfg:227
-#: data/gui/themes/default/dialogs/title_screen.cfg:494
-msgid "Language"
-msgstr "Taal"
-
-#. [button]: id=language
-#: data/gui/themes/celes/dialogs/title_screen.cfg:476
-#: data/gui/themes/default/dialogs/title_screen.cfg:495
-msgid "Change the language"
-msgstr "Verander de taal"
 
 #. [draw]
 #: data/gui/themes/celes/widgets/button_success.cfg:196
@@ -2593,7 +2598,7 @@ msgstr ""
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/themes/celes/widgets/window_default.cfg:106
-#: data/gui/themes/default/dialogs/achievements_dialog.cfg:306
+#: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
@@ -2602,7 +2607,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:992
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:288
+#: data/gui/themes/default/dialogs/help_browser.cfg:274
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2672,6 +2677,7 @@ msgstr "Sla wachtwoord lokaal op (versleuteld)"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
 #: data/gui/themes/default/dialogs/mp_report.cfg:235
 #: data/gui/themes/default/dialogs/prompt.cfg:86
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:171
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:181
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:145
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:105
@@ -2693,7 +2699,7 @@ msgstr "Ok"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:533
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2713,7 +2719,7 @@ msgstr "Ok"
 #: data/gui/themes/default/dialogs/file_dialog.cfg:519
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
-#: data/gui/themes/default/dialogs/game_load.cfg:654
+#: data/gui/themes/default/dialogs/game_load.cfg:653
 #: data/gui/themes/default/dialogs/game_save.cfg:134
 #: data/gui/themes/default/dialogs/label_settings.cfg:149
 #: data/gui/themes/default/dialogs/language_selection.cfg:305
@@ -2731,6 +2737,7 @@ msgstr "Ok"
 #: data/gui/themes/default/dialogs/mp_report.cfg:249
 #: data/gui/themes/default/dialogs/mp_staging.cfg:450
 #: data/gui/themes/default/dialogs/network_transmission.cfg:111
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:182
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:192
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:158
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:117
@@ -2838,7 +2845,7 @@ msgstr "Geüpdate:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
 msgid "No description available."
 msgstr "Geen beschrijving beschikbaar."
 
@@ -2911,7 +2918,7 @@ msgstr "Afhankelijkheden:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1137
+#: src/gui/dialogs/addon/manager.cpp:1136
 msgid "addon_dependencies^None"
 msgstr "Geen"
 
@@ -2925,7 +2932,7 @@ msgstr "Vertalingen:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1151
+#: src/gui/dialogs/addon/manager.cpp:1150
 msgid "translations^None"
 msgstr "Geen"
 
@@ -3088,12 +3095,35 @@ msgstr "Aanvaller"
 msgid "Defender"
 msgstr "Verdediger"
 
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+"Wesnoth bevat normaal gesproken meer dan 15 hoofdlijn veldtochten, zelfs "
+"voordat er een vanaf de add-onserver wordt geïnstalleerd. Als je de game via "
+"pakketbeheerder hebt geïnstalleerd, is er waarschijnlijk een apart pakket om "
+"de volledige gamegegevens te installeren."
+
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
@@ -3103,27 +3133,27 @@ msgid "Name"
 msgstr "Naam"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Sorteer volledige veldtochtnaam op alfabet"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
 msgid "Timeline"
 msgstr "Tijdlijn"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
 msgid "Sort in approximate chronological order of story events"
 msgstr "Sorteer chronologisch op gebeurtenis"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:235
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:238
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
 #, fuzzy
 #| msgid "Completed"
 msgid "Not Completed"
@@ -3131,77 +3161,77 @@ msgstr "Voltooid"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:240
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:244
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Bronze"
 msgstr "Voltooid"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Silver"
 msgstr "Voltooid"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:250
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:254
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Gold"
 msgstr "Voltooid"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:255
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:259
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: All"
 msgstr "Voltooid"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:311
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "Aanpassingen:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
 msgstr "Gevechten:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:351
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
 msgid "Default RNG"
 msgstr "Standaard RNG"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3210,12 +3240,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:357
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
 msgstr "Voorspelbare RNG"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:358
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3225,14 +3255,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:363
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "Voorspelbare RNG"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:364
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3242,36 +3272,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:381
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
 msgid "Difficulty:"
 msgstr "Moeilijkheidsgraad:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:395
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
 msgstr "Makkelijk"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:398
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
 msgid "Normal"
 msgstr "Normaal"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
 msgstr "Moeilijk"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
 msgid "Play a Campaign"
 msgstr "Speel een Veldtocht"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:522
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 msgid "game^Play"
 msgstr "Spelen"
 
@@ -3294,7 +3324,7 @@ msgstr "Kies moeilijkheid:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/chat_log.cfg:36
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Chat Log"
 msgstr "Chat Geschiedenis"
 
@@ -3342,8 +3372,8 @@ msgstr "Laad Bron"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:310
-#: src/preferences/preferences.cpp:1306
+#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/preferences/preferences.cpp:1344
 msgid "Select"
 msgstr "Selecteren"
 
@@ -3416,8 +3446,8 @@ msgstr "Verander Tijdschema"
 #: data/gui/themes/default/dialogs/game_save_oos.cfg:90
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/units_dialog.cpp:219
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
+#: src/gui/dialogs/units_dialog.cpp:231
 msgid "Name:"
 msgstr "Naam:"
 
@@ -3497,11 +3527,11 @@ msgstr ""
 #: src/gui/dialogs/editor/custom_tod.cpp:183
 #: src/gui/dialogs/editor/custom_tod.cpp:190
 #: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:331
-#: src/gui/dialogs/editor/edit_unit.cpp:339
-#: src/gui/dialogs/editor/edit_unit.cpp:1035
-#: src/gui/dialogs/file_dialog.cpp:368 src/gui/dialogs/file_dialog.cpp:796
+#: src/gui/dialogs/editor/edit_unit.cpp:321
+#: src/gui/dialogs/editor/edit_unit.cpp:329
+#: src/gui/dialogs/editor/edit_unit.cpp:337
+#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "Bevestig"
 
@@ -3813,7 +3843,7 @@ msgstr "Voeg toe"
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/dialogs/file_dialog.cfg:349
-#: data/gui/themes/default/dialogs/game_load.cfg:606
+#: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Verwijder"
@@ -3875,7 +3905,7 @@ msgstr "De vertaling van de add-on beschrijving."
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:42
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Edit Scenario Settings"
 msgstr "Verander Veldtocht Instellingen"
 
@@ -4105,7 +4135,7 @@ msgstr "Bewegingskosten:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:216
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Attacks"
 msgstr "Aanvallen"
 
@@ -4235,7 +4265,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Generate Map"
 msgstr "Genereer Kaart"
 
@@ -4287,14 +4317,14 @@ msgstr "Hoogte:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:426
+#: src/gui/dialogs/units_dialog.cpp:442
 msgid "Create"
 msgstr "Creëer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Resize Map"
 msgstr "Dimensies kaart aanpassen"
 
@@ -4495,49 +4525,49 @@ msgstr "Datum"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/themes/default/dialogs/game_load.cfg:309
+#: data/gui/themes/default/dialogs/game_load.cfg:308
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:944
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "Spel Laden"
 
 #. [button]: id=browse_saves_folder
-#: data/gui/themes/default/dialogs/game_load.cfg:350
+#: data/gui/themes/default/dialogs/game_load.cfg:349
 msgid "Open saves folder"
 msgstr "Open map met opgeslagen bestanden"
 
 #. [menu_button]: id=dirList
-#: data/gui/themes/default/dialogs/game_load.cfg:362
+#: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
 msgstr "Laat opgeslagen spellen zien van een andere Wesnoth-versie"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:538
+#: data/gui/themes/default/dialogs/game_load.cfg:537
 msgid "Change difficulty"
 msgstr "Verander moeilijkheidsgraad"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/themes/default/dialogs/game_load.cfg:539
+#: data/gui/themes/default/dialogs/game_load.cfg:538
 msgid "Change campaign difficulty before loading"
 msgstr "Verander moeilijkheidsgraad van de veldtocht voor het laden"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:561
+#: data/gui/themes/default/dialogs/game_load.cfg:560
 msgid "Show replay"
 msgstr "Toon herhaling"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/themes/default/dialogs/game_load.cfg:562
+#: data/gui/themes/default/dialogs/game_load.cfg:561
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr "Speel de herhaling van het opgeslagen spel wanneer geldig"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:584
+#: data/gui/themes/default/dialogs/game_load.cfg:583
 msgid "Cancel orders"
 msgstr "Annuleer bevelen"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/themes/default/dialogs/game_load.cfg:585
+#: data/gui/themes/default/dialogs/game_load.cfg:584
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 "Annuleer alle lopende bewegingen van eenheden in het opgeslagen bestand"
@@ -4585,7 +4615,7 @@ msgstr "Team"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:440
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Gold"
 msgstr "Goud"
 
@@ -4613,7 +4643,7 @@ msgstr "Onderhoud"
 #: data/gui/themes/default/dialogs/game_stats.cfg:118
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:281
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:294
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:446
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:447
 msgid "Income"
 msgstr "Inkomen"
 
@@ -4661,7 +4691,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Current Status"
 msgstr "Huidige Status"
 
@@ -4673,14 +4703,14 @@ msgstr "Spelstatistieken"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:248
+#: src/gui/dialogs/game_stats.cpp:245
 msgid "Scenario Settings"
 msgstr "Scenario Instellingen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:496
+#: src/gui/dialogs/units_dialog.cpp:531
 msgid "Scroll To"
 msgstr "Scroll Naar"
 
@@ -4979,17 +5009,17 @@ msgstr "Wegen Tussen Kastelen"
 msgid "Show Labels"
 msgstr "Toon Labels"
 
-#. [label]
-#: data/gui/themes/default/dialogs/help_browser.cfg:148
-msgid "Battle For Wesnoth Help"
-msgstr "Strijd om Wesnoth Help"
-
 #. [toggle_button]: id=contents
-#: data/gui/themes/default/dialogs/help_browser.cfg:160
+#: data/gui/themes/default/dialogs/help_browser.cfg:125
 #, fuzzy
 #| msgid "Show Credits"
 msgid "Show Topics"
 msgstr "Toon Aftiteling"
+
+#. [text_box]: id=filter_box
+#: data/gui/themes/default/dialogs/help_browser.cfg:163
+msgid "Search help topic names"
+msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5101,7 +5131,6 @@ msgstr "Inverteer filter"
 #. [label]
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/lobby_main.cfg:512
-#: data/gui/themes/default/dialogs/lobby_main.cfg:784
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5114,30 +5143,27 @@ msgstr "Creëer Spel"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: data/gui/themes/default/dialogs/lobby_main.cfg:796
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "Join"
 msgstr "Sluit aan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: data/gui/themes/default/dialogs/lobby_main.cfg:819
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
 msgstr "Observeer"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:559
-#: data/gui/themes/default/dialogs/lobby_main.cfg:807
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Aankondigingen"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:618
+#: data/gui/themes/default/dialogs/lobby_main.cfg:621
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
@@ -5147,50 +5173,43 @@ msgstr "Profiel"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:629
+#: data/gui/themes/default/dialogs/lobby_main.cfg:633
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Wedstrijd Geschiedenis"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:646
-#: data/gui/themes/default/dialogs/lobby_main.cfg:746
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
 msgid "Log Out"
 msgstr "Log Uit"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:666
-#: data/gui/themes/default/dialogs/lobby_main.cfg:834
+#: data/gui/themes/default/dialogs/lobby_main.cfg:670
 msgid "Normal Replays"
 msgstr "Normale Herhalingen"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
-#: data/gui/themes/default/dialogs/lobby_main.cfg:838
+#: data/gui/themes/default/dialogs/lobby_main.cfg:674
 msgid "Quick Replays"
 msgstr "Snelle Herhalingen"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:671
-#: data/gui/themes/default/dialogs/lobby_main.cfg:839
+#: data/gui/themes/default/dialogs/lobby_main.cfg:675
 msgid "Skip quickly to the active turn when observing"
 msgstr "Sla huidige beurt snel over tijdens observeren"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
-#: data/gui/themes/default/dialogs/lobby_main.cfg:843
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
 msgid "Enter Blindfolded"
 msgstr "Start Geblindoekt"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:676
-#: data/gui/themes/default/dialogs/lobby_main.cfg:844
+#: data/gui/themes/default/dialogs/lobby_main.cfg:680
 msgid "Do not show the map until given control of a side"
 msgstr "Toon geen kaart tot er een team is toegewezen"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:734
-#: data/gui/themes/default/dialogs/lobby_main.cfg:957
+#: data/gui/themes/default/dialogs/lobby_main.cfg:729
 msgid "Multiplayer Lobby"
 msgstr "Multiplayer Lobby"
 
@@ -5828,8 +5847,7 @@ msgstr "Factie"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
-#: data/gui/themes/default/dialogs/mp_staging.cfg:631
-#: data/gui/themes/default/dialogs/mp_staging.cfg:860
+#: data/gui/themes/default/dialogs/mp_staging.cfg:671
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to join..."
 msgstr "Wachten op aansluitende spelers..."
@@ -5841,8 +5859,7 @@ msgstr "Verlaten"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:448
-#: data/gui/themes/default/dialogs/mp_staging.cfg:569
-#: data/gui/themes/default/dialogs/mp_staging.cfg:754
+#: data/gui/themes/default/dialogs/mp_staging.cfg:565
 msgid "Game Lobby"
 msgstr "Spel Lobby"
 
@@ -6219,7 +6236,7 @@ msgstr "Sneltoets"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:908
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6232,7 +6249,7 @@ msgstr "Beschikbaar in spel"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:909
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6245,7 +6262,7 @@ msgstr "Beschikbaar in editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:910
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6364,13 +6381,6 @@ msgstr ""
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Toepassen"
-
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
-msgid "Show tip of the day"
-msgstr "Toon volgende tip van de dag"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
@@ -6654,6 +6664,33 @@ msgstr "Verwijder deze gebruikersnaam van je lijst"
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or blocked any other players."
 msgstr "Je hebt geen bevriende of geblokkeerde spelers."
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:101
+#, fuzzy
+#| msgid "Random map options: "
+msgid "Reach Map Options"
+msgstr "Willekeurige kaartopties: "
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+msgid "Highlight Color"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+msgid "Enemy Highlight Color"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+msgid "Border Opacity:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:144
+msgid "Tint Opacity:"
+msgstr ""
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6965,8 +7002,8 @@ msgstr "Status"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:132
-#: src/gui/widgets/unit_preview_pane.cpp:364
-#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:390
+#: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "Karaktereigenschappen"
 
@@ -6990,7 +7027,7 @@ msgstr "Hernoemen"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Fout"
@@ -7096,7 +7133,7 @@ msgstr "<unknown>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1814
+#: src/filesystem.cpp:1820
 msgid "language code for localized resources^en_US"
 msgstr "nl"
 
@@ -7140,7 +7177,7 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix, of $last"
 
-#: src/gui/core/canvas.cpp:263
+#: src/gui/core/canvas.cpp:258
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7181,8 +7218,14 @@ msgstr ""
 "Rooster '$grid' rij $row heeft een ander aantal kolommen ($found gevonden, "
 "$expected verwacht)"
 
-#: src/gui/dialogs/achievements_dialog.cpp:137
-msgid "Completed"
+#: src/gui/dialogs/achievements_dialog.cpp:97
+msgid "$title ($count/$total)"
+msgstr ""
+
+#: src/gui/dialogs/achievements_dialog.cpp:138
+#, fuzzy
+#| msgid "Completed"
+msgid "Completed $count/$total"
 msgstr "Voltooid"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
@@ -7196,7 +7239,7 @@ msgstr "De server reageerde met een foutmelding:"
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
 #: src/gui/dialogs/addon/manager.cpp:1018
 #: src/gui/dialogs/addon/manager.cpp:1045
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Reactie"
 
@@ -7531,31 +7574,31 @@ msgstr "%d %B %Y, %I:%M %p"
 msgid "%B %d %Y, %H:%M"
 msgstr "%d %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1154
+#: src/gui/dialogs/addon/manager.cpp:1153
 msgid "url^None"
 msgstr "Geen"
 
-#: src/gui/dialogs/attack_predictions.cpp:119
+#: src/gui/dialogs/attack_predictions.cpp:121
 msgid "No usable weapon"
 msgstr "Geen beschikbaar wapen"
 
-#: src/gui/dialogs/attack_predictions.cpp:197
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender resistance vs"
 msgstr "Verdediger weerstand tegen"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:201
 msgid "Defender vulnerability vs"
 msgstr "Verdediger kwetsbaarheid tegen"
 
-#: src/gui/dialogs/attack_predictions.cpp:203
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker resistance vs"
 msgstr "Aanvaller weerstand tegen"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:207
 msgid "Attacker vulnerability vs"
 msgstr "Aanvaller kwetsbaarheid tegen"
 
-#: src/gui/dialogs/campaign_selection.cpp:76
+#: src/gui/dialogs/campaign_selection.cpp:77
 #, fuzzy
 #| msgid "Add-ons"
 msgid "game^Get Add-ons"
@@ -7567,34 +7610,11 @@ msgstr "Add-ons"
 msgid "More campaigns..."
 msgstr "Veldtocht"
 
-#: src/gui/dialogs/campaign_selection.cpp:403
-msgid ""
-"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
-"of add-on content created by other players available via the Add-ons server, "
-"included but not limited to more single and multiplayer campaigns, "
-"multiplayer maps, additional media and various other content! Be sure to "
-"give it a try!"
-msgstr ""
-
-#: src/gui/dialogs/campaign_selection.cpp:413
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid "Missing Campaigns"
 msgstr "Missende Veldtochten"
 
-#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:424
-msgid ""
-"Wesnoth normally includes more than 15 mainline campaigns, even before "
-"installing any from the add-ons server. If you’ve installed the game via a "
-"package manager, there’s probably a separate package to install the complete "
-"game data."
-msgstr ""
-"Wesnoth bevat normaal gesproken meer dan 15 hoofdlijn veldtochten, zelfs "
-"voordat er een vanaf de add-onserver wordt geïnstalleerd. Als je de game via "
-"pakketbeheerder hebt geïnstalleerd, is er waarschijnlijk een apart pakket om "
-"de volledige gamegegevens te installeren."
-
-#: src/gui/dialogs/campaign_selection.cpp:455
+#: src/gui/dialogs/campaign_selection.cpp:442
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "Geen"
@@ -7632,14 +7652,14 @@ msgstr ""
 "Selecteer een geschikte aanpassing."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:309
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Choose File"
 msgstr "Kies Speler"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:316
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7718,53 +7738,53 @@ msgstr "Overleven"
 msgid "Terraforming"
 msgstr "Terreinaanpassing"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:392
+#: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
 msgstr "Geen validatiefouten"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:394
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
 msgstr "Succes"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:424
+#: src/gui/dialogs/editor/edit_pbl.cpp:434
 msgid "Choose an icon"
 msgstr "Kies een symbool"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 #, fuzzy
 #| msgid "Height:"
 msgid "fighter"
 msgstr "Hoogte:"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:192
 #, fuzzy
 #| msgid "Search"
 msgid "archer"
 msgstr "Zoeken"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:195
+#: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:196
+#: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1034
+#: src/gui/dialogs/editor/edit_unit.cpp:1032
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Opgeslagen bestand bestaat al. Wil je het overschrijven?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1053
+#: src/gui/dialogs/editor/edit_unit.cpp:1051
 msgid "Unit type saved."
 msgstr ""
 
@@ -7808,26 +7828,26 @@ msgstr ""
 msgid "Open"
 msgstr "Openen"
 
-#: src/gui/dialogs/file_dialog.cpp:310
+#: src/gui/dialogs/file_dialog.cpp:306
 #, fuzzy
 #| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "Het openen van links wordt niet ondersteund, neem contact op met packager"
 
-#: src/gui/dialogs/file_dialog.cpp:367
+#: src/gui/dialogs/file_dialog.cpp:363
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Opgeslagen bestand bestaat al. Wil je het overschrijven?"
 
-#: src/gui/dialogs/file_dialog.cpp:391
+#: src/gui/dialogs/file_dialog.cpp:387
 msgid "The file or folder $path cannot be created."
 msgstr "Het bestand of de folder $path kan niet gemaakt worden."
 
-#: src/gui/dialogs/file_dialog.cpp:397
+#: src/gui/dialogs/file_dialog.cpp:393
 msgid "The file or folder $path does not exist."
 msgstr "Het bestand of de map $path bestaat niet."
 
-#: src/gui/dialogs/file_dialog.cpp:774
+#: src/gui/dialogs/file_dialog.cpp:769
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7835,19 +7855,19 @@ msgstr ""
 "Kan geen nieuwe map maken in $path|. Zorg ervoor dat je de juiste "
 "bevoegdheden hebt om een map aan te maken."
 
-#: src/gui/dialogs/file_dialog.cpp:792
+#: src/gui/dialogs/file_dialog.cpp:787
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "De volgende map en inhoud zal permanent worden verwijderd:"
 
-#: src/gui/dialogs/file_dialog.cpp:793
+#: src/gui/dialogs/file_dialog.cpp:788
 msgid "The following file will be permanently deleted:"
 msgstr "Het volgende bestand zal permanent worden verwijderd:"
 
-#: src/gui/dialogs/file_dialog.cpp:794
+#: src/gui/dialogs/file_dialog.cpp:789
 msgid "Do you wish to continue?"
 msgstr "Wil je doorgaan?"
 
-#: src/gui/dialogs/file_dialog.cpp:806
+#: src/gui/dialogs/file_dialog.cpp:801
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7911,51 +7931,51 @@ msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:233
 msgid "$active active, $reserve reserve"
 msgstr "$active actief, $reserve reserve"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:288
 msgid "The selected file is corrupt: "
 msgstr "Het geselecteerde bestand is beschadigd: "
 
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:328
 msgid "(Invalid)"
 msgstr "(Ongeldig)"
 
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Campaign: $campaign_name"
 msgstr "Veldtocht: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:371
+#: src/gui/dialogs/game_load.cpp:370
 msgid "Tutorial"
 msgstr "Uitleg"
 
-#: src/gui/dialogs/game_load.cpp:374
+#: src/gui/dialogs/game_load.cpp:373
 msgid "Test scenario"
 msgstr "Test scenario"
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Replay"
 msgstr "Herhaling"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Turn"
 msgstr "Beurt"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:387
 msgid "Scenario start"
 msgstr "Begin scenario"
 
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Difficulty: "
 msgstr "Moeilijkheidsgraad: "
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Version: "
 msgstr "Versie: "
 
-#: src/gui/dialogs/game_load.cpp:435
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Modifications: "
 msgstr "Aanpassingen: "
 
@@ -7975,18 +7995,18 @@ msgstr "Omgekeerd"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "no"
 msgstr "nee"
 
-#: src/gui/dialogs/game_stats.cpp:190 src/gui/dialogs/game_stats.cpp:193
+#: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
 msgid "yes"
 msgstr "ja"
 
-#: src/gui/dialogs/game_version_dialog.cpp:270
-#: src/gui/dialogs/game_version_dialog.cpp:284 src/gui/widgets/label.cpp:123
+#: src/gui/dialogs/game_version_dialog.cpp:273
+#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Het openen van links wordt niet ondersteund, neem contact op met packager"
@@ -8109,7 +8129,7 @@ msgid ""
 "version was found on this device"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:137
+#: src/gui/dialogs/multiplayer/faction_select.cpp:134
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:500
 msgid "Random"
 msgstr "Willekeurig"
@@ -8203,7 +8223,7 @@ msgstr "Waarnemers niet toegestaan"
 msgid "lobby"
 msgstr "lobby"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:835
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8212,7 +8232,7 @@ msgid ""
 msgstr ""
 "Dit spel staat geen waarnemers toe. Toch observeren met moderator-rechten?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:839
+#: src/gui/dialogs/multiplayer/lobby.cpp:846
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8220,7 +8240,7 @@ msgstr ""
 "Er is iets mis met de add-on versie, controleer de database van de "
 "multiplayer lobby. Maak een melding hiervan op https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:860
+#: src/gui/dialogs/multiplayer/lobby.cpp:867
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Dit spel is beveiligd met een wachtwoord. Toch aansluiten met moderator-"
@@ -8234,11 +8254,11 @@ msgstr ""
 "Deze versie van Wesnoth ondersteund geen bureaublad meldingen, neem contact "
 "op met de package manager"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:78
 msgid "Side $side"
 msgstr "Kant $side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:181
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:183
 msgid "Add Server"
 msgstr "Voeg Server Toe"
 
@@ -8266,65 +8286,65 @@ msgstr "Aangepaste Scenario's"
 msgid "Random Maps"
 msgstr "Willekeurige Kaarten"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:191
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
 msgid "No games found."
 msgstr "Geen spellen gevonden."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:258
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
 msgid "No eras found."
 msgstr "Geen tijdperken gevonden."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found"
 msgstr "Geen tijdperken gevonden"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
 msgid "No eras available for this game."
 msgstr "Geen tijdperken beschikbaar voor dit spel."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "number of players^$min to $max"
 msgstr "$min tot $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
 msgid "The selected game has no sides!"
 msgstr "Het geselecteerde spel heeft geen kanten!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "The selected game cannot be created."
 msgstr "Het geselecteerde spel kan niet aangemaakt worden."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Choose Starting Scenario"
 msgstr "Kies Start Scenario"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
 msgid "Select at which point to begin this campaign."
 msgstr "Selecteer het punt waarop je deze veldtocht wil beginnen."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Computer Player"
 msgstr "Computerspeler"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Empty slot"
 msgstr "Lege plek"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Reserved for $playername"
 msgstr "Gereserveerd voor $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Vacant slot"
 msgstr "Lege plek"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:231
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:232
 msgid "empty"
 msgstr "leeg"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:107
 msgid "this game"
 msgstr "dit spel"
@@ -8351,33 +8371,33 @@ msgstr "Wachten op spelers om hun facties te kiezen..."
 msgid "The End"
 msgstr "Het Einde"
 
-#: src/gui/dialogs/preferences_dialog.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:199
 msgid "friend"
 msgstr "vriend"
 
-#: src/gui/dialogs/preferences_dialog.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:204
 msgid "ignored"
 msgstr "genegeerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:257
+#: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "No username specified"
 msgstr "Geen gebruikersnaam gespecificeerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:272
 msgid "Invalid username"
 msgstr "Ongeldige gebruikersnaam"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:319
 msgid "Not on friends or ignore lists"
 msgstr "Niet op vrienden- of negeerlijst"
 
-#: src/gui/dialogs/preferences_dialog.cpp:953
-#: src/gui/dialogs/preferences_dialog.cpp:1017
+#: src/gui/dialogs/preferences_dialog.cpp:954
+#: src/gui/dialogs/preferences_dialog.cpp:1018
 msgid "No hotkey selected"
 msgstr "Geen sneltoets geselecteerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8386,15 +8406,15 @@ msgstr ""
 "b>”.\n"
 "Wil je het opnieuw toewijzen aan “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:988
 msgid "Reassign Hotkey"
 msgstr "Sneltoets opnieuw toewijzen"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "All hotkeys have been reset to their default values."
 msgstr "Alle sneltoetsen zijn hersteld naar de standaard waarden."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "Hotkeys Reset"
 msgstr "Sneltoetsen Herstellen"
 
@@ -8412,20 +8432,20 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Alle Scenario's"
 
-#: src/gui/dialogs/statistics_dialog.cpp:176
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:174
+#: src/gui/dialogs/statistics_dialog.cpp:334
 msgid "This Turn"
 msgstr "Deze Beurt"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
 msgstr "Actuele raakkansen, gesorteerd bij kans om te raken:"
 
-#: src/gui/dialogs/statistics_dialog.cpp:214
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
 msgstr "(er hebben nog geen aanvallen plaats gevonden)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:321
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8441,111 +8461,111 @@ msgstr ""
 "De som (of het verschil) van de twee getallen tussen haakjes is het "
 "daadwerkelijke aantal toegebrachte/ontvangen treffers."
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:365
 msgid "stats^Recruits"
 msgstr "Rekruten"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:366
 msgid "Recalls"
 msgstr "Opgeroepen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Advancements"
 msgstr "Promoties"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Losses"
 msgstr "Verliezen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Kills"
 msgstr "Gedood"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:391
+#: src/gui/dialogs/statistics_dialog.cpp:398
 msgid "Inflicted"
 msgstr "Veroorzaakt"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:404
+#: src/gui/dialogs/statistics_dialog.cpp:411
 msgid "Taken"
 msgstr "Ingenomen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:452
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Schermafbeelding"
 
-#: src/gui/dialogs/title_screen.cpp:398
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "Versie $version"
 
-#: src/gui/dialogs/title_screen.cpp:491 src/hotkey/hotkey_command.cpp:310
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Kies Test Scenario"
 
-#: src/gui/dialogs/units_dialog.cpp:219 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Eenheid Hernoemen"
 
-#: src/gui/dialogs/units_dialog.cpp:252
+#: src/gui/dialogs/units_dialog.cpp:264
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Deze eenheid is loyaal en heeft geen onderhoud nodig."
 
-#: src/gui/dialogs/units_dialog.cpp:253 src/gui/dialogs/units_dialog.cpp:258
-#: src/gui/dialogs/units_dialog.cpp:263
+#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
+#: src/gui/dialogs/units_dialog.cpp:275
 msgid "Do you really want to dismiss him?"
 msgstr "Weet je zeker dat je hem wil ontslaan?"
 
-#: src/gui/dialogs/units_dialog.cpp:254 src/gui/dialogs/units_dialog.cpp:259
-#: src/gui/dialogs/units_dialog.cpp:264
+#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
+#: src/gui/dialogs/units_dialog.cpp:276
 msgid "Do you really want to dismiss her?"
 msgstr "Weet je zeker dat je haar wil ontslaan?"
 
-#: src/gui/dialogs/units_dialog.cpp:257
+#: src/gui/dialogs/units_dialog.cpp:269
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Deze eenheid is ervaren en heeft al promotie gehad."
 
-#: src/gui/dialogs/units_dialog.cpp:262
+#: src/gui/dialogs/units_dialog.cpp:274
 msgid "This unit is close to advancing a level."
 msgstr "Deze eenheid is bijna gepromoveerd."
 
-#: src/gui/dialogs/units_dialog.cpp:268
+#: src/gui/dialogs/units_dialog.cpp:280
 msgid "Dismiss Unit"
 msgstr "Ontsla Eenheid"
 
-#: src/gui/dialogs/units_dialog.cpp:389
+#: src/gui/dialogs/units_dialog.cpp:405
 msgid "unit_variation^Default Variation"
 msgstr "Standaard Variatie"
 
-#: src/gui/dialogs/units_dialog.cpp:425
+#: src/gui/dialogs/units_dialog.cpp:441
 msgid "Create Unit"
 msgstr "Maak Eenheid"
 
-#: src/gui/dialogs/units_dialog.cpp:482
+#: src/gui/dialogs/units_dialog.cpp:512
 msgid "Recruit Unit"
 msgstr "Eenheid Rekruteren"
 
-#: src/gui/dialogs/units_dialog.cpp:483 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Rekruteren"
 
-#: src/gui/dialogs/units_dialog.cpp:495 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Lijst van Eenheden"
 
-#: src/gui/dialogs/units_dialog.cpp:611
+#: src/gui/dialogs/units_dialog.cpp:667
 msgid "Recall Unit"
 msgstr "Eenheid Oproepen"
 
-#: src/gui/dialogs/units_dialog.cpp:612 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/gui/dialogs/units_dialog.cpp:720
+#: src/gui/dialogs/units_dialog.cpp:787
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8553,12 +8573,12 @@ msgstr ""
 "Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit "
 "op dit moment in je plan."
 
-#: src/gui/dialogs/units_dialog.cpp:722
+#: src/gui/dialogs/units_dialog.cpp:789
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit."
 
-#: src/gui/gui.cpp:132
+#: src/gui/gui.cpp:130
 msgid "No default gui defined."
 msgstr "Geen standaard gui gedefinieerd."
 
@@ -8603,17 +8623,17 @@ msgstr ""
 "Een privé bericht begonnen met <i>$name</i>. Als je geen berichten van deze "
 "speler meer wilt ontvangen, typ <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:153
+#: src/gui/widgets/helper.cpp:148
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "Verplichte widget '$id' is niet gedefinieerd."
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
+#: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "Link openen?"
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
 msgstr "Link gekopieerd!"
 
@@ -8667,13 +8687,9 @@ msgstr[1] "$excess anderen"
 msgid "multimenu^None Selected"
 msgstr "Geen Geselecteerd"
 
-#: src/gui/widgets/pane.cpp:359
+#: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
 msgstr "Heeft ten minste 1 parallel bestand nodig."
-
-#: src/gui/widgets/rich_label.cpp:250
-msgid "corrupted original file"
-msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
@@ -8693,7 +8709,7 @@ msgstr "Het aantal value_labels en values komt niet overeen."
 msgid "No stack layers defined."
 msgstr "Er is geen laag gedefinieerd."
 
-#: src/gui/widgets/styled_widget.cpp:606
+#: src/gui/widgets/styled_widget.cpp:592
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Widget gevonden met helptip en zonder tooltip."
 
@@ -8725,57 +8741,71 @@ msgstr "Weerstand: "
 msgid "(Att / Def)"
 msgstr "(Aan / Ver)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:286
-#: src/gui/widgets/unit_preview_pane.cpp:317
-#: src/gui/widgets/unit_preview_pane.cpp:426
-#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:224
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:227
+msgid "This unit can attack multiple times per turn."
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:269
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:312
+#: src/gui/widgets/unit_preview_pane.cpp:343
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "Rang $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:324
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:465
-#: src/gui/widgets/unit_preview_pane.cpp:482
+#: src/gui/widgets/unit_preview_pane.cpp:350
+#: src/gui/widgets/unit_preview_pane.cpp:363
+#: src/gui/widgets/unit_preview_pane.cpp:491
+#: src/gui/widgets/unit_preview_pane.cpp:508
 msgid "HP: "
 msgstr "LP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:342
-#: src/gui/widgets/unit_preview_pane.cpp:468
-#: src/gui/widgets/unit_preview_pane.cpp:470
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:368
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:496
+#: src/gui/widgets/unit_preview_pane.cpp:513
 msgid "XP: "
 msgstr "EP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:344
-#: src/gui/widgets/unit_preview_pane.cpp:489
+#: src/gui/widgets/unit_preview_pane.cpp:370
+#: src/gui/widgets/unit_preview_pane.cpp:515
 msgid "Experience Modifier: "
 msgstr "Ervarings Aanpasser: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:347
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:373
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "MP: "
 msgstr "MP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:374
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:539
 msgid "Abilities"
 msgstr "Vaardigheden"
 
-#: src/gui/widgets/window.cpp:286
+#: src/gui/widgets/window.cpp:288
 #, fuzzy
 #| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "Gelinkte '$id' groep heeft meerdere definities."
 
-#: src/gui/widgets/window.cpp:879
+#: src/gui/widgets/window.cpp:887
 #, fuzzy
 #| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Klik verwerpen heeft een 'click_verwerpen' of 'ok' knop nodig."
 
-#: src/gui/widgets/window.cpp:904 src/gui/widgets/window.cpp:941
-#: src/tests/gui/test_gui2.cpp:738
+#: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
+#: src/tests/gui/test_gui2.cpp:739
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9171,58 +9201,64 @@ msgid "Save Map As"
 msgstr "Kaart Opslaan Als"
 
 #: src/hotkey/hotkey_command.cpp:187
+#, fuzzy
+#| msgid "Choose Test Scenario"
+msgid "Convert To Scenario"
+msgstr "Kies Test Scenario"
+
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
 msgstr "Scenario Opslaan Als"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Save All Maps"
 msgstr "Alle Kaarten Opslaan"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Revert All Changes"
 msgstr "Draai Alle Wijzigingen Terug"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Map Information"
 msgstr "Kaart Informatie"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Clear Selected Item Set"
 msgstr "Verwijder Geselecteerde Item Set"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Verwissel Voor- En Achtergrond Terrein"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Change Palette Group"
 msgstr "Verander Palette Groep"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Scroll Palette Left"
 msgstr "Scroll Palette Links"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Scroll Palette Right"
 msgstr "Scroll Palette Rechts"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Remove Location"
 msgstr "Verwijder Locatie"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Add New Side"
 msgstr "Voeg Nieuwe Kant Toe"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Next Tool"
 msgstr "Volgend Hulpmiddel"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Paint Tool"
 msgstr "Verf Hulpmiddel"
 
-#: src/hotkey/hotkey_command.cpp:203 src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:204 src/hotkey/hotkey_command.cpp:205
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -9231,11 +9267,11 @@ msgstr ""
 "Houd Shift ingedrukt om enkel basislagen te mken. Ctrl+click om het terrein "
 "onder de muisaanwijzer als voorbeeld te zien."
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Fill Tool"
 msgstr "Opvul Instrument"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -9244,11 +9280,11 @@ msgstr ""
 "omhoog. Houd Shift ingedrukt voor toverstaf selectie van tegels met "
 "hetzelfde terrein."
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Selection Tool"
 msgstr "Selectie Instrument"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -9258,20 +9294,20 @@ msgstr ""
 "selectie. De cijfertoetsen scrollen naar de startpositie, alt+cijfertoets "
 "zet repectievelijke startpositie onder muisaanwijzer, del verwijderd."
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Starting Positions Tool"
 msgstr "Startpositie Instrument"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Label Tool"
 msgstr "Label Instrument"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 "Linker muisknop zet of verplaatst een label, rechter muisknop verwijderd."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -9280,21 +9316,21 @@ msgstr ""
 "drag-en-drop, rechter muisknop geeft een context menu weer. Heeft een "
 "gedefinieerde kant nodig."
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Unit Tool"
 msgstr "Eenheid Instrument"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Item Tool"
 msgstr "Item Instrument"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 #, fuzzy
 #| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "Linker muisknop zet een nieuw item."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -9302,359 +9338,359 @@ msgstr ""
 "Linker muisknop regelt de eigendom van het dorp, rechter muisknop "
 "verwijderd. Heeft een gedefinieerde kant nodig."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Village Tool"
 msgstr "Dorp Instrument"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Can Recruit"
 msgstr "Kan Rekruteren"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Rekruteer optie voor eenheid aan/uit."
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Can be Renamed"
 msgstr "Kan Hernoemd Worden"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle the unit being renameable."
 msgstr "Zet eenheid hernoembaarheid aan/uit."
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Change Unit ID"
 msgstr "Verander Eenheid ID"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Loyal"
 msgstr "Loyaal"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Map Information"
 msgid "Show Tool Information"
 msgstr "Kaart Informatie"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
 msgstr "Minikaart Eenheid Codering Aan/Uit"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Minikaart Terrein Coding Aan/Uit"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Minikaart Eenheid Tekenen Aan/Uit"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Toggle Minimap Village Drawing"
 msgstr "Minikaart Dorp Tekenen Aan/Uit"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Minikaart Terrein Tekenen Aan/Uit"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Next Brush"
 msgstr "Volgende Kwast"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Default Brush"
 msgstr "Standaardkwast"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Single Tile"
 msgstr "Enkele Tegel"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Radius One"
 msgstr "Straal van Een"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Radius Two"
 msgstr "Straal van Twee"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Brush NW-SE"
 msgstr "Kwast NW-ZO"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Brush SW-NE"
 msgstr "Kwast ZW-NO"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Cut"
 msgstr "Knippen"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "Linkermuisknop plakt van het klembord, rechtermuisknop geeft een menu weer."
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exporteer de Geselecteerde Coördinaten naar het Systeemklembord"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Select All"
 msgstr "Alles Selecteren"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Select Inverse"
 msgstr "Inverteer Selectie"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Select None"
 msgstr "Selecteer Niets"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Rotate Clipboard Clockwise"
 msgstr "Draai Klembord met de Klok mee"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Draai Klembord tegen de Klok in"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Flip Clipboard Horizontally"
 msgstr "Spiegel Klembord Horizontaal"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Flip Clipboard Vertically"
 msgstr "Spiegel Klembord Verticaal"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Rotate Selection"
 msgstr "Selectie Roteren"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Flip Selection"
 msgstr "Keer Selectie Om"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Fill Selection"
 msgstr "Selectie Opvullen"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Randomize Tiles in Selection"
 msgstr "Maak Willekeurige Vakjes In Selectie"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Apply a Mask"
 msgstr "Breng een Masker aan"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Create Mask"
 msgstr "Creëer Masker"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Refresh Display"
 msgstr "Ververs Beeld"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Update Terrain Transitions"
 msgstr "Update Terreintransities"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Toggle Terrain Transition Update"
 msgstr "Update Terreintransities"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Auto-update Terrain Transitions"
 msgstr "Update Terreintransities Automatisch"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Update Terreintransities Automatisch: Nee"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Update Terreintransities Automatisch: Gedeeltelijk"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Refresh Image Cache"
 msgstr "Cache Afbeelding Vernieuwen"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Draw Hex Coordinates"
 msgstr "Teken Tegel Coördinaten"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Draw Terrain Codes"
 msgstr "Teken Terreincodes"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Draw Number of Bitmaps"
 msgstr "Teken Nummer voor Bitmap"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Save Selection to Area"
 msgstr "Sla Selectie op naar Gebied"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Rename Selected Area"
 msgstr "Hernoem Geselecteerd Gebied"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Remove Selected Area"
 msgstr "Verwijder Geselecteerd Gebied"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Add New Area"
 msgstr "Voeg Nieuw Gebied Toe"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
 msgstr "Add=on Publicatie-editor"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Change Add-on ID"
 msgstr "Wijzig Add-on ID"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 #| msgid "Select the add-on version"
 msgid "Select active Add-on"
 msgstr "Selecteer de add-on versie"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 #, fuzzy
 #| msgid "Open saves folder"
 msgid "Open Add-on folder"
 msgstr "Open map met opgeslagen bestanden"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
 msgstr "Pas Kant Aan"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Remove Side"
 msgstr "Verwijder Kant"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Delay Shroud Updates"
 msgstr "Sluier Achteraf Bijwerken"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Update Shroud Now"
 msgstr "Sluier Nu Bijwerken"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Continue Interrupted Move"
 msgstr "Doorgaan Met Onderbroken Zet"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
 msgstr "Label of Eenheid Vinden"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Speak to Ally"
 msgstr "Met Bondgenoot Praten"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Speak to All"
 msgstr "Met Iedereen Praten"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
 msgstr "Hulp bij het laden van opgeslagen spellen"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
 msgstr "Tip: het laden van opgeslagen spellen is onnodig"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Enter Command"
 msgstr "Typ Commando"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Custom Command"
 msgstr "Aangepaste Opdracht"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Run Formula"
 msgstr "Draai Formule"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Clear Chat"
 msgstr "Maak Chat Leeg"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
 msgstr "Taal Veranderen"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Starting game"
 msgid "Start Game (MP)"
 msgstr "Spel starten"
 
-#: src/hotkey/hotkey_command.cpp:301
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
 msgstr "Ververs WML"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Next Tip of the Day"
 msgstr "Volgende Tip van de Dag"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:304
 msgid "Previous Tip of the Day"
 msgstr "Vorige Tip van de Dag"
 
-#: src/hotkey/hotkey_command.cpp:304
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Start Campaign"
 msgstr "Start Veldtocht"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:306
 msgid "Start Multiplayer Game"
 msgstr "Start Multiplayer Spel"
 
-#: src/hotkey/hotkey_command.cpp:306
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Manage Add-ons"
 msgstr "Beheer Add-ons"
 
-#: src/hotkey/hotkey_command.cpp:307
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Manage Cores"
 msgstr "Beheer Bronnen"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:309
 msgid "Start Editor"
 msgstr "Start Editor"
 
-#: src/hotkey/hotkey_command.cpp:309
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Show Credits"
 msgstr "Toon Aftiteling"
 
-#: src/hotkey/hotkey_command.cpp:312
+#: src/hotkey/hotkey_command.cpp:313
 msgid "Show Helptip"
 msgstr "Toon Helptip"
 
-#: src/hotkey/hotkey_command.cpp:314
+#: src/hotkey/hotkey_command.cpp:315
 msgid "Show Lua Console"
 msgstr "Toon Lua Console"
 
-#: src/hotkey/hotkey_command.cpp:317
+#: src/hotkey/hotkey_command.cpp:318
 msgid "Unrecognized Command"
 msgstr "Onherkenbaar Command"
 
-#: src/preferences/preferences.cpp:1263
+#: src/preferences/preferences.cpp:1301
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Geen bestaande thema's. Probeer het thema vanuit een bestaand spel te "
 "veranderen."
 
-#: src/preferences/preferences.cpp:1300
+#: src/preferences/preferences.cpp:1338
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9665,15 +9701,15 @@ msgstr ""
 "Normaal bevindt dit programma zich in dezelfde map als Strijd om Wesnoth "
 "zelf."
 
-#: src/preferences/preferences.cpp:1304
+#: src/preferences/preferences.cpp:1342
 msgid "Find Server Application"
 msgstr "Vind Server Programma"
 
-#: src/preferences/preferences.cpp:1759
+#: src/preferences/preferences.cpp:1797
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1761
+#: src/preferences/preferences.cpp:1799
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9714,6 +9750,17 @@ msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
+
+#~ msgid "Battle For Wesnoth Help"
+#~ msgstr "Strijd om Wesnoth Help"
+
+#~ msgid "Completed"
+#~ msgstr "Voltooid"
+
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Hide tip of the day"
+#~ msgstr "Toon volgende tip van de dag"
 
 #~ msgid "Race"
 #~ msgstr "Ras"

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #pragma once
 
 #include <functional>
+#include <set>
 #include <string>
 
 class commandline_options;
@@ -26,6 +27,15 @@ namespace ng { class connect_engine; }
 /** Main entry points of multiplayer mode. */
 namespace mp
 {
+struct queue_info
+{
+	int id;
+	std::string scenario_id;
+	std::string display_name;
+	int players_required;
+	std::set<std::string> current_players;
+};
+
 /** Max length of a player name. */
 const std::size_t max_login_size = 20;
 
@@ -67,6 +77,9 @@ bool logged_in_as_moderator();
 
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
+
+/** Gets the list of server-side queues received on login */
+std::vector<queue_info>& get_server_queues();
 
 /** Returns the lobby_info object for the given session. */
 class lobby_info* get_lobby_info();

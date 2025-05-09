@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,21 +32,11 @@ void addon_uninstall_list::pre_show()
 	keyboard_capture(&list);
 	selections_.clear();
 
-	for(const auto & entry : titles_map_)
-	{
-		const std::string& id = entry.first;
-		const std::string& title = entry.second;
-
+	for(const auto& [id, title] : titles_map_) {
 		ids_.push_back(id);
 		selections_[id] = false;
 
-		widget_data data;
-		widget_item column;
-
-		column["label"] = title;
-		data.emplace("name", column);
-
-		list.add_row(data);
+		list.add_row(widget_data{{ "name", {{ "label", title }}}});
 	}
 }
 

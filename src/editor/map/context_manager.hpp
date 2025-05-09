@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -261,6 +261,11 @@ public:
 	/** Switches the context to the one under the specified index. */
 	void switch_context(const int index, const bool force = false);
 
+	/**
+	 * Convert existing map to scenario.
+	 */
+	void map_to_scenario();
+
 private:
 	/**
 	 * Save the map under a given filename. Displays an error message on failure.
@@ -268,6 +273,8 @@ private:
 	 */
 	bool write_map(bool display_confirmation = true);
 	bool write_scenario(bool display_confirmation = true);
+
+	void init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map = true);
 
 	/**
 	 * Create a new map.

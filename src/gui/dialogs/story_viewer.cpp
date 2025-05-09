@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -233,7 +233,7 @@ void story_viewer::display_part()
 
 	cfg.add_child("image", get_title_area_decor_config());
 
-	window_canvas.set_cfg(cfg);
+	window_canvas.set_shapes(cfg);
 
 	// Needed to make the background redraw correctly.
 	window_canvas.update_size_variables();
@@ -370,7 +370,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["name"] = floating_image.file();
 		config cfg{"image", std::move(image)};
 
-		window_canvas.append_cfg(cfg);
+		window_canvas.append_shapes(cfg);
 
 		// Needed to make the background redraw correctly.
 		window_canvas.update_size_variables();
