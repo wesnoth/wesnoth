@@ -41,7 +41,6 @@ import java.util.zip.ZipFile;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -77,31 +76,45 @@ public class InitActivity extends Activity {
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
 	}
-	
-	private boolean isUnpacked(File dataDir) {
-		return (new File(dataDir, "data").exists()
-			    && new File(dataDir, "fonts").exists()
-			    && new File(dataDir, "images").exists()
-			    && new File(dataDir, "sounds").exists());
-	}
 
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
+		// Keep the screen on while this task runs
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		if (powerManager.isPowerSaveMode()) {
 			new AlertDialog.Builder(this)
 				.setTitle("Power Saver Detected")
 				.setMessage("Battery Saver is on. Data download may be interrupted. Consider whitelisting this app from battery saver or turn it off.")
-				.setPositiveButton("Settings", (DialogInterface dialog, int which) -> {
-					startActivity(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS));
+				.setPositiveButton("Settings", (dialog, which) -> {
+					// onActivityResult will be called (with reqCode = 1)
+					// after this intent finishes, that is,
+					// the user returns from Battery Saver settings
+					startActivityForResult(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS), 1);
 				})
-				.setNegativeButton("Ignore", null)
+				.setNegativeButton("Ignore", (dialog, which) -> {
+					initializeAssets();
+				})
+				.setCancelable(false)
 				.show();
+		} else {
+			initializeAssets();
 		}
-
+	}
+	
+	public void onActivityResult(int reqCode, int resCode, Intent intent) {
+		// Start the asset download only after the user has returned from
+		// battery save settings, if they already went there via the
+		// AlertDialog in onCreate().
+		if (reqCode == 1) {
+			initializeAssets();
+		}
+	}
+	
+	private void initializeAssets() {
 		// Initialize gamedata directory
 		dataDir = new File(getExternalFilesDir(null), "gamedata");
 		
@@ -124,6 +137,7 @@ public class InitActivity extends Activity {
 						return false;
 					}
 				}
+				// TODO implement other menu items
 				return false;
 			});
 			settingsMenu.show();
@@ -136,9 +150,6 @@ public class InitActivity extends Activity {
 
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
-
-		// Keep the screen on while this task runs
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
