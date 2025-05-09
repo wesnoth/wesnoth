@@ -276,7 +276,7 @@ template<class SocketPtr> std::string client_address(SocketPtr socket)
 		return result;
 }
 
-template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket)
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, const SocketPtr& socket)
 {
 	if(error) {
 		if(error == boost::asio::error::eof)
@@ -287,7 +287,7 @@ template<class SocketPtr> bool check_error(const boost::system::error_code& erro
 	}
 	return false;
 }
-template bool check_error<tls_socket_ptr>(const boost::system::error_code& error, tls_socket_ptr socket);
+template bool check_error<tls_socket_ptr>(const boost::system::error_code& error, const tls_socket_ptr& socket);
 
 namespace {
 
@@ -311,7 +311,7 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
  * @param doc
  * @param yield The function will suspend on write operation using this yield context
  */
-template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simple_wml::document& doc, const boost::asio::yield_context& yield)
+template<class SocketPtr> void server_base::coro_send_doc(const SocketPtr& socket, simple_wml::document& doc, const boost::asio::yield_context& yield)
 {
 	if(dump_wml) {
 		std::cout << "Sending WML to " << log_address(socket) << ": \n" << doc.output() << std::endl;
@@ -343,10 +343,10 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 		throw;
 	}
 }
-template void server_base::coro_send_doc<socket_ptr>(socket_ptr socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
-template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
+template void server_base::coro_send_doc<socket_ptr>(const socket_ptr& socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
+template void server_base::coro_send_doc<tls_socket_ptr>(const tls_socket_ptr& socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
 
-template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const std::string& filename, const boost::asio::yield_context& yield)
+template<class SocketPtr> void coro_send_file_userspace(const SocketPtr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	union DataSize
@@ -378,11 +378,11 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 
 #ifdef HAVE_SENDFILE
 
-void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield)
+void server_base::coro_send_file(const tls_socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
 	// We fallback to userspace if using TLS socket because sendfile is not aware of TLS state
 	// TODO: keep in mind possibility of using KTLS instead. This seem to be available only in openssl3 branch for now
-	coro_send_file_userspace(std::move(socket), filename, yield);
+	coro_send_file_userspace(socket, filename, yield);
 }
 
 void server_base::coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
@@ -446,7 +446,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 
 #elif defined(_WIN32)
 
-void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield)
+void server_base::coro_send_file(const tls_socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
 	coro_send_file_userspace(socket, filename, yield);
 }
@@ -511,7 +511,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 
 #else
 
-void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield)
+void server_base::coro_send_file(const tls_socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
 	coro_send_file_userspace(socket, filename, yield);
 }
@@ -523,7 +523,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 
 #endif
 
-template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(SocketPtr socket, const boost::asio::yield_context& yield)
+template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(const SocketPtr& socket, const boost::asio::yield_context& yield)
 {
 	union DataSize
 	{
@@ -563,10 +563,10 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		return {};
 	}
 }
-template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<socket_ptr>(socket_ptr socket, const boost::asio::yield_context& yield);
-template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<tls_socket_ptr>(tls_socket_ptr socket, const boost::asio::yield_context& yield);
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<socket_ptr>(const socket_ptr& socket, const boost::asio::yield_context& yield);
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<tls_socket_ptr>(const tls_socket_ptr& socket, const boost::asio::yield_context& yield);
 
-template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, std::unique_ptr<simple_wml::document>& doc_ptr, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::send_doc_queued(const SocketPtr& socket, std::unique_ptr<simple_wml::document>& doc_ptr, const boost::asio::yield_context& yield)
 {
 	static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
 
@@ -583,10 +583,10 @@ template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, st
 	}
 }
 
-template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr socket, simple_wml::document& doc)
+template<class SocketPtr> void server_base::async_send_doc_queued(const SocketPtr& socket, simple_wml::document& doc)
 {
 	boost::asio::spawn(
-		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
+		io_service_, [this, doc_ptr = doc.clone(), socket](const boost::asio::yield_context& yield) mutable {
 			send_doc_queued(socket, doc_ptr, yield);
 		}
 #if BOOST_VERSION >= 108000
@@ -609,7 +609,7 @@ template<class SocketPtr> void server_base::async_send_error(SocketPtr socket, c
 template void server_base::async_send_error<socket_ptr>(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
 template void server_base::async_send_error<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
 
-template<class SocketPtr> void server_base::async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code, const info_table& info)
+template<class SocketPtr> void server_base::async_send_warning(const SocketPtr& socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
@@ -620,8 +620,8 @@ template<class SocketPtr> void server_base::async_send_warning(SocketPtr socket,
 
 	async_send_doc_queued(socket, doc);
 }
-template void server_base::async_send_warning<socket_ptr>(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
-template void server_base::async_send_warning<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
+template void server_base::async_send_warning<socket_ptr>(const socket_ptr& socket, const std::string& msg, const char* warning_code, const info_table& info);
+template void server_base::async_send_warning<tls_socket_ptr>(const tls_socket_ptr& socket, const std::string& msg, const char* warning_code, const info_table& info);
 
 void server_base::load_tls_config(const config& cfg)
 {
