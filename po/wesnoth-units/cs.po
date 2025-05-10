@@ -1,7 +1,7 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022, 2024
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022, 2024 - 2025.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2025
@@ -12,14 +12,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-03-24 22:13+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2025-04-16 23:59+0200\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -722,6 +723,13 @@ msgid ""
 "for crude physical weapons, instead channeling their energies into "
 "devastating magical attacks that undercut their enemies’ resistances."
 msgstr ""
+"Plody následování cest světla nebo temnoty jsou mágům dobře známé, ať už je "
+"to lesk bílého mága či hluboké šero nekromanta. Mnohem méně známá jsou umění "
+"stínového panstva, co patří mezi těch pár, kteří ovládají propojení bílé a "
+"černé magie. Přestože desetiletí horlivého studia a opomíjení sebe sama "
+"z nich vyčerpala síly, překonali tito učení muži a ženy potřebu hrubých "
+"fyzických zbraní a místo toho nasměrovali svou energii do zničujících "
+"magických útoků, podlamujících odpor jejich nepřátel."
 
 #. [attack]: type=blade
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:31
@@ -739,6 +747,8 @@ msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
 msgstr ""
+"Tento útok může způsobit poškození ostřím čepele nebo chladem, podle toho, "
+"co je účinnější."
 
 #. [damage_type]: id=cold_damage
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:39
@@ -746,6 +756,8 @@ msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
 msgstr ""
+"Útok této jednotky na blízko může způsobit poškození ostřím čepele nebo "
+"chladem, podle toho, co je účinnější."
 
 #. [female]: gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:87
@@ -1332,6 +1344,11 @@ msgid ""
 "Isle, before even the times of Haldric. Centuries later, their skillfully-"
 "crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
+"Galeony jsou velké a robustní dřevěné lodě používané především pro rychlou "
+"přepravu velkého množství zboží po řekách a oceánech. Nejstarší galeony "
+"postavili starověcí námořníci ze Zeleného ostrova už před dávnými lety, "
+"dokonce ještě před časy Haldrika. O staletí později jejich dovedně vytvořené "
+"návrhy nadále používá mnoho wesnothských námořníků."
 
 #. [unit_type]: id=Pirate Galleon, race=ship
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -3285,7 +3302,7 @@ msgid ""
 "make them imposing foes indeed."
 msgstr ""
 "Vybaveni tou nejsilnější plátovou a kroužkovou zbrojí z kováren Knalgy, "
-"těžkooděnci stojí v přední linii trpasličích armád. Jsou proslulí svou "
+"stojí těžkooděnci v přední linii trpasličích armád. Jsou proslulí svou "
 "odolností v žáru bitvy a jejich dokonalé ovládání válečné sekery i kladiva "
 "je činí skutečně působivými nepřáteli."
 
@@ -9580,12 +9597,21 @@ msgid ""
 "Like most woses, Saplings rarely seek out conflict, although strikes from "
 "their thrashing branches can cause some damage."
 msgstr ""
+"Nejmenší ze stromového lidu bývají nazýváni sazenky. Sazenci ještě nemají "
+"takovou sílu jako jejich starší příbuzní. Ačkoli o životním cyklu těchto "
+"záhadných tvorů je známo jen málo, mnozí spekulují, že rostou mnohem "
+"pomaleji než běžné stromy. Pokud je to pravda, tak i tito takzvaně mladiství "
+"stromoví lidé mohou být staří mnoho desítek let.\n"
+"\n"
+"Údery jejich mlátících větví sice mohou způsobit nějaká zranění, nicméně "
+"sazenci, stejně jako většina stromových lidí, nevyhledávají konflikty."
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
 msgid "Wose Shaman"
 msgstr "Stromový šaman"
 
+# Slovosled jsem hodně zpřeházel, neboť mi to přišlo ladnější.
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
 msgid ""
@@ -9597,14 +9623,10 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
-
-#~ msgid "Galleons are blue-water ships built for trade and transport."
-#~ msgstr ""
-#~ "Galeony jsou námořní lodě, určené pro obchod a přepravu všeho druhu."
-
-#~ msgid ""
-#~ "These woses are able to command forest plants such as vines and creepers "
-#~ "to hinder their enemies."
-#~ msgstr ""
-#~ "Tito stromoví muži jsou schopni přikázat lesním rostlinám, jako je réva a "
-#~ "jiné popínavky, aby blokovaly nepřátele."
+"Ze zatopených a vlhkých lesů, přístupných pouze jejich samotářským "
+"obyvatelům, se vynořují cestovatelské historky o tajemných stromových "
+"šamanech. V nich se tvrdí, že tito šamani stráví staletí pilováním umění "
+"ovládat lesní rostlinstvo. Výpovědi o této zvláštní praxi jsou vyvozeny "
+"pouze z hrstky doložených setkání, kdy použití těchto sil brzdilo jejich "
+"nepřátele v boji. O podrobnostech tohoto umění mohou jiné rasy pouze "
+"spekulovat, obecně se věří, že se liší od magie elfů nebo mořských lidí."

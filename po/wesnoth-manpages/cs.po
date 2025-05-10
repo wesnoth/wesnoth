@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2025-02-20 21:35+0100\n"
+"PO-Revision-Date: 2025-05-07 22:38+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -225,10 +225,8 @@ msgstr "B<--core>I<\\ id_jádra>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
-msgstr "nahradí načtené jádro tím, jehož identifikátor je zadán."
+msgstr "Nahradí načtené jádro tím, jehož identifikátor je zadán."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
@@ -423,13 +421,6 @@ msgstr "B<--log->I<úroveň>B<=>I<oblast1>B<,>I<oblast2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -438,11 +429,13 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro zahrnutí všech "
-"oblastí zaznamenávání lze použít B<all>. Dostupné úrovně: B<error>,\\ "
+"nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro výběr podskupiny "
+"oblastí lze použít zástupný znak B<*>, např. gui/* nebo conf* nebo * "
+"(poslední zmíněný odpovídá všem oblastem). Dostupné úrovně: B<error>,\\ "
 "B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Pro většinu oblastí je výchozí "
 "použitá úroveň B<warning>, ale pro oblast B<deprecation>, pokud není "
-"společně s volbou B<-d>, je výchozí úrovní B<none>."
+"společně s volbou B<-d>, je výchozí úrovní B<none>. Tuto volbu je možné "
+"zadat vícekrát."
 
 # type: TP
 #. type: TP
@@ -896,8 +889,8 @@ msgstr "B<--render-image>I<\\ obrázek>B<\\ >I<výstup>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "vezme pro wesnoth platný „řetězec cesty obrázku“, který obsahuje funkce "
 "cesty obrázku, a zapíše výstup do .png souboru. Funkce cesty obrázku jsou "
@@ -1314,8 +1307,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "použij tuto volbu pro hraní ve vybrané éře namísto éry B<Default>. Éra je "
-"dána identifikátorem. Éry jsou popsány v souboru B<data/multiplayer/eras."
-"cfg>."
+"dána identifikátorem. Éry jsou popsány v souboru B<data/multiplayer/"
+"eras.cfg>."
 
 # type: TP
 #. type: TP
@@ -1496,11 +1489,11 @@ msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1509,8 +1502,8 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Tuto manuálovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Tuto manuálovou stránku původně vytvořil Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1616,9 +1609,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Součást Bitvy o Wesnoth spravující hry více hráčů. Na https://www.wesnoth."
-"org/wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a "
-"to jak přes fifo, tak přímo od klienta wesnoth."
+"Součást Bitvy o Wesnoth spravující hry více hráčů. Na https://"
+"www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které server "
+"akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth."
 
 # type: TP
 #. type: TP
@@ -1840,13 +1833,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky B<*> "
 "a B<?>. Pro více podrobností viz B<glob>(7). Výchozí hodnoty (použité, když "
-"není nic určeno) jsou: B<*admin*,*admln*,*moderator*,*server*,ai,ai?,"
-"computer,human,network,player>."
+"není nic určeno) jsou: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2172,10 +2165,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
-"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
-"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
-"12 hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
+"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
+"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
+"hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text
@@ -2482,15 +2475,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>. Upravili Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton@sonnenkinder.orgE<gt> a Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>. Tuto manuálovou stránku původně vytvořil Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt> a Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. Tuto manuálovou stránku původně "
+"vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text

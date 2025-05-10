@@ -1,14 +1,14 @@
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2025
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2024
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-03-23 20:16+0100\n"
+"PO-Revision-Date: 2025-04-30 22:56+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -290,7 +290,7 @@ msgstr "Scénář 12: Plán B"
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:65
 msgid "Recruit Gaennell, the dark adept, in ‘<i>Spoils of War</i>’."
-msgstr "Ve „<i>Válečné kořisti</i>“ naverbuj temnou učednici Gennellu."
+msgstr "Naverbuj ve „<i>Válečné kořisti</i>“ temnou učednici Gennellu."
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:65
@@ -627,10 +627,8 @@ msgstr "Vugredyr"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:297
-#, fuzzy
-#| msgid "Survive until turns run out"
 msgid "Survive until turns run out, then move any unit to 10,15"
-msgstr "Přežij do konce kol"
+msgstr "Přežij do konce kol, pak přesuň libovolnou jednotku na 10,15"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:307
@@ -3020,6 +3018,9 @@ msgid ""
 "was, at first, a mage of the realm like me. His fall began during the reign "
 "of our previous king, Haldric VII..."
 msgstr ""
+"Předpokládám, že máte právo být zpraveni o protivníkovi, kterému čelíme. Mal-"
+"Ravanal byl zpočátku mágem říše jako já. Jeho pád začal za vlády našeho "
+"předchozího krále Haldrika VII."
 
 #. [message]: speaker=Dacyn
 #. this is the same Eryssa from Northern Rebirth, now old
@@ -4922,12 +4923,12 @@ msgstr "Tihle trpaslíci tu mají hromádku 10 zlatých!"
 #. These dwarves are lazy, having just 10 gold!
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:658
 msgid "These dwarves be lazy, ’aving just 10 gold!"
-msgstr "Tihle trpaslíci jsou líní, mají jen 10 zlatých!"
+msgstr "Tihle trpaslíci jsou líný, maj tu jen 10 zlatejch!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:659
 msgid "Dwarf have 10 gold!"
-msgstr ""
+msgstr "Trpaslík mít 10 zlatých!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:660
@@ -4951,12 +4952,12 @@ msgstr "Tyhle nágy tu mají hromádku 20 zlatých!"
 #. Oi, this is 20 gold! Where do these reptiles even get it?
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:665
 msgid "Oi, this be 20 gold! Wher’ do these reptiles even get it?"
-msgstr ""
+msgstr "Koukejme, tohle bude 20 zlatejch! Kde to ti plazi vůbec berou?"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:666
 msgid "Snake have 20 gold!"
-msgstr ""
+msgstr "Had mít 20 zlatých!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:667
@@ -4975,12 +4976,12 @@ msgstr "Tihle skřeti tu mají hromádku 20 zlatých!"
 #. Look at that, 20 gold pieces these orcs have stolen from dwarves!
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:672
 msgid "Look a’ that, 20 gold pieces these orcs done steal from dwarves!"
-msgstr ""
+msgstr "Hleďme, 20 zlatých. Co tyhle skřeti neukradnou trpaslíkům!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:673
 msgid "Orc have 20 gold!"
-msgstr ""
+msgstr "Skřet mít 20 zlatých!"
 
 #. [message]: speaker=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:691
@@ -5200,16 +5201,12 @@ msgstr "Je zima, den je kratší"
 #. The amount is likely between 1 and 10 per turn.
 #. With the current balancing it’s the same for every difficulty, starting at 1/turn and rising by 1 every 6 turns.
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:464
-#, fuzzy
-#| msgid ""
-#| "Living units take $|frostbite_amount cold damage every turn. Damage "
-#| "increases every 10 turns."
 msgid ""
 "Living units take $|frostbite_amount cold damage every turn. Damage "
 "increases every 6 turns."
 msgstr ""
-"Živé jednotky obdrží každé kolo zranění chladem $|frostbite_amount. Zranění "
-"se každých 10 kol zvyšuje."
+"Živé jednotky utrží každé kolo zranění chladem $|frostbite_amount. Zranění "
+"se každých 6 kol zvyšuje."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:479
@@ -5399,12 +5396,14 @@ msgstr "Podívejte, v dálce stojí zřícenina hradu! Je to ten, který hledá
 msgid ""
 "Oi, do ya ken ol’ castle ruin o’er yonder? It be one we lookin’ fer, eh?"
 msgstr ""
+"Koukejte, vidíte tamhle tu zříceninu starýho hradu? To je ten, kterej "
+"hledáme, ne?"
 
 #. [else]
 #. I see a castle. It is very broken. Does the magic man want the broken castle?
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:893
 msgid "Me see castle. Very broken. Magic man want broken castle?"
-msgstr ""
+msgstr "Vidět hrad. Zřícený hrad. Mág myslet tenhle zřícený hrad?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:902
@@ -5656,6 +5655,9 @@ msgid ""
 "Me beard, a shipwreck full o’ gold chests! Tho’ only $gold pieces not under "
 "blasted ice! Hafta return ’ere after this war’s o’er."
 msgstr ""
+"U mýho fousu, vždyť je to vrak plnej truhel se zlatem! Ale z toho "
+"zatracenýho ledu jde vydolovat jen $gold zlatejch! Po skončení týhle války "
+"se sem musím vrátit."
 
 #. [event]
 #. I see a shipwreck. I see a lot of gold in the ice. I cannot take it. $gold gold pieces are not deep. I can take them.
@@ -5665,6 +5667,8 @@ msgid ""
 "Me see ship break. Me see in ice lot gold. No can take. $gold gold no deep. "
 "Can take."
 msgstr ""
+"Vidět vrak. Vidět v ledu mnoho zlatých kousků. Nejít vzít. Nahoře být jen "
+"$gold zlatých. Ty jít vzít."
 
 #. [event]
 #. circa 25 gold pieces
@@ -5673,6 +5677,8 @@ msgid ""
 "The zombie finds an old shipwreck and manages to scratch out $gold gold "
 "pieces frozen in the ice. The rest of the chests are too deep."
 msgstr ""
+"Zombík nachází starý vrak lodi a podaří se mu z ledu vyškrábat zlaté kousky "
+"v ceně $gold zlatých. Zbytek truhel se nachází příliš hluboko v ledu."
 
 #. [event]
 #. circa 30 gold pieces
@@ -5690,6 +5696,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1469
 msgid "This town’s a ruin, tho’ I done find some baubles worth $gold gold."
 msgstr ""
+"Tohle město je ruina. Ale našel jsem nějaký zlatý cetky, asi v hodnotě $gold "
+"zlatejch."
 
 #. [event]
 #. This town is very empty. I have found some shiny things. They are worth $gold gold pieces.
@@ -5697,6 +5705,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1472
 msgid "Town very empty. Me find shinies. Shinies for $gold gold."
 msgstr ""
+"Město ne živé. Já najít blyštivosti. Blyštivostí být jako $gold zlatých "
+"kousků."
 
 #. [event]
 #. circa 30 gold pieces
@@ -5726,19 +5736,21 @@ msgid ""
 "Meh, this drake got just $gold gold. Woulda expect more from a bunch o’ "
 "walkin’ furnaces."
 msgstr ""
+"Nic moc. Vod hromady chodících pecí bych čekal víc. Tenhle drakonid měl jen "
+"$gold zlatejch."
 
 #. [event]
 #. The drake has $gold gold pieces. The drake is mean. I am going to take the gold.
 #. circa 15 gold pieces
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1504
 msgid "Hot lizard have $gold gold. Lizard mean. Me take gold."
-msgstr ""
+msgstr "Ohnivý ještěr mít $gold zlatých. Já vzít je. Čekat víc od ještěr."
 
 #. [event]
 #. circa 15 gold pieces
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1506
 msgid "The zombie finds $gold gold pieces in the drake camp."
-msgstr ""
+msgstr "Zombík nachází v drakonidském táboře $gold zlatých."
 
 #. [message]: type=Yeti
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1527
@@ -6166,10 +6178,8 @@ msgstr ""
 #. [message]: speaker=unit
 #. 200, 160, or 130 gold
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1215
-#, fuzzy
-#| msgid "This wyvern was rich! I count $gold gold in its hoard."
 msgid "This yeti was rich! I count $gold gold in its hoard."
-msgstr "Tahle wyverna byla bohatá! Nasyslila si $gold zlatých."
+msgstr "Tenhle yetti byl bohatý! Nasyslil si $gold zlatých."
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1220
@@ -12876,7 +12886,7 @@ msgstr ""
 #. [attacks]: id=stagger
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:152
 msgid "stagger"
-msgstr ""
+msgstr "rozkolísání"
 
 #. [attacks]: id=stagger
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:153
@@ -13597,6 +13607,8 @@ msgid ""
 "—I... —I am no necromancer! Everything I have done is for the good of "
 "Wesnoth."
 msgstr ""
+"... Já... ... já nejsem žádný nekromant! Všechno, co jsem udělal, bylo pro "
+"dobro Wesnothu."
 
 #. [message]: speaker=spirit
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:783
@@ -13604,6 +13616,8 @@ msgid ""
 "Was it? Was it for the good of all Wesnoth when you took Iliah-Malal‘s "
 "Amulet of the Veil, turning to the darkness and letting us into your soul?"
 msgstr ""
+"Bylo? Bylo to pro dobro celého Wesnothu, když jsi vzal Iliah-Malalův Amulet "
+"závoje, obrátil se do temnoty a vpustil nás do své duše?"
 
 #. [message]: speaker=spirit
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:787
@@ -13611,6 +13625,8 @@ msgid ""
 "Was it for the good of Wesnoth when you enslaved the seer Eryssa‘s senile "
 "mind, so the King would choose you as his advisor over Ravan?"
 msgstr ""
+"Bylo to pro dobro Wesnothu, když jsi zotročil senilní mysl vidoucí Eryssy, "
+"aby ti král dal přednost před Ravanem a vybral tě za svého poradce?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:791
@@ -13939,7 +13955,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:795
 msgid "Do not insult me! No clansman will ever stoop to such black magic."
-msgstr ""
+msgstr "Neurážej mě! Žádný člen klanu se nikdy nesníží k takové černé magii."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:802
@@ -13947,6 +13963,7 @@ msgid ""
 "I already have an army of human soldiers — living soldiers. Let someone else "
 "use this staff."
 msgstr ""
+"Už mám armádu lidských vojáků. Živých vojáků. Ať používá tuto hůl někdo jiný."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:809
@@ -13954,6 +13971,8 @@ msgid ""
 "Tempting! Most tempting... but I fear it would be unwise for me to wield "
 "such a thing. That privilege passes onto another."
 msgstr ""
+"Lákavé! Velmi lákavé... ale obávám se, že by nebylo moudré, abych něco "
+"takového ovládal. Ať toto privilegium přejde na někoho jiného."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:816
@@ -13961,6 +13980,8 @@ msgid ""
 "Ha! Good joke! I’m not about to mess around with any of your foul northerner "
 "magic; necromancy was the cause of all this trouble in the first place."
 msgstr ""
+"Ha! Dobrý vtip! Nehodlám si zahrávat s žádnou z vašich odporných severských "
+"magií. Ostatně nekromancie byla prvořadou příčinou všech těchto potíží."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:823
@@ -13968,6 +13989,8 @@ msgid ""
 "I serve the light, not this staff of foul darkness! We should cast away this "
 "thing and be done with it."
 msgstr ""
+"Sloužím světlu, ne této holi špinavé temnoty! Měli bychom tuto věc zahodit a "
+"nezabývat se jí."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:830
@@ -13975,6 +13998,8 @@ msgid ""
 "...what foul thing is this? Remove it from my presence; necromancy shall not "
 "take root in Wesnoth, not under my watch."
 msgstr ""
+"... co je to za odpornost? Dej mi to pryč z očí. Nekromancie nezapustí "
+"kořeny ve Wesnothu, ne pod mým dohledem."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:840
@@ -13982,6 +14007,8 @@ msgid ""
 "No. I serve that which is good and light, and will not wield such a dark "
 "magical artifact."
 msgstr ""
+"Ne. Sloužím tomu, co je prodchnuto dobrem a světlem. Nebudu používat tak "
+"temný magický artefakt."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:850
@@ -13989,6 +14016,8 @@ msgid ""
 "Fighting your northerners’ foul magic is bad enough. Don’t expect me to "
 "wield that — civilized cultures don’t mess around with magic."
 msgstr ""
+"Používat vaši odpornou severskou magii k boji je dost špatné. Nečekej, že to "
+"vezmu do ruky, civilizované kultury si s magií nezahrávají."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:856
