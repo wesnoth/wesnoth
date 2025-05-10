@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "utils/optional_reference.hpp"
 
 #if 0
 namespace {
@@ -183,16 +184,22 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 
 	// to_asset_path checks
 	std::string path = gamedata + "/data/core/images/wesnoth-icon.png";
-	BOOST_CHECK( to_asset_path(path, "", "images") );
-	BOOST_CHECK_EQUAL( path, "wesnoth-icon.png" );
+	utils::optional<std::string> outpath = to_asset_path(path, "", "images");
+	BOOST_CHECK( outpath.has_value() );
+	BOOST_CHECK_EQUAL( outpath.value(), "wesnoth-icon.png" );
+
 	path = gamedata + "/images/icons/action/modern/language_25-active.png";
-	BOOST_CHECK( to_asset_path(path, "", "images") );
-	BOOST_CHECK_EQUAL( path, "icons/action/modern/language_25-active.png" );
+	outpath = to_asset_path(path, "", "images");
+	BOOST_CHECK( outpath.has_value() );
+	BOOST_CHECK_EQUAL( outpath.value(), "icons/action/modern/language_25-active.png" );
+
 	path = gamedata + "/data/core/sounds/ambient/campfire.ogg";
-	BOOST_CHECK( to_asset_path(path, "", "sounds") );
-	BOOST_CHECK_EQUAL( path, "ambient/campfire.ogg" );
+	outpath = to_asset_path(path, "", "sounds");
+	BOOST_CHECK( outpath.has_value() );
+	BOOST_CHECK_EQUAL( outpath.value(), "ambient/campfire.ogg" );
+
 	path = gamedata + "/images/this/path/doesn't/exist/campfire.ogg";
-	BOOST_CHECK( !to_asset_path(path, "", "images") );
+	BOOST_CHECK( !to_asset_path(path, "", "images").has_value() );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
