@@ -54,7 +54,6 @@
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
-#include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
 #include "utils/spritesheet_generator.hpp"
@@ -101,6 +100,10 @@
 #include <windows.h>
 
 #endif // _WIN32
+
+#ifdef __ANDROID__
+#define main SDL_main
+#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -439,6 +442,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	} else {
 		// if a pre-defined path does not exist this will empty it
+#ifdef __ANDROID__
+		game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
+#endif
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
@@ -985,6 +991,10 @@ int main(int argc, char** argv)
 	// original process environment for research/testing purposes.
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
+#ifdef __ANDROID__
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
+#endif
 
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
@@ -1019,8 +1029,9 @@ int main(int argc, char** argv)
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
 
+#ifndef __ANDROID__
 		SDL_StartTextInput();
-
+#endif
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
