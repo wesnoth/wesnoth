@@ -79,7 +79,7 @@ struct server_shutdown : public game::error
  */
 class server_base
 {
-	template<class SocketPtr> void send_doc_queued(SocketPtr socket, std::unique_ptr<simple_wml::document>& doc_ptr, boost::asio::yield_context yield);
+	template<class SocketPtr> void send_doc_queued(const SocketPtr& socket, std::unique_ptr<simple_wml::document>& doc_ptr, const boost::asio::yield_context& yield);
 
 public:
 	server_base(unsigned short port, bool keep_alive);
@@ -92,7 +92,7 @@ public:
 	 * @param doc
 	 * @param yield The function will suspend on write operation using this yield context
 	 */
-	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
+	template<class SocketPtr> void coro_send_doc(const SocketPtr& socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
 	/**
 	 * Send contents of entire file directly to socket from within a coroutine
 	 * @param socket
@@ -100,14 +100,14 @@ public:
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
 	void coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield);
-	void coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield);
+	void coro_send_file(const tls_socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 * @return unique_ptr with doc deceived. In case of error empty unique_ptr
 	 */
-	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, const boost::asio::yield_context& yield);
+	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(const SocketPtr& socket, const boost::asio::yield_context& yield);
 
 	/**
 	 * High level wrapper for sending a WML document
@@ -117,11 +117,11 @@ public:
 	 * @param socket
 	 * @param doc Document to send. A copy of it will be made so there is no need to keep the reference live after the function returns.
 	 */
-	template<class SocketPtr> void async_send_doc_queued(SocketPtr socket, simple_wml::document& doc);
+	template<class SocketPtr> void async_send_doc_queued(const SocketPtr& socket, simple_wml::document& doc);
 
 	typedef std::map<std::string, std::string> info_table;
 	template<class SocketPtr> void async_send_error(SocketPtr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
-	template<class SocketPtr> void async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
+	template<class SocketPtr> void async_send_warning(const SocketPtr& socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
 
 	/**
 	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
@@ -178,4 +178,4 @@ protected:
 
 template<class SocketPtr> std::string client_address(SocketPtr socket);
 template<class SocketPtr> std::string log_address(SocketPtr socket) { return (utils::decayed_is_same<tls_socket_ptr, decltype(socket)> ? "+" : "") + client_address(socket); }
-template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket);
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, const SocketPtr& socket);

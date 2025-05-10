@@ -281,7 +281,7 @@ void unit_filter_compound::create_child(const vconfig& c, F func)
 }
 
 template<typename C, typename F>
-void unit_filter_compound::create_attribute(const config::attribute_value v, C conv, F func)
+void unit_filter_compound::create_attribute(const config::attribute_value& v, C conv, F func)
 {
 	if(v.blank()) {
 	}
