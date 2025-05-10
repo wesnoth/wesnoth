@@ -309,40 +309,37 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 		.set_path(default_dir)
 		.set_read_only(true);
 
-	if (dlg.show()) {
+	// If the file is found inside Wesnoth's data, give its relative path
+	// if not, ask user if they want to copy it into their addon.
+	// If yes, copy and return correct relative path inside addon.
+	// return empty otherwise.
+	auto find_or_copy = [](const std::string& path, const std::string& addon_id, const std::string& type) {
+		const std::string message
+			= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
+		const auto optional_path = filesystem::to_asset_path(path, addon_id, type);
 
-		std::string dn = dlg.path();
-		const std::string& message
-						= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
-
-		if(id_stem == "unit_image") {
-
-			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-
-		} else if((id_stem == "portrait_image")||(id_stem == "small_profile_image")) {
-
-			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-
-		} else if(id_stem == "attack_image") {
-
-			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-
+		if(optional_path.has_value()) {
+			return optional_path.value();
+		} else if (gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+			boost::filesystem::path output_path = filesystem::get_current_editor_dir(addon_id);
+			output_path /= type;
+			output_path /= boost::filesystem::path(path).filename();
+			filesystem::copy_file(path, output_path.string());
+			return output_path.filename().string();
+		} else {
+			return std::string();
 		}
+	};
 
-		find_widget<text_box>("path_"+id_stem).set_value(dn);
-		update_image(id_stem);
+	if (dlg.show()) {
+		if((id_stem == "unit_image")
+			|| (id_stem == "portrait_image")
+			|| (id_stem == "small_profile_image")
+			|| (id_stem == "attack_image"))
+		{
+			find_widget<text_box>("path_"+id_stem).set_value(find_or_copy(dlg.path(), addon_id_, "images"));
+			update_image(id_stem);
+		}
 	}
 }
 

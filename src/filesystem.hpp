@@ -378,9 +378,9 @@ std::string normalize_path(const std::string& path,
 						   bool resolve_dot_entries = false);
 
 /** Helper function to convert absolute path to wesnoth relative path */
-bool to_asset_path(std::string& abs_path,
-                   const std::string& addon_id,
-                   const std::string& asset_type);
+utils::optional<std::string> to_asset_path(const std::string& abs_path,
+                                           const std::string& addon_id,
+                                           const std::string& asset_type);
 
 /**
  * Sanitizes a path to remove references to the user's name.
