@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-03-17 20:00+0100\n"
+"PO-Revision-Date: 2025-05-06 18:43+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -132,6 +132,11 @@ msgid ""
 "be worse still. What does it truly mean to be a hero?\n"
 "    \n"
 msgstr ""
+"Mentre le perdite aumentano, Delfador si imparca in una pericolose missione "
+"oltre le linee nemiche. Il viaggio si rivelerà pericoloso, ma ciò che "
+"attende alla sua fine sarà ancora peggio. Cosi significa veramente essere un "
+"eroe?\n"
+"    \n"
 
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:191
@@ -144,12 +149,13 @@ msgid ""
 "Story continued in:\n"
 "“Asheviere’s Dogs”"
 msgstr ""
+"La storia prosegue in:\n"
+"“Cani di Asheviere”"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:21
-#, fuzzy
 msgid "Blast the fire elementals in ‘<i>Graduation</i>’."
-msgstr "Distruggi gli elementali del fuoco in '<i>Laurea</i>'."
+msgstr "Distruggi gli elementali del fuoco in ’<i>Laurea</i>’."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:21
@@ -296,11 +302,13 @@ msgid ""
 "Complete the first phase of ‘<i>Long Live the Queen</i>’ without moving "
 "Delfador."
 msgstr ""
+"Completa la prima fase di ‘<i>Lunga Vita alla Regina</i>’ senza muovere "
+"Delfador."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:38
 msgid "Scenario 14: Armchair General"
-msgstr ""
+msgstr "Scenario 14: General Divanato"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:17
 msgid "Magic Missile"
@@ -326,7 +334,7 @@ msgid ""
 msgstr ""
 "<span color='#6ca364'><i><b>Incantesimo:</b></i></span> Consuma <span "
 "color='#00bbe6'><i>8xp</i></span> per guadagnare un bonus <i>+20% schivata</"
-"i> fino all'inizio del prossimo turno o finché non viene cancellato.."
+"i> fino all’inizio del prossimo turno o finché non viene cancellato.."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:46
 msgid "Panacea"
@@ -341,8 +349,8 @@ msgid ""
 "color='#dd0000'><b>Next turn, it dies.</b></span>"
 msgstr ""
 "<span color='#6ca364'><i><b>Incantesimo:</b></i></span> Consuma <span "
-"color='#00bbe6'><i>8xp</i></span> per curare completamente l'unità alleata "
-"adiacente con meno punti-ferita, e aumenta i suoi \n"
+"color='#00bbe6'><i>8xp</i></span> per curare completamente l’unità alleata "
+"adiacente con meno punti-ferita, e aumenta i suoi\n"
 "           attacchi, colpi e danni a seconda del suo livello. <span "
 "color='#dd0000'><b>Al prossimo turno, morirà.</b></span>"
 
@@ -360,25 +368,32 @@ msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:70
 msgid "Chill Touch"
-msgstr ""
+msgstr "Tocco Gelido"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:72
 msgid ""
 "<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 6x3 cold, <i>slows</"
 "i>. Replaces your default melee attack."
 msgstr ""
+"<span color='#ad6a61'><i><b>Attacco:</b></i></span> Mischia 6x3 freddo, "
+"<i>slows</i>. Rimpiazza il tuo attacco da mischia standard."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:79
 msgid "Levitate"
 msgstr "Lievitazione"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:81
+#, fuzzy
 msgid ""
 "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
 "color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
 "<i>skirmisher</i> ability until the start of your next turn or until "
 "cancelled."
 msgstr ""
+"<span color='#6ca364'><i><b>Incantesimo:</b></i></span> consuma <span "
+"color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
+"<i>skirmisher</i> ability until the start of your next turn or until "
+"cancelled."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:89
 msgid "Find Familiar"
@@ -441,10 +456,6 @@ msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:142
 #, fuzzy
-#| msgid ""
-#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-#| "color='#00bbe6'><i>8xp</i></span> to gain <i>+20% dodge chance</i> until "
-#| "the start of your next turn or until cancelled."
 msgid ""
 "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
 "color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-"
@@ -453,7 +464,7 @@ msgid ""
 msgstr ""
 "<span color='#6ca364'><i><b>Incantesimo:</b></i></span> Consuma <span "
 "color='#00bbe6'><i>8xp</i></span> per guadagnare un bonus <i>+20% schivata</"
-"i> fino all'inizio del prossimo turno o finché non viene cancellato.."
+"i> fino all’inizio del prossimo turno o finché non viene cancellato.."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:150
 msgid "Polymorph"
@@ -575,15 +586,13 @@ msgstr ""
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:49
-#, fuzzy
 msgid "Cast Delfador’s Spells"
-msgstr "Le memorie di Delfador"
+msgstr "Lancia gli incantesimi Delfador"
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:49
-#, fuzzy
 msgid "Select Delfador’s Spells"
-msgstr "Le memorie di Delfador"
+msgstr "Scegli gli incantesimi di Delfador"
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:50
@@ -625,7 +634,7 @@ msgstr ""
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:134
 msgid "Choose Later"
-msgstr ""
+msgstr "Scegli più avanti"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/The_Deceivers_Gambit/lua/theme.lua:13
@@ -689,9 +698,8 @@ msgstr "Saegwylyn"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:156
-#, fuzzy
 msgid "The Author"
-msgstr "Methor"
+msgstr "Autore"
 
 #. [message]
 #. notice that appears at the beginning of the scenario if you select Deadly difficulty
@@ -701,6 +709,9 @@ msgid ""
 "challenge even for experienced players! If you’re new to Wesnoth, I strongly "
 "suggest trying a lower difficulty."
 msgstr ""
+"NOTA: la difficoltà ‘Mortale’ è pensata per essere una sfida spaventosamente "
+"difficile anche per i giocatori più esperti. Se sei nuovo di Wesnoth, ti "
+"consiglio vivamente di provare una difficoltà inferiore."
 
 #. [message]
 #. notice that appears at the beginning of the scenario if you select Hard difficulty
@@ -710,6 +721,9 @@ msgid ""
 "experienced players! If you’re new to Wesnoth, you may want to try a lower "
 "difficulty."
 msgstr ""
+"NOTA: la difficoltà ‘Difficile’ è pensata per essere una seria sfida anche "
+"per i giocatori più esperti! Se sei nuovo di Wesnoth, dovresti provare una "
+"livello di difficoltà più basso."
 
 #. [message]: speaker=Methor
 #. the fire wraiths are not visible yet. Delfador is about to appear on the left edge of the map
@@ -734,14 +748,13 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:205
 msgid "Reach the blue orb at the east edge of the map"
-msgstr ""
+msgstr "Raggiungi la sfera blu al margine orientale della mappa"
 
 #. [objective]: condition=lose
 #. Delfador is currently just named "apprentice". He doesn't get his name until scenario 2
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:210
-#, fuzzy
 msgid "Death of the Apprentice"
-msgstr "Morte di Chantal"
+msgstr "Morte dell’Apprendista"
 
 #. [message]: speaker=Methor
 #. this tells the player that 1) Delfador is Methor's apprentice, and 2) Delfador is very reckless
@@ -766,11 +779,12 @@ msgstr ""
 #. [message]: speaker=Methor
 #. Levitate is one of many spells that Delfador will have access to throughout this scenario. It grants him flight and skirmisher, which
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:255
+#, fuzzy
 msgid ""
 "Ignore her. You’re making good time so far — now cast Levitate and slip past "
 "the eyestalks! You may need to cast it several turns in a row to keep ahead "
 "of the wraiths."
-msgstr ""
+msgstr "Ignorala. "
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:259
@@ -789,7 +803,7 @@ msgstr ""
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:268
 msgid "Casting Spells:"
-msgstr ""
+msgstr "Lanciare Incantesimi:"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:269
@@ -805,7 +819,7 @@ msgstr ""
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:291
 msgid "10 more copper for me!"
-msgstr ""
+msgstr "Altri 10 pezzi di rame per me!"
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:304
@@ -958,6 +972,10 @@ msgid ""
 "\n"
 "<i>The Deceiver’s Gambit </i></span>"
 msgstr ""
+"<span font_family='Oldania ADF Std' size='90000'>\n"
+"\n"
+"\n"
+"<i>Il Gambetto dell’Imbroglione </i></span>"
 
 #. [part]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:27
@@ -1020,7 +1038,7 @@ msgstr "Weldyn"
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:136
 msgid "15 gold"
-msgstr ""
+msgstr "15 mo"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:136
@@ -1127,7 +1145,7 @@ msgstr "Sconfiggi Ozgob"
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:305
 msgid "Death of Methor or the Apprentice"
-msgstr ""
+msgstr "Morte di Methor o dell’Apprendista"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:326
@@ -1410,14 +1428,15 @@ msgstr "Sconfiggi Khavur, il comandante dei goblin"
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:372
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:472
+#, fuzzy
 msgid "Win before Garard defeats the orcish leader"
-msgstr ""
+msgstr "Termina prima che Garard sconfigga il condottiero degli orchi"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:376
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:476
 msgid "Garard defeats Vidrug, the orcish leader"
-msgstr ""
+msgstr "Garard sconfigge Vidrug, il condottiero degli orchi"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:380
@@ -1490,6 +1509,7 @@ msgstr ""
 msgid ""
 "Defeat at least $initial_orcs_remaining orcs ($orcs_remaining remaining)"
 msgstr ""
+"Sconfiggi almeno $initial_orcs_remaining orchi ($orcs_remaining rimanenti)"
 
 #. [message]: speaker=Garard
 #. a goblin has just attacked one of Garard's horsemen. Garard previously told Methor to guard against the goblins, but Delfador led the guards to battle instead
@@ -1724,7 +1744,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:131
 msgid "Meet Wesnoth‘s ambassador"
-msgstr ""
+msgstr "Incontra l’ambasciatore di Wesnoth"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:135
@@ -1822,7 +1842,7 @@ msgstr "Conduci Delfador al margine settentrionale della foresta"
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:299
 msgid "Do not kill any woses"
-msgstr ""
+msgstr "Non uccidere alcun wose"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:303
@@ -2148,14 +2168,14 @@ msgstr "Trova la Fata"
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:415
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:447
 msgid "Death of Delfador, Deoran, Chantal, or Kalenz"
-msgstr ""
+msgstr "Morte di Delfador, Deoran, Chantal, o Kalenz"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:422
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:454
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1309
 msgid "Kalenz and Chantal will not follow you to the next scenario."
-msgstr ""
+msgstr "Kalenz e Chantal non ti seguiranno nel prossimo scenario."
 
 #. [message]
 #. there is a pool of water in the middle of the map. Right now the pool is mostly dry - your objective is to solve a puzzle to fill the pool with water
@@ -2165,8 +2185,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:443
+#, fuzzy
 msgid "Fill the central pool with water"
-msgstr ""
+msgstr "Riempi di acqua la piscina centrale"
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:480
@@ -2670,12 +2691,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/05_The_Deceiver.cfg:355
 msgid "Defeat Khovak, the orcish warlord"
-msgstr ""
+msgstr "Sconfiggi Khovak, il Signore della Guerra degli orchi"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/05_The_Deceiver.cfg:363
 msgid "Death of Garard, Arand, Lionel, or Methor"
-msgstr ""
+msgstr "Morte di Garard, Arand, Lionel, o Methor"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/05_The_Deceiver.cfg:371
@@ -3059,7 +3080,7 @@ msgstr "Resisti fino all’alba"
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/06_Ring_of_Swords.cfg:477
 msgid "Death of Garard, Asheviere, or Methor"
-msgstr ""
+msgstr "Morte di Garard, Asheviere, o Methor"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/06_Ring_of_Swords.cfg:497
@@ -3451,12 +3472,12 @@ msgstr "Oh."
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:392
 msgid "Destroy the signal beacon without raising the alarm"
-msgstr ""
+msgstr "Distruggi il faro di segnalazione senza far scattare l’allarme"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:396
 msgid "An enemy sees you during their turn"
-msgstr ""
+msgstr "Un qualsiasi nemico ti avvista durante il suo turno"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:408
@@ -3619,12 +3640,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:888
 msgid "Defeat enemies before any escape"
-msgstr ""
+msgstr "Sconfiggi i nemici prima che uno qualsiasi di loro fugga"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:892
 msgid "Any enemy reaches the west edge of the map"
-msgstr ""
+msgstr "Uno qualsiasi dei nemici raggiunge il margine occidentale della mappa"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:914
@@ -3805,7 +3826,7 @@ msgstr "Zilnaza"
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:106
 msgid "Ka'Kzaesz"
-msgstr "Ka'Kzaesz"
+msgstr "Ka’Kzaesz"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:107
@@ -4020,7 +4041,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:622
 msgid "Defeat three of the seven saurian leaders {PROGRESS_STRING}"
-msgstr ""
+msgstr "Sconfiggi tre dei sette condottieri dei sauri {PROGRESS_STRING}"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:641
@@ -4348,13 +4369,13 @@ msgstr ""
 #. $saurian_guide_name will be a female saurian name generated with the default Wesnoth name generator
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:174
 msgid "Move $saurian_guide_name to the marked hex"
-msgstr ""
+msgstr "Muovi $saurian_guide_name sull’esagono evidenziato"
 
 #. [objective]: condition=lose
 #. $saurian_guide_name will be a female saurian name generated with the default Wesnoth name generator
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:183
 msgid "Death of $saurian_guide_name"
-msgstr ""
+msgstr "Morte di $saurian_guide_name"
 
 #. [note]
 #. $saurian_guide_name will be a female saurian name generated with the default Wesnoth name generator
@@ -4545,7 +4566,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:605
 msgid "Relax. What could go wrong?"
-msgstr ""
+msgstr "Rilassati. Cosa potrebbe andare storto?"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:615
@@ -4597,13 +4618,13 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:1077
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:1109
 msgid "Protect Delfador’s cave entrance until turns run out"
-msgstr ""
+msgstr "Proteggi l’entrata della caverna di Delfador fino alla fine dei turni"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:1081
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:1113
 msgid "Delfador’s cave entrance is destroyed"
-msgstr ""
+msgstr "Distruzione dell’entrata della caverna di Delfador"
 
 #. [message]: speaker=$companion_id
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:1104
@@ -4718,7 +4739,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:138
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:329
 msgid "Find Omaranth"
-msgstr ""
+msgstr "Trova Omaranth"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:145
@@ -5094,7 +5115,7 @@ msgstr "Potere dell’oscurità, avvolgi questo campo!"
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:1059
 msgid "Find and defeat Iliah-Malal, before his undead overwhelm you."
-msgstr ""
+msgstr "Scova e sconfiggi Iliah-Malal, prima che non-morti ti soverchino."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:1081
@@ -5417,7 +5438,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:418
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:838
 msgid "Defeat Ghuvog, the Blackcrest war-chief"
-msgstr ""
+msgstr "Sconfiggi Ghuvog, capo-guerriero dei Crestanera"
 
 #. [message]: speaker=Delfador
 #. in this string, $companion_name is female (probably "Lynyan")
@@ -5721,15 +5742,13 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:129
-#, fuzzy
 msgid "Hurrah for Delfador!"
-msgstr "Morte di Delfador"
+msgstr "Hip hip urrà per Delfador!"
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:136
-#, fuzzy
 msgid "Hooray for Delfador!"
-msgstr "Morte di Delfador"
+msgstr "Hip hip urrà per Delfador!"
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:143
@@ -6641,10 +6660,13 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:622
+#, fuzzy
 msgid ""
 "Defeat as many enemy leaders as possible before Deoran is defeated (bonus "
 "gold next scenario)."
 msgstr ""
+"Sconfiggi quanti più possibile condottieri nemici (bonus oro per il prossimo "
+"scenario)."
 
 #. [objective]: condition=win
 #. $|escape_turns_remaining is probably between 0 and 10
@@ -6653,18 +6675,22 @@ msgid ""
 "Evacuate veteran units along the eastern road ($|escape_turns_remaining "
 "turns remaining)"
 msgstr ""
+"Consenti alle unità veterane di fuggire lungo la strada orientale ($|"
+"escape_turns_remaining turni rimasti)"
 
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:635
 msgid "When an enemy leader is defeated, their remaining soldiers will flee."
 msgstr ""
+"Quando un condottiero nemico viene sconfitto, i suoi soldati si daranno alla "
+"fuga."
 
 #. [note]: description=<b>
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:639
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1084
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1205
 msgid "This is the second-to-last scenario."
-msgstr ""
+msgstr "Questo è il penultimo scenario."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:665
@@ -7001,6 +7027,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1076
 msgid "Survive as long as possible (bonus gold next scenario)."
 msgstr ""
+"Sopravvivi il più a lungo possibile (bonus oro per il prossimo scenario)."
 
 #. [message]: speaker=Ghuvog
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1178
@@ -7029,6 +7056,8 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1197
 msgid "Defeat as many enemy leaders as possible (bonus gold next scenario)."
 msgstr ""
+"Sconfiggi quanti più possibile condottieri nemici (bonus oro per il prossimo "
+"scenario)."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1298

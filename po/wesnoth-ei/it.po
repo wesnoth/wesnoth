@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2025-04-06 22:12+0200\n"
+"PO-Revision-Date: 2025-04-28 22:03+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -648,10 +648,10 @@ msgstr "Vugreddyr"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:297
-#, fuzzy
-#| msgid "Survive until turns run out"
 msgid "Survive until turns run out, then move any unit to 10,15"
-msgstr "Sopravvivi fino alla fine dei turni"
+msgstr ""
+"Sopravvivi fino alla fine dei turni, poi muovi una qualsiasi unità "
+"nell’esagono 10,15"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:307
@@ -757,7 +757,7 @@ msgid ""
 "Blast it, they’ve been reinforced! And why did Dacyn leave? We’ll have to "
 "hold back the undead until he returns."
 msgstr ""
-"Maledizione, hanno ricevuto dei rinforzi! E perchè Dacyn se n’è andato? "
+"Maledizione, hanno ricevuto dei rinforzi! E perché Dacyn se n’è andato? "
 "Dobbiamo trattenere i non-morti finché non ritornerà."
 
 #. [message]: speaker=Gweddry
@@ -2734,7 +2734,7 @@ msgstr ""
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:303
 msgid "Capture any village to check it for outlaws."
-msgstr ""
+msgstr "Cattura tutti i villaggi per controllare che non ci siano fuorilegge."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:355
@@ -3159,8 +3159,8 @@ msgid ""
 msgstr ""
 "Così, il Re decise di cercare questo impareggiabile saggio. In tutta la "
 "nazione, due maghi spiccavano chiaramente tra gli altri: uno ero io, l’altro "
-"il mio buon amico Ravan, un mago dell’estico. Il re, desideroso di scegliere "
-"il consigliere migliore, ci mandò entrambi da Eryssa. In seguito ebbe una "
+"il mio buon amico Ravan, un mago dell’est. Il re, desideroso di scegliere il "
+"consigliere migliore, ci mandò entrambi da Eryssa. In seguito ebbe una "
 "conversazione in privato con la veggente. Nessuno sa cosa si dissero, ma al "
 "suo ritorno annunciò che la veggente era morta e che aveva... scelto... me "
 "come suo nuovo consigliere reale."
@@ -5382,16 +5382,12 @@ msgstr "È inverno, il giorno è più breve"
 #. The amount is likely between 1 and 10 per turn.
 #. With the current balancing it’s the same for every difficulty, starting at 1/turn and rising by 1 every 6 turns.
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:464
-#, fuzzy
-#| msgid ""
-#| "Living units take $|frostbite_amount cold damage every turn. Damage "
-#| "increases every 10 turns."
 msgid ""
 "Living units take $|frostbite_amount cold damage every turn. Damage "
 "increases every 6 turns."
 msgstr ""
 "Le unità viventi soffrono $|frostbite_amount danni da freddo ad ogni turno. "
-"Il danno cresce ogni 10 turni."
+"Il danno cresce ogni 6 turni."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:479
@@ -5975,7 +5971,7 @@ msgstr "Goblin"
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:261
 msgid "Injured Yeti"
-msgstr ""
+msgstr "Yeti ferito"
 
 #. [message]: speaker=unit
 #. a significant hint, exploring would take a long time with no reward
@@ -6372,15 +6368,13 @@ msgstr "Possa questo posto sconsacrato essere purificato dalla Luce!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1200
 msgid "GROWWR!!"
-msgstr ""
+msgstr "GROWWR!!"
 
 #. [message]: speaker=unit
 #. 200, 160, or 130 gold
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1215
-#, fuzzy
-#| msgid "This wyvern was rich! I count $gold gold in its hoard."
 msgid "This yeti was rich! I count $gold gold in its hoard."
-msgstr "Questa viverna era ricca. Ci sono $gold pessi d’oro nel suo tesoro."
+msgstr "Questo yeti era ricca. Ci sono $gold pezzi d’oro nel suo tesoro."
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1220
@@ -10111,6 +10105,9 @@ msgid ""
 "Then we must reinforce the city at once. There is a relief tunnel nearby, "
 "its entrance still hidden from the dead. Come on men, follow me!"
 msgstr ""
+"Allora dobbiamo immediatamente accorrere in rinforzo della città. Qui vicino "
+"c’è un tunnel di servizio: i morti non hanno ancora scoperto il suo "
+"ingresso. Forza, uomini: seguitemi!"
 
 #. [time]: id=indoors
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:721
@@ -11583,7 +11580,7 @@ msgid ""
 "but this hour is our domain."
 msgstr ""
 "Cala la notte su Weldyn! Il vostro contrattacco potrà anche averci colto di "
-"sorpresa, ma questa’ora è dominio nostro."
+"sorpresa, ma quest’ora è dominio nostro."
 
 #. [message]: speaker=$found_unit.id
 #. speaker is a random lich, almost certainly a different one than the previous speaker
@@ -13898,7 +13895,7 @@ msgid ""
 "the fortune in elixirs that I’m about to drink away."
 msgstr ""
 "<i>*gulp*</i> Bene, è ora o mai più. Meglio non pensare troppo a quale "
-"fortuna in elisir sto per sperberare bevendoli."
+"fortuna in elisir sto per sperperare bevendoli."
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:380
@@ -14541,7 +14538,7 @@ msgid ""
 "An elixir of waterbreathing has given this unit normal movement and defense "
 "in swamp and shallow water."
 msgstr ""
-"Un elisir della respirazione subacqueac ha dotato a questa unità di un "
+"Un elisir della respirazione subacquea ha dotato questa unità di un "
 "movimento e di una difesa normale in terreni paludosi e acque poco profonde."
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:1176
