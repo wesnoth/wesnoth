@@ -242,10 +242,10 @@ public class InitActivity extends Activity {
 				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 				progressBar.setVisibility(View.INVISIBLE);
 				progressText.setVisibility(View.INVISIBLE);
-				Button btnMain = (Button) findViewById(R.id.main_btn);
-				btnMain.setText("Launch");
-				btnMain.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
-				btnMain.setOnClickListener(e -> {
+				TextView lblTap = (TextView) findViewById(R.id.tap_label);
+				lblTap.setText("Tap to Start");
+				lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+				findViewById(R.id.screen).setOnClickListener(e -> {
 					progressText.setText("Launching Wesnoth...");
 					Log.d("InitActivity", "Launch wesnoth");
 					Intent launchIntent = new Intent(this, WesnothActivity.class);
