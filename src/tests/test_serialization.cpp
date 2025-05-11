@@ -562,7 +562,7 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 
 	superfluous_mask = std::string(str.length(), '?');
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
-	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '?'));
+	BOOST_CHECK(!utils::wildcard_string_match(str, superfluous_mask + '?'));
 
 	superfluous_mask = std::string(str.length(), '*');
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
@@ -583,6 +583,47 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 	BOOST_CHECK(!utils::wildcard_string_match("", "+++?++"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
+
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "*.txt"));
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "h*t"));
+	BOOST_CHECK(utils::wildcard_string_match("hello.txt", "?ello.*"));
+	BOOST_CHECK(!utils::wildcard_string_match("hello.txt", "*.doc"));
+	BOOST_CHECK(utils::wildcard_string_match("file123.tmp", "file?2*.tmp"));
+	BOOST_CHECK(utils::wildcard_string_match("test", "t*t"));
+	BOOST_CHECK(utils::wildcard_string_match("multiple.dots.file", "*.dots.*"));
+	BOOST_CHECK(!utils::wildcard_string_match("case.txt", "CASE.TXT"));
+	BOOST_CHECK(utils::wildcard_string_match("single", "?ingle"));
+	BOOST_CHECK(!utils::wildcard_string_match("different", "diff*txt"));
+
+	BOOST_CHECK(utils::wildcard_string_match("foo bar baz bar baz", "*bar baz"));
+	BOOST_CHECK(!utils::wildcard_string_match("abc", "ab*d"));
+	BOOST_CHECK(utils::wildcard_string_match("abcccd", "*ccd"));
+	BOOST_CHECK(utils::wildcard_string_match("mississipissippi", "*issip*ss*"));
+	BOOST_CHECK(!utils::wildcard_string_match("xxxx*zzzzzzzzy*f", "xxxx*zzy*fffff"));
+	BOOST_CHECK(utils::wildcard_string_match("xxxx*zzzzzzzzy*f", "xxx*zzy*f"));
+	BOOST_CHECK(!utils::wildcard_string_match("xxxxzzzzzzzzyf", "xxxx*zzy*fffff"));
+	BOOST_CHECK(utils::wildcard_string_match("xxxxzzzzzzzzyf", "xxxx*zzy*f"));
+	BOOST_CHECK(utils::wildcard_string_match("xyxyxyzyxyz", "xy*z*xyz"));
+	BOOST_CHECK(utils::wildcard_string_match("mississippi", "*sip*"));
+	BOOST_CHECK(utils::wildcard_string_match("xyxyxyxyz", "xy*xyz"));
+	BOOST_CHECK(utils::wildcard_string_match("mississippi", "mi*sip*"));
+	BOOST_CHECK(utils::wildcard_string_match("ababac", "*abac*"));
+	BOOST_CHECK(utils::wildcard_string_match("ababac", "*abac*"));
+	BOOST_CHECK(utils::wildcard_string_match("aaazz", "a*zz*"));
+	BOOST_CHECK(!utils::wildcard_string_match("a12b12", "*12*23"));
+	BOOST_CHECK(!utils::wildcard_string_match("a12b12", "a12b"));
+	BOOST_CHECK(utils::wildcard_string_match("a12b12", "*12*12*"));
+	BOOST_CHECK(utils::wildcard_string_match("caaab", "*a?b"));
+	BOOST_CHECK(utils::wildcard_string_match("*", "*"));
+	BOOST_CHECK(utils::wildcard_string_match("a*abab", "a*b"));
+	BOOST_CHECK(utils::wildcard_string_match("a*r", "a*"));
+	BOOST_CHECK(!utils::wildcard_string_match("a*ar", "a*aar"));
+	BOOST_CHECK(utils::wildcard_string_match("XYXYXYZYXYz", "XY*Z*XYz"));
+	BOOST_CHECK(utils::wildcard_string_match("missisSIPpi", "*SIP*"));
+	BOOST_CHECK(utils::wildcard_string_match("mississipPI", "*issip*PI"));
+	BOOST_CHECK(utils::wildcard_string_match("xyxyxyxyz", "xy*xyz"));
+	BOOST_CHECK(utils::wildcard_string_match("miSsissippi", "mi*sip*"));
+	BOOST_CHECK(utils::wildcard_string_match("c+od", "**c+d"));
 }
 
 BOOST_AUTO_TEST_CASE( test_base64_encodings )
