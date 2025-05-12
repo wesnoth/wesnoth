@@ -326,16 +326,20 @@ std::string unit_topic_generator::operator()() const {
 
 	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
 	// can't use the preferences value since it may be different than the actual value
-	sz *= video::get_pixel_scale();
+	const auto scale = video::get_pixel_scale();
+	sz *= scale;
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
-		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
+		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO("
+		   << sz << ',' << sz << ")' box='no' align='right' float='yes' "
+		   << "scale='" << scale << "' </img>";
 	}
 
-
 	if (has_female_portrait) {
-		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
+		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO("
+		   << sz << ',' << sz << ")' box='no' align='right' float='yes' "
+		   << "scale='" << scale << "' </img>";
 	}
 
 	ss << "\n\n\n";

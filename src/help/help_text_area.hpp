@@ -127,7 +127,7 @@ private:
 
 	/** Add an image item with the specified attributes. */
 	void add_img_item(const std::string& path, const std::string& alignment, const bool floating,
-					  const bool box);
+					  const bool box, const int target_scale);
 
 	/** Move the current input point to the next line. */
 	void down_one_line();
