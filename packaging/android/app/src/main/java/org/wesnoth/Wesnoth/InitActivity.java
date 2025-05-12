@@ -84,45 +84,16 @@ public class InitActivity extends Activity {
 		// Keep the screen on while this task runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
-		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		if (powerManager.isPowerSaveMode()) {
-			new AlertDialog.Builder(this)
-				.setTitle("Power Saver Detected")
-				.setMessage("Battery Saver is on. Data download may be interrupted. Consider whitelisting this app from battery saver or turn it off.")
-				.setPositiveButton("Settings", (dialog, which) -> {
-					// onActivityResult will be called (with reqCode = 1)
-					// after this intent finishes, that is,
-					// the user returns from Battery Saver settings
-					startActivityForResult(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS), 1);
-				})
-				.setNegativeButton("Ignore", (dialog, which) -> {
-					initializeAssets();
-				})
-				.setCancelable(false)
-				.show();
-		} else {
-			initializeAssets();
-		}
-	}
-	
-	public void onActivityResult(int reqCode, int resCode, Intent intent) {
-		// Start the asset download only after the user has returned from
-		// battery save settings, if they already went there via the
-		// AlertDialog in onCreate().
-		if (reqCode == 1) {
-			initializeAssets();
-		}
-	}
-	
-	private void initializeAssets() {
 		// Initialize gamedata directory
 		dataDir = new File(getExternalFilesDir(null), "gamedata");
 		
+		// Settings menu
 		ImageButton btnSettings = findViewById(R.id.settings_btn);
 		btnSettings.setOnClickListener(e -> {
 			PopupMenu settingsMenu = new PopupMenu(InitActivity.this, btnSettings);
 			settingsMenu.getMenuInflater().inflate(R.menu.main_menu, settingsMenu.getMenu());
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
+				// TODO show an alert dialog to ask the user first
 				if (menuItem.getItemId() == R.id.mnuClear) {
 					Toast.makeText(this, "Clearing data...", Toast.LENGTH_SHORT).show();
 					try {
@@ -136,6 +107,8 @@ public class InitActivity extends Activity {
 						Log.e("InitActivity", "IO exception", ioe);
 						return false;
 					}
+				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
+					openFile();
 				}
 				// TODO implement other menu items
 				return false;
@@ -143,13 +116,65 @@ public class InitActivity extends Activity {
 			settingsMenu.show();
 		});
 		
+		// Battery saver check
+		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		if (powerManager.isPowerSaveMode()) {
+			new AlertDialog.Builder(this)
+				.setTitle("Power Saver Detected")
+				.setMessage("Battery Saver is on. Data download may be interrupted. Consider whitelisting this app from battery saver or turning it off.")
+				// onActivityResult will be called (with reqCode = 1)
+				// after this intent finishes, that is,
+				// the user returns from Battery Saver settings
+				.setPositiveButton("Settings", (dialog, which) -> startActivityForResult(new Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS), 1))
+				.setNegativeButton("Ignore", (dialog, which) -> initialize())
+				.setCancelable(false)
+				.show();
+		} else {
+			initialize();
+		}
+	}
+	
+	public void onActivityResult(int reqCode, int resCode, Intent intent) {
+		// Start the asset download only after the user has returned from
+		// battery save settings, if they already went there via the
+		// AlertDialog in onCreate().
+		if (reqCode == 1) {
+			initialize();
+		} else if (reqCode == 2 && resCode == RESULT_OK) {
+			Toast.makeText(this, "Installing ZIP...", Toast.LENGTH_SHORT).show();
+			if (unpackArchive(new File(intent.getData().getPath()), dataDir, "Core")) {
+				Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+	
+	private void initialize() {
+		runOnUiThread(()-> {
+			findViewById(R.id.download_progress).setVisibility(View.INVISIBLE);
+			findViewById(R.id.download_msg).setVisibility(View.INVISIBLE);
+			TextView lblTap = (TextView) findViewById(R.id.tap_label);
+			lblTap.setText("Tap to Start");
+			lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+			findViewById(R.id.screen).setOnClickListener(e -> initializeAssets());
+		});
+	}
+	
+	private void initializeAssets() {
 		if (!dataDir.exists()) {
 			dataDir.mkdir();
 		}
 		Log.d("InitActivity", "Creating " + dataDir);
+		
+		TextView lblTap = findViewById(R.id.tap_label);
+		lblTap.clearAnimation();
+		lblTap.setVisibility(View.INVISIBLE);
 
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
+		progressText.setVisibility(View.VISIBLE);
 		progressText.setText("Connecting...");
+		findViewById(R.id.download_progress).setVisibility(View.VISIBLE);
 		
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
@@ -210,16 +235,9 @@ public class InitActivity extends Activity {
 				File certFile = new File(certDir, "cacert.pem");
 				if (!certFile.exists()) {
 					certFile.createNewFile();
-					InputStream cin = getResources().openRawResource(R.raw.cacert);
-					OutputStream cout = new FileOutputStream(certFile);
-					byte[] buffer = new byte[8192];
-					int length;
-					while ((length = cin.read(buffer)) > 0) {
-						cout.write(buffer, 0, length);
-					}
-					cout.close();
-					cin.close();
-
+					copyStream(
+						getResources().openRawResource(R.raw.cacert),
+						new FileOutputStream(certFile));
 				}
 			} catch (Exception e) {
 				Log.e("InitActivity", "Exception", e);
@@ -235,26 +253,25 @@ public class InitActivity extends Activity {
 			Log.d("InitActivity", "Stop unpack");
 
 			// Launch Wesnoth
-			// TODO: check data existence
 			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 			
-			runOnUiThread(()-> {
-				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-				progressBar.setVisibility(View.INVISIBLE);
-				progressText.setVisibility(View.INVISIBLE);
-				TextView lblTap = (TextView) findViewById(R.id.tap_label);
-				lblTap.setText("Tap to Start");
-				lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
-				findViewById(R.id.screen).setOnClickListener(e -> {
-					progressText.setText("Launching Wesnoth...");
-					Log.d("InitActivity", "Launch wesnoth");
-					Intent launchIntent = new Intent(this, WesnothActivity.class);
-					launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(launchIntent);
-					finish();
-				});
-			});
+			progressText.setText("Launching Wesnoth...");
+			Log.d("InitActivity", "Launch wesnoth");
+			Intent launchIntent = new Intent(this, WesnothActivity.class);
+			launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(launchIntent);
+			finish();
 		});
+	}
+	
+	// Show a file chooser to open a file
+	private void openFile() {
+		Intent inttOpen = new Intent(Intent.ACTION_GET_CONTENT);
+		inttOpen.addCategory(Intent.CATEGORY_OPENABLE);
+		inttOpen.setType("application/zip");
+		inttOpen.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
+		Intent inttOpen2 = Intent.createChooser(inttOpen, "Open ZIP file...");
+		startActivityForResult(inttOpen2, 2);
 	}
 
 	private void updateDownloadProgress(int progress, String type) {
@@ -270,6 +287,16 @@ public class InitActivity extends Activity {
 		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
 		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
+	}
+	
+	private void copyStream(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[8192];
+		int length;
+		while ((length = in.read(buffer)) > 0) {
+			out.write(buffer, 0, length);
+		}
+		out.close();
+		in.close();
 	}
 
 	private long downloadFile(String url, File destpath, String type, long modified) {
@@ -301,6 +328,7 @@ public class InitActivity extends Activity {
 				return newModified;
 			}
 
+			// TODO rewrite to use copyStream function.
 			DataInputStream in = new DataInputStream(conn.getInputStream());
 			OutputStream out = new FileOutputStream(destpath);
 
@@ -366,15 +394,9 @@ public class InitActivity extends Activity {
 						dir.mkdir();
 					}
 				} else {
-					InputStream in = zf.getInputStream(ze);
-					OutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
-					byte[] buffer = new byte[8192];
-					int length;
-					while ((length = in.read(buffer)) > 0) {
-						out.write(buffer, 0, length);
-					}
-					out.close();
-					in.close();
+					copyStream(
+						zf.getInputStream(ze),
+						new FileOutputStream(new File(destdir, ze.getName())));
 				}
 
 				Log.d("Unpack", "Unpacking " + type + ":" + progress + "/" + max);
