@@ -95,20 +95,11 @@ public class InitActivity extends Activity {
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
 				// TODO show an alert dialog to ask the user first
 				if (menuItem.getItemId() == R.id.mnuClear) {
-					Toast.makeText(this, "Clearing data...", Toast.LENGTH_SHORT).show();
-					try {
-						Files.walk(dataDir.toPath())
-							.sorted(Comparator.reverseOrder())
-							.map(Path::toFile)
-							.forEach(File::delete);
-						Toast.makeText(this, "Cleared!", Toast.LENGTH_SHORT).show();
-						return true;
-					} catch (IOException ioe) {
-						Log.e("InitActivity", "IO exception", ioe);
-						return false;
-					}
+					clearGameData(dataDir);
+					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
 					openFile();
+					return true;
 				}
 				// TODO implement other menu items
 				return false;
@@ -262,6 +253,28 @@ public class InitActivity extends Activity {
 			startActivity(launchIntent);
 			finish();
 		});
+	}
+	
+	private void clearGameData(File dataDir) {
+		new AlertDialog.Builder(this)
+			.setTitle("Confirm Deletion")
+			.setMessage("All gamedata will be completely deleted. Are you sure?")
+			.setPositiveButton("Yes", (dialog, which) -> {
+				Toast.makeText(this, "Clearing data...", Toast.LENGTH_SHORT).show();
+				try {
+					Files.walk(dataDir.toPath())
+						.sorted(Comparator.reverseOrder())
+						.map(Path::toFile)
+						.forEach(File::delete);
+					Toast.makeText(this, "Cleared!", Toast.LENGTH_SHORT).show();
+				} catch (IOException ioe) {
+					Log.e("InitActivity", "IO exception", ioe);
+					Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
+				}
+			})
+			.setNegativeButton("No", null)
+			.setCancelable(false)
+			.show();
 	}
 	
 	// Show a file chooser to open a file
