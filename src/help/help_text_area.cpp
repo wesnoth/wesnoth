@@ -213,12 +213,13 @@ void help_text_area::handle_img_cfg(const config &cfg)
 {
 	const std::string src = cfg["src"];
 	const std::string align = cfg["align"];
+	int scale = cfg["scale"].to_int(1);
 	bool floating = cfg["float"].to_bool();
 	bool box = cfg["box"].to_bool(true);
 	if (src.empty()) {
 		throw parse_error("Img markup must have src attribute.");
 	}
-	add_img_item(src, align, floating, box);
+	add_img_item(src, align, floating, box, scale);
 }
 
 void help_text_area::handle_bold_cfg(const config &cfg)
@@ -385,11 +386,19 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 }
 
 void help_text_area::add_img_item(const std::string& path, const std::string& alignment,
-								  const bool floating, const bool box)
+								  const bool floating, const bool box, const int target_scale)
 {
 	texture tex(image::get_texture(path));
+
 	if (!tex)
 		return;
+
+	if (target_scale > 1) {
+		// Assume the provided image has native dimensions for the intended rendering scale,
+		// and change the draw size to reflect this.
+		tex.set_draw_size(tex.draw_size() / target_scale);
+	}
+
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
 		WRN_DP << "Floating image with align HERE, aligning left.";
@@ -417,7 +426,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
 		&& (xpos < curr_loc_.first || xpos + width > text_width)) {
 		down_one_line();
-		add_img_item(path, alignment, floating, box);
+		add_img_item(path, alignment, floating, box, target_scale);
 	}
 	else {
 		if (!floating) {

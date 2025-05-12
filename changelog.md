@@ -15,6 +15,7 @@
    * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, Italian, Japanese
 ### Units
 ### User interface
+   * Fixed an issue with the Help browser over-scaling portraits up on configurations with a pixel scale higher than 1 (e.g. macOS and Retina screens), causing blurry rendering and lacking enough room for text.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
    * Fix failure to build with recent versions of Visual Studio due to missing `<chrono>` include.
