@@ -1021,7 +1021,7 @@ std::string get_exe_path()
 	// with version
 	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
 	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
-#if BOOST_VERSION >= 108600
+#if BOOST_VERSION >= 108100
 	bfs::path search = boost::process::v2::environment::find_executable(exe);
 #else
 	bfs::path search = boost::process::search_path(exe);
@@ -1032,7 +1032,7 @@ std::string get_exe_path()
 
 	// versionless
 	exe = filesystem::get_program_invocation("wesnoth");
-#if BOOST_VERSION >= 108600
+#if BOOST_VERSION >= 108100
 	search = boost::process::v2::environment::find_executable(exe);
 #else
 	search = boost::process::search_path(exe);
