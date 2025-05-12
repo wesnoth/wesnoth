@@ -946,8 +946,6 @@ private:
 
 	tod_color color_adjust_;
 
-	std::vector<std::tuple<int, int, int>> fps_history_;
-
 protected:
 	static display * singleton_;
 };
