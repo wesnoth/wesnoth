@@ -63,7 +63,7 @@
 #endif
 #include <boost/process/v1/child.hpp>
 
-#elif BOOST_VERSION >= 108100
+#elif BOOST_VERSION >= 108600
 
 // boost::asio (via boost::process) complains about winsock.h otherwise
 #ifdef _WIN32
@@ -808,7 +808,7 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#if !defined(__APPLE__) && BOOST_VERSION >= 108100
+#if !defined(__APPLE__) && BOOST_VERSION >= 108600
 		boost::asio::io_context io_context;
 		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
@@ -824,7 +824,7 @@ void game_launcher::start_wesnothd()
 		std::this_thread::sleep_for(50ms);
 		return;
 	}
-#if defined(__APPLE__) || BOOST_VERSION < 108100
+#if defined(__APPLE__) || BOOST_VERSION < 108600
 	catch(const boost::process::process_error& e)
 #else
 	catch(const std::exception& e)
