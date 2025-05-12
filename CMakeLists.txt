@@ -60,7 +60,7 @@ if(ENABLE_TESTS)
 endif()
 
 find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
-                                           OPTIONAL_COMPONENTS charconv)
+                                           OPTIONAL_COMPONENTS charconv process)
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)

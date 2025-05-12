@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
+#include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
@@ -31,13 +32,22 @@
 #include "utils/general.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/format.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
-#include <boost/process.hpp>
-#include "game_config_view.hpp"
+
+#if !defined(_WIN32) && !defined(__APPLE__)
+
+#if BOOST_VERSION >= 108600
+#include <boost/process/v2/environment.hpp>
+#else
+#include <boost/process/search_path.hpp>
+#endif
+
+#endif
 
 #ifdef _WIN32
 #include <boost/locale.hpp>
@@ -78,7 +88,6 @@ static lg::log_domain log_filesystem("filesystem");
 #define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
-namespace bp = boost::process;
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
 
@@ -1012,15 +1021,23 @@ std::string get_exe_path()
 	// with version
 	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
 	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
-	bfs::path search = bp::search_path(exe).string();
-	if(!search.string().empty()) {
+#if BOOST_VERSION >= 108600
+	bfs::path search = boost::process::v2::environment::find_executable(exe);
+#else
+	bfs::path search = boost::process::search_path(exe);
+#endif
+	if(!search.empty()) {
 		return search.string();
 	}
 
 	// versionless
 	exe = filesystem::get_program_invocation("wesnoth");
-	search = bp::search_path(exe).string();
-	if(!search.string().empty()) {
+#if BOOST_VERSION >= 108600
+	search = boost::process::v2::environment::find_executable(exe);
+#else
+	search = boost::process::search_path(exe);
+#endif
+	if(!search.empty()) {
 		return search.string();
 	}
 

@@ -50,11 +50,38 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#include <algorithm> // for copy, max, min, stable_sort
+#ifdef __APPLE__
+
+//
+// HACK: MacCompileStuff is currently on 1.86, so it could use the v2 API,
+// but we need to update the libs manually to link against boost::process.
+//
+// -- vultraz, 2025-05-12
+//
+#if BOOST_VERSION > 108600
+#error MacCompileStuff has been updated. Remove this block and the accompanying __APPLE__ checks below.
+#endif
+#include <boost/process/v1/child.hpp>
+
+#elif BOOST_VERSION >= 108600
+
+// boost::asio (via boost::process) complains about winsock.h otherwise
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <boost/process/v2/process.hpp>
+
+#else
+
+// process::v1 only. The v1 folders do not exist until 1.86
 #ifdef _WIN32
 #include <boost/process/windows.hpp>
 #endif
-#include <boost/process.hpp>
+#include <boost/process/child.hpp>
+
+#endif
+
+#include <algorithm> // for copy, max, min, stable_sort
 #include <cstdlib>   // for system
 #include <new>
 #include <thread>
@@ -84,8 +111,6 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-namespace bp = boost::process;
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
@@ -783,10 +808,15 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#ifndef _WIN32
-		bp::child c(wesnothd_program, "-c", config);
+#if !defined(__APPLE__) && BOOST_VERSION >= 108600
+		boost::asio::io_context io_context;
+		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
-		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
+#ifndef _WIN32
+		boost::process::child c(wesnothd_program, "-c", config);
+#else
+		boost::process::child c(wesnothd_program, "-c", config, boost::process::windows::create_no_window);
+#endif
 #endif
 		c.detach();
 		// Give server a moment to start up
@@ -794,7 +824,11 @@ void game_launcher::start_wesnothd()
 		std::this_thread::sleep_for(50ms);
 		return;
 	}
-	catch(const bp::process_error& e)
+#if defined(__APPLE__) || BOOST_VERSION < 108600
+	catch(const boost::process::process_error& e)
+#else
+	catch(const std::exception& e)
+#endif
 	{
 		prefs::get().set_mp_server_program_name("");
 
