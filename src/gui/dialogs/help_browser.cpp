@@ -199,12 +199,20 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 
 		DBG_HP << "Showing topic: " << topic->id << ": " << topic->title;
 
+		std::string topic_id_temp = topic->id;
+		if(topic_id_temp.compare(0, 2, "..") == 0) {
+			topic_id_temp.replace(0, 2, "+");
+		} else {
+			topic_id_temp.insert(0, "-");
+		}
+		tree_view& topic_tree = find_widget<tree_view>("topic_tree");
+		tree_view_node& selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp);
+		selected_node.select_node(true);
+
 		find_widget<label>("topic_title").set_label(topic->title);
 		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
 
 		invalidate_layout();
-		scrollbar_panel& scroll = find_widget<scrollbar_panel>("topic_scroll_panel");
-		scroll.scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 	}
 
 	if (add_to_history) {
