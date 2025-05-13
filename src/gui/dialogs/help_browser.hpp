@@ -44,6 +44,7 @@ public:
 
 private:
 	std::string initial_topic_;
+	std::string current_topic_;
 	const help::section& toplevel_;
 
 	std::map<std::string, int> parsed_pages_;

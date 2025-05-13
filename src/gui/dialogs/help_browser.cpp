@@ -50,6 +50,7 @@ REGISTER_DIALOG(help_browser)
 help_browser::help_browser(const help::section& toplevel, const std::string& initial)
 	: modal_dialog(window_id())
 	, initial_topic_(initial.empty() ? help::default_show_topic : initial)
+	, current_topic_()
 	, toplevel_(toplevel)
 	, history_()
 	, history_pos_(0)
@@ -173,8 +174,10 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 
 void help_browser::show_topic(std::string topic_id, bool add_to_history)
 {
-	if(topic_id.empty()) {
+	if(topic_id.empty() || topic_id == current_topic_) {
 		return;
+	} else {
+		current_topic_ = topic_id;
 	}
 
 	if(topic_id[0] == '+') {
@@ -195,12 +198,6 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		}
 
 		DBG_HP << "Showing topic: " << topic->id << ": " << topic->title;
-
-		widget_data data;
-		widget_item item;
-
-		item["label"] = topic->title;
-		data.emplace("topic_title", item);
 
 		find_widget<label>("topic_title").set_label(topic->title);
 		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
