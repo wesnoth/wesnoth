@@ -3,15 +3,15 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2025
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
-"PO-Revision-Date: 2024-10-25 21:12+0200\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"PO-Revision-Date: 2025-05-08 21:47+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -200,198 +200,206 @@ msgstr "Strany $winners skončily nerozhodně."
 msgid "dialog^Turns Over"
 msgstr "Konec kol"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Drakonidé"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/drakes-aoh.cfg:12
 #: data/multiplayer/factions/drakes-default.cfg:12
 msgid ""
-"The <bold>text='Drakes'</bold> are a faction of dragon-like "
-"<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
-"<ref>text='Saurian' dst='..race_lizard'</ref> allies. Drakes are descendants "
-"of dragons, but smaller in size. Saurians are considerably smaller than "
-"Drakes and from different ancestry. Together, the Drake faction has high "
-"mobility but low defense, leading to unusual tactics for a "
-"<ref>text='Default Era' dst='..era_era_default'</ref> faction."
+"\n"
+"The <b>Drakes</b> are a faction of dragon-like <ref "
+"dst='..race_drake'>Drakes</ref> and their lizard <ref "
+"dst='..race_lizard'>Saurian</ref> allies. Drakes are descendants of dragons, "
+"but smaller in size. Saurians are considerably smaller than Drakes and from "
+"different ancestry. Together, the Drake faction has high mobility but low "
+"defense, leading to unusual tactics for a <ref "
+"dst='..era_era_default'>Default Era</ref> faction."
 msgstr ""
-"<bold>text='Drakonidé'</bold> jsou frakcí drakům podobných "
-"<ref>text='drakonidů' dst='..race_drake'</ref> a jejich spojenců "
-"<ref>text='ještěráků' dst='..race_lizard'</ref>. Drakonidé jsou potomky "
-"draků, ale oproti nim jsou menší. Ještěráci jsou ještě o kus menší než "
-"drakonidé a mají jiné předky. Obě rasy jsou rychlé, ale špatně se brání, což "
-"vyúsťuje k neobvyklým strategiím v <ref>text='základní éře' "
-"dst='..era_era_default'</ref>."
+"\n"
+"<b>Drakonidé</b> jsou frakcí drakům podobných <ref "
+"dst='..race_drake'>drakonidů</ref> a jejich spojenců <ref "
+"dst='..race_lizard'>ještěráků</ref>. Drakonidé jsou potomky draků, ale "
+"oproti nim jsou menší. Ještěráci jsou ještě o kus menší než drakonidé a mají "
+"jiné předky. Obě rasy jsou rychlé, ale špatně se brání, což pro frakci <ref "
+"dst='..era_era_default'>základní éry</ref> vede k neobvyklým taktikám."
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
 msgstr "Pouštní lid"
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/dunefolk-aoh.cfg:12
 #: data/multiplayer/factions/dunefolk-default.cfg:12
 msgid ""
-"The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
-"and hills of the southern lands. The Dunefolk specialize in using terrain "
-"features to coordinate attacks at dawn or dusk. Their ranks boast lawful and "
-"liminal units, healers, high-accuracy melee fighters, and fearsome horse-"
-"mounted archers. While Dunefolk units tend to be more expensive than those "
-"of the Loyalist faction, they make up for this with high mobility — "
-"especially on hilly terrains."
+"\n"
+"The <b>Dunefolk</b> are a faction of humans from the deserts and hills of "
+"the southern lands. The Dunefolk specialize in using terrain features to "
+"coordinate attacks at dawn or dusk. Their ranks boast lawful and liminal "
+"units, healers, high-accuracy melee fighters, and fearsome horse-mounted "
+"archers. While Dunefolk units tend to be more expensive than those of the "
+"Loyalist faction, they make up for this with high mobility — especially on "
+"hilly terrains."
 msgstr ""
-"<bold>text='Pouštní lid'</bold> je frakcí lidí z pouští a hor na jihu. "
-"Pouštní lidé se specializují na využívání různorodosti krajiny ke koordinaci "
-"útoků za rozbřesku nebo za soumraku. Jejich řady se mohou pochlubit "
-"zákonnými a šerými jednotkami, léčiteli, vysoce přesnými bojovníky na blízko "
+"\n"
+"<b>Pouštní lid</b> je frakcí lidí z pouští a hor na jihu. Pouštní lidé se "
+"specializují na využívání různorodosti krajiny ke koordinaci útoků za "
+"rozbřesku nebo za soumraku. Jejich řady se mohou pochlubit zákonnými "
+"a šerými jednotkami, léčiteli, vysoce přesnými bojovníky na blízko "
 "a obávanými lučištníky na koních. Ač jsou jednotky pouštních lidí průměrně "
 "dražší než jednotky z frakce Věrných, vynahrazují to lepší pohyblivostí, "
 "obzvlášť v hornatém terénu."
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalganská aliance"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/knalgans-aoh.cfg:11
 #: data/multiplayer/factions/knalgans-default.cfg:11
 msgid ""
-"The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
-"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' "
-"dst='..race_human'</ref> allies. Dwarves are an old race who live "
-"underground and have tough, but short, warriors. The outlaws are humans who "
-"are not socially acceptable among others of their race, but have become "
-"allies of the dwarves due to common enemies. This leads to a combination of "
-"tough and defensive dwarves who are only good on certain terrain and humans "
-"who can cover ground that dwarves are not good at fighting in."
+"\n"
+"The <b>Knalgan Alliance</b> is a faction of <ref dst='..race_dwarf'>Dwarves</"
+"ref> and their outlaw <ref dst='..race_human'>Human</ref> allies. Dwarves "
+"are an old race who live underground and have tough, but short, warriors. "
+"The outlaws are humans who are not socially acceptable among others of their "
+"race, but have become allies of the dwarves due to common enemies. This "
+"leads to a combination of tough and defensive dwarves who are only good on "
+"certain terrain and humans who can cover ground that dwarves are not good at "
+"fighting in."
 msgstr ""
-"<bold>text='Knalgská aliance'</bold> je spojenectví <ref>text='trpaslíků' "
-"dst='..race_dwarf'</ref> a <ref>text='psanců' dst='..race_human'</ref>. "
-"Trpaslíci jsou starobylá rasa, která většinu času tráví pod zemí. Jejich "
-"bojovníci jsou sice nízcí, zato houževnatí. Psanci jsou tvořeni skupinami "
-"lidí, které zavrhla jejich vlastní rasa, tak se přidali k trpaslíkům, se "
-"kterými sdílejí společné nepřátele. Toto spojenectví přináší kombinaci "
-"odolných a v obraně zdatných trpaslíků, kterým se ale daří jen v nemnoha "
-"typech terénu a lidí, kteří pokryjí terén, na kterém se trpaslíkům špatně "
-"bojuje."
+"\n"
+"<b>Knalgská aliance</b> je spojenectví <ref dst='..race_dwarf'>trpaslíků</"
+"ref> a <ref dst='..race_human'>lidských</ref> psanců. Trpaslíci jsou "
+"starobylá rasa, která většinu času tráví pod zemí. Jejich bojovníci jsou "
+"sice nízcí, zato houževnatí. Psanci jsou tvořeni skupinami lidí, které "
+"zavrhla jejich vlastní rasa, tak se přidali k trpaslíkům, se kterými sdílejí "
+"společné nepřátele. Toto spojenectví přináší kombinaci odolných a v obraně "
+"zdatných trpaslíků, kterým se ale daří jen v nemnoha typech terénu a lidí, "
+"kteří pokryjí terén, na kterém se trpaslíkům špatně bojuje."
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Věrní"
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/loyalists-aoh.cfg:12
 #: data/multiplayer/factions/loyalists-default.cfg:12
 msgid ""
-"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
-"dst='..race_human'</ref> who are loyal to the throne of Wesnoth. Humans are "
-"a versatile race who specialize in many different areas. Similarly, the "
-"Loyalist faction is a very versatile melee-oriented faction with important "
-"ranged support from bowmen and mages."
+"\n"
+"The <b>Loyalists</b> are a faction of <ref dst='..race_human'>Humans</ref> "
+"who are loyal to the throne of Wesnoth. Humans are a versatile race who "
+"specialize in many different areas. Similarly, the Loyalist faction is a "
+"very versatile melee-oriented faction with important ranged support from "
+"bowmen and mages."
 msgstr ""
-"<bold>text='Věrní'</bold> jsou frakcí <ref>text='lidí' dst='..race_human'</"
-"ref>, kteří jsou oddaní wesnothskému trůnu. Lidé jsou všestranná rasa, která "
-"se specializuje v mnoha různých oblastech. Tak i Věrní jsou velmi všestranní "
-"s důrazem na souboje na blízko a nezanedbatelnou podporou lučištníků a mágů."
+"\n"
+"<b>Věrní</b> jsou frakcí <ref dst='..race_human'>lidí</ref>, kteří jsou "
+"oddaní wesnothskému trůnu. Lidé jsou všestranná rasa, která se specializuje "
+"v mnoha různých oblastech. Tak i Věrní jsou velmi všestranní s důrazem na "
+"souboje na blízko a nezanedbatelnou podporou lučištníků a mágů."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Seveřané"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/northerners-aoh.cfg:12
 #: data/multiplayer/factions/northerners-default.cfg:11
 msgid ""
-"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
-"dst='..race_orc'</ref> and their allies who live in the north of the Great "
-"Continent, thus their name. Northerners consist of the warrior orcs race, "
-"the enslaved <ref>text='goblins' dst='..race_goblin'</ref>, "
-"<ref>text='trolls' dst='..race_troll'</ref> who are tricked into combat by "
-"the orcs, and the serpentine <ref>text='naga' dst='..race_naga'</ref>. The "
-"Northerners play best by taking advantage of having many low-cost and high "
-"HP soldiers."
+"\n"
+"The <b>Northerners</b> are a faction of <ref dst='..race_orc'>Orcs</ref> and "
+"their allies who live in the north of the Great Continent, thus their name. "
+"Northerners consist of the warrior orcs race, the enslaved <ref "
+"dst='..race_goblin'>goblins</ref>, <ref dst='..race_troll'>trolls</ref> who "
+"are tricked into combat by the orcs, and the serpentine <ref "
+"dst='..race_naga'>naga</ref>. The Northerners play best by taking advantage "
+"of having many low-cost and high HP soldiers."
 msgstr ""
-"<bold>text='Seveřané'</bold> jsou frakcí <ref>text='skřetů' "
-"dst='..race_orc'</ref> a jejich spojenců, kteří žijí na sever od Velkého "
-"kontinentu, proto jejich jméno. Seveřany tvoří válečnická rasa skřetů, "
-"podmanění <ref>text='goblini' dst='..race_goblin'</ref>, "
-"<ref>text='trollové' dst='..race_trolls'</ref>, které k válčení navedli "
-"skřeti, a hadovité <ref>text='nágy' dst='..race_naga'</ref>. Seveřané se "
-"v boji mohou spolehnout na velké množství levných jednotek a bojovníky "
-"s vysokým počtem životů."
+"\n"
+"<b>Seveřané</b> jsou frakcí <ref dst='..race_orc'>skřetů</ref> a jejich "
+"spojenců, kteří žijí na sever od Velkého kontinentu, proto jejich jméno. "
+"Seveřany tvoří válečnická rasa skřetů, podmanění <ref "
+"dst='..race_goblin'>goblini</ref>, <ref dst='..race_troll'>trollové</ref>, "
+"které k válčení navedli skřeti, a hadovité <ref dst='..race_naga'>nágy</"
+"ref>. Seveřané se v boji mohou spolehnout na velké množství levných jednotek "
+"a bojovníky s vysokým počtem životů."
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Odbojní"
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/rebels-aoh.cfg:12
 #: data/multiplayer/factions/rebels-default.cfg:12
 msgid ""
-"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' "
-"dst='..race_elf'</ref> and their various forest-dwelling allies. They get "
-"their human name, Rebels, from the time of Heir to the Throne, when they "
-"started the rebellion against the evil Queen Asheviere. Elves are a magical "
-"race that are masters of the bow and are capable of living many years longer "
-"than humans. In harmony with nature, the elves find allies with the "
-"<ref>text='human' dst='..race_human'</ref> mages, certain "
-"<ref>text='merfolk' dst='..race_merman'</ref>, and tree creatures called "
-"<ref>text='Woses' dst='..race_wose'</ref>. Rebels are best played taking "
+"\n"
+"The <b>Rebels</b> are a faction of <ref dst='..race_elf'>Elves</ref> and "
+"their various forest-dwelling allies. They get their human name, Rebels, "
+"from the time of Heir to the Throne, when they started the rebellion against "
+"the evil Queen Asheviere. Elves are a magical race that are masters of the "
+"bow and are capable of living many years longer than humans. In harmony with "
+"nature, the elves find allies with the <ref dst='..race_human'>human</ref> "
+"mages, certain <ref dst='..race_merman'>merfolk</ref>, and tree creatures "
+"called <ref dst='..race_wose'>Woses</ref>. Rebels are best played taking "
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
-"<bold>text='Rebelové'</bold> jsou frakcí <ref>text='elfů' dst='..race_elf'</"
-"ref> a všemožných lesních stvoření, která se k nim připojila. Svoje "
-"pojmenování lidskou řečí, rebelové, dostali v Dědici trůnu, kde se vzbouřili "
-"proti zlé královně Ašvíře. Elfové jsou magií nadanou rasou, jsou ale také "
-"mistři luku a délka jejich života mnohokrát převyšuje délku života lidského. "
-"Žijíce v souladu s přírodou, elfové nalézají spojence mezi mágy z řad "
-"<ref>text='lidí' dst='..race_human'</ref>, některými <ref>text='mořskými "
-"lidmi' dst='..race_merman'</ref> a stromovitými stvořeními zvanými "
-"<ref>text='stromolidé' dst='..race_wose'</ref>. Rebelové s výhodou bojují "
-"v lesích, kde vyniká jejich skvělá obrana, jsou mistry v útocích na dálku "
-"a výhodou jim je i jejich nezávislost na denní době."
+"\n"
+"<b>Rebelové</b> jsou frakcí <ref dst='..race_elf'>elfů</ref> a všemožných "
+"lesních stvoření, která se k nim připojila. Svoje pojmenování lidskou řečí, "
+"rebelové, dostali v Dědici trůnu, kde se vzbouřili proti zlé královně "
+"Ašvíře. Elfové jsou magií nadanou rasou, jsou ale také mistři luku a délka "
+"jejich života mnohokrát převyšuje délku života lidského. Žijíce v souladu "
+"s přírodou, elfové nalézají spojence mezi mágy z řad <ref "
+"dst='..race_human'>lidí</ref>, některými <ref dst='..race_merman'>mořskými "
+"lidmi</ref> a stromovitými stvořeními zvanými <ref "
+"dst='..race_wose'>stromolidé</ref>. Rebelové s výhodou bojují v lesích, kde "
+"vyniká jejich skvělá obrana, jsou mistry v útocích na dálku a výhodou jim je "
+"i jejich nezávislost na denní době."
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Nemrtví"
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
+#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
 #: data/multiplayer/factions/undead-aoh.cfg:12
 #: data/multiplayer/factions/undead-default.cfg:12
 msgid ""
-"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' "
-"dst='..race_undead'</ref> creatures and <ref>text='human' "
-"dst='..race_human'</ref> practitioners of dark arts that usually accompany "
-"them. Often, these “Dark Adepts” are the units that do the most damage for "
-"the faction, but they have a major vulnerability — their practicing of this "
-"forbidden, evil magic has consumed all their energy and so they have no "
-"melee attack at all. The Undead are a very aggressive faction and the most "
-"powerful <ref>text='Default Era' dst='..era_era_default'</ref> faction at "
-"nighttime."
+"\n"
+"The <b>Undead</b> are a faction of <ref dst='..race_undead'>undead</ref> "
+"creatures and <ref dst='..race_human'>human</ref> practitioners of dark arts "
+"that usually accompany them. Often, these “Dark Adepts” are the units that "
+"do the most damage for the faction, but they have a major vulnerability — "
+"their practicing of this forbidden, evil magic has consumed all their energy "
+"and so they have no melee attack at all. The Undead are a very aggressive "
+"faction and the most powerful <ref dst='..era_era_default'>Default Era</ref> "
+"faction at nighttime."
 msgstr ""
-"<bold>text='Nemrtví'</bold> jsou frakcí <ref>text='nemrtvých' "
-"dst='..race_undead'</ref> stvoření a <ref>text='lidí' dst='..race_human'</"
-"ref>, kteří propadli temným uměním a nemrtvé obvykle doprovází. Často jsou v "
-"rámci jednotek nemrtvých tito „temní učedníci“ právě tou silou, která "
-"způsobí nejvíce škod. Mají ale jednu velkou slabost – praktikováním "
-"zakázané, temné magie přišli o všechnu fyzickou sílu, a proto nejsou schopni "
-"útoku na blízko. Nemrtví jsou velice agresivní a v <ref>text='základní éře' "
-"dst='..era_era_default'</ref> jsou během noci nejobávanější frakcí."
+"\n"
+"<b>Nemrtví</b> jsou frakcí <ref dst='..race_undead'>nemrtvých</ref> stvoření "
+"a <ref dst='..race_human'>lidí</ref>, kteří propadli temným uměním a nemrtvé "
+"obvykle doprovází. Často jsou v rámci jednotek nemrtvých tito „temní "
+"učedníci“ právě tou silou, která způsobí nejvíce škod. Mají ale jednu velkou "
+"slabost – praktikováním zakázané, temné magie přišli o všechnu fyzickou "
+"sílu, a proto nejsou schopni útoku na blízko. Nemrtví jsou velice agresivní "
+"a v <ref dst='..era_era_default'>základní éře</ref> jsou během noci "
+"nejobávanější frakcí."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4

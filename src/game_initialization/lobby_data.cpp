@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "game_initialization/multiplayer.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
@@ -114,6 +113,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, map_data(game["map_data"])
 	, name(font::escape_text(game["name"].str()))
 	, scenario()
+	, scenario_id()
 	, type_marker()
 	, remote_scenario(false)
 	, map_info()
@@ -261,6 +261,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		if(level_cfg) {
 			type_marker = make_game_type_marker(_("scenario_abbreviation^S"), false);
 			scenario = (*level_cfg)["name"].str();
+			scenario_id = (*level_cfg)["id"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
@@ -308,11 +309,9 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::dialogs::generate_difficulty_config(*campaign_cfg);
-			for(const config& difficulty : difficulties.child_range("difficulty")) {
+			for(const config& difficulty : campaign_cfg->child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << spaced_em_dash() << difficulty["description"];
-
 					break;
 				}
 			}

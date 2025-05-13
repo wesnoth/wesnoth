@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2024
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -382,7 +382,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	cv[i - 1].set_cfg(cfg);
+	cv[i - 1].set_shapes(cfg);
 	c->queue_redraw();
 	return 0;
 }

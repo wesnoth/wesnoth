@@ -71,10 +71,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_ядра\fP
-перекрывает загруженное ядро тем, чей идентификатор был указан.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ каталог\fP
-перезаписывает каталог данных вновь указанным
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 вывести путь к каталогу данных и выйти.
@@ -120,11 +121,11 @@ DiffWML в стандартный вывод или в файл, указанн�
 примеру: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIуровень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
-задать уровень детальности доменов лога.  \fBall\fP выводит в лог домены всех
-уровней. Доступны уровни: \fBerror\fP (ошибки),\ \fBwarning\fP (предупреждения),\ \fBinfo\fP (сведения),\ \fBdebug\fP (отладка),\ \fBnone\fP (ничего).  По умолчанию
-для большинства доменов используется уровень \fBwarning\fP, но домен
-\fBdeprecation\fP (выводимое из употребления) устанавливается в \fBnone\fP, если
-только не установлен параметр \fB\-d\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 выводить временные метки в файл логов с большей точностью.
@@ -430,7 +431,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

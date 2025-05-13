@@ -1,20 +1,98 @@
-## Version 1.19.8+dev
+## Version 1.19.11+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
 ### Editor
 ### Multiplayer
 ### Lua API
-   * `rich_label` now has the new event handler `on_link_click`. If set, it will be fired when the user clicks on a link set via the `<ref>` tag inside the `rich_label`.
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
+   * Updated translations: British English, Czech, Finnish, Italian
 ### Units
 ### User interface
 ### WML Engine
-   * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
 ### Miscellaneous and Bug Fixes
+
+## Version 1.19.11
+### Campaigns
+   * The Deceiver's Gambit
+     * Spells: clarified "Counterspell" description
+     * S05: the allied AIs now attack at Dawn instead of Second Watch
+     * S08: changed Trappers' dialogue to be less overtly hostile
+     * S14: the final boss now heals less on lower difficulties
+### Editor
+   * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115)
+### Multiplayer
+   * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
+### Translations
+   * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Simplified), Czech, Italian, Japanese
+### Units
+   * Necromancer:
+     * Changes to emphasize the Necro's thematic plague ability, while lowering his/her durability closer to that of other mages:
+     * hitpoints 76 -> 64, impact resist 10% -> 0%, cold resist 0% -> 10%
+     * plague staff (melee impact) 6-3 -> 7-3
+     * chill wave (ranged cold) 19-2 -> 20-2
+     * shadow wave (ranged arcane) 16-2 -> 13-2, added "plague" weapon special
+### User interface
+   * UI support the multi-hex ranged attacks has been added
+   * Support for 800xN window sizes has been removed
+### WML Engine
+   * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-byte characters
+   * IPFs that affect color values no longer skip fully transparent pixels.
+### Miscellaneous and Bug Fixes
+   * Fixed the Pick Unit Advancement modification throwing lua errors on every recruitment
+   * Fixed unit appearance not being immediately updated when affected by an ability
+
+## Version 1.19.10
+### Campaigns
+   * Fixed campaigns not using the correct map settings
+### Editor
+   * `Convert To Scenario` menu item added to `File` menu that allows converting an already opened map to a scenario.
+### Multiplayer
+   * Added the foundation for multiplayer queueing
+### Lua API
+   * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
+### Packaging
+   * Boost 1.70 or later is now required
+### Translations
+   * Updated translations: Bengali, British English, Finnish, Italian
+### User interface
+   * It is now possible to search help topics by name/id in the Help Browser.
+### WML Engine
+   * `[unit]dismissable` and `[unit]block_dismiss_message` keys added that allow marking an unit as dismissable, and what message to show if user clicks `Dismiss` button in Unit Recall dialog.
+   * Added [have_side] as a conditional tag. It takes the same arguments as [filter_side]. It returns true if a side matching the SSF exists, false otherwise. Added to the schema.
+### Miscellaneous and Bug Fixes
+   * GUI.pyw: use the Windows API through the `ctypes` library to detect the user's language on Windows (#9972).
+   * Fixed persistent WML being stored in the wrong folder
+
+## Version 1.19.9
+### Campaigns
+   * Delfador’s Memoirs
+     * Campaign removed! Replaced with “The Deceiver’s Gambit”
+   * The Deceiver’s Gambit
+     * New campaign, replacing “Delfador’s Memoirs”!
+     * _Yearning for adventure, a newly-trained apprentice from the magic academy at Alduin fights alongside Wesnoth’s king during a major war against the orcs of the north.  Play a pivotal role during this time of turmoil, as despite a string of battlefield victories Wesnoth seems to be slipping inexorably into chaos..._
+   * The Hammer of Thursagan
+     * Revised maps for Scenarios 1, 3, 4, 5 and 7
+### Lua API
+   * `rich_label` now has the new event handler `on_link_click`. If set, it will be fired when the user clicks on a link set via the `<ref>` tag inside the `rich_label`.
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
+   * For translation statistics, wesnoth-tsg is now part of core, and wesnoth-tutorial isn't
+### Units
+   * Dune Paragon:
+        * Cost 78 -> 85
+        * primary melee attack: description changed to scimitar, 13-4 -> 15-4, removed marksman
+        * new secondary melee attack: 25-2 scimitar melee blade marksman
+### User interface
+   * A new "Customize Reach Map (Unit Movement UI)" option has been added under the advanced settings category. It provides highlight color, enemy highlight color, border opacity and tint opacity customization options for the reach map UI.
+   * The game will now default to 1920x1080 with a minimum of 1280x720
+### WML Engine
+   * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
+   * [fire_event][data] content is available in the fired event as $data
+### Miscellaneous and Bug Fixes
+   * Various fixes for the unit recruit/recall dialog
 
 ## Version 1.19.8
 ### Campaigns

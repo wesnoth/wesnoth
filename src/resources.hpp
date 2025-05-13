@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,5 +55,5 @@ namespace resources
 	extern pathfind::manager      *tunnels;
 	extern actions::undo_list     *undo_stack;
 	extern std::shared_ptr<wb::manager> whiteboard;
-	extern bool                   simulation_;
+	extern bool                   simulation;
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,41 +37,38 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-/** Adds @a mod to the queue (unless mod is nullptr). */
-void modification_queue::push(std::unique_ptr<modification> mod)
+void modification_queue::push(std::unique_ptr<modification>&& mod)
 {
 	priorities_[mod->priority()].push_back(std::move(mod));
 }
 
-/** Removes the top element from the queue */
 void modification_queue::pop()
 {
-	map_type::iterator top_pair = priorities_.begin();
-	auto& top_vector = top_pair->second;
+	auto top_pair = priorities_.begin();
+	auto& mod_list = top_pair->second;
 
 	// Erase the top element.
-	top_vector.erase(top_vector.begin());
-	if(top_vector.empty()) {
-		// We need to keep the map clean.
+	mod_list.erase(mod_list.begin());
+
+	// We need to keep the map clean.
+	if(mod_list.empty()) {
 		priorities_.erase(top_pair);
 	}
 }
 
-/** Returns the number of elements in the queue. */
 std::size_t modification_queue::size() const
 {
 	std::size_t count = 0;
-	for(const map_type::value_type& pair : priorities_) {
-		count += pair.second.size();
+	for(const auto& [priority, mods] : priorities_) {
+		count += mods.size();
 	}
 
 	return count;
 }
 
-/** Returns the top element in the queue . */
-modification * modification_queue::top() const
+const modification& modification_queue::top() const
 {
-	return priorities_.begin()->second.front().get();
+	return *priorities_.begin()->second.front();
 }
 
 
@@ -243,9 +240,12 @@ void wipe_alpha_modification::operator()(surface& src) const
 class pixel_callable : public wfl::color_callable
 {
 public:
-	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
-		: color_callable(clr), p(p), w(w), h(h)
-	{}
+	pixel_callable(std::size_t index, color_t clr, int w, int h)
+		: color_callable(clr), coord(), w(w), h(h)
+	{
+		coord.x = index % w;
+		coord.y = index / w;
+	}
 
 	void get_inputs(wfl::formula_input_vector& inputs) const override
 	{
@@ -262,25 +262,25 @@ public:
 	{
 		using wfl::variant;
 		if(key == "x") {
-			return variant(p.x);
+			return variant(coord.x);
 		} else if(key == "y") {
-			return variant(p.y);
+			return variant(coord.y);
 		} else if(key == "width") {
 			return variant(w);
 		} else if(key == "height") {
 			return variant(h);
 		} else if(key == "u") {
-			return variant(p.x / static_cast<float>(w));
+			return variant(coord.x / static_cast<float>(w));
 		} else if(key == "v") {
-			return variant(p.y / static_cast<float>(h));
+			return variant(coord.y / static_cast<float>(h));
 		}
 
 		return color_callable::get_value(key);
 	}
 
 private:
-	SDL_Point p;
-	uint32_t w, h;
+	SDL_Point coord;
+	int w, h;
 };
 
 void adjust_alpha_modification::operator()(surface& src) const
@@ -289,27 +289,15 @@ void adjust_alpha_modification::operator()(surface& src) const
 		wfl::formula new_alpha(formula_);
 
 		surface_lock lock(src);
-		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src.area();
-		uint32_t* const beg = cur;
+		std::size_t index{0};
 
-		while(cur != end) {
-			color_t pixel;
-			pixel.a = (*cur) >> 24;
-			pixel.r = (*cur) >> 16;
-			pixel.g = (*cur) >> 8;
-			pixel.b = (*cur);
+		for(auto& pixel : lock.pixel_span()) {
+			auto color = color_t::from_argb_bytes(pixel);
 
-			int i = cur - beg;
-			SDL_Point p;
-			p.y = i / src->w;
-			p.x = i % src->w;
+			auto px = pixel_callable{index++, color, src->w, src->h};
+			color.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
 
-			pixel_callable px(p, pixel, src->w, src->h);
-			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
-			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
-
-			++cur;
+			pixel = color.to_argb_bytes();
 		}
 	}
 }
@@ -317,36 +305,24 @@ void adjust_alpha_modification::operator()(surface& src) const
 void adjust_channels_modification::operator()(surface& src) const
 {
 	if(src) {
-		wfl::formula new_red(formulas_[0]);
-		wfl::formula new_green(formulas_[1]);
-		wfl::formula new_blue(formulas_[2]);
-		wfl::formula new_alpha(formulas_[3]);
+		wfl::formula new_r(formulas_[0]);
+		wfl::formula new_g(formulas_[1]);
+		wfl::formula new_b(formulas_[2]);
+		wfl::formula new_a(formulas_[3]);
 
 		surface_lock lock(src);
-		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src.area();
-		uint32_t* const beg = cur;
+		std::size_t index{0};
 
-		while(cur != end) {
-			color_t pixel;
-			pixel.a = (*cur) >> 24;
-			pixel.r = (*cur) >> 16;
-			pixel.g = (*cur) >> 8;
-			pixel.b = (*cur);
+		for(auto& pixel : lock.pixel_span()) {
+			auto color = color_t::from_argb_bytes(pixel);
 
-			int i = cur - beg;
-			SDL_Point p;
-			p.y = i / src->w;
-			p.x = i % src->w;
+			auto px = pixel_callable{index++, color, src->w, src->h};
+			color.r = std::min<unsigned>(new_r.evaluate(px).as_int(), 255);
+			color.g = std::min<unsigned>(new_g.evaluate(px).as_int(), 255);
+			color.b = std::min<unsigned>(new_b.evaluate(px).as_int(), 255);
+			color.a = std::min<unsigned>(new_a.evaluate(px).as_int(), 255);
 
-			pixel_callable px(p, pixel, src->w, src->h);
-			pixel.r = std::min<unsigned>(new_red.evaluate(px).as_int(), 255);
-			pixel.g = std::min<unsigned>(new_green.evaluate(px).as_int(), 255);
-			pixel.b = std::min<unsigned>(new_blue.evaluate(px).as_int(), 255);
-			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
-			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
-
-			++cur;
+			pixel = color.to_argb_bytes();
 		}
 	}
 }

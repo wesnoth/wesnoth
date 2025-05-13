@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -85,7 +85,7 @@ SIDE_GETTER("village_gold", int) {
 }
 
 SIDE_SETTER("village_gold", int) {
-	t.set_village_support(value);
+	t.set_village_gold(value);
 }
 
 SIDE_GETTER("village_support", int) {

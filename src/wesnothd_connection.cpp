@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -326,7 +326,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 	auto buf_ptr = std::make_unique<boost::asio::streambuf>();
 
 	std::ostream os(buf_ptr.get());
-	write_gz(os, request);
+	io::write_gz(os, request);
 
 	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
 
@@ -477,8 +477,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	}
 
 	std::istream is(&read_buf_);
-	config data;
-	read_gz(data, is);
+	config data = io::read_gz(is);
 	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
 
 	{

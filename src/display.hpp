@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,6 +52,7 @@ namespace wb {
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "gui/core/top_level_drawable.hpp"
+#include "gui/core/tracked_drawable.hpp"
 #include "halo.hpp"
 #include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
@@ -61,8 +62,6 @@ namespace wb {
 #include "sdl/texture.hpp"
 #include "theme.hpp"
 #include "widgets/button.hpp"
-
-#include <boost/circular_buffer.hpp>
 
 #include <bitset>
 #include <functional>
@@ -93,7 +92,7 @@ class gamemap;
 /**
  * Sort-of-Singleton that many classes, both GUI and non-GUI, use to access the game data.
  */
-class display : public gui2::top_level_drawable
+class display : public gui2::top_level_drawable, public gui2::tracked_drawable
 {
 public:
 	display(const display_context* dc,
@@ -465,10 +464,6 @@ public:
 
 	terrain_builder& get_builder() {return *builder_;}
 
-	void update_fps_label();
-	void clear_fps_label();
-	void update_fps_count();
-
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
 
@@ -757,13 +752,6 @@ protected:
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
 
-	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
-	int current_frame_sample_ = 0;
-	unsigned int fps_counter_;
-	std::chrono::steady_clock::time_point fps_start_;
-	unsigned int fps_actual_;
-	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
-
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;
 	std::map<std::string, texture> reportSurfaces_;
@@ -907,8 +895,6 @@ protected:
 	virtual overlay_map& get_overlays() = 0;
 
 private:
-	/** Handle for the label which displays frames per second. */
-	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */
 	int invalidated_hexes_;
 	int drawn_hexes_;
@@ -959,8 +945,6 @@ private:
 	std::map<map_location, std::list<arrow*>> arrows_map_;
 
 	tod_color color_adjust_;
-
-	std::vector<std::tuple<int, int, int>> fps_history_;
 
 protected:
 	static display * singleton_;

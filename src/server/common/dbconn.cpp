@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2024
+	Copyright (C) 2020 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -103,26 +103,12 @@ std::string dbconn::get_tournaments()
 		return "";
 	}
 
-	auto tournaments_handler = [](const mariadb::result_set_ref& rslt) {
-		config c;
-
-		while(rslt->next()) {
-			config& child = c.add_child("tournament");
-			child["title"] = rslt->get_string("TITLE");
-			child["status"] = rslt->get_string("STATUS");
-			child["url"] = rslt->get_string("URL");
-		}
-
-		return c;
-	};
-
 	try
 	{
-		config t = get_complex_results(connection_, &tournaments_handler, db_tournament_query_, {});
+		mariadb::result_set_ref rslt = select(connection_, db_tournament_query_, {});
 		std::string text;
-		for(const auto& child : t.child_range("tournament"))
-		{
-			text += "\nThe tournament "+child["title"].str()+" is "+child["status"].str()+". More information can be found at "+child["url"].str();
+		while(rslt->next()) {
+			text += "\n" + rslt->get_string("TEXT");
 		}
 		return text;
 	}

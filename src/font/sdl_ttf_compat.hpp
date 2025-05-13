@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2024
+	Copyright (C) 2021 - 2025
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

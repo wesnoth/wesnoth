@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -75,7 +75,7 @@ void mp_staging::pre_show()
 	set_escape_disabled(true);
 
 	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
-	register_hotkey(hotkey::HOTKEY_MP_START_GAME, std::bind(&mp_staging::start_game, this));
+	register_hotkey(hotkey::HOTKEY_MP_START_GAME, [this](auto&&...) { start_game(); return true; });
 	std::stringstream tooltip;
 	tooltip
 		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})

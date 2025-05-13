@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -54,8 +54,10 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define LOG_CF LOG_STREAM(info, log_config)
 
-static const std::size_t max_recursion_levels = 1000;
+constexpr std::size_t max_recursion_levels = 1000;
 
+namespace io
+{
 namespace
 {
 // ==================================================================================
@@ -64,21 +66,15 @@ namespace
 
 class parser
 {
-	parser() = delete;
-
-	parser(const parser&) = delete;
-	parser& operator=(const parser&) = delete;
-
 public:
-	parser(config& cfg, std::istream& in, abstract_validator* validator = nullptr)
-		: cfg_(cfg)
-		, tok_(in)
+	parser(std::istream& in, abstract_validator* validator = nullptr)
+		: tok_(in)
 		, validator_(validator)
 		, elements()
 	{
 	}
 
-	void operator()();
+	config operator()();
 
 private:
 	void parse_element();
@@ -90,10 +86,12 @@ private:
 			const std::string& hint_string = "",
 			const std::string& debug_string = "");
 
-	void error(const std::string& message, const std::string& pos_format = "");
+	/** @throws config::error */
+	[[noreturn]] void error(const std::string& message, const std::string& pos_format = "");
 
 	struct element
 	{
+#ifndef __cpp_aggregate_paren_init
 		element(config* cfg, const std::string& name, int start_line = 0, const std::string& file = "")
 			: cfg(cfg)
 			, name(name)
@@ -101,27 +99,27 @@ private:
 			, file(file)
 		{
 		}
+#endif
 
-		config* cfg;
-		std::string name;
-		int start_line;
-		std::string file;
+		config* cfg{};
+		std::string name{};
+		int start_line{};
+		std::string file{};
 	};
 
-	config& cfg_;
 	tokenizer tok_;
 	abstract_validator* validator_;
 
 	std::stack<element> elements;
 };
 
-void parser::operator()()
+config parser::operator()()
 {
-	cfg_.clear();
-	elements.emplace(&cfg_, "");
+	config res;
+	elements.emplace(&res, "");
 
 	if(validator_) {
-		validator_->open_tag("", cfg_, tok_.get_start_line(), tok_.get_file());
+		validator_->open_tag("", res, tok_.get_start_line(), tok_.get_file());
 	}
 
 	do {
@@ -181,6 +179,8 @@ void parser::operator()()
 			_("opened at $pos")
 		);
 	}
+
+	return res;
 }
 
 void parser::parse_element()
@@ -477,47 +477,18 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	i18n_symbols["value"] = tok_.current_token().value;
 	i18n_symbols["previous_value"] = tok_.previous_token().value;
 
-	const std::string& tok_state = _("Value: ‘$value’ Previous: ‘$previous_value’");
+	const std::string tok_state = _("Value: ‘$value’ Previous: ‘$previous_value’");
 #else
-	const std::string& tok_state = "";
+	const std::string tok_state = "";
 #endif
 
-	const std::string& message = lineno_string(i18n_symbols, ss.str(), "$error", hint_string, tok_state);
-
-	throw config::error(message);
+	throw config::error(lineno_string(i18n_symbols, ss.str(), "$error", hint_string, tok_state));
 }
 
 
 // ==================================================================================
 // HELPERS FOR WRITE_KEY_VAL
 // ==================================================================================
-
-/**
- * Copies a string fragment and converts it to a suitable format for WML.
- * (I.e., quotes are doubled.)
- */
-std::string escaped_string(const std::string::const_iterator& begin, const std::string::const_iterator& end)
-{
-	std::string res;
-	std::string::const_iterator iter = begin;
-
-	while(iter != end) {
-		const char c = *iter;
-		res.append(c == '"' ? 2 : 1, c);
-		++iter;
-	}
-
-	return res;
-}
-
-/**
- * Copies a string and converts it to a suitable format for WML.
- * (I.e., quotes are doubled.)
- */
-inline std::string escaped_string(const std::string& value)
-{
-	return escaped_string(value.begin(), value.end());
-}
 
 class write_key_val_visitor
 #ifdef USING_BOOST_VARIANT
@@ -559,7 +530,7 @@ public:
 	void operator()(const std::string& s) const
 	{
 		indent();
-		out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n';
+		out_ << key_ << '=' << '"' << utils::wml_escape_string(s) << '"' << '\n';
 	}
 
 	void operator()(const t_string& s) const;
@@ -612,7 +583,7 @@ void write_key_val_visitor::operator()(const t_string& value) const
 			out_ << '_';
 		}
 
-		out_ << '"' << escaped_string(w.begin(), w.end()) << '"';
+		out_ << '"' << utils::wml_escape_string(w) << '"';
 		first = false;
 	}
 
@@ -626,27 +597,27 @@ void write_key_val_visitor::operator()(const t_string& value) const
 // PUBLIC FUNCTION IMPLEMENTATIONS
 // ==================================================================================
 
-void read(config& cfg, std::istream& in, abstract_validator* validator)
+config read(std::istream& in, abstract_validator* validator)
 {
-	parser(cfg, in, validator)();
+	return parser(in, validator)();
 }
 
-void read(config& cfg, const std::string& in, abstract_validator* validator)
+config read(const std::string& in, abstract_validator* validator)
 {
 	std::istringstream ss(in);
-	parser(cfg, ss, validator)();
+	return parser(ss, validator)();
 }
 
-template<typename decompressor>
-void read_compressed(config& cfg, std::istream& file, abstract_validator* validator)
+template<typename Decompressor>
+config read_compressed(std::istream& file, abstract_validator* validator)
 {
 	// An empty gzip file seems to confuse boost on MSVC, so return early if this is the case.
 	if(file.peek() == EOF) {
-		return;
+		return {};
 	}
 
 	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
-	filter.push(decompressor());
+	filter.push(Decompressor());
 	filter.push(file);
 
 	/* This causes gzip_error (and the corresponding bz2 error, std::ios_base::failure) to be
@@ -670,7 +641,7 @@ void read_compressed(config& cfg, std::istream& file, abstract_validator* valida
 	 */
 	if(filter.peek() == EOF) {
 		LOG_CF << "Empty compressed file or error at reading a compressed file.";
-		return;
+		return {};
 	}
 
 	if(!filter.good()) {
@@ -678,19 +649,19 @@ void read_compressed(config& cfg, std::istream& file, abstract_validator* valida
 		       << "This indicates a malformed gz stream and can make Wesnoth crash.";
 	}
 
-	parser(cfg, filter, validator)();
+	return parser(filter, validator)();
 }
 
 /** Might throw a std::ios_base::failure especially a gzip_error. */
-void read_gz(config& cfg, std::istream& file, abstract_validator* validator)
+config read_gz(std::istream& file, abstract_validator* validator)
 {
-	read_compressed<boost::iostreams::gzip_decompressor>(cfg, file, validator);
+	return read_compressed<boost::iostreams::gzip_decompressor>(file, validator);
 }
 
 /** Might throw a std::ios_base::failure especially bzip2_error. */
-void read_bz2(config& cfg, std::istream& file, abstract_validator* validator)
+config read_bz2(std::istream& file, abstract_validator* validator)
 {
-	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);
+	return read_compressed<boost::iostreams::bzip2_decompressor>(file, validator);
 }
 
 void write_key_val(std::ostream& out,
@@ -769,11 +740,11 @@ void write(std::ostream& out, const configr_of& cfg, unsigned int level)
 	write_internal(cfg, out, textdomain, level);
 }
 
-template<typename compressor>
+template<typename Compressor>
 void write_compressed(std::ostream& out, const configr_of& cfg)
 {
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
-	filter.push(compressor());
+	filter.push(Compressor());
 	filter.push(out);
 
 	write(filter, cfg);
@@ -791,3 +762,5 @@ void write_bz2(std::ostream& out, const configr_of& cfg)
 {
 	write_compressed<boost::iostreams::bzip2_compressor>(out, cfg);
 }
+
+} // namespace io

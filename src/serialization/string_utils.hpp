@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -318,6 +318,18 @@ inline std::string print_modifier(const std::string &mod)
 	return mod[0] == '-' ? (font::unicode_minus + std::string(mod.begin() + 1, mod.end())) : ("+" + mod);
 }
 
+/** Format @a str as a WML value  */
+inline std::string wml_escape_string(std::string_view str)
+{
+	std::string res;
+
+	for(char c : str) {
+		res.append(c == '"' ? 2 : 1, c);
+	}
+
+	return res;
+}
+
 /** Prepends a configurable set of characters with a backslash */
 std::string escape(std::string_view str, const char *special_chars);
 
@@ -337,12 +349,6 @@ std::string unescape(std::string_view str);
 
 /** Percent-escape characters in a UTF-8 string intended to be part of a URL. */
 std::string urlencode(std::string_view str);
-
-/** Surround the string 'str' with double quotes. */
-inline std::string quote(std::string_view str)
-{
-	return '"' + std::string(str) + '"';
-}
 
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
@@ -390,10 +396,18 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 bool word_match(const std::string& message, const std::string& word);
 
 /**
- * Match using '*' as any number of characters (including none),
- * '+' as one or more characters, and '?' as any one character.
+ * @brief Performs pattern matching with wildcards.
+ *
+ * @param str Any byte-string.
+ * @param pat A string of characters with the following interpretation:
+ *            	- @c '*' represents zero or more characters.
+ *            	- @c '+' represents one or more characters.
+ *				- @c '?' represents exactly one character.
+ *				- All other characters are interpreted literally.
+ *
+ * @returns @c true if @p str matches @p pat
  */
-bool wildcard_string_match(const std::string& str, const std::string& match);
+[[nodiscard]] bool wildcard_string_match(std::string_view str, std::string_view pat) noexcept;
 
 /**
  * Converts '*' to '%' and optionally escapes '_'.

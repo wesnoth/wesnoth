@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,8 +126,11 @@ public:
 	 * \todo unclear what this should mean, so replace it with a clearly-named
 	 * successor.
 	 */
-	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
-		(number_ != t_translation::VOID_TERRAIN ); }
+	bool is_nonnull() const {
+		return (number_ != t_translation::NONE_TERRAIN)
+			&& (number_ != t_translation::VOID_TERRAIN);
+	}
+
 	/** Returns the light (lawful) bonus for this terrain when the time of day gives a @a base bonus. */
 	int light_bonus(int base) const
 	{

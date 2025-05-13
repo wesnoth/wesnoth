@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "filesystem.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
@@ -67,93 +66,94 @@ void campaign_selection::campaign_selected()
 	assert(tree.selected_item());
 
 	const std::string& campaign_id = tree.selected_item()->id();
+	if(campaign_id.empty()) {
+		return;
+	}
 
-	if(!campaign_id.empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
 
-		button& ok_button = find_widget<button>("proceed");
-		ok_button.set_active(campaign_id != missing_campaign_);
-		ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
+	button& ok_button = find_widget<button>("proceed");
+	ok_button.set_active(campaign_id != missing_campaign_);
+	ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
 
-		const int choice = std::distance(page_ids_.begin(), iter);
-		if(iter == page_ids_.end()) {
-			return;
-		}
+	const int choice = std::distance(page_ids_.begin(), iter);
+	if(iter == page_ids_.end()) {
+		return;
+	}
 
-		multi_page& pages = find_widget<multi_page>("campaign_details");
-		pages.select_page(choice);
+	multi_page& pages = find_widget<multi_page>("campaign_details");
+	pages.select_page(choice);
 
-		engine_.set_current_level(choice);
+	engine_.set_current_level(choice);
 
-		styled_widget& background = find_widget<styled_widget>("campaign_background");
-		background.set_label(engine_.current_level().data()["background"].str());
+	styled_widget& background = find_widget<styled_widget>("campaign_background");
+	background.set_label(engine_.current_level().data()["background"].str());
 
-		// Rebuild difficulty menu
-		difficulties_.clear();
+	// Rebuild difficulty menu
+	difficulties_.clear();
 
-		auto& diff_menu = find_widget<menu_button>("difficulty_menu");
+	auto& diff_menu = find_widget<menu_button>("difficulty_menu");
 
-		const auto& diff_config = generate_difficulty_config(engine_.current_level().data());
-		diff_menu.set_active(diff_config.child_count("difficulty") > 1);
+	auto diff_config_range = engine_.current_level().data().child_range("difficulty");
+	const std::size_t difficulty_count = diff_config_range.size();
 
-		if(!diff_config.empty()) {
-			std::vector<config> entry_list;
-			unsigned n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
+	diff_menu.set_active(difficulty_count > 1);
 
-			for(const auto& cfg : diff_config.child_range("difficulty")) {
-				config entry;
+	if(diff_config_range.empty()) {
+		return;
+	}
 
-				// FIXME: description may have markup that will display weird on the menu_button proper
-				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
-				entry["image"] = cfg["image"].str("misc/blank-hex.png");
+	std::vector<config> entry_list;
+	std::size_t n = 0, selection = 0;
 
-				if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
-					std::string laurel;
+	for(const auto& cfg : diff_config_range) {
+		config entry;
 
-					if(n + 1 >= max_n) {
-						laurel = game_config::images::victory_laurel_hardest;
-					} else if(n == 0) {
-						laurel = game_config::images::victory_laurel_easy;
-					} else {
-						laurel = game_config::images::victory_laurel;
-					}
+		// FIXME: description may have markup that will display weird on the menu_button proper
+		entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
+		entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-					entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
-				}
+		if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
+			std::string laurel;
 
-				if(!cfg["description"].empty()) {
-					std::string desc;
-					if(cfg["auto_markup"].to_bool(true) == false) {
-						desc = cfg["description"].str();
-					} else {
-						if(!cfg["old_markup"].to_bool()) {
-							desc += markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
-						} else {
-							desc += markup::span_color(font::GRAY_COLOR, cfg["description"].str());
-						}
-					}
-
-					// Icons get displayed instead of the labels on the dropdown menu itself,
-					// so we want to prepend each label to its description here
-					desc = cfg["label"].str() + "\n" + desc;
-
-					entry["details"] = std::move(desc);
-				}
-
-				entry_list.emplace_back(std::move(entry));
-				difficulties_.emplace_back(cfg["define"].str());
-
-				if(cfg["default"].to_bool(false)) {
-					selection = n;
-				}
-
-				++n;
+			if(n + 1 >= difficulty_count) {
+				laurel = game_config::images::victory_laurel_hardest;
+			} else if(n == 0) {
+				laurel = game_config::images::victory_laurel_easy;
+			} else {
+				laurel = game_config::images::victory_laurel;
 			}
 
-			diff_menu.set_values(entry_list);
-			diff_menu.set_selected(selection);
+			entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
 		}
+
+		if(!cfg["description"].empty()) {
+			std::string desc;
+			if(cfg["auto_markup"].to_bool(true) == false) {
+				desc = cfg["description"].str();
+			} else {
+				desc = markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
+			}
+
+			// Icons get displayed instead of the labels on the dropdown menu itself,
+			// so we want to prepend each label to its description here
+			desc = cfg["label"].str() + "\n" + desc;
+
+			entry["details"] = std::move(desc);
+		}
+
+		entry_list.emplace_back(std::move(entry));
+		difficulties_.emplace_back(cfg["define"].str());
+
+		if(cfg["default"].to_bool(false)) {
+			selection = n;
+		}
+
+		++n;
 	}
+
+	diff_menu.set_values(entry_list);
+	diff_menu.set_selected(selection);
 }
 
 void campaign_selection::difficulty_selected()
@@ -397,12 +397,7 @@ void campaign_selection::pre_show()
 
 	add_campaign_to_tree(addons);
 
-	widget_data data;
-	widget_item item;
-
-	item["label"] = _("In addition to the mainline campaigns, Wesnoth also has an ever-growing list of add-on content created by other players available via the Add-ons server, included but not limited to more single and multiplayer campaigns, multiplayer maps, additional media and various other content! Be sure to give it a try!");
-	data.emplace("description", item);
-	pages.add_page(data);
+	pages.add_page("go_download_more_stuff", -1, widget_data{});
 	page_ids_.push_back(addons_);
 
 	std::vector<std::string> dirs;
@@ -416,15 +411,7 @@ void campaign_selection::pre_show()
 
 		add_campaign_to_tree(missing);
 
-		widget_data data;
-		widget_item item;
-
-		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
-		data.emplace("description", item);
-
-		pages.add_page(data);
+		pages.add_page("missing_campaign_warning", -1, widget_data{});
 		page_ids_.push_back(missing_campaign_);
 	}
 

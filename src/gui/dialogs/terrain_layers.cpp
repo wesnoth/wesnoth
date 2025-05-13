@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -66,12 +66,6 @@ void terrain_layers::pre_show()
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc_cut = img.get_loc();
 
-		widget_data data;
-		widget_item item;
-
-		item["label"] = (formatter() << (ri->is_background() ? "B ": "F ") << order).str();
-		data.emplace("index", item);
-
 		std::ostringstream image_steam;
 
 		const int tz = game_config::tile_size;
@@ -113,33 +107,37 @@ void terrain_layers::pre_show()
 				<< "~MASK(" << "terrain/alphamask.png" << ")";
 		}
 
-		item["label"] = image_steam.str();
-		data.emplace("image_used", item);
-
-		item["label"] = name + "~SCALE(72,72)";
-		data.emplace("image_full", item);
-
-		item["label"] = name;
-		data.emplace("name", item);
-
-		item["label"] = (formatter() << img.get_loc()).str();
-		data.emplace("loc", item);
-
-		item["label"] = std::to_string(ri->layer);
-		data.emplace("layer", item);
-
-		item["label"] = std::to_string(ri->basex);
-		data.emplace("base_x", item);
-
-		item["label"] = std::to_string(ri->basey);
-		data.emplace("base_y", item);
-
-		item["label"] = (formatter() << ri->center_x << ", " << ri->center_y).str();
-		data.emplace("center", item);
+		list.add_row(widget_data{
+			{ "index", {
+				{ "label", (formatter() << (ri->is_background() ? "B ": "F ") << order).str() }
+			}},
+			{ "image_used", {
+				{ "label", image_steam.str() }
+			}},
+			{ "image_full", {
+				{ "label", name + "~SCALE(72,72)" }
+			}},
+			{ "name", {
+				{ "label", name }
+			}},
+			{ "loc", {
+				{ "label", (formatter() << img.get_loc()).str() }
+			}},
+			{ "layer", {
+				{ "label", std::to_string(ri->layer) }
+			}},
+			{ "base_x", {
+				{ "label", std::to_string(ri->basex) }
+			}},
+			{ "base_y", {
+				{ "label", std::to_string(ri->basey) }
+			}},
+			{ "center", {
+				{ "label", (formatter() << ri->center_x << ", " << ri->center_y).str() }
+			}}
+		});
 
 		++order;
-
-		list.add_row(data);
 	}
 }
 

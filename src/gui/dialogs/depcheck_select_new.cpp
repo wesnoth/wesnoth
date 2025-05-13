@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -60,12 +60,8 @@ void depcheck_select_new::pre_show()
 {
 	listbox& items = find_widget<listbox>("itemlist");
 
-	for(const auto & item : items_)
-	{
-		widget_data data;
-		data["option"]["label"] = item;
-
-		items.add_row(data);
+	for(const auto& item : items_) {
+		items.add_row(widget_data{{ "option", {{ "label", item }}}});
 	}
 
 	items.select_row(0);

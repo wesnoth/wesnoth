@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -278,8 +278,8 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 	return 1;
 }
 
-lua_formula_bridge::fwrapper::fwrapper(const std::string& code, function_symbol_table* functions)
-	: formula_ptr(new formula(code, functions))
+lua_formula_bridge::fwrapper::fwrapper(const std::string& code)
+	: formula_ptr(new formula(code))
 {
 }
 

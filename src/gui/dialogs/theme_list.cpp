@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,22 +36,15 @@ void theme_list::pre_show()
 	listbox& list = find_widget<listbox>("themes");
 	keyboard_capture(&list);
 
-	for(const auto & t : themes_)
-	{
-		widget_data data;
-		widget_item column;
-
-		std::string theme_name = t.name;
-		if(theme_name.empty()) {
-			theme_name = t.id;
-		}
-
-		column["label"] = theme_name;
-		data.emplace("name", column);
-		column["label"] = t.description;
-		data.emplace("description", column);
-
-		list.add_row(data);
+	for(const auto& t : themes_) {
+		list.add_row(widget_data{
+			{ "name", {
+				{ "label", t.name.empty() ? t_string(t.id) : t.name }
+			}},
+			{ "description", {
+				{ "label", t.description }
+			}},
+		});
 	}
 
 	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()) {

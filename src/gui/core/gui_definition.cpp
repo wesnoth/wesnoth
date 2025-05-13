@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+using namespace std::chrono_literals;
+
 gui_theme_map_t guis;
 gui_theme_map_t::iterator current_gui = guis.end();
 gui_theme_map_t::iterator default_gui = guis.end();
@@ -36,16 +38,7 @@ gui_definition::gui_definition(const config& cfg)
 	, window_types()
 	, id_(cfg["id"])
 	, description_(cfg["description"].t_str())
-	, popup_show_delay_(0)
-	, popup_show_time_(0)
-	, help_show_time_(0)
-	, double_click_time_(0)
-	, repeat_button_repeat_time_(0)
-	, sound_button_click_()
-	, sound_toggle_button_click_()
-	, sound_toggle_panel_click_()
-	, sound_slider_adjust_()
-	, has_helptip_message_()
+	, settings_(cfg.mandatory_child("settings"))
 	, tips_(tip_of_the_day::load(cfg))
 {
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("gui", "id"));
@@ -72,13 +65,12 @@ gui_definition::gui_definition(const config& cfg)
 			styled_widget_definition_ptr def_ptr = widget_parser.parser(definition);
 
 			const std::string& def_id = def_ptr->id;
+			auto [_, success] = def_map.emplace(def_id, std::move(def_ptr));
 
-			if(def_map.find(def_id) != def_map.end()) {
+			if(!success) {
 				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'";
 				continue;
 			}
-
-			def_map.emplace(def_id, std::move(def_ptr));
 
 			if(def_id == "default") {
 				found_default_def = true;
@@ -112,51 +104,39 @@ gui_definition::gui_definition(const config& cfg)
 			VALIDATE(window_types.find(window_type) != window_types.end(), error_msg);
 		}
 	}
+}
 
-	/***** settings *****/
+gui_definition::settings_helper::settings_helper(const config& cfg)
+	: popup_show_delay(chrono::parse_duration(cfg["popup_show_delay"], 0ms))
+	, popup_show_time(chrono::parse_duration(cfg["popup_show_time"], 0ms))
+	, help_show_time(chrono::parse_duration(cfg["help_show_time"], 0ms))
+	, double_click_time(chrono::parse_duration(cfg["double_click_time"], 0ms))
+	, repeat_button_repeat_time(chrono::parse_duration(cfg["repeat_button_repeat_time"], 0ms))
+	, sound_button_click(cfg["sound_button_click"])
+	, sound_toggle_button_click(cfg["sound_toggle_button_click"])
+	, sound_toggle_panel_click(cfg["sound_toggle_panel_click"])
+	, sound_slider_adjust(cfg["sound_slider_adjust"])
+	, has_helptip_message(cfg["has_helptip_message"].t_str())
+{
+	VALIDATE(double_click_time > 0ms,
+		missing_mandatory_wml_key("settings", "double_click_time"));
 
-	/**
-	 * @todo Regarding sounds:
-	 * Need to evaluate but probably we want the widget definition be able to:
-	 * - Override the default (and clear it). This will allow toggle buttons in a
-	 *   listbox to sound like a toggle panel.
-	 * - Override the default and above per instance of the widget, some buttons
-	 *   can give a different sound.
-	 */
-	const config& settings = cfg.mandatory_child("settings");
-
-	using namespace std::chrono_literals;
-	popup_show_delay_ = chrono::parse_duration(settings["popup_show_delay"], 0ms);
-	popup_show_time_ = chrono::parse_duration(settings["popup_show_time"], 0ms);
-	help_show_time_ = chrono::parse_duration(settings["help_show_time"], 0ms);
-	double_click_time_ = chrono::parse_duration(settings["double_click_time"], 0ms);
-
-	repeat_button_repeat_time_ = chrono::parse_duration(settings["repeat_button_repeat_time"], 0ms);
-
-	VALIDATE(!settings["double_click_time"].blank(), missing_mandatory_wml_key("settings", "double_click_time"));
-
-	sound_button_click_ = settings["sound_button_click"].str();
-	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
-	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
-	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
-
-	has_helptip_message_ = settings["has_helptip_message"].t_str();
-
-	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("settings", "has_helptip_message"));
+	VALIDATE(!has_helptip_message.empty(),
+		missing_mandatory_wml_key("settings", "has_helptip_message"));
 }
 
 void gui_definition::activate() const
 {
-	settings::popup_show_delay = popup_show_delay_;
-	settings::popup_show_time = popup_show_time_;
-	settings::help_show_time = help_show_time_;
-	settings::double_click_time = double_click_time_;
-	settings::repeat_button_repeat_time = repeat_button_repeat_time_;
-	settings::sound_button_click = sound_button_click_;
-	settings::sound_toggle_button_click = sound_toggle_button_click_;
-	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
-	settings::sound_slider_adjust = sound_slider_adjust_;
-	settings::has_helptip_message = has_helptip_message_;
+	settings::popup_show_delay = settings_.popup_show_delay;
+	settings::popup_show_time = settings_.popup_show_time;
+	settings::help_show_time = settings_.help_show_time;
+	settings::double_click_time = settings_.double_click_time;
+	settings::repeat_button_repeat_time = settings_.repeat_button_repeat_time;
+	settings::sound_button_click = settings_.sound_button_click;
+	settings::sound_toggle_button_click = settings_.sound_toggle_button_click;
+	settings::sound_toggle_panel_click = settings_.sound_toggle_panel_click;
+	settings::sound_slider_adjust = settings_.sound_slider_adjust;
+	settings::has_helptip_message = settings_.has_helptip_message;
 	settings::tips = tips_;
 }
 
@@ -205,45 +185,48 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	const auto& current_types = current_gui->second.widget_types;
 	const auto& default_types = default_gui->second.widget_types;
 
-	const auto widget_definitions = current_types.find(control_type);
+	const auto find_definition =
+		[&](const auto& widget_types) -> utils::optional<gui_definition::widget_definition_map_t::const_iterator>
+	{
+		// Get all possible definitions for the given widget type.
+		const auto widget_definitions = widget_types.find(control_type);
 
-	gui_definition::widget_definition_map_t::const_iterator control;
+		// We don't have a fallback here since all types should be valid in all themes.
+		VALIDATE(widget_definitions != widget_types.end(),
+			formatter() << "Control: type '" << control_type << "' is unknown.");
 
-	if(widget_definitions == current_types.end()) {
-		goto fallback;
+		const auto& options = widget_definitions->second;
+
+		// Out of all definitions for that type, find the requested one.
+		if(auto control = options.find(definition); control != options.end()) {
+			return control;
+		} else {
+			return utils::nullopt;
+		}
+	};
+
+	auto control = find_definition(current_types);
+
+	// Definition not found in the current theme, try the default theme.
+	if(!control && current_gui != default_gui) {
+		control = find_definition(default_types);
 	}
 
-	control = widget_definitions->second.find(definition);
-
-	if(control == widget_definitions->second.end()) {
-	fallback:
-		bool found_fallback = false;
-
-		if(current_gui != default_gui) {
-			auto default_widget_definitions = default_types.find(control_type);
-
-			VALIDATE(widget_definitions != current_types.end(),
-				formatter() << "Type '" << control_type << "' is unknown.");
-
-			control = default_widget_definitions->second.find(definition);
-			found_fallback = control != default_widget_definitions->second.end();
-		}
-
-		if(!found_fallback) {
-			if(definition != "default") {
-				LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
-						  << "' not found, falling back to 'default'.";
-				return get_control(control_type, "default");
-			}
-
-			FAIL(formatter() << "default definition not found for styled_widget " << control_type);
-		}
+	// Still no match. Try the default definition.
+	if(!control && definition != "default") {
+		LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
+				  << "' not found, falling back to 'default'.";
+		return get_control(control_type, "default");
 	}
 
-	const auto& resolutions = (*control->second).resolutions;
+	VALIDATE(control,
+		formatter() << "Control: definition '" << definition << "' not found for styled_widget " << control_type);
+
+	// Finally, resolve the appropriate resolution
+	const auto& resolutions = (*control)->second->resolutions;
 
 	VALIDATE(!resolutions.empty(),
-		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
+		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.");
 
 	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr) {
 		return point(
@@ -297,12 +280,8 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 		throw std::invalid_argument("widget '" + widget_type + "' doesn't exist");
 	}
 
-	if(def_map.find(definition_id) != def_map.end()) {
-		return false;
-	}
-
-	def_map.emplace(definition_id, parser->second.parser(cfg));
-	return true;
+	auto [_, success] = def_map.emplace(definition_id, parser->second.parser(cfg));
+	return success;
 }
 
 void remove_single_widget_definition(const std::string& widget_type, const std::string& definition_id)

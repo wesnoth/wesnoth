@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -173,32 +173,35 @@ void custom_tod::select_file(const std::string& default_dir)
 	   .set_path(dn)
 	   .set_read_only(true);
 
-	if(dlg.show()) {
-		dn = dlg.path();
-		const std::string& message
-						= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
+	// If the file is found inside Wesnoth's data, give its relative path
+	// if not, ask user if they want to copy it into their addon.
+	// If yes, copy and return correct relative path inside addon.
+	// return empty otherwise.
+	auto find_or_copy = [](const std::string& path, const std::string& addon_id, const std::string& type) {
+		const std::string message
+			= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
+		const auto optional_path = filesystem::to_asset_path(path, addon_id, type);
 
+		if(optional_path.has_value()) {
+			return optional_path.value();
+		} else if (gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+			boost::filesystem::path output_path = filesystem::get_current_editor_dir(addon_id);
+			output_path /= type;
+			output_path /= boost::filesystem::path(path).filename();
+			filesystem::copy_file(path, output_path.string());
+			return output_path.filename().string();
+		} else {
+			return std::string();
+		}
+	};
+
+	if(dlg.show()) {
 		if(data.first == "image") {
-			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-			times_[current_tod_].image = dn;
+			times_[current_tod_].image = find_or_copy(dlg.path(), addon_id_, "images");
 		} else if(data.first == "mask") {
-			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-			times_[current_tod_].image_mask = dn;
+			times_[current_tod_].image_mask = find_or_copy(dlg.path(), addon_id_, "images");
 		} else if(data.first == "sound") {
-			if (!filesystem::to_asset_path(dn, addon_id_, "sounds")) {
-				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
-					filesystem::copy_file(dlg.path(), dn);
-				}
-			}
-			times_[current_tod_].sounds = dn;
+			times_[current_tod_].sounds = find_or_copy(dlg.path(), addon_id_, "sounds");
 		}
 	}
 

@@ -24,6 +24,7 @@ import queue
 import subprocess
 import sys
 import threading
+import ctypes
 
 # tkinter modules
 import tkinter.font as font
@@ -109,14 +110,20 @@ def set_global_locale():
     # On POSIX systems, getlocale() should provide the POSIX locale name that gettext uses for finding translations.
     # However, on Windows, getlocale() returns strings likely not suitable for gettext, although getdefaultlocale()
     # does.
+    # For this reason we need to access the Windows API directly, through the ctypes library, to check
+    # the user's language and convert the LCID returned to a POSIX locale name.
     try:
-        system_locale = locale.getlocale()[0]
+        if sys.platform == "win32":
+            kernel32 = ctypes.windll.kernel32
+            # the .get() method allows falling back to US English if we don't have the translation required
+            system_locale = locale.windows_locale.get(kernel32.GetUserDefaultLangID(), "en_US")
+        else:
+            system_locale = locale.getlocale()[0]
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
     except OSError:
         # Needed for compatibility with Python <3.10, and/or Windows 7/8.
-        # TODO: Note that getdefaultlocale() is deprecated in Python 3.11 so an alternative arrangement needs to be
-        #  implemented for Windows.
+        # Note that getdefaultlocale() is deprecated in Python 3.11 and will be removed in 3.15.
         system_locale = locale.getdefaultlocale()[0]
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
@@ -1663,7 +1670,7 @@ Error code: {1}
     def on_about(self):
         showinfo(_("About Maintenance Tools GUI"),
                  # TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-                 _("""© Elvish_Hunter, 2014-2024
+                 _("""© Elvish_Hunter, 2014-2025
 
 Version: {0}
 

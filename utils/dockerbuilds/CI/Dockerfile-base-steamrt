@@ -1,11 +1,17 @@
 FROM steamrt_sniper_amd64
 ENV DEBIAN_FRONTEND=noninteractive
-ARG BOOST_VERSION=1.85.0
-ARG BOOST_VERSION_=1_85_0
+ARG BOOST_VERSION=1.87.0
+ARG BOOST_VERSION_=1_87_0
+ARG PANGO_VERSION=1.50
+ARG PANGO_VERSION_FULL=1.50.14
 
 RUN apt-get update
-RUN apt-get install -y scons libreadline-dev expect-dev
+RUN apt-get install -y scons meson libreadline-dev expect-dev
 
-RUN wget --max-redirect 3 https://boostorg.jfrog.io/artifactory/main/release/$BOOST_VERSION/source/boost_$BOOST_VERSION_.tar.gz
+RUN wget --max-redirect 3 https://archives.boost.io/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz
 RUN mkdir -p /src/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /src/boost --strip-components=1
-RUN cd /src/boost && ./bootstrap.sh --with-libraries=charconv,iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine,graph && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
+RUN cd /src/boost && ./bootstrap.sh --with-libraries=charconv,iostreams,regex,system,filesystem,process,program_options,random,locale,context,coroutine,graph && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
+
+RUN wget --max-redirect 3 https://download.gnome.org/sources/pango/${PANGO_VERSION}/pango-${PANGO_VERSION_FULL}.tar.xz
+RUN mkdir -p /src/pango && tar xf pango-${PANGO_VERSION_FULL}.tar.xz -C /src/pango --strip-components=1
+RUN cd /src/pango && mkdir build && meson setup . build --prefix=/usr/local && ninja -C build && ninja -C build install

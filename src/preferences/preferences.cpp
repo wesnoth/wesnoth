@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2024 - 2024
+	Copyright (C) 2024 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -70,22 +70,22 @@ static lg::log_domain advanced_preferences("advanced_preferences");
 using namespace std::chrono_literals;
 
 prefs::prefs()
-: preferences_()
-, fps_(false)
-, completed_campaigns_()
-, encountered_units_set_()
-, encountered_terrains_set_()
-, history_map_()
-, acquaintances_()
-, option_values_()
-, options_initialized_(false)
-, mp_modifications_()
-, mp_modifications_initialized_(false)
-, sp_modifications_()
-, sp_modifications_initialized_(false)
-, message_private_on_(false)
-, credentials_()
-, advanced_prefs_()
+	: preferences_()
+	, fps_(false)
+	, completed_campaigns_()
+	, encountered_units_set_()
+	, encountered_terrains_set_()
+	, history_map_()
+	, acquaintances_()
+	, option_values_()
+	, options_initialized_(false)
+	, mp_modifications_()
+	, mp_modifications_initialized_(false)
+	, sp_modifications_()
+	, sp_modifications_initialized_(false)
+	, message_private_on_(false)
+	, credentials_()
+	, advanced_prefs_()
 {
 	load_preferences();
 	load_credentials();
@@ -191,12 +191,11 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 		if(!filesystem::file_exists(filesystem::get_synced_prefs_file())) {
 			filesystem::copy_file(migrate_prefs_file, filesystem::get_synced_prefs_file());
 		} else {
-			config current_cfg;
-			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
-			read(current_cfg, *current_stream);
-			config old_cfg;
-			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
-			read(old_cfg, *old_stream);
+			auto current_stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
+			config current_cfg = io::read(*current_stream);
+
+			auto old_stream = filesystem::istream_file(migrate_prefs_file, false);
+			config old_cfg = io::read(*old_stream);
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
 			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
@@ -246,18 +245,18 @@ void prefs::load_preferences()
 		// NOTE: the system preferences file is only ever relevant for the first time wesnoth starts
 		//	   any default values will subsequently be written to the normal preferences files, which takes precedence over any values in the system preferences file
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(), false);
-			read(default_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_default_prefs_file(), false);
+			default_prefs = io::read(*stream);
 		}
 #endif
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_unsynced_prefs_file(), false);
-			read(unsynced_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_unsynced_prefs_file(), false);
+			unsynced_prefs = io::read(*stream);
 		}
 
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
-			read(synced_prefs, *stream);
+			auto stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
+			synced_prefs = io::read(*stream);
 		}
 
 		preferences_.merge_with(default_prefs);
@@ -389,15 +388,13 @@ void prefs::write_preferences()
 	}
 
 	try {
-		filesystem::scoped_ostream synced_prefs_file = filesystem::ostream_file(filesystem::get_synced_prefs_file());
-		write(*synced_prefs_file, synced);
+		io::write(*filesystem::ostream_file(filesystem::get_synced_prefs_file()), synced);
 	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to synced preferences file '" << filesystem::get_synced_prefs_file() << "'";
 	}
 
 	try {
-		filesystem::scoped_ostream unsynced_prefs_file = filesystem::ostream_file(filesystem::get_unsynced_prefs_file());
-		write(*unsynced_prefs_file, unsynced);
+		io::write(*filesystem::ostream_file(filesystem::get_unsynced_prefs_file()), unsynced);
 	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to unsynced preferences file '" << filesystem::get_unsynced_prefs_file() << "'";
 	}
@@ -579,6 +576,45 @@ std::string prefs::partial_color() {
 }
 void prefs::set_partial_color(const std::string& color_id) {
 	preferences_[prefs_list::partial_orb_color] = color_id;
+}
+std::string prefs::reach_map_color() {
+	std::string reachmap_color = preferences_[prefs_list::reach_map_color].str();
+	if (reachmap_color.empty())
+		return game_config::colors::reach_map_color;
+	return fix_orb_color_name(reachmap_color);
+}
+void prefs::set_reach_map_color(const std::string& color_id) {
+	preferences_[prefs_list::reach_map_color] = color_id;
+}
+
+std::string prefs::reach_map_enemy_color() {
+	std::string reachmap_enemy_color = preferences_[prefs_list::reach_map_enemy_color].str();
+	if (reachmap_enemy_color.empty())
+		return game_config::colors::reach_map_enemy_color;
+	return fix_orb_color_name(reachmap_enemy_color);
+}
+void prefs::set_reach_map_enemy_color(const std::string& color_id) {
+	preferences_[prefs_list::reach_map_enemy_color] = color_id;
+}
+
+int prefs::reach_map_border_opacity()
+{
+	return preferences_[prefs_list::reach_map_border_opacity].to_int(game_config::reach_map_border_opacity);
+}
+
+void prefs::set_reach_map_border_opacity(const int new_opacity)
+{
+	preferences_[prefs_list::reach_map_border_opacity] = new_opacity;
+}
+
+int prefs::reach_map_tint_opacity()
+{
+	return preferences_[prefs_list::reach_map_tint_opacity].to_int(game_config::reach_map_tint_opacity);
+}
+
+void prefs::set_reach_map_tint_opacity(const int new_opacity)
+{
+	preferences_[prefs_list::reach_map_tint_opacity] = new_opacity;
 }
 
 point prefs::resolution()

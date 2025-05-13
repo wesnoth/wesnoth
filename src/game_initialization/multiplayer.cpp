@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -102,7 +102,19 @@ private:
 		session_metadata(const config& cfg)
 			: is_moderator(cfg["is_moderator"].to_bool(false))
 			, profile_url_prefix(cfg["profile_url_prefix"].str())
+			, queues()
 		{
+			if(cfg.has_child("queues")) {
+				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
+					queue_info info;
+					info.id = queue["id"].to_int();
+					info.scenario_id = queue["scenario_id"].str();
+					info.display_name = queue["display_name"].str();
+					info.players_required = queue["players_required"].to_int();
+					info.current_players = utils::split_set(queue["current_players"].str());
+					queues.emplace_back(info);
+				}
+			}
 		}
 
 		/** Whether you are logged in as a server moderator. */
@@ -110,6 +122,9 @@ private:
 
 		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
 		std::string profile_url_prefix;
+
+		/** The list of server-side queues */
+		std::vector<queue_info> queues;
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
@@ -118,11 +133,14 @@ private:
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
 
-	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode();
+	/**
+	 * Opens the MP Create screen for hosts to configure a new game.
+	 * @param preset_scenario contains a scenario id if present
+	 */
+	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode();
+	void enter_staging_mode(queue_type::type queue_type, int queue_id = 0);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -148,6 +166,10 @@ private:
 
 public:
 	const session_metadata& get_session_info() const
+	{
+		return session_info;
+	}
+	session_metadata& get_session_info()
 	{
 		return session_info;
 	}
@@ -536,14 +558,23 @@ bool mp_manager::enter_lobby_mode()
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
+		std::string preset_scenario = "";
+		config server_preset;
+		int queue_id = 0;
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
+			preset_scenario = dlg.queue_game_scenario_id();
+			server_preset = dlg.queue_game_server_preset();
+			queue_id = dlg.queue_id();
 		}
 
 		try {
 			switch(dlg_retval) {
+			case gui2::dialogs::mp_lobby::CREATE_PRESET:
+				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset), queue_id);
+				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
 				break;
@@ -572,18 +603,31 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode()
+void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
+	// if this is using pre-determined settings and the settings came from the server, use those
+	// else look for them locally
+	if(preset_scenario && server_preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
+		enter_staging_mode(queue_type::type::server_preset, queue_id);
+	} else if(preset_scenario && !server_preset) {
+		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+			if(game["scenario"].str() == preset_scenario.value()) {
+				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
+				enter_staging_mode(queue_type::type::client_preset);
+				return;
+			}
+		}
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
 
-void mp_manager::enter_staging_mode()
+void mp_manager::enter_staging_mode(queue_type::type queue_type, int queue_id)
 {
 	DBG_MP << "entering connect mode";
 
@@ -594,6 +638,8 @@ void mp_manager::enter_staging_mode()
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
+		metadata->queue_type = queue_type::get_string(queue_type);
+		metadata->queue_id = queue_id;
 	}
 
 	bool dlg_ok = false;
@@ -823,6 +869,15 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
+}
+
+std::vector<queue_info>& get_server_queues()
+{
+	static std::vector<queue_info> queues;
+	if(manager) {
+		return manager->get_session_info().queues;
+	}
+	return queues;
 }
 
 void send_to_server(const config& data)

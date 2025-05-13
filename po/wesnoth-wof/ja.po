@@ -1,15 +1,16 @@
 #
 # Translators:
-# RatArmy, 2024
 # h22, 2024
+# k konami, 2024
+# RatArmy, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
-"Last-Translator: h22, 2024\n"
+"Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -429,7 +430,7 @@ msgstr "おやおや、臆病者の Gorlack が Gaall の試練に挑んでい�
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:267
 msgid "So it is, that brave Karron cowers within the Cenotaph of Morogor."
 msgstr ""
-"おやおや、勇敢な Karron 様が Morogor の慰霊碑で縮こまっていやっしゃるとは。"
+"おやおや、勇敢な Karron 様が Morogor の慰霊碑で縮こまっていらっしゃるとは。"
 
 #. [message]: speaker=Resha
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:273
@@ -2823,7 +2824,9 @@ msgstr "雇用と召還はできません"
 msgid ""
 "The humans and merfolk will attempt to recapture villages but wildlife will "
 "not"
-msgstr "人間とマーフォークは村を奪還しようとしますが、野生動物はそうしません"
+msgstr ""
+"人間とマーフォークは村を奪還しようとしますが、野生動物は村を目標とはしませ"
+"ん。"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:467
@@ -6495,7 +6498,7 @@ msgstr ""
 "それは恐れを知らぬこと。\n"
 "\n"
 "流浪の旅に出た祖先のように、我らは自尊心を持って最短の道を飛ぶ。\n"
-"目の前に現れたあらゆる生き物を屠る、時には逆に屠られてでも。\n"
+"目の前に現れたあらゆる生き物を屠る、たとえ同族であっても。\n"
 "古代の仇に名を連ねるまでそれが続く —— 群れなす者、霜の巨人、精霊・・・そして"
 "ドレーク。\n"
 "かつての族長 Morogor のように敗北を喫するまで。\n"
@@ -7062,7 +7065,7 @@ msgid ""
 msgstr ""
 "正に、それらの生き物は、この世界の覇権を争う競合相手であると言える。\n"
 "この大地は闘技場だ。\n"
-"我らの方が優れいてると<b>証明</b>するまで、奴らとは対等なのだ。\n"
+"我らの方が優れていると<b>証明</b>するまで、奴らとは対等なのだ。\n"
 "この偉大なる闘技会において。"
 
 #. [message]: speaker=Gorlack
@@ -7222,8 +7225,22 @@ msgstr "カラベル船"
 
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sturdy and reliable caravel is the mainstay of human oceanic "
+#| "exploration, shipping and projection of influence. More seaworthy than "
+#| "lighter vessels, one might yet be spied navigating deeper rivers, where "
+#| "the maneuverabilty and shallow draft somewhat compensate for the tonnage "
+#| "of the vessel.\n"
+#| "\n"
+#| "While its modest speed compared to the vessels of other races makes "
+#| "evasion difficult, its tall fore and aft castles hold a powerful arsenal "
+#| "of ballistae to fend against pirate and sea monster alike.\n"
+#| "\n"
+#| "The caravel can dock at coastal villages, though this makes it entirely "
+#| "vulnerable."
 msgid ""
-"The sturdy and reliable caravel is the mainstay of human oceanic "
+"The sturdy and reliable Caravel is the mainstay of human oceanic "
 "exploration, shipping and projection of influence. More seaworthy than "
 "lighter vessels, one might yet be spied navigating deeper rivers, where the "
 "maneuverabilty and shallow draft somewhat compensate for the tonnage of the "
@@ -7233,7 +7250,7 @@ msgid ""
 "difficult, its tall fore and aft castles hold a powerful arsenal of "
 "ballistae to fend against pirate and sea monster alike.\n"
 "\n"
-"The caravel can dock at coastal villages, though this makes it entirely "
+"The Caravel can dock at coastal villages, though this makes it entirely "
 "vulnerable."
 msgstr ""
 "頑丈で信頼性の高いカラベル船は、人間族の探検航海、海運、勢力拡大の主力です。"
@@ -7265,13 +7282,22 @@ msgstr "イルカ"
 
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+#| "and the Ka’lian rated the creature’s sensibility nearly on par with that "
+#| "of an elf. Among coastal orcish tribes the meat is consumed as a "
+#| "delicacy.\n"
+#| "\n"
+#| "One of the rare air breathing fish, the dolphin is never too long below "
+#| "the surface of the sea."
 msgid ""
-"The sight of a dolphin is seen as a good omen by the sailors of Elensefar "
+"The sight of a Dolphin is seen as a good omen by the sailors of Elensefar "
 "and the Ka’lian rated the creature’s sensibility nearly on par with that of "
 "an elf. Among coastal orcish tribes the meat is consumed as a delicacy.\n"
 "\n"
-"One of the rare air breathing fish, the dolphin is never too long below the "
-"surface of the sea."
+"As an aquatic mammal, the Dolphin is never too long below the surface of the "
+"sea."
 msgstr ""
 "イルカは Elensefar の船乗りたちにとっては吉兆であり、Ka’lian はその感性がエル"
 "フとほぼ同等であると評価しました。沿岸部のオークの間では珍味として食用にされ"
@@ -7302,8 +7328,13 @@ msgstr "ヒョウ"
 
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
+#, fuzzy
+#| msgid ""
+#| "The leopard is a fast and powerful ambush predator of the distant and "
+#| "mysterious jungle realms. While dangerous in any circumstance, it is most "
+#| "lethal when hidden in wooded areas."
 msgid ""
-"The leopard is a fast and powerful ambush predator of the distant and "
+"The Leopard is a fast and powerful ambush predator of the distant and "
 "mysterious jungle realms. While dangerous in any circumstance, it is most "
 "lethal when hidden in wooded areas."
 msgstr ""
@@ -7399,11 +7430,14 @@ msgstr "ステュムパーリデス"
 #. [unit_type]: id=Stymphalian, race=monster
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:8
 msgid ""
-"A fiendish-tempered bird with a piercing, bronzy beak. It is covered in "
-"hard, blade-sharp feathers that it can fling at its victims."
+"Stymphalians are vicious and fiendish-tempered carnivorous birds that fly "
+"through the skies in search of their prey, which can range from small rats "
+"to large humans. Their piercing, bronzy beak can chew through even the "
+"hardest bone, and their mighty wingspans are covered in blade-sharp feathers "
+"which they can fling en masse towards their victims. Most humans would run "
+"from this bird’s call, though some drakes use their superior strength to "
+"hunt them."
 msgstr ""
-"青銅色の鋭いくちばしを持つ極めて気性の荒い鳥。硬く鋭利な羽で覆われており、獲"
-"物に向けてその羽を飛ばすことができます。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Winds_of_Fate/units/Stymphalian.cfg:73
@@ -7418,7 +7452,7 @@ msgstr "羽の刃"
 #. [unit_type]: id=Wyrm, race=monster
 #: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:5
 msgid "Wyrm"
-msgstr ""
+msgstr "ワーム"
 
 #. [unit_type]: id=Wyrm, race=monster
 #: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:9
@@ -7428,27 +7462,29 @@ msgid ""
 "or dragon. Mature Wyrms have excellent control of their fire breath attack, "
 "as if they are themselves miniature dragons."
 msgstr ""
+"ワーム（Wyrm）は変わった獣です。翼を持つどっしりとした蛇のような姿をしてい"
+"て、足がありません。彼らはそれなりに希少な存在で、多くの場合は変わった魔術師"
+"やドラゴンがその発生に関わっています。成熟したワームは炎のブレスのコントロー"
+"ルに優れており、あたかもミニチュアのドラゴンのようです。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:74
 msgid "fangs"
-msgstr ""
+msgstr "牙"
 
 #. [attack]: type=fire
 #: data/campaigns/Winds_of_Fate/units/Wyrm.cfg:86
-#, fuzzy
-#| msgid "fire breath"
 msgid "breath"
-msgstr "炎の息吹"
+msgstr "ブレス"
 
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:10
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:6
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:7
 msgid "blast"
 msgstr "突風"
 
 #. [damage]: id=blast
-#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:11
+#: data/campaigns/Winds_of_Fate/utils/abilities.cfg:8
 msgid "This attack also harms everyone near the opponent."
 msgstr "この攻撃は敵の近くにいる者すべてに損害を与えます。"
 
@@ -7511,6 +7547,13 @@ msgstr "このサファイアの持ち主は冷気属性の遠隔攻撃ができ
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:179
 msgid "sapphire of ice"
 msgstr "氷のサファイア"
+
+#~ msgid ""
+#~ "A fiendish-tempered bird with a piercing, bronzy beak. It is covered in "
+#~ "hard, blade-sharp feathers that it can fling at its victims."
+#~ msgstr ""
+#~ "青銅色の鋭いくちばしを持つ極めて気性の荒い鳥。硬く鋭利な羽で覆われており、"
+#~ "獲物に向けてその羽を飛ばすことができます。"
 
 #~ msgid "When the heroes exit, anyone left on the map will die"
 #~ msgstr ""

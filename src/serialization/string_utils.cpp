@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -702,45 +702,83 @@ bool word_match(const std::string& message, const std::string& word) {
 	return false;
 }
 
-bool wildcard_string_match(const std::string& str, const std::string& match) {
-	const bool wild_matching = (!match.empty() && (match[0] == '*' || match[0] == '+'));
-	const std::string::size_type solid_begin = match.find_first_not_of("*+");
-	const bool have_solids = (solid_begin != std::string::npos);
-	// Check the simple cases first
-	if(!have_solids) {
-		const std::string::size_type plus_count = std::count(match.begin(), match.end(), '+');
-		return match.empty() ? str.empty() : str.length() >= plus_count;
-	} else if(str.empty()) {
-		return false;
+[[nodiscard]] bool wildcard_string_match(std::string_view str, std::string_view pat) noexcept
+{
+	auto s_first = str.cbegin();
+	auto p_first = pat.cbegin();
+	const auto s_last = str.cend();
+	const auto p_last = pat.cend();
+
+	// First, match the initial characters up to, and including, the first '*'/'+' wildcard.
+	// Matching the first wildcard early allows the `std::equal` to be skipped in some common cases.
+
+	auto is_star_or_plus = [](char x) noexcept { return x == '*' || x == '+'; };
+	auto match_char = [](char s, char p) noexcept { return s == p || p == '?'; };
+
+	const auto first_wild = std::find_if(p_first, p_last, is_star_or_plus);
+
+	if(first_wild == p_last) {
+		return std::equal(s_first, s_last, p_first, p_last, match_char);
 	}
 
-	const std::string::size_type solid_end = match.find_first_of("*+", solid_begin);
-	const std::string::size_type solid_len = (solid_end == std::string::npos)
-		? match.length() - solid_begin : solid_end - solid_begin;
-	// Since + always consumes at least one character, increment current if the match
-	// begins with one
-	std::string::size_type current = match[0] == '+' ? 1 : 0;
-	bool matches;
-	do {
-		matches = true;
-		// Now try to place the str into the solid space
-		const std::string::size_type test_len = str.length() - current;
-		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
-			char solid_c = match[solid_begin + i];
-			if(i > test_len || !(solid_c == '?' || solid_c == str[current+i])) {
-				matches = false;
+	const auto wild_cat = static_cast<int>(*first_wild == '+');
+
+	if(first_wild != p_first) {
+		const auto n_chars = std::distance(p_first, first_wild);
+
+		if(std::distance(s_first, s_last) < (n_chars + wild_cat)) {
+			return false;
+		}
+
+		std::tie(s_first, p_first) = std::mismatch(s_first, s_first + n_chars, p_first, match_char);
+
+		if(p_first != first_wild) {
+			return false;
+		}
+	}
+
+	if(s_first == s_last) {
+		return std::all_of(p_first, p_last, [](char c) { return c == '*'; });
+	}
+
+	s_first += wild_cat;
+	p_first += 1;
+
+	// Then
+
+	while(true) {
+		const auto next_wild = std::find_if(p_first, p_last, is_star_or_plus);
+
+		if(next_wild == p_last) {
+			return boost::ends_with(std::pair{s_first, s_last}, std::pair{p_first, p_last}, match_char);
+		}
+
+		if(next_wild != p_first) {
+			auto [sub_f, sub_l] = std::default_searcher{p_first, next_wild, match_char}(s_first, s_last);
+
+			if(sub_f == s_last) {
+				return false;
 			}
+
+			s_first = sub_l;
+			p_first = next_wild;
 		}
-		if(matches) {
-			// The solid space matched, now consume it and attempt to find more
-			const std::string consumed_match = (solid_begin+solid_len < match.length())
-				? match.substr(solid_end) : "";
-			const std::string consumed_str = (solid_len < test_len)
-				? str.substr(current+solid_len) : "";
-			matches = wildcard_string_match(consumed_str, consumed_match);
+
+		auto is_wildcard = [](char x) noexcept { return x == '*' || x == '+' || x == '?'; };
+		const auto next_non_wild = std::find_if_not(p_first, p_last, is_wildcard);
+		const auto required_chars = std::distance(p_first, next_non_wild) - std::count(p_first, next_non_wild, '*');
+
+		if(std::distance(s_first, s_last) < required_chars) {
+			return false;
 		}
-	} while(wild_matching && !matches && ++current < str.length());
-	return matches;
+
+		s_first += required_chars;
+		p_first = next_non_wild;
+
+		if(p_first == p_last) {
+			return true;
+		}
+	}
 }
 
 void to_sql_wildcards(std::string& str, bool underscores)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,8 @@ public:
 	{
 	public:
 		explicit walker(const t_string_base& string);
+
+		operator std::string_view() const         { return std::string_view(string_.data() + begin_, end_ - begin_); }
 
 		void next()                               { begin_ = end_; update(); }
 		bool eos() const                          { return begin_ == string_.size(); }

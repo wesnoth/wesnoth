@@ -74,10 +74,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-Remplace le noyau chargé par celui spécifié par l'identifiant.
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ répertoire\fP
-Remplace le répertoire data par celui spécifié
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 Affiche le nom du répertoire de données et quitte le programme.
@@ -126,10 +127,11 @@ Utilise la langue \fIlangue\fP (symbole) pour cette session. Exemple :
 \fB\-\-language fr_FR@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
-Définit le niveau d'alerte du journal. \fBall\fP permet de suivre tous les
-niveaux de journalisation. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP, \ \fBnone\fP. Le niveau par défaut \fBwarning\fP est utilisé
-par la plupart des journaux, mais \fBdeprecation\fP utilise « none » par défaut
-sauf si combiné à l'option \fB\-d\fP.
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 Affiche les horodatages avec plus de précision dans le fichier de
@@ -436,7 +438,7 @@ Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

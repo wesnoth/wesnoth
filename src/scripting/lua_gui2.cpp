@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -280,7 +280,8 @@ int intf_show_recruit_dialog(lua_State* L)
 
 	const display* disp = display::get_singleton();
 	if (!types.empty() && disp != nullptr) {
-		auto dlg = gui2::dialogs::units_dialog::build_recruit_dialog(types, disp->playing_team());
+		std::map<const unit_type*, t_string> dummy; // TODO implement recruitability
+		auto dlg = gui2::dialogs::units_dialog::build_recruit_dialog(types, dummy, disp->playing_team());
 
 		idx++;
 		const config& cfg = luaW_checkconfig(L, idx);

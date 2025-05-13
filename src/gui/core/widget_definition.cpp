@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,7 +42,7 @@ resolution_definition::resolution_definition(const config& cfg)
 	, text_extra_width(cfg["text_extra_width"].to_unsigned())
 	, text_extra_height(cfg["text_extra_height"].to_unsigned())
 	, text_font_size(cfg["text_font_size"])
-	, text_font_family(font::str_to_family_class(cfg["text_font_family"]))
+	, text_font_family(font::decode_family_class(cfg["text_font_family"]))
 	, text_font_style(decode_font_style(cfg["text_font_style"]))
 	, state()
 {

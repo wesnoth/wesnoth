@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
 "PO-Revision-Date: 2021-02-01 18:30+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -103,16 +103,25 @@ msgstr "Disseny de la campanya"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:40
-msgid "Campaign Maintenance"
+#, fuzzy
+#| msgid "Campaign Maintenance"
+msgid "Current Campaign Maintainer"
 msgstr "Manteniment de la campanya"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:50
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46
+#, fuzzy
+#| msgid "Campaign Maintenance"
+msgid "Campaign Maintainers (former)"
+msgstr "Manteniment de la campanya"
+
+#. [about]
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:55
 msgid "Prose, Grammatical and WML Assistance"
 msgstr "Prosa, assistència gramatical i WML"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:56
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:61
 msgid "Artwork and Graphics"
 msgstr "Il·lustracions i gràfics"
 
@@ -137,12 +146,12 @@ msgstr "Derroteu Alber"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:438
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:24
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:26
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:49
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:59
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:23
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:57
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:24
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:26
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:30
@@ -159,7 +168,7 @@ msgstr "Mort de Kapou'e"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:96
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:150
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:138
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:57
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:87
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:75
@@ -168,20 +177,20 @@ msgstr "Mort de Kapou'e"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:72
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:50
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:76
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:89
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:50
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:58
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:56
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:58
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:84
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:81
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:57
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:59
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:85
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:92
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:106
 msgid "Kapou’e"
 msgstr "Kapou’e"
 
@@ -680,30 +689,30 @@ msgstr "Derroteu el líder enemic"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:442
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:28
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:30
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:53
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:63
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:27
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:61
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:28
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:30
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:43
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:33
 msgid "Death of Grüü"
 msgstr "Mort de Grüü"
 
-#. [side]: type=Dwarvish Lord, type=Dwarvish Steelclad, id=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:110
+#. [side]: type=Dwarvish Steelclad, id=Kwili
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:106
 msgid "Kwili"
 msgstr "Kwili"
 
-#. [side]: type=Dwarvish Lord, type=Dwarvish Steelclad, id=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:117
+#. [side]: type=Dwarvish Steelclad, id=Kwili
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:113
 msgid "Dwarves"
 msgstr "Nans"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:197
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:185
 msgid ""
 "We have almost crossed the mountains. We’re close to the lands of the free "
 "tribes. So far so good."
@@ -712,17 +721,17 @@ msgstr ""
 "lliures. Per ara, tot bé."
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:201
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:189
 msgid "Halt! Who goes there?"
 msgstr "Atureu-vos! Qui hi va?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:206
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:194
 msgid "It is I, Kapou’e, son of the Black-Eye Karun. What do you want, dwarf?"
 msgstr "Soc jo, Kapou'e, fill de l'Ullnegre Karun. Què voleu, nan?"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:212
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:200
 msgid ""
 "Oh, so it’s another group o’ stinkin’ orcs, eh. Begone, or we shall wash our "
 "axes in yer blood."
@@ -731,7 +740,7 @@ msgstr ""
 "nostres destrals amb la vostra sang."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:217
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:205
 msgid ""
 "Look, you pint-sized idiot, we aren’t out to kill you so why don’t you just "
 "scamper away and hide in a cave or something. We’ll be through here in a few "
@@ -742,12 +751,12 @@ msgstr ""
 "marxat d'aquí."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:222
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:210
 msgid "(<i>Snicker</i>)"
 msgstr "(<i>Riu</i>)"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:227
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:215
 msgid ""
 "Your scorn and rudeness shall be your undoing. Dwarves, let no orc pass this "
 "way alive!"
@@ -756,12 +765,12 @@ msgstr ""
 "orc passi per aquí viu!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:232
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:220
 msgid "It looks like we might have to fight them after all."
 msgstr "Sembla que podríem haver de lluitar-hi, després de tot."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:225
 msgid ""
 "Hey, Chief, I was thinking — dwarves are pretty slow; why don’t we just "
 "bypass them?"
@@ -770,13 +779,13 @@ msgstr ""
 "llarg i ja està?"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:242
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:230
 msgid "I mean, we could defeat them easily but it would just slow us down."
 msgstr ""
 "Vull dir, podríem derrotar-los fàcilment, però això només ens alentiria."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:247
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:235
 #, fuzzy
 #| msgid ""
 #| "We could, but then again, if we crush them then we can loot their "
@@ -789,7 +798,7 @@ msgstr ""
 "habitatges. L'or serà útil."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:252
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:240
 #, fuzzy
 #| msgid ""
 #| "Whatever else happens, we have to pass through these mountains and I "
@@ -802,7 +811,7 @@ msgstr ""
 "deixar enemics a la rereguarda. Apunyaleu, colpegeu i mateu!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:268
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:256
 msgid ""
 "I’ve never pushed so far. We are crossing the border of the Black-Eye lands."
 msgstr ""
@@ -810,39 +819,39 @@ msgstr ""
 "l'Ullnegre."
 
 #. [unit]: id=Blemaker, type=Troll Warrior
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:287
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:275
 msgid "Blemaker"
 msgstr "Blemaker"
 
 #. [unit]: id=Grüü, type=Troll Hero
 #. [side]: id=Grüü, type=Great Troll
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:296
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:80
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:284
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:81
 msgid "Grüü"
 msgstr "Grüü"
 
 #. [unit]: id=Toughkon, type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:318
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:306
 msgid "Toughkon"
 msgstr "Toughkon"
 
 #. [unit]: id=Pe, type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:327
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:315
 msgid "Pe"
 msgstr "Pe"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:337
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:325
 msgid "Look! Dwarves are fighting orcs!"
 msgstr "Mireu! Els nans estan lluitant contra els orcs!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:341
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:329
 msgid "Father, we should help them. Orcs are our allies."
 msgstr "Pare, els hauríem d'ajudar. Els orcs són els nostres aliats."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:345
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:333
 msgid ""
 "I don’t know. Orcs have been our allies in the past, but they treat us as "
 "fools."
@@ -851,7 +860,7 @@ msgstr ""
 "tracten com beneits."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:349
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:337
 msgid ""
 "But, Father, we don’t know what they are seeking there. Between us, we could "
 "squash these dwarves."
@@ -860,7 +869,7 @@ msgstr ""
 "aquests nans."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:353
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:341
 msgid ""
 "Right, my son. We help our orcish friends. But you take care... I would be "
 "desperate if something happened to you."
@@ -869,22 +878,22 @@ msgstr ""
 "Em desesperaria si et passés res."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:367
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:355
 msgid "Father! Oh no!"
 msgstr "Pare! Oh no!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:371
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:359
 msgid "Filthy dwarves! Now I’ll kill you to the last!"
 msgstr "Nans pudents! Ara us mataré a tots!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:382
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:370
 msgid "Oh no, I’m defeated."
 msgstr "Oh no! M'han vençut."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:391
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:379
 msgid ""
 "My son! I should have never brought him to this fight. Now we return to our "
 "caverns, and we never return."
@@ -893,7 +902,7 @@ msgstr ""
 "nostres cavernes i no en sortirem mai més."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:397
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:385
 msgid ""
 "The trolls are done. We will desperately need their help in the coming "
 "battles. Without them there is no hope."
@@ -902,12 +911,12 @@ msgstr ""
 "ells no hi ha esperança."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:414
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:402
 msgid "Argh! I die!"
 msgstr "Argh! Em moro!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:419
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:407
 #, fuzzy
 #| msgid ""
 #| "You were warned, dwarf. Riders, spread out of the area and collect what "
@@ -926,12 +935,12 @@ msgstr ""
 "Portaré l'exèrcit a Barag Gór. Veniu quan hàgiu acabat."
 
 #. [message]: role=doggie
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:429
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:417
 msgid "Sounds like fun. All right boys, let’s go!"
 msgstr "Sona divertit. D'acord, nois, som-hi!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:454
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:442
 msgid ""
 "We’ve succeeded! We’ve passed through the Mountains of Haag! Look at these "
 "green hills! The land of the free tribes is near now. I can see the walls of "
@@ -942,7 +951,7 @@ msgstr ""
 "de Barag Gór a la llunyania."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:474
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:462
 #, fuzzy
 #| msgid ""
 #| "Blemaker, many thanks for your help in this fight. Would you like to join "
@@ -958,12 +967,12 @@ msgstr ""
 "ens seríeu de gran ajuda."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:479
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:467
 msgid "Father, I’d like to join them. Would you mind it?"
 msgstr "Pare, m'agradaria unir-me a ells. T'importaria?"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:483
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:471
 msgid ""
 "My son, you’re old enough to discover the world. Me, I have to stay here. "
 "But take care, there are plenty of creatures that seek our end, like elves "
@@ -974,12 +983,12 @@ msgstr ""
 "o els humans. Són llestos i malvats."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:487
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:475
 msgid "Thanks, father. Don’t worry, I’ll take care of myself."
 msgstr "Gràcies pare. No et preocupis, aniré alerta."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:493
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:481
 msgid ""
 "Grüü, many thanks for your help in this fight. I’m sorry for the loss of "
 "your father. Would you like to join us in our journey? Your help would be "
@@ -990,7 +999,7 @@ msgstr ""
 "vostra ajuda em seria útil."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:497
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:485
 msgid ""
 "My father would have come to help you. I would insult his memory not to help "
 "you. I come!"
@@ -1007,8 +1016,8 @@ msgstr "El setge de Barag Gór"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:42
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:20
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:22
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:23
 msgid "Defeat all enemy leaders"
 msgstr "Derroteu tots els líders enemics"
@@ -1704,10 +1713,17 @@ msgstr "Estan els xamans estalvis?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:238
+#, fuzzy
+#| msgid ""
+#| "When we realized that there was no way we could hold the humans off, we "
+#| "sent them east to a place near the Mourned Hills along with most of our "
+#| "women and children. The rest of us remained here to buy them some time."
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
-"children. The rest of us remained here to buy them some time."
+"children. The majority of our grunts and archers went with them to ensure "
+"their safety. The rest of us remained here to buy them some time. It has "
+"been three days since their evacuation."
 msgstr ""
 "Quan ens adonàrem que no hi havia cap manera de resistir als humans, els "
 "enviàrem cap a l'est, a un lloc prop dels Turons Mourned, juntament amb la "
@@ -1785,8 +1801,16 @@ msgstr ""
 "seguretat, enviaren els xamans als Turons Mourned. Si volem trobar-nos-hi, "
 "hem d'anar-hi."
 
-#. [message]: speaker=Pirk
+#. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:395
+msgid ""
+"They most probably took the route through the foothills. The journey is time "
+"consuming but much safer compared to the direct route through the Desert of "
+"Death."
+msgstr ""
+
+#. [message]: speaker=Pirk
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:399
 msgid ""
 "Oh, great. That means we have to cross the Desert of Death which is full of "
 "poisonous giant scorpions and human outlaws. And bypassing it would take too "
@@ -1799,7 +1823,7 @@ msgstr ""
 "Bosc Silenciós!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:399
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:403
 msgid ""
 "Well, we have no choice... I’ve never tasted scorpions but I am sure they "
 "are good. This journey will be fun."
@@ -1837,20 +1861,20 @@ msgstr "Ar-Dant"
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:147
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:75
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:133
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:157
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:173
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:106
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:95
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:121
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:140
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:158
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:176
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:82
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:96
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:122
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:141
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:159
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:177
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:131
@@ -2608,51 +2632,66 @@ msgstr "Salvant Inarix"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:31
-msgid "Wait for Inarix’s arrival from the south on turn 4"
-msgstr "Espereu l'arribada d'Inarix des del sud al torn 4"
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:41
 msgid "Destroy the southern part of the bridge"
 msgstr "Destruïu la part meridional del pont"
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:45
-msgid ""
-"In order to recruit saurians later on, bring Inarix and at least four "
-"saurians to safety"
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:35
+msgid "Wait for Inarix’s arrival from the south on turn 4"
+msgstr "Espereu l'arribada d'Inarix des del sud al torn 4"
+
+#. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:48
+#, fuzzy
+#| msgid ""
+#| "In order to recruit saurians later on, bring Inarix and at least four "
+#| "saurians to safety"
+msgid "Escort Inarix and at least four saurians to Prestim."
 msgstr ""
 "Per a poder reclutar sauris més endavant, porteu Inarix i almenys quatre "
 "sauris a un lloc segur"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:65
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:75
 msgid "Whoever detonates the bridge will die."
 msgstr "Qui faci detonar el pont, morirà."
 
+#. [note]
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:78
+#, fuzzy
+#| msgid ""
+#| "In order to recruit saurians later on, bring Inarix and at least four "
+#| "saurians to safety"
+msgid ""
+"In order to recruit saurians later on, bring Inarix and at least four "
+"saurians to safety."
+msgstr ""
+"Per a poder reclutar sauris més endavant, porteu Inarix i almenys quatre "
+"sauris a un lloc segur"
+
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:101
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:63
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:135
 msgid "Thelarion"
 msgstr "Thelarion"
 
 #. [side]: type=Dwarvish Steelclad, id=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:117
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:130
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:85
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:76
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:77
 msgid "Darstang"
 msgstr "Darstang"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:146
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:159
 msgid "Plonk"
 msgstr "Plonk"
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:192
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:205
 #, fuzzy
 #| msgid ""
 #| "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
@@ -2669,12 +2708,12 @@ msgstr ""
 "petit comando d'elfs, hem intentat assaltar-ho dos cops sense èxit."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:209
 msgid "Ah! They are no match against my hammer."
 msgstr "Ah! No són rivals per al meu martell."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:200
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:213
 msgid ""
 "There is worse; our scouts report that our saurian allies led by Inarix are "
 "still trapped on the other side of the river some miles away. They won’t be "
@@ -2685,7 +2724,7 @@ msgstr ""
 "riu, a unes quantes milles. No podran travessar el riu."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:204
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:217
 msgid ""
 "Elves and dwarves have joined humans against us and have set up camp nearby. "
 "Humans will arrive soon. We must destroy the southern bridge on the river."
@@ -2694,7 +2733,7 @@ msgstr ""
 "arribaran prest. Hem de destruir el pont del sud del riu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:208
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:221
 #, fuzzy
 #| msgid ""
 #| "If Inarix falls prey to those humans then we won’t be able to count on "
@@ -2707,17 +2746,17 @@ msgstr ""
 "aquesta lluita. Hem de fer quelcom!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:213
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:226
 msgid "I know what we must do. Kill elves and help Inarix cross."
 msgstr "Sé el que hem de fer. Matar elfs i ajudar Inarix a travessar-lo."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:217
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:230
 msgid "It won’t be that easy! Our enemies are well entrenched."
 msgstr "No serà tan fàcil! Els nostres enemics estan ben atrinxerats."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:221
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:234
 #, fuzzy
 #| msgid ""
 #| "We can sabotage the southern bridge to slow them down. When the bulk of "
@@ -2736,7 +2775,7 @@ msgstr ""
 "o a l'altra banda del riu periran!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:228
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:241
 msgid ""
 "Hey look, that tribe of orcs that destroyed my enclave in the Silent Forest "
 "have reinforced Prestim. It is time to avenge the death of our fallen kin my "
@@ -2747,7 +2786,7 @@ msgstr ""
 "caiguts, amics: agafeu-los!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:232
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:245
 msgid ""
 "Ahhh, it’s ‘the Prince’ from the Silent Forest. Unfortunately, I don’t think "
 "we can deal with him now, we have to focus on saving Inarix."
@@ -2756,12 +2795,12 @@ msgstr ""
 "ocupar-nos-en ara; hem de centrar-nos a salvar Inarix."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:239
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:252
 msgid "Inarix"
 msgstr "Inarix"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:258
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:271
 msgid ""
 "Hurry-hurry, friends. Lanbec’h and his kind are right on our tails, we must "
 "reach Prestim quickly."
@@ -2770,92 +2809,92 @@ msgstr ""
 "d'arribar a Prestim ràpidament."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:341
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:358
 msgid "Bah! I’m not going to blow myself to bits!"
 msgstr "Bah! No em faré miques a mi mateix!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:359
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:376
 msgid "Grüü, stay away from that thing! I still have a use for you!"
 msgstr "Grüü, allunyeu-vos d'allò! Encara us necessito!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:365
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:382
 msgid "Uh... Fine, Chief!"
 msgstr "Uh... D'acord, cap!"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:383
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:400
 msgid "I’m not going to do it!"
 msgstr "No ho faré!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:412
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:429
 msgid "Get away from there you idiot, I’m still over here!"
 msgstr "Sortiu d'allà, idiota, jo encara soc aquí!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:427
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:444
 msgid "Hey, don’t light it up, I’m not safe!"
 msgstr "Ei, no l'enceneu, no estic estalvi!"
 
 #. [message]: speaker=Grüü
 #. To "blow up" means "to make something explode".
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:451
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:468
 #, fuzzy
 #| msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
 msgid "Chief, we can’t be blowing up the bridge before Inarix is here, can we?"
 msgstr "Cap, no podem dinamitar el pont abans que Inarix sigui aquí, oi?"
 
 #. [then]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:463
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:480
 msgid ""
 "Chief, Inarix hasn’t yet made it across! Are you really sure you want to do "
 "this?"
 msgstr "Cap, Inarix encara no l'ha travessat! Esteu segur que voleu fer això?"
 
 #. [else]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:467
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:484
 msgid "I’m ready, Chief!"
 msgstr "Estic a punt, cap!"
 
 #. [option]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:476
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:493
 msgid "Let her blow!"
 msgstr "Fes-la volar!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:481
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:498
 msgid "Bye bye, $unit.name|!"
 msgstr "Adéu-siau, $unit.name|!"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:493
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:510
 msgid "Damn you, Son of the Black-Eye! You’ll pay for this!"
 msgstr "Maleït sigueu, Fill de l'Ullnegre! Pagareu per això!"
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:507
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:524
 msgid "No, wait!"
 msgstr "No, espereu!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:514
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:531
 msgid "Aaaaaaaargh!"
 msgstr "Aaaaaaaargh!"
 
 #. [option]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:530
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:547
 msgid "Wait a moment."
 msgstr "Espera un moment."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:535
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:552
 msgid "<i>Phew!</i>"
 msgstr "<i>Fiu!</i>"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:592
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:609
 msgid ""
 "Blast it! The saurians have had too many casualties in order for them to be "
 "of any real help to us. We won’t be able to recruit them in the future."
@@ -2864,7 +2903,7 @@ msgstr ""
 "reclutar-ne en el futur."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:638
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:655
 msgid ""
 "This isn’t working. Mobilize all our troops and send these creatures back to "
 "hell."
@@ -2873,7 +2912,7 @@ msgstr ""
 "criatures de tornada a l'infern."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:642
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:659
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr ""
 "Que no es digui que els elfs són més valents que nosaltres. Tots a l'atac!"
@@ -2881,8 +2920,8 @@ msgstr ""
 #. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:661
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:691
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:678
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:708
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:144
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:80
@@ -2890,17 +2929,17 @@ msgid "Earl Lanbec’h"
 msgstr "Comte Lanbec'h"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:677
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:694
 msgid "At them! Rip them to the last!"
 msgstr "A l'atac! Mateu-los a tots!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:681
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:698
 msgid "It is too late, we are defeated."
 msgstr "És massa tard, hem estat vençuts."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:701
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:718
 msgid ""
 "So, the elves and dwarves failed to take the fortress and the beasts were "
 "able to muster a defense. No matter. Once the vanguard of my army arrives, I "
@@ -2911,12 +2950,12 @@ msgstr ""
 "exèrcit arribi, jo mateix assaltaré llur miserable fortalesa."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:741
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:758
 msgid "The green earth will curse you for this..."
 msgstr "La terra verda us maleirà per això..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:753
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:770
 msgid "Curse you, foul orc!"
 msgstr "Maleït siguis, orc fastigós!"
 
@@ -3159,16 +3198,16 @@ msgstr "Un xic de revenja"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:33
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:31
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:33
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:32
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:34
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:34
 msgid "Death of Al’Brock"
 msgstr "Mort d'Al'Brock"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:37
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:35
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:37
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:36
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:38
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:38
 msgid "Death of Flar’Tar"
 msgstr "Mort de Flar'Tar"
@@ -3324,12 +3363,12 @@ msgid "The Dwarvish Stand"
 msgstr "La resistència dels nans"
 
 #. [side]: type=Bandit, id=Sagmar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:90
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:91
 msgid "Sagmar"
 msgstr "Sagmar"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:103
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:104
 #, fuzzy
 #| msgid ""
 #| "After conquering and occupying Dorest, Kapou’e and his men set themselves "
@@ -3343,7 +3382,7 @@ msgstr ""
 "estabilitzar l'àrea i a sotmetre-la fermament al govern orc amb mà de ferro."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:109
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:110
 #, fuzzy
 #| msgid ""
 #| "After a few weeks of putting down minor rebellions and clearing out the "
@@ -3365,7 +3404,7 @@ msgstr ""
 "assetjat per una gran força de nans, proscrits i elfs."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:115
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:116
 msgid ""
 "The orcish commanders were stunned. How had such a large enemy force "
 "penetrated so deep and so far into orcish territory, especially without "
@@ -3379,7 +3418,7 @@ msgstr ""
 "forces orques, així com llur principal depòsit d'armes i de subministraments?"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:121
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:122
 msgid ""
 "Kapou’e suspected some sort of treachery. Under the assumption that human "
 "attacks would be minimal due to the harsh weather, he left only a small "
@@ -3392,7 +3431,7 @@ msgstr ""
 "anar en l'ajuda de Borstep."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:127
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:128
 #, fuzzy
 #| msgid ""
 #| "Rushing to reach Borstep before the river froze up for the winter, the "
@@ -3414,7 +3453,7 @@ msgstr ""
 "través de la neu cada cop més profunda dels turons Mourned."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:134
 msgid ""
 "As they crested the last hill before the city, the sight before them cast "
 "them into gloom; there was nothing left of Borstep. The walls had been "
@@ -3427,7 +3466,7 @@ msgstr ""
 "xamans orcs no hi havia cap senyal."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:139
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:140
 #, fuzzy
 #| msgid ""
 #| "With eyes burning with apprehension and rage, Kapou’e sent his riders out "
@@ -3449,7 +3488,7 @@ msgstr ""
 "es dirigien cap a l'est a través de les muntanyes."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:145
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:146
 msgid ""
 "Breaking camp the following dusk, the horde set out in hot pursuit. By the "
 "third day, they caught up with their enemies."
@@ -3458,17 +3497,17 @@ msgstr ""
 "tercer dia enxamparen els enemics."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:195
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:196
 msgid "Pelondras"
 msgstr "Pelondras"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:197
 msgid "Trithalsul"
 msgstr "Trithalsul"
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:200
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:201
 msgid ""
 "My my, look at this, two abandoned keeps. Probably built by those orcs in "
 "one of their pointless wars against each other."
@@ -3477,12 +3516,12 @@ msgstr ""
 "aquells orcs en una de llurs guerres sense sentit entre ells mateixos."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:250
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:251
 msgid "Blast it, the orcs have caught up to us."
 msgstr "Merda, els orcs ens han enxampat."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:255
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:256
 msgid ""
 "Elf, our kind can move and fight far better and faster in these conditions "
 "than your kind can. Take the orcish prisoners and hurry to Melmog. The "
@@ -3493,7 +3532,7 @@ msgstr ""
 "Els nans aturarem aquesta amenaça orca!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:260
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:261
 msgid ""
 "Very well, but our human allies will also stay behind and help you. After "
 "all, we are dealing with the Son of the Black-Eye here."
@@ -3502,12 +3541,12 @@ msgstr ""
 "Després de tot, ens estem enfrontant al Fill de l'Ullnegre aquí."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:265
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:266
 msgid "Bah, have it your way then. Now, hurry on your way elf."
 msgstr "Bah, com vulgueu, doncs. Ara, afanyeu-vos, elf."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:281
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:282
 msgid ""
 "Bah, cowardly little elves. No dwarf would have ever agreed to such a "
 "proposal. Good riddance too, those elves just get in the way. Come on men, "
@@ -3518,22 +3557,22 @@ msgstr ""
 "de mostrar el nostre acer a aquells orcs!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:287
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:288
 msgid "Ahhh, nice. I finally get chance to squash dwarves again."
 msgstr "Ahhh, molt bé. Per fi tinc l'oportunitat d'aixafar nans de nou."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:293
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:294
 msgid "Let’s make them pay for what they did to our people. Blood and steel!"
 msgstr "Fem-los pagar pel que han fet al nostre poble. Sang i acer!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:302
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:303
 msgid "Victory! ... Grüü, what <i>is</i> that you are eating?"
 msgstr "Victòria! ... Grüü, què <i>és</i> allò que t'estàs menjant?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:307
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:308
 msgid ""
 "A human-worm’s dog. Animal meat very tasty. When we fight humans again, can "
 "I have a pony?"
@@ -3547,22 +3586,22 @@ msgid "Back Home"
 msgstr "Tornada a casa"
 
 #. [side]: type=General, id=Telthys
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:115
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:116
 msgid "Telthys"
 msgstr "Telthys"
 
 #. [side]: type=General, id=Fredor
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:152
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:153
 msgid "Fredor"
 msgstr "Fredor"
 
 #. [side]: type=General, id=Georan
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:170
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:171
 msgid "Georan"
 msgstr "Georan"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:187
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:188
 msgid ""
 "Having broken the dwarvish blockade, the horde continued on through the "
 "mountain pass. Kapou’e began to recognize the lands about them and sure "
@@ -3573,22 +3612,22 @@ msgstr ""
 "efectivament, aviat es trobaren de tornada en la pàtria de la tribu."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:198
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:199
 msgid "Valan"
 msgstr "Valan"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:268
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:269
 msgid "Well, boys, we’re home. I told you we would return one day."
 msgstr "Bé, nois, som a casa. Ja us diguí que hi tornaríem un dia."
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:275
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:276
 msgid "Boy, have they ever built this place up."
 msgstr "Déu-n'hi-do, sí que ha crescut aquest lloc."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:281
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:282
 msgid ""
 "Listen up, orcs. Our main objective is to rescue the shamans. It won’t work "
 "to take the human runts head-on while they sneak the shamans out the back "
@@ -3599,12 +3638,12 @@ msgstr ""
 "esmunyen els xamans per la porta de darrere."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:287
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:288
 msgid "What are you thinking, Chief?"
 msgstr "Què esteu pensant, cap?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:293
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:294
 #, fuzzy
 #| msgid ""
 #| "My men know the land well. Flar’Tar and Al’Brock, both of you take a "
@@ -3623,17 +3662,17 @@ msgstr ""
 "envoltarem."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:299
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:300
 msgid "I like this plan, Chief!"
 msgstr "M'agrada aquest pla, cap!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:305
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:306
 msgid "You always like his plans, Grüü."
 msgstr "A tu sempre t'agraden el seus plans, Grüü."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:311
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:312
 msgid ""
 "Of course. Squash elves, squash undead, squash dwarves, squash humans. "
 "Squash them all, very good plan!"
@@ -3642,12 +3681,12 @@ msgstr ""
 "Esclafar-los a tots, molt bon pla!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:317
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:318
 msgid "Well, he has the right idea, anyway."
 msgstr "Bé, la idea és la correcta, en qualsevol cas."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:324
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:325
 msgid ""
 "Good, everyone move out. I will begin the attack from here. I want everyone "
 "to be in position by first watch at the latest. Is that clear?"
@@ -3657,68 +3696,68 @@ msgstr ""
 
 #. [message]: speaker=Flar'Tar
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:330
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:701
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:331
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:702
 msgid "Yes, Chief."
 msgstr "Sí, cap."
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:336
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:337
 msgid "Understood."
 msgstr "Entesos."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:358
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:359
 msgid "Uh, Chief..."
 msgstr "Uh, cap..."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:364
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:365
 msgid "... Yes, Grüü?"
 msgstr "... Sí, Grüü?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:370
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:371
 msgid "Can I get some gold with me?"
 msgstr "Puc agafar un xic d'or?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:376
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:377
 msgid "Fine, take a hundred. Don’t lose it."
 msgstr "D'acord, agafeu cent monedes. No ho perdeu."
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:443
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:444
 msgid "I am in position, Chief."
 msgstr "Estic en posició, cap."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:449
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:450
 msgid "Excellent. Now, where are the others?"
 msgstr "Excel·lent. I on són els altres?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:493
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:494
 msgid "We made it."
 msgstr "Ho hem aconseguit."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:499
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:500
 msgid "Good, but where is Grüü?"
 msgstr "Bé, però on és Grüü?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:504
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:505
 msgid "Dumb trolls, you can never rely on them."
 msgstr "Trols babaus, mai te'n pots refiar."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:566
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:567
 msgid "I’m here, Chief!"
 msgstr "Soc aquí, cap!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:572
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:573
 msgid ""
 "Blood and stone, Grüü! You were supposed to be in position by first watch. "
 "It’s dawn!"
@@ -3727,14 +3766,14 @@ msgstr ""
 "guàrdia. És l'alba!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:578
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:579
 msgid "Err, sorry, there were some humans in way. We squash, no problem."
 msgstr ""
 "Eh... Em sap greu... Hi havia alguns humans de camí. Hem aixafat, cap "
 "problema."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:584
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:585
 #, fuzzy
 #| msgid ""
 #| "Better late than never. Now it’s time to kill! Let nobody escape and "
@@ -3747,47 +3786,47 @@ msgstr ""
 "tothom tingui un ull posat en els xamans."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:589
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:590
 msgid "Sounds simple enough."
 msgstr "Sona prou simple."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:612
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:613
 msgid "Miserable elf, we want some answers!"
 msgstr "Elf miserable, volem algunes respostes!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:617
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:618
 msgid "Ugh!"
 msgstr "Ugh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:622
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:623
 msgid "SPEAK!"
 msgstr "PARLA!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:627
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:628
 msgid "... Well, what do you want to know?"
 msgstr "... Bé, què voleu saber?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:632
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:633
 msgid "You can start by telling us who told you to strike at Borstep."
 msgstr "Pots començar per dir-nos qui us digué d'atacar Borstep."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:637
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:638
 msgid "Uh... we have intelligence."
 msgstr "Uh... tenim intel·ligència."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:642
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:643
 msgid "Don’t make me hurt you more."
 msgstr "No em facis fer-te més mal."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:647
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:648
 msgid ""
 "I yield. Shan Taum the Smug told us that that’s where the shamans were, and "
 "that it was a rally point and weapons depot for you orcs."
@@ -3796,7 +3835,7 @@ msgstr ""
 "xamans, i que era un punt de concentració i un dipòsit d'armes dels orcs."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:652
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:653
 msgid ""
 "Bah, do not think you can break the unity of the horde with your stupid lies!"
 msgstr ""
@@ -3804,7 +3843,7 @@ msgstr ""
 "mentides estúpides!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:657
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:658
 msgid ""
 "No really, it’s true. He is jealous of some young upstart called Kapou’e. He "
 "says all the shamans ‘suck up’ to him just because his father had a black "
@@ -3815,7 +3854,7 @@ msgstr ""
 "o no sé què."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:662
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:663
 msgid ""
 "Refer to Black-Eye Karun with respect, wose-born. Now, where are the shamans?"
 msgstr ""
@@ -3823,37 +3862,37 @@ msgstr ""
 "xamans?"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:667
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:668
 msgid "They’re... the humans killed them."
 msgstr "Són... els humans els mataren."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:672
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:673
 msgid "You lie!"
 msgstr "Mentida!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:677
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:678
 msgid "I do not. Their bodies are frozen in the lake just over there."
 msgstr "No és mentida. Llurs cossos són congelats al llac, just allà."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:689
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:690
 msgid "We had better go look."
 msgstr "Serà millor que hi anem a mirar."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:696
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:697
 msgid "You had better go look."
 msgstr "Serà millor que hi aneu a mirar."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:708
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:709
 msgid "A few minutes later..."
 msgstr "Uns minuts més tard..."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:721
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:722
 msgid ""
 "The human-worms and tree-shaggers have gone too far! BLOOD AND STEEL! I want "
 "every human and elf in this area slaughtered! Show no mercy, give no quarter!"
@@ -3863,12 +3902,12 @@ msgstr ""
 "clemència!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:727
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:728
 msgid "Chief! It’s true, the shamans have been murdered!"
 msgstr "Cap! És cert, han mort els xamans!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:733
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:734
 msgid ""
 "<i>What</i>?! The human-worms and tree-shaggers have gone too far! BLOOD AND "
 "STEEL! I want every human and elf in this area slaughtered! Show no mercy, "
@@ -3879,17 +3918,17 @@ msgstr ""
 "misericòrdia i sense clemència!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:738
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:739
 msgid "What should I do with this one?"
 msgstr "Que hauria de fer amb aquest?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:744
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:745
 msgid "Throw him in the lake. If he freezes to death, all the better."
 msgstr "Llenceu-lo al llac. Si mor congelat, tant millor."
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:767
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:768
 #, fuzzy
 #| msgid "You retrieve $amount_gold of Grüü's leftover gold."
 msgid "You retrieve $amount_gold of Grüü’s leftover gold."
@@ -3901,22 +3940,22 @@ msgid "Civil War"
 msgstr "Guerra civil"
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:24
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:25
 msgid "Defeat all rebel leaders and..."
 msgstr "Derroteu tots els líders rebels i..."
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:37
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:38
 msgid "Then move Kapou’e to the signpost in the southwest"
 msgstr "Llavors, moveu Kapou'e al senyal del sud-oest"
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:46
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:47
 msgid "Move Kapou’e to the signpost in the southwest"
 msgstr "Moveu Kapou'e al senyal del sud-oest"
 
 #. [side]: type=Orcish Warlord, id=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:92
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:93
 msgid "Braga"
 msgstr "Braga"
 
@@ -3927,10 +3966,10 @@ msgstr "Braga"
 #. [side]: type=Orcish Warlord, id=Orga
 #. [side]: type=Orcish Warrior, id=Knorgh
 #. [side]: type=Orcish Warrior, id=Nofhug
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:100
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:121
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:142
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:163
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:122
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:143
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:164
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:67
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:102
@@ -3938,22 +3977,22 @@ msgid "Rebels"
 msgstr "Rebels"
 
 #. [side]: type=Orcish Warlord, id=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:114
 msgid "Meato"
 msgstr "Meato"
 
 #. [side]: type=Orcish Warlord, id=Ragvan
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:135
 msgid "Ragvan"
 msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord, id=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:155
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:156
 msgid "Kergai"
 msgstr "Kergai"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:175
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:176
 msgid ""
 "Infuriated by the murder of the shamans, the orcish horde massacred the "
 "humans and their allies. In their rage, they scoured the snow for hours "
@@ -3966,7 +4005,7 @@ msgstr ""
 "totes les implicacions de les morts dels xamans."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:181
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:182
 #, fuzzy
 #| msgid ""
 #| "With the Council broken, there was now nothing left to hold the orcish "
@@ -3983,7 +4022,7 @@ msgstr ""
 "feien, els humans les erradicarien amb facilitat."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:187
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:188
 #, fuzzy
 #| msgid ""
 #| "Kapou’e vowed that this would not happen. Events had the smell of a "
@@ -4013,7 +4052,7 @@ msgstr ""
 "bona oportunitat per a unir els orcs de nou, a l'antiga manera."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:193
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:194
 msgid ""
 "Furthermore, the troops who had been led by Kapou’e this far had grown to "
 "respect him as a wise and capable leader, and they proclaimed their loyalty "
@@ -4037,7 +4076,7 @@ msgstr ""
 "primavera per a repel·lir l'atac humà que semblava inevitable."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:199
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:200
 msgid ""
 "Having thus made his plans, Kapou’e set out for Bitok to get to the root of "
 "this treachery."
@@ -4046,7 +4085,7 @@ msgstr ""
 "a l'arrel d'aquesta traïció."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:224
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:225
 #, fuzzy
 #| msgid ""
 #| "If we are going to make it to Bitok, and then back to Dorest before "
@@ -4065,12 +4104,12 @@ msgstr ""
 "sota el meu control quan sortim d'aquí."
 
 #. [message]: speaker=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:230
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:231
 msgid "Black-Eye! We won’t submit to an upstart like you!"
 msgstr "Ullnegre! No ens sotmetrem a un arrogant com tu!"
 
 #. [message]: speaker=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:236
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:237
 msgid ""
 "Turn around and go back to where you came from or you’ll find your head on a "
 "pike! Right?"
@@ -4080,15 +4119,15 @@ msgstr ""
 
 #. [message]: speaker=Ragvan
 #. [message]: speaker=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:241
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:246
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:242
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:247
 msgid "Right!"
 msgstr "I tant!"
 
 #. [message]: speaker=Kapou'e
 #. "whupping" is not a typo for "whipping"; it is a Southern
 #. American dialect word meaning "a severe beating".
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:254
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:255
 msgid ""
 "It’s been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"
@@ -4097,53 +4136,53 @@ msgstr ""
 "aquests traïdors una bona estomacada, nois?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:259
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:260
 msgid "Yeah!"
 msgstr "Sí!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:336
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:337
 msgid "Little orcs fun to squash too! Chief doesn’t let me too often."
 msgstr ""
 "Petits orcs divertits per a aixafar també! Cap no em deixa gaire sovint."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:341
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:342
 msgid "You can have as many as you want now, Grüü."
 msgstr "En podeu prendre tants com vulgueu ara, Grüü."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:361
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:362
 msgid "This rabble won’t be a problem anymore."
 msgstr "Aquesta xusma ja no serà un problema."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:370
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:371
 msgid "Got this tribe under control."
 msgstr "Tinc aquesta tribu sota control."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:379
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:380
 msgid "This is what you get for deserting the Son of the Black-Eye."
 msgstr "Això és el que aconseguiu per desertar al Fill de l'Ullnegre."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:388
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:389
 msgid "This trash’s gone."
 msgstr "Aquesta escòria se n'ha anat."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:410
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:411
 msgid "Heehee, we wiped them out good."
 msgstr "Hehe, els n'hem esborrat bé."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:415
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:416
 msgid "Now let’s get going, we have an appointment with Shan Taum."
 msgstr "Ara anem tirant, que tenim una cita amb Shan Taum."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:565
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:566
 msgid ""
 "I can’t leave these renegades unguarded at our rear. I must take care of "
 "them before continuing."
@@ -4324,7 +4363,7 @@ msgid "What! Fight like an orc, you gutless coward!"
 msgstr "Què? Lluita com un orc, covard sense pebrots!"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:292
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
 msgid ""
 "Hey Chief, it’s pretty odd. Shan Taum doesn’t seem to have too many of his "
 "men around. He was given control of half the Great Horde. Do you think they "
@@ -4335,7 +4374,7 @@ msgstr ""
 "Penseu que l'han abandonat?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:302
 #, fuzzy
 #| msgid ""
 #| "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out "
@@ -4351,7 +4390,7 @@ msgstr ""
 "cas, serà convenient per a nosaltres."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:306
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:311
 msgid ""
 "Good, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
@@ -4513,18 +4552,26 @@ msgstr ""
 "Howgarth? Vós i la vostra aliança entremetedora sempre apareixeu en el "
 "pitjor moment possible."
 
+#. [message]: speaker=Earl Lanbec'h
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:441
+msgid ""
+"Curses! He is here already?! I had the messengers of the Alliance bribed to "
+"ensure no messages reached Dwarven Doors. I suppose it was only a matter of "
+"time..."
+msgstr ""
+
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:440
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
 msgid "Just who do you think you are, slug?"
 msgstr "Però qui us penseu que sou, petulant?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
 msgid "I am Howgarth of the Northern Alliance, successor to the late Rahul I."
 msgstr "Soc Howgarth de l'Aliança Septentrional, successor del difunt Rahul I."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:458
 msgid ""
 "This is a strictly territorial matter, Howgarth. The Northern Alliance has "
 "no right to intervene in this affair."
@@ -4533,7 +4580,7 @@ msgstr ""
 "no té cap dret a intervenir en aquest assumpte."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:457
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
 "treaty some seventeen years ago between your people and the orcs, which both "
@@ -4546,7 +4593,7 @@ msgstr ""
 "tractat, vetllar perquè es respecti."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:469
 msgid ""
 "Well, good for you. As a matter of fact, this land is clearly defined under "
 "your precious treaty as human territory. So if you are so keen on being all "
@@ -4558,7 +4605,7 @@ msgstr ""
 "retrocedir aquesta amenaça orca."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:474
 #, fuzzy
 #| msgid ""
 #| "Cease your lies, Lanbec’h. We all know that you were the one who started "
@@ -4574,7 +4621,7 @@ msgstr ""
 "parts a parlamentar i debatrem aquesta qüestió."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:473
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
 msgid ""
 "Ha ha, very funny, old fool. You think we are stupid enough to fall for "
 "that? I’ve not forgotten what you people did to my father."
@@ -4583,12 +4630,12 @@ msgstr ""
 "això? No he oblidat el que féreu al meu pare."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:485
 msgid "What in the world are you talking about?"
 msgstr "De què dimonis esteu parlant?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:484
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
 #, fuzzy
 #| msgid ""
 #| "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
@@ -4601,7 +4648,7 @@ msgstr ""
 "meu pare després de convidar-lo a unir-se a l'Aliança Septentrional."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:496
 msgid ""
 "What? We received word that he declined our invitation and that was the end "
 "of the matter. I know nothing of his assassination. As a matter of fact, I "
@@ -4612,17 +4659,17 @@ msgstr ""
 "quan el missatger orc portà la resposta de Rahul Karun."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:495
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:501
 msgid "Messenger, what messenger?"
 msgstr "Missatger, quin missatger?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:501
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:507
 msgid "If I remember correctly, it was some orc named Shan Taum."
 msgstr "Si ho recordo bé, era un orc anomenat Shan Taum."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:506
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:512
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "Curiós, aquest nom em resulta estranyament familiar..."
 
@@ -5139,16 +5186,16 @@ msgstr ""
 "Merda, sense Inarix per a liderar els sauris, ja no podem comptar amb llur "
 "ajut."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:85
 msgid "Al’Brock"
 msgstr "Al’Brock"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:99
 msgid "Flar’Tar"
 msgstr "Flar’Tar"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:112
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "La Gran Horda: el cost de manteniment de cada unitat es redueix en u."
 

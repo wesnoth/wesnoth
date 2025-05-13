@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -24,11 +24,14 @@ player_list_helper::player_list_helper(window* window)
 	: list_(window->find_widget<listbox>("player_list"))
 {
 	// add ourselves as the host
-	widget_data data = {
-		{ "player_type_icon", {{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
-		{ "player_name",      {{ "label", prefs::get().login()}}}
-	};
-	list_.add_row(data);
+	list_.add_row(widget_data{
+		{ "player_type_icon", {
+			{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)" }
+		}},
+		{ "player_name", {
+			{ "label", prefs::get().login() }
+		}}
+	});
 	list_.select_row(0);
 }
 
@@ -38,9 +41,6 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 	unsigned i = 0;
 
 	for(const config& user : users) {
-		widget_data data;
-		widget_item item;
-
 		const std::string name = user["name"];
 		const bool is_you = name == prefs::get().login();
 
@@ -55,13 +55,14 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 			icon = "lobby/status-lobby-n.png";
 		}
 
-		item["label"] = icon;
-		data.emplace("player_type_icon", item);
-
-		item["label"] = name;
-		data.emplace("player_name", item);
-
-		list_.add_row(data);
+		list_.add_row(widget_data{
+			{ "player_type_icon", {
+				{ "label", icon }
+			}},
+			{ "player_name", {
+				{ "label", name }
+			}}
+		});
 
 		if(is_you) {
 			list_.select_row(i);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,13 +52,6 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-/**
- * Function to return 2 half-hex footsteps images for the given location.
- * Only loc is on the current route set by set_route.
- *
- * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
- */
-std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
 game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
@@ -223,7 +216,79 @@ const std::string mouseover_self_bot = "misc/hover-hex-bottom.png~RC(magenta>gre
 
 const std::string mouseover_ally_top = "misc/hover-hex-top.png~RC(magenta>lightblue)";
 const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+
+/**
+ * Function to return 2 half-hex footsteps images for the given location.
+ * Only loc is on the current route set by set_route.
+ */
+std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route& route, const display_context* dc)
+{
+	std::vector<texture> res;
+
+	if (route.steps.size() < 2) {
+		return res; // no real "route"
+	}
+
+	std::vector<map_location>::const_iterator i =
+			 std::find(route.steps.begin(),route.steps.end(),loc);
+
+	if( i == route.steps.end()) {
+		return res; // not on the route
+	}
+
+	// Check which footsteps images of game_config we will use
+	int move_cost = 1;
+	const unit_map::const_iterator u = dc->units().find(route.steps.front());
+	if(u != dc->units().end()) {
+		move_cost = u->movement_cost(dc->map().get_terrain(loc));
+	}
+	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
+	if (image_number < 1) {
+		return res; // Invalid movement cost or no images
+	}
+	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
+
+	texture teleport;
+
+	// We draw 2 half-hex (with possibly different directions),
+	// but skip the first for the first step.
+	const int first_half = (i == route.steps.begin()) ? 1 : 0;
+	// and the second for the last step
+	const int second_half = (i+1 == route.steps.end()) ? 0 : 1;
+
+	for (int h = first_half; h <= second_half; ++h) {
+		const std::string sense( h==0 ? "-in" : "-out" );
+
+		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
+			std::string teleport_image =
+			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
+			teleport = image::get_texture(teleport_image, image::HEXED);
+			continue;
+		}
+
+		// In function of the half, use the incoming or outgoing direction
+		map_location::direction dir = (i+(h-1))->get_relative_dir(*(i+h));
+
+		std::string rotate;
+		if (dir > map_location::direction::south_east) {
+			// No image, take the opposite direction and do a 180 rotation
+			dir = i->get_opposite_direction(dir);
+			rotate = "~FL(horiz)~FL(vert)";
+		}
+
+		const std::string image = foot_speed_prefix
+			+ sense + "-" + i->write_direction(dir)
+			+ ".png" + rotate;
+
+		res.push_back(image::get_texture(image, image::HEXED));
+	}
+
+	// we draw teleport image (if any) in last
+	if (teleport != nullptr) res.push_back(teleport);
+
+	return res;
 }
+} //anonymous namespace
 
 void game_display::draw_hex(const map_location& loc)
 {
@@ -270,8 +335,11 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw reach_map information.
 	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
-		// draw the blue tint below units and high terrain graphics
-		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png", image::HEXED)](const rect& dest) {
+		// draw the reachmap tint below units and high terrain graphics
+		std::string color = prefs::get().reach_map_color();
+		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());
+
+		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png~RC(magenta>"+color+")~O("+tint_opacity+"%)", image::HEXED)](const rect& dest) {
 			draw::blit(tex, dest);
 		});
 		// We remove the reachmap border mask of the hovered hex to avoid weird interactions with other visual objects.
@@ -461,76 +529,6 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
-{
-	std::vector<texture> res;
-
-	if (route_.steps.size() < 2) {
-		return res; // no real "route"
-	}
-
-	std::vector<map_location>::const_iterator i =
-	         std::find(route_.steps.begin(),route_.steps.end(),loc);
-
-	if( i == route_.steps.end()) {
-		return res; // not on the route
-	}
-
-	// Check which footsteps images of game_config we will use
-	int move_cost = 1;
-	const unit_map::const_iterator u = dc_->units().find(route_.steps.front());
-	if(u != dc_->units().end()) {
-		move_cost = u->movement_cost(dc_->map().get_terrain(loc));
-	}
-	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
-	if (image_number < 1) {
-		return res; // Invalid movement cost or no images
-	}
-	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
-
-	texture teleport;
-
-	// We draw 2 half-hex (with possibly different directions),
-	// but skip the first for the first step.
-	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
-	// and the second for the last step
-	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
-
-	for (int h = first_half; h <= second_half; ++h) {
-		const std::string sense( h==0 ? "-in" : "-out" );
-
-		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
-			std::string teleport_image =
-			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-			teleport = image::get_texture(teleport_image, image::HEXED);
-			continue;
-		}
-
-		// In function of the half, use the incoming or outgoing direction
-		map_location::direction dir = (i+(h-1))->get_relative_dir(*(i+h));
-
-		std::string rotate;
-		if (dir > map_location::direction::south_east) {
-			// No image, take the opposite direction and do a 180 rotation
-			dir = i->get_opposite_direction(dir);
-			rotate = "~FL(horiz)~FL(vert)";
-		}
-
-		const std::string image = foot_speed_prefix
-			+ sense + "-" + i->write_direction(dir)
-			+ ".png" + rotate;
-
-		res.push_back(image::get_texture(image, image::HEXED));
-	}
-
-	// we draw teleport image (if any) in last
-	if (teleport != nullptr) res.push_back(teleport);
-
-	return res;
-}
-
-
-
 void game_display::highlight_reach(const pathfind::paths &paths_list)
 {
 	unhighlight_reach();
@@ -664,8 +662,6 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	enum visibility { REACH = 0, ENEMY = 1, CLEAR = 2 };
 	std::array<visibility, 6> tiles;
 
-	const std::string* image_prefix_ = &game_config::reach_map_prefix;
-
 	for(int i = 0; i < 6; ++i) {
 		// look for units adjacent to loc
 		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
@@ -703,7 +699,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	if(s == 6) {
 		// Completely surrounded by reach. This may have a special graphic.
 		DBG_DP << "Tried completely surrounding";
-		std::string name = *image_prefix_ + "-all.png";
+		std::string name = game_config::reach_map_prefix + "-all.png";
 		if(image::exists(name)) {
 			names.push_back(std::move(name));
 		}
@@ -715,11 +711,16 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			std::ostringstream stream;
 			std::string suffix;
 			std::string name;
-			stream << *image_prefix_;
+			stream << game_config::reach_map_prefix;
+
+			std::string color = prefs::get().reach_map_color();
+			std::string enemy_color = prefs::get().reach_map_enemy_color();
+			std::string border_opacity = std::to_string(prefs::get().reach_map_border_opacity());
+
 			if(tiles[i] == ENEMY) {
-				suffix = ".png~RC(magenta>red)";
+				suffix = ".png~RC(magenta>"+enemy_color+")~O("+border_opacity+"%)";
 			} else {
-				suffix = ".png~RC(magenta>teal)";
+				suffix = ".png~RC(magenta>"+color+")~O("+border_opacity+"%)";
 			}
 
 			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {

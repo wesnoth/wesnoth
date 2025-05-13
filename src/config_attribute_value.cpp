@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -296,11 +296,6 @@ unsigned config_attribute_value::to_unsigned(unsigned def) const
 std::size_t config_attribute_value::to_size_t(std::size_t def) const
 {
 	return apply_visitor(attribute_numeric_visitor<std::size_t>(def));
-}
-
-std::time_t config_attribute_value::to_time_t(std::time_t def) const
-{
-	return apply_visitor(attribute_numeric_visitor<std::time_t>(def));
 }
 
 double config_attribute_value::to_double(double def) const

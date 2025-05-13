@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -176,7 +176,7 @@ namespace t_translation {
 	 *                  the first group is the base terrain,
 	 *                  the second the overlay terrain.
 	 *
-	 * @param filler    if there's no layer this value will be used as the second layer
+	 * @param filler    If no overlay is specified this value will be used.
 	 *
 	 * @return          A single terrain code
 	 */
@@ -198,11 +198,11 @@ namespace t_translation {
 	 * Reads a list of terrains from a string, when reading the
 	 *
 	 * @param str		A string with one or more terrain codes (see read_terrain_code)
-	 * @param filler	If there's no layer, this value will be used as the second layer
+	 * @param filler	If no overlay is specified this value will be used.
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
+	ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -96,14 +96,16 @@ std::string format_level_string(const int level, bool recallable);
  * moves_left is zero: "moves_left/moves_max" colored in red
  * moves_left is less than/equal to moves_max: "moves_left/moves_max" colored in green
  * moves_left is greater than moves_max: "moves_left/moves_max" colored in yellow
+ * active = false: "moves_left/moves_max" colored in grey,
+ * regardless of the previous conditions.
  */
-std::string format_movement_string(const int moves_left, const int moves_max);
+std::string format_movement_string(const int moves_left, const int moves_max, const bool active = true);
 
 /** @return If the recruit is possible, an empty optional and set @a recruited_from;
 	otherwise, return an error message string describing the reason. */
-utils::optional<std::string> recruit_message(
+t_string recruit_message(
 	const std::string& type_id,
-	const map_location& target_hex,
-	const map_location& recruited_from,
-	const team& current_team);
+	map_location& target_hex,
+	map_location& recruited_from,
+	team& current_team);
 }

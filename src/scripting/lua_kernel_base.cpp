@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,6 +51,8 @@
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
 #include "utils/scope_exit.hpp"
+
+#include <SDL2/SDL_timer.h>
 
 #include <cstring>
 #include <string>

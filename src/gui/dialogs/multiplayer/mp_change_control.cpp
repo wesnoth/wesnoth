@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -75,18 +75,16 @@ void mp_change_control::pre_show()
 
 		const int side = sides_.emplace_back(t.side());
 
-		widget_data data;
-		widget_item item;
-
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
 		side_str = markup::span_color(team::get_side_color(side), side_str);
 
-		item["id"] = (formatter() << "side_" << side).str();
-		item["label"] = side_str;
-		item["use_markup"] = "true";
-		data.emplace("side", item);
-
-		sides_list.add_row(data);
+		sides_list.add_row(widget_data{
+			{ "side", {
+				{ "id", (formatter() << "side_" << side).str() }, // TODO: need?
+				{ "label", side_str },
+				{ "use_markup", "true" }
+			}}
+		});
 	}
 
 	//
@@ -113,15 +111,13 @@ void mp_change_control::pre_show()
 	for(const std::string& nick : temp_nicks) {
 		nicks_.push_back(nick);
 
-		widget_data data;
-		widget_item item;
-
-		item["id"] = nick;
-		item["label"] = nick;
-		item["use_markup"] = "true";
-		data.emplace("nick", item);
-
-		nicks_list.add_row(data);
+		nicks_list.add_row(widget_data{
+			{ "nick", {
+				{ "id", nick },
+				{ "label", nick },
+				{ "use_markup", "true" },
+			}}
+		});
 	}
 
 	handle_sides_list_item_clicked();

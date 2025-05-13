@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,6 +38,12 @@ struct state_definition
 	explicit state_definition(const config& cfg);
 
 	config canvas_cfg_;
+
+	/** Allows us to use this object in vector's range constructor */
+	operator const config&() const
+	{
+		return canvas_cfg_;
+	}
 };
 
 struct resolution_definition
