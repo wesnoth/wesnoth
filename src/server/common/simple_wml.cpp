@@ -37,10 +37,6 @@ std::size_t document::document_size_limit = 40000000;
 
 namespace {
 
-void debug_delete(node* n) {
-	delete n;
-}
-
 char* uncompress_buffer(const string_span& input, string_span* span)
 {
 	int nalloc = input.size();
@@ -260,7 +256,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
+			children_[list_index].second.push_back(std::make_unique<node>(doc, this, str, depth+1));
 			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
@@ -365,11 +361,6 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 node::~node()
 {
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			debug_delete(*j);
-		}
-	}
 }
 
 namespace {
@@ -458,7 +449,7 @@ node& node::add_child_at(const char* name, std::size_t index)
 	}
 
 	check_ordered_children();
-	list.insert(list.begin() + index, new node(*doc_, this));
+	list.insert(list.begin() + index, std::make_unique<node>(*doc_, this));
 	insert_ordered_child(list_index, index);
 
 	check_ordered_children();
@@ -473,7 +464,7 @@ node& node::add_child(const char* name)
 	const int list_index = get_children(name);
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
-	list.push_back(new node(*doc_, this));
+	list.push_back(std::make_unique<node>(*doc_, this));
 	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
 	return *list.back();
@@ -496,7 +487,6 @@ void node::remove_child(const string_span& name, std::size_t index)
 
 	remove_ordered_child(std::distance(children_.begin(), itor), index);
 
-	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 
 	if(list.empty()) {
@@ -603,7 +593,7 @@ node* node::child(const char* name)
 	for(auto& [key, node_list] : children_) {
 		if(key == name) {
 			assert(node_list.empty() == false);
-			return node_list.front();
+			return node_list.front().get();
 		}
 	}
 
@@ -617,7 +607,7 @@ const node* node::child(const char* name) const
 			if(node_list.empty()) {
 				return nullptr;
 			} else {
-				return node_list.front();
+				return node_list.front().get();
 			}
 		}
 	}
@@ -957,7 +947,7 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) :
 		buffers_.push_back(buf);
 	}
 	const char* cbuf = buf;
-	root_ = new node(*this, nullptr, &cbuf);
+	root_.reset(new node(*this, nullptr, &cbuf));
 
 	attach_list();
 }
@@ -974,7 +964,7 @@ document::document(const char* buf, INIT_STATE state) :
 		output_compressed();
 		output_ = nullptr;
 	} else {
-		root_ = new node(*this, nullptr, &buf);
+		root_.reset(new node(*this, nullptr, &buf));
 	}
 
 	attach_list();
@@ -993,7 +983,7 @@ document::document(string_span compressed_buf) :
 	output_ = uncompressed_buf.begin();
 	const char* cbuf = output_;
 	try {
-		root_ = new node(*this, nullptr, &cbuf);
+		root_.reset(new node(*this, nullptr, &cbuf));
 	} catch(...) {
 		ERR_SWML << "Caught exception creating a new simple_wml node: " << utils::get_unknown_exception_type();
 		delete [] buffers_.front();
@@ -1011,7 +1001,7 @@ document::~document()
 	}
 
 	buffers_.clear();
-	debug_delete(root_);
+	root_ = nullptr;
 
 	detach_list();
 }
@@ -1093,7 +1083,6 @@ string_span document::output_compressed(bool bzip2)
 void document::compress()
 {
 	output_compressed();
-	debug_delete(root_);
 	root_ = nullptr;
 	output_ = nullptr;
 	std::vector<char*> new_buffers;
@@ -1120,7 +1109,7 @@ void document::generate_root()
 
 	assert(root_ == nullptr);
 	const char* cbuf = output_;
-	root_ = new node(*this, nullptr, &cbuf);
+	root_.reset(new node(*this, nullptr, &cbuf));
 }
 
 std::unique_ptr<document> document::clone()
@@ -1145,8 +1134,7 @@ void document::clear()
 {
 	compressed_buf_ = string_span();
 	output_ = nullptr;
-	debug_delete(root_);
-	root_ = new node(*this, nullptr);
+	root_.reset(new node(*this, nullptr));
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		delete [] *i;
 	}

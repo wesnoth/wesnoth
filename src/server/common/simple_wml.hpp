@@ -126,7 +126,7 @@ public:
 		string_span key;
 		string_span value;
 	};
-	typedef std::vector<node*> child_list;
+	typedef std::vector<std::unique_ptr<node>> child_list;
 
 	const string_span& operator[](const char* key) const;
 	const string_span& attr(const char* key) const {
@@ -304,7 +304,7 @@ private:
 	string_span compressed_buf_;
 	const char* output_;
 	std::vector<char*> buffers_;
-	node* root_;
+	std::unique_ptr<node> root_;
 
 	//linked list of documents for accounting purposes
 	void attach_list();

@@ -346,9 +346,9 @@ void game::start_game(player_iterator starter)
 	send_observerjoins();
 }
 
-bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node* side) const
+bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node& side) const
 {
-	const std::size_t side_index = (*side)["side"].to_int() - 1;
+	const std::size_t side_index = side["side"].to_int() - 1;
 
 	// Negative values are casted (int -> std::size_t) to very high values to this check will fail for them too.
 	if(side_index >= sides_.size()) {
@@ -360,7 +360,7 @@ bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node* si
 	}
 
 	// We expect that the host will really use our proposed side number. (He could do different...)
-	cfg.root().set_attr_dup("side", (*side)["side"]);
+	cfg.root().set_attr_dup("side", side["side"]);
 
 	// Tell the host which side the new player should take.
 	server.send_to_player(owner_, cfg);
@@ -383,20 +383,20 @@ bool game::take_side(player_iterator user)
 	// Check if we can figure out a fitting side.
 	const simple_wml::node::child_list& sides = get_sides_list();
 
-	for(const simple_wml::node* side : sides) {
+	for(const auto& side : sides) {
 		if(((*side)["controller"] == side_controller::human || (*side)["controller"] == side_controller::reserved)
 				&& (*side)["current_player"] == user->name().c_str()) {
 
-			if(send_taken_side(cfg, side)) {
+			if(send_taken_side(cfg, *side)) {
 				return true;
 			}
 		}
 	}
 
 	// If there was no fitting side just take the first available.
-	for(const simple_wml::node* side : sides) {
+	for(const auto& side : sides) {
 		if((*side)["controller"] == side_controller::human) {
-			if(send_taken_side(cfg, side)) {
+			if(send_taken_side(cfg, *side)) {
 				return true;
 			}
 		}
@@ -449,7 +449,7 @@ void game::update_side_data()
 
 		bool side_found = false;
 		for(unsigned side_index = 0; side_index < level_sides.size(); ++side_index) {
-			const simple_wml::node* side = level_sides[side_index];
+			const auto& side = level_sides[side_index];
 
 			if(side_index >= sides_.size() || sides_[side_index]) {
 				continue;
@@ -663,7 +663,7 @@ void game::describe_slots()
 	int num_sides = get_sides_list().size();
 	int i = 0;
 
-	for(const simple_wml::node* side : get_sides_list()) {
+	for(const auto& side : get_sides_list()) {
 		if(((*side)["allow_player"].to_bool(true) == false) || (*side)["controller"] == side_controller::none) {
 			num_sides--;
 		} else if(!sides_[i]) {
@@ -993,7 +993,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 
 	const simple_wml::node::child_list& commands = turn->children("command");
 
-	for(simple_wml::node* command : commands) {
+	for(auto& command : commands) {
 		DBG_GAME << "game " << id_ << ", " << db_id_ << " received [" << (*command).first_child() << "] from player '" << username(user)
 				 << "'(" << ") during turn " << current_side_index_ + 1 << "," << current_turn_;
 		if(!is_legal_command(*command, user)) {
@@ -1096,7 +1096,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 		return turn_ended;
 	}
 
-	for(simple_wml::node* command : commands) {
+	for(auto& command : commands) {
 		simple_wml::node* const speak = (*command).child("speak");
 		if(speak == nullptr) {
 			auto mdata = std::make_unique<simple_wml::document>();
@@ -1812,7 +1812,7 @@ void game::save_replay()
 	for(const auto& h : history_) {
 		const simple_wml::node::child_list& turn_list = h->root().children("turn");
 
-		for(const simple_wml::node* turn : turn_list) {
+		for(const auto& turn : turn_list) {
 			replay_commands += simple_wml::node_to_string(*turn);
 		}
 	}
@@ -1930,7 +1930,7 @@ std::string game::debug_sides_info() const
 
 	result << "\t\t level, server\n";
 
-	for(const simple_wml::node* s : sides) {
+	for(const auto& s : sides) {
 		result
 			<< "side " << (*s)["side"].to_int()
 			<< " :\t" << (*s)["controller"].to_string()

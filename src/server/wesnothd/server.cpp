@@ -131,7 +131,8 @@ static bool make_delete_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const auto itor = std::find(children.begin(), children.end(), remove);
+	const auto itor = std::find_if(children.begin(), children.end(),
+		[remove](const auto& child_ptr) { return child_ptr.get() == remove; });
 
 	if(itor == children.end()) {
 		return false;
@@ -164,7 +165,8 @@ static bool make_change_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const auto itor = std::find(children.begin(), children.end(), item);
+	const auto itor = std::find_if(children.begin(), children.end(),
+		[item](const auto& child_ptr) { return child_ptr.get() == item; });
 
 	if(itor == children.end()) {
 		return false;
@@ -697,10 +699,10 @@ void server::dummy_player_updates(const boost::system::error_code& ec)
 	int size = games_and_users_list_.root().children("user").size();
 	LOG_SERVER << "player count: " << size;
 	if(size % 2 == 0) {
-		simple_wml::node* dummy_user = games_and_users_list_.root().children("user").at(size-1);
+		auto& dummy_user = games_and_users_list_.root().children("user").at(size-1);
 
 		simple_wml::document diff;
-		if(make_delete_diff(games_and_users_list_.root(), nullptr, "user", dummy_user, diff)) {
+		if(make_delete_diff(games_and_users_list_.root(), nullptr, "user", dummy_user.get(), diff)) {
 			send_to_lobby(diff);
 		}
 
@@ -1549,7 +1551,8 @@ void server::cleanup_game(game* game_ptr)
 
 	// Delete the game from the games_and_users_list_.
 	const simple_wml::node::child_list& games = gamelist->children("game");
-	const auto g = std::find(games.begin(), games.end(), game_ptr->description());
+	const auto g = std::find_if(games.begin(), games.end(),
+		[game_ptr](const auto& game) { return game.get() == game_ptr->description(); });
 
 	if(g != games.end()) {
 		const std::size_t index = std::distance(games.begin(), g);
@@ -1845,7 +1848,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		}
 
 		const simple_wml::node::child_list& mlist = data.children("modification");
-		for(const simple_wml::node* m : mlist) {
+		for(const auto& m : mlist) {
 			desc.add_child_at("modification", 0);
 			desc.child("modification")->set_attr_dup("id", m->attr("id"));
 			desc.child("modification")->set_attr_dup("name", m->attr("name"));
@@ -2061,13 +2064,13 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 					leaders.emplace_back(side.attr("type").to_string());
 				}
 				// add each [unit] in the side that has canrecruit=yes
-				for(const auto unit : side.children("unit")) {
+				for(const auto& unit : side.children("unit")) {
 					if(unit->attr("canrecruit") == "yes") {
 						leaders.emplace_back(unit->attr("type").to_string());
 					}
 				}
 				// add any [leader] specified for the side
-				for(const auto leader : side.children("leader")) {
+				for(const auto& leader : side.children("leader")) {
 					leaders.emplace_back(leader->attr("type").to_string());
 				}
 
@@ -2283,8 +2286,8 @@ void server::remove_player(player_iterator iter)
 	}
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
-	const std::size_t index =
-		std::distance(users.begin(), std::find(users.begin(), users.end(), iter->info().config_address()));
+	const std::size_t index = std::distance(users.begin(), std::find_if(users.begin(), users.end(),
+		[address = iter->info().config_address()](const auto& user) { return user.get() == address; }));
 
 	// Notify other players in lobby
 	simple_wml::document diff;
