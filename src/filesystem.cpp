@@ -23,6 +23,7 @@
 
 #include "config.hpp"
 #include "deprecation.hpp"
+#include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
@@ -30,12 +31,17 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
-#include <boost/process.hpp>
-#include "game_config_view.hpp"
+#if BOOST_VERSION >= 108800 // v2 is now default
+#  define BOOST_PROCESS_VERSION 1
+#  include <boost/process/v1/search_path.hpp>
+#else
+#  include <boost/process.hpp>
+#endif
 
 #ifdef _WIN32
 #include <boost/locale.hpp>

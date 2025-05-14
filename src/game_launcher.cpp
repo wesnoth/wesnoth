@@ -57,11 +57,17 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#include <algorithm> // for copy, max, min, stable_sort
 #ifdef _WIN32
-#include <boost/process/windows.hpp>
+#  include <boost/process/windows.hpp>
 #endif
-#include <boost/process.hpp>
+#if BOOST_VERSION >= 108800 // v2 is now default
+#  define BOOST_PROCESS_VERSION 1
+#  include <boost/process/v1/child.hpp>
+#else
+#  include <boost/process.hpp>
+#endif
+
+#include <algorithm> // for copy, max, min, stable_sort
 #include <cstdlib>   // for system
 #include <new>
 #include <utility> // for pair
