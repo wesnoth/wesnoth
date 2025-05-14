@@ -1,4 +1,4 @@
-﻿# set minimum version
+# set minimum version
 cmake_minimum_required(VERSION 3.14)
 
 project(wesnoth)
@@ -111,7 +111,7 @@ find_package(X11)
 
 if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
-	add_definitions(-DLUA_USE_POSIX)
+	add_compile_definitions(LUA_USE_POSIX)
 endif()
 
 #check for some compiler/arch specific things and export defines accordingly...
@@ -317,7 +317,7 @@ if(NOT MSVC)
 		endif()
 
 		if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
-			add_definitions(-D_FORTIFY_SOURCE=2)
+			add_compile_definitions(_FORTIFY_SOURCE=2)
 		endif()
 	endif()
 
@@ -325,13 +325,13 @@ if(NOT MSVC)
 		set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
 	endif()
 
-	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
+	add_compile_definitions(WESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
 
 	if(X11_FOUND)
-		add_definitions(-D_X11)
+		add_compile_definitions(_X11)
 	endif()
 
-	add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+	add_compile_definitions(LOCALEDIR="${LOCALEDIR}")
 
 # -rdynamic is automatically added, but we don't need it, and it increases the executable size
 	RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
@@ -443,15 +443,15 @@ if(NOT MSVC)
 # Enabling GLIBCXX_ASSERTIONS puts bounds-checks on std::vector::operator[], etc
 	if(GLIBCXX_ASSERTIONS)
 		MESSAGE("Defining _GLIBCXX_ASSERTIONS")
-		add_definitions(-D_GLIBCXX_ASSERTIONS)
+		add_compile_definitions(_GLIBCXX_ASSERTIONS)
 	endif()
 
 # GLIBCXX_DEBUG enables more checks that GLIBCXX_ASSERTIONS, but changes the ABI of Boost's program_options library.
 # When _GLIBCXX_DEBUG is defined, _GLIBCXX_ASSERTIONS is automatically implied (Gnu's c++config.h will define it).
 	if(GLIBCXX_DEBUG)
 		MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
-		add_definitions(-D_GLIBCXX_DEBUG)
-		add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+		add_compile_definitions(_GLIBCXX_DEBUG)
+		add_compile_definitions(_GLIBCXX_DEBUG_PEDANTIC)
 	endif()
 
 # #
@@ -487,7 +487,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=0x0A00 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX -D_MSVC_STL_HARDENING=1 -D_MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
+	add_compile_definitions(_WIN32_WINNT=0x0A00 _CRT_SECURE_NO_WARNINGS _WINSOCK_DEPRECATED_NO_WARNINGS NOMINMAX _MSVC_STL_HARDENING=1 _MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -505,30 +505,29 @@ endif()
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
 if(IS_ABSOLUTE "${LOCALEDIR}")
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
+	add_compile_definitions(HAS_RELATIVE_LOCALEDIR=0)
 	set(LOCALE_INSTALL ${LOCALEDIR})
 else()
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
+	add_compile_definitions(HAS_RELATIVE_LOCALEDIR=1)
 	set(LOCALE_INSTALL ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME}/${LOCALEDIR})
 endif()
 
-add_definitions(-DFIFODIR="${FIFO_DIR}")
+add_compile_definitions(FIFODIR="${FIFO_DIR}")
 
 if(PREFERENCES_DIR)
-	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR}")
+	add_compile_definitions(PREFERENCES_DIR="${PREFERENCES_DIR}")
 endif()
 
-
 if(DEFAULT_PREFS_FILE)
-	add_definitions(-DDEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE}")
+	add_compile_definitions(DEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE}")
 
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
-		add_definitions(-DHAS_RELATIVE_DEFPREF)
+		add_compile_definitions(HAS_RELATIVE_DEFPREF)
 	endif()
 endif()
 
 if(ENABLE_DEBUG_WINDOW_LAYOUT)
-	add_definitions(-DDEBUG_WINDOW_LAYOUT_GRAPHS)
+	add_compile_definitions(DEBUG_WINDOW_LAYOUT_GRAPHS)
 endif()
 
 #
@@ -562,7 +561,7 @@ if(ENABLE_GAME)
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
 		if(LIBDBUS_FOUND)
-			add_definitions(-DHAVE_LIBDBUS)
+			add_compile_definitions(HAVE_LIBDBUS)
 		else()
 			message("Could not find dbus-1, Disabling notification support.")
 		endif()
@@ -572,7 +571,7 @@ if(ENABLE_GAME)
 
 	find_package(History)
 	if(HISTORY_FOUND)
-		add_definitions(-DHAVE_HISTORY)
+		add_compile_definitions(HAVE_HISTORY)
 	endif()
 endif()
 
