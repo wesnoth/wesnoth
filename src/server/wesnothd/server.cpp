@@ -85,6 +85,11 @@ namespace wesnothd
 int request_sample_frequency = 1;
 version_info secure_version = version_info("1.14.4");
 
+static auto find_in_child_list(const simple_wml::node::child_list& list, const simple_wml::node* node)
+{
+	return std::find_if(list.begin(), list.end(), [node](const auto& ptr) { return ptr.get() == node; });
+}
+
 static void make_add_diff(
 		const simple_wml::node& src, const char* gamelist, const char* type, simple_wml::document& out, int index = -1)
 {
@@ -131,8 +136,7 @@ static bool make_delete_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const auto itor = std::find_if(children.begin(), children.end(),
-		[remove](const auto& child_ptr) { return child_ptr.get() == remove; });
+	const auto itor = find_in_child_list(children, remove);
 
 	if(itor == children.end()) {
 		return false;
@@ -165,8 +169,7 @@ static bool make_change_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const auto itor = std::find_if(children.begin(), children.end(),
-		[item](const auto& child_ptr) { return child_ptr.get() == item; });
+	const auto itor = find_in_child_list(children, item);
 
 	if(itor == children.end()) {
 		return false;
@@ -1551,8 +1554,7 @@ void server::cleanup_game(game* game_ptr)
 
 	// Delete the game from the games_and_users_list_.
 	const simple_wml::node::child_list& games = gamelist->children("game");
-	const auto g = std::find_if(games.begin(), games.end(),
-		[game_ptr](const auto& game) { return game.get() == game_ptr->description(); });
+	const auto g = find_in_child_list(games, game_ptr->description());
 
 	if(g != games.end()) {
 		const std::size_t index = std::distance(games.begin(), g);
@@ -2286,8 +2288,8 @@ void server::remove_player(player_iterator iter)
 	}
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
-	const std::size_t index = std::distance(users.begin(), std::find_if(users.begin(), users.end(),
-		[address = iter->info().config_address()](const auto& user) { return user.get() == address; }));
+	const std::size_t index = std::distance(users.begin(),
+		find_in_child_list(users, iter->info().config_address()));
 
 	// Notify other players in lobby
 	simple_wml::document diff;

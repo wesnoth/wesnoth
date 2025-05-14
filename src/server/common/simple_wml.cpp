@@ -256,7 +256,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			children_[list_index].second.push_back(std::make_unique<node>(doc, this, str, depth+1));
+			children_[list_index].second.emplace_back(new node(doc, this, str, depth+1));
 			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
@@ -464,7 +464,7 @@ node& node::add_child(const char* name)
 	const int list_index = get_children(name);
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
-	list.push_back(std::make_unique<node>(*doc_, this));
+	list.emplace_back(new node(*doc_, this));
 	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
 	return *list.back();
