@@ -34,7 +34,12 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
+#if BOOST_VERSION >= 108800
+#include <boost/process/v1/child.hpp>
+#else
+#define BOOST_PROCESS_VERSION 1
 #include <boost/process.hpp>
+#endif
 #include "game_config_view.hpp"
 
 #ifdef _WIN32

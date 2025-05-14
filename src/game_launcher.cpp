@@ -61,7 +61,12 @@
 #ifdef _WIN32
 #include <boost/process/windows.hpp>
 #endif
+#if BOOST_VERSION >= 108800
+#include <boost/process/v1/child.hpp>
+#else
+#define BOOST_PROCESS_VERSION 1
 #include <boost/process.hpp>
+#endif
 #include <cstdlib>   // for system
 #include <new>
 #include <utility> // for pair
