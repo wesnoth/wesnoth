@@ -549,16 +549,6 @@ void node::remove_ordered_child(int child_map_index, int child_list_index)
 	assert(erase_count == 1);
 }
 
-void node::insert_ordered_child_list(int child_map_index)
-{
-	std::vector<node_pos>::iterator i = ordered_children_.begin();
-	while(i != ordered_children_.end()) {
-		if(i->child_map_index >= child_map_index) {
-			i->child_map_index++;
-		}
-	}
-}
-
 void node::remove_ordered_child_list(int child_map_index)
 {
 	std::vector<node_pos>::iterator i = ordered_children_.begin();

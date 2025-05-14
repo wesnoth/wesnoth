@@ -225,7 +225,6 @@ private:
 
 	void insert_ordered_child(int child_map_index, int child_list_index);
 	void remove_ordered_child(int child_map_index, int child_list_index);
-	void insert_ordered_child_list(int child_map_index);
 	void remove_ordered_child_list(int child_map_index);
 
 	void check_ordered_children() const;
