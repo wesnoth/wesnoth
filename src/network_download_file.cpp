@@ -35,9 +35,23 @@ namespace network
 		return amount;
 	}
 
-	void download(const std::string& url, const std::string& local_path)
+	void gui_download(const std::string& url, const std::string& local_path) {
+		if(filesystem::file_exists(local_path)) {
+			const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
+			if(res != gui2::retval::OK) {
+				return;
+			}
+		}
+		if (download(url, local_path)) {
+			gui2::show_message(_("Download complete"), _("The file has been downloaded."), gui2::dialogs::message::button_style::auto_close);
+		} else {
+			gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
+		}
+	}
+
+	bool download(const std::string& url, const std::string& local_path)
 	{
-		CURL* curl = curl_easy_init();
+		std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl(curl_easy_init(), curl_easy_cleanup);
 		std::string buffer;
 		// curl doesn't initialize the error buffer until version 7.60.0, which isn't currently available on all supported macOS versions
 		char error[CURL_ERROR_SIZE];
@@ -46,50 +60,43 @@ namespace network
 
 		if(!curl) {
 			ERR_NW << "curl_easy_init failed initialization, unable to download file.";
-			gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
-			return;
+			return false;
 		}
 
-		curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
-		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error);
-		curl_easy_setopt(curl, CURLOPT_FORBID_REUSE, 1L);
-		curl_easy_setopt(curl, CURLOPT_FRESH_CONNECT, 1L);
-		curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
-		curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, 5000L);
+		CURLcode res;
+		if((res = curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str())) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, write_callback)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &buffer)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, error)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_FORBID_REUSE, 1L)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_FRESH_CONNECT, 1L)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_FAILONERROR, 1L)) != CURLE_OK ||
+			(res = curl_easy_setopt(curl.get(), CURLOPT_TIMEOUT_MS, 5000L)) != CURLE_OK ||
 #if LIBCURL_VERSION_NUM >= 0x075500
-		curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, "https");
+			(res = curl_easy_setopt(curl.get(), CURLOPT_PROTOCOLS_STR, "https")) != CURLE_OK
 #else
-		curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);
+			(res = curl_easy_setopt(curl.get(), CURLOPT_PROTOCOLS, CURLPROTO_HTTPS)) != CURLE_OK
 #endif
+			) {
+			ERR_NW << "Error setting curl option: " << curl_easy_strerror(res);
+			return false;
+		}
 
-		CURLcode res = curl_easy_perform(curl);
-
+		res = curl_easy_perform(curl.get());
 		if(res != CURLE_OK) {
 			ERR_NW << "Error downloading file from url `" << url << "`.\n"
 				<< "Short error: " << curl_easy_strerror(res) << "\n"
 				<< "Long error: " << std::string(error);
-			gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
-		} else {
-			try {
-				if(filesystem::file_exists(local_path)) {
-					const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
-					if(res == gui2::retval::OK) {
-						filesystem::write_file(local_path, buffer);
-					}
-				} else {
-					filesystem::write_file(local_path, buffer);
-				}
-				DBG_NW << "Wrote downloaded file to: " << local_path;
-			} catch(const filesystem::io_exception& e) {
-				ERR_NW << "io_exception writing downloaded data to file at: " << local_path
-					<< "\n" << e.what() << " : " << e.message;
-				gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
-			}
-			gui2::show_message(_("Download complete"), _("The file has been downloaded."), gui2::dialogs::message::button_style::auto_close);
+			return false;
 		}
 
-		curl_easy_cleanup(curl);
+		try {
+			filesystem::write_file(local_path, buffer);
+			DBG_NW << "Wrote downloaded file to: " << local_path;
+		} catch(const filesystem::io_exception& e) {
+			ERR_NW << "io_exception writing downloaded data to file at: " << local_path << "\n" << e.what() << " : " << e.message;
+			return false;
+		}
+		return true;
 	}
 }
