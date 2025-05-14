@@ -37,11 +37,13 @@ import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
@@ -81,20 +83,35 @@ public class InitActivity extends Activity {
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
+		
 		// Keep the screen on while this task runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
-		// Initialize gamedata directory
-		dataDir = new File(getExternalFilesDir(null), "gamedata");
+		initSettingsMenu();
 		
-		// Settings menu
+		doPowerCheckAndStart();
+	}
+	
+	public void onActivityResult(int reqCode, int resCode, Intent intent) {
+		// Start the asset download only after the user has returned from
+		// battery save settings, if they already went there via the
+		// AlertDialog in onCreate().
+		if (reqCode == 1) {
+			initialize();
+		} else if (reqCode == 2 && resCode == RESULT_OK) {
+			initializeAssetsFromZip(intent.getData());
+		}
+	}
+	
+	// Create the settings menu ui
+	private void initSettingsMenu() {
 		ImageButton btnSettings = findViewById(R.id.settings_btn);
 		btnSettings.setOnClickListener(e -> {
 			PopupMenu settingsMenu = new PopupMenu(InitActivity.this, btnSettings);
 			settingsMenu.getMenuInflater().inflate(R.menu.main_menu, settingsMenu.getMenu());
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
-				// TODO show an alert dialog to ask the user first
 				if (menuItem.getItemId() == R.id.mnuClear) {
+					// TODO do the deleting in another thread
 					clearGameData(dataDir);
 					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
@@ -106,8 +123,31 @@ public class InitActivity extends Activity {
 			});
 			settingsMenu.show();
 		});
-		
-		// Battery saver check
+	}
+	
+	// Note: wrap in runOnUiThread(()-> {...}) if called from another thread
+	private void showLaunchScreen() {
+		findViewById(R.id.download_progress).setVisibility(View.INVISIBLE);
+		findViewById(R.id.download_msg).setVisibility(View.INVISIBLE);
+		TextView lblTap = (TextView) findViewById(R.id.tap_label);
+		lblTap.setText("Tap to Start");
+		lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+	}
+	
+	// Note: wrap in runOnUiThread(()-> {...}) if called from another thread
+	private void showProgressScreen() {
+		TextView lblTap = findViewById(R.id.tap_label);
+		lblTap.clearAnimation();
+		lblTap.setVisibility(View.INVISIBLE);
+
+		TextView progressText = findViewById(R.id.download_msg);
+		progressText.setVisibility(View.VISIBLE);
+		findViewById(R.id.download_progress).setVisibility(View.VISIBLE);
+	}
+	
+	// Check if battery saver is on, and prompt to turn off
+	// then start the main task
+	private void doPowerCheckAndStart() {
 		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		if (powerManager.isPowerSaveMode()) {
 			new AlertDialog.Builder(this)
@@ -125,47 +165,28 @@ public class InitActivity extends Activity {
 		}
 	}
 	
-	public void onActivityResult(int reqCode, int resCode, Intent intent) {
-		// Start the asset download only after the user has returned from
-		// battery save settings, if they already went there via the
-		// AlertDialog in onCreate().
-		if (reqCode == 1) {
-			initialize();
-		} else if (reqCode == 2 && resCode == RESULT_OK) {
-			Toast.makeText(this, "Installing ZIP...", Toast.LENGTH_SHORT).show();
-			if (unpackArchive(new File(intent.getData().getPath()), dataDir, "Core")) {
-				Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show();
-			} else {
-				Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show();
-			}
+	// Initialize gamedata directory
+	private void initMainDataDir() {
+		dataDir = new File(getExternalFilesDir(null), "gamedata");
+		if (!dataDir.exists()) {
+			dataDir.mkdir();
 		}
+		Log.d("InitActivity", "Creating " + dataDir);
 	}
 	
 	private void initialize() {
 		runOnUiThread(()-> {
-			findViewById(R.id.download_progress).setVisibility(View.INVISIBLE);
-			findViewById(R.id.download_msg).setVisibility(View.INVISIBLE);
-			TextView lblTap = (TextView) findViewById(R.id.tap_label);
-			lblTap.setText("Tap to Start");
-			lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+			showLaunchScreen();
 			findViewById(R.id.screen).setOnClickListener(e -> initializeAssets());
 		});
 	}
 	
 	private void initializeAssets() {
-		if (!dataDir.exists()) {
-			dataDir.mkdir();
-		}
-		Log.d("InitActivity", "Creating " + dataDir);
+		initMainDataDir();
 		
-		TextView lblTap = findViewById(R.id.tap_label);
-		lblTap.clearAnimation();
-		lblTap.setVisibility(View.INVISIBLE);
-
-		TextView progressText = (TextView) findViewById(R.id.download_msg);
-		progressText.setVisibility(View.VISIBLE);
+		showProgressScreen();
+		TextView progressText = findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
-		findViewById(R.id.download_progress).setVisibility(View.VISIBLE);
 		
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
@@ -255,6 +276,22 @@ public class InitActivity extends Activity {
 		});
 	}
 	
+	private void initializeAssetsFromZip(Uri uri) {
+		Executors.newSingleThreadExecutor().execute(() -> {
+			initMainDataDir();
+			
+			runOnUiThread(() -> showProgressScreen());
+			
+			if (unpackArchive(uri, dataDir, "Core")) {
+				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
+			} else {
+				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
+			}
+			
+			runOnUiThread(() -> showLaunchScreen());
+		});
+	}
+	
 	private void clearGameData(File dataDir) {
 		new AlertDialog.Builder(this)
 			.setTitle("Confirm Deletion")
@@ -302,12 +339,16 @@ public class InitActivity extends Activity {
 		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
 	}
 	
-	private void copyStream(InputStream in, OutputStream out) throws IOException {
+	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
 		byte[] buffer = new byte[8192];
 		int length;
 		while ((length = in.read(buffer)) > 0) {
 			out.write(buffer, 0, length);
 		}
+	}
+	
+	private void copyStream(InputStream in, OutputStream out) throws IOException {
+		copyStreamNoClose(in, out);
 		out.close();
 		in.close();
 	}
@@ -376,6 +417,59 @@ public class InitActivity extends Activity {
 		return 0;
 	}
 
+	private boolean unpackArchive(Uri uri, File destdir, String type) {
+		Log.d("Unpack", "Start");
+		
+		InputStream zipstream = null;
+		try {
+			zipstream = getContentResolver().openInputStream(uri);
+		} catch (FileNotFoundException fe) {
+			Log.e("Unpack", "File not found exception", fe);
+			return false;
+		}
+
+		if (zipstream == null) {
+			Log.e("Unpack", "File for " + type + " is null!");
+			return false;
+		}
+
+		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
+			progress = 1;
+
+			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
+			
+			ZipEntry ze;
+			while ((ze = zf.getNextEntry()) != null) {
+				runOnUiThread(() -> updateUnpackProgress(progress, type));
+
+				if (ze.isDirectory()) {
+					File dir = new File(destdir, ze.getName());
+					if (!dir.exists()) {
+						dir.mkdir();
+					}
+				} else {
+					FileOutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
+					copyStreamNoClose(zf, out);
+					out.close();
+				}
+
+				Log.d("Unpack", "Unpacking " + type + ":" + progress);
+				progress++;
+			}
+			
+			Log.d("Unpack", "Done unpacking " + type);
+			return true;
+		} catch (ZipException e) {
+			Log.e("Unpack", "ZIP exception", e);
+		} catch (FileNotFoundException e) {
+			Log.e("Unpack", "File not found", e);
+		} catch (IOException e) {
+			Log.e("Unpack", "IO exception", e);
+		}
+		
+		return false;
+	}
+	
 	private boolean unpackArchive(File zipfile, File destdir, String type) {
 		Log.d("Unpack", "Start");
 
