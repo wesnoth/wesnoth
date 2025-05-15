@@ -28,7 +28,7 @@ IMPLEMENT_ACTION(select)
 
 void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
-	for(const map_location& loc : locs) {
+	for(const map_location& loc : locs){
 		LOG_ED << "Extending by " << loc;
 		area_.insert(loc);
 	}
@@ -37,7 +37,7 @@ void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_
 std::unique_ptr<editor_action> editor_action_select::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	for(const map_location& loc : area_) {
+	for(const map_location& loc : area_){
 		undo_locs.insert(loc);
 		mc.add_changed_location(loc);
 	}
@@ -48,7 +48,7 @@ std::unique_ptr<editor_action> editor_action_select::perform(map_context& mc) co
 
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
-	for(const map_location& loc : area_) {
+	for(const map_location& loc : area_){
 		mc.map().add_to_selection(loc);
 		mc.add_changed_location(loc);
 	}
@@ -58,9 +58,9 @@ IMPLEMENT_ACTION(deselect)
 
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	for(const map_location& loc : locs) {
+	for(const map_location& loc : locs){
 		LOG_ED << "Checking " << loc;
-		if(!map.in_selection(loc)) {
+		if(!map.in_selection(loc)){
 			LOG_ED << "Extending by " << loc;
 			area_.insert(loc);
 		}
@@ -70,8 +70,8 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<map_lo
 std::unique_ptr<editor_action> editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	for(const map_location& loc : area_) {
-		if(mc.map().in_selection(loc)) {
+	for(const map_location& loc : area_){
+		if(mc.map().in_selection(loc)){
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
 		}
@@ -83,7 +83,7 @@ std::unique_ptr<editor_action> editor_action_deselect::perform(map_context& mc) 
 
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
-	for(const map_location& loc : area_) {
+	for(const map_location& loc : area_){
 		mc.map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}

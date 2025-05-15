@@ -53,7 +53,7 @@ std::unique_ptr<editor_action> editor_action_unit_delete::perform(map_context& m
 	unit_map& units = mc.units();
 	unit_map::const_unit_iterator unit_it = units.find(loc_);
 
-	if(unit_it != units.end()) {
+	if(unit_it != units.end()){
 		auto undo = std::make_unique<editor_action_unit>(loc_, *unit_it);
 		perform_without_undo(mc);
 		return undo;
@@ -65,7 +65,7 @@ std::unique_ptr<editor_action> editor_action_unit_delete::perform(map_context& m
 void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 {
 	unit_map& units = mc.units();
-	if(!units.erase(loc_)) {
+	if(!units.erase(loc_)){
 		ERR_ED << "Could not delete unit on " << loc_;
 	} else {
 		mc.add_changed_location(loc_);
@@ -96,7 +96,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	mc.add_changed_location(new_loc_);
 
 	/* @todo
-	  if (mc.map().is_village(new_loc_)) {
+	  if(mc.map().is_village(new_loc_)){
 		(*(resources::gameboard->teams()))[u.side()].get_village(new_loc_);
 	}
 	*/
@@ -120,7 +120,7 @@ void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 	unit_map& units = mc.units();
 	unit_map::unit_iterator unit_it = units.find(loc_);
 
-	if(unit_it != units.end()) {
+	if(unit_it != units.end()){
 		unit_it->set_facing(new_direction_);
 		unit_it->anim_comp().set_standing();
 	}

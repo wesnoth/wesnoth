@@ -54,11 +54,11 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 	resources::undo_stack->init_action();
 
 	auto p_handler = utils::find(synced_command::registry(), commandname);
-	if(!p_handler) {
+	if(!p_handler){
 		spectator.error("commandname [" + commandname + "] not found");
 	} else {
 		bool success = p_handler->second(data, spectator);
-		if(!success) {
+		if(!success){
 			return false;
 		}
 	}
@@ -69,7 +69,7 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 
 	resources::undo_stack->finish_action(!undo_blocked());
 
-	if(undo_blocked()) {
+	if(undo_blocked()){
 		// This in particular helps the networking code to make sure this command is sent.
 		send_user_choice();
 	}
@@ -80,7 +80,7 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 
 bool synced_context::run_and_store(const std::string& commandname, const config& data, action_spectator& spectator)
 {
-	if(resources::controller->is_replay()) {
+	if(resources::controller->is_replay()){
 		ERR_REPLAY << "ignored attempt to invoke a synced command during replay";
 		return false;
 	}
@@ -88,7 +88,7 @@ bool synced_context::run_and_store(const std::string& commandname, const config&
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
 	bool success = run(commandname, data, spectator);
-	if(!success) {
+	if(!success){
 		resources::recorder->undo();
 	} else {
 		resources::undo_stack->cleanup_action();
@@ -99,7 +99,7 @@ bool synced_context::run_and_store(const std::string& commandname, const config&
 bool synced_context::run_and_throw(const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	bool success = run_and_store(commandname, data, spectator);
-	if(success) {
+	if(success){
 		resources::controller->maybe_throw_return_to_play_side();
 	}
 
@@ -109,7 +109,7 @@ bool synced_context::run_and_throw(const std::string& commandname, const config&
 bool synced_context::run_in_synced_context_if_not_already(
 	const std::string& commandname, const config& data, action_spectator& spectator)
 {
-	switch(synced_context::get_synced_state()) {
+	switch(synced_context::get_synced_state()){
 	case(synced_context::UNSYNCED): {
 		return run_and_throw(commandname, data, spectator);
 	}
@@ -121,7 +121,7 @@ bool synced_context::run_in_synced_context_if_not_already(
 		return false;
 	case(synced_context::SYNCED): {
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
-		if(it == synced_command::registry().end()) {
+		if(it == synced_command::registry().end()){
 			spectator.error("commandname [" + commandname + "] not found");
 			return false;
 		} else {
@@ -183,12 +183,12 @@ std::string synced_context::generate_random_seed()
 
 void synced_context::block_undo(bool do_block, bool clear_undo)
 {
-	if(!do_block) {
+	if(!do_block){
 		return;
 	}
 	is_undo_blocked_ = true;
 
-	if(clear_undo) {
+	if(clear_undo){
 		resources::undo_stack->clear();
 	}
 	// Since the action cannot be undone, send it immidiately to the other players.
@@ -232,8 +232,8 @@ void synced_context::send_user_choice()
 std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
-	if(mode == "deterministic" || mode == "biased") {
-		auto get_rng = []() {
+	if(mode == "deterministic" || mode == "biased"){
+		auto get_rng = [](){
 			//rnd is nonundoable, even when the deterministic rng is used.
 			synced_context::block_undo(true, false);
 			return resources::gamedata->rng().get_next_random();
@@ -261,7 +261,7 @@ void synced_context::server_choice::send_request() const
 
 config synced_context::ask_server_choice(const server_choice& sch)
 {
-	if(!is_synced()) {
+	if(!is_synced()){
 		ERR_REPLAY << "Trying to ask the server for a '" << sch.name()
 				   << "' choice in a unsynced context, doing the choice locally. This can cause OOS.";
 		return sch.local_choice();
@@ -275,11 +275,11 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	DBG_REPLAY << "ask_server for random_seed";
 
 	// There might be speak or similar commands in the replay before the user input.
-	while(true) {
+	while(true){
 		do_replay_handle();
 		bool is_replay_end = resources::recorder->at_end();
 
-		if(is_replay_end && !is_mp_game) {
+		if(is_replay_end && !is_mp_game){
 			// The decision is ours, and it will be inserted into the replay.
 			DBG_REPLAY << "MP synchronization: local server choice";
 			leave_synced_context sync;
@@ -289,7 +289,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
 
-		} else if(is_replay_end && is_mp_game) {
+		} else if(is_replay_end && is_mp_game){
 			DBG_REPLAY << "MP synchronization: remote server choice";
 
 			// Here we can get into the situation that the decision has already been made but not received yet.
@@ -300,7 +300,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			resources::controller->play_slice();
 
 			// We don't want to send multiple "require_random" to the server.
-			if(!did_require) {
+			if(!did_require){
 				sch.send_request();
 				did_require = true;
 			}
@@ -309,19 +309,19 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			std::this_thread::sleep_for(10ms);
 			continue;
 
-		} else if(!is_replay_end) {
+		} else if(!is_replay_end){
 			// The decision has already been made, and must be extracted from the replay.
 			DBG_REPLAY << "MP synchronization: replay server choice";
 			do_replay_handle();
 
 			const config* action = resources::recorder->get_next_action();
-			if(!action) {
+			if(!action){
 				replay::process_error("[" + std::string(sch.name()) + "] expected but none found\n");
 				resources::recorder->revert_action();
 				return sch.local_choice();
 			}
 
-			if(!action->has_child(sch.name())) {
+			if(!action->has_child(sch.name())){
 				replay::process_error("[" + std::string(sch.name()) + "] expected but none found, found instead:\n "
 									  + action->debug() + "\n");
 
@@ -329,14 +329,14 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				return sch.local_choice();
 			}
 
-			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false)) {
+			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false)){
 				// we can proceed without getting OOS in this case, but allowing this would allow a "player chan choose
 				// their attack results in mp" cheat
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
 
 			config res = action->mandatory_child(sch.name());
-			if(res["request_id"].to_int() != sch.request_id()) {
+			if(res["request_id"].to_int() != sch.request_id()){
 				WRN_REPLAY << "Unexpected request_id: " << res["request_id"] << " expected: " <<  sch.request_id();
 			}
 			return res;
@@ -394,7 +394,7 @@ set_scontext_synced::set_scontext_synced(int number)
 
 checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
 {
-	if(resources::classification->oos_debug) {
+	if(resources::classification->oos_debug){
 		return new mp_debug_checkup();
 	} else {
 		return new synced_checkup(resources::recorder->get_last_real_command().child_or_add(tagname));
@@ -422,26 +422,26 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 		"next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1,
 	};
 
-	if(checkup_instance->local_checkup(cn, co)) {
+	if(checkup_instance->local_checkup(cn, co)){
 		return;
 	}
 
-	if(co["random_calls"].empty()) {
+	if(co["random_calls"].empty()){
 		msg << "cannot find random_calls check in replay" << std::endl;
-	} else if(co["random_calls"] != cn["random_calls"]) {
+	} else if(co["random_calls"] != cn["random_calls"]){
 		msg << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random "
 			<< co["random_calls"].to_int() << " times." << std::endl;
 	}
 
 	// Ignore empty next_unit_id to prevent false positives with older saves.
-	if(!co["next_unit_id"].empty() && co["next_unit_id"] != cn["next_unit_id"]) {
+	if(!co["next_unit_id"].empty() && co["next_unit_id"] != cn["next_unit_id"]){
 		msg << "Our next unit id is " << cn["next_unit_id"].to_int() << " but during the original the next unit id was "
 			<< co["next_unit_id"].to_int() << std::endl;
 	}
 
-	if(!msg.str().empty()) {
+	if(!msg.str().empty()){
 		msg << co.debug() << std::endl;
-		if(dont_throw) {
+		if(dont_throw){
 			ERR_REPLAY << msg.str();
 		} else {
 			replay::process_error(msg.str());
@@ -455,7 +455,7 @@ set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor";
 	assert(checkup_instance == &*new_checkup_);
-	if(!did_final_checkup_) {
+	if(!did_final_checkup_){
 		// do_final_checkup(true);
 	}
 	checkup_instance = old_checkup_;

@@ -37,7 +37,7 @@ namespace notifications {
 
 #if !(defined(HAVE_LIBDBUS) || defined(__APPLE__) || defined(_WIN32))
 
-bool available() { return false; }
+bool available(){ return false; }
 
 void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t*/)
 {}
@@ -56,7 +56,7 @@ bool available()
 void send(const std::string& owner, const std::string& message, type t)
 {
 	// Do not show notifications when the window is visible and has focus
-	if(video::window_is_visible() && video::window_has_focus()) {
+	if(video::window_is_visible() && video::window_has_focus()){
 		return;
 	}
 
@@ -72,7 +72,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	std::string notification_title;
 	std::string notification_message;
 
-	switch (t) {
+	switch (t){
 		case CHAT:
 			notification_title = _("Chat message");
 			notification_message = owner + ": " + message;

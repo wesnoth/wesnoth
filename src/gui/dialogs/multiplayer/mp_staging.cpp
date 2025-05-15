@@ -63,7 +63,7 @@ mp_staging::mp_staging(ng::connect_engine& connect_engine, wesnothd_connection* 
 
 mp_staging::~mp_staging()
 {
-	if(update_timer_ != 0) {
+	if(update_timer_ != 0){
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
@@ -75,7 +75,7 @@ void mp_staging::pre_show()
 	set_escape_disabled(true);
 
 	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
-	register_hotkey(hotkey::HOTKEY_MP_START_GAME, [this](auto&&...) { start_game(); return true; });
+	register_hotkey(hotkey::HOTKEY_MP_START_GAME, [this](auto&&...){ start_game(); return true; });
 	std::stringstream tooltip;
 	tooltip
 		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})
@@ -93,8 +93,8 @@ void mp_staging::pre_show()
 	//
 	// Set up sides list
 	//
-	for(const auto& side : connect_engine_.side_engines()) {
-		if(side->allow_player() || game_config::debug) {
+	for(const auto& side : connect_engine_.side_engines()){
+		if(side->allow_player() || game_config::debug){
 			add_side_node(side);;
 		}
 	}
@@ -123,16 +123,16 @@ void mp_staging::pre_show()
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
 
-	plugins_context_->set_callback("launch", [this](const config&) { set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit",   [this](const config&) { set_retval(retval::CANCEL); }, false);
-	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
+	plugins_context_->set_callback("launch", [this](const config&){ set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [this](const config&){ set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("chat",   [&chat](const config& cfg){ chat.send_chat_message(cfg["message"], false); }, true);
 }
 
 int mp_staging::get_side_node_position(const ng::side_engine_ptr& side) const
 {
 	int position = 0;
-	for(const auto& side_engine : connect_engine_.side_engines()) {
-		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
+	for(const auto& side_engine : connect_engine_.side_engines()){
+		if(side->team() == side_engine->team() && side->index() > side_engine->index()){
 			++position;
 		}
 	}
@@ -149,7 +149,7 @@ tree_view_node& mp_staging::add_side_to_team_node(const ng::side_engine_ptr& sid
 	tree_view_node* team_node = team_tree_map_[side->team_name()];
 
 	// Add a team node if none exists
-	if(team_node == nullptr) {
+	if(team_node == nullptr){
 		tree_view& tree = find_widget<tree_view>("side_list");
 
 		widget_data tree_data;
@@ -212,13 +212,13 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	// If this is loading a saved game, we add an option at the beginning of the menu.
 	// This results in a mismatch between the indices of ai_options and ai_algorithms_
 	// that we need to account for later.
-	if(saved_game) {
+	if(saved_game){
 		ai_options.emplace_back("label", "Keep saved AI");
 	}
-	for(unsigned i = 0; i < ai_algorithms_.size(); ++i) {
+	for(unsigned i = 0; i < ai_algorithms_.size(); ++i){
 		ai_options.emplace_back("label", ai_algorithms_[i]->text);
 
-		if(ai_algorithms_[i]->id == side->ai_algorithm()) {
+		if(ai_algorithms_[i]->id == side->ai_algorithm()){
 			selection = i;
 		}
 	}
@@ -235,7 +235,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	// Controller
 	//
 	std::vector<config> controller_names;
-	for(const auto& controller : side->controller_options()) {
+	for(const auto& controller : side->controller_options()){
 		controller_names.emplace_back("label", controller.second);
 	}
 
@@ -266,10 +266,10 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	std::vector<config> team_names;
 	unsigned initial_team_selection = 0;
 
-	for(unsigned i = 0; i < connect_engine_.team_data().size(); ++i) {
+	for(unsigned i = 0; i < connect_engine_.team_data().size(); ++i){
 		const ng::connect_engine::team_data_pod& tdata = connect_engine_.team_data()[i];
 
-		if(!tdata.is_player_team && !game_config::debug) {
+		if(!tdata.is_player_team && !game_config::debug){
 			continue;
 		}
 
@@ -286,7 +286,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 		// Since, again, every team might not be displayed, and side_engine::team() returns
 		// an index into the team_data vector, get an initial selection index for the menu
 		// adjusted for the displayed named.
-		if(side->team() == i) {
+		if(side->team() == i){
 			initial_team_selection = team_names.size() - 1;
 		}
 	}
@@ -304,12 +304,12 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	// Colors
 	//
 	std::vector<config> color_options;
-	for(const auto& color_opt : side->color_options()) {
+	for(const auto& color_opt : side->color_options()){
 		auto name = game_config::team_rgb_name.find(color_opt);
 		auto color = game_config::team_rgb_colors.find(color_opt);
 		auto team_color = _("Invalid Color");
 
-		if (name != game_config::team_rgb_name.end() && color != game_config::team_rgb_colors.end()) {
+		if(name != game_config::team_rgb_name.end() && color != game_config::team_rgb_colors.end()){
 			team_color = markup::span_color(color->second[0], name->second);
 		}
 
@@ -331,7 +331,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	//
 	// Gold and Income
 	//
-	const auto slider_setup_helper = [](slider& slider, const int value) {
+	const auto slider_setup_helper = [](slider& slider, const int value){
 		// For the gold and income sliders, the usual min and max values are set in
 		// the dialog WML. However, if a side specifies a value out of that range,
 		// we adjust the bounds to accommodate it.
@@ -356,7 +356,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 		&mp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
 
 	// TODO: maybe display the saved values
-	if(saved_game) {
+	if(saved_game){
 		slider_gold.set_visible(widget::visibility::invisible);
 		slider_income.set_visible(widget::visibility::invisible);
 	}
@@ -364,7 +364,7 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	//
 	// Gold, income, team, and color are only suggestions unless explicitly locked
 	//
-	if(!saved_game && ums) {
+	if(!saved_game && ums){
 		team_selection.set_active(!lock_team);
 		color_selection.set_active(!lock_color);
 
@@ -378,7 +378,7 @@ void mp_staging::on_controller_select(const ng::side_engine_ptr& side, grid& row
 	menu_button& ai_selection         = row_grid.find_widget<menu_button>("ai_controller");
 	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
-	if(side->controller_changed(controller_selection.get_value())) {
+	if(side->controller_changed(controller_selection.get_value())){
 		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::visibility::visible : widget::visibility::hidden);
 
 		set_state_changed();
@@ -390,11 +390,11 @@ void mp_staging::on_ai_select(const ng::side_engine_ptr& side, menu_button& ai_m
 	// If this is a saved game, we need to reduce the index by one, to account for
 	// the "Keep saved AI" option having been added to the computer player menu
 	int i = ai_menu.get_value();
-	if(saved_game) {
+	if(saved_game){
 		i--;
 	}
 
-	if(i < 0) {
+	if(i < 0){
 		side->set_ai_algorithm("use_saved");
 	} else {
 		side->set_ai_algorithm(ai_algorithms_[i]->id);
@@ -420,7 +420,7 @@ void mp_staging::on_team_select(const ng::side_engine_ptr& side, menu_button& te
 	// appropriate entry in the connect_engine's team name vector.
 	const unsigned team_index = team_menu.get_value_config()["team_index"].to_unsigned();
 
-	if(team_index == side->team()) {
+	if(team_index == side->team()){
 		return;
 	}
 
@@ -440,7 +440,7 @@ void mp_staging::on_team_select(const ng::side_engine_ptr& side, menu_button& te
 	tree_view_node* old_team_node = team_tree_map_[old_team];
 
 	// Last, remove the old team node if it's now empty
-	if(old_team_node->empty()) {
+	if(old_team_node->empty()){
 		// Decor node will be immediately after team node. Remove this first!
 		tree.remove_node(old_team_node->get_node_below());
 		tree.remove_node(old_team_node);
@@ -453,7 +453,7 @@ void mp_staging::on_team_select(const ng::side_engine_ptr& side, menu_button& te
 
 void mp_staging::select_leader_callback(const ng::side_engine_ptr& side, grid& row_grid)
 {
-	if(gui2::dialogs::faction_select::execute(side->flg(), side->color_id(), side->index() + 1)) {
+	if(gui2::dialogs::faction_select::execute(side->flg(), side->color_id(), side->index() + 1)){
 		update_leader_display(side, row_grid);
 
 		set_state_changed();
@@ -477,11 +477,11 @@ void mp_staging::update_leader_display(const ng::side_engine_ptr& side, grid& ro
 	// Sprite
 	std::string new_image;
 
-	if(side->flg().is_random_faction() || current_leader == "random") {
+	if(side->flg().is_random_faction() || current_leader == "random"){
 		new_image = ng::random_enemy_picture;
 	}
 
-	if(const unit_type* ut = unit_types.find(current_leader)) {
+	if(const unit_type* ut = unit_types.find(current_leader)){
 		const unit_type& type = ut->get_gender_unit_type(current_gender);
 
 		new_image = formatter() << type.image() << "~RC(magenta>" << side->color_id() << ")";
@@ -493,7 +493,7 @@ void mp_staging::update_leader_display(const ng::side_engine_ptr& side, grid& ro
 	row_grid.find_widget<drawing>("leader_image").set_label(new_image);
 
 	// Faction and leader
-	if(!side->cfg()["name"].empty()) {
+	if(!side->cfg()["name"].empty()){
 		current_leader = formatter() << side->cfg()["name"] << " (" << markup::italic(current_leader) << ")";
 	}
 
@@ -501,7 +501,7 @@ void mp_staging::update_leader_display(const ng::side_engine_ptr& side, grid& ro
 	row_grid.find_widget<label>("leader_faction").set_label(side->flg().current_faction()["name"]);
 
 	// Gender
-	if(current_gender != font::unicode_em_dash) {
+	if(current_gender != font::unicode_em_dash){
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
 		image& icon = row_grid.find_widget<image>("leader_gender");
@@ -523,13 +523,13 @@ void mp_staging::update_status_label_and_buttons()
 void mp_staging::network_handler()
 {
 	// First, send off any changes if they've been accumulated
-	if(state_changed_) {
+	if(state_changed_){
 		connect_engine_.update_and_send_diff();
 	}
 
 	// Next, check for any incoming changes
 	config data;
-	if(!state_changed_ && (!network_connection_ || !network_connection_->receive_data(data))) {
+	if(!state_changed_ && (!network_connection_ || !network_connection_->receive_data(data))){
 		return;
 	}
 
@@ -542,13 +542,13 @@ void mp_staging::network_handler()
 	bool quit_signal_received;
 	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
 
-	if(quit_signal_received) {
+	if(quit_signal_received){
 		set_retval(retval::CANCEL);
 	}
 
 	// Update side leader displays
 	// This is basically only needed when a new player joins and selects their faction
-	for(auto& tree_entry : side_tree_map_) {
+	for(auto& tree_entry : side_tree_map_){
 		ng::side_engine_ptr side = tree_entry.first;
 
 		grid& row_grid = tree_entry.second->get_grid();
@@ -556,7 +556,7 @@ void mp_staging::network_handler()
 		update_leader_display(side, row_grid);
 
 		std::vector<config> controller_names;
-		for(const auto& controller : side->controller_options()) {
+		for(const auto& controller : side->controller_options()){
 			controller_names.emplace_back("label", controller.second);
 		}
 
@@ -567,14 +567,14 @@ void mp_staging::network_handler()
 	}
 
 	// Update player list
-	if(data.has_child("user")) {
+	if(data.has_child("user")){
 		player_list_->update_list(data.child_range("user"));
 	}
 
 	// Update status label and buttons
 	update_status_label_and_buttons();
 
-	if(!was_able_to_start && connect_engine_.can_start_game()) {
+	if(!was_able_to_start && connect_engine_.can_start_game()){
 		mp::ui_alerts::ready_for_start();
 	}
 
@@ -583,12 +583,12 @@ void mp_staging::network_handler()
 
 void mp_staging::post_show()
 {
-	if(update_timer_ != 0) {
+	if(update_timer_ != 0){
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
 
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		connect_engine_.start_game();
 	} else {
 		connect_engine_.leave_game();

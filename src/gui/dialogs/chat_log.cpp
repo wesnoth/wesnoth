@@ -97,7 +97,7 @@ public:
 					int last,
 					bool raw = false)
 	{
-		if(first >= last) {
+		if(first >= last){
 			return;
 		}
 
@@ -110,12 +110,12 @@ public:
 			const std::string& timestamp
 					= prefs::get().get_chat_timestamp(t.time());
 
-			if(!lcfilter.empty()) {
+			if(!lcfilter.empty()){
 				const std::string& lcsample = utf8::lowercase(timestamp)
 											  + utf8::lowercase(t.nick())
 											  + utf8::lowercase(t.text());
 
-				if(lcsample.find(lcfilter) == std::string::npos) {
+				if(lcsample.find(lcfilter) == std::string::npos){
 					continue;
 				}
 			}
@@ -126,7 +126,7 @@ public:
 
 			std::string nick_prefix, nick_suffix;
 
-			if(!raw) {
+			if(!raw){
 				nick_prefix = "<span color=\"" + t.color() + "\">";
 				nick_suffix = "</span> ";
 			} else {
@@ -145,7 +145,7 @@ public:
 
 			s << nick_prefix << lbracket;
 
-			if(raw) {
+			if(raw){
 				s << timestamp
 				  << t.nick();
 			} else {
@@ -153,8 +153,8 @@ public:
 				  << font::escape_text(t.nick());
 			}
 
-			if(is_me) {
-				if(!raw) {
+			if(is_me){
+				if(!raw){
 					s << font::escape_text(t.text().substr(3));
 				} else {
 					s << t.text().substr(3);
@@ -163,7 +163,7 @@ public:
 			} else {
 				// <[TS] nick> message text here
 				s << rbracket << nick_suffix;
-				if(!raw) {
+				if(!raw){
 					s << font::escape_text(t.text());
 				} else {
 					s << t.text();
@@ -211,7 +211,7 @@ public:
 	void next_page()
 	{
 		LOG_CHAT_LOG << "Entering chat_log::controller::next_page";
-		if(model_.page >= model_.count_of_pages() - 1) {
+		if(model_.page >= model_.count_of_pages() - 1){
 			return;
 		}
 		model_.page++;
@@ -223,7 +223,7 @@ public:
 	void previous_page()
 	{
 		LOG_CHAT_LOG << "Entering chat_log::controller::previous_page";
-		if(model_.page == 0) {
+		if(model_.page == 0){
 			return;
 		}
 		model_.page--;
@@ -279,7 +279,7 @@ public:
 		LOG_CHAT_LOG << "Number of chat messages: " << size;
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
-		if(select_last_page) {
+		if(select_last_page){
 			model_.page = count_of_pages - 1;
 		}
 		// get page
@@ -380,7 +380,7 @@ public:
 				std::bind(&view::next_page, this));
 
 		model_.filter = window.find_widget<text_box>("filter", false, true);
-		model_.filter->on_modified([this](const auto&) { filter(); });
+		model_.filter->on_modified([this](const auto&){ filter(); });
 		window.keyboard_capture(model_.filter);
 
 		model_.copy_button = window.find_widget<button>("copy", false, true);

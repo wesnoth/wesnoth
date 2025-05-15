@@ -23,7 +23,7 @@ namespace editor {
 std::set<map_location> mouse_action_select::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
-	if (has_shift_modifier()) {
+	if(has_shift_modifier()){
 		return disp.get_map().get_contiguous_terrain_tiles(hex);
 	} else {
 		return brush_drag_mouse_action::affected_hexes(disp, hex);
@@ -42,7 +42,7 @@ std::unique_ptr<editor_action> mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	auto chain = std::make_unique<editor_action_chain>();
-	if (has_ctrl_modifier())
+	if(has_ctrl_modifier())
 		chain->append_action(std::make_unique<editor_action_deselect>(hexes));
 	else
 		chain->append_action(std::make_unique<editor_action_select>(hexes));
@@ -63,7 +63,7 @@ std::unique_ptr<editor_action> mouse_action_select::click_right(editor_display& 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)
 {
 	texture tex;
-	if (has_shift_modifier()) {
+	if(has_shift_modifier()){
 		tex = image::get_texture(image::locator{"editor/tool-overlay-select-wand.png"});
 	} else {
 		tex = image::get_texture(image::locator{"editor/tool-overlay-select-brush.png"});

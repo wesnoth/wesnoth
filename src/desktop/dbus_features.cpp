@@ -85,7 +85,7 @@ wnotify_set notifications;
 
 DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 {
-	if (!dbus_message_is_signal(buf, "org.freedesktop.Notifications", "NotificationClosed")) {
+	if(!dbus_message_is_signal(buf, "org.freedesktop.Notifications", "NotificationClosed")){
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 	}
 
@@ -105,26 +105,26 @@ DBusConnection *get_dbus_session_bus()
 	static bool initted = false;
 	static DBusConnection *connection = nullptr;
 
-	if (!initted)
+	if(!initted)
 	{
 		initted = true;
-		if (getenv("KDE_SESSION_VERSION")) {
+		if(getenv("KDE_SESSION_VERSION")){
 			// This variable is defined for KDE 4 only.
 			kde_style = true;
 		}
 		DBusError err;
 		dbus_error_init(&err);
 		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
-		if (!connection) {
+		if(!connection){
 			ERR_DU << "Failed to open DBus session: " << err.message;
 			dbus_error_free(&err);
 			return nullptr;
 		}
 		dbus_connection_add_filter(connection, filter_dbus_signal, nullptr, nullptr);
 	}
-	if (connection) {
+	if(connection){
 		dbus_connection_read_write(connection, 0);
-		while (dbus_connection_dispatch(connection) == DBUS_DISPATCH_DATA_REMAINS) {}
+		while(dbus_connection_dispatch(connection) == DBUS_DISPATCH_DATA_REMAINS){}
 	}
 	return connection;
 }
@@ -133,7 +133,7 @@ DBusConnection *get_dbus_system_bus()
 {
 	static DBusConnection *connection = nullptr;
 
-	if (connection == nullptr)
+	if(connection == nullptr)
 	{
 		DBusError err;
 		dbus_error_init(&err);
@@ -157,7 +157,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 		DBUS_TYPE_STRING, &app_name,
 		DBUS_TYPE_UINT32, &replaces_id,
 		DBUS_TYPE_INVALID);
-	if (kde_style) {
+	if(kde_style){
 		const char *event_id = "";
 		dbus_message_append_args(buf,
 			DBUS_TYPE_STRING, &event_id,
@@ -165,7 +165,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	}
 
 	std::string app_icon_ = filesystem::normalize_path(game_config::path + "/" + game_config::images::app_icon);
-	if (!filesystem::file_exists(app_icon_)) {
+	if(!filesystem::file_exists(app_icon_)){
 		ERR_DU << "Error: Could not find notification icon.";
 		ERR_DU << "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'";
 		ERR_DU << "normalized path =\'" << app_icon_ << "\'";
@@ -195,10 +195,10 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	dbus_error_init(&err);
 	DBusMessage *ret = dbus_connection_send_with_reply_and_block(connection, buf, 1000, &err);
 	dbus_message_unref(buf);
-	if (!ret) {
+	if(!ret){
 		ERR_DU << "Failed to send visual notification: " << err.message;
 		dbus_error_free(&err);
-		if (kde_style) {
+		if(kde_style){
 			ERR_DU << " Retrying with the freedesktop protocol.";
 			kde_style = false;
 			return send_dbus_notification(connection, replaces_id, owner, message);
@@ -211,7 +211,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 		DBUS_TYPE_INVALID);
 	dbus_message_unref(ret);
 	// TODO: remove once closing signals for KDE are handled in filter_dbus_signal.
-	if (kde_style) return 0;
+	if(kde_style) return 0;
 	return id;
 }
 
@@ -219,7 +219,7 @@ template<typename T>
 T get_power_source_property(const std::string &name, T fallback)
 {
 	DBusConnection *connection = get_dbus_system_bus();
-	if (!connection) return fallback;
+	if(!connection) return fallback;
 
 	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> msg(dbus_message_new_method_call(
 			"org.freedesktop.UPower",
@@ -240,7 +240,7 @@ T get_power_source_property(const std::string &name, T fallback)
 
 	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> ret(dbus_connection_send_with_reply_and_block(
 		connection, msg.get(), 1000, &err), dbus_message_unref);
-	if (ret == nullptr) {
+	if(ret == nullptr){
 		DBG_DU << "Failed to query power source properties: " << err.message;
 		dbus_error_free(&err);
 		return fallback;
@@ -266,20 +266,20 @@ const std::size_t MAX_MSG_LINES = 5;
 void send_notification(const std::string & owner, const std::string & message, bool with_history)
 {
 	DBusConnection *connection = get_dbus_session_bus();
-	if (!connection) return;
+	if(!connection) return;
 
 	wnotify_by_owner & noticias = notifications.get<by_owner>();
 
 	wnotify_owner_it i = noticias.find(owner);
 
-	if (i != noticias.end()) {
-		if (with_history) {
+	if(i != noticias.end()){
+		if(with_history){
 			i->message = message + "\n" + i->message;
 
 			std::size_t endl_pos = i->message.find('\n');
 			std::size_t ctr = 1;
 
-			while (ctr < MAX_MSG_LINES && endl_pos != std::string::npos) {
+			while(ctr < MAX_MSG_LINES && endl_pos != std::string::npos){
 				endl_pos = i->message.find('\n', endl_pos+1);
 				ctr++;
 			}
@@ -293,10 +293,10 @@ void send_notification(const std::string & owner, const std::string & message, b
 		return;
 	} else {
 		uint32_t id = send_dbus_notification(connection, 0, owner, message);
-		if (!id) return;
+		if(!id) return;
 		wnotify visual(id,owner,message);
 		std::pair<wnotify_owner_it, bool> result = noticias.insert(visual);
-		if (!result.second) {
+		if(!result.second){
 			ERR_DU << "Failed to insert a dbus notification message:";
 			ERR_DU << "New Item:\n" << "\tid=" << id << "\n\towner=" << owner << "\n\tmessage=" << message;
 			ERR_DU << "Old Item:\n" << "\tid=" << result.first->id << "\n\towner=" << result.first->owner << "\n\tmessage=" << result.first->message;

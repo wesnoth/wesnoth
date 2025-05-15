@@ -118,14 +118,14 @@ config parser::operator()()
 	config res;
 	elements.emplace(&res, "");
 
-	if(validator_) {
+	if(validator_){
 		validator_->open_tag("", res, tok_.get_start_line(), tok_.get_file());
 	}
 
 	do {
 		tok_.next_token();
 
-		switch(tok_.current_token().type) {
+		switch(tok_.current_token().type){
 		case token::NEWLINE:
 			continue;
 
@@ -141,7 +141,7 @@ config parser::operator()()
 			if(static_cast<unsigned char>(tok_.current_token().value[0]) == 0xEF &&
 			   static_cast<unsigned char>(tok_.next_token().value[0])    == 0xBB &&
 			   static_cast<unsigned char>(tok_.next_token().value[0])    == 0xBF
-			) {
+			){
 				utils::string_map i18n_symbols;
 				std::stringstream ss;
 				ss << tok_.get_start_line() << " " << tok_.get_file();
@@ -160,13 +160,13 @@ config parser::operator()()
 	// The main element should be there. If it is not, this is a parser error.
 	assert(!elements.empty());
 
-	if(validator_) {
+	if(validator_){
 		element& el = elements.top();
 		validator_->validate(*el.cfg, el.name, el.start_line, el.file);
 		validator_->close_tag();
 	}
 
-	if(elements.size() != 1) {
+	if(elements.size() != 1){
 		utils::string_map i18n_symbols;
 		i18n_symbols["tag"] = elements.top().name;
 
@@ -191,11 +191,11 @@ void parser::parse_element()
 	config* current_element = nullptr;
 	config* parent = nullptr;
 
-	switch(tok_.current_token().type) {
+	switch(tok_.current_token().type){
 	case token::STRING: // [element]
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != token::CLOSE_BRACKET) {
+		if(tok_.next_token().type != token::CLOSE_BRACKET){
 			error(_("Unterminated [element] tag"));
 		}
 
@@ -204,35 +204,35 @@ void parser::parse_element()
 		current_element = &(parent->add_child(elname));
 		elements.emplace(current_element, elname, tok_.get_start_line(), tok_.get_file());
 
-		if(validator_) {
+		if(validator_){
 			validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file());
 		}
 
 		break;
 
 	case token::PLUS: // [+element]
-		if(tok_.next_token().type != token::STRING) {
+		if(tok_.next_token().type != token::STRING){
 			error(_("Invalid tag name"));
 		}
 
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != token::CLOSE_BRACKET) {
+		if(tok_.next_token().type != token::CLOSE_BRACKET){
 			error(_("Unterminated [+element] tag"));
 		}
 
 		// Find the last child of the current element whose name is element
 		parent = elements.top().cfg;
-		if(auto c = parent->optional_child(elname, -1)) {
+		if(auto c = parent->optional_child(elname, -1)){
 			current_element = c.ptr();
 
-			if(validator_) {
+			if(validator_){
 				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file(), true);
 			}
 		} else {
 			current_element = &parent->add_child(elname);
 
-			if(validator_) {
+			if(validator_){
 				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file());
 			}
 		}
@@ -241,21 +241,21 @@ void parser::parse_element()
 		break;
 
 	case token::SLASH: // [/element]
-		if(tok_.next_token().type != token::STRING) {
+		if(tok_.next_token().type != token::STRING){
 			error(_("Invalid closing tag name"));
 		}
 
 		elname = tok_.current_token().value;
 
-		if(tok_.next_token().type != token::CLOSE_BRACKET) {
+		if(tok_.next_token().type != token::CLOSE_BRACKET){
 			error(_("Unterminated closing tag"));
 		}
 
-		if(elements.size() <= 1) {
+		if(elements.size() <= 1){
 			error(_("Unexpected closing tag"));
 		}
 
-		if(elname != elements.top().name) {
+		if(elname != elements.top().name){
 			utils::string_map i18n_symbols;
 			i18n_symbols["tag1"] = elements.top().name;
 			i18n_symbols["tag2"] = elname;
@@ -270,7 +270,7 @@ void parser::parse_element()
 			);
 		}
 
-		if(validator_) {
+		if(validator_){
 			element& el = elements.top();
 			validator_->validate(*el.cfg, el.name, el.start_line, el.file);
 			validator_->close_tag();
@@ -290,10 +290,10 @@ void parser::parse_variable()
 	std::vector<std::string> variables;
 	variables.emplace_back();
 
-	while(tok_.current_token().type != token::EQUALS) {
-		switch(tok_.current_token().type) {
+	while(tok_.current_token().type != token::EQUALS){
+		switch(tok_.current_token().type){
 		case token::STRING:
-			if(!variables.back().empty()) {
+			if(!variables.back().empty()){
 				variables.back() += ' ';
 			}
 
@@ -301,7 +301,7 @@ void parser::parse_variable()
 			break;
 
 		case token::COMMA:
-			if(variables.back().empty()) {
+			if(variables.back().empty()){
 				error(_("Empty variable name"));
 			} else {
 				variables.emplace_back();
@@ -317,7 +317,7 @@ void parser::parse_variable()
 		tok_.next_token();
 	}
 
-	if(variables.back().empty()) {
+	if(variables.back().empty()){
 		error(_("Empty variable name"));
 	}
 
@@ -327,20 +327,20 @@ void parser::parse_variable()
 
 	bool ignore_next_newlines = false, previous_string = false;
 
-	while(true) {
+	while(true){
 		tok_.next_token();
 		assert(curvar != variables.end());
 
-		switch(tok_.current_token().type) {
+		switch(tok_.current_token().type){
 		case token::COMMA:
-			if((curvar + 1) != variables.end()) {
-				if(buffer.translatable()) {
+			if((curvar + 1) != variables.end()){
+				if(buffer.translatable()){
 					cfg[*curvar] = t_string(buffer);
 				} else {
 					cfg[*curvar] = buffer.value();
 				}
 
-				if(validator_) {
+				if(validator_){
 					validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 				}
 
@@ -355,7 +355,7 @@ void parser::parse_variable()
 		case token::UNDERSCORE:
 			tok_.next_token();
 
-			switch(tok_.current_token().type) {
+			switch(tok_.current_token().type){
 			case token::UNTERMINATED_QSTRING:
 				error(_("Unterminated quoted string"));
 				break;
@@ -382,7 +382,7 @@ void parser::parse_variable()
 			continue;
 
 		case token::STRING:
-			if(previous_string) {
+			if(previous_string){
 				buffer += " ";
 			}
 
@@ -401,7 +401,7 @@ void parser::parse_variable()
 			break;
 
 		case token::NEWLINE:
-			if(ignore_next_newlines) {
+			if(ignore_next_newlines){
 				continue;
 			}
 
@@ -417,17 +417,17 @@ void parser::parse_variable()
 
 finish:
 
-	if(buffer.translatable()) {
+	if(buffer.translatable()){
 		cfg[*curvar] = t_string(buffer);
 	} else {
 		cfg[*curvar] = buffer.value();
 	}
 
-	if(validator_) {
+	if(validator_){
 		validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 	}
 
-	while(++curvar != variables.end()) {
+	while(++curvar != variables.end()){
 		cfg[*curvar] = "";
 	}
 }
@@ -444,15 +444,15 @@ std::string parser::lineno_string(utils::string_map& i18n_symbols,
 	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = error_string;
 
-	if(!hint_string.empty()) {
+	if(!hint_string.empty()){
 		result += '\n' + hint_string;
 	}
 
-	if(!debug_string.empty()) {
+	if(!debug_string.empty()){
 		result += '\n' + debug_string;
 	}
 
-	for(utils::string_map::value_type& var : i18n_symbols) {
+	for(utils::string_map::value_type& var : i18n_symbols){
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	}
 
@@ -463,7 +463,7 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 {
 	std::string hint_string = pos_format;
 
-	if(hint_string.empty()) {
+	if(hint_string.empty()){
 		hint_string = _("at $pos");
 	}
 
@@ -509,7 +509,7 @@ public:
 	void operator()(const T& v) const
 	{
 		indent();
-		if constexpr(std::is_arithmetic_v<T>) {
+		if constexpr(std::is_arithmetic_v<T>){
 			// for number values, this has to use the same method as in from_string_verify
 			auto buf = utils::charconv_buffer(v);
 			out_ << key_ << '=' << buf.get_view() << '\n';
@@ -538,7 +538,7 @@ public:
 private:
 	void indent() const
 	{
-		for(unsigned i = 0; i < level_; ++i) {
+		for(unsigned i = 0; i < level_; ++i){
 			out_ << '\t';
 		}
 	}
@@ -561,25 +561,25 @@ void write_key_val_visitor::operator()(const t_string& value) const
 {
 	bool first = true;
 
-	for(t_string::walker w(value); !w.eos(); w.next()) {
-		if(!first) {
+	for(t_string::walker w(value); !w.eos(); w.next()){
+		if(!first){
 			out_ << " +\n";
 		}
 
-		if(w.translatable() && w.textdomain() != textdomain_) {
+		if(w.translatable() && w.textdomain() != textdomain_){
 			textdomain_ = w.textdomain();
 			out_ << "#textdomain " << textdomain_ << '\n';
 		}
 
 		indent();
 
-		if(first) {
+		if(first){
 			out_ << key_ << '=';
 		} else {
 			out_ << '\t';
 		}
 
-		if(w.translatable()) {
+		if(w.translatable()){
 			out_ << '_';
 		}
 
@@ -612,7 +612,7 @@ template<typename Decompressor>
 config read_compressed(std::istream& file, abstract_validator* validator)
 {
 	// An empty gzip file seems to confuse boost on MSVC, so return early if this is the case.
-	if(file.peek() == EOF) {
+	if(file.peek() == EOF){
 		return {};
 	}
 
@@ -639,12 +639,12 @@ config read_compressed(std::istream& file, abstract_validator* validator)
 	 * We never create empty compressed gzip files because boosts gzip fails at doing that, but
 	 * empty compressed bz2 files are possible.
 	 */
-	if(filter.peek() == EOF) {
+	if(filter.peek() == EOF){
 		LOG_CF << "Empty compressed file or error at reading a compressed file.";
 		return {};
 	}
 
-	if(!filter.good()) {
+	if(!filter.good()){
 		LOG_CF << " filter.peek() != EOF but !filter.good()."
 		       << "This indicates a malformed gz stream and can make Wesnoth crash.";
 	}
@@ -685,12 +685,12 @@ void write_close_child(std::ostream& out, const std::string& child, unsigned int
 
 static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
 {
-	if(tab > max_recursion_levels) {
+	if(tab > max_recursion_levels){
 		throw config::error("Too many recursion levels in config write");
 	}
 
-	for(const auto& [key, value] : cfg.attribute_range()) {
-		if(!config::valid_attribute(key)) {
+	for(const auto& [key, value] : cfg.attribute_range()){
+		if(!config::valid_attribute(key)){
 			ERR_CF << "Config contains invalid attribute name '" << key << "', skipping...";
 			continue;
 		}
@@ -698,8 +698,8 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		write_key_val(out, key, value, tab, textdomain);
 	}
 
-	for(const auto [key, item_cfg] : cfg.all_children_view()) {
-		if(!config::valid_tag(key)) {
+	for(const auto [key, item_cfg] : cfg.all_children_view()){
+		if(!config::valid_tag(key)){
 			ERR_CF << "Config contains invalid tag name '" << key << "', skipping...";
 			continue;
 		}
@@ -712,18 +712,18 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 
 static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
 {
-	if(tab > max_recursion_levels) {
+	if(tab > max_recursion_levels){
 		throw config::error("Too many recursion levels in config write");
 	}
 
-	if(cfg.data_) {
+	if(cfg.data_){
 		write_internal(*cfg.data_, out, textdomain, tab);
 	}
 
-	for(const auto& pair : cfg.subtags_) {
+	for(const auto& pair : cfg.subtags_){
 		assert(pair.first && pair.second);
 
-		if(!config::valid_tag(*pair.first)) {
+		if(!config::valid_tag(*pair.first)){
 			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...";
 			continue;
 		}

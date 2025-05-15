@@ -34,13 +34,13 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 {
 	register_label("login_label", false, label);
 	username_ = register_text("user_name", true,
-		[]() {return prefs::get().login();},
-		[](const std::string& v) {prefs::get().set_login(v);},
+		[](){return prefs::get().login();},
+		[](const std::string& v){prefs::get().set_login(v);},
 		!focus_password);
 
 	register_bool("remember_password", false,
-		[]() {return prefs::get().remember_password();},
-		[](bool v) {prefs::get().set_remember_password(v);});
+		[](){return prefs::get().remember_password();},
+		[](bool v){prefs::get().set_remember_password(v);});
 }
 
 void mp_login::load_password()
@@ -62,7 +62,7 @@ void mp_login::pre_show()
 
 	load_password();
 
-	if(focus_password_) {
+	if(focus_password_){
 		keyboard_capture(find_widget<text_box>("password", false, true));
 	}
 
@@ -70,8 +70,8 @@ void mp_login::pre_show()
 	add_to_tab_order(find_widget<text_box>("password", false, true));
 }
 
-void mp_login::post_show() {
-	if(get_retval() == retval::OK) {
+void mp_login::post_show(){
+	if(get_retval() == retval::OK){
 		save_password();
 	}
 }

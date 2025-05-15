@@ -25,7 +25,7 @@
 
 static void add_prefixes(const std::u32string& str, std::size_t length, markov_prefix_map& res)
 {
-	for(std::size_t i = 0; i <= str.size(); ++i) {
+	for(std::size_t i = 0; i <= str.size(); ++i){
 		const std::size_t start = i > length ? i - length : 0;
 		const std::u32string key(str.begin() + start, str.begin() + i);
 		const char32_t c = i != str.size() ? str[i] : 0;
@@ -37,7 +37,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 {
 	markov_prefix_map res;
 
-	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
+	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i){
 		add_prefixes(unicode_cast<std::u32string>(*i),length,res);
 	}
 
@@ -47,7 +47,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 	std::size_t chain_size, std::size_t max_len)
 {
-	if(prefixes.empty() || chain_size == 0) {
+	if(prefixes.empty() || chain_size == 0){
 		return std::u32string();
 	}
 
@@ -65,19 +65,19 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 	// the maximum number of times and store the result in a lookup table.
 	std::vector<int> random(max_len);
 	std::size_t j = 0;
-	for(; j < max_len; ++j) {
+	for(; j < max_len; ++j){
 		random[j] = randomness::generator->next_random();
 	}
 
 	j = 0;
-	while(res.size() < max_len) {
+	while(res.size() < max_len){
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
-		if(i == prefixes.end() || i->second.empty()) {
+		if(i == prefixes.end() || i->second.empty()){
 			return res;
 		}
 
 		const char32_t c = i->second[random[j++]%i->second.size()];
-		if(c == 0) {
+		if(c == 0){
 			return res;
 		}
 
@@ -85,7 +85,7 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 		res.back() = c;
 		prefix.resize(prefix.size()+1);
 		prefix.back() = c;
-		while(prefix.size() > chain_size) {
+		while(prefix.size() > chain_size){
 			prefix.erase(prefix.begin());
 		}
 	}
@@ -100,16 +100,16 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 	// markov prefix map. If no valid ending is found, use the
 	// originally generated name.
 	std::u32string originalRes = res;
-	while(!res.empty()) {
+	while(!res.empty()){
 		const int prefixLen = chain_size < res.size() ? chain_size : res.size();
 		prefix = std::u32string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
-		if (i == prefixes.end() || i->second.empty()) {
+		if(i == prefixes.end() || i->second.empty()){
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<char32_t>(0))
-				!= i->second.end()) {
+		if(std::find(i->second.begin(), i->second.end(), static_cast<char32_t>(0))
+				!= i->second.end()){
 			// This ending is valid.
 			return res;
 		}

@@ -81,13 +81,13 @@ widget::~widget()
 	<< " (id: " << id_ << ')';
 
 	widget* p = parent();
-	while(p) {
+	while(p){
 		fire(event::NOTIFY_REMOVAL, *p, nullptr);
 		p = p->parent();
 	}
 
-	if(!linked_group_.empty()) {
-		if(window* window = get_window()) {
+	if(!linked_group_.empty()){
+		if(window* window = get_window()){
 			window->remove_linked_widget(linked_group_, this);
 		}
 	}
@@ -120,7 +120,7 @@ window* widget::get_window()
 	// parent, we can also be the toplevel so start with
 	// ourselves instead of our parent.
 	widget* result = this;
-	while(result->parent_) {
+	while(result->parent_){
 		result = result->parent_;
 	}
 
@@ -134,7 +134,7 @@ const window* widget::get_window() const
 	// parent, we can also be the toplevel so start with
 	// ourselves instead of our parent.
 	const widget* result = this;
-	while(result->parent_) {
+	while(result->parent_){
 		result = result->parent_;
 	}
 
@@ -145,7 +145,7 @@ const window* widget::get_window() const
 grid* widget::get_parent_grid()
 {
 	widget* result = parent_;
-	while(result && dynamic_cast<grid*>(result) == nullptr) {
+	while(result && dynamic_cast<grid*>(result) == nullptr){
 		result = result->parent_;
 	}
 
@@ -155,7 +155,7 @@ grid* widget::get_parent_grid()
 const grid* widget::get_parent_grid() const
 {
 	const widget* result = parent_;
-	while(result && dynamic_cast<const grid*>(result) == nullptr) {
+	while(result && dynamic_cast<const grid*>(result) == nullptr){
 		result = result->parent_;
 	}
 
@@ -180,7 +180,7 @@ void widget::layout_initialize(const bool /*full_initialization*/)
 	assert(get_window());
 
 	layout_size_ = point();
-	if(!linked_group_.empty()) {
+	if(!linked_group_.empty()){
 		get_window()->add_linked_widget(linked_group_, this);
 	}
 }
@@ -205,10 +205,10 @@ point widget::get_best_size() const
 	assert(visible_ != visibility::invisible);
 
 	point result = layout_size_;
-	if(result == point()) {
+	if(result == point()){
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
-		if (get_window() && !get_window()->get_need_layout() && !linked_group_.empty()) {
+		if(get_window() && !get_window()->get_need_layout() && !linked_group_.empty()){
 				point linked_size = get_window()->get_linked_size(linked_group_);
 				result.x = std::max(result.x, linked_size.x);
 				result.y = std::max(result.y, linked_size.y);
@@ -280,7 +280,7 @@ void widget::move(const int x_offset, const int y_offset)
 void widget::set_horizontal_alignment(const std::string& alignment)
 {
 	grid* parent_grid = get_parent_grid();
-	if(!parent_grid) {
+	if(!parent_grid){
 		return;
 	}
 
@@ -293,7 +293,7 @@ void widget::set_horizontal_alignment(const std::string& alignment)
 void widget::set_vertical_alignment(const std::string& alignment)
 {
 	grid* parent_grid = get_parent_grid();
-	if(!parent_grid) {
+	if(!parent_grid){
 		return;
 	}
 
@@ -367,7 +367,7 @@ SDL_Rect widget::calculate_blitting_rectangle() const
 
 SDL_Rect widget::calculate_clipping_rectangle() const
 {
-	switch(get_drawing_action()) {
+	switch(get_drawing_action()){
 	case redraw_action::none:
 		return sdl::empty_rect;
 	case redraw_action::partly:
@@ -382,7 +382,7 @@ bool widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
 
-	if(get_drawing_action() == redraw_action::none) {
+	if(get_drawing_action() == redraw_action::none){
 		return true;
 	}
 
@@ -403,7 +403,7 @@ void widget::draw_children()
 {
 	assert(visible_ == visibility::visible);
 
-	if(get_drawing_action() == redraw_action::none) {
+	if(get_drawing_action() == redraw_action::none){
 		return;
 	}
 
@@ -424,7 +424,7 @@ bool widget::draw_foreground()
 {
 	assert(visible_ == visibility::visible);
 
-	if(get_drawing_action() == redraw_action::none) {
+	if(get_drawing_action() == redraw_action::none){
 		return true;
 	}
 
@@ -452,9 +452,9 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	clipping_rectangle_ = get_rectangle().intersect(rectangle);
 
-	if(clipping_rectangle_ == get_rectangle()) {
+	if(clipping_rectangle_ == get_rectangle()){
 		redraw_action_ = redraw_action::full;
-	} else if(clipping_rectangle_.empty()) {
+	} else if(clipping_rectangle_.empty()){
 		redraw_action_ = redraw_action::none;
 	} else {
 		redraw_action_ = redraw_action::partly;
@@ -463,7 +463,7 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 
 void widget::queue_redraw()
 {
-	if (!width_ && !height_) {
+	if(!width_ && !height_){
 		// Do nothing if the widget hasn't yet been placed.
 		return;
 	}
@@ -478,7 +478,7 @@ void widget::queue_redraw(const rect& region)
 
 void widget::set_visible(const visibility visible)
 {
-	if(visible == visible_) {
+	if(visible == visible_){
 		return;
 	}
 
@@ -488,13 +488,13 @@ void widget::set_visible(const visibility visible)
 		|| (visible == visibility::invisible && get_size() != point());
 	visible_ = visible;
 
-	if(need_resize) {
-		if(visible == visibility::visible && new_widgets) {
+	if(need_resize){
+		if(visible == visibility::visible && new_widgets){
 			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {
 			window* window = get_window();
-			if(window) {
+			if(window){
 				window->invalidate_layout();
 			}
 		}
@@ -526,7 +526,7 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 
 void widget::draw_debug_border()
 {
-	switch(debug_border_mode_) {
+	switch(debug_border_mode_){
 		case debug_border::none:
 			/* DO NOTHING */
 			break;
@@ -579,9 +579,9 @@ bool widget::is_at(const point& coordinate) const
 
 bool widget::recursive_is_visible(const widget* widget, const bool must_be_active) const
 {
-	while(widget) {
+	while(widget){
 		if(widget->visible_ == visibility::invisible
-		   || (widget->visible_ == visibility::hidden && must_be_active)) {
+		   || (widget->visible_ == visibility::hidden && must_be_active)){
 			return false;
 		}
 
@@ -593,7 +593,7 @@ bool widget::recursive_is_visible(const widget* widget, const bool must_be_activ
 
 bool widget::is_at(const point& coordinate, const bool must_be_active) const
 {
-	if(!recursive_is_visible(this, must_be_active)) {
+	if(!recursive_is_visible(this, must_be_active)){
 		return false;
 	}
 

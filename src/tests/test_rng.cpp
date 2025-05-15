@@ -22,24 +22,24 @@
 #include <sstream>
 #include <iomanip>
 
-BOOST_AUTO_TEST_SUITE( rng )
+BOOST_AUTO_TEST_SUITE(rng)
 
 /* this test adapted from validation routine at
    http://www.boost.org/doc/libs/1_38_0/libs/random/random_test.cpp
 */
-BOOST_AUTO_TEST_CASE( validate_mt19937 )
+BOOST_AUTO_TEST_CASE(validate_mt19937)
 {
 	std::mt19937 rng;
-	for (int i = 0; i < 9999 ; i++) {
+	for(int i = 0; i < 9999 ; i++){
 		// silence C4834 warning in MSVC
 		static_cast<void>(rng());
 	}
 	unsigned long val = rng();
-	BOOST_CHECK_EQUAL( val , 4123659995U );
+	BOOST_CHECK_EQUAL(val , 4123659995U);
 }
 
 /* this test checks the soundness of mt_rng string manipulations */
-BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
+BOOST_AUTO_TEST_CASE(test_mt_rng_seed_manip)
 {
 	uint32_t seed = 42;
 	std::stringstream stream;
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
+BOOST_AUTO_TEST_CASE(test_mt_rng_config_seed_manip)
 {
 	uint32_t seed = 42;
 	std::stringstream stream;
@@ -131,7 +131,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	BOOST_CHECK (seed_str != seed_str3);
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility)
 {
 	config cfg;
 	cfg["random_seed"] = "5eedf00d";
@@ -141,12 +141,12 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility )
 	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
-	for (int i = 0; i < 10 ; i++) {
+	for(int i = 0; i < 10 ; i++){
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
 	}
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility2)
 {
 	config cfg;
 	cfg["random_seed"] = "18da5eed";
@@ -156,12 +156,12 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
 	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
-	for (int i = 0; i < 10 ; i++) {
+	for(int i = 0; i < 10 ; i++){
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
 	}
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility3)
 {
 	randomness::mt_rng rng1;
 	config cfg;
@@ -171,16 +171,16 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
 	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
-	for (int i = 0; i < 10 ; i++) {
+	for(int i = 0; i < 10 ; i++){
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
 	}
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility4)
 {
 	randomness::mt_rng rng1;
 
-	for (int i = 0; i < 5; i++) {
+	for(int i = 0; i < 5; i++){
 		rng1.get_next_random();
 	}
 
@@ -194,7 +194,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
 	BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility5)
 {
 	config cfg;
 	cfg["random_seed"] = "5eedc0de";
@@ -202,7 +202,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 
 	randomness::mt_rng rng(cfg);
 
-	for (int i = 0; i < 9999 ; i++) {
+	for(int i = 0; i < 9999 ; i++){
 		rng.get_next_random();
 	}
 
@@ -245,7 +245,7 @@ void validate_seed_string(const std::string& seed_str)
 
 	randomness::mt_rng rng1(cfg);
 
-	for (int i = 0; i < 9999 ; i++) {
+	for(int i = 0; i < 9999 ; i++){
 		rng1.get_next_random();
 	}
 
@@ -255,7 +255,7 @@ void validate_seed_string(const std::string& seed_str)
 
 	randomness::mt_rng rng2(cfg2);
 
-	for (int i = 0; i < 9999 ; i++) {
+	for(int i = 0; i < 9999 ; i++){
 		rng1.get_next_random();
 		rng2.get_next_random();
 	}
@@ -267,7 +267,7 @@ void validate_seed_string(const std::string& seed_str)
 
 }
 
-BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility_coverage )
+BOOST_AUTO_TEST_CASE(test_mt_rng_reproducibility_coverage)
 {
 	validate_seed_string("0000badd");
 	validate_seed_string("00001234");
@@ -303,7 +303,7 @@ std::string validate_get_random_int_seed_generator()
  *  and validate_mt19937 passes, then it suggests that the implementation
  *  of get_random_int may not be working properly on your platform.
  */
-BOOST_AUTO_TEST_CASE( validate_get_random_int )
+BOOST_AUTO_TEST_CASE(validate_get_random_int)
 {
 	config cfg;
 	cfg["random_seed"] = validate_get_random_int_seed_generator();
@@ -314,19 +314,19 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 	auto gen_ = std::make_shared<randomness::rng_deterministic>(mt_);
 
 	int val = gen_->get_random_int(0, validation_get_random_int_max);
-	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
+	BOOST_CHECK_EQUAL (val , validation_get_random_int_correct_answer);
 }
 
-BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
+BOOST_AUTO_TEST_CASE(validate_get_random_int2)
 {
 	auto gen_ = std::make_shared<randomness::synced_rng>(validate_get_random_int_seed_generator);
 
-	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
+	for(int i = 0; i < validation_get_random_int_num_draws; i++){
 		gen_->next_random();
 	}
 
 	int val = gen_->get_random_int(0,validation_get_random_int_max);
-	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
+	BOOST_CHECK_EQUAL (val , validation_get_random_int_correct_answer);
 }
 
 

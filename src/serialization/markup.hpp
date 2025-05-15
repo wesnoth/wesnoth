@@ -72,7 +72,7 @@ std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... dat
 	if(input.empty()) return {};
 	std::stringstream ss;
 	ss << "<" << tag << " ";
-	for (const auto& [key, value] : attrs) {
+	for(const auto& [key, value] : attrs) {
 		ss << key << "='" << value << "' ";
 	}
 	ss << ">" << input << "</" << tag << ">";

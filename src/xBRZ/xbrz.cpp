@@ -49,7 +49,7 @@ uint32_t gradientARGB(uint32_t pixFront, uint32_t pixBack) //find intermediate c
     const unsigned int weightFront = getAlpha(pixFront) * M;
     const unsigned int weightBack  = getAlpha(pixBack) * (N - M);
     const unsigned int weightSum   = weightFront + weightBack;
-    if (weightSum == 0)
+    if(weightSum == 0)
         return 0;
 
     auto calcColor = [=](unsigned char colFront, unsigned char colBack)
@@ -118,7 +118,7 @@ class OutputMatrix
 public:
     OutputMatrix(uint32_t* out, int outWidth) : //access matrix area, top-left at position "out" for image with given width
         out_(out),
-        outWidth_(outWidth) {}
+        outWidth_(outWidth){}
 
     template <size_t I, size_t J>
     uint32_t& ref() const
@@ -135,7 +135,7 @@ private:
 
 
 template <class T> inline
-T square(T value) { return value * value; }
+T square(T value){ return value * value; }
 
 
 #if 0
@@ -188,7 +188,7 @@ double distYCbCrBuffered(uint32_t pix1, uint32_t pix2)
     {
         std::vector<float> tmp;
 
-        for (uint32_t i = 0; i < 256 * 256 * 256; ++i) //startup time: 114 ms on Intel Core i5 (four cores)
+        for(uint32_t i = 0; i < 256 * 256 * 256; ++i) //startup time: 114 ms on Intel Core i5 (four cores)
         {
             const int r_diff = static_cast<signed char>(getByte<2>(i)) * 2;
             const int g_diff = static_cast<signed char>(getByte<1>(i)) * 2;
@@ -210,9 +210,9 @@ double distYCbCrBuffered(uint32_t pix1, uint32_t pix2)
         return tmp;
     }();
 
-    //if (pix1 == pix2) -> 8% perf degradation!
+    //if(pix1 == pix2) -> 8% perf degradation!
     //    return 0;
-    //if (pix1 < pix2)
+    //if(pix1 < pix2)
     //    std::swap(pix1, pix2); -> 30% perf degradation!!!
 
     const int r_diff = static_cast<int>(getRed  (pix1)) - getRed  (pix2);
@@ -226,7 +226,7 @@ double distYCbCrBuffered(uint32_t pix1, uint32_t pix2)
 #if 0 //attention: the following calculation creates an asymmetric color distance!!! (e.g. r_diff=46 will be unpacked as 45, but r_diff=-46 unpacks to -47
     const size_t index = (((r_diff + 0xFF) / 2) << 16) | //slightly reduce precision (division by 2) to squeeze value into single byte
                          (((g_diff + 0xFF) / 2) <<  8) |
-                         (( b_diff + 0xFF) / 2);
+                         ((b_diff + 0xFF) / 2);
 #endif
     return diffToDist[index];
 }
@@ -290,39 +290,39 @@ FORCE_INLINE //detect blend direction
 BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg) //result: F, G, J, K corners of "GradientType"
 {
 #if defined _MSC_VER && !defined NDEBUG
-    if (breakIntoDebugger)
+    if(breakIntoDebugger)
         __debugbreak(); //__asm int 3;
 #endif
 
     BlendResult result = {};
 
-    if ((ker.f == ker.g &&
+    if((ker.f == ker.g &&
          ker.j == ker.k) ||
         (ker.f == ker.j &&
          ker.g == ker.k))
         return result;
 
-    auto dist = [&](uint32_t pix1, uint32_t pix2) { return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight); };
+    auto dist = [&](uint32_t pix1, uint32_t pix2){ return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight); };
 
     double jg = dist(ker.i, ker.f) + dist(ker.f, ker.c) + dist(ker.n, ker.k) + dist(ker.k, ker.h) + cfg.centerDirectionBias * dist(ker.j, ker.g);
     double fk = dist(ker.e, ker.j) + dist(ker.j, ker.o) + dist(ker.b, ker.g) + dist(ker.g, ker.l) + cfg.centerDirectionBias * dist(ker.f, ker.k);
 
-    if (jg < fk) //test sample: 70% of values max(jg, fk) / min(jg, fk) are between 1.1 and 3.7 with median being 1.8
+    if(jg < fk) //test sample: 70% of values max(jg, fk) / min(jg, fk) are between 1.1 and 3.7 with median being 1.8
     {
         const bool dominantGradient = cfg.dominantDirectionThreshold * jg < fk;
-        if (ker.f != ker.g && ker.f != ker.j)
+        if(ker.f != ker.g && ker.f != ker.j)
             result.blend_f = dominantGradient ? BLEND_DOMINANT : BLEND_NORMAL;
 
-        if (ker.k != ker.j && ker.k != ker.g)
+        if(ker.k != ker.j && ker.k != ker.g)
             result.blend_k = dominantGradient ? BLEND_DOMINANT : BLEND_NORMAL;
     }
-    else if (fk < jg)
+    else if(fk < jg)
     {
         const bool dominantGradient = cfg.dominantDirectionThreshold * fk < jg;
-        if (ker.j != ker.f && ker.j != ker.k)
+        if(ker.j != ker.f && ker.j != ker.k)
             result.blend_j = dominantGradient ? BLEND_DOMINANT : BLEND_NORMAL;
 
-        if (ker.g != ker.f && ker.g != ker.k)
+        if(ker.g != ker.f && ker.g != ker.k)
             result.blend_g = dominantGradient ? BLEND_DOMINANT : BLEND_NORMAL;
     }
     return result;
@@ -333,26 +333,26 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
 #pragma clang diagnostic ignored "-Wunused-function"
 #endif
 
-#define DEF_GETTER(x) template <RotationDegree rotDeg> uint32_t inline get_##x(const Kernel_3x3& ker) { return ker.x; }
+#define DEF_GETTER(x) template <RotationDegree rotDeg> uint32_t inline get_##x(const Kernel_3x3& ker){ return ker.x; }
 //we cannot and NEED NOT write "ker.##x" since ## concatenates preprocessor tokens but "." is not a token
 DEF_GETTER(a) DEF_GETTER(b) DEF_GETTER(c)
 DEF_GETTER(d) DEF_GETTER(e) DEF_GETTER(f)
 DEF_GETTER(g) DEF_GETTER(h) DEF_GETTER(i)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_90>(const Kernel_3x3& ker) { return ker.y; }
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_90>(const Kernel_3x3& ker){ return ker.y; }
 DEF_GETTER(a, g) DEF_GETTER(b, d) DEF_GETTER(c, a)
 DEF_GETTER(d, h) DEF_GETTER(e, e) DEF_GETTER(f, b)
 DEF_GETTER(g, i) DEF_GETTER(h, f) DEF_GETTER(i, c)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_180>(const Kernel_3x3& ker) { return ker.y; }
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_180>(const Kernel_3x3& ker){ return ker.y; }
 DEF_GETTER(a, i) DEF_GETTER(b, h) DEF_GETTER(c, g)
 DEF_GETTER(d, f) DEF_GETTER(e, e) DEF_GETTER(f, d)
 DEF_GETTER(g, c) DEF_GETTER(h, b) DEF_GETTER(i, a)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_270>(const Kernel_3x3& ker) { return ker.y; }
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_270>(const Kernel_3x3& ker){ return ker.y; }
 DEF_GETTER(a, c) DEF_GETTER(b, f) DEF_GETTER(c, i)
 DEF_GETTER(d, b) DEF_GETTER(e, e) DEF_GETTER(f, h)
 DEF_GETTER(g, a) DEF_GETTER(h, d) DEF_GETTER(i, g)
@@ -363,15 +363,15 @@ DEF_GETTER(g, a) DEF_GETTER(h, d) DEF_GETTER(i, g)
 #endif
 
 //compress four blend types into a single byte
-//inline BlendType getTopL   (unsigned char b) { return static_cast<BlendType>(0x3 & b); }
-inline BlendType getTopR   (unsigned char b) { return static_cast<BlendType>(0x3 & (b >> 2)); }
-inline BlendType getBottomR(unsigned char b) { return static_cast<BlendType>(0x3 & (b >> 4)); }
-inline BlendType getBottomL(unsigned char b) { return static_cast<BlendType>(0x3 & (b >> 6)); }
+//inline BlendType getTopL   (unsigned char b){ return static_cast<BlendType>(0x3 & b); }
+inline BlendType getTopR   (unsigned char b){ return static_cast<BlendType>(0x3 & (b >> 2)); }
+inline BlendType getBottomR(unsigned char b){ return static_cast<BlendType>(0x3 & (b >> 4)); }
+inline BlendType getBottomL(unsigned char b){ return static_cast<BlendType>(0x3 & (b >> 6)); }
 
-inline void clearAddTopL(unsigned char& b, BlendType bt) { b = static_cast<unsigned char>(bt); }
-inline void addTopR     (unsigned char& b, BlendType bt) { b |= (bt << 2); } //buffer is assumed to be initialized before preprocessing!
-inline void addBottomR  (unsigned char& b, BlendType bt) { b |= (bt << 4); } //e.g. via clearAddTopL()
-inline void addBottomL  (unsigned char& b, BlendType bt) { b |= (bt << 6); } //
+inline void clearAddTopL(unsigned char& b, BlendType bt){ b = static_cast<unsigned char>(bt); }
+inline void addTopR     (unsigned char& b, BlendType bt){ b |= (bt << 2); } //buffer is assumed to be initialized before preprocessing!
+inline void addBottomR  (unsigned char& b, BlendType bt){ b |= (bt << 4); } //e.g. via clearAddTopL()
+inline void addBottomL  (unsigned char& b, BlendType bt){ b |= (bt << 6); } //
 
 inline bool blendingNeeded(unsigned char b)
 {
@@ -380,10 +380,10 @@ inline bool blendingNeeded(unsigned char b)
 }
 
 template <RotationDegree rotDeg> inline
-unsigned char rotateBlendInfo(unsigned char b) { return b; }
-template <> inline unsigned char rotateBlendInfo<ROT_90 >(unsigned char b) { return ((b << 2) | (b >> 6)) & 0xff; }
-template <> inline unsigned char rotateBlendInfo<ROT_180>(unsigned char b) { return ((b << 4) | (b >> 4)) & 0xff; }
-template <> inline unsigned char rotateBlendInfo<ROT_270>(unsigned char b) { return ((b << 6) | (b >> 2)) & 0xff; }
+unsigned char rotateBlendInfo(unsigned char b){ return b; }
+template <> inline unsigned char rotateBlendInfo<ROT_90 >(unsigned char b){ return ((b << 2) | (b >> 6)) & 0xff; }
+template <> inline unsigned char rotateBlendInfo<ROT_180>(unsigned char b){ return ((b << 4) | (b >> 4)) & 0xff; }
+template <> inline unsigned char rotateBlendInfo<ROT_270>(unsigned char b){ return ((b << 6) | (b >> 2)) & 0xff; }
 
 
 /* input kernel area naming convention:
@@ -413,30 +413,30 @@ void blendPixel(const Kernel_3x3& ker,
 #define i get_i<rotDeg>(ker)
 
 #if defined _MSC_VER && !defined NDEBUG
-    if (breakIntoDebugger)
+    if(breakIntoDebugger)
         __debugbreak(); //__asm int 3;
 #endif
 
     const unsigned char blend = rotateBlendInfo<rotDeg>(blendInfo);
 
-    if (getBottomR(blend) >= BLEND_NORMAL)
+    if(getBottomR(blend) >= BLEND_NORMAL)
     {
-        auto eq   = [&](uint32_t pix1, uint32_t pix2) { return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight) < cfg.equalColorTolerance; };
-        auto dist = [&](uint32_t pix1, uint32_t pix2) { return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight); };
+        auto eq   = [&](uint32_t pix1, uint32_t pix2){ return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight) < cfg.equalColorTolerance; };
+        auto dist = [&](uint32_t pix1, uint32_t pix2){ return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight); };
 
         const bool doLineBlend = [&]() -> bool
         {
-            if (getBottomR(blend) >= BLEND_DOMINANT)
+            if(getBottomR(blend) >= BLEND_DOMINANT)
                 return true;
 
             //make sure there is no second blending in an adjacent rotation for this pixel: handles insular pixels, mario eyes
-            if (getTopR(blend) != BLEND_NONE && !eq(e, g)) //but support double-blending for 90� corners
+            if(getTopR(blend) != BLEND_NONE && !eq(e, g)) //but support double-blending for 90� corners
                 return false;
-            if (getBottomL(blend) != BLEND_NONE && !eq(e, c))
+            if(getBottomL(blend) != BLEND_NONE && !eq(e, c))
                 return false;
 
             //no full blending for L-shapes; blend corner only (handles "mario mushroom eyes")
-            if (!eq(e, i) && eq(g, h) && eq(h, i) && eq(i, f) && eq(f, c))
+            if(!eq(e, i) && eq(g, h) && eq(h, i) && eq(i, f) && eq(f, c))
                 return false;
 
             return true;
@@ -446,7 +446,7 @@ void blendPixel(const Kernel_3x3& ker,
 
         OutputMatrix<Scaler::scale, rotDeg> out(target, trgWidth);
 
-        if (doLineBlend)
+        if(doLineBlend)
         {
             const double fg = dist(f, g); //test sample: 70% of values max(fg, hc) / min(fg, hc) are between 1.1 and 3.7 with median being 1.9
             const double hc = dist(h, c); //
@@ -454,16 +454,16 @@ void blendPixel(const Kernel_3x3& ker,
             const bool haveShallowLine = cfg.steepDirectionThreshold * fg <= hc && e != g && d != g;
             const bool haveSteepLine   = cfg.steepDirectionThreshold * hc <= fg && e != c && b != c;
 
-            if (haveShallowLine)
+            if(haveShallowLine)
             {
-                if (haveSteepLine)
+                if(haveSteepLine)
                     Scaler::blendLineSteepAndShallow(px, out);
                 else
                     Scaler::blendLineShallow(px, out);
             }
             else
             {
-                if (haveSteepLine)
+                if(haveSteepLine)
                     Scaler::blendLineSteep(px, out);
                 else
                     Scaler::blendLineDiagonal(px, out);
@@ -493,11 +493,11 @@ public:
         s_0 (0 <= y     && y     < srcHeight ? src + srcWidth *  y      : nullptr),
         s_p1(0 <= y + 1 && y + 1 < srcHeight ? src + srcWidth * (y + 1) : nullptr),
         s_p2(0 <= y + 2 && y + 2 < srcHeight ? src + srcWidth * (y + 2) : nullptr),
-        srcWidth_(srcWidth) {}
+        srcWidth_(srcWidth){}
 
     void readDhlp(Kernel_4x4& ker, int x) const //(x, y) is at kernel position F
     {
-        LIKELY if (const int x_p2 = x + 2; 0 <= x_p2 && x_p2 < srcWidth_)
+        LIKELY if(const int x_p2 = x + 2; 0 <= x_p2 && x_p2 < srcWidth_)
         {
             ker.d = s_m1 ? s_m1[x_p2] : 0;
             ker.h = s_0  ? s_0 [x_p2] : 0;
@@ -530,7 +530,7 @@ public:
         s_0 (src + srcWidth * std::clamp(y,     0, srcHeight - 1)),
         s_p1(src + srcWidth * std::clamp(y + 1, 0, srcHeight - 1)),
         s_p2(src + srcWidth * std::clamp(y + 2, 0, srcHeight - 1)),
-        srcWidth_(srcWidth) {}
+        srcWidth_(srcWidth){}
 
     void readDhlp(Kernel_4x4& ker, int x) const //(x, y) is at kernel position F
     {
@@ -555,7 +555,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
 {
     yFirst = std::max(yFirst, 0);
     yLast  = std::min(yLast, srcHeight);
-    if (yFirst >= yLast || srcWidth <= 0)
+    if(yFirst >= yLast || srcWidth <= 0)
         return;
 
     const int trgWidth = srcWidth * Scaler::scale;
@@ -593,10 +593,10 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
 
         {
             const BlendResult res = preProcessCorners<ColorDistance>(ker4, cfg);
-            clearAddTopL(preProcBuf[0], res.blend_k); //set 1st known corner for (0, yFirst)
+            clearAddTopL(preProcBuf[0], res.blend_k); //set 1st known corner for(0, yFirst)
         }
 
-        for (int x = 0; x < srcWidth; ++x)
+        for(int x = 0; x < srcWidth; ++x)
         {
             ker4.a = ker4.b;    //shift previous kernel to the left
             ker4.e = ker4.f;    // -----------------
@@ -622,15 +622,15 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
                 | J | K |
                 ---------                                        */
             const BlendResult res = preProcessCorners<ColorDistance>(ker4, cfg);
-            addTopR(preProcBuf[x], res.blend_j); //set 2nd known corner for (x, yFirst)
+            addTopR(preProcBuf[x], res.blend_j); //set 2nd known corner for(x, yFirst)
 
-            if (x + 1 < srcWidth)
-                clearAddTopL(preProcBuf[x + 1], res.blend_k); //set 1st known corner for (x + 1, yFirst)
+            if(x + 1 < srcWidth)
+                clearAddTopL(preProcBuf[x + 1], res.blend_k); //set 1st known corner for(x + 1, yFirst)
         }
     }
     //------------------------------------------------------------------------------------
 
-    for (int y = yFirst; y < yLast; ++y)
+    for(int y = yFirst; y < yLast; ++y)
     {
         uint32_t* out = trg + Scaler::scale * y * trgWidth; //consider MT "striped" access
 
@@ -661,12 +661,12 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
         unsigned char blend_xy1 = 0; //corner blending for current (x, y + 1) position
         {
             const BlendResult res = preProcessCorners<ColorDistance>(ker4, cfg);
-            clearAddTopL(blend_xy1, res.blend_k); //set 1st known corner for (0, y + 1) and buffer for use on next column
+            clearAddTopL(blend_xy1, res.blend_k); //set 1st known corner for(0, y + 1) and buffer for use on next column
 
-            addBottomL(preProcBuf[0], res.blend_g); //set 3rd known corner for (0, y)
+            addBottomL(preProcBuf[0], res.blend_g); //set 3rd known corner for(0, y)
         }
 
-        for (int x = 0; x < srcWidth; ++x, out += Scaler::scale)
+        for(int x = 0; x < srcWidth; ++x, out += Scaler::scale)
         {
 #if defined _MSC_VER && !defined NDEBUG
             breakIntoDebugger = debugPixelX == x && debugPixelY == y;
@@ -700,15 +700,15 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
                 const BlendResult res = preProcessCorners<ColorDistance>(ker4, cfg);
                 addBottomR(blend_xy, res.blend_f); //all four corners of (x, y) have been determined at this point due to processing sequence!
 
-                addTopR(blend_xy1, res.blend_j); //set 2nd known corner for (x, y + 1)
+                addTopR(blend_xy1, res.blend_j); //set 2nd known corner for(x, y + 1)
                 preProcBuf[x] = blend_xy1; //store on current buffer position for use on next row
 
-                LIKELY if (x + 1 < srcWidth)
+                LIKELY if(x + 1 < srcWidth)
                 {
                     //blend_xy1 -> blend_x1y1
-                    clearAddTopL(blend_xy1, res.blend_k); //set 1st known corner for (x + 1, y + 1) and buffer for use on next column
+                    clearAddTopL(blend_xy1, res.blend_k); //set 1st known corner for(x + 1, y + 1) and buffer for use on next column
 
-                    addBottomL(preProcBuf[x + 1], res.blend_g); //set 3rd known corner for (x + 1, y)
+                    addBottomL(preProcBuf[x + 1], res.blend_g); //set 3rd known corner for(x + 1, y)
                 }
             }
 
@@ -717,7 +717,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             //place *after* preprocessing step, to not overwrite the results while processing the last pixel!
 
             //blend all four corners of current pixel
-            if (blendingNeeded(blend_xy))
+            if(blendingNeeded(blend_xy))
             {
                 const auto& ker3 = reinterpret_cast<const Kernel_3x3&>(ker4); //"The Things We Do for Perf"
                 blendPixel<Scaler, ColorDistance, ROT_0  >(ker3, out, trgWidth, blend_xy, cfg);
@@ -737,7 +737,7 @@ struct Scaler2x : public ColorGradient
     static const int scale = 2;
 
     template <unsigned int M, unsigned int N> //bring template function into scope for GCC
-    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront) { ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
+    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront){ ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
 
 
     template <class OutputMatrix>
@@ -783,7 +783,7 @@ struct Scaler3x : public ColorGradient
     static const int scale = 3;
 
     template <unsigned int M, unsigned int N> //bring template function into scope for GCC
-    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront) { ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
+    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront){ ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
 
 
     template <class OutputMatrix>
@@ -841,7 +841,7 @@ struct Scaler4x : public ColorGradient
     static const int scale = 4;
 
     template <unsigned int M, unsigned int N> //bring template function into scope for GCC
-    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront) { ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
+    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront){ ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
 
 
     template <class OutputMatrix>
@@ -910,7 +910,7 @@ struct Scaler5x : public ColorGradient
     static const int scale = 5;
 
     template <unsigned int M, unsigned int N> //bring template function into scope for GCC
-    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront) { ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
+    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront){ ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
 
 
     template <class OutputMatrix>
@@ -998,7 +998,7 @@ struct Scaler6x : public ColorGradient
     static const int scale = 6;
 
     template <unsigned int M, unsigned int N> //bring template function into scope for GCC
-    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront) { ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
+    static void alphaGrad(uint32_t& pixBack, uint32_t pixFront){ ColorGradient::template alphaGrad<M, N>(pixBack, pixFront); }
 
 
     template <class OutputMatrix>
@@ -1098,7 +1098,7 @@ struct ColorDistanceRGB
     {
         return distYCbCrBuffered(pix1, pix2);
 
-        //if (pix1 == pix2) //about 4% perf boost
+        //if(pix1 == pix2) //about 4% perf boost
         //    return 0;
         //return distYCbCr(pix1, pix2, luminanceWeight);
     }
@@ -1121,7 +1121,7 @@ struct ColorDistanceARGB
         //return std::min(a1, a2) * distYCbCrBuffered(pix1, pix2) + 255 * abs(a1 - a2);
         //=> following code is 15% faster:
         const double d = distYCbCrBuffered(pix1, pix2);
-        if (a1 < a2)
+        if(a1 < a2)
             return a1 * d + 255 * (a2 - a1);
         else
             return a2 * d + 255 * (a1 - a2);
@@ -1139,7 +1139,7 @@ struct ColorDistanceUnbufferedARGB
         const double a2 = getAlpha(pix2) / 255.0 ;
 
         const double d = distYCbCr(pix1, pix2, luminanceWeight);
-        if (a1 < a2)
+        if(a1 < a2)
             return a1 * d + 255 * (a2 - a1);
         else
             return a2 * d + 255 * (a1 - a2);
@@ -1169,7 +1169,7 @@ struct ColorGradientARGB
 
 void xbrz::scale(size_t factor, const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight, ColorFormat colFmt, const xbrz::ScalerCfg& cfg, int yFirst, int yLast)
 {
-    if (factor == 1)
+    if(factor == 1)
     {
         std::copy(src + yFirst * srcWidth, src + yLast * srcWidth, trg);
         return;
@@ -1251,7 +1251,7 @@ void xbrz::bilinearScale(const uint32_t* src, int srcWidth, int srcHeight,
 {
     bilinearScale(src, srcWidth, srcHeight, srcWidth * sizeof(uint32_t),
                   trg, trgWidth, trgHeight, trgWidth * sizeof(uint32_t),
-    0, trgHeight, [](uint32_t pix) { return pix; });
+    0, trgHeight, [](uint32_t pix){ return pix; });
 }
 
 
@@ -1260,7 +1260,7 @@ void xbrz::nearestNeighborScale(const uint32_t* src, int srcWidth, int srcHeight
 {
     nearestNeighborScale(src, srcWidth, srcHeight, srcWidth * sizeof(uint32_t),
                          trg, trgWidth, trgHeight, trgWidth * sizeof(uint32_t),
-    0, trgHeight, [](uint32_t pix) { return pix; });
+    0, trgHeight, [](uint32_t pix){ return pix; });
 }
 
 
@@ -1273,13 +1273,13 @@ void bilinearScaleCpu(const uint32_t* src, int srcWidth, int srcHeight,
 
     concurrency::task_group tg;
 
-    for (int i = 0; i < trgHeight; i += TASK_GRANULARITY)
+    for(int i = 0; i < trgHeight; i += TASK_GRANULARITY)
         tg.run([=]
     {
         const int iLast = std::min(i + TASK_GRANULARITY, trgHeight);
         xbrz::bilinearScale(src, srcWidth, srcHeight, srcWidth * sizeof(uint32_t),
                             trg, trgWidth, trgHeight, trgWidth * sizeof(uint32_t),
-        i, iLast, [](uint32_t pix) { return pix; });
+        i, iLast, [](uint32_t pix){ return pix; });
     });
     tg.wait();
 }
@@ -1295,9 +1295,9 @@ void bilinearScaleAmp(const uint32_t* src, int srcWidth, int srcHeight, //throw 
     using namespace concurrency;
     //TODO: pitch
 
-    if (srcHeight <= 0 || srcWidth <= 0) return;
+    if(srcHeight <= 0 || srcWidth <= 0) return;
 
-    const float scaleX = static_cast<float>(trgWidth ) / srcWidth;
+    const float scaleX = static_cast<float>(trgWidth) / srcWidth;
     const float scaleY = static_cast<float>(trgHeight) / srcHeight;
 
     array_view<const uint32_t, 2> srcView(srcHeight, srcWidth, src);
@@ -1316,14 +1316,14 @@ void bilinearScaleAmp(const uint32_t* src, int srcWidth, int srcHeight, //throw 
         //    -> pre-calculating x,y-dependent variables in a buffer + array_view<> is ~ 20 % slower!
         const int y1 = srcHeight * y / trgHeight;
         int y2 = y1 + 1;
-        if (y2 == srcHeight) --y2;
+        if(y2 == srcHeight) --y2;
 
         const float yy1 = y / scaleY - y1;
         const float y2y = 1 - yy1;
         //-------------------------------------
         const int x1 = srcWidth * x / trgWidth;
         int x2 = x1 + 1;
-        if (x2 == srcWidth) --x2;
+        if(x2 == srcWidth) --x2;
 
         const float xx1 = x / scaleX - x1;
         const float x2x = 1 - xx1;
@@ -1337,7 +1337,7 @@ void bilinearScaleAmp(const uint32_t* src, int srcWidth, int srcHeight, //throw 
         {
             /*
                 https://en.wikipedia.org/wiki/Bilinear_interpolation
-                (c11(x2 - x) + c21(x - x1)) * (y2 - y ) +
+                (c11(x2 - x) + c21(x - x1)) * (y2 - y) +
                 (c12(x2 - x) + c22(x - x1)) * (y  - y1)
             */
             const auto c11 = (srcView(y1, x1) >> (8 * offset)) & 0xff;

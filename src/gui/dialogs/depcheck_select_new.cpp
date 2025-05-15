@@ -35,7 +35,7 @@ depcheck_select_new::depcheck_select_new(
 {
 	std::string message;
 
-	switch(name) {
+	switch(name){
 		case ng::depcheck::SCENARIO:
 			message = _("The currently chosen scenario "
 						"is not compatible with your setup."
@@ -60,7 +60,7 @@ void depcheck_select_new::pre_show()
 {
 	listbox& items = find_widget<listbox>("itemlist");
 
-	for(const auto& item : items_) {
+	for(const auto& item : items_){
 		items.add_row(widget_data{{ "option", {{ "label", item }}}});
 	}
 
@@ -69,7 +69,7 @@ void depcheck_select_new::pre_show()
 
 void depcheck_select_new::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		listbox& items = find_widget<listbox>("itemlist");
 		result_ = items.get_selected_row();
 	}

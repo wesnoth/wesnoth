@@ -33,7 +33,7 @@ namespace ai_default_rca {
 class goto_phase : public candidate_action {
 public:
 
-	goto_phase( rca_context &context, const config &cfg );
+	goto_phase(rca_context &context, const config &cfg);
 
 	virtual ~goto_phase();
 
@@ -49,7 +49,7 @@ private:
 class combat_phase : public candidate_action {
 public:
 
-	combat_phase( rca_context &context, const config &cfg );
+	combat_phase(rca_context &context, const config &cfg);
 
 	virtual ~combat_phase();
 
@@ -67,7 +67,7 @@ private:
 class move_leader_to_goals_phase : public candidate_action {
 public:
 
-	move_leader_to_goals_phase( rca_context &context, const config &cfg );
+	move_leader_to_goals_phase(rca_context &context, const config &cfg);
 
 	virtual ~move_leader_to_goals_phase();
 
@@ -89,7 +89,7 @@ private:
 class move_leader_to_keep_phase : public candidate_action {
 public:
 
-	move_leader_to_keep_phase( rca_context &context, const config &cfg );
+	move_leader_to_keep_phase(rca_context &context, const config &cfg);
 
 	virtual ~move_leader_to_keep_phase();
 
@@ -106,7 +106,7 @@ private:
 class get_villages_phase : public candidate_action {
 public:
 
-	get_villages_phase( rca_context &context, const config& cfg );
+	get_villages_phase(rca_context &context, const config& cfg);
 
 	virtual ~get_villages_phase();
 
@@ -186,7 +186,7 @@ private:
 class get_healing_phase : public candidate_action {
 public:
 
-	get_healing_phase( rca_context &context, const config& cfg );
+	get_healing_phase(rca_context &context, const config& cfg);
 
 	virtual ~get_healing_phase();
 
@@ -203,7 +203,7 @@ private:
 class retreat_phase : public candidate_action {
 public:
 
-	retreat_phase( rca_context &context, const config &cfg );
+	retreat_phase(rca_context &context, const config &cfg);
 
 	virtual ~retreat_phase();
 
@@ -223,7 +223,7 @@ private:
 class leader_control_phase : public candidate_action {
 public:
 
-	leader_control_phase( rca_context &context, const config &cfg );
+	leader_control_phase(rca_context &context, const config &cfg);
 
 	virtual ~leader_control_phase();
 
@@ -236,7 +236,7 @@ public:
 class leader_shares_keep_phase : public candidate_action {
 public:
 
-	leader_shares_keep_phase( rca_context &context, const config &cfg );
+	leader_shares_keep_phase(rca_context &context, const config &cfg);
 
 	virtual ~leader_shares_keep_phase();
 

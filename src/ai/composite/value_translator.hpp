@@ -120,7 +120,7 @@ class leader_aspects_visitor
 {
 public:
 	std::string operator()(const bool b) const {
-		if (b) {
+		if(b) {
 			return "yes";
 		} else {
 			return "no";
@@ -135,7 +135,7 @@ public:
 
 	static utils::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
 	{
-		if (cfg["value"].to_bool(true) == cfg["value"].to_bool(false)) {
+		if(cfg["value"].to_bool(true) == cfg["value"].to_bool(false)) {
 			return cfg["value"].to_bool();
 		}
 		return utils::split(cfg["value"]);
@@ -192,7 +192,7 @@ public:
 
 	static void cfg_to_value(const config &cfg, config &value)
 	{
-		if (auto v = cfg.optional_child("value")) {
+		if(auto v = cfg.optional_child("value")) {
 			value = *v;
 		} else {
 			value.clear();
@@ -223,7 +223,7 @@ public:
 
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
-		if (auto v = cfg.optional_child("value")) {
+		if(auto v = cfg.optional_child("value")) {
 			return terrain_filter(vconfig(*v), resources::filter_con, false);
 		}
 		static config c("not");

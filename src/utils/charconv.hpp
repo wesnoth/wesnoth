@@ -52,26 +52,26 @@ namespace utils::charconv
 	using to_chars_result   = charconv_impl::to_chars_result;
 
 	template<typename... T>
-	to_chars_result to_chars(char* first, char* last, T&&... value )
+	to_chars_result to_chars(char* first, char* last, T&&... value)
 	{
 		return charconv_impl::to_chars(first, last, value...);
 	}
 
 	template<typename T>
-	std::enable_if_t<std::is_integral_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10 )
+	std::enable_if_t<std::is_integral_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10)
 	{
 		return charconv_impl::from_chars(first, last, value, base);
 	}
 
 #ifndef USE_FALLBACK_CHARCONV
 	template<typename T>
-	std::enable_if_t<std::is_floating_point_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, chars_format fmt = chars_format::general )
+	std::enable_if_t<std::is_floating_point_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, chars_format fmt = chars_format::general)
 	{
 		return charconv_impl::from_chars(first, last, value, fmt);
 	}
 #else
 	template<typename T>
-	std::enable_if_t<std::is_same_v<T, double> || std::is_same_v<T, float> || std::is_same_v<T, long double>, from_chars_result> from_chars(const char* first, const char* last, T& value, chars_format fmt = chars_format::general );
+	std::enable_if_t<std::is_same_v<T, double> || std::is_same_v<T, float> || std::is_same_v<T, long double>, from_chars_result> from_chars(const char* first, const char* last, T& value, chars_format fmt = chars_format::general);
 #endif
 
 	// the maximum size of a string that to_chars produces for type T, with the default chars_format
@@ -87,7 +87,7 @@ namespace utils
 		while(!v.empty() && std::isspace(v.front())) {
 			v.remove_prefix(1);
 		}
-		if(v.size() >= 2 && v[0] == '+' && v[1] != '-' ) {
+		if(v.size() >= 2 && v[0] == '+' && v[1] != '-') {
 			v.remove_prefix(1);
 		}
 	}

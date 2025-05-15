@@ -43,7 +43,7 @@ point drawing::calculate_best_size() const
 
 void drawing::request_reduce_width(const unsigned maximum_width)
 {
-	if(best_size_ != point()) {
+	if(best_size_ != point()){
 		// This drawing is of fixed size, do nothing.
 	} else {
 		styled_widget::request_reduce_width(maximum_width);
@@ -52,7 +52,7 @@ void drawing::request_reduce_width(const unsigned maximum_width)
 
 void drawing::request_reduce_height(const unsigned maximum_height)
 {
-	if(best_size_ != point()) {
+	if(best_size_ != point()){
 		// This drawing is of fixed size, do nothing.
 	} else {
 		styled_widget::request_reduce_height(maximum_height);
@@ -123,7 +123,7 @@ std::unique_ptr<widget> builder_drawing::build() const
 	const unsigned w = width(size);
 	const unsigned h = height(size);
 
-	if(w || h) {
+	if(w || h){
 		widget->set_best_size(point(w, h));
 	}
 

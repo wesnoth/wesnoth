@@ -53,17 +53,17 @@ static int impl_race_get(lua_State* L)
 	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
 	return_string_attrib("undead_variation", race.undead_variation());
 	return_cfgref_attrib("__cfg", race.get_cfg());
-	if (strcmp(m, "traits") == 0) {
+	if(strcmp(m, "traits") == 0){
 		lua_newtable(L);
-		if (race.uses_global_traits()) {
-			for (const config& trait : unit_types.traits()) {
+		if(race.uses_global_traits()){
+			for(const config& trait : unit_types.traits()){
 				const std::string& id = trait["id"];
 				lua_pushlstring(L, id.c_str(), id.length());
 				luaW_pushconfig(L, trait);
 				lua_rawset(L, -3);
 			}
 		}
-		for (const config& trait : race.additional_traits()) {
+		for(const config& trait : race.additional_traits()){
 			const std::string& id = trait["id"];
 			lua_pushlstring(L, id.c_str(), id.length());
 			luaW_pushconfig(L, trait);
@@ -71,13 +71,13 @@ static int impl_race_get(lua_State* L)
 		}
 		return 1;
 	}
-	if (strcmp(m, "male_name_gen") == 0) {
+	if(strcmp(m, "male_name_gen") == 0){
 		new(L) proxy_name_generator(race.generator(unit_race::MALE));
 		luaL_getmetatable(L, Gen);
 		lua_setmetatable(L, -2);
 		return 1;
 	}
-	if (strcmp(m, "female_name_gen") == 0) {
+	if(strcmp(m, "female_name_gen") == 0){
 		new(L) proxy_name_generator(race.generator(unit_race::FEMALE));
 		luaL_getmetatable(L, Gen);
 		lua_setmetatable(L, -2);
@@ -132,7 +132,7 @@ void luaW_pushracetable(lua_State *L)
 	const race_map& races = unit_types.races();
 	lua_createtable(L, 0, races.size());
 
-	for (const race_map::value_type &race : races)
+	for(const race_map::value_type &race : races)
 	{
 		assert(race.first == race.second.id());
 		luaW_pushrace(L, race.second);
@@ -145,7 +145,7 @@ const unit_race& luaW_checkrace(lua_State* L, int idx)
 	lua_pushstring(L, "id");
 	lua_rawget(L, idx);
 	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
-	if(!raceptr) {
+	if(!raceptr){
 		luaL_argerror(L, idx, "unknown race");
 		throw "UNREACHABLE";
 	}

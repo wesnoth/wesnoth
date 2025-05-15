@@ -34,7 +34,7 @@ tod_new_schedule::tod_new_schedule(std::string& schedule_id, t_string& schedule_
 {
 }
 
-void tod_new_schedule::pre_show() {
+void tod_new_schedule::pre_show(){
 	find_widget<text_box>("id_box").set_value(schedule_id_);
 	find_widget<text_box>("name_box").set_value(schedule_name_);
 
@@ -48,8 +48,8 @@ void tod_new_schedule::pre_show() {
 		std::bind(&tod_new_schedule::button_state_change, this));
 }
 
-void tod_new_schedule::button_state_change() {
-	if (
+void tod_new_schedule::button_state_change(){
+	if(
 		find_widget<text_box>("id_box").get_value().empty()
 		|| find_widget<text_box>("name_box").get_value().empty())
 	{

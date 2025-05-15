@@ -205,7 +205,7 @@ static void test_grid()
 				, true>>
 			iterator(grid);
 
-		while(iterator.next()) {
+		while(iterator.next()){
 			/* DO NOTHING */
 		}
 
@@ -221,7 +221,7 @@ static void test_grid()
 				, true>>
 			iterator(grid);
 
-		for( ; !iterator.at_end(); ++iterator) {
+		for(; !iterator.at_end(); ++iterator){
 			/* DO NOTHING */
 		}
 
@@ -237,7 +237,7 @@ static void test_grid()
 				, true>>
 			iterator(grid);
 
-		while(iterator.next()) {
+		while(iterator.next()){
 			/* DO NOTHING */
 		}
 
@@ -253,7 +253,7 @@ static void test_grid()
 				, true>>
 			iterator(grid);
 
-		for( ; !iterator.at_end(); ++iterator) {
+		for(; !iterator.at_end(); ++iterator){
 			/* DO NOTHING */
 		}
 

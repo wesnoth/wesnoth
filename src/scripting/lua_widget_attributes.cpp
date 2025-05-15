@@ -58,7 +58,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static void try_invalidate_layout(gui2::widget& w)
 {
-	if(auto window = w.get_window()) {
+	if(auto window = w.get_window()){
 		window->invalidate_layout();
 	}
 }
@@ -66,38 +66,38 @@ static void try_invalidate_layout(gui2::widget& w)
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
 	assert(i > 0);
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)){
 		int n = list->get_item_count();
-		if(i > n) {
-			for(; n < i; ++n) {
+		if(i > n){
+			for(; n < i; ++n){
 				list->add_row(gui2::widget_item{});
 			}
 		}
 		return list->get_row_grid(i - 1);
-	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
+	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)){
 		int n = multi_page->get_page_count();
-		if(i > n) {
-			for(; n < i; ++n) {
+		if(i > n){
+			for(; n < i; ++n){
 				multi_page->add_page(gui2::widget_item{});
 			}
 		}
 		return &multi_page->page_grid(i - 1);
-	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
+	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)){
 		gui2::tree_view_node& tvn = tree_view->get_root_node();
 		int n = tvn.count_children();
-		if(i > n) {
+		if(i > n){
 			throw std::invalid_argument("out of range");
 		}
 		return &tvn.get_child_at(i - 1);
-	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
+	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)){
 		int n = tree_view_node->count_children();
-		if(i > n) {
+		if(i > n){
 			throw std::invalid_argument("out of range");
 		}
 		return &tree_view_node->get_child_at(i - 1);
-	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
+	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)){
 		int n = stacked_widget->get_layer_count();
-		if(i > n) {
+		if(i > n){
 			throw std::invalid_argument("out of range");
 		}
 		return stacked_widget->get_layer_grid(i - 1);
@@ -119,16 +119,16 @@ static tsetters setters;
 template<typename widget_type, typename value_type, typename action_type, bool setter>
 void register_widget_attribute(const char* name)
 {
-	utils::split_foreach(name, ',', 0, [](std::string_view name_part) {
+	utils::split_foreach(name, ',', 0, [](std::string_view name_part){
 		using map_type = std::conditional_t<setter, tsetters, tgetters>;
 		using list_type = typename map_type::mapped_type;
 		using callback_type = typename list_type::value_type;
 		map_type* map;
 		callback_type fcn;
-		if constexpr(setter) {
+		if constexpr(setter){
 			map = &setters;
-			fcn = [action = action_type()](lua_State* L, int idx, gui2::widget& w, bool nop) {
-				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+			fcn = [action = action_type()](lua_State* L, int idx, gui2::widget& w, bool nop){
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)){
 					if(!nop) action.set(L, *pw, lua_check<value_type>(L, idx));
 					return true;
 				}
@@ -136,8 +136,8 @@ void register_widget_attribute(const char* name)
 			};
 		} else {
 			map = &getters;
-			fcn = [action = action_type()](lua_State* L, gui2::widget& w, bool nop) {
-				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+			fcn = [action = action_type()](lua_State* L, gui2::widget& w, bool nop){
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)){
 					if(!nop) lua_push(L, action.get(L, *pw));
 					return true;
 				}
@@ -153,7 +153,7 @@ void register_widget_attribute(const char* name)
 struct BOOST_PP_CAT(getter_, id) : public lua_getter<widgt_type, value_type> { \
 	value_type get(lua_State* L, const widgt_type& w) const override; \
 }; \
-struct BOOST_PP_CAT(getter_adder_, id) { \
+struct BOOST_PP_CAT(getter_adder_, id){ \
 	BOOST_PP_CAT(getter_adder_, id) () \
 	{ \
 		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(getter_, id), false>(name); \
@@ -167,7 +167,7 @@ value_type BOOST_PP_CAT(getter_, id)::get([[maybe_unused]] lua_State* L, const w
 struct BOOST_PP_CAT(setter_, id) : public lua_setter<widgt_type, value_type> { \
 	void set(lua_State* L, widgt_type& w, const value_type& value) const override; \
 }; \
-struct BOOST_PP_CAT(setter_adder_, id) { \
+struct BOOST_PP_CAT(setter_adder_, id){ \
 	BOOST_PP_CAT(setter_adder_, id) ()\
 	{ \
 		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(setter_, id), true>(name); \
@@ -226,7 +226,7 @@ WIDGET_GETTER("selected_index", int, gui2::selectable_item)
 
 WIDGET_SETTER("selected_index", int, gui2::selectable_item)
 {
-	if(value > int(w.num_states())) {
+	if(value > int(w.num_states())){
 		throw std::invalid_argument("invalid index");
 	}
 	w.set_value(value - 1);
@@ -234,7 +234,7 @@ WIDGET_SETTER("selected_index", int, gui2::selectable_item)
 
 WIDGET_GETTER("value_compat,selected", bool, gui2::selectable_item)
 {
-	if(w.num_states() == 2) {
+	if(w.num_states() == 2){
 		return w.get_value_bool();
 	}
 	throw std::invalid_argument("invalid widget");
@@ -272,7 +272,7 @@ WIDGET_GETTER("best_slider_length", int, gui2::slider)
 
 WIDGET_SETTER("best_slider_length", int, gui2::slider)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("best_slider_length must be >= 0");
 	}
 	w.set_best_slider_length(value);
@@ -333,14 +333,14 @@ WIDGET_SETTER("value_compat,percentage", int, gui2::progress_bar)
 WIDGET_GETTER("value_compat,selected_item_path", std::vector<int>, gui2::tree_view)
 {
 	auto res = w.selected_item()->describe_path();
-	for(int& a : res) { ++a;}
+	for(int& a : res){ ++a;}
 	return res;
 }
 
 WIDGET_GETTER("path", std::vector<int>, gui2::tree_view_node)
 {
 	auto res = w.describe_path();
-	for(int& a : res) { ++a;}
+	for(int& a : res){ ++a;}
 	return res;
 }
 
@@ -351,7 +351,7 @@ WIDGET_GETTER("unfolded", bool, gui2::tree_view)
 
 WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view)
 {
-	if(value) {
+	if(value){
 		w.get_root_node().unfold();
 	} else {
 		w.get_root_node().fold();
@@ -365,7 +365,7 @@ WIDGET_GETTER("unfolded", bool, gui2::tree_view_node)
 
 WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view_node)
 {
-	if(value) {
+	if(value){
 		w.unfold();
 	} else {
 		w.fold();
@@ -374,9 +374,9 @@ WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view_node)
 
 WIDGET_SETTER("value_compat,unit", lua_index_raw, gui2::unit_preview_pane)
 {
-	if(const unit_type* ut = luaW_tounittype(L, value.index)) {
+	if(const unit_type* ut = luaW_tounittype(L, value.index)){
 		w.set_display_data(*ut);
-	} else if(unit* u = luaW_tounit(L, value.index)) {
+	} else if(unit* u = luaW_tounit(L, value.index)){
 		w.set_display_data(*u);
 	} else {
 		luaW_type_error(L, value.index, "unit or unit type");
@@ -441,7 +441,7 @@ WIDGET_GETTER("characters_per_line", int, gui2::label)
 
 WIDGET_SETTER("characters_per_line", int, gui2::label)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("characters_per_line must be >= 0");
 	}
 	w.set_characters_per_line(value);
@@ -545,7 +545,7 @@ WIDGET_GETTER("indentation_step_size", int, gui2::tree_view)
 
 WIDGET_SETTER("indentation_step_size", int, gui2::tree_view)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("indentation_step_size must be >= 0");
 	}
 	w.set_indentation_step_size(value);
@@ -613,7 +613,7 @@ WIDGET_GETTER("max_input_length", int, gui2::combobox)
 
 WIDGET_SETTER("max_input_length", int, gui2::combobox)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("max_input_length must be >= 0");
 	}
 	w.set_max_input_length(value);
@@ -627,7 +627,7 @@ WIDGET_GETTER("max_input_length", int, gui2::text_box)
 
 WIDGET_SETTER("max_input_length", int, gui2::text_box)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("max_input_length must be >= 0");
 	}
 	w.set_max_input_length(value);
@@ -641,7 +641,7 @@ WIDGET_GETTER("step_size", int, gui2::slider)
 
 WIDGET_SETTER("step_size", int, gui2::slider)
 {
-	if(value < 0) {
+	if(value < 0){
 		throw std::invalid_argument("step_size must be >= 0");
 	}
 	w.set_step_size(value);
@@ -700,7 +700,7 @@ WIDGET_SETTER("wrap", bool, gui2::rich_label)
 
 WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 {
-	if(!luaW_getglobal(L, "gui", "widget", "set_callback")) {
+	if(!luaW_getglobal(L, "gui", "widget", "set_callback")){
 		ERR_LUA << "gui.widget.set_callback didn't exist";
 	}
 	luaW_pushwidget(L, w);
@@ -711,7 +711,7 @@ WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 WIDGET_GETTER("visible", std::string, gui2::styled_widget)
 {
 	std::string s;
-	switch(w.get_visible()) {
+	switch(w.get_visible()){
 		case gui2::styled_widget::visibility::visible:
 			s = "visible";
 			break;
@@ -733,7 +733,7 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 
 	visibility flag = visibility::visible;
 
-	switch(lua_type(L, value.index)) {
+	switch(lua_type(L, value.index)){
 		case LUA_TBOOLEAN:
 			flag = luaW_toboolean(L, value.index)
 					? visibility::visible
@@ -742,11 +742,11 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 		case LUA_TSTRING:
 			{
 				const std::string& str = lua_tostring(L, value.index);
-				if(str == "visible") {
+				if(str == "visible"){
 					flag = visibility::visible;
-				} else if(str == "hidden") {
+				} else if(str == "hidden"){
 					flag = visibility::hidden;
-				} else if(str == "invisible") {
+				} else if(str == "invisible"){
 					flag = visibility::invisible;
 				} else {
 					luaL_argerror(L, value.index, "string must be one of: visible, hidden, invisible");
@@ -759,11 +759,11 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 
 	w.set_visible(flag);
 
-	if(flag == visibility::hidden) {
+	if(flag == visibility::hidden){
 		// HACK: this is needed to force the widget to be repainted immediately
 		//       to get rid of its ghost image.
 		gui2::window* window = w.get_window();
-		if(window) {
+		if(window){
 			window->invalidate_layout();
 		}
 	}
@@ -778,7 +778,7 @@ WIDGET_GETTER("value_compat,label", t_string, gui2::styled_widget)
 WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 {
 	gui2::window* window = w.get_window();
-	if(window) {
+	if(window){
 		window->invalidate_layout();
 	}
 	w.set_label(value);
@@ -786,13 +786,13 @@ WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 
 WIDGET_GETTER("type", std::string, gui2::widget)
 {
-	if(const gui2::styled_widget* sw = dynamic_cast<const gui2::styled_widget*>(&w)) {
+	if(const gui2::styled_widget* sw = dynamic_cast<const gui2::styled_widget*>(&w)){
 		return sw->get_control_type();
 	}
-	else if(dynamic_cast<const gui2::tree_view_node*>(&w)) {
+	else if(dynamic_cast<const gui2::tree_view_node*>(&w)){
 		return "tree_view_node";
 	}
-	else if(dynamic_cast<const gui2::grid*>(&w)) {
+	else if(dynamic_cast<const gui2::grid*>(&w)){
 		return "grid";
 	}
 	else {
@@ -808,12 +808,12 @@ namespace {
 void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& id)
 {
 	gui2::widget* w = wp.get_ptr();
-	if(!w) {
+	if(!w){
 		ERR_LUA << "widget was deleted";
 		return;
 	}
 	gui2::window* wd = w->get_window();
-	if(!wd) {
+	if(!wd){
 		ERR_LUA << "cannot find window in widget callback";
 		return;
 	}
@@ -823,12 +823,12 @@ void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string&
 void link_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& id, const std::string& dest)
 {
 	gui2::widget* w = wp.get_ptr();
-	if(!w) {
+	if(!w){
 		ERR_LUA << "widget was deleted";
 		return;
 	}
 	gui2::window* wd = w->get_window();
-	if(!wd) {
+	if(!wd){
 		ERR_LUA << "cannot find window in widget callback";
 		return;
 	}
@@ -842,11 +842,11 @@ void link_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& i
 WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
 {
 	gui2::window* wd = w.get_window();
-	if(!wd) {
+	if(!wd){
 		throw std::invalid_argument("the widget has no window assigned");
 	}
 	lua_pushvalue(L, value.index);
-	if (!luaW_setwidgetcallback(L, &w, wd, "on_modified")) {
+	if(!luaW_setwidgetcallback(L, &w, wd, "on_modified")){
 		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_modified"));
 	}
 }
@@ -854,12 +854,12 @@ WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
 WIDGET_SETTER("on_link_click", lua_index_raw, gui2::rich_label)
 {
 	gui2::window* wd = w.get_window();
-	if(!wd) {
+	if(!wd){
 		throw std::invalid_argument("the widget has no window assigned");
 	}
 
 	lua_pushvalue(L, value.index);
-	if (!luaW_setwidgetcallback(L, &w, wd, "on_link_click")) {
+	if(!luaW_setwidgetcallback(L, &w, wd, "on_link_click")){
 		w.register_link_callback(
 			std::bind(&link_callback, L, lua_ptr<gui2::widget>(w), "on_link_click", std::placeholders::_1));
 	}
@@ -868,11 +868,11 @@ WIDGET_SETTER("on_link_click", lua_index_raw, gui2::rich_label)
 WIDGET_SETTER("on_left_click", lua_index_raw, gui2::widget)
 {
 	gui2::window* wd = w.get_window();
-	if(!wd) {
+	if(!wd){
 		throw std::invalid_argument("the widget has no window assigned");
 	}
 	lua_pushvalue(L, value.index);
-	if (!luaW_setwidgetcallback(L, &w, wd, "on_left_click")) {
+	if(!luaW_setwidgetcallback(L, &w, wd, "on_left_click")){
 		connect_signal_mouse_left_click(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_left_click"));
 	}
 }
@@ -882,14 +882,14 @@ WIDGET_SETTER("on_button_click", lua_index_raw, gui2::widget)
 	gui2::window* wd = w.get_window();
 	gui2::clickable_item* cl = dynamic_cast<gui2::clickable_item*>(&w);
 
-	if(!wd) {
+	if(!wd){
 		throw std::invalid_argument("the widget has no window assigned");
 	}
-	if(!cl) {
+	if(!cl){
 		throw std::invalid_argument("unsupported widget");
 	}
 	lua_pushvalue(L, value.index);
-	if (!luaW_setwidgetcallback(L, &w, wd, "on_button_click")) {
+	if(!luaW_setwidgetcallback(L, &w, wd, "on_button_click")){
 		cl->connect_click_handler(std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_button_click"));
 	}
 }
@@ -901,9 +901,9 @@ namespace lua_widget {
 int impl_widget_get(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
-	if(lua_isinteger(L, 2)) {
+	if(lua_isinteger(L, 2)){
 
-		if(auto pwidget = find_child_by_index(w, luaL_checkinteger(L, 2))) {
+		if(auto pwidget = find_child_by_index(w, luaL_checkinteger(L, 2))){
 			luaW_pushwidget(L, *pwidget);
 			return 1;
 		}
@@ -912,17 +912,17 @@ int impl_widget_get(lua_State* L)
 	std::string_view str = lua_check<std::string_view>(L, 2);
 
 	tgetters::iterator it = getters.find(std::string(str));
-	if(it != getters.end()) {
-		for(const auto& func : it->second) {
-			if(func(L, w, false)) {
+	if(it != getters.end()){
+		for(const auto& func : it->second){
+			if(func(L, w, false)){
 				return 1;
 			}
 		}
 	}
-	if(luaW_getglobal(L, "gui", "widget", std::string(str).c_str())) {
+	if(luaW_getglobal(L, "gui", "widget", std::string(str).c_str())){
 		return 1;
 	}
-	if(auto pwidget = find_child_by_name(w, std::string(str))) {
+	if(auto pwidget = find_child_by_name(w, std::string(str))){
 		luaW_pushwidget(L, *pwidget);
 		return 1;
 	}
@@ -939,9 +939,9 @@ int impl_widget_set(lua_State* L)
 
 
 	tsetters::iterator it = setters.find(std::string(str));
-	if(it != setters.end()) {
-		for(const auto& func : it->second) {
-			if(func(L, 3, w, false)) {
+	if(it != setters.end()){
+		for(const auto& func : it->second){
+			if(func(L, 3, w, false)){
 				return 0;
 			}
 		}
@@ -962,9 +962,9 @@ int impl_widget_dir(lua_State* L)
 	gui2::widget& w = luaW_checkwidget(L, 1);
 	std::vector<std::string> keys;
 	// Add any readable keys
-	for(const auto& [key, funcs] : getters) {
+	for(const auto& [key, funcs] : getters){
 		if(key == "value_compat") continue;
-		for(const auto& func : funcs) {
+		for(const auto& func : funcs){
 			if(func(L, w, true)){
 				keys.push_back(key);
 				break;
@@ -972,10 +972,10 @@ int impl_widget_dir(lua_State* L)
 		}
 	}
 	// Add any writable keys
-	for(const auto& [key, funcs] : setters) {
+	for(const auto& [key, funcs] : setters){
 		if(key == "value_compat") continue;
 		if(key == "callback") continue;
-		for(const auto& func : funcs) {
+		for(const auto& func : funcs){
 			if(func(L, 0, w, true)){
 				keys.push_back(key);
 				break;
@@ -984,9 +984,9 @@ int impl_widget_dir(lua_State* L)
 	}
 	// Add any nested widget IDs
 	using iter_t = gui2::iteration::top_down_iterator<true, true, true>;
-	for(auto child = iter_t(w); !child.at_end(); child.next()) {
+	for(auto child = iter_t(w); !child.at_end(); child.next()){
 		const auto& key = child->id();
-		if(!key.empty() && key != w.id()) {
+		if(!key.empty() && key != w.id()){
 			keys.push_back(key);
 		}
 	}

@@ -160,7 +160,7 @@ struct map_location {
 	}
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
-	direction get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
+	direction get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/) const;
 	direction get_relative_dir(const map_location& loc) const; //moved the default setting to .cpp file for ease of testing
 
 	cubic_location to_cubic() const {
@@ -182,15 +182,15 @@ struct map_location {
 		cubic_location cubic_center = this->to_cubic();
 
 		// Enumerate range in cubic coordinates
-		for (int dx = -max; dx <= max; ++dx) {
-			for (int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
+		for(int dx = -max; dx <= max; ++dx) {
+			for(int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
 				int dz = -dx - dy;
 
 				// Calculate Manhattan distance in cubic coordinates
 				int distance = (std::abs(dx) + std::abs(dy) + std::abs(dz)) / 2;
 
 				// Skip positions outside our min/max range
-				if (distance < min || distance > max) {
+				if(distance < min || distance > max) {
 					continue;
 				}
 

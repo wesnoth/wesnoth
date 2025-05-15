@@ -40,10 +40,10 @@ void hotkey_bind::pre_show()
 
 void hotkey_bind::sdl_event_callback(const SDL_Event &event)
 {
-	if (hotkey::is_hotkeyable_event(event)) {
+	if(hotkey::is_hotkeyable_event(event)){
 		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
 	}
-	if(new_binding_) {
+	if(new_binding_){
 		set_retval(retval::OK);
 	}
 }

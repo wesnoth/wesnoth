@@ -51,7 +51,7 @@ void modification_queue::pop()
 	mod_list.erase(mod_list.begin());
 
 	// We need to keep the map clean.
-	if(mod_list.empty()) {
+	if(mod_list.empty()){
 		priorities_.erase(top_pair);
 	}
 }
@@ -59,7 +59,7 @@ void modification_queue::pop()
 std::size_t modification_queue::size() const
 {
 	std::size_t count = 0;
-	for(const auto& [priority, mods] : priorities_) {
+	for(const auto& [priority, mods] : priorities_){
 		count += mods.size();
 	}
 
@@ -95,7 +95,7 @@ std::unique_ptr<modification> decode_modification(const std::string& encoded_mod
 {
 	const std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
 
-	if(split.size() != 2) {
+	if(split.size() != 2){
 		ERR_DP << "error parsing image modifications: " << encoded_mod;
 		return nullptr;
 	}
@@ -103,7 +103,7 @@ std::unique_ptr<modification> decode_modification(const std::string& encoded_mod
 	const std::string& mod_type = split[0];
 	const std::string& args = split[1];
 
-	if(const auto parser = mod_parsers.find(mod_type); parser != mod_parsers.end()) {
+	if(const auto parser = mod_parsers.find(mod_type); parser != mod_parsers.end()){
 		return std::invoke(parser->second, args);
 	} else {
 		ERR_DP << "unknown image function in path: " << mod_type;
@@ -139,8 +139,8 @@ modification_queue modification::decode(const std::string& encoded_mods)
 {
 	modification_queue mods;
 
-	for(const std::string& encoded_mod : utils::parenthetical_split(encoded_mods, '~')) {
-		if(auto mod = decode_modification(encoded_mod)) {
+	for(const std::string& encoded_mod : utils::parenthetical_split(encoded_mods, '~')){
+		if(auto mod = decode_modification(encoded_mod)){
 			mods.push(std::move(mod));
 		}
 	}
@@ -155,12 +155,12 @@ void rc_modification::operator()(surface& src) const
 
 void fl_modification::operator()(surface& src) const
 {
-	if(horiz_  && vert_ ) {
+	if(horiz_  && vert_){
 		// Slightly faster than doing both a flip and a flop.
 		src = rotate_180_surface(src);
-	} else if(horiz_) {
+	} else if(horiz_){
 		flip_surface(src);
-	} else if(vert_) {
+	} else if(vert_){
 		flop_surface(src);
 	}
 }
@@ -172,7 +172,7 @@ void rotate_modification::operator()(surface& src) const
 		degrees_ - 360 * (degrees_ / 360) :
 		degrees_ + 360 * (1 + (-degrees_) / 360); // In case compilers disagree as to what -90/360 is.
 
-	switch ( normalized )
+	switch (normalized)
 	{
 		case 0:
 			return;
@@ -200,11 +200,11 @@ void gs_modification::operator()(surface& src) const
 void crop_transparency_modification::operator()(surface& src) const
 {
 	rect src_rect = get_non_transparent_portion(src);
-	if(src_rect.w == src->w && src_rect.h == src->h) {
+	if(src_rect.w == src->w && src_rect.h == src->h){
 		return;
 	}
 
-	if(surface cropped = get_surface_portion(src, src_rect)) {
+	if(surface cropped = get_surface_portion(src, src_rect)){
 		src = cropped;
 	} else {
 		ERR_DP << "Failed to either crop or scale the surface";
@@ -261,17 +261,17 @@ public:
 	wfl::variant get_value(const std::string& key) const override
 	{
 		using wfl::variant;
-		if(key == "x") {
+		if(key == "x"){
 			return variant(coord.x);
-		} else if(key == "y") {
+		} else if(key == "y"){
 			return variant(coord.y);
-		} else if(key == "width") {
+		} else if(key == "width"){
 			return variant(w);
-		} else if(key == "height") {
+		} else if(key == "height"){
 			return variant(h);
-		} else if(key == "u") {
+		} else if(key == "u"){
 			return variant(coord.x / static_cast<float>(w));
-		} else if(key == "v") {
+		} else if(key == "v"){
 			return variant(coord.y / static_cast<float>(h));
 		}
 
@@ -285,13 +285,13 @@ private:
 
 void adjust_alpha_modification::operator()(surface& src) const
 {
-	if(src) {
+	if(src){
 		wfl::formula new_alpha(formula_);
 
 		surface_lock lock(src);
 		std::size_t index{0};
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto color = color_t::from_argb_bytes(pixel);
 
 			auto px = pixel_callable{index++, color, src->w, src->h};
@@ -304,7 +304,7 @@ void adjust_alpha_modification::operator()(surface& src) const
 
 void adjust_channels_modification::operator()(surface& src) const
 {
-	if(src) {
+	if(src){
 		wfl::formula new_r(formulas_[0]);
 		wfl::formula new_g(formulas_[1]);
 		wfl::formula new_b(formulas_[2]);
@@ -313,7 +313,7 @@ void adjust_channels_modification::operator()(surface& src) const
 		surface_lock lock(src);
 		std::size_t index{0};
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto color = color_t::from_argb_bytes(pixel);
 
 			auto px = pixel_callable{index++, color, src->w, src->h};
@@ -330,11 +330,11 @@ void adjust_channels_modification::operator()(surface& src) const
 void crop_modification::operator()(surface& src) const
 {
 	SDL_Rect area = slice_;
-	if(area.w == 0) {
+	if(area.w == 0){
 		area.w = src->w;
 	}
 
-	if(area.h == 0) {
+	if(area.h == 0){
 		area.h = src->h;
 	}
 
@@ -343,7 +343,7 @@ void crop_modification::operator()(surface& src) const
 
 void blit_modification::operator()(surface& src) const
 {
-	if(x_ >= src->w) {
+	if(x_ >= src->w){
 		std::stringstream sstr;
 		sstr << "~BLIT(): x-coordinate '"
 			<< x_ << "' larger than destination image's width '"
@@ -352,7 +352,7 @@ void blit_modification::operator()(surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	if(y_ >= src->h) {
+	if(y_ >= src->h){
 		std::stringstream sstr;
 		sstr << "~BLIT(): y-coordinate '"
 			<< y_ << "' larger than destination image's height '"
@@ -361,7 +361,7 @@ void blit_modification::operator()(surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	if(surf_->w + x_ < 0) {
+	if(surf_->w + x_ < 0){
 		std::stringstream sstr;
 		sstr << "~BLIT(): offset and width '"
 			<< x_ + surf_->w << "' less than zero no blitting performed.\n";
@@ -369,7 +369,7 @@ void blit_modification::operator()(surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	if(surf_->h + y_ < 0) {
+	if(surf_->h + y_ < 0){
 		std::stringstream sstr;
 		sstr << "~BLIT(): offset and height '"
 			<< y_ + surf_->h << "' less than zero no blitting performed.\n";
@@ -383,7 +383,7 @@ void blit_modification::operator()(surface& src) const
 
 void mask_modification::operator()(surface& src) const
 {
-	if(src->w == mask_->w && src->h == mask_->h && x_ == 0 && y_ == 0) {
+	if(src->w == mask_->w && src->h == mask_->h && x_ == 0 && y_ == 0){
 		mask_surface(src, mask_);
 		return;
 	}
@@ -396,10 +396,10 @@ void mask_modification::operator()(surface& src) const
 
 void light_modification::operator()(surface& src) const
 {
-	if(src == nullptr) { return; }
+	if(src == nullptr){ return; }
 
 	// light_surface wants a neutral surface having same dimensions
-	if(surf_->w != src->w || surf_->h != src->h) {
+	if(surf_->w != src->w || surf_->h != src->h){
 		light_surface(src, scale_surface(surf_, src->w, src->h));
 	} else {
 		light_surface(src, surf_);
@@ -410,19 +410,19 @@ void scale_modification::operator()(surface& src) const
 {
 	point size = target_size_;
 
-	if(size.x <= 0) {
+	if(size.x <= 0){
 		size.x = src->w;
-	} else if(flags_ & X_BY_FACTOR) {
+	} else if(flags_ & X_BY_FACTOR){
 		size.x = src->w * (static_cast<double>(size.x) / 100);
 	}
 
-	if(size.y <= 0) {
+	if(size.y <= 0){
 		size.y = src->h;
-	} else if(flags_ & Y_BY_FACTOR) {
+	} else if(flags_ & Y_BY_FACTOR){
 		size.y = src->h * (static_cast<double>(size.y) / 100);
 	}
 
-	if(flags_ & PRESERVE_ASPECT_RATIO) {
+	if(flags_ & PRESERVE_ASPECT_RATIO){
 		const auto ratio = std::min(
 			static_cast<long double>(size.x) / src->w,
 			static_cast<long double>(size.y) / src->h
@@ -434,7 +434,7 @@ void scale_modification::operator()(surface& src) const
 		};
 	}
 
-	if(flags_ & SCALE_SHARP) {
+	if(flags_ & SCALE_SHARP){
 		src = scale_surface_sharp(src, size.x, size.y);
 	} else {
 		src = scale_surface_legacy(src, size.x, size.y);
@@ -443,7 +443,7 @@ void scale_modification::operator()(surface& src) const
 
 void xbrz_modification::operator()(surface& src) const
 {
-	if(z_ != 1) {
+	if(z_ != 1){
 		src = scale_surface_xbrz(src, z_);
 	}
 }
@@ -454,17 +454,17 @@ void xbrz_modification::operator()(surface& src) const
  */
 void o_modification::operator()(surface& src) const
 {
-	if(src) {
+	if(src){
 		uint8_t alpha_mod = float_to_color(opacity_);
 
 		surface_lock lock(src);
 		uint32_t* beg = lock.pixels();
 		uint32_t* end = beg + src.area();
 
-		while(beg != end) {
+		while(beg != end){
 			uint8_t alpha = (*beg) >> 24;
 
-			if(alpha) {
+			if(alpha){
 				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
@@ -481,7 +481,7 @@ void o_modification::operator()(surface& src) const
 
 void cs_modification::operator()(surface& src) const
 {
-	if((r_ != 0 || g_ != 0 || b_ != 0)) {
+	if((r_ != 0 || g_ != 0 || b_ != 0)){
 		adjust_surface_color(src, r_, g_, b_);
 	}
 }
@@ -538,14 +538,14 @@ REGISTER_MOD_PARSER(TC, args)
 {
 	const auto params = utils::split_view(args,',');
 
-	if(params.size() < 2) {
+	if(params.size() < 2){
 		ERR_DP << "too few arguments passed to the ~TC() function";
 
 		return nullptr;
 	}
 
 	const int side_n = utils::from_chars<int>(params[0]).value_or(-1);
-	if(side_n < 1) {
+	if(side_n < 1){
 		ERR_DP << "Invalid side (" << params[0] << ") passed to the ~TC() function";
 		return nullptr;
 	}
@@ -566,7 +566,7 @@ REGISTER_MOD_PARSER(TC, args)
 		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
 		rc_map = recolor_range(new_color,old_color);
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_DP << "caught config::error while processing TC: " << e.message;
 		ERR_DP << "bailing out from TC";
 
@@ -581,7 +581,7 @@ REGISTER_MOD_PARSER(RC, args)
 {
 	const auto recolor_params = utils::split_view(args,'>');
 
-	if(recolor_params.size() <= 1) {
+	if(recolor_params.size() <= 1){
 		return nullptr;
 	}
 
@@ -594,7 +594,7 @@ REGISTER_MOD_PARSER(RC, args)
 		const std::vector<color_t>& old_color = game_config::tc_info(recolor_params[0]);
 
 		rc_map = recolor_range(new_color,old_color);
-	} catch (const config::error& e) {
+	} catch (const config::error& e){
 		ERR_DP
 			<< "caught config::error while processing color-range RC: "
 			<< e.message;
@@ -610,7 +610,7 @@ REGISTER_MOD_PARSER(PAL, args)
 {
 	const auto remap_params = utils::split_view(args,'>');
 
-	if(remap_params.size() < 2) {
+	if(remap_params.size() < 2){
 		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args;
 
 		return nullptr;
@@ -621,12 +621,12 @@ REGISTER_MOD_PARSER(PAL, args)
 		const std::vector<color_t>& old_palette = game_config::tc_info(remap_params[0]);
 		const std::vector<color_t>& new_palette =game_config::tc_info(remap_params[1]);
 
-		for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
+		for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i){
 			rc_map[old_palette[i]] = new_palette[i];
 		}
 
 		return std::make_unique<rc_modification>(rc_map);
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_DP
 			<< "caught config::error while processing PAL function: "
 			<< e.message;
@@ -651,7 +651,7 @@ REGISTER_MOD_PARSER(ROTATE, args)
 {
 	const auto slice_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 
-	switch(slice_params.size()) {
+	switch(slice_params.size()){
 		case 0:
 			return std::make_unique<rotate_modification>();
 		case 1:
@@ -671,13 +671,13 @@ REGISTER_MOD_PARSER(ROTATE, args)
 }
 
 // Grayscale
-REGISTER_MOD_PARSER(GS, )
+REGISTER_MOD_PARSER(GS,)
 {
 	return std::make_unique<gs_modification>();
 }
 
 // crop transparent padding
-REGISTER_MOD_PARSER(CROP_TRANSPARENCY, )
+REGISTER_MOD_PARSER(CROP_TRANSPARENCY,)
 {
 	return std::make_unique<crop_transparency_modification>();
 }
@@ -693,19 +693,19 @@ REGISTER_MOD_PARSER(BW, args)
 {
 	const auto params = utils::split_view(args, ',');
 
-	if(params.size() != 1) {
+	if(params.size() != 1){
 		ERR_DP << "~BW() requires  exactly one argument";
 		return nullptr;
 	}
 
 	// TODO: maybe get this directly as uint8_t?
 	const auto threshold = utils::from_chars<int>(params[0]);
-	if(!threshold) {
+	if(!threshold){
 		ERR_DP << "unsupported argument in ~BW() function";
 		return nullptr;
 	}
 
-	if(!in_range(*threshold, 0, 255)) {
+	if(!in_range(*threshold, 0, 255)){
 		ERR_DP << "~BW() argument out of range 0 - 255";
 		return nullptr;
 	}
@@ -714,7 +714,7 @@ REGISTER_MOD_PARSER(BW, args)
 }
 
 // Sepia
-REGISTER_MOD_PARSER(SEPIA, )
+REGISTER_MOD_PARSER(SEPIA,)
 {
 	return std::make_unique<sepia_modification>();
 }
@@ -724,7 +724,7 @@ REGISTER_MOD_PARSER(NEG, args)
 {
 	const auto params = utils::split_view(args, ',');
 
-	switch(params.size()) {
+	switch(params.size()){
 	case 0:
 		// apparently -1 may be a magic number but this is the threshold
 		// value required to fully invert a channel
@@ -733,7 +733,7 @@ REGISTER_MOD_PARSER(NEG, args)
 	case 1: {
 		const auto threshold = utils::from_chars<int>(params[0]);
 
-		if(threshold && in_range(*threshold, -1, 255)) {
+		if(threshold && in_range(*threshold, -1, 255)){
 			return std::make_unique<negative_modification>(*threshold, *threshold, *threshold);
 		} else {
 			ERR_DP << "unsupported argument value in ~NEG() function";
@@ -746,7 +746,7 @@ REGISTER_MOD_PARSER(NEG, args)
 		const auto thG = utils::from_chars<int>(params[1]);
 		const auto thB = utils::from_chars<int>(params[2]);
 
-		if(thR && thG && thB && in_range(*thR, -1, 255) && in_range(*thG, -1, 255) && in_range(*thB, -1, 255)) {
+		if(thR && thG && thB && in_range(*thR, -1, 255) && in_range(*thG, -1, 255) && in_range(*thB, -1, 255)){
 			return std::make_unique<negative_modification>(*thR, *thG, *thB);
 		} else {
 			ERR_DP << "unsupported argument value in ~NEG() function";
@@ -761,13 +761,13 @@ REGISTER_MOD_PARSER(NEG, args)
 }
 
 // Plot Alpha
-REGISTER_MOD_PARSER(PLOT_ALPHA, )
+REGISTER_MOD_PARSER(PLOT_ALPHA,)
 {
 	return std::make_unique<plot_alpha_modification>();
 }
 
 // Wipe Alpha
-REGISTER_MOD_PARSER(WIPE_ALPHA, )
+REGISTER_MOD_PARSER(WIPE_ALPHA,)
 {
 	return std::make_unique<wipe_alpha_modification>();
 }
@@ -779,7 +779,7 @@ REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
 	// (A comma in a formula is only valid in function parameters or list/map literals, so this should always work.)
 	const std::vector<std::string>& params = utils::parenthetical_split(args, ',', "([", ")]");
 
-	if(params.size() != 1) {
+	if(params.size() != 1){
 		ERR_DP << "~ADJUST_ALPHA() requires exactly 1 arguments";
 		return nullptr;
 	}
@@ -794,7 +794,7 @@ REGISTER_MOD_PARSER(CHAN, args)
 	// (A comma in a formula is only valid in function parameters or list/map literals, so this should always work.)
 	const std::vector<std::string>& params = utils::parenthetical_split(args, ',', "([", ")]");
 
-	if(params.size() < 1 || params.size() > 4) {
+	if(params.size() < 1 || params.size() > 4){
 		ERR_DP << "~CHAN() requires 1 to 4 arguments";
 		return nullptr;
 	}
@@ -808,7 +808,7 @@ REGISTER_MOD_PARSER(CS, args)
 	const auto factors = utils::split_view(args, ',');
 	const std::size_t s = factors.size();
 
-	if(s == 0) {
+	if(s == 0){
 		ERR_DP << "no arguments passed to the ~CS() function";
 		return nullptr;
 	}
@@ -817,10 +817,10 @@ REGISTER_MOD_PARSER(CS, args)
 
 	r = utils::from_chars<int>(factors[0]).value_or(0);
 
-	if(s > 1 ) {
+	if(s > 1){
 		g = utils::from_chars<int>(factors[1]).value_or(0);
 	}
-	if(s > 2 ) {
+	if(s > 2){
 		b = utils::from_chars<int>(factors[2]).value_or(0);
 	}
 
@@ -832,7 +832,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 {
 	const auto params = utils::split_view(args, ',');
 
-	if(params.size() != 4) {
+	if(params.size() != 4){
 		ERR_DP << "~BLEND() requires exactly 4 arguments";
 		return nullptr;
 	}
@@ -863,7 +863,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	const auto slice_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 	const std::size_t s = slice_params.size();
 
-	if(s == 0 || (s == 1 && slice_params[0].empty())) {
+	if(s == 0 || (s == 1 && slice_params[0].empty())){
 		ERR_DP << "no arguments passed to the ~CROP() function";
 		return nullptr;
 	}
@@ -872,13 +872,13 @@ REGISTER_MOD_PARSER(CROP, args)
 
 	slice_rect.x = utils::from_chars<int16_t>(slice_params[0]).value_or(0);
 
-	if(s > 1) {
+	if(s > 1){
 		slice_rect.y = utils::from_chars<int16_t>(slice_params[1]).value_or(0);
 	}
-	if(s > 2) {
+	if(s > 2){
 		slice_rect.w = utils::from_chars<uint16_t>(slice_params[2]).value_or(0);
 	}
-	if(s > 3) {
+	if(s > 3){
 		slice_rect.h = utils::from_chars<uint16_t>(slice_params[3]).value_or(0);
 	}
 
@@ -911,7 +911,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 
 	int x = 0, y = 0;
 
-	if(s == 3) {
+	if(s == 3){
 		x = utils::from_chars<int>(param[1]).value_or(0);
 		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
@@ -939,12 +939,12 @@ REGISTER_MOD_PARSER(MASK, args)
 
 	int x = 0, y = 0;
 
-	if(s == 3) {
+	if(s == 3){
 		x = utils::from_chars<int>(param[1]).value_or(0);
 		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
 
-	if(x < 0 || y < 0) {
+	if(x < 0 || y < 0){
 		ERR_DP << "negative position arguments in ~MASK() function";
 		return nullptr;
 	}
@@ -975,7 +975,7 @@ namespace
 {
 std::pair<int, bool> parse_scale_value(std::string_view arg)
 {
-	if(const std::size_t pos = arg.rfind('%'); pos != std::string_view::npos) {
+	if(const std::size_t pos = arg.rfind('%'); pos != std::string_view::npos){
 		return { utils::from_chars<int>(arg.substr(0, pos)).value_or(0), true };
 	} else {
 		return { utils::from_chars<int>(arg).value_or(0), false };
@@ -988,24 +988,24 @@ utils::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view arg
 	const auto scale_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 	const std::size_t num_args = scale_params.size();
 
-	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())) {
+	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())){
 		return utils::nullopt;
 	}
 
 	uint8_t flags = 0;
 	std::array<int, 2> parsed_sizes{0,0};
 
-	for(unsigned i = 0; i < std::min<unsigned>(2, num_args); ++i) {
+	for(unsigned i = 0; i < std::min<unsigned>(2, num_args); ++i){
 		const auto& [size, relative] = parse_scale_value(scale_params[i]);
 
-		if(size < 0) {
+		if(size < 0){
 			ERR_DP << "Negative size passed to scaling IPF. Original image dimension will be used instead";
 			continue;
 		}
 
 		parsed_sizes[i] = size;
 
-		if(relative) {
+		if(relative){
 			flags |= (i == 0 ? scale_modification::X_BY_FACTOR : scale_modification::Y_BY_FACTOR);
 		}
 	}
@@ -1018,7 +1018,7 @@ utils::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view arg
 // Scale
 REGISTER_MOD_PARSER(SCALE, args)
 {
-	if(auto params = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)){
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
 		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
@@ -1029,7 +1029,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
-	if(auto params = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)){
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
 		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
@@ -1040,7 +1040,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
-	if(auto params = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)){
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
 		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
@@ -1051,7 +1051,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
-	if(auto params = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)){
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
 		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
@@ -1079,7 +1079,7 @@ REGISTER_MOD_PARSER(O, args)
 {
 	const std::string::size_type p100_pos = args.find('%');
 	float num = 0.0f;
-	if(p100_pos == std::string::npos) {
+	if(p100_pos == std::string::npos){
 		num = lexical_cast_default<float, std::string_view>(args);
 	} else {
 		// make multiplier
@@ -1116,20 +1116,20 @@ REGISTER_MOD_PARSER(B, args)
 	return std::make_unique<cs_modification>(0, 0, b);
 }
 
-REGISTER_MOD_PARSER(NOP, )
+REGISTER_MOD_PARSER(NOP,)
 {
 	return nullptr;
 }
 
 // Only used to tag terrain images which should not be color-shifted by ToD
-REGISTER_MOD_PARSER(NO_TOD_SHIFT, )
+REGISTER_MOD_PARSER(NO_TOD_SHIFT,)
 {
 	return nullptr;
 }
 
 // Fake image function used by GUI2 portraits until
 // Mordante gets rid of it. *tsk* *tsk*
-REGISTER_MOD_PARSER(RIGHT, )
+REGISTER_MOD_PARSER(RIGHT,)
 {
 	return nullptr;
 }
@@ -1140,7 +1140,7 @@ REGISTER_MOD_PARSER(BG, args)
 	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
 	const auto factors = utils::split_view(args, ',');
 
-	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
+	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i){
 		c[i] = utils::from_chars<int>(factors[i]).value_or(0);
 	}
 
@@ -1153,20 +1153,20 @@ REGISTER_MOD_PARSER(SWAP, args)
 	const auto params = utils::split_view(args, ',', utils::STRIP_SPACES);
 
 	// accept 3 arguments (rgb) or 4 (rgba)
-	if(params.size() != 3 && params.size() != 4) {
+	if(params.size() != 3 && params.size() != 4){
 		ERR_DP << "incorrect number of arguments in ~SWAP() function, they must be 3 or 4";
 		return nullptr;
 	}
 
 	channel redValue, greenValue, blueValue, alphaValue;
 	// compare the parameter's value with the constants defined in the channels enum
-	if(params[0] == "red") {
+	if(params[0] == "red"){
 		redValue = RED;
-	} else if(params[0] == "green") {
+	} else if(params[0] == "green"){
 		redValue = GREEN;
-	} else if(params[0] == "blue") {
+	} else if(params[0] == "blue"){
 		redValue = BLUE;
-	} else if(params[0] == "alpha") {
+	} else if(params[0] == "alpha"){
 		redValue = ALPHA;
 	} else {
 		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
@@ -1174,26 +1174,26 @@ REGISTER_MOD_PARSER(SWAP, args)
 	}
 
 	// wash, rinse and repeat for the other three channels
-	if(params[1] == "red") {
+	if(params[1] == "red"){
 		greenValue = RED;
-	} else if(params[1] == "green") {
+	} else if(params[1] == "green"){
 		greenValue = GREEN;
-	} else if(params[1] == "blue") {
+	} else if(params[1] == "blue"){
 		greenValue = BLUE;
-	} else if(params[1] == "alpha") {
+	} else if(params[1] == "alpha"){
 		greenValue = ALPHA;
 	} else {
 		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
 		return nullptr;
 	}
 
-	if(params[2] == "red") {
+	if(params[2] == "red"){
 		blueValue = RED;
-	} else if(params[2] == "green") {
+	} else if(params[2] == "green"){
 		blueValue = GREEN;
-	} else if(params[2] == "blue") {
+	} else if(params[2] == "blue"){
 		blueValue = BLUE;
-	} else if(params[2] == "alpha") {
+	} else if(params[2] == "alpha"){
 		blueValue = ALPHA;
 	} else {
 		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
@@ -1202,16 +1202,16 @@ REGISTER_MOD_PARSER(SWAP, args)
 
 	// additional check: the params vector may not have a fourth elementh
 	// if so, default to the same channel
-	if(params.size() == 3) {
+	if(params.size() == 3){
 		alphaValue = ALPHA;
 	} else {
-		if(params[3] == "red") {
+		if(params[3] == "red"){
 			alphaValue = RED;
-		} else if(params[3] == "green") {
+		} else if(params[3] == "green"){
 			alphaValue = GREEN;
-		} else if(params[3] == "blue") {
+		} else if(params[3] == "blue"){
 			alphaValue = BLUE;
-		} else if(params[3] == "alpha") {
+		} else if(params[3] == "alpha"){
 			alphaValue = ALPHA;
 		} else {
 			ERR_DP << "unsupported argument value in ~SWAP() function: " << params[3];

@@ -44,23 +44,23 @@ namespace gui2::dialogs
 {                                                                                                                                  \
 toggle_button* sound = find_widget<toggle_button>(prefs_list::pref_item_sound, false, true);                              \
 sound->set_value(prefs::get().pref_item_sound());                                                                                  \
-connect_signal_mouse_left_click(*sound, [sound](auto&&...) { prefs::get().set_##pref_item_sound(sound->get_value_bool()); });    \
+connect_signal_mouse_left_click(*sound, [sound](auto&&...){ prefs::get().set_##pref_item_sound(sound->get_value_bool()); });    \
 \
 toggle_button* notif = find_widget<toggle_button>(prefs_list::pref_item_notif, false, true);                              \
 \
-if (!desktop::notifications::available()) {                                                                                        \
+if(!desktop::notifications::available()){                                                                                        \
 	notif->set_value(false);                                                                                                       \
 	notif->set_active(false);                                                                                                      \
 	prefs::get().set_##pref_item_notif(false);                                                                                     \
 } else {                                                                                                                           \
 	notif->set_active(true);                                                                                                       \
 	notif->set_value(prefs::get().pref_item_notif());                                                                              \
-	connect_signal_mouse_left_click(*notif, [notif](auto&&...) { prefs::get().set_##pref_item_notif(notif->get_value_bool()); });\
+	connect_signal_mouse_left_click(*notif, [notif](auto&&...){ prefs::get().set_##pref_item_notif(notif->get_value_bool()); });\
 }                                                                                                                                  \
 \
 toggle_button* lobby = find_widget<toggle_button>(prefs_list::pref_item_lobby, false, true);                              \
 lobby->set_value(prefs::get().pref_item_lobby());                                                                                  \
-connect_signal_mouse_left_click(*lobby, [lobby](auto&&...) { prefs::get().set_##pref_item_lobby(lobby->get_value_bool()); });    \
+connect_signal_mouse_left_click(*lobby, [lobby](auto&&...){ prefs::get().set_##pref_item_lobby(lobby->get_value_bool()); });    \
 }
 
 /**
@@ -114,7 +114,7 @@ void mp_alerts_options::pre_show()
 	SETUP_ITEMS(turn_changed_notif, turn_changed_notif, turn_changed_lobby)
 	SETUP_ITEMS(game_created_sound, game_created_notif, game_created_lobby)
 
-	if (!desktop::notifications::available()) {
+	if(!desktop::notifications::available()){
 		label* nlabel = find_widget<label>("notification_label", false, true);
 		nlabel->set_tooltip(_("This build of wesnoth does not include support for desktop notifications, contact your package manager"));
 	}
@@ -133,7 +133,7 @@ void mp_alerts_options::pre_show()
 	in_lobby->set_visible(widget::visibility::invisible);
 
 	button& defaults = find_widget<button>("revert_to_defaults");
-	connect_signal_mouse_left_click(defaults, [this](auto&&...) { revert_to_default_pref_values(*this); });
+	connect_signal_mouse_left_click(defaults, [this](auto&&...){ revert_to_default_pref_values(*this); });
 }
 
 void mp_alerts_options::post_show()

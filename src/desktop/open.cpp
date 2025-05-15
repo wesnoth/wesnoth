@@ -59,10 +59,10 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 
 	const pid_t child = fork();
 
-	if(child == -1) {
+	if(child == -1){
 		ERR_DU << "open_object(): fork() failed";
 		return false;
-	} else if(child == 0) {
+	} else if(child == 0){
 		execlp(launcher, launcher, path_or_url.c_str(), nullptr);
 		_exit(1); // This shouldn't happen.
 	}
@@ -79,7 +79,7 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
 
 	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(nullptr, L"open", u16path.c_str(), nullptr, nullptr, SW_SHOW));
-	if(res <= 32) {
+	if(res <= 32){
 		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")";
 		return false;
 	}

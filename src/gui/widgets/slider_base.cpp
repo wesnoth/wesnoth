@@ -30,7 +30,7 @@ namespace
 {
 int rounded_division(int value, int new_base, int old_base)
 {
-	if(old_base == 0) {
+	if(old_base == 0){
 		return new_base / 2;
 	} else {
 		return ::rounded_division(value * new_base, old_base);
@@ -65,7 +65,7 @@ slider_base::slider_base(const implementation::builder_styled_widget& builder, c
 
 void slider_base::scroll(const scroll_mode scroll)
 {
-	switch(scroll) {
+	switch(scroll){
 	case BEGIN:
 		set_slider_position(0);
 		break;
@@ -115,7 +115,7 @@ void slider_base::place(const point& origin, const point& size)
 
 void slider_base::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -143,7 +143,7 @@ void slider_base::set_slider_position(int item_position)
 
 void slider_base::update_canvas()
 {
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
 		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
@@ -153,7 +153,7 @@ void slider_base::update_canvas()
 
 void slider_base::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -163,7 +163,7 @@ void slider_base::recalculate()
 {
 	// We can be called before the size has been set up in that case we can't do
 	// the proper recalcultion so stop before we die with an assert.
-	if(!get_length()) {
+	if(!get_length()){
 		return;
 	}
 
@@ -192,11 +192,11 @@ void slider_base::update_slider_position(slider_base::slider_position_t& pos)
 {
 	int new_position = rounded_division(pos.offset, item_last_, pos.max_offset);
 
-	if(snap_) {
+	if(snap_){
 		pos.offset = rounded_division(new_position, pos.max_offset, item_last_);
 	}
 
-	if(new_position != item_position_) {
+	if(new_position != item_position_){
 		item_position_ = new_position;
 
 		child_callback_positioner_moved();
@@ -222,9 +222,9 @@ void slider_base::signal_handler_mouse_motion(
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	switch(state_) {
+	switch(state_){
 	case ENABLED:
-		if(on_positioner(mouse)) {
+		if(on_positioner(mouse)){
 			set_state(FOCUSED);
 		}
 
@@ -235,7 +235,7 @@ void slider_base::signal_handler_mouse_motion(
 		break;
 
 	case FOCUSED:
-		if(!on_positioner(mouse)) {
+		if(!on_positioner(mouse)){
 			set_state(ENABLED);
 		}
 
@@ -258,7 +258,7 @@ void slider_base::signal_handler_mouse_leave(const event::ui_event event, bool& 
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(state_ == FOCUSED) {
+	if(state_ == FOCUSED){
 		set_state(ENABLED);
 	}
 
@@ -273,7 +273,7 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event, b
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	if(on_positioner(mouse)) {
+	if(on_positioner(mouse)){
 		assert(get_window());
 
 		drag_initial_mouse_ = mouse;
@@ -285,9 +285,9 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event, b
 
 	const int bar = on_bar(mouse);
 
-	if(bar == -1) {
+	if(bar == -1){
 		scroll(JUMP_BACKWARDS);
-	} else if(bar == 1) {
+	} else if(bar == 1){
 		scroll(JUMP_FORWARD);
 	} else {
 		assert(bar == 0);
@@ -304,14 +304,14 @@ void slider_base::signal_handler_left_button_up(const event::ui_event event, boo
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	if(state_ != PRESSED) {
+	if(state_ != PRESSED){
 		return;
 	}
 
 	assert(get_window());
 	get_window()->mouse_capture(false);
 
-	if(on_positioner(mouse)) {
+	if(on_positioner(mouse)){
 		set_state(FOCUSED);
 	} else {
 		set_state(ENABLED);
@@ -326,7 +326,7 @@ void slider_base::signal_handler_left_button_up(const event::ui_event event, boo
 void slider_base::finalize_setup()
 {
 	// These values won't change so set them once.
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("offset_before", wfl::variant(offset_before()));
 		tmp.set_variable("offset_after", wfl::variant(offset_after()));
 	}

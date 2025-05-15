@@ -33,7 +33,7 @@ namespace lua_cpp {
 
 char const * cpp_function = "CPP_Function";
 
-static int intf_dispatcher ( lua_State* L )
+static int intf_dispatcher (lua_State* L)
 {
 	//make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
 	lua_function f = * static_cast<lua_function *> (luaL_checkudata(L, 1, cpp_function));
@@ -43,11 +43,11 @@ static int intf_dispatcher ( lua_State* L )
 	return result;
 }
 
-static int intf_cleanup ( lua_State* L )
+static int intf_cleanup (lua_State* L)
 {
 	lua_function * d = static_cast< lua_function *> (luaL_testudata(L, 1, cpp_function));
-	if (d == nullptr) {
-		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) );
+	if(d == nullptr){
+		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename(L, lua_type(L, 1));
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org";
 		lua_pushstring(L, "C++ function object garbage collection failure");
 		lua_error(L);
@@ -57,7 +57,7 @@ static int intf_cleanup ( lua_State* L )
 	return 0;
 }
 
-static int intf_tostring( lua_State* L )
+static int intf_tostring(lua_State* L)
 {
 	lua_function * d = static_cast< lua_function *> (luaL_checkudata(L, 1, cpp_function));
 	// d is not null, if it was null then checkudata raised a lua error and a longjump was executed.
@@ -67,7 +67,7 @@ static int intf_tostring( lua_State* L )
 	return 1;
 }
 
-void register_metatable ( lua_State* L )
+void register_metatable (lua_State* L)
 {
 	luaL_newmetatable(L, cpp_function);
 	lua_pushcfunction(L, intf_dispatcher);
@@ -84,46 +84,46 @@ void register_metatable ( lua_State* L )
 	lua_pop(L, 1);
 }
 
-void push_function( lua_State* L, const lua_function & f )
+void push_function(lua_State* L, const lua_function & f)
 {
 	new(L) lua_function(f);
 	luaL_setmetatable(L, cpp_function);
 }
 
-void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions)
+void set_functions(lua_State* L, const std::vector<lua_cpp::Reg>& functions)
 {
 	luaL_checkversion(L);
-	for (const lua_cpp::Reg& l : functions) {  /* fill the table with given functions */
-		if (l.name != nullptr) {
+	for(const lua_cpp::Reg& l : functions){  /* fill the table with given functions */
+		if(l.name != nullptr){
 			push_function(L, l.func);
 			lua_setfield(L, -2, l.name);
 		}
 	}
 }
 
-static int intf_closure_dispatcher( lua_State* L )
+static int intf_closure_dispatcher(lua_State* L)
 {
 	lua_function * f = static_cast< lua_function *> (luaL_checkudata(L, lua_upvalueindex(1), cpp_function)); //assume the std::function is the first upvalue
 	return (*f)(L);
 }
 
-void push_closure( lua_State* L, const lua_function & f, int nup)
+void push_closure(lua_State* L, const lua_function & f, int nup)
 {
 	push_function(L, f);
 	lua_insert(L, -(1+nup)); //move the function beneath the upvalues
 	lua_pushcclosure(L, &intf_closure_dispatcher, 1+nup);
 }
 
-void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup )
+void set_functions(lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup)
 {
 	luaL_checkversion(L);
 	luaL_checkstack(L, nup+1, "too many upvalues");
-	for (const lua_cpp::Reg& l : functions) {  /* fill the table with given functions */
-		if (l.name == nullptr) {
+	for(const lua_cpp::Reg& l : functions){  /* fill the table with given functions */
+		if(l.name == nullptr){
 			continue;
 		}
 		int i;
-		for (i = 0; i < nup; ++i)  /* copy upvalues to the top */
+		for(i = 0; i < nup; ++i)  /* copy upvalues to the top */
 			lua_pushvalue(L, -nup);
 		push_closure(L, l.func, nup);  /* closure with those upvalues */
 		lua_setfield(L, -(nup + 2), l.name);

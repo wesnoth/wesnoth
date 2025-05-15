@@ -54,7 +54,7 @@ protected:
 	std::string get_command_flags_description(
 		const map_command_handler<chat_command_handler>::command& c) const
 	{
-		if (c.has_flag('A')) {
+		if(c.has_flag('A')) {
 			return std::string(" ") + _("(admin only)");
 		}
 		else {

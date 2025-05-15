@@ -55,7 +55,7 @@ scrollbar::scrollbar()
 {
 	const point img_size(image::get_size(scrollbar_mid));
 
-	if (img_size.x && img_size.y) {
+	if(img_size.x && img_size.y){
 		set_width(img_size.x);
 		// this is a bit rough maybe
 		minimum_grip_height_ = 2 * img_size.y;
@@ -74,9 +74,9 @@ unsigned scrollbar::get_max_position() const
 
 void scrollbar::set_position(unsigned pos)
 {
-	if (pos > full_height_ - grip_height_)
+	if(pos > full_height_ - grip_height_)
 		pos = full_height_ - grip_height_;
-	if (pos == grip_position_)
+	if(pos == grip_position_)
 		return;
 	grip_position_ = pos;
 	queue_redraw();
@@ -84,16 +84,16 @@ void scrollbar::set_position(unsigned pos)
 
 void scrollbar::adjust_position(unsigned pos)
 {
-	if (pos < grip_position_)
+	if(pos < grip_position_)
 		set_position(pos);
-	else if (pos >= grip_position_ + grip_height_)
+	else if(pos >= grip_position_ + grip_height_)
 		set_position(pos - (grip_height_ - 1));
 }
 
 void scrollbar::move_position(int dep)
 {
 	int pos = grip_position_ + dep;
-	if (pos > 0)
+	if(pos > 0)
 		set_position(pos);
 	else
 		set_position(0);
@@ -101,13 +101,13 @@ void scrollbar::move_position(int dep)
 
 void scrollbar::set_shown_size(unsigned h)
 {
-	if (h > full_height_)
+	if(h > full_height_)
 		h = full_height_;
-	if (h == grip_height_)
+	if(h == grip_height_)
 		return;
 	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	grip_height_ = h;
-	if (at_bottom)
+	if(at_bottom)
 		grip_position_ = get_max_position();
 	set_position(grip_position_);
 	queue_redraw();
@@ -115,11 +115,11 @@ void scrollbar::set_shown_size(unsigned h)
 
 void scrollbar::set_full_size(unsigned h)
 {
-	if (h == full_height_)
+	if(h == full_height_)
 		return;
 	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	full_height_ = h;
-	if (at_bottom)
+	if(at_bottom)
 		grip_position_ = get_max_position();
 	set_shown_size(grip_height_);
 	set_position(grip_position_);
@@ -144,10 +144,10 @@ void scrollbar::scroll_up()
 SDL_Rect scrollbar::grip_area() const
 {
 	const SDL_Rect& loc = location();
-	if (full_height_ == grip_height_)
+	if(full_height_ == grip_height_)
 		return loc;
 	int h = static_cast<int>(loc.h) * grip_height_ / full_height_;
-	if (h < minimum_grip_height_)
+	if(h < minimum_grip_height_)
 		h = minimum_grip_height_;
 	int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
 	return {loc.x, y, loc.w, h};
@@ -159,7 +159,7 @@ void scrollbar::draw_contents()
 	texture bot_img;
 	texture top_img;
 
-	switch (state_) {
+	switch (state_){
 
 	case NORMAL:
 		top_img = image::get_texture(scrollbar_top);
@@ -187,7 +187,7 @@ void scrollbar::draw_contents()
 	SDL_Rect grip = grip_area();
 
 	int mid_height = grip.h - top_img.h() - bot_img.h();
-	if (mid_height <= 0) {
+	if(mid_height <= 0){
 		// For now, minimum size of the middle piece is 1.
 		// This should never really be encountered, and if it is,
 		// it's a symptom of a larger problem, I think.
@@ -196,7 +196,7 @@ void scrollbar::draw_contents()
 
 	SDL_Rect groove = location();
 
-	if (grip.h > groove.h) {
+	if(grip.h > groove.h){
 		PLAIN_LOG << "abort draw scrollbar: grip too large";
 		return;
 	}
@@ -220,7 +220,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 {
 	gui::widget::handle_event(event);
 
-	if (mouse_locked() || hidden())
+	if(mouse_locked() || hidden())
 		return;
 
 	STATE new_state = state_;
@@ -228,7 +228,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	const rect& groove = location();
 
 
-	switch (event.type) {
+	switch (event.type){
 	case SDL_MOUSEBUTTONUP:
 	{
 		const SDL_MouseButtonEvent& e = event.button;
@@ -241,15 +241,15 @@ void scrollbar::handle_event(const SDL_Event& event)
 		const SDL_MouseButtonEvent& e = event.button;
 		bool on_grip = grip.contains(e.x, e.y);
 		bool on_groove = groove.contains(e.x, e.y);
-		if (on_grip && e.button == SDL_BUTTON_LEFT) {
+		if(on_grip && e.button == SDL_BUTTON_LEFT){
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
-		} else if (on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h) {
-			if (e.y < grip.y)
+		} else if(on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h){
+			if(e.y < grip.y)
 				move_position(-static_cast<int>(grip_height_));
 			else
 				move_position(grip_height_);
-		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE && groove.h != grip.h) {
+		} else if(on_groove && e.button == SDL_BUTTON_MIDDLE && groove.h != grip.h){
 			int y_dep = e.y - grip.y - grip.h/2;
 			int dep = y_dep * int(full_height_ - grip_height_)/ (groove.h - grip.h);
 			move_position(dep);
@@ -259,10 +259,10 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEMOTION:
 	{
 		const SDL_MouseMotionEvent& e = event.motion;
-		if (state_ == NORMAL || state_ == ACTIVE) {
+		if(state_ == NORMAL || state_ == ACTIVE){
 			bool on_grip = grip.contains(e.x, e.y);
 			new_state = on_grip ? ACTIVE : NORMAL;
-		} else if (state_ == DRAGGED && groove.h != grip.h) {
+		} else if(state_ == DRAGGED && groove.h != grip.h){
 			int y_dep = e.y - grip.y - mousey_on_grip_;
 			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) / (groove.h - grip.h);
 			move_position(dep);
@@ -273,9 +273,9 @@ void scrollbar::handle_event(const SDL_Event& event)
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
 		bool on_groove = groove.contains(sdl::get_mouse_location());
-		if (on_groove && e.y < 0) {
+		if(on_groove && e.y < 0){
 			move_position(scroll_rate_);
-		} else if (on_groove && e.y > 0) {
+		} else if(on_groove && e.y > 0){
 			move_position(-scroll_rate_);
 		}
 		break;
@@ -285,7 +285,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	}
 
 
-	if (new_state != state_) {
+	if(new_state != state_){
 		state_ = new_state;
 		queue_redraw();
 	}

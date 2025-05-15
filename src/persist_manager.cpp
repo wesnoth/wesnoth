@@ -21,7 +21,7 @@ persist_manager::persist_manager()
 	, contexts_()
 {}
 
-persist_manager::~persist_manager() {
+persist_manager::~persist_manager(){
 	cancel_transaction();
 }
 
@@ -30,41 +30,41 @@ persist_context &persist_manager::get_context(const std::string &ns)
 	persist_context::name_space name(ns,true);
 	std::string key(name.root_);
 	context_map::iterator iter = contexts_.find(key);
-	if (iter == contexts_.end()) {
+	if(iter == contexts_.end()){
 		auto pfc = std::make_unique<persist_file_context>(key);
-		if (in_transaction_) pfc->start_transaction();
+		if(in_transaction_) pfc->start_transaction();
 		std::tie(iter, std::ignore) = contexts_.emplace(key, std::move(pfc));
 	}
 	auto& ret = iter->second;
-	if (ret->get_node() != ns)
+	if(ret->get_node() != ns)
 		ret->set_node(name.descendants_);
 	return *ret;
 }
 
-bool persist_manager::start_transaction() {
-	if (in_transaction_) return false;
+bool persist_manager::start_transaction(){
+	if(in_transaction_) return false;
 	bool result = true;
-	for (context_map::reference ctx : contexts_) {
+	for(context_map::reference ctx : contexts_){
 		result &= ctx.second->start_transaction();
 	}
 	in_transaction_ = true;
 	return result;
 }
 
-bool persist_manager::end_transaction() {
-	if (!in_transaction_) return false;
+bool persist_manager::end_transaction(){
+	if(!in_transaction_) return false;
 	bool result = true;
-	for (context_map::reference ctx : contexts_) {
+	for(context_map::reference ctx : contexts_){
 		result &= ctx.second->end_transaction();
 	}
 	in_transaction_ = !result;
 	return result;
 }
 
-bool persist_manager::cancel_transaction() {
-	if (!in_transaction_) return false;
+bool persist_manager::cancel_transaction(){
+	if(!in_transaction_) return false;
 	bool result = true;
-	for (context_map::reference ctx : contexts_) {
+	for(context_map::reference ctx : contexts_){
 		result &= ctx.second->cancel_transaction();
 	}
 	in_transaction_ = false;

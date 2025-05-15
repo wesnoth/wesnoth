@@ -44,12 +44,12 @@ struct stacked_widget_implementation
 			const bool must_be_active)
 	{
 		// Use base method if find-in-all-layer isn't set.
-		if(!stack.find_in_all_layers_) {
+		if(!stack.find_in_all_layers_){
 			return stack.container_base::find(id, must_be_active);
 		}
 
-		for(unsigned i = 0; i < stack.get_layer_count(); ++i) {
-			if(W* res = stack.get_layer_grid(i)->find(id, must_be_active)) {
+		for(unsigned i = 0; i < stack.get_layer_count(); ++i){
+			if(W* res = stack.get_layer_grid(i)->find(id, must_be_active)){
 				return res;
 			}
 		}
@@ -76,7 +76,7 @@ stacked_widget::stacked_widget(const implementation::builder_stacked_widget& bui
 	assert(generator_);
 
 	const widget_item empty_data;
-	for(const auto& layer_builder : builder.stack) {
+	for(const auto& layer_builder : builder.stack){
 		generator->create_item(-1, layer_builder, empty_data, nullptr);
 	}
 
@@ -99,7 +99,7 @@ unsigned stacked_widget::get_state() const
 void stacked_widget::layout_children()
 {
 	assert(generator_);
-	for(unsigned i = 0; i < generator_->get_item_count(); ++i) {
+	for(unsigned i = 0; i < generator_->get_item_count(); ++i){
 		generator_->item(i).layout_children();
 	}
 }
@@ -114,7 +114,7 @@ void stacked_widget::select_layer_impl(const std::function<bool(unsigned int i)>
 	const unsigned int num_layers = get_layer_count();
 
 	// Deselect all layers except the chosen ones.
-	for(unsigned int i = 0; i < num_layers; ++i) {
+	for(unsigned int i = 0; i < num_layers; ++i){
 		const bool selected = display_condition(i);
 
 		/* Selecting a previously selected item will deselect it, regardless of the what is passed to
@@ -126,18 +126,18 @@ void stacked_widget::select_layer_impl(const std::function<bool(unsigned int i)>
 		 *
 		 * This works around that by performing no selection unless necessary to change states.
 		 */
-		if(generator_->is_selected(i) != selected) {
+		if(generator_->is_selected(i) != selected){
 			generator_->select_item(i, selected);
 		}
 	}
 
 	// If we already have our chosen layers, exit.
-	if(selected_layer_ >= 0) {
+	if(selected_layer_ >= 0){
 		return;
 	}
 
 	// Else, re-show all layers.
-	for(unsigned int i = 0; i < num_layers; ++i) {
+	for(unsigned int i = 0; i < num_layers; ++i){
 		/* By design, only the last selected item will receive events even if multiple items are visible
 		 * and said item is not at the top of the stack. If this point is reached, all layers have already
 		 * been hidden by the loop above, so the last layer selected will be the top-most one, as desired.
@@ -173,7 +173,7 @@ void stacked_widget::select_layers(const boost::dynamic_bitset<>& mask)
 
 	select_layer_impl([&](unsigned int i)
 	{
-		if(mask[i]) {
+		if(mask[i]){
 			update_selected_layer_index(i);
 		}
 

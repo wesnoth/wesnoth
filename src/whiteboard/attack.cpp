@@ -120,7 +120,7 @@ void attack::invalidate()
 
 void attack::execute(bool& success, bool& complete)
 {
-	if(!valid()) {
+	if(!valid()){
 		success = false;
 		//Setting complete to true signifies to side_actions to delete the planned action: nothing more to do with it.
 		complete = true;
@@ -129,11 +129,11 @@ void attack::execute(bool& success, bool& complete)
 
 	LOG_WB << "Executing: " << shared_from_this();
 
-	if (route_->steps.size() >= 2)
+	if(route_->steps.size() >= 2)
 	{
 		bool m_success, m_complete;
 		move::execute(m_success,m_complete);
-		if(!m_success) {
+		if(!m_success){
 			//Move failed for some reason, so don't attack.
 			success = false;
 			complete = true;
@@ -174,7 +174,7 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
-	if (fake_unit_) { //Attacks that are not attack-moves don't have fake units
+	if(fake_unit_){ //Attacks that are not attack-moves don't have fake units
 		fake_unit_->set_movement(unit.movement_left(), true);
 		fake_unit_->set_attacks(unit.attacks_left());
 	}
@@ -199,7 +199,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 // Draws the attack indicator.
 void attack::draw_hex(const map_location& hex)
 {
-	if(hex != get_dest_hex() && hex != target_hex_) {
+	if(hex != get_dest_hex() && hex != target_hex_){
 		return;
 	}
 
@@ -216,7 +216,7 @@ void attack::draw_hex(const map_location& hex)
 
 	// hex is either the dst or target here. Whichever it is, we want to draw there.
 	display::get_singleton()->drawing_buffer_add(
-		layer, hex, [tex = std::move(indicator)](const rect& d) { draw::blit(tex, d); });
+		layer, hex, [tex = std::move(indicator)](const rect& d){ draw::blit(tex, d); });
 }
 
 void attack::redraw()
@@ -228,11 +228,11 @@ void attack::redraw()
 action::error attack::check_validity() const
 {
 	// Verify that the unit that planned this attack exists
-	if(!get_unit()) {
+	if(!get_unit()){
 		return NO_UNIT;
 	}
 	// Verify that the target hex is still valid
-	if(!target_hex_.valid()) {
+	if(!target_hex_.valid()){
 		return INVALID_LOCATION;
 	}
 	// Verify that the target hex isn't empty
@@ -240,7 +240,7 @@ action::error attack::check_validity() const
 		return NO_TARGET;
 	}
 	// Verify that the attacking unit has attacks left
-	if(get_unit()->attacks_left() <= 0) {
+	if(get_unit()->attacks_left() <= 0){
 		return NO_ATTACK_LEFT;
 	}
 	// Verify that the attacker and target are enemies

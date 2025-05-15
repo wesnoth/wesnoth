@@ -66,7 +66,7 @@ point slider::calculate_best_size() const
 	// Inherited.
 	point result = styled_widget::calculate_best_size();
 
-	if(best_slider_length_ != 0) {
+	if(best_slider_length_ != 0){
 		// Override length.
 		const auto conf = cast_config_to<slider_definition>();
 		assert(conf);
@@ -83,13 +83,13 @@ void slider::set_value(int value)
 	value = std::clamp(value, minimum_value_, get_maximum_value());
 	int old_value = get_value();
 
-	if(value == old_value) {
+	if(value == old_value){
 		return;
 	}
 
 	set_slider_position(rounded_division(value - minimum_value_, step_size_));
 
-	if(std::abs(get_value() - value) > (step_size_ / 2)) {
+	if(std::abs(get_value() - value) > (step_size_ / 2)){
 		ERR_GUI_G << "slider::set_value error:"
 			<< " old_value=" << old_value
 			<< " new_value=" << get_value()
@@ -105,11 +105,11 @@ void slider::set_value(int value)
 
 t_string slider::get_value_label() const
 {
-	if(value_label_generator_) {
+	if(value_label_generator_){
 		return value_label_generator_(get_slider_position(), get_item_count());
-	} else if(!minimum_value_label_.empty() && get_value() == get_minimum_value()) {
+	} else if(!minimum_value_label_.empty() && get_value() == get_minimum_value()){
 		return minimum_value_label_;
-	} else if(!maximum_value_label_.empty() && get_value() == get_maximum_value()) {
+	} else if(!maximum_value_label_.empty() && get_value() == get_maximum_value()){
 		return maximum_value_label_;
 	}
 
@@ -158,14 +158,14 @@ int slider::on_bar(const point& coordinate) const
 	const unsigned y = static_cast<std::size_t>(coordinate.y);
 
 	// Not on the widget, leave.
-	if(x > get_width() || y > get_height()) {
+	if(x > get_width() || y > get_height()){
 		return 0;
 	}
 
 	// we also assume the bar is over the entire height of the widget.
-	if(x < get_positioner_offset()) {
+	if(x < get_positioner_offset()){
 		return -1;
-	} else if(x > get_positioner_offset() + get_positioner_length()) {
+	} else if(x > get_positioner_offset() + get_positioner_length()){
 		return 1;
 	}
 
@@ -177,7 +177,7 @@ void slider::update_canvas()
 	// Inherited.
 	slider_base::update_canvas();
 
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("text", wfl::variant(get_value_label()));
 	}
 }
@@ -204,9 +204,9 @@ void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& hand
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(key == SDLK_DOWN || key == SDLK_LEFT) {
+	if(key == SDLK_DOWN || key == SDLK_LEFT){
 		handle_key_decrease(handled);
-	} else if(key == SDLK_UP || key == SDLK_RIGHT) {
+	} else if(key == SDLK_UP || key == SDLK_RIGHT){
 		handle_key_increase(handled);
 	} else {
 		// Do nothing. Ignore other keys.
@@ -255,7 +255,7 @@ void slider::set_value_range(int min_value, int max_value)
 	// min and max would tmporarily have invalid values where since the starting max value is 0;
 
 	VALIDATE(min_value <= max_value, "invalid slider data");
-	if (min_value == minimum_value_ && max_value == get_maximum_value()) {
+	if(min_value == minimum_value_ && max_value == get_maximum_value()){
 		return;
 	}
 
@@ -331,11 +331,11 @@ builder_slider::builder_slider(const config& cfg)
 	, value_labels_()
 {
 	auto labels = cfg.optional_child("value_labels");
-	if(!labels) {
+	if(!labels){
 		return;
 	}
 
-	for(const auto& label : labels->child_range("value")) {
+	for(const auto& label : labels->child_range("value")){
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -350,7 +350,7 @@ std::unique_ptr<widget> builder_slider::build() const
 
 	widget->finalize_setup();
 
-	if(!value_labels_.empty()) {
+	if(!value_labels_.empty()){
 		VALIDATE(value_labels_.size() == static_cast<std::size_t>(widget->get_item_count()),
 				 _("The number of value_labels and values don’t match."));
 

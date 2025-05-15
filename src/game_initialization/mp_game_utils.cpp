@@ -61,16 +61,16 @@ config initial_level_config(saved_game& state)
 	state.expand_mp_events();
 	state.expand_mp_options();
 
-	if(!state.valid()) {
+	if(!state.valid()){
 		throw config::error("Failed to load the scenario");
 	}
 
 	config& scenario = state.get_starting_point();
-	if(state.mp_settings().saved_game == saved_game_mode::type::no) {
+	if(state.mp_settings().saved_game == saved_game_mode::type::no){
 		state.set_random_seed();
 	}
 
-	if(scenario["objectives"].empty()) {
+	if(scenario["objectives"].empty()){
 		// Generic victory objectives.
 		std::ostringstream ss;
 		ss << markup::tag("big", t_string(N_("Victory:"), "wesnoth")) << "\n";
@@ -97,8 +97,8 @@ config initial_level_config(saved_game& state)
 	const game_config_view& game_config = game_config_manager::get()->game_config();
 	auto era_cfg = game_config.find_child("era", "id", era);
 
-	if(!era_cfg) {
-		if(params.saved_game == saved_game_mode::type::no) {
+	if(!era_cfg){
+		if(params.saved_game == saved_game_mode::type::no){
 			throw config::error(VGETTEXT("Cannot find era ‘$era’", {{"era", era}}));
 		}
 
@@ -117,8 +117,8 @@ config initial_level_config(saved_game& state)
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.
 	const std::vector<std::string>& mods = state.classification().active_mods;
 
-	for(unsigned i = 0; i < mods.size(); ++i) {
-		if(auto mod_cfg = game_config.find_child("modification", "id", mods[i])) {
+	for(unsigned i = 0; i < mods.size(); ++i){
+		if(auto mod_cfg = game_config.find_child("modification", "id", mods[i])){
 			level.add_child("modification", *mod_cfg);
 		}
 	}

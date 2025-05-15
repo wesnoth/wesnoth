@@ -73,7 +73,7 @@ mariadb::connection_ref dbconn::create_connection()
 int dbconn::async_test_query(int limit)
 {
 	std::string sql = "with recursive TEST(T) as "
-	                  "( "
+	                  "("
 					  "select 1 "
 					  "union all "
 					  "select T+1 from TEST where T < ? "
@@ -107,7 +107,7 @@ std::string dbconn::get_tournaments()
 	{
 		mariadb::result_set_ref rslt = select(connection_, db_tournament_query_, {});
 		std::string text;
-		while(rslt->next()) {
+		while(rslt->next()){
 			text += "\n" + rslt->get_string("TEXT");
 		}
 		return text;
@@ -121,7 +121,7 @@ std::string dbconn::get_tournaments()
 
 std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
-	auto game_history_handler = [](const mariadb::result_set_ref& rslt) {
+	auto game_history_handler = [](const mariadb::result_set_ref& rslt){
 		config c;
 
 		while(rslt->next())
@@ -209,7 +209,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	}
 
 	game_history_query += "and exists "
-"  ( "
+"  ("
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
 "    where game.INSTANCE_UUID = player1.INSTANCE_UUID "
@@ -221,7 +221,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		params.emplace_back(player_id);
 	}
 
-	game_history_query += "  ) "
+	game_history_query += " ) "
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
 "  and player.USER_ID != -1 "
@@ -358,7 +358,7 @@ bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& 
 
 	sql_parameters params;
 	params.emplace_back(name);
-	for(int group_id : group_ids) {
+	for(int group_id : group_ids){
 		group_params.emplace_back("?");
 		params.emplace_back(group_id);
 	}
@@ -378,10 +378,10 @@ bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& 
 config dbconn::get_ban_info(const std::string& name, const std::string& ip)
 {
 	// selected ban_type value must be part of user_handler::BAN_TYPE
-	auto ban_info_handler = [](const mariadb::result_set_ref& rslt) {
+	auto ban_info_handler = [](const mariadb::result_set_ref& rslt){
 		config c;
 
-		if(rslt->next()) {
+		if(rslt->next()){
 			c["ban_type"] = rslt->get_signed32("ban_type");
 			c["ban_end"] = rslt->get_signed32("ban_end");
 			c["user_id"] = rslt->get_signed32("ban_userid");
@@ -505,7 +505,7 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 	}
 }
 
-bool dbconn::topic_id_exists(int topic_id) {
+bool dbconn::topic_id_exists(int topic_id){
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_topics_table_+"` WHERE TOPIC_ID = ?",
@@ -613,7 +613,7 @@ void dbconn::update_addon_download_count(const std::string& instance_version, co
 	}
 }
 
-bool dbconn::is_user_author(const std::string& instance_version, const std::string& id, const std::string& username, int is_primary) {
+bool dbconn::is_user_author(const std::string& instance_version, const std::string& id, const std::string& username, int is_primary){
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ? AND AUTHOR = ? AND IS_PRIMARY = ?",
@@ -626,7 +626,7 @@ bool dbconn::is_user_author(const std::string& instance_version, const std::stri
 	}
 }
 
-void dbconn::delete_addon_authors(const std::string& instance_version, const std::string& id) {
+void dbconn::delete_addon_authors(const std::string& instance_version, const std::string& id){
 	try
 	{
 		modify(connection_, "DELETE FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
@@ -638,7 +638,7 @@ void dbconn::delete_addon_authors(const std::string& instance_version, const std
 	}
 }
 
-void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string& author, int is_primary) {
+void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string& author, int is_primary){
 	try
 	{
 		modify(connection_, "INSERT INTO `"+db_addon_authors_table_+"`(INSTANCE_VERSION, ADDON_ID, AUTHOR, IS_PRIMARY) VALUES(?,?,?,?)",
@@ -650,7 +650,7 @@ void dbconn::insert_addon_author(const std::string& instance_version, const std:
 	}
 }
 
-bool dbconn::do_any_authors_exist(const std::string& instance_version, const std::string& id) {
+bool dbconn::do_any_authors_exist(const std::string& instance_version, const std::string& id){
 	try
 	{
 		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
@@ -663,11 +663,11 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 	}
 }
 
-config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
-	auto addon_downloads_handler = [](const mariadb::result_set_ref& rslt) {
+config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id){
+	auto addon_downloads_handler = [](const mariadb::result_set_ref& rslt){
 		config c;
 
-		while(rslt->next()) {
+		while(rslt->next()){
 			config& child = c.add_child("download_info");
 			child["name"] = rslt->get_string("ADDON_NAME");
 			child["version"] = rslt->get_string("VERSION");
@@ -690,11 +690,11 @@ config dbconn::get_addon_downloads_info(const std::string& instance_version, con
 	}
 }
 
-config dbconn::get_forum_auth_usage(const std::string& instance_version) {
-	auto forum_auth_usage_handler = [](const mariadb::result_set_ref& rslt) {
+config dbconn::get_forum_auth_usage(const std::string& instance_version){
+	auto forum_auth_usage_handler = [](const mariadb::result_set_ref& rslt){
 		config c;
 
-		if(rslt->next()) {
+		if(rslt->next()){
 			c["all_count"] = rslt->get_signed64("ALL_COUNT");
 			c["forum_auth_count"] = rslt->get_signed64("FORUM_AUTH_COUNT");
 		} else {
@@ -717,11 +717,11 @@ config dbconn::get_forum_auth_usage(const std::string& instance_version) {
 	}
 }
 
-config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
-	auto addon_admin_handler = [](const mariadb::result_set_ref& rslt) {
+config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group){
+	auto addon_admin_handler = [](const mariadb::result_set_ref& rslt){
 		config c;
 
-		while(rslt->next()) {
+		while(rslt->next()){
 			config& child = c.add_child("admin");
 			child["username"] = rslt->get_string("USERNAME");
 		}

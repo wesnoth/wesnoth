@@ -44,11 +44,11 @@ struct subset_descriptor
 		, bold_name()
 		, italic_name()
 	{
-		if (font.has_attribute("bold_name")) {
+		if(font.has_attribute("bold_name")) {
 			bold_name = font["bold_name"].str();
 		}
 
-		if (font.has_attribute("italic_name")) {
+		if(font.has_attribute("italic_name")) {
 			italic_name = font["italic_name"].str();
 		}
 	}

@@ -50,12 +50,12 @@ const std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
-	if(mod_ & KMOD_CTRL) {
+	if(mod_ & KMOD_CTRL){
 		ret += "ctrl";
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_ALT) {
+	if(mod_ & KMOD_ALT){
 #ifdef __APPLE__
 		ret += "opt";
 #else
@@ -64,12 +64,12 @@ const std::string hotkey_base::get_name() const
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_SHIFT) {
+	if(mod_ & KMOD_SHIFT){
 		ret += "shift";
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_GUI) {
+	if(mod_ & KMOD_GUI){
 #ifdef __APPLE__
 		ret += "cmd";
 #else
@@ -83,7 +83,7 @@ const std::string hotkey_base::get_name() const
 
 bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 {
-	if(other == nullptr) {
+	if(other == nullptr){
 		return false;
 	}
 
@@ -91,7 +91,7 @@ bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 		hotkey::get_hotkey_command(get_command()).scope &
 		hotkey::get_hotkey_command(other->get_command()).scope;
 
-	if(scopematch.none()) {
+	if(scopematch.none()){
 		return false;
 	}
 
@@ -100,7 +100,7 @@ bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 
 bool hotkey_base::matches(const SDL_Event& event) const
 {
-	if(!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) || !active() || is_disabled()) {
+	if(!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) || !active() || is_disabled()){
 		return false;
 	}
 
@@ -126,10 +126,10 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 	const hotkey_command& command = get_hotkey_command(id);
 	unsigned mods = sdl::get_mods();
 
-	switch(event.type) {
+	switch(event.type){
 	case SDL_KEYUP: {
 		if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key)
-			|| command.toggle) {
+			|| command.toggle){
 			auto keyboard = std::make_shared<hotkey_keyboard>();
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
@@ -140,14 +140,14 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 	} break;
 
 	case SDL_TEXTINPUT: {
-		if(command.toggle) {
+		if(command.toggle){
 			return nullptr;
 		}
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		std::string text = std::string(event.text.text);
 		keyboard->set_text(text);
-		if(text == ":" || text == "`") {
+		if(text == ":" || text == "`"){
 			mods = mods & ~KMOD_SHIFT;
 		}
 	} break;
@@ -176,10 +176,10 @@ hotkey_ptr load_from_config(const config& cfg)
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 
 	const config::attribute_value& mouse_cfg = cfg["mouse"];
-	if(!mouse_cfg.empty()) {
+	if(!mouse_cfg.empty()){
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
+		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX){
 			mouse->set_button(TOUCH_MOUSE_INDEX);
 		} else {
 			mouse->set_button(cfg["button"].to_int());
@@ -187,19 +187,19 @@ hotkey_ptr load_from_config(const config& cfg)
 	}
 
 	const std::string& key_cfg = cfg["key"];
-	if(!key_cfg.empty()) {
+	if(!key_cfg.empty()){
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
 		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
-		if(keycode == SDLK_UNKNOWN) {
+		if(keycode == SDLK_UNKNOWN){
 			ERR_G << "Unknown key: " << key_cfg;
 		}
 		keyboard->set_text(key_cfg);
 		keyboard->set_keycode(keycode);
 	}
 
-	if(base == hotkey_ptr()) {
+	if(base == hotkey_ptr()){
 		return base;
 	}
 
@@ -225,16 +225,16 @@ hotkey_ptr load_from_config(const config& cfg)
 bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
 	if(event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_FINGERDOWN
-		&& event.type != SDL_FINGERUP) {
+		&& event.type != SDL_FINGERUP){
 		return false;
 	}
 
 	unsigned mods = sdl::get_mods();
-	if((mods != mod_)) {
+	if((mods != mod_)){
 		return false;
 	}
 
-	if(event.button.which == SDL_TOUCH_MOUSEID) {
+	if(event.button.which == SDL_TOUCH_MOUSEID){
 		return button_ == TOUCH_MOUSE_INDEX;
 	}
 
@@ -249,7 +249,7 @@ const std::string hotkey_mouse::get_name_helper() const
 void hotkey_mouse::save_helper(config& item) const
 {
 	item["mouse"] = 0;
-	if(button_ != 0) {
+	if(button_ != 0){
 		item["button"] = button_;
 	}
 }
@@ -272,14 +272,14 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 
 	if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 		&& (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
-	) {
+	){
 		return event.key.keysym.sym == keycode_ && mods == mod_;
 	}
 
-	if(event.type == SDL_TEXTINPUT && !command.toggle) {
+	if(event.type == SDL_TEXTINPUT && !command.toggle){
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
-		if(text == ":" || text == "`") {
+		if(text == ":" || text == "`"){
 			mods = mods & ~KMOD_SHIFT;
 		}
 		return text_ == text && utf8::size(std::string(event.text.text)) == 1 && mods == mod_;
@@ -291,7 +291,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 {
 	auto other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
-	if(other_m == nullptr) {
+	if(other_m == nullptr){
 		return false;
 	}
 
@@ -300,15 +300,15 @@ bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 
 void hotkey_keyboard::save_helper(config& item) const
 {
-	if(!text_.empty()) {
+	if(!text_.empty()){
 		item["key"] = text_;
 	}
 }
 
 bool has_hotkey_item(const std::string& command)
 {
-	for(const hotkey_ptr& item : hotkeys_) {
-		if(item->get_command() == command) {
+	for(const hotkey_ptr& item : hotkeys_){
+		if(item->get_command() == command){
 			return true;
 		}
 	}
@@ -318,7 +318,7 @@ bool has_hotkey_item(const std::string& command)
 bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 {
 	auto other_k = std::dynamic_pointer_cast<hotkey_keyboard>(other);
-	if(other_k == nullptr) {
+	if(other_k == nullptr){
 		return false;
 	}
 
@@ -327,18 +327,18 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 
 void del_hotkey(const hotkey_ptr& item)
 {
-	if(!hotkeys_.empty()) {
+	if(!hotkeys_.empty()){
 		utils::erase(hotkeys_, item);
 	}
 }
 
 void add_hotkey(hotkey_ptr item)
 {
-	if(item) {
+	if(item){
 		auto iter = std::find_if(hotkeys_.begin(), hotkeys_.end(),
-			[&item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); });
+			[&item](const hotkey::hotkey_ptr& hk){ return hk->bindings_equal(item); });
 
-		if(iter != hotkeys_.end()) {
+		if(iter != hotkeys_.end()){
 			iter->swap(item);
 		} else {
 			hotkeys_.push_back(std::move(item));
@@ -348,9 +348,9 @@ void add_hotkey(hotkey_ptr item)
 
 void clear_hotkeys(const std::string& command)
 {
-	for(hotkey::hotkey_ptr& item : hotkeys_) {
-		if(item->get_command() == command) {
-			if(item->is_default()) {
+	for(hotkey::hotkey_ptr& item : hotkeys_){
+		if(item->get_command() == command){
+			if(item->is_default()){
 				item->disable();
 			} else {
 				item->clear();
@@ -366,8 +366,8 @@ void clear_hotkeys()
 
 const hotkey_ptr get_hotkey(const SDL_Event& event)
 {
-	for(const hotkey_ptr& item : hotkeys_) {
-		if(item->matches(event)) {
+	for(const hotkey_ptr& item : hotkeys_){
+		if(item->matches(event)){
 			return item;
 		}
 	}
@@ -377,8 +377,8 @@ const hotkey_ptr get_hotkey(const SDL_Event& event)
 void load_default_hotkeys(const game_config_view& cfg)
 {
 	hotkey_list new_hotkeys;
-	for(const config& hk : cfg.child_range("hotkey")) {
-		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+	for(const config& hk : cfg.child_range("hotkey")){
+		if(hotkey_ptr item = load_from_config(hk); !item->null()){
 			new_hotkeys.push_back(std::move(item));
 		}
 	}
@@ -389,8 +389,8 @@ void load_default_hotkeys(const game_config_view& cfg)
 
 void load_custom_hotkeys(const game_config_view& cfg)
 {
-	for(const config& hk : cfg.child_range("hotkey")) {
-		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+	for(const config& hk : cfg.child_range("hotkey")){
+		if(hotkey_ptr item = load_from_config(hk); !item->null()){
 			item->unset_default();
 			add_hotkey(item);
 		}
@@ -401,7 +401,7 @@ void reset_default_hotkeys()
 {
 	hotkeys_.clear();
 
-	if(!default_hotkey_cfg_.child_range("hotkey").empty()) {
+	if(!default_hotkey_cfg_.child_range("hotkey").empty()){
 		load_default_hotkeys(default_hotkey_cfg_);
 	} else {
 		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!";
@@ -417,8 +417,8 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for(hotkey_ptr& item : hotkeys_) {
-		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())) {
+	for(hotkey_ptr& item : hotkeys_){
+		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())){
 			item->save(cfg.add_child("hotkey"));
 		}
 	}
@@ -428,16 +428,16 @@ std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
-	for(const hotkey::hotkey_ptr& item : hotkeys_) {
-		if(item->get_command() == id && !item->null() && !item->is_disabled()) {
+	for(const hotkey::hotkey_ptr& item : hotkeys_){
+		if(item->get_command() == id && !item->null() && !item->is_disabled()){
 			names.push_back(item->get_name());
 		}
 	}
 
 	// These are hard-coded, non-rebindable hotkeys
-	if(id == "quit") {
+	if(id == "quit"){
 		names.push_back("escape");
-	} else if(id == "quit-to-desktop") {
+	} else if(id == "quit-to-desktop"){
 #ifdef __APPLE__
 		names.push_back("cmd+q");
 #else
@@ -450,13 +450,13 @@ std::string get_names(const std::string& id)
 
 bool is_hotkeyable_event(const SDL_Event& event)
 {
-	if(event.type == SDL_JOYBUTTONUP || event.type == SDL_JOYHATMOTION || event.type == SDL_MOUSEBUTTONUP) {
+	if(event.type == SDL_JOYBUTTONUP || event.type == SDL_JOYHATMOTION || event.type == SDL_MOUSEBUTTONUP){
 		return true;
 	}
 
 	unsigned mods = sdl::get_mods();
 
-	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
+	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI){
 		return event.type == SDL_KEYUP;
 	} else {
 		return event.type == SDL_TEXTINPUT || event.type == SDL_KEYUP;

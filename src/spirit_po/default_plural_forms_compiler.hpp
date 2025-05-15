@@ -105,7 +105,7 @@ struct compiler {
     str_it end = str.end();
     op_grammar<str_it> grammar;
 
-    if (qi::phrase_parse(it, end, grammar, qi::space, e) && it == end) {
+    if(qi::phrase_parse(it, end, grammar, qi::space, e) && it == end) {
       return function_object(std::move(e));
     } else {
       return function_object("Plural-Forms expression reader: Could not parse expression, stopped parsing at:\n" + string_iterator_context(str, it));

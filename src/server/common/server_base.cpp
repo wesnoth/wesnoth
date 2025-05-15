@@ -78,16 +78,16 @@ server_base::server_base(unsigned short port, bool keep_alive)
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v6](const boost::asio::yield_context& yield) { serve(yield, acceptor_v6_, endpoint_v6); }
+	boost::asio::spawn(io_service_, [this, endpoint_v6](const boost::asio::yield_context& yield){ serve(yield, acceptor_v6_, endpoint_v6); }
 #if BOOST_VERSION >= 108000
-		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e){ if(e) std::rethrow_exception(e); }
 #endif
 	);
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v4](const boost::asio::yield_context& yield) { serve(yield, acceptor_v4_, endpoint_v4); }
+	boost::asio::spawn(io_service_, [this, endpoint_v4](const boost::asio::yield_context& yield){ serve(yield, acceptor_v4_, endpoint_v4); }
 #if BOOST_VERSION >= 108000
-		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e){ if(e) std::rethrow_exception(e); }
 #endif
 	);
 
@@ -103,7 +103,7 @@ void server_base::start_server()
 void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip::tcp::acceptor& acceptor, const boost::asio::ip::tcp::endpoint& endpoint)
 {
 	try {
-		if(!acceptor.is_open()) {
+		if(!acceptor.is_open()){
 			acceptor.open(endpoint.protocol());
 			acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
 			acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
@@ -112,7 +112,7 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 			acceptor.bind(endpoint);
 			acceptor.listen();
 		}
-	} catch(const boost::system::system_error& e) {
+	} catch(const boost::system::system_error& e){
 		ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
 		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
 	}
@@ -121,22 +121,22 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
-	if(error && accepting_connections()) {
+	if(error && accepting_connections()){
 		ERR_SERVER << "Accept failed: " << error.message();
 		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
-	if(accepting_connections()) {
-		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](const boost::asio::yield_context& yield) { serve(yield, acceptor, endpoint); }
+	if(accepting_connections()){
+		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](const boost::asio::yield_context& yield){ serve(yield, acceptor, endpoint); }
 #if BOOST_VERSION >= 108000
-			, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+			, [](const std::exception_ptr& e){ if(e) std::rethrow_exception(e); }
 #endif
 		);
 	} else {
 		return;
 	}
 
-	if(keep_alive_) {
+	if(keep_alive_){
 		int timeout = 30;
 #ifdef __linux__
 		int cnt = 10;
@@ -169,14 +169,14 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 	if(check_error(error, socket))
 		return;
 
-	switch(ntohl(protocol_version)) {
+	switch(ntohl(protocol_version)){
 		case 0:
 			async_write(*socket, boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4), yield[error]);
 			if(check_error(error, socket)) return;
 			final_socket = socket;
 			break;
 		case 1:
-			if(!tls_enabled_) {
+			if(!tls_enabled_){
 				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server";
 				handshake_response = 0xFFFFFFFFU;
 			} else {
@@ -185,14 +185,14 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 
 			async_write(*socket, boost::asio::buffer(reinterpret_cast<const std::byte*>(&handshake_response), 4), yield[error]);
 			if(check_error(error, socket)) return;
-			if(!tls_enabled_) { // continue with unencrypted connection if TLS disabled
+			if(!tls_enabled_){ // continue with unencrypted connection if TLS disabled
 				final_socket = socket;
 				break;
 			}
 
 			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
 			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
-			if(error) {
+			if(error){
 				ERR_SERVER << "TLS handshake failed: " << error.message();
 				return;
 			}
@@ -204,14 +204,14 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 	}
 
 	utils::visit(
-		[this](auto&& socket) {
+		[this](auto&& socket){
 			const std::string ip = client_address(socket);
 
-			if(const auto ban_info = is_ip_banned(ip)) {
+			if(const auto ban_info = is_ip_banned(ip)){
 				const auto& [error_code, reason, time_remaining] = *ban_info;
 				LOG_SERVER << log_address(socket) << "\trejected banned user. Reason: " << reason;
 
-				if(time_remaining) {
+				if(time_remaining){
 					// Temporary ban
 					async_send_error(socket, "You are banned from this server: " + reason, error_code,
 						{{ "duration", std::to_string(time_remaining->count()) }});
@@ -223,13 +223,13 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 				return;
 			}
 
-			if(ip_exceeds_connection_limit(ip)) {
+			if(ip_exceeds_connection_limit(ip)){
 				LOG_SERVER << log_address(socket) << "\trejected ip due to excessive connections";
 				async_send_error(socket, "Too many connections from your IP.");
 				return;
 			}
 
-			if constexpr(utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+			if constexpr(utils::decayed_is_same<tls_socket_ptr, decltype(socket)>){
 				DBG_SERVER << ip << "\tnew encrypted connection fully accepted";
 			} else {
 				DBG_SERVER << ip << "\tnew connection fully accepted";
@@ -240,7 +240,7 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 }
 
 #ifndef _WIN32
-void server_base::read_from_fifo() {
+void server_base::read_from_fifo(){
 	async_read_until(input_,
 					 admin_cmd_, '\n',
 					 [this](const boost::system::error_code& error, std::size_t bytes_transferred)
@@ -249,18 +249,18 @@ void server_base::read_from_fifo() {
 }
 #endif
 
-int server_base::run() {
-	for(;;) {
+int server_base::run(){
+	for(;;){
 		try {
 			io_service_.run();
 			LOG_SERVER << "Server has shut down because event loop is out of work";
 			return 1;
-		} catch(const server_shutdown& e) {
+		} catch(const server_shutdown& e){
 			LOG_SERVER << "Server has been shut down: " << e.what();
 			return e.ec.value();
-		} catch(const boost::system::system_error& e) {
+		} catch(const boost::system::system_error& e){
 			ERR_SERVER << "Caught system error exception from handler: " << e.code().message();
-		} catch(const std::exception& e) {
+		} catch(const std::exception& e){
 			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n" << boost::current_exception_diagnostic_information();
 		}
 	}
@@ -278,7 +278,7 @@ template<class SocketPtr> std::string client_address(SocketPtr socket)
 
 template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket)
 {
-	if(error) {
+	if(error){
 		if(error == boost::asio::error::eof)
 			LOG_SERVER << log_address(socket) << "\tconnection closed";
 		else
@@ -293,12 +293,12 @@ namespace {
 
 void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const server_base::info_table& info)
 {
-	if(info.empty()) {
+	if(info.empty()){
 		return;
 	}
 
 	auto& node = doc.child(parent_name.c_str())->add_child("data");
-	for(const auto& kv : info) {
+	for(const auto& kv : info){
 		node.set_attr_dup(kv.first.c_str(), kv.second.c_str());
 	}
 }
@@ -313,7 +313,7 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
  */
 template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simple_wml::document& doc, const boost::asio::yield_context& yield)
 {
-	if(dump_wml) {
+	if(dump_wml){
 		std::cout << "Sending WML to " << log_address(socket) << ": \n" << doc.output() << std::endl;
 	}
 
@@ -334,11 +334,11 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 
 		boost::system::error_code ec;
 		async_write(*socket, buffers, yield[ec]);
-		if(check_error(ec, socket)) {
+		if(check_error(ec, socket)){
 			socket->lowest_layer().close();
 			return;
 		}
-	} catch (simple_wml::error& e) {
+	} catch (simple_wml::error& e){
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 		throw;
 	}
@@ -358,18 +358,18 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 
 	boost::system::error_code ec;
 	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
-	if(check_error(ec, socket)) {
+	if(check_error(ec, socket)){
 		socket->lowest_layer().close();
 		return;
 	}
 
 	auto ifs { filesystem::istream_file(filename) };
 	ifs->seekg(0);
-	while(ifs->good()) {
+	while(ifs->good()){
 		char buf[16384];
 		ifs->read(buf, sizeof(buf));
 		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield[ec]);
-		if(check_error(ec, socket)) {
+		if(check_error(ec, socket)){
 			socket->lowest_layer().close();
 			return;
 		}
@@ -389,7 +389,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
-	ON_SCOPE_EXIT(in_file) { close(in_file); };
+	ON_SCOPE_EXIT(in_file){ close(in_file); };
 	off_t offset { 0 };
 	//std::size_t total_bytes_transferred { 0 };
 
@@ -405,7 +405,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 	if(check_error(ec, socket)) return;
 
 	// Put the underlying socket into non-blocking mode.
-	if(!socket->native_non_blocking()) {
+	if(!socket->native_non_blocking()){
 		socket->native_non_blocking(true, ec);
 		if(check_error(ec, socket)) return;
 	}
@@ -424,7 +424,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 			continue;
 
 		// Check if we need to run the operation again.
-		if (ec == boost::asio::error::would_block
+		if(ec == boost::asio::error::would_block
 				|| ec == boost::asio::error::try_again)
 		{
 			// We have to wait for the socket to become ready again.
@@ -433,7 +433,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 			continue;
 		}
 
-		if (ec || n == 0)
+		if(ec || n == 0)
 		{
 			// An error occurred, or we have reached the end of the file.
 			// Either way we must exit the loop.
@@ -462,20 +462,20 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 	std::wstring filename_ucs2 = unicode_cast<std::wstring>(filename);
 	HANDLE in_file = CreateFileW(filename_ucs2.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
 		FILE_FLAG_SEQUENTIAL_SCAN, nullptr);
-	if (GetLastError() != ERROR_SUCCESS)
+	if(GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to open the file");
 	}
-	BOOST_SCOPE_EXIT_ALL(in_file) {
+	BOOST_SCOPE_EXIT_ALL(in_file){
 		CloseHandle(&in_file);
 	};
 
 	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
-	if (GetLastError() != ERROR_SUCCESS)
+	if(GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to create an event");
 	}
-	BOOST_SCOPE_EXIT_ALL(&overlap) {
+	BOOST_SCOPE_EXIT_ALL(&overlap){
 		CloseHandle(overlap.hEvent);
 	};
 
@@ -491,14 +491,14 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 	async_write(*socket, boost::asio::buffer(data_size.buf, 4), yield);
 
 	BOOL success = TransmitFile(socket->native_handle(), in_file, 0, 0, &overlap, nullptr, 0);
-	if(!success) {
-		if(WSAGetLastError() == WSA_IO_PENDING) {
-			while(true) {
+	if(!success){
+		if(WSAGetLastError() == WSA_IO_PENDING){
+			while(true){
 				// The request is pending. Wait until it completes.
 				socket->async_write_some(boost::asio::null_buffers(), yield);
 
 				DWORD win_ec = GetLastError();
-				if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
+				if(win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
 					throw std::runtime_error("TransmitFile failed");
 
 				if(HasOverlappedIoCompleted(&overlap)) break;
@@ -535,13 +535,13 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	if(check_error(ec, socket)) return {};
 	uint32_t size = ntohl(data_size.size);
 
-	if(size == 0) {
+	if(size == 0){
 		ERR_SERVER <<
 					  log_address(socket) <<
 					  "\treceived invalid packet with payload size 0";
 		return {};
 	}
-	if(size > simple_wml::document::document_size_limit) {
+	if(size > simple_wml::document::document_size_limit){
 		ERR_SERVER <<
 					  log_address(socket) <<
 					  "\treceived packet with payload size over size limit";
@@ -555,7 +555,7 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	try {
 		simple_wml::string_span compressed_buf(buffer.get(), size);
 		return std::make_unique<simple_wml::document>(compressed_buf);
-	}  catch (simple_wml::error& e) {
+	}  catch (simple_wml::error& e){
 		ERR_SERVER <<
 			log_address(socket) <<
 			"\tsimple_wml error in received data: " << e.message;
@@ -571,15 +571,15 @@ template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, st
 	static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
 
 	queues[socket].push(std::move(doc_ptr));
-	if(queues[socket].size() > 1) {
+	if(queues[socket].size() > 1){
 		return;
 	}
 
-	ON_SCOPE_EXIT(socket) { queues.erase(socket); };
+	ON_SCOPE_EXIT(socket){ queues.erase(socket); };
 
-	while(queues[socket].size() > 0) {
+	while(queues[socket].size() > 0){
 		coro_send_doc(socket, *(queues[socket].front()), yield);
-		ON_SCOPE_EXIT(socket) { queues[socket].pop(); };
+		ON_SCOPE_EXIT(socket){ queues[socket].pop(); };
 	}
 }
 
@@ -590,7 +590,7 @@ template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr sock
 			send_doc_queued(socket, doc_ptr, yield);
 		}
 #if BOOST_VERSION >= 108000
-		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e){ if(e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -599,7 +599,7 @@ template<class SocketPtr> void server_base::async_send_error(SocketPtr socket, c
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
-	if(*error_code != '\0') {
+	if(*error_code != '\0'){
 		doc.child("error")->set_attr("error_code", error_code);
 	}
 	info_table_into_simple_wml(doc, "error", info);
@@ -613,7 +613,7 @@ template<class SocketPtr> void server_base::async_send_warning(SocketPtr socket,
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
-	if(*warning_code != '\0') {
+	if(*warning_code != '\0'){
 		doc.child("warning")->set_attr("warning_code", warning_code);
 	}
 	info_table_into_simple_wml(doc, "warning", info);
@@ -642,7 +642,7 @@ void server_base::load_tls_config(const config& cfg)
 
 std::string server_base::hash_password(const std::string& pw, const std::string& salt, const std::string& username)
 {
-	if(salt.length() < 12) {
+	if(salt.length() < 12){
 		ERR_SERVER << "Bad salt found for user: " << username;
 		return "";
 	}
@@ -653,28 +653,28 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 	// I will do closer investigations on this, for now let's just hope these are all of them.
 
 	// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-	for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos) {
+	for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos){
 		password.replace(pos, 1, "&amp;");
 	}
-	for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos) {
+	for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos){
 		password.replace(pos, 1, "&quot;");
 	}
-	for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos) {
+	for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos){
 		password.replace(pos, 1, "&lt;");
 	}
-	for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos) {
+	for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos){
 		password.replace(pos, 1, "&gt;");
 	}
 
-	if(utils::md5::is_valid_prefix(salt)) {
+	if(utils::md5::is_valid_prefix(salt)){
 		std::string hash = utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
 		return salt+hash;
-	} else if(utils::bcrypt::is_valid_prefix(salt)) {
+	} else if(utils::bcrypt::is_valid_prefix(salt)){
 		try {
 			auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
 			auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
 			return hash.base64_digest();
-		} catch(const utils::hash_error& err) {
+		} catch(const utils::hash_error& err){
 			ERR_SERVER << "bcrypt hash failed for user " << username << ": " << err.what();
 			return "";
 		}
@@ -687,4 +687,4 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 // This is just here to get it to build without the deprecation_message function
 #include "deprecation.hpp"
 
-std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&) {return "";}
+std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&){return "";}

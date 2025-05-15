@@ -62,18 +62,18 @@ struct data {
 		: leader(leader), ratio_score(1.0), recruit_count(0), in_danger(false) { }
 	double get_score_sum() const {
 		double sum = 0.0;
-		for (const score_map::value_type& entry : scores) {
+		for(const score_map::value_type& entry : scores) {
 			sum += entry.second;
 		}
 		return sum;
 	}
 	score_map get_normalized_scores() const {
 		const double sum = get_score_sum();
-		if (sum == 0.0) {
+		if(sum == 0.0) {
 			return scores;
 		}
 		score_map normalized;
-		for (const score_map::value_type& entry : scores) {
+		for(const score_map::value_type& entry : scores) {
 			normalized[entry.first] = entry.second / sum;
 		}
 		return normalized;

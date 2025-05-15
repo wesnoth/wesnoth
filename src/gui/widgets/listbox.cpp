@@ -57,12 +57,12 @@ listbox::listbox(const implementation::builder_listbox_base& builder)
 	// FIXME: replacements (rightfully) clobber IDs. Is there a way around that?
 	builder_widget::replacements_map replacements;
 
-	if(auto header = builder.header) {
+	if(auto header = builder.header){
 		header->id = "_header_grid";
 		replacements.try_emplace("_header_grid_placeholder", std::move(header));
 	}
 
-	if(auto footer = builder.footer) {
+	if(auto footer = builder.footer){
 		footer->id = "_footer_grid";
 		replacements.try_emplace("_footer_grid_placeholder", std::move(footer));
 	}
@@ -113,11 +113,11 @@ void listbox::remove_row(const unsigned row, unsigned count)
 {
 	assert(generator_);
 
-	if(row >= get_item_count()) {
+	if(row >= get_item_count()){
 		return;
 	}
 
-	if(!count || count + row > get_item_count()) {
+	if(!count || count + row > get_item_count()){
 		count = get_item_count() - row;
 	}
 
@@ -131,9 +131,9 @@ void listbox::remove_row(const unsigned row, unsigned count)
 	int row_pos_y = is_horizontal ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
 	int row_pos_x = is_horizontal ? -1 : 0;
 
-	for(; count; --count) {
-		if(generator_->item(row).get_visible() != visibility::invisible) {
-			if(is_horizontal) {
+	for(; count; --count){
+		if(generator_->item(row).get_visible() != visibility::invisible){
+			if(is_horizontal){
 				width_reduced += generator_->item(row).get_width();
 			} else {
 				height_reduced += generator_->item(row).get_height();
@@ -143,7 +143,7 @@ void listbox::remove_row(const unsigned row, unsigned count)
 		generator_->delete_item(row);
 	}
 
-	if((height_reduced != 0 || width_reduced != 0) && get_item_count() != 0) {
+	if((height_reduced != 0 || width_reduced != 0) && get_item_count() != 0){
 		resize_content(-width_reduced, -height_reduced, row_pos_x, row_pos_y);
 	} else {
 		update_content_size();
@@ -191,14 +191,14 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 		resize_needed = !content_resize_request();
 	}
 
-	if(resize_needed) {
+	if(resize_needed){
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
 		queue_redraw(); // TODO: draw_manager - does this get the right area?
 	}
 
-	if(selected_row != get_selected_row()) {
+	if(selected_row != get_selected_row()){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -208,7 +208,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	assert(generator_);
 	assert(shown.size() == get_item_count());
 
-	if(generator_->get_items_shown() == shown) {
+	if(generator_->get_items_shown() == shown){
 		LOG_GUI_G << LOG_HEADER << " returning early";
 		return;
 	}
@@ -224,7 +224,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
-		for(std::size_t i = 0; i < shown.size(); ++i) {
+		for(std::size_t i = 0; i < shown.size(); ++i){
 			generator_->set_item_shown(i, shown[i]);
 		}
 
@@ -234,14 +234,14 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		resize_needed = !content_resize_request(true);
 	}
 
-	if(resize_needed) {
+	if(resize_needed){
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
 		queue_redraw(); // TODO: draw_manager - does this get the right area?
 	}
 
-	if(selected_row != get_selected_row()) {
+	if(selected_row != get_selected_row()){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -251,7 +251,7 @@ std::size_t listbox::filter_rows_by(const std::function<bool(std::size_t)>& filt
 	boost::dynamic_bitset<> mask;
 	mask.resize(get_item_count(), true);
 
-	for(std::size_t i = 0; i < mask.size(); ++i) {
+	for(std::size_t i = 0; i < mask.size(); ++i){
 		mask[i] = std::invoke(filter, i);
 	}
 
@@ -279,7 +279,7 @@ grid* listbox::get_row_grid(const unsigned row)
 
 bool listbox::select_row(const unsigned row, const bool select)
 {
-	if(row >= get_item_count()) {
+	if(row >= get_item_count()){
 		throw std::invalid_argument("invalid listbox index");
 	}
 	assert(generator_);
@@ -315,11 +315,11 @@ void listbox::list_item_clicked(widget& caller)
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
-	for(std::size_t i = 0; i < generator_->get_item_count(); ++i) {
-		if(generator_->item(i).has_widget(caller)) {
+	for(std::size_t i = 0; i < generator_->get_item_count(); ++i){
+		if(generator_->item(i).has_widget(caller)){
 			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
 
-			if(checkbox != nullptr) {
+			if(checkbox != nullptr){
 				generator_->select_item(i, checkbox->get_value_bool());
 			} else {
 				generator_->toggle_item(i);
@@ -339,14 +339,14 @@ void listbox::list_item_clicked(widget& caller)
 	}
 
 	const int selected_item = generator_->get_selected_item();
-	if(selected_item == -1) {
+	if(selected_item == -1){
 		return;
 	}
 
 	const rect& visible = content_visible_area();
 	rect r = generator_->item(selected_item).get_rectangle();
 
-	if(visible.overlaps(r)) {
+	if(visible.overlaps(r)){
 		r.x = visible.x;
 		r.w = visible.w;
 
@@ -361,15 +361,15 @@ void listbox::set_self_active(const bool /*active*/)
 
 bool listbox::update_content_size()
 {
-	if(get_visible() == widget::visibility::invisible) {
+	if(get_visible() == widget::visibility::invisible){
 		return true;
 	}
 
-	if(get_size() == point()) {
+	if(get_size() == point()){
 		return false;
 	}
 
-	if(content_resize_request(true)) {
+	if(content_resize_request(true)){
 		content_grid_->set_visible_rectangle(content_visible_area());
 		queue_redraw(); // TODO: draw_manager - does this get the right area?
 		return true;
@@ -383,7 +383,7 @@ void listbox::place(const point& origin, const point& size)
 	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
-	if(get_origin() != point {-1, -1}) {
+	if(get_origin() != point {-1, -1}){
 		vertical_scrollbar_position = get_vertical_scrollbar_item_position();
 		horizontal_scrollbar_position = get_horizontal_scrollbar_item_position();
 	}
@@ -392,12 +392,12 @@ void listbox::place(const point& origin, const point& size)
 	scrollbar_container::place(origin, size);
 
 	const int selected_item = generator_->get_selected_item();
-	if(vertical_scrollbar_position && horizontal_scrollbar_position) {
+	if(vertical_scrollbar_position && horizontal_scrollbar_position){
 		LOG_GUI_L << LOG_HEADER << " restoring scroll position";
 
 		set_vertical_scrollbar_item_position(*vertical_scrollbar_position);
 		set_horizontal_scrollbar_item_position(*horizontal_scrollbar_position);
-	} else if(selected_item != -1) {
+	} else if(selected_item != -1){
 		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible";
 
 		const SDL_Rect& visible = content_visible_area();
@@ -431,7 +431,7 @@ void listbox::resize_content(const int width_modification,
 		update_layout();
 
 		// If the content grows assume it "overwrites" the old content.
-		if(width_modification < 0 || height_modification < 0) {
+		if(width_modification < 0 || height_modification < 0){
 			queue_redraw();
 		}
 
@@ -443,7 +443,7 @@ void listbox::resize_content(const int width_modification,
 
 void listbox::resize_content(const widget& row)
 {
-	if(row.get_visible() == visibility::invisible) {
+	if(row.get_visible() == visibility::invisible){
 		return;
 	}
 
@@ -453,7 +453,7 @@ void listbox::resize_content(const widget& row)
 	const point content = content_grid()->get_size();
 	point size = row.get_best_size();
 
-	if(size.x < content.x) {
+	if(size.x < content.x){
 		size.x = 0;
 	} else {
 		size.x -= content.x;
@@ -467,14 +467,14 @@ point listbox::calculate_best_size() const
 	// Get the size from the base class, then add any extra space for the header and footer.
 	point result = scrollbar_container::calculate_best_size();
 
-	if(const grid* header = get_grid().find_widget<const grid>("_header_grid", false, false)) {
-		if(header->get_visible() != widget::visibility::invisible) {
+	if(const grid* header = get_grid().find_widget<const grid>("_header_grid", false, false)){
+		if(header->get_visible() != widget::visibility::invisible){
 			result.y += header->get_best_size().y;
 		}
 	}
 
-	if(const grid* footer = get_grid().find_widget<const grid>("_footer_grid", false, false)) {
-		if(footer->get_visible() != widget::visibility::invisible) {
+	if(const grid* footer = get_grid().find_widget<const grid>("_footer_grid", false, false)){
+		if(footer->get_visible() != widget::visibility::invisible){
 			result.y += footer->get_best_size().y;
 		}
 	}
@@ -488,7 +488,7 @@ void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direct
 	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
 
 	// When scrolling make sure the new items are visible...
-	if(direction == KEY_VERTICAL) {
+	if(direction == KEY_VERTICAL){
 		// ...but leave the horizontal scrollbar position.
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -509,7 +509,7 @@ void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	generator_->handle_key_up_arrow(modifier, handled);
 
-	if(handled) {
+	if(handled){
 		update_visible_area_on_key_event(KEY_VERTICAL);
 	} else {
 		// Inherited.
@@ -523,7 +523,7 @@ void listbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	generator_->handle_key_down_arrow(modifier, handled);
 
-	if(handled) {
+	if(handled){
 		update_visible_area_on_key_event(KEY_VERTICAL);
 	} else {
 		// Inherited.
@@ -538,7 +538,7 @@ void listbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 	generator_->handle_key_left_arrow(modifier, handled);
 
 	// Inherited.
-	if(handled) {
+	if(handled){
 		update_visible_area_on_key_event(KEY_HORIZONTAL);
 	} else {
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
@@ -552,7 +552,7 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	generator_->handle_key_right_arrow(modifier, handled);
 
 	// Inherited.
-	if(handled) {
+	if(handled){
 		update_visible_area_on_key_event(KEY_HORIZONTAL);
 	} else {
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
@@ -584,24 +584,24 @@ void listbox::order_by_column(unsigned column, widget& widget)
 {
 	selectable_item& selectable = dynamic_cast<selectable_item&>(widget);
 
-	for(auto& [w, _] : orders_) {
-		if(w && w != &selectable) {
+	for(auto& [w, _] : orders_){
+		if(w && w != &selectable){
 			w->set_value(utils::to_underlying(sort_order::type::none));
 		}
 	}
 
 	auto order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
-	if(static_cast<unsigned>(order) > orders_[column].second.size()) {
+	if(static_cast<unsigned>(order) > orders_[column].second.size()){
 		return;
 	}
 
-	if(order == sort_order::type::none) {
+	if(order == sort_order::type::none){
 		order_by(std::less<unsigned>());
 	} else {
 		order_by(orders_[column].second[utils::to_underlying(order) - 1]);
 	}
 
-	if(callback_order_change_ != nullptr) {
+	if(callback_order_change_ != nullptr){
 		callback_order_change_(column, order);
 	}
 }
@@ -625,13 +625,13 @@ bool listbox::sort_helper::more(const t_string& lhs, const t_string& rhs)
 
 void listbox::set_active_sorter(std::string_view id, sort_order::type order, bool select_first)
 {
-	for(auto& [w, _] : orders_) {
+	for(auto& [w, _] : orders_){
 		if(!w || dynamic_cast<widget*>(w)->id() != id) continue;
 
 		// Set the state and fire a modified event to handle updating the list
 		w->set_value(utils::to_underlying(order), true);
 
-		if(select_first && generator_->get_item_count() > 0) {
+		if(select_first && generator_->get_item_count() > 0){
 			select_row_at(0);
 		}
 	}
@@ -639,11 +639,11 @@ void listbox::set_active_sorter(std::string_view id, sort_order::type order, boo
 
 std::pair<widget*, sort_order::type> listbox::get_active_sorter() const
 {
-	for(const auto& [w, _] : orders_) {
+	for(const auto& [w, _] : orders_){
 		if(!w) continue;
 
 		auto sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
-		if(sort != sort_order::type::none) {
+		if(sort != sort_order::type::none){
 			return { dynamic_cast<widget*>(w), sort };
 		}
 	}
@@ -653,8 +653,8 @@ std::pair<widget*, sort_order::type> listbox::get_active_sorter() const
 
 void listbox::mark_as_unsorted()
 {
-	for(auto& [w, _] : orders_) {
-		if(w) {
+	for(auto& [w, _] : orders_){
+		if(w){
 			w->set_value(utils::to_underlying(sort_order::type::none));
 		}
 	}
@@ -677,7 +677,7 @@ void listbox::update_layout()
 
 	// If we haven't initialized, or have no content, just return.
 	point size = content_grid()->get_size();
-	if(size.x <= 0 || size.y <= 0) {
+	if(size.x <= 0 || size.y <= 0){
 		return;
 	}
 
@@ -717,24 +717,24 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 {
 	std::vector<widget_data> list_data;
 
-	for(const auto& row : data.child_range("row")) {
+	for(const auto& row : data.child_range("row")){
 		auto cols = row.child_range("column");
 
 		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols,
 			_("‘list_data’ must have the same number of columns as the ‘list_definition’.")
 		);
 
-		for(const auto& c : cols) {
+		for(const auto& c : cols){
 			list_data.emplace_back();
 
-			for(const auto& [key, value] : c.attribute_range()) {
+			for(const auto& [key, value] : c.attribute_range()){
 				list_data.back()[""][key] = value;
 			}
 
-			for(const auto& w : c.child_range("widget")) {
+			for(const auto& w : c.child_range("widget")){
 				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
 
-				for(const auto& [key, value] : w.attribute_range()) {
+				for(const auto& [key, value] : w.attribute_range()){
 					list_data.back()[w["id"]][key] = value;
 				}
 			}
@@ -764,7 +764,7 @@ builder_listbox_base::builder_listbox_base(const config& cfg, const generator_ba
 
 	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
-	if(cfg.has_child("list_data")) {
+	if(cfg.has_child("list_data")){
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
@@ -779,11 +779,11 @@ std::unique_ptr<widget> builder_listbox_base::build() const
 builder_listbox::builder_listbox(const config& cfg)
 	: builder_listbox_base(cfg, generator_base::vertical_list)
 {
-	if(auto h = cfg.optional_child("header")) {
+	if(auto h = cfg.optional_child("header")){
 		header = std::make_shared<builder_grid>(*h);
 	}
 
-	if(auto f = cfg.optional_child("footer")) {
+	if(auto f = cfg.optional_child("footer")){
 		footer = std::make_shared<builder_grid>(*f);
 	}
 }

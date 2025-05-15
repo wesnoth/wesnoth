@@ -48,7 +48,7 @@ namespace
 void clear_listbox_selection(listbox& listbox)
 {
 	const auto selection = listbox.get_selected_row();
-	if(selection >= 0) {
+	if(selection >= 0){
 		listbox.select_row(selection, false);
 	}
 }
@@ -65,8 +65,8 @@ mp_connect::mp_connect()
 	: modal_dialog(window_id())
 	, host_name_(register_text("host_name",
 							   true,
-							   []() {return prefs::get().network_host();},
-							   [](const std::string& v) {prefs::get().set_network_host(v);},
+							   [](){return prefs::get().network_host();},
+							   [](const std::string& v){prefs::get().set_network_host(v);},
 							   true))
 	, builtin_servers_(prefs::get().builtin_servers_list())
 	, user_servers_(prefs::get().user_servers_list())
@@ -85,8 +85,8 @@ void mp_connect::pre_show()
 	button& button_add = find_widget<button>("server_add");
 	button& button_del = find_widget<button>("server_delete");
 
-	for(const auto* servers : server_lists()) {
-		for(const auto& server : *servers) {
+	for(const auto* servers : server_lists()){
+		for(const auto& server : *servers){
 			insert_into_server_listbox(server_list, server);
 		}
 	}
@@ -122,9 +122,9 @@ void mp_connect::select_first_match()
 
 	std::size_t row = 0;
 
-	for(const auto* servers : server_lists()) {
+	for(const auto* servers : server_lists()){
 		for(const auto& server : *servers)  {
-			if(server.address == address) {
+			if(server.address == address){
 				server_list.select_row(row);
 				// Can't Add what's already there or Delete built-in servers
 				button_add.set_active(false);
@@ -165,7 +165,7 @@ void mp_connect::on_server_add()
 	const auto& address = boost::trim_copy(hostname_box.get_value());
 	const auto& selection = current_selection();
 
-	if(address.empty() || !selection.valid()) {
+	if(address.empty() || !selection.valid()){
 		// We're not supposed to be here
 		return;
 	}
@@ -180,7 +180,7 @@ void mp_connect::on_server_add()
 
 	std::string name;
 
-	if(!gui2::dialogs::edit_text::execute(_("Add Server"), _("Name:"), name, true) || name.empty()) {
+	if(!gui2::dialogs::edit_text::execute(_("Add Server"), _("Name:"), name, true) || name.empty()){
 		return;
 	}
 
@@ -201,7 +201,7 @@ void mp_connect::on_server_delete()
 
 	auto selection = current_selection();
 
-	if(!selection.valid() || !selection.user_defined()) {
+	if(!selection.valid() || !selection.user_defined()){
 		// We're not supposed to be here
 		return;
 	}
@@ -221,7 +221,7 @@ void mp_connect::on_server_select()
 
 	auto selection = current_selection();
 
-	if(!selection.valid()) {
+	if(!selection.valid()){
 		// The user cleared the selection. We can't delete what isn't selected
 		// and the Add button's status was already set to a value that makes
 		// sense by another signal handler, so just disable Delete.

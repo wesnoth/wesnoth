@@ -30,12 +30,12 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	t.can_publish = have_addon_pbl_info(id);
 	t.in_version_control = have_addon_in_vcs_tree(id);
 
-	if(is_addon_installed(id)) {
-		if(t.can_publish) {
-			if(addon.local_only) {
+	if(is_addon_installed(id)){
+		if(t.can_publish){
+			if(addon.local_only){
 				t.installed_version = addon.current_version;
 			} else {
-				if(addon.versions.size() > 0) {
+				if(addon.versions.size() > 0){
 					t.remote_version = *addon.versions.begin();
 				}
 
@@ -43,7 +43,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 				// Just grabbing the version, no need to validate.
 				config pbl = get_addon_pbl_info(id, false);
 
-				if(pbl.has_attribute("version")) {
+				if(pbl.has_attribute("version")){
 					t.installed_version = pbl["version"].str();
 				} else {
 					t.installed_version = get_addon_version_info(id);
@@ -52,16 +52,16 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 		} else {
 			// We normally use the _info.cfg version instead.
 			t.installed_version = get_addon_version_info(id);
-			if(addon.versions.size() > 0) {
+			if(addon.versions.size() > 0){
 				t.remote_version = *addon.versions.begin();
 			}
 		}
 
-		if(addon.local_only) {
+		if(addon.local_only){
 			t.state = ADDON_INSTALLED_LOCAL_ONLY;
-		} else if(t.remote_version == t.installed_version) {
+		} else if(t.remote_version == t.installed_version){
 			t.state = ADDON_INSTALLED;
-		} else if(t.remote_version > t.installed_version) {
+		} else if(t.remote_version > t.installed_version){
 			t.state = ADDON_INSTALLED_UPGRADABLE;
 		} else {
 			t.state = ADDON_INSTALLED_OUTDATED;

@@ -33,7 +33,7 @@ int get_turns(const std::string& value)
 	// Special case, -1 is also allowed, which means unlimited turns
 	int val = lexical_cast_default<int>(value);
 
-	if(val == -1) {
+	if(val == -1){
 		return turns_max;
 	}
 

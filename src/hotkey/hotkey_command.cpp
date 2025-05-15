@@ -347,7 +347,7 @@ scope_changer::scope_changer(hk_scopes new_scopes, bool restore)
 scope_changer::~scope_changer()
 {
 	// TODO: evaluate whether we need non-restore behavior in the game_config_manager
-	if(restore_) {
+	if(restore_){
 		scope_active = prev_scope_active_;
 	}
 }
@@ -369,7 +369,7 @@ const hotkey_command& get_hotkey_command(const std::string& command)
 {
 	try {
 		return registered_hotkeys.at(command);
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		return hotkey_command::null_command();
 	}
 }
@@ -387,7 +387,7 @@ bool has_hotkey_command(const std::string& id)
 wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey)
 	: cleanup_()
 {
-	if(id == "null") {
+	if(id == "null"){
 		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.";
 		return;
 	}
@@ -395,18 +395,18 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 	const auto& [iter, inserted] = registered_hotkeys.try_emplace(
 		id, hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string(""));
 
-	if(inserted) {
+	if(inserted){
 		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.";
 	} else {
 		LOG_G << "Hotkey with id '" << id << "' already exists.";
 		return;
 	}
 
-	if(!default_hotkey.empty() && !has_hotkey_item(id)) {
+	if(!default_hotkey.empty() && !has_hotkey_item(id)){
 		hotkey::hotkey_ptr new_item = hotkey::load_from_config(default_hotkey);
 		new_item->set_command(id);
 
-		if(new_item->valid()) {
+		if(new_item->valid()){
 			DBG_G << "added default description for the wml hotkey with id=" + id;
 			add_hotkey(new_item);
 		} else {
@@ -420,7 +420,7 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 
 wml_hotkey_record::~wml_hotkey_record()
 {
-	if(cleanup_) {
+	if(cleanup_){
 		cleanup_();
 	}
 }
@@ -463,11 +463,11 @@ const hotkey_command& hotkey_command::null_command()
 
 bool hotkey_command::null() const
 {
-	if(command == HOTKEY_NULL || id == "null") {
+	if(command == HOTKEY_NULL || id == "null"){
 		const hotkey_command& null_cmd = null_command();
 
 		if(command == null_cmd.command && id == null_cmd.id && scope == null_cmd.scope
-			&& description == null_cmd.description) {
+			&& description == null_cmd.description){
 			return true;
 		} else {
 			ERR_G << "the hotkey command seems to be the null command but it is not 100% sure. This shouldn't happen";
@@ -480,8 +480,8 @@ bool hotkey_command::null() const
 
 const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
 {
-	for(auto& [id, cmd] : registered_hotkeys) {
-		if(cmd.command == command) {
+	for(auto& [id, cmd] : registered_hotkeys){
+		if(cmd.command == command){
 			return cmd;
 		}
 	}
@@ -494,7 +494,7 @@ void init_hotkey_commands()
 {
 	registered_hotkeys.clear();
 
-	for(const hotkey_command_temp& cmd : master_hotkey_list) {
+	for(const hotkey_command_temp& cmd : master_hotkey_list){
 		// Initialize the full hotkey from the temp data.
 		registered_hotkeys.try_emplace(cmd.id, cmd);
 	}

@@ -87,7 +87,7 @@ void faction_select::pre_show()
 	connect_signal_notify_modified(list,
 		std::bind(&faction_select::on_faction_select, this));
 
-	for(const config *s : flg_manager_.choosable_factions()) {
+	for(const config *s : flg_manager_.choosable_factions()){
 		const config& side = *s;
 
 		// flag_rgb here is unrelated to any handling in the unit class
@@ -112,7 +112,7 @@ void faction_select::on_faction_select()
 {
 	const int selected_row = find_widget<listbox>("faction_list").get_selected_row();
 
-	if(selected_row == -1) {
+	if(selected_row == -1){
 		return;
 	}
 
@@ -124,15 +124,15 @@ void faction_select::on_faction_select()
 
 	std::vector<config> leaders;
 
-	for(const std::string& leader : flg_manager_.choosable_leaders()) {
+	for(const std::string& leader : flg_manager_.choosable_leaders()){
 		const unit_type* unit = unit_types.find(leader);
 
-		if(unit) {
+		if(unit){
 			const std::string icon = formatter() << unit->image() << "~RC(" << unit->flag_rgb() << ">" << tc_color_ << ")";
 			leaders.emplace_back("label", unit->type_name(), "icon", icon);
-		} else if(leader == "random") {
+		} else if(leader == "random"){
 			leaders.emplace_back("label", _("Random"), "icon", ng::random_enemy_picture);
-		} else if(leader == "null") {
+		} else if(leader == "null"){
 			leaders.emplace_back("label", font::unicode_em_dash);
 		} else {
 			leaders.emplace_back("label", "?");
@@ -148,13 +148,13 @@ void faction_select::on_faction_select()
 
 	// Print recruits
 	std::vector<t_string> recruit_names;
-	for(const auto& recruit : utils::split(flg_manager_.current_faction()["recruit"])) {
-		if(const unit_type* rt = unit_types.find(recruit)) {
+	for(const auto& recruit : utils::split(flg_manager_.current_faction()["recruit"])){
+		if(const unit_type* rt = unit_types.find(recruit)){
 			recruit_names.push_back(rt->type_name());
 		}
 	}
 
-	std::sort(recruit_names.begin(), recruit_names.end(), [](const std::string& s1, const std::string& s2) {
+	std::sort(recruit_names.begin(), recruit_names.end(), [](const std::string& s1, const std::string& s2){
 		return translation::compare(s1, s2) < 0;
 	});
 
@@ -181,7 +181,7 @@ void faction_select::on_leader_select()
 
 void faction_select::profile_button_callback()
 {
-	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
+	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())){
 		prefs::get().encountered_units().insert(ut->id());
 		help::show_unit_description(*ut);
 	}
@@ -198,7 +198,7 @@ void faction_select::update_leader_image()
 {
 	std::string leader_image = ng::random_enemy_picture;
 
-	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
+	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())){
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());
 		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")";
 	}
@@ -218,7 +218,7 @@ void faction_select::post_show()
 	//
 	// -- vultraz, 2018-06-16
 	//
-	if(get_retval() != retval::OK) {
+	if(get_retval() != retval::OK){
 		flg_manager_.set_current_faction(last_faction_);
 		flg_manager_.set_current_leader(last_leader_);
 		flg_manager_.set_current_gender(last_gender_);

@@ -150,7 +150,7 @@ public:
 	/**
 	 * Returns all dispatchers in the Z order.
 	 */
-	std::vector<dispatcher*>& get_dispatchers() { return dispatchers_; }
+	std::vector<dispatcher*>& get_dispatchers(){ return dispatchers_; }
 
 	/** The dispatcher that captured the mouse focus. */
 	dispatcher* mouse_focus;
@@ -349,8 +349,8 @@ sdl_event_handler::sdl_event_handler()
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
 {
-	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
-		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
+	if(SDL_WasInit(SDL_INIT_TIMER) == 0){
+		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1){
 			assert(false);
 		}
 	}
@@ -371,17 +371,17 @@ sdl_event_handler::~sdl_event_handler()
 void sdl_event_handler::handle_event(const SDL_Event& event)
 {
 	/** No dispatchers drop the event. */
-	if(dispatchers_.empty()) {
+	if(dispatchers_.empty()){
 		return;
 	}
 
 	uint8_t button = event.button.button;
 
-	switch(event.type) {
+	switch(event.type){
 		case SDL_MOUSEMOTION:
 #ifdef MOUSE_TOUCH_EMULATION
 			// There's no finger motion when it's not down.
-			if (event.motion.state != 0)
+			if(event.motion.state != 0)
 #endif
 			{
 				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
@@ -439,7 +439,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_WINDOWEVENT:
-			switch(event.window.event) {
+			switch(event.window.event){
 				// Always precedes SDL_WINDOWEVENT_RESIZED, but the latter does not always
 				// happen; in particular when we change the game resolution via
 				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
@@ -532,7 +532,7 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 
 	DBG_GUI_E << "adding dispatcher " << static_cast<void*>(dispatcher);
 
-	if(dispatchers_.empty()) {
+	if(dispatchers_.empty()){
 		LOG_GUI_E << "creating new dispatcher event context";
 		event_context = std::make_unique<events::event_context>();
 		join();
@@ -552,10 +552,10 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
 
-	if(disp == mouse_focus) {
+	if(disp == mouse_focus){
 		mouse_focus = nullptr;
 	}
-	if(disp == keyboard_focus_) {
+	if(disp == keyboard_focus_){
 		keyboard_focus_ = nullptr;
 	}
 
@@ -566,7 +566,7 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp)
 		   == dispatchers_.end());
 
-	if(dispatchers_.empty()) {
+	if(dispatchers_.empty()){
 		LOG_GUI_E << "deleting unused dispatcher event context";
 		leave();
 		event_context = nullptr;
@@ -591,7 +591,7 @@ void sdl_event_handler::video_resize(const point& new_size)
 	}
 }
 
-void sdl_event_handler::raw_event(const SDL_Event& event) {
+void sdl_event_handler::raw_event(const SDL_Event& event){
 	DBG_GUI_E << "Firing raw event";
 
 	for(auto dispatcher : dispatchers_)
@@ -604,22 +604,22 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 {
 	DBG_GUI_E << "Firing: " << event << ".";
 
-	if(mouse_focus) {
+	if(mouse_focus){
 		mouse_focus->fire(event, dynamic_cast<widget&>(*mouse_focus), position);
 		return;
 	}
 
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
-		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all){
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
 		}
 
-		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none){
 			continue;
 		}
 
-		if(dispatcher->is_at(position)) {
+		if(dispatcher->is_at(position)){
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
 		}
@@ -628,7 +628,7 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 
 void sdl_event_handler::mouse_button_up(const point& position, const uint8_t button)
 {
-	switch(button) {
+	switch(button){
 		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_UP, position);
 			break;
@@ -649,7 +649,7 @@ void sdl_event_handler::mouse_button_up(const point& position, const uint8_t but
 
 void sdl_event_handler::mouse_button_down(const point& position, const uint8_t button)
 {
-	switch(button) {
+	switch(button){
 		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);
 			break;
@@ -670,27 +670,27 @@ void sdl_event_handler::mouse_button_down(const point& position, const uint8_t b
 
 void sdl_event_handler::mouse_wheel(const point& position, int x, int y)
 {
-	if(x > 0) {
+	if(x > 0){
 		mouse(SDL_WHEEL_RIGHT, position);
-	} else if(x < 0) {
+	} else if(x < 0){
 		mouse(SDL_WHEEL_LEFT, position);
 	}
 
-	if(y < 0) {
+	if(y < 0){
 		mouse(SDL_WHEEL_DOWN, position);
-	} else if(y > 0) {
+	} else if(y > 0){
 		mouse(SDL_WHEEL_UP, position);
 	}
 }
 
 dispatcher* sdl_event_handler::keyboard_dispatcher()
 {
-	if(keyboard_focus_) {
+	if(keyboard_focus_){
 		return keyboard_focus_;
 	}
 
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
-		if(dispatcher->get_want_keyboard_input()) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
+		if(dispatcher->get_want_keyboard_input()){
 			return dispatcher;
 		}
 	}
@@ -700,28 +700,28 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 
 void sdl_event_handler::touch_motion(const point& position, const point& distance)
 {
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
 		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
 	}
 }
 
 void sdl_event_handler::touch_up(const point& position)
 {
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
 		dispatcher->fire(SDL_TOUCH_UP, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_down(const point& position)
 {
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
 		dispatcher->fire(SDL_TOUCH_DOWN, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse){
 		dispatcher->fire(SDL_TOUCH_MULTI_GESTURE, dynamic_cast<widget&>(*dispatcher), center, dTheta, dDist, numFingers);
 	}
 }
@@ -730,10 +730,10 @@ void sdl_event_handler::hat_motion(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk->null()) {
+	if(!hk->null()){
 		done = hotkey_pressed(hk);
 	}
-	if(!done) {
+	if(!done){
 		// TODO fendrin think about handling hat motions that are not bound to a
 		// hotkey.
 	}
@@ -743,10 +743,10 @@ void sdl_event_handler::button_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk->null()) {
+	if(!hk->null()){
 		done = hotkey_pressed(hk);
 	}
-	if(!done) {
+	if(!done){
 		// TODO fendrin think about handling button down events that are not
 		// bound to a hotkey.
 	}
@@ -756,11 +756,11 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk->null()) {
+	if(!hk->null()){
 		done = hotkey_pressed(hk);
 	}
-	if(!done) {
-		if(event.type == SDL_TEXTINPUT) {
+	if(!done){
+		if(event.type == SDL_TEXTINPUT){
 			text_input(event.text.text);
 		} else {
 			key_down(event.key.keysym.sym, static_cast<SDL_Keymod>(event.key.keysym.mod), "");
@@ -772,7 +772,7 @@ void sdl_event_handler::text_input(const std::string& unicode)
 {
 	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
 
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()){
 		dispatcher->fire(SDL_TEXT_INPUT,
 			dynamic_cast<widget&>(*dispatcher),
 			unicode, -1, -1);
@@ -781,7 +781,7 @@ void sdl_event_handler::text_input(const std::string& unicode)
 
 void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, int32_t len)
 {
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()){
 		dispatcher->fire(SDL_TEXT_EDITING,
 			dynamic_cast<widget&>(*dispatcher),
 			unicode, start, len);
@@ -790,7 +790,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key)
 {
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()){
 		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
 	}
 
@@ -803,7 +803,7 @@ void sdl_event_handler::key_down(const SDL_Keycode key,
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".";
 
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()){
 		dispatcher->fire(SDL_KEY_DOWN,
 						 dynamic_cast<widget&>(*dispatcher),
 						 key,
@@ -816,7 +816,7 @@ void sdl_event_handler::keyboard(const ui_event event)
 {
 	DBG_GUI_E << "Firing: " << event << ".";
 
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()){
 		dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher));
 	}
 }
@@ -826,7 +826,7 @@ void sdl_event_handler::close_window(const unsigned window_id)
 	DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".";
 
 	window* window = window::window_instance(window_id);
-	if(window) {
+	if(window){
 		window->fire(CLOSE_WINDOW, *window);
 	}
 }
@@ -902,7 +902,7 @@ void release_mouse(dispatcher* dispatcher)
 {
 	assert(handler_);
 	assert(dispatcher);
-	if(handler_->mouse_focus == dispatcher) {
+	if(handler_->mouse_focus == dispatcher){
 		handler_->mouse_focus = nullptr;
 	}
 }
@@ -918,7 +918,7 @@ void capture_keyboard(dispatcher* dispatcher)
 
 std::ostream& operator<<(std::ostream& stream, const ui_event event)
 {
-	switch(event) {
+	switch(event){
 		case DRAW:
 			stream << "draw";
 			break;

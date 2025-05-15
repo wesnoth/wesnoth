@@ -44,8 +44,8 @@ std::string fast_interpolate_variables_into_string(const std::string &str, const
 {
 	std::string res = str;
 
-	if(symbols) {
-		for(const plain_string_map::value_type& sym : *symbols) {
+	if(symbols){
+		for(const plain_string_map::value_type& sym : *symbols){
 			boost::replace_all(res, "$" + sym.first, sym.second);
 		}
 	}
@@ -63,13 +63,13 @@ const std::string illegal_markup_chars = "*`~{^}|@#<&";
 
 std::string format_addon_feedback_url(const std::string& format, const config& params)
 {
-	if(!format.empty() && !params.empty()) {
+	if(!format.empty() && !params.empty()){
 		plain_string_map escaped;
 
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		for(const auto& [key, value] : params.attribute_range()) {
+		for(const auto& [key, value] : params.attribute_range()){
 			escaped[key] = utils::urlencode(value.str());
 		}
 
@@ -79,7 +79,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 		const std::string& res =
 			fast_interpolate_variables_into_string(format, &escaped);
 
-		if(res != format) {
+		if(res != format){
 			return res;
 		}
 
@@ -94,7 +94,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 void support_translation(config& addon, const std::string& locale_id)
 {
 	config* locale = addon.find_child("translation", "language", locale_id).ptr();
-	if(!locale) {
+	if(!locale){
 		locale = &addon.add_child("translation");
 		(*locale)["language"] = locale_id;
 	}
@@ -103,16 +103,16 @@ void support_translation(config& addon, const std::string& locale_id)
 
 void find_translations(const config& base_dir, config& addon)
 {
-	for(const config& file : base_dir.child_range("file")) {
+	for(const config& file : base_dir.child_range("file")){
 		const std::string& fn = file["name"].str();
-		if(boost::algorithm::ends_with(fn, ".po")) {
+		if(boost::algorithm::ends_with(fn, ".po")){
 			support_translation(addon, filesystem::base_name(fn, true));
 		}
 	}
 
 	for(const config &dir : base_dir.child_range("dir"))
 	{
-		if(dir["name"] == "LC_MESSAGES") {
+		if(dir["name"] == "LC_MESSAGES"){
 			support_translation(addon, base_dir["name"]);
 		} else {
 			find_translations(dir, addon);
@@ -125,7 +125,7 @@ void add_license(config& cfg)
 	auto dir = cfg.optional_child("dir");
 
 	// No top-level directory? Hm..
-	if(!dir) {
+	if(!dir){
 		LOG_CS << "Could not find toplevel [dir] tag";
 		return;
 	}
@@ -142,7 +142,7 @@ void add_license(config& cfg)
 
 	// Copy over COPYING.txt
 	const std::string& contents = filesystem::read_file("COPYING.txt");
-	if (contents.empty()) {
+	if(contents.empty()){
 		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"";
 		return;
 	}
@@ -156,7 +156,7 @@ std::map<version_info, config> get_version_map(config& addon)
 {
 	std::map<version_info, config> version_map;
 
-	for(config& version : addon.child_range("version")) {
+	for(config& version : addon.child_range("version")){
 		version_map.emplace(version_info(version["version"]), version);
 	}
 
@@ -165,15 +165,15 @@ std::map<version_info, config> get_version_map(config& addon)
 
 bool data_apply_removelist(config& data, const config& removelist)
 {
-	for(const config& f : removelist.child_range("file")) {
-		data.remove_children("file", [&f](const config& d) { return f["name"] == d["name"]; });
+	for(const config& f : removelist.child_range("file")){
+		data.remove_children("file", [&f](const config& d){ return f["name"] == d["name"]; });
 	}
 
-	for(const config& dir : removelist.child_range("dir")) {
+	for(const config& dir : removelist.child_range("dir")){
 		auto data_dir = data.find_child("dir", "name", dir["name"]);
-		if(data_dir && !data_apply_removelist(*data_dir, dir)) {
+		if(data_dir && !data_apply_removelist(*data_dir, dir)){
 			// Delete empty directories
-			data.remove_children("dir", [&dir](const config& d) { return dir["name"] == d["name"]; });
+			data.remove_children("dir", [&dir](const config& d){ return dir["name"] == d["name"]; });
 		}
 	}
 
@@ -182,14 +182,14 @@ bool data_apply_removelist(config& data, const config& removelist)
 
 void data_apply_addlist(config& data, const config& addlist)
 {
-	for(const config& f : addlist.child_range("file")) {
+	for(const config& f : addlist.child_range("file")){
 		// Just add it since we have already checked the data for duplicates
 		data.add_child("file", f);
 	}
 
-	for(const config& dir : addlist.child_range("dir")) {
+	for(const config& dir : addlist.child_range("dir")){
 		config* data_dir = data.find_child("dir", "name", dir["name"]).ptr();
-		if(!data_dir) {
+		if(!data_dir){
 			data_dir = &data.add_child("dir");
 			(*data_dir)["name"] = dir["name"];
 		}

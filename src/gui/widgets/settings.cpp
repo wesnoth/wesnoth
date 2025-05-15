@@ -56,10 +56,10 @@ void update_screen_size_variables()
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;
 
-	if(display* display = display::get_singleton()) {
+	if(display* display = display::get_singleton()){
 		const SDL_Rect rect_gm = display->map_outside_area();
 
-		if(rect_gm.w && rect_gm.h) {
+		if(rect_gm.w && rect_gm.h){
 			gamemap_width = rect_gm.w;
 			gamemap_height = rect_gm.h;
 			gamemap_x_offset = rect_gm.x;

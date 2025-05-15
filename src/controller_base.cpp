@@ -55,7 +55,7 @@ controller_base::controller_base()
 
 controller_base::~controller_base()
 {
-	if(long_touch_timer_ != 0) {
+	if(long_touch_timer_ != 0){
 		gui2::remove_timer(long_touch_timer_);
 		long_touch_timer_ = 0;
 	}
@@ -63,13 +63,13 @@ controller_base::~controller_base()
 
 void controller_base::long_touch_callback(int x, int y)
 {
-	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
+	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()){
 		int x_now;
 		int y_now;
 		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
-		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
+		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)){
 			// Monkey-patch touch controls again to make them look like left button.
 			mouse_state = SDL_BUTTON(SDL_BUTTON_LEFT);
 		}
@@ -86,7 +86,7 @@ void controller_base::long_touch_callback(int x, int y)
 		   && get_display().map_area().contains(x_now, y_now))
 		{
 			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
-			if(m != nullptr) {
+			if(m != nullptr){
 				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true, get_display());
 			}
 		}
@@ -97,7 +97,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui2::is_in_dialog()) {
+	if(gui2::is_in_dialog()){
 		return;
 	}
 
@@ -105,15 +105,15 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	SDL_Event new_event = {};
 
-	switch(event.type) {
+	switch(event.type){
 	case SDL_TEXTINPUT:
-		if(have_keyboard_focus()) {
+		if(have_keyboard_focus()){
 			hotkey::key_event(event, get_hotkey_command_executor());
 		}
 		break;
 
 	case SDL_TEXTEDITING:
-		if(have_keyboard_focus()) {
+		if(have_keyboard_focus()){
 			SDL_Event evt = event;
 			evt.type = SDL_TEXTINPUT;
 			hotkey::key_event(evt, get_hotkey_command_executor());
@@ -125,8 +125,8 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
-		if(have_keyboard_focus()) {
-			if(event.key.keysym.sym == SDLK_ESCAPE) {
+		if(have_keyboard_focus()){
+			if(event.key.keysym.sym == SDLK_ESCAPE){
 				get_hotkey_command_executor()->execute_quit_command();
 				break;
 			}
@@ -154,22 +154,22 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
-		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0){
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0){
 			};
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID){
 				mh_base.mouse_motion_event(new_event.motion, is_browsing());
 			}
 		} else {
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID){
 				mh_base.mouse_motion_event(event.motion, is_browsing());
 			}
 		}
 		break;
 
 	case SDL_FINGERMOTION:
-		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0){
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0){
 			};
 			mh_base.touch_motion_event(new_event.tfinger, is_browsing());
 		} else {
@@ -180,7 +180,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONDOWN:
 		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 
-		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
+		if(last_mouse_is_touch_ && long_touch_timer_ == 0){
 			long_touch_timer_ = gui2::add_timer(
 					long_touch_duration,
 					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
@@ -195,7 +195,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEBUTTONUP:
-		if(long_touch_timer_ != 0) {
+		if(long_touch_timer_ != 0){
 			gui2::remove_timer(long_touch_timer_);
 			long_touch_timer_ = 0;
 		}
@@ -203,7 +203,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 
 		mh_base.mouse_press(event.button, is_browsing());
-		if(mh_base.get_show_menu()) {
+		if(mh_base.get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
 					get_display());
 		}
@@ -216,7 +216,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			   // TODO: Move to right_click_show_menu?
 			   && get_display().map_area().contains(x, y)
 			   // TODO: This chain repeats in several places, move to a method.
-			   && get_display().get_theme().context_menu() != nullptr) {
+			   && get_display().get_theme().context_menu() != nullptr){
 				show_menu(get_display().get_theme().context_menu()->items(),
 						  x,
 						  y,
@@ -245,15 +245,15 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Fixes issues #3362 and #7404, which are a regression caused by pull #2481 that fixed issue #2218.
 		{
 			static int xmul = 0;
-			if(xmul == 0) {
+			if(xmul == 0){
 				xmul = 1;
 				const char* video_driver = SDL_GetCurrentVideoDriver();
 				SDL_version ver;
 				SDL_GetVersion(&ver);
-				if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0) {
-					if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18) {
+				if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0){
+					if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18){
 						xmul = -1;
-					} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20) {
+					} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20){
 						xmul = -1;
 					}
 				}
@@ -276,7 +276,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 void controller_base::process()
 {
-	if(gui2::is_in_dialog()) {
+	if(gui2::is_in_dialog()){
 		return;
 	}
 
@@ -285,7 +285,7 @@ void controller_base::process()
 
 void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 {
-	if(event.type == SDL_KEYUP) {
+	if(event.type == SDL_KEYUP){
 		hotkey::keyup_event(event, controller_.get_hotkey_command_executor());
 	}
 }
@@ -308,8 +308,8 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		? prefs::get().mouse_scroll_threshold()
 		: 0;
 
-	for(const theme::menu& m : get_display().get_theme().menus()) {
-		if(m.get_location().contains(mousex, mousey)) {
+	for(const theme::menu& m : get_display().get_theme().menus()){
+		if(m.get_location().contains(mousex, mousey)){
 			scroll_threshold = 0;
 		}
 	}
@@ -319,7 +319,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 	// If we weren't previously scrolling, start small.
 	auto dt = 1ms;
-	if (scrolling_) {
+	if(scrolling_){
 		dt = std::chrono::duration_cast<std::chrono::milliseconds>(tick_now - last_scroll_tick_);
 	}
 
@@ -336,20 +336,20 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	dx += scroll_right_ * scroll_amount;
 
 	// Scroll if mouse is placed near the edge of the screen
-	if(mouse_in_window) {
-		if(mousey < scroll_threshold) {
+	if(mouse_in_window){
+		if(mousey < scroll_threshold){
 			dy -= scroll_amount;
 		}
 
-		if(mousey > video::game_canvas_size().y - scroll_threshold) {
+		if(mousey > video::game_canvas_size().y - scroll_threshold){
 			dy += scroll_amount;
 		}
 
-		if(mousex < scroll_threshold) {
+		if(mousex < scroll_threshold){
 			dx -= scroll_amount;
 		}
 
-		if(mousex > video::game_canvas_size().x - scroll_threshold) {
+		if(mousex > video::game_canvas_size().x - scroll_threshold){
 			dx += scroll_amount;
 		}
 	}
@@ -357,10 +357,10 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
 
 	// Scroll with middle-mouse if enabled
-	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
+	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()){
 		const SDL_Point original_loc = mh_base.get_scroll_start();
 
-		if(mh_base.scroll_started()) {
+		if(mh_base.scroll_started()){
 			if(get_display().map_outside_area().contains(mousex, mousey)
 				&& mh_base.scroll_started())
 			{
@@ -371,11 +371,11 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
 
-				if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
+				if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist){
 					dx += speed * x_diff;
 				}
 
-				if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
+				if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist){
 					dy += speed * y_diff;
 				}
 			}
@@ -385,12 +385,12 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	}
 
 	// If nothing is scrolling, just return.
-	if (!dx && !dy) {
+	if(!dx && !dy){
 		return false;
 	}
 
 	// If we are continuing a scroll, carry over any subpixel movement.
-	if (scrolling_) {
+	if(scrolling_){
 		dx += scroll_carry_x_;
 		dy += scroll_carry_y_;
 	}
@@ -410,7 +410,7 @@ void controller_base::play_slice()
 {
 	CKey key;
 
-	if(plugins_context* l = get_plugins_context()) {
+	if(plugins_context* l = get_plugins_context()){
 		l->play_slice();
 	}
 
@@ -419,12 +419,12 @@ void controller_base::play_slice()
 	events::draw();
 
 	// Update sound sources before scrolling
-	if(soundsource::manager* l = get_soundsource_man()) {
+	if(soundsource::manager* l = get_soundsource_man()){
 		l->update();
 	}
 
 	const theme::menu* const m = get_display().menu_pressed();
-	if(m != nullptr) {
+	if(m != nullptr){
 		const rect& menu_loc = m->location(video::game_canvas());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
@@ -432,7 +432,7 @@ void controller_base::play_slice()
 	}
 
 	const theme::action* const a = get_display().action_pressed();
-	if(a != nullptr) {
+	if(a != nullptr){
 		const rect& action_loc = a->location(video::game_canvas());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
@@ -440,7 +440,7 @@ void controller_base::play_slice()
 	}
 
 	auto str_vec = additional_actions_pressed();
-	if(!str_vec.empty()) {
+	if(!str_vec.empty()){
 		execute_action(str_vec, 0, 0, false);
 		return;
 	}
@@ -455,7 +455,7 @@ void controller_base::play_slice()
 	map_location highlighted_hex = get_display().mouseover_hex();
 
 	// Scrolling ended, update the cursor and the brightened hex
-	if(!scrolling_ && was_scrolling) {
+	if(!scrolling_ && was_scrolling){
 		get_mouse_handler_base().mouse_update(is_browsing(), highlighted_hex);
 	}
 }
@@ -464,21 +464,21 @@ void controller_base::show_menu(
 		const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
+	if(!cmd_exec){
 		return;
 	}
 
 	std::vector<config> items;
-	for(const config& c : items_arg) {
+	for(const config& c : items_arg){
 		const std::string& id = c["id"];
 		const hotkey::ui_command cmd = hotkey::ui_command(id);
 
-		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
+		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))){
 			items.emplace_back(c);
 		}
 	}
 
-	if(items.empty()) {
+	if(items.empty()){
 		return;
 	}
 
@@ -488,19 +488,19 @@ void controller_base::show_menu(
 void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
+	if(!cmd_exec){
 		return;
 	}
 
 	std::vector<std::string> items;
-	for(const std::string& item : items_arg) {
+	for(const std::string& item : items_arg){
 		hotkey::ui_command cmd = hotkey::ui_command(item);
-		if(cmd_exec->can_execute_command(cmd)) {
+		if(cmd_exec->can_execute_command(cmd)){
 			items.push_back(item);
 		}
 	}
 
-	if(items.empty()) {
+	if(items.empty()){
 		return;
 	}
 

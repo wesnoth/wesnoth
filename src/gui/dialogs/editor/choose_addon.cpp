@@ -42,10 +42,10 @@ void editor_choose_addon::post_show()
 	listbox& existing_addons = find_widget<listbox>("existing_addons");
 	int selected_row = existing_addons.get_selected_row();
 
-	if(selected_row == 0) {
+	if(selected_row == 0){
 		addon_id_ = "///newaddon///";
 		prefs::get().set_editor_chosen_addon("");
-	} else if(selected_row == 1 && find_widget<toggle_button>("show_all").get_value_bool()) {
+	} else if(selected_row == 1 && find_widget<toggle_button>("show_all").get_value_bool()){
 		addon_id_ = "mainline";
 		prefs::get().set_editor_chosen_addon("");
 	} else {
@@ -73,19 +73,19 @@ void editor_choose_addon::populate_list(bool show_all)
 		{ "existing_addon_id", {{ "label", _("New Add-on") }, { "tooltip", _("Create a new add-on") }}},
 	});
 
-	if(show_all) {
+	if(show_all){
 		existing_addons.add_row(widget_data{
 			{ "existing_addon_id", {{ "label", _("Mainline") }, { "tooltip", _("Mainline multiplayer scenarios") }}},
 		});
 	}
 
 	int selected_row = 0;
-	for(const std::string& dir : dirs) {
+	for(const std::string& dir : dirs){
 		if((show_all || filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_server.pbl"))
 			&& filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_main.cfg"))
 		{
 			existing_addons.add_row(widget_data{{ "existing_addon_id", {{ "label", dir }}}});
-			if(dir == prefs::get().editor_chosen_addon()) {
+			if(dir == prefs::get().editor_chosen_addon()){
 				selected_row = existing_addons.get_item_count()-1;
 			}
 		}

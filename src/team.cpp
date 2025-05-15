@@ -209,8 +209,8 @@ void team::team_info::read(const config& cfg)
 	if(!user_team_name.translatable())
 		user_team_name = t_string::from_serialized(user_team_name);
 
-	if(ai::manager::has_manager()) {
-		if(cfg.has_attribute("ai_config")) {
+	if(ai::manager::has_manager()){
+		if(cfg.has_attribute("ai_config")){
 			ai::manager::get_singleton().add_ai_for_side_from_file(side, cfg["ai_config"], true);
 		} else {
 			ai::manager::get_singleton().add_ai_for_side_from_config(side, cfg, true);
@@ -222,17 +222,17 @@ void team::team_info::read(const config& cfg)
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
-	if(!cfg["start_gold"].empty()) {
+	if(!cfg["start_gold"].empty()){
 		start_gold = cfg["start_gold"].to_int();
 	} else {
 		start_gold = gold;
 	}
 
-	if(team_name.empty()) {
+	if(team_name.empty()){
 		team_name = cfg["side"].str();
 	}
 
-	if(save_id.empty()) {
+	if(save_id.empty()){
 		save_id = id;
 	}
 
@@ -240,7 +240,7 @@ void team::team_info::read(const config& cfg)
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
 	const std::string& village_support = cfg["village_support"];
-	if(village_support.empty()) {
+	if(village_support.empty()){
 		support_per_village = game_config::village_support;
 	} else {
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
@@ -249,7 +249,7 @@ void team::team_info::read(const config& cfg)
 	controller = side_controller::get_enum(cfg["controller"].str()).value_or(side_controller::type::ai);
 
 	// TODO: Why do we read disallow observers differently when controller is empty?
-	if(controller == side_controller::type::none) {
+	if(controller == side_controller::type::none){
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 
@@ -270,10 +270,10 @@ void team::team_info::read(const config& cfg)
 
 void team::team_info::handle_legacy_share_vision(const config& cfg)
 {
-	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps")) {
-		if(cfg["share_view"].to_bool()) {
+	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps")){
+		if(cfg["share_view"].to_bool()){
 			share_vision = team_shared_vision::type::all;
-		} else if(cfg["share_maps"].to_bool(true)) {
+		} else if(cfg["share_maps"].to_bool(true)){
 			share_vision = team_shared_vision::type::shroud;
 		} else {
 			share_vision = team_shared_vision::type::none;
@@ -323,7 +323,7 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
-	if(!variables.empty()) {
+	if(!variables.empty()){
 		cfg.add_child("variables", variables);
 	}
 
@@ -367,16 +367,16 @@ void team::build(const config& cfg, const gamemap& map)
 
 	// Load the WML-cleared fog.
 	auto fog_override = cfg.optional_child("fog_override");
-	if(fog_override) {
+	if(fog_override){
 		const std::vector<map_location> fog_vector
 				= map.parse_location_range(fog_override["x"], fog_override["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 
 	// Load in the villages the side controls at the start
-	for(const config& v : cfg.child_range("village")) {
+	for(const config& v : cfg.child_range("village")){
 		map_location loc(v);
-		if(map.is_village(loc)) {
+		if(map.is_village(loc)){
 			villages_.insert(loc);
 		} else {
 			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc;
@@ -398,7 +398,7 @@ void team::write(config& cfg) const
 	cfg["fog"] = uses_fog();
 
 	// Write village locations
-	for(const map_location& loc : villages_) {
+	for(const map_location& loc : villages_){
 		loc.write(cfg.add_child("village"));
 	}
 
@@ -413,8 +413,8 @@ void team::write(config& cfg) const
 
 void team::fix_villages(const gamemap &map)
 {
-	for (auto it = villages_.begin(); it != villages_.end(); ) {
-		if (map.is_village(*it)) {
+	for(auto it = villages_.begin(); it != villages_.end();){
+		if(map.is_village(*it)){
 			++it;
 		}
 		else {
@@ -428,18 +428,18 @@ game_events::pump_result_t team::get_village(const map_location& loc, const int 
 	villages_.insert(loc);
 	game_events::pump_result_t res;
 
-	if(gamedata) {
+	if(gamedata){
 		config::attribute_value var_owner_side;
 		var_owner_side = owner_side;
 		std::swap(var_owner_side, gamedata->get_variable("owner_side"));
 
 		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture
 		// events in this case.
-		if(resources::game_events) {
+		if(resources::game_events){
 			res = resources::game_events->pump().fire("capture", loc);
 		}
 
-		if(var_owner_side.blank()) {
+		if(var_owner_side.blank()){
 			gamedata->clear_variable("owner_side");
 		} else {
 			std::swap(var_owner_side, gamedata->get_variable("owner_side"));
@@ -461,7 +461,7 @@ void team::set_recruits(const std::set<std::string>& recruits)
 	info_.can_recruit = recruits;
 	info_.minimum_recruit_price = 0;
 	// this method gets called from the editor, which obviously has no AI present
-	if(ai::manager::has_manager()) {
+	if(ai::manager::has_manager()){
 		ai::manager::get_singleton().raise_recruit_list_changed();
 	}
 }
@@ -475,16 +475,16 @@ void team::add_recruit(const std::string& recruit)
 
 int team::minimum_recruit_price() const
 {
-	if(info_.minimum_recruit_price) {
+	if(info_.minimum_recruit_price){
 		return info_.minimum_recruit_price;
 	}
 	int min = 20;
-	for(std::string recruit : info_.can_recruit) {
+	for(std::string recruit : info_.can_recruit){
 		const unit_type* ut = unit_types.find(recruit);
-		if(!ut) {
+		if(!ut){
 			continue;
 		} else {
-			if(ut->cost() < min) {
+			if(ut->cost() < min){
 				min = ut->cost();
 			}
 		}
@@ -497,11 +497,11 @@ int team::minimum_recruit_price() const
 
 void team::calculate_enemies(std::size_t index) const
 {
-	if(!resources::gameboard || index >= resources::gameboard->teams().size()) {
+	if(!resources::gameboard || index >= resources::gameboard->teams().size()){
 		return;
 	}
 
-	while(enemies_.size() <= index) {
+	while(enemies_.size() <= index){
 		enemies_.push_back(calculate_is_enemy(enemies_.size()));
 	}
 }
@@ -509,7 +509,7 @@ void team::calculate_enemies(std::size_t index) const
 bool team::calculate_is_enemy(std::size_t index) const
 {
 	// We're not enemies of ourselves
-	if(&resources::gameboard->teams()[index] == this) {
+	if(&resources::gameboard->teams()[index] == this){
 		return false;
 	}
 
@@ -521,8 +521,8 @@ bool team::calculate_is_enemy(std::size_t index) const
 			<< info_.team_name << "], their team_name is [" << resources::gameboard->teams()[index].info_.team_name
 			<< "]" << std::endl;
 
-	for(const std::string& t : our_teams) {
-		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
+	for(const std::string& t : our_teams){
+		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()){
 			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;
 		} else {
@@ -573,29 +573,29 @@ private:
 void team::change_controller_by_wml(const std::string& new_controller_string)
 {
 	auto new_controller = side_controller::get_enum(new_controller_string);
-	if(!new_controller) {
+	if(!new_controller){
 		WRN_NG << "ignored attempt to change controller to " << new_controller_string;
 		return;
 	}
 
-	if(new_controller == side_controller::type::none && resources::controller->current_side() == this->side()) {
+	if(new_controller == side_controller::type::none && resources::controller->current_side() == this->side()){
 		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'";
 		return;
 	}
 
 	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
-	if(!side_controller::get_enum(choice["controller"].str())) {
+	if(!side_controller::get_enum(choice["controller"].str())){
 		WRN_NG << "Received an invalid controller string from the server" << choice["controller"];
 	} else {
 		new_controller = side_controller::get_enum(choice["controller"].str());
 	}
 
-	if(!resources::controller->is_replay()) {
+	if(!resources::controller->is_replay()){
 		set_local(choice["is_local"].to_bool());
 	}
 
-	if(playsingle_controller* pc =  dynamic_cast<playsingle_controller*>(resources::controller)) {
-		if(pc->current_side() == side() && new_controller != controller()) {
+	if(playsingle_controller* pc =  dynamic_cast<playsingle_controller*>(resources::controller)){
+		if(pc->current_side() == side() && new_controller != controller()){
 			pc->set_player_type_changed();
 		}
 	}
@@ -607,7 +607,7 @@ void team::change_team(const std::string& name, const t_string& user_name)
 {
 	info_.team_name = name;
 
-	if(!user_name.empty()) {
+	if(!user_name.empty()){
 		info_.user_team_name = user_name;
 	} else {
 		info_.user_team_name = name;
@@ -619,8 +619,8 @@ void team::change_team(const std::string& name, const t_string& user_name)
 void team::clear_caches()
 {
 	// Reset the cache of allies for all teams
-	if(resources::gameboard) {
-		for(auto& t : resources::gameboard->teams()) {
+	if(resources::gameboard){
+		for(auto& t : resources::gameboard->teams()){
 			t.enemies_.clear();
 			t.ally_shroud_.clear();
 			t.ally_fog_.clear();
@@ -632,14 +632,14 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 {
 	info_.objectives = new_objectives;
 
-	if(!silently) {
+	if(!silently){
 		info_.objectives_changed = true;
 	}
 }
 
 bool team::shrouded(const map_location& loc) const
 {
-	if(!resources::gameboard) {
+	if(!resources::gameboard){
 		return shroud_.value(loc.wml_x(), loc.wml_y());
 	}
 
@@ -648,16 +648,16 @@ bool team::shrouded(const map_location& loc) const
 
 bool team::fogged(const map_location& loc) const
 {
-	if(shrouded(loc)) {
+	if(shrouded(loc)){
 		return true;
 	}
 
 	// Check for an override of fog.
-	if(fog_clearer_.count(loc) > 0) {
+	if(fog_clearer_.count(loc) > 0){
 		return false;
 	}
 
-	if(!resources::gameboard) {
+	if(!resources::gameboard){
 		return fog_.value(loc.wml_x(), loc.wml_y());
 	}
 
@@ -666,9 +666,9 @@ bool team::fogged(const map_location& loc) const
 
 const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
-	if(ally_shroud_.empty()) {
-		for(const team& t : teams) {
-			if(!is_enemy(t.side()) && (&t == this || t.share_view() || t.share_maps())) {
+	if(ally_shroud_.empty()){
+		for(const team& t : teams){
+			if(!is_enemy(t.side()) && (&t == this || t.share_view() || t.share_maps())){
 				ally_shroud_.push_back(&t.shroud_);
 			}
 		}
@@ -679,9 +679,9 @@ const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>&
 
 const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
-	if(ally_fog_.empty()) {
-		for(const team& t : teams) {
-			if(!is_enemy(t.side()) && (&t == this || t.share_view())) {
+	if(ally_fog_.empty()){
+		for(const team& t : teams){
+			if(!is_enemy(t.side()) && (&t == this || t.share_view())){
 				ally_fog_.push_back(&t.fog_);
 			}
 		}
@@ -695,32 +695,32 @@ bool team::knows_about_team(std::size_t index) const
 	const team& t = resources::gameboard->teams()[index];
 
 	// We know about our own team
-	if(this == &t) {
+	if(this == &t){
 		return true;
 	}
 
 	// If we aren't using shroud or fog, then we know about everyone
-	if(!uses_shroud() && !uses_fog()) {
+	if(!uses_shroud() && !uses_fog()){
 		return true;
 	}
 
 	// We don't know about enemies
-	if(is_enemy(index + 1)) {
+	if(is_enemy(index + 1)){
 		return false;
 	}
 
 	// We know our human allies.
-	if(t.is_human()) {
+	if(t.is_human()){
 		return true;
 	}
 
 	// We know about allies we're sharing maps with
-	if(share_maps() && t.uses_shroud()) {
+	if(share_maps() && t.uses_shroud()){
 		return true;
 	}
 
 	// We know about allies we're sharing view with
-	if(share_view() && (t.uses_fog() || t.uses_shroud())) {
+	if(share_view() && (t.uses_fog() || t.uses_shroud())){
 		return true;
 	}
 
@@ -745,11 +745,11 @@ void team::remove_fog_override(const std::set<map_location>& hexes)
 
 void validate_side(int side)
 {
-	if(!resources::gameboard) {
+	if(!resources::gameboard){
 		return;
 	}
 
-	if(side < 1 || side > static_cast<int>(resources::gameboard->teams().size())) {
+	if(side < 1 || side > static_cast<int>(resources::gameboard->teams().size())){
 		throw game::game_error("invalid side(" + std::to_string(side) + ") found in unit definition");
 	}
 }
@@ -762,26 +762,26 @@ int shroud_map::width() const
 int shroud_map::height() const
 {
 	if(data_.size() == 0) return 0;
-	return std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
+	return std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b){
 		return a.size() < b.size();
 	})->size();
 }
 
 bool shroud_map::clear(int x, int y)
 {
-	if(enabled_ == false || x < 0 || y < 0) {
+	if(enabled_ == false || x < 0 || y < 0){
 		return false;
 	}
 
-	if(x >= static_cast<int>(data_.size())) {
+	if(x >= static_cast<int>(data_.size())){
 		data_.resize(x + 1);
 	}
 
-	if(y >= static_cast<int>(data_[x].size())) {
+	if(y >= static_cast<int>(data_[x].size())){
 		data_[x].resize(y + 1);
 	}
 
-	if(data_[x][y] == false) {
+	if(data_[x][y] == false){
 		data_[x][y] = true;
 		return true;
 	}
@@ -791,14 +791,14 @@ bool shroud_map::clear(int x, int y)
 
 void shroud_map::place(int x, int y)
 {
-	if(enabled_ == false || x < 0 || y < 0) {
+	if(enabled_ == false || x < 0 || y < 0){
 		return;
 	}
 
-	if(x >= static_cast<int>(data_.size())) {
+	if(x >= static_cast<int>(data_.size())){
 		DBG_NG << "Couldn't place shroud on invalid x coordinate: (" << x << ", " << y
 			   << ") - max x: " << data_.size() - 1;
-	} else if(y >= static_cast<int>(data_[x].size())) {
+	} else if(y >= static_cast<int>(data_[x].size())){
 		DBG_NG << "Couldn't place shroud on invalid y coordinate: (" << x << ", " << y
 			   << ") - max y: " << data_[x].size() - 1;
 	} else {
@@ -808,27 +808,27 @@ void shroud_map::place(int x, int y)
 
 void shroud_map::reset()
 {
-	if(enabled_ == false) {
+	if(enabled_ == false){
 		return;
 	}
 
-	for(auto& i : data_) {
+	for(auto& i : data_){
 		std::fill(i.begin(), i.end(), false);
 	}
 }
 
 bool shroud_map::value(int x, int y) const
 {
-	if(!enabled_) {
+	if(!enabled_){
 		return false;
 	}
 
 	// Locations for which we have no data are assumed to still be covered.
-	if(x < 0 || x >= static_cast<int>(data_.size())) {
+	if(x < 0 || x >= static_cast<int>(data_.size())){
 		return true;
 	}
 
-	if(y < 0 || y >= static_cast<int>(data_[x].size())) {
+	if(y < 0 || y >= static_cast<int>(data_[x].size())){
 		return true;
 	}
 
@@ -839,18 +839,18 @@ bool shroud_map::value(int x, int y) const
 
 bool shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
 {
-	if(!enabled_) {
+	if(!enabled_){
 		return false;
 	}
 
 	// A quick abort:
-	if(x < 0 || y < 0) {
+	if(x < 0 || y < 0){
 		return true;
 	}
 
 	// A tile is uncovered if it is uncovered on any shared map.
-	for(const shroud_map* const shared_map : maps) {
-		if(shared_map->enabled_ && !shared_map->value(x, y)) {
+	for(const shroud_map* const shared_map : maps){
+		if(shared_map->enabled_ && !shared_map->value(x, y)){
 			return false;
 		}
 	}
@@ -861,10 +861,10 @@ bool shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x,
 std::string shroud_map::write() const
 {
 	std::stringstream shroud_str;
-	for(const auto& sh : data_) {
+	for(const auto& sh : data_){
 		shroud_str << '|';
 
-		for(bool i : sh) {
+		for(bool i : sh){
 			shroud_str << (i ? '1' : '0');
 		}
 
@@ -878,15 +878,15 @@ void shroud_map::read(const std::string& str)
 {
 	data_.clear();
 
-	for(const char sh : str) {
-		if(sh == '|') {
+	for(const char sh : str){
+		if(sh == '|'){
 			data_.resize(data_.size() + 1);
 		}
 
-		if(data_.empty() == false) {
-			if(sh == '1') {
+		if(data_.empty() == false){
+			if(sh == '1'){
 				data_.back().push_back(true);
-			} else if(sh == '0') {
+			} else if(sh == '0'){
 				data_.back().push_back(false);
 			}
 		}
@@ -896,14 +896,14 @@ void shroud_map::read(const std::string& str)
 void shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
-	for(std::size_t i = 1; i < str.length(); ++i) {
-		if(str[i] == '|') {
+	for(std::size_t i = 1; i < str.length(); ++i){
+		if(str[i] == '|'){
 			y = 0;
 			x++;
-		} else if(str[i] == '1') {
+		} else if(str[i] == '1'){
 			clear(x, y);
 			y++;
-		} else if(str[i] == '0') {
+		} else if(str[i] == '0'){
 			y++;
 		}
 	}
@@ -911,20 +911,20 @@ void shroud_map::merge(const std::string& str)
 
 bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 {
-	if(enabled_ == false) {
+	if(enabled_ == false){
 		return false;
 	}
 
 	bool cleared = false;
-	for(const shroud_map* m : maps) {
-		if(m->enabled_ == false) {
+	for(const shroud_map* m : maps){
+		if(m->enabled_ == false){
 			continue;
 		}
 
 		const std::vector<std::vector<bool>>& v = m->data_;
-		for(std::size_t x = 0; x != v.size(); ++x) {
-			for(std::size_t y = 0; y != v[x].size(); ++y) {
-				if(v[x][y]) {
+		for(std::size_t x = 0; x != v.size(); ++x){
+			for(std::size_t y = 0; y != v[x].size(); ++y){
+				if(v[x][y]){
 					cleared |= clear(x, y);
 				}
 			}
@@ -939,7 +939,7 @@ const color_range team::get_side_color_range(int side)
 	std::string index = get_side_color_id(side);
 	auto gp = game_config::team_rgb_range.find(index);
 
-	if(gp != game_config::team_rgb_range.end()) {
+	if(gp != game_config::team_rgb_range.end()){
 		return (gp->second);
 	}
 
@@ -964,14 +964,14 @@ std::string team::get_side_color_id(unsigned side)
 		const unsigned index = side - 1;
 
 		// If no gameboard (and by extension, team list) is available, use the default side color.
-		if(!resources::gameboard) {
+		if(!resources::gameboard){
 			return game_config::default_colors.at(index);
 		}
 
 		// Else, try to fetch the color from the side's config.
 		const std::string& side_color = resources::gameboard->teams().at(index).color();
 
-		if(!side_color.empty()) {
+		if(!side_color.empty()){
 			return side_color;
 		}
 
@@ -979,7 +979,7 @@ std::string team::get_side_color_id(unsigned side)
 		// happen if the side data hadn't been initialized yet, which is the case if this function
 		// is being called to set up said side data. :P
 		return game_config::default_colors.at(index);
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		// Side index was invalid! Coloring will fail!
 		return "";
 	}
@@ -1004,12 +1004,12 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 	// If no color key or value was provided, use the given color for that side.
 	// If outside a game context (ie, where a list of teams has been constructed),
 	// this will just be the side's default color.
-	if(c.blank() || c.empty()) {
+	if(c.blank() || c.empty()){
 		return get_side_color_id(cfg["side"].to_unsigned());
 	}
 
 	// Do the same as above for numeric color key values.
-	if(unsigned side = c.to_unsigned()) {
+	if(unsigned side = c.to_unsigned()){
 		return get_side_color_id(side);
 	}
 
@@ -1025,7 +1025,7 @@ std::string team::get_side_highlight_pango(int side)
 void team::log_recruitable() const
 {
 	LOG_NG << "Adding recruitable units:";
-	for(const std::string& recruit : info_.can_recruit) {
+	for(const std::string& recruit : info_.can_recruit){
 		LOG_NG << recruit;
 	}
 
@@ -1043,8 +1043,8 @@ config team::to_config() const
 std::string team::allied_human_teams() const
 {
 	std::vector<int> res;
-	for(const team& t : resources::gameboard->teams()) {
-		if(!t.is_enemy(this->side()) && t.is_human()) {
+	for(const team& t : resources::gameboard->teams()){
+		if(!t.is_enemy(this->side()) && t.is_human()){
 			res.push_back(t.side());
 		}
 	}

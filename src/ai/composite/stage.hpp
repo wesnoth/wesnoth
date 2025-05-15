@@ -32,7 +32,7 @@ public:
 	/**
 	 * Constructor
 	 */
-	stage( ai_context &context, const config &cfg );
+	stage(ai_context &context, const config &cfg);
 
 	/**
 	 * Initialization
@@ -79,7 +79,7 @@ protected:
 
 class idle_stage : public stage {
 public:
-	idle_stage( ai_context &context, const config &cfg );
+	idle_stage(ai_context &context, const config &cfg);
 
 	~idle_stage();
 
@@ -95,17 +95,17 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *stage_factories;
-		if (stage_factories==nullptr) {
+		if(stage_factories==nullptr) {
 			stage_factories = new factory_map;
 		}
 		return *stage_factories;
 	}
 
-	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ) = 0;
+	virtual stage_ptr get_new_instance(ai_context &context, const config &cfg) = 0;
 
-	stage_factory( const std::string &name )
+	stage_factory(const std::string &name)
 	{
-		if (is_duplicate(name)) {
+		if(is_duplicate(name)) {
 			return;
 		}
 		factory_ptr ptr_to_this(this);
@@ -118,12 +118,12 @@ public:
 template<class STAGE>
 class register_stage_factory : public stage_factory {
 public:
-	register_stage_factory( const std::string &name )
-		: stage_factory( name )
+	register_stage_factory(const std::string &name)
+		: stage_factory(name)
 	{
 	}
 
-	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ){
+	virtual stage_ptr get_new_instance(ai_context &context, const config &cfg){
 		stage_ptr a = std::make_shared<STAGE>(context, cfg);
 		a->on_create();
 		return a;

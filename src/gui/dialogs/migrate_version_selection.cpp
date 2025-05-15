@@ -41,7 +41,7 @@ REGISTER_DIALOG(migrate_version_selection)
 void migrate_version_selection::execute()
 {
 	migrate_version_selection mig = migrate_version_selection();
-	if(mig.versions_.size() > 0) {
+	if(mig.versions_.size() > 0){
 		mig.show();
 	} else {
 		gui2::show_message(_("No Other Version Found"), _("This would import settings from a previous version of Wesnoth, but no other version was found on this device"), gui2::dialogs::message::button_style::auto_close);
@@ -54,13 +54,13 @@ migrate_version_selection::migrate_version_selection()
 	version_info current_version = game_config::wesnoth_version;
 	std::string current_version_str = filesystem::get_version_path_suffix();
 
-	for(unsigned int i = 1; i < current_version.minor_version(); i++) {
+	for(unsigned int i = 1; i < current_version.minor_version(); i++){
 		std::string previous_version_str = std::to_string(current_version.major_version()) + "."
 			+ std::to_string(current_version.minor_version() - i);
 		std::string previous_addons_dir
 			= boost::replace_all_copy(filesystem::get_addons_dir(), current_version_str, previous_version_str);
 
-		if(previous_addons_dir != filesystem::get_addons_dir() && filesystem::file_exists(previous_addons_dir)) {
+		if(previous_addons_dir != filesystem::get_addons_dir() && filesystem::file_exists(previous_addons_dir)){
 			versions_.push_back(previous_version_str);
 		}
 	}
@@ -70,14 +70,14 @@ void migrate_version_selection::pre_show()
 {
 	listbox& version_list = find_widget<listbox>("versions_listbox");
 
-	for(const auto& version : versions_) {
+	for(const auto& version : versions_){
 		version_list.add_row(widget_data{{ "version_label", {{ "label", version }}}});
 	}
 }
 
 void migrate_version_selection::post_show()
 {
-	if(get_retval() == gui2::OK) {
+	if(get_retval() == gui2::OK){
 		std::string current_version_str = filesystem::get_version_path_suffix();
 		listbox& version_list = find_widget<listbox>("versions_listbox");
 		int selected_row = version_list.get_selected_row();
@@ -94,7 +94,7 @@ void migrate_version_selection::post_show()
 
 		// given self-compilation and linux distros being able to do whatever they want plus command line options to
 		// alter locations make sure the directories/files are actually different before doing anything with them
-		if(migrate_addons_dir != filesystem::get_addons_dir()) {
+		if(migrate_addons_dir != filesystem::get_addons_dir()){
 			std::vector<std::string> old_addons;
 			std::vector<std::string> current_addons;
 			std::vector<std::string> migrate_addons;
@@ -104,7 +104,7 @@ void migrate_version_selection::post_show()
 
 			std::set_difference(old_addons.begin(), old_addons.end(), current_addons.begin(), current_addons.end(), std::back_inserter(migrate_addons));
 
-			if(migrate_addons.size() > 0) {
+			if(migrate_addons.size() > 0){
 				ad_hoc_addon_fetch_session(migrate_addons);
 			}
 		}
@@ -115,11 +115,11 @@ void migrate_version_selection::post_show()
 		std::string old_migrate_prefs_file = linux_old_config_dir + "/preferences";
 		std::string old_migrate_credentials_file = linux_old_config_dir + "/credentials-aes";
 
-		if(filesystem::file_exists(old_migrate_prefs_file)) {
+		if(filesystem::file_exists(old_migrate_prefs_file)){
 			already_migrated = true;
 			prefs::get().migrate_preferences(old_migrate_prefs_file);
 		}
-		if(filesystem::file_exists(old_migrate_credentials_file)) {
+		if(filesystem::file_exists(old_migrate_credentials_file)){
 			already_migrated = true;
 			migrate_credentials(old_migrate_credentials_file);
 		}
@@ -148,9 +148,9 @@ std::string migrate_version_selection::old_config_dir()
 	char const* xdg_config = getenv("XDG_CONFIG_HOME");
 	std::string old_config_dir;
 
-	if(!xdg_config || xdg_config[0] == '\0') {
+	if(!xdg_config || xdg_config[0] == '\0'){
 		xdg_config = getenv("HOME");
-		if(!xdg_config) {
+		if(!xdg_config){
 			old_config_dir = filesystem::get_user_data_dir();
 			return old_config_dir;
 		}
@@ -168,7 +168,7 @@ std::string migrate_version_selection::old_config_dir()
 void migrate_version_selection::migrate_credentials(const std::string& migrate_credentials_file)
 {
 	// don't touch the credentials file on migrator re-run if it already exists
-	if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())) {
+	if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())){
 		filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
 	}
 }

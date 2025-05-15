@@ -53,7 +53,7 @@ void addon_connect::pre_show()
 
 void addon_connect::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		text_box& host_widget
 				= find_widget<text_box>("host_name");
 

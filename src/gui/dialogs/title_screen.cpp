@@ -88,14 +88,14 @@ title_screen::~title_screen()
 
 void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
 {
-	if(hk != hotkey::HOTKEY_NULL) {
-		register_hotkey(hk, [callback](auto&&...) { callback(); return true; });
+	if(hk != hotkey::HOTKEY_NULL){
+		register_hotkey(hk, [callback](auto&&...){ callback(); return true; });
 	}
 
 	try {
 		button& btn = find_widget<button>(id);
 		connect_signal_mouse_left_click(btn, std::bind(callback));
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		ERR_GUI_P << e.user_message;
 		prefs::get().set_gui2_theme("default");
 		set_retval(RELOAD_UI);
@@ -112,7 +112,7 @@ void show_lua_console()
 void make_screenshot()
 {
 	surface screenshot = video::read_pixels();
-	if(screenshot) {
+	if(screenshot){
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
@@ -138,7 +138,7 @@ static void debug_tooltip(window& /*window*/, bool& handled, const point& coordi
 {
 	std::string message = "Hello world.";
 
-	for(int i = 0; i < 0; ++i) {
+	for(int i = 0; i < 0; ++i){
 		message += " More greetings.";
 	}
 
@@ -167,25 +167,25 @@ void title_screen::init_callbacks()
 	// General hotkeys
 	//
 	register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
-		[this](auto&&...) { set_retval(RELOAD_GAME_DATA); return true; });
+		[this](auto&&...){ set_retval(RELOAD_GAME_DATA); return true; });
 
 	register_hotkey(hotkey::TITLE_SCREEN__TEST,
-		[this](auto&&...) { hotkey_callback_select_tests(); return true; });
+		[this](auto&&...){ hotkey_callback_select_tests(); return true; });
 
 	register_hotkey(hotkey::TITLE_SCREEN__CORES,
-		[this](auto&&...) { button_callback_cores(); return true; });
+		[this](auto&&...){ button_callback_cores(); return true; });
 
 	register_hotkey(hotkey::LUA_CONSOLE,
-		[](auto&&...) { show_lua_console(); return true; });
+		[](auto&&...){ show_lua_console(); return true; });
 
 	/** @todo: should eventually become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_SCREENSHOT,
-		[](auto&&...) { make_screenshot(); return true; });
+		[](auto&&...){ make_screenshot(); return true; });
 
 	//
 	// Background and logo images
 	//
-	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()) {
+	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()){
 		// game works just fine if just one of the background images are missing
 		ERR_CF << "No titlescreen background defined in game config";
 	}
@@ -199,7 +199,7 @@ void title_screen::init_callbacks()
 	//
 	// Tip-of-the-day browser
 	//
-	if(auto tip_pages = find_widget<multi_page>("tips", false, false)) {
+	if(auto tip_pages = find_widget<multi_page>("tips", false, false)){
 		for(const game_tip& tip : tip_of_the_day::shuffle(settings::tips))	{
 			tip_pages->add_page({
 				{ "tip", {
@@ -229,8 +229,8 @@ void title_screen::init_callbacks()
 		? widget::visibility::visible
 		: widget::visibility::hidden);
 
-	if(auto toggle_tips = find_widget<button>("toggle_tip_panel", false, false)) {
-		connect_signal_mouse_left_click(*toggle_tips, [&tip_panel](auto&&...) {
+	if(auto toggle_tips = find_widget<button>("toggle_tip_panel", false, false)){
+		connect_signal_mouse_left_click(*toggle_tips, [&tip_panel](auto&&...){
 			const bool currently_hidden = tip_panel.get_visible() == widget::visibility::hidden;
 
 			tip_panel.set_visible(currently_hidden
@@ -245,7 +245,7 @@ void title_screen::init_callbacks()
 	//
 	// Help
 	//
-	register_button("help", hotkey::HOTKEY_HELP, []() {
+	register_button("help", hotkey::HOTKEY_HELP, [](){
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help();
 	});
@@ -258,15 +258,15 @@ void title_screen::init_callbacks()
 	//
 	// Campaign
 	//
-	register_button("campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this]() {
+	register_button("campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](){
 		try{
-			if(game_.new_campaign()) {
+			if(game_.new_campaign()){
 				// Suspend drawing of the title screen,
 				// so it doesn't flicker in between loading screens.
 				hide();
 				set_retval(LAUNCH_GAME);
 			}
-		} catch (const config::error& e) {
+		} catch (const config::error& e){
 			gui2::show_error_message(e.what());
 		}
 	});
@@ -280,8 +280,8 @@ void title_screen::init_callbacks()
 	//
 	// Load game
 	//
-	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this]() {
-		if(game_.load_game()) {
+	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this](){
+		if(game_.load_game()){
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
 			hide();
@@ -292,8 +292,8 @@ void title_screen::init_callbacks()
 	//
 	// Addons
 	//
-	register_button("addons", hotkey::TITLE_SCREEN__ADDONS, [this]() {
-		if(manage_addons()) {
+	register_button("addons", hotkey::TITLE_SCREEN__ADDONS, [this](){
+		if(manage_addons()){
 			set_retval(RELOAD_GAME_DATA);
 		}
 	});
@@ -301,18 +301,18 @@ void title_screen::init_callbacks()
 	//
 	// Editor
 	//
-	register_button("editor", hotkey::TITLE_SCREEN__EDITOR, [this]() { set_retval(MAP_EDITOR); });
+	register_button("editor", hotkey::TITLE_SCREEN__EDITOR, [this](){ set_retval(MAP_EDITOR); });
 
 	//
 	// Language
 	//
-	register_button("language", hotkey::HOTKEY_LANGUAGE, [this]() {
+	register_button("language", hotkey::HOTKEY_LANGUAGE, [this](){
 		try {
-			if(game_.change_language()) {
+			if(game_.change_language()){
 				on_resize();
 				update_static_labels();
 			}
-		} catch(const std::runtime_error& e) {
+		} catch(const std::runtime_error& e){
 			gui2::show_error_message(e.what());
 		}
 	});
@@ -338,7 +338,7 @@ void title_screen::init_callbacks()
 	//
 	// Quit
 	//
-	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this](){ set_retval(QUIT_GAME); });
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
 	find_widget<button>("quit", false, true);
 
@@ -349,7 +349,7 @@ void title_screen::init_callbacks()
 		std::bind(&title_screen::show_debug_clock_window, this));
 
 	auto clock = find_widget<button>("clock", false, false);
-	if(clock) {
+	if(clock){
 		clock->set_visible(show_debug_clock_button);
 	}
 
@@ -360,7 +360,7 @@ void title_screen::init_callbacks()
 		[] { dialogs::gui_test_dialog::display(); });
 
 	auto test_dialog = find_widget<button>("test_dialog", false, false);
-	if(test_dialog) {
+	if(test_dialog){
 		test_dialog->set_visible(show_debug_clock_button);
 	}
 
@@ -377,7 +377,7 @@ void title_screen::update_static_labels()
 	//
 	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
 
-	if(label* version_label = find_widget<label>("revision_number", false, false)) {
+	if(label* version_label = find_widget<label>("revision_number", false, false)){
 		version_label->set_label(version_string);
 	}
 
@@ -386,20 +386,20 @@ void title_screen::update_static_labels()
 	//
 	// Language menu label
 	//
-	if(auto* lang_button = find_widget<button>("language", false, false); lang_button) {
+	if(auto* lang_button = find_widget<button>("language", false, false); lang_button){
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
 		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
 		const auto& langs = get_languages(true);
 
-		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
+		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang){
 			return lang.localename == boost_name;
 		});
 
-		if(lang_def != langs.end()) {
+		if(lang_def != langs.end()){
 			lang_button->set_label(lang_def->language.str());
-		} else if(boost_name == "c" || boost_name == "C") {
+		} else if(boost_name == "c" || boost_name == "C"){
 			// HACK: sometimes System Default doesn't match anything on the list. If you fork
 			// Wesnoth and change the neutral language to something other than US English, you
 			// want to change this too.
@@ -420,22 +420,22 @@ void title_screen::on_resize()
 void title_screen::update_tip(const bool previous)
 {
 	multi_page* tip_pages = find_widget<multi_page>("tips", false, false);
-	if(tip_pages == nullptr) {
+	if(tip_pages == nullptr){
 		return;
 	}
-	if(tip_pages->get_page_count() == 0) {
+	if(tip_pages->get_page_count() == 0){
 		return;
 	}
 
 	int page = tip_pages->get_selected_page();
-	if(previous) {
-		if(page <= 0) {
+	if(previous){
+		if(page <= 0){
 			page = tip_pages->get_page_count();
 		}
 		--page;
 	} else {
 		++page;
-		if(static_cast<unsigned>(page) >= tip_pages->get_page_count()) {
+		if(static_cast<unsigned>(page) >= tip_pages->get_page_count()){
 			page = 0;
 		}
 	}
@@ -447,7 +447,7 @@ void title_screen::show_debug_clock_window()
 {
 	assert(show_debug_clock_button);
 
-	if(debug_clock_) {
+	if(debug_clock_){
 		debug_clock_.reset(nullptr);
 	} else {
 		debug_clock_.reset(new debug_clock());
@@ -460,8 +460,8 @@ void title_screen::hotkey_callback_select_tests()
 	game_config_manager::get()->load_game_config_for_create(false, true);
 
 	std::vector<std::string> options;
-	for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
-		if(!sc["is_unit_test"].to_bool(false)) {
+	for(const config &sc : game_config_manager::get()->game_config().child_range("test")){
+		if(!sc["is_unit_test"].to_bool(false)){
 			options.emplace_back(sc["id"]);
 		}
 	}
@@ -472,7 +472,7 @@ void title_screen::hotkey_callback_select_tests()
 	dlg.show();
 
 	int choice = dlg.selected_index();
-	if(choice >= 0) {
+	if(choice >= 0){
 		game_.set_test(options[choice]);
 		set_retval(LAUNCH_GAME);
 	}
@@ -482,7 +482,7 @@ void title_screen::show_preferences()
 {
 	gui2::dialogs::preferences_dialog pref_dlg;
 	pref_dlg.show();
-	if (pref_dlg.get_retval() == RELOAD_UI) {
+	if(pref_dlg.get_retval() == RELOAD_UI){
 		set_retval(RELOAD_UI);
 	}
 
@@ -492,12 +492,12 @@ void title_screen::show_preferences()
 	// capture the prefs dialog in their blur. This workaround simply
 	// forces them to re-capture the blur after the dialog closes.
 	panel* tip_panel = find_widget<panel>("tip_panel", false, false);
-	if(tip_panel != nullptr) {
+	if(tip_panel != nullptr){
 		tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
 		tip_panel->queue_redraw();
 	}
 	panel* menu_panel = find_widget<panel>("menu_panel", false, false);
-	if(menu_panel != nullptr) {
+	if(menu_panel != nullptr){
 		menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
 		menu_panel->queue_redraw();
 	}
@@ -505,23 +505,23 @@ void title_screen::show_preferences()
 
 void title_screen::button_callback_multiplayer()
 {
-	while(true) {
+	while(true){
 		gui2::dialogs::mp_method_selection dlg;
 		dlg.show();
 
-		if(dlg.get_retval() != gui2::retval::OK) {
+		if(dlg.get_retval() != gui2::retval::OK){
 			return;
 		}
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
-			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
+		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2){
+			if(!gui2::dialogs::mp_host_game_prompt::execute()){
 				continue;
 			}
 		}
 
-		switch(res) {
+		switch(res){
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
 			set_retval(MP_CONNECT);
@@ -548,16 +548,16 @@ void title_screen::button_callback_cores()
 	int current = 0;
 
 	std::vector<config> cores;
-	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
+	for(const config& core : game_config_manager::get()->game_config().child_range("core")){
 		cores.push_back(core);
 
-		if(core["id"] == prefs::get().core()) {
+		if(core["id"] == prefs::get().core()){
 			current = cores.size() - 1;
 		}
 	}
 
 	gui2::dialogs::core_selection core_dlg(cores, current);
-	if(core_dlg.show()) {
+	if(core_dlg.show()){
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		prefs::get().set_core(core_id);

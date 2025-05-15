@@ -35,10 +35,10 @@ std::string item_palette::get_help_string() const
 
 void item_palette::setup(const game_config_view& cfg)
 {
-	for(const config& group : cfg.child_range("item_group")) {
+	for(const config& group : cfg.child_range("item_group")){
 		groups_.emplace_back(group);
 
-		for(const config& item : group.child_range("item")) {
+		for(const config& item : group.child_range("item")){
 			item_map_.emplace(item["id"], overlay(item));
 			group_map_[group["id"]].push_back(item["id"]);
 			if(!group["core"].to_bool(false))
@@ -52,7 +52,7 @@ void item_palette::setup(const game_config_view& cfg)
 	// Set the default group
 	set_group("items");
 
-	if(active_group().empty()) {
+	if(active_group().empty()){
 		ERR_ED << "No items found.";
 	}
 }
@@ -65,16 +65,16 @@ void item_palette::setup_item(
 {
 	std::stringstream filename;
 	filename << item.image;
-	if(item.image.empty()) {
+	if(item.image.empty()){
 		filename << item.halo;
 	}
 
 	base_image = image::get_texture(filename.str());
-	if(!base_image) {
+	if(!base_image){
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for item type: '" << filename.str() << "' not found";
 		base_image = image::get_texture(game_config::images::missing);
-		if(!base_image) {
+		if(!base_image){
 			ERR_ED << "Placeholder image not found";
 			return;
 		}

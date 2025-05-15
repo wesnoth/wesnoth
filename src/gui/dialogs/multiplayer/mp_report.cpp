@@ -53,10 +53,10 @@ void mp_report::pre_show()
 	ok.set_active(false);
 
 	text_box& reportee = find_widget<text_box>("reportee");
-	reportee.on_modified([this](const auto& box) { reportee_changed(box.text()); });
+	reportee.on_modified([this](const auto& box){ reportee_changed(box.text()); });
 
 	text_box& report_reason = find_widget<text_box>("report_reason");
-	report_reason.on_modified([this](const auto& box) { report_reason_changed(box.text()); });
+	report_reason.on_modified([this](const auto& box){ report_reason_changed(box.text()); });
 
 	set_exit_hook(window::exit_hook::ok_only, [this] { return !reportee_empty_ && !report_reason_empty_; });
 }

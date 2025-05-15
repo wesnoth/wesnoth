@@ -77,7 +77,7 @@ void minimap::set_map_data(const std::string& map_data)
 
 	try {
 		map_ = std::make_unique<gamemap>(map_data);
-	} catch(const incorrect_map_format_error& e) {
+	} catch(const incorrect_map_format_error& e){
 		map_.reset(nullptr);
 		ERR_CF << "Error while loading the map: " << e.message;
 	}
@@ -85,8 +85,8 @@ void minimap::set_map_data(const std::string& map_data)
 
 bool minimap::impl_draw_background()
 {
-	if(map_) {
-		if(const auto drawer = image::prep_minimap_for_rendering(*map_, nullptr, nullptr, nullptr, true)) {
+	if(map_){
+		if(const auto drawer = image::prep_minimap_for_rendering(*map_, nullptr, nullptr, nullptr, true)){
 			const auto [w, h] = get_size();
 			drawer({ 0, 0, w, h });
 		}

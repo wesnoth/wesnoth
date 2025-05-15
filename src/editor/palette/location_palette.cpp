@@ -29,8 +29,8 @@
 
 #include <boost/regex.hpp>
 
-static bool is_positive_integer(const std::string& str) {
-	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
+static bool is_positive_integer(const std::string& str){
+	return str != "0" && std::find_if(str.begin(), str.end(), [](char c){ return !std::isdigit(c); }) == str.end();
 }
 
 class location_palette_item : public gui::widget
@@ -57,10 +57,10 @@ public:
 
 	void draw_contents() override
 	{
-		if (state_.mouseover) {
+		if(state_.mouseover){
 			draw::fill(location(), 200, 200, 200, 26);
 		}
-		if (state_.selected) {
+		if(state_.selected){
 			draw::rect(location(), 255, 255, 255, 255);
 		}
 		font::pango_draw_text(true, location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
@@ -74,12 +74,12 @@ public:
 
 	void mouse_up(const SDL_MouseButtonEvent& e)
 	{
-		if (!(hit(e.x, e.y)))
+		if(!(hit(e.x, e.y)))
 			return;
-		if (e.button == SDL_BUTTON_LEFT) {
+		if(e.button == SDL_BUTTON_LEFT){
 			parent_->select_item(id_);
 		}
-		if (e.button == SDL_BUTTON_RIGHT) {
+		if(e.button == SDL_BUTTON_RIGHT){
 			//TODO: add a context menu with the following options:
 			// 1) 'copy it to clipboard'
 			// 2) 'jump to item'
@@ -91,12 +91,12 @@ public:
 	{
 		gui::widget::handle_event(e);
 
-		if (hidden() || !enabled() || mouse_locked())
+		if(hidden() || !enabled() || mouse_locked())
 			return;
 
 		state_t start_state = state_;
 
-		switch (e.type) {
+		switch (e.type){
 		case SDL_MOUSEBUTTONUP:
 			mouse_up(e.button);
 			break;
@@ -107,14 +107,14 @@ public:
 			return;
 		}
 
-		if (!(start_state == state_))
+		if(!(start_state == state_))
 			set_dirty(true);
 	}
 
 	void set_item_id(const std::string& id)
 	{
 		id_ = id;
-		if (is_positive_integer(id)) {
+		if(is_positive_integer(id)){
 			desc_ = VGETTEXT("Player $side_num", utils::string_map{ {"side_num", id} });
 		}
 		else {
@@ -147,8 +147,8 @@ protected:
 	virtual void mouse_up(const SDL_MouseButtonEvent& e) override
 	{
 		gui::button::mouse_up(e);
-		if (callback_) {
-			if (this->pressed()) {
+		if(callback_){
+			if(this->pressed()){
 				callback_();
 			}
 		}
@@ -172,7 +172,7 @@ location_palette::location_palette(editor_display &gui, editor_toolkit &toolkit)
 		, button_goto_()
 		, disp_(gui)
 	{
-		for (int i = 1; i < 10; ++i) {
+		for(int i = 1; i < 10; ++i){
 			items_.push_back(std::to_string(i));
 		}
 		selected_item_ = items_[0];
@@ -181,12 +181,12 @@ location_palette::location_palette(editor_display &gui, editor_toolkit &toolkit)
 sdl_handler_vector location_palette::handler_members()
 {
 	sdl_handler_vector h;
-	for (gui::widget& b : buttons_) {
+	for(gui::widget& b : buttons_){
 		h.push_back(&b);
 	}
-	if (button_add_) { h.push_back(button_add_.get()); }
-	if (button_delete_) { h.push_back(button_delete_.get()); }
-	if (button_goto_) { h.push_back(button_goto_.get()); }
+	if(button_add_){ h.push_back(button_add_.get()); }
+	if(button_delete_){ h.push_back(button_delete_.get()); }
+	if(button_goto_){ h.push_back(button_goto_.get()); }
 	return h;
 }
 
@@ -200,7 +200,7 @@ void location_palette::hide(bool hidden)
 	palette_menu_button->set_overlay("");
 	palette_menu_button->enable(false);
 
-	for(auto& w : handler_members()) {
+	for(auto& w : handler_members()){
 		static_cast<gui::widget&>(*w).hide(hidden);
 	}
 }
@@ -208,7 +208,7 @@ void location_palette::hide(bool hidden)
 bool location_palette::scroll_up()
 {
 	bool scrolled = false;
-	if(can_scroll_up()) {
+	if(can_scroll_up()){
 		--items_start_;
 		scrolled = true;
 		set_dirty(true);
@@ -229,7 +229,7 @@ bool location_palette::can_scroll_down()
 bool location_palette::scroll_down()
 {
 	bool scrolled = false;
-	if(can_scroll_down()) {
+	if(can_scroll_down()){
 		++items_start_;
 		scrolled = true;
 		set_dirty(true);
@@ -243,19 +243,19 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	const int button_height = 22;
 	const int button_y = 30;
 	int bottom = target.y + target.h;
-	if (!button_goto_) {
-		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
+	if(!button_goto_){
+		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this](){
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 			map_location pos = disp_.get_map().special_location(selected_item_);
-			if (pos.valid()) {
+			if(pos.valid()){
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
 		}));
-		button_add_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
+		button_add_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this](){
 			std::string newid;
-			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
+			if(gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)){
 				static const boost::regex valid_id("[a-zA-Z0-9_]+");
-				if(boost::regex_match(newid, valid_id)) {
+				if(boost::regex_match(newid, valid_id)){
 					add_item(newid);
 				}
 				else {
@@ -281,12 +281,12 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
-	if(items_fitting > 0) {
+	if(items_fitting > 0){
 		// Items may be added dynamically via add_item(), so this creates all the buttons that
 		// fit in the space, even if some of them will be hidden until more items are added.
 		// This simplifies the scrolling code in add_item.
 		const std::size_t buttons_needed = items_fitting;
-		if(buttons_.size() != buttons_needed) {
+		if(buttons_.size() != buttons_needed){
 			location_palette_item lpi(this);
 			buttons_.resize(buttons_needed, lpi);
 		}
@@ -297,7 +297,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	SDL_Rect dstrect;
 	dstrect.w = target.w - 10;
 	dstrect.h = item_size_ + 2;
-	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+	for(std::size_t i = 0; i < buttons_.size(); ++i){
 		dstrect.x = target.x;
 		dstrect.y = target.y + static_cast<int>(i) * item_space_;
 		buttons_[i].set_location(dstrect);
@@ -310,7 +310,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 void location_palette::select_item(const std::string& item_id)
 {
-	if (selected_item_ != item_id) {
+	if(selected_item_ != item_id){
 		selected_item_ = item_id;
 		set_dirty();
 	}
@@ -333,7 +333,7 @@ bool location_palette::is_selected_item(const std::string& id)
 
 void location_palette::layout()
 {
-	if (!dirty()) {
+	if(!dirty()){
 		return;
 	}
 
@@ -348,23 +348,23 @@ void location_palette::layout()
 	if(downscroll_button)
 		downscroll_button->enable(can_scroll_down());
 
-	if(button_goto_) {
+	if(button_goto_){
 		button_goto_->set_dirty(true);
 	}
-	if(button_add_) {
+	if(button_add_){
 		button_add_->set_dirty(true);
 	}
-	if(button_delete_) {
+	if(button_delete_){
 		button_delete_->set_dirty(true);
 	}
-	for(std::size_t i = 0; i < num_visible_items(); ++i) {
+	for(std::size_t i = 0; i < num_visible_items(); ++i){
 		const auto item_index = items_start_ + i;
 		location_palette_item& tile = buttons_[i];
 
 		tile.hide(true);
 
 		// If we've scrolled to the end of the list, or if there aren't many items, leave the button hidden
-		if(item_index >= num_items()) {
+		if(item_index >= num_items()){
 			// We want to hide all following buttons so we cannot use break here.
 			continue;
 		}
@@ -388,7 +388,7 @@ void location_palette::layout()
 void location_palette::draw_contents()
 {
 	// This is unnecessary as every GUI1 widget is a TLD.
-	//for(std::size_t i = 0; i < num_visible_items(); ++i) {
+	//for(std::size_t i = 0; i < num_visible_items(); ++i){
 	//	location_palette_item& tile = buttons_[i];
 	//	tile.draw();
 	//}
@@ -397,7 +397,7 @@ void location_palette::draw_contents()
 std::vector<std::string> location_palette::action_pressed() const
 {
 	std::vector<std::string> res;
-	if (button_delete_ && button_delete_->pressed()) {
+	if(button_delete_ && button_delete_->pressed()){
 		res.push_back("editor-remove-location");
 	}
 	return res;
@@ -408,15 +408,15 @@ location_palette::~location_palette()
 }
 
 // Sort numbers before all other strings.
-static bool loc_id_comp(const std::string& lhs, const std::string& rhs) {
-	if(is_positive_integer(lhs)) {
-		if(is_positive_integer(rhs)) {
+static bool loc_id_comp(const std::string& lhs, const std::string& rhs){
+	if(is_positive_integer(lhs)){
+		if(is_positive_integer(rhs)){
 			return std::stoi(lhs) < std::stoi(rhs);
 		} else {
 			return true;
 		}
 	}
-	if(is_positive_integer(rhs)) {
+	if(is_positive_integer(rhs)){
 		return false;
 	}
 	return lhs < rhs;
@@ -428,7 +428,7 @@ void location_palette::add_item(const std::string& id)
 
 	// Insert the new ID at the sorted location, unless it's already in the list
 	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
-	if(itor == items_.begin() || *(itor - 1) != id) {
+	if(itor == items_.begin() || *(itor - 1) != id){
 		pos = std::distance(items_.begin(), items_.insert(itor, id));
 	} else {
 		pos = std::distance(items_.begin(), itor);
@@ -440,10 +440,10 @@ void location_palette::add_item(const std::string& id)
 	const std::size_t unsigned_pos = pos;
 
 	// Scroll if necessary so that the new item is visible
-	if(unsigned_pos < items_start_ || unsigned_pos >= items_start_ + num_visible_items()) {
-		if(unsigned_pos < num_visible_items()) {
+	if(unsigned_pos < items_start_ || unsigned_pos >= items_start_ + num_visible_items()){
+		if(unsigned_pos < num_visible_items()){
 			items_start_ = 0;
-		} else if(unsigned_pos + num_visible_items() > num_items()) {
+		} else if(unsigned_pos + num_visible_items() > num_items()){
 			// This can't underflow, because unsigned_pos < num_items() and the
 			// previous conditional block would have been entered instead.
 			items_start_ = num_items() - num_visible_items();

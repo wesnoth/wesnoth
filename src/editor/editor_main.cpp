@@ -35,34 +35,34 @@ std::string initialize_addon()
 	while(true)
 	{
 		gui2::dialogs::editor_choose_addon choose(addon_id);
-		if(choose.show()) {
+		if(choose.show()){
 			break;
 		} else {
 			return "";
 		}
 	}
 
-	if(addon_id == "///newaddon///") {
+	if(addon_id == "///newaddon///"){
 		static constexpr std::string_view ts_format = "%Y-%m-%d_%H-%M-%S";
 		std::string timestamp = chrono::format_local_timestamp(std::chrono::system_clock::now(), ts_format);
 
 		addon_id = "MyAwesomeAddon-" + timestamp;
 		std::string addon_id_new = addon_id;
 
-		if(gui2::dialogs::prompt::execute(addon_id_new)) {
-			if(addon_filename_legal(addon_id_new)) {
+		if(gui2::dialogs::prompt::execute(addon_id_new)){
+			if(addon_filename_legal(addon_id_new)){
 				addon_id = addon_id_new;
 			}
 		}
 	}
 
-	if(addon_id == "mainline") {
+	if(addon_id == "mainline"){
 		return addon_id;
 	}
 
 	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
 
-	if(filesystem::file_exists(addon_dir)) {
+	if(filesystem::file_exists(addon_dir)){
 		return addon_id;
 	}
 
@@ -124,8 +124,8 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 
 		editor_controller editor(clear_id);
 
-		if (!filename.empty() && filesystem::file_exists(filename)) {
-			if (filesystem::is_directory(filename)) {
+		if(!filename.empty() && filesystem::file_exists(filename)){
+			if(filesystem::is_directory(filename)){
 				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
 			} else {
@@ -142,20 +142,20 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 				editor.set_button_state();
 			}
 
-			if (take_screenshot) {
+			if(take_screenshot){
 				editor.do_screenshot(screenshot_filename);
 				e = EXIT_NORMAL;
 			}
 		}
 
-		if (!take_screenshot) {
+		if(!take_screenshot){
 			e = editor.main_loop();
 		}
-	} catch(const editor_exception& e) {
+	} catch(const editor_exception& e){
 		ERR_ED << "Editor exception in editor::start: " << e.what();
 		throw;
 	}
-	if (editor_action::get_instance_count() != 0) {
+	if(editor_action::get_instance_count() != 0){
 		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects";
 	}
 

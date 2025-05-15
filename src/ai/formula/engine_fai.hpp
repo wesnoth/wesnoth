@@ -29,13 +29,13 @@ class formula_ai;
 
 class engine_fai : public engine {
 public:
-	engine_fai( readonly_context &context, const config &cfg );
+	engine_fai(readonly_context &context, const config &cfg);
 
 	virtual ~engine_fai();
 
-	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
+	virtual void do_parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b);
 
-	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
+	virtual void do_parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b);
 
 	virtual std::string evaluate(const std::string &str);
 

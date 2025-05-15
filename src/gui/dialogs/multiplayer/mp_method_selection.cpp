@@ -52,7 +52,7 @@ void mp_method_selection::post_show()
 {
 	prefs::get().set_mp_connect_type(find_widget<listbox>("method_list").get_selected_row());
 
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		text_box& user_widget = find_widget<text_box>("user_name");
 		user_widget.save_to_history();
 		prefs::get().set_login(user_widget.get_value());

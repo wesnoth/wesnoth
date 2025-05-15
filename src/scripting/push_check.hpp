@@ -182,7 +182,7 @@ namespace lua_check_impl
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		map_location res;
-		if (!luaW_tolocation(L, n, res)) {
+		if(!luaW_tolocation(L, n, res)) {
 			return def;
 		}
 		return res;
@@ -250,7 +250,7 @@ namespace lua_check_impl
 	{
 		int isnum;
 		lua_Number d = lua_tonumberx(L, n, &isnum);
-		if (!isnum) {
+		if(!isnum) {
 			return def;
 		}
 		return d;
@@ -275,7 +275,7 @@ namespace lua_check_impl
 	{
 		int isnum;
 		lua_Integer res = lua_tointegerx(L, n, &isnum);
-		if (!isnum) {
+		if(!isnum) {
 			return def;
 		}
 		return res;
@@ -295,7 +295,7 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		T result;
-		if (lua_istable(L, n)) {
+		if(lua_istable(L, n)) {
 			lua_rawgeti(L, n, 1);
 			result.first = lua_check<const typename T::first_type&>(L, -1);
 			lua_rawgeti(L, n, 2);
@@ -320,10 +320,10 @@ namespace lua_check_impl
 	std::enable_if_t<is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, std::string_view>, T>
 	lua_check(lua_State * L, int n)
 	{
-		if (lua_istable(L, n))
+		if(lua_istable(L, n))
 		{
 			T res;
-			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
+			for(int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
 				// By using insert instead of push_back, it magically "just works" for sets too.
@@ -345,7 +345,7 @@ namespace lua_check_impl
 		is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, std::string_view> && !is_map<T>::value
 		, void
 	>
-	lua_push(lua_State * L, const T& list )
+	lua_push(lua_State * L, const T& list)
 	{
 		// NOTE: T might be some boost::iterator_range type where size might be < 0. (unfortunately in this case size() does not return T::size_type)
 		assert(list.size() >= 0);
@@ -360,7 +360,7 @@ namespace lua_check_impl
 	//accepts std::map TODO: add a check function for that
 	template<typename T>
 	std::enable_if_t<is_map<T>::value, void>
-	lua_push(lua_State * L, const T& map )
+	lua_push(lua_State * L, const T& map)
 	{
 		lua_newtable(L);
 		for(const typename T::value_type& pair : map)

@@ -94,19 +94,19 @@ bool
 
 const bool& debug = debug_impl;
 
-void set_debug(bool new_debug) {
+void set_debug(bool new_debug){
     // TODO: remove severity static casts and fix issue #7894
-	if(debug_impl && !new_debug) {
+	if(debug_impl && !new_debug){
 		// Turning debug mode off; decrease deprecation severity
 		lg::severity severity;
-		if(lg::get_log_domain_severity("deprecation", severity)) {
+		if(lg::get_log_domain_severity("deprecation", severity)){
             int severityInt = static_cast<int>(severity);
 			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt - 2));
 		}
-	} else if(!debug_impl && new_debug) {
+	} else if(!debug_impl && new_debug){
 		// Turning debug mode on; increase deprecation severity
         lg::severity severity;
-		if(lg::get_log_domain_severity("deprecation", severity)) {
+		if(lg::get_log_domain_severity("deprecation", severity)){
             int severityInt = static_cast<int>(severity);
 			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt + 2));
 		}
@@ -286,11 +286,11 @@ void load_config(const config &v)
 	tile_size        = v["tile_size"].to_int(72);
 
 	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
-	if(!zoom_levels_str.empty()) {
+	if(!zoom_levels_str.empty()){
 		zoom_levels.clear();
-		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom) {
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom){
 			int z = std::stoi(zoom);
-			if((z / 4) * 4 != z) {
+			if((z / 4) * 4 != z){
 				ERR_NG << "zoom level " << z << " is not divisible by 4."
 					<< " This will cause graphical glitches!";
 			}
@@ -327,13 +327,13 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
-		if (!i["game_title_background"].blank()) {
+		if(!i["game_title_background"].blank()){
 			// Select a background at random
 			const auto backgrounds = utils::split(i["game_title_background"].str());
-			if (backgrounds.size() > 1) {
+			if(backgrounds.size() > 1){
 				int r = rand() % (backgrounds.size());
 				game_title_background = backgrounds.at(r);
-			} else if (backgrounds.size() == 1) {
+			} else if(backgrounds.size() == 1){
 				game_title_background = backgrounds.at(0);
 			}
 		}
@@ -389,11 +389,11 @@ void load_config(const config &v)
 
 	add_color_info(game_config_view::wrap(v), true);
 
-	if(const config::attribute_value* a = v.get("flag_rgb")) {
+	if(const config::attribute_value* a = v.get("flag_rgb")){
 		flag_rgb = a->str();
 	}
 
-	if(const config::attribute_value* a = v.get("unit_rgb")) {
+	if(const config::attribute_value* a = v.get("unit_rgb")){
 		unit_rgb = a->str();
 	}
 
@@ -403,10 +403,10 @@ void load_config(const config &v)
 	{
 		std::vector<color_t> color_vec;
 
-		for(const auto& s : utils::split(v[key].str())) {
+		for(const auto& s : utils::split(v[key].str())){
 			try {
 				color_vec.push_back(color_t::from_hex_string(s));
-			} catch(const std::invalid_argument& e) {
+			} catch(const std::invalid_argument& e){
 				ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what();
 				color_vec.push_back(fallback);
 			}
@@ -422,18 +422,18 @@ void load_config(const config &v)
 
 	server_list.clear();
 
-	for(const config& server : v.child_range("server")) {
+	for(const config& server : v.child_range("server")){
 		server_info sinf;
 		sinf.name = server["name"].str();
 		sinf.address = server["address"].str();
 		server_list.push_back(sinf);
 	}
 
-	if(auto s = v.optional_child("sounds")) {
+	if(auto s = v.optional_child("sounds")){
 		using namespace game_config::sounds;
 
-		const auto load_attribute = [](const config& c, const std::string& key, std::string& member) {
-			if(c.has_attribute(key)) {
+		const auto load_attribute = [](const config& c, const std::string& key, std::string& member){
+			if(c.has_attribute(key)){
 				member = c[key].str();
 			}
 		};
@@ -452,7 +452,7 @@ void load_config(const config &v)
 		load_attribute(*s, "ready_for_start",  ready_for_start);
 		load_attribute(*s, "game_has_begun",   game_has_begun);
 
-		if(auto ss = s->optional_child("status")) {
+		if(auto ss = s->optional_child("status")){
 			using namespace game_config::sounds::status;
 
 			load_attribute(*ss, "poisoned",  poisoned);
@@ -464,23 +464,23 @@ void load_config(const config &v)
 
 void add_color_info(const game_config_view& v, bool build_defaults)
 {
-	if(build_defaults) {
+	if(build_defaults){
 		default_colors.clear();
 	}
 
-	for(const config& teamC : v.child_range("color_range")) {
+	for(const config& teamC : v.child_range("color_range")){
 		const config::attribute_value* a1 = teamC.get("id"), *a2 = teamC.get("rgb");
-		if(!a1 || !a2) {
+		if(!a1 || !a2){
 			continue;
 		}
 
 		std::string id = *a1;
 		std::vector<color_t> temp;
 
-		for(const auto& s : utils::split(*a2)) {
+		for(const auto& s : utils::split(*a2)){
 			try {
 				temp.push_back(color_t::from_hex_string(s));
-			} catch(const std::invalid_argument&) {
+			} catch(const std::invalid_argument&){
 				std::stringstream ss;
 				ss << "can't parse color string:\n" << teamC.debug() << "\n";
 				throw config::error(ss.str());
@@ -495,18 +495,18 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 		// Generate palette of same name;
 		team_rgb_colors.emplace(id, palette(team_rgb_range[id]));
 
-		if(build_defaults && teamC["default"].to_bool()) {
+		if(build_defaults && teamC["default"].to_bool()){
 			default_colors.push_back(*a1);
 		}
 	}
 
-	for(const config &cp : v.child_range("color_palette")) {
-		for(const auto& [key, value] : cp.attribute_range()) {
+	for(const config &cp : v.child_range("color_palette")){
+		for(const auto& [key, value] : cp.attribute_range()){
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(value)) {
+			for(const auto& s : utils::split(value)){
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(const std::invalid_argument& e) {
+				} catch(const std::invalid_argument& e){
 					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
@@ -528,15 +528,15 @@ void reset_color_info()
 const color_range& color_info(std::string_view name)
 {
 	auto i = team_rgb_range.find(name);
-	if(i != team_rgb_range.end()) {
+	if(i != team_rgb_range.end()){
 		return i->second;
 	}
 
 	std::vector<color_t> temp;
-	for(const auto& s : utils::split(name)) {
+	for(const auto& s : utils::split(name)){
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument&){
 			throw config::error(_("Invalid color in range: ") + s);
 		}
 	}
@@ -548,15 +548,15 @@ const color_range& color_info(std::string_view name)
 const std::vector<color_t>& tc_info(std::string_view name)
 {
 	auto i = team_rgb_colors.find(name);
-	if(i != team_rgb_colors.end()) {
+	if(i != team_rgb_colors.end()){
 		return i->second;
 	}
 
 	std::vector<color_t> temp;
-	for(const auto& s : utils::split(name)) {
+	for(const auto& s : utils::split(name)){
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument& e) {
+		} catch(const std::invalid_argument& e){
 			static std::vector<color_t> stv;
 			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;

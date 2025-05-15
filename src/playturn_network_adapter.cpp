@@ -53,7 +53,7 @@ void playturn_network_adapter::read_from_network()
 	}
 	assert(!data_.back().empty());
 
-	if(!back.attribute_range().empty() )
+	if(!back.attribute_range().empty())
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug();
 		this->data_.pop_back();
@@ -66,7 +66,7 @@ void playturn_network_adapter::read_from_network()
 bool playturn_network_adapter::is_at_end() const
 {
 	assert(!data_.empty());
-	if (data_.size() > 1) return false;
+	if(data_.size() > 1) return false;
 	return this->next_ == data_.back().ordered_end();
 }
 
@@ -147,7 +147,7 @@ playturn_network_adapter::~playturn_network_adapter()
 		{
 			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data";
 		}
-	} catch (...) {}
+	} catch (...){}
 }
 
 void playturn_network_adapter::set_source(source_type source)

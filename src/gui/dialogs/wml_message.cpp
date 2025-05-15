@@ -77,7 +77,7 @@ void wml_message_base::pre_show()
 	label& caption = find_widget<label>("input_caption");
 	text_box& input = find_widget<text_box>("input", true);
 
-	if(has_input_) {
+	if(has_input_){
 		caption.set_label(input_caption_);
 		caption.set_use_markup(true);
 		input.set_value(*input_text_);
@@ -93,8 +93,8 @@ void wml_message_base::pre_show()
 	// Find the option list related fields.
 	listbox& options = find_widget<listbox>("input_list", true);
 
-	if(!option_list_.empty()) {
-		for(const wml_message_option& item : option_list_) {
+	if(!option_list_.empty()){
+		for(const wml_message_option& item : option_list_){
 			options.add_row(widget_data{
 				{ "icon", {
 					{ "label", item.image() }
@@ -112,12 +112,12 @@ void wml_message_base::pre_show()
 
 		// Avoid negative and 0 since item 0 is already selected.
 		if(*chosen_option_ > 0 && static_cast<std::size_t>(*chosen_option_)
-								  < option_list_.size()) {
+								  < option_list_.size()){
 
 			options.select_row(*chosen_option_);
 		}
 
-		if(!has_input_) {
+		if(!has_input_){
 			keyboard_capture(&options);
 			set_click_dismiss(false);
 			set_escape_disabled(true);
@@ -133,12 +133,12 @@ void wml_message_base::pre_show()
 
 void wml_message_base::post_show()
 {
-	if(has_input_) {
+	if(has_input_){
 		*input_text_
 				= find_widget<text_box>("input", true).get_value();
 	}
 
-	if(!option_list_.empty()) {
+	if(!option_list_.empty()){
 		*chosen_option_ = find_widget<listbox>("input_list", true)
 								  .get_selected_row();
 	}
@@ -165,20 +165,20 @@ int show_wml_message(const std::string& title,
 					 const wml_message_input& input)
 {
 	std::shared_ptr<wml_message_base> dlg;
-	if(left && !right) {
+	if(left && !right){
 		dlg.reset(new wml_message_left(title, message, left->portrait, left->mirror));
-	} else if(!left && right) {
+	} else if(!left && right){
 		dlg.reset(new wml_message_right(title, message, right->portrait, right->mirror));
-	} else if(right && left) {
+	} else if(right && left){
 		dlg.reset(new wml_message_double(title, message, left->portrait, left->mirror, right->portrait, right->mirror));
 	}
 	assert(dlg.get());
 
-	if(input.text_input_was_specified) {
+	if(input.text_input_was_specified){
 		dlg->set_input(input.caption, &input.text, input.maximum_length);
 	}
 
-	if(!options.option_list.empty()) {
+	if(!options.option_list.empty()){
 		dlg->set_option_list(options.option_list, &options.chosen_option);
 	}
 

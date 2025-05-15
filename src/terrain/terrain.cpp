@@ -126,11 +126,11 @@ terrain_type::terrain_type(const config& cfg)
 		t_translation::write_terrain_code(number_)));
 #endif
 
-	if(editor_image_.empty()) {
+	if(editor_image_.empty()){
 		editor_image_ = "terrain/" + minimap_image_ + ".png";
 	}
 
-	if(hide_in_editor_) {
+	if(hide_in_editor_){
 		editor_image_ = "";
 	}
 
@@ -139,24 +139,24 @@ terrain_type::terrain_type(const config& cfg)
 	vision_type_.push_back(number_);
 
 	const t_translation::ter_list& alias = t_translation::read_list(cfg["aliasof"].str());
-	if(!alias.empty()) {
+	if(!alias.empty()){
 		mvt_type_ = alias;
 		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
 	const t_translation::ter_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"].str());
-	if(!mvt_alias.empty()) {
+	if(!mvt_alias.empty()){
 		mvt_type_ = mvt_alias;
 	}
 
 	const t_translation::ter_list& def_alias = t_translation::read_list(cfg["def_alias"].str());
-	if(!def_alias.empty()) {
+	if(!def_alias.empty()){
 		def_type_ = def_alias;
 	}
 
 	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"].str());
-	if(!vision_alias.empty()) {
+	if(!vision_alias.empty()){
 		// Vision costs are calculated in movetype.cpp, but they're calculated based on gamemap::underlying_mvt_terrain().
 		// Having vision costs that are different to movement costs is still supported, but having separate aliases seems
 		// an edge case that shouldn't be introduced until we're ready to test it.
@@ -165,8 +165,8 @@ terrain_type::terrain_type(const config& cfg)
 	}
 
 	union_type_ = mvt_type_;
-	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
-	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
+	union_type_.insert(union_type_.end(), def_type_.begin(), def_type_.end());
+	union_type_.insert(union_type_.end(), vision_type_.begin(), vision_type_.end());
 
 	// remove + and -
 	utils::erase(union_type_, t_translation::MINUS);
@@ -179,24 +179,24 @@ terrain_type::terrain_type(const config& cfg)
 
 
 	//mouse over message are only shown on villages
-	if(village_) {
+	if(village_){
 		income_description_ = cfg["income_description"];
-		if(income_description_.empty()) {
+		if(income_description_.empty()){
 			income_description_ = _("Village");
 		}
 
 		income_description_ally_ = cfg["income_description_ally"];
-		if(income_description_ally_.empty()) {
+		if(income_description_ally_.empty()){
 			income_description_ally_ = _("Allied village");
 		}
 
 		income_description_enemy_ = cfg["income_description_enemy"];
-		if(income_description_enemy_.empty()) {
+		if(income_description_enemy_.empty()){
 			income_description_enemy_ = _("Enemy village");
 		}
 
 		income_description_own_ = cfg["income_description_own"];
-		if(income_description_own_.empty()) {
+		if(income_description_own_.empty()){
 			income_description_own_ = _("Owned village");
 		}
 	}
@@ -240,16 +240,16 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_),
 	hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
 {
-	if(description_.empty()) {
+	if(description_.empty()){
 		description_ = base.description();
 	}
 
-	if(overlay.height_adjust_set_) {
+	if(overlay.height_adjust_set_){
 		height_adjust_set_ = true;
 		height_adjust_ = overlay.height_adjust_;
 	}
 
-	if(overlay.submerge_set_) {
+	if(overlay.submerge_set_){
 		submerge_set_ = true;
 		submerge_ = overlay.submerge_;
 	}
@@ -259,8 +259,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	merge_alias_lists(vision_type_, base.vision_type_);
 
 	union_type_ = mvt_type_;
-	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
-	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
+	union_type_.insert(union_type_.end(), def_type_.begin(), def_type_.end());
+	union_type_.insert(union_type_.end(), vision_type_.begin(), vision_type_.end());
 
 	// remove + and -
 	utils::erase(union_type_, t_translation::MINUS);
@@ -273,13 +273,13 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 
 
 	//mouse over message are only shown on villages
-	if(base.village_) {
+	if(base.village_){
 		income_description_ = base.income_description_;
 		income_description_ally_ = base.income_description_ally_;
 		income_description_enemy_ = base.income_description_enemy_;
 		income_description_own_ = base.income_description_own_;
 	}
-	else if (overlay.village_) {
+	else if(overlay.village_){
 		income_description_ = overlay.income_description_;
 		income_description_ally_ = overlay.income_description_ally_;
 		income_description_enemy_ = overlay.income_description_enemy_;
@@ -289,7 +289,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 }
 
 t_translation::terrain_code terrain_type::terrain_with_default_base() const {
-	if(overlay_ && has_default_base()) {
+	if(overlay_ && has_default_base()){
 		return t_translation::terrain_code(editor_default_base_.base, number_.overlay);
 	}
 	return number_;
@@ -332,11 +332,11 @@ void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_
 	bool revert = (first.front() == t_translation::MINUS ? true : false);
 	t_translation::ter_list::iterator i;
 
-	for(i = first.begin(); i != first.end(); ++i) {
-		if(*i == t_translation::PLUS) {
+	for(i = first.begin(); i != first.end(); ++i){
+		if(*i == t_translation::PLUS){
 			revert = false;
 			continue;
-		} else if(*i == t_translation::MINUS) {
+		} else if(*i == t_translation::MINUS){
 			revert = true;
 			continue;
 		}
@@ -348,11 +348,11 @@ void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_
 		// is that the insertion of a plus or minus before the base terrain is commented out
 		// in this function.
 
-		if(*i == t_translation::BASE) {
+		if(*i == t_translation::BASE){
 			t_translation::ter_list::iterator insert_it = first.erase(i);
 			//if we are in reverse mode, insert PLUS before and MINUS after the base list
 			//so calculation of base aliases will work normal
-			if(revert) {
+			if(revert){
 //				insert_it = first.insert(insert_it, t_translation::PLUS);
 //				insert_it++;
 				insert_it = first.insert(insert_it, t_translation::MINUS);

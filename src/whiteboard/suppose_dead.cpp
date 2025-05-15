@@ -92,7 +92,7 @@ suppose_dead::~suppose_dead()
 unit_ptr suppose_dead::get_unit() const
 {
 	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
-	if (itor.valid())
+	if(itor.valid())
 		return itor.get_shared_ptr();
 	else
 		return unit_ptr();
@@ -129,7 +129,7 @@ void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 
 void suppose_dead::draw_hex(const map_location& hex)
 {
-	if (hex != loc_) {
+	if(hex != loc_){
 		return;
 	}
 
@@ -137,7 +137,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 	const drawing_layer layer = drawing_layer::arrows;
 
 	display::get_singleton()->drawing_buffer_add(
-		layer, loc_, [tex = image::get_texture(image::locator{"whiteboard/suppose_dead.png"}, image::HEXED)](const rect& d) {
+		layer, loc_, [tex = image::get_texture(image::locator{"whiteboard/suppose_dead.png"}, image::HEXED)](const rect& d){
 			draw::blit(tex, d);
 		});
 }
@@ -149,17 +149,17 @@ void suppose_dead::redraw()
 
 action::error suppose_dead::check_validity() const
 {
-	if(!get_source_hex().valid()) {
+	if(!get_source_hex().valid()){
 		return INVALID_LOCATION;
 	}
 	//Check that the unit still exists in the source hex
 	unit_map::const_iterator unit_it = resources::gameboard->units().find(get_source_hex());
-	if(unit_it == resources::gameboard->units().end()) {
+	if(unit_it == resources::gameboard->units().end()){
 		return NO_UNIT;
 	}
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
-	if(unit_id_ != unit_it->id()) {
+	if(unit_id_ != unit_it->id()){
 		return UNIT_CHANGED;
 	}
 

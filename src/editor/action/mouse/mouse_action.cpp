@@ -32,7 +32,7 @@ bool mouse_action::has_context_menu() const
 
 void mouse_action::move(editor_display& disp, const map_location& hex)
 {
-	if (hex == previous_move_hex_) {
+	if(hex == previous_move_hex_){
 		return;
 	}
 
@@ -92,28 +92,28 @@ std::unique_ptr<editor_action> mouse_action::up_left(
 std::unique_ptr<editor_action> mouse_action::key_event(
 	editor_display& disp, const SDL_Event& event)
 {
-	if (!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
+	if(!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')){
 		int side = event.key.keysym.sym - '0';
-		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
+		if(side >= 1 && side <= gamemap::MAX_PLAYERS){
 			map_location pos = disp.get_map().starting_position(side);
-			if (pos.valid()) {
+			if(pos.valid()){
 				disp.scroll_to_tile(pos, display::WARP);
 			}
 		}
 		return nullptr;
 	}
-	if (!disp.get_map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
+	if(!disp.get_map().on_board(previous_move_hex_) || event.type != SDL_KEYUP){
 		return nullptr;
 	}
 	std::unique_ptr<editor_action> a;
-	if ((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
-	|| event.key.keysym.sym == SDLK_DELETE) {
+	if((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
+	|| event.key.keysym.sym == SDLK_DELETE){
 		int res = event.key.keysym.sym - '0';
-		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
+		if(res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
 		const std::string* old_id = disp.get_map().is_special_location(previous_move_hex_);
-		if (res == 0 && old_id != nullptr) {
+		if(res == 0 && old_id != nullptr){
 			a = std::make_unique<editor_action_starting_position>(map_location(), *old_id);
-		} else if (res > 0 && (old_id == nullptr || *old_id == std::to_string(res))) {
+		} else if(res > 0 && (old_id == nullptr || *old_id == std::to_string(res))){
 			a = std::make_unique<editor_action_starting_position>(previous_move_hex_, std::to_string(res));
 		}
 	}
@@ -153,7 +153,7 @@ void mouse_action::set_terrain_mouse_overlay(
 	const std::string bg_path = disp.get_map().get_terrain_info(bg).editor_image();
 	const std::string blank_hex = "misc/blank-hex.png";
 
-	if (!image::exists(fg_path) || !image::exists(bg_path)) {
+	if(!image::exists(fg_path) || !image::exists(bg_path)){
 		ERR_ED << "Missing terrain icon";
 		disp.clear_mouseover_hex_overlay();
 		return;
@@ -227,7 +227,7 @@ std::unique_ptr<editor_action> brush_drag_mouse_action::drag_generic(editor_disp
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	move(disp, hex);
-	if (hex != previous_drag_hex_) {
+	if(hex != previous_drag_hex_){
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
 		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x;
 		partial = true;
@@ -249,7 +249,7 @@ const brush& brush_drag_mouse_action::get_brush()
 
 std::unique_ptr<editor_action> mouse_action_paint::click_left(editor_display& disp, int x, int y)
 {
-	if (has_ctrl_modifier()) {
+	if(has_ctrl_modifier()){
 		map_location hex = disp.hex_clicked_on(x, y);
 		terrain_palette_.select_fg_item(disp.get_map().get_terrain(hex));
 		return nullptr;
@@ -260,7 +260,7 @@ std::unique_ptr<editor_action> mouse_action_paint::click_left(editor_display& di
 
 std::unique_ptr<editor_action> mouse_action_paint::click_right(editor_display& disp, int x, int y)
 {
-	if (has_ctrl_modifier()) {
+	if(has_ctrl_modifier()){
 		map_location hex = disp.hex_clicked_on(x, y);
 		terrain_palette_.select_bg_item(disp.get_map().get_terrain(hex));
 		return nullptr;
@@ -272,7 +272,7 @@ std::unique_ptr<editor_action> mouse_action_paint::click_right(editor_display& d
 std::unique_ptr<editor_action> mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	if (has_ctrl_modifier()) return nullptr;
+	if(has_ctrl_modifier()) return nullptr;
 	// \todo why is this a chain and not an individual action? I guess that mouse drags were meant
 	// to be optimised with one undo for multiple hexes, but it seems that was never added.
 	auto chain = std::make_unique<editor_action_chain>();
@@ -284,7 +284,7 @@ std::unique_ptr<editor_action> mouse_action_paint::click_perform_left(
 std::unique_ptr<editor_action> mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	if (has_ctrl_modifier()) return nullptr;
+	if(has_ctrl_modifier()) return nullptr;
 	// \todo why is this a chain and not an individual action?
 	auto chain = std::make_unique<editor_action_chain>();
 	chain->append_action(std::make_unique<editor_action_paint_area>(
@@ -346,7 +346,7 @@ std::set<map_location> mouse_action_fill::affected_hexes(
 std::unique_ptr<editor_action> mouse_action_fill::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (has_ctrl_modifier()) {
+	if(has_ctrl_modifier()){
 		terrain_palette_.select_fg_item(disp.get_map().get_terrain(hex));
 		return nullptr;
 	} else {
@@ -360,7 +360,7 @@ std::unique_ptr<editor_action> mouse_action_fill::click_left(editor_display& dis
 std::unique_ptr<editor_action> mouse_action_fill::click_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (has_ctrl_modifier()) {
+	if(has_ctrl_modifier()){
 		terrain_palette_.select_bg_item(disp.get_map().get_terrain(hex));
 		return nullptr;
 	} else {
@@ -379,16 +379,16 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 
 std::unique_ptr<editor_action> mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
-	if (!click_) return nullptr;
+	if(!click_) return nullptr;
 	click_ = false;
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex)) {
+	if(!disp.get_map().on_board(hex)){
 		return nullptr;
 	}
 	auto player_starting_at_hex = disp.get_map().is_special_location(hex);
 
-	if (has_ctrl_modifier()) {
-		if (player_starting_at_hex) {
+	if(has_ctrl_modifier()){
+		if(player_starting_at_hex){
 			location_palette_.add_item(*player_starting_at_hex);
 		}
 		return nullptr;
@@ -397,7 +397,7 @@ std::unique_ptr<editor_action> mouse_action_starting_position::up_left(editor_di
 	std::string new_player_at_hex = location_palette_.selected_item();
 	std::unique_ptr<editor_action> a;
 
-	if(!player_starting_at_hex || new_player_at_hex != *player_starting_at_hex) {
+	if(!player_starting_at_hex || new_player_at_hex != *player_starting_at_hex){
 		// Set a starting position
 		a = std::make_unique<editor_action_starting_position>(hex, new_player_at_hex);
 	}
@@ -421,7 +421,7 @@ std::unique_ptr<editor_action> mouse_action_starting_position::up_right(editor_d
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	auto player_starting_at_hex = disp.get_map().is_special_location(hex);
-	if (player_starting_at_hex != nullptr) {
+	if(player_starting_at_hex != nullptr){
 		return std::make_unique<editor_action_starting_position>(map_location(), *player_starting_at_hex);
 	} else {
 		return nullptr;

@@ -28,7 +28,7 @@ uint32_t get_mouse_state(int *x, int *y)
 {
 	uint32_t buttons = SDL_GetMouseState(x, y);
 
-	if (video::headless()) {
+	if(video::headless()){
 		return buttons;
 	}
 
@@ -66,18 +66,18 @@ unsigned get_mods()
 	mods &= KMOD_SHIFT | KMOD_CTRL | KMOD_ALT | KMOD_GUI;
 
 	// Set both left and right modifiers if either is active
-	if(mods & KMOD_SHIFT) {
+	if(mods & KMOD_SHIFT){
 		mods |= KMOD_SHIFT;
 	}
 
-	if(mods & KMOD_CTRL) {
+	if(mods & KMOD_CTRL){
 		mods |= KMOD_CTRL;
 	}
 
 	if(mods & KMOD_ALT)
 		mods |= KMOD_ALT;
 
-	if(mods & KMOD_GUI) {
+	if(mods & KMOD_GUI){
 		mods |= KMOD_GUI;
 	}
 

@@ -67,7 +67,7 @@ std::string default_map_generator::name() const { return "default"; }
 
 std::string default_map_generator::config_name() const
 {
-	if (auto c = cfg_.optional_child("scenario"))
+	if(auto c = cfg_.optional_child("scenario"))
 		return c["name"];
 
 	return std::string();
@@ -81,7 +81,7 @@ std::string default_map_generator::create_map(utils::optional<uint32_t> randomse
 std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, utils::optional<uint32_t> randomseed)
 {
 	uint32_t seed;
-	if(randomseed) {
+	if(randomseed){
 		seed = *randomseed;
 	} else {
 		seed = seed_rng::next_seed();
@@ -97,12 +97,12 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	generator_data job_data = data_;
 
 	// Suppress labels?
-	if(!data_.show_labels) {
+	if(!data_.show_labels){
 		labels = nullptr;
 	}
 
 	// The random generator thinks odd widths are nasty, so make them even
-	if(is_odd(data_.width)) {
+	if(is_odd(data_.width)){
 		++job_data.width;
 	}
 
@@ -111,7 +111,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	job_data.nvillages = (data_.nvillages * data_.width * data_.height) / 1000;
 	job_data.island_off_center = 0;
 
-	if(data_.island_size >= max_coastal) {
+	if(data_.island_size >= max_coastal){
 		// Islands look good with much fewer iterations than normal, and fewer lakes
 		job_data.iterations /= 10;
 		job_data.max_lakes /= 9;
@@ -119,7 +119,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 		// The radius of the island should be up to half the width of the map
 		const int island_radius = 50 + ((max_island - data_.island_size) * 50)/(max_island - max_coastal);
 		job_data.island_size = (island_radius * (data_.width/2))/100;
-	} else if(data_.island_size > 0) {
+	} else if(data_.island_size > 0){
 		// The radius of the island should be up to twice the width of the map
 		const int island_radius = 40 + ((max_coastal - data_.island_size) * 40)/max_coastal;
 		job_data.island_size = (island_radius * data_.width * 2)/100;
@@ -141,25 +141,25 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	std::string error_message;
 	do {
 		// Reset the labels.
-		if(labels) {
+		if(labels){
 			labels_copy = *labels;
 		}
 
 		try {
 			map = job.default_generate_map(job_data, labels_ptr, cfg_);
 			error_message = "";
-		} catch(const mapgen_exception& exc) {
+		} catch(const mapgen_exception& exc){
 			error_message = exc.message;
 		}
 
 		--tries;
 	} while(tries && map.empty());
 
-	if(labels) {
+	if(labels){
 		labels->swap(labels_copy);
 	}
 
-	if(!error_message.empty()) {
+	if(!error_message.empty()){
 		throw mapgen_exception(error_message);
 	}
 
@@ -187,11 +187,11 @@ config default_map_generator::create_scenario(utils::optional<uint32_t> randomse
 	DBG_NG << "done generating map..";
 
 	for(std::map<map_location,std::string>::const_iterator i =
-			labels.begin(); i != labels.end(); ++i) {
+			labels.begin(); i != labels.end(); ++i){
 
 		if(i->first.x >= 0 && i->first.y >= 0 &&
 				i->first.x < static_cast<long>(data_.width) &&
-				i->first.y < static_cast<long>(data_.height)) {
+				i->first.y < static_cast<long>(data_.height)){
 
 			config& label = res.add_child("label");
 			label["text"] = i->second;

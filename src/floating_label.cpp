@@ -84,9 +84,9 @@ void floating_label::move(double xmove, double ymove)
 int floating_label::xpos(std::size_t width) const
 {
 	int xpos = int(xpos_);
-	if(align_ == font::CENTER_ALIGN) {
+	if(align_ == font::CENTER_ALIGN){
 		xpos -= width / 2;
-	} else if(align_ == font::RIGHT_ALIGN) {
+	} else if(align_ == font::RIGHT_ALIGN){
 		xpos -= width;
 	}
 
@@ -105,16 +105,16 @@ void floating_label::clear_texture()
 
 bool floating_label::create_texture()
 {
-	if(video::headless()) {
+	if(video::headless()){
 		return false;
 	}
 
-	if(tex_ != nullptr) {
+	if(tex_ != nullptr){
 		// Already have a texture
 		return true;
 	}
 
-	if(text_.empty()) {
+	if(text_.empty()){
 		// Empty labels are unfortunately still used sometimes
 		return false;
 	}
@@ -135,14 +135,14 @@ bool floating_label::create_texture()
 		.set_add_outline(bgcolor_.a == 0);
 
 	// ignore last '\n'
-	if(!text_.empty() && *(text_.rbegin()) == '\n') {
+	if(!text_.empty() && *(text_.rbegin()) == '\n'){
 		text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
 	} else {
 		text.set_text(text_, use_markup_);
 	}
 
 	tex_ = text.render_and_get_texture();
-	if(!tex_) {
+	if(!tex_){
 		ERR_FT << "could not create floating label's text";
 		return false;
 	}
@@ -159,11 +159,11 @@ void floating_label::undraw()
 
 void floating_label::update(const clock::time_point& time)
 {
-	if(video::headless() || text_.empty()) {
+	if(video::headless() || text_.empty()){
 		return;
 	}
 
-	if(!create_texture()) {
+	if(!create_texture()){
 		ERR_FT << "failed to create texture for floating label";
 		return;
 	}
@@ -187,21 +187,21 @@ void floating_label::update(const clock::time_point& time)
 
 void floating_label::draw()
 {
-	if(!visible_) {
+	if(!visible_){
 		screen_loc_ = {};
 		return;
 	}
 
-	if(screen_loc_.empty()) {
+	if(screen_loc_.empty()){
 		return;
 	}
 
-	if(!tex_) {
+	if(!tex_){
 		ERR_DP << "trying to draw floating label with no texture!";
 		return;
 	}
 
-	if(!screen_loc_.overlaps(draw::get_clip().intersect(clip_rect_))) {
+	if(!screen_loc_.overlaps(draw::get_clip().intersect(clip_rect_))){
 		return;
 	}
 
@@ -211,7 +211,7 @@ void floating_label::draw()
 	auto clipper = draw::reduce_clip(clip_rect_);
 
 	// Draw background, if appropriate
-	if(bgcolor_.a != 0) {
+	if(bgcolor_.a != 0){
 		draw::fill(get_bg_rect(screen_loc_), bgcolor_);
 	}
 
@@ -243,12 +243,12 @@ point floating_label::get_pos(const clock::time_point& time)
 
 uint8_t floating_label::get_alpha(const clock::time_point& time)
 {
-	if(lifetime_ >= 0ms && fadeout_ > 0ms) {
+	if(lifetime_ >= 0ms && fadeout_ > 0ms){
 		auto time_alive = get_time_alive(time);
-		if(time_alive >= lifetime_ && tex_ != nullptr) {
+		if(time_alive >= lifetime_ && tex_ != nullptr){
 			// fade out moving floating labels
 			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
-			if (alpha_sub >= 255) {
+			if(alpha_sub >= 255){
 				return 0;
 			} else {
 				return 255 - alpha_sub;
@@ -260,7 +260,7 @@ uint8_t floating_label::get_alpha(const clock::time_point& time)
 
 int add_floating_label(const floating_label& flabel)
 {
-	if(label_contexts.empty()) {
+	if(label_contexts.empty()){
 		return 0;
 	}
 
@@ -273,15 +273,15 @@ int add_floating_label(const floating_label& flabel)
 void move_floating_label(int handle, double xmove, double ymove)
 {
 	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
+	if(i != labels.end()){
 		i->second.move(xmove, ymove);
 	}
 }
 
 void scroll_floating_labels(double xmove, double ymove)
 {
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
+	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i){
+		if(i->second.scroll() == ANCHOR_LABEL_MAP){
 			i->second.move(xmove, ymove);
 		}
 	}
@@ -290,11 +290,11 @@ void scroll_floating_labels(double xmove, double ymove)
 void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout)
 {
 	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		if(fadeout > 0ms) {
+	if(i != labels.end()){
+		if(fadeout > 0ms){
 			i->second.set_lifetime(0ms, fadeout);
 			return;
-		} else if(fadeout < 0ms) {
+		} else if(fadeout < 0ms){
 			i->second.set_lifetime(0ms, i->second.get_fade_time());
 			return;
 		}
@@ -303,7 +303,7 @@ void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout)
 		labels.erase(i);
 	}
 
-	if(!label_contexts.empty()) {
+	if(!label_contexts.empty()){
 		label_contexts.top().erase(handle);
 	}
 }
@@ -311,7 +311,7 @@ void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout)
 void show_floating_label(int handle, bool value)
 {
 	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
+	if(i != labels.end()){
 		i->second.show(value);
 	}
 }
@@ -319,8 +319,8 @@ void show_floating_label(int handle, bool value)
 SDL_Rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		if (i->second.create_texture()) {
+	if(i != labels.end()){
+		if(i->second.create_texture()){
 			SDL_Point size = i->second.get_draw_size();
 			return {0, 0, size.x, size.y};
 		}
@@ -331,8 +331,8 @@ SDL_Rect get_floating_label_rect(int handle)
 floating_label_context::floating_label_context()
 {
 	// hacky but the whole floating label system needs to be redesigned...
-	for(auto& [id, label] : labels) {
-		if(label_contexts.top().count(id) > 0) {
+	for(auto& [id, label] : labels){
+		if(label_contexts.top().count(id) > 0){
 			label.undraw();
 		}
 	}
@@ -346,7 +346,7 @@ floating_label_context::~floating_label_context()
 	//TODO: 'pause' floating labels in other contexrs
 	const std::set<int>& context = label_contexts.top();
 
-	while(!context.empty()) {
+	while(!context.empty()){
 		// Remove_floating_label removes the passed label from the context.
 		// This loop removes a different label in every iteration.
 		remove_floating_label(*context.begin());
@@ -357,7 +357,7 @@ floating_label_context::~floating_label_context()
 
 void draw_floating_labels()
 {
-	if(label_contexts.empty()) {
+	if(label_contexts.empty()){
 		return;
 	}
 
@@ -365,8 +365,8 @@ void draw_floating_labels()
 
 	// draw the labels in the order they were added, so later added labels (likely to be tooltips)
 	// are displayed over earlier added labels.
-	for(auto& [id, label] : labels) {
-		if(context.count(id) > 0) {
+	for(auto& [id, label] : labels){
+		if(context.count(id) > 0){
 			label.draw();
 		}
 	}
@@ -374,22 +374,22 @@ void draw_floating_labels()
 
 void update_floating_labels()
 {
-	if(label_contexts.empty()) {
+	if(label_contexts.empty()){
 		return;
 	}
 	auto time = std::chrono::steady_clock::now();
 
 	std::set<int>& context = label_contexts.top();
 
-	for(auto& [id, label] : labels) {
-		if(context.count(id) > 0) {
+	for(auto& [id, label] : labels){
+		if(context.count(id) > 0){
 			label.update(time);
 		}
 	}
 
 	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired(time)) {
+	for(label_map::iterator j = labels.begin(); j != labels.end();){
+		if(context.count(j->first) > 0 && j->second.expired(time)){
 			DBG_FT << "removing expired floating label " << j->first;
 			context.erase(j->first);
 			labels.erase(j++);

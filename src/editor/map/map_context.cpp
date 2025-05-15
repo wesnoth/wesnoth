@@ -182,14 +182,14 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	log_scope2(log_editor, "Loading file " + filename);
 
 	// 0.1 File not found
-	if(!filesystem::file_exists(filename) || filesystem::is_directory(filename)) {
+	if(!filesystem::file_exists(filename) || filesystem::is_directory(filename)){
 		throw editor_map_load_exception(filename, _("File not found"));
 	}
 
 	std::string file_string = filesystem::read_file(filename);
 
 	// 0.2 Map file empty
-	if(file_string.empty()) {
+	if(file_string.empty()){
 		std::string message = _("Empty file");
 		throw editor_map_load_exception(filename, message);
 	}
@@ -205,7 +205,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 	// 1.0 Pure map data
 	if(filesystem::is_map(filename)
-		|| filesystem::is_mask(filename)) {
+		|| filesystem::is_mask(filename)){
 		LOG_ED << "Loading map or mask file";
 		map_ = editor_map::from_string(file_string); // throws on error
 		pure_map_ = true;
@@ -215,11 +215,11 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		// 4.0 old-style editor generated scenario which lacks a top-level tag
 		if(file_string.find("[multiplayer]") == std::string::npos &&
 			file_string.find("[scenario]") == std::string::npos &&
-			file_string.find("[test]") == std::string::npos) {
+			file_string.find("[test]") == std::string::npos){
 			LOG_ED << "Loading generated scenario file";
 			try {
 				load_scenario();
-			} catch(const std::exception& e) {
+			} catch(const std::exception& e){
 				throw editor_map_load_exception("load_scenario: old-style scenario", e.what());
 			}
 			add_to_recent_files();
@@ -227,8 +227,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 			std::string map_data_loc = get_map_location(file_string, "map_data");
 			std::string map_file_loc = get_map_location(file_string, "map_file");
 
-			if(!map_data_loc.empty()) {
-				if(map_data_loc.find("\"{") == std::string::npos) {
+			if(!map_data_loc.empty()){
+				if(map_data_loc.find("\"{") == std::string::npos){
 					// 2.0 Embedded pure map
 					LOG_ED << "Loading embedded map file";
 					embedded_ = true;
@@ -245,7 +245,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 					auto new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
 
-					if(!new_filename) {
+					if(!new_filename){
 						std::string message = _("The map file looks like a scenario, but the map_data value does not point to an existing file")
 											+ std::string("\n") + macro_argument;
 						throw editor_map_load_exception(filename, message);
@@ -260,15 +260,15 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 					add_to_recent_files();
 				}
-			} else if(!map_file_loc.empty()) {
+			} else if(!map_file_loc.empty()){
 				// 5.0 The file is using map_file.
 				try {
 					// 5.1 The file can be loaded by the editor as a scenario
-					if(file_string.find("<<") != std::string::npos) {
+					if(file_string.find("<<") != std::string::npos){
 						throw editor_map_load_exception(filename, _("Found the characters ‘<<’ indicating inline lua is present — aborting"));
 					}
 					load_scenario();
-				} catch(const std::exception&) {
+				} catch(const std::exception&){
 					// 5.2 The file can't be loaded by the editor as a scenario, so try to just load the map
 					gui2::show_message(_("Error"), _("Failed to load the scenario, attempting to load only the map."), gui2::dialogs::message::auto_close);
 
@@ -276,7 +276,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 					//       this is done to address mainline scenarios referencing their maps as "multiplayer/maps/<map_file>.map"
 					//       otherwise this results in the "multiplayer/maps/" part getting duplicated in the path and then not being found
 					std::string new_filename = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(map_file_loc);
-					if(!filesystem::file_exists(new_filename)) {
+					if(!filesystem::file_exists(new_filename)){
 						std::string message = _("The map file looks like a scenario, but the map_file value does not point to an existing file")
 											+ std::string("\n") + new_filename;
 						throw editor_map_load_exception(filename, message);
@@ -360,7 +360,7 @@ void map_context::set_scenario_setup(const std::string& id,
 void map_context::set_starting_time(int time)
 {
 	tod_manager_->set_current_time(time);
-	if(!pure_map_) {
+	if(!pure_map_){
 		++actions_since_save_;
 	}
 }
@@ -375,7 +375,7 @@ void map_context::remove_area(int index)
 void map_context::replace_schedule(const std::vector<time_of_day>& schedule)
 {
 	tod_manager_->replace_schedule(schedule);
-	if(!pure_map_) {
+	if(!pure_map_){
 		++actions_since_save_;
 	}
 }
@@ -383,7 +383,7 @@ void map_context::replace_schedule(const std::vector<time_of_day>& schedule)
 void map_context::replace_local_schedule(const std::vector<time_of_day>& schedule)
 {
 	tod_manager_->replace_local_schedule(schedule, active_area_);
-	if(!pure_map_) {
+	if(!pure_map_){
 		++actions_since_save_;
 	}
 }
@@ -397,9 +397,9 @@ config map_context::convert_scenario(const config& old_scenario)
 	std::string separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(filename_, true) + filesystem::map_extension;
 
 	// check that there's embedded map data, since that's how the editor used to save scenarios
-	if(!map_data.empty()) {
+	if(!map_data.empty()){
 		// check if a .map file already exists as a separate standalone .map in the editor folders or if a .map file already exists in the add-on
-		if(filesystem::file_exists(separate_map_file)) {
+		if(filesystem::file_exists(separate_map_file)){
 			separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::get_next_filename(filesystem::base_name(filename_, true), filesystem::map_extension);
 		}
 		multiplayer["id"] = filesystem::base_name(separate_map_file, true);
@@ -424,27 +424,27 @@ config map_context::convert_scenario(const config& old_scenario)
 	//   if [unit], set the unit's side
 	// for [time]:
 	//   keep under [multiplayer]
-	for(const auto [child_key, child_cfg]: old_scenario.all_children_view()) {
-		if(child_key != "side" && child_key != "time") {
+	for(const auto [child_key, child_cfg]: old_scenario.all_children_view()){
+		if(child_key != "side" && child_key != "time"){
 			config& c = event.add_child(child_key);
 			c.append_attributes(child_cfg);
 			c.append_children(child_cfg);
-		} else if(child_key == "side") {
+		} else if(child_key == "side"){
 			config& c = multiplayer.add_child("side");
 			c.append_attributes(child_cfg);
-			for(const auto [side_key, side_cfg] : child_cfg.all_children_view()) {
-				if(side_key == "village") {
+			for(const auto [side_key, side_cfg] : child_cfg.all_children_view()){
+				if(side_key == "village"){
 					config& c1 = c.add_child("village");
 					c1.append_attributes(side_cfg);
 				} else {
 					config& c1 = event.add_child(side_key);
 					c1.append_attributes(side_cfg);
-					if(side_key == "unit") {
+					if(side_key == "unit"){
 						c1["side"] = child_cfg["side"];
 					}
 				}
 			}
-		} else if(child_key == "time") {
+		} else if(child_key == "time"){
 			config& c = multiplayer.add_child("time");
 			c.append_attributes(child_cfg);
 		}
@@ -458,11 +458,11 @@ void map_context::load_scenario()
 	config scen = io::read(*preprocess_file(filename_));
 
 	config scenario;
-	if(scen.has_child("scenario")) {
+	if(scen.has_child("scenario")){
 		scenario = scen.mandatory_child("scenario");
-	} else if(scen.has_child("multiplayer")) {
+	} else if(scen.has_child("multiplayer")){
 		scenario = scen.mandatory_child("multiplayer");
-	} else if(scen.has_child("test")) {
+	} else if(scen.has_child("test")){
 		scenario = scen.mandatory_child("test");
 	} else {
 		ERR_ED << "Found no [scenario], [multiplayer], or [test] tag in " << filename_ << ", assuming old-style editor scenario and defaulting to [multiplayer]";
@@ -474,24 +474,24 @@ void map_context::load_scenario()
 	scenario_name_ = scenario["name"].str();
 	scenario_description_ = scenario["description"].str();
 
-	if(const config::attribute_value* experience_modifier = scenario.get("experience_modifier")) {
+	if(const config::attribute_value* experience_modifier = scenario.get("experience_modifier")){
 		xp_mod_ = experience_modifier->to_int();
 	}
 	victory_defeated_ = scenario["victory_when_enemies_defeated"].to_bool(true);
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
-	if(!scenario["map_data"].str().empty()) {
+	if(!scenario["map_data"].str().empty()){
 		map_ = editor_map::from_string(scenario["map_data"]); // throws on error
-	} else if(!scenario["map_file"].str().empty()) {
+	} else if(!scenario["map_file"].str().empty()){
 		map_ = editor_map::from_string(filesystem::read_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(scenario["map_file"]))); // throws on error
 	} else {
 		throw editor_map_load_exception("load_scenario: no map_file or map_data attribute found", filename_);
 	}
 
-	for(config& side : scenario.child_range("side")) {
+	for(config& side : scenario.child_range("side")){
 		teams_.emplace_back();
 		teams_.back().build(side, map_);
-		if(!side["recruit"].str().empty()) {
+		if(!side["recruit"].str().empty()){
 			teams_.back().set_recruits(utils::split_set(side["recruit"].str(), ','));
 		}
 	}
@@ -499,28 +499,28 @@ void map_context::load_scenario()
 	tod_manager_.reset(new tod_manager(scenario));
 
 	auto event = scenario.find_child("event", "id", "editor_event-start");
-	if(!event) {
+	if(!event){
 		event = scenario.find_child("event", "id", "editor_event-prestart");
 	}
-	if(event) {
+	if(event){
 		config& evt = event.value();
 
 		labels_.read(evt);
 
-		for(const config& time_area : evt.child_range("time_area")) {
+		for(const config& time_area : evt.child_range("time_area")){
 			tod_manager_->add_time_area(map_, time_area);
 		}
 
-		for(const config& item : evt.child_range("item")) {
+		for(const config& item : evt.child_range("item")){
 			const map_location loc(item);
 			overlays_[loc].push_back(overlay(item));
 		}
 
-		for(const config& music : evt.child_range("music")) {
+		for(const config& music : evt.child_range("music")){
 			music_tracks_.emplace(music["name"], sound::music_track(music));
 		}
 
-		for(config& a_unit : evt.child_range("unit")) {
+		for(config& a_unit : evt.child_range("unit")){
 			units_.insert(unit::create(a_unit, true));
 		}
 	}
@@ -545,7 +545,7 @@ void map_context::draw_terrain(const t_translation::terrain_code& terrain, const
 void map_context::draw_terrain_actual(
 		const t_translation::terrain_code& terrain, const map_location& loc, bool one_layer_only)
 {
-	if(!map_.on_board_with_border(loc)) {
+	if(!map_.on_board_with_border(loc)){
 		// requests for painting off the map are ignored in set_terrain anyway,
 		// but ideally we should not have any
 		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")";
@@ -554,10 +554,10 @@ void map_context::draw_terrain_actual(
 
 	t_translation::terrain_code old_terrain = map_.get_terrain(loc);
 
-	if(terrain != old_terrain) {
-		if(terrain.base == t_translation::NO_LAYER) {
+	if(terrain != old_terrain){
+		if(terrain.base == t_translation::NO_LAYER){
 			map_.set_terrain(loc, terrain, terrain_type_data::OVERLAY);
-		} else if(one_layer_only) {
+		} else if(one_layer_only){
 			map_.set_terrain(loc, terrain, terrain_type_data::BASE);
 		} else {
 			map_.set_terrain(loc, terrain);
@@ -574,7 +574,7 @@ void map_context::draw_terrain(
 		? terrain
 		: map_.get_terrain_info(terrain).terrain_with_default_base();
 
-	for(const map_location& loc : locs) {
+	for(const map_location& loc : locs){
 		draw_terrain_actual(full_terrain, loc, one_layer_only);
 	}
 }
@@ -587,14 +587,14 @@ void map_context::clear_changed_locations()
 
 void map_context::add_changed_location(const map_location& loc)
 {
-	if(!everything_changed()) {
+	if(!everything_changed()){
 		changed_locations_.insert(loc);
 	}
 }
 
 void map_context::add_changed_location(const std::set<map_location>& locs)
 {
-	if(!everything_changed()) {
+	if(!everything_changed()){
 		changed_locations_.insert(locs.begin(), locs.end());
 	}
 }
@@ -637,7 +637,7 @@ config map_context::to_config()
 
 	// the state of the previous scenario cfg
 	// if it exists, alter specific parts of it (sides, times, and editor events) rather than replacing it entirely
-	if(previous_cfg_) {
+	if(previous_cfg_){
 		scen = *previous_cfg_;
 	}
 
@@ -654,7 +654,7 @@ config map_context::to_config()
 				: scen.add_child("multiplayer");
 
 	scenario.remove_children("side");
-	scenario.remove_children("event", [](const config& cfg) {
+	scenario.remove_children("event", [](const config& cfg){
 		return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";
 	});
 	scenario.remove_children("time");
@@ -663,10 +663,10 @@ config map_context::to_config()
 	scenario["name"] = t_string(scenario_name_, current_textdomain);
 	scenario["description"] = t_string(scenario_description_, current_textdomain);
 
-	if(xp_mod_) {
+	if(xp_mod_){
 		scenario["experience_modifier"] = *xp_mod_;
 	}
-	if(victory_defeated_) {
+	if(victory_defeated_){
 		scenario["victory_when_enemies_defeated"] = *victory_defeated_;
 	}
 	scenario["random_start_time"] = random_time_;
@@ -688,17 +688,17 @@ config map_context::to_config()
 	config times = tod_manager_->to_config(current_textdomain);
 	times.remove_attribute("turn_at");
 	times.remove_attribute("it_is_a_new_turn");
-	if(scenario["turns"].to_int() == -1) {
+	if(scenario["turns"].to_int() == -1){
 		times.remove_attribute("turns");
 	} else {
 		scenario["turns"] = times["turns"];
 	}
 
-	for(const config& time : times.child_range("time")) {
+	for(const config& time : times.child_range("time")){
 		config& t = scenario.add_child("time");
 		t.append(time);
 	}
-	for(const config& time_area : times.child_range("time_area")) {
+	for(const config& time_area : times.child_range("time_area")){
 		config& t = event.add_child("time_area");
 		t.append(time_area);
 	}
@@ -707,8 +707,8 @@ config map_context::to_config()
 	labels_.write(event);
 
 	// [item]s
-	for(const auto& overlay_pair : overlays_) {
-		for(const overlay& o : overlay_pair.second) {
+	for(const auto& overlay_pair : overlays_){
+		for(const overlay& o : overlay_pair.second){
 			config& item = event.add_child("item");
 
 			// Write x,y location
@@ -723,14 +723,14 @@ config map_context::to_config()
 			item["name"].write_if_not_empty(t_string(o.name, current_textdomain));
 			item["team_name"].write_if_not_empty(o.team_name);
 			item["halo"].write_if_not_empty(o.halo);
-			if(o.submerge) {
+			if(o.submerge){
 				item["submerge"] = o.submerge;
 			}
 		}
 	}
 
 	// [music]s
-	for(const music_map::value_type& track : music_tracks_) {
+	for(const music_map::value_type& track : music_tracks_){
 		track.second.write(event, true);
 	}
 
@@ -738,7 +738,7 @@ config map_context::to_config()
 	preproc_map traits_map;
 	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map);
 
-	for(const auto& unit : units_) {
+	for(const auto& unit : units_){
 		config& u = event.add_child("unit");
 
 		unit.get_location().write(u);
@@ -748,20 +748,20 @@ config map_context::to_config()
 		u["name"].write_if_not_empty(t_string(unit.name(), current_textdomain));
 		u["facing"] = map_location::write_direction(unit.facing());
 
-		if(!boost::regex_match(unit.id(), boost::regex(".*-[0-9]+"))) {
+		if(!boost::regex_match(unit.id(), boost::regex(".*-[0-9]+"))){
 			u["id"] = unit.id();
 		}
 
-		if(unit.can_recruit()) {
+		if(unit.can_recruit()){
 			u["canrecruit"] = unit.can_recruit();
 		}
 
-		if(unit.unrenamable()) {
+		if(unit.unrenamable()){
 			u["unrenamable"] = unit.unrenamable();
 		}
 
 		config& mods = u.add_child("modifications");
-		if(unit.loyal()) {
+		if(unit.loyal()){
 			config trait_loyal = io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
 			mods.append(std::move(trait_loyal));
 		}
@@ -771,7 +771,7 @@ config map_context::to_config()
 	}
 
 	// [side]s
-	for(const auto& team : teams_) {
+	for(const auto& team : teams_){
 		config& side = scenario.add_child("side");
 
 		side["side"] = scenario.child_count("side");
@@ -782,7 +782,7 @@ config map_context::to_config()
 
 		side["team_name"] = team.team_name();
 		side["user_team_name"].write_if_not_empty(t_string(team.user_team_name(), current_textdomain));
-		if(team.recruits().size() > 0) {
+		if(team.recruits().size() > 0){
 			side["recruit"] = utils::join(team.recruits(), ",");
 			side["faction"] = "Custom";
 		}
@@ -794,7 +794,7 @@ config map_context::to_config()
 		side["gold"] = team.gold();
 		side["income"] = team.base_income();
 
-		for(const map_location& village : team.villages()) {
+		for(const map_location& village : team.villages()){
 			village.write(side.add_child("village"));
 		}
 	}
@@ -814,14 +814,14 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	// Create schedule config
 	config schedule;
 	try {
-		if (filesystem::file_exists(schedule_path)) {
+		if(filesystem::file_exists(schedule_path)){
 			/* If exists, read the schedule.cfg
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
 			editor_map["EDITOR"] = preproc_define("true");
 			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
 		}
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e){
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
@@ -833,7 +833,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	editor_times["id"] = schedule_id;
 	editor_times["name"] = t_string(schedule_name, current_textdomain);
 	config times = tod_manager_->to_config(current_textdomain);
-	for(const config& time : times.child_range("time")) {
+	for(const config& time : times.child_range("time")){
 		config& t = editor_times.add_child("time");
 		t.append(time);
 	}
@@ -856,12 +856,12 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 		wml_stream << "#endif";
 
-		if(!wml_stream.str().empty()) {
+		if(!wml_stream.str().empty()){
 			filesystem::write_file(schedule_path, wml_stream.str());
 			gui2::show_transient_message("", _("Time schedule saved."));
 		}
 
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e){
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
@@ -873,11 +873,11 @@ void map_context::save_scenario()
 {
 	assert(!is_embedded());
 
-	if(scenario_id_.empty()) {
+	if(scenario_id_.empty()){
 		scenario_id_ = filesystem::base_name(filename_, true);
 	}
 
-	if(scenario_name_.empty()) {
+	if(scenario_name_.empty()){
 		scenario_name_ = scenario_id_;
 	}
 
@@ -896,12 +896,12 @@ void map_context::save_scenario()
 			out.write(to_config());
 		}
 
-		if(!wml_stream.str().empty()) {
+		if(!wml_stream.str().empty()){
 			filesystem::write_file(get_filename(), wml_stream.str());
 		}
 
 		clear_modified();
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e){
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
@@ -918,7 +918,7 @@ void map_context::save_map()
 	std::string map_data = map_.write();
 
 	try {
-		if(!is_embedded()) {
+		if(!is_embedded()){
 			filesystem::write_file(get_filename(), map_data);
 		} else {
 			std::string map_string = filesystem::read_file(get_filename());
@@ -927,7 +927,7 @@ void map_context::save_map()
 			boost::smatch matched_map_data;
 
 			if(boost::regex_search(map_string, matched_map_data, rexpression_map_data,
-					   boost::regex_constants::match_not_dot_null)) {
+					   boost::regex_constants::match_not_dot_null)){
 				std::stringstream ss;
 				ss << matched_map_data[1];
 				ss << map_data;
@@ -942,7 +942,7 @@ void map_context::save_map()
 		add_to_recent_files();
 
 		clear_modified();
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e){
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);
@@ -953,7 +953,7 @@ void map_context::save_map()
 
 void map_context::set_map(const editor_map& map)
 {
-	if(map_.h() != map.h() || map_.w() != map.w()) {
+	if(map_.h() != map.h() || map_.w() != map.w()){
 		set_needs_reload();
 	} else {
 		set_needs_terrain_rebuild();
@@ -967,7 +967,7 @@ void map_context::perform_action(const editor_action& action)
 	LOG_ED << "Performing action " << action.get_id() << ": " << action.get_name() << ", actions count is "
 		   << action.get_instance_count();
 	auto undo = action.perform(*this);
-	if(actions_since_save_ < 0) {
+	if(actions_since_save_ < 0){
 		// set to a value that will make it impossible to get to zero, as at this point
 		// it is no longer possible to get back the original map state using undo/redo
 		actions_since_save_ = 1 + undo_stack_.size();
@@ -986,12 +986,12 @@ void map_context::perform_partial_action(const editor_action& action)
 {
 	LOG_ED << "Performing (partial) action " << action.get_id() << ": " << action.get_name() << ", actions count is "
 		   << action.get_instance_count();
-	if(!can_undo()) {
+	if(!can_undo()){
 		throw editor_logic_exception("Empty undo stack in perform_partial_action()");
 	}
 
 	editor_action_chain* undo_chain = dynamic_cast<editor_action_chain*>(last_undo_action());
-	if(undo_chain == nullptr) {
+	if(undo_chain == nullptr){
 		throw editor_logic_exception("Last undo action not a chain in perform_partial_action()");
 	}
 
@@ -1052,7 +1052,7 @@ void map_context::undo()
 {
 	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
-	if(can_undo()) {
+	if(can_undo()){
 		perform_action_between_stacks(undo_stack_, redo_stack_);
 		actions_since_save_--;
 	} else {
@@ -1066,7 +1066,7 @@ void map_context::redo()
 {
 	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
-	if(can_redo()) {
+	if(can_redo()){
 		perform_action_between_stacks(redo_stack_, undo_stack_);
 		++actions_since_save_;
 	} else {
@@ -1079,19 +1079,19 @@ void map_context::redo()
 void map_context::partial_undo()
 {
 	// callers should check for these conditions
-	if(!can_undo()) {
+	if(!can_undo()){
 		throw editor_logic_exception("Empty undo stack in partial_undo()");
 	}
 
 	editor_action_chain* undo_chain = dynamic_cast<editor_action_chain*>(last_undo_action());
-	if(undo_chain == nullptr) {
+	if(undo_chain == nullptr){
 		throw editor_logic_exception("Last undo action not a chain in partial undo");
 	}
 
 	// a partial undo performs the first action form the current action's action_chain that would be normally performed
 	// i.e. the *first* one.
 	const auto first_action_in_chain = undo_chain->pop_first_action();
-	if(undo_chain->empty()) {
+	if(undo_chain->empty()){
 		actions_since_save_--;
 		undo_stack_.pop_back();
 	}
@@ -1108,7 +1108,7 @@ void map_context::clear_undo_redo()
 
 void map_context::trim_stack(action_stack& stack)
 {
-	if(stack.size() > max_action_stack_size_) {
+	if(stack.size() > max_action_stack_size_){
 		stack.pop_front();
 	}
 }

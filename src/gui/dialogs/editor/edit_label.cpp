@@ -52,17 +52,17 @@ void editor_edit_label::pre_show()
 	add_to_tab_order(find_widget<text_box>("category", false, true));
 }
 
-void editor_edit_label::register_color_component(const std::string& widget_id, uint8_t color_t::* component) {
+void editor_edit_label::register_color_component(const std::string& widget_id, uint8_t color_t::* component){
 	register_integer(widget_id, true,
 					 std::bind(&editor_edit_label::load_color_component, this, component),
 					 std::bind(&editor_edit_label::save_color_component, this, component, std::placeholders::_1));
 }
 
-int editor_edit_label::load_color_component(uint8_t color_t::* component) {
+int editor_edit_label::load_color_component(uint8_t color_t::* component){
 	return color_store.*component;
 }
 
-void editor_edit_label::save_color_component(uint8_t color_t::* component, const int value) {
+void editor_edit_label::save_color_component(uint8_t color_t::* component, const int value){
 	color_store.*component = value;
 }
 } // namespace dialogs

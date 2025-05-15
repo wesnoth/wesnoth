@@ -179,7 +179,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_trig)
 
 	map_formula_callable variables;
 
-	for(std::size_t x = 0; x <= 360; ++x) {
+	for(std::size_t x = 0; x <= 360; ++x){
 		variables.add("x", variant(x));
 
 		BOOST_CHECK_EQUAL(
@@ -192,7 +192,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_trig)
 				.evaluate(variables).as_decimal()
 			, static_cast<int>(round(1000. * std::cos(x * pi / 180.))));
 
-		if(x % 90 == 0 && x % 180 != 0) {
+		if(x % 90 == 0 && x % 180 != 0){
 			BOOST_CHECK(
 				formula("tan(x)")
 				.evaluate(variables).is_null());

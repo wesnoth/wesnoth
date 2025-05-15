@@ -202,7 +202,7 @@ struct lexical_caster<
 			return true;
 		} else if(str == "0") {
 			return false;
-		} else if (fallback) {
+		} else if(fallback) {
 			return *fallback;
 		} else {
 			throw bad_lexical_cast();

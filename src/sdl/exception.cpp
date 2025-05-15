@@ -23,7 +23,7 @@ namespace sdl
 static std::string create_error(const std::string& operation,
 								const bool use_sdl_error)
 {
-	if(use_sdl_error) {
+	if(use_sdl_error){
 		return operation + " Error »" + SDL_GetError() + "«.\n";
 	} else {
 		return operation;

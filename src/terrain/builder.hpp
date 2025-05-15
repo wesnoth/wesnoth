@@ -184,7 +184,7 @@ public:
 		 *  The timing string is in the following format (expressed in EBNF)
 		 *
 		 *@verbatim
-		 *  <timing_string> ::= <timed_image> ( "," <timed_image> ) +
+		 *  <timing_string> ::= <timed_image> ("," <timed_image>) +
 		 *
 		 *  <timed_image> ::= <image_name> [ ":" <timing> ]
 		 *
@@ -581,7 +581,7 @@ private:
 	 *  A template rule will generate 6 rules, which are similar
 	 *  to the template, except that:
 	 *
-	 *  * The map of constraints ( [tile]s ) of this rule will be
+	 *  * The map of constraints ([tile]s) of this rule will be
 	 *    rotated by an angle, of 0 to 5 pi / 6
 	 *
 	 *  * On the rule which is rotated to 0rad, the template strings

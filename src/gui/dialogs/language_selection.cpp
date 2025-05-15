@@ -50,13 +50,13 @@ language_selection::language_selection()
 	const language_def& current_language = get_language();
 
 	// Build language list and completion filter
-	for(std::size_t i = 0; i < langs_.size(); ++i) {
-		if(langs_[i] == current_language) {
+	for(std::size_t i = 0; i < langs_.size(); ++i){
+		if(langs_[i] == current_language){
 			// Always show the initial language regardless of completion. If it's under
 			// threshold then it probably means we should start by showing all languages
 			// too, regardless of what the initial threshold setting is.
 			complete_langs_[i] = true;
-			if(langs_[i].percent < get_min_translation_percent()) {
+			if(langs_[i].percent < get_min_translation_percent()){
 				show_all = true;
 			}
 		} else {
@@ -75,7 +75,7 @@ void language_selection::shown_filter_callback()
 	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
 	listbox& list = find_widget<listbox>("language_list");
 
-	if(show_all_toggle.get_value_bool()) {
+	if(show_all_toggle.get_value_bool()){
 		list.set_row_shown(boost::dynamic_bitset<>{langs_.size(), ~0UL});
 	} else {
 		list.set_row_shown(complete_langs_);
@@ -93,7 +93,7 @@ void language_selection::pre_show()
 
 	const language_def& current_language = get_language();
 
-	for(const auto& lang : langs_) {
+	for(const auto& lang : langs_){
 		std::string lang_label = game_config::debug && !lang.localename.empty()
 			? lang.language + "\n" + markup::tag("small", markup::tag("tt", lang.localename))
 			: lang.language;
@@ -109,7 +109,7 @@ void language_selection::pre_show()
 			}},
 		});
 
-		if(lang == current_language) {
+		if(lang == current_language){
 			list.select_last_row();
 		}
 	}
@@ -121,7 +121,7 @@ void language_selection::pre_show()
 
 void language_selection::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		const int res = find_widget<listbox>("language_list")
 								.get_selected_row();
 

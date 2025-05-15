@@ -101,21 +101,21 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	loaders.reserve(num_loaders);
 
 #ifdef __cpp_lib_ranges_chunk // C++23 feature
-	for(auto span : file_paths | std::views::chunk(num_to_load)) {
+	for(auto span : file_paths | std::views::chunk(num_to_load)){
 		loaders.push_back(std::async(std::launch::async,
-			[span]() { return std::vector<sheet_element>(span.begin(), span.end()); }
+			[span](){ return std::vector<sheet_element>(span.begin(), span.end()); }
 		));
 	}
 #else
-	for(unsigned i = 0; i < num_loaders; ++i) {
-		loaders.push_back(std::async(std::launch::async, [&file_paths, &num_to_load, i]() {
+	for(unsigned i = 0; i < num_loaders; ++i){
+		loaders.push_back(std::async(std::launch::async, [&file_paths, &num_to_load, i](){
 			std::vector<sheet_element> res;
 #ifdef __cpp_lib_ranges
-			for(const fs::path& p : file_paths | std::views::drop(num_to_load * i) | std::views::take(num_to_load)) {
+			for(const fs::path& p : file_paths | std::views::drop(num_to_load * i) | std::views::take(num_to_load)){
 				res.emplace_back(p);
 			}
 #else
-			for(unsigned k = num_to_load * i; k < std::min<unsigned>(num_to_load * (i + 1u), file_paths.size()); ++k) {
+			for(unsigned k = num_to_load * i; k < std::min<unsigned>(num_to_load * (i + 1u), file_paths.size()); ++k){
 				res.emplace_back(file_paths[k]);
 			}
 #endif
@@ -128,7 +128,7 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	elements.reserve(file_paths.size());
 
 	// Wait for results, then combine them with the master list.
-	for(auto& loader : loaders) {
+	for(auto& loader : loaders){
 		auto res = loader.get();
 		std::move(res.begin(), res.end(), std::back_inserter(elements));
 	}
@@ -136,10 +136,10 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	// Sort the surfaces by area, largest last.
 	// TODO: should we use plain sort? Output sheet seems ever so slightly smaller when sort is not stable.
 	std::stable_sort(elements.begin(), elements.end(),
-		[](const auto& lhs, const auto& rhs) { return lhs.surf.area() < rhs.surf.area(); });
+		[](const auto& lhs, const auto& rhs){ return lhs.surf.area() < rhs.surf.area(); });
 
 	const unsigned total_area = std::accumulate(elements.begin(), elements.end(), 0,
-		[](const int val, const auto& s) { return val + s.surf.area(); });
+		[](const int val, const auto& s){ return val + s.surf.area(); });
 
 	const unsigned side_length = static_cast<unsigned>(std::sqrt(total_area) * 1.3);
 
@@ -152,11 +152,11 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	// Calculate the destination rects for the images. This uses the Shelf Next Fit algorithm.
 	// Our method forgoes the orientation consideration and works top-down instead of bottom-up.
 	//
-	for(auto& s : elements) {
+	for(auto& s : elements){
 		current_row_max_height = std::max<unsigned>(current_row_max_height, s.src.h);
 
 		// If we can't fit this element without getting cut off, move to the next line.
-		if(static_cast<unsigned>(origin.x + s.src.w) > side_length) {
+		if(static_cast<unsigned>(origin.x + s.src.w) > side_length){
 			// Reset the origin.
 			origin.x = 0;
 			origin.y += current_row_max_height;
@@ -189,7 +189,7 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	config_writer mapping_data{*out, compression::format::gzip};
 
 	// Assemble everything
-	for(auto& s : elements) {
+	for(auto& s : elements){
 		sdl_blit(s.surf, &s.src, res, &s.dst);
 		mapping_data.write_child("image", s.to_config());
 	}
@@ -200,24 +200,24 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 void handle_dir_contents(const fs::path& path)
 {
 	std::vector<fs::path> files_found;
-	for(const auto& entry : fs::directory_iterator{path}) {
-		if(entry.is_directory()) {
+	for(const auto& entry : fs::directory_iterator{path}){
+		if(entry.is_directory()){
 			handle_dir_contents(entry);
-		} else if(entry.is_regular_file()) {
+		} else if(entry.is_regular_file()){
 			// TODO: should we have a better is-image check, and should we include jpgs?
 			// Right now all our sprites are pngs.
-			if(auto path = entry.path(); path.extension() == ".png" && path.stem() != "_sheet") {
+			if(auto path = entry.path(); path.extension() == ".png" && path.stem() != "_sheet"){
 				files_found.push_back(std::move(path));
 			}
 		}
 	}
 
-	if(!files_found.empty()) {
+	if(!files_found.empty()){
 		try {
 			// Allows relative paths to resolve correctly. This needs to be set *after* recursive
 			// directory handling or else the path will be wrong when returning to the parent.
 			fs::current_path(path);
-		} catch(const fs::filesystem_error&) {
+		} catch(const fs::filesystem_error&){
 			return;
 		}
 
@@ -229,14 +229,14 @@ void handle_dir_contents(const fs::path& path)
 
 void build_spritesheet_from(const std::string& entry_point)
 {
-	const utils::ms_optimer timer([&](const auto& timer) {
+	const utils::ms_optimer timer([&](const auto& timer){
 		PLAIN_LOG << "Spritesheet generation of '" << entry_point << "' took: " << timer;
 	});
 
-	if(auto path = filesystem::get_binary_file_location("images", entry_point)) {
+	if(auto path = filesystem::get_binary_file_location("images", entry_point)){
 		try {
 			handle_dir_contents(*path);
-		} catch(const fs::filesystem_error& e) {
+		} catch(const fs::filesystem_error& e){
 			PLAIN_LOG << "Filesystem Error generating spritesheet: " << e.what();
 		}
 	} else {

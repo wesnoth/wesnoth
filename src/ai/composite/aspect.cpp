@@ -46,13 +46,13 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 aspect::~aspect()
 	{
 		manager& manager = manager::get_singleton();
-		if (invalidate_on_turn_start_) {
+		if(invalidate_on_turn_start_){
 			manager.remove_turn_started_observer(this);
 		}
-		if (invalidate_on_tod_change_) {
+		if(invalidate_on_tod_change_){
 			manager.remove_tod_changed_observer(this);
 		}
-		if (invalidate_on_gamestate_change_) {
+		if(invalidate_on_gamestate_change_){
 			manager.remove_gamestate_observer(this);
 		}
 	}
@@ -70,13 +70,13 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 {
 	manager& manager = manager::get_singleton();
 
-	if (invalidate_on_turn_start_) {
+	if(invalidate_on_turn_start_){
 		manager.remove_turn_started_observer(this);
 	}
-	if (invalidate_on_tod_change_) {
+	if(invalidate_on_tod_change_){
 		manager.remove_tod_changed_observer(this);
 	}
-	if (invalidate_on_gamestate_change_) {
+	if(invalidate_on_gamestate_change_){
 		manager.remove_gamestate_observer(this);
 	}
 
@@ -91,13 +91,13 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	name_ = cfg["name"].str();
 	id_ = cfg["id"].str();
 	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]";
-	if (invalidate_on_turn_start_) {
+	if(invalidate_on_turn_start_){
 		manager.add_turn_started_observer(this);
 	}
-	if (invalidate_on_tod_change_) {
+	if(invalidate_on_tod_change_){
 		manager.add_tod_changed_observer(this);
 	}
-	if (invalidate_on_gamestate_change_) {
+	if(invalidate_on_gamestate_change_){
 		manager.add_gamestate_observer(this);
 	}
 	return true;
@@ -109,10 +109,10 @@ config aspect::to_config() const
 	cfg["invalidate_on_turn_start"] = invalidate_on_turn_start_;
 	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_;
 	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_;
-	if (!time_of_day_.empty()) {
+	if(!time_of_day_.empty()){
 		cfg["time_of_day"] = time_of_day_;
 	}
-	if (!turns_.empty()) {
+	if(!turns_.empty()){
 		cfg["turns"] = turns_;
 	}
 	cfg["engine"] = engine_;
@@ -147,9 +147,9 @@ known_aspect::~known_aspect()
 
 std::string lua_aspect_visitor::quote_string(const std::string& s)
 {
-	if (s.find_first_of('"') == std::string::npos) {
+	if(s.find_first_of('"') == std::string::npos){
 		return '"' + s + '"';
-	} else if (s.find_first_of("'") == std::string::npos) {
+	} else if(s.find_first_of("'") == std::string::npos){
 		return "'" + s + "'";
 	} else {
 		return "[=====[" + s + "]=====]";
@@ -159,7 +159,7 @@ std::string lua_aspect_visitor::quote_string(const std::string& s)
 // This is defined in the source file so that it can easily access the logger
 bool aspect_factory::is_duplicate(const std::string& name)
 {
-	if (get_list().find(name) != get_list().end()) {
+	if(get_list().find(name) != get_list().end()){
 		ERR_AI_ASPECT << "Error: Attempt to double-register aspect " << name;
 		return true;
 	}

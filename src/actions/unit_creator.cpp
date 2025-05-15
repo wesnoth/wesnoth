@@ -112,51 +112,51 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	bool pass = cfg["passable"].to_bool(false);
 	bool vacant = !cfg["overwrite"].to_bool(false);
 
-	for (const std::string& place : placements)
+	for(const std::string& place : placements)
 	{
 		map_location loc;
 
-		if ( place == "recall" ) {
+		if(place == "recall"){
 			return map_location::null_location();
 		}
 
-		else if ( place == "leader"  ||  place == "leader_passable" ) {
+		else if(place == "leader"  ||  place == "leader_passable"){
 			unit_map::const_iterator leader = board_->units().find_leader(team_.side());
 			//todo: take 'leader in recall list' possibility into account
-			if (leader.valid()) {
+			if(leader.valid()){
 				loc = leader->get_location();
 			} else {
 				loc = start_pos_;
 			}
-			if(place == "leader_passable") {
+			if(place == "leader_passable"){
 				deprecated_message("placement=leader_passable", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=leader and passable=yes instead");
 				pass = true;
 			}
 		}
 
 		// "map", "map_passable", and "map_overwrite".
-		else if(place == "map"  ||  place == "map_passable" || place == "map_overwrite") {
-			if(cfg.has_attribute("location_id")) {
+		else if(place == "map"  ||  place == "map_passable" || place == "map_overwrite"){
+			if(cfg.has_attribute("location_id")){
 				loc = board_->map().special_location(cfg["location_id"]);
 			}
-			if(!loc.valid()) {
+			if(!loc.valid()){
 				loc = map_location(cfg, resources::gamedata);
 			}
-			if(place == "map_passable") {
+			if(place == "map_passable"){
 				deprecated_message("placement=map_passable", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=map and passable=yes instead");
 				pass = true;
-			} else if(place == "map_overwrite") {
+			} else if(place == "map_overwrite"){
 				deprecated_message("placement=map_overwrite", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=map and overwrite=yes instead");
 				vacant = false;
 			}
 		}
 
-		if(loc.valid() && board_->map().on_board(loc)) {
-			if(vacant) {
+		if(loc.valid() && board_->map().on_board(loc)){
+			if(vacant){
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : nullptr, nullptr, board_);
 			}
-			if(loc.valid() && board_->map().on_board(loc)) {
+			if(loc.valid() && board_->map().on_board(loc)){
 				return loc;
 			}
 		}
@@ -179,17 +179,17 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
 
-	if ( !recall_list_element ) {
+	if(!recall_list_element){
 		//make the new unit
 		unit_ptr new_unit = unit::create(temp_cfg, true, vcfg);
 		map_location loc = find_location(temp_cfg, new_unit.get());
-		if ( loc.valid() ) {
+		if(loc.valid()){
 			//add the new unit to map
 			board_->units().replace(loc, new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side();
 			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
-		else if ( add_to_recall_ ) {
+		else if(add_to_recall_){
 			//add to recall list
 			team_.recall_list().add(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side();
@@ -198,14 +198,14 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	} else {
 		//get unit from recall list
 		map_location loc = find_location(temp_cfg, recall_list_element.get());
-		if ( loc.valid() ) {
+		if(loc.valid()){
 			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id;
 			//if id is not empty, delete units with this ID from recall list
-			team_.recall_list().erase_if_matches_id( id);
+			team_.recall_list().erase_if_matches_id(id);
 			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
-		else if ( add_to_recall_ ) {
+		else if(add_to_recall_){
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id;
 			return;
 		}
@@ -216,32 +216,32 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 void unit_creator::post_create(const map_location &loc, const unit &new_unit, bool anim, bool fire_event)
 {
 
-	if (discover_) {
+	if(discover_){
 		prefs::get().encountered_units().insert(new_unit.type_id());
 	}
 
 	bool show = show_ && (display::get_singleton() !=nullptr) && !display::get_singleton()->fogged(loc);
 	bool animate = show && anim;
 
-	if (get_village_) {
+	if(get_village_){
 		assert(resources::gameboard);
-		if (board_->map().is_village(loc)) {
+		if(board_->map().is_village(loc)){
 			actions::get_village(loc, new_unit.side());
 		}
 	}
 
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
-	if (fire_event && resources::lua_kernel != nullptr) {
+	if(fire_event && resources::lua_kernel != nullptr){
 		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
-	if (display::get_singleton()!=nullptr) {
+	if(display::get_singleton()!=nullptr){
 
-		if (invalidate_ ) {
+		if(invalidate_){
 			display::get_singleton()->invalidate(loc);
 		}
 
-		if (animate) {
+		if(animate){
 			unit_display::unit_recruited(loc);
 		}
 	}

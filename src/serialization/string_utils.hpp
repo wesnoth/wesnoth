@@ -40,9 +40,9 @@ struct res_compare {
 	/** Returns whether a < b, considering res_order. */
 	bool operator()(const std::string& a, const std::string& b) const {
 		for(const std::string& r : res_order) {
-			if (b == r)	// this means b <= a, so a < b is false
+			if(b == r)	// this means b <= a, so a < b is false
 				return false;
-			if (a == r)
+			if(a == r)
 				return true;
 		}
 		return a < b;	// fallback only reached when neither a nor b occur in res_order

@@ -73,7 +73,7 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 
 void menu_button::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -90,7 +90,7 @@ unsigned menu_button::get_state() const
 
 void menu_button::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -117,7 +117,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event, b
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
-	if(window) {
+	if(window){
 		window->mouse_capture();
 	}
 
@@ -143,12 +143,12 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
-	if(droplist.show()) {
+	if(droplist.show()){
 		const int selected = droplist.selected_item();
 
 		// Safety check. If the user clicks a selection in the dropdown and moves their mouse away too
 		// quickly, selected_ could be set to -1. This returns in that case, preventing crashes.
-		if(selected < 0) {
+		if(selected < 0){
 			return;
 		}
 
@@ -163,7 +163,7 @@ void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool&
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
-	if(selected_ > 0) {
+	if(selected_ > 0){
 		set_selected(selected_ - 1);
 	}
 
@@ -175,7 +175,7 @@ void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, boo
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
-	if(selected_ < values_.size() - 1) {
+	if(selected_ < values_.size() - 1){
 		set_selected(selected_ + 1);
 	}
 
@@ -187,7 +187,7 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	assert(selected < values.size());
 	assert(selected_ < values_.size());
 
-	if(values[selected]["label"] != values_[selected_]["label"]) {
+	if(values[selected]["label"] != values_[selected_]["label"]){
 		queue_redraw();
 	}
 
@@ -202,14 +202,14 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 	assert(selected < values_.size());
 	assert(selected_ < values_.size());
 
-	if(selected != selected_) {
+	if(selected != selected_){
 		queue_redraw();
 	}
 
 	selected_ = selected;
 
 	set_label(values_[selected_]["label"]);
-	if (fire_event) {
+	if(fire_event){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -243,7 +243,7 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, options_()
 {
-	for(const auto& option : cfg.child_range("option")) {
+	for(const auto& option : cfg.child_range("option")){
 		options_.push_back(option);
 	}
 }
@@ -252,7 +252,7 @@ std::unique_ptr<widget> builder_menu_button::build() const
 {
 	auto widget = std::make_unique<menu_button>(*this);
 
-	if(!options_.empty()) {
+	if(!options_.empty()){
 		widget->set_values(options_);
 	}
 

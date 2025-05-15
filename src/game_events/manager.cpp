@@ -72,19 +72,19 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 		handler["priority"].to_double(0.),
 		is_menu_item
 	);
-	if(new_handler.valid()) {
+	if(new_handler.valid()){
 		new_handler->read_filters(handler);
 
 		// Strip out anything that's used by the event system itself.
 		config args;
-		for(const auto& [attr, val] : handler.attribute_range()) {
-			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr == "priority" || attr.compare(0, 6, "filter") == 0) {
+		for(const auto& [attr, val] : handler.attribute_range()){
+			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr == "priority" || attr.compare(0, 6, "filter") == 0){
 				continue;
 			}
 			args[attr] = val;
 		}
-		for(auto [key, cfg] : handler.all_children_view()) {
-			if(key.compare(0, 6, "filter") != 0) {
+		for(auto [key, cfg] : handler.all_children_view()){
+			if(key.compare(0, 6, "filter") != 0){
 				args.add_child(key, cfg);
 			}
 		}
@@ -132,11 +132,11 @@ manager::manager()
 
 void manager::read_scenario(const config& scenario_cfg, game_lua_kernel& lk)
 {
-	for(const config& ev : scenario_cfg.child_range("event")) {
+	for(const config& ev : scenario_cfg.child_range("event")){
 		add_event_handler_from_wml(ev, lk);
 	}
 
-	for(const std::string& id : utils::split(scenario_cfg["unit_wml_ids"])) {
+	for(const std::string& id : utils::split(scenario_cfg["unit_wml_ids"])){
 		unit_wml_ids_.insert(id);
 	}
 
@@ -152,16 +152,16 @@ manager::~manager()
 
 void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type)
 {
-	if(!type.empty()) {
-		if(std::find(unit_wml_ids_.begin(), unit_wml_ids_.end(), type) != unit_wml_ids_.end()) {
+	if(!type.empty()){
+		if(std::find(unit_wml_ids_.begin(), unit_wml_ids_.end(), type) != unit_wml_ids_.end()){
 			return;
 		}
 
 		unit_wml_ids_.insert(type);
 	}
 
-	for(const config& new_ev : cfgs) {
-		if(type.empty() && new_ev["id"].empty()) {
+	for(const config& new_ev : cfgs){
+		if(type.empty() && new_ev["id"].empty()){
 			WRN_NG << "attempt to add an [event] with empty id= from [unit], ignoring ";
 			continue;
 		}
@@ -172,8 +172,8 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 
 void manager::write_events(config& cfg, bool include_nonserializable) const
 {
-	for(const handler_ptr& eh : event_handlers_->get_active()) {
-		if(!eh || eh->is_menu_item()) {
+	for(const handler_ptr& eh : event_handlers_->get_active()){
+		if(!eh || eh->is_menu_item()){
 			continue;
 		}
 
@@ -185,7 +185,7 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 		// however, assert. That means something went wrong with event list cleanup.
 		// Also silently skip them when including nonserializable events, which can happen
 		// if viewing the inspector with :inspect after removing an event from the Lua console.
-		if(eh->disabled() && (is_event_running() || include_nonserializable)) {
+		if(eh->disabled() && (is_event_running() || include_nonserializable)){
 			continue;
 		} else {
 			assert(!eh->disabled());
@@ -193,7 +193,7 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 
 		config event_cfg;
 		eh->write_config(event_cfg, include_nonserializable);
-		if(!event_cfg.empty()) {
+		if(!event_cfg.empty()){
 			cfg.add_child("event", std::move(event_cfg));
 		}
 	}
@@ -213,24 +213,24 @@ void manager::execute_on_events(const std::string& event_id, const manager::even
 		// Ensure that event handlers won't be cleaned up while we're iterating them.
 		event_handler_list_lock lock;
 
-		for (unsigned i = 0; i < active_handlers.size(); ++i) {
+		for(unsigned i = 0; i < active_handlers.size(); ++i){
 			handler_ptr handler = nullptr;
 
 			try {
 				handler = active_handlers.at(i);
 			}
-			catch (const std::out_of_range&) {
+			catch (const std::out_of_range&){
 				continue;
 			}
 
 			// Shouldn't happen, but we're just being safe.
-			if (!handler || handler->disabled()) {
+			if(!handler || handler->disabled()){
 				continue;
 			}
 
 			// Could be more than one.
-			for(const std::string& name : handler->names(gd)) {
-				if(standardized_event_id == name) {
+			for(const std::string& name : handler->names(gd)){
+				if(standardized_event_id == name){
 					func(*this, handler);
 					break;
 				}
@@ -239,7 +239,7 @@ void manager::execute_on_events(const std::string& event_id, const manager::even
 	}
 
 	// Clean up expired ptrs. This saves us effort later since it ensures every ptr is valid.
-	if(event_handler_list_lock::none()) {
+	if(event_handler_list_lock::none()){
 		event_handlers_->clean_up_expired_handlers(standardized_event_id);
 	}
 }

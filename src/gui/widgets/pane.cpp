@@ -60,12 +60,12 @@ struct pane_implementation
 		/*
 		 * First test whether the mouse is at the pane.
 		 */
-		if(pane->widget::find_at(coordinate, must_be_active) != pane) {
+		if(pane->widget::find_at(coordinate, must_be_active) != pane){
 			return nullptr;
 		}
 
-		for(auto& item : pane->items_) {
-			if(item.item_grid->get_visible() == widget::visibility::invisible) {
+		for(auto& item : pane->items_){
+			if(item.item_grid->get_visible() == widget::visibility::invisible){
 				continue;
 			}
 
@@ -73,7 +73,7 @@ struct pane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			if(item.item_grid->get_rectangle().contains(coordinate)) {
+			if(item.item_grid->get_rectangle().contains(coordinate)){
 				return item.item_grid->find_at(coordinate, must_be_active);
 			}
 		}
@@ -91,8 +91,8 @@ struct pane_implementation
 	static utils::const_clone_ptr<grid, W>
 	get_grid(W pane, const unsigned id)
 	{
-		for(auto& item : pane->items_) {
-			if(item.id == id) {
+		for(auto& item : pane->items_){
+			if(item.id == id){
 				return item.item_grid.get();
 			}
 		}
@@ -125,7 +125,7 @@ unsigned pane::create_item(const widget_data& item_data,
 	{
 		styled_widget* control = item.item_grid.get()->find_widget<styled_widget>(data.first, false, false);
 
-		if(control) {
+		if(control){
 			control->set_members(data.second);
 		}
 	}
@@ -158,7 +158,7 @@ void pane::layout_initialize(const bool full_initialization)
 
 	for(auto & item : items_)
 	{
-		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+		if(item.item_grid->get_visible() != widget::visibility::invisible){
 			item.item_grid->layout_initialize(full_initialization);
 		}
 	}
@@ -170,7 +170,7 @@ void pane::impl_draw_children()
 
 	for(auto & item : items_)
 	{
-		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+		if(item.item_grid->get_visible() != widget::visibility::invisible){
 			item.item_grid->draw_children();
 		}
 	}
@@ -243,7 +243,7 @@ void pane::place_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.item_grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
@@ -259,7 +259,7 @@ void pane::set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.item_grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
@@ -275,12 +275,12 @@ void pane::place_or_set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.item_grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
 		const point origin = placer_->get_origin(index);
-		if(item.item_grid->get_size() != item.item_grid->get_best_size()) {
+		if(item.item_grid->get_size() != item.item_grid->get_best_size()){
 			item.item_grid->place(origin, item.item_grid->get_best_size());
 		} else {
 			item.item_grid->set_origin(origin);
@@ -296,7 +296,7 @@ void pane::prepare_placement() const
 
 	for(const auto & item : items_)
 	{
-		if(item.item_grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
@@ -311,11 +311,11 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	widget* wgt = dynamic_cast<widget*>(&dispatcher);
-	if(wgt) {
+	if(wgt){
 		for(auto & item : items_)
 		{
-			if(item.item_grid->has_widget(*wgt)) {
-				if(item.item_grid->get_visible() != widget::visibility::invisible) {
+			if(item.item_grid->has_widget(*wgt)){
+				if(item.item_grid->get_visible() != widget::visibility::invisible){
 
 					/*
 					 * This time we call init layout but also the linked widget

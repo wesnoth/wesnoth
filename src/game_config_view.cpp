@@ -26,21 +26,21 @@ static lg::log_domain log_config("config");
 config_array_view game_config_view::child_range(config_key_type key) const
 {
 	config_array_view res;
-	if(cfgs_.size() <= 1 || key != "terrain_graphics") {
-		for(const config& cfg : cfgs_) {
-			for (const config& child : cfg.child_range(key)) {
+	if(cfgs_.size() <= 1 || key != "terrain_graphics"){
+		for(const config& cfg : cfgs_){
+			for(const config& child : cfg.child_range(key)){
 				res.push_back(child);
 			}
 		}
 	}
 	else {
 		//use mainline [terrain_graphics] last. cfgs_.front() is the main game configs while the later ones are add-ons.
-		for(const config& cfg : boost::make_iterator_range(cfgs_.begin() + 1, cfgs_.end())) {
-			for (const config& child : cfg.child_range(key)) {
+		for(const config& cfg : boost::make_iterator_range(cfgs_.begin() + 1, cfgs_.end())){
+			for(const config& child : cfg.child_range(key)){
 				res.push_back(child);
 			}
 		}
-		for (const config& child : cfgs_.front().get().child_range(key)) {
+		for(const config& child : cfgs_.front().get().child_range(key)){
 			res.push_back(child);
 		}
 	}
@@ -49,8 +49,8 @@ config_array_view game_config_view::child_range(config_key_type key) const
 
 optional_const_config game_config_view::find_child(config_key_type key, const std::string &name, const std::string &value) const
 {
-	for(const config& cfg : cfgs_) {
-		if(optional_const_config res = cfg.find_child(key, name, value)) {
+	for(const config& cfg : cfgs_){
+		if(optional_const_config res = cfg.find_child(key, name, value)){
 			return res;
 		}
 	}
@@ -61,7 +61,7 @@ optional_const_config game_config_view::find_child(config_key_type key, const st
 const config& game_config_view::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
 {
 	auto res = find_child(key, name, value);
-	if(res) {
+	if(res){
 		return *res;
 	}
 	throw config::error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
@@ -69,8 +69,8 @@ const config& game_config_view::find_mandatory_child(config_key_type key, const 
 
 const config& game_config_view::mandatory_child(config_key_type key) const
 {
-	for(const config& cfg : cfgs_) {
-		if(const auto res = cfg.optional_child(key)) {
+	for(const config& cfg : cfgs_){
+		if(const auto res = cfg.optional_child(key)){
 			return res.value();
 		}
 	}
@@ -79,8 +79,8 @@ const config& game_config_view::mandatory_child(config_key_type key) const
 
 optional_const_config game_config_view::optional_child(config_key_type key) const
 {
-	for(const config& cfg : cfgs_) {
-		if(const auto res = cfg.optional_child(key)) {
+	for(const config& cfg : cfgs_){
+		if(const auto res = cfg.optional_child(key)){
 			return res.value();
 		}
 	}
@@ -90,8 +90,8 @@ optional_const_config game_config_view::optional_child(config_key_type key) cons
 
 const config& game_config_view::child_or_empty(config_key_type key) const
 {
-	for(const config& cfg : cfgs_) {
-		if(const auto res = cfg.optional_child(key)) {
+	for(const config& cfg : cfgs_){
+		if(const auto res = cfg.optional_child(key)){
 			return res.value();
 		}
 	}
@@ -102,9 +102,9 @@ const config& game_config_view::child_or_empty(config_key_type key) const
 game_config_view game_config_view::merged_children_view(config_key_type key) const
 {
 	game_config_view res;
-	for(const config& cfg : cfgs_) {
+	for(const config& cfg : cfgs_){
 
-		for(const config& child : cfg.child_range(key)) {
+		for(const config& child : cfg.child_range(key)){
 			res.cfgs_.push_back(child);
 		}
 	}

@@ -75,7 +75,7 @@ multiline_text::multiline_text(const implementation::builder_multiline_text& bui
 
 void multiline_text::set_link_aware(bool link_aware)
 {
-	if(link_aware != link_aware_) {
+	if(link_aware != link_aware_){
 		link_aware_ = link_aware;
 		update_canvas();
 		queue_redraw();
@@ -112,9 +112,9 @@ void multiline_text::update_canvas()
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
 
-	if(edit_length == 0) {
+	if(edit_length == 0){
 		// Do nothing.
-	} else if(edit_length > 0) {
+	} else if(edit_length > 0){
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
 	} else {
@@ -125,10 +125,10 @@ void multiline_text::update_canvas()
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
-	if(length == 0) {
+	if(length == 0){
 		start_offset = start;
 		end_offset = start_offset;
-	} else if(length > 0) {
+	} else if(length > 0){
 		start_offset = start;
 		end_offset = start + length;
 	} else {
@@ -141,7 +141,7 @@ void multiline_text::update_canvas()
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 	unsigned byte_pos = start + length;
-	if (get_use_markup() && (start + length > utf8::size(plain_text()) + 1)) {
+	if(get_use_markup() && (start + length > utf8::size(plain_text()) + 1)){
 		byte_pos = utf8::size(plain_text());
 	}
 	const point cpos = get_cursor_pos_from_index(byte_pos);
@@ -176,11 +176,11 @@ void multiline_text::update_canvas()
 
 void multiline_text::delete_char(const bool before_cursor)
 {
-	if(!is_editable()) {
+	if(!is_editable()){
 		return;
 	}
 
-	if(before_cursor) {
+	if(before_cursor){
 		set_cursor(get_selection_start() - 1, false);
 	}
 
@@ -191,7 +191,7 @@ void multiline_text::delete_char(const bool before_cursor)
 
 void multiline_text::delete_selection()
 {
-	if(get_selection_length() == 0 || (!is_editable()) ) {
+	if(get_selection_length() == 0 || (!is_editable())){
 		return;
 	}
 
@@ -199,7 +199,7 @@ void multiline_text::delete_selection()
 	// This makes the rest of the algorithms easier.
 	int len = get_selection_length();
 	unsigned start = get_selection_start();
-	if(len < 0) {
+	if(len < 0){
 		len = -len;
 		start -= len;
 	}
@@ -224,7 +224,7 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 
 	const auto& [offset, line] = get_column_line(mouse - text_offset);
 
-	if(offset < 0) {
+	if(offset < 0){
 		return;
 	}
 
@@ -235,12 +235,12 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 	dragging_ |= start_selection;
 }
 
-unsigned multiline_text::get_line_end_offset(unsigned line_no) {
+unsigned multiline_text::get_line_end_offset(unsigned line_no){
 	const auto line = get_line(line_no);
 	return (line->start_index + line->length);
 }
 
-unsigned multiline_text::get_line_start_offset(unsigned line_no) {
+unsigned multiline_text::get_line_start_offset(unsigned line_no){
 	return get_line(line_no)->start_index;
 }
 
@@ -272,12 +272,12 @@ void multiline_text::update_offsets()
 
 bool multiline_text::history_up()
 {
-	if(!history_.get_enabled()) {
+	if(!history_.get_enabled()){
 		return false;
 	}
 
 	const std::string str = history_.up(get_value());
-	if(!str.empty()) {
+	if(!str.empty()){
 		set_value(str);
 	}
 	return true;
@@ -285,12 +285,12 @@ bool multiline_text::history_up()
 
 bool multiline_text::history_down()
 {
-	if(!history_.get_enabled()) {
+	if(!history_.get_enabled()){
 		return false;
 	}
 
 	const std::string str = history_.down(get_value());
-	if(!str.empty()) {
+	if(!str.empty()){
 		set_value(str);
 	}
 	return true;
@@ -303,8 +303,8 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 		return;
 	}
 
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
+	if(modifier & KMOD_CTRL){
+		if(!(modifier & KMOD_SHIFT)){
 			handled = history_up();
 		} else {
 			handled = history_down();
@@ -317,7 +317,7 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 
 void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 {
-	if (is_editable() && !(modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+	if(is_editable() && !(modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))){
 		insert_char("\n");
 		handled = true;
 	}
@@ -340,7 +340,7 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 	unsigned offset = get_selection_start();
 	const unsigned line_num = get_line_number(offset);
 
-	if (line_num == get_lines_count()-1) {
+	if(line_num == get_lines_count()-1){
 		return;
 	}
 
@@ -350,7 +350,7 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	offset = std::min(offset - line_start + next_line_start, next_line_end) + get_selection_length();
 
-	if (offset <= get_length()) {
+	if(offset <= get_length()){
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 
@@ -367,7 +367,7 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 	unsigned offset = get_selection_start();
 	const unsigned line_num = get_line_number(offset);
 
-	if (line_num == 0) {
+	if(line_num == 0){
 		return;
 	}
 
@@ -378,7 +378,7 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 	offset = std::min(offset - line_start + prev_line_start, prev_line_end) + get_selection_length();
 
 	/* offset is unsigned int */
-	if (offset <= get_length()) {
+	if(offset <= get_length()){
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 
@@ -392,15 +392,15 @@ void multiline_text::signal_handler_mouse_motion(const event::ui_event event,
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".";
 
-	if(dragging_) {
+	if(dragging_){
 		handle_mouse_selection(coordinate, false);
 	} else {
-		if(!get_link_aware()) {
+		if(!get_link_aware()){
 			return; // without marking event as "handled"
 		}
 
 		point mouse = coordinate - get_origin();
-		if (!get_label_link(mouse).empty()) {
+		if(!get_label_link(mouse).empty()){
 			cursor::set(cursor::HYPERLINK);
 		} else {
 			cursor::set(cursor::IBEAM);
@@ -420,13 +420,13 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 
 	point mouse_pos = get_mouse_position();
 
-	if (get_link_aware()) {
+	if(get_link_aware()){
 		std::string link = get_label_link(mouse_pos - get_origin());
 		DBG_GUI_E << "Clicked Link:\"" << link << "\"";
 
-		if (!link.empty()) {
-			if (desktop::open_object_is_supported()) {
-				if(show_message(_("Open link?"), link, dialogs::message::yes_no_buttons) == gui2::retval::OK) {
+		if(!link.empty()){
+			if(desktop::open_object_is_supported()){
+				if(show_message(_("Open link?"), link, dialogs::message::yes_no_buttons) == gui2::retval::OK){
 					desktop::open_object(link);
 				}
 			} else {
@@ -509,7 +509,7 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
 
-	if(!history.empty()) {
+	if(!history.empty()){
 		widget->set_history(history);
 	}
 

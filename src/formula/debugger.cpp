@@ -137,12 +137,12 @@ const std::list<debug_info>& formula_debugger::get_execution_trace() const
 
 void formula_debugger::check_breakpoints()
 {
-	for(std::list<breakpoint_ptr>::iterator b = breakpoints_.begin(); b != breakpoints_.end(); ++b) {
-		if ((*b)->is_break_now()){
+	for(std::list<breakpoint_ptr>::iterator b = breakpoints_.begin(); b != breakpoints_.end(); ++b){
+		if((*b)->is_break_now()){
 			current_breakpoint_ = (*b);
 			show_gui();
 			current_breakpoint_ = breakpoint_ptr();
-			if ((*b)->is_one_time_only()) {
+			if((*b)->is_one_time_only()){
 				b = breakpoints_.erase(b);
 			}
 			break;
@@ -152,11 +152,11 @@ void formula_debugger::check_breakpoints()
 
 void formula_debugger::show_gui()
 {
-	if (game_display::get_singleton() == nullptr) {
+	if(game_display::get_singleton() == nullptr){
 		WRN_FDB << "skipping WFL debug window due to nullptr gui";
 		return;
 	}
-	if (game_config::debug) {
+	if(game_config::debug){
 		gui2::dialogs::formula_debugger::display(*this);
 	} else {
 		WRN_FDB << "skipping WFL debug window because :debug is not enabled";
@@ -271,7 +271,7 @@ public:
 	virtual bool is_break_now() const
 	{
 		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
-		if ((call_stack.size() == 1) && (call_stack.front().evaluated()) ) {
+		if((call_stack.size() == 1) && (call_stack.front().evaluated())){
 			return true;
 		}
 		return false;
@@ -293,7 +293,7 @@ public:
 	virtual bool is_break_now() const
 	{
 		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
-		if (call_stack.empty() || call_stack.back().evaluated()) {
+		if(call_stack.empty() || call_stack.back().evaluated()){
 			return false;
 		}
 
@@ -316,11 +316,11 @@ public:
 	virtual bool is_break_now() const
 	{
 		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
-		if (call_stack.empty() || call_stack.back().evaluated()) {
+		if(call_stack.empty() || call_stack.back().evaluated()){
 			return false;
 		}
 
-		if (call_stack.size() == level_) {
+		if(call_stack.size() == level_){
 			return true;
 		}
 		return false;
@@ -344,10 +344,10 @@ public:
 	virtual bool is_break_now() const
 	{
 		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
-		if (call_stack.empty() || call_stack.back().evaluated()) {
+		if(call_stack.empty() || call_stack.back().evaluated()){
 			return false;
 		}
-		if (call_stack.size() == level_) {
+		if(call_stack.size() == level_){
 			return true;
 		}
 		return false;

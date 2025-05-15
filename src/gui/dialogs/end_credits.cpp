@@ -56,32 +56,32 @@ void end_credits::pre_show()
 	std::stringstream ss;
 	std::stringstream focus_ss;
 
-	for(const about::credits_group& group : about::get_credits_data()) {
+	for(const about::credits_group& group : about::get_credits_data()){
 		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
 
-		if(!group.header.empty()) {
+		if(!group.header.empty()){
 			group_stream << markup::span_size("xx-large", group.header) << "\n";
 		}
 
-		for(const about::credits_group::about_group& about : group.sections) {
+		for(const about::credits_group::about_group& about : group.sections){
 			group_stream << "\n" << markup::span_size("x-large", about.title) << "\n";
 
-			for(const auto& entry : about.names) {
+			for(const auto& entry : about.names){
 				group_stream << entry.first << "\n";
 			}
 		}
 	}
 
 	// If a section is focused, move it to the top
-	if(!focus_ss.str().empty()) {
+	if(!focus_ss.str().empty()){
 		focus_ss << ss.rdbuf();
 	}
 
 	// Get the appropriate background images
 	backgrounds_ = about::get_background_images(focus_on_);
 
-	if(backgrounds_.empty()) {
+	if(backgrounds_.empty()){
 		backgrounds_.push_back(game_config::images::game_title_background);
 	}
 
@@ -101,8 +101,8 @@ void end_credits::pre_show()
 	// NOTE: this depends on the assumption that the <span>s added above only ever wrap a single line
 	std::vector<std::string> lines = utils::split(content_, '\n', 0);
 	int i = 0;
-	for(const std::string& line : lines) {
-		if(i % lines_per_chunk_ == 0) {
+	for(const std::string& line : lines){
+		if(i % lines_per_chunk_ == 0){
 			chunks_.emplace_back();
 		}
 		std::vector<std::string>& last_chunk = chunks_[chunks_.size()-1];
@@ -120,7 +120,7 @@ void end_credits::pre_show()
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
-	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
+	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))){
 		v_grid->find_widget<scrollbar_base>("_vertical_scrollbar").set_visible(widget::visibility::hidden);
 
 		// TODO: enable again if e24336afeb7 is reverted.
@@ -132,7 +132,7 @@ void end_credits::pre_show()
 void end_credits::update()
 {
 	uint32_t now = SDL_GetTicks();
-	if(last_scroll_ > now) {
+	if(last_scroll_ > now){
 		return;
 	}
 
@@ -155,7 +155,7 @@ void end_credits::update()
 			sliding_content_.clear();
 
 			if(last_idx_ <= chunks_.size()){
-				for(std::size_t i = first_idx_; i <= last_idx_; i++) {
+				for(std::size_t i = first_idx_; i <= last_idx_; i++){
 					sliding_content_ += utils::join(chunks_[i], "\n") + "\n";
 				}
 			}
@@ -171,11 +171,11 @@ void end_credits::update()
 
 void end_credits::key_press_callback(const SDL_Keycode key)
 {
-	if(key == SDLK_UP && scroll_speed_ < 400) {
+	if(key == SDLK_UP && scroll_speed_ < 400){
 		scroll_speed_ <<= 1;
 	}
 
-	if(key == SDLK_DOWN && scroll_speed_ > 50) {
+	if(key == SDLK_DOWN && scroll_speed_ > 50){
 		scroll_speed_ >>= 1;
 	}
 }

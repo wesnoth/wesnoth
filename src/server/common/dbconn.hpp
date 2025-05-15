@@ -66,7 +66,7 @@ public:
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset The offset to provide to the database for where to start returning rows from.
 	 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
-	 * @param search_content_type The content type to query for (ie: scenario)
+	 * @param search_content_type The content type to query for(ie: scenario)
 	 * @param search_content Query for games using this content ID. Supports leading and/or trailing wildcards.
 	 * @return The simple_wml document containing the query results, or simply the @a error attribute if an exception is
 	 * thrown.

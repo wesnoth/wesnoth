@@ -79,7 +79,7 @@ entity_location::entity_location(const unit &u, const map_location & filter_loc)
  */
 bool entity_location::matches_unit(const unit_map::const_iterator & un_it) const
 {
-	return id_ == 0  ||  ( un_it.valid() && id_ == un_it->underlying_id() );
+	return id_ == 0  ||  (un_it.valid() && id_ == un_it->underlying_id());
 }
 
 
@@ -90,10 +90,10 @@ bool entity_location::matches_unit(const unit_map::const_iterator & un_it) const
  */
 bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it, const unit_filter& filter) const
 {
-	if ( !un_it.valid() )
+	if(!un_it.valid())
 		return false;
 
-	if ( filter.empty() )
+	if(filter.empty())
 		// Skip the check for un_it matching *this.
 		return true;
 
@@ -105,7 +105,7 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 unit_const_ptr entity_location::get_unit() const
 {
-	if(!resources::gameboard) {
+	if(!resources::gameboard){
 		return nullptr;
 	}
 
@@ -113,7 +113,7 @@ unit_const_ptr entity_location::get_unit() const
 		? resources::gameboard->units().find(*this)
 		: resources::gameboard->units().find(id_);
 
-	if(un_it.valid()) {
+	if(un_it.valid()){
 		return un_it.get_shared_ptr();
 	} else {
 		return nullptr;

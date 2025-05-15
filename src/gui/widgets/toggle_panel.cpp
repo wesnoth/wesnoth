@@ -91,7 +91,7 @@ void toggle_panel::set_child_members(const widget_data& data)
 	for(const auto & item : data)
 	{
 		styled_widget* control = dynamic_cast<styled_widget*>(find(item.first, false));
-		if(control) {
+		if(control){
 			control->set_members(item.second);
 		}
 	}
@@ -120,7 +120,7 @@ const widget* toggle_panel::find_at(const point& coordinate,
 
 void toggle_panel::set_active(const bool active)
 {
-	if(active) {
+	if(active){
 		set_state(ENABLED);
 	} else {
 		set_state(DISABLED);
@@ -162,7 +162,7 @@ point toggle_panel::border_space() const
 void toggle_panel::set_value(unsigned selected, bool fire_event)
 {
 	selected = selected % num_states();
-	if(selected == get_value()) {
+	if(selected == get_value()){
 		return;
 	}
 	state_num_ = selected;
@@ -170,7 +170,7 @@ void toggle_panel::set_value(unsigned selected, bool fire_event)
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
-	if(get_window() && fire_event) {
+	if(get_window() && fire_event){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -182,7 +182,7 @@ void toggle_panel::set_retval(const int retval)
 
 void toggle_panel::set_state(const state_t state)
 {
-	if(state == state_) {
+	if(state == state_){
 		return;
 	}
 
@@ -269,7 +269,7 @@ void toggle_panel::signal_handler_left_button_double_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(retval_) {
+	if(retval_){
 		window* window = get_window();
 		assert(window);
 

@@ -31,7 +31,7 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
-static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
+static bool two_dots(char a, char b){ return a == '.' && b == '.'; }
 
 namespace utils {
 
@@ -43,20 +43,20 @@ template <typename T>
 class string_map_variable_set : public variable_set
 {
 public:
-	string_map_variable_set(const std::map<std::string,T>& map) : map_(map) {}
+	string_map_variable_set(const std::map<std::string,T>& map) : map_(map){}
 
 	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{
 		config::attribute_value val;
 		const auto itor = map_.find(key);
-		if (itor != map_.end())
+		if(itor != map_.end())
 			val = itor->second;
 		return val;
 	}
 	virtual variable_access_const get_variable_access_read(const std::string& varname) const
 	{
 		temp_.reset(new config);
-		for(const auto& p : map_) {
+		for(const auto& p : map_){
 			temp_->insert(p.first, p.second);
 		}
 		return variable_access_const(varname, *temp_);
@@ -73,13 +73,13 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 	// This needs to be able to store negative numbers to check for the while's condition
 	// (which is only false when the previous '$' was at index 0)
 	int rfind_dollars_sign_from = res.size();
-	while(rfind_dollars_sign_from >= 0) {
+	while(rfind_dollars_sign_from >= 0){
 		// Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
 		// For example, "I am $creatures[$i].user_description!"
 		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
 
 		// If there are no '$' left then we're done.
-		if(var_begin_loc == std::string::npos) {
+		if(var_begin_loc == std::string::npos){
 			break;
 		}
 
@@ -94,45 +94,45 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		const std::string::iterator var_name_begin = var_begin + 1;
 		std::string::iterator var_end = var_name_begin;
 
-		if(var_name_begin == res.end()) {
+		if(var_name_begin == res.end()){
 			// Any '$' at the end of a string is just a '$'
 			continue;
-		} else if(*var_name_begin == '(') {
-			// The $( ... ) syntax invokes a formula
+		} else if(*var_name_begin == '('){
+			// The $(...) syntax invokes a formula
 			int paren_nesting_level = 0;
 			bool in_string = false,
 				in_comment = false;
 			do {
-				switch(*var_end) {
+				switch(*var_end){
 				case '(':
-					if(!in_string && !in_comment) {
+					if(!in_string && !in_comment){
 						++paren_nesting_level;
 					}
 					break;
 				case ')':
-					if(!in_string && !in_comment) {
+					if(!in_string && !in_comment){
 						--paren_nesting_level;
 					}
 					break;
 				case '#':
-					if(!in_string) {
+					if(!in_string){
 						in_comment = !in_comment;
 					}
 					break;
 				case '\'':
-					if(!in_comment) {
+					if(!in_comment){
 						in_string = !in_string;
 					}
 					break;
 				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
 				}
 			} while(++var_end != res.end() && paren_nesting_level > 0);
-			if(utils::detail::evaluate_formula == nullptr) {
+			if(utils::detail::evaluate_formula == nullptr){
 				WRN_NG << "Formula substitution ignored (and removed) because WFL engine is not present in the server.";
 				res.replace(var_begin, var_end, "");
 				continue;
 			}
-			if(paren_nesting_level > 0) {
+			if(paren_nesting_level > 0){
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< "a missing closing parenthesis:\n\t--> \""
 					<< std::string(var_begin, var_end) << "\"";
@@ -144,18 +144,18 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		}
 
 		// Find the maximum extent of the variable name (it may be shortened later).
-		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
+		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end){
 			const char c = *var_end;
-			if(c == '[') {
+			if(c == '['){
 				++bracket_nesting_level;
 			}
-			else if(c == ']') {
-				if(--bracket_nesting_level < 0) {
+			else if(c == ']'){
+				if(--bracket_nesting_level < 0){
 					break;
 				}
 			}
 			// isascii() breaks on mingw with -std=c++0x
-			else if (!(((c) & ~0x7f) == 0)/*isascii(c)*/ || (!isalnum(c) && c != '.' && c != '_')) {
+			else if(!(((c) & ~0x7f) == 0)/*isascii(c)*/ || (!isalnum(c) && c != '.' && c != '_')){
 				break;
 			}
 		}
@@ -178,13 +178,13 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		// (If it's the script writer's error, they'll have to fix it in either case.)
 		// For example in "$array[$i].$field_name", if field_name does not exist as a variable,
 		// then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
-		&& *(var_end-2) != ']') {
+		&& *(var_end-2) != ']'){
 			--var_end;
 		}
 
 		const std::string var_name(var_name_begin, var_end);
-		if(default_start == res.end()) {
-			if(var_end != res.end() && *var_end == '|') {
+		if(default_start == res.end()){
+			if(var_end != res.end() && *var_end == '|'){
 				// It's been used to end this variable name; now it has no more effect.
 				// This can allow use of things like "$$composite_var_name|.x"
 				// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
@@ -194,7 +194,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			}
 
 
-			if (var_name.empty()) {
+			if(var_name.empty()){
 				// Allow for a way to have $s in a string.
 				// $| will be replaced by $.
 				res.replace(var_begin, var_end, "$");
@@ -207,15 +207,15 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		}
 		else {
 			var_end = default_start;
-			while(var_end != res.end() && *var_end != '|') {
+			while(var_end != res.end() && *var_end != '|'){
 				++var_end;
 			}
 			const std::string::iterator default_end = var_end;
 			const config::attribute_value& val = set.get_variable_const(var_name);
-			if(var_end == res.end()) {
+			if(var_end == res.end()){
 				res.replace(var_begin, default_start - 1, val);
 			}
-			else if(!val.empty()) {
+			else if(!val.empty()){
 				res.replace(var_begin, var_end + 1, val);
 			}
 			else {
@@ -248,17 +248,17 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 
 t_string interpolate_variables_into_tstring(const t_string &tstr, const variable_set& variables)
 {
-	if(!tstr.str().empty()) {
+	if(!tstr.str().empty()){
 		std::string interp = utils::interpolate_variables_into_string(tstr.str(), variables);
-		if(tstr.str() != interp) {
+		if(tstr.str() != interp){
 			return t_string(interp);
 		}
 	}
 	return tstr;
 }
 
-std::string format_conjunct_list(const t_string& empty, const std::vector<t_string>& elems) {
-	switch(elems.size()) {
+std::string format_conjunct_list(const t_string& empty, const std::vector<t_string>& elems){
+	switch(elems.size()){
 	case 0: return empty;
 	case 1: return elems[0];
 		// TRANSLATORS: Formats a two-element conjunctive list.
@@ -267,7 +267,7 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
 	// TRANSLATORS: Formats the first two elements of a conjunctive list.
 	std::string prefix = VGETTEXT("conjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
 	// For size=3 this loop is not entered
-	for(std::size_t i = 2; i < elems.size() - 1; i++) {
+	for(std::size_t i = 2; i < elems.size() - 1; i++){
 		// TRANSLATORS: Formats successive elements of a conjunctive list.
 		prefix = VGETTEXT("conjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
 	}
@@ -275,8 +275,8 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
 	return VGETTEXT("conjunct end^$prefix, and $last", {{"prefix", prefix}, {"last", elems.back()}});
 }
 
-std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems) {
-	switch(elems.size()) {
+std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems){
+	switch(elems.size()){
 	case 0: return empty;
 	case 1: return elems[0];
 		// TRANSLATORS: Formats a two-element disjunctive list.
@@ -285,7 +285,7 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 	// TRANSLATORS: Formats the first two elements of a disjunctive list.
 	std::string prefix = VGETTEXT("disjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
 	// For size=3 this loop is not entered
-	for(std::size_t i = 2; i < elems.size() - 1; i++) {
+	for(std::size_t i = 2; i < elems.size() - 1; i++){
 		// TRANSLATORS: Formats successive elements of a disjunctive list.
 		prefix = VGETTEXT("disjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
 	}
@@ -321,7 +321,7 @@ std::string vngettext_impl(const char* domain,
 	auto s1_first = str_1.begin();
 	auto s2_first = str_2.begin();
 
-	while(s1_first != str_1.end() && s2_first != str_2.end() && *s1_first == *s2_first) {
+	while(s1_first != str_1.end() && s2_first != str_2.end() && *s1_first == *s2_first){
 		++s1_first;
 		++s2_first;
 	}
@@ -330,16 +330,16 @@ std::string vngettext_impl(const char* domain,
 	auto s1_size = static_cast<std::size_t>(str_1.end() - s1_first);
 	auto s2_size = static_cast<std::size_t>(str_2.end() - s2_first);
 
-	while(s1_size != 0 && s2_size != 0 && s1_first[s1_size - 1] == s2_first[s2_size - 1]) {
+	while(s1_size != 0 && s2_size != 0 && s1_first[s1_size - 1] == s2_first[s2_size - 1]){
 		--s1_size;
 		--s2_size;
 	}
 
-	if(s1_size == 0) {
+	if(s1_size == 0){
 		return s2_size;
 	}
 
-	if(s2_size == 0) {
+	if(s2_size == 0){
 		return s1_size;
 	}
 
@@ -347,7 +347,7 @@ std::string vngettext_impl(const char* domain,
 	s1_size = std::min(s1_size, std::size_t{15});
 	s2_size = std::min(s2_size, std::size_t{15});
 
-	if(s1_size < s2_size) {
+	if(s1_size < s2_size){
 		std::swap(s1_first, s2_first);
 		std::swap(s1_size, s2_size);
 	}
@@ -360,15 +360,15 @@ std::string vngettext_impl(const char* domain,
 	// This is a single row of the matrix
 	std::array<std::size_t, 16> row{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
-	for(std::size_t i = 0; i != s1_size; ++i) {
+	for(std::size_t i = 0; i != s1_size; ++i){
 		auto upper_left = i;
 		row[0] = i + 1;
 
-		for(std::size_t j = 0; j != s2_size; ++j) {
+		for(std::size_t j = 0; j != s2_size; ++j){
 			const auto up = row[j + 1];
 			const bool transposed = i > 0 && j > 0 && s1_first[i] == s2_first[j - 1] && s1_first[i - 1] == s2_first[j];
 
-			if(s1_first[i] != s2_first[j] && !transposed) {
+			if(s1_first[i] != s2_first[j] && !transposed){
 				row[j + 1] = std::min({up, row[j], upper_left}) + 1;
 			} else {
 				row[j + 1] = upper_left;

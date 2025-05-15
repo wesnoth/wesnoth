@@ -41,14 +41,14 @@ struct po_message {
 #ifdef SPIRIT_PO_DEBUG
 inline std::string debug_string(const po_message & msg) {
   std::string result = "{\n";
-  if (msg.context) {
+  if(msg.context) {
     result += "  context: \"" + *msg.context + "\"\n";
   }
   result += "  id: \"" + msg.id + "\"\n";
   result += "  id_plural: \"" + msg.id_plural() + "\"\n";
   result += "  strings: { ";
-  for (uint i = 0; i < msg.strings().size(); ++i) {
-    if (i) { result += ", "; }
+  for(uint i = 0; i < msg.strings().size(); ++i) {
+    if(i) { result += ", "; }
     result += '"' + msg.strings()[i] + '"';
   }
   result += " }\n";

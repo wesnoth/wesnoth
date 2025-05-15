@@ -50,25 +50,25 @@ modal_dialog::~modal_dialog()
 
 bool modal_dialog::show(const unsigned auto_close_time)
 {
-	if(video::headless() && !show_even_without_video_) {
+	if(video::headless() && !show_even_without_video_){
 		DBG_DP << "modal_dialog::show denied";
 		return false;
 	}
-	if(allow_plugin_skip_) {
+	if(allow_plugin_skip_){
 		bool skipped = false;
 
 		plugins_manager* pm = plugins_manager::get();
-		if (pm && pm->any_running())
+		if(pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this, &skipped](const config&) { set_retval(retval::OK); skipped = true; }, false);
-			pc.set_callback("quit", [this, &skipped](const config&) { set_retval(retval::CANCEL); skipped = true; }, false);
-			pc.set_callback("select", [this, &skipped](const config& c) { set_retval(c["retval"].to_int()); skipped = true; }, false);
-			pc.set_accessor_string("id", [this](const config&) { return window_id(); });
+			pc.set_callback("skip_dialog", [this, &skipped](const config&){ set_retval(retval::OK); skipped = true; }, false);
+			pc.set_callback("quit", [this, &skipped](const config&){ set_retval(retval::CANCEL); skipped = true; }, false);
+			pc.set_callback("select", [this, &skipped](const config& c){ set_retval(c["retval"].to_int()); skipped = true; }, false);
+			pc.set_accessor_string("id", [this](const config&){ return window_id(); });
 			pc.play_slice();
 		}
 
-		if(skipped) {
+		if(skipped){
 			return false;
 		}
 	}
@@ -180,7 +180,7 @@ field_text* modal_dialog::register_text(
 	field_text* field = new field_text(
 			id, mandatory, callback_load_value, callback_save_value);
 
-	if(capture_focus) {
+	if(capture_focus){
 		focus_ = id;
 	}
 
@@ -195,7 +195,7 @@ field_text* modal_dialog::register_text(const std::string& id,
 {
 	field_text* field = new field_text(id, mandatory, linked_variable);
 
-	if(capture_focus) {
+	if(capture_focus){
 		focus_ = id;
 	}
 
@@ -232,8 +232,8 @@ void modal_dialog::init_fields()
 		field->widget_init();
 	}
 
-	if(!focus_.empty()) {
-		if(widget* widget = window::find(focus_, false)) {
+	if(!focus_.empty()){
+		if(widget* widget = window::find(focus_, false)){
 			window::keyboard_capture(widget);
 		}
 	}
@@ -243,7 +243,7 @@ void modal_dialog::finalize_fields(const bool save_fields)
 {
 	for(auto& field : fields_)
 	{
-		if(save_fields) {
+		if(save_fields){
 			field->widget_finalize();
 		}
 		field->detach_from_window();

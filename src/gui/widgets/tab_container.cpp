@@ -77,12 +77,12 @@ void tab_container::finalize(std::unique_ptr<generator_base> generator)
 	assert(generator_);
 
 	widget_item empty_data;
-	for(const auto& builder_entry : builders_) {
+	for(const auto& builder_entry : builders_){
 		generator->create_item(-1, *builder_entry, empty_data, nullptr);
 	}
 
 	grid* parent_grid = find_widget<grid>("_content_grid", false, true);
-	if (parent_grid) {
+	if(parent_grid){
 		parent_grid->swap_child("_page", std::move(generator), false);
 	}
 
@@ -91,8 +91,8 @@ void tab_container::finalize(std::unique_ptr<generator_base> generator)
 	select_tab(0);
 }
 
-void tab_container::finalize_listbox() {
-	for (const widget_data& row : list_items_) {
+void tab_container::finalize_listbox(){
+	for(const widget_data& row : list_items_){
 		add_tab_entry(row);
 	}
 	get_internal_list().connect_signal<event::NOTIFY_MODIFIED>(std::bind(&tab_container::change_selection, this));
@@ -106,13 +106,13 @@ void tab_container::add_tab_entry(const widget_data& row)
 
 void tab_container::select_tab(unsigned index)
 {
-	if (index < get_tab_count()) {
+	if(index < get_tab_count()){
 		get_internal_list().select_row(index);
 		generator_->select_item(index, true);
 	}
 }
 
-void tab_container::change_selection() {
+void tab_container::change_selection(){
 	select_tab(get_active_tab_index());
 	place(get_origin(), get_size());
 	queue_redraw();
@@ -149,7 +149,7 @@ namespace implementation
 builder_tab_container::builder_tab_container(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
 {
-	if (cfg.has_child("tab")) {
+	if(cfg.has_child("tab")){
 		for(const auto & tab : cfg.child_range("tab"))
 		{
 			widget_data list_row;
@@ -162,7 +162,7 @@ builder_tab_container::builder_tab_container(const config& cfg)
 
 			list_items.emplace_back(list_row);
 
-			if (tab.has_child("data")) {
+			if(tab.has_child("data")){
 				auto builder = std::make_shared<builder_grid>(tab.mandatory_child("data"));
 				builders.push_back(builder);
 			}

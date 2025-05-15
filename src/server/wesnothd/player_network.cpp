@@ -30,7 +30,7 @@ void truncate_message(const simple_wml::string_span& str, simple_wml::node& mess
 {
 	// testing for msg.size() is not sufficient but we're not getting false negatives
 	// and it's cheaper than always converting to std::u32string.
-	if(str.size() > static_cast<int>(chat_message::max_message_length)) {
+	if(str.size() > static_cast<int>(chat_message::max_message_length)){
 		std::string tmp(str.begin(), str.end());
 		// The string can contain utf-8 characters so truncate as std::u32string otherwise
 		// a corrupted utf-8 string can be returned.

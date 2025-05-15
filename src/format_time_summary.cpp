@@ -35,7 +35,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 	auto curr_time = std::chrono::year_month_weekday{std::chrono::floor<std::chrono::days>(now)};
 	auto save_time = std::chrono::year_month_weekday{std::chrono::floor<std::chrono::days>(t)};
 
-	if(curr_time == save_time) {
+	if(curr_time == save_time){
 		// save is from today
 		format_string = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: 12-hour time, eg '1:59 PM'
@@ -43,7 +43,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 			// TRANSLATORS: 24-hour time, eg '13:59'
 			: _("%H:%M");
 
-	} else if(curr_time.month() == save_time.month() && curr_time.index() == save_time.index()) {
+	} else if(curr_time.month() == save_time.month() && curr_time.index() == save_time.index()){
 		// save is from this week
 		format_string = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
@@ -51,7 +51,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 			// TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
 			: _("%A, %H:%M");
 
-	} else if(curr_time.year() == save_time.year()) {
+	} else if(curr_time.year() == save_time.year()){
 		// save is from current year
 		// TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
 		format_string = _("%b %d");
@@ -66,7 +66,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 
 	auto as_time_t = std::chrono::system_clock::to_time_t(now);
 	const std::tm* timeptr = std::localtime(&as_time_t);
-	if(timeptr == nullptr) {
+	if(timeptr == nullptr){
 		return "";
 	}
 
@@ -74,7 +74,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 
 	as_time_t = std::chrono::system_clock::to_time_t(t);
 	timeptr = std::localtime(&as_time_t);
-	if(timeptr == nullptr) {
+	if(timeptr == nullptr){
 		return "";
 	}
 
@@ -82,11 +82,11 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 
 	std::string format_string;
 
-	if(current_time.tm_year == save_time.tm_year) {
+	if(current_time.tm_year == save_time.tm_year){
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
-		if(days_apart == 0) {
+		if(days_apart == 0){
 			// save is from today
-			if(prefs::get().use_twelve_hour_clock_format() == false) {
+			if(prefs::get().use_twelve_hour_clock_format() == false){
 				// TRANSLATORS: 24-hour time, eg '13:59'
 				format_string = _("%H:%M");
 			}
@@ -94,9 +94,9 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 				// TRANSLATORS: 12-hour time, eg '1:59 PM'
 				format_string = _("%I:%M %p");
 			}
-		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
+		} else if(days_apart > 0 && days_apart <= current_time.tm_wday){
 			// save is from this week
-			if(prefs::get().use_twelve_hour_clock_format() == false) {
+			if(prefs::get().use_twelve_hour_clock_format() == false){
 				// TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
 				format_string = _("%A, %H:%M");
 			}

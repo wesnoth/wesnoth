@@ -92,13 +92,13 @@ bool blacklist::is_blacklisted(const std::string& name,
 
 bool blacklist::is_in_globlist(const std::string& str, const blacklist::globlist& glist) const
 {
-	if (!str.empty())
+	if(!str.empty())
 	{
 		const std::string& lc_str = utf8::lowercase(str);
 		for(const std::string& glob : glist)
 		{
 			const std::string& lc_glob = utf8::lowercase(glob);
-			if (utils::wildcard_string_match(lc_str, lc_glob)) {
+			if(utils::wildcard_string_match(lc_str, lc_glob)){
 				LOG_BL << "Blacklisted field found: " << str << " (" << glob << ")";
 				return true;
 			}
@@ -110,11 +110,11 @@ bool blacklist::is_in_globlist(const std::string& str, const blacklist::globlist
 
 bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globlist& mlist) const
 {
-	if (!ip.empty())
+	if(!ip.empty())
 	{
 		for(const std::string& ip_mask : mlist)
 		{
-			if (ip_matches(ip, ip_mask)) {
+			if(ip_matches(ip, ip_mask)){
 				LOG_BL << "Blacklisted IP found: " << ip << " (" << ip_mask << ")";
 				return true;
 			}

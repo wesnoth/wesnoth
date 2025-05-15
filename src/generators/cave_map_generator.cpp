@@ -53,7 +53,7 @@ std::string cave_map_generator::config_name() const
 
 std::size_t cave_map_generator::cave_map_generator_job::translate_x(std::size_t x) const
 {
-	if(flipx_) {
+	if(flipx_){
 		x = params.width_ - x - 1;
 	}
 
@@ -62,7 +62,7 @@ std::size_t cave_map_generator::cave_map_generator_job::translate_x(std::size_t 
 
 std::size_t cave_map_generator::cave_map_generator_job::translate_y(std::size_t y) const
 {
-	if(flipy_) {
+	if(flipy_){
 		y = params.height_ - y - 1;
 	}
 
@@ -111,13 +111,13 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	generate_chambers();
 
 	LOG_NG << "placing chambers...";
-	for(std::vector<chamber>::const_iterator c = chambers_.begin(); c != chambers_.end(); ++c) {
+	for(std::vector<chamber>::const_iterator c = chambers_.begin(); c != chambers_.end(); ++c){
 		place_chamber(*c);
 	}
 
 	LOG_NG << "placing passages...";
 
-	for(std::vector<passage>::const_iterator p = passages_.begin(); p != passages_.end(); ++p) {
+	for(std::vector<passage>::const_iterator p = passages_.begin(); p != passages_.end(); ++p){
 		place_passage(*p);
 	}
 	LOG_NG << "outputting map....";
@@ -132,8 +132,8 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 
 	locs.insert(loc);
 
-	for(const map_location& adj : get_adjacent_tiles(loc)) {
-		if(static_cast<int>(rng_() % 100) < (100l - static_cast<long>(jagged))) {
+	for(const map_location& adj : get_adjacent_tiles(loc)){
+		if(static_cast<int>(rng_() % 100) < (100l - static_cast<long>(jagged))){
 			build_chamber(adj,locs,size-1,jagged);
 		}
 	}
@@ -141,10 +141,10 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 
 void cave_map_generator::cave_map_generator_job::generate_chambers()
 {
-	for (const config &ch : params.cfg_.child_range("chamber"))
+	for(const config &ch : params.cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
-		if (ch.has_attribute("chance") && static_cast<int>(rng_() % 100) < ch["chance"].to_int()) {
+		if(ch.has_attribute("chance") && static_cast<int>(rng_() % 100) < ch["chance"].to_int()){
 			continue;
 		}
 
@@ -153,13 +153,13 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 
 		std::size_t min_xpos = 0, min_ypos = 0, max_xpos = params.width_, max_ypos = params.height_;
 
-		if (!xpos.empty()) {
+		if(!xpos.empty()){
 			const std::vector<std::string>& items = utils::split(xpos, '-');
-			if(items.empty() == false) {
+			if(items.empty() == false){
 				try {
 					min_xpos = std::stoi(items.front()) - 1;
 					max_xpos = std::stoi(items.back());
-				} catch(const std::invalid_argument&) {
+				} catch(const std::invalid_argument&){
 					lg::log_to_chat() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
 					ERR_WML << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back();
 					continue;
@@ -167,13 +167,13 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 			}
 		}
 
-		if (!ypos.empty()) {
+		if(!ypos.empty()){
 			const std::vector<std::string>& items = utils::split(ypos, '-');
-			if(items.empty() == false) {
+			if(items.empty() == false){
 				try {
 					min_ypos = std::stoi(items.front()) - 1;
 					max_ypos = std::stoi(items.back());
-				} catch(const std::invalid_argument&) {
+				} catch(const std::invalid_argument&){
 					lg::log_to_chat() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
 					ERR_WML << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back();
 				}
@@ -193,7 +193,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		new_chamber.items = items ? &*items : nullptr;
 
 		const std::string &id = ch["id"];
-		if (!id.empty()) {
+		if(!id.empty()){
 			chamber_ids_[id] = chambers_.size();
 		}
 
@@ -217,11 +217,11 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 
 void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 {
-	for(std::set<map_location>::const_iterator i = c.locs.begin(); i != c.locs.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = c.locs.begin(); i != c.locs.end(); ++i){
 		set_terrain(*i,params.clear_);
 	}
 
-	if (c.items == nullptr || c.locs.empty()) return;
+	if(c.items == nullptr || c.locs.empty()) return;
 
 	std::size_t index = 0;
 	for(const auto [child_key, child_cfg] : c.items->all_children_view())
@@ -229,13 +229,13 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 		config cfg = child_cfg;
 		auto filter = cfg.optional_child("filter");
 		config* object_filter = nullptr;
-		if (auto object = cfg.optional_child("object")) {
-			if (auto of = object->optional_child("filter")) {
+		if(auto object = cfg.optional_child("object")){
+			if(auto of = object->optional_child("filter")){
 				object_filter = &*of;
 			}
 		}
 
-		if (!child_cfg["same_location_as_previous"].to_bool()) {
+		if(!child_cfg["same_location_as_previous"].to_bool()){
 			index = rng_()%c.locs.size();
 		}
 		std::string loc_var = child_cfg["store_location_as"];
@@ -246,24 +246,24 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 		cfg["x"] = loc->x + 1;
 		cfg["y"] = loc->y + 1;
 
-		if (filter) {
+		if(filter){
 			filter["x"] = loc->x + 1;
 			filter["y"] = loc->y + 1;
 		}
 
-		if (object_filter) {
+		if(object_filter){
 			(*object_filter)["x"] = loc->x + 1;
 			(*object_filter)["y"] = loc->y + 1;
 		}
 
 		// If this is a side, place a castle for the side
-		if (child_key == "side" && !child_cfg["no_castle"].to_bool()) {
+		if(child_key == "side" && !child_cfg["no_castle"].to_bool()){
 			place_castle(child_cfg["side"].to_int(-1), *loc);
 		}
 
 		res_.add_child(child_key, cfg);
 
-		if(!loc_var.empty()) {
+		if(!loc_var.empty()){
 			config &temp = res_.add_child("event");
 			temp["name"] = "prestart";
 			config &xcfg = temp.add_child("set_variable");
@@ -297,11 +297,11 @@ private:
 double passage_path_calculator::cost(const map_location& loc, const double) const
 {
 	double res = 1.0;
-	if (map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border) == wall_) {
+	if(map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border) == wall_){
 		res = laziness_;
 	}
 
-	if(windiness_ > 1) {
+	if(windiness_ > 1){
 		res *= static_cast<double>(rng_()%windiness_);
 	}
 
@@ -311,7 +311,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 {
 	const std::string& chance = p.cfg["chance"];
-	if(!chance.empty() && static_cast<int>(rng_()%100) < std::stoi(chance)) {
+	if(!chance.empty() && static_cast<int>(rng_()%100) < std::stoi(chance)){
 		return;
 	}
 
@@ -325,10 +325,10 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 	int width = std::max<int>(1, p.cfg["width"].to_int());
 	int jagged = p.cfg["jagged"].to_int();
 
-	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
+	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i){
 		std::set<map_location> locs;
 		build_chamber(*i,locs,width,jagged);
-		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j){
 			set_terrain(*j, params.clear_);
 		}
 	}
@@ -336,12 +336,12 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 
 void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, const t_translation::terrain_code & t)
 {
-	if (params.on_board(loc)) {
+	if(params.on_board(loc)){
 		t_translation::terrain_code& c = map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border);
 
-		if(c == params.clear_ || c == params.wall_ || c == params.village_) {
+		if(c == params.clear_ || c == params.wall_ || c == params.village_){
 			// Change this terrain.
-			if ( t == params.clear_  &&  static_cast<int>(rng_() % 1000) < params.village_density_ )
+			if(t == params.clear_  &&  static_cast<int>(rng_() % 1000) < params.village_density_)
 				// Override with a village.
 				c = params.village_;
 			else
@@ -352,7 +352,7 @@ void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, c
 
 void cave_map_generator::cave_map_generator_job::place_castle(int starting_position, const map_location &loc)
 {
-	if (starting_position != -1) {
+	if(starting_position != -1){
 		set_terrain(loc, params.keep_);
 
 		t_translation::coordinate coord(
@@ -361,7 +361,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		starting_positions_.insert(t_translation::starting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
-	for(const map_location& adj : get_adjacent_tiles(loc)) {
+	for(const map_location& adj : get_adjacent_tiles(loc)){
 		set_terrain(adj, params.castle_);
 	}
 }

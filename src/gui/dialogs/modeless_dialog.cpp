@@ -35,11 +35,11 @@ modeless_dialog::~modeless_dialog()
 
 void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
 {
-	if(video::headless()) {
+	if(video::headless()){
 		return;
 	}
 
-	if(allow_interaction) {
+	if(allow_interaction){
 		window::show_non_modal();
 	} else {
 		window::show_tooltip(/*auto_close_time*/);

@@ -30,7 +30,7 @@ const int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
 
 void cleanup_texture(SDL_Texture* t)
 {
-	if(t != nullptr) {
+	if(t != nullptr){
 		SDL_DestroyTexture(t);
 	}
 }
@@ -40,7 +40,7 @@ void cleanup_texture(SDL_Texture* t)
 texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
 {
-	if (txt) {
+	if(txt){
 		SDL_QueryTexture(txt, nullptr, nullptr, &size_.x, &size_.y);
 		finalize();
 	}
@@ -49,16 +49,16 @@ texture::texture(SDL_Texture* txt)
 texture::texture(const surface& surf, bool linear_interpolation)
 	: texture()
 {
-	if (!surf) {
+	if(!surf){
 		return;
 	}
 
-	if (surf->w == 0 && surf->h == 0) {
+	if(surf->w == 0 && surf->h == 0){
 		return;
 	}
 
 	SDL_Renderer* renderer = video::get_renderer();
-	if(!renderer) {
+	if(!renderer){
 		return;
 	}
 
@@ -66,7 +66,7 @@ texture::texture(const surface& surf, bool linear_interpolation)
 	set_texture_scale_quality(linear_interpolation ? "linear" : "nearest");
 
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
-	if(!texture_) {
+	if(!texture_){
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError();
 	}
 
@@ -105,7 +105,7 @@ void texture::set_src(const rect& r)
 {
 	rect dsrc = r.intersect(rect{{0, 0}, size_});
 	point rsize = get_raw_size();
-	if (draw_size() == rsize) {
+	if(draw_size() == rsize){
 		src_ = dsrc;
 	} else {
 		src_ = rect {
@@ -127,14 +127,14 @@ void texture::set_src_raw(const rect& r)
 
 void texture::set_alpha_mod(uint8_t alpha)
 {
-	if (texture_) {
+	if(texture_){
 		SDL_SetTextureAlphaMod(texture_.get(), alpha);
 	}
 }
 
 uint8_t texture::get_alpha_mod() const
 {
-	if (!texture_) {
+	if(!texture_){
 		return 0;
 	}
 	uint8_t a;
@@ -149,14 +149,14 @@ void texture::set_color_mod(const color_t& c)
 
 void texture::set_color_mod(uint8_t r, uint8_t g, uint8_t b)
 {
-	if (texture_) {
+	if(texture_){
 		SDL_SetTextureColorMod(texture_.get(), r, g, b);
 	}
 }
 
 color_t texture::get_color_mod() const
 {
-	if (!texture_) {
+	if(!texture_){
 		return {0,0,0};
 	}
 	color_t c;
@@ -166,14 +166,14 @@ color_t texture::get_color_mod() const
 
 void texture::set_blend_mode(SDL_BlendMode b)
 {
-	if (texture_) {
+	if(texture_){
 		SDL_SetTextureBlendMode(texture_.get(), b);
 	}
 }
 
 SDL_BlendMode texture::get_blend_mode() const
 {
-	if (!texture_) {
+	if(!texture_){
 		return SDL_BLENDMODE_NONE;
 	}
 	SDL_BlendMode b;
@@ -183,7 +183,7 @@ SDL_BlendMode texture::get_blend_mode() const
 
 void texture::reset()
 {
-	if(texture_) {
+	if(texture_){
 		texture_.reset();
 	}
 	size_ = {0, 0};
@@ -196,12 +196,12 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 	reset();
 
 	SDL_Renderer* renderer = video::get_renderer();
-	if(!renderer) {
+	if(!renderer){
 		return;
 	}
 
 	texture_.reset(SDL_CreateTexture(renderer, default_texture_format, access, width, height), &cleanup_texture);
-	if(!texture_) {
+	if(!texture_){
 		ERR_SDL << "When creating texture: " << SDL_GetError();
 		return;
 	}
@@ -224,7 +224,7 @@ texture::info::info(SDL_Texture* t)
 	, access(-1)
 	, size(0, 0)
 {
-	if (t) {
+	if(t){
 		SDL_QueryTexture(t, &format, &access, &size.x, &size.y);
 	}
 }

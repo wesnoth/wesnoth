@@ -84,13 +84,13 @@ void team_builder::log_step(const char* s) const
 
 void team_builder::init()
 {
-	if(side_cfg_["side"].to_int(side_) != side_) {
+	if(side_cfg_["side"].to_int(side_) != side_){
 		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_;
 	}
 
 	log_step("init");
 
-	if(board_.map().empty()) {
+	if(board_.map().empty()){
 		throw game::load_game_failed("Map not found");
 	}
 
@@ -111,7 +111,7 @@ void team_builder::objectives()
 	// If this team has no objectives, set its objectives
 	// to the level-global "objectives"
 	// this is only used by the default mp 'Defeat enemy leader' objectives
-	if(team_.objectives().empty()) {
+	if(team_.objectives().empty()){
 		team_.set_objectives(level_["objectives"], false);
 	}
 }
@@ -120,8 +120,8 @@ void team_builder::previous_recruits()
 {
 	log_step("previous recruits");
 
-	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
-		for(const std::string& rec : utils::split(*v)) {
+	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")){
+		for(const std::string& rec : utils::split(*v)){
 			DBG_NG_TC << "adding previous recruit: " << rec;
 			team_.add_recruit(rec);
 		}
@@ -138,7 +138,7 @@ void team_builder::handle_unit(const config& u, const char* origin)
 		<< "x=[" << u["x"] << "] "
 		<< "y=[" << u["y"] << "]";
 
-	if(u["type"].empty()) {
+	if(u["type"].empty()){
 		WRN_NG_TC
 			<< "when building level, skipping a unit (id=[" << u["id"] << "]) from " << origin
 			<< " with no type information,\n"
@@ -149,8 +149,8 @@ void team_builder::handle_unit(const config& u, const char* origin)
 	}
 
 	const std::string& id = u["id"];
-	if(!id.empty()) {
-		if(seen_ids_.find(id) != seen_ids_.end()) {
+	if(!id.empty()){
+		if(seen_ids_.find(id) != seen_ids_.end()){
 			// seen before
 			config u_tmp = u;
 			u_tmp["side"] = std::to_string(side_);
@@ -173,12 +173,12 @@ void team_builder::handle_leader(const config& leader)
 
 	// Provide some default values, if not specified.
 	config::attribute_value& a1 = stored["canrecruit"];
-	if(a1.blank()) {
+	if(a1.blank()){
 		a1 = true;
 	}
 
 	config::attribute_value& a2 = stored["placement"];
-	if(a2.blank()) {
+	if(a2.blank()){
 		a2 = "map,leader";
 	}
 
@@ -189,7 +189,7 @@ void team_builder::handle_leader(const config& leader)
 void team_builder::leader()
 {
 	log_step("leader");
-	for(const config& l : side_cfg_.child_range("leader")) {
+	for(const config& l : side_cfg_.child_range("leader")){
 		handle_leader(l);
 	}
 }
@@ -203,7 +203,7 @@ void team_builder::prepare_units()
 	// for create-or-recall semantics to work: for each unit with non-empty
 	// id, unconditionally put OTHER, later, units with same id directly to
 	// recall list, not including them in unit_configs_
-	for(const config& su : side_cfg_.child_range("unit")) {
+	for(const config& su : side_cfg_.child_range("unit")){
 		handle_unit(su, "side_cfg");
 	}
 }
@@ -219,10 +219,10 @@ void team_builder::place_units()
 		.allow_rename_side(true)
 		.allow_show(false);
 
-	for(const config* u : unit_configs_) {
+	for(const config* u : unit_configs_){
 		try {
 			uc.add_unit(*u);
-		} catch(const unit_type_error& e) {
+		} catch(const unit_type_error& e){
 			ERR_NG_TC << e.what();
 		}
 	}

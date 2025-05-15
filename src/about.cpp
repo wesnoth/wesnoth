@@ -49,28 +49,28 @@ credits_group::credits_group(const config& cfg, bool is_campaign_credits)
 	, id()
 	, header()
 {
-	if(is_campaign_credits) {
+	if(is_campaign_credits){
 		id = cfg["id"].str();
 		header = cfg["name"].t_str();
 	}
 
 	sections.reserve(cfg.child_count("about"));
 
-	for(const config& about : cfg.child_range("about")) {
-		if(!about.has_child("entry")) {
+	for(const config& about : cfg.child_range("about")){
+		if(!about.has_child("entry")){
 			continue;
 		}
 
 		sections.emplace_back(about);
 
-		if(is_campaign_credits) {
+		if(is_campaign_credits){
 			gather_images(about, images_campaigns[id]);
 		} else {
 			gather_images(about, images_general);
 		}
 	}
 
-	if(cfg["sort"].to_bool(false)) {
+	if(cfg["sort"].to_bool(false)){
 		std::sort(sections.begin(), sections.end());
 	}
 }
@@ -81,7 +81,7 @@ credits_group::about_group::about_group(const config& cfg)
 {
 	names.reserve(cfg.child_count("entry"));
 
-	for(const config& entry : cfg.child_range("entry")) {
+	for(const config& entry : cfg.child_range("entry")){
 		names.emplace_back(font::escape_text(entry["name"].str()), font::escape_text(entry["comment"].str()));
 	}
 }
@@ -99,17 +99,17 @@ const credits_data& get_credits_data()
 utils::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign)
 {
 	const credits_data::const_iterator res = std::find_if(parsed_credits_data.begin(), parsed_credits_data.end(),
-		[&campaign](const credits_group& group) { return group.id == campaign; });
+		[&campaign](const credits_group& group){ return group.id == campaign; });
 	return res != parsed_credits_data.end() ? utils::make_optional(res) : utils::nullopt;
 }
 
 std::vector<std::string> get_background_images(const std::string& campaign)
 {
-	if(campaign.empty()) {
+	if(campaign.empty()){
 		return images_general;
 	}
 
-	if(const auto it = images_campaigns.find(campaign); it != images_campaigns.cend()) {
+	if(const auto it = images_campaigns.find(campaign); it != images_campaigns.cend()){
 		return it->second;
 	}
 
@@ -128,8 +128,8 @@ void set_about(const game_config_view& cfg)
 	//
 	// Parse all [credits_group] tags
 	//
-	for(const config& group : cfg.child_range("credits_group")) {
-		if(group.has_child("about")) {
+	for(const config& group : cfg.child_range("credits_group")){
+		if(group.has_child("about")){
 			parsed_credits_data.emplace_back(group, false);
 
 			// Not in the credits_group since we don't want to inadvertently
@@ -142,19 +142,19 @@ void set_about(const game_config_view& cfg)
 	// Parse all toplevel [about] tags.
 	//
 	config misc;
-	for(const config& about : cfg.child_range("about")) {
+	for(const config& about : cfg.child_range("about")){
 		misc.add_child("about", about);
 	}
 
-	if(!misc.empty()) {
+	if(!misc.empty()){
 		parsed_credits_data.emplace_back(misc, false);
 	}
 
 	//
 	// Parse all campaign [about] tags.
 	//
-	for(const config& campaign : cfg.child_range("campaign")) {
-		if(campaign.has_child("about")) {
+	for(const config& campaign : cfg.child_range("campaign")){
+		if(campaign.has_child("about")){
 			parsed_credits_data.emplace_back(campaign, true);
 		}
 	}

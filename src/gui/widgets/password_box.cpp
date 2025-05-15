@@ -44,7 +44,7 @@ void password_box::set_value(const std::string& text)
 	real_value_ = text;
 	std::size_t sz = utf8::size(text);
 	std::string passwd;
-	for(std::size_t i = 0; i < sz; i++) {
+	for(std::size_t i = 0; i < sz; i++){
 		passwd.append(font::unicode_bullet);
 	}
 	text_box::set_value(passwd);
@@ -53,11 +53,11 @@ void password_box::set_value(const std::string& text)
 void password_box::delete_selection()
 {
 	int len = get_selection_length();
-	if(len == 0) {
+	if(len == 0){
 		return;
 	}
 	unsigned start = get_selection_start();
-	if(len < 0) {
+	if(len < 0){
 		len = -len;
 		start -= len;
 	}
@@ -71,17 +71,17 @@ void password_box::insert_char(const std::string& unicode)
 {
 	int len = get_selection_length();
 	unsigned sel = get_selection_start();
-	if(len < 0) {
+	if(len < 0){
 		len = -len;
 		sel -= len;
 	}
 
 	std::size_t sz = utf8::size(unicode);
-	if(sz == 1) {
+	if(sz == 1){
 		text_box::insert_char(font::unicode_bullet);
 	} else {
 		std::string passwd;
-		for(std::size_t i = 0; i < sz; i++) {
+		for(std::size_t i = 0; i < sz; i++){
 			passwd.append(font::unicode_bullet);
 		}
 		text_box::insert_char(passwd);
@@ -92,7 +92,7 @@ void password_box::insert_char(const std::string& unicode)
 void password_box::paste_selection()
 {
 	const std::string& text = desktop::clipboard::copy_from_clipboard();
-	if(text.empty()) {
+	if(text.empty()){
 		return;
 	}
 	insert_char(text);

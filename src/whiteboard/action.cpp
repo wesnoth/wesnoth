@@ -72,7 +72,7 @@ action_ptr action::from_config(const config& cfg, bool hidden)
 			return std::make_shared<recall>(cfg, hidden);
 		else if(type == "suppose_dead")
 			return std::make_shared<suppose_dead>(cfg, hidden);
-	} catch(const action::ctor_err&) {
+	} catch(const action::ctor_err&){
 	}
 
 	return nullptr;

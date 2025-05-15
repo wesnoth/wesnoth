@@ -168,14 +168,14 @@ void movetype::terrain_info::data::clear_cache() const
 bool movetype::terrain_info::data::config_has_changes(const config & new_values,
                                                       bool overwrite) const
 {
-	if ( overwrite ) {
-		for (const auto& [key, value] : new_values.attribute_range())
-			if ( value != cfg_[key] )
+	if(overwrite){
+		for(const auto& [key, value] : new_values.attribute_range())
+			if(value != cfg_[key])
 				return true;
 	}
 	else {
 		for(const auto& [_, value] : new_values.attribute_range())
-			if ( value.to_int() != 0 )
+			if(value.to_int() != 0)
 				return true;
 	}
 
@@ -196,13 +196,13 @@ bool movetype::terrain_info::data::config_has_changes(const config & new_values,
  */
 void movetype::terrain_info::data::merge(const config & new_values, bool overwrite)
 {
-	if ( overwrite )
+	if(overwrite)
 		// We do not support child tags here, so do not copy any that might
 		// be in the input. (If in the future we need to support child tags,
 		// change "merge_attributes" to "merge_with".)
 		cfg_.merge_attributes(new_values);
 	else {
-		for(const auto& [new_key, new_value] : new_values.attribute_range()) {
+		for(const auto& [new_key, new_value] : new_values.attribute_range()){
 			config::attribute_value & dest = cfg_[new_key];
 			int old = dest.to_int(params_.max_value);
 
@@ -212,7 +212,7 @@ void movetype::terrain_info::data::merge(const config & new_values, bool overwri
 			// (Think defenses for why we might have negative values.)
 			int value = std::abs(old) + new_value.to_int(0);
 			value = std::max(params_.min_value, std::min(value, params_.max_value));
-			if ( old < 0 )
+			if(old < 0)
 				value = -value;
 
 			dest = value;
@@ -233,10 +233,10 @@ void movetype::terrain_info::data::merge(const config & new_values, bool overwri
 void movetype::terrain_info::data::write(
 	config & out_cfg, const std::string & child_name) const
 {
-	if ( cfg_.empty() )
+	if(cfg_.empty())
 		return;
 
-	if ( child_name.empty() )
+	if(child_name.empty())
 		out_cfg.merge_with(cfg_);
 	else
 		out_cfg.add_child(child_name, cfg_);
@@ -256,7 +256,7 @@ void movetype::terrain_info::data::write(
 	// Get a place to write to.
 	config & merged = child_name.empty() ? out_cfg : out_cfg.add_child(child_name);
 
-	if ( fallback )
+	if(fallback)
 		fallback->write(merged, "", true);
 	merged.merge_with(cfg_);
 }
@@ -276,7 +276,7 @@ int movetype::terrain_info::data::calc_value(
 	unsigned recurse_count) const
 {
 	// Infinite recursion detection:
-	if ( recurse_count > 100 ) {
+	if(recurse_count > 100){
 		ERR_CF << "infinite terrain_info recursion on "
 		       << (params_.use_move ? "movement" : "defense") << ": "
 			   << t_translation::write_terrain_code(terrain)
@@ -285,7 +285,7 @@ int movetype::terrain_info::data::calc_value(
 	}
 
 	std::shared_ptr<terrain_type_data> tdata;
-	if (game_config_manager::get()){
+	if(game_config_manager::get()){
 		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
 	}
 	assert(tdata);
@@ -295,32 +295,32 @@ int movetype::terrain_info::data::calc_value(
 			tdata->underlying_mvt_terrain(terrain) :
 			tdata->underlying_def_terrain(terrain);
 
-	if (terrain_type::is_indivisible(terrain, underlying))
+	if(terrain_type::is_indivisible(terrain, underlying))
 	{
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;
 
 		const std::string & id = tdata->get_terrain_info(terrain).id();
-		if (const config::attribute_value *val = cfg_.get(id)) {
+		if(const config::attribute_value *val = cfg_.get(id)){
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);
-			if ( params_.eval != nullptr )
+			if(params_.eval != nullptr)
 				result = params_.eval(result);
 		}
-		else if ( fallback != nullptr ) {
+		else if(fallback != nullptr){
 			// Get the value from our fallback.
 			result = fallback->value(terrain);
 		}
 
 		// Validate the value.
-		if ( result < params_.min_value ) {
+		if(result < params_.min_value){
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 			       << "), which is less than " << params_.min_value
 			       << "; resetting to " << params_.min_value << ".";
 			result = params_.min_value;
 		}
-		if ( result > params_.max_value ) {
+		if(result > params_.max_value){
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 				   << "), which is more than " << params_.max_value
@@ -335,20 +335,20 @@ int movetype::terrain_info::data::calc_value(
 		// This is an alias; select the best of all underlying terrains.
 		bool prefer_high = params_.high_is_good;
 		int result = params_.default_value;
-		if ( underlying.front() == t_translation::MINUS )
+		if(underlying.front() == t_translation::MINUS)
 			// Use the other value as the initial value.
 			result =  result == params_.max_value ? params_.min_value :
 			                                        params_.max_value;
 
 		// Loop through all underlying terrains.
 		t_translation::ter_list::const_iterator i;
-		for ( i = underlying.begin(); i != underlying.end(); ++i )
+		for(i = underlying.begin(); i != underlying.end(); ++i)
 		{
-			if ( *i == t_translation::PLUS ) {
+			if(*i == t_translation::PLUS){
 				// Prefer what is good.
 				prefer_high = params_.high_is_good;
 			}
-			else if ( *i == t_translation::MINUS ) {
+			else if(*i == t_translation::MINUS){
 				// Prefer what is bad.
 				prefer_high = !params_.high_is_good;
 			}
@@ -356,8 +356,8 @@ int movetype::terrain_info::data::calc_value(
 				// Test the underlying terrain's value against the best so far.
 				const int num = value(*i, fallback, recurse_count + 1);
 
-				if ( ( prefer_high  &&  num > result)  ||
-					 (!prefer_high  &&  num < result) )
+				if((prefer_high  &&  num > result)  ||
+					 (!prefer_high  &&  num < result))
 					result = num;
 			}
 		}
@@ -381,7 +381,7 @@ int movetype::terrain_info::data::value(
 	// Check the cache.
 	std::pair<cache_t::iterator, bool> cache_it =
 		cache_.emplace(terrain, -127); // Bogus value that should never be seen.
-	if ( cache_it.second )
+	if(cache_it.second)
 		// The cache did not have an entry for this terrain, so calculate the value.
 		cache_it.first->second = calc_value(terrain, fallback, recurse_count);
 
@@ -552,7 +552,7 @@ bool movetype::terrain_info::empty() const
 void movetype::terrain_info::merge(const config & new_values, bool overwrite,
 	const std::vector<movetype::terrain_info * > & dependants)
 {
-	if ( !get_data().config_has_changes(new_values, overwrite) )
+	if(!get_data().config_has_changes(new_values, overwrite))
 		// Nothing will change, so skip the copy-on-write.
 		return;
 
@@ -563,7 +563,7 @@ void movetype::terrain_info::merge(const config & new_values, bool overwrite,
 	// fallback. However, it's no problem for a writable instance to have a
 	// shareable instance as its fallback.
 	make_data_writable();
-	for (auto & dependant : dependants) {
+	for(auto & dependant : dependants){
 		// This will automatically clear the dependant's cache
 		dependant->make_data_writable();
 	}
@@ -590,7 +590,7 @@ int movetype::terrain_info::value(const t_translation::terrain_code & terrain) c
 void movetype::terrain_info::write(config & cfg, const std::string & child_name,
                                    bool merged) const
 {
-	if ( !merged )
+	if(!merged)
 		get_data().write(cfg, child_name);
 	else
 		get_data().write(cfg, child_name, fallback_);
@@ -609,11 +609,11 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
 std::unique_ptr<movetype::terrain_costs> movetype::terrain_info::make_standalone() const
 {
 	std::unique_ptr<terrain_costs> t;
-	if(!fallback_) {
+	if(!fallback_){
 		// Call the copy constructor, which will make_data_shareable().
 		t = std::make_unique<terrain_info>(*this, nullptr);
 	}
-	else if(get_data().empty()) {
+	else if(get_data().empty()){
 		// Pure fallback.
 		t = fallback_->make_standalone();
 	}
@@ -728,7 +728,7 @@ utils::string_map_res movetype::resistances::damage_table() const
 {
 	utils::string_map_res result;
 
-	for(const auto& [key, value] : cfg_.attribute_range()) {
+	for(const auto& [key, value] : cfg_.attribute_range()){
 		result[key] = value;
 	}
 
@@ -750,13 +750,13 @@ int movetype::resistances::resistance_against(const std::string & damage_type) c
  */
 void movetype::resistances::merge(const config & new_data, bool overwrite)
 {
-	if ( overwrite )
+	if(overwrite)
 		// We do not support child tags here, so do not copy any that might
 		// be in the input. (If in the future we need to support child tags,
 		// change "merge_attributes" to "merge_with".)
 		cfg_.merge_attributes(new_data);
 	else
-		for(const auto& [key, value] : new_data.attribute_range()) {
+		for(const auto& [key, value] : new_data.attribute_range()){
 			config::attribute_value & dest = cfg_[key];
 			dest = std::max(0, dest.to_int(100) + value.to_int(0));
 		}
@@ -769,10 +769,10 @@ void movetype::resistances::merge(const config & new_data, bool overwrite)
  */
 void movetype::resistances::write(config & out_cfg, const std::string & child_name) const
 {
-	if ( cfg_.empty() )
+	if(cfg_.empty())
 		return;
 
-	if ( child_name.empty() )
+	if(child_name.empty())
 		out_cfg.merge_with(cfg_);
 	else
 		out_cfg.add_child(child_name, cfg_);
@@ -811,7 +811,7 @@ movetype::movetype(const config & cfg) :
 	// 1.15 will support both "flying" and "flies", with "flies" being deprecated
 	flying_ = cfg["flying"].to_bool(flying_);
 
-	for(const config& sn : cfg.child_range("special_note")) {
+	for(const config& sn : cfg.child_range("special_note")){
 		special_notes_.push_back(sn["note"]);
 	}
 }
@@ -849,8 +849,8 @@ movetype::movetype(movetype && that) :
  * Checks if we have a defense cap (nontrivial min value) for any of the given terrain types.
  */
 bool movetype::has_terrain_defense_caps(const std::set<t_translation::terrain_code> & ts) const {
-	for (const t_translation::terrain_code & t : ts) {
-		if (defense_.capped(t))
+	for(const t_translation::terrain_code & t : ts){
+		if(defense_.capped(t))
 			return true;
 	}
 	return false;
@@ -858,8 +858,8 @@ bool movetype::has_terrain_defense_caps(const std::set<t_translation::terrain_co
 
 void movetype::merge(const config & new_cfg, bool overwrite)
 {
-	for (const auto & applies_to : movetype::effects) {
-		for (const config & child : new_cfg.child_range(applies_to)) {
+	for(const auto & applies_to : movetype::effects){
+		for(const config & child : new_cfg.child_range(applies_to)){
 			merge(child, applies_to, overwrite);
 		}
 	}
@@ -874,19 +874,19 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 
 void movetype::merge(const config & new_cfg, const std::string & applies_to, bool overwrite)
 {
-	if(applies_to == "movement_costs") {
+	if(applies_to == "movement_costs"){
 		movement_.merge(new_cfg, overwrite, {&vision_, &jamming_});
 	}
-	else if(applies_to == "vision_costs") {
+	else if(applies_to == "vision_costs"){
 		vision_.merge(new_cfg, overwrite, {&jamming_});
 	}
-	else if(applies_to == "jamming_costs") {
+	else if(applies_to == "jamming_costs"){
 		jamming_.merge(new_cfg, overwrite, {});
 	}
-	else if(applies_to == "defense") {
+	else if(applies_to == "defense"){
 		defense_.merge(new_cfg, overwrite);
 	}
-	else if(applies_to == "resistance") {
+	else if(applies_to == "resistance"){
 		resist_.merge(new_cfg, overwrite);
 	}
 	else {
@@ -911,8 +911,8 @@ void movetype::write(config& cfg, bool include_notes) const
 	if(flying_)
 		cfg["flying"] = true;
 
-	if(include_notes) {
-		for(const auto& note : special_notes_) {
+	if(include_notes){
+		for(const auto& note : special_notes_){
 			cfg.add_child("special_note", config{"note", note});
 		}
 	}

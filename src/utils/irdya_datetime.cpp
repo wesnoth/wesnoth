@@ -26,21 +26,21 @@ irdya_date irdya_date::read_date(const std::string& date)
 
 	// Currently only supports a year and an epoch.
 	std::size_t year_start = date.find_first_not_of(' ');
-	if(year_start == std::string::npos) {
+	if(year_start == std::string::npos){
 		// throw std::invalid_argument("Irdya date is missing year");
 		date_result.year = 0;
 		return date_result;
 	}
 
 	std::size_t year_end = date.find_first_of(' ', year_start);
-	if(year_end == std::string::npos) {
+	if(year_end == std::string::npos){
 		year_end = date.size();
 	}
 
 	date_result.year = std::stoi(date.substr(year_start, year_end - year_start));
 
 	std::size_t epoch_start = date.find_first_not_of(' ', year_end);
-	if(epoch_start == std::string::npos) {
+	if(epoch_start == std::string::npos){
 		date_result.epoch = wesnoth_epoch::type::wesnoth;
 	} else {
 		std::size_t epoch_end = date.find_first_of(' ', epoch_start);
@@ -54,7 +54,7 @@ std::string irdya_date::to_string() const
 {
 	utils::string_map args {{"year", std::to_string(year)}};
 
-	switch(epoch) {
+	switch(epoch){
 	case wesnoth_epoch::type::before_wesnoth:
 		// TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 		return VGETTEXT("$year BW", args);
@@ -74,24 +74,24 @@ std::string irdya_date::to_string() const
 
 bool utils::operator<(const irdya_date& a, const irdya_date& b)
 {
-	if(!b.is_valid()) {
+	if(!b.is_valid()){
 		return a.is_valid();
 	}
 
-	if(!a.is_valid()) {
+	if(!a.is_valid()){
 		return false;
 	}
 
-	if(a.get_epoch() < b.get_epoch()) {
+	if(a.get_epoch() < b.get_epoch()){
 		return true;
 	}
 
-	if(a.get_epoch() > b.get_epoch()) {
+	if(a.get_epoch() > b.get_epoch()){
 		return false;
 	}
 
 	// The BW and BF epochs count backward, much like BCE
-	if(a.get_epoch() == wesnoth_epoch::type::before_wesnoth || a.get_epoch() == wesnoth_epoch::type::before_fall) {
+	if(a.get_epoch() == wesnoth_epoch::type::before_wesnoth || a.get_epoch() == wesnoth_epoch::type::before_fall){
 		return (a.get_year() > b.get_year());
 	} else {
 		return (a.get_year() < b.get_year());

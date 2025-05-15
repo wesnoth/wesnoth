@@ -49,20 +49,20 @@ namespace wb
 std::ostream &operator<<(std::ostream &out, const wb::side_actions& side_actions)
 {
 	out << "Content of side_actions:";
-	for(std::size_t turn = 0; turn < side_actions.num_turns(); ++turn) {
+	for(std::size_t turn = 0; turn < side_actions.num_turns(); ++turn){
 		out << "\n  Turn " << turn;
 
 		int count = 1;
-		for(wb::side_actions::const_iterator it = side_actions.turn_begin(turn); it != side_actions.turn_end(turn); ++it) {
+		for(wb::side_actions::const_iterator it = side_actions.turn_begin(turn); it != side_actions.turn_end(turn); ++it){
 			out << "\n    (" << count++ << ") " << *it;
 		}
 
-		if(side_actions.turn_size(turn) == 0) {
+		if(side_actions.turn_size(turn) == 0){
 			out << "\n    (empty)";
 		}
 	}
 
-	if(side_actions.empty()) {
+	if(side_actions.empty()){
 		out << " (empty)";
 	}
 
@@ -77,17 +77,17 @@ side_actions_container::side_actions_container()
 
 std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t end, const_iterator it) const
 {
-	if(begin+1 >= end) {
-		if(begin+1 != end) {
+	if(begin+1 >= end){
+		if(begin+1 != end){
 			ERR_WB << "get_turn: begin >= end";
 		}
-		else if(it < turn_beginnings_[begin]) {
+		else if(it < turn_beginnings_[begin]){
 			ERR_WB << "get_turn failed";
 		}
 		return begin;
 	}
 	std::size_t mid = (begin+end) / 2;
-	if(it < turn_beginnings_[mid]) {
+	if(it < turn_beginnings_[mid]){
 		return get_turn_impl(begin, mid, it);
 	} else {
 		return get_turn_impl(mid, end, it);
@@ -101,11 +101,11 @@ std::size_t side_actions_container::get_turn(const_iterator it) const
 
 std::size_t side_actions_container::position_in_turn(const_iterator it) const
 {
-	return it - turn_begin( get_turn(it) );
+	return it - turn_begin(get_turn(it));
 }
 
 side_actions_container::iterator side_actions_container::turn_begin(std::size_t turn_num){
-	if(turn_num >= num_turns()) {
+	if(turn_num >= num_turns()){
 		return end();
 	} else {
 		return turn_beginnings_[turn_num];
@@ -114,7 +114,7 @@ side_actions_container::iterator side_actions_container::turn_begin(std::size_t 
 
 side_actions_container::const_iterator side_actions_container::turn_begin(std::size_t turn_num) const
 {
-	if(turn_num >= num_turns()) {
+	if(turn_num >= num_turns()){
 		return end();
 	} else {
 		return turn_beginnings_[turn_num];
@@ -122,16 +122,16 @@ side_actions_container::const_iterator side_actions_container::turn_begin(std::s
 }
 
 side_actions_container::iterator side_actions_container::push_front(std::size_t turn, const action_ptr& action){
-	if(turn_size(turn) == 0) {
+	if(turn_size(turn) == 0){
 		return queue(turn, action);
 	}
 
 	iterator res = insert(turn_begin(turn), action);
-	if(res != end()) {
+	if(res != end()){
 		bool current_turn_unplanned = turn_size(0) == 0;
 		turn_beginnings_[turn] = res;
 
-		if(current_turn_unplanned && turn == 1) {
+		if(current_turn_unplanned && turn == 1){
 			turn_beginnings_.front() = res;
 		}
 	}
@@ -145,10 +145,10 @@ side_actions_container::iterator side_actions_container::insert(iterator positio
 	bool first = position == begin();
 
 	std::pair<iterator,bool> res = actions_.insert(position, action);
-	if(!res.second) {
+	if(!res.second){
 		return end();
 	}
-	if(first) {
+	if(first){
 		// If we are inserting before the first action, then the inserted action should became the first of turn 0.
 		turn_beginnings_.front() = begin();
 	}
@@ -167,17 +167,17 @@ side_actions_container::iterator side_actions_container::queue(std::size_t turn_
 	assert(turn_num <= num_turns() || future_only);
 
 	std::pair<iterator,bool> res = actions_.insert(turn_end(turn_num), action);
-	if(!res.second) {
+	if(!res.second){
 		return end();
 	}
 
-	if(future_only) {
+	if(future_only){
 		// No action are planned for the current turn but we are planning an action for turn 1 (the next turn).
 		turn_beginnings_.push_back(res.first);
 	}
-	if(turn_num >= num_turns()) {
+	if(turn_num >= num_turns()){
 		turn_beginnings_.push_back(res.first);
-	} else if(current_turn_unplanned && turn_num == 0) {
+	} else if(current_turn_unplanned && turn_num == 0){
 		// We are planning the first action of the current turn while others actions are planned in the future.
 		turn_beginnings_.front() = res.first;
 	}
@@ -214,9 +214,9 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 
 	// pre-processing (check if position is at the beginning of a turn)
 	action_limits::iterator beginning = std::find(turn_beginnings_.begin(), turn_beginnings_.end(), position);
-	if(beginning != turn_beginnings_.end()) {
-		if(deleting_last_element) {
-			if(size() == 1) {
+	if(beginning != turn_beginnings_.end()){
+		if(deleting_last_element){
+			if(size() == 1){
 				// If we are deleting our sole action, we can clear turn_beginnings_ (and we have to if this last action is in turn 1)
 				turn_beginnings_.clear();
 			} else {
@@ -225,15 +225,15 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 			}
 		} else {
 #if 1
-			for(auto& it : turn_beginnings_) {
-				if (it == position) {
+			for(auto& it : turn_beginnings_){
+				if(it == position){
 					it = next;
 				}
 			}
 #else
 			std::size_t turn_of_position = std::distance(turn_beginnings_.begin(), beginning);
 			// If we still have action this turn
-			if(get_turn(next) == turn_of_position) {
+			if(get_turn(next) == turn_of_position){
 				*beginning = next; // We modify the beginning of the turn
 			} else {
 				assert(turn_of_position == 0);
@@ -249,10 +249,10 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 
 side_actions_container::iterator side_actions_container::erase(iterator first, iterator last){
 	// @todo rewrite using boost::multi_index::erase(iterator,iterator) for efficiency.
-	if(first>=last) {
+	if(first>=last){
 		return last;
 	}
-	for(iterator it = last-1; it>first; --it) {
+	for(iterator it = last-1; it>first; --it){
 		it = erase(it);
 	}
 	return erase(first);
@@ -277,7 +277,7 @@ void side_actions::set_team_index(std::size_t team_index)
 
 void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 {
-	if(empty()) {
+	if(empty()){
 		return;
 	}
 
@@ -287,21 +287,21 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 	std::set<std::size_t>& secondary_numbers = result.secondary_numbers;
 	std::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
 
-	for(const_iterator it = begin(); it != end(); ++it) {
-		if((*it)->is_numbering_hex(hex)) {
+	for(const_iterator it = begin(); it != end(); ++it){
+		if((*it)->is_numbering_hex(hex)){
 			//store number corresponding to iterator's position + 1
 			std::size_t number = (it - begin()) + 1;
 			std::size_t index = numbers_to_draw.size();
 			numbers_to_draw.push_back(number);
 			team_numbers.push_back(team_index());
 
-			if(hlighter) {
-				if(hlighter->get_main_highlight().lock() == *it) {
+			if(hlighter){
+				if(hlighter->get_main_highlight().lock() == *it){
 					main_number = index;
 				}
 
-				for(weak_action_ptr action : hlighter->get_secondary_highlights()) {
-					if(action.lock() == *it) {
+				for(weak_action_ptr action : hlighter->get_secondary_highlights()){
+					if(action.lock() == *it){
 						secondary_numbers.insert(index);
 					}
 				}
@@ -312,7 +312,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 
 bool side_actions::execute_next()
 {
-	if(!empty()) {
+	if(!empty()){
 		return execute(begin());
 	} else { //nothing is executable right now
 		return false;
@@ -321,11 +321,11 @@ bool side_actions::execute_next()
 
 bool side_actions::execute(side_actions::iterator position)
 {
-	if(resources::whiteboard->has_planned_unit_map()) {
+	if(resources::whiteboard->has_planned_unit_map()){
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
-	if(actions_.empty() || position == actions_.end()) {
+	if(actions_.empty() || position == actions_.end()){
 		return false;
 	}
 
@@ -335,7 +335,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	action_ptr action = *position;
 
-	if(!action->valid()) {
+	if(!action->valid()){
 		LOG_WB << "Invalid action sent to execution, deleting.";
 		synced_erase(position);
 		return true;
@@ -346,7 +346,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool action_complete;
 	try	{
 		 action->execute(action_successful, action_complete);
-	} catch (const return_to_play_side_exception&) {
+	} catch (const return_to_play_side_exception&){
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this;
 		//validate actions at next map rebuild
@@ -354,8 +354,8 @@ bool side_actions::execute(side_actions::iterator position)
 		throw;
 	}
 
-	if(resources::whiteboard->should_clear_undo()) {
-		if(resources::controller->current_team().auto_shroud_updates()) {
+	if(resources::whiteboard->should_clear_undo()){
+		if(resources::controller->current_team().auto_shroud_updates()){
 			resources::undo_stack->clear();
 		}
 		else {
@@ -365,7 +365,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	std::stringstream ss;
 	ss << "After " << (action_successful? "successful": "failed") << " execution ";
-	if(action_complete) {
+	if(action_complete){
 		ss << "with deletion, ";
 		synced_erase(position);
 	}
@@ -386,32 +386,32 @@ bool side_actions::execute(side_actions::iterator position)
 
 void side_actions::hide()
 {
-	if(hidden_) {
+	if(hidden_){
 		return;
 	}
 
 	hidden_ = true;
 
-	for(action_ptr act : *this) {
+	for(action_ptr act : *this){
 		act->hide();
 	}
 }
 void side_actions::show()
 {
-	if(!hidden_) {
+	if(!hidden_){
 		return;
 	}
 
 	hidden_ = false;
 
-	for(action_ptr act : *this) {
+	for(action_ptr act : *this){
 		act->show();
 	}
 }
 
 side_actions::iterator side_actions::insert_action(iterator position, const action_ptr& action)
 {
-	if(resources::whiteboard->has_planned_unit_map()) {
+	if(resources::whiteboard->has_planned_unit_map()){
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 	iterator valid_position = synced_insert(position, action);
@@ -423,7 +423,7 @@ side_actions::iterator side_actions::insert_action(iterator position, const acti
 
 side_actions::iterator side_actions::queue_action(std::size_t turn_num, const action_ptr& action)
 {
-	if(resources::whiteboard->has_planned_unit_map()) {
+	if(resources::whiteboard->has_planned_unit_map()){
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 	iterator result = synced_enqueue(turn_num, action);
@@ -440,26 +440,26 @@ namespace
 	struct swapable_with_move: public visitor
 	{
 	public:
-		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(std::move(second)) {}
+		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(std::move(second)){}
 		bool valid() const { return valid_; }
 
-		void visit(move_ptr first) {
+		void visit(move_ptr first){
 			valid_ = second_->get_dest_hex() != first->get_source_hex();
 		}
 
-		void visit(attack_ptr first) {
+		void visit(attack_ptr first){
 			visit(std::static_pointer_cast<move>(first));
 		}
 
-		void visit(recruit_ptr first) {
+		void visit(recruit_ptr first){
 			check_recruit_recall(first->get_recruit_hex());
 		}
 
-		void visit(recall_ptr first) {
+		void visit(recall_ptr first){
 			check_recruit_recall(first->get_recall_hex());
 		}
 
-		void visit(suppose_dead_ptr) {
+		void visit(suppose_dead_ptr){
 			valid_ = true;
 		}
 
@@ -469,12 +469,12 @@ namespace
 		side_actions::iterator position_;
 		move_ptr second_;
 
-		void check_recruit_recall(const map_location &loc) {
+		void check_recruit_recall(const map_location &loc){
 			const unit_const_ptr leader = second_->get_unit();
-			if(leader->can_recruit() && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, loc)) {
-				if(const unit_const_ptr backup_leader = find_backup_leader(*leader)) {
+			if(leader->can_recruit() && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, loc)){
+				if(const unit_const_ptr backup_leader = find_backup_leader(*leader)){
 					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
-					if(!(it == sa_.end() || position_ < it)) {
+					if(!(it == sa_.end() || position_ < it)){
 						return; //backup leader but he moves before us, refuse bump
 					}
 				} else {
@@ -489,7 +489,7 @@ namespace
 //move action toward front of queue
 side_actions::iterator side_actions::bump_earlier(side_actions::iterator position, bool send_to_net)
 {
-	if(resources::whiteboard->has_planned_unit_map()) {
+	if(resources::whiteboard->has_planned_unit_map()){
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
@@ -497,7 +497,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 
 	//Don't allow bumping the very first action any earlier, of course.
 	//Also, don't allow bumping an action into a previous turn queue
-	if(actions_.position_in_turn(position) == 0) {
+	if(actions_.position_in_turn(position) == 0){
 		return end();
 	}
 
@@ -506,14 +506,14 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	const unit_const_ptr previous_ptr = (*previous)->get_unit();
 	const unit_const_ptr current_ptr = (*position)->get_unit();
-	if(previous_ptr && current_ptr && previous_ptr.get() == current_ptr.get()) {
+	if(previous_ptr && current_ptr && previous_ptr.get() == current_ptr.get()){
 		return end();
 	}
 
-	if(move_ptr second = std::dynamic_pointer_cast<move>(*position)) {
+	if(move_ptr second = std::dynamic_pointer_cast<move>(*position)){
 		swapable_with_move check(*this, position, second);
 		(*previous)->accept(check);
-		if(!check.valid()) {
+		if(!check.valid()){
 			return end();
 		}
 	}
@@ -528,7 +528,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			<< " to position #" << action_number - 1  << "/" << last_position
 			<< ".";
 
-	if (send_to_net) {
+	if(send_to_net){
 		resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_bump_later(position - 1));
 	}
 	actions_.bump_earlier(position);
@@ -543,11 +543,11 @@ side_actions::iterator side_actions::bump_later(iterator position, bool send_to_
 	assert(position < end());
 
 	++position;
-	if(position == end()) {
+	if(position == end()){
 		return end();
 	}
 	position = bump_earlier(position, send_to_net);
-	if(position == end()) {
+	if(position == end()){
 		return end();
 	}
 	return position + 1;
@@ -555,7 +555,7 @@ side_actions::iterator side_actions::bump_later(iterator position, bool send_to_
 
 side_actions::iterator side_actions::remove_action(side_actions::iterator position, bool validate_after_delete)
 {
-	if(resources::whiteboard->has_planned_unit_map()) {
+	if(resources::whiteboard->has_planned_unit_map()){
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
@@ -564,7 +564,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position);
 
 
-	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
+	if(resources::gameboard->get_team(team_index_ + 1).is_local()){
 		position = synced_erase(position);
 	}
 	else {
@@ -576,7 +576,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	}
 
 
-	if(validate_after_delete) {
+	if(validate_after_delete){
 		resources::whiteboard->validate_viewer_actions();
 	}
 
@@ -604,7 +604,7 @@ side_actions::iterator side_actions::find_last_action_of(size_t unit_id, side_ac
 
 side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id) const
 {
-	if(end() == begin()) {
+	if(end() == begin()){
 		return end();
 	}
 	return find_last_action_of(unit_id, end() - 1);
@@ -612,7 +612,7 @@ side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id) c
 
 side_actions::iterator side_actions::find_last_action_of(size_t unit_id)
 {
-	if(end() == begin()) {
+	if(end() == begin()){
 		return end();
 	}
 	return find_last_action_of(unit_id, end() - 1);
@@ -634,7 +634,7 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 
 side_actions::const_iterator side_actions::find_last_action_of(const unit& unit) const
 {
-	if(end() == begin()) {
+	if(end() == begin()){
 		return end();
 	}
 	return find_last_action_of(unit, end() - 1);
@@ -642,7 +642,7 @@ side_actions::const_iterator side_actions::find_last_action_of(const unit& unit)
 
 side_actions::iterator side_actions::find_last_action_of(const unit& unit)
 {
-	if(end() == begin()) {
+	if(end() == begin()){
 		return end();
 	}
 	return find_last_action_of(unit, end() - 1);
@@ -670,7 +670,7 @@ std::deque<action_ptr> side_actions::actions_of(const unit& target)
 std::size_t side_actions::get_turn_num_of(const unit& u) const
 {
 	const_iterator itor = find_last_action_of(u);
-	if(itor == end()) {
+	if(itor == end()){
 		return 0;
 	}
 	return get_turn(itor);
@@ -691,10 +691,10 @@ void side_actions::reset_gold_spent()
 
 void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
 {
-	for(const_iterator it = begin(); it != end(); ++it) {
-		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
-			if(mp->raw_uid() == old_id) {
-				actions_.modify(it, [&](action_ptr& p) {
+	for(const_iterator it = begin(); it != end(); ++it){
+		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)){
+			if(mp->raw_uid() == old_id){
+				actions_.modify(it, [&](action_ptr& p){
 					static_cast<move&>(*p).modify_unit(new_unit);
 				});
 			}
@@ -705,7 +705,7 @@ void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
 side_actions::iterator side_actions::safe_insert(std::size_t turn, std::size_t pos, const action_ptr& act)
 {
 	assert(act);
-	if(pos == 0) {
+	if(pos == 0){
 		return actions_.push_front(turn, act);
 	} else {
 		return actions_.insert(turn_begin(turn) + pos, act);
@@ -729,7 +729,7 @@ side_actions::iterator side_actions::synced_enqueue(std::size_t turn_num, const 
 	//raw_enqueue() creates actions_[turn_num] if it doesn't exist already, so we
 	//have to do it first -- before subsequently calling actions_[turn_num].size().
 	iterator result = actions_.queue(turn_num, act);
-	if(result != end()) {
+	if(result != end()){
 		resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_insert(turn_num, turn_size(turn_num) - 1, act));
 		// The insert position is turn_size(turn_num)-1 since we already inserted the action.
 	}
@@ -778,17 +778,17 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 {
 	std::string type = cmd["type"];
 
-	if(type=="insert") {
+	if(type=="insert"){
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
-		if(!act) {
+		if(!act){
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
 		}
 
 		iterator itor = safe_insert(turn, pos, act);
-		if(itor >= end()) {
+		if(itor >= end()){
 			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!";
 			return;
 		}
@@ -797,20 +797,20 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		//update numbering hexes as necessary
 		++itor;
-		for(iterator end_itor = end(); itor != end_itor; ++itor) {
+		for(iterator end_itor = end(); itor != end_itor; ++itor){
 			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
-	} else if(type=="replace") {
+	} else if(type=="replace"){
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
-		if(!act) {
+		if(!act){
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
 		}
 
 		iterator itor = turn_begin(turn) + pos;
-		if(itor >= end() || get_turn(itor) != turn) {
+		if(itor >= end() || get_turn(itor) != turn){
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
@@ -821,12 +821,12 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		}
 
 		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act;
-	} else if(type=="remove") {
+	} else if(type=="remove"){
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
 
 		iterator itor = turn_begin(turn) + pos;
-		if(itor >= end() || get_turn(itor) != turn) {
+		if(itor >= end() || get_turn(itor) != turn){
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
@@ -836,15 +836,15 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
-		for(iterator end_itor = end(); itor != end_itor; ++itor) {
+		for(iterator end_itor = end(); itor != end_itor; ++itor){
 			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
-	} else if(type=="bump_later") {
+	} else if(type=="bump_later"){
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
 
 		iterator itor = turn_begin(turn) + pos;
-		if(itor+1 >= end() || get_turn(itor) != turn) {
+		if(itor+1 >= end() || get_turn(itor) != turn){
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
@@ -858,10 +858,10 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		//update numbering hexes as necessary
 		display::get_singleton()->invalidate(first_action->get_numbering_hex());
 		display::get_singleton()->invalidate(second_action->get_numbering_hex());
-	} else if(type=="clear") {
+	} else if(type=="clear"){
 		LOG_WB << "Command received: clear";
 		clear();
-	} else if(type=="refresh") {
+	} else if(type=="refresh"){
 		LOG_WB << "Command received: refresh";
 		clear();
 		for(const net_cmd& sub_cmd : cmd.child_range("net_cmd"))
@@ -885,7 +885,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(std::size_t turn_num, st
 }
 side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& pos, const action_const_ptr& act) const
 {
-	if(pos == begin()) {
+	if(pos == begin()){
 		return make_net_cmd_insert(0,0,act);
 	} else {
 		const_iterator prec = pos - 1;
@@ -928,7 +928,7 @@ side_actions::net_cmd side_actions::make_net_cmd_refresh() const
 	net_cmd result;
 	result["type"] = "refresh";
 
-	for(const_iterator itor = begin(), end_itor = end(); itor != end_itor; ++itor) {
+	for(const_iterator itor = begin(), end_itor = end(); itor != end_itor; ++itor){
 		result.add_child("net_cmd", make_net_cmd_insert(get_turn(itor), actions_.position_in_turn(itor), *itor));
 	}
 
@@ -939,9 +939,9 @@ void side_actions::raw_turn_shift()
 {
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
 	std::set<unit_const_ptr> lazy_units;
-	for(const action_ptr& act : iter_turn(0)) {
+	for(const action_ptr& act : iter_turn(0)){
 		unit_const_ptr u = act->get_unit();
-		if(u) {
+		if(u){
 			lazy_units.insert(u);
 		}
 	}
@@ -949,18 +949,18 @@ void side_actions::raw_turn_shift()
 	//push their plans back one turn
 	std::set<unit_const_ptr>::iterator lazy_end = lazy_units.end();
 	iterator itor = end();
-	while(itor != begin()) {
+	while(itor != begin()){
 		--itor;
 		action_ptr act = *itor;
 
-		if(lazy_units.find(act->get_unit()) != lazy_end) {
+		if(lazy_units.find(act->get_unit()) != lazy_end){
 			safe_insert(get_turn(itor)+1, 0, act);
 			itor = actions_.erase(itor);
 		}
 	}
 
 	//push any remaining first-turn plans into the second turn
-	for(iterator act=turn_begin(0), end=turn_end(0); act!=end; ++act) {
+	for(iterator act=turn_begin(0), end=turn_end(0); act!=end; ++act){
 		safe_insert(1, 0, *act);
 	}
 

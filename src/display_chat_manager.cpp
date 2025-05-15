@@ -48,20 +48,20 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 {
 	const bool whisper = speaker.find("whisper: ") == 0;
 	std::string sender = speaker;
-	if (whisper) {
+	if(whisper){
 		sender.assign(speaker, 9, speaker.size());
-		add_whisperer( sender );
+		add_whisperer(sender);
 	}
 	//remove disconnected user from whisperer
 	std::string::size_type pos = message.find(" has disconnected");
-	if (pos != std::string::npos){
+	if(pos != std::string::npos){
 		for(std::set<std::string>::const_iterator w = whisperers().begin(); w != whisperers().end(); ++w){
-			if (*w == message.substr(0,pos)) remove_whisperer(*w);
+			if(*w == message.substr(0,pos)) remove_whisperer(*w);
 		}
 	}
 
-	if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
-	if (prefs::get().is_ignored(sender)) return;
+	if(!prefs::get().parse_should_show_lobby_join(sender, message)) return;
+	if(prefs::get().is_ignored(sender)) return;
 
 	//prefs::get().parse_admin_authentication(sender, message); TODO: replace
 
@@ -70,18 +70,18 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 		const game_board * board = dynamic_cast<const game_board*>(&my_disp_.context());
 
-		if (board) {
+		if(board){
 			is_observer = board->is_observer();
 		}
 	}
 
-	if (bell) {
-		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
-			|| utils::word_match(message, prefs::get().login())) {
+	if(bell){
+		if((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
+			|| utils::word_match(message, prefs::get().login())){
 			mp::ui_alerts::private_message(false, sender, message);
-		} else if (prefs::get().is_friend(sender)) {
+		} else if(prefs::get().is_friend(sender)){
 			mp::ui_alerts::friend_message(false, sender, message);
-		} else if (sender == "server") {
+		} else if(sender == "server"){
 			mp::ui_alerts::server_message(false, sender, message);
 		} else {
 			mp::ui_alerts::public_message(false, sender, message);
@@ -92,7 +92,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	std::string msg;
 
-	if (message.compare(0,4,"/me ") == 0) {
+	if(message.compare(0,4,"/me ") == 0){
 		msg.assign(message, 4, message.size());
 		action = true;
 	} else {
@@ -103,18 +103,18 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
 		msg = video::headless() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
-	} catch (utf8::invalid_utf8_exception&) {
+	} catch (utf8::invalid_utf8_exception&){
 		ERR_NG << "Invalid utf-8 found, chat message is ignored.";
 		return;
 	}
 
 	int ypos = chat_message_x;
-	for(const auto& m : chat_messages_) {
+	for(const auto& m : chat_messages_){
 		ypos += std::max(font::get_floating_label_rect(m.handle).h,
 			font::get_floating_label_rect(m.speaker_handle).h);
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
-	if(side >= 1) {
+	if(side >= 1){
 		speaker_color = team::get_side_color_range(side).mid();
 	}
 
@@ -122,23 +122,23 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	std::stringstream str;
 	std::stringstream message_str;
 
-	if(type ==  events::chat_handler::MESSAGE_PUBLIC) {
-		if(action) {
+	if(type ==  events::chat_handler::MESSAGE_PUBLIC){
+		if(action){
 			str << "<" << speaker << " " << msg << ">";
 			message_color = speaker_color;
 			message_str << " ";
 		} else {
-			if (!speaker.empty())
+			if(!speaker.empty())
 				str << "<" << speaker << ">";
 			message_str << msg;
 		}
 	} else {
-		if(action) {
+		if(action){
 			str << "*" << speaker << " " << msg << "*";
 			message_color = speaker_color;
 			message_str << " ";
 		} else {
-			if (!speaker.empty())
+			if(!speaker.empty())
 				str << "*" << speaker << "*";
 			message_str << msg;
 		}
@@ -194,8 +194,8 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 
 	int movement = 0;
 
-	if(enable_aging || remove_all || chat_messages_.size() > max_chat_messages) {
-		while (!chat_messages_.empty() &&
+	if(enable_aging || remove_all || chat_messages_.size() > max_chat_messages){
+		while(!chat_messages_.empty() &&
 		       (remove_all ||
 			chat_messages_.front().created_at < remove_before ||
 		        chat_messages_.size() > max_chat_messages))
@@ -208,7 +208,7 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 		}
 	}
 
-	for(const chat_message &cm : chat_messages_) {
+	for(const chat_message &cm : chat_messages_){
 		font::move_floating_label(cm.speaker_handle, 0, - movement);
 		font::move_floating_label(cm.handle, 0, - movement);
 	}

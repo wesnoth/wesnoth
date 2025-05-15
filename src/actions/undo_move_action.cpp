@@ -72,7 +72,7 @@ bool move_action::undo(int)
 	// Check units.
 	unit_map::iterator u = units.find(rev_route.front());
 	const unit_map::iterator u_end = units.find(rev_route.back());
-	if(u == units.end() || u_end != units.end()) {
+	if(u == units.end() || u_end != units.end()){
 		// this can actually happen if the scenario designer has abused the [allow_undo] command
 		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?";
 		return false;

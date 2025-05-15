@@ -116,12 +116,12 @@ void recruit::execute(bool& success, bool& complete)
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(-cost_);
 	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, loc);
 	//If it failed, take back the gold
-	if (!result) {
+	if(!result){
 		resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost_);
 	}
 	else {
 		auto mit = resources::gameboard->units().find(loc);
-		if(mit != resources::gameboard->units().end()) {
+		if(mit != resources::gameboard->units().end()){
 			viewer_actions()->update_recruited_unit(old_id, *mit);
 		}
 
@@ -166,7 +166,7 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 
 void recruit::draw_hex(const map_location& hex)
 {
-	if (hex == recruit_hex_)
+	if(hex == recruit_hex_)
 	{
 		const double x_offset = 0.5;
 		const double y_offset = 0.7;
@@ -202,25 +202,25 @@ unit_ptr recruit::create_corresponding_unit()
 action::error recruit::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::gameboard->units().find(recruit_hex_) != resources::gameboard->units().end()) {
+	if(resources::gameboard->units().find(recruit_hex_) != resources::gameboard->units().end()){
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list
 	const std::set<std::string>& recruits = resources::gameboard->teams()[team_index()].recruits();
-	if(recruits.find(unit_name_) == recruits.end()) {
-		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
+	if(recruits.find(unit_name_) == recruits.end()){
+		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader){
 			return std::find(leader.recruits().begin(), leader.recruits().end(), unit_name_) != leader.recruits().end();
 		});
-		if (!in_extra_recruit) {
+		if(!in_extra_recruit){
 			return UNIT_UNAVAILABLE;
 		}
 	}
 	//Check that there is still enough gold to recruit this unit
-	if(temp_unit_->cost() > resources::gameboard->teams()[team_index()].gold()) {
+	if(temp_unit_->cost() > resources::gameboard->teams()[team_index()].gold()){
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recruit this unit
-	if(!find_recruiter(team_index(),get_recruit_hex())) {
+	if(!find_recruiter(team_index(),get_recruit_hex())){
 		return NO_LEADER;
 	}
 
@@ -243,7 +243,7 @@ config recruit::to_config() const
 	return final_cfg;
 }
 
-void recruit::do_hide() {fake_unit_->set_hidden(true);}
-void recruit::do_show() {fake_unit_->set_hidden(false);}
+void recruit::do_hide(){fake_unit_->set_hidden(true);}
+void recruit::do_show(){fake_unit_->set_hidden(false);}
 
 }

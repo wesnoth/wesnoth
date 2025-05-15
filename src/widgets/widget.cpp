@@ -39,7 +39,7 @@ widget::widget(const bool auto_join)
 
 widget::~widget()
 {
-	if (!hidden()) {
+	if(!hidden()){
 		queue_redraw();
 	}
 	free_mouse_lock();
@@ -54,7 +54,7 @@ void widget::aquire_mouse_lock()
 
 void widget::free_mouse_lock()
 {
-	if (mouse_lock_local_)
+	if(mouse_lock_local_)
 	{
 		mouse_lock_local_ = false;
 		mouse_lock_ = false;
@@ -68,12 +68,12 @@ bool widget::mouse_locked() const
 
 void widget::set_location(const SDL_Rect& rect)
 {
-	if(rect_ == rect) {
+	if(rect_ == rect){
 		return;
 	}
 
 	// If we were shown somewhere else, queue it to be cleared.
-	if(state_ == DIRTY || state_ == DRAWN) {
+	if(state_ == DIRTY || state_ == DRAWN){
 		queue_redraw();
 	}
 
@@ -127,7 +127,7 @@ const rect& widget::location() const
 
 void widget::set_focus(bool focus)
 {
-	if (focus)
+	if(focus)
 		events::focus_handler(this);
 	focus_ = focus;
 	queue_redraw();
@@ -140,12 +140,12 @@ bool widget::focus(const SDL_Event* event)
 
 void widget::hide(bool value)
 {
-	if (value) {
-		if (state_ == DIRTY || state_ == DRAWN) {
+	if(value){
+		if(state_ == DIRTY || state_ == DRAWN){
 			queue_redraw();
 		}
 		state_ = HIDDEN;
-	} else if (state_ == HIDDEN) {
+	} else if(state_ == HIDDEN){
 		state_ = DRAWN;
 		queue_redraw();
 	}
@@ -166,7 +166,7 @@ bool widget::hidden() const
 
 void widget::enable(bool new_val)
 {
-	if (enabled_ != new_val) {
+	if(enabled_ != new_val){
 		enabled_ = new_val;
 		queue_redraw();
 	}
@@ -179,13 +179,13 @@ bool widget::enabled() const
 
 void widget::set_dirty(bool dirty)
 {
-	if ((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY)) {
+	if((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY)){
 		return;
 	}
 
 	state_ = dirty ? DIRTY : DRAWN;
 
-	if (dirty) {
+	if(dirty){
 		queue_redraw();
 	}
 }
@@ -202,7 +202,7 @@ const std::string& widget::id() const
 
 void widget::set_id(const std::string& id)
 {
-	if (id_.empty()){
+	if(id_.empty()){
 		id_ = id;
 	}
 }
@@ -219,9 +219,9 @@ void widget::queue_redraw()
 
 bool widget::expose(const rect& region)
 {
-	if (hidden()) { return false; }
-	if (!rect_.overlaps(region)) { return false; }
-	if (clip_ && !clip_rect_.overlaps(region)) { return false; }
+	if(hidden()){ return false; }
+	if(!rect_.overlaps(region)){ return false; }
+	if(clip_ && !clip_rect_.overlaps(region)){ return false; }
 
 	draw();
 	return true;
@@ -229,11 +229,11 @@ bool widget::expose(const rect& region)
 
 void widget::draw()
 {
-	if (hidden()) {
+	if(hidden()){
 		return;
 	}
 
-	if (clip_) {
+	if(clip_){
 		auto clipper = draw::reduce_clip(clip_rect_);
 		draw_contents();
 	} else {
@@ -250,9 +250,9 @@ void widget::set_tooltip_string(const std::string& str)
 
 void widget::process_tooltip_string(int mousex, int mousey)
 {
-	if (!hidden() && rect_.contains(mousex, mousey)) {
-		if (!tooltip_text_.empty())
-			tooltips::add_tooltip(rect_, tooltip_text_ );
+	if(!hidden() && rect_.contains(mousex, mousey)){
+		if(!tooltip_text_.empty())
+			tooltips::add_tooltip(rect_, tooltip_text_);
 	}
 }
 

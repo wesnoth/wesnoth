@@ -27,7 +27,7 @@ namespace lua_mathx {
 */
 static int intf_random(lua_State* L)
 {
-	if (lua_isnoneornil(L, 1)) {
+	if(lua_isnoneornil(L, 1)){
 		double r = static_cast<double>(randomness::generator->next_random());
 		double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
@@ -36,7 +36,7 @@ static int intf_random(lua_State* L)
 	else {
 		int32_t min;
 		int32_t max;
-		if (lua_isnumber(L, 2)) {
+		if(lua_isnumber(L, 2)){
 			min = lua_check<int32_t>(L, 1);
 			max = lua_check<int32_t>(L, 2);
 		}
@@ -44,7 +44,7 @@ static int intf_random(lua_State* L)
 			min = 1;
 			max = lua_check<int32_t>(L, 1);
 		}
-		if (min > max) {
+		if(min > max){
 			return luaL_argerror(L, 1, "min > max");
 		}
 		lua_push(L, randomness::generator->get_random_int(min, max));
@@ -52,13 +52,13 @@ static int intf_random(lua_State* L)
 	}
 }
 
-static int intf_round(lua_State* L) {
+static int intf_round(lua_State* L){
 	double n = lua_tonumber(L, 1);
 	lua_pushinteger(L, std::round(n));
 	return 1;
 }
 
-int luaW_open(lua_State* L) {
+int luaW_open(lua_State* L){
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding mathx module...\n");
 	static luaL_Reg const math_callbacks[] = {

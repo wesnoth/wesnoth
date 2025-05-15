@@ -48,7 +48,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 
 tree_view::~tree_view()
 {
-	if(root_node_) {
+	if(root_node_){
 		root_node_->clear_before_destruct();
 	}
 }
@@ -66,7 +66,7 @@ std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto node_itor = std::find_if(siblings.begin(), siblings.end(), [node](const auto& c) { return c.get() == node; });
+	auto node_itor = std::find_if(siblings.begin(), siblings.end(), [node](const auto& c){ return c.get() == node; });
 
 	assert(node_itor != siblings.end());
 
@@ -77,7 +77,7 @@ std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view
 
 	siblings.erase(node_itor);
 
-	if(get_size() != point()) {
+	if(get_size() != point()){
 		// Don't shrink the width, need to think about a good algorithm to do so.
 		resize_content(0, -node_size.y);
 	}
@@ -119,7 +119,7 @@ void tree_view::resize_content(const int width_modification,
 		height_modification,
 		width_modification_pos,
 		height_modification_pos
-	)) {
+	)){
 		// Calculate new size.
 		point size = content_grid()->get_size();
 		size.x += width_modification;
@@ -131,7 +131,7 @@ void tree_view::resize_content(const int width_modification,
 		// Set status.
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
-		if(width_modification < 0 || height_modification < 0) {
+		if(width_modification < 0 || height_modification < 0){
 			queue_redraw();
 		}
 		horizontal_scrollbar_moved();
@@ -145,7 +145,7 @@ void tree_view::layout_children(const bool force)
 {
 	assert(root_node_ && content_grid());
 
-	if(need_layout_ || force) {
+	if(need_layout_ || force){
 		root_node_->place(indentation_step_size_, get_origin(), content_grid()->get_size().x);
 		root_node_->set_visible_rectangle(content_visible_area_);
 
@@ -179,12 +179,12 @@ template<tree_view_node* (tree_view_node::*func)()>
 tree_view_node* tree_view::get_next_node()
 {
 	tree_view_node* selected = selected_item();
-	if(!selected) {
+	if(!selected){
 		return nullptr;
 	}
 
 	tree_view_node* visible = selected->get_last_visible_parent_node();
-	if(visible != selected) {
+	if(visible != selected){
 		return visible;
 	}
 
@@ -194,7 +194,7 @@ tree_view_node* tree_view::get_next_node()
 template<tree_view_node* (tree_view_node::*func)()>
 bool tree_view::handle_up_down_arrow()
 {
-	if(tree_view_node* next = get_next_node<func>()) {
+	if(tree_view_node* next = get_next_node<func>()){
 		next->select_node();
 		SDL_Rect visible = content_visible_area();
 		SDL_Rect rect = next->get_grid().get_rectangle();
@@ -209,7 +209,7 @@ bool tree_view::handle_up_down_arrow()
 
 void tree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
-	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_above>()) {
+	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_above>()){
 		handled = true;
 	} else {
 		scrollbar_container::handle_key_up_arrow(modifier, handled);
@@ -218,7 +218,7 @@ void tree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 void tree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
-	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_below>()) {
+	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_below>()){
 		handled = true;
 	} else {
 		scrollbar_container::handle_key_down_arrow(modifier, handled);
@@ -228,7 +228,7 @@ void tree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 void tree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	tree_view_node* selected = selected_item();
-	if(!selected || selected->is_folded()) {
+	if(!selected || selected->is_folded()){
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
 		return;
 	}
@@ -240,7 +240,7 @@ void tree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 void tree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	tree_view_node* selected = selected_item();
-	if(!selected || !selected->is_folded()) {
+	if(!selected || !selected->is_folded()){
 		scrollbar_container::handle_key_right_arrow(modifier, handled);
 		return;
 	}
@@ -281,7 +281,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
 	, nodes()
 {
-	for(const auto& node : cfg.child_range("node")) {
+	for(const auto& node : cfg.child_range("node")){
 		nodes.emplace_back(node);
 	}
 

@@ -147,11 +147,11 @@ void replay_recorder_base::delete_upcoming_commands()
 bool replay_recorder_base::is_ancestor(const config& other_replay) const
 {
 	auto other_commands = other_replay.child_range("command");
-	if(other_commands.size() > commands_.size()) {
+	if(other_commands.size() > commands_.size()){
 		return false;
 	}
-	for(size_t index = 0; index < other_commands.size(); ++index) {
-		if(commands_[index] != other_commands[index]) {
+	for(size_t index = 0; index < other_commands.size(); ++index){
+		if(commands_[index] != other_commands[index]){
 			return false;
 		}
 	}

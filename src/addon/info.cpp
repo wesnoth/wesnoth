@@ -31,22 +31,22 @@ namespace {
 	void resolve_deps_recursive(const addons_list& addons, const std::string& base_id, std::set<std::string>& dest)
 	{
 		addons_list::const_iterator it = addons.find(base_id);
-		if(it == addons.end()) {
+		if(it == addons.end()){
 			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list";
 			return;
 		}
 
 		const std::vector<std::string>& base_deps = it->second.depends;
 
-		if(base_deps.empty()) {
+		if(base_deps.empty()){
 			return;
 		}
 
-		for(const std::string& dep : base_deps) {
-			if(base_id == dep) {
+		for(const std::string& dep : base_deps){
+			if(base_id == dep){
 				LOG_AC << dep << " depends upon itself; breaking circular dependency";
 				continue;
-			} else if(dest.find(dep) != dest.end()) {
+			} else if(dest.find(dep) != dest.end()){
 				LOG_AC << dep << " already in dependency tree; breaking circular dependency";
 				continue;
 			}
@@ -86,13 +86,13 @@ void addon_info::read(const config& cfg)
 	uploads = cfg["uploads"].to_int();
 	type = get_addon_type(cfg["type"].str());
 
-	for(const config& version : cfg.child_range("version")) {
+	for(const config& version : cfg.child_range("version")){
 		versions.emplace(version["version"].str());
 	}
 
 	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
-	for(const config& locale : locales_as_configs) {
+	for(const config& locale : locales_as_configs){
 		if(locale["supported"].to_bool(true))
 			locales.emplace_back(locale["language"].str());
 		info_translations.emplace(locale["language"].str(), addon_info_translation(locale));
@@ -122,12 +122,12 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = uploads;
 	cfg["type"] = get_addon_type_string(type);
 
-	for(const version_info& version : versions) {
+	for(const version_info& version : versions){
 		config& version_cfg = cfg.add_child("version");
 		version_cfg["version"] = version.str();
 	}
 
-	for(const auto& element : info_translations) {
+	for(const auto& element : info_translations){
 		config& locale = cfg.add_child("translation");
 		locale["language"] = element.first;
 		element.second.write(locale);
@@ -154,7 +154,7 @@ void addon_info::write_minimal(config& cfg) const
 
 std::string addon_info::display_title() const
 {
-	if(title.empty()) {
+	if(title.empty()){
 		return font::escape_text(make_addon_title(id));
 	} else {
 		return font::escape_text(title);
@@ -169,11 +169,11 @@ addon_info_translation addon_info::translated_info() const
 
 	std::string lang_name_short = locale_info.language();
 	std::string lang_name_long = lang_name_short;
-	if(!locale_info.country().empty()) {
+	if(!locale_info.country().empty()){
 		lang_name_long += '_';
 		lang_name_long += locale_info.country();
 	}
-	if(!locale_info.variant().empty()) {
+	if(!locale_info.variant().empty()){
 		lang_name_long += '@';
 		lang_name_long += locale_info.variant();
 		lang_name_short += '@';
@@ -181,12 +181,12 @@ addon_info_translation addon_info::translated_info() const
 	}
 
 	auto info = info_translations.find(lang_name_long);
-	if(info != info_translations.end()) {
+	if(info != info_translations.end()){
 		return info->second;
 	}
 
 	info = info_translations.find(lang_name_short);
-	if(info != info_translations.end()) {
+	if(info != info_translations.end()){
 		return info->second;
 	}
 
@@ -197,7 +197,7 @@ std::string addon_info::display_title_translated() const
 {
 	addon_info_translation info = translated_info();
 
-	if(info.valid()) {
+	if(info.valid()){
 		return info.title;
 	}
 
@@ -214,7 +214,7 @@ std::string addon_info::description_translated() const
 {
 	addon_info_translation info = translated_info();
 
-	if(info.valid() && !info.description.empty()) {
+	if(info.valid() && !info.description.empty()){
 		return info.description;
 	}
 
@@ -235,12 +235,12 @@ std::string addon_info::display_icon() const
 
 	// make sure it's set to something when there are issues
 	// otherwise display errors will spam the log while the add-ons manager is open
-	if(ret.empty()) {
+	if(ret.empty()){
 		ret = "misc/blank-hex.png";
-	} if(!image::exists(image::locator{ret}) && !ret.empty()) {
+	} if(!image::exists(image::locator{ret}) && !ret.empty()){
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 		ret = "misc/blank-hex.png";
-	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
+	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos){
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";
 		ret += "~RC(magenta>red)";
@@ -251,7 +251,7 @@ std::string addon_info::display_icon() const
 
 std::string addon_info::display_type() const
 {
-	switch (type) {
+	switch (type){
 	case ADDON_SP_CAMPAIGN:
 		return _("addon_type^Campaign");
 	case ADDON_SP_SCENARIO:
@@ -286,7 +286,7 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	std::set<std::string> deps;
 	resolve_deps_recursive(addons, id, deps);
 
-	if(deps.find(id) != deps.end()) {
+	if(deps.find(id) != deps.end()){
 		LOG_AC << id << " depends upon itself; breaking circular dependency";
 		deps.erase(id);
 	}
@@ -301,9 +301,9 @@ void read_addons_list(const config& cfg, addons_list& dest)
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
 	 */
 	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
-	for(const config& addon_cfg : addon_cfgs) {
+	for(const config& addon_cfg : addon_cfgs){
 		const std::string& id = addon_cfg["name"].str();
-		if(dest.find(id) != dest.end()) {
+		if(dest.find(id) != dest.end()){
 			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them";
 			continue;
 		}
@@ -313,7 +313,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 
 std::string size_display_string(double size)
 {
-	if(size > 0.0) {
+	if(size > 0.0){
 		return utils::si_string(size, true, _("unit_byte^B"));
 	} else {
 		return "";

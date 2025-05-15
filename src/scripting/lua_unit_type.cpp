@@ -39,103 +39,103 @@ luaW_Registry unitTypeReg{UnitType};
 
 template<> struct lua_object_traits<unit_type> {
 	inline static auto metatable = UnitType;
-	inline static const unit_type& get(lua_State* L, int n) {
+	inline static const unit_type& get(lua_State* L, int n){
 		return luaW_checkunittype(L, n);
 	}
 };
 
-UNIT_TYPE_GETTER("name", t_string) {
+UNIT_TYPE_GETTER("name", t_string){
 	return ut.type_name();
 }
 
-UNIT_TYPE_GETTER("id", std::string) {
+UNIT_TYPE_GETTER("id", std::string){
 	return ut.id();
 }
 
-UNIT_TYPE_GETTER("alignment", std::string) {
+UNIT_TYPE_GETTER("alignment", std::string){
 	return unit_alignments::get_string(ut.alignment());
 }
 
-UNIT_TYPE_GETTER("race", std::string) {
+UNIT_TYPE_GETTER("race", std::string){
 	return ut.race_id();
 }
 
-UNIT_TYPE_GETTER("image", std::string) {
+UNIT_TYPE_GETTER("image", std::string){
 	return ut.image();
 }
 
-UNIT_TYPE_GETTER("icon", std::string) {
+UNIT_TYPE_GETTER("icon", std::string){
 	return ut.icon();
 }
 
-UNIT_TYPE_GETTER("profile", std::string) {
+UNIT_TYPE_GETTER("profile", std::string){
 	return ut.big_profile();
 }
 
-UNIT_TYPE_GETTER("small_profile", std::string) {
+UNIT_TYPE_GETTER("small_profile", std::string){
 	return ut.small_profile();
 }
 
-UNIT_TYPE_GETTER("max_hitpoints", int) {
+UNIT_TYPE_GETTER("max_hitpoints", int){
 	return ut.hitpoints();
 }
 
-UNIT_TYPE_GETTER("max_moves", int) {
+UNIT_TYPE_GETTER("max_moves", int){
 	return ut.movement();
 }
 
-UNIT_TYPE_GETTER("max_experience", int) {
+UNIT_TYPE_GETTER("max_experience", int){
 	return ut.experience_needed();
 }
 
-UNIT_TYPE_GETTER("cost", int) {
+UNIT_TYPE_GETTER("cost", int){
 	return ut.cost();
 }
 
-UNIT_TYPE_GETTER("level", int) {
+UNIT_TYPE_GETTER("level", int){
 	return ut.level();
 }
 
-UNIT_TYPE_GETTER("recall_cost", int) {
+UNIT_TYPE_GETTER("recall_cost", int){
 	return ut.recall_cost();
 }
 
-UNIT_TYPE_GETTER("advances_to", std::vector<std::string>) {
+UNIT_TYPE_GETTER("advances_to", std::vector<std::string>){
 	return ut.advances_to();
 }
 
-UNIT_TYPE_GETTER("advances_from", std::vector<std::string>) {
+UNIT_TYPE_GETTER("advances_from", std::vector<std::string>){
 	return ut.advances_from();
 }
 
-UNIT_TYPE_GETTER("__cfg", config) {
+UNIT_TYPE_GETTER("__cfg", config){
 	return ut.get_cfg();
 }
 
 using traits_map = std::map<std::string,config>;
-UNIT_TYPE_GETTER("traits", traits_map) {
+UNIT_TYPE_GETTER("traits", traits_map){
 	traits_map traits;
-	for (const config& trait : ut.possible_traits()) {
+	for(const config& trait : ut.possible_traits()){
 		traits.emplace(trait["id"], trait);
 	}
 	return traits;
 }
 
-UNIT_TYPE_GETTER("abilities", std::vector<std::string>) {
+UNIT_TYPE_GETTER("abilities", std::vector<std::string>){
 	return ut.get_ability_list();
 }
 
-UNIT_TYPE_GETTER("attacks", lua_index_raw) {
+UNIT_TYPE_GETTER("attacks", lua_index_raw){
 	(void)ut;
 	push_unit_attacks_table(L, 1);
 	return lua_index_raw(L);
 }
 
-UNIT_TYPE_VALID("variations") {
+UNIT_TYPE_VALID("variations"){
 	return ut.variation_id().empty();
 }
 
-UNIT_TYPE_GETTER("variations", lua_index_raw) {
+UNIT_TYPE_GETTER("variations", lua_index_raw){
 	// TODO: Should this only exist for base units?
 	*new(L) const unit_type* = &ut;
 	luaL_setmetatable(L, UnitTypeTable);
@@ -165,7 +165,7 @@ static int impl_unit_type_dir(lua_State *L)
 static int impl_unit_type_equal(lua_State* L)
 {
 	const unit_type& ut1 = luaW_checkunittype(L, 1);
-	if(const unit_type* ut2 = luaW_tounittype(L, 2)) {
+	if(const unit_type* ut2 = luaW_tounittype(L, 2)){
 		lua_pushboolean(L, &ut1 == ut2);
 	} else {
 		lua_pushboolean(L, false);
@@ -173,19 +173,19 @@ static int impl_unit_type_equal(lua_State* L)
 	return 1;
 }
 
-static int impl_unit_type_list(lua_State* L) {
+static int impl_unit_type_list(lua_State* L){
 	std::vector<std::string> keys;
-	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))){
 		keys = base->variations();
-		if(base->has_gender_variation(unit_race::MALE)) {
+		if(base->has_gender_variation(unit_race::MALE)){
 			keys.push_back("male");
 		}
-		if(base->has_gender_variation(unit_race::FEMALE)) {
+		if(base->has_gender_variation(unit_race::FEMALE)){
 			keys.push_back("female");
 		}
 	} else {
 		keys.reserve(unit_types.types().size());
-		for(const auto& p : unit_types.types()) {
+		for(const auto& p : unit_types.types()){
 			keys.push_back(p.first);
 		}
 	}
@@ -197,8 +197,8 @@ static int impl_unit_type_lookup(lua_State* L)
 {
 	std::string id = luaL_checkstring(L, 2);
 	const unit_type* ut;
-	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
-		if(id == "male" || id == "female") {
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))){
+		if(id == "male" || id == "female"){
 			ut = &base->get_gender_unit_type(id);
 		} else {
 			ut = &base->get_variation(id);
@@ -206,7 +206,7 @@ static int impl_unit_type_lookup(lua_State* L)
 	} else {
 		ut = unit_types.find(id);
 	}
-	if(ut) {
+	if(ut){
 		luaW_pushunittype(L, *ut);
 		return 1;
 	}
@@ -232,13 +232,13 @@ static int impl_unit_type_next(lua_State* L)
 	const unit_type* base = *static_cast<const unit_type**>(luaL_checkudata(L, 1, UnitTypeTable));
 	const auto& unit_map = base ? base->variation_types() : unit_types.types();
 	auto it = unit_map.end();
-	if(lua_isnoneornil(L, 2)) {
-		if(base) {
-			if(base->has_gender_variation(unit_race::MALE)) {
+	if(lua_isnoneornil(L, 2)){
+		if(base){
+			if(base->has_gender_variation(unit_race::MALE)){
 				lua_pushstring(L, "male");
 				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::MALE));
 				return 2;
-			} else if(base->has_gender_variation(unit_race::FEMALE)) {
+			} else if(base->has_gender_variation(unit_race::FEMALE)){
 				lua_pushstring(L, "female");
 				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
 				return 2;
@@ -247,36 +247,36 @@ static int impl_unit_type_next(lua_State* L)
 		it = unit_map.begin();
 	} else {
 		const std::string id = luaL_checkstring(L, 2);
-		if(base) {
-			if(id == "male" && base->has_gender_variation(unit_race::FEMALE)) {
+		if(base){
+			if(id == "male" && base->has_gender_variation(unit_race::FEMALE)){
 				lua_pushstring(L, "female");
 				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
 				return 2;
-			} else if(id == "male" || id == "female") {
+			} else if(id == "male" || id == "female"){
 				it = unit_map.begin();
 			}
 		}
-		if(it == unit_map.end()) {
+		if(it == unit_map.end()){
 			it = unit_map.find(id);
 		}
-		if(it == unit_map.end()) {
+		if(it == unit_map.end()){
 			return 0;
 		}
 		++it;
 	}
-	if (it == unit_map.end()) {
+	if(it == unit_map.end()){
 		return 0;
 	}
 	lua_pushlstring(L, it->first.c_str(), it->first.size());
 	luaW_pushunittype(L, it->second);
-	if(!base) {
+	if(!base){
 		// Make sure the unit is built.
 		unit_types.build_unit_type(it->second, unit_type::FULL);
 	}
 	return 2;
 }
 
-static int impl_unit_type_pairs(lua_State* L) {
+static int impl_unit_type_pairs(lua_State* L){
 	lua_pushcfunction(L, &impl_unit_type_next);
 	lua_pushvalue(L, -2);
 	lua_pushnil(L);
@@ -349,7 +349,7 @@ void luaW_pushunittype(lua_State *L, const unit_type& ut)
 
 const unit_type* luaW_tounittype(lua_State* L, int idx)
 {
-	if(void* p = luaL_testudata(L, idx, UnitType)) {
+	if(void* p = luaL_testudata(L, idx, UnitType)){
 		return *static_cast<const unit_type**>(p);
 	}
 	return nullptr;

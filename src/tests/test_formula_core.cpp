@@ -26,9 +26,9 @@ using namespace wfl;
 
 class mock_char : public formula_callable {
 	variant get_value(const std::string& key) const {
-		if(key == "strength") {
+		if(key == "strength"){
 			return variant(15);
-		} else if(key == "agility") {
+		} else if(key == "agility"){
 			return variant(12);
 		}
 
@@ -38,17 +38,17 @@ class mock_char : public formula_callable {
 
 class mock_party : public formula_callable {
 	variant get_value(const std::string& key) const {
-		if(key == "members") {
+		if(key == "members"){
 			i_[0].add("strength",variant(12));
 			i_[1].add("strength",variant(16));
 			i_[2].add("strength",variant(14));
 			std::vector<variant> members;
-			for(int n = 0; n != 3; ++n) {
+			for(int n = 0; n != 3; ++n){
 				members.emplace_back(i_[n].fake_ptr());
 			}
 
 			return variant(members);
-		} else if(key == "char") {
+		} else if(key == "char"){
 			return variant(c_.fake_ptr());
 		} else {
 			return variant(0);
@@ -59,7 +59,7 @@ class mock_party : public formula_callable {
 	mutable map_formula_callable i_[3];
 
 public:
-	mock_party() {}
+	mock_party(){}
 };
 
 BOOST_AUTO_TEST_SUITE(formula_core)
@@ -140,12 +140,12 @@ BOOST_AUTO_TEST_CASE(test_formula_strings)
 		"String with embedded string!");
 }
 
-BOOST_AUTO_TEST_CASE(test_formula_dice) {
+BOOST_AUTO_TEST_CASE(test_formula_dice){
 	const int dice_roll = formula("3d6").evaluate().as_int();
 	assert(dice_roll >= 3 && dice_roll <= 18);
 }
 
-BOOST_AUTO_TEST_CASE(test_formula_containers) {
+BOOST_AUTO_TEST_CASE(test_formula_containers){
 	variant myarray = formula("[1,2,3]").evaluate();
 	BOOST_CHECK_EQUAL(myarray.num_elements(), 3);
 	BOOST_CHECK_EQUAL(myarray[0].as_int(), 1);
@@ -173,7 +173,7 @@ BOOST_AUTO_TEST_CASE(test_formula_containers) {
 	BOOST_CHECK_EQUAL(myslice[3].as_int(), 19);
 }
 
-BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
+BOOST_AUTO_TEST_CASE(test_formula_tokenizer){
 	using namespace wfl::tokenizer;
 	const std::string test = "[(abc + 4 * (5+3))^2.0, functions, '[']thing[']']";
 	auto i1 = test.begin();
@@ -205,7 +205,7 @@ BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
 		{"'[']thing[']'", token_type::string_literal},
 		{"]", token_type::rsquare},
 	}};
-	for(const auto& [str, type] : tokens) {
+	for(const auto& [str, type] : tokens){
 		const token t = get_token(i1, i2);
 		assert(std::string(t.begin, t.end) == str);
 		assert(t.type == type);

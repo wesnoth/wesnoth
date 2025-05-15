@@ -68,21 +68,21 @@ void log_settings::pre_show()
 		for(std::string this_id : widget_id_){
 			widget* this_widget = this_grid->find(this_id, false);
 			toggle_button* button = dynamic_cast<toggle_button*>(this_widget);
-			if(button != nullptr) {
+			if(button != nullptr){
 				group.add_member(button, this_id);
 			}
 		}
 		lg::severity current_sev;
         lg::severity max_sev = lg::severity::LG_DEBUG;
-		if (lg::get_log_domain_severity(this_domain, current_sev)) {
-			if (current_sev <= max_sev) {
+		if(lg::get_log_domain_severity(this_domain, current_sev)){
+			if(current_sev <= max_sev){
 				group.set_member_states(widget_id_[static_cast<int>(current_sev) + 1]);
 			}
 		}
 	}
 
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
-	filter->on_modified([this](const auto& box) { filter_text_changed(box.text()); });
+	filter->on_modified([this](const auto& box){ filter_text_changed(box.text()); });
 
 	keyboard_capture(filter);
 	add_to_keyboard_chain(&logger_box);
@@ -91,7 +91,7 @@ void log_settings::pre_show()
 void log_settings::filter_text_changed(const std::string& text)
 {
 	find_widget<listbox>("logger_listbox").filter_rows_by(
-		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(domain_list_[row]); });
+		[this, match = translation::make_ci_matcher(text)](std::size_t row){ return match(domain_list_[row]); });
 }
 
 void log_settings::post_show()

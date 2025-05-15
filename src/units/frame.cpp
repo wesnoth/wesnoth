@@ -57,32 +57,32 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, primary_frame_(boost::logic::indeterminate)
 	, drawing_layer_(cfg[frame_string + "layer"])
 {
-	if(cfg.has_attribute(frame_string + "auto_vflip")) {
+	if(cfg.has_attribute(frame_string + "auto_vflip")){
 		auto_vflip_ = cfg[frame_string + "auto_vflip"].to_bool();
 	}
 
-	if(cfg.has_attribute(frame_string + "auto_hflip")) {
+	if(cfg.has_attribute(frame_string + "auto_hflip")){
 		auto_hflip_ = cfg[frame_string + "auto_hflip"].to_bool();
 	}
 
-	if(cfg.has_attribute(frame_string + "primary")) {
+	if(cfg.has_attribute(frame_string + "primary")){
 		primary_frame_ = cfg[frame_string + "primary"].to_bool();
 	}
 
 	const auto& text_color_key = cfg[frame_string + "text_color"];
-	if(!text_color_key.empty()) {
+	if(!text_color_key.empty()){
 		try {
 			text_color_ = color_t::from_rgb_string(text_color_key.str());
-		} catch(const std::invalid_argument& e) {
+		} catch(const std::invalid_argument& e){
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG text color in unit animation: " << text_color_key.str()
 				<< "\n" << e.what();
 		}
 	}
 
-	if(const config::attribute_value* v = cfg.get(frame_string + "duration")) {
+	if(const config::attribute_value* v = cfg.get(frame_string + "duration")){
 		duration(chrono::parse_duration<std::chrono::milliseconds>(*v));
-	} else if(!cfg.get(frame_string + "end")) {
+	} else if(!cfg.get(frame_string + "end")){
 		auto halo_duration = progressive_string(halo_, 1ms).duration();
 		auto image_duration = progressive_image(image_, 1ms).duration();
 		auto image_diagonal_duration = progressive_image(image_diagonal_, 1ms).duration();
@@ -97,10 +97,10 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	duration_ = std::max(duration_, 1ms);
 
 	const auto& blend_color_key = cfg[frame_string + "blend_color"];
-	if(!blend_color_key.empty()) {
+	if(!blend_color_key.empty()){
 		try {
 			blend_with_ = color_t::from_rgb_string(blend_color_key.str());
-		} catch(const std::invalid_argument& e) {
+		} catch(const std::invalid_argument& e){
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG blend color in unit animation: " << blend_color_key.str()
 				<< "\n" << e.what();
@@ -341,36 +341,36 @@ void frame_parsed_parameters::override(const std::chrono::milliseconds& duration
 		const std::string& layer,
 		const std::string& modifiers)
 {
-	if(!highlight.empty()) {
+	if(!highlight.empty()){
 		highlight_ratio_ = progressive_double(highlight,duration);
 	} else if(duration != duration_){
 		highlight_ratio_ = progressive_double(highlight_ratio_.get_original(),duration);
 	}
 
-	if(!offset.empty()) {
+	if(!offset.empty()){
 		offset_ = progressive_double(offset,duration);
 	} else if(duration != duration_){
 		offset_ = progressive_double(offset_.get_original(),duration);
 	}
 
-	if(!blend_ratio.empty()) {
+	if(!blend_ratio.empty()){
 		blend_ratio_ = progressive_double(blend_ratio,duration);
 		blend_with_  = blend_color;
 	} else if(duration != duration_){
 		blend_ratio_ = progressive_double(blend_ratio_.get_original(),duration);
 	}
 
-	if(!layer.empty()) {
+	if(!layer.empty()){
 		drawing_layer_ = progressive_int(layer,duration);
 	} else if(duration != duration_){
 		drawing_layer_ = progressive_int(drawing_layer_.get_original(),duration);
 	}
 
-	if(!modifiers.empty()) {
+	if(!modifiers.empty()){
 		image_mod_ += modifiers;
 	}
 
-	if(duration != duration_) {
+	if(duration != duration_){
 		image_ = progressive_image(image_.get_original(), duration);
 		image_diagonal_ = progressive_image(image_diagonal_.get_original(), duration);
 		halo_ = progressive_string(halo_.get_original(), duration);
@@ -389,99 +389,99 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 {
 	std::vector<std::string> v;
 
-	if(duration_ > 0ms) {
+	if(duration_ > 0ms){
 		v.emplace_back("duration=" + utils::half_signed_value(duration_.count()));
 	}
 
-	if(!image_.get_original().empty()) {
+	if(!image_.get_original().empty()){
 		v.emplace_back("image=" + image_.get_original());
 	}
 
-	if(!image_diagonal_.get_original().empty()) {
+	if(!image_diagonal_.get_original().empty()){
 		v.emplace_back("image_diagonal=" + image_diagonal_.get_original());
 	}
 
-	if(!image_mod_.empty()) {
+	if(!image_mod_.empty()){
 		v.emplace_back("image_mod=" + image_mod_);
 	}
 
-	if(!halo_.get_original().empty()) {
+	if(!halo_.get_original().empty()){
 		v.emplace_back("halo=" + halo_.get_original());
 	}
 
-	if(!halo_x_.get_original().empty()) {
+	if(!halo_x_.get_original().empty()){
 		v.emplace_back("halo_x=" + halo_x_.get_original());
 	}
 
-	if(!halo_y_.get_original().empty()) {
+	if(!halo_y_.get_original().empty()){
 		v.emplace_back("halo_y=" + halo_y_.get_original());
 	}
 
-	if(!halo_mod_.empty()) {
+	if(!halo_mod_.empty()){
 		v.emplace_back("halo_mod=" + halo_mod_);
 	}
 
-	if(!sound_.empty()) {
+	if(!sound_.empty()){
 		v.emplace_back("sound=" + sound_);
 	}
 
-	if(!text_.empty()) {
+	if(!text_.empty()){
 		v.emplace_back("text=" + text_);
 
-		if(text_color_) {
+		if(text_color_){
 			v.emplace_back("text_color=" + text_color_->to_rgba_string());
 		}
 	}
 
-	if(!blend_ratio_.get_original().empty()) {
+	if(!blend_ratio_.get_original().empty()){
 		v.emplace_back("blend_ratio=" + blend_ratio_.get_original());
 
-		if(blend_with_) {
+		if(blend_with_){
 			v.emplace_back("blend_with=" + blend_with_->to_rgba_string());
 		}
 	}
 
-	if(!highlight_ratio_.get_original().empty()) {
+	if(!highlight_ratio_.get_original().empty()){
 		v.emplace_back("highlight_ratio=" + highlight_ratio_.get_original());
 	}
 
-	if(!offset_.get_original().empty()) {
+	if(!offset_.get_original().empty()){
 		v.emplace_back("offset=" + offset_.get_original());
 	}
 
-	if(!submerge_.get_original().empty()) {
+	if(!submerge_.get_original().empty()){
 		v.emplace_back("submerge=" + submerge_.get_original());
 	}
 
-	if(!x_.get_original().empty()) {
+	if(!x_.get_original().empty()){
 		v.emplace_back("x=" + x_.get_original());
 	}
 
-	if(!y_.get_original().empty()) {
+	if(!y_.get_original().empty()){
 		v.emplace_back("y=" + y_.get_original());
 	}
 
-	if(!directional_x_.get_original().empty()) {
+	if(!directional_x_.get_original().empty()){
 		v.emplace_back("directional_x=" + directional_x_.get_original());
 	}
 
-	if(!directional_y_.get_original().empty()) {
+	if(!directional_y_.get_original().empty()){
 		v.emplace_back("directional_y=" + directional_y_.get_original());
 	}
 
-	if(!boost::indeterminate(auto_vflip_)) {
+	if(!boost::indeterminate(auto_vflip_)){
 		v.emplace_back("auto_vflip=" + utils::bool_string(static_cast<bool>(auto_vflip_)));
 	}
 
-	if(!boost::indeterminate(auto_hflip_)) {
+	if(!boost::indeterminate(auto_hflip_)){
 		v.emplace_back("auto_hflip=" + utils::bool_string(static_cast<bool>(auto_hflip_)));
 	}
 
-	if(!boost::indeterminate(primary_frame_)) {
+	if(!boost::indeterminate(primary_frame_)){
 		v.emplace_back("primary_frame=" + utils::bool_string(static_cast<bool>(primary_frame_)));
 	}
 
-	if(!drawing_layer_.get_original().empty()) {
+	if(!drawing_layer_.get_original().empty()){
 		v.emplace_back("drawing_layer=" + drawing_layer_.get_original());
 	}
 
@@ -505,14 +505,14 @@ void render_unit_image(
 	bool vreverse)
 {
 	const point image_size = image::get_size(i_locator);
-	if(!image_size.x || !image_size.y) {
+	if(!image_size.x || !image_size.y){
 		return;
 	}
 
 	display* disp = display::get_singleton();
 
 	rect dest = disp->scaled_to_zoom({x, y, image_size.x, image_size.y});
-	if(!dest.overlaps(disp->map_area())) {
+	if(!dest.overlaps(disp->map_area())){
 		return;
 	}
 
@@ -526,7 +526,7 @@ void render_unit_image(
 	disp->drawing_buffer_add(drawing_layer, loc, [=](const rect&) mutable {
 		tex.set_alpha_mod(alpha);
 
-		if(submerge > 0.0) {
+		if(submerge > 0.0){
 			// set clip for dry part
 			// smooth_shaded doesn't use the clip information so it's fine to set it up front
 			tex.set_src(data.unsub_src);
@@ -541,11 +541,11 @@ void render_unit_image(
 			draw::flipped(tex, dest, hreverse, vreverse);
 		}
 
-		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+		if(uint8_t hl = float_to_color(highlight); hl > 0){
 			tex.set_blend_mode(SDL_BLENDMODE_ADD);
 			tex.set_alpha_mod(hl);
 
-			if(submerge > 0.0) {
+			if(submerge > 0.0){
 				// draw underwater part
 				draw::smooth_shaded(tex, data.alpha_verts);
 
@@ -562,7 +562,7 @@ void render_unit_image(
 	});
 
 	// SDL hax to apply an active washout tint at the correct ratio
-	if(blend_ratio == 0.0) {
+	if(blend_ratio == 0.0){
 		return;
 	}
 
@@ -577,7 +577,7 @@ void render_unit_image(
 		tex.set_alpha_mod(alpha * blend_ratio);
 		tex.set_color_mod(blendto);
 
-		if(submerge > 0.0) {
+		if(submerge > 0.0){
 			// also draw submerged portion
 			// alpha_mod and color_mod are ignored,
 			// so we have to put them in the smooth shaded vertex data.
@@ -604,11 +604,11 @@ void render_unit_image(
 			draw::flipped(tex, dest, hreverse, vreverse);
 		}
 
-		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+		if(uint8_t hl = float_to_color(highlight); hl > 0){
 			tex.set_blend_mode(SDL_BLENDMODE_ADD);
 			tex.set_alpha_mod(hl);
 
-			if(submerge > 0.0) {
+			if(submerge > 0.0){
 				// draw underwater part
 				draw::smooth_shaded(tex, data.alpha_verts);
 
@@ -642,32 +642,32 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 	double tmp_offset = current_data.offset;
 
 	// Debug code to see the number of frames and their position
-	//if(tmp_offset) {
+	//if(tmp_offset){
 	//	std::cout << static_cast<int>(tmp_offset * 100) << "," << "\n";
 	//}
 
-	if(on_start_time) {
+	if(on_start_time){
 		// Stuff that should be done only once per frame
-		if(!current_data.sound.empty()  ) {
+		if(!current_data.sound.empty() ){
 			sound::play_sound(current_data.sound);
 		}
 
-		if(!current_data.text.empty() && current_data.text_color) {
+		if(!current_data.text.empty() && current_data.text_color){
 			game_disp->float_label(src, current_data.text, *current_data.text_color);
 		}
 	}
 
 	image::locator image_loc;
-	if(direction != map_location::direction::north && direction != map_location::direction::south) {
+	if(direction != map_location::direction::north && direction != map_location::direction::south){
 		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
-	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename().empty()){ // invalid diag image, or not diagonal
 		image_loc = current_data.image.clone(current_data.image_mod);
 	}
 
 	point image_size {0, 0};
-	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
+	if(!image_loc.is_void() && !image_loc.get_filename().empty()){ // invalid diag image, or not diagonal
 		image_size = image::get_size(image_loc);
 	}
 
@@ -677,7 +677,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
 	const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
-	if(image_size.x && image_size.y) {
+	if(image_size.x && image_size.y){
 		bool facing_west = (
 			direction == map_location::direction::north_west ||
 			direction == map_location::direction::south_west);
@@ -687,19 +687,19 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 			direction == map_location::direction::north ||
 			direction == map_location::direction::north_east);
 
-		if(!current_data.auto_hflip) { facing_west = false; }
-		if(!current_data.auto_vflip) { facing_north = true; }
+		if(!current_data.auto_hflip){ facing_west = false; }
+		if(!current_data.auto_vflip){ facing_north = true; }
 
 		int my_x = x + disp_zoom * (current_data.x - image_size.x / 2);
 		int my_y = y + disp_zoom * (current_data.y - image_size.y / 2);
 
-		if(facing_west) {
+		if(facing_west){
 			my_x -= current_data.directional_x * disp_zoom;
 		} else {
 			my_x += current_data.directional_x * disp_zoom;
 		}
 
-		if(facing_north) {
+		if(facing_north){
 			my_y += current_data.directional_y * disp_zoom;
 		} else {
 			my_y -= current_data.directional_y * disp_zoom;
@@ -708,7 +708,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 		// TODO: don't conflate highlights and alpha
 		double brighten;
 		uint8_t alpha;
-		if(current_data.highlight_ratio >= 1.0) {
+		if(current_data.highlight_ratio >= 1.0){
 			brighten = current_data.highlight_ratio - 1.0;
 			alpha = 255;
 		} else {
@@ -716,7 +716,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 			alpha = float_to_color(current_data.highlight_ratio);
 		}
 
-		if(alpha != 0) {
+		if(alpha != 0){
 			render_unit_image(my_x, my_y,
 				drawing_layer { int(drawing_layer::unit_first) + current_data.drawing_layer },
 				src,
@@ -734,12 +734,12 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 
 	halo_id.reset();
 
-	if(!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
+	if(!in_scope_of_frame){ //check after frame as first/last frame image used in defense/attack anims
 		return;
 	}
 
 	// No halos, exit
-	if(current_data.halo.empty()) {
+	if(current_data.halo.empty()){
 		return;
 	}
 
@@ -752,14 +752,14 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 			break;
 		case map_location::direction::south_east:
 		case map_location::direction::south:
-			if(!current_data.auto_vflip) {
+			if(!current_data.auto_vflip){
 				orientation = halo::NORMAL;
 			} else {
 				orientation = halo::VREVERSE;
 			}
 			break;
 		case map_location::direction::south_west:
-			if(!current_data.auto_vflip) {
+			if(!current_data.auto_vflip){
 				orientation = halo::HREVERSE;
 			} else {
 				orientation = halo::HVREVERSE;
@@ -774,7 +774,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 			break;
 	}
 
-	if(direction != map_location::direction::south_west && direction != map_location::direction::north_west) {
+	if(direction != map_location::direction::south_west && direction != map_location::direction::north_west){
 		halo_id = halo_man.add(
 			static_cast<int>(x + current_data.halo_x * disp_zoom),
 			static_cast<int>(y + current_data.halo_y * disp_zoom),
@@ -808,18 +808,18 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 	const int d2 = display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
-	if(direction != map_location::direction::north && direction != map_location::direction::south) {
+	if(direction != map_location::direction::north && direction != map_location::direction::south){
 		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
-	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename().empty()){ // invalid diag image, or not diagonal
 		image_loc = current_data.image.clone(current_data.image_mod);
 	}
 
 	// We always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	std::set<map_location> result;
-	if(tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
+	if(tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)){
 		result.insert(src);
 
 		bool facing_north = (
@@ -827,20 +827,20 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 			direction == map_location::direction::north ||
 			direction == map_location::direction::north_east);
 
-		if(!current_data.auto_vflip) { facing_north = true; }
+		if(!current_data.auto_vflip){ facing_north = true; }
 
 		int my_y = current_data.y;
-		if(facing_north) {
+		if(facing_north){
 			my_y += current_data.directional_y;
 		} else {
 			my_y -= current_data.directional_y;
 		}
 
-		if(my_y < 0) {
+		if(my_y < 0){
 			result.insert(src.get_direction(map_location::direction::north));
 			result.insert(src.get_direction(map_location::direction::north_east));
 			result.insert(src.get_direction(map_location::direction::north_west));
-		} else if(my_y > 0) {
+		} else if(my_y > 0){
 			result.insert(src.get_direction(map_location::direction::south));
 			result.insert(src.get_direction(map_location::direction::south_east));
 			result.insert(src.get_direction(map_location::direction::south_west));
@@ -848,13 +848,13 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 	} else {
 		int w = 0, h = 0;
 
-		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
+		if(!image_loc.is_void() && !image_loc.get_filename().empty()){
 			const point s = image::get_size(image_loc);
 			w = s.x;
 			h = s.y;
 		}
 
-		if(w != 0 || h != 0) {
+		if(w != 0 || h != 0){
 			// TODO: unduplicate this code
 			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
@@ -869,19 +869,19 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 				direction == map_location::direction::north ||
 				direction == map_location::direction::north_east);
 
-			if(!current_data.auto_hflip) { facing_west = false; }
-			if(!current_data.auto_vflip) { facing_north = true; }
+			if(!current_data.auto_hflip){ facing_west = false; }
+			if(!current_data.auto_vflip){ facing_north = true; }
 
 			int my_x = x + disp_zoom * (current_data.x - w / 2);
 			int my_y = y + disp_zoom * (current_data.y - h / 2);
 
-			if(facing_west) {
+			if(facing_west){
 				my_x -= current_data.directional_x * disp_zoom;
 			} else {
 				my_x += current_data.directional_x * disp_zoom;
 			}
 
-			if(facing_north) {
+			if(facing_north){
 				my_y += current_data.directional_y * disp_zoom;
 			} else {
 				my_y -= current_data.directional_y * disp_zoom;
@@ -922,11 +922,11 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 	const frame_parameters& current_val = builder_.parameters(current_time);
 
 	result.primary_frame = engine_val.primary_frame;
-	if(!boost::logic::indeterminate(animation_val.primary_frame)) {
+	if(!boost::logic::indeterminate(animation_val.primary_frame)){
 		result.primary_frame = animation_val.primary_frame;
 	}
 
-	if(!boost::logic::indeterminate(current_val.primary_frame)) {
+	if(!boost::logic::indeterminate(current_val.primary_frame)){
 		result.primary_frame = current_val.primary_frame;
 	}
 
@@ -938,7 +938,7 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 		? animation_val.image
 		: current_val.image;
 
-	if(primary && (result.image.is_void() || result.image.get_filename().empty())) {
+	if(primary && (result.image.is_void() || result.image.get_filename().empty())){
 		result.image = engine_val.image;
 	}
 
@@ -947,7 +947,7 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 		? animation_val.image_diagonal
 		: current_val.image_diagonal;
 
-	if(primary && (result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
+	if(primary && (result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())){
 		result.image_diagonal = engine_val.image_diagonal;
 	}
 
@@ -956,7 +956,7 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 	 * Note that image_mod is the complete modification and halo_mod is only the TC part.
 	 */
 	result.image_mod = current_val.image_mod + animation_val.image_mod;
-	if(primary) {
+	if(primary){
 		result.image_mod += engine_val.image_mod;
 	} else {
 		result.image_mod += engine_val.halo_mod;
@@ -989,32 +989,32 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 
 	/** The engine provides a blend color for poisoned units */
 	result.blend_with = current_val.blend_with ? current_val.blend_with : animation_val.blend_with;
-	if(primary && engine_val.blend_with) {
+	if(primary && engine_val.blend_with){
 		result.blend_with = engine_val.blend_with->blend_lighten(result.blend_with ? *result.blend_with : color_t(0,0,0));
 	}
 
 	/** The engine provides a blend color for poisoned units */
 	result.blend_ratio = current_val.blend_ratio != 0 ? current_val.blend_ratio:animation_val.blend_ratio;
-	if(primary && engine_val.blend_ratio != 0) {
+	if(primary && engine_val.blend_ratio != 0){
 		result.blend_ratio = std::min(result.blend_ratio + engine_val.blend_ratio, 1.0);
 	}
 
 	/** The engine provides a highlight ratio for selected units and visible "invisible" units */
 	result.highlight_ratio = (current_val.highlight_ratio < 0.999 || current_val.highlight_ratio > 1.001) ?
 		current_val.highlight_ratio : animation_val.highlight_ratio;
-	if(primary && (engine_val.highlight_ratio < 0.999 || engine_val.highlight_ratio > 1.001)) {
+	if(primary && (engine_val.highlight_ratio < 0.999 || engine_val.highlight_ratio > 1.001)){
 		result.highlight_ratio = result.highlight_ratio * engine_val.highlight_ratio; // selected unit
 	}
 
 	assert(engine_val.offset == 0);
 	result.offset = (current_val.offset != -1000) ? current_val.offset : animation_val.offset;
-	if(result.offset == -1000) {
+	if(result.offset == -1000){
 		result.offset = 0.0;
 	}
 
 	/** The engine provides a submerge for units in water */
 	result.submerge = current_val.submerge != 0 ? current_val.submerge : animation_val.submerge;
-	if(primary && engine_val.submerge != 0 && result.submerge == 0) {
+	if(primary && engine_val.submerge != 0 && result.submerge == 0){
 		result.submerge = engine_val.submerge;
 	}
 
@@ -1039,29 +1039,29 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 	/** The engine provides us with a default value to compare to. Update if different */
 	result.auto_hflip = engine_val.auto_hflip;
 
-	if(!boost::logic::indeterminate(animation_val.auto_hflip)) {
+	if(!boost::logic::indeterminate(animation_val.auto_hflip)){
 		result.auto_hflip = animation_val.auto_hflip;
 	}
 
-	if(!boost::logic::indeterminate(current_val.auto_hflip)) {
+	if(!boost::logic::indeterminate(current_val.auto_hflip)){
 		result.auto_hflip = current_val.auto_hflip;
 	}
 
-	if(boost::logic::indeterminate(result.auto_hflip)) {
+	if(boost::logic::indeterminate(result.auto_hflip)){
 		result.auto_hflip = true;
 	}
 
 	result.auto_vflip = engine_val.auto_vflip;
 
-	if(!boost::logic::indeterminate(animation_val.auto_vflip)) {
+	if(!boost::logic::indeterminate(animation_val.auto_vflip)){
 		result.auto_vflip = animation_val.auto_vflip;
 	}
 
-	if(!boost::logic::indeterminate(current_val.auto_vflip)) {
+	if(!boost::logic::indeterminate(current_val.auto_vflip)){
 		result.auto_vflip = current_val.auto_vflip;
 	}
 
-	if(boost::logic::indeterminate(result.auto_vflip)) {
+	if(boost::logic::indeterminate(result.auto_vflip)){
 		result.auto_vflip = !primary;
 	}
 

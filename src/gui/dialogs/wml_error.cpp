@@ -36,14 +36,14 @@ namespace
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(filesystem::is_path_sep(str.back())) {
+	while(filesystem::is_path_sep(str.back())){
 		str.erase(str.size() - 1);
 	}
 }
 
 std::string format_file_list(const std::vector<std::string>& files_original)
 {
-	if(files_original.empty()) {
+	if(files_original.empty()){
 		return "";
 	}
 
@@ -58,7 +58,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 		const bool is_main_cfg = filename == "_main.cfg";
 
-		if(is_main_cfg) {
+		if(is_main_cfg){
 			parent_path = filesystem::directory_name(file) + "/..";
 		} else {
 			parent_path = filesystem::directory_name(file);
@@ -66,11 +66,11 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 		// Only proceed to pretty-format the filename if it's from the add-ons
 		// directory.
-		if(filesystem::normalize_path(parent_path) != filesystem::normalize_path(addons_path)) {
+		if(filesystem::normalize_path(parent_path) != filesystem::normalize_path(addons_path)){
 			continue;
 		}
 
-		if(is_main_cfg) {
+		if(is_main_cfg){
 			base = filesystem::directory_name(file);
 			// HACK: fool filesystem::base_name() into giving us the parent directory name
 			//       alone by making base seem not like a directory path,
@@ -81,7 +81,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			base = filename;
 		}
 
-		if(base.empty()) {
+		if(base.empty()){
 			// We did something wrong. In the interest of not messing up the
 			// report, leave the original filename intact.
 			continue;
@@ -91,23 +91,23 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		// Display the name as an add-on name instead of a filename.
 		//
 
-		if(!is_main_cfg) {
+		if(!is_main_cfg){
 
-			if(base.size() > filesystem::wml_extension.size()) {
+			if(base.size() > filesystem::wml_extension.size()){
 				const std::size_t suffix_pos = base.size() - filesystem::wml_extension.size();
-				if(base.substr(suffix_pos) == filesystem::wml_extension) {
+				if(base.substr(suffix_pos) == filesystem::wml_extension){
 					base.erase(suffix_pos);
 				}
 			}
 		}
 
-		if(have_addon_install_info(base)) {
+		if(have_addon_install_info(base)){
 			// _info.cfg may have the add-on's title starting with 1.11.7,
 			// if the add-on was downloaded using the revised _info.cfg writer.
 			config info_cfg;
 			get_addon_install_info(base, info_cfg);
 
-			if(!info_cfg.empty() && !info_cfg["title"].empty()) {
+			if(!info_cfg.empty() && !info_cfg["title"].empty()){
 				file = info_cfg["title"].str();
 				continue;
 			}
@@ -118,7 +118,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		file = make_addon_title(base);
 	}
 
-	if(files.size() == 1) {
+	if(files.size() == 1){
 		return utils::indent(files.front());
 	}
 
@@ -144,11 +144,11 @@ wml_error::wml_error(const std::string& summary,
 
 	report_ = summary;
 
-	if(!file_list_text.empty()) {
+	if(!file_list_text.empty()){
 		report_ += "\n" + file_list_text;
 	}
 
-	if(!post_summary.empty()) {
+	if(!post_summary.empty()){
 		report_ += "\n\n" + post_summary;
 	}
 
@@ -167,12 +167,12 @@ wml_error::wml_error(const std::string& summary,
 
 void wml_error::pre_show()
 {
-	if(!have_files_) {
+	if(!have_files_){
 		styled_widget& filelist = find_widget<styled_widget>("files");
 		filelist.set_visible(widget::visibility::invisible);
 	}
 
-	if(!have_post_summary_) {
+	if(!have_post_summary_){
 		styled_widget& post_summary
 				= find_widget<styled_widget>("post_summary");
 		post_summary.set_visible(widget::visibility::invisible);

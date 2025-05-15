@@ -57,7 +57,7 @@ namespace
 
 		~user_choice_notifer_ingame()
 		{
-			if(label_id_ != -1) {
+			if(label_id_ != -1){
 				end_show_label();
 			}
 		}
@@ -68,11 +68,11 @@ namespace
 			{
 				start_show_label();
 			}
-			if(message == message_) {
+			if(message == message_){
 				return;
 			}
 			message_ = message;
-			if(label_id_ != -1) {
+			if(label_id_ != -1){
 				end_show_label();
 				start_show_label();
 			}
@@ -130,7 +130,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	std::set<int> empty_sides;
 	for(int side : sides)
 	{
-		if( resources::gameboard->get_team(side).is_empty())
+		if(resources::gameboard->get_team(side).is_empty())
 		{
 			empty_sides.insert(side);
 		}
@@ -164,8 +164,8 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	bool is_side_null_controlled;
 
 	/* side = 0 should default to the currently active side per definition. */
-	if(side < 1 || max_side < side) {
-		if(side != 0) {
+	if(side < 1 || max_side < side){
+		if(side != 0){
 			ERR_REPLAY << "Invalid parameter for side in get_user_choice.";
 		}
 
@@ -205,7 +205,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 			<< " is_mp_game=" << is_mp_game
 			<< " is_side_null_controlled=" << is_side_null_controlled;
 
-	if (is_side_null_controlled)
+	if(is_side_null_controlled)
 	{
 		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.";
 		//most likely we are in a start event with an empty side 1
@@ -213,7 +213,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//i think in that case we should better use uch.random_choice(),
 		//which could return something like config {"invalid", true};
 		side = 1;
-		while ( side <= max_side  &&  resources::gameboard->get_team(side).is_empty() )
+		while(side <= max_side  &&  resources::gameboard->get_team(side).is_empty())
 			side++;
 		assert(side <= max_side);
 	}
@@ -267,7 +267,7 @@ void user_choice_manager::search_in_replay()
 	while(!finished() && !oos_)
 	{
 		do_replay_handle();
-		if(resources::recorder->at_end()) {
+		if(resources::recorder->at_end()){
 			return;
 		}
 
@@ -275,7 +275,7 @@ void user_choice_manager::search_in_replay()
 
 		const config *action = resources::recorder->get_next_action();
 		assert(action); //action cannot be null because resources::recorder->at_end() returned false.
-		if( !action->has_child(tagname_) || !(*action)["dependent"].to_bool())
+		if(!action->has_child(tagname_) || !(*action)["dependent"].to_bool())
 		{
 			replay::process_error("[" + tagname_ + "] expected but none found\n. found instead:\n" + action->debug());
 			//We save this action for later
@@ -345,7 +345,7 @@ void user_choice_manager::update_local_choice()
 		sides_str.size(),
 		{std::pair("desc", uch_.description()), std::pair("sides", utils::format_conjunct_list("", sides_str))}
 	);
-	if(local_choice_prev != local_choice_) {
+	if(local_choice_prev != local_choice_){
 		changed_event_.notify_observers();
 	}
 }
@@ -359,7 +359,7 @@ void user_choice_manager::ask_local_choice()
 	into the replay. */
 	DBG_REPLAY << "MP synchronization: local choice";
 	config cfg = uch_.query_user(local_choice_);
-	if(res_.find(local_choice_) != res_.end()) {
+	if(res_.find(local_choice_) != res_.end()){
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
 		// because our side might be reassigned while we made our choice.
 		WRN_REPLAY << "Discarding a local choice because we found it already on the replay";
@@ -425,7 +425,7 @@ std::map<int, config> user_choice_manager::get_user_choice_internal(const std::s
 	{
 		if(man.waiting())
 		{
-			if(is_too_early) {
+			if(is_too_early){
 				wait_prestart(man);
 			}
 			else {
@@ -451,8 +451,8 @@ namespace {
 	// What do you want to do?" dialog is shown.
 	static bool ucm_in_proccess = false;
 	struct ucm_process_scope {
-		ucm_process_scope() { ucm_in_proccess = true; }
-		~ucm_process_scope() { ucm_in_proccess = false; }
+		ucm_process_scope(){ ucm_in_proccess = true; }
+		~ucm_process_scope(){ ucm_in_proccess = false; }
 	};
 }
 void user_choice_manager::process()

@@ -103,8 +103,8 @@ void combobox::update_canvas()
 	set_maximum_length(max_input_length_);
 
 	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
-	if(!can_wrap()) {
-		if((start + length) > (get_length() / 2)) {
+	if(!can_wrap()){
+		if((start + length) > (get_length() / 2)){
 			ellipse_mode = PANGO_ELLIPSIZE_START;
 		} else {
 			ellipse_mode = PANGO_ELLIPSIZE_END;
@@ -115,9 +115,9 @@ void combobox::update_canvas()
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
-	if(length == 0) {
+	if(length == 0){
 		// Do nothing.
-	} else if(length > 0) {
+	} else if(length > 0){
 		start_offset = get_cursor_position(start).x;
 		end_offset = get_cursor_position(start + length).x;
 	} else {
@@ -128,9 +128,9 @@ void combobox::update_canvas()
 	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
-	if(edit_length == 0) {
+	if(edit_length == 0){
 		// Do nothing.
-	} else if(edit_length > 0) {
+	} else if(edit_length > 0){
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
 	} else {
@@ -169,7 +169,7 @@ void combobox::update_canvas()
 
 void combobox::delete_char(const bool before_cursor)
 {
-	if(before_cursor) {
+	if(before_cursor){
 		set_cursor(get_selection_start() - 1, false);
 	}
 
@@ -180,7 +180,7 @@ void combobox::delete_char(const bool before_cursor)
 
 void combobox::delete_selection()
 {
-	if(get_selection_length() == 0) {
+	if(get_selection_length() == 0){
 		return;
 	}
 
@@ -188,7 +188,7 @@ void combobox::delete_selection()
 	// This makes the rest of the algorithms easier.
 	int len = get_selection_length();
 	unsigned start = get_selection_start();
-	if(len < 0) {
+	if(len < 0){
 		len = -len;
 		start -= len;
 	}
@@ -205,13 +205,13 @@ void combobox::handle_mouse_selection(point mouse, const bool start_selection)
 	// FIXME we don't test for overflow in width
 	if(mouse.x < static_cast<int>(text_x_offset_)
 	   || mouse.y < static_cast<int>(text_y_offset_)
-	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
+	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)){
 		return;
 	}
 
 	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
-	if(offset < 0) {
+	if(offset < 0){
 		return;
 	}
 
@@ -257,7 +257,7 @@ void combobox::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 	handled = true;
-	if (selected_ > 1) {
+	if(selected_ > 1){
 		set_selected(selected_ - 1, true);
 	}
 }
@@ -266,7 +266,7 @@ void combobox::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 	handled = true;
-	if (selected_ < values_.size()-1) {
+	if(selected_ < values_.size()-1){
 		set_selected(selected_ + 1, true);
 	}
 }
@@ -276,7 +276,7 @@ void combobox::set_values(const std::vector<::config>& values, unsigned selected
 	assert(selected < values.size());
 	assert(selected_ < values_.size());
 
-	if(values[selected]["label"] != values_[selected_]["label"]) {
+	if(values[selected]["label"] != values_[selected_]["label"]){
 		queue_redraw();
 	}
 
@@ -291,14 +291,14 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 	assert(selected < values_.size());
 	assert(selected_ < values_.size());
 
-	if(selected != selected_) {
+	if(selected != selected_){
 		queue_redraw();
 	}
 
 	selected_ = selected;
 
 	text_box_base::set_value(values_[selected_]["label"]);
-	if (fire_event) {
+	if(fire_event){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -308,7 +308,7 @@ void combobox::update_mouse_cursor()
 	unsigned right_border = get_x() + this->get_size().x;
 	unsigned mouse_x = get_mouse_position().x;
 
-	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
+	if((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)){
 		cursor::set(cursor::NORMAL);
 	} else {
 		cursor::set(cursor::IBEAM);
@@ -327,7 +327,7 @@ void combobox::signal_handler_mouse_motion(const event::ui_event event,
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".";
 
-	if(dragging_) {
+	if(dragging_){
 		handle_mouse_selection(coordinate, false);
 	} else {
 		update_mouse_cursor();
@@ -349,16 +349,16 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 	unsigned right_border = get_x() + this->get_size().x;
 	unsigned mouse_x = get_mouse_position().x;
 
-	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
+	if((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)){
 		// If a button has a retval do the default handling.
 		dialogs::drop_down_menu droplist(this, values_, selected_, false);
 
-		if(droplist.show()) {
+		if(droplist.show()){
 			const int selected = droplist.selected_item();
 
 			// Safety check. If the user clicks a selection in the dropdown and moves their mouse away too
 			// quickly, selected_ could be set to -1. This returns in that case, preventing crashes.
-			if(selected < 0) {
+			if(selected < 0){
 				return;
 			}
 
@@ -427,7 +427,7 @@ builder_combobox::builder_combobox(const config& cfg)
 	, hint_image(cfg["hint_image"])
 	, options_()
 {
-	for(const auto& option : cfg.child_range("option")) {
+	for(const auto& option : cfg.child_range("option")){
 		options_.push_back(option);
 	}
 }
@@ -439,7 +439,7 @@ std::unique_ptr<widget> builder_combobox::build() const
 	// A combobox doesn't have a label but a text
 	widget->set_value(label_string);
 
-	if(!options_.empty()) {
+	if(!options_.empty()){
 		widget->set_values(options_);
 	}
 

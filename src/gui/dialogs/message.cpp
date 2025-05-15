@@ -53,11 +53,11 @@ struct message_implementation
 		button_status.ptr = window.find_widget<button>(id, false, true);
 		button_status.ptr->set_visible(button_status.visible);
 
-		if(!button_status.caption.empty()) {
+		if(!button_status.caption.empty()){
 			button_status.ptr->set_label(button_status.caption);
 		}
 
-		if(button_status.retval != retval::NONE) {
+		if(button_status.retval != retval::NONE){
 			button_status.ptr->set_retval(button_status.retval);
 		}
 	}
@@ -73,7 +73,7 @@ void message::pre_show()
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	styled_widget& title_widget = find_widget<label>("title");
-	if(!title_.empty()) {
+	if(!title_.empty()){
 		title_widget.set_label(title_);
 		title_widget.set_use_markup(title_use_markup_);
 	} else {
@@ -81,7 +81,7 @@ void message::pre_show()
 	}
 
 	styled_widget& img_widget = find_widget<image>("image");
-	if(!image_.empty()) {
+	if(!image_.empty()){
 		img_widget.set_label(image_);
 	} else {
 		img_widget.set_visible(widget::visibility::invisible);
@@ -111,7 +111,7 @@ void message::set_button_caption(const button_id button,
 								  const std::string& caption)
 {
 	buttons_[button].caption = caption;
-	if(buttons_[button].ptr) {
+	if(buttons_[button].ptr){
 		buttons_[button].ptr->set_label(caption);
 	}
 }
@@ -120,7 +120,7 @@ void message::set_button_visible(const button_id button,
 								  const widget::visibility visible)
 {
 	buttons_[button].visible = visible;
-	if(buttons_[button].ptr) {
+	if(buttons_[button].ptr){
 		buttons_[button].ptr->set_visible(visible);
 	}
 }
@@ -128,7 +128,7 @@ void message::set_button_visible(const button_id button,
 void message::set_button_retval(const button_id button, const int retval)
 {
 	buttons_[button].retval = retval;
-	if(buttons_[button].ptr) {
+	if(buttons_[button].ptr){
 		buttons_[button].ptr->set_retval(retval);
 	}
 }
@@ -169,7 +169,7 @@ int show_message(const std::string& title,
 				 message_use_markup,
 				 title_use_markup);
 
-	switch(button_style) {
+	switch(button_style){
 		case message::auto_close:
 			break;
 		case message::ok_button:

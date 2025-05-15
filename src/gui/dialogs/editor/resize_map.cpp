@@ -59,7 +59,7 @@ void editor_resize_map::pre_show()
 			std::bind(&editor_resize_map::update_expand_direction, this));
 
 	std::string name_prefix = "expand";
-	for(int i = 0; i < 9; ++i) {
+	for(int i = 0; i < 9; ++i){
 		std::string name = name_prefix + std::to_string(i);
 		direction_buttons_[i]
 				= find_widget<toggle_button>(name, false, true);
@@ -77,7 +77,7 @@ void editor_resize_map::pre_show()
  */
 static int resize_grid_xy_to_idx(const int x, const int y)
 {
-	if(x < 0 || x > 2 || y < 0 || y > 2) {
+	if(x < 0 || x > 2 || y < 0 || y > 2){
 		return 9;
 	} else {
 		return y * 3 + x;
@@ -86,7 +86,7 @@ static int resize_grid_xy_to_idx(const int x, const int y)
 
 void editor_resize_map::set_direction_icon(int index, const std::string& icon)
 {
-	if(index < 9) {
+	if(index < 9){
 		direction_buttons_[index]->set_icon_name("icons/arrows/arrows_blank_"
 												 + icon + "_30.png");
 	}
@@ -94,20 +94,20 @@ void editor_resize_map::set_direction_icon(int index, const std::string& icon)
 
 void editor_resize_map::update_expand_direction()
 {
-	for(int i = 0; i < 9; ++i) {
+	for(int i = 0; i < 9; ++i){
 		if(direction_buttons_[i]->get_value()
-		   && static_cast<int>(expand_direction_) != i) {
+		   && static_cast<int>(expand_direction_) != i){
 
 			expand_direction_ = static_cast<EXPAND_DIRECTION>(i);
 			break;
 		}
 	}
-	for(int i = 0; i < static_cast<int>(expand_direction_); ++i) {
+	for(int i = 0; i < static_cast<int>(expand_direction_); ++i){
 		direction_buttons_[i]->set_value(false);
 		set_direction_icon(i, "none");
 	}
 	direction_buttons_[expand_direction_]->set_value(true);
-	for(int i = expand_direction_ + 1; i < 9; ++i) {
+	for(int i = expand_direction_ + 1; i < 9; ++i){
 		direction_buttons_[i]->set_value(false);
 		set_direction_icon(i, "none");
 	}
@@ -117,7 +117,7 @@ void editor_resize_map::update_expand_direction()
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");
-	if(xdiff != 0) {
+	if(xdiff != 0){
 		int left = resize_grid_xy_to_idx(x - 1, y);
 		int right = resize_grid_xy_to_idx(x + 1, y);
 		if(xdiff < 0)
@@ -125,7 +125,7 @@ void editor_resize_map::update_expand_direction()
 		set_direction_icon(left, "left");
 		set_direction_icon(right, "right");
 	}
-	if(ydiff != 0) {
+	if(ydiff != 0){
 		int top = resize_grid_xy_to_idx(x, y - 1);
 		int bottom = resize_grid_xy_to_idx(x, y + 1);
 		if(ydiff < 0)
@@ -133,12 +133,12 @@ void editor_resize_map::update_expand_direction()
 		set_direction_icon(top, "up");
 		set_direction_icon(bottom, "down");
 	}
-	if(xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)) {
+	if(xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)){
 		int nw = resize_grid_xy_to_idx(x - 1, y - 1);
 		int ne = resize_grid_xy_to_idx(x + 1, y - 1);
 		int sw = resize_grid_xy_to_idx(x - 1, y + 1);
 		int se = resize_grid_xy_to_idx(x + 1, y + 1);
-		if(xdiff < 0 || ydiff < 0) {
+		if(xdiff < 0 || ydiff < 0){
 			std::swap(nw, se);
 			std::swap(ne, sw);
 		}

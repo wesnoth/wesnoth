@@ -18,7 +18,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_SUITE( cmdline_opts )
+BOOST_AUTO_TEST_SUITE(cmdline_opts)
 
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {

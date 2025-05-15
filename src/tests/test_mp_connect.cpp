@@ -106,10 +106,10 @@ static ng::side_engine* create_side_engine(const config& defaults,
 
 /* Tests */
 
-BOOST_FIXTURE_TEST_SUITE( mp_connect, mp_connect_fixture )
+BOOST_FIXTURE_TEST_SUITE(mp_connect, mp_connect_fixture)
 
 
-BOOST_AUTO_TEST_CASE( flg_map_settings2 )
+BOOST_AUTO_TEST_CASE(flg_map_settings2)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -122,10 +122,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings2 )
 	side.clear();
 	side["recruit"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"], "Elvish Archer" );
+	BOOST_CHECK_EQUAL(side_engine->new_config()["recruit"], "Elvish Archer");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings3 )
+BOOST_AUTO_TEST_CASE(flg_map_settings3)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -138,11 +138,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings3 )
 	side.clear();
 	side["faction"] = "Custom";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
-	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
+	BOOST_CHECK_EQUAL(side_engine->flg().current_faction()["id"], "Custom");
+	BOOST_CHECK_EQUAL(side_engine->new_config()["recruit"].empty(), true);
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings4 )
+BOOST_AUTO_TEST_CASE(flg_map_settings4)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -155,10 +155,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings4 )
 	side.clear();
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
+	BOOST_CHECK_EQUAL(side_engine->flg().current_faction()["id"], "Random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings5 )
+BOOST_AUTO_TEST_CASE(flg_map_settings5)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -171,10 +171,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings5 )
 	side.clear();
 	side["faction"] = "Rebels";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Rebels" );
+	BOOST_CHECK_EQUAL(side_engine->flg().current_faction()["id"], "Rebels");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings6 )
+BOOST_AUTO_TEST_CASE(flg_map_settings6)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -187,11 +187,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings6 )
 	side.clear();
 	side["faction"] = "ThisFactionDoesNotExist";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_factions().size() > 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
+	BOOST_CHECK(side_engine->flg().choosable_factions().size() > 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_faction()["id"], "Random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings7 )
+BOOST_AUTO_TEST_CASE(flg_map_settings7)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -207,7 +207,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings7 )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings8 )
+BOOST_AUTO_TEST_CASE(flg_map_settings8)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -220,10 +220,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings8 )
 	side.clear();
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"], "Elvish Archer" );
+	BOOST_CHECK_EQUAL(side_engine->new_config()["previous_recruits"], "Elvish Archer");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings9 )
+BOOST_AUTO_TEST_CASE(flg_map_settings9)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -240,12 +240,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings9 )
 	};
 
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Shadow" );
-	BOOST_CHECK_EQUAL( side_engine->new_config().mandatory_child("leader")["type"], "Shadow" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "Shadow");
+	BOOST_CHECK_EQUAL(side_engine->new_config().mandatory_child("leader")["type"], "Shadow");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings10 )
+BOOST_AUTO_TEST_CASE(flg_map_settings10)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -262,11 +262,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings10 )
 	};
 
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings11 )
+BOOST_AUTO_TEST_CASE(flg_map_settings11)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -279,11 +279,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings11 )
 	side.clear();
 	side["faction"] = "Custom";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
+	BOOST_CHECK(side_engine->flg().choosable_leaders().size() > 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings12 )
+BOOST_AUTO_TEST_CASE(flg_map_settings12)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -296,11 +296,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings12 )
 	side.clear();
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings13 )
+BOOST_AUTO_TEST_CASE(flg_map_settings13)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -312,7 +312,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings13 )
 
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings14 )
+BOOST_AUTO_TEST_CASE(flg_map_settings14)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -325,11 +325,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings14 )
 	side.clear();
 	side["faction"] = "Undead";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
+	BOOST_CHECK(side_engine->flg().choosable_leaders().size() > 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings15 )
+BOOST_AUTO_TEST_CASE(flg_map_settings15)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -351,11 +351,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings15 )
 	};
 
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Elvish Ranger" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "Elvish Ranger");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings16 )
+BOOST_AUTO_TEST_CASE(flg_map_settings16)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -367,7 +367,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings16 )
 
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings17 )
+BOOST_AUTO_TEST_CASE(flg_map_settings17)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -383,10 +383,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings17 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings18 )
+BOOST_AUTO_TEST_CASE(flg_map_settings18)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -402,11 +402,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings18 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 3 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_genders().size(), 3);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings19 )
+BOOST_AUTO_TEST_CASE(flg_map_settings19)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -422,11 +422,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings19 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_genders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "male");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings20 )
+BOOST_AUTO_TEST_CASE(flg_map_settings20)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -442,11 +442,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings20 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_genders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "female");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings21 )
+BOOST_AUTO_TEST_CASE(flg_map_settings21)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -463,10 +463,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings21 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "female");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings22 )
+BOOST_AUTO_TEST_CASE(flg_map_settings22)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -483,11 +483,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings22 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_genders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "male");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings23 )
+BOOST_AUTO_TEST_CASE(flg_map_settings23)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -504,10 +504,10 @@ BOOST_AUTO_TEST_CASE( flg_map_settings23 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings24 )
+BOOST_AUTO_TEST_CASE(flg_map_settings24)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -519,7 +519,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings24 )
 
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings25 )
+BOOST_AUTO_TEST_CASE(flg_map_settings25)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -532,11 +532,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings25 )
 	side.clear();
 	side["leader_lock"] = true;
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+	BOOST_CHECK_EQUAL(side_engine->flg().choosable_leaders().size(), 1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings26 )
+BOOST_AUTO_TEST_CASE(flg_map_settings26)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -550,12 +550,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings26 )
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
-	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
-	BOOST_CHECK( side_engine->flg().current_leader() != "random" && side_engine->flg().current_leader() != "null");
-	BOOST_CHECK( side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null");
+	BOOST_CHECK(side_engine->flg().current_faction()["id"] != "Random");
+	BOOST_CHECK(side_engine->flg().current_leader() != "random" && side_engine->flg().current_leader() != "null");
+	BOOST_CHECK(side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings27 )
+BOOST_AUTO_TEST_CASE(flg_map_settings27)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -573,12 +573,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings27 )
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
-	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
-	BOOST_CHECK( side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null" );
+	BOOST_CHECK(side_engine->flg().current_faction()["id"] != "Random");
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "Troll");
+	BOOST_CHECK(side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings28 )
+BOOST_AUTO_TEST_CASE(flg_map_settings28)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -597,12 +597,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings28 )
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
-	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+	BOOST_CHECK(side_engine->flg().current_faction()["id"] != "Random");
+	BOOST_CHECK_EQUAL(side_engine->flg().current_leader(), "White Mage");
+	BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "male");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings29 )
+BOOST_AUTO_TEST_CASE(flg_map_settings29)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -619,14 +619,14 @@ BOOST_AUTO_TEST_CASE( flg_map_settings29 )
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
-	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
+	BOOST_CHECK(side_engine->flg().current_leader() != "random");
 }
 
 
 
 
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings1 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings1)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -639,10 +639,10 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings1 )
 	side.clear();
 	side["recruit"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
+	BOOST_CHECK(side_engine->flg().choosable_factions().size() >  1);
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings2 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings2)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -655,12 +655,12 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings2 )
 	side.clear();
 	side["faction"] = "Custom";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
-	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
+	BOOST_CHECK(side_engine->flg().choosable_factions().size() >  1);
+	BOOST_CHECK_EQUAL(side_engine->flg().current_faction()["id"], "Custom");
+	BOOST_CHECK_EQUAL(side_engine->new_config()["recruit"].empty(), true);
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings3 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings3)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -673,11 +673,11 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings3 )
 	side.clear();
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
-	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"], "Elvish Archer" );
+	BOOST_CHECK(side_engine->flg().choosable_factions().size() >  1);
+	BOOST_CHECK_EQUAL(side_engine->new_config()["previous_recruits"], "Elvish Archer");
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings4 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings4)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -694,10 +694,10 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings4 )
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
-	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
+	BOOST_CHECK(side_engine->flg().choosable_leaders().size() > 1);
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings5 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings5)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -714,12 +714,12 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings5 )
 		},
 	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
+	BOOST_CHECK(side_engine->flg().choosable_leaders().size() > 1);
 	const std::vector<std::string>& leaders = side_engine->flg().choosable_leaders();
-	BOOST_CHECK_EQUAL( std::count(leaders.begin(), leaders.end(), "Swordsman"), 1 );
+	BOOST_CHECK_EQUAL(std::count(leaders.begin(), leaders.end(), "Swordsman"), 1);
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings6 )
+BOOST_AUTO_TEST_CASE(flg_no_map_settings6)
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -738,7 +738,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings6 )
 	side_engine->flg().set_current_faction("Rebels");
 	side_engine->flg().set_current_leader("Elvish Ranger");
 	// TODO: this this really make sense? it would be nice to know the usecases for this.
-	//BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+	//BOOST_CHECK_EQUAL(side_engine->flg().current_gender(), "random");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

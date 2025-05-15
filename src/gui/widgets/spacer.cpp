@@ -42,7 +42,7 @@ bool spacer::fills_available_space()
 void spacer::request_reduce_width(const unsigned maximum_width)
 {
 	// Do nothing unless this widget fills all available space (has non-size size).
-	if(fills_available_space()) {
+	if(fills_available_space()){
 		styled_widget::request_reduce_width(maximum_width);
 	}
 }
@@ -50,7 +50,7 @@ void spacer::request_reduce_width(const unsigned maximum_width)
 void spacer::request_reduce_height(const unsigned maximum_height)
 {
 	// Do nothing unless this widget fills all available space (has non-size size).
-	if(fills_available_space()) {
+	if(fills_available_space()){
 		styled_widget::request_reduce_height(maximum_height);
 	}
 }
@@ -64,11 +64,11 @@ point spacer::calculate_best_size() const
 
 	point best_size;
 
-	if(width || height) {
+	if(width || height){
 		best_size = point(width, height);
 	}
 
-	if(best_size != point()) {
+	if(best_size != point()){
 		return best_size;
 	}
 

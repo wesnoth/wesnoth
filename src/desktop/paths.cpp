@@ -63,8 +63,8 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 
 	const DWORD drive_table = GetLogicalDrives();
 
-	for(unsigned n = 0; n < 26; ++n) {
-		if((drive_table >> n) & 1) {
+	for(unsigned n = 0; n < 26; ++n){
+		if((drive_table >> n) & 1){
 			std::string u8drive = "A:";
 			u8drive[0] += n;
 
@@ -76,7 +76,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 			const DWORD label_bufsize = MAX_PATH + 1;
 			wchar_t label[label_bufsize] { 0 };
 
-			if(GetVolumeInformation(drive, label, label_bufsize, nullptr, nullptr, nullptr, nullptr, 0) == 0) {
+			if(GetVolumeInformation(drive, label, label_bufsize, nullptr, nullptr, nullptr, nullptr, 0) == 0){
 				// Probably an empty removable drive, just ignore it and carry on.
 				const DWORD err = GetLastError();
 				LOG_DU << "enumerate_win32_drives(): GetVolumeInformation() failed (" << err << ")";
@@ -109,20 +109,20 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 	std::vector<std::string> candidates { "/media", "/mnt" };
 
 	// Fetch passwd entry for the effective user the current process runs as
-	if(const passwd* pw = getpwuid(geteuid()); pw && pw->pw_name && pw->pw_name[0]) {
+	if(const passwd* pw = getpwuid(geteuid()); pw && pw->pw_name && pw->pw_name[0]){
 		candidates.emplace(candidates.begin(), "/run/media/");
 		candidates.front() += pw->pw_name;
 	}
 
-	for(const auto& mnt : candidates) {
+	for(const auto& mnt : candidates){
 		bsys::error_code e;
 		try {
-			if(bfs::is_directory(mnt, e) && !bfs::is_empty(mnt, e) && !e) {
+			if(bfs::is_directory(mnt, e) && !bfs::is_empty(mnt, e) && !e){
 				DBG_DU << "enumerate_mount_parents(): " << mnt << " appears to be a non-empty dir";
 				res.push_back({mnt, "", mnt});
 			}
 		}
-		catch(...) {
+		catch(...){
 			//bool is_empty(const path& p, system::error_code& ec) might throw.
 			//For example if you have no permission on that directory. Don't list the file in that case.
 			DBG_DU << "caught exception " << utils::get_unknown_exception_type() << " in enumerate_storage_devices";
@@ -134,8 +134,8 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 
 bool have_path(const std::vector<path_info>& pathset, const std::string& path)
 {
-	for(const auto& pinfo : pathset) {
-		if(pinfo.path == path) {
+	for(const auto& pinfo : pathset){
+		if(pinfo.path == path){
 			return true;
 		}
 	}
@@ -172,7 +172,7 @@ std::string user_profile_dir()
 	//       for us here.
 	const passwd* const pwd = getpwuid(geteuid());
 
-	if(!pwd || !pwd->pw_dir || !*pwd->pw_dir) {
+	if(!pwd || !pwd->pw_dir || !*pwd->pw_dir){
 		return "";
 	}
 
@@ -206,19 +206,19 @@ std::vector<path_info> game_paths(const std::set<GAME_PATH_TYPES>& paths)
 
 	std::vector<path_info> res;
 
-	if(paths.count(GAME_BIN_DIR) > 0 && !have_path(res, game_bin_dir)) {
+	if(paths.count(GAME_BIN_DIR) > 0 && !have_path(res, game_bin_dir)){
 		res.push_back({{ N_("filesystem_path_game^Game executables"), GETTEXT_DOMAIN }, "", game_bin_dir});
 	}
 
-	if(paths.count(GAME_CORE_DATA_DIR) > 0 && !have_path(res, game_data_dir)) {
+	if(paths.count(GAME_CORE_DATA_DIR) > 0 && !have_path(res, game_data_dir)){
 		res.push_back({{ N_("filesystem_path_game^Game data"), GETTEXT_DOMAIN }, "", game_data_dir});
 	}
 
-	if(paths.count(GAME_USER_DATA_DIR) > 0 && !have_path(res, game_user_data_dir)) {
+	if(paths.count(GAME_USER_DATA_DIR) > 0 && !have_path(res, game_user_data_dir)){
 		res.push_back({{ N_("filesystem_path_game^User data"), GETTEXT_DOMAIN }, "", game_user_data_dir});
 	}
 
-	if(paths.count(GAME_EDITOR_MAP_DIR) > 0 && !have_path(res, game_editor_map_dir)) {
+	if(paths.count(GAME_EDITOR_MAP_DIR) > 0 && !have_path(res, game_editor_map_dir)){
 		res.push_back({{ N_("filesystem_path_game^Editor maps"), GETTEXT_DOMAIN }, "", game_editor_map_dir});
 	}
 
@@ -231,16 +231,16 @@ std::vector<path_info> system_paths(const std::set<SYSTEM_PATH_TYPES>& paths)
 
 	std::vector<path_info> res;
 
-	if(paths.count(SYSTEM_USER_PROFILE) > 0 && !home_dir.empty()) {
+	if(paths.count(SYSTEM_USER_PROFILE) > 0 && !home_dir.empty()){
 		res.push_back({{ N_("filesystem_path_system^Home"), GETTEXT_DOMAIN }, "", home_dir});
 	}
 
-	if(paths.count(SYSTEM_ALL_DRIVES) > 0) {
+	if(paths.count(SYSTEM_ALL_DRIVES) > 0){
 		enumerate_storage_devices(res);
 	}
 
 #ifndef _WIN32
-	if(paths.count(SYSTEM_ROOTFS) > 0) {
+	if(paths.count(SYSTEM_ROOTFS) > 0){
 		res.push_back({{ N_("filesystem_path_system^Root"), GETTEXT_DOMAIN }, "", "/"});
 	}
 #endif
@@ -266,7 +266,7 @@ void remove_user_bookmark(unsigned index)
 	config cfg = get_bookmarks_config();
 	const unsigned prev_size = cfg.child_count("bookmark");
 
-	if(index < prev_size) {
+	if(index < prev_size){
 		cfg.remove_child("bookmark", index);
 	}
 
@@ -278,8 +278,8 @@ std::vector<bookmark_info> user_bookmarks()
 	const config& cfg = get_bookmarks_config();
 	std::vector<bookmark_info> res;
 
-	if(cfg.has_child("bookmark")) {
-		for(const config& bookmark_cfg : cfg.child_range("bookmark")) {
+	if(cfg.has_child("bookmark")){
+		for(const config& bookmark_cfg : cfg.child_range("bookmark")){
 			res.push_back({ bookmark_cfg["label"], bookmark_cfg["path"] });
 		}
 	}

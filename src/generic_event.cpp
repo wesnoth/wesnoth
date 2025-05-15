@@ -31,11 +31,11 @@ bool generic_event::attach_handler(observer* obs){
 	bool handler_attached = false;
 
 	//make sure observers are not notified right now
-	if (!notify_active_){
+	if(!notify_active_){
 		change_handler_ = true;
 		try{
 			std::vector<observer*>::const_iterator it = std::find(observers_.begin(), observers_.end(), obs);
-			if (it != observers_.end()){
+			if(it != observers_.end()){
 				handler_attached = false;
 			}
 			else{
@@ -57,9 +57,9 @@ bool generic_event::detach_handler(observer* obs){
 	bool handler_detached = false;
 
 	//make sure observers are not notified right now
-	if (!notify_active_){
+	if(!notify_active_){
 		auto it = std::find(observers_.begin(), observers_.end(), obs);
-		if (it == observers_.end()){
+		if(it == observers_.end()){
 			handler_detached = false;
 		}
 		else{
@@ -73,10 +73,10 @@ bool generic_event::detach_handler(observer* obs){
 }
 
 void generic_event::notify_observers(){
-	if (!change_handler_){
+	if(!change_handler_){
 		notify_active_ = true;
 		try{
-			for (std::vector<observer*>::const_iterator it = observers_.begin();
+			for(std::vector<observer*>::const_iterator it = observers_.begin();
 				it != observers_.end(); ++it){
 				(*it)->handle_generic_event(name_);
 			}

@@ -41,14 +41,14 @@ namespace game_events
 {
 void event_handlers::log_handlers()
 {
-	if(lg::debug().dont_log(log_event_handler)) {
+	if(lg::debug().dont_log(log_event_handler)){
 		return;
 	}
 
 	std::stringstream ss;
 
-	for(const handler_ptr& h : active_) {
-		if(!h) {
+	for(const handler_ptr& h : active_){
+		if(!h){
 			continue;
 		}
 
@@ -88,20 +88,20 @@ bool event_handlers::cmp(const handler_ptr& lhs, const handler_ptr& rhs)
  */
 pending_event_handler event_handlers::add_event_handler(const std::string& name, const std::string& id, bool repeat, double priority, bool is_menu_item)
 {
-	if(!id.empty()) {
+	if(!id.empty()){
 		// Ignore this handler if there is already one with this ID.
 		auto find_it = id_map_.find(id);
 
-		if(find_it != id_map_.end() && !find_it->second.expired()) {
+		if(find_it != id_map_.end() && !find_it->second.expired()){
 			LOG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "' because an event with that id already exists";
 			return {*this, nullptr};
 		}
 	}
 
-	if(name.empty() && id.empty()) {
+	if(name.empty() && id.empty()){
 		static const char* msg = "[event] is missing name or id field";
 		lg::log_to_chat() << msg << "\n";
-		if(lg::info().dont_log(log_event_handler)) {
+		if(lg::info().dont_log(log_event_handler)){
 			ERR_EH << msg << " (run with --log-info=event_handler for more info)";
 		} else {
 			ERR_EH << msg;
@@ -120,7 +120,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 void event_handlers::finish_adding_event_handler(const handler_ptr& handler)
 {
 	// Someone decided to register an empty event... bail.
-	if(handler->empty()) {
+	if(handler->empty()){
 		return;
 	}
 
@@ -134,16 +134,16 @@ void event_handlers::finish_adding_event_handler(const handler_ptr& handler)
 	active_.emplace_back(handler);
 
 	// File by name.
-	if(utils::might_contain_variables(names)) {
+	if(utils::might_contain_variables(names)){
 		dynamic_.emplace_back(active_.back());
 	} else {
-		for(const std::string& single_name : handler->names(nullptr)) {
+		for(const std::string& single_name : handler->names(nullptr)){
 			by_name_[single_name].emplace_back(active_.back());
 		}
 	}
 
 	// File by ID.
-	if(!id.empty()) {
+	if(!id.empty()){
 		id_map_[id] = active_.back();
 	}
 
@@ -162,7 +162,7 @@ pending_event_handler::~pending_event_handler()
  */
 void event_handlers::remove_event_handler(const std::string& id)
 {
-	if(id.empty()) {
+	if(id.empty()){
 		return;
 	}
 
@@ -170,10 +170,10 @@ void event_handlers::remove_event_handler(const std::string& id)
 
 	// Find the existing handler with this ID.
 	auto find_it = id_map_.find(id);
-	if(find_it != id_map_.end()) {
+	if(find_it != id_map_.end()){
 		handler_ptr handler = find_it->second.lock();
 
-		if(handler && !handler->disabled()) {
+		if(handler && !handler->disabled()){
 			handler->disable();
 		}
 
@@ -192,26 +192,26 @@ void event_handlers::remove_event_handler(const std::string& id)
 void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 {
 	// First, remove all disabled handlers from the main list.
-	utils::erase_if(active_, [](const handler_ptr& p) { return p->disabled(); });
+	utils::erase_if(active_, [](const handler_ptr& p){ return p->disabled(); });
 
 	// Then remove any now-unlockable weak_ptrs from the by-name list.
 	// Might be more than one so we split.
-	for(const std::string& name : utils::split(event_name)) {
+	for(const std::string& name : utils::split(event_name)){
 		by_name_[standardize_name(name)].remove_if(
-			[](const weak_handler_ptr& ptr) { return ptr.expired(); }
+			[](const weak_handler_ptr& ptr){ return ptr.expired(); }
 		);
 	}
 
 	// And finally remove any now-unlockable weak_ptrs from the with-variables name list.
 	dynamic_.remove_if(
-		[](const weak_handler_ptr& ptr) { return ptr.expired(); }
+		[](const weak_handler_ptr& ptr){ return ptr.expired(); }
 	);
 }
 
 const handler_ptr event_handlers::get_event_handler_by_id(const std::string& id)
 {
 	auto find_it = id_map_.find(id);
-	if(find_it != id_map_.end() && !find_it->second.expired()) {
+	if(find_it != id_map_.end() && !find_it->second.expired()){
 		return find_it->second.lock();
 	}
 

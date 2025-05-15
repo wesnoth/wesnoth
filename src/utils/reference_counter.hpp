@@ -46,13 +46,13 @@ public:
 
 	T_integral const set(T_integral const a) { count_=a; return count_; }
 	T_integral const inc(){
-		if (count_ >= 0) { count_  += 1; }
+		if(count_ >= 0) { count_  += 1; }
 		return count_; }
 	T_integral const dec(){
-		if( count_ > 0) { count_  -= 1; }
+		if(count_ > 0) { count_  -= 1; }
 		return count_; }
 	T_integral const enable_count(){
-		if (count_ < 0) {count_ = 0;}
+		if(count_ < 0) {count_ = 0;}
 		return count_; }
 	T_integral const disable_count(){
 		count_= NOT_COUNTED;

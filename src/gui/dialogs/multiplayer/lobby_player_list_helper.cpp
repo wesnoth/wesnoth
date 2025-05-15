@@ -35,7 +35,7 @@ lobby_player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::
 
 	root = &parent_tree->add_node("player_group", tree_group_item);
 
-	if(unfolded) {
+	if(unfolded){
 		root->unfold();
 	}
 
@@ -65,13 +65,13 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 	const unsigned scrollbar_position = tree->get_vertical_scrollbar_item_position();
 	std::array<update_pod, std::tuple_size<decltype(player_lists)>::value> inputs{};
 
-	for(const auto& user : user_info) {
+	for(const auto& user : user_info){
 		std::string name = user.name;
 
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 
-		switch(user.get_state(focused_game)) {
+		switch(user.get_state(focused_game)){
 		case mp::user_info::user_state::LOBBY:
 			icon_ss << "-lobby";
 			break;
@@ -85,7 +85,7 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 			break;
 		}
 
-		switch(user.get_relation()) {
+		switch(user.get_relation()){
 		case mp::user_info::user_relation::ME:
 			icon_ss << "-s";
 			break;
@@ -114,7 +114,7 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 		tree_group_item["name"] = tree_group_field;
 
 		// Indices here must match the order of the lists in the player_lists array (see `init`)
-		switch(user.get_state(focused_game)) {
+		switch(user.get_state(focused_game)){
 		case mp::user_info::user_state::SEL_GAME:
 			inputs[0].node_data.push_back(std::move(tree_group_item));
 			inputs[0].user_data.push_back(&user);
@@ -135,13 +135,13 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 
 	info_map.clear();
 
-	for(std::size_t i = 0; i < player_lists.size(); ++i) {
+	for(std::size_t i = 0; i < player_lists.size(); ++i){
 		assert(inputs[i].node_data.size() == inputs[i].user_data.size());
 
 		// Add the player nodes
 		const auto new_nodes = player_lists[i].root->replace_children("player", inputs[i].node_data);
 
-		for(std::size_t k = 0; k < new_nodes.size(); ++k) {
+		for(std::size_t k = 0; k < new_nodes.size(); ++k){
 			auto* node = new_nodes[k].get();
 			auto* info = inputs[i].user_data[k];
 
@@ -158,7 +158,7 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 	}
 
 	// Don't attempt to restore the scroll position if the window hasn't been laid out yet
-	if(tree->get_origin() != point{-1, -1}) {
+	if(tree->get_origin() != point{-1, -1}){
 		tree->set_vertical_scrollbar_item_position(scrollbar_position);
 	}
 }

@@ -23,7 +23,7 @@
 
 bool utils::config_filters::bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def)
 {
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 
@@ -33,7 +33,7 @@ bool utils::config_filters::bool_matches_if_present(const config& filter, const 
 bool utils::config_filters::string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def)
 {
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 
@@ -44,21 +44,21 @@ bool utils::config_filters::string_matches_if_present(
 
 bool utils::config_filters::set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute)
 {
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 	//This function compares two sets in such a way that if
 	//no member of the ability set matches the filter element,
 	//it returns a false value but if the attribute is not present in ability
 	//then there is no point in wasting resources on building the set from the filter and the value is returned immediately.
-	if(!cfg.has_attribute(attribute)) {
+	if(!cfg.has_attribute(attribute)){
 		return false;
 	}
 
 	const std::set<std::string> filter_attribute = utils::split_set(filter[attribute].str());
 	const std::set<std::string> cfg_attribute = utils::split_set(cfg[attribute].str());
-	for(const std::string& fil_at : filter_attribute) {
-		if (cfg_attribute.count(fil_at) == 0){
+	for(const std::string& fil_at : filter_attribute){
+		if(cfg_attribute.count(fil_at) == 0){
 			return false;
 		}
 	}
@@ -67,12 +67,12 @@ bool utils::config_filters::set_includes_if_present(const config& filter, const 
 
 bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def)
 {
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 	//This function can be called in cases where no default value is supposed to exist,
 	//if this is the case and the checked attribute does not exist then no value can match.
-	if(!cfg.has_attribute(attribute) && !def) {
+	if(!cfg.has_attribute(attribute) && !def){
 		return false;
 	}
 
@@ -87,14 +87,14 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 bool utils::config_filters::int_matches_if_present_or_negative(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, utils::optional<int> def)
 {
-	if(int_matches_if_present(filter, cfg, attribute, def)) {
+	if(int_matches_if_present(filter, cfg, attribute, def)){
 		return true;
 	}
 
 	// Check if cfg[opposite].empty() and have optional def.
 	// If def don't exist return false.
-	if(!cfg.has_attribute(attribute)) {
-		if(!cfg.has_attribute(opposite) && !def) {
+	if(!cfg.has_attribute(attribute)){
+		if(!cfg.has_attribute(opposite) && !def){
 			return false;
 		}
 		//if filter attribute is "default" check if cfg attribute equals to def.
@@ -110,12 +110,12 @@ bool utils::config_filters::int_matches_if_present_or_negative(
 
 bool utils::config_filters::double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<double> def)
 {
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 	//there is no attribute returning a decimal value using which has a default value but the variable exists in case this changes,
 	//otherwise in case the attribute is missing from the ability no value can match.
-	if(!cfg.has_attribute(attribute) && !def) {
+	if(!cfg.has_attribute(attribute) && !def){
 		return false;
 	}
 
@@ -133,7 +133,7 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 	//except that this function is called in cases where a third value exists in addition to true/false.
 	//If the attribute is not present in the ability this induces a different behavior than if it takes a true or false value
 	//and this presence must be verified before checking its value.
-	if(!filter.has_attribute(attribute)) {
+	if(!filter.has_attribute(attribute)){
 		return true;
 	}
 

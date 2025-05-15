@@ -34,7 +34,7 @@ std::string unit_palette::get_help_string() const {
 
 void unit_palette::setup(const game_config_view& /*cfg*/)
 {
-	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
+	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()){
 		if(i.second.do_not_list())
 			continue;
 		item_map_.emplace(i.second.id(), i.second);
@@ -43,7 +43,7 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 		group_map_["all"].push_back(i.second.id());
 	}
 
-	for(const race_map::value_type &i : unit_types.races()) {
+	for(const race_map::value_type &i : unit_types.races()){
 		if(group_map_[i.second.id()].empty())
 			continue;
 		config cfg;
@@ -64,7 +64,7 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 	// Set the default group
 	set_group(groups_[0].id);
 
-	if(active_group().empty()) {
+	if(active_group().empty()){
 		ERR_ED << "No items found.";
 	}
 }
@@ -80,11 +80,11 @@ void unit_palette::setup_item(
 			 << team::get_side_color_id(gui_.viewing_team().side()) << ')';
 
 	base_image = image::get_texture(filename.str());
-	if(!base_image) {
+	if(!base_image){
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found";
 		base_image = image::get_texture(game_config::images::missing);
-		if(!base_image) {
+		if(!base_image){
 			ERR_ED << "Placeholder image not found";
 			return;
 		}
@@ -110,9 +110,9 @@ bool unit_palette::is_selected_bg_item(const std::string& id)
 	return selected_bg_items_.count(id) != 0;
 }
 
-void unit_palette::select_bg_item(const std::string& item_id) {
+void unit_palette::select_bg_item(const std::string& item_id){
 
-	if(selected_bg_items_.count(item_id) != 0) {
+	if(selected_bg_items_.count(item_id) != 0){
 		selected_bg_items_.erase(item_id);
 	} else {
 		selected_bg_items_.insert(item_id);

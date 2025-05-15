@@ -25,11 +25,11 @@
 
 bool quit_confirmation::quit()
 {
-	if(!open_) {
+	if(!open_){
 		open_ = true;
 		for(quit_confirmation* blocker : blockers_ | utils::views::reverse)
 		{
-			if(!blocker->prompt_()) {
+			if(!blocker->prompt_()){
 				open_ = false;
 				return false;
 			}
@@ -42,12 +42,12 @@ bool quit_confirmation::quit()
 
 void quit_confirmation::quit_to_title()
 {
-	if(quit()) { throw_quit_game_exception(); }
+	if(quit()){ throw_quit_game_exception(); }
 }
 
 void quit_confirmation::quit_to_desktop()
 {
-	if(quit()) { throw video::quit(); }
+	if(quit()){ throw video::quit(); }
 }
 
 bool quit_confirmation::show_prompt(const std::string& message)
@@ -61,15 +61,15 @@ bool quit_confirmation::default_prompt()
 	playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 	std::size_t humans_notme_cnt = 0;
 
-	if(pmc != nullptr) {
-		for(const auto& t : pmc->get_teams()) {
-			if(t.is_network_human()) {
+	if(pmc != nullptr){
+		for(const auto& t : pmc->get_teams()){
+			if(t.is_network_human()){
 				++humans_notme_cnt;
 			}
 		}
 	}
 
-	if(!(pmc == nullptr || humans_notme_cnt < 1 || pmc->is_linger_mode() || pmc->is_observer())) {
+	if(!(pmc == nullptr || humans_notme_cnt < 1 || pmc->is_linger_mode() || pmc->is_observer())){
 		gui2::dialogs::surrender_quit sq;
 		sq.show();
 		int retval = sq.get_retval();

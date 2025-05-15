@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e){
 		return boost::algorithm::contains(e.dev_message, "Inheritance cycle from other/second to main/first found");
 	});
 }
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_crashes_on_unknown_key)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e){
 		return boost::algorithm::contains(e.dev_message, "Invalid key 'unknown=' in tag [first]");
 	});
 }
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(test_super_missing)
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
-	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e){
 		return boost::algorithm::contains(e.dev_message, "Super not/here not found. Needed by other/second");
 	});
 }
@@ -154,7 +154,7 @@ BOOST_AUTO_TEST_CASE(test_super_mandatory_missing)
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 
 	auto stream = preprocess_file(config_path, &defines_map);
-	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
+	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e){
 		return boost::algorithm::contains(e.dev_message, "Missing key 'id=' in tag [campaign]");
 	});
 }
@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE(test_schema_link_cycle)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_link_cycle.cfg";
 
-	BOOST_CHECK_EXCEPTION(schema_validation::schema_validator(schema_path, false), abstract_validator::error, [](const abstract_validator::error& e) {
+	BOOST_CHECK_EXCEPTION(schema_validation::schema_validator(schema_path, false), abstract_validator::error, [](const abstract_validator::error& e){
 		return boost::algorithm::contains(e.message, "Link cycle from");
 	});
 }

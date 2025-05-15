@@ -45,12 +45,12 @@ transient_message::transient_message(const std::string& title,
 
 void transient_message::pre_show()
 {
-	if(hide_title_) {
+	if(hide_title_){
 		widget& title = find_widget<widget>("title");
 		title.set_visible(widget::visibility::invisible);
 	}
 
-	if(hide_image_) {
+	if(hide_image_){
 		widget& image = find_widget<widget>("image");
 		image.set_visible(widget::visibility::invisible);
 	}

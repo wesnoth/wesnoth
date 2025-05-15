@@ -38,7 +38,7 @@ static std::string get_probability_string(const double prob)
 {
 	std::ostringstream ss;
 
-	if(prob > 0.9995) {
+	if(prob > 0.9995){
 		ss << "100";
 	} else {
 		ss << std::fixed << std::setprecision(1) << 100.0 * prob;
@@ -77,7 +77,7 @@ void statistics_dialog::pre_show()
 	// Keep this first!
 	menu_items.emplace_back("label", _("All Scenarios"));
 
-	for(const auto& scenario : scenarios_) {
+	for(const auto& scenario : scenarios_){
 		menu_items.emplace_back("label", *scenario.first);
 	}
 
@@ -127,7 +127,7 @@ void statistics_dialog::add_stat_row(const std::string& type, const statistics_t
 static std::ostream& write_actual_and_expected(std::ostream& str, const long long actual, const double expected)
 {
 	// This is displayed as a sum or difference, not as "actual/expected", to prevent the string in the next column, str2.str(), from being mistaken for the result of the division.
-	if(expected == 0) {
+	if(expected == 0){
 		str << "+0% (0 + 0)";
 	} else {
 		str << (formatter() << std::showpos << std::round((actual - expected) * 100 / expected) << "% (").str();
@@ -156,7 +156,7 @@ void statistics_dialog::add_damage_row(
 
 	static const int shift = statistics_t::stats::decimal_shift;
 
-	const auto damage_str = [](long long damage, long long expected) {
+	const auto damage_str = [](long long damage, long long expected){
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
 		write_actual_and_expected(str, damage, static_cast<double>(shifted) * 0.1);
@@ -169,7 +169,7 @@ void statistics_dialog::add_damage_row(
 	item["label"] = "";
 	data.emplace("overall_score", item);
 
-	if(show_this_turn) {
+	if(show_this_turn){
 		label& this_turn_header = find_widget<label>("damage_this_turn_header");
 		this_turn_header.set_label(_("This Turn"));
 
@@ -210,7 +210,7 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 	tooltip << '\n' << '\n' << _("Actual hit rates, by chance to hit:");
 	if(by_cth.empty())
 		tooltip << '\n' << _("(no attacks have taken place yet)");
-	for(const auto& i : by_cth) {
+	for(const auto& i : by_cth){
 		int cth = i.first;
 		overall_hits += i.second.hits;
 		expected_hits += (cth * 0.01) * i.second.strikes;
@@ -236,7 +236,7 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
 		auto current_defender = std::make_unique<combatant>(defender_bc);
 
-		for(const auto& i : by_cth) {
+		for(const auto& i : by_cth){
 			int cth = i.first;
 			config attacker_cfg(
 				"id", "statistics_dialog_dummy_attacker" + std::to_string(cth),
@@ -266,12 +266,12 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 		}
 
 		const std::vector<double>& final_hp_dist = current_defender->hp_dist;
-		const auto chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
+		const auto chance_of_exactly_N_hits = [&final_hp_dist](int n){ return final_hp_dist[final_hp_dist.size() - 1 - n]; };
 
 		// The a priori probability of scoring less hits than the actual number of hits
 		// aka "percentile" or "p-value"
 		double probability_lt = 0.0;
-		for(unsigned int i = 0; i < overall_hits; ++i) {
+		for(unsigned int i = 0; i < overall_hits; ++i){
 			probability_lt += chance_of_exactly_N_hits(i);
 		}
 		// The a priori probability of scoring exactly the actual number of hits
@@ -279,11 +279,11 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 		// The a priori probability of scoring more hits than the actual number of hits
 		double probability_gt = 1.0 - (probability_lt + probability_eq);
 
-		if(overall_strikes == 0) {
+		if(overall_strikes == 0){
 			// Start of turn
 			str2 << font::unicode_em_dash;
 		} else {
-			const auto add_probability = [&str2](double probability, bool more_is_better) {
+			const auto add_probability = [&str2](double probability, bool more_is_better){
 				str2 << markup::span_color(
 					game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true),
 					get_probability_string(probability));
@@ -329,7 +329,7 @@ void statistics_dialog::add_hits_row(
 	// Don't set the tooltip; it's set in WML.
 	data.emplace("overall_score", widget_item { { "label", element.pvalue_str } });
 
-	if(show_this_turn) {
+	if(show_this_turn){
 		label& this_turn_header = find_widget<label>("hits_this_turn_header");
 		this_turn_header.set_label(_("This Turn"));
 
@@ -369,7 +369,7 @@ void statistics_dialog::update_lists()
 	add_stat_row(_("Kills"),        stats.killed);
 
 	// Reselect previously selected row. Do this *before* calling on_primary_list_select.
-	if(last_selected_stat_row != -1) {
+	if(last_selected_stat_row != -1){
 		stat_list.select_row(last_selected_stat_row);
 	}
 
@@ -419,7 +419,7 @@ void statistics_dialog::on_scenario_select()
 {
 	const std::size_t new_index = find_widget<menu_button>("scenario_menu").get_value();
 
-	if(selection_index_ != new_index) {
+	if(selection_index_ != new_index){
 		selection_index_ = new_index;
 		update_lists();
 	}
@@ -428,7 +428,7 @@ void statistics_dialog::on_scenario_select()
 void statistics_dialog::on_primary_list_select()
 {
 	const int selected_row = find_widget<listbox>("stats_list_main").get_selected_row();
-	if(selected_row == -1) {
+	if(selected_row == -1){
 		return;
 	}
 
@@ -436,9 +436,9 @@ void statistics_dialog::on_primary_list_select()
 
 	unit_list.clear();
 
-	for(const auto& i : *main_stat_table_[selected_row]) {
+	for(const auto& i : *main_stat_table_[selected_row]){
 		const unit_type* type = unit_types.find(i.first);
-		if(!type) {
+		if(!type){
 			continue;
 		}
 

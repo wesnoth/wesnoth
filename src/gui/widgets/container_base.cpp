@@ -59,7 +59,7 @@ void container_base::reduce_width(const unsigned maximum_width)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
-	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x){
 		grid_.reduce_width(maximum_width - border_space().x);
 		grid_size = grid_.get_best_size();
 		size.x = grid_size.x + border_space().x;
@@ -75,7 +75,7 @@ void container_base::request_reduce_width(const unsigned maximum_width)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
-	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x){
 		grid_.request_reduce_width(maximum_width - border_space().x);
 		grid_size = grid_.get_best_size();
 		size.x = grid_size.x + border_space().x;
@@ -96,7 +96,7 @@ void container_base::reduce_height(const unsigned maximum_height)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
-	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y){
 		grid_.reduce_height(maximum_height - border_space().y);
 		grid_size = grid_.get_best_size();
 		size.y = grid_size.y + border_space().y;
@@ -111,7 +111,7 @@ void container_base::request_reduce_height(const unsigned maximum_height)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
-	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y){
 		grid_.request_reduce_height(maximum_height - border_space().y);
 		grid_size = grid_.get_best_size();
 		size.y = grid_size.y + border_space().y;
@@ -157,17 +157,17 @@ point container_base::calculate_best_size() const
 
 	// If the best size has a value of 0 it's means no limit so don't
 	// add the border_size might set a very small best size.
-	if(result.x) {
+	if(result.x){
 		result.x += border_size.x;
 	}
-	if(default_size.x != 0 && result.x < default_size.x) {
+	if(default_size.x != 0 && result.x < default_size.x){
 		result.x = default_size.x;
 	}
 
-	if(result.y) {
+	if(result.y){
 		result.y += border_size.y;
 	}
-	if(default_size.y != 0 && result.y < default_size.y) {
+	if(default_size.y != 0 && result.y < default_size.y){
 		result.y = default_size.y;
 	}
 
@@ -240,7 +240,7 @@ void container_base::set_active(const bool active)
 	// unconditionally.
 	grid_.set_active(active);
 
-	if(active == get_active()) {
+	if(active == get_active()){
 		return;
 	}
 
@@ -275,7 +275,7 @@ point container_base::border_space() const
 
 void container_base::inject_linked_groups()
 {
-	for(const auto& [id, fixed_width, fixed_height] : get_config()->linked_groups) {
+	for(const auto& [id, fixed_width, fixed_height] : get_config()->linked_groups){
 		// No-op if group with this ID already exists
 		get_window()->init_linked_size_group(id, fixed_width, fixed_height);
 	}

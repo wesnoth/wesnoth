@@ -56,7 +56,7 @@ void lobby_info::refresh_installed_addons_cache()
 
 void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 {
-	switch(mode) {
+	switch(mode){
 	case notify_mode::whisper:
 	case notify_mode::whisper_other_window:
 	case notify_mode::own_nick:
@@ -90,7 +90,7 @@ namespace
 std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
-	for(const auto& v : games) {
+	for(const auto& v : games){
 		const game_info& game = v.second;
 		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
 	}
@@ -102,7 +102,7 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
-	for(const auto& c : gamelist.child_range("game")) {
+	for(const auto& c : gamelist.child_range("game")){
 		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
 	}
 
@@ -122,16 +122,16 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	int queued_id = 0;
-	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")){
 		config qgame;
 		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
 		int human_sides = 0;
-		for(const auto& side : scenario.child_range("side")) {
-			if(side["controller"].str() == "human") {
+		for(const auto& side : scenario.child_range("side")){
+			if(side["controller"].str() == "human"){
 				human_sides++;
 			}
 		}
-		if(human_sides == 0) {
+		if(human_sides == 0){
 			ERR_LB << "No human sides for scenario " << game["scenario"];
 			continue;
 		}
@@ -151,7 +151,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["experience_modifier"] = game["experience_modifier"];
 
 		qgame["mp_countdown"] = game["countdown"];
-		if(qgame["countdown"].to_bool()) {
+		if(qgame["countdown"].to_bool()){
 			qgame["mp_countdown_reservoir_time"] = game["countdown_reservoir_time"];
 			qgame["mp_countdown_init_time"] = game["countdown_init_time"];
 			qgame["mp_countdown_action_bonus"] = game["countdown_action_bonus"];
@@ -161,7 +161,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = human_sides;
 
-		if(scenario.has_attribute("map_data")) {
+		if(scenario.has_attribute("map_data")){
 			qgame["map_data"] = scenario["map_data"];
 		} else {
 			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
@@ -176,7 +176,7 @@ void lobby_info::process_gamelist(const config& data)
 		games_by_id_.emplace(g.id, std::move(g));
 	}
 
-	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
+	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")){
 		game_info game(c, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
@@ -189,7 +189,7 @@ void lobby_info::process_gamelist(const config& data)
 
 bool lobby_info::process_gamelist_diff(const config& data)
 {
-	if(!process_gamelist_diff_impl(data)) {
+	if(!process_gamelist_diff_impl(data)){
 		// the gamelist is now corrupted, stop further processing and wait for a fresh list.
 		gamelist_initialized_ = false;
 		return false;
@@ -201,7 +201,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 bool lobby_info::process_gamelist_diff_impl(const config& data)
 {
 	SCOPE_LB;
-	if(!gamelist_initialized_) {
+	if(!gamelist_initialized_){
 		return false;
 	}
 
@@ -209,7 +209,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 
 	try {
 		gamelist_.apply_diff(data, true);
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_LB << "Error while applying the gamelist diff: '" << e.message << "' Getting a new gamelist.";
 		return false;
 	}
@@ -217,11 +217,11 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 	DBG_LB << dump_games_map(games_by_id_);
 
-	for(config& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
+	for(config& c : gamelist_.mandatory_child("gamelist").child_range("game")){
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")";
 
 		const int game_id = c["id"].to_int();
-		if(game_id == 0) {
+		if(game_id == 0){
 			ERR_LB << "game with id 0 in gamelist config";
 			return false;
 		}
@@ -230,13 +230,13 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 
 		const std::string& diff_result = c[config::diff_track_attribute];
 
-		if(diff_result == "new" || diff_result == "modified") {
+		if(diff_result == "new" || diff_result == "modified"){
 			// note: at this point (1.14.3) the server never sends a 'modified' and instead
 			// just sends a 'delete' followed by a 'new', it still works becasue the delete doesn't
 			// delete the element and just marks it as game_info::DELETED so that game_info::DELETED
 			// is replaced by game_info::UPDATED below. See also
 			// https://github.com/wesnoth/wesnoth/blob/1.14/src/server/server.cpp#L149
-			if(current_i == games_by_id_.end()) {
+			if(current_i == games_by_id_.end()){
 				games_by_id_.emplace(game_id, game_info(c, installed_addons_));
 				continue;
 			}
@@ -244,13 +244,13 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 			// Had a game with that id, so update it and mark it as such
 			current_i->second = game_info(c, installed_addons_);
 			current_i->second.display_status = game_info::disp_status::UPDATED;
-		} else if(diff_result == "deleted") {
-			if(current_i == games_by_id_.end()) {
+		} else if(diff_result == "deleted"){
+			if(current_i == games_by_id_.end()){
 				WRN_LB << "Would have to delete a game that I don't have: " << game_id;
 				continue;
 			}
 
-			if(current_i->second.display_status == game_info::disp_status::NEW) {
+			if(current_i->second.display_status == game_info::disp_status::NEW){
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine.
 				games_by_id_.erase(current_i);
@@ -264,7 +264,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 
 	try {
 		gamelist_.clear_diff_track(data);
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message << "' Getting a new gamelist.";
 		return false;
 	}
@@ -280,20 +280,20 @@ void lobby_info::process_userlist()
 	SCOPE_LB;
 
 	users_.clear();
-	for(const auto& c : gamelist_.child_range("user")) {
+	for(const auto& c : gamelist_.child_range("user")){
 		user_info& ui = users_.emplace_back(c);
 
-		if(ui.game_id == 0) {
+		if(ui.game_id == 0){
 			continue;
 		}
 
 		game_info* g = get_game_by_id(ui.game_id);
-		if(!g) {
+		if(!g){
 			WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id;
 			continue;
 		}
 
-		switch(ui.get_relation()) {
+		switch(ui.get_relation()){
 		case user_info::user_relation::FRIEND:
 			g->has_friends = true;
 			break;
@@ -315,14 +315,14 @@ std::function<void()> lobby_info::begin_state_sync()
 	// since there will likely have been changes to games_by_id_ caused by network traffic.
 	make_games_vector();
 
-	return [this]() {
+	return [this](){
 		DBG_LB << "lobby_info, second state sync stage";
 		DBG_LB << "games_by_id_ size: " << games_by_id_.size();
 
 		auto i = games_by_id_.begin();
 
-		while(i != games_by_id_.end()) {
-			if(i->second.display_status == game_info::disp_status::DELETED) {
+		while(i != games_by_id_.end()){
+			if(i->second.display_status == game_info::disp_status::DELETED){
 				i = games_by_id_.erase(i);
 			} else {
 				i->second.display_status = game_info::disp_status::CLEAN;
@@ -354,8 +354,8 @@ const game_info* lobby_info::get_game_by_id(int id) const
 
 user_info* lobby_info::get_user(const std::string& name)
 {
-	for(auto& user : users_) {
-		if(user.name == name) {
+	for(auto& user : users_){
+		if(user.name == name){
 			return &user;
 		}
 	}
@@ -368,7 +368,7 @@ void lobby_info::make_games_vector()
 	games_.reserve(games_by_id_.size());
 	games_.clear();
 
-	for(auto& v : games_by_id_) {
+	for(auto& v : games_by_id_){
 		games_.push_back(&v.second);
 	}
 
@@ -380,8 +380,8 @@ void lobby_info::make_games_vector()
 
 bool lobby_info::is_game_visible(const game_info& game)
 {
-	for(const auto& filter_func : game_filters_) {
-		if(!game_filter_invert_(filter_func(game))) {
+	for(const auto& filter_func : game_filters_){
+		if(!game_filter_invert_(filter_func(game))){
 			return false;
 		}
 	}
@@ -395,7 +395,7 @@ void lobby_info::apply_game_filter()
 	// they need to be the same size or we'll end up with issues.
 	assert(games_visibility_.size() == games_.size());
 
-	for(unsigned i = 0; i < games_.size(); ++i) {
+	for(unsigned i = 0; i < games_.size(); ++i){
 		games_visibility_[i] = is_game_visible(*games_[i]);
 	}
 }

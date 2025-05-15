@@ -49,16 +49,16 @@ void placer_vertical_list::initialize()
 
 void placer_vertical_list::add_item(const point& size)
 {
-	if(size.x > columns_[column_]) {
+	if(size.x > columns_[column_]){
 		columns_[column_] = size.x;
 	}
 
-	if(size.y > rows_[row_].second) {
+	if(size.y > rows_[row_].second){
 		rows_[row_].second = size.y;
 	}
 
 	++column_;
-	if(column_ == maximum_columns_) {
+	if(column_ == maximum_columns_){
 		column_ = 0;
 		++row_;
 

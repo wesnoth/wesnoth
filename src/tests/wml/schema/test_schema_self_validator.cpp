@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_schema_super_self_reference)
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_self_validator/test_schema_super_self_reference.cfg";
 
 	BOOST_CHECK_EXCEPTION(
-		schema_validation::schema_validator(schema_path, true), wml_exception, [](const wml_exception& e) {
+		schema_validation::schema_validator(schema_path, true), wml_exception, [](const wml_exception& e){
 			return boost::algorithm::contains(e.dev_message, "Inheritance loop super=main found");
 		});
 }
@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(test_schema_super_cycle)
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_self_validator/test_schema_super_cycle.cfg";
 
 	BOOST_CHECK_EXCEPTION(
-		schema_validation::schema_validator(schema_path, true), wml_exception, [](const wml_exception& e) {
+		schema_validation::schema_validator(schema_path, true), wml_exception, [](const wml_exception& e){
 			return boost::algorithm::contains(e.dev_message, "Inheritance loop super=main/first found");
 		});
 }

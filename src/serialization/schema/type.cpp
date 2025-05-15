@@ -27,7 +27,7 @@
 struct is_translatable
 {
 	bool empty;
-	is_translatable(bool b) : empty(b) {}
+	is_translatable(bool b) : empty(b){}
 	bool operator()(const std::string& str) const
 	{
 		return str.empty() ? empty : false;
@@ -54,29 +54,29 @@ std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 {
 	utils::optional<config::const_child_itors> composite_range;
 	std::shared_ptr<wml_type> type;
-	if(cfg.has_child("union")) {
+	if(cfg.has_child("union")){
 		type = std::make_shared<wml_type_union>(cfg["name"]);
 		composite_range.emplace(cfg.mandatory_child("union").child_range("type"));
-	} else if(cfg.has_child("intersection")) {
+	} else if(cfg.has_child("intersection")){
 		type = std::make_shared<wml_type_intersection>(cfg["name"]);
 		composite_range.emplace(cfg.mandatory_child("intersection").child_range("type"));
-	} else if(cfg.has_child("list")) {
+	} else if(cfg.has_child("list")){
 		const config& list_cfg = cfg.mandatory_child("list");
 		int list_min = list_cfg["min"].to_int();
 		int list_max = list_cfg["max"].str() == "infinite" ? -1 : list_cfg["max"].to_int(-1);
 		if(list_max < 0) list_max = std::numeric_limits<int>::max();
 		type = std::make_shared<wml_type_list>(cfg["name"], list_cfg["split"].str("\\s*,\\s*"), list_min, list_max);
 		composite_range.emplace(list_cfg.child_range("element"));
-	} else if(cfg.has_attribute("value")) {
+	} else if(cfg.has_attribute("value")){
 		auto t = std::make_shared<wml_type_simple>(cfg["name"], cfg["value"]);
 		if(cfg["allow_translatable"].to_bool()) t->allow_translatable();
 		type = t;
-	} else if(cfg.has_attribute("link")) {
+	} else if(cfg.has_attribute("link")){
 		type = std::make_shared<wml_type_alias>(cfg["name"], cfg["link"]);
 	}
-	if(composite_range) {
+	if(composite_range){
 		auto composite_type = std::dynamic_pointer_cast<wml_type_composite>(type);
-		for(const config& elem : *composite_range) {
+		for(const config& elem : *composite_range){
 			composite_type->add_type(wml_type::from_config(elem));
 		}
 	}
@@ -92,9 +92,9 @@ bool wml_type_simple::matches(const config_attribute_value& value, const map&) c
 
 bool wml_type_alias::matches(const config_attribute_value& value, const map& type_map) const
 {
-	if(!cached_) {
+	if(!cached_){
 		auto it = type_map.find(link_);
-		if(it == type_map.end()) {
+		if(it == type_map.end()){
 			// TODO: Error message about the invalid type?
 			return false;
 		}
@@ -105,8 +105,8 @@ bool wml_type_alias::matches(const config_attribute_value& value, const map& typ
 
 bool wml_type_union::matches(const config_attribute_value& value, const map& type_map) const
 {
-	for(const auto& type : subtypes_) {
-		if(type->matches(value, type_map)) {
+	for(const auto& type : subtypes_){
+		if(type->matches(value, type_map)){
 			return true;
 		}
 	}
@@ -115,8 +115,8 @@ bool wml_type_union::matches(const config_attribute_value& value, const map& typ
 
 bool wml_type_intersection::matches(const config_attribute_value& value, const map& type_map) const
 {
-	for(const auto& type : subtypes_) {
-		if(!type->matches(value, type_map)) {
+	for(const auto& type : subtypes_){
+		if(!type->matches(value, type_map)){
 			return false;
 		}
 	}

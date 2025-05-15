@@ -30,15 +30,15 @@ namespace gui2
 {
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	if(style == "bold") {
+	if(style == "bold"){
 		return font::pango_text::STYLE_BOLD;
-	} else if(style == "italic") {
+	} else if(style == "italic"){
 		return font::pango_text::STYLE_ITALIC;
-	} else if(style == "underline") {
+	} else if(style == "underline"){
 		return font::pango_text::STYLE_UNDERLINE;
 	}
 
-	if(!style.empty() && style != "normal") {
+	if(!style.empty() && style != "normal"){
 		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead.";
 	}
 
@@ -47,19 +47,19 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 
 PangoWeight decode_text_weight(const std::string& weight)
 {
-	if(weight == "thin") {
+	if(weight == "thin"){
 		return PANGO_WEIGHT_THIN;
-	} else if (weight == "light") {
+	} else if(weight == "light"){
 		return PANGO_WEIGHT_LIGHT;
-	} else if (weight == "semibold") {
+	} else if(weight == "semibold"){
 		return PANGO_WEIGHT_SEMIBOLD;
-	} else if (weight == "bold") {
+	} else if(weight == "bold"){
 		return PANGO_WEIGHT_BOLD;
-	} else if (weight == "heavy") {
+	} else if(weight == "heavy"){
 		return PANGO_WEIGHT_HEAVY;
 	}
 
-	if(!weight.empty() && weight != "normal") {
+	if(!weight.empty() && weight != "normal"){
 		ERR_GUI_E << "Invalid text weight '" << weight << "', falling back to 'normal'.";
 	}
 
@@ -68,13 +68,13 @@ PangoWeight decode_text_weight(const std::string& weight)
 
 PangoStyle decode_text_style(const std::string& style)
 {
-	if(style == "italic") {
+	if(style == "italic"){
 		return PANGO_STYLE_ITALIC;
-	} else if(style == "oblique") {
+	} else if(style == "oblique"){
 		return PANGO_STYLE_OBLIQUE;
 	}
 
-	if(!style.empty() && style != "normal") {
+	if(!style.empty() && style != "normal"){
 		ERR_GUI_E << "Invalid text style '" << style << "', falling back to 'normal'.";
 	}
 
@@ -83,13 +83,13 @@ PangoStyle decode_text_style(const std::string& style)
 
 PangoAlignment decode_text_alignment(const std::string& alignment)
 {
-	if(alignment == "center") {
+	if(alignment == "center"){
 		return PANGO_ALIGN_CENTER;
-	} else if(alignment == "right") {
+	} else if(alignment == "right"){
 		return PANGO_ALIGN_RIGHT;
 	}
 
-	if(!alignment.empty() && alignment != "left") {
+	if(!alignment.empty() && alignment != "left"){
 		ERR_GUI_E << "Invalid text alignment '" << alignment << "', falling back to 'left'.";
 	}
 
@@ -98,15 +98,15 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 
 PangoEllipsizeMode decode_ellipsize_mode(const std::string& ellipsize_mode)
 {
-	if(ellipsize_mode == "start") {
+	if(ellipsize_mode == "start"){
 		return PANGO_ELLIPSIZE_START;
-	} else if(ellipsize_mode == "middle") {
+	} else if(ellipsize_mode == "middle"){
 		return PANGO_ELLIPSIZE_MIDDLE;
-	} else if(ellipsize_mode == "end") {
+	} else if(ellipsize_mode == "end"){
 		return PANGO_ELLIPSIZE_END;
 	}
 
-	if(!ellipsize_mode.empty() && ellipsize_mode != "none") {
+	if(!ellipsize_mode.empty() && ellipsize_mode != "none"){
 		ERR_GUI_E << "Invalid text ellipsization mode '" << ellipsize_mode << "', falling back to 'none'.";
 	}
 
@@ -115,7 +115,7 @@ PangoEllipsizeMode decode_ellipsize_mode(const std::string& ellipsize_mode)
 
 std::string encode_ellipsize_mode(const PangoEllipsizeMode ellipsize_mode)
 {
-	switch(ellipsize_mode) {
+	switch(ellipsize_mode){
 		case PANGO_ELLIPSIZE_START:
 			return "start";
 		case PANGO_ELLIPSIZE_MIDDLE:
@@ -129,7 +129,7 @@ std::string encode_ellipsize_mode(const PangoEllipsizeMode ellipsize_mode)
 
 std::string encode_text_alignment(const PangoAlignment alignment)
 {
-	switch(alignment) {
+	switch(alignment){
 		case PANGO_ALIGN_LEFT:
 			return "left";
 		case PANGO_ALIGN_RIGHT:

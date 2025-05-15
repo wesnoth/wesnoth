@@ -67,7 +67,7 @@ namespace {
 
 bool validate(const char* str)
 {
-	if(str != result) {
+	if(str != result){
 		PLAIN_LOG << "Received " << str << '\n'
 				<< "Expected " << result << '\n';
 		return false;
@@ -88,7 +88,7 @@ constexpr bool contains_type(std::tuple<Types...>)
 	{                                                               \
 	type_send val = value;                              \
                                                                     \
-	BOOST_CHECK_EXCEPTION(                                          \
+	BOOST_CHECK_EXCEPTION(                                         \
 			lexical_cast<std::string>(val), const char*, validate); \
 	}
 

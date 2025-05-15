@@ -29,7 +29,7 @@ class lua_ai_context;
 
 class engine_lua : public engine {
 public:
-	engine_lua( readonly_context &context, const config &cfg );
+	engine_lua(readonly_context &context, const config &cfg);
 
 	virtual ~engine_lua();
 
@@ -39,21 +39,21 @@ public:
 	 * Taka a config (with engine=lua in it)
 	 * and parse several (usually, 1) candidate actions out of it
 	 */
-	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
+	virtual void do_parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b);
 
 	/**
 	 * Taka a config (with engine=lua in it)
 	 * and parse several (usually, 1) stages out of it
 	 */
-	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+	virtual void do_parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b);
 
 	/**
 	 * Taka a config (with engine=lua in it)
 	 * and parse several (usually, 1) aspects out of it
 	 */
-	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
+	virtual void do_parse_aspect_from_config(const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b);
 
-	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
+	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b);
 
 	virtual std::string evaluate(const std::string &str);
 

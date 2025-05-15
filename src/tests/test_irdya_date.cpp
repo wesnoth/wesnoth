@@ -23,7 +23,7 @@ using wesnoth_epoch = utils::wesnoth_epoch;
 
 BOOST_AUTO_TEST_SUITE(test_irdya_datetime)
 
-BOOST_AUTO_TEST_CASE(test_irdya_date_parse) {
+BOOST_AUTO_TEST_CASE(test_irdya_date_parse){
 	irdya_date BW_423 = irdya_date::read_date("   423   BW  ");
 	irdya_date YW_123 = irdya_date::read_date("   123   YW  ");
 	irdya_date BF_109 = irdya_date::read_date("   109   BF  ");
@@ -39,13 +39,13 @@ BOOST_AUTO_TEST_CASE(test_irdya_date_parse) {
 	BOOST_CHECK_EQUAL(AF_928.get_year(), 928);
 }
 
-BOOST_AUTO_TEST_CASE(test_irdya_date_equal) {
+BOOST_AUTO_TEST_CASE(test_irdya_date_equal){
 	irdya_date first(wesnoth_epoch::type::wesnoth, 12);
 	irdya_date second(wesnoth_epoch::type::wesnoth, 12);
 	BOOST_CHECK_EQUAL(first, second);
 }
 
-BOOST_AUTO_TEST_CASE(test_irdya_date_ordering) {
+BOOST_AUTO_TEST_CASE(test_irdya_date_ordering){
 	irdya_date BW_34(wesnoth_epoch::type::before_wesnoth, 34), BW_12(wesnoth_epoch::type::before_wesnoth, 12), YW_40(wesnoth_epoch::type::wesnoth, 40), YW_52(wesnoth_epoch::type::wesnoth, 52);
 	irdya_date BF_29(wesnoth_epoch::type::before_fall, 29), BF_42(wesnoth_epoch::type::before_fall, 42), AF_12(wesnoth_epoch::type::after_fall, 12), AF_102(wesnoth_epoch::type::after_fall, 102), Y0;
 
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE(test_irdya_date_ordering) {
 		{AF_12, Y0},
 		{AF_102, Y0},
 	};
-	for(const auto& pair : test_cases) {
+	for(const auto& pair : test_cases){
 		BOOST_CHECK(pair.first < pair.second);
 		BOOST_CHECK(!(pair.second < pair.first));
 	}

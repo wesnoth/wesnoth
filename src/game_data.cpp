@@ -153,19 +153,19 @@ namespace {
 
 void game_data::activate_scope_variable(std::string var_name) const
 {
-	if (recursive_activation) {
+	if(recursive_activation){
 		return;
 	}
 
 	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
-	if(itor != var_name.end()) {
+	if(itor != var_name.end()){
 		var_name.erase(itor, var_name.end());
 	}
 
-	for (scoped_wml_variable* v : scoped_variables | utils::views::reverse) {
-		if (v->name() == var_name) {
+	for(scoped_wml_variable* v : scoped_variables | utils::views::reverse){
+		if(v->name() == var_name){
 			recursive_activation = true;
-			if (!v->activated()) {
+			if(!v->activated()){
 				v->activate();
 			}
 			recursive_activation = false;
@@ -176,13 +176,13 @@ void game_data::activate_scope_variable(std::string var_name) const
 
 game_data::PHASE game_data::read_phase(const config& cfg)
 {
-	if(cfg["playing_team"].empty()) {
+	if(cfg["playing_team"].empty()){
 		return game_data::PRELOAD;
 	}
-	if(!cfg["init_side_done"].to_bool()) {
+	if(!cfg["init_side_done"].to_bool()){
 		return game_data::TURN_STARTING_WAITING;
 	}
-	if(cfg.has_child("end_level_data")) {
+	if(cfg.has_child("end_level_data")){
 		return game_data::GAME_ENDED;
 	}
 	return game_data::TURN_PLAYING;

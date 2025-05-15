@@ -34,7 +34,7 @@ void get_tiles_radius(std::set<map_location>&& locs, size_t radius, std::set<map
 	location_set must_visit, filtered_out;
 	location_set not_visited = std::move(locs);
 
-	for ( ; radius != 0  &&  !not_visited.empty(); --radius )
+	for(; radius != 0  &&  !not_visited.empty(); --radius)
 	{
 		location_set::const_iterator it = not_visited.begin();
 		location_set::const_iterator it_end = not_visited.end();
@@ -42,9 +42,9 @@ void get_tiles_radius(std::set<map_location>&& locs, size_t radius, std::set<map
 		result.insert(it, it_end);
 		for(; it != it_end; ++it) {
 			for(const map_location& loc : get_adjacent_tiles(*it)) {
-				if( pred1(loc) ) {
-					if( !result.count(loc) && !filtered_out.count(loc) ) {
-						if( pred2(loc) ) {
+				if(pred1(loc)) {
+					if(!result.count(loc) && !filtered_out.count(loc)) {
+						if(pred2(loc)) {
 							must_visit.insert(loc);
 						}
 						else {

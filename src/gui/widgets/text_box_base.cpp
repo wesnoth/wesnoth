@@ -85,7 +85,7 @@ text_box_base::~text_box_base()
 
 void text_box_base::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -102,7 +102,7 @@ unsigned text_box_base::get_state() const
 
 void text_box_base::set_maximum_length(const std::size_t maximum_length)
 {
-	if(maximum_length == 0) {
+	if(maximum_length == 0){
 		return;
 	}
 
@@ -110,11 +110,11 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 
 	text_.set_maximum_length(maximum_length);
 
-	if(need_update) {
-		if(selection_start_ > maximum_length) {
+	if(need_update){
+		if(selection_start_ > maximum_length){
 			selection_start_ = maximum_length;
 			selection_length_ = 0;
-		} else if(selection_start_ + selection_length_ > maximum_length) {
+		} else if(selection_start_ + selection_length_ > maximum_length){
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
@@ -131,7 +131,7 @@ void text_box_base::set_highlight_area(const unsigned start_offset, const unsign
 
 void text_box_base::set_value(const std::string& text)
 {
-	if(text != text_.text()) {
+	if(text != text_.text()){
 		text_.set_text(text, get_use_markup());
 
 		// default to put the cursor at the end of the buffer.
@@ -146,7 +146,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 {
 	reset_cursor_state();
 
-	if(select) {
+	if(select){
 		selection_length_ = (selection_start_ == offset) ? 0 : -static_cast<int>(selection_start_ - offset);
 	} else {
 		selection_start_ = (offset <= text_.get_length()) ? offset : 0;
@@ -166,11 +166,11 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	delete_selection();
 
-	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
+	if(text_.insert_text(selection_start_, unicode, get_use_markup())){
 		// Update status
 		size_t plain_text_len = utf8::size(plain_text());
 		size_t cursor_pos = selection_start_ + utf8::size(unicode);
-		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
+		if(get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)){
 			cursor_pos = plain_text_len;
 		}
 		set_cursor(cursor_pos, false);
@@ -181,13 +181,13 @@ void text_box_base::insert_char(const std::string& unicode)
 
 size_t text_box_base::get_composition_length() const
 {
-	if(!is_composing()) {
+	if(!is_composing()){
 		return 0;
 	}
 
 	size_t text_length = utf8::size(text_.text());
 	size_t text_cached_length = utf8::size(text_cached_);
-	if(text_length < text_cached_length) {
+	if(text_length < text_cached_length){
 		return 0;
 	}
 
@@ -204,14 +204,14 @@ void text_box_base::interrupt_composition()
 
 void text_box_base::copy_selection()
 {
-	if(selection_length_ == 0) {
+	if(selection_length_ == 0){
 		return;
 	}
 
 	unsigned end, start = selection_start_;
 	const std::string txt = get_use_markup() ? plain_text() : text_.text();
 
-	if(selection_length_ > 0) {
+	if(selection_length_ > 0){
 		end = utf8::index(txt, start + selection_length_);
 		start = utf8::index(txt, start);
 	} else {
@@ -230,7 +230,7 @@ void text_box_base::paste_selection()
 	}
 
 	const std::string& text = desktop::clipboard::copy_from_clipboard();
-	if(text.empty()) {
+	if(text.empty()){
 		return;
 	}
 
@@ -245,7 +245,7 @@ void text_box_base::paste_selection()
 
 void text_box_base::set_selection_start(const std::size_t selection_start)
 {
-	if(selection_start != selection_start_) {
+	if(selection_start != selection_start_){
 		selection_start_ = selection_start;
 		queue_redraw();
 	}
@@ -253,7 +253,7 @@ void text_box_base::set_selection_start(const std::size_t selection_start)
 
 void text_box_base::set_selection_length(const int selection_length)
 {
-	if(selection_length != selection_length_) {
+	if(selection_length != selection_length_){
 		selection_length_ = selection_length;
 		queue_redraw();
 	}
@@ -263,11 +263,11 @@ void text_box_base::set_selection(std::size_t start, int length)
 {
 	const std::size_t text_size = text_.get_length();
 
-	if(start >= text_size) {
+	if(start >= text_size){
 		start = text_size;
 	}
 
-	if(length == 0) {
+	if(length == 0){
 		set_cursor(start, false);
 		return;
 	}
@@ -279,9 +279,9 @@ void text_box_base::set_selection(std::size_t start, int length)
 
 	const bool backwards = length < 0;
 
-	if(backwards && -length > sel_start) {
+	if(backwards && -length > sel_start){
 		length = -sel_start;
-	} else if(!backwards && length > sel_max_length) {
+	} else if(!backwards && length > sel_max_length){
 		length = sel_max_length;
 	}
 
@@ -293,7 +293,7 @@ void text_box_base::set_selection(std::size_t start, int length)
 
 void text_box_base::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -301,11 +301,11 @@ void text_box_base::set_state(const state_t state)
 
 void text_box_base::toggle_cursor_timer(bool enable)
 {
-	if(cursor_blink_rate_ == 0ms) {
+	if(cursor_blink_rate_ == 0ms){
 		return;
 	}
 
-	if(cursor_timer_) {
+	if(cursor_timer_){
 		remove_timer(cursor_timer_);
 	}
 
@@ -317,7 +317,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 void text_box_base::cursor_timer_callback()
 {
 	unsigned was_alpha = cursor_alpha_;
-	switch(state_) {
+	switch(state_){
 		case DISABLED:
 			cursor_alpha_ = 0;
 			return;
@@ -328,18 +328,18 @@ void text_box_base::cursor_timer_callback()
 			// FIXME: very hacky way to check if the widget's owner is the top window
 			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
 			const auto& dispatchers = event::get_all_dispatchers();
-			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()) {
+			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()){
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
 			}
 	}
 
-	if(was_alpha == cursor_alpha_) {
+	if(was_alpha == cursor_alpha_){
 		return;
 	}
 
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
@@ -348,13 +348,13 @@ void text_box_base::cursor_timer_callback()
 
 void text_box_base::reset_cursor_state()
 {
-	if(cursor_blink_rate_ == 0ms) {
+	if(cursor_blink_rate_ == 0ms){
 		return;
 	}
 
 	cursor_alpha_ = 255;
 
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
@@ -369,7 +369,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
-	if(offset >= 0) {
+	if(offset >= 0){
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
@@ -381,7 +381,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
-	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())) {
+	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())){
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
@@ -391,7 +391,7 @@ void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
+	if(modifier & KMOD_CTRL){
 		goto_start_of_data((modifier & KMOD_SHIFT) != 0);
 	} else {
 		goto_start_of_line((modifier & KMOD_SHIFT) != 0);
@@ -403,7 +403,7 @@ void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
+	if(modifier & KMOD_CTRL){
 		goto_end_of_data((modifier & KMOD_SHIFT) != 0);
 	} else {
 		goto_end_of_line((modifier & KMOD_SHIFT) != 0);
@@ -415,12 +415,12 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(selection_length_ != 0) {
+	if(selection_length_ != 0){
 		delete_selection();
-	} else if(selection_start_) {
+	} else if(selection_start_){
 		delete_char(true);
-		if(is_composing()) {
-			if(get_composition_length() == 0) {
+		if(is_composing()){
+			if(get_composition_length() == 0){
 				ime_composing_ = false;
 			}
 		}
@@ -433,12 +433,12 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(selection_length_ != 0) {
+	if(selection_length_ != 0){
 		delete_selection();
-	} else if(selection_start_ < text_.get_length()) {
+	} else if(selection_start_ < text_.get_length()){
 		delete_char(false);
-		if(is_composing()) {
-			if(get_composition_length() == 0) {
+		if(is_composing()){
+			if(get_composition_length() == 0){
 				ime_composing_ = false;
 			}
 		}
@@ -450,9 +450,9 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
-	if(unicode.size() > 1 || unicode[0] != 0) {
+	if(unicode.size() > 1 || unicode[0] != 0){
 		handled = true;
-		if(is_composing()) {
+		if(is_composing()){
 			set_selection(ime_start_point_, get_composition_length());
 			ime_composing_ = false;
 		}
@@ -466,16 +466,16 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
  */
 void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start, int32_t len)
 {
-	if(unicode.size() > 1 || unicode[0] != 0) {
+	if(unicode.size() > 1 || unicode[0] != 0){
 		handled = true;
 		std::size_t new_len = utf8::size(unicode);
-		if(!is_composing()) {
+		if(!is_composing()){
 			ime_composing_ = true;
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
 			SDL_Rect rect = get_rectangle();
-			if(new_len > 0) {
+			if(new_len > 0){
 				rect.x += get_cursor_position(ime_start_point_).x;
 				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
 			} else {
@@ -491,7 +491,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		// Linux (ibus) implementation of SDL separates it into multiple
 		// SDL_TextEditingEvent.
 		// start is start position of the separated event in entire composition text
-		if(start == 0) {
+		if(start == 0){
 			text_.set_text(text_cached_, get_use_markup());
 		}
 		text_.insert_text(ime_start_point_ + start, unicode, get_use_markup());
@@ -505,7 +505,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 
 		// Update status
 		set_cursor(std::min(maximum_length, ime_start_point_ + start), false);
-		if(len > 0) {
+		if(len > 0){
 			set_cursor(std::min(maximum_length, ime_start_point_ + start + len), true);
 		}
 		update_canvas();
@@ -548,7 +548,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 	const SDL_Keycode modifier_key = KMOD_CTRL;
 #endif
 
-	switch(key) {
+	switch(key){
 
 		case SDLK_LEFT:
 			handle_key_left_arrow(modifier, handled);
@@ -575,7 +575,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_a:
-			if(!(modifier & modifier_key)) {
+			if(!(modifier & modifier_key)){
 				return;
 			}
 
@@ -591,7 +591,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_BACKSPACE:
-			if (!is_editable())
+			if(!is_editable())
 			{
 				return;
 			}
@@ -600,7 +600,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_u:
-			if( !(modifier & KMOD_CTRL) || !is_editable() ) {
+			if(!(modifier & KMOD_CTRL) || !is_editable()){
 				return;
 			}
 
@@ -608,7 +608,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_DELETE:
-			if (!is_editable())
+			if(!is_editable())
 			{
 				return;
 			}
@@ -617,7 +617,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_c:
-			if(!(modifier & modifier_key)) {
+			if(!(modifier & modifier_key)){
 				return;
 			}
 
@@ -628,20 +628,20 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_x:
-			if( !(modifier & modifier_key) ) {
+			if(!(modifier & modifier_key)){
 				return;
 			}
 
 			copy_selection();
 
-			if ( is_editable() ) {
+			if(is_editable()){
 				delete_selection();
 			}
 			handled = true;
 			break;
 
 		case SDLK_v:
-			if( !(modifier & modifier_key) || !is_editable() ) {
+			if(!(modifier & modifier_key) || !is_editable()){
 				return;
 			}
 
@@ -654,7 +654,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 //	TODO: check if removing the following check causes any side effects
 //	To be removed if there aren't any text rendering problems.
-//			if(!is_composing()) {
+//			if(!is_composing()){
 //				return;
 //			}
 
@@ -662,7 +662,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_ESCAPE:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))){
 				return;
 			}
 			interrupt_composition();
@@ -697,7 +697,7 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(state_ != FOCUSED) {
+	if(state_ != FOCUSED){
 		set_state(HOVERED);
 	}
 
@@ -711,7 +711,7 @@ void text_box_base::signal_handler_mouse_leave(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(state_ != FOCUSED) {
+	if(state_ != FOCUSED){
 		set_state(ENABLED);
 	}
 
@@ -726,9 +726,9 @@ void text_box_base::update_mouse_cursor(bool enable)
 	// the WAIT cursor) so we ought to mess with that only if it's set to
 	// NORMAL or IBEAM.
 
-	if(enable && cursor::get() == cursor::NORMAL) {
+	if(enable && cursor::get() == cursor::NORMAL){
 		cursor::set(cursor::IBEAM);
-	} else if(!enable && cursor::get() == cursor::IBEAM) {
+	} else if(!enable && cursor::get() == cursor::IBEAM){
 		cursor::set(cursor::NORMAL);
 	}
 }

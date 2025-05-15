@@ -41,15 +41,15 @@ debug_clock::debug_clock()
 	second_percentage_ = find_widget<progress_bar>("second_percentage", false, false);
 
 	hour_ = find_widget<integer_selector>("hour", false, false);
-	if(styled_widget *hour = dynamic_cast<styled_widget*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
+	if(styled_widget *hour = dynamic_cast<styled_widget*>(hour_)){ //Note that the standard specifies that a dynamic cast of a null pointer is null
 		hour->set_active(false);
 	}
 	minute_ = find_widget<integer_selector>("minute", false, false);
-	if(styled_widget *minute = dynamic_cast<styled_widget*>(minute_)) {
+	if(styled_widget *minute = dynamic_cast<styled_widget*>(minute_)){
 		minute->set_active(false);
 	}
 	second_ = find_widget<integer_selector>("second", false, false);
-	if(styled_widget *second = dynamic_cast<styled_widget*>(second_)) {
+	if(styled_widget *second = dynamic_cast<styled_widget*>(second_)){
 		second->set_active(false);
 	}
 
@@ -69,17 +69,17 @@ void debug_clock::update()
 
 void debug_clock::update_time(const bool force)
 {
-	if(!time_.step() && !force) {
+	if(!time_.step() && !force){
 		return;
 	}
 
-	if(hour_percentage_) {
+	if(hour_percentage_){
 		hour_percentage_->set_percentage(time_.hour / 0.24);
 	}
-	if(minute_percentage_) {
+	if(minute_percentage_){
 		minute_percentage_->set_percentage(time_.minute / 0.60);
 	}
-	if(second_percentage_) {
+	if(second_percentage_){
 		second_percentage_->set_percentage(time_.second / 0.60);
 	}
 
@@ -87,17 +87,17 @@ void debug_clock::update_time(const bool force)
 	const int minute_stamp = time_.minute * 60 + time_.second;
 	const int second_stamp = time_.second;
 
-	if(hour_) {
+	if(hour_){
 		hour_->set_value(hour_stamp);
 	}
-	if(minute_) {
+	if(minute_){
 		minute_->set_value(minute_stamp);
 	}
-	if(second_) {
+	if(second_){
 		second_->set_value(second_stamp);
 	}
 
-	if(clock_) {
+	if(clock_){
 		for(auto & canvas : clock_->get_canvases())
 		{
 			canvas.set_variable("hour", wfl::variant(hour_stamp));
@@ -114,7 +114,7 @@ void debug_clock::update_time(const bool force)
 	item["label"] = std::to_string(second_stamp);
 	item_data.emplace("time", item);
 
-	if(pane_) {
+	if(pane_){
 		pane_->create_item(item_data, tags);
 	}
 }

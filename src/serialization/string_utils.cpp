@@ -49,7 +49,7 @@ bool isnewline(const char c)
 bool portable_isspace(const char c)
 {
 	// returns true only on ASCII spaces
-	if (static_cast<unsigned char>(c) >= 128)
+	if(static_cast<unsigned char>(c) >= 128)
 		return false;
 	return isnewline(c) || isspace(static_cast<unsigned char>(c));
 }
@@ -64,7 +64,7 @@ bool notspace(const char c)
 void trim(std::string_view& s)
 {
 	s.remove_prefix(std::min(s.find_first_not_of(" \t\r\n"), s.size()));
-	if(s.empty()) {
+	if(s.empty()){
 		return;
 	}
 	//find_last_not_of never returns npos because !s.empty()
@@ -84,7 +84,7 @@ void trim(std::string_view& s)
 std::vector<std::string> split(std::string_view s, const char sep, const int flags)
 {
 	std::vector<std::string> res;
-	split_foreach(s, sep, flags, [&](std::string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item){
 		res.emplace_back(item);
 	});
 	return res;
@@ -93,7 +93,7 @@ std::vector<std::string> split(std::string_view s, const char sep, const int fla
 std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 {
 	std::set<std::string> res;
-	split_foreach(s, sep, flags, [&](std::string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item){
 		res.emplace(item);
 	});
 	return res;
@@ -102,7 +102,7 @@ std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 std::vector<std::string_view> split_view(std::string_view s, const char sep, const int flags)
 {
 	std::vector<std::string_view> res;
-	split_foreach(s, sep, flags, [&](std::string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item){
 		res.push_back(item);
 	});
 	return res;
@@ -125,16 +125,16 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2;
 	std::string::const_iterator j1;
-	if (flags & STRIP_SPACES) {
-		while (i1 != val.end() && portable_isspace(*i1))
+	if(flags & STRIP_SPACES){
+		while(i1 != val.end() && portable_isspace(*i1))
 			++i1;
 	}
 	i2=i1;
 	j1=i1;
 
-	if (i1 == val.end()) return res;
+	if(i1 == val.end()) return res;
 
-	if (!separator) {
+	if(!separator){
 		ERR_GENERAL << "Separator must be specified for square bracket split function.";
 		return res;
 	}
@@ -144,18 +144,18 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		return res;
 	}
 
-	while (true) {
-		if(i2 == val.end() || (!in_parenthesis && *i2 == separator)) {
+	while(true){
+		if(i2 == val.end() || (!in_parenthesis && *i2 == separator)){
 			//push back square contents
 			std::size_t size_square_exp = 0;
-			for (std::size_t i=0; i < square_left.size(); i++) {
+			for(std::size_t i=0; i < square_left.size(); i++){
 				std::string tmp_val(square_left[i]+1,square_right[i]);
 				std::vector< std::string > tmp = split(tmp_val);
-				for(const std::string& piece : tmp) {
+				for(const std::string& piece : tmp){
 					std::size_t found_tilde = piece.find_first_of('~');
-					if (found_tilde == std::string::npos) {
+					if(found_tilde == std::string::npos){
 						std::size_t found_asterisk = piece.find_first_of('*');
-						if (found_asterisk == std::string::npos) {
+						if(found_asterisk == std::string::npos){
 							std::string tmp2(piece);
 							boost::trim(tmp2);
 							square_expansion.push_back(tmp2);
@@ -165,7 +165,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 							boost::trim(s_begin);
 							std::string s_end = piece.substr(found_asterisk+1);
 							boost::trim(s_end);
-							for (int ast=std::stoi(s_end); ast>0; --ast)
+							for(int ast=std::stoi(s_end); ast>0; --ast)
 								square_expansion.push_back(s_begin);
 						}
 					}
@@ -174,32 +174,32 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
 						std::size_t padding = 0, padding_end = 0;
-						while (padding<s_begin.size() && s_begin[padding]=='0') {
+						while(padding<s_begin.size() && s_begin[padding]=='0'){
 							padding++;
 						}
 						std::string s_end = piece.substr(found_tilde+1);
 						boost::trim(s_end);
 						int end = std::stoi(s_end);
-						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
+						while(padding_end<s_end.size() && s_end[padding_end]=='0'){
 							padding_end++;
 						}
-						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
+						if(padding*padding_end > 0 && s_begin.size() != s_end.size()){
 							ERR_GENERAL << "Square bracket padding sizes not matching: "
 										<< s_begin << " and " << s_end <<".";
 						}
-						if (padding_end > padding) padding = padding_end;
+						if(padding_end > padding) padding = padding_end;
 
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
-						for (int k=begin; k!=end; k+=increment) {
+						for(int k=begin; k!=end; k+=increment){
 							std::string pb = std::to_string(k);
-							for (std::size_t p=pb.size(); p<=padding; p++)
+							for(std::size_t p=pb.size(); p<=padding; p++)
 								pb = std::string("0") + pb;
 							square_expansion.push_back(pb);
 						}
 					}
 				}
-				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
+				if(i*square_expansion.size() != (i+1)*size_square_exp){
 					std::string tmp2(i1, i2);
 					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2;
 					return res;
@@ -210,33 +210,33 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			//combine square contents and rest of string for comma zone block
 			std::size_t j = 0;
 			std::size_t j_max = 0;
-			if (!square_left.empty())
+			if(!square_left.empty())
 				j_max = square_expansion.size() / square_left.size();
 			do {
 				j1 = i1;
 				std::string new_val;
-				for (std::size_t i=0; i < square_left.size(); i++) {
+				for(std::size_t i=0; i < square_left.size(); i++){
 					std::string tmp_val(j1, square_left[i]);
 					new_val.append(tmp_val);
 					std::size_t k = j+i*j_max;
-					if (k < square_expansion.size())
+					if(k < square_expansion.size())
 						new_val.append(square_expansion[k]);
 					j1 = square_right[i]+1;
 				}
 				std::string tmp_val(j1, i2);
 				new_val.append(tmp_val);
-				if (flags & STRIP_SPACES)
+				if(flags & STRIP_SPACES)
 					boost::trim_right(new_val);
-				if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+				if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 					res.push_back(new_val);
 				j++;
-			} while (j<j_max);
+			} while(j<j_max);
 
-			if (i2 == val.end()) //escape loop
+			if(i2 == val.end()) //escape loop
 				break;
 			++i2;
-			if (flags & STRIP_SPACES) { //strip leading spaces
-				while (i2 != val.end() && portable_isspace(*i2))
+			if(flags & STRIP_SPACES){ //strip leading spaces
+				while(i2 != val.end() && portable_isspace(*i2))
 					++i2;
 			}
 			i1=i2;
@@ -245,18 +245,18 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			square_expansion.clear();
 			continue;
 		}
-		if(!part.empty() && *i2 == part.back()) {
+		if(!part.empty() && *i2 == part.back()){
 			part.pop_back();
-			if (*i2 == ']') square_right.push_back(i2);
-			if (part.empty())
+			if(*i2 == ']') square_right.push_back(i2);
+			if(part.empty())
 				in_parenthesis = false;
 			++i2;
 			continue;
 		}
 		bool found=false;
-		for(std::size_t i=0; i < lp.size(); i++) {
-			if (*i2 == lp[i]){
-				if (*i2 == '[')
+		for(std::size_t i=0; i < lp.size(); i++){
+			if(*i2 == lp[i]){
+				if(*i2 == '[')
 					square_left.push_back(i2);
 				++i2;
 				part.push_back(rp[i]);
@@ -290,11 +290,11 @@ std::map<std::string, std::string> map_split(
 	//now split by minor to extract keys and values
 	std::map< std::string, std::string > res;
 
-	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
+	for(std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i){
 		std::size_t pos = i->find_first_of(minor);
 		std::string key, value;
 
-		if(pos == std::string::npos) {
+		if(pos == std::string::npos){
 			key = (*i);
 			value = default_value;
 		} else {
@@ -318,8 +318,8 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 
 	std::string_view::const_iterator i1 = val.begin();
 	std::string_view::const_iterator i2;
-	if (flags & STRIP_SPACES) {
-		while (i1 != val.end() && portable_isspace(*i1))
+	if(flags & STRIP_SPACES){
+		while(i1 != val.end() && portable_isspace(*i1))
 			++i1;
 	}
 	i2=i1;
@@ -329,16 +329,16 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 		return res;
 	}
 
-	while (i2 != val.end()) {
+	while(i2 != val.end()){
 		if(!in_parenthesis && separator && *i2 == separator){
 			std::string new_val(i1, i2);
-			if (flags & STRIP_SPACES)
+			if(flags & STRIP_SPACES)
 				boost::trim_right(new_val);
-			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
-			if (flags & STRIP_SPACES) {
-				while (i2 != val.end() && portable_isspace(*i2))
+			if(flags & STRIP_SPACES){
+				while(i2 != val.end() && portable_isspace(*i2))
 					++i2;
 			}
 			i1=i2;
@@ -348,13 +348,13 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 			part.pop_back();
 			if(!separator && part.empty()){
 				std::string new_val(i1, i2);
-				if (flags & STRIP_SPACES)
+				if(flags & STRIP_SPACES)
 					boost::trim(new_val);
 				res.push_back(new_val);
 				++i2;
 				i1=i2;
 			}else{
-				if (part.empty())
+				if(part.empty())
 					in_parenthesis = false;
 				++i2;
 			}
@@ -362,10 +362,10 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 		}
 		bool found=false;
 		for(std::size_t i=0; i < left.size(); i++){
-			if (*i2 == left[i]){
-				if (!separator && part.empty()){
+			if(*i2 == left[i]){
+				if(!separator && part.empty()){
 					std::string new_val(i1, i2);
-					if (flags & STRIP_SPACES)
+					if(flags & STRIP_SPACES)
 						boost::trim(new_val);
 					res.push_back(new_val);
 					++i2;
@@ -385,9 +385,9 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 	}
 
 	std::string new_val(i1, i2);
-	if (flags & STRIP_SPACES)
+	if(flags & STRIP_SPACES)
 		boost::trim(new_val);
-	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
@@ -398,17 +398,17 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 }
 
 // Modify a number by string representing integer difference, or optionally %
-int apply_modifier( const int number, const std::string &amount, const int minimum ) {
-	// wassert( amount.empty() == false );
+int apply_modifier(const int number, const std::string &amount, const int minimum){
+	// wassert(amount.empty() == false);
 	int value = 0;
 	try {
 		value = std::stoi(amount);
-	} catch(const std::invalid_argument&) {}
-	if(amount[amount.size()-1] == '%') {
+	} catch(const std::invalid_argument&){}
+	if(amount[amount.size()-1] == '%'){
 		value = div100rounded(number * value);
 	}
 	value += number;
-	if (( minimum > 0 ) && ( value < minimum ))
+	if((minimum > 0) && (value < minimum))
 	    value = minimum;
 	return value;
 }
@@ -416,7 +416,7 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 std::string escape(std::string_view str, const char *special_chars)
 {
 	std::string::size_type pos = str.find_first_of(special_chars);
-	if (pos == std::string::npos) {
+	if(pos == std::string::npos){
 		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
@@ -424,14 +424,14 @@ std::string escape(std::string_view str, const char *special_chars)
 	do {
 		res.insert(pos, 1, '\\');
 		pos = res.find_first_of(special_chars, pos + 2);
-	} while (pos != std::string::npos);
+	} while(pos != std::string::npos);
 	return res;
 }
 
 std::string unescape(std::string_view str)
 {
 	std::string::size_type pos = str.find('\\');
-	if (pos == std::string::npos) {
+	if(pos == std::string::npos){
 		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
@@ -439,7 +439,7 @@ std::string unescape(std::string_view str)
 	do {
 		res.erase(pos, 1);
 		pos = res.find('\\', pos + 1);
-	} while (pos != std::string::npos);
+	} while(pos != std::string::npos);
 	return res;
 }
 
@@ -458,8 +458,8 @@ std::string urlencode(std::string_view str)
 	res << std::hex;
 	res.fill('0');
 
-	for(char c : str) {
-		if(nonresv.count(c) != 0) {
+	for(char c : str){
+		if(nonresv.count(c) != 0){
 			res << c;
 			continue;
 		}
@@ -472,12 +472,12 @@ std::string urlencode(std::string_view str)
 	return res.str();
 }
 
-bool string_bool(const std::string& str, bool def) {
-	if (str.empty()) return def;
+bool string_bool(const std::string& str, bool def){
+	if(str.empty()) return def;
 
 	// yes/no is the standard, test it first
-	if (str == "yes") return true;
-	if (str == "no"|| str == "false" || str == "off" || str == "0" || str == "0.0")
+	if(str == "yes") return true;
+	if(str == "no"|| str == "false" || str == "off" || str == "0" || str == "0.0")
 		return false;
 
 	// all other non-empty string are considered as true
@@ -502,13 +502,13 @@ std::string signed_value(int val)
 std::string half_signed_value(int val)
 {
 	std::ostringstream oss;
-	if (val < 0)
+	if(val < 0)
 		oss << font::unicode_minus;
 	oss << std::abs(val);
 	return oss.str();
 }
 
-static void si_string_impl_stream_write(std::stringstream &ss, double input) {
+static void si_string_impl_stream_write(std::stringstream &ss, double input){
 	std::streamsize oldprec = ss.precision();
 #ifdef _MSC_VER
 	// For MSVC, default mode misbehaves, so we use fixed instead.
@@ -520,14 +520,14 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 
 	// 999.5 and above will render as 1000+, however, only numbers above 1000 will use 4 digits
 	// Rounding everything from 100 up (at which point we stop using decimals anyway) avoids this.
-	if (input >= 100) {
+	if(input >= 100){
 		input = std::round(input);
 	}
 
 	// When in binary mode, numbers of up to 1023.9999 can be passed
 	// We should render those with 4 digits, instead of as 1e+3.
 	// Input should be an integer number now, but doubles can do strange things, so check the halfway point instead.
-	if (input >= 999.5) {
+	if(input >= 999.5){
 		ss.precision(4);
 	} else {
 		ss.precision(3);
@@ -537,7 +537,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	ss.precision(oldprec);
 }
 
-std::string si_string(double input, bool base2, const std::string& unit) {
+std::string si_string(double input, bool base2, const std::string& unit){
 	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef std::array<std::string, 9> strings9;
@@ -548,11 +548,11 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;
-	if (input == 0.0) {
+	if(input == 0.0){
 		strings9 tmp { { "","","","","","","","","" } };
 		prefixes = tmp;
 		prefix = prefixes.begin();
-	} else if (input < 1.0) {
+	} else if(input < 1.0){
 		strings9 tmp { {
 			"",
 			_("prefix_milli^m"),
@@ -566,7 +566,7 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 		} };
 		prefixes = tmp;
 		prefix = prefixes.begin();
-		while (input < 1.0  && *prefix != prefixes.back()) {
+		while(input < 1.0  && *prefix != prefixes.back()){
 			input *= multiplier;
 			++prefix;
 		}
@@ -588,7 +588,7 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 		} };
 		prefixes = tmp;
 		prefix = prefixes.begin();
-		while (input > multiplier && *prefix != prefixes.back()) {
+		while(input > multiplier && *prefix != prefixes.back()){
 			input /= multiplier;
 			++prefix;
 		}
@@ -604,34 +604,34 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	return ss.str();
 }
 
-static bool is_username_char(char c) {
+static bool is_username_char(char c){
 	return ((c == '_') || (c == '-'));
 }
 
-static bool is_wildcard_char(char c) {
+static bool is_wildcard_char(char c){
 	return ((c == '?') || (c == '*'));
 }
 
-bool isvalid_username(const std::string& username) {
+bool isvalid_username(const std::string& username){
 	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const std::size_t valid_char =
 			std::count_if(username.begin(), username.end(), is_username_char);
-	if ((alnum + valid_char != username.size())
-			|| valid_char == username.size() || username.empty() )
+	if((alnum + valid_char != username.size())
+			|| valid_char == username.size() || username.empty())
 	{
 		return false;
 	}
 	return true;
 }
 
-bool isvalid_wildcard(const std::string& username) {
+bool isvalid_wildcard(const std::string& username){
 	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const std::size_t valid_char =
 		std::count_if(username.begin(), username.end(), is_username_char);
 	const std::size_t wild_char =
 		std::count_if(username.begin(), username.end(), is_wildcard_char);
-	if ((alnum + valid_char + wild_char != username.size())
-		|| valid_char == username.size() || username.empty() )
+	if((alnum + valid_char + wild_char != username.size())
+		|| valid_char == username.size() || username.empty())
 	{
 		return false;
 	}
@@ -639,18 +639,18 @@ bool isvalid_wildcard(const std::string& username) {
 }
 
 
-bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
+bool word_completion(std::string& text, std::vector<std::string>& wordlist){
 	std::vector<std::string> matches;
 	const std::size_t last_space = text.rfind(" ");
 	// If last character is a space return.
-	if (last_space == text.size() -1) {
+	if(last_space == text.size() -1){
 		wordlist = matches;
 		return false;
 	}
 
 	bool text_start;
 	std::string semiword;
-	if (last_space == std::string::npos) {
+	if(last_space == std::string::npos){
 		text_start = true;
 		semiword = text;
 	} else {
@@ -659,43 +659,43 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	}
 
 	std::string best_match = semiword;
-	for (std::vector<std::string>::const_iterator word = wordlist.begin();
+	for(std::vector<std::string>::const_iterator word = wordlist.begin();
 			word != wordlist.end(); ++word)
 	{
-		if (word->size() < semiword.size()
+		if(word->size() < semiword.size()
 		|| !std::equal(semiword.begin(), semiword.end(), word->begin(),
-			[](char a, char b) { return tolower(a) == tolower(b); })) // TODO: is this the right approach?
+			[](char a, char b){ return tolower(a) == tolower(b); })) // TODO: is this the right approach?
 		{
 			continue;
 		}
-		if (matches.empty()) {
+		if(matches.empty()){
 			best_match = *word;
 		} else {
 			int j = 0;
-			while (toupper(best_match[j]) == toupper((*word)[j])) j++;
-			if (best_match.begin() + j < best_match.end()) {
+			while(toupper(best_match[j]) == toupper((*word)[j])) j++;
+			if(best_match.begin() + j < best_match.end()){
 				best_match.erase(best_match.begin() + j, best_match.end());
 			}
 		}
 		matches.push_back(*word);
 	}
-	if(!matches.empty()) {
+	if(!matches.empty()){
 		text.replace(last_space + 1, best_match.size(), best_match);
 	}
 	wordlist = matches;
 	return text_start;
 }
 
-static bool is_word_boundary(char c) {
+static bool is_word_boundary(char c){
 	return (c == ' ' || c == ',' || c == ':' || c == '\'' || c == '"' || c == '-');
 }
 
-bool word_match(const std::string& message, const std::string& word) {
+bool word_match(const std::string& message, const std::string& word){
 	std::size_t first = message.find(word);
-	if (first == std::string::npos) return false;
-	if (first == 0 || is_word_boundary(message[first - 1])) {
+	if(first == std::string::npos) return false;
+	if(first == 0 || is_word_boundary(message[first - 1])){
 		std::size_t next = first + word.size();
-		if (next == message.size() || is_word_boundary(message[next])) {
+		if(next == message.size() || is_word_boundary(message[next])){
 			return true;
 		}
 	}
@@ -717,28 +717,28 @@ bool word_match(const std::string& message, const std::string& word) {
 
 	const auto first_wild = std::find_if(p_first, p_last, is_star_or_plus);
 
-	if(first_wild == p_last) {
+	if(first_wild == p_last){
 		return std::equal(s_first, s_last, p_first, p_last, match_char);
 	}
 
 	const auto wild_cat = static_cast<int>(*first_wild == '+');
 
-	if(first_wild != p_first) {
+	if(first_wild != p_first){
 		const auto n_chars = std::distance(p_first, first_wild);
 
-		if(std::distance(s_first, s_last) < (n_chars + wild_cat)) {
+		if(std::distance(s_first, s_last) < (n_chars + wild_cat)){
 			return false;
 		}
 
 		std::tie(s_first, p_first) = std::mismatch(s_first, s_first + n_chars, p_first, match_char);
 
-		if(p_first != first_wild) {
+		if(p_first != first_wild){
 			return false;
 		}
 	}
 
-	if(s_first == s_last) {
-		return std::all_of(p_first, p_last, [](char c) { return c == '*'; });
+	if(s_first == s_last){
+		return std::all_of(p_first, p_last, [](char c){ return c == '*'; });
 	}
 
 	s_first += wild_cat;
@@ -746,17 +746,17 @@ bool word_match(const std::string& message, const std::string& word) {
 
 	// Then
 
-	while(true) {
+	while(true){
 		const auto next_wild = std::find_if(p_first, p_last, is_star_or_plus);
 
-		if(next_wild == p_last) {
+		if(next_wild == p_last){
 			return boost::ends_with(std::pair{s_first, s_last}, std::pair{p_first, p_last}, match_char);
 		}
 
-		if(next_wild != p_first) {
+		if(next_wild != p_first){
 			auto [sub_f, sub_l] = std::default_searcher{p_first, next_wild, match_char}(s_first, s_last);
 
-			if(sub_f == s_last) {
+			if(sub_f == s_last){
 				return false;
 			}
 
@@ -768,14 +768,14 @@ bool word_match(const std::string& message, const std::string& word) {
 		const auto next_non_wild = std::find_if_not(p_first, p_last, is_wildcard);
 		const auto required_chars = std::distance(p_first, next_non_wild) - std::count(p_first, next_non_wild, '*');
 
-		if(std::distance(s_first, s_last) < required_chars) {
+		if(std::distance(s_first, s_last) < required_chars){
 			return false;
 		}
 
 		s_first += required_chars;
 		p_first = next_non_wild;
 
-		if(p_first == p_last) {
+		if(p_first == p_last){
 			return true;
 		}
 	}
@@ -797,30 +797,30 @@ void to_sql_wildcards(std::string& str, bool underscores)
 
 std::string indent(const std::string& string, std::size_t indent_size)
 {
-	if(indent_size == 0) {
+	if(indent_size == 0){
 		return string;
 	}
 
 	std::string indent(indent_size, ' ');
 
-	if(string.empty()) {
+	if(string.empty()){
 		return indent;
 	}
 
 	const std::vector<std::string>& lines = split(string, '\x0A', 0);
 	std::string res;
 
-	for(std::size_t lno = 0; lno < lines.size();) {
+	for(std::size_t lno = 0; lno < lines.size();){
 		const std::string& line = lines[lno];
 
 		// Lines containing only a carriage return count as empty.
-		if(!line.empty() && line != "\x0D") {
+		if(!line.empty() && line != "\x0D"){
 			res += indent;
 		}
 
 		res += line;
 
-		if(++lno < lines.size()) {
+		if(++lno < lines.size()){
 			res += '\x0A';
 		}
 	}
@@ -835,19 +835,19 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2 = val.begin();
 
-	while (i2 != val.end()) {
-		if (*i2 == quote) {
+	while(i2 != val.end()){
+		if(*i2 == quote){
 			// Ignore quoted character
 			++i2;
-			if (i2 != val.end()) ++i2;
-		} else if (*i2 == c) {
+			if(i2 != val.end()) ++i2;
+		} else if(*i2 == c){
 			std::string new_val(i1, i2);
-			if (flags & STRIP_SPACES)
+			if(flags & STRIP_SPACES)
 				boost::trim(new_val);
-			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(std::move(new_val));
 			++i2;
-			if (flags & STRIP_SPACES) {
+			if(flags & STRIP_SPACES){
 				while(i2 != val.end() && *i2 == ' ')
 					++i2;
 			}
@@ -859,9 +859,9 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 	}
 
 	std::string new_val(i1, i2);
-	if (flags & STRIP_SPACES)
+	if(flags & STRIP_SPACES)
 		boost::trim(new_val);
-	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 
 	return res;
@@ -887,7 +887,7 @@ std::pair<std::string_view, utils::optional<std::string_view>> parse_range_inter
 	auto pos = str.find(separator, 1);
 	auto length = separator.size();
 
-	if(pos != std::string::npos && pos + length < str.size()) {
+	if(pos != std::string::npos && pos + length < str.size()){
 		return {str.substr(0, pos), str.substr(pos + length)};
 	}
 
@@ -900,7 +900,7 @@ std::pair<int, int> parse_range(std::string_view str)
 	auto [a, b] = parse_range_internal_separator(str);
 	std::pair<int, int> res{0, 0};
 	try {
-		if(a == "-infinity" && b) {
+		if(a == "-infinity" && b){
 			// The "&& b" is so that we treat parse_range("-infinity") the same as parse_range("infinity"),
 			// both of those will report an invalid range.
 			res.first = std::numeric_limits<int>::min();
@@ -908,17 +908,17 @@ std::pair<int, int> parse_range(std::string_view str)
 			res.first = utils::stoi(a);
 		}
 
-		if(!b) {
+		if(!b){
 			res.second = res.first;
-		} else if(*b == "infinity") {
+		} else if(*b == "infinity"){
 			res.second = std::numeric_limits<int>::max();
 		} else {
 			res.second = utils::stoi(*b);
-			if(res.second < res.first) {
+			if(res.second < res.first){
 				res.second = res.first;
 			}
 		}
-	} catch(const std::invalid_argument&) {
+	} catch(const std::invalid_argument&){
 		ERR_GENERAL << "Invalid range: " << str;
 	}
 
@@ -930,7 +930,7 @@ std::pair<double, double> parse_range_real(std::string_view str)
 	auto [a, b] = parse_range_internal_separator(str);
 	std::pair<double, double> res{0, 0};
 	try {
-		if(a == "-infinity" && b) {
+		if(a == "-infinity" && b){
 			// There's already a static-assert for is_iec559 in random.cpp, so this isn't limiting the architectures
 			// that Wesnoth can run on.
 			static_assert(std::numeric_limits<double>::is_iec559,
@@ -940,17 +940,17 @@ std::pair<double, double> parse_range_real(std::string_view str)
 			res.first = utils::stod(a);
 		}
 
-		if(!b) {
+		if(!b){
 			res.second = res.first;
-		} else if(*b == "infinity") {
+		} else if(*b == "infinity"){
 			res.second = std::numeric_limits<double>::infinity();
 		} else {
 			res.second = utils::stod(*b);
-			if(res.second < res.first) {
+			if(res.second < res.first){
 				res.second = res.first;
 			}
 		}
-	} catch(const std::invalid_argument&) {
+	} catch(const std::invalid_argument&){
 		ERR_GENERAL << "Invalid range: " << str;
 	}
 
@@ -960,7 +960,7 @@ std::pair<double, double> parse_range_real(std::string_view str)
 std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str)
 {
 	auto to_return = parse_ranges_int(str);
-	if(std::any_of(to_return.begin(), to_return.end(), [](const std::pair<int, int>& r) { return r.first < 0; })) {
+	if(std::any_of(to_return.begin(), to_return.end(), [](const std::pair<int, int>& r){ return r.first < 0; })){
 		ERR_GENERAL << "Invalid range (expected values to be zero or positive): " << str;
 		return {};
 	}
@@ -971,7 +971,7 @@ std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str)
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
 {
 	std::vector<std::pair<double, double>> to_return;
-	for(const std::string& r : utils::split(str)) {
+	for(const std::string& r : utils::split(str)){
 		to_return.push_back(parse_range_real(r));
 	}
 
@@ -981,7 +981,7 @@ std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
 std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str)
 {
 	std::vector<std::pair<int, int>> to_return;
-	for(const std::string& r : utils::split(str)) {
+	for(const std::string& r : utils::split(str)){
 		to_return.push_back(parse_range(r));
 	}
 
@@ -994,7 +994,7 @@ void ellipsis_truncate(std::string& str, const std::size_t size)
 
 	utf8::truncate(str, size);
 
-	if(str.length() != prev_size) {
+	if(str.length() != prev_size){
 		str += font::ellipsis;
 	}
 }

@@ -102,7 +102,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 	// In simulation, AI should not know if there is a enemy's ambusher.
 	auto [move_unit, success] = resources::gameboard->units().move(from, to);
 
-	if(!success) {
+	if(!success){
 		// This happened because in some CAs like get_village_phase and move_leader_to_keep phase,
 		// if the destination is already occupied will not be checked before execute. Just silent
 		// errors in ai/actions and tell rca the game state isn't changed.
@@ -192,7 +192,7 @@ void helper_check_village(const map_location& loc, int side){
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
-	for(team& tm : teams) {
+	for(team& tm : teams){
 		int i_side = tm.side();
 		if(!t || has_leader || t->is_enemy(i_side)){
 			if(tm.owns_village(loc)){
@@ -204,7 +204,7 @@ void helper_check_village(const map_location& loc, int side){
 	}
 
 	// Get the village if have leader.
-	if (!t) return;
+	if(!t) return;
 
 	if(has_leader){
 		t->get_village(loc, old_owner_side, nullptr);
@@ -248,7 +248,7 @@ void helper_advance_unit(const map_location& loc){
 	if(advance_choice < options.size()){
 		std::string advance_unit_typename = options[advance_choice];
 		const unit_type *advanced_type = unit_types.find(advance_unit_typename);
-		if(!advanced_type) {
+		if(!advanced_type){
 			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;
 			return;
 		}

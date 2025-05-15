@@ -89,20 +89,20 @@ void move_unit(const std::vector<map_location>& path, const unit_ptr& u,
  * Play a pre-fight animation
  * First unit is the attacker, second unit the defender
  */
-void unit_draw_weapon( const map_location& loc, unit& u, const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
+void unit_draw_weapon(const map_location& loc, unit& u, const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
 
 /**
  * Play a post-fight animation
  * Both unit can be set to null, only valid units will play their animation
  */
-void unit_sheath_weapon( const map_location& loc, const unit_ptr& u=unit_ptr(), const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
+void unit_sheath_weapon(const map_location& loc, const unit_ptr& u=unit_ptr(), const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), const unit_ptr& defender=unit_ptr());
 
 /**
  * Show a unit fading out.
  *
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
- void unit_die( const map_location& loc, unit& u,
+ void unit_die(const map_location& loc, unit& u,
 	const const_attack_ptr& attack=nullptr, const const_attack_ptr& secondary_attack=nullptr,
 	const map_location& winner_loc=map_location::null_location(),
 	const unit_ptr& winner = unit_ptr());

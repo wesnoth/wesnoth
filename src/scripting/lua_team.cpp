@@ -50,300 +50,300 @@ luaW_Registry sideReg{"wesnoth", "sides", Team};
 
 template<> struct lua_object_traits<team> {
 	inline static auto metatable = Team;
-	inline static team& get(lua_State* L, int n) {
+	inline static team& get(lua_State* L, int n){
 		return luaW_checkteam(L, n);
 	}
 };
 
-SIDE_GETTER("side", int) {
+SIDE_GETTER("side", int){
 	return t.side();
 }
 
-SIDE_GETTER("save_id", std::string) {
+SIDE_GETTER("save_id", std::string){
 	return t.save_id();
 }
 //maybe add a setter for save_id too?
 
-SIDE_GETTER("gold", int) {
+SIDE_GETTER("gold", int){
 	return t.gold();
 }
 
-SIDE_SETTER("gold", int) {
+SIDE_SETTER("gold", int){
 	t.set_gold(value);
 }
 
-SIDE_GETTER("objectives", t_string) {
+SIDE_GETTER("objectives", t_string){
 	return t.objectives();
 }
 
-SIDE_SETTER("objectives", t_string) {
+SIDE_SETTER("objectives", t_string){
 	t.set_objectives(value, true);
 }
 
-SIDE_GETTER("village_gold", int) {
+SIDE_GETTER("village_gold", int){
 	return t.village_gold();
 }
 
-SIDE_SETTER("village_gold", int) {
+SIDE_SETTER("village_gold", int){
 	t.set_village_gold(value);
 }
 
-SIDE_GETTER("village_support", int) {
+SIDE_GETTER("village_support", int){
 	return t.village_support();
 }
 
-SIDE_SETTER("village_support", int) {
+SIDE_SETTER("village_support", int){
 	t.set_village_support(value);
 }
 
-SIDE_GETTER("num_villages", int) {
+SIDE_GETTER("num_villages", int){
 	return t.villages().size();
 }
 
-SIDE_GETTER("recall_cost", int) {
+SIDE_GETTER("recall_cost", int){
 	return t.recall_cost();
 }
 
-SIDE_SETTER("recall_cost", int) {
+SIDE_SETTER("recall_cost", int){
 	t.set_recall_cost(value);
 }
 
-SIDE_GETTER("base_income", int) {
+SIDE_GETTER("base_income", int){
 	return t.base_income();
 }
 
-SIDE_SETTER("base_income", int) {
+SIDE_SETTER("base_income", int){
 	t.set_base_income(value);
 }
 
-SIDE_GETTER("total_income", int) {
+SIDE_GETTER("total_income", int){
 	return t.total_income();
 }
 
-SIDE_GETTER("objectives_changed", bool) {
+SIDE_GETTER("objectives_changed", bool){
 	return t.objectives_changed();
 }
 
-SIDE_SETTER("objectives_changed", bool) {
+SIDE_SETTER("objectives_changed", bool){
 	t.set_objectives_changed(value);
 }
 
-SIDE_GETTER("fog", bool) {
+SIDE_GETTER("fog", bool){
 	return t.uses_fog();
 }
 
-SIDE_SETTER("fog", bool) {
+SIDE_SETTER("fog", bool){
 	t.set_fog(value);
 }
 
-SIDE_GETTER("shroud", bool) {
+SIDE_GETTER("shroud", bool){
 	return t.uses_shroud();
 }
 
-SIDE_SETTER("shroud", bool) {
+SIDE_SETTER("shroud", bool){
 	t.set_shroud(value);
 }
 
-SIDE_GETTER("hidden", bool) {
+SIDE_GETTER("hidden", bool){
 	return t.hidden();
 }
 
-SIDE_SETTER("hidden", bool) {
+SIDE_SETTER("hidden", bool){
 	t.set_hidden(value);
 }
 
-SIDE_GETTER("scroll_to_leader", bool) {
+SIDE_GETTER("scroll_to_leader", bool){
 	return t.get_scroll_to_leader();
 }
 
-SIDE_SETTER("scroll_to_leader", bool) {
+SIDE_SETTER("scroll_to_leader", bool){
 	t.set_scroll_to_leader(value);
 }
 
-static void reinit_flag_for_team(lua_State* L, const team& t) {
+static void reinit_flag_for_team(lua_State* L, const team& t){
    auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
-   if(disp) {
+   if(disp){
 	   disp->reinit_flags_for_team(t);
    }
 }
 
-SIDE_GETTER("color", std::string) {
+SIDE_GETTER("color", std::string){
 	return t.color();
 }
 
-SIDE_SETTER("color", std::string) {
+SIDE_SETTER("color", std::string){
 	t.set_color(value);
 	reinit_flag_for_team(L, t);
 }
 
-SIDE_GETTER("flag", std::string) {
+SIDE_GETTER("flag", std::string){
 	return t.flag().empty() ? game_config::images::flag : t.flag();
 }
 
-SIDE_SETTER("flag", std::string) {
+SIDE_SETTER("flag", std::string){
 	t.set_flag(value);
 	reinit_flag_for_team(L, t);
 }
 
-SIDE_GETTER("flag_icon", std::string) {
+SIDE_GETTER("flag_icon", std::string){
 	return t.flag_icon().empty() ? game_config::images::flag_icon : t.flag_icon();
 }
 
-SIDE_SETTER("flag_icon", std::string) {
+SIDE_SETTER("flag_icon", std::string){
 	t.set_flag_icon(value);
 }
 
-SIDE_GETTER("user_team_name", t_string) {
+SIDE_GETTER("user_team_name", t_string){
 	return t.user_team_name();
 }
 
-SIDE_SETTER("user_team_name", t_string) {
+SIDE_SETTER("user_team_name", t_string){
 	t.change_team(t.team_name(), value);
 }
 
-SIDE_GETTER("team_name", std::string) {
+SIDE_GETTER("team_name", std::string){
 	return t.team_name();
 }
 
-SIDE_SETTER("team_name", std::string) {
+SIDE_SETTER("team_name", std::string){
 	t.change_team(value, t.user_team_name());
 }
 
-SIDE_GETTER("faction", std::string) {
+SIDE_GETTER("faction", std::string){
 	return t.faction();
 }
 
-SIDE_GETTER("faction_name", t_string) {
+SIDE_GETTER("faction_name", t_string){
 	return t.faction_name();
 }
 
-SIDE_GETTER("controller", std::string) {
+SIDE_GETTER("controller", std::string){
 	return side_controller::get_string(t.controller());
 }
 
-SIDE_SETTER("controller", std::string) {
+SIDE_SETTER("controller", std::string){
 	t.change_controller_by_wml(value);
 }
 
-SIDE_GETTER("is_local", bool) {
+SIDE_GETTER("is_local", bool){
 	return t.is_local();
 }
 
-SIDE_GETTER("defeat_condition", std::string) {
+SIDE_GETTER("defeat_condition", std::string){
 	return defeat_condition::get_string(t.defeat_cond());
 }
 
-SIDE_SETTER("defeat_condition", std::string) {
+SIDE_SETTER("defeat_condition", std::string){
 	t.set_defeat_condition_string(value);
 }
 
-SIDE_GETTER("share_vision", std::string) {
+SIDE_GETTER("share_vision", std::string){
 	return team_shared_vision::get_string(t.share_vision());
 }
 
-SIDE_SETTER("share_vision", std::string) {
+SIDE_SETTER("share_vision", std::string){
 	auto v = team_shared_vision::get_enum(value);
-	if(v) {
+	if(v){
 		t.set_share_vision(*v);
 	} else {
 		throw luaL_argerror(L, 3, "Invalid share_vision value (should be 'all', 'none', or 'shroud')");
 	}
 }
 
-SIDE_GETTER("carryover_bonus", double) {
+SIDE_GETTER("carryover_bonus", double){
 	return t.carryover_bonus();
 }
 
-SIDE_SETTER("carryover_bonus", double) {
+SIDE_SETTER("carryover_bonus", double){
 	t.set_carryover_bonus(value);
 }
 
-SIDE_GETTER("carryover_percentage", int) {
+SIDE_GETTER("carryover_percentage", int){
 	return t.carryover_percentage();
 }
 
-SIDE_SETTER("carryover_percentage", int) {
+SIDE_SETTER("carryover_percentage", int){
 	t.set_carryover_percentage(value);
 }
 
-SIDE_GETTER("carryover_gold", int) {
+SIDE_GETTER("carryover_gold", int){
 	return t.carryover_gold();
 }
 
-SIDE_SETTER("carryover_gold", int) {
+SIDE_SETTER("carryover_gold", int){
 	t.set_carryover_gold(value);
 }
 
-SIDE_GETTER("carryover_add", bool) {
+SIDE_GETTER("carryover_add", bool){
 	return t.carryover_add();
 }
 
-SIDE_SETTER("carryover_add", bool) {
+SIDE_SETTER("carryover_add", bool){
 	t.set_carryover_add(value);
 }
 
-SIDE_GETTER("lost", bool) {
+SIDE_GETTER("lost", bool){
 	return t.lost();
 }
 
-SIDE_SETTER("lost", bool) {
+SIDE_SETTER("lost", bool){
 	t.set_lost(value);
 }
 
-SIDE_GETTER("persistent", bool) {
+SIDE_GETTER("persistent", bool){
 	return t.persistent();
 }
 
-SIDE_SETTER("persistent", bool) {
+SIDE_SETTER("persistent", bool){
 	t.set_persistent(value);
 }
 
-SIDE_GETTER("suppress_end_turn_confirmation", bool) {
+SIDE_GETTER("suppress_end_turn_confirmation", bool){
 	return t.no_turn_confirmation();
 }
 
-SIDE_SETTER("suppress_end_turn_confirmation", bool) {
+SIDE_SETTER("suppress_end_turn_confirmation", bool){
 	t.set_no_turn_confirmation(value);
 }
 
-SIDE_GETTER("share_maps", bool) {
+SIDE_GETTER("share_maps", bool){
 	return t.share_maps();
 }
 
-SIDE_GETTER("share_view", bool) {
+SIDE_GETTER("share_view", bool){
 	return t.share_view();
 }
 
-SIDE_GETTER("chose_random", bool) {
+SIDE_GETTER("chose_random", bool){
 	return t.chose_random();
 }
 
-SIDE_GETTER("side_name", t_string) {
+SIDE_GETTER("side_name", t_string){
 	return t.side_name_tstr();
 }
 
-SIDE_SETTER("side_name", t_string) {
+SIDE_SETTER("side_name", t_string){
 	t.set_side_name(value);
 }
 
-SIDE_GETTER("shroud_data", std::string) {
+SIDE_GETTER("shroud_data", std::string){
 	return t.shroud_data();
 }
 
-SIDE_SETTER("shroud_data", std::string) {
+SIDE_SETTER("shroud_data", std::string){
 	t.reshroud();
 	t.merge_shroud_map_data(value);
 }
 
-SIDE_GETTER("recruit", std::set<std::string>) {
+SIDE_GETTER("recruit", std::set<std::string>){
 	return t.recruits();
 }
 
-SIDE_SETTER("recruit", std::set<std::string>) {
+SIDE_SETTER("recruit", std::set<std::string>){
 	t.set_recruits(value);
 }
 
-SIDE_GETTER("variables", lua_index_raw) {
+SIDE_GETTER("variables", lua_index_raw){
 	(void)t;
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, 1);
@@ -352,29 +352,29 @@ SIDE_GETTER("variables", lua_index_raw) {
 	return lua_index_raw(L);
 }
 
-SIDE_GETTER("starting_location", utils::optional<map_location>) {
+SIDE_GETTER("starting_location", utils::optional<map_location>){
 	const map_location& starting_pos = resources::gameboard->map().starting_position(t.side());
 	if(!resources::gameboard->map().on_board(starting_pos)) return utils::nullopt;
 	return starting_pos;
 }
 
-SIDE_GETTER("num_units", int) {
+SIDE_GETTER("num_units", int){
 	return team_data(*resources::gameboard, t).units;
 }
 
-SIDE_GETTER("total_upkeep", int) {
+SIDE_GETTER("total_upkeep", int){
 	return team_data(*resources::gameboard, t).upkeep;
 }
 
-SIDE_GETTER("expenses", int) {
+SIDE_GETTER("expenses", int){
 	return team_data(*resources::gameboard, t).expenses;
 }
 
-SIDE_GETTER("net_income", int) {
+SIDE_GETTER("net_income", int){
 	return team_data(*resources::gameboard, t).net_income;
 }
 
-SIDE_GETTER("__cfg", config) {
+SIDE_GETTER("__cfg", config){
 	config cfg;
 	t.write(cfg);
 	return cfg;
@@ -410,7 +410,7 @@ static int impl_side_tostring(lua_State* L)
 	std::ostringstream str;
 
 	str << "side: <" << team.side();
-	if(!team.side_name().empty()) {
+	if(!team.side_name().empty()){
 		str << " " << team.side_name();
 	}
 	str << '>';
@@ -434,7 +434,7 @@ static int impl_side_equal(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t1 = luaW_checkteam(L, 1);
-	if(team* t2 = luaW_toteam(L, 2)) {
+	if(team* t2 = luaW_toteam(L, 2)){
 		lua_pushboolean(L, t1.side() == t2->side());
 	} else {
 		lua_pushboolean(L, false);
@@ -450,7 +450,7 @@ static int impl_side_equal(lua_State *L)
  */
 static int impl_side_variables_get(lua_State *L)
 {
-	if(!lua_istable(L, 1)) {
+	if(!lua_istable(L, 1)){
 		return luaW_type_error(L, 1, "side variables");
 	}
 	lua_rawgeti(L, 1, 1);
@@ -471,22 +471,22 @@ static int impl_side_variables_get(lua_State *L)
  */
 static int impl_side_variables_set(lua_State *L)
 {
-	if(!lua_istable(L, 1)) {
+	if(!lua_istable(L, 1)){
 		return luaW_type_error(L, 1, "side variables");
 	}
 	lua_rawgeti(L, 1, 1);
 	team& side = luaW_checkteam(L, -1);
 
 	char const *m = luaL_checkstring(L, 2);
-	if(strcmp(m, "__cfg") == 0) {
+	if(strcmp(m, "__cfg") == 0){
 		side.variables() = luaW_checkconfig(L, 3);
 		return 0;
 	}
 	config& vars = side.variables();
-	if(lua_isnoneornil(L, 3)) {
+	if(lua_isnoneornil(L, 3)){
 		try {
 			variable_access_throw(m, vars).clear(false);
-		} catch(const invalid_variablename_exception&) {
+		} catch(const invalid_variablename_exception&){
 		}
 		return 0;
 	}
@@ -547,9 +547,9 @@ team& luaW_checkteam(lua_State* L, int idx)
 
 team& luaW_checkteam(lua_State* L, int idx, game_board& board)
 {
-	if(lua_isinteger(L, idx)) {
+	if(lua_isinteger(L, idx)){
 		int side = lua_tointeger(L, idx);
-		if(!board.has_team(side)) {
+		if(!board.has_team(side)){
 			std::string error = "side " + std::to_string(side) + " does not exist";
 			luaL_argerror(L, 1, error.c_str());
 			// Unreachable
@@ -561,7 +561,7 @@ team& luaW_checkteam(lua_State* L, int idx, game_board& board)
 
 team* luaW_toteam(lua_State* L, int idx)
 {
-	if(void* p = luaL_testudata(L, idx, Team)) {
+	if(void* p = luaL_testudata(L, idx, Team)){
 		return *static_cast<team **>(p);
 	}
 	return nullptr;

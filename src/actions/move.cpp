@@ -186,10 +186,10 @@ struct take_village_step : undo_action
 	{
 	}
 
-	static const char* get_type_impl() { return "take_village"; }
+	static const char* get_type_impl(){ return "take_village"; }
 	virtual const char* get_type() const { return get_type_impl(); }
 
-	virtual ~take_village_step() { }
+	virtual ~take_village_step(){ }
 
 	/** Writes this into the provided config. */
 	virtual void write(config& cfg) const
@@ -204,10 +204,10 @@ struct take_village_step : undo_action
 	virtual bool undo(int)
 	{
 		team& current_team = resources::controller->current_team();
-		if(resources::gameboard->map().is_village(loc)) {
+		if(resources::gameboard->map().is_village(loc)){
 			get_village(loc, original_village_owner, nullptr, false);
 			// MP_COUNTDOWN take away capture bonus
-			if(take_village_timebonus) {
+			if(take_village_timebonus){
 				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
 			}
 		}
@@ -222,7 +222,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 {
 	std::vector<team> &teams = resources::gameboard->teams();
 	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
-	if (t && t->owns_village(loc)) {
+	if(t && t->owns_village(loc)){
 		return game_events::pump_result_t();
 	}
 
@@ -233,30 +233,30 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	int old_owner_side = 0;
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
-	for(team& tm : teams) {
+	for(team& tm : teams){
 		int i_side = tm.side();
-		if (!t || not_defeated || t->is_enemy(i_side)) {
-			if(tm.owns_village(loc)) {
+		if(!t || not_defeated || t->is_enemy(i_side)){
+			if(tm.owns_village(loc)){
 				old_owner_side = i_side;
 				tm.lose_village(loc);
 			}
-			if (side != i_side && action_timebonus) {
+			if(side != i_side && action_timebonus){
 				grants_timebonus = true;
 			}
 		}
 	}
 
-	if (!t) {
+	if(!t){
 		return game_events::pump_result_t();
 	}
 
-	if(grants_timebonus) {
+	if(grants_timebonus){
 		t->set_action_bonus_count(1 + t->action_bonus_count());
 		*action_timebonus = true;
 	}
 
-	if(not_defeated) {
-		if (display::get_singleton() != nullptr) {
+	if(not_defeated){
+		if(display::get_singleton() != nullptr){
 			display::get_singleton()->invalidate(loc);
 		}
 		resources::undo_stack->add_custom<take_village_step>(old_owner_side, grants_timebonus, loc);
@@ -311,7 +311,7 @@ namespace { // Private helpers for move_unit()
 		bool interrupted(bool include_end_of_move_events=true) const
 		{
 			return ambushed_ || blocked() || sighted_ || teleport_failed_ ||
-			       (include_end_of_move_events ? (wml_removed_unit_ || wml_move_aborted_): event_mutated_mid_move_ ) ||
+			       (include_end_of_move_events ? (wml_removed_unit_ || wml_move_aborted_): event_mutated_mid_move_) ||
 			       !move_it_.valid();
 		}
 
@@ -335,7 +335,7 @@ namespace { // Private helpers for move_unit()
 		                         const route_iterator & stop);
 		/** Updates our stored info after a WML event might have changed something. */
 		void post_wml(game_events::pump_result_t pump_res, const route_iterator & step);
-		void post_wml(game_events::pump_result_t pump_res) { return post_wml(pump_res, full_end_); }
+		void post_wml(game_events::pump_result_t pump_res){ return post_wml(pump_res, full_end_); }
 		/** Fires the sighted events that were raised earlier. */
 		void pump_sighted(const route_iterator & from);
 		/** Returns the ambush alert (if any) for the given unit. */
@@ -454,10 +454,10 @@ namespace { // Private helpers for move_unit()
 		, real_end_(begin_)
 		// Unit information:
 		, move_it_(resources::gameboard->units().find(*begin_))
-		, orig_side_(( static_cast<void>(assert(move_it_ != resources::gameboard->units().end())), move_it_->side() ))
+		, orig_side_((static_cast<void>(assert(move_it_ != resources::gameboard->units().end())), move_it_->side()))
 		, orig_moves_(move_it_->movement_left())
 		, orig_dir_(move_it_->facing())
-		, goto_( is_ai_move() ? move_it_->get_goto() : route.back() )
+		, goto_(is_ai_move() ? move_it_->get_goto() : route.back())
 		, current_side_(orig_side_)
 		, current_team_(&resources::gameboard->get_team(current_side_))
 		, current_uses_fog_(current_team_->fog_or_shroud() && current_team_->auto_shroud_updates())
@@ -483,7 +483,7 @@ namespace { // Private helpers for move_unit()
 		, moves_left_()
 		, clearer_()
 	{
-		if ( !is_ai_move() )
+		if(!is_ai_move())
 			// Clear the "goto" instruction during movement.
 			// (It will be reset in the destructor if needed.)
 			move_it_->set_goto(map_location::null_location());
@@ -493,12 +493,12 @@ namespace { // Private helpers for move_unit()
 	unit_mover::~unit_mover()
 	{
 		// Set the "goto" order? (Not if WML set it.)
-		if ( !is_ai_move()  &&  move_it_.valid()  &&
-		     move_it_->get_goto() == map_location::null_location() )
+		if(!is_ai_move()  &&  move_it_.valid()  &&
+		     move_it_->get_goto() == map_location::null_location())
 		{
 			// Only set the goto if movement was not complete and was not
 			// interrupted.
-			if (real_end_ != full_end_  &&  !interrupted(false)) {
+			if(real_end_ != full_end_  &&  !interrupted(false)){
 				// End-of-move-events do not cancel a goto. (Use case: tutorial S2.)
 				move_it_->set_goto(goto_);
 			}
@@ -516,12 +516,12 @@ namespace { // Private helpers for move_unit()
 		const unit_map &units = resources::gameboard->units();
 
 		// Need to check each adjacent hex for hidden enemies.
-		for(const map_location& loc : get_adjacent_tiles(hex)) {
+		for(const map_location& loc : get_adjacent_tiles(hex)){
 			const unit_map::const_iterator neighbor_it = units.find(loc);
 
-			if ( neighbor_it != units.end()  &&
+			if(neighbor_it != units.end()  &&
 			     current_team_->is_enemy(neighbor_it->side())  &&
-			     neighbor_it->invisible(loc) )
+			     neighbor_it->invisible(loc))
 			{
 				// Ambushed!
 				ambushed_ = true;
@@ -544,15 +544,15 @@ namespace { // Private helpers for move_unit()
 		const unit_map::const_iterator blocking_unit = resources::gameboard->units().find(hex);
 
 		// If no unit, then the path is not obstructed.
-		if (blocking_unit == resources::gameboard->units().end()) {
+		if(blocking_unit == resources::gameboard->units().end()){
 			return false;
 		}
 
 		// Check for units blocking a teleport exit. This can now only happen
 		// if these units are not visible to the current side, as otherwise no
 		// valid path is found.
-		if ( !tiles_adjacent(hex, prev_hex) ) {
-			if ( current_team_->is_enemy(blocking_unit->side()) ) {
+		if(!tiles_adjacent(hex, prev_hex)){
+			if(current_team_->is_enemy(blocking_unit->side())){
 				// Enemy units always block the tunnel.
 				teleport_failed_ = true;
 				return true;
@@ -563,14 +563,14 @@ namespace { // Private helpers for move_unit()
 				const pathfind::teleport_map teleports = pathfind::get_teleport_locations(*move_it_, *current_team_, true, false, false);
 				const auto allowed_teleports = teleports.get_adjacents(prev_hex);
 
-				if(allowed_teleports.count(hex) == 0) {
+				if(allowed_teleports.count(hex) == 0){
 					teleport_failed_ = true;
 					return true;
 				}
 			}
 		}
 
-		if ( current_team_->is_enemy(blocking_unit->side()) ) {
+		if(current_team_->is_enemy(blocking_unit->side())){
 			// Trying to go through an enemy.
 			blocked_loc_ = hex;
 			return true;
@@ -608,7 +608,7 @@ namespace { // Private helpers for move_unit()
 		// Attempt actually moving. Fails if *step_to is occupied.
 		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
-		if(success) {
+		if(success){
 			resources::undo_stack->add_move(
 				unit_it.get_shared_ptr(), move_loc_, step_to + 1, orig_moves_, unit_it->facing());
 			orig_moves_ = unit_it->movement_left();
@@ -649,7 +649,7 @@ namespace { // Private helpers for move_unit()
 		// Attempt actually moving. Fails if *step_to is occupied.
 		auto [unit_it, success] = resources::gameboard->units().move(*begin_, *step_to);
 
-		if(success) {
+		if(success){
 			// Update the moving unit.
 			move_it_ = unit_it;
 			move_it_->set_facing(begin_->get_relative_dir(*step_to));
@@ -678,19 +678,19 @@ namespace { // Private helpers for move_unit()
 	                                   bool new_animation)
 	{
 		// Clear the fog.
-		if ( clearer_.clear_unit(hex, *move_it_, *current_team_, nullptr,
+		if(clearer_.clear_unit(hex, *move_it_, *current_team_, nullptr,
 		                         &enemy_count_, &friend_count_, spectator_,
-		                         !new_animation) )
+		                         !new_animation))
 		{
 			clearer_.invalidate_after_clear();
 			fog_changed_ = true;
 		}
 
 		// Check for sighted units?
-		if ( !skip_sighting_ ) {
+		if(!skip_sighting_){
 			sighted_ = enemy_count_ != 0 ;
 		}
-		if( !skip_sighting_ && !skip_ally_sighting_ )
+		if(!skip_sighting_ && !skip_ally_sighting_)
 		{
 			sighted_ |= (friend_count_ != 0);
 		}
@@ -706,7 +706,7 @@ namespace { // Private helpers for move_unit()
 	{
 		// We cannot reasonably stop if move_it_ could not be moved to this
 		// hex (the hex was occupied by someone else).
-		if (*move_loc_ != hex) {
+		if(*move_loc_ != hex){
 			return false;
 		}
 
@@ -726,16 +726,16 @@ namespace { // Private helpers for move_unit()
 	inline void unit_mover::reveal_ambushers()
 	{
 		// Reveal the blocking unit.
-		if (blocked()) {
+		if(blocked()){
 			reveal_ambusher(blocked_loc_, false);
 		}
 		// Reveal ambushers.
-		for(const map_location & reveal : ambushers_) {
+		for(const map_location & reveal : ambushers_){
 			reveal_ambusher(reveal, true);
 		}
 
 		// Default "Ambushed!" message?
-		if (ambush_string_.empty()) {
+		if(ambush_string_.empty()){
 			ambush_string_ = _("Ambushed!");
 		}
 	}
@@ -750,8 +750,8 @@ namespace { // Private helpers for move_unit()
 
 		// Loop through the previously-detected ambushers.
 		std::size_t i = 0;
-		while ( i != ambushers_.size() ) {
-			if (units.count(ambushers_[i]) == 0) {
+		while(i != ambushers_.size()){
+			if(units.count(ambushers_[i]) == 0){
 				// Ambusher is gone.
 				ambushers_.erase(ambushers_.begin() + i);
 			}
@@ -785,11 +785,11 @@ namespace { // Private helpers for move_unit()
 		// The ambush cache needs special treatment since we cannot re-detect
 		// an ambush if we are already at the ambushed location.
 		ambushed_ =  ambushed_  &&  ambush_stop_ == *start;
-		if ( ambushed_ ) {
+		if(ambushed_){
 			validate_ambushers();
 			ambushed_ = !ambushers_.empty();
 		}
-		if ( !ambushed_ ) {
+		if(!ambushed_){
 			ambush_stop_ = map_location::null_location();
 			ambushers_.clear();
 		}
@@ -799,20 +799,20 @@ namespace { // Private helpers for move_unit()
 
 
 		// Abort for null routes.
-		if ( start == stop ) {
+		if(start == stop){
 			ambush_limit_ = start;
 			return;
 		}
 
 		// This loop will end with ambush_limit_ pointing one element beyond
 		// where the unit would be forced to stop by a hidden unit.
-		for ( ambush_limit_ = start+1; ambush_limit_ != stop; ++ambush_limit_ ) {
+		for(ambush_limit_ = start+1; ambush_limit_ != stop; ++ambush_limit_){
 			// Check if we need to stop in the previous hex.
-			if ( ambushed_ ) {
+			if(ambushed_){
 					break;
 			}
 			// Check for being unable to enter this hex.
-			if ( check_for_obstructing_unit(*ambush_limit_, *(ambush_limit_-1)) ) {
+			if(check_for_obstructing_unit(*ambush_limit_, *(ambush_limit_-1))){
 				// No replay check here? Makes some sense, I guess.
 				obstructed_ = ambush_limit_++; // The limit needs to be after obstructed_ in order for the latter to do anything.
 				break;
@@ -858,7 +858,7 @@ namespace { // Private helpers for move_unit()
 		const gamemap &map = resources::gameboard->map();
 
 		// Handle null routes.
-		if (start == stop) {
+		if(start == stop){
 			return start;
 		}
 
@@ -866,24 +866,24 @@ namespace { // Private helpers for move_unit()
 		zoc_stop_ = map_location::null_location();
 		moves_left_.clear();
 
-		if ( start != begin_ ) {
+		if(start != begin_){
 			// Check for being unable to leave the current hex.
-			if ( !move_it_->get_ability_bool("skirmisher", *start) &&
-			      pathfind::enemy_zoc(*current_team_, *start, *current_team_) )
+			if(!move_it_->get_ability_bool("skirmisher", *start) &&
+			      pathfind::enemy_zoc(*current_team_, *start, *current_team_))
 				zoc_stop_ = *start;
 		}
 
 		// This loop will end with end pointing one element beyond where the
 		// unit thinks it will stop (the usual notion of "end" for iterators).
 		route_iterator end = start + 1;
-		for ( ; end != stop; ++end )
+		for(; end != stop; ++end)
 		{
 			// Break out of the loop if we cannot leave the previous hex.
-			if ( zoc_stop_ != map_location::null_location() ) {
+			if(zoc_stop_ != map_location::null_location()){
 				break;
 			}
 			remaining_moves -= move_it_->movement_cost(map[*end]);
-			if ( remaining_moves < 0 ) {
+			if(remaining_moves < 0){
 					break;
 			}
 
@@ -891,7 +891,7 @@ namespace { // Private helpers for move_unit()
 			moves_left_.push_back(remaining_moves);
 
 			// Check for being unable to leave this hex.
-			if (!move_it_->get_ability_bool("skirmisher", *end) &&
+			if(!move_it_->get_ability_bool("skirmisher", *end) &&
 				pathfind::enemy_zoc(*current_team_, *end, *current_team_))
 			{
 				zoc_stop_ = *end;
@@ -899,7 +899,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		route_iterator min_end =  start == begin_ ? start : start + 1;
-		while (end != min_end  &&  resources::gameboard->has_visible_unit(*(end - 1), *current_team_)) {
+		while(end != min_end  &&  resources::gameboard->has_visible_unit(*(end - 1), *current_team_)){
 			// Backtrack.
 			--end;
 		}
@@ -929,15 +929,15 @@ namespace { // Private helpers for move_unit()
 		current_side_ = found ? move_it_->side() : orig_side_;
 		current_team_ = &resources::gameboard->get_team(current_side_);
 		current_uses_fog_ = current_team_->fog_or_shroud()  &&
-		                    ( current_side_ != orig_side_  ||
-		                      current_team_->auto_shroud_updates() );
+		                    (current_side_ != orig_side_  ||
+		                      current_team_->auto_shroud_updates());
 
 		// Update the path.
-		if ( found  &&  step != full_end_ ) {
+		if(found  &&  step != full_end_){
 			const route_iterator new_limit = plot_turn(step, expected_end_);
 			cache_hidden_units(step, new_limit);
 			// Just in case: length 0 paths become length 1 paths.
-			if (ambush_limit_ == step) {
+			if(ambush_limit_ == step){
 				++ambush_limit_;
 			}
 		}
@@ -968,7 +968,7 @@ namespace { // Private helpers for move_unit()
 		for(const unit_ability &hide : ambusher.get_abilities("hides"))
 		{
 			const std::string & ambush_string = (*hide.ability_cfg)["alert"].str();
-			if (!ambush_string.empty()) {
+			if(!ambush_string.empty()){
 				return ambush_string;
 			}
 		}
@@ -991,7 +991,7 @@ namespace { // Private helpers for move_unit()
 
 		// Find the unit at the indicated location.
 		unit_map::iterator ambusher = units.find(hex);
-		if ( ambusher != units.end() ) {
+		if(ambusher != units.end()){
 			// Prepare for sighted events.
 			std::vector<int> sight_cache(get_sides_not_seeing(*ambusher));
 			// Make sure the unit is visible (during sighted events, and in case
@@ -999,16 +999,16 @@ namespace { // Private helpers for move_unit()
 			ambusher->set_state(unit::STATE_UNCOVERED, true);
 
 			// Record this in the move spectator.
-			if (spectator_) {
+			if(spectator_){
 				spectator_->set_ambusher(ambusher);
 			}
 			// Override the default ambushed message?
-			if ( update_alert ) {
+			if(update_alert){
 				// Observers don't get extra information.
-				if ( playing_team_is_viewing_ || !disp.fogged(hex) ) {
+				if(playing_team_is_viewing_ || !disp.fogged(hex)){
 					show_ambush_alert_ = true;
 					// We only support one custom ambush message; use the first one.
-					if (ambush_string_.empty()) {
+					if(ambush_string_.empty()){
 						ambush_string_ = read_ambush_string(*ambusher);
 					}
 				}
@@ -1063,7 +1063,7 @@ namespace { // Private helpers for move_unit()
 		// animating and firing events.
 		cache_hidden_units(begin_, expected_end_);
 
-		if ( begin_ != ambush_limit_ ) {
+		if(begin_ != ambush_limit_){
 			// Cache the moving unit's visibility.
 			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
@@ -1073,25 +1073,25 @@ namespace { // Private helpers for move_unit()
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
-			for ( real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_ ) {
+			for(real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_){
 				const route_iterator step_from = real_end_ - 1;
 
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
-				if ( wml_removed_unit_ || wml_move_aborted_) {
+				if(wml_removed_unit_ || wml_move_aborted_){
 					break;
 				}
-				if ( sighted_ && is_reasonable_stop(*step_from) ) {
+				if(sighted_ && is_reasonable_stop(*step_from)){
 					sighted_stop_ = true;
 					break;
 				}
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
 				fire_hex_event(exit_hex_str, step_from, real_end_);
-				if (wml_removed_unit_ || wml_move_aborted_) {
+				if(wml_removed_unit_ || wml_move_aborted_){
 					break;
 				}
-				if ( real_end_ == obstructed_ ) {
+				if(real_end_ == obstructed_){
 					// We did not check for being a replay when checking for an
 					// obstructed hex, so we do not check can_break here.
 					obstructed_stop = true;
@@ -1101,7 +1101,7 @@ namespace { // Private helpers for move_unit()
 				// We can leave *step_from. Make the move to *real_end_.
 				bool new_animation = do_move(step_from, real_end_, animator);
 				// Update the fog.
-				if ( current_uses_fog_ )
+				if(current_uses_fog_)
 					handle_fog(*real_end_, new_animation);
 				animator.wait_for_anims();
 
@@ -1111,14 +1111,14 @@ namespace { // Private helpers for move_unit()
 				// us out of the loop if needed.)
 				fire_hex_event(enter_hex_str, real_end_, step_from);
 				// Sighted events only fire if we could stop due to sighting.
-				if (is_reasonable_stop(*real_end_)) {
+				if(is_reasonable_stop(*real_end_)){
 					pump_sighted(real_end_);
 				}
 			}//for
 			// Make sure any remaining sighted events get fired.
 			pump_sighted(real_end_-1);
 
-			if ( move_it_.valid() ) {
+			if(move_it_.valid()){
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
@@ -1132,7 +1132,7 @@ namespace { // Private helpers for move_unit()
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
-		if (!obstructed_stop) {
+		if(!obstructed_stop){
 			blocked_loc_ = map_location::null_location();
 		}
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
@@ -1166,13 +1166,13 @@ namespace { // Private helpers for move_unit()
 
 		fire_hex_event("enter hex", begin_, step_from);
 
-		if(is_reasonable_stop(*step_from)) {
+		if(is_reasonable_stop(*step_from)){
 			pump_sighted(step_from);
 		}
 
 		pump_sighted(step_from);
 
-		if(move_it_.valid()) {
+		if(move_it_.valid()){
 			// Finish animating.
 			animator.finish(move_it_.get_shared_ptr());
 
@@ -1198,29 +1198,29 @@ namespace { // Private helpers for move_unit()
 		bool action_time_bonus = false;
 
 		// Reveal ambushers?
-		if (ambushed_ || blocked()) {
+		if(ambushed_ || blocked()){
 			reveal_ambushers();
 		}
-		else if (teleport_failed_ && spectator_) {
+		else if(teleport_failed_ && spectator_){
 			spectator_->set_failed_teleport(resources::gameboard->units().find(*obstructed_));
 		}
 		unit::clear_status_caches();
 
-		if ( move_it_.valid() ) {
+		if(move_it_.valid()){
 			// Update the moving unit.
 			move_it_->set_interrupted_move(
 				sighted_stop_ && !resources::whiteboard->is_executing_actions() ?
 					*(full_end_-1) :
 					map_location::null_location());
-			if (ambushed_ || final_loc == zoc_stop_) {
+			if(ambushed_ || final_loc == zoc_stop_){
 				move_it_->set_movement(0, true);
 			}
 
 			// Village capturing.
-			if ( resources::gameboard->map().is_village(final_loc) ) {
+			if(resources::gameboard->map().is_village(final_loc)){
 				// Is this a capture?
 				orig_village_owner = resources::gameboard->village_owner(final_loc);
-				if ( orig_village_owner != current_side_) {
+				if(orig_village_owner != current_side_){
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0, true);
 					post_wml(get_village(final_loc, current_side_, &action_time_bonus));
@@ -1232,7 +1232,7 @@ namespace { // Private helpers for move_unit()
 		post_wml(resources::game_events->pump().fire("moveto", final_loc, *begin_));
 
 		// Record keeping.
-		if (spectator_) {
+		if(spectator_){
 			spectator_->set_unit(move_it_);
 			spectator_->set_interrupted(interrupted());
 			spectator_->set_tiles_entered(steps_travelled());
@@ -1241,12 +1241,12 @@ namespace { // Private helpers for move_unit()
 		const bool mover_valid = move_it_.valid();
 
 
-		if(!mover_valid || undo_blocked()) {
+		if(!mover_valid || undo_blocked()){
 			synced_context::block_undo();
 		}
 
 		// TODO: this looks wrong, whiteboard shouldn't effect the undo stack during a synced action.
-		if(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) {
+		if(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()){
 			synced_context::block_undo();
 		}
 
@@ -1268,7 +1268,7 @@ namespace { // Private helpers for move_unit()
 		std::string message_prefix = "";
 
 		// Ambush feedback?
-		if ( ambushed_  &&  show_ambush_alert_ ) {
+		if(ambushed_  &&  show_ambush_alert_){
 			disp.announce(message_prefix + ambush_string_, font::BAD_COLOR);
 			message_prefix += " \n";
 		}
@@ -1277,14 +1277,14 @@ namespace { // Private helpers for move_unit()
 		announce_options.discard_previous = false;
 
 		// Failed teleport feedback?
-		if ( playing_team_is_viewing_  &&  teleport_failed_ ) {
+		if(playing_team_is_viewing_  &&  teleport_failed_){
 			std::string teleport_string = _("Failed teleport! Exit not empty");
 			disp.announce(message_prefix + teleport_string, font::BAD_COLOR, announce_options);
 			message_prefix += " \n";
 		}
 
 		// Sighted units feedback?
-		if ( playing_team_is_viewing_  &&  (enemy_count_ != 0 || friend_count_ != 0) ) {
+		if(playing_team_is_viewing_  &&  (enemy_count_ != 0 || friend_count_ != 0)){
 			// Create the message to display (depends on whether friends,
 			// enemies, or both were sighted, and on how many of each).
 			utils::string_map symbols;
@@ -1292,7 +1292,7 @@ namespace { // Private helpers for move_unit()
 			symbols["friends"] = std::to_string(friend_count_);
 			std::string message;
 			color_t msg_color;
-			if ( friend_count_ != 0  &&  enemy_count_ != 0 ) {
+			if(friend_count_ != 0  &&  enemy_count_ != 0){
 				// TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 				symbols["friendphrase"] = VNGETTEXT("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friend_count_, symbols);
 				// TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
@@ -1301,12 +1301,12 @@ namespace { // Private helpers for move_unit()
 				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VGETTEXT("Units sighted! ($friendphrase, $enemyphrase)", symbols);
 				msg_color = font::NORMAL_COLOR;
-			} else if ( enemy_count_ != 0 ) {
+			} else if(enemy_count_ != 0){
 				// TRANSLATORS: Only enemies sighted -- bad message.
 				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VNGETTEXT("Enemy unit sighted!", "$enemies enemy units sighted!", enemy_count_, symbols);
 				msg_color = font::BAD_COLOR;
-			} else if ( friend_count_ != 0 ) {
+			} else if(friend_count_ != 0){
 				// TRANSLATORS: Only friends sighted -- good message.
 				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VNGETTEXT("Friendly unit sighted", "$friends friendly units sighted", friend_count_, symbols);
@@ -1318,10 +1318,10 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Suggest "continue move"?
-		if ( playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
+		if(playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions()){
 			// See if the "Continue Move" action has an associated hotkey
 			std::string name = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_CONTINUE_MOVE).id);
-			if ( !name.empty() ) {
+			if(!name.empty()){
 				utils::string_map symbols;
 				symbols["hotkey"] = name;
 				std::string message = VGETTEXT("(press $hotkey to keep moving)", symbols);
@@ -1360,7 +1360,7 @@ static void move_unit_internal(unit_mover& mover)
 	// Bookkeeping, etc.
 	// also fires the moveto event
 	mover.post_move();
-	if (show_move) {
+	if(show_move){
 		mover.feedback();
 	}
 }
@@ -1388,7 +1388,7 @@ void execute_move_unit(const std::vector<map_location>& steps,
 {
 	// Evaluate this move.
 	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);
-	if(!mover.check_expected_movement()) {
+	if(!mover.check_expected_movement()){
 		DBG_NG  << "found expected empty move, aborting";
 		return;
 	}
@@ -1426,14 +1426,14 @@ void teleport_unit_from_replay(const std::vector<map_location> &steps,
  * @returns The number of hexes entered. This can safely be used as an index
  *          into @a steps to get the location where movement ended, provided
  *          @a steps is not empty (the return value is guaranteed to be less
- *          than steps.size() ).
+ *          than steps.size()).
  */
 std::size_t move_unit_and_record(
 	const std::vector<map_location>& steps, bool continued_move, bool* interrupted)
 {
 	auto move_spectator = move_unit_spectator();
 	move_unit_and_record(steps, continued_move, move_spectator);
-	if(interrupted) {
+	if(interrupted){
 		*interrupted = move_spectator.get_interrupted();
 	}
 	return move_spectator.get_tiles_entered();
@@ -1457,9 +1457,9 @@ void move_unit_and_record(
 {
 
 	// Avoid some silliness.
-	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
+	if(steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back())){
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
-		          ( steps.empty() ? map_location::null_location() : steps.front() ) << ".";
+		          (steps.empty() ? map_location::null_location() : steps.front()) << ".";
 		return;
 	}
 	//if we have no fog activated then we always skip sighted

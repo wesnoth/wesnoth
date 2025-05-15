@@ -49,16 +49,16 @@ void placer_horizontal_list::initialize()
 
 void placer_horizontal_list::add_item(const point& size)
 {
-	if(size.x > columns_[column_].second) {
+	if(size.x > columns_[column_].second){
 		columns_[column_].second = size.x;
 	}
 
-	if(size.y > rows_[row_]) {
+	if(size.y > rows_[row_]){
 		rows_[row_] = size.y;
 	}
 
 	++row_;
-	if(row_ == maximum_rows_) {
+	if(row_ == maximum_rows_){
 		row_ = 0;
 		++column_;
 

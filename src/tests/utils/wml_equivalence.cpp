@@ -42,7 +42,7 @@ public:
 
 	~tmp_file()
 	{
-		if(bfs::exists(path)) {
+		if(bfs::exists(path)){
 			bfs::remove(path);
 		}
 	}

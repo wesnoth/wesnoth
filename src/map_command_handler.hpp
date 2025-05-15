@@ -61,7 +61,7 @@ public:
 	std::string get_arg(unsigned n) const
 	{
 		advance_to_arg(n);
-		if (n < args.size()) {
+		if(n < args.size()) {
 			return std::string(str_, args[n], str_.find(' ', args[n]) - args[n]);
 		}
 		else {
@@ -71,7 +71,7 @@ public:
 	std::string get_data(unsigned n) const
 	{
 		advance_to_arg(n);
-		if (n < args.size()) {
+		if(n < args.size()) {
 			std::string data(str_, args[n]);
 			boost::trim(data);
 			return data;
@@ -89,10 +89,10 @@ private:
 	cmd_arg_parser(const cmd_arg_parser&);
 	void advance_to_arg(unsigned n) const
 	{
-		while (n < args.size() && !args_end) {
+		while(n < args.size() && !args_end) {
 			std::size_t first_space = str_.find_first_of(' ', args.back());
 			std::size_t next_arg_begin = str_.find_first_not_of(' ', first_space);
-			if (next_arg_begin != std::string::npos) {
+			if(next_arg_begin != std::string::npos) {
 				args.push_back(next_arg_begin);
 			}
 			else {
@@ -160,28 +160,28 @@ public:
 	//actual work function
 	bool dispatch(std::string cmd)
 	{
-		if (empty()) {
+		if(empty()) {
 			init_map_default();
 			init_map();
 		}
 
 		// We recursively resolve alias (100 max to avoid infinite recursion)
-		for (int i = 0; i < 100; ++i) {
+		for(int i = 0; i < 100; ++i) {
 			parse_cmd(cmd);
 			std::string actual_cmd = get_actual_cmd(get_cmd());
-			if (actual_cmd == get_cmd())
+			if(actual_cmd == get_cmd())
 				break;
 			std::string data = get_data(1);
 			// translate the command and add space + data if any
 			cmd = actual_cmd + (data.empty() ? "" : " ") + data;
 		}
 
-		if (get_cmd().empty()) {
+		if(get_cmd().empty()) {
 			return false;
 		}
 
-		if (const command* c = get_command(get_cmd())) {
-			if (is_enabled(*c)) {
+		if(const command* c = get_command(get_cmd())) {
+			if(is_enabled(*c)) {
 				(static_cast<Worker*>(this)->*(c->handler))();
 				return true;
 			}
@@ -237,7 +237,7 @@ public:
 	std::vector<std::string> get_commands_list() const
 	{
 		std::vector<std::string> res;
-		for (typename command_map::value_type i : command_map_) {
+		for(typename command_map::value_type i : command_map_) {
 			res.push_back(i.first);
 		}
 		return res;
@@ -326,20 +326,20 @@ protected:
 	void help()
 	{
 		//print command-specific help if available, otherwise list commands
-		if (help_command(get_arg(1))) {
+		if(help_command(get_arg(1))) {
 			return;
 		}
 		std::stringstream ss;
 		bool show_unavail = show_unavailable_ || get_arg(1) == "all";
-		for (typename command_map::value_type i : command_map_) {
-			if (show_unavail || is_enabled(i.second)) {
+		for(typename command_map::value_type i : command_map_) {
+			if(show_unavail || is_enabled(i.second)) {
 				ss << i.first;
-				//if (!i.second.usage.empty()) {
+				//if(!i.second.usage.empty()) {
 				//	ss << " " << i.second.usage;
 				//}
 				//uncomment the above to display usage information in command list
 				//which might clutter it somewhat
-				if (!i.second.flags.empty()) {
+				if(!i.second.flags.empty()) {
 					ss << " (" << i.second.flags << ") ";
 				}
 				ss << "; ";
@@ -362,7 +362,7 @@ protected:
 	{
 		std::string cmd = get_actual_cmd(acmd);
 		const command* c = get_command(cmd);
-		if (c) {
+		if(c) {
 			std::stringstream ss;
 			if(!cmd_flag_) {
 				ss << cmd_prefix_ << cmd;
@@ -370,13 +370,13 @@ protected:
 			else {
 				ss << cmd;
 			}
-			if (c->help.empty() && c->usage.empty()) {
+			if(c->help.empty() && c->usage.empty()) {
 				ss << _(" No help available.");
 			}
 			else {
 				ss << " - " << c->help << "\n";
 			}
-			if (!c->usage.empty()) {
+			if(!c->usage.empty()) {
 				if(!cmd_flag_) {
 					ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
 				}
@@ -385,12 +385,12 @@ protected:
 				}
 			}
 			const auto flags_description = get_command_flags_description(*c);
-			if (!flags_description.empty()) {
+			if(!flags_description.empty()) {
 				// This shares the objectives dialog's translation of "Notes:"
 				ss << _("Notes:") << " " << get_command_flags_description(*c) << "\n";
 			}
 			const std::vector<std::string> l = get_aliases(cmd);
-			if (!l.empty()) {
+			if(!l.empty()) {
 				// TRANSLATORS: alternative names for command-line commands, only shown if
 				// there is at least one of them.
 				ss << _n("command^Alias:", "Aliases:", l.size()) << " " << utils::join(l, " ") << "\n";
@@ -420,7 +420,7 @@ protected:
 		command c = command(h, help, usage, flags);
 		std::pair<typename command_map::iterator, bool> r;
 		r = command_map_.insert(typename command_map::value_type(cmd, c));
-		if (!r.second) { //overwrite if exists
+		if(!r.second) { //overwrite if exists
 			r.first->second = c;
 		}
 	}
@@ -436,8 +436,8 @@ protected:
 	{
 		std::vector<std::string> aliases;
 		typedef command_alias_map::value_type p;
-		for (p i : command_alias_map_) {
-			if (i.second == cmd) {
+		for(p i : command_alias_map_) {
+			if(i.second == cmd) {
 				aliases.push_back(i.first);
 			}
 		}

@@ -91,13 +91,13 @@ auto generate_markup(const gui2::tracked_drawable::frame_info& info)
 
 void fps_report::update()
 {
-	if(!update_check_.poll()) {
+	if(!update_check_.poll()){
 		return;
 	}
 
 	// Will be null if no times have been recorded yet
 	auto info = target_.get_info();
-	if(!info) {
+	if(!info){
 		return;
 	}
 
@@ -107,11 +107,11 @@ void fps_report::update()
 	fps_history_.emplace_back(info->min_fps, info->avg_fps, info->max_fps);
 
 	// Flush out the stored values every so often
-	if(fps_history_.size() == 1000) {
+	if(fps_history_.size() == 1000){
 		std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
 		auto fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
 
-		for(const auto& [min, avg, max] : fps_history_) {
+		for(const auto& [min, avg, max] : fps_history_){
 			*fps_log << min << "," << avg << "," << max << "\n";
 		}
 
@@ -131,7 +131,7 @@ namespace fps
 void show(const gui2::tracked_drawable& target)
 {
 	// No-op if currently displayed
-	if(report) {
+	if(report){
 		return;
 	}
 

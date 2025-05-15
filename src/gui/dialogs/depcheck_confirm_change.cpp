@@ -34,7 +34,7 @@ depcheck_confirm_change::depcheck_confirm_change(
 	utils::string_map symbols;
 	symbols["requester"] = requester;
 	std::string message;
-	if(action) {
+	if(action){
 		message = VGETTEXT("$requester requires the following modifications to "
 						   "be enabled:",
 						   symbols);

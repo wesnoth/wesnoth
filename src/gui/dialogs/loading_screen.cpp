@@ -89,7 +89,7 @@ loading_screen::loading_screen(std::function<void()> f)
 	, current_visible_stage_()
 	, running_(false)
 {
-	for(const auto& [stage, description] : stage_names) {
+	for(const auto& [stage, description] : stage_names){
 		visible_stages_[stage] = t_string(description, "wesnoth-lib") + "...";
 	}
 
@@ -116,7 +116,7 @@ void loading_screen::post_show()
 
 void loading_screen::progress(loading_stage stage)
 {
-	if(singleton_ && stage != loading_stage::none) {
+	if(singleton_ && stage != loading_stage::none){
 		singleton_->current_stage_.store(stage, std::memory_order_release);
 		// Allow display to update, close events to be handled, etc.
 		events::pump_and_draw();
@@ -126,19 +126,19 @@ void loading_screen::progress(loading_stage stage)
 void loading_screen::spin()
 {
 	// If we're not showing a loading screen, do nothing.
-	if (!singleton_) {
+	if(!singleton_){
 		return;
 	}
 
 	// If we're not the main thread, do nothing.
-	if (!events::is_in_main_thread()) {
+	if(!events::is_in_main_thread()){
 		return;
 	}
 
 	// Restrict actual update rate.
 	auto now = std::chrono::steady_clock::now();
 	auto elapsed = now - last_spin;
-	if (elapsed > draw_manager::get_frame_length()) {
+	if(elapsed > draw_manager::get_frame_length()){
 		last_spin = now;
 		events::pump_and_draw();
 	}
@@ -146,7 +146,7 @@ void loading_screen::spin()
 
 void loading_screen::raise()
 {
-	if (singleton_) {
+	if(singleton_){
 		draw_manager::raise_drawable(singleton_);
 	}
 }
@@ -154,12 +154,12 @@ void loading_screen::raise()
 // This will be run inside the window::show() loop.
 void loading_screen::process()
 {
-	if (load_funcs_.empty()) {
+	if(load_funcs_.empty()){
 		return;
 	}
 
 	// Do not automatically recurse.
-	if (running_) { return; }
+	if(running_){ return; }
 	running_ = true;
 
 	// Run the loading function.
@@ -171,7 +171,7 @@ void loading_screen::process()
 	running_ = false;
 
 	// If there's nothing more to do, close.
-	if (load_funcs_.empty()) {
+	if(load_funcs_.empty()){
 		queue_redraw();
 		window::close();
 	}
@@ -185,9 +185,9 @@ void loading_screen::layout()
 
 	loading_stage stage = current_stage_.load(std::memory_order_acquire);
 
-	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
+	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)){
 		auto iter = visible_stages_.find(stage);
-		if(iter == visible_stages_.end()) {
+		if(iter == visible_stages_.end()){
 			WRN_LS << "Stage missing description.";
 			return;
 		}
@@ -200,7 +200,7 @@ void loading_screen::layout()
 	const auto now = steady_clock::now();
 
 	// We only need to set the start time once;
-	if(!animation_start_.has_value()) {
+	if(!animation_start_.has_value()){
 		animation_start_ = now;
 	}
 
@@ -216,7 +216,7 @@ loading_screen::~loading_screen()
 
 void loading_screen::display(const std::function<void()>& f)
 {
-	if(singleton_ || video::headless()) {
+	if(singleton_ || video::headless()){
 		LOG_LS << "Directly executing loading function.";
 		f();
 	} else {

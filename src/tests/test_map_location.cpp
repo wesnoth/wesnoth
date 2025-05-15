@@ -60,10 +60,10 @@ struct MLFixture
 		preset_locs.push_back(vs4);
 	}
 
-	~MLFixture() {}
+	~MLFixture(){}
 };
 
-BOOST_FIXTURE_TEST_SUITE ( test_map_location, MLFixture );
+BOOST_FIXTURE_TEST_SUITE (test_map_location, MLFixture);
 
 //#define MAP_LOCATION_GET_OUTPUT
 
@@ -83,38 +83,38 @@ static void characterization_distance_direction (const std::vector<map_location>
 	std::vector<map_location::direction>::const_iterator dir_it = dir_answers.begin();
 	std::vector<std::size_t>::const_iterator int_it = int_answers.begin();
 
-	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
-		for (std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b) {
+	for(std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a){
+		for(std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b){
 			const map_location & a = *it_a;
 			const map_location & b = *it_b;
 #ifdef MAP_LOCATION_GET_OUTPUT
 			std::cout << "(std::make_pair(" << distance_between(a,b) << ",\t\""
-				<< map_location::write_direction( a.get_relative_dir(b,mode)) << "\"))" << std::endl;
+				<< map_location::write_direction(a.get_relative_dir(b,mode)) << "\"))" << std::endl;
 #else
 			int expected_dist = *(int_it++);
 			map_location::direction expected_dir = *(dir_it++);
-			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
-			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
-			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b, mode) );
+			BOOST_CHECK_EQUAL(expected_dist, distance_between(a,b));
+			BOOST_CHECK_EQUAL(expected_dist, distance_between(b,a));
+			BOOST_CHECK_EQUAL(expected_dir, a.get_relative_dir(b, mode));
 			//Note: This is not a valid assertion. get_relative_dir has much symmetry but not radial.
-			if (mode == map_location::RADIAL_SYMMETRY) {
-				BOOST_CHECK_EQUAL( map_location::get_opposite_direction(expected_dir), b.get_relative_dir(a,mode) );
+			if(mode == map_location::RADIAL_SYMMETRY){
+				BOOST_CHECK_EQUAL(map_location::get_opposite_direction(expected_dir), b.get_relative_dir(a,mode));
 			}
-			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
+			BOOST_CHECK_EQUAL(a.vector_sum(b), b.vector_sum(a));
 			map_location temp1 = a;
 			temp1.vector_difference_assign(b);
 			map_location temp2 = b;
 			temp2.vector_difference_assign(a);
-			BOOST_CHECK_EQUAL( temp1, temp2.vector_negation());
-			BOOST_CHECK_EQUAL( a, a.vector_negation().vector_negation());
+			BOOST_CHECK_EQUAL(temp1, temp2.vector_negation());
+			BOOST_CHECK_EQUAL(a, a.vector_negation().vector_negation());
 
-			for (std::vector<map_location>::const_iterator it_c = it_b + 1; it_c != locs.end(); ++it_c) {
+			for(std::vector<map_location>::const_iterator it_c = it_b + 1; it_c != locs.end(); ++it_c){
 				const map_location & c = *it_c;
 				BOOST_CHECK_EQUAL(a.vector_sum(b.vector_sum(c)) , a.vector_sum(b).vector_sum(c));
 				BOOST_CHECK_EQUAL(a.vector_sum(vector_difference(b,c)) , vector_difference(a.vector_sum(b),c));
 				BOOST_CHECK_EQUAL(vector_difference(a,b.vector_sum(c)) , vector_difference(vector_difference(a,b),c));
 				//TODO: Investigate why this doesn't work
-				if (mode == map_location::RADIAL_SYMMETRY) {
+				if(mode == map_location::RADIAL_SYMMETRY){
 					BOOST_CHECK_EQUAL(expected_dir, (a.vector_sum(c)).get_relative_dir(b.vector_sum(c),mode));
 				}
 			}
@@ -122,16 +122,16 @@ static void characterization_distance_direction (const std::vector<map_location>
 		}
 	}
 
-	BOOST_CHECK_MESSAGE( dir_it == dir_answers.end(), "Did not exhaust answers list.");
-	BOOST_CHECK_MESSAGE( int_it == int_answers.end(), "Did not exhaust answers list.");
+	BOOST_CHECK_MESSAGE(dir_it == dir_answers.end(), "Did not exhaust answers list.");
+	BOOST_CHECK_MESSAGE(int_it == int_answers.end(), "Did not exhaust answers list.");
 }
 
-static std::size_t get_first (const std::pair<std::size_t, std::string>& arg) {return arg.first; }
-static map_location::direction get_second (const std::pair<std::size_t, std::string>& arg) {return map_location::parse_direction(arg.second); }
+static std::size_t get_first (const std::pair<std::size_t, std::string>& arg){return arg.first; }
+static map_location::direction get_second (const std::pair<std::size_t, std::string>& arg){return map_location::parse_direction(arg.second); }
 
 /* This has to be recomputed, I'm commenting out the test so that it doesn't fail in the meantime. --iceiceice
 
-BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
+BOOST_AUTO_TEST_CASE (map_location_characterization_test_default_mode)
 {
 	std::vector<std::pair<std::size_t, std::string>> generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
@@ -197,7 +197,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 	characterization_distance_direction(preset_locs, ans2, ans1, map_location::DEFAULT);
 }*/
 
-BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
+BOOST_AUTO_TEST_CASE (map_location_characterization_test_radial_mode)
 {
 	std::vector<std::pair<std::size_t, std::string>> generated_answers {
 std::make_pair(7,	"se"),
@@ -264,7 +264,7 @@ std::make_pair(1,	"nw")};
 	characterization_distance_direction(preset_locs, ans2, ans1, map_location::RADIAL_SYMMETRY);
 }
 
-static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::direction d)
+static std::pair<map_location , map_location> mirror_walk(std::pair<map_location,map_location> p, map_location::direction d)
 {
 	p.first = p.first.get_direction(d);
 	p.second = p.second.get_direction(map_location::get_opposite_direction(d));
@@ -272,7 +272,7 @@ static std::pair<map_location , map_location> mirror_walk( std::pair<map_locatio
 	return p;
 }
 
-BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
+BOOST_AUTO_TEST_CASE (reality_check_vector_negation)
 {
 	std::pair<map_location, map_location> p(vz,vz);
 
@@ -302,7 +302,7 @@ static void reality_check_get_direction_helper(const map_location & loc, const m
 	BOOST_CHECK_EQUAL(distance_between(loc,temp), 1);
 }
 
-BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
+BOOST_AUTO_TEST_CASE (reality_check_get_direction)
 {
 	map_location a(3,4);
 	map_location b(6,5);
@@ -324,7 +324,7 @@ BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 
 static map_location::direction legacy_get_opposite_dir(map_location::direction d)
 {
-	switch (d) {
+	switch (d){
 		case map_location::direction::north:
 			return map_location::direction::south;
 		case map_location::direction::north_east:
@@ -343,15 +343,15 @@ static map_location::direction legacy_get_opposite_dir(map_location::direction d
 	}
 }
 
-BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
+BOOST_AUTO_TEST_CASE (check_get_opposite_dir_refactor)
 {
-	for (unsigned int i = 0; i < 7; i++ ) {
+	for(unsigned int i = 0; i < 7; i++){
 		map_location::direction d = static_cast<map_location::direction> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), legacy_get_opposite_dir(d) );
+		BOOST_CHECK_EQUAL (map_location::get_opposite_direction(d), legacy_get_opposite_dir(d));
 	}
 }
 
-BOOST_AUTO_TEST_CASE ( check_rotate )
+BOOST_AUTO_TEST_CASE (check_rotate)
 {
 	static_assert(map_location::rotate_direction(map_location::direction::north) == map_location::direction::north_east);
 	static_assert(map_location::rotate_direction(map_location::direction::north_east, -1) == map_location::direction::north);
@@ -372,17 +372,17 @@ BOOST_AUTO_TEST_CASE ( check_rotate )
 	static_assert(map_location::rotate_direction(map_location::direction::north, -1) == map_location::direction::north_west);
 
 
-	for (unsigned int i = 0; i < 7; i++ ) {
+	for(unsigned int i = 0; i < 7; i++){
 		map_location::direction d = static_cast<map_location::direction> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_direction(d,3) );
-		BOOST_CHECK_EQUAL ( map_location::rotate_direction(d,-2), map_location::rotate_direction(d,4) );
+		BOOST_CHECK_EQUAL (map_location::get_opposite_direction(d), map_location::rotate_direction(d,3));
+		BOOST_CHECK_EQUAL (map_location::rotate_direction(d,-2), map_location::rotate_direction(d,4));
 	}
 }
 
-static void rotate_around_centers ( const std::vector<map_location> & locs )
+static void rotate_around_centers (const std::vector<map_location> & locs)
 {
-	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
-		for (std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b) {
+	for(std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a){
+		for(std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b){
 			const map_location & a = *it_a;
 			const map_location & b = *it_b;
 
@@ -396,7 +396,7 @@ static void rotate_around_centers ( const std::vector<map_location> & locs )
 	}
 }
 
-BOOST_AUTO_TEST_CASE ( check_rotate_around_center )
+BOOST_AUTO_TEST_CASE (check_rotate_around_center)
 {
 	rotate_around_centers(preset_locs);
 }
@@ -410,7 +410,7 @@ BOOST_AUTO_TEST_CASE ( check_rotate_around_center )
 /*
 static std::string dir_to_terrain (const map_location::direction dir)
 {
-	switch(dir) {
+	switch(dir){
 		case map_location::direction::north:      return "Gg";
 		case map_location::direction::south:      return "Ai";
 		case map_location::direction::south_east: return "Gs^Fp";
@@ -421,29 +421,29 @@ static std::string dir_to_terrain (const map_location::direction dir)
 	}
 }
 
-static std::string visualize_helper ( int x , int y, const map_location & c )
+static std::string visualize_helper (int x , int y, const map_location & c)
 {
 	map_location temp(x,y);
 	return dir_to_terrain(c.get_relative_dir(temp));
 }
 
-BOOST_AUTO_TEST_CASE ( visualize_get_relative_dir )
+BOOST_AUTO_TEST_CASE (visualize_get_relative_dir)
 {
 	map_location c7(7,8), c8(8,8);
 
 	std::cout << "***" << std::endl;
 	int x;
 	int y;
-	for (y = 0; y < 16; y++) {
-		for (x = 0; x < 15; x++) {
+	for(y = 0; y < 16; y++){
+		for(x = 0; x < 15; x++){
 			std::cout << visualize_helper(x,y,c7) << ", ";
 		}
 		std::cout << visualize_helper(x,y,c7) << std::endl;
 	}
 
 	std::cout << "***" << std::endl;
-	for (y = 0; y < 16; y++) {
-		for (x = 0; x < 15; x++) {
+	for(y = 0; y < 16; y++){
+		for(x = 0; x < 15; x++){
 			std::cout << visualize_helper(x,y,c8) << ", ";
 		}
 		std::cout << visualize_helper(x,y,c8) << std::endl;

@@ -42,7 +42,7 @@ void throw_wml_exception(
 		, const std::string& dev_message)
 {
 	std::ostringstream sstr;
-	if(cond) {
+	if(cond){
 		sstr << "Condition '" << cond << "' failed at ";
 	} else {
 		sstr << "Unconditional failure at ";
@@ -50,7 +50,7 @@ void throw_wml_exception(
 
 	sstr << file << ":" << line << " in function '" << function << "'.";
 
-	if(!dev_message.empty()) {
+	if(!dev_message.empty()){
 		sstr << " Extra development information: " << dev_message;
 	}
 
@@ -80,7 +80,7 @@ std::string missing_mandatory_wml_key(
 	utils::string_map symbols;
 	symbols["section"] = section;
 	symbols["key"] = key;
-	if(!primary_key.empty()) {
+	if(!primary_key.empty()){
 		assert(!primary_value.empty());
 
 		symbols["primary_key"] = primary_key;

@@ -64,9 +64,9 @@ std::string addon_list::colorize_addon_state_string(const std::string& str, ADDO
 {
 	color_t colorname = font::NORMAL_COLOR;
 
-	switch(state) {
+	switch(state){
 	case ADDON_NONE:
-		if(!verbose) {
+		if(!verbose){
 			return str;
 		}
 		colorname = font::weapon_details_color;
@@ -97,7 +97,7 @@ std::string addon_list::describe_status(const addon_tracking_info& info)
 {
 	std::string tx;
 
-	switch(info.state) {
+	switch(info.state){
 	case ADDON_NONE:
 		tx = info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
 		break;
@@ -138,7 +138,7 @@ void addon_list::addon_action_wrapper(addon_op_func_t& func, const addon_info& a
 		func(addon);
 
 		handled = halt = true;
-	} catch(const addons_client::user_exit&) {
+	} catch(const addons_client::user_exit&){
 		// User canceled the op.
 	}
 }
@@ -147,7 +147,7 @@ const std::string addon_list::display_title_full_shift(const addon_info& addon) 
 {
 	const std::string& local_title = addon.display_title_translated();
 	const std::string& display_title = addon.display_title();
-	if(local_title.empty()) {
+	if(local_title.empty()){
 		return display_title;
 	}
 	return local_title + "\n" + markup::tag("small", "(", display_title, ")");
@@ -160,7 +160,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 	addon_vector_.clear();
 
-	for(const auto& a : addons) {
+	for(const auto& a : addons){
 		const addon_info& addon = a.second;
 		addon_tracking_info tracking_info = get_addon_tracking_info(addon);
 
@@ -169,7 +169,7 @@ void addon_list::set_addons(const addons_list& addons)
 		widget_data data;
 		widget_item item;
 
-		if(!tracking_info.can_publish) {
+		if(!tracking_info.can_publish){
 			item["label"] = addon.display_icon();
 			data.emplace("icon", item);
 
@@ -195,13 +195,13 @@ void addon_list::set_addons(const addons_list& addons)
 			tracking_info.state == ADDON_INSTALLED_OUTDATED;
 
 		std::ostringstream ss;
-		if(special_version_display) {
+		if(special_version_display){
 			ss << tracking_info.installed_version.str() << "\n";
 		}
 
 		ss << (*addon.versions.begin()).str();
 
-		if(special_version_display) {
+		if(special_version_display){
 			ss.str(colorize_addon_state_string(ss.str(), tracking_info.state, false));
 		}
 
@@ -227,7 +227,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 		// The control button grid is excluded on lower resolutions.
 		grid* control_grid = row_grid->find_widget<grid>("single_install_buttons", false, false);
-		if(!control_grid) {
+		if(!control_grid){
 			continue;
 		}
 
@@ -248,23 +248,23 @@ void addon_list::set_addons(const addons_list& addons)
 		const bool is_local = tracking_info.state == ADDON_INSTALLED_LOCAL_ONLY;
 
 		// Select the right button layer and set its callback.
-		if(tracking_info.can_publish) {
+		if(tracking_info.can_publish){
 			install_update_stack.select_layer(CONTROL_STACK_LAYER_PUBLISH);
 
 			publish_button.set_active(true);
 
-			if(publish_function_ != nullptr) {
+			if(publish_function_ != nullptr){
 				connect_signal_mouse_left_click(publish_button,
 					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
 				install_button.set_tooltip(_("Publish add-on"));
 			}
-		} else if(tracking_info.state == ADDON_INSTALLED_UPGRADABLE) {
+		} else if(tracking_info.state == ADDON_INSTALLED_UPGRADABLE){
 			install_update_stack.select_layer(CONTROL_STACK_LAYER_UPDATE);
 
 			update_button.set_active(true);
 
-			if(update_function_ != nullptr) {
+			if(update_function_ != nullptr){
 				connect_signal_mouse_left_click(update_button,
 					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
@@ -273,18 +273,18 @@ void addon_list::set_addons(const addons_list& addons)
 
 			install_button.set_active(!is_installed);
 
-			if(install_function_ != nullptr) {
+			if(install_function_ != nullptr){
 				connect_signal_mouse_left_click(install_button,
 					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		}
 
 		// Set up the Uninstall button.
-		if(tracking_info.can_publish) {
+		if(tracking_info.can_publish){
 			// Use the uninstall button as a delete-from-server button if the addon's already been published...
 			uninstall_button.set_active(!is_local);
 
-			if(!is_local && delete_function_ != nullptr) {
+			if(!is_local && delete_function_ != nullptr){
 				connect_signal_mouse_left_click(uninstall_button,
 					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
@@ -294,7 +294,7 @@ void addon_list::set_addons(const addons_list& addons)
 			// ... else it functions as normal.
 			uninstall_button.set_active(is_installed);
 
-			if(is_installed && uninstall_function_ != nullptr) {
+			if(is_installed && uninstall_function_ != nullptr){
 				connect_signal_mouse_left_click(uninstall_button,
 					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
@@ -313,7 +313,7 @@ const addon_info* addon_list::get_selected_addon() const
 
 	try {
 		return addon_vector_.at(list.get_selected_row());
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		return nullptr;
 	}
 }
@@ -321,7 +321,7 @@ const addon_info* addon_list::get_selected_addon() const
 std::string addon_list::get_remote_addon_id()
 {
 	const addon_info* addon = get_selected_addon();
-	if(addon == nullptr || !get_addon_tracking_info(*addon).can_publish) {
+	if(addon == nullptr || !get_addon_tracking_info(*addon).can_publish){
 		return "";
 	} else {
 		return addon->id;
@@ -333,7 +333,7 @@ void addon_list::select_addon(const std::string& id)
 	listbox& list = get_listbox();
 
 	auto iter = std::find_if(addon_vector_.begin(), addon_vector_.end(),
-		[&id](const addon_info* a) { return a->id == id; }
+		[&id](const addon_info* a){ return a->id == id; }
 	);
 
 	// Corner case: if you publish an addon with an out-of-folder .pbl file and
@@ -343,17 +343,17 @@ void addon_list::select_addon(const std::string& id)
 	// I don't anticipate this check will match very often, but in the case that
 	// some other weird corner case crops up, it's probably better to just exit
 	// silently than asserting, as was the pervious behavior.
-	if(iter == addon_vector_.end()) {
+	if(iter == addon_vector_.end()){
 		return;
 	}
 
 	const addon_info& info = **iter;
 
-	for(unsigned int i = 0u; i < list.get_item_count(); ++i) {
+	for(unsigned int i = 0u; i < list.get_item_count(); ++i){
 		grid* row = list.get_row_grid(i);
 
 		const label& name_label = row->find_widget<label>("name");
-		if(name_label.get_label().base_str() == display_title_full_shift(info)) {
+		if(name_label.get_label().base_str() == display_title_full_shift(info)){
 			list.select_row(i);
 		}
 	}
@@ -366,7 +366,7 @@ listbox& addon_list::get_listbox()
 
 void addon_list::add_list_to_keyboard_chain()
 {
-	if(window* window = get_window()) {
+	if(window* window = get_window()){
 		window->add_to_keyboard_chain(&get_listbox());
 	}
 }
@@ -376,11 +376,11 @@ void addon_list::finalize_setup()
 	listbox& list = get_listbox();
 
 	list.set_sorters(
-		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_title_full()); },
-		[this](const std::size_t i) { return addon_vector_[i]->author; },
-		[this](const std::size_t i) { return addon_vector_[i]->size; },
-		[this](const std::size_t i) { return addon_vector_[i]->downloads; },
-		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_type()); }
+		[this](const std::size_t i){ return t_string(addon_vector_[i]->display_title_full()); },
+		[this](const std::size_t i){ return addon_vector_[i]->author; },
+		[this](const std::size_t i){ return addon_vector_[i]->size; },
+		[this](const std::size_t i){ return addon_vector_[i]->downloads; },
+		[this](const std::size_t i){ return t_string(addon_vector_[i]->display_type()); }
 	);
 
 	list.set_active_sorter("sort_0", sort_order::type::ascending);
@@ -401,7 +401,7 @@ void addon_list::set_addon_order(const addon_sort_func& func)
 
 void addon_list::select_first_addon()
 {
-	if(addon_vector_.empty()) {
+	if(addon_vector_.empty()){
 		// Happens in the dialog unit test.
 		return;
 	}
@@ -434,11 +434,11 @@ namespace implementation
 
 static widget::visibility parse_visibility(const std::string& str)
 {
-	if(str == "visible") {
+	if(str == "visible"){
 		return widget::visibility::visible;
-	} else if(str == "hidden") {
+	} else if(str == "hidden"){
 		return widget::visibility::hidden;
-	} else if(str == "invisible") {
+	} else if(str == "invisible"){
 		return widget::visibility::invisible;
 	} else {
 		FAIL("Invalid visibility value");
@@ -450,11 +450,11 @@ builder_addon_list::builder_addon_list(const config& cfg)
 	, install_status_visibility(widget::visibility::visible)
 	, install_buttons_visibility(widget::visibility::invisible)
 {
-	if(cfg.has_attribute("install_status_visibility")) {
+	if(cfg.has_attribute("install_status_visibility")){
 		install_status_visibility = parse_visibility(cfg["install_status_visibility"]);
 	}
 
-	if(cfg.has_attribute("install_buttons_visibility")) {
+	if(cfg.has_attribute("install_buttons_visibility")){
 		install_buttons_visibility = parse_visibility(cfg["install_buttons_visibility"]);
 	}
 }

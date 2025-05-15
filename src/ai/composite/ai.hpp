@@ -32,7 +32,7 @@ public:
 	/**
 	 * Constructor
 	 */
-	ai_composite( default_ai_context &context, const config &cfg );
+	ai_composite(default_ai_context &context, const config &cfg);
 
 	/**
 	 * Destructor

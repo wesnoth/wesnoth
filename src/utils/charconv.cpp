@@ -53,7 +53,7 @@ namespace utils::charconv
 		// Make a copy to make sure its null terminated.
 		std::string buffer = std::string(first, last);
 		// from_chars doesnt support leading whitespace or plus signs.
-		if(buffer.empty() || std::isspace(buffer.front()) || buffer.front() == '+' ) {
+		if(buffer.empty() || std::isspace(buffer.front()) || buffer.front() == '+'){
 			return { first, std::errc::invalid_argument };
 		}
 
@@ -63,12 +63,12 @@ namespace utils::charconv
 
 		//initilize this to silence a warning.
 		char* str_end = nullptr;
-		value = string_to_floating_point<T>( buffer.data(), &str_end );
+		value = string_to_floating_point<T>(buffer.data(), &str_end);
 
 		uselocale(l_prev);
 		freelocale(l);
 
-		if(str_end == buffer.data()) {
+		if(str_end == buffer.data()){
 			return { first, std::errc::invalid_argument };
 		}
 		return { first + (str_end - buffer.data()), std::errc() };

@@ -40,8 +40,8 @@ public:
 	using reg_vec = std::vector<Reg>;
 	using areg_vec = std::vector<aReg>;
 
-	plugins_context( const std::string & name );
-	plugins_context( const std::string & name, const reg_vec& callbacks, const areg_vec& accessors);
+	plugins_context(const std::string & name);
+	plugins_context(const std::string & name, const reg_vec& callbacks, const areg_vec& accessors);
 
 	void play_slice();
 

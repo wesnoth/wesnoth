@@ -37,7 +37,7 @@ namespace ai_default_rca {
 class move_to_targets_phase : public candidate_action {
 public:
 
-	move_to_targets_phase( rca_context &context, const config &cfg );
+	move_to_targets_phase(rca_context &context, const config &cfg);
 
 	virtual ~move_to_targets_phase();
 

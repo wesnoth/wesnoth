@@ -42,7 +42,7 @@ state_default::state_default() : state_(ENABLED)
 }
 void state_default::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		state_ = active ? ENABLED : DISABLED;
 	}
 }
@@ -65,19 +65,19 @@ matrix::matrix(const implementation::builder_matrix& builder)
 	builder_widget::replacements_map replacements;
 	replacements.emplace("_main", builder.builder_main);
 
-	if(builder.builder_top) {
+	if(builder.builder_top){
 		replacements.emplace("_top", builder.builder_top);
 	}
 
-	if(builder.builder_left) {
+	if(builder.builder_left){
 		replacements.emplace("_left", builder.builder_left);
 	}
 
-	if(builder.builder_right) {
+	if(builder.builder_right){
 		replacements.emplace("_right", builder.builder_right);
 	}
 
-	if(builder.builder_bottom) {
+	if(builder.builder_bottom){
 		replacements.emplace("_bottom", builder.builder_bottom);
 	}
 
@@ -133,7 +133,7 @@ const widget* matrix::find_at(const point& coordinate,
 
 widget* matrix::find(const std::string_view id, const bool must_be_active)
 {
-	if(widget* result = widget::find(id, must_be_active)) {
+	if(widget* result = widget::find(id, must_be_active)){
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
@@ -143,7 +143,7 @@ widget* matrix::find(const std::string_view id, const bool must_be_active)
 const widget* matrix::find(const std::string_view id, const bool must_be_active)
 		const
 {
-	if(const widget* result = widget::find(id, must_be_active)) {
+	if(const widget* result = widget::find(id, must_be_active)){
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
@@ -206,19 +206,19 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_right(nullptr)
 	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", missing_mandatory_wml_tag("matrix", "main"))))
 {
-	if(auto top = cfg.optional_child("top")) {
+	if(auto top = cfg.optional_child("top")){
 		builder_top = std::make_shared<builder_grid>(*top);
 	}
 
-	if(auto bottom = cfg.optional_child("bottom")) {
+	if(auto bottom = cfg.optional_child("bottom")){
 		builder_bottom = std::make_shared<builder_grid>(*bottom);
 	}
 
-	if(auto left = cfg.optional_child("left")) {
+	if(auto left = cfg.optional_child("left")){
 		builder_left = std::make_shared<builder_grid>(*left);
 	}
 
-	if(auto right = cfg.optional_child("right")) {
+	if(auto right = cfg.optional_child("right")){
 		builder_right = std::make_shared<builder_grid>(*right);
 	}
 }

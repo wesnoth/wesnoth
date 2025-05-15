@@ -81,18 +81,18 @@ struct node {
 	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const teleport_map* teleports, double srch_arg, double dsth):
 		g(s), h(heuristic(c, dst)), t(g + h), srch(srch_arg), curr(c), prev(p), in(search_counter + i)
 	{
-		if (teleports && !teleports->empty()) {
-			if(srch < 0) {
+		if(teleports && !teleports->empty()){
+			if(srch < 0){
 				srch = 1.0;
 
-				for(const auto& it : teleports->get_sources()) {
+				for(const auto& it : teleports->get_sources()){
 					const double tmp_srch = heuristic(c, it);
-					if (tmp_srch < srch) { srch = tmp_srch; }
+					if(tmp_srch < srch){ srch = tmp_srch; }
 				}
 			}
 
 			double new_h = srch + dsth + 1.0;
-			if (new_h < h) {
+			if(new_h < h){
 				h = new_h;
 				t = g + h;
 			}
@@ -108,7 +108,7 @@ class comp {
 	const std::vector<node>& nodes_;
 
 public:
-	comp(const std::vector<node>& n) : nodes_(n) { }
+	comp(const std::vector<node>& n) : nodes_(n){ }
 	bool operator()(int a, int b) const {
 		return nodes_[b] < nodes_[a];
 	}
@@ -118,7 +118,7 @@ class indexer {
 	std::size_t w_;
 
 public:
-	indexer(std::size_t w) : w_(w) { }
+	indexer(std::size_t w) : w_(w){ }
 	std::size_t operator()(const map_location& loc) const {
 		return loc.y * w_ + loc.x;
 	}
@@ -129,7 +129,7 @@ public:
 plain_route a_star_search(const map_location& src, const map_location& dst,
                           double stop_at, const cost_calculator& calc,
                           const std::size_t width, const std::size_t height,
-                          const teleport_map *teleports, bool border) {
+                          const teleport_map *teleports, bool border){
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height, border));
 	assert(dst.valid(width, height, border));
@@ -138,7 +138,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	DBG_PF << "A* search: " << src << " -> " << dst;
 
-	if (calc.cost(dst, 0) >= stop_at) {
+	if(calc.cost(dst, 0) >= stop_at){
 		LOG_PF << "aborted A* search because Start or Dest is invalid";
 		plain_route locRoute;
 		locRoute.move_cost = static_cast<int>(calc.getNoPathValue());
@@ -147,14 +147,14 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	// increment search_counter but skip the range equivalent to uninitialized
 	search_counter += 2;
-	if (search_counter - bad_search_counter <= 1u)
+	if(search_counter - bad_search_counter <= 1u)
 		search_counter += 2;
 
 	double dsth = 1.0;
-	if (teleports && !teleports->empty()) {
-		for(const auto &it : teleports->get_targets()) {
+	if(teleports && !teleports->empty()){
+		for(const auto &it : teleports->get_targets()){
 			const double tmp_dsth = heuristic(it, dst);
-			if (tmp_dsth < dsth) { dsth = tmp_dsth; }
+			if(tmp_dsth < dsth){ dsth = tmp_dsth; }
 		}
 	}
 
@@ -172,7 +172,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	std::vector<int> pq;
 	pq.push_back(index(src));
 
-	while (!pq.empty()) {
+	while(!pq.empty()){
 		node& n = nodes[pq.front()];
 
 		n.in = search_counter;
@@ -180,25 +180,25 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
 
-		if (n.t >= dst_node.g) break;
+		if(n.t >= dst_node.g) break;
 
 		std::vector<map_location> locs(6);
 		get_adjacent_tiles(n.curr, locs.data());
 
-		if (teleports && !teleports->empty()) {
+		if(teleports && !teleports->empty()){
 			const auto& allowed_teleports = teleports->get_adjacents(n.curr);
 			locs.insert(locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 
-		for(auto i = locs.rbegin(); i != locs.rend(); ++i) {
+		for(auto i = locs.rbegin(); i != locs.rend(); ++i){
 			const map_location& loc = *i;
 
-			if (!loc.valid(width, height, border)) continue;
-			if (loc == n.curr) continue;
+			if(!loc.valid(width, height, border)) continue;
+			if(loc == n.curr) continue;
 			node& next = nodes[index(loc)];
 			double srch;
 			double thresh;
-			if(next.in - search_counter <= 1u) {
+			if(next.in - search_counter <= 1u){
 				srch = next.srch;
 				thresh = next.g;
 			} else {
@@ -206,15 +206,15 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 				thresh = dst_node.g;
 			}
 			// cost() is always >= 1  (assumed and needed by the heuristic)
-			if (n.g + 1 >= thresh) continue;
+			if(n.g + 1 >= thresh) continue;
 			double cost = n.g + calc.cost(loc, n.g);
-			if (cost >= thresh) continue;
+			if(cost >= thresh) continue;
 
 			bool in_list = next.in == search_counter + 1;
 
 			next = node(cost, loc, n.curr, dst, true, teleports, srch, dsth);
 
-			if (in_list) {
+			if(in_list){
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), static_cast<int>(index(loc))) + 1, node_comp);
 			} else {
 				pq.push_back(index(loc));
@@ -224,10 +224,10 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	}
 
 	plain_route route;
-	if (dst_node.g <= stop_at) {
+	if(dst_node.g <= stop_at){
 		DBG_PF << "found solution; calculating it...";
 		route.move_cost = static_cast<int>(dst_node.g);
-		for (node curr = dst_node; curr.prev != map_location::null_location(); curr = nodes[index(curr.prev)]) {
+		for(node curr = dst_node; curr.prev != map_location::null_location(); curr = nodes[index(curr.prev)]){
 			route.steps.push_back(curr.curr);
 		}
 		route.steps.push_back(src);

@@ -66,7 +66,7 @@ void select_orb_colors::pre_show()
 
 void select_orb_colors::post_show()
 {
-	if(get_retval() != retval::OK) {
+	if(get_retval() != retval::OK){
 		return;
 	}
 
@@ -107,8 +107,8 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	const std::string prefix = get_orb_widget_prefix(base_id);
 	grid& selection = find_widget<grid>(prefix + "selection");
 
-	for(iteration::bottom_up_iterator<true, false, true> iter(selection); !iter.at_end(); ++iter) {
-		if(toggle_button* button = dynamic_cast<toggle_button*>(iter.get())) {
+	for(iteration::bottom_up_iterator<true, false, true> iter(selection); !iter.at_end(); ++iter){
+		if(toggle_button* button = dynamic_cast<toggle_button*>(iter.get())){
 			const std::string& id = button->id();
 			group.add_member(button, id.substr(prefix.size()));
 		}

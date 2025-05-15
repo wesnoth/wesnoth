@@ -61,10 +61,10 @@ public:
 	void prev()
 	{
 		// Allow negatives?
-		if (get_value() > 0) {
+		if(get_value() > 0) {
 			set_value(get_value() - step_size_);
 		} else {
-			if (invalid_) {
+			if(invalid_) {
 				set_value(0);
 			}
 		}
@@ -73,7 +73,7 @@ public:
 	void next()
 	{
 		int val = get_value();
-		if (!invalid_) {
+		if(!invalid_) {
 			// No max value
 			set_value(val + step_size_);
 		} else {

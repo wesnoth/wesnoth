@@ -38,7 +38,7 @@ std::unique_ptr<widget> builder_instance::build() const
 std::unique_ptr<widget> builder_instance::build(const replacements_map& replacements) const
 {
 	const replacements_map::const_iterator itor = replacements.find(id);
-	if(itor != replacements.end()) {
+	if(itor != replacements.end()){
 		return itor->second->build();
 	} else {
 		implementation::builder_spacer builder(configuration);

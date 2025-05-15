@@ -33,9 +33,9 @@
 
  */
 
-BOOST_AUTO_TEST_SUITE( unit_map_suite )
+BOOST_AUTO_TEST_SUITE(unit_map_suite)
 
-BOOST_AUTO_TEST_CASE( test_1 ) {
+BOOST_AUTO_TEST_CASE(test_1){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;
@@ -104,7 +104,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	lg::set_log_domain_severity("all", lg::warn());
 }
 
-BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
+BOOST_AUTO_TEST_CASE(track_real_unit_by_underlying_id){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;
@@ -150,7 +150,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 	}
 }
 
-BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
+BOOST_AUTO_TEST_CASE(track_fake_unit_by_underlying_id){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;
@@ -196,7 +196,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 	}
 }
 
-BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
+BOOST_AUTO_TEST_CASE(track_real_unit_by_iterator){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;
@@ -233,7 +233,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 	BOOST_CHECK(unit_iterator == unit_iterator2);
 }
 
-BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
+BOOST_AUTO_TEST_CASE(track_fake_unit_by_iterator){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;

@@ -39,11 +39,11 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	X509_STORE *store = X509_STORE_new();
 	PCCERT_CONTEXT pContext = NULL;
-	while ((pContext = CertEnumCertificatesInStore(hStore, pContext)) != NULL) {
+	while((pContext = CertEnumCertificatesInStore(hStore, pContext)) != NULL){
 		X509 *x509 = d2i_X509(NULL,
 			const_cast<const unsigned char**>(&pContext->pbCertEncoded),
 			pContext->cbCertEncoded);
-		if(x509 != NULL) {
+		if(x509 != NULL){
 			X509_STORE_add_cert(store, x509);
 			X509_free(x509);
 		}
@@ -60,21 +60,21 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 	OSStatus os_status = SecTrustCopyAnchorCertificates(&certs);
 
 	// check for any problems copying the certs
-	if(os_status != 0) {
+	if(os_status != 0){
 		ERR_NW << "Error enumerating certificates.";
 
-		if (certs != NULL) {
+		if(certs != NULL){
 			CFRelease(certs);
 		}
 		return;
 	}
 
-	for(CFIndex i = 0; i < CFArrayGetCount(certs); i++) {
+	for(CFIndex i = 0; i < CFArrayGetCount(certs); i++){
 		SecCertificateRef cert = (SecCertificateRef)CFArrayGetValueAtIndex(certs, i);
 
 		// convert the cert to DER format
 		CFDataRef der_cert = SecCertificateCopyData(cert);
-		if(!der_cert) {
+		if(!der_cert){
 			ERR_NW << "Error getting a DER representation of a certificate.";
 			continue;
 		}
@@ -82,14 +82,14 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 		// decode each cert to an openssl X509 object
 		const uint8_t* der_cert_ptr = CFDataGetBytePtr(der_cert);
 		X509* x509_cert = d2i_X509(NULL, &der_cert_ptr, CFDataGetLength(der_cert));
-		if(!x509_cert) {
+		if(!x509_cert){
 			ERR_NW << "Error deciding the X509 certificate.";
 			CFRelease(der_cert);
 			continue;
 		}
 
 		// Add the X509 openssl object to the verification store
-		if(X509_STORE_add_cert(store, x509_cert) != 1) {
+		if(X509_STORE_add_cert(store, x509_cert) != 1){
 			CFRelease(der_cert);
 			X509_free(x509_cert);
 			ERR_NW << "Error adding the X509 certificate to the store.";

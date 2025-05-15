@@ -57,31 +57,31 @@ int main(int argc, char** argv)
 	int x = 50, y = 50, iterations = 50,
 		hill_size = 50, lakes=3,
 	    nvillages = 25, nplayers = 2;
-	if(argc >= 2) {
+	if(argc >= 2){
 		x = std::stoi(argv[1]);
 	}
 
-	if(argc >= 3) {
+	if(argc >= 3){
 		y = std::stoi(argv[2]);
 	}
 
-	if(argc >= 4) {
+	if(argc >= 4){
 		iterations = std::stoi(argv[3]);
 	}
 
-	if(argc >= 5) {
+	if(argc >= 5){
 		hill_size = std::stoi(argv[4]);
 	}
 
-	if(argc >= 6) {
+	if(argc >= 6){
 		lakes = std::stoi(argv[5]);
 	}
 
-	if(argc >= 7) {
+	if(argc >= 7){
 		nvillages = std::stoi(argv[6]);
 	}
 
-	if(argc >= 8) {
+	if(argc >= 8){
 		nplayers = std::stoi(argv[7]);
 	}
 

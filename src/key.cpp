@@ -25,9 +25,9 @@ bool CKey::operator[](int k) const
 	return key_list[SDL_GetScancodeFromKey(k)] > 0;
 }
 
-bool CKey::is_uncomposable(const SDL_KeyboardEvent &event) {
+bool CKey::is_uncomposable(const SDL_KeyboardEvent &event){
 
-	switch (event.keysym.sym) {
+	switch (event.keysym.sym){
 		case SDLK_RETURN:
 		case SDLK_ESCAPE:
 		case SDLK_BACKSPACE:

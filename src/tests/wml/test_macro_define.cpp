@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(macro_define_noArgument_ParseAsExpected)
 						 "{Macro}{Macro}\n"
 						 "{Macro}{Macro}{Macro}\n";
 	std::string expected = "";
-	for(int i = 0; i < 6; ++i) {
+	for(int i = 0; i < 6; ++i){
 		expected += "[A][/A]";
 	}
 	check_wml_equivalence(actual, expected);

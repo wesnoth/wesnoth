@@ -63,24 +63,24 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 	if(surf == nullptr)
 		return nullptr;
 
-	if (z > xbrz::SCALE_FACTOR_MAX) {
+	if(z > xbrz::SCALE_FACTOR_MAX){
 		PLAIN_LOG << "Cannot use xbrz scaling with zoom factor > " << xbrz::SCALE_FACTOR_MAX;
 		z = 1;
 	}
 
-	if (z == 1) {
+	if(z == 1){
 		surface temp = surf; // TODO: no temp surface
 		return temp;
 	}
 
 	surface dst(surf->w *z, surf->h * z);
 
-	if (z == 0) {
+	if(z == 0){
 		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
-	if(surf == nullptr || dst == nullptr) {
+	if(surf == nullptr || dst == nullptr){
 		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
@@ -101,7 +101,7 @@ surface scale_surface(const surface &surf, int w, int h)
 	if(surf == nullptr)
 		return nullptr;
 
-	if(w == surf->w && h == surf->h) {
+	if(w == surf->w && h == surf->h){
 		return surf;
 	}
 	assert(w >= 0);
@@ -109,12 +109,12 @@ surface scale_surface(const surface &surf, int w, int h)
 
 	surface dst(w,h);
 
-	if (w == 0 || h ==0) {
+	if(w == 0 || h ==0){
 		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
-	if(surf == nullptr || dst == nullptr) {
+	if(surf == nullptr || dst == nullptr){
 		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
@@ -130,9 +130,9 @@ surface scale_surface(const surface &surf, int w, int h)
 		int32_t yratio = fixed_point_divide(surf->h,h);
 
 		int32_t ysrc = 0;
-		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio){
 			int32_t xsrc = 0;
-			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio){
 				const int xsrcint = fixed_point_to_int(xsrc);
 				const int ysrcint = fixed_point_to_int(ysrc);
 
@@ -186,7 +186,7 @@ surface scale_surface(const surface &surf, int w, int h)
 
 				int loc;
 				rr = bb = gg = aa = 0;
-				for (loc=0; loc<4; loc++) {
+				for(loc=0; loc<4; loc++){
 				  a = pix[loc] >> 24;
 				  r = pix[loc] >> 16;
 				  g = pix[loc] >> 8;
@@ -206,7 +206,7 @@ surface scale_surface(const surface &surf, int w, int h)
 				}
 
 				a = aa >> (16); // we average the alphas, they don't get weighted by any other factor besides bilin
-				if (a != 0) {
+				if(a != 0){
 					rr /= a;	// finish alpha weighting: divide by sum of alphas
 					gg /= a;
 					bb /= a;
@@ -227,7 +227,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 	if(surf == nullptr)
 		return nullptr;
 
-	if(w == surf->w && h == surf->h) {
+	if(w == surf->w && h == surf->h){
 		return surf;
 	}
 	assert(w >= 0);
@@ -235,7 +235,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 
 	surface dst(w,h);
 
-	if(surf == nullptr || dst == nullptr) {
+	if(surf == nullptr || dst == nullptr){
 		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
@@ -251,9 +251,9 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		int32_t yratio = fixed_point_divide(surf->h,h);
 
 		int32_t ysrc = 0;
-		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio){
 			int32_t xsrc = 0;
-			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio){
 				const int xsrcint = fixed_point_to_int(xsrc);
 				const int ysrcint = fixed_point_to_int(ysrc);
 
@@ -300,19 +300,19 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				int count = 0;
 				avg_r = avg_g = avg_b = 0;
 				int loc;
-				for (loc=0; loc<4; loc++) {
+				for(loc=0; loc<4; loc++){
 				  a = pix[loc] >> 24;
 				  r = pix[loc] >> 16;
 				  g = pix[loc] >> 8;
 				  b = pix[loc] >> 0;
-				  if (a != 0) {
+				  if(a != 0){
 				    avg_r += r;
 				    avg_g += g;
 				    avg_b += b;
 				    count++;
 				  }
 				}
-				if (count>0) {
+				if(count>0){
 				  avg_r /= count;
 				  avg_b /= count;
 				  avg_g /= count;
@@ -328,12 +328,12 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				// that is either set to full-on or full-off.
 
 				rr = gg = bb = aa = 0;
-				for (loc=0; loc<4; loc++) {
+				for(loc=0; loc<4; loc++){
 				  a = pix[loc] >> 24;
 				  r = pix[loc] >> 16;
 				  g = pix[loc] >> 8;
 				  b = pix[loc] >> 0;
-				  if (a == 0) {
+				  if(a == 0){
 				    r = static_cast<uint8_t>(avg_r);
 				    g = static_cast<uint8_t>(avg_g);
 				    b = static_cast<uint8_t>(avg_b);
@@ -357,22 +357,22 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 
 surface scale_surface_sharp(const surface& surf, int w, int h)
 {
-	if(surf == nullptr) {
+	if(surf == nullptr){
 		return nullptr;
 	}
-	if(w == surf->w && h == surf->h) {
+	if(w == surf->w && h == surf->h){
 		return surf;
 	}
 
 	assert(w >= 0);
 	assert(h >= 0);
 	surface dst(w, h);
-	if(dst == nullptr) {
+	if(dst == nullptr){
 		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
-	if(w == 0 || h == 0) {
+	if(w == 0 || h == 0){
 		PLAIN_LOG << "Creating an empty image";
 		return dst;
 	}
@@ -389,8 +389,8 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 		const float xratio = static_cast<float>(src_w) / static_cast<float>(w);
 		const float yratio = static_cast<float>(src_h) / static_cast<float>(h);
-		for(int ydst = 0; ydst != h; ++ydst) {
-			for(int xdst = 0; xdst != w; ++xdst) {
+		for(int ydst = 0; ydst != h; ++ydst){
+			for(int xdst = 0; xdst != w; ++xdst){
 				// Project dst pixel to a single corresponding src pixel by scale and simply take it
 				const int xsrc = std::floor(static_cast<float>(xdst) * xratio);
 				const int ysrc = std::floor(static_cast<float>(ydst) * yratio);
@@ -404,10 +404,10 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
-	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
+	if(nsurf && (red != 0 || green != 0 || blue != 0)){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			r = std::clamp(static_cast<int>(r) + red, 0, 255);
@@ -421,10 +421,10 @@ void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 
 void greyscale_image(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			// Use the correct formula for RGB to grayscale conversion.
@@ -434,7 +434,7 @@ void greyscale_image(surface& nsurf)
 			const uint8_t avg = static_cast<uint8_t>((
 				77  * static_cast<uint16_t>(r) +
 				150 * static_cast<uint16_t>(g) +
-				29  * static_cast<uint16_t>(b)  ) / 256);
+				29  * static_cast<uint16_t>(b) ) / 256);
 
 			pixel = (alpha << 24) | (avg << 16) | (avg << 8) | avg;
 		}
@@ -443,10 +443,10 @@ void greyscale_image(surface& nsurf)
 
 void monochrome_image(surface& nsurf, const int threshold)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			// first convert the pixel to grayscale
@@ -461,10 +461,10 @@ void monochrome_image(surface& nsurf, const int threshold)
 
 void sepia_image(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			// this is the formula for applying a sepia effect
@@ -480,10 +480,10 @@ void sepia_image(surface& nsurf)
 
 void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, const int thresholdB)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			// invert he channel only if its value is greater than the supplied threshold
@@ -501,10 +501,10 @@ void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, 
 
 void alpha_to_greyscale(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			uint8_t alpha = pixel >> 24;
 
 			pixel = (0xff << 24) | (alpha << 16) | (alpha << 8) | alpha;
@@ -514,10 +514,10 @@ void alpha_to_greyscale(surface& nsurf)
 
 void wipe_alpha(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			pixel = 0xff000000 | pixel;
 		}
 	}
@@ -535,12 +535,12 @@ void shadow_image(surface& surf, int scale)
 	{
 		surface_lock lock(surf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			uint8_t alpha = pixel >> 24;
 
 			// increase alpha and color in black (RGB=0)
 			// with some stupid optimization for handling maximum values
-			if(alpha < 255 / 4) {
+			if(alpha < 255 / 4){
 				pixel = (alpha * 4) << 24;
 			} else {
 				pixel = 0xFF000000; // we hit the maximum
@@ -551,14 +551,14 @@ void shadow_image(surface& surf, int scale)
 
 void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channel a)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [red, green, blue, alpha] = color_t::from_argb_bytes(pixel);
 			uint8_t newRed, newGreen, newBlue, newAlpha;
 
-			switch (r) {
+			switch (r){
 				case RED:
 					newRed = red;
 					break;
@@ -575,7 +575,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 					return;
 			}
 
-			switch (g) {
+			switch (g){
 				case RED:
 					newGreen = red;
 					break;
@@ -592,7 +592,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 					return;
 			}
 
-			switch (b) {
+			switch (b){
 				case RED:
 					newBlue = red;
 					break;
@@ -609,7 +609,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 					return;
 			}
 
-			switch (a) {
+			switch (a){
 				case RED:
 					newAlpha = red;
 					break;
@@ -636,13 +636,13 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	if(nsurf == nullptr)
 		return;
 
-	if(map_rgb.empty()) {
+	if(map_rgb.empty()){
 		return;
 	}
 
 	surface_lock lock(nsurf);
 
-	for(auto& pixel : lock.pixel_span()) {
+	for(auto& pixel : lock.pixel_span()){
 		auto color = color_t::from_argb_bytes(pixel);
 
 		// Palette use only RGB channels, so remove alpha
@@ -650,7 +650,7 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 		color.a = ALPHA_OPAQUE;
 
 		auto iter = map_rgb.find(color);
-		if(iter == map_rgb.end()) {
+		if(iter == map_rgb.end()){
 			continue;
 		}
 
@@ -664,11 +664,11 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 
 void brighten_image(surface& nsurf, int32_t amount)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		if (amount < 0) amount = 0;
-		for(auto& pixel : lock.pixel_span()) {
+		if(amount < 0) amount = 0;
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			r = std::min<unsigned>(fixed_point_multiply(r, amount), 255);
@@ -682,7 +682,7 @@ void brighten_image(surface& nsurf, int32_t amount)
 
 void adjust_surface_alpha(surface& surf, uint8_t alpha_mod)
 {
-	if(surf == nullptr) {
+	if(surf == nullptr){
 		return;
 	}
 
@@ -691,10 +691,10 @@ void adjust_surface_alpha(surface& surf, uint8_t alpha_mod)
 
 void adjust_surface_alpha_add(surface& nsurf, int amount)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
 			alpha = uint8_t(std::clamp(static_cast<int>(alpha) + amount, 0, 255));
@@ -705,15 +705,15 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 
 void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
 {
-	if(nsurf == nullptr) {
+	if(nsurf == nullptr){
 		*empty_result = true;
 		return;
 	}
-	if(nmask == nullptr) {
+	if(nmask == nullptr){
 		return;
 	}
 
-	if (nsurf->w != nmask->w) {
+	if(nsurf->w != nmask->w){
 		// we don't support efficiently different width.
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
@@ -737,11 +737,11 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		const uint32_t* mbeg = mlock.pixels();
 		const uint32_t* mend = mbeg + nmask->w*nmask->h;
 
-		while(beg != end && mbeg != mend) {
+		while(beg != end && mbeg != mend){
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
 
 			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
+			if(alpha > malpha){
 				alpha = malpha;
 			}
 			if(alpha)
@@ -759,14 +759,14 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
 {
-	if(nsurf == nullptr) {
+	if(nsurf == nullptr){
 		return false;
 	}
 	if(nmask == nullptr){
 		return true;
 	}
 
-	if (nsurf->w != nmask->w || nsurf->h != nmask->h ) {
+	if(nsurf->w != nmask->w || nsurf->h != nmask->h){
 		// not same size, consider it doesn't fit
 		return false;
 	}
@@ -780,11 +780,11 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		const uint32_t* beg = lock.pixels();
 		// no need for 'end', because both surfaces have same size
 
-		while(mbeg != mend) {
+		while(mbeg != mend){
 			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
+			if(malpha == 0){
 				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
+				if(alpha)
 					return false;
 			}
 			++mbeg;
@@ -797,14 +797,14 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 
 void light_surface(surface& nsurf, const surface &lightmap)
 {
-	if(nsurf == nullptr) {
+	if(nsurf == nullptr){
 		return;
 	}
-	if(lightmap == nullptr) {
+	if(lightmap == nullptr){
 		return;
 	}
 
-	if (nsurf->w != lightmap->w) {
+	if(nsurf->w != lightmap->w){
 		// we don't support efficiently different width.
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
@@ -822,7 +822,7 @@ void light_surface(surface& nsurf, const surface &lightmap)
 		const uint32_t* lbeg = llock.pixels();
 		const uint32_t* lend = lbeg + lightmap.area();
 
-		while(beg != end && lbeg != lend) {
+		while(beg != end && lbeg != lend){
 			auto [lr, lg, lb, la] = color_t::from_argb_bytes(*lbeg);
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
 
@@ -845,12 +845,12 @@ void light_surface(surface& nsurf, const surface &lightmap)
 
 void blur_surface(surface& surf, SDL_Rect rect, int depth)
 {
-	if(surf == nullptr) {
+	if(surf == nullptr){
 		return;
 	}
 
 	const int max_blur = 256;
-	if(depth > max_blur) {
+	if(depth > max_blur){
 		depth = max_blur;
 	}
 
@@ -862,96 +862,96 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 	const unsigned pixel_offset = rect.y * surf->w + rect.x;
 
 	surface_lock lock(surf);
-	for(int y = 0; y < rect.h; ++y) {
+	for(int y = 0; y < rect.h; ++y){
 		const uint32_t* front = &queue[0];
 		uint32_t* back = &queue[0];
 		uint32_t red = 0, green = 0, blue = 0, avg = 0;
 		uint32_t* p = lock.pixels() + pixel_offset + y * surf->w;
-		for(int x = 0; x <= depth && x < rect.w; ++x, ++p) {
+		for(int x = 0; x <= depth && x < rect.w; ++x, ++p){
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
 			++avg;
 			*back++ = *p;
-			if(back == end_queue) {
+			if(back == end_queue){
 				back = &queue[0];
 			}
 		}
 
 		p = lock.pixels() + pixel_offset + y * surf->w;
-		for(int x = 0; x < rect.w; ++x, ++p) {
+		for(int x = 0; x < rect.w; ++x, ++p){
 			*p = 0xFF000000
 					| (std::min(red/avg,ff) << 16)
 					| (std::min(green/avg,ff) << 8)
 					| std::min(blue/avg,ff);
 
-			if(x >= depth) {
+			if(x >= depth){
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
 				blue -= *front&0xFF;
 				--avg;
 				++front;
-				if(front == end_queue) {
+				if(front == end_queue){
 					front = &queue[0];
 				}
 			}
 
-			if(x + depth+1 < rect.w) {
+			if(x + depth+1 < rect.w){
 				uint32_t* q = p + depth+1;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
 				++avg;
 				*back++ = *q;
-				if(back == end_queue) {
+				if(back == end_queue){
 					back = &queue[0];
 				}
 			}
 		}
 	}
 
-	for(int x = 0; x < rect.w; ++x) {
+	for(int x = 0; x < rect.w; ++x){
 		const uint32_t* front = &queue[0];
 		uint32_t* back = &queue[0];
 		uint32_t red = 0, green = 0, blue = 0, avg = 0;
 		uint32_t* p = lock.pixels() + pixel_offset + x;
-		for(int y = 0; y <= depth && y < rect.h; ++y, p += surf->w) {
+		for(int y = 0; y <= depth && y < rect.h; ++y, p += surf->w){
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
 			++avg;
 			*back++ = *p;
-			if(back == end_queue) {
+			if(back == end_queue){
 				back = &queue[0];
 			}
 		}
 
 		p = lock.pixels() + pixel_offset + x;
-		for(int y = 0; y < rect.h; ++y, p += surf->w) {
+		for(int y = 0; y < rect.h; ++y, p += surf->w){
 			*p = 0xFF000000
 					| (std::min(red/avg,ff) << 16)
 					| (std::min(green/avg,ff) << 8)
 					| std::min(blue/avg,ff);
 
-			if(y >= depth) {
+			if(y >= depth){
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
 				blue -= *front&0xFF;
 				--avg;
 				++front;
-				if(front == end_queue) {
+				if(front == end_queue){
 					front = &queue[0];
 				}
 			}
 
-			if(y + depth+1 < rect.h) {
+			if(y + depth+1 < rect.h){
 				uint32_t* q = p + (depth+1)*surf->w;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
 				++avg;
 				*back++ = *q;
-				if(back == end_queue) {
+				if(back == end_queue){
 					back = &queue[0];
 				}
 			}
@@ -961,12 +961,12 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 
 void blur_alpha_surface(surface& res, int depth)
 {
-	if(res == nullptr) {
+	if(res == nullptr){
 		return;
 	}
 
 	const int max_blur = 256;
-	if(depth > max_blur) {
+	if(depth > max_blur){
 		depth = max_blur;
 	}
 
@@ -979,7 +979,7 @@ void blur_alpha_surface(surface& res, int depth)
 		  : alpha(((*p) >> 24)&0xFF)
 		  , red(((*p) >> 16)&0xFF)
 		  , green(((*p) >> 8)&0xFF)
-		  , blue((*p)&0xFF) {}
+		  , blue((*p)&0xFF){}
 	};
 	struct Average{
 		uint32_t alpha;
@@ -1019,13 +1019,13 @@ void blur_alpha_surface(surface& res, int depth)
 	surface_lock lock(res);
 	int x, y;
 	// Iterate over rows, blurring each row horizontally
-	for(y = 0; y < res->h; ++y) {
+	for(y = 0; y < res->h; ++y){
 		// Sum of pixel values stored here
 		Average avg;
 
 		// Preload the first depth+1 pixels
 		uint32_t* p = lock.pixels() + y*res->w;
-		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
+		for(x = 0; x <= depth && x < res->w; ++x, ++p){
 			assert(!queue.full());
 			queue.push_back(Pixel{p});
 			avg += queue.back();
@@ -1033,20 +1033,20 @@ void blur_alpha_surface(surface& res, int depth)
 
 		// This is the actual inner loop
 		p = lock.pixels() + y*res->w;
-		for(x = 0; x < res->w; ++x, ++p) {
+		for(x = 0; x < res->w; ++x, ++p){
 			// Write the current average
 			const uint32_t num = queue.size();
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
-			if(x >= depth) {
+			if(x >= depth){
 				avg -= queue.front();
 				assert(!queue.empty());
 				queue.pop_front();
 			}
 
 			// Add new pixels
-			if(x + depth+1 < res->w) {
+			if(x + depth+1 < res->w){
 				uint32_t* q = p + depth+1;
 				assert(!queue.full());
 				queue.push_back(Pixel{q});
@@ -1058,13 +1058,13 @@ void blur_alpha_surface(surface& res, int depth)
 	}
 
 	// Iterate over columns, blurring each column vertically
-	for(x = 0; x < res->w; ++x) {
+	for(x = 0; x < res->w; ++x){
 		// Sum of pixel values stored here
 		Average avg;
 
 		// Preload the first depth+1 pixels
 		uint32_t* p = lock.pixels() + x;
-		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
+		for(y = 0; y <= depth && y < res->h; ++y, p += res->w){
 			assert(!queue.full());
 			queue.push_back(Pixel{p});
 			avg += queue.back();
@@ -1072,20 +1072,20 @@ void blur_alpha_surface(surface& res, int depth)
 
 		// This is the actual inner loop
 		p = lock.pixels() + x;
-		for(y = 0; y < res->h; ++y, p += res->w) {
+		for(y = 0; y < res->h; ++y, p += res->w){
 			// Write the current average
 			const uint32_t num = queue.size();
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
-			if(y >= depth) {
+			if(y >= depth){
 				avg -= queue.front();
 				assert(!queue.empty());
 				queue.pop_front();
 			}
 
 			// Add new pixels
-			if(y + depth+1 < res->h) {
+			if(y + depth+1 < res->h){
 				uint32_t* q = p + (depth+1)*res->w;
 				assert(!queue.full());
 				queue.push_back(Pixel{q});
@@ -1104,7 +1104,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 
 	surface res(r.w, r.h);
 
-	if(res == nullptr) {
+	if(res == nullptr){
 		PLAIN_LOG << "Could not create a new surface in cut_surface()";
 		return nullptr;
 	}
@@ -1118,16 +1118,16 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 	SDL_Rect src_rect = r;
 	SDL_Rect dst_rect { 0, 0, r.w, r.h };
 
-	if (src_rect.x < 0) {
-		if (src_rect.x + src_rect.w <= 0)
+	if(src_rect.x < 0){
+		if(src_rect.x + src_rect.w <= 0)
 			return res;
 		dst_rect.x -= src_rect.x;
 		dst_rect.w += src_rect.x;
 		src_rect.w += src_rect.x;
 		src_rect.x = 0;
 	}
-	if (src_rect.y < 0) {
-		if (src_rect.y + src_rect.h <= 0)
+	if(src_rect.y < 0){
+		if(src_rect.y + src_rect.h <= 0)
 			return res;
 		dst_rect.y -= src_rect.y;
 		dst_rect.h += src_rect.y;
@@ -1144,7 +1144,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 	const uint8_t* src = reinterpret_cast<const uint8_t *>(slock.pixels());
 	uint8_t* dest = reinterpret_cast<uint8_t *>(rlock.pixels());
 
-	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y) {
+	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y){
 		const uint8_t* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
 		uint8_t* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
 		std::size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
@@ -1158,7 +1158,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 
 void blend_surface(surface& nsurf, const double amount, const color_t color)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 
 		uint16_t ratio = amount * 256;
@@ -1167,7 +1167,7 @@ void blend_surface(surface& nsurf, const double amount, const color_t color)
 		const uint16_t blue  = ratio * color.b;
 		ratio = 256 - ratio;
 
-		for(auto& pixel : lock.pixel_span()) {
+		for(auto& pixel : lock.pixel_span()){
 			auto [r, g, b, a] = color_t::from_argb_bytes(pixel);
 
 			r = (ratio * r + red)   >> 8;
@@ -1228,13 +1228,13 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 		const int   max_y = dst_h * zoom;
 		/* Loop through the zoomed src image,
 		 * take every pixel in steps with offset distance and place it in the dst image. */
-		for (int x = 0; x < max_x; x += offset)
-			for (int y = 0; y < max_y; y += offset) {
+		for(int x = 0; x < max_x; x += offset)
+			for(int y = 0; y < max_y; y += offset){
 				// calculate the src pixel that fits in the dst
 				const float source_x = (x + min_x)*cosine + (y + min_y)*sine;
 				const float source_y = (y + min_y)*cosine - (x + min_x)*sine;
 				// if the pixel exists on the src surface
-				if (source_x >= 0 && source_x < src_w && source_y >= 0 && source_y < src_h) {
+				if(source_x >= 0 && source_x < src_w && source_y >= 0 && source_y < src_h){
 					// get it from the src surface and place it on the dst surface
 					dst_pixels[int((y * scale)) * dst->w + int((x * scale))] =
 						src_pixels[int(source_y) * src->w + int(source_x)];
@@ -1248,12 +1248,12 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 // Rotates a surface 180 degrees.
 surface rotate_180_surface(const surface& surf)
 {
-	if ( surf == nullptr )
+	if(surf == nullptr)
 		return nullptr;
 
 	surface nsurf = surf.clone();
 
-	if ( nsurf == nullptr ) {
+	if(nsurf == nullptr){
 		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
@@ -1264,17 +1264,17 @@ surface rotate_180_surface(const surface& surf)
 
 		// Swap pixels in the upper half of the image with
 		// those in the lower half.
-		for (int y=0; y != nsurf->h/2; ++y) {
-			for(int x=0; x != nsurf->w; ++x) {
+		for(int y=0; y != nsurf->h/2; ++y){
+			for(int x=0; x != nsurf->w; ++x){
 				const int index1 = y*nsurf->w + x;
 				const int index2 = (nsurf->h-y)*nsurf->w - x - 1;
 				std::swap(pixels[index1],pixels[index2]);
 			}
 		}
 
-		if ( is_odd(nsurf->h) ) {
+		if(is_odd(nsurf->h)){
 			// The middle row still needs to be processed.
-			for (int x=0; x != nsurf->w/2; ++x) {
+			for(int x=0; x != nsurf->w/2; ++x){
 				const int index1 = (nsurf->h/2)*nsurf->w + x;
 				const int index2 = (nsurf->h/2)*nsurf->w + (nsurf->w - x - 1);
 				std::swap(pixels[index1],pixels[index2]);
@@ -1293,7 +1293,7 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 	surface dst(surf->h, surf->w); // Flipped dimensions.
 
-	if ( surf == nullptr  ||  dst == nullptr ) {
+	if(surf == nullptr  ||  dst == nullptr){
 		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
@@ -1306,8 +1306,8 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
 		// Copy the pixels.
-		for(int y = 0; y != surf->h; ++y) {
-			for ( int x = 0; x != surf->w; ++x ) {
+		for(int y = 0; y != surf->h; ++y){
+			for(int x = 0; x != surf->w; ++x){
 				const int src_index = y*surf->w + x;
 				const int dst_index = clockwise ?
 				                          x*dst->w + (dst->w-1-y) :
@@ -1322,12 +1322,12 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 void flip_surface(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
 
-		for(int y = 0; y != nsurf->h; ++y) {
-			for(int x = 0; x != nsurf->w/2; ++x) {
+		for(int y = 0; y != nsurf->h; ++y){
+			for(int x = 0; x != nsurf->w/2; ++x){
 				const int index1 = y*nsurf->w + x;
 				const int index2 = (y+1)*nsurf->w - x - 1;
 				std::swap(pixels[index1],pixels[index2]);
@@ -1338,12 +1338,12 @@ void flip_surface(surface& nsurf)
 
 void flop_surface(surface& nsurf)
 {
-	if(nsurf) {
+	if(nsurf){
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
 
-		for(int x = 0; x != nsurf->w; ++x) {
-			for(int y = 0; y != nsurf->h/2; ++y) {
+		for(int x = 0; x != nsurf->w; ++x){
+			for(int y = 0; y != nsurf->h/2; ++y){
 				const int index1 = y*nsurf->w + x;
 				const int index2 = (nsurf->h-y-1)*nsurf->w + x;
 				std::swap(pixels[index1],pixels[index2]);
@@ -1354,26 +1354,26 @@ void flop_surface(surface& nsurf)
 
 surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
-	if (src == nullptr) {
+	if(src == nullptr){
 		return nullptr;
 	}
 
 	// Check if there is something in the portion
-	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
+	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0){
 		return nullptr;
 	}
 
-	if(area.x + area.w > src->w) {
+	if(area.x + area.w > src->w){
 		area.w = src->w - area.x;
 	}
-	if(area.y + area.h > src->h) {
+	if(area.y + area.h > src->h){
 		area.h = src->h - area.y;
 	}
 
 	// use same format as the source (almost always the screen)
 	surface dst(area.w, area.h);
 
-	if(dst == nullptr) {
+	if(dst == nullptr){
 		PLAIN_LOG << "Could not create a new surface in get_surface_portion()";
 		return nullptr;
 	}
@@ -1404,7 +1404,7 @@ rect get_non_transparent_portion(const surface& nsurf)
 	const uint32_t* const pixels = lock.pixels();
 
 	int n;
-	for(n = 0; n != nsurf->h; ++n) {
+	for(n = 0; n != nsurf->h; ++n){
 		const uint32_t* const start_row = pixels + n*nsurf->w;
 		const uint32_t* const end_row = start_row + nsurf->w;
 
@@ -1414,7 +1414,7 @@ rect get_non_transparent_portion(const surface& nsurf)
 
 	res.y = n;
 
-	for(n = 0; n != nsurf->h-res.y; ++n) {
+	for(n = 0; n != nsurf->h-res.y; ++n){
 		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*nsurf->w;
 		const uint32_t* const end_row = start_row + nsurf->w;
 
@@ -1427,9 +1427,9 @@ rect get_non_transparent_portion(const surface& nsurf)
 	// the distance from the bottom.
 	res.h = nsurf->h - res.y - n;
 
-	for(n = 0; n != nsurf->w; ++n) {
+	for(n = 0; n != nsurf->w; ++n){
 		int y;
-		for(y = 0; y != nsurf->h; ++y) {
+		for(y = 0; y != nsurf->h; ++y){
 			const uint32_t pixel = pixels[y*nsurf->w + n];
 			if(not_alpha(pixel))
 				break;
@@ -1441,9 +1441,9 @@ rect get_non_transparent_portion(const surface& nsurf)
 
 	res.x = n;
 
-	for(n = 0; n != nsurf->w-res.x; ++n) {
+	for(n = 0; n != nsurf->w-res.x; ++n){
 		int y;
-		for(y = 0; y != nsurf->h; ++y) {
+		for(y = 0; y != nsurf->h; ++y){
 			const uint32_t pixel = pixels[y*nsurf->w + nsurf->w - n - 1];
 			if(not_alpha(pixel))
 				break;

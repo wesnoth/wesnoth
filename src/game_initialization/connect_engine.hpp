@@ -160,7 +160,7 @@ public:
 	// players are allowed.
 	bool available_for_user(const std::string& name = "") const;
 
-	void resolve_random( randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
+	void resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
 
 	// Resets this side to its default state.
 	void reset();

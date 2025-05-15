@@ -41,7 +41,7 @@ dispatcher::dispatcher()
 
 dispatcher::~dispatcher()
 {
-	if(connected_) {
+	if(connected_){
 		disconnect();
 	}
 }
@@ -74,7 +74,7 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 bool dispatcher::fire(const ui_event event, widget& target)
 {
 	assert(is_in_category(event, event_category::general));
-	switch(event) {
+	switch(event){
 	case LEFT_BUTTON_DOUBLE_CLICK:
 		return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
 			&event_executor::wants_mouse_left_double_click>(this, &target);
@@ -148,7 +148,7 @@ bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
 	auto itor = hotkeys_.find(id);
 
-	if(itor == hotkeys_.end()) {
+	if(itor == hotkeys_.end()){
 		return false;
 	}
 

@@ -44,7 +44,7 @@ namespace network
 		std::fill_n(error, CURL_ERROR_SIZE-1, ' ');
 		error[CURL_ERROR_SIZE-1] = '\0';
 
-		if(curl) {
+		if(curl){
 			curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
@@ -61,23 +61,23 @@ namespace network
 
 			CURLcode res = curl_easy_perform(curl);
 
-			if(res != CURLE_OK) {
+			if(res != CURLE_OK){
 				ERR_NW << "Error downloading file from url `" << url << "`.\n"
 					<< "Short error: " << curl_easy_strerror(res) << "\n"
 					<< "Long error: " << std::string(error);
 				gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
 			} else {
 				try {
-					if(filesystem::file_exists(local_path)) {
+					if(filesystem::file_exists(local_path)){
 						const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
-						if(res == gui2::retval::OK) {
+						if(res == gui2::retval::OK){
 							filesystem::write_file(local_path, buffer);
 						}
 					} else {
 						filesystem::write_file(local_path, buffer);
 					}
 					DBG_NW << "Wrote downloaded file to: " << local_path;
-				} catch(const filesystem::io_exception& e) {
+				} catch(const filesystem::io_exception& e){
 					ERR_NW << "io_exception writing downloaded data to file at: " << local_path
 						<< "\n" << e.what() << " : " << e.message;
 					gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);

@@ -60,17 +60,17 @@ highlighter::highlighter(side_actions_ptr side_actions)
 highlighter::~highlighter()
 {
 	try {
-	if(game_display::get_singleton() && owner_unit_) {
+	if(game_display::get_singleton() && owner_unit_){
 		unhighlight();
 	}
-	} catch (...) {}
+	} catch (...){}
 }
 
 void highlighter::set_mouseover_hex(const map_location& hex)
 {
 	clear();
 
-	if(!hex.valid()) {
+	if(!hex.valid()){
 		return;
 	}
 
@@ -78,39 +78,39 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::iterator it = get_unit_map().find(hex);
-	if(it != get_unit_map().end()) {
+	if(it != get_unit_map().end()){
 		selection_candidate_ = it.get_shared_ptr();
 
-		if(resources::gameboard->get_team(it->side()).get_side_actions()->unit_has_actions(*it)) {
+		if(resources::gameboard->get_team(it->side()).get_side_actions()->unit_has_actions(*it)){
 			owner_unit_ = it.get_shared_ptr();
 		}
 
 		//commented code below is to also select the first action of this unit as
 		//the main highlight; it doesn't fit too well in the UI
 //		side_actions::iterator action_it = side_actions_->find_first_action_of(*it);
-//		if(action_it != side_actions_->end()) {
+//		if(action_it != side_actions_->end()){
 //			main_highlight_ = *action_it;
 //		}
 	}
 
 	//Set the execution/deletion/bump targets.
-	if(owner_unit_) {
+	if(owner_unit_){
 		side_actions::iterator itor = side_actions_->find_first_action_of(*owner_unit_);
-		if(itor != side_actions_->end()) {
+		if(itor != side_actions_->end()){
 			selected_action_ = *itor;
 		}
 	}
 
 	//Overwrite the above selected_action_ if we find a better one
-	if(side_actions_->empty()) {
+	if(side_actions_->empty()){
 		return;
 	}
-	for(action_ptr act : *side_actions_ | utils::views::reverse) {
+	for(action_ptr act : *side_actions_ | utils::views::reverse){
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
 		 * criterion, which is to use find_main_highlight.*/
-		if(act->is_numbering_hex(hex)) {
+		if(act->is_numbering_hex(hex)){
 			selected_action_ = act;
 			break;
 		}
@@ -131,13 +131,13 @@ void highlighter::highlight()
 	//Find main action to highlight if any, as well as owner unit
 	find_main_highlight();
 
-	if(action_ptr main = main_highlight_.lock()) {
+	if(action_ptr main = main_highlight_.lock()){
 		//Highlight main highlight
 		highlight_main_visitor hm_visitor(*this);
 		main->accept(hm_visitor);
 	}
 
-	if(owner_unit_) {
+	if(owner_unit_){
 		//Find secondary actions to highlight
 		find_secondary_highlights();
 
@@ -145,11 +145,11 @@ void highlighter::highlight()
 		display::get_singleton()->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
 		exclusive_display_hexes_.insert(owner_unit_->get_location());
 
-		if(!secondary_highlights_.empty()) {
+		if(!secondary_highlights_.empty()){
 			//Highlight secondary highlights
 			highlight_secondary_visitor hs_visitor(*this);
-			for(weak_action_ptr weak : secondary_highlights_) {
-				if(action_ptr action = weak.lock()) {
+			for(weak_action_ptr weak : secondary_highlights_){
+				if(action_ptr action = weak.lock()){
 					action->accept(hs_visitor);
 				}
 			}
@@ -162,19 +162,19 @@ void highlighter::unhighlight()
 	unhighlight_visitor uh_visitor(*this);
 
 	//unhighlight main highlight
-	if(action_ptr main = main_highlight_.lock()) {
+	if(action_ptr main = main_highlight_.lock()){
 		main->accept(uh_visitor);
 	}
 
 	//unhighlight secondary highlights
-	for(weak_action_ptr weak : secondary_highlights_) {
-		if(action_ptr action = weak.lock()) {
+	for(weak_action_ptr weak : secondary_highlights_){
+		if(action_ptr action = weak.lock()){
 			action->accept(uh_visitor);
 		}
 	}
 
 	//unhide other units if needed
-	for(map_location hex : exclusive_display_hexes_) {
+	for(map_location hex : exclusive_display_hexes_){
 		display::get_singleton()->remove_exclusive_draw(hex);
 	}
 	exclusive_display_hexes_.clear();
@@ -183,7 +183,7 @@ void highlighter::unhighlight()
 void highlighter::last_action_redraw(const move_ptr& move)
 {
 	//Last action with a fake unit always gets normal appearance
-	if(move->get_fake_unit()) {
+	if(move->get_fake_unit()){
 		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
 
 		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
@@ -193,7 +193,7 @@ void highlighter::last_action_redraw(const move_ptr& move)
 		bool last_action_has_fake_unit = last_action != sa.end() && (*last_action)->get_fake_unit();
 		bool this_is_second_to_last_action = (second_to_last_action != sa.end() && move == *second_to_last_action);
 
-		if(this_is_last_action || (this_is_second_to_last_action && !last_action_has_fake_unit)) {
+		if(this_is_last_action || (this_is_second_to_last_action && !last_action_has_fake_unit)){
 			move->get_fake_unit()->anim_comp().set_standing(true);
 		}
 	}
@@ -209,7 +209,7 @@ void highlighter::find_main_highlight()
 	//assert(side_actions_->team_index() == display::get_singleton()->viewing_team());
 
 	main_highlight_ = find_action_at(mouseover_hex_);
-	if(action_ptr main = main_highlight_.lock()) {
+	if(action_ptr main = main_highlight_.lock()){
 		owner_unit_ = main->get_unit();
 	}
 }
@@ -219,7 +219,7 @@ void highlighter::find_secondary_highlights()
 	assert(owner_unit_);
 	assert(secondary_highlights_.empty());
 
-	if(owner_unit_ == nullptr) {
+	if(owner_unit_ == nullptr){
 		return;
 	}
 
@@ -236,7 +236,7 @@ void highlighter::find_secondary_highlights()
 
 action_ptr highlighter::get_execute_target()
 {
-	if(action_ptr locked = selected_action_.lock()) {
+	if(action_ptr locked = selected_action_.lock()){
 		return *side_actions_->find_first_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
@@ -244,7 +244,7 @@ action_ptr highlighter::get_execute_target()
 }
 action_ptr highlighter::get_delete_target()
 {
-	if(action_ptr locked = selected_action_.lock()) {
+	if(action_ptr locked = selected_action_.lock()){
 		return *side_actions_->find_last_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
@@ -258,7 +258,7 @@ action_ptr highlighter::get_bump_target()
 
 unit_ptr highlighter::get_selection_target()
 {
-	if(owner_unit_) {
+	if(owner_unit_){
 		return owner_unit_;
 	} else {
 		return selection_candidate_;
@@ -267,10 +267,10 @@ unit_ptr highlighter::get_selection_target()
 
 void highlighter::highlight_main_visitor::visit(move_ptr move)
 {
-	if(move->get_arrow()) {
+	if(move->get_arrow()){
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_FOCUS);
 	}
-	if(move->get_fake_unit()) {
+	if(move->get_fake_unit()){
 		// TODO: find some highlight animation
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
@@ -289,7 +289,7 @@ void highlighter::highlight_main_visitor::visit(attack_ptr attack)
 
 void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
 {
-	if(recruit->get_fake_unit()) {
+	if(recruit->get_fake_unit()){
 		// TODO: find some suitable effect for mouseover on planned recruit.
 
 		//Make sure the fake unit is the only one displayed in its hex
@@ -300,10 +300,10 @@ void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
 
 void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 {
-	if(move->get_arrow()) {
+	if(move->get_arrow()){
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_HIGHLIGHTED);
 	}
-	if(move->get_fake_unit()) {
+	if(move->get_fake_unit()){
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
 		display::get_singleton()->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
@@ -320,10 +320,10 @@ void highlighter::highlight_secondary_visitor::visit(attack_ptr attack)
 
 void highlighter::unhighlight_visitor::visit(move_ptr move)
 {
-	if(move->get_arrow()) {
+	if(move->get_arrow()){
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_STANDARD);
 	}
-	if(move->get_fake_unit()) {
+	if(move->get_fake_unit()){
 		move->get_fake_unit()->anim_comp().set_disabled_ghosted(false);
 
 		highlighter_.last_action_redraw(move);
@@ -337,7 +337,7 @@ void highlighter::unhighlight_visitor::visit(attack_ptr attack)
 
 void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 {
-	if(recall->get_fake_unit()) {
+	if(recall->get_fake_unit()){
 		//@todo: find some suitable effect for mouseover on planned recall.
 
 		//Make sure the fake unit is the only one displayed in its hex

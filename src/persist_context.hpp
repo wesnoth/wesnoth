@@ -39,22 +39,22 @@ public:
 			return valid_;
 		}
 		void parse() {
-			while (namespace_.find_first_of("^") < namespace_.size()) {
-				if (namespace_[0] == '^') {
+			while(namespace_.find_first_of("^") < namespace_.size()) {
+				if(namespace_[0] == '^') {
 					//TODO: Throw a WML error
 					namespace_ = "";
 					break;
 				}
 				std::string infix = namespace_.substr(namespace_.find_first_of("^"));
 				std::size_t end = infix.find_first_not_of("^");
-				if (!((end >= infix.length()) || (infix[end] == '.'))) {
+				if(!((end >= infix.length()) || (infix[end] == '.'))) {
 					//TODO: Throw a WML error
 					namespace_ = "";
 					break;
 				}
 				infix = infix.substr(0,end);
 				std::string suffix = namespace_.substr(namespace_.find_first_of("^") + infix.length());
-				while (!infix.empty())
+				while(!infix.empty())
 				{
 					std::string body = namespace_.substr(0,namespace_.find_first_of("^"));
 					body = body.substr(0,body.find_last_of("."));
@@ -88,14 +88,14 @@ public:
 			, descendants_()
 			, valid_(false)
 		{
-			if (doParse)
+			if(doParse)
 				parse();
 			valid_ = ((namespace_.find_first_not_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.") > namespace_.length()) && !namespace_.empty());
 			root_ = namespace_.substr(0,namespace_.find_first_of("."));
 			node_ = namespace_.substr(namespace_.find_last_of(".") + 1);
-			if (namespace_.find_last_of(".") <= namespace_.length())
+			if(namespace_.find_last_of(".") <= namespace_.length())
 				lineage_ = namespace_.substr(0,namespace_.find_last_of("."));
-			if (namespace_.find_first_of(".") <= namespace_.length())
+			if(namespace_.find_first_of(".") <= namespace_.length())
 				descendants_ = namespace_.substr(namespace_.find_first_of(".") + 1);
 		}
 	};
@@ -121,10 +121,10 @@ protected:
 
 	config *get_node(config &cfg, name_space &ns, bool force = false) {
 		name_space next = ns.next();
-		if (next) {
-			if (force)
+		if(next) {
+			if(force)
 				return get_node(cfg.child_or_add(next.root_), next, true);
-			else if (cfg.has_child(next.root_))
+			else if(cfg.has_child(next.root_))
 				return get_node(cfg.mandatory_child(next.root_), next);
 			else
 				return nullptr;
@@ -135,8 +135,8 @@ protected:
 
 	const config *get_node(const config &cfg, const name_space &ns) const {
 		name_space next = ns.next();
-		if (next) {
-			if (cfg.has_child(next.root_))
+		if(next) {
+			if(cfg.has_child(next.root_))
 				return get_node(cfg.mandatory_child(next.root_), next);
 			else
 				return nullptr;
@@ -174,20 +174,20 @@ public:
 	bool set_var(const std::string &, const config &, bool immediate = false);
 
 	bool start_transaction () {
-		if (in_transaction_)
+		if(in_transaction_)
 			return false;
 		in_transaction_ = true;
 		return true;
 	}
 	bool end_transaction () {
-		if (!in_transaction_)
+		if(!in_transaction_)
 			return false;
 		in_transaction_ = false;
 		save_context();
 		return true;
 	}
 	bool cancel_transaction () {
-		if (!in_transaction_)
+		if(!in_transaction_)
 			return false;
 		load();
 		in_transaction_ = false;

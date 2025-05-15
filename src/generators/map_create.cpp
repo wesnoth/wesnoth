@@ -27,12 +27,12 @@ static lg::log_domain log_config("config");
 
 map_generator* create_map_generator(const std::string& name, const config &cfg, const config* vars)
 {
-	if(name == "default" || name.empty()) {
+	if(name == "default" || name.empty()){
 		return new default_map_generator(cfg);
-	} else if(name == "cave") {
+	} else if(name == "cave"){
 		ERR_CF << "map/scenario_generation=cave is deprecatd and will be removed soon, use map/scenario_generation=lua with lua/cave_map_generator.lua instead.";
 		return new cave_map_generator(cfg);
-	} else if(name == "lua") {
+	} else if(name == "lua"){
 		return new lua_map_generator(cfg, vars);
 	} else {
 		return nullptr;
@@ -44,7 +44,7 @@ map_generator* create_map_generator(const std::string& name, const config &cfg, 
 std::string random_generate_map(const std::string& name, const config &cfg, const config* vars)
 {
 	std::unique_ptr<map_generator> generator(create_map_generator(name, cfg, vars));
-	if(generator == nullptr) {
+	if(generator == nullptr){
 		std::stringstream ss;
 		ss << "could not find map generator '" << name << "'";
 		throw mapgen_exception(ss.str());
@@ -56,7 +56,7 @@ std::string random_generate_map(const std::string& name, const config &cfg, cons
 config random_generate_scenario(const std::string& name, const config &cfg, const config* vars)
 {
 	std::unique_ptr<map_generator> generator(create_map_generator(name, cfg, vars));
-	if(generator == nullptr) {
+	if(generator == nullptr){
 		std::stringstream ss;
 		ss << "could not find map generator '" << name << "'";
 		throw mapgen_exception(ss.str());

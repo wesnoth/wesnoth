@@ -54,7 +54,7 @@ namespace {
 void make_screenshot(const std::string& name, bool map_screenshot)
 {
 	surface screenshot = display::get_singleton()->screenshot(map_screenshot);
-	if(screenshot) {
+	if(screenshot){
 		std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
@@ -68,8 +68,8 @@ static void event_queue(const SDL_Event& event, command_executor* executor);
 bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
 	// hotkey release handling
-	if (release) {
-		switch(cmd.hotkey_command) {
+	if(release){
+		switch(cmd.hotkey_command){
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
 				scroll_up(false);
@@ -91,7 +91,7 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 	}
 
 	// handling of hotkeys which activate even on hold events
-	switch(cmd.hotkey_command) {
+	switch(cmd.hotkey_command){
 		case HOTKEY_REPEAT_RECRUIT:
 			repeat_recruit();
 			return true;
@@ -111,12 +111,12 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			break;
 	}
 
-	if(!press) {
+	if(!press){
 		return false; // nothing else handles hotkey hold events
 	}
 
 	// hotkey press handling
-	switch(cmd.hotkey_command) {
+	switch(cmd.hotkey_command){
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -400,10 +400,10 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 	return true;
 }
 
-void command_executor::surrender_game() {
-	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
+void command_executor::surrender_game(){
+	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL){
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
-		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
+		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()){
 			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
@@ -412,7 +412,7 @@ void command_executor::surrender_game() {
 void command_executor::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
 	std::vector<config> items = items_arg;
-	if (items.empty()) return;
+	if(items.empty()) return;
 
 	get_menu_images(gui, items);
 
@@ -421,9 +421,9 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
-		if(mmenu.show()) {
+		if(mmenu.show()){
 			res = mmenu.selected_item();
-			if(res >= 0) {
+			if(res >= 0){
 				// Get selection coordinates for a potential submenu below
 				selection_pos = mmenu.selected_item_pos();
 				// Compensate for borders
@@ -432,11 +432,11 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 			}
 		}
 	} // This will kill the dialog.
-	if (res < 0 || std::size_t(res) >= items.size()) return;
+	if(res < 0 || std::size_t(res) >= items.size()) return;
 
 	std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
-	if (submenu) {
+	if(submenu){
 		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context(), gui);
 	} else {
 		hotkey::ui_command cmd = hotkey::ui_command(id, res);
@@ -448,14 +448,14 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 void command_executor::execute_action(const std::vector<std::string>& items_arg, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display&)
 {
 	std::vector<std::string> items = items_arg;
-	if (items.empty()) {
+	if(items.empty()){
 		return;
 	}
 
 	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
+	while(i != items.end()){
 		hotkey::ui_command cmd = hotkey::ui_command(*i);
-		if (can_execute_command(cmd)) {
+		if(can_execute_command(cmd)){
 			do_execute_command(cmd);
 			set_button_state();
 		}
@@ -472,12 +472,12 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const hotkey::ACTION_STATE state = get_action_state(cmd);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
-	if (menu) {
+	if(menu){
 		return "icons/arrows/short_arrow_right_25.png~CROP(3,3,18,18)"; // TODO should not be hardcoded
 	}
 
-	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
-		switch (state) {
+	if(filesystem::file_exists(game_config::path + "/images/" + base_image_name)){
+		switch (state){
 			case ACTION_ON:
 			case ACTION_SELECTED:
 				return pressed_image_name + "~CROP(3,3,18,18)";
@@ -486,7 +486,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 		}
 	}
 
-	switch (get_action_state(cmd)) {
+	switch (get_action_state(cmd)){
 		case ACTION_ON:
 			return game_config::images::checked_menu;
 		case ACTION_OFF:
@@ -501,7 +501,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 
 void command_executor::get_menu_images(display& disp, std::vector<config>& items)
 {
-	for(std::size_t i = 0; i < items.size(); ++i) {
+	for(std::size_t i = 0; i < items.size(); ++i){
 		config& item = items[i];
 
 		const std::string& item_id = item["id"];
@@ -509,18 +509,18 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(disp, item_id, i));
-		if (img.empty() == false) {
+		if(img.empty() == false){
 			item["icon"] = img;
 		}
 
 		const theme::menu* menu = disp.get_theme().get_menu_item(item_id);
-		if(menu) {
+		if(menu){
 			item["label"] = menu->title();
-		} else if(hk != hotkey::HOTKEY_NULL) {
+		} else if(hk != hotkey::HOTKEY_NULL){
 			std::string desc = hotkey::get_hotkey_command(item_id).description;
-			if(hk == HOTKEY_ENDTURN) {
+			if(hk == HOTKEY_ENDTURN){
 				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
-				if (b) {
+				if(b){
 					desc = b->title();
 				}
 			}
@@ -561,7 +561,7 @@ void jhat_event(const SDL_Event& event, command_executor* executor)
 
 void key_event(const SDL_Event& event, command_executor* executor)
 {
-	if (!executor) return;
+	if(!executor) return;
 	event_queue(event,executor);
 }
 
@@ -575,14 +575,14 @@ void run_events(command_executor* executor)
 {
 	if(!executor) return;
 	bool commands_ran = executor->run_queued_commands();
-	if(commands_ran) {
+	if(commands_ran){
 		executor->set_button_state();
 	}
 }
 
 static void event_queue(const SDL_Event& event, command_executor* executor)
 {
-	if (!executor) return;
+	if(!executor) return;
 	executor->queue_command(event);
 	executor->set_button_state();
 }
@@ -590,12 +590,12 @@ static void event_queue(const SDL_Event& event, command_executor* executor)
 void command_executor::queue_command(const SDL_Event& event, int index)
 {
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec;
-	if(event.type == SDL_TEXTINPUT) {
+	if(event.type == SDL_TEXTINPUT){
 		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"";
 	}
 
 	const hotkey_ptr hk = get_hotkey(event);
-	if(!hk->active() || hk->is_disabled()) {
+	if(!hk->active() || hk->is_disabled()){
 		return;
 	}
 
@@ -605,11 +605,11 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	bool press = keypress ||
 		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_FINGERDOWN);
 	bool release = event.type == SDL_KEYUP;
-	if(press) {
+	if(press){
 		LOG_HK << "sending press event (keypress = " <<
 			std::boolalpha << keypress << std::noboolalpha << ")";
 	}
-	if(keypress) {
+	if(keypress){
 		press_event_sent_ = true;
 	}
 
@@ -619,16 +619,16 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 void command_executor::execute_command_wrap(const command_executor::queued_command& command)
 {
 	auto ui_cmd = hotkey::ui_command(*command.command, command.index);
-	if (!can_execute_command(ui_cmd)
-			|| do_execute_command(ui_cmd, command.press, command.release)) {
+	if(!can_execute_command(ui_cmd)
+			|| do_execute_command(ui_cmd, command.press, command.release)){
 		return;
 	}
 
-	if (!command.press) {
+	if(!command.press){
 		return; // none of the commands here respond to a key release
 	}
 
-	switch(command.command->command) {
+	switch(command.command->command){
 		case HOTKEY_FULLSCREEN:
 			video::toggle_fullscreen();
 			break;
@@ -649,7 +649,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 					bool playing_sound,playing_music;
 					before_muted_s() : playing_sound(false),playing_music(false){}
 				} before_muted;
-				if (prefs::get().music_on() || prefs::get().sound())
+				if(prefs::get().music_on() || prefs::get().sound())
 				{
 					// then remember settings and mute both
 					before_muted.playing_sound = prefs::get().sound();
@@ -674,16 +674,16 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 void command_executor_default::set_button_state()
 {
 	display& disp = get_display();
-	for (const theme::menu& menu : disp.get_theme().menus()) {
+	for(const theme::menu& menu : disp.get_theme().menus()){
 
 		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
-		if (!button) continue;
+		if(!button) continue;
 		bool enabled = false;
-		for (const auto& command : menu.items()) {
+		for(const auto& command : menu.items()){
 
 			ui_command command_obj = ui_command(command["id"].str());
 			bool can_execute = can_execute_command(command_obj);
-			if (can_execute) {
+			if(can_execute){
 				enabled = true;
 				break;
 			}
@@ -691,28 +691,28 @@ void command_executor_default::set_button_state()
 		button->enable(enabled);
 	}
 
-	for (const theme::action& action : disp.get_theme().actions()) {
+	for(const theme::action& action : disp.get_theme().actions()){
 
 		std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
-		if (!button) continue;
+		if(!button) continue;
 		bool enabled = false;
 		int i = 0;
-		for (const std::string& command : action.items()) {
+		for(const std::string& command : action.items()){
 
 			ui_command command_obj = ui_command(command);
 			std::string tooltip = action.tooltip(i);
-			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
+			if(filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png"))
 				button->set_overlay("icons/action/" + command);
-			if (!tooltip.empty())
+			if(!tooltip.empty())
 				button->set_tooltip_string(tooltip);
 
 			bool can_execute = can_execute_command(command_obj);
 			i++;
-			if (!can_execute) continue;
+			if(!can_execute) continue;
 			enabled = true;
 
 			ACTION_STATE state = get_action_state(command_obj);
-			switch (state) {
+			switch (state){
 			case ACTION_SELECTED:
 			case ACTION_ON:
 				button->set_check(true);
@@ -743,9 +743,9 @@ std::vector<command_executor::queued_command> command_executor::filter_command_q
 	using command_with_keyrelease = std::pair<const hotkey_command*, bool>;
 	std::set<command_with_keyrelease> seen_commands;
 
-	for(const queued_command& cmd : command_queue_) {
+	for(const queued_command& cmd : command_queue_){
 		command_with_keyrelease command_key(cmd.command, cmd.release);
-		if(seen_commands.find(command_key) == seen_commands.end()) {
+		if(seen_commands.find(command_key) == seen_commands.end()){
 			seen_commands.insert(command_key);
 			filtered_commands.push_back(cmd);
 		}
@@ -759,7 +759,7 @@ std::vector<command_executor::queued_command> command_executor::filter_command_q
 bool command_executor::run_queued_commands()
 {
 	std::vector<queued_command> commands = filter_command_queue();
-	for(const queued_command& cmd : commands) {
+	for(const queued_command& cmd : commands){
 		execute_command_wrap(cmd);
 	}
 
@@ -773,7 +773,7 @@ void command_executor_default::recalculate_minimap()
 
 void command_executor_default::lua_console()
 {
-	if (get_display().in_game()) {
+	if(get_display().in_game()){
 		gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::GAME);
 	} else {
 		command_executor::lua_console();
@@ -788,21 +788,21 @@ void command_executor::lua_console()
 
 void command_executor_default::zoom_in()
 {
-	if(!get_display().view_locked()) {
+	if(!get_display().view_locked()){
 		get_display().set_zoom(true);
 	}
 }
 
 void command_executor_default::zoom_out()
 {
-	if(!get_display().view_locked()) {
+	if(!get_display().view_locked()){
 		get_display().set_zoom(false);
 	}
 }
 
 void command_executor_default::zoom_default()
 {
-	if(!get_display().view_locked()) {
+	if(!get_display().view_locked()){
 		get_display().toggle_default_zoom();
 	}
 }

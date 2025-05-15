@@ -48,9 +48,9 @@ namespace {
 
 class null_streambuf : public std::streambuf
 {
-	virtual int overflow(int c) { return std::char_traits< char >::not_eof(c); }
+	virtual int overflow(int c){ return std::char_traits< char >::not_eof(c); }
 public:
-	null_streambuf() {}
+	null_streambuf(){}
 };
 
 } // end anonymous namespace
@@ -73,7 +73,7 @@ static std::ostream *output_stream_ = nullptr;
  */
 static std::ostream& output()
 {
-	if(output_stream_) {
+	if(output_stream_){
 		return *output_stream_;
 	}
 	return std::cerr;
@@ -101,7 +101,7 @@ bool is_not_log_file(const std::string& fn)
 void rotate_logs(const std::string& log_dir)
 {
 	// if logging to file is disabled, don't rotate the logs
-	if(output_file_path_.empty()) {
+	if(output_file_path_.empty()){
 		return;
 	}
 
@@ -110,7 +110,7 @@ void rotate_logs(const std::string& log_dir)
 
 	utils::erase_if(files, is_not_log_file);
 
-	if(files.size() <= lg::max_logs) {
+	if(files.size() <= lg::max_logs){
 		return;
 	}
 
@@ -120,10 +120,10 @@ void rotate_logs(const std::string& log_dir)
 
 	std::sort(files.begin(), files.end());
 
-	for(std::size_t j = 0; j < files.size() - lg::max_logs; ++j) {
+	for(std::size_t j = 0; j < files.size() - lg::max_logs; ++j){
 		const std::string path = log_dir + '/' + files[j];
 		LOG_LS << "rotate_logs(): delete " << path;
-		if(!filesystem::delete_file(path)) {
+		if(!filesystem::delete_file(path)){
 			ERR_LS << "rotate_logs(): failed to delete " << path << "!";
 		}
 	}
@@ -147,7 +147,7 @@ void check_log_dir_writable()
 	std::string dummy_log = filesystem::get_logs_dir()+"/dummy.log";
 
 	// log directory doesn't exist and can't be created
-	if(!filesystem::file_exists(filesystem::get_logs_dir()) && !filesystem::make_directory(filesystem::get_logs_dir())) {
+	if(!filesystem::file_exists(filesystem::get_logs_dir()) && !filesystem::make_directory(filesystem::get_logs_dir())){
 		is_log_dir_writable_ = false;
 		return;
 	}
@@ -155,18 +155,18 @@ void check_log_dir_writable()
 	// can't create and write new log files
 	try {
 		filesystem::write_file(dummy_log, " ");
-	} catch(const filesystem::io_exception&) {
+	} catch(const filesystem::io_exception&){
 		is_log_dir_writable_ = false;
 		return;
 	}
 
 	// confirm that file exists and was written to
-	if(filesystem::file_size(dummy_log) != 1) {
+	if(filesystem::file_size(dummy_log) != 1){
 		is_log_dir_writable_ = false;
 	}
 
 	// can't delete files - prevents log rotation
-	if(filesystem::file_exists(dummy_log) && !filesystem::delete_file(dummy_log)) {
+	if(filesystem::file_exists(dummy_log) && !filesystem::delete_file(dummy_log)){
 		is_log_dir_writable_ = false;
 		return;
 	}
@@ -176,13 +176,13 @@ void check_log_dir_writable()
 
 void move_log_file()
 {
-	if(logs_dir_ == filesystem::get_logs_dir() || logs_dir_ == "") {
+	if(logs_dir_ == filesystem::get_logs_dir() || logs_dir_ == ""){
 		return;
 	}
 
 	check_log_dir_writable();
 
-	if(is_log_dir_writable_.value_or(false)) {
+	if(is_log_dir_writable_.value_or(false)){
 #ifdef _WIN32
 		std::string old_path = output_file_path_;
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
@@ -190,7 +190,7 @@ void move_log_file()
 		// flush and close existing log files, since Windows doesn't allow moving open files
 		std::fflush(stderr);
 		std::cerr.flush();
-		if(!std::freopen("NUL", "a", stderr)) {
+		if(!std::freopen("NUL", "a", stderr)){
 			std::cerr << "Failed to close stderr log file: '" << old_path << "'";
 			// stderr is where basically all output goes through, so if that fails then don't attempt anything else
 			// moving just the stdout log would be pointless
@@ -198,13 +198,13 @@ void move_log_file()
 		}
 		std::fflush(stdout);
 		std::cout.flush();
-		if(!std::freopen("NUL", "a", stdout)) {
+		if(!std::freopen("NUL", "a", stdout)){
 			std::cerr << "Failed to close stdout log file: '" << old_path << "'";
 		}
 
 		// move the .log and .out.log files
 		// stdout and stderr are set to NUL currently so nowhere to send info on failure
-		if(rename((old_path+lg::log_file_suffix).c_str(), (output_file_path_+lg::log_file_suffix).c_str()) == -1) {
+		if(rename((old_path+lg::log_file_suffix).c_str(), (output_file_path_+lg::log_file_suffix).c_str()) == -1){
 			return;
 		}
 		rename((old_path+lg::out_log_file_suffix).c_str(), (output_file_path_+lg::out_log_file_suffix).c_str());
@@ -223,7 +223,7 @@ void move_log_file()
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
 
 		// non-Windows can just move the file
-		if(rename(old_path.c_str(), get_log_file_path().c_str()) == -1) {
+		if(rename(old_path.c_str(), get_log_file_path().c_str()) == -1){
 			std::cerr << "Failed to rename log file from '" << old_path << "' to '" << output_file_path_ << "'";
 		}
 #endif
@@ -236,7 +236,7 @@ void set_log_to_file()
 	// if the log directory is not writable, then don't try to do anything.
 	// if the log directory is writable, then setup logging and rotate the logs.
 	// if the optional isn't set, then logging to file has been disabled, so don't try to do anything
-	if(is_log_dir_writable_.value_or(false)) {
+	if(is_log_dir_writable_.value_or(false)){
 		// get the log file stream and assign cerr+cout to it
 		logs_dir_ = filesystem::get_logs_dir();
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
@@ -247,7 +247,7 @@ void set_log_to_file()
 		// redirect stderr to file
 		std::fflush(stderr);
 		std::cerr.flush();
-		if(!std::freopen((output_file_path_+lg::log_file_suffix).c_str(), "w", stderr)) {
+		if(!std::freopen((output_file_path_+lg::log_file_suffix).c_str(), "w", stderr)){
 			std::cerr << "Failed to redirect stderr to a file!";
 		}
 
@@ -257,18 +257,18 @@ void set_log_to_file()
 #ifdef _WIN32
 		std::fflush(stdout);
 		std::cout.flush();
-		if(!std::freopen((output_file_path_+lg::out_log_file_suffix).c_str(), "w", stdout)) {
+		if(!std::freopen((output_file_path_+lg::out_log_file_suffix).c_str(), "w", stdout)){
 			std::cerr << "Failed to redirect stdout to a file!";
 		}
 #else
-		if(dup2(STDERR_FILENO, STDOUT_FILENO) == -1) {
+		if(dup2(STDERR_FILENO, STDOUT_FILENO) == -1){
 			std::cerr << "Failed to redirect stdout to a file!";
 		}
 #endif
 
 		// make stdout unbuffered - otherwise some output might be lost
 		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
-		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1) {
+		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1){
 			std::cerr << "Failed to set stdout to be unbuffered";
 		}
 
@@ -300,8 +300,8 @@ redirect_output_setter::~redirect_output_setter()
 typedef std::map<std::string, severity> domain_map;
 static domain_map *domains;
 static severity strict_level_ = severity::LG_NONE;
-void timestamps(bool t) { timestamp = t; }
-void precise_timestamps(bool pt) { precise_timestamp = pt; }
+void timestamps(bool t){ timestamp = t; }
+void precise_timestamps(bool pt){ precise_timestamp = pt; }
 
 logger& err()
 {
@@ -338,22 +338,22 @@ log_domain::log_domain(char const *name, severity severity)
 	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
-	if (!domains) domains = new domain_map;
+	if(!domains) domains = new domain_map;
 	domain_ = &*domains->insert(logd(name, severity)).first;
 	domain_->second = severity;
 }
 
 bool set_log_domain_severity(const std::string& name, severity severity)
 {
-	if (name == "all") {
-		for(logd &l : *domains) {
+	if(name == "all"){
+		for(logd &l : *domains){
 			l.second = severity;
 		}
 		return true;
 	} else {
 		bool any_matched = false;
-		for (logd &l : *domains) {
-			if (utils::wildcard_string_match(l.first, name)) {
+		for(logd &l : *domains){
+			if(utils::wildcard_string_match(l.first, name)){
 				l.second = severity;
 				any_matched = true;
 			}
@@ -361,14 +361,14 @@ bool set_log_domain_severity(const std::string& name, severity severity)
 		return any_matched;
 	}
 }
-bool set_log_domain_severity(const std::string& name, const logger &lg) {
+bool set_log_domain_severity(const std::string& name, const logger &lg){
 	return set_log_domain_severity(name, lg.get_severity());
 }
 
 bool get_log_domain_severity(const std::string& name, severity &severity)
 {
 	domain_map::iterator it = domains->find(name);
-	if (it == domains->end())
+	if(it == domains->end())
 		return false;
 	severity = it->second;
 	return true;
@@ -377,34 +377,34 @@ bool get_log_domain_severity(const std::string& name, severity &severity)
 std::string list_log_domains(const std::string& filter)
 {
 	std::ostringstream res;
-	for(logd &l : *domains) {
+	for(logd &l : *domains){
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}
 	return res.str();
 }
 
-void set_strict_severity(severity severity) {
+void set_strict_severity(severity severity){
 	strict_level_ = severity;
 }
 
-void set_strict_severity(const logger &lg) {
+void set_strict_severity(const logger &lg){
 	set_strict_severity(lg.get_severity());
 }
 
 static bool strict_threw_ = false;
 
-bool broke_strict() {
+bool broke_strict(){
 	return strict_threw_;
 }
 
-void set_log_sanitize(bool sanitize) {
+void set_log_sanitize(bool sanitize){
 	log_sanitization = sanitize;
 }
 
 std::string sanitize_log(const std::string& logstr)
 {
-	if(!log_sanitization) {
+	if(!log_sanitization){
 		return logstr;
 	}
 
@@ -416,7 +416,7 @@ std::string sanitize_log(const std::string& logstr)
 	const char* user_name = getenv("USER");
 #endif
 
-	if(user_name != nullptr) {
+	if(user_name != nullptr){
 		boost::replace_all(str, std::string("/") + user_name + "/", "/USER/");
 		boost::replace_all(str, std::string("\\") + user_name + "\\", "\\USER\\");
 	}
@@ -432,20 +432,20 @@ log_in_progress logger::operator() (
 	bool break_strict,
 	bool auto_newline) const
 {
-	if (severity_ > domain.domain_->second) {
+	if(severity_ > domain.domain_->second){
 		return null_ostream;
 	} else {
 		log_in_progress stream = output();
-		if(do_indent) {
+		if(do_indent){
 			stream.set_indent(indent);
 		}
-		if (timestamp && show_timestamps) {
+		if(timestamp && show_timestamps){
 			stream.enable_timestamp();
 		}
-		if (show_names) {
+		if(show_names){
 			stream.set_prefix(formatter() << name_ << ' ' << domain.domain_->first << ": ");
 		}
-		if (!strict_threw_ && severity_ <= strict_level_ && break_strict) {
+		if(!strict_threw_ && severity_ <= strict_level_ && break_strict){
 			stream | formatter() << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first << std::endl;
 			strict_threw_ = true;
 		}
@@ -463,10 +463,10 @@ void log_in_progress::operator|(const formatter& message)
 	std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
-	if(timestamp_) {
+	if(timestamp_){
 		auto now = std::chrono::system_clock::now();
 		stream_ << chrono::format_local_timestamp(now, "%Y%m%d %H:%M:%S"); // Truncates precision to seconds
-		if(precise_timestamp) {
+		if(precise_timestamp){
 			auto as_seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
 			stream_ << "." << std::setw(6) << fractional.count();
@@ -474,24 +474,24 @@ void log_in_progress::operator|(const formatter& message)
 		stream_ << " ";
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
-	if(auto_newline_) {
+	if(auto_newline_){
 		stream_ << std::endl;
 	}
 }
 
-void log_in_progress::set_indent(int level) {
+void log_in_progress::set_indent(int level){
 	indent_ = level;
 }
 
-void log_in_progress::enable_timestamp() {
+void log_in_progress::enable_timestamp(){
 	timestamp_ = true;
 }
 
-void log_in_progress::set_prefix(const std::string& prefix) {
+void log_in_progress::set_prefix(const std::string& prefix){
 	prefix_ = prefix;
 }
 
-void log_in_progress::set_auto_newline(bool auto_newline) {
+void log_in_progress::set_auto_newline(bool auto_newline){
 	auto_newline_ = auto_newline;
 }
 

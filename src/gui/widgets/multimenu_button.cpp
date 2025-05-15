@@ -69,7 +69,7 @@ multimenu_button::multimenu_button(const implementation::builder_multimenu_butto
 
 void multimenu_button::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -86,7 +86,7 @@ unsigned multimenu_button::get_state() const
 
 void multimenu_button::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -113,7 +113,7 @@ void multimenu_button::signal_handler_left_button_down(const event::ui_event eve
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
-	if(window) {
+	if(window){
 		window->mouse_capture();
 	}
 
@@ -159,18 +159,18 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 void multimenu_button::update_label()
 {
 	std::vector<t_string> selected;
-	for(std::size_t i = 0; i < toggle_states_.size() && i < values_.size(); i++) {
-		if(!toggle_states_[i]) {
+	for(std::size_t i = 0; i < toggle_states_.size() && i < values_.size(); i++){
+		if(!toggle_states_[i]){
 			continue;
 		}
 
 		selected.push_back(values_[i]["label"]);
 	}
 
-	if(selected.size() == values_.size()) {
+	if(selected.size() == values_.size()){
 		set_label(_("multimenu^All Selected"));
 	} else {
-		if(selected.size() > max_shown_) {
+		if(selected.size() > max_shown_){
 			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
 			// TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
@@ -184,7 +184,7 @@ void multimenu_button::update_label()
 
 void multimenu_button::update_config_from_toggle_states()
 {
-	for(unsigned i = 0; i < values_.size(); i++) {
+	for(unsigned i = 0; i < values_.size(); i++){
 		::config& c = values_[i];
 
 		c["checkbox"] = toggle_states_[i];
@@ -263,7 +263,7 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	, max_shown_(cfg["maximum_shown"].to_unsigned(1))
 	, options_()
 {
-	for(const auto& option : cfg.child_range("option")) {
+	for(const auto& option : cfg.child_range("option")){
 		options_.push_back(option);
 	}
 }
@@ -273,7 +273,7 @@ std::unique_ptr<widget> builder_multimenu_button::build() const
 	auto widget = std::make_unique<multimenu_button>(*this);
 
 	widget->set_max_shown(max_shown_);
-	if(!options_.empty()) {
+	if(!options_.empty()){
 		widget->set_values(options_);
 	}
 

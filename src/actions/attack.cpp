@@ -112,14 +112,14 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	const unit& u = *up;
 	const unit& opp = *oppp;
 	// Get the current state of the unit.
-	if(attack_num >= 0) {
+	if(attack_num >= 0){
 		weapon = u.attacks()[attack_num].shared_from_this();
 	}
 
-	if(u.hitpoints() < 0) {
+	if(u.hitpoints() < 0){
 		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations";
 		hp = 0;
-	} else if(u.hitpoints() > u.max_hitpoints()) {
+	} else if(u.hitpoints() > u.max_hitpoints()){
 		// If a unit has more hp than its maximum, the engine will fail with an
 		// assertion failure due to accessing the prob_matrix out of bounds.
 		hp = u.max_hitpoints();
@@ -128,7 +128,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Exit if no weapon.
-	if(!weapon) {
+	if(!weapon){
 		return;
 	}
 
@@ -136,7 +136,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
 	utils::optional<decltype(ctx)> opp_ctx;
 
-	if(opp_weapon) {
+	if(opp_weapon){
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
@@ -159,10 +159,10 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
-	if(plagues) {
+	if(plagues){
 		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
 
-		if(plague_type.empty()) {
+		if(plague_type.empty()){
 			plague_type = u.type().parent_id();
 		}
 	}
@@ -176,7 +176,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
 
 
-	if(opp.get_state("invulnerable")) {
+	if(opp.get_state("invulnerable")){
 		cth = 0;
 	}
 
@@ -195,7 +195,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
-	if(leader_bonus != 0) {
+	if(leader_bonus != 0){
 		damage_multiplier += leader_bonus;
 	}
 
@@ -206,12 +206,12 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	damage = round_damage(base_damage, damage_multiplier, 10000);
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
-	if(is_slowed) {
+	if(is_slowed){
 		damage = slow_damage;
 	}
 
 	// Compute drain amounts only if draining is possible.
-	if(drains) {
+	if(drains){
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		drain_percent = weapon->composite_value(weapon->get_specials_and_abilities("drains"), 50);
 	}
@@ -263,12 +263,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	, swarm_max(0)
 	, plague_type()
 {
-	if(!u_type || !opp_type) {
+	if(!u_type || !opp_type){
 		return;
 	}
 
 	// Get the current state of the unit.
-	if(u_type->hitpoints() < 0) {
+	if(u_type->hitpoints() < 0){
 		hp = 0;
 	} else {
 		hp = u_type->hitpoints();
@@ -279,7 +279,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	max_hp = (u_type->hitpoints());
 
 	// Exit if no weapon.
-	if(!weapon) {
+	if(!weapon){
 		return;
 	}
 
@@ -287,7 +287,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
 	utils::optional<decltype(ctx)> opp_ctx;
 
-	if(opp_weapon) {
+	if(opp_weapon){
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
@@ -303,9 +303,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
 		opp_type->undead_variation() != "null";
 
-	if(plagues) {
+	if(plagues){
 		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
-		if(plague_type.empty()) {
+		if(plague_type.empty()){
 			plague_type = u_type->parent_id();
 		}
 	}
@@ -327,7 +327,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	damage = round_damage(base_damage, damage_multiplier, 10000);
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
-	if(drains) {
+	if(drains){
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		drain_percent = weapon->composite_value(weapon->get_specials("drains"), 50);
 	}
@@ -375,7 +375,7 @@ void battle_context::simulate(const combatant* prev_def)
 	assert((attacker_combatant_.get() != nullptr) == (defender_combatant_.get() != nullptr));
 	assert(attacker_stats_);
 	assert(defender_stats_);
-	if(!attacker_combatant_) {
+	if(!attacker_combatant_){
 		attacker_combatant_.reset(new combatant(*attacker_stats_));
 		defender_combatant_.reset(new combatant(*defender_stats_, prev_def));
 		attacker_combatant_->fight(*defender_combatant_);
@@ -398,10 +398,10 @@ battle_context::battle_context(const unit_map& units,
 	, defender_combatant_(nullptr)
 {
 	//TODO: maybe check before dereferencing units.find(attacker_loc),units.find(defender_loc) ?
-	if(!attacker) {
+	if(!attacker){
 		attacker = units.find(attacker_loc).get_shared_ptr();
 	}
-	if(!defender) {
+	if(!defender){
 		defender = units.find(defender_loc).get_shared_ptr();
 	}
 	nonempty_unit_const_ptr n_attacker { attacker };
@@ -409,12 +409,12 @@ battle_context::battle_context(const unit_map& units,
 
 	const double harm_weight = 1.0 - aggression;
 
-	if(attacker_weapon == -1) {
+	if(attacker_weapon == -1){
 		*this = choose_attacker_weapon(
 			n_attacker, n_defender, attacker_loc, defender_loc, harm_weight, prev_def
 		);
 	}
-	else if(defender_weapon == -1) {
+	else if(defender_weapon == -1){
 		*this = choose_defender_weapon(
 			n_attacker, n_defender, attacker_weapon, attacker_loc, defender_loc, prev_def
 		);
@@ -489,11 +489,11 @@ bool battle_context::better_combat(const combatant& us_a,
 	a = them_a.hp_dist[0] - us_a.hp_dist[0] * harm_weight;
 	b = them_b.hp_dist[0] - us_b.hp_dist[0] * harm_weight;
 
-	if(a - b < -0.01) {
+	if(a - b < -0.01){
 		return false;
 	}
 
-	if(a - b > 0.01) {
+	if(a - b > 0.01){
 		return true;
 	}
 
@@ -512,11 +512,11 @@ bool battle_context::better_combat(const combatant& us_a,
 	a = (us_a.average_hp() - poison_a_us) * harm_weight + damage_a + poison_a_them;
 	b = (us_b.average_hp() - poison_b_us) * harm_weight + damage_b + poison_b_them;
 
-	if(a - b < -0.01) {
+	if(a - b < -0.01){
 		return false;
 	}
 
-	if(a - b > 0.01) {
+	if(a - b > 0.01){
 		return true;
 	}
 
@@ -535,40 +535,40 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(size_t i = 0; i < attacker->attacks().size(); ++i) {
+	for(size_t i = 0; i < attacker->attacks().size(); ++i){
 		const attack_type& att = attacker->attacks()[i];
 
-		if(att.attack_weight() <= 0) {
+		if(att.attack_weight() <= 0){
 			continue;
 		}
 		battle_context bc = choose_defender_weapon(attacker, defender, i, attacker_loc, defender_loc, prev_def);
 		//choose_defender_weapon will always choose the weapon that disabels the attackers weapon if possible.
-		if(bc.attacker_stats_->disable) {
+		if(bc.attacker_stats_->disable){
 			continue;
 		}
 		choices.emplace_back(std::move(bc));
 	}
 
-	if(choices.empty()) {
+	if(choices.empty()){
 		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1);
 	}
 
-	if(choices.size() == 1) {
+	if(choices.size() == 1){
 		return std::move(choices[0]);
 	}
 
 	// Multiple options: simulate them, save best.
 	battle_context* best_choice = nullptr;
-	for(auto& choice : choices) {
+	for(auto& choice : choices){
 		// If choose_defender_weapon didn't simulate, do so now.
 		choice.simulate(prev_def);
 
-		if(!best_choice || choice.better_attack(*best_choice, harm_weight)) {
+		if(!best_choice || choice.better_attack(*best_choice, harm_weight)){
 			best_choice = &choice;
 		}
 	}
 
-	if(best_choice) {
+	if(best_choice){
 		return std::move(*best_choice);
 	}
 	else {
@@ -588,33 +588,33 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attacker->attacks()[attacker_weapon];
-	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
+	auto no_weapon = [&](){ return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(size_t i = 0; i < defender->attacks().size(); ++i) {
+	for(size_t i = 0; i < defender->attacks().size(); ++i){
 		const attack_type& def = defender->attacks()[i];
-		if(def.range() != att.range() || def.defense_weight() <= 0) {
+		if(def.range() != att.range() || def.defense_weight() <= 0){
 			//no need to calculate the battle_context here.
 			continue;
 		}
 		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i);
 
-		if(bc.defender_stats_->disable) {
+		if(bc.defender_stats_->disable){
 			continue;
 		}
-		if(bc.attacker_stats_->disable) {
+		if(bc.attacker_stats_->disable){
 			//the defenders attack disables the attakers attack: always choose this one.
 			return bc;
 		}
 		choices.emplace_back(std::move(bc));
 	}
 
-	if(choices.empty()) {
+	if(choices.empty()){
 		return no_weapon();
 	}
 
-	if(choices.size() == 1) {
+	if(choices.size() == 1){
 		//only one usable weapon, don't simulate
 		return std::move(choices[0]);
 	}
@@ -628,17 +628,17 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	{
 		double max_weight = 0.0;
 
-		for(const auto& choice : choices) {
+		for(const auto& choice : choices){
 			const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
 
-			if(def.defense_weight() >= max_weight) {
+			if(def.defense_weight() >= max_weight){
 				const battle_context_unit_stats& def_stats = *choice.defender_stats_;
 
 				max_weight = def.defense_weight();
 				int rating = static_cast<int>(
 						def_stats.num_blows * def_stats.damage * def_stats.chance_to_hit * def.defense_weight());
 
-				if(def.defense_weight() > max_weight || rating < min_rating) {
+				if(def.defense_weight() > max_weight || rating < min_rating){
 					min_rating = rating;
 				}
 			}
@@ -647,7 +647,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 
 	battle_context* best_choice = nullptr;
 	// Multiple options: simulate them, save best.
-	for(auto& choice : choices) {
+	for(auto& choice : choices){
 		const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
 
 		choice.simulate(prev_def);
@@ -657,7 +657,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 				choice.defender_stats_->num_blows * choice.defender_stats_->damage * choice.defender_stats_->chance_to_hit * def.defense_weight());
 
 		//FIXME: make sure there is no mostake in the better_combat call-
-		if(simple_rating >= min_rating && (!best_choice || choice.better_defense(*best_choice, 1.0))) {
+		if(simple_rating >= min_rating && (!best_choice || choice.better_defense(*best_choice, 1.0))){
 			best_choice = &choice;
 		}
 	}
@@ -675,20 +675,20 @@ namespace
 void refresh_weapon_index(int& weap_index, const std::string& weap_id, const attack_itors& attacks)
 {
 	// No attacks to choose from.
-	if(attacks.empty()) {
+	if(attacks.empty()){
 		weap_index = -1;
 		return;
 	}
 
 	// The currently selected attack fits.
-	if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
+	if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id){
 		return;
 	}
 
 	// Look up the weapon by id.
-	if(!weap_id.empty()) {
-		for(int i = 0; i < static_cast<int>(attacks.size()); ++i) {
-			if(attacks[i].id() == weap_id) {
+	if(!weap_id.empty()){
+		for(int i = 0; i < static_cast<int>(attacks.size()); ++i){
+			if(attacks[i].id() == weap_id){
 				weap_index = i;
 				return;
 			}
@@ -788,7 +788,7 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 	, xp_(0)
 {
 	unit_map::iterator i = units_.find(loc_);
-	if(!i.valid()) {
+	if(!i.valid()){
 		return;
 	}
 
@@ -805,7 +805,7 @@ unit& attack::unit_info::get_unit()
 unit_ptr attack::unit_info::get_unit_ptr()
 {
 	unit_map::iterator i = units_.find(loc_);
-	if(i.valid() && i->underlying_id() == id_) {
+	if(i.valid() && i->underlying_id() == id_){
 		return i.get_shared_ptr();
 	}
 	return unit_ptr();
@@ -849,7 +849,7 @@ attack::attack(const map_location& attacker,
 	, prng_attacker_()
 	, prng_defender_()
 {
-	if(use_prng_) {
+	if(use_prng_){
 		LOG_NG << "Using experimental PRNG for combat";
 	}
 }
@@ -871,8 +871,8 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 	// Need these to ensure weapon filters work correctly
 	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
-	if(a_stats_->weapon != nullptr && a_.valid()) {
-		if(d_stats_->weapon != nullptr && d_.valid()) {
+	if(a_stats_->weapon != nullptr && a_.valid()){
+		if(d_stats_->weapon != nullptr && d_.valid()){
 			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_stats_->weapon));
 		} else {
 			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, a_.loc_, true));
@@ -880,8 +880,8 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 		a_stats_->weapon->write(a_weapon_cfg);
 	}
 
-	if(d_stats_->weapon != nullptr && d_.valid()) {
-		if(a_stats_->weapon != nullptr && a_.valid()) {
+	if(d_stats_->weapon != nullptr && d_.valid()){
+		if(a_stats_->weapon != nullptr && a_.valid()){
 			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_stats_->weapon));
 		} else {
 			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, d_.loc_, false));
@@ -889,15 +889,15 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 		d_stats_->weapon->write(d_weapon_cfg);
 	}
 
-	if(a_weapon_cfg["name"].empty()) {
+	if(a_weapon_cfg["name"].empty()){
 		a_weapon_cfg["name"] = "none";
 	}
 
-	if(d_weapon_cfg["name"].empty()) {
+	if(d_weapon_cfg["name"].empty()){
 		d_weapon_cfg["name"] = "none";
 	}
 
-	if(n == "attack_end") {
+	if(n == "attack_end"){
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML.
 		resources::game_events->pump().fire(n, a_.loc_, d_.loc_, ev_data);
 		return;
@@ -905,7 +905,7 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 
 	// damage_inflicted is set in these events.
 	// TODO: should we set this value from unit_info::damage, or continue using the WML variable?
-	if(n == "attacker_hits" || n == "defender_hits" || n == "unit_hits") {
+	if(n == "attacker_hits" || n == "defender_hits" || n == "unit_hits"){
 		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
 	}
 
@@ -922,10 +922,10 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 
 	if(wml_aborted || !a_.valid() || !d_.valid()
 		|| !resources::gameboard->get_team(a_.get_unit().side()).is_enemy(d_.get_unit().side())
-	) {
+	){
 		actions::recalculate_fog(defender_side);
 
-		if(update_display_) {
+		if(update_display_){
 			display::get_singleton()->redraw_minimap();
 		}
 
@@ -937,15 +937,15 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 void attack::refresh_bc()
 {
 	// Fix index of weapons.
-	if(a_.valid()) {
+	if(a_.valid()){
 		refresh_weapon_index(a_.weapon_, a_.weap_id_, a_.get_unit().attacks());
 	}
 
-	if(d_.valid()) {
+	if(d_.valid()){
 		refresh_weapon_index(d_.weapon_, d_.weap_id_, d_.get_unit().attacks());
 	}
 
-	if(!a_.valid() || !d_.valid()) {
+	if(!a_.valid() || !d_.valid()){
 		// Fix pointer to weapons.
 		const_cast<battle_context_unit_stats*>(a_stats_)->weapon
 				= a_.valid() && a_.weapon_ >= 0 ? a_.get_unit().attacks()[a_.weapon_].shared_from_this() : nullptr;
@@ -982,25 +982,25 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 
 	int ran_num;
 
-	if(use_prng_) {
+	if(use_prng_){
 
 		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;
 
-		if(prng_seq.empty()) {
+		if(prng_seq.empty()){
 			const int ntotal = attacker.cth_*attacker.n_attacks_;
 			int num_hits = ntotal/100;
 			const int additional_hit_chance = ntotal%100;
-			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance) {
+			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance){
 				++num_hits;
 			}
 
 			std::vector<int> indexes;
-			for(int i = 0; i != attacker.n_attacks_; ++i) {
+			for(int i = 0; i != attacker.n_attacks_; ++i){
 				prng_seq.push_back(false);
 				indexes.push_back(i);
 			}
 
-			for(int i = 0; i != num_hits; ++i) {
+			for(int i = 0; i != num_hits; ++i){
 				int n = randomness::generator->get_random_int(0, static_cast<int>(indexes.size())-1);
 				prng_seq[indexes[n]] = true;
 				indexes.erase(indexes.begin() + n);
@@ -1016,7 +1016,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	bool hits = (ran_num < attacker.cth_);
 
 	int damage = 0;
-	if(hits) {
+	if(hits){
 		damage = attacker.damage_;
 		resources::gamedata->get_variable("damage_inflicted") = damage;
 	}
@@ -1028,7 +1028,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	config replay_results;
 	bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
 
-	if(!equals_replay) {
+	if(!equals_replay){
 		check_replay_attack_result(hits, ran_num, damage, replay_results, attacker);
 	}
 
@@ -1038,14 +1038,14 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	// expected damage = damage potential * chance to hit (as a percentage)
 	double expected_damage = damage_done * attacker.cth_ * 0.01;
 
-	if(attacker_turn) {
+	if(attacker_turn){
 		stats.attack_expected_damage(expected_damage, 0);
 	} else {
 		stats.attack_expected_damage(0, expected_damage);
 	}
 
 	int drains_damage = 0;
-	if(hits && attacker_stats->drains) {
+	if(hits && attacker_stats->drains){
 		drains_damage = damage_done * attacker_stats->drain_percent / 100 + attacker_stats->drain_constant;
 
 		// don't drain so much that the attacker gets more than his maximum hitpoints
@@ -1056,26 +1056,26 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		drains_damage = std::max<int>(drains_damage, 1 - attacker.get_unit().hitpoints());
 	}
 
-	if(update_display_) {
+	if(update_display_){
 		std::ostringstream float_text;
 		std::vector<std::string> extra_hit_sounds;
 
-		if(hits) {
+		if(hits){
 			const unit& defender_unit = defender.get_unit();
-			if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
+			if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)){
 				float_text << (defender_unit.gender() == unit_race::FEMALE ? _("female^poisoned") : _("poisoned"))
 						   << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::poisoned);
 			}
 
-			if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
+			if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)){
 				float_text << (defender_unit.gender() == unit_race::FEMALE ? _("female^slowed") : _("slowed")) << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::slowed);
 			}
 
-			if(attacker_stats->petrifies) {
+			if(attacker_stats->petrifies){
 				float_text << (defender_unit.gender() == unit_race::FEMALE ? _("female^petrified") : _("petrified"))
 						   << '\n';
 
@@ -1097,7 +1097,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	bool dies = defender.get_unit().take_hit(damage);
 	LOG_NG << "defender took " << damage << (dies ? " and died\n" : "\n");
 
-	if(attacker_turn) {
+	if(attacker_turn){
 		stats.attack_result(hits
 			? (dies
 				? statistics_attack_context::KILLS
@@ -1120,7 +1120,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	// There was also a attribute cfg["unit_hit"] which was never used so i deleted.
 	equals_replay = checkup_instance->local_checkup(config{"dies", dies}, replay_results);
 
-	if(!equals_replay) {
+	if(!equals_replay){
 		bool results_dies = replay_results["dies"].to_bool();
 
 		errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() << ": the data source says the "
@@ -1131,18 +1131,18 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		dies = results_dies;
 
 		// Set hitpoints to 0 so later checks don't invalidate the death.
-		if(results_dies) {
+		if(results_dies){
 			defender.get_unit().set_hitpoints(0);
 		}
 
 		OOS_error_ = true;
 	}
 
-	if(hits) {
+	if(hits){
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
 			fire_event_impl("unit_hits", !attacker_turn);
-		} catch(const attack_end_exception&) {
+		} catch(const attack_end_exception&){
 			refresh_bc();
 			return false;
 		}
@@ -1150,7 +1150,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
 			fire_event_impl("unit_misses", !attacker_turn);
-		} catch(const attack_end_exception&) {
+		} catch(const attack_end_exception&){
 			refresh_bc();
 			return false;
 		}
@@ -1160,36 +1160,36 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 
 	bool attacker_dies = false;
 
-	if(drains_damage > 0) {
+	if(drains_damage > 0){
 		attacker.get_unit().heal(drains_damage);
-	} else if(drains_damage < 0) {
+	} else if(drains_damage < 0){
 		attacker_dies = attacker.get_unit().take_hit(-drains_damage);
 	}
 
-	if(dies) {
+	if(dies){
 		unit_killed(attacker, defender, attacker_stats, defender_stats, false);
 		update_fog = true;
 	}
 
-	if(attacker_dies) {
+	if(attacker_dies){
 		unit_killed(defender, attacker, defender_stats, attacker_stats, true);
 		(attacker_turn ? update_att_fog_ : update_def_fog_) = true;
 	}
 
-	if(dies) {
+	if(dies){
 		update_minimap_ = true;
 		return false;
 	}
 
-	if(hits) {
+	if(hits){
 		unit& defender_unit = defender.get_unit();
 
-		if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
+		if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)){
 			defender_unit.set_state(unit::STATE_POISONED, true);
 			LOG_NG << "defender poisoned";
 		}
 
-		if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
+		if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)){
 			defender_unit.set_state(unit::STATE_SLOWED, true);
 			update_fog = true;
 			defender.damage_ = defender_stats->slow_damage;
@@ -1197,7 +1197,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		}
 
 		// If the defender is petrified, the fight stops immediately
-		if(attacker_stats->petrifies) {
+		if(attacker_stats->petrifies){
 			defender_unit.set_state(unit::STATE_PETRIFIED, true);
 			update_fog = true;
 			attacker.n_attacks_ = 0;
@@ -1208,7 +1208,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	}
 
 	// Delay until here so that poison and slow go through
-	if(attacker_dies) {
+	if(attacker_dies){
 		update_minimap_ = true;
 		return false;
 	}
@@ -1217,11 +1217,11 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 
 	// If an event removed a unit's weapon, set number of remaining attacks to zero
 	// for that unit, but let the other unit continue
-	if (attacker_stats->weapon == nullptr){
+	if(attacker_stats->weapon == nullptr){
         attacker.n_attacks_ = 0;
         attacker.orig_attacks_ = 0;
 	}
-	if (defender_stats->weapon == nullptr){
+	if(defender_stats->weapon == nullptr){
         defender.n_attacks_ = 0;
         defender.orig_attacks_ = 0;
 	}
@@ -1253,11 +1253,11 @@ void attack::unit_killed(unit_info& attacker,
 	config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ? attacker_stats->weapon->to_config() : config();
 	config d_weapon_cfg = defender_stats->weapon && defender.valid() ? defender_stats->weapon->to_config() : config();
 
-	if(a_weapon_cfg["name"].empty()) {
+	if(a_weapon_cfg["name"].empty()){
 		a_weapon_cfg["name"] = "none";
 	}
 
-	if(d_weapon_cfg["name"].empty()) {
+	if(d_weapon_cfg["name"].empty()){
 		d_weapon_cfg["name"] = "none";
 	}
 
@@ -1268,11 +1268,11 @@ void attack::unit_killed(unit_info& attacker,
 	refresh_bc();
 
 	// WML has invalidated the dying unit, abort.
-	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
+	if(!defender.valid() || defender.get_unit().hitpoints() > 0){
 		return;
 	}
 
-	if(!attacker.valid()) {
+	if(!attacker.valid()){
 		unit_display::unit_die(
 			defender.loc_,
 			defender.get_unit(),
@@ -1293,7 +1293,7 @@ void attack::unit_killed(unit_info& attacker,
 	resources::game_events->pump().fire("die", death_loc, attacker_loc, dat);
 	refresh_bc();
 
-	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
+	if(!defender.valid() || defender.get_unit().hitpoints() > 0){
 		// WML has invalidated the dying unit, abort
 		return;
 	}
@@ -1302,10 +1302,10 @@ void attack::unit_killed(unit_info& attacker,
 	resources::whiteboard->on_kill_unit();
 
 	// Plague units make new units on the target hex.
-	if(attacker.valid() && attacker_stats->plagues && !drain_killed) {
+	if(attacker.valid() && attacker_stats->plagues && !drain_killed){
 		LOG_NG << "trying to reanimate " << attacker_stats->plague_type;
 
-		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)) {
+		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)){
 			LOG_NG << "found unit type:" << reanimator->id();
 
 			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
@@ -1314,7 +1314,7 @@ void attack::unit_killed(unit_info& attacker,
 			newunit->set_facing(map_location::get_opposite_direction(attacker.get_unit().facing()));
 
 			// Apply variation
-			if(undead_variation != "null") {
+			if(undead_variation != "null"){
 				config mod;
 				config& variation = mod.add_child("effect");
 				variation["apply_to"] = "variation";
@@ -1331,7 +1331,7 @@ void attack::unit_killed(unit_info& attacker,
 
 			prefs::get().encountered_units().insert(newunit->type_id());
 
-			if(update_display_) {
+			if(update_display_){
 				display::get_singleton()->invalidate(death_loc);
 			}
 		}
@@ -1345,18 +1345,18 @@ void attack::perform()
 	// Stop the user from issuing any commands while the units are fighting.
 	const events::command_disabler disable_commands;
 
-	if(!a_.valid() || !d_.valid()) {
+	if(!a_.valid() || !d_.valid()){
 		return;
 	}
 
 	// no attack weapon => stop here and don't attack
-	if(a_.weapon_ < 0) {
+	if(a_.weapon_ < 0){
 		a_.get_unit().set_attacks(a_.get_unit().attacks_left() - 1);
 		a_.get_unit().set_movement(-1, true);
 		return;
 	}
 
-	if(a_.get_unit().attacks_left() <= 0) {
+	if(a_.get_unit().attacks_left() <= 0){
 		LOG_NG << "attack::perform(): not enough ap.";
 		return;
 	}
@@ -1366,11 +1366,11 @@ void attack::perform()
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 
-	if(a_stats_->weapon) {
+	if(a_stats_->weapon){
 		a_.weap_id_ = a_stats_->weapon->id();
 	}
 
-	if(d_stats_->weapon) {
+	if(d_stats_->weapon){
 		d_.weap_id_ = d_stats_->weapon->id();
 	}
 
@@ -1379,7 +1379,7 @@ void attack::perform()
 
 	try {
 		fire_event("pre_attack");
-	} catch(const attack_end_exception&) {
+	} catch(const attack_end_exception&){
 		return;
 	}
 
@@ -1395,14 +1395,14 @@ void attack::perform()
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_UNCOVERED, true);
 
-	if(a_stats_->disable) {
+	if(a_stats_->disable){
 		LOG_NG << "attack::perform(): tried to attack with a disabled attack.";
 		return;
 	}
 
 	try {
 		fire_event("attack");
-	} catch(const attack_end_exception&) {
+	} catch(const attack_end_exception&){
 		return;
 	}
 
@@ -1430,12 +1430,12 @@ void attack::perform()
 	// Play the pre-fight animation
 	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
-	while(true) {
+	while(true){
 		DBG_NG << "start of attack loop...";
 		++abs_n_attack_;
 
-		if(a_.n_attacks_ > 0 && !defender_strikes_first) {
-			if(!perform_hit(true, attack_stats)) {
+		if(a_.n_attacks_ > 0 && !defender_strikes_first){
+			if(!perform_hit(true, attack_stats)){
 				DBG_NG << "broke from attack loop on attacker turn";
 				break;
 			}
@@ -1445,8 +1445,8 @@ void attack::perform()
 		defender_strikes_first = false;
 		++abs_n_defend_;
 
-		if(d_.n_attacks_ > 0) {
-			if(!perform_hit(false, attack_stats)) {
+		if(d_.n_attacks_ > 0){
+			if(!perform_hit(false, attack_stats)){
 				DBG_NG << "broke from attack loop on defender turn";
 				break;
 			}
@@ -1454,14 +1454,14 @@ void attack::perform()
 
 		// Continue the fight to death; if one of the units got petrified,
 		// either n_attacks or n_defends is -1
-		if(rounds > 0 && d_.n_attacks_ == 0 && a_.n_attacks_ == 0) {
+		if(rounds > 0 && d_.n_attacks_ == 0 && a_.n_attacks_ == 0){
 			a_.n_attacks_ = a_.orig_attacks_;
 			d_.n_attacks_ = d_.orig_attacks_;
 			--rounds;
 			defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 		}
 
-		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
+		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0){
 			fire_event("attack_end");
 			refresh_bc();
 			break;
@@ -1471,22 +1471,22 @@ void attack::perform()
 	// Set by attacker_hits and defender_hits and unit_hits events.
 	resources::gamedata->clear_variable("damage_inflicted");
 
-	if(update_def_fog_) {
+	if(update_def_fog_){
 		actions::recalculate_fog(defender_side);
 	}
 
 	// TODO: if we knew the viewing team, we could skip this display update
-	if(update_minimap_ && update_display_) {
+	if(update_minimap_ && update_display_){
 		display::get_singleton()->redraw_minimap();
 	}
 
-	if(a_.valid()) {
+	if(a_.valid()){
 		unit& u = a_.get_unit();
 		u.anim_comp().set_standing();
 		u.set_experience(u.experience() + a_.xp_);
 	}
 
-	if(d_.valid()) {
+	if(d_.valid()){
 		unit& u = d_.get_unit();
 		u.anim_comp().set_standing();
 		u.set_experience(u.experience() + d_.xp_);
@@ -1495,13 +1495,13 @@ void attack::perform()
 	unit_display::unit_sheath_weapon(a_.loc_, a_.get_unit_ptr(), a_stats_->weapon, d_stats_->weapon,
 			d_.loc_, d_.get_unit_ptr());
 
-	if(update_display_) {
+	if(update_display_){
 		game_display::get_singleton()->invalidate_unit();
 		display::get_singleton()->invalidate(a_.loc_);
 		display::get_singleton()->invalidate(d_.loc_);
 	}
 
-	if(OOS_error_) {
+	if(OOS_error_){
 		replay::process_error(errbuf_.str());
 	}
 }
@@ -1529,7 +1529,7 @@ void attack::check_replay_attack_result(
 	OOS_error_ = true;
 #endif
 
-	if(results_chance != attacker.cth_) {
+	if(results_chance != attacker.cth_){
 		errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 				<< ": chance to hit is inconsistent. Data source: " << results_chance
 				<< "; Calculation: " << attacker.cth_ << " (over-riding game calculations with data source results)\n";
@@ -1537,7 +1537,7 @@ void attack::check_replay_attack_result(
 		OOS_error_ = true;
 	}
 
-	if(results_hits != hits) {
+	if(results_hits != hits){
 		errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() << ": the data source says the hit was "
 				<< (results_hits ? "successful" : "unsuccessful") << ", while in-game calculations say the hit was "
 				<< (hits ? "successful" : "unsuccessful") << " random number: " << ran_num << " = " << (ran_num % 100)
@@ -1546,7 +1546,7 @@ void attack::check_replay_attack_result(
 		OOS_error_ = true;
 	}
 
-	if(results_damage != damage) {
+	if(results_damage != damage){
 		errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() << ": the data source says the hit did "
 				<< results_damage << " damage, while in-game calculations show the hit doing " << damage
 				<< " damage (over-riding game calculations with data source results)\n";
@@ -1580,12 +1580,12 @@ void attack_unit_and_advance(const map_location& attacker,
 	attack_unit(attacker, defender, attack_with, defend_with, update_display);
 
 	unit_map::const_iterator atku = resources::gameboard->units().find(attacker);
-	if(atku != resources::gameboard->units().end()) {
+	if(atku != resources::gameboard->units().end()){
 		advance_unit_at(advance_unit_params(attacker));
 	}
 
 	unit_map::const_iterator defu = resources::gameboard->units().find(defender);
-	if(defu != resources::gameboard->units().end()) {
+	if(defu != resources::gameboard->units().end()){
 		advance_unit_at(advance_unit_params(defender));
 	}
 }
@@ -1621,7 +1621,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 {
 	int bonus;
 
-	switch(alignment) {
+	switch(alignment){
 	case unit_alignments::type::lawful:
 		bonus = lawful_bonus;
 		break;
@@ -1638,7 +1638,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 		bonus = 0;
 	}
 
-	if(is_fearless) {
+	if(is_fearless){
 		bonus = std::max<int>(bonus, 0);
 	}
 
@@ -1651,41 +1651,41 @@ bool backstab_check(const map_location& attacker_loc,
 		const std::vector<team>& teams)
 {
 	const unit_map::const_iterator defender = units.find(defender_loc);
-	if(defender == units.end()) {
+	if(defender == units.end()){
 		return false; // No defender
 	}
 
 	const auto adj = get_adjacent_tiles(defender_loc);
 	unsigned i;
 
-	for(i = 0; i < adj.size(); ++i) {
-		if(adj[i] == attacker_loc) {
+	for(i = 0; i < adj.size(); ++i){
+		if(adj[i] == attacker_loc){
 			break;
 		}
 	}
 
-	if(i >= 6) {
+	if(i >= 6){
 		return false; // Attack not from adjacent location
 	}
 
 	const unit_map::const_iterator opp = units.find(adj[(i + 3) % 6]);
 
 	// No opposite unit.
-	if(opp == units.end()) {
+	if(opp == units.end()){
 		return false;
 	}
 
-	if(opp->incapacitated()) {
+	if(opp->incapacitated()){
 		return false;
 	}
 
 	// If sides aren't valid teams, then they are enemies.
-	if(std::size_t(defender->side() - 1) >= teams.size() || std::size_t(opp->side() - 1) >= teams.size()) {
+	if(std::size_t(defender->side() - 1) >= teams.size() || std::size_t(opp->side() - 1) >= teams.size()){
 		return true;
 	}
 
 	// Defender and opposite are enemies.
-	if(teams[defender->side() - 1].is_enemy(opp->side())) {
+	if(teams[defender->side() - 1].is_enemy(opp->side())){
 		return true;
 	}
 

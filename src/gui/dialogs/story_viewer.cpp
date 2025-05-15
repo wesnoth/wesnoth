@@ -70,7 +70,7 @@ story_viewer::story_viewer(const std::string& scenario_name, const config& cfg_p
 
 void story_viewer::clear_image_timer()
 {
-	if(timer_id_ != 0) {
+	if(timer_id_ != 0){
 		remove_timer(timer_id_);
 		timer_id_ = 0;
 	}
@@ -124,7 +124,7 @@ void story_viewer::display_part()
 	//
 	// Music and sound
 	//
-	if(!current_part_->music().empty()) {
+	if(!current_part_->music().empty()){
 		config music_config;
 		music_config["name"] = current_part_->music();
 		music_config["ms_after"] = 2000;
@@ -133,12 +133,12 @@ void story_viewer::display_part()
 		sound::play_music_config(music_config);
 	}
 
-	if(!current_part_->sound().empty()) {
+	if(!current_part_->sound().empty()){
 		sound::play_sound(current_part_->sound());
 	}
 
 	sound::stop_sound(VOICE_SOUND_SOURCE_ID);
-	if(!current_part_->voice().empty()) {
+	if(!current_part_->voice().empty()){
 		sound::play_sound_positioned(current_part_->voice(), VOICE_SOUND_SOURCE_ID, 0, 0);
 	}
 
@@ -150,7 +150,7 @@ void story_viewer::display_part()
 	bool has_background = false;
 	config* base_layer = nullptr;
 
-	for(const auto& layer : current_part_->get_background_layers()) {
+	for(const auto& layer : current_part_->get_background_layers()){
 		has_background |= !layer.file().empty();
 
 		const bool preserve_ratio = layer.keep_aspect_ratio();
@@ -167,27 +167,27 @@ void story_viewer::display_part()
 		std::string x_formula;
 		std::string y_formula;
 
-		if(tile_h) {
+		if(tile_h){
 			x_formula = "0";
 		} else {
 			x_formula = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
 		}
 
-		if(tile_v) {
+		if(tile_v){
 			y_formula = "0";
 		} else {
 			y_formula = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
 		}
 
-		if(layer.scale_horizontally() && preserve_ratio) {
+		if(layer.scale_horizontally() && preserve_ratio){
 			height_formula = "(min((image_original_height * width  / image_original_width), height))";
-		} else if(layer.scale_vertically() || tile_v) {
+		} else if(layer.scale_vertically() || tile_v){
 			height_formula = "(height)";
 		}
 
-		if(layer.scale_vertically() && preserve_ratio) {
+		if(layer.scale_vertically() && preserve_ratio){
 			width_formula  = "(min((image_original_width  * height / image_original_height), width))";
-		} else if(layer.scale_horizontally() || tile_h) {
+		} else if(layer.scale_horizontally() || tile_h){
 			width_formula  = "(width)";
 		}
 
@@ -200,7 +200,7 @@ void story_viewer::display_part()
 
 		config& layer_image = cfg.add_child("image", image);
 
-		if(base_layer == nullptr || layer.is_base_layer()) {
+		if(base_layer == nullptr || layer.is_base_layer()){
 			base_layer = &layer_image;
 		}
 	}
@@ -215,7 +215,7 @@ void story_viewer::display_part()
 	 * layer was found (which would be the case if no backgrounds were provided at all), simply set
 	 * some sane defaults directly.
 	 */
-	if(base_layer != nullptr) {
+	if(base_layer != nullptr){
 		(*base_layer)["actions"] = R"((
 			[
 				set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
@@ -247,7 +247,7 @@ void story_viewer::display_part()
 	std::string title_text = current_part_->title();
 	bool showing_title;
 
-	if(current_part_->show_title() && !title_text.empty()) {
+	if(current_part_->show_title() && !title_text.empty()){
 		showing_title = true;
 
 		PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
@@ -268,7 +268,7 @@ void story_viewer::display_part()
 
 	std::string new_panel_mode;
 
-	switch(current_part_->story_text_location()) {
+	switch(current_part_->story_text_location()){
 
 		case storyscreen::part::BLOCK_TOP:
 			new_panel_mode = "top";
@@ -295,7 +295,7 @@ void story_viewer::display_part()
 
 	const std::string& part_text = current_part_->text();
 
-	if(part_text.empty() || !has_background) {
+	if(part_text.empty() || !has_background){
 		// No text or no background for this part, hide the background layer.
 		text_stack.select_layer(LAYER_TEXT);
 	} else if(text_stack.current_layer() != -1)  {
@@ -327,7 +327,7 @@ void story_viewer::display_part()
 	//
 	// TODO: in the old GUI1 dialog, floating images delayed the appearance of the story panel until
 	//       drawing was finished. Might be worth looking into restoring that.
-	if(!floating_images.empty()) {
+	if(!floating_images.empty()){
 		draw_floating_image(floating_images.begin(), part_index_);
 	}
 }
@@ -338,7 +338,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 	canvas& window_canvas = get_canvas(0);
 
 	// If the current part has changed or we're out of images to draw, exit the draw loop.
-	while((this_part_index == part_index_) && (image_iter != images.end())) {
+	while((this_part_index == part_index_) && (image_iter != images.end())){
 		const auto& floating_image = *image_iter;
 		++image_iter;
 
@@ -349,7 +349,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin_x";
 		y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin_y";
 
-		if(floating_image.centered()) {
+		if(floating_image.centered()){
 			x_ss << " - (image_width  / 2)";
 			y_ss << " - (image_height / 2)";
 		}
@@ -362,7 +362,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["y"] = y_ss.str();
 
 		// Width and height don't need to be set unless the image needs to be scaled.
-		if(floating_image.resize_with_background()) {
+		if(floating_image.resize_with_background()){
 			image["w"] = "(image_original_width * base_scale_x)";
 			image["h"] = "(image_original_height * base_scale_y)";
 		}
@@ -378,7 +378,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 
 		// If a delay is specified, schedule the next image draw and break out of the loop.
 		const auto& draw_delay = floating_image.display_delay();
-		if(draw_delay != std::chrono::milliseconds{0}) {
+		if(draw_delay != std::chrono::milliseconds{0}){
 			// This must be a non-repeating timer
 			timer_id_ = add_timer(draw_delay, std::bind(&story_viewer::draw_floating_image, this, image_iter, this_part_index), false);
 			return;
@@ -391,11 +391,11 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 {
 	// If a button is pressed while fading in, abort and set alpha to full opaque.
-	if(fade_state_ == FADING_IN) {
+	if(fade_state_ == FADING_IN){
 		halt_fade_draw();
 
 		// Only set full alpha if Forward was pressed.
-		if(direction == DIR_FORWARD) {
+		if(direction == DIR_FORWARD){
 			find_widget<scroll_label>("part_text").set_text_alpha(ALPHA_OPAQUE);
 			flag_stack_as_dirty();
 			return;
@@ -403,7 +403,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 	}
 
 	// If a button is pressed while fading out, skip and show next part.
-	if(fade_state_ == FADING_OUT) {
+	if(fade_state_ == FADING_OUT){
 		display_part();
 		return;
 	}
@@ -413,12 +413,12 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 	part_index_ = (direction == DIR_FORWARD ? part_index_ + 1 : part_index_ -1);
 
 	// If we've viewed all the parts, close the dialog.
-	if(part_index_ >= controller_.max_parts()) {
+	if(part_index_ >= controller_.max_parts()){
 		close();
 		return;
 	}
 
-	if(part_index_ < 0) {
+	if(part_index_ < 0){
 		part_index_ = 0;
 	}
 
@@ -439,9 +439,9 @@ void story_viewer::key_press_callback(const SDL_Keycode key)
 		   key == SDLK_BACKSPACE
 		|| key == SDLK_LEFT;
 
-	if(next_keydown) {
+	if(next_keydown){
 		nav_button_callback(DIR_FORWARD);
-	} else if(back_keydown) {
+	} else if(back_keydown){
 		nav_button_callback(DIR_BACKWARDS);
 	}
 }
@@ -470,22 +470,22 @@ void story_viewer::update()
 {
 	modal_dialog::update();
 
-	if(next_draw_ && SDL_GetTicks() < next_draw_) {
+	if(next_draw_ && SDL_GetTicks() < next_draw_){
 		return;
 	}
 
-	if(fade_state_ == NOT_FADING) {
+	if(fade_state_ == NOT_FADING){
 		return;
 	}
 
 	// If we've faded fully in...
-	if(fade_state_ == FADING_IN && fade_step_ > 10) {
+	if(fade_state_ == FADING_IN && fade_step_ > 10){
 		halt_fade_draw();
 		return;
 	}
 
 	// If we've faded fully out...
-	if(fade_state_ == FADING_OUT && fade_step_ < 0) {
+	if(fade_state_ == FADING_OUT && fade_step_ < 0){
 		halt_fade_draw();
 
 		display_part();
@@ -498,9 +498,9 @@ void story_viewer::update()
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	flag_stack_as_dirty();
 
-	if(fade_state_ == FADING_IN) {
+	if(fade_state_ == FADING_IN){
 		fade_step_ ++;
-	} else if(fade_state_ == FADING_OUT) {
+	} else if(fade_state_ == FADING_OUT){
 		fade_step_ --;
 	}
 

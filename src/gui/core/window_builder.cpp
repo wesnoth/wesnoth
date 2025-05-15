@@ -40,7 +40,7 @@ builder_widget::builder_widget(const config& cfg)
 	, debug_border_color(color_t::from_rgba_string(cfg["debug_border_color"].str()))
 {
 	// TODO: move to a `decode` function?
-	switch(const int dbm = cfg["debug_border_mode"].to_int(0); dbm) {
+	switch(const int dbm = cfg["debug_border_mode"].to_int(0); dbm){
 	case 0:
 		debug_border_mode = widget::debug_border::none;
 		break;
@@ -60,28 +60,28 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	VALIDATE(cfg.all_children_count() == 1, "Grid cell does not have exactly 1 child.");
 	auto [widget_key, widget_cfg] = *cfg.ordered_begin();
 
-	if(widget_key == "grid") {
+	if(widget_key == "grid"){
 		return std::make_shared<builder_grid>(widget_cfg);
 	}
 
-	if(widget_key == "instance") {
+	if(widget_key == "instance"){
 		return std::make_shared<implementation::builder_instance>(widget_cfg);
 	}
 
-	if(widget_key == "pane") {
+	if(widget_key == "pane"){
 		return std::make_shared<implementation::builder_pane>(widget_cfg);
 	}
 
-	if(widget_key == "viewport") {
+	if(widget_key == "viewport"){
 		return std::make_shared<implementation::builder_viewport>(widget_cfg);
 	}
 
-	for(const auto& [type, builder] : widget_builder_lookup()) {
-		if(type == "window" || type == "tooltip") {
+	for(const auto& [type, builder] : widget_builder_lookup()){
+		if(type == "window" || type == "tooltip"){
 			continue;
 		}
 
-		if(widget_key == type) {
+		if(widget_key == type){
 			return builder(widget_cfg);
 		}
 	}
@@ -112,7 +112,7 @@ void builder_window::read(const config& cfg)
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined for ") + id_);
 
-	for(const auto& i : cfgs) {
+	for(const auto& i : cfgs){
 		resolutions.emplace_back(i);
 	}
 }
@@ -138,7 +138,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	, helptip(cfg.child_or_empty("helptip"), "helptip")
 	, grid(nullptr)
 {
-	if(!cfg["functions"].empty()) {
+	if(!cfg["functions"].empty()){
 		wfl::formula(cfg["functions"], &functions).evaluate();
 	}
 
@@ -148,14 +148,14 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 
 	grid = std::make_shared<builder_grid>(*c);
 
-	if(!automatic_placement) {
+	if(!automatic_placement){
 		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));
 		VALIDATE(height.has_formula() || height(), missing_mandatory_wml_key("resolution", "height"));
 	}
 
 	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ',' << window_height;
 
-	if(definition.empty()) {
+	if(definition.empty()){
 		definition = "default";
 	}
 
@@ -180,15 +180,15 @@ builder_grid::builder_grid(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	for(const auto& row : cfg.child_range("row")) {
+	for(const auto& row : cfg.child_range("row")){
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"].to_unsigned());
 
-		for(const auto& c : row.child_range("column")) {
+		for(const auto& c : row.child_range("column")){
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(c["border_size"].to_unsigned());
-			if(rows == 0) {
+			if(rows == 0){
 				col_grow_factor.push_back(c["grow_factor"].to_unsigned());
 			}
 
@@ -197,7 +197,7 @@ builder_grid::builder_grid(const config& cfg)
 			++col;
 		}
 
-		if(col == 0) {
+		if(col == 0){
 			const t_string msg = VGETTEXT("Grid ‘$grid’ row $row must have at least one column.", {
 				{"grid", id}, {"row", std::to_string(rows)}
 			});
@@ -207,9 +207,9 @@ builder_grid::builder_grid(const config& cfg)
 
 		++rows;
 
-		if(rows == 1) {
+		if(rows == 1){
 			cols = col;
-		} else if(col != cols) {
+		} else if(col != cols){
 			const t_string msg = VGETTEXT("Grid ‘$grid’ row $row has a differing number of columns ($found found, $expected expected)", {
 				{"grid", id}, {"row", std::to_string(rows)}, {"found", std::to_string(col)}, {"expected", std::to_string(cols)}
 			});
@@ -245,11 +245,11 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 
 	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows << " rows and " << cols << " columns.";
 
-	for(unsigned x = 0; x < rows; ++x) {
+	for(unsigned x = 0; x < rows; ++x){
 		grid.set_row_grow_factor(x, row_grow_factor[x]);
 
-		for(unsigned y = 0; y < cols; ++y) {
-			if(x == 0) {
+		for(unsigned y = 0; y < cols; ++y){
+			if(x == 0){
 				grid.set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
@@ -257,7 +257,7 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 
 			const unsigned int i = x * cols + y;
 
-			if(replacements) {
+			if(replacements){
 				auto widget = widgets[i]->build(replacements.value());
 				grid.set_child(std::move(widget), x, y, flags[i], border_size[i]);
 			} else {

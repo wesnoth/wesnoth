@@ -54,7 +54,7 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 	{
 		surface_lock surf_lock{surf};
 		uint32_t* const pixels = surf_lock.pixels();
-		for(size_t i = 0; i < w * h; ++i) {
+		for(size_t i = 0; i < w * h; ++i){
 			pixels[i] = arr[i];
 		}
 	}

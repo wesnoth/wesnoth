@@ -52,7 +52,7 @@ bool load_strings(bool complain);
 
 bool language_def::operator== (const language_def& a) const
 {
-	return ((language == a.language) /* && (localename == a.localename) */ );
+	return ((language == a.language) /* && (localename == a.localename) */);
 }
 
 bool& time_locale_correct()
@@ -64,7 +64,7 @@ bool& time_locale_correct()
 const t_string& symbol_table::operator[](const std::string& key) const
 {
 	const utils::string_map::const_iterator i = strings_.find(key);
-	if(i != strings_.end()) {
+	if(i != strings_.end()){
 		return i->second;
 	} else {
 		static t_string empty_string;
@@ -115,15 +115,15 @@ try {
 	known_languages.clear();
 	known_languages.emplace_back(); // System default language
 
-	for(const config& lang : cfg.child_range("locale")) {
+	for(const config& lang : cfg.child_range("locale")){
 		known_languages.emplace_back(lang);
 	}
 
 	return true;
 
-} catch(const utils::bad_optional_access&) {
+} catch(const utils::bad_optional_access&){
 	return false;
-} catch(const config::error&) {
+} catch(const config::error&){
 	return false;
 }
 
@@ -133,13 +133,13 @@ std::vector<language_def> get_languages(bool all)
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 
-	if(all || min_translation_percent == 0) {
+	if(all || min_translation_percent == 0){
 		return known_languages;
 	}
 
 	std::vector<language_def> result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
-		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
+		[](const language_def& lang){ return lang.percent >= min_translation_percent; });
 
 	return result;
 }
@@ -149,7 +149,7 @@ int get_min_translation_percent()
 	return min_translation_percent;
 }
 
-void set_min_translation_percent(int percent) {
+void set_min_translation_percent(int percent){
 	min_translation_percent = percent;
 }
 
@@ -225,12 +225,12 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 	// FIXME: add configure check for unsetenv
 
 	//category is never LC_MESSAGES since that case was moved to gettext.cpp to remove the dependency to libintl.h in this file
-	//that's why code like if (category == LC_MESSAGES) is outcommented here.
+	//that's why code like if(category == LC_MESSAGES) is outcommented here.
 #ifndef _WIN32
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
 #ifdef __APPLE__
-	//if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
+	//if(category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1){
 	//	ERR_G << "setenv LANG failed: " << strerror(errno);
 	//}
 #endif
@@ -242,13 +242,13 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 
 	char *res = nullptr;
 	std::vector<std::string>::const_iterator i;
-	if (alternates) i = alternates->begin();
+	if(alternates) i = alternates->begin();
 
-	for (;;)
+	for(;;)
 	{
 		std::string lang = locale, extra;
 		std::string::size_type pos = locale.find('@');
-		if (pos != std::string::npos) {
+		if(pos != std::string::npos){
 			lang.erase(pos);
 			extra = locale.substr(pos);
 		}
@@ -258,29 +258,29 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 		 * the non utf8 locale instead an utf8 version if available.
 		 */
 		char const *encoding[] { ".utf-8", ".UTF-8", "" };
-		for (int j = 0; j != 3; ++j)
+		for(int j = 0; j != 3; ++j)
 		{
 			locale = lang + encoding[j] + extra;
 			res = std::setlocale(category, locale.c_str());
-			if (res) {
+			if(res){
 				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.";
 				goto done;
 			}
 		}
 
-		if (!alternates || i == alternates->end()) break;
+		if(!alternates || i == alternates->end()) break;
 		locale = *i;
 		++i;
 	}
 
 	WRN_G << "setlocale() failed for '" << slocale << "'.";
 
-	if (category == LC_TIME) {
+	if(category == LC_TIME){
 		time_locale_correct() = false;
 	}
 
 #ifndef _WIN32
-		//if(category == LC_MESSAGES) {
+		//if(category == LC_MESSAGES){
 		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'.";
 		//	setenv("LANGUAGE", slocale.c_str(), 1);
 		//	std::setlocale(LC_MESSAGES, "");
@@ -311,12 +311,12 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	if(complain && languages.empty()) {
+	if(complain && languages.empty()){
 		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
-	for(const config& lang : languages) {
-		for(const auto& [key, value] : lang.attribute_range()) {
+	for(const config& lang : languages){
+		for(const auto& [key, value] : lang.attribute_range()){
 			strings_[key] = value;
 		}
 	}
@@ -324,7 +324,7 @@ bool load_strings(bool complain)
 	return true;
 }
 
-const language_def& get_language() { return current_language; }
+const language_def& get_language(){ return current_language; }
 
 const language_def& get_locale()
 {
@@ -333,10 +333,10 @@ const language_def& get_locale()
 	assert(!known_languages.empty());
 
 	const std::string& prefs_locale = prefs::get().locale();
-	if(prefs_locale.empty() == false) {
+	if(prefs_locale.empty() == false){
 		translation::set_language(prefs_locale, nullptr);
-		for(const language_def& def : known_languages) {
-			if(prefs_locale == def.localename) {
+		for(const language_def& def : known_languages){
+			if(prefs_locale == def.localename){
 				return def;
 			}
 		}
@@ -349,7 +349,7 @@ const language_def& get_locale()
 	#ifdef _WIN32
 	    return posix_locale_to_win32(locale);
 	#endif
-	if(locale != nullptr && strlen(locale) >= 2) {
+	if(locale != nullptr && strlen(locale) >= 2){
 		//we can't pass pointers into the string to the std::string
 		//constructor because some STL implementations don't support
 		//it (*cough* MSVC++6)
@@ -366,14 +366,14 @@ const language_def& get_locale()
 
 void init_textdomains(const game_config_view& cfg)
 {
-	for (const config &t : cfg.child_range("textdomain"))
+	for(const config &t : cfg.child_range("textdomain"))
 	{
 		const std::string &name = t["name"];
 		const std::string &path = t["path"];
 
-		if(path.empty()) {
+		if(path.empty()){
 			t_string::add_textdomain(name, filesystem::get_intl_dir());
-		} else if(auto location = filesystem::get_binary_dir_location("", path)) {
+		} else if(auto location = filesystem::get_binary_dir_location("", path)){
 			t_string::add_textdomain(name, location.value());
 		} else {
 			// If location is empty, this causes a crash on Windows, so we disallow adding empty domains
@@ -385,7 +385,7 @@ void init_textdomains(const game_config_view& cfg)
 bool init_strings(const game_config_view& cfg)
 {
 	languages.clear();
-	for (const config &l : cfg.child_range("language")) {
+	for(const config &l : cfg.child_range("language")){
 		languages.push_back(l);
 	}
 	return load_strings(true);

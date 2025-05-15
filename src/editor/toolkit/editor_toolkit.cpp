@@ -47,10 +47,10 @@ editor_toolkit::~editor_toolkit() = default;
 
 void editor_toolkit::init_brushes(const game_config_view& game_config)
 {
-	for (const config &i : game_config.child_range("brush")) {
+	for(const config &i : game_config.child_range("brush")){
 		brushes_.emplace_back(i);
 	}
-	if (brushes_.empty()) {
+	if(brushes_.empty()){
 		ERR_ED << "No brushes defined!";
 		brushes_.emplace_back();
 		brushes_[0].add_relative_location(0, 0);
@@ -84,11 +84,11 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_ITEM,
 		std::make_shared<mouse_action_item>(key_, *palette_manager_->item_palette_.get()));
 
-	for (const theme::menu& menu : gui_.get_theme().menus()) {
-		if (menu.items().size() == 1) {
+	for(const theme::menu& menu : gui_.get_theme().menus()){
+		if(menu.items().size() == 1){
 			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
-			if (i != mouse_actions_.end()) {
+			if(i != mouse_actions_.end()){
 				i->second->set_toolbar_button(&menu);
 			}
 		}
@@ -102,7 +102,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	mouse_action_map::iterator i = mouse_actions_.find(command);
-	if (i != mouse_actions_.end()) {
+	if(i != mouse_actions_.end()){
 		palette_manager_->active_palette().hide(true);
 		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
@@ -146,10 +146,10 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
-void editor_toolkit::set_brush(const std::string& id) {
+void editor_toolkit::set_brush(const std::string& id){
 
-	for (brush& i : brushes_) {
-		if (i.id() == id) {
+	for(brush& i : brushes_){
+		if(i.id() == id){
 			brush_ = &i;
 		}
 	}
@@ -157,7 +157,7 @@ void editor_toolkit::set_brush(const std::string& id) {
 
 void editor_toolkit::cycle_brush()
 {
-	if (brush_ == &brushes_.back()) {
+	if(brush_ == &brushes_.back()){
 		brush_ = &brushes_.front();
 	} else {
 		++brush_;

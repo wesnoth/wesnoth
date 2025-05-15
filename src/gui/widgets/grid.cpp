@@ -81,7 +81,7 @@ void grid::set_child(std::unique_ptr<widget> widget,
 	child& cell = get_child(row, col);
 
 	// clear old child if any
-	if(cell.get_widget()) {
+	if(cell.get_widget()){
 		// free a child when overwriting it
 		WRN_GUI_G << LOG_HEADER << " child '" << cell.id() << "' at cell '"
 				  << row << ',' << col << "' will be replaced.";
@@ -93,7 +93,7 @@ void grid::set_child(std::unique_ptr<widget> widget,
 	cell.set_widget(std::move(widget));
 
 	// make sure the new child is valid before deferring
-	if(gui2::widget* w = cell.get_widget()) {
+	if(gui2::widget* w = cell.get_widget()){
 		w->set_parent(this);
 	}
 }
@@ -105,15 +105,15 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 {
 	assert(w);
 
-	for(auto& child : children_) {
-		if(child.id() != id) {
-			if(recurse) {
-				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
+	for(auto& child : children_){
+		if(child.id() != id){
+			if(recurse){
+				if(grid* g = dynamic_cast<grid*>(child.get_widget())){
 					// Save the current value of `w` before we recurse. If a match is found in
 					// a child grid, the old widget will be returned and won't match.
 					widget* current_w = w.get();
 
-					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w) {
+					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w){
 						return res;
 					} else {
 						// Since `w` was moved "down" a level, it will be null once we return to
@@ -154,10 +154,10 @@ void grid::remove_child(const std::string& id, const bool find_all)
 {
 	for(auto & child : children_)
 	{
-		if(child.id() == id) {
+		if(child.id() == id){
 			child.set_widget(nullptr);
 
-			if(!find_all) {
+			if(!find_all){
 				break;
 			}
 		}
@@ -170,18 +170,18 @@ void grid::set_active(const bool active)
 	{
 
 		widget* widget = child.get_widget();
-		if(!widget) {
+		if(!widget){
 			continue;
 		}
 
 		grid* g = dynamic_cast<grid*>(widget);
-		if(g) {
+		if(g){
 			g->set_active(active);
 			continue;
 		}
 
 		styled_widget* control = dynamic_cast<styled_widget*>(widget);
-		if(control) {
+		if(control){
 			control->set_active(active);
 		}
 	}
@@ -207,7 +207,7 @@ void grid::reduce_width(const unsigned maximum_width)
 	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".";
 
 	point size = get_best_size();
-	if(size.x <= static_cast<int>(maximum_width)) {
+	if(size.x <= static_cast<int>(maximum_width)){
 		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
@@ -217,7 +217,7 @@ void grid::reduce_width(const unsigned maximum_width)
 	request_reduce_width(maximum_width);
 
 	size = get_best_size();
-	if(size.x <= static_cast<int>(maximum_width)) {
+	if(size.x <= static_cast<int>(maximum_width)){
 		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
@@ -236,15 +236,15 @@ void grid::reduce_width(const unsigned maximum_width)
 void grid::request_reduce_width(const unsigned maximum_width)
 {
 	point size = get_best_size();
-	if(size.x <= static_cast<int>(maximum_width)) {
+	if(size.x <= static_cast<int>(maximum_width)){
 		/** @todo this point shouldn't be reached, find out why it does. */
 		return;
 	}
 
 	const unsigned too_wide = size.x - maximum_width;
 	unsigned reduced = 0;
-	for(std::size_t col = 0; col < cols_; ++col) {
-		if(too_wide - reduced >= col_width_[col]) {
+	for(std::size_t col = 0; col < cols_; ++col){
+		if(too_wide - reduced >= col_width_[col]){
 			DBG_GUI_L << LOG_HEADER << " column " << col
 					  << " is too small to be reduced.";
 			continue;
@@ -255,7 +255,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 				= grid_implementation::column_request_reduce_width(
 						*this, col, wanted_width);
 
-		if(width < col_width_[col]) {
+		if(width < col_width_[col]){
 			unsigned reduction = col_width_[col] - width;
 
 			DBG_GUI_L << LOG_HEADER << " reduced " << reduction
@@ -265,7 +265,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 			reduced += reduction;
 		}
 
-		if(size.x <= static_cast<int>(maximum_width)) {
+		if(size.x <= static_cast<int>(maximum_width)){
 			break;
 		}
 	}
@@ -285,7 +285,7 @@ void grid::reduce_height(const unsigned maximum_height)
 	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".";
 
 	point size = get_best_size();
-	if(size.y <= static_cast<int>(maximum_height)) {
+	if(size.y <= static_cast<int>(maximum_height)){
 		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
@@ -295,7 +295,7 @@ void grid::reduce_height(const unsigned maximum_height)
 	request_reduce_height(maximum_height);
 
 	size = get_best_size();
-	if(size.y <= static_cast<int>(maximum_height)) {
+	if(size.y <= static_cast<int>(maximum_height)){
 		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
@@ -314,14 +314,14 @@ void grid::reduce_height(const unsigned maximum_height)
 void grid::request_reduce_height(const unsigned maximum_height)
 {
 	point size = get_best_size();
-	if(size.y <= static_cast<int>(maximum_height)) {
+	if(size.y <= static_cast<int>(maximum_height)){
 		/** @todo this point shouldn't be reached, find out why it does. */
 		return;
 	}
 
 	const unsigned too_high = size.y - maximum_height;
 	unsigned reduced = 0;
-	for(std::size_t row = 0; row < rows_; ++row) {
+	for(std::size_t row = 0; row < rows_; ++row){
 		unsigned wanted_height = row_height_[row] - (too_high - reduced);
 		/**
 		 * @todo Improve this code.
@@ -330,7 +330,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 		 * or not to try to reduce and also evaluate whether the force
 		 * reduction is still needed.
 		 */
-		if(too_high - reduced >= row_height_[row]) {
+		if(too_high - reduced >= row_height_[row]){
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
 					  << " is too small to be reduced fully try 1 pixel.";
@@ -347,7 +347,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 		const unsigned height = grid_implementation::row_request_reduce_height(
 				*this, row, wanted_height);
 
-		if(height < row_height_[row]) {
+		if(height < row_height_[row]){
 			unsigned reduction = row_height_[row] - height;
 
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
@@ -358,7 +358,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 			reduced += reduction;
 		}
 
-		if(size.y <= static_cast<int>(maximum_height)) {
+		if(size.y <= static_cast<int>(maximum_height)){
 			break;
 		}
 	}
@@ -378,14 +378,14 @@ void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 
 void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, bool&)
 {
-	if (get_window()->invalidate_layout_blocked()) {
+	if(get_window()->invalidate_layout_blocked()){
 		handled = true;
 		return;
 	}
 
 	point size = get_size();
 	point best_size = calculate_best_size();
-	if(size.x >= best_size.x && size.y >= best_size.y) {
+	if(size.x >= best_size.x && size.y >= best_size.y){
 		place(get_origin(), size);
 		handled = true;
 		return;
@@ -393,13 +393,13 @@ void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, 
 
 	recalculate_best_size();
 
-	if(size.y >= best_size.y) {
+	if(size.y >= best_size.y){
 		// We have enough space in the Y direction, but not in the X direction.
 		// Try wrapping the content.
 		request_reduce_width(size.x);
 		best_size = get_best_size();
 
-		if(size.x >= best_size.x && size.y >= best_size.y) {
+		if(size.x >= best_size.x && size.y >= best_size.y){
 			// Wrapping succeeded, we still fit vertically.
 			place(get_origin(), size);
 			handled = true;
@@ -435,27 +435,27 @@ point grid::calculate_best_size() const
 	col_width_.resize(cols_, 0);
 
 	// First get the sizes for all items.
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
+	for(unsigned row = 0; row < rows_; ++row){
+		for(unsigned col = 0; col < cols_; ++col){
 
 			const point size = get_child(row, col).get_best_size();
 
-			if(size.x > static_cast<int>(col_width_[col])) {
+			if(size.x > static_cast<int>(col_width_[col])){
 				col_width_[col] = size.x;
 			}
 
-			if(size.y > static_cast<int>(row_height_[row])) {
+			if(size.y > static_cast<int>(row_height_[row])){
 				row_height_[row] = size.y;
 			}
 		}
 	}
 
-	for(unsigned row = 0; row < rows_; ++row) {
+	for(unsigned row = 0; row < rows_; ++row){
 		DBG_GUI_L << LOG_HEADER << " the row_height_ for row " << row
 				  << " will be " << row_height_[row] << ".";
 	}
 
-	for(unsigned col = 0; col < cols_; ++col) {
+	for(unsigned col = 0; col < cols_; ++col){
 		DBG_GUI_L << LOG_HEADER << " the col_width_ for column " << col
 				  << " will be " << col_width_[col] << ".";
 	}
@@ -472,7 +472,7 @@ bool grid::can_wrap() const
 {
 	for(const auto & child : children_)
 	{
-		if(child.can_wrap()) {
+		if(child.can_wrap()){
 			return true;
 		}
 	}
@@ -489,7 +489,7 @@ void grid::place(const point& origin, const point& size)
 
 	widget::place(origin, size);
 
-	if(!rows_ || !cols_) {
+	if(!rows_ || !cols_){
 		return;
 	}
 
@@ -506,18 +506,18 @@ void grid::place(const point& origin, const point& size)
 
 	/***** BEST_SIZE *****/
 
-	if(best_size == size) {
+	if(best_size == size){
 		layout(origin);
 		return;
 	}
 
-	if(best_size.x > size.x || best_size.y > size.y) {
+	if(best_size.x > size.x || best_size.y > size.y){
 		// The assertion below fails quite often so try to give as much information as possible.
 		std::stringstream out;
 		out << " Failed to place a grid, we have " << size << " space but we need " << best_size << " space.";
 		out << " This happened at a grid with the id '" << id() << "'";
 		widget* pw = parent();
-		while(pw != nullptr) {
+		while(pw != nullptr){
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
 		}
@@ -529,7 +529,7 @@ void grid::place(const point& origin, const point& size)
 	/***** GROW *****/
 
 	// expand it.
-	if(size.x > best_size.x) {
+	if(size.x > best_size.x){
 		const unsigned w = size.x - best_size.x;
 		unsigned w_size = std::accumulate(
 			col_grow_factor_.begin(), col_grow_factor_.end(), 0);
@@ -538,7 +538,7 @@ void grid::place(const point& origin, const point& size)
 			<< " will be divided amount " << w_size << " units in "
 			<< cols_ << " columns.";
 
-		if(w_size == 0) {
+		if(w_size == 0){
 			// If all sizes are 0 reset them to 1
 			for(auto & val : col_grow_factor_)
 			{
@@ -549,7 +549,7 @@ void grid::place(const point& origin, const point& size)
 		// We might have a bit 'extra' if the division doesn't fix exactly
 		// but we ignore that part for now.
 		const unsigned w_normal = w / w_size;
-		for(unsigned i = 0; i < cols_; ++i) {
+		for(unsigned i = 0; i < cols_; ++i){
 			col_width_[i] += w_normal * col_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " column " << i
 				<< " with grow factor " << col_grow_factor_[i]
@@ -557,7 +557,7 @@ void grid::place(const point& origin, const point& size)
 		}
 	}
 
-	if(size.y > best_size.y) {
+	if(size.y > best_size.y){
 		const unsigned h = size.y - best_size.y;
 		unsigned h_size = std::accumulate(
 			row_grow_factor_.begin(), row_grow_factor_.end(), 0);
@@ -565,7 +565,7 @@ void grid::place(const point& origin, const point& size)
 			<< " will be divided amount " << h_size << " units in "
 			<< rows_ << " rows.";
 
-		if(h_size == 0) {
+		if(h_size == 0){
 			// If all sizes are 0 reset them to 1
 			for(auto & val : row_grow_factor_)
 			{
@@ -576,7 +576,7 @@ void grid::place(const point& origin, const point& size)
 		// We might have a bit 'extra' if the division doesn't fix exactly
 		// but we ignore that part for now.
 		const unsigned h_normal = h / h_size;
-		for(unsigned i = 0; i < rows_; ++i) {
+		for(unsigned i = 0; i < rows_; ++i){
 			row_height_[i] += h_normal * row_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " row " << i << " with grow factor "
 				<< row_grow_factor_[i] << " set height to "
@@ -654,13 +654,13 @@ const widget* grid::find(const std::string_view id, const bool must_be_active) c
 
 bool grid::has_widget(const widget& widget) const
 {
-	if(widget::has_widget(widget)) {
+	if(widget::has_widget(widget)){
 		return true;
 	}
 
 	for(const auto & child : children_)
 	{
-		if(child.get_widget()->has_widget(widget)) {
+		if(child.get_widget()->has_widget(widget)){
 			return true;
 		}
 	}
@@ -669,7 +669,7 @@ bool grid::has_widget(const widget& widget) const
 
 bool grid::disable_click_dismiss() const
 {
-	if(get_visible() != widget::visibility::visible) {
+	if(get_visible() != widget::visibility::visible){
 		return false;
 	}
 
@@ -678,7 +678,7 @@ bool grid::disable_click_dismiss() const
 		const widget* widget = child.get_widget();
 		assert(widget);
 
-		if(widget->disable_click_dismiss()) {
+		if(widget->disable_click_dismiss()){
 			return true;
 		}
 	}
@@ -692,7 +692,7 @@ iteration::walker_ptr grid::create_walker()
 
 void grid::set_rows(const unsigned rows)
 {
-	if(rows == rows_) {
+	if(rows == rows_){
 		return;
 	}
 
@@ -701,7 +701,7 @@ void grid::set_rows(const unsigned rows)
 
 void grid::set_cols(const unsigned cols)
 {
-	if(cols == cols_) {
+	if(cols == cols_){
 		return;
 	}
 
@@ -710,11 +710,11 @@ void grid::set_cols(const unsigned cols)
 
 void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 {
-	if(rows == rows_ && cols == cols_) {
+	if(rows == rows_ && cols == cols_){
 		return;
 	}
 
-	if(!children_.empty()) {
+	if(!children_.empty()){
 		WRN_GUI_G << LOG_HEADER << " resizing a non-empty grid "
 				  << " may give unexpected problems.";
 	}
@@ -730,13 +730,13 @@ point grid::child::get_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_CHILD_SCOPE_HEADER)
 
-	if(!widget_) {
+	if(!widget_){
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << false
 				  << " returning " << border_space() << ".";
 		return border_space();
 	}
 
-	if(widget_->get_visible() == widget::visibility::invisible) {
+	if(widget_->get_visible() == widget::visibility::invisible){
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 				  << " widget visible " << false << " returning 0,0.";
 		return point();
@@ -753,24 +753,24 @@ point grid::child::get_best_size() const
 void grid::child::place(point origin, point size)
 {
 	assert(get_widget());
-	if(get_widget()->get_visible() == widget::visibility::invisible) {
+	if(get_widget()->get_visible() == widget::visibility::invisible){
 		return;
 	}
 
-	if(border_size_) {
-		if(flags_ & BORDER_TOP) {
+	if(border_size_){
+		if(flags_ & BORDER_TOP){
 			origin.y += border_size_;
 			size.y -= border_size_;
 		}
-		if(flags_ & BORDER_BOTTOM) {
+		if(flags_ & BORDER_BOTTOM){
 			size.y -= border_size_;
 		}
 
-		if(flags_ & BORDER_LEFT) {
+		if(flags_ & BORDER_LEFT){
 			origin.x += border_size_;
 			size.x -= border_size_;
 		}
-		if(flags_ & BORDER_RIGHT) {
+		if(flags_ & BORDER_RIGHT){
 			size.x -= border_size_;
 		}
 	}
@@ -778,7 +778,7 @@ void grid::child::place(point origin, point size)
 	// If size smaller or equal to best size set that size.
 	// No need to check > min size since this is what we got.
 	const point best_size = get_widget()->get_best_size();
-	if(size <= best_size) {
+	if(size <= best_size){
 		DBG_GUI_L << LOG_CHILD_HEADER
 				  << " in best size range setting widget to " << origin << " x "
 				  << size << ".";
@@ -792,9 +792,9 @@ void grid::child::place(point origin, point size)
 										: point();
 
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))
-	   == (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)) {
+	   == (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)){
 
-		if(maximum_size == point() || size <= maximum_size) {
+		if(maximum_size == point() || size <= maximum_size){
 
 			DBG_GUI_L << LOG_CHILD_HEADER
 					  << " in maximum size range setting widget to " << origin
@@ -810,8 +810,8 @@ void grid::child::place(point origin, point size)
 
 	const unsigned v_flag = flags_ & VERTICAL_MASK;
 
-	if(v_flag == VERTICAL_GROW_SEND_TO_CLIENT) {
-		if(maximum_size.y) {
+	if(v_flag == VERTICAL_GROW_SEND_TO_CLIENT){
+		if(maximum_size.y){
 			widget_size.y = std::min(size.y, maximum_size.y);
 		} else {
 			widget_size.y = size.y;
@@ -819,17 +819,17 @@ void grid::child::place(point origin, point size)
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertical growing from "
 				  << best_size.y << " to " << widget_size.y << ".";
 
-	} else if(v_flag == VERTICAL_ALIGN_TOP) {
+	} else if(v_flag == VERTICAL_ALIGN_TOP){
 		// Do nothing.
 
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the top.";
 
-	} else if(v_flag == VERTICAL_ALIGN_CENTER) {
+	} else if(v_flag == VERTICAL_ALIGN_CENTER){
 
 		widget_orig.y += (size.y - widget_size.y) / 2;
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.";
 
-	} else if(v_flag == VERTICAL_ALIGN_BOTTOM) {
+	} else if(v_flag == VERTICAL_ALIGN_BOTTOM){
 
 		widget_orig.y += (size.y - widget_size.y);
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the bottom.";
@@ -842,8 +842,8 @@ void grid::child::place(point origin, point size)
 
 	const unsigned h_flag = flags_ & HORIZONTAL_MASK;
 
-	if(h_flag == HORIZONTAL_GROW_SEND_TO_CLIENT) {
-		if(maximum_size.x) {
+	if(h_flag == HORIZONTAL_GROW_SEND_TO_CLIENT){
+		if(maximum_size.x){
 			widget_size.x = std::min(size.x, maximum_size.x);
 		} else {
 			widget_size.x = size.x;
@@ -851,16 +851,16 @@ void grid::child::place(point origin, point size)
 		DBG_GUI_L << LOG_CHILD_HEADER << " horizontal growing from "
 				  << best_size.x << " to " << widget_size.x << ".";
 
-	} else if(h_flag == HORIZONTAL_ALIGN_LEFT) {
+	} else if(h_flag == HORIZONTAL_ALIGN_LEFT){
 		// Do nothing.
 		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally aligned at the left.";
 
-	} else if(h_flag == HORIZONTAL_ALIGN_CENTER) {
+	} else if(h_flag == HORIZONTAL_ALIGN_CENTER){
 
 		widget_orig.x += (size.x - widget_size.x) / 2;
 		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.";
 
-	} else if(h_flag == HORIZONTAL_ALIGN_RIGHT) {
+	} else if(h_flag == HORIZONTAL_ALIGN_RIGHT){
 
 		widget_orig.x += (size.x - widget_size.x);
 		DBG_GUI_L << LOG_CHILD_HEADER
@@ -882,7 +882,7 @@ void grid::child::layout_initialize(const bool full_initialization)
 {
 	assert(widget_);
 
-	if(widget_->get_visible() != widget::visibility::invisible) {
+	if(widget_->get_visible() != widget::visibility::invisible){
 		widget_->layout_initialize(full_initialization);
 	}
 }
@@ -897,7 +897,7 @@ point grid::child::border_space() const
 {
 	point result(0, 0);
 
-	if(border_size_) {
+	if(border_size_){
 
 		if(flags_ & BORDER_TOP)
 			result.y += border_size_;
@@ -915,12 +915,12 @@ point grid::child::border_space() const
 
 grid::child* grid::get_child(widget* w)
 {
-	if(!w) {
+	if(!w){
 		return nullptr;
 	}
 
-	for(auto& child : children_) {
-		if(w == child.get_widget()) {
+	for(auto& child : children_){
+		if(w == child.get_widget()){
 			return &child;
 		}
 	}
@@ -931,18 +931,18 @@ grid::child* grid::get_child(widget* w)
 void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask)
 {
 	grid::child* cell = get_child(widget);
-	if(!cell) {
+	if(!cell){
 		return;
 	}
 
 	unsigned flags = cell->get_flags();
 
-	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT) {
+	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT){
 		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)";
 		return;
 	}
 
-	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT) {
+	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT){
 		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)";
 		return;
 	}
@@ -959,15 +959,15 @@ void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_
 void grid::layout(const point& origin)
 {
 	point orig = origin;
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
+	for(unsigned row = 0; row < rows_; ++row){
+		for(unsigned col = 0; col < cols_; ++col){
 
 			const point size(col_width_[col], row_height_[row]);
 			DBG_GUI_L << LOG_HEADER << " set widget at " << row << ',' << col
 					  << " at origin " << orig << " with size " << size
 					  << ".";
 
-			if(get_child(row, col).get_widget()) {
+			if(get_child(row, col).get_widget()){
 				get_child(row, col).place(orig, size);
 			}
 
@@ -999,23 +999,23 @@ void grid::impl_draw_children()
 		widget* widget = child.get_widget();
 		assert(widget);
 
-		if(widget->get_visible() != widget::visibility::visible) {
+		if(widget->get_visible() != widget::visibility::visible){
 			continue;
 		}
 
-		if(widget->get_drawing_action() == widget::redraw_action::none) {
+		if(widget->get_drawing_action() == widget::redraw_action::none){
 			continue;
 		}
 
 		// We may need to defer drawing to next frame for blur processing.
-		if(!widget->draw_background()) {
+		if(!widget->draw_background()){
 			get_window()->defer_region(widget->get_rectangle());
 			continue;
 		}
 
 		widget->draw_children();
 
-		if(!widget->draw_foreground()) {
+		if(!widget->draw_foreground()){
 			get_window()->defer_region(widget->get_rectangle());
 			continue;
 		}
@@ -1028,14 +1028,14 @@ unsigned grid_implementation::row_request_reduce_height(
 	// The minimum height required.
 	unsigned required_height = 0;
 
-	for(std::size_t x = 0; x < grid.cols_; ++x) {
+	for(std::size_t x = 0; x < grid.cols_; ++x){
 		grid::child& cell = grid.get_child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
 		const point size(cell.get_best_size());
 
 		if(required_height == 0 || static_cast<std::size_t>(size.y)
-								   > required_height) {
+								   > required_height){
 
 			required_height = size.y;
 		}
@@ -1053,14 +1053,14 @@ unsigned grid_implementation::column_request_reduce_width(
 	// The minimum width required.
 	unsigned required_width = 0;
 
-	for(std::size_t y = 0; y < grid.rows_; ++y) {
+	for(std::size_t y = 0; y < grid.rows_; ++y){
 		grid::child& cell = grid.get_child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 
 		const point size(cell.get_best_size());
 
 		if(required_width == 0 || static_cast<std::size_t>(size.x)
-								  > required_width) {
+								  > required_width){
 
 			required_width = size.x;
 		}
@@ -1078,7 +1078,7 @@ grid_implementation::cell_request_reduce_height(grid::child& child,
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == widget::visibility::invisible) {
+	if(child.widget_->get_visible() == widget::visibility::invisible){
 		return;
 	}
 
@@ -1092,7 +1092,7 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == widget::visibility::invisible) {
+	if(child.widget_->get_visible() == widget::visibility::invisible){
 		return;
 	}
 

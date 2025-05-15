@@ -59,23 +59,23 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	const std::size_t map_height = static_cast<size_t>(std::max(0, map.h())) * scale;
 
 	// No map!
-	if(map_width == 0 || map_height == 0) {
+	if(map_width == 0 || map_height == 0){
 		return nullptr;
 	}
 
 	// Nothing to draw!
-	if(!preferences_minimap_draw_villages && !preferences_minimap_draw_terrain) {
+	if(!preferences_minimap_draw_villages && !preferences_minimap_draw_terrain){
 		return nullptr;
 	}
 
 	const display* disp = display::get_singleton();
 	const bool is_blindfolded = disp && disp->is_blindfolded();
 
-	const auto shrouded = [&](const map_location& loc) {
+	const auto shrouded = [&](const map_location& loc){
 		return is_blindfolded || (vw && vw->shrouded(loc));
 	};
 
-	const auto fogged = [&](const map_location& loc) {
+	const auto fogged = [&](const map_location& loc){
 		// Shrouded hex are not considered fogged (no need to fog a black image)
 		return vw && !shrouded(loc) && vw->fogged(loc);
 	};
@@ -83,7 +83,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	// Gets a destination rect for drawing at the given coordinates.
 	// We need a balanced shift up and down of the hexes.
 	// If not, only the bottom half-hexes are clipped and it looks asymmetrical.
-	const auto get_dst_rect = [scale](const map_location& loc) {
+	const auto get_dst_rect = [scale](const map_location& loc){
 		return rect {
 			loc.x * scale             * 3 / 4                    - (scale / 4),
 			loc.y * scale + scale / 4 * (is_odd(loc.x) ? 1 : -1) - (scale / 4),
@@ -98,7 +98,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	// Create a temp texture a bit larger than we want. This allows us to compose the minimap and then
 	// scale the whole result down the desired destination texture size.
 	texture minimap(map_width, map_height, SDL_TEXTUREACCESS_TARGET);
-	if(!minimap) {
+	if(!minimap){
 		return nullptr;
 	}
 
@@ -112,8 +112,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		// Terrain
 		//
-		if(preferences_minimap_draw_terrain) {
-			map.for_each_loc([&](const map_location& loc) {
+		if(preferences_minimap_draw_terrain){
+			map.for_each_loc([&](const map_location& loc){
 				const bool highlighted = reach_map && reach_map->count(loc) != 0 && !shrouded(loc);
 
 				const t_translation::terrain_code terrain = shrouded(loc) ? t_translation::VOID_TERRAIN : map[loc];
@@ -125,8 +125,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 				//
 				// Draw map terrain using either terrain images...
 				//
-				if(preferences_minimap_terrain_coding) {
-					if(!terrain_info.minimap_image().empty()) {
+				if(preferences_minimap_terrain_coding){
+					if(!terrain_info.minimap_image().empty()){
 						const std::string base_file = "terrain/" + terrain_info.minimap_image() + ".png";
 						const texture& tile = image::get_texture(base_file); // image::HEXED
 
@@ -146,13 +146,13 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						// FIXME: use shaders instead of textures for this once we can actually do that
 						using namespace std::string_literals;
 
-						if(fogged(loc)) {
+						if(fogged(loc)){
 							// Hex-shaped texture to apply #000000 at 40% opacity
 							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 
-						if(highlighted) {
+						if(highlighted){
 							// Hex-shaped texture to apply #ffffff at 40% opacity
 							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png"s);
 							draw::blit(fog_overlay, dest);
@@ -167,35 +167,35 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 					// Despite its name, game_config::team_rgb_range isn't just team colors,
 					// it has "red", "lightblue", "cave", "reef", "fungus", etc.
 					auto it = game_config::team_rgb_range.find(terrain_info.id());
-					if(it != game_config::team_rgb_range.end()) {
+					if(it != game_config::team_rgb_range.end()){
 						col = it->second.rep();
 					}
 
 					bool first = true;
 
-					for(const auto& underlying_terrain : map.tdata()->underlying_union_terrain(terrain)) {
+					for(const auto& underlying_terrain : map.tdata()->underlying_union_terrain(terrain)){
 						const std::string& terrain_id = map.tdata()->get_terrain_info(underlying_terrain).id();
 
 						it = game_config::team_rgb_range.find(terrain_id);
-						if(it == game_config::team_rgb_range.end()) {
+						if(it == game_config::team_rgb_range.end()){
 							return;
 						}
 
 						color_t tmp = it->second.rep();
 
-						if(fogged(loc)) {
+						if(fogged(loc)){
 							tmp.r = std::max(0, tmp.r - 50);
 							tmp.g = std::max(0, tmp.g - 50);
 							tmp.b = std::max(0, tmp.b - 50);
 						}
 
-						if(highlighted) {
+						if(highlighted){
 							tmp.r = std::min(255, tmp.r + 50);
 							tmp.g = std::min(255, tmp.g + 50);
 							tmp.b = std::min(255, tmp.b + 50);
 						}
 
-						if(first) {
+						if(first){
 							first = false;
 							col = tmp;
 						} else {
@@ -214,9 +214,9 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		// Villages
 		//
-		if(preferences_minimap_draw_villages) {
-			for(const map_location& loc : map.villages()) {
-				if(is_blindfolded || (vw && (vw->shrouded(loc) || vw->fogged(loc)))) {
+		if(preferences_minimap_draw_villages){
+			for(const map_location& loc : map.villages()){
+				if(is_blindfolded || (vw && (vw->shrouded(loc) || vw->fogged(loc)))){
 					continue;
 				}
 
@@ -224,20 +224,20 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 				// TODO: Add a key to [game_config][colors] for this
 				auto iter = game_config::team_rgb_range.find("white");
-				if(iter != game_config::team_rgb_range.end()) {
+				if(iter != game_config::team_rgb_range.end()){
 					col = iter->second.min();
 				}
 
 				// Check needed for mp create dialog
 				const int side_num = resources::gameboard ? resources::gameboard->village_owner(loc) : 0;
 
-				if(side_num > 0) {
-					if(preferences_minimap_unit_coding || !vw) {
+				if(side_num > 0){
+					if(preferences_minimap_unit_coding || !vw){
 						col = team::get_minimap_color(side_num);
 					} else {
-						if(vw->owns_village(loc)) {
+						if(vw->owns_village(loc)){
 							col = game_config::color_info(prefs::get().unmoved_color()).rep();
-						} else if(vw->is_enemy(side_num)) {
+						} else if(vw->is_enemy(side_num)){
 							col = game_config::color_info(prefs::get().enemy_color()).rep();
 						} else {
 							col = game_config::color_info(prefs::get().allied_color()).rep();
@@ -255,24 +255,24 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		// Units
 		//
-		if(units && preferences_minimap_draw_units && !is_blindfolded) {
-			for(const auto& u : *units) {
+		if(units && preferences_minimap_draw_units && !is_blindfolded){
+			for(const auto& u : *units){
 				const map_location& u_loc = u.get_location();
 				const int side = u.side();
 				const bool is_enemy = vw && vw->is_enemy(side);
 
-				if((vw && vw->fogged(u_loc)) || (is_enemy && disp && u.invisible(u_loc)) || u.get_hidden()) {
+				if((vw && vw->fogged(u_loc)) || (is_enemy && disp && u.invisible(u_loc)) || u.get_hidden()){
 					continue;
 				}
 
 				color_t col = team::get_minimap_color(side);
 
-				if(!preferences_minimap_unit_coding) {
+				if(!preferences_minimap_unit_coding){
 					auto status = orb_status::allied;
 
-					if(is_enemy) {
+					if(is_enemy){
 						status = orb_status::enemy;
-					} else if(vw && vw->side() == side) {
+					} else if(vw && vw->side() == side){
 						status = disp->context().unit_orb_status(u);
 					} else {
 						// no-op, status is already set to orb_status::allied;
@@ -291,7 +291,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 	DBG_DP << "done generating minimap";
 
-	return [minimap](rect dst) {
+	return [minimap](rect dst){
 		const auto [raw_w, raw_h] = minimap.get_raw_size();
 
 		// Check which dimensions needs to be shrunk more

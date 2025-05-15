@@ -84,7 +84,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, is_synced_(cfg["synced"].to_bool(true))
 	, persistent_(cfg["persistent"].to_bool(true))
 {
-	if(cfg.has_attribute("needs_select")) {
+	if(cfg.has_attribute("needs_select")){
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
 	}
 }
@@ -147,17 +147,17 @@ const std::string& wml_menu_item::image() const
 bool wml_menu_item::can_show(const map_location& hex, const game_data& data, filter_context& filter_con) const
 {
 	// Failing the [show_if] tag means no show.
-	if(!show_if_.empty() && !conditional_passed(show_if_)) {
+	if(!show_if_.empty() && !conditional_passed(show_if_)){
 		return false;
 	}
 
 	// Failing the [fiter_location] tag means no show.
-	if(!filter_location_.empty() && !terrain_filter(filter_location_, &filter_con, false)(hex)) {
+	if(!filter_location_.empty() && !terrain_filter(filter_location_, &filter_con, false)(hex)){
 		return false;
 	}
 
 	// Failing to have a required selection means no show.
-	if(needs_select_ && !data.last_selected.valid()) {
+	if(needs_select_ && !data.last_selected.valid()){
 		return false;
 	}
 
@@ -167,7 +167,7 @@ bool wml_menu_item::can_show(const map_location& hex, const game_data& data, fil
 
 void wml_menu_item::fire_event(const map_location& event_hex, const game_data& data) const
 {
-	if(!this->is_synced()) {
+	if(!this->is_synced()){
 		// It is possible to for example show a help menu during a [delay] of a synced event.
 		set_scontext_unsynced leave_synced_context;
 		assert(resources::game_events != nullptr);
@@ -184,7 +184,7 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 	// time in a synced context.
 	// note that there couldn't be a user choice during the last "select" event because it didn't run in a synced
 	// context.
-	if(needs_select_ && last_select.valid()) {
+	if(needs_select_ && last_select.valid()){
 		synced_context::run_and_throw(
 			"fire_event", replay_helper::get_event(event_name_, event_hex, &last_select));
 	} else {
@@ -195,13 +195,13 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 
 void wml_menu_item::finish_handler()
 {
-	if(!command_.empty()) {
+	if(!command_.empty()){
 		assert(resources::game_events);
 		resources::game_events->remove_event_handler(command_["id"]);
 	}
 
 	// Hotkey support
-	if(use_hotkey_) {
+	if(use_hotkey_){
 		hotkey_record_.reset();
 	}
 }
@@ -209,13 +209,13 @@ void wml_menu_item::finish_handler()
 void wml_menu_item::init_handler(game_lua_kernel& lk)
 {
 	// If this menu item has a [command], add a handler for it.
-	if(!command_.empty()) {
+	if(!command_.empty()){
 		assert(resources::game_events);
 		resources::game_events->add_event_handler_from_wml(command_, lk, true);
 	}
 
 	// Hotkey support
-	if(use_hotkey_) {
+	if(use_hotkey_){
 		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 	}
 }
@@ -227,41 +227,41 @@ void wml_menu_item::to_config(config& cfg) const
 	cfg["description"] = description_;
 	cfg["synced"] = is_synced_;
 
-	if(needs_select_) {
+	if(needs_select_){
 		cfg["needs_select"] = true;
 	}
 
-	if(use_hotkey_ && use_wml_menu_) {
+	if(use_hotkey_ && use_wml_menu_){
 		cfg["use_hotkey"] = true;
 	}
 
-	if(use_hotkey_ && !use_wml_menu_) {
+	if(use_hotkey_ && !use_wml_menu_){
 		cfg["use_hotkey"] = "only";
 	}
 
-	if(!use_hotkey_ && use_wml_menu_) {
+	if(!use_hotkey_ && use_wml_menu_){
 		cfg["use_hotkey"] = false;
 	}
 
-	if(!use_hotkey_ && !use_wml_menu_) {
+	if(!use_hotkey_ && !use_wml_menu_){
 		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and "
 		          "use_hotkey set to false is not supposed to be possible.";
 		cfg["use_hotkey"] = false;
 	}
 
-	if(!show_if_.empty()) {
+	if(!show_if_.empty()){
 		cfg.add_child("show_if", show_if_.get_config());
 	}
 
-	if(!filter_location_.empty()) {
+	if(!filter_location_.empty()){
 		cfg.add_child("filter_location", filter_location_.get_config());
 	}
 
-	if(!command_.empty()) {
+	if(!command_.empty()){
 		cfg.add_child("command", command_);
 	}
 
-	if(!default_hotkey_.empty()) {
+	if(!default_hotkey_.empty()){
 		cfg.add_child("default_hotkey", default_hotkey_);
 	}
 }
@@ -272,66 +272,66 @@ void wml_menu_item::update(const vconfig& vcfg)
 	// Tracks whether or not the hotkey has been updated.
 	bool hotkey_updated = false;
 
-	if(vcfg.has_attribute("image")) {
+	if(vcfg.has_attribute("image")){
 		image_ = vcfg["image"].str();
 	}
 
-	if(vcfg.has_attribute("description")) {
+	if(vcfg.has_attribute("description")){
 		description_ = vcfg["description"].t_str();
 		hotkey_updated = true;
 	}
 
-	if(vcfg.has_attribute("needs_select")) {
+	if(vcfg.has_attribute("needs_select")){
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
 		needs_select_ = vcfg["needs_select"].to_bool();
 	}
 
-	if(vcfg.has_attribute("synced")) {
+	if(vcfg.has_attribute("synced")){
 		is_synced_ = vcfg["synced"].to_bool(true);
 	}
 
-	if(vcfg.has_attribute("persistent")) {
+	if(vcfg.has_attribute("persistent")){
 		persistent_ = vcfg["persistent"].to_bool(true);
 	}
 
-	if(const vconfig& child = vcfg.child("show_if")) {
+	if(const vconfig& child = vcfg.child("show_if")){
 		show_if_ = child;
 		show_if_.make_safe();
 	}
 
-	if(const vconfig& child = vcfg.child("filter_location")) {
+	if(const vconfig& child = vcfg.child("filter_location")){
 		filter_location_ = child;
 		filter_location_.make_safe();
 	}
 
-	if(const vconfig& child = vcfg.child("default_hotkey")) {
+	if(const vconfig& child = vcfg.child("default_hotkey")){
 		default_hotkey_ = child.get_parsed_config();
 		hotkey_updated = true;
 	}
 
-	if(vcfg.has_attribute("use_hotkey")) {
+	if(vcfg.has_attribute("use_hotkey")){
 		const config::attribute_value& use_hotkey_av = vcfg["use_hotkey"];
 
 		use_hotkey_ = use_hotkey_av.to_bool(true);
 		use_wml_menu_ = use_hotkey_av.str() != "only";
 	}
 
-	if(const vconfig& cmd = vcfg.child("command")) {
+	if(const vconfig& cmd = vcfg.child("command")){
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
 		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
 
 	// Update the registered hotkey?
 
-	if(use_hotkey_ && !old_use_hotkey) {
+	if(use_hotkey_ && !old_use_hotkey){
 		// The hotkey needs to be enabled.
 		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
-	} else if(use_hotkey_ && hotkey_updated) {
+	} else if(use_hotkey_ && hotkey_updated){
 		// The hotkey needs to be updated.
 		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
-	} else if(!use_hotkey_ && old_use_hotkey) {
+	} else if(!use_hotkey_ && old_use_hotkey){
 		// The hotkey needs to be disabled.
 		hotkey_record_.reset();
 	}
@@ -342,22 +342,22 @@ void wml_menu_item::update_command(const config& new_command)
 	// If there is an old command, remove it from the event handlers.
 	assert(resources::game_events);
 
-	resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
-		if(ptr->is_menu_item()) {
+	resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr){
+		if(ptr->is_menu_item()){
 			LOG_NG << "Removing command for " << event_name_ << ".";
 			man.remove_event_handler(command_["id"].str());
 		}
 	});
 
 	// Update our stored command.
-	if(new_command.empty()) {
+	if(new_command.empty()){
 		command_.clear();
 	} else {
 		command_ = new_command;
 
 		// Set some fields required by event processing.
 		config::attribute_value& event_id = command_["id"];
-		if(event_id.empty() && !item_id_.empty()) {
+		if(event_id.empty() && !item_id_.empty()){
 			event_id = item_id_;
 		}
 

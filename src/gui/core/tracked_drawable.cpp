@@ -44,7 +44,7 @@ tracked_drawable::~tracked_drawable()
 
 void tracked_drawable::process()
 {
-	if(prefs::get().show_fps()) {
+	if(prefs::get().show_fps()){
 		gui2::dialogs::fps::show(*this);
 	} else {
 		gui2::dialogs::fps::hide();
@@ -53,7 +53,7 @@ void tracked_drawable::process()
 
 auto tracked_drawable::get_info() const -> utils::optional<frame_info>
 {
-	if(frametimes_.empty()) {
+	if(frametimes_.empty()){
 		return utils::nullopt;
 	}
 
@@ -89,14 +89,14 @@ void tracked_drawable::update_count()
 	auto now = clock::now();
 	auto elapsed = now - last_render_;
 
-	if(elapsed > clock::duration{0}) {
+	if(elapsed > clock::duration{0}){
 		frametimes_.push_back(elapsed);
 	}
 
 	last_render_ = now;
 	++render_counter_;
 
-	if(now - last_lap_ >= 1s) {
+	if(now - last_lap_ >= 1s){
 		last_lap_ = now;
 		render_count_ = std::exchange(render_counter_, 0);
 	}

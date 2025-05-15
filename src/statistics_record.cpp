@@ -33,9 +33,9 @@ namespace statistics_record
 static config write_str_int_map(const stats_t::str_int_map& m)
 {
 	config res;
-	for(stats_t::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+	for(stats_t::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i){
 		std::string n = std::to_string(i->second);
-		if(res.has_attribute(n)) {
+		if(res.has_attribute(n)){
 			res[n] = res[n].str() + "," + i->first;
 		} else {
 			res[n] = i->first;
@@ -50,12 +50,12 @@ static void write_str_int_map(config_writer& out, const stats_t::str_int_map& m)
 	using reverse_map = std::multimap<int, std::string>;
 	reverse_map rev;
 	std::transform(m.begin(), m.end(), std::inserter(rev, rev.begin()),
-		[](const stats_t::str_int_map::value_type& p) { return std::pair(p.second, p.first); });
+		[](const stats_t::str_int_map::value_type& p){ return std::pair(p.second, p.first); });
 	reverse_map::const_iterator i = rev.begin(), j;
-	while(i != rev.end()) {
+	while(i != rev.end()){
 		j = rev.upper_bound(i->first);
 		std::vector<std::string> vals;
-		std::transform(i, j, std::back_inserter(vals), [](const reverse_map::value_type& p) { return p.second; });
+		std::transform(i, j, std::back_inserter(vals), [](const reverse_map::value_type& p){ return p.second; });
 		out.write_key_val(std::to_string(i->first), utils::join(vals));
 		i = j;
 	}
@@ -64,12 +64,12 @@ static void write_str_int_map(config_writer& out, const stats_t::str_int_map& m)
 static stats_t::str_int_map read_str_int_map(const config& cfg)
 {
 	stats_t::str_int_map m;
-	for(const auto& [key, value] : cfg.attribute_range()) {
+	for(const auto& [key, value] : cfg.attribute_range()){
 		try {
-			for(const std::string& val : utils::split(value)) {
+			for(const std::string& val : utils::split(value)){
 				m[val] = std::stoi(key);
 			}
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument&){
 			ERR_NG << "Invalid statistics entry; skipping";
 		}
 	}
@@ -80,7 +80,7 @@ static stats_t::str_int_map read_str_int_map(const config& cfg)
 static config write_battle_result_map(const stats_t::battle_result_map& m)
 {
 	config res;
-	for(stats_t::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+	for(stats_t::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i){
 		config& new_cfg = res.add_child("sequence");
 		new_cfg = write_str_int_map(i->second);
 		new_cfg["_num"] = i->first;
@@ -91,7 +91,7 @@ static config write_battle_result_map(const stats_t::battle_result_map& m)
 
 static void write_battle_result_map(config_writer& out, const stats_t::battle_result_map& m)
 {
-	for(stats_t::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+	for(stats_t::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i){
 		out.open_child("sequence");
 		write_str_int_map(out, i->second);
 		out.write_key_val("_num", i->first);
@@ -102,7 +102,7 @@ static void write_battle_result_map(config_writer& out, const stats_t::battle_re
 static stats_t::battle_result_map read_battle_result_map(const config& cfg)
 {
 	stats_t::battle_result_map m;
-	for(const config& i : cfg.child_range("sequence")) {
+	for(const config& i : cfg.child_range("sequence")){
 		config item = i;
 		int key = item["_num"].to_int();
 		item.remove_attribute("_num");
@@ -115,7 +115,7 @@ static stats_t::battle_result_map read_battle_result_map(const config& cfg)
 static config write_by_cth_map(const stats_t::hitrate_map& m)
 {
 	config res;
-	for(const auto& i : m) {
+	for(const auto& i : m){
 		res.add_child("hitrate_map_entry", config{"cth", i.first, "stats", i.second.write()});
 	}
 	return res;
@@ -131,15 +131,15 @@ static stats_t::hitrate_map read_by_cth_map_from_battle_result_maps(
 	stats_t::battle_result_map merged = attacks;
 	merge_battle_result_maps(merged, defends);
 
-	for(const auto& i : merged) {
+	for(const auto& i : merged){
 		int cth = i.first;
 		const stats_t::battle_sequence_frequency_map& frequency_map = i.second;
-		for(const auto& j : frequency_map) {
+		for(const auto& j : frequency_map){
 			const std::string& res = j.first; // see attack_context::~attack_context()
 			const int occurrences = j.second;
 			unsigned int misses = std::count(res.begin(), res.end(), '0');
 			unsigned int hits = std::count(res.begin(), res.end(), '1');
-			if(misses + hits == 0) {
+			if(misses + hits == 0){
 				continue;
 			}
 			misses *= occurrences;
@@ -155,7 +155,7 @@ static stats_t::hitrate_map read_by_cth_map_from_battle_result_maps(
 static stats_t::hitrate_map read_by_cth_map(const config& cfg)
 {
 	stats_t::hitrate_map m;
-	for(const config& i : cfg.child_range("hitrate_map_entry")) {
+	for(const config& i : cfg.child_range("hitrate_map_entry")){
 		m.emplace(i["cth"].to_int(), stats_t::hitrate_t(i.mandatory_child("stats")));
 	}
 	return m;
@@ -163,21 +163,21 @@ static stats_t::hitrate_map read_by_cth_map(const config& cfg)
 
 static void merge_str_int_map(stats_t::str_int_map& a, const stats_t::str_int_map& b)
 {
-	for(stats_t::str_int_map::const_iterator i = b.begin(); i != b.end(); ++i) {
+	for(stats_t::str_int_map::const_iterator i = b.begin(); i != b.end(); ++i){
 		a[i->first] += i->second;
 	}
 }
 
 static void merge_battle_result_maps(stats_t::battle_result_map& a, const stats_t::battle_result_map& b)
 {
-	for(stats_t::battle_result_map::const_iterator i = b.begin(); i != b.end(); ++i) {
+	for(stats_t::battle_result_map::const_iterator i = b.begin(); i != b.end(); ++i){
 		merge_str_int_map(a[i->first], i->second);
 	}
 }
 
 static void merge_cth_map(stats_t::hitrate_map& a, const stats_t::hitrate_map& b)
 {
-	for(const auto& i : b) {
+	for(const auto& i : b){
 		a[i.first].hits += i.second.hits;
 		a[i.first].strikes += i.second.strikes;
 	}
@@ -330,44 +330,44 @@ void stats_t::write(config_writer& out) const
 
 void stats_t::read(const config& cfg)
 {
-	if(const auto c = cfg.optional_child("recruits")) {
+	if(const auto c = cfg.optional_child("recruits")){
 		recruits = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("recalls")) {
+	if(const auto c = cfg.optional_child("recalls")){
 		recalls = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("advances")) {
+	if(const auto c = cfg.optional_child("advances")){
 		advanced_to = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("deaths")) {
+	if(const auto c = cfg.optional_child("deaths")){
 		deaths = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("killed")) {
+	if(const auto c = cfg.optional_child("killed")){
 		killed = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("recalls")) {
+	if(const auto c = cfg.optional_child("recalls")){
 		recalls = read_str_int_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("attacks")) {
+	if(const auto c = cfg.optional_child("attacks")){
 		attacks_inflicted = read_battle_result_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("defends")) {
+	if(const auto c = cfg.optional_child("defends")){
 		defends_inflicted = read_battle_result_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("attacks_taken")) {
+	if(const auto c = cfg.optional_child("attacks_taken")){
 		attacks_taken = read_battle_result_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("defends_taken")) {
+	if(const auto c = cfg.optional_child("defends_taken")){
 		defends_taken = read_battle_result_map(c.value());
 	}
 	by_cth_inflicted = read_by_cth_map_from_battle_result_maps(attacks_inflicted, defends_inflicted);
 	// by_cth_taken will be an empty map in old (pre-#4070) savefiles that don't have
 	// [attacks_taken]/[defends_taken] tags in their [statistics] tags
 	by_cth_taken = read_by_cth_map_from_battle_result_maps(attacks_taken, defends_taken);
-	if(const auto c = cfg.optional_child("turn_by_cth_inflicted")) {
+	if(const auto c = cfg.optional_child("turn_by_cth_inflicted")){
 		turn_by_cth_inflicted = read_by_cth_map(c.value());
 	}
-	if(const auto c = cfg.optional_child("turn_by_cth_taken")) {
+	if(const auto c = cfg.optional_child("turn_by_cth_taken")){
 		turn_by_cth_taken = read_by_cth_map(c.value());
 	}
 
@@ -426,7 +426,7 @@ scenario_stats_t::scenario_stats_t(const config& cfg)
 	: team_stats()
 	, scenario_name(cfg["scenario"])
 {
-	for(const config& team : cfg.child_range("team")) {
+	for(const config& team : cfg.child_range("team")){
 		team_stats[team["save_id"]] = stats_t(team);
 	}
 }
@@ -435,7 +435,7 @@ config scenario_stats_t::write() const
 {
 	config res;
 	res["scenario"] = scenario_name;
-	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i){
 		res.add_child("team", i->second.write());
 	}
 
@@ -445,7 +445,7 @@ config scenario_stats_t::write() const
 void scenario_stats_t::write(config_writer& out) const
 {
 	out.write_key_val("scenario", scenario_name);
-	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i){
 		out.open_child("team");
 		i->second.write(out);
 		out.close_child("team");
@@ -467,7 +467,7 @@ config campaign_stats_t::to_config() const
 {
 	config res;
 
-	for(std::vector<scenario_stats_t>::const_iterator i = master_record.begin(); i != master_record.end(); ++i) {
+	for(std::vector<scenario_stats_t>::const_iterator i = master_record.begin(); i != master_record.end(); ++i){
 		res.add_child("scenario", i->write());
 	}
 
@@ -476,7 +476,7 @@ config campaign_stats_t::to_config() const
 
 void campaign_stats_t::write(config_writer& out) const
 {
-	for(std::vector<scenario_stats_t>::const_iterator i = master_record.begin(); i != master_record.end(); ++i) {
+	for(std::vector<scenario_stats_t>::const_iterator i = master_record.begin(); i != master_record.end(); ++i){
 		out.open_child("scenario");
 		i->write(out);
 		out.close_child("scenario");
@@ -485,10 +485,10 @@ void campaign_stats_t::write(config_writer& out) const
 
 void campaign_stats_t::read(const config& cfg, bool append)
 {
-	if(!append) {
+	if(!append){
 		master_record.clear();
 	}
-	for(const config& s : cfg.child_range("scenario")) {
+	for(const config& s : cfg.child_range("scenario")){
 		master_record.emplace_back(s);
 	}
 }
@@ -500,7 +500,7 @@ void campaign_stats_t::new_scenario(const std::string& name)
 
 void campaign_stats_t::clear_current_scenario()
 {
-	if(master_record.empty() == false) {
+	if(master_record.empty() == false){
 		master_record.back().team_stats.clear();
 	}
 }

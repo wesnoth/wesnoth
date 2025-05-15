@@ -77,7 +77,7 @@ void tooltip::init_label()
 
 	point lsize = label.get_draw_size();
 	int new_text_width = text_width * static_cast<float>(lsize.y)/game_canvas.h;  // If necessary, scale width to reduce height while preserving area of label
-	while((lsize.y > game_canvas.h*height_fudge) && (lsize.x < game_canvas.w)) {
+	while((lsize.y > game_canvas.h*height_fudge) && (lsize.x < game_canvas.w)){
 		// Scaling the tip to reduce height is hard, since making a texture wider is no guarantee that there will be fewer lines of text:
 		//
 		// This block of text is just
@@ -88,7 +88,7 @@ void tooltip::init_label()
 		//
 		// Creating this over and over may not be the most efficient route, but it will work and will be quite rare (tip taller than screen).
 		bool wont_fit = false;
-		if(new_text_width>game_canvas.w) {
+		if(new_text_width>game_canvas.w){
 			new_text_width=game_canvas.w;
 			wont_fit = true;
 		}
@@ -100,7 +100,7 @@ void tooltip::init_label()
 
 		lsize = label.get_draw_size();
 		DBG_FT << "new label lsize.x,y = " << lsize.x << "," << lsize.y;
-		if(wont_fit) {
+		if(wont_fit){
 			break;
 		}
 		new_text_width *= 1.3;
@@ -123,20 +123,20 @@ void tooltip::update_label_pos()
 
 	DBG_FT << "\nupdate_label_pos() Start: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
 
-	if(origin.y > loc.h) {
+	if(origin.y > loc.h){
 		// There is enough room to fit it above the tip area
 		loc.y = origin.y - loc.h;
 		DBG_FT << "\tAbove: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
-	} else if((origin.y + origin.h + loc.h) <= game_canvas.h*height_fudge) {
+	} else if((origin.y + origin.h + loc.h) <= game_canvas.h*height_fudge){
 		// There is enough room to fit it below the tip area
 		loc.y = origin.y + origin.h;
 		DBG_FT << "\tBelow: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
 	} else if(((origin.y + origin.h/2 - loc.h/2) >= 0) &&
-		  ((origin.y + origin.h/2 + loc.h/2) <= game_canvas.h*height_fudge)) {
+		  ((origin.y + origin.h/2 + loc.h/2) <= game_canvas.h*height_fudge)){
 		// There is enough room to center it at the tip area
 		loc.y = origin.y + origin.h/2 - loc.h/2;
 		DBG_FT << "\tCenter: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
-	} else if(loc.h <= game_canvas.h*0.95) {
+	} else if(loc.h <= game_canvas.h*0.95){
 		// There is enough room to center it
 		loc.y = game_canvas.h/2 - loc.h/2;
 		DBG_FT << "\tScreen Center: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
@@ -149,10 +149,10 @@ void tooltip::update_label_pos()
 	DBG_FT << "\tBefore x adjust: loc.x,y,w,h = " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "  origin = " << origin.x << "," << origin.y;
 	// Try to keep it within the screen
 	loc.x = origin.x;
-	if(loc.x + loc.w > game_canvas.w) {
+	if(loc.x + loc.w > game_canvas.w){
 		loc.x = game_canvas.w - loc.w;
 	}
-	if(loc.x < 0) {
+	if(loc.x < 0){
 		loc.x = 0;
 	}
 
@@ -179,7 +179,7 @@ tooltips::manager* current_manager = nullptr;
 /** Clear/hide the active tooltip. */
 static void clear_active()
 {
-	if(!active_tooltip) {
+	if(!active_tooltip){
 		return;
 	}
 	DBG_FT << "clearing active tooltip " << active_tooltip;
@@ -200,13 +200,13 @@ manager::~manager()
 {
 	try {
 	clear_tooltips();
-	} catch (...) {}
+	} catch (...){}
 	current_manager = nullptr;
 }
 
 void manager::layout()
 {
-	if(!active_tooltip) {
+	if(!active_tooltip){
 		return;
 	}
 	// Update the active tooltip's draw state.
@@ -217,11 +217,11 @@ void manager::layout()
 bool manager::expose(const rect& region)
 {
 	// Only the active tip is shown.
-	if(!active_tooltip) {
+	if(!active_tooltip){
 		return false;
 	}
 	tooltip& tip = tips.at(active_tooltip);
-	if(!tip.loc.overlaps(region)) {
+	if(!tip.loc.overlaps(region)){
 		return false;
 	}
 	tip.label.draw();
@@ -231,7 +231,7 @@ bool manager::expose(const rect& region)
 rect manager::screen_location()
 {
 	// Only the active tip, if any, should be visible.
-	if(!active_tooltip) {
+	if(!active_tooltip){
 		return {};
 	} else {
 		return tips.at(active_tooltip).loc;
@@ -247,12 +247,12 @@ void clear_tooltips()
 
 void clear_tooltips(const SDL_Rect& r)
 {
-	for(auto i = tips.begin(); i != tips.end(); ) {
-		if(i->second.origin.overlaps(r)) {
+	for(auto i = tips.begin(); i != tips.end();){
+		if(i->second.origin.overlaps(r)){
 			DBG_FT << "clearing tip " << i->first << " at "
 				<< i->second.origin << " overlapping " << r;
 
-			if (i->first == active_tooltip) {
+			if(i->first == active_tooltip){
 				i->second.label.undraw();
 				active_tooltip = 0;
 			}
@@ -267,18 +267,18 @@ void clear_tooltips(const SDL_Rect& r)
 bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 {
 	std::map<int, tooltip>::iterator it = tips.find(id);
-	if (it == tips.end() ) return false;
+	if(it == tips.end()) return false;
 	tooltip& tip = it->second;
-	if(tip.message == message && tip.origin == origin) {
+	if(tip.message == message && tip.origin == origin){
 		return false;
 	}
-	if(tip.message != message) {
+	if(tip.message != message){
 		LOG_FT << "updating tooltip " << id << " message";
 		tip.message = message;
 		tip.label = font::floating_label(message);
 		tip.init_label();
 	}
-	if(tip.origin != origin) {
+	if(tip.origin != origin){
 		DBG_FT << "updating tooltip " << id << " origin " << origin;
 		tip.origin = origin;
 		tip.update_label_pos();
@@ -288,9 +288,9 @@ bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 
 void remove_tooltip(int id)
 {
-	if(!id) { return; }
+	if(!id){ return; }
 	DBG_FT << "removing tooltip " << id;
-	if(id == active_tooltip) {
+	if(id == active_tooltip){
 		clear_active();
 	}
 	tips.erase(id);
@@ -300,8 +300,8 @@ int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::s
 {
 	// Because some other things are braindead, we have to check we're not
 	// just adding the same tooltip over and over every time the mouse moves.
-	for(auto& [id, tip] : tips) {
-		if(tip.origin == origin && tip.message == message && tip.action == action) {
+	for(auto& [id, tip] : tips){
+		if(tip.origin == origin && tip.message == message && tip.action == action){
 			return id;
 		}
 	}
@@ -318,7 +318,7 @@ int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::s
 static void raise_to_top()
 {
 	// Raise the current manager so it will display on top of everything.
-	if(!current_manager) {
+	if(!current_manager){
 		throw game::error("trying to show tooltip with no tooltip manager");
 	}
 	draw_manager::raise_drawable(current_manager);
@@ -326,7 +326,7 @@ static void raise_to_top()
 
 static void select_active(int id)
 {
-	if(active_tooltip == id) {
+	if(active_tooltip == id){
 		return;
 	}
 	tooltip& tip = tips.at(id);
@@ -340,14 +340,14 @@ static void select_active(int id)
 void process(int mousex, int mousey)
 {
 	point mouseloc{mousex, mousey};
-	for(auto& [id, tip] : tips) {
-		if(tip.origin.contains(mouseloc)) {
+	for(auto& [id, tip] : tips){
+		if(tip.origin.contains(mouseloc)){
 			select_active(id);
 			return;
 		}
 	}
 
-	if(active_tooltip) {
+	if(active_tooltip){
 		LOG_FT << "clearing tooltip because none hovered";
 		clear_active();
 	}
@@ -355,8 +355,8 @@ void process(int mousex, int mousey)
 
 bool click(int mousex, int mousey)
 {
-	for(auto& [id, tip] : tips) { (void)id;
-		if(!tip.action.empty() && tip.origin.contains(mousex, mousey)) {
+	for(auto& [id, tip] : tips){ (void)id;
+		if(!tip.action.empty() && tip.origin.contains(mousex, mousey)){
 			help::show_help(tip.action);
 			return true;
 		}

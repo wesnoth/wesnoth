@@ -29,13 +29,13 @@ tree_node::tree_node(gui2::tree_view_node& node, tree_view_node::node_children_v
 
 walker_base::state_t tree_node::next(const level level)
 {
-	if(at_end(level)) {
+	if(at_end(level)){
 		return fail;
 	}
 
-	switch(level) {
+	switch(level){
 		case self:
-			if(widget_) {
+			if(widget_){
 				widget_ = nullptr;
 				return invalid;
 			}
@@ -44,7 +44,7 @@ walker_base::state_t tree_node::next(const level level)
 			assert(false);
 			return fail;
 		case child:
-			if(itor_ != children_.end()) {
+			if(itor_ != children_.end()){
 				++itor_;
 				return itor_ == children_.end() ? invalid : valid;
 			}
@@ -56,7 +56,7 @@ walker_base::state_t tree_node::next(const level level)
 
 bool tree_node::at_end(const level level) const
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_ == nullptr;
 		case internal:
@@ -71,13 +71,13 @@ bool tree_node::at_end(const level level) const
 
 gui2::widget* tree_node::get(const level level)
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_;
 		case internal:
 			return nullptr;
 		case child:
-			if(itor_ == children_.end()) {
+			if(itor_ == children_.end()){
 				return nullptr;
 			} else {
 				return itor_.operator->()->get();

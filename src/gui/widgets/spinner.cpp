@@ -56,7 +56,7 @@ text_box* spinner::get_internal_text_box()
 void spinner::set_value(const int val)
 {
 	text_box* edit_area = get_internal_text_box();
-	if (edit_area != nullptr) {
+	if(edit_area != nullptr){
 		edit_area->set_value(std::to_string(val));
 	}
 }
@@ -69,17 +69,17 @@ int spinner::get_value()
 	int val;
 	try {
 		text_box* edit_area = get_internal_text_box();
-		if (edit_area != nullptr) {
+		if(edit_area != nullptr){
 			val = stoi(edit_area->get_value());
 			invalid_ = false;
 		} else {
 			val = 0;
 			invalid_ = true;
 		}
-	} catch(std::invalid_argument const& /*ex*/) {
+	} catch(std::invalid_argument const& /*ex*/){
 		val = 0;
 		invalid_ = true;
-	} catch(std::out_of_range const& /*ex*/) {
+	} catch(std::out_of_range const& /*ex*/){
 		val = 0;
 		invalid_ = true;
 	}

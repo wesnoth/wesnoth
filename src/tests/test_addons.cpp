@@ -19,47 +19,47 @@
 
 #include "addon/validation.hpp"
 
-BOOST_AUTO_TEST_SUITE( addons )
+BOOST_AUTO_TEST_SUITE(addons)
 
-BOOST_AUTO_TEST_CASE( validation )
+BOOST_AUTO_TEST_CASE(validation)
 {
-	BOOST_CHECK( !addon_filename_legal("") );
-	BOOST_CHECK( !addon_filename_legal(".") );
-	BOOST_CHECK( !addon_filename_legal("..") );
-	BOOST_CHECK( !addon_filename_legal("invalid/slash") );
-	BOOST_CHECK( !addon_filename_legal("invalid\\backslash") );
-	BOOST_CHECK( !addon_filename_legal("invalid:colon") );
-	BOOST_CHECK( !addon_filename_legal("invalid~tilde") );
-	BOOST_CHECK( !addon_filename_legal("invalid/../parent") );
+	BOOST_CHECK(!addon_filename_legal(""));
+	BOOST_CHECK(!addon_filename_legal("."));
+	BOOST_CHECK(!addon_filename_legal(".."));
+	BOOST_CHECK(!addon_filename_legal("invalid/slash"));
+	BOOST_CHECK(!addon_filename_legal("invalid\\backslash"));
+	BOOST_CHECK(!addon_filename_legal("invalid:colon"));
+	BOOST_CHECK(!addon_filename_legal("invalid~tilde"));
+	BOOST_CHECK(!addon_filename_legal("invalid/../parent"));
 
 	std::vector<std::string> ddns = { "NUL", "CON", "AUX", "PRN", "CONIN$", "CONOUT$" };
-	for(unsigned i = 1; i < 10; ++i) {
+	for(unsigned i = 1; i < 10; ++i){
 		ddns.emplace_back(std::string{"LPT"} + std::to_string(i));
 		ddns.emplace_back(std::string{"COM"} + std::to_string(i));
 	}
 
-	for(const auto& name : ddns) {
-		BOOST_CHECK( addon_filename_legal("foo.bar." + name) );
-		BOOST_CHECK( addon_filename_legal("foo." + name + ".bar") );
-		BOOST_CHECK( !addon_filename_legal(name + ".foo.bar") );
-		BOOST_CHECK( !addon_filename_legal(name + ':') );
-		BOOST_CHECK( !addon_filename_legal(name) );
+	for(const auto& name : ddns){
+		BOOST_CHECK(addon_filename_legal("foo.bar." + name));
+		BOOST_CHECK(addon_filename_legal("foo." + name + ".bar"));
+		BOOST_CHECK(!addon_filename_legal(name + ".foo.bar"));
+		BOOST_CHECK(!addon_filename_legal(name + ':'));
+		BOOST_CHECK(!addon_filename_legal(name));
 	}
 
-	BOOST_CHECK( addon_name_legal("-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz") );
+	BOOST_CHECK(addon_name_legal("-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz"));
 
-	BOOST_CHECK( !addon_name_legal("invalid\nnewline") );
-	BOOST_CHECK( !addon_name_legal("invalid\x0A""explicitLF") );
-	BOOST_CHECK( !addon_name_legal("invalid\x0D\x0A""explicitCRLF") );
-	BOOST_CHECK( !addon_name_legal("invalid\x0D""explicitCR") );
-	BOOST_CHECK( !addon_name_legal("invalid`grave accent`") );
-	BOOST_CHECK( !addon_name_legal("invalid$dollarsign$") );
+	BOOST_CHECK(!addon_name_legal("invalid\nnewline"));
+	BOOST_CHECK(!addon_name_legal("invalid\x0A""explicitLF"));
+	BOOST_CHECK(!addon_name_legal("invalid\x0D\x0A""explicitCRLF"));
+	BOOST_CHECK(!addon_name_legal("invalid\x0D""explicitCR"));
+	BOOST_CHECK(!addon_name_legal("invalid`grave accent`"));
+	BOOST_CHECK(!addon_name_legal("invalid$dollarsign$"));
 }
 
-BOOST_AUTO_TEST_CASE( encoding )
+BOOST_AUTO_TEST_CASE(encoding)
 {
-	BOOST_CHECK( encode_binary("").empty() );
-	BOOST_CHECK( unencode_binary("").empty() );
+	BOOST_CHECK(encode_binary("").empty());
+	BOOST_CHECK(unencode_binary("").empty());
 
 	//
 	// Plain string.
@@ -67,8 +67,8 @@ BOOST_AUTO_TEST_CASE( encoding )
 
 	const std::string plain = "ABC";
 
-	BOOST_CHECK( encode_binary(plain) == plain );
-	BOOST_CHECK( unencode_binary(plain) == plain );
+	BOOST_CHECK(encode_binary(plain) == plain);
+	BOOST_CHECK(unencode_binary(plain) == plain);
 
 	//
 	// Binary escaping (direct).
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE( encoding )
 	//
 	//   * let c be the char to encode
 	//   * let e be the escaping char (\x01)
-	//   * if (c in \x00\x0D\xFE or c == e) then return e followed by the
+	//   * if(c in \x00\x0D\xFE or c == e) then return e followed by the
 	//     character with value c+1.
 	//
 	// There is no test for \x00 here because \x00 really shouldn't occur in
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( encoding )
 	//
 	for(const char c : raw)
 	{
-		if(c == bin_escape || bin_special.find(c) != std::string::npos) {
+		if(c == bin_escape || bin_special.find(c) != std::string::npos){
 			encoded += bin_escape;
 			encoded += (c + 1);
 		} else {
@@ -101,11 +101,11 @@ BOOST_AUTO_TEST_CASE( encoding )
 		}
 	}
 
-	BOOST_CHECK( encode_binary(raw) == encoded );
-	BOOST_CHECK( unencode_binary(encoded) == raw );
+	BOOST_CHECK(encode_binary(raw) == encoded);
+	BOOST_CHECK(unencode_binary(encoded) == raw);
 	// Identity.
-	BOOST_CHECK( unencode_binary(encode_binary(raw)) == raw );
-	BOOST_CHECK( unencode_binary(encode_binary(encoded)) == encoded );
+	BOOST_CHECK(unencode_binary(encode_binary(raw)) == raw);
+	BOOST_CHECK(unencode_binary(encode_binary(encoded)) == encoded);
 
 	//
 	// Binary escaping (recursive).
@@ -114,17 +114,17 @@ BOOST_AUTO_TEST_CASE( encoding )
 	const unsigned recursive_steps = 16;
 	std::string recursive_encoded = raw;
 
-	for(unsigned n = 0; n < recursive_steps; ++n) {
+	for(unsigned n = 0; n < recursive_steps; ++n){
 		recursive_encoded = encode_binary(recursive_encoded);
 	}
 
-	BOOST_CHECK( recursive_encoded != raw );
+	BOOST_CHECK(recursive_encoded != raw);
 
-	for(unsigned n = 0; n < recursive_steps; ++n) {
+	for(unsigned n = 0; n < recursive_steps; ++n){
 		recursive_encoded = unencode_binary(recursive_encoded);
 	}
 
-	BOOST_CHECK( recursive_encoded == raw );
+	BOOST_CHECK(recursive_encoded == raw);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

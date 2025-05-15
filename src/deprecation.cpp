@@ -33,7 +33,7 @@ std::string deprecated_message(
 	lg::logger* log_ptr = nullptr;
 	std::string message;
 
-	switch(level) {
+	switch(level){
 	case DEP_LEVEL::INDEFINITE:
 		log_ptr = &lg::info();
 		message = VGETTEXT("$elem has been deprecated indefinitely.", msg_params);
@@ -41,7 +41,7 @@ std::string deprecated_message(
 
 	case DEP_LEVEL::PREEMPTIVE:
 		log_ptr = &lg::warn();
-		if(game_config::wesnoth_version < version) {
+		if(game_config::wesnoth_version < version){
 			msg_params["version"] = version.str();
 			message = VGETTEXT("$elem has been deprecated and may be removed in version $version.", msg_params);
 		} else {
@@ -70,16 +70,16 @@ std::string deprecated_message(
 		return msg;
 	}
 
-	if(!detail.empty()) {
+	if(!detail.empty()){
 		message += "; ";
 		message += detail;
 	}
 
-	if(log_ptr && !log_ptr->dont_log(log_deprecate)) {
+	if(log_ptr && !log_ptr->dont_log(log_deprecate)){
 		const lg::logger& out_log = *log_ptr;
 		FORCE_LOG_TO(out_log, log_deprecate) << message;
 		// whether to show the error in the ingame chat area
-		if(prefs::get().get_show_deprecation(game_config::wesnoth_version.is_dev_version())) {
+		if(prefs::get().get_show_deprecation(game_config::wesnoth_version.is_dev_version())){
 			lg::log_to_chat() << message << '\n';
 		}
 	}

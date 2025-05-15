@@ -29,7 +29,7 @@ namespace ai_default_rca {
 
 class candidate_action_evaluation_loop: public virtual stage, public virtual rca_context {
 public:
-	candidate_action_evaluation_loop( ai_context &context, const config &cfg );
+	candidate_action_evaluation_loop(ai_context &context, const config &cfg);
 
 	~candidate_action_evaluation_loop();
 

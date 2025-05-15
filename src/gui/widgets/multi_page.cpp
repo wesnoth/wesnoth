@@ -91,15 +91,15 @@ void multi_page::remove_page(const unsigned page, unsigned count)
 {
 	assert(generator_);
 
-	if(page >= get_page_count()) {
+	if(page >= get_page_count()){
 		return;
 	}
 
-	if(!count || (page + count) > get_page_count()) {
+	if(!count || (page + count) > get_page_count()){
 		count = get_page_count() - page;
 	}
 
-	for(; count; --count) {
+	for(; count; --count){
 		generator_->delete_item(page);
 	}
 }
@@ -118,7 +118,7 @@ unsigned multi_page::get_page_count() const
 
 void multi_page::select_page(const unsigned page, const bool select)
 {
-	if(page >= get_page_count()) {
+	if(page >= get_page_count()){
 		throw std::invalid_argument("invalid page index");
 	}
 	assert(generator_);
@@ -191,7 +191,7 @@ namespace implementation
 builder_multi_page::builder_multi_page(const config& cfg)
 	: implementation::builder_styled_widget(cfg), builders(), data()
 {
-	for (const config& page : cfg.child_range("page_definition"))
+	for(const config& page : cfg.child_range("page_definition"))
 	{
 		auto builder = std::make_shared<builder_grid>(page);
 		assert(builder);
@@ -201,7 +201,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 
 	/** @todo This part is untested. */
 	auto d = cfg.optional_child("page_data");
-	if(!d) {
+	if(!d){
 		return;
 	}
 

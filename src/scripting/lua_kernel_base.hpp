@@ -64,7 +64,7 @@ public:
 	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
 
 	using external_log_type = std::function<void(const std::string &)>;
-	void set_external_log( external_log_type lg ) { cmd_log_.external_log_ = lg; }
+	void set_external_log(external_log_type lg) { cmd_log_.external_log_ = lg; }
 
 	/** Error reporting mechanisms, used by virtual methods protected_call and load_string*/
 	virtual void log_error(char const* msg, char const* context = "Lua error");
@@ -97,16 +97,16 @@ protected:
 
 		inline command_log & operator<< (const std::string & str) {
 			log_ << str;
-			if (external_log_) {
+			if(external_log_) {
 				external_log_(str);
 			}
 			return *this;
 		}
 
 		inline command_log & operator<< (char const* str) {
-			if (str != nullptr) {
+			if(str != nullptr) {
 				log_ << str;
-				if (external_log_) {
+				if(external_log_) {
 					external_log_(str);
 				}
 			}

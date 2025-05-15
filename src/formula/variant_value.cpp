@@ -40,7 +40,7 @@ variant variant_int::build_range_variant(int limit) const
 	std::vector<variant> res;
 	res.reserve(len);
 
-	for(int i = value_; res.size() != res.capacity(); value_ < limit ? ++i : --i) {
+	for(int i = value_; res.size() != res.capacity(); value_ < limit ? ++i : --i){
 		res.emplace_back(i);
 	}
 
@@ -54,9 +54,9 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 	int fractional =  value_ % 1000;
 	int integer    = (value_ - fractional) / 1000;
 
-	if(sign_value) {
+	if(sign_value){
 		// Make sure we get the sign on small negative values.
-		if(integer == 0 && value_ < 0) {
+		if(integer == 0 && value_ < 0){
 			ss << '-';
 		}
 	}
@@ -65,8 +65,8 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 
 	fractional = std::abs(fractional);
 
-	if(fractional < 100) {
-		if(fractional < 10) {
+	if(fractional < 100){
+		if(fractional < 10){
 			ss << "00";
 		} else {
 			ss << 0;
@@ -81,13 +81,13 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 variant_callable::variant_callable(const_formula_callable_ptr callable)
 	: callable_(std::move(callable))
 {
-	if(callable_) {
+	if(callable_){
 		callable_->subscribe_dtor(this);
 	}
 }
 
-variant_callable::~variant_callable() {
-	if(callable_) {
+variant_callable::~variant_callable(){
+	if(callable_){
 		callable_->unsubscribe_dtor(this);
 	}
 }
@@ -96,7 +96,7 @@ std::string variant_callable::get_serialized_string() const
 {
 	// TODO: make serialize return a string.
 	std::string str;
-	if(callable_) {
+	if(callable_){
 		callable_->serialize(str);
 	}
 
@@ -108,27 +108,27 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	std::ostringstream ss;
 	ss << "{";
 
-	if(!callable_) {
+	if(!callable_){
 		ss << "null";
-	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
-		if(!verbose) {
+	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()){
+		if(!verbose){
 			seen.push_back(callable_);
 		}
 
 		formula_input_vector v = callable_->inputs();
 		bool first = true;
 
-		for(const auto& input : v) {
-			if(!first) {
+		for(const auto& input : v){
+			if(!first){
 				ss << ", ";
 			}
 
 			first = false;
 			ss << input.name << " ";
 
-			if(input.access == formula_access::read_write) {
+			if(input.access == formula_access::read_write){
 				ss << "(read-write) ";
-			} else if(input.access == formula_access::write_only) {
+			} else if(input.access == formula_access::write_only){
 				ss << "(writeonly) ";
 			}
 
@@ -157,11 +157,11 @@ bool variant_callable::less_than(variant_value_base& other) const
 
 boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 {
-	if(!callable_) {
+	if(!callable_){
 		return variant_value_base::make_iterator();
 	}
 
-	if(inputs.empty()) {
+	if(inputs.empty()){
 		callable_->get_inputs(inputs);
 	}
 
@@ -170,7 +170,7 @@ boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 
 variant variant_callable::deref_iterator(const utils::any& iter) const
 {
-	if(!callable_) {
+	if(!callable_){
 		return variant();
 	}
 
@@ -192,8 +192,8 @@ std::string variant_string::get_serialized_string() const
 	std::ostringstream ss;
 	ss << "'";
 
-	for(const auto& c : string_) {
-		switch(c) {
+	for(const auto& c : string_){
+		switch(c){
 		case '\'':
 			ss << "[']";
 			break;
@@ -219,14 +219,14 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 {
 	std::ostringstream ss;
 
-	if(annotate) {
+	if(annotate){
 		ss << "[";
 	}
 
 	bool first_time = true;
 
-	for(const auto& member : container_) {
-		if(!first_time) {
+	for(const auto& member : container_){
+		if(!first_time){
 			ss << ", ";
 		}
 
@@ -236,11 +236,11 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 	}
 
 	// TODO: evaluate if this really needs to be separately conditional.
-	if(annotate_empty && container_.empty()) {
+	if(annotate_empty && container_.empty()){
 		ss << "->";
 	}
 
-	if(annotate) {
+	if(annotate){
 		ss << "]";
 	}
 
@@ -250,19 +250,19 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 template<typename T>
 std::string variant_container<T>::string_cast() const
 {
-	return to_string_impl(false, false, [](const variant& v) { return v.string_cast(); });
+	return to_string_impl(false, false, [](const variant& v){ return v.string_cast(); });
 }
 
 template<typename T>
 std::string variant_container<T>::get_serialized_string() const
 {
-	return to_string_impl(true, true,   [](const variant& v) { return v.serialize_to_string(); });
+	return to_string_impl(true, true,   [](const variant& v){ return v.serialize_to_string(); });
 }
 
 template<typename T>
 std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, bool verbose) const
 {
-	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(verbose, &seen); });
+	return to_string_impl(true, false, [&](const variant& v){ return v.to_debug_string(verbose, &seen); });
 }
 
 template<typename T>
@@ -302,14 +302,14 @@ variant variant_list::list_op(value_base_ptr second, const std::function<variant
 {
 	const auto& other_list = value_cast<variant_list>(std::move(second));
 
-	if(num_elements() != other_list->num_elements()) {
+	if(num_elements() != other_list->num_elements()){
 		throw type_error("List op requires two lists of the same length");
 	}
 
 	std::vector<variant> res;
 	res.reserve(num_elements());
 
-	for(std::size_t i = 0; i < num_elements(); ++i) {
+	for(std::size_t i = 0; i < num_elements(); ++i){
 		res.push_back(op_func(get_container()[i], other_list->get_container()[i]));
 	}
 
@@ -320,12 +320,12 @@ bool variant_list::equals(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
 
-	if(num_elements() != other.num_elements()) {
+	if(num_elements() != other.num_elements()){
 		return false;
 	}
 
-	for(std::size_t n = 0; n < num_elements(); ++n) {
-		if(get_container()[n] != other_container[n]) {
+	for(std::size_t n = 0; n < num_elements(); ++n){
+		if(get_container()[n] != other_container[n]){
 			return false;
 		}
 	}
@@ -337,10 +337,10 @@ bool variant_list::less_than(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
 
-	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
-		if(get_container()[n] < other_container[n]) {
+	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n){
+		if(get_container()[n] < other_container[n]){
 			return true;
-		} else if(get_container()[n] > other_container[n]) {
+		} else if(get_container()[n] > other_container[n]){
 			return false;
 		}
 	}

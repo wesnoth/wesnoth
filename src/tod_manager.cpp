@@ -46,7 +46,7 @@ tod_manager::tod_manager(const config& scenario_cfg)
 	, has_cfg_liminal_bonus_(false)
 {
 	// ? : operator doesn't work in this case.
-	if(scenario_cfg["current_time"].to_int(-17403) == -17403) {
+	if(scenario_cfg["current_time"].to_int(-17403) == -17403){
 		random_tod_ = scenario_cfg["random_start_time"];
 	} else {
 		random_tod_ = false;
@@ -55,7 +55,7 @@ tod_manager::tod_manager(const config& scenario_cfg)
 	time_of_day::parse_times(scenario_cfg, times_);
 	liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times_));
 
-	if(scenario_cfg.has_attribute("liminal_bonus")) {
+	if(scenario_cfg.has_attribute("liminal_bonus")){
 		liminal_bonus_ = scenario_cfg["liminal_bonus"].to_int(liminal_bonus_);
 		has_cfg_liminal_bonus_ = true;
 	}
@@ -73,20 +73,20 @@ void tod_manager::resolve_random(randomness::rng& r)
 
 	try {
 		std::transform(output_strings.begin(), output_strings.end(), std::back_inserter(output),
-			[](const std::string& str) { return std::stoi(str); });
-	} catch(const std::invalid_argument&) {
+			[](const std::string& str){ return std::stoi(str); });
+	} catch(const std::invalid_argument&){
 		// This happens if the random_start_time string is a boolean.
 		// Simply ignore the exception.
 	}
 
 	// Remove non-positive times
-	utils::erase_if(output, [](int time) { return time <= 0; });
+	utils::erase_if(output, [](int time){ return time <= 0; });
 
-	if(!output.empty()) {
+	if(!output.empty()){
 		int chosen = output[r.next_random() % output.size()];
 		currentTime_ = fix_time_index(times_.size(), chosen);
 		r.next_random();
-	} else if(random_tod_.to_bool(false)) {
+	} else if(random_tod_.to_bool(false)){
 		currentTime_ = fix_time_index(times_.size(), r.next_random());
 	}
 
@@ -100,45 +100,45 @@ config tod_manager::to_config(const std::string& textdomain) const
 	cfg["turns"] = num_turns_;
 
 	// this 'if' is for the editor.
-	if(times_.size() != 0) {
+	if(times_.size() != 0){
 		cfg["current_time"] = currentTime_;
 	}
 
 	cfg["random_start_time"] = random_tod_;
 	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
 
-	if(has_cfg_liminal_bonus_) {
+	if(has_cfg_liminal_bonus_){
 		cfg["liminal_bonus"] = liminal_bonus_;
 	}
 
-	for(const time_of_day& tod : times_) {
+	for(const time_of_day& tod : times_){
 		// Don't write stub ToD
-		if(tod.id != "nulltod") {
+		if(tod.id != "nulltod"){
 			tod.write(cfg.add_child("time"), textdomain);
 		}
 	}
 
-	for(const area_time_of_day& a_tod : areas_) {
+	for(const area_time_of_day& a_tod : areas_){
 		config& area = cfg.add_child("time_area");
 
 		// If no ranges, then use hexes to generate ranges
-		if(a_tod.xsrc.empty() && a_tod.ysrc.empty()) {
+		if(a_tod.xsrc.empty() && a_tod.ysrc.empty()){
 			write_location_range(a_tod.hexes, area);
 		} else {
 			area["x"] = a_tod.xsrc;
 			area["y"] = a_tod.ysrc;
 		}
 
-		for(const time_of_day& tod : a_tod.times) {
+		for(const time_of_day& tod : a_tod.times){
 			// Don't write the stub default ToD if it happens to be present.
-			if(tod.id != "nulltod") {
+			if(tod.id != "nulltod"){
 				tod.write(area.add_child("time"), textdomain);
 			}
 		}
 
 		area["current_time"] = a_tod.currentTime;
 
-		if(!a_tod.id.empty()) {
+		if(!a_tod.id.empty()){
 			area["id"] = a_tod.id;
 		}
 	}
@@ -165,10 +165,10 @@ int tod_manager::get_current_area_time(int index) const
 
 int tod_manager::get_current_time(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
+	if(loc != map_location::null_location()){
 		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end()) {
+			i != i_end; ++i){
+			if(i->hexes.find(loc) != i->hexes.end()){
 				return i->currentTime;
 			}
 		}
@@ -179,9 +179,9 @@ int tod_manager::get_current_time(const map_location& loc) const
 
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
+	if(loc != map_location::null_location()){
 		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
+			i != i_end; ++i){
 			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
 				return i->times;
 		}
@@ -192,13 +192,13 @@ const std::vector<time_of_day>& tod_manager::times(const map_location& loc) cons
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
 {
-	if(n_turn == 0) {
+	if(n_turn == 0){
 		n_turn = turn_;
 	}
 
-	if(loc != map_location::null_location()) {
+	if(loc != map_location::null_location()){
 		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
+			i != i_end; ++i){
 			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
 				return get_time_of_day_turn(i->times, n_turn, i->currentTime);
 		}
@@ -210,7 +210,7 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 const time_of_day& tod_manager::get_area_time_of_day(int area_i, int n_turn) const
 {
 	assert(area_i < static_cast<int>(areas_.size()));
-	if(n_turn == 0) {
+	if(n_turn == 0){
 		n_turn = turn_;
 	}
 	return get_time_of_day_turn(areas_[area_i].times, n_turn, areas_[area_i].currentTime);
@@ -222,7 +222,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 	// get ToD ignoring illumination
 	time_of_day tod = get_time_of_day(loc, for_turn);
 
-	if(map.on_board_with_border(loc)) {
+	if(map.on_board_with_border(loc)){
 		// Now add terrain illumination.
 		const int terrain_light = map.get_terrain_info(loc).light_bonus(tod.lawful_bonus);
 
@@ -237,11 +237,11 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		locs[0] = loc;
 		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
 
-		for(std::size_t i = 0; i < locs.size(); ++i) {
+		for(std::size_t i = 0; i < locs.size(); ++i){
 			const auto itor = units.find(locs[i]);
-			if(itor != units.end() && !itor->incapacitated()) {
+			if(itor != units.end() && !itor->incapacitated()){
 				unit_ability_list illum = itor->get_abilities("illuminates");
-				if(!illum.empty()) {
+				if(!illum.empty()){
 					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
 
@@ -250,9 +250,9 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 					max_list.push_back(illum.highest("max_value").first);
 					min_list.push_back(illum.lowest("min_value").first);
 
-					if(unit_mod > most_add) {
+					if(unit_mod > most_add){
 						most_add = unit_mod;
-					} else if(unit_mod < most_sub) {
+					} else if(unit_mod < most_sub){
 						most_sub = unit_mod;
 					}
 				}
@@ -264,12 +264,12 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		int best_result = terrain_light;
 		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
 
-		for(std::size_t i = 0; i != mod_list.size(); ++i) {
+		for(std::size_t i = 0; i != mod_list.size(); ++i){
 			int result = bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
 
-			if(net_darker && result < best_result) {
+			if(net_darker && result < best_result){
 				best_result = result;
-			} else if(!net_darker && result > best_result) {
+			} else if(!net_darker && result > best_result){
 				best_result = result;
 			}
 		}
@@ -296,7 +296,7 @@ void tod_manager::replace_schedule(const config& time_cfg)
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int initial_time)
 {
-	if(times_.empty() || schedule.empty() || times_[currentTime_].lawful_bonus != schedule.front().lawful_bonus) {
+	if(times_.empty() || schedule.empty() || times_[currentTime_].lawful_bonus != schedule.front().lawful_bonus){
 		has_tod_bonus_changed_ = true;
 	}
 
@@ -316,11 +316,11 @@ void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedul
 	assert(area_index < static_cast<int>(areas_.size()));
 	area_time_of_day& area = areas_[area_index];
 
-	if(area.times.empty() || schedule.empty()) {
+	if(area.times.empty() || schedule.empty()){
 		// If one of those is empty then their 'previous' time of day might depend on other areas_,
 		// its better to just assume the illumination has changes than to do the explicit computation.
 		has_tod_bonus_changed_ = true;
-	} else if(area.times[area.currentTime].lawful_bonus != schedule.front().lawful_bonus) {
+	} else if(area.times[area.currentTime].lawful_bonus != schedule.front().lawful_bonus){
 		// the current illumination on these tiles has changes.
 		has_tod_bonus_changed_ = true;
 	}
@@ -344,7 +344,7 @@ const std::string& tod_manager::get_area_id(int area_index) const
 std::vector<std::string> tod_manager::get_area_ids() const
 {
 	std::vector<std::string> areas;
-	for(const area_time_of_day& area : areas_) {
+	for(const area_time_of_day& area : areas_){
 		areas.push_back(area.id);
 	}
 
@@ -353,8 +353,8 @@ std::vector<std::string> tod_manager::get_area_ids() const
 
 const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id) const
 {
-	for(const area_time_of_day& area : areas_) {
-		if(area.id == id) {
+	for(const area_time_of_day& area : areas_){
+		if(area.id == id){
 			return area.hexes;
 		}
 	}
@@ -370,9 +370,9 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 
 std::pair<int, std::string> tod_manager::get_area_on_hex(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
+	if(loc != map_location::null_location()){
 		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
+			i != i_end; ++i){
 			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
 				return {std::distance(areas_.rbegin(), i), i->id};
 		}
@@ -408,13 +408,13 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 
 void tod_manager::remove_time_area(const std::string& area_id)
 {
-	if(area_id.empty()) {
+	if(area_id.empty()){
 		areas_.clear();
 	} else {
 		// search for all time areas that match the id.
 		auto i = areas_.begin();
-		while(i != areas_.end()) {
-			if((*i).id == area_id) {
+		while(i != areas_.end()){
+			if((*i).id == area_id){
 				i = areas_.erase(i);
 			} else {
 				++i;
@@ -435,7 +435,7 @@ void tod_manager::remove_time_area(int area_index)
 const time_of_day& tod_manager::get_time_of_day_turn(
 	const std::vector<time_of_day>& times, int nturn, const int current_time) const
 {
-	if(times.empty()) {
+	if(times.empty()){
 		return dummytime();
 	}
 
@@ -455,7 +455,7 @@ void tod_manager::set_number_of_turns(int num)
 
 void tod_manager::update_server_information() const
 {
-	if(resources::controller->current_team().is_local()) {
+	if(resources::controller->current_team().is_local()){
 		// The currently active side informs the mp server about the turn change.
 		// NOTE: The current implementation does not guarantee that the server gets informed
 		// about those changes in 100% of cases. But that is ok because the information is only
@@ -490,13 +490,13 @@ void tod_manager::set_turn(const int num, game_data* vars, const bool increase_l
 	// Correct ToD
 	set_new_current_times(new_turn);
 
-	if(increase_limit_if_needed && (new_turn > num_turns_) && num_turns_ != -1) {
+	if(increase_limit_if_needed && (new_turn > num_turns_) && num_turns_ != -1){
 		set_number_of_turns(new_turn);
 	}
 
 	turn_ = new_turn;
 
-	if(vars) {
+	if(vars){
 		vars->get_variable("turn_number") = new_turn;
 	}
 }
@@ -511,14 +511,14 @@ void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
 	set_current_time(calculate_time_index_at_turn(times_.size(), new_current_turn_number, currentTime_));
 
-	for(area_time_of_day& area : areas_) {
+	for(area_time_of_day& area : areas_){
 		set_current_time(calculate_time_index_at_turn(area.times.size(), new_current_turn_number, area.currentTime), area);
 	}
 }
 
 int tod_manager::fix_time_index(int number_of_times, int time)
 {
-	if(number_of_times == 0) {
+	if(number_of_times == 0){
 		return 0;
 	}
 
@@ -527,7 +527,7 @@ int tod_manager::fix_time_index(int number_of_times, int time)
 
 int tod_manager::calculate_time_index_at_turn(int number_of_times, int for_turn_number, int current_time) const
 {
-	if(number_of_times == 0) {
+	if(number_of_times == 0){
 		return 0;
 	}
 
@@ -537,7 +537,7 @@ int tod_manager::calculate_time_index_at_turn(int number_of_times, int for_turn_
 void tod_manager::set_current_time(int time)
 {
 	time = fix_time_index(times_.size(), time);
-	if(!times_.empty() && times_[time].lawful_bonus != times_[currentTime_].lawful_bonus) {
+	if(!times_.empty() && times_[time].lawful_bonus != times_[currentTime_].lawful_bonus){
 		has_tod_bonus_changed_ = true;
 	}
 
@@ -552,8 +552,8 @@ void tod_manager::set_current_time(int time, int area_index)
 
 void tod_manager::set_current_time(int time, const std::string& area_id)
 {
-	for(area_time_of_day& area : areas_) {
-		if(area.id == area_id) {
+	for(area_time_of_day& area : areas_){
+		if(area.id == area_id){
 			set_current_time(time, area);
 		}
 	}
@@ -562,7 +562,7 @@ void tod_manager::set_current_time(int time, const std::string& area_id)
 void tod_manager::set_current_time(int time, area_time_of_day& area)
 {
 	time = fix_time_index(area.times.size(), time);
-	if(area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {
+	if(area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus){
 		has_tod_bonus_changed_ = true;
 	}
 
@@ -587,7 +587,7 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 	int fearless_lawful = 0;
 
 	std::set<int> bonuses;
-	for(const auto& tod : schedule) {
+	for(const auto& tod : schedule){
 		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::chaotic, true, 0);
 		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::lawful, true, 0);
 		bonuses.insert(std::abs(tod.lawful_bonus));
@@ -597,13 +597,13 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 	int delta = target;
 	int result = 0;
 
-	for(int bonus : bonuses) {
+	for(int bonus : bonuses){
 		int liminal_effect = 0;
-		for(const auto& tod : schedule) {
+		for(const auto& tod : schedule){
 			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::liminal, false, bonus);
 		}
 
-		if(std::abs(target - liminal_effect) < delta) {
+		if(std::abs(target - liminal_effect) < delta){
 			result = bonus;
 			delta = std::abs(target - liminal_effect);
 		}

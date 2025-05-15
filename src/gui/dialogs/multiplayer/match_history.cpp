@@ -82,7 +82,7 @@ void mp_match_history::new_search()
 	player_name_ = search_player.get_value();
 
 	// display update failed, set the offset back to what it was before
-	if(!update_display()) {
+	if(!update_display()){
 		offset_ = old_offset;
 		player_name_ = old_player_name;
 	} else {
@@ -95,7 +95,7 @@ void mp_match_history::newer_history_offset()
 {
 	offset_ -= 10;
 	// display update failed, set the offset back to what it was before
-	if(!update_display()) {
+	if(!update_display()){
 		offset_ += 10;
 	}
 }
@@ -104,7 +104,7 @@ void mp_match_history::older_history_offset()
 {
 	offset_ += 10;
 	// display update failed, set the offset back to what it was before
-	if(!update_display()) {
+	if(!update_display()){
 		offset_ -= 10;
 	}
 }
@@ -116,7 +116,7 @@ std::string key_with_fallback(const config::attribute_value& val)
 	// Note that using the fallback arg of str() doesn't work since the value is set,
 	// it's just set as an empty string, and the fallback is only returned if the value
 	// is actually unset.
-	if(std::string s = val.str(); !s.empty()) {
+	if(std::string s = val.str(); !s.empty()){
 		return s;
 	} else {
 		return font::unicode_em_dash;
@@ -129,7 +129,7 @@ bool mp_match_history::update_display()
 	const config history = request_history();
 
 	// request failed, nothing to do
-	if(history.child_count("game_history_results") == 0) {
+	if(history.child_count("game_history_results") == 0){
 		return false;
 	}
 
@@ -141,7 +141,7 @@ bool mp_match_history::update_display()
 	tab_bar->select_row(0);
 
 	int i = 0;
-	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")) {
+	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")){
 		widget_data row;
 		grid& history_grid = history_box->add_row(row);
 
@@ -153,7 +153,7 @@ bool mp_match_history::update_display()
 
 		button* replay_download = dynamic_cast<button*>(history_grid.find("replay_download", false));
 		std::string replay_url = game["replay_url"].str();
-		if(!replay_url.empty()) {
+		if(!replay_url.empty()){
 			std::string filename = utils::split(replay_url, '/').back();
 			std::string local_save = filesystem::get_saves_dir()+"/"+filename;
 
@@ -164,7 +164,7 @@ bool mp_match_history::update_display()
 
 		std::vector<std::string> player_list;
 		std::vector<std::string> player_faction_list;
-		for(const config& player : game.child_range("player")) {
+		for(const config& player : game.child_range("player")){
 			player_list.emplace_back(font::unicode_bullet + " " + player["name"].str() + ":");
 			player_faction_list.emplace_back(player["faction"].str());
 		}
@@ -179,10 +179,10 @@ bool mp_match_history::update_display()
 
 		label* modifications = dynamic_cast<label*>(history_grid.find("modifications", false));
 		const auto& children = game.child_range("modification");
-		if(!children.empty()) {
+		if(!children.empty()){
 			std::vector<std::string> modifications_list;
 
-			for(const config& modification : game.child_range("modification")) {
+			for(const config& modification : game.child_range("modification")){
 				modifications_list.emplace_back(font::unicode_bullet + " " + modification["name"].str());
 			}
 
@@ -191,13 +191,13 @@ bool mp_match_history::update_display()
 		modifications->set_visible(gui2::widget::visibility::invisible);
 
 		i++;
-		if(i == 10) {
+		if(i == 10){
 			break;
 		}
 	}
 
 	// this is already the most recent history, can't get anything newer
-	if(offset_ == 0) {
+	if(offset_ == 0){
 		button* newer_history = find_widget<button>("newer_history", false, true);
 		newer_history->set_active(false);
 	} else {
@@ -207,7 +207,7 @@ bool mp_match_history::update_display()
 
 	// the server returns up to 11 and the client displays at most 10
 	// if fewer than 11 rows are returned, then there are no older rows left to get next
-	if(history.child_count("game_history_result") < 11) {
+	if(history.child_count("game_history_result") < 11){
 		button* older_history = find_widget<button>("older_history", false, true);
 		older_history->set_active(false);
 	} else {
@@ -231,7 +231,7 @@ const config mp_match_history::request_history()
 	connection_.send_data(request);
 
 	int times_waited = 0;
-	while(true) {
+	while(true){
 		config response;
 
 		// I'm not really sure why this works to be honest
@@ -240,15 +240,15 @@ const config mp_match_history::request_history()
 		// lobby responses are received in the lobby's network_handler() method when this method is not running
 		// lobby responses are not received while this method is running, and are handled in the lobby after it completes
 		// history results are never received in the lobby
-		if(connection_.receive_data(response)) {
-			if(response.child_count("game_history_results") == 0) {
+		if(connection_.receive_data(response)){
+			if(response.child_count("game_history_results") == 0){
 				DBG_NW << "Received non-history data: " << response.debug();
-				if(!response["error"].str().empty()) {
+				if(!response["error"].str().empty()){
 					ERR_NW << "Received error from server: " << response["error"].str();
 					gui2::show_error_message(_("The server responded with an error:")+" "+response["error"].str());
 					return {};
 				}
-			} else if(response.mandatory_child("game_history_results").child_count("game_history_result") == 0) {
+			} else if(response.mandatory_child("game_history_results").child_count("game_history_result") == 0){
 				DBG_NW << "Player has no game history data.";
 				gui2::show_error_message(_("No game history found."));
 				return {};
@@ -260,9 +260,9 @@ const config mp_match_history::request_history()
 			DBG_NW << "Received no data";
 		}
 
-		if(times_waited > 20 || !wait_for_response_) {
+		if(times_waited > 20 || !wait_for_response_){
 			ERR_NW << "Timed out waiting for history data, returning nothing";
-			if(wait_for_response_) {
+			if(wait_for_response_){
 				gui2::show_error_message(_("Request timed out."));
 			}
 			return {};
@@ -283,15 +283,15 @@ void mp_match_history::tab_switch_callback()
 	listbox* tab_bar = find_widget<listbox>("tab_bar", false, true);
 	int tab = tab_bar->get_selected_row();
 
-	for(unsigned i = 0; i < history_box->get_item_count(); i++) {
+	for(unsigned i = 0; i < history_box->get_item_count(); i++){
 		grid* history_grid = history_box->get_row_grid(i);
-		if(tab == 0) {
+		if(tab == 0){
 			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
 			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
-		} else if(tab == 1) {
+		} else if(tab == 1){
 			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::visible);
 			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
-		} else if(tab == 2) {
+		} else if(tab == 2){
 			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
 			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::visible);
 		}

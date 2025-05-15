@@ -74,15 +74,15 @@ int vertical_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<std::size_t>(coordinate.x) > get_width()
-	   || static_cast<std::size_t>(coordinate.y) > get_height()) {
+	   || static_cast<std::size_t>(coordinate.y) > get_height()){
 		return 0;
 	}
 
 	// we also assume the bar is over the entire width of the widget.
-	if(static_cast<std::size_t>(coordinate.y) < get_positioner_offset()) {
+	if(static_cast<std::size_t>(coordinate.y) < get_positioner_offset()){
 		return -1;
 	} else if(static_cast<std::size_t>(coordinate.y) > get_positioner_offset()
-												  + get_positioner_length()) {
+												  + get_positioner_length()){
 		return 1;
 	} else {
 		return 0;

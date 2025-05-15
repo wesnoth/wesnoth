@@ -21,7 +21,7 @@ bool windows_battery_info::does_device_have_battery()
 {
 	SYSTEM_POWER_STATUS power_status;
 	BOOL success = GetSystemPowerStatus(&power_status);
-	if(success) {
+	if(success){
 		return !(power_status.BatteryFlag & 128);
 	} else {
 		return false;
@@ -32,7 +32,7 @@ double windows_battery_info::get_battery_percentage()
 {
 	SYSTEM_POWER_STATUS power_status;
 	BOOL success = GetSystemPowerStatus(&power_status);
-	if(success) {
+	if(success){
 		return power_status.BatteryLifePercent;
 	} else {
 		return 0.0;

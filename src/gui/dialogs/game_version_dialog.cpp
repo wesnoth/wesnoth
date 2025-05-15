@@ -75,12 +75,12 @@ game_version::game_version(unsigned start_page)
 	path_map_["logs"] = filesystem::get_logs_dir();
 	path_map_["screenshots"] = filesystem::get_screenshot_dir();
 
-	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k) {
+	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k){
 		const game_config::LIBRARY_ID lib = game_config::LIBRARY_ID(k);
 
 		deplist_entry e;
 		e[0] = game_config::library_name(lib);
-		if(e[0].empty()) {
+		if(e[0].empty()){
 			continue;
 		}
 		e[1] = game_config::library_build_version(lib);
@@ -148,7 +148,7 @@ void game_version::pre_show()
 				browse_w,
 				std::bind(&game_version::browse_directory_callback, this, path_path));
 
-		if(!desktop::open_object_is_supported()) {
+		if(!desktop::open_object_is_supported()){
 			// No point in displaying these on platforms that can't do
 			// open_object().
 			browse_w.set_visible(widget::visibility::invisible);
@@ -167,7 +167,7 @@ void game_version::pre_show()
 
 	listbox& deps_listbox = find_widget<listbox>("deps_listbox");
 
-	for(const auto& dep : deps_) {
+	for(const auto& dep : deps_){
 		deps_listbox.add_row(widget_data{
 			{ "dep_name", {
 				{ "label", dep[0] }
@@ -192,7 +192,7 @@ void game_version::pre_show()
 
 	listbox& opts_listbox = find_widget<listbox>("opts_listbox");
 
-	for(const auto& opt : opts_) {
+	for(const auto& opt : opts_){
 		opts_listbox.add_row(widget_data{
 			{ "opt_name", {
 				{ "label", opt.name }
@@ -258,26 +258,26 @@ void game_version::generate_plain_text_report()
 	report_ = game_config::full_build_report();
 }
 
-void game_version::show_credits_dialog() {
+void game_version::show_credits_dialog(){
 	gui2::dialogs::end_credits::display();
 }
 
-void game_version::show_license() {
+void game_version::show_license(){
 	help::show_help("license");
 }
 
-void game_version::report_issue() {
-	if (desktop::open_object_is_supported()) {
+void game_version::report_issue(){
+	if(desktop::open_object_is_supported()){
 		desktop::open_object("https://bugs.wesnoth.org");
 	} else {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 	}
 }
 
-void game_version::show_manual() {
-	if (desktop::open_object_is_supported()) {
+void game_version::show_manual(){
+	if(desktop::open_object_is_supported()){
 		const auto& manual_path = filesystem::get_game_manual_file(get_language().localename);
-		if (manual_path) {
+		if(manual_path){
 			desktop::open_object(manual_path.value());
 		} else {
 			// Use web manual as a last resort

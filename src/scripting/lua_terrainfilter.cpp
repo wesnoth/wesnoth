@@ -38,7 +38,7 @@ static lg::log_domain log_scripting_lua_mapgen("scripting/lua/mapgen");
 
 struct invalid_lua_argument : public std::exception
 {
-	explicit invalid_lua_argument(const std::string& msg) : errormessage_(msg) {}
+	explicit invalid_lua_argument(const std::string& msg) : errormessage_(msg){}
 	const char* what() const noexcept { return errormessage_.c_str(); }
 
 private:
@@ -59,7 +59,7 @@ LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__;
 namespace {
 	int atoi(string_view s)
 	{
-		if(s.empty()) {
+		if(s.empty()){
 			return 0;
 		}
 
@@ -71,7 +71,7 @@ namespace {
 	std::pair<int, int> parse_single_range(string_view s)
 	{
 		int dash_pos = s.find('-');
-		if(dash_pos == int(string_view::npos)) {
+		if(dash_pos == int(string_view::npos)){
 			int res = atoi(s);
 			return {res, res};
 		}
@@ -88,9 +88,9 @@ namespace {
 		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](string_view part){
 			auto pair = parse_single_range(part);
 			int m = std::max(pair.first, pair.second);
-			if(m >= int(res.size())) {
+			if(m >= int(res.size())){
 				res.resize(m + 1);
-				for(int i = pair.first; i <= pair.second; ++i) {
+				for(int i = pair.first; i <= pair.second; ++i){
 					res[i] = true;
 				}
 			}
@@ -105,8 +105,8 @@ namespace {
 		int s = 0;
 		int se = 0;
 		bool last_was_n = false;
-		while(!str.empty()) {
-			switch(str.front()) {
+		while(!str.empty()){
+			switch(str.front()){
 			case 'n':
 				--s;
 				last_was_n = true;
@@ -117,13 +117,13 @@ namespace {
 				break;
 			case 'e':
 				++se;
-				if(!last_was_n) {
+				if(!last_was_n){
 					--s;
 				}
 				break;
 			case 'w':
 				--se;
-				if(last_was_n) {
+				if(last_was_n){
 					++s;
 				}
 				break;
@@ -132,7 +132,7 @@ namespace {
 			}
 			str.remove_prefix(1);
 		}
-		if((se & 2) == 0) {
+		if((se & 2) == 0){
 			odd.emplace_back(se, s + se/2);
 			even.emplace_back(se, s + se/2);
 		}
@@ -162,14 +162,14 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 {
 	std::set<map_location> res;
 	map_location single;
-	if(luaW_tolocation(L, index, single)) {
+	if(luaW_tolocation(L, index, single)){
 		res.insert(single);
 		return res;
 	}
 	if(!lua_istable(L, index)) return res;
 	lua_pushvalue(L, index);
 	size_t len = lua_rawlen(L, -1);
-	for(size_t i = 0; i != len; ++i) {
+	for(size_t i = 0; i != len; ++i){
 		lua_geti(L, -1, i + 1);
 		res.insert(luaW_checklocation(L, -1));
 		lua_pop(L, 1);
@@ -181,9 +181,9 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 class filter_impl
 {
 public:
-	filter_impl() {};
+	filter_impl(){};
 	virtual bool matches(const gamemap_base& m, map_location l) const = 0;
-	virtual ~filter_impl() {};
+	virtual ~filter_impl(){};
 };
 
 //build_filter impl
@@ -199,7 +199,7 @@ public:
 	{
 		LOG_LMG << "creating con filter";
 		size_t len = lua_rawlen(L, -1);
-		for(size_t i = 1; i != len; ++i) {
+		for(size_t i = 1; i != len; ++i){
 			lua_geti(L, -1, i + 1);
 			list_.emplace_back(build_filter(L, res_index, ks));
 			lua_pop(L, 1);
@@ -220,8 +220,8 @@ public:
 	bool matches(const gamemap_base& m, map_location l) const override
 	{
 		LOG_MATCHES(and);
-		for(const auto& pfilter : list_) {
-			if(!pfilter->matches(m, l)) {
+		for(const auto& pfilter : list_){
+			if(!pfilter->matches(m, l)){
 				return false;
 			}
 		}
@@ -241,8 +241,8 @@ public:
 	bool matches(const gamemap_base& m, map_location l) const override
 	{
 		LOG_MATCHES(or);
-		for(const auto& pfilter : list_) {
-			if(pfilter->matches(m, l)) {
+		for(const auto& pfilter : list_){
+			if(pfilter->matches(m, l)){
 				return true;
 			}
 		}
@@ -262,8 +262,8 @@ public:
 	bool matches(const gamemap_base& m, map_location l) const override
 	{
 		LOG_MATCHES(nand);
-		for(const auto& pfilter : list_) {
-			if(!pfilter->matches(m, l)) {
+		for(const auto& pfilter : list_){
+			if(!pfilter->matches(m, l)){
 				return true;
 			}
 		}
@@ -283,8 +283,8 @@ public:
 	bool matches(const gamemap_base& m, map_location l) const override
 	{
 		LOG_MATCHES(nor);
-		for(const auto& pfilter : list_) {
-			if(pfilter->matches(m, l)) {
+		for(const auto& pfilter : list_){
+			if(pfilter->matches(m, l)){
 				return false;
 			}
 		}
@@ -311,10 +311,10 @@ public:
 		int cache_size = 2 * m.total_width() * m.total_height();
 		int loc_index = 2 * (l.wml_x() + l.wml_y() * m.total_width());
 
-		if(int(cache_.size()) != cache_size) {
+		if(int(cache_.size()) != cache_size){
 			cache_ = dynamic_bitset(cache_size);
 		}
-		if(cache_[loc_index]) {
+		if(cache_[loc_index]){
 			return cache_[loc_index + 1];
 		}
 		else {
@@ -419,7 +419,7 @@ public:
 	: filter_()
 	{
 		LOG_LMG << "creating adjacent filter";
-		if(luaW_tableget(L, -1, "adjacent")) {
+		if(luaW_tableget(L, -1, "adjacent")){
 			parse_rel_sequence(luaW_tostring(L, -1), even_offsets_, odd_offsets_);
 			lua_pop(L, 1);
 		}
@@ -427,7 +427,7 @@ public:
 			even_offsets_ = even_offsets_default;
 			odd_offsets_ = odd_offsets_default;
 		}
-		if(luaW_tableget(L, -1, "count")) {
+		if(luaW_tableget(L, -1, "count")){
 			accepted_counts_ = parse_range(luaW_tostring(L, -1));
 			lua_pop(L, 1);
 		}
@@ -442,10 +442,10 @@ public:
 		int count = 0;
 		// is_odd == is_even in wml coordinates.
 		const offset_list_t& offsets = (l.wml_x() & 1) ?  odd_offsets_ : even_offsets_;
-		for(const auto& offset : offsets) {
+		for(const auto& offset : offsets){
 			map_location ad = {l.x + offset.first, l.y + offset.second};
-			if(m.on_board_with_border(ad) && filter_->matches(m, ad)) {
-				if(accepted_counts_.size() == 0) {
+			if(m.on_board_with_border(ad) && filter_->matches(m, ad)){
+				if(accepted_counts_.size() == 0){
 					return true;
 				}
 				++count;
@@ -467,7 +467,7 @@ public:
 	{
 		LOG_LMG << "creating findin filter";
 		int idx = lua_absindex(L, -1);
-		switch(lua_geti(L, idx, 2)) {
+		switch(lua_geti(L, idx, 2)){
 		case LUA_TTABLE:
 			// Also accepts a single location of the form {x,y} or {x=x,y=y}
 			init_from_inline_set(luaW_to_locationset(L, -1));
@@ -477,7 +477,7 @@ public:
 			init_from_single_loc(luaL_checkinteger(L, -2), luaL_checkinteger(L, -1));
 			break;
 		case LUA_TSTRING:
-			if(lua_geti(L, idx, 3) == LUA_TSTRING) {
+			if(lua_geti(L, idx, 3) == LUA_TSTRING){
 				init_from_ranges(luaL_checkstring(L, -2), luaL_checkstring(L, -1));
 			} else {
 				init_from_named_set(L, luaL_checkstring(L, -2), res_index, ks);
@@ -487,23 +487,23 @@ public:
 		lua_settop(L, idx);
 	}
 
-	void init_from_inline_set(const location_set& locs) {
+	void init_from_inline_set(const location_set& locs){
 		inline_ = locs;
 		set_ = &inline_;
 	}
 
-	void init_from_single_loc(int x, int y) {
+	void init_from_single_loc(int x, int y){
 		map_location loc(x, y, wml_loc());
 		inline_.insert(loc);
 		set_ = &inline_;
 	}
 
-	void init_from_ranges(const std::string& xs, const std::string& ys) {
+	void init_from_ranges(const std::string& xs, const std::string& ys){
 		auto xvals = utils::parse_ranges_unsigned(xs), yvals = utils::parse_ranges_unsigned(ys);
 		// TODO: Probably error if they're different sizes?
-		for(size_t i = 0; i < std::min(xvals.size(), yvals.size()); i++) {
-			for(int x = xvals[i].first; x <= xvals[i].second; x++) {
-				for(int y = yvals[i].first; y <= yvals[i].second; y++) {
+		for(size_t i = 0; i < std::min(xvals.size(), yvals.size()); i++){
+			for(int x = xvals[i].first; x <= xvals[i].second; x++){
+				for(int y = yvals[i].first; y <= yvals[i].second; y++){
 					inline_.insert(map_location(x, y, wml_loc()));
 				}
 			}
@@ -511,12 +511,12 @@ public:
 		set_ = &inline_;
 	}
 
-	void init_from_named_set(lua_State* L, const std::string& id, int res_index, known_sets_t& ks) {
+	void init_from_named_set(lua_State* L, const std::string& id, int res_index, known_sets_t& ks){
 		//TODO: c++14: use heterogenous lookup.
 		auto insert_res = ks.insert(known_sets_t::value_type{id, {}});
-		if(insert_res.second && res_index > 0) {
+		if(insert_res.second && res_index > 0){
 			// istable(L, res_index) was already checked.
-			if(luaW_tableget(L, res_index, id.c_str())) {
+			if(luaW_tableget(L, res_index, id.c_str())){
 				insert_res.first->second = luaW_to_locationset(L, -1);
 				lua_pop(L, 1);
 			}
@@ -526,7 +526,7 @@ public:
 	bool matches(const gamemap_base&, map_location l) const override
 	{
 		LOG_MATCHES(findin);
-		if(set_) {
+		if(set_){
 			return set_->find(l) != set_->end();
 		}
 		return false;
@@ -545,7 +545,7 @@ public:
 		, filter_()
 	{
 		LOG_LMG << "creating radius filter";
-		if(luaW_tableget(L, -1, "filter_radius")) {
+		if(luaW_tableget(L, -1, "filter_radius")){
 			filter_radius_ = build_filter(L, res_index, ks);
 			lua_pop(L, 1);
 		}
@@ -563,16 +563,16 @@ public:
 		std::set<map_location> result;
 
 		get_tiles_radius({{ l }}, radius_, result,
-			[&](const map_location& l) {
+			[&](const map_location& l){
 				return m.on_board_with_border(l);
 			},
-			[&](const map_location& l) {
+			[&](const map_location& l){
 				return !filter_radius_ || filter_radius_->matches(m, l);
 			}
 		);
 
-		for (map_location lr : result) {
-			if(!filter_ || filter_->matches(m, lr)) {
+		for(map_location lr : result){
+			if(!filter_ || filter_->matches(m, lr)){
 				return true;
 			}
 		}
@@ -602,7 +602,7 @@ public:
 			const wfl::location_callable callable1(l);
 			wfl::map_formula_callable callable(callable1.fake_ptr());
 			return (formula_.get() != nullptr) && formula_->evaluate(callable).as_bool();
-		} catch(const wfl::formula_error& e) {
+		} catch(const wfl::formula_error& e){
 			ERR_LMG << "Formula error: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			return false;
 		}
@@ -632,14 +632,14 @@ static const std::unordered_map<std::string, filter_keys> keys {
 std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, known_sets_t& ks)
 {
 	LOG_LMG << "buildfilter: start";
-	if(!lua_istable(L, -1)) {
+	if(!lua_istable(L, -1)){
 		throw invalid_lua_argument("buildfilter: expected table");
 	}
 	lua_rawgeti(L, -1, 1);
 	std::string s = std::string(luaW_tostring(L, -1));
 	LOG_LMG << "buildfilter: got: " << s;
 	auto it = keys.find(s);
-	if(it == keys.end()) {
+	if(it == keys.end()){
 		//fixme use proper exception type.
 		throw invalid_lua_argument(std::string("buildfilter: invalid filter type ") + s);
 	}
@@ -716,20 +716,20 @@ int intf_mg_get_locations(lua_State* L)
 	const auto f = luaW_check_mgfilter(L, 2, true);
 	location_set res;
 	LOG_LMG <<  "map:get_locations vaidargs";
-	if(!lua_isnone(L, 3)) {
+	if(!lua_isnone(L, 3)){
 		LOG_LMG <<  "map:get_locations some locations";
 		location_set s = luaW_to_locationset(L, 3);
 		LOG_LMG <<  "map:get_locations #args = " << s.size();
-		for (const map_location& l : s) {
-			if(f->matches(m, l)) {
+		for(const map_location& l : s){
+			if(f->matches(m, l)){
 				res.insert(l);
 			}
 		}
 	}
 	else {
 		LOG_LMG <<  "map:get_locations all locations";
-		m.for_each_loc([&](map_location l) {
-			if(f->matches(m, l)) {
+		m.for_each_loc([&](map_location l){
+			if(f->matches(m, l)){
 				res.insert(l);
 			}
 		});
@@ -749,10 +749,10 @@ int intf_mg_get_tiles_radius(lua_State* L)
 	const auto f = luaW_check_mgfilter(L, 4, true);
 	location_set res;
 	get_tiles_radius(std::move(s), r, res,
-		[&](const map_location& l) {
+		[&](const map_location& l){
 			return m.on_board_with_border(l);
 		},
-		[&](const map_location& l) {
+		[&](const map_location& l){
 			return f->matches(m, l);
 		}
 	);
@@ -768,7 +768,7 @@ bool luaW_is_mgfilter(lua_State* L, int index)
 
 lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 {
-	if(luaW_is_mgfilter(L, index)) {
+	if(luaW_is_mgfilter(L, index)){
 		return static_cast<lua_mapgen::filter*>(lua_touserdata(L, index));
 	}
 	return nullptr;
@@ -776,13 +776,13 @@ lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 
 lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
 {
-	if(luaW_is_mgfilter(L, index)) {
+	if(luaW_is_mgfilter(L, index)){
 		lua_mapgen::filter_ptr ptr;
-		ptr.get_deleter() = [](lua_mapgen::filter*) {}; // don't delete the Lua-held filter pointer
+		ptr.get_deleter() = [](lua_mapgen::filter*){}; // don't delete the Lua-held filter pointer
 		ptr.reset(static_cast<lua_mapgen::filter*>(lua_touserdata(L, index)));
 		return ptr;
 	}
-	if(allow_compile && lua_istable(L, index)) {
+	if(allow_compile && lua_istable(L, index)){
 		auto f = std::make_unique<lua_mapgen::filter>(L, index, 0);
 		return f;
 	}
@@ -811,17 +811,17 @@ int intf_terrainfilter_create(lua_State *L)
 {
 	try {
 		int res_index = 0;
-		if(!lua_istable(L, 1)) {
+		if(!lua_istable(L, 1)){
 			return luaL_argerror(L, 1, "table expected");
 		}
-		if(lua_istable(L, 2)) {
+		if(lua_istable(L, 2)){
 			res_index = 2;
 		}
 		lua_mapgen::filter res(L, 1, res_index);
 		luaW_push_mgfilter(L, std::move(res));
 		return 1;
 	}
-	catch(const invalid_lua_argument& e) {
+	catch(const invalid_lua_argument& e){
 		return luaL_argerror(L, 1, e.what());
 	}
 }

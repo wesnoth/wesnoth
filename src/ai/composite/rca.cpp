@@ -38,7 +38,7 @@ candidate_action::candidate_action(rca_context &context, const config &cfg):
 	max_score_(cfg["max_score"].to_double(HIGH_SCORE)),
 	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"]), to_be_removed_(false)
 {
-	if (auto filter_own = cfg.optional_child("filter_own")) {
+	if(auto filter_own = cfg.optional_child("filter_own")){
 		vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
@@ -87,7 +87,7 @@ std::shared_ptr<unit_filter> candidate_action::get_filter_own() const
 
 bool candidate_action::is_allowed_unit(const unit& u) const
 {
-	if (filter_own_) {
+	if(filter_own_){
 		return (*filter_own_)(u);
 	}
 	return true;
@@ -107,7 +107,7 @@ config candidate_action::to_config() const
 	cfg["name"] = name_;
 	cfg["score"] = score_;
 	cfg["max_score"] = max_score_;
-	if (filter_own_ && !filter_own_->empty()) {
+	if(filter_own_ && !filter_own_->empty()){
 		cfg.add_child("filter_own", filter_own_->to_config());
 	}
 	cfg["type"] = type_;
@@ -127,7 +127,7 @@ bool candidate_action::to_be_removed()
 // This is defined in the source file so that it can easily access the logger
 bool candidate_action_factory::is_duplicate(const std::string& name)
 {
-	if (get_list().find(name) != get_list().end()) {
+	if(get_list().find(name) != get_list().end()){
 		ERR_AI_STAGE_RCA << "Error: Attempt to double-register candidate action " << name;
 		return true;
 	}
@@ -136,7 +136,7 @@ bool candidate_action_factory::is_duplicate(const std::string& name)
 
 //============================================================================
 
-std::ostream &operator<<(std::ostream &s, const ai::candidate_action& ca) {
+std::ostream &operator<<(std::ostream &s, const ai::candidate_action& ca){
 	s << "candidate action with name ["<< ca.get_name() <<"]";
 	return s;
 }

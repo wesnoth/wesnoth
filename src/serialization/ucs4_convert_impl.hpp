@@ -44,14 +44,14 @@ namespace ucs4_convert_impl
 
 		static int byte_size_from_utf8_first(char ch)
 		{
-			if (!(ch & 0x80)) {
+			if(!(ch & 0x80)) {
 				return 1;  // US-ASCII character, 1 byte
 			}
 			/* first bit set: character not in US-ASCII, multiple bytes
 			 * number of set bits at the beginning = bytes per character
 			 * e.g. 11110xxx indicates a 4-byte character */
 			int count = count_leading_ones(ch);
-			if (count == 1 || count > 6) {		// count > 4 after RFC 3629
+			if(count == 1 || count > 6) {		// count > 4 after RFC 3629
 				throw utf8::invalid_utf8_exception(); // Stop on invalid characters
 			}
 			return count;
@@ -110,10 +110,10 @@ namespace ucs4_convert_impl
 			++input;
 			for(std::size_t i = 1; i < size; ++i, ++input) {
 				// If the string ends occurs within an UTF8-sequence, this is bad.
-				if (input == end)
+				if(input == end)
 					throw utf8::invalid_utf8_exception();
 
-				if ((*input & 0xC0) != 0x80)
+				if((*input & 0xC0) != 0x80)
 					throw utf8::invalid_utf8_exception();
 
 				current_char = (current_char << 6) | (static_cast<unsigned char>(*input) & 0x3F);
@@ -122,7 +122,7 @@ namespace ucs4_convert_impl
 
 			// Check for non-shortest-form encoding
 			// This has been forbidden in Unicode 3.1 for security reasons
-			if (size > byte_size_from_ucs4_codepoint(current_char))
+			if(size > byte_size_from_ucs4_codepoint(current_char))
 				throw utf8::invalid_utf8_exception();
 			return current_char;
 		}

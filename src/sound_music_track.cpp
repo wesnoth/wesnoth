@@ -69,21 +69,21 @@ music_track::music_track(const std::string& v_name)
 
 void music_track::resolve()
 {
-	if (id_.empty()) {
+	if(id_.empty()){
 		LOG_AUDIO << "empty track filename specified for track identification";
 		return;
 	}
 
-	if(auto path = filesystem::get_binary_file_location("music", id_)) {
+	if(auto path = filesystem::get_binary_file_location("music", id_)){
 		file_path_ = path.value();
 	} else {
 		LOG_AUDIO << "could not find track '" << id_ << "' for track identification";
 		return;
 	}
 
-	if (title_.empty()) {
+	if(title_.empty()){
 		OggVorbis_File vf;
-		if(ov_fopen(file_path_.c_str(), &vf) < 0) {
+		if(ov_fopen(file_path_.c_str(), &vf) < 0){
 			LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification";
 			return;
 		}
@@ -92,16 +92,16 @@ void music_track::resolve()
 		char** user_comments = comments->user_comments;
 
 		bool found = false;
-		for (int i=0; i< comments->comments; i++) {
+		for(int i=0; i< comments->comments; i++){
 			const std::string comment_string(user_comments[i]);
 			const std::vector<std::string> comment_list = utils::split(comment_string, '=');
 
-			if (comment_list[0] == "TITLE" || comment_list[0] == "title") {
+			if(comment_list[0] == "TITLE" || comment_list[0] == "title"){
 				title_ = comment_list[1];
 				found = true;
 			}
 		}
-		if (!found) {
+		if(!found){
 			LOG_AUDIO << "No title for music track '" << id_ << "'";
 		}
 
@@ -117,7 +117,7 @@ void music_track::write(config &parent_node, bool append) const
 	m["name"] = id_;
 	m["ms_before"] = ms_before_;
 	m["ms_after"] = ms_after_;
-	if(append) {
+	if(append){
 		m["append"] = true;
 	}
 	//default behaviour is to shuffle

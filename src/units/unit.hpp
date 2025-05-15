@@ -105,7 +105,7 @@ public:
 	/** Appends the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
-		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
+		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_));
 	}
 
 	/**
@@ -117,7 +117,7 @@ public:
 	template<typename Predicate>
 	void append_if(const unit_ability_list& other, const Predicate& predicate)
 	{
-		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
+		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_), predicate);
 	}
 
 private:

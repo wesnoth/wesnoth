@@ -29,13 +29,13 @@ grid::grid(gui2::grid& grid)
 
 walker_base::state_t grid::next(const level level)
 {
-	if(at_end(level)) {
+	if(at_end(level)){
 		return fail;
 	}
 
-	switch(level) {
+	switch(level){
 		case self:
-			if(widget_) {
+			if(widget_){
 				widget_ = nullptr;
 				return invalid;
 			}
@@ -44,7 +44,7 @@ walker_base::state_t grid::next(const level level)
 			assert(false);
 			return fail;
 		case child:
-			if(itor_ != grid_.end()) {
+			if(itor_ != grid_.end()){
 				++itor_;
 				return itor_ == grid_.end() ? invalid : valid;
 			}
@@ -56,7 +56,7 @@ walker_base::state_t grid::next(const level level)
 
 bool grid::at_end(const level level) const
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_ == nullptr;
 		case internal:
@@ -71,13 +71,13 @@ bool grid::at_end(const level level) const
 
 gui2::widget* grid::get(const level level)
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_;
 		case internal:
 			return nullptr;
 		case child:
-			if(itor_ == grid_.end()) {
+			if(itor_ == grid_.end()){
 				return nullptr;
 			} else {
 				return *itor_;

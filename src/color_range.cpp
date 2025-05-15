@@ -43,10 +43,10 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, utils::spa
 		? 255u
 		: (old_rgb[0].r + old_rgb[0].g + old_rgb[0].b) / 3;
 
-	for(const color_t& old_c : old_rgb) {
+	for(const color_t& old_c : old_rgb){
 		const uint8_t old_avg = (old_c.r + old_c.g + old_c.b) / 3;
 
-		if(reference_avg && old_avg <= reference_avg) {
+		if(reference_avg && old_avg <= reference_avg){
 			float old_ratio = static_cast<float>(old_avg) / reference_avg;
 
 			clist.emplace_back(
@@ -54,7 +54,7 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, utils::spa
 				std::min(255u, static_cast<uint32_t>(old_ratio * mid_c.g + (1 - old_ratio) * min_c.g)),
 				std::min(255u, static_cast<uint32_t>(old_ratio * mid_c.b + (1 - old_ratio) * min_c.b))
 			);
-		} else if(reference_avg != 255) {
+		} else if(reference_avg != 255){
 			float old_ratio = (255.0f - static_cast<float>(old_avg)) / (255.0f - reference_avg);
 
 			clist.emplace_back(
@@ -68,17 +68,17 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, utils::spa
 	return clist;
 }
 
-constexpr auto base_palette = []() {
+constexpr auto base_palette = [](){
 	// Two entries per color, except on the first iteration.
 	std::array<color_t, (255 * 2) - 1> res;
 	std::size_t index = 0;
 
 	// Use blue to make master set of possible colors
-	for(uint8_t i = 255u; i != 0; --i) {
+	for(uint8_t i = 255u; i != 0; --i){
 		res[index++] = {0, 0, i};
 
 		// Avoid duplicate entry on the first pass when j == 0
-		if(uint8_t j = 255u - i; j != 0) {
+		if(uint8_t j = 255u - i; j != 0){
 			res[index++] = {j, j, 255};
 		}
 	}
@@ -94,7 +94,7 @@ color_range_map recolor_range(const color_range& new_range, const std::vector<co
 	assert(new_rgb.size() == old_rgb.size());
 
 	color_range_map res;
-	for(std::size_t i = 0; i < new_rgb.size(); ++i) {
+	for(std::size_t i = 0; i < new_rgb.size(); ++i){
 		res[old_rgb[i]] = new_rgb[i];
 	}
 

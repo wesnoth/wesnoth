@@ -157,7 +157,7 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw( wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_; /**< The center x coordinate of the circle. */

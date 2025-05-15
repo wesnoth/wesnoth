@@ -142,12 +142,12 @@ inline void lua_object<utils::variant<bool, std::vector<std::string>>>::from_typ
 template <>
 inline std::shared_ptr< utils::variant<bool, std::vector<std::string>> > lua_object< utils::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
 {
-	if (lua_isboolean(L, n)) {
+	if(lua_isboolean(L, n)) {
 		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
 	} else {
 		auto v = std::make_shared<std::vector<std::string>>();
 		int l = lua_rawlen(L, n);
-		for (int i = 1; i < l + 1; ++i)
+		for(int i = 1; i < l + 1; ++i)
 		{
 			lua_pushinteger(L, i);
 			lua_gettable(L, n);
@@ -198,7 +198,7 @@ inline std::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::
 {
 	auto v = std::make_shared<std::vector<std::string>>();
 	int l = lua_rawlen(L, n);
-	for (int i = 1; i < l + 1; ++i)
+	for(int i = 1; i < l + 1; ++i)
 	{
 		lua_pushinteger(L, i);
 		lua_gettable(L, n);
@@ -242,7 +242,7 @@ inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_S
 {
 	auto cfg = std::make_shared<config>();
 	auto vcfg = std::make_shared<vconfig>(*cfg);
-	if (!luaW_tovconfig(L, n, *vcfg)) {
+	if(!luaW_tovconfig(L, n, *vcfg)) {
 		cfg->add_child("not");
 	}
 	vcfg->make_safe();
@@ -269,7 +269,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 	auto targets = std::make_shared<std::vector<target>>();
 	int l = lua_rawlen(L, n);
 
-	for (int i = 1; i <= l; ++i)
+	for(int i = 1; i <= l; ++i)
 	{
 		lua_rawgeti(L, n, i); // st n + 1  TABLE @ N    table @ n + 1
 

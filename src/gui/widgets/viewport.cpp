@@ -53,7 +53,7 @@ struct viewport_implementation
 		/*
 		 * First test whether the mouse is at the pane.
 		 */
-		if(viewport->widget::find_at(coordinate, must_be_active) != viewport) {
+		if(viewport->widget::find_at(coordinate, must_be_active) != viewport){
 			return nullptr;
 		}
 
@@ -71,7 +71,7 @@ struct viewport_implementation
 	static utils::const_clone_ptr<widget, W>
 	find(W viewport, const std::string_view id, const bool must_be_active)
 	{
-		if(viewport->widget::find(id, must_be_active)) {
+		if(viewport->widget::find(id, must_be_active)){
 			return viewport;
 		} else {
 			return viewport->widget_->find(id, must_be_active);
@@ -102,14 +102,14 @@ void viewport::layout_initialize(const bool full_initialization)
 {
 	widget::layout_initialize(full_initialization);
 
-	if(widget_->get_visible() != widget::visibility::invisible) {
+	if(widget_->get_visible() != widget::visibility::invisible){
 		widget_->layout_initialize(full_initialization);
 	}
 }
 
 void viewport::impl_draw_children()
 {
-	if(widget_->get_visible() != widget::visibility::invisible) {
+	if(widget_->get_visible() != widget::visibility::invisible){
 		widget_->draw_background();
 		widget_->draw_children();
 		widget_->draw_foreground();

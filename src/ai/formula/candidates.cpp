@@ -45,10 +45,10 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 	int res = 0;
 	try {
 		res = (formula::evaluate(formula, callable)).as_int();
-	} catch(const formula_error& e) {
+	} catch(const formula_error& e){
 		ai->handle_exception(e);
 		res = 0;
-	} catch(const type_error& e) {
+	} catch(const type_error& e){
 		res = 0;
 		ERR_AI << "formula type error while evaluating candidate action: " << e.message;
 	}
@@ -64,7 +64,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 {
 	auto filter_params = cfg.optional_child("filter");
 
-	if( filter_params ) {
+	if(filter_params){
 		for(const auto& [key, value] : filter_params->attribute_range())
 		{
 			const_formula_ptr filter_formula(
@@ -101,7 +101,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 	{
-		if (i->side() == ai->get_side() && i->movement_left() > 0) {
+		if(i->side() == ai->get_side() && i->movement_left() > 0){
 			unit_vector.emplace_back(std::make_shared<unit_callable>(*i));
 		}
 	}
@@ -110,12 +110,12 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	variant filtered_units;
 	try {
-		if(me_filter != filter_map_.end() )
+		if(me_filter != filter_map_.end())
 			filtered_units = do_filtering(ai, my_units, me_filter->second);
 		else
 			filtered_units=my_units;
 	}
-	catch(const formula_error& e) {
+	catch(const formula_error& e){
 		ai->handle_exception(e, "Error while executing filter formula for '" + get_name() + "' Candidate Action");
 		return;
 	}
@@ -127,7 +127,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 			int res = execute_formula(eval_, callable, ai);
 
-			if(res > score_) {
+			if(res > score_){
 				score_ = res;
 				my_unit_ = *i;
 			}
@@ -158,14 +158,14 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 	{
-		if (i->side() == ai->get_side())
+		if(i->side() == ai->get_side())
 		{
-			if (i->attacks_left()) {
+			if(i->attacks_left()){
 				my_res.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		} else
 		{
-			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location())) {
+			if(ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location())){
 				enemy_res.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		}
@@ -175,26 +175,26 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	variant filtered_my_units, filtered_enemy_units;
 	try {
-		if(me_filter != filter_map_.end() )
+		if(me_filter != filter_map_.end())
 			filtered_my_units = do_filtering(ai, my_units, me_filter->second);
 		else
 			filtered_my_units = my_units;
 
-		if(target_filter != filter_map_.end() )
+		if(target_filter != filter_map_.end())
 			filtered_enemy_units = do_filtering(ai, enemy_units, target_filter->second);
 		else
 			filtered_enemy_units = enemy_units;
 	}
-	catch(const formula_error& e) {
+	catch(const formula_error& e){
 		ai->handle_exception(e, "Error while executing filter formula for '" + get_name() + "' Candidate Action");
 		return;
 	}
 
 	try{
-		if( !(filtered_enemy_units.num_elements() && filtered_my_units.num_elements() ) )
+		if(!(filtered_enemy_units.num_elements() && filtered_my_units.num_elements()))
 			return;
 	}
-	catch(const type_error& e) {
+	catch(const type_error& e){
 		ERR_AI << "Error while executing filter formulas for '" + get_name() + "' Candidate Action: " << e.message;
 		return;
 	}
@@ -202,29 +202,29 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	std::vector<variant> my_units_flt;
 	std::vector<variant> enemy_units_flt;
 
-	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
+	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i){
 		auto u_callable = (*i).try_convert<const unit_callable>();
-		if(!u_callable) {
+		if(!u_callable){
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units";
 			return;
 		}
 		my_units_flt.emplace_back(u_callable);
 	}
 
-	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
+	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i){
 		auto u_callable = (*i).try_convert<const unit_callable>();
-		if(!u_callable) {
+		if(!u_callable){
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units";
 			return;
 		}
 		enemy_units_flt.emplace_back(u_callable);
 	}
 
-	for( std::size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
+	for(std::size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
 		auto my_unit_callable = my_units_flt[my_unit].convert_to<unit_callable>();
-		for( std::size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
+		for(std::size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
 			auto enemy_unit_callable = enemy_units_flt[enemy_unit].convert_to<unit_callable>();
-			if(ai->can_reach_unit(my_unit_callable->get_location(), enemy_unit_callable->get_location())) {
+			if(ai->can_reach_unit(my_unit_callable->get_location(), enemy_unit_callable->get_location())){
 
 				map_formula_callable callable(ai->fake_ptr());
 				callable.add("me", filtered_my_units[my_unit]);
@@ -232,7 +232,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 				int res = execute_formula(eval_, callable, ai);
 
-				if(res > score_) {
+				if(res > score_){
 					score_ = res;
 					my_unit_ = filtered_my_units[my_unit];
 					enemy_unit_ = filtered_enemy_units[enemy_unit];

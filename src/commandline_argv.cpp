@@ -25,27 +25,27 @@ namespace {
 bool win32_parse_single_arg(const char*& next, const char* end, std::string& res)
 {
 	// strip leading whitespace
-	while(next != end && *next == ' ') {
+	while(next != end && *next == ' '){
 		++next;
 	}
 
-	if(next == end) {
+	if(next == end){
 		return false;
 	}
 
 	bool is_escaped = false;
 
-	for(; next != end; ++next) {
-		if(*next == ' ' && !is_escaped) {
+	for(; next != end; ++next){
+		if(*next == ' ' && !is_escaped){
 			break;
-		} else if(*next == '"' && !is_escaped) {
+		} else if(*next == '"' && !is_escaped){
 			is_escaped = true;
 			continue;
-		} else if(*next == '"' && is_escaped && next + 1 != end && *(next + 1) == '"') {
+		} else if(*next == '"' && is_escaped && next + 1 != end && *(next + 1) == '"'){
 			res.push_back('"');
 			++next;
 			continue;
-		} else if(*next == '"' && is_escaped) {
+		} else if(*next == '"' && is_escaped){
 			is_escaped = false;
 			continue;
 		} else {
@@ -64,7 +64,7 @@ std::vector<std::string> win32_read_argv(const std::string& input)
 	std::string buffer;
 	std::vector<std::string> res;
 
-	while(win32_parse_single_arg(start, end, buffer)) {
+	while(win32_parse_single_arg(start, end, buffer)){
 		res.emplace_back().swap(buffer);
 	}
 
@@ -86,7 +86,7 @@ std::vector<std::string> read_argv([[maybe_unused]] int argc, [[maybe_unused]] c
 #else
 	std::vector<std::string> args;
 	args.reserve(argc);
-	for(int i = 0; i < argc; ++i) {
+	for(int i = 0; i < argc; ++i){
 		args.emplace_back(argv[i]);
 	}
 	return args;

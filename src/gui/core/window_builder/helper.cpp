@@ -37,12 +37,12 @@ static std::map<std::string, scrollbar_mode> scrollbar_mode_map {
 
 unsigned get_v_align(const std::string& v_align)
 {
-	if(v_align == "top") {
+	if(v_align == "top"){
 		return grid::VERTICAL_ALIGN_TOP;
-	} else if(v_align == "bottom") {
+	} else if(v_align == "bottom"){
 		return grid::VERTICAL_ALIGN_BOTTOM;
 	} else {
-		if(!v_align.empty() && v_align != "center") {
+		if(!v_align.empty() && v_align != "center"){
 			ERR_GUI_E << "Invalid vertical alignment '" << v_align
 					  << "' falling back to 'center'.";
 		}
@@ -52,12 +52,12 @@ unsigned get_v_align(const std::string& v_align)
 
 unsigned get_h_align(const std::string& h_align)
 {
-	if(h_align == "left") {
+	if(h_align == "left"){
 		return grid::HORIZONTAL_ALIGN_LEFT;
-	} else if(h_align == "right") {
+	} else if(h_align == "right"){
 		return grid::HORIZONTAL_ALIGN_RIGHT;
 	} else {
-		if(!h_align.empty() && h_align != "center") {
+		if(!h_align.empty() && h_align != "center"){
 			ERR_GUI_E << "Invalid horizontal alignment '" << h_align
 					  << "' falling back to 'center'.";
 		}
@@ -70,15 +70,15 @@ unsigned get_border(const std::vector<std::string>& borders)
 	unsigned result = 0;
 	for(const auto & border : borders)
 	{
-		if(border == "all") {
+		if(border == "all"){
 			return grid::BORDER_ALL;
-		} else if(border == "top") {
+		} else if(border == "top"){
 			result |= grid::BORDER_TOP;
-		} else if(border == "bottom") {
+		} else if(border == "bottom"){
 			result |= grid::BORDER_BOTTOM;
-		} else if(border == "left") {
+		} else if(border == "left"){
 			result |= grid::BORDER_LEFT;
-		} else if(border == "right") {
+		} else if(border == "right"){
 			result |= grid::BORDER_RIGHT;
 		}
 	}
@@ -93,10 +93,10 @@ unsigned read_flags(const config& cfg)
 	const unsigned h_flags = get_h_align(cfg["horizontal_alignment"]);
 	flags |= get_border(utils::split(cfg["border"]));
 
-	if(cfg["vertical_grow"].to_bool()) {
+	if(cfg["vertical_grow"].to_bool()){
 		flags |= grid::VERTICAL_GROW_SEND_TO_CLIENT;
 
-		if(!(cfg["vertical_alignment"]).empty()) {
+		if(!(cfg["vertical_alignment"]).empty()){
 			ERR_GUI_P << "vertical_grow and vertical_alignment "
 						 "can't be combined, alignment is ignored.";
 		}
@@ -104,10 +104,10 @@ unsigned read_flags(const config& cfg)
 		flags |= v_flags;
 	}
 
-	if(cfg["horizontal_grow"].to_bool()) {
+	if(cfg["horizontal_grow"].to_bool()){
 		flags |= grid::HORIZONTAL_GROW_SEND_TO_CLIENT;
 
-		if(!(cfg["horizontal_alignment"]).empty()) {
+		if(!(cfg["horizontal_alignment"]).empty()){
 			ERR_GUI_P << "horizontal_grow and horizontal_alignment "
 						 "can't be combined, alignment is ignored.";
 		}
@@ -120,11 +120,11 @@ unsigned read_flags(const config& cfg)
 
 scrollbar_mode get_scrollbar_mode(const std::string& scrollbar_mode)
 {
-	if(scrollbar_mode.empty()) {
+	if(scrollbar_mode.empty()){
 		return scrollbar_container::AUTO_VISIBLE_FIRST_RUN;
 	}
 
-	if(scrollbar_mode_map.find(scrollbar_mode) == scrollbar_mode_map.end()) {
+	if(scrollbar_mode_map.find(scrollbar_mode) == scrollbar_mode_map.end()){
 		ERR_GUI_E << "Invalid scrollbar mode '" << scrollbar_mode << "'."
 		          << "Falling back to 'initial_auto'.";
 
@@ -138,9 +138,9 @@ int get_retval(const std::string& retval_id,
 			   const int retval,
 			   const std::string& id)
 {
-	if(!retval_id.empty()) {
+	if(!retval_id.empty()){
 		int result = window::get_retval_by_id(retval_id);
-		if(result) {
+		if(result){
 			return result;
 		} else {
 			ERR_GUI_E << "Window builder: retval_id '" << retval_id
@@ -148,7 +148,7 @@ int get_retval(const std::string& retval_id,
 		}
 	}
 
-	if(retval) {
+	if(retval){
 		return retval;
 	} else {
 		return window::get_retval_by_id(id);

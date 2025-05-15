@@ -35,7 +35,7 @@ public:
 	//this is a score guaranteed to be very high, higher than any 'normal' candidate action score
 	static const double HIGH_SCORE;
 
-	candidate_action( rca_context &context, const config &cfg );
+	candidate_action(rca_context &context, const config &cfg);
 
 	/**
 	 * Destructor
@@ -154,17 +154,17 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *candidate_action_factories;
-		if (candidate_action_factories==nullptr) {
+		if(candidate_action_factories==nullptr) {
 			candidate_action_factories = new factory_map;
 		}
 		return *candidate_action_factories;
 	}
 
-	virtual candidate_action_ptr get_new_instance( rca_context &context, const config &cfg ) = 0;
+	virtual candidate_action_ptr get_new_instance(rca_context &context, const config &cfg) = 0;
 
-	candidate_action_factory( const std::string &name )
+	candidate_action_factory(const std::string &name)
 	{
-		if (is_duplicate(name)) {
+		if(is_duplicate(name)) {
 			return;
 		}
 		factory_ptr ptr_to_this(this);
@@ -177,12 +177,12 @@ public:
 template<class CANDIDATE_ACTION>
 class register_candidate_action_factory : public candidate_action_factory {
 public:
-	register_candidate_action_factory( const std::string &name )
-		: candidate_action_factory( name )
+	register_candidate_action_factory(const std::string &name)
+		: candidate_action_factory(name)
 	{
 	}
 
-	virtual candidate_action_ptr get_new_instance( rca_context &ai, const config &cfg ){
+	virtual candidate_action_ptr get_new_instance(rca_context &ai, const config &cfg){
 		return std::make_shared<CANDIDATE_ACTION>(ai, cfg);
 	}
 };

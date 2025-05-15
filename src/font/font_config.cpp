@@ -51,12 +51,12 @@ struct font_families
 		, mono(cfg["family_order_monospace"].t_str())
 		, script(cfg["family_order_script"].t_str())
 	{
-		if(mono.empty()) {
+		if(mono.empty()){
 			ERR_FT << "No monospace font family defined, falling back to sans serif";
 			mono = sans;
 		}
 
-		if(script.empty()) {
+		if(script.empty()){
 			ERR_FT << "No script font family defined, falling back to sans serif";
 			script = sans;
 		}
@@ -81,18 +81,18 @@ try {
 	families = font_families{ io::read(*stream).mandatory_child("fonts") };
 	return true;
 
-} catch(const utils::bad_optional_access&) {
+} catch(const utils::bad_optional_access&){
 	ERR_FT << "could not resolve path to fonts.cfg, file not found";
 	return false;
 
-} catch(const config::error& e) {
+} catch(const config::error& e){
 	ERR_FT << "could not read fonts.cfg:\n" << e.message;
 	return false;
 }
 
 const t_string& get_font_families(family_class fclass)
 {
-	switch(fclass) {
+	switch(fclass){
 	case family_class::monospace:
 		return families.mono;
 	case family_class::script:
@@ -109,7 +109,7 @@ const t_string& get_font_families(family_class fclass)
 manager::manager()
 {
 	std::string font_path = game_config::path + "/fonts";
-	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
+	if(!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>(font_path.c_str())))
 	{
 		ERR_FT << "Could not load the true type fonts";

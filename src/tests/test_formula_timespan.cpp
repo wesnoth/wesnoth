@@ -18,9 +18,9 @@
 #include "formula/format_timespan.hpp"
 #include "serialization/chrono.hpp"
 
-BOOST_AUTO_TEST_SUITE( formula_timespan )
+BOOST_AUTO_TEST_SUITE(formula_timespan)
 
-BOOST_AUTO_TEST_CASE( test_formula_timespan )
+BOOST_AUTO_TEST_CASE(test_formula_timespan)
 {
 	using namespace std::chrono_literals;
 

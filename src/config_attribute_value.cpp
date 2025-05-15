@@ -53,12 +53,12 @@ config_attribute_value& config_attribute_value::operator=(int v)
 
 config_attribute_value& config_attribute_value::operator=(long long v)
 {
-	if(v > 0) {
+	if(v > 0){
 		// We can store this unsigned.
 		return *this = static_cast<unsigned long long>(v);
 	}
 
-	if(v >= std::numeric_limits<int>::min()) {
+	if(v >= std::numeric_limits<int>::min()){
 		// We can store this as an int.
 		return *this = static_cast<int>(v);
 	}
@@ -75,7 +75,7 @@ config_attribute_value& config_attribute_value::operator=(long long v)
 config_attribute_value& config_attribute_value::operator=(unsigned long long v)
 {
 	// Use int for smaller numbers.
-	if(v <= std::numeric_limits<int>::max()) {
+	if(v <= std::numeric_limits<int>::max()){
 		return *this = static_cast<int>(v);
 	}
 
@@ -86,16 +86,16 @@ config_attribute_value& config_attribute_value::operator=(unsigned long long v)
 config_attribute_value& config_attribute_value::operator=(double v)
 {
 	// Try to store integers in other types.
-	if(v > 0.0) {
+	if(v > 0.0){
 		// Convert to unsigned and pass this off to that assignment operator.
 		unsigned long long ull = static_cast<unsigned long long>(v);
-		if(static_cast<double>(ull) == v) {
+		if(static_cast<double>(ull) == v){
 			return *this = ull;
 		}
 	} else {
 		// Convert to integer and pass this off to that assignment operator.
 		int i = static_cast<int>(v);
-		if(static_cast<double>(i) == v) {
+		if(static_cast<double>(i) == v){
 			return *this = i;
 		}
 	}
@@ -127,11 +127,11 @@ bool from_string_verify(std::string_view source, To& res)
 {
 	// Check 1: convertible to the target type.
 	auto [ptr, ec] = utils::charconv::from_chars(source.data(), source.data() + source.size(), res);
-	if(ec != std::errc()) {
+	if(ec != std::errc()){
 		return false;
 	}
 
-	if(ptr != source.data() + source.size()) {
+	if(ptr != source.data() + source.size()){
 		// We didn't use some characters, its impossible that "Check 2" gives the same string back.
 		return false;
 	}
@@ -145,27 +145,27 @@ bool from_string_verify(std::string_view source, To& res)
 config_attribute_value& config_attribute_value::operator=(std::string&& v)
 {
 	// Handle some special strings.
-	if(v.empty()) {
+	if(v.empty()){
 		value_ = std::move(v);
 		return *this;
 	}
 
-	if(v == s_yes) {
+	if(v == s_yes){
 		value_ = yes_no(true);
 		return *this;
 	}
 
-	if(v == s_no) {
+	if(v == s_no){
 		value_ = yes_no(false);
 		return *this;
 	}
 
-	if(v == s_true) {
+	if(v == s_true){
 		value_ = true_false(true);
 		return *this;
 	}
 
-	if(v == s_false) {
+	if(v == s_false){
 		value_ = true_false(false);
 		return *this;
 	}
@@ -173,20 +173,20 @@ config_attribute_value& config_attribute_value::operator=(std::string&& v)
 	// Attempt to convert to a number.
 	double d = 0;
 	auto [eptr, ec] = utils::charconv::from_chars(v.data(), v.data() + v.size(), d);
-	if(eptr == v.data() + v.size() && ec == std::errc()) {
+	if(eptr == v.data() + v.size() && ec == std::errc()){
 		// Possibly a number. See what type it should be stored in.
 		// (All conversions will be from the string since the largest integer
 		// type could have more precision than a double.)
-		if(d > 0.0) {
+		if(d > 0.0){
 			// The largest type for positive integers is unsigned long long.
 			unsigned long long ull = 0;
-			if(from_string_verify<unsigned long long>(v, ull)) {
+			if(from_string_verify<unsigned long long>(v, ull)){
 				return *this = ull;
 			}
 		} else {
 			// The largest (variant) type for negative integers is int.
 			int i = 0;
-			if(from_string_verify<int>(v, i)) {
+			if(from_string_verify<int>(v, i)){
 				return *this = i;
 			}
 		}
@@ -194,7 +194,7 @@ config_attribute_value& config_attribute_value::operator=(std::string&& v)
 		// This does not look like an integer, so it should be a double.
 		// However, make sure it can convert back to the same string (in
 		// case this is a string that just looks like a numeric value).
-		if(str_equals_number(v, d)) {
+		if(str_equals_number(v, d)){
 			value_ = d;
 			return *this;
 		}
@@ -219,7 +219,7 @@ config_attribute_value& config_attribute_value::operator=(const std::string_view
 
 config_attribute_value& config_attribute_value::operator=(const t_string& v)
 {
-	if(!v.translatable()) {
+	if(!v.translatable()){
 		return *this = v.str();
 	}
 
@@ -229,14 +229,14 @@ config_attribute_value& config_attribute_value::operator=(const t_string& v)
 
 void config_attribute_value::write_if_not_empty(const std::string& v)
 {
-	if(!v.empty()) {
+	if(!v.empty()){
 		*this = v;
 	}
 }
 
 void config_attribute_value::write_if_not_empty(const t_string& v)
 {
-	if(!v.empty()) {
+	if(!v.empty()){
 		*this = v;
 	}
 }
@@ -263,7 +263,7 @@ class attribute_numeric_visitor
 {
 public:
 	// Constructor stores the default value.
-	attribute_numeric_visitor(T def) : def_(def) {}
+	attribute_numeric_visitor(T def) : def_(def){}
 
 	T operator()(const utils::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
@@ -312,7 +312,7 @@ class config_attribute_value::string_visitor
 	const std::string default_;
 
 public:
-	string_visitor(const std::string& fallback) : default_(fallback) {}
+	string_visitor(const std::string& fallback) : default_(fallback){}
 
 	std::string operator()(const utils::monostate &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
@@ -332,7 +332,7 @@ std::string config_attribute_value::str(const std::string& fallback) const
 
 t_string config_attribute_value::t_str() const
 {
-	if(const t_string* p = utils::get_if<t_string>(&value_)) {
+	if(const t_string* p = utils::get_if<t_string>(&value_)){
 		return *p;
 	}
 
@@ -352,11 +352,11 @@ bool config_attribute_value::blank() const
  */
 bool config_attribute_value::empty() const
 {
-	if(blank()) {
+	if(blank()){
 		return true;
 	}
 
-	if(const std::string* p = utils::get_if<std::string>(&value_)) {
+	if(const std::string* p = utils::get_if<std::string>(&value_)){
 		return p->empty();
 	}
 
@@ -410,13 +410,13 @@ std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)
 {
 	// Simple implementation, but defined out-of-line because of the templating
 	// involved.
-	v.apply_visitor([&os](const auto& val) { os << val; });
+	v.apply_visitor([&os](const auto& val){ os << val; });
 	return os;
 }
 
 namespace utils
 {
-	std::vector<std::string> split(const config_attribute_value& val) {
+	std::vector<std::string> split(const config_attribute_value& val){
 		return utils::split(val.str());
 	}
 }

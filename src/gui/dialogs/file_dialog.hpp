@@ -130,7 +130,7 @@ public:
 	 */
 	file_dialog& set_extension(const std::string& value)
 	{
-		if (extension_.empty()) {
+		if(extension_.empty()) {
 			extension_ = value;
 		}
 		extensions_.push_back(value);

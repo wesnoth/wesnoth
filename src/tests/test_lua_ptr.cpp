@@ -22,10 +22,10 @@
 
 struct dummy_object : public enable_lua_ptr<dummy_object> {
 	std::string value;
-	dummy_object(const std::string& s) : enable_lua_ptr<dummy_object>(this), value(s) {}
+	dummy_object(const std::string& s) : enable_lua_ptr<dummy_object>(this), value(s){}
 };
 
-BOOST_AUTO_TEST_CASE(test_lua_ptr) {
+BOOST_AUTO_TEST_CASE(test_lua_ptr){
 	std::vector<dummy_object> vec;
 	auto& obj = vec.emplace_back("test");
 	BOOST_CHECK_EQUAL(obj.value, "test");

@@ -86,7 +86,7 @@ void custom_tod::pre_show()
 	add_to_tab_order(find_widget<text_box>("tod_desc", false, true));
 	add_to_tab_order(find_widget<text_box>("tod_id", false, true));
 
-	for(const auto& data : metadata_stuff) {
+	for(const auto& data : metadata_stuff){
 		button& copy_w = find_widget<button>("copy_" + data.first);
 
 		connect_signal_mouse_left_click(copy_w, std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
@@ -162,7 +162,7 @@ void custom_tod::select_file(const std::string& default_dir)
 
 	std::string fn = filesystem::base_name(data.second);
 	std::string dn = filesystem::directory_name(fn);
-	if(dn.empty()) {
+	if(dn.empty()){
 		dn = default_dir;
 	}
 
@@ -177,14 +177,14 @@ void custom_tod::select_file(const std::string& default_dir)
 	// if not, ask user if they want to copy it into their addon.
 	// If yes, copy and return correct relative path inside addon.
 	// return empty otherwise.
-	auto find_or_copy = [](const std::string& path, const std::string& addon_id, const std::string& type) {
+	auto find_or_copy = [](const std::string& path, const std::string& addon_id, const std::string& type){
 		const std::string message
 			= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
 		const auto optional_path = filesystem::to_asset_path(path, addon_id, type);
 
-		if(optional_path.has_value()) {
+		if(optional_path.has_value()){
 			return optional_path.value();
-		} else if (gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+		} else if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK){
 			boost::filesystem::path output_path = filesystem::get_current_editor_dir(addon_id);
 			output_path /= type;
 			output_path /= boost::filesystem::path(path).filename();
@@ -195,12 +195,12 @@ void custom_tod::select_file(const std::string& default_dir)
 		}
 	};
 
-	if(dlg.show()) {
-		if(data.first == "image") {
+	if(dlg.show()){
+		if(data.first == "image"){
 			times_[current_tod_].image = find_or_copy(dlg.path(), addon_id_, "images");
-		} else if(data.first == "mask") {
+		} else if(data.first == "mask"){
 			times_[current_tod_].image_mask = find_or_copy(dlg.path(), addon_id_, "images");
-		} else if(data.first == "sound") {
+		} else if(data.first == "sound"){
 			times_[current_tod_].sounds = find_or_copy(dlg.path(), addon_id_, "sounds");
 		}
 	}
@@ -230,12 +230,12 @@ void custom_tod::do_delete_tod()
 {
 	assert(times_.begin() + current_tod_ < times_.end());
 
-	if(times_.size() == 1) {
+	if(times_.size() == 1){
 		times_.emplace_back();
 	} else {
 		times_.erase(times_.begin() + current_tod_);
 
-		if(times_.begin() + current_tod_ >= times_.end()) {
+		if(times_.begin() + current_tod_ >= times_.end()){
 			current_tod_ = times_.size() - 1;
 		}
 	}
@@ -247,7 +247,7 @@ const time_of_day& custom_tod::get_selected_tod() const
 {
 	try {
 		return times_.at(current_tod_);
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		throw std::string("Attempted to fetch a non-existent ToD!");
 	}
 }
@@ -272,12 +272,12 @@ void custom_tod::color_slider_callback(COLOR_TYPE type)
 	update_tod_display();
 }
 
-void custom_tod::play_sound() {
+void custom_tod::play_sound(){
 	std::string sound_path = find_widget<text_box>("path_sound").get_value();
 	sound::play_sound(sound_path, sound::SOUND_SOURCES);
 }
 
-void custom_tod::update_image(const std::string& id_stem) {
+void custom_tod::update_image(const std::string& id_stem){
 	std::string img_path = find_widget<text_box>("path_"+id_stem).get_value();
 	find_widget<image>("current_tod_" + id_stem).set_label(img_path);
 

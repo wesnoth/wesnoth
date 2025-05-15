@@ -58,17 +58,17 @@ REGISTER_DIALOG(game_load)
 
 bool game_load::execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
 {
-	if(savegame::save_index_class::default_saves_dir()->get_saves_list().empty()) {
+	if(savegame::save_index_class::default_saves_dir()->get_saves_list().empty()){
 		bool found_files = false;
-		for(const auto& dir : filesystem::find_other_version_saves_dirs()) {
-			if(!found_files) {
+		for(const auto& dir : filesystem::find_other_version_saves_dirs()){
+			if(!found_files){
 				// this needs to be a shared_ptr because get_saves_list() uses shared_from_this
 				auto index = std::make_shared<savegame::save_index_class>(dir.path);
 				found_files = !index->get_saves_list().empty();
 			}
 		}
 
-		if(!found_files) {
+		if(!found_files){
 			gui2::show_transient_message(_("No Saved Games"), _("There are no saved games to load."));
 			return false;
 		}
@@ -97,7 +97,7 @@ void game_load::pre_show()
 
 	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
-	filter->on_modified([this](const auto& box) { apply_filter_text(box.text()); });
+	filter->on_modified([this](const auto& box){ apply_filter_text(box.text()); });
 
 	listbox& list = find_widget<listbox>("savegame_list");
 
@@ -107,8 +107,8 @@ void game_load::pre_show()
 	add_to_keyboard_chain(&list);
 
 	list.set_sorters(
-		[this](const std::size_t i) { return games_[i].name(); },
- 		[this](const std::size_t i) { return games_[i].modified(); }
+		[this](const std::size_t i){ return games_[i].name(); },
+ 		[this](const std::size_t i){ return games_[i].modified(); }
 	);
 
 	populate_game_list();
@@ -132,7 +132,7 @@ void game_load::pre_show()
 void game_load::set_save_dir_list(menu_button& dir_list)
 {
 	const auto other_dirs = filesystem::find_other_version_saves_dirs();
-	if(other_dirs.empty()) {
+	if(other_dirs.empty()){
 		dir_list.set_visible(widget::visibility::invisible);
 		return;
 	}
@@ -142,7 +142,7 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 	// The first option in the list is the current version's save dir
 	options.emplace_back("label",  _("game_version^Current Version"), "path", "");
 
-	for(const auto& known_dir : other_dirs) {
+	for(const auto& known_dir : other_dirs){
 		options.emplace_back(
 			"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
 			"path", known_dir.path
@@ -160,7 +160,7 @@ void game_load::populate_game_list()
 
 	games_ = save_index_manager_->get_saves_list();
 
-	for(const auto& game : games_) {
+	for(const auto& game : games_){
 		std::string name = game.name();
 		utils::ellipsis_truncate(name, 40);
 
@@ -195,7 +195,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	const std::string sprite_scale_mod = (formatter() << "~SCALE_INTO(" << game_config::tile_size << ',' << game_config::tile_size << ')').str();
 
 	unsigned li = 0;
-	for(const auto& leader : summary_.child_range("leader")) {
+	for(const auto& leader : summary_.child_range("leader")){
 		widget_data data;
 		widget_item item;
 
@@ -203,17 +203,17 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// If not, we try getting a binary path-independent path. If that still doesn't
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
-		if(!::image::exists(leader_image)) {
+		if(!::image::exists(leader_image)){
 			auto indep_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.
-			if(indep_path) {
+			if(indep_path){
 				leader_image = indep_path.value() + leader["leader_image_tc_modifier"].str();
 			}
 		}
 
-		if(leader_image.empty()) {
+		if(leader_image.empty()){
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
 		} else {
 			// Scale down any sprites larger than 72x72
@@ -276,21 +276,21 @@ void game_load::display_savegame()
 
 	try {
 		const int selected_row = find_widget<listbox>("savegame_list").get_selected_row();
-		if(selected_row < 0) {
+		if(selected_row < 0){
 			find_widget<button>("delete").set_active(false);
 		} else {
 			find_widget<button>("delete").set_active(!save_index_manager_->read_only());
 			game_load::display_savegame_internal(games_[selected_row]);
 			successfully_displayed_a_game = true;
 		}
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		// Clear the UI widgets, show an error message.
 		const std::string preamble = _("The selected file is corrupt: ");
 		const std::string message = e.message.empty() ? "(no details)" : e.message;
 		ERR_GAMELOADDLG << preamble << message;
 	}
 
-	if(!successfully_displayed_a_game) {
+	if(!successfully_displayed_a_game){
 		find_widget<minimap>("minimap").set_map_data("");
 		find_widget<label>("lblScenario")
 			.set_label("");
@@ -319,12 +319,12 @@ void game_load::display_savegame()
 void game_load::apply_filter_text(const std::string& text)
 {
 	find_widget<listbox>("savegame_list").filter_rows_by(
-		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(games_[row].name()); });
+		[this, match = translation::make_ci_matcher(text)](std::size_t row){ return match(games_[row].name()); });
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
-	if(cfg_summary["corrupt"].to_bool()) {
+	if(cfg_summary["corrupt"].to_bool()){
 		str << "\n" << markup::span_color("#f00", _("(Invalid)"));
 		// \todo: this skips the catch() statement in display_savegame. Low priority, as the
 		// dialog's state is reasonable; the "load" button is inactive, the "delete" button is
@@ -337,18 +337,18 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	const std::string campaign_id = cfg_summary["campaign"];
 	auto campaign_type_enum = campaign_type::get_enum(campaign_type);
 
-	if(campaign_type_enum) {
-		switch(*campaign_type_enum) {
+	if(campaign_type_enum){
+		switch(*campaign_type_enum){
 			case campaign_type::type::scenario: {
 				const config* campaign = nullptr;
-				if(!campaign_id.empty()) {
-					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+				if(!campaign_id.empty()){
+					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)){
 						campaign = c.ptr();
 					}
 				}
 
 				utils::string_map symbols;
-				if(campaign != nullptr) {
+				if(campaign != nullptr){
 					symbols["campaign_name"] = (*campaign)["name"];
 				} else {
 					// Fallback to nontranslatable campaign id.
@@ -358,7 +358,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				str << VGETTEXT("Campaign: $campaign_name", symbols);
 
 				// Display internal id for debug purposes if we didn't above
-				if(game_config::debug && (campaign != nullptr)) {
+				if(game_config::debug && (campaign != nullptr)){
 					str << '\n' << "(" << campaign_id << ")";
 				}
 				break;
@@ -379,21 +379,21 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 	str << "\n";
 
-	if(savegame::loadgame::is_replay_save(cfg_summary)) {
+	if(savegame::loadgame::is_replay_save(cfg_summary)){
 		str << _("Replay");
-	} else if(!cfg_summary["turn"].empty()) {
+	} else if(!cfg_summary["turn"].empty()){
 		str << _("Turn") << " " << cfg_summary["turn"];
 	} else {
 		str << _("Scenario start");
 	}
 
-	if(campaign_type_enum) {
-		switch (*campaign_type_enum) {
+	if(campaign_type_enum){
+		switch (*campaign_type_enum){
 		case campaign_type::type::scenario:
 		case campaign_type::type::multiplayer: {
 			const config* campaign = nullptr;
-			if (!campaign_id.empty()) {
-				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+			if(!campaign_id.empty()){
+				if(auto c = cache_config_.find_child("campaign", "id", campaign_id)){
 					campaign = c.ptr();
 				}
 			}
@@ -402,7 +402,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			// 'MULTIPLAYER' may be a campaign with difficulty or single scenario without difficulty
 			// For the latter do not show the difficulty - even though it will be listed as
 			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
-			if (campaign != nullptr) {
+			if(campaign != nullptr){
 				str << "\n" << _("Difficulty: ");
 				try {
 					const config& difficulty = campaign->find_mandatory_child("difficulty", "define", cfg_summary["difficulty"]);
@@ -410,7 +410,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 					ss << difficulty["label"] << " (" << difficulty["description"] << ")";
 					str << ss.str();
 				}
-				catch (const config::error&) {
+				catch (const config::error&){
 					// fall back to standard difficulty string in case of exception
 					str << string_table[cfg_summary["difficulty"]];
 				}
@@ -425,18 +425,18 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	} else {
 	}
 
-	if(!cfg_summary["version"].empty()) {
+	if(!cfg_summary["version"].empty()){
 		str << "\n" << _("Version: ") << cfg_summary["version"];
 	}
 
 	const std::vector<std::string>& active_mods = utils::split(cfg_summary["active_mods"]);
-	if(!active_mods.empty()) {
+	if(!active_mods.empty()){
 		str << "\n" << _("Modifications: ");
-		for(const auto& mod_id : active_mods) {
+		for(const auto& mod_id : active_mods){
 			std::string mod_name;
 			try {
 				mod_name = cache_config_.find_mandatory_child("modification", "id", mod_id)["name"].str();
-			} catch(const config::error&) {
+			} catch(const config::error&){
 				// Fallback to nontranslatable mod id.
 				mod_name = "(" + mod_id + ")";
 			}
@@ -455,11 +455,11 @@ void game_load::delete_button_callback()
 	listbox& list = find_widget<listbox>("savegame_list");
 
 	const std::size_t index = std::size_t(list.get_selected_row());
-	if(index < games_.size()) {
+	if(index < games_.size()){
 
 		// See if we should ask the user for deletion confirmation
-		if(prefs::get().ask_delete()) {
-			if(!gui2::dialogs::game_delete::execute()) {
+		if(prefs::get().ask_delete()){
+			if(!gui2::dialogs::game_delete::execute()){
 				return;
 			}
 		}
@@ -487,11 +487,11 @@ void game_load::key_press_callback(const SDL_Keycode key)
 	//
 	// - vultraz, 2017-08-28
 	//
-	if(find_widget<text_box>("txtFilter").get_state() == text_box_base::FOCUSED) {
+	if(find_widget<text_box>("txtFilter").get_state() == text_box_base::FOCUSED){
 		return;
 	}
 
-	if(key == SDLK_DELETE) {
+	if(key == SDLK_DELETE){
 		delete_button_callback();
 	}
 }
@@ -501,14 +501,14 @@ void game_load::handle_dir_select()
 	menu_button& dir_list = find_widget<menu_button>("dirList");
 
 	const auto& path = dir_list.get_value_config()["path"].str();
-	if(path.empty()) {
+	if(path.empty()){
 		save_index_manager_ = savegame::save_index_class::default_saves_dir();
 	} else {
 		save_index_manager_ = std::make_shared<savegame::save_index_class>(path);
 	}
 
 	populate_game_list();
-	if(auto* filter = find_widget<text_box>("txtFilter", false, true)) {
+	if(auto* filter = find_widget<text_box>("txtFilter", false, true)){
 		apply_filter_text(filter->get_value());
 	}
 	display_savegame();

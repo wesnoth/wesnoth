@@ -151,11 +151,11 @@ struct battle_context_unit_stats
 		, swarm_max(blows)
 		, plague_type()
 	{
-		if(slowed) {
+		if(slowed){
 			damage = slow_damage;
 		}
 
-		if(hp > max_hp) {
+		if(hp > max_hp){
 			hp = max_hp; // Keeps the prob_matrix from going out of bounds.
 		}
 	}

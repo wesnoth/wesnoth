@@ -59,14 +59,14 @@ namespace
 	int advance_unit_dialog(const map_location &loc)
 	{
 		const auto u_it = resources::gameboard->units().find(loc);
-		if(!u_it) {
+		if(!u_it){
 			ERR_NG << "advance_unit_dialog: unit not found";
 			return 0;
 		}
 		const unit& u = *u_it;
 		std::vector<unit_const_ptr> previews;
 
-		for (const std::string& advance : u.advances_to()) {
+		for(const std::string& advance : u.advances_to()){
 			prefs::get().encountered_units().insert(advance);
 			previews.push_back(get_advanced_unit(u, advance));
 		}
@@ -74,17 +74,17 @@ namespace
 		std::size_t num_real_advances = previews.size();
 		bool always_display = false;
 
-		for (const config& advance : u.get_modification_advances()) {
-			if (advance["always_display"].to_bool()) {
+		for(const config& advance : u.get_modification_advances()){
+			if(advance["always_display"].to_bool()){
 				always_display = true;
 			}
 			previews.push_back(get_amla_unit(u, advance));
 		}
 
-		if (previews.size() > 1 || always_display) {
+		if(previews.size() > 1 || always_display){
 			gui2::dialogs::unit_advance dlg(previews, num_real_advances);
 
-			if(dlg.show()) {
+			if(dlg.show()){
 				return dlg.get_selected_index();
 			}
 
@@ -100,11 +100,11 @@ namespace
 		const events::command_disabler cmd_disabler;
 
 		unit_map::iterator u = resources::gameboard->units().find(loc);
-		if (u == resources::gameboard->units().end()) {
+		if(u == resources::gameboard->units().end()){
 			LOG_DP << "animate_unit_advancement suppressed: invalid unit";
 			return false;
 		}
-		else if (!u->advances()) {
+		else if(!u->advances()){
 			LOG_DP << "animate_unit_advancement suppressed: unit does not advance";
 			return false;
 		}
@@ -113,7 +113,7 @@ namespace
 		std::vector<config> mod_options = u->get_modification_advances();
 
 		assert(options.size() + mod_options.size() > 0);
-		if (choice >= options.size() + mod_options.size()) {
+		if(choice >= options.size() + mod_options.size()){
 			LOG_DP << "animate_unit_advancement: invalid option, using first option";
 			choice = 0;
 		}
@@ -121,7 +121,7 @@ namespace
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !video::headless() && !resources::controller->is_skipping_replay()) {
+		if(animate && !video::headless() && !resources::controller->is_skipping_replay()){
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -129,7 +129,7 @@ namespace
 			animator.wait_for_end();
 		}
 
-		if (choice < options.size()) {
+		if(choice < options.size()){
 			// chosen_unit is not a reference, since the unit may disappear at any moment.
 			std::string chosen_unit = options[choice];
 			::advance_unit(loc, chosen_unit, fire_event);
@@ -142,7 +142,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		game_display::get_singleton()->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !video::headless() && !resources::controller->is_skipping_replay()) {
+		if(animate && u != resources::gameboard->units().end() && !video::headless() && !resources::controller->is_skipping_replay()){
 			unit_animator animator;
 			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -162,7 +162,7 @@ namespace
 		const std::vector<std::string>& type_options = u.advances_to();
 		{
 			auto pick_iter = std::find(type_options.begin(), type_options.end(), id);
-			if(pick_iter != type_options.end()) {
+			if(pick_iter != type_options.end()){
 				return std::distance(type_options.begin(), pick_iter);
 			}
 		}
@@ -171,7 +171,7 @@ namespace
 			auto pick_iter = std::find_if(amla_options.begin(), amla_options.end(), [&](const config& adv){
 				return adv["id"].str() == id;
 			});
-			if(pick_iter != amla_options.end()) {
+			if(pick_iter != amla_options.end()){
 				return type_options.size() + std::distance(amla_options.begin(), pick_iter);
 			}
 		}
@@ -214,15 +214,15 @@ namespace
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
 				unit_map::iterator u = resources::gameboard->units().find(loc_);
-				if(!u) {
+				if(!u){
 					ERR_NG << "unit_advancement_choice: unit not found";
 					return config{};
 				}
 
 				std::vector<std::string> allowed = ai_advancement.get_advancements(u);
-				for(const auto& adv_id : allowed) {
+				for(const auto& adv_id : allowed){
 					int res_new = get_advancement_index(*u, adv_id);
-					if(res_new != -1) {
+					if(res_new != -1){
 						// if the advancement ids were really unique we could also make this function return the
 						// advancements id instead of its index. But i dont think there are guaraenteed to be unique.
 						res = res_new;
@@ -274,7 +274,7 @@ void advance_unit_at(const advance_unit_params& params)
 	{
 		unit_map::iterator u = resources::gameboard->units().find(params.loc_);
 		//this implies u.valid()
-		if(!unit_helper::will_certainly_advance(u)) {
+		if(!unit_helper::will_certainly_advance(u)){
 			return;
 		}
 
@@ -301,7 +301,7 @@ void advance_unit_at(const advance_unit_params& params)
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
-		if (u.valid() && u->experience() > 80)
+		if(u.valid() && u->experience() > 80)
 		{
 			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.";
 		}
@@ -312,7 +312,7 @@ void advance_unit_at(const advance_unit_params& params)
 unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 {
 	const unit_type *new_type = unit_types.find(advance_to);
-	if (!new_type) {
+	if(!new_type){
 		throw game::game_error("Could not find the unit being advanced"
 			" to: " + advance_to);
 	}
@@ -344,7 +344,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event)
 {
 	unit_map::unit_iterator u = resources::gameboard->units().find(loc);
-	if(!u.valid()) {
+	if(!u.valid()){
 		return;
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
@@ -356,7 +356,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 		LOG_NG << "Firing advance event at " << loc <<".";
 		resources::game_events->pump().fire("advance",loc);
 
-		if (!u.valid() || u->experience() < u->max_experience() ||
+		if(!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
 		{
 			LOG_NG << "WML has invalidated the advancing unit. Aborting.";
@@ -373,8 +373,8 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 
 	// Create the advanced unit.
 	auto [new_unit, use_amla] = utils::visit(
-		[u](const auto& v) {
-			if constexpr(utils::decayed_is_same<std::string, decltype(v)>) {
+		[u](const auto& v){
+			if constexpr(utils::decayed_is_same<std::string, decltype(v)>){
 				return std::pair(get_advanced_unit(*u, v), false);
 			} else {
 				return std::pair(get_amla_unit(*u, *v), true);
@@ -383,7 +383,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 		advance_to);
 
 	new_unit->set_location(loc);
-	if ( !use_amla )
+	if(!use_amla)
 	{
 		resources::controller->statistics().advance_unit(*new_unit);
 		prefs::get().encountered_units().insert(new_unit->type_id());
@@ -407,7 +407,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 
 	// "sighted" event(s).
 	clearer.fire_events();
-	if ( u.valid() )
+	if(u.valid())
 		actions::actor_sighted(*u, &not_seeing);
 
 	resources::whiteboard->on_gamestate_change();

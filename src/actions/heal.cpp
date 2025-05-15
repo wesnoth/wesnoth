@@ -66,10 +66,10 @@ namespace {
 	 */
 	POISON_STATUS poison_status(const std::string & status)
 	{
-		if ( status == "cured" )
+		if(status == "cured")
 			return POISON_CURE;
 
-		if ( status == "slowed" )
+		if(status == "slowed")
 			return POISON_SLOW;
 
 		// No other states recognized.
@@ -90,17 +90,17 @@ namespace {
 		POISON_STATUS curing = POISON_NORMAL;
 
 
-		if ( patient.side() == side )
+		if(patient.side() == side)
 		{
 			// Village healing?
-			if ( resources::gameboard->map().gives_healing(patient.get_location()) )
+			if(resources::gameboard->map().gives_healing(patient.get_location()))
 				return POISON_CURE;
 
 			// Regeneration?
-			for (const unit_ability & regen : patient.get_abilities("regenerate"))
+			for(const unit_ability & regen : patient.get_abilities("regenerate"))
 			{
 				curing = std::max(curing, poison_status((*regen.ability_cfg)["poison"]));
-				if ( curing == POISON_CURE )
+				if(curing == POISON_CURE)
 					// This is as good as it gets.
 					return POISON_CURE;
 			}
@@ -109,10 +109,10 @@ namespace {
 		// Look through the healers to find a curer.
 		unit_map::iterator curer = units.end();
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
-		for (const unit_ability & heal : patient.get_abilities("heals"))
+		for(const unit_ability & heal : patient.get_abilities("heals"))
 		{
 			POISON_STATUS this_cure = poison_status((*heal.ability_cfg)["poison"]);
-			if ( this_cure <= curing )
+			if(this_cure <= curing)
 				// We already recorded this level of curing.
 				continue;
 
@@ -125,16 +125,16 @@ namespace {
 			// Healers on the current side can cure poison (for any side).
 			// Allies of the current side can slow poison (for the current side).
 			// Enemies of the current side can do nothing.
-			if ( teams[cure_side-1].is_enemy(side) )
+			if(teams[cure_side-1].is_enemy(side))
 				continue;
 
 			// Allied healers can only slow poison, not cure it.
-			if ( cure_side != side )
+			if(cure_side != side)
 				this_cure = POISON_SLOW;
 				// This is where the loop assumption comes into play,
 				// as we do not bother comparing POISON_SLOW to curing.
 
-			if ( this_cure == POISON_CURE ) {
+			if(this_cure == POISON_CURE){
 				// Return what we found.
 				healers.push_back(&*cure_it);
 				return POISON_CURE;
@@ -146,7 +146,7 @@ namespace {
 		}
 
 		// Return the best curing we found.
-		if ( curer != units.end() )
+		if(curer != units.end())
 			healers.push_back(&*curer);
 		return curing;
 	}
@@ -160,13 +160,13 @@ namespace {
 	inline bool update_healing(int & healing, int & harming, int value)
 	{
 		// If the new value magnifies the healing, update and return true.
-		if ( value > healing ) {
+		if(value > healing){
 			healing = value;
 			return true;
 		}
 
 		// If the new value magnifies the harming, update and return true.
-		if ( value < harming ) {
+		if(value < harming){
 			harming = value;
 			return true;
 		}
@@ -186,7 +186,7 @@ namespace {
 		int harming = 0;
 
 
-		if ( patient.side() == side )
+		if(patient.side() == side)
 		{
 			// Village healing?
 			update_healing(healing, harming,
@@ -201,7 +201,7 @@ namespace {
 		// Check healing from other units.
 		unit_ability_list heal_list = patient.get_abilities("heals");
 		// Remove all healers not on this side (since they do not heal now).
-		utils::erase_if(heal_list, [&](const unit_ability& i) {
+		utils::erase_if(heal_list, [&](const unit_ability& i){
 			unit_map::iterator healer = units.find(i.teacher_loc);
 			assert(healer != units.end());
 
@@ -210,13 +210,13 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0);
-		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
+		if(update_healing(healing, harming, heal_effect.get_composite_value()))
 		{
 			// Collect the healers involved.
-			for (const unit_abilities::individual_effect & heal : heal_effect)
+			for(const unit_abilities::individual_effect & heal : heal_effect)
 				healers.push_back(&*units.find(heal.loc));
 
-			if ( !healers.empty() ) {
+			if(!healers.empty()){
 				DBG_NG << "Unit has " << healers.size() << " healers.";
 			}
 		}
@@ -230,11 +230,11 @@ namespace {
 	 */
 	void do_heal(unit &patient, int amount, bool cure_poison)
 	{
-		if ( cure_poison )
+		if(cure_poison)
 			patient.set_state(unit::STATE_POISONED, false);
-		if ( amount > 0)
+		if(amount > 0)
 			patient.heal(amount);
-		else if ( amount < 0 )
+		else if(amount < 0)
 			patient.take_hit(-amount);
 		game_display::get_singleton()->invalidate_unit();
 	}
@@ -248,27 +248,27 @@ namespace {
 	{
 		// Use a nearest-first algorithm.
 		map_location last_loc(0,-1);
-		while ( !unit_list.empty() )
+		while(!unit_list.empty())
 		{
 			std::list<heal_unit>::iterator nearest;
 			int min_dist = std::numeric_limits<int>::max();
 
 			// Next unit to be healed is the entry in list nearest to last_loc.
-			for ( std::list<heal_unit>::iterator check_it = unit_list.begin();
-			      check_it != unit_list.end(); ++check_it )
+			for(std::list<heal_unit>::iterator check_it = unit_list.begin();
+			      check_it != unit_list.end(); ++check_it)
 			{
 				int distance = distance_between(last_loc, check_it->healed.get_location());
-				if ( distance < min_dist ) {
+				if(distance < min_dist){
 					min_dist = distance;
 					nearest = check_it;
 					// Allow an early exit if we cannot get closer.
-					if ( distance == 1 )
+					if(distance == 1)
 						break;
 				}
 			}
 
 			std::string cure_text = "";
-			if ( nearest->cure_poison )
+			if(nearest->cure_poison)
 				cure_text = nearest->healed.gender() == unit_race::FEMALE ?
 					            _("female^cured") : _("cured");
 
@@ -294,9 +294,9 @@ void calculate_healing(int side, bool update_display)
 	std::list<heal_unit> unit_list;
 
 	// We look for all allied units, then we see if our healer is near them.
-	for (unit &patient : resources::gameboard->units()) {
+	for(unit &patient : resources::gameboard->units()){
 
-		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
+		if(patient.get_state("unhealable") || patient.incapacitated()){
 			continue;
 		}
 
@@ -308,40 +308,40 @@ void calculate_healing(int side, bool update_display)
 
 
 		// Rest healing.
-		if ( patient.side() == side ) {
-			if ( patient.resting() || patient.is_healthy() )
+		if(patient.side() == side){
+			if(patient.resting() || patient.is_healthy())
 				healing += game_config::rest_heal_amount;
 		}
 
 		// Main healing.
-		if ( !patient.get_state(unit::STATE_POISONED) ) {
+		if(!patient.get_state(unit::STATE_POISONED)){
 			healing += heal_amount(side, patient, healers);
 		}
 		else {
 			curing = poison_progress(side, patient, healers);
 			// Poison can be cured at any time, but damage is only
 			// taken on the patient's turn.
-			if ( curing == POISON_NORMAL  &&  patient.side() == side )
+			if(curing == POISON_NORMAL  &&  patient.side() == side)
 				healing -= game_config::poison_amount;
 		}
 
 		// Cap the healing.
 		int max_heal = std::max(0, patient.max_hitpoints() - patient.hitpoints());
 		int min_heal = std::min(0, 1 - patient.hitpoints());
-		if ( healing < min_heal )
+		if(healing < min_heal)
 			healing = min_heal;
-		else if ( healing > max_heal )
+		else if(healing > max_heal)
 			healing = max_heal;
 
 		// Is there nothing to do?
-		if ( curing != POISON_CURE  &&  healing == 0 )
+		if(curing != POISON_CURE  &&  healing == 0)
 			continue;
 
-		if (!healers.empty()) {
+		if(!healers.empty()){
 			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers.";
 		}
 
-		if (!resources::controller->is_skipping_replay() && update_display)
+		if(!resources::controller->is_skipping_replay() && update_display)
 		{
 			unit_list.emplace_front(patient, healers, healing, curing == POISON_CURE);
 		}

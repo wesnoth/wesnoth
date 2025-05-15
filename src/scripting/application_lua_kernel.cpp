@@ -65,7 +65,7 @@ static int intf_describe_plugins(lua_State * L)
 {
 	PLAIN_LOG << "describe plugins (" << plugins_manager::get()->size() << "):";
 	lua_getglobal(L, "print");
-	for (std::size_t i = 0; i < plugins_manager::get()->size(); ++i) {
+	for(std::size_t i = 0; i < plugins_manager::get()->size(); ++i){
 		lua_pushvalue(L,-1); //duplicate the print
 
 		std::stringstream line;
@@ -81,7 +81,7 @@ static int intf_describe_plugins(lua_State * L)
 		lua_pushstring(L, line.str().c_str());
 		lua_call(L, 1, 0);
 	}
-	if (!plugins_manager::get()->size()) {
+	if(!plugins_manager::get()->size()){
 		lua_pushstring(L, "No plugins available.\n");
 		lua_call(L, 1, 0);
 	}
@@ -121,18 +121,18 @@ application_lua_kernel::application_lua_kernel()
 	lua_pop(mState, 1);
 }
 
-application_lua_kernel::thread::thread(application_lua_kernel& owner, lua_State * T) : owner_(owner), T_(T), started_(false) {}
+application_lua_kernel::thread::thread(application_lua_kernel& owner, lua_State * T) : owner_(owner), T_(T), started_(false){}
 
 std::string application_lua_kernel::thread::status()
 {
-	if (!started_) {
-		if (lua_status(T_) == LUA_OK) {
+	if(!started_){
+		if(lua_status(T_) == LUA_OK){
 			return "not started";
 		} else {
 			return "load error";
 		}
 	}
-	switch (lua_status(T_)) {
+	switch (lua_status(T_)){
 		case LUA_OK:
 			return "dead";
 		case LUA_YIELD:
@@ -142,7 +142,7 @@ std::string application_lua_kernel::thread::status()
 	}
 }
 
-bool application_lua_kernel::thread::is_running() {
+bool application_lua_kernel::thread::is_running(){
 	return started_ ? (lua_status(T_) == LUA_YIELD) : (lua_status(T_) == LUA_OK);
 }
 
@@ -156,7 +156,7 @@ static lua_State * get_new_thread(lua_State * L)
 							// stack is now [script key] [script key]
 
 	lua_rawget(L, LUA_REGISTRYINDEX);		// get the script table from the registry, on the top of the stack
-	if (!lua_istable(L,-1)) {			// if it doesn't exist create it
+	if(!lua_istable(L,-1)){			// if it doesn't exist create it
 		lua_pop(L,1);
 		lua_newtable(L);
 	}						// stack is now [script key] [table]
@@ -182,13 +182,13 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 
 	// note: this is unsafe for umc as it allows loading lua baytecode, but umc cannot add application lua kernel scipts.
 	int errcode = luaL_loadstring(T, prog.c_str());
-	if (errcode != LUA_OK) {
+	if(errcode != LUA_OK){
 		const char * err_str = lua_tostring(T, -1);
 		std::string msg = err_str ? err_str : "null string";
 
 		std::string context = "When parsing a string to a lua thread, ";
 
-		if (errcode == LUA_ERRSYNTAX) {
+		if(errcode == LUA_ERRSYNTAX){
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
@@ -198,11 +198,11 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 
 		throw game::lua_error(msg, context);
 	}
-	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
+	if(!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))){
 		throw game::lua_error("Error when executing a script to make a lua thread.");
 	}
-	if (!lua_isfunction(T, -1)) {
-		throw game::lua_error(std::string("Error when executing a script to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)) );
+	if(!lua_isfunction(T, -1)){
+		throw game::lua_error(std::string("Error when executing a script to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)));
 	}
 
 	return new application_lua_kernel::thread(*this, T);
@@ -215,11 +215,11 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_file(c
 
 	lua_pushstring(T, file.c_str());
 	lua_fileops::load_file(T);
-	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
+	if(!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))){
 		throw game::lua_error("Error when executing a file to make a lua thread.");
 	}
-	if (!lua_isfunction(T, -1)) {
-		throw game::lua_error(std::string("Error when executing a file to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)) );
+	if(!lua_isfunction(T, -1)){
+		throw game::lua_error(std::string("Error when executing a file to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)));
 	}
 
 	return new application_lua_kernel::thread(*this, T);
@@ -238,7 +238,7 @@ struct lua_context_backend {
 
 static int impl_context_backend(lua_State * L, const std::shared_ptr<lua_context_backend>& backend, std::string req_name)
 {
-	if (!backend->valid) {
+	if(!backend->valid){
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
 	}
 
@@ -252,13 +252,13 @@ static int impl_context_backend(lua_State * L, const std::shared_ptr<lua_context
 
 static int impl_context_accessor(lua_State * L, const std::shared_ptr<lua_context_backend>& backend, const plugins_context::accessor_function& func)
 {
-	if (!backend->valid) {
+	if(!backend->valid){
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
 	}
 
-	if(lua_gettop(L)) {
+	if(lua_gettop(L)){
 		config temp;
-		if(!luaW_toconfig(L, 1, temp)) {
+		if(!luaW_toconfig(L, 1, temp)){
 			luaL_argerror(L, 1, "Error, tried to parse a config but some fields were invalid");
 		}
 		luaW_pushconfig(L, func(temp));
@@ -272,7 +272,7 @@ static int impl_context_accessor(lua_State * L, const std::shared_ptr<lua_contex
 extern luaW_Registry& gameConfigReg();
 static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
 
-GAME_CONFIG_SETTER("debug", bool, application_lua_kernel) {
+GAME_CONFIG_SETTER("debug", bool, application_lua_kernel){
 	(void)k;
 	game_config::set_debug(value);
 }
@@ -281,24 +281,24 @@ static int intf_execute(lua_State* L)
 {
 	static const int CTX = 1, FUNC = 2, EVT = 3, EXEC = 4;
 	if(lua_gettop(L) == 2) lua_pushnil(L);
-	if(!luaW_table_get_def(L, CTX, "valid", false)) {
+	if(!luaW_table_get_def(L, CTX, "valid", false)){
 		lua_pushboolean(L, false);
 		lua_pushstring(L, "context not valid");
 		return 2;
 	}
-	if(!luaW_tableget(L, CTX, "execute")) {
+	if(!luaW_tableget(L, CTX, "execute")){
 		lua_pushboolean(L, false);
 		lua_pushstring(L, "context cannot execute");
 		return 2;
 	}
-	if(!lua_islightuserdata(L, EXEC)) {
+	if(!lua_islightuserdata(L, EXEC)){
 		lua_pushboolean(L, false);
 		lua_pushstring(L, "execute is not a thread");
 		return 2;
 	}
 	try {
 		config data = luaW_serialize_function(L, FUNC);
-		if(data["params"] != 0) {
+		if(data["params"] != 0){
 			lua_pushboolean(L, false);
 			lua_pushstring(L, "cannot execute function with parameters");
 			return 2;
@@ -309,7 +309,7 @@ static int intf_execute(lua_State* L)
 		std::shared_ptr<lua_context_backend>* context = static_cast<std::shared_ptr<lua_context_backend>*>(lua_touserdata(L, EXEC));
 		luaW_pushconfig(L, data);
 		impl_context_backend(L, *context, "execute");
-	} catch(luafunc_serialize_error& e) {
+	} catch(luafunc_serialize_error& e){
 		lua_pushboolean(L, false);
 		lua_pushstring(L, e.what());
 		return 2;
@@ -326,7 +326,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	// First we have to create the event table, by concatenating the event queue into a table.
 	config events;
-	for(const auto& event : queue) {
+	for(const auto& event : queue){
 		events.add_child(event.name, event.data);
 	}
 	luaW_pushconfig(T_, events); //this will be the event table
@@ -337,12 +337,12 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_pushstring(T_, "valid");
 	lua_pushboolean(T_, true);
 	lua_settable(T_, -3);
-	for (const std::string & key : ctxt.callbacks_ | utils::views::keys ) {
+	for(const std::string & key : ctxt.callbacks_ | utils::views::keys){
 		lua_pushstring(T_, key.c_str());
 		lua_cpp::push_function(T_, std::bind(&impl_context_backend, std::placeholders::_1, this_context_backend, key));
 		lua_settable(T_, -3);
 	}
-	if(ctxt.execute_kernel_) {
+	if(ctxt.execute_kernel_){
 		lua_pushstring(T_, "execute");
 		lua_pushlightuserdata(T_, &this_context_backend);
 		lua_settable(T_, -3);
@@ -356,7 +356,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_pushstring(T_, "valid");
 	lua_pushboolean(T_, true);
 	lua_settable(T_, -3);
-	for (const plugins_context::accessor_list::value_type & v : ctxt.accessors_) {
+	for(const plugins_context::accessor_list::value_type & v : ctxt.accessors_){
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
 		lua_pushstring(T_, key.c_str());
@@ -379,12 +379,12 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	this_context_backend->valid = false; //invalidate the context object for lua
 
-	if (lua_status(T_) != LUA_YIELD) {
+	if(lua_status(T_) != LUA_YIELD){
 		LOG_LUA << "Thread status = '" << lua_status(T_) << "'";
-		if (lua_status(T_) != LUA_OK) {
+		if(lua_status(T_) != LUA_OK){
 			std::stringstream ss;
 			ss << "encountered a";
-			switch(lua_status(T_)) {
+			switch(lua_status(T_)){
 				case LUA_ERRSYNTAX:
 					ss << " syntax ";
 					break;
@@ -416,12 +416,12 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	application_lua_kernel::request_list results;
 
-	for (const plugins_manager::event & req : this_context_backend->requests) {
-		if(ctxt.execute_kernel_ && req.name == "execute") {
-			results.push_back([this, lk = ctxt.execute_kernel_, data = req.data]() {
+	for(const plugins_manager::event & req : this_context_backend->requests){
+		if(ctxt.execute_kernel_ && req.name == "execute"){
+			results.push_back([this, lk = ctxt.execute_kernel_, data = req.data](){
 				auto result = lk->run_binary_lua_tag(data);
 				int ref = result["ref"].to_int();
-				if(auto func = result.optional_child("executed")) {
+				if(auto func = result.optional_child("executed")){
 					lua_rawgeti(T_, LUA_REGISTRYINDEX, ref);
 					luaW_copy_upvalues(T_, *func);
 					luaL_unref(T_, LUA_REGISTRYINDEX, ref);
@@ -442,40 +442,40 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 bool luaW_copy_upvalues(lua_State* L, const config& cfg)
 {
-	if(auto upvalues = cfg.optional_child("upvalues")) {
+	if(auto upvalues = cfg.optional_child("upvalues")){
 		lua_pushvalue(L, -1); // duplicate function because lua_getinfo will pop it
 		lua_Debug info;
 		lua_getinfo(L, ">u", &info);
 		int funcindex = lua_absindex(L, -1);
-		for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)) {
+		for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)){
 			std::string_view name = lua_getupvalue(L, funcindex, i);
-			if(name == "_ENV") {
+			if(name == "_ENV"){
 				lua_pushglobaltable(L);
-			} else if(upvalues->has_attribute(name)) {
+			} else if(upvalues->has_attribute(name)){
 				luaW_pushscalar(L, (*upvalues)[name]);
-			} else if(upvalues->has_child(name)) {
+			} else if(upvalues->has_child(name)){
 				const auto& child = upvalues->mandatory_child(name);
-				if(child["upvalue_type"] == "array") {
+				if(child["upvalue_type"] == "array"){
 					auto children = upvalues->child_range(name);
 					lua_createtable(L, children.size(), 0);
-					for(const auto& cfg : children) {
+					for(const auto& cfg : children){
 						luaW_pushscalar(L, cfg["value"]);
 						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 					}
-				} else if(child["upvalue_type"] == "named tuple") {
+				} else if(child["upvalue_type"] == "named tuple"){
 					auto children = upvalues->child_range(name);
 					std::vector<std::string> names;
-					for(const auto& cfg : children) {
+					for(const auto& cfg : children){
 						names.push_back(cfg["name"]);
 					}
 					luaW_push_namedtuple(L, names);
-					for(const auto& cfg : children) {
+					for(const auto& cfg : children){
 						luaW_pushscalar(L, cfg["value"]);
 						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 					}
-				} else if(child["upvalue_type"] == "config") {
+				} else if(child["upvalue_type"] == "config"){
 					luaW_pushconfig(L, child);
-				} else if(child["upvalue_type"] == "function") {
+				} else if(child["upvalue_type"] == "function"){
 					luaW_copy_upvalues(L, child);
 					lua_pushvalue(L, -1);
 				}

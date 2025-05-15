@@ -65,55 +65,55 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
-	, use_map_settings_(register_bool( "use_map_settings", true,
-		[]() {return prefs::get().mp_use_map_settings();},
-		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
+	, use_map_settings_(register_bool("use_map_settings", true,
+		[](){return prefs::get().mp_use_map_settings();},
+		[](bool v){prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, fog_(register_bool("fog", true,
-		[]() {return prefs::get().mp_fog();},
-		[](bool v) {prefs::get().set_mp_fog(v);}))
+		[](){return prefs::get().mp_fog();},
+		[](bool v){prefs::get().set_mp_fog(v);}))
 	, shroud_(register_bool("shroud", true,
-		[]() {return prefs::get().mp_shroud();},
-		[](bool v) {prefs::get().set_mp_shroud(v);}))
+		[](){return prefs::get().mp_shroud();},
+		[](bool v){prefs::get().set_mp_shroud(v);}))
 	, start_time_(register_bool("random_start_time", true,
-		[]() {return prefs::get().mp_random_start_time();},
-		[](bool v) {prefs::get().set_mp_random_start_time(v);}))
+		[](){return prefs::get().mp_random_start_time();},
+		[](bool v){prefs::get().set_mp_random_start_time(v);}))
 	, time_limit_(register_bool("time_limit", true,
-		[]() {return prefs::get().mp_countdown();},
-		[](bool v) {prefs::get().set_mp_countdown(v);},
+		[](){return prefs::get().mp_countdown();},
+		[](bool v){prefs::get().set_mp_countdown(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true,
-		[]() {return prefs::get().shuffle_sides();},
-		[](bool v) {prefs::get().set_shuffle_sides(v);}))
+		[](){return prefs::get().shuffle_sides();},
+		[](bool v){prefs::get().set_shuffle_sides(v);}))
 	, observers_(register_bool("observers", true,
-		[]() {return prefs::get().allow_observers();},
-		[](bool v) {prefs::get().set_allow_observers(v);}))
+		[](){return prefs::get().allow_observers();},
+		[](bool v){prefs::get().set_allow_observers(v);}))
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true,
-		[]() {return prefs::get().mp_turns();},
-		[](int v) {prefs::get().set_mp_turns(v);}))
+		[](){return prefs::get().mp_turns();},
+		[](int v){prefs::get().set_mp_turns(v);}))
 	, gold_(register_integer("village_gold", true,
-		[]() {return prefs::get().village_gold();},
-		[](int v) {prefs::get().set_village_gold(v);}))
+		[](){return prefs::get().village_gold();},
+		[](int v){prefs::get().set_village_gold(v);}))
 	, support_(register_integer("village_support", true,
-		[]() {return prefs::get().village_support();},
-		[](int v) {prefs::get().set_village_support(v);}))
+		[](){return prefs::get().village_support();},
+		[](int v){prefs::get().set_village_support(v);}))
 	, experience_(register_integer("experience_modifier", true,
-		[]() {return prefs::get().xp_modifier();},
-		[](int v) {prefs::get().set_xp_modifier(v);}))
+		[](){return prefs::get().xp_modifier();},
+		[](int v){prefs::get().set_xp_modifier(v);}))
 	, init_turn_limit_(register_integer("init_turn_limit", true,
-		[]() {return prefs::get().countdown_init_time().count();},
-		[](int v) {prefs::get().set_countdown_init_time(std::chrono::seconds{v});}))
+		[](){return prefs::get().countdown_init_time().count();},
+		[](int v){prefs::get().set_countdown_init_time(std::chrono::seconds{v});}))
 	, turn_bonus_(register_integer("turn_bonus", true,
-		[]() {return prefs::get().countdown_turn_bonus().count();},
-		[](int v) {prefs::get().set_countdown_turn_bonus(std::chrono::seconds{v});}))
+		[](){return prefs::get().countdown_turn_bonus().count();},
+		[](int v){prefs::get().set_countdown_turn_bonus(std::chrono::seconds{v});}))
 	, reservoir_(register_integer("reservoir", true,
-		[]() {return prefs::get().countdown_reservoir_time().count();},
-		[](int v) {prefs::get().set_countdown_reservoir_time(std::chrono::seconds{v});}))
+		[](){return prefs::get().countdown_reservoir_time().count();},
+		[](int v){prefs::get().set_countdown_reservoir_time(std::chrono::seconds{v});}))
 	, action_bonus_(register_integer("action_bonus", true,
-		[]() {return prefs::get().countdown_action_bonus().count();},
-		[](int v) {prefs::get().set_countdown_action_bonus(std::chrono::seconds{v});}))
+		[](){return prefs::get().countdown_action_bonus().count();},
+		[](int v){prefs::get().set_countdown_action_bonus(std::chrono::seconds{v});}))
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
@@ -127,7 +127,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		{level_type::type::random_map, _("Random Maps")},
 	};
 
-	utils::erase_if(level_types_, [this](level_type_info& type_info) {
+	utils::erase_if(level_types_, [this](level_type_info& type_info){
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	});
 
@@ -154,8 +154,8 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	// from pre_show
 	create.set_current_level_type(level_type::type::scenario);
 	const auto& levels = create.get_levels_by_type(level_type::type::scenario);
-	for(std::size_t i = 0; i < levels.size(); i++) {
-		if(levels[i]->id() == presets["scenario"].str()) {
+	for(std::size_t i = 0; i < levels.size(); i++){
+		if(levels[i]->id() == presets["scenario"].str()){
 			create.set_current_level(i);
 		}
 	}
@@ -184,8 +184,8 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	// can be removed later if we jump straight from the lobby into a game instead of going to the staging screen to wait for other players to join
 	config& scenario = create.get_state().get_starting_point();
 
-	if(params.random_start_time) {
-		if(!tod_manager::is_start_ToD(scenario["random_start_time"])) {
+	if(params.random_start_time){
+		if(!tod_manager::is_start_ToD(scenario["random_start_time"])){
 			scenario["random_start_time"] = true;
 		}
 	} else {
@@ -195,7 +195,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	scenario["experience_modifier"] = params.xp_modifier;
 	scenario["turns"] = params.num_turns;
 
-	for(config& side : scenario.child_range("side")) {
+	for(config& side : scenario.child_range("side")){
 		side["controller_lock"] = true;
 		side["team_lock"] = true;
 		side["gold_lock"] = true;
@@ -254,7 +254,7 @@ void mp_create_game::pre_show()
 
 	text_box& filter = find_widget<text_box>("game_filter");
 
-	filter.on_modified([this](const auto&) { on_filter_change<text_box>("game_filter", true); });
+	filter.on_modified([this](const auto&){ on_filter_change<text_box>("game_filter", true); });
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	keyboard_capture(&filter);
@@ -263,11 +263,11 @@ void mp_create_game::pre_show()
 	// Set up game types menu_button
 	//
 	std::vector<config> game_types;
-	for(level_type_info& type_info : level_types_) {
+	for(level_type_info& type_info : level_types_){
 		game_types.emplace_back("label", type_info.second);
 	}
 
-	if(game_types.empty()) {
+	if(game_types.empty()){
 		gui2::show_transient_message("", _("No games found."));
 		throw game::error(_("No games found."));
 	}
@@ -276,11 +276,11 @@ void mp_create_game::pre_show()
 
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
-		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
+		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info){
 			return info.first == *level_type::get_enum(prefs::get().mp_level_type());
 		});
 
-		if(index != level_types_.end()) {
+		if(index != level_types_.end()){
 			return std::distance(level_types_.begin(), index);
 		}
 
@@ -298,14 +298,14 @@ void mp_create_game::pre_show()
 	mod_list_ = &find_widget<listbox>("mod_list");
 
 	const auto& activemods = prefs::get().modifications();
-	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)){
 		grid* row_grid = &mod_list_->add_row(widget_data{{ "mod_name", {{ "label", mod->name }}}});
 
 		row_grid->find_widget<toggle_panel>("panel").set_tooltip(mod->description);
 
 		toggle_button& mog_toggle = row_grid->find_widget<toggle_button>("mod_active_state");
 
-		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
+		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()){
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}
@@ -314,7 +314,7 @@ void mp_create_game::pre_show()
 	}
 
 	// No mods, hide the header
-	if(mod_list_->get_item_count() <= 0) {
+	if(mod_list_->get_item_count() <= 0){
 		find_widget<styled_widget>("mods_header").set_visible(widget::visibility::invisible);
 	}
 
@@ -324,11 +324,11 @@ void mp_create_game::pre_show()
 	eras_menu_button_ = &find_widget<menu_button>("eras");
 
 	std::vector<config> era_names;
-	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
+	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)){
 		era_names.emplace_back("label", era->name, "tooltip", era->description);
 	}
 
-	if(era_names.empty()) {
+	if(era_names.empty()){
 		gui2::show_transient_message("", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
@@ -339,7 +339,7 @@ void mp_create_game::pre_show()
 		std::bind(&mp_create_game::on_era_select, this));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, prefs::get().mp_era());
-	if(era_selection >= 0) {
+	if(era_selection >= 0){
 		eras_menu_button_->set_selected(era_selection);
 	}
 
@@ -380,7 +380,7 @@ void mp_create_game::pre_show()
 	//
 	// Disable certain settings if we're playing a local game.
 	//
-	if(local_mode_) {
+	if(local_mode_){
 		find_widget<text_box>("game_name").set_active(false);
 		find_widget<text_box>("game_password").set_active(false);
 
@@ -425,14 +425,14 @@ void mp_create_game::pre_show()
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
-	plugins_context_->set_callback("create", [this](const config&) { set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit",   [this](const config&) { set_retval(retval::CANCEL); }, false);
-	plugins_context_->set_callback("load",   [this](const config&) { load_game_callback(); }, false);
+	plugins_context_->set_callback("create", [this](const config&){ set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [this](const config&){ set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("load",   [this](const config&){ load_game_callback(); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
-	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(cfg[#field].convert()); } } while(false) \
+	do { if(cfg.has_attribute(#field)){ field##_->set_widget_value(cfg[#field].convert()); } } while(false) \
 
-	plugins_context_->set_callback("update_settings", [this](const config& cfg) {
+	plugins_context_->set_callback("update_settings", [this](const config& cfg){
 		UPDATE_ATTRIBUTE(turns, to_int);
 		UPDATE_ATTRIBUTE(gold, to_int);
 		UPDATE_ATTRIBUTE(support, to_int);
@@ -453,30 +453,30 @@ void mp_create_game::pre_show()
 
 #undef UPDATE_ATTRIBUTE
 
-	plugins_context_->set_callback("set_name",     [this](const config& cfg) {
+	plugins_context_->set_callback("set_name",     [this](const config& cfg){
 		create_engine_.get_state().mp_settings().name = cfg["name"];
 	}, true);
 
-	plugins_context_->set_callback("set_password", [this](const config& cfg) {
+	plugins_context_->set_callback("set_password", [this](const config& cfg){
 		create_engine_.get_state().mp_settings().password = cfg["password"];
 	}, true);
 
-	plugins_context_->set_callback("select_level", [this](const config& cfg) {
+	plugins_context_->set_callback("select_level", [this](const config& cfg){
 		selected_game_index_ = convert_to_game_filtered_index(cfg["index"].to_int());
 		create_engine_.set_current_level(selected_game_index_);
 	}, true);
 
-	plugins_context_->set_callback("select_type",  [this](const config& cfg) {
+	plugins_context_->set_callback("select_type",  [this](const config& cfg){
 		create_engine_.set_current_level_type(level_type::get_enum(cfg["type"].str()).value_or(level_type::type::scenario)); }, true);
 
-	plugins_context_->set_callback("select_era",   [this](const config& cfg) {
+	plugins_context_->set_callback("select_era",   [this](const config& cfg){
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
 
-	plugins_context_->set_callback("select_mod",   [this](const config& cfg) {
+	plugins_context_->set_callback("select_mod",   [this](const config& cfg){
 		on_mod_toggle(cfg["id"].str(), nullptr);
 	}, true);
 
-	plugins_context_->set_accessor("get_selected", [this](const config&) {
+	plugins_context_->set_accessor("get_selected", [this](const config&){
 		const ng::level& current_level = create_engine_.current_level();
 		return config {
 			"id", current_level.id(),
@@ -488,7 +488,7 @@ void mp_create_game::pre_show()
 		};
 	});
 
-	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
+	plugins_context_->set_accessor("find_level",   [this](const config& cfg){
 		const std::string id = cfg["id"].str();
 		auto result = create_engine_.find_level_by_id(id);
 		return config {
@@ -497,11 +497,11 @@ void mp_create_game::pre_show()
 		};
 	});
 
-	plugins_context_->set_accessor_int("find_era", [this](const config& cfg) {
+	plugins_context_->set_accessor_int("find_era", [this](const config& cfg){
 		return create_engine_.find_extra_by_id(ng::create_engine::ERA, cfg["id"]);
 	});
 
-	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
+	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg){
 		return create_engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
 	});
 }
@@ -510,7 +510,7 @@ void mp_create_game::sync_with_depcheck()
 {
 	DBG_MP << "sync_with_depcheck: start";
 
-	if(static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
+	if(static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()){
 		DBG_MP << "sync_with_depcheck: correcting era";
 		const int new_era_index = create_engine_.dependency_manager().get_era_index();
 
@@ -518,14 +518,14 @@ void mp_create_game::sync_with_depcheck()
 		eras_menu_button_->set_value(new_era_index);
 	}
 
-	if(create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
+	if(create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()){
 		DBG_MP << "sync_with_depcheck: correcting scenario";
 
 		// Match scenario and scenario type
 		const auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
 		const bool different_type = new_level_index.first != create_engine_.current_level_type();
 
-		if(new_level_index.second != -1) {
+		if(new_level_index.second != -1){
 			create_engine_.set_current_level_type(new_level_index.first);
 			create_engine_.set_current_level(new_level_index.second);
 			selected_game_index_ = new_level_index.second;
@@ -533,7 +533,7 @@ void mp_create_game::sync_with_depcheck()
 			auto& game_types_list = find_widget<menu_button>("game_types");
 			game_types_list.set_value(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; })));
 
-			if(different_type) {
+			if(different_type){
 				display_games_of_type(new_level_index.first, create_engine_.current_level().id());
 			} else {
 				// This function (or rather on_game_select) might be triggered by a listbox callback, in
@@ -550,7 +550,7 @@ void mp_create_game::sync_with_depcheck()
 		}
 	}
 
-	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()) {
+	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()){
 		DBG_MP << "sync_with_depcheck: correcting modifications";
 		set_active_mods(create_engine_.dependency_manager().get_modifications());
 	}
@@ -567,13 +567,13 @@ void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 	listbox& game_list = find_widget<listbox>("games_list");
 
 	boost::dynamic_bitset<> filtered(game_list.get_item_count());
-	for(const std::size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
+	for(const std::size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())){
 		filtered[i] = true;
 	}
 
 	game_list.set_row_shown(filtered);
 
-	if(do_select) {
+	if(do_select){
 		on_game_select();
 	}
 }
@@ -582,7 +582,7 @@ void mp_create_game::on_game_select()
 {
 	const int selected_game = find_widget<listbox>("games_list").get_selected_row();
 
-	if(selected_game == selected_game_index_) {
+	if(selected_game == selected_game_index_){
 		return;
 	}
 
@@ -598,7 +598,7 @@ void mp_create_game::on_game_select()
 	// General settings
 	const bool can_select_era = create_engine_.current_level().allow_era_choice();
 
-	if(!can_select_era) {
+	if(!can_select_era){
 		eras_menu_button_->set_label(_("No eras available for this game."));
 	} else {
 		eras_menu_button_->set_selected(eras_menu_button_->get_value());
@@ -621,7 +621,7 @@ void mp_create_game::on_tab_select()
 
 void mp_create_game::on_mod_toggle(const std::string& id, toggle_button* sender)
 {
-	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(id))) {
+	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(id))){
 		ERR_MP << "ignoring on_mod_toggle that is already set";
 		return;
 	}
@@ -672,11 +672,11 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 
 	list.clear();
 
-	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
+	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)){
 		widget_data data;
 		widget_item item;
 
-		if(type == level_type::type::campaign || type == level_type::type::sp_campaign) {
+		if(type == level_type::type::campaign || type == level_type::type::sp_campaign){
 			item["label"] = game->icon();
 			data.emplace("game_icon", item);
 		}
@@ -687,18 +687,18 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		grid& rg = list.add_row(data);
 
 		auto& icon = rg.find_widget<image>("game_icon");
-		if(icon.get_label().empty()) {
+		if(icon.get_label().empty()){
 			icon.set_visible(gui2::widget::visibility::invisible);
 		}
 	}
 
-	if(!level.empty() && !list.get_rows_shown().empty()) {
+	if(!level.empty() && !list.get_rows_shown().empty()){
 		// Recalculate which rows should be visible
 		on_filter_change<slider>("num_players", false);
 		on_filter_change<text_box>("game_filter", false);
 
 		int level_index = create_engine_.find_level_by_id(level).second;
-		if(level_index >= 0 && std::size_t(level_index) < list.get_item_count()) {
+		if(level_index >= 0 && std::size_t(level_index) < list.get_item_count()){
 			list.select_row(level_index);
 		}
 	}
@@ -739,11 +739,11 @@ void mp_create_game::update_details()
 	styled_widget& players = find_widget<styled_widget>("map_num_players");
 	styled_widget& map_size = find_widget<styled_widget>("map_size");
 
-	if(create_engine_.current_level_type() == level_type::type::random_map) {
+	if(create_engine_.current_level_type() == level_type::type::random_map){
 		// If the current random map doesn't have data, generate it
 		if(create_engine_.generator_assigned() &&
 			create_engine_.current_level().data()["map_data"].empty() &&
-			create_engine_.current_level().data()["map_file"].empty()) {
+			create_engine_.current_level().data()["map_file"].empty()){
 			create_engine_.init_generated_level_data();
 		}
 
@@ -761,7 +761,7 @@ void mp_create_game::update_details()
 	find_widget<styled_widget>("game_title").set_label(title);
 
 
-	switch(create_engine_.current_level_type()) {
+	switch(create_engine_.current_level_type()){
 		case level_type::type::scenario:
 		case level_type::type::user_map:
 		case level_type::type::user_scenario:
@@ -774,7 +774,7 @@ void mp_create_game::update_details()
 
 			find_widget<stacked_widget>("minimap_stack").select_layer(0);
 
-			if(current_scenario->data()["map_data"].empty()) {
+			if(current_scenario->data()["map_data"].empty()){
 				saved_game::expand_map_file(current_scenario->data());
 				current_scenario->set_metadata();
 			}
@@ -802,7 +802,7 @@ void mp_create_game::update_details()
 			const int p_min = current_campaign->min_players();
 			const int p_max = current_campaign->max_players();
 
-			if(p_max > p_min) {
+			if(p_max > p_min){
 				players.set_label(VGETTEXT("number of players^$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
 			} else {
 				players.set_label(std::to_string(p_min));
@@ -821,7 +821,7 @@ void mp_create_game::update_details()
 void mp_create_game::update_map_settings()
 {
 	config& level = create_engine_.current_level().data();
-	if(level["force_lock_settings"].to_bool(!create_engine_.get_state().classification().is_normal_mp_game())) {
+	if(level["force_lock_settings"].to_bool(!create_engine_.get_state().classification().is_normal_mp_game())){
 		use_map_settings_->widget_set_enabled(false, false);
 		use_map_settings_->set_widget_value(true);
 	} else {
@@ -864,11 +864,11 @@ void mp_create_game::load_game_callback()
 {
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), create_engine_.get_state());
 
-	if(!load.load_multiplayer_game()) {
+	if(!load.load_multiplayer_game()){
 		return;
 	}
 
-	if(load.data().cancel_orders) {
+	if(load.data().cancel_orders){
 		create_engine_.get_state().cancel_orders();
 	}
 
@@ -879,8 +879,8 @@ std::vector<std::string> mp_create_game::get_active_mods()
 {
 	int i = 0;
 	std::set<std::string> res;
-	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		if(mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").get_value_bool()) {
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)){
+		if(mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").get_value_bool()){
 			res.insert(mod->id);
 		}
 		++i;
@@ -893,7 +893,7 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 	std::set<std::string> val2(val.begin(), val.end());
 	int i = 0;
 	std::set<std::string> res;
-	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)){
 		mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
 	}
@@ -915,12 +915,12 @@ void mp_create_game::reset_timer_settings()
 
 bool mp_create_game::dialog_exit_hook()
 {
-	if(!create_engine_.current_level_has_side_data()) {
+	if(!create_engine_.current_level_has_side_data()){
 		gui2::show_transient_error_message(_("The selected game has no sides!"));
 		return false;
 	}
 
-	if(!create_engine_.current_level().can_launch_game()) {
+	if(!create_engine_.current_level().can_launch_game()){
 		std::stringstream msg;
 		// TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 		msg << _("The selected game cannot be created.");
@@ -930,7 +930,7 @@ bool mp_create_game::dialog_exit_hook()
 		return false;
 	}
 
-	if(!create_engine_.is_campaign()) {
+	if(!create_engine_.is_campaign()){
 		return true;
 	}
 
@@ -944,7 +944,7 @@ void mp_create_game::post_show()
 	// Show all tabs so that find_widget works correctly
 	find_widget<stacked_widget>("pager").select_layer(-1);
 
-	if(get_retval() == LOAD_GAME) {
+	if(get_retval() == LOAD_GAME){
 		create_engine_.prepare_for_saved_game();
 
 		// We don't need the LOAD_GAME retval past this point. For convenience, reset it to OK so we can use the execute wrapper, then exit.
@@ -952,7 +952,7 @@ void mp_create_game::post_show()
 		return;
 	}
 
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		prefs::get().set_modifications(create_engine_.active_mods());
 		prefs::get().set_mp_level_type(static_cast<int>(create_engine_.current_level_type()));
 		prefs::get().set_mp_level(create_engine_.current_level().id());
@@ -961,9 +961,9 @@ void mp_create_game::post_show()
 		create_engine_.prepare_for_era_and_mods();
 
 		if(create_engine_.current_level_type() == level_type::type::campaign ||
-			create_engine_.current_level_type() == level_type::type::sp_campaign) {
+			create_engine_.current_level_type() == level_type::type::sp_campaign){
 			create_engine_.prepare_for_campaign();
-		} else if(create_engine_.current_level_type() == level_type::type::scenario) {
+		} else if(create_engine_.current_level_type() == level_type::type::scenario){
 			create_engine_.prepare_for_scenario();
 		} else {
 			// This means define= doesn't work for randomly generated scenarios
@@ -979,11 +979,11 @@ void mp_create_game::post_show()
 
 		const auto& tagname = create_engine_.get_state().classification().get_tagname();
 
-		if(tagname == "scenario") {
+		if(tagname == "scenario"){
 			const std::string first_scenario = create_engine_.current_level().data()["first_scenario"];
-			for(const config& scenario : game_config_manager::get()->game_config().child_range(tagname)) {
+			for(const config& scenario : game_config_manager::get()->game_config().child_range(tagname)){
 				const bool is_first = scenario["id"] == first_scenario;
-				if(scenario["allow_new_game"].to_bool(false) || is_first || game_config::debug ) {
+				if(scenario["allow_new_game"].to_bool(false) || is_first || game_config::debug){
 					const std::string& title = !scenario["new_game_title"].empty()
 						? scenario["new_game_title"]
 						: scenario["name"];
@@ -995,7 +995,7 @@ void mp_create_game::post_show()
 		}
 
 		mp_game_settings& params = create_engine_.get_state().mp_settings();
-		if(entry_points.size() > 1) {
+		if(entry_points.size() > 1){
 			gui2::dialogs::simple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
 
 			dlg.set_single_button(true);
@@ -1009,7 +1009,7 @@ void mp_create_game::post_show()
 
 		params.use_map_settings = use_map_settings_->get_widget_value();
 
-		if(!create_engine_.current_level().data()["force_lock_settings"].to_bool(!create_engine_.get_state().classification().is_normal_mp_game())) {
+		if(!create_engine_.current_level().data()["force_lock_settings"].to_bool(!create_engine_.get_state().classification().is_normal_mp_game())){
 			// Max slider value (in this case, 100) means 'unlimited turns', so pass the value -1
 			const int num_turns = turns_->get_widget_value();
 			params.num_turns = num_turns < ::settings::turns_max ? num_turns : - 1;
@@ -1023,8 +1023,8 @@ void mp_create_game::post_show()
 			// write to scenario
 			config& scenario = create_engine_.get_state().get_starting_point();
 
-			if(params.random_start_time) {
-				if(!tod_manager::is_start_ToD(scenario["random_start_time"])) {
+			if(params.random_start_time){
+				if(!tod_manager::is_start_ToD(scenario["random_start_time"])){
 					scenario["random_start_time"] = true;
 				}
 			} else {
@@ -1034,26 +1034,26 @@ void mp_create_game::post_show()
 			scenario["experience_modifier"] = params.xp_modifier;
 			scenario["turns"] = params.num_turns;
 
-			for(config& side : scenario.child_range("side")) {
-				if(!params.use_map_settings) {
+			for(config& side : scenario.child_range("side")){
+				if(!params.use_map_settings){
 					side["fog"] = params.fog_game;
 					side["shroud"] = params.shroud_game;
 					side["village_gold"] = params.village_gold;
 					side["village_support"] = params.village_support;
 				} else {
-					if(side["fog"].empty()) {
+					if(side["fog"].empty()){
 						side["fog"] = params.fog_game;
 					}
 
-					if(side["shroud"].empty()) {
+					if(side["shroud"].empty()){
 						side["shroud"] = params.shroud_game;
 					}
 
-					if(side["village_gold"].empty()) {
+					if(side["village_gold"].empty()){
 						side["village_gold"] = params.village_gold;
 					}
 
-					if(side["village_support"].empty()) {
+					if(side["village_support"].empty()){
 						side["village_support"] = params.village_support;
 					}
 				}
@@ -1083,13 +1083,13 @@ void mp_create_game::post_show()
 
 		// Set game name
 		const std::string name = find_widget<text_box>("game_name").get_value();
-		if(!name.empty() && (name != settings::game_name_default())) {
+		if(!name.empty() && (name != settings::game_name_default())){
 			params.name = name;
 		}
 
 		// Set game password
 		const std::string password = find_widget<text_box>("game_password").get_value();
-		if(!password.empty()) {
+		if(!password.empty()){
 			params.password = password;
 		}
 	}

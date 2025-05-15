@@ -81,37 +81,37 @@ void styled_widget::set_members(const widget_item& data)
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
 	widget_item::const_iterator itor = data.find("id");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_id(itor->second);
 	}
 
 	itor = data.find("linked_group");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_linked_group(itor->second);
 	}
 
 	itor = data.find("label");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_label(itor->second);
 	}
 
 	itor = data.find("tooltip");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_tooltip(itor->second);
 	}
 
 	itor = data.find("help");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_help_message(itor->second);
 	}
 
 	itor = data.find("use_markup");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_use_markup(utils::string_bool(itor->second));
 	}
 
 	itor = data.find("text_alignment");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_text_alignment(decode_text_alignment(itor->second));
 	}
 }
@@ -176,7 +176,7 @@ void styled_widget::layout_initialize(const bool full_initialization)
 	// Inherited.
 	widget::layout_initialize(full_initialization);
 
-	if(full_initialization) {
+	if(full_initialization){
 		shrunken_ = false;
 	}
 }
@@ -185,7 +185,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 {
 	assert(config_);
 
-	if(!label_.empty() && can_wrap()) {
+	if(!label_.empty() && can_wrap()){
 
 		point size = get_best_text_size(
 				point(), point(maximum_width - config_->text_extra_width, 0));
@@ -199,7 +199,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 				  << "' maximum_width " << maximum_width << " result " << size
 				  << ".";
 
-	} else if(label_.empty() || text_can_shrink()) {
+	} else if(label_.empty() || text_can_shrink()){
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
 		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
@@ -216,7 +216,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 void styled_widget::request_reduce_height(const unsigned maximum_height)
 {
-	if(label_.empty()) {
+	if(label_.empty()){
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
 		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
@@ -231,7 +231,7 @@ void styled_widget::request_reduce_height(const unsigned maximum_height)
 point styled_widget::calculate_best_size() const
 {
 	assert(config_);
-	if(label_.empty()) {
+	if(label_.empty()){
 		DBG_GUI_L << LOG_HEADER << " empty label return default.";
 		return get_config_default_size();
 	}
@@ -260,7 +260,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// Note we assume that the best size has been queried but otherwise it
 	// should return false.
 	if(renderer_.is_truncated() && use_tooltip_on_label_overflow_
-	   && tooltip_.empty()) {
+	   && tooltip_.empty()){
 
 		set_tooltip(label_);
 	}
@@ -308,7 +308,7 @@ const widget* styled_widget::find(const std::string_view id, const bool must_be_
 
 void styled_widget::set_label(const t_string& label)
 {
-	if(label == label_) {
+	if(label == label_){
 		return;
 	}
 
@@ -329,7 +329,7 @@ void styled_widget::set_label(const t_string& label)
 
 void styled_widget::set_use_markup(bool use_markup)
 {
-	if(use_markup == use_markup_) {
+	if(use_markup == use_markup_){
 		return;
 	}
 
@@ -340,7 +340,7 @@ void styled_widget::set_use_markup(bool use_markup)
 
 void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 {
-	if(text_alignment_ == text_alignment) {
+	if(text_alignment_ == text_alignment){
 		return;
 	}
 
@@ -351,7 +351,7 @@ void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 
 void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 {
-	if(text_ellipse_mode_ == ellipse_mode) {
+	if(text_ellipse_mode_ == ellipse_mode){
 		return;
 	}
 
@@ -394,7 +394,7 @@ void styled_widget::update_canvas()
 
 unsigned int styled_widget::get_text_font_size() const
 {
-	if (cached_text_font_size_ == 0) {
+	if(cached_text_font_size_ == 0){
 		assert(config_);
 
 		cached_text_font_size_ = config_->text_font_size(get_screen_size_variables());
@@ -421,7 +421,7 @@ bool styled_widget::impl_draw_background()
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_.str()) << "' size "
 			  << get_rectangle() << ".";
 
-	if(!get_canvas(get_state()).update_blur(get_rectangle())) {
+	if(!get_canvas(get_state()).update_blur(get_rectangle())){
 		return false;
 	}
 	get_canvas(get_state()).draw();
@@ -460,7 +460,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		.set_characters_per_line(get_characters_per_line())
 		.set_text(label_, use_markup_);
 
-	if(get_characters_per_line() != 0 && !can_wrap()) {
+	if(get_characters_per_line() != 0 && !can_wrap()){
 		WRN_GUI_L << LOG_HEADER
 			<< " Limited the number of characters per line, "
 			<< "but wrapping is not set, output may not be as expected.";
@@ -482,7 +482,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	                   config_->text_extra_height);
 
 	// If doesn't fit try the maximum.
-	if(renderer_.is_truncated() && !can_wrap()) {
+	if(renderer_.is_truncated() && !can_wrap()){
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
 		maximum_size = point(config_->max_width,
@@ -508,9 +508,9 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(!tooltip_.empty()) {
+	if(!tooltip_.empty()){
 		std::string tip = tooltip_;
-		if(!help_message_.empty()) {
+		if(!help_message_.empty()){
 			utils::string_map symbols;
 			symbols["hotkey"] = hotkey::get_names(
 					hotkey::hotkey_command::get_command_by_command(
@@ -531,7 +531,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(!help_message_.empty()) {
+	if(!help_message_.empty()){
 		event::message_show_helptip message(help_message_, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
@@ -583,7 +583,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 	, use_tooltip_on_label_overflow(true)
 	, use_markup(cfg["use_markup"].to_bool(false))
 {
-	if(definition.empty()) {
+	if(definition.empty()){
 		definition = "default";
 	}
 

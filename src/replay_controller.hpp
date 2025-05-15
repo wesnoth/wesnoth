@@ -25,7 +25,7 @@ public:
 	{
 	public:
 		virtual void move_done() {}
-		virtual void new_side_turn(int , int ) {}
+		virtual void new_side_turn(int , int) {}
 		virtual bool should_stop() { return true; }
 		virtual ~replay_stop_condition(){}
 	};

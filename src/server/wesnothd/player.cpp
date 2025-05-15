@@ -63,7 +63,7 @@ void wesnothd::player::set_status(wesnothd::player::STATUS status)
 void wesnothd::player::mark_available(const int game_id,
                                       const std::string& location)
 {
-	if (game_id == 0) {
+	if(game_id == 0){
 		cfg_.set_attr("available", "yes");
 		set_status(LOBBY);
 	} else {
@@ -82,17 +82,17 @@ void wesnothd::player::mark_registered(bool registered)
 bool wesnothd::player::is_message_flooding()
 {
 	const auto now = std::chrono::steady_clock::now();
-	if (flood_start_ == std::chrono::steady_clock::time_point{}) {
+	if(flood_start_ == std::chrono::steady_clock::time_point{}){
 		flood_start_ = now;
 		return false;
 	}
 
 	++messages_since_flood_start_;
 
-	if (now - flood_start_ > TimePeriod) {
+	if(now - flood_start_ > TimePeriod){
 		messages_since_flood_start_ = 0;
 		flood_start_ = now;
-	} else if (messages_since_flood_start_ >= MaxMessages) {
+	} else if(messages_since_flood_start_ >= MaxMessages){
 		return true;
 	}
 	return false;

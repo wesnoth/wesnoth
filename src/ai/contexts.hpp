@@ -55,7 +55,7 @@ public:
 	recursion_counter(int counter)
 		: counter_(++counter)
 	{
-		if (counter > MAX_COUNTER_VALUE ) {
+		if(counter > MAX_COUNTER_VALUE) {
 			throw game::game_error("maximum recursion depth reached!");
 		}
 	}
@@ -202,7 +202,7 @@ public:
 
 	virtual void add_facet(const std::string &id, const config &cfg) const = 0;
 
-	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) = 0;
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects) = 0;
 
 	virtual const attacks_vector& get_attacks() const = 0;
 
@@ -330,7 +330,7 @@ public:
 	virtual void set_dst_src_enemy_valid_lua() = 0;
 
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const = 0;
+	virtual const map_location& suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const = 0;
 
 	/**
 	 * serialize to config
@@ -563,7 +563,7 @@ public:
 		return target_->get_aspects();
 	}
 
-	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) override
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects) override
 	{
 		return target_->add_aspects(aspects);
 	}
@@ -818,7 +818,7 @@ public:
 		return target_->leader_can_reach_keep();
 	}
 
-	virtual const map_location& nearest_keep( const map_location& loc ) const override
+	virtual const map_location& nearest_keep(const map_location& loc) const override
 	{
 		return target_->nearest_keep(loc);
 	}
@@ -853,7 +853,7 @@ public:
 		target_->set_src_dst_enemy_valid_lua();
 	}
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override
+	virtual const map_location& suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const override
 	{
 		return target_->suitable_keep(leader_location, leader_paths);
 	}
@@ -1261,7 +1261,7 @@ public:
 
 	virtual void set_src_dst_enemy_valid_lua() override;
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override;
+	virtual const map_location& suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const override;
 
 	virtual config to_readonly_context_config() const override;
 

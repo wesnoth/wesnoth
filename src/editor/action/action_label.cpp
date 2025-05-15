@@ -32,7 +32,7 @@ std::unique_ptr<editor_action> editor_action_label::perform(map_context& mc) con
 	std::unique_ptr<editor_action> undo;
 
 	const terrain_label* old_label = mc.get_labels().get_label(loc_);
-	if(old_label) {
+	if(old_label){
 		undo = std::make_unique<editor_action_label>(
 			loc_,
 			old_label->text(),
@@ -63,7 +63,7 @@ std::unique_ptr<editor_action> editor_action_label_delete::perform(map_context& 
 {
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
 
-	if(!deleted) {
+	if(!deleted){
 		return nullptr;
 	}
 

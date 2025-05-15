@@ -18,7 +18,7 @@
 int main(int, char** argv)
 {
     SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
-    if (src == nullptr) {
+    if(src == nullptr){
         exit(2);
     }
     exit(!IMG_isWEBP(src));

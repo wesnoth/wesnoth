@@ -77,7 +77,7 @@ console_handler::console_handler()
 {
 	DBG_LS << "Early init message";
 
-	if(GetConsoleWindow() != nullptr) {
+	if(GetConsoleWindow() != nullptr){
 		// Someone already attached a console to us. Assume we were compiled
 		// with the console subsystem flag and that the standard streams are
 		// already pointing to the console.
@@ -96,9 +96,9 @@ bool console_handler::owns_console() const
 
 void console_handler::enable_native_console_output()
 {
-	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
+	if(AttachConsole(ATTACH_PARENT_PROCESS)){
 		LOG_LS << "Attached parent process console.";
-	} else if(AllocConsole()) {
+	} else if(AllocConsole()){
 		LOG_LS << "Allocated own console.";
 		created_wincon_ = true;
 	} else {
@@ -132,7 +132,7 @@ std::unique_ptr<console_handler> lfm;
 
 void do_console_redirect()
 {
-	if(!lfm) {
+	if(!lfm){
 		lfm.reset(new console_handler());
 	}
 }

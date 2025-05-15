@@ -38,13 +38,13 @@ try {
 	schema_validation::schema_validator validator{filesystem::get_wml_location("schema/gui.cfg").value()};
 	return io::read(*preprocess_file(path, &defines), &validator);
 
-} catch(const utils::bad_optional_access&) {
+} catch(const utils::bad_optional_access&){
 	FAIL("GUI2: schema/gui.cfg not found.");
 
-} catch(const abstract_validator::error& e) {
+} catch(const abstract_validator::error& e){
 	FAIL("GUI2: could not read schema file: " + e.message);
 
-} catch(const config::error& e) {
+} catch(const config::error& e){
 	ERR_GUI_P << "Could not read gui file: " << path;
 	ERR_GUI_P << e.what();
 	return {};
@@ -67,7 +67,7 @@ try {
 	ERR_GUI_P << "UI Theme '" << def["id"] << "' already exists.";
 	return utils::nullopt;
 
-} catch(const wml_exception& e) {
+} catch(const wml_exception& e){
 	ERR_GUI_P << "Invalid UI theme: " << def["id"];
 	ERR_GUI_P << e.user_message;
 	return utils::nullopt;
@@ -82,14 +82,14 @@ try {
 void parse(const std::string& full_path, bool is_core)
 {
 #if __cpp_range_based_for >= 202211L // lifetime extension of temporaries
-	for(const config& def : read_and_validate(full_path).child_range("gui")) {
+	for(const config& def : read_and_validate(full_path).child_range("gui")){
 #else
 	config cfg = read_and_validate(full_path);
-	for(const config& def : cfg.child_range("gui")) {
+	for(const config& def : cfg.child_range("gui")){
 #endif
 		const bool is_default = def["id"] == "default";
 
-		if(is_default && !is_core) {
+		if(is_default && !is_core){
 			ERR_GUI_P << "UI theme id 'default' is reserved for core themes.";
 			continue;
 		}
@@ -97,7 +97,7 @@ void parse(const std::string& full_path, bool is_core)
 		const auto iter = register_theme(def);
 		if(!iter) continue;
 
-		if(is_default && is_core) {
+		if(is_default && is_core){
 			default_gui = *iter;
 			current_gui = default_gui;
 		}
@@ -122,7 +122,7 @@ void init()
 
 	try {
 		parse(filesystem::get_wml_location("gui/_main.cfg").value(), true);
-	} catch(const utils::bad_optional_access&) {
+	} catch(const utils::bad_optional_access&){
 		FAIL("GUI2: gui/_main.cfg not found.");
 	}
 
@@ -138,10 +138,10 @@ void init()
 	filesystem::get_files_in_dir(umc_dir, nullptr, &addon_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	// Search for all $user_campaign_dir/*/gui-theme.cfg files
-	for(const std::string& umc : addon_dirs) {
+	for(const std::string& umc : addon_dirs){
 		const std::string gui_file = umc + "/gui-theme.cfg";
 
-		if(filesystem::file_exists(gui_file)) {
+		if(filesystem::file_exists(gui_file)){
 			parse(gui_file, false);
 		}
 	}
@@ -149,13 +149,13 @@ void init()
 
 void switch_theme(const std::string& theme_id)
 {
-	if(theme_id.empty() || theme_id == "default") {
+	if(theme_id.empty() || theme_id == "default"){
 		current_gui = default_gui;
 	} else {
 		current_gui = std::find_if(guis.begin(), guis.end(),
-			[&](const auto& theme) { return theme.first == theme_id; });
+			[&](const auto& theme){ return theme.first == theme_id; });
 
-		if(current_gui == guis.end()) {
+		if(current_gui == guis.end()){
 			ERR_GUI_P << "Missing [gui] definition for '" << theme_id << "'";
 			current_gui = default_gui;
 		}

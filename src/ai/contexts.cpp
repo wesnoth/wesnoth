@@ -238,21 +238,21 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 	keeps_.init(resources::gameboard->map());
 }
 
-void readonly_context_impl::on_readonly_context_create() {
+void readonly_context_impl::on_readonly_context_create(){
 	//init the composite ai engines
-	for(const config &cfg_element : cfg_.child_range("engine")) {
+	for(const config &cfg_element : cfg_.child_range("engine")){
 		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
 	}
 
 	// init the composite ai aspects
-	for(const config &cfg_element : cfg_.child_range("aspect")) {
+	for(const config &cfg_element : cfg_.child_range("aspect")){
 		std::vector<aspect_ptr> aspects;
 		engine::parse_aspect_from_config(*this,cfg_element,cfg_element["id"],std::back_inserter(aspects));
 		add_aspects(aspects);
 	}
 
 	// init the composite ai goals
-	for(const config &cfg_element : cfg_.child_range("goal")) {
+	for(const config &cfg_element : cfg_.child_range("goal")){
 		engine::parse_goal_from_config(*this,cfg_element,std::back_inserter(get_goals()));
 	}
 }
@@ -270,13 +270,13 @@ config readwrite_context_impl::to_readwrite_context_config() const
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
-	for(const engine_ptr &e : engines_) {
+	for(const engine_ptr &e : engines_){
 		cfg.add_child("engine",e->to_config());
 	}
-	for(const aspect_map::value_type &a : aspects_) {
+	for(const aspect_map::value_type &a : aspects_){
 		cfg.add_child("aspect",a.second->to_config());
 	}
-	for(const goal_ptr &g : goals_) {
+	for(const goal_ptr &g : goals_){
 		cfg.add_child("goal",g->to_config());
 	}
 	return cfg;
@@ -302,7 +302,7 @@ game_info& readwrite_context_impl::get_info_w(){
 
 void readonly_context_impl::diagnostic(const std::string& msg)
 {
-	if(game_config::debug) {
+	if(game_config::debug){
 		display::get_singleton()->set_diagnostic(msg);
 	}
 }
@@ -314,7 +314,7 @@ const team& readonly_context_impl::current_team() const
 
 void readonly_context_impl::log_message(const std::string& msg)
 {
-	if(game_config::debug) {
+	if(game_config::debug){
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
 			std::time(nullptr), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
@@ -334,30 +334,30 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 	) const
 {
 
-	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {
+	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it){
 		// If we are looking for the movement of enemies, then this unit must be an enemy unit.
 		// If we are looking for movement of our own units, it must be on our side.
 		// If we are assuming full movement, then it may be a unit on our side, or allied.
-		if ((enemy && current_team().is_enemy(un_it->side()) == false) ||
+		if((enemy && current_team().is_enemy(un_it->side()) == false) ||
 		    (!enemy && !assume_full_movement && un_it->side() != get_side()) ||
-		    (!enemy && assume_full_movement && current_team().is_enemy(un_it->side()))) {
+		    (!enemy && assume_full_movement && current_team().is_enemy(un_it->side()))){
 			continue;
 		}
 		// Discount incapacitated units
-		if (un_it->incapacitated() ||
-		    (!assume_full_movement && un_it->movement_left() == 0)) {
+		if(un_it->incapacitated() ||
+		    (!assume_full_movement && un_it->movement_left() == 0)){
 			continue;
 		}
 
 		// We can't see where invisible enemy units might move.
-		if (enemy && un_it->invisible(un_it->get_location()) && !see_all) {
+		if(enemy && un_it->invisible(un_it->get_location()) && !see_all){
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
 		const unit_movement_resetter move_resetter(*un_it,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same map location.
-		if (un_it->movement_left() > 0) {
+		if(un_it->movement_left() > 0){
 			std::pair<map_location,map_location> trivial_mv(un_it->get_location(), un_it->get_location());
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
@@ -379,28 +379,28 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
 	static const config only_not_tag("not");
-	if(remove_destinations && remove_destinations->to_config() == only_not_tag) {
+	if(remove_destinations && remove_destinations->to_config() == only_not_tag){
 		remove_destinations = nullptr;
 	}
 
-	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
+	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m){
 		for(const pathfind::paths::step &dest : m->second.destinations)
 		{
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
 
-			if(remove_destinations != nullptr && remove_destinations->match(dst)) {
+			if(remove_destinations != nullptr && remove_destinations->match(dst)){
 				continue;
 			}
 
 			bool friend_owns = false;
 
 			// Don't take friendly villages
-			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(const team& t : resources::gameboard->teams()) {
-					if(t.owns_village(dst)) {
+			if(!enemy && resources::gameboard->map().is_village(dst)){
+				for(const team& t : resources::gameboard->teams()){
+					if(t.owns_village(dst)){
 						int side = t.side();
-						if(get_side() != side && !current_team().is_enemy(side)) {
+						if(get_side() != side && !current_team().is_enemy(side)){
 							friend_owns = true;
 						}
 
@@ -409,11 +409,11 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 				}
 			}
 
-			if(friend_owns) {
+			if(friend_owns){
 				continue;
 			}
 
-			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
+			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end())){
 				srcdst.emplace(src, dst);
 				dstsrc.emplace(dst, src);
 			}
@@ -421,12 +421,12 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 	}
 }
 
-void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
+void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects)
 {
-	for(aspect_ptr a : aspects) {
+	for(aspect_ptr a : aspects){
 		const std::string id = a->get_id();
 		known_aspect_map::iterator i = known_aspects_.find(id);
-		if (i != known_aspects_.end()) {
+		if(i != known_aspects_.end()){
 			i->second->set(a);
 		} else {
 			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
@@ -437,7 +437,7 @@ void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 void readonly_context_impl::add_facet(const std::string &id, const config &cfg) const
 {
 	known_aspect_map::const_iterator i = known_aspects_.find(id);
-	if (i != known_aspects_.end()) {
+	if(i != known_aspects_.end()){
 		i->second->add_facet(cfg);
 	} else {
 		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
@@ -448,7 +448,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
 	const unit_map::const_iterator itor = resources::gameboard->units().find(loc);
-	if(itor == resources::gameboard->units().end()) {
+	if(itor == resources::gameboard->units().end()){
 		static defensive_position pos;
 		pos.chance_to_hit = 0;
 		pos.vulnerability = pos.support = 0;
@@ -458,7 +458,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	const std::map<map_location,defensive_position>::const_iterator position =
 		defensive_position_cache_.find(loc);
 
-	if(position != defensive_position_cache_.end()) {
+	if(position != defensive_position_cache_.end()){
 		return position->second;
 	}
 
@@ -469,16 +469,16 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 
 	typedef move_map::const_iterator Itor;
 	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
-	for(Itor i = itors.first; i != itors.second; ++i) {
+	for(Itor i = itors.first; i != itors.second; ++i){
 		const int defense = itor->defense_modifier(resources::gameboard->map().get_terrain(i->second));
-		if(defense > pos.chance_to_hit) {
+		if(defense > pos.chance_to_hit){
 			continue;
 		}
 
 		const double vulnerability = power_projection(i->second,enemy_dstsrc);
 		const double support = power_projection(i->second,dstsrc);
 
-		if(defense < pos.chance_to_hit || support - vulnerability > pos.support - pos.vulnerability) {
+		if(defense < pos.chance_to_hit || support - vulnerability > pos.support - pos.vulnerability){
 			pos.loc = i->second;
 			pos.chance_to_hit = defense;
 			pos.vulnerability = vulnerability;
@@ -497,7 +497,7 @@ std::map<map_location,defensive_position>& readonly_context_impl::defensive_posi
 
 const unit_advancements_aspect& readonly_context_impl::get_advancements() const
 {
-	if (advancements_) {
+	if(advancements_){
 		return advancements_->get();
 	}
 
@@ -507,7 +507,7 @@ const unit_advancements_aspect& readonly_context_impl::get_advancements() const
 
 double readonly_context_impl::get_aggression() const
 {
-	if (aggression_) {
+	if(aggression_){
 		return aggression_->get();
 	}
 	return 0;
@@ -515,7 +515,7 @@ double readonly_context_impl::get_aggression() const
 
 bool readonly_context_impl::get_allow_ally_villages() const
 {
-	if (allow_ally_villages_) {
+	if(allow_ally_villages_){
 		return allow_ally_villages_->get();
 	}
 	return false;
@@ -533,7 +533,7 @@ aspect_map& readonly_context_impl::get_aspects()
 
 const attacks_vector& readonly_context_impl::get_attacks() const
 {
-	if (attacks_) {
+	if(attacks_){
 		return attacks_->get();
 	}
 	static attacks_vector av;
@@ -542,7 +542,7 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 
 const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 {
-	if (attacks_) {
+	if(attacks_){
 		return attacks_->get_variant();
 	}
 	static wfl::variant v;
@@ -551,7 +551,7 @@ const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 
 const terrain_filter& readonly_context_impl::get_avoid() const
 {
-	if (avoid_) {
+	if(avoid_){
 		return avoid_->get();
 	}
 	config cfg;
@@ -562,7 +562,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 
 double readonly_context_impl::get_caution() const
 {
-	if (caution_) {
+	if(caution_){
 		return caution_->get();
 	}
 	return 0;
@@ -570,7 +570,7 @@ double readonly_context_impl::get_caution() const
 
 const move_map& readonly_context_impl::get_dstsrc() const
 {
-	if (!move_maps_valid_) {
+	if(!move_maps_valid_){
 		recalculate_move_maps();
 	}
 	return dstsrc_;
@@ -578,7 +578,7 @@ const move_map& readonly_context_impl::get_dstsrc() const
 
 const move_map& readonly_context_impl::get_enemy_dstsrc() const
 {
-	if (!move_maps_enemy_valid_) {
+	if(!move_maps_enemy_valid_){
 		recalculate_move_maps_enemy();
 	}
 	return enemy_dstsrc_;
@@ -586,7 +586,7 @@ const move_map& readonly_context_impl::get_enemy_dstsrc() const
 
 const moves_map& readonly_context_impl::get_enemy_possible_moves() const
 {
-	if (!move_maps_enemy_valid_) {
+	if(!move_maps_enemy_valid_){
 		recalculate_move_maps_enemy();
 	}
 	return enemy_possible_moves_;
@@ -594,7 +594,7 @@ const moves_map& readonly_context_impl::get_enemy_possible_moves() const
 
 const move_map& readonly_context_impl::get_enemy_srcdst() const
 {
-	if (!move_maps_enemy_valid_) {
+	if(!move_maps_enemy_valid_){
 		recalculate_move_maps_enemy();
 	}
 	return enemy_srcdst_;
@@ -603,21 +603,21 @@ const move_map& readonly_context_impl::get_enemy_srcdst() const
 engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 {
 	std::string engine_name = cfg["engine"];
-	if (engine_name.empty()) {
+	if(engine_name.empty()){
 		engine_name="cpp";//default engine
 	}
 
 	std::vector<engine_ptr>::iterator en = engines_.begin();
-	while (en!=engines_.end() && ((*en)->get_name()!=engine_name) && ((*en)->get_id()!=engine_name)) {
+	while(en!=engines_.end() && ((*en)->get_name()!=engine_name) && ((*en)->get_id()!=engine_name)){
 		++en;
 	}
 
-	if (en != engines_.end()){
+	if(en != engines_.end()){
 		return *en;
 	}
 
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
-	if (eng == engine_factory::get_list().end()){
+	if(eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
 			engine_name << ']';
 		DBG_AI << "config snippet contains: " << std::endl << cfg;
@@ -625,7 +625,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	}
 
 	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
-	if (!new_engine) {
+	if(!new_engine){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
 			engine_name << ']';
 		DBG_AI << "config snippet contains: " << std::endl << cfg;
@@ -647,7 +647,7 @@ std::vector<engine_ptr>& readonly_context_impl::get_engines()
 
 std::string readonly_context_impl::get_grouping() const
 {
-	if (grouping_) {
+	if(grouping_){
 		return grouping_->get();
 	}
 	return std::string();
@@ -665,7 +665,7 @@ std::vector<goal_ptr>& readonly_context_impl::get_goals()
 
 double readonly_context_impl::get_leader_aggression() const
 {
-	if (leader_aggression_) {
+	if(leader_aggression_){
 		return leader_aggression_->get();
 	}
 	return 0;
@@ -673,7 +673,7 @@ double readonly_context_impl::get_leader_aggression() const
 
 config readonly_context_impl::get_leader_goal() const
 {
-	if (leader_goal_) {
+	if(leader_goal_){
 		return leader_goal_->get();
 	}
 	return config();
@@ -681,7 +681,7 @@ config readonly_context_impl::get_leader_goal() const
 
 utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
 {
-	if (leader_ignores_keep_) {
+	if(leader_ignores_keep_){
 		return leader_ignores_keep_->get();
 	}
 	return {};
@@ -689,7 +689,7 @@ utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader
 
 double readonly_context_impl::get_leader_value() const
 {
-	if (leader_value_) {
+	if(leader_value_){
 		return leader_value_->get();
 	}
 	return 0;
@@ -697,7 +697,7 @@ double readonly_context_impl::get_leader_value() const
 
 utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
 {
-	if (passive_leader_) {
+	if(passive_leader_){
 		return passive_leader_->get();
 	}
 	return {};
@@ -705,7 +705,7 @@ utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passiv
 
 utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
 {
-	if (passive_leader_shares_keep_) {
+	if(passive_leader_shares_keep_){
 		return passive_leader_shares_keep_->get();
 	}
 	return {};
@@ -713,7 +713,7 @@ utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passiv
 
 const moves_map& readonly_context_impl::get_possible_moves() const
 {
-	if (!move_maps_valid_) {
+	if(!move_maps_valid_){
 		recalculate_move_maps();
 	}
 	return possible_moves_;
@@ -721,7 +721,7 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 
 double readonly_context_impl::get_recruitment_diversity() const
 {
-	if (recruitment_diversity_) {
+	if(recruitment_diversity_){
 		return recruitment_diversity_->get();
 	}
 	return 0.;
@@ -729,7 +729,7 @@ double readonly_context_impl::get_recruitment_diversity() const
 
 const config readonly_context_impl::get_recruitment_instructions() const
 {
-	if (recruitment_instructions_) {
+	if(recruitment_instructions_){
 		return recruitment_instructions_->get();
 	}
 	return config();
@@ -737,7 +737,7 @@ const config readonly_context_impl::get_recruitment_instructions() const
 
 const std::vector<std::string> readonly_context_impl::get_recruitment_more() const
 {
-	if (recruitment_more_) {
+	if(recruitment_more_){
 		return recruitment_more_->get();
 	}
 	return std::vector<std::string>();
@@ -745,7 +745,7 @@ const std::vector<std::string> readonly_context_impl::get_recruitment_more() con
 
 const std::vector<std::string> readonly_context_impl::get_recruitment_pattern() const
 {
-	if (recruitment_pattern_) {
+	if(recruitment_pattern_){
 		return recruitment_pattern_->get();
 	}
 	return std::vector<std::string>();
@@ -753,7 +753,7 @@ const std::vector<std::string> readonly_context_impl::get_recruitment_pattern() 
 
 int readonly_context_impl::get_recruitment_randomness() const
 {
-	if (recruitment_randomness_) {
+	if(recruitment_randomness_){
 		return recruitment_randomness_->get();
 	}
 	return 0;
@@ -761,7 +761,7 @@ int readonly_context_impl::get_recruitment_randomness() const
 
 const config readonly_context_impl::get_recruitment_save_gold() const
 {
-	if (recruitment_save_gold_) {
+	if(recruitment_save_gold_){
 		return recruitment_save_gold_->get();
 	}
 	return config();
@@ -769,7 +769,7 @@ const config readonly_context_impl::get_recruitment_save_gold() const
 
 double readonly_context_impl::get_retreat_enemy_weight() const
 {
-	if (retreat_enemy_weight_) {
+	if(retreat_enemy_weight_){
 		return retreat_enemy_weight_->get();
 	}
 	return 1;
@@ -777,7 +777,7 @@ double readonly_context_impl::get_retreat_enemy_weight() const
 
 double readonly_context_impl::get_retreat_factor() const
 {
-	if (retreat_factor_) {
+	if(retreat_factor_){
 		return retreat_factor_->get();
 	}
 	return 1;
@@ -785,7 +785,7 @@ double readonly_context_impl::get_retreat_factor() const
 
 double readonly_context_impl::get_scout_village_targeting() const
 {
-	if (scout_village_targeting_) {
+	if(scout_village_targeting_){
 		return scout_village_targeting_->get();
 	}
 	return 1;
@@ -793,7 +793,7 @@ double readonly_context_impl::get_scout_village_targeting() const
 
 bool readonly_context_impl::get_simple_targeting() const
 {
-	if (simple_targeting_) {
+	if(simple_targeting_){
 		return simple_targeting_->get();
 	}
 	return false;
@@ -801,7 +801,7 @@ bool readonly_context_impl::get_simple_targeting() const
 
 const move_map& readonly_context_impl::get_srcdst() const
 {
-	if (!move_maps_valid_) {
+	if(!move_maps_valid_){
 		recalculate_move_maps();
 	}
 	return srcdst_;
@@ -809,7 +809,7 @@ const move_map& readonly_context_impl::get_srcdst() const
 
 bool readonly_context_impl::get_support_villages() const
 {
-	if (support_villages_) {
+	if(support_villages_){
 		return support_villages_->get();
 	}
 	return false;
@@ -817,7 +817,7 @@ bool readonly_context_impl::get_support_villages() const
 
 double readonly_context_impl::get_village_value() const
 {
-	if (village_value_) {
+	if(village_value_){
 		return village_value_->get();
 	}
 	return 0;
@@ -825,7 +825,7 @@ double readonly_context_impl::get_village_value() const
 
 int readonly_context_impl::get_villages_per_scout() const
 {
-	if (villages_per_scout_) {
+	if(villages_per_scout_){
 		return villages_per_scout_->get();
 	}
 	return 0;
@@ -909,15 +909,15 @@ void keeps_cache::init(const gamemap &map)
 
 const std::set<map_location>& keeps_cache::get()
 {
-	if(keeps_.empty()) {
+	if(keeps_.empty()){
 		// Generate the list of keeps:
 		// iterate over the entire map and find all keeps.
-		for(int x = 0; x != map_->w(); ++x) {
-			for(int y = 0; y != map_->h(); ++y) {
+		for(int x = 0; x != map_->w(); ++x){
+			for(int y = 0; y != map_->h(); ++y){
 				const map_location loc(x,y);
-				if(map_->is_keep(loc)) {
-					for(const map_location& adj : get_adjacent_tiles(loc)) {
-						if(map_->is_castle(adj)) {
+				if(map_->is_keep(loc)){
+					for(const map_location& adj : get_adjacent_tiles(loc)){
+						if(map_->is_castle(adj)){
 							keeps_.insert(loc);
 							break;
 						}
@@ -933,16 +933,16 @@ const std::set<map_location>& keeps_cache::get()
 bool readonly_context_impl::leader_can_reach_keep() const
 {
 	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
-	if(leader == resources::gameboard->units().end() || leader->incapacitated()) {
+	if(leader == resources::gameboard->units().end() || leader->incapacitated()){
 		return false;
 	}
 
 	const map_location &start_pos = nearest_keep(leader->get_location());
-	if(start_pos.valid() == false) {
+	if(start_pos.valid() == false){
 		return false;
 	}
 
-	if (leader->get_location() == start_pos) {
+	if(leader->get_location() == start_pos){
 		return true;
 	}
 
@@ -957,24 +957,24 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 	std::set<map_location> avoided_locations;
 	get_avoid().get_locations(avoided_locations);
 	const std::set<map_location>& keeps = this->keeps();
-	if(keeps.empty()) {
+	if(keeps.empty()){
 		static const map_location dummy;
 		return dummy;
 	}
 
 	const map_location* res = nullptr;
 	int closest = -1;
-	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
-		if (avoided_locations.find(*i)!=avoided_locations.end()) {
+	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i){
+		if(avoided_locations.find(*i)!=avoided_locations.end()){
 			continue;
 		}
 		const int distance = distance_between(*i,loc);
-		if(res == nullptr || distance < closest) {
+		if(res == nullptr || distance < closest){
 			closest = distance;
 			res = &*i;
 		}
 	}
-	if (res) {
+	if(res){
 		return *res;
 	} else {
 		return map_location::null_location();
@@ -996,16 +996,16 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	int res = 0;
 
 	bool changed = false;
-	for (int i = 0;; ++i) {
-		if (i == 6) {
-			if (!changed) break;
+	for(int i = 0;; ++i){
+		if(i == 6){
+			if(!changed) break;
 			// Loop once again, in case a unit found a better spot
 			// and freed the place for another unit.
 			changed = false;
 			i = 0;
 		}
 
-		if (map_.on_board(locs[i]) == false) {
+		if(map_.on_board(locs[i]) == false){
 			continue;
 		}
 
@@ -1021,11 +1021,11 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 		int best_rating = 0;
 		map_location best_unit;
 
-		for(Itor it = its.first; it != its.second; ++it) {
+		for(Itor it = its.first; it != its.second; ++it){
 			const unit_map::const_iterator u = units_.find(it->second);
 
 			// Unit might have been killed, and no longer exist
-			if(u == units_.end()) {
+			if(u == units_.end()){
 				continue;
 			}
 
@@ -1033,17 +1033,17 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 			// The unit might play on the next turn
 			int attack_turn = resources::tod_manager->turn();
-			if(un.side() < get_side()) {
+			if(un.side() < get_side()){
 				++attack_turn;
 			}
 			// Considering the unit location would be too slow, we only apply the bonus granted by the global ToD
 			const int lawful_bonus = resources::tod_manager->get_time_of_day(attack_turn).lawful_bonus;
 			int tod_modifier = 0;
-			if(un.alignment() == unit_alignments::type::lawful) {
+			if(un.alignment() == unit_alignments::type::lawful){
 				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_alignments::type::chaotic) {
+			} else if(un.alignment() == unit_alignments::type::chaotic){
 				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_alignments::type::liminal) {
+			} else if(un.alignment() == unit_alignments::type::liminal){
 				tod_modifier = -(std::abs(lawful_bonus));
 			}
 
@@ -1053,7 +1053,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
-				if (damage > most_damage) {
+				if(damage > most_damage){
 					most_damage = damage;
 				}
 			}
@@ -1062,25 +1062,25 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			int64_t defense = 100 - un.defense_modifier(terrain);
 			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
 			int rating = rating_64;
-			if(static_cast<int64_t>(rating) != rating_64) {
+			if(static_cast<int64_t>(rating) != rating_64){
 				WRN_AI << "overflow in ai attack calculation";
 			}
-			if(rating > best_rating) {
+			if(rating > best_rating){
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
-				if (pos == end_used || rating >= ratings[pos - beg_used]) {
+				if(pos == end_used || rating >= ratings[pos - beg_used]){
 					best_rating = rating;
 					best_unit = it->second;
 				}
 			}
 		}
 
-		if (!best_unit.valid()) continue;
+		if(!best_unit.valid()) continue;
 		map_location *pos = std::find(beg_used, end_used, best_unit);
 		int index = pos - beg_used;
-		if (index == num_used_locs)
+		if(index == num_used_locs)
 			++num_used_locs;
-		else if (best_rating == ratings[index])
+		else if(best_rating == ratings[index])
 			continue;
 		else {
 			// The unit was in another spot already, so remove its older rating
@@ -1102,13 +1102,13 @@ void readonly_context_impl::recalculate_move_maps() const
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
-	if (is_passive_leader("") && !is_passive_keep_sharing_leader("")) {
+	if(is_passive_leader("") && !is_passive_keep_sharing_leader("")){
 		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
-		if (i.valid()) {
+		if(i.valid()){
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
-			for(move_map::iterator it = dstsrc_.begin(); it != dstsrc_.end(); ) {
-				if(it->second == loc) {
+			for(move_map::iterator it = dstsrc_.begin(); it != dstsrc_.end();){
+				if(it->second == loc){
 					it = dstsrc_.erase(it);
 				} else {
 					++it;
@@ -1157,7 +1157,7 @@ void readonly_context_impl::set_src_dst_enemy_valid_lua()
 }
 
 const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const {
-	if (resources::gameboard->map().is_keep(leader_location)) {
+	if(resources::gameboard->map().is_keep(leader_location)){
 		return leader_location; //if leader already on keep, then return leader_location
 	}
 
@@ -1170,16 +1170,16 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	for(const pathfind::paths::step &dest : leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
-		if (keeps().find(loc)!=keeps().end()){
+		if(keeps().find(loc)!=keeps().end()){
 
 			const int move_left_at_loc = dest.move_left;
-			if (resources::gameboard->units().count(loc) == 0) {
-				if ((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
+			if(resources::gameboard->units().count(loc) == 0){
+				if((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;
 				}
 			} else {
-				if ((*best_occupied_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_occupied_keep)){
+				if((*best_occupied_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_occupied_keep)){
 					best_occupied_keep = &loc;
 				        move_left_at_best_occupied_keep = move_left_at_loc;
 				}
@@ -1187,11 +1187,11 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		}
 	}
 
-	if (*best_free_keep != map_location::null_location()){
+	if(*best_free_keep != map_location::null_location()){
 		return *best_free_keep; // if there is a free keep reachable during current turn, return it
 	}
 
-	if (*best_occupied_keep != map_location::null_location()){
+	if(*best_occupied_keep != map_location::null_location()){
 		return *best_occupied_keep; // if there is an occupied keep reachable during current turn, return it
 	}
 
@@ -1206,19 +1206,19 @@ readonly_context::unit_stats_cache_t & readonly_context_impl::unit_stats_cache()
 
 bool readonly_context_impl::is_active(const std::string &time_of_day, const std::string &turns) const
 {
-	if(time_of_day.empty() == false) {
+	if(time_of_day.empty() == false){
 		const std::vector<std::string>& times = utils::split(time_of_day);
-		if(std::count(times.begin(),times.end(),resources::tod_manager->get_time_of_day().id) == 0) {
+		if(std::count(times.begin(),times.end(),resources::tod_manager->get_time_of_day().id) == 0){
 			return false;
 		}
 	}
 
-	if(turns.empty() == false) {
+	if(turns.empty() == false){
 		int turn = resources::tod_manager->turn();
 		const std::vector<std::string>& turns_list = utils::split(turns);
-		for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; ++j ) {
+		for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; ++j){
 			const std::pair<int,int> range = utils::parse_range(*j);
-			if(turn >= range.first && turn <= range.second) {
+			if(turn >= range.first && turn <= range.second){
 					return true;
 			}
 		}
@@ -1231,8 +1231,8 @@ bool readonly_context_impl::applies_to_leader(
 	const utils::variant<bool, std::vector<std::string>>& aspect_value, const std::string& id) const
 {
 	return utils::visit(
-		[&id](const auto& v) {
-			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+		[&id](const auto& v){
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>){
 				return v;
 			} else {
 				return utils::contains(v, id);

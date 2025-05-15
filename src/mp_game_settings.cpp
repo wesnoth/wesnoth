@@ -90,8 +90,8 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, options(cfg.child_or_empty("options"))
 	, addons()
 {
-	for (const config & a : cfg.child_range("addon")) {
-		if (!a["id"].empty()) {
+	for(const config & a : cfg.child_range("addon")){
+		if(!a["id"].empty()){
 			addons.emplace(a["id"].str(), addon_version_info(a));
 		}
 	}
@@ -128,7 +128,7 @@ config mp_game_settings::to_config() const
 	cfg["savegame"] = saved_game_mode::get_string(saved_game);
 	cfg.add_child("options", options);
 
-	for(auto& p : addons) {
+	for(auto& p : addons){
 		config & c = cfg.add_child("addon");
 		p.second.write(c);
 		c["id"] = p.first;
@@ -144,28 +144,28 @@ mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
 	, required(cfg["required"].to_bool(false))
 	, content()
 {
-	if (!cfg["version"].empty()) {
+	if(!cfg["version"].empty()){
 		version = cfg["version"].str();
 	}
-	if (!cfg["min_version"].empty()) {
+	if(!cfg["min_version"].empty()){
 		min_version = cfg["min_version"].str();
 	}
-	for(const auto& child : cfg.child_range("content")) {
+	for(const auto& child : cfg.child_range("content")){
 		content.emplace_back(addon_content{ child["id"].str(), child["name"].str(), child["type"].str() });
 	}
 }
 
 void mp_game_settings::addon_version_info::write(config & cfg) const {
-	if (version) {
+	if(version){
 		cfg["version"] = *version;
 	}
-	if (min_version) {
+	if(min_version){
 		cfg["min_version"] = *min_version;
 	}
 
 	cfg["name"]	= name;
 	cfg["required"] = required;
-	for(const auto& item : content) {
+	for(const auto& item : content){
 		config& c = cfg.add_child("content");
 		c["id"] = item.id;
 		c["name"] = item.name;
@@ -173,8 +173,8 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	}
 }
 
-void mp_game_settings::update_addon_requirements(const config & cfg) {
-	if (cfg["id"].empty()) {
+void mp_game_settings::update_addon_requirements(const config & cfg){
+	if(cfg["id"].empty()){
 		WRN_NG << "Tried to add add-on metadata to a game, missing mandatory id field... skipping.\n" << cfg.debug();
 		return;
 	}
@@ -182,35 +182,35 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 	mp_game_settings::addon_version_info new_data(cfg);
 
 	// if the add-on doesn't require all players have it, then min_version is irrelevant
-	if(!new_data.required) {
+	if(!new_data.required){
 		new_data.min_version = {};
 	}
 	// else if it is required and no min_version was explicitly specified, default the min_version to the add-on's version
-	else if(new_data.required && !new_data.min_version) {
+	else if(new_data.required && !new_data.min_version){
 		new_data.min_version = new_data.version;
 	}
 
 	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
-	if (it != addons.end()) {
+	if(it != addons.end()){
 		addon_version_info& addon = it->second;
 
 		// an add-on can contain multiple types of content
 		// for example, an era and a scenario
-		for(const auto& item : new_data.content) {
+		for(const auto& item : new_data.content){
 			addon.content.emplace_back(addon_content{ item.id, item.name, item.type });
 		}
 
-		if(addon.version != new_data.version) {
+		if(addon.version != new_data.version){
 			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.";
 		}
 
-		if(new_data.required) {
+		if(new_data.required){
 			addon.required = true;
 
 			// if the existing entry for the add-on didn't have a min_version or had a lower min_version, update it to this min_version
-			if (!addon.min_version || *new_data.min_version > *addon.min_version) {
+			if(!addon.min_version || *new_data.min_version > *addon.min_version){
 				addon.min_version = new_data.min_version;
 			}
 		}

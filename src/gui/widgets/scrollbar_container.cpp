@@ -51,7 +51,7 @@ constexpr std::array button_down_names { "_end"sv, "_line_down"sv, "_half_page_d
 const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 {
 	static std::map<std::string, scrollbar_base::scroll_mode> lookup;
-	if(lookup.empty()) {
+	if(lookup.empty()){
 		lookup["_begin"] = scrollbar_base::BEGIN;
 		lookup["_line_up"] = scrollbar_base::ITEM_BACKWARDS;
 		lookup["_half_page_up"] = scrollbar_base::HALF_JUMP_BACKWARDS;
@@ -116,10 +116,10 @@ void scrollbar_container::layout_initialize(const bool full_initialization)
 	// Inherited.
 	container_base::layout_initialize(full_initialization);
 
-	if(full_initialization) {
+	if(full_initialization){
 		assert(vertical_scrollbar_grid_);
 
-		switch(vertical_scrollbar_mode_) {
+		switch(vertical_scrollbar_mode_){
 		case ALWAYS_VISIBLE:
 			vertical_scrollbar_grid_->set_visible(widget::visibility::visible);
 			break;
@@ -134,7 +134,7 @@ void scrollbar_container::layout_initialize(const bool full_initialization)
 
 		assert(horizontal_scrollbar_grid_);
 
-		switch(horizontal_scrollbar_mode_) {
+		switch(horizontal_scrollbar_mode_){
 		case ALWAYS_VISIBLE:
 			horizontal_scrollbar_grid_->set_visible(widget::visibility::visible);
 			break;
@@ -171,12 +171,12 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 
 	// Did we manage to achieve the wanted size?
 	point size = get_best_size();
-	if(static_cast<unsigned>(size.y) <= maximum_height) {
+	if(static_cast<unsigned>(size.y) <= maximum_height){
 		DBG_GUI_L << LOG_HEADER << " child honored request, height " << size.y << ".";
 		return;
 	}
 
-	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE) {
+	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE){
 		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.";
 		return;
 	}
@@ -190,14 +190,14 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	const point scrollbar_size = vertical_scrollbar_grid_->get_best_size();
 
 	// If showing the scrollbar increased the height, hide and abort.
-	if(resized && scrollbar_size.y > size.y) {
+	if(resized && scrollbar_size.y > size.y){
 		vertical_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
 				  << " increased the height to " << scrollbar_size.y << ".";
 		return;
 	}
 
-	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
+	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)){
 		size.y = maximum_height;
 	} else {
 		size.y = scrollbar_size.y;
@@ -208,7 +208,7 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	set_layout_size(size);
 	DBG_GUI_L << LOG_HEADER << " resize resulted in " << size.y << ".";
 
-	if(resized) {
+	if(resized){
 		DBG_GUI_L << LOG_HEADER << " resize modified the width, throw notification.";
 
 		throw layout_exception_width_modified();
@@ -219,7 +219,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 {
 	DBG_GUI_L << LOG_HEADER << " requested width " << maximum_width << ".";
 
-	if(static_cast<unsigned>(get_grid().get_best_size().x) > maximum_width) {
+	if(static_cast<unsigned>(get_grid().get_best_size().x) > maximum_width){
 		get_grid().request_reduce_width(maximum_width);
 	}
 
@@ -235,12 +235,12 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 
 	// Did we manage to achieve the wanted size?
 	point size = get_best_size();
-	if(static_cast<unsigned>(size.x) <= maximum_width) {
+	if(static_cast<unsigned>(size.x) <= maximum_width){
 		DBG_GUI_L << LOG_HEADER << " child honored request, width " << size.x << ".";
 		return;
 	}
 
-	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE) {
+	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE){
 		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.";
 		return;
 	}
@@ -256,19 +256,19 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	 * If the vertical bar is not invisible it's size needs to be added to the
 	 * minimum size.
 	 */
-	if(vertical_scrollbar_grid_->get_visible() != widget::visibility::invisible) {
+	if(vertical_scrollbar_grid_->get_visible() != widget::visibility::invisible){
 		scrollbar_size.x += vertical_scrollbar_grid_->get_best_size().x;
 	}
 
 	// If showing the scrollbar increased the width, hide and abort.
-	if(horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN && scrollbar_size.x > size.x) {
+	if(horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN && scrollbar_size.x > size.x){
 		horizontal_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
 				  << " increased the width to " << scrollbar_size.x << ".";
 		return;
 	}
 
-	if(maximum_width > static_cast<unsigned>(scrollbar_size.x)) {
+	if(maximum_width > static_cast<unsigned>(scrollbar_size.x)){
 		size.x = maximum_width;
 	} else {
 		size.x = scrollbar_size.x;
@@ -324,7 +324,7 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 {
 	assert(scrollbar_grid && scrollbar);
 
-	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE) {
+	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE){
 		scrollbar_grid->set_visible(widget::visibility::invisible);
 		return;
 	}
@@ -332,13 +332,13 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 	scrollbar->set_item_count(items);
 	scrollbar->set_visible_items(visible_items);
 
-	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
+	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE){
 		const bool scrollbar_needed = items > visible_items;
 		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
-	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
+	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN){
 		if(items <= visible_items && content_grid != nullptr
 				&& scrollbar_grid->get_visible() == widget::visibility::visible
-		) {
+		){
 			scrollbar_grid->set_visible(widget::visibility::invisible);
 			// Give newly freed space to the items.
 			content_grid->layout_initialize(false);
@@ -348,11 +348,11 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 static bool is_inserted_before(
 		unsigned insertion_pos, unsigned old_item_count, unsigned old_position, unsigned visible_items)
 {
-	if(old_position == 0) {
+	if(old_position == 0){
 		return false;
-	} else if(old_position + visible_items >= old_item_count) {
+	} else if(old_position + visible_items >= old_item_count){
 		return true;
-	} else if(insertion_pos <= old_position) {
+	} else if(insertion_pos <= old_position){
 		return true;
 	}
 
@@ -368,7 +368,7 @@ static void adjust_scrollbar_mode(grid* scrollbar_grid,
 		const unsigned visible_items)
 {
 	assert(scrollbar_grid && scrollbar);
-	if(items_before != scrollbar->get_item_count()) {
+	if(items_before != scrollbar->get_item_count()){
 		return set_scrollbar_mode(scrollbar_grid, scrollbar, scrollbar_mode, items_after, visible_items, nullptr);
 	}
 
@@ -379,7 +379,7 @@ static void adjust_scrollbar_mode(grid* scrollbar_grid,
 	const bool inserted_before_visible_area = is_inserted_before(
 			static_cast<unsigned>(insertion_pos), items_before, previous_item_position, visible_items);
 
-	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE) {
+	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE){
 		scrollbar_grid->set_visible(widget::visibility::invisible);
 		return;
 	}
@@ -392,7 +392,7 @@ static void adjust_scrollbar_mode(grid* scrollbar_grid,
 	// scrollbar->set_item_position(0);
 	scrollbar->set_visible_items(visible_items);
 
-	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
+	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE){
 		const bool scrollbar_needed = items_after > visible_items;
 		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
 	}
@@ -483,7 +483,7 @@ unsigned scrollbar_container::get_state() const
 widget* scrollbar_container::find_at(const point& coordinate, const bool must_be_active)
 {
 	widget* w = scrollbar_container_implementation::find_at<widget>(*this, coordinate, must_be_active);
-	if(w == nullptr) {
+	if(w == nullptr){
 		w = widget::find_at(coordinate, must_be_active);
 	}
 
@@ -493,7 +493,7 @@ widget* scrollbar_container::find_at(const point& coordinate, const bool must_be
 const widget* scrollbar_container::find_at(const point& coordinate, const bool must_be_active) const
 {
 	const widget* w = scrollbar_container_implementation::find_at<const widget>(*this, coordinate, must_be_active);
-	if(w == nullptr) {
+	if(w == nullptr){
 		w = widget::find_at(coordinate, must_be_active);
 	}
 
@@ -538,20 +538,20 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 
 	DBG_GUI_L << LOG_HEADER << " wanted size " << best_size << " available size " << size << ".";
 
-	if(size == point()) {
+	if(size == point()){
 		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.";
 		return false;
 	}
 
-	if(best_size.x <= size.x && best_size.y <= size.y) {
+	if(best_size.x <= size.x && best_size.y <= size.y){
 		const point content_size = content_grid_->get_size();
 
-		if(content_size.x > size.x || content_size.y > size.y) {
+		if(content_size.x > size.x || content_size.y > size.y){
 			DBG_GUI_L << LOG_HEADER << " will fit, only needs a resize.";
 			goto resize;
 		}
 
-		if(force_sizing) {
+		if(force_sizing){
 			DBG_GUI_L << LOG_HEADER << " fits, but resize forced.";
 			goto resize;
 		}
@@ -560,7 +560,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		return true;
 	}
 
-	if(best_size.x > size.x) {
+	if(best_size.x > size.x){
 		DBG_GUI_L << LOG_HEADER << " content too wide.";
 
 		if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE ||
@@ -568,7 +568,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN &&
 				horizontal_scrollbar_grid_->get_visible() == widget::visibility::invisible
 			)
-		) {
+		){
 			DBG_GUI_L << LOG_HEADER << " can't use horizontal scrollbar, request placement.";
 
 			event::message message;
@@ -577,7 +577,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		}
 	}
 
-	if(best_size.y > size.y) {
+	if(best_size.y > size.y){
 		DBG_GUI_L << LOG_HEADER << " content too high.";
 
 		if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE ||
@@ -585,7 +585,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN &&
 				vertical_scrollbar_grid_->get_visible() == widget::visibility::invisible
 			)
-		) {
+		){
 			DBG_GUI_L << LOG_HEADER << " can't use vertical scrollbar, request placement.";
 
 			event::message message;
@@ -609,7 +609,7 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 	DBG_GUI_L << LOG_HEADER << " wanted width modification " << width_modification << " wanted height modification "
 			  << height_modification << ".";
 
-	if(get_size() == point()) {
+	if(get_size() == point()){
 		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.";
 		return false;
 	}
@@ -617,7 +617,7 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 	window* window = get_window();
 	assert(window);
 
-	if(window->get_need_layout()) {
+	if(window->get_need_layout()){
 		DBG_GUI_L << LOG_HEADER << " window already needs a layout phase, bailing out.";
 		return false;
 	}
@@ -634,7 +634,7 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 	 * The subroutines set the new size of the scrollbar but don't
 	 * update the button status.
 	 */
-	if(result) {
+	if(result){
 		set_scrollbar_button_status();
 	}
 
@@ -644,18 +644,18 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 
 bool scrollbar_container::content_resize_width(const int width_modification, const int width_modification_pos)
 {
-	if(width_modification == 0) {
+	if(width_modification == 0){
 		return true;
 	}
 
 	const int new_width = content_grid_->get_width() + width_modification;
 	DBG_GUI_L << LOG_HEADER << " current width " << content_grid_->get_width() << " wanted width " << new_width;
 
-	if(new_width < 0) {
+	if(new_width < 0){
 		return false;
 	}
 
-	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
+	if(static_cast<unsigned>(new_width) <= content_->get_width()){
 		DBG_GUI_L << " width fits in container, test height.";
 
 		adjust_scrollbar_mode(horizontal_scrollbar_grid_, horizontal_scrollbar_, horizontal_scrollbar_mode_,
@@ -670,7 +670,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 			horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN &&
 			horizontal_scrollbar_grid_->get_visible() == widget::visibility::invisible
 		)
-	) {
+	){
 		DBG_GUI_L << " can't use horizontal scrollbar, ask window.";
 
 		window* window = get_window();
@@ -690,7 +690,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 
 bool scrollbar_container::content_resize_height(const int height_modification, const int height_modification_pos)
 {
-	if(height_modification == 0) {
+	if(height_modification == 0){
 		return true;
 	}
 
@@ -698,11 +698,11 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 
 	DBG_GUI_L << LOG_HEADER << " current height " << content_grid_->get_height() << " wanted height " << new_height;
 
-	if(new_height < 0) {
+	if(new_height < 0){
 		return false;
 	}
 
-	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
+	if(static_cast<unsigned>(new_height) <= content_->get_height()){
 		DBG_GUI_L << " height in container, resize allowed.";
 
 		adjust_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_, vertical_scrollbar_mode_,
@@ -716,7 +716,7 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 			vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN &&
 			vertical_scrollbar_grid_->get_visible() == widget::visibility::invisible
 		)
-	) {
+	){
 		DBG_GUI_L << " can't use vertical scrollbar, ask window.";
 
 		window* window = get_window();
@@ -755,11 +755,11 @@ void scrollbar_container::finalize_setup()
 		std::bind(&scrollbar_container::horizontal_scrollbar_moved, this));
 
 	/***** Setup the scrollbar buttons *****/
-	for(const auto& item : scroll_lookup()) {
+	for(const auto& item : scroll_lookup()){
 		// Vertical.
 		clickable_item* button = vertical_scrollbar_grid_->find_widget<clickable_item>(item.first, false, false);
 
-		if(button) {
+		if(button){
 			button->connect_click_handler(
 				std::bind(&scrollbar_container::scroll_vertical_scrollbar, this, item.second));
 		}
@@ -767,7 +767,7 @@ void scrollbar_container::finalize_setup()
 		// Horizontal.
 		button = horizontal_scrollbar_grid_->find_widget<clickable_item>(item.first, false, false);
 
-		if(button) {
+		if(button){
 			button->connect_click_handler(
 				std::bind(&scrollbar_container::scroll_horizontal_scrollbar, this, item.second));
 		}
@@ -789,14 +789,14 @@ void scrollbar_container::finalize_setup()
 
 void scrollbar_container::set_vertical_scrollbar_mode(const scrollbar_mode scrollbar_mode)
 {
-	if(vertical_scrollbar_mode_ != scrollbar_mode) {
+	if(vertical_scrollbar_mode_ != scrollbar_mode){
 		vertical_scrollbar_mode_ = scrollbar_mode;
 	}
 }
 
 void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scrollbar_mode)
 {
-	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
+	if(horizontal_scrollbar_mode_ != scrollbar_mode){
 		horizontal_scrollbar_mode_ = scrollbar_mode;
 	}
 }
@@ -842,7 +842,7 @@ void scrollbar_container::show_content_rect(const SDL_Rect& rect)
 	const int current_bottom = content_->get_y() + content_->get_height();
 
 	int distance = wanted_bottom - current_bottom;
-	if(distance > 0) {
+	if(distance > 0){
 		vertical_scrollbar_->set_item_position(vertical_scrollbar_->get_item_position() + distance);
 	}
 
@@ -851,17 +851,17 @@ void scrollbar_container::show_content_rect(const SDL_Rect& rect)
 	const int current_right = content_->get_x() + content_->get_width();
 
 	distance = wanted_right - current_right;
-	if(distance > 0) {
+	if(distance > 0){
 		horizontal_scrollbar_->set_item_position(horizontal_scrollbar_->get_item_position() + distance);
 	}
 
 	// top.
-	if(top_position < static_cast<int>(vertical_scrollbar_->get_item_position())) {
+	if(top_position < static_cast<int>(vertical_scrollbar_->get_item_position())){
 		vertical_scrollbar_->set_item_position(top_position);
 	}
 
 	// left.
-	if(left_position < static_cast<int>(horizontal_scrollbar_->get_item_position())) {
+	if(left_position < static_cast<int>(horizontal_scrollbar_->get_item_position())){
 		horizontal_scrollbar_->set_item_position(left_position);
 	}
 
@@ -871,21 +871,21 @@ void scrollbar_container::show_content_rect(const SDL_Rect& rect)
 
 void scrollbar_container::set_scrollbar_button_status()
 {
-	if(true) { /** @todo scrollbar visibility. */
+	if(true){ /** @todo scrollbar visibility. */
 		/***** set scroll up button status *****/
-		for(const auto& name : button_up_names) {
+		for(const auto& name : button_up_names){
 			styled_widget* button = vertical_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
-			if(button) {
+			if(button){
 				button->set_active(!vertical_scrollbar_->at_begin());
 			}
 		}
 
 		/***** set scroll down status *****/
-		for(const auto& name : button_down_names) {
+		for(const auto& name : button_down_names){
 			styled_widget* button = vertical_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
-			if(button) {
+			if(button){
 				button->set_active(!vertical_scrollbar_->at_end());
 			}
 		}
@@ -894,21 +894,21 @@ void scrollbar_container::set_scrollbar_button_status()
 		vertical_scrollbar_->set_active(!vertical_scrollbar_->all_items_visible());
 	}
 
-	if(true) { /** @todo scrollbar visibility. */
+	if(true){ /** @todo scrollbar visibility. */
 		/***** Set scroll left button status *****/
-		for(const auto& name : button_up_names) {
+		for(const auto& name : button_up_names){
 			styled_widget* button = horizontal_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
-			if(button) {
+			if(button){
 				button->set_active(!horizontal_scrollbar_->at_begin());
 			}
 		}
 
 		/***** Set scroll right button status *****/
-		for(const auto& name : button_down_names) {
+		for(const auto& name : button_down_names){
 			styled_widget* button = horizontal_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
-			if(button) {
+			if(button){
 				button->set_active(!horizontal_scrollbar_->at_end());
 			}
 		}
@@ -1117,7 +1117,7 @@ void scrollbar_container::signal_handler_sdl_key_down(
 {
 	DBG_GUI_E << LOG_HEADER << event << ".";
 
-	switch(key) {
+	switch(key){
 	case SDLK_HOME:
 		handle_key_home(modifier, handled);
 		break;
@@ -1161,7 +1161,7 @@ void scrollbar_container::signal_handler_sdl_wheel_up(const event::ui_event even
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible){
 		vertical_scrollbar_->scroll(scrollbar_base::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -1174,7 +1174,7 @@ void scrollbar_container::signal_handler_sdl_wheel_down(const event::ui_event ev
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible){
 		vertical_scrollbar_->scroll(scrollbar_base::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;
@@ -1187,7 +1187,7 @@ void scrollbar_container::signal_handler_sdl_wheel_left(const event::ui_event ev
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
-	if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+	if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible){
 		horizontal_scrollbar_->scroll(scrollbar_base::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -1200,7 +1200,7 @@ void scrollbar_container::signal_handler_sdl_wheel_right(const event::ui_event e
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
-	if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+	if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible){
 		horizontal_scrollbar_->scroll(scrollbar_base::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;
@@ -1218,23 +1218,23 @@ scrollbar_container::signal_handler_sdl_touch_motion(const event::ui_event event
 
 	bool is_scrollbar_moved = false;
 
-	if (horizontal_scrollbar_grid_ && horizontal_scrollbar_) {
+	if(horizontal_scrollbar_grid_ && horizontal_scrollbar_){
 
-		if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+		if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible){
 			horizontal_scrollbar_->scroll_by(-distance.x);
 			is_scrollbar_moved = true;
 		}
 	}
 
-	if (vertical_scrollbar_grid_ && vertical_scrollbar_) {
+	if(vertical_scrollbar_grid_ && vertical_scrollbar_){
 
-		if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+		if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible){
 			vertical_scrollbar_->scroll_by(-distance.y);
 			is_scrollbar_moved = true;
 		}
 	}
 
-	if (is_scrollbar_moved) {
+	if(is_scrollbar_moved){
 		scrollbar_moved();
 		handled = true;
 	}

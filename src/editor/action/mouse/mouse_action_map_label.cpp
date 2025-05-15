@@ -46,11 +46,11 @@ std::unique_ptr<editor_action> mouse_action_map_label::drag_left(editor_display&
 
 std::unique_ptr<editor_action> mouse_action_map_label::up_left(editor_display& disp, int x, int y)
 {
-	if (!click_) return nullptr;
+	if(!click_) return nullptr;
 	click_ = false;
 
 	const map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex)) {
+	if(!disp.get_map().on_board(hex)){
 		return nullptr;
 	}
 
@@ -66,7 +66,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_left(editor_display& d
 	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
 	std::unique_ptr<editor_action> a;
-	if(d.show()) {
+	if(d.show()){
 		a = std::make_unique<editor_action_label>(hex, label, team_name, color
 				, visible_fog, visible_shroud, immutable, category);
 		update_brush_highlights(disp, hex);
@@ -85,7 +85,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_right(editor_display& 
 
 	//TODO
 //	const terrain_label* clicked_label = disp.get_map().get_map_labels().get_label(hex);
-	//if (!clicked_label)
+	//if(!clicked_label)
 	//	return nullptr;
 
 	return std::make_unique<editor_action_label_delete>(hex);
@@ -93,10 +93,10 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_right(editor_display& 
 
 std::unique_ptr<editor_action> mouse_action_map_label::drag_end_left(editor_display& disp, int x, int y)
 {
-	if (click_) return nullptr;
+	if(click_) return nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex))
+	if(!disp.get_map().on_board(hex))
 		return nullptr;
 
 	const terrain_label* dragged_label = disp
@@ -106,7 +106,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::drag_end_left(editor_disp
 		.get_label(clicked_on_);
 
 	// Return nullptr if the dragged label doesn't exist
-	if (!dragged_label) {
+	if(!dragged_label){
 		return nullptr;
 	}
 

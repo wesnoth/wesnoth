@@ -352,18 +352,18 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
 		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
 		int count = 0;
-		for([[maybe_unused]] const config& child : variable_access_const("tag1", nonempty).as_array()) {
+		for([[maybe_unused]] const config& child : variable_access_const("tag1", nonempty).as_array()){
 			++count;
 		}
 		BOOST_CHECK_EQUAL(count, 3);
 		count = 0;
-		for([[maybe_unused]] const config& child : variable_access_const("tag1.tag2", nonempty).as_array()) {
+		for([[maybe_unused]] const config& child : variable_access_const("tag1.tag2", nonempty).as_array()){
 			++count;
 		}
 		BOOST_CHECK_EQUAL(count, 0);
 		count = 0;
 		// explicit indexes as range always return a one element range, whether they exist or not.
-		for([[maybe_unused]] const config& child : variable_access_const("tag1.tag2[5]", nonempty).as_array()) {
+		for([[maybe_unused]] const config& child : variable_access_const("tag1.tag2[5]", nonempty).as_array()){
 			++count;
 		}
 		BOOST_CHECK_EQUAL(count, 1);

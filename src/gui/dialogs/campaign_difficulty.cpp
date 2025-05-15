@@ -51,12 +51,12 @@ void campaign_difficulty::pre_show()
 
 	unsigned difficulty_count = 0;
 	const unsigned difficulty_max = difficulties_.child_count("difficulty");
-	for(const config& d : difficulties_.child_range("difficulty")) {
+	for(const config& d : difficulties_.child_range("difficulty")){
 		std::ostringstream ss;
 		ss << d["label"];
 
-		if(!d["description"].empty()) {
-			if (d["auto_markup"].to_bool(true) == false) {
+		if(!d["description"].empty()){
+			if(d["auto_markup"].to_bool(true) == false){
 				ss << "\n" << d["description"].str();
 			} else {
 				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, "(", d["description"], ")"));
@@ -73,19 +73,19 @@ void campaign_difficulty::pre_show()
 			}},
 		});
 
-		if(d["default"].to_bool(false)) {
+		if(d["default"].to_bool(false)){
 			list.select_last_row();
 		}
 
 		styled_widget& widget = grid.find_widget<styled_widget>("victory");
-		if(prefs::get().is_campaign_completed(campaign_id_, d["define"])) {
+		if(prefs::get().is_campaign_completed(campaign_id_, d["define"])){
 			// Use different laurels according to the difficulty level, following the
 			// pre-existing convention established in campaign_selection class.
 			// Assumes ascending order of difficulty and gold laurel is set first
 			// in case there is only one difficulty setting.
-			if(difficulty_count + 1 >= difficulty_max) {
+			if(difficulty_count + 1 >= difficulty_max){
 				widget.set_label(game_config::images::victory_laurel_hardest);
-			} else if(difficulty_count == 0) {
+			} else if(difficulty_count == 0){
 				widget.set_label(game_config::images::victory_laurel_easy);
 			} else {
 				widget.set_label(game_config::images::victory_laurel);
@@ -100,7 +100,7 @@ void campaign_difficulty::pre_show()
 
 void campaign_difficulty::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		listbox& list = find_widget<listbox>("listbox");
 		selected_difficulty_ = difficulties_.mandatory_child("difficulty", list.get_selected_row())["define"].str();
 	}

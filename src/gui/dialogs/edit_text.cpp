@@ -42,7 +42,7 @@ edit_text::edit_text(const std::string& title,
 
 void edit_text::pre_show()
 {
-	if(disallow_empty_) {
+	if(disallow_empty_){
 		text_box& text = find_widget<text_box>("text");
 		connect_signal_notify_modified(text, std::bind(&edit_text::on_text_change, this));
 		on_text_change();

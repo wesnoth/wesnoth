@@ -51,7 +51,7 @@ scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
 
 label* scroll_label::get_internal_label()
 {
-	if(content_grid()) {
+	if(content_grid()){
 		return dynamic_cast<label*>(content_grid()->find("_label", false));
 	}
 
@@ -63,11 +63,11 @@ void scroll_label::set_label(const t_string& lbl)
 	// Inherit.
 	styled_widget::set_label(lbl);
 
-	if(label* widget = get_internal_label()) {
+	if(label* widget = get_internal_label()){
 		widget->set_label(lbl);
 
 		bool resize_needed = !content_resize_request();
-		if(resize_needed && get_size() != point()) {
+		if(resize_needed && get_size() != point()){
 			place(get_origin(), get_size());
 		}
 	}
@@ -80,7 +80,7 @@ void scroll_label::set_text_alignment(const PangoAlignment text_alignment)
 
 	text_alignment_ = text_alignment;
 
-	if(label* widget = get_internal_label()) {
+	if(label* widget = get_internal_label()){
 		widget->set_text_alignment(text_alignment_);
 	}
 }
@@ -90,14 +90,14 @@ void scroll_label::set_use_markup(bool use_markup)
 	// Inherit.
 	styled_widget::set_use_markup(use_markup);
 
-	if(label* widget = get_internal_label()) {
+	if(label* widget = get_internal_label()){
 		widget->set_use_markup(use_markup);
 	}
 }
 
 void scroll_label::set_text_alpha(unsigned short alpha)
 {
-	if(label* widget = get_internal_label()) {
+	if(label* widget = get_internal_label()){
 		widget->set_text_alpha(alpha);
 	}
 }
@@ -106,7 +106,7 @@ void scroll_label::set_link_aware(bool l)
 {
 	link_aware_ = l;
 
-	if(label* widget = get_internal_label()) {
+	if(label* widget = get_internal_label()){
 		widget->set_link_aware(l);
 	}
 }

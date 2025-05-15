@@ -51,14 +51,14 @@ void actions::create_jamming_map(std::map<map_location, int> & jamming,
 	jamming.clear();
 
 	// Build the map.
-	for (const unit &u : resources::gameboard->units())
+	for(const unit &u : resources::gameboard->units())
 	{
-		if ( u.jamming() < 1  ||  !view_team.is_enemy(u.side()) )
+		if(u.jamming() < 1  ||  !view_team.is_enemy(u.side()))
 			continue;
 
 		pathfind::jamming_path jam_path(u, u.get_location());
-		for (const pathfind::paths::step& st : jam_path.destinations) {
-			if ( jamming[st.curr] < st.move_left )
+		for(const pathfind::paths::step& st : jam_path.destinations){
+			if(jamming[st.curr] < st.move_left)
 				jamming[st.curr] = st.move_left;
 		}
 	}
@@ -77,7 +77,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 {
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
-	if ( jamming == nullptr ) {
+	if(jamming == nullptr){
 		actions::create_jamming_map(local_jamming, resources::gameboard->get_team(viewer.side()));
 		jamming = &local_jamming;
 	}
@@ -123,7 +123,7 @@ void clearer_info::write(config & cfg) const
 	// (so a clearer_info can be constructed from a unit's config).
 	cfg["underlying_id"] = underlying_id;
 	cfg["vision"] = sight_range;
-	if ( slowed )
+	if(slowed)
 		cfg.add_child("status")["slowed"] = true;
 	costs->write(cfg, "vision_costs");
 }
@@ -173,7 +173,7 @@ shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(nullptr)
  */
 shroud_clearer::~shroud_clearer()
 {
-	if ( !sightings_.empty() ) {
+	if(!sightings_.empty()){
 		ERR_NG << sightings_.size() << " sighted events were ignored.";
 	}
 }
@@ -191,7 +191,7 @@ void shroud_clearer::calculate_jamming(const team * new_team)
 	jamming_.clear();
 	view_team_ = new_team;
 
-	if ( view_team_ == nullptr )
+	if(view_team_ == nullptr)
 		return;
 
 	// Build the map.
@@ -235,30 +235,30 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 
 	// Clear the border as well as the board, so that the half-hexes
 	// at the edge can also be cleared of fog/shroud.
-	if ( map.on_board_with_border(loc) ) {
+	if(map.on_board_with_border(loc)){
 		// Both functions should be executed so don't use || which uses short-cut evaluation.
 		// (This is different than the return value because shared vision does not apply here.)
 		bool clear_shroud = tm.clear_shroud(loc);
 		bool clear_fog = tm.clear_fog(loc);
-		if ( clear_shroud || clear_fog ) {
+		if(clear_shroud || clear_fog){
 			// If we are near a corner, the corner might also need to be cleared.
 			// This happens at the lower-left corner and at either the upper- or
 			// lower- right corner (depending on the width).
 
 			// Lower-left corner:
-			if ( loc.x == 0  &&  loc.y == map.h()-1 ) {
+			if(loc.x == 0  &&  loc.y == map.h()-1){
 				const map_location corner(-1, map.h());
 				tm.clear_shroud(corner);
 				tm.clear_fog(corner);
 			}
 			// Lower-right corner, odd width:
-			else if ( is_odd(map.w())  &&  loc.x == map.w()-1  &&  loc.y == map.h()-1 ) {
+			else if(is_odd(map.w())  &&  loc.x == map.w()-1  &&  loc.y == map.h()-1){
 				const map_location corner(map.w(), map.h());
 				tm.clear_shroud(corner);
 				tm.clear_fog(corner);
 			}
 			// Upper-right corner, even width:
-			else if ( is_even(map.w())  &&  loc.x == map.w()-1  &&  loc.y == 0) {
+			else if(is_even(map.w())  &&  loc.x == map.w()-1  &&  loc.y == 0){
 				const map_location corner(map.w(), -1);
 				tm.clear_shroud(corner);
 				tm.clear_fog(corner);
@@ -267,30 +267,30 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	}
 
 	// Possible screen invalidation.
-	if ( was_fogged ) {
+	if(was_fogged){
 		display::get_singleton()->invalidate(loc);
 		// Need to also invalidate adjacent hexes to get rid of the "fog edge" graphics.
-		for(const map_location& adj : get_adjacent_tiles(loc)) {
+		for(const map_location& adj : get_adjacent_tiles(loc)){
 			display::get_singleton()->invalidate(adj);
 		}
 	}
 
 	// Check for units?
-	if ( result  &&  check_units  &&  loc != event_non_loc ) {
+	if(result  &&  check_units  &&  loc != event_non_loc){
 		// Uncovered a unit?
 		unit_map::const_iterator sight_it = resources::gameboard->find_visible_unit(loc, tm);
-		if ( sight_it.valid() ) {
+		if(sight_it.valid()){
 			record_sighting(*sight_it, loc, viewer_id, view_loc);
 
 			// Track this?
-			if ( !sight_it->get_state(unit::STATE_PETRIFIED) ) {
-				if ( tm.is_enemy(sight_it->side()) ) {
+			if(!sight_it->get_state(unit::STATE_PETRIFIED)){
+				if(tm.is_enemy(sight_it->side())){
 					++enemy_count;
-					if ( spectator )
+					if(spectator)
 						spectator->add_seen_enemy(sight_it);
 				} else {
 					++friend_count;
-					if ( spectator )
+					if(spectator)
 						spectator->add_seen_friend(sight_it);
 				}
 			}
@@ -338,13 +338,13 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	std::size_t enemies=0, friends=0;
-	if ( enemy_count == nullptr )
+	if(enemy_count == nullptr)
 		enemy_count = &enemies;
-	if ( friend_count == nullptr )
+	if(friend_count == nullptr)
 		friend_count = &friends;
 
 	// Make sure the jamming map is up-to-date.
-	if ( view_team_ != &view_team ) {
+	if(view_team_ != &view_team){
 		calculate_jamming(&view_team);
 	}
 
@@ -352,17 +352,17 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
 
 	// Clear the fog.
-	for (const pathfind::paths::step &dest : sight.destinations) {
+	for(const pathfind::paths::step &dest : sight.destinations){
 		bool known = known_units  &&  known_units->count(dest.curr) != 0;
-		if ( clear_loc(view_team, dest.curr, view_loc, real_loc, viewer_id, !known,
-		               *enemy_count, *friend_count, spectator) )
+		if(clear_loc(view_team, dest.curr, view_loc, real_loc, viewer_id, !known,
+		               *enemy_count, *friend_count, spectator))
 			cleared_something = true;
 	}
 	//TODO guard with game_config option
-	for (const map_location &dest : sight.edges) {
+	for(const map_location &dest : sight.edges){
 		bool known = known_units  &&  known_units->count(dest) != 0;
-		if ( clear_loc(view_team, dest, view_loc, real_loc, viewer_id, !known,
-		               *enemy_count, *friend_count, spectator) )
+		if(clear_loc(view_team, dest, view_loc, real_loc, viewer_id, !known,
+		               *enemy_count, *friend_count, spectator))
 			cleared_something = true;
 	}
 
@@ -460,17 +460,17 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
 	team & viewing_team = resources::gameboard->get_team(viewer.side());
 
 	// Abort if there is nothing to clear.
-	if ( !viewing_team.fog_or_shroud() )
+	if(!viewing_team.fog_or_shroud())
 		return false;
-	if ( can_delay  &&  !viewing_team.auto_shroud_updates()  &&
-	     viewer.side() == resources::controller->current_side()  )
+	if(can_delay  &&  !viewing_team.auto_shroud_updates()  &&
+	     viewer.side() == resources::controller->current_side() )
 		return false;
 
-	if ( !clear_unit(view_loc, viewer, viewing_team, instant) )
+	if(!clear_unit(view_loc, viewer, viewing_team, instant))
 		// Nothing uncovered.
 		return false;
 
-	if ( invalidate )
+	if(invalidate)
 		invalidate_after_clear();
 
 	return true;
@@ -494,7 +494,7 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 	std::size_t enemies, friends;
 
 	// Abort if there is nothing to clear.
-	if ( !viewing_team.fog_or_shroud() )
+	if(!viewing_team.fog_or_shroud())
 		return false;
 
 	// Cache some values.
@@ -507,13 +507,13 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 
 	// Clear the adjacent hexes (will be seen even if vision is 0, and the
 	// graphics do not work so well for an isolated cleared hex).
-	for(const map_location& adj : get_adjacent_tiles(dest)) {
-		if(clear_loc(viewing_team, adj, dest, real_loc, viewer_id, true, enemies, friends)) {
+	for(const map_location& adj : get_adjacent_tiles(dest)){
+		if(clear_loc(viewing_team, adj, dest, real_loc, viewer_id, true, enemies, friends)){
 			cleared_something = true;
 		}
 	}
 
-	if ( cleared_something )
+	if(cleared_something)
 		invalidate_after_clear();
 
 	return cleared_something;
@@ -527,7 +527,7 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
  */
 void shroud_clearer::drop_events()
 {
-	if ( !sightings_.empty() ) {
+	if(!sightings_.empty()){
 		DBG_NG << sightings_.size() << " sighted events were dropped.";
 	}
 	sightings_.clear();
@@ -543,14 +543,14 @@ game_events::pump_result_t shroud_clearer::fire_events()
 	const unit_map & units = resources::gameboard->units();
 
 	// Possible/probable quick abort.
-	if ( sightings_.empty() )
+	if(sightings_.empty())
 		return game_events::pump_result_t();
 
 	// In case of exceptions, clear sightings_ before processing events.
 	std::vector<sight_data> sight_list;
 	sight_list.swap(sightings_);
 
-	for (const sight_data & event : sight_list) {
+	for(const sight_data & event : sight_list){
 		// Try to locate the sighting unit.
 		unit_map::const_iterator find_it = units.find(event.sighter_id);
 		const map_location & sight_loc =
@@ -590,8 +590,8 @@ void shroud_clearer::invalidate_after_clear()
 std::vector<int> get_sides_not_seeing(const unit & target)
 {
 	std::vector<int> not_seeing;
-	for(const team& t : resources::gameboard->teams()) {
-		if(!target.is_visible_to_team(t, false)) {
+	for(const team& t : resources::gameboard->teams()){
+		if(!target.is_visible_to_team(t, false)){
 			not_seeing.push_back(t.side());
 		}
 	}
@@ -629,31 +629,31 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
 	// Determine the teams that (probably) should get events.
 	boost::dynamic_bitset<> needs_event;
 	needs_event.resize(teams_size, cache == nullptr);
-	if ( cache != nullptr ) {
+	if(cache != nullptr){
 		// Flag just the sides in the cache as needing events.
-		for (int side : *cache)
+		for(int side : *cache)
 			needs_event[side-1] = true;
 	}
 	// Exclude the target's own team.
 	needs_event[target.side()-1] = false;
 	// Exclude those teams that cannot see the target.
-	for ( std::size_t i = 0; i != teams_size; ++i )
+	for(std::size_t i = 0; i != teams_size; ++i)
 		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], false);
 
 	// Cache "jamming".
 	std::vector< std::map<map_location, int>> jamming_cache(teams_size);
-	for ( std::size_t i = 0; i != teams_size; ++i )
-		if ( needs_event[i] )
+	for(std::size_t i = 0; i != teams_size; ++i)
+		if(needs_event[i])
 			create_jamming_map(jamming_cache[i], teams[i]);
 
 	// Look for units that can be used as the second unit in sighted events.
 	std::vector<const unit *> second_units(teams_size, nullptr);
 	std::vector<std::size_t> distances(teams_size, std::numeric_limits<unsigned>::max());
-	for (const unit & viewer : resources::gameboard->units()) {
+	for(const unit & viewer : resources::gameboard->units()){
 		const std::size_t index = viewer.side() - 1;
 		// Does viewer belong to a team for which we still need a unit?
-		if ( needs_event[index]  &&  distances[index] != 0 ) {
-			if ( can_see(viewer, target_loc, &jamming_cache[index]) ) {
+		if(needs_event[index]  &&  distances[index] != 0){
+			if(can_see(viewer, target_loc, &jamming_cache[index])){
 				// Definitely use viewer as the second unit.
 				second_units[index] = &viewer;
 				distances[index] = 0;
@@ -662,7 +662,7 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
 				// Consider viewer as a backup if it is close.
 				std::size_t viewer_distance =
 					distance_between(target_loc, viewer.get_location());
-				if ( viewer_distance < distances[index] ) {
+				if(viewer_distance < distances[index]){
 					second_units[index] = &viewer;
 					distances[index] = viewer_distance;
 				}
@@ -672,8 +672,8 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
 
 	// Raise events for the appropriate teams.
 	const game_events::entity_location target_entity(target);
-	for ( std::size_t i = 0; i != teams_size; ++i )
-		if ( second_units[i] != nullptr ) {
+	for(std::size_t i = 0; i != teams_size; ++i)
+		if(second_units[i] != nullptr){
 			resources::game_events->pump().raise(sighted_str, target_entity, game_events::entity_location(*second_units[i]));
 		}
 
@@ -698,15 +698,15 @@ void recalculate_fog(int side)
 {
 	team &tm = resources::gameboard->get_team(side);
 
-	if (!tm.uses_fog())
+	if(!tm.uses_fog())
 		return;
 
 	// Exclude currently seen units from sighted events.
 	std::set<map_location> visible_locs;
-	for (const unit &u : resources::gameboard->units()) {
+	for(const unit &u : resources::gameboard->units()){
 		const map_location & u_location = u.get_location();
 
-		if ( !tm.fogged(u_location) )
+		if(!tm.fogged(u_location))
 			visible_locs.insert(u_location);
 	}
 
@@ -716,9 +716,9 @@ void recalculate_fog(int side)
 	display::get_singleton()->invalidate_all();
 
 	shroud_clearer clearer;
-	for (const unit &u : resources::gameboard->units())
+	for(const unit &u : resources::gameboard->units())
 	{
-		if ( u.side() == side )
+		if(u.side() == side)
 			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
 	}
 	// Update the screen.
@@ -746,28 +746,28 @@ void recalculate_fog(int side)
 bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
 	team &tm = resources::gameboard->get_team(side);
-	if (!tm.uses_shroud() && !tm.uses_fog())
+	if(!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 
 	bool result = false;
 
 	shroud_clearer clearer;
-	for (const unit &u : resources::gameboard->units())
+	for(const unit &u : resources::gameboard->units())
 	{
-		if ( u.side() == side )
+		if(u.side() == side)
 			result |= clearer.clear_unit(u.get_location(), u, tm);
 	}
 	// Update the screen.
-	if ( result )
+	if(result)
 		clearer.invalidate_after_clear();
 
 	// Sighted events.
-	if ( fire_events )
+	if(fire_events)
 		clearer.fire_events();
 	else
 		clearer.drop_events();
 
-	if ( reset_fog ) {
+	if(reset_fog){
 		// Note: This will not reveal any new tiles, so result is not affected.
 		//       Also, we do not have to check fire_events at this point.
 		recalculate_fog(side);

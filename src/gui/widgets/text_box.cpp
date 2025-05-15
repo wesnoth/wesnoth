@@ -46,10 +46,10 @@ text_history text_history::get_history(const std::string& id,
 
 void text_history::push(const std::string& text)
 {
-	if(!enabled_) {
+	if(!enabled_){
 		return;
 	} else {
-		if(!text.empty() && (history_->empty() || text != history_->back())) {
+		if(!text.empty() && (history_->empty() || text != history_->back())){
 			history_->push_back(text);
 		}
 
@@ -60,15 +60,15 @@ void text_history::push(const std::string& text)
 std::string text_history::up(const std::string& text)
 {
 
-	if(!enabled_) {
+	if(!enabled_){
 		return "";
-	} else if(pos_ == history_->size()) {
+	} else if(pos_ == history_->size()){
 		unsigned curr = pos_;
 		push(text);
 		pos_ = curr;
 	}
 
-	if(pos_ != 0) {
+	if(pos_ != 0){
 		--pos_;
 	}
 
@@ -77,9 +77,9 @@ std::string text_history::up(const std::string& text)
 
 std::string text_history::down(const std::string& text)
 {
-	if(!enabled_) {
+	if(!enabled_){
 		return "";
-	} else if(pos_ == history_->size()) {
+	} else if(pos_ == history_->size()){
 		push(text);
 	} else {
 		pos_++;
@@ -90,7 +90,7 @@ std::string text_history::down(const std::string& text)
 
 std::string text_history::get_value() const
 {
-	if(!enabled_ || pos_ == history_->size()) {
+	if(!enabled_ || pos_ == history_->size()){
 		return "";
 	} else {
 		return history_->at(pos_);
@@ -154,8 +154,8 @@ void text_box::update_canvas()
 	set_maximum_length(max_input_length_);
 
 	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
-	if(!can_wrap()) {
-		if((start + length) > (get_length() / 2)) {
+	if(!can_wrap()){
+		if((start + length) > (get_length() / 2)){
 			ellipse_mode = PANGO_ELLIPSIZE_START;
 		} else {
 			ellipse_mode = PANGO_ELLIPSIZE_END;
@@ -166,9 +166,9 @@ void text_box::update_canvas()
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
-	if(length == 0) {
+	if(length == 0){
 		// No nothing.
-	} else if(length > 0) {
+	} else if(length > 0){
 		start_offset = get_cursor_position(start).x;
 		end_offset = get_cursor_position(start + length).x;
 	} else {
@@ -179,9 +179,9 @@ void text_box::update_canvas()
 	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
-	if(edit_length == 0) {
+	if(edit_length == 0){
 		// No nothing.
-	} else if(edit_length > 0) {
+	} else if(edit_length > 0){
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
 	} else {
@@ -222,7 +222,7 @@ void text_box::update_canvas()
 
 void text_box::delete_char(const bool before_cursor)
 {
-	if(before_cursor) {
+	if(before_cursor){
 		set_cursor(get_selection_start() - 1, false);
 	}
 
@@ -233,7 +233,7 @@ void text_box::delete_char(const bool before_cursor)
 
 void text_box::delete_selection()
 {
-	if(get_selection_length() == 0) {
+	if(get_selection_length() == 0){
 		return;
 	}
 
@@ -241,7 +241,7 @@ void text_box::delete_selection()
 	// This makes the rest of the algorithms easier.
 	int len = get_selection_length();
 	unsigned start = get_selection_start();
-	if(len < 0) {
+	if(len < 0){
 		len = -len;
 		start -= len;
 	}
@@ -258,13 +258,13 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 	// FIXME we don't test for overflow in width
 	if(mouse.x < static_cast<int>(text_x_offset_)
 	   || mouse.y < static_cast<int>(text_y_offset_)
-	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
+	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)){
 		return;
 	}
 
 	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
-	if(offset < 0) {
+	if(offset < 0){
 		return;
 	}
 
@@ -303,12 +303,12 @@ void text_box::update_offsets()
 
 bool text_box::history_up()
 {
-	if(!history_.get_enabled()) {
+	if(!history_.get_enabled()){
 		return false;
 	}
 
 	const std::string str = history_.up(get_value());
-	if(!str.empty()) {
+	if(!str.empty()){
 		set_value(str);
 	}
 	return true;
@@ -316,12 +316,12 @@ bool text_box::history_up()
 
 bool text_box::history_down()
 {
-	if(!history_.get_enabled()) {
+	if(!history_.get_enabled()){
 		return false;
 	}
 
 	const std::string str = history_.down(get_value());
-	if(!str.empty()) {
+	if(!str.empty()){
 		set_value(str);
 	}
 	return true;
@@ -329,8 +329,8 @@ bool text_box::history_down()
 
 void text_box::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
+	if(modifier & KMOD_CTRL){
+		if(!(modifier & KMOD_SHIFT)){
 			handled = history_up();
 		} else {
 			handled = history_down();
@@ -351,7 +351,7 @@ void text_box::signal_handler_mouse_motion(const event::ui_event event,
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".";
 
-	if(dragging_) {
+	if(dragging_){
 		handle_mouse_selection(coordinate, false);
 	}
 
@@ -434,7 +434,7 @@ std::unique_ptr<widget> builder_text_box::build() const
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
 
-	if(!history.empty()) {
+	if(!history.empty()){
 		widget->set_history(history);
 	}
 

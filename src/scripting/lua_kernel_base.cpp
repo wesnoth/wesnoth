@@ -98,10 +98,10 @@ static int impl_version_compare(lua_State* L)
 static int impl_version_get(lua_State* L)
 {
 	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
-	if(lua_isinteger(L, 2)) {
+	if(lua_isinteger(L, 2)){
 		int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
-		if(n >= 0 && size_t(n) < components.size()) {
+		if(n >= 0 && size_t(n) < components.size()){
 			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);
@@ -114,9 +114,9 @@ static int impl_version_get(lua_State* L)
 	return_int_attrib("revision", vers.revision_level());
 	return_bool_attrib("is_canonical", vers.is_canonical());
 	return_string_attrib("special", vers.special_version());
-	if(char sep = vers.special_version_separator()) {
+	if(char sep = vers.special_version_separator()){
 		return_string_attrib("sep", std::string(1, sep));
-	} else if(strcmp(m, "sep") == 0) {
+	} else if(strcmp(m, "sep") == 0){
 		lua_pushnil(L);
 		return 1;
 	}
@@ -156,20 +156,20 @@ static int impl_version_tostring(lua_State* L)
 static int intf_make_version(lua_State* L)
 {
 	// If passed a version, just return it unchanged
-	if(luaL_testudata(L, 1, Version)) {
+	if(luaL_testudata(L, 1, Version)){
 		lua_settop(L, 1);
 		return 1;
 	}
 	// If it's a string, parse it; otherwise build from components
 	// The components method only supports canonical versions
-	if(lua_type(L, 1) == LUA_TSTRING) {
+	if(lua_type(L, 1) == LUA_TSTRING){
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
 		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
 		std::string sep, special;
-		if(lua_type(L, -1) == LUA_TSTRING) {
+		if(lua_type(L, -1) == LUA_TSTRING){
 			special = lua_tostring(L, -1);
-			if(!special.empty() && std::isalpha(special[0])) {
+			if(!special.empty() && std::isalpha(special[0])){
 				sep.push_back('+');
 			} else {
 				sep.push_back(special[0]);
@@ -180,7 +180,7 @@ static int intf_make_version(lua_State* L)
 		}
 		new(L) version_info(major, minor, rev, sep[0], special);
 	}
-	if(luaL_newmetatable(L, Version)) {
+	if(luaL_newmetatable(L, Version)){
 		static const luaL_Reg metafuncs[] {
 			{ "__index", &impl_version_get },
 			{ "__dir", &impl_version_dir },
@@ -201,7 +201,7 @@ static int intf_make_version(lua_State* L)
 /**
  * Returns the current Wesnoth version
  */
-static int intf_current_version(lua_State* L) {
+static int intf_current_version(lua_State* L){
 	lua_settop(L, 0);
 	lua_push(L, game_config::wesnoth_version.str());
 	intf_make_version(L);
@@ -218,16 +218,16 @@ int lua_kernel_base::intf_print(lua_State* L)
 	std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
-	for (std::size_t i = 1; i <= nargs; ++i) {
+	for(std::size_t i = 1; i <= nargs; ++i){
 		lua_pushvalue(L, -1); // function to call: "tostring"
 		lua_pushvalue(L, i); // value to pass through tostring() before printing
 		lua_call(L, 1, 1);
 		const char * str = lua_tostring(L, -1);
-		if (!str) {
+		if(!str){
 			LOG_LUA << "'tostring' must return a value to 'print'";
 			str = "";
 		}
-		if (i > 1) {
+		if(i > 1){
 			cmd_log_ << "\t"; //separate multiple args with tab character
 		}
 		cmd_log_ << str;
@@ -242,12 +242,12 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
-static void impl_warn(void* p, const char* msg, int tocont) {
+static void impl_warn(void* p, const char* msg, int tocont){
 	static const char*const prefix = "Warning:\n  ";
 	static std::ostringstream warning(prefix);
 	warning.seekp(0, std::ios::end);
 	warning << msg << ' ';
-	if(!tocont) {
+	if(!tocont){
 		auto L = reinterpret_cast<lua_State*>(p);
 		luaW_getglobal(L, "debug", "traceback");
 		lua_push(L, warning.str());
@@ -259,7 +259,7 @@ static void impl_warn(void* p, const char* msg, int tocont) {
 	}
 }
 
-void lua_kernel_base::add_log_to_console(const std::string& msg) {
+void lua_kernel_base::add_log_to_console(const std::string& msg){
 	cmd_log_ << msg << "\n";
 	DBG_LUA << "'" << msg << "'";
 }
@@ -275,12 +275,12 @@ static int intf_load(lua_State* L)
 	std::string mode = luaL_optstring(L, 3, "t");
 	bool override_env = !lua_isnone(L, 4);
 
-	if(mode != "t") {
+	if(mode != "t"){
 		return luaL_argerror(L, 3, "binary chunks are not allowed for security reasons");
 	}
 
 	int result = luaL_loadbufferx(L, chunk.data(), chunk.length(), name, "t");
-	if(result != LUA_OK) {
+	if(result != LUA_OK){
 		lua_pushnil(L);
 		// Move the nil as the first return value, like Lua's own load() does.
 		lua_insert(L, -2);
@@ -288,12 +288,12 @@ static int intf_load(lua_State* L)
 		return 2;
 	}
 
-	if(override_env) {
+	if(override_env){
 		// Copy "env" to the top of the stack.
 		lua_pushvalue(L, 4);
 		// Set "env" as the first upvalue.
 		const char* upvalue_name = lua_setupvalue(L, -2, 1);
-		if(upvalue_name == nullptr) {
+		if(upvalue_name == nullptr){
 			// lua_setupvalue() didn't remove the copy of "env" from the stack, so we need to do it ourselves.
 			lua_pop(L, 1);
 		}
@@ -321,7 +321,7 @@ static int intf_pcall(lua_State *L)
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
-	if (cmd_log_.external_log_) {
+	if(cmd_log_.external_log_){
 		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
 		log_error(message.c_str());
 		cmd_log_ << message << "\n";
@@ -350,9 +350,9 @@ static int intf_name_generator(lua_State *L)
 	std::string type = luaL_checkstring(L, 1);
 	name_generator* gen = nullptr;
 	try {
-		if(type == "markov" || type == "markov_chain") {
+		if(type == "markov" || type == "markov_chain"){
 			std::vector<std::string> input;
-			if(lua_istable(L, 2)) {
+			if(lua_istable(L, 2)){
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
 				input = utils::parenthetical_split(luaW_checktstring(L, 2).str(), ',');
@@ -362,20 +362,20 @@ static int intf_name_generator(lua_State *L)
 			gen = new(L) markov_generator(input, chain_sz, max_len);
 			// Ensure the pointer didn't change when cast
 			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
-		} else if(type == "context_free" || type == "cfg" || type == "CFG") {
-			if(lua_istable(L, 2)) {
+		} else if(type == "context_free" || type == "cfg" || type == "CFG"){
+			if(lua_istable(L, 2)){
 				std::map<std::string, std::vector<std::string>> data;
-				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
-					if(lua_type(L, -2) != LUA_TSTRING) {
+				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)){
+					if(lua_type(L, -2) != LUA_TSTRING){
 						lua_pushstring(L, "CFG generator: invalid nonterminal name (must be a string)");
 						return lua_error(L);
 					}
-					if(lua_isstring(L, -1)) {
+					if(lua_isstring(L, -1)){
 						auto& productions = data[lua_tostring(L,-2)] = utils::split(luaW_checktstring(L,-1).str(), '|');
-						if(productions.size() > 1) {
+						if(productions.size() > 1){
 							deprecated_message("wesnoth.name_generator('cfg', {nonterminal = 'a|b'})", DEP_LEVEL::INDEFINITE, "1.17", "Non-terminals should now be assigned an array of productions instead of a single string containing productions separated by | - but a single string is fine if it's only one production");
 						}
-					} else if(lua_istable(L, -1)) {
+					} else if(lua_istable(L, -1)){
 						const auto& split = lua_check<std::vector<t_string>>(L, -1);
 						auto& productions = data[lua_tostring(L,-2)];
 						std::transform(split.begin(), split.end(), std::back_inserter(productions), std::mem_fn(&t_string::str));
@@ -384,20 +384,20 @@ static int intf_name_generator(lua_State *L)
 						return lua_error(L);
 					}
 				}
-				if(!data.empty()) {
+				if(!data.empty()){
 					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
 				gen = new(L) context_free_grammar_generator(luaW_checktstring(L, 2));
 			}
-			if(gen) {
+			if(gen){
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
 			}
 		} else {
 			return luaL_argerror(L, 1, "should be either 'markov_chain' or 'context_free'");
 		}
 	}
-	catch (const name_generator_invalid_exception& ex) {
+	catch (const name_generator_invalid_exception& ex){
 		lua_pushstring(L, ex.what());
 		return lua_error(L);
 	}
@@ -415,18 +415,18 @@ static int intf_name_generator(lua_State *L)
 * Arg 1: (optional) Logger
 * Arg 2: Message
 */
-static int intf_log(lua_State *L) {
+static int intf_log(lua_State *L){
 	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
 	std::string msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
-	if(msg.empty() || msg.back() != '\n') {
+	if(msg.empty() || msg.back() != '\n'){
 		msg += '\n';
 	}
 
-	if(logger == "err" || logger == "error") {
+	if(logger == "err" || logger == "error"){
 		LOG_STREAM(err, log_user) << msg;
-	} else if(logger == "warn" || logger == "wrn" || logger == "warning") {
+	} else if(logger == "warn" || logger == "wrn" || logger == "warning"){
 		LOG_STREAM(warn, log_user) << msg;
-	} else if((logger == "debug" || logger == "dbg")) {
+	} else if((logger == "debug" || logger == "dbg")){
 		LOG_STREAM(debug, log_user) << msg;
 	} else {
 		LOG_STREAM(info, log_user) << msg;
@@ -441,7 +441,7 @@ static int intf_log(lua_State *L) {
  * Arg 3: Version when element may be removed.
  * Arg 4: Additional detail message.
  */
-static int intf_deprecated_message(lua_State* L) {
+static int intf_deprecated_message(lua_State* L){
 	const std::string elem = luaL_checkstring(L, 1);
 	// This could produce an invalid deprecation level, but that possibility is handled in deprecated_message()
 	const DEP_LEVEL level = DEP_LEVEL(luaL_checkinteger(L, 2));
@@ -449,7 +449,7 @@ static int intf_deprecated_message(lua_State* L) {
 	const std::string detail = luaW_checktstring(L, 4);
 	const version_info ver = ver_str.empty() ? game_config::wesnoth_version.str() : ver_str;
 	const std::string msg = deprecated_message(elem, level, ver, detail);
-	if(level < DEP_LEVEL::INDEFINITE || level >= DEP_LEVEL::REMOVED) {
+	if(level < DEP_LEVEL::INDEFINITE || level >= DEP_LEVEL::REMOVED){
 		// Invalid deprecation level or level 4 deprecation should raise an interpreter error
 		lua_push(L, msg);
 		return lua_error(L);
@@ -469,14 +469,14 @@ static int intf_deprecated_message(lua_State* L) {
  */
 static int intf_named_tuple(lua_State* L)
 {
-	if(!lua_istable(L, 1)) {
+	if(!lua_istable(L, 1)){
 		return luaW_type_error(L, 1, lua_typename(L, LUA_TTABLE));
 	}
 	auto names = lua_check<std::vector<std::string>>(L, 2);
 	lua_len(L, 1);
 	int len = luaL_checkinteger(L, -1);
 	luaW_push_namedtuple(L, names);
-	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+	for(int i = 1; i <= std::max<int>(len, names.size()); i++){
 		lua_geti(L, 1, i);
 		lua_seti(L, -2, i);
 	}
@@ -489,9 +489,9 @@ static int intf_parse_shroud_bitmap(lua_State* L)
 	temp.set_enabled(true);
 	temp.read(luaL_checkstring(L, 1));
 	std::set<map_location> locs;
-	for(int x = 1; x <= temp.width(); x++) {
-		for(int y = 1; y <= temp.height(); y++) {
-			if(!temp.value(x, y)) {
+	for(int x = 1; x <= temp.width(); x++){
+		for(int y = 1; y <= temp.height(); y++){
+			if(!temp.value(x, y)){
 				locs.emplace(x, y, wml_loc());
 			}
 		}
@@ -505,7 +505,7 @@ static int intf_make_shroud_bitmap(lua_State* L)
 	shroud_map temp;
 	temp.set_enabled(true);
 	auto locs = luaW_check_locationset(L, 1);
-	for(const auto& loc : locs) {
+	for(const auto& loc : locs){
 		temp.clear(loc.wml_x(), loc.wml_y());
 	}
 	lua_push(L, temp.write());
@@ -516,7 +516,7 @@ static int intf_make_shroud_bitmap(lua_State* L)
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
-static int intf_ms_since_init(lua_State *L) {
+static int intf_ms_since_init(lua_State *L){
 	lua_pushinteger(L, SDL_GetTicks());
 	return 1;
 }
@@ -529,11 +529,11 @@ static int intf_get_language(lua_State* L)
 
 static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 {
-	switch(luaL_getmetafield(L, -1, "__dir")) {
+	switch(luaL_getmetafield(L, -1, "__dir")){
 		case LUA_TFUNCTION:
 			lua_pushvalue(L, 1);
 			lua_push(L, keys);
-			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK){
 				keys = lua_check<std::vector<std::string>>(L, -1);
 			} else {
 				lua_warning(L, "wesnoth.print_attributes: __dir metamethod raised an error", false);
@@ -552,9 +552,9 @@ static int impl_is_deprecated(lua_State* L)
 {
 	auto key = luaL_checkstring(L, 2);
 	auto type = lua_getfield(L, 1, key);
-	if(type == LUA_TTABLE) {
+	if(type == LUA_TTABLE){
 		lua_pushliteral(L, "__deprecated");
-		if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
+		if(lua_rawget(L, -2) == LUA_TBOOLEAN){
 			auto deprecated = luaW_toboolean(L, -1);
 			lua_pushboolean(L, deprecated);
 			return 1;
@@ -571,29 +571,29 @@ static int impl_get_dir_suffix(lua_State*L)
 	auto key = luaL_checkstring(L, 2);
 	std::string suffix = " ";
 	auto type = lua_getfield(L, 1, key);
-	if(type == LUA_TTABLE) {
+	if(type == LUA_TTABLE){
 		suffix = "†";
-	} else if(type == LUA_TFUNCTION) {
+	} else if(type == LUA_TFUNCTION){
 		suffix = "ƒ";
-	} else if(type == LUA_TUSERDATA) {
+	} else if(type == LUA_TUSERDATA){
 		lua_getglobal(L, "getmetatable");
 		lua_pushvalue(L, -2);
 		lua_call(L, 1, 1);
-		if(lua_type(L, -1) == LUA_TSTRING) {
+		if(lua_type(L, -1) == LUA_TSTRING){
 			auto meta = lua_check<std::string>(L, -1);
-			if(meta == "function") {
+			if(meta == "function"){
 				suffix = "ƒ";
 			}
 		}
 		lua_pop(L, 1);
-		if(suffix.size() == 1) {
+		if(suffix.size() == 1){
 			// ie, the above block didn't identify it as a function
-			if(auto t = luaL_getmetafield(L, -1, "__dir_tablelike"); t == LUA_TBOOLEAN) {
-				if(luaW_toboolean(L, -1)) {
+			if(auto t = luaL_getmetafield(L, -1, "__dir_tablelike"); t == LUA_TBOOLEAN){
+				if(luaW_toboolean(L, -1)){
 					suffix = "†";
 				}
 				lua_pop(L, 1);
-			} else if(t != LUA_TNIL) {
+			} else if(t != LUA_TNIL){
 				lua_pop(L,  1);
 			}
 		}
@@ -609,22 +609,22 @@ static int impl_get_dir_suffix(lua_State*L)
  */
 std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 {
-	if(idx < 0 && idx >= -lua_gettop(L)) {
+	if(idx < 0 && idx >= -lua_gettop(L)){
 		idx = lua_absindex(L, idx);
 	}
 	std::vector<std::string> keys;
-	if(lua_istable(L, idx)) {
+	if(lua_istable(L, idx)){
 		// Walk the metatable chain (as long as __index is a table)...
 		// If we reach an __index that's a function, check for a __dir metafunction.
 		int save_top = lua_gettop(L);
 		lua_pushvalue(L, idx);
-		ON_SCOPE_EXIT(&) {
+		ON_SCOPE_EXIT(&){
 			lua_settop(L, save_top);
 		};
 		do {
 			int table_idx = lua_absindex(L, -1);
-			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)) {
-				if(lua_type(L, -2) == LUA_TSTRING) {
+			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)){
+				if(lua_type(L, -2) == LUA_TSTRING){
 					keys.push_back(lua_tostring(L,-2));
 				}
 			}
@@ -635,11 +635,11 @@ std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 			// In this case, obviously the while condition fails
 			if(luaL_getmetafield(L, table_idx, "__index") == LUA_TNIL) break;
 		} while(lua_istable(L, -1));
-		if(lua_isfunction(L, -1)) {
+		if(lua_isfunction(L, -1)){
 			lua_pop(L, 1);
 			dir_meta_helper(L, keys);
 		}
-	} else if(lua_isuserdata(L, idx) && !lua_islightuserdata(L, idx)) {
+	} else if(lua_isuserdata(L, idx) && !lua_islightuserdata(L, idx)){
 		lua_pushvalue(L, idx);
 		dir_meta_helper(L, keys);
 		lua_pop(L, 1);
@@ -647,12 +647,12 @@ std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 	// Sort and remove any duplicates
 	std::sort(keys.begin(), keys.end());
 	auto new_end = std::unique(keys.begin(), keys.end());
-	new_end = std::remove_if(keys.begin(), new_end, [L, idx](const std::string& key) {
-		if(key.compare(0, 2, "__") == 0) {
+	new_end = std::remove_if(keys.begin(), new_end, [L, idx](const std::string& key){
+		if(key.compare(0, 2, "__") == 0){
 			return true;
 		}
 		int save_top = lua_gettop(L);
-		ON_SCOPE_EXIT(&) {
+		ON_SCOPE_EXIT(&){
 			lua_settop(L, save_top);
 		};
 		// Exclude deprecated elements
@@ -662,7 +662,7 @@ std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 		lua_pushcfunction(L, impl_is_deprecated);
 		lua_pushvalue(L, idx);
 		lua_push(L, key);
-		if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+		if(lua_pcall(L, 2, 1, 0) == LUA_OK){
 			return luaW_toboolean(L, -1);
 		}
 		return false;
@@ -686,12 +686,12 @@ std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 static int intf_object_dir(lua_State* L)
 {
 	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
-	if(!lua_isfunction(L, 2)) {
+	if(!lua_isfunction(L, 2)){
 		luaW_getglobal(L, "print");
 	}
 	int fcn_idx = lua_gettop(L);
 	auto keys = luaW_get_attributes(L, 1);
-	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
+	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next){
 		return std::max(max, next.size());
 	});
 	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
@@ -699,13 +699,13 @@ static int intf_object_dir(lua_State* L)
 	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
 	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
 	size_t n_rows = ceil(keys.size() / double(n_cols));
-	for(size_t i = 0; i < n_rows; i++) {
+	for(size_t i = 0; i < n_rows; i++){
 		std::ostringstream line;
 		line.fill(' ');
 		line.setf(std::ios::left);
-		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
+		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++){
 			int save_top = lua_gettop(L);
-			ON_SCOPE_EXIT(&) {
+			ON_SCOPE_EXIT(&){
 				lua_settop(L, save_top);
 			};
 			lua_pushcfunction(L, impl_get_dir_suffix);
@@ -713,7 +713,7 @@ static int intf_object_dir(lua_State* L)
 			const auto& key = keys[j + i * n_cols];
 			lua_pushlstring(L, key.c_str(), key.size());
 			std::string suffix = " !"; // Exclamation mark to indicate an error
-			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK){
 				suffix = luaL_checkstring(L, -1);
 			}
 			// This weird calculation is because width counts in bytes, not code points
@@ -735,7 +735,7 @@ static int intf_object_dir(lua_State* L)
 typedef int (lua_kernel_base::*member_callback)(lua_State *L);
 
 template <member_callback method>
-int dispatch(lua_State *L) {
+int dispatch(lua_State *L){
 	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
 }
 
@@ -749,7 +749,7 @@ lua_kernel_base::lua_kernel_base()
 
 	cmd_log_ << "Initializing " << my_name() << "...\n";
 
-	// Define the CPP_function metatable ( so we can override print to point to a C++ member function, add certain functions for this kernel, etc. )
+	// Define the CPP_function metatable (so we can override print to point to a C++ member function, add certain functions for this kernel, etc.)
 	// Do it first of all in case C++ functions are ever used in the core Wesnoth libs loaded in the next step
 	cmd_log_ << "Adding boost function proxy...\n";
 
@@ -776,7 +776,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "filesystem", lua_fileops::luaW_open },
 		{ nullptr, nullptr }
 	};
-	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
+	for(luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
 		luaL_requiref(L, lib->name, lib->func, strlen(lib->name));
 		lua_pop(L, 1);  /* remove lib */
@@ -785,7 +785,7 @@ lua_kernel_base::lua_kernel_base()
 	// Disable functions from os which we don't want.
 	lua_getglobal(L, "os");
 	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
+	while(lua_next(L, -2) != 0){
 		lua_pop(L, 1);
 		char const* function = lua_tostring(L, -1);
 		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
@@ -831,7 +831,7 @@ lua_kernel_base::lua_kernel_base()
 	};
 
 	lua_getglobal(L, "wesnoth");
-	if (!lua_istable(L,-1)) {
+	if(!lua_istable(L,-1)){
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
@@ -879,7 +879,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_settop(L, 0);
 	lua_pushstring(L, "lua/package.lua");
 	int res = intf_require(L);
-	if(res != 1) {
+	if(res != 1){
 		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
 	}
 
@@ -969,11 +969,11 @@ lua_kernel_base::lua_kernel_base()
 	lua_settop(L, 0);
 	luaW_getglobal(L, "wesnoth", "require");
 	lua_pushstring(L, "lua/ilua.lua");
-	if(protected_call(1, 1)) {
+	if(protected_call(1, 1)){
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
-		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
+		if(!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))){
 			cmd_log_ << "Failed to activate strict mode.\n";
 		} else {
 			cmd_log_ << "Activated strict mode.\n";
@@ -989,7 +989,7 @@ lua_kernel_base::lua_kernel_base()
 	// We do this last because ilua needs to be able to use debug.getmetatable
 	lua_getglobal(L, "debug");
 	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
+	while(lua_next(L, -2) != 0){
 		lua_pop(L, 1);
 		char const* function = lua_tostring(L, -1);
 		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
@@ -1001,7 +1001,7 @@ lua_kernel_base::lua_kernel_base()
 
 lua_kernel_base::~lua_kernel_base()
 {
-	for (const auto& pair : this->registered_widget_definitions_) {
+	for(const auto& pair : this->registered_widget_definitions_){
 		gui2::remove_single_widget_definition(std::get<0>(pair), std::get<1>(pair));
 	}
 	lua_close(mState);
@@ -1019,13 +1019,13 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2);
 	return this->protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2);
 	return this->load_string(prog, name, eh);
 }
 
@@ -1038,20 +1038,20 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, const 
 {
 	int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
-	if (errcode != LUA_OK) {
+	if(errcode != LUA_OK){
 		char const * msg = lua_tostring(L, -1);
 
 		std::string context = "When executing, ";
-		if (errcode == LUA_ERRRUN) {
+		if(errcode == LUA_ERRRUN){
 			context += "Lua runtime error: ";
-		} else if (errcode == LUA_ERRERR) {
+		} else if(errcode == LUA_ERRERR){
 			context += "Lua error in attached debugger: ";
-		} else if (errcode == LUA_ERRMEM) {
+		} else if(errcode == LUA_ERRMEM){
 			context += "Lua out of memory error: ";
 		} else {
 			context += "unknown lua error: ";
 		}
-		if(lua_isstring(L, -1)) {
+		if(lua_isstring(L, -1)){
 			context +=  msg ? msg : "null string";
 		} else {
 			context += lua_typename(L, lua_type(L, -1));
@@ -1071,13 +1071,13 @@ bool lua_kernel_base::load_string(const std::string& prog, const std::string& na
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
 	int errcode = luaL_loadbufferx(mState, prog.c_str(), prog.size(), name.empty() ? prog.c_str() : name.c_str(), allow_unsafe ? "tb" : "t");
-	if (errcode != LUA_OK) {
+	if(errcode != LUA_OK){
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
 
 		std::string context = "When parsing a string to lua, ";
 
-		if (errcode == LUA_ERRSYNTAX) {
+		if(errcode == LUA_ERRSYNTAX){
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
@@ -1097,7 +1097,7 @@ bool lua_kernel_base::load_string(const std::string& prog, const std::string& na
 void lua_kernel_base::run_lua_tag(const config& cfg)
 {
 	int nArgs = 0;
-	if (auto args = cfg.optional_child("args")) {
+	if(auto args = cfg.optional_child("args")){
 		luaW_pushconfig(this->mState, *args);
 		++nArgs;
 	}
@@ -1106,10 +1106,10 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 
 config luaW_serialize_function(lua_State* L, int func)
 {
-	if(lua_iscfunction(L, func)) {
+	if(lua_iscfunction(L, func)){
 		throw luafunc_serialize_error("cannot serialize C function");
 	}
-	if(!lua_isfunction(L, func)) {
+	if(!lua_isfunction(L, func)){
 		throw luafunc_serialize_error("cannot serialize callable non-function");
 	}
 	config data;
@@ -1123,14 +1123,14 @@ config luaW_serialize_function(lua_State* L, int func)
 	data["code"] = lua_check<std::string>(L, -1);
 	lua_pop(L, 1);
 	config upvalues;
-	for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)) {
+	for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)){
 		std::string_view name = lua_getupvalue(L, func, i);
-		if(name == "_ENV") {
+		if(name == "_ENV"){
 			upvalues.add_child(name)["upvalue_type"] = "_ENV";
 			continue;
 		}
 		int idx = lua_absindex(L, -1);
-		switch(lua_type(L, idx)) {
+		switch(lua_type(L, idx)){
 		case LUA_TBOOLEAN: case LUA_TNUMBER: case LUA_TSTRING:
 			luaW_toscalar(L, idx, upvalues[name]);
 			break;
@@ -1141,8 +1141,8 @@ config luaW_serialize_function(lua_State* L, int func)
 			upvalues.add_child(name, config{"upvalue_type", "nil"});
 			break;
 		case LUA_TTABLE:
-			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()) {
-				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()){
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)){
 					lua_rawgeti(L, idx, i);
 					config& cfg = upvalues.add_child(name);
 					luaW_toscalar(L, -1, cfg["value"]);
@@ -1151,10 +1151,10 @@ config luaW_serialize_function(lua_State* L, int func)
 					names.erase(names.begin());
 				}
 				break;
-			} else if(config cfg; luaW_toconfig(L, idx, cfg)) {
+			} else if(config cfg; luaW_toconfig(L, idx, cfg)){
 				std::vector<std::string> names;
 				int save_top = lua_gettop(L);
-				if(luaL_getmetafield(L, idx, "__name") && lua_check<std::string>(L, -1) == "named tuple") {
+				if(luaL_getmetafield(L, idx, "__name") && lua_check<std::string>(L, -1) == "named tuple"){
 					luaL_getmetafield(L, -2, "__names");
 					names = lua_check<std::vector<std::string>>(L, -1);
 				}
@@ -1162,15 +1162,15 @@ config luaW_serialize_function(lua_State* L, int func)
 				upvalues.add_child(name, cfg)["upvalue_type"] = names.empty() ? "config" : "named tuple";
 				break;
 			} else {
-				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)){
 					lua_rawgeti(L, idx, i);
 					config& cfg = upvalues.add_child(name);
 					luaW_toscalar(L, -1, cfg["value"]);
 					cfg["upvalue_type"] = "array";
 				}
 				bool found_non_array = false;
-				for(lua_pushnil(L); lua_next(L, idx); lua_pop(L, 1)) {
-					if(lua_type(L, -2) != LUA_TNUMBER) {
+				for(lua_pushnil(L); lua_next(L, idx); lua_pop(L, 1)){
+					if(lua_type(L, -2) != LUA_TNUMBER){
 						found_non_array = true;
 						break;
 					}
@@ -1196,32 +1196,32 @@ config luaW_serialize_function(lua_State* L, int func)
 bool lua_kernel_base::load_binary(const config& cfg, const error_handler& eh)
 {
 	if(!load_string(cfg["code"].str(), cfg["name"], eh, true)) return false;
-	if(auto upvalues = cfg.optional_child("upvalues")) {
+	if(auto upvalues = cfg.optional_child("upvalues")){
 		lua_pushvalue(mState, -1); // duplicate function because lua_getinfo will pop it
 		lua_Debug info;
 		lua_getinfo(mState, ">u", &info);
 		int funcindex = lua_absindex(mState, -1);
-		for(int i = 1; i <= info.nups; i++) {
+		for(int i = 1; i <= info.nups; i++){
 			std::string_view name = lua_getupvalue(mState, funcindex, i);
 			lua_pop(mState, 1); // we only want the upvalue's name, not its value
-			if(name == "_ENV") {
+			if(name == "_ENV"){
 				lua_pushglobaltable(mState);
-			} else if(upvalues->has_attribute(name)) {
+			} else if(upvalues->has_attribute(name)){
 				luaW_pushscalar(mState, (*upvalues)[name]);
-			} else if(upvalues->has_child(name)) {
+			} else if(upvalues->has_child(name)){
 				const auto& child = upvalues->mandatory_child(name);
-				if(child["upvalue_type"] == "array") {
+				if(child["upvalue_type"] == "array"){
 					auto children = upvalues->child_range(name);
 					lua_createtable(mState, children.size(), 0);
-					for(const auto& cfg : children) {
+					for(const auto& cfg : children){
 						luaW_pushscalar(mState, cfg["value"]);
 						lua_rawseti(mState, -2, lua_rawlen(mState, -2) + 1);
 					}
-				} else if(child["upvalue_type"] == "config") {
+				} else if(child["upvalue_type"] == "config"){
 					luaW_pushconfig(mState, child);
-				} else if(child["upvalue_type"] == "function") {
+				} else if(child["upvalue_type"] == "function"){
 					if(!load_binary(child, eh)) return false;
-				} else if(child["upvalue_type"] == "nil") {
+				} else if(child["upvalue_type"] == "nil"){
 					lua_pushnil(mState);
 				}
 			} else continue;
@@ -1235,12 +1235,12 @@ config lua_kernel_base::run_binary_lua_tag(const config& cfg)
 {
 	int top = lua_gettop(mState);
 	try {
-		error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
-		if(load_binary(cfg, eh)) {
+		error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2);
+		if(load_binary(cfg, eh)){
 			lua_pushvalue(mState, -1);
 			protected_call(0, LUA_MULTRET, eh);
 		}
-	} catch (const game::lua_error & e) {
+	} catch (const game::lua_error & e){
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
 		config error;
@@ -1253,9 +1253,9 @@ config lua_kernel_base::run_binary_lua_tag(const config& cfg)
 	result.add_child("executed") = luaW_serialize_function(mState, top + 1);
 	lua_remove(mState, top + 1);
 	result["name"] = "execute_result";
-	for(int i = top + 1; i < lua_gettop(mState); i++) {
+	for(int i = top + 1; i < lua_gettop(mState); i++){
 		std::string index = std::to_string(i - top);
-		switch(lua_type(mState, i)) {
+		switch(lua_type(mState, i)){
 		case LUA_TNUMBER: case LUA_TBOOLEAN: case LUA_TSTRING:
 			luaW_toscalar(mState, i, result[index]);
 			break;
@@ -1271,9 +1271,9 @@ config lua_kernel_base::run_binary_lua_tag(const config& cfg)
 void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2);
 	this->load_string(prog, name, eh);
-	if(in_interpreter) {
+	if(in_interpreter){
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
 		if(lua_setupvalue(mState, -2, 1) == nullptr)
 			lua_pop(mState, 1);
@@ -1287,19 +1287,19 @@ void lua_kernel_base::run(const char * prog, const std::string& name, int nArgs)
 {
 	try {
 		this->throwing_run(prog, name, nArgs);
-	} catch (const game::lua_error & e) {
+	} catch (const game::lua_error & e){
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
 	}
 }
 
 // Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.
-void lua_kernel_base::interactive_run(char const * prog) {
+void lua_kernel_base::interactive_run(char const * prog){
 	std::string experiment = "return ";
 	experiment += prog;
 	int top = lua_gettop(mState);
 
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2);
 	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
@@ -1308,9 +1308,9 @@ void lua_kernel_base::interactive_run(char const * prog) {
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
 		if(lua_setupvalue(mState, -2, 1) == nullptr)
 			lua_pop(mState, 1);
-	} catch (const game::lua_error &) {
+	} catch (const game::lua_error &){
 		this->throwing_run(prog, "interactive", 0, true);	// Since it failed, fall back to the usual throwing_run, on the original input.
-		if(lua_gettop(mState) == top + 1) {
+		if(lua_gettop(mState) == top + 1){
 			// Didn't return anything
 			lua_settop(mState, top);
 		return;
@@ -1347,7 +1347,7 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 {
 	luaL_checkstring(L, 1);
 	lua_rotate(L, 1, -1);
-	if (lua_fileops::load_file(L) != 1) return 0;
+	if(lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 	lua_rotate(L, 1, 1);
 	// Using a non-protected call here appears to fix an issue in plugins.
@@ -1366,7 +1366,7 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 int lua_kernel_base::intf_require(lua_State* L)
 {
 	const char * m = luaL_checkstring(L, 1);
-	if(!m) {
+	if(!m){
 		return luaL_argerror(L, 1, "found a null string argument to wesnoth require");
 	}
 
@@ -1377,21 +1377,21 @@ int lua_kernel_base::intf_require(lua_State* L)
 	lua_rawget(L, -2);
 	lua_pushvalue(L, 1);
 	lua_rawget(L, -2);
-	if(!lua_isnil(L, -1) && !game_config::debug_lua) {
+	if(!lua_isnil(L, -1) && !game_config::debug_lua){
 		return 1;
 	}
 	lua_pop(L, 1);
 	lua_pushvalue(L, 1);
 	// stack is now [packagename] [wesnoth] [package] [packagename]
 
-	if(lua_fileops::load_file(L) != 1) {
+	if(lua_fileops::load_file(L) != 1){
 		// should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 		// stack is now [packagename] [wesnoth] [package] [chunk]
 		return 0;
 	}
 	DBG_LUA << "require: loaded a file, now calling it";
 
-	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
+	if(!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))){
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
 	}
@@ -1411,11 +1411,11 @@ int lua_kernel_base::intf_kernel_type(lua_State* L)
 	lua_push(L, my_name());
 	return 1;
 }
-static void push_color_palette(lua_State* L, const std::vector<color_t>& palette) {
+static void push_color_palette(lua_State* L, const std::vector<color_t>& palette){
 	lua_createtable(L, palette.size(), 1);
 	lua_rotate(L, -2, 1); // swap new table with previous element on stack
 	lua_setfield(L, -2, "name");
-	for(size_t i = 0; i < palette.size(); i++) {
+	for(size_t i = 0; i < palette.size(); i++){
 		luaW_push_namedtuple(L, {"r", "g", "b", "a"});
 		lua_pushinteger(L, palette[i].r);
 		lua_rawseti(L, -2, 1);
@@ -1438,14 +1438,14 @@ static int impl_palette_get(lua_State* L)
 
 // suppress missing prototype warning (not static because game_lua_kernel referenes it);
 luaW_Registry& gameConfigReg();
-luaW_Registry& gameConfigReg() {
+luaW_Registry& gameConfigReg(){
 	static luaW_Registry gameConfigReg{"game config"};
 	return gameConfigReg;
 }
 static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
 
 #define GAME_CONFIG_SIMPLE_GETTER(name) \
-GAME_CONFIG_GETTER(#name, decltype(game_config::name), lua_kernel_base) { \
+GAME_CONFIG_GETTER(#name, decltype(game_config::name), lua_kernel_base){ \
 	(void) k; \
 	return game_config::name; \
 }
@@ -1464,10 +1464,10 @@ GAME_CONFIG_SIMPLE_GETTER(debug_lua);
 GAME_CONFIG_SIMPLE_GETTER(strict_lua);
 GAME_CONFIG_SIMPLE_GETTER(mp_debug);
 
-GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base) {
+GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base){
 	(void)k;
 	lua_newtable(L);
-	if(luaL_newmetatable(L, "color palettes")) {
+	if(luaL_newmetatable(L, "color palettes")){
 		lua_pushcfunction(L, impl_palette_get);
 		lua_setfield(L, -2, "__index");
 	}
@@ -1475,28 +1475,28 @@ GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base) {
 	return lua_index_raw(L);
 }
 
-GAME_CONFIG_GETTER("red_green_scale", lua_index_raw, lua_kernel_base) {
+GAME_CONFIG_GETTER("red_green_scale", lua_index_raw, lua_kernel_base){
 	(void)k;
 	lua_pushstring(L, "red_green_scale");
 	push_color_palette(L, game_config::red_green_scale);
 	return lua_index_raw(L);
 }
 
-GAME_CONFIG_GETTER("red_green_scale_text", lua_index_raw, lua_kernel_base) {
+GAME_CONFIG_GETTER("red_green_scale_text", lua_index_raw, lua_kernel_base){
 	(void)k;
 	lua_pushstring(L, "red_green_scale_text");
 	push_color_palette(L, game_config::red_green_scale_text);
 	return lua_index_raw(L);
 }
 
-GAME_CONFIG_GETTER("blue_white_scale", lua_index_raw, lua_kernel_base) {
+GAME_CONFIG_GETTER("blue_white_scale", lua_index_raw, lua_kernel_base){
 	(void)k;
 	lua_pushstring(L, "blue_white_scale");
 	push_color_palette(L, game_config::blue_white_scale);
 	return lua_index_raw(L);
 }
 
-GAME_CONFIG_GETTER("blue_white_scale_text", lua_index_raw, lua_kernel_base) {
+GAME_CONFIG_GETTER("blue_white_scale_text", lua_index_raw, lua_kernel_base){
 	(void)k;
 	lua_pushstring(L, "blue_white_scale_text");
 	push_color_palette(L, game_config::blue_white_scale_text);
@@ -1552,7 +1552,7 @@ void lua_kernel_base::load_core()
 	cmd_log_ << "Loading core...\n";
 	luaW_getglobal(L, "wesnoth", "require");
 	lua_pushstring(L, "lua/core");
-	if(!protected_call(1, 1)) {
+	if(!protected_call(1, 1)){
 		cmd_log_ << "Error: Failed to load core.\n";
 	}
 	lua_settop(L, 0);
@@ -1571,8 +1571,8 @@ std::vector<std::string> lua_kernel_base::get_global_var_names()
 	lua_getglobal(L, "_G");
 	lua_pushnil(L);
 
-	while (lua_next(L, idx+1) != 0) {
-		if (lua_isstring(L, -2)) {
+	while(lua_next(L, idx+1) != 0){
+		if(lua_isstring(L, -2)){
 			ret.push_back(lua_tostring(L,-2));
 		}
 		lua_pop(L,1);
@@ -1596,7 +1596,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	lua_State* L = mState;
 	int save_stack = lua_gettop(L);
 	int result = luaL_loadstring(L, load.c_str());
-	if(result != LUA_OK) {
+	if(result != LUA_OK){
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
 		LOG_LUA << "Error when attempting tab completion:";
 		LOG_LUA << luaL_checkstring(L, -1);
@@ -1606,36 +1606,36 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	}
 
 	luaW_pcall(L, 0, 1);
-	if(lua_istable(L, -1) || lua_isuserdata(L, -1)) {
+	if(lua_istable(L, -1) || lua_isuserdata(L, -1)){
 		int top = lua_gettop(L);
 		int obj = lua_absindex(L, -1);
-		if(luaL_getmetafield(L, obj, "__tab_enum") == LUA_TFUNCTION) {
+		if(luaL_getmetafield(L, obj, "__tab_enum") == LUA_TFUNCTION){
 			lua_pushvalue(L, obj);
 			lua_pushlstring(L, partial_name.c_str(), partial_name.size());
 			luaW_pcall(L, 2, 1);
 			ret = lua_check<std::vector<std::string>>(L, -1);
-		} else if(lua_type(L, -1) != LUA_TTABLE) {
+		} else if(lua_type(L, -1) != LUA_TTABLE){
 			LOG_LUA << "Userdata missing __tab_enum meta-function for tab completion";
 			lua_settop(L, save_stack);
 			return ret;
 		} else {
 			lua_settop(L, top);
 			// Metafunction not found, so use lua_next to enumerate the table
-			for(lua_pushnil(L); lua_next(L, obj); lua_pop(L, 1)) {
-				if(lua_type(L, -2) == LUA_TSTRING) {
+			for(lua_pushnil(L); lua_next(L, obj); lua_pop(L, 1)){
+				if(lua_type(L, -2) == LUA_TSTRING){
 					std::string attr = lua_tostring(L, -2);
-					if(attr.empty()) {
+					if(attr.empty()){
 						continue;
 					}
-					if(!isalpha(attr[0]) && attr[0] != '_') {
+					if(!isalpha(attr[0]) && attr[0] != '_'){
 						continue;
 					}
 					if(std::any_of(attr.begin(), attr.end(), [](char c){
 						return !isalpha(c) && !isdigit(c) && c != '_';
-					})) {
+					})){
 						continue;
 					}
-					if(attr.substr(0, partial_name.size()) == partial_name) {
+					if(attr.substr(0, partial_name.size()) == partial_name){
 						ret.push_back(base_path + "." + attr);
 					}
 				}

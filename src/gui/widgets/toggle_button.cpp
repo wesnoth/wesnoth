@@ -72,14 +72,14 @@ void toggle_button::set_members(const widget_item& data)
 	styled_widget::set_members(data);
 
 	widget_item::const_iterator itor = data.find("icon");
-	if(itor != data.end()) {
+	if(itor != data.end()){
 		set_icon_name(itor->second);
 	}
 }
 
 void toggle_button::set_active(const bool active)
 {
-	if(active) {
+	if(active){
 		set_state(ENABLED);
 	} else {
 		set_state(DISABLED);
@@ -114,7 +114,7 @@ void toggle_button::update_canvas()
 void toggle_button::set_value(unsigned selected, bool fire_event)
 {
 	selected = selected % num_states();
-	if(selected == get_value()) {
+	if(selected == get_value()){
 		return;
 	}
 	state_num_ = selected;
@@ -122,17 +122,17 @@ void toggle_button::set_value(unsigned selected, bool fire_event)
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
-	if(!get_window()) {
+	if(!get_window()){
 		return;
 	}
-	if (fire_event) {
+	if(fire_event){
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
 void toggle_button::set_retval(const int retval)
 {
-	if(retval == retval_) {
+	if(retval == retval_){
 		return;
 	}
 
@@ -142,7 +142,7 @@ void toggle_button::set_retval(const int retval)
 
 void toggle_button::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -181,7 +181,7 @@ void toggle_button::signal_handler_left_button_double_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(retval_ == retval::NONE) {
+	if(retval_ == retval::NONE){
 		return;
 	}
 

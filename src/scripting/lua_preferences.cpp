@@ -53,13 +53,13 @@ static int impl_preferences_dir(lua_State* L)
 {
 	std::vector<std::string> all_prefs;
 
-	for(const std::string& attr : prefs::get().all_attributes()) {
+	for(const std::string& attr : prefs::get().all_attributes()){
 		all_prefs.push_back(attr);
 	}
 
 	// This will result in some duplicates since the advanced preferences' values are stored in the same file as the regular preferences
 	// but dir() automatically strips those out so who cares
-	for(const auto& pref : prefs::get().get_advanced_preferences()) {
+	for(const auto& pref : prefs::get().get_advanced_preferences()){
 		all_prefs.push_back(pref.field);
 	}
 	lua_push(L, all_prefs);

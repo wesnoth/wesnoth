@@ -145,7 +145,7 @@ private:
 	 */
 	void next_char()
 	{
-		if (current_ == token::NEWLINE)
+		if(current_ == token::NEWLINE)
 			++lineno_;
 		next_char_skip_cr();
 	}

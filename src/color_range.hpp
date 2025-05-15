@@ -69,7 +69,7 @@ public:
 	color_range(const std::vector<color_t>& v)
 		: mid_(v.size()     ? v[0] : color_t(128, 128, 128))
 		, max_(v.size() > 1 ? v[1] : color_t(255, 255, 255))
-		, min_(v.size() > 2 ? v[2] : color_t(0  , 0  , 0  ))
+		, min_(v.size() > 2 ? v[2] : color_t(0  , 0  , 0 ))
 		, rep_(v.size() > 3 ? v[3] : mid_)
 	{}
 

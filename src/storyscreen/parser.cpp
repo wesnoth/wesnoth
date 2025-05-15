@@ -29,18 +29,18 @@ namespace storyscreen
 void story_parser::resolve_wml(const vconfig& cfg)
 {
 	// Execution flow/branching/[image]
-	for(const auto& [key, node] : cfg.all_ordered()) {
+	for(const auto& [key, node] : cfg.all_ordered()){
 		// Execute any special actions derived classes provide.
-		if(resolve_wml_helper(key, node)) {
+		if(resolve_wml_helper(key, node)){
 			continue;
 		}
 
 		// [if]
-		if(key == "if") {
+		if(key == "if"){
 			// check if the [if] tag has a [then] child;
 			// if we try to execute a non-existing [then], we get a segfault
-			if(game_events::conditional_passed(node)) {
-				if(node.has_child("then")) {
+			if(game_events::conditional_passed(node)){
+				if(node.has_child("then")){
 					resolve_wml(node.child("then"));
 				}
 			}
@@ -51,9 +51,9 @@ void story_parser::resolve_wml(const vconfig& cfg)
 				bool elseif_flag = false;
 				// for each [elseif]: test if it has a [then] child
 				// if the condition matches, execute [then] and raise flag
-				for(const auto& elseif : elseif_children) {
-					if(game_events::conditional_passed(elseif)) {
-						if(elseif.has_child("then")) {
+				for(const auto& elseif : elseif_children){
+					if(game_events::conditional_passed(elseif)){
+						if(elseif.has_child("then")){
 							resolve_wml(elseif.child("then"));
 						}
 
@@ -63,33 +63,33 @@ void story_parser::resolve_wml(const vconfig& cfg)
 				}
 
 				// if we have an [else] tag and no [elseif] was successful (flag not raised), execute it
-				if(node.has_child("else") && !elseif_flag) {
+				if(node.has_child("else") && !elseif_flag){
 					resolve_wml(node.child("else"));
 				}
 			}
 		}
 		// [switch]
-		else if(key == "switch") {
+		else if(key == "switch"){
 			const std::string var_name = node["variable"];
 			const std::string var_actual_value = resources::gamedata->get_variable_const(var_name);
 			bool case_not_found = true;
 
-			for(const auto& [switch_key, switch_node] : node.all_ordered()) {
-				if(switch_key != "case") {
+			for(const auto& [switch_key, switch_node] : node.all_ordered()){
+				if(switch_key != "case"){
 					continue;
 				}
 
 				// Enter all matching cases.
 				const std::string var_expected_value = switch_node["value"];
-				if(var_actual_value == var_expected_value) {
+				if(var_actual_value == var_expected_value){
 					case_not_found = false;
 					resolve_wml(switch_node);
 				}
 			}
 
-			if(case_not_found) {
-				for(const auto& [else_key, else_node] : node.all_ordered()) {
-					if(else_key != "else") {
+			if(case_not_found){
+				for(const auto& [else_key, else_node] : node.all_ordered()){
+					if(else_key != "else"){
 						continue;
 					}
 
@@ -99,13 +99,13 @@ void story_parser::resolve_wml(const vconfig& cfg)
 			}
 		}
 		// [deprecated_message]
-		else if(key == "deprecated_message") {
+		else if(key == "deprecated_message"){
 			// Won't appear until the scenario start event finishes.
 			DEP_LEVEL level = DEP_LEVEL(node["level"].to_int(2));
 			deprecated_message(node["what"], level, node["version"].str(), node["message"]);
 		}
 		// [wml_message]
-		else if(key == "wml_message") {
+		else if(key == "wml_message"){
 			// As with [deprecated_message],
 			// it won't appear until the scenario start event is complete.
 			resources::game_events->pump().put_wml_message(

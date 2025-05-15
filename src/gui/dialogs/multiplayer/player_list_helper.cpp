@@ -40,16 +40,16 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 	list_.clear();
 	unsigned i = 0;
 
-	for(const config& user : users) {
+	for(const config& user : users){
 		const std::string name = user["name"];
 		const bool is_you = name == prefs::get().login();
 
 		std::string icon;
-		if(user["host"].to_bool()) {
+		if(user["host"].to_bool()){
 			icon = "misc/leader-crown.png~CROP(12, 1, 15, 15)";
-		} else if(user["observer"].to_bool()) {
+		} else if(user["observer"].to_bool()){
 			icon = "misc/eye.png";
-		} else if(is_you) {
+		} else if(is_you){
 			icon = "lobby/status-lobby-s.png";
 		} else {
 			icon = "lobby/status-lobby-n.png";
@@ -64,7 +64,7 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 			}}
 		});
 
-		if(is_you) {
+		if(is_you){
 			list_.select_row(i);
 		}
 

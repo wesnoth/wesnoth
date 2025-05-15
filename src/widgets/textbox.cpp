@@ -53,7 +53,7 @@ textbox::textbox(int width, const std::string& text, bool editable, std::size_t 
 textbox::~textbox()
 {
 	// Restore the cursor on destruction if we (probably) set it to IBEAM
-	if(cursor::get() == cursor::IBEAM) {
+	if(cursor::get() == cursor::IBEAM){
 		cursor::set(cursor::NORMAL);
 	}
 }
@@ -67,7 +67,7 @@ void textbox::update_location(const SDL_Rect& rect)
 
 void textbox::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	if (!text_image_) return;
+	if(!text_image_) return;
 	text_pos_ = 0;
 	update_text_cache(false);
 }
@@ -93,13 +93,13 @@ void textbox::set_text(const std::string& text, const color_t& color)
 
 void textbox::append_text(const std::string& text, bool auto_scroll, const color_t& color)
 {
-	if(!text_image_) {
+	if(!text_image_){
 		set_text(text, color);
 		return;
 	}
 
 	//disallow adding multi-line text to a single-line text box
-	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()) {
+	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()){
 		return;
 	}
 
@@ -130,11 +130,11 @@ void textbox::clear()
 
 void textbox::set_selection(const int selstart, const int selend)
 {
-	if (!editable_) {
+	if(!editable_){
 		return;
 	}
-	if (selstart < 0 || selend < 0 || std::size_t(selstart) > text_.size() ||
-		std::size_t(selend) > text_.size()) {
+	if(selstart < 0 || selend < 0 || std::size_t(selstart) > text_.size() ||
+		std::size_t(selend) > text_.size()){
 		WRN_DP << "out-of-boundary selection";
 		return;
 	}
@@ -145,10 +145,10 @@ void textbox::set_selection(const int selstart, const int selend)
 
 void textbox::set_cursor_pos(const int cursor_pos)
 {
-	if (!editable_) {
+	if(!editable_){
 		return;
 	}
-	if (cursor_pos < 0 || std::size_t(cursor_pos) > text_.size()) {
+	if(cursor_pos < 0 || std::size_t(cursor_pos) > text_.size()){
 		WRN_DP << "out-of-boundary selection";
 		return;
 	}
@@ -160,7 +160,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 
 void textbox::draw_cursor(int pos) const
 {
-	if(show_cursor_ && editable_ && enabled()) {
+	if(show_cursor_ && editable_ && enabled()){
 		SDL_Rect rect {
 				  location().x + pos
 				, location().y
@@ -174,7 +174,7 @@ void textbox::draw_cursor(int pos) const
 
 void textbox::layout()
 {
-	if(text_image_ == nullptr) {
+	if(text_image_ == nullptr){
 		update_text_cache(true);
 	}
 }
@@ -192,7 +192,7 @@ void textbox::draw_contents()
 
 	rect src;
 
-	if(text_image_ != nullptr) {
+	if(text_image_ != nullptr){
 		src.y = yscroll_;
 		src.w = std::min<std::size_t>(loc.w,text_image_.w());
 		src.h = std::min<std::size_t>(loc.h,text_image_.h());
@@ -200,7 +200,7 @@ void textbox::draw_contents()
 		SDL_Rect dest{loc.x, loc.y, src.w, src.h};
 
 		// Fills the selected area
-		if(enabled() && is_selection()) {
+		if(enabled() && is_selection()){
 			const int start = std::min<int>(selstart_,selend_);
 			const int end = std::max<int>(selstart_,selend_);
 			int startx = char_x_[start];
@@ -210,9 +210,9 @@ void textbox::draw_contents()
 
 			auto clipper = draw::reduce_clip(loc);
 
-			while(starty <= endy) {
+			while(starty <= endy){
 				const std::size_t right = starty == endy ? endx : text_image_.w();
-				if(right <= std::size_t(startx)) {
+				if(right <= std::size_t(startx)){
 					break;
 				}
 
@@ -231,7 +231,7 @@ void textbox::draw_contents()
 		// Set the source region on the texture.
 		text_image_.set_src(src);
 
-		if(enabled()) {
+		if(enabled()){
 			draw::blit(text_image_, dest);
 		} else {
 			// HACK: using 30% opacity allows white text to look as though it is grayed out,
@@ -277,7 +277,7 @@ void textbox::scroll_to_bottom()
 
 void textbox::set_wrap(bool val)
 {
-	if(wrap_ != val) {
+	if(wrap_ != val){
 		wrap_ = val;
 		update_text_cache(true);
 		queue_redraw();
@@ -294,7 +294,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 {
 	line_height_ = font::get_max_height(font_size_);
 
-	if(char_y_.empty()) {
+	if(char_y_.empty()){
 		char_y_.push_back(0);
 	} else {
 		char_y_.push_back(char_y_.back() + line_height_);
@@ -312,31 +312,31 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 	std::u32string::const_iterator backup_itor = text.end();
 
 	std::u32string::const_iterator itor = text.begin();
-	while(itor != text.end()) {
+	while(itor != text.end()){
 		//If this is a space, save copies of the current state so we can roll back
-		if(char(*itor) == ' ') {
+		if(char(*itor) == ' '){
 			backup_itor = itor;
 		}
 		visible_string.append(unicode_cast<std::string>(*itor));
 
-		if(char(*itor) == '\n') {
+		if(char(*itor) == '\n'){
 			backup_itor = text.end();
 			visible_string = "";
 		}
 
 		auto [w, _] = font::pango_line_size(visible_string, font_size_);
 
-		if(wrap_ && w >= inner_location().w) {
-			if(backup_itor != text.end()) {
+		if(wrap_ && w >= inner_location().w){
+			if(backup_itor != text.end()){
 				int backup = itor - backup_itor;
 				itor = backup_itor + 1;
-				if(backup > 0) {
+				if(backup > 0){
 					char_x_.erase(char_x_.end()-backup, char_x_.end());
 					char_y_.erase(char_y_.end()-backup, char_y_.end());
 					wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
 				}
 			} else {
-				if (visible_string == std::string("").append(unicode_cast<std::string>(*itor))) {
+				if(visible_string == std::string("").append(unicode_cast<std::string>(*itor))){
 					break;	//breaks infinite loop where when running with a fake display, we word wrap a single character infinitely.
 				}
 			}
@@ -360,7 +360,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 
 void textbox::update_text_cache(bool changed, const color_t& color)
 {
-	if(changed) {
+	if(changed){
 		char_x_.clear();
 		char_y_.clear();
 
@@ -369,14 +369,14 @@ void textbox::update_text_cache(bool changed, const color_t& color)
 
 	int cursor_x = char_x_[cursor_];
 
-	if(cursor_x - text_pos_ > location().w) {
+	if(cursor_x - text_pos_ > location().w){
 		text_pos_ = cursor_x - location().w;
-	} else if(cursor_x - text_pos_ < 0) {
+	} else if(cursor_x - text_pos_ < 0){
 		text_pos_ = cursor_x;
 	}
 	cursor_pos_ = cursor_x - text_pos_;
 
-	if (text_image_) {
+	if(text_image_){
 		set_full_size(text_image_.h());
 		set_shown_size(location().h);
 	}
@@ -410,17 +410,17 @@ namespace {
 
 bool textbox::requires_event_focus(const SDL_Event* event) const
 {
-	if(!focus_ || hidden() || !enabled()) {
+	if(!focus_ || hidden() || !enabled()){
 		return false;
 	}
-	if(event == nullptr) {
+	if(event == nullptr){
 		//when event is not specified, signal that focus may be desired later
 		return true;
 	}
 
-	if(event->type == SDL_KEYDOWN) {
+	if(event->type == SDL_KEYDOWN){
 		SDL_Keycode key = event->key.keysym.sym;
-		switch(key) {
+		switch(key){
 		case SDLK_UP:
 		case SDLK_DOWN:
 		case SDLK_PAGEUP:
@@ -450,12 +450,12 @@ bool textbox::handle_text_input(const SDL_Event& event)
 
 	DBG_G << "Char: " << str;
 
-	if (editable_) {
+	if(editable_){
 		changed = true;
-		if (is_selection())
+		if(is_selection())
 			erase_selection();
 
-		if (text_.size() + 1 <= max_size_) {
+		if(text_.size() + 1 <= max_size_){
 
 			text_.insert(text_.begin() + cursor_, s.begin(), s.end());
 			cursor_ += s.size();
@@ -478,7 +478,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 	listening_ = true;
 
-	if(editable_) {
+	if(editable_){
 		if(c == SDLK_LEFT && cursor_ > 0)
 			--cursor_;
 
@@ -492,43 +492,43 @@ bool textbox::handle_key_down(const SDL_Event &event)
 		if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
 			cursor_ = 0;
 
-		if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
+		if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)){
 			if(selstart_ == -1)
 				selstart_ = old_cursor;
 			selend_ = cursor_;
 		}
-	} else if(c == SDLK_LEFT || c == SDLK_RIGHT || c == SDLK_END || c == SDLK_HOME) {
+	} else if(c == SDLK_LEFT || c == SDLK_RIGHT || c == SDLK_END || c == SDLK_HOME){
 		pass_event_to_target(event);
 	}
 
-	if(editable_) {
-		if(c == SDLK_BACKSPACE) {
+	if(editable_){
+		if(c == SDLK_BACKSPACE){
 			changed = true;
-			if(is_selection()) {
+			if(is_selection()){
 				erase_selection();
-			} else if(cursor_ > 0) {
+			} else if(cursor_ > 0){
 				--cursor_;
 				text_.erase(text_.begin()+cursor_);
 			}
 		}
 
-		if(c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
+		if(c == SDLK_u && (modifiers & KMOD_CTRL)){ // clear line
 			changed = true;
 			cursor_ = 0;
 			text_.resize(0);
 		}
 
-		if(c == SDLK_DELETE && !text_.empty()) {
+		if(c == SDLK_DELETE && !text_.empty()){
 			changed = true;
-			if(is_selection()) {
+			if(is_selection()){
 				erase_selection();
 			} else {
-				if(cursor_ < static_cast<int>(text_.size())) {
+				if(cursor_ < static_cast<int>(text_.size())){
 					text_.erase(text_.begin()+cursor_);
 				}
 			}
 		}
-	} else if(c == SDLK_BACKSPACE || c == SDLK_DELETE || (c == SDLK_u && (modifiers & KMOD_CTRL))) {
+	} else if(c == SDLK_BACKSPACE || c == SDLK_DELETE || (c == SDLK_u && (modifiers & KMOD_CTRL))){
 		pass_event_to_target(event);
 	}
 
@@ -536,17 +536,17 @@ bool textbox::handle_key_down(const SDL_Event &event)
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 			c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
-			c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
+			c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)){
 		if((event.key.keysym.mod & copypaste_modifier)
 				//on windows SDL fires for AltGr lctrl+ralt (needed to access @ etc on certain keyboards)
 #ifdef _WIN32
 				&& !(event.key.keysym.mod & KMOD_ALT)
 #endif
-		) {
-			switch(c) {
+		){
+			switch(c){
 			case SDLK_v: // paste
 			{
-				if(!editable()) {
+				if(!editable()){
 					pass_event_to_target(event);
 					break;
 				}
@@ -562,8 +562,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 				std::u32string s = unicode_cast<std::u32string>(str);
 
-				if(text_.size() < max_size_) {
-					if(s.size() + text_.size() > max_size_) {
+				if(text_.size() < max_size_){
+					if(s.size() + text_.size() > max_size_){
 						s.resize(max_size_ - text_.size());
 					}
 					text_.insert(text_.begin()+cursor_, s.begin(), s.end());
@@ -633,14 +633,14 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
-	if(is_selection() && !(std::size_t(selstart_) <= text_.size() && std::size_t(selend_) <= text_.size())) {
+	if(is_selection() && !(std::size_t(selstart_) <= text_.size() && std::size_t(selend_) <= text_.size())){
 		WRN_DP << "out-of-boundary selection";
 		selstart_ = selend_ = -1;
 	}
 
 	int mousex, mousey;
 	const uint8_t mousebuttons = sdl::get_mouse_state(&mousex,&mousey);
-	if(!(mousebuttons & SDL_BUTTON(1))) {
+	if(!(mousebuttons & SDL_BUTTON(1))){
 		grabmouse_ = false;
 	}
 
@@ -652,32 +652,32 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	// the WAIT cursor) so we ought to mess with that only if it's set to
 	// NORMAL or IBEAM.
 
-	if(mouse_inside && cursor::get() == cursor::NORMAL) {
+	if(mouse_inside && cursor::get() == cursor::NORMAL){
 		cursor::set(cursor::IBEAM);
-	} else if(!mouse_inside && cursor::get() == cursor::IBEAM) {
+	} else if(!mouse_inside && cursor::get() == cursor::IBEAM){
 		cursor::set(cursor::NORMAL);
 	}
 
 	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
 					   && (mousebuttons & SDL_BUTTON(1))
 					   && mouse_inside);
-	if(clicked_inside) {
+	if(clicked_inside){
 		set_focus(true);
 	}
-	if ((grabmouse_ && (!mouse_locked() && event.type == SDL_MOUSEMOTION)) || clicked_inside) {
+	if((grabmouse_ && (!mouse_locked() && event.type == SDL_MOUSEMOTION)) || clicked_inside){
 		const int x = mousex - loc.x + text_pos_;
 		const int y = mousey - loc.y;
 		int pos = 0;
 		int distance = x;
 
-		for(unsigned int i = 1; i < char_x_.size(); ++i) {
-			if(static_cast<int>(yscroll_) + y < char_y_[i]) {
+		for(unsigned int i = 1; i < char_x_.size(); ++i){
+			if(static_cast<int>(yscroll_) + y < char_y_[i]){
 				break;
 			}
 
 			// Check individually each distance (if, one day, we support
 			// RTL languages, char_x_[c] may not be monotonous.)
-			if(std::abs(x - char_x_[i]) < distance && yscroll_ + y < char_y_[i] + line_height_) {
+			if(std::abs(x - char_x_[i]) < distance && yscroll_ + y < char_y_[i] + line_height_){
 				pos = i;
 				distance = std::abs(x - char_x_[i]);
 			}
@@ -690,10 +690,10 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 		update_text_cache(false);
 
-		if(!grabmouse_ && (mousebuttons & SDL_BUTTON(1))) {
+		if(!grabmouse_ && (mousebuttons & SDL_BUTTON(1))){
 			grabmouse_ = true;
 			selstart_ = selend_ = cursor_;
-		} else if (! (mousebuttons & SDL_BUTTON(1))) {
+		} else if(! (mousebuttons & SDL_BUTTON(1))){
 			grabmouse_ = false;
 		}
 
@@ -702,8 +702,8 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
-	if(!was_forwarded && focus(&event) == false) {
-		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && loc.contains(mousex, mousey))
+	if(!was_forwarded && focus(&event) == false){
+		if(!mouse_locked() && event.type == SDL_MOUSEMOTION && loc.contains(mousex, mousey))
 			events::focus_handler(this);
 
 		return;
@@ -711,9 +711,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const int old_cursor = cursor_;
 
-	if (event.type == SDL_TEXTINPUT && listening_) {
+	if(event.type == SDL_TEXTINPUT && listening_){
 		changed = handle_text_input(event);
-	} else if (event.type == SDL_KEYDOWN) {
+	} else if(event.type == SDL_KEYDOWN){
 		changed = handle_key_down(event);
 	}
 
@@ -725,7 +725,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	show_cursor_ = true;
 	show_cursor_at_ = SDL_GetTicks();
 
-	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_) {
+	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_){
 		text_image_.reset();
 		handle_text_changed(text_);
 	}
@@ -735,7 +735,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 void textbox::pass_event_to_target(const SDL_Event& event)
 {
-	if(edit_target_ && edit_target_->editable()) {
+	if(edit_target_ && edit_target_->editable()){
 		edit_target_->handle_event(event, true);
 	}
 }

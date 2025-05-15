@@ -56,7 +56,7 @@ sourcespec manager::get(const std::string &id)
 {
 	config cfg;
 	positional_source_iterator it = sources_.find(id);
-	if(it != sources_.end()) {
+	if(it != sources_.end()){
 		it->second->write_config(cfg);
 	}
 	return cfg;
@@ -82,7 +82,7 @@ void manager::update()
 {
 	auto time = std::chrono::steady_clock::now();
 
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
+	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it){
 		(*it).second->update(time, disp_);
 	}
 }
@@ -91,14 +91,14 @@ void manager::update_positions()
 {
 	auto time = std::chrono::steady_clock::now();
 
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
+	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it){
 		(*it).second->update_positions(time, disp_);
 	}
 }
 
 void manager::write_sourcespecs(config& cfg) const
 {
-	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
+	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i){
 		assert(i->second);
 
 		config& child = cfg.add_child("sound_source");
@@ -136,25 +136,25 @@ bool positional_source::is_global() const
 
 void positional_source::update(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
-	if (time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
+	if(time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
 		return;
 
 	int i = randomness::rng::default_instance().get_random_int(1, 100);
 
-	if(i <= chance_) {
+	if(i <= chance_){
 		last_played_ = time;
 
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
-		if(locations_.empty()) {
+		if(locations_.empty()){
 			sound::play_sound_positioned(files_, id_, loops_, 0);	// max volume
 			return;
 		}
 
 		int distance_volume = DISTANCE_SILENT;
-		for(const map_location& l : locations_) {
+		for(const map_location& l : locations_){
 			int v = calculate_volume(l, disp);
-			if(v < distance_volume) {
+			if(v < distance_volume){
 				distance_volume = v;
 			}
 		}
@@ -168,19 +168,19 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 
 void positional_source::update_positions(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
-	if(is_global()) {
+	if(is_global()){
 		return;
 	}
 
 	int distance_volume = DISTANCE_SILENT;
-	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
+	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i){
 		int v = calculate_volume(*i, disp);
-		if(v < distance_volume) {
+		if(v < distance_volume){
 			distance_volume = v;
 		}
 	}
 
-	if(sound::is_sound_playing(id_)) {
+	if(sound::is_sound_playing(id_)){
 		sound::reposition_sound(id_, distance_volume);
 	} else {
 		update(time, disp);
@@ -199,11 +199,11 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
 	int distance = distance_between(loc, center);
 
-	if(distance <= range_) {
+	if(distance <= range_){
 		return 0;
 	}
 
-	if(faderange_ == 0) {
+	if(faderange_ == 0){
 		return DISTANCE_SILENT;
 	}
 

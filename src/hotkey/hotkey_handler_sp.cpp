@@ -50,23 +50,23 @@ playsingle_controller::hotkey_handler::~hotkey_handler(){}
 bool playsingle_controller::hotkey_handler::is_observer() const { return playsingle_controller_.is_observer(); }
 
 void playsingle_controller::hotkey_handler::recruit(){
-	if (!browse())
+	if(!browse())
 		menu_handler_.recruit(play_controller_.current_side(), mouse_handler_.get_last_hex());
-	else if (whiteboard_manager_->is_active())
+	else if(whiteboard_manager_->is_active())
 		menu_handler_.recruit(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::hotkey_handler::repeat_recruit(){
-	if (!browse())
+	if(!browse())
 		menu_handler_.repeat_recruit(play_controller_.current_side(), mouse_handler_.get_last_hex());
-	else if (whiteboard_manager_->is_active())
+	else if(whiteboard_manager_->is_active())
 		menu_handler_.repeat_recruit(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::hotkey_handler::recall(){
-	if (!browse())
+	if(!browse())
 		menu_handler_.recall(play_controller_.current_side(), mouse_handler_.get_last_hex());
-	else if (whiteboard_manager_->is_active())
+	else if(whiteboard_manager_->is_active())
 		menu_handler_.recall(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
@@ -115,12 +115,12 @@ void playsingle_controller::hotkey_handler::continue_move(){
 }
 
 void playsingle_controller::hotkey_handler::unit_hold_position(){
-	if (!browse())
+	if(!browse())
 		menu_handler_.unit_hold_position(mouse_handler_, play_controller_.current_side());
 }
 
 void playsingle_controller::hotkey_handler::end_unit_turn(){
-	if (!browse())
+	if(!browse())
 		menu_handler_.end_unit_turn(mouse_handler_, play_controller_.current_side());
 }
 
@@ -144,10 +144,10 @@ void playsingle_controller::hotkey_handler::label_settings(){
 	menu_handler_.label_settings();
 }
 
-void playsingle_controller::hotkey_handler::whiteboard_toggle() {
+void playsingle_controller::hotkey_handler::whiteboard_toggle(){
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 
-	if (whiteboard_manager_->is_active()) {
+	if(whiteboard_manager_->is_active()){
 		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
@@ -195,7 +195,7 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 
 hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
-	switch(cmd.hotkey_command) {
+	switch(cmd.hotkey_command){
 	case hotkey::HOTKEY_WB_TOGGLE:
 		return whiteboard_manager_->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	default:
@@ -212,9 +212,9 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 		case hotkey::HOTKEY_NULL:
 		case hotkey::HOTKEY_WML:
 		{
-			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0) {
+			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0){
 				game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(std::string(cmd.id.substr(prefixlen)));
-				if(!item) {
+				if(!item){
 					return false;
 				}
 				return !item->is_synced() || play_controller_.can_use_synced_wml_menu();
@@ -271,11 +271,11 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 			if(browse() || events::commands_disabled)
 				return false;
 
-			if( (menu_handler_.current_unit().valid())
+			if((menu_handler_.current_unit().valid())
 				&& (menu_handler_.current_unit()->move_interrupted()))
 				return true;
 			const unit_map::const_iterator i = play_controller_.get_units().find(mouse_handler_.get_selected_hex());
-			if (!i.valid()) return false;
+			if(!i.valid()) return false;
 			return i->move_interrupted();
 		}
 		case hotkey::HOTKEY_WB_TOGGLE:
@@ -316,15 +316,15 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename, bool start_replay)
 {
-	if(!start_replay) {
+	if(!start_replay){
 		play_controller::hotkey_handler::load_autosave(filename);
 	}
 	auto invalid_save_file = [this, filename](const std::string& msg){
-		if(playsingle_controller_.is_networked_mp()) {
+		if(playsingle_controller_.is_networked_mp()){
 			gui2::show_error_message(msg);
 		} else {
 			const int res = gui2::show_message("", msg + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
-			if(res != gui2::retval::CANCEL) {
+			if(res != gui2::retval::CANCEL){
 				play_controller::hotkey_handler::load_autosave(filename);
 			}
 		}
@@ -334,15 +334,15 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	std::string error_log;
 	savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
 
-	if(!error_log.empty()) {
+	if(!error_log.empty()){
 		invalid_save_file(_("The file you have tried to load is corrupt: '") + error_log);
 		return;
 	}
-	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0){
 		invalid_save_file(_("The file you have tried to load has no replay information. "));
 		return;
 	}
-	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
+	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))){
 		invalid_save_file(_("The file you have tried to load is not from the current session."));
 		return;
 	}
@@ -354,7 +354,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 
 void playsingle_controller::hotkey_handler::replay_exit()
 {
-	if(!playsingle_controller_.is_networked_mp()) {
+	if(!playsingle_controller_.is_networked_mp()){
 		resources::recorder->delete_upcoming_commands();
 	}
 	playsingle_controller_.set_player_type_changed();

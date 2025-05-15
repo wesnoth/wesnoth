@@ -32,7 +32,7 @@ static void value_to_stringstream(
 	const bool verbose_table = true)
 {
 	const int t = lua_type(L, i);
-	switch (t) {
+	switch (t){
 		case LUA_TSTRING:
 			output << "STRING; VALUE: " << lua_tostring(L, i);
 		break;
@@ -57,7 +57,7 @@ static void value_to_stringstream(
 				{
 					output << "\n" << indent << "KEY: ";
 					const int keytype = lua_type(L, keyindex);
-					switch(keytype) {
+					switch(keytype){
 						case LUA_TSTRING:
 							output << lua_tostring(L, keyindex);
 						break;
@@ -97,11 +97,11 @@ static void value_to_stringstream(
 	}
 }
 
-void ds(lua_State *L, const bool verbose_table) {
+void ds(lua_State *L, const bool verbose_table){
 	std::stringstream output;
 	output << "\n";
 	int top = lua_gettop(L);
-	for (int i = 1; i <= top; ++i) {
+	for(int i = 1; i <= top; ++i){
 		output << "INDEX: " << i << "; TYPE: ";
 		value_to_stringstream(output, i, L, "", verbose_table);
 		output << "\n";

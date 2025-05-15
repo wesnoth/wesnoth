@@ -199,7 +199,7 @@ namespace {
 	template<class T>
 	struct dialog_tester
 	{
-		T* create() { return new T(); }
+		T* create(){ return new T(); }
 	};
 
 	typedef std::pair<unsigned, unsigned> resolution;
@@ -208,7 +208,7 @@ namespace {
 	template<class T>
 	void test_resolutions(const resolution_list& resolutions)
 	{
-		for(const resolution& resolution : resolutions) {
+		for(const resolution& resolution : resolutions){
 			test_utils::get_fake_display(resolution.first, resolution.second);
 
 			dialog_tester<T> ctor;
@@ -221,17 +221,17 @@ namespace {
 			std::string exception;
 			try {
 				dlg->show(1);
-			} catch(const gui2::layout_exception_width_modified&) {
+			} catch(const gui2::layout_exception_width_modified&){
 				exception = "gui2::layout_exception_width_modified";
-			} catch(const gui2::layout_exception_width_resize_failed&) {
+			} catch(const gui2::layout_exception_width_resize_failed&){
 				exception = "gui2::layout_exception_width_resize_failed";
-			} catch(const gui2::layout_exception_height_resize_failed&) {
+			} catch(const gui2::layout_exception_height_resize_failed&){
 				exception = "gui2::layout_exception_height_resize_failed";
-			} catch(const wml_exception& e) {
+			} catch(const wml_exception& e){
 				exception = e.dev_message;
-			} catch(const std::exception& e) {
+			} catch(const std::exception& e){
 				exception = e.what();
-			} catch(...) {
+			} catch(...){
 				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
@@ -247,8 +247,8 @@ namespace {
 	void test_popup_resolutions(const resolution_list& resolutions)
 	{
 		bool interact = false;
-		for(int i = 0; i < 2; ++i) {
-			for(const resolution& resolution : resolutions) {
+		for(int i = 0; i < 2; ++i){
+			for(const resolution& resolution : resolutions){
 				test_utils::get_fake_display(resolution.first, resolution.second);
 
 				dialog_tester<T> ctor;
@@ -264,17 +264,17 @@ namespace {
 					gui2::window* window = dlg.get();
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
-				} catch(const gui2::layout_exception_width_modified&) {
+				} catch(const gui2::layout_exception_width_modified&){
 					exception = "gui2::layout_exception_width_modified";
-				} catch(const gui2::layout_exception_width_resize_failed&) {
+				} catch(const gui2::layout_exception_width_resize_failed&){
 					exception = "gui2::layout_exception_width_resize_failed";
-				} catch(const gui2::layout_exception_height_resize_failed&) {
+				} catch(const gui2::layout_exception_height_resize_failed&){
 					exception = "gui2::layout_exception_height_resize_failed";
-				} catch(const wml_exception& e) {
+				} catch(const wml_exception& e){
 					exception = e.dev_message;
-				} catch(const std::exception& e) {
+				} catch(const std::exception& e){
 					exception = e.what();
-				} catch(...) {
+				} catch(...){
 					exception = utils::get_unknown_exception_type();
 				}
 				BOOST_CHECK_MESSAGE(exception.empty(),
@@ -296,7 +296,7 @@ namespace {
 	void test_tip_resolutions(const resolution_list& resolutions
 			, const std::string& id)
 	{
-		for(const auto& resolution : resolutions) {
+		for(const auto& resolution : resolutions){
 			test_utils::get_fake_display(resolution.first, resolution.second);
 
 			filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
@@ -308,17 +308,17 @@ namespace {
 						, point(0, 0)
 						, {0,0,0,0});
 				tip::remove();
-			} catch(const gui2::layout_exception_width_modified&) {
+			} catch(const gui2::layout_exception_width_modified&){
 				exception = "gui2::layout_exception_width_modified";
-			} catch(const gui2::layout_exception_width_resize_failed&) {
+			} catch(const gui2::layout_exception_width_resize_failed&){
 				exception = "gui2::layout_exception_width_resize_failed";
-			} catch(const gui2::layout_exception_height_resize_failed&) {
+			} catch(const gui2::layout_exception_height_resize_failed&){
 				exception = "gui2::layout_exception_height_resize_failed";
-			} catch(const wml_exception& e) {
+			} catch(const wml_exception& e){
 				exception = e.dev_message;
-			} catch(const std::exception& e) {
+			} catch(const std::exception& e){
 				exception = e.what();
-			} catch(...) {
+			} catch(...){
 				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
@@ -349,7 +349,7 @@ void test()
 {
 	gui2::new_widgets = false;
 
-//	for(std::size_t i = 0; i < 2; ++i) {
+//	for(std::size_t i = 0; i < 2; ++i){
 
 		test_resolutions<T>(get_gui_resolutions());
 
@@ -363,7 +363,7 @@ void test_popup()
 {
 	gui2::new_widgets = false;
 
-	for(std::size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i){
 
 		test_popup_resolutions<T>(get_gui_resolutions());
 
@@ -375,7 +375,7 @@ void test_tip(const std::string& id)
 {
 	gui2::new_widgets = false;
 
-	for(std::size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i){
 
 		test_tip_resolutions(get_gui_resolutions(), id);
 
@@ -385,7 +385,7 @@ void test_tip(const std::string& id)
 
 } // namespace
 
-BOOST_FIXTURE_TEST_SUITE( test_gui2, test_gui2_fixture )
+BOOST_FIXTURE_TEST_SUITE(test_gui2, test_gui2_fixture)
 
 BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_auth)
 {
@@ -723,7 +723,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(widget_list.size(), 0);
-	for(const std::string& id : widget_list) {
+	for(const std::string& id : widget_list){
 		PLAIN_LOG << "Window '" << id << "' registered but not tested.";
 	}
 }
@@ -735,10 +735,10 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	try {
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn’t fit on the screen."));
 		return;
-	} catch(...) {
+	} catch(...){
 		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
 	}
 	BOOST_ERROR("Didn't catch the wanted exception, instead caught nothing.");
@@ -838,7 +838,7 @@ struct dialog_tester<chat_log>
 	vconfig vcfg;
 	replay_recorder_base rbase;
 	replay r;
-	dialog_tester() : vcfg(cfg), r(rbase) {}
+	dialog_tester() : vcfg(cfg), r(rbase){}
 	chat_log* create()
 	{
 		return new chat_log(vcfg, r);
@@ -968,7 +968,7 @@ struct dialog_tester<editor_edit_side>
 {
 	team t;
 	editor::editor_team_info info;
-	dialog_tester() : info(t) {}
+	dialog_tester() : info(t){}
 	editor_edit_side* create()
 	{
 		return new editor_edit_side(info);
@@ -1106,10 +1106,10 @@ struct dialog_tester<gui2::dialogs::migrate_version_selection>
 class fake_chat_handler : public events::chat_handler {
 	void add_chat_message(const std::time_t&,
 		const std::string&, int, const std::string&,
-		MESSAGE_TYPE) {}
-	void send_chat_message(const std::string&, bool) {}
-	void send_to_server(const config&) {}
-	void clear_messages() {}
+		MESSAGE_TYPE){}
+	void send_chat_message(const std::string&, bool){}
+	void send_to_server(const config&){}
+	void clear_messages(){}
 };
 
 template<>
@@ -1254,10 +1254,10 @@ struct dialog_tester<editor_generate_map>
 	std::vector<std::unique_ptr<map_generator>> map_generators;
 	editor_generate_map* create()
 	{
-		for(const config &i : test_gui2_fixture::main_config.child_range("multiplayer")) {
-			if(i["scenario_generation"] == "default") {
+		for(const config &i : test_gui2_fixture::main_config.child_range("multiplayer")){
+			if(i["scenario_generation"] == "default"){
 				auto generator_cfg = i.optional_child("generator");
-				if (generator_cfg) {
+				if(generator_cfg){
 					map_generators.emplace_back(create_map_generator("", *generator_cfg));
 				}
 			}
@@ -1328,7 +1328,7 @@ struct dialog_tester<title_screen>
 	std::vector<std::string> args;
 	commandline_options opts;
 	game_launcher game;
-	dialog_tester() : opts(args), game(opts) {}
+	dialog_tester() : opts(args), game(opts){}
 	title_screen* create()
 	{
 		return new title_screen(game);
@@ -1385,7 +1385,7 @@ struct dialog_tester<faction_select>
 		, flg(eras, side_cfg, false, false, false)
 		, color("teal")
 	{}
-	faction_select* create() {
+	faction_select* create(){
 		return new faction_select(flg, color, 1);
 	}
 };
@@ -1395,7 +1395,7 @@ struct dialog_tester<generator_settings>
 {
 	config cfg;
 	generator_data data;
-	dialog_tester() : data(cfg) {}
+	dialog_tester() : data(cfg){}
 	generator_settings* create()
 	{
 		return new generator_settings(data);
@@ -1407,7 +1407,7 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	dialog_tester() : create_eng(state) {}
+	dialog_tester() : create_eng(state){}
 	sp_options_configure* create()
 	{
 		return new sp_options_configure(create_eng);
@@ -1420,7 +1420,7 @@ struct dialog_tester<statistics_dialog>
 	team t;
 	statistics_record::campaign_stats_t stats_record;
 	statistics_t stats;
-	dialog_tester() : t() , stats_record(), stats(stats_record) {}
+	dialog_tester() : t() , stats_record(), stats(stats_record){}
 	statistics_dialog* create()
 	{
 		return new statistics_dialog(stats, t);
@@ -1430,7 +1430,7 @@ struct dialog_tester<statistics_dialog>
 template<>
 struct dialog_tester<surrender_quit>
 {
-	dialog_tester() {}
+	dialog_tester(){}
 	surrender_quit* create()
 	{
 		return new surrender_quit();
@@ -1442,7 +1442,7 @@ struct dialog_tester<tod_new_schedule>
 {
 	std::string id = "id";
 	t_string name = "name";
-	dialog_tester() {}
+	dialog_tester(){}
 	tod_new_schedule* create()
 	{
 		return new tod_new_schedule(id, name);
@@ -1455,7 +1455,7 @@ struct dialog_tester<editor_edit_unit>
 	config cfg;
 	game_config_view view;
 
-	dialog_tester() {}
+	dialog_tester(){}
 	editor_edit_unit* create()
 	{
 		config& units = cfg.add_child("units");
@@ -1473,7 +1473,7 @@ struct dialog_tester<editor_edit_unit>
 template<>
 struct dialog_tester<gui_test_dialog>
 {
-	dialog_tester() {}
+	dialog_tester(){}
 	gui_test_dialog* create()
 	{
 		return new gui_test_dialog();

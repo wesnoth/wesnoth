@@ -56,14 +56,14 @@ constexpr int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
 
 
 /**
- * @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
+ * @returns: the number n in [min, min+mod) so that (n - num) is a multiple of mod.
  */
 template<typename T>
 constexpr T modulo(T num, int mod, T min = 0)
 {
 	assert(mod > 0);
 	T n = (num - min) % mod;
-	if (n < 0)
+	if(n < 0)
 		n += mod;
 	//n is now in [0, mod)
 	n = n + min;
@@ -78,7 +78,7 @@ constexpr T modulo(T num, int mod, T min = 0)
  *  but up or down towards base_damage
  */
 constexpr int round_damage(double base_damage, int bonus, int divisor) {
-	if (base_damage==0) return 0;
+	if(base_damage==0) return 0;
 	const int rounding = divisor / 2 - (bonus <= divisor || divisor==1 ? 0 : 1);
 	return std::max<int>(1, static_cast<int>(base_damage * bonus + rounding) / divisor);
 }

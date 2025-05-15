@@ -37,7 +37,7 @@ namespace wfl
 		variant execute(const formula_callable& variables, formula_debugger* fdb) const;                               \
 	};                                                                                                                 \
                                                                                                                        \
-	variant name##_function::execute(                                                                                  \
+	variant name##_function::execute(                                                                                 \
 		[[maybe_unused]] const formula_callable& variables, [[maybe_unused]] formula_debugger* fdb) const
 
 /**

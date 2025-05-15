@@ -44,7 +44,7 @@ point image::calculate_best_size() const
 {
 	point image_size = ::image::get_size(::image::locator{get_label()});
 
-	if(image_size.x == 0 || image_size.y == 0) {
+	if(image_size.x == 0 || image_size.y == 0){
 		DBG_GUI_L << LOG_HEADER << " empty image return default.";
 		return get_config_default_size();
 	}
@@ -54,18 +54,18 @@ point image::calculate_best_size() const
 
 	point result {image_size.x, image_size.y};
 
-	if(minimum.x > 0 && result.x < minimum.x) {
+	if(minimum.x > 0 && result.x < minimum.x){
 		DBG_GUI_L << LOG_HEADER << " increase width to minimum.";
 		result.x = minimum.x;
-	} else if(maximum.x > 0 && result.x > maximum.x) {
+	} else if(maximum.x > 0 && result.x > maximum.x){
 		DBG_GUI_L << LOG_HEADER << " decrease width to maximum.";
 		result.x = maximum.x;
 	}
 
-	if(minimum.y > 0 && result.y < minimum.y) {
+	if(minimum.y > 0 && result.y < minimum.y){
 		DBG_GUI_L << LOG_HEADER << " increase height to minimum.";
 		result.y = minimum.y;
-	} else if(maximum.y > 0 && result.y > maximum.y) {
+	} else if(maximum.y > 0 && result.y > maximum.y){
 		DBG_GUI_L << LOG_HEADER << " decrease height to maximum.";
 		result.y = maximum.y;
 	}

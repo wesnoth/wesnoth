@@ -68,8 +68,8 @@ void mp_change_control::pre_show()
 	//
 	// Initialize sides list
 	//
-	for(const team& t : menu_handler_.board().teams()) {
-		if(t.hidden()) {
+	for(const team& t : menu_handler_.board().teams()){
+		if(t.hidden()){
 			continue;
 		}
 
@@ -91,7 +91,7 @@ void mp_change_control::pre_show()
 	// Prepare set of available nicknames
 	//
 	std::set<std::string> temp_nicks;
-	for(const auto& team : menu_handler_.board().teams()) {
+	for(const auto& team : menu_handler_.board().teams()){
 		if(!team.is_local_ai() && !team.is_network_ai() && !team.is_idle()
 			&& !team.is_empty() && !team.current_player().empty())
 		{
@@ -108,7 +108,7 @@ void mp_change_control::pre_show()
 	//
 	// Initialize nick list
 	//
-	for(const std::string& nick : temp_nicks) {
+	for(const std::string& nick : temp_nicks){
 		nicks_.push_back(nick);
 
 		nicks_list.add_row(widget_data{
@@ -142,10 +142,10 @@ void mp_change_control::highlight_side_nick()
 	const auto& teams = menu_handler_.board().teams();
 
 	int i = 0;
-	for(const std::string& nick : nicks_) {
+	for(const std::string& nick : nicks_){
 		std::string label_str = "";
 
-		if(selected_side_ <= static_cast<unsigned int>(teams.size()) && teams.at(selected_side_).current_player() == nick) {
+		if(selected_side_ <= static_cast<unsigned int>(teams.size()) && teams.at(selected_side_).current_player() == nick){
 			label_str = markup::bold(nick);
 		} else {
 			label_str = nick;
@@ -160,7 +160,7 @@ void mp_change_control::highlight_side_nick()
 
 void mp_change_control::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		DBG_GUI << "Main: changing control of side "
 		        << sides_[selected_side_] << " to nick "
 		        << nicks_[selected_nick_];

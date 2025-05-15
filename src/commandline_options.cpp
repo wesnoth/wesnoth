@@ -39,7 +39,7 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
               two_strings*, int)
 {
 	two_strings ret_val;
-	if(values.size() != 2) {
+	if(values.size() != 2){
 		throw po::validation_error(po::validation_error::invalid_option_value);
 	}
 	ret_val.first = values[0];
@@ -352,10 +352,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	if(vm.count("addon-server-info"))
 		addon_server_info = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	if(vm.count("debug-dot-domain")) {
+	if(vm.count("debug-dot-domain")){
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
 	}
-	if(vm.count("debug-dot-level")) {
+	if(vm.count("debug-dot-level")){
 		debug_dot_level = vm["debug-dot-level"].as<std::string>();
 	}
 #endif
@@ -540,17 +540,17 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		translation_percent = std::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 
 	// Parse log domain severity following the command line order.
-	for (const auto& option : parsed_options.options) {
-		if (!option.value.empty()) {
-			if (option.string_key == "log-error") {
+	for(const auto& option : parsed_options.options){
+		if(!option.value.empty()){
+			if(option.string_key == "log-error"){
 				parse_log_domains_(option.value.front(),lg::err().get_severity());
-			} else if (option.string_key == "log-warning") {
+			} else if(option.string_key == "log-warning"){
 				parse_log_domains_(option.value.front(),lg::warn().get_severity());
-			} else if (option.string_key == "log-info") {
+			} else if(option.string_key == "log-info"){
 				parse_log_domains_(option.value.front(),lg::info().get_severity());
-			} else if (option.string_key == "log-debug") {
+			} else if(option.string_key == "log-debug"){
 				parse_log_domains_(option.value.front(),lg::debug().get_severity());
-			} else if (option.string_key == "log-none") {
+			} else if(option.string_key == "log-none"){
 				parse_log_domains_(option.value.front(),lg::severity::LG_NONE);
 			}
 		}
@@ -559,20 +559,20 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const lg::severity severity)
 {
-	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty()) {
-		if(!log) {
+	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty()){
+		if(!log){
 			log.emplace();
 		}
-		for(auto&& domain : domains) {
+		for(auto&& domain : domains){
 			log->emplace_back(severity, std::move(domain));
 		}
 	}
 }
 
-void commandline_options::parse_log_strictness (const std::string & severity) {
+void commandline_options::parse_log_strictness (const std::string & severity){
 	static const std::array<const lg::logger*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
-	for(const lg::logger * l : loggers ) {
-		if(severity == l->get_name()) {
+	for(const lg::logger * l : loggers){
+		if(severity == l->get_name()){
 			lg::set_strict_severity(*l);
 			return;
 		}
@@ -584,7 +584,7 @@ void commandline_options::parse_log_strictness (const std::string & severity) {
 void commandline_options::parse_resolution_ (const std::string& resolution_string)
 {
 	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
-	if(tokens.size() != 2) {
+	if(tokens.size() != 2){
 		throw bad_commandline_resolution(resolution_string);
 	}
 
@@ -593,7 +593,7 @@ void commandline_options::parse_resolution_ (const std::string& resolution_strin
 	try {
 		xres = std::stoi(tokens[0]);
 		yres = std::stoi(tokens[1]);
-	} catch(const std::invalid_argument &) {
+	} catch(const std::invalid_argument &){
 		throw bad_commandline_resolution(resolution_string);
 	}
 
@@ -608,16 +608,16 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 	const std::string expected_format
 			= "UINT"s + separator + "STRING";
 
-	for(const std::string &s : strings) {
+	for(const std::string &s : strings){
 		std::vector<std::string> tokens = utils::split(s, separator);
-		if(tokens.size() != 2) {
+		if(tokens.size() != 2){
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (const bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &){
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
@@ -634,16 +634,16 @@ std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_option
 	const std::string expected_format
 			= "UINT"s + separator + "STRING" + separator + "STRING";
 
-	for(const std::string &s : strings) {
+	for(const std::string &s : strings){
 		const std::vector<std::string> tokens = utils::split(s, separator);
-		if(tokens.size() != 3) {
+		if(tokens.size() != 3){
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (const bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &){
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
@@ -661,13 +661,13 @@ std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_op
 
 config commandline_options::to_config() const {
 	config ret;
-	if(server) {
+	if(server){
 		ret["server"] = *server;
 	}
-	if(username) {
+	if(username){
 		ret["username"] = *username;
 	}
-	if(password) {
+	if(password){
 		ret["password"] = *password;
 	}
 	return ret;

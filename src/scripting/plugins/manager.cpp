@@ -53,7 +53,7 @@ plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	start_plugin(0);
 }
 
-plugins_manager::~plugins_manager() {}
+plugins_manager::~plugins_manager(){}
 
 plugins_manager * plugins_manager::get()
 {
@@ -65,13 +65,13 @@ lua_kernel_base * plugins_manager::get_kernel_base()
 	return kernel_.get();
 }
 
-std::size_t plugins_manager::size() {
+std::size_t plugins_manager::size(){
 	return plugins_.size();
 }
 
-plugin_manager_status::type plugins_manager::get_status(std::size_t idx) {
-	if (idx < plugins_.size()) {
-		if (!plugins_[idx].thread) {
+plugin_manager_status::type plugins_manager::get_status(std::size_t idx){
+	if(idx < plugins_.size()){
+		if(!plugins_[idx].thread){
 			return plugin_manager_status::type::not_created;
 		} else {
 			return plugins_[idx].thread->is_running() ? plugin_manager_status::type::running : plugin_manager_status::type::stopped;
@@ -80,9 +80,9 @@ plugin_manager_status::type plugins_manager::get_status(std::size_t idx) {
 	throw std::runtime_error("index out of bounds");
 }
 
-std::string plugins_manager::get_detailed_status(std::size_t idx) {
-	if (idx < plugins_.size()) {
-		if (!plugins_[idx].thread) {
+std::string plugins_manager::get_detailed_status(std::size_t idx){
+	if(idx < plugins_.size()){
+		if(!plugins_[idx].thread){
 			return "not loaded";
 		} else {
 			return plugins_[idx].thread->status();
@@ -91,8 +91,8 @@ std::string plugins_manager::get_detailed_status(std::size_t idx) {
 	throw std::runtime_error("index out of bounds");
 }
 
-std::string plugins_manager::get_name(std::size_t idx) {
-	if (idx < plugins_.size()) {
+std::string plugins_manager::get_name(std::size_t idx){
+	if(idx < plugins_.size()){
 		return plugins_[idx].name;
 	}
 	throw std::runtime_error("index out of bounds");
@@ -101,8 +101,8 @@ std::string plugins_manager::get_name(std::size_t idx) {
 void plugins_manager::start_plugin(std::size_t idx)
 {
 	DBG_PLG << "start_plugin[" << idx <<"]";
-	if (idx < plugins_.size()) {
-		if (!plugins_[idx].thread) {
+	if(idx < plugins_.size()){
+		if(!plugins_[idx].thread){
 			DBG_PLG << "creating thread[" << idx << "]";
 			plugins_[idx].thread.reset(plugins_[idx].is_file ?
 						kernel_->load_script_from_file(plugins_[idx].source) : kernel_->load_script_from_string(plugins_[idx].source));
@@ -147,9 +147,9 @@ void plugins_manager::notify_event(const std::string & name, const config & data
 	evt.name = name;
 	evt.data = data;
 
-	for (std::size_t idx = 0; idx < size(); ++idx)
+	for(std::size_t idx = 0; idx < size(); ++idx)
 	{
-		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
+		if(plugins_[idx].thread && plugins_[idx].thread->is_running()){
 			plugins_[idx].queue.push_back(evt);
 		}
 	}
@@ -157,7 +157,7 @@ void plugins_manager::notify_event(const std::string & name, const config & data
 
 void plugins_manager::play_slice(const plugins_context & ctxt)
 {
-	if (playing_) {
+	if(playing_){
 		*playing_ = false;	//this is to ensure "reentrancy" -- any previous calls to this function that never returned
 					//and looped back into the plugins system, should be halted and their later requests discarded
 					//this is to ensure the semantics that if a plugins context is left, then any pending requests
@@ -166,12 +166,12 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 	playing_ = std::make_shared<bool> (true);
 	std::shared_ptr<bool> local = playing_; //make a local copy of the pointer on the stack
 
-	for (std::size_t idx = 0; idx < size(); ++idx)
+	for(std::size_t idx = 0; idx < size(); ++idx)
 	{
 		DBG_PLG << "play_slice[" << idx << "] ...";
-		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
+		if(plugins_[idx].thread && plugins_[idx].thread->is_running()){
 			DBG_PLG << "is running...";
-			if (!*local) {			//check playing_ before each call to be sure that we should still continue
+			if(!*local){			//check playing_ before each call to be sure that we should still continue
 				DBG_PLG << "aborting";
 				return;
 			}
@@ -185,16 +185,16 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 			DBG_PLG << "thread returned " << requests.size() << " requests";
 
-			for (std::size_t j = 0; j < requests.size(); ++j) {
-				if (!*local) return;		//check playing_ before each call to be sure that we should still continue
-				if (!requests[j]()) {
+			for(std::size_t j = 0; j < requests.size(); ++j){
+				if(!*local) return;		//check playing_ before each call to be sure that we should still continue
+				if(!requests[j]()){
 					*local = false;
 					return ; //call the function but if it returns false (error) then stop
 				}
 			}
 
 			DBG_PLG << "play_slice[" << idx << "] finished.";
-		} else if (!plugins_[idx].thread) {
+		} else if(!plugins_[idx].thread){
 			DBG_PLG << "thread ["<< idx << "] not created";
 		} else {
 			DBG_PLG << "thread ["<< idx << "] not running";
@@ -206,8 +206,8 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 bool plugins_manager::any_running()
 {
 
-	for (std::size_t i = 0; i < size(); ++i) {
-		if (plugin_manager_status::type::running == get_status(i)) {
+	for(std::size_t i = 0; i < size(); ++i){
+		if(plugin_manager_status::type::running == get_status(i)){
 			return true;
 		}
 	}

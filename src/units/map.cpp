@@ -36,7 +36,7 @@ unit_map::unit_map(const unit_map& that)
 	: umap_()
 	, lmap_()
 {
-	for(const auto& u : that) {
+	for(const auto& u : that){
 		add(u.get_location(), u);
 	}
 }
@@ -66,7 +66,7 @@ unit_map::umap::iterator unit_map::begin_core() const
 	self_check();
 
 	umap::iterator i = umap_.begin();
-	while(i != umap_.end() && (!i->second.unit)) {
+	while(i != umap_.end() && (!i->second.unit)){
 		++i;
 	}
 
@@ -82,7 +82,7 @@ unit_map::umap_retval_pair_t unit_map::add(const map_location& l, const unit& u)
 	p->set_location(l);
 
 	unit_map::umap_retval_pair_t res(insert(p));
-	if(res.second == false) {
+	if(res.second == false){
 		p.reset();
 	}
 
@@ -96,19 +96,19 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 
 	// Find the unit at the src location
 	lmap::iterator i = lmap_.find(src);
-	if(i == lmap_.end()) {
+	if(i == lmap_.end()){
 		return std::pair(make_unit_iterator(i), false);
 	}
 
 	umap::iterator uit(i->second);
 
-	if(src == dst) {
+	if(src == dst){
 		return std::pair(make_unit_iterator(uit), true);
 	}
 
 	// Fail if there is no unit to move.
 	unit_ptr p = uit->second.unit;
-	if(!p) {
+	if(!p){
 		return std::pair(make_unit_iterator(uit), false);
 	}
 
@@ -119,7 +119,7 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 	std::pair<lmap::iterator, bool> res = lmap_.emplace(dst, uit);
 
 	// Fail and don't move if the destination is already occupied.
-	if(res.second == false) {
+	if(res.second == false){
 		p->set_location(src);
 		lmap_.emplace(src, uit);
 		return std::pair(make_unit_iterator(uit), false);
@@ -144,7 +144,7 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 	std::size_t unit_id = p->underlying_id();
 	const map_location& loc = p->get_location();
 
-	if(!loc.valid()) {
+	if(!loc.valid()){
 		ERR_NG << "Trying to add " << p->name() << " - " << p->id() << " at an invalid location; Discarding.";
 		return std::pair(make_unit_iterator(umap_.end()), false);
 	}
@@ -156,9 +156,9 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 
 	std::pair<umap::iterator, bool> uinsert = umap_.emplace(unit_id, upod);
 
-	if(!uinsert.second) {
+	if(!uinsert.second){
 		// If the pod is empty reinsert the unit in the same list element.
-		if(!uinsert.first->second.unit) {
+		if(!uinsert.first->second.unit){
 			unit_pod& opod = uinsert.first->second;
 			opod.unit = p;
 
@@ -179,12 +179,12 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 			uinsert = umap_.emplace(p->underlying_id(), upod);
 
 			int guard(0);
-			while(!uinsert.second && (++guard < 1e6)) {
+			while(!uinsert.second && (++guard < 1e6)){
 				p->mark_clone(false);
 				uinsert = umap_.emplace(p->underlying_id(), upod);
 			}
 
-			if(!uinsert.second) {
+			if(!uinsert.second){
 				throw game::error("One million collisions in unit_map");
 			}
 		}
@@ -193,8 +193,8 @@ unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 	std::pair<lmap::iterator, bool> linsert = lmap_.emplace(loc, uinsert.first);
 
 	// Fail if the location is occupied
-	if(!linsert.second) {
-		if(upod.ref_count == 0) {
+	if(!linsert.second){
+		if(upod.ref_count == 0){
 			// Undo a virgin insertion
 			umap_.erase(uinsert.first);
 		} else {
@@ -228,8 +228,8 @@ std::size_t unit_map::num_iters() const
 	umap::const_iterator ui = umap_.begin();
 	umap::const_iterator uend = umap_.end();
 
-	for(; ui != uend; ++ui) {
-		if(ui->second.ref_count < 0) {
+	for(; ui != uend; ++ui){
+		if(ui->second.ref_count < 0){
 			// Somewhere, someone generated 2^31 iterators to this unit.
 			bool a_reference_counter_overflowed(false);
 			assert(a_reference_counter_overflowed);
@@ -245,8 +245,8 @@ void unit_map::clear(bool force)
 {
 	assert(force || (num_iters() == 0));
 
-	for(umap::iterator i = umap_.begin(); i != umap_.end(); ++i) {
-		if(is_valid(i)) {
+	for(umap::iterator i = umap_.begin(); i != umap_.end(); ++i){
+		if(is_valid(i)){
 			DBG_NG << "Delete unit " << i->second.unit->underlying_id();
 			i->second.unit.reset();
 		}
@@ -261,7 +261,7 @@ unit_ptr unit_map::extract(const map_location& loc)
 	self_check();
 
 	lmap::iterator i = lmap_.find(loc);
-	if(i == lmap_.end()) {
+	if(i == lmap_.end()){
 		return unit_ptr();
 	}
 
@@ -273,7 +273,7 @@ unit_ptr unit_map::extract(const map_location& loc)
 	DBG_NG << "Extract unit " << uid << " - " << u->id() << " from location: (" << loc << ")";
 
 	assert(uit->first == uit->second.unit->underlying_id());
-	if(uit->second.ref_count == 0) {
+	if(uit->second.ref_count == 0){
 		umap_.erase(uit);
 	} else {
 		// Soft extraction keeps the old lit item if any iterators reference it
@@ -291,7 +291,7 @@ std::size_t unit_map::erase(const map_location& loc)
 	self_check();
 
 	unit_ptr u = extract(loc);
-	if(!u) {
+	if(!u){
 		return 0;
 	}
 
@@ -304,7 +304,7 @@ unit_map::unit_iterator unit_map::find(std::size_t id)
 	self_check();
 
 	umap::iterator i(umap_.find(id));
-	if((i != umap_.end()) && !i->second.unit) {
+	if((i != umap_.end()) && !i->second.unit){
 		i = umap_.end();
 	}
 
@@ -320,8 +320,8 @@ unit_map::unit_iterator unit_map::find(const map_location& loc)
 unit_map::unit_iterator unit_map::find_leader(int side)
 {
 	unit_map::iterator i = begin(), i_end = end();
-	for(; i != i_end; ++i) {
-		if(i->side() == side && i->can_recruit()) {
+	for(; i != i_end; ++i){
+		if(i->side() == side && i->can_recruit()){
 			return i;
 		}
 	}
@@ -334,9 +334,9 @@ unit_map::unit_iterator unit_map::find_first_leader(int side)
 	unit_map::iterator i = begin(), i_end = end();
 	unit_map::iterator first_leader = end();
 
-	for(; i != i_end; ++i) {
-		if(i->side() == side && i->can_recruit()) {
-			if((first_leader == end()) || (i->underlying_id() < first_leader->underlying_id())) {
+	for(; i != i_end; ++i){
+		if(i->side() == side && i->can_recruit()){
+			if((first_leader == end()) || (i->underlying_id() < first_leader->underlying_id())){
 				first_leader = i;
 			}
 		}
@@ -350,8 +350,8 @@ std::vector<unit_map::unit_iterator> unit_map::find_leaders(int side)
 	unit_map::unit_iterator i = begin(), i_end = end();
 
 	std::vector<unit_map::unit_iterator> leaders;
-	for(; i != i_end; ++i) {
-		if(i->side() == side && i->can_recruit()) {
+	for(; i != i_end; ++i){
+		if(i->side() == side && i->can_recruit()){
 			leaders.push_back(i);
 		}
 	}
@@ -373,27 +373,27 @@ bool unit_map::self_check() const
 	bool good(true);
 
 	umap::const_iterator uit(umap_.begin());
-	for(; uit != umap_.end(); ++uit) {
-		if(uit->second.ref_count < 0) {
+	for(; uit != umap_.end(); ++uit){
+		if(uit->second.ref_count < 0){
 			good = false;
 			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count;
 		}
 
-		if(uit->second.unit) {
+		if(uit->second.unit){
 			uit->second.unit->id(); // crash if bad pointer
 		}
 
-		if(uit->first <= 0) {
+		if(uit->first <= 0){
 			good = false;
 			ERR_NG << "unit_map umap uid <=0 is " << uit->first;
 		}
 
-		if(!uit->second.unit && uit->second.ref_count == 0) {
+		if(!uit->second.unit && uit->second.ref_count == 0){
 			good = false;
 			ERR_NG << "unit_map umap unit==nullptr when refcount == 0";
 		}
 
-		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first) {
+		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first){
 			good = false;
 			ERR_NG << "unit_map umap uid(" << uit->first << ") != underlying_id()[" << uit->second.unit->underlying_id()
 				   << "]";
@@ -401,12 +401,12 @@ bool unit_map::self_check() const
 	}
 
 	lmap::const_iterator locit(lmap_.begin());
-	for(; locit != lmap_.end(); ++locit) {
-		if(locit->second == umap_.end()) {
+	for(; locit != lmap_.end(); ++locit){
+		if(locit->second == umap_.end()){
 			good = false;
 			ERR_NG << "unit_map lmap element == umap_.end() ";
 		}
-		if(locit->first != locit->second->second.unit->get_location()) {
+		if(locit->first != locit->second->second.unit->get_location()){
 			good = false;
 			ERR_NG << "unit_map lmap location != unit->get_location() ";
 		}
@@ -423,8 +423,8 @@ bool unit_map::has_unit(const unit* const u) const
 {
 	assert(u);
 
-	for(const umap::value_type& item : umap_) {
-		if(item.second.unit.get() == u) {
+	for(const umap::value_type& item : umap_){
+		if(item.second.unit.get() == u){
 			return true;
 		}
 	}

@@ -136,7 +136,7 @@ void undo_list::clear()
 
 	// We can save some overhead by not calling apply_shroud_changes() for an
 	// empty stack.
-	if ( !undos_.empty() ) {
+	if(!undos_.empty()){
 		apply_shroud_changes();
 		undos_.clear();
 	}
@@ -155,7 +155,7 @@ bool undo_list::commit_vision()
 	// Update fog/shroud.
 	bool cleared_something = apply_shroud_changes();
 
-	if (cleared_something) {
+	if(cleared_something){
 		// The actions that led to information being revealed can no longer
 		// be undone.
 		undos_.clear();
@@ -173,13 +173,13 @@ bool undo_list::commit_vision()
 void undo_list::new_side_turn(int side)
 {
 	// Error checks.
-	if ( !undos_.empty() ) {
+	if(!undos_.empty()){
 		ERR_NG << "Undo stack not empty in new_side_turn().";
 		// At worst, someone missed some sighted events, so try to recover.
 		undos_.clear();
 		redos_.clear();
 	}
-	else if ( !redos_.empty() ) {
+	else if(!redos_.empty()){
 		ERR_NG << "Redo stack not empty in new_side_turn().";
 		// Sloppy tracking somewhere, but not critically so.
 		redos_.clear();
@@ -202,23 +202,23 @@ void undo_list::read(const config& cfg, int current_side)
 	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
 
 	//If we have the side parameter this means that this was the old format pre 1.19.7, we ignore this since it's incompatible.
-	if(cfg.has_attribute("side")) {
+	if(cfg.has_attribute("side")){
 		return;
 	}
 
 	// Build the undo stack.
 	try {
-		for(const config& child : cfg.child_range("undo")) {
+		for(const config& child : cfg.child_range("undo")){
 			undos_.push_back(std::make_unique<undo_action_container>());
 			undos_.back()->read(child);
 		}
-	} catch(const bad_lexical_cast&) {
+	} catch(const bad_lexical_cast&){
 		//It ddoenst make sense to "skip" actions in the undo stakc since that would just result in errors later.
 		ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
 		ERR_NG << "config was: " << cfg.debug();
 		ERR_NG << "discardind undo stack...";
 		undos_.clear();
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_NG << "Error when parsing undo list from config: " << e.what();
 		ERR_NG << "config was: " << cfg.debug();
 		ERR_NG << "discardind undo stack...";
@@ -227,7 +227,7 @@ void undo_list::read(const config& cfg, int current_side)
 
 
 	// Build the redo stack.
-	for (const config & child : cfg.child_range("redo")) {
+	for(const config & child : cfg.child_range("redo")){
 		redos_.emplace_back(new config(child));
 	}
 }
@@ -240,10 +240,10 @@ void undo_list::write(config & cfg) const
 {
 	cfg["committed"] = committed_actions_;
 
-	for ( const auto& action_ptr : undos_)
+	for(const auto& action_ptr : undos_)
 		action_ptr->write(cfg.add_child("undo"));
 
-	for ( const auto& cfg_ptr : redos_)
+	for(const auto& cfg_ptr : redos_)
 		cfg.add_child("redo") = *cfg_ptr;
 }
 
@@ -257,10 +257,10 @@ void undo_list::init_action()
 
 void undo_list::finish_action(bool can_undo)
 {
-	if(current_) {
+	if(current_){
 		current_->set_unit_id_diff(synced_context::get_unit_id_diff());
 		undos_.emplace_back(std::move(current_));
-		if(!can_undo) {
+		if(!can_undo){
 			clear();
 		}
 	}
@@ -270,7 +270,7 @@ void undo_list::cleanup_action()
 {
 	// This in particular makes sure no commands that do nothing stay on the undo stack but also on the recorder
 	// in particular so that menu items that did nothing because the user aborted in a custom menu dont persist on the replay.
-	if(!undos_.empty() && undos_.back()->empty()) {
+	if(!undos_.empty() && undos_.back()->empty()){
 		undo();
 	}
 }
@@ -279,7 +279,7 @@ void undo_list::cleanup_action()
  */
 void undo_list::undo()
 {
-	if ( undos_.empty() )
+	if(undos_.empty())
 		return;
 
 	const events::command_disabler disable_commands;
@@ -287,7 +287,7 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	auto action = std::move(undos_.back());
-	if(!action->undo(side_)) {
+	if(!action->undo(side_)){
 		return;
 	}
 
@@ -312,7 +312,7 @@ void undo_list::undo()
  */
 void undo_list::redo()
 {
-	if (redos_.empty()) {
+	if(redos_.empty()){
 		return;
 	}
 	// Get the action to redo.
@@ -361,7 +361,7 @@ bool undo_list::apply_shroud_changes() const
 	game_display &disp = *game_display::get_singleton();
 	team &tm = resources::gameboard->get_team(side_);
 	// No need to do clearing if fog/shroud has been kept up-to-date.
-	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
+	if(tm.auto_shroud_updates()  ||  !tm.fog_or_shroud()){
 		return false;
 	}
 	shroud_clearer clearer;
@@ -370,19 +370,19 @@ bool undo_list::apply_shroud_changes() const
 
 
 	// Loop through the list of undo_actions.
-	for( std::size_t i = 0; i != list_size; ++i ) {
+	for(std::size_t i = 0; i != list_size; ++i){
 		// Loop through the staps of the action.
-		for(auto& step_ptr : undos_[i]->steps()) {
-			if(const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(step_ptr.get())) {
+		for(auto& step_ptr : undos_[i]->steps()){
+			if(const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(step_ptr.get())){
 				LOG_NG << "Turning an undo...";
 
 				// Clear the hexes this unit can see from each hex occupied during
 				// the action.
 				std::vector<map_location>::const_iterator step;
-				for(step = action->route.begin(); step != action->route.end(); ++step) {
+				for(step = action->route.begin(); step != action->route.end(); ++step){
 					// Clear the shroud, collecting new sighted events.
 					// (This can be made gradual by changing "true" to "false".)
-					if(clearer.clear_unit(*step, tm, action->view_info, true)) {
+					if(clearer.clear_unit(*step, tm, action->view_info, true)){
 						cleared_shroud = true;
 					}
 				}
@@ -391,7 +391,7 @@ bool undo_list::apply_shroud_changes() const
 	}
 
 
-	if (!cleared_shroud) {
+	if(!cleared_shroud){
 		return false;
 	}
 	// If we clear fog or shroud outside a synced context we get OOS
@@ -408,7 +408,7 @@ bool undo_list::apply_shroud_changes() const
 	clearer.invalidate_after_clear();
 
 	// Fire sighted events
-	if ( std::get<0>(clearer.fire_events() )) {
+	if(std::get<0>(clearer.fire_events())){
 		// Fix up the display in case WML changed stuff.
 		clear_shroud(side_);
 		disp.invalidate_unit();

@@ -39,12 +39,12 @@ void sp_options_configure::pre_show()
 	options_manager_->update_all_options();
 
 	plugins_context_.reset(new plugins_context("Campaign Configure"));
-	plugins_context_->set_callback("launch", [this](const config&) { set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("launch", [this](const config&){ set_retval(retval::OK); }, false);
 }
 
 void sp_options_configure::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		create_engine_.get_state().mp_settings().options = options_manager_->get_options_config();
 		prefs::get().set_options(options_manager_->get_options_config());
 	}

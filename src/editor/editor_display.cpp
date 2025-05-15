@@ -66,7 +66,7 @@ void editor_display::remove_brush_loc(const map_location& hex)
 	invalidate(hex);
 }
 
-void editor_display::rebuild_terrain(const map_location &loc) {
+void editor_display::rebuild_terrain(const map_location &loc){
 	builder_->rebuild_terrain(loc);
 }
 
@@ -74,27 +74,27 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	display::draw_hex(loc);
 
-	if(!get_map().on_board_with_border(loc) || map_screenshot_) {
+	if(!get_map().on_board_with_border(loc) || map_screenshot_){
 		return;
 	}
 
-	if(get_map().in_selection(loc)) {
+	if(get_map().in_selection(loc)){
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
+			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d){
 				draw::blit(tex, d);
 			});
 	}
 
-	if(brush_locations_.find(loc) != brush_locations_.end()) {
+	if(brush_locations_.find(loc) != brush_locations_.end()){
 		static const image::locator brush(game_config::images::editor_brush);
-		drawing_buffer_add(drawing_layer::selected_hex, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
+		drawing_buffer_add(drawing_layer::selected_hex, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d){
 			draw::blit(tex, d);
 		});
 	}
 
 	// Paint mouseover overlays
-	if(mouseover_hex_overlay_ && loc == mouseoverHex_) {
-		drawing_buffer_add(drawing_layer::mouseover_overlay, loc, [this](const rect& dest) {
+	if(mouseover_hex_overlay_ && loc == mouseoverHex_){
+		drawing_buffer_add(drawing_layer::mouseover_overlay, loc, [this](const rect& dest){
 			mouseover_hex_overlay_.set_alpha_mod(196);
 			draw::blit(mouseover_hex_overlay_, dest);
 			mouseover_hex_overlay_.set_alpha_mod(SDL_ALPHA_OPAQUE);
@@ -114,7 +114,7 @@ void editor_display::layout()
 	config element;
 	config::attribute_value& text = element.add_child("element")["text"];
 	// Fill in the terrain report
-	if (get_map().on_board_with_border(mouseoverHex_)) {
+	if(get_map().on_board_with_border(mouseoverHex_)){
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
@@ -122,7 +122,7 @@ void editor_display::layout()
 		refresh_report("position", &element);
 	}
 
-	if (context().teams().empty()) {
+	if(context().teams().empty()){
 		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {
@@ -132,13 +132,13 @@ void editor_display::layout()
 
 	// If we're showing hexes near the north of the map, put the help string at the bottom of the screen.
 	// Otherwise, put it at the top.
-	if(help_handle_ != 0) {
+	if(help_handle_ != 0){
 		const bool place_at_top = get_visible_hexes().top[0] > 2;
 
-		if(place_at_top != help_string_at_top_) {
+		if(place_at_top != help_string_at_top_){
 			const auto& r = font::get_floating_label_rect(help_handle_);
 			double delta = map_outside_area().h - r.h;
-			if(place_at_top) {
+			if(place_at_top){
 				font::move_floating_label(help_handle_, 0.0, -delta);
 			} else {
 				font::move_floating_label(help_handle_, 0.0, delta);
@@ -166,7 +166,7 @@ void editor_display::set_status(const std::string& str, const bool is_success)
 	const int border = 3;
 
 	std::string formatted_str;
-	if (is_success) {
+	if(is_success){
 		formatted_str = VGETTEXT("<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>", {{"msg", str}});
 	} else {
 		formatted_str = VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>", {{"msg", str}});
@@ -190,9 +190,9 @@ void editor_display::set_help_string_enabled(bool value)
 {
 	help_string_enabled_ = value;
 
-	if (!value) {
+	if(!value){
 		clear_help_string();
-	} else if (!help_string_.empty()) {
+	} else if(!help_string_.empty()){
 		set_help_string(help_string_);
 	}
 }
@@ -211,7 +211,7 @@ void editor_display::set_help_string(const std::string& str)
 
 	clear_help_string();
 
-	if (!help_string_enabled_ || help_string_.empty()) {
+	if(!help_string_enabled_ || help_string_.empty()){
 		return;
 	}
 
@@ -220,8 +220,8 @@ void editor_display::set_help_string(const std::string& str)
 	int size = font::SIZE_LARGE;
 	point canvas_size = video::game_canvas_size();
 
-	while(size > 0) {
-		if(auto [lw, _] = font::pango_line_size(str, size); lw * 2 > canvas_size.x) {
+	while(size > 0){
+		if(auto [lw, _] = font::pango_line_size(str, size); lw * 2 > canvas_size.x){
 			size--;
 		} else {
 			break;

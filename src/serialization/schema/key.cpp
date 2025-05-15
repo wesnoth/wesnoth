@@ -32,10 +32,10 @@ wml_key::wml_key(const config& cfg)
 	, mandatory_(false)
 	, fuzzy_(name_.find_first_of("*?") != std::string::npos)
 {
-	if(cfg.has_attribute("mandatory")) {
+	if(cfg.has_attribute("mandatory")){
 		mandatory_ = cfg["mandatory"].to_bool();
 	} else {
-		if(cfg.has_attribute("default")) {
+		if(cfg.has_attribute("default")){
 			default_ = cfg["default"].str();
 		}
 	}
@@ -44,13 +44,13 @@ wml_key::wml_key(const config& cfg)
 void wml_key::print(std::ostream& os, int level) const
 {
 	std::string s;
-	for(int j = 0; j < level; j++) {
+	for(int j = 0; j < level; j++){
 		s.append(" ");
 	}
 
 	os << s << "[key]\n" << s << "    name=\"" << name_ << "\"\n" << s << "    type=\"" << type_ << "\"\n";
 
-	if(is_mandatory()) {
+	if(is_mandatory()){
 		os << s << "    mandatory=\"true\"\n";
 	} else {
 		os << s << "    default=" << default_ << "\n";

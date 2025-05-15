@@ -56,7 +56,7 @@ repeating_button::repeating_button(const implementation::builder_repeating_butto
 
 repeating_button::~repeating_button()
 {
-	if(repeat_timer_) {
+	if(repeat_timer_){
 		remove_timer(repeat_timer_);
 	}
 }
@@ -75,7 +75,7 @@ void repeating_button::disconnect_signal_mouse_left_down(
 
 void repeating_button::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -92,11 +92,11 @@ unsigned repeating_button::get_state() const
 
 void repeating_button::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 
-		if(state_ == DISABLED && repeat_timer_) {
+		if(state_ == DISABLED && repeat_timer_){
 			remove_timer(repeat_timer_);
 			repeat_timer_ = 0;
 		}
@@ -128,15 +128,15 @@ repeating_button::signal_handler_left_button_down(const event::ui_event event,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// If the timer isn't set it's the initial down event.
-	if(!repeat_timer_) {
+	if(!repeat_timer_){
 
 		// mimic the old gui and only play the sound once.
 		sound::play_UI_sound(settings::sound_button_click);
 
 		window* window = get_window();
-		if(window) {
+		if(window){
 			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
-									  [this, window](unsigned int) {
+									  [this, window](unsigned int){
 											window->fire(event::LEFT_BUTTON_DOWN, *this);
 									  },true);
 
@@ -154,12 +154,12 @@ void repeating_button::signal_handler_left_button_up(const event::ui_event event
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(repeat_timer_) {
+	if(repeat_timer_){
 		remove_timer(repeat_timer_);
 		repeat_timer_ = 0;
 	}
 
-	if(get_active()) {
+	if(get_active()){
 		set_state(FOCUSED);
 	}
 	handled = true;

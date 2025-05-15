@@ -131,7 +131,7 @@ private:
 	bool check_id(const std::string& id);
 
 	void set_selected_from_string(menu_button& list, std::vector<config> values, std::string item) {
-		for (unsigned i = 0; i < values.size(); ++i) {
+		for(unsigned i = 0; i < values.size(); ++i) {
 			if(values.at(i)["label"] == item) {
 				list.set_selected(i);
 				break;
@@ -140,7 +140,7 @@ private:
 	}
 
 	void set_selected_from_string(combobox& list, std::vector<config> values, std::string item) {
-		for (unsigned i = 0; i < values.size(); ++i) {
+		for(unsigned i = 0; i < values.size(); ++i) {
 			if(values.at(i)["label"] == item) {
 				list.set_selected(i);
 				break;

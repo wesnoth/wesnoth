@@ -25,10 +25,10 @@ std::pair<std::string, std::string> parse_network_address(const std::string& add
 	boost::smatch m;
 	boost::regex_match(address, m, boost::regex(address_re));
 
-	if(!m[1].str().empty()) {
+	if(!m[1].str().empty()){
 		return { m[1], m[3].str().empty() ? default_port : m[3] };
 	}
-	if(!m[4].str().empty()) {
+	if(!m[4].str().empty()){
 		return { m[4], m[6].str().empty() ? default_port : m[6] };
 	}
 

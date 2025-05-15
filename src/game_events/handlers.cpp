@@ -74,9 +74,9 @@ std::vector<std::string> event_handler::names(const variable_set* vars) const
 	// Split the name field and standardize each one individually.
 	// This ensures they're all valid for by-name lookup.
 	std::vector<std::string> standardized_names;
-	for(std::string single_name : utils::split(names)) {
-		if(utils::might_contain_variables(single_name)) {
-			if(!vars) {
+	for(std::string single_name : utils::split(names)){
+		if(utils::might_contain_variables(single_name)){
+			if(!vars){
 				// If we don't have gamedata, we can't interpolate variables, so there's
 				// no way the name will match. Move on to the next one in that case.
 				continue;
@@ -84,7 +84,7 @@ std::vector<std::string> event_handler::names(const variable_set* vars) const
 			single_name = utils::interpolate_variables_into_string(single_name, *vars);
 		}
 		// Variable interpolation could've introduced additional commas, so split again.
-		for(const std::string& subname : utils::split(single_name)) {
+		for(const std::string& subname : utils::split(single_name)){
 			standardized_names.emplace_back(event_handlers::standardize_name(subname));
 		}
 	}
@@ -105,15 +105,15 @@ void event_handler::disable()
 
 void event_handler::handle_event(const queued_event& event_info, game_lua_kernel& lk)
 {
-	if(disabled_) {
+	if(disabled_){
 		return;
 	}
 
-	if(is_menu_item_) {
+	if(is_menu_item_){
 		DBG_NG << "menu item " << id_ << " will now invoke the following command(s):\n" << args_;
 	}
 
-	if(first_time_only_) {
+	if(first_time_only_){
 		disable();
 	}
 
@@ -123,21 +123,21 @@ void event_handler::handle_event(const queued_event& event_info, game_lua_kernel
 
 bool event_handler::filter_event(const queued_event& ev) const
 {
-	return std::all_of(filters_.begin(), filters_.end(), [&ev](const auto& filter) {
+	return std::all_of(filters_.begin(), filters_.end(), [&ev](const auto& filter){
 		return (*filter)(ev);
 	});
 }
 
 void event_handler::write_config(config &cfg, bool include_nonserializable) const
 {
-	if(disabled_) {
+	if(disabled_){
 		WRN_NG << "Tried to serialize disabled event, skipping";
 		return;
 	}
 	static const char* log_append_preload = " - this will not break saves since it was registered during or before preload\n";
 	static const char* log_append_postload = " - this will break saves because it was registered after preload\n";
-	if(is_lua_) {
-		if(include_nonserializable) {
+	if(is_lua_){
+		if(include_nonserializable){
 			cfg["nonserializable"] = true;
 			cfg.add_child("lua")["code"] = "<function>";
 		} else {
@@ -151,12 +151,12 @@ void event_handler::write_config(config &cfg, bool include_nonserializable) cons
 			return;
 		}
 	}
-	if(!std::all_of(filters_.begin(), filters_.end(), std::mem_fn(&event_filter::can_serialize))) {
-		if(include_nonserializable) {
+	if(!std::all_of(filters_.begin(), filters_.end(), std::mem_fn(&event_filter::can_serialize))){
+		if(include_nonserializable){
 			cfg["nonserializable"] = true;
 		} else {
 			static const char* log = "Skipping serialization of an event with filter bound to Lua code";
-			if(has_preloaded_) {
+			if(has_preloaded_){
 				WRN_NG << log << log_append_postload;
 				lg::log_to_chat() << log << log_append_postload;
 			} else {
@@ -169,7 +169,7 @@ void event_handler::write_config(config &cfg, bool include_nonserializable) cons
 	if(!id_.empty()) cfg["id"] = id_;
 	cfg["first_time_only"] = first_time_only_;
 	cfg["priority"] = priority_;
-	for(const auto& filter : filters_) {
+	for(const auto& filter : filters_){
 		filter->serialize(cfg);
 	}
 	cfg.append(args_);
@@ -186,7 +186,7 @@ bool event_filter::can_serialize() const
 }
 
 struct filter_condition : public event_filter {
-	filter_condition(const vconfig& cfg) : cfg_(cfg.make_safe()) {}
+	filter_condition(const vconfig& cfg) : cfg_(cfg.make_safe()){}
 	bool operator()(const queued_event&) const override
 	{
 		return conditional_passed(cfg_);
@@ -204,7 +204,7 @@ private:
 };
 
 struct filter_side : public event_filter {
-	filter_side(const vconfig& cfg) : ssf_(cfg.make_safe(), &resources::controller->gamestate()) {}
+	filter_side(const vconfig& cfg) : ssf_(cfg.make_safe(), &resources::controller->gamestate()){}
 	bool operator()(const queued_event&) const override
 	{
 		return ssf_.match(resources::controller->current_side());
@@ -222,7 +222,7 @@ private:
 };
 
 struct filter_unit : public event_filter {
-	filter_unit(const vconfig& cfg, bool first) : suf_(cfg.make_safe()), first_(first) {}
+	filter_unit(const vconfig& cfg, bool first) : suf_(cfg.make_safe()), first_(first){}
 	bool operator()(const queued_event& event_info) const override
 	{
 		const auto& loc = first_ ? event_info.loc1 : event_info.loc2;
@@ -243,7 +243,7 @@ private:
 };
 
 struct filter_attack : public event_filter {
-	filter_attack(const vconfig& cfg, bool first) : swf_(cfg.make_safe()), first_(first) {}
+	filter_attack(const vconfig& cfg, bool first) : swf_(cfg.make_safe()), first_(first){}
 	bool operator()(const queued_event& event_info) const override
 	{
 		const unit_map& units = resources::gameboard->units();
@@ -251,12 +251,12 @@ struct filter_attack : public event_filter {
 		const auto& loc_d = first_ ? event_info.loc2 : event_info.loc1;
 		auto unit_a = units.find(loc);
 		auto unit_d = units.find(loc_d);
-		if(unit_a != units.end() && loc.matches_unit(unit_a)) {
+		if(unit_a != units.end() && loc.matches_unit(unit_a)){
 			const auto u = unit_a->shared_from_this();
 			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
 			if(temp_weapon){
 				const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
-				if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
+				if(unit_d != units.end() && loc_d.matches_unit(unit_d)){
 					const auto opp = unit_d->shared_from_this();
 					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
 					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
@@ -288,7 +288,7 @@ private:
 };
 
 struct filter_formula : public event_filter {
-	filter_formula(const std::string& formula) : formula_(formula) {}
+	filter_formula(const std::string& formula) : formula_(formula){}
 	bool operator()(const queued_event& event_info) const override
 	{
 		wfl::gamestate_callable gs;
@@ -299,7 +299,7 @@ struct filter_formula : public event_filter {
 	void serialize(config& cfg) const override
 	{
 		std::string code = formula_.str();
-		if(cfg.has_attribute("filter_formula")) {
+		if(cfg.has_attribute("filter_formula")){
 			// This will probably never happen in practice, but handle it just in case it somehow can
 			code = "(" + cfg["filter_formula"].str() + ") and (" + code + ")";
 		}
@@ -315,17 +315,17 @@ private:
 
 static std::unique_ptr<event_filter> make_filter(const std::string& key, const vconfig& contents)
 {
-	if(key == "filter_condition") {
+	if(key == "filter_condition"){
 		return std::make_unique<filter_condition>(contents);
-	} else if(key == "filter_side") {
+	} else if(key == "filter_side"){
 		return std::make_unique<filter_side>(contents);
-	} else if(key == "filter") {
+	} else if(key == "filter"){
 		return std::make_unique<filter_unit>(contents, true);
-	} else if(key == "filter_attack") {
+	} else if(key == "filter_attack"){
 		return std::make_unique<filter_attack>(contents, true);
-	} else if(key == "filter_second") {
+	} else if(key == "filter_second"){
 		return std::make_unique<filter_unit>(contents, false);
-	} else if(key == "filter_second_attack") {
+	} else if(key == "filter_second_attack"){
 		return std::make_unique<filter_attack>(contents, false);
 	}
 	return nullptr;
@@ -336,12 +336,12 @@ static std::unique_ptr<event_filter> make_filter(const std::string& key, const v
  * It loads the filter contents from a variable and forwards it to the appropriate filter class.
  */
 struct filter_dynamic : public event_filter {
-	filter_dynamic(const std::string& tag, const std::string& var) : tag_(tag), var_(var) {}
+	filter_dynamic(const std::string& tag, const std::string& var) : tag_(tag), var_(var){}
 	bool operator()(const queued_event& event_info) const override
 	{
 		variable_access_const variable(var_, resources::gamedata->get_variables());
 		if(!variable.exists_as_container()) return false;
-		if(auto filter = make_filter(tag_, vconfig(variable.as_container()))) {
+		if(auto filter = make_filter(tag_, vconfig(variable.as_container()))){
 			return (*filter)(event_info);
 		}
 		return false;
@@ -362,15 +362,15 @@ private:
 
 void event_handler::read_filters(const config &cfg)
 {
-	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()) {
+	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()){
 		vconfig vcfg(filter_cfg);
-		if(auto filter_ptr = make_filter(filter_key, vcfg)) {
+		if(auto filter_ptr = make_filter(filter_key, vcfg)){
 			add_filter(std::move(filter_ptr));
-		} else if(filter_key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
+		} else if(filter_key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())){
 			add_filter(std::make_unique<filter_dynamic>(vcfg["name"], vcfg["variable"]));
 		}
 	}
-	if(cfg.has_attribute("filter_formula")) {
+	if(cfg.has_attribute("filter_formula")){
 		add_filter(std::make_unique<filter_formula>(cfg["filter_formula"]));
 	}
 }

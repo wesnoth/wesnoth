@@ -130,7 +130,7 @@ public:
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
-	 * @param search_content_type The content type to query for (ie: scenario)
+	 * @param search_content_type The content type to query for(ie: scenario)
 	 * @param search_content Query for games using this content ID. Supports leading and/or trailing wildcards.
 	 */
 	void async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content);
@@ -280,7 +280,7 @@ public:
 	/**
 	 * Checks whether the provided username is the primary author of the add-on.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @param username The username attempting to do something with the add-on.
 	 * @return true if the user is the primary author of an addon, false otherwise.
@@ -290,7 +290,7 @@ public:
 	/**
 	 * Checks whether the provided username is a secondary author of the add-on.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @param username The username attempting to do something with the add-on.
 	 * @return true if the user is a secondary author of an addon, false otherwise.
@@ -300,7 +300,7 @@ public:
 	/**
 	 * Removes the authors information from addon_author for a particular addon and version.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 */
 	void db_delete_addon_authors(const std::string& instance_version, const std::string& id);
@@ -308,7 +308,7 @@ public:
 	/**
 	 * Inserts rows for the primary and secondary authors for a particular addon and version.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @param primary_authors The primary authors of the add-on.
 	 * @param secondary_authors The secondary authors of the add-on.
@@ -318,7 +318,7 @@ public:
 	/**
 	 * Checks whether any author information exists for a particular addon and version, since if there's no author information then of course no primary or secondary authors will ever be found.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @return true if any author information exists for this addon, false otherwise.
 	 */
@@ -327,14 +327,14 @@ public:
 	/**
 	 * Gets a list of download count by version for add-ons.
 	 *
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @return The results of the query.
 	 */
 	config db_get_addon_downloads_info(const std::string& instance_version, const std::string& id);
 
 	/**
-	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param instance_version Which major version this is for(1.16, 1.17, etc).
 	 * @return The total count of add-ons amd the count of add-ons using forum_auth.
 	 */
 	config db_get_forum_auth_usage(const std::string& instance_version);

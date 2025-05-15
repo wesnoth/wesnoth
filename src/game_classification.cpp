@@ -88,11 +88,11 @@ config game_classification::to_config() const
 
 std::string game_classification::get_tagname() const
 {
-	if(is_multiplayer()) {
+	if(is_multiplayer()){
 		return campaign.empty() ? campaign_type::multiplayer : campaign_type::scenario;
 	}
 
-	if(is_tutorial()) {
+	if(is_tutorial()){
 		return campaign_type::scenario;
 	}
 
@@ -122,46 +122,46 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 	std::set<std::string> loaded_resources;
 	std::set<std::string> res;
 
-	for(const auto& mod : active_mods) {
+	for(const auto& mod : active_mods){
 		mods.emplace_back("modification", mod);
 	}
 
 	// We don't want the error message below if there is no era (= if this is a sp game).
-	if(!era_id.empty()) {
+	if(!era_id.empty()){
 		mods.emplace_back(get_tagname(), scenario_id);
 	}
 
-	if(!era_id.empty()) {
+	if(!era_id.empty()){
 		mods.emplace_back("era", era_id);
 	}
 
-	if(!campaign.empty()) {
+	if(!campaign.empty()){
 		mods.emplace_back("campaign", campaign);
 	}
-	while(!mods.empty()) {
+	while(!mods.empty()){
 
 		const modevents_entry& current = mods.front();
-		if(current.type == "resource") {
-			if(!loaded_resources.insert(current.id).second) {
+		if(current.type == "resource"){
+			if(!loaded_resources.insert(current.id).second){
 				mods.pop_front();
 				continue;
 			}
 		}
-		if(auto cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
-			if(!cfg["addon_id"].empty()) {
+		if(auto cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)){
+			if(!cfg["addon_id"].empty()){
 				res.insert(cfg["addon_id"]);
 			}
-			for (const config& load_res : cfg->child_range("load_resource")) {
+			for(const config& load_res : cfg->child_range("load_resource")){
 				mods.emplace_back("resource", load_res["id"].str());
 			}
 		} else {
 			ERR_NG << "Unable to find config for content " << current.id << " of type " << current.type;
 		}
-		mods.pop_front( );
+		mods.pop_front();
 	}
 
 	DBG_NG << "Active content for game set to:";
-	for(const std::string& mod : res) {
+	for(const std::string& mod : res){
 		DBG_NG << mod;
 	}
 

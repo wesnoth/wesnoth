@@ -32,15 +32,15 @@
 void get_tile_ring(const map_location& center, const int radius,
                    std::vector<map_location>& result)
 {
-	if ( radius <= 0 ) {
+	if(radius <= 0){
 		return;
 	}
 
 	map_location loc = center.get_direction(map_location::direction::south_west, radius);
 
-	for(int n = 0; n != 6; ++n) {
+	for(int n = 0; n != 6; ++n){
 		const map_location::direction dir{ n };
-		for(int i = 0; i != radius; ++i) {
+		for(int i = 0; i != radius; ++i){
 			result.push_back(loc);
 			loc = loc.get_direction(dir, 1);
 		}
@@ -56,7 +56,7 @@ void get_tile_ring(const map_location& center, const int radius,
 void get_tiles_in_radius(const map_location& center, const int radius,
                          std::vector<map_location>& result)
 {
-	for(int n = 1; n <= radius; ++n) {
+	for(int n = 1; n <= radius; ++n){
 		get_tile_ring(center, n, result);
 	}
 }
@@ -111,33 +111,33 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// Perform this conversion once.
 		const int radius_i = static_cast<int>(radius);
 
-		for (const map_location &loc : locs)
-			if ( loc != map_location::null_location() )
+		for(const map_location &loc : locs)
+			if(loc != map_location::null_location())
 			{
 				// Calculate the circle of hexes around this one.
 				std::size_t height = radius;
 				map_location top = loc.get_direction(north_west, radius_i);
 				// Don't start off the map edge.
-				if ( top.x < col_begin ) {
+				if(top.x < col_begin){
 					const int col_shift = std::min(col_begin, loc.x) - top.x;
 					top = top.get_direction(north_east, col_shift);
 					height += col_shift;
 				}
 				// The left side.
 				const int end_l = std::min(loc.x, col_end);
-				for ( ; top.x < end_l; top = top.get_direction(north_east, 1) )
+				for(; top.x < end_l; top = top.get_direction(north_east, 1))
 					collected_tiles[top.x].insert(row_range(top.y, ++height));
 				// Extra increment so the middle column is tall enough.
 				height += 2;
 				// Don't start off the map edge (we allow loc to be off-board).
-				if ( top.x < col_begin ) {
+				if(top.x < col_begin){
 					const int col_shift = col_begin - top.x;
 					top = top.get_direction(south_east, col_shift);
 					height -= col_shift;
 				}
 				// The middle column and right side.
 				const int end_r = std::min(loc.x + radius_i + 1, col_end);
-				for ( ; top.x < end_r; top = top.get_direction(south_east, 1) )
+				for(; top.x < end_r; top = top.get_direction(south_east, 1))
 					collected_tiles[top.x].insert(row_range(top.y, --height));
 			}
 	}
@@ -162,7 +162,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// reason we require result to be initially non-empty.
 		auto insert_hint = result.begin();
 
-		for(const auto& [column, range] : collected_tiles) {
+		for(const auto& [column, range] : collected_tiles){
 			// For this loop, the order within the set is crucial; we need
 			// rows.first to be non-decreasing with each iteration.
 			// Loop invariant: within this column, all rows before next_row
@@ -170,20 +170,20 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 			// There is no going back (nor a need to).
 			int next_row = row_begin;
 
-			for(const auto& [row_index, num_rows] : range) {
+			for(const auto& [row_index, num_rows] : range){
 				// Skipping some rows?
-				if(next_row < row_index) {
+				if(next_row < row_index){
 					next_row = row_index;
 				}
 
 				// Add this range of hexes.
 				const int end = std::min(row_index + static_cast<int>(num_rows), row_end);
-				for(; next_row < end; ++next_row) {
+				for(; next_row < end; ++next_row){
 					insert_hint = result.insert(++insert_hint, map_location(column, next_row));
 				}
 
 				// Have we reached the end of the board?
-				if(next_row >= row_end) {
+				if(next_row >= row_end){
 					break;
 				}
 			}
@@ -210,7 +210,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 	// For efficiency, do this first since locs is potentially unsorted.
 	result.insert(locs.begin(), locs.end());
 
-	if ( radius != 0  &&  !locs.empty() )
+	if(radius != 0  &&  !locs.empty())
 	{
 		const int border = with_border ? map.border_size() : 0;
 		column_ranges collected_tiles;
@@ -247,10 +247,10 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 	location_set not_visited(locs.begin(), locs.end());
 
 	get_tiles_radius(std::move(not_visited), radius, result,
-		[&](const map_location& l) {
+		[&](const map_location& l){
 			return with_border ? map.on_board_with_border(l) : map.on_board(l);
 		},
-		[&](const map_location& l) {
+		[&](const map_location& l){
 			return pred(l);
 		}
 	);

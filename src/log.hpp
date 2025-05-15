@@ -246,18 +246,18 @@ public:
 		, domain_(domain)
 		, str_()
 	{
-		if (!debug().dont_log(domain)) do_log_entry(str);
+		if(!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
 		: start_()
 		, domain_(domain)
 		, str_()
 	{
-		if (!debug().dont_log(domain)) do_log_entry(str);
+		if(!debug().dont_log(domain)) do_log_entry(str);
 	}
 	~scope_logger()
 	{
-		if (!str_.empty()) do_log_exit();
+		if(!str_.empty()) do_log_exit();
 	}
 private:
 	void do_log_entry(const std::string& str) noexcept;
@@ -275,16 +275,16 @@ std::stringstream& log_to_chat();
 #define log_scope(description) lg::scope_logger scope_logging_object__(lg::general(), description);
 #define log_scope2(domain,description) lg::scope_logger scope_logging_object__(domain, description);
 
-#define LOG_STREAM(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain) | formatter()
+#define LOG_STREAM(level, domain) if(lg::level().dont_log(domain)) ; else lg::level()(domain) | formatter()
 
 // Don't prefix the logdomain to messages on this stream
-#define LOG_STREAM_NAMELESS(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false) | formatter()
+#define LOG_STREAM_NAMELESS(level, domain) if(lg::level().dont_log(domain)) ; else lg::level()(domain, false) | formatter()
 
 // Like LOG_STREAM_NAMELESS except doesn't add newlines automatically
-#define LOG_STREAM_NAMELESS_STREAMING(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false, false, true, true, false) | formatter()
+#define LOG_STREAM_NAMELESS_STREAMING(level, domain) if(lg::level().dont_log(domain)) ; else lg::level()(domain, false, false, true, true, false) | formatter()
 
 // When using log_scope/log_scope2 it is nice to have all output indented.
-#define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true) | formatter()
+#define LOG_STREAM_INDENT(level,domain) if(lg::level().dont_log(domain)) ; else lg::level()(domain, true, true) | formatter()
 
 // If you have an explicit logger object and want to ignore the logging level, use this.
 // Meant for cases where you explicitly call dont_log to avoid an expensive operation if the logging is disabled.

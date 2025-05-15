@@ -35,7 +35,7 @@ static int intf_format(lua_State* L)
 {
 	config cfg = luaW_checkconfig(L, 2);
 	config_variable_set variables(cfg);
-	if(lua_isstring(L, 1)) {
+	if(lua_isstring(L, 1)){
 		std::string str = lua_tostring(L, 1);
 		lua_push(L, utils::interpolate_variables_into_string(str, variables));
 		return 1;
@@ -64,18 +64,18 @@ static int intf_format_list(lua_State* L)
 */
 static int impl_str_index(lua_State* L)
 {
-	if(lua_type(L, 2) == LUA_TSTRING) {
+	if(lua_type(L, 2) == LUA_TSTRING){
 		// return stringx[key]
 		lua_getglobal(L, "stringx");
 		lua_pushvalue(L, 2);
 		lua_gettable(L, -2);
 		return 1;
-	} else if(lua_type(L, 2) == LUA_TNUMBER) {
+	} else if(lua_type(L, 2) == LUA_TNUMBER){
 		// get the string length and the index
 		int len = lua_rawlen(L, 1);
 		int i = luaL_checkinteger(L, 2);
 		// In order to not break ipairs, an out-of-bounds access needs to return nil
-		if(i == 0 || abs(i) > len) {
+		if(i == 0 || abs(i) > len){
 			lua_pushnil(L);
 			return 1;
 		}
@@ -103,52 +103,52 @@ static int intf_str_split(lua_State* L)
 	const std::string& sep = luaL_optstring(L, 2, ",");
 	std::string left, right;
 	int flags = utils::REMOVE_EMPTY | utils::STRIP_SPACES;
-	if(lua_istable(L, 3)) {
+	if(lua_istable(L, 3)){
 		flags = 0;
-		if(luaW_table_get_def(L, 3, "remove_empty", true)) {
+		if(luaW_table_get_def(L, 3, "remove_empty", true)){
 			flags |= utils::REMOVE_EMPTY;
 		}
-		if(luaW_table_get_def(L, 3, "strip_spaces", true)) {
+		if(luaW_table_get_def(L, 3, "strip_spaces", true)){
 			flags |= utils::STRIP_SPACES;
 		}
 		bool anim = luaW_table_get_def(L, 3, "expand_anim", false);
-		if(luaW_tableget(L, 3, "escape")) {
-			if(anim) {
+		if(luaW_tableget(L, 3, "escape")){
+			if(anim){
 				return luaL_error(L, "escape and expand_anim options are incompatible!");
 			}
 			type = ESCAPED;
 			left = luaL_checkstring(L, -1);
-			if(left.size() != 1) {
+			if(left.size() != 1){
 				return luaL_error(L, "escape must be a single character");
 			}
-		} else if(luaW_tableget(L, 3, "quote")) {
+		} else if(luaW_tableget(L, 3, "quote")){
 			left = right = luaL_checkstring(L, -1);
-			if(anim) {
+			if(anim){
 				type = ANIM;
 				left.push_back('[');
 				right.push_back(']');
 			} else type = PAREN;
-		} else if(luaW_tableget(L, 3, "quote_left") && luaW_tableget(L, 3, "quote_right")) {
+		} else if(luaW_tableget(L, 3, "quote_left") && luaW_tableget(L, 3, "quote_right")){
 			left = luaL_checkstring(L, -2);
 			right = luaL_checkstring(L, -1);
-			if(anim) {
-				if(left.find_first_of("[]") != std::string::npos || right.find_first_of("[]") != std::string::npos) {
+			if(anim){
+				if(left.find_first_of("[]") != std::string::npos || right.find_first_of("[]") != std::string::npos){
 					return luaL_error(L, "left and right cannot include square brackets [] if expand_anim is enabled");
 				}
 				type = ANIM;
 				left.push_back('[');
 				right.push_back(']');
 			} else type = PAREN;
-		} else if(anim) {
+		} else if(anim){
 			type = ANIM;
 			left = "([";
 			right = ")]";
 		}
-		if(type != ESCAPED && left.size() != right.size()) {
+		if(type != ESCAPED && left.size() != right.size()){
 			return luaL_error(L, "left and right need to be strings of the same length");
 		}
 	}
-	switch(type) {
+	switch(type){
 		case BASIC:
 			lua_push(L, utils::split(str, sep[0], flags));
 			break;
@@ -176,7 +176,7 @@ static int intf_str_paren_split(lua_State* L)
 	const std::string& str = luaL_checkstring(L, 1);
 	const std::string& left = luaL_optstring(L, 2, "(");
 	const std::string& right = luaL_optstring(L, 3, ")");
-	if(left.size() != right.size()) {
+	if(left.size() != right.size()){
 		return luaL_error(L, "left and right need to be strings of the same length");
 	}
 	bool strip_spaces = luaL_opt(L, luaW_toboolean, 4, true);
@@ -196,22 +196,22 @@ static int intf_str_map_split(lua_State* L)
 	const std::string& sep = luaL_optstring(L, 2, ",");
 	const std::string& kv = luaL_optstring(L, 3, ":");
 	std::string dflt;
-	if(sep.size() != 1) {
+	if(sep.size() != 1){
 		return luaL_error(L, "separator must be a single character");
 	}
-	if(kv.size() != 1) {
+	if(kv.size() != 1){
 		return luaL_error(L, "key_value_separator must be a single character");
 	}
 	int flags = utils::REMOVE_EMPTY | utils::STRIP_SPACES;
-	if(lua_istable(L, 4)) {
+	if(lua_istable(L, 4)){
 		flags = 0;
-		if(luaW_table_get_def(L, 4, "remove_empty", true)) {
+		if(luaW_table_get_def(L, 4, "remove_empty", true)){
 			flags |= utils::REMOVE_EMPTY;
 		}
-		if(luaW_table_get_def(L, 4, "strip_spaces", true)) {
+		if(luaW_table_get_def(L, 4, "strip_spaces", true)){
 			flags |= utils::STRIP_SPACES;
 		}
-		if(luaW_tableget(L, 4, "default")) {
+		if(luaW_tableget(L, 4, "default")){
 			dflt = luaL_checkstring(L, -1);
 		}
 	}
@@ -225,20 +225,20 @@ static int intf_str_map_split(lua_State* L)
 * Arg 2: separator
 * (arguments can be swapped)
 */
-static int intf_str_join(lua_State* L) {
+static int intf_str_join(lua_State* L){
 	// Support both join(list, [sep]) and join(sep, list)
 	// The latter form means sep:join(list) also works.
 	std::string sep;
 	int list_idx;
-	if(lua_istable(L, 1)) {
+	if(lua_istable(L, 1)){
 		list_idx = 1;
 		sep = luaL_optstring(L, 2, ",");
-	} else if(lua_istable(L, 2)) {
+	} else if(lua_istable(L, 2)){
 		sep = luaL_checkstring(L, 1);
 		list_idx = 2;
 	} else return luaL_error(L, "invalid arguments to join, should have map and separator");
 	std::vector<std::string> pieces;
-	for(int i = 1; i <= luaL_len(L, list_idx); i++) {
+	for(int i = 1; i <= luaL_len(L, list_idx); i++){
 		lua_getglobal(L, "tostring");
 		lua_geti(L, list_idx, i);
 		lua_call(L, 1, 1);
@@ -255,27 +255,27 @@ static int intf_str_join(lua_State* L) {
 * Arg 3: separator for key and value
 * (list argument can be swapped to any position)
 */
-static int intf_str_join_map(lua_State* L) {
+static int intf_str_join_map(lua_State* L){
 	// Support join_map(map, [sep], [kv_sep]), join_map(sep, map, [kv_sep]), and join_map(sep, kv_sep, map)
 	// The latter forms mean sep:join_map(kv_sep, map) and sep:join_map(map) also work.
 	// If only one separator is given in the first form, it will be sep, not kv_sep
 	std::string sep, kv;
 	int map_idx;
-	if(lua_istable(L, 1)) {
+	if(lua_istable(L, 1)){
 		map_idx = 1;
 		sep = luaL_optstring(L, 2, ",");
 		kv = luaL_optstring(L, 3, ":");
-	} else if(lua_istable(L, 2)) {
+	} else if(lua_istable(L, 2)){
 		sep = luaL_checkstring(L, 1);
 		map_idx = 2;
 		kv = luaL_optstring(L, 3, ":");
-	} else if(lua_istable(L, 3)) {
+	} else if(lua_istable(L, 3)){
 		sep = luaL_checkstring(L, 1);
 		kv = luaL_checkstring(L, 2);
 		map_idx = 3;
 	} else return luaL_error(L, "invalid arguments to join_map, should have map, separator, and key_value_separator");
 	std::map<std::string, std::string> pieces;
-	for(lua_pushnil(L); lua_next(L, map_idx); /*pop in loop body*/) {
+	for(lua_pushnil(L); lua_next(L, map_idx); /*pop in loop body*/){
 		int key_idx = lua_absindex(L, -2), val_idx = lua_absindex(L, -1);
 		lua_getglobal(L, "tostring");
 		lua_pushvalue(L, key_idx);
@@ -306,7 +306,7 @@ static int intf_str_trim(lua_State* L)
 static int intf_str_format(lua_State* L)
 {
 	int nargs = lua_gettop(L);
-	if(luaW_iststring(L, 1)) {
+	if(luaW_iststring(L, 1)){
 		// get the tostring() function and call it on the first argument
 		lua_getglobal(L, "tostring");
 		lua_pushvalue(L, 1);
@@ -331,7 +331,7 @@ static int intf_str_format(lua_State* L)
 static int intf_parse_range(lua_State* L)
 {
 	const std::string str = luaL_checkstring(L, 1);
-	if(luaL_opt(L, lua_toboolean, 2, false)) {
+	if(luaL_opt(L, lua_toboolean, 2, false)){
 		auto interval = utils::parse_range_real(str);
 		lua_pushnumber(L, interval.first);
 		lua_pushnumber(L, interval.second);
@@ -343,7 +343,7 @@ static int intf_parse_range(lua_State* L)
 	return 2;
 }
 
-int luaW_open(lua_State* L) {
+int luaW_open(lua_State* L){
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding stringx module...\n");
 	static luaL_Reg const str_callbacks[] = {

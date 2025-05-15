@@ -212,8 +212,8 @@ void manager::add(window& win)
 
 void manager::remove(window& win)
 {
-	for(auto itor = windows_.begin(); itor != windows_.end(); ++itor) {
-		if(itor->second == &win) {
+	for(auto itor = windows_.begin(); itor != windows_.end(); ++itor){
+		if(itor->second == &win){
 			windows_.erase(itor);
 			return;
 		}
@@ -224,8 +224,8 @@ void manager::remove(window& win)
 
 unsigned manager::get_id(window& win)
 {
-	for(const auto& [id, window_ptr] : windows_) {
-		if(window_ptr == &win) {
+	for(const auto& [id, window_ptr] : windows_){
+		if(window_ptr == &win){
 			return id;
 		}
 	}
@@ -236,7 +236,7 @@ unsigned manager::get_id(window& win)
 
 window* manager::get_window(const unsigned id)
 {
-	if(auto itor = windows_.find(id); itor != windows_.end()) {
+	if(auto itor = windows_.find(id); itor != windows_.end()){
 		return itor->second;
 	} else {
 		return nullptr;
@@ -283,8 +283,8 @@ window::window(const builder_window::window_resolution& definition)
 
 	connect();
 
-	for(const auto& [id, fixed_width, fixed_height] : definition.linked_groups) {
-		if(!init_linked_size_group(id, fixed_width, fixed_height)) {
+	for(const auto& [id, fixed_width, fixed_height] : definition.linked_groups){
+		if(!init_linked_size_group(id, fixed_width, fixed_height)){
 			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", id}}));
 		}
 	}
@@ -292,7 +292,7 @@ window::window(const builder_window::window_resolution& definition)
 	const auto conf = cast_config_to<window_definition>();
 	assert(conf);
 
-	if(conf->grid) {
+	if(conf->grid){
 		init_grid(*conf->grid);
 		finalize(*definition.grid);
 	} else {
@@ -364,11 +364,11 @@ window::window(const builder_window::window_resolution& definition)
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
 
 	register_hotkey(hotkey::GLOBAL__HELPTIP,
-		[](auto&&...) { return helptip(); });
+		[](auto&&...){ return helptip(); });
 
 	/** @todo: should eventually become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		[](auto&&...) { video::toggle_fullscreen(); return true; });
+		[](auto&&...){ video::toggle_fullscreen(); return true; });
 }
 
 window::~window()
@@ -380,8 +380,8 @@ window::~window()
 	 * this point the member of window are destroyed and we enter UB. (For
 	 * some reason the bug didn't trigger on g++ but it does on MSVC.
 	 */
-	for(unsigned row = 0; row < get_grid().get_rows(); ++row) {
-		for(unsigned col = 0; col < get_grid().get_cols(); ++col) {
+	for(unsigned row = 0; row < get_grid().get_rows(); ++row){
+		for(unsigned col = 0; col < get_grid().get_cols(); ++col){
 			get_grid().remove_child(row, col);
 		}
 	}
@@ -393,14 +393,14 @@ window::~window()
 	 * Another issue is that on smallgui and an MP game the tooltip not
 	 * unrendered properly can capture the mouse and make playing impossible.
 	 */
-	if(show_mode_ == show_mode::modal) {
+	if(show_mode_ == show_mode::modal){
 		dialogs::tip::remove();
 	}
 
 	manager::instance().remove(*this);
 
 	// If we are currently shown, then queue an undraw.
-	if(!hidden_) {
+	if(!hidden_){
 		queue_redraw();
 	}
 }
@@ -414,9 +414,9 @@ retval window::get_retval_by_id(const std::string& id)
 {
 	// Note it might change to a map later depending on the number
 	// of items.
-	if(id == "ok") {
+	if(id == "ok"){
 		return retval::OK;
-	} else if(id == "cancel" || id == "quit") {
+	} else if(id == "cancel" || id == "quit"){
 		return retval::CANCEL;
 	} else {
 		return retval::NONE;
@@ -429,7 +429,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	hidden_ = false;
 
 	// Connect to the event handler, if not yet connected.
-	if(!is_connected()) {
+	if(!is_connected()){
 		LOG_DP << "connecting " << id() << " on show_tooltip";
 		connect();
 	}
@@ -461,7 +461,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	hidden_ = false;
 
 	// Connect to the event handler, if not yet connected.
-	if(!is_connected()) {
+	if(!is_connected()){
 		LOG_DP << "connecting " << id() << " on show_non_modal";
 		connect();
 	}
@@ -495,7 +495,7 @@ int window::show(const unsigned auto_close_timeout)
 	hidden_ = false;
 
 	// Connect to the event handler, if not yet connected.
-	if(!is_connected()) {
+	if(!is_connected()){
 		LOG_DP << "connecting " << id() << " on show";
 		connect();
 	}
@@ -525,7 +525,7 @@ int window::show(const unsigned auto_close_timeout)
 	// Make sure we display at least once in all cases.
 	events::draw();
 
-	if(auto_close_timeout) {
+	if(auto_close_timeout){
 		SDL_Event event;
 		sdl::UserEvent data(CLOSE_WINDOW_EVENT, manager::instance().get_id(*this));
 
@@ -545,11 +545,11 @@ int window::show(const unsigned auto_close_timeout)
 		mouse_button_state_ = std::numeric_limits<uint32_t>::max();
 
 		// Start our loop, drawing will happen here as well.
-		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+		for(status_ = status::SHOWING; status_ != status::CLOSED;){
 			// Process and handle all pending events.
 			events::pump();
 
-			if(!mouse_button_state_initialized) {
+			if(!mouse_button_state_initialized){
 				/*
 				 * The state must be initialize when showing the dialog.
 				 * However when initialized before this point there were random
@@ -565,7 +565,7 @@ int window::show(const unsigned auto_close_timeout)
 			}
 
 			// See if we should close.
-			if(status_ == status::REQUEST_CLOSE) {
+			if(status_ == status::REQUEST_CLOSE){
 				status_ = exit_hook_() ? status::CLOSED : status::SHOWING;
 			}
 
@@ -581,7 +581,7 @@ int window::show(const unsigned auto_close_timeout)
 		throw;
 	}
 
-	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
+	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())){
 		tb->interrupt_composition();
 	}
 
@@ -593,12 +593,12 @@ int window::show(const unsigned auto_close_timeout)
 
 void window::draw()
 {
-	if(hidden_) {
+	if(hidden_){
 		return;
 	}
 
 	// Draw background.
-	if(!this->draw_background()) {
+	if(!this->draw_background()){
 		// We may need to blur the background behind the window,
 		// but at this point it hasn't been rendered yet.
 		// We thus defer rendering to next frame so we can snapshot what
@@ -611,7 +611,7 @@ void window::draw()
 	this->draw_children();
 
 	// Draw foreground.
-	if(!this->draw_foreground()) {
+	if(!this->draw_foreground()){
 		defer_region(get_rectangle());
 	}
 
@@ -621,12 +621,12 @@ void window::draw()
 void window::hide()
 {
 	// Queue a redraw of the region if we were shown.
-	if(!hidden_) {
+	if(!hidden_){
 		queue_redraw();
 	}
 
 	// Disconnect from the event handler so we stop receiving events.
-	if(is_connected()) {
+	if(is_connected()){
 		LOG_DP << "disconnecting " << id() << " on hide";
 		disconnect();
 	}
@@ -644,16 +644,16 @@ void window::update_render_textures()
 	point buf_draw = render_buffer_.draw_size();
 	bool raw_size_changed = buf_raw.x != render.x || buf_raw.y != render.y;
 	bool draw_size_changed = buf_draw.x != draw.x || buf_draw.y != draw.y;
-	if (!raw_size_changed && !draw_size_changed) {
+	if(!raw_size_changed && !draw_size_changed){
 		// buffers are fine
 		return;
 	}
 
-	if(raw_size_changed) {
+	if(raw_size_changed){
 		LOG_DP << "regenerating window render buffer as " << render;
 		render_buffer_ = texture(render.x, render.y, SDL_TEXTUREACCESS_TARGET);
 	}
-	if(raw_size_changed || draw_size_changed) {
+	if(raw_size_changed || draw_size_changed){
 		LOG_DP << "updating window render buffer draw size to " << draw;
 		render_buffer_.set_draw_size(draw);
 	}
@@ -694,13 +694,13 @@ void window::render()
 	update_render_textures();
 
 	// Mark regions that were previously deferred for rerender and repaint.
-	for(auto& region : deferred_regions_) {
+	for(auto& region : deferred_regions_){
 		queue_redraw(region);
 	}
 	deferred_regions_.clear();
 
 	// Render the portion of the window awaiting rerender (if any).
-	if (awaiting_rerender_.empty()) {
+	if(awaiting_rerender_.empty()){
 		return;
 	}
 
@@ -722,7 +722,7 @@ bool window::expose(const rect& region)
 	// Calculate the destination region we need to draw.
 	rect dst = get_rectangle().intersect(region);
 	dst.clip(draw::get_clip());
-	if (dst.empty()) {
+	if(dst.empty()){
 		return false;
 	}
 
@@ -738,7 +738,7 @@ bool window::expose(const rect& region)
 
 rect window::screen_location()
 {
-	if(hidden_) {
+	if(hidden_){
 		return {0,0,0,0};
 	}
 	return get_rectangle();
@@ -759,7 +759,7 @@ window::invalidate_layout_blocker::~invalidate_layout_blocker()
 
 void window::invalidate_layout()
 {
-	if(!invalidate_layout_blocked_) {
+	if(!invalidate_layout_blocked_){
 		need_layout_ = true;
 	}
 }
@@ -800,13 +800,13 @@ bool window::has_linked_size_group(const std::string& id)
 void window::add_linked_widget(const std::string& id, widget* wgt)
 {
 	assert(wgt);
-	if(!has_linked_size_group(id)) {
+	if(!has_linked_size_group(id)){
 		ERR_GUI << "Unknown linked group '" << id << "'; skipping";
 		return;
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-	if(std::find(widgets.begin(), widgets.end(), wgt) == widgets.end()) {
+	if(std::find(widgets.begin(), widgets.end(), wgt) == widgets.end()){
 		widgets.push_back(wgt);
 	}
 }
@@ -814,14 +814,14 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 void window::remove_linked_widget(const std::string& id, const widget* wgt)
 {
 	assert(wgt);
-	if(!has_linked_size_group(id)) {
+	if(!has_linked_size_group(id)){
 		return;
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
 	auto itor = std::find(widgets.begin(), widgets.end(), wgt);
 
-	if(itor != widgets.end()) {
+	if(itor != widgets.end()){
 		widgets.erase(itor);
 
 		assert(std::find(widgets.begin(), widgets.end(), wgt)
@@ -831,7 +831,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 void window::layout()
 {
-	if(!need_layout_) {
+	if(!need_layout_){
 		return;
 	}
 	DBG_DP << "window::layout";
@@ -859,12 +859,12 @@ void window::layout()
 	unsigned int maximum_width = maximum_width_(variables_, &functions_);
 	unsigned int maximum_height = maximum_height_(variables_, &functions_);
 
-	if(automatic_placement_) {
-		if(maximum_width == 0 || maximum_width > settings::screen_width) {
+	if(automatic_placement_){
+		if(maximum_width == 0 || maximum_width > settings::screen_width){
 			maximum_width = settings::screen_width;
 		}
 
-		if(maximum_height == 0 || maximum_height > settings::screen_height) {
+		if(maximum_height == 0 || maximum_height > settings::screen_height){
 			maximum_height = settings::screen_height;
 		}
 	} else {
@@ -874,12 +874,12 @@ void window::layout()
 
 	/***** Handle click dismiss status. *****/
 	button* click_dismiss_button = find_widget<button>("click_dismiss", false, false);
-	if(click_dismiss_button) {
+	if(click_dismiss_button){
 		click_dismiss_button->set_visible(widget::visibility::invisible);
 	}
-	if(click_dismiss_) {
+	if(click_dismiss_){
 		button* btn = find_widget<button>("ok", false, false);
-		if(btn) {
+		if(btn){
 			btn->set_visible(widget::visibility::invisible);
 			click_dismiss_button = btn;
 		}
@@ -915,7 +915,7 @@ void window::layout()
 	}
 
 	/****** Validate click dismiss status. *****/
-	if(click_dismiss_ && disable_click_dismiss()) {
+	if(click_dismiss_ && disable_click_dismiss()){
 		assert(click_dismiss_button);
 		click_dismiss_button->set_visible(widget::visibility::visible);
 
@@ -963,9 +963,9 @@ void window::layout()
 
 	point origin(0, 0);
 
-	if(automatic_placement_) {
+	if(automatic_placement_){
 
-		switch(horizontal_placement_) {
+		switch(horizontal_placement_){
 			case grid::HORIZONTAL_ALIGN_LEFT:
 				// Do nothing
 				break;
@@ -978,7 +978,7 @@ void window::layout()
 			default:
 				assert(false);
 		}
-		switch(vertical_placement_) {
+		switch(vertical_placement_){
 			case grid::VERTICAL_ALIGN_TOP:
 				// Do nothing
 				break;
@@ -996,7 +996,7 @@ void window::layout()
 		variables_.add("window_width", wfl::variant(size.x));
 		variables_.add("window_height", wfl::variant(size.y));
 
-		while(reevaluate_best_size_(variables_, &functions_)) {
+		while(reevaluate_best_size_(variables_, &functions_)){
 			layout_initialize(true);
 
 			window_implementation::layout(*this,
@@ -1043,17 +1043,17 @@ void window::layout_linked_widgets()
 
 			const point size = widget->get_best_size();
 
-			if(size.x > max_size.x) {
+			if(size.x > max_size.x){
 				max_size.x = size.x;
 			}
-			if(size.y > max_size.y) {
+			if(size.y > max_size.y){
 				max_size.y = size.y;
 			}
 		}
-		if(linked_size.second.width != -1) {
+		if(linked_size.second.width != -1){
 			linked_size.second.width = max_size.x;
 		}
-		if(linked_size.second.height != -1) {
+		if(linked_size.second.height != -1){
 			linked_size.second.height = max_size.y;
 		}
 
@@ -1063,10 +1063,10 @@ void window::layout_linked_widgets()
 
 			point size = widget->get_best_size();
 
-			if(linked_size.second.width != -1) {
+			if(linked_size.second.width != -1){
 				size.x = max_size.x;
 			}
-			if(linked_size.second.height != -1) {
+			if(linked_size.second.height != -1){
 				size.y = max_size.y;
 			}
 
@@ -1077,8 +1077,8 @@ void window::layout_linked_widgets()
 
 bool window::click_dismiss(const int mouse_button_mask)
 {
-	if(does_click_dismiss()) {
-		if((mouse_button_state_ & mouse_button_mask) == 0) {
+	if(does_click_dismiss()){
+		if((mouse_button_state_ & mouse_button_mask) == 0){
 			set_retval(retval::OK);
 		} else {
 			mouse_button_state_ &= ~mouse_button_mask;
@@ -1101,9 +1101,9 @@ void window::finalize(const builder_grid& content_grid)
 	auto* parent_grid = get_grid().find_widget<grid>(id, true, false);
 	assert(parent_grid);
 
-	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
+	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())){
 		grandparent_grid->swap_child(id, std::move(widget), false);
-	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())) {
+	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())){
 		c->get_grid().swap_child(id, std::move(widget), true);
 	} else {
 		assert(false);
@@ -1139,17 +1139,17 @@ void window_implementation::layout(window& window,
 				  << " maximum size : " << maximum_width << ','
 				  << maximum_height << ".";
 		if(size.x <= static_cast<int>(maximum_width)
-		   && size.y <= static_cast<int>(maximum_height)) {
+		   && size.y <= static_cast<int>(maximum_height)){
 
 			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.";
 			return;
 		}
 
-		if(size.x > static_cast<int>(maximum_width)) {
+		if(size.x > static_cast<int>(maximum_width)){
 			window.reduce_width(maximum_width);
 
 			size = window.get_best_size();
-			if(size.x > static_cast<int>(maximum_width)) {
+			if(size.x > static_cast<int>(maximum_width)){
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize width failed."
 						  << " Wanted width " << maximum_width
 						  << " resulting width " << size.x << ".";
@@ -1159,11 +1159,11 @@ void window_implementation::layout(window& window,
 					  << " Status: Resize width succeeded.";
 		}
 
-		if(size.y > static_cast<int>(maximum_height)) {
+		if(size.y > static_cast<int>(maximum_height)){
 			window.reduce_height(maximum_height);
 
 			size = window.get_best_size();
-			if(size.y > static_cast<int>(maximum_height)) {
+			if(size.y > static_cast<int>(maximum_height)){
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
 						  << " Wanted height " << maximum_height
 						  << " resulting height " << size.y << ".";
@@ -1218,14 +1218,14 @@ void window::remove_from_keyboard_chain(widget* widget)
 
 void window::add_to_tab_order(widget* widget, int at)
 {
-	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()) {
+	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()){
 		return;
 	}
 	assert(event_distributor_);
-	if(tab_order.empty() && !event_distributor_->keyboard_focus()) {
+	if(tab_order.empty() && !event_distributor_->keyboard_focus()){
 		keyboard_capture(widget);
 	}
-	if(at < 0 || at >= static_cast<int>(tab_order.size())) {
+	if(at < 0 || at >= static_cast<int>(tab_order.size())){
 		tab_order.push_back(widget);
 	} else {
 		tab_order.insert(tab_order.begin() + at, widget);
@@ -1260,7 +1260,7 @@ void window::signal_handler_click_dismiss(const event::ui_event event,
 
 static bool is_active(const widget* wgt)
 {
-	if(const styled_widget* control = dynamic_cast<const styled_widget*>(wgt)) {
+	if(const styled_widget* control = dynamic_cast<const styled_widget*>(wgt)){
 		return control->get_active() && control->get_visible() == widget::visibility::visible;
 	}
 	return false;
@@ -1274,48 +1274,48 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
-		if(tb->is_composing()) {
-			if(handle_tab && !tab_order.empty() && key == SDLK_TAB) {
+	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())){
+		if(tb->is_composing()){
+			if(handle_tab && !tab_order.empty() && key == SDLK_TAB){
 				tb->interrupt_composition();
 			} else {
 				return;
 			}
 		}
 	}
-	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN){
+		if(mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)){
 			// Don't handle if modifier is pressed
 			handled = false;
 		} else {
 			// Trigger window OK button only if Enter enabled,
 			// otherwise pass handling to widget
-			if (!enter_disabled_) {
+			if(!enter_disabled_){
 				set_retval(retval::OK);
 				handled = true;
 			}
 		}
-	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
+	} else if(key == SDLK_ESCAPE && !escape_disabled_){
 		set_retval(retval::CANCEL);
 		handled = true;
-	} else if(key == SDLK_SPACE) {
+	} else if(key == SDLK_SPACE){
 		handled = click_dismiss(0);
-	} else if(handle_tab && !tab_order.empty() && key == SDLK_TAB) {
+	} else if(handle_tab && !tab_order.empty() && key == SDLK_TAB){
 		assert(event_distributor_);
 		widget* focus = event_distributor_->keyboard_focus();
 		auto iter = std::find(tab_order.begin(), tab_order.end(), focus);
 		do {
-			if(mod & KMOD_SHIFT) {
-				if(iter == tab_order.begin()) {
+			if(mod & KMOD_SHIFT){
+				if(iter == tab_order.begin()){
 					iter = tab_order.end();
 				}
 				iter--;
 			} else {
-				if(iter == tab_order.end()) {
+				if(iter == tab_order.end()){
 					iter = tab_order.begin();
 				} else {
 					iter++;
-					if(iter == tab_order.end()) {
+					if(iter == tab_order.end()){
 						iter = tab_order.begin();
 					}
 				}
@@ -1325,7 +1325,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		handled = true;
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	if(key == SDLK_F12) {
+	if(key == SDLK_F12){
 		debug_layout_->generate_dot_file("manual", debug_layout_graph::MANUAL);
 		handled = true;
 	}
@@ -1392,7 +1392,7 @@ window_definition::resolution::resolution(const config& cfg)
 	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
-	if(child) {
+	if(child){
 		grid = std::make_shared<builder_grid>(*child);
 	}
 }

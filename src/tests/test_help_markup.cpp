@@ -19,9 +19,9 @@
 #include "config.hpp"
 #include "serialization/markup.hpp"
 
-BOOST_AUTO_TEST_SUITE( help_markup )
+BOOST_AUTO_TEST_SUITE(help_markup)
 
-BOOST_AUTO_TEST_CASE( test_simple_help_markup )
+BOOST_AUTO_TEST_CASE(test_simple_help_markup)
 {
 	// This tests markup with no tags.
 	config output;
@@ -148,7 +148,7 @@ BOOST_AUTO_TEST_CASE( test_simple_help_markup )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], R"==("<tag attr='val'>")==");
 }
 
-BOOST_AUTO_TEST_CASE( test_help_markup_old )
+BOOST_AUTO_TEST_CASE(test_help_markup_old)
 {
 	// This tests strings using old-style help markup tags
 	config output;
@@ -295,7 +295,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==("Yes!")==");
 }
 
-BOOST_AUTO_TEST_CASE( test_help_markup_new )
+BOOST_AUTO_TEST_CASE(test_help_markup_new)
 {
 	// This tests strings using new-style help markup tags
 	config output;

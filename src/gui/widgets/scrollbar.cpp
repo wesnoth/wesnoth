@@ -57,7 +57,7 @@ scrollbar_base::scrollbar_base(const implementation::builder_styled_widget& buil
 void scrollbar_base::finalize_setup()
 {
 	// These values won't change so set them once.
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("offset_before", wfl::variant(offset_before()));
 		tmp.set_variable("offset_after", wfl::variant(offset_after()));
 	}
@@ -70,13 +70,13 @@ void scrollbar_base::scroll_by(const int pixels)
 
 void scrollbar_base::scroll(const scroll_mode scroll)
 {
-	switch(scroll) {
+	switch(scroll){
 		case BEGIN:
 			set_item_position(0);
 			break;
 
 		case ITEM_BACKWARDS:
-			if(item_position_) {
+			if(item_position_){
 				set_item_position(item_position_ - 1);
 			}
 			break;
@@ -134,7 +134,7 @@ void scrollbar_base::place(const point& origin, const point& size)
 
 void scrollbar_base::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -158,7 +158,7 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
 
-	if(all_items_visible()) {
+	if(all_items_visible()){
 		item_position_ = 0;
 	}
 
@@ -188,7 +188,7 @@ void scrollbar_base::update_canvas()
 
 void scrollbar_base::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -198,7 +198,7 @@ void scrollbar_base::recalculate()
 {
 	// We can be called before the size has been set up in that case we can't do
 	// the proper recalculation so stop before we die with an assert.
-	if(!get_length()) {
+	if(!get_length()){
 		return;
 	}
 
@@ -209,7 +209,7 @@ void scrollbar_base::recalculate()
 	assert(available_length > 0);
 
 	// All visible.
-	if(item_count_ <= visible_items_) {
+	if(item_count_ <= visible_items_){
 		positioner_offset_ = offset_before();
 		positioner_length_ = available_length;
 		recalculate_positioner();
@@ -224,7 +224,7 @@ void scrollbar_base::recalculate()
 	 * after this block will be triggered. Use this ugly hack to avoid that
 	 * case. (This hack also added the gui/widgets/window.hpp include.)
 	 */
-	if(!visible_items_) {
+	if(!visible_items_){
 		window* window = get_window();
 		assert(window);
 		window->invalidate_layout();
@@ -271,18 +271,18 @@ void scrollbar_base::recalculate_positioner()
 	const unsigned minimum = minimum_positioner_length();
 	const unsigned maximum = maximum_positioner_length();
 
-	if(minimum == maximum) {
+	if(minimum == maximum){
 		positioner_length_ = maximum;
-	} else if(maximum != 0 && positioner_length_ > maximum) {
+	} else if(maximum != 0 && positioner_length_ > maximum){
 		positioner_length_ = maximum;
-	} else if(positioner_length_ < minimum) {
+	} else if(positioner_length_ < minimum){
 		positioner_length_ = minimum;
 	}
 }
 
 void scrollbar_base::move_positioner(const int distance)
 {
-	if(distance < 0 && -distance > static_cast<int>(positioner_offset_)) {
+	if(distance < 0 && -distance > static_cast<int>(positioner_offset_)){
 		positioner_offset_ = 0;
 	} else {
 		positioner_offset_ += distance;
@@ -291,7 +291,7 @@ void scrollbar_base::move_positioner(const int distance)
 	const unsigned length = get_length() - offset_before() - offset_after()
 							- positioner_length_;
 
-	if(positioner_offset_ > length) {
+	if(positioner_offset_ > length){
 		positioner_offset_ = length;
 	}
 
@@ -300,11 +300,11 @@ void scrollbar_base::move_positioner(const int distance)
 
 	// Note due to floating point rounding the position might be outside the
 	// available positions so set it back.
-	if(position > item_count_ - visible_items_) {
+	if(position > item_count_ - visible_items_){
 		position = item_count_ - visible_items_;
 	}
 
-	if(position != item_position_) {
+	if(position != item_position_){
 		item_position_ = position;
 
 		child_callback_positioner_moved();
@@ -353,16 +353,16 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	switch(state_) {
+	switch(state_){
 		case ENABLED:
-			if(on_positioner(mouse)) {
+			if(on_positioner(mouse)){
 				set_state(FOCUSED);
 			}
 
 			break;
 
 		case PRESSED: {
-			if(in_orthogonal_range(mouse)) {
+			if(in_orthogonal_range(mouse)){
 				const int distance = get_length_difference(mouse_, mouse);
 				mouse_ = mouse;
 				move_positioner(distance);
@@ -371,7 +371,7 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 		} break;
 
 		case FOCUSED:
-			if(!on_positioner(mouse)) {
+			if(!on_positioner(mouse)){
 				set_state(ENABLED);
 			}
 			break;
@@ -393,7 +393,7 @@ void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if(state_ == FOCUSED) {
+	if(state_ == FOCUSED){
 		set_state(ENABLED);
 	}
 	handled = true;
@@ -409,7 +409,7 @@ void scrollbar_base::signal_handler_left_button_down(const event::ui_event event
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	if(on_positioner(mouse)) {
+	if(on_positioner(mouse)){
 		assert(get_window());
 		mouse_ = mouse;
 		get_window()->mouse_capture();
@@ -418,10 +418,10 @@ void scrollbar_base::signal_handler_left_button_down(const event::ui_event event
 
 	const int bar = on_bar(mouse);
 
-	if(bar == -1) {
+	if(bar == -1){
 		scroll(HALF_JUMP_BACKWARDS);
 		// positioner_moved_notifier_.notify();
-	} else if(bar == 1) {
+	} else if(bar == 1){
 		scroll(HALF_JUMP_FORWARD);
 		// positioner_moved_notifier_.notify();
 	} else {
@@ -440,14 +440,14 @@ void scrollbar_base::signal_handler_left_button_up(const event::ui_event event,
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	if(state_ != PRESSED) {
+	if(state_ != PRESSED){
 		return;
 	}
 
 	assert(get_window());
 	get_window()->mouse_capture(false);
 
-	if(on_positioner(mouse)) {
+	if(on_positioner(mouse)){
 		set_state(FOCUSED);
 	} else {
 		set_state(ENABLED);

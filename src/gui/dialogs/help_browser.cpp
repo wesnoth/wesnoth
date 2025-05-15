@@ -55,7 +55,7 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 	, history_()
 	, history_pos_(0)
 {
-	if(initial_topic_.compare(0, 2, "..") == 0) {
+	if(initial_topic_.compare(0, 2, "..") == 0){
 		initial_topic_.replace(0, 2, "+");
 	} else {
 		initial_topic_.insert(0, "-");
@@ -81,19 +81,19 @@ void help_browser::pre_show()
 
 	contents.set_value(true);
 	topic_tree.set_visible(true);
-	connect_signal_mouse_left_click(contents, [&](auto&&...) {
+	connect_signal_mouse_left_click(contents, [&](auto&&...){
 		auto parent = topic_text.get_window();
 		// Cache the initial values, get_best_size() keeps changing
-		if ((parent != nullptr) && (win_w == 0)) {
+		if((parent != nullptr) && (win_w == 0)){
 			win_w = parent->get_best_size().x;
 		}
-		if (tree_w == 0) {
+		if(tree_w == 0){
 			tree_w = topic_tree.get_best_size().x;
 		}
 
 		// Set RL's width and reshow
 		bool is_contents_visible = (topic_tree.get_visible() == widget::visibility::visible);
-		if (topic_text.get_window()) {
+		if(topic_text.get_window()){
 			topic_text.set_width(win_w - (is_contents_visible ? 0 : tree_w) - 20 /* Padding */);
 			show_topic(history_.at(history_pos_), false);
 		}
@@ -103,7 +103,7 @@ void help_browser::pre_show()
 
 	text_box& filter = find_widget<text_box>("filter_box");
 	add_to_keyboard_chain(&filter);
-	filter.on_modified([this](const auto& box) { update_list(box.text()); });
+	filter.on_modified([this](const auto& box){ update_list(box.text()); });
 
 	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true));
 
@@ -119,10 +119,10 @@ void help_browser::pre_show()
 	on_topic_select();
 }
 
-void help_browser::update_list(const std::string& filter_text) {
+void help_browser::update_list(const std::string& filter_text){
 	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 	topic_tree.clear();
-	if(!add_topics_for_section(toplevel_, topic_tree.get_root_node(), filter_text)) {
+	if(!add_topics_for_section(toplevel_, topic_tree.get_root_node(), filter_text)){
 		// Add everything if nothing matches
 		add_topics_for_section(toplevel_, topic_tree.get_root_node());
 	}
@@ -133,12 +133,12 @@ bool help_browser::add_topics_for_section(const help::section& parent_section, t
 	bool topics_added = false;
 	const auto match = translation::make_ci_matcher(filter_text);
 
-	for(const help::section& section : parent_section.sections) {
+	for(const help::section& section : parent_section.sections){
 		tree_view_node& section_node = add_topic(section.id, section.title, true, parent_node);
 		bool subtopics_added = add_topics_for_section(section, section_node, filter_text);
 
-		if (subtopics_added || (match(section.id) || match(section.title))) {
-			if (!filter_text.empty()) {
+		if(subtopics_added || (match(section.id) || match(section.title))){
+			if(!filter_text.empty()){
 				section_node.unfold();
 			}
 			topics_added = true;
@@ -147,8 +147,8 @@ bool help_browser::add_topics_for_section(const help::section& parent_section, t
 		}
 	}
 
-	for(const help::topic& topic : parent_section.topics) {
-		if ((match(topic.id) || match(topic.title)) && (topic.id.compare(0, 2, "..") != 0)) {
+	for(const help::topic& topic : parent_section.topics){
+		if((match(topic.id) || match(topic.title)) && (topic.id.compare(0, 2, "..") != 0)){
 			add_topic(topic.id, topic.title, false, parent_node);
 			topics_added = true;
 		}
@@ -174,24 +174,24 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 
 void help_browser::show_topic(std::string topic_id, bool add_to_history)
 {
-	if(topic_id.empty() || topic_id == current_topic_) {
+	if(topic_id.empty() || topic_id == current_topic_){
 		return;
 	} else {
 		current_topic_ = topic_id;
 	}
 
-	if(topic_id[0] == '+') {
+	if(topic_id[0] == '+'){
 		topic_id.replace(topic_id.begin(), topic_id.begin() + 1, 2, '.');
 	}
 
-	if(topic_id[0] == '-') {
+	if(topic_id[0] == '-'){
 		topic_id.erase(topic_id.begin(), topic_id.begin() + 1);
 	}
 
 	auto iter = parsed_pages_.find(topic_id);
-	if(iter == parsed_pages_.end()) {
+	if(iter == parsed_pages_.end()){
 		const help::topic* topic = help::find_topic(toplevel_, topic_id);
-		if(!topic) {
+		if(!topic){
 			ERR_HP << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 			return;
@@ -200,7 +200,7 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		DBG_HP << "Showing topic: " << topic->id << ": " << topic->title;
 
 		std::string topic_id_temp = topic->id;
-		if(topic_id_temp.compare(0, 2, "..") == 0) {
+		if(topic_id_temp.compare(0, 2, "..") == 0){
 			topic_id_temp.replace(0, 2, "+");
 		} else {
 			topic_id_temp.insert(0, "-");
@@ -215,12 +215,12 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		invalidate_layout();
 	}
 
-	if (add_to_history) {
+	if(add_to_history){
 		// history pos is 0 initially, so it's already at first entry
 		// no need to increment first time
-		if (!history_.empty()) {
+		if(!history_.empty()){
 			// don't add duplicate entries back-to-back
-			if (history_.back() == topic_id) {
+			if(history_.back() == topic_id){
 				return;
 			}
 			history_pos_++;
@@ -235,7 +235,7 @@ void help_browser::on_topic_select()
 {
 	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 
-	if(topic_tree.empty()) {
+	if(topic_tree.empty()){
 		return;
 	}
 
@@ -247,7 +247,7 @@ void help_browser::on_topic_select()
 
 void help_browser::on_history_navigate(bool backwards)
 {
-	if(backwards) {
+	if(backwards){
 		history_pos_--;
 	} else {
 		history_pos_++;

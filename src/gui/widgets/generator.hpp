@@ -120,7 +120,7 @@ public:
 	boost::dynamic_bitset<> get_items_shown() const
 	{
 		boost::dynamic_bitset<> items_shown(get_item_count());
-		for (unsigned int i = 0u; i < get_item_count(); ++i)
+		for(unsigned int i = 0u; i < get_item_count(); ++i)
 		{
 			items_shown[i] = get_item_shown(i);
 		}

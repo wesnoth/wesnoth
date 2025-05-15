@@ -79,20 +79,20 @@ editor_action_chain::editor_action_chain(const editor::editor_action_chain& othe
 	: editor_action()
 	, actions_()
 {
-	for(const auto& a : other.actions_) {
+	for(const auto& a : other.actions_){
 		actions_.push_back(a->clone());
 	}
 }
 
 editor_action_chain& editor_action_chain::operator=(const editor_action_chain& other)
 {
-	if(this == &other) {
+	if(this == &other){
 		return *this;
 	}
 
 	actions_.clear();
 
-	for(const auto& a : other.actions_) {
+	for(const auto& a : other.actions_){
 		actions_.push_back(a->clone());
 	}
 
@@ -104,8 +104,8 @@ IMPLEMENT_ACTION(chain)
 int editor_action_chain::action_count() const
 {
 	int count = 0;
-	for(const auto& a : actions_) {
-		if(a) {
+	for(const auto& a : actions_){
+		if(a){
 			count += a->action_count();
 		}
 	}
@@ -130,7 +130,7 @@ bool editor_action_chain::empty() const
 
 std::unique_ptr<editor_action> editor_action_chain::pop_last_action()
 {
-	if(empty()) {
+	if(empty()){
 		throw editor_action_exception("pop_last_action requested on an empty action_chain");
 	}
 
@@ -141,7 +141,7 @@ std::unique_ptr<editor_action> editor_action_chain::pop_last_action()
 
 std::unique_ptr<editor_action> editor_action_chain::pop_first_action()
 {
-	if(empty()) {
+	if(empty()){
 		throw editor_action_exception("pop_first_action requested on an empty action_chain");
 	}
 
@@ -153,8 +153,8 @@ std::unique_ptr<editor_action> editor_action_chain::pop_first_action()
 std::unique_ptr<editor_action> editor_action_chain::perform(map_context& mc) const
 {
 	auto undo = std::make_unique<editor_action_chain>();
-	for(auto& a : actions_) {
-		if(a != nullptr) {
+	for(auto& a : actions_){
+		if(a != nullptr){
 			undo->append_action(a->perform(mc));
 		}
 	}
@@ -164,8 +164,8 @@ std::unique_ptr<editor_action> editor_action_chain::perform(map_context& mc) con
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-	for(const auto& a : actions_) {
-		if(a != nullptr) {
+	for(const auto& a : actions_){
+		if(a != nullptr){
 			a->perform_without_undo(mc);
 		}
 	}
@@ -245,7 +245,7 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 	const std::string* old_loc_id = mc.map().is_special_location(loc_);
 	map_location old_loc = mc.map().special_location(loc_id_);
 
-	if(old_loc_id != nullptr) {
+	if(old_loc_id != nullptr){
 		// If another player was starting at the location, we actually perform two actions, so the undo is an
 		// action_chain.
 		auto undo_chain = std::make_unique<editor_action_chain>();
@@ -273,7 +273,7 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
 	const std::string* old_id = mc.map().is_special_location(loc_);
-	if(old_id != nullptr) {
+	if(old_id != nullptr){
 		mc.map().set_special_location(*old_id, map_location());
 	}
 
@@ -325,7 +325,7 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 	std::vector<map_location>::const_iterator shuffle_it = shuffle.begin();
 	std::set<map_location>::const_iterator orig_it = area_.begin();
 
-	while(orig_it != area_.end()) {
+	while(orig_it != area_.end()){
 		t_translation::terrain_code tmp = mc.map().get_terrain(*orig_it);
 
 		mc.draw_terrain(mc.map().get_terrain(*shuffle_it), *orig_it);

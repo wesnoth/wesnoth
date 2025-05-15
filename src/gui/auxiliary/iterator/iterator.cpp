@@ -142,7 +142,7 @@ do {
  *
  * When there might be no widget to visit a simple for loop can be used:
 @code
-for(iterator<policy> itor(root); !itor.at_end(); ++itor) {
+for(iterator<policy> itor(root); !itor.at_end(); ++itor){
 	...
 	...
 }

@@ -66,7 +66,7 @@ public:
 	/* describe the action */
 	virtual std::string do_describe() const =0;
 protected:
-	action_result( side_number side );
+	action_result(side_number side);
 
 	/* do check before execution or just check. setting status_ via set_error to != cancels the execution.*/
 	virtual void do_check_before() = 0;
@@ -128,7 +128,7 @@ private:
 
 class attack_result : public action_result {
 public:
-	attack_result( side_number side,
+	attack_result(side_number side,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon,
@@ -162,7 +162,7 @@ private:
 
 class move_result : public action_result {
 public:
-	move_result( side_number side,
+	move_result(side_number side,
 		const map_location& from,
 		const map_location& to,
 		bool remove_movement,
@@ -233,7 +233,7 @@ private:
 
 class recruit_result : public action_result {
 public:
-	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
+	recruit_result(side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
 
 	enum result {
 		E_NOT_AVAILABLE_FOR_RECRUITING = 3001,
@@ -255,7 +255,7 @@ private:
 		const std::string &recruit);
 	bool test_enough_gold(
 		const team& my_team,
-		const unit_type &type );
+		const unit_type &type);
 
 	const std::string& unit_name_;
 	const map_location& where_;
@@ -266,10 +266,10 @@ private:
 
 class stopunit_result : public action_result {
 public:
-	stopunit_result( side_number side,
+	stopunit_result(side_number side,
 		const map_location& unit_location,
 		bool remove_movement,
-		bool remove_attacks );
+		bool remove_attacks);
 
 	enum result {
 		E_NO_UNIT = 4002,
@@ -292,9 +292,9 @@ private:
 
 class synced_command_result : public action_result {
 public:
-	synced_command_result( side_number side,
+	synced_command_result(side_number side,
 		const std::string& lua_code,
-		const map_location& location );
+		const map_location& location);
 
 	virtual std::string do_describe() const;
 protected:
@@ -326,7 +326,7 @@ public:
  * @param aggression aggression of attacker, is used to determine attacker's weapon if it is not specified
  * @retval possible results: ok, something wrong, attacker and/or defender are invalid, or attacker doesn't have the specified weapon
  */
-static attack_result_ptr execute_attack_action( side_number side,
+static attack_result_ptr execute_attack_action(side_number side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
@@ -344,7 +344,7 @@ static attack_result_ptr execute_attack_action( side_number side,
  * @param unreach_is_ok whether it's okay for a destination to be unreachable
  * @retval possible results: ok, something wrong, move is interrupted, or move is impossible
  */
-static move_result_ptr execute_move_action( side_number side,
+static move_result_ptr execute_move_action(side_number side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
@@ -362,7 +362,7 @@ static move_result_ptr execute_move_action( side_number side,
  * @param from the location where the unit was recruited from.
  * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
  */
-static recall_result_ptr execute_recall_action( side_number side,
+static recall_result_ptr execute_recall_action(side_number side,
 	bool execute,
 	const std::string& unit_id,
 	const map_location& where,
@@ -379,7 +379,7 @@ static recall_result_ptr execute_recall_action( side_number side,
  * @param from the location where the unit was recruited from.
  * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
  */
-static recruit_result_ptr execute_recruit_action( side_number side,
+static recruit_result_ptr execute_recruit_action(side_number side,
 	bool execute,
 	const std::string& unit_name,
 	const map_location& where,
@@ -395,11 +395,11 @@ static recruit_result_ptr execute_recruit_action( side_number side,
  * @param remove_attacks set remaining attacks to 0
  * @retval possible results: ok, something wrong, or nothing to do
  */
-static stopunit_result_ptr execute_stopunit_action( side_number side,
+static stopunit_result_ptr execute_stopunit_action(side_number side,
 	bool execute,
 	const map_location& unit_location,
 	bool remove_movement,
-	bool remove_attacks );
+	bool remove_attacks);
 
 
 /**
@@ -410,10 +410,10 @@ static stopunit_result_ptr execute_stopunit_action( side_number side,
  * @param location location to be passed to the code as x1/y1
  * @retval possible results: ok, something wrong, or nothing to do
  */
-static synced_command_result_ptr execute_synced_command_action( side_number side,
+static synced_command_result_ptr execute_synced_command_action(side_number side,
 	bool execute,
 	const std::string& lua_code,
-	const map_location& location );
+	const map_location& location);
 
 
 /**

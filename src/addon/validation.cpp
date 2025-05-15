@@ -41,7 +41,7 @@ struct addon_name_char_illegal
 	 */
 	inline bool operator()(char c) const
 	{
-		switch(c) {
+		switch(c){
 			case '-':		// hyphen-minus
 			case '_':		// low line
 				return false;
@@ -56,7 +56,7 @@ struct addon_name_char_illegal
 bool addon_name_legal(const std::string& name)
 {
 	if(name.empty() ||
-	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()) {
+	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()){
 		return false;
 	} else {
 	   return true;
@@ -71,7 +71,7 @@ bool addon_filename_legal(const std::string& name)
 	return filesystem::is_legal_user_file_name(name, false);
 }
 
-bool addon_icon_too_large(const std::string& icon) {
+bool addon_icon_too_large(const std::string& icon){
 	return icon.size() > max_icon_size;
 }
 
@@ -79,15 +79,15 @@ namespace {
 
 bool check_names_legal_internal(const config& dir, std::string current_prefix, std::vector<std::string>* badlist)
 {
-	if (!current_prefix.empty()) {
+	if(!current_prefix.empty()){
 		current_prefix += '/';
 	}
 
-	for(const config& path : dir.child_range("file")) {
+	for(const config& path : dir.child_range("file")){
 		const std::string& filename = path["name"];
 
-		if(!addon_filename_legal(filename)) {
-			if(badlist) {
+		if(!addon_filename_legal(filename)){
+			if(badlist){
 				badlist->push_back(current_prefix + filename);
 			} else {
 				return false;
@@ -95,12 +95,12 @@ bool check_names_legal_internal(const config& dir, std::string current_prefix, s
 		}
 	}
 
-	for(const config& path : dir.child_range("dir")) {
+	for(const config& path : dir.child_range("dir")){
 		const std::string& dirname = path["name"];
 		const std::string& new_prefix = current_prefix + dirname;
 
-		if(!addon_filename_legal(dirname)) {
-			if(badlist) {
+		if(!addon_filename_legal(dirname)){
+			if(badlist){
 				badlist->push_back(new_prefix + "/");
 			} else {
 				return false;
@@ -108,7 +108,7 @@ bool check_names_legal_internal(const config& dir, std::string current_prefix, s
 		}
 
 		// Recurse into subdir.
-		if(!check_names_legal_internal(path, new_prefix, badlist) && !badlist) {
+		if(!check_names_legal_internal(path, new_prefix, badlist) && !badlist){
 			return false;
 		}
 	}
@@ -122,12 +122,12 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 	bool inserted;
 	bool printed;
 	std::string original;
-	for (const config &path : dir.child_range("file")) {
+	for(const config &path : dir.child_range("file")){
 		const config::attribute_value &filename = path["name"];
 		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
 		const std::string with_prefix = prefix + filename.str();
 		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::pair(false, with_prefix));
-		if (!inserted){
+		if(!inserted){
 			if(badlist){
 				std::tie(printed, original) = filenames[lowercase];
 				if(!printed){
@@ -140,12 +140,12 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 			}
 		}
 	}
-	for (const config &path : dir.child_range("dir")) {
+	for(const config &path : dir.child_range("dir")){
 		const config::attribute_value &filename = path["name"];
 		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
 		const std::string with_prefix = prefix + filename.str();
 		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::pair(false, with_prefix));
-		if (!inserted) {
+		if(!inserted){
 			if(badlist){
 				std::tie(printed, original) = filenames[lowercase];
 				if(!printed){
@@ -157,7 +157,7 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 				return false;
 			}
 		}
-		if(!check_case_insensitive_duplicates_internal(path, with_prefix + "/", badlist) && !badlist) {
+		if(!check_case_insensitive_duplicates_internal(path, with_prefix + "/", badlist) && !badlist){
 			return false;
 		}
 	}
@@ -183,12 +183,12 @@ bool check_case_insensitive_duplicates(const config& dir, std::vector<std::strin
 
 ADDON_TYPE get_addon_type(const std::string& str)
 {
-	if (str.empty())
+	if(str.empty())
 		return ADDON_UNKNOWN;
 
 	unsigned addon_type_num = 0;
 
-	while(++addon_type_num != ADDON_TYPES_COUNT) {
+	while(++addon_type_num != ADDON_TYPES_COUNT){
 		if(str == addon_type_strings[addon_type_num])  {
 			return ADDON_TYPE(addon_type_num);
 		}
@@ -207,8 +207,8 @@ namespace {
 	const char escape_char = '\x01'; /**< Binary escape char. */
 } // end unnamed namespace 2
 
-bool needs_escaping(char c) {
-	switch(c) {
+bool needs_escaping(char c){
+	switch(c){
 		case '\x00':
 		case escape_char:
 		case '\x0D': //Windows -- carriage return
@@ -224,8 +224,8 @@ std::string encode_binary(const std::string& str)
 	std::string res;
 	res.resize(str.size());
 	std::size_t n = 0;
-	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
-		if(needs_escaping(*j)) {
+	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j){
+		if(needs_escaping(*j)){
 			res.resize(res.size()+1);
 			res[n++] = escape_char;
 			res[n++] = *j + 1;
@@ -242,9 +242,9 @@ std::string unencode_binary(const std::string& str)
 	std::string res(str.size(), '\0');
 
 	std::size_t n = 0;
-	for(std::string::const_iterator j = str.begin(); j != str.end(); ) {
+	for(std::string::const_iterator j = str.begin(); j != str.end();){
 		char c = *j++;
-		if((c == escape_char) && (j != str.end())) {
+		if((c == escape_char) && (j != str.end())){
 			c = (*j++) - 1;
 		}
 		res[n++] = c;
@@ -262,7 +262,7 @@ static std::string file_hash_raw(const config& file)
 std::string file_hash(const config& file)
 {
 	std::string hash = file["hash"].str();
-	if(hash.empty()) {
+	if(hash.empty()){
 		hash = file_hash_raw(file);
 	}
 	return hash;
@@ -277,13 +277,13 @@ void write_hashlist(config& hashlist, const config& data)
 {
 	hashlist["name"] = data["name"];
 
-	for(const config& f : data.child_range("file")) {
+	for(const config& f : data.child_range("file")){
 		config& file = hashlist.add_child("file");
 		file["name"] = f["name"];
 		file["hash"] = file_hash_raw(f);
 	}
 
-	for(const config& d : data.child_range("dir")) {
+	for(const config& d : data.child_range("dir")){
 		config& dir = hashlist.add_child("dir");
 		write_hashlist(dir, d);
 	}
@@ -291,28 +291,28 @@ void write_hashlist(config& hashlist, const config& data)
 
 bool contains_hashlist(const config& from, const config& to)
 {
-	for(const config& f : to.child_range("file")) {
+	for(const config& f : to.child_range("file")){
 		bool found = false;
-		for(const config& d : from.child_range("file")) {
+		for(const config& d : from.child_range("file")){
 			found |= comp_file_hash(f, d);
 			if(found)
 				break;
 		}
-		if(!found) {
+		if(!found){
 			return false;
 		}
 	}
 
-	for(const config& d : to.child_range("dir")) {
+	for(const config& d : to.child_range("dir")){
 		auto origin_dir = from.find_child("dir", "name", d["name"]);
-		if(origin_dir) {
-			if(!contains_hashlist(*origin_dir, d)) {
+		if(origin_dir){
+			if(!contains_hashlist(*origin_dir, d)){
 				return false;
 			}
 		} else {
 			// The case of empty new subdirectories
 			const config dummy_dir = config("name", d["name"]);
-			if(!contains_hashlist(dummy_dir, d)) {
+			if(!contains_hashlist(dummy_dir, d)){
 				return false;
 			}
 		}
@@ -327,17 +327,17 @@ static bool write_difference(config& pack, const config& from, const config& to,
 	pack["name"] = to["name"];
 	bool has_changes = false;
 
-	for(const config& f : to.child_range("file")) {
+	for(const config& f : to.child_range("file")){
 		bool found = false;
-		for(const config& d : from.child_range("file")) {
+		for(const config& d : from.child_range("file")){
 			found |= comp_file_hash(f, d);
 			if(found)
 				break;
 		}
-		if(!found) {
+		if(!found){
 			config& file = pack.add_child("file");
 			file["name"] = f["name"];
-			if(with_content) {
+			if(with_content){
 				file["contents"] = f["contents"];
 				file["hash"] = file_hash(f);
 			}
@@ -345,17 +345,17 @@ static bool write_difference(config& pack, const config& from, const config& to,
 		}
 	}
 
-	for(const config& d : to.child_range("dir")) {
+	for(const config& d : to.child_range("dir")){
 		auto origin_dir = from.find_child("dir", "name", d["name"]);
 		config dir;
-		if(origin_dir) {
-			if(write_difference(dir, *origin_dir, d, with_content)) {
+		if(origin_dir){
+			if(write_difference(dir, *origin_dir, d, with_content)){
 				pack.add_child("dir", dir);
 				has_changes = true;
 			}
 		} else {
 			const config dummy_dir = config("name", d["name"]);
-			if(write_difference(dir, dummy_dir, d, with_content)) {
+			if(write_difference(dir, dummy_dir, d, with_content)){
 				pack.add_child("dir", dir);
 				has_changes = true;
 			}
@@ -536,8 +536,8 @@ std::string addon_check_status_desc(unsigned int code)
 		}
 	};
 
-	for(const auto& entry : message_table) {
-		if(static_cast<unsigned int>(entry.first) == code) {
+	for(const auto& entry : message_table){
+		if(static_cast<unsigned int>(entry.first) == code){
 			return entry.second;
 		}
 	}

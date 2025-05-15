@@ -32,7 +32,7 @@ void addon_uninstall_list::pre_show()
 	keyboard_capture(&list);
 	selections_.clear();
 
-	for(const auto& [id, title] : titles_map_) {
+	for(const auto& [id, title] : titles_map_){
 		ids_.push_back(id);
 		selections_[id] = false;
 
@@ -47,11 +47,11 @@ void addon_uninstall_list::post_show()
 
 	assert(rows == ids_.size() && rows == titles_map_.size());
 
-	if(!rows || get_retval() != retval::OK) {
+	if(!rows || get_retval() != retval::OK){
 		return;
 	}
 
-	for(unsigned k = 0; k < rows; ++k) {
+	for(unsigned k = 0; k < rows; ++k){
 		const grid* g = list.get_row_grid(k);
 		const toggle_button& checkbox
 				= g->find_widget<const toggle_button>("checkbox");
@@ -65,7 +65,7 @@ std::vector<std::string> addon_uninstall_list::selected_addons() const
 
 	for(const auto & entry : selections_)
 	{
-		if(entry.second) {
+		if(entry.second){
 			retv.push_back(entry.first);
 		}
 	}

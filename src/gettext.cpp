@@ -84,44 +84,44 @@ namespace
 			: base_loc_(base)
 		{
 			const bl::info& inf = std::use_facet<bl::info>(base);
-			if(inf.language() == "c") {
+			if(inf.language() == "c"){
 				return;
 			}
 			std::string lang_name_short = inf.language();
 			std::string lang_name_long = lang_name_short;
-			if(!inf.country().empty()) {
+			if(!inf.country().empty()){
 				lang_name_long += '_';
 				lang_name_long += inf.country();
 			}
-			if(!inf.variant().empty()) {
+			if(!inf.variant().empty()){
 				lang_name_long += '@';
 				lang_name_long += inf.variant();
 				lang_name_short += '@';
 				lang_name_short += inf.variant();
 			}
 			DBG_G << "Loading po files for language " << lang_name_long;
-			for(auto& domain : domains) {
+			for(auto& domain : domains){
 				DBG_G << "Searching for po files for domain " << domain;
 				std::string path;
-				for(auto base_path : paths) {
+				for(auto base_path : paths){
 					DBG_G << "Searching in dir " << base_path;
-					if(base_path[base_path.length()-1] != '/') {
+					if(base_path[base_path.length()-1] != '/'){
 						base_path += '/';
 					}
 					base_path += domain;
 					base_path += '/';
 					path = base_path + lang_name_long + ".po";
 					DBG_G << "  Trying path " << path;
-					if(filesystem::file_exists(path)) {
+					if(filesystem::file_exists(path)){
 						break;
 					}
 					path = base_path + lang_name_short + ".po";
 					DBG_G << "  Trying path " << path;
-					if(filesystem::file_exists(path)) {
+					if(filesystem::file_exists(path)){
 						break;
 					}
 				}
-				if(!filesystem::file_exists(path)) {
+				if(!filesystem::file_exists(path)){
 					continue;
 				}
 				LOG_G << "Loading language file from " << path;
@@ -130,17 +130,17 @@ namespace
 					po_file->exceptions(std::ios::badbit);
 					const auto& cat = spirit_po::default_catalog::from_istream(*po_file);
 					extra_messages_.emplace(get_base().domain(domain), cat);
-				} catch(const spirit_po::catalog_exception& e) {
+				} catch(const spirit_po::catalog_exception& e){
 					// Treat any parsing error in the same way as the file not existing - just leave
 					// this domain untranslated but continue to load other domains.
 					log_po_error(lang_name_long, domain, e.what());
-				} catch(const std::ios::failure&) {
+				} catch(const std::ios::failure&){
 					log_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}
 		}
 
-		static void log_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
+		static void log_po_error(const std::string& lang, const std::string& dom, const std::string& detail){
 			ERR_G << "Error opening language file for " << lang << ", textdomain " << dom
 				<< ":\n  " << detail;
 		}
@@ -149,14 +149,14 @@ namespace
 		{
 			auto& base = get_base();
 			const char* msg = base.get(domain_id, ctx, msg_id);
-			if(msg == nullptr) {
+			if(msg == nullptr){
 				auto iter = extra_messages_.find(domain_id);
-				if(iter == extra_messages_.end()) {
+				if(iter == extra_messages_.end()){
 					return nullptr;
 				}
 				auto& catalog = iter->second;
 				const char* lookup = ctx ? catalog.pgettext(ctx, msg_id) : catalog.gettext(msg_id);
-				if(lookup != msg_id) {
+				if(lookup != msg_id){
 					// (p)gettext returns the input pointer if the string was not found
 					msg = lookup;
 				}
@@ -172,14 +172,14 @@ namespace
 		{
 			auto& base = get_base();
 			const char* msg = base.get(domain_id, ctx, sid, n);
-			if(msg == nullptr) {
+			if(msg == nullptr){
 				auto iter = extra_messages_.find(domain_id);
-				if(iter == extra_messages_.end()) {
+				if(iter == extra_messages_.end()){
 					return nullptr;
 				}
 				auto& catalog = iter->second;
 				const char* lookup = ctx ? catalog.npgettext(ctx, sid, sid, n) : catalog.ngettext(sid, sid, n);
-				if(lookup != sid) {
+				if(lookup != sid){
 					// n(p)gettext returns one of the input pointers if the string was not found
 					msg = lookup;
 				}
@@ -319,7 +319,7 @@ namespace
 				current_locale_ = generator_.generate(current_language_);
 				current_locale_ = std::locale(current_locale_, new wesnoth_message_format(current_locale_, loaded_domains_, loaded_paths_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
-				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
+				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ("
 				      << "name='" << info.name()
 				      << "' country='"  << info.country()
 				      << "' language='"  << info.language()
@@ -361,7 +361,7 @@ namespace
 			{
 				res << "has backend: '" << name << "',";
 			}
-			if(std::has_facet<bl::info>(current_locale_)) {
+			if(std::has_facet<bl::info>(current_locale_)){
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				res << " locale: (name='" << info.name()
 			 	     << "' country='" << info.country()
@@ -370,7 +370,7 @@ namespace
 			 	     << "' variant='" << info.variant()
 			 	     << "'),";
 			}
-			if(std::has_facet<bl::collator<char>>(current_locale_)) {
+			if(std::has_facet<bl::collator<char>>(current_locale_)){
 				res << "has bl::collator<char> facet, ";
 			}
 #if BOOST_VERSION < 108100
@@ -434,9 +434,9 @@ std::string egettext(char const *msgid)
 std::string dsgettext (const char * domainname, const char *msgid)
 {
 	std::string msgval = dgettext (domainname, msgid);
-	if (msgval == msgid) {
+	if(msgval == msgid){
 		const char* firsthat = std::strchr (msgid, '^');
-		if (firsthat == nullptr)
+		if(firsthat == nullptr)
 			msgval = msgid;
 		else
 			msgval = firsthat + 1;
@@ -448,11 +448,11 @@ namespace {
 
 inline const char* is_unlocalized_string2(const std::string& str, const char* singular, const char* plural)
 {
-	if (str == singular) {
+	if(str == singular){
 		return singular;
 	}
 
-	if (str == plural) {
+	if(str == plural){
 		return plural;
 	}
 
@@ -466,9 +466,9 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 
 	auto original = is_unlocalized_string2(msgval, singular, plural);
-	if (original) {
+	if(original){
 		const char* firsthat = std::strchr (original, '^');
-		if (firsthat == nullptr)
+		if(firsthat == nullptr)
 			msgval = original;
 		else
 			msgval = firsthat + 1;
@@ -504,10 +504,10 @@ int compare(const std::string& s1, const std::string& s2)
 
 	try {
 		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
-	} catch(const std::bad_cast&) {
+	} catch(const std::bad_cast&){
 		static bool bad_cast_once = false;
 
-		if(!bad_cast_once) {
+		if(!bad_cast_once){
 			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()";
 			bad_cast_once = true;
 		}
@@ -532,15 +532,15 @@ int icompare(const std::string& s1, const std::string& s2)
 		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collate_level::secondary, s1, s2);
 #endif
-	} catch(const std::bad_cast&) {
+	} catch(const std::bad_cast&){
 		static bool bad_cast_once = false;
 
-		if(!bad_cast_once) {
+		if(!bad_cast_once){
 			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()";
 
 			try { //just to be safe.
 				ERR_G << get_manager().debug_description();
-			} catch (const std::exception& e) {
+			} catch (const std::exception& e){
 				ERR_G << e.what();
 			}
 			bad_cast_once = true;
@@ -562,7 +562,7 @@ bool ci_search(const std::string& s1, const std::string& s2)
 
 bool ci_search(utils::span<const std::string> s1, const std::string& s2)
 {
-	return std::any_of(s1.begin(), s1.end(), [&s2](const auto& s1) { return ci_search(s1, s2); });
+	return std::any_of(s1.begin(), s1.end(), [&s2](const auto& s1){ return ci_search(s1, s2); });
 }
 
 const boost::locale::info& get_effective_locale_info()

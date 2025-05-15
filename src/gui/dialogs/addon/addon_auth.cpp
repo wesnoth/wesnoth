@@ -34,8 +34,8 @@ addon_auth::addon_auth(config& cfg)
 	, cfg_(cfg)
 {
 	register_bool("remember_password", false,
-		[]() {return prefs::get().remember_password();},
-		[](bool v) {prefs::get().set_remember_password(v);});
+		[](){return prefs::get().remember_password();},
+		[](bool v){prefs::get().set_remember_password(v);});
 }
 
 void addon_auth::pre_show()
@@ -46,13 +46,13 @@ void addon_auth::pre_show()
 
 	std::vector<config> content_list;
 
-	for(const auto& author : utils::split(cfg_["primary_authors"].str(""), ',')) {
+	for(const auto& author : utils::split(cfg_["primary_authors"].str(""), ',')){
 		content_list.emplace_back("label", author);
 	}
-	for(const auto& author : utils::split(cfg_["secondary_authors"].str(""), ',')) {
+	for(const auto& author : utils::split(cfg_["secondary_authors"].str(""), ',')){
 		content_list.emplace_back("label", author);
 	}
-	if(content_list.size() > 0) {
+	if(content_list.size() > 0){
 		find_widget<menu_button>("choose_uploader").set_values(content_list);
 	}
 }

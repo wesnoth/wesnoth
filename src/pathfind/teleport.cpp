@@ -56,11 +56,11 @@ teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get
 	VALIDATE(cfg_.child_count("source") == 1, "The tunnel should have only one 'source' child.");
 	VALIDATE(cfg_.child_count("target") == 1, "The tunnel should have only one 'target' child.");
 	VALIDATE(cfg_.child_count("filter") == 1, "The tunnel should have only one 'filter' child.");
-	if (cfg["id"].empty()) {
+	if(cfg["id"].empty()){
 		id_ = resources::tunnels->next_unique_id();
 	} else {
 		id_ = cfg["id"].str();
-		if (reversed_) // Differentiate the reverse tunnel from the forward one
+		if(reversed_) // Differentiate the reverse tunnel from the forward one
 			id_ += reversed_suffix;
 	}
 }
@@ -119,7 +119,7 @@ void teleport_group::get_teleport_pair(
 	assert(fc);
 
 	utils::optional<ignore_units_filter_context> ignore_context;
-	if (ignore_units) {
+	if(ignore_units){
 		ignore_context.emplace(*resources::filter_con);
 		fc = &ignore_context.value();
 	}
@@ -128,7 +128,7 @@ void teleport_group::get_teleport_pair(
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
 	const unit_filter ufilt(filter); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
-	if (ufilt.matches(u)) {
+	if(ufilt.matches(u)){
 		terrain_filter source_filter(source, fc, false);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first, u);
 
@@ -173,22 +173,22 @@ teleport_map::teleport_map(
 	, targets_()
 {
 
-	for (const teleport_group& group : groups) {
+	for(const teleport_group& group : groups){
 
 		teleport_pair locations;
 
-		if (check_vision && !group.allow_vision()) {
+		if(check_vision && !group.allow_vision()){
 			continue;
 		}
 
 		group.get_teleport_pair(locations, unit, ignore_units);
-		if (!see_all && !group.always_visible() && viewing_team.is_enemy(unit.side())) {
+		if(!see_all && !group.always_visible() && viewing_team.is_enemy(unit.side())){
 			teleport_pair filter_locs;
-			for (const map_location &loc : locations.first) {
+			for(const map_location &loc : locations.first){
 				if(!viewing_team.fogged(loc))
 					filter_locs.first.insert(loc);
 			}
-			for (const map_location &loc : locations.second) {
+			for(const map_location &loc : locations.second){
 				if(!viewing_team.fogged(loc))
 					filter_locs.second.insert(loc);
 			}
@@ -196,16 +196,16 @@ teleport_map::teleport_map(
 			locations.second.swap(filter_locs.second);
 		}
 
-		if (!group.pass_allied_units() && !ignore_units && !check_vision) {
+		if(!group.pass_allied_units() && !ignore_units && !check_vision){
 			std::set<map_location>::iterator loc = locations.second.begin();
-			while(loc != locations.second.end()) {
+			while(loc != locations.second.end()){
 				unit_map::iterator u;
-				if (see_all) {
+				if(see_all){
 					u = resources::gameboard->units().find(*loc);
 				} else {
 					u = resources::gameboard->find_visible_unit(*loc, viewing_team);
 				}
-				if (u != resources::gameboard->units().end()) {
+				if(u != resources::gameboard->units().end()){
 					loc = locations.second.erase(loc);
 				} else {
 					++loc;
@@ -214,10 +214,10 @@ teleport_map::teleport_map(
 		}
 
 		std::set<map_location>::iterator source_it = locations.first.begin();
-		for (; source_it != locations.first.end(); ++source_it ) {
+		for(; source_it != locations.first.end(); ++source_it){
 			auto map_it = teleport_map_.find(*source_it);
 
-			if(map_it == teleport_map_.end()) {
+			if(map_it == teleport_map_.end()){
 				teleport_map_.emplace(*source_it, std::unordered_set(locations.second.begin(), locations.second.end()));
 			} else {
 				map_it->second.insert(locations.second.begin(), locations.second.end());
@@ -231,7 +231,7 @@ teleport_map::teleport_map(
 const std::unordered_set<map_location>& teleport_map::get_adjacents(map_location loc) const
 {
 	const auto iter = teleport_map_.find(loc);
-	if(iter == teleport_map_.end()) {
+	if(iter == teleport_map_.end()){
 		return empty_set_;
 	}
 
@@ -254,9 +254,9 @@ const teleport_map get_teleport_locations(const unit &u,
 {
 	std::vector<teleport_group> groups;
 
-	for (const unit_ability & teleport : u.get_abilities("teleport")) {
+	for(const unit_ability & teleport : u.get_abilities("teleport")){
 		const int tunnel_count = (teleport.ability_cfg)->child_count("tunnel");
-		for(int i = 0; i < tunnel_count; ++i) {
+		for(int i = 0; i < tunnel_count; ++i){
 			config teleport_group_cfg = (teleport.ability_cfg)->mandatory_child("tunnel", i);
 			groups.emplace_back(vconfig(teleport_group_cfg, true), false);
 		}
@@ -268,11 +268,11 @@ const teleport_map get_teleport_locations(const unit &u,
 	return teleport_map(groups, u, viewing_team, see_all, ignore_units, check_vision);
 }
 
-manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
+manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)){
 	const int tunnel_count = cfg.child_count("tunnel");
-	for(int i = 0; i < tunnel_count; ++i) {
+	for(int i = 0; i < tunnel_count; ++i){
 		const config& t = cfg.mandatory_child("tunnel", i);
-		if(!t["saved"].to_bool()) {
+		if(!t["saved"].to_bool()){
 			lg::log_to_chat() << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
 			ERR_WML << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.";
 			continue;
@@ -282,14 +282,14 @@ manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_i
 	}
 }
 
-void manager::add(const teleport_group &group) {
+void manager::add(const teleport_group &group){
 	tunnels_.push_back(group);
 }
 
-void manager::remove(const std::string &id) {
+void manager::remove(const std::string &id){
 	std::vector<teleport_group>::iterator t = tunnels_.begin();
-	for(;t != tunnels_.end();) {
-		if (t->get_teleport_id() == id || t->get_teleport_id() == id + reversed_suffix) {
+	for(;t != tunnels_.end();){
+		if(t->get_teleport_id() == id || t->get_teleport_id() == id + reversed_suffix){
 			t = tunnels_.erase(t);
 		} else {
 			++t;
@@ -305,7 +305,7 @@ config manager::to_config() const {
 	config store;
 
 	std::vector<teleport_group>::const_iterator tunnel = tunnels_.begin();
-	for(; tunnel != tunnels_.end(); ++tunnel) {
+	for(; tunnel != tunnels_.end(); ++tunnel){
 		store.add_child("tunnel", tunnel->to_config());
 	}
 	store["next_teleport_group_id"] = std::to_string(id_);
@@ -313,7 +313,7 @@ config manager::to_config() const {
 	return store;
 }
 
-std::string manager::next_unique_id() {
+std::string manager::next_unique_id(){
 	return std::to_string(++id_);
 }
 

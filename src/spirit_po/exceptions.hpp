@@ -18,12 +18,12 @@ template <typename Iterator>
 std::string iterator_context(Iterator & it, Iterator & end) {
   std::string result;
   std::size_t line_no = boost::spirit::get_line(it);
-  if (line_no != static_cast<std::size_t>(-1)) {
+  if(line_no != static_cast<std::size_t>(-1)) {
     result = "Line " + std::to_string(line_no) + ":\n";
   }
 
   unsigned int count = 80;
-  while (it != end && count) {
+  while(it != end && count) {
     result += *it;
     ++it;
     --count;
@@ -38,7 +38,7 @@ inline std::string string_iterator_context(const std::string & str,
   std::string result{str};
   result += "\n";
 
-  for (auto temp = str.begin(); temp != it; ++temp) {
+  for(auto temp = str.begin(); temp != it; ++temp) {
     result += ' ';
   }
   result += "^\n";
@@ -71,7 +71,7 @@ struct catalog_exception : std::runtime_error {
 
 #define SPIRIT_PO_CATALOG_FAIL(Message)                      \
 do {                                                         \
-  throw spirit_po::catalog_exception(( Message ));           \
+  throw spirit_po::catalog_exception((Message));           \
 } while(0)
 
 

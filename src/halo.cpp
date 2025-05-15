@@ -169,7 +169,7 @@ halo_impl::effect::effect(int xpos, int ypos,
 void halo_impl::effect::set_location(int x, int y)
 {
 	point new_center = point{x, y} - disp->get_location(map_location::ZERO());
-	if(new_center != abs_mid_) {
+	if(new_center != abs_mid_){
 		DBG_HL << "setting halo location " << new_center;
 		abs_mid_ = new_center;
 	}
@@ -186,7 +186,7 @@ void halo_impl::effect::update()
 {
 	double zf = disp->get_zoom_factor();
 
-	if(map_loc_.x != -1 && map_loc_.y != -1) {
+	if(map_loc_.x != -1 && map_loc_.y != -1){
 		// If the halo is attached to a particular map location,
 		// make sure it stays attached.
 		auto [x, y] = disp->get_location_rect(map_loc_).center();
@@ -195,7 +195,7 @@ void halo_impl::effect::update()
 		// It would be good to attach to a position within a hex,
 		// or persistently to an item or unit. That's not the case,
 		// so we use some horrible hacks to compensate for zoom changes.
-		if(cached_zoom_ != zf) {
+		if(cached_zoom_ != zf){
 			abs_mid_.x *= zf / cached_zoom_;
 			abs_mid_.y *= zf / cached_zoom_;
 			cached_zoom_ = zf;
@@ -204,7 +204,7 @@ void halo_impl::effect::update()
 
 	// Load texture for current animation frame
 	tex_ = image::get_texture(current_image());
-	if(!tex_) {
+	if(!tex_){
 		ERR_HL << "no texture found for current halo animation frame";
 		screen_loc_ = {};
 		return;
@@ -222,7 +222,7 @@ void halo_impl::effect::update()
 	screen_loc_ = {xpos, ypos, w, h};
 
 	// Queue display updates if position has changed
-	if(screen_loc_ != last_draw_loc_) {
+	if(screen_loc_ != last_draw_loc_){
 		queue_undraw();
 		queue_redraw();
 		last_draw_loc_ = screen_loc_;
@@ -234,12 +234,12 @@ bool halo_impl::effect::visible()
 	// Source is shrouded
 	// The halo will be completely obscured here, even if it would
 	// technically be large enough to peek out of the shroud.
-	if(map_loc_.x != -1 && map_loc_.y != -1 && disp->shrouded(map_loc_)) {
+	if(map_loc_.x != -1 && map_loc_.y != -1 && disp->shrouded(map_loc_)){
 		return false;
 	}
 
 	// Halo is completely off screen
-	if(!screen_loc_.overlaps(disp->map_outside_area())) {
+	if(!screen_loc_.overlaps(disp->map_outside_area())){
 		return false;
 	}
 
@@ -254,7 +254,7 @@ bool halo_impl::effect::render()
 	// Update animation frame, even if we didn't actually draw it
 	images_.update_last_draw_time();
 
-	if(!visible()) {
+	if(!visible()){
 		return false;
 	}
 
@@ -263,7 +263,7 @@ bool halo_impl::effect::render()
 
 	DBG_HL << "drawing halo at " << screen_loc_;
 
-	if (orientation_ == NORMAL) {
+	if(orientation_ == NORMAL){
 		draw::blit(tex_, screen_loc_);
 	} else {
 		draw::flipped(tex_, screen_loc_,
@@ -278,7 +278,7 @@ bool halo_impl::effect::render()
 
 void halo_impl::effect::queue_undraw()
 {
-	if(!last_draw_loc_.overlaps(disp->map_outside_area())) {
+	if(!last_draw_loc_.overlaps(disp->map_outside_area())){
 		return;
 	}
 	DBG_HL << "queueing halo undraw at " << last_draw_loc_;
@@ -287,7 +287,7 @@ void halo_impl::effect::queue_undraw()
 
 void halo_impl::effect::queue_redraw()
 {
-	if(!visible()) {
+	if(!visible()){
 		return;
 	}
 	DBG_HL << "queueing halo redraw at " << screen_loc_;
@@ -309,16 +309,16 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 	animated<image::locator>::anim_description image_vector;
 	std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
 
-	for(const std::string& item : items) {
+	for(const std::string& item : items){
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
 		std::string str = item;
 		int time = 100;
 
-		if(sub_items.size() > 1) {
+		if(sub_items.size() > 1){
 			str = sub_items.front();
 			try {
 				time = std::stoi(sub_items.back());
-			} catch(const std::invalid_argument&) {
+			} catch(const std::invalid_argument&){
 				ERR_HL << "Invalid time value found when constructing halo: " << sub_items.back();
 			}
 		}
@@ -327,7 +327,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 	}
 	haloes.emplace(id, effect(x, y, image_vector, loc, orientation, infinite));
 	invalidated_haloes.insert(id);
-	if(haloes.find(id)->second.does_change() || !infinite) {
+	if(haloes.find(id)->second.does_change() || !infinite){
 		changing_haloes.insert(id);
 	}
 	return id;
@@ -336,7 +336,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 void halo_impl::set_location(int handle, int x, int y)
 {
 	const std::map<int,effect>::iterator itor = haloes.find(handle);
-	if(itor != haloes.end()) {
+	if(itor != haloes.end()){
 		itor->second.set_location(x,y);
 	}
 }
@@ -354,24 +354,24 @@ void halo_impl::remove(int handle)
 
 void halo_impl::update()
 {
-	if(haloes.empty()) {
+	if(haloes.empty()){
 		return;
 	}
 
 	// Mark expired haloes for removal
-	for(auto& [id, effect] : haloes) {
-		if(effect.expired()) {
+	for(auto& [id, effect] : haloes){
+		if(effect.expired()){
 			DBG_HL << "expiring halo " << id;
 			deleted_haloes.insert(id);
 		}
 	}
 	// Make sure deleted halos get undrawn
-	for(int id : deleted_haloes) {
+	for(int id : deleted_haloes){
 		DBG_HL << "invalidating deleted halo " << id;
 		haloes.at(id).queue_undraw();
 	}
 	// Remove deleted halos
-	for(int id : deleted_haloes) {
+	for(int id : deleted_haloes){
 		DBG_HL << "deleting halo " << id;
 		changing_haloes.erase(id);
 		haloes.erase(id);
@@ -379,14 +379,14 @@ void halo_impl::update()
 	deleted_haloes.clear();
 
 	// Update the location and animation frame of the remaining halos
-	for(auto& [id, halo] : haloes) { (void)id;
+	for(auto& [id, halo] : haloes){ (void)id;
 		halo.update();
 	}
 
 	// Invalidate any animated halos which need updating
-	for(int id : changing_haloes) {
+	for(int id : changing_haloes){
 		auto& halo = haloes.at(id);
-		if(halo.need_update() && halo.visible()) {
+		if(halo.need_update() && halo.visible()){
 			DBG_HL << "invalidating changed halo " << id;
 			halo.queue_redraw();
 		}
@@ -395,12 +395,12 @@ void halo_impl::update()
 
 void halo_impl::render(const rect& region)
 {
-	if(haloes.empty()) {
+	if(haloes.empty()){
 		return;
 	}
 
-	for(auto& [id, effect] : haloes) {
-		if(region.overlaps(effect.get_draw_location())) {
+	for(auto& [id, effect] : haloes){
+		if(region.overlaps(effect.get_draw_location())){
 			DBG_HL << "drawing intersected halo " << id;
 			effect.render();
 		}
@@ -466,11 +466,11 @@ halo_record::halo_record(int id, const std::shared_ptr<halo_impl> & my_manager) 
 
 halo_record::~halo_record()
 {
-	if (!valid()) return;
+	if(!valid()) return;
 
 	std::shared_ptr<halo_impl> man = my_manager_.lock();
 
-	if(man) {
+	if(man){
 		man->remove(id_);
 	}
 }

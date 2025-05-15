@@ -42,7 +42,7 @@ gui2::widget& luaW_checkwidget(lua_State* L, int n)
 {
 	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey));
 	auto ptr = lp.get_ptr();
-	if(!ptr) {
+	if(!ptr){
 		luaL_argerror(L, n, "widget was deleted");
 	}
 	return *ptr;
@@ -52,7 +52,7 @@ lua_ptr<gui2::widget>& luaW_checkwidget_ptr(lua_State* L, int n)
 {
 	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey));
 	auto ptr = lp.get_ptr();
-	if(!ptr) {
+	if(!ptr){
 		luaL_argerror(L, n, "widget was deleted");
 	}
 	return lp;
@@ -69,7 +69,7 @@ static void luaW_pushwidgettablecontainer(lua_State* L)
 {
 	lua_pushlightuserdata(L, &widgetdataKey[0]);
 	lua_rawget(L, LUA_REGISTRYINDEX);
-	if(lua_isnoneornil(L, -1)) {
+	if(lua_isnoneornil(L, -1)){
 		lua_pop(L, 1);
 		lua_createtable(L, 0, 0);
 		lua_pushlightuserdata(L, &widgetdataKey[0]);
@@ -191,15 +191,15 @@ static int impl_widget_collect(lua_State* L)
 static int impl_widget_length(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)){
 		lua_pushinteger(L, list->get_item_count());
-	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
+	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)){
 		lua_pushinteger(L, multi_page->get_page_count());
-	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
+	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)){
 		lua_pushinteger(L, stacked_widget->get_layer_count());
-	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
+	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)){
 		lua_pushinteger(L, tree_view->get_root_node().count_children());
-	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
+	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)){
 		lua_pushinteger(L, tree_view_node->count_children());
 	} else {
 		luaW_tableget(L, 1, "type");

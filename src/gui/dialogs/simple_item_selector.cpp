@@ -47,11 +47,11 @@ void simple_item_selector::pre_show()
 	listbox& list = find_widget<listbox>("listbox");
 	keyboard_capture(&list);
 
-	for(const auto& it : items_) {
+	for(const auto& it : items_){
 		list.add_row(widget_data{{ "item", {{ "label", it }}}});
 	}
 
-	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()) {
+	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()){
 		list.select_row(index_);
 	}
 
@@ -60,22 +60,22 @@ void simple_item_selector::pre_show()
 	button& button_ok = find_widget<button>("ok");
 	button& button_cancel = find_widget<button>("cancel");
 
-	if(!ok_label_.empty()) {
+	if(!ok_label_.empty()){
 		button_ok.set_label(ok_label_);
 	}
 
-	if(!cancel_label_.empty()) {
+	if(!cancel_label_.empty()){
 		button_cancel.set_label(cancel_label_);
 	}
 
-	if(single_button_) {
+	if(single_button_){
 		button_cancel.set_visible(gui2::widget::visibility::invisible);
 	}
 }
 
 void simple_item_selector::post_show()
 {
-	if(get_retval() == retval::OK || single_button_) {
+	if(get_retval() == retval::OK || single_button_){
 		index_ = find_widget<listbox>("listbox").get_selected_row();
 	}
 }

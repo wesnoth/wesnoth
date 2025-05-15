@@ -32,7 +32,7 @@ void copy_to_clipboard(const std::string& text)
 std::string copy_from_clipboard()
 {
 	char* clipboard = SDL_GetClipboardText();
-	if(!clipboard) {
+	if(!clipboard){
 		return std::string();
 	}
 

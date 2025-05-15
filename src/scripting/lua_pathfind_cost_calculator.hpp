@@ -39,7 +39,7 @@ struct lua_pathfind_cost_calculator : pathfind::cost_calculator
 		lua_pushinteger(L, loc.wml_y());
 		lua_pushnumber(L, so_far);
 		// Execute the user function.
-		if (!luaW_pcall(L, 3, 1)) {
+		if(!luaW_pcall(L, 3, 1)) {
 			return 1.;
 		}
 		// Return a cost of at least 1 mp to avoid issues in pathfinder.

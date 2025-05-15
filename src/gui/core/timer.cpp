@@ -82,7 +82,7 @@ public:
 	{
 		const std::size_t id = executing_id;
 		executing_id = 0;
-		if(executing_id_removed) {
+		if(executing_id_removed){
 			remove_timer(id);
 		}
 	}
@@ -100,7 +100,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(reinterpret_cast<std::size_t>(id));
-		if(itor == get_timers().end()) {
+		if(itor == get_timers().end()){
 			return 0;
 		}
 		result = itor->second.interval.count();
@@ -140,12 +140,12 @@ std::size_t add_timer(const std::chrono::milliseconds& interval,
 				interval.count(), timer_callback, reinterpret_cast<void*>(next_timer_id));
 	}
 
-	if(timer.sdl_id == 0) {
+	if(timer.sdl_id == 0){
 		WRN_GUI_E << "Failed to create an sdl timer.";
 		return 0;
 	}
 
-	if(repeat) {
+	if(repeat){
 		timer.interval = interval;
 	}
 
@@ -168,17 +168,17 @@ bool remove_timer(const std::size_t id)
 	std::scoped_lock lock(timers_mutex);
 
 	auto itor = get_timers().find(id);
-	if(itor == get_timers().end()) {
+	if(itor == get_timers().end()){
 		LOG_GUI_E << "Can't remove timer since it no longer exists.";
 		return false;
 	}
 
-	if(id == executing_id) {
+	if(id == executing_id){
 		executing_id_removed = true;
 		return true;
 	}
 
-	if(!SDL_RemoveTimer(itor->second.sdl_id)) {
+	if(!SDL_RemoveTimer(itor->second.sdl_id)){
 		/*
 		 * This can happen if the caller of the timer didn't get the event yet
 		 * but the timer has already been fired. This due to the fact that a
@@ -203,14 +203,14 @@ bool execute_timer(const std::size_t id)
 		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(id);
-		if(itor == get_timers().end()) {
+		if(itor == get_timers().end()){
 			LOG_GUI_E << "Can't execute timer since it no longer exists.";
 			return false;
 		}
 
 		callback = itor->second.callback;
 
-		if(itor->second.interval == std::chrono::milliseconds{0}) {
+		if(itor->second.interval == std::chrono::milliseconds{0}){
 			get_timers().erase(itor);
 		}
 	}

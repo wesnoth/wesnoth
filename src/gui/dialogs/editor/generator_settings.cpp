@@ -67,9 +67,9 @@ void generator_settings::pre_show()
 	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
 	adjust_minimum_size_by_players();
 
-	gui2::bind_status_label<slider>(this, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
+	gui2::bind_status_label<slider>(this, "villages", [](const slider& s){ return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
 	gui2::bind_status_label<slider>(this, "castle_size");
-	gui2::bind_status_label<slider>(this, "landform", [](const slider& s) {
+	gui2::bind_status_label<slider>(this, "landform", [](const slider& s){
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
@@ -77,7 +77,7 @@ void generator_settings::adjust_minimum_size_by_players()
 {
 	const int extra_size = (players_->get_widget_value() - 2) * extra_size_per_player;
 
-	const auto update_dimension_slider = [&](field_integer* field) {
+	const auto update_dimension_slider = [&](field_integer* field){
 		slider& w = dynamic_cast<slider&>(*field->get_widget());
 		w.set_value_range(min_size + extra_size, w.get_maximum_value());
 	};

@@ -124,15 +124,15 @@ public:
 
 	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const
 	{
-		if (!valid_variant_) {
-			if (!valid_) {
+		if(!valid_variant_) {
+			if(!valid_) {
 				recalculate();
 			}
 
-			if (!valid_variant_ && valid_ ) {
+			if(!valid_variant_ && valid_) {
 				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
-			} else if (!valid_variant_ && valid_lua_) {
+			} else if(!valid_variant_ && valid_lua_) {
 				value_ = value_lua_->get();
 				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true; // @note: temporary workaround
@@ -154,16 +154,16 @@ public:
 
 	virtual std::shared_ptr<T> get_ptr() const
 	{
-		if (!valid_) {
-			if (!(valid_variant_ || valid_lua_)) {
+		if(!valid_) {
+			if(!(valid_variant_ || valid_lua_)) {
 				recalculate();
 			}
 
-			if (!valid_ ) {
-				if (valid_variant_) {
+			if(!valid_) {
+				if(valid_variant_) {
 					value_.reset(new T(variant_value_translator<T>::variant_to_value(get_variant())));
 					valid_ = true;
-				} else if (valid_lua_){
+				} else if(valid_lua_){
 					value_ = value_lua_->get();
 					valid_ = true;
 				} else {
@@ -210,7 +210,7 @@ public:
 	void set(aspect_ptr a)
 	{
 		typesafe_aspect_ptr<T> c = std::dynamic_pointer_cast<typesafe_aspect<T>>(a);
-		if (c) {
+		if(c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
 			aspects_.emplace(this->get_name(),c);
@@ -222,7 +222,7 @@ public:
 	virtual void add_facet(const config &cfg)
 	{
 		std::shared_ptr< composite_aspect <T>> c = std::dynamic_pointer_cast< composite_aspect<T>>(where_);
-		if (c) {
+		if(c) {
 			assert (c->get_id()==this->get_name());
 			c->add_facet(-1, cfg);
 			c->invalidate();
@@ -246,17 +246,17 @@ public:
 		, default_()
 		, parent_id_(id)
 	{
-		for (const config &cfg_element : this->cfg_.child_range("facet")) {
+		for(const config &cfg_element : this->cfg_.child_range("facet")) {
 			add_facet(-1,cfg_element);
 		}
 
-		if (auto cfg_default = this->cfg_.optional_child("default")) {
+		if(auto cfg_default = this->cfg_.optional_child("default")) {
 			cfg_default["id"] = "default_facet";
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this, *cfg_default, parent_id_, std::back_inserter(default_aspects));
-			if (!default_aspects.empty()) {
+			if(!default_aspects.empty()) {
 				typesafe_aspect_ptr<T> b = std::dynamic_pointer_cast< typesafe_aspect<T>>(default_aspects.front());
-				if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+				if(composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 					c->parent_id_ = parent_id_;
 				}
 				default_ = b;
@@ -274,9 +274,9 @@ public:
 	{
 		std::vector<aspect_ptr> facets_base;
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets_base));
-		for (aspect_ptr a : facets_base) {
+		for(aspect_ptr a : facets_base) {
 			typesafe_aspect_ptr<T> b = std::dynamic_pointer_cast< typesafe_aspect<T>> (a);
-			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+			if(composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}
 			facets.push_back(b);
@@ -286,13 +286,13 @@ public:
 	virtual void recalculate() const
 	{
 		for(const auto& f : facets_ | utils::views::reverse) {
-			if (f->active()) {
+			if(f->active()) {
 				this->value_ = f->get_ptr();
 				this->valid_ = true;
 				return;
 			}
 		}
-		if (default_) {
+		if(default_) {
 			this->value_ = default_->get_ptr();
 			this->valid_ = true;
 		}
@@ -301,10 +301,10 @@ public:
 	virtual config to_config() const
 	{
 		config cfg = aspect::to_config();
-		for (const typesafe_aspect_ptr<T>& f : facets_) {
+		for(const typesafe_aspect_ptr<T>& f : facets_) {
 			cfg.add_child("facet",f->to_config());
 		}
-		if (default_) {
+		if(default_) {
 			cfg.add_child("default",default_->to_config());
 		}
 		return cfg;
@@ -313,15 +313,15 @@ public:
 	using typesafe_aspect<T>::add_facet;
 	virtual bool add_facet(int pos, const config &cfg)
 	{
-		if (pos<0) {
+		if(pos<0) {
 			pos = facets_.size();
 		}
 		std::vector< aspect_ptr > facets;
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets));
 		int j=0;
-		for (aspect_ptr a : facets) {
+		for(aspect_ptr a : facets) {
 			typesafe_aspect_ptr<T> b = std::dynamic_pointer_cast< typesafe_aspect<T>> (a);
-			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+			if(composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}
 			facets_.insert(facets_.begin()+pos+j,b);
@@ -405,11 +405,11 @@ public:
 		, handler_(), code_(), params_(cfg.child_or_empty("args"))
 	{
 		this->name_ = "lua_aspect";
-		if (cfg.has_attribute("code"))
+		if(cfg.has_attribute("code"))
 		{
 			code_ = cfg["code"].str();
 		}
-		else if (cfg.has_attribute("value"))
+		else if(cfg.has_attribute("value"))
 		{
 			code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
 		}
@@ -433,7 +433,7 @@ public:
 	{
 		config cfg = aspect::to_config();
 		cfg["code"] = code_;
-		if (!params_.empty()) {
+		if(!params_.empty()) {
 			cfg.add_child("args", params_);
 		}
 		return cfg;
@@ -454,17 +454,17 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *aspect_factories;
-		if (aspect_factories==nullptr) {
+		if(aspect_factories==nullptr) {
 			aspect_factories = new factory_map;
 		}
 		return *aspect_factories;
 	}
 
-	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id) = 0;
+	virtual aspect_ptr get_new_instance(readonly_context &context, const config &cfg, const std::string &id) = 0;
 
-	aspect_factory( const std::string &name )
+	aspect_factory(const std::string &name)
 	{
-		if (is_duplicate(name)) {
+		if(is_duplicate(name)) {
 			return;
 		}
 		factory_ptr ptr_to_this(this);
@@ -477,12 +477,12 @@ public:
 template<class ASPECT>
 class register_aspect_factory : public aspect_factory {
 public:
-	register_aspect_factory( const std::string &name )
-		: aspect_factory( name )
+	register_aspect_factory(const std::string &name)
+		: aspect_factory(name)
 	{
 	}
 
-	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id)
+	aspect_ptr get_new_instance(readonly_context &context, const config &cfg, const std::string &id)
 	{
 		aspect_ptr a = std::make_shared<ASPECT>(context, cfg, id);
 		a->on_create();
@@ -498,15 +498,15 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *aspect_factories;
-		if (aspect_factories==nullptr) {
+		if(aspect_factories==nullptr) {
 			aspect_factories = new factory_map;
 		}
 		return *aspect_factories;
 	}
 
-	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx) = 0;
+	virtual aspect_ptr get_new_instance(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx) = 0;
 
-	lua_aspect_factory( const std::string &name )
+	lua_aspect_factory(const std::string &name)
 	{
 		factory_ptr ptr_to_this(this);
 		get_list().emplace(name,ptr_to_this);
@@ -518,12 +518,12 @@ public:
 template<class ASPECT>
 class register_lua_aspect_factory : public lua_aspect_factory {
 public:
-	register_lua_aspect_factory( const std::string &name )
-		: lua_aspect_factory( name )
+	register_lua_aspect_factory(const std::string &name)
+		: lua_aspect_factory(name)
 	{
 	}
 
-	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
+	aspect_ptr get_new_instance(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 	{
 		aspect_ptr a = std::make_shared<ASPECT>(context, cfg, id, l_ctx);
 		a->on_create();

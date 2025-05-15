@@ -42,7 +42,7 @@ public:
 
 	~notifier()
 	{
-		for (auto & item : notifiees_)
+		for(auto & item : notifiees_)
 		{
 			assert(item.first);
 			assert((*item.first).notifier_ == this);

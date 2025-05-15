@@ -134,33 +134,33 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	bool no_music = false;
 	bool no_sound = false;
 
-	if(cmdline_opts_.core_id) {
+	if(cmdline_opts_.core_id){
 		prefs::get().set_core(*cmdline_opts_.core_id);
 	}
-	if(cmdline_opts_.campaign) {
+	if(cmdline_opts_.campaign){
 		jump_to_campaign_.jump = true;
 		jump_to_campaign_.campaign_id = *cmdline_opts_.campaign;
 		PLAIN_LOG << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]";
 
-		if(cmdline_opts_.campaign_difficulty) {
+		if(cmdline_opts_.campaign_difficulty){
 			jump_to_campaign_.difficulty = *cmdline_opts_.campaign_difficulty;
 			PLAIN_LOG << "selected difficulty: [" << jump_to_campaign_.difficulty << "]";
 		} else {
 			jump_to_campaign_.difficulty = -1; // let the user choose the difficulty
 		}
 
-		if(cmdline_opts_.campaign_scenario) {
+		if(cmdline_opts_.campaign_scenario){
 			jump_to_campaign_.scenario_id = *cmdline_opts_.campaign_scenario;
 			PLAIN_LOG << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]";
 		}
 
-		if(cmdline_opts_.campaign_skip_story) {
+		if(cmdline_opts_.campaign_skip_story){
 			jump_to_campaign_.skip_story = true;
 		}
 	}
 	if(cmdline_opts_.clock)
 		gui2::dialogs::show_debug_clock_button = true;
-	if(cmdline_opts_.debug) {
+	if(cmdline_opts_.debug){
 		game_config::set_debug(true);
 		game_config::mp_debug = true;
 	}
@@ -170,9 +170,9 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.debug_dot_level)
 		gui2::debug_layout_graph::set_level(*cmdline_opts_.debug_dot_level);
 #endif
-	if(cmdline_opts_.editor) {
+	if(cmdline_opts_.editor){
 		jump_to_editor_ = true;
-		if(!cmdline_opts_.editor->empty()) {
+		if(!cmdline_opts_.editor->empty()){
 			load_data_ = savegame::load_game_metadata{
 				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor};
 		}
@@ -184,10 +184,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.load)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
-	if(cmdline_opts_.max_fps) {
+	if(cmdline_opts_.max_fps){
 		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
-	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
+	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test){
 		no_sound = true;
 		prefs::disable_preferences_save();
 	}
@@ -197,49 +197,49 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		no_music = true;
 	if(cmdline_opts_.nosound)
 		no_sound = true;
-	if(cmdline_opts_.resolution) {
+	if(cmdline_opts_.resolution){
 		const int xres = std::get<0>(*cmdline_opts_.resolution);
 		const int yres = std::get<1>(*cmdline_opts_.resolution);
-		if(xres > 0 && yres > 0) {
+		if(xres > 0 && yres > 0){
 			prefs::get().set_resolution(point(xres, yres));
 			prefs::get().set_maximized(false);
 		}
 	}
-	if(cmdline_opts_.screenshot) {
+	if(cmdline_opts_.screenshot){
 		// TODO it could be simplified to use cmdline_opts_ directly if there is no other way to enter screenshot mode
 		screenshot_map_ = *cmdline_opts_.screenshot_map_file;
 		screenshot_filename_ = *cmdline_opts_.screenshot_output_file;
 		no_sound = true;
 		prefs::disable_preferences_save();
 	}
-	if (cmdline_opts_.server){
+	if(cmdline_opts_.server){
 		jump_to_multiplayer_ = true;
 		// Do we have any server specified ?
-		if(!cmdline_opts_.server->empty()) {
+		if(!cmdline_opts_.server->empty()){
 			multiplayer_server_ = *cmdline_opts_.server;
 		} else {
 			// Pick the first server in config
-			if(game_config::server_list.size() > 0) {
+			if(game_config::server_list.size() > 0){
 				multiplayer_server_ = prefs::get().network_host();
 			} else {
 				multiplayer_server_ = "";
 			}
 		}
-		if(cmdline_opts_.username) {
+		if(cmdline_opts_.username){
 			prefs::disable_preferences_save();
 			prefs::get().set_login(*cmdline_opts_.username);
-			if(cmdline_opts_.password) {
+			if(cmdline_opts_.password){
 				prefs::disable_preferences_save();
 				prefs::get().set_password(*cmdline_opts.server, *cmdline_opts.username, *cmdline_opts_.password);
 			}
 		}
 	}
-	if(cmdline_opts_.test) {
-		if(!cmdline_opts_.test->empty()) {
+	if(cmdline_opts_.test){
+		if(!cmdline_opts_.test->empty()){
 			test_scenarios_ = {*cmdline_opts_.test};
 		}
 	}
-	if(!cmdline_opts_.unit_test.empty()) {
+	if(!cmdline_opts_.unit_test.empty()){
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
@@ -249,7 +249,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.translation_percent)
 		set_min_translation_percent(*cmdline_opts_.translation_percent);
 
-	if(!cmdline_opts.nobanner) {
+	if(!cmdline_opts.nobanner){
 		PLAIN_LOG
 			<< "\nGame data:    " << game_config::path
 			<< "\nUser data:    " << filesystem::get_user_data_dir()
@@ -260,32 +260,32 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if(no_sound || ((prefs::get().sound() || prefs::get().music_on() ||
 	                  prefs::get().turn_bell() || prefs::get().ui_sound_on()) &&
-	                 !sound::init_sound())) {
+	                 !sound::init_sound())){
 		prefs::get().set_sound(false);
 		prefs::get().set_music(false);
 		prefs::get().set_turn_bell(false);
 		prefs::get().set_ui_sound(false);
-	} else if(no_music) { // else disable the music in nomusic mode
+	} else if(no_music){ // else disable the music in nomusic mode
 		prefs::get().set_music(false);
 	}
 }
 
 bool game_launcher::init_language()
 {
-	if(!::load_language_list()) {
+	if(!::load_language_list()){
 		return false;
 	}
 
 	language_def locale;
-	if(cmdline_opts_.language) {
+	if(cmdline_opts_.language){
 		std::vector<language_def> langs = get_languages(true);
-		for(const language_def& def : langs) {
-			if(def.localename == *cmdline_opts_.language) {
+		for(const language_def& def : langs){
+			if(def.localename == *cmdline_opts_.language){
 				locale = def;
 				break;
 			}
 		}
-		if(locale.localename.empty()) {
+		if(locale.localename.empty()){
 			PLAIN_LOG << "Language symbol '" << *cmdline_opts_.language << "' not found.";
 			return false;
 		}
@@ -314,7 +314,7 @@ bool game_launcher::init_video()
 			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags";
 			return false;
 		}
-		if(cmdline_opts_.screenshot) {
+		if(cmdline_opts_.screenshot){
 			// Screenshots require a rendering context, and thus a window,
 			// so we create one but hidden.
 			video::init(video::fake::hide_window);
@@ -333,7 +333,7 @@ bool game_launcher::init_video()
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_surface(image::locator{"icons/icon-game.png"}, image::UNSCALED));
-	if(icon != nullptr) {
+	if(icon != nullptr){
 		video::set_window_icon(icon);
 	}
 #endif
@@ -344,16 +344,16 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	if(!cmdline_opts_.nobanner) {
+	if(!cmdline_opts_.nobanner){
 		STREAMING_LOG << "Checking lua scripts... ";
 	}
 
-	if(cmdline_opts_.script_unsafe_mode) {
+	if(cmdline_opts_.script_unsafe_mode){
 		// load the "package" package, so that scripts can get what packages they want
 		plugins_manager::get()->get_kernel_base()->load_package();
 	}
 
-	if(cmdline_opts_.plugin_file) {
+	if(cmdline_opts_.plugin_file){
 		std::string filename = *cmdline_opts_.plugin_file;
 
 		PLAIN_LOG << "Loading a plugin file'" << filename << "'...";
@@ -361,7 +361,7 @@ bool game_launcher::init_lua_script()
 		filesystem::scoped_istream sf = filesystem::istream_file(filename);
 
 		try {
-			if(sf->fail()) {
+			if(sf->fail()){
 				throw std::runtime_error("failed to open plugin file");
 			}
 
@@ -376,36 +376,36 @@ bool game_launcher::init_lua_script()
 
 			std::size_t i = pm.add_plugin(filename, full_plugin);
 
-			for(std::size_t j = 0; j < pm.size(); ++j) {
+			for(std::size_t j = 0; j < pm.size(); ++j){
 				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 			}
 
 			PLAIN_LOG << "Starting a plugin...";
 			pm.start_plugin(i);
 
-			for(std::size_t j = 0; j < pm.size(); ++j) {
+			for(std::size_t j = 0; j < pm.size(); ++j){
 				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 			}
 
 			plugins_context pc("init");
 
-			for(std::size_t repeat = 0; repeat < 5; ++repeat) {
+			for(std::size_t repeat = 0; repeat < 5; ++repeat){
 				PLAIN_LOG << "Playing a slice...";
 				pc.play_slice();
 
-				for(std::size_t j = 0; j < pm.size(); ++j) {
+				for(std::size_t j = 0; j < pm.size(); ++j){
 					PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 				}
 			}
 
 			return true;
-		} catch(const std::exception& e) {
+		} catch(const std::exception& e){
 			gui2::show_error_message(std::string("When loading a plugin, error:\n") + e.what());
 			error = true;
 		}
 	}
 
-	if(!error && !cmdline_opts_.nobanner) {
+	if(!error && !cmdline_opts_.nobanner){
 		PLAIN_LOG << "ok";
 	}
 
@@ -429,23 +429,23 @@ bool game_launcher::play_test()
 	// you try to load a game a second time then Wesnoth exits.
 	static bool first_time = true;
 
-	if(!cmdline_opts_.test) {
+	if(!cmdline_opts_.test){
 		return true;
 	}
 
-	if(!first_time) {
+	if(!first_time){
 		return false;
 	}
 
 	first_time = false;
 
-	if(test_scenarios_.size() == 0) {
+	if(test_scenarios_.size() == 0){
 		// shouldn't happen, as test_scenarios_ is initialised to {"test"}
 		PLAIN_LOG << "Error in the test handling code";
 		return false;
 	}
 
-	if(test_scenarios_.size() > 1) {
+	if(test_scenarios_.size() > 1){
 		PLAIN_LOG << "You can't run more than one unit test in interactive mode";
 	}
 
@@ -456,7 +456,7 @@ bool game_launcher::play_test()
 	try {
 		campaign_controller ccontroller(state_);
 		ccontroller.play_game();
-	} catch(savegame::load_game_exception& e) {
+	} catch(savegame::load_game_exception& e){
 		load_data_ = std::move(e.data_);
 		return true;
 	}
@@ -476,16 +476,16 @@ game_launcher::unit_test_result game_launcher::unit_test()
 {
 	// There's no copy of play_test's first_time variable. That seems to be for handling
 	// the player loading a game via the GUI, which makes no sense in a non-interactive test.
-	if(cmdline_opts_.unit_test.empty()) {
+	if(cmdline_opts_.unit_test.empty()){
 		return unit_test_result::TEST_FAIL;
 	}
 
 	auto ret = unit_test_result::TEST_FAIL; // will only be returned if no test is run
-	for(const auto& scenario : test_scenarios_) {
+	for(const auto& scenario : test_scenarios_){
 		set_test(scenario);
 		ret = single_unit_test();
 		const char* describe_result;
-		switch(ret) {
+		switch(ret){
 		case unit_test_result::TEST_PASS:
 			describe_result = "PASS TEST";
 			break;
@@ -522,7 +522,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 		}
 
 		PLAIN_LOG << describe_result << " (" << int(ret) << "): " << scenario;
-		if(ret != unit_test_result::TEST_PASS) {
+		if(ret != unit_test_result::TEST_PASS){
 			break;
 		}
 	}
@@ -538,21 +538,21 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	try {
 		campaign_controller ccontroller(state_, true);
 		game_res = ccontroller.play_game();
-		if(game_res == level_result::type::fail) {
-			if(lg::broke_strict()) {
+		if(game_res == level_result::type::fail){
+			if(lg::broke_strict()){
 				return unit_test_result::BROKE_STRICT_TEST_FAIL;
 			} else {
 				return unit_test_result::TEST_FAIL;
 			}
 		}
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		PLAIN_LOG << "Caught WML Exception:" << e.dev_message;
 		return unit_test_result::TEST_FAIL_WML_EXCEPTION;
 	}
 
 	savegame::clean_saves(state_.classification().label);
 
-	if(cmdline_opts_.noreplaycheck) {
+	if(cmdline_opts_.noreplaycheck){
 		return pass_victory_or_defeat(game_res);
 	}
 
@@ -562,7 +562,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	load_data_ = savegame::load_game_metadata{
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
-	if(!load_game()) {
+	if(!load_game()){
 		PLAIN_LOG << "Failed to load the replay!";
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
 	}
@@ -571,11 +571,11 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		const bool was_strict_broken = lg::broke_strict();
 		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
-		if(!was_strict_broken && lg::broke_strict()) {
+		if(!was_strict_broken && lg::broke_strict()){
 			PLAIN_LOG << "Observed failure on replay";
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		PLAIN_LOG << "WML Exception while playing replay: " << e.dev_message;
 		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
@@ -585,21 +585,21 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(level_result::type res)
 {
-	if(res == level_result::type::defeat) {
-		if(lg::broke_strict()) {
+	if(res == level_result::type::defeat){
+		if(lg::broke_strict()){
 			return unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT;
 		} else {
 			return unit_test_result::TEST_FAIL_BY_DEFEAT;
 		}
-	} else if(res == level_result::type::victory) {
-		if(lg::broke_strict()) {
+	} else if(res == level_result::type::victory){
+		if(lg::broke_strict()){
 			return unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY;
 		} else {
 			return unit_test_result::TEST_PASS_BY_VICTORY;
 		}
 	}
 
-	if(lg::broke_strict()) {
+	if(lg::broke_strict()){
 		return unit_test_result::BROKE_STRICT_TEST_PASS;
 	} else {
 		return unit_test_result::TEST_PASS;
@@ -608,7 +608,7 @@ game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(level_resu
 
 bool game_launcher::play_screenshot_mode()
 {
-	if(!cmdline_opts_.screenshot) {
+	if(!cmdline_opts_.screenshot){
 		return true;
 	}
 
@@ -622,7 +622,7 @@ bool game_launcher::play_screenshot_mode()
 
 bool game_launcher::play_render_image_mode()
 {
-	if(!cmdline_opts_.render_image) {
+	if(!cmdline_opts_.render_image){
 		return true;
 	}
 
@@ -631,7 +631,7 @@ bool game_launcher::play_render_image_mode()
 
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		PLAIN_LOG << "Error loading game config: " << e.what();
 		return false;
 	}
@@ -640,11 +640,11 @@ bool game_launcher::play_render_image_mode()
 	std::string outfile = "wesnoth_image.png";
 
 	// If a output path was given as an argument, use that instead
-	if(cmdline_opts_.render_image_dst) {
+	if(cmdline_opts_.render_image_dst){
 		outfile = *cmdline_opts_.render_image_dst;
 	}
 
-	if(image::save_image(*cmdline_opts_.render_image, outfile) != image::save_result::success) {
+	if(image::save_image(*cmdline_opts_.render_image, outfile) != image::save_result::success){
 		exit(1);
 	}
 
@@ -663,44 +663,44 @@ bool game_launcher::load_game()
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
-	if(load_data_) {
+	if(load_data_){
 		load.data() = std::move(*load_data_);
 		clear_loaded_game();
 	}
 
 	try {
-		if(!load.load_game()) {
+		if(!load.load_game()){
 			return false;
 		}
 
 		load.set_gamestate();
 		try {
 			game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
-		} catch(const config::error&) {
+		} catch(const config::error&){
 			return false;
 		}
 
-	} catch(const config::error& e) {
-		if(e.message.empty()) {
+	} catch(const config::error& e){
+		if(e.message.empty()){
 			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		} else {
 			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 
 		return false;
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		e.show();
 		return false;
-	} catch(const filesystem::io_exception& e) {
-		if(e.message.empty()) {
+	} catch(const filesystem::io_exception& e){
+		if(e.message.empty()){
 			gui2::show_error_message(_("File I/O Error while reading the game"));
 		} else {
 			gui2::show_error_message(_("File I/O Error while reading the game: '") + e.message + '\'');
 		}
 
 		return false;
-	} catch(const game::error& e) {
-		if(e.message.empty()) {
+	} catch(const game::error& e){
+		if(e.message.empty()){
 			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		} else {
 			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
@@ -716,15 +716,15 @@ bool game_launcher::load_game()
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
 
-	if(!state_.is_start_of_scenario() && load.data().show_replay) {
+	if(!state_.is_start_of_scenario() && load.data().show_replay){
 		state_.statistics().clear_current_scenario();
 	}
 
-	if(state_.classification().is_multiplayer()) {
+	if(state_.classification().is_multiplayer()){
 		state_.unify_controllers();
 	}
 
-	if(load.data().cancel_orders) {
+	if(load.data().cancel_orders){
 		state_.cancel_orders();
 	}
 
@@ -745,9 +745,9 @@ std::string game_launcher::jump_to_campaign_id() const
 	return jump_to_campaign_.campaign_id;
 }
 
-bool game_launcher::play_campaign() {
+bool game_launcher::play_campaign(){
 	jump_to_campaign_.jump = false;
-	if(new_campaign()) {
+	if(new_campaign()){
 		state_.set_skip_story(jump_to_campaign_.skip_story);
 		launch_game(reload_mode::NO_RELOAD_DATA);
 		return true;
@@ -757,7 +757,7 @@ bool game_launcher::play_campaign() {
 
 bool game_launcher::goto_campaign()
 {
-	if(jump_to_campaign_.jump) {
+	if(jump_to_campaign_.jump){
 		return play_campaign();
 	}
 
@@ -766,7 +766,7 @@ bool game_launcher::goto_campaign()
 
 bool game_launcher::goto_multiplayer()
 {
-	if(!jump_to_multiplayer_) {
+	if(!jump_to_multiplayer_){
 		return true;
 	}
 
@@ -776,13 +776,13 @@ bool game_launcher::goto_multiplayer()
 
 bool game_launcher::goto_editor()
 {
-	if(jump_to_editor_) {
+	if(jump_to_editor_){
 		jump_to_editor_ = false;
 
 		const std::string to_open = load_data_ ? filesystem::normalize_path(load_data_->filename) : "";
 		clear_loaded_game();
 
-		if(start_editor(to_open) == editor::EXIT_QUIT_TO_DESKTOP) {
+		if(start_editor(to_open) == editor::EXIT_QUIT_TO_DESKTOP){
 			return false;
 		}
 	}
@@ -793,14 +793,14 @@ bool game_launcher::goto_editor()
 void game_launcher::start_wesnothd()
 {
 	std::string wesnothd_program = "";
-	if(!prefs::get().get_mp_server_program_name().empty()) {
+	if(!prefs::get().get_mp_server_program_name().empty()){
 		wesnothd_program = prefs::get().get_mp_server_program_name();
 	} else {
 		wesnothd_program = filesystem::get_wesnothd_name();
 	}
 
 	std::string config = filesystem::get_user_data_dir() + "/lan_server.cfg";
-	if (!filesystem::file_exists(config)) {
+	if(!filesystem::file_exists(config)){
 		// copy file if it isn't created yet
 		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg").value()));
 	}
@@ -842,30 +842,30 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 {
 	game_config::set_debug(game_config::mp_debug);
 	try {
-		if(mode == mp_mode::HOST) {
+		if(mode == mp_mode::HOST){
 			try {
 				start_wesnothd();
-			} catch(const game::mp_server_error&) {
+			} catch(const game::mp_server_error&){
 				prefs::get().show_wesnothd_server_search();
 
 				try {
 					start_wesnothd();
-				} catch(const game::mp_server_error&) {
+				} catch(const game::mp_server_error&){
 					return false;
 				}
 			}
 		}
 
 		// If a server address wasn't specified, prompt for it now.
-		if(mode != mp_mode::LOCAL && multiplayer_server_.empty()) {
-			if(!gui2::dialogs::mp_connect::execute()) {
+		if(mode != mp_mode::LOCAL && multiplayer_server_.empty()){
+			if(!gui2::dialogs::mp_connect::execute()){
 				return false;
 			}
 
 			// The prompt saves its input to preferences.
 			multiplayer_server_ = prefs::get().network_host();
 
-			if(multiplayer_server_ != prefs::get().builtin_servers_list().front().address) {
+			if(multiplayer_server_ != prefs::get().builtin_servers_list().front().address){
 				prefs::get().set_network_host(multiplayer_server_);
 			}
 		}
@@ -877,31 +877,31 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
 
-		if(mode == mp_mode::LOCAL) {
+		if(mode == mp_mode::LOCAL){
 			mp::start_local_game();
 		} else {
 			mp::start_client(multiplayer_server_);
 			multiplayer_server_.clear();
 		}
 
-	} catch(const wesnothd_rejected_client_error& e) {
+	} catch(const wesnothd_rejected_client_error& e){
 		gui2::show_error_message(e.message);
-	} catch(const game::mp_server_error& e) {
+	} catch(const game::mp_server_error& e){
 		gui2::show_error_message(_("Error while starting server: ") + e.message);
-	} catch(const game::load_game_failed& e) {
+	} catch(const game::load_game_failed& e){
 		gui2::show_error_message(_("The game could not be loaded: ") + e.message);
-	} catch(const game::game_error& e) {
+	} catch(const game::game_error& e){
 		gui2::show_error_message(_("Error while playing the game: ") + e.message);
-	} catch(const mapgen_exception& e) {
+	} catch(const mapgen_exception& e){
 		gui2::show_error_message(_("Map generator error: ") + e.message);
-	} catch(const wesnothd_error& e) {
-		if(!e.message.empty()) {
+	} catch(const wesnothd_error& e){
+		if(!e.message.empty()){
 			ERR_NET << "caught network error: " << e.message;
 
 			std::string user_msg;
 			auto conn_err = dynamic_cast<const wesnothd_connection_error*>(&e);
 
-			if(conn_err) {
+			if(conn_err){
 				// The wesnothd_connection_error subclass is only thrown with messages
 				// from boost::system::error_code which we can't translate ourselves.
 				// It's also the originator of the infamous EOF error that happens when
@@ -920,21 +920,21 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 		} else {
 			ERR_NET << "caught network error";
 		}
-	} catch(const config::error& e) {
-		if(!e.message.empty()) {
+	} catch(const config::error& e){
+		if(!e.message.empty()){
 			ERR_CONFIG << "caught config::error: " << e.message;
 			gui2::show_transient_message("", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error";
 		}
-	} catch(const incorrect_map_format_error& e) {
+	} catch(const incorrect_map_format_error& e){
 		gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
-	} catch(savegame::load_game_exception& e) {
+	} catch(savegame::load_game_exception& e){
 		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		e.show();
-	} catch(const game::error& e) {
+	} catch(const game::error& e){
 		PLAIN_LOG << "caught game::error...";
 		gui2::show_error_message(_("Error: ") + e.message);
 	}
@@ -944,7 +944,7 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 
 bool game_launcher::play_multiplayer_commandline()
 {
-	if(!cmdline_opts_.multiplayer) {
+	if(!cmdline_opts_.multiplayer){
 		return true;
 	}
 
@@ -957,7 +957,7 @@ bool game_launcher::play_multiplayer_commandline()
 
 	try {
 		mp::start_local_game_commandline(cmdline_opts_);
-	} catch(savegame::load_game_exception& e) {
+	} catch(savegame::load_game_exception& e){
 		load_data_ = std::move(e.data_);
 		return true;
 	}
@@ -967,11 +967,11 @@ bool game_launcher::play_multiplayer_commandline()
 
 bool game_launcher::change_language()
 {
-	if(!gui2::dialogs::language_selection::execute()) {
+	if(!gui2::dialogs::language_selection::execute()){
 		return false;
 	}
 
-	if(!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
+	if(!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)){
 		video::set_window_title(game_config::get_default_title_string());
 	}
 
@@ -986,19 +986,19 @@ bool game_launcher::change_language()
 void game_launcher::launch_game(reload_mode reload)
 {
 	assert(!load_data_);
-	if(play_replay_) {
+	if(play_replay_){
 		play_replay();
 		return;
 	}
 
-	gui2::dialogs::loading_screen::display([this, reload]() {
+	gui2::dialogs::loading_screen::display([this, reload](){
 		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 
-		if(reload == reload_mode::RELOAD_DATA) {
+		if(reload == reload_mode::RELOAD_DATA){
 			try {
 				game_config_manager::get()->load_game_config_for_game(
 					state_.classification(), state_.get_scenario_id());
-			} catch(const config::error&) {
+			} catch(const config::error&){
 				return;
 			}
 		}
@@ -1008,12 +1008,12 @@ void game_launcher::launch_game(reload_mode reload)
 		campaign_controller ccontroller(state_);
 		ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
-	} catch(savegame::load_game_exception& e) {
+	} catch(savegame::load_game_exception& e){
 		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		e.show();
-	} catch(const mapgen_exception& e) {
+	} catch(const mapgen_exception& e){
 		gui2::show_error_message(_("Map generator error: ") + e.message);
 	}
 }
@@ -1024,10 +1024,10 @@ void game_launcher::play_replay()
 	try {
 		campaign_controller ccontroller(state_);
 		ccontroller.play_replay();
-	} catch(savegame::load_game_exception& e) {
+	} catch(savegame::load_game_exception& e){
 		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		e.show();
 	}
 }
@@ -1035,14 +1035,14 @@ void game_launcher::play_replay()
 editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
 	editor::EXIT_STATUS res = editor::EXIT_STATUS::EXIT_NORMAL;
-	while(true) {
+	while(true){
 		game_config_manager::get()->load_game_config_for_editor();
 
 		::init_textdomains(game_config_manager::get()->game_config());
 
 		res = editor::start(res != editor::EXIT_RELOAD_DATA, filename);
 
-		if(res != editor::EXIT_RELOAD_DATA) {
+		if(res != editor::EXIT_RELOAD_DATA){
 			return res;
 		}
 
@@ -1062,9 +1062,9 @@ game_launcher::~game_launcher()
 	try {
 		sound::close_sound();
 		video::deinit();
-	} catch(std::exception& e) {
+	} catch(std::exception& e){
 		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher: " << e.what();
-	} catch(...) {
+	} catch(...){
 		ERR_GENERAL << "Suppressing exception " << utils::get_unknown_exception_type() << " thrown during ~game_launcher";
 	}
 }

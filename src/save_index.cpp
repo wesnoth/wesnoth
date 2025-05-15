@@ -59,7 +59,7 @@ void save_index_class::rebuild(const std::string& name, const std::chrono::syste
 		read_save_file(dir_, name, full, &dummy);
 
 		extract_summary_from_config(full, summary);
-	} catch(const game::load_game_failed&) {
+	} catch(const game::load_game_failed&){
 		summary["corrupt"] = true;
 	}
 
@@ -70,7 +70,7 @@ void save_index_class::rebuild(const std::string& name, const std::chrono::syste
 void save_index_class::remove(const std::string& name)
 {
 	config& root = data();
-	root.remove_children("save", [&name](const config& d) { return name == d["save"]; });
+	root.remove_children("save", [&name](const config& d){ return name == d["save"]; });
 	write_save_index();
 }
 
@@ -85,7 +85,7 @@ config& save_index_class::get(const std::string& name)
 	const auto& m = modified_[name];
 
 	config::attribute_value& mod_time = result["mod_time"];
-	if(mod_time.empty() || chrono::parse_timestamp(mod_time) != m) {
+	if(mod_time.empty() || chrono::parse_timestamp(mod_time) != m){
 		rebuild(name, m);
 	}
 
@@ -104,7 +104,7 @@ void save_index_class::clean_up_index()
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	if(root.all_children_count() > filenames.size()) {
+	if(root.all_children_count() > filenames.size()){
 		root.remove_children("save", [&filenames](const config& d)
 			{
 				return std::find(filenames.begin(), filenames.end(), d["save"]) == filenames.end();
@@ -117,12 +117,12 @@ void save_index_class::write_save_index()
 {
 	log_scope("write_save_index()");
 
-	if(read_only_) {
+	if(read_only_){
 		LOG_SAVE << "no-op: read_only instance";
 		return;
 	}
 
-	if(clean_up_index_) {
+	if(clean_up_index_){
 		clean_up_index();
 		clean_up_index_ = false;
 	}
@@ -130,13 +130,13 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(prefs::get().save_compression_format() != compression::format::none) {
+		if(prefs::get().save_compression_format() != compression::format::none){
 			// TODO: maybe allow writing this using bz2 too?
 			io::write_gz(*stream, data());
 		} else {
 			io::write(*stream, data());
 		}
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e){
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'";
 	}
 }
@@ -160,7 +160,7 @@ save_index_class::save_index_class(create_for_default_saves_dir)
 config& save_index_class::data(const std::string& name)
 {
 	config& cfg = data();
-	if(auto sv = cfg.find_child("save", "save", name)) {
+	if(auto sv = cfg.find_child("save", "save", name)){
 		fix_leader_image_path(*sv);
 		return *sv;
 	}
@@ -175,18 +175,18 @@ config& save_index_class::data()
 	const std::string si_file = filesystem::get_save_index_file();
 
 	// Don't try to load the file if it doesn't exist.
-	if(loaded_ == false && filesystem::file_exists(si_file)) {
+	if(loaded_ == false && filesystem::file_exists(si_file)){
 		try {
 			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
 			try {
 				data_ = io::read_gz(*stream);
-			} catch(const boost::iostreams::gzip_error&) {
+			} catch(const boost::iostreams::gzip_error&){
 				stream->seekg(0);
 				data_ = io::read(*stream);
 			}
-		} catch(const filesystem::io_exception& e) {
+		} catch(const filesystem::io_exception& e){
 			ERR_SAVE << "error reading save index: '" << e.what() << "'";
-		} catch(const config::error& e) {
+		} catch(const config::error& e){
 			ERR_SAVE << "error parsing save index config file:\n" << e.message;
 			data_.clear();
 		}
@@ -199,7 +199,7 @@ config& save_index_class::data()
 
 void save_index_class::fix_leader_image_path(config& data)
 {
-	for(config& leader : data.child_range("leader")) {
+	for(config& leader : data.child_range("leader")){
 		std::string leader_image = leader["leader_image"];
 		boost::algorithm::replace_all(leader_image, "\\", "/");
 
@@ -221,14 +221,14 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	utils::erase_if(filenames, [filter](const std::string& filename) {
+	utils::erase_if(filenames, [filter](const std::string& filename){
 		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
 		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
 		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
 
-		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()) {
+		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()){
 			return true;
-		} else if(filter) {
+		} else if(filter){
 			return filename.end() == std::search(filename.begin(), filename.end(), filter->begin(), filter->end());
 		}
 
@@ -271,18 +271,18 @@ bool save_info_less_time::operator()(const save_info& a, const save_info& b) con
 	// TODO: we really shouldn't be relying on translatable strings like this, especially since
 	// old savefiles may have been created in a different language than the current UI language
 	const std::string replay_str = " " + _("replay");
-	if(a.modified() > b.modified()) {
+	if(a.modified() > b.modified()){
 		return true;
-	} else if(a.modified() < b.modified()) {
+	} else if(a.modified() < b.modified()){
 		return false;
-	} else if(a.name().find(replay_str) == std::string::npos && b.name().find(replay_str) != std::string::npos) {
+	} else if(a.name().find(replay_str) == std::string::npos && b.name().find(replay_str) != std::string::npos){
 		// Special funky case; for files created in the same second,
 		// a replay file sorts less than a non-replay file.  Prevents
 		// a timing-dependent bug where it may look like, at the end
 		// of a scenario, the replay and the autosave for the next
 		// scenario are displayed in the wrong order.
 		return true;
-	} else if(a.name().find(replay_str) != std::string::npos && b.name().find(replay_str) == std::string::npos) {
+	} else if(a.name().find(replay_str) != std::string::npos && b.name().find(replay_str) == std::string::npos){
 		return false;
 	} else {
 		return a.name() > b.name();
@@ -292,11 +292,11 @@ bool save_info_less_time::operator()(const save_info& a, const save_info& b) con
 static filesystem::scoped_istream find_save_file(const std::string& dir,
 		const std::string& name, const std::vector<std::string>& suffixes)
 {
-	for(const std::string& suf : suffixes) {
+	for(const std::string& suf : suffixes){
 		filesystem::scoped_istream file_stream =
 			filesystem::istream_file(dir + "/" + name + suf);
 
-		if(!file_stream->fail()) {
+		if(!file_stream->fail()){
 			return file_stream;
 		}
 	}
@@ -315,31 +315,31 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 		 * Test the modified name, since it might use a .gz
 		 * file even when not requested.
 		 */
-		if(filesystem::is_gzip_file(name)) {
+		if(filesystem::is_gzip_file(name)){
 			cfg = io::read_gz(*file_stream);
-		} else if(filesystem::is_bzip2_file(name)) {
+		} else if(filesystem::is_bzip2_file(name)){
 			cfg = io::read_bz2(*file_stream);
 		} else {
 			cfg = io::read(*file_stream);
 		}
-	} catch(const std::ios_base::failure& e) {
+	} catch(const std::ios_base::failure& e){
 		LOG_SAVE << e.what();
 
-		if(error_log) {
+		if(error_log){
 			*error_log += e.what();
 		}
 		throw game::load_game_failed();
-	} catch(const config::error& err) {
+	} catch(const config::error& err){
 		LOG_SAVE << err.message;
 
-		if(error_log) {
+		if(error_log){
 			*error_log += err.message;
 		}
 
 		throw game::load_game_failed();
 	}
 
-	if(cfg.empty()) {
+	if(cfg.empty()){
 		LOG_SAVE << "Could not parse file data into config";
 		throw game::load_game_failed();
 	}
@@ -348,7 +348,7 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 void save_index_class::delete_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 {
 	log_scope("delete_old_auto_saves()");
-	if(read_only_) {
+	if(read_only_){
 		LOG_SAVE << "no-op: read_only instance";
 		return;
 	}
@@ -356,13 +356,13 @@ void save_index_class::delete_old_auto_saves(const int autosavemax, const int in
 	const std::string auto_save = _("Auto-Save");
 
 	int countdown = autosavemax;
-	if(countdown == infinite_auto_saves) {
+	if(countdown == infinite_auto_saves){
 		return;
 	}
 
 	std::vector<save_info> games = get_saves_list(&auto_save);
-	for(std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
-		if(countdown-- <= 0) {
+	for(std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i){
+		if(countdown-- <= 0){
 			LOG_SAVE << "Deleting savegame '" << i->name() << "'";
 			delete_game(i->name());
 		}
@@ -371,7 +371,7 @@ void save_index_class::delete_old_auto_saves(const int autosavemax, const int in
 
 void save_index_class::delete_game(const std::string& name)
 {
-	if(read_only_) {
+	if(read_only_){
 		log_scope("delete_game()");
 		LOG_SAVE << "no-op: read_only instance";
 		return;
@@ -412,7 +412,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 
-	if(cfg_save.has_child("carryover_sides_start")) {
+	if(cfg_save.has_child("carryover_sides_start")){
 		cfg_summary["scenario"] = cfg_save.mandatory_child("carryover_sides_start")["next_scenario"];
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
@@ -426,9 +426,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
 
-	if(has_snapshot) {
+	if(has_snapshot){
 		cfg_summary["turn"] = cfg_snapshot["turn_at"];
-		if(cfg_snapshot["turns"] != "-1") {
+		if(cfg_snapshot["turns"] != "-1"){
 			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + cfg_snapshot["turns"].str();
 		}
 	}
@@ -441,8 +441,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	bool shrouded = false;
 
-	if(auto snapshot = (has_snapshot ? cfg_snapshot : cfg_replay_start)) {
-		for(const config& side : snapshot->child_range("side")) {
+	if(auto snapshot = (has_snapshot ? cfg_snapshot : cfg_replay_start)){
+		for(const config& side : snapshot->child_range("side")){
 			std::string leader;
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
@@ -450,23 +450,23 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			int gold = side["gold"].to_int();
 			int units = 0, recall_units = 0;
 
-			if(side["controller"] != side_controller::human) {
+			if(side["controller"] != side_controller::human){
 				continue;
 			}
 
-			if(side["shroud"].to_bool()) {
+			if(side["shroud"].to_bool()){
 				shrouded = true;
 			}
 
-			for(const config& u : side.child_range("unit")) {
-				if(u.has_attribute("x") && u.has_attribute("y")) {
+			for(const config& u : side.child_range("unit")){
+				if(u.has_attribute("x") && u.has_attribute("y")){
 					units++;
 				} else {
 					recall_units++;
 				}
 
 				// Only take the first leader
-				if(!leader.empty() || !u["canrecruit"].to_bool()) {
+				if(!leader.empty() || !u["canrecruit"].to_bool()){
 					continue;
 				}
 
@@ -488,7 +488,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			// the case where the binary path hasn't been loaded yet, perhaps due to save_index being
 			// deleted), the unaltered image path is used and will be parsed by get_independent_binary_file_path
 			// at runtime.
-			if(leader_image_path) {
+			if(leader_image_path){
 				leader_image = leader_image_path.value() + leader_image_tc_modifier;
 			}
 
@@ -504,15 +504,15 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		}
 	}
 
-	if(!shrouded) {
-		if(has_snapshot) {
-			if(!cfg_snapshot->find_child("side", "shroud", "yes") && cfg_snapshot->has_attribute("map_data")) {
+	if(!shrouded){
+		if(has_snapshot){
+			if(!cfg_snapshot->find_child("side", "shroud", "yes") && cfg_snapshot->has_attribute("map_data")){
 				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";
 			}
-		} else if(has_replay) {
-			if(!cfg_replay_start->find_child("side", "shroud", "yes") && cfg_replay_start->has_attribute("map_data")) {
+		} else if(has_replay){
+			if(!cfg_replay_start->find_child("side", "shroud", "yes") && cfg_replay_start->has_attribute("map_data")){
 				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";

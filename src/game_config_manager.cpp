@@ -66,18 +66,18 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 
 	// All of the validation options imply --nocache, as the validation happens during cache
 	// rebuilding. If the cache isn't rebuilt, validation is silently skipped.
-	if(cmdline_opts_.nocache || cmdline_opts_.any_validation_option()) {
+	if(cmdline_opts_.nocache || cmdline_opts_.any_validation_option()){
 		cache_.set_use_cache(false);
 	}
 
-	if(cmdline_opts_.validcache) {
+	if(cmdline_opts_.validcache){
 		cache_.set_force_valid_cache(true);
 	}
 
 	// Clean the cache of any old Wesnoth version's cache data
-	if(const std::string last_cleaned = prefs::get()._last_cache_cleaned_ver(); !last_cleaned.empty()) {
-		if(version_info{last_cleaned} < game_config::wesnoth_version) {
-			if(cache_.clean_cache()) {
+	if(const std::string last_cleaned = prefs::get()._last_cache_cleaned_ver(); !last_cleaned.empty()){
+		if(version_info{last_cleaned} < game_config::wesnoth_version){
+			if(cache_.clean_cache()){
 				prefs::get().set__last_cache_cleaned_ver(game_config::wesnoth_version.str());
 			}
 		}
@@ -116,7 +116,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
 	// can cause a crash by accessing the list of hotkeys while it's being modified.
-	events::call_in_main_thread([this]() {
+	events::call_in_main_thread([this](){
 		const hotkey::scope_changer hk_scope{hotkey::scope_main, false};
 
 		// Load the standard hotkeys, then apply any player customizations.
@@ -138,7 +138,7 @@ namespace
 /** returns true if every define in special is also defined in general */
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	return std::all_of(special.begin(), special.end(), [&general](const auto& pair) {
+	return std::all_of(special.begin(), special.end(), [&general](const auto& pair){
 		const auto it = general.find(pair.first);
 		return it != general.end() && it->second == pair.second;
 	});
@@ -148,11 +148,11 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 void game_config_manager::load_game_config_with_loadscreen(
 	FORCE_RELOAD_CONFIG force_reload, const game_classification* classification, const std::string& scenario_id)
 {
-	if(!lg::info().dont_log(log_config)) {
+	if(!lg::info().dont_log(log_config)){
 		auto out = formatter();
 		out << "load_game_config: defines:";
 
-		for(const auto& pair : cache_.get_preproc_map()) {
+		for(const auto& pair : cache_.get_preproc_map()){
 			out << pair.first << ",";
 		}
 
@@ -166,19 +166,19 @@ void game_config_manager::load_game_config_with_loadscreen(
 	bool reload_everything = true;
 
 	// Game_config already holds requested config in memory.
-	if(!game_config_.empty()) {
-		if(force_reload == NO_FORCE_RELOAD && old_defines_map_ == cache_.get_preproc_map()) {
+	if(!game_config_.empty()){
+		if(force_reload == NO_FORCE_RELOAD && old_defines_map_ == cache_.get_preproc_map()){
 			reload_everything = false;
 		}
 
-		if(force_reload == NO_INCLUDE_RELOAD && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+		if(force_reload == NO_INCLUDE_RELOAD && map_includes(old_defines_map_, cache_.get_preproc_map())){
 			reload_everything = false;
 		}
 	}
 
 	LOG_CONFIG << "load_game_config reload everything: " << reload_everything;
 
-	gui2::dialogs::loading_screen::display([this, reload_everything, classification, scenario_id]() {
+	gui2::dialogs::loading_screen::display([this, reload_everything, classification, scenario_id](){
 		load_game_config(reload_everything, classification, scenario_id);
 	});
 }
@@ -199,7 +199,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		if(reload_everything) {
+		if(reload_everything){
 			gui2::dialogs::loading_screen::progress(loading_stage::verify_cache);
 			filesystem::data_tree_checksum();
 			gui2::dialogs::loading_screen::progress(loading_stage::create_cache);
@@ -221,9 +221,9 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					user_campaign_dir, &user_files, &user_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 			}
 
-			for(const std::string& umc : user_dirs) {
+			for(const std::string& umc : user_dirs){
 				const std::string cores_file = umc + "/cores.cfg";
-				if(filesystem::file_exists(cores_file)) {
+				if(filesystem::file_exists(cores_file)){
 					config cores;
 					cache_.get_config(cores_file, cores);
 					cores_cfg.append(cores);
@@ -235,10 +235,10 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			bool current_core_valid = false;
 			std::string wml_tree_root;
 
-			for(const config& core : cores_cfg.child_range("core")) {
+			for(const config& core : cores_cfg.child_range("core")){
 				const std::string& id = core["id"];
-				if(id.empty()) {
-					events::call_in_main_thread([&]() {
+				if(id.empty()){
+					events::call_in_main_thread([&](){
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
 							_("Found a core without id attribute.")
@@ -247,8 +247,8 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					continue;
 				}
 
-				if(valid_cores.find_child("core", "id", id)) {
-					events::call_in_main_thread([&]() {
+				if(valid_cores.find_child("core", "id", id)){
+					events::call_in_main_thread([&](){
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
 								_("Core ID: ") + id
@@ -259,8 +259,8 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				}
 
 				const std::string& path = core["path"];
-				if(!filesystem::get_wml_location(path)) {
-					events::call_in_main_thread([&]() {
+				if(!filesystem::get_wml_location(path)){
+					events::call_in_main_thread([&](){
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
 							_("Core ID: ") + id
@@ -271,10 +271,10 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					continue;
 				}
 
-				if(id == "default" && !current_core_valid) {
+				if(id == "default" && !current_core_valid){
 					wml_tree_root = path;
 				}
-				if(id == prefs::get().core()) {
+				if(id == prefs::get().core()){
 					current_core_valid = true;
 					wml_tree_root = path;
 				}
@@ -282,8 +282,8 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				valid_cores.add_child("core", core);  // append(core);
 			}
 
-			if(!current_core_valid) {
-				events::call_in_main_thread([&]() {
+			if(!current_core_valid){
+				events::call_in_main_thread([&](){
 					gui2::dialogs::wml_error::display(
 						_("Error loading core data."),
 						_("Core ID: ") + prefs::get().core()
@@ -294,8 +294,8 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			}
 
 			// check if we have a valid default core which should always be the case.
-			if(wml_tree_root.empty()) {
-				events::call_in_main_thread([&]() {
+			if(wml_tree_root.empty()){
+				events::call_in_main_thread([&](){
 					gui2::dialogs::wml_error::display(
 						_("Error loading core data."),
 						_("Can’t locate the default core.")
@@ -306,7 +306,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 			// Load the selected core
 			std::unique_ptr<schema_validation::schema_validator> validator;
-			if(cmdline_opts_.validate_core) {
+			if(cmdline_opts_.validate_core){
 				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
@@ -316,18 +316,18 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 			main_transaction.lock();
 
-			if(!game_config::no_addons && !cmdline_opts_.noaddons) {
+			if(!game_config::no_addons && !cmdline_opts_.noaddons){
 				load_addons_cfg();
 			}
 		}
 
 		// only after addon configs have been loaded do we check for which addons are needed and whether they exist to be used
 		LOG_CONFIG << "active_addons_ has size " << active_addons_.size() << " and contents: " << utils::join(active_addons_);
-		if(classification) {
+		if(classification){
 			LOG_CONFIG << "Enabling only some add-ons!";
 			std::set<std::string> active_addons = classification->active_addons(scenario_id);
 			// IMPORTANT: this is a significant performance optimization, particularly for the worst case example of the batched WML unit tests
-			if(!reload_everything && active_addons == active_addons_) {
+			if(!reload_everything && active_addons == active_addons_){
 				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.";
 				LOG_CONFIG << "active_addons has size " << active_addons_.size() << " and contents: " << utils::join(active_addons);
 				return;
@@ -352,20 +352,20 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 		game_config::add_color_info(game_config());
 
-	} catch(const game::error& e) {
+	} catch(const game::error& e){
 		ERR_CONFIG << "Error loading game configuration files\n" << e.message;
 
 		// Try reloading without add-ons
-		if(!game_config::no_addons) {
+		if(!game_config::no_addons){
 			game_config::no_addons = true;
-			events::call_in_main_thread([&]() {
+			events::call_in_main_thread([&](){
 				gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
 					e.message);
 			});
 			load_game_config(reload_everything, classification, scenario_id);
-		} else if(prefs::get().core() != "default") {
-			events::call_in_main_thread([&]() {
+		} else if(prefs::get().core() != "default"){
+			events::call_in_main_thread([&](){
 				gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will fallback to the default core files."),
 					e.message);
@@ -374,7 +374,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			game_config::no_addons = false;
 			load_game_config(reload_everything, classification, scenario_id);
 		} else {
-			events::call_in_main_thread([&]() {
+			events::call_in_main_thread([&](){
 				gui2::dialogs::wml_error::display(
 					_("Error loading default core game configuration files. The game will now exit."),
 					e.message);
@@ -390,9 +390,9 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 }
 static void show_deprecated_warnings(config& umc_cfg)
 {
-	for(auto& units : umc_cfg.child_range("units")) {
-		for(auto& unit_type : units.child_range("unit_type")) {
-			for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
+	for(auto& units : umc_cfg.child_range("units")){
+		for(auto& unit_type : units.child_range("unit_type")){
+			for(const auto& advancefrom : unit_type.child_range("advancefrom")){
 				auto symbols = utils::string_map {
 					{"lower_level", advancefrom["unit"].str()},
 					{"higher_level", unit_type["id"].str()}
@@ -425,9 +425,9 @@ static void show_deprecated_warnings(config& umc_cfg)
 		"ENABLE_WOSE_SHAMAN"
 	};
 
-	for(auto& campaign : umc_cfg.child_range("campaign")) {
-		for(auto str : utils::split(campaign["extra_defines"])) {
-			if(deprecated_defines.count(str) > 0) {
+	for(auto& campaign : umc_cfg.child_range("campaign")){
+		for(auto str : utils::split(campaign["extra_defines"])){
+			if(deprecated_defines.count(str) > 0){
 				//TODO: we could try to implement a compatibility path by
 				//      somehow getting the content of that macro from the
 				//      cache_ object, but considering that 1) the breakage
@@ -457,9 +457,9 @@ void game_config_manager::load_addons_cfg()
 	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	// Warn player about addons using the no-longer-supported single-file format.
-	for(const std::string& file : user_files) {
+	for(const std::string& file : user_files){
 
-		if(filesystem::is_cfg(file)) {
+		if(filesystem::is_cfg(file)){
 			ERR_CONFIG << "error reading usermade add-on '" << file << "'";
 
 			error_addons.push_back(file);
@@ -488,14 +488,14 @@ void game_config_manager::load_addons_cfg()
 	loading_screen::spin();
 
 	// Load the addons.
-	for(const std::string& addon_id : user_dirs) {
+	for(const std::string& addon_id : user_dirs){
 		log_scope2(log_config, "Loading add-on '" + addon_id + "'");
 		const std::string addon_dir = user_campaign_dir + "/" + addon_id;
 
 		const std::string main_cfg = addon_dir + "/_main.cfg";
 		const std::string info_cfg = addon_dir + "/_info.cfg";
 
-		if(!filesystem::file_exists(main_cfg)) {
+		if(!filesystem::file_exists(main_cfg)){
 			continue;
 		}
 
@@ -506,11 +506,11 @@ void game_config_manager::load_addons_cfg()
 		// probably means the addon was installed manually and certain defaults will be used.
 		config metadata;
 
-		if(have_addon_pbl_info(addon_id)) {
+		if(have_addon_pbl_info(addon_id)){
 			// Publishing info needs to be read from disk.
 			try {
 				metadata = get_addon_pbl_info(addon_id, false);
-			} catch(const invalid_pbl_exception& e) {
+			} catch(const invalid_pbl_exception& e){
 				const std::string log_msg = formatter()
 				<< "The provided addon has an invalid pbl file"
 				<< " for addon "
@@ -519,7 +519,7 @@ void game_config_manager::load_addons_cfg()
 				error_addons.push_back(e.message);
 				error_log.push_back(log_msg);
 			}
-		} else if(filesystem::file_exists(info_cfg)) {
+		} else if(filesystem::file_exists(info_cfg)){
 			// Addon server-generated info can be fetched from cache.
 			config temp;
 			cache_.get_config(info_cfg, temp);
@@ -528,18 +528,18 @@ void game_config_manager::load_addons_cfg()
 		}
 
 		std::string using_core = metadata["core"];
-		if(using_core.empty()) {
+		if(using_core.empty()){
 			using_core = "default";
 		}
 
 		// Skip add-ons not matching our current core. Cores themselves should be selectable
 		// at all times, so they aren't considered here.
-		if(!metadata.empty() && metadata["type"] != "core" && using_core != prefs::get().core()) {
+		if(!metadata.empty() && metadata["type"] != "core" && using_core != prefs::get().core()){
 			continue;
 		}
 
 		std::string addon_title = metadata["title"].str();
-		if(addon_title.empty()) {
+		if(addon_title.empty()){
 			addon_title = addon_id;
 		}
 
@@ -547,7 +547,7 @@ void game_config_manager::load_addons_cfg()
 
 		try {
 			std::unique_ptr<schema_validation::schema_validator> validator;
-			if(cmdline_opts_.validate_addon && *cmdline_opts_.validate_addon == addon_id) {
+			if(cmdline_opts_.validate_addon && *cmdline_opts_.validate_addon == addon_id){
 				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
@@ -569,8 +569,8 @@ void game_config_manager::load_addons_cfg()
 			};
 
 			// Annotate appropriate addon types with addon_id info.
-			for(auto [key, cfg] : umc_cfg.all_children_view()) {
-				if(tags_with_addon_id.count(key) > 0) {
+			for(auto [key, cfg] : umc_cfg.all_children_view()){
+				if(tags_with_addon_id.count(key) > 0){
 					cfg["addon_id"] = addon_id;
 					cfg["addon_title"] = addon_title;
 					// Note that this may reformat the string in a canonical form.
@@ -593,31 +593,31 @@ void game_config_manager::load_addons_cfg()
 				"campaign"
 			};
 
-			for(const std::string& tagname : entry_tags) {
+			for(const std::string& tagname : entry_tags){
 				game_config_.append_children_by_move(umc_cfg, tagname);
 			}
 
 			loading_screen::spin();
 
 			addon_cfgs_[addon_id] = std::move(umc_cfg);
-		} catch(const config::error& err) {
+		} catch(const config::error& err){
 			ERR_CONFIG << "config error reading usermade add-on '" << main_cfg << "'";
 			ERR_CONFIG << err.message;
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
-		} catch(const preproc_config::error& err) {
+		} catch(const preproc_config::error& err){
 			ERR_CONFIG << "preprocessor config error reading usermade add-on '" << main_cfg << "'";
 			ERR_CONFIG << err.message;
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
-		} catch(const filesystem::io_exception&) {
+		} catch(const filesystem::io_exception&){
 			ERR_CONFIG << "filesystem I/O error reading usermade add-on '" << main_cfg << "'";
 			error_addons.push_back(main_cfg);
 		}
 	}
 
-	if(cmdline_opts_.validate_addon) {
-		if(!addon_cfgs_.count(*cmdline_opts_.validate_addon)) {
+	if(cmdline_opts_.validate_addon){
+		if(!addon_cfgs_.count(*cmdline_opts_.validate_addon)){
 			ERR_CONFIG << "Didn’t find an add-on for --validate-addon - check whether the id has a typo";
 			const std::string log_msg = formatter()
 				<< "Didn't find an add-on for --validate-addon - check whether the id has a typo";
@@ -628,7 +628,7 @@ void game_config_manager::load_addons_cfg()
 		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on.";
 	}
 
-	if(!error_addons.empty()) {
+	if(!error_addons.empty()){
 		const std::size_t n = error_addons.size();
 		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
@@ -640,7 +640,7 @@ void game_config_manager::load_addons_cfg()
 			   n);
 
 		const std::string& report = utils::join(error_log, "\n\n");
-		events::call_in_main_thread([&]() {
+		events::call_in_main_thread([&](){
 			gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report);
 		});
 	}
@@ -649,7 +649,7 @@ void game_config_manager::load_addons_cfg()
 void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
-	for(const config& ch : game_config().child_range("multiplayer")) {
+	for(const config& ch : game_config().child_range("multiplayer")){
 		hashes[ch["id"].str()] = ch.hash();
 	}
 }
@@ -702,22 +702,22 @@ void game_config_manager::load_game_config_for_game(
 	//
 
 	std::deque<game_config::scoped_preproc_define> extra_defines;
-	for(const std::string& extra_define : classification.campaign_xtra_defines) {
+	for(const std::string& extra_define : classification.campaign_xtra_defines){
 		extra_defines.emplace_back(extra_define);
 	}
 
 	std::deque<game_config::scoped_preproc_define> modification_defines;
-	for(const std::string& mod_define : classification.mod_defines) {
+	for(const std::string& mod_define : classification.mod_defines){
 		modification_defines.emplace_back(mod_define, !mod_define.empty());
 	}
 
 	try {
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification, scenario_id);
-	} catch(const game::error&) {
+	} catch(const game::error&){
 		cache_.clear_defines();
 
 		std::deque<game_config::scoped_preproc_define> previous_defines;
-		for(const preproc_map::value_type& preproc : old_defines_map_) {
+		for(const preproc_map::value_type& preproc : old_defines_map_){
 			previous_defines.emplace_back(preproc.first);
 		}
 
@@ -729,7 +729,7 @@ void game_config_manager::load_game_config_for_game(
 	// might be called from a loading screen worker thread (and currently is, in fact). If the
 	// image cache is purged from the worker thread, there's a possibility for a data race where
 	// the main thread accesses the image cache and the worker thread simultaneously clears it.
-	events::call_in_main_thread([]() { image::flush_cache(); });
+	events::call_in_main_thread([](){ image::flush_cache(); });
 }
 
 void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
@@ -743,11 +743,11 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 
 	try {
 		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD, nullptr, "");
-	} catch(const game::error&) {
+	} catch(const game::error&){
 		cache_.clear_defines();
 
 		std::deque<game_config::scoped_preproc_define> previous_defines;
-		for (const preproc_map::value_type& preproc : old_defines_map_) {
+		for(const preproc_map::value_type& preproc : old_defines_map_){
 			previous_defines.emplace_back(preproc.first);
 		}
 
@@ -762,9 +762,9 @@ void game_config_manager::set_enabled_addon(const std::set<std::string>& addon_i
 	vec.clear();
 	vec.push_back(game_config_);
 
-	for(const std::string& id : addon_ids) {
+	for(const std::string& id : addon_ids){
 		auto it = addon_cfgs_.find(id);
-		if(it != addon_cfgs_.end()) {
+		if(it != addon_cfgs_.end()){
 			LOG_CONFIG << "Enabling add-on " << id;
 			vec.push_back(it->second);
 		} else {
@@ -780,7 +780,7 @@ void game_config_manager::set_enabled_addon_all()
 	vec.clear();
 	vec.push_back(game_config_);
 
-	for(const auto& pair : addon_cfgs_) {
+	for(const auto& pair : addon_cfgs_){
 		LOG_CONFIG << "Enabling add-on " << pair.first;
 		vec.push_back(pair.second);
 		active_addons_.emplace(pair.first);

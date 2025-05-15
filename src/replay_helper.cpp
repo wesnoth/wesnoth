@@ -144,7 +144,7 @@ config replay_helper::get_event(const std::string& name, const map_location& loc
 {
 	config ev;
 	ev["raise"] = name;
-	if(loc.valid()) {
+	if(loc.valid()){
 		config& source = ev.add_child("source");
 		loc.write(source);
 	}

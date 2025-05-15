@@ -46,7 +46,7 @@ std::deque<boost::asio::const_buffer> split_buffer(const boost::asio::streambuf:
 
 	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
 
-	while(remaining_size > 0u) {
+	while(remaining_size > 0u){
 		unsigned int size = std::min(remaining_size, chunk_size);
 		buffers.emplace_back(data, size);
 		data += size;
@@ -80,9 +80,9 @@ connection::connection(const std::string& host, const std::string& service)
 {
 	boost::system::error_code ec;
 	auto result = resolver_.resolve(host, service, boost::asio::ip::resolver_query_base::numeric_host, ec);
-	if(!ec) { // if numeric resolve succeeds then we got raw ip address so TLS host name validation would never pass
+	if(!ec){ // if numeric resolve succeeds then we got raw ip address so TLS host name validation would never pass
 		use_tls_ = false;
-		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result } ); } );
+		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result }); });
 	} else {
 		resolver_.async_resolve(host, service,
 			std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
@@ -93,10 +93,10 @@ connection::connection(const std::string& host, const std::string& service)
 
 connection::~connection()
 {
-	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
+	if(auto socket = utils::get_if<tls_socket>(&socket_)){
 		boost::system::error_code ec;
 		// this sends close_notify for secure connection shutdown
-		(*socket)->async_shutdown([](const boost::system::error_code&) {} );
+		(*socket)->async_shutdown([](const boost::system::error_code&){});
 		const char buffer[] = "";
 		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
 		boost::asio::write(**socket, boost::asio::buffer(buffer, 0), ec);
@@ -105,7 +105,7 @@ connection::~connection()
 
 void connection::handle_resolve(const boost::system::error_code& ec, const results_type& results)
 {
-	if(ec) {
+	if(ec){
 		throw system_error(ec);
 	}
 
@@ -115,7 +115,7 @@ void connection::handle_resolve(const boost::system::error_code& ec, const resul
 
 void connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
-	if(ec) {
+	if(ec){
 		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
@@ -142,7 +142,7 @@ void connection::handshake()
 
 template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 {
-	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx) {
+	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx){
 		char subject_name[256];
 		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
@@ -163,8 +163,8 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 
 void connection::handle_handshake(const boost::system::error_code& ec)
 {
-	if(ec) {
-		if(ec == boost::asio::error::eof && use_tls_) {
+	if(ec){
+		if(ec == boost::asio::error::eof && use_tls_){
 			// immediate disconnect likely means old server not supporting TLS handshake code
 			fallback_to_unencrypted();
 			return;
@@ -173,14 +173,14 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 		throw system_error(ec);
 	}
 
-	if(use_tls_) {
-		if(handshake_response_ == 0xFFFFFFFFU) {
+	if(use_tls_){
+		if(handshake_response_ == 0xFFFFFFFFU){
 			use_tls_ = false;
 			handle_handshake(ec);
 			return;
 		}
 
-		if(handshake_response_ == 0x00000000) {
+		if(handshake_response_ == 0x00000000){
 			load_tls_root_certs(tls_context_);
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type { std::move(*s), tls_context_ } };
@@ -199,8 +199,8 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 			socket.set_verify_callback(verbose_verify(boost::asio::ssl::rfc2818_verification(host_)));
 #endif
 
-			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const boost::system::error_code& ec) {
-				if(ec) {
+			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const boost::system::error_code& ec){
+				if(ec){
 					throw system_error(ec);
 				}
 
@@ -244,7 +244,7 @@ void connection::transfer(const config& request, config& response)
 	auto bufs = split_buffer(write_buf_->data());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
-	utils::visit([this, &bufs, &response](auto&& socket) {
+	utils::visit([this, &bufs, &response](auto&& socket){
 		boost::asio::async_write(*socket, bufs,
 			std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
@@ -257,8 +257,8 @@ void connection::transfer(const config& request, config& response)
 
 void connection::cancel()
 {
-	utils::visit([](auto&& socket) {
-		if(socket->lowest_layer().is_open()) {
+	utils::visit([](auto&& socket){
+		if(socket->lowest_layer().is_open()){
 			boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -272,7 +272,7 @@ void connection::cancel()
 #pragma warning(pop)
 #endif
 
-			if(ec) {
+			if(ec){
 				WRN_NW << "Failed to cancel network operations: " << ec.message();
 			}
 		}
@@ -285,7 +285,7 @@ void connection::cancel()
 
 std::size_t connection::is_write_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
-	if(ec) {
+	if(ec){
 		throw system_error(ec);
 	}
 
@@ -299,23 +299,23 @@ void connection::handle_write(const boost::system::error_code& ec, std::size_t b
 	if(write_buf_)
 		write_buf_->consume(bytes_transferred);
 
-	if(ec) {
+	if(ec){
 		throw system_error(ec);
 	}
 }
 
 std::size_t connection::is_read_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
-	if(ec) {
+	if(ec){
 		throw system_error(ec);
 	}
 
 	bytes_read_ = bytes_transferred;
-	if(bytes_transferred < 4) {
+	if(bytes_transferred < 4){
 		return 4;
 	}
 
-	if(!bytes_to_read_) {
+	if(!bytes_to_read_){
 		std::istream is(read_buf_.get());
 		uint32_t data_size;
 
@@ -323,7 +323,7 @@ std::size_t connection::is_read_complete(const boost::system::error_code& ec, st
 		bytes_to_read_ = ntohl(data_size) + 4;
 
 		// Close immediately if we receive an invalid length
-		if(bytes_to_read_ < 4) {
+		if(bytes_to_read_ < 4){
 			bytes_to_read_ = bytes_transferred;
 		}
 	}
@@ -339,7 +339,7 @@ void connection::handle_read(const boost::system::error_code& ec, std::size_t by
 	bytes_to_write_ = 0;
 	done_ = true;
 
-	if(ec && ec != boost::asio::error::eof) {
+	if(ec && ec != boost::asio::error::eof){
 		throw system_error(ec);
 	}
 

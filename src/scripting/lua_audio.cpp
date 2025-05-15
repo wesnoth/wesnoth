@@ -36,18 +36,18 @@ static const char* Source = "sound source";
 class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
-	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
-	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(std::move(new_track)) {}
+	explicit lua_music_track(int i) : track(sound::get_track(i)){}
+	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(std::move(new_track)){}
 	bool valid() const {
 		return track && track->valid();
 	}
-	sound::music_track& operator*() {
+	sound::music_track& operator*(){
 		return *track;
 	}
 	const sound::music_track& operator*() const {
 		return *track;
 	}
-	std::shared_ptr<sound::music_track> operator->() {
+	std::shared_ptr<sound::music_track> operator->(){
 		return track;
 	}
 	std::shared_ptr<const sound::music_track> operator->() const {
@@ -55,34 +55,34 @@ public:
 	}
 };
 
-static lua_music_track* push_track(lua_State* L, int i) {
+static lua_music_track* push_track(lua_State* L, int i){
 	lua_music_track* trk = new(L) lua_music_track(i);
 	luaL_setmetatable(L, Track);
 	return trk;
 }
 
-static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
+static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track){
 	lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
 	luaL_setmetatable(L, Track);
 	return trk;
 }
 
-static lua_music_track* get_track(lua_State* L, int i) {
+static lua_music_track* get_track(lua_State* L, int i){
 	return static_cast<lua_music_track*>(luaL_checkudata(L, i, Track));
 }
 
 class lua_sound_source {
 	soundsource::sourcespec spec;
 public:
-	explicit lua_sound_source(const soundsource::sourcespec& spec) : spec(spec) {}
+	explicit lua_sound_source(const soundsource::sourcespec& spec) : spec(spec){}
 	lua_sound_source(lua_sound_source&) = delete;
-	soundsource::sourcespec& operator*() {
+	soundsource::sourcespec& operator*(){
 		return spec;
 	}
 	const soundsource::sourcespec& operator*() const {
 		return spec;
 	}
-	soundsource::sourcespec* operator->() {
+	soundsource::sourcespec* operator->(){
 		return &spec;
 	}
 	const soundsource::sourcespec* operator->() const {
@@ -90,13 +90,13 @@ public:
 	}
 };
 
-static lua_sound_source& push_source(lua_State* L, const soundsource::sourcespec& spec) {
+static lua_sound_source& push_source(lua_State* L, const soundsource::sourcespec& spec){
 	lua_sound_source* src = new(L) lua_sound_source(spec);
 	luaL_setmetatable(L, Source);
 	return *src;
 }
 
-static lua_sound_source& get_source(lua_State* L, int i) {
+static lua_sound_source& get_source(lua_State* L, int i){
 	return *static_cast<lua_sound_source*>(luaL_checkudata(L, i, Source));
 }
 
@@ -110,33 +110,33 @@ static int impl_track_collect(lua_State* L)
 	return 0;
 }
 
-static int impl_music_get(lua_State* L) {
-	if(lua_isnumber(L, 2)) {
+static int impl_music_get(lua_State* L){
+	if(lua_isnumber(L, 2)){
 		push_track(L, lua_tointeger(L, 2) - 1);
 		return 1;
 	}
 	const char* m = luaL_checkstring(L, 2);
 
-	if(strcmp(m, "current") == 0) {
+	if(strcmp(m, "current") == 0){
 		push_track(L, sound::get_current_track());
 		return 1;
 	}
 
-	if(strcmp(m, "previous") == 0) {
+	if(strcmp(m, "previous") == 0){
 		push_track(L, sound::get_previous_music_track());
 		return 1;
 	}
 
-	if(strcmp(m, "current_i") == 0) {
+	if(strcmp(m, "current_i") == 0){
 		auto current_index = sound::get_current_track_index();
-		if(current_index) {
+		if(current_index){
 			lua_pushinteger(L, *current_index + 1);
 		} else {
 			lua_pushnil(L);
 		}
 		return 1;
 	}
-	if(strcmp(m, "all") == 0) {
+	if(strcmp(m, "all") == 0){
 		config playlist;
 		sound::write_music_play_list(playlist);
 		const auto& range = playlist.child_range("music");
@@ -150,22 +150,22 @@ static int impl_music_get(lua_State* L) {
 	return luaW_getmetafield(L, 1, m);
 }
 
-static int impl_music_set(lua_State* L) {
-	if(lua_isnumber(L, 2)) {
+static int impl_music_set(lua_State* L){
+	if(lua_isnumber(L, 2)){
 		unsigned int i = lua_tointeger(L, 2) - 1;
 		config cfg;
-		if(lua_isnil(L, 3)) {
-			if(i < sound::get_num_tracks()) {
+		if(lua_isnil(L, 3)){
+			if(i < sound::get_num_tracks()){
 				sound::remove_track(i);
 			}
-		} else if(luaW_toconfig(L, 3, cfg)) {
+		} else if(luaW_toconfig(L, 3, cfg)){
 			// Don't clear the playlist
 			cfg["append"] = true;
 			// Don't allow play_once=yes
-			if(cfg["play_once"].to_bool()) {
+			if(cfg["play_once"].to_bool()){
 				return luaL_argerror(L, 3, "For play_once, use wesnoth.music_list.play instead");
 			}
-			if(i >= sound::get_num_tracks()) {
+			if(i >= sound::get_num_tracks()){
 				sound::play_music_config(cfg);
 			} else {
 				// Remove the track at that index and add the new one in its place
@@ -175,7 +175,7 @@ static int impl_music_set(lua_State* L) {
 			}
 		} else {
 			lua_music_track& track = *get_track(L, 3);
-			if(i < sound::get_num_tracks()) {
+			if(i < sound::get_num_tracks()){
 				sound::set_track(i, track.operator->());
 			} else {
 				track->write(cfg, true);
@@ -190,27 +190,27 @@ static int impl_music_set(lua_State* L) {
 	return 0;
 }
 
-static int impl_music_len(lua_State* L) {
+static int impl_music_len(lua_State* L){
 	lua_pushinteger(L, sound::get_num_tracks());
 	return 1;
 }
 
-static int intf_music_play(lua_State* L) {
+static int intf_music_play(lua_State* L){
 	sound::play_music_once(luaL_checkstring(L, 1));
 	return 0;
 }
 
-static int intf_music_next(lua_State*) {
+static int intf_music_next(lua_State*){
 	std::size_t n = sound::get_num_tracks();
-	if(n > 0) {
+	if(n > 0){
 		sound::play_track(n);
 	}
 	return 0;
 }
 
-static int intf_music_add(lua_State* L) {
+static int intf_music_add(lua_State* L){
 	int index = -1;
-	if(lua_isinteger(L, 1)) {
+	if(lua_isinteger(L, 1)){
 		index = lua_tointeger(L, 1);
 		lua_remove(L, 1);
 	}
@@ -219,17 +219,17 @@ static int intf_music_add(lua_State* L) {
 		"append", true,
 	};
 	bool found_ms_before = false, found_ms_after = false, found_imm = false;
-	for(int i = 2; i <= lua_gettop(L); i++) {
-		if(lua_isboolean(L, i)) {
-			if(found_imm) {
+	for(int i = 2; i <= lua_gettop(L); i++){
+		if(lua_isboolean(L, i)){
+			if(found_imm){
 				return luaL_argerror(L, i, "only one boolean argument may be passed");
 			} else {
 				cfg["immediate"] = luaW_toboolean(L, i);
 			}
-		} else if(lua_isnumber(L, i)) {
-			if(found_ms_after) {
+		} else if(lua_isnumber(L, i)){
+			if(found_ms_after){
 				return luaL_argerror(L, i, "only two integer arguments may be passed");
-			} else if(found_ms_before) {
+			} else if(found_ms_before){
 				cfg["ms_after"] = lua_tointeger(L, i);
 				found_ms_after = true;
 			} else {
@@ -244,36 +244,36 @@ static int intf_music_add(lua_State* L) {
 	return 0;
 }
 
-static int intf_music_clear(lua_State*) {
+static int intf_music_clear(lua_State*){
 	sound::empty_playlist();
 	return 0;
 }
 
-static int intf_music_remove(lua_State* L) {
+static int intf_music_remove(lua_State* L){
 	// Use a non-standard comparator to ensure iteration in descending order
 	std::set<int, std::greater<int>> to_remove;
-	for(int i = 1; i <= lua_gettop(L); i++) {
+	for(int i = 1; i <= lua_gettop(L); i++){
 		to_remove.insert(luaL_checkinteger(L, i));
 	}
-	for(int i : to_remove) {
+	for(int i : to_remove){
 		sound::remove_track(i);
 	}
 	return 0;
 }
 
-static int intf_music_commit(lua_State*) {
+static int intf_music_commit(lua_State*){
 	sound::commit_music_changes();
 	return 0;
 }
 
-static int impl_track_get(lua_State* L) {
+static int impl_track_get(lua_State* L){
 	lua_music_track* track = get_track(L, 1);
-	if(track == nullptr) {
+	if(track == nullptr){
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
 	return_bool_attrib("valid", track->valid());
-	if(!track->valid()) {
+	if(!track->valid()){
 		return luaL_error(L, "Tried to access member of track that is no longer valid.");
 	}
 	return_bool_attrib("append", (*track)->append());
@@ -298,9 +298,9 @@ static int impl_track_get(lua_State* L) {
 	return luaW_getmetafield(L, 1, m);
 }
 
-static int impl_track_set(lua_State* L) {
+static int impl_track_set(lua_State* L){
 	lua_music_track* track = get_track(L, 1);
-	if(track == nullptr || !track->valid()) {
+	if(track == nullptr || !track->valid()){
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
@@ -312,20 +312,20 @@ static int impl_track_set(lua_State* L) {
 	return 0;
 }
 
-static int impl_track_eq(lua_State* L) {
+static int impl_track_eq(lua_State* L){
 	lua_music_track* a = get_track(L, 1);
 	lua_music_track* b = get_track(L, 2);
-	if(!a || !b) {
+	if(!a || !b){
 		// This implies that one argument is not a music track, though I suspect this is dead code...?
 		// Does Lua ever call this if the arguments are not of the same type?
 		lua_pushboolean(L, false);
 		return 1;
 	}
-	if(!a->valid() && !b->valid()) {
+	if(!a->valid() && !b->valid()){
 		lua_pushboolean(L, true);
 		return 1;
 	}
-	if(a->valid() && b->valid()) {
+	if(a->valid() && b->valid()){
 		lua_music_track& lhs = *a;
 		lua_music_track& rhs = *b;
 		lua_pushboolean(L, lhs->id() == rhs->id() && lhs->shuffle() == rhs->shuffle() && lhs->play_once() == rhs->play_once() && lhs->ms_before() == rhs->ms_before() && lhs->ms_after() == rhs->ms_after());
@@ -339,12 +339,12 @@ static int impl_track_eq(lua_State* L) {
  * Get an existing sound source
  * Key: The sound source ID
  */
-static int impl_sndsrc_get(lua_State* L) {
-	if(!resources::soundsources) {
+static int impl_sndsrc_get(lua_State* L){
+	if(!resources::soundsources){
 		return 0;
 	}
 	std::string id = luaL_checkstring(L, 2);
-	if(!resources::soundsources->contains(id)) {
+	if(!resources::soundsources->contains(id)){
 		return 0;
 	}
 	push_source(L, resources::soundsources->get(id));
@@ -356,15 +356,15 @@ static int impl_sndsrc_get(lua_State* L) {
  * Key: sound source ID
  * Value: Table containing keyword arguments, existing sound source userdata, or nil to delete
  */
-static int impl_sndsrc_set(lua_State* L) {
-	if(!resources::soundsources) {
+static int impl_sndsrc_set(lua_State* L){
+	if(!resources::soundsources){
 		return 0;
 	}
 	std::string id = luaL_checkstring(L, 2);
 	config cfg;
-	if(lua_isnil(L, 3)) {
+	if(lua_isnil(L, 3)){
 		resources::soundsources->remove(id);
-	} else if(luaW_toconfig(L, 3, cfg)) {
+	} else if(luaW_toconfig(L, 3, cfg)){
 		cfg["id"] = id;
 		soundsource::sourcespec spec(cfg);
 		resources::soundsources->add(spec);
@@ -383,7 +383,7 @@ static int impl_source_collect(lua_State* L)
 	return 0;
 }
 
-static int impl_source_get(lua_State* L) {
+static int impl_source_get(lua_State* L){
 	lua_sound_source& src = get_source(L, 1);
 	const char* m = luaL_checkstring(L, 2);
 	return_string_attrib("id", src->id());
@@ -397,10 +397,10 @@ static int impl_source_get(lua_State* L) {
 	return_bool_attrib("check_shrouded", src->check_shrouded());
 	return_cfg_attrib("__cfg", src->write(cfg));
 
-	if(strcmp(m, "locations") == 0) {
+	if(strcmp(m, "locations") == 0){
 		const auto& locs = src->get_locations();
 		lua_createtable(L, locs.size(), 0);
-		for(const auto& loc : locs) {
+		for(const auto& loc : locs){
 			luaW_pushlocation(L, loc);
 			lua_rawseti(L, -1, lua_rawlen(L, -2) + 1);
 		}
@@ -409,7 +409,7 @@ static int impl_source_get(lua_State* L) {
 	return luaW_getmetafield(L, 1, m);
 }
 
-static int impl_source_set(lua_State* L) {
+static int impl_source_set(lua_State* L){
 	lua_sound_source& src = get_source(L, 1);
 	const char* m = luaL_checkstring(L, 2);
 	modify_int_attrib("delay", src->set_minimum_delay(std::chrono::milliseconds{value}));
@@ -420,9 +420,9 @@ static int impl_source_set(lua_State* L) {
 	modify_bool_attrib("check_fogged", src->set_check_fogged(value));
 	modify_bool_attrib("check_shrouded", src->set_check_shrouded(value));
 
-	if(strcmp(m, "sounds") == 0) {
+	if(strcmp(m, "sounds") == 0){
 		std::string files;
-		if(lua_istable(L, 3)) {
+		if(lua_istable(L, 3)){
 			files = utils::join(lua_check<std::vector<std::string>>(L, 3));
 		} else {
 			files = luaL_checkstring(L, 3);
@@ -430,14 +430,14 @@ static int impl_source_set(lua_State* L) {
 		src->set_files(files);
 	}
 
-	if(strcmp(m, "locations") == 0) {
+	if(strcmp(m, "locations") == 0){
 		std::vector<map_location> locs;
 		locs.resize(1);
-		if(luaW_tolocation(L, 3, locs[0])) {
+		if(luaW_tolocation(L, 3, locs[0])){
 
 		} else {
 			locs.clear();
-			for(lua_pushnil(L); lua_next(L, 3); lua_pop(L, 1)) {
+			for(lua_pushnil(L); lua_next(L, 3); lua_pop(L, 1)){
 				locs.push_back(luaW_checklocation(L, -1));
 			}
 		}
@@ -450,10 +450,10 @@ static int impl_source_set(lua_State* L) {
 	return 0;
 }
 
-static int impl_source_eq(lua_State* L) {
+static int impl_source_eq(lua_State* L){
 	lua_sound_source& a = get_source(L, 1);
 	lua_sound_source& b = get_source(L, 2);
-	if(a->id() != b->id()) {
+	if(a->id() != b->id()){
 		lua_pushboolean(L, false);
 		return 1;
 	}
@@ -491,13 +491,13 @@ static int impl_audio_get(lua_State* L)
 static int impl_audio_set(lua_State* L)
 {
 	std::string m = luaL_checkstring(L, 2);
-	if(m != "volume") {
+	if(m != "volume"){
 		lua_rawset(L, 1);
 		return 0;
 	}
 	int vol = prefs::get().sound_volume();
 	float rel = lua_tonumber(L, 3);
-	if(rel < 0.0f || rel > 100.0f) {
+	if(rel < 0.0f || rel > 100.0f){
 		return luaL_argerror(L, 1, "volume must be in range 0..100");
 	}
 	vol = static_cast<int>(rel*vol / 100.0f);
@@ -506,7 +506,7 @@ static int impl_audio_set(lua_State* L)
 }
 
 namespace lua_audio {
-	std::string register_table(lua_State* L) {
+	std::string register_table(lua_State* L){
 		// Metatable to enable the volume attribute
 		luaW_getglobal(L, "wesnoth", "audio");
 		lua_createtable(L, 0, 2);

@@ -157,17 +157,17 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *goal_factories;
-		if (goal_factories==nullptr) {
+		if(goal_factories==nullptr) {
 			goal_factories = new factory_map;
 		}
 		return *goal_factories;
 	}
 
-	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ) = 0;
+	virtual goal_ptr get_new_instance(readonly_context &context, const config &cfg) = 0;
 
-	goal_factory( const std::string &name )
+	goal_factory(const std::string &name)
 	{
-		if (is_duplicate(name)) {
+		if(is_duplicate(name)) {
 			return;
 		}
 		factory_ptr ptr_to_this(this);
@@ -180,12 +180,12 @@ public:
 template<class GOAL>
 class register_goal_factory : public goal_factory {
 public:
-	register_goal_factory( const std::string &name )
-		: goal_factory( name )
+	register_goal_factory(const std::string &name)
+		: goal_factory(name)
 	{
 	}
 
-	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ){
+	virtual goal_ptr get_new_instance(readonly_context &context, const config &cfg){
 		goal_ptr a = std::make_shared<GOAL>(context, cfg);
 		a->on_create();
 		return a;

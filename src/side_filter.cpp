@@ -41,7 +41,7 @@ static lg::log_domain log_engine_sf("engine/side_filter");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-side_filter::~side_filter() {}
+side_filter::~side_filter(){}
 
 side_filter::side_filter(const vconfig& cfg, const filter_context * fc,  bool flat_tod)
 	: cfg_(cfg)
@@ -61,8 +61,8 @@ std::vector<int> side_filter::get_teams() const
 	assert(fc_);
 	//@todo: replace with better implementation
 	std::vector<int> result;
-	for(const team &t : fc_->get_disp_context().teams()) {
-		if (match(t)) {
+	for(const team &t : fc_->get_disp_context().teams()){
+		if(match(t)){
 			result.push_back(t.side());
 		}
 	}
@@ -78,35 +78,35 @@ bool side_filter::match_internal(const team &t) const
 {
 	assert(fc_);
 
-	if (cfg_.has_attribute("side_in")) {
-		if (!check_side_number(t,cfg_["side_in"])) {
+	if(cfg_.has_attribute("side_in")){
+		if(!check_side_number(t,cfg_["side_in"])){
 			return false;
 		}
 	}
-	if (cfg_.has_attribute("side")) {
-		if (!check_side_number(t,cfg_["side"])) {
+	if(cfg_.has_attribute("side")){
+		if(!check_side_number(t,cfg_["side"])){
 			return false;
 		}
 	}
-	if (!side_string_.empty()) {
-		if (!check_side_number(t,side_string_)) {
+	if(!side_string_.empty()){
+		if(!check_side_number(t,side_string_)){
 			return false;
 		}
 	}
 
 	config::attribute_value cfg_team_name = cfg_["team_name"];
-	if (!cfg_team_name.blank()) {
+	if(!cfg_team_name.blank()){
 		const std::string& that_team_name = cfg_team_name;
 		const std::string& this_team_name = t.team_name();
 
-		if(std::find(this_team_name.begin(), this_team_name.end(), ',') == this_team_name.end()) {
+		if(std::find(this_team_name.begin(), this_team_name.end(), ',') == this_team_name.end()){
 			if(this_team_name != that_team_name) return false;
 		}
 		else {
 			const std::vector<std::string>& these_team_names = utils::split(this_team_name);
 			bool search_futile = true;
-			for(const std::string& this_single_team_name : these_team_names) {
-				if(this_single_team_name == that_team_name) {
+			for(const std::string& this_single_team_name : these_team_names){
+				if(this_single_team_name == that_team_name){
 					search_futile = false;
 					break;
 				}
@@ -116,123 +116,123 @@ bool side_filter::match_internal(const team &t) const
 	}
 
 	//Allow filtering on units
-	if(cfg_.has_child("has_unit")) {
+	if(cfg_.has_child("has_unit")){
 		const vconfig & ufilt_cfg = cfg_.child("has_unit");
-		if (!ufilter_) {
+		if(!ufilter_){
 			ufilter_.reset(new unit_filter(ufilt_cfg.make_safe()));
 			ufilter_->set_use_flat_tod(flat_);
 		}
 		bool found = false;
-		for(const unit &u : fc_->get_disp_context().units()) {
-			if (u.side() != t.side()) {
+		for(const unit &u : fc_->get_disp_context().units()){
+			if(u.side() != t.side()){
 				continue;
 			}
-			if (ufilter_->matches(u)) {
+			if(ufilter_->matches(u)){
 				found = true;
 				break;
 			}
 		}
-		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
-			for(const unit_const_ptr u : t.recall_list()) {
+		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)){
+			for(const unit_const_ptr u : t.recall_list()){
 				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
-				if(ufilter_->matches(*u)) {
+				if(ufilter_->matches(*u)){
 					found = true;
 					break;
 				}
 			}
 		}
-		if (!found) {
+		if(!found){
 			return false;
 		}
 	}
 
 	const vconfig& enemy_of = cfg_.child("enemy_of");
-	if(!enemy_of.null()) {
-		if (!enemy_filter_)
+	if(!enemy_of.null()){
+		if(!enemy_filter_)
 			enemy_filter_.reset(new side_filter(enemy_of, fc_));
 		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
-		for(const int side : teams) {
+		for(const int side : teams){
 			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
 
 	const vconfig& allied_with = cfg_.child("allied_with");
-	if(!allied_with.null()) {
-		if (!allied_filter_)
+	if(!allied_with.null()){
+		if(!allied_filter_)
 			allied_filter_.reset(new side_filter(allied_with, fc_));
 		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
-		for(const int side : teams) {
+		for(const int side : teams){
 			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
 
 	const vconfig& has_enemy = cfg_.child("has_enemy");
-	if(!has_enemy.null()) {
-		if (!has_enemy_filter_)
+	if(!has_enemy.null()){
+		if(!has_enemy_filter_)
 			has_enemy_filter_.reset(new side_filter(has_enemy, fc_));
 		const std::vector<int>& teams = has_enemy_filter_->get_teams();
 		bool found = false;
-		for(const int side : teams) {
+		for(const int side : teams){
 			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
 			}
 		}
-		if (!found) return false;
+		if(!found) return false;
 	}
 
 	const vconfig& has_ally = cfg_.child("has_ally");
-	if(!has_ally.null()) {
-		if (!has_ally_filter_)
+	if(!has_ally.null()){
+		if(!has_ally_filter_)
 			has_ally_filter_.reset(new side_filter(has_ally, fc_));
 		const std::vector<int>& teams = has_ally_filter_->get_teams();
 		bool found = false;
-		for(const int side : teams) {
+		for(const int side : teams){
 			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
 			}
 		}
-		if (!found) return false;
+		if(!found) return false;
 	}
 
 
 	const config::attribute_value cfg_controller = cfg_["controller"];
-	if (!cfg_controller.blank())
+	if(!cfg_controller.blank())
 	{
-		if (resources::controller->is_networked_mp() && synced_context::is_synced()) {
+		if(resources::controller->is_networked_mp() && synced_context::is_synced()){
 			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors";
 		}
 		else {
 			bool found = false;
 			for(const std::string& controller : utils::split(cfg_controller))
 			{
-				if(side_controller::get_string(t.controller()) == controller) {
+				if(side_controller::get_string(t.controller()) == controller){
 					found = true;
 				}
 			}
-			if(!found) {
+			if(!found){
 				return false;
 			}
 		}
 	}
 
-	if (cfg_.has_attribute("formula")) {
+	if(cfg_.has_attribute("formula")){
 		try {
 			const wfl::team_callable callable(t);
 			wfl::gamestate_function_symbol_table symbols;
 			const wfl::formula form(cfg_["formula"], &symbols);
-			if(!form.evaluate(callable).as_bool()) {
+			if(!form.evaluate(callable).as_bool()){
 				return false;
 			}
 			return true;
-		} catch(const wfl::formula_error& e) {
+		} catch(const wfl::formula_error& e){
 			lg::log_to_chat() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			ERR_WML << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
@@ -240,10 +240,10 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
-	if (cfg_.has_attribute("lua_function")) {
+	if(cfg_.has_attribute("lua_function")){
 		std::string lua_function = cfg_["lua_function"].str();
-		if (!lua_function.empty() && fc_->get_lua_kernel()) {
-			if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)) {
+		if(!lua_function.empty() && fc_->get_lua_kernel()){
+			if(!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)){
 				return false;
 			}
 		}
@@ -264,17 +264,17 @@ bool side_filter::match(const team& t) const
 	bool matches = match_internal(t);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for(const auto& [key, filter] : cfg_.all_ordered()) {
+	for(const auto& [key, filter] : cfg_.all_ordered()){
 		// Handle [and]
-		if(key == "and") {
+		if(key == "and"){
 			matches = matches && side_filter(filter, fc_, flat_).match(t);
 		}
 		// Handle [or]
-		else if(key == "or") {
+		else if(key == "or"){
 			matches = matches || side_filter(filter, fc_, flat_).match(t);
 		}
 		// Handle [not]
-		else if(key == "not") {
+		else if(key == "not"){
 			matches = matches && !side_filter(filter, fc_, flat_).match(t);
 		}
 	}

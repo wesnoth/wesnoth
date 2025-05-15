@@ -33,7 +33,7 @@ namespace lua_wml {
 * - Arg 1: wml table or vconfig userdata
 * - Ret 1: string
 */
-static int intf_wml_tostring(lua_State* L) {
+static int intf_wml_tostring(lua_State* L){
 	const config& arg = luaW_checkconfig(L, 1);
 	std::ostringstream stream;
 	io::write(stream, arg);
@@ -53,35 +53,35 @@ static int intf_load_wml(lua_State* L)
 	std::string file = luaL_checkstring(L, 1);
 	bool preprocess = true;
 	preproc_map defines_map;
-	if(lua_type(L, 2) == LUA_TBOOLEAN) {
+	if(lua_type(L, 2) == LUA_TBOOLEAN){
 		preprocess = luaW_toboolean(L, 2);
-	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
+	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA){
 		lua_len(L, 2);
 		int n = lua_tointeger(L, -1);
 		lua_pop(L, 1);
-		for(int i = 0; i < n; i++) {
+		for(int i = 0; i < n; i++){
 			lua_geti(L, 2, i);
-			if(!lua_isstring(L, -1)) {
+			if(!lua_isstring(L, -1)){
 				return luaL_argerror(L, 2, "expected bool or array of strings");
 			}
 			std::string define = lua_tostring(L, -1);
 			lua_pop(L, 1);
-			if(!define.empty()) {
+			if(!define.empty()){
 				defines_map.emplace(define, preproc_define(define));
 			}
 		}
-	} else if(!lua_isnoneornil(L, 2)) {
+	} else if(!lua_isnoneornil(L, 2)){
 		return luaL_argerror(L, 2, "expected bool or array of strings");
 	}
 	std::string schema_path = luaL_optstring(L, 3, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
-	if(!schema_path.empty()) {
+	if(!schema_path.empty()){
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
 	std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
-	if(preprocess) {
+	if(preprocess){
 		stream = preprocess_file(wml_file, &defines_map);
 	} else {
 		stream.reset(new std::ifstream(wml_file));
@@ -101,7 +101,7 @@ static int intf_parse_wml(lua_State* L)
 	std::string wml = luaL_checkstring(L, 1);
 	std::string schema_path = luaL_optstring(L, 2, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
-	if(!schema_path.empty()) {
+	if(!schema_path.empty()){
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
@@ -120,7 +120,7 @@ static int intf_clone_wml(lua_State* L)
 {
 	const vconfig* vcfg = nullptr;
 	const config& cfg = luaW_checkconfig(L, 1, vcfg);
-	if(vcfg) {
+	if(vcfg){
 		config clone_underlying = vcfg->get_config();
 		vconfig clone(clone_underlying);
 		luaW_pushvconfig(L, clone);
@@ -167,15 +167,15 @@ static int intf_wml_merge(lua_State* L)
 	config base = luaW_checkconfig(L, 1);
 	config merge = luaW_checkconfig(L, 2);
 	const std::string mode = lua_isstring(L, 3) ? luaL_checkstring(L, 3) : "merge";
-	if(mode == "append") {
+	if(mode == "append"){
 		base.merge_attributes(merge);
 		base.append_children(merge);
 	} else {
-		if(mode == "replace") {
-			for(const auto [key, _] : merge.all_children_view()) {
+		if(mode == "replace"){
+			for(const auto [key, _] : merge.all_children_view()){
 				base.clear_children(key);
 			}
-		} else if(mode != "merge") {
+		} else if(mode != "merge"){
 			return luaL_argerror(L, 3, "invalid merge mode - must be merge, append, or replace");
 		}
 		base.merge_with(merge);
@@ -231,14 +231,14 @@ static int intf_wml_equal(lua_State* L)
 static int intf_wml_valid(lua_State* L)
 {
 	config test;
-	if(luaW_toconfig(L, 1, test)) {
+	if(luaW_toconfig(L, 1, test)){
 		// The validate_wml call is PROBABLY redundant, but included just in case validation changes and toconfig isn't updated to match
 		lua_pushboolean(L, test.validate_wml());
 	} else lua_pushboolean(L, false);
 	return 1;
 }
 
-int luaW_open(lua_State* L) {
+int luaW_open(lua_State* L){
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding wml module...\n");
 	static luaL_Reg const wml_callbacks[]= {

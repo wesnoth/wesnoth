@@ -51,7 +51,7 @@ metrics::metrics()
 
 metrics::~metrics()
 {
-	for(auto& s : samples_) {
+	for(auto& s : samples_){
 		delete[] s.name.begin();
 	}
 
@@ -60,13 +60,13 @@ metrics::~metrics()
 
 void metrics::service_request()
 {
-	if(current_requests_ > 0) {
+	if(current_requests_ > 0){
 		++nrequests_waited_;
 	}
 
 	++nrequests_;
 	++current_requests_;
-	if(current_requests_ > most_consecutive_requests_) {
+	if(current_requests_ > most_consecutive_requests_){
 		most_consecutive_requests_ = current_requests_;
 	}
 }
@@ -81,9 +81,9 @@ void metrics::record_sample(const simple_wml::string_span& name,
 	const std::chrono::steady_clock::duration& processing_time)
 {
 	auto isample = std::lower_bound(samples_.begin(), samples_.end(), name,compare_samples_to_stringspan());
-	if(isample == samples_.end() || isample->name != name) {
+	if(isample == samples_.end() || isample->name != name){
 		//protect against DoS with memory exhaustion
-		if(samples_.size() > 30) {
+		if(samples_.size() > 30){
 			return;
 		}
 		int index = std::distance(samples_.begin(), isample);
@@ -109,11 +109,11 @@ void metrics::game_terminated(const std::string& reason)
 
 std::ostream& metrics::games(std::ostream& out) const
 {
-	if (terminations_.empty()) return out << "No game ended so far.";
+	if(terminations_.empty()) return out << "No game ended so far.";
 
 	std::size_t n = 0;
 	out << "Games have been terminated in the following ways:\n";
-	for(const auto& t : terminations_) {
+	for(const auto& t : terminations_){
 		out << t.first << ": " << t.second << "\n";
 		n += t.second;
 	}
@@ -124,7 +124,7 @@ std::ostream& metrics::games(std::ostream& out) const
 
 std::ostream& metrics::requests(std::ostream& out) const
 {
-	if (samples_.empty()) return out;
+	if(samples_.empty()) return out;
 
 	std::vector<metrics::sample> ordered_samples = samples_;
 	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
@@ -134,7 +134,7 @@ std::ostream& metrics::requests(std::ostream& out) const
 	std::size_t n = 0;
 	std::chrono::steady_clock::duration pa{0};
 	std::chrono::steady_clock::duration pr{0};
-	for(const auto& s : ordered_samples) {
+	for(const auto& s : ordered_samples){
 		out << "'" << s.name << "' called " << s.nsamples << " times "
 			<< s.parsing_time.count() << "(" << s.max_parsing_time.count() << ") parsing time, "
 			<< s.processing_time.count() << "(" << s.max_processing_time.count() << ") processing time\n";

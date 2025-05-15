@@ -22,9 +22,9 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 
-BOOST_AUTO_TEST_SUITE( recall_list_suite )
+BOOST_AUTO_TEST_SUITE(recall_list_suite)
 
-BOOST_AUTO_TEST_CASE( test_1 ) {
+BOOST_AUTO_TEST_CASE(test_1){
 	config game_config(test_utils::get_test_config());
 
 	config orc_config {

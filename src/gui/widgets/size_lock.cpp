@@ -39,21 +39,21 @@ void size_lock::place(const point& origin, const point& size)
 {
 	point content_size = widget_->get_best_size();
 
-	if(content_size.x > size.x) {
+	if(content_size.x > size.x){
 		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}
 
-	if(content_size.y > size.y) {
+	if(content_size.y > size.y){
 		try {
 			reduce_height(size.y);
-		} catch(const layout_exception_width_modified&) {
+		} catch(const layout_exception_width_modified&){
 		}
 
 		content_size = widget_->get_best_size();
 	}
 
-	if(content_size.x > size.x) {
+	if(content_size.x > size.x){
 		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}

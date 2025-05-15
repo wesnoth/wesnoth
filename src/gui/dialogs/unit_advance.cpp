@@ -51,7 +51,7 @@ void unit_advance::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&unit_advance::show_help, this));
 
-	for(std::size_t i = 0; i < previews_.size(); i++) {
+	for(std::size_t i = 0; i < previews_.size(); i++){
 		const unit& sample = *previews_[i];
 
 		widget_data row_data;
@@ -61,18 +61,18 @@ void unit_advance::pre_show()
 
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
-		if(i >= last_real_advancement_) {
+		if(i >= last_real_advancement_){
 			const auto range = sample.get_modifications().child_range("advancement");
 			const auto& back = range.back();
 
-			if(back.has_attribute("image")) {
+			if(back.has_attribute("image")){
 				image_string = back["image"].str();
 			}
 
 			name = back["description"].str();
 		}
 
-		if(image_string.empty()) {
+		if(image_string.empty()){
 			image_string = sample.type().image() + sample.image_mods();
 		}
 
@@ -96,7 +96,7 @@ void unit_advance::list_item_clicked()
 	const int selected_row
 		= find_widget<listbox>("advance_choice").get_selected_row();
 
-	if(selected_row == -1) {
+	if(selected_row == -1){
 		return;
 	}
 
@@ -111,7 +111,7 @@ void unit_advance::show_help()
 
 void unit_advance::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		selected_index_ = find_widget<listbox>("advance_choice")
 			.get_selected_row();
 	}

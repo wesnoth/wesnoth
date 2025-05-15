@@ -65,14 +65,14 @@ void label::update_canvas()
 	// Inherit.
 	styled_widget::update_canvas();
 
-	for(auto& tmp : get_canvases()) {
+	for(auto& tmp : get_canvases()){
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
 }
 
 void label::set_text_alpha(unsigned short alpha)
 {
-	if(alpha != text_alpha_) {
+	if(alpha != text_alpha_){
 		text_alpha_ = alpha;
 		update_canvas();
 		queue_redraw();
@@ -81,14 +81,14 @@ void label::set_text_alpha(unsigned short alpha)
 
 void label::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
 void label::set_link_aware(bool link_aware)
 {
-	if(link_aware != link_aware_) {
+	if(link_aware != link_aware_){
 		link_aware_ = link_aware;
 		update_canvas();
 		queue_redraw();
@@ -97,7 +97,7 @@ void label::set_link_aware(bool link_aware)
 
 void label::set_link_color(const color_t& color)
 {
-	if(color != link_color_) {
+	if(color != link_color_){
 		link_color_ = color;
 		update_canvas();
 		queue_redraw();
@@ -106,7 +106,7 @@ void label::set_link_color(const color_t& color)
 
 void label::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
@@ -116,11 +116,11 @@ void label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "label click";
 
-	if(!get_link_aware()) {
+	if(!get_link_aware()){
 		return; // without marking event as "handled".
 	}
 
-	if(!desktop::open_object_is_supported()) {
+	if(!desktop::open_object_is_supported()){
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		handled = true;
 		return;
@@ -128,14 +128,14 @@ void label::signal_handler_left_button_click(bool& handled)
 
 	std::string link = get_label_link(get_mouse_position());
 
-	if(link.empty()) {
+	if(link.empty()){
 		return; // without marking event as "handled"
 	}
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
 
 	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
-	if(res == gui2::retval::OK) {
+	if(res == gui2::retval::OK){
 		desktop::open_object(link);
 	}
 
@@ -146,12 +146,12 @@ void label::signal_handler_right_button_click(bool& handled)
 {
 	DBG_GUI_E << "label right click";
 
-	if(!get_link_aware()) {
+	if(!get_link_aware()){
 		return; // without marking event as "handled".
 	}
 
 	std::string link = get_label_link(get_mouse_position());
-	if(link.empty()) {
+	if(link.empty()){
 		return ; // without marking event as "handled"
 	}
 
@@ -168,7 +168,7 @@ void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 {
 	DBG_GUI_E << "label mouse motion";
 
-	if(!get_link_aware()) {
+	if(!get_link_aware()){
 		return; // without marking event as "handled"
 	}
 
@@ -181,7 +181,7 @@ void label::signal_handler_mouse_leave(bool& handled)
 {
 	DBG_GUI_E << "label mouse leave";
 
-	if(!get_link_aware()) {
+	if(!get_link_aware()){
 		return; // without marking event as "handled"
 	}
 
@@ -197,9 +197,9 @@ void label::update_mouse_cursor(bool enable)
 	// the WAIT cursor) so we ought to mess with that only if it's set to
 	// NORMAL or HYPERLINK.
 
-	if(enable && cursor::get() == cursor::NORMAL) {
+	if(enable && cursor::get() == cursor::NORMAL){
 		cursor::set(cursor::HYPERLINK);
-	} else if(!enable && cursor::get() == cursor::HYPERLINK) {
+	} else if(!enable && cursor::get() == cursor::HYPERLINK){
 		cursor::set(cursor::NORMAL);
 	}
 }

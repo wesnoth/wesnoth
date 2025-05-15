@@ -45,7 +45,7 @@ std::string ai_composite::describe_self() const
 	return "[composite_ai]";
 }
 
-ai_composite::ai_composite( default_ai_context &context, const config &cfg)
+ai_composite::ai_composite(default_ai_context &context, const config &cfg)
 	: cfg_(cfg),stages_(),recursion_counter_(context.get_recursion_count())
 {
 	init_default_ai_context_proxy(context);
@@ -57,14 +57,14 @@ void ai_composite::on_create()
 		cfg_["id"]<<"]";
 
 	// init the composite ai stages
-	for (const config &cfg_element : cfg_.child_range("stage")) {
+	for(const config &cfg_element : cfg_.child_range("stage")){
 		add_stage(cfg_element);
 	}
 
 	config cfg;
 	cfg["engine"] = "fai";
 	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (e_ptr) {
+	if(e_ptr){
 		e_ptr->set_ai_context(this);
 	}
 
@@ -118,7 +118,7 @@ bool ai_composite::add_stage(const config &cfg)
 	std::vector< stage_ptr > stages;
 	create_stage(stages,cfg);
 	int j=0;
-	for (stage_ptr b : stages) {
+	for(stage_ptr b : stages){
 		stages_.push_back(b);
 		j++;
 	}
@@ -130,7 +130,7 @@ bool ai_composite::add_goal(const config &cfg)
 	std::vector< goal_ptr > goals;
 	create_goal(goals,cfg);
 	int j=0;
-	for (goal_ptr b : goals) {
+	for(goal_ptr b : goals){
 		get_goals().push_back(b);
 		j++;
 	}
@@ -138,7 +138,7 @@ bool ai_composite::add_goal(const config &cfg)
 }
 
 void ai_composite::play_turn(){
-	for (stage_ptr &s : stages_) {
+	for(stage_ptr &s : stages_){
 		s->play_stage();
 	}
 }
@@ -164,7 +164,7 @@ std::string ai_composite::evaluate(const std::string& str)
 	config cfg;
 	cfg["engine"] = "fai";
 	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (!e_ptr) {
+	if(!e_ptr){
 		// This should be unreachable, but not entirely sure...
 		return "engine not found for evaluate command";
 	}
@@ -200,7 +200,7 @@ config ai_composite::to_config() const
 	config cfg;
 
 	//serialize the composite ai stages
-	for (const stage_ptr &s : stages_) {
+	for(const stage_ptr &s : stages_){
 		cfg.add_child("stage",s->to_config());
 	}
 

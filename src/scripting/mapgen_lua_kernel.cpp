@@ -42,7 +42,7 @@ static lg::log_domain log_mapgen("mapgen");
 typedef int (mapgen_lua_kernel::*member_callback)(lua_State *);
 
 template <member_callback method>
-int dispatch(lua_State *L) {
+int dispatch(lua_State *L){
 	return ((lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L)).*method)(L);
 }
 
@@ -52,7 +52,7 @@ int dispatch(lua_State *L) {
 static int intf_random(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
-	if(lua_isnoneornil(L, 1)) {
+	if(lua_isnoneornil(L, 1)){
 		double r = double (rng());
 		double r_max = double (rng.max());
 		lua_push(L, r / (r_max + 1));
@@ -61,7 +61,7 @@ static int intf_random(lua_State *L)
 	else {
 		int32_t min;
 		int32_t max;
-		if(lua_isnumber(L, 2)) {
+		if(lua_isnumber(L, 2)){
 			min = lua_check<int32_t>(L, 1);
 			max = lua_check<int32_t>(L, 2);
 		}
@@ -69,7 +69,7 @@ static int intf_random(lua_State *L)
 			min = 1;
 			max = lua_check<int32_t>(L, 1);
 		}
-		if(min > max) {
+		if(min > max){
 			return luaL_argerror(L, 1, "min > max");
 		}
 		lua_push(L, min + static_cast<int>(rng() % (max - min + 1)));
@@ -104,7 +104,7 @@ static int intf_default_generate(lua_State *L)
 	arg.show_labels = cfg["show_labels"].to_bool(0);
 
 	uint32_t seed = cfg["seed"].to_int(0);
-	if(!cfg.has_attribute("seed")) {
+	if(!cfg.has_attribute("seed")){
 		seed = rng();
 	}
 
@@ -127,7 +127,7 @@ static int intf_default_generate_height_map(lua_State *L)
 
 	config cfg = luaW_checkconfig(L, 3);
 
-	if(!cfg.has_attribute("location_set")) {
+	if(!cfg.has_attribute("location_set")){
 		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
 	}
 
@@ -140,7 +140,7 @@ static int intf_default_generate_height_map(lua_State *L)
 	bool as_locset = cfg["location_set"].to_bool(false);
 	uint32_t seed = cfg["seed"].to_int(0);
 
-	if(!cfg.has_attribute("seed")) {
+	if(!cfg.has_attribute("seed")){
 		seed = rng();
 	}
 	default_map_generator_job job(seed);
@@ -149,11 +149,11 @@ static int intf_default_generate_height_map(lua_State *L)
 	assert(int(res.size()) == width);
 	assert((width == 0 || int(res[0].size()) == height));
 	std::hash<map_location> loc_hash;
-	for(int x = 0; x != width; ++x) {
-		for(int y = 0; y != height; ++y) {
+	for(int x = 0; x != width; ++x){
+		for(int y = 0; y != height; ++y){
 			int h = res[x][y];
 			lua_pushinteger (L, h);
-			if(as_locset) {
+			if(as_locset){
 				map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
 				lua_rawseti(L, -2, loc_hash(loc));
 			} else {
@@ -180,37 +180,37 @@ static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
 	map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
-	if(lua_isfunction(L, arg)) {
+	if(lua_isfunction(L, arg)){
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
 		return luaL_argerror(L, 3, msg);
 	}
 	utils::optional<lua_pathfind_cost_calculator> calc;
 	int width, height;
 	bool border = false;
-	if(lua_istable(L, 3)) {
-		if(luaW_tableget(L, 3, "calculate")) {
+	if(lua_istable(L, 3)){
+		if(luaW_tableget(L, 3, "calculate")){
 			calc = lua_pathfind_cost_calculator(L, lua_gettop(L));
 		} else {
 			return luaL_argerror(L, 3, "missing key: calculate");
 		}
-		if(!luaW_tableget(L, 3, "width")) {
+		if(!luaW_tableget(L, 3, "width")){
 			width = luaL_checkinteger(L, -1);
 		} else {
 			return luaL_argerror(L, 3, "missing key: width");
 		}
-		if(!luaW_tableget(L, 3, "height")) {
+		if(!luaW_tableget(L, 3, "height")){
 			height = luaL_checkinteger(L, -1);
 		} else {
 			return luaL_argerror(L, 3, "missing key: height");
 		}
-		if(!luaW_tableget(L, 3, "include_borders")) {
+		if(!luaW_tableget(L, 3, "include_borders")){
 			border = luaW_toboolean(L, -1);
 		}
 	} else {
 		calc = lua_pathfind_cost_calculator(L, 3);
 		width = luaL_checkinteger(L, 4);
 		height = luaL_checkinteger(L, 5);
-		if(lua_isboolean(L, 6)) {
+		if(lua_isboolean(L, 6)){
 			border = luaW_toboolean(L, 6);
 		}
 	}
@@ -218,7 +218,7 @@ static int intf_find_path(lua_State *L)
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
-	for (int i = 0; i < nb; ++i)
+	for(int i = 0; i < nb; ++i)
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushinteger(L, res.steps[i].wml_x());
@@ -310,14 +310,14 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	if(vars_) {
+	if(vars_){
 		variable_access_const v(m, *vars_);
 		return luaW_pushvariable(L, v) ? 1 : 0;
 	}
 	return 0;
 }
 
-int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
+int mapgen_lua_kernel::intf_get_all_vars(lua_State *L){
 	luaW_pushconfig(L, vars_ ? *vars_ : config());
 	return 1;
 }
@@ -328,7 +328,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	default_rng_ = std::mt19937(get_random_seed());
 	run_generator(prog, generator);
 
-	if (!lua_isstring(mState,-1)) {
+	if(!lua_isstring(mState,-1)){
 		std::string msg = "expected a string, found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
 		lua_pop(mState, 1);
@@ -344,14 +344,14 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	default_rng_ = std::mt19937(get_random_seed());
 	run_generator(prog, generator);
 
-	if (!lua_istable(mState, -1)) {
+	if(!lua_istable(mState, -1)){
 		std::string msg = "expected a config (table), found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
 		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 	config result;
-	if (!luaW_toconfig(mState, -1, result)) {
+	if(!luaW_toconfig(mState, -1, result)){
 		std::string msg = "expected a config, but it is malformed ";
 		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
@@ -361,7 +361,7 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
-	if(random_seed_) {
+	if(random_seed_){
 		return (*random_seed_)++;
 	}
 	else {
@@ -371,7 +371,7 @@ uint32_t mapgen_lua_kernel::get_random_seed()
 
 std::mt19937& mapgen_lua_kernel::get_default_rng()
 {
-	if(!default_rng_) {
+	if(!default_rng_){
 		default_rng_ = std::mt19937(get_random_seed());
 	}
 	return *default_rng_;

@@ -52,13 +52,13 @@ aspect_attacks::aspect_attacks(readonly_context& context, const config& cfg, con
 	, filter_own_()
 	, filter_enemy_()
 {
-	if(auto filter_own = cfg.optional_child("filter_own")) {
+	if(auto filter_own = cfg.optional_child("filter_own")){
 		vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}
 
-	if(auto filter_enemy = cfg.optional_child("filter_enemy")) {
+	if(auto filter_enemy = cfg.optional_child("filter_enemy")){
 		vconfig vcfg(*filter_enemy);
 		vcfg.make_safe();
 		filter_enemy_.reset(new unit_filter(vcfg));
@@ -82,9 +82,9 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 	const unit_map& units_ = resources::gameboard->units();
 
 	std::vector<map_location> unit_locs;
-	for(const unit& u : units_) {
-		if(u.side() == get_side() && u.attacks_left() && !(u.can_recruit() && is_passive_leader(u.id()))) {
-			if(!is_allowed_attacker(u)) {
+	for(const unit& u : units_){
+		if(u.side() == get_side() && u.attacks_left() && !(u.can_recruit() && is_passive_leader(u.id()))){
+			if(!is_allowed_attacker(u)){
 				continue;
 			}
 
@@ -101,11 +101,11 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 
 	unit_stats_cache().clear();
 
-	for(const unit& u : units_) {
+	for(const unit& u : units_){
 		// Attack anyone who is on the enemy side,
 		// and who is not invisible or petrified.
-		if(current_team().is_enemy(u.side()) && !u.incapacitated() && !u.invisible(u.get_location())) {
-			if(!is_allowed_enemy(u)) {
+		if(current_team().is_enemy(u.side()) && !u.incapacitated() && !u.invisible(u.get_location())){
+			if(!is_allowed_enemy(u)){
 				continue;
 			}
 
@@ -140,7 +140,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 	ai::manager::get_singleton().raise_user_interact();
 	const int max_attack_depth = 5;
-	if(cur_analysis.movements.size() >= std::size_t(max_attack_depth)) {
+	if(cur_analysis.movements.size() >= std::size_t(max_attack_depth)){
 		return;
 	}
 
@@ -149,12 +149,12 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 	const std::vector<team>& teams_ = resources::gameboard->teams();
 
 	const std::size_t max_positions = 1000;
-	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
+	if(result.size() > max_positions && !cur_analysis.movements.empty()){
 		LOG_AI << "cut analysis short with number of positions";
 		return;
 	}
 
-	for(std::size_t i = 0; i != units.size(); ++i) {
+	for(std::size_t i = 0; i != units.size(); ++i){
 		const map_location current_unit = units[i];
 
 		unit_map::iterator unit_itor = units_.find(current_unit);
@@ -166,18 +166,18 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		//
 		// See if the unit has the slow ability -- units with slow only attack first.
 		bool backstab = false, slow = false;
-		for(const attack_type& a : unit_itor->attacks()) {
+		for(const attack_type& a : unit_itor->attacks()){
 			// For speed, just assume these specials will be active if they are present.
-			if(a.has_special("backstab", true)) {
+			if(a.has_special("backstab", true)){
 				backstab = true;
 			}
 
-			if(a.has_special("slow", true)) {
+			if(a.has_special("slow", true)){
 				slow = true;
 			}
 		}
 
-		if(slow && cur_analysis.movements.empty() == false) {
+		if(slow && cur_analysis.movements.empty() == false){
 			continue;
 		}
 
@@ -192,31 +192,31 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		int accessible_tiles = 0;
 		const auto adj = get_adjacent_tiles(current_unit);
 
-		for(std::size_t tile = 0; tile != 3; ++tile) {
+		for(std::size_t tile = 0; tile != 3; ++tile){
 			const unit_map::const_iterator tmp_unit = units_.find(adj[tile]);
 			bool possible_flanked = false;
 
-			if(map_.on_board(adj[tile])) {
+			if(map_.on_board(adj[tile])){
 				++accessible_tiles;
-				if(tmp_unit != units_.end() && current_team.is_enemy(tmp_unit->side())) {
+				if(tmp_unit != units_.end() && current_team.is_enemy(tmp_unit->side())){
 					++enemy_units_around;
 					possible_flanked = true;
 				}
 			}
 
 			const unit_map::const_iterator tmp_opposite_unit = units_.find(adj[tile + 3]);
-			if(map_.on_board(adj[tile + 3])) {
+			if(map_.on_board(adj[tile + 3])){
 				++accessible_tiles;
-				if(tmp_opposite_unit != units_.end() && current_team.is_enemy(tmp_opposite_unit->side())) {
+				if(tmp_opposite_unit != units_.end() && current_team.is_enemy(tmp_opposite_unit->side())){
 					++enemy_units_around;
-					if(possible_flanked) {
+					if(possible_flanked){
 						is_flanked = true;
 					}
 				}
 			}
 		}
 
-		if((is_flanked && enemy_units_around > 2) || enemy_units_around >= accessible_tiles - 1) {
+		if((is_flanked && enemy_units_around > 2) || enemy_units_around >= accessible_tiles - 1){
 			is_surrounded = true;
 		}
 
@@ -225,17 +225,17 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		int cur_position = -1;
 
 		// Iterate over positions adjacent to the unit, finding the best rated one.
-		for(unsigned j = 0; j < tiles.size(); ++j) {
+		for(unsigned j = 0; j < tiles.size(); ++j){
 			// If in this planned attack, a unit is already in this location.
-			if(used_locations[j]) {
+			if(used_locations[j]){
 				continue;
 			}
 
 			// See if the current unit can reach that position.
-			if(tiles[j] != current_unit) {
+			if(tiles[j] != current_unit){
 				auto its = dstsrc.equal_range(tiles[j]);
-				while(its.first != its.second) {
-					if(its.first->second == current_unit) {
+				while(its.first != its.second){
+					if(its.first->second == current_unit){
 						break;
 					}
 
@@ -243,14 +243,14 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 				}
 
 				// If the unit can't move to this location.
-				if(its.first == its.second || units_.find(tiles[j]) != units_.end()) {
+				if(its.first == its.second || units_.find(tiles[j]) != units_.end()){
 					continue;
 				}
 			}
 
 			int best_leadership_bonus = under_leadership(*unit_itor, tiles[j]);
 			double leadership_bonus = static_cast<double>(best_leadership_bonus + 100) / 100.0;
-			if(leadership_bonus > 1.1) {
+			if(leadership_bonus > 1.1){
 				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus;
 			}
 
@@ -258,7 +258,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 			int backstab_bonus = 1;
 			double surround_bonus = 1.0;
 
-			if(tiles[(j + 3) % 6] != current_unit) {
+			if(tiles[(j + 3) % 6] != current_unit){
 				const unit_map::const_iterator itor = units_.find(tiles[(j + 3) % 6]);
 
 				// Note that we *could* also check if a unit plans to move there
@@ -268,13 +268,13 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 				// So we only check for 'concrete' backstab opportunities.
 				// That would also break backstab_check, since it assumes
 				// the defender is in place.
-				if(itor != units_.end() && backstab_check(tiles[j], loc, units_, teams_)) {
-					if(backstab) {
+				if(itor != units_.end() && backstab_check(tiles[j], loc, units_, teams_)){
+					if(backstab){
 						backstab_bonus = 2;
 					}
 
 					// No surround bonus if target is skirmisher
-					if(!itor->get_ability_bool("skirmisher")) {
+					if(!itor->get_ability_bool("skirmisher")){
 						surround_bonus = 1.2;
 					}
 				}
@@ -282,7 +282,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 			// See if this position is the best rated we've seen so far.
 			int rating = static_cast<int>(rate_terrain(*unit_itor, tiles[j]) * backstab_bonus * leadership_bonus);
-			if(cur_position >= 0 && rating < best_rating) {
+			if(cur_position >= 0 && rating < best_rating){
 				continue;
 			}
 
@@ -296,7 +296,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
 			if(cur_position >= 0 && rating == best_rating
-				&& vulnerability / surround_bonus - support * surround_bonus >= best_vulnerability - best_support) {
+				&& vulnerability / surround_bonus - support * surround_bonus >= best_vulnerability - best_support){
 				continue;
 			}
 
@@ -306,7 +306,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 			best_support = support * surround_bonus;
 		}
 
-		if(cur_position != -1) {
+		if(cur_position != -1){
 			units.erase(units.begin() + i);
 
 			cur_analysis.movements.emplace_back(current_unit, tiles[cur_position]);
@@ -344,16 +344,16 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false){
 		rating += healing_value;
 	}
 
-	if(map_.is_village(terrain)) {
+	if(map_.is_village(terrain)){
 		int owner = resources::gameboard->village_owner(loc);
 
-		if(owner == u.side()) {
+		if(owner == u.side()){
 			rating += friendly_village_value;
-		} else if(owner == 0) {
+		} else if(owner == 0){
 			rating += neutral_village_value;
 		} else {
 			rating += enemy_village_value;
@@ -366,11 +366,11 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 config aspect_attacks::to_config() const
 {
 	config cfg = typesafe_aspect<attacks_vector>::to_config();
-	if(filter_own_ && !filter_own_->empty()) {
+	if(filter_own_ && !filter_own_->empty()){
 		cfg.add_child("filter_own", filter_own_->to_config());
 	}
 
-	if(filter_enemy_ && !filter_enemy_->empty()) {
+	if(filter_enemy_ && !filter_enemy_->empty()){
 		cfg.add_child("filter_enemy", filter_enemy_->to_config());
 	}
 
@@ -379,11 +379,11 @@ config aspect_attacks::to_config() const
 
 bool aspect_attacks::is_allowed_attacker(const unit& u) const
 {
-	if(u.side() != get_side()) {
+	if(u.side() != get_side()){
 		return false;
 	}
 
-	if(filter_own_) {
+	if(filter_own_){
 		return (*filter_own_)(u);
 	}
 
@@ -393,11 +393,11 @@ bool aspect_attacks::is_allowed_attacker(const unit& u) const
 bool aspect_attacks::is_allowed_enemy(const unit& u) const
 {
 	const team& my_team = resources::gameboard->get_team(get_side());
-	if(!my_team.is_enemy(u.side())) {
+	if(!my_team.is_enemy(u.side())){
 		return false;
 	}
 
-	if(filter_enemy_) {
+	if(filter_enemy_){
 		return (*filter_enemy_)(u);
 	}
 
@@ -414,9 +414,9 @@ aspect_attacks_lua::aspect_attacks_lua(
 	, params_(cfg.child_or_empty("args"))
 {
 	this->name_ = "lua_aspect";
-	if(cfg.has_attribute("code")) {
+	if(cfg.has_attribute("code")){
 		code_ = cfg["code"].str();
-	} else if(cfg.has_attribute("value")) {
+	} else if(cfg.has_attribute("value")){
 		code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
 	} else {
 		// error
@@ -435,11 +435,11 @@ void aspect_attacks_lua::recalculate() const
 	aspect_attacks_lua_filter filt = *obj_->get();
 	aspect_attacks_base::recalculate();
 
-	if(filt.lua) {
-		if(filt.ref_own_ != -1) {
+	if(filt.lua){
+		if(filt.ref_own_ != -1){
 			luaL_unref(filt.lua, LUA_REGISTRYINDEX, filt.ref_own_);
 		}
-		if(filt.ref_enemy_ != -1) {
+		if(filt.ref_enemy_ != -1){
 			luaL_unref(filt.lua, LUA_REGISTRYINDEX, filt.ref_enemy_);
 		}
 	}
@@ -451,7 +451,7 @@ config aspect_attacks_lua::to_config() const
 {
 	config cfg = aspect::to_config();
 	cfg["code"] = code_;
-	if(!params_.empty()) {
+	if(!params_.empty()){
 		cfg.add_child("args", params_);
 	}
 
@@ -471,9 +471,9 @@ static bool call_lua_filter_fcn(lua_State* L, const unit& u, int idx)
 bool aspect_attacks_lua::is_allowed_attacker(const unit& u) const
 {
 	const aspect_attacks_lua_filter& filt = *obj_->get();
-	if(filt.lua && filt.ref_own_ != -1) {
+	if(filt.lua && filt.ref_own_ != -1){
 		return call_lua_filter_fcn(filt.lua, u, filt.ref_own_);
-	} else if(filt.filter_own_) {
+	} else if(filt.filter_own_){
 		return (*filt.filter_own_)(u);
 	} else {
 		return true;
@@ -483,9 +483,9 @@ bool aspect_attacks_lua::is_allowed_attacker(const unit& u) const
 bool aspect_attacks_lua::is_allowed_enemy(const unit& u) const
 {
 	const aspect_attacks_lua_filter& filt = *obj_->get();
-	if(filt.lua && filt.ref_enemy_ != -1) {
+	if(filt.lua && filt.ref_enemy_ != -1){
 		return call_lua_filter_fcn(filt.lua, u, filt.ref_enemy_);
-	} else if(filt.filter_enemy_) {
+	} else if(filt.filter_enemy_){
 		return (*filt.filter_enemy_)(u);
 	} else {
 		return true;

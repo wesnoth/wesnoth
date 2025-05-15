@@ -31,33 +31,33 @@ namespace
 {
 struct replay_play_nostop : public replay_controller::replay_stop_condition
 {
-	replay_play_nostop() {}
-	virtual bool should_stop() { return false; }
+	replay_play_nostop(){}
+	virtual bool should_stop(){ return false; }
 };
 
 struct replay_play_moves : public replay_controller::replay_stop_condition
 {
 	int moves_todo_;
-	replay_play_moves(int moves_todo) : moves_todo_(moves_todo) {}
-	virtual void move_done() { --moves_todo_; }
-	virtual bool should_stop() { return moves_todo_ == 0; }
+	replay_play_moves(int moves_todo) : moves_todo_(moves_todo){}
+	virtual void move_done(){ --moves_todo_; }
+	virtual bool should_stop(){ return moves_todo_ == 0; }
 };
 
 struct replay_play_turn : public replay_controller::replay_stop_condition
 {
 	int turn_begin_;
 	int turn_current_;
-	replay_play_turn(int turn_begin) : turn_begin_(turn_begin), turn_current_(turn_begin) {}
-	virtual void new_side_turn(int , int turn) { turn_current_ = turn; }
-	virtual bool should_stop() { return turn_begin_ != turn_current_; }
+	replay_play_turn(int turn_begin) : turn_begin_(turn_begin), turn_current_(turn_begin){}
+	virtual void new_side_turn(int , int turn){ turn_current_ = turn; }
+	virtual bool should_stop(){ return turn_begin_ != turn_current_; }
 };
 
 struct replay_play_side : public replay_controller::replay_stop_condition
 {
 	bool next_side_;
-	replay_play_side() : next_side_(false) {}
-	virtual void new_side_turn(int , int) { next_side_ = true; }
-	virtual bool should_stop() { return next_side_; }
+	replay_play_side() : next_side_(false){}
+	virtual void new_side_turn(int , int){ next_side_ = true; }
+	virtual bool should_stop(){ return next_side_; }
 };
 }
 
@@ -70,7 +70,7 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 	, on_end_replay_(on_end_replay)
 	, return_to_play_side_(false)
 {
-	if(control_view) {
+	if(control_view){
 		vision_ = HUMAN_TEAM;
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
@@ -78,7 +78,7 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 }
 replay_controller::~replay_controller()
 {
-	if(controller_.is_skipping_replay()) {
+	if(controller_.is_skipping_replay()){
 		controller_.toggle_skipping_replay();
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
@@ -87,9 +87,9 @@ replay_controller::~replay_controller()
 void replay_controller::add_replay_theme()
 {
 	const config& theme_cfg = theme::get_theme_config(controller_.theme());
-	if (const auto res = theme_cfg.optional_child("resolution"))
+	if(const auto res = theme_cfg.optional_child("resolution"))
 	{
-		if (const auto replay_theme_cfg = res->optional_child("replay")) {
+		if(const auto replay_theme_cfg = res->optional_child("replay")){
 			controller_.get_display().get_theme().modify(replay_theme_cfg.value());
 		}
 	}
@@ -139,10 +139,10 @@ void replay_controller::update_enabled_buttons()
 void replay_controller::handle_generic_event(const std::string& name)
 {
 	// this is only attached to one event - the theme_reset_event
-	if(name == "theme_reset") {
+	if(name == "theme_reset"){
 		add_replay_theme();
 	}
-	if(std::shared_ptr<gui::button> skip_animation_button = controller_.get_display().find_action_button("skip-animation")) {
+	if(std::shared_ptr<gui::button> skip_animation_button = controller_.get_display().find_action_button("skip-animation")){
 		skip_animation_button->set_check(controller_.is_skipping_replay());
 	}
 }
@@ -159,16 +159,16 @@ void replay_controller::play_side_impl()
 	{
 		if(!stop_condition_->should_stop())
 		{
-			if(resources::recorder->at_end()) {
+			if(resources::recorder->at_end()){
 				//Gather more replay data
 				on_end_replay_();
 			}
 			else {
 				REPLAY_RETURN res = do_replay(true);
-				if(controller_.is_regular_game_end()) {
+				if(controller_.is_regular_game_end()){
 					return;
 				}
-				if(res == REPLAY_FOUND_END_TURN) {
+				if(res == REPLAY_FOUND_END_TURN){
 					return;
 				}
 				stop_condition_->move_done();
@@ -180,7 +180,7 @@ void replay_controller::play_side_impl()
 			controller_.play_slice();
 
 			// Update the buttons once, on the transition from not-stopped to stopped.
-			if(stop_condition_->should_stop()) {
+			if(stop_condition_->should_stop()){
 				update_enabled_buttons();
 			}
 		}
@@ -196,7 +196,7 @@ void replay_controller::play_side_impl()
 }
 bool replay_controller::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	switch(cmd.hotkey_command) {
+	switch(cmd.hotkey_command){
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
@@ -211,7 +211,7 @@ bool replay_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 	case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
 		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
-		return should_stop() && (events::commands_disabled <= 1 ) && !recorder_at_end();
+		return should_stop() && (events::commands_disabled <= 1) && !recorder_at_end();
 	case hotkey::HOTKEY_REPLAY_RESET:
 		return allow_reset_replay() && events::commands_disabled <= 1;
 	default:
@@ -249,7 +249,7 @@ void replay_controller::update_viewing_player()
 {
 	assert(vision_);
 	int viewing_side_num = vision_ == HUMAN_TEAM ? controller_.find_viewing_side() : controller_.current_side();
-	if(viewing_side_num != 0) {
+	if(viewing_side_num != 0){
 		controller_.update_gui_to_player(viewing_side_num - 1, *vision_ == SHOW_ALL);
 	}
 }

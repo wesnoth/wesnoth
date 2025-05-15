@@ -33,7 +33,7 @@ namespace
 {
 std::chrono::steady_clock::time_point get_next_idle_tick()
 {
-	if(!prefs::get().idle_anim()) {
+	if(!prefs::get().idle_anim()){
 		return std::chrono::steady_clock::time_point::max();
 	}
 
@@ -50,18 +50,18 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	for(const unit_animation& anim : animations_) {
+	for(const unit_animation& anim : animations_){
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
-		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
+		if(matching > unit_animation::MATCH_FAIL && matching == max_val){
 			options.push_back(&anim);
-		} else if(matching > max_val) {
+		} else if(matching > max_val){
 			max_val = matching;
 			options.clear();
 			options.push_back(&anim);
 		}
 	}
 
-	if(max_val == unit_animation::MATCH_FAIL) {
+	if(max_val == unit_animation::MATCH_FAIL){
 		return nullptr;
 	}
 	return options[randomness::rng::default_instance().get_random_int(0, options.size()-1)];
@@ -69,7 +69,7 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 
 void unit_animation_component::set_standing(bool with_bars)
 {
-	if (prefs::get().show_standing_animations()&& !u_.incapacitated()) {
+	if(prefs::get().show_standing_animations()&& !u_.incapacitated()){
 		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
@@ -99,7 +99,7 @@ void unit_animation_component::set_idling()
 
 void unit_animation_component::set_selecting()
 {
-	if (prefs::get().show_standing_animations() && !u_.incapacitated()) {
+	if(prefs::get().show_standing_animations() && !u_.incapacitated()){
 		start_animation(std::chrono::milliseconds::max(), choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {
@@ -111,10 +111,10 @@ void unit_animation_component::set_selecting()
 void unit_animation_component::start_animation(const std::chrono::milliseconds& start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
-	if (!animation) {
-		if (state == STATE_STANDING)
+	if(!animation){
+		if(state == STATE_STANDING)
 			state_ = state;
-		if (!anim_ && state_ != STATE_STANDING)
+		if(!anim_ && state_ != STATE_STANDING)
 			set_standing(with_bars);
 		return ;
 	}
@@ -132,18 +132,18 @@ void unit_animation_component::start_animation(const std::chrono::milliseconds& 
 
 void unit_animation_component::refresh()
 {
-	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
+	if(state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
 	{
 		set_standing();
 		return;
 	}
 	display &disp = *display::get_singleton();
-	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
+	if(state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
 	    !disp.tile_nearly_on_screen(u_.loc_) || u_.incapacitated())
 	{
 		return;
 	}
-	if (get_current_animation_tick() > next_idling_ + 1000ms)
+	if(get_current_animation_tick() > next_idling_ + 1000ms)
 	{
 		// prevent all units animating at the same time
 		next_idling_ = get_next_idle_tick();
@@ -157,7 +157,7 @@ void unit_animation_component::clear_haloes ()
 	unit_halo_.reset();
 	abil_halos_.clear();
 	abil_halos_ref_.clear();
-	if(anim_ ) anim_->clear_haloes();
+	if(anim_) anim_->clear_haloes();
 }
 
 bool unit_animation_component::invalidate (const display & disp)
@@ -165,14 +165,14 @@ bool unit_animation_component::invalidate (const display & disp)
 	bool result = false;
 
 	// Very early calls, anim not initialized yet
-	if(get_animation()) {
+	if(get_animation()){
 		frame_parameters params;
 		const gamemap& map = disp.context().map();
 		const t_translation::terrain_code terrain = map.get_terrain(u_.loc_);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-		if (u_.is_flying() && height_adjust < 0) {
+		if(u_.is_flying() && height_adjust < 0){
 			height_adjust = 0;
 		}
 		params.y -= height_adjust;
@@ -190,7 +190,7 @@ bool unit_animation_component::invalidate (const display & disp)
 
 void unit_animation_component::reset_after_advance(const unit_type * newtype)
 {
-	if (newtype) {
+	if(newtype){
 		animations_ = newtype->animations();
 	}
 
@@ -201,47 +201,55 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 {
 	bool affect_adjacent = false;
-	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+	for(const auto [key, cfg] : u_.abilities().all_children_view()){
 		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
 		if(image_or_hides && cfg.has_child("affect_adjacent")){
 			affect_adjacent = true;
 			break;
 		}
 	}
-	if(affect_adjacent) {
+	if(affect_adjacent){
 		const auto adjacent = get_adjacent_tiles(u_.get_location());
-		for(unsigned i = 0; i < adjacent.size(); ++i) {
+		for(unsigned i = 0; i < adjacent.size(); ++i){
 			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it == units.end() || it->incapacitated()){
+			if(it == units.end() || it->incapacitated()){
 				continue;
 			}
-			if ( &*it == &u_ ){
+			if(&*it == &u_){
 				ERR_NG << "Impossible situation: the unit is adjacent to itself.";
 				continue;
 			}
 			it->anim_comp().set_standing();
 		}
 	}
+	if(u_.has_ability_distant_image()){
+		for(const unit& unit_itor : units){
+			if(unit_itor.incapacitated() || &unit_itor == &u_){
+				continue;
+			}
+			unit_itor.anim_comp().set_standing();
+		}
+	}
 }
 
-void unit_animation_component::apply_new_animation_effect(const config & effect) {
-	if(effect["id"].empty()) {
+void unit_animation_component::apply_new_animation_effect(const config & effect){
+	if(effect["id"].empty()){
 		unit_animation::add_anims(animations_, effect);
 	} else {
 		static std::map< std::string, std::vector<unit_animation>> animation_cache;
 		std::vector<unit_animation> &built = animation_cache[effect["id"]];
-		if(built.empty()) {
+		if(built.empty()){
 			unit_animation::add_anims(built, effect);
 		}
 		animations_.insert(animations_.end(),built.begin(),built.end());
 	}
 }
 
-std::vector<std::string> unit_animation_component::get_flags() {
+std::vector<std::string> unit_animation_component::get_flags(){
 	std::set<std::string> result;
-	for(const auto& anim : animations_) {
+	for(const auto& anim : animations_){
 		const std::vector<std::string>& flags = anim.get_flags();
-		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string& flag) {
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string& flag){
 			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
 		});
 	}

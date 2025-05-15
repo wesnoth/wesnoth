@@ -75,7 +75,7 @@ void unit_attack::pre_show()
 	listbox& weapon_list = find_widget<listbox>("weapon_list");
 	keyboard_capture(&weapon_list);
 
-	for(widget_data& data : bc_widget_data_vector_) {
+	for(widget_data& data : bc_widget_data_vector_){
 		weapon_list.add_row(data);
 	}
 
@@ -88,7 +88,7 @@ void unit_attack::pre_show()
 
 void unit_attack::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		selected_weapon_ = find_widget<listbox>("weapon_list").get_selected_row();
 	}
 }

@@ -104,14 +104,14 @@ std::string format_openssl_version(long v)
 	// encoding scheme.  -- shadowm
 	//
 
-	if(v < 0x0930L) {
+	if(v < 0x0930L){
 		// Pre-0.9.3 seems simpler times overall.
 		minor = v & 0x0F00L >> 8;
 		fix   = v & 0x00F0L >> 4;
 		patch = v & 0x000FL;
 
 		fmt << "0." << minor << '.' << fix;
-		if(patch) {
+		if(patch){
 			fmt << format_openssl_patch_level(patch);
 		}
 	} else {
@@ -127,7 +127,7 @@ std::string format_openssl_version(long v)
 		patch  = (v & 0x00000FF0L) >> 4;
 		status = (v & 0x0000000FL);
 
-		if(v < 0x00905100L) {
+		if(v < 0x00905100L){
 			//
 			// From wiki.openssl.org (also mentioned in opensslv.h, in the most oblique
 			// fashion possible):
@@ -142,7 +142,7 @@ std::string format_openssl_version(long v)
 			const uint8_t is_final = (v & 0xF00L) >> 8;
 			status = is_final ? 0xF : 0;
 			patch = v & 0xFFL;
-		} else if(v < 0x00906000L) {
+		} else if(v < 0x00906000L){
 			//
 			// Quoth opensslv.h:
 			//
@@ -157,13 +157,13 @@ std::string format_openssl_version(long v)
 
 		fmt << major << '.' << minor << '.' << fix;
 
-		if(patch) {
+		if(patch){
 			fmt << format_openssl_patch_level(patch);
 		}
 
-		if(status == 0x0) {
+		if(status == 0x0){
 			fmt << "-dev";
-		} else if(status < 0xF) {
+		} else if(status < 0xF){
 			fmt << "-beta" << status;
 		}
 	}
@@ -201,7 +201,7 @@ version_table_manager::version_table_manager()
 	compiled[LIB_SDL_IMAGE] = format_version(sdl_version);
 
 	const SDL_version* sdl_rt_version = IMG_Linked_Version();
-	if(sdl_rt_version) {
+	if(sdl_rt_version){
 		linked[LIB_SDL_IMAGE] = format_version(*sdl_rt_version);
 	}
 
@@ -215,7 +215,7 @@ version_table_manager::version_table_manager()
 	compiled[LIB_SDL_MIXER] = format_version(sdl_version);
 
 	sdl_rt_version = Mix_Linked_Version();
-	if(sdl_rt_version) {
+	if(sdl_rt_version){
 		linked[LIB_SDL_MIXER] = format_version(*sdl_rt_version);
 	}
 
@@ -255,7 +255,7 @@ version_table_manager::version_table_manager()
 		(LIBCURL_VERSION_NUM & 0x00FF00) >> 8,
 		LIBCURL_VERSION_NUM & 0x0000FF);
 	curl_version_info_data *curl_ver = curl_version_info(CURLVERSION_NOW);
-	if(curl_ver && curl_ver->version) {
+	if(curl_ver && curl_ver->version){
 		linked[LIB_CURL] = curl_ver->version;
 	}
 	// This is likely to upset somebody out there, but the cURL authors
@@ -351,14 +351,14 @@ std::vector<optional_feature> optional_features_table(bool localize)
 {
 	std::vector<optional_feature> res = versions.features;
 
-	for(std::size_t k = 0; k < res.size(); ++k) {
-		if(localize) {
+	for(std::size_t k = 0; k < res.size(); ++k){
+		if(localize){
 			res[k].name = _(res[k].name.c_str());
 		} else {
 			// Strip annotation carets ("blah blah^actual text here") from translatable
 			// strings.
 			const auto caret_pos = res[k].name.find('^');
-			if(caret_pos != std::string::npos) {
+			if(caret_pos != std::string::npos){
 				res[k].name.erase(0, caret_pos + 1);
 			}
 		}
@@ -368,7 +368,7 @@ std::vector<optional_feature> optional_features_table(bool localize)
 
 const std::string& library_build_version(LIBRARY_ID lib)
 {
-	if(lib >= LIB_COUNT) {
+	if(lib >= LIB_COUNT){
 		return empty_version;
 	}
 
@@ -377,7 +377,7 @@ const std::string& library_build_version(LIBRARY_ID lib)
 
 const std::string& library_runtime_version(LIBRARY_ID lib)
 {
-	if(lib >= LIB_COUNT) {
+	if(lib >= LIB_COUNT){
 		return empty_version;
 	}
 
@@ -386,7 +386,7 @@ const std::string& library_runtime_version(LIBRARY_ID lib)
 
 const std::string& library_name(LIBRARY_ID lib)
 {
-	if(lib >= LIB_COUNT) {
+	if(lib >= LIB_COUNT){
 		return empty_version;
 	}
 
@@ -397,13 +397,13 @@ std::string dist_channel_id()
 {
 	std::string info;
 	std::ifstream infofile(game_config::path + "/data/dist");
-	if(infofile.is_open()) {
+	if(infofile.is_open()){
 		std::getline(infofile, info);
 		infofile.close();
 		boost::trim(info);
 	}
 
-	if(info.empty()) {
+	if(info.empty()){
 		return "Default";
 	}
 
@@ -455,13 +455,13 @@ const std::string list_formatter::label_delimiter = ": ";
 
 void list_formatter::stream_put(std::ostream& os) const
 {
-	if(!heading_.empty()) {
+	if(!heading_.empty()){
 		os << heading_ << '\n' << std::string(utf8::size(heading_), heading_delimiter) << "\n\n";
 	}
 
-	if(contents_.empty() && !placeholder_.empty()) {
+	if(contents_.empty() && !placeholder_.empty()){
 		os << placeholder_ << '\n';
-	} else if(!contents_.empty()) {
+	} else if(!contents_.empty()){
 		auto label_length_comparator = [](const list_entry& a, const list_entry& b)
 		{
 			return utf8::size(a.first) < utf8::size(b.first);
@@ -478,7 +478,7 @@ void list_formatter::stream_put(std::ostream& os) const
 
 		os << std::left;
 
-		for(const auto& entry : contents_) {
+		for(const auto& entry : contents_){
 			os << std::setw(min_length) << entry.first + label_delimiter << entry.second << '\n';
 		}
 
@@ -501,12 +501,12 @@ list_formatter library_versions_report_internal(const std::string& heading = "")
 
 	for(unsigned n = 0; n < LIB_COUNT; ++n)
 	{
-		if(versions.names[n].empty()) {
+		if(versions.names[n].empty()){
 			continue;
 		}
 
 		std::string text = versions.compiled[n];
-		if(!versions.linked[n].empty()) {
+		if(!versions.linked[n].empty()){
 			text += " (runtime " + versions.linked[n] + ")";
 		}
 
@@ -522,7 +522,7 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 
 	const std::vector<optional_feature>& features = optional_features_table(false);
 
-	for(const auto& feature : features) {
+	for(const auto& feature : features){
 		fmt.insert(feature.name, feature.enabled ? "yes" : "no");
 	}
 
@@ -545,14 +545,14 @@ std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::
 {
 	bool found_current_driver = false;
 
-	for(auto& drvname : drivers) {
-		if(current_driver == drvname) {
+	for(auto& drvname : drivers){
+		if(current_driver == drvname){
 			found_current_driver = true;
 			drvname = "[" + current_driver + "]";
 		}
 	}
 
-	if(drivers.empty() || !found_current_driver) {
+	if(drivers.empty() || !found_current_driver){
 		// This shouldn't happen but SDL is weird at times so whatevs
 		drivers.emplace_back("[" + current_driver + "]");
 	}
@@ -566,15 +566,15 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 
 	std::string placeholder;
 
-	if(video::headless()) {
+	if(video::headless()){
 		placeholder = "Running in non-interactive mode.";
 	}
 
-	if(!video::has_window()) {
+	if(!video::has_window()){
 		placeholder = "Video not initialized yet.";
 	}
 
-	if(!placeholder.empty()) {
+	if(!placeholder.empty()){
 		fmt.set_placeholder(placeholder);
 		return fmt;
 	}
@@ -599,7 +599,7 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 
 	const auto& renderer_report = video::renderer_report();
 
-	for(const auto& info : renderer_report) {
+	for(const auto& info : renderer_report){
 		fmt.insert(info.first, info.second);
 	}
 
@@ -612,7 +612,7 @@ list_formatter sound_settings_report_internal(const std::string& heading = "")
 
 	const auto& driver_status = sound::driver_status::query();
 
-	if(!driver_status.initialized) {
+	if(!driver_status.initialized){
 		fmt.set_placeholder("Audio not initialized.");
 		return fmt;
 	}
@@ -675,13 +675,13 @@ std::string full_build_report()
 	};
 
 	// Obfuscate usernames in paths
-	for(auto& entry : paths) {
+	for(auto& entry : paths){
 		entry.second = filesystem::sanitize_path(entry.second);
 	}
 
 	list_formatter::contents_list addons;
 
-	for(const auto& addon_info : installed_addons_and_versions()) {
+	for(const auto& addon_info : installed_addons_and_versions()){
 		addons.emplace_back(addon_info.first, addon_info.second);
 	}
 

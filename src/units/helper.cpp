@@ -38,7 +38,7 @@ int number_of_possible_advances(const unit &u)
 
 bool will_certainly_advance(const unit_map::iterator &u)
 {
-	if(!u.valid()) {
+	if(!u.valid()){
 		return false;
 	}
 	return u->advances() && number_of_possible_advances(*u) > 0;
@@ -62,11 +62,11 @@ static std::string unit_level_tooltip(const int level, const std::vector<std::st
 	std::ostringstream tooltip;
 	tooltip << _("Level: ") << markup::bold(level) << "\n";
 	const bool has_advancements = !adv_to_types.empty() || !adv_to_mods.empty();
-	if(has_advancements) {
+	if(has_advancements){
 		tooltip << _("Advancements:") << "\n\t";
 		if(!adv_to_types.empty())
 			tooltip << markup::bold(utils::join(adv_to_types, "\n\t"));
-		if(!adv_to_mods.empty()) {
+		if(!adv_to_mods.empty()){
 			if(!adv_to_types.empty())
 				tooltip << "\n\t";
 			std::vector<std::string> descriptions;
@@ -101,7 +101,7 @@ std::string maybe_inactive(const std::string& str, bool active)
 std::string format_cost_string(int unit_recall_cost, bool active)
 {
 	std::stringstream str;
-	if (active) {
+	if(active){
 		str << markup::img("themes/gold.png") << ' ' << unit_recall_cost;
 	} else {
 		str << markup::img("themes/gold.png~GS()") << ' '
@@ -112,16 +112,16 @@ std::string format_cost_string(int unit_recall_cost, bool active)
 
 std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 {
-	if(unit_recall_cost < 0) {
+	if(unit_recall_cost < 0){
 		unit_recall_cost = team_recall_cost;
 	}
 
 	std::stringstream str;
 	str << markup::img("themes/gold.png") << ' ';
 
-	if(unit_recall_cost > team_recall_cost) {
+	if(unit_recall_cost > team_recall_cost){
 		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
-	} else if(unit_recall_cost < team_recall_cost) {
+	} else if(unit_recall_cost < team_recall_cost){
 		str << markup::span_color(font::GOOD_COLOR, unit_recall_cost);
 	} else {
 		// Default: show cost in white font color.
@@ -134,17 +134,17 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 
 std::string format_level_string(const int level, bool recallable)
 {
-	if(!recallable) {
+	if(!recallable){
 		// Same logic as when recallable, but always in inactive_color.
 		return markup::span_color(font::INACTIVE_COLOR,
 			(level < 2 ? std::to_string(level) : markup::bold(level)));
-	} else if(level < 1) {
+	} else if(level < 1){
 		return markup::span_color(font::INACTIVE_COLOR, level);
-	} else if(level == 1) {
+	} else if(level == 1){
 		return std::to_string(level);
-	} else if(level == 2) {
+	} else if(level == 2){
 		return markup::bold(level);
-	} else if(level == 3) {
+	} else if(level == 3){
 		return markup::span_color(color_t(0xe2, 0xb7, 0x76), markup::bold(level));
 	} else {
 		return markup::span_color(color_t(0xdd, 0x66, 0x00), markup::bold(level));
@@ -153,11 +153,11 @@ std::string format_level_string(const int level, bool recallable)
 
 std::string format_movement_string(const int moves_left, const int moves_max, bool active)
 {
-	if (!active) {
+	if(!active){
 		return markup::span_color(font::GRAY_COLOR, moves_left, "/", moves_max);
-	} else if(moves_left == 0) {
+	} else if(moves_left == 0){
 		return markup::span_color(font::BAD_COLOR, moves_left, "/", moves_max);
-	} else if(moves_left > moves_max) {
+	} else if(moves_left > moves_max){
 		return markup::span_color(font::YELLOW_COLOR, moves_left, "/", moves_max);
 	} else {
 		return markup::span_color(font::GOOD_COLOR, moves_left, "/", moves_max);
@@ -174,13 +174,13 @@ t_string recruit_message(
 	team& current_team)
 {
 	const unit_type* u_type = unit_types.find(type_id);
-	if(u_type == nullptr) {
+	if(u_type == nullptr){
 		return _("Internal error. Please report this as a bug! Details:\n")
 			+ "unit_helper::recruit_message: u_type == nullptr for " + type_id;
 	}
 
 	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(current_team.side(), target_hex), type_id)) {
+	if(!utils::contains(actions::get_recruits(current_team.side(), target_hex), type_id)){
 		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
 				utils::string_map{{ "unit_type_name", u_type->type_name() }});
 	}
@@ -208,7 +208,7 @@ t_string recruit_message(
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
 		std::string msg = actions::find_recruit_location(current_team.side(), target_hex, recruited_from, type_id);
-		if(!msg.empty()) {
+		if(!msg.empty()){
 			return msg;
 		}
 	} // end planned unit map scope

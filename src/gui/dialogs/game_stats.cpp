@@ -51,7 +51,7 @@ unit_const_ptr game_stats::get_leader(const int side)
 {
 	unit_map::const_iterator leader = board_.units().find_leader(side);
 
-	if(leader != board_.units().end()) {
+	if(leader != board_.units().end()){
 		return leader.get_shared_ptr();
 	}
 
@@ -69,8 +69,8 @@ void game_stats::pre_show()
 	listbox& stats_list    = find_widget<listbox>("game_stats_list");
 	listbox& settings_list = find_widget<listbox>("scenario_settings_list");
 
-	for(const auto& team : board_.teams()) {
-		if(team.hidden()) {
+	for(const auto& team : board_.teams()){
+		if(team.hidden()){
 			continue;
 		}
 
@@ -90,11 +90,11 @@ void game_stats::pre_show()
 		std::string leader_image;
 
 		const bool see_all = game_config::debug || (resources::controller && resources::controller->get_display().show_everything());
-		if(leader) {
+		if(leader){
 			const bool visible = leader->is_visible_to_team(leader->get_location(), viewing_team_, see_all);
 
 			// Add leader image. If it's fogged/[hides], show only a random leader image.
-			if(visible || known) {
+			if(visible || known){
 				leader_image = leader->absolute_image() + leader->image_mods();
 				leader_name  = leader->name();
 			} else {
@@ -102,8 +102,8 @@ void game_stats::pre_show()
 				leader_name  = _("Unknown");
 			}
 
-			if(resources::controller) {
-				if(resources::controller->get_classification().is_multiplayer()) {
+			if(resources::controller){
+				if(resources::controller->get_classification().is_multiplayer()){
 					leader_name = team.side_name();
 				}
 			}
@@ -128,9 +128,9 @@ void game_stats::pre_show()
 		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
-		if(known || see_all) {
+		if(known || see_all){
 			std::string gold_str;
-			if(see_all || !enemy || !viewing_team_.uses_fog()) {
+			if(see_all || !enemy || !viewing_team_.uses_fog()){
 				gold_str = utils::half_signed_value(team.gold());
 			}
 
@@ -138,7 +138,7 @@ void game_stats::pre_show()
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(team.villages().size());
-			if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()) {
+			if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()){
 				village_count += "/" + std::to_string(board_.map().villages().size());
 			}
 
@@ -195,31 +195,31 @@ void game_stats::pre_show()
 
 	// Sorting options for the status list
 	stats_list.set_sorters(
-		[this](const std::size_t i) {
+		[this](const std::size_t i){
 			unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();
 		},
-		[this](const std::size_t i) { return board_.teams()[i].user_team_name(); },
-		[this](const std::size_t i) { return board_.teams()[i].gold(); },
-		[this](const std::size_t i) { return board_.teams()[i].villages(); },
-		[this](const std::size_t i) { return team_data_[i].units; },
-		[this](const std::size_t i) { return team_data_[i].upkeep; },
-		[this](const std::size_t i) { return team_data_[i].net_income; }
+		[this](const std::size_t i){ return board_.teams()[i].user_team_name(); },
+		[this](const std::size_t i){ return board_.teams()[i].gold(); },
+		[this](const std::size_t i){ return board_.teams()[i].villages(); },
+		[this](const std::size_t i){ return team_data_[i].units; },
+		[this](const std::size_t i){ return team_data_[i].upkeep; },
+		[this](const std::size_t i){ return team_data_[i].net_income; }
 	);
 
 	// Sorting options for the settings list
 	settings_list.set_sorters(
-		[this](const std::size_t i) {
+		[this](const std::size_t i){
 			unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();
 		},
-		[this](const std::size_t i) { return board_.teams()[i].side(); },
-		[this](const std::size_t i) { return board_.teams()[i].start_gold(); },
-		[this](const std::size_t i) { return board_.teams()[i].base_income(); },
-		[this](const std::size_t i) { return board_.teams()[i].village_gold(); },
-		[this](const std::size_t i) { return board_.teams()[i].village_support(); },
-		[this](const std::size_t i) { return board_.teams()[i].uses_fog(); },
-		[this](const std::size_t i) { return board_.teams()[i].uses_shroud(); }
+		[this](const std::size_t i){ return board_.teams()[i].side(); },
+		[this](const std::size_t i){ return board_.teams()[i].start_gold(); },
+		[this](const std::size_t i){ return board_.teams()[i].base_income(); },
+		[this](const std::size_t i){ return board_.teams()[i].village_gold(); },
+		[this](const std::size_t i){ return board_.teams()[i].village_support(); },
+		[this](const std::size_t i){ return board_.teams()[i].uses_fog(); },
+		[this](const std::size_t i){ return board_.teams()[i].uses_shroud(); }
 	);
 
 	//
@@ -248,7 +248,7 @@ void game_stats::on_tab_select()
 
 void game_stats::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		const int selected_tab = find_widget<listbox>("tab_bar").get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";

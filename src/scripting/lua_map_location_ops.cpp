@@ -23,39 +23,39 @@
 #include <string>
 #include <utility>
 
-static bool luaW_tocubeloc(lua_State* L, int idx, cubic_location& out) {
-	if(!lua_istable(L, idx)) {
+static bool luaW_tocubeloc(lua_State* L, int idx, cubic_location& out){
+	if(!lua_istable(L, idx)){
 		return false;
 	}
 	int n = lua_absindex(L, -1);
-	if(!luaW_tableget(L, n, "q")) {
+	if(!luaW_tableget(L, n, "q")){
 		return false;
 	}
 	out.q = luaL_checkinteger(L, -1);
-	if(!luaW_tableget(L, n, "r")) {
+	if(!luaW_tableget(L, n, "r")){
 		return false;
 	}
 	out.r = luaL_checkinteger(L, -1);
-	if(luaW_tableget(L, n, "s")) {
+	if(luaW_tableget(L, n, "s")){
 		out.s = luaL_checkinteger(L, -1);
 	} else {
 		out.s = -out.q - out.r;
 	}
-	if(out.q + out.s + out.r != 0) {
+	if(out.q + out.s + out.r != 0){
 		return false;
 	}
 	return true;
 }
 
-static cubic_location luaW_checkcubeloc(lua_State* L, int idx) {
+static cubic_location luaW_checkcubeloc(lua_State* L, int idx){
 	cubic_location loc;
-	if(!luaW_tocubeloc(L, idx, loc)) {
+	if(!luaW_tocubeloc(L, idx, loc)){
 		luaL_argerror(L, idx, "expected cubic location");
 	}
 	return loc;
 }
 
-static void luaW_pushcubeloc(lua_State* L, cubic_location loc) {
+static void luaW_pushcubeloc(lua_State* L, cubic_location loc){
 	luaW_push_namedtuple(L, {"q", "r", "s"});
 	lua_pushinteger(L, loc.q);
 	lua_rawseti(L, -2, 1);
@@ -76,23 +76,23 @@ namespace lua_map_location {
 int intf_get_direction(lua_State* L)
 {
 	map_location l;
-	if(!luaW_tolocation(L, 1, l)) {
+	if(!luaW_tolocation(L, 1, l)){
 		return luaL_argerror(L, 1, "get_direction: first argument(S) must be a location");
 	}
 	int nargs = lua_gettop(L);
-	if (nargs < 2) {
+	if(nargs < 2){
 		luaL_error(L, "get_direction: not missing direction argument");
 		return 0;
 	}
 
 	int n = 1;
-	if (nargs == 3) {
+	if(nargs == 3){
 		n = luaL_checkinteger(L, -1);
 		lua_pop(L,1);
 	}
 
 	map_location::direction d;
-	if (lua_isstring(L, -1)) {
+	if(lua_isstring(L, -1)){
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
 		lua_pop(L,1);
 	} else {
@@ -112,7 +112,7 @@ int intf_get_direction(lua_State* L)
 int intf_vector_sum(lua_State* L)
 {
 	map_location l1, l2;
-	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)){
 		lua_pushstring(L, "vector_sum: requires two locations");
 		return lua_error(L);
 	}
@@ -127,7 +127,7 @@ int intf_vector_sum(lua_State* L)
 int intf_vector_diff(lua_State* L)
 {
 	map_location l1, l2;
-	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)){
 		lua_pushstring(L, "vector_diff: requires two locations");
 		return lua_error(L);
 	}
@@ -144,7 +144,7 @@ int intf_vector_diff(lua_State* L)
 int intf_vector_negation(lua_State* L)
 {
 	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
+	if(!luaW_tolocation(L, 1, l1)){
 		return luaL_argerror(L, 1, "expected a location");
 	}
 
@@ -160,7 +160,7 @@ int intf_rotate_right_around_center(lua_State* L)
 	int k = luaL_checkinteger(L, -1);
 	lua_pop(L,1);
 	map_location center, loc;
-	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)) {
+	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)){
 		lua_pushstring(L, "rotate_right_around_center: requires two locations");
 		return lua_error(L);
 	}
@@ -177,7 +177,7 @@ int intf_rotate_right_around_center(lua_State* L)
 int intf_tiles_adjacent(lua_State* L)
 {
 	map_location l1, l2;
-	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)){
 		lua_pushstring(L, "tiles_adjacent: requires two locations");
 		return lua_error(L);
 	}
@@ -194,11 +194,11 @@ int intf_tiles_adjacent(lua_State* L)
 int intf_get_adjacent_tiles(lua_State* L)
 {
 	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
+	if(!luaW_tolocation(L, 1, l1)){
 		return luaL_argerror(L, 1, "expected a location");
 	}
 
-	for(const map_location& adj : get_adjacent_tiles(l1)) {
+	for(const map_location& adj : get_adjacent_tiles(l1)){
 		luaW_pushlocation(L, adj);
 	}
 
@@ -214,7 +214,7 @@ int intf_get_adjacent_tiles(lua_State* L)
 int intf_get_tile_ring(lua_State* L)
 {
 	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
+	if(!luaW_tolocation(L, 1, l1)){
 		return luaL_argerror(L, 1, "expected a location");
 	}
 	int radius = luaL_checkinteger(L, 2);
@@ -235,7 +235,7 @@ int intf_get_tile_ring(lua_State* L)
 int intf_get_tiles_in_radius(lua_State* L)
 {
 	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
+	if(!luaW_tolocation(L, 1, l1)){
 		return luaL_argerror(L, 1, "expected a location");
 	}
 	int radius = luaL_checkinteger(L, 2);
@@ -255,7 +255,7 @@ int intf_get_tiles_in_radius(lua_State* L)
 int intf_distance_between(lua_State* L)
 {
 	map_location l1, l2;
-	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)){
 		lua_pushstring(L, "distance_between: requires two locations");
 		return lua_error(L);
 	}
@@ -272,7 +272,7 @@ int intf_distance_between(lua_State* L)
 int intf_get_in_cubic(lua_State* L)
 {
 	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
+	if(!luaW_tolocation(L, 1, l1)){
 		return luaL_argerror(L, 1, "expected a location");
 	}
 	cubic_location h = l1.to_cubic();
@@ -308,7 +308,7 @@ int intf_get_from_cubic(lua_State* L)
 int intf_get_relative_dir(lua_State* L)
 {
 	map_location l1, l2;
-	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)){
 		lua_pushstring(L, "get_relative_dir: requires two locations");
 		return lua_error(L);
 	}

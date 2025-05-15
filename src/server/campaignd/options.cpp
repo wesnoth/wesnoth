@@ -88,44 +88,44 @@ command_line::command_line(const std::vector<std::string>& args)
 		{ "none",    lg::severity::LG_NONE }
 	};
 
-	if(vm.count("help")) {
-		if(!help) {
+	if(vm.count("help")){
+		if(!help){
 			help_text_ = formatter() << "Usage: " << argv0_ << " [<options>]\n" << opts;
 		}
 
 		help = true;
 	}
-	if(vm.count("version")) {
+	if(vm.count("version")){
 		version = true;
 	}
 
-	if(vm.count("config")) {
+	if(vm.count("config")){
 		config_file = vm["config"].as<std::string>();
 	}
-	if(vm.count("server-dir")) {
+	if(vm.count("server-dir")){
 		server_dir = vm["server-dir"].as<std::string>();
 	}
-	if(vm.count("port")) {
+	if(vm.count("port")){
 		port = vm["port"].as<unsigned short>();
 	}
 
-	if(vm.count("logdomains")) {
+	if(vm.count("logdomains")){
 		show_log_domains = true;
 	}
-	for(const auto& lvl : log_levels) {
+	for(const auto& lvl : log_levels){
 		const auto& swtch = std::string{"log-"} + lvl.first;
 		const auto severity = lvl.second;
-		if(vm.count(swtch)) {
+		if(vm.count(swtch)){
 			const auto& domains = utils::split(vm[swtch].as<std::string>());
-			for(const auto& d : domains) {
+			for(const auto& d : domains){
 				log_domain_levels[d] = severity;
 			}
 		}
 	}
-	if(vm.count("log-precise")) {
+	if(vm.count("log-precise")){
 		log_precise_timestamps = true;
 	}
-	if(vm.count("timings")) {
+	if(vm.count("timings")){
 		report_timings = true;
 	}
 }

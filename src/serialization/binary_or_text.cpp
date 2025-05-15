@@ -39,10 +39,10 @@ config_writer::config_writer(std::ostream& out, compression::format compress)
 	, level_(0)
 	, textdomain_(PACKAGE)
 {
-	if(compress_ == compression::format::gzip) {
+	if(compress_ == compression::format::gzip){
 		filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(9)));
 		filter_.push(out);
-	} else if(compress_ == compression::format::bzip2) {
+	} else if(compress_ == compression::format::bzip2){
 		filter_.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
 		filter_.push(out);
 	}
@@ -56,8 +56,8 @@ config_writer::config_writer(std::ostream& out, bool compress, int level)
 	, level_(0)
 	, textdomain_(PACKAGE)
 {
-	if(compress_ != compression::format::none) {
-		if(level >= 0) {
+	if(compress_ != compression::format::none){
+		if(level >= 0){
 			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(level)));
 		} else {
 			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params()));
@@ -70,7 +70,7 @@ config_writer::config_writer(std::ostream& out, bool compress, int level)
 config_writer::~config_writer()
 {
 	// we only need this for gzip but we also do it for bz2 for unification.
-	if(compress_ == compression::format::gzip || compress_ == compression::format::bzip2) {
+	if(compress_ == compression::format::gzip || compress_ == compression::format::bzip2){
 		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
 		out_ << "\n";
 	}

@@ -105,7 +105,7 @@ void statistics_attack_context::attack_result(hit_result res, int cth, int damag
 	attacker_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
-	if(res != MISSES) {
+	if(res != MISSES){
 		++att_stats.by_cth_inflicted[cth].hits;
 		++att_stats.turn_by_cth_inflicted[cth].hits;
 		++def_stats.by_cth_taken[cth].hits;
@@ -116,7 +116,7 @@ void statistics_attack_context::attack_result(hit_result res, int cth, int damag
 	++def_stats.by_cth_taken[cth].strikes;
 	++def_stats.turn_by_cth_taken[cth].strikes;
 
-	if(res != MISSES) {
+	if(res != MISSES){
 		// handle drain
 		att_stats.damage_taken -= drain;
 		def_stats.damage_inflicted -= drain;
@@ -129,7 +129,7 @@ void statistics_attack_context::attack_result(hit_result res, int cth, int damag
 		def_stats.turn_damage_taken += damage;
 	}
 
-	if(res == KILLS) {
+	if(res == KILLS){
 		++att_stats.killed[defender_type];
 		++def_stats.deaths[defender_type];
 	}
@@ -140,7 +140,7 @@ void statistics_attack_context::defend_result(hit_result res, int cth, int damag
 	defender_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
-	if(res != MISSES) {
+	if(res != MISSES){
 		++def_stats.by_cth_inflicted[cth].hits;
 		++def_stats.turn_by_cth_inflicted[cth].hits;
 		++att_stats.by_cth_taken[cth].hits;
@@ -151,7 +151,7 @@ void statistics_attack_context::defend_result(hit_result res, int cth, int damag
 	++att_stats.by_cth_taken[cth].strikes;
 	++att_stats.turn_by_cth_taken[cth].strikes;
 
-	if(res != MISSES) {
+	if(res != MISSES){
 		//handle drain
 		def_stats.damage_taken          -= drain;
 		att_stats.damage_inflicted      -= drain;
@@ -164,7 +164,7 @@ void statistics_attack_context::defend_result(hit_result res, int cth, int damag
 		def_stats.turn_damage_inflicted += damage;
 	}
 
-	if(res == KILLS) {
+	if(res == KILLS){
 		++att_stats.deaths[attacker_type];
 		++def_stats.killed[attacker_type];
 	}
@@ -223,9 +223,9 @@ statistics_t::stats statistics_t::calculate_stats(const std::string& save_id)
 	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats().size();
 	// The order of this loop matters since the turn stats are taken from the
 	// last stats merged.
-	for(std::size_t i = 0; i != master_stats().size(); ++i) {
+	for(std::size_t i = 0; i != master_stats().size(); ++i){
 		auto find_it = master_stats()[i].team_stats.find(save_id);
-		if(find_it != master_stats()[i].team_stats.end()) {
+		if(find_it != master_stats()[i].team_stats.end()){
 			res.merge_with(find_it->second);
 		}
 	}
@@ -250,18 +250,18 @@ statistics_t::levels statistics_t::level_stats(const std::string& save_id)
 
 	levels level_list;
 
-	for(std::size_t level = 0; level != master_stats().size(); ++level) {
+	for(std::size_t level = 0; level != master_stats().size(); ++level){
 		const auto& team_stats = master_stats()[level].team_stats;
 
 		auto find_it = team_stats.find(save_id);
-		if(find_it != team_stats.end()) {
+		if(find_it != team_stats.end()){
 			level_list.emplace_back(&master_stats()[level].scenario_name, &find_it->second);
 		}
 	}
 
 	// Make sure we do return something (so other code does not have to deal
 	// with an empty list).
-	if(level_list.empty()) {
+	if(level_list.empty()){
 		level_list.emplace_back(&null_name, &null_stats);
 	}
 
@@ -270,7 +270,7 @@ statistics_t::levels statistics_t::level_stats(const std::string& save_id)
 
 statistics_t::stats& statistics_t::get_stats(const std::string& save_id)
 {
-	if(master_stats().empty()) {
+	if(master_stats().empty()){
 		master_stats().emplace_back(std::string());
 	}
 
@@ -280,7 +280,7 @@ statistics_t::stats& statistics_t::get_stats(const std::string& save_id)
 int statistics_t::sum_str_int_map(const std::map<std::string, int>& m)
 {
 	int res = 0;
-	for(const auto& pair: m) {
+	for(const auto& pair: m){
 		res += pair.second;
 	}
 
@@ -290,9 +290,9 @@ int statistics_t::sum_str_int_map(const std::map<std::string, int>& m)
 int statistics_t::sum_cost_str_int_map(const std::map<std::string, int>& m)
 {
 	int cost = 0;
-	for(const auto& pair : m) {
+	for(const auto& pair : m){
 		const unit_type* t = unit_types.find(pair.first);
-		if(!t) {
+		if(!t){
 			ERR_NG << "Statistics refer to unknown unit type '" << pair.first << "'. Discarding.";
 		} else {
 			cost += pair.second * t->cost();

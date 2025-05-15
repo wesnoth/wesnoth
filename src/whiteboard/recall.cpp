@@ -86,7 +86,7 @@ recall::recall(const config& cfg, bool hidden)
 			break;
 		}
 	}
-	if(!temp_unit_.get()) {
+	if(!temp_unit_.get()){
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
@@ -101,7 +101,7 @@ void recall::init()
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->anim_comp().set_ghosted(false);
-	fake_unit_.place_on_fake_unit_manager( resources::fake_units);
+	fake_unit_.place_on_fake_unit_manager(resources::fake_units);
 }
 
 recall::~recall()
@@ -122,14 +122,14 @@ void recall::execute(bool& success, bool& complete)
 	temporary_unit_hider const raii(*fake_unit_);
 	//Give back the spent gold so we don't get "not enough gold" message
 	int cost = current_team.recall_cost();
-	if (temp_unit_->recall_cost() > -1) {
+	if(temp_unit_->recall_cost() > -1){
 		cost=temp_unit_->recall_cost();
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = synced_context::run_and_throw("recall",
 		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()));
 
-	if (!result) {
+	if(!result){
 		current_team.get_side_actions()->change_gold_spent_by(cost);
 	}
 	success = complete = result;
@@ -158,7 +158,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 	//Add cost to money spent on recruits.
 	int cost = resources::gameboard->teams().at(team_index()).recall_cost();
-	if (it->recall_cost() > -1) {
+	if(it->recall_cost() > -1){
 		cost = it->recall_cost();
 	}
 
@@ -187,7 +187,7 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 
 void recall::draw_hex(const map_location& hex)
 {
-	if (hex == recall_hex_)
+	if(hex == recall_hex_)
 	{
 		const double x_offset = 0.5;
 		const double y_offset = 0.7;
@@ -195,7 +195,7 @@ void recall::draw_hex(const map_location& hex)
 		std::stringstream number_text;
 		unit &it = *get_unit();
 		int cost = it.recall_cost();
-		if (cost < 0) {
+		if(cost < 0){
 			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}
 		else {
@@ -216,24 +216,24 @@ void recall::redraw()
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::gameboard->units().find(recall_hex_) != resources::gameboard->units().end()) {
+	if(resources::gameboard->units().find(recall_hex_) != resources::gameboard->units().end()){
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list
-	if( !resources::gameboard->teams()[team_index()].recall_list().find_if_matches_id(temp_unit_->id()) ) {
+	if(!resources::gameboard->teams()[team_index()].recall_list().find_if_matches_id(temp_unit_->id())){
 		return UNIT_UNAVAILABLE;
 	}
 	//Check that there is still enough gold to recall this unit
-	if(resources::gameboard->teams()[team_index()].recall_cost() > resources::gameboard->teams()[team_index()].gold()) {
+	if(resources::gameboard->teams()[team_index()].recall_cost() > resources::gameboard->teams()[team_index()].gold()){
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
+	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader){
 		const unit_filter ufilt(vconfig(leader.recall_filter()));
 		return ufilt(*temp_unit_, map_location::null_location());
 	});
 
-	if(!has_recruiter) {
+	if(!has_recruiter){
 		return NO_LEADER;
 	}
 
@@ -257,7 +257,7 @@ config recall::to_config() const
 	return final_cfg;
 }
 
-void recall::do_hide() {fake_unit_->set_hidden(true);}
-void recall::do_show() {fake_unit_->set_hidden(false);}
+void recall::do_hide(){fake_unit_->set_hidden(true);}
+void recall::do_show(){fake_unit_->set_hidden(false);}
 
 } //end namespace wb

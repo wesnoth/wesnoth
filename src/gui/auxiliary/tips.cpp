@@ -46,17 +46,17 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 	const std::set<std::string>& units = prefs::get().encountered_units();
 
 	// Remove entries whose filters do not match from the tips list.
-	utils::erase_if(result, [&units](const game_tip& tip) {
+	utils::erase_if(result, [&units](const game_tip& tip){
 		const auto& must_have_seen = tip.unit_filter;
 
 		// No units to encounter, tip is always visible.
-		if(must_have_seen.empty()) {
+		if(must_have_seen.empty()){
 			return false;
 		}
 
 		// At least one given unit type must have been encountered.
 		return std::none_of(must_have_seen.begin(), must_have_seen.end(),
-			[&units](const std::string& u) { return utils::contains(units, u); });
+			[&units](const std::string& u){ return utils::contains(units, u); });
 	});
 
 	// Shuffle the list.

@@ -37,13 +37,13 @@ static lg::log_domain log_ai_engine_fai("ai/engine/fai");
 
 class fai_candidate_action_wrapper : public candidate_action {
 public:
-	fai_candidate_action_wrapper( rca_context &context, const config &cfg, wfl::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
+	fai_candidate_action_wrapper(rca_context &context, const config &cfg, wfl::candidate_action_ptr fai_ca, formula_ai &_formula_ai)
 		: candidate_action(context,cfg),fai_ca_(std::move(fai_ca)),formula_ai_(_formula_ai),cfg_(cfg)
 	{
 
 }
 
-	virtual ~fai_candidate_action_wrapper() {}
+	virtual ~fai_candidate_action_wrapper(){}
 
 	virtual double evaluate()
 	{
@@ -66,7 +66,7 @@ private:
 	const config cfg_;
 };
 
-engine_fai::engine_fai( readonly_context &context, const config &cfg )
+engine_fai::engine_fai(readonly_context &context, const config &cfg)
 	: engine(context,cfg), formula_ai_(new formula_ai(context,cfg.child_or_empty("formula_ai")))
 {
 	name_ = "fai";
@@ -77,9 +77,9 @@ engine_fai::~engine_fai()
 {
 }
 
-void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b ){
+void engine_fai::do_parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b){
 	wfl::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
-	if (!fai_ca) {
+	if(!fai_ca){
 		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]";
 		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg;
 		return;
@@ -89,24 +89,24 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 
 }
 
-void engine_fai::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b )
+void engine_fai::do_parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b)
 {
 	// This checekd for !cfg but oter implementation of do_parse_stage_from_config didn't.
 	const std::string &name = cfg["name"];
 	stage_ptr st_ptr;
 
 	//dropped from 1.8, as it's not ready
-	//if (name=="rca_formulas") {
+	//if(name=="rca_formulas"){
 	//	st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
 
-	if (name=="side_formulas") {
+	if(name=="side_formulas"){
 		st_ptr = std::make_shared<stage_side_formulas>(context, cfg, *formula_ai_);
-	} else if (name=="unit_formulas") {
+	} else if(name=="unit_formulas"){
 		st_ptr = std::make_shared<stage_unit_formulas>(context, cfg, *formula_ai_);
 	} else {
 		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]";
 	}
-	if (st_ptr) {
+	if(st_ptr){
 		st_ptr->on_create();
 		*b = st_ptr;
 	}
@@ -119,7 +119,7 @@ std::string engine_fai::evaluate(const std::string &str)
 
 void engine_fai::set_ai_context(ai_context *context)
 {
-	if (context!=nullptr) {
+	if(context!=nullptr){
 		DBG_AI_ENGINE_FAI << "fai engine: ai_context is set";
 	} else {
 		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared";

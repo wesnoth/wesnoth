@@ -32,14 +32,14 @@ namespace sp
 {
 bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
-	while(true) {
+	while(true){
 		ng::create_engine create_eng(state);
 		create_eng.set_current_level_type(level_type::type::sp_campaign);
 
 		const std::vector<ng::create_engine::level_ptr> campaigns =
 			create_eng.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
-		if(campaigns.empty()) {
+		if(campaigns.empty()){
 			gui2::show_error_message(_("No campaigns are available."));
 			return false;
 		}
@@ -47,18 +47,18 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		std::string random_mode = "", difficulty = "";
 
 		// No campaign selected from command line
-		if(jump_to_campaign.campaign_id.empty()) {
+		if(jump_to_campaign.campaign_id.empty()){
 			gui2::dialogs::campaign_selection dlg(create_eng);
 
 			try {
 				dlg.show();
-			} catch(const wml_exception& e) {
+			} catch(const wml_exception& e){
 				e.show();
 				return false;
 			}
 
-			if(dlg.get_retval() == gui2::retval::OK) {
-				switch(dlg.get_rng_mode()) {
+			if(dlg.get_retval() == gui2::retval::OK){
+				switch(dlg.get_rng_mode()){
 					case gui2::dialogs::campaign_selection::RNG_DEFAULT:
 						random_mode = "";
 						break;
@@ -71,7 +71,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 				}
 				difficulty = dlg.get_difficulty();
 			} else {
-				if (dlg.get_retval() == gui2::dialogs::campaign_selection::OPEN_ADDON_MANAGER) {
+				if(dlg.get_retval() == gui2::dialogs::campaign_selection::OPEN_ADDON_MANAGER){
 					manage_addons();
 				}
 				return false;
@@ -82,12 +82,12 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 			// if we should quit the game or return to the main menu
 
 			// Checking for valid campaign name
-			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](const ng::create_engine::level_ptr& level) {
+			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](const ng::create_engine::level_ptr& level){
 				return level->data()["id"] == jump_to_campaign.campaign_id;
 			});
 
 			// Didn't find a campaign with that id
-			if(campaign == campaigns.end()) {
+			if(campaign == campaigns.end()){
 				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]";
 				return false;
 			}
@@ -100,8 +100,8 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		const auto selected_difficulty = difficulty;
 
 		if(selected_difficulty == "FAIL") return false;
-		if(selected_difficulty == "CANCEL") {
-			if(!jump_to_campaign.campaign_id.empty()) {
+		if(selected_difficulty == "CANCEL"){
+			if(!jump_to_campaign.campaign_id.empty()){
 				jump_to_campaign.campaign_id = "";
 			}
 
@@ -112,18 +112,18 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
 
-		if(!jump_to_campaign.scenario_id.empty()) {
+		if(!jump_to_campaign.scenario_id.empty()){
 			state.set_carryover_sides_start(
 				config {"next_scenario", jump_to_campaign.scenario_id}
 			);
 		}
 
-		if(!state.valid()) {
+		if(!state.valid()){
 			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id();
 			return false;
 		}
 
-		if(configure_campaign(state, create_eng)) {
+		if(configure_campaign(state, create_eng)){
 			break;
 		}
 	}
@@ -134,7 +134,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 bool configure_campaign(saved_game& state, ng::create_engine& create_eng)
 {
 	create_eng.get_state().mp_settings().use_map_settings = true;
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng)) {
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng)){
 		return false;
 	}
 

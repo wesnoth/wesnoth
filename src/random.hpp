@@ -114,10 +114,10 @@ namespace randomness
 		double sum = 0.0;
 		T it = first;
 		sum += *it;
-		while (sum <= target)
+		while(sum <= target)
 		{
 			++it;
-			if (it != last)
+			if(it != last)
 			{
 				sum += *it;
 			}

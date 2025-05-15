@@ -26,14 +26,14 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
-	for (int c = 0; c < END_STANDARD_ASCII; ++c)
+	for(int c = 0; c < END_STANDARD_ASCII; ++c)
 	{
 		character_type t = TOK_NONE;
-		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
+		if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_'){
 			t = TOK_ALPHA;
-		} else if (c >= '0' && c <= '9') {
+		} else if(c >= '0' && c <= '9'){
 			t = TOK_NUMERIC;
-		} else if (c == ' ' || c == '\t') {
+		} else if(c == ' ' || c == '\t'){
 			t = TOK_SPACE;
 		}
 		char_types_[c] = t;
@@ -58,10 +58,10 @@ const token &tokenizer::next_token()
 	// Dump spaces and inlined comments
 	while(true)
 	{
-		while (is_space(current_)) {
+		while(is_space(current_)){
 			next_char_skip_cr();
 		}
-		if (current_ != INLINED_PREPROCESS_DIRECTIVE_CHAR)
+		if(current_ != INLINED_PREPROCESS_DIRECTIVE_CHAR)
 			break;
 		skip_comment();
 		// skip the line end
@@ -69,13 +69,13 @@ const token &tokenizer::next_token()
 	}
 
 	// skip comments on their own line
-	if (current_ == token::POUND)
+	if(current_ == token::POUND)
 		skip_comment();
 
 	// set the line number the next token will start on
 	startlineno_ = lineno_;
 
-	switch(current_) {
+	switch(current_){
 	// we reached the end of the file being read
 	case EOF:
 		token_.type = token::END;
@@ -86,7 +86,7 @@ const token &tokenizer::next_token()
 	// more generally is used to indicate the preprocessor should skip over a particular block of text
 	case token::LEFT_ANGLE_BRACKET:
 		// if there aren't double left angle brackets, there is no extra handling needed - this is just a regular left angle bracket
-		if (peek_char() != token::LEFT_ANGLE_BRACKET) {
+		if(peek_char() != token::LEFT_ANGLE_BRACKET){
 			token_.type = token::MISC;
 			token_.value += current_;
 			break;
@@ -98,12 +98,12 @@ const token &tokenizer::next_token()
 
 		// keep getting characters and appending them to the current token's value until either the file ends or double right angle brackets are found
 		// finding the end of the file first is an error since double left angle brackets must always be closed by double right angle brackets
-		for (;;) {
+		for(;;){
 			next_char();
-			if (current_ == EOF) {
+			if(current_ == EOF){
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
-			} else if (current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET) {
+			} else if(current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET){
 				next_char_skip_cr();
 				break;
 			}
@@ -116,13 +116,13 @@ const token &tokenizer::next_token()
 	case token::DOUBLE_QUOTE:
 		token_.type = token::QSTRING;
 
-		for (;;) {
+		for(;;){
 			next_char();
-			if (current_ == EOF) {
+			if(current_ == EOF){
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
-			} else if (current_ == token::DOUBLE_QUOTE) {
-				if (peek_char() != token::DOUBLE_QUOTE) {
+			} else if(current_ == token::DOUBLE_QUOTE){
+				if(peek_char() != token::DOUBLE_QUOTE){
 					break;
 				} else {
 					next_char_skip_cr();
@@ -130,7 +130,7 @@ const token &tokenizer::next_token()
 			}
 
 			// ignore this line and decrement the current line number
-			if (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
+			if(current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR){
 				skip_comment();
 				--lineno_;
 				continue;
@@ -159,7 +159,7 @@ const token &tokenizer::next_token()
 	// when in front of a QSTRING, indicates that the string is translatable
 	case token::UNDERSCORE:
 		// this check seems off - there are certainly other non-alphanumeric characters that shouldn't mean anything - but it looks like the parser handles those cases
-		if (!is_alnum(peek_char())) {
+		if(!is_alnum(peek_char())){
 			token_.type = token::UNDERSCORE;
 			token_.value = current_;
 			break;
@@ -171,18 +171,18 @@ const token &tokenizer::next_token()
 		// if alphanumeric (regular text) or the dollar sign (variable)
 		// not quite sure how this works with non-ascii text particularly since the parser doesn't reference token_type::MISC
 		// but maybe the default handling does what's needed
-		if (is_alnum(current_) || current_ == token::DOLLAR) {
+		if(is_alnum(current_) || current_ == token::DOLLAR){
 			token_.type = token::STRING;
 
 			do {
 				token_.value += current_;
 				next_char_skip_cr();
 
-				while (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
+				while(current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR){
 					skip_comment();
 					next_char_skip_cr();
 				}
-			} while (is_alnum(current_) || current_ == token::DOLLAR);
+			} while(is_alnum(current_) || current_ == token::DOLLAR);
 		} else {
 			token_.type = token::MISC;
 			token_.value += current_;
@@ -192,7 +192,7 @@ const token &tokenizer::next_token()
 	}
 
 	// if this isn't the end of the file, get the next character in preparation for the next call to this method
-	if (current_ != EOF) {
+	if(current_ != EOF){
 		next_char();
 	}
 
@@ -202,16 +202,16 @@ const token &tokenizer::next_token()
 bool tokenizer::skip_command(char const *cmd)
 {
 	// check that the character match the provided text, else return false
-	for (; *cmd; ++cmd) {
+	for(; *cmd; ++cmd){
 		next_char_skip_cr();
-		if (current_ != *cmd) {
+		if(current_ != *cmd){
 			return false;
 		}
 	}
 
 	// check that it's followed by a space, else return false
 	next_char_skip_cr();
-	if (!is_space(current_)) {
+	if(!is_space(current_)){
 		return false;
 	}
 
@@ -223,7 +223,7 @@ void tokenizer::skip_comment()
 {
 	// nothing to do if the line ends or the file ends
 	next_char_skip_cr();
-	if (current_ == token::NEWLINE || current_ == EOF) {
+	if(current_ == token::NEWLINE || current_ == EOF){
 		return;
 	}
 
@@ -231,22 +231,22 @@ void tokenizer::skip_comment()
 	std::string *dst = nullptr;
 
 	// if this is a #textdomain, point to textdomain_
-	if (current_ == 't')
+	if(current_ == 't')
 	{
-		if (!skip_command("extdomain")) {
+		if(!skip_command("extdomain")){
 			goto not_a_command;
 		}
 		dst = &textdomain_;
 	}
 	// else if this is a #line, determine the line number and then point to file_
-	else if (current_ == 'l')
+	else if(current_ == 'l')
 	{
-		if (!skip_command("ine")) {
+		if(!skip_command("ine")){
 			goto not_a_command;
 		}
 
 		lineno_ = 0;
-		while (is_num(current_)) {
+		while(is_num(current_)){
 			// ie if the line number is 587
 			// (0 * 10) + 5 = 5
 			// (5 * 10) + 8 = 58
@@ -255,7 +255,7 @@ void tokenizer::skip_comment()
 			next_char_skip_cr();
 		}
 
-		if (!is_space(current_)) {
+		if(!is_space(current_)){
 			goto not_a_command;
 		}
 
@@ -266,7 +266,7 @@ void tokenizer::skip_comment()
 	else
 	{
 		not_a_command:
-		while (current_ != token::NEWLINE && current_ != EOF) {
+		while(current_ != token::NEWLINE && current_ != EOF){
 			next_char_skip_cr();
 		}
 		return;
@@ -274,7 +274,7 @@ void tokenizer::skip_comment()
 
 	// clear the current value of either textdomain_ or file_ and populate it with the new value
 	dst->clear();
-	while (current_ != token::NEWLINE && current_ != EOF) {
+	while(current_ != token::NEWLINE && current_ != EOF){
 		*dst += current_;
 		next_char_skip_cr();
 	}

@@ -65,7 +65,7 @@ private:
 		DIR_BACKWARDS
 	};
 
-	void nav_button_callback( NAV_DIRECTION direction);
+	void nav_button_callback(NAV_DIRECTION direction);
 
 	void key_press_callback(const SDL_Keycode key);
 

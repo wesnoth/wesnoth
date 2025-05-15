@@ -26,12 +26,12 @@ public:
 	/*
 	 * Log at start of the turn
 	*/
-	static void log_turn_start( unsigned int side );
+	static void log_turn_start(unsigned int side);
 
 	/*
 	 * Log at end of the turn
 	*/
-	static void log_turn_end( unsigned int side );
+	static void log_turn_end(unsigned int side);
 
 	/*
 	 * Log in case of draw
@@ -42,7 +42,7 @@ public:
 	 * Log in case of victory
 	 * teams vector of winner teams
 	 */
-	static void log_victory( const std::set<unsigned int>& teams );
+	static void log_victory(const std::set<unsigned int>& teams);
 
 	/*
 	 * Log at game start
@@ -56,6 +56,6 @@ public:
 
 protected:
 
-	static void log_turn( const char *msg, unsigned int side );
+	static void log_turn(const char *msg, unsigned int side);
 
 };

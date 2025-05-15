@@ -110,11 +110,11 @@ std::unique_ptr<widget> builder_scrollbar_panel::build() const
 
 	content_grid->set_rows_cols(rows, cols);
 
-	for(unsigned x = 0; x < rows; ++x) {
+	for(unsigned x = 0; x < rows; ++x){
 		content_grid->set_row_grow_factor(x, grid_->row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
+		for(unsigned y = 0; y < cols; ++y){
 
-			if(x == 0) {
+			if(x == 0){
 				content_grid->set_column_grow_factor(y,
 													 grid_->col_grow_factor[y]);
 			}

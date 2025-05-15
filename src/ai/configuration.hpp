@@ -35,11 +35,11 @@ namespace ai {
  * it should be noted that there may be several variables with a same name but
  * different filters. the proposed rules, in general, are:
  * 1) scenario_parameter_in_SIDE_section > scenario_parameter_in_AI_section > default_value
- * then, if (1) is equal:
- * 2) use scenario-creator supplied priority ( 'not set' = 0)
- * then, if (2) is equal:
+ * then, if(1) is equal:
+ * 2) use scenario-creator supplied priority ('not set' = 0)
+ * then, if(2) is equal:
  * 3) more restricted parameter > less restricted parameter
- * then, if (3) is equal:
+ * then, if(3) is equal:
  * use any and loudly complain.
  */
 

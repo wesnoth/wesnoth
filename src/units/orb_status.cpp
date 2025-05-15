@@ -18,7 +18,7 @@
 
 bool orb_status_helper::prefs_show_orb(orb_status os)
 {
-	switch(os) {
+	switch(os){
 	case orb_status::unmoved:
 		return prefs::get().show_unmoved_orb();
 	case orb_status::moved:
@@ -39,7 +39,7 @@ bool orb_status_helper::prefs_show_orb(orb_status os)
 
 std::string orb_status_helper::get_orb_color(orb_status os)
 {
-	switch(os) {
+	switch(os){
 	case orb_status::unmoved:
 		return prefs::get().unmoved_color();
 	case orb_status::moved:

@@ -51,7 +51,7 @@ std::unique_ptr<editor_action> editor_action_item_delete::perform(map_context& /
 	//	item_map::const_item_iterator item_it = items.find(loc_);
 	//
 	//	editor_action_ptr undo;
-	//	if (item_it != items.end()) {
+	//	if(item_it != items.end()){
 	//		undo.reset(new editor_action_item(loc_, *item_it));
 	//		perform_without_undo(mc);
 	//		return undo.release();
@@ -62,7 +62,7 @@ std::unique_ptr<editor_action> editor_action_item_delete::perform(map_context& /
 void editor_action_item_delete::perform_without_undo(map_context& /*mc*/) const
 {
 	//	item_map& items = mc.get_items();
-	//	if (!items.erase(loc_)) {
+	//	if(!items.erase(loc_)){
 	//		ERR_ED << "Could not delete item on " << loc_.x << "/" << loc_.y;
 	//	} else {
 	//		mc.add_changed_location(loc_);
@@ -93,7 +93,7 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 	//	mc.add_changed_location(new_loc_);
 	//
 	//	/* @todo
-	//	  if (mc.map().is_village(new_loc_)) {
+	//	  if(mc.map().is_village(new_loc_)){
 	//		(*(resources::gameboard->teams()))[u.side()].get_village(new_loc_);
 	//	}
 	//	*/
@@ -117,7 +117,7 @@ void editor_action_item_facing::perform_without_undo(map_context& /*mc*/) const
 	//	item_map& items = mc.get_items();
 	//	item_map::item_iterator item_it = items.find(loc_);
 	//
-	//	if (item_it != items.end()) {
+	//	if(item_it != items.end()){
 	//		item_it->set_facing(new_direction_);
 	//		item_it->set_standing();
 	//	}

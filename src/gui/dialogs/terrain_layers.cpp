@@ -55,7 +55,7 @@ void terrain_layers::pre_show()
 	listbox& list = find_widget<listbox>("layer_list");
 
 	int order = 1;
-	for(const terrain_builder::tile::log_details& det : tile_logs_) {
+	for(const terrain_builder::tile::log_details& det : tile_logs_){
 		const terrain_builder::tile::rule_image_rand& ri   = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
@@ -74,7 +74,7 @@ void terrain_layers::pre_show()
 		const point img_size = image::get_size(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
-		if(loc_cut.valid()) {
+		if(loc_cut.valid()){
 			// copied from image.cpp : load_image_sub_file()
 			r = {
 				((tz * 3) / 4) * loc_cut.x
@@ -83,7 +83,7 @@ void terrain_layers::pre_show()
 				, tz
 			};
 
-			if(img.get_center_x() >= 0 && img.get_center_y() >= 0) {
+			if(img.get_center_x() >= 0 && img.get_center_y() >= 0){
 				r.x += img_size.x / 2 - img.get_center_x();
 				r.y += img_size.y / 2 - img.get_center_y();
 			}
@@ -96,7 +96,7 @@ void terrain_layers::pre_show()
 		// TODO: ^ eh? what limitations?
 		rect r2{0, 0, img_size.x, img_size.y};
 		r2.clip(r);
-		if(!r2.empty()) {
+		if(!r2.empty()){
 			image_steam
 				<< "~BLIT(" << name
 					<< "~CROP("

@@ -35,7 +35,7 @@ folder_create::folder_create(std::string& folder_name)
 
 void folder_create::pre_show()
 {
-	if(bookmark_mode_) {
+	if(bookmark_mode_){
 		find_widget<styled_widget>("title").set_label(_("New Bookmark"));
 	}
 }

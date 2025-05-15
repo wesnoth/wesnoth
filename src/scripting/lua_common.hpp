@@ -194,7 +194,7 @@ bool luaW_getglobal(lua_State *L, const std::vector<std::string>& path);
  */
 template<typename... T>
 bool luaW_getglobal(lua_State *L, T... path) {
-	return luaW_getglobal(L, std::vector<std::string> {path...} );
+	return luaW_getglobal(L, std::vector<std::string> {path...});
 }
 
 bool luaW_toboolean(lua_State *L, int n);
@@ -238,14 +238,14 @@ std::ostream& operator<<(std::ostream& os, const luaW_PrintStack&);
 #define deprecate_attrib(name, prefix, level, version, msg) deprecated_message(prefix "." name, DEP_LEVEL::level, version, msg)
 
 #define return_deprecated_attrib(type_macro, name, accessor, prefix, level, version, msg) \
-	type_macro(name, ( \
+	type_macro(name, (\
 		deprecate_attrib(name, prefix, level, version, msg), \
 		accessor \
 	))
 
 #define return_tstring_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		luaW_pushtstring(L, (accessor)); \
 		return 1; \
 	} \
@@ -255,7 +255,7 @@ do { \
 
 #define return_cstring_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_pushstring(L, (accessor)); \
 		return 1; \
 	} \
@@ -265,7 +265,7 @@ do { \
 
 #define return_string_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		const std::string& str = (accessor); \
 		lua_pushlstring(L, str.c_str(), str.length()); \
 		return 1; \
@@ -276,7 +276,7 @@ do { \
 
 #define return_int_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_pushinteger(L, (accessor)); \
 		return 1; \
 	} \
@@ -286,7 +286,7 @@ do { \
 
 #define return_float_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_pushnumber(L, (accessor)); \
 		return 1; \
 	} \
@@ -296,7 +296,7 @@ do { \
 
 #define return_bool_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_pushboolean(L, (accessor)); \
 		return 1; \
 	} \
@@ -306,7 +306,7 @@ do { \
 
 #define return_cfg_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		config cfg; \
 		{accessor;} \
 		luaW_pushconfig(L, cfg); \
@@ -318,7 +318,7 @@ do { \
 
 #define return_cfgref_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		luaW_pushconfig(L, (accessor)); \
 		return 1; \
 	} \
@@ -328,11 +328,11 @@ do { \
 
 #define return_vector_string_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		const std::vector<std::string>& vector = (accessor); \
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
-		for (const std::string& s : vector) { \
+		for(const std::string& s : vector) { \
 			lua_pushlstring(L, s.c_str(), s.length()); \
 			lua_rawseti(L, -2, i); \
 			++i; \
@@ -345,7 +345,7 @@ do { \
 
 #define modify_tstring_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		t_string value = luaW_checktstring(L, 3); \
 		{accessor;} \
 		return 0; \
@@ -356,7 +356,7 @@ do { \
 
 #define modify_string_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		const char *value = luaL_checkstring(L, 3); \
 		{accessor;} \
 		return 0; \
@@ -367,7 +367,7 @@ do { \
 
 #define modify_int_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		{accessor;} \
 		return 0; \
@@ -378,9 +378,9 @@ do { \
 
 #define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		int value = static_cast<int>(luaL_checknumber(L, 3)); \
-		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
+		if(value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
 	} \
@@ -390,7 +390,7 @@ do { \
 
 #define modify_float_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_Number value = luaL_checknumber(L, 3); \
 		{accessor;} \
 		return 0; \
@@ -401,9 +401,9 @@ do { \
 
 #define modify_float_attrib_check_range(name, accessor, allowed_min, allowed_max) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		lua_Number value = luaL_checknumber(L, 3); \
-		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
+		if(value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
 	} \
@@ -413,7 +413,7 @@ do { \
 
 #define modify_bool_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		bool value = luaW_toboolean(L, 3); \
 		{accessor;} \
 		return 0; \
@@ -424,7 +424,7 @@ do { \
 
 #define modify_cfg_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		const config& cfg = luaW_checkconfig(L, 3); \
 		{accessor;} \
 		return 0; \
@@ -435,12 +435,12 @@ do { \
 
 #define modify_vector_string_attrib(name, accessor) \
 do { \
-	if (strcmp(m, (name)) == 0) { \
+	if(strcmp(m, (name)) == 0) { \
 		std::vector<std::string> value; \
 		char const* message = "table with unnamed indices holding strings expected"; \
-		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
+		if(!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
 		unsigned length = lua_rawlen(L, 3); \
-		for (unsigned i = 1; i <= length; ++i) { \
+		for(unsigned i = 1; i <= length; ++i) { \
 			lua_rawgeti(L, 3, i); \
 			char const* string = lua_tostring(L, 4); \
 			if(!string) return luaL_argerror(L, 2 + i, message); \

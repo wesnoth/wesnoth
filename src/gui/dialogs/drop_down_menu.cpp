@@ -43,16 +43,16 @@ drop_down_menu::entry_data::entry_data(const config& cfg)
 	, tooltip(cfg["tooltip"].t_str())
 {
 	// Checkboxes take precedence in column 1
-	if(cfg.has_attribute("checkbox")) {
+	if(cfg.has_attribute("checkbox")){
 		checkbox = cfg["checkbox"].to_bool(false);
 	}
 
 	// Images take precedence in column 2
-	if(cfg.has_attribute("image")) {
+	if(cfg.has_attribute("image")){
 		image = cfg["image"].str();
 	}
 
-	if(cfg.has_attribute("details")) {
+	if(cfg.has_attribute("details")){
 		details = cfg["details"].t_str();
 	}
 }
@@ -68,7 +68,7 @@ namespace
 		 * meaning the currently selected row's button is toggled.
 		 */
 		grid* row_grid = list.get_row_grid(list.get_selected_row());
-		if(toggle_button* checkbox = row_grid->find_widget<toggle_button>("checkbox", false, false)) {
+		if(toggle_button* checkbox = row_grid->find_widget<toggle_button>("checkbox", false, false)){
 			checkbox->set_value_bool(!checkbox->get_value_bool(), true);
 		}
 	}
@@ -106,7 +106,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 {
-	if(!mouse_down_happened_) {
+	if(!mouse_down_happened_){
 		return;
 	}
 
@@ -122,11 +122,11 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 	 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
 	 * vanish.
 	 */
-	if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
+	if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED){
 		return;
 	}
 
-	if(dynamic_cast<toggle_button*>(find_at(coordinate, true)) != nullptr) {
+	if(dynamic_cast<toggle_button*>(find_at(coordinate, true)) != nullptr){
 		return;
 	}
 
@@ -138,13 +138,13 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 	 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
 	 */
 	const int sel = list.get_selected_row();
-	if(sel >= 0) {
+	if(sel >= 0){
 		list.select_row(sel, false);
 	}
 
-	if(!get_rectangle().contains(coordinate)) {
+	if(!get_rectangle().contains(coordinate)){
 		set_retval(retval::CANCEL);
-	} else if(!keep_open_) {
+	} else if(!keep_open_){
 		set_retval(retval::OK);
 	}
 }
@@ -163,7 +163,7 @@ void drop_down_menu::pre_show()
 
 	listbox& list = find_widget<listbox>("list", true);
 
-	for(const auto& entry : items_) {
+	for(const auto& entry : items_){
 		widget_data data;
 		widget_item item;
 
@@ -171,17 +171,17 @@ void drop_down_menu::pre_show()
 		// These widgets can be initialized here since they don't require widget type swapping.
 		//
 		item["use_markup"] = utils::bool_string(use_markup_);
-		if(!entry.checkbox) {
+		if(!entry.checkbox){
 			item["label"] = entry.icon;
 			data.emplace("icon", item);
 		}
 
-		if(!entry.image) {
+		if(!entry.image){
 			item["label"] = entry.label;
 			data.emplace("label", item);
 		}
 
-		if(entry.details) {
+		if(entry.details){
 			item["label"] = *entry.details;
 			data.emplace("details", item);
 		}
@@ -192,21 +192,21 @@ void drop_down_menu::pre_show()
 		// Set the tooltip on the whole panel
 		new_row.find_widget<toggle_panel>("panel").set_tooltip(entry.tooltip);
 
-		if(entry.checkbox) {
+		if(entry.checkbox){
 			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 
 			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
-			if(parent_) {
+			if(parent_){
 				connect_signal_notify_modified(
-					*checkbox, [this](auto&&...) { parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
+					*checkbox, [this](auto&&...){ parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
 			}
 
 			mi_grid.swap_child("icon", std::move(checkbox), false);
 		}
 
-		if(entry.image) {
+		if(entry.image){
 			auto img = build_single_widget_instance<image>();
 			img->set_label(*entry.image);
 
@@ -214,7 +214,7 @@ void drop_down_menu::pre_show()
 		}
 	}
 
-	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
+	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()){
 		list.select_row(selected_item_);
 	}
 
@@ -243,9 +243,9 @@ void drop_down_menu::post_show()
 {
 	const listbox& list = find_widget<listbox>("list", true);
 	selected_item_ = list.get_selected_row();
-	if(selected_item_ != -1) {
+	if(selected_item_ != -1){
 		const grid* row_grid = list.get_row_grid(selected_item_);
-		if(row_grid) {
+		if(row_grid){
 			selected_item_pos_.x = row_grid->get_x();
 			selected_item_pos_.y = row_grid->get_y();
 		}
@@ -260,10 +260,10 @@ boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 
 	boost::dynamic_bitset<> states;
 
-	for(unsigned i = 0; i < list.get_item_count(); ++i) {
+	for(unsigned i = 0; i < list.get_item_count(); ++i){
 		const grid* row_grid = list.get_row_grid(i);
 
-		if(const toggle_button* checkbox = row_grid->find_widget<const toggle_button>("checkbox", false, false)) {
+		if(const toggle_button* checkbox = row_grid->find_widget<const toggle_button>("checkbox", false, false)){
 			states.push_back(checkbox->get_value_bool());
 		} else {
 			states.push_back(false);

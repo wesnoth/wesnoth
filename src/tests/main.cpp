@@ -66,15 +66,15 @@ struct wesnoth_global_fixture {
 		using namespace std::literals;
 		events::set_main_thread();
 		boost::filesystem::path file("boost_test_result.xml");
-		for(int i = 1; i < framework::master_test_suite().argc; i++) {
-			if(framework::master_test_suite().argv[i - 1] == "--output_file"s) {
+		for(int i = 1; i < framework::master_test_suite().argc; i++){
+			if(framework::master_test_suite().argv[i - 1] == "--output_file"s){
 				file = framework::master_test_suite().argv[i];
 				break;
 			}
 		}
 
 		reporter.open(file.string());
-		assert( reporter.is_open() );
+		assert(reporter.is_open());
 
 		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());

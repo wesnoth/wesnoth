@@ -32,8 +32,8 @@ public:
 	template<typename F>
 	void for_each_loc(const F& f) const
 	{
-		for (int x = 0; x < total_width(); ++x) {
-			for (int y = 0; y < total_height(); ++y) {
+		for(int x = 0; x < total_width(); ++x) {
+			for(int y = 0; y < total_height(); ++y) {
 				f({ x, y , wml_loc()});
 			}
 		}

@@ -64,7 +64,7 @@ static std::string get_probability_string(const double prob)
 {
 	std::ostringstream ss;
 
-	if(prob > 0.9995) {
+	if(prob > 0.9995){
 		ss << "100%";
 	} else {
 		ss << std::fixed << std::setprecision(1) << 100.0 * prob << '%';
@@ -78,18 +78,18 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
 
-	const auto get_prefixed_widget_id = [&widget_id_prefix](const std::string& id) {
+	const auto get_prefixed_widget_id = [&widget_id_prefix](const std::string& id){
 		return (formatter() << widget_id_prefix << "_" << id).str();
 	};
 
 	// Helpers for setting or hiding labels
-	const auto set_label_helper = [&, this](const std::string& id, const std::string& value) {
+	const auto set_label_helper = [&, this](const std::string& id, const std::string& value){
 		// MSVC does not compile without this-> (26-09-2024)
 		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
 		lbl.set_label(value);
 	};
 
-	const auto hide_label_helper = [&, this](const std::string& id) {
+	const auto hide_label_helper = [&, this](const std::string& id){
 		// MSVC does not compile without this-> (26-09-2024)
 		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
 		lbl.set_visible(widget::visibility::invisible);
@@ -117,7 +117,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	// Weapon detail fields (only shown if a weapon is present)
 	//
 
-	if(!attacker.stats_.weapon) {
+	if(!attacker.stats_.weapon){
 		set_label_helper("base_damage", _("No usable weapon"));
 
 		// FIXME: would rather have a list somewhere that I can loop over instead of hardcoding...
@@ -135,7 +135,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
 	utils::optional<decltype(ctx)> opp_ctx;
 
-	if(opp_weapon) {
+	if(opp_weapon){
 		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
 	}
 
@@ -145,11 +145,11 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 
 	// Get the SET damage modifier, if any.
 	auto set_dmg_effect = std::find_if(dmg_effect.begin(), dmg_effect.end(),
-		[](const unit_abilities::individual_effect& e) { return e.type == unit_abilities::SET; }
+		[](const unit_abilities::individual_effect& e){ return e.type == unit_abilities::SET; }
 	);
 
 	// Either user the SET modifier or the base weapon damage.
-	if(set_dmg_effect == dmg_effect.end()) {
+	if(set_dmg_effect == dmg_effect.end()){
 		ss << weapon->damage() << " (" << markup::italic(weapon->name()) << ")";
 	} else {
 		assert(set_dmg_effect->ability);
@@ -157,11 +157,11 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	}
 
 	// Process the ADD damage modifiers.
-	for(const auto& e : dmg_effect) {
-		if(e.type == unit_abilities::ADD) {
+	for(const auto& e : dmg_effect){
+		if(e.type == unit_abilities::ADD){
 			ss << "\n";
 
-			if(e.value >= 0) {
+			if(e.value >= 0){
 				ss << '+';
 			}
 
@@ -171,14 +171,14 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	}
 
 	// Process the MUL damage modifiers.
-	for(const auto& e : dmg_effect) {
-		if(e.type == unit_abilities::MUL) {
+	for(const auto& e : dmg_effect){
+		if(e.type == unit_abilities::MUL){
 			ss << "\n";
 			ss << font::unicode_multiplication_sign << (e.value / 100);
 
-			if(e.value % 100) {
+			if(e.value % 100){
 				ss << "." << ((e.value % 100) / 10);
-				if(e.value % 10) {
+				if(e.value % 10){
 					ss << (e.value % 10);
 				}
 			}
@@ -193,15 +193,15 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 
 	// Resistance modifier.
 	const int resistance_modifier = defender.unit_->damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_->get_location(), opp_weapon);
-	if(resistance_modifier != 100) {
-		if(attacker.stats_.is_attacker) {
-			if(resistance_modifier < 100) {
+	if(resistance_modifier != 100){
+		if(attacker.stats_.is_attacker){
+			if(resistance_modifier < 100){
 				ss << _("Defender resistance vs") << " ";
 			} else {
 				ss << _("Defender vulnerability vs") << " ";
 			}
 		} else {
-			if(resistance_modifier < 100) {
+			if(resistance_modifier < 100){
 				ss << _("Attacker resistance vs") << " ";
 			} else {
 				ss << _("Attacker vulnerability vs") << " ";
@@ -229,7 +229,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
 		u.get_location(), alignment, u.is_fearless());
 
-	if(tod_modifier != 0) {
+	if(tod_modifier != 0){
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));
 	} else {
 		hide_label_helper("tod_modifier");
@@ -237,17 +237,17 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 
 	// Leadership bonus.
 	// defender unit won't move before attack so just do calculation here
-	if (leadership_bonus == 0){
+	if(leadership_bonus == 0){
 		leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
 	}
-	if(leadership_bonus != 0) {
+	if(leadership_bonus != 0){
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
 	} else {
 		hide_label_helper("leadership_modifier");
 	}
 
 	// Slowed penalty.
-	if(attacker.stats_.is_slowed) {
+	if(attacker.stats_.is_slowed){
 		set_label_helper("slowed_modifier", "/ 2");
 	} else {
 		hide_label_helper("slowed_modifier");
@@ -257,9 +257,9 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	const int base_damage = weapon->damage();
 
 	color_t dmg_color = font::weapon_color;
-	if(attacker.stats_.damage > base_damage) {
+	if(attacker.stats_.damage > base_damage){
 		dmg_color = font::good_dmg_color;
-	} else if(attacker.stats_.damage < base_damage) {
+	} else if(attacker.stats_.damage < base_damage){
 		dmg_color = font::bad_dmg_color;
 	}
 
@@ -303,7 +303,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	int i = 0;
 
 	// Draw the rows (lower HP values are at the bottom).
-	for(const auto& probability : get_hitpoint_probabilities(attacker.combatant_.hp_dist)) {
+	for(const auto& probability : get_hitpoint_probabilities(attacker.combatant_.hp_dist)){
 
 		// Get the HP and probability.
 		auto [hp, prob] = probability;
@@ -311,14 +311,14 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 		color_t row_color;
 
 		// Death line is red.
-		if(hp == 0) {
+		if(hp == 0){
 			row_color = {229, 0, 0};
 		}
 
 		// Below current hitpoints value is orange.
-		else if(hp < static_cast<int>(attacker.stats_.hp)) {
+		else if(hp < static_cast<int>(attacker.stats_.hp)){
 			// Stone is grey.
-			if(defender.stats_.petrifies) {
+			if(defender.stats_.petrifies){
 				row_color = {154, 154, 154};
 			} else {
 				row_color = {244, 201, 0};
@@ -382,17 +382,17 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	hp_probability_vector res, temp_vec;
 
 	// First, extract any relevant probability values
-	for(int i = 0; i < static_cast<int>(hp_dist.size()); ++i) {
+	for(int i = 0; i < static_cast<int>(hp_dist.size()); ++i){
 		const double prob = hp_dist[i];
 
 		// We keep only values above 0.1%.
-		if(prob > 0.001) {
+		if(prob > 0.001){
 			temp_vec.emplace_back(i, prob);
 		}
 	}
 
 	// Then sort by descending probability.
-	std::sort(temp_vec.begin(), temp_vec.end(), [](const auto& pair1, const auto& pair2) {
+	std::sort(temp_vec.begin(), temp_vec.end(), [](const auto& pair1, const auto& pair2){
 		return pair1.second > pair2.second;
 	});
 
@@ -400,7 +400,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	std::copy_n(temp_vec.begin(), std::min<int>(graph_max_rows, temp_vec.size()), std::back_inserter(res));
 
 	// Then, we sort the hitpoint values in descending order.
-	std::sort(res.begin(), res.end(), [](const auto& pair1, const auto& pair2) {
+	std::sort(res.begin(), res.end(), [](const auto& pair1, const auto& pair2){
 		return pair1.first > pair2.first;
 	});
 

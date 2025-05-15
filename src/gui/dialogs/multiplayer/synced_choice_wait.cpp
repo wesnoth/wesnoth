@@ -52,7 +52,7 @@ void synched_choice_wait::pre_show()
 		std::bind(&quit_confirmation::quit_to_title));
 
 	message_->set_label(mgr_.wait_message());
-	if(mgr_.finished() || !mgr_.waiting()) {
+	if(mgr_.finished() || !mgr_.waiting()){
 		close();
 	}
 }
@@ -62,7 +62,7 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 	assert(event_name == "user_choice_update");
 	assert(message_);
 	message_->set_label(mgr_.wait_message());
-	if(mgr_.finished() || !mgr_.waiting()) {
+	if(mgr_.finished() || !mgr_.waiting()){
 		close();
 	}
 }

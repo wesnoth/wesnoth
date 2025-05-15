@@ -140,7 +140,7 @@ typedef struct {
 	lua_function func;
 } Reg;
 
-void register_metatable ( lua_State* L );
+void register_metatable (lua_State* L);
 
 /**
  * Pushes a std::function wrapper object onto the stack. It does
@@ -149,7 +149,7 @@ void register_metatable ( lua_State* L );
  * NOTE: This object has type userdata, not function. Its metatable has a call operator.
  * If this is not sufficient for your needs then use push_closure.
  */
-void push_function( lua_State* L, const lua_function & f );
+void push_function(lua_State* L, const lua_function & f);
 
 /**
  * Analogous to lua_setfuncs, it registers a collection of function wrapper
@@ -157,7 +157,7 @@ void push_function( lua_State* L, const lua_function & f );
  *
  * The note above applies.
  */
-void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions);
+void set_functions(lua_State* L, const std::vector<lua_cpp::Reg>& functions);
 
 /**
  * Analogous to lua_setfuncs, it registers a collection of function wrapper
@@ -166,7 +166,7 @@ void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions);
  * The note above applies.
  */
 template<int N>
-void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N])
+void set_functions(lua_State* L, const lua_cpp::Reg(& functions)[N])
 {
 	std::vector<lua_cpp::Reg> l;
 	l.reserve(N);
@@ -184,7 +184,7 @@ void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N])
  * Note that unlike push_function above this results in a function and not userdata
  * being pushed on the stack.
  */
-void push_closure( lua_State* L, const lua_function & f, int nup);
+void push_closure(lua_State* L, const lua_function & f, int nup);
 
 /**
  * Analogous to lua_setfuncs and set_functions above, but pushes closures.
@@ -192,7 +192,7 @@ void push_closure( lua_State* L, const lua_function & f, int nup);
  * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
  * the latter produces userdata and the former doesn't.
  */
-void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup);
+void set_functions(lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup);
 
 /**
  * Analogous to lua_setfuncs and set_functions above, but pushes closures.
@@ -201,7 +201,7 @@ void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, in
  * the latter produces userdata and the former doesn't.
  */
 template<int N>
-void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N], int nup)
+void set_functions(lua_State* L, const lua_cpp::Reg(& functions)[N], int nup)
 {
 	std::vector<lua_cpp::Reg> l;
 	l.reserve(N);

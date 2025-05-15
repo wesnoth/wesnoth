@@ -45,17 +45,17 @@ bool stage_side_formulas::do_play_stage()
 {
 	wfl::map_formula_callable callable(fai_.fake_ptr());
 	try {
-		if (move_formula_) {
-			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }
+		if(move_formula_){
+			while(!fai_.make_action(move_formula_,callable).is_empty()){ }
 		} else {
 			WRN_AI << "Side formula skipped, maybe it's empty or incorrect";
 		}
 	}
-	catch(wfl::formula_error& e) {
-		if(e.filename == "formula") {
+	catch(wfl::formula_error& e){
+		if(e.filename == "formula"){
 			e.line = 0;
 		}
-		fai_.handle_exception( e, "Formula error");
+		fai_.handle_exception(e, "Formula error");
 	}
 	return false;
 }

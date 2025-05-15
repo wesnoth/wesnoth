@@ -56,7 +56,7 @@ inline std::string config_to_string(const config& cfg)
 inline std::string config_to_string(const config& cfg, const std::string& only_children)
 {
 	config filtered;
-	for(const config& child : cfg.child_range(only_children)) {
+	for(const config& child : cfg.child_range(only_children)){
 		filtered.add_child(only_children, child);
 	}
 	return config_to_string(filtered);
@@ -79,7 +79,7 @@ public:
 
 	std::string get_data_paged(int which_page)
 	{
-		if(std::size_t(which_page) >= pages.size()) {
+		if(std::size_t(which_page) >= pages.size()){
 			return "";
 		}
 		return data.substr(pages[which_page].first, pages[which_page].second);
@@ -107,12 +107,12 @@ private:
 	{
 		pages.clear();
 		std::size_t start = 0;
-		while(start + page_characters < data.size()) {
+		while(start + page_characters < data.size()){
 			// This could search into data that's already on a previous page, which is why the result
 			// is then checked for end < start.
 			std::size_t end = data.find_last_of('\n', start + page_characters);
 			int len;
-			if(end == std::string::npos || end < start) {
+			if(end == std::string::npos || end < start){
 				len = page_characters;
 			} else {
 				len = end - start + 1;
@@ -120,7 +120,7 @@ private:
 			pages.emplace_back(start, len);
 			start += len;
 		}
-		if(start < data.size()) {
+		if(start < data.size()){
 			pages.emplace_back(start, data.size() - start);
 		}
 	}
@@ -179,7 +179,7 @@ public:
 		int n_pages = m.count_pages();
 		current_page_ = std::min(n_pages - 1, std::max(0, current_page_));
 		inspect_->set_label(m.get_data_paged(current_page_));
-		if(n_pages > 1) {
+		if(n_pages > 1){
 			std::ostringstream out;
 			out << current_page_ + 1 << '/' << n_pages;
 			pages_->set_label(out.str());
@@ -313,9 +313,9 @@ public:
 		// We recursively fold, but non-recursively unfold.
 		// This is because only one node on a level should be open at any given time.
 		// Furthermore, there's no need to remember that a subnode was open once the parent is closed.
-		if(!selected->is_root_node()) {
-			for(auto& node : selected->parent_node().children()) {
-				if(node.get() != selected) {
+		if(!selected->is_root_node()){
+			for(auto& node : selected->parent_node().children()){
+				if(node.get() != selected){
 					node->fold(true);
 				}
 			}
@@ -352,8 +352,8 @@ public:
 	template<typename T>
 	std::shared_ptr<T> get_controller()
 	{
-		for(auto& c : controllers) {
-			if(std::shared_ptr<T> p = std::dynamic_pointer_cast<T>(c)) {
+		for(auto& c : controllers){
+			if(std::shared_ptr<T> p = std::dynamic_pointer_cast<T>(c)){
 				return p;
 			}
 		}
@@ -437,11 +437,11 @@ public:
 				.add(),
 			&unit_mode_controller::show_list);
 		int sides = dc_.teams().size();
-		for(int side = 1; side <= sides; side++) {
+		for(int side = 1; side <= sides; side++){
 			std::ostringstream label;
 			label << "team " << side;
 			const std::string& name = dc_.get_team(side).user_team_name();
-			if(!name.empty()) {
+			if(!name.empty()){
 				label << " (" << name << ")";
 			}
 			set_node_callback(
@@ -467,11 +467,11 @@ private:
 	const display_context& dc_;
 };
 
-gamestate_inspector::model& single_mode_controller::model() {
+gamestate_inspector::model& single_mode_controller::model(){
 	return c.model_;
 }
 
-gamestate_inspector::view& single_mode_controller::view() {
+gamestate_inspector::view& single_mode_controller::view(){
 	return c.view_;
 }
 
@@ -497,7 +497,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 {
 	model().clear_data();
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -529,7 +529,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 void variable_mode_controller::show_var(tree_view_node& node)
 {
 	widget* w = node.find("name", false);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		model().set_data(vars()[lbl->get_label().str()]);
 	}
 }
@@ -537,7 +537,7 @@ void variable_mode_controller::show_var(tree_view_node& node)
 void variable_mode_controller::show_array(tree_view_node& node)
 {
 	widget* w = node.find("name", false);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		const std::string& var = lbl->get_label();
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
@@ -550,7 +550,7 @@ void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 {
 	model().clear_data();
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -563,7 +563,7 @@ void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 			.stuff_list_entry(&node, named_event ? "named_event" : "basic")
 			.widget("name", name);
 
-		if(named_event) {
+		if(named_event){
 			std::ostringstream out;
 			out << "id=\"" << cfg["id"] << '"';
 			progress.widget("id", out.str());
@@ -593,7 +593,7 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	s << markup::span_color(team_color, "side=", u.side());
 	progress.widget("side", s.str(), true);
 
-	if(u.can_recruit()) {
+	if(u.can_recruit()){
 		progress.widget("leader", markup::span_color("yellow", "LEADER "), true);
 	}
 
@@ -624,11 +624,11 @@ void unit_mode_controller::show_list(tree_view_node& node)
 {
 	model().clear_data();
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
-	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end(); ++i) {
+	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end(); ++i){
 		auto progress = view().stuff_list_entry(&node, "unit");
 		add_unit_entry(progress, *i, dc());
 		c.set_node_callback(progress.add(), &unit_mode_controller::show_unit);
@@ -644,7 +644,7 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 	u->write(c_unit);
 	model().set_data(config_to_string(c_unit));
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -679,7 +679,7 @@ void unit_mode_controller::show_var(tree_view_node& node)
 	int i = node.describe_path().back();
 	unit_map::const_iterator u = dc().units().begin();
 	std::advance(u, i);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		model().set_data(u->variables()[lbl->get_label().str()]);
 	}
 }
@@ -690,7 +690,7 @@ void unit_mode_controller::show_array(tree_view_node& node)
 	int i = node.describe_path().back();
 	unit_map::const_iterator u = dc().units().begin();
 	std::advance(u, i);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		const std::string& var = lbl->get_label();
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
@@ -705,7 +705,7 @@ void team_mode_controller::show_list(tree_view_node& node, int side)
 	cfg.clear_children("ai");
 	model().set_data(config_to_string(cfg));
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -739,7 +739,7 @@ void team_mode_controller::show_ai(tree_view_node& node, int side)
 {
 	model().set_data(ai::manager::get_singleton().get_active_ai_overview_for_side(side));
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -778,7 +778,7 @@ void team_mode_controller::show_ai(tree_view_node& node, int side)
 void team_mode_controller::show_ai_components(tree_view_node& node, int side)
 {
 	widget* w = node.find("name", false);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		std::string tag = lbl->get_label();
 		tag.pop_back();
 		model().set_data(config_to_string(ai::manager::get_singleton().to_config(side), tag));
@@ -789,11 +789,11 @@ void team_mode_controller::show_recall(tree_view_node& node, int side)
 {
 	model().clear_data();
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
-	for(const unit_ptr& u : dc().get_team(side).recall_list()) {
+	for(const unit_ptr& u : dc().get_team(side).recall_list()){
 		auto progress = view().stuff_list_entry(&node, "unit");
 		add_unit_entry(progress, *u, dc());
 		c.set_node_callback(progress.add(), &team_mode_controller::show_recall_unit, side);
@@ -819,12 +819,12 @@ void team_mode_controller::show_units(tree_view_node&, int side)
 {
 	std::ostringstream s;
 	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end();
-		++i) {
-		if(i->side() != side) {
+		++i){
+		if(i->side() != side){
 			continue;
 		}
 		s << '(' << i->get_location() << ") ";
-		if(i->can_recruit()) {
+		if(i->can_recruit()){
 			s << "LEADER ";
 		}
 
@@ -845,7 +845,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 {
 	model().clear_data();
 
-	if(node.count_children() > 0) {
+	if(node.count_children() > 0){
 		return;
 	}
 
@@ -882,7 +882,7 @@ void team_mode_controller::show_var(tree_view_node& node, int side)
 {
 	widget* w = node.find("name", false);
 	const team& t = dc().get_team(side);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		model().set_data(t.variables()[lbl->get_label().str()]);
 	}
 }
@@ -891,7 +891,7 @@ void team_mode_controller::show_array(tree_view_node& node, int side)
 {
 	widget* w = node.find("name", false);
 	const team& t = dc().get_team(side);
-	if(label* lbl = dynamic_cast<label*>(w)) {
+	if(label* lbl = dynamic_cast<label*>(w)){
 		const std::string& var = lbl->get_label();
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
@@ -917,7 +917,7 @@ void gamestate_inspector::pre_show()
 	view_.reset(new view(*this));
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
-	if(!title_.empty()) {
+	if(!title_.empty()){
 		find_widget<styled_widget>("inspector_name").set_label(title_);
 	}
 	controller_->bind(*this);

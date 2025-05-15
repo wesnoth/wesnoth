@@ -30,7 +30,7 @@ static lg::log_domain log_ai_engine("ai/engine");
 #define LOG_AI_ENGINE LOG_STREAM(info, log_ai_engine)
 #define ERR_AI_ENGINE LOG_STREAM(err, log_ai_engine)
 
-engine::engine( readonly_context &context, const config &cfg )
+engine::engine(readonly_context &context, const config &cfg)
 	: ai_(context)
 	, ai_context_(nullptr)
 	, engine_(cfg["engine"])
@@ -49,69 +49,69 @@ bool engine::is_ok() const
 	return true;
 }
 
-void engine::parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr >> b )
+void engine::parse_aspect_from_config(readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr >> b)
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
-	if (eng){
+	if(eng){
 		//do not override that method in subclasses which cannot create aspects
 		eng->do_parse_aspect_from_config(cfg, id, b);
 	}
 }
 
-void engine::parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b )
+void engine::parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b)
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
-	if (eng){
+	if(eng){
 		//do not override that method in subclasses which cannot create candidate actions
 		eng->do_parse_candidate_action_from_config(context, cfg, b);
 	}
 }
 
-void engine::parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b )
+void engine::parse_engine_from_config(readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b)
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
-	if (eng){
+	if(eng){
 		//do not override that method in subclasses which cannot create engines
 		eng->do_parse_engine_from_config(cfg, b);
 	}
 }
 
-void engine::parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b )
+void engine::parse_goal_from_config(readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b)
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
-	if (eng){
+	if(eng){
 		//do not override that method in subclasses which cannot create goals
 		eng->do_parse_goal_from_config(cfg, b);
 	}
 }
 
-void engine::parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b )
+void engine::parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b)
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
-	if (eng){
+	if(eng){
 		//do not override that method in subclasses which cannot create stages
 		eng->do_parse_stage_from_config(context, cfg, b);
 	}
 }
 
-void engine::do_parse_aspect_from_config( const config &/*cfg*/, const std::string &/*id*/, std::back_insert_iterator< std::vector<aspect_ptr>> /*b*/ )
+void engine::do_parse_aspect_from_config(const config &/*cfg*/, const std::string &/*id*/, std::back_insert_iterator< std::vector<aspect_ptr>> /*b*/)
 {
 
 }
 
-void engine::do_parse_candidate_action_from_config( rca_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< candidate_action_ptr >> /*b*/ ){
+void engine::do_parse_candidate_action_from_config(rca_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< candidate_action_ptr >> /*b*/){
 
 }
 
-void engine::do_parse_engine_from_config( const config &/*cfg*/, std::back_insert_iterator<std::vector< engine_ptr >> /*b*/ ){
+void engine::do_parse_engine_from_config(const config &/*cfg*/, std::back_insert_iterator<std::vector< engine_ptr >> /*b*/){
 
 }
 
-void engine::do_parse_goal_from_config( const config &/*cfg*/, std::back_insert_iterator<std::vector< goal_ptr >> /*b*/ ){
+void engine::do_parse_goal_from_config(const config &/*cfg*/, std::back_insert_iterator<std::vector< goal_ptr >> /*b*/){
 
 }
 
-void engine::do_parse_stage_from_config( ai_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr >> /*b*/ )
+void engine::do_parse_stage_from_config(ai_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr >> /*b*/)
 {
 
 }
@@ -147,7 +147,7 @@ readonly_context& engine::get_readonly_context()
 // This is defined in the source file so that it can easily access the logger
 bool engine_factory::is_duplicate(const std::string& name)
 {
-	if (get_list().find(name) != get_list().end()) {
+	if(get_list().find(name) != get_list().end()){
 		ERR_AI_ENGINE << "Error: Attempt to double-register engine " << name;
 		return true;
 	}

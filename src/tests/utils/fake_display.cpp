@@ -54,7 +54,7 @@ fake_display_manager* fake_display_manager::manager_ = nullptr;
 
 fake_display_manager* fake_display_manager::get_manager()
 {
-	if(!manager_) {
+	if(!manager_){
 		manager_ = new fake_display_manager();
 	}
 
@@ -80,7 +80,7 @@ game_display& get_fake_display(const int width, const int height)
 {
 	game_display& display = fake_display_manager::get_manager()->get_display();
 
-	if(width >= 0 && height >= 0) {
+	if(width >= 0 && height >= 0){
 		video::set_resolution({width, height});
 	}
 

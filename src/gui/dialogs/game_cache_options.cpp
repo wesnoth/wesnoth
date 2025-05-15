@@ -84,20 +84,20 @@ void game_cache_options::post_show()
 
 void game_cache_options::update_cache_size_display()
 {
-	if(!size_label_) {
+	if(!size_label_){
 		return;
 	}
 
 	const cursor::setter cs(cursor::WAIT);
 	const int size = filesystem::dir_size(cache_path_);
 
-	if(size < 0) {
+	if(size < 0){
 		size_label_->set_label(_("dir_size^Unknown"));
 	} else {
 		size_label_->set_label(utils::si_string(size, true, _("unit_byte^B")));
 	}
 
-	if(size == 0) {
+	if(size == 0){
 		clean_button_->set_active(false);
 		purge_button_->set_active(false);
 	}
@@ -115,7 +115,7 @@ void game_cache_options::browse_cache_callback()
 
 void game_cache_options::clean_cache_callback()
 {
-	if(clean_cache()) {
+	if(clean_cache()){
 		show_message(
 					 _("Cache Cleaned"),
 					 _("The game data cache has been cleaned."));
@@ -134,7 +134,7 @@ bool game_cache_options::clean_cache()
 
 void game_cache_options::purge_cache_callback()
 {
-	if(purge_cache()) {
+	if(purge_cache()){
 		show_message(
 					 _("Cache Purged"),
 					 _("The game data cache has been purged."));

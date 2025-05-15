@@ -63,7 +63,7 @@ button::button(const implementation::builder_button& builder)
 
 void button::set_active(const bool active)
 {
-	if(get_active() != active) {
+	if(get_active() != active){
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
@@ -80,15 +80,15 @@ unsigned button::get_state() const
 
 void button::set_state(const state_t state)
 {
-	if(state != state_) {
+	if(state != state_){
 		state_ = state;
 		queue_redraw();
 	}
 }
 
-void button::set_success(bool success) {
+void button::set_success(bool success){
 	success_ = success;
-	if (success) {
+	if(success){
 		set_state(SUCCESS);
 	}
 }
@@ -107,7 +107,7 @@ void button::signal_handler_mouse_leave(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	if (success_) {
+	if(success_){
 		set_state(SUCCESS);
 	} else {
 		set_state(ENABLED);
@@ -121,7 +121,7 @@ void button::signal_handler_left_button_down(const event::ui_event event,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
-	if(window) {
+	if(window){
 		window->mouse_capture();
 	}
 
@@ -146,9 +146,9 @@ void button::signal_handler_left_button_click(const event::ui_event event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	if(retval_ != retval::NONE) {
+	if(retval_ != retval::NONE){
 		window* window = get_window();
-		if(window) {
+		if(window){
 			window->set_retval(retval_);
 			return;
 		}
@@ -176,7 +176,7 @@ button_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("button_definition][resolution", "state_pressed")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("button_definition][resolution", "state_focused")));
 	// state_success is optional, so error message not needed.
-	if (cfg.optional_child("state_success")) {
+	if(cfg.optional_child("state_success")){
 		state.emplace_back(cfg.mandatory_child("state_success"));
 	}
 

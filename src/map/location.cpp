@@ -33,14 +33,14 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-std::ostream& operator<<(std::ostream& s, const map_location& l) {
+std::ostream& operator<<(std::ostream& s, const map_location& l){
 	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;
 }
 
-std::ostream& operator<<(std::ostream& s, const std::vector<map_location>& v) {
+std::ostream& operator<<(std::ostream& s, const std::vector<map_location>& v){
 	std::vector<map_location>::const_iterator i = v.begin();
-	for(; i!= v.end(); ++i) {
+	for(; i!= v.end(); ++i){
 		s << "(" << *i << ") ";
 	}
 	return s;
@@ -72,13 +72,13 @@ auto map_location::all_directions() -> std::vector<direction>
 
 std::size_t hash_value(const map_location& a){
 	std::hash<std::size_t> h;
-	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
+	return h((static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y));
 }
 
 
 map_location::direction map_location::parse_direction(const std::string& str)
 {
-	if(str.empty()) {
+	if(str.empty()){
 		return direction::indeterminate;
 	}
 
@@ -88,7 +88,7 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	// Parentheses can be used for grouping or to apply an operator more than once
 
 	const std::size_t open = str.find_first_of('('), close = str.find_last_of(')');
-	if (open != std::string::npos && close != std::string::npos) {
+	if(open != std::string::npos && close != std::string::npos){
 		std::string sub = str.substr(open + 1, close - open - 1);
 		map_location::direction dir = parse_direction(sub);
 		sub = str;
@@ -101,31 +101,31 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	const std::string& main_dir = str.substr(start, end - start);
 	map_location::direction dir;
 
-	if (main_dir == "n") {
+	if(main_dir == "n"){
 		dir = direction::north;
-	} else if (main_dir == "ne") {
+	} else if(main_dir == "ne"){
 		dir = direction::north_east;
-	} else if (main_dir == "se") {
+	} else if(main_dir == "se"){
 		dir = direction::south_east;
-	} else if (main_dir == "s") {
+	} else if(main_dir == "s"){
 		dir = direction::south;
-	} else if (main_dir == "sw") {
+	} else if(main_dir == "sw"){
 		dir = direction::south_west;
-	} else if (main_dir == "nw") {
+	} else if(main_dir == "nw"){
 		dir = direction::north_west;
 	} else {
 		return direction::indeterminate;
 	}
 
-	if (start == 1) {
+	if(start == 1){
 		dir = get_opposite_direction(dir);
 	}
 
-	if (end != std::string::npos) {
+	if(end != std::string::npos){
 		const std::string rel_dir = str.substr(end + 1);
-		if (rel_dir == "cw") {
+		if(rel_dir == "cw"){
 			dir = rotate_direction(dir, 1);
-		} else if (rel_dir == "ccw") {
+		} else if(rel_dir == "ccw"){
 			dir = rotate_direction(dir, -1);
 		} else {
 			return direction::indeterminate;
@@ -141,10 +141,10 @@ std::vector<map_location::direction> map_location::parse_directions(const std::s
 	std::vector<map_location::direction> to_return;
 	std::vector<std::string> dir_strs = utils::split(str);
 	std::vector<std::string>::const_iterator i, i_end=dir_strs.end();
-	for(i = dir_strs.begin(); i != i_end; ++i) {
+	for(i = dir_strs.begin(); i != i_end; ++i){
 		temp = map_location::parse_direction(*i);
 		// Filter out any invalid directions
-		if(temp != direction::indeterminate) {
+		if(temp != direction::indeterminate){
 			to_return.push_back(temp);
 		}
 	}
@@ -153,7 +153,7 @@ std::vector<map_location::direction> map_location::parse_directions(const std::s
 
 std::string map_location::write_direction(map_location::direction dir)
 {
-	switch(dir) {
+	switch(dir){
 		case direction::north:
 			return std::string("n");
 		case direction::north_east:
@@ -174,7 +174,7 @@ std::string map_location::write_direction(map_location::direction dir)
 
 std::string map_location::write_translated_direction(map_location::direction dir)
 {
-	switch(dir) {
+	switch(dir){
 		case direction::north:
 			return _("North");
 		case direction::north_east:
@@ -198,25 +198,25 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 		y(-1000)
 {
 	std::string xs = cfg["x"], ys = cfg["y"];
-	if (variables)
+	if(variables)
 	{
-		xs = utils::interpolate_variables_into_string( xs, *variables);
-		ys = utils::interpolate_variables_into_string( ys, *variables);
+		xs = utils::interpolate_variables_into_string(xs, *variables);
+		ys = utils::interpolate_variables_into_string(ys, *variables);
 	}
 	// The co-ordinates in config files will be 1-based,
 	// while we want them as 0-based.
-	if(xs.empty() == false && xs != "recall") {
+	if(xs.empty() == false && xs != "recall"){
 		try {
 			x = std::stoi(xs) - 1;
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument&){
 			ERR_CF << "Invalid map coordinate: " << xs;
 		}
 	}
 
-	if(ys.empty() == false && ys != "recall") {\
+	if(ys.empty() == false && ys != "recall"){\
 		try {
 			y = std::stoi(ys) - 1;
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument&){
 			ERR_CF << "Invalid map coordinate: " << ys;
 		}
 	}
@@ -228,7 +228,7 @@ void map_location::write(config& cfg) const
 	cfg["y"] = y + 1;
 }
 
-static bool is_vertically_higher_than (const map_location& m1, const map_location& m2) {
+static bool is_vertically_higher_than (const map_location& m1, const map_location& m2){
 	return (is_odd(m1.wml_x()) && is_even(m2.wml_x())) ? (m1.wml_y() <= m2.wml_y()) : (m1.wml_y() < m2.wml_y());
 }
 
@@ -239,58 +239,58 @@ map_location::direction map_location::get_relative_dir(const map_location& loc) 
 
 map_location::direction map_location::get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE opt) const
 {
-	if (opt == map_location::DEFAULT) {
+	if(opt == map_location::DEFAULT){
 		map_location::direction dir = direction::indeterminate;
 
 		int dx = loc.x - x;
 		int dy = loc.y - y;
-		if (loc.x%2==0 && x%2==1) dy--;
+		if(loc.x%2==0 && x%2==1) dy--;
 
-		if (dx==0 && dy==0) return direction::indeterminate;
+		if(dx==0 && dy==0) return direction::indeterminate;
 
 		int dist = std::abs(dx);                                   // Distance from north-south line
-		int dist_diag_SW_NE = std::abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
-		int dist_diag_SE_NW = std::abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
+		int dist_diag_SW_NE = std::abs(dy + (dx + (dy>0?0:1))/2); // Distance from diagonal line SW-NE
+		int dist_diag_SE_NW = std::abs(dy - (dx - (dy>0?0:1))/2); // Distance from diagonal line SE-NW
 
-		if (dy > 0) dir = direction::south;
+		if(dy > 0) dir = direction::south;
 		else        dir = direction::north;
 
-		if (dist_diag_SE_NW < dist) {
-		if (dx>0) dir = direction::south_east;
+		if(dist_diag_SE_NW < dist){
+		if(dx>0) dir = direction::south_east;
 		else      dir = direction::north_west;
 		dist = dist_diag_SE_NW;
 		}
-		if (dist_diag_SW_NE < dist) {
-			if (dx>0) dir = direction::north_east;
+		if(dist_diag_SW_NE < dist){
+			if(dx>0) dir = direction::north_east;
 			else      dir = direction::south_west;
 		}
 		return dir;
 	} else {
 		map_location temp(loc);
 
-		if (is_vertically_higher_than(temp,*this)) {
+		if(is_vertically_higher_than(temp,*this)){
 			temp = temp.rotate_right_around_center(*this,1u);
-			if (!is_vertically_higher_than(temp,*this)) {
+			if(!is_vertically_higher_than(temp,*this)){
 				return map_location::direction::north_east;
 			}
 			temp = temp.rotate_right_around_center(*this,1u);
-			if (!is_vertically_higher_than(temp,*this)) {
+			if(!is_vertically_higher_than(temp,*this)){
 				return map_location::direction::north;
 			}
 			return map_location::direction::north_west;
-		} else if (is_vertically_higher_than(*this,temp)) {
+		} else if(is_vertically_higher_than(*this,temp)){
 			temp = temp.rotate_right_around_center(*this,1u);
-			if (!is_vertically_higher_than(*this,temp)) {
+			if(!is_vertically_higher_than(*this,temp)){
 				return map_location::direction::south_west;
 			}
 			temp = temp.rotate_right_around_center(*this,1u);
-			if (!is_vertically_higher_than(*this,temp)) {
+			if(!is_vertically_higher_than(*this,temp)){
 				return map_location::direction::south;
 			}
 			return map_location::direction::south_east;
-		} else if (temp.x > x) {
+		} else if(temp.x > x){
 			return map_location::direction::south_east;
-		} else if (temp.x < x) {
+		} else if(temp.x < x){
 			return map_location::direction::north_west;
 		} else {
 			return map_location::direction::indeterminate;
@@ -324,7 +324,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string& ylo
 	const auto xlocs = utils::split(xloc);
 	const auto ylocs = utils::split(yloc);
 
-	if(xlocs.size() == 0 && ylocs.size() == 0) {
+	if(xlocs.size() == 0 && ylocs.size() == 0){
 		return true;
 	}
 
@@ -332,29 +332,29 @@ bool map_location::matches_range(const std::string& xloc, const std::string& ylo
 	// the missing entries will be assumed to be 1-infinity.
 	//
 	// No warning if only x or only y was given, as matching only that coordinate seems sane.
-	if(xlocs.size() != ylocs.size() && xlocs.size() && ylocs.size()) {
+	if(xlocs.size() != ylocs.size() && xlocs.size() && ylocs.size()){
 		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc;
 	}
 
 	std::size_t i = 0;
-	for(; i < xlocs.size() && i < ylocs.size(); ++i) {
+	for(; i < xlocs.size() && i < ylocs.size(); ++i){
 		const auto xr = utils::parse_range(xlocs[i]);
 		const auto yr = utils::parse_range(ylocs[i]);
 		// The ranges are 1-based, but the coordinates are 0-based. Thus the +1 s.
 		if(xr.first <= x+1 && x+1 <= xr.second
-			&& yr.first <= y+1 && y+1 <= yr.second) {
+			&& yr.first <= y+1 && y+1 <= yr.second){
 			return true;
 		}
 	}
-	for(; i < xlocs.size(); ++i) {
+	for(; i < xlocs.size(); ++i){
 		const auto xr = utils::parse_range(xlocs[i]);
-		if(xr.first <= x+1 && x+1 <= xr.second) {
+		if(xr.first <= x+1 && x+1 <= xr.second){
 			return true;
 		}
 	}
-	for(; i < ylocs.size(); ++i) {
+	for(; i < ylocs.size(); ++i){
 		const auto yr = utils::parse_range(ylocs[i]);
-		if(yr.first <= y+1 && y+1 <= yr.second) {
+		if(yr.first <= y+1 && y+1 <= yr.second){
 			return true;
 		}
 	}
@@ -363,15 +363,15 @@ bool map_location::matches_range(const std::string& xloc, const std::string& ylo
 
 map_location map_location::get_direction(map_location::direction dir, unsigned int n) const
 {
-	if (dir == map_location::direction::indeterminate) {
+	if(dir == map_location::direction::indeterminate){
 		return map_location::null_location();
 	}
 
-	if (dir == direction::north) {
+	if(dir == direction::north){
 		return map_location(x,y-n);
 	}
 
-	if (dir == direction::south) {
+	if(dir == direction::south){
 		return map_location(x,y+n);
 	}
 
@@ -380,20 +380,20 @@ map_location map_location::get_direction(map_location::direction dir, unsigned i
 	unsigned int tmp_y = static_cast<unsigned int> (dir) - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
 	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
 
-	if (tmp_y <= 2u) {
+	if(tmp_y <= 2u){
 		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));
 	} else {
 		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 0)) / 2));
 	}
 
 /*
-	switch(dir) {
+	switch(dir){
 		case direction::north:      return map_location(x, y - n);
 		case direction::south:      return map_location(x, y + n);
-		case direction::south_east: return map_location(x + n, y + (n+is_odd(x))/2 );
-		case direction::south_west: return map_location(x - n, y + (n+is_odd(x))/2 );
-		case direction::north_east: return map_location(x + n, y - (n+is_even(x))/2 );
-		case direction::north_west: return map_location(x - n, y - (n+is_even(x))/2 );
+		case direction::south_east: return map_location(x + n, y + (n+is_odd(x))/2);
+		case direction::south_west: return map_location(x - n, y + (n+is_odd(x))/2);
+		case direction::north_east: return map_location(x + n, y - (n+is_even(x))/2);
+		case direction::north_west: return map_location(x - n, y - (n+is_even(x))/2);
 		default:
 			assert(false);
 			return map_location::null_location();
@@ -420,9 +420,9 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 	x << (i->wml_x());
 	y << (i->wml_y());
 
-	for(++i; i != locs.end(); ++i) {
-		if(i->wml_x() != first->wml_x() || i->wml_y() - 1 != last->wml_y()) {
-			if (last->wml_y() != first->wml_y()) {
+	for(++i; i != locs.end(); ++i){
+		if(i->wml_x() != first->wml_x() || i->wml_y() - 1 != last->wml_y()){
+			if(last->wml_y() != first->wml_y()){
 				y << "-" << (last->wml_y());
 			}
 			x << "," << (i->wml_x());
@@ -449,7 +449,7 @@ void read_locations(const config& cfg, std::vector<map_location>& locs)
 	const std::vector<std::string> xvals = utils::split(cfg["x"]);
 	const std::vector<std::string> yvals = utils::split(cfg["y"]);
 
-	if (xvals.size() != yvals.size()) {
+	if(xvals.size() != yvals.size()){
 		throw std::invalid_argument("Number of x and y coordinates do not match.");
 	}
 
@@ -463,7 +463,7 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 	std::vector<map_location>::const_iterator i = locs.begin(),
 			end = locs.end();
 
-	for(; i != end; ++i) {
+	for(; i != end; ++i){
 		x << (i->wml_x());
 		y << (i->wml_y());
 		if(i+1 != end){
@@ -512,9 +512,9 @@ bool tiles_adjacent(const map_location& a, const map_location& b)
 	// or if x and y are each different by 1,
 	// and the x value of the hex with the greater y value is even.
 
-	switch (a.y - b.y) {
+	switch (a.y - b.y){
 		case 1 :
-			switch (a.x - b.x) {
+			switch (a.x - b.x){
 				case 1:
 				case -1:
 					return (a.x & 1) == 0;
@@ -524,7 +524,7 @@ bool tiles_adjacent(const map_location& a, const map_location& b)
 					return false;
 			}
 		case -1 :
-			switch (a.x - b.x) {
+			switch (a.x - b.x){
 				case 1:
 				case -1:
 					return (b.x & 1) == 0;
@@ -551,12 +551,12 @@ std::size_t distance_between(const map_location& a, const map_location& b)
 {
 	const std::size_t hdistance = std::abs(a.x - b.x);
 
-	const std::size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
-		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
+	const std::size_t vpenalty = ((((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
+		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y))) ? 1 : 0;
 
 /* Don't want to include util.hpp in this header
-	const std::size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
-		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y)) ) ? 1 : 0;
+	const std::size_t vpenalty = ((is_even(a.x) && is_odd(b.x) && (a.y < b.y))
+		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y))) ? 1 : 0;
 */
 	// For any non-negative integer i, i - i/2 - i%2 == i/2
 	// previously returned (hdistance + vdistance - vsavings)

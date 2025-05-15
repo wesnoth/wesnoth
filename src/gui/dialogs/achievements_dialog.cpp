@@ -55,9 +55,9 @@ void achievements_dialog::pre_show()
 	achievements_box_ = find_widget<listbox>("achievements_list", false, true);
 	int selected = 0;
 
-	for(const auto& list : game_config_manager::get()->get_achievements()) {
+	for(const auto& list : game_config_manager::get()->get_achievements()){
 		// only display the achievements for the first dropdown option on first showing the dialog
-		if(list.content_for_ == last_selected_ || last_selected_ == "") {
+		if(list.content_for_ == last_selected_ || last_selected_ == ""){
 			selected = content_list.size();
 		}
 
@@ -65,7 +65,7 @@ void achievements_dialog::pre_show()
 		content_list.emplace_back("label", list.display_name_);
 	}
 
-	if(content_list.size() > 0) {
+	if(content_list.size() > 0){
 		content_names_->set_values(content_list);
 		content_names_->set_selected(selected, false);
 		set_achievements_row();
@@ -84,10 +84,10 @@ void achievements_dialog::set_achievements_row()
 	last_selected_ = list.content_for_;
 	int achieved_count = 0;
 
-	for(const auto& ach : list.achievements_) {
-		if(ach.achieved_) {
+	for(const auto& ach : list.achievements_){
+		if(ach.achieved_){
 			achieved_count++;
-		} else if(ach.hidden_ && !ach.achieved_) {
+		} else if(ach.hidden_ && !ach.achieved_){
 			continue;
 		}
 
@@ -122,7 +122,7 @@ void achievements_dialog::set_achievements_row()
 		});
 
 		auto achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
-		if(in_progress) {
+		if(in_progress){
 			achievement_progress->set_percentage((ach.current_progress_ / double(ach.max_progress_)) * 100);
 		} else {
 			achievement_progress->set_visible(gui2::widget::visibility::invisible);
@@ -148,7 +148,7 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 	// set any sub achievements
 	for(const sub_achievement& sub_ach : ach.sub_achievements_)
 	{
-		if(i == sub_achievements_limit) {
+		if(i == sub_achievements_limit){
 			ERR_CONFIG << "Too many sub achievements";
 			break;
 		} else {

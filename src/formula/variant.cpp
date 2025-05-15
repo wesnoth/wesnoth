@@ -73,7 +73,7 @@ variant_iterator::variant_iterator(const variant_value_base* value, const utils:
 
 variant variant_iterator::operator*() const
 {
-	if(!container_) {
+	if(!container_){
 		return variant();
 	}
 
@@ -82,7 +82,7 @@ variant variant_iterator::operator*() const
 
 variant_iterator& variant_iterator::operator++()
 {
-	if(container_) {
+	if(container_){
 		container_->iterator_inc(iter_);
 	}
 
@@ -92,7 +92,7 @@ variant_iterator& variant_iterator::operator++()
 variant_iterator variant_iterator::operator++(int)
 {
 	variant_iterator temp(*this);
-	if(container_) {
+	if(container_){
 		container_->iterator_inc(iter_);
 	}
 
@@ -101,7 +101,7 @@ variant_iterator variant_iterator::operator++(int)
 
 variant_iterator& variant_iterator::operator--()
 {
-	if(container_) {
+	if(container_){
 		container_->iterator_dec(iter_);
 	}
 
@@ -111,7 +111,7 @@ variant_iterator& variant_iterator::operator--()
 variant_iterator variant_iterator::operator--(int)
 {
 	variant_iterator temp(*this);
-	if(container_) {
+	if(container_){
 		container_->iterator_dec(iter_);
 	}
 
@@ -120,11 +120,11 @@ variant_iterator variant_iterator::operator--(int)
 
 bool variant_iterator::operator==(const variant_iterator& that) const
 {
-	if(!container_ && !that.container_) {
+	if(!container_ && !that.container_){
 		return true;
 	}
 
-	if(container_ == that.container_) {
+	if(container_ == that.container_){
 		return container_->iterator_equals(iter_, that.iter_);
 	}
 
@@ -179,7 +179,7 @@ variant::variant(const std::map<variant,variant>& map)
 
 variant variant::operator[](std::size_t n) const
 {
-	if(is_callable()) {
+	if(is_callable()){
 		return *this;
 	}
 
@@ -187,35 +187,35 @@ variant variant::operator[](std::size_t n) const
 
 	try {
 		return value_cast<variant_list>()->get_container().at(n);
-	} catch(std::out_of_range&) {
+	} catch(std::out_of_range&){
 		throw type_error("invalid index");
 	}
 }
 
 variant variant::operator[](const variant& v) const
 {
-	if(is_callable()) {
+	if(is_callable()){
 		return *this;
 	}
 
-	if(is_map()) {
+	if(is_map()){
 		auto& map = value_cast<variant_map>()->get_container();
 
 		auto i = map.find(v);
-		if(i == map.end()) {
+		if(i == map.end()){
 			return variant();
 		}
 
 		return i->second;
-	} else if(is_list()) {
-		if(v.is_list()) {
+	} else if(is_list()){
+		if(v.is_list()){
 			std::vector<variant> slice;
-			for(std::size_t i = 0; i < v.num_elements(); ++i) {
+			for(std::size_t i = 0; i < v.num_elements(); ++i){
 				slice.push_back((*this)[v[i]]);
 			}
 
 			return variant(slice);
-		} else if(v.as_int() < 0) {
+		} else if(v.as_int() < 0){
 			return operator[](num_elements() + v.as_int());
 		}
 
@@ -230,7 +230,7 @@ variant variant::get_keys() const
 	must_be(formula_variant::type::map);
 
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
+	for(const auto& i : value_cast<variant_map>()->get_container()){
 		tmp.push_back(i.first);
 	}
 
@@ -242,7 +242,7 @@ variant variant::get_values() const
 	must_be(formula_variant::type::map);
 
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
+	for(const auto& i : value_cast<variant_map>()->get_container()){
 		tmp.push_back(i.second);
 	}
 
@@ -266,7 +266,7 @@ bool variant::is_empty() const
 
 std::size_t variant::num_elements() const
 {
-	if(!is_list() && !is_map()) {
+	if(!is_list() && !is_map()){
 		throw type_error(was_expecting("a list or a map", *this));
 	}
 
@@ -275,13 +275,13 @@ std::size_t variant::num_elements() const
 
 variant variant::get_member(const std::string& name) const
 {
-	if(is_callable()) {
-		if(auto obj = value_cast<variant_callable>()->get_callable()) {
+	if(is_callable()){
+		if(auto obj = value_cast<variant_callable>()->get_callable()){
 			return obj->query_value(name);
 		}
 	}
 
-	if(name == "self") {
+	if(name == "self"){
 		return *this;
 	}
 
@@ -291,7 +291,7 @@ variant variant::get_member(const std::string& name) const
 int variant::as_int() const
 {
 	if(is_null())    { return 0; }
-	if(is_decimal()) { return as_decimal() / 1000; }
+	if(is_decimal()){ return as_decimal() / 1000; }
 
 	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
@@ -299,11 +299,11 @@ int variant::as_int() const
 
 int variant::as_decimal() const
 {
-	if(is_decimal()) {
+	if(is_decimal()){
 		return value_cast<variant_decimal>()->get_numeric_value();
-	} else if(is_int()) {
+	} else if(is_int()){
 		return value_cast<variant_int>()->get_numeric_value() * 1000;
-	} else if(is_null()) {
+	} else if(is_null()){
 		return 0;
 	}
 
@@ -335,35 +335,35 @@ const std::map<variant, variant>& variant::as_map() const
 
 variant variant::operator+(const variant& v) const
 {
-	if(is_list() && v.is_list()) {
+	if(is_list() && v.is_list()){
 		auto& list = value_cast<variant_list>()->get_container();
 		auto& other_list = v.value_cast<variant_list>()->get_container();
 
 		std::vector<variant> res;
 		res.reserve(list.size() + other_list.size());
 
-		for(const auto& member : list) {
+		for(const auto& member : list){
 			res.push_back(member);
 		}
 
-		for(const auto& member : other_list) {
+		for(const auto& member : other_list){
 			res.push_back(member);
 		}
 
 		return variant(res);
 	}
 
-	if(is_map() && v.is_map()) {
+	if(is_map() && v.is_map()){
 		std::map<variant, variant> res = value_cast<variant_map>()->get_container();
 
-		for(const auto& member : v.value_cast<variant_map>()->get_container()) {
+		for(const auto& member : v.value_cast<variant_map>()->get_container()){
 			res[member.first] = member.second;
 		}
 
 		return variant(res);
 	}
 
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 		return variant(as_decimal() + v.as_decimal() , DECIMAL_VARIANT);
 	}
 
@@ -372,7 +372,7 @@ variant variant::operator+(const variant& v) const
 
 variant variant::operator-(const variant& v) const
 {
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 		return variant(as_decimal() - v.as_decimal() , DECIMAL_VARIANT);
 	}
 
@@ -381,7 +381,7 @@ variant variant::operator-(const variant& v) const
 
 variant variant::operator*(const variant& v) const
 {
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 
 		long long long_int = as_decimal();
 
@@ -389,14 +389,14 @@ variant variant::operator*(const variant& v) const
 
 		long_int /= 100;
 
-		if(long_int%10 >= 5) {
+		if(long_int%10 >= 5){
 			long_int /= 10;
 			++long_int;
 		} else {
 			long_int/=10;
 		}
 
-		return variant(static_cast<int>(long_int) , DECIMAL_VARIANT );
+		return variant(static_cast<int>(long_int) , DECIMAL_VARIANT);
 	}
 
 	return variant(as_int() * v.as_int());
@@ -404,10 +404,10 @@ variant variant::operator*(const variant& v) const
 
 variant variant::operator/(const variant& v) const
 {
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 		int denominator = v.as_decimal();
 
-		if(denominator == 0) {
+		if(denominator == 0){
 			throw type_error("decimal divide by zero error");
 		}
 
@@ -417,7 +417,7 @@ variant variant::operator/(const variant& v) const
 
 		long_int /= denominator;
 
-		if(long_int%10 >= 5) {
+		if(long_int%10 >= 5){
 			long_int /= 10;
 			++long_int;
 		} else {
@@ -430,7 +430,7 @@ variant variant::operator/(const variant& v) const
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 
-	if(denominator == 0) {
+	if(denominator == 0){
 		throw type_error("int divide by zero error");
 	}
 
@@ -439,10 +439,10 @@ variant variant::operator/(const variant& v) const
 
 variant variant::operator%(const variant& v) const
 {
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 		const int numerator = as_decimal();
 		const int denominator = v.as_decimal();
-		if(denominator == 0) {
+		if(denominator == 0){
 			throw type_error("divide by zero error");
 		}
 
@@ -450,7 +450,7 @@ variant variant::operator%(const variant& v) const
 	} else {
 		const int numerator = as_int();
 		const int denominator = v.as_int();
-		if(denominator == 0) {
+		if(denominator == 0){
 			throw type_error("divide by zero error");
 		}
 
@@ -460,11 +460,11 @@ variant variant::operator%(const variant& v) const
 
 variant variant::operator^(const variant& v) const
 {
-	if(is_decimal() || v.is_decimal()) {
+	if(is_decimal() || v.is_decimal()){
 
 		double res = std::pow(as_decimal() / 1000.0 , v.as_decimal() / 1000.0);
 
-		if(std::isnan(res)) {
+		if(std::isnan(res)){
 			return variant();
 		}
 
@@ -476,7 +476,7 @@ variant variant::operator^(const variant& v) const
 
 variant variant::operator-() const
 {
-	if(is_decimal()) {
+	if(is_decimal()){
 		return variant(-as_decimal(), DECIMAL_VARIANT);
 	}
 
@@ -485,8 +485,8 @@ variant variant::operator-() const
 
 bool variant::operator==(const variant& v) const
 {
-	if(type() != v.type()) {
-		if(is_decimal() || v.is_decimal()) {
+	if(type() != v.type()){
+		if(is_decimal() || v.is_decimal()){
 			return as_decimal() == v.as_decimal();
 		}
 
@@ -503,12 +503,12 @@ bool variant::operator!=(const variant& v) const
 
 bool variant::operator<(const variant& v) const
 {
-	if(type() != v.type()) {
-		if(is_decimal() && v.is_int()) {
+	if(type() != v.type()){
+		if(is_decimal() && v.is_int()){
 			return as_decimal() < v.as_decimal();
 		}
 
-		if(v.is_decimal() && is_int()) {
+		if(v.is_decimal() && is_int()){
 			return as_decimal() < v.as_decimal();
 		}
 
@@ -559,22 +559,22 @@ variant variant::list_elements_div(const variant& v) const
 
 variant variant::concatenate(const variant& v) const
 {
-	if(is_list()) {
+	if(is_list()){
 		v.must_be(formula_variant::type::list);
 
 		std::vector<variant> res;
 		res.reserve(num_elements() + v.num_elements());
 
-		for(std::size_t i = 0; i < num_elements(); ++i) {
+		for(std::size_t i = 0; i < num_elements(); ++i){
 			res.push_back((*this)[i]);
 		}
 
-		for(std::size_t i = 0; i < v.num_elements(); ++i) {
+		for(std::size_t i = 0; i < v.num_elements(); ++i){
 			res.push_back(v[i]);
 		}
 
 		return variant(res);
-	} else if(is_string()) {
+	} else if(is_string()){
 		v.must_be(formula_variant::type::string);
 		std::string res = as_string() + v.as_string();
 		return variant(res);
@@ -592,11 +592,11 @@ variant variant::build_range(const variant& v) const
 
 bool variant::contains(const variant& v) const
 {
-	if(!is_list() && !is_map()) {
+	if(!is_list() && !is_map()){
 		throw type_error(was_expecting("a list or a map", *this));
 	}
 
-	if(is_list()) {
+	if(is_list()){
 		return value_cast<variant_list>()->contains(v);
 	} else {
 		return value_cast<variant_map>()->contains(v);
@@ -605,14 +605,14 @@ bool variant::contains(const variant& v) const
 
 void variant::must_be(formula_variant::type t) const
 {
-	if(type() != t) {
+	if(type() != t){
 		throw type_error(was_expecting(variant_type_to_string(t), *this));
 	}
 }
 
 void variant::must_both_be(formula_variant::type t, const variant& second) const
 {
-	if(type() != t || second.type() != t) {
+	if(type() != t || second.type() != t){
 		throw type_error(formatter() << "TYPE ERROR: expected two "
 			<< variant_type_to_string(t) << " but found "
 			<<        type_string() << " (" <<        to_debug_string() << ")" << " and "
@@ -629,7 +629,7 @@ void variant::serialize_from_string(const std::string& str)
 {
 	try {
 		*this = formula(str).evaluate();
-	} catch(...) {
+	} catch(...){
 		DBG_SF << "Evaluation failed with exception: " << utils::get_unknown_exception_type();
 		*this = variant(str);
 	}
@@ -642,7 +642,7 @@ std::string variant::string_cast() const
 
 std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) const
 {
-	if(!seen) {
+	if(!seen){
 		formula_seen_stack seen_stack;
 		return value_->get_debug_string(seen_stack, verbose);
 	}
@@ -653,8 +653,8 @@ std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) con
 variant variant::execute_variant(const variant& var)
 {
 	std::stack<variant> vars;
-	if(var.is_list()) {
-		for(std::size_t n = 1; n <= var.num_elements(); ++n) {
+	if(var.is_list()){
+		for(std::size_t n = 1; n <= var.num_elements(); ++n){
 			vars.push(var[var.num_elements() - n]);
 		}
 	} else {
@@ -663,20 +663,20 @@ variant variant::execute_variant(const variant& var)
 
 	std::vector<variant> made_moves;
 
-	while(!vars.empty()) {
+	while(!vars.empty()){
 
-		if(vars.top().is_null()) {
+		if(vars.top().is_null()){
 			vars.pop();
 			continue;
 		}
 
-		if(auto action = vars.top().try_convert<action_callable>()) {
+		if(auto action = vars.top().try_convert<action_callable>()){
 			variant res = action->execute_self(*this);
-			if(res.is_int() && res.as_bool()) {
+			if(res.is_int() && res.as_bool()){
 				made_moves.push_back(vars.top());
 			}
-		} else if(vars.top().is_string() && vars.top().as_string() == "continue") {
-//			if(infinite_loop_guardian_.continue_check()) {
+		} else if(vars.top().is_string() && vars.top().as_string() == "continue"){
+//			if(infinite_loop_guardian_.continue_check()){
 				made_moves.push_back(vars.top());
 //			} else {
 				//too many calls in a row - possible infinite loop
@@ -685,7 +685,7 @@ variant variant::execute_variant(const variant& var)
 //				if(safe_call)
 //					error = variant(new game_logic::safe_call_result(nullptr, 5001));
 //			}
-		} else if(vars.top().is_string() && (vars.top().as_string() == "end_turn" || vars.top().as_string() == "end")) {
+		} else if(vars.top().is_string() && (vars.top().as_string() == "end_turn" || vars.top().as_string() == "end")){
 			break;
 		} else {
 			//this information is unneeded when evaluating formulas from commandline

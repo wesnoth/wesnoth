@@ -91,7 +91,7 @@ bool use_color_cursors()
 
 SDL_Cursor* create_cursor(const surface& surf)
 {
-	if(surf == nullptr) {
+	if(surf == nullptr){
 		return nullptr;
 	}
 
@@ -101,7 +101,7 @@ SDL_Cursor* create_cursor(const surface& surf)
 	std::size_t cursor_width = 16;
 #else
 	std::size_t cursor_width = surf->w;
-	if((cursor_width % 8) != 0) {
+	if((cursor_width % 8) != 0){
 		cursor_width += 8 - (cursor_width % 8);
 	}
 #endif
@@ -114,9 +114,9 @@ SDL_Cursor* create_cursor(const surface& surf)
 	const_surface_lock lock(surf);
 	const uint32_t* const pixels = lock.pixels();
 
-	for(int y = 0; y != surf->h; ++y) {
-		for(int x = 0; x != surf->w; ++x) {
-			if(static_cast<std::size_t>(x) < cursor_width) {
+	for(int y = 0; y != surf->h; ++y){
+		for(int x = 0; x != surf->w; ++x){
+			if(static_cast<std::size_t>(x) < cursor_width){
 				uint8_t r, g, b, a;
 				SDL_GetRGBA(pixels[y * surf->w + x], surf->format, &r, &g, &b, &a);
 
@@ -140,11 +140,11 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 	const bool use_color = use_color_cursors();
 	cursor_data& data = available_cursors[type];
 
-	if(data.cursor == nullptr || boost::indeterminate(data.is_color) || data.is_color != use_color) {
+	if(data.cursor == nullptr || boost::indeterminate(data.is_color) || data.is_color != use_color){
 		static const std::string color_prefix = "cursors/";
 		static const std::string bw_prefix = "cursors-bw/";
 
-		if(use_color) {
+		if(use_color){
 			const surface& surf(image::get_surface(color_prefix + data.image_color));
 
 			// Construct a temporary ptr to provide a new deleter.
@@ -178,9 +178,9 @@ manager::~manager()
 void set(CURSOR_TYPE type)
 {
 	// Change only if it's a valid cursor
-	if(type != NUM_CURSORS) {
+	if(type != NUM_CURSORS){
 		current_cursor = type;
-	} else if(current_cursor == NUM_CURSORS) {
+	} else if(current_cursor == NUM_CURSORS){
 		// Except if the current one is also invalid.
 		// In this case, change to a valid one.
 		current_cursor = NORMAL;
@@ -189,7 +189,7 @@ void set(CURSOR_TYPE type)
 	SDL_Cursor* cursor_image = get_cursor(current_cursor);
 
 	// Causes problem on Mac:
-	// if (cursor_image != nullptr && cursor_image != SDL_GetCursor())
+	// if(cursor_image != nullptr && cursor_image != SDL_GetCursor())
 	SDL_SetCursor(cursor_image);
 
 	SDL_ShowCursor(SDL_ENABLE);
@@ -197,7 +197,7 @@ void set(CURSOR_TYPE type)
 
 void set_dragging(bool drag)
 {
-	switch(current_cursor) {
+	switch(current_cursor){
 	case MOVE:
 		if(drag) cursor::set(MOVE_DRAG);
 		break;
@@ -224,7 +224,7 @@ void set_focus(bool focus)
 {
 	have_focus = focus;
 
-	if(!focus) {
+	if(!focus){
 		set();
 	}
 }

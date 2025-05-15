@@ -15,7 +15,7 @@
 // SPIRIT_PO_NO_EXCEPTIONS used to be named SPIRIT_PO_NOEXCEPT, but we leave this
 // here to avoid breakage.
 
-#if (!defined SPIRIT_PO_NO_EXCEPTIONS) && (defined SPIRIT_PO_NOEXCEPT)
+#if(!defined SPIRIT_PO_NO_EXCEPTIONS) && (defined SPIRIT_PO_NOEXCEPT)
 #define SPIRIT_PO_NO_EXCEPTIONS
 #endif
 
@@ -79,13 +79,13 @@ private:
    * if it's not a plural message, then there is only one string. also, the po header is never a plural message
    */
   const std::string & get(const po_message & msg) const {
-    if (msg.strings().size() == 1) { return msg.strings()[0]; }
+    if(msg.strings().size() == 1) { return msg.strings()[0]; }
     return msg.strings()[singular_index_];
   }
 
   const std::string & get(const po_message & msg, uint plural) const {
     uint idx = (plural == 1 ? singular_index_ : pf_function_object_(plural));
-    if (idx >= msg.strings().size()) { idx = 0; }
+    if(idx >= msg.strings().size()) { idx = 0; }
     return msg.strings()[idx];
   }
 
@@ -93,15 +93,15 @@ private:
    * Emplace a message into the hashmap
    */
   void insert_message(po_message && msg) {
-    if (!msg.strings().size()) { return; }
+    if(!msg.strings().size()) { return; }
     // don't allow messages with ZERO translations into the catalog, this will cause segfaults later.
     // should perhaps throw an exception here
 
-    if (!msg.strings()[0].size()) { return; }
+    if(!msg.strings()[0].size()) { return; }
     // if the (first) translated string is "", it is untranslated and message does not enter catalog
 
-    if (msg.strings().size() > 1 && msg.strings().size() != metadata_.num_plural_forms) {
-      if (warning_channel_) {
+    if(msg.strings().size() > 1 && msg.strings().size() != metadata_.num_plural_forms) {
+      if(warning_channel_) {
         warning_channel_("Ignoring a message with an incorrect number of plural forms: plural = " + std::to_string(msg.strings().size()) + " msgid = '" + msg.id + "'");
       }
       return;
@@ -113,10 +113,10 @@ private:
     auto result = hashmap_.emplace(std::move(index), std::move(msg));
 
     // Issue a warning if emplace failed, rather than silently overwrite.
-    if (!result.second) {
-      if (warning_channel_) {
+    if(!result.second) {
+      if(warning_channel_) {
         std::string warning = "Overwriting a message: msgid = <<<" + msg.id + ">>>";
-        if (msg.context) { warning += " msgctxt = <<<" + *msg.context + ">>>"; }
+        if(msg.context) { warning += " msgctxt = <<<" + *msg.context + ">>>"; }
         warning_channel_(warning);
       }
       result.first->second = std::move(msg);
@@ -158,31 +158,31 @@ public:
     {
       // must be able to parse first message
       qi::parse(it, end, grammar.skipped_block); // first parse any comments
-      if (!qi::parse(it, end, grammar, msg)) {   // now parse the main grammar target
+      if(!qi::parse(it, end, grammar, msg)) {   // now parse the main grammar target
         int err_line = it.position();
         SPIRIT_PO_CATALOG_FAIL("Failed to parse po header, stopped at line " + std::to_string(err_line) + ": " + iterator_context(it, end));
       }
 
       // first message must have empty MSGID (po format says so)
-      if (msg.id.size()) {
+      if(msg.id.size()) {
         SPIRIT_PO_CATALOG_FAIL("Failed to parse po header, first msgid must be empty string \"\", found: " + msg.id);
       }
 
       // Now parse the header string itself
-      if (msg.strings().size()) {
+      if(msg.strings().size()) {
         std::string maybe_error = metadata_.parse_header(msg.strings()[0]);
-        if (maybe_error.size()) {
+        if(maybe_error.size()) {
           SPIRIT_PO_CATALOG_FAIL("Failed to parse po header: " + maybe_error);
         }
       }
 
-      if (!metadata_.num_plural_forms) {
+      if(!metadata_.num_plural_forms) {
         SPIRIT_PO_CATALOG_FAIL("Invalid metadata in po header, found num_plurals = 0");
       }
 
       // Try to compile the plural forms function string
       pf_function_object_ = compiler(metadata_.plural_forms_function_string);
-      if (!pf_function_object_) {
+      if(!pf_function_object_) {
         SPIRIT_PO_CATALOG_FAIL(("Failed to read plural forms function. "
                                 "Input: '" + metadata_.plural_forms_function_string + "', "
                                 "error message: " + pf_function_object_.error()));
@@ -190,7 +190,7 @@ public:
 
       // Cache the 'singular' form index since it is most common
       singular_index_ = pf_function_object_(1);
-      if (singular_index_ >= metadata_.num_plural_forms) {
+      if(singular_index_ >= metadata_.num_plural_forms) {
         SPIRIT_PO_CATALOG_FAIL(("Invalid plural forms function. "
                                 "On input n = 1, returned plural = " + std::to_string(singular_index_) + ", "
                                 "while num_plurals = " + std::to_string(metadata_.num_plural_forms)));
@@ -201,7 +201,7 @@ public:
     }
 
     // Now parse non-fuzzy messages
-    while (it != end) {
+    while(it != end) {
       // this parse rule cannot fail, it can be a zero length match
       qi::parse(it, end, grammar.ignored_comments);
 
@@ -210,19 +210,19 @@ public:
       qi::parse(it, end, grammar.message_preamble, fuzzy);
 
       // check if we exhausted the file by comments
-      if (it != end) {
+      if(it != end) {
         msg = po_message{};
         msg.strings().reserve(metadata_.num_plural_forms); // try to prevent frequent vector reallocations
         line_no = it.position();
         // actually parse a message
-        if (!qi::parse(it, end, grammar, msg)) {
+        if(!qi::parse(it, end, grammar, msg)) {
           int err_line = it.position();
           SPIRIT_PO_CATALOG_FAIL(("Failed to parse po file, "
                                   "started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n"
                                   + iterator_context(it, end)));
         }
         // cannot overwrite header
-        if (!msg.id.size()) {
+        if(!msg.id.size()) {
           int err_line = it.position();
           SPIRIT_PO_CATALOG_FAIL(("Malformed po file: Cannot overwrite the header entry later in the po file."
                                   "Started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n"
@@ -230,16 +230,16 @@ public:
         }
         msg.line_no = line_no;
         // only insert it if it wasn't marked fuzzy
-        if (!fuzzy) { this->insert_message(std::move(msg)); }
+        if(!fuzzy) { this->insert_message(std::move(msg)); }
       }
     }
 
 #ifdef SPIRIT_PO_DEBUG
     // validate resulting hashmap
-    for (const auto & p : hashmap_) {
-      if (!p.second.strings().size()) { SPIRIT_PO_CATALOG_FAIL(("Internal catalog error: found a message id with no strings, msgid='" + p.first + "'")); }
-      if (p.second.strings().size() != 1 && p.second.strings().size() != metadata_.num_plural_forms) {
-        SPIRIT_PO_CATALOG_FAIL(("Internal catalog error: found a message id with wrong number of strings, msgid='" + p.first + "' num msgstr = " + std::to_string(p.second.strings().size()) + ", catalog num_plural_forms = " + std::to_string(metadata_.num_plural_forms) + "\nWhole message: " + debug_string(p.second) ));
+    for(const auto & p : hashmap_) {
+      if(!p.second.strings().size()) { SPIRIT_PO_CATALOG_FAIL(("Internal catalog error: found a message id with no strings, msgid='" + p.first + "'")); }
+      if(p.second.strings().size() != 1 && p.second.strings().size() != metadata_.num_plural_forms) {
+        SPIRIT_PO_CATALOG_FAIL(("Internal catalog error: found a message id with wrong number of strings, msgid='" + p.first + "' num msgstr = " + std::to_string(p.second.strings().size()) + ", catalog num_plural_forms = " + std::to_string(metadata_.num_plural_forms) + "\nWhole message: " + debug_string(p.second)));
       }
     }
 #endif // SPIRIT_PO_DEBUG
@@ -290,7 +290,7 @@ public:
    */
   const char * gettext(const char * msgid) const {
     auto it = hashmap_.find(msgid);
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return this->get(it->second).c_str();
     } else {
       return msgid;
@@ -299,7 +299,7 @@ public:
 
   const char * ngettext(const char * msgid, const char * msgid_plural, uint plural) const {
     auto it = hashmap_.find(msgid);
-    if (it != hashmap_.end() && it->second.is_plural()) {
+    if(it != hashmap_.end() && it->second.is_plural()) {
       return this->get(it->second, plural).c_str();
     } else {
       return (plural == 1 ? msgid : msgid_plural);
@@ -308,7 +308,7 @@ public:
 
   const char * pgettext(const char * context, const char * msgid) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return this->get(it->second).c_str();
     } else {
       return msgid;
@@ -317,7 +317,7 @@ public:
 
   const char * npgettext(const char * context, const char * msgid, const char * msgid_plural, uint plural) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
-    if (it != hashmap_.end() && it->second.is_plural()) {
+    if(it != hashmap_.end() && it->second.is_plural()) {
       return this->get(it->second, plural).c_str();
     } else {
       return (plural == 1 ? msgid : msgid_plural);
@@ -336,7 +336,7 @@ private:
   template <typename S>
   std::string gettext_str_impl(S && msgid) const {
     auto it = hashmap_.find(msgid);
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return this->get(it->second);
     } else {
       return std::forward<S>(msgid);
@@ -346,10 +346,10 @@ private:
   template <typename S1, typename S2>
   std::string ngettext_str_impl(S1 && msgid, S2 && msgid_plural, uint plural) const {
     auto it = hashmap_.find(msgid);
-    if (it != hashmap_.end() && it->second.is_plural()) {
+    if(it != hashmap_.end() && it->second.is_plural()) {
       return this->get(it->second, plural);
     } else {
-      if (plural == 1) {
+      if(plural == 1) {
         return std::forward<S1>(msgid);
       } else {
         return std::forward<S2>(msgid_plural);
@@ -360,7 +360,7 @@ private:
   template <typename S>
   std::string pgettext_str_impl(const std::string & context, S && msgid) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return this->get(it->second);
     } else {
       return std::forward<S>(msgid);
@@ -370,10 +370,10 @@ private:
   template <typename S1, typename S2>
   std::string npgettext_str_impl(const std::string & context, S1 && msgid, S2 && msgid_plural, uint plural) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
-    if (it != hashmap_.end() && it->second.is_plural()) {
+    if(it != hashmap_.end() && it->second.is_plural()) {
       return this->get(it->second, plural);
     } else {
-      if (plural == 1) {
+      if(plural == 1) {
         return std::forward<S1>(msgid);
       } else {
         return std::forward<S2>(msgid_plural);
@@ -405,7 +405,7 @@ public:
    */
   std::size_t gettext_line_no(const std::string & msgid) const {
     auto it = hashmap_.find(msgid);
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return it->second.line_no;
     } else {
       return 0;
@@ -414,7 +414,7 @@ public:
 
   std::size_t pgettext_line_no(const std::string & context, const std::string & msgid) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
-    if (it != hashmap_.end()) {
+    if(it != hashmap_.end()) {
       return it->second.line_no;
     } else {
       return 0;
@@ -450,11 +450,11 @@ public:
   template <typename H, typename P>
   void merge(catalog<H, P> && other) {
     std::string maybe_error = metadata_.check_compatibility(other.metadata_);
-    if (maybe_error.size()) {
+    if(maybe_error.size()) {
       SPIRIT_PO_CATALOG_FAIL(("Cannot merge catalogs: " + maybe_error));
     }
-    for (auto & p : other.hashmap_) {
-      if (p.first.size()) { // don't copy over the header, keep our original header
+    for(auto & p : other.hashmap_) {
+      if(p.first.size()) { // don't copy over the header, keep our original header
         this->insert_message(std::move(p.second));
       }
     }

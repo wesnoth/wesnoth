@@ -168,7 +168,7 @@ bool pango_text::is_truncated() const
 
 unsigned pango_text::insert_text(const unsigned offset, const std::string& text, const bool use_markup)
 {
-	if (text.empty() || length_ == maximum_length_) {
+	if(text.empty() || length_ == maximum_length_){
 		return 0;
 	}
 
@@ -176,7 +176,7 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text,
 	assert(offset <= length_);
 
 	unsigned len = utf8::size(text);
-	if (length_ + len > maximum_length_) {
+	if(length_ + len > maximum_length_){
 		len = maximum_length_ - length_;
 	}
 	const std::string insert = text.substr(0, utf8::index(text, len));
@@ -193,24 +193,24 @@ unsigned pango_text::get_byte_index(const unsigned offset, const unsigned line) 
 		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
 
 	// Go the wanted line.
-	if(line != 0) {
+	if(line != 0){
 
-		if(static_cast<int>(line) >= pango_layout_get_line_count(layout_.get())) {
+		if(static_cast<int>(line) >= pango_layout_get_line_count(layout_.get())){
 			return 0;
 		}
 
-		for(std::size_t i = 0; i < line; ++i) {
+		for(std::size_t i = 0; i < line; ++i){
 			pango_layout_iter_next_line(itor.get());
 		}
 	}
 
 	// Go the wanted column.
-	for(std::size_t i = 0; i < offset; ++i) {
-		if(!pango_layout_iter_next_char(itor.get())) {
+	for(std::size_t i = 0; i < offset; ++i){
+		if(!pango_layout_iter_next_char(itor.get())){
 			// It seems that the documentation is wrong and causes and off by
 			// one error... the result should be false if already at the end of
 			// the data when started.
-			if(i + 1 == offset) {
+			if(i + 1 == offset){
 				break;
 			}
 			// Beyond data.
@@ -248,17 +248,17 @@ std::string pango_text::get_token(const point& position, const std::string_view 
 	int index = xy_to_index(position).first;
 	std::string txt = pango_layout_get_text(layout_.get());
 
-	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
+	if(index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos){
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
 	}
 
 	std::size_t l = index;
-	while (l > 0 && (delim.find(txt.at(l-1)) == std::string::npos)) {
+	while(l > 0 && (delim.find(txt.at(l-1)) == std::string::npos)){
 		--l;
 	}
 
 	std::size_t r = index + 1;
-	while (r < txt.size() && (delim.find(txt.at(r)) == std::string::npos)) {
+	while(r < txt.size() && (delim.find(txt.at(r)) == std::string::npos)){
 		++r;
 	}
 
@@ -267,7 +267,7 @@ std::string pango_text::get_token(const point& position, const std::string_view 
 
 std::string pango_text::get_link(const point& position) const
 {
-	if (!link_aware_) {
+	if(!link_aware_){
 		return "";
 	}
 
@@ -296,10 +296,10 @@ point pango_text::get_column_line(const point& position) const
 	 * text is available. Haven't found what the best thing to do would be.
 	 * Until that time leave it as is.
 	 */
-	for(std::size_t i = 0; ;++i) {
+	for(std::size_t i = 0; ;++i){
 		const int pos = get_cursor_position(i, line).x;
 
-		if(pos == offset) {
+		if(pos == offset){
 			// FIXME: return statement only inside if block.
 			return point(i, line);
 		}
@@ -328,7 +328,7 @@ void pango_text::clear_attributes()
 
 void pango_text::apply_attributes(const font::attribute_list& attrs)
 {
-	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
+	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())){
 		attrs.splice_into(current_attrs);
 	} else {
 		attrs.apply_to(layout_.get());
@@ -337,17 +337,17 @@ void pango_text::apply_attributes(const font::attribute_list& attrs)
 
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
-	if(markedup != markedup_text_ || text != text_) {
+	if(markedup != markedup_text_ || text != text_){
 		const std::u32string wide = unicode_cast<std::u32string>(text);
 		std::string narrow = unicode_cast<std::string>(wide);
-		if(text != narrow) {
+		if(text != narrow){
 			ERR_GUI_L
 				<< "pango_text::" << __func__
 				<< " text '" << text
 				<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
 
-		if(!markedup || !set_markup(narrow, *layout_)) {
+		if(!markedup || !set_markup(narrow, *layout_)){
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 			clear_attributes();
 		}
@@ -363,7 +363,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 
 pango_text& pango_text::set_family_class(font::family_class fclass)
 {
-	if(fclass != font_class_) {
+	if(fclass != font_class_){
 		font_class_ = fclass;
 		calculation_dirty_ = true;
 	}
@@ -375,7 +375,7 @@ pango_text& pango_text::set_font_size(unsigned font_size)
 {
 	font_size = prefs::get().font_scaled(font_size) * pixel_scale_;
 
-	if(font_size != font_size_) {
+	if(font_size != font_size_){
 		font_size_ = font_size;
 		calculation_dirty_ = true;
 	}
@@ -385,7 +385,7 @@ pango_text& pango_text::set_font_size(unsigned font_size)
 
 pango_text& pango_text::set_font_style(const pango_text::FONT_STYLE font_style)
 {
-	if(font_style != font_style_) {
+	if(font_style != font_style_){
 		font_style_ = font_style;
 		calculation_dirty_ = true;
 	}
@@ -395,7 +395,7 @@ pango_text& pango_text::set_font_style(const pango_text::FONT_STYLE font_style)
 
 pango_text& pango_text::set_foreground_color(const color_t& color)
 {
-	if(color != foreground_color_) {
+	if(color != foreground_color_){
 		foreground_color_ = color;
 	}
 
@@ -406,11 +406,11 @@ pango_text& pango_text::set_maximum_width(int width)
 {
 	width *= pixel_scale_;
 
-	if(width <= 0) {
+	if(width <= 0){
 		width = -1;
 	}
 
-	if(width != maximum_width_) {
+	if(width != maximum_width_){
 		maximum_width_ = width;
 		calculation_dirty_ = true;
 	}
@@ -420,7 +420,7 @@ pango_text& pango_text::set_maximum_width(int width)
 
 pango_text& pango_text::set_characters_per_line(const unsigned characters_per_line)
 {
-	if(characters_per_line != characters_per_line_) {
+	if(characters_per_line != characters_per_line_){
 		characters_per_line_ = characters_per_line;
 
 		calculation_dirty_ = true;
@@ -433,12 +433,12 @@ pango_text& pango_text::set_maximum_height(int height, bool multiline)
 {
 	height *= pixel_scale_;
 
-	if(height <= 0) {
+	if(height <= 0){
 		height = -1;
 		multiline = false;
 	}
 
-	if(height != maximum_height_) {
+	if(height != maximum_height_){
 		// assert(context_);
 
 		// The maximum height is handled in this class' calculate_size() method.
@@ -456,7 +456,7 @@ pango_text& pango_text::set_maximum_height(int height, bool multiline)
 
 pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 {
-	if(ellipse_mode != ellipse_mode_) {
+	if(ellipse_mode != ellipse_mode_){
 		// assert(context_);
 
 		pango_layout_set_ellipsize(layout_.get(), ellipse_mode);
@@ -467,7 +467,7 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 	// According to the docs of pango_layout_set_height, the behavior is undefined if a height other than -1 is combined
 	// with PANGO_ELLIPSIZE_NONE. Wesnoth's code currently always calls set_ellipse_mode after set_maximum_height, so do
 	// the cleanup here. The code in calculate_size() will still apply the maximum height after Pango's calculations.
-	if(ellipse_mode_ == PANGO_ELLIPSIZE_NONE) {
+	if(ellipse_mode_ == PANGO_ELLIPSIZE_NONE){
 		pango_layout_set_height(layout_.get(), -1);
 	}
 
@@ -476,7 +476,7 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 
 pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 {
-	if (alignment != alignment_) {
+	if(alignment != alignment_){
 		pango_layout_set_alignment(layout_.get(), alignment);
 		alignment_ = alignment;
 	}
@@ -486,9 +486,9 @@ pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 
 pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 {
-	if(maximum_length != maximum_length_) {
+	if(maximum_length != maximum_length_){
 		maximum_length_ = maximum_length;
-		if(length_ > maximum_length_) {
+		if(length_ > maximum_length_){
 			std::string tmp = text_;
 			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
@@ -499,7 +499,7 @@ pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 
 pango_text& pango_text::set_link_aware(bool b)
 {
-	if (link_aware_ != b) {
+	if(link_aware_ != b){
 		calculation_dirty_ = true;
 		link_aware_ = b;
 	}
@@ -508,7 +508,7 @@ pango_text& pango_text::set_link_aware(bool b)
 
 pango_text& pango_text::set_link_color(const color_t& color)
 {
-	if(color != link_color_) {
+	if(color != link_color_){
 		link_color_ = color;
 		calculation_dirty_ = true;
 	}
@@ -518,7 +518,7 @@ pango_text& pango_text::set_link_color(const color_t& color)
 
 pango_text& pango_text::set_add_outline(bool do_add)
 {
-	if(do_add != add_outline_) {
+	if(do_add != add_outline_){
 		add_outline_ = do_add;
 		//calculation_dirty_ = true;
 	}
@@ -549,17 +549,17 @@ int pango_text::get_max_glyph_height() const
 void pango_text::update_pixel_scale()
 {
 	const int ps = video::get_pixel_scale();
-	if (ps == pixel_scale_) {
+	if(ps == pixel_scale_){
 		return;
 	}
 
 	font_size_ = (font_size_ / pixel_scale_) * ps;
 
-	if (maximum_width_ != -1) {
+	if(maximum_width_ != -1){
 		maximum_width_ = (maximum_width_ / pixel_scale_) * ps;
 	}
 
-	if (maximum_height_ != -1) {
+	if(maximum_height_ != -1){
 		maximum_height_ = (maximum_height_ / pixel_scale_) * ps;
 	}
 
@@ -573,7 +573,7 @@ void pango_text::recalculate() const
 	// update_pixel_scale() should go in here. But it can't. Because things
 	// are declared const which are not const.
 
-	if(calculation_dirty_) {
+	if(calculation_dirty_){
 		assert(layout_ != nullptr);
 
 		calculation_dirty_ = false;
@@ -589,7 +589,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	pango_layout_set_font_description(&layout, font.get());
 
 	int maximum_width = 0;
-	if(characters_per_line_ != 0) {
+	if(characters_per_line_ != 0){
 		PangoFont* f = pango_font_map_load_font(
 			pango_cairo_font_map_get_default(),
 			context_.get(),
@@ -608,7 +608,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		maximum_width = maximum_width_;
 	}
 
-	if(maximum_width_ != -1) {
+	if(maximum_width_ != -1){
 		maximum_width = std::min(maximum_width, maximum_width_);
 	}
 
@@ -633,7 +633,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		<< " result " << size
 		<< ".";
 
-	if(maximum_width != -1 && size.x + size.width > maximum_width) {
+	if(maximum_width != -1 && size.x + size.width > maximum_width){
 		DBG_GUI_L << "pango_text::" << __func__
 			<< " text '" << gui2::debug_truncate(text_)
 			<< " ' width " << size.x + size.width
@@ -642,7 +642,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	}
 
 	// The maximum height is handled here instead of using the library - see the comments in set_maximum_height()
-	if(maximum_height_ != -1 && size.y + size.height > maximum_height_) {
+	if(maximum_height_ != -1 && size.y + size.height > maximum_height_){
 		DBG_GUI_L << "pango_text::" << __func__
 			<< " text '" << gui2::debug_truncate(text_)
 			<< " ' height " << size.y + size.height
@@ -666,7 +666,7 @@ struct inverse_table
 	constexpr inverse_table()
 	{
 		values[0] = 0;
-		for (int i = 1; i < 256; ++i) {
+		for(int i = 1; i < 256; ++i){
 			values[i] = (255 * 256) / i;
 		}
 	}
@@ -680,7 +680,7 @@ static constexpr inverse_table inverse_table_;
  * Helper function for un-premultiplying alpha
  * Div should be the high-precision inverse for the alpha value.
  */
-static void unpremultiply(uint8_t & value, const unsigned div) {
+static void unpremultiply(uint8_t & value, const unsigned div){
 	unsigned temp = (value * div) / 256u;
 	// Note: It's always the case that alpha * div < 256 if div is the inverse
 	// for alpha, so if cairo is computing premultiplied alpha by rounding down,
@@ -719,7 +719,7 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 	// Convenience pointer
 	cairo_t* cr = cairo_context.get();
 
-	if(cairo_status(cr) == CAIRO_STATUS_INVALID_SIZE) {
+	if(cairo_status(cr) == CAIRO_STATUS_INVALID_SIZE){
 		throw std::length_error("Text is too long to render");
 	}
 
@@ -735,7 +735,7 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 	//
 	// -- vultraz, 2018-03-07
 	//
-	if(add_outline_) {
+	if(add_outline_){
 		// Add a path to the cairo context tracing the current text.
 		pango_cairo_layout_path(cr, &layout);
 
@@ -757,7 +757,7 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
 		foreground_color_.a / 255.0
 	);
 
-	if(font_style_ & pango_text::STYLE_UNDERLINE) {
+	if(font_style_ & pango_text::STYLE_UNDERLINE){
 		font::attribute_list list;
 		list.insert(pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
 		apply_attributes(list);
@@ -780,7 +780,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 
 	// The width and stride can be zero if the text is empty or the stride can be negative to indicate an error from
 	// Cairo. Width isn't tested here because it's implied by stride.
-	if(stride <= 0 || viewport.h <= 0) {
+	if(stride <= 0 || viewport.h <= 0){
 		surface_buffer_.clear();
 		return nullptr;
 	}
@@ -790,7 +790,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 	// Check to prevent arithmetic overflow when calculating (stride * height).
 	// The size of the viewport should already provide a far lower limit on the
 	// maximum size, but this is left in as a sanity check.
-	if(viewport.h > std::numeric_limits<int>::max() / stride) {
+	if(viewport.h > std::numeric_limits<int>::max() / stride){
 		throw std::length_error("Text is too long to render");
 	}
 
@@ -805,9 +805,9 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 	// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 	// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 	// decoded again.
-	for(int y = 0; y < viewport.h; ++y) {
+	for(int y = 0; y < viewport.h; ++y){
 		uint32_t* pixels = reinterpret_cast<uint32_t*>(&surface_buffer_[y * stride]);
-		for(int x = 0; x < viewport.w; ++x) {
+		for(int x = 0; x < viewport.w; ++x){
 			from_cairo_format(pixels[x]);
 		}
 	}
@@ -821,12 +821,12 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 	char* raw_text;
 	std::string semi_escaped;
 	bool valid = validate_markup(text, &raw_text, semi_escaped);
-	if(!semi_escaped.empty()) {
+	if(!semi_escaped.empty()){
 		text = semi_escaped;
 	}
 
-	if(valid) {
-		if(link_aware_) {
+	if(valid){
+		if(link_aware_){
 			std::string formatted_text = format_links(text);
 			pango_layout_set_markup(&layout, formatted_text.c_str(), formatted_text.size());
 		} else {
@@ -847,15 +847,15 @@ std::string pango_text::format_links(std::string_view text) const
 	std::ostringstream result;
 
 	std::size_t tok_start = 0;
-	for(std::size_t pos = 0; pos < text.length(); ++pos) {
-		if(delim.find(text[pos]) == std::string::npos) {
+	for(std::size_t pos = 0; pos < text.length(); ++pos){
+		if(delim.find(text[pos]) == std::string::npos){
 			continue;
 		}
 
-		if(const auto tok_length = pos - tok_start) {
+		if(const auto tok_length = pos - tok_start){
 			// Token starts from after the last delimiter up to (but not including) this delimiter
 			auto token = text.substr(tok_start, tok_length);
-			if(looks_like_url(token)) {
+			if(looks_like_url(token)){
 				result << format_as_link(std::string{token}, link_color_);
 			} else {
 				result << token;
@@ -867,9 +867,9 @@ std::string pango_text::format_links(std::string_view text) const
 	}
 
 	// Deal with the remainder token
-	if(tok_start < text.length()) {
+	if(tok_start < text.length()){
 		auto token = text.substr(tok_start);
-		if(looks_like_url(token)) {
+		if(looks_like_url(token)){
 			result << format_as_link(std::string{token}, link_color_);
 		} else {
 			result << token;
@@ -882,7 +882,7 @@ std::string pango_text::format_links(std::string_view text) const
 bool pango_text::validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const
 {
 	if(pango_parse_markup(text.data(), text.size(),
-		0, nullptr, raw_text, nullptr, nullptr)) {
+		0, nullptr, raw_text, nullptr, nullptr)){
 		return true;
 	}
 
@@ -903,7 +903,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	 */
 	if(text.size() == semi_escaped.size()
 			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
-				, 0, nullptr, raw_text, nullptr, nullptr)) {
+				, 0, nullptr, raw_text, nullptr, nullptr)){
 
 		/* Fixing the ampersands didn't work. */
 		return false;
@@ -932,7 +932,7 @@ std::vector<std::string> pango_text::get_lines() const
 	std::vector<std::string> res;
 	int count = pango_layout_get_line_count(layout);
 
-	if(count < 1) {
+	if(count < 1){
 		return res;
 	}
 

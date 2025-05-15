@@ -40,27 +40,27 @@ namespace ai {
 		std::shared_ptr<aspect_attacks_lua_filter> att(new aspect_attacks_lua_filter);
 		att->lua = nullptr;
 		att->ref_own_ = att->ref_enemy_ = -1;
-		if(!lua_istable(L, n)) {
+		if(!lua_istable(L, n)){
 			return att;
 		}
 		lua_getfield(L, n, "own");
-		if(lua_istable(L, -1)) {
+		if(lua_istable(L, -1)){
 			vconfig vcfg(config(), true);
-			if(luaW_tovconfig(L, -1, vcfg)) {
+			if(luaW_tovconfig(L, -1, vcfg)){
 				att->filter_own_.reset(new unit_filter(vcfg));
 			}
-		} else if(lua_isfunction(L, -1)) {
+		} else if(lua_isfunction(L, -1)){
 			att->lua = L;
 			att->ref_own_ = luaL_ref(L, LUA_REGISTRYINDEX);
 			assert(att->ref_own_ != -1);
 		}
 		lua_getfield(L, n, "enemy");
-		if(lua_istable(L, -1)) {
+		if(lua_istable(L, -1)){
 			vconfig vcfg(config(), true);
-			if(luaW_tovconfig(L, -1, vcfg)) {
+			if(luaW_tovconfig(L, -1, vcfg)){
 				att->filter_enemy_.reset(new unit_filter(vcfg));
 			}
-		} else if(lua_isfunction(L, -1)) {
+		} else if(lua_isfunction(L, -1)){
 			att->lua = L;
 			att->ref_enemy_ = luaL_ref(L, LUA_REGISTRYINDEX);
 			assert(att->ref_enemy_ != -1);

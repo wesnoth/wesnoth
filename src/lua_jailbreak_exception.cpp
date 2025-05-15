@@ -28,7 +28,7 @@ void lua_jailbreak_exception::store() const noexcept
 	 * lua_jailbreak_exception::rethrow() or a logic error in the code.
 	 */
 	assert(!jailbreak_exception);
-	if (jail_depth == 0) {
+	if(jail_depth == 0){
 		return;
 	}
 
@@ -37,7 +37,7 @@ void lua_jailbreak_exception::store() const noexcept
 
 void lua_jailbreak_exception::rethrow()
 {
-	if(!jailbreak_exception) {
+	if(!jailbreak_exception){
 		return;
 	}
 
@@ -50,8 +50,8 @@ void lua_jailbreak_exception::rethrow()
 	 */
 	try {
 		jailbreak_exception->execute();
-	} catch(...) {
-		if (jail_depth == 0) {
+	} catch(...){
+		if(jail_depth == 0){
 			clear();
 		}
 		throw;

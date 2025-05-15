@@ -33,36 +33,36 @@ class rca_context;
 
 class engine : public component {
 public:
-	engine( readonly_context &context, const config &cfg );
+	engine(readonly_context &context, const config &cfg);
 
 	virtual ~engine();
 
 	virtual bool is_ok() const;
 
-	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b );
+	static void parse_aspect_from_config(readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b);
 
-	static void parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b );
+	static void parse_goal_from_config(readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b);
 
-	static void parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
+	static void parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b);
 
-	static void parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
+	static void parse_engine_from_config(readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b);
 
-	static void parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
+	static void parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b);
 
 	//do not override that method in subclasses which cannot create aspects
-	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr>> b );
+	virtual void do_parse_aspect_from_config(const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr>> b);
 
 	//do not override that method in subclasses which cannot create candidate_actions
-	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
+	virtual void do_parse_candidate_action_from_config(rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b);
 
 	//do not override that method in subclasses which cannot create goals
-	virtual void do_parse_goal_from_config( const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b );
+	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b);
 
 	//do not override that method in subclasses which cannot create engines
-	virtual void do_parse_engine_from_config( const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
+	virtual void do_parse_engine_from_config(const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b);
 
 	//do not override that method in subclasses which cannot create stages
-	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
+	virtual void do_parse_stage_from_config(ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b);
 
 	//do not override that method in subclasses which cannot evaluate formulas
 	virtual std::string evaluate(const std::string& str);
@@ -109,18 +109,18 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *engine_factories;
-		if (engine_factories==nullptr) {
+		if(engine_factories==nullptr) {
 			engine_factories = new factory_map;
 		}
 		return *engine_factories;
 	}
 
-	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ) = 0;
-	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ) = 0;
+	virtual engine_ptr get_new_instance(readonly_context &ai, const config &cfg) = 0;
+	virtual engine_ptr get_new_instance(readonly_context &ai, const std::string& name) = 0;
 
-	engine_factory( const std::string &name )
+	engine_factory(const std::string &name)
 	{
-		if (is_duplicate(name)) {
+		if(is_duplicate(name)) {
 			return;
 		}
 		factory_ptr ptr_to_this(this);
@@ -133,20 +133,20 @@ public:
 template<class ENGINE>
 class register_engine_factory : public engine_factory {
 public:
-	register_engine_factory( const std::string &name )
-		: engine_factory( name )
+	register_engine_factory(const std::string &name)
+		: engine_factory(name)
 	{
 	}
 
-	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ){
+	virtual engine_ptr get_new_instance(readonly_context &ai, const config &cfg){
 		engine_ptr e = std::make_shared<ENGINE>(ai, cfg);
-		if (!e->is_ok()) {
+		if(!e->is_ok()) {
 			return engine_ptr();
 		}
 		return e;
 	}
 
-	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ){
+	virtual engine_ptr get_new_instance(readonly_context &ai, const std::string& name){
 		config cfg;
 		cfg["name"] = name;
 		cfg["engine"] = "cpp"; // @Crab: what is the purpose of this line(neph)

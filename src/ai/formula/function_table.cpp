@@ -56,10 +56,10 @@ namespace {
  */
 class unit_adapter {
 	public:
-		unit_adapter(const variant& arg) : unit_type_(), unit_() {
+		unit_adapter(const variant& arg) : unit_type_(), unit_(){
 			auto unit = arg.try_convert<unit_callable>();
 
-			if (unit) {
+			if(unit){
 				unit_ = &unit->get_unit();
 			} else {
 				unit_type_ = &(arg.convert_to<unit_type_callable>()->get_unit_type());
@@ -73,7 +73,7 @@ class unit_adapter {
 		 * on offense, or on particular terrain. For unit_type, abilities aren't considered at all.
 		 */
 		int damage_from(const attack_type& attack) const {
-			if(unit_type_ != nullptr) {
+			if(unit_type_ != nullptr){
 				std::string type = attack.effective_damage_type().first;
 				int res = unit_type_->movement_type().resistance_against(type);
 				return res;
@@ -83,7 +83,7 @@ class unit_adapter {
 		}
 
 		const_attack_itors attacks() const {
-			if(unit_type_ != nullptr) {
+			if(unit_type_ != nullptr){
 				return unit_type_->attacks();
 			} else {
 				return unit_->attacks();
@@ -91,7 +91,7 @@ class unit_adapter {
 		}
 
 		int movement_cost(const t_translation::terrain_code & terrain) const {
-			if(unit_type_ != nullptr) {
+			if(unit_type_ != nullptr){
 				return unit_type_->movement_type().movement_cost(terrain);
 			} else {
 				return unit_->movement_cost(terrain);
@@ -125,10 +125,10 @@ DEFINE_FAI_FUNCTION(distance_to_nearest_unowned_village, 1, 1)
 	int best = 1000000;
 	const std::vector<map_location>& villages = resources::gameboard->map().villages();
 	const std::set<map_location>& my_villages = ai_.current_team().villages();
-	for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
+	for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i){
 		int distance = distance_between(loc, *i);
-		if(distance < best) {
-			if(my_villages.count(*i) == 0) {
+		if(distance < best){
+			if(my_villages.count(*i) == 0){
 				best = distance;
 			}
 		}
@@ -142,7 +142,7 @@ static unsigned search_counter;
 namespace {
 	struct indexer {
 		int w, h;
-		indexer(int a, int b) : w(a), h(b) { }
+		indexer(int a, int b) : w(a), h(b){ }
 		int operator()(const map_location& loc) const {
 			return loc.y * w + loc.x;
 		}
@@ -180,7 +180,7 @@ namespace {
 
 	struct comp {
 		const std::vector<node>& nodes;
-		comp(const std::vector<node>& n) : nodes(n) { }
+		comp(const std::vector<node>& n) : nodes(n){ }
 		bool operator()(int l, int r) const {
 			return nodes[r] < nodes[l];
 		}
@@ -197,7 +197,7 @@ namespace {
 		std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
 		search_counter += 2;
-		if (search_counter == 0) search_counter = 2;
+		if(search_counter == 0) search_counter = 2;
 
 		static std::vector<node> nodes;
 		nodes.resize(static_cast<size_t>(map.w()) * map.h());
@@ -208,34 +208,34 @@ namespace {
 		nodes[index(loc)] = node(0, loc);
 		std::vector<int> pq;
 		pq.push_back(index(loc));
-		while (!pq.empty()) {
+		while(!pq.empty()){
 			node& n = nodes[pq.front()];
 			std::pop_heap(pq.begin(), pq.end(), node_comp);
 			pq.pop_back();
 			n.in = search_counter;
 
 			get_adjacent_tiles(n.loc_, locs.data());
-			for (int i = teleports.count(n.loc_) ? locs.size() : 6; i-- > 0;) {
-				if (!locs[i].valid(map.w(), map.h())) continue;
+			for(int i = teleports.count(n.loc_) ? locs.size() : 6; i-- > 0;){
+				if(!locs[i].valid(map.w(), map.h())) continue;
 
 				node& next = nodes[index(locs[i])];
 				bool next_visited = next.in - search_counter <= 1u;
 
 				// test if the current path to locs[i] is better than this one could possibly be.
 				// we do this a couple more times below
-				if (next_visited &&  !(n < next)) continue;
+				if(next_visited &&  !(n < next)) continue;
 				const int move_cost = u.movement_cost(map[locs[i]]);
 
 				node t = node(n.movement_cost_ + move_cost, locs[i]);
 
-				if (next_visited &&  !(t < next)) continue;
+				if(next_visited &&  !(t < next)) continue;
 
 				bool in_list = next.in == search_counter + 1;
 				t.in = search_counter + 1;
 				next = t;
 
 				// if already in the priority queue then we just update it, else push it.
-				if (in_list) {
+				if(in_list){
 					std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
 				}
 				else {
@@ -245,8 +245,8 @@ namespace {
 			}
 		}
 
-		for (int x = 0; x < map.w(); ++x) {
-			for (int y = 0; y < map.h(); ++y)
+		for(int x = 0; x < map.w(); ++x){
+			for(int y = 0; y < map.h(); ++y)
 			{
 				int i = y * map.w() + x;
 				const node &n = nodes[i];
@@ -266,52 +266,52 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	const variant leaders_input = args()[1]->evaluate(variables,fdb);
 
 	int enemy_tolerance = 3;
-	if( args().size() > 2 )
+	if(args().size() > 2)
 		enemy_tolerance = args()[2]->evaluate(variables,fdb).as_int();
 
 	int enemy_border_tolerance = 5;
-	if( args().size() > 3 )
+	if(args().size() > 3)
 		enemy_border_tolerance = args()[3]->evaluate(variables,fdb).as_int();
 
 	int ally_tolerance = 3;
-	if( args().size() > 4 )
+	if(args().size() > 4)
 		ally_tolerance = args()[4]->evaluate(variables,fdb).as_int();
 
-	if( !units_input.is_list() )
+	if(!units_input.is_list())
 		return variant();
 
 	std::size_t number_of_teams = units_input.num_elements();
 
-	std::vector< std::vector<int>> scores( number_of_teams );
+	std::vector< std::vector<int>> scores(number_of_teams);
 
-	for( std::size_t i = 0; i< number_of_teams; ++i)
+	for(std::size_t i = 0; i< number_of_teams; ++i)
 		scores[i].resize(static_cast<size_t>(w)*h);
 
 	/* // TODO: Do we need this?
-	for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i) {
+	for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i){
 		unit_counter[i->second.side()-1]++;
 		unit_adapter unit(i->second);
-		find_movemap( resources::gameboard->map(), resources::gameboard->units(), unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true );
+		find_movemap(resources::gameboard->map(), resources::gameboard->units(), unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true);
 	}
 	*/
 
-	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side) {
-		if( leaders_input[side].is_empty() )
+	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side){
+		if(leaders_input[side].is_empty())
 			continue;
 
 		const map_location loc = leaders_input[side][0].convert_to<location_callable>()->loc();
 		const variant units_of_side = units_input[side];
 
-		for(std::size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it) {
+		for(std::size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it){
 			unit_adapter unit(units_of_side[unit_it]);
-			find_movemap( unit, loc, scores[side], true, ai_ );
+			find_movemap(unit, loc, scores[side], true, ai_);
 		}
 	}
 
 	std::size_t index = 0;
-	for( std::vector< std::vector<int>>::iterator i = scores.begin() ; i != scores.end() ; ++i) {
-		for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j ) {
-			if(units_input[index].num_elements() != 0) {
+	for(std::vector< std::vector<int>>::iterator i = scores.begin() ; i != scores.end() ; ++i){
+		for(std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j){
+			if(units_input[index].num_elements() != 0){
 				*j /= units_input[index].num_elements();
 			} else {
 				*j = 0;
@@ -328,51 +328,51 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	std::vector<int> enemies;
 	std::vector<int> allies;
 
-	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side) {
-		if( side == current_side)
+	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side){
+		if(side == current_side)
 			continue;
 
-		if( ai_.current_team().is_enemy(side+1) ) {
-			if( !leaders_input[side].is_empty() )
+		if(ai_.current_team().is_enemy(side+1)){
+			if(!leaders_input[side].is_empty())
 				enemies.push_back(side);
 		} else {
-			if( !leaders_input[side].is_empty() )
+			if(!leaders_input[side].is_empty())
 				allies.push_back(side);
 		}
 	}
 
-	//calculate_map_ownership( recruits_of_side, map(units_of_side, 'units', map( filter(units, leader), loc) ) )
+	//calculate_map_ownership(recruits_of_side, map(units_of_side, 'units', map(filter(units, leader), loc)))
 	//map(, debug_label(key,value))
-	for (int x = 0; x < w; ++x) {
-		for (int y = 0; y < h; ++y)
+	for(int x = 0; x < w; ++x){
+		for(int y = 0; y < h; ++y)
 		{
 			int i = y * w + x;
 			bool valid = true;
 			bool enemy_border = false;
 
-			if( scores[current_side][i] > 98 )
+			if(scores[current_side][i] > 98)
 				continue;
 
-			for (int side : enemies) {
+			for(int side : enemies){
 				int diff = scores[current_side][i] - scores[side][i];
-				if ( diff > enemy_tolerance) {
+				if(diff > enemy_tolerance){
 					valid = false;
 					break;
-				} else if( std::abs(diff) < enemy_border_tolerance )
+				} else if(std::abs(diff) < enemy_border_tolerance)
 					enemy_border = true;
 			}
 
-			if( valid ) {
-				for (int side : allies) {
-					if ( scores[current_side][i] - scores[side][i] > ally_tolerance ) {
+			if(valid){
+				for(int side : allies){
+					if(scores[current_side][i] - scores[side][i] > ally_tolerance){
 						valid = false;
 						break;
 					}
 				}
 			}
 
-			if( valid ) {
-				if( enemy_border )
+			if(valid){
+				if(enemy_border)
 					res.emplace(variant(std::make_shared<location_callable>(map_location(x, y))), variant(scores[0][i] + 10000));
 				else
 					res.emplace(variant(std::make_shared<location_callable>(map_location(x, y))), variant(scores[0][i]));
@@ -389,18 +389,18 @@ DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 	int best = 1000000;
 	int best_i = -1;
 
-	for(std::size_t i = 0; i < items.num_elements(); ++i) {
+	for(std::size_t i = 0; i < items.num_elements(); ++i){
 
 		const map_location move_loc = items[i].convert_to<location_callable>()->loc();
 		int distance = distance_between(loc, move_loc);
 
-		if(distance < best) {
+		if(distance < best){
 				best = distance;
 				best_i = i;
 		}
 	}
 
-	if( best_i != -1)
+	if(best_i != -1)
 		return variant(std::make_shared<location_callable>(items[best_i].convert_to<location_callable>()->loc()));
 	else
 		return variant();
@@ -417,7 +417,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 
 	//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
 	auto path = filesystem::get_wml_location(filename);
-	if(!path) {
+	if(!path){
 		ERR_AI << "run_file : not found [" << filename <<"]";
 		return variant(); //no suitable file
 	}
@@ -425,7 +425,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	std::string formula_string = filesystem::read_file(path.value());
 	//need to get function_table from somewhere or delegate to someone who has access to it
 	formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
-	if(parsed_formula == formula_ptr()) {
+	if(parsed_formula == formula_ptr()){
 		ERR_AI << "run_file : unable to create formula";
 		return variant(); //was unable to create a formula from file
 	}
@@ -442,32 +442,32 @@ DEFINE_WFL_FUNCTION(castle_locs, 1, 1)
 
 			queued_locs.push(starting_loc);
 
-			while( !queued_locs.empty() ) {
+			while(!queued_locs.empty()){
 				const map_location loc = queued_locs.front();
 				queued_locs.pop();
 
-				if ( visited_locs.find( loc ) != visited_locs.end() )
+				if(visited_locs.find(loc) != visited_locs.end())
 					continue;
 
 				visited_locs.insert(loc);
 
-				for(const map_location& adj : get_adjacent_tiles(loc)) {
-					if (resources::gameboard->map().on_board(adj) && visited_locs.find( adj ) == visited_locs.end() ) {
-						if (resources::gameboard->map().get_terrain_info(adj).is_keep() ||
-								resources::gameboard->map().get_terrain_info(adj).is_castle() ) {
+				for(const map_location& adj : get_adjacent_tiles(loc)){
+					if(resources::gameboard->map().on_board(adj) && visited_locs.find(adj) == visited_locs.end()){
+						if(resources::gameboard->map().get_terrain_info(adj).is_keep() ||
+								resources::gameboard->map().get_terrain_info(adj).is_castle()){
 							queued_locs.push(adj);
 						}
 					}
 				}
 			}
 
-			if ( !resources::gameboard->map().get_terrain_info(starting_loc).is_keep() &&
-					!resources::gameboard->map().get_terrain_info(starting_loc).is_castle() )
+			if(!resources::gameboard->map().get_terrain_info(starting_loc).is_keep() &&
+					!resources::gameboard->map().get_terrain_info(starting_loc).is_castle())
 				visited_locs.erase(starting_loc);
 
 			std::vector<variant> res;
-			for (const map_location& ml : visited_locs) {
-				res.emplace_back(std::make_shared<location_callable>( ml ));
+			for(const map_location& ml : visited_locs){
+				res.emplace_back(std::make_shared<location_callable>(ml));
 			}
 
 	return variant(res);
@@ -484,13 +484,13 @@ DEFINE_WFL_FUNCTION(timeofday_modifier, 1, 2)
 {
 	variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"timeofday_modifier:unit"));
 
-	if( u.is_null() ) {
+	if(u.is_null()){
 		return variant();
 	}
 
 	auto u_call = u.try_convert<unit_callable>();
 
-	if(!u_call) {
+	if(!u_call){
 		return variant();
 	}
 
@@ -498,11 +498,11 @@ DEFINE_WFL_FUNCTION(timeofday_modifier, 1, 2)
 
 	map_location loc;
 
-	if(args().size()==2) {
+	if(args().size()==2){
 		loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "timeofday_modifier:location")).convert_to<location_callable>()->loc();
 	}
 
-	if(!loc.valid()) {
+	if(!loc.valid()){
 		loc = u_call->get_location();
 	}
 
@@ -518,8 +518,8 @@ DEFINE_FAI_FUNCTION(nearest_keep, 1, 1)
 	ai_.get_keeps();
 	int size = ai_.get_keeps_cache().num_elements();
 
-	for( int i = 0 ; i < size; ++i) {
-		int distance = distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc() );
+	for(int i = 0 ; i < size; ++i){
+		int distance = distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc());
 		if(distance < best)
 		{
 				best = distance;
@@ -527,7 +527,7 @@ DEFINE_FAI_FUNCTION(nearest_keep, 1, 1)
 		}
 	}
 
-	if( best_i != -1)
+	if(best_i != -1)
 		return variant(std::make_shared<location_callable>(ai_.get_keeps_cache()[best_i].convert_to<location_callable>()->loc()));
 	else
 		return variant();
@@ -542,7 +542,7 @@ DEFINE_FAI_FUNCTION(suitable_keep, 1, 1)
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "suitable_keep:location")).convert_to<location_callable>()->loc();
 	const unit_map& units = resources::gameboard->units();
 	const unit_map::const_iterator u = units.find(loc);
-	if (u == units.end()){
+	if(u == units.end()){
 		return variant();
 	}
 	const pathfind::paths unit_paths(*u, false, true, ai_.current_team());
@@ -554,7 +554,7 @@ DEFINE_FAI_FUNCTION(find_shroud, 0, 1)
 	std::vector<variant> vars;
 	int w,h;
 
-	if(args().size()==1) {
+	if(args().size()==1){
 		const gamemap& m = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "find_shroud:gamemap")).convert_to<gamemap_callable>()->get_gamemap();
 		w = m.w();
 		h = m.h();
@@ -564,7 +564,7 @@ DEFINE_FAI_FUNCTION(find_shroud, 0, 1)
 	}
 
 	for(int i = 0; i < w; ++i)
-		for(int j = 0; j < h; ++j) {
+		for(int j = 0; j < h; ++j){
 			if(ai_.current_team().shrouded(map_location(i,j)))
 				vars.emplace_back(std::make_shared<location_callable>(map_location(i, j)));
 		}
@@ -577,16 +577,16 @@ DEFINE_FAI_FUNCTION(close_enemies, 2, 2)
 	std::vector<variant> vars;
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "close_enemies:location")).convert_to<location_callable>()->loc();
 	int range_s = args()[1]->evaluate(variables,add_debug_info(fdb,1,"close_enemies:distance")).as_int();
-	if (range_s < 0) {
+	if(range_s < 0){
 		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")";
 		range_s = 0;
 	}
 	std::size_t range = static_cast<std::size_t>(range_s);
 	unit_map::const_iterator un = resources::gameboard->units().begin();
 	unit_map::const_iterator end = resources::gameboard->units().end();
-	while (un != end) {
-		if (distance_between(loc, un->get_location()) <= range) {
-			if (un->side() != ai_.get_side()) {//fixme: ignores allied units
+	while(un != end){
+		if(distance_between(loc, un->get_location()) <= range){
+			if(un->side() != ai_.get_side()){//fixme: ignores allied units
 				vars.emplace_back(std::make_shared<unit_callable>(*un));
 			}
 		}
@@ -599,13 +599,13 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 {
 	std::vector<variant> vars;
 	int weapon;
-	if (args().size() > 3) weapon = args()[3]->evaluate(variables,add_debug_info(fdb,3,"calculate_outcome:weapon")).as_int();
+	if(args().size() > 3) weapon = args()[3]->evaluate(variables,add_debug_info(fdb,3,"calculate_outcome:weapon")).as_int();
 	else weapon = -1;
 
 	const unit_map& units = resources::gameboard->units();
 	map_location attacker_location =
 		args()[0]->evaluate(variables, add_debug_info(fdb, 0, "calculate_outcome:attacker_current_location")).convert_to<location_callable>()->loc();
-	if(units.count(attacker_location) == 0) {
+	if(units.count(attacker_location) == 0){
 		ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
 			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")";
 		return variant();
@@ -613,7 +613,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 
 	map_location defender_location =
 		args()[2]->evaluate(variables,add_debug_info(fdb, 2, "calculate_outcome:defender_location")).convert_to<location_callable>()->loc();
-	if(units.count(defender_location) == 0) {
+	if(units.count(defender_location) == 0){
 		ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
 			defender_location.wml_x() << "," << defender_location.wml_y() << ")";
 		return variant();
@@ -626,8 +626,8 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	int i = 0;
 	std::vector<variant> hitLeft;
 	std::vector<variant> prob;
-	while (it != hp_dist.end()) {
-		if (*it != 0) {
+	while(it != hp_dist.end()){
+		if(*it != 0){
 			hitLeft.emplace_back(i);
 			prob.emplace_back(static_cast<int>(*it*10000));
 		}
@@ -635,13 +635,13 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 		++i;
 	}
 	std::vector<variant> status;
-	if (bc.get_attacker_combatant().poisoned != 0)
+	if(bc.get_attacker_combatant().poisoned != 0)
 		status.emplace_back("Poisoned");
-	if (bc.get_attacker_combatant().slowed != 0)
+	if(bc.get_attacker_combatant().slowed != 0)
 		status.emplace_back("Slowed");
-	if (bc.get_defender_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
+	if(bc.get_defender_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
 		status.emplace_back("Stoned");
-	if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
+	if(bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
 		status.emplace_back("Zombiefied");
 	vars.emplace_back(std::make_shared<outcome_callable>(hitLeft, prob, status));
 	hitLeft.clear();
@@ -650,21 +650,21 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	hp_dist = bc.get_defender_combatant().hp_dist;
 	it = hp_dist.begin();
 	i = 0;
-	while (it != hp_dist.end()) {
-		if (*it != 0) {
+	while(it != hp_dist.end()){
+		if(*it != 0){
 			hitLeft.emplace_back(i);
 			prob.emplace_back(static_cast<int>(*it*10000));
 		}
 		++it;
 		++i;
 	}
-	if (bc.get_defender_combatant().poisoned != 0)
+	if(bc.get_defender_combatant().poisoned != 0)
 		status.emplace_back("Poisoned");
-	if (bc.get_defender_combatant().slowed != 0)
+	if(bc.get_defender_combatant().slowed != 0)
 		status.emplace_back("Slowed");
-	if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_defender_stats().hp)
+	if(bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_defender_stats().hp)
 		status.emplace_back("Stoned");
-	if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
+	if(bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 		status.emplace_back("Zombiefied");
 	vars.emplace_back(std::make_shared<outcome_callable>(hitLeft, prob, status));
 	return variant(vars);
@@ -676,19 +676,19 @@ DEFINE_WFL_FUNCTION(outcomes, 1, 1)
 	auto analysis = attack.convert_to<ai::attack_analysis>();
 	//unit_map units_with_moves(resources::gameboard->units());
 	//typedef std::pair<map_location, map_location> mv;
-	//for(const mv &m : analysis->movements) {
+	//for(const mv &m : analysis->movements){
 	//	units_with_moves.move(m.first, m.second);
 	//}
 
 	std::vector<variant> vars;
-	if(analysis->chance_to_kill > 0.0) {
+	if(analysis->chance_to_kill > 0.0){
 		//unit_map units(units_with_moves);
 		//units.erase(analysis->target);
 		vars.emplace_back(std::make_shared<position_callable>(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100)));
 
 	}
 
-	if(analysis->chance_to_kill < 1.0) {
+	if(analysis->chance_to_kill < 1.0){
 		//unit_map units(units_with_moves);
 		vars.emplace_back(std::make_shared<position_callable>(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100)));
 	}
@@ -708,7 +708,7 @@ DEFINE_WFL_FUNCTION(recall, 1, 2)
 {
 	const std::string id = args()[0]->evaluate(variables,add_debug_info(fdb,0,"recall:id")).as_string();
 	map_location loc;
-	if(args().size() >= 2) {
+	if(args().size() >= 2){
 		loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "recall:location")).convert_to<location_callable>()->loc();
 	}
 
@@ -719,7 +719,7 @@ DEFINE_WFL_FUNCTION(recruit, 1, 2)
 {
 	const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"recruit:type")).as_string();
 	map_location loc;
-	if(args().size() >= 2) {
+	if(args().size() >= 2){
 		loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "recruit:location")).convert_to<location_callable>()->loc();
 	}
 
@@ -735,7 +735,7 @@ DEFINE_FAI_FUNCTION(shortest_path, 2, 3)
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "shortest_path:dst")).convert_to<location_callable>()->loc();
 	map_location unit_loc;
 
-	if( src == dst )
+	if(src == dst)
 		return variant(locations);
 
 	if(args().size() > 2)
@@ -745,21 +745,21 @@ DEFINE_FAI_FUNCTION(shortest_path, 2, 3)
 
 	unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-	if( unit_it == resources::gameboard->units().end() ) {
+	if(unit_it == resources::gameboard->units().end()){
 		std::ostringstream str;
 		str << "shortest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
-		throw formula_error( str.str(), "", "", 0);
+		throw formula_error(str.str(), "", "", 0);
 	}
 
 	pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-	pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+	pathfind::plain_route route = ai_.shortest_path_calculator(src, dst, unit_it, allowed_teleports);
 
-	if( route.steps.size() < 2 ) {
+	if(route.steps.size() < 2){
 		return variant(locations);
 	}
 
-	for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+	for(std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter){
 		locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
 	}
 
@@ -774,7 +774,7 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "simplest_path:dst")).convert_to<location_callable>()->loc();
 	map_location unit_loc;
 
-	if( src == dst )
+	if(src == dst)
 		return variant(locations);
 
 	if(args().size() > 2)
@@ -784,10 +784,10 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 
 	unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-	if( unit_it == resources::gameboard->units().end() ) {
+	if(unit_it == resources::gameboard->units().end()){
 		std::ostringstream str;
 		str << "simplest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
-		throw formula_error( str.str(), "", "", 0);
+		throw formula_error(str.str(), "", "", 0);
 	}
 
 	pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
@@ -796,12 +796,12 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 
 	pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
-	if( route.steps.size() < 2 ) {
+	if(route.steps.size() < 2){
 		return variant(locations);
 	}
 
-	for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-		if(unit_it->movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*loc_iter]) < movetype::UNREACHABLE) {
+	for(std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter){
+		if(unit_it->movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*loc_iter]) < movetype::UNREACHABLE){
 			locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
 		} else {
 			break;
@@ -818,7 +818,7 @@ DEFINE_FAI_FUNCTION(next_hop, 2, 3)
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "next_hop:dst")).convert_to<location_callable>()->loc();
 			map_location unit_loc;
 
-			if( src == dst )
+			if(src == dst)
 		return variant();
 
 			if(args().size() > 2)
@@ -828,36 +828,36 @@ DEFINE_FAI_FUNCTION(next_hop, 2, 3)
 
 			unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-	if( unit_it == resources::gameboard->units().end() ) {
+	if(unit_it == resources::gameboard->units().end()){
 		std::ostringstream str;
 		str << "next_hop function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
-		throw formula_error( str.str(), "", "", 0);
+		throw formula_error(str.str(), "", "", 0);
 	}
 
 	pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-	pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+	pathfind::plain_route route = ai_.shortest_path_calculator(src, dst, unit_it, allowed_teleports);
 
-			if( route.steps.size() < 2 ) {
+			if(route.steps.size() < 2){
 		return variant();
 			}
 
 	map_location loc = map_location::null_location();
 	const ai::moves_map &possible_moves = ai_.get_possible_moves();
 	const ai::moves_map::const_iterator& p_it = possible_moves.find(unit_loc);
-	if (p_it==possible_moves.end() ) {
+	if(p_it==possible_moves.end()){
 		return variant();
 	}
 
-			for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+			for(std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter){
 
-		if (p_it->second.destinations.find(*loc_iter) != p_it->second.destinations.end() ) {
+		if(p_it->second.destinations.find(*loc_iter) != p_it->second.destinations.end()){
 			loc = *loc_iter;
 		} else {
 			break;
 		}
 			}
-	if (loc==map_location::null_location()) {
+	if(loc==map_location::null_location()){
 		return variant();
 	}
 	return variant(std::make_shared<location_callable>(loc));
@@ -898,7 +898,7 @@ DEFINE_WFL_FUNCTION(attack, 3, 4)
 	const map_location src = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "attack:src")).convert_to<location_callable>()->loc();
 	const map_location dst = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "attack:dst")).convert_to<location_callable>()->loc();
 	const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
-	if(resources::gameboard->units().count(move_from) == 0 || resources::gameboard->units().count(dst) == 0) {
+	if(resources::gameboard->units().count(move_from) == 0 || resources::gameboard->units().count(dst) == 0){
 		ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst;
 		return variant();
 	}
@@ -913,7 +913,7 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 
 	const map_location location = var0.convert_to<location_callable>()->loc();
 	std::string text;
-	if( var1.is_string() )
+	if(var1.is_string())
 		text = var1.as_string();
 	else
 		text = var1.to_debug_string();
@@ -925,7 +925,7 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 
 	const terrain_label *res;
 	res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);
-	if (res && resources::recorder)
+	if(res && resources::recorder)
 		resources::recorder->add_label(res);
 
 	std::vector<variant> result;
@@ -939,10 +939,10 @@ DEFINE_WFL_FUNCTION(is_village, 2, 3)
 	const gamemap& m = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "is_village:map")).convert_to<gamemap_callable>()->get_gamemap();
 
 	map_location loc;
-	if(args().size() == 2) {
+	if(args().size() == 2){
 		loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "is_village:location")).convert_to<location_callable>()->loc();
 	} else {
-		loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:x")).as_int(),
+		loc = map_location(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:x")).as_int(),
 					args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_village:y")).as_int(), wml_loc());
 	}
 	return variant(m.is_village(loc));
@@ -955,14 +955,14 @@ DEFINE_FAI_FUNCTION(is_unowned_village, 2, 3)
 	const std::set<map_location>& my_villages = ai_.current_team().villages();
 
 	map_location loc;
-	if(args().size() == 2) {
+	if(args().size() == 2){
 		loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "is_unowned_village:location")).convert_to<location_callable>()->loc();
 	} else {
-		loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:x")).as_int(),
+		loc = map_location(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:x")).as_int(),
 					args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_unowned_village:y")).as_int(), wml_loc());
 	}
 
-	if(m.is_village(loc) && (my_villages.count(loc)==0) ) {
+	if(m.is_village(loc) && (my_villages.count(loc)==0)){
 		return variant(true);
 	} else {
 		return variant(false);
@@ -973,7 +973,7 @@ DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 {
 	variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_moves:unit_location"));
 	std::vector<variant> vars;
-	if(res.is_null()) {
+	if(res.is_null()){
 		return variant(vars);
 	}
 
@@ -982,7 +982,7 @@ DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 	typedef ai::move_map::const_iterator Itor;
 	std::pair<Itor,Itor> range = srcdst.equal_range(loc);
 
-	for(Itor i = range.first; i != range.second; ++i) {
+	for(Itor i = range.first; i != range.second; ++i){
 		vars.emplace_back(std::make_shared<location_callable>(i->second));
 	}
 
@@ -996,7 +996,7 @@ DEFINE_WFL_FUNCTION(units_can_reach, 2, 2)
 	const ai::move_map& dstsrc = dstsrc_var.convert_to<move_map_callable>()->dstsrc();
 	std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 		dstsrc.equal_range(args()[1]->evaluate(variables, add_debug_info(fdb, 1, "units_can_reach:possible_move_list")).convert_to<location_callable>()->loc());
-	while(range.first != range.second) {
+	while(range.first != range.second){
 		unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
 		assert(un != resources::gameboard->units().end());
 		vars.emplace_back(std::make_shared<unit_callable>(*un));
@@ -1009,7 +1009,7 @@ DEFINE_WFL_FUNCTION(units_can_reach, 2, 2)
 DEFINE_FAI_FUNCTION(is_avoided_location, 1, 1)
 {
 	variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"is_avoided_location:location"));
-	if(res.is_null()) {
+	if(res.is_null()){
 		return variant();
 	}
 	const map_location& loc = res.convert_to<location_callable>()->loc();
@@ -1020,13 +1020,13 @@ DEFINE_WFL_FUNCTION(max_possible_damage, 2, 2)
 {
 	variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage:unit1"));
 	variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage:unit2"));
-	if(u1.is_null() || u2.is_null()) {
+	if(u1.is_null() || u2.is_null()){
 		return variant();
 	}
 
 	unit_adapter u_attacker(u1), u_defender(u2);
 	int best = 0;
-	for(const attack_type& atk : u_attacker.attacks()) {
+	for(const attack_type& atk : u_attacker.attacks()){
 		const int dmg = round_damage(atk.damage(), u_defender.damage_from(atk), 100) * atk.num_attacks();
 		if(dmg > best)
 			best = dmg;
@@ -1035,13 +1035,13 @@ DEFINE_WFL_FUNCTION(max_possible_damage, 2, 2)
 }
 
 namespace {
-	std::pair<int, int> best_melee_and_ranged_attacks(unit_adapter attacker, unit_adapter defender) {
+	std::pair<int, int> best_melee_and_ranged_attacks(unit_adapter attacker, unit_adapter defender){
 		int highest_melee_damage = 0;
 		int highest_ranged_damage = 0;
 
-		for (const attack_type &attack : attacker.attacks()) {
+		for(const attack_type &attack : attacker.attacks()){
 			const int dmg = round_damage(attack.damage(), defender.damage_from(attack), 100) * attack.num_attacks();
-			if (attack.range() == "melee") {
+			if(attack.range() == "melee"){
 				highest_melee_damage = std::max(highest_melee_damage, dmg);
 			} else {
 				highest_ranged_damage = std::max(highest_ranged_damage, dmg);
@@ -1057,7 +1057,7 @@ DEFINE_WFL_FUNCTION(max_possible_damage_with_retaliation, 2, 2)
 	variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage_with_retaliation:unit1"));
 	variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage_with_retaliation:unit2"));
 
-	if(u1.is_null() || u2.is_null()) {
+	if(u1.is_null() || u2.is_null()){
 		return variant();
 	}
 
@@ -1082,7 +1082,7 @@ class ai_formula_function : public formula_function {
 protected:
 	formula_ai& ai_;
 public:
-	ai_formula_function(const std::string& name, ai::formula_ai& ai) : formula_function(name), ai_(ai) {}
+	ai_formula_function(const std::string& name, ai::formula_ai& ai) : formula_function(name), ai_(ai){}
 	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const {
 		return std::make_shared<T>(args, ai_);
 	}

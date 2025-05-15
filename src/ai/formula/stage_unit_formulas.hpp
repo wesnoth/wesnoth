@@ -28,7 +28,7 @@ class formula_ai;
 
 class stage_unit_formulas: public stage {
 public:
-	stage_unit_formulas( ai_context &context, const config &cfg, formula_ai &fai );
+	stage_unit_formulas(ai_context &context, const config &cfg, formula_ai &fai);
 
 	virtual ~stage_unit_formulas();
 

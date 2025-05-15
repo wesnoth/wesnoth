@@ -58,7 +58,7 @@ tristate_button::tristate_button(
 {
 	// TODO: highdpi - there seem to be higher-quality 74-px versions of these available, but as that's not actually an integer multiple of 38... this is not a straight swap
 
-	if (button_image_name.empty()) {
+	if(button_image_name.empty()){
 		button_image_name = "buttons/button_selectable/button_selectable_38_";
 	}
 
@@ -91,7 +91,7 @@ tristate_button::tristate_button(
 		image::get_texture(button_image_name + "border-active-pressed-both.png");
 
 	//TODO
-//	if (button_image.null()) {
+//	if(button_image.null()){
 //		ERR_DP<< "error initializing button!";
 //		throw error();
 //	}
@@ -102,13 +102,13 @@ tristate_button::tristate_button(
 
 }
 
-tristate_button::~tristate_button() {}
+tristate_button::~tristate_button(){}
 
-void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
+void tristate_button::set_pressed(PRESSED_STATE new_pressed_state){
 
 	STATE new_state = state_;
 
-	switch (new_pressed_state) {
+	switch (new_pressed_state){
 		case LEFT:
 			new_state = (state_ == PRESSED_ACTIVE_LEFT) ? PRESSED_ACTIVE_LEFT : PRESSED_LEFT;
 			break;
@@ -122,18 +122,18 @@ void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 			new_state = NORMAL;
 	}
 
-	if (state_ != new_state) {
+	if(state_ != new_state){
 		state_ = new_state;
 		set_dirty();
 	}
 }
 
 //TODO
-//void tristate_button::set_active(bool active) {
-//	if ((state_ == NORMAL) && active) {
+//void tristate_button::set_active(bool active){
+//	if((state_ == NORMAL) && active){
 //		state_ = ACTIVE;
 //		set_dirty();
-//	} else if ((state_ == ACTIVE) && !active) {
+//	} else if((state_ == ACTIVE) && !active){
 //		state_ = NORMAL;
 //		set_dirty();
 //	}
@@ -141,7 +141,7 @@ void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 
 tristate_button::PRESSED_STATE tristate_button::pressed_state() const {
 
-	switch (state_) {
+	switch (state_){
 		case PRESSED_LEFT:
 		case PRESSED_ACTIVE_LEFT:
 		case TOUCHED_BOTH_LEFT:
@@ -158,8 +158,8 @@ tristate_button::PRESSED_STATE tristate_button::pressed_state() const {
 	}
 }
 
-void tristate_button::enable(bool new_val) {
-	if (new_val != enabled()) {
+void tristate_button::enable(bool new_val){
+	if(new_val != enabled()){
 		pressed_ = false;
 		// check buttons should keep their state
 		state_ = NORMAL;
@@ -173,7 +173,7 @@ void tristate_button::draw_contents()
 	texture overlay;
 	texture base = baseImage_;
 
-	switch (state_) {
+	switch (state_){
 
 	case UNINIT:
 		return;
@@ -232,12 +232,12 @@ void tristate_button::draw_contents()
 	// TODO: don't hardcode an implicit reliance on 38 pixel buttons
 	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
 	draw::blit(itemBaseImage_, magic);
-	if (itemOverlayImage_) {
+	if(itemOverlayImage_){
 		draw::blit(itemOverlayImage_, magic);
 	}
 
 	// Draw the button overlay, if any.
-	if (overlay) {
+	if(overlay){
 		draw::blit(overlay, loc);
 	}
 }
@@ -247,12 +247,12 @@ bool tristate_button::hit(int x, int y) const {
 	return location().contains(x, y);
 }
 
-void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {
+void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event){
 
-	if (hit(event.x, event.y))
+	if(hit(event.x, event.y))
 	{ // the cursor is over the widget
 
-		switch (state_) {
+		switch (state_){
 
 		case UNINIT:
 			return;
@@ -276,7 +276,7 @@ void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {
 
 	} else { // the cursor is not over the widget
 
-		switch (state_) {
+		switch (state_){
 
 		case ACTIVE:
 			state_ = NORMAL;
@@ -302,49 +302,49 @@ void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {
 	}
 }
 
-void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
+void tristate_button::mouse_down(const SDL_MouseButtonEvent& event){
 
-	if (!hit(event.x, event.y))
+	if(!hit(event.x, event.y))
 		return;
 
 	//The widget is expected to be in one of the "active" states when the mouse cursor is hovering over it, but that currently doesn't happen if the widget is moved under the cursor by scrolling the palette.
-	if (event.button == SDL_BUTTON_RIGHT) {
-		if (state_ == ACTIVE || state_ == NORMAL)
+	if(event.button == SDL_BUTTON_RIGHT){
+		if(state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_RIGHT;
-		if (state_ == PRESSED_ACTIVE_LEFT || state_ == PRESSED_LEFT)
+		if(state_ == PRESSED_ACTIVE_LEFT || state_ == PRESSED_LEFT)
 			state_ = TOUCHED_BOTH_LEFT;
 	}
 
-	if (event.button == SDL_BUTTON_LEFT) {
-		if (state_ == ACTIVE || state_ == NORMAL)
+	if(event.button == SDL_BUTTON_LEFT){
+		if(state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_LEFT;
-		if (state_ == PRESSED_ACTIVE_RIGHT || state_ == PRESSED_RIGHT)
+		if(state_ == PRESSED_ACTIVE_RIGHT || state_ == PRESSED_RIGHT)
 			state_ = TOUCHED_BOTH_RIGHT;
 	}
 
 }
 
-void tristate_button::release() {
+void tristate_button::release(){
 	state_ = NORMAL;
 	draw_contents();
 }
 
-void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
+void tristate_button::mouse_up(const SDL_MouseButtonEvent& event){
 
-	if (!(hit(event.x, event.y)))
+	if(!(hit(event.x, event.y)))
 		return;
 
 	// the user has stopped pressing the mouse left button while on the widget
-	if (event.button == SDL_BUTTON_LEFT) {
+	if(event.button == SDL_BUTTON_LEFT){
 
-		if (state_ == TOUCHED_LEFT) {
+		if(state_ == TOUCHED_LEFT){
 			state_ = PRESSED_ACTIVE_LEFT;
 			palette_->select_fg_item(item_id_);
 			//TODO
 		//	palette_->draw(true);
 			pressed_ = true;
 		}
-		if (state_ == TOUCHED_BOTH_RIGHT) {
+		if(state_ == TOUCHED_BOTH_RIGHT){
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
 		//	palette_->select_bg_item(item_id_);
@@ -353,18 +353,18 @@ void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
 		}
 	}
 
-	if (event.button == SDL_BUTTON_RIGHT) {
+	if(event.button == SDL_BUTTON_RIGHT){
 
 		pressed_ = true;
 		palette_->select_bg_item(item_id_);
 
-		if (state_ == TOUCHED_RIGHT) {
+		if(state_ == TOUCHED_RIGHT){
 			state_ = PRESSED_ACTIVE_RIGHT;
 		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
 		//	pressed_ = true;
 		}
-		if (state_ == TOUCHED_BOTH_LEFT) {
+		if(state_ == TOUCHED_BOTH_LEFT){
 			state_ = PRESSED_ACTIVE_BOTH;
 		//	palette_->select_fg_item(item_id_);
 		//	palette_->select_bg_item(item_id_);
@@ -373,21 +373,21 @@ void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
 		}
 	}
 
-	if (pressed_)
+	if(pressed_)
 		sound::play_UI_sound(game_config::sounds::checkbox_release);
 }
 
-void tristate_button::handle_event(const SDL_Event& event) {
+void tristate_button::handle_event(const SDL_Event& event){
 
 	gui::widget::handle_event(event);
 
-	if (hidden() || !enabled())
+	if(hidden() || !enabled())
 		return;
 
 	STATE start_state = state_;
 
-	if (!mouse_locked()) {
-		switch (event.type) {
+	if(!mouse_locked()){
+		switch (event.type){
 		case SDL_MOUSEBUTTONDOWN:
 			mouse_down(event.button);
 			break;
@@ -402,11 +402,11 @@ void tristate_button::handle_event(const SDL_Event& event) {
 		}
 	}
 
-	if (start_state != state_)
+	if(start_state != state_)
 		set_dirty(true);
 }
 
-bool tristate_button::pressed() {
+bool tristate_button::pressed(){
 	const bool res = pressed_;
 	pressed_ = false;
 	return res;

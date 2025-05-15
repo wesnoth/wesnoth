@@ -45,7 +45,7 @@ typename V::result_t apply_visitor(typename V::param_t state, T&&... args)
 	// Create the visitor.
 	V visitor(std::forward<T>(args)...);
 
-	switch(state.type_) {
+	switch(state.type_){
 	case state_start:
 		return visitor.from_start(state);
 	case state_named:
@@ -70,7 +70,7 @@ variable_info<V>::variable_info(const std::string& varname, maybe_const_t<config
 {
 	try {
 		calculate_value();
-	} catch(const invalid_variablename_exception&) {
+	} catch(const invalid_variablename_exception&){
 		valid_ = false;
 	}
 }
@@ -80,8 +80,8 @@ void variable_info<V>::calculate_value()
 {
 	std::size_t previous_index = 0, name_size = name_.size();
 
-	for(std::size_t loop_index = 0; loop_index < name_size; loop_index++) {
-		switch(name_[loop_index]) {
+	for(std::size_t loop_index = 0; loop_index < name_size; loop_index++){
+		switch(name_[loop_index]){
 		case '.':
 		case '[':
 			/* '.' and '[' mark the end of a string key.
@@ -102,7 +102,7 @@ void variable_info<V>::calculate_value()
 			// After ']' we always expect a '.' or the end of the string
 			// Ignore the next char which is a '.'
 			loop_index++;
-			if(loop_index < name_.length() && name_[loop_index] != '.') {
+			if(loop_index < name_.length() && name_[loop_index] != '.'){
 				throw invalid_variablename_exception();
 			}
 
@@ -113,7 +113,7 @@ void variable_info<V>::calculate_value()
 		}
 	}
 
-	if(previous_index != name_.length() + 1) {
+	if(previous_index != name_.length() + 1){
 		// The string didn't end with ']'
 		// In this case we still didn't add the key behind the last '.'
 		apply_visitor<get_variable_key_visitor<V>>(state_, name_.substr(previous_index));
@@ -151,7 +151,7 @@ maybe_const_t<config::child_itors, V> variable_info<V>::as_array() const
 template<typename V>
 void variable_info<V>::throw_on_invalid() const
 {
-	if(!valid_) {
+	if(!valid_){
 		throw invalid_variablename_exception();
 	}
 }

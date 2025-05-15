@@ -45,10 +45,10 @@ bool controller::resolve_wml_helper(const std::string& key, const vconfig& node)
 {
 	bool found = false;
 
-	if(key == "part" && !node.empty()) {
+	if(key == "part" && !node.empty()){
 		part_pointer_type const story_part(new part(node));
 		// Use scenario name as part title if the WML doesn't supply a custom one.
-		if((*story_part).show_title() && (*story_part).title().empty()) {
+		if((*story_part).show_title() && (*story_part).title().empty()){
 			(*story_part).set_title(scenario_name_);
 		}
 

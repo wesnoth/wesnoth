@@ -50,7 +50,7 @@ static preproc_map setup_test_preproc_map()
  * because other tests will need original one to load data
  **/
 class test_config_cache : public game_config::config_cache {
-	test_config_cache() : game_config::config_cache() {}
+	test_config_cache() : game_config::config_cache(){}
 
 	public:
 	static test_config_cache& instance() ;
@@ -61,7 +61,7 @@ class test_config_cache : public game_config::config_cache {
 	}
 };
 
-test_config_cache & test_config_cache::instance() {
+test_config_cache & test_config_cache::instance(){
 	static test_config_cache * cache_  = new test_config_cache;
 	return *cache_;
 }
@@ -85,7 +85,7 @@ struct config_cache_fixture {
 	test_scoped_define test_def;
 };
 
-BOOST_AUTO_TEST_CASE( test_preproc_defines )
+BOOST_AUTO_TEST_CASE(test_preproc_defines)
 {
 	test_config_cache& cache = test_config_cache::instance();
 	const preproc_map& test_defines = cache.get_preproc_map();
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 			defines_map.begin() ,defines_map.end());
 }
 
-BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
+BOOST_AUTO_TEST_CASE(test_config_cache_defaults)
 {
 	test_config_cache& cache = test_config_cache::instance();
 	preproc_map defines_map(setup_test_preproc_map());
@@ -133,7 +133,7 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 }
 
 
-BOOST_FIXTURE_TEST_SUITE( config_cache, config_cache_fixture )
+BOOST_FIXTURE_TEST_SUITE(config_cache, config_cache_fixture)
 
 	const std::string test_data_path("data/test/test/_main.cfg");
 
@@ -149,7 +149,7 @@ static config setup_test_config()
 }
 
 
-BOOST_AUTO_TEST_CASE( test_load_config )
+BOOST_AUTO_TEST_CASE(test_load_config)
 {
 
 	config test_config = setup_test_config();
@@ -169,7 +169,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	BOOST_CHECK_EQUAL(test_config.mandatory_child("test_key2")["define"].str(), cached_config.mandatory_child("test_key2")["define"].str());
 }
 
-BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
+BOOST_AUTO_TEST_CASE(test_non_clean_config_loading)
 {
 
 	config test_config = setup_test_config();
@@ -191,7 +191,7 @@ BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
 	}
 }
 
-BOOST_AUTO_TEST_CASE( test_macrosubstitution )
+BOOST_AUTO_TEST_CASE(test_macrosubstitution)
 {
 	config test_config = setup_test_config();
 
@@ -216,7 +216,7 @@ BOOST_AUTO_TEST_CASE( test_macrosubstitution )
 
 }
 
-BOOST_AUTO_TEST_CASE( test_transaction )
+BOOST_AUTO_TEST_CASE(test_transaction)
 {
 	config test_config = setup_test_config();
 
@@ -249,7 +249,7 @@ BOOST_AUTO_TEST_CASE( test_transaction )
 	BOOST_CHECK_EQUAL(umc_config, cached_config);
 }
 
-BOOST_AUTO_TEST_CASE( test_define_loading )
+BOOST_AUTO_TEST_CASE(test_define_loading)
 {
 	// try to load umc without valid cache
 	config test_config = setup_test_config();
@@ -286,7 +286,7 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	cache.set_force_invalid_cache(false);
 }
 
-BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
+BOOST_AUTO_TEST_CASE(test_lead_spaces_loading)
 {
 	config test_config;
 	test_config.add_child("test_lead_space")["space"] = "empty char in middle";
@@ -303,14 +303,14 @@ BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
 
 #if 0
 // for profiling cache speed
-BOOST_AUTO_TEST_CASE( test_performance )
+BOOST_AUTO_TEST_CASE(test_performance)
 {
 	test_scoped_define mp("MULTIPLAYER");
 	config cfg_ref;
 //	cache.set_force_invalid_cache(true);
 	cache.get_config("data/", cfg_ref);
 //	cache.set_force_invalid_cache(false);
-	for (int i=0; i < 3; ++i)
+	for(int i=0; i < 3; ++i)
 	{
 		cache.get_config("data/");
 	}

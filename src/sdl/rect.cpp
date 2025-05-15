@@ -92,7 +92,7 @@ rect& rect::expand_to_cover(const SDL_Rect& other)
 rect rect::intersect(const SDL_Rect& other) const
 {
 	rect result;
-	if(!SDL_IntersectRect(this, &other, &result)) {
+	if(!SDL_IntersectRect(this, &other, &result)){
 		return rect();
 	}
 	return result;

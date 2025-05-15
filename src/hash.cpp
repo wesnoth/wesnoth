@@ -43,15 +43,15 @@ namespace {
 const std::string hash_prefix = "$H$";
 
 template<std::size_t len>
-std::string encode_hash(const std::array<uint8_t, len>& bytes) {
+std::string encode_hash(const std::array<uint8_t, len>& bytes){
 	return crypt64::encode(bytes);
 }
 
 template<std::size_t len>
-std::string hexencode_hash(const std::array<uint8_t, len>& input) {
+std::string hexencode_hash(const std::array<uint8_t, len>& input){
 	std::ostringstream sout;
 	sout << std::hex;
-	for(uint8_t c : input) {
+	for(uint8_t c : input){
 		sout << static_cast<int>(c);
 	}
 	return sout.str();
@@ -61,7 +61,7 @@ std::string hexencode_hash(const std::array<uint8_t, len>& input) {
 
 namespace utils {
 
-md5::md5(const std::string& input) {
+md5::md5(const std::string& input){
 
 #ifndef __APPLE__
 	EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
@@ -83,11 +83,11 @@ md5::md5(const std::string& input) {
 
 }
 
-int md5::get_iteration_count(const std::string& hash) {
+int md5::get_iteration_count(const std::string& hash){
 	return crypt64::decode(hash[3]);
 }
 
-std::string md5::get_salt(const std::string& hash) {
+std::string md5::get_salt(const std::string& hash){
 	return hash.substr(4,8);
 }
 
@@ -96,7 +96,7 @@ bool md5::is_valid_prefix(const std::string& hash)
 	return hash.substr(0,3) == hash_prefix;
 }
 
-bool md5::is_valid_hash(const std::string& hash) {
+bool md5::is_valid_hash(const std::string& hash){
 	if(hash.size() != 34) return false;
 	if(!is_valid_prefix(hash)) return false;
 
@@ -165,7 +165,7 @@ bcrypt bcrypt::hash_pw(const std::string& password, bcrypt& salt)
 	return hash;
 }
 
-bool bcrypt::is_valid_prefix(const std::string& hash) {
+bool bcrypt::is_valid_prefix(const std::string& hash){
 	return ((hash.compare(0, 4, "$2a$") == 0)
 	     || (hash.compare(0, 4, "$2b$") == 0)
 	     || (hash.compare(0, 4, "$2x$") == 0)

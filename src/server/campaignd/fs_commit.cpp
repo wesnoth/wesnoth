@@ -116,17 +116,17 @@ filesystem::scoped_ostream ostream_file_with_delete(const std::string& fname)
 								  FILE_ATTRIBUTE_NORMAL,
 								  nullptr);
 
-		if(file == INVALID_HANDLE_VALUE) {
+		if(file == INVALID_HANDLE_VALUE){
 			throw BOOST_IOSTREAMS_FAILURE(formatter() << "CreateFile() failed: " << GetLastError());
 		}
 
 		// Transfer ownership to the sink post-haste
 		sink_type fd{file, biostreams::close_handle};
 		return std::make_unique<stream_type>(fd, 4096, 0);
-	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
+	} catch(const BOOST_IOSTREAMS_FAILURE& e){
 		// Create directories if needed and try again
 		boost::system::error_code ec_unused;
-		if(bfs::create_directories(bfs::path{fname}.parent_path(), ec_unused)) {
+		if(bfs::create_directories(bfs::path{fname}.parent_path(), ec_unused)){
 			return ostream_file_with_delete(fname);
 		}
 		// Creating directories was impossible, give up
@@ -145,7 +145,7 @@ filesystem::scoped_ostream ostream_file_with_delete(const std::string& fname)
  */
 bool rename_open_file(const std::string& new_name, HANDLE open_handle)
 {
-	if(open_handle == INVALID_HANDLE_VALUE) {
+	if(open_handle == INVALID_HANDLE_VALUE){
 		ERR_FS << "replace_open_file(): Bad handle";
 		return false;
 	}
@@ -198,28 +198,28 @@ atomic_commit::atomic_commit(const std::string& filename)
 
 atomic_commit::~atomic_commit()
 {
-	if(!temp_name_.empty()) {
+	if(!temp_name_.empty()){
 		ERR_FS << "Temporary file for atomic write leaked: " << temp_name_;
 	}
 }
 
 void atomic_commit::commit()
 {
-	if(temp_name_.empty()) {
+	if(temp_name_.empty()){
 		ERR_FS << "Attempted to commit " << dest_name_ << " more than once!";
 		return;
 	}
 
 #ifdef _WIN32
-	if(!rename_open_file(dest_name_, handle_)) {
+	if(!rename_open_file(dest_name_, handle_)){
 		atomic_fail("rename");
 	}
 #else
-	if(fsync(outfd_) != 0) {
+	if(fsync(outfd_) != 0){
 		atomic_fail("fsync");
 	}
 
-	if(std::rename(temp_name_.c_str(), dest_name_.c_str()) != 0) {
+	if(std::rename(temp_name_.c_str(), dest_name_.c_str()) != 0){
 		atomic_fail("rename");
 	}
 #endif

@@ -53,7 +53,7 @@ void arrow::hide()
 
 	hidden_ = true;
 
-	if(display* disp = display::get_singleton()) {
+	if(display* disp = display::get_singleton()){
 		invalidate_arrow_path(path_);
 		disp->remove_arrow(*this);
 	}
@@ -66,14 +66,14 @@ void arrow::show()
 
 	hidden_ = false;
 
-	if(display* disp = display::get_singleton()) {
+	if(display* disp = display::get_singleton()){
 		disp->add_arrow(*this);
 	}
 }
 
 void arrow::set_path(const arrow_path_t& path)
 {
-	if (valid_path(path))
+	if(valid_path(path))
 	{
 		previous_path_ = path_;
 		path_ = path;
@@ -99,7 +99,7 @@ void arrow::reset()
 void arrow::set_color(const std::string& color)
 {
 	color_ = color;
-	if (valid_path(path_))
+	if(valid_path(path_))
 	{
 		update_symbols();
 	}
@@ -113,7 +113,7 @@ const std::string arrow::STYLE_FOCUS_INVALID = "focus_invalid";
 void arrow::set_style(const std::string& style)
 {
 	style_ = style;
-	if (valid_path(path_))
+	if(valid_path(path_))
 	{
 		update_symbols();
 	}
@@ -137,7 +137,7 @@ bool arrow::path_contains(const map_location& hex) const
 
 image::locator arrow::get_image_for_loc(const map_location& hex) const
 {
-	if(auto iter = symbols_map_.find(hex); iter != symbols_map_.end()) {
+	if(auto iter = symbols_map_.find(hex); iter != symbols_map_.end()){
 		return iter->second;
 	} else {
 		return {}; // TODO: optional<locator>? Practically I don't think this path gets hit
@@ -151,7 +151,7 @@ bool arrow::valid_path(const arrow_path_t& path)
 
 void arrow::update_symbols()
 {
-	if (!valid_path(path_))
+	if(!valid_path(path_))
 	{
 		WRN_ARR << "arrow::update_symbols called with invalid path";
 		return;
@@ -172,7 +172,7 @@ void arrow::update_symbols()
 	bool teleport_out = false;
 
 	arrow_path_t::iterator hex;
-	for (hex = path_.begin(); hex != path_.end(); ++hex)
+	for(hex = path_.begin(); hex != path_.end(); ++hex)
 	{
 		prefix = "";
 		suffix = "";
@@ -186,54 +186,54 @@ void arrow::update_symbols()
 		teleport_out = false;
 
 		// Determine some special cases
-		if (hex == arrow_start_hex)
+		if(hex == arrow_start_hex)
 			start = true;
-		if (hex == arrow_pre_end_hex)
+		if(hex == arrow_pre_end_hex)
 			pre_end = true;
-		else if (hex == arrow_end_hex)
+		else if(hex == arrow_end_hex)
 			end = true;
-		if (hex != arrow_end_hex && !tiles_adjacent(*hex, *(hex + 1)))
+		if(hex != arrow_end_hex && !tiles_adjacent(*hex, *(hex + 1)))
 			teleport_out = true;
 
 		// calculate enter and exit directions, if available
 		map_location::direction enter_dir = map_location::direction::indeterminate;
-		if (!start && !teleport_in)
+		if(!start && !teleport_in)
 		{
 			enter_dir = hex->get_relative_dir(*(hex-1));
 		}
 		map_location::direction exit_dir = map_location::direction::indeterminate;
-		if (!end && !teleport_out)
+		if(!end && !teleport_out)
 		{
 			exit_dir = hex->get_relative_dir(*(hex+1));
 		}
 
 		// Now figure out the actual images
-		if (teleport_out)
+		if(teleport_out)
 		{
 			prefix = "teleport-out";
-			if (enter_dir != map_location::direction::indeterminate)
+			if(enter_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(enter_dir);
 			}
 		}
-		else if (teleport_in)
+		else if(teleport_in)
 		{
 			prefix = "teleport-in";
-			if (exit_dir != map_location::direction::indeterminate)
+			if(exit_dir != map_location::direction::indeterminate)
 			{
 				suffix = map_location::write_direction(exit_dir);
 			}
 		}
-		else if (start)
+		else if(start)
 		{
 			prefix = "start";
 			suffix = map_location::write_direction(exit_dir);
-			if (pre_end)
+			if(pre_end)
 			{
 				suffix = suffix + "_ending";
 			}
 		}
-		else if (end)
+		else if(end)
 		{
 			prefix = "end";
 			suffix = map_location::write_direction(enter_dir);
@@ -243,13 +243,13 @@ void arrow::update_symbols()
 			std::string enter, exit;
 			enter = map_location::write_direction(enter_dir);
 			exit = map_location::write_direction(exit_dir);
-			if (pre_end)
+			if(pre_end)
 			{
 				exit = exit + "_ending";
 			}
 
 			//assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
-			if (enter_dir < exit_dir)
+			if(enter_dir < exit_dir)
 			{
 				prefix = enter;
 				suffix = exit;
@@ -262,7 +262,7 @@ void arrow::update_symbols()
 		}
 
 		image_filename = dirname + style_ + "/" + prefix;
-		if (!suffix.empty())
+		if(!suffix.empty())
 		{
 			image_filename += ("-" + suffix);
 		}
@@ -270,7 +270,7 @@ void arrow::update_symbols()
 		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
-		if (!image::exists(image))
+		if(!image::exists(image))
 		{
 			ERR_ARR << "Image " << image_filename << " not found.";
 			image = image::locator(game_config::images::missing);
@@ -281,8 +281,8 @@ void arrow::update_symbols()
 
 void arrow::invalidate_arrow_path(const arrow_path_t& path)
 {
-	if(display* disp = display::get_singleton()) {
-		for(const map_location& loc : path) {
+	if(display* disp = display::get_singleton()){
+		for(const map_location& loc : path){
 			disp->invalidate(loc);
 		}
 	}
@@ -290,7 +290,7 @@ void arrow::invalidate_arrow_path(const arrow_path_t& path)
 
 void arrow::notify_arrow_changed()
 {
-	if(display* disp = display::get_singleton()) {
+	if(display* disp = display::get_singleton()){
 		disp->update_arrow(*this);
 	}
 }

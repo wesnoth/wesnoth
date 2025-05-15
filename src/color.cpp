@@ -22,14 +22,14 @@
 
 color_t color_t::from_rgba_string(std::string_view c)
 {
-	if(c.empty()) {
+	if(c.empty()){
 		return null_color();
 	}
 
 	std::vector<std::string_view> fields = utils::split_view(c);
 
 	// Allow either 3 (automatic opaque alpha) or 4 (explicit alpha) fields
-	if(fields.size() != 3 && fields.size() != 4) {
+	if(fields.size() != 3 && fields.size() != 4){
 		throw std::invalid_argument("Wrong number of components for RGBA color");
 	}
 
@@ -43,13 +43,13 @@ color_t color_t::from_rgba_string(std::string_view c)
 
 color_t color_t::from_rgb_string(std::string_view c)
 {
-	if(c.empty()) {
+	if(c.empty()){
 		return null_color();
 	}
 
 	std::vector<std::string_view> fields = utils::split_view(c);
 
-	if(fields.size() != 3) {
+	if(fields.size() != 3){
 		throw std::invalid_argument("Wrong number of components for RGB color");
 	}
 
@@ -63,15 +63,15 @@ color_t color_t::from_rgb_string(std::string_view c)
 
 color_t color_t::from_hex_string(std::string_view c)
 {
-	if(c[0] == '#') {
+	if(c[0] == '#'){
 		c = c.substr(1);
 	}
 
-	if(c.length() != 6) {
+	if(c.length() != 6){
 		throw std::invalid_argument("Color hex string should be exactly 6 digits (leading '#' optional)");
 	}
 
-	if(std::any_of(c.begin(), c.end(), [](const char& ch) { return std::isxdigit(ch) == 0; })) {
+	if(std::any_of(c.begin(), c.end(), [](const char& ch){ return std::isxdigit(ch) == 0; })){
 		throw std::invalid_argument("Color hex string contains invalid characters");
 	}
 
@@ -95,7 +95,7 @@ std::string color_t::to_hex_string() const
 	  << std::setw(2) << static_cast<int>(g)
 	  << std::setw(2) << static_cast<int>(b);
 
-	if(a != ALPHA_OPAQUE) {
+	if(a != ALPHA_OPAQUE){
 		h << std::setw(2) << static_cast<int>(a);
 	}
 

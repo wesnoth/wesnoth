@@ -41,35 +41,35 @@ label_settings::label_settings(display_context& dc)
 	const std::vector<std::string>& all_categories = display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer_.hidden_label_categories();
 
-	for(const std::string& cat : all_categories) {
+	for(const std::string& cat : all_categories){
 		all_labels_[cat] = true;
 
 		// TODO: Translatable names for categories?
-		if(cat.substr(0, 4) == "cat:") {
+		if(cat.substr(0, 4) == "cat:"){
 			labels_display_[cat] = cat.substr(4);
-		} else if(cat == "team") {
+		} else if(cat == "team"){
 			labels_display_[cat] = _("Team Labels");
 		}
 	}
 
-	for(const std::string& hidden_cat : hidden_categories) {
+	for(const std::string& hidden_cat : hidden_categories){
 		all_labels_[hidden_cat] = false;
 	}
 
-	for(const team& team : viewer_.teams()) {
+	for(const team& team : viewer_.teams()){
 		const std::string label_cat_key = "side:" + std::to_string(team.side());
 
-		if(team.hidden()) {
+		if(team.hidden()){
 			labels_display_[label_cat_key] = "";
 			continue;
 		}
 
 		std::string team_name = team.side_name();
-		if(team_name.empty()) {
+		if(team_name.empty()){
 			team_name = team.user_team_name();
 		}
 
-		if(team_name.empty()) {
+		if(team_name.empty()){
 			team_name = _("Unknown");
 		}
 
@@ -84,14 +84,14 @@ void label_settings::pre_show()
 {
 	listbox& cats_listbox = find_widget<listbox>("label_types");
 
-	for(const auto& label_entry : all_labels_) {
+	for(const auto& label_entry : all_labels_){
 		const std::string& category = label_entry.first;
 		const bool visible = label_entry.second;
 
 		std::string name = labels_display_[category];
-		if(category.substr(0, 5) == "side:") {
+		if(category.substr(0, 5) == "side:"){
 			// This means it's a hidden side, so don't show it.
-			if(name.empty()) {
+			if(name.empty()){
 				continue;
 			}
 
@@ -108,7 +108,7 @@ void label_settings::pre_show()
 
 		connect_signal_notify_modified(status, std::bind(&label_settings::toggle_category, this, std::placeholders::_1, category));
 
-		if(category.substr(0, 5) == "side:") {
+		if(category.substr(0, 5) == "side:"){
 			label& cat_name = grid->find_widget<label>("cat_name");
 			cat_name.set_use_markup(true);
 		}
@@ -117,11 +117,11 @@ void label_settings::pre_show()
 
 void label_settings::post_show()
 {
-	if(get_retval() == retval::OK) {
+	if(get_retval() == retval::OK){
 		std::vector<std::string> hidden_categories;
 
-		for(const auto& lbl : all_labels_) {
-			if(lbl.second == false) {
+		for(const auto& lbl : all_labels_){
+			if(lbl.second == false){
 				hidden_categories.push_back(lbl.first);
 			}
 		}

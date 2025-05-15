@@ -22,25 +22,25 @@ play_controller* save_blocker::controller_ = nullptr;
 void (play_controller::*save_blocker::callback_)() = nullptr;
 SDL_sem* save_blocker::sem_ = SDL_CreateSemaphore(1);
 
-save_blocker::save_blocker() {
+save_blocker::save_blocker(){
 	block();
 }
 
-save_blocker::~save_blocker() {
+save_blocker::~save_blocker(){
 	try {
 	unblock();
-	if(controller_ && callback_) {
+	if(controller_ && callback_){
 		(controller_->*callback_)();
 		controller_ = nullptr;
 		callback_ = nullptr;
 	}
-	} catch (const std::exception & e) {
+	} catch (const std::exception & e){
 		PLAIN_LOG << "Save blocker dtor swallowing an exception: " << e.what();
 	}
 }
 
-void save_blocker::on_unblock(play_controller* controller, void (play_controller::*callback)()) {
-	if(try_block()) {
+void save_blocker::on_unblock(play_controller* controller, void (play_controller::*callback)()){
+	if(try_block()){
 		unblock();
 		(controller->*callback)();
 	} else {
@@ -49,19 +49,19 @@ void save_blocker::on_unblock(play_controller* controller, void (play_controller
 	}
 }
 
-bool save_blocker::saves_are_blocked() {
+bool save_blocker::saves_are_blocked(){
 	return SDL_SemValue(sem_) == 0;
 }
 
-void save_blocker::block() {
+void save_blocker::block(){
 	SDL_SemWait(sem_);
 }
 
-bool save_blocker::try_block() {
+bool save_blocker::try_block(){
 	return SDL_SemTryWait(sem_) == 0;
 }
 
-void save_blocker::unblock() {
+void save_blocker::unblock(){
 	assert(SDL_SemValue(sem_) == 0);
 	SDL_SemPost(sem_);
 }

@@ -66,7 +66,7 @@ unsigned panel::get_state() const
 bool panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
-	if(!get_canvas(0).update_blur(get_rectangle())) {
+	if(!get_canvas(0).update_blur(get_rectangle())){
 		return false;
 	}
 	get_canvas(0).draw();
@@ -76,7 +76,7 @@ bool panel::impl_draw_background()
 bool panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
-	if(!get_canvas(1).update_blur(get_rectangle())) {
+	if(!get_canvas(1).update_blur(get_rectangle())){
 		return false;
 	}
 	get_canvas(1).draw();

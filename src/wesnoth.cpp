@@ -131,9 +131,9 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 {
 	preproc_map defines_map;
 
-	if(cmdline_opts.preprocess_input_macros) {
+	if(cmdline_opts.preprocess_input_macros){
 		std::string file = *cmdline_opts.preprocess_input_macros;
-		if(!filesystem::file_exists(file)) {
+		if(!filesystem::file_exists(file)){
 			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
 		}
@@ -144,14 +144,14 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 
 		try {
 			cfg = io::read(*filesystem::istream_file(file));
-		} catch(const config::error& e) {
+		} catch(const config::error& e){
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
 
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const auto [_, cfg] : cfg.all_children_view()) {
+		for(const auto [_, cfg] : cfg.all_children_view()){
 			const preproc_map::value_type def = preproc_define::read_pair(cfg);
 			defines_map[def.first] = def.second;
 			++read;
@@ -160,10 +160,10 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 		PLAIN_LOG << "Read " << read << " defines.";
 	}
 
-	if(cmdline_opts.preprocess_defines) {
+	if(cmdline_opts.preprocess_defines){
 		// add the specified defines
-		for(const std::string& define : *cmdline_opts.preprocess_defines) {
-			if(define.empty()) {
+		for(const std::string& define : *cmdline_opts.preprocess_defines){
+			if(define.empty()){
 				PLAIN_LOG << "empty define supplied";
 				continue;
 			}
@@ -179,7 +179,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 	// preprocess resource
 	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
 	const utils::ms_optimer timer(
-		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+		[](const auto& timer){ PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
 	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 }
@@ -188,9 +188,9 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 {
 	preproc_map input_macros;
 
-	if(cmdline_opts.preprocess_input_macros) {
+	if(cmdline_opts.preprocess_input_macros){
 		std::string file = *cmdline_opts.preprocess_input_macros;
-		if(filesystem::file_exists(file) == false) {
+		if(filesystem::file_exists(file) == false){
 			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
 		}
@@ -201,14 +201,14 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 		try {
 			cfg = io::read(*filesystem::istream_file(file));
-		} catch(const config::error& e) {
+		} catch(const config::error& e){
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
 
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const auto [_, cfg] : cfg.all_children_view()) {
+		for(const auto [_, cfg] : cfg.all_children_view()){
 			const preproc_map::value_type def = preproc_define::read_pair(cfg);
 			input_macros[def.first] = def.second;
 			++read;
@@ -221,7 +221,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	const std::string targetDir(*cmdline_opts.preprocess_target);
 
 	const utils::ms_optimer timer(
-		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+		[](const auto& timer){ PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	// If the users add the SKIP_CORE define we won't preprocess data/core
 	bool skipCore = false;
@@ -230,10 +230,10 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	// The 'core_defines_map' is the one got from data/core macros
 	preproc_map defines_map(input_macros);
 
-	if(cmdline_opts.preprocess_defines) {
+	if(cmdline_opts.preprocess_defines){
 		// add the specified defines
-		for(const std::string& define : *cmdline_opts.preprocess_defines) {
-			if(define.empty()) {
+		for(const std::string& define : *cmdline_opts.preprocess_defines){
+			if(define.empty()){
 				PLAIN_LOG << "empty define supplied";
 				continue;
 			}
@@ -241,10 +241,10 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			LOG_PREPROC << "adding define: " << define;
 			defines_map.emplace(define, preproc_define(define));
 
-			if(define == "SKIP_CORE") {
+			if(define == "SKIP_CORE"){
 				PLAIN_LOG << "'SKIP_CORE' defined.";
 				skipCore = true;
-			} else if(define == "NO_TERRAIN_GFX") {
+			} else if(define == "NO_TERRAIN_GFX"){
 				PLAIN_LOG << "'NO_TERRAIN_GFX' defined.";
 				skipTerrainGFX = true;
 			}
@@ -257,13 +257,13 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 
 	// preprocess core macros first if we don't skip the core
-	if(skipCore == false) {
+	if(skipCore == false){
 		PLAIN_LOG << "preprocessing common macros from 'data/core' ...";
 
 		// process each folder explicitly to gain speed
 		preprocess_resource(game_config::path + "/data/core/macros", &defines_map);
 
-		if(skipTerrainGFX == false) {
+		if(skipTerrainGFX == false){
 			preprocess_resource(game_config::path + "/data/core/terrain-graphics", &defines_map);
 		}
 
@@ -278,9 +278,9 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	preprocess_resource(resourceToProcess, &defines_map, true, true, targetDir);
 	PLAIN_LOG << "acquired " << (defines_map.size() - input_macros.size()) << " total defines.";
 
-	if(cmdline_opts.preprocess_output_macros) {
+	if(cmdline_opts.preprocess_output_macros){
 		std::string outputFileName = "_MACROS_.cfg";
-		if(!cmdline_opts.preprocess_output_macros->empty()) {
+		if(!cmdline_opts.preprocess_output_macros->empty()){
 			outputFileName = *cmdline_opts.preprocess_output_macros;
 		}
 
@@ -289,10 +289,10 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		PLAIN_LOG << "writing '" << outputPath << "' with " << defines_map.size() << " defines.";
 
 		filesystem::scoped_ostream out = filesystem::ostream_file(outputPath);
-		if(!out->fail()) {
+		if(!out->fail()){
 			config_writer writer(*out, false);
 
-			for(auto& define_pair : defines_map) {
+			for(auto& define_pair : defines_map){
 				define_pair.second.write(writer, define_pair.first);
 			}
 		} else {
@@ -301,13 +301,13 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	}
 }
 
-static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
+static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines){
 	preproc_map defines_map;
 	// add the WESNOTH_VERSION define
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
-	for(const std::string& define : defines) {
-		if(define.empty()) {
+	for(const std::string& define : defines){
+		if(define.empty()){
 			PLAIN_LOG << "empty define supplied";
 			continue;
 		}
@@ -318,7 +318,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
 	config result = io::read(*preprocess_file(file, &defines_map), &validator);
-	if(lg::broke_strict()) {
+	if(lg::broke_strict()){
 		std::cout << "validation failed\n";
 	} else {
 		std::cout << "validation succeeded\n";
@@ -330,44 +330,44 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 static int process_command_args(commandline_options& cmdline_opts)
 {
 	// Options that output info unaffected by other options and return.
-	if(cmdline_opts.help) {
+	if(cmdline_opts.help){
 		std::cout << cmdline_opts;
 		return 0;
 	}
 
-	if(cmdline_opts.logdomains) {
+	if(cmdline_opts.logdomains){
 		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
 		return 0;
 	}
 
-	if(cmdline_opts.version) {
+	if(cmdline_opts.version){
 		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
 		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
 		std::cout << "Optional features:\n" << game_config::optional_features_report();
 		return 0;
 	}
 
-	if(cmdline_opts.simple_version) {
+	if(cmdline_opts.simple_version){
 		std::cout << game_config::wesnoth_version.str() << "\n";
 		return 0;
 	}
 
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
-	if(cmdline_opts.no_log_sanitize) {
+	if(cmdline_opts.no_log_sanitize){
 		lg::set_log_sanitize(false);
 	}
 
-	if(cmdline_opts.usercache_dir) {
+	if(cmdline_opts.usercache_dir){
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
 
-	if(cmdline_opts.userdata_dir) {
+	if(cmdline_opts.userdata_dir){
 		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
 
 	// earliest possible point to ensure the userdata directory is known
-	if(!filesystem::is_userdata_initialized()) {
+	if(!filesystem::is_userdata_initialized()){
 		filesystem::set_user_data_dir(std::string());
 	}
 
@@ -400,50 +400,50 @@ static int process_command_args(commandline_options& cmdline_opts)
 	// This forces a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because it
 	// turns Wesnoth into a CLI application. (unless --wnoconsole is given)
-	else if(!cmdline_opts.no_console) {
+	else if(!cmdline_opts.no_console){
 		lg::do_console_redirect();
 	}
 #endif
 
-	if(cmdline_opts.log) {
-		for(const auto& log_pair : *cmdline_opts.log) {
+	if(cmdline_opts.log){
+		for(const auto& log_pair : *cmdline_opts.log){
 			const std::string log_domain = log_pair.second;
 			const lg::severity severity = log_pair.first;
-			if(!lg::set_log_domain_severity(log_domain, severity)) {
+			if(!lg::set_log_domain_severity(log_domain, severity)){
 				PLAIN_LOG << "unknown log domain: " << log_domain;
 				return 2;
 			}
 		}
 	}
 
-	if(!cmdline_opts.nobanner) {
+	if(!cmdline_opts.nobanner){
 		const auto now = std::chrono::system_clock::now();
 		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
 		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
-	if(cmdline_opts.usercache_path) {
+	if(cmdline_opts.usercache_path){
 		std::cout << filesystem::get_cache_dir();
 		return 0;
 	}
 
-	if(cmdline_opts.userdata_path) {
+	if(cmdline_opts.userdata_path){
 		std::cout << filesystem::get_user_data_dir();
 		return 0;
 	}
 
-	if(cmdline_opts.data_dir) {
+	if(cmdline_opts.data_dir){
 		game_config::path = filesystem::normalize_path(*cmdline_opts.data_dir, true, true);
-		if(!cmdline_opts.nobanner) {
+		if(!cmdline_opts.nobanner){
 			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 	} else {
 		// if a pre-defined path does not exist this will empty it
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		if(game_config::path.empty()) {
-			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
-				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
-					if(!cmdline_opts.nobanner) {
+		if(game_config::path.empty()){
+			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()){
+				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()){
+					if(!cmdline_opts.nobanner){
 						PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 					}
 					game_config::path = filesystem::normalize_path(auto_dir, true, true);
@@ -455,66 +455,66 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	}
 
-	if(!filesystem::is_directory(game_config::path)) {
+	if(!filesystem::is_directory(game_config::path)){
 		PLAIN_LOG << "Could not find game data directory '" << game_config::path << "'";
 		return 1;
 	}
 
-	if(cmdline_opts.data_path) {
+	if(cmdline_opts.data_path){
 		std::cout << game_config::path;
 		return 0;
 	}
 
-	if(cmdline_opts.debug_lua) {
+	if(cmdline_opts.debug_lua){
 		game_config::debug_lua = true;
 	}
 
-	if(cmdline_opts.allow_insecure) {
+	if(cmdline_opts.allow_insecure){
 		game_config::allow_insecure = true;
 	}
 
-	if(cmdline_opts.addon_server_info) {
+	if(cmdline_opts.addon_server_info){
 		game_config::addon_server_info = true;
 	}
 
-	if(cmdline_opts.strict_lua) {
+	if(cmdline_opts.strict_lua){
 		game_config::strict_lua = true;
 	}
 
-	if(cmdline_opts.log_precise_timestamps) {
+	if(cmdline_opts.log_precise_timestamps){
 		lg::precise_timestamps(true);
 	}
 
-	if(cmdline_opts.rng_seed) {
+	if(cmdline_opts.rng_seed){
 		srand(*cmdline_opts.rng_seed);
 	}
 
-	if(cmdline_opts.render_image) {
+	if(cmdline_opts.render_image){
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
-	if(cmdline_opts.strict_validation) {
+	if(cmdline_opts.strict_validation){
 		strict_validation_enabled = true;
 	}
 
-	if(cmdline_opts.report) {
+	if(cmdline_opts.report){
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
 	}
 
-	if(cmdline_opts.validate_schema) {
+	if(cmdline_opts.validate_schema){
 		schema_validation::schema_self_validator validator;
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 		return handle_validate_command(*cmdline_opts.validate_schema, validator, {});
 	}
 
-	if(cmdline_opts.do_diff) {
+	if(cmdline_opts.do_diff){
 		std::ifstream in_left(cmdline_opts.diff_left);
 		std::ifstream in_right(cmdline_opts.diff_right);
 		config left = io::read(in_left);
 		config right = io::read(in_right);
 		std::ostream* os = &std::cout;
-		if(cmdline_opts.output_file) {
+		if(cmdline_opts.output_file){
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
 		config_writer out(*os, compression::format::none);
@@ -523,14 +523,14 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 0;
 	}
 
-	if(cmdline_opts.do_patch) {
+	if(cmdline_opts.do_patch){
 		std::ifstream in_base(cmdline_opts.diff_left);
 		std::ifstream in_diff(cmdline_opts.diff_right);
 		config base = io::read(in_base);
 		config diff = io::read(in_diff);
 		base.apply_diff(diff);
 		std::ostream* os = &std::cout;
-		if(cmdline_opts.output_file) {
+		if(cmdline_opts.output_file){
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
 		config_writer out(*os, compression::format::none);
@@ -539,7 +539,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 0;
 	}
 
-	if(cmdline_opts.generate_spritesheet) {
+	if(cmdline_opts.generate_spritesheet){
 		PLAIN_LOG << "sheet path " << *cmdline_opts.generate_spritesheet;
 		image::build_spritesheet_from(*cmdline_opts.generate_spritesheet);
 		return 0;
@@ -547,22 +547,22 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	// Options changing their behavior dependent on some others should be checked below.
 
-	if(cmdline_opts.preprocess) {
+	if(cmdline_opts.preprocess){
 		handle_preprocess_command(cmdline_opts);
 		return 0;
 	}
 
-	if(cmdline_opts.preprocess_source_string.has_value()) {
+	if(cmdline_opts.preprocess_source_string.has_value()){
 		handle_preprocess_string(cmdline_opts);
 		return 0;
 	}
 
-	if(cmdline_opts.validate_wml) {
+	if(cmdline_opts.validate_wml){
 		std::string schema_path;
-		if(cmdline_opts.validate_with) {
+		if(cmdline_opts.validate_with){
 			schema_path = *cmdline_opts.validate_with;
-			if(!filesystem::file_exists(schema_path)) {
-				if(auto check = filesystem::get_wml_location(schema_path)) {
+			if(!filesystem::file_exists(schema_path)){
+				if(auto check = filesystem::get_wml_location(schema_path)){
 					schema_path = check.value();
 				} else {
 					PLAIN_LOG << "Could not find schema file: " << schema_path;
@@ -579,7 +579,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 			cmdline_opts.preprocess_defines.value_or<decltype(cmdline_opts.preprocess_defines)::value_type>({}));
 	}
 
-	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
+	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path){
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
 		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
@@ -637,13 +637,13 @@ static void handle_lua_script_args(game_launcher* game, commandline_options& /*c
 {
 	static bool first_time = true;
 
-	if(!first_time) {
+	if(!first_time){
 		return;
 	}
 
 	first_time = false;
 
-	if(!game->init_lua_script()) {
+	if(!game->init_lua_script()){
 		// PLAIN_LOG << "error when loading lua scripts at startup";
 		// PLAIN_LOG << "could not load lua script: " << *cmdline_opts.script_file;
 	}
@@ -654,11 +654,11 @@ static void check_fpu()
 {
 	uint32_t f_control;
 
-	if(_controlfp_s(&f_control, 0, 0) == 0) {
+	if(_controlfp_s(&f_control, 0, 0) == 0){
 		uint32_t unused;
 		uint32_t rounding_mode = f_control & _MCW_RC;
 
-		if(rounding_mode != _RC_NEAR) {
+		if(rounding_mode != _RC_NEAR){
 			PLAIN_LOG << "Floating point rounding mode is currently '"
 				<< ((rounding_mode == _RC_CHOP)
 					? "chop"
@@ -669,14 +669,14 @@ static void check_fpu()
 							: (rounding_mode == _RC_NEAR) ? "near" : "unknown")
 				<< "' setting to 'near'";
 
-			if(_controlfp_s(&unused, _RC_NEAR, _MCW_RC)) {
+			if(_controlfp_s(&unused, _RC_NEAR, _MCW_RC)){
 				PLAIN_LOG << "failed to set floating point rounding type to 'near'";
 			}
 		}
 
 #ifndef _M_AMD64
 		uint32_t precision_mode = f_control & _MCW_PC;
-		if(precision_mode != _PC_53) {
+		if(precision_mode != _PC_53){
 			PLAIN_LOG << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
 					? "double"
@@ -685,7 +685,7 @@ static void check_fpu()
 						: (precision_mode == _PC_64) ? "double extended" : "unknown")
 				<< "' setting to 'double'";
 
-			if(_controlfp_s(&unused, _PC_53, _MCW_PC)) {
+			if(_controlfp_s(&unused, _PC_53, _MCW_PC)){
 				PLAIN_LOG << "failed to set floating point precision type to 'double'";
 			}
 		}
@@ -698,7 +698,7 @@ static void check_fpu()
 #else
 static void check_fpu()
 {
-	switch(fegetround()) {
+	switch(fegetround()){
 	case FE_TONEAREST:
 		break;
 	case FE_DOWNWARD:
@@ -739,7 +739,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	// config error messages displayed. fonts will be re-initialized later
 	// when the language is read from the game config.
 	res = font::load_font_config();
-	if(res == false) {
+	if(res == false){
 		PLAIN_LOG << "could not initialize fonts";
 		// The most common symptom of a bogus data dir path -- warn the user.
 		warn_early_init_failure();
@@ -747,13 +747,13 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	}
 
 	res = game->init_language();
-	if(res == false) {
+	if(res == false){
 		PLAIN_LOG << "could not initialize the language";
 		return 1;
 	}
 
 	res = game->init_video();
-	if(res == false) {
+	if(res == false){
 		PLAIN_LOG << "could not initialize display";
 		return 1;
 	}
@@ -773,7 +773,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
 	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
-	if(!lg::log_dir_writable().value_or(true)) {
+	if(!lg::log_dir_writable().value_or(true)){
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
@@ -782,16 +782,16 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	game_config_manager config_manager(cmdline_opts);
 
-	if(game_config::check_migration) {
+	if(game_config::check_migration){
 		game_config::check_migration = false;
 		migrate_version_selection::execute();
 	}
 
-	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
+	loading_screen::display([&res, &config_manager, &cmdline_opts](){
 		loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
-		if(res == false) {
+		if(res == false){
 			PLAIN_LOG << "could not initialize game config";
 			return;
 		}
@@ -799,7 +799,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
-		if(res == false) {
+		if(res == false){
 			PLAIN_LOG << "could not re-initialize fonts for the current language";
 			return;
 		}
@@ -811,7 +811,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 	});
 
-	if(res == false) {
+	if(res == false){
 		return 1;
 	}
 
@@ -829,13 +829,13 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
 
-	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
+	plugins.set_callback("exit", [](const config& cfg){ safe_exit(cfg["code"].to_int(0)); }, false);
 
-	while(true) {
-		if(!game->has_load_data()) {
+	while(true){
+		if(!game->has_load_data()){
 			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
-			if(cfg) {
-				for(const config& i : cfg->child_range("music")) {
+			if(cfg){
+				for(const config& i : cfg->child_range("music")){
 					sound::play_music_config(i);
 				}
 
@@ -855,24 +855,24 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		plugins.play_slice();
 		plugins.play_slice();
 
-		if(!cmdline_opts.unit_test.empty()) {
+		if(!cmdline_opts.unit_test.empty()){
 			return static_cast<int>(game->unit_test());
 		}
 
-		if(game->play_test() == false) {
+		if(game->play_test() == false){
 			return 0;
 		}
 
-		if(game->play_screenshot_mode() == false) {
+		if(game->play_screenshot_mode() == false){
 			return 0;
 		}
 
-		if(game->play_render_image_mode() == false) {
+		if(game->play_render_image_mode() == false){
 			return 0;
 		}
 
 		// Start directly a campaign
-		if(game->goto_campaign() == false) {
+		if(game->goto_campaign() == false){
 			if(game->jump_to_campaign_id().empty())
 				continue; // Go to main menu
 			else
@@ -881,16 +881,16 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		// Start directly a multiplayer
 		// Eventually with a specified server
-		if(game->goto_multiplayer() == false) {
+		if(game->goto_multiplayer() == false){
 			continue; // Go to main menu
 		}
 
 		// Start directly a commandline multiplayer game
-		if(game->play_multiplayer_commandline() == false) {
+		if(game->play_multiplayer_commandline() == false){
 			return 0;
 		}
 
-		if(game->goto_editor() == false) {
+		if(game->goto_editor() == false){
 			return 0;
 		}
 
@@ -899,7 +899,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		cursor::set(cursor::NORMAL);
 
 		// If loading a game, skip the titlescreen entirely
-		if(game->has_load_data() && game->load_game()) {
+		if(game->has_load_data() && game->load_game()){
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			continue;
 		}
@@ -911,13 +911,13 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			// Allows re-layout on resize.
 			// Since RELOAD_UI is not checked here, it causes
 			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
+			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND){
 				dlg.show();
 			}
 			retval = dlg.get_retval();
 		}
 
-		switch(retval) {
+		switch(retval){
 		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
@@ -931,7 +931,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
 		case title_screen::RELOAD_GAME_DATA:
-			loading_screen::display([&config_manager]() {
+			loading_screen::display([&config_manager](){
 				config_manager.reload_changed_game_config();
 				gui2::init();
 				gui2::switch_theme(prefs::get().gui2_theme());
@@ -955,7 +955,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
-		if(lg::using_own_console()) {                                                                                  \
+		if(lg::using_own_console()){                                                                                  \
 			std::cerr << "Press enter to continue..." << std::endl;                                                    \
 			std::cin.get();                                                                                            \
 		}                                                                                                              \
@@ -990,9 +990,9 @@ int main(int argc, char** argv)
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
 
-		if(finished != -1) {
+		if(finished != -1){
 #ifdef _WIN32
-			if(lg::using_own_console()) {
+			if(lg::using_own_console()){
 				std::cerr << "Press enter to continue..." << std::endl;
 				std::cin.get();
 			}
@@ -1002,7 +1002,7 @@ int main(int argc, char** argv)
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		// Is there a reason not to just use SDL_INIT_EVERYTHING?
-		if(SDL_Init(SDL_INIT_TIMER) < 0) {
+		if(SDL_Init(SDL_INIT_TIMER) < 0){
 			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
 			return (1);
 		}
@@ -1023,55 +1023,55 @@ int main(int argc, char** argv)
 
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
-	} catch(const boost::program_options::error& e) {
+	} catch(const boost::program_options::error& e){
 		// logging hasn't been initialized by this point
 		std::cerr << "Error in command line: " << e.what() << std::endl;
 		std::string error = "Error parsing command line arguments: ";
 		error += e.what();
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
 		error_exit(2);
-	} catch(const video::error& e) {
+	} catch(const video::error& e){
 		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
-	} catch(const font::error& e) {
+	} catch(const font::error& e){
 		PLAIN_LOG << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.";
 		error_exit(1);
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		PLAIN_LOG << e.message;
 		error_exit(1);
-	} catch(const video::quit&) {
+	} catch(const video::quit&){
 		// just means the game should quit
-	} catch(const return_to_play_side_exception&) {
+	} catch(const return_to_play_side_exception&){
 		PLAIN_LOG << "caught return_to_play_side_exception, please report this bug (quitting)";
-	} catch(const quit_game_exception&) {
+	} catch(const quit_game_exception&){
 		PLAIN_LOG << "caught quit_game_exception (quitting)";
-	} catch(const wml_exception& e) {
+	} catch(const wml_exception& e){
 		PLAIN_LOG << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message;
 		error_exit(1);
-	} catch(const wfl::formula_error& e) {
+	} catch(const wfl::formula_error& e){
 		PLAIN_LOG << e.what() << "\n\nGame will be aborted.";
 		error_exit(1);
-	} catch(const sdl::exception& e) {
+	} catch(const sdl::exception& e){
 		PLAIN_LOG << e.what();
 		error_exit(1);
-	} catch(const game::error& e) {
+	} catch(const game::error& e){
 		PLAIN_LOG << "Game error: " << e.what();
 		error_exit(1);
-	} catch(const std::bad_alloc&) {
+	} catch(const std::bad_alloc&){
 		PLAIN_LOG << "Ran out of memory. Aborted.";
 		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
-	} catch(const std::exception& e) {
+	} catch(const std::exception& e){
 		// Try to catch unexpected exceptions.
 		PLAIN_LOG << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what();
 		error_exit(1);
-	} catch(const std::string& e) {
+	} catch(const std::string& e){
 		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e;
 		error_exit(1);
-	} catch(const char* e) {
+	} catch(const char* e){
 		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e;
 		error_exit(1);
-	} catch(...) {
+	} catch(...){
 		// Ensure that even when we terminate with `throw 42`, the exception
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if

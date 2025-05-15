@@ -50,33 +50,33 @@ namespace builtin_conditions {
 
 	bool have_unit(const vconfig& cfg)
 	{
-		if(!resources::gameboard) {
+		if(!resources::gameboard){
 			return false;
 		}
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
 			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
-		for(const unit &i : resources::gameboard->units()) {
-			if(i.hitpoints() > 0 && ufilt(i)) {
+		for(const unit &i : resources::gameboard->units()){
+			if(i.hitpoints() > 0 && ufilt(i)){
 				++match_count;
-				if(counts == default_counts) {
+				if(counts == default_counts){
 					// by default a single match is enough, so avoid extra work
 					break;
 				}
 			}
 		}
-		if(cfg["search_recall_list"].to_bool()) {
-			for(const team& team : resources::gameboard->teams()) {
-				if(counts == default_counts && match_count) {
+		if(cfg["search_recall_list"].to_bool()){
+			for(const team& team : resources::gameboard->teams()){
+				if(counts == default_counts && match_count){
 					break;
 				}
-				for(std::size_t t = 0; t < team.recall_list().size(); ++t) {
-					if(counts == default_counts && match_count) {
+				for(std::size_t t = 0; t < team.recall_list().size(); ++t){
+					if(counts == default_counts && match_count){
 						break;
 					}
 					scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
-					if(ufilt(*team.recall_list()[t])) {
+					if(ufilt(*team.recall_list()[t])){
 						++match_count;
 					}
 				}
@@ -97,7 +97,7 @@ namespace builtin_conditions {
 
 	bool variable_matches(const vconfig& values)
 	{
-		if(values["name"].blank()) {
+		if(values["name"].blank()){
 			lg::log_to_chat() << "[variable] with missing name=\n";
 			ERR_WML << "[variable] with missing name=";
 			return true;
@@ -105,40 +105,40 @@ namespace builtin_conditions {
 		const std::string name = values["name"];
 		config::attribute_value value = resources::gamedata->get_variable_const(name);
 
-		if(auto n = values.get_config().attribute_count(); n > 2) {
+		if(auto n = values.get_config().attribute_count(); n > 2){
 			lg::log_to_chat() << "[variable] name='" << name << "' found with multiple comparison attributes\n";
 			ERR_WML << "[variable] name='" << name << "' found with multiple comparison attributes";
-		} else if(n < 2) {
+		} else if(n < 2){
 			lg::log_to_chat() << "[variable] name='" << name << "' found with no comparison attribute\n";
 			ERR_WML << "[variable] name='" << name << "' found with no comparison attribute";
 		}
 
 #define TEST_STR_ATTR(name, test) \
 		do { \
-			if (values.has_attribute(name)) { \
+			if(values.has_attribute(name)){ \
 				std::string attr_str = values[name].str(); \
 				std::string str_value = value.str(); \
 				return (test); \
 			} \
-		} while (0)
+		} while(0)
 
 #define TEST_NUM_ATTR(name, test) \
 		do { \
-			if (values.has_attribute(name)) { \
+			if(values.has_attribute(name)){ \
 				double attr_num = values[name].to_double(); \
 				double num_value = value.to_double(); \
 				return (test); \
 			} \
-		} while (0)
+		} while(0)
 
 #define TEST_BOL_ATTR(name, test) \
 		do { \
-			if (values.has_attribute(name)) { \
+			if(values.has_attribute(name)){ \
 				bool attr_bool = values[name].to_bool(); \
 				bool bool_value = value.to_bool(); \
 				return (test); \
 			} \
-		} while (0)
+		} while(0)
 
 		TEST_STR_ATTR("equals",                str_value == attr_str);
 		TEST_STR_ATTR("not_equals",            str_value != attr_str);
@@ -163,20 +163,20 @@ namespace builtin_conditions {
 namespace { // Support functions
 	bool internal_conditional_passed(const vconfig& cond)
 	{
-		if(cond.has_child("true")) {
+		if(cond.has_child("true")){
 			return true;
 		}
-		if(cond.has_child("false")) {
+		if(cond.has_child("false")){
 			return false;
 		}
 
 		static const std::set<std::string> skip
 			{"then", "else", "elseif", "not", "and", "or", "do"};
 
-		for(const auto& [key, filter] : cond.all_ordered()) {
-			if(std::find(skip.begin(), skip.end(), key) == skip.end()) {
+		for(const auto& [key, filter] : cond.all_ordered()){
+			if(std::find(skip.begin(), skip.end(), key) == skip.end()){
 				assert(resources::lua_kernel);
-				if(!resources::lua_kernel->run_wml_conditional(key, filter)) {
+				if(!resources::lua_kernel->run_wml_conditional(key, filter)){
 					return false;
 				}
 			}
@@ -193,17 +193,17 @@ bool conditional_passed(const vconfig& cond)
 	bool matches = internal_conditional_passed(cond);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for(const auto& [key, filter] : cond.all_ordered()) {
+	for(const auto& [key, filter] : cond.all_ordered()){
 		// Handle [and]
-		if(key == "and") {
+		if(key == "and"){
 			matches = matches && conditional_passed(filter);
 		}
 		// Handle [or]
-		else if(key == "or") {
+		else if(key == "or"){
 			matches = matches || conditional_passed(filter);
 		}
 		// Handle [not]
-		else if(key == "not") {
+		else if(key == "not"){
 			matches = matches && !conditional_passed(filter);
 		}
 	}

@@ -35,7 +35,7 @@ window::window(const std::string& title,
 		title.c_str(), x, y, w, h, window_flags | SDL_WINDOW_HIDDEN))
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
-	if(!window_) {
+	if(!window_){
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
@@ -51,22 +51,22 @@ window::window(const std::string& title,
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
 #endif
 
-	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
+	if(!SDL_CreateRenderer(window_, -1, render_flags)){
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
 	SDL_RendererInfo info;
-	if(SDL_GetRendererInfo(*this, &info) != 0) {
+	if(SDL_GetRendererInfo(*this, &info) != 0){
 		throw exception("Failed to retrieve the information of the renderer.",
 						 true);
 	}
 
-	if(info.num_texture_formats == 0) {
+	if(info.num_texture_formats == 0){
 		throw exception("The renderer has no texture information available.\n",
 						 false);
 	}
 
-	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
+	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0){
 		throw exception("Render-to-texture not supported or enabled!", false);
 	}
 
@@ -84,14 +84,14 @@ window::window(const std::string& title,
 	render();
 
 	// If we didn't explicitly ask for the window to be hidden, show it
-	if(!(window_flags & SDL_WINDOW_HIDDEN)) {
+	if(!(window_flags & SDL_WINDOW_HIDDEN)){
 		SDL_ShowWindow(window_);
 	}
 }
 
 window::~window()
 {
-	if(window_) {
+	if(window_){
 		SDL_DestroyWindow(window_);
 	}
 }
@@ -145,7 +145,7 @@ void window::full_screen()
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
-	if(SDL_RenderClear(*this) != 0) {
+	if(SDL_RenderClear(*this) != 0){
 		throw exception("Failed to clear the SDL_Renderer object.",
 						 true);
 	}

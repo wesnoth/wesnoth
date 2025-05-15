@@ -39,17 +39,17 @@ chat_handler::~chat_handler()
 *
 * @param data string of the form: "@<level@> @<domain@>"
 */
-void chat_handler::change_logging(const std::string& data) {
+void chat_handler::change_logging(const std::string& data){
 	const std::string::const_iterator j =
 		std::find(data.begin(), data.end(), ' ');
-	if (j == data.end()) return;
+	if(j == data.end()) return;
 	const std::string level(data.begin(), j);
 	const std::string domain(j + 1, data.end());
 	lg::severity severity;
-	if (level == "error") severity = lg::err().get_severity();
-	else if (level == "warning") severity = lg::warn().get_severity();
-	else if (level == "info") severity = lg::info().get_severity();
-	else if (level == "debug") severity = lg::debug().get_severity();
+	if(level == "error") severity = lg::err().get_severity();
+	else if(level == "warning") severity = lg::warn().get_severity();
+	else if(level == "info") severity = lg::info().get_severity();
+	else if(level == "debug") severity = lg::debug().get_severity();
 	else {
 		utils::string_map symbols;
 		symbols["level"] = level;
@@ -59,7 +59,7 @@ void chat_handler::change_logging(const std::string& data) {
 		add_chat_message(std::time(nullptr), _("error"), 0, msg);
 		return;
 	}
-	if (!lg::set_log_domain_severity(domain, severity)) {
+	if(!lg::set_log_domain_severity(domain, severity)){
 		utils::string_map symbols;
 		symbols["domain"] = domain;
 		const std::string& msg =
@@ -79,25 +79,25 @@ void chat_handler::change_logging(const std::string& data) {
 	}
 }
 
-void chat_handler::send_command(const std::string& cmd, const std::string& args /* = "" */) {
+void chat_handler::send_command(const std::string& cmd, const std::string& args /* = "" */){
 	config data;
-	if (cmd == "muteall") {
+	if(cmd == "muteall"){
 		data.add_child(cmd);
 	}
-	else if (cmd == "query") {
+	else if(cmd == "query"){
 		data.add_child(cmd)["type"] = args;
 	}
-	else if (cmd == "ban" || cmd == "unban" || cmd == "kick"
-		|| cmd == "mute" || cmd == "unmute") {
+	else if(cmd == "ban" || cmd == "unban" || cmd == "kick"
+		|| cmd == "mute" || cmd == "unmute"){
 		data.add_child(cmd)["username"] = args;
 	}
-	else if (cmd == "ping") {
+	else if(cmd == "ping"){
 		data[cmd] = std::to_string(std::time(nullptr));
 	}
-	else if (cmd == "report") {
+	else if(cmd == "report"){
 		data.add_child("query")["type"] = "report " + args;
 	}
-	else if (cmd == "roll") {
+	else if(cmd == "roll"){
 		data.add_child("query")["type"] = "roll " + args;
 	}
 	send_to_server(data);
@@ -105,17 +105,17 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 
 bool chat_handler::do_speak(const std::string& message, bool allies_only)
 {
-	if (message.empty() || message == "/") {
+	if(message.empty() || message == "/"){
 		return false;
 	}
 	bool is_command = (message[0] == '/');
 	bool quoted_command = (is_command && message[1] == ' ');
 
-	if (!is_command) {
+	if(!is_command){
 		send_chat_message(message, allies_only);
 		return true;
 	}
-	else if (quoted_command) {
+	else if(quoted_command){
 		send_chat_message(std::string(message.begin() + 2, message.end()), allies_only);
 		return true;
 	}

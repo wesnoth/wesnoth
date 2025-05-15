@@ -44,7 +44,7 @@ static std::string at(const std::string& file, int line)
 static void print_output(const std::string& message, bool flag_exception = false)
 {
 #ifndef VALIDATION_ERRORS_LOG
-	if(flag_exception) {
+	if(flag_exception){
 		throw wml_exception("Validation error occurred", message);
 	} else {
 		ERR_VL << message;
@@ -52,7 +52,7 @@ static void print_output(const std::string& message, bool flag_exception = false
 #else
 	// dirty hack to avoid "unused" error in case of compiling with definition on
 	flag_exception = true;
-	if(flag_exception) {
+	if(flag_exception){
 		ERR_VL << message;
 	}
 #endif
@@ -100,10 +100,10 @@ static std::string extra_key_error(
 {
 	std::ostringstream ss;
 	ss << "Invalid key '" << key << "='";
-	if(!tag.empty()) {
+	if(!tag.empty()){
 		ss << " in tag [" << tag << "]\n";
 	}
-	if(!file.empty()) {
+	if(!file.empty()){
 		ss << at(file, line) << "\n";
 	}
 	print_output(ss.str(), flag_exception);
@@ -115,10 +115,10 @@ static std::string missing_key_error(
 {
 	std::ostringstream ss;
 	ss << "Missing key '" << key << "='";
-	if(!tag.empty()) {
+	if(!tag.empty()){
 		ss << " in tag [" << tag << "]\n";
 	}
-	if(!file.empty()) {
+	if(!file.empty()){
 		ss << at(file, line) << "\n";
 	}
 	print_output(ss.str(), flag_exception);
@@ -255,7 +255,7 @@ schema_validator::schema_validator(const std::string& config_file_name, bool val
 	, validate_schema_(validate_schema)
 	, errors_()
 {
-	if(!read_config_file(config_file_name)) {
+	if(!read_config_file(config_file_name)){
 		ERR_VL << "Schema file " << config_file_name << " was not read.";
 		throw abstract_validator::error("Schema file " + config_file_name + " was not read.\n");
 	} else {
@@ -273,29 +273,29 @@ bool schema_validator::read_config_file(const std::string& filename)
 	config cfg;
 	try {
 		std::unique_ptr<abstract_validator> validator;
-		if(validate_schema_) {
+		if(validate_schema_){
 			validator.reset(new schema_self_validator());
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		cfg = io::read(*stream, validator.get());
-	} catch(const config::error& e) {
+	} catch(const config::error& e){
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
 		return false;
 	}
 
-	for(const config& g : cfg.child_range("wml_schema")) {
-		for(const config& schema : g.child_range("tag")) {
-			if(schema["name"].str() == "root") {
+	for(const config& g : cfg.child_range("wml_schema")){
+		for(const config& schema : g.child_range("tag")){
+			if(schema["name"].str() == "root"){
 				//@NOTE Don't know, maybe merging of roots needed.
 				root_ = wml_tag(schema);
 			}
 		}
 		types_["t_string"] = std::make_shared<wml_type_tstring>();
-		for(const config& type : g.child_range("type")) {
+		for(const config& type : g.child_range("type")){
 			try {
 				types_[type["name"].str()] = wml_type::from_config(type);
-			} catch(const std::exception&) {
+			} catch(const std::exception&){
 				// Need to check all type values in schema-generator
 			}
 		}
@@ -307,23 +307,23 @@ bool schema_validator::read_config_file(const std::string& filename)
 	return true;
 }
 
-void schema_validator::detect_link_cycles(const std::string& filename) {
+void schema_validator::detect_link_cycles(const std::string& filename){
 	link_graph_t link_graph;
 	link_graph_map_t link_map;
 
-	for (auto [type_name, type] : types_) {
+	for(auto [type_name, type] : types_){
 		collect_link_source(link_graph, link_map, type_name, type.get());
 	}
 
 	boost::depth_first_search(link_graph,
-		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge) {
+		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge){
 			const auto source = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::source(edge, link_graph); });
+				[&](const auto& link){ return link.second == boost::source(edge, link_graph); });
 
 			assert(source != link_map.end());
 
 			const auto target = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::target(edge, link_graph); });
+				[&](const auto& link){ return link.second == boost::target(edge, link_graph); });
 
 			assert(target != link_map.end());
 
@@ -334,37 +334,37 @@ void schema_validator::detect_link_cycles(const std::string& filename) {
 		})));
 }
 
-void schema_validator::collect_link_source(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type) {
-	if (auto alias = dynamic_cast<const wml_type_alias*>(type)) {
+void schema_validator::collect_link_source(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type){
+	if(auto alias = dynamic_cast<const wml_type_alias*>(type)){
 		auto it = types_.find(alias->link());
 
-		if (it != types_.end()) {
+		if(it != types_.end()){
 			collect_link_target(link_graph, link_map, alias->link(), it->second.get(), alias);
 		}
-	} else if (auto composite = dynamic_cast<const wml_type_composite*>(type)) {
-		for(auto elem : composite->subtypes()) {
+	} else if(auto composite = dynamic_cast<const wml_type_composite*>(type)){
+		for(auto elem : composite->subtypes()){
 			collect_link_source(link_graph, link_map, type_name, elem.get());
 		}
 	}
 }
 
-void schema_validator::collect_link_target(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type, const wml_type_alias* alias) {
-	if (auto link = dynamic_cast<const wml_type_alias*>(type)) {
-		if (link_map.find(alias) == link_map.end()) {
+void schema_validator::collect_link_target(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type, const wml_type_alias* alias){
+	if(auto link = dynamic_cast<const wml_type_alias*>(type)){
+		if(link_map.find(alias) == link_map.end()){
 			link_map.emplace(
 				alias,
 				boost::add_vertex(type_name, link_graph));
 		}
 
-		if (link_map.find(link) == link_map.end()) {
+		if(link_map.find(link) == link_map.end()){
 			link_map.emplace(
 				link,
 				boost::add_vertex(alias->link(), link_graph));
 		}
 
 		boost::add_edge(link_map[alias], link_map[link], link_graph);
-	} else if (auto composite = dynamic_cast<const wml_type_composite*>(type)) {
-		for(auto elem : composite->subtypes()) {
+	} else if(auto composite = dynamic_cast<const wml_type_composite*>(type)){
+		for(auto elem : composite->subtypes()){
 			collect_link_target(link_graph, link_map, type_name, elem.get(), alias);
 		}
 	}
@@ -377,18 +377,18 @@ void schema_validator::collect_link_target(link_graph_t& link_graph, link_graph_
  */
 void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addition)
 {
-	if(name.empty()) {
+	if(name.empty()){
 		// Opened the root tag; nothing special to do here
-	} else if(!stack_.empty()) {
+	} else if(!stack_.empty()){
 		const wml_tag* tag = nullptr;
 
-		if(stack_.top()) {
+		if(stack_.top()){
 			tag = active_tag().find_tag(name, root_, parent);
 
-			if(!tag) {
+			if(!tag){
 				errors_.emplace_back(wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_));
 			} else {
-				if(!addition) {
+				if(!addition){
 					counter& cnt = counter_.top()[name];
 					++cnt.cnt;
 					counter& total_cnt = counter_.top()[""];
@@ -412,19 +412,19 @@ void schema_validator::close_tag()
 	counter_.pop();
 	// cache_ is normally cleared in another place.
 	// However, if we're closing the root tag, clear it now
-	if(stack_.empty()) {
+	if(stack_.empty()){
 		print_cache();
 	}
 }
 
 void schema_validator::print_cache()
 {
-	if (cache_.empty()) {
+	if(cache_.empty()){
 		return;
 	}
 
-	for(auto& m : cache_.top()) {
-		for(auto& list : m.second) {
+	for(auto& m : cache_.top()){
+		for(auto& list : m.second){
 			print(list);
 		}
 	}
@@ -437,32 +437,32 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// close previous errors and print them to output.
 	print_cache();
 
-	if (!cache_.empty()) {
+	if(!cache_.empty()){
 		// clear cache
 		auto cache_it = cache_.top().find(&cfg);
-		if(cache_it != cache_.top().end()) {
+		if(cache_it != cache_.top().end()){
 			cache_it->second.clear();
 		}
 	}
 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
-	if(have_active_tag() && is_valid()) {
+	if(have_active_tag() && is_valid()){
 		const wml_tag& active = active_tag();
 
-		if(&active == &root_) {
+		if(&active == &root_){
 			detect_derivation_cycles();
 		} else {
 			// Build derivation graph
 			const auto super_tags = active.super(cfg);
 
-			for(const auto& [super_path, super_tag] : super_tags) {
-				if(derivation_map_.find(&active) == derivation_map_.end()) {
+			for(const auto& [super_path, super_tag] : super_tags){
+				if(derivation_map_.find(&active) == derivation_map_.end()){
 					derivation_map_.emplace(
 						&active, boost::add_vertex({&active, active_tag_path()}, derivation_graph_));
 				}
 
-				if(derivation_map_.find(super_tag) == derivation_map_.end()) {
+				if(derivation_map_.find(super_tag) == derivation_map_.end()){
 					derivation_map_.emplace(super_tag, boost::add_vertex({super_tag, super_path}, derivation_graph_));
 				}
 
@@ -473,33 +473,33 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 			// Report missing super
 			const auto super_expected = utils::split(active.get_super());
 
-			for(const auto& expected : super_expected) {
+			for(const auto& expected : super_expected){
 				const auto super_exists = std::any_of(super_tags.begin(), super_tags.end(),
-					[&](const std::pair<std::string, const wml_tag*>& super) { return super.first == expected; });
+					[&](const std::pair<std::string, const wml_tag*>& super){ return super.first == expected; });
 
-				if(!super_exists) {
+				if(!super_exists){
 					queue_message(cfg, MISSING_SUPER, file, start_line, 0, active_tag_path(), name_, expected);
 				}
 			}
 		}
 
-		for(const auto& tag : active.tags(cfg)) {
+		for(const auto& tag : active.tags(cfg)){
 			int cnt = counter_.top()[tag.first].cnt;
 
-			if(tag.second.get_min() > cnt) {
+			if(tag.second.get_min() > cnt){
 				queue_message(cfg, MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
 				continue;
 			}
 
-			if(tag.second.get_max() < cnt) {
+			if(tag.second.get_max() < cnt){
 				queue_message(cfg, EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
 
 		int total_cnt = counter_.top()[""].cnt;
-		if(active.get_min_children() > total_cnt) {
+		if(active.get_min_children() > total_cnt){
 			queue_message(cfg, MISSING_TAG, file, start_line, active.get_min_children(), "*", "", active.get_name());
-		} else if(active_tag().get_max_children() < total_cnt) {
+		} else if(active_tag().get_max_children() < total_cnt){
 			queue_message(cfg, EXTRA_TAG, file, start_line, active.get_max_children(), "*", "", active.get_name());
 		}
 
@@ -518,7 +518,7 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
 {
 	// Return an empty optional if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(std::find(visited.begin(), visited.end(), tag) != visited.end()){
 		return utils::nullopt;
 	}
 
@@ -527,11 +527,11 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	auto mandatory_keys = std::map<std::string, wml_key>();
 
 	// Override super mandatory keys for each level from the highest one first.
-	for(const auto& [_, super_tag] : tag->super(cfg)) {
+	for(const auto& [_, super_tag] : tag->super(cfg)){
 		auto super_mandatory_keys = find_mandatory_keys(super_tag, cfg, visited);
 
 		// Return an empty optional if a super cycle is detected.
-		if(!super_mandatory_keys) {
+		if(!super_mandatory_keys){
 			return utils::nullopt;
 		}
 
@@ -540,8 +540,8 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	}
 
 	// Set or override the mandatory keys on the lowest level (the key itself).
-	for(const auto& key : tag->keys(cfg)) {
-		if(key.second.is_mandatory() || mandatory_keys.find(key.first) != mandatory_keys.end()) {
+	for(const auto& key : tag->keys(cfg)){
+		if(key.second.is_mandatory() || mandatory_keys.find(key.first) != mandatory_keys.end()){
 			mandatory_keys[key.first] = key.second;
 		}
 	}
@@ -555,7 +555,7 @@ void schema_validator::validate_mandatory_keys(
 	const auto mandatory_keys = find_mandatory_keys(tag, cfg);
 
 	// Skip validation if a super cycle is detected.
-	if(!mandatory_keys) {
+	if(!mandatory_keys){
 		return;
 	}
 
@@ -572,16 +572,16 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 	std::vector<const wml_tag*>& visited)
 {
 	// Skip validation if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(std::find(visited.begin(), visited.end(), tag) != visited.end()){
 		return;
 	}
 
 	visited.push_back(tag);
 
 	// Checking if all mandatory keys are present
-	for(const auto& key : mandatory_keys) {
-		if(key.second.is_mandatory()) {
-			if(cfg.get(key.first) == nullptr) {
+	for(const auto& key : mandatory_keys){
+		if(key.second.is_mandatory()){
+			if(cfg.get(key.first) == nullptr){
 				queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
 			}
 		}
@@ -591,14 +591,14 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 void schema_validator::detect_derivation_cycles()
 {
 	boost::depth_first_search(derivation_graph_,
-		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge) {
+		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge){
 			const auto source = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::source(edge, derivation_graph_); });
+				[&](const auto& derivation){ return derivation.second == boost::source(edge, derivation_graph_); });
 
 			assert(source != derivation_map_.end());
 
 			const auto target = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::target(edge, derivation_graph_); });
+				[&](const auto& derivation){ return derivation.second == boost::target(edge, derivation_graph_); });
 
 			assert(target != derivation_map_.end());
 
@@ -614,20 +614,20 @@ void schema_validator::detect_derivation_cycles()
 void schema_validator::validate_key(
 		const config& cfg, const std::string& name, const config_attribute_value& value, int start_line, const std::string& file)
 {
-	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
+	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()){
 		// checking existing keys
 		const wml_key* key = active_tag().find_key(name, cfg);
-		if(key) {
+		if(key){
 			bool matched = false;
-			for(auto& possible_type : utils::split(key->get_type())) {
-				if(auto type = find_type(possible_type)) {
-					if(type->matches(value, types_)) {
+			for(auto& possible_type : utils::split(key->get_type())){
+				if(auto type = find_type(possible_type)){
+					if(type->matches(value, types_)){
 						matched = true;
 						break;
 					}
 				}
 			}
-			if(!matched) {
+			if(!matched){
 				queue_message(cfg, WRONG_VALUE, file, start_line, 0, active_tag().get_name(), name, value, key->get_type());
 			}
 		} else {
@@ -645,7 +645,7 @@ const wml_tag& schema_validator::active_tag() const
 wml_type::ptr schema_validator::find_type(const std::string& type) const
 {
 	auto it = types_.find(type);
-	if(it == types_.end()) {
+	if(it == types_.end()){
 		return nullptr;
 	}
 	return it->second;
@@ -659,11 +659,11 @@ bool schema_validator::have_active_tag() const
 std::string schema_validator::active_tag_path() const {
 	std::stack<const wml_tag*> temp = stack_;
 	std::deque<std::string> path;
-	while(!temp.empty()) {
+	while(!temp.empty()){
 		path.push_front(temp.top()->get_name());
 		temp.pop();
 	}
-	if(path.front() == "root") {
+	if(path.front() == "root"){
 		path.pop_front();
 	}
 	return utils::join(path, "/");
@@ -671,7 +671,7 @@ std::string schema_validator::active_tag_path() const {
 
 void schema_validator::print(message_info& el)
 {
-	switch(el.type) {
+	switch(el.type){
 	case WRONG_TAG:
 		errors_.emplace_back(wrong_tag_error(el.file, el.line, el.tag, el.value, create_exceptions_));
 		break;
@@ -711,13 +711,13 @@ schema_self_validator::schema_self_validator()
 void schema_self_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addition)
 {
 	schema_validator::open_tag(name, parent, start_line, file, addition);
-	if(name == "type") {
+	if(name == "type"){
 		type_nesting_++;
 	}
-	if(condition_nesting_ == 0) {
-		if(name == "if" || name == "switch") {
+	if(condition_nesting_ == 0){
+		if(name == "if" || name == "switch"){
 			condition_nesting_ = 1;
-		} else if(name == "tag") {
+		} else if(name == "tag"){
 			tag_stack_.emplace();
 		}
 	} else {
@@ -727,30 +727,30 @@ void schema_self_validator::open_tag(const std::string& name, const config& pare
 
 void schema_self_validator::close_tag()
 {
-	if(have_active_tag()) {
+	if(have_active_tag()){
 		auto tag_name = active_tag().get_name();
-		if(tag_name == "type") {
+		if(tag_name == "type"){
 			type_nesting_--;
-		} else if(condition_nesting_ == 0 && tag_name == "tag") {
+		} else if(condition_nesting_ == 0 && tag_name == "tag"){
 			tag_stack_.pop();
 		}
 	}
-	if(condition_nesting_ > 0) {
+	if(condition_nesting_ > 0){
 		condition_nesting_--;
 	}
 	schema_validator::close_tag();
 }
 
-bool schema_self_validator::tag_path_exists(const config& cfg, const reference& ref) {
+bool schema_self_validator::tag_path_exists(const config& cfg, const reference& ref){
 	std::vector<std::string> path = utils::split(ref.value_, '/');
 	std::string suffix = path.back();
 	path.pop_back();
-	while(!path.empty()) {
+	while(!path.empty()){
 		std::string prefix = utils::join(path, "/");
 		auto link = links_.find(prefix);
-		if(link != links_.end()) {
+		if(link != links_.end()){
 			std::string new_path = link->second + "/" + suffix;
-			if(defined_tag_paths_.count(new_path) > 0) {
+			if(defined_tag_paths_.count(new_path) > 0){
 				return true;
 			}
 			path = utils::split(new_path, '/');
@@ -758,20 +758,20 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 			//suffix = link->second + "/" + suffix;
 		} else {
 			const auto supers = derivations_.equal_range(prefix);
-			if(supers.first != supers.second) {
+			if(supers.first != supers.second){
 				reference super_ref = ref;
-				for(auto cur = supers.first ; cur != supers.second; ++cur) {
+				for(auto cur = supers.first ; cur != supers.second; ++cur){
 					super_ref.value_ = cur->second + "/" + suffix;
-					if(super_ref.value_.find(ref.value_) == 0) {
+					if(super_ref.value_.find(ref.value_) == 0){
 						continue;
 					}
-					if(tag_path_exists(cfg, super_ref)) {
+					if(tag_path_exists(cfg, super_ref)){
 						return true;
 					}
 				}
 			}
 			std::string new_path = prefix + "/" + suffix;
-			if(defined_tag_paths_.count(new_path) > 0) {
+			if(defined_tag_paths_.count(new_path) > 0){
 				return true;
 			}
 			suffix = path.back() + "/" + suffix;
@@ -783,17 +783,17 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 
 bool schema_self_validator::name_matches(const std::string& pattern, const std::string& name)
 {
-	for(const std::string& pat : utils::split(pattern)) {
+	for(const std::string& pat : utils::split(pattern)){
 		if(utils::wildcard_string_match(name, pat)) return true;
 	}
 	return false;
 }
 
-void schema_self_validator::check_for_duplicates(const std::string& name, std::vector<std::string>& seen, const config& cfg, message_type type, const std::string& file, int line, const std::string& tag) {
+void schema_self_validator::check_for_duplicates(const std::string& name, std::vector<std::string>& seen, const config& cfg, message_type type, const std::string& file, int line, const std::string& tag){
 	auto split = utils::split(name);
-	for(const std::string& pattern : seen) {
-		for(const std::string& key : split) {
-			if(name_matches(pattern, key)) {
+	for(const std::string& pattern : seen){
+		for(const std::string& key : split){
+			if(name_matches(pattern, key)){
 				queue_message(cfg, type, file, line, 0, tag, pattern, name);
 				continue;
 			}
@@ -804,26 +804,26 @@ void schema_self_validator::check_for_duplicates(const std::string& name, std::v
 
 void schema_self_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
 {
-	if(type_nesting_ == 1 && name == "type") {
+	if(type_nesting_ == 1 && name == "type"){
 		defined_types_.insert(cfg["name"]);
-	} else if(name == "tag") {
+	} else if(name == "tag"){
 		bool first_tag = true, first_key = true;
 		std::vector<std::string> tag_names, key_names;
-		for(const auto [current_key, current_cfg] : cfg.all_children_view()) {
-			if(current_key == "tag" || current_key == "link") {
+		for(const auto [current_key, current_cfg] : cfg.all_children_view()){
+			if(current_key == "tag" || current_key == "link"){
 				std::string tag_name = current_cfg["name"];
-				if(current_key == "link") {
+				if(current_key == "link"){
 					tag_name.erase(0, tag_name.find_last_of('/') + 1);
 				}
-				if(first_tag) {
+				if(first_tag){
 					tag_names.push_back(tag_name);
 					first_tag = false;
 					continue;
 				}
 				check_for_duplicates(tag_name, tag_names, current_cfg, DUPLICATE_TAG, file, start_line, current_key);
-			} else if(current_key == "key") {
+			} else if(current_key == "key"){
 				std::string key_name = current_cfg["name"];
-				if(first_key) {
+				if(first_key){
 					key_names.push_back(key_name);
 					first_key = false;
 					continue;
@@ -831,11 +831,11 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 				check_for_duplicates(key_name, key_names, current_cfg, DUPLICATE_KEY, file, start_line, current_key);
 			}
 		}
-	} else if(name == "wml_schema") {
+	} else if(name == "wml_schema"){
 		using namespace std::placeholders;
 		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
 		// Remove all the known types
-		utils::erase_if(missing_types, [this](const reference& ref) { return ref.match(defined_types_); });
+		utils::erase_if(missing_types, [this](const reference& ref){ return ref.match(defined_types_); });
 		// Remove all the known tags. This is more complicated since links behave similar to a symbolic link.
 		// In other words, the presence of links means there may be more than one way to refer to a given tag.
 		// But that's not all! It's possible to refer to a tag through a derived tag even if it's actually defined in the base tag.
@@ -844,20 +844,20 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 		std::sort(missing_types.begin(), missing_types.end());
 		std::sort(missing_tags.begin(), missing_tags.end());
 		static const config dummy;
-		for(auto& ref : missing_types) {
+		for(auto& ref : missing_types){
 			std::string tag_name;
-			if(ref.tag_ == "key") {
+			if(ref.tag_ == "key"){
 				tag_name = "type";
 			} else {
 				tag_name = "link";
 			}
 			queue_message(dummy, WRONG_TYPE, ref.file_, ref.line_, 0, ref.tag_, tag_name, ref.value_);
 		}
-		for(auto& ref : missing_tags) {
+		for(auto& ref : missing_tags){
 			std::string tag_name;
-			if(ref.tag_ == "tag") {
+			if(ref.tag_ == "tag"){
 				tag_name = "super";
-			} else if(ref.tag_ == "link") {
+			} else if(ref.tag_ == "link"){
 				tag_name = "name";
 			}
 			queue_message(dummy, WRONG_PATH, ref.file_, ref.line_, 0, ref.tag_, tag_name, ref.value_);
@@ -871,45 +871,45 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 void schema_self_validator::validate_key(const config& cfg, const std::string& name, const config_attribute_value& value, int start_line, const std::string& file)
 {
 	schema_validator::validate_key(cfg, name, value, start_line, file);
-	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
+	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()){
 		const std::string& tag_name = active_tag().get_name();
-		if(tag_name == "key" && name == "type" ) {
-			for(auto& possible_type : utils::split(cfg["type"])) {
+		if(tag_name == "key" && name == "type"){
+			for(auto& possible_type : utils::split(cfg["type"])){
 				referenced_types_.emplace_back(possible_type, file, start_line, tag_name);
 			}
-		} else if((tag_name == "type" || tag_name == "element") && name == "link") {
+		} else if((tag_name == "type" || tag_name == "element") && name == "link"){
 			referenced_types_.emplace_back(cfg["link"], file, start_line, tag_name);
-		} else if(tag_name == "link" && name == "name") {
+		} else if(tag_name == "link" && name == "name"){
 			referenced_tag_paths_.emplace_back(cfg["name"], file, start_line, tag_name);
 			std::string link_name = utils::split(cfg["name"].str(), '/').back();
 			links_.emplace(current_path() + "/" + link_name, cfg["name"]);
-		} else if(tag_name == "tag" && name == "super") {
-			for(auto super : utils::split(cfg["super"])) {
+		} else if(tag_name == "tag" && name == "super"){
+			for(auto super : utils::split(cfg["super"])){
 				const auto full_path = current_path();
 
 				const auto& ref = referenced_tag_paths_.emplace_back(super, file, start_line, tag_name);
-				if(condition_nesting_ > 0) {
+				if(condition_nesting_ > 0){
 					continue;
 				}
-				if(full_path == super) {
+				if(full_path == super){
 					queue_message(cfg, SUPER_LOOP, file, start_line, cfg["super"].str().find(super), tag_name, "super", super);
 					continue;
 				}
 				derivations_.emplace(full_path, super);
 
 				// Build derivation graph
-				if(schema_derivation_map_.find(full_path) == schema_derivation_map_.end()) {
+				if(schema_derivation_map_.find(full_path) == schema_derivation_map_.end()){
 					schema_derivation_map_.emplace(full_path, boost::add_vertex(full_path, schema_derivation_graph_));
 				}
 
-				if(schema_derivation_map_.find(super) == schema_derivation_map_.end()) {
+				if(schema_derivation_map_.find(super) == schema_derivation_map_.end()){
 					schema_derivation_map_.emplace(super, boost::add_vertex(super, schema_derivation_graph_));
 				}
 
 				boost::add_edge(schema_derivation_map_[full_path], schema_derivation_map_[super], {cfg, ref},
 					schema_derivation_graph_);
 			}
-		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name") {
+		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name"){
 			tag_stack_.top() = value.str();
 			defined_tag_paths_.insert(current_path());
 		}
@@ -919,7 +919,7 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 void schema_self_validator::detect_schema_derivation_cycles()
 {
 	boost::depth_first_search(schema_derivation_graph_,
-		boost::visitor(utils::back_edge_detector([&](const schema_derivation_graph_t::edge_descriptor edge) {
+		boost::visitor(utils::back_edge_detector([&](const schema_derivation_graph_t::edge_descriptor edge){
 			const auto& [cfg, ref] = schema_derivation_graph_[edge];
 			assert(cfg.has_attribute("super"));
 
@@ -932,11 +932,11 @@ std::string schema_self_validator::current_path() const
 {
 	std::stack<std::string> temp = tag_stack_;
 	std::deque<std::string> path;
-	while(!temp.empty()) {
+	while(!temp.empty()){
 		path.push_front(temp.top());
 		temp.pop();
 	}
-	if(path.front() == "root") {
+	if(path.front() == "root"){
 		path.pop_front();
 	}
 	return utils::join(path, "/");
@@ -961,7 +961,7 @@ bool schema_self_validator::reference::can_find(const wml_tag& root, const confi
 void schema_self_validator::print(message_info& el)
 {
 	schema_validator::print(el);
-	switch(el.type) {
+	switch(el.type){
 	case WRONG_TYPE:
 		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
 		break;

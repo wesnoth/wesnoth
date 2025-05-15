@@ -82,15 +82,15 @@ static point draw_offset();
 void init(fake type)
 {
 	LOG_DP << "initializing video";
-	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+	if(SDL_WasInit(SDL_INIT_VIDEO)){
 		throw error("video subsystem already initialized");
 	}
-	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
+	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0){
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
 	}
 
-	switch(type) {
+	switch(type){
 	case fake::none:
 		init_window();
 		break;
@@ -126,11 +126,11 @@ void deinit()
 	window.reset();
 
 	// Close the video subsystem.
-	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+	if(SDL_WasInit(SDL_INIT_VIDEO)){
 		LOG_DP << "quitting SDL video subsystem";
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	}
-	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+	if(SDL_WasInit(SDL_INIT_VIDEO)){
 		// This should not have been initialized multiple times
 		throw error("video subsystem still initialized after deinit");
 	}
@@ -164,7 +164,7 @@ void init_test()
 /** Returns true if the buffer was changed */
 bool update_test_framebuffer()
 {
-	if (!window) {
+	if(!window){
 		throw("trying to update test framebuffer with no window");
 	}
 
@@ -172,16 +172,16 @@ bool update_test_framebuffer()
 
 	// TODO: code unduplication
 	// Build or update the current render texture.
-	if (render_texture_) {
+	if(render_texture_){
 		int w, h;
 		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
-		if (w != test_resolution_.x || h != test_resolution_.y) {
+		if(w != test_resolution_.x || h != test_resolution_.y){
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
 		}
 	}
-	if (!render_texture_) {
+	if(!render_texture_){
 		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
@@ -206,11 +206,11 @@ bool update_test_framebuffer()
 
 bool update_framebuffer()
 {
-	if (!window) {
+	if(!window){
 		throw error("trying to update framebuffer with no window");
 	}
 
-	if (testing_) {
+	if(testing_){
 		return update_test_framebuffer();
 	}
 
@@ -233,7 +233,7 @@ bool update_framebuffer()
 
 	// Determine best pixel scale according to preference and window size
 	int scale = 1;
-	if (prefs::get().auto_pixel_scale()) {
+	if(prefs::get().auto_pixel_scale()){
 		// Try to match the default size (1280x720) but do not reduce below
 		int def_scale = std::min(
 			osize.x / pref_constants::def_window_width,
@@ -248,7 +248,7 @@ bool update_framebuffer()
 		scale = std::min(max_scale, prefs::get().pixel_scale());
 	}
 	// Cache it for easy access.
-	if (pixel_scale_ != scale) {
+	if(pixel_scale_ != scale){
 		pixel_scale_ = scale;
 		changed = true;
 	}
@@ -256,8 +256,8 @@ bool update_framebuffer()
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
 	point wsize(window->get_size());
-	if (lsize.x != osize.x / scale || lsize.y != osize.y / scale) {
-		if (!prefs::get().auto_pixel_scale() && scale < prefs::get().pixel_scale()) {
+	if(lsize.x != osize.x / scale || lsize.y != osize.y / scale){
+		if(!prefs::get().auto_pixel_scale() && scale < prefs::get().pixel_scale()){
 			LOG_DP << "reducing pixel scale from desired "
 				<< prefs::get().pixel_scale() << " to maximum allowable "
 				<< scale;
@@ -282,10 +282,10 @@ bool update_framebuffer()
 	game_canvas_size_ = lsize;
 
 	// Build or update the current render texture.
-	if (render_texture_) {
+	if(render_texture_){
 		int w, h;
 		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
-		if (w != osize.x || h != osize.y) {
+		if(w != osize.x || h != osize.y){
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
@@ -294,7 +294,7 @@ bool update_framebuffer()
 			render_texture_.set_draw_size(lsize);
 		}
 	}
-	if (!render_texture_) {
+	if(!render_texture_){
 		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
@@ -314,7 +314,7 @@ bool update_framebuffer()
 	input_area_ = {{}, wsize};
 
 	rect active_area = to_output(draw_area());
-	if (active_area.size() != osize) {
+	if(active_area.size() != osize){
 		LOG_DP << "render target offset: LT " << active_area.origin() << " RB "
 		       << osize - active_area.size() - active_area.origin();
 		// Translate active_area into display coordinates as input_area_
@@ -366,20 +366,20 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
 
-	if(prefs::get().fullscreen()) {
+	if(prefs::get().fullscreen()){
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	} else if(prefs::get().maximized()) {
+	} else if(prefs::get().maximized()){
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
-	if(hidden) {
+	if(hidden){
 		LOG_DP << "hiding main window";
 		window_flags |= SDL_WINDOW_HIDDEN;
 	}
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
 
-	if(prefs::get().vsync()) {
+	if(prefs::get().vsync()){
 		LOG_DP << "VSYNC on";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
@@ -409,7 +409,7 @@ bool has_window()
 
 point output_size()
 {
-	if (testing_) {
+	if(testing_){
 		return test_resolution_;
 	}
 	// As we are rendering via an abstraction, we should never need this.
@@ -418,7 +418,7 @@ point output_size()
 
 point window_size()
 {
-	if (testing_) {
+	if(testing_){
 		return test_resolution_;
 	}
 	return window->get_size();
@@ -491,7 +491,7 @@ int native_refresh_rate()
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
-	if(auto preferred = prefs::get().refresh_rate(); preferred > 0) {
+	if(auto preferred = prefs::get().refresh_rate(); preferred > 0){
 		return std::min(preferred, refresh_rate_);
 	} else {
 		return refresh_rate_;
@@ -500,7 +500,7 @@ int current_refresh_rate()
 
 void force_render_target(const texture& t)
 {
-	if (SDL_SetRenderTarget(get_renderer(), t)) {
+	if(SDL_SetRenderTarget(get_renderer(), t)){
 		ERR_DP << "failed to set render target to "
 			<< static_cast<void*>(t.get()) << ' '
 			<< t.draw_size() << " / " << t.get_raw_size();
@@ -509,16 +509,16 @@ void force_render_target(const texture& t)
 	}
 	current_render_target_ = t;
 
-	if (testing_) {
+	if(testing_){
 		return;
 	}
 
 	// The scale factor gets reset when the render target changes,
 	// so make sure it gets set back appropriately.
-	if (!t) {
+	if(!t){
 		DBG_DP << "rendering to window / screen";
 		window->set_logical_size(game_canvas_size_);
-	} else if (t == render_texture_) {
+	} else if(t == render_texture_){
 		DBG_DP << "rendering to primary buffer";
 		window->set_logical_size(game_canvas_size_);
 	} else {
@@ -551,19 +551,19 @@ texture get_render_target()
 // SDL renderer usage is not thread-safe anyway, so this is fine.
 void render_screen()
 {
-	if(headless_ || testing_) {
+	if(headless_ || testing_){
 		// No need to present anything in this case
 		return;
 	}
 
-	if(!window) {
+	if(!window){
 		WRN_DP << "trying to render with no window";
 		return;
 	}
 
 	// This should only ever be called when the main render texture is the
 	// current render target. It could be adapted otherwise... but let's not.
-	if(SDL_GetRenderTarget(*window) != render_texture_) {
+	if(SDL_GetRenderTarget(*window) != render_texture_){
 		ERR_DP << "trying to render screen, but current render texture is "
 			<< static_cast<void*>(SDL_GetRenderTarget(*window))
 			<< " | " << static_cast<void*>(current_render_target_.get())
@@ -592,7 +592,7 @@ void render_screen()
 
 surface read_pixels(SDL_Rect* r)
 {
-	if (!window) {
+	if(!window){
 		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
@@ -601,7 +601,7 @@ surface read_pixels(SDL_Rect* r)
 	texture& target = current_render_target_;
 
 	// Make doubly sure.
-	if (target != SDL_GetRenderTarget(*window)) {
+	if(target != SDL_GetRenderTarget(*window)){
 		SDL_Texture* t = SDL_GetRenderTarget(*window);
 		ERR_DP << "render target " << static_cast<void*>(target.get())
 			<< ' ' << target.draw_size() << " / " << target.get_raw_size()
@@ -612,9 +612,9 @@ surface read_pixels(SDL_Rect* r)
 
 	// Intersect the draw area with the given rect.
 	rect r_clipped = draw_area();
-	if (r) {
+	if(r){
 		r_clipped.clip(*r);
-		if (r_clipped != *r) {
+		if(r_clipped != *r){
 			DBG_DP << "modifying pixel read area from " << *r
 			       << " to " << r_clipped;
 			*r = r_clipped;
@@ -632,12 +632,12 @@ surface read_pixels(SDL_Rect* r)
 
 surface read_pixels_low_res(SDL_Rect* r)
 {
-	if(!window) {
+	if(!window){
 		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
 	surface s = read_pixels(r);
-	if(r) {
+	if(r){
 		return scale_surface(s, r->w, r->h);
 	} else {
 		return scale_surface(s, draw_size().x, draw_size().y);
@@ -658,7 +658,7 @@ void set_window_icon(surface& icon)
 
 SDL_Renderer* get_renderer()
 {
-	if(window) {
+	if(window){
 		return *window;
 	} else {
 		return nullptr;
@@ -681,7 +681,7 @@ std::vector<std::string> enumerate_drivers()
 	std::vector<std::string> res;
 	int num_drivers = SDL_GetNumVideoDrivers();
 
-	for(int n = 0; n < num_drivers; ++n) {
+	for(int n = 0; n < num_drivers; ++n){
 		const char* drvname = SDL_GetVideoDriver(n);
 		res.emplace_back(drvname ? drvname : "<invalid driver>");
 	}
@@ -718,14 +718,14 @@ std::vector<point> get_available_resolutions(const bool include_current)
 {
 	std::vector<point> result;
 
-	if(!window) {
+	if(!window){
 		return result;
 	}
 
 	const int display_index = window->get_display_index();
 
 	const int modes = SDL_GetNumDisplayModes(display_index);
-	if(modes <= 0) {
+	if(modes <= 0){
 		PLAIN_LOG << "No modes supported";
 		return result;
 	}
@@ -739,24 +739,24 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	SDL_DisplayMode mode;
 
-	for(int i = 0; i < modes; ++i) {
-		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
+	for(int i = 0; i < modes; ++i){
+		if(SDL_GetDisplayMode(display_index, i, &mode) == 0){
 			// Exclude any results outside the range of the current DPI.
-			if(mode.w > bounds.w && mode.h > bounds.h) {
+			if(mode.w > bounds.w && mode.h > bounds.h){
 				continue;
 			}
 
-			if(mode.w >= min_res.x && mode.h >= min_res.y) {
+			if(mode.w >= min_res.x && mode.h >= min_res.y){
 				result.emplace_back(mode.w, mode.h);
 			}
 		}
 	}
 
-	if(std::find(result.begin(), result.end(), min_res) == result.end()) {
+	if(std::find(result.begin(), result.end(), min_res) == result.end()){
 		result.push_back(min_res);
 	}
 
-	if(include_current) {
+	if(include_current){
 		result.push_back(current_resolution());
 	}
 
@@ -768,7 +768,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 point current_resolution()
 {
-	if (testing_) {
+	if(testing_){
 		return test_resolution_;
 	}
 	return point(window->get_size()); // Convert from plain SDL_Point
@@ -776,7 +776,7 @@ point current_resolution()
 
 bool is_fullscreen()
 {
-	if (testing_) {
+	if(testing_){
 		return true;
 	}
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
@@ -784,15 +784,15 @@ bool is_fullscreen()
 
 void set_fullscreen(bool fullscreen)
 {
-	if (headless_ || testing_) {
+	if(headless_ || testing_){
 		return;
 	}
 
 	// Only do anything if the current value differs from the desired value
-	if (window && is_fullscreen() != fullscreen) {
-		if (fullscreen) {
+	if(window && is_fullscreen() != fullscreen){
+		if(fullscreen){
 			window->full_screen();
-		} else if (prefs::get().maximized()) {
+		} else if(prefs::get().maximized()){
 			window->to_window();
 			window->maximize();
 		} else {
@@ -813,15 +813,15 @@ void toggle_fullscreen()
 
 bool set_resolution(const point& resolution)
 {
-	if(resolution == current_resolution()) {
+	if(resolution == current_resolution()){
 		return false;
 	}
 
-	if(!window) {
+	if(!window){
 		throw error("tried to set resolution with no window");
 	}
 
-	if(testing_) {
+	if(testing_){
 		LOG_DP << "resizing test resolution to " << resolution;
 		test_resolution_ = resolution;
 		return update_test_framebuffer();
@@ -843,12 +843,12 @@ bool set_resolution(const point& resolution)
 
 void update_buffers(bool autoupdate)
 {
-	if(headless_) {
+	if(headless_){
 		return;
 	}
 
 	LOG_DP << "updating video buffers";
-	if(update_framebuffer() && autoupdate) {
+	if(update_framebuffer() && autoupdate){
 		draw_manager::invalidate_all();
 	}
 }
@@ -856,14 +856,14 @@ void update_buffers(bool autoupdate)
 std::pair<float, float> get_dpi()
 {
 	float hdpi = 0.0f, vdpi = 0.0f;
-	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
+	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0){
 #ifdef TARGET_OS_OSX
 		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
 		// multiplied by screen's scale factor. This part of code reverts
 		// this multiplication.
 		//
 		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
-		if(sdl::get_version() >= version_info{2, 0, 12}) {
+		if(sdl::get_version() >= version_info{2, 0, 12}){
 			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
 			hdpi /= scale_factor;
 			vdpi /= scale_factor;
@@ -879,14 +879,14 @@ std::vector<std::pair<std::string, std::string>> renderer_report()
 	SDL_Renderer* rnd;
 	SDL_RendererInfo ri;
 
-	if(window && (rnd = *window) && SDL_GetRendererInfo(rnd, &ri) == 0) {
+	if(window && (rnd = *window) && SDL_GetRendererInfo(rnd, &ri) == 0){
 		std::string renderer_name = ri.name ? ri.name : "<unknown>";
 
-		if(ri.flags & SDL_RENDERER_SOFTWARE) {
+		if(ri.flags & SDL_RENDERER_SOFTWARE){
 			renderer_name += " (sw)";
 		}
 
-		if(ri.flags & SDL_RENDERER_ACCELERATED) {
+		if(ri.flags & SDL_RENDERER_ACCELERATED){
 			renderer_name += " (hw)";
 		}
 

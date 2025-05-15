@@ -281,7 +281,7 @@ public:
 
 	void change_proxy(side_proxy_controller::type proxy) { info_.proxy_controller = proxy; }
 
-	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == side_proxy_controller::type::ai  ) ? side_proxy_controller::type::human : side_proxy_controller::type::ai;   }
+	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == side_proxy_controller::type::ai ) ? side_proxy_controller::type::human : side_proxy_controller::type::ai;   }
 	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == side_proxy_controller::type::idle) ? side_proxy_controller::type::human : side_proxy_controller::type::idle; }
 
 	const std::string& team_name() const { return info_.team_name; }

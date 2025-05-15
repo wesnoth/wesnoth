@@ -59,7 +59,7 @@ void file_progress::update_progress(unsigned value)
 	auto elapsed = now - update_time_;
 
 	// Update at most once per vsync.
-	if(elapsed < draw_manager::get_frame_length()) {
+	if(elapsed < draw_manager::get_frame_length()){
 		return;
 	}
 

@@ -39,10 +39,10 @@ public:
 
 	bool operator()(const T& t)
 	{
-		if ( (!element_.id.empty()) && (element_.id == t->get_id()) ) {
+		if((!element_.id.empty()) && (element_.id == t->get_id())) {
 			return true;
 		}
-		if (count_ == element_.position) {
+		if(count_ == element_.position) {
 			return true;
 		}
 		count_++;
@@ -82,17 +82,17 @@ public:
 	component* handle_get(const path_element &child)
 	{
 		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
-		if (i!=values_.end()){
+		if(i!=values_.end()){
 			return &*(*i);
 		}
 		return nullptr;
 	}
 	bool handle_change(const path_element &child, config cfg)
 	{
-		if (!handle_delete(child)) {
+		if(!handle_delete(child)) {
 			return false;
 		}
-		if (!cfg.has_attribute("id")) {
+		if(!cfg.has_attribute("id")) {
 			cfg["id"] = child.id;
 		}
 
@@ -101,7 +101,7 @@ public:
 	bool handle_add(const path_element &child, const config &cfg)
 	{
 		//if the id is not empty, try to delete all with this id
-		if (!cfg["id"].empty()) {
+		if(!cfg["id"].empty()) {
 			path_element with_same_id;
 			with_same_id.id = cfg["id"].str();
 			with_same_id.property = property_;
@@ -116,13 +116,13 @@ public:
 	bool handle_delete(const path_element &child)
 	{
 		//* is a special case - 'delete all'
-		if (child.id == "*") {
+		if(child.id == "*") {
 			values_.clear();
 			return true;
 		}
 
 		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
-		if (i!=values_.end()){
+		if(i!=values_.end()){
 			values_.erase(i);
 			return true;
 		}
@@ -132,7 +132,7 @@ public:
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
-		for (ptr v : values_) {
+		for(ptr v : values_) {
 			children.push_back(&*v);
 		}
 		return children;
@@ -146,13 +146,13 @@ protected:
 private:
 	bool do_add(int pos, const config &cfg)
 	{
-		if (pos<0) {
+		if(pos<0) {
 			pos = values_.size();
 		}
 		ptr_vector values;
 		call_factory(values,cfg);
 		int j=0;
-		for (ptr b : values ) {
+		for(ptr b : values) {
 			values_.insert(values_.begin()+pos+j,b);
 			j++;
 		}
@@ -180,7 +180,7 @@ public:
 	component* handle_get(const path_element &child)
 	{
 		// special case - 'get the default facet'
-		if (child.id == "default_facet") {
+		if(child.id == "default_facet") {
 			return default_.get();
 		}
 		return vector_property_handler<T>::handle_get(child);
@@ -189,7 +189,7 @@ public:
 	bool handle_change(const path_element &child, config cfg)
 	{
 		// special case - 'replace the default facet'
-		if (child.id == "default_facet") {
+		if(child.id == "default_facet") {
 			ptr_vector values;
 			this->call_factory(values,cfg);
 			default_ = values.back();
@@ -223,7 +223,7 @@ public:
 	component* handle_get(const path_element &child)
 	{
 		typename aspect_map::const_iterator a = aspects_.find(child.id);
-		if (a!=aspects_.end()){
+		if(a!=aspects_.end()){
 			return &*a->second;
 		}
 		return nullptr;
@@ -231,10 +231,10 @@ public:
 
 	bool handle_change(const path_element &child, config cfg)
 	{
-		if (aspects_.find(child.id) == aspects_.end()) {
+		if(aspects_.find(child.id) == aspects_.end()) {
 			return false;
 		}
-		if (!cfg.has_attribute("name")) {
+		if(!cfg.has_attribute("name")) {
 			cfg["name"] = "composite_aspect";
 		}
 		cfg["id"] = child.id;
@@ -250,9 +250,9 @@ public:
 	bool handle_delete(const path_element &child)
 	{
 		//* is a special case - 'delete all facets'
-		if (child.id == "*") {
+		if(child.id == "*") {
 			bool b = false;
-			for (typename aspect_map::value_type a : aspects_) {
+			for(typename aspect_map::value_type a : aspects_) {
 				b |= a.second->delete_all_facets();
 			}
 			return b;
@@ -263,7 +263,7 @@ public:
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
-		for (typename aspect_map::value_type a : aspects_) {
+		for(typename aspect_map::value_type a : aspects_) {
 			children.push_back(&*a.second);
 		}
 		return children;

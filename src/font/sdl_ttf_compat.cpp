@@ -77,7 +77,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 {
 	// FIXME: what the hell does partial_line do in the SDL_ttf version?
 
-	if(max_lines == 0) {
+	if(max_lines == 0){
 		return "";
 	}
 
@@ -94,7 +94,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	std::string res;
 	const auto& lines = ptext.get_lines();
 
-	for(const auto& line : lines) {
+	for(const auto& line : lines){
 		if(!res.empty())
 			res += '\n';
 		res += line;
@@ -117,14 +117,14 @@ rect pango_draw_text(bool actually_draw, const rect& area, int size, const color
 		 .set_foreground_color(color)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
 
-	if(!area.empty()) {
+	if(!area.empty()){
 		ptext.set_maximum_height(area.h, true);
 	}
 
 	auto extents = ptext.get_size();
 	bool ellipsized = false;
 
-	if(!area.empty() && extents.x > area.w) {
+	if(!area.empty() && extents.x > area.w){
 		ptext.set_maximum_width(area.w);
 		ellipsized = true;
 	}
@@ -133,11 +133,11 @@ rect pango_draw_text(bool actually_draw, const rect& area, int size, const color
 
 	SDL_Rect res = {x, y, t.w(), t.h()};
 
-	if(actually_draw) {
+	if(actually_draw){
 		draw::blit(t, res);
 	}
 
-	if(ellipsized && use_tooltips) {
+	if(ellipsized && use_tooltips){
 		tooltips::add_tooltip(res, text);
 	}
 

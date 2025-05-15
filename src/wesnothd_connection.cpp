@@ -88,26 +88,26 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 
 	error_code ec;
 	auto result = resolver_.resolve(host, service, boost::asio::ip::resolver_query_base::numeric_host, ec);
-	if(!ec) { // if numeric resolve succeeds then we got raw ip address so TLS host name validation would never pass
+	if(!ec){ // if numeric resolve succeeds then we got raw ip address so TLS host name validation would never pass
 		use_tls_ = false;
-		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result } ); } );
+		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result }); });
 	} else {
 		resolver_.async_resolve(host, service,
 			std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 	}
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
-	worker_thread_ = std::thread([this]() {
+	worker_thread_ = std::thread([this](){
 		try {
 			io_context_.run();
-		} catch(const boost::system::system_error&) {
+		} catch(const boost::system::system_error&){
 			try {
 				// Attempt to pass the exception on to the handshake promise.
 				handshake_finished_.set_exception(std::current_exception());
-			} catch(const std::future_error&) {
+			} catch(const std::future_error&){
 				// Handshake already complete. Do nothing.
 			}
-		} catch(...) {
+		} catch(...){
 			DBG_NW << "wesnothd_connection worker thread threw general exception: " << utils::get_unknown_exception_type();
 		}
 
@@ -121,10 +121,10 @@ wesnothd_connection::~wesnothd_connection()
 {
 	MPTEST_LOG;
 
-	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
+	if(auto socket = utils::get_if<tls_socket>(&socket_)){
 		error_code ec;
 		// this sends close_notify for secure connection shutdown
-		(*socket)->async_shutdown([](const error_code&) {} );
+		(*socket)->async_shutdown([](const error_code&){});
 		const char buffer[] = "";
 		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
 		boost::asio::write(**socket, boost::asio::buffer(buffer, 0), ec);
@@ -138,7 +138,7 @@ wesnothd_connection::~wesnothd_connection()
 void wesnothd_connection::handle_resolve(const error_code& ec, const results_type& results)
 {
 	MPTEST_LOG;
-	if(ec) {
+	if(ec){
 		LOG_NW << __func__ << " Throwing: " << ec;
 		throw system_error(ec);
 	}
@@ -151,13 +151,13 @@ void wesnothd_connection::handle_resolve(const error_code& ec, const results_typ
 void wesnothd_connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	MPTEST_LOG;
-	if(ec) {
+	if(ec){
 		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
 		LOG_NW << "Connected to " << endpoint.address();
 
-		if(endpoint.address().is_loopback()) {
+		if(endpoint.address().is_loopback()){
 			use_tls_ = false;
 		}
 		handshake();
@@ -176,14 +176,14 @@ void wesnothd_connection::handshake()
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
 	boost::asio::async_write(*utils::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
-		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
+		[](const error_code& ec, std::size_t){ if(ec){ throw system_error(ec); } });
 	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4),
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
 template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 {
-	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx) {
+	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx){
 		char subject_name[256];
 		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
@@ -206,8 +206,8 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
-	if(ec) {
-		if(ec == boost::asio::error::eof && use_tls_) {
+	if(ec){
+		if(ec == boost::asio::error::eof && use_tls_){
 			// immediate disconnect likely means old server not supporting TLS handshake code
 			fallback_to_unencrypted();
 			return;
@@ -216,14 +216,14 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		throw system_error(ec);
 	}
 
-	if(use_tls_) {
-		if(handshake_response_ == 0xFFFFFFFFU) {
+	if(use_tls_){
+		if(handshake_response_ == 0xFFFFFFFFU){
 			use_tls_ = false;
 			handle_handshake(ec);
 			return;
 		}
 
-		if(handshake_response_ == 0x00000000) {
+		if(handshake_response_ == 0x00000000){
 			network_asio::load_tls_root_certs(tls_context_);
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type{std::move(*s), tls_context_} };
@@ -242,8 +242,8 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			socket.set_verify_callback(verbose_verify(boost::asio::ssl::rfc2818_verification(host_)));
 #endif
 
-			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
-				if(ec) {
+			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec){
+				if(ec){
 					LOG_NW << __func__ << " Throwing: " << ec;
 					throw system_error(ec);
 				}
@@ -293,7 +293,7 @@ void wesnothd_connection::wait_for_handshake()
 			gui2::dialogs::loading_screen::spin();
 		}
 
-		switch(future.wait_for(0ms)) {
+		switch(future.wait_for(0ms)){
 		case std::future_status::ready:
 			// This is a void future, so this just serves to re-throw any system_error exceptions
 			// stored by the worker thread. Additional handling occurs in the catch block below.
@@ -304,15 +304,15 @@ void wesnothd_connection::wait_for_handshake()
 		default:
 			break;
 		}
-	} catch(const boost::system::system_error& err) {
-		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
+	} catch(const boost::system::system_error& err){
+		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof){
 			return;
 		}
 
 		WRN_NW << __func__ << " Rethrowing: " << err.code();
 		throw error(err.code());
-	} catch(const std::future_error& e) {
-		if(e.code() == std::future_errc::future_already_retrieved) {
+	} catch(const std::future_error& e){
+		if(e.code() == std::future_errc::future_already_retrieved){
 			return;
 		}
 	}
@@ -333,7 +333,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 		DBG_NW << "In wesnothd_connection::send_data::lambda";
 		send_queue_.push(std::move(buf_ptr));
 
-		if(send_queue_.size() == 1) {
+		if(send_queue_.size() == 1){
 			send();
 		}
 	});
@@ -343,8 +343,8 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	utils::visit([](auto&& socket) {
-		if(socket->lowest_layer().is_open()) {
+	utils::visit([](auto&& socket){
+		if(socket->lowest_layer().is_open()){
 			boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -358,7 +358,7 @@ void wesnothd_connection::cancel()
 #pragma warning(pop)
 #endif
 
-			if(ec) {
+			if(ec){
 				WRN_NW << "Failed to cancel network operations: " << ec.message();
 			}
 		}
@@ -377,7 +377,7 @@ void wesnothd_connection::stop()
 std::size_t wesnothd_connection::is_write_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
-	if(ec) {
+	if(ec){
 		{
 			std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
@@ -401,7 +401,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 
 	send_queue_.pop();
 
-	if(ec) {
+	if(ec){
 		{
 			std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
@@ -413,7 +413,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 		return;
 	}
 
-	if(!send_queue_.empty()) {
+	if(!send_queue_.empty()){
 		send();
 	}
 }
@@ -423,7 +423,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 {
 	// We use custom is_write/read_complete function to be able to see the current progress of the upload/download
 	MPTEST_LOG;
-	if(ec) {
+	if(ec){
 		{
 			std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
@@ -437,11 +437,11 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 
 	bytes_read_ = bytes_transferred;
 
-	if(bytes_transferred < 4) {
+	if(bytes_transferred < 4){
 		return 4;
 	}
 
-	if(!bytes_to_read_) {
+	if(!bytes_to_read_){
 		std::istream is(&read_buf_);
 		uint32_t data_size;
 
@@ -449,7 +449,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 		bytes_to_read_ = ntohl(data_size) + 4;
 
 		// Close immediately if we receive an invalid length
-		if(bytes_to_read_ < 4) {
+		if(bytes_to_read_ < 4){
 			bytes_to_read_ = bytes_transferred;
 		}
 	}
@@ -464,7 +464,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	DBG_NW << "Read " << bytes_transferred << " bytes.";
 
 	bytes_to_read_ = 0;
-	if(last_error_ && ec != boost::asio::error::eof) {
+	if(last_error_ && ec != boost::asio::error::eof){
 		{
 			std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
@@ -478,7 +478,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 
 	std::istream is(&read_buf_);
 	config data = io::read_gz(is);
-	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
+	if(!data.empty()){ DBG_NW << "Received:\n" << data; }
 
 	{
 		std::scoped_lock lock(recv_queue_mutex_);
@@ -505,7 +505,7 @@ void wesnothd_connection::send()
 		buf.data()
 	};
 
-	utils::visit([this, &bufs](auto&& socket) {
+	utils::visit([this, &bufs](auto&& socket){
 		boost::asio::async_write(*socket, bufs,
 			std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
@@ -517,7 +517,7 @@ void wesnothd_connection::recv()
 {
 	MPTEST_LOG;
 
-	utils::visit([this](auto&& socket) {
+	utils::visit([this](auto&& socket){
 		boost::asio::async_read(*socket, read_buf_,
 			std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
@@ -531,7 +531,7 @@ bool wesnothd_connection::receive_data(config& result)
 
 	{
 		std::scoped_lock lock(recv_queue_mutex_);
-		if(!recv_queue_.empty()) {
+		if(!recv_queue_.empty()){
 			result.swap(recv_queue_.front());
 			recv_queue_.pop();
 			return true;
@@ -540,10 +540,10 @@ bool wesnothd_connection::receive_data(config& result)
 
 	{
 		std::scoped_lock lock(last_error_mutex_);
-		if(last_error_) {
+		if(last_error_){
 			std::string user_msg;
 
-			if(last_error_ == boost::asio::error::eof) {
+			if(last_error_ == boost::asio::error::eof){
 				user_msg = _("Disconnected from server.");
 			}
 
@@ -559,7 +559,7 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 	{
 		std::unique_lock<std::mutex> lock(recv_queue_mutex_);
 		while(!recv_queue_lock_.wait_for(
-		      lock, 10ms, [this]() { return has_data_received(); }))
+		      lock, 10ms, [this](){ return has_data_received(); }))
 		{
 			gui2::dialogs::loading_screen::spin();
 		}

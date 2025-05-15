@@ -40,11 +40,11 @@ namespace gui{
 
 	void floating_textbox::close()
 	{
-		if(!active()) {
+		if(!active()){
 			return;
 		}
-		if(check_ != nullptr) {
-			if(mode_ == TEXTBOX_MESSAGE) {
+		if(check_ != nullptr){
+			if(mode_ == TEXTBOX_MESSAGE){
 				prefs::get().set_message_private(check_->checked());
 			}
 		}
@@ -56,7 +56,7 @@ namespace gui{
 
 	void floating_textbox::update_location(game_display& gui)
 	{
-		if (box_ == nullptr)
+		if(box_ == nullptr)
 			return;
 
 		const SDL_Rect& area = gui.map_outside_area();
@@ -65,7 +65,7 @@ namespace gui{
 
 		const int ypos = area.y+area.h-30 - (check_ != nullptr ? check_->height() + border_size : 0);
 
-		if (label_ != 0)
+		if(label_ != 0)
 			font::remove_floating_label(label_);
 
 		font::floating_label flabel(label_string_);
@@ -76,18 +76,18 @@ namespace gui{
 
 		label_ = font::add_floating_label(flabel);
 
-		if (label_ == 0)
+		if(label_ == 0)
 			return;
 
 		const SDL_Rect& label_area = font::get_floating_label_rect(label_);
 		const int textbox_width = area.w - label_area.w - border_size*3;
 
-		if(textbox_width <= 0) {
+		if(textbox_width <= 0){
 			font::remove_floating_label(label_);
 			return;
 		}
 
-		if(box_ != nullptr) {
+		if(box_ != nullptr){
 			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
@@ -98,7 +98,7 @@ namespace gui{
 			box_->set_location(rect);
 		}
 
-		if(check_ != nullptr) {
+		if(check_ != nullptr){
 			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
 		}
 	}
@@ -111,7 +111,7 @@ namespace gui{
 		label_string_ = label;
 		mode_ = mode;
 
-		if(!check_label.empty()) {
+		if(!check_label.empty()){
 			check_.reset(new gui::button(check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}
@@ -124,7 +124,7 @@ namespace gui{
 
 	void floating_textbox::tab(const std::set<std::string>& dictionary)
 	{
-		if(active() == false) {
+		if(active() == false){
 			return;
 		}
 
@@ -132,10 +132,10 @@ namespace gui{
 		std::vector<std::string> matches(dictionary.begin(), dictionary.end());
 		const bool line_start = utils::word_completion(text, matches);
 
-		if (matches.empty()) return;
-		if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
+		if(matches.empty()) return;
+		if(matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE){
 			text.append(line_start ? ": " : " ");
-		} else if (matches.size() > 1) {
+		} else if(matches.size() > 1){
 			std::string completion_list = utils::join(matches, " ");
 			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
@@ -145,13 +145,13 @@ namespace gui{
 
 	void floating_textbox::memorize_command(const std::string& command)
 	{
-		if(command.empty()) {
+		if(command.empty()){
 			return;
 		}
 
 		auto prev = std::find(command_history_.begin(), command_history_.end(), command);
 
-		if(prev != command_history_.end()) {
+		if(prev != command_history_.end()){
 			command_history_.erase(prev);
 		}
 		command_history_.emplace_back(command);

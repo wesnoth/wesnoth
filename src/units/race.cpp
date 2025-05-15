@@ -35,12 +35,12 @@ const std::string unit_race::s_female("female");
 /** Standard string id (not translatable) for MALE */
 const std::string unit_race::s_male("male");
 
-static const config& empty_traits() {
+static const config& empty_traits(){
 	static config cfg;
 	return cfg;
 }
 
-static const config& empty_topics() {
+static const config& empty_topics(){
 	static config cfg;
 	return cfg;
 }
@@ -58,7 +58,7 @@ unit_race::unit_race()
 	, undead_variation_()
 	, help_taxonomy_()
 {
-	for(auto& generator : name_generator_) {
+	for(auto& generator : name_generator_){
 		generator.reset(new name_generator());
 	}
 }
@@ -76,7 +76,7 @@ unit_race::unit_race(const config& cfg)
 	, undead_variation_(cfg["undead_variation"])
 	, help_taxonomy_(cfg["help_taxonomy"])
 {
-	if (plural_name_.empty()) {
+	if(plural_name_.empty()){
 		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";
 		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
@@ -84,14 +84,14 @@ unit_race::unit_race(const config& cfg)
 
 	// use "name" if "male_name" or "female_name" aren't available
 	name_[MALE] = cfg["male_name"];
-	if(name_[MALE].empty()) {
+	if(name_[MALE].empty()){
 		name_[MALE] = (cfg["name"]);
 	}
 	name_[FEMALE] = cfg["female_name"];
-	if(name_[FEMALE].empty()) {
+	if(name_[FEMALE].empty()){
 		name_[FEMALE] = (cfg["name"]);
 	}
-	if(std::any_of(name_.begin(), name_.end(), [](const auto& n) { return n.empty(); })) {
+	if(std::any_of(name_.begin(), name_.end(), [](const auto& n){ return n.empty(); })){
 		lg::log_to_chat()
 			<< "[race] id='" << id_
 			<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
@@ -101,7 +101,7 @@ unit_race::unit_race(const config& cfg)
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	for(int i=MALE; i<NUM_GENDERS; i++) {
+	for(int i=MALE; i<NUM_GENDERS; i++){
 		GENDER gender = static_cast<GENDER>(i);
 		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
@@ -135,8 +135,8 @@ const config::const_child_itors& unit_race::additional_topics() const
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
 
-const std::string& gender_string(unit_race::GENDER gender) {
-	switch(gender) {
+const std::string& gender_string(unit_race::GENDER gender){
+	switch(gender){
 	case unit_race::FEMALE:
 		return unit_race::s_female;
 	default:
@@ -144,10 +144,10 @@ const std::string& gender_string(unit_race::GENDER gender) {
 	}
 }
 
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
-	if ( str == unit_race::s_male ) {
+unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def){
+	if(str == unit_race::s_male){
 		return unit_race::MALE;
-	} else if ( str == unit_race::s_female ) {
+	} else if(str == unit_race::s_female){
 		return unit_race::FEMALE;
 	}
 	return def;
@@ -162,14 +162,14 @@ const config::attribute_value& gender_value(
 
 std::string unit_race::get_icon_path_stem() const
 {
-	if(!icon_.empty()) {
+	if(!icon_.empty()){
 		return icon_;
 	}
 
 	std::string path = "icons/unit-groups/race_" + id_;
 
 	// FIXME: hardcoded '30' is bad...
-	if(!filesystem::get_binary_file_location("images", path + "_30.png")) {
+	if(!filesystem::get_binary_file_location("images", path + "_30.png")){
 		path = "icons/unit-groups/race_custom";
 	}
 

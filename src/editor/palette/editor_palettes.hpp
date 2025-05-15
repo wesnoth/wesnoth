@@ -67,10 +67,10 @@ public:
 	virtual void draw_contents() override;
 
 	void next_group() override {
-		set_group( (active_group_index() +1) % (groups_.size()) );
+		set_group((active_group_index() +1) % (groups_.size()));
 	}
 	void prev_group() override {
-		set_group( (active_group_index() -1) % (groups_.size()) );
+		set_group((active_group_index() -1) % (groups_.size()));
 	}
 
 	/**

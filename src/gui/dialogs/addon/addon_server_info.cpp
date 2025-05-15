@@ -86,12 +86,12 @@ void addon_server_info::admin_delete_addon()
 	config admins = client_.get_addon_admins();
 
 	std::set<std::string> admin_set;
-	for(const auto& admin : admins.child_range("admin")) {
+	for(const auto& admin : admins.child_range("admin")){
 		admin_set.emplace(admin["username"]);
 	}
 
 	std::string msg;
-	if(!client_.delete_remote_addon(addon_, msg, admin_set)) {
+	if(!client_.delete_remote_addon(addon_, msg, admin_set)){
 		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else {
 		gui2::show_transient_message(_("Response"), msg);
@@ -101,22 +101,22 @@ void addon_server_info::admin_delete_addon()
 
 void addon_server_info::admin_hide_addon()
 {
-	if(!addon_.empty()) {
+	if(!addon_.empty()){
 		config admins = client_.get_addon_admins();
 
 		std::set<std::string> admin_set;
-		for(const auto& admin : admins.child_range("admin")) {
+		for(const auto& admin : admins.child_range("admin")){
 			admin_set.emplace(admin["username"]);
 		}
 
 		config cfg;
 		cfg["primary_authors"] = utils::join(admin_set);
-		if(!gui2::dialogs::addon_auth::execute(cfg)) {
+		if(!gui2::dialogs::addon_auth::execute(cfg)){
 			gui2::show_error_message(_("Password not provided"));
 			return;
 		}
 
-		if(!client_.hide_addon(addon_, cfg["uploader"].str(), cfg["passphrase"].str())) {
+		if(!client_.hide_addon(addon_, cfg["uploader"].str(), cfg["passphrase"].str())){
 			gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 		} else {
 			needs_refresh_ = true;
@@ -129,22 +129,22 @@ void addon_server_info::admin_unhide_addon()
 	std::string addon;
 	gui2::dialogs::prompt::execute(addon);
 
-	if(!addon.empty()) {
+	if(!addon.empty()){
 		config admins = client_.get_addon_admins();
 
 		std::set<std::string> admin_set;
-		for(const auto& admin : admins.child_range("admin")) {
+		for(const auto& admin : admins.child_range("admin")){
 			admin_set.emplace(admin["username"]);
 		}
 
 		config cfg;
 		cfg["primary_authors"] = utils::join(admin_set);
-		if(!gui2::dialogs::addon_auth::execute(cfg)) {
+		if(!gui2::dialogs::addon_auth::execute(cfg)){
 			gui2::show_error_message(_("Password not provided"));
 			return;
 		}
 
-		if(!client_.unhide_addon(addon, cfg["uploader"].str(), cfg["passphrase"].str())) {
+		if(!client_.unhide_addon(addon, cfg["uploader"].str(), cfg["passphrase"].str())){
 			gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 		} else {
 			needs_refresh_ = true;
@@ -157,13 +157,13 @@ void addon_server_info::admin_list_hidden()
 	config admins = client_.get_addon_admins();
 
 	std::set<std::string> admin_set;
-	for(const auto& admin : admins.child_range("admin")) {
+	for(const auto& admin : admins.child_range("admin")){
 		admin_set.emplace(admin["username"]);
 	}
 
 	config cfg;
 	cfg["primary_authors"] = utils::join(admin_set);
-	if(!gui2::dialogs::addon_auth::execute(cfg)) {
+	if(!gui2::dialogs::addon_auth::execute(cfg)){
 		gui2::show_error_message(_("Password not provided"));
 		return;
 	}

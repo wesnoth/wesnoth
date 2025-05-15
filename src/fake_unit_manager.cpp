@@ -31,7 +31,7 @@ static lg::log_domain log_engine("engine");
  */
 void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 {
-	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
+	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()){
 		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit.";
 	} else {
 		fake_units_.push_back(u);
@@ -43,15 +43,15 @@ void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 {
 	int removed = 0;
-	if (fake_units_.empty())
+	if(fake_units_.empty())
 		return removed;
 	removed = utils::erase(fake_units_, u);
-	if (removed > 0) {
+	if(removed > 0){
 		my_display_.invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
 		u->anim_comp().clear_haloes();
 	}
-	if (removed > 1) {
+	if(removed > 1){
 		ERR_NG << "Error: duplicate temp unit found in fake_unit_manager::remove_temporary_unit";
 	}
 	return removed;

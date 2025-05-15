@@ -58,7 +58,7 @@ void countdown_clock::update_team()
 //make sure we think about countdown even while dialogs are open
 void countdown_clock::process()
 {
-	if(timer_refresh_rate.poll()) {
+	if(timer_refresh_rate.poll()){
 		update();
 	}
 }
@@ -72,7 +72,7 @@ bool countdown_clock::update()
 
 void countdown_clock::maybe_play_sound()
 {
-	if(!playing_sound_ && team_.countdown_time() < warn_threshold )
+	if(!playing_sound_ && team_.countdown_time() < warn_threshold)
 	{
 		if(prefs::get().turn_bell() || prefs::get().sound() || prefs::get().ui_sound_on())
 		{

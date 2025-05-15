@@ -39,9 +39,9 @@ lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 	lk_.load_core();
 	using namespace std::string_literals;
 	const std::array required {"id"s, "config_name"s, "create_map"s};
-	for(const auto& req : required) {
-		if (!cfg.has_attribute(req)) {
-			if(req == "create_map" && cfg.has_attribute("create_scenario")) {
+	for(const auto& req : required){
+		if(!cfg.has_attribute(req)){
+			if(req == "create_map" && cfg.has_attribute("create_scenario")){
 				// One of these is required, but not both
 				continue;
 			}
@@ -57,7 +57,7 @@ void lua_map_generator::user_config()
 {
 	try {
 		lk_.user_config(user_config_.c_str(), generator_data_);
-	} catch(const game::lua_error & e) {
+	} catch(const game::lua_error & e){
 		std::string msg = "Error when running lua_map_generator user_config.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
@@ -67,13 +67,13 @@ void lua_map_generator::user_config()
 
 std::string lua_map_generator::create_map(utils::optional<uint32_t> seed)
 {
-	if(create_map_.empty()) {
+	if(create_map_.empty()){
 		return map_generator::create_map(seed);
 	}
 
 	try {
 		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
-	} catch (const game::lua_error & e) {
+	} catch (const game::lua_error & e){
 		std::string msg = "Error when running lua_map_generator create_map.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
@@ -83,13 +83,13 @@ std::string lua_map_generator::create_map(utils::optional<uint32_t> seed)
 
 config lua_map_generator::create_scenario(utils::optional<uint32_t> seed)
 {
-	if(create_scenario_.empty()) {
+	if(create_scenario_.empty()){
 		return map_generator::create_scenario(seed);
 	}
 
 	try {
 		return lk_.create_scenario(create_scenario_.c_str(), generator_data_, seed);
-	} catch (const game::lua_error & e) {
+	} catch (const game::lua_error & e){
 		std::string msg = "Error when running lua_map_generator create_scenario.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();

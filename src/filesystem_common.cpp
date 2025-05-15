@@ -42,7 +42,7 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 	// evaluated with this in mind.
 	//
 
-	if(name.empty() || name.back() == '.' || name.find("..") != std::string::npos || name.size() > 255) {
+	if(name.empty() || name.back() == '.' || name.find("..") != std::string::npos || name.size() > 255){
 		return false;
 	}
 
@@ -68,7 +68,7 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 	const auto& first_name =
 		boost::algorithm::to_upper_copy(name.substr(0, name.find('.')), std::locale::classic());
 
-	if(dos_device_names.count(first_name)) {
+	if(dos_device_names.count(first_name)){
 		return false;
 	}
 
@@ -79,7 +79,7 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 
 	return name_ucs4.end() == std::find_if(name_ucs4.begin(), name_ucs4.end(), [=](char32_t c)
 	{
-		switch(c) {
+		switch(c){
 			case ' ':
 				return !allow_whitespace;
 			case '"':
@@ -104,8 +104,8 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 
 void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
 {
-	utils::erase_if(files, [this](const std::string& name) { return match_file(name); });
-	utils::erase_if(directories, [this](const std::string& name) { return match_dir(name); });
+	utils::erase_if(files, [this](const std::string& name){ return match_file(name); });
+	utils::erase_if(directories, [this](const std::string& name){ return match_dir(name); });
 }
 
 bool blacklist_pattern_list::match_file(const std::string& name) const
@@ -126,16 +126,16 @@ std::string autodetect_game_data_dir(std::string exe_dir)
 
 	// scons leaves the resulting binaries at the root of the source
 	// tree by default.
-	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
+	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")){
 		auto_dir = std::move(exe_dir);
 	}
 	// cmake encourages creating a subdir at the root of the source
 	// tree for the build, and the resulting binaries are found in it.
-	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")){
 		auto_dir = filesystem::normalize_path(exe_dir + "/..");
 	}
 	// Allow using the current working directory as the game data dir
-	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")){
 		auto_dir = filesystem::get_cwd();
 	}
 #ifdef _WIN32
@@ -143,7 +143,7 @@ std::string autodetect_game_data_dir(std::string exe_dir)
 	// integration, the EXE is placed a few levels below the game data
 	// dir (e.g. .\out\build\x64-Debug).
 	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
-		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")){
 		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
 	}
 #endif
@@ -222,7 +222,7 @@ std::string get_legacy_editor_dir()
 
 std::string get_current_editor_dir(const std::string& addon_id)
 {
-	if(addon_id == "mainline") {
+	if(addon_id == "mainline"){
 		return game_config::path + "/data/multiplayer";
 	} else {
 		return get_addons_dir() + "/" + addon_id;
@@ -289,15 +289,15 @@ std::string read_map(const std::string& name)
 {
 	std::string res;
 	auto map_location = get_wml_location(name);
-	if(!map_location) {
+	if(!map_location){
 		// Consult [binary_path] for maps as well.
 		map_location = get_binary_file_location("maps", name);
 	}
-	if(map_location) {
+	if(map_location){
 		res = read_file(map_location.value());
 	}
 
-	if(res.empty()) {
+	if(res.empty()){
 		res = read_file(get_legacy_editor_dir() + "/maps/" + name);
 	}
 
@@ -308,15 +308,15 @@ std::string read_scenario(const std::string& name)
 {
 	std::string res;
 	auto file_location = get_wml_location(name);
-	if(!file_location) {
+	if(!file_location){
 		// Consult [binary_path] for scenarios as well.
 		file_location = get_binary_file_location("scenarios", name);
 	}
-	if(file_location) {
+	if(file_location){
 		res = read_file(file_location.value());
 	}
 
-	if(res.empty()) {
+	if(res.empty()){
 		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
 	}
 
@@ -329,7 +329,7 @@ static void get_file_tree_checksum_internal(const std::string& path, file_tree_c
 	std::vector<std::string> dirs;
 	get_files_in_dir(path,nullptr,&dirs, name_mode::ENTIRE_FILE_PATH, filter_mode::SKIP_MEDIA_DIR, reorder_mode::DONT_REORDER, &res);
 
-	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j){
 		get_file_tree_checksum_internal(*j,res);
 	}
 }
@@ -337,9 +337,9 @@ static void get_file_tree_checksum_internal(const std::string& path, file_tree_c
 const file_tree_checksum& data_tree_checksum(bool reset)
 {
 	static file_tree_checksum checksum;
-	if (reset)
+	if(reset)
 		checksum = file_tree_checksum{};
-	if(checksum.nfiles == 0) {
+	if(checksum.nfiles == 0){
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "

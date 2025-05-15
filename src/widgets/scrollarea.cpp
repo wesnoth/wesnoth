@@ -46,7 +46,7 @@ void scrollarea::update_location(const SDL_Rect& rect)
 {
 	SDL_Rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
-	if (shown_scrollbar_) {
+	if(shown_scrollbar_){
 		int w = r.w - scrollbar_.width();
 		r.x += w;
 		r.w -= w;
@@ -55,17 +55,17 @@ void scrollarea::update_location(const SDL_Rect& rect)
 		r.w = w;
 	}
 
-	if (!hidden())
+	if(!hidden())
 		scrollbar_.hide(!shown_scrollbar_);
 	set_inner_location(r);
 }
 
 void scrollarea::test_scrollbar()
 {
-	if (recursive_)
+	if(recursive_)
 		return;
 	recursive_ = true;
-	if (shown_scrollbar_ != has_scrollbar()) {
+	if(shown_scrollbar_ != has_scrollbar()){
 		update_location(location());
 	}
 	recursive_ = false;
@@ -74,7 +74,7 @@ void scrollarea::test_scrollbar()
 void scrollarea::hide(bool value)
 {
 	widget::hide(value);
-	if (shown_scrollbar_)
+	if(shown_scrollbar_)
 		scrollbar_.hide(value);
 }
 
@@ -125,7 +125,7 @@ void scrollarea::set_scroll_rate(unsigned r)
 void scrollarea::process_event()
 {
 	int grip_position = scrollbar_.get_position();
-	if (grip_position == old_position_)
+	if(grip_position == old_position_)
 		return;
 	old_position_ = grip_position;
 	scroll(grip_position);
@@ -134,7 +134,7 @@ void scrollarea::process_event()
 rect scrollarea::inner_location() const
 {
 	rect r = location();
-	if (shown_scrollbar_)
+	if(shown_scrollbar_)
 		r.w -= scrollbar_.width();
 	return r;
 }
@@ -148,25 +148,25 @@ void scrollarea::handle_event(const SDL_Event& event)
 {
 	gui::widget::handle_event(event);
 
-	if (mouse_locked() || hidden())
+	if(mouse_locked() || hidden())
 		return;
 
-	if (event.type == SDL_MOUSEWHEEL) {
+	if(event.type == SDL_MOUSEWHEEL){
 		const SDL_MouseWheelEvent &ev = event.wheel;
-		if (inner_location().contains(sdl::get_mouse_location())) {
-			if (ev.y > 0) {
+		if(inner_location().contains(sdl::get_mouse_location())){
+			if(ev.y > 0){
 				scrollbar_.scroll_up();
-			} else if (ev.y < 0) {
+			} else if(ev.y < 0){
 				scrollbar_.scroll_down();
 			}
 		}
 	}
 
-	if (event.type == SDL_FINGERUP) {
+	if(event.type == SDL_FINGERUP){
 		swipe_dy_ = 0;
 	}
 
-	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
+	if(event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION){
 		// These events are given as a proportion of the full game canvas.
 		// 0.0 is top/left edge, 1.0 is bottom/right edge.
 		// Thus first convert them to game pixels.
@@ -175,25 +175,25 @@ void scrollarea::handle_event(const SDL_Event& event)
 		auto ty = static_cast<int>(event.tfinger.y * canvas_size.y);
 		auto dy = static_cast<int>(event.tfinger.dy * canvas_size.y);
 
-		if (event.type == SDL_FINGERDOWN) {
+		if(event.type == SDL_FINGERDOWN){
 			swipe_dy_ = 0;
 			swipe_origin_.x = tx;
 			swipe_origin_.y = ty;
 		}
 
-		if (event.type == SDL_FINGERMOTION) {
+		if(event.type == SDL_FINGERMOTION){
 
 			swipe_dy_ += dy;
-			if (scrollbar_.get_max_position() == 0) {
+			if(scrollbar_.get_max_position() == 0){
 				return;
 			}
 
 			int scrollbar_step = scrollbar_.height() / scrollbar_.get_max_position();
-			if (scrollbar_step <= 0) {
+			if(scrollbar_step <= 0){
 				return;
 			}
 
-			if (inner_location().contains(swipe_origin_.x, swipe_origin_.y)
+			if(inner_location().contains(swipe_origin_.x, swipe_origin_.y)
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
 				unsigned int pos = std::max(

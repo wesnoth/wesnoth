@@ -70,23 +70,23 @@ void show_terrain_description(const terrain_type& t)
 std::string get_unit_type_help_id(const unit_type& t)
 {
 	std::string var_id = t.variation_id();
-	if(var_id.empty()) {
+	if(var_id.empty()){
 		var_id = t.variation_name();
 	}
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
 
-	if(!var_id.empty()) {
+	if(!var_id.empty()){
 		const unit_type* parent = unit_types.find(t.id());
 		assert(parent);
-		if (hide_help) {
+		if(hide_help){
 			hide_help = parent->hide_help();
 		} else {
 			use_variation = true;
 		}
 	}
 
-	if(use_variation) {
+	if(use_variation){
 		return hidden_symbol(hide_help) + variation_prefix + t.id() + "_" + var_id;
 	} else {
 		return hidden_symbol(hide_help) + (t.show_variations_in_help() ? ".." : "") + unit_prefix + t.id();
@@ -142,7 +142,7 @@ void show_help(const std::string& show_topic)
 	show_with_toplevel(default_toplevel, show_topic);
 }
 
-void init_help() {
+void init_help(){
 	// Find all unit_types that have not been constructed yet and fill in the information
 	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
@@ -152,7 +152,7 @@ void init_help() {
 	if(enc_units.size() != size_t(last_num_encountered_units) ||
 		enc_terrains.size() != size_t(last_num_encountered_terrains) ||
 		last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0) {
+		last_num_encountered_units < 0){
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = enc_units.size();
 		last_num_encountered_terrains = enc_terrains.size();

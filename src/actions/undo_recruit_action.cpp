@@ -44,7 +44,7 @@ static const unit_type& get_unit_type(const config& cfg)
 	const config& child = cfg.mandatory_child("unit");
 	const unit_type* u_type = unit_types.find(child["type"]);
 
-	if(!u_type) {
+	if(!u_type){
 		// Bad data.
 		throw config::error("Invalid recruit; unit type '" + child["type"].str() + "' was not found.\n");
 	}
@@ -83,7 +83,7 @@ bool recruit_action::undo(int side)
 
 	const map_location & recruit_loc = route.front();
 	unit_map::iterator un_it = units.find(recruit_loc);
-	if ( un_it == units.end() ) {
+	if(un_it == units.end()){
 		return false;
 	}
 

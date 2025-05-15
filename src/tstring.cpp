@@ -62,7 +62,7 @@ t_string_base::walker::walker(const t_string_base& string)
 	, countable_(false)
 	, count_(0)
 {
-	if(string.translatable_) {
+	if(string.translatable_){
 		update();
 	}
 }
@@ -73,23 +73,23 @@ void t_string_base::walker::update()
 {
 	unsigned int id;
 
-	if(begin_ == string_.size()) {
+	if(begin_ == string_.size()){
 		return;
 	}
 
-	switch(string_[begin_]) {
+	switch(string_[begin_]){
 	case TRANSLATABLE_PART: {
 		// Format: [TRANSLATABLE_PART]textdomain[TEXTDOMAIN_SEPARATOR]msgid[...]
 		std::string::size_type textdomain_end = string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
-		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
+		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
 
 		end_ = string_.find_first_of(mark, textdomain_end + 1);
-		if(end_ == std::string::npos) {
+		if(end_ == std::string::npos){
 			end_ = string_.size();
 		}
 
@@ -101,19 +101,19 @@ void t_string_base::walker::update()
 	}
 	case ID_TRANSLATABLE_PART:
 		// Format: [ID_TRANSLATABLE_PART][2-byte textdomain ID]msgid[...]
-		if(begin_ + 3 >= string_.size()) {
+		if(begin_ + 3 >= string_.size()){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
 
 		end_ = string_.find_first_of(mark, begin_ + 3);
-		if(end_ == std::string::npos) {
+		if(end_ == std::string::npos){
 			end_ = string_.size();
 		}
 
 		id = static_cast<unsigned char>(string_[begin_ + 1]) + static_cast<unsigned char>(string_[begin_ + 2]) * 256;
-		if(id >= id_to_textdomain.size()) {
+		if(id >= id_to_textdomain.size()){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
@@ -127,11 +127,11 @@ void t_string_base::walker::update()
 
 	case UNTRANSLATABLE_PART:
 		end_ = string_.find_first_of(mark, begin_ + 1);
-		if(end_ == std::string::npos) {
+		if(end_ == std::string::npos){
 			end_ = string_.size();
 		}
 
-		if(end_ <= begin_ + 1) {
+		if(end_ <= begin_ + 1){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
@@ -144,11 +144,11 @@ void t_string_base::walker::update()
 
 	case PLURAL_PART:
 		begin_ = string_.find_first_of(mark, end_ + 5);
-		if(begin_ == std::string::npos) {
+		if(begin_ == std::string::npos){
 			begin_ = string_.size();
 		}
 
-		if(string_[begin_] == PLURAL_PART) {
+		if(string_[begin_] == PLURAL_PART){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
@@ -164,16 +164,16 @@ void t_string_base::walker::update()
 		break;
 	}
 
-	if(translatable_ && string_[end_] == PLURAL_PART) {
+	if(translatable_ && string_[end_] == PLURAL_PART){
 		// Format: [PLURAL_PART][4-byte count]msgid_plural[...]
-		if(end_ + 5 >= string_.size()) {
+		if(end_ + 5 >= string_.size()){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
 
 		std::string::size_type real_end = string_.find_first_of(mark, end_ + 6);
-		if(real_end < string_.size() && string_[real_end] == PLURAL_PART) {
+		if(real_end < string_.size() && string_[real_end] == PLURAL_PART){
 			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
@@ -196,7 +196,7 @@ void t_string_base::walker::update()
 
 std::string::const_iterator t_string_base::walker::plural_begin() const
 {
-	if(!countable_) {
+	if(!countable_){
 		return begin();
 	}
 
@@ -205,12 +205,12 @@ std::string::const_iterator t_string_base::walker::plural_begin() const
 
 std::string::const_iterator t_string_base::walker::plural_end() const
 {
-	if(!countable_) {
+	if(!countable_){
 		return end();
 	}
 
 	std::string::size_type pl_end = string_.find_first_of(mark, end_ + 5);
-	if(pl_end == std::string::npos) {
+	if(pl_end == std::string::npos){
 		pl_end = string_.size();
 	}
 
@@ -264,7 +264,7 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	, translatable_(true)
 	, last_untranslatable_(false)
 {
-	if(string.empty()) {
+	if(string.empty()){
 		value_.clear();
 		translatable_ = false;
 		return;
@@ -273,7 +273,7 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
 	unsigned int id;
 
-	if(idi == textdomain_to_id.end()) {
+	if(idi == textdomain_to_id.end()){
 		id = id_to_textdomain.size();
 		textdomain_to_id[textdomain] = id;
 		id_to_textdomain.push_back(textdomain);
@@ -293,7 +293,7 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 	, translatable_(true)
 	, last_untranslatable_(false)
 {
-	if(sing.empty() && pl.empty()) {
+	if(sing.empty() && pl.empty()){
 		value_.clear();
 		translatable_ = false;
 		return;
@@ -302,7 +302,7 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
 	unsigned int id;
 
-	if(idi == textdomain_to_id.end()) {
+	if(idi == textdomain_to_id.end()){
 		id = id_to_textdomain.size();
 		textdomain_to_id[textdomain] = id;
 		id_to_textdomain.push_back(textdomain);
@@ -321,7 +321,7 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 	} cvt;
 
 	cvt.count = count;
-	for(char c : cvt.data) {
+	for(char c : cvt.data){
 		value_ += c;
 	}
 
@@ -341,7 +341,7 @@ t_string_base t_string_base::from_serialized(const std::string& string)
 {
 	t_string_base orig(string);
 
-	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)) {
+	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)){
 		orig.translatable_ = true;
 	} else {
 		orig.translatable_ = false;
@@ -349,10 +349,10 @@ t_string_base t_string_base::from_serialized(const std::string& string)
 
 	t_string_base res;
 
-	for(walker w(orig); !w.eos(); w.next()) {
+	for(walker w(orig); !w.eos(); w.next()){
 		std::string substr(w.begin(), w.end());
 
-		if(w.translatable()) {
+		if(w.translatable()){
 			res += t_string_base(substr, w.textdomain());
 		} else {
 			res += substr;
@@ -365,7 +365,7 @@ t_string_base t_string_base::from_serialized(const std::string& string)
 std::string t_string_base::base_str() const
 {
 	std::string res;
-	for(walker w(*this); !w.eos(); w.next()) {
+	for(walker w(*this); !w.eos(); w.next()){
 		res += std::string(w.begin(), w.end());
 	}
 
@@ -376,11 +376,11 @@ std::string t_string_base::to_serialized() const
 {
 	t_string_base res;
 
-	for(walker w(*this); !w.eos(); w.next()) {
+	for(walker w(*this); !w.eos(); w.next()){
 		t_string_base chunk;
 
 		std::string substr(w.begin(), w.end());
-		if(w.translatable()) {
+		if(w.translatable()){
 			chunk.translatable_ = true;
 			chunk.last_untranslatable_ = false;
 			chunk.value_ = TRANSLATABLE_PART + w.textdomain() + TEXTDOMAIN_SEPARATOR + substr;
@@ -451,17 +451,17 @@ t_string_base t_string_base::operator+(const char* string) const
 
 t_string_base& t_string_base::operator+=(const t_string_base& string)
 {
-	if(string.value_.empty()) {
+	if(string.value_.empty()){
 		return *this;
 	}
 
-	if(value_.empty()) {
+	if(value_.empty()){
 		*this = string;
 		return *this;
 	}
 
-	if(translatable_ || string.translatable_) {
-		if(!translatable_) {
+	if(translatable_ || string.translatable_){
+		if(!translatable_){
 			value_ = UNTRANSLATABLE_PART + value_;
 			translatable_ = true;
 			last_untranslatable_ = true;
@@ -469,8 +469,8 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 			translated_value_ = "";
 		}
 
-		if(string.translatable_) {
-			if(last_untranslatable_ && string.value_[0] == UNTRANSLATABLE_PART) {
+		if(string.translatable_){
+			if(last_untranslatable_ && string.value_[0] == UNTRANSLATABLE_PART){
 				value_.append(string.value_.begin() + 1, string.value_.end());
 			} else {
 				value_ += string.value_;
@@ -478,7 +478,7 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 
 			last_untranslatable_ = string.last_untranslatable_;
 		} else {
-			if(!last_untranslatable_) {
+			if(!last_untranslatable_){
 				value_ += UNTRANSLATABLE_PART;
 				last_untranslatable_ = true;
 			}
@@ -494,17 +494,17 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 
 t_string_base& t_string_base::operator+=(const std::string& string)
 {
-	if(string.empty()) {
+	if(string.empty()){
 		return *this;
 	}
 
-	if(value_.empty()) {
+	if(value_.empty()){
 		*this = string;
 		return *this;
 	}
 
-	if(translatable_) {
-		if(!last_untranslatable_) {
+	if(translatable_){
+		if(!last_untranslatable_){
 			value_ += UNTRANSLATABLE_PART;
 			last_untranslatable_ = true;
 		}
@@ -520,17 +520,17 @@ t_string_base& t_string_base::operator+=(const std::string& string)
 
 t_string_base& t_string_base::operator+=(const char* string)
 {
-	if(string[0] == 0) {
+	if(string[0] == 0){
 		return *this;
 	}
 
-	if(value_.empty()) {
+	if(value_.empty()){
 		*this = string;
 		return *this;
 	}
 
-	if(translatable_) {
-		if(!last_untranslatable_) {
+	if(translatable_){
+		if(!last_untranslatable_){
 			value_ += UNTRANSLATABLE_PART;
 			last_untranslatable_ = true;
 		}
@@ -566,21 +566,21 @@ bool t_string_base::operator<(const t_string_base& that) const
 
 const std::string& t_string_base::str() const
 {
-	if(!translatable_) {
+	if(!translatable_){
 		return value_;
 	}
 
-	if(translatable_ && !translated_value_.empty() && translation_timestamp_ == language_counter) {
+	if(translatable_ && !translated_value_.empty() && translation_timestamp_ == language_counter){
 		return translated_value_;
 	}
 
 	translated_value_.clear();
 
-	for(walker w(*this); !w.eos(); w.next()) {
+	for(walker w(*this); !w.eos(); w.next()){
 		std::string part(w.begin(), w.end());
 
-		if(w.translatable()) {
-			if(w.countable()) {
+		if(w.translatable()){
+			if(w.countable()){
 				std::string plural(w.plural_begin(), w.plural_end());
 				translated_value_ +=
 					translation::dsngettext(w.textdomain().c_str(), part.c_str(), plural.c_str(), w.count());

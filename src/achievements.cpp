@@ -47,13 +47,13 @@ achievement::achievement(const config& cfg, const std::string& content_for, bool
 		, sound_path_(cfg["sound"].str())
 		, sub_achievements_()
 {
-	if(name_completed_.empty()) {
+	if(name_completed_.empty()){
 		name_completed_ = name_;
 	}
-	if(description_completed_.empty()) {
+	if(description_completed_.empty()){
 		description_completed_ = description_;
 	}
-	if(icon_completed_.empty()) {
+	if(icon_completed_.empty()){
 		// avoid the ~GS() appended to icon_
 		icon_completed_ = cfg["icon"].str();
 	}
@@ -62,7 +62,7 @@ achievement::achievement(const config& cfg, const std::string& content_for, bool
 	{
 		std::string sub_id = sub_ach["id"].str();
 
-		if(sub_id.empty()) {
+		if(sub_id.empty()){
 			ERR_CONFIG << "Achievement " << id_ << " has a sub-achievement missing the id attribute:\n" << sub_ach.debug();
 		} else {
 			sub_achievements_.emplace_back(sub_ach, achieved_ || prefs::get().sub_achievement(content_for, id_, sub_id));
@@ -76,12 +76,12 @@ achievement_group::achievement_group(const config& cfg)
 	, content_for_(cfg["content_for"].str())
 	, achievements_()
 {
-	for(const config& ach : cfg.child_range("achievement")) {
+	for(const config& ach : cfg.child_range("achievement")){
 		std::string id = ach["id"].str();
 
-		if(id.empty()) {
+		if(id.empty()){
 			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
-		} else if(id.find(',') != std::string::npos) {
+		} else if(id.find(',') != std::string::npos){
 			ERR_CONFIG << content_for_ + " achievement id " << id << " contains a comma, skipping.";
 			continue;
 		} else {
@@ -112,18 +112,18 @@ void achievements::reload()
 	try {
 		config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");
 		process_achievements_file(cfg, "Mainline");
-	} catch(const game::error& e) {
+	} catch(const game::error& e){
 		ERR_CONFIG << "Error processing mainline achievements, ignoring: " << e.what();
 	}
 
 	// add-ons
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs);
-	for(const std::string& dir : dirs) {
+	for(const std::string& dir : dirs){
 		try {
 			config cfg = read_achievements_file(filesystem::get_addons_dir() + "/" + dir + "/achievements.cfg");
 			process_achievements_file(cfg, dir);
-		} catch(const game::error& e) {
+		} catch(const game::error& e){
 			ERR_CONFIG << "Error processing add-on " << dir << " achievements, ignoring: " << e.what();
 		}
 	}
@@ -137,7 +137,7 @@ void achievements::reload()
  */
 config achievements::read_achievements_file(const std::string& path)
 {
-	if(filesystem::file_exists(path)) {
+	if(filesystem::file_exists(path)){
 		return io::read(*preprocess_file(path));
 	} else {
 		return {};
@@ -152,8 +152,8 @@ config achievements::read_achievements_file(const std::string& path)
  */
 void achievements::process_achievements_file(const config& cfg, const std::string& content_source)
 {
-	for(const config& achgrp : cfg.child_range("achievement_group")) {
-		if(achgrp["content_for"].str().empty()) {
+	for(const config& achgrp : cfg.child_range("achievement_group")){
+		if(achgrp["content_for"].str().empty()){
 			ERR_CONFIG << content_source + " achievement_group missing content_for attribute:\n" << achgrp.debug();
 			continue;
 		}

@@ -195,7 +195,7 @@ private:
 	void signal_handler_mouse_leave(bool& handled);
 
 	/**
-	 * Implementation detail for (re)setting the hyperlink cursor.
+	 * Implementation detail for(re)setting the hyperlink cursor.
 	 */
 	void update_mouse_cursor(bool enable);
 };

@@ -34,15 +34,15 @@ namespace mp::ui_alerts
 {
 void game_created(const std::string& scenario, const std::string& name)
 {
-	if(!prefs::get().game_created_lobby()) {
+	if(!prefs::get().game_created_lobby()){
 		return;
 	}
 
-	if(prefs::get().game_created_sound()) {
+	if(prefs::get().game_created_sound()){
 		sound::play_UI_sound(game_config::sounds::game_created);
 	}
 
-	if(prefs::get().game_created_notif()) {
+	if(prefs::get().game_created_notif()){
 		const std::string message = VGETTEXT("A game ($name|, $scenario|) has been created", {{"name", name}, {"scenario", scenario}});
 		desktop::notifications::send(_("Wesnoth"), message, desktop::notifications::OTHER);
 	}
@@ -50,123 +50,123 @@ void game_created(const std::string& scenario, const std::string& name)
 
 void player_joins(bool is_lobby)
 {
-	if(is_lobby && !prefs::get().player_joins_lobby()) {
+	if(is_lobby && !prefs::get().player_joins_lobby()){
 		return;
 	}
 
-	if(prefs::get().player_joins_sound()) {
+	if(prefs::get().player_joins_sound()){
 		sound::play_UI_sound(game_config::sounds::player_joins);
 	}
 
-	if(prefs::get().player_joins_notif()) {
+	if(prefs::get().player_joins_notif()){
 		desktop::notifications::send(_("Wesnoth"), _("A player has joined"), desktop::notifications::OTHER);
 	}
 }
 
 void player_leaves(bool is_lobby)
 {
-	if(is_lobby && !prefs::get().player_leaves_lobby()) {
+	if(is_lobby && !prefs::get().player_leaves_lobby()){
 		return;
 	}
 
-	if(prefs::get().player_leaves_sound()) {
+	if(prefs::get().player_leaves_sound()){
 		sound::play_UI_sound(game_config::sounds::player_leaves);
 	}
 
-	if(prefs::get().player_leaves_notif()) {
+	if(prefs::get().player_leaves_notif()){
 		desktop::notifications::send(_("Wesnoth"), _("A player has left"), desktop::notifications::OTHER);
 	}
 }
 
 void public_message(bool is_lobby, const std::string& sender, const std::string& message)
 {
-	if(is_lobby && !prefs::get().public_message_lobby()) {
+	if(is_lobby && !prefs::get().public_message_lobby()){
 		return;
 	}
 
-	if(prefs::get().public_message_sound()) {
+	if(prefs::get().public_message_sound()){
 		sound::play_UI_sound(game_config::sounds::public_message);
 	}
 
-	if(prefs::get().public_message_notif()) {
+	if(prefs::get().public_message_notif()){
 		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
 void friend_message(bool is_lobby, const std::string& sender, const std::string& message)
 {
-	if(is_lobby && !prefs::get().friend_message_lobby()) {
+	if(is_lobby && !prefs::get().friend_message_lobby()){
 		return;
 	}
 
-	if(prefs::get().friend_message_sound()) {
+	if(prefs::get().friend_message_sound()){
 		sound::play_UI_sound(game_config::sounds::friend_message);
 	}
 
-	if(prefs::get().friend_message_notif()) {
+	if(prefs::get().friend_message_notif()){
 		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
 void private_message(bool is_lobby, const std::string& sender, const std::string& message)
 {
-	if(is_lobby && !prefs::get().private_message_lobby()) {
+	if(is_lobby && !prefs::get().private_message_lobby()){
 		return;
 	}
 
-	if(prefs::get().private_message_sound()) {
+	if(prefs::get().private_message_sound()){
 		sound::play_UI_sound(game_config::sounds::private_message);
 	}
 
-	if(prefs::get().private_message_notif()) {
+	if(prefs::get().private_message_notif()){
 		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
 void server_message(bool is_lobby, const std::string& sender, const std::string& message)
 {
-	if(is_lobby && !prefs::get().server_message_lobby()) {
+	if(is_lobby && !prefs::get().server_message_lobby()){
 		return;
 	}
 
-	if(prefs::get().server_message_sound()) {
+	if(prefs::get().server_message_sound()){
 		sound::play_UI_sound(game_config::sounds::server_message);
 	}
 
-	if(prefs::get().server_message_notif()) {
+	if(prefs::get().server_message_notif()){
 		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
 void ready_for_start()
 {
-	if(prefs::get().ready_for_start_sound()) {
-		if(prefs::get().ui_sound_on()) {
+	if(prefs::get().ready_for_start_sound()){
+		if(prefs::get().ui_sound_on()){
 			// this is play_bell instead of play_UI_sound to economize on sound channels. UI only has two
 			// sounds, and turn bell has a dedicated channel.
 			sound::play_bell(game_config::sounds::ready_for_start);
 		}
 	}
 
-	if(prefs::get().ready_for_start_notif()) {
+	if(prefs::get().ready_for_start_notif()){
 		desktop::notifications::send(_("Wesnoth"), _("Ready to start!"), desktop::notifications::OTHER);
 	}
 }
 
 void game_has_begun()
 {
-	if(prefs::get().game_has_begun_sound()) {
+	if(prefs::get().game_has_begun_sound()){
 		sound::play_UI_sound(game_config::sounds::game_has_begun);
 	}
 
-	if(prefs::get().game_has_begun_notif()) {
+	if(prefs::get().game_has_begun_notif()){
 		desktop::notifications::send(_("Wesnoth"), _("Game has begun!"), desktop::notifications::OTHER);
 	}
 }
 
 void turn_changed(const std::string& player_name)
 {
-	if(prefs::get().turn_changed_notif()) {
+	if(prefs::get().turn_changed_notif()){
 		utils::string_map player;
 		player["name"] = player_name;
 		desktop::notifications::send(_("Turn changed"), VGETTEXT("$name has taken control", player), desktop::notifications::TURN_CHANGED);

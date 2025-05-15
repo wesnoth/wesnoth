@@ -97,7 +97,7 @@ public:
 	}
 	void redraw(frame_parameters& value, halo::manager& halo_man);
 	void clear_haloes();
-	bool invalidate(frame_parameters& value );
+	bool invalidate(frame_parameters& value);
 	std::string debug() const;
 	friend std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation);
 

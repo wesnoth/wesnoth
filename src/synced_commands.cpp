@@ -53,7 +53,7 @@ static lg::log_domain log_replay("replay");
  */
 synced_command::synced_command(const std::string & tag, handler function)
 {
-	assert(registry().find( tag ) == registry().end());
+	assert(registry().find(tag) == registry().end());
 	registry()[tag] = function;
 }
 
@@ -73,13 +73,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 	// Validate "from".
-	if ( !from.valid() ) {
+	if(!from.valid()){
 		// This will be the case for AI recruits in replays saved
 		// before 1.11.2, so it is not more severe than a warning.
 		// EDIT: we broke compatibility with 1.11.2 anyway so we should give an error.
 		spectator.error("Missing leader location for recruitment.\n");
 	}
-	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
+	else if(resources::gameboard->units().find(from) == resources::gameboard->units().end()){
 		// Sync problem?
 		std::stringstream errbuf;
 		errbuf << "Recruiting leader not found at " << from << ".\n";
@@ -88,13 +88,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 
 	// Get the unit_type ID.
 	std::string type_id = child["type"];
-	if ( type_id.empty() ) {
+	if(type_id.empty()){
 		spectator.error("Recruitment is missing a unit type.");
 		return false;
 	}
 
 	const unit_type *u_type = unit_types.find(type_id);
-	if (!u_type) {
+	if(!u_type){
 		std::stringstream errbuf;
 		errbuf << "Recruiting illegal unit: '" << type_id << "'.\n";
 		spectator.error(errbuf.str());
@@ -114,7 +114,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 
 
 
-	if ( u_type->cost() > beginning_gold ) {
+	if(u_type->cost() > beginning_gold){
 		std::stringstream errbuf;
 		errbuf << "unit '" << type_id << "' is too expensive to recruit: "
 			<< u_type->cost() << "/" << beginning_gold << "\n";
@@ -138,7 +138,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, spectator)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
-	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate)) {
+	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate)){
 		spectator.error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;
@@ -152,12 +152,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 	const auto source = child.optional_child("source");
 	//check_checksums(*cfg);
 
-	if (!destination) {
+	if(!destination){
 		spectator.error("no destination found in attack\n");
 		return false;
 	}
 
-	if (!source) {
+	if(!source){
 		spectator.error("no source found in attack \n");
 		return false;
 	}
@@ -174,47 +174,47 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 	// calculations, which means that in the case where results are close,
 	// rounding differences can mean that both ends choose different weapons.
 	int def_weapon_num = child["defender_weapon"].to_int(-2);
-	if (def_weapon_num == -2) {
+	if(def_weapon_num == -2){
 		// Let's not gratuitously destroy backwards compatibility.
 		LOG_REPLAY << "Old data, having to guess weapon";
 		def_weapon_num = -1;
 	}
 
 	unit_map::iterator u = resources::gameboard->units().find(src);
-	if (!u.valid()) {
+	if(!u.valid()){
 		spectator.error("unfound location for source of attack\n");
 		return false;
 	}
 
-	if (child.has_attribute("attacker_type")) {
+	if(child.has_attribute("attacker_type")){
 		const std::string &att_type_id = child["attacker_type"];
-		if (u->type_id() != att_type_id) {
+		if(u->type_id() != att_type_id){
 			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")";
 		}
 	}
 
-	if (static_cast<unsigned>(weapon_num) >= u->attacks().size()) {
+	if(static_cast<unsigned>(weapon_num) >= u->attacks().size()){
 		spectator.error("illegal weapon type in attack\n");
 		return false;
 	}
 
 	unit_map::const_iterator tgt = resources::gameboard->units().find(dst);
 
-	if (!tgt.valid()) {
+	if(!tgt.valid()){
 		std::stringstream errbuf;
 		errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
 		spectator.error(errbuf.str());
 		return false;
 	}
 
-	if (child.has_attribute("defender_type")) {
+	if(child.has_attribute("defender_type")){
 		const std::string &def_type_id = child["defender_type"];
-		if (tgt->type_id() != def_type_id) {
+		if(tgt->type_id() != def_type_id){
 			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")";
 		}
 	}
 
-	if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
+	if(def_weapon_num >= static_cast<int>(tgt->attacks().size())){
 
 		spectator.error("illegal defender weapon type in attack\n");
 		return false;
@@ -238,7 +238,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 
 	// Find the unit in the recall list.
 	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
-	if (!dismissed_unit) {
+	if(!dismissed_unit){
 		spectator.error("illegal disband\n");
 		return false;
 	}
@@ -247,7 +247,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 
 	current_team.recall_list().erase_if_matches_id(unit_id);
 
-	if (old_size == current_team.recall_list().size()) {
+	if(old_size == current_team.recall_list().size()){
 		spectator.error("illegal disband\n");
 		return false;
 	}
@@ -262,7 +262,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 
 	try {
 		read_locations(child,steps);
-	} catch (const std::invalid_argument&) {
+	} catch (const std::invalid_argument&){
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
 	}
@@ -276,14 +276,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	const map_location& src = steps.front();
 	const map_location& dst = steps.back();
 
-	if (src == dst) {
+	if(src == dst){
 		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
 		return false;
 	}
 
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
-	if ( u.valid() ) {
+	if(u.valid()){
 		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.";
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
@@ -291,7 +291,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	}
 
 	u = resources::gameboard->units().find(src);
-	if (!u.valid()) {
+	if(!u.valid()){
 		std::stringstream errbuf;
 		errbuf << "unfound location for source of movement: "
 			<< src << " -> " << dst << '\n';
@@ -315,7 +315,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child, /*spectator*/)
 		resources::game_events->pump().fire("select", map_location(last_select.value(), resources::gamedata));
 	}
 	const std::string &event_name = child["raise"];
-	if (const auto source = child.optional_child("source")) {
+	if(const auto source = child.optional_child("source")){
 		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata))));
 	} else {
 		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name)));
@@ -337,11 +337,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child, /*spectator*/)
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
-	if(active && !current_team.auto_shroud_updates()) {
+	if(active && !current_team.auto_shroud_updates()){
 		resources::undo_stack->commit_vision();
 	}
 	current_team.set_auto_shroud_updates(active);
-	if(resources::undo_stack->can_undo()) {
+	if(resources::undo_stack->can_undo()){
 		resources::undo_stack->add_auto_shroud(active);
 	}
 	return true;
@@ -354,11 +354,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/, spectator)
 	// This may fire events and change the game state.
 
 	team &current_team = resources::controller->current_team();
-	if(current_team.auto_shroud_updates()) {
+	if(current_team.auto_shroud_updates()){
 		spectator.error("Team has DSU disabled but we found an explicit shroud update");
 	}
 	bool res = resources::undo_stack->commit_vision();
-	if(res) {
+	if(res){
 		synced_context::block_undo();
 	}
 	return true;
@@ -376,18 +376,18 @@ namespace
 		std::string message;
 		utils::string_map i18n_vars = {{ "player", current_team.current_player() }};
 
-		if(i18n_vars["player"].empty()) {
+		if(i18n_vars["player"].empty()){
 			i18n_vars["player"] = _("(unknown player)");
 		}
 
-		if(message_is_command) {
+		if(message_is_command){
 			i18n_vars["command"] = text;
 			message = VGETTEXT("The :$command debug command was used during $player’s turn", i18n_vars);
 		} else {
 			message = VGETTEXT(text.c_str(), i18n_vars);
 		}
 
-		if(show_long_message && !ignore) {
+		if(show_long_message && !ignore){
 			play_controller::scoped_savegame_snapshot snapshot(controller);
 			std::stringstream sbuilder;
 			sbuilder << _("A player used a debug command during the game. If this is unexpected, it is possible the player in question is cheating.")
@@ -422,7 +422,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, /*spectator*/)
 	const std::string& mode_str = child["mode_str"];
 
 	bool result = resources::gameboard->change_terrain(loc, terrain_type, mode_str, false);
-	if(result) {
+	if(result){
 		display::get_singleton()->invalidate(loc);
 		game_display::get_singleton()->needs_rebuild(result);
 		game_display::get_singleton()->maybe_rebuild();
@@ -439,34 +439,34 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 	const std::string value = child["value"];
 
 	unit_map::iterator i = resources::gameboard->units().find(loc);
-	if (i == resources::gameboard->units().end()) {
+	if(i == resources::gameboard->units().end()){
 		return false;
 	}
-	if (name == "advances" ) {
+	if(name == "advances"){
 		int int_value = 0;
 		try {
 			int_value = std::stoi(value);
-		} catch (const std::invalid_argument&) {
+		} catch (const std::invalid_argument&){
 			WRN_REPLAY << "Warning: Invalid unit advancement argument: " << value;
 			return false;
 		}
-		for (int levels=0; levels<int_value; levels++) {
+		for(int levels=0; levels<int_value; levels++){
 			i->set_experience(i->max_experience());
 
 			advance_unit_at(advance_unit_params(loc).force_dialog(true));
 			i = resources::gameboard->units().find(loc);
-			if (!i.valid()) {
+			if(!i.valid()){
 				break;
 			}
 		}
-	} else if (name == "status" ) {
-		for (std::string status : utils::split(value)) {
+	} else if(name == "status"){
+		for(std::string status : utils::split(value)){
 			bool add = true;
-			if (status.length() >= 1 && status[0] == '-') {
+			if(status.length() >= 1 && status[0] == '-'){
 				add = false;
 				status = status.substr(1);
 			}
-			if (status.empty()) {
+			if(status.empty()){
 				continue;
 			}
 			i->set_state(status, add);
@@ -485,12 +485,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 			resources::gameboard->units().erase(loc);
 			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
-		} catch(const unit_type::error& e) {
+		} catch(const unit_type::error& e){
 			ERR_REPLAY << e.what(); // TODO: more appropriate error message log
 			return false;
 		}
 	}
-	if (name == "fail") { //testcase for bug #18488
+	if(name == "fail"){ //testcase for bug #18488
 		assert(i.valid());
 	}
 	display::get_singleton()->invalidate(loc);
@@ -509,7 +509,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	const std::string& variation = child["variation"].str();
 	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
 	const unit_type *u_type = unit_types.find(child["type"]);
-	if (!u_type) {
+	if(!u_type){
 		spectator.error("Invalid unit type");
 		return false;
 	}
@@ -531,7 +531,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	unit_display::unit_recruited(loc);
 
 	// Village capture?
-	if ( resources::gameboard->map().is_village(loc) )
+	if(resources::gameboard->map().is_village(loc))
 		actions::get_village(loc, created->side());
 
 	// Update fog/shroud.
@@ -539,7 +539,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	actions::shroud_clearer clearer;
 	clearer.clear_unit(loc, *created);
 	clearer.fire_events();
-	if (unit_it.valid() ) // In case sighted events messed with the unit.
+	if(unit_it.valid()) // In case sighted events messed with the unit.
 		actions::actor_sighted(*unit_it);
 
 	return true;
@@ -564,8 +564,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, /*spectator*/)
 	const map_location teleport_to(child["teleport_to_x"].to_int(), child["teleport_to_y"].to_int(), wml_loc());
 
 	const unit_map::iterator unit_iter = resources::gameboard->units().find(teleport_from);
-	if(unit_iter != resources::gameboard->units().end()) {
-		if(unit_iter.valid()) {
+	if(unit_iter != resources::gameboard->units().end()){
+		if(unit_iter.valid()){
 			actions::teleport_unit_from_replay({teleport_from, teleport_to}, false, false, false);
 		}
 		display::get_singleton()->redraw_minimap();
@@ -581,18 +581,18 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, /*spectator*/)
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
-	if (i != resources::gameboard->units().end()) {
+	if(i != resources::gameboard->units().end()){
 		const int dying_side = i->side();
 		resources::controller->pump().fire("last_breath", loc, loc);
-		if (i.valid()) {
+		if(i.valid()){
 			unit_display::unit_die(loc, *i);
 		}
 		display::get_singleton()->redraw_minimap();
-		if (i.valid()) {
+		if(i.valid()){
 			i->set_hitpoints(0);
 		}
 		resources::controller->pump().fire("die", loc, loc);
-		if (i.valid()) {
+		if(i.valid()){
 			resources::gameboard->units().erase(i);
 		}
 		resources::whiteboard->on_kill_unit();
@@ -608,7 +608,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, /*spectator*/)
 	debug_cmd_notification("next_level");
 
 	std::string next_level = child["next_level"];
-	if (!next_level.empty())
+	if(!next_level.empty())
 		resources::gamedata->set_next_scenario(next_level);
 	end_level_data e;
 	e.transient.carryover_report = false;
@@ -657,7 +657,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, /*spectator*/)
 	try {
 		resources::gamedata->set_variable(child["name"],child["value"]);
 	}
-	catch(const invalid_variablename_exception&) {
+	catch(const invalid_variablename_exception&){
 	//	command_failed(_("Variable not found"));
 		return false;
 	}

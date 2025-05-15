@@ -56,7 +56,7 @@ unit_advancements_aspect::unit_advancements_aspect(const std::string& val):  val
 
 unit_advancements_aspect::~unit_advancements_aspect()
 {
-	if(L_) {
+	if(L_){
 		// Remove the function from the registry
 		luaL_unref(L_, LUA_REGISTRYINDEX, ref_);
 	}
@@ -80,7 +80,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	{
 		//If we end up here, most likely the aspect don't use the lua-engine.
 		//Just to make sure:
-		if (val_ == "Lua Function")
+		if(val_ == "Lua Function")
 		{
 			return std::vector<std::string>();
 		}
@@ -114,7 +114,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1);
 		return std::vector<std::string>();
 	}
-	if (!lua_isstring(L_, -1))
+	if(!lua_isstring(L_, -1))
 	{
 		ERR_LUA << "LUA Error while evaluating advancements_aspect: Function must return String ";
 		return std::vector<std::string>();

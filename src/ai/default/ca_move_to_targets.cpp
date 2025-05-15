@@ -68,7 +68,7 @@ struct move_cost_calculator : pathfind::cost_calculator
 
 		//if there is a unit (even a friendly one) on this tile, we increase the cost to
 		//try discourage going through units, to thwart the 'single file effect'
-		if (units_.count(loc))
+		if(units_.count(loc))
 			res *= 4.0;
 
 		return res;
@@ -91,17 +91,17 @@ public:
 	}
 
 bool operator()(const target &t){
-	if (!map_.on_board(t.loc)) {
+	if(!map_.on_board(t.loc)){
 		DBG_AI << "removing target "<< t.loc << " due to it not on_board";
 		return true;
 	}
 
-	if (t.value<=0) {
+	if(t.value<=0){
 		DBG_AI << "removing target "<< t.loc << " due to value<=0";
 		return true;
 	}
 
-	if (avoid_.match(t.loc)) {
+	if(avoid_.match(t.loc)){
 		DBG_AI << "removing target "<< t.loc << " due to 'avoid' match";
 		return true;
 	}
@@ -114,7 +114,7 @@ private:
 
 };
 
-move_to_targets_phase::move_to_targets_phase( rca_context &context, const config &cfg )
+move_to_targets_phase::move_to_targets_phase(rca_context &context, const config &cfg)
 	: candidate_action(context,cfg)
 {
 }
@@ -133,20 +133,20 @@ void move_to_targets_phase::execute()
 	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
 	LOG_AI << "finding targets...";
 	std::vector<target> targets;
-	while(true) {
-		if(targets.empty()) {
+	while(true){
+		if(targets.empty()){
 			targets = find_targets(get_enemy_dstsrc());
 			targets.insert(targets.end(),additional_targets().begin(),
 				       additional_targets().end());
 			LOG_AI << "Found " << targets.size() << " targets";
-			if(targets.empty()) {
+			if(targets.empty()){
 				break;
 			}
 		}
 
 		utils::erase_if(targets, remove_wrong_targets{*this});
 
-		if(targets.empty()) {
+		if(targets.empty()){
 			break;
 		}
 
@@ -155,11 +155,11 @@ void move_to_targets_phase::execute()
 		LOG_AI << "choose_move ends with " << targets.size() << " targets";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
-				ittg != targets.end(); ++ittg) {
+				ittg != targets.end(); ++ittg){
 			assert(resources::gameboard->map().on_board(ittg->loc));
 		}
 
-		if(move.first.valid() == false || move.second.valid() == false) {
+		if(move.first.valid() == false || move.second.valid() == false){
 			break;
 		}
 
@@ -169,7 +169,7 @@ void move_to_targets_phase::execute()
 		LOG_AI << "move: " << move.first << " -> " << move.second;
 
 		move_result_ptr move_ptr = execute_move_action(move.first,move.second,true);
-		if(!move_ptr->is_ok()) {
+		if(!move_ptr->is_ok()){
 			WRN_AI << "unexpected outcome of move";
 			break;
 		}
@@ -178,7 +178,7 @@ void move_to_targets_phase::execute()
 
 // structure storing the maximal possible rating of a target
 struct rated_target{
-	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {}
+	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r){}
 	std::vector<target>::iterator tg;
 	double max_rating;
 };
@@ -197,12 +197,12 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 {
 	double move_cost = rt.move_cost;
 
-	if(move_cost > 0) {
+	if(move_cost > 0){
 		// if this unit can move to that location this turn, it has a very very low cost
 		typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
 		std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(tg.loc);
-		while (locRange.first != locRange.second) {
-			if (locRange.first->second == u->get_location()) {
+		while(locRange.first != locRange.second){
+			if(locRange.first->second == u->get_location()){
 				move_cost = 0;
 				break;
 			}
@@ -216,14 +216,14 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 		return rating; // all following operations are only multiplications of 0
 
 	// far target have a lower rating
-	if(move_cost > 0) {
+	if(move_cost > 0){
 		rating /= move_cost;
 	}
 
 	//for 'support' targets, they are rated much higher if we can get there within two turns,
 	//otherwise they are worthless to go for at all.
-	if(tg.type == ai_target::type::support) {
-		if (move_cost <= u->movement_left() * 2) {
+	if(tg.type == ai_target::type::support){
+		if(move_cost <= u->movement_left() * 2){
 			rating *= 10.0;
 		} else {
 			rating = 0.0;
@@ -232,9 +232,9 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 	}
 
 	//scouts do not like encountering enemies on their paths
-	if (u->usage() == "scout") {
+	if(u->usage() == "scout"){
 		//scouts get a bonus for going after villages
-		if(tg.type == ai_target::type::village) {
+		if(tg.type == ai_target::type::village){
 				rating *= get_scout_village_targeting();
 		}
 
@@ -242,7 +242,7 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 		enemies_along_path(rt.steps,enemy_dstsrc,enemies_guarding);
 		// note that an empty route means no guardian and thus optimal rating
 
-		if(enemies_guarding.size() > 1) {
+		if(enemies_guarding.size() > 1){
 			rating /= enemies_guarding.size();
 		} else {
 			//scouts who can travel on their route without coming in range of many enemies
@@ -266,9 +266,9 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	unit_map::iterator u;
 
 	//take care of all the guardians first
-	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())) {
-			if (u->get_state("guardian")) {
+	for(u = units_.begin(); u != units_.end(); ++u){
+		if(!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())){
+			if(u->get_state("guardian")){
 				LOG_AI << u->type_id() << " is guardian, staying still";
 				return std::pair(u->get_location(), u->get_location());
 			}
@@ -276,13 +276,13 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	}
 
 	//now find the first eligible remaining unit
-	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated() || !is_allowed_unit(*u))) {
+	for(u = units_.begin(); u != units_.end(); ++u){
+		if(!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated() || !is_allowed_unit(*u))){
 			break;
 		}
 	}
 
-	if(u == units_.end()) {
+	if(u == units_.end()){
 		LOG_AI  << "no eligible units found";
 		return std::pair<map_location,map_location>();
 	}
@@ -298,7 +298,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	const move_map& dstsrc = get_dstsrc();
 	const move_map& enemy_dstsrc = get_enemy_dstsrc();
 	std::vector<rated_target> rated_targets;
-	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
+	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg){
 		// passing a dummy route to have the maximal rating
 		double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
 		rated_targets.emplace_back(tg, max_rating);
@@ -317,7 +317,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	std::vector<rated_target>::iterator rated_tg = rated_targets.begin();
 
-	for(; rated_tg != rated_targets.end(); ++rated_tg) {
+	for(; rated_tg != rated_targets.end(); ++rated_tg){
 		const target& tg = *(rated_tg->tg);
 
 		LOG_AI << "Considering target at: " << tg.loc;
@@ -332,7 +332,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
 		pathfind::plain_route real_route = a_star_search(u->get_location(), tg.loc, locStopValue, cost_calc, map_.w(), map_.h(), &allowed_teleports);
 
-		if(real_route.steps.empty()) {
+		if(real_route.steps.empty()){
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating;
 			continue;
 		}
@@ -361,7 +361,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	LOG_AI << "choose target...";
 
-	if(best_rated_target == rated_targets.end()) {
+	if(best_rated_target == rated_targets.end()){
 		LOG_AI << "no eligible targets found for unit at " << u->get_location();
 		return std::pair(u->get_location(), u->get_location());
 	}
@@ -374,11 +374,11 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	//target
 	bool simple_targeting = get_simple_targeting();
 
-	if(simple_targeting == false) {
+	if(simple_targeting == false){
 		LOG_AI << "complex targeting...";
 		//now see if any other unit can put a better bid forward
-		for(++u; u != units_.end(); ++u) {
-			if (u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) ||
+		for(++u; u != units_.end(); ++u){
+			if(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) ||
 			    u->movement_left() <= 0 || u->get_state("guardian") ||
 			    u->incapacitated() || !is_allowed_unit(*u))
 			{
@@ -396,13 +396,13 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
 			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, calc, map_.w(), map_.h(), &allowed_teleports);
 
-			if(cur_route.steps.empty()) {
+			if(cur_route.steps.empty()){
 				continue;
 			}
 
 			double rating = rate_target(*best_target, u, dstsrc, enemy_dstsrc, cur_route);
 
-			if(best == units_.end() || rating > best_rating) {
+			if(best == units_.end() || rating > best_rating){
 				best_rating = rating;
 				best = u;
 				best_route = cur_route;
@@ -421,24 +421,24 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
 	const move_map& srcdst = get_srcdst();
-	if(best_target->type == ai_target::type::support) {
+	if(best_target->type == ai_target::type::support){
 		LOG_AI << "support...";
 
 		std::vector<map_location> locs;
 		access_points(srcdst, best->get_location(), best_target->loc, locs);
 
-		if(locs.empty() == false) {
+		if(locs.empty() == false){
 			LOG_AI << "supporting unit at " << best_target->loc.wml_x() << "," << best_target->loc.wml_y();
 			map_location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
 
-			for(std::vector<map_location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+			for(std::vector<map_location>::const_iterator i = locs.begin(); i != locs.end(); ++i){
 				const int defense = best->defense_modifier(map_.get_terrain(*i));
 				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
-				if(best_loc.valid() == false || defense < best_defense || (defense == best_defense && vulnerability < best_vulnerability)) {
+				if(best_loc.valid() == false || defense < best_defense || (defense == best_defense && vulnerability < best_vulnerability)){
 					best_loc = *i;
 					best_defense = defense;
 					best_vulnerability = vulnerability;
@@ -457,7 +457,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	bool dangerous = false;
 
-	if(get_grouping() != "no") {
+	if(get_grouping() != "no"){
 		LOG_AI << "grouping...";
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->movement_left();
@@ -467,18 +467,18 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		//we stop and consider whether the route to this
 		//target is dangerous, and whether we need to group some units to move in unison toward the target
 		//if any point along the path is too dangerous for our single unit, then we hold back
-		for(std::vector<map_location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
+		for(std::vector<map_location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i){
 
 			//FIXME: suokko multiplied by 10 * get_caution(). ?
 			const double threat = power_projection(*i,enemy_dstsrc);
 			//FIXME: sukko doubled the power-projection them in the second test.  ?
-			if ((threat >= best->hitpoints() && threat > power_projection(*i,fullmove_dstsrc)) ||
-			   (i+1 >= best_route.steps.end()-1 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->side()))) {
+			if((threat >= best->hitpoints() && threat > power_projection(*i,fullmove_dstsrc)) ||
+			   (i+1 >= best_route.steps.end()-1 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->side()))){
 				dangerous = true;
 				break;
 			}
 
-			if(!defensive_grouping) {
+			if(!defensive_grouping){
 				movement -= best->movement_cost(map_.get_terrain(*i));
 			}
 		}
@@ -486,7 +486,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		LOG_AI << "done grouping...";
 	}
 
-	if(dangerous) {
+	if(dangerous){
 		LOG_AI << "dangerous path";
 		std::set<map_location> group, enemies;
 		const map_location dst = form_group(best_route.steps,dstsrc,group);
@@ -494,10 +494,10 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
-		if(our_strength > 0.5 + get_caution()) {
+		if(our_strength > 0.5 + get_caution()){
 			LOG_AI << "moving group";
 			const bool res = move_group(dst,best_route.steps,group);
-			if(res) {
+			if(res){
 				return std::pair<map_location,map_location>(map_location(1,1),map_location());
 			} else {
 				LOG_AI << "group didn't move " << group.size();
@@ -527,25 +527,25 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			std::set<map_location> mass_locations;
 
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = srcdst.equal_range(loc);
-			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
+			for(move_map::const_iterator i = itors.first; i != itors.second; ++i){
 				const int distance = distance_between(target_loc,i->second);
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
 				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
-				if(best_loc.valid() == false || (threat < std::max<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {
+				if(best_loc.valid() == false || (threat < std::max<double>(best_threat,max_acceptable_threat) && distance < best_distance)){
 					best_loc = i->second;
 					best_threat = threat;
 					best_distance = distance;
 				}
 
-				if(threat < max_acceptable_threat) {
+				if(threat < max_acceptable_threat){
 					mass_locations.insert(i->second);
 				}
 			}
 
-			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
-				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
+			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j){
+				if(*j != best_loc && distance_between(*j,best_loc) < 3){
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0;
 					targets.emplace_back(*j,value*4.0,ai_target::type::mass);
 					best_target = targets.end() - 1;
@@ -557,7 +557,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	}
 
 	for(std::vector<map_location>::reverse_iterator ri =
-	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
+	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri){
 
 		//this is set to 'true' if we are hesitant to proceed because of enemy units,
 		//to rally troops around us.
@@ -565,16 +565,16 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 		typedef std::multimap<map_location,map_location>::const_iterator Itor;
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
-		while(its.first != its.second) {
-			if (its.first->second == best->get_location()) {
+		while(its.first != its.second){
+			if(its.first->second == best->get_location()){
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,
-								   get_caution())) {
+								   get_caution())){
 					double value = best_target->value - best->cost() / 20.0;
 
-					if(value > 0.0 && best_target->type != ai_target::type::mass) {
+					if(value > 0.0 && best_target->type != ai_target::type::mass){
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
-						if(is_dangerous) {
+						if(is_dangerous){
 							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0;
 							targets.emplace_back(its.first->first,value*2.0,ai_target::type::battle_aid);
 						}
@@ -597,7 +597,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		}
 	}
 
-	if(best != units_.end()) {
+	if(best != units_.end()){
 		LOG_AI << "Could not make good move, staying still";
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
@@ -616,20 +616,20 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 	const unit_map::const_iterator u_it = units_.find(u);
-	if(u_it == units_.end()) {
+	if(u_it == units_.end()){
 		return;
 	}
 
 	// unit_map single_unit(u_it->first, u_it->second);
 
 	const std::pair<move_map::const_iterator,move_map::const_iterator> locs = srcdst.equal_range(u);
-	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
+	for(move_map::const_iterator i = locs.first; i != locs.second; ++i){
 		const map_location& loc = i->second;
-		if (static_cast<int>(distance_between(loc,dst)) <= u_it->total_movement()) {
+		if(static_cast<int>(distance_between(loc,dst)) <= u_it->total_movement()){
 			pathfind::shortest_path_calculator calc(*u_it, current_team(), resources::gameboard->teams(), map_);
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u_it, current_team());
 			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), calc, map_.w(), map_.h(), &allowed_teleports);
-			if(rt.steps.empty() == false) {
+			if(rt.steps.empty() == false){
 				out.push_back(loc);
 			}
 		}
@@ -645,10 +645,10 @@ double move_to_targets_phase::compare_groups(const std::set<map_location>& our_g
 
 void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
-	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i) {
-		for(const map_location& adj : get_adjacent_tiles(*i)) {
+	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i){
+		for(const map_location& adj : get_adjacent_tiles(*i)){
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj);
-			for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
+			for(move_map::const_iterator j = itors.first; j != itors.second; ++j){
 				res.insert(j->second);
 			}
 		}
@@ -658,25 +658,25 @@ void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& 
 map_location move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
 	unit_map &units_ = resources::gameboard->units();
-	if(route.empty()) {
+	if(route.empty()){
 		return map_location();
 	}
 
 	std::vector<map_location>::const_iterator i;
-	for(i = route.begin(); i != route.end(); ++i) {
-		if(units_.count(*i) > 0) {
+	for(i = route.begin(); i != route.end(); ++i){
+		if(units_.count(*i) > 0){
 			continue;
 		}
 
 		std::size_t n = 0, nunits = res.size();
 
 		const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*i);
-		for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
-			if(res.count(j->second) != 0) {
+		for(move_map::const_iterator j = itors.first; j != itors.second; ++j){
+			if(res.count(j->second) != 0){
 				++n;
 			} else {
 				const unit_map::const_iterator un = units_.find(j->second);
-				if(un == units_.end() || (un->can_recruit() && !is_keep_ignoring_leader(un->id())) || un->movement_left() < un->total_movement()) {
+				if(un == units_.end() || (un->can_recruit() && !is_keep_ignoring_leader(un->id())) || un->movement_left() < un->total_movement()){
 					continue;
 				}
 
@@ -685,12 +685,12 @@ map_location move_to_targets_phase::form_group(const std::vector<map_location>& 
 		}
 
 		//if not all our units can reach this position.
-		if(n < nunits) {
+		if(n < nunits){
 			break;
 		}
 	}
 
-	if(i != route.begin()) {
+	if(i != route.begin()){
 		--i;
 	}
 
@@ -703,7 +703,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 	const gamemap &map_ = resources::gameboard->map();
 
 	const std::vector<map_location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
-	if(itor == route.end()) {
+	if(itor == route.end()){
 		return false;
 	}
 
@@ -714,13 +714,13 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 	std::size_t direction = 0;
 
 	//find the direction the group is moving in
-	if(itor+1 != route.end()) {
+	if(itor+1 != route.end()){
 		next = *(itor+1);
-	} else if(itor != route.begin()) {
+	} else if(itor != route.begin()){
 		next = *(itor-1);
 	}
 
-	if(next.valid()) {
+	if(next.valid()){
 		const auto adj = get_adjacent_tiles(dst);
 		direction = std::distance(adj.begin(), std::find(adj.begin(), adj.end(), next));
 	}
@@ -734,44 +734,44 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 
 	bool gamestate_changed = false;
 
-	for(std::set<map_location>::const_iterator i = units.begin(); i != units.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = units.begin(); i != units.end(); ++i){
 		const unit_map::const_iterator un = units_.find(*i);
-		if(un == units_.end()) {
+		if(un == units_.end()){
 			continue;
 		}
 
 		map_location best_loc;
 		int best_defense = -1;
-		for(std::deque<map_location>::const_iterator j = preferred_moves.begin(); j != preferred_moves.end(); ++j) {
-			if(units_.count(*j)) {
+		for(std::deque<map_location>::const_iterator j = preferred_moves.begin(); j != preferred_moves.end(); ++j){
+			if(units_.count(*j)){
 				continue;
 			}
 
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*j);
 			move_map::const_iterator m;
-			for(m = itors.first; m != itors.second; ++m) {
-				if(m->second == *i) {
+			for(m = itors.first; m != itors.second; ++m){
+				if(m->second == *i){
 					break;
 				}
 			}
 
-			if(m == itors.second) {
+			if(m == itors.second){
 				continue;
 			}
 
 			int defense = un->defense_modifier(map_.get_terrain(*j));
-			if(best_loc.valid() == false || defense < best_defense) {
+			if(best_loc.valid() == false || defense < best_defense){
 				best_loc = *j;
 				best_defense = defense;
 			}
 		}
 
-		if(best_loc.valid()) {
+		if(best_loc.valid()){
 			move_result_ptr move_res = execute_move_action(*i,best_loc);
 			gamestate_changed |= move_res->is_gamestate_changed();
 
 			//if we were ambushed or something went wrong,  abort the group's movement.
-			if (!move_res->is_ok()) {
+			if(!move_res->is_ok()){
 				return gamestate_changed;
 			}
 
@@ -779,9 +779,9 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 
 			//find locations that are 'perpendicular' to the direction of movement for further units to move to.
 			const auto adj = get_adjacent_tiles(best_loc);
-			for(std::size_t n = 0; n < adj.size(); ++n) {
+			for(std::size_t n = 0; n < adj.size(); ++n){
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
-				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
+				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0){
 					preferred_moves.push_front(adj[n]);
 					LOG_AI << "added moves: " << adj[n].wml_x() << "," << adj[n].wml_y();
 				}
@@ -800,23 +800,23 @@ double move_to_targets_phase::rate_group(const std::set<map_location>& group, co
 	const gamemap &map_ = resources::gameboard->map();
 
 	double strength = 0.0;
-	for(std::set<map_location>::const_iterator i = group.begin(); i != group.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = group.begin(); i != group.end(); ++i){
 		const unit_map::const_iterator u = units_.find(*i);
-		if(u == units_.end()) {
+		if(u == units_.end()){
 			continue;
 		}
 
 		const unit &un = *u;
 
 		int defense = 0;
-		for(std::vector<map_location>::const_iterator j = battlefield.begin(); j != battlefield.end(); ++j) {
+		for(std::vector<map_location>::const_iterator j = battlefield.begin(); j != battlefield.end(); ++j){
 			defense += un.defense_modifier(map_.get_terrain(*j));
 		}
 
 		defense /= battlefield.size();
 
 		int best_attack = 0;
-		for(const attack_type& a : un.attacks()) {
+		for(const attack_type& a : un.attacks()){
 			const int attack_strength = a.num_attacks() * a.damage();
 			best_attack = std::max<int>(attack_strength, best_attack);
 		}
@@ -832,7 +832,7 @@ bool move_to_targets_phase::should_retreat(const map_location& loc, const unit_m
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
-	if(caution <= 0.0) {
+	if(caution <= 0.0){
 		return false;
 	}
 

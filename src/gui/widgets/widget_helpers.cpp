@@ -31,11 +31,11 @@ void swap_grid(grid* g, grid* content_grid, std::unique_ptr<widget> widget, cons
 
 	// Get the container containing the wanted widget.
 	grid* parent_grid = nullptr;
-	if(g) {
+	if(g){
 		parent_grid = g->find_widget<grid>(id, false, false);
 	}
 
-	if(!parent_grid) {
+	if(!parent_grid){
 		parent_grid = content_grid->find_widget<grid>(id, true, false);
 	}
 

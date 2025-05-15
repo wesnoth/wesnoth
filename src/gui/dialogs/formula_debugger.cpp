@@ -42,7 +42,7 @@ void formula_debugger::pre_show()
 	int c = 0;
 	for(const auto & i : fdb_.get_call_stack())
 	{
-		for(int d = 0; d < c; ++d) {
+		for(int d = 0; d < c; ++d){
 			stack_text << indent;
 		}
 		stack_text << "#" << markup::span_color("#00ff00", i.counter())
@@ -62,10 +62,10 @@ void formula_debugger::pre_show()
 	std::stringstream execution_text;
 	for(const auto & i : fdb_.get_execution_trace())
 	{
-		for(int d = 0; d < i.level(); ++d) {
+		for(int d = 0; d < i.level(); ++d){
 			execution_text << indent;
 		}
-		if(!i.evaluated()) {
+		if(!i.evaluated()){
 			execution_text << "#" << markup::span_color("#00ff00", i.counter())
 				   		   << ": \"" << markup::span_color("#00ff00", font::escape_text(i.name()))
 				   		   << "\": (" << font::escape_text(i.str()) << ") " << std::endl;
@@ -84,11 +84,11 @@ void formula_debugger::pre_show()
 	// state
 	std::string state_str;
 	bool is_end = false;
-	if(!fdb_.get_current_breakpoint()) {
+	if(!fdb_.get_current_breakpoint()){
 		state_str = "";
 	} else {
 		state_str = fdb_.get_current_breakpoint()->name();
-		if(state_str == "End") {
+		if(state_str == "End"){
 			is_end = true;
 		}
 	}
@@ -116,7 +116,7 @@ void formula_debugger::pre_show()
 			continue_button,
 			std::bind(&formula_debugger::callback_continue_button, this));
 
-	if(is_end) {
+	if(is_end){
 		step_button.set_active(false);
 		stepout_button.set_active(false);
 		next_button.set_active(false);

@@ -47,10 +47,10 @@ undo_action_container::undo_action_container()
 bool undo_action_container::undo(int side)
 {
 	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-	for(auto& p_step : steps_ | utils::views::reverse) {
+	for(auto& p_step : steps_ | utils::views::reverse){
 		p_step->undo(side);
 	}
-	if(last_unit_id - unit_id_diff_ < 0) {
+	if(last_unit_id - unit_id_diff_ < 0){
 		ERR_NG << "Next unit id is below 0 after undoing";
 	}
 	resources::gameboard->unit_id_manager().set_save_id(last_unit_id - unit_id_diff_);
@@ -65,8 +65,8 @@ void undo_action_container::add(t_step_ptr&& action)
 
 void undo_action_container::read(const config& cfg)
 {
-	for(const config& step : cfg.child_range("step")) {
-		if(auto* factory = utils::find(get_factories(), step["type"].str())) {
+	for(const config& step : cfg.child_range("step")){
+		if(auto* factory = utils::find(get_factories(), step["type"].str())){
 			add(factory->second(step));
 		} else {
 			throw config::error("Invalid undo action type: '" + step["type"].str() + "'");
@@ -75,7 +75,7 @@ void undo_action_container::read(const config& cfg)
 }
 void undo_action_container::write(config& cfg)
 {
-	for(auto& p_step : steps_) {
+	for(auto& p_step : steps_){
 		p_step->write(cfg.add_child("step"));
 	}
 }
@@ -102,11 +102,11 @@ undo_event::undo_event(int fcn_idx, const config& args, const game_events::queue
 	, uid1(), uid2()
 {
 	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
-	if(u1) {
+	if(u1){
 		id1 = u1->id();
 		uid1 = u1->underlying_id();
 	}
-	if(u2) {
+	if(u2){
 		id2 = u2->id();
 		uid2 = u2->underlying_id();
 	}
@@ -122,11 +122,11 @@ undo_event::undo_event(const config& cmds, const game_events::queued_event& ctx)
 	, uid1(), uid2()
 {
 	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
-	if(u1) {
+	if(u1){
 		id1 = u1->id();
 		uid1 = u1->underlying_id();
 	}
-	if(u2) {
+	if(u2){
 		id2 = u2->id();
 		uid2 = u2->underlying_id();
 	}
@@ -161,7 +161,7 @@ unit_ptr get_unit(std::size_t uid, const std::string& id)
 {
 	assert(resources::gameboard);
 	auto iter = resources::gameboard->units().find(uid);
-	if(!iter.valid() || iter->id() != id) {
+	if(!iter.valid() || iter->id() != id){
 		return nullptr;
 	}
 	return iter.get_shared_ptr();
@@ -185,10 +185,10 @@ bool undo_event::undo(int)
 	std::swap(y2, resources::gamedata->get_variable("y2"));
 
 	std::unique_ptr<scoped_xy_unit> u1, u2;
-	if(unit_ptr who = get_unit(e.uid1, e.id1)) {
+	if(unit_ptr who = get_unit(e.uid1, e.id1)){
 		u1.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 	}
-	if(unit_ptr who = get_unit(e.uid2, e.id2)) {
+	if(unit_ptr who = get_unit(e.uid2, e.id2)){
 		u2.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 	}
 
@@ -196,7 +196,7 @@ bool undo_event::undo(int)
 	scoped_weapon_info w2("second_weapon", e.data.optional_child("second"));
 
 	game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
-	if(e.lua_idx.has_value()) {
+	if(e.lua_idx.has_value()){
 		resources::lua_kernel->run_wml_event(*e.lua_idx, vconfig(e.commands), q);
 	} else {
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
@@ -214,7 +214,7 @@ void undo_event::write(config& cfg) const
 {
 	undo_action::write(cfg);
 	auto& evt = *this;
-	if(evt.lua_idx.has_value()) {
+	if(evt.lua_idx.has_value()){
 		// TODO: Log warning that this cannot be serialized
 		return;
 	}

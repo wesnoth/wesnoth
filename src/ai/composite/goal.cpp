@@ -114,29 +114,29 @@ bool goal::active() const
 void target_unit_goal::on_create()
 {
 	goal::on_create();
-	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+	if(!cfg_["engine"].empty() && cfg_["engine"] != "cpp"){
 		unrecognized();
 		value_ = 0;
 		return;
 	}
-	if (const config::attribute_value *v = cfg_.get("value")) {
+	if(const config::attribute_value *v = cfg_.get("value")){
 		value_ = v->to_double(0);
 	}
 }
 
 void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
-	if (!(this)->active()) {
+	if(!(this)->active()){
 		return;
 	}
 
 	auto criteria = cfg_.optional_child("criteria");
-	if (!criteria) return;
+	if(!criteria) return;
 
 	//find the enemy leaders and explicit targets
 	const unit_filter ufilt{ vconfig(*criteria) };
-	for (const unit &u : resources::gameboard->units()) {
-		if (ufilt( u )) {
+	for(const unit &u : resources::gameboard->units()){
+		if(ufilt(u)){
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value();
 			*target_list = target(u.get_location(), value(), ai_target::type::xplicit);
 		}
@@ -153,31 +153,31 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 void target_location_goal::on_create()
 {
 	goal::on_create();
-	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+	if(!cfg_["engine"].empty() && cfg_["engine"] != "cpp"){
 		unrecognized();
 		value_ = 0;
 		return;
 	}
-	if (cfg_.has_attribute("value")) {
+	if(cfg_.has_attribute("value")){
 		value_ = cfg_["value"].to_double(0);
 	}
 	auto criteria = cfg_.optional_child("criteria");
-	if (criteria) {
+	if(criteria){
 		filter_ptr_.reset(new terrain_filter(vconfig(*criteria),resources::filter_con, false));
 	}
 }
 
 void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
-	if (!(this)->active()) {
+	if(!(this)->active()){
 		return;
 	}
 
-	if (!filter_ptr_) return;
+	if(!filter_ptr_) return;
 
 	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
-	for (const map_location &loc : items)
+	for(const map_location &loc : items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value();
 		*target_list = target(loc, value(), ai_target::type::xplicit);
@@ -195,23 +195,23 @@ target_location_goal::target_location_goal(readonly_context &context, const conf
 void protect_goal::on_create()
 {
 	goal::on_create();
-	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+	if(!cfg_["engine"].empty() && cfg_["engine"] != "cpp"){
 		unrecognized();
 		value_ = 0;
 		return;
 	}
-	if (const config::attribute_value *v = cfg_.get("value")) {
+	if(const config::attribute_value *v = cfg_.get("value")){
 		value_ = v->to_double(0);
 	}
-	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
+	if(const config::attribute_value *v = cfg_.get("protect_radius")){
 		radius_ = (*v).to_int(1);
 	}
 
-	if (radius_<1) {
+	if(radius_<1){
 		radius_=20;
 	}
 	auto criteria = cfg_.optional_child("criteria");
-	if (criteria) {
+	if(criteria){
 		filter_ptr_.reset(new terrain_filter(vconfig(*criteria), resources::filter_con, false));
 	}
 
@@ -220,19 +220,19 @@ void protect_goal::on_create()
 void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	std::string goal_type;
-	if (protect_unit_) {
+	if(protect_unit_){
 		goal_type = "protect_unit";
 	} else {
 		goal_type ="protect_location";
 	}
 
-	if (!(this)->active()) {
+	if(!(this)->active()){
 		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active";
 		return;
 	}
 
 	auto criteria = cfg_.optional_child("criteria");
-	if (!criteria) {
+	if(!criteria){
 		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given";
 		return;
 	} else {
@@ -242,14 +242,14 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	unit_map &units = resources::gameboard->units();
 
 	std::set<map_location> items;
-	if (protect_unit_) {
+	if(protect_unit_){
 		const unit_filter ufilt{ vconfig(*criteria) };
-		for (const unit &u : units)
+		for(const unit &u : units)
 		{
 			// 'protect_unit' can be set to any unit of any side -> exclude hidden units
 			// unless they are visible to the AI side (e.g. allies with shared vision).
 			// As is done in other parts of the AI, units under fog/shroud count as visible to the AI.
-			if (ufilt(u)
+			if(ufilt(u)
 				&& (!u.invisible(u.get_location()) || u.is_visible_to_team(current_team(), false)))
 			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected";
@@ -261,12 +261,12 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	}
 	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal";
 	// Look for directions to protect a specific location or specific unit.
-	for (const map_location &loc : items)
+	for(const map_location &loc : items)
 	{
-		for (const unit &u : units)
+		for(const unit &u : units)
 		{
 			int distance = distance_between(u.get_location(), loc);
-			if (current_team().is_enemy(u.side()) && distance < radius_ &&
+			if(current_team().is_enemy(u.side()) && distance < radius_ &&
 			    !u.invisible(u.get_location()))
 			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc;
@@ -293,7 +293,7 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	, code_()
 	, handler_()
 {
-	if (cfg.has_attribute("code")) {
+	if(cfg.has_attribute("code")){
 		code_ = cfg["code"].str();
 	}
 	else
@@ -316,7 +316,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 
 	std::vector < target > targets = *(l_obj->get());
 
-	for (target tg : targets)
+	for(target tg : targets)
 	{
 		*target_list = tg;
 	}
@@ -325,7 +325,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 // This is defined in the source file so that it can easily access the logger
 bool goal_factory::is_duplicate(const std::string& name)
 {
-	if (get_list().find(name) != get_list().end()) {
+	if(get_list().find(name) != get_list().end()){
 		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name;
 		return true;
 	}

@@ -51,7 +51,7 @@ gui_definition::gui_definition(const config& cfg)
 	//
 
 	/** Parse widget definitions of each registered type. */
-	for(const auto& [type_id, widget_parser] : registered_widget_types()) {
+	for(const auto& [type_id, widget_parser] : registered_widget_types()){
 		auto& def_map = widget_types[type_id];
 
 		const std::string key =	widget_parser.key
@@ -60,26 +60,26 @@ gui_definition::gui_definition(const config& cfg)
 
 		bool found_default_def = false;
 
-		for(const config& definition : cfg.child_range(key)) {
+		for(const config& definition : cfg.child_range(key)){
 			// Run the static parser to get a definition ptr.
 			styled_widget_definition_ptr def_ptr = widget_parser.parser(definition);
 
 			const std::string& def_id = def_ptr->id;
 			auto [_, success] = def_map.emplace(def_id, std::move(def_ptr));
 
-			if(!success) {
+			if(!success){
 				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'";
 				continue;
 			}
 
-			if(def_id == "default") {
+			if(def_id == "default"){
 				found_default_def = true;
 			}
 		}
 
 		// Only the default GUI needs to ensure each widget has a default definition.
 		// Non-default ones can just fall back to the default definition in the default GUI.
-		if(id_ == "default") {
+		if(id_ == "default"){
 			VALIDATE(found_default_def, "No default definition found for widget '" + type_id + "'");
 		}
 	}
@@ -89,14 +89,14 @@ gui_definition::gui_definition(const config& cfg)
 	//
 
 	/** Parse each window. */
-	for(auto& w : cfg.child_range("window")) {
+	for(auto& w : cfg.child_range("window")){
 		window_types.emplace(w["id"], builder_window(w));
 	}
 
-	if(id_ == "default") {
+	if(id_ == "default"){
 		// The default gui needs to define all window types since we're the
 		// fallback in case another gui doesn't define the window type.
-		for(const auto& window_type : registered_window_types()) {
+		for(const auto& window_type : registered_window_types()){
 			const std::string error_msg(
 				"Window not defined in WML: '" + window_type + "'."
 				"Perhaps a mismatch between data and source versions. Try --data-dir <trunk-dir>");
@@ -153,14 +153,14 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 	const int screen_w = settings::screen_width;
 	const int screen_h = settings::screen_height;
 
-	for(const auto& res : list) {
+	for(const auto& res : list){
 		point size = get_size(res);
 
 		int w = size.x ? size.x : 1;
 		int h = size.y ? size.y : 1;
 		int score = 0;
 
-		if(w <= screen_w && h <= screen_h) {
+		if(w <= screen_w && h <= screen_h){
 			score = w * h;
 		} else {
 			// Negative score, only used in case none of the given resolution fits on the screen
@@ -168,7 +168,7 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 			score = std::min(screen_w - w, 0) + std::min(screen_h - h, 0);
 		}
 
-		if(score >= best_resolution_score) {
+		if(score >= best_resolution_score){
 			best_resolution = &res;
 			best_resolution_score = score;
 		}
@@ -198,7 +198,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 		const auto& options = widget_definitions->second;
 
 		// Out of all definitions for that type, find the requested one.
-		if(auto control = options.find(definition); control != options.end()) {
+		if(auto control = options.find(definition); control != options.end()){
 			return control;
 		} else {
 			return utils::nullopt;
@@ -208,12 +208,12 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	auto control = find_definition(current_types);
 
 	// Definition not found in the current theme, try the default theme.
-	if(!control && current_gui != default_gui) {
+	if(!control && current_gui != default_gui){
 		control = find_definition(default_types);
 	}
 
 	// Still no match. Try the default definition.
-	if(!control && definition != "default") {
+	if(!control && definition != "default"){
 		LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
 				  << "' not found, falling back to 'default'.";
 		return get_control(control_type, "default");
@@ -228,7 +228,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	VALIDATE(!resolutions.empty(),
 		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.");
 
-	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr) {
+	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr){
 		return point(
 			static_cast<int>(ptr->window_width),
 			static_cast<int>(ptr->window_height)
@@ -245,16 +245,16 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	auto iter = current_windows.find(type);
 
-	if(iter == current_windows.end()) {
+	if(iter == current_windows.end()){
 		// Current GUI is the default one and no window type was found. Throw.
-		if(current_gui == default_gui) {
+		if(current_gui == default_gui){
 			throw window_builder_invalid_id();
 		}
 
 		// Else, try again to find the window, this time in the default GUI.
 		iter = default_windows.find(type);
 
-		if(iter == default_windows.end()) {
+		if(iter == default_windows.end()){
 			throw window_builder_invalid_id();
 		}
 	}
@@ -263,7 +263,7 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	VALIDATE(!resolutions.empty(), formatter() << "Window '" << type << "' has no resolutions.\n");
 
-	return get_best_resolution(resolutions, [&](const builder_window::window_resolution& res) {
+	return get_best_resolution(resolutions, [&](const builder_window::window_resolution& res){
 		return point(
 			static_cast<int>(res.window_width),
 			static_cast<int>(res.window_height)
@@ -276,7 +276,7 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 	auto& def_map = current_gui->second.widget_types[widget_type];
 	auto parser = registered_widget_types().find(widget_type);
 
-	if(parser == registered_widget_types().end()) {
+	if(parser == registered_widget_types().end()){
 		throw std::invalid_argument("widget '" + widget_type + "' doesn't exist");
 	}
 
@@ -289,7 +289,7 @@ void remove_single_widget_definition(const std::string& widget_type, const std::
 	auto& definition_map = current_gui->second.widget_types[widget_type];
 
 	auto it = definition_map.find(definition_id);
-	if(it != definition_map.end()) {
+	if(it != definition_map.end()){
 		definition_map.erase(it);
 	}
 }

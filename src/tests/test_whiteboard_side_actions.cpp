@@ -25,13 +25,13 @@
 using namespace wb;
 
 struct dummy_action: action{
-	dummy_action(std::size_t team_index, bool hidden, int id): action(team_index, hidden), id_(id) {}
+	dummy_action(std::size_t team_index, bool hidden, int id): action(team_index, hidden), id_(id){}
 	int id_;
 
 	// un-abstraction
 	std::ostream& print(std::ostream& s) const { s<<id_; return s; }
 	void accept(visitor&){}
-	std::shared_ptr<dummy_action> shared_from_this() { return std::static_pointer_cast<dummy_action>(action::shared_from_this()); }
+	std::shared_ptr<dummy_action> shared_from_this(){ return std::static_pointer_cast<dummy_action>(action::shared_from_this()); }
 	void execute(bool& success, bool& complete){ success=true; complete=true; }
 	void apply_temp_modifier(unit_map&){}
 	void remove_temp_modifier(unit_map&){}
@@ -42,9 +42,9 @@ struct dummy_action: action{
 	error check_validity() const { return OK; }
 };
 
-BOOST_AUTO_TEST_SUITE( whiteboard_side_actions_container )
+BOOST_AUTO_TEST_SUITE(whiteboard_side_actions_container)
 
-BOOST_AUTO_TEST_CASE( test_insertion )
+BOOST_AUTO_TEST_CASE(test_insertion)
 {
 	side_actions_container sac;
 	std::shared_ptr<dummy_action> dact;
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 1);
 
 	int tmp=0;
-	for(action_ptr act : sac) {
+	for(action_ptr act : sac){
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 3);
 
 	tmp=0;
-	for(action_ptr act : sac) {
+	for(action_ptr act : sac){
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(3+sac.turn_begin(1) == sac.turn_end(1));
 }
 
-BOOST_AUTO_TEST_CASE( test_removal )
+BOOST_AUTO_TEST_CASE(test_removal)
 {
 	side_actions_container sac;
 	std::shared_ptr<dummy_action> dact;

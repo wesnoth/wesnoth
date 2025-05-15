@@ -300,7 +300,7 @@ FOREACH_SPIRIT_PO_BINARY_OP(OP_CODE_STR_CASE_)
 #undef OP_CODE_STR_CASE_
   }
 
-  if (result.size() < 5) { result += ' '; } \
+  if(result.size() < 5) { result += ' '; } \
   result += "  :   ]";
   return result;
 }
@@ -386,14 +386,14 @@ FOREACH_SPIRIT_PO_BINARY_OP(EMIT_OP_)
     bool second_is_boolean = boost::apply_visitor(is_boolean(), o.e2);
 
     uint sec_size = static_cast<uint>(second.size());
-    if (!second_is_boolean) { sec_size += 2; }
+    if(!second_is_boolean) { sec_size += 2; }
 
     result.emplace_back(skip_if{2});
     result.emplace_back(constant{0});
     result.emplace_back(skip{sec_size});
 
     std::move(second.begin(), second.end(), std::back_inserter(result));
-    if (!second_is_boolean) {
+    if(!second_is_boolean) {
       result.emplace_back(op_code::not_op);
       result.emplace_back(op_code::not_op);
     }
@@ -407,14 +407,14 @@ FOREACH_SPIRIT_PO_BINARY_OP(EMIT_OP_)
     bool second_is_boolean = boost::apply_visitor(is_boolean(), o.e2);
 
     uint sec_size = static_cast<uint>(second.size());
-    if (!second_is_boolean) { sec_size += 2; }
+    if(!second_is_boolean) { sec_size += 2; }
 
     result.emplace_back(skip_if_not{2});
     result.emplace_back(constant{1});
     result.emplace_back(skip{sec_size});
 
     std::move(second.begin(), second.end(), std::back_inserter(result));
-    if (!second_is_boolean) {
+    if(!second_is_boolean) {
       result.emplace_back(op_code::not_op);
       result.emplace_back(op_code::not_op);
     }
@@ -431,7 +431,7 @@ FOREACH_SPIRIT_PO_BINARY_OP(EMIT_OP_)
     uint fsize = static_cast<uint>(fbranch.size());
 
     // We use jump if / jump if not in the way that will let us put the shorter branch first.
-    if (tbranch.size() > fbranch.size()) {
+    if(tbranch.size() > fbranch.size()) {
        // + 1 to size because we have to put a jump at end of this branch also
       result.emplace_back(skip_if{fsize + 1});
       std::move(fbranch.begin(), fbranch.end(), std::back_inserter(result));
@@ -460,7 +460,7 @@ class stack_machine : public boost::static_visitor<uint> {
 public:
   void debug_print_instructions() const {
     std::cerr << "Instruction sequence:\n";
-    for (const auto & i : instruction_seq_) {
+    for(const auto & i : instruction_seq_) {
       std::cerr << debug_string(i) << std::endl;
     }
   }
@@ -468,7 +468,7 @@ private:
 
 #define MACHINE_ASSERT(X)                       \
   do {                                          \
-    if (!(X)) {                                 \
+    if(!(X)) {                                 \
       std::cerr << "Stack machine failure:\n";  \
       debug_print_instructions();               \
       assert(false && #X);                      \
@@ -535,7 +535,7 @@ public:
         MACHINE_ASSERT(stack_.size() >= 2);                                                            \
         uint parm2 = pop_one();                                                                        \
                                                                                                        \
-        if (op_code::name == op_code::mod_op) {                                                        \
+        if(op_code::name == op_code::mod_op) {                                                        \
           MACHINE_ASSERT(parm2 && "Division by zero when evaluating gettext plural form expression");  \
         }                                                                                              \
                                                                                                        \
@@ -555,7 +555,7 @@ FOREACH_SPIRIT_PO_BINARY_OP(STACK_MACHINE_CASE_)
     n_value_ = arg;
     stack_.resize(0);
     uint pc = 0;
-    while (pc < instruction_seq_.size()) {
+    while(pc < instruction_seq_.size()) {
       pc += boost::apply_visitor(*this, instruction_seq_[pc]);
     }
     MACHINE_ASSERT(pc == instruction_seq_.size());

@@ -46,8 +46,8 @@ namespace
  */
 std::unique_ptr<image::locator> get_orb_image(orb_status os)
 {
-	if(os == orb_status::disengaged) {
-		if(orb_status_helper::prefs_show_orb(os)) {
+	if(os == orb_status::disengaged){
+		if(orb_status_helper::prefs_show_orb(os)){
 			auto partial_color = orb_status_helper::get_orb_color(orb_status::partial);
 			auto moved_color = orb_status_helper::get_orb_color(orb_status::moved);
 			return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
@@ -74,7 +74,7 @@ std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 
 	// This is conditional on prefs_show_orb, because a user might want to disable the standard
 	// partial orb, but keep it enabled as a reminder for units in the disengaged state.
-	if(os == orb_status::disengaged && !orb_status_helper::prefs_show_orb(orb_status::disengaged)) {
+	if(os == orb_status::disengaged && !orb_status_helper::prefs_show_orb(orb_status::disengaged)){
 		os = orb_status::partial;
 	}
 
@@ -139,7 +139,7 @@ void draw_bar(int index, const energy_bar& data, const rect& bounds)
 
 	SDL_FPoint p1{
 		float(energy_bar::def_origin.x + energy_bar::spacing * index) / tile_size,
-		float(energy_bar::def_origin.y                              ) / tile_size,
+		float(energy_bar::def_origin.y                             ) / tile_size,
 	};
 
 	// If the top of the bar sits 13px from the top of the scaled hex rect, the bottom
@@ -188,7 +188,7 @@ unit_drawer::unit_drawer(display& thedisp)
 	, hex_size(disp.hex_size())
 	, hex_size_by_2(disp.hex_size() / 2)
 {
-	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
+	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)){
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
 }
@@ -214,20 +214,20 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	const bool is_selected_hex = selected_or_reachable(loc);
 
-	if(hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, show_everything)) {
+	if(hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, show_everything)){
 		ac.clear_haloes();
-		if(ac.anim_) {
+		if(ac.anim_){
 			ac.anim_->update_last_draw_time();
 		}
 		return;
 	}
 
-	if (!ac.anim_) {
+	if(!ac.anim_){
 		ac.set_standing();
-		if (!ac.anim_) return;
+		if(!ac.anim_) return;
 	}
 
-	if (ac.refreshing_) return;
+	if(ac.refreshing_) return;
 	ac.refreshing_ = true;
 
 	ac.anim_->update_last_draw_time();
@@ -239,15 +239,15 @@ void unit_drawer::redraw_unit(const unit& u) const
 	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
 	params.submerge= is_flying ? -1.0 : terrain_info.unit_submerge();
 
-	if(u.invisible(loc) && params.highlight_ratio > 0.6) {
+	if(u.invisible(loc) && params.highlight_ratio > 0.6){
 		params.highlight_ratio = 0.6;
 	}
-	if (is_selected_hex && params.highlight_ratio == 1.0) {
+	if(is_selected_hex && params.highlight_ratio == 1.0){
 		params.highlight_ratio = 1.5;
 	}
 
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * zoom_factor);
-	if (is_flying && height_adjust < 0) {
+	if(is_flying && height_adjust < 0){
 		height_adjust = 0;
 	}
 	params.y -= height_adjust;
@@ -256,19 +256,19 @@ void unit_drawer::redraw_unit(const unit& u) const
 	int red = 0,green = 0,blue = 0,tints = 0;
 	double blend_ratio = 0;
 	// Add future colored states here
-	if(u.poisoned()) {
+	if(u.poisoned()){
 		green += 255;
 		blend_ratio += 0.25;
 		tints += 1;
 	}
-	if(u.slowed()) {
+	if(u.slowed()){
 		red += 191;
 		green += 191;
 		blue += 255;
 		blend_ratio += 0.25;
 		tints += 1;
 	}
-	if(tints > 0) {
+	if(tints > 0){
 		params.blend_with = color_t((red/tints),(green/tints),(blue/tints));
 		params.blend_ratio = ((blend_ratio/tints));
 	}
@@ -295,10 +295,10 @@ void unit_drawer::redraw_unit(const unit& u) const
 	rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
 
 	// We draw bars only if wanted, visible on the map view
-	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())) {
+	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())){
 
 		// Always show the ellipse for selected units
-		if(prefs::get().show_side_colors() || is_selected_hex) {
+		if(prefs::get().show_side_colors() || is_selected_hex){
 			draw_ellipses(u, adjusted_params);
 		}
 
@@ -307,7 +307,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		const auto& cfg_offset_y = type_cfg["bar_offset_y"];
 		int xoff;
 		int yoff;
-		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
+		if(cfg_offset_x.empty() && cfg_offset_y.empty()){
 			const point s = display::scaled_to_zoom(
 				image::get_size(u.default_anim_image())
 			);
@@ -322,10 +322,10 @@ void unit_drawer::redraw_unit(const unit& u) const
 		using namespace orb_status_helper;
 		std::unique_ptr<image::locator> orb_img = nullptr;
 
-		if(viewing_team_ref.is_enemy(side)) {
+		if(viewing_team_ref.is_enemy(side)){
 			if(!u.incapacitated())
 				orb_img = get_orb_image(orb_status::enemy);
-		} else if(side != playing_team_ref.side()) {
+		} else if(side != playing_team_ref.side()){
 			// We're looking at either the player's own unit or an ally's unit, but either way it
 			// doesn't belong to the playing_team and isn't expected to move until after its next
 			// turn refresh.
@@ -333,7 +333,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 			if(side != viewing_team_ref.side())
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
-		} else if(side != viewing_team_ref.side()) {
+		} else if(side != viewing_team_ref.side()){
 			// We're looking at an ally's unit, during that ally's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_playing_ally_orb_image(os);
@@ -346,24 +346,24 @@ void unit_drawer::redraw_unit(const unit& u) const
 		// All the various overlay textures to draw with the HP/XP bars
 		std::vector<texture> textures;
 
-		if(orb_img) {
+		if(orb_img){
 			textures.push_back(image::get_texture(*orb_img));
 		}
 
-		if(can_recruit) {
-			if(texture tex = image::get_texture(u.leader_crown())) {
+		if(can_recruit){
+			if(texture tex = image::get_texture(u.leader_crown())){
 				textures.push_back(std::move(tex));
 			}
 		}
 
-		for(const std::string& ov : u.overlays()) {
-			if(texture tex = image::get_texture(ov)) {
+		for(const std::string& ov : u.overlays()){
+			if(texture tex = image::get_texture(ov)){
 				textures.push_back(std::move(tex));
 			}
 		};
 
-		for(const std::string& ov : u.overlays_abilities()) {
-			if(texture tex = image::get_texture(ov)) {
+		for(const std::string& ov : u.overlays_abilities()){
+			if(texture tex = image::get_texture(ov)){
 				textures.push_back(std::move(tex));
 			}
 		};
@@ -371,7 +371,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		const bool bar_focus = (loc == mouse_hex || is_selected_hex);
 		std::vector<energy_bar> bars;
 
-		if(u.max_hitpoints() > 0) {
+		if(u.max_hitpoints() > 0){
 			bars.AGGREGATE_EMPLACE(
 				energy_bar::get_height(u.max_hitpoints(), u.hp_bar_scaling()),
 				energy_bar::get_filled(u.hitpoints(), u.max_hitpoints()),
@@ -379,7 +379,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 			);
 		}
 
-		if(u.experience() > 0 && u.can_advance()) {
+		if(u.experience() > 0 && u.can_advance()){
 			bars.AGGREGATE_EMPLACE(
 				energy_bar::get_height(u.max_experience(), u.xp_bar_scaling() / std::max(u.level(), 1)),
 				energy_bar::get_filled(u.experience(), u.max_experience()),
@@ -389,14 +389,14 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 		disp.drawing_buffer_add(drawing_layer::unit_bar, loc,
 			[textures = std::move(textures), bars = std::move(bars), shift = point{xoff, yoff + adjusted_params.y}](
-				const rect& dest) {
+				const rect& dest){
 				const rect shifted = dest.shifted_by(shift);
 
-				for(const texture& tex : textures) {
+				for(const texture& tex : textures){
 					draw::blit(tex, shifted);
 				}
 
-				for(std::size_t i = 0; i < bars.size(); ++i) { // bar bar bar
+				for(std::size_t i = 0; i < bars.size(); ++i){ // bar bar bar
 					draw_bar(i, bars[i], shifted);
 				}
 			});
@@ -412,7 +412,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	// It appears the tiles and units are scaled together somewhere else
 	int height_adjust_unit = static_cast<int>(terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
 											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset);
-	if (is_flying && height_adjust_unit < 0) {
+	if(is_flying && height_adjust_unit < 0){
 		height_adjust_unit = 0;
 	}
 	params.y -= height_adjust_unit - height_adjust;
@@ -433,23 +433,23 @@ void unit_drawer::redraw_unit(const unit& u) const
 		+ hex_size_by_2 - height_adjust_unit * zoom_factor;
 
 	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
-	if(!has_halo && !u.image_halo().empty()) {
+	if(!has_halo && !u.image_halo().empty()){
 		ac.unit_halo_ = halo_man.add(
 			halo_x, halo_y,
 			u.image_halo() + u.TC_image_mods(),
 			map_location(-1, -1)
 		);
 	}
-	if(has_halo && u.image_halo().empty()) {
+	if(has_halo && u.image_halo().empty()){
 		halo_man.remove(ac.unit_halo_);
 		ac.unit_halo_.reset();
-	} else if(has_halo) {
+	} else if(has_halo){
 		halo_man.set_location(ac.unit_halo_, halo_x, halo_y);
 	}
 
 	const std::vector<std::string> halos_abilities = u.halo_abilities();
 	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
-	if(!has_abil_halo && !halos_abilities.empty()) {
+	if(!has_abil_halo && !halos_abilities.empty()){
 		for(const std::string& halo_ab : halos_abilities){
 			halo::handle abil_halo = halo_man.add(
 				halo_x, halo_y,
@@ -493,12 +493,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
 {
 	std::string ellipse = u.image_ellipse();
-	if(ellipse == "none") {
+	if(ellipse == "none"){
 		return;
 	}
 
 	auto path = formatter{};
-	if(!ellipse.empty()) {
+	if(!ellipse.empty()){
 		path << ellipse;
 	} else {
 		path << "misc/ellipse";
@@ -530,9 +530,9 @@ void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) c
 		: params.y;
 
 	disp.drawing_buffer_add(drawing_layer::unit_first, u.get_location(),
-		[images = std::move(images), y_shift](const rect& dest) {
-			for(const texture& tex : images) {
-				if(tex) {
+		[images = std::move(images), y_shift](const rect& dest){
+			for(const texture& tex : images){
+				if(tex){
 					draw::blit(tex, dest.shifted_by(0, y_shift));
 				}
 			}

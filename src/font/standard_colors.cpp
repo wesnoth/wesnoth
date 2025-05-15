@@ -46,13 +46,13 @@ color_t string_to_color(const std::string& color_str)
 	// Hex rrggbb string with no leading '#'.
 	// Pango can't deal with this, so we prepend '#'.
 	if(cstr.size() == 6
-		&& std::all_of(cstr.begin(), cstr.end(), [](int i) { return isxdigit(i); }))
+		&& std::all_of(cstr.begin(), cstr.end(), [](int i){ return isxdigit(i); }))
 	{
 		cstr = '#' + cstr;
 	}
 
 	PangoColor color;
-	if(pango_color_parse(&color, cstr.c_str())) {
+	if(pango_color_parse(&color, cstr.c_str())){
 		return color_t::from_pango_format(color.red, color.green, color.blue);
 	}
 

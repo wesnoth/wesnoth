@@ -66,10 +66,10 @@ private:
 	window* window_;
 
 public:
-	view() : msg_label(nullptr), window_(nullptr) {}
+	view() : msg_label(nullptr), window_(nullptr){}
 
 	/** Bind the scroll label widget to my pointer, and configure */
-	void bind(window& window) {
+	void bind(window& window){
 		window_ = &window;
 		msg_label = window_->find_widget<scroll_label>("msg", false, true);
 		msg_label->set_use_markup(true);
@@ -122,7 +122,7 @@ public:
 		log_ << font::escape_text(lk.get_log().str()) << std::flush;
 		raw_log_ << lk.get_log().str() << std::flush;
 		// Lua kernel sends log strings to this function
-		L_.set_external_log([this](const std::string & str) {
+		L_.set_external_log([this](const std::string & str){
 			log_ << font::escape_text(str);
 			raw_log_ << str;
 		});
@@ -154,7 +154,7 @@ public:
 	std::string get_name() const { return L_.my_name(); }
 
 	/** Clear the console log */
-	void clear_log() {
+	void clear_log(){
 		L_.clear_log();
 		log_.str("");
 		log_.clear();
@@ -163,9 +163,9 @@ public:
 	}
 
 	//* Tab completion: Get list of presently defined global variables */
-	std::vector<std::string> get_globals() { return L_.get_global_var_names(); }
+	std::vector<std::string> get_globals(){ return L_.get_global_var_names(); }
 	//* Tab completion: Get list of attributes for variable corresponding to this path. */
-	std::vector<std::string> get_attribute_names(const std::string & s) { return L_.get_attribute_names(s); }
+	std::vector<std::string> get_attribute_names(const std::string & s){ return L_.get_attribute_names(s); }
 };
 
 /**
@@ -202,17 +202,17 @@ public:
 	{
 		try {
 			const std::size_t history_max = 500;
-			if (filesystem::file_exists(filename_)) {
+			if(filesystem::file_exists(filename_)){
 				append_history (history_max,filename_.c_str());
 			} else {
 				write_history (filename_.c_str());
 			}
 
 			history_truncate_file (filename_.c_str(), history_max);
-		} catch (...) { PLAIN_LOG << "Swallowed an exception when trying to write lua command line history";}
+		} catch (...){ PLAIN_LOG << "Swallowed an exception when trying to write lua command line history";}
 	}
 #endif
-	void add_to_history ([[maybe_unused]] const std::string& str) {
+	void add_to_history ([[maybe_unused]] const std::string& str){
 		prefix_ = "";
 #ifdef HAVE_HISTORY
 		add_history(str.c_str());
@@ -221,29 +221,29 @@ public:
 
 	}
 
-	void maybe_update_prefix (const std::string & text) {
+	void maybe_update_prefix (const std::string & text){
 		LOG_LUA << "maybe update prefix";
 		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'";
 
-		if (!end_of_history_) return;
+		if(!end_of_history_) return;
 
 		prefix_ = text;
 		LOG_LUA << "updated prefix";
 	}
 
-	std::string search([[maybe_unused]] int direction ) {
+	std::string search([[maybe_unused]] int direction){
 #ifdef HAVE_HISTORY
 		LOG_LUA << "searching in direction " << direction << " from position " << where_history();
 
 		HIST_ENTRY * e = nullptr;
-		if (end_of_history_) {
+		if(end_of_history_){
 			// if the direction is > 0, do nothing because searching down only takes place when we are in the history records.
-			if (direction < 0) {
+			if(direction < 0){
 				history_set_pos(history_length);
 
-				if (prefix_.size() > 0) {
+				if(prefix_.size() > 0){
 					int result = history_search_prefix(prefix_.c_str(), direction);
-					if (result == 0) {
+					if(result == 0){
 						e = current_history();
 					}
 				} else {
@@ -252,9 +252,9 @@ public:
 			}
 		} else {
 			e = (direction > 0) ? next_history() : previous_history();
-			if (prefix_.size() > 0 && e) {
+			if(prefix_.size() > 0 && e){
 				int result = history_search_prefix(prefix_.c_str(), direction);
-				if (result == 0) {
+				if(result == 0){
 					e = current_history();
 				} else {
 					e = nullptr;		// if the search misses, it leaves the state as it was, which might not have been on an entry matching prefix.
@@ -263,7 +263,7 @@ public:
 			}
 		}
 
-		if (e) {
+		if(e){
 			LOG_LUA << "found something at " << where_history();
 			std::string ret = e->line;
 			end_of_history_ = false;
@@ -280,7 +280,7 @@ public:
 		return temp;
 	}
 
-	std::string clear_history() {
+	std::string clear_history(){
 #ifdef HAVE_HISTORY
 		::clear_history();
 		write_history (filename_.c_str());
@@ -290,18 +290,18 @@ public:
 #endif
 	}
 
-	std::string list_history() {
+	std::string list_history(){
 #ifdef HAVE_HISTORY
 		HIST_ENTRY **the_list;
 
 		the_list = history_list ();
-		if (the_list) {
-			if (!*the_list) {
+		if(the_list){
+			if(!*the_list){
 				return "History is empty.";
 			}
 
 			std::string result;
-			for (int i = 0; the_list[i]; i++) {
+			for(int i = 0; the_list[i]; i++){
 				result += std::to_string(i+history_base);
 				result += ": ";
 				result += the_list[i]->line;
@@ -376,14 +376,14 @@ bool lua_interpreter::lua_model::execute (const std::string & cmd)
 	try {
 		L_.interactive_run(cmd.c_str());
 		return true;
-	} catch (const game::lua_error & e) {
+	} catch (const game::lua_error & e){
 		add_dialog_message(std::string(e.what()));
 		return false;
 	}
 }
 
 /** Add a dialog message, which will appear in blue. */
-void lua_interpreter::lua_model::add_dialog_message(const std::string & msg) {
+void lua_interpreter::lua_model::add_dialog_message(const std::string & msg){
 	log_ << markup::span_color("#8888FF", font::escape_text(msg)) << "\n";
 	raw_log_ << msg << '\n';
 }
@@ -464,7 +464,7 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 	assert(text_entry);
 
 	LOG_LUA << "keypress_callback";
-	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) { // handle executing whatever is in the command entry field
+	if(key == SDLK_RETURN || key == SDLK_KP_ENTER){ // handle executing whatever is in the command entry field
 		LOG_LUA << "executing...";
 		execute();
 		handled = true;
@@ -475,23 +475,23 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		window.queue_redraw();
 
 		LOG_LUA << "finished executing";
-	} else if(key == SDLK_TAB) {	// handle tab completion
+	} else if(key == SDLK_TAB){	// handle tab completion
 		tab();
 		handled = true;
 		halt = true;
-	} else if(key == SDLK_UP) {
+	} else if(key == SDLK_UP){
 		search(-1);
 		handled = true;
 		halt = true;
-	} else if(key == SDLK_DOWN) {
+	} else if(key == SDLK_DOWN){
 		search(1);
 		handled = true;
 		halt = true;
-	} else if(key == SDLK_PAGEUP) {
+	} else if(key == SDLK_PAGEUP){
 		view_->pg_up();
 		handled = true;
 		halt = true;
-	} else if(key == SDLK_PAGEDOWN) {
+	} else if(key == SDLK_PAGEDOWN){
 		view_->pg_down();
 		handled = true;
 		halt = true;
@@ -501,27 +501,27 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 void lua_interpreter::controller::execute()
 {
 	std::string cmd = text_entry->get_value();
-	if (cmd.empty()) return; //don't bother with empty string
+	if(cmd.empty()) return; //don't bother with empty string
 
 	cmd.erase(cmd.find_last_not_of(" \n\r\t")+1); //right trim the string
 
 	LOG_LUA << "Executing '"<< cmd << "'";
 
-	if (cmd.size() >= 13 && (cmd.substr(0,13) == "history clear" || cmd.substr(0,13) == "clear history")) {
+	if(cmd.size() >= 13 && (cmd.substr(0,13) == "history clear" || cmd.substr(0,13) == "clear history")){
 		lua_model_->add_dialog_message(input_model_->clear_history());
 		text_entry->set_value("");
 		update_view();
 		return;
 	}
 
-	if (cmd.size() >= 7 && (cmd.substr(0,7) == "history")) {
+	if(cmd.size() >= 7 && (cmd.substr(0,7) == "history")){
 		lua_model_->add_dialog_message(input_model_->list_history());
 		text_entry->set_value("");
 		update_view();
 		return;
 	}
 
-	if (lua_model_->execute(cmd)) {
+	if(lua_model_->execute(cmd)){
 		input_model_->add_to_history(cmd);
 		text_entry->set_value("");
 	}
@@ -534,7 +534,7 @@ void lua_interpreter::controller::tab()
 
 	std::string prefix;
 	std::size_t prefix_end_pos = text.find_last_of(" (");
-	if (prefix_end_pos != std::string::npos) {
+	if(prefix_end_pos != std::string::npos){
 		prefix = text.substr(0, prefix_end_pos + 1);
 		text = text.substr(prefix_end_pos + 1);
 	}
@@ -561,7 +561,7 @@ void lua_interpreter::controller::tab()
 
 	std::vector<std::string> matches;
 
-	if (text.find('.') == std::string::npos) {
+	if(text.find('.') == std::string::npos){
 		matches = lua_model_->get_globals();
 		matches.insert(matches.end(), static_matches.begin(), static_matches.end());
 	} else {
@@ -569,29 +569,29 @@ void lua_interpreter::controller::tab()
 	}
 
 	//bool line_start = utils::word_completion(text, matches);
-	if (text.size() > 0) { // this if is to avoid weird behavior in word_completion, where it thinks nothing matches the empty string
+	if(text.size() > 0){ // this if is to avoid weird behavior in word_completion, where it thinks nothing matches the empty string
 		utils::word_completion(text, matches);
 	}
 
-	if(matches.empty()) {
+	if(matches.empty()){
 		return;
 	}
 
-	//if(matches.size() == 1) {
+	//if(matches.size() == 1){
 		//text.append(" "); //line_start ? ": " : " ");
 	//} else {
-	if (matches.size() > 1) {
+	if(matches.size() > 1){
 		//std::string completion_list = utils::join(matches, " ");
 
 		const std::size_t wrap_limit = 80;
 		std::string buffer;
 
-		for (std::size_t idx = 0; idx < matches.size(); ++idx) {
-			if (buffer.size() + 1 + matches.at(idx).size() > wrap_limit) {
+		for(std::size_t idx = 0; idx < matches.size(); ++idx){
+			if(buffer.size() + 1 + matches.at(idx).size() > wrap_limit){
 				lua_model_->add_dialog_message(buffer);
 				buffer = matches.at(idx);
 			} else {
-				if (buffer.size()) {
+				if(buffer.size()){
 					buffer += (" " + matches.at(idx));
 				} else {
 					buffer = matches.at(idx);
@@ -621,16 +621,16 @@ void lua_interpreter::controller::search(int direction)
 // Dialog implementation
 
 /** Display a new console, using given video and lua kernel */
-void lua_interpreter::display(lua_kernel_base * lk) {
+void lua_interpreter::display(lua_kernel_base * lk){
 #ifndef ALWAYS_HAVE_LUA_CONSOLE
-	if(!game_config::debug && resources::controller) {
+	if(!game_config::debug && resources::controller){
 		display_chat_manager& chat_man = resources::controller->get_display().get_chat_manager();
 		const std::string& message = _("The lua console can only be used in debug mode! (Run ‘:debug’ first)");
 		chat_man.add_chat_message(time(nullptr), _("lua console"), 0, message, events::chat_handler::MESSAGE_PRIVATE, false);
 		return;
 	}
 #endif
-	if (!lk) {
+	if(!lk){
 		ERR_LUA << "Tried to open console with a null lua kernel pointer.";
 		return;
 	}
@@ -639,10 +639,10 @@ void lua_interpreter::display(lua_kernel_base * lk) {
 }
 
 /** Helper function to assist those callers which don't want to include resources.hpp */
-void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
-	if (which == lua_interpreter::APP) {
+void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which){
+	if(which == lua_interpreter::APP){
 		display(plugins_manager::get()->get_kernel_base());
-	} else if (which == lua_interpreter::GAME) {
+	} else if(which == lua_interpreter::GAME){
 		display(resources::lua_kernel);
 	}
 }

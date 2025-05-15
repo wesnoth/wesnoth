@@ -36,7 +36,7 @@ void theme_list::pre_show()
 	listbox& list = find_widget<listbox>("themes");
 	keyboard_capture(&list);
 
-	for(const auto& t : themes_) {
+	for(const auto& t : themes_){
 		list.add_row(widget_data{
 			{ "name", {
 				{ "label", t.name.empty() ? t_string(t.id) : t.name }
@@ -47,7 +47,7 @@ void theme_list::pre_show()
 		});
 	}
 
-	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()) {
+	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()){
 		list.select_row(index_);
 	}
 
@@ -56,7 +56,7 @@ void theme_list::pre_show()
 
 void theme_list::post_show()
 {
-	if(get_retval() != retval::OK) {
+	if(get_retval() != retval::OK){
 		return;
 	}
 

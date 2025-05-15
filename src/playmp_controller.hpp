@@ -83,7 +83,7 @@ private:
 	void process_network_side_drop_impl(const config& t);
 
 	/// Handle incoming [change_controller] from the multiplayer server
-	void process_network_change_controller_impl(const config& );
+	void process_network_change_controller_impl(const config&);
 
 	/// Send [change_controller] to the multiplayer server
 	void send_change_side_controller(int side, const std::string& player);

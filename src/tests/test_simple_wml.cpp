@@ -19,9 +19,9 @@
 
 #include "server/common/simple_wml.hpp"
 
-BOOST_AUTO_TEST_SUITE( simple_wml )
+BOOST_AUTO_TEST_SUITE(simple_wml)
 
-BOOST_AUTO_TEST_CASE( simple_wml_first_test )
+BOOST_AUTO_TEST_CASE(simple_wml_first_test)
 {
 		const char* doctext = R"([test]
 a="blah"

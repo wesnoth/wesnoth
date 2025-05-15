@@ -34,7 +34,7 @@ map_fragment::map_fragment(const gamemap& map, const std::set<map_location>& are
 
 void map_fragment::add_tile(const gamemap& map, const map_location& loc)
 {
-	if (area_.find(loc) == area_.end()) {
+	if(area_.find(loc) == area_.end()){
 		items_.emplace_back(map, loc);
 		area_.insert(loc);
 	}
@@ -42,7 +42,7 @@ void map_fragment::add_tile(const gamemap& map, const map_location& loc)
 
 void map_fragment::add_tiles(const gamemap& map, const std::set<map_location>& locs)
 {
-	for (const map_location& loc : locs) {
+	for(const map_location& loc : locs){
 		add_tile(map, loc);
 	}
 }
@@ -55,7 +55,7 @@ std::set<map_location> map_fragment::get_area() const
 std::set<map_location> map_fragment::get_offset_area(const map_location& loc) const
 {
 	std::set<map_location> result;
-	for (const tile_info& i : items_) {
+	for(const tile_info& i : items_){
 		result.insert(i.offset.vector_sum(loc));
 	}
 	return result;
@@ -63,14 +63,14 @@ std::set<map_location> map_fragment::get_offset_area(const map_location& loc) co
 
 void map_fragment::paste_into(gamemap& map, const map_location& loc) const
 {
-	for (const tile_info& i : items_) {
+	for(const tile_info& i : items_){
 		map.set_terrain(i.offset.vector_sum(loc), i.terrain);
 	}
 }
 
 void map_fragment::shift(const map_location& offset)
 {
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		ti.offset.vector_sum_assign(offset);
 	}
 }
@@ -78,10 +78,10 @@ void map_fragment::shift(const map_location& offset)
 map_location map_fragment::center_of_mass() const
 {
 	map_location sum(0, 0);
-	for (const tile_info& ti : items_) {
+	for(const tile_info& ti : items_){
 		sum.vector_sum_assign(ti.offset);
 	}
-	if (items_.size() > 0) {
+	if(items_.size() > 0){
 		sum.x /= static_cast<int>(items_.size());
 		sum.y /= static_cast<int>(items_.size());
 	}
@@ -92,7 +92,7 @@ void map_fragment::center_by_mass()
 {
 	shift(center_of_mass().vector_negation());
 	area_.clear();
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		area_.insert(ti.offset);
 	}
 }
@@ -100,19 +100,19 @@ void map_fragment::center_by_mass()
 void map_fragment::rotate_60_cw()
 {
 	area_.clear();
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to direction::south/direction::south_east - direction::south_west axes
 		// but if x is odd, simply using x/2 + x/2 will lack a step
 		l = l.get_direction(map_location::direction::south, (x+is_odd(x))/2);
-		l = l.get_direction(map_location::direction::south_east, (x-is_odd(x))/2 );
+		l = l.get_direction(map_location::direction::south_east, (x-is_odd(x))/2);
 		l = l.get_direction(map_location::direction::south_west, y);
 		ti.offset = l;
 		area_.insert(l);
 	}
-	if (get_area().size() != items_.size()) {
+	if(get_area().size() != items_.size()){
 		throw editor_exception("Map fragment rotation resulted in duplicate entries");
 	}
 }
@@ -120,26 +120,26 @@ void map_fragment::rotate_60_cw()
 void map_fragment::rotate_60_ccw()
 {
 	area_.clear();
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to direction::north/direction::north_east - direction::south_east axes'
 		// reverse of what the cw rotation does
 		l = l.get_direction(map_location::direction::north, (x-is_odd(x))/2);
-		l = l.get_direction(map_location::direction::north_east, (x+is_odd(x))/2 );
+		l = l.get_direction(map_location::direction::north_east, (x+is_odd(x))/2);
 		l = l.get_direction(map_location::direction::south_east, y);
 		ti.offset = l;
 		area_.insert(l);
 	}
-	if (get_area().size() != items_.size()) {
+	if(get_area().size() != items_.size()){
 		throw editor_exception("Map fragment rotation resulted in duplicate entries");
 	}
 }
 
 void map_fragment::flip_horizontal()
 {
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		ti.offset.x = -ti.offset.x;
 	}
 	center_by_mass();
@@ -147,9 +147,9 @@ void map_fragment::flip_horizontal()
 
 void map_fragment::flip_vertical()
 {
-	for (tile_info& ti : items_) {
+	for(tile_info& ti : items_){
 		ti.offset.y = -ti.offset.y;
-		if (ti.offset.x % 2) {
+		if(ti.offset.x % 2){
 			ti.offset.y--;
 		}
 	}
@@ -166,11 +166,11 @@ std::string map_fragment::dump() const
 {
 	std::stringstream ss;
 	ss << "MF: ";
-	for (const tile_info& ti : items_) {
+	for(const tile_info& ti : items_){
 		ss << "(" << ti.offset << ")";
 	}
 	ss << " -- ";
-	for (const map_location& loc : area_) {
+	for(const map_location& loc : area_){
 		ss << "(" << loc << ")";
 	}
 	return ss.str();

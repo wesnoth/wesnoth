@@ -29,7 +29,7 @@ class formula_ai;
 
 class stage_side_formulas: public stage {
 public:
-	stage_side_formulas( ai_context &context, const config &cfg, formula_ai &fai );
+	stage_side_formulas(ai_context &context, const config &cfg, formula_ai &fai);
 
 	virtual ~stage_side_formulas();
 

@@ -47,7 +47,7 @@ void editor_generate_map::do_generator_selected()
 	listbox& list = find_widget<listbox>("generators_list");
 	const int current = list.get_selected_row();
 
-	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()) {
+	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()){
 		return; // shouldn't happen!
 	}
 
@@ -83,16 +83,16 @@ void editor_generate_map::pre_show()
 	listbox& list = find_widget<listbox>("generators_list");
 	keyboard_capture(&list);
 
-	for(const auto& gen : map_generators_) {
+	for(const auto& gen : map_generators_){
 		assert(gen);
 		list.add_row(widget_data{{ "generator_name", {{ "label", gen->config_name() }}}});
 
-		if(gen.get() == last_map_generator_) {
+		if(gen.get() == last_map_generator_){
 			list.select_last_row();
 		}
 	}
 
-	if (last_map_generator_ != nullptr) {
+	if(last_map_generator_ != nullptr){
 		// We need to call this manually because it won't be called by
 		// list.select_row() even if we set the callback before
 		// calling it
@@ -113,7 +113,7 @@ utils::optional<uint32_t> editor_generate_map::get_seed()
 	try {
 		return lexical_cast<uint32_t>(random_seed_);
 	}
-	catch(const bad_lexical_cast& ) {
+	catch(const bad_lexical_cast&){
 		return utils::nullopt;
 	}
 }

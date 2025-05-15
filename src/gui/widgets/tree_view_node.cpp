@@ -48,7 +48,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
 
-	if(id == tree_view::root_node_id) {
+	if(id == tree_view::root_node_id){
 		unfolded_ = true;
 		return;
 	}
@@ -61,18 +61,18 @@ tree_view_node::tree_view_node(const std::string& id,
 	node_definition.builder->build(grid_);
 	init_grid(&grid_, data);
 
-	if(parent_node_ && parent_node_->toggle_) {
+	if(parent_node_ && parent_node_->toggle_){
 		dynamic_cast<widget&>(*parent_node_->toggle_).set_visible(widget::visibility::visible);
 	}
 
-	if(node_definition.unfolded) {
+	if(node_definition.unfolded){
 		unfolded_ = true;
 	}
 
 	widget* toggle_widget = grid_.find("tree_view_node_toggle", false);
 	toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
 
-	if(toggle_) {
+	if(toggle_){
 		toggle_widget->set_visible(widget::visibility::hidden);
 
 		toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
@@ -82,7 +82,7 @@ tree_view_node::tree_view_node(const std::string& id,
 			std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2),
 			event::dispatcher::back_post_child);
 
-		if(unfolded_) {
+		if(unfolded_){
 			toggle_->set_value(1);
 		}
 	}
@@ -90,7 +90,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	widget* label_widget = grid_.find("tree_view_node_label", false);
 	label_ = dynamic_cast<selectable_item*>(label_widget);
 
-	if(label_) {
+	if(label_){
 		label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 			event::dispatcher::front_child);
@@ -99,7 +99,7 @@ tree_view_node::tree_view_node(const std::string& id,
 			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 			event::dispatcher::front_pre_child);
 
-		if(!get_tree_view().selected_item_) {
+		if(!get_tree_view().selected_item_){
 			get_tree_view().selected_item_ = this;
 			label_->set_value(true);
 		}
@@ -108,7 +108,7 @@ tree_view_node::tree_view_node(const std::string& id,
 
 tree_view_node::~tree_view_node()
 {
-	if(tree_view_ && get_tree_view().selected_item_ == this) {
+	if(tree_view_ && get_tree_view().selected_item_ == this){
 		get_tree_view().selected_item_ = nullptr;
 	}
 }
@@ -116,7 +116,7 @@ tree_view_node::~tree_view_node()
 void tree_view_node::clear_before_destruct()
 {
 	tree_view_ = nullptr;
-	for(auto& child : children_) {
+	for(auto& child : children_){
 		child->clear_before_destruct();
 	}
 }
@@ -125,7 +125,7 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 {
 	auto itor = children_.end();
 
-	if(static_cast<std::size_t>(index) < children_.size()) {
+	if(static_cast<std::size_t>(index) < children_.size()){
 		itor = children_.begin() + index;
 	}
 
@@ -139,11 +139,11 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 	// setter in add_child().
 	assert(node.parent_node_ == this);
 
-	if(is_folded() /*|| is_root_node()*/) {
+	if(is_folded() /*|| is_root_node()*/){
 		return node;
 	}
 
-	if(get_tree_view().get_size() == point()) {
+	if(get_tree_view().get_size() == point()){
 		return node;
 	}
 
@@ -186,13 +186,13 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 	std::vector<std::shared_ptr<gui2::tree_view_node>> nodes;
 	clear();
 
-	if(data.size() == 0) {
+	if(data.size() == 0){
 		return nodes;
 	}
 
 	int width_modification = 0;
 
-	for(const auto& d : data) {
+	for(const auto& d : data){
 		auto& node = children_.emplace_back(std::make_shared<tree_view_node>(id, this, get_tree_view(), d));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
@@ -204,7 +204,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 
 		nodes.push_back(node);
 
-		if(is_folded()) {
+		if(is_folded()){
 			continue;
 		}
 
@@ -226,7 +226,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 		}
 	}
 
-	if(is_folded()) {
+	if(is_folded()){
 		return nodes;
 	}
 
@@ -259,7 +259,7 @@ unsigned tree_view_node::get_indentation_level() const
 	unsigned level = 0;
 
 	const tree_view_node* node = this;
-	while(!node->is_root_node()) {
+	while(!node->is_root_node()){
 		node = &node->parent_node();
 		++level;
 	}
@@ -286,15 +286,15 @@ void tree_view_node::request_reduce_width(const unsigned /*maximum_width*/)
 
 void tree_view_node::fold(const bool recursive)
 {
-	if(!is_folded()) {
+	if(!is_folded()){
 		fold_internal();
-		if(toggle_) {
+		if(toggle_){
 			toggle_->set_value(false);
 		}
 	}
 
-	if(recursive) {
-		for(auto& child_node : children_) {
+	if(recursive){
+		for(auto& child_node : children_){
 			child_node->fold(true);
 		}
 	}
@@ -302,15 +302,15 @@ void tree_view_node::fold(const bool recursive)
 
 void tree_view_node::unfold(const bool recursive)
 {
-	if(is_folded()) {
+	if(is_folded()){
 		unfold_internal();
-		if(toggle_) {
+		if(toggle_){
 			toggle_->set_value(true);
 		}
 	}
 
-	if(recursive) {
-		for(auto& child_node : children_) {
+	if(recursive){
+		for(auto& child_node : children_){
 			child_node->unfold(true);
 		}
 	}
@@ -364,15 +364,15 @@ void tree_view_node::clear()
 	/** @todo Also try to find the optimal width. */
 	int height_reduction = 0;
 
-	if(!is_folded()) {
-		for(const auto& node : children_) {
+	if(!is_folded()){
+		for(const auto& node : children_){
 			height_reduction += node->get_current_size().y;
 		}
 	}
 
 	children_.clear();
 
-	if(height_reduction == 0) {
+	if(height_reduction == 0){
 		return;
 	}
 
@@ -385,8 +385,8 @@ private:
 	template<class W, class It>
 	static W* find_at_aux(It begin, It end, const point& coordinate, const bool must_be_active)
 	{
-		for(It it = begin; it != end; ++it) {
-			if(W* widget = (*it)->find_at(coordinate, must_be_active)) {
+		for(It it = begin; it != end; ++it){
+			if(W* widget = (*it)->find_at(coordinate, must_be_active)){
 				return widget;
 			}
 		}
@@ -400,11 +400,11 @@ public:
 			const point& coordinate,
 			const bool must_be_active)
 	{
-		if(W* widget = tree_view_node.grid_.find_at(coordinate, must_be_active)) {
+		if(W* widget = tree_view_node.grid_.find_at(coordinate, must_be_active)){
 			return widget;
 		}
 
-		if(tree_view_node.is_folded()) {
+		if(tree_view_node.is_folded()){
 			return nullptr;
 		}
 
@@ -426,18 +426,18 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 widget* tree_view_node::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
-	if(result) {
+	if(result){
 		return result;
 	}
 
 	result = grid_.find(id, must_be_active);
-	if(result) {
+	if(result){
 		return result;
 	}
 
-	for(auto& child : children_) {
+	for(auto& child : children_){
 		result = child->find(id, must_be_active);
-		if(result) {
+		if(result){
 			return result;
 		}
 	}
@@ -448,18 +448,18 @@ widget* tree_view_node::find(const std::string_view id, const bool must_be_activ
 const widget* tree_view_node::find(const std::string_view id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
-	if(result) {
+	if(result){
 		return result;
 	}
 
 	result = grid_.find(id, must_be_active);
-	if(result) {
+	if(result){
 		return result;
 	}
 
-	for(const auto& child : children_) {
+	for(const auto& child : children_){
 		result = child->find(id, must_be_active);
-		if(result) {
+		if(result){
 			return result;
 		}
 	}
@@ -479,17 +479,17 @@ bool tree_view_node::disable_click_dismiss() const
 
 point tree_view_node::get_current_size(bool assume_visible) const
 {
-	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
+	if(!assume_visible && parent_node_ && parent_node_->is_folded()){
 		return point();
 	}
 
 	point size = get_folded_size();
-	if(is_folded()) {
+	if(is_folded()){
 		return size;
 	}
 
-	for(const auto& node : children_) {
-		if(node->grid_.get_visible() == widget::visibility::invisible) {
+	for(const auto& node : children_){
+		if(node->grid_.get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
@@ -505,7 +505,7 @@ point tree_view_node::get_current_size(bool assume_visible) const
 point tree_view_node::get_folded_size() const
 {
 	point size = grid_.get_best_size();
-	if(get_indentation_level() > 1) {
+	if(get_indentation_level() > 1){
 		size.x += (get_indentation_level() - 1) * get_tree_view().indentation_step_size_;
 	}
 
@@ -515,12 +515,12 @@ point tree_view_node::get_folded_size() const
 point tree_view_node::get_unfolded_size() const
 {
 	point size = grid_.get_best_size();
-	if(get_indentation_level() > 1) {
+	if(get_indentation_level() > 1){
 		size.x += (get_indentation_level() - 1) * get_tree_view().indentation_step_size_;
 	}
 
-	for(const auto& node : children_) {
-		if(node->grid_.get_visible() == widget::visibility::invisible) {
+	for(const auto& node : children_){
+		if(node->grid_.get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
@@ -538,20 +538,20 @@ point tree_view_node::calculate_best_size(const int indentation_level, const uns
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	point best_size = grid_.get_best_size();
-	if(indentation_level > 0) {
+	if(indentation_level > 0){
 		best_size.x += indentation_level * indentation_step_size;
 	}
 
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".";
 
-	for(const auto& node : children_) {
-		if(node->grid_.get_visible() == widget::visibility::invisible) {
+	for(const auto& node : children_){
+		if(node->grid_.get_visible() == widget::visibility::invisible){
 			continue;
 		}
 
 		const point node_size = node->calculate_best_size(indentation_level + 1, indentation_step_size);
 
-		if(!is_folded()) {
+		if(!is_folded()){
 			best_size.y += node_size.y;
 		}
 
@@ -590,7 +590,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 
 	grid_.place(origin, best_size);
 
-	if(!is_root_node()) {
+	if(!is_root_node()){
 		origin.x += indentation_step_size;
 		assert(width >= indentation_step_size);
 		width -= indentation_step_size;
@@ -598,13 +598,13 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 
 	origin.y += best_size.y;
 
-	if(is_folded()) {
+	if(is_folded()){
 		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return origin.y - offset;
 	}
 
 	DBG_GUI_L << LOG_HEADER << " set children.";
-	for(auto& node : children_) {
+	for(auto& node : children_){
 		origin.y += node->place(indentation_step_size, origin, width);
 	}
 
@@ -621,12 +621,12 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";
 	grid_.set_visible_rectangle(rectangle);
 
-	if(is_folded()) {
+	if(is_folded()){
 		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return;
 	}
 
-	for(auto& node : children_) {
+	for(auto& node : children_){
 		node->set_visible_rectangle(rectangle);
 	}
 }
@@ -635,11 +635,11 @@ void tree_view_node::impl_draw_children()
 {
 	grid_.draw_children();
 
-	if(is_folded()) {
+	if(is_folded()){
 		return;
 	}
 
-	for(auto& node : children_) {
+	for(auto& node : children_){
 		node->impl_draw_children();
 	}
 }
@@ -655,7 +655,7 @@ void tree_view_node::signal_handler_toggle_left_click(const event::ui_event even
 	 * drawingboard for 1.9.
 	 */
 	const bool unfolded_new = toggle_->get_value_bool();
-	if(unfolded_ == unfolded_new) {
+	if(unfolded_ == unfolded_new){
 		return;
 	}
 
@@ -674,13 +674,13 @@ void tree_view_node::signal_handler_label_left_button_click(const event::ui_even
 	// Normally, this is only an event hook and not full handling; however, if
 	// the currently selected item was selected, we halt the event to prevent
 	// deselection (which would leave no items selected).
-	if(label_->get_value()) {
+	if(label_->get_value()){
 		halt = handled = true;
 		return;
 	}
 
 	// Select the new item if a different one was selected
-	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_) {
+	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_){
 		get_tree_view().selected_item_->label_->set_value(false);
 	}
 
@@ -693,25 +693,25 @@ void tree_view_node::init_grid(grid* g, const widget_data& data)
 {
 	assert(g);
 
-	for(unsigned row = 0; row < g->get_rows(); ++row) {
-		for(unsigned col = 0; col < g->get_cols(); ++col) {
+	for(unsigned row = 0; row < g->get_rows(); ++row){
+		for(unsigned col = 0; col < g->get_cols(); ++col){
 			widget* wgt = g->get_widget(row, col);
 			assert(wgt);
 
 			// toggle_button* btn = dynamic_cast<toggle_button*>(widget);
 
-			if(toggle_panel* panel = dynamic_cast<toggle_panel*>(wgt)) {
+			if(toggle_panel* panel = dynamic_cast<toggle_panel*>(wgt)){
 				panel->set_child_members(data);
-			} else if(grid* child_grid = dynamic_cast<grid*>(wgt)) {
+			} else if(grid* child_grid = dynamic_cast<grid*>(wgt)){
 				init_grid(child_grid, data);
-			} else if(styled_widget* control = dynamic_cast<styled_widget*>(wgt)) {
+			} else if(styled_widget* control = dynamic_cast<styled_widget*>(wgt)){
 				auto itor = data.find(control->id());
 
-				if(itor == data.end()) {
+				if(itor == data.end()){
 					itor = data.find("");
 				}
 
-				if(itor != data.end()) {
+				if(itor != data.end()){
 					control->set_members(itor->second);
 				}
 				// control->set_members(data);
@@ -736,13 +736,13 @@ tree_view_node& tree_view_node::get_child_at(int index)
 
 std::vector<int> tree_view_node::describe_path() const
 {
-	if(is_root_node()) {
+	if(is_root_node()){
 		return std::vector<int>();
 	}
 
 	std::vector<int> res = parent_node_->describe_path();
-	for(std::size_t i = 0; i < parent_node_->count_children(); ++i) {
-		if(parent_node_->children_[i].get() == this) {
+	for(std::size_t i = 0; i < parent_node_->count_children(); ++i){
+		if(parent_node_->children_[i].get() == this){
 			res.push_back(i);
 			return res;
 		}
@@ -754,13 +754,13 @@ std::vector<int> tree_view_node::describe_path() const
 
 int tree_view_node::calculate_ypos()
 {
-	if(!parent_node_) {
+	if(!parent_node_){
 		return 0;
 	}
 
 	int res = parent_node_->calculate_ypos();
-	for(const auto& node : parent_node_->children_) {
-		if(node.get() == this) {
+	for(const auto& node : parent_node_->children_){
+		if(node.get() == this){
 			break;
 		}
 
@@ -772,7 +772,7 @@ int tree_view_node::calculate_ypos()
 
 tree_view_node* tree_view_node::get_last_visible_parent_node()
 {
-	if(!parent_node_) {
+	if(!parent_node_){
 		return this;
 	}
 
@@ -785,9 +785,9 @@ tree_view_node* tree_view_node::get_node_above()
 	assert(!is_root_node());
 
 	tree_view_node* cur = nullptr;
-	for(std::size_t i = 0; i < parent_node_->count_children(); ++i) {
-		if(parent_node_->children_[i].get() == this) {
-			if(i == 0) {
+	for(std::size_t i = 0; i < parent_node_->count_children(); ++i){
+		if(parent_node_->children_[i].get() == this){
+			if(i == 0){
 				return parent_node_->is_root_node() ? nullptr : parent_node_;
 			} else {
 				cur = parent_node_->children_[i - 1].get();
@@ -796,11 +796,11 @@ tree_view_node* tree_view_node::get_node_above()
 		}
 	}
 
-	while(cur && !cur->is_folded() && cur->count_children() > 0) {
+	while(cur && !cur->is_folded() && cur->count_children() > 0){
 		cur = &cur->get_child_at(cur->count_children() - 1);
 	}
 
-	if(!cur) {
+	if(!cur){
 		throw std::domain_error(
 			"tree_view_node::get_node_above(): Cannot determine which node is this line, or which "
 			"node is the line above this one, if any.");
@@ -812,17 +812,17 @@ tree_view_node* tree_view_node::get_node_above()
 tree_view_node* tree_view_node::get_node_below()
 {
 	assert(!is_root_node());
-	if(!is_folded() && count_children() > 0) {
+	if(!is_folded() && count_children() > 0){
 		return &get_child_at(0);
 	}
 
 	tree_view_node* cur = this;
-	while(cur->parent_node_ != nullptr) {
+	while(cur->parent_node_ != nullptr){
 		tree_view_node& parent = *cur->parent_node_;
 
-		for(std::size_t i = 0; i < parent.count_children(); ++i) {
-			if(parent.children_[i].get() == cur) {
-				if(i < parent.count_children() - 1) {
+		for(std::size_t i = 0; i < parent.count_children(); ++i){
+			if(parent.children_[i].get() == cur){
+				if(i < parent.count_children() - 1){
 					return parent.children_[i + 1].get();
 				} else {
 					cur = &parent;
@@ -858,18 +858,18 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 
 void tree_view_node::select_node(bool expand_parents)
 {
-	if(!label_ || label_->get_value_bool()) {
+	if(!label_ || label_->get_value_bool()){
 		return;
 	}
 
-	if(expand_parents) {
+	if(expand_parents){
 		tree_view_node* root = &get_tree_view().get_root_node();
-		for(tree_view_node* cur = parent_node_; cur != root; cur = cur->parent_node_) {
+		for(tree_view_node* cur = parent_node_; cur != root; cur = cur->parent_node_){
 			cur->unfold();
 		}
 	}
 
-	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_) {
+	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_){
 		get_tree_view().selected_item_->label_->set_value(false);
 	}
 
@@ -887,7 +887,7 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 	grid_.layout_initialize(full_initialization);
 
 	// Clear child caches.
-	for(auto& child : children_) {
+	for(auto& child : children_){
 		child->layout_initialize(full_initialization);
 	}
 }

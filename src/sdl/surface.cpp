@@ -23,21 +23,21 @@ namespace
 {
 void add_refcount(surface& surf)
 {
-	if(surf) {
+	if(surf){
 		++surf->refcount;
 	}
 }
 
 void free_surface(surface& surf)
 {
-	if(surf) {
+	if(surf){
 		SDL_FreeSurface(surf);
 	}
 }
 
 void make_neutral(surface& surf)
 {
-	if(surf && surf->format->format != SDL_PIXELFORMAT_ARGB8888) {
+	if(surf && surf->format->format != SDL_PIXELFORMAT_ARGB8888){
 		surf = surf.clone();
 	}
 }
@@ -53,7 +53,7 @@ surface::surface(SDL_Surface* surf)
 surface::surface(int w, int h)
 	: surface_(nullptr)
 {
-	if (w < 0 || h < 0) {
+	if(w < 0 || h < 0){
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
@@ -78,7 +78,7 @@ surface::~surface()
 
 surface& surface::operator=(const surface& s)
 {
-	if(this != &s) {
+	if(this != &s){
 		free_surface(*this);
 		surface_ = s;
 		add_refcount(*this);
@@ -107,9 +107,9 @@ std::size_t surface::area() const
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf)
 {
-	if(!surf.get()) {
+	if(!surf.get()){
 		stream << "<null surface>";
-	} else if(!surf->format) {
+	} else if(!surf->format){
 		stream << "<invalid surface>";
 	} else {
 		stream << "{ " << surf->w << 'x' << surf->h << '@'

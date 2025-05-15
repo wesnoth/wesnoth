@@ -55,41 +55,41 @@ background_layer::background_layer(const config& cfg)
 	, is_base_layer_(false)
 	, image_file_()
 {
-	if(cfg.has_attribute("image")) {
+	if(cfg.has_attribute("image")){
 		image_file_ = cfg["image"].str();
 	}
 
-	if(cfg.has_attribute("scale")) {
+	if(cfg.has_attribute("scale")){
 		scale_vertically_ = cfg["scale"].to_bool(true);
 		scale_horizontally_ = cfg["scale"].to_bool(true);
 	} else {
-		if(cfg.has_attribute("scale_vertically")) {
+		if(cfg.has_attribute("scale_vertically")){
 			scale_vertically_ = cfg["scale_vertically"].to_bool(true);
 		}
 
-		if(cfg.has_attribute("scale_horizontally")) {
+		if(cfg.has_attribute("scale_horizontally")){
 			scale_horizontally_ = cfg["scale_horizontally"].to_bool(true);
 		}
 	}
 
-	if(cfg.has_attribute("tile")) {
+	if(cfg.has_attribute("tile")){
 		tile_vertically_ = cfg["tile"].to_bool(false);
 		tile_horizontally_ = cfg["tile"].to_bool(false);
 	} else {
-		if(cfg.has_attribute("tile_vertically")) {
+		if(cfg.has_attribute("tile_vertically")){
 			tile_vertically_ = cfg["tile_vertically"].to_bool(false);
 		}
 
-		if(cfg.has_attribute("tile_horizontally")) {
+		if(cfg.has_attribute("tile_horizontally")){
 			tile_horizontally_ = cfg["tile_horizontally"].to_bool(false);
 		}
 	}
 
-	if(cfg.has_attribute("keep_aspect_ratio")) {
+	if(cfg.has_attribute("keep_aspect_ratio")){
 		keep_aspect_ratio_ = cfg["keep_aspect_ratio"].to_bool(true);
 	}
 
-	if(cfg.has_attribute("base_layer")) {
+	if(cfg.has_attribute("base_layer")){
 		is_base_layer_ = cfg["base_layer"].to_bool(false);
 	}
 }
@@ -111,10 +111,10 @@ part::part(const vconfig& part_cfg)
 
 part::BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 {
-	if(s.empty() != true) {
-		if(s == "top") {
+	if(s.empty() != true){
+		if(s == "top"){
 			return part::BLOCK_TOP;
-		} else if(s == "middle") {
+		} else if(s == "middle"){
 			return part::BLOCK_MIDDLE;
 		}
 	}
@@ -124,85 +124,85 @@ part::BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 
 void part::resolve_wml(const vconfig& cfg)
 {
-	if(cfg.null()) {
+	if(cfg.null()){
 		return;
 	}
 
 	// Converts shortcut syntax to members of [background_layer]
 	background_layer bl;
 
-	if(cfg.has_attribute("background")) {
+	if(cfg.has_attribute("background")){
 		bl.set_file(cfg["background"].str());
 	}
 
-	if(cfg.has_attribute("scale_background")) {
+	if(cfg.has_attribute("scale_background")){
 		bl.set_scale_horizontally(cfg["scale_background"].to_bool(true));
 		bl.set_scale_vertically(cfg["scale_background"].to_bool(true));
 	} else {
-		if(cfg.has_attribute("scale_background_vertically")) {
+		if(cfg.has_attribute("scale_background_vertically")){
 			bl.set_scale_vertically(cfg["scale_background_vertically"].to_bool(true));
 		}
 
-		if(cfg.has_attribute("scale_background_horizontally")) {
+		if(cfg.has_attribute("scale_background_horizontally")){
 			bl.set_scale_horizontally(cfg["scale_background_horizontally"].to_bool(true));
 		}
 	}
 
-	if(cfg.has_attribute("tile_background")) {
+	if(cfg.has_attribute("tile_background")){
 		bl.set_tile_horizontally(cfg["tile_background"].to_bool(false));
 		bl.set_tile_vertically(cfg["tile_background"].to_bool(false));
 	} else {
-		if(cfg.has_attribute("tile_background_vertically")) {
+		if(cfg.has_attribute("tile_background_vertically")){
 			bl.set_tile_vertically(cfg["tile_background_vertically"].to_bool(false));
 		}
 
-		if(cfg.has_attribute("tile_background_horizontally")) {
+		if(cfg.has_attribute("tile_background_horizontally")){
 			bl.set_tile_vertically(cfg["tile_background_horizontally"].to_bool(false));
 		}
 	}
 
-	if(cfg.has_attribute("keep_aspect_ratio")) {
+	if(cfg.has_attribute("keep_aspect_ratio")){
 		bl.set_keep_aspect_ratio(cfg["keep_aspect_ratio"].to_bool(true));
 	}
 
 	background_layers_.push_back(bl);
 
-	if(cfg.has_attribute("show_title")) {
+	if(cfg.has_attribute("show_title")){
 		show_title_ = cfg["show_title"].to_bool();
 	}
 
-	if(cfg.has_attribute("story")) {
+	if(cfg.has_attribute("story")){
 		text_ = cfg["story"].str();
 	}
 
-	if(cfg.has_attribute("title")) {
+	if(cfg.has_attribute("title")){
 		text_title_ = cfg["title"].str();
-		if(!cfg.has_attribute("show_title")) {
+		if(!cfg.has_attribute("show_title")){
 			show_title_ = true;
 		}
 	}
 
-	if(cfg.has_attribute("text_layout")) {
+	if(cfg.has_attribute("text_layout")){
 		text_block_loc_ = string_tblock_loc(cfg["text_layout"]);
 	}
 
-	if(cfg.has_attribute("text_alignment")) {
+	if(cfg.has_attribute("text_alignment")){
 		text_alignment_ = cfg["text_alignment"].str();
 	}
 
-	if(cfg.has_attribute("title_alignment")) {
+	if(cfg.has_attribute("title_alignment")){
 		title_alignment_ = cfg["title_alignment"].str();
 	}
 
-	if(cfg.has_attribute("music")) {
+	if(cfg.has_attribute("music")){
 		music_ = cfg["music"].str();
 	}
 
-	if(cfg.has_attribute("sound")) {
+	if(cfg.has_attribute("sound")){
 		sound_ = cfg["sound"].str();
 	}
 
-	if(cfg.has_attribute("voice")) {
+	if(cfg.has_attribute("voice")){
 		voice_ = cfg["voice"].str();
 	}
 
@@ -215,12 +215,12 @@ bool part::resolve_wml_helper(const std::string& key, const vconfig& node)
 	bool found = false;
 
 	// [background_layer]
-	if(key == "background_layer") {
+	if(key == "background_layer"){
 		background_layers_.push_back(node.get_parsed_config());
 		found = true;
 	}
 	// [image]
-	else if(key == "image") {
+	else if(key == "image"){
 		floating_images_.push_back(node.get_parsed_config());
 		found = true;
 	}

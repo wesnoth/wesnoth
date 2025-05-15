@@ -59,7 +59,7 @@ void progress_bar::set_percentage(unsigned percentage)
 {
 	percentage = std::min<unsigned>(percentage, 100);
 
-	if(percentage_ != percentage) {
+	if(percentage_ != percentage){
 		percentage_ = percentage;
 
 		for(auto & c : get_canvases())

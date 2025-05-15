@@ -49,18 +49,18 @@ outro::outro(const game_classification& info)
 	, stage_(stage::fading_in)
 	, stage_start_()
 {
-	if(!info.end_text.empty()) {
+	if(!info.end_text.empty()){
 		text_.push_back(info.end_text);
 	} else {
 		text_.push_back(_("The End"));
 	}
 
-	if(info.end_credits) {
+	if(info.end_credits){
 		text_.push_back(markup::span_size("large", info.campaign_name));
 
-		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)) {
-			for(const auto& about : (*campaign_credits)->sections) {
-				if(about.names.empty()) {
+		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)){
+			for(const auto& about : (*campaign_credits)->sections){
+				if(about.names.empty()){
 					continue;
 				}
 
@@ -70,15 +70,15 @@ outro::outro(const game_classification& info)
 				const unsigned num_names = about.names.size();
 				const unsigned num_chunks = std::ceil(num_names / chunk_size);
 
-				for(std::size_t i = 0; i < num_chunks; ++i) {
+				for(std::size_t i = 0; i < num_chunks; ++i){
 					std::stringstream ss;
 
 					// Only include section title on first chunk
-					if(i == 0) {
+					if(i == 0){
 						ss << about.title << "\n\n";
 					}
 
-					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
+					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k){
 						ss << markup::span_size("xx-small", about.names[k].first) << "\n";
 					}
 
@@ -92,7 +92,7 @@ outro::outro(const game_classification& info)
 		}
 	}
 
-	if(display_duration_ == 0ms) {
+	if(display_duration_ == 0ms){
 		display_duration_ = 3500ms; // 3.5 seconds
 	}
 }
@@ -107,7 +107,7 @@ void outro::pre_show()
 void outro::update()
 {
 	// window doesn't immediately close, keep returning until it does
-	if(text_index_ >= text_.size()) {
+	if(text_index_ >= text_.size()){
 		return;
 	}
 
@@ -119,18 +119,18 @@ void outro::update()
 	// this here. Find a better way to do this...
 	window_canvas.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 
-	const auto goto_stage = [this, &now](stage new_stage) {
+	const auto goto_stage = [this, &now](stage new_stage){
 		stage_ = new_stage;
 		stage_start_ = now;
 	};
 
-	if(stage_start_ == std::chrono::steady_clock::time_point{}) {
+	if(stage_start_ == std::chrono::steady_clock::time_point{}){
 		stage_start_ = now;
 	}
 
-	switch(stage_) {
+	switch(stage_){
 	case stage::fading_in:
-		if(now <= stage_start_ + fade_duration) {
+		if(now <= stage_start_ + fade_duration){
 			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(get_fade_progress(now))));
 		} else {
 			goto_stage(stage::waiting);
@@ -138,7 +138,7 @@ void outro::update()
 		break;
 
 	case stage::waiting:
-		if(now <= stage_start_ + display_duration_) {
+		if(now <= stage_start_ + display_duration_){
 			return; // zzzzzzz....
 		} else {
 			goto_stage(stage::fading_out);
@@ -146,9 +146,9 @@ void outro::update()
 		break;
 
 	case stage::fading_out:
-		if(now <= stage_start_ + fade_duration) {
+		if(now <= stage_start_ + fade_duration){
 			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(1.0 - get_fade_progress(now))));
-		} else if(++text_index_ < text_.size()) {
+		} else if(++text_index_ < text_.size()){
 			window_canvas.set_variable("outro_text", wfl::variant(text_[text_index_]));
 			goto_stage(stage::fading_in);
 		} else {

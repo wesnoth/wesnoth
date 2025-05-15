@@ -37,11 +37,11 @@ namespace utils {
 	namespace detail {
 		std::string evaluate_formula_impl(const std::string&);
 
-		std::string evaluate_formula_impl(const std::string& formula) {
+		std::string evaluate_formula_impl(const std::string& formula){
 			try {
 				const wfl::formula form(formula);
 				return form.evaluate().string_cast();
-			} catch(const wfl::formula_error& e) {
+			} catch(const wfl::formula_error& e){
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< e.type << "\n\t--> \"";
 				return "";
@@ -49,7 +49,7 @@ namespace utils {
 		}
 
 		struct formula_initer {
-			formula_initer() {
+			formula_initer(){
 				evaluate_formula = &evaluate_formula_impl;
 			}
 		} init;
@@ -67,7 +67,7 @@ using expr_table_ptr       = std::shared_ptr<expr_table>;
 static std::string tokens_to_string(const tk::token* i1, const tk::token* i2)
 {
 	std::ostringstream expr;
-	while(i1 != i2) {
+	while(i1 != i2){
 		expr << std::string(i1->begin, i1->end) << " ";
 		++i1;
 	}
@@ -78,7 +78,7 @@ static std::string tokens_to_string(const tk::token* i1, const tk::token* i2)
 class null_expression : public formula_expression
 {
 public:
-	null_expression() {}
+	null_expression(){}
 
 	std::string str() const
 	{
@@ -124,7 +124,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 
 	std::set<std::string>::iterator filenames_it = filenames.begin();
 
-	while(i1 != i2) {
+	while(i1 != i2){
 		try {
 			tokens.push_back(tk::get_token(i1,i2));
 
@@ -132,30 +132,30 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 
 			if(current_type == tk::token_type::whitespace)  {
 				tokens.pop_back();
-			} else if(current_type == tk::token_type::comment) {
+			} else if(current_type == tk::token_type::comment){
 				// Since we can have multiline comments, let's see how many EOL are within it
 				int counter = 0;
 
 				std::string comment = std::string(tokens.back().begin, tokens.back().end);
-				for(const auto& str_it : comment) {
-					if(str_it == '\n') {
+				for(const auto& str_it : comment){
+					if(str_it == '\n'){
 						counter++;
 					}
 				}
 
 				files.back().second += counter;
 				tokens.pop_back();
-			} else if(current_type == tk::token_type::eol) {
+			} else if(current_type == tk::token_type::eol){
 				files.back().second++;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "fai")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "fai")){
 				fai_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")){
 				wfl_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")) {
-				if(files.size() > 1) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")){
+				if(files.size() > 1){
 					files.pop_back();
 					filenames_it = filenames.find(files.back().first);
 
@@ -163,8 +163,8 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 				} else {
 					throw formula_error("Unexpected 'faiend' found", "", "", 0);
 				}
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")) {
-				if(files.size() > 1) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")){
+				if(files.size() > 1){
 					files.pop_back();
 					filenames_it = filenames.find(files.back().first);
 
@@ -172,17 +172,17 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 				} else {
 					throw formula_error("Unexpected 'wflend' found", "", "", 0);
 				}
-			} else if(fai_keyword || wfl_keyword) {
-				if(current_type == tk::token_type::string_literal) {
+			} else if(fai_keyword || wfl_keyword){
+				if(current_type == tk::token_type::string_literal){
 					std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
 
 					auto [pos, success] = filenames.insert(str);
 
-					if(success) {
+					if(success){
 						filenames_it = pos;
 					} else {
-						if(fai_keyword) {
+						if(fai_keyword){
 							throw formula_error("Faifile already included", "fai" + str, "", 0);
 						} else {
 							throw formula_error("Wflfile already included", "wfl" + str, "", 0);
@@ -193,7 +193,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 					fai_keyword = false;
 					wfl_keyword = false;
 				} else {
-					if(fai_keyword) {
+					if(fai_keyword){
 						throw formula_error("Expected string after the 'fai'", "fai", "", 0);
 					} else {
 						throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
@@ -204,17 +204,17 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 				tokens.back().filename = &(*filenames_it);
 				tokens.back().line_number = files.back().second;
 			}
-		} catch(const tk::token_error& e) {
+		} catch(const tk::token_error& e){
 			// When we catch token error, we should write whole line in which error occurred,
 			// so we merge info from token and everything we had in the line so far
 			std::string str = "";
-			if(!tokens.empty()) {
+			if(!tokens.empty()){
 				tk::token* tok_it = &tokens[0] + tokens.size()-1;
-				while(( tok_it != &tokens[0] ) && (tok_it->line_number == tokens.back().line_number)) {
+				while((tok_it != &tokens[0]) && (tok_it->line_number == tokens.back().line_number)){
 					--tok_it;
 				}
 
-				if(tok_it != &tokens[0] && tok_it != &tokens[0] + tokens.size() -1) {
+				if(tok_it != &tokens[0] && tok_it != &tokens[0] + tokens.size() -1){
 					++tok_it;
 				}
 
@@ -225,11 +225,11 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 		}
 	}
 
-	if(files.size() > 1) {
+	if(files.size() > 1){
 		throw formula_error("Missing 'wflend', make sure each .wfl file ends with it", "", "", 0);
 	}
 
-	if(!tokens.empty()) {
+	if(!tokens.empty()){
 		expr_ = parse_expression(&tokens[0], &tokens[0] + tokens.size(), symbols_);
 	} else {
 		expr_ = std::make_shared<null_expression>();
@@ -242,7 +242,7 @@ formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table
 	, managed_symbols_(symbols ? nullptr : new function_symbol_table)
 	, symbols_(symbols ? symbols : managed_symbols_.get())
 {
-	if(i1 != i2) {
+	if(i1 != i2){
 		expr_ = parse_expression(i1, i2, symbols);
 	} else {
 		expr_ = std::make_shared<null_expression>();
@@ -254,7 +254,7 @@ formula::~formula() = default;
 
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
-	if(str.empty()) {
+	if(str.empty()){
 		return formula_ptr();
 	}
 
@@ -265,7 +265,7 @@ variant formula::execute(const formula_callable& variables, formula_debugger*fdb
 {
 	try {
 		return expr_->evaluate(variables, fdb);
-	} catch(const type_error& e) {
+	} catch(const type_error& e){
 		PLAIN_LOG << "formula type error: " << e.message;
 		return variant();
 	}
@@ -313,7 +313,7 @@ private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger* /*fdb*/) const
 	{
 		std::vector<variant> res;
-		for(const std::string& fcn_name : symbols_->get_function_names()) {
+		for(const std::string& fcn_name : symbols_->get_function_names()){
 			res.emplace_back(fcn_name);
 		}
 
@@ -335,7 +335,7 @@ private:
 	{
 		std::vector<variant> res;
 		res.reserve(items_.size());
-		for(const auto& i : items_) {
+		for(const auto& i : items_){
 			res.push_back(i->evaluate(variables, add_debug_info(fdb, 0, "[list element]")));
 		}
 
@@ -349,8 +349,8 @@ private:
 		std::stringstream s;
 		s << '[';
 		bool first_item = true;
-		for(expression_ptr a : items_) {
-			if(!first_item) {
+		for(expression_ptr a : items_){
+			if(!first_item){
 				s << ',';
 			} else {
 				first_item = false;
@@ -373,15 +373,15 @@ public:
 	{
 		std::stringstream s;
 		s << " [";
-		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2) {
-			if(i != items_.begin()) {
+		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2){
+			if(i != items_.begin()){
 				s << ", ";
 			}
 			s << (*i)->str();
 			s << " -> ";
 			s << (*(i+1))->str();
 		}
-		if(items_.empty()) {
+		if(items_.empty()){
 			s << "->";
 		}
 		s << " ]";
@@ -392,7 +392,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
 		std::map<variant,variant> res;
-		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2) {
+		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2){
 			variant key = (*i)->evaluate(variables, add_debug_info(fdb, 0, "key ->"));
 			variant value = (*(i+1))->evaluate(variables, add_debug_info(fdb, 1, "-> value"));
 			res[key] = value;
@@ -411,9 +411,9 @@ public:
 		: op_(),op_str_(op)
 		, operand_(std::move(arg))
 	{
-		if(op == "not") {
+		if(op == "not"){
 			op_ = NOT;
-		} else if(op == "-") {
+		} else if(op == "-"){
 			op_ = SUB;
 		} else {
 			throw formula_error("Illegal unary operator: '" + op + "'" , "", "", 0);
@@ -431,7 +431,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
 		const variant res = operand_->evaluate(variables, add_debug_info(fdb, 0, op_str_ + " unary"));
-		switch(op_) {
+		switch(op_){
 		case NOT:
 			return res.as_bool() ? variant(0) : variant(1);
 		case SUB:
@@ -449,7 +449,7 @@ private:
 class string_callable : public formula_callable
 {
 public:
-	explicit string_callable(const variant& string) : string_(string) {}
+	explicit string_callable(const variant& string) : string_(string){}
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
@@ -462,18 +462,18 @@ public:
 
 	variant get_value(const std::string& key) const
 	{
-		if(key == "size") {
+		if(key == "size"){
 			return variant(string_.as_string().length());
-		} else if(key == "empty") {
+		} else if(key == "empty"){
 			return variant(string_.as_string().empty());
-		} else if(key == "char" || key == "chars") {
+		} else if(key == "char" || key == "chars"){
 			std::vector<variant> chars;
-			for(char c : string_.as_string()) {
+			for(char c : string_.as_string()){
 				chars.emplace_back(std::string(1, c));
 			}
 
 			return variant(chars);
-		} else if(key == "word" || key == "words") {
+		} else if(key == "word" || key == "words"){
 			std::vector<variant> words;
 			const std::string& str = string_.as_string();
 			std::size_t next_space = 0;
@@ -485,11 +485,11 @@ public:
 			} while(next_space != std::string::npos);
 
 			return variant(words);
-		} else if(key == "item" || key == "items") {
+		} else if(key == "item" || key == "items"){
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
 			items.reserve(split.size());
-			for(const std::string& s : split) {
+			for(const std::string& s : split){
 				items.emplace_back(s);
 			}
 
@@ -506,7 +506,7 @@ private:
 class list_callable : public formula_callable
 {
 public:
-	explicit list_callable(const variant& list) : list_(list) {}
+	explicit list_callable(const variant& list) : list_(list){}
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
@@ -518,18 +518,18 @@ public:
 
 	variant get_value(const std::string& key) const
 	{
-		if(key == "size") {
+		if(key == "size"){
 			return variant(list_.num_elements());
-		} else if(key == "empty") {
+		} else if(key == "empty"){
 			return variant(list_.num_elements() == 0);
-		} else if(key == "first") {
-			if(list_.num_elements() > 0) {
+		} else if(key == "first"){
+			if(list_.num_elements() > 0){
 				return list_[0];
 			}
 
 			return variant();
-		} else if(key == "last") {
-			if(list_.num_elements() > 0) {
+		} else if(key == "last"){
+			if(list_.num_elements() > 0){
 				return list_[list_.num_elements()-1];
 			}
 
@@ -546,31 +546,31 @@ private:
 class map_callable : public formula_callable
 {
 public:
-	explicit map_callable(const variant& map) : map_(map) {}
+	explicit map_callable(const variant& map) : map_(map){}
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
 		add_input(inputs, "size", formula_access::read_write);
 		add_input(inputs, "empty", formula_access::read_write);
 
-		for(const auto& v : map_) {
+		for(const auto& v : map_){
 			// variant_iterator does not implement operator->,
 			// and to do so is notrivial since it returns temporaries for maps.
 			const variant& key_variant = v.get_member("key");
-			if(!key_variant.is_string()) {
+			if(!key_variant.is_string()){
 				continue;
 			}
 
 			std::string key = key_variant.as_string();
 			bool valid = true;
-			for(char c : key) {
-				if(!isalpha(c) && c != '_') {
+			for(char c : key){
+				if(!isalpha(c) && c != '_'){
 					valid = false;
 					break;
 				}
 			}
 
-			if(valid) {
+			if(valid){
 				add_input(inputs, key);
 			}
 		}
@@ -579,11 +579,11 @@ public:
 	variant get_value(const std::string& key) const
 	{
 		const variant key_variant(key);
-		if(map_.as_map().find(key_variant) != map_.as_map().end()) {
+		if(map_.as_map().find(key_variant) != map_.as_map().end()){
 			return map_[key_variant];
-		} else if(key == "size") {
+		} else if(key == "size"){
 			return variant(map_.num_elements());
-		} else if(key == "empty") {
+		} else if(key == "empty"){
 			return variant(map_.num_elements() == 0);
 		}
 
@@ -613,7 +613,7 @@ private:
 	{
 		variant v = local_.query_value(key);
 
-		if( v == variant() )
+		if(v == variant())
 			return global_.query_value(key);
 		else
 			return v;
@@ -638,20 +638,20 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
 		variant left = left_->evaluate(variables, add_debug_info(fdb,0,"left ."));
-		if(!left.is_callable()) {
-			if(left.is_list()) {
+		if(!left.is_callable()){
+			if(left.is_list()){
 				list_callable list_call(left);
 				dot_callable callable(variables, list_call);
 				return right_->evaluate(callable,fdb);
 			}
 
-			if(left.is_map()) {
+			if(left.is_map()){
 				map_callable map_call(left);
 				dot_callable callable(variables, map_call);
 				return right_->evaluate(callable,fdb);
 			}
 
-			if(left.is_string()) {
+			if(left.is_string()){
 				string_callable string_call(left);
 				dot_callable callable(variables, string_call);
 				return right_->evaluate(callable,fdb);
@@ -686,7 +686,7 @@ private:
 	{
 		const variant left = left_->evaluate(variables, add_debug_info(fdb,0,"base[]"));
 		const variant key = key_->evaluate(variables, add_debug_info(fdb,1,"[index]"));
-		if(left.is_list() || left.is_map()) {
+		if(left.is_list() || left.is_map()){
 			return left[key];
 		}
 
@@ -702,27 +702,27 @@ public:
 	operator_expression(const std::string& op, expression_ptr left, expression_ptr right)
 		: op_(OP(op[0])), op_str_(op), left_(std::move(left)), right_(std::move(right))
 	{
-		if(op == ">=") {
+		if(op == ">="){
 			op_ = GTE;
-		} else if(op == "<=") {
+		} else if(op == "<="){
 			op_ = LTE;
-		} else if(op == "!=") {
+		} else if(op == "!="){
 			op_ = NEQ;
-		} else if(op == "and") {
+		} else if(op == "and"){
 			op_ = AND;
-		} else if(op == "or") {
+		} else if(op == "or"){
 			op_ = OR;
-		} else if(op == ".+") {
+		} else if(op == ".+"){
 			op_ = ADDL;
-		} else if(op == ".-") {
+		} else if(op == ".-"){
 			op_ = SUBL;
-		} else if(op == ".*") {
+		} else if(op == ".*"){
 			op_ = MULL;
-		} else if(op == "./") {
+		} else if(op == "./"){
 			op_ = DIVL;
-		} else if(op == "..") {
+		} else if(op == ".."){
 			op_ = OP_CAT;
-		} else if(op == "in") {
+		} else if(op == "in"){
 			op_ = OP_IN;
 		}
 	}
@@ -740,7 +740,7 @@ private:
 		const variant left = left_->evaluate(variables, add_debug_info(fdb, 0, "left " + op_str_));
 		const variant right = right_->evaluate(variables, add_debug_info(fdb, 1, op_str_ + " right"));
 
-		switch(op_) {
+		switch(op_){
 		case AND:
 			return left.as_bool() == false ? left : right;
 		case OR:
@@ -794,7 +794,7 @@ private:
 	static int dice_roll(int num_rolls, int faces)
 	{
 		int res = 0;
-		while(faces > 0 && num_rolls-- > 0) {
+		while(faces > 0 && num_rolls-- > 0){
 			res += randomness::generator->get_random_int(1, faces);
 		}
 
@@ -830,7 +830,7 @@ private:
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
-		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
+		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i){
 			add_input(inputs, i->first);
 		}
 	}
@@ -838,9 +838,9 @@ private:
 	variant get_value(const std::string& key) const
 	{
 		expr_table::iterator i = table_->find(key);
-		if(i != table_->end()) {
+		if(i != table_->end()){
 			expr_table_evaluated::const_iterator ev = evaluated_table_.find(key);
-			if(ev != evaluated_table_.end()) {
+			if(ev != evaluated_table_.end()){
 				return ev->second;
 			}
 
@@ -865,7 +865,7 @@ public:
 		std::stringstream s;
 		s << "{where:(";
 		s << body_->str();
-		for(const expr_table::value_type &a : *clauses_) {
+		for(const expr_table::value_type &a : *clauses_){
 			s << ", [" << a.first << "] -> ["<< a.second->str()<<"]";
 		}
 		s << ")}";
@@ -887,7 +887,7 @@ private:
 class identifier_expression : public formula_expression
 {
 public:
-	explicit identifier_expression(const std::string& id) : id_(id) {}
+	explicit identifier_expression(const std::string& id) : id_(id){}
 
 	std::string str() const
 	{
@@ -906,7 +906,7 @@ private:
 class integer_expression : public formula_expression
 {
 public:
-	explicit integer_expression(int i) : i_(i) {}
+	explicit integer_expression(int i) : i_(i){}
 
 	std::string str() const
 	{
@@ -927,7 +927,7 @@ private:
 class decimal_expression : public formula_expression
 {
 public:
-	decimal_expression(int i, int f) : i_(i), f_(f) {}
+	decimal_expression(int i, int f) : i_(i), f_(f){}
 
 	std::string str() const
 	{
@@ -942,7 +942,7 @@ public:
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger* /*fdb*/) const
 	{
-		return variant(i_ * 1000 + f_, variant::DECIMAL_VARIANT );
+		return variant(i_ * 1000 + f_, variant::DECIMAL_VARIANT);
 	}
 
 	int i_, f_;
@@ -956,31 +956,31 @@ public:
 		, subs_()
 	{
 		std::string::iterator i = str.begin();
-		while((i = std::find(i, str.end(), '[')) != str.end()) {
+		while((i = std::find(i, str.end(), '[')) != str.end()){
 			int bracket_depth = 0;
 			std::string::iterator j = i + 1;
-			while(j != str.end() && (bracket_depth > 0 || *j != ']')) {
-				if(*j == '[') {
+			while(j != str.end() && (bracket_depth > 0 || *j != ']')){
+				if(*j == '['){
 					bracket_depth++;
-				} else if(*j == ']' && bracket_depth > 0) {
+				} else if(*j == ']' && bracket_depth > 0){
 					bracket_depth--;
 				}
 				++j;
 			}
 
-			if(j == str.end()) {
+			if(j == str.end()){
 				break;
 			}
 
 			const std::string formula_str(i+1, j);
 			const int pos = std::distance(str.begin(), i);
-			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')) {
+			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')){
 				// Bracket contained nothing but a quote or parenthesis.
 				// This means it was intended as a literal quote or square bracket.
 				i = str.erase(i);
-				if(*i == '(') {
+				if(*i == '('){
 					*i = '[';
-				} else if(*i == ')') {
+				} else if(*i == ')'){
 					*i = ']';
 				}
 
@@ -994,7 +994,7 @@ public:
 			sub.pos = pos;
 			try {
 				sub.calculation.reset(new formula(formula_str));
-			} catch(formula_error& e) {
+			} catch(formula_error& e){
 				e.filename += " - string substitution";
 				throw;
 			}
@@ -1012,13 +1012,13 @@ public:
 		std::string res = str_.as_string();
 		int j = res.size() - 1;
 
-		for(const auto& sub : subs_) {
-			for(; j >= sub.pos && j >= 0; j--) {
-				if(res[j] == '\'') {
+		for(const auto& sub : subs_){
+			for(; j >= sub.pos && j >= 0; j--){
+				if(res[j] == '\''){
 					res.replace(j, 1, "[']");
-				} else if(res[j] == '[') {
+				} else if(res[j] == '['){
 					res.replace(j, 1, "[(]");
-				} else if(res[j] == ']') {
+				} else if(res[j] == ']'){
 					res.replace(j, 1, "[)]");
 				}
 			}
@@ -1027,12 +1027,12 @@ public:
 			res.insert(sub.pos, str);
 		}
 
-		for(; j >= 0; j--) {
-			if(res[j] == '\'') {
+		for(; j >= 0; j--){
+			if(res[j] == '\''){
 				res.replace(j, 1, "[']");
-			} else if(res[j] == '[') {
+			} else if(res[j] == '['){
 				res.replace(j, 1, "[(]");
-			} else if(res[j] == ']') {
+			} else if(res[j] == ']'){
 				res.replace(j, 1, "[)]");
 			}
 		}
@@ -1043,12 +1043,12 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
-		if(subs_.empty()) {
+		if(subs_.empty()){
 			return str_;
 		}
 
 		std::string res = str_.as_string();
-		for(std::size_t i = 0; i < subs_.size(); ++i) {
+		for(std::size_t i = 0; i < subs_.size(); ++i){
 			const int j = subs_.size() - i - 1;
 			const substitution& sub = subs_[i];
 			add_debug_info(fdb, j, "[string subst]");
@@ -1061,7 +1061,7 @@ private:
 
 	struct substitution
 	{
-		substitution() : pos(0) , calculation() {}
+		substitution() : pos(0) , calculation(){}
 
 		int pos;
 		const_formula_ptr calculation;
@@ -1078,7 +1078,7 @@ private:
 static int operator_precedence(const tk::token& t)
 {
 	static std::map<std::string,int> precedence_map;
-	if(precedence_map.empty()) {
+	if(precedence_map.empty()){
 		int n = 0;
 		precedence_map["not"]   = ++n;
 		precedence_map["where"] = ++n;
@@ -1111,21 +1111,21 @@ static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::
 {
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
-	if(i1->type == tk::token_type::lparens) {
+	if(i1->type == tk::token_type::lparens){
 		++i1;
 	} else {
 		throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 	}
 
-	while((i1-> type != tk::token_type::rparens) && (i1 != i2)) {
-		if(i1->type == tk::token_type::identifier) {
-			if(std::string((i1+1)->begin, (i1+1)->end) == "*") {
+	while((i1-> type != tk::token_type::rparens) && (i1 != i2)){
+		if(i1->type == tk::token_type::identifier){
+			if(std::string((i1+1)->begin, (i1+1)->end) == "*"){
 				res->push_back(std::string(i1->begin, i1->end) + std::string("*"));
 				++i1;
 			} else {
 				res->push_back(std::string(i1->begin, i1->end));
 			}
-		} else if(i1->type == tk::token_type::comma) {
+		} else if(i1->type == tk::token_type::comma){
 			//do nothing
 		} else {
 			throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
@@ -1134,7 +1134,7 @@ static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::
 		++i1;
 	}
 
-	if(i1->type != tk::token_type::rparens) {
+	if(i1->type != tk::token_type::rparens){
 		throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 	}
 
@@ -1146,12 +1146,12 @@ static void parse_args(const tk::token* i1, const tk::token* i2,
 {
 	int parens = 0;
 	const tk::token* beg = i1;
-	while(i1 != i2) {
-		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare ) {
+	while(i1 != i2){
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare){
 			++parens;
-		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare ) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare){
 			--parens;
-		} else if(i1->type == tk::token_type::comma && !parens) {
+		} else if(i1->type == tk::token_type::comma && !parens){
 			res->push_back(parse_expression(beg, i1, symbols));
 			beg = i1+1;
 		}
@@ -1159,7 +1159,7 @@ static void parse_args(const tk::token* i1, const tk::token* i2,
 		++i1;
 	}
 
-	if(beg != i1) {
+	if(beg != i1){
 		res->push_back(parse_expression(beg, i1, symbols));
 	}
 }
@@ -1171,20 +1171,20 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 	bool check_pointer = false;
 	const tk::token* beg = i1;
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
-	while(i1 != i2) {
-		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare) {
+	while(i1 != i2){
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare){
 			++parens;
-		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare){
 			--parens;
-		} else if(i1->type == tk::token_type::pointer && !parens ) {
-			if(!check_pointer) {
+		} else if(i1->type == tk::token_type::pointer && !parens){
+			if(!check_pointer){
 				check_pointer = true;
 				res->push_back(parse_expression(beg, i1, symbols));
 				beg = i1+1;
 			} else {
 				throw formula_error("Too many '->' operators found", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 			}
-		} else if(i1->type == tk::token_type::comma && !parens ) {
+		} else if(i1->type == tk::token_type::comma && !parens){
 			if(check_pointer)
 				check_pointer = false;
 			else {
@@ -1197,7 +1197,7 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 		++i1;
 	}
 
-	if(beg != i1) {
+	if(beg != i1){
 		res->push_back(parse_expression(beg, i1, symbols));
 	}
 }
@@ -1210,14 +1210,14 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const 
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 	std::string var_name;
 
-	while(i1 != i2) {
-		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare) {
+	while(i1 != i2){
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare){
 			++parens;
-		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare){
 			--parens;
-		} else if(!parens) {
-			if(i1->type == tk::token_type::comma) {
-				if(var_name.empty()) {
+		} else if(!parens){
+			if(i1->type == tk::token_type::comma){
+				if(var_name.empty()){
 					throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 						tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 				}
@@ -1225,22 +1225,22 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const 
 				(*res)[var_name] = parse_expression(beg, i1, symbols);
 				beg = i1+1;
 				var_name = "";
-			} else if(i1->type == tk::token_type::operator_token) {
+			} else if(i1->type == tk::token_type::operator_token){
 				std::string op_name(i1->begin, i1->end);
 
-				if(op_name == "=") {
-					if(beg->type != tk::token_type::identifier) {
-						if(i1 == original_i1_cached) {
+				if(op_name == "="){
+					if(beg->type != tk::token_type::identifier){
+						if(i1 == original_i1_cached){
 							throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 								tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 						} else {
 							throw formula_error("There is 'where <expression>=<expression>' but 'where name=<expression>' was needed",
 								tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 						}
-					} else if(beg+1 != i1) {
+					} else if(beg+1 != i1){
 						throw formula_error("There is 'where name <expression>=<expression>' but 'where name=<expression>' was needed",
 							tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
-					} else if(!var_name.empty()) {
+					} else if(!var_name.empty()){
 						throw formula_error("There is 'where name=name=<expression>' but 'where name=<expression>' was needed",
 							tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 					}
@@ -1253,8 +1253,8 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const 
 		++i1;
 	}
 
-	if(beg != i1) {
-		if(var_name.empty()) {
+	if(beg != i1){
+		if(var_name.empty()){
 			throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 				tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 		}
@@ -1265,20 +1265,20 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const 
 
 expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols)
 {
-	if(i1 == i2) {
+	if(i1 == i2){
 		throw formula_error("Empty expression", "", *i1->filename, i1->line_number);
 	}
 
 	std::unique_ptr<function_symbol_table> temp_functions;
-	if(!symbols) {
+	if(!symbols){
 		temp_functions.reset(new function_symbol_table(function_symbol_table::get_builtins()));
 		symbols = temp_functions.get();
 	}
 
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
-	if(i1->type == tk::token_type::keyword && (i1 + 1)->type == tk::token_type::identifier) {
-		if(std::string(i1->begin, i1->end) == "def") {
+	if(i1->type == tk::token_type::keyword && (i1 + 1)->type == tk::token_type::identifier){
+		if(std::string(i1->begin, i1->end) == "def"){
 			++i1;
 			const std::string formula_name = std::string(i1->begin, i1->end);
 
@@ -1286,12 +1286,12 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 			parse_function_args(++i1, i2, &args);
 
 			const tk::token* beg = i1;
-			while((i1 != i2) && (i1->type != tk::token_type::semicolon)) {
+			while((i1 != i2) && (i1->type != tk::token_type::semicolon)){
 				++i1;
 			}
 
 			const std::string precond = "";
-			if(symbols == nullptr) {
+			if(symbols == nullptr){
 				throw formula_error("Function symbol table required but not present", "",*i1->filename, i1->line_number);
 			}
 
@@ -1302,7 +1302,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 				)
 			);
 
-			if((i1 == i2) || (i1 == (i2-1))) {
+			if((i1 == i2) || (i1 == (i2-1))){
 				return std::make_shared<function_list_expression>(symbols);
 			} else {
 				return parse_expression((i1+1), i2, symbols);
@@ -1314,15 +1314,15 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 	const tk::token* op = nullptr;
 	bool operator_group = false;
 
-	for(const tk::token* i = i1; i != i2; ++i) {
-		if(i->type == tk::token_type::lparens || i->type == tk::token_type::lsquare) {
+	for(const tk::token* i = i1; i != i2; ++i){
+		if(i->type == tk::token_type::lparens || i->type == tk::token_type::lsquare){
 			++parens;
-		} else if(i->type == tk::token_type::rparens || i->type == tk::token_type::rsquare) {
+		} else if(i->type == tk::token_type::rparens || i->type == tk::token_type::rsquare){
 			--parens;
-		} else if(parens == 0 && i->type == tk::token_type::operator_token) {
-			if((!operator_group ) && (op == nullptr || operator_precedence(*op) >= operator_precedence(*i))) {
+		} else if(parens == 0 && i->type == tk::token_type::operator_token){
+			if((!operator_group) && (op == nullptr || operator_precedence(*op) >= operator_precedence(*i))){
 				// Need special exception for exponentiation to be right-associative
-				if(*i->begin != '^' || op == nullptr || *op->begin != '^') {
+				if(*i->begin != '^' || op == nullptr || *op->begin != '^'){
 					op = i;
 				}
 			}
@@ -1332,40 +1332,40 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		}
 	}
 
-	if(op == nullptr) {
+	if(op == nullptr){
 		// There's a situation when i1+1 equals i2-1 (meanwhile iter length is 2, like `()`)
 		// Resulting in empty expression.
-		if(i1->type == tk::token_type::lparens && (i2 - 1)->type == tk::token_type::rparens) {
-			if(i1 + 1 == i2 - 1) {
+		if(i1->type == tk::token_type::lparens && (i2 - 1)->type == tk::token_type::rparens){
+			if(i1 + 1 == i2 - 1){
 				throw formula_error("No expression between parentheses", "()", *i1->filename, i1->line_number);
 			}
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if((i2 - 1)->type == tk::token_type::rsquare) { // check if there is [ ] : either a list/map definition, or a operator
+		} else if((i2 - 1)->type == tk::token_type::rsquare){ // check if there is [ ] : either a list/map definition, or a operator
 			// First, a special case for an empty map
-			if(i2 - i1 == 3 && i1->type == tk::token_type::lsquare && (i1+1)->type == tk::token_type::pointer) {
+			if(i2 - i1 == 3 && i1->type == tk::token_type::lsquare && (i1+1)->type == tk::token_type::pointer){
 				return std::make_shared<map_expression>(std::vector<expression_ptr>());
 			}
 
 			const tk::token* tok = i2-2;
 			int square_parens = 0;
 			bool is_map = false;
-			while ((tok->type != tk::token_type::lsquare || square_parens) && tok != i1) {
-				if(tok->type == tk::token_type::rsquare) {
+			while((tok->type != tk::token_type::lsquare || square_parens) && tok != i1){
+				if(tok->type == tk::token_type::rsquare){
 					square_parens++;
-				} else if(tok->type == tk::token_type::lsquare) {
+				} else if(tok->type == tk::token_type::lsquare){
 					square_parens--;
-				} else if((tok->type == tk::token_type::pointer) && !square_parens ) {
+				} else if((tok->type == tk::token_type::pointer) && !square_parens){
 					is_map = true;
 				}
 				--tok;
 			}
 
-			if(tok->type == tk::token_type::lsquare) {
-				if(tok == i1) {
+			if(tok->type == tk::token_type::lsquare){
+				if(tok == i1){
 					// Create a list or a map
 					std::vector<expression_ptr> args;
 
-					if( is_map ) {
+					if(is_map){
 						parse_set_args(i1+1, i2-1, &args, symbols);
 						return std::make_shared<map_expression>(args);
 					} else {
@@ -1380,23 +1380,23 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 							parse_expression(tok + 1, i2 - 1, symbols)
 						);
 					} catch (const formula_error& e){
-						throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
+						throw formula_error(e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number);
 					}
 				}
 			}
-		} else if(i2 - i1 == 1) {
-			if(i1->type == tk::token_type::keyword) {
-				if(std::string(i1->begin, i1->end) == "functions") {
+		} else if(i2 - i1 == 1){
+			if(i1->type == tk::token_type::keyword){
+				if(std::string(i1->begin, i1->end) == "functions"){
 					return std::make_shared<function_list_expression>(symbols);
 				}
-			} else if(i1->type == tk::token_type::identifier) {
+			} else if(i1->type == tk::token_type::identifier){
 				return std::make_shared<identifier_expression>(std::string(i1->begin, i1->end));
-			} else if(i1->type == tk::token_type::integer) {
+			} else if(i1->type == tk::token_type::integer){
 				int n = std::stoi(std::string(i1->begin, i1->end));
 				return std::make_shared<integer_expression>(n);
-			} else if(i1->type == tk::token_type::decimal) {
+			} else if(i1->type == tk::token_type::decimal){
 				tk::iterator dot = i1->begin;
-				while(*dot != '.') {
+				while(*dot != '.'){
 					++dot;
 				}
 
@@ -1404,7 +1404,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 
 				tk::iterator literal_end = i1->end;
 
-				if(literal_end - dot > 4) {
+				if(literal_end - dot > 4){
 				   literal_end = dot + 4;
 				}
 
@@ -1413,14 +1413,14 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 				int f = 0;
 
 				int multiplicator = 100;
-				while(dot != literal_end) {
+				while(dot != literal_end){
 					f += (*dot - 48) * multiplicator;
 					multiplicator /= 10;
 					++dot;
 				}
 
 				return std::make_shared<decimal_expression>(n, f);
-			} else if(i1->type == tk::token_type::string_literal) {
+			} else if(i1->type == tk::token_type::string_literal){
 				return std::make_shared<string_expression>(std::string(i1->begin + 1, i1->end - 1));
 			}
 		} else if(i1->type == tk::token_type::identifier &&
@@ -1429,21 +1429,21 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		{
 			const tk::token* function_call_begin = i1, *function_call_end = i2;	// These are used for error reporting
 			int nleft = 0, nright = 0;
-			for(const tk::token* i = i1; i != i2; ++i) {
-				if(i->type == tk::token_type::lparens) {
+			for(const tk::token* i = i1; i != i2; ++i){
+				if(i->type == tk::token_type::lparens){
 					++nleft;
-				} else if(i->type == tk::token_type::rparens) {
+				} else if(i->type == tk::token_type::rparens){
 					++nright;
 				}
 			}
 
-			if(nleft == nright) {
+			if(nleft == nright){
 				std::vector<expression_ptr> args;
 				parse_args(i1+2,i2-1,&args,symbols);
 				try{
 					return symbols->create_function(std::string(i1->begin, i1->end),args);
 				}
-				catch(const formula_error& e) {
+				catch(const formula_error& e){
 					throw formula_error(e.type, tokens_to_string(function_call_begin, function_call_end), *i1->filename, i1->line_number);
 				}
 			}
@@ -1452,22 +1452,22 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		throw formula_error("Could not parse expression", tokens_to_string(i1, i2), *i1->filename, i1->line_number);
 	}
 
-	if(op + 1 == end) {
+	if(op + 1 == end){
 		throw formula_error("Expected another token", tokens_to_string(begin, end - 1), *op->filename, op->line_number);
 	}
 
-	if(op == i1) {
+	if(op == i1){
 		try{
 			return expression_ptr(
 				new unary_operator_expression(std::string(op->begin, op->end), parse_expression(op + 1, i2 ,symbols)));
 		} catch(const formula_error& e)	{
-			throw formula_error( e.type, tokens_to_string(begin,end - 1), *op->filename, op->line_number);
+			throw formula_error(e.type, tokens_to_string(begin,end - 1), *op->filename, op->line_number);
 		}
 	}
 
 	const std::string op_name(op->begin,op->end);
 
-	if(op_name == ".") {
+	if(op_name == "."){
 		return expression_ptr(
 			new dot_expression(
 				parse_expression(i1,    op, symbols),
@@ -1476,7 +1476,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		);
 	}
 
-	if(op_name == "where") {
+	if(op_name == "where"){
 		expr_table_ptr table(new expr_table());
 		parse_where_clauses(op+1, i2, table, symbols);
 

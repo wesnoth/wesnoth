@@ -114,7 +114,7 @@ debug_layout_graph::debug_layout_graph(const window* window)
 
 void debug_layout_graph::set_level(const std::string& level)
 {
-	if(level.empty()) {
+	if(level.empty()){
 		level_ = ALL; /** @todo Should default to 0. */
 		return;
 	}
@@ -123,14 +123,14 @@ void debug_layout_graph::set_level(const std::string& level)
 
 	for(const auto & param : params)
 	{
-		if(param == "all") {
+		if(param == "all"){
 			level_ = ALL;
 			// No need to look further even though invalid items are now
 			// ignored.
 			return;
-		} else if(param == "size") {
+		} else if(param == "size"){
 			level_ |= SIZE_INFO;
-		} else if(param == "state") {
+		} else if(param == "state"){
 			level_ |= STATE_INFO;
 		} else {
 			PLAIN_LOG << "Unknown level '" << param << "' is ignored.";
@@ -140,7 +140,7 @@ void debug_layout_graph::set_level(const std::string& level)
 
 void debug_layout_graph::set_domain(const std::string& domain)
 {
-	if(domain.empty()) {
+	if(domain.empty()){
 		// return error and die
 		domain_ = ALL; /** @todo Should default to 0. */
 		return;
@@ -150,14 +150,14 @@ void debug_layout_graph::set_domain(const std::string& domain)
 
 	for(const auto & param : params)
 	{
-		if(param == "all") {
+		if(param == "all"){
 			domain_ = ALL;
 			// No need to look further even though invalid items are now
 			// ignored.
 			return;
-		} else if(param == "show") {
+		} else if(param == "show"){
 			domain_ |= SHOW;
-		} else if(param == "layout") {
+		} else if(param == "layout"){
 			domain_ |= LAYOUT;
 		} else {
 			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.";
@@ -169,12 +169,12 @@ void debug_layout_graph::generate_dot_file(const std::string& generator,
 											const unsigned domain)
 {
 	// domain == 0 must also evaluate to true.
-	if((domain_ & domain) != domain) {
+	if((domain_ & domain) != domain){
 		return;
 	}
 
 	std::string id = window_->id();
-	if(!id.empty()) {
+	if(!id.empty()){
 		id += '_';
 	}
 	const std::string filename = filename_base_ + id
@@ -211,16 +211,16 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 		widget_generate_size_info(out, widget);
 
 	out << "</table>>";
-	if(embedded) {
+	if(embedded){
 		out << ", fillcolor=\"palegoldenrod\"";
 	}
 	out << "];\n";
 
 	const grid* grid = dynamic_cast<const class grid*>(widget);
-	if(!grid) {
+	if(!grid){
 		const container_base* container = dynamic_cast<const container_base*>(widget);
 
-		if(container) {
+		if(container){
 
 			widget_generate_info(out, &container->get_grid(), id + "_G", true);
 			out << "\t" << id << " -> " << id << "_G"
@@ -230,7 +230,7 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 		const scrollbar_container* scrollbar_container
 				= dynamic_cast<const class scrollbar_container*>(widget);
 
-		if(scrollbar_container) {
+		if(scrollbar_container){
 			widget_generate_info(out,
 				scrollbar_container->content_grid_.get(), id + "_C", true);
 			out << "\t" << id << " -> " << id << "_C"
@@ -238,14 +238,14 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 		}
 
 		const listbox* listbox = dynamic_cast<const class listbox*>(widget);
-		if(listbox) {
+		if(listbox){
 			assert(listbox->generator_);
 		}
 
 		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
-		if(generator) {
-			for(std::size_t i = 0; i < generator->get_item_count(); ++i) {
+		if(generator){
+			for(std::size_t i = 0; i < generator->get_item_count(); ++i){
 
 				const std::string child_id = id + "_I_"
 											 + std::to_string(i);
@@ -257,14 +257,14 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 			}
 		}
 	}
-	if(grid) {
+	if(grid){
 		grid_generate_info(out, grid, id);
 	}
 }
 
 static std::string format_label(std::string label)
 {
-	if(label.size() > 50) {
+	if(label.size() > 50){
 		label = label.substr(0, 50) + "...";
 	}
 
@@ -289,7 +289,7 @@ void debug_layout_graph::widget_generate_basic_info(std::ostream& out,
 		<< header_background << ">" << '\n' << "address=" << widget << '\n'
 		<< "</td></tr>" << '\n' << "<tr><td" << header_background << ">" << '\n'
 		<< "parent=" << widget->parent_ << '\n' << "</td></tr>" << '\n';
-	if(control) {
+	if(control){
 		out << "<tr><td" << header_background << ">" << '\n'
 			<< "label=" << format_label(control->get_label()) << '\n' << "<tr><td"
 			<< header_background << ">" << '\n'
@@ -303,7 +303,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		const
 {
 	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
-	if(!control) {
+	if(!control){
 		return;
 	}
 
@@ -334,7 +334,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 	const scrollbar_container* scrollbar_container
 			= dynamic_cast<const class scrollbar_container*>(widget);
 
-	if(scrollbar_container) {
+	if(scrollbar_container){
 		out << "<tr><td>\n"
 			<< "vertical_scrollbar_mode_="
 			<< scrollbar_container->vertical_scrollbar_mode_ << '\n'
@@ -364,7 +364,7 @@ void debug_layout_graph::widget_generate_size_info(std::ostream& out,
 
 	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
 
-	if(control) {
+	if(control){
 		out << "<tr><td>\n"
 			<< "minimum config size=" << control->get_config_minimum_size()
 			<< '\n' << "</td></tr>\n"
@@ -380,7 +380,7 @@ void debug_layout_graph::widget_generate_size_info(std::ostream& out,
 
 	const container_base* container = dynamic_cast<const container_base*>(widget);
 
-	if(container) {
+	if(container){
 		out << "<tr><td>\n"
 			<< "border_space=" << container->border_space() << '\n'
 			<< "</td></tr>\n";
@@ -398,8 +398,8 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 
 	out << "\n\n\t// The children of " << parent_id << ".\n";
 
-	for(unsigned row = 0; row < grid->get_rows(); ++row) {
-		for(unsigned col = 0; col < grid->get_cols(); ++col) {
+	for(unsigned row = 0; row < grid->get_rows(); ++row){
+		for(unsigned col = 0; col < grid->get_cols(); ++col){
 
 			const widget* widget = grid->get_widget(row, col);
 			assert(widget);
@@ -411,8 +411,8 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 
 	out << "\n\t// The grid child data of " << parent_id << ".\n";
 
-	for(unsigned row = 0; row < grid->get_rows(); ++row) {
-		for(unsigned col = 0; col < grid->get_cols(); ++col) {
+	for(unsigned row = 0; row < grid->get_rows(); ++row){
+		for(unsigned col = 0; col < grid->get_cols(); ++col){
 
 			child_generate_info(out,
 								grid->get_child(row, col),
@@ -423,8 +423,8 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 
 	out << "\n\t// The links of " << parent_id << ".\n";
 
-	for(unsigned row = 0; row < grid->get_rows(); ++row) {
-		for(unsigned col = 0; col < grid->get_cols(); ++col) {
+	for(unsigned row = 0; row < grid->get_rows(); ++row){
+		for(unsigned col = 0; col < grid->get_cols(); ++col){
 
 			// grid -> child
 			out << "\t" << parent_id << " -> "
@@ -451,7 +451,7 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 	out << "<tr><td>\n"
 		<< "vertical flag=";
 
-	switch(flags & grid::VERTICAL_MASK) {
+	switch(flags & grid::VERTICAL_MASK){
 		case grid::VERTICAL_GROW_SEND_TO_CLIENT:
 			out << "send to client";
 			break;
@@ -474,7 +474,7 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "horizontal flag=";
 
-	switch(flags & grid::HORIZONTAL_MASK) {
+	switch(flags & grid::HORIZONTAL_MASK){
 		case grid::HORIZONTAL_GROW_SEND_TO_CLIENT:
 			out << "send to client";
 			break;
@@ -497,9 +497,9 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "border location=";
 
-	if((flags & grid::BORDER_ALL) == 0) {
+	if((flags & grid::BORDER_ALL) == 0){
 		out << "none";
-	} else if((flags & grid::BORDER_ALL) == grid::BORDER_ALL) {
+	} else if((flags & grid::BORDER_ALL) == grid::BORDER_ALL){
 		out << "all";
 	} else {
 		std::string result;
@@ -512,7 +512,7 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 		if(flags & grid::BORDER_RIGHT)
 			result += "right, ";
 
-		if(!result.empty()) {
+		if(!result.empty()){
 			result.resize(result.size() - 2);
 		}
 
@@ -529,15 +529,15 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 std::string debug_layout_graph::get_type(const widget* widget) const
 {
 	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
-	if(control) {
+	if(control){
 		return control->get_control_type();
 	} else {
 		const grid* grid = dynamic_cast<const class grid*>(widget);
 		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
-		if(grid) {
+		if(grid){
 			return "grid";
-		} else if(generator) {
+		} else if(generator){
 			return "generator";
 		} else {
 			return "unknown";

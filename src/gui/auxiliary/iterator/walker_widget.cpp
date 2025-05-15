@@ -30,13 +30,13 @@ widget::widget(gui2::widget& widget) : widget_(&widget)
 
 walker_base::state_t widget::next(const level level)
 {
-	if(at_end(level)) {
+	if(at_end(level)){
 		return fail;
 	}
 
-	switch(level) {
+	switch(level){
 		case self:
-			if(widget_) {
+			if(widget_){
 				widget_ = nullptr;
 				return invalid;
 			}
@@ -52,7 +52,7 @@ walker_base::state_t widget::next(const level level)
 
 bool widget::at_end(const level level) const
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_ == nullptr;
 		case internal:
@@ -66,7 +66,7 @@ bool widget::at_end(const level level) const
 
 gui2::widget* widget::get(const level level)
 {
-	switch(level) {
+	switch(level){
 		case self:
 			return widget_;
 		case internal:

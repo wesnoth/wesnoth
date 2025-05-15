@@ -34,13 +34,13 @@ void network_transmission::pump_monitor::process()
 	if(!window_)
 		return;
 	connection_->poll();
-	if(connection_->finished()) {
+	if(connection_->finished()){
 		window_->set_retval(retval::OK);
 	} else {
 		size_t completed, total;
 			completed = connection_->current();
 			total = connection_->total();
-		if(total) {
+		if(total){
 			window_.ptr()->find_widget<progress_bar>("progress")
 					.set_percentage((completed * 100.) / total);
 
@@ -70,7 +70,7 @@ network_transmission::network_transmission(
 void network_transmission::pre_show()
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
-	if(!subtitle_.empty()) {
+	if(!subtitle_.empty()){
 		label& subtitle_label
 				= find_widget<label>("subtitle");
 
@@ -88,7 +88,7 @@ void network_transmission::post_show()
 {
 	pump_monitor_.window_ = utils::nullopt;
 
-	if(get_retval() == retval::CANCEL) {
+	if(get_retval() == retval::CANCEL){
 		connection_->cancel();
 	}
 }

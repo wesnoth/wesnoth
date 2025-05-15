@@ -56,9 +56,9 @@ button::button(const std::string& label, button::TYPE type,
 	  checkbox_horizontal_padding_(font_size_ / 2),
 	  vertical_padding_(font_size_ / 2)
 {
-	if (button_image_name.empty()) {
+	if(button_image_name.empty()){
 
-		switch (type_) {
+		switch (type_){
 		case TYPE_PRESS:
 			button_image_name_ = "buttons/button_normal/button_H22";
 			break;
@@ -82,11 +82,11 @@ button::button(const std::string& label, button::TYPE type,
 }
 
 // This function is a mess and i can only hope it someday dies a horrible death
-void button::load_images() {
+void button::load_images(){
 
 	std::string size_postfix;
 
-	switch (location().h) {
+	switch (location().h){
 		case 25:
 			size_postfix = "_25";
 			break;
@@ -106,76 +106,76 @@ void button::load_images() {
 		button_image_name_ + "-pressed.png" + button_image_path_suffix_);
 	activeImage_ = image::get_texture(
 		button_image_name_ + "-active.png" + button_image_path_suffix_);
-	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png")) {
+	if(filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png")){
 		disabledImage_ = image::get_texture(
 			button_image_name_ + "-disabled.png" + button_image_path_suffix_);
 	} else {
 		disabledImage_.reset();
 	}
 
-	if (!button_overlay_image_name_.empty()) {
+	if(!button_overlay_image_name_.empty()){
 
-		if (button_overlay_image_name_.length() > size_postfix.length() &&
-				boost::algorithm::ends_with(button_overlay_image_name_, size_postfix)) {
+		if(button_overlay_image_name_.length() > size_postfix.length() &&
+				boost::algorithm::ends_with(button_overlay_image_name_, size_postfix)){
 			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
 		}
 
 		overlayImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
 		overlayPressedImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
+		if(filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
 			overlayActiveImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
+		if(filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
 			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
-		if (!overlayDisabledImage_)
+		if(!overlayDisabledImage_)
 			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
+		if(filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
 			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_);
-		if (!overlayPressedDisabledImage_)
+		if(!overlayPressedDisabledImage_)
 			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
 		overlayImage_.reset();
 	}
 
-	if (!disabledImage_) {
+	if(!disabledImage_){
 		disabledImage_ = image::get_texture(
 			button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
-	if (!pressedImage_) {
+	if(!pressedImage_){
 		pressedImage_ = image_;
 	}
 
-	if (!activeImage_) {
+	if(!activeImage_){
 		activeImage_ = image_;
 	}
 
-	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
+	if(type_ == TYPE_CHECK || type_ == TYPE_RADIO){
 		touchedImage_ = image::get_texture(
 			button_image_name_ + "-touched.png"+ button_image_path_suffix_);
-		if (!touchedImage_) {
+		if(!touchedImage_){
 			touchedImage_ = pressedImage_;
 		}
 
 		pressedActiveImage_ = image::get_texture(
 			button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_);
-		if (!pressedActiveImage_) {
+		if(!pressedActiveImage_){
 			pressedActiveImage_ = pressedImage_;
 		}
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png")) {
+		if(filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png")){
 			pressedDisabledImage_ = image::get_texture(
 				button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
 		}
-		if (!pressedDisabledImage_) {
+		if(!pressedDisabledImage_){
 			pressedDisabledImage_ = image::get_texture(
 				button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
 		}
 	}
 
-	if (!image_) {
+	if(!image_){
 		std::string err_msg = "error initializing button images! file name: ";
 		err_msg += button_image_name_;
 		err_msg += ".png";
@@ -186,11 +186,11 @@ void button::load_images() {
 	base_height_ = image_.h();
 	base_width_ = image_.w();
 
-	if (type_ != TYPE_IMAGE) {
+	if(type_ != TYPE_IMAGE){
 		set_label(label_text_);
 	}
 
-	if (type_ == TYPE_IMAGE){
+	if(type_ == TYPE_IMAGE){
 		calculate_size();
 	}
 }
@@ -201,7 +201,7 @@ button::~button()
 
 void button::calculate_size()
 {
-	if (type_ == TYPE_IMAGE){
+	if(type_ == TYPE_IMAGE){
 		SDL_Rect loc_image = location();
 		loc_image.h = image_.h();
 		loc_image.w = image_.w();
@@ -209,26 +209,26 @@ void button::calculate_size()
 		return;
 	}
 
-	if (type_ != TYPE_IMAGE){
+	if(type_ != TYPE_IMAGE){
 		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::TITLE_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
 	// The proper fix should possibly be in the draw_contents() function.
 #if 0
-	if (!change_size)
+	if(!change_size)
 		return;
 #endif
 
 	set_height(std::max(textRect_.h+vertical_padding_,base_height_));
-	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
-		if(spacing_ == MINIMUM_SPACE) {
+	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO){
+		if(spacing_ == MINIMUM_SPACE){
 			set_width(textRect_.w + horizontal_padding_);
 		} else {
 			set_width(std::max(textRect_.w+horizontal_padding_,base_width_));
 		}
 	} else {
-		if(label_text_.empty()) {
+		if(label_text_.empty()){
 			set_width(base_width_);
 		} else {
 			set_width(checkbox_horizontal_padding_ + textRect_.w + base_width_);
@@ -238,17 +238,17 @@ void button::calculate_size()
 
 void button::set_check(bool check)
 {
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
+	if(type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
 		return;
 	STATE new_state;
 
-	if (check) {
+	if(check){
 		new_state = (state_ == ACTIVE || state_ == PRESSED_ACTIVE)? PRESSED_ACTIVE : PRESSED;
 	} else {
 		new_state = (state_ == ACTIVE || state_ == PRESSED_ACTIVE)? ACTIVE : NORMAL;
 	}
 
-	if (state_ != new_state) {
+	if(state_ != new_state){
 		state_ = new_state;
 		queue_redraw();
 	}
@@ -256,10 +256,10 @@ void button::set_check(bool check)
 
 void button::set_active(bool active)
 {
-	if ((state_ == NORMAL) && active) {
+	if((state_ == NORMAL) && active){
 		state_ = ACTIVE;
 		queue_redraw();
-	} else if ((state_ == ACTIVE) && !active) {
+	} else if((state_ == ACTIVE) && !active){
 		state_ = NORMAL;
 		queue_redraw();
 	}
@@ -276,7 +276,7 @@ void button::enable(bool new_val)
 	{
 		pressed_ = false;
 		// check buttons should keep their state
-		if(type_ != TYPE_CHECK) {
+		if(type_ != TYPE_CHECK){
 			state_ = NORMAL;
 		}
 		widget::enable(new_val);
@@ -289,13 +289,13 @@ void button::draw_contents()
 	texture image = image_;
 
 	int offset = 0;
-	switch(state_) {
+	switch(state_){
 	case ACTIVE:
 		image = activeImage_;
 		break;
 	case PRESSED:
 		image = pressedImage_;
-		if (type_ == TYPE_PRESS)
+		if(type_ == TYPE_PRESS)
 			offset = 1;
 		break;
 	case PRESSED_ACTIVE:
@@ -314,7 +314,7 @@ void button::draw_contents()
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE) {
+	if(type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE){
 		textx = loc.x + image.w() / 2 - textRect_.w / 2 + offset;
 	} else {
 		clipArea.w += image.w() + checkbox_horizontal_padding_;
@@ -323,8 +323,8 @@ void button::draw_contents()
 
 	color_t button_color = font::TITLE_COLOR;
 
-	if (!enabled()) {
-		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)
+	if(!enabled()){
+		if(state_ == PRESSED || state_ == PRESSED_ACTIVE)
 			image = pressedDisabledImage_;
 		else image = disabledImage_;
 
@@ -332,7 +332,7 @@ void button::draw_contents()
 	}
 
 	SDL_Rect dest = loc;
-	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO) {
+	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO){
 		// Scale other button types to match the base image?
 		dest.w = image_.w();
 		dest.h = image_.h();
@@ -340,13 +340,13 @@ void button::draw_contents()
 
 	draw::blit(image, dest);
 
-	if (overlayImage_) {
+	if(overlayImage_){
 		texture overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
 
-		if (overlayPressedImage_) {
-			switch (state_) {
+		if(overlayPressedImage_){
+			switch (state_){
 			case ACTIVE:
-				if (overlayActiveImage_)
+				if(overlayActiveImage_)
 					overlay = overlayActiveImage_;
 				break;
 			case PRESSED:
@@ -365,7 +365,7 @@ void button::draw_contents()
 		draw::blit(overlay, dest);
 	}
 
-	if (type_ != TYPE_IMAGE){
+	if(type_ != TYPE_IMAGE){
 		clipArea.x += offset;
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
@@ -379,11 +379,11 @@ bool button::hit(int x, int y) const
 	return location().contains(x, y);
 }
 
-static bool is_valid_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
+static bool is_valid_image(const std::string& str){ return !str.empty() && str[0] != IMAGE_PREFIX; }
 
 void button::set_image(const std::string& image_file)
 {
-	if(!is_valid_image(image_file)) {
+	if(!is_valid_image(image_file)){
 		return;
 	}
 
@@ -395,7 +395,7 @@ void button::set_image(const std::string& image_file)
 void button::set_overlay(const std::string& image_file)
 {
 	// We allow empty paths for overlays
-	if(image_file[0] == IMAGE_PREFIX) {
+	if(image_file[0] == IMAGE_PREFIX){
 		return;
 	}
 
@@ -409,10 +409,10 @@ void button::set_label(const std::string& val)
 	label_text_ = val;
 
 	//if we have a list of items, use the first one that isn't an image
-	if (std::find(label_text_.begin(), label_text_.end(), COLUMN_SEPARATOR) != label_text_.end()) {
+	if(std::find(label_text_.begin(), label_text_.end(), COLUMN_SEPARATOR) != label_text_.end()){
 		const std::vector<std::string>& items = utils::split(label_text_, COLUMN_SEPARATOR);
 		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),is_valid_image);
-		if(i != items.end()) {
+		if(i != items.end()){
 			label_text_ = *i;
 		}
 	}
@@ -423,18 +423,18 @@ void button::set_label(const std::string& val)
 
 void button::mouse_motion(const SDL_MouseMotionEvent& event)
 {
-	if (hit(event.x, event.y)) {
+	if(hit(event.x, event.y)){
 		// the cursor is over the widget
-		if (state_ == NORMAL)
+		if(state_ == NORMAL)
 			state_ = ACTIVE;
-		else if (state_ == PRESSED && (type_ == TYPE_CHECK || type_ == TYPE_RADIO))
+		else if(state_ == PRESSED && (type_ == TYPE_CHECK || type_ == TYPE_RADIO))
 			state_ = PRESSED_ACTIVE;
 	} else {
 		// the cursor is not over the widget
 
-		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
+		if(type_ == TYPE_CHECK || type_ == TYPE_RADIO){
 
-			switch (state_) {
+			switch (state_){
 				case TOUCHED_NORMAL:
 					state_ = NORMAL;
 					break;
@@ -450,21 +450,21 @@ void button::mouse_motion(const SDL_MouseMotionEvent& event)
 				default:
 					break;
 			}
-		} else if ((type_ != TYPE_IMAGE) || state_ != PRESSED)
+		} else if((type_ != TYPE_IMAGE) || state_ != PRESSED)
 				state_ = NORMAL;
 	}
 }
 
 void button::mouse_down(const SDL_MouseButtonEvent& event)
 {
-	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) {
+	if(hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT){
 
-		switch (type_) {
+		switch (type_){
 			case TYPE_RADIO:
 			case TYPE_CHECK:
-				if (state_ == PRESSED_ACTIVE)
+				if(state_ == PRESSED_ACTIVE)
 					state_ = TOUCHED_PRESSED;
-				else if (state_ == ACTIVE)
+				else if(state_ == ACTIVE)
 					state_ = TOUCHED_NORMAL;
 				break;
 			case TYPE_TURBO:
@@ -485,14 +485,14 @@ void button::release(){
 
 void button::mouse_up(const SDL_MouseButtonEvent& event)
 {
-	if (!(hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT))
+	if(!(hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT))
 		return;
 
 	// the user has stopped pressing the mouse left button while on the widget
-	switch (type_) {
+	switch (type_){
 	case TYPE_CHECK:
 
-		switch (state_) {
+		switch (state_){
 			case TOUCHED_NORMAL:
 				state_ = PRESSED_ACTIVE;
 				pressed_ = true;
@@ -504,21 +504,21 @@ void button::mouse_up(const SDL_MouseButtonEvent& event)
 			default:
 				break;
 		}
-		if (pressed_) sound::play_UI_sound(game_config::sounds::checkbox_release);
+		if(pressed_) sound::play_UI_sound(game_config::sounds::checkbox_release);
 		break;
 	case TYPE_RADIO:
-		if (state_ == TOUCHED_NORMAL || state_ == TOUCHED_PRESSED) {
+		if(state_ == TOUCHED_NORMAL || state_ == TOUCHED_PRESSED){
 			state_ = PRESSED_ACTIVE;
 			pressed_ = true;
 		//	exit(0);
 			sound::play_UI_sound(game_config::sounds::checkbox_release);
 		}
-		//} else if (state_ == TOUCHED_PRESSED) {
+		//} else if(state_ == TOUCHED_PRESSED){
 		//	state_ = PRESSED_ACTIVE;
 		//}
 		break;
 	case TYPE_PRESS:
-		if (state_ == PRESSED) {
+		if(state_ == PRESSED){
 			state_ = ACTIVE;
 			pressed_ = true;
 			sound::play_UI_sound(game_config::sounds::button_press);
@@ -538,14 +538,14 @@ void button::handle_event(const SDL_Event& event)
 {
 	gui::widget::handle_event(event);
 
-	if (hidden() || !enabled())
+	if(hidden() || !enabled())
 		return;
 
 	STATE start_state = state_;
 
-	if (!mouse_locked())
+	if(!mouse_locked())
 	{
-		switch(event.type) {
+		switch(event.type){
 			case SDL_MOUSEBUTTONDOWN:
 				mouse_down(event.button);
 				break;
@@ -560,14 +560,14 @@ void button::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if (start_state != state_) {
+	if(start_state != state_){
 		queue_redraw();
 	}
 }
 
 bool button::pressed()
 {
-	if (type_ != TYPE_TURBO) {
+	if(type_ != TYPE_TURBO){
 		const bool res = pressed_;
 		pressed_ = false;
 		return res;

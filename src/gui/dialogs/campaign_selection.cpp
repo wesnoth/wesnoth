@@ -59,14 +59,14 @@ campaign_selection::campaign_selection(ng::create_engine& eng)
 void campaign_selection::campaign_selected()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
-	if(tree.empty()) {
+	if(tree.empty()){
 		return;
 	}
 
 	assert(tree.selected_item());
 
 	const std::string& campaign_id = tree.selected_item()->id();
-	if(campaign_id.empty()) {
+	if(campaign_id.empty()){
 		return;
 	}
 
@@ -77,7 +77,7 @@ void campaign_selection::campaign_selected()
 	ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
 
 	const int choice = std::distance(page_ids_.begin(), iter);
-	if(iter == page_ids_.end()) {
+	if(iter == page_ids_.end()){
 		return;
 	}
 
@@ -99,26 +99,26 @@ void campaign_selection::campaign_selected()
 
 	diff_menu.set_active(difficulty_count > 1);
 
-	if(diff_config_range.empty()) {
+	if(diff_config_range.empty()){
 		return;
 	}
 
 	std::vector<config> entry_list;
 	std::size_t n = 0, selection = 0;
 
-	for(const auto& cfg : diff_config_range) {
+	for(const auto& cfg : diff_config_range){
 		config entry;
 
 		// FIXME: description may have markup that will display weird on the menu_button proper
 		entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 		entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-		if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
+		if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])){
 			std::string laurel;
 
-			if(n + 1 >= difficulty_count) {
+			if(n + 1 >= difficulty_count){
 				laurel = game_config::images::victory_laurel_hardest;
-			} else if(n == 0) {
+			} else if(n == 0){
 				laurel = game_config::images::victory_laurel_easy;
 			} else {
 				laurel = game_config::images::victory_laurel;
@@ -127,9 +127,9 @@ void campaign_selection::campaign_selected()
 			entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
 		}
 
-		if(!cfg["description"].empty()) {
+		if(!cfg["description"].empty()){
 			std::string desc;
-			if(cfg["auto_markup"].to_bool(true) == false) {
+			if(cfg["auto_markup"].to_bool(true) == false){
 				desc = cfg["description"].str();
 			} else {
 				desc = markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
@@ -145,7 +145,7 @@ void campaign_selection::campaign_selected()
 		entry_list.emplace_back(std::move(entry));
 		difficulties_.emplace_back(cfg["define"].str());
 
-		if(cfg["default"].to_bool(false)) {
+		if(cfg["default"].to_bool(false)){
 			selection = n;
 		}
 
@@ -168,25 +168,25 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	auto levels = engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
-	switch(order) {
+	switch(order){
 	case RANK: // Already sorted by rank
 		// This'll actually never happen, but who knows if that'll ever change...
-		if(!ascending) {
+		if(!ascending){
 			std::reverse(levels.begin(), levels.end());
 		}
 
 		break;
 
 	case DATE:
-		std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b) {
+		std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b){
 			auto cpn_a = std::dynamic_pointer_cast<ng::campaign>(a);
 			auto cpn_b = std::dynamic_pointer_cast<ng::campaign>(b);
 
-			if(cpn_b == nullptr) {
+			if(cpn_b == nullptr){
 				return cpn_a != nullptr;
 			}
 
-			if(cpn_a == nullptr) {
+			if(cpn_a == nullptr){
 				return false;
 			}
 
@@ -198,7 +198,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		break;
 
 	case NAME:
-		std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b) {
+		std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b){
 			const int cmp = translation::icompare(a->name(), b->name());
 			return ascending ? cmp < 0 : cmp > 0;
 		});
@@ -210,7 +210,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	// Remember which campaign was selected...
 	std::string was_selected;
-	if(!tree.empty()) {
+	if(!tree.empty()){
 		was_selected = tree.selected_item()->id();
 		tree.clear();
 	}
@@ -218,10 +218,10 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	boost::dynamic_bitset<> show_items;
 	show_items.resize(levels.size(), true);
 
-	if(!last_search_words_.empty()) {
-		for(unsigned i = 0; i < levels.size(); ++i) {
+	if(!last_search_words_.empty()){
+		for(unsigned i = 0; i < levels.size(); ++i){
 			bool found = false;
-			for(const auto& word : last_search_words_) {
+			for(const auto& word : last_search_words_){
 				found = translation::ci_search(levels[i]->name(), word) ||
 						translation::ci_search(levels[i]->data()["name"].t_str().base_str(), word) ||
 						translation::ci_search(levels[i]->description(), word) ||
@@ -229,7 +229,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 						translation::ci_search(levels[i]->data()["abbrev"], word) ||
 						translation::ci_search(levels[i]->data()["abbrev"].t_str().base_str(), word);
 
-				if(!found) {
+				if(!found){
 					break;
 				}
 			}
@@ -242,10 +242,10 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>("filter_completion").get_toggle_states();
 
 	bool exists_in_filtered_result = false;
-	for(unsigned i = 0; i < levels.size(); ++i) {
+	for(unsigned i = 0; i < levels.size(); ++i){
 		bool completed = prefs::get().is_campaign_completed(levels[i]->data()["id"]);
 		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
-		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
+		auto did_complete_at = [](const config& c){ return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
 		const bool only_first_completed = difficulties.size() > 1 &&
@@ -254,21 +254,21 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.back());
 		const bool completed_mid = completed && !completed_hardest && !completed_easy;
 
-		if( show_items[i] && (
-					( (!completed) && filter_comp_options[0] )       // Selects all campaigns not finished by player
-				 || ( completed && filter_comp_options[4] )          // Selects all campaigns finished by player
-				 || ( completed_hardest && filter_comp_options[3] )  // Selects campaigns completed in hardest difficulty
-				 || ( completed_easy && filter_comp_options[1] )     // Selects campaigns completed in easiest difficulty
-				 || ( completed_mid && filter_comp_options[2])       // Selects campaigns completed in any other difficulty
-				 )) {
+		if(show_items[i] && (
+					((!completed) && filter_comp_options[0])       // Selects all campaigns not finished by player
+				 || (completed && filter_comp_options[4])          // Selects all campaigns finished by player
+				 || (completed_hardest && filter_comp_options[3])  // Selects campaigns completed in hardest difficulty
+				 || (completed_easy && filter_comp_options[1])     // Selects campaigns completed in easiest difficulty
+				 || (completed_mid && filter_comp_options[2])       // Selects campaigns completed in any other difficulty
+				)){
 			add_campaign_to_tree(levels[i]->data());
-			if (!exists_in_filtered_result) {
+			if(!exists_in_filtered_result){
 				exists_in_filtered_result = levels[i]->id() == was_selected;
 			}
 		}
 	}
 
-	if(!was_selected.empty() && exists_in_filtered_result) {
+	if(!was_selected.empty() && exists_in_filtered_result){
 		find_widget<tree_view_node>(was_selected).select_node();
 	} else {
 		campaign_selected();
@@ -278,18 +278,18 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 {
 	static bool force = false;
-	if(force) {
+	if(force){
 		return;
 	}
 
-	if(current_sorting_ == order) {
-		if(currently_sorted_asc_) {
+	if(current_sorting_ == order){
+		if(currently_sorted_asc_){
 			currently_sorted_asc_ = false;
 		} else {
 			currently_sorted_asc_ = true;
 			current_sorting_ = RANK;
 		}
-	} else if(current_sorting_ == RANK) {
+	} else if(current_sorting_ == RANK){
 		currently_sorted_asc_ = true;
 		current_sorting_ = order;
 	} else {
@@ -298,9 +298,9 @@ void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 
 		force = true;
 
-		if(order == NAME) {
+		if(order == NAME){
 			find_widget<toggle_button>("sort_time").set_value(0);
-		} else if(order == DATE) {
+		} else if(order == DATE){
 			find_widget<toggle_button>("sort_name").set_value(0);
 		}
 
@@ -314,7 +314,7 @@ void campaign_selection::filter_text_changed(const std::string& text)
 {
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_search_words_) {
+	if(words == last_search_words_){
 		return;
 	}
 
@@ -325,7 +325,7 @@ void campaign_selection::filter_text_changed(const std::string& text)
 void campaign_selection::pre_show()
 {
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
-	filter->on_modified([this](const auto& box) { filter_text_changed(box.text()); });
+	filter->on_modified([this](const auto& box){ filter_text_changed(box.text()); });
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
@@ -355,12 +355,12 @@ void campaign_selection::pre_show()
 	multimenu_button& filter_comp = find_widget<multimenu_button>("filter_completion");
 	connect_signal_notify_modified(filter_comp,
 		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
-	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
+	for(unsigned j = 0; j < filter_comp.num_options(); j++){
 		filter_comp.select_option(j);
 	}
 
 	// Add campaigns to the list
-	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
+	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)){
 		const config& campaign = level->data();
 
 		/*** Add tree item ***/
@@ -373,7 +373,7 @@ void campaign_selection::pre_show()
 		item["label"] = campaign["description"];
 		item["use_markup"] = "true";
 
-		if(!campaign["description_alignment"].empty()) {
+		if(!campaign["description_alignment"].empty()){
 			item["text_alignment"] = campaign["description_alignment"];
 		}
 
@@ -402,7 +402,7 @@ void campaign_selection::pre_show()
 
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
-	if(dirs.size() <= 15) {
+	if(dirs.size() <= 15){
 		config missing;
 		missing["icon"] = "units/unknown-unit.png";
 		missing["name"] = _("Missing Campaigns");
@@ -420,11 +420,11 @@ void campaign_selection::pre_show()
 	//
 	multimenu_button& mods_menu = find_widget<multimenu_button>("mods_menu");
 
-	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
+	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()){
 		std::vector<config> mod_menu_values;
 		std::vector<std::string> enabled = engine_.active_mods();
 
-		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
+		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)){
 			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
 			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
@@ -453,10 +453,10 @@ void campaign_selection::pre_show()
 	campaign_selected();
 
 	plugins_context_.reset(new plugins_context("Campaign Selection"));
-	plugins_context_->set_callback("create", [this](const config&) { set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit", [this](const config&) { set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("create", [this](const config&){ set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit", [this](const config&){ set_retval(retval::CANCEL); }, false);
 
-	plugins_context_->set_accessor("find_level", [this](const config& cfg) {
+	plugins_context_->set_accessor("find_level", [this](const config& cfg){
 		const std::string id = cfg["id"].str();
 		auto result = engine_.find_level_by_id(id);
 		return config {
@@ -465,11 +465,11 @@ void campaign_selection::pre_show()
 		};
 	});
 
-	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
+	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg){
 		return engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
 	});
 
-	plugins_context_->set_callback("select_level", [this](const config& cfg) {
+	plugins_context_->set_callback("select_level", [this](const config& cfg){
 		choice_ = cfg["index"].to_int();
 		engine_.set_current_level(choice_);
 	}, true);
@@ -488,10 +488,10 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 	data.emplace("name", item);
 
 	// We completed the campaign! Calculate the appropriate victory laurel.
-	if(campaign["completed"].to_bool()) {
+	if(campaign["completed"].to_bool()){
 		config::const_child_itors difficulties = campaign.child_range("difficulty");
 
-		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
+		auto did_complete_at = [](const config& c){ return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
 		const bool only_first_completed = difficulties.size() > 1 &&
@@ -508,9 +508,9 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 		 *
 		 * - Use the silver laurel otherwise.
 		 */
-		if(!difficulties.empty() && did_complete_at(difficulties.back())) {
+		if(!difficulties.empty() && did_complete_at(difficulties.back())){
 			item["label"] = game_config::images::victory_laurel_hardest;
-		} else if(only_first_completed && did_complete_at(difficulties.front())) {
+		} else if(only_first_completed && did_complete_at(difficulties.front())){
 			item["label"] = game_config::images::victory_laurel_easy;
 		} else {
 			item["label"] = game_config::images::victory_laurel;
@@ -531,18 +531,18 @@ void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
-	if(tree.empty()) {
+	if(tree.empty()){
 		return;
 	}
 
 	assert(tree.selected_item());
 	const std::string& campaign_id = tree.selected_item()->id();
-	if(!campaign_id.empty()) {
-		if (campaign_id == addons_) {
+	if(!campaign_id.empty()){
+		if(campaign_id == addons_){
 			set_retval(OPEN_ADDON_MANAGER);
 		} else {
 			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
-			if(iter != page_ids_.end()) {
+			if(iter != page_ids_.end()){
 				choice_ = std::distance(page_ids_.begin(), iter);
 			}
 			set_retval(retval::OK);
@@ -563,8 +563,8 @@ void campaign_selection::mod_toggled()
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;
 
-	for(unsigned i = 0; i < mod_states_.size(); i++) {
-		if(mod_states_[i]) {
+	for(unsigned i = 0; i < mod_states_.size(); i++){
+		if(mod_states_[i]){
 			engine_.toggle_mod(mod_ids_[i]);
 		}
 	}

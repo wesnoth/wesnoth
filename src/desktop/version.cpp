@@ -77,7 +77,7 @@ namespace
 bool on_wine()
 {
 	HMODULE ntdll = GetModuleHandle(L"ntdll.dll");
-	if(!ntdll) {
+	if(!ntdll){
 		return false;
 	}
 
@@ -97,7 +97,7 @@ std::string windows_release_id()
 	DWORD size = sizeof(buf);
 
 	auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "DisplayVersion", RRF_RT_REG_SZ, nullptr, buf, &size);
-	if(res != ERROR_SUCCESS) {
+	if(res != ERROR_SUCCESS){
 		res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
 	}
 
@@ -110,7 +110,7 @@ std::string windows_runtime_arch()
 	SecureZeroMemory(&si, sizeof(SYSTEM_INFO));
 	GetNativeSystemInfo(&si);
 
-	switch(si.wProcessorArchitecture) {
+	switch(si.wProcessorArchitecture){
 		case PROCESSOR_ARCHITECTURE_INTEL:
 			return "x86";
 		case PROCESSOR_ARCHITECTURE_AMD64:
@@ -134,7 +134,7 @@ std::string windows_runtime_arch()
  */
 struct posix_pipe_release_policy
 {
-	void operator()(std::FILE* f) const { if(f != nullptr) { pclose(f); } }
+	void operator()(std::FILE* f) const { if(f != nullptr){ pclose(f); } }
 };
 
 /**
@@ -152,7 +152,7 @@ typedef std::unique_ptr<std::FILE, posix_pipe_release_policy> scoped_posix_pipe;
  */
 std::string read_pipe_line(scoped_posix_pipe& p)
 {
-	if(!p.get()) {
+	if(!p.get()){
 		return "";
 	}
 
@@ -162,7 +162,7 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 	ver.reserve(64);
 
 	// We only want the first line.
-	while((c = std::fgetc(p.get())) && c != EOF && c != '\n' && c != '\r') {
+	while((c = std::fgetc(p.get())) && c != EOF && c != '\n' && c != '\r'){
 		ver.push_back(static_cast<char>(c));
 	}
 
@@ -172,7 +172,7 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 {
 	auto in = filesystem::istream_file(path);
-	if(!in->good()) {
+	if(!in->good()){
 		return {};
 	}
 
@@ -181,13 +181,13 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 	// NOTE:  intentionally basic "parsing" here. We are not supposed to see
 	//        more complex shell syntax anyway.
 	//        <https://www.freedesktop.org/software/systemd/man/os-release.html>
-	for(std::string s; std::getline(*in, s);) {
-		if(s.empty() || s.front() == '#') {
+	for(std::string s; std::getline(*in, s);){
+		if(s.empty() || s.front() == '#'){
 			continue;
 		}
 
 		auto eqsign_pos = s.find('=');
-		if(!eqsign_pos || eqsign_pos == std::string::npos) {
+		if(!eqsign_pos || eqsign_pos == std::string::npos){
 			continue;
 		}
 
@@ -198,7 +198,7 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 		boost::algorithm::trim(rhs);
 
 		// Unquote if the quotes match on both sides
-		if(rhs.length() >= 2 && rhs.front() == '"' && rhs.back() == '"') {
+		if(rhs.length() >= 2 && rhs.front() == '"' && rhs.back() == '"'){
 			rhs.pop_back();
 			rhs.erase(0, 1);
 		}
@@ -219,7 +219,7 @@ std::string os_version()
 	// Some systems, e.g. SunOS, need "struct" here
 	struct utsname u;
 
-	if(uname(&u) != 0) {
+	if(uname(&u) != 0){
 		ERR_DU << "os_version: uname error (" << strerror(errno) << ")";
 	}
 #endif
@@ -243,19 +243,19 @@ std::string os_version()
 	static const std::string fdo_osrel_etc = "/etc/os-release";
 	static const std::string fdo_osrel_usr = "/usr/lib/os-release";
 
-	if(filesystem::file_exists(fdo_osrel_etc)) {
+	if(filesystem::file_exists(fdo_osrel_etc)){
 		osrel = parse_fdo_osrelease(fdo_osrel_etc);
-	} else if(filesystem::file_exists(fdo_osrel_usr)) {
+	} else if(filesystem::file_exists(fdo_osrel_usr)){
 		osrel = parse_fdo_osrelease(fdo_osrel_usr);
 	}
 
 	// Check both existence and emptiness in case some vendor sets PRETTY_NAME=""
 	auto osrel_distname = osrel["PRETTY_NAME"];
-	if(osrel_distname.empty()) {
+	if(osrel_distname.empty()){
 		osrel_distname = osrel["NAME"];
 	}
 
-	if(!osrel_distname.empty()) {
+	if(!osrel_distname.empty()){
 		return osrel_distname + " " + u.machine;
 	}
 
@@ -265,19 +265,19 @@ std::string os_version()
 
 	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
 
-	if(filesystem::file_exists(lsb_release_bin)) {
+	if(filesystem::file_exists(lsb_release_bin)){
 		static const std::string cmdline = lsb_release_bin + " -s -d";
 
 		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
 		std::string ver = read_pipe_line(p);
 
-		if(ver.length() >= 2 && ver[0] == '"' && ver[ver.length() - 1] == '"') {
+		if(ver.length() >= 2 && ver[0] == '"' && ver[ver.length() - 1] == '"'){
 			ver.erase(ver.length() - 1, 1);
 			ver.erase(0, 1);
 		}
 
 		// Check this again in case we got "" above for some weird reason.
-		if(!ver.empty()) {
+		if(!ver.empty()){
 			return ver + " " + u.machine;
 		}
 	}
@@ -312,7 +312,7 @@ std::string os_version()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
+	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))){
 		ERR_DU << "os_version: GetVersionEx error (" << GetLastError() << ')';
 		return base;
 	}
@@ -336,38 +336,38 @@ std::string os_version()
 			version = "Server 2003";
 			break;
 		case 600:
-			if(v.wProductType == VER_NT_WORKSTATION) {
+			if(v.wProductType == VER_NT_WORKSTATION){
 				version = "Vista";
 			} else {
 				version = "Server 2008";
 			}
 			break;
 		case 601:
-			if(v.wProductType == VER_NT_WORKSTATION) {
+			if(v.wProductType == VER_NT_WORKSTATION){
 				version = "7";
 			} else {
 				version = "Server 2008 R2";
 			}
 			break;
 		case 602:
-			if(v.wProductType == VER_NT_WORKSTATION) {
+			if(v.wProductType == VER_NT_WORKSTATION){
 				version = "8";
 			} else {
 				version = "Server 2012";
 			}
 			break;
 		case 603:
-			if(v.wProductType == VER_NT_WORKSTATION) {
+			if(v.wProductType == VER_NT_WORKSTATION){
 				version = "8.1";
 			} else {
 				version = "Server 2012 R2";
 			}
 			break;
 		case 1000:
-			if(v.wProductType == VER_NT_WORKSTATION) {
+			if(v.wProductType == VER_NT_WORKSTATION){
 				version = v.dwBuildNumber < 22000 ? "10" : "11";
 				const auto& release_id = windows_release_id();
-				if(!release_id.empty()) {
+				if(!release_id.empty()){
 					version += ' ';
 					version += release_id;
 				}
@@ -375,12 +375,12 @@ std::string os_version()
 			} // else fallback to default
 			[[fallthrough]];
 		default:
-			if(v.wProductType != VER_NT_WORKSTATION) {
+			if(v.wProductType != VER_NT_WORKSTATION){
 				version = "Server";
 			}
 	}
 
-	if(*v.szCSDVersion) {
+	if(*v.szCSDVersion){
 		version += " ";
 		version += unicode_cast<std::string>(std::wstring(v.szCSDVersion));
 	}

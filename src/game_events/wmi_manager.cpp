@@ -55,7 +55,7 @@ bool wmi_manager::erase(const std::string& id)
 	// Locate the item to erase.
 	const auto iter = wml_menu_items_.find(id);
 
-	if(iter == wml_menu_items_.end()) {
+	if(iter == wml_menu_items_.end()){
 		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.";
 		// No such item.
 		return false;
@@ -81,9 +81,9 @@ bool wmi_manager::fire_item(
 {
 	// Does this item exist?
 	item_ptr wmi = get_item(id);
-	if(!wmi) {
+	if(!wmi){
 		return false;
-	} else if(is_key_hold_repeat && !wmi->hotkey_repeat()) {
+	} else if(is_key_hold_repeat && !wmi->hotkey_repeat()){
 		return false;
 	}
 
@@ -95,7 +95,7 @@ bool wmi_manager::fire_item(
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Can this item be shown?
-	if(wmi->can_show(hex, gamedata, fc)) {
+	if(wmi->can_show(hex, gamedata, fc)){
 		wmi->fire_event(hex, gamedata);
 	}
 	gamedata.get_variable("x1") = x1;
@@ -118,7 +118,7 @@ void wmi_manager::get_items(const map_location& hex,
 		game_data& gamedata,
 		unit_map& units) const
 {
-	if(empty()) {
+	if(empty()){
 		// Nothing to do (skip setting game variables).
 		return;
 	}
@@ -133,12 +133,12 @@ void wmi_manager::get_items(const map_location& hex,
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Check each menu item.
-	for(const auto& item_pair : wml_menu_items_) {
+	for(const auto& item_pair : wml_menu_items_){
 		item_ptr item = item_pair.second;
 
 		// Can this item be shown?
 		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())
-				&& item->can_show(hex, gamedata, fc)) {
+				&& item->can_show(hex, gamedata, fc)){
 			// Include this item.
 			items.emplace_back("id", item->hotkey_id() , "label", item->menu_text(), "icon", item->image());
 		}
@@ -150,7 +150,7 @@ void wmi_manager::get_items(const map_location& hex,
 wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 {
 	auto iter = wml_menu_items_.find(id);
-	if(iter != wml_menu_items_.end()) {
+	if(iter != wml_menu_items_.end()){
 		return iter->second;
 	}
 
@@ -174,7 +174,7 @@ void wmi_manager::init_handlers(game_lua_kernel& lk) const
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
-	for(const auto& item : wml_menu_items_) {
+	for(const auto& item : wml_menu_items_){
 		// If this menu item has a [command], add a handler for it.
 		item.second->init_handler(lk);
 
@@ -183,7 +183,7 @@ void wmi_manager::init_handlers(game_lua_kernel& lk) const
 	}
 
 	// Diagnostic:
-	if(wmi_count > 0) {
+	if(wmi_count > 0){
 		LOG_NG << wmi_count << " WML menu items found, loaded.";
 	}
 }
@@ -191,7 +191,7 @@ void wmi_manager::init_handlers(game_lua_kernel& lk) const
 void wmi_manager::to_config(config& cfg) const
 {
 	// Loop through our items.
-	for(const auto& item : wml_menu_items_) {
+	for(const auto& item : wml_menu_items_){
 		// Add this item as a child of cfg.
 		item.second->to_config(cfg.add_child("menu_item"));
 	}
@@ -206,7 +206,7 @@ void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 	auto [iter, success] = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
 
 	// If an entry already exists, reset it.
-	if(!success) {
+	if(!success){
 		// Create a new menu item based on the old. This leaves the old item
 		// alone in case someone else is holding on to (and processing) it.
 		iter->second.reset(new wml_menu_item(id, menu_item, *iter->second));
@@ -219,8 +219,8 @@ void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 void wmi_manager::set_menu_items(const config& cfg)
 {
 	wml_menu_items_.clear();
-	for(const config& item : cfg.child_range("menu_item")) {
-		if(!item.has_attribute("id")) {
+	for(const config& item : cfg.child_range("menu_item")){
+		if(!item.has_attribute("id")){
 			continue;
 		}
 
@@ -229,7 +229,7 @@ void wmi_manager::set_menu_items(const config& cfg)
 
 		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
 
-		if(!success) {
+		if(!success){
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config";
 		}
 	}

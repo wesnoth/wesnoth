@@ -46,14 +46,14 @@ struct catalog_metadata {
 private:
   std::string find_header_line(const std::string & header, const std::string & label) {
     size_t idx = header.find(label);
-    if (idx == std::string::npos) {
+    if(idx == std::string::npos) {
       return "";
     }
     auto it = header.begin() + idx + label.size();
-    while (it != header.end() && *it == ' ') { ++it; }
+    while(it != header.end() && *it == ' ') { ++it; }
 
     auto e = it;
-    while (e != header.end() && *e != '\n') { ++e; }
+    while(e != header.end() && *e != '\n') { ++e; }
     return std::string(it, e);
   }
 
@@ -91,14 +91,14 @@ public:
     last_translator = find_header_line(header, "Last-Translator:");
 
     std::string content_type_line = find_header_line(header, "Content-Type:");
-    if (content_type_line.size()) {
+    if(content_type_line.size()) {
       auto it = content_type_line.begin();
       auto end = content_type_line.end();
       content_type_grammar<decltype(it)> gram;
       std::string ct;
-      if (qi::parse(it, end, gram, ct)) {
+      if(qi::parse(it, end, gram, ct)) {
         charset = ct;
-        if (charset != "ASCII" && charset != "UTF-8") {
+        if(charset != "ASCII" && charset != "UTF-8") {
           return "PO file declared charset of '" + charset + "', but spirit_po only supports UTF-8 and ASCII for this.";
         }
       }
@@ -108,23 +108,23 @@ public:
     }
 
     std::string content_transfer_encoding = find_header_line(header, "Content-Transfer-Encoding:");
-    if (content_transfer_encoding.size()) {
+    if(content_transfer_encoding.size()) {
       auto it = content_transfer_encoding.begin();
       auto end = content_transfer_encoding.end();
-      if (!qi::phrase_parse(it, end, qi::lit("8bit"), qi::ascii::space)) {
+      if(!qi::phrase_parse(it, end, qi::lit("8bit"), qi::ascii::space)) {
         return "PO header 'Content-Transfer-Encoding' must be '8bit' if specified, but PO file declared '" + content_transfer_encoding + "'";
       }
     }
 
     std::string num_plurals_line = find_header_line(header, "Plural-Forms:");
 
-    if (num_plurals_line.size()) {
+    if(num_plurals_line.size()) {
       auto it = num_plurals_line.begin();
       auto end = num_plurals_line.end();
 
       num_plurals_grammar<decltype(it)> gram;
       num_plurals_info info;
-      if (qi::parse(it, end, gram, info)) {
+      if(qi::parse(it, end, gram, info)) {
         num_plural_forms = info.first;
         plural_forms_function_string = info.second;
       } else {
@@ -142,7 +142,7 @@ public:
   // check if this metadata is compatible with another metadata (number of plural forms, maybe other criteria)
   // return a nonempty string containing error message if they are not compatible.
   std::string check_compatibility(const catalog_metadata & other) const {
-    if (num_plural_forms != other.num_plural_forms) {
+    if(num_plural_forms != other.num_plural_forms) {
       return std::string{"Num plural forms mismatch. this = "} + std::to_string(num_plural_forms) + " other = " + std::to_string(other.num_plural_forms);
     }
     return "";

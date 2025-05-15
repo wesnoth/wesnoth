@@ -57,7 +57,7 @@ void lobby_player_info::pre_show()
 	relation_ = find_widget<label>("relation_info", false, true);
 
 	button& whisper = find_widget<button>("start_whisper");
-	if(info_.get_relation() != mp::user_info::user_relation::ME) {
+	if(info_.get_relation() != mp::user_info::user_relation::ME){
 		connect_signal_mouse_left_click(whisper,
 			std::bind(&lobby_player_info::start_whisper_button_callback, this));
 	} else {
@@ -100,9 +100,9 @@ void lobby_player_info::pre_show()
 
 	std::stringstream loc;
 	const mp::game_info* game = lobby_info_.get_game_by_id(info_.game_id);
-	if(game != nullptr) {
+	if(game != nullptr){
 		loc << _("In game:") << " " << game->name << " ";
-		if(info_.observing) {
+		if(info_.observing){
 			loc << _("(observing)");
 		} else {
 			loc << _("(playing)");
@@ -120,7 +120,7 @@ void lobby_player_info::pre_show()
 
 	update_relation();
 
-	if(!mp::logged_in_as_moderator()) {
+	if(!mp::logged_in_as_moderator()){
 		widget* aw = find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
@@ -135,7 +135,7 @@ void lobby_player_info::update_relation()
 	add_to_friends_->set_active(false);
 	add_to_ignores_->set_active(false);
 	remove_from_list_->set_active(false);
-	switch(info_.get_relation()) {
+	switch(info_.get_relation()){
 		case mp::user_info::user_relation::FRIEND:
 			relation_->set_label(_("On friends list"));
 			add_to_ignores_->set_active(true);
@@ -211,7 +211,7 @@ void lobby_player_info::do_stopgame()
 {
 	std::stringstream ss;
 	ss << "stopgame " << info_.name;
-	if(!reason_->get_value().empty()) {
+	if(!reason_->get_value().empty()){
 		ss << " " << reason_->get_value();
 	}
 
@@ -222,10 +222,10 @@ void lobby_player_info::do_kick_ban(bool ban)
 {
 	std::stringstream ss;
 	ss << (ban ? "kban " : "kick ") << info_.name;
-	if(ban && !time_->get_value().empty()) {
+	if(ban && !time_->get_value().empty()){
 		ss << " " << time_->get_value();
 	}
-	if(!reason_->get_value().empty()) {
+	if(!reason_->get_value().empty()){
 		ss << " " << reason_->get_value();
 	}
 

@@ -60,7 +60,7 @@ game_state::game_state(const config& level, play_controller& pc)
 	, server_request_number_(level["server_request_number"].to_int())
 {
 	lua_kernel_->load_core();
-	if(auto endlevel_cfg = level.optional_child("end_level_data")) {
+	if(auto endlevel_cfg = level.optional_child("end_level_data")){
 		end_level_data el_data;
 		el_data.read(*endlevel_cfg);
 		el_data.transient.carryover_report = false;
@@ -68,19 +68,19 @@ game_state::game_state(const config& level, play_controller& pc)
 	}
 }
 
-game_state::~game_state() {}
+game_state::~game_state(){}
 
 static int placing_score(const config& side, const gamemap& map, const map_location& pos)
 {
 	int positions = 0, liked = 0;
 	const t_translation::ter_list terrain = t_translation::read_list(side["terrain_liked"].str());
 
-	for(int i = -8; i != 8; ++i) {
-		for(int j = -8; j != +8; ++j) {
+	for(int i = -8; i != 8; ++i){
+		for(int j = -8; j != +8; ++j){
 			const map_location pos2  = pos.plus(i, j);
-			if(map.on_board(pos2)) {
+			if(map.on_board(pos2)){
 				++positions;
-				if(std::count(terrain.begin(),terrain.end(),map[pos2])) {
+				if(std::count(terrain.begin(),terrain.end(),map[pos2])){
 					++liked;
 				}
 			}
@@ -103,7 +103,7 @@ struct placing_info {
 	map_location pos;
 };
 
-static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
+static bool operator<(const placing_info& a, const placing_info& b){ return a.score > b.score; }
 
 
 void game_state::place_sides_in_preferred_locations(const config& level)
@@ -115,7 +115,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	int side_num = 1;
 	for(const config &side : level.child_range("side"))
 	{
-		for(int p = 1; p <= num_pos; ++p) {
+		for(int p = 1; p <= num_pos; ++p){
 			const map_location& pos = board_.map().starting_position(p);
 			int score = placing_score(side, board_.map(), pos);
 			placing_info obj;
@@ -131,8 +131,8 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	std::set<int> placed;
 	std::set<map_location> positions_taken;
 
-	for (std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && static_cast<int>(placed.size()) != side_num - 1; ++i) {
-		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
+	for(std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && static_cast<int>(placed.size()) != side_num - 1; ++i){
+		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0){
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
 			board_.map().set_starting_position(i->side,i->pos);
@@ -145,20 +145,20 @@ void game_state::init(const config& level, play_controller & pc)
 {
 	events_manager_->read_scenario(level, *lua_kernel_);
 	gui2::dialogs::loading_screen::progress(loading_stage::init_teams);
-	if (level["modify_placing"].to_bool()) {
+	if(level["modify_placing"].to_bool()){
 		LOG_NG << "modifying placing...";
 		place_sides_in_preferred_locations(level);
 	}
 
 	LOG_NG << "initialized time of day regions... " << pc.timer();
-	for (const config &t : level.child_range("time_area")) {
+	for(const config &t : level.child_range("time_area")){
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
 	LOG_NG << "initialized teams... " << pc.timer();
 
 	board_.teams().resize(level.child_count("side"));
-	if (player_number_ != 1 && player_number_ > static_cast<int>(board_.teams().size())) {
+	if(player_number_ != 1 && player_number_ > static_cast<int>(board_.teams().size())){
 		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size();
 		player_number_ = 1;
 		// in case there are no teams, using player_number_ migh still cause problems later.
@@ -172,7 +172,7 @@ void game_state::init(const config& level, play_controller & pc)
 	team_builders.reserve(board_.teams().size());
 
 	int team_num = 0;
-	for (const config &side : level.child_range("side"))
+	for(const config &side : level.child_range("side"))
 	{
 		++team_num;
 
@@ -191,16 +191,16 @@ void game_state::init(const config& level, play_controller & pc)
 
 		undo_stack_->read(level.child_or_empty("undo_stack"), player_number_);
 
-		for(team_builder& tb : team_builders) {
+		for(team_builder& tb : team_builders){
 			tb.build_team_stage_two();
 		}
-		for(team_builder& tb : team_builders) {
+		for(team_builder& tb : team_builders){
 			tb.build_team_stage_three();
 		}
 
-		for(const team& t : board_.teams()) {
+		for(const team& t : board_.teams()){
 			// Labels from players in your ignore list default to hidden
-			if(prefs::get().is_ignored(t.current_player())) {
+			if(prefs::get().is_ignored(t.current_player())){
 				std::string label_cat = "side:" + std::to_string(t.side());
 				board_.hidden_label_categories().push_back(label_cat);
 			}
@@ -217,7 +217,7 @@ void game_state::write(config& cfg) const
 {
 	// dont write this before we fired the (pre)start events
 	// This is the case for the 'replay_start' part of the savegame.
-	if(!in_phase(game_data::INITIAL, game_data::PRELOAD)) {
+	if(!in_phase(game_data::INITIAL, game_data::PRELOAD)){
 		cfg["playing_team"] = player_number_ - 1;
 		cfg["next_player_number"] = next_player_number_;
 	}
@@ -246,7 +246,7 @@ void game_state::write(config& cfg) const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
-	if(end_level_data_) {
+	if(end_level_data_){
 		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 }
@@ -265,7 +265,7 @@ namespace {
 			if(!map_.is_castle(loc))
 				return 10000;
 
-			if ( use_shroud_ && viewer_.shrouded(loc) )
+			if(use_shroud_ && viewer_.shrouded(loc))
 				return 10000;
 
 			return 1;
@@ -289,14 +289,14 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side) cons
 {
 	const gamemap& map = board_.map();
 
-	if(!map.is_keep(leader_loc)) {
+	if(!map.is_keep(leader_loc)){
 		return false;
 	}
 
 	try {
 		return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, nullptr, &board_.get_team(side))
 			!= map_location::null_location();
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		// Invalid side specified.
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
@@ -321,22 +321,22 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 {
 	const gamemap& map = board_.map();
 
-	if(!map.is_castle(recruit_loc)) {
+	if(!map.is_castle(recruit_loc)){
 		return false;
 	}
 
-	if(!map.is_keep(leader_loc)) {
+	if(!map.is_keep(leader_loc)){
 		return false;
 	}
 
 	try {
 		const team& view_team = board_.get_team(side);
 
-		if(view_team.shrouded(recruit_loc)) {
+		if(view_team.shrouded(recruit_loc)){
 			return false;
 		}
 
-		if(board_.has_visible_unit(recruit_loc, view_team)) {
+		if(board_.has_visible_unit(recruit_loc, view_team)){
 			return false;
 		}
 
@@ -349,7 +349,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 			pathfind::a_star_search(leader_loc, recruit_loc, map.w() + map.h(), calc, map.w(), map.h());
 
 		return !rt.steps.empty();
-	} catch(const std::out_of_range&) {
+	} catch(const std::out_of_range&){
 		// Invalid side specified.
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
@@ -366,12 +366,12 @@ bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_
 bool game_state::side_can_recruit_on(int side, map_location hex) const
 {
 	unit_map::const_iterator leader = board_.units().find(hex);
-	if ( leader != board_.units().end() ) {
+	if(leader != board_.units().end()){
 		return leader->can_recruit() && leader->side() == side && can_recruit_from(*leader);
 	} else {
 		// Look for a leader who can recruit on last_hex.
-		for ( leader = board_.units().begin(); leader != board_.units().end(); ++leader) {
-			if ( leader->can_recruit() && leader->side() == side && can_recruit_on(*leader, hex) ) {
+		for(leader = board_.units().begin(); leader != board_.units().end(); ++leader){
+			if(leader->can_recruit() && leader->side() == side && can_recruit_on(*leader, hex)){
 				return true;
 			}
 		}
