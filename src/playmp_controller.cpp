@@ -258,6 +258,7 @@ void playmp_controller::handle_generic_event(const std::string& name)
 {
 	playsingle_controller::handle_generic_event(name);
 }
+//mark host to add
 bool playmp_controller::is_host() const
 {
 	return !mp_info_ || mp_info_->is_host;
@@ -615,7 +616,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 		}
 	}
 }
-
+//mark pncci
 void playmp_controller::process_network_change_controller_impl(const config& change)
 {
 
@@ -628,6 +629,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 	const bool is_local = change["is_local"].to_bool();
 	const std::string player = change["player"];
 	const std::string controller_type = change["controller"];
+	const bool convert_to_ai = controller_type == side_controller::secondary_ai;
 	const std::size_t index = side - 1;
 	if(index >= gamestate().board_.teams().size()) {
 		ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug();
@@ -636,16 +638,27 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	const team & tm = gamestate().board_.teams().at(index);
 	const bool was_local = tm.is_local();
-
+//mark call side_change_c
 	gamestate().board_.side_change_controller(side, is_local, player, controller_type);
 
-	if (!was_local && tm.is_local()) {
+	// the player keep observing if control is given to ai, not him
+	if(!was_local && tm.is_local() && !convert_to_ai) {
 		on_not_observer();
 	}
 
 	update_viewing_player();
 
-	get_whiteboard()->on_change_controller(side,tm);
+	get_whiteboard()->on_change_controller(side, tm);
+
+	//mark process network change impl
+	//for now: this change seems only happen in other player's process, other than the player who executed `:give_control`.
+	//but we need both. find a way to do it. *solved
+	// controller changing to secondary ai only happens when selecting AI in :give_control.
+	// need to manually set player type changed cause this can only work after modifying controller status.
+	if(convert_to_ai) {
+		LOG_NG << "player_type_changed_ has been set to true for secondary_ai assignment.";
+		player_type_changed_ = true;
+	}
 
 	player_type_changed_ |= game_display::get_singleton()->playing_team().side() == side && (was_local || tm.is_local());
 }

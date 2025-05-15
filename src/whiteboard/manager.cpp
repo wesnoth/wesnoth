@@ -409,14 +409,14 @@ void manager::on_change_controller(int side, const team& t)
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
 	}
-	else if(t.is_local_ai() || t.is_network_ai()) // no one owns this side anymore
+	else if(t.is_ai() && (t.is_local() || t.is_network())) // no one owns this side anymore
 		sa.clear(); // clear its plans away -- the ai doesn't plan ... yet
 	else if(t.is_network()) // Another client is taking control of the side
 	{
 		if(side==viewer_side()) // They're taking OUR side away!
 			hide_all_plans(); // give up knowledge of everyone's plans, in case we became an observer
 
-		//tell them our plans -- they may not have received them up to this point
+		// tell them our plans -- they may not have received them up to this point
 		std::size_t num_teams = resources::gameboard->teams().size();
 		for(std::size_t i=0; i<num_teams; ++i)
 		{
