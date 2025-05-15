@@ -326,7 +326,7 @@ unit::unit(const unit& o)
 	, has_ability_distant_(o.has_ability_distant_)
 	, has_ability_distant_image_(o.has_ability_distant_image_)
 {
-    affect_distant_ = o.affect_distant_;
+	affect_distant_ = o.affect_distant_;
 	// Copy the attacks rather than just copying references
 	for(auto& a : attacks_) {
 		a.reset(new attack_type(*a));
@@ -414,18 +414,20 @@ unit::unit(unit_ctor_t)
 
 void unit::set_has_ability_distant()
 {
+	// check if unit own abilitis with [affect_distant]
+	// else variables are false or erased.
 	affect_distant_.clear();
 	has_ability_distant_ = false;
 	has_ability_distant_image_ = false;
 	for(const auto [key, ability] : abilities_.all_children_view()) {
 		if(ability.has_child("affect_distant")) {
-			if(!affect_distant_[key]){
+			if(!affect_distant_[key]) {
 				affect_distant_[key] = true;
 			}
-			if(!has_ability_distant_){
+			if(!has_ability_distant_) {
 				has_ability_distant_ = true;
 			}
-			if(!has_ability_distant_image_ && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))){
+			if(!has_ability_distant_image_ && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))) {
 				has_ability_distant_image_ = true;
 			}
 		}
@@ -2460,9 +2462,9 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel);
 	}
 
-	//verify what unit own ability with [affect_distant] before edit has_ability_distant_ and has_ability_distant_image_.
-	//It is place here for what variables can't be true if unit don't own abilities with [affect_distant](after apply_to=remove_ability by example)
-	if(apply_to == "new_ability" || apply_to == "remove_ability"){
+	// verify what unit own ability with [affect_distant] before edit has_ability_distant_ and has_ability_distant_image_.
+	// It is place here for what variables can't be true if unit don't own abilities with [affect_distant](after apply_to=remove_ability by example)
+	if(apply_to == "new_ability" || apply_to == "remove_ability") {
 		set_has_ability_distant();
 	}
 }
