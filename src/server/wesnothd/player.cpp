@@ -15,10 +15,16 @@
 
 #include "server/wesnothd/player.hpp"
 
-wesnothd::player::player(const std::string& n, simple_wml::node& cfg, long id,
-                         bool registered, const std::string& version, const std::string& source, unsigned long long login_id, const std::size_t max_messages,
-                         const std::chrono::seconds& time_period,
-                         const bool moderator)
+wesnothd::player::player(const std::string& n,
+	simple_wml::node& cfg,
+	long id,
+	bool registered,
+	const std::string& version,
+	const std::string& source,
+	unsigned long long login_id,
+	const std::size_t max_messages,
+	const std::chrono::seconds& time_period,
+	const bool moderator)
 	: name_(n)
 	, version_(version)
 	, source_(source)
