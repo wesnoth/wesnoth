@@ -92,13 +92,13 @@ public:
 	}
 
 	/**
-	 * Wrapper function, see @ref font::pango_text::get_line_num_from_offset.
+	 * Wrapper function, see @ref font::pango_text::index_to_line_x.
 	 *
 	 * @returns the line number given the byte index.
 	 */
 	int get_line_number(const unsigned offset)
 	{
-		return text_.get_line_num_from_offset(offset);
+		return text_.index_to_line_x(offset).first;
 	}
 
 	/**

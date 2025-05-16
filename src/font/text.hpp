@@ -241,10 +241,10 @@ public:
 	 *
 	 * @param position            The pixel position in the text area.
 	 *
-	 * @returns                   A tuple of the format `{index, trailing, out_of_bounds}`
+	 * @returns                   A tuple of the format `{index, trailing, inside_bounds}`
 	 *                            where `index` and `trailing` are as described in
 	 *                            <a href='https://docs.gtk.org/Pango/method.Layout.xy_to_index.html'>Pango documention</a>
-	 *                            for `pango_layout_xy_to_index`, and `out_of_bound`
+	 *                            for `pango_layout_xy_to_index`, and `inside_bounds`
 	 *                            is `true` if the given position is inside the pango layout,
 	 *                            and `false` otherwise.
 	 */
@@ -272,13 +272,18 @@ public:
 
 	/**
 	 * Given a byte index, find out at which line the corresponding character
-	 * is located.
+	 * is located. Wrapper for `pango_layout_index_to_line_x`.
 	 *
 	 * @param offset   the byte index
 	 *
-	 * @returns        the line number corresponding to the given index
+	 * @param trailing which edge the counting starts from
+	 *                 true: trailing edge, false: leading edge.
+	 *
+	 * @returns        a pair of the form `{line, xpos}`
+	 *                 where `line` is the line number corresponding to the given index
+	 *                 and `xpos` is the resulting x position.
 	 */
-	int get_line_num_from_offset(const unsigned offset);
+	std::pair<int, int> index_to_line_x(const unsigned offset, const bool trailing = 0) const;
 
 	/**
 	 * Get number of lines in the text.

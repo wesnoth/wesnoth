@@ -245,10 +245,10 @@ std::size_t pango_text::get_maximum_length() const
 std::string pango_text::get_token(const point& position, const std::string_view delim) const
 {
 	// Get the index of the character.
-	const auto [index, _, out_of_bounds] = xy_to_index(position);
+	const auto [index, _, inside_bounds] = xy_to_index(position);
 	std::string txt = pango_layout_get_text(layout_.get());
 
-	if (out_of_bounds || index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
+	if (!inside_bounds || index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
 	}
 
@@ -281,8 +281,7 @@ point pango_text::get_column_line(const point& position) const
 	const auto [index, trailing, _] = xy_to_index(position);
 
 	// Extract the line and the offset in pixels in that line.
-	int line, offset;
-	pango_layout_index_to_line_x(layout_.get(), index, trailing, &line, &offset);
+	auto [line, offset] = index_to_line_x(index, trailing);
 	offset = PANGO_PIXELS(offset);
 
 	// Now convert this offset to a column, this way is a bit hacky but haven't
@@ -951,11 +950,11 @@ PangoLayoutLine* pango_text::get_line(int index)
 	return pango_layout_get_line_readonly(layout_.get(), index);
 }
 
-int pango_text::get_line_num_from_offset(const unsigned offset)
+std::pair<int, int> pango_text::index_to_line_x(const unsigned offset, const bool trailing) const
 {
-	int line_num = 0;
-	pango_layout_index_to_line_x(layout_.get(), offset, 0, &line_num, nullptr);
-	return line_num;
+	int line_num = 0, x_pos = 0;
+	pango_layout_index_to_line_x(layout_.get(), offset, trailing, &line_num, &x_pos);
+	return { line_num, x_pos };
 }
 
 pango_text& get_text_renderer()
