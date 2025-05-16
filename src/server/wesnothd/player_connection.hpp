@@ -34,7 +34,7 @@ public:
 	player_record(const SocketPtr socket, player&& player)
 		: login_time(std::chrono::steady_clock::now())
 		, socket_(socket)
-		, player_(player)
+		, player_(std::move(player))
 		, game_()
 		, ip_address(client_address(socket))
 	{
