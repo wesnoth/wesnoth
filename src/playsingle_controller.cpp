@@ -308,7 +308,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << timer();
+	LOG_NG << "starting main loop... " << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
