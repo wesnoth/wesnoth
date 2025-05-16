@@ -314,7 +314,7 @@ std::tuple<int, int, bool> pango_text::xy_to_index(const point& position) const
 	int index, trailing;
 	int res = pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE, position.y * PANGO_SCALE, &index, &trailing);
 	// res is gboolean
-	return { index, trailing, (res == 0 ? false : true ) };
+	return { index, trailing, res != 0 };
 }
 
 void pango_text::clear_attributes()
