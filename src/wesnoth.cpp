@@ -317,7 +317,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
-	config result = io::read(*preprocess_file(file, &defines_map), &validator);
+	io::read(*preprocess_file(file, &defines_map), &validator);
 	if(lg::broke_strict()) {
 		std::cout << "validation failed\n";
 	} else {
