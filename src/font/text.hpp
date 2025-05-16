@@ -236,7 +236,19 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
-	std::pair<int, int> xy_to_index(const point& position) const;
+	/**
+	 * Wrapper function around `pango_layout_xy_to_index`.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   A tuple of the format `{index, trailing, out_of_bounds}`
+	 *                            where `index` and `trailing` are as described in
+	 *                            <a href='https://docs.gtk.org/Pango/method.Layout.xy_to_index.html'>Pango documention</a>
+	 *                            for `pango_layout_xy_to_index`, and `out_of_bound`
+	 *                            is `true` if the given position is inside the pango layout,
+	 *                            and `false` otherwise.
+	 */
+	std::tuple<int, int, bool> xy_to_index(const point& position) const;
 
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.

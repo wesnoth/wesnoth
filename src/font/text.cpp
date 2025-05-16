@@ -245,10 +245,10 @@ std::size_t pango_text::get_maximum_length() const
 std::string pango_text::get_token(const point& position, const std::string_view delim) const
 {
 	// Get the index of the character.
-	int index = xy_to_index(position).first;
+	const auto [index, _, out_of_bounds] = xy_to_index(position);
 	std::string txt = pango_layout_get_text(layout_.get());
 
-	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
+	if (out_of_bounds || index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || delim.find(txt.at(index)) != std::string::npos) {
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
 	}
 
@@ -278,7 +278,7 @@ std::string pango_text::get_link(const point& position) const
 point pango_text::get_column_line(const point& position) const
 {
 	// Get the index of the character.
-	const auto [index, trailing] = xy_to_index(position);
+	const auto [index, trailing, _] = xy_to_index(position);
 
 	// Extract the line and the offset in pixels in that line.
 	int line, offset;
@@ -306,19 +306,15 @@ point pango_text::get_column_line(const point& position) const
 	}
 }
 
-std::pair<int, int> pango_text::xy_to_index(const point& position) const
+std::tuple<int, int, bool> pango_text::xy_to_index(const point& position) const
 {
 	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
-	if(!pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE, position.y * PANGO_SCALE, &index, &trailing))
-	{
-		index = -1;
-		trailing = -1;
-	}
-
-	return { index, trailing };
+	int res = pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE, position.y * PANGO_SCALE, &index, &trailing);
+	// res is gboolean
+	return { index, trailing, (res == 0 ? false : true ) };
 }
 
 void pango_text::clear_attributes()
