@@ -394,8 +394,7 @@ const string_span& node::operator[](const char* key) const
 {
 	static string_span empty("");
 	string_span span(key);
-	std::pair<attribute_list::const_iterator,
-	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	auto range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
 		return range.first->value;
 	}
@@ -406,8 +405,7 @@ const string_span& node::operator[](const char* key) const
 bool node::has_attr(const char* key) const
 {
 	string_span span(key);
-	std::pair<attribute_list::const_iterator,
-	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	auto range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	return range.first != range.second;
 }
 
@@ -416,8 +414,7 @@ node& node::set_attr(const char* key, const char* value)
 	set_dirty();
 
 	string_span span(key);
-	std::pair<attribute_list::iterator,
-	          attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	auto range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
 		range.first->value = string_span(value);
 	} else {

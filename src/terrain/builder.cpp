@@ -924,7 +924,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 					continue;
 				}
 
-				std::pair<anchormap::const_iterator, anchormap::const_iterator> range = anchors.equal_range(pos);
+				auto range = anchors.equal_range(pos);
 
 				for(; range.first != range.second; ++range.first) {
 					loc = range.first->second;

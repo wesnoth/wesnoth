@@ -610,10 +610,7 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 		return true;
 	}
 	move_map::const_iterator i;
-	std::pair<move_map::const_iterator,
-			  move_map::const_iterator> unit_moves;
-
-	unit_moves = get_srcdst().equal_range(unit_A);
+	auto unit_moves = get_srcdst().equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
 		if (tiles_adjacent((*i).second,unit_B)) {
 			return true;

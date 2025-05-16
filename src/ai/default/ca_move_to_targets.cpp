@@ -199,8 +199,7 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 
 	if(move_cost > 0) {
 		// if this unit can move to that location this turn, it has a very very low cost
-		typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
-		std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(tg.loc);
+		auto locRange = dstsrc.equal_range(tg.loc);
 		while (locRange.first != locRange.second) {
 			if (locRange.first->second == u->get_location()) {
 				move_cost = 0;
@@ -526,7 +525,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 			std::set<map_location> mass_locations;
 
-			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = srcdst.equal_range(loc);
+			const auto itors = srcdst.equal_range(loc);
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
 				const int distance = distance_between(target_loc,i->second);
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
@@ -563,8 +562,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		//to rally troops around us.
 		bool is_dangerous = false;
 
-		typedef std::multimap<map_location,map_location>::const_iterator Itor;
-		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
+		auto its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
 			if (its.first->second == best->get_location()) {
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,
@@ -622,7 +620,7 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 
 	// unit_map single_unit(u_it->first, u_it->second);
 
-	const std::pair<move_map::const_iterator,move_map::const_iterator> locs = srcdst.equal_range(u);
+	const auto locs = srcdst.equal_range(u);
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const map_location& loc = i->second;
 		if (static_cast<int>(distance_between(loc,dst)) <= u_it->total_movement()) {
@@ -647,7 +645,7 @@ void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& 
 {
 	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i) {
 		for(const map_location& adj : get_adjacent_tiles(*i)) {
-			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj);
+			const auto itors = dstsrc.equal_range(adj);
 			for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
 				res.insert(j->second);
 			}
@@ -670,7 +668,7 @@ map_location move_to_targets_phase::form_group(const std::vector<map_location>& 
 
 		std::size_t n = 0, nunits = res.size();
 
-		const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*i);
+		const auto itors = dstsrc.equal_range(*i);
 		for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
 			if(res.count(j->second) != 0) {
 				++n;
@@ -747,7 +745,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 				continue;
 			}
 
-			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*j);
+			const auto itors = dstsrc.equal_range(*j);
 			move_map::const_iterator m;
 			for(m = itors.first; m != itors.second; ++m) {
 				if(m->second == *i) {
