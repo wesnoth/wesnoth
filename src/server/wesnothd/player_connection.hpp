@@ -31,7 +31,7 @@ class player_record
 {
 public:
 	template<class SocketPtr>
-	player_record(const SocketPtr socket, const player& player)
+	player_record(const SocketPtr socket, player&& player)
 		: login_time(std::chrono::steady_clock::now())
 		, socket_(socket)
 		, player_(player)
