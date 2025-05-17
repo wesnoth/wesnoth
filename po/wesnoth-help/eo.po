@@ -1,18 +1,18 @@
-# #-#-#-#-#  wesnoth.cpp1.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Esperanto translation for Battle for Wesnoth.
+# This file is distributed under the same license as the Battle for Wesnoth
+# package.
 #
+# Former translator:
+#   Aleksej Korgenkov <grimpanto@mail.ru>
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2008-03-01 19:31+0200\n"
-"Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
-"Language-Team: \n"
-"Language: \n"
+"PO-Revision-Date: 2025-05-14 18:12-0300\n"
+"Last-Translator: Mariano Street <mctpyt@proton.me>\n"
+"Language-Team: Esperanto <https://wiki.wesnoth.org/Esperanto_translation>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "arkano"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:549
@@ -52,7 +52,7 @@ msgstr "Subtero"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
 #: data/core/macros/traits.cfg:55
 msgid "undead"
-msgstr "nemortinta"
+msgstr "malmortulo"
 
 #. [label]
 #. [chance]
@@ -80,11 +80,6 @@ msgstr "kontaĝo"
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
 #: data/core/macros/weapon_specials.cfg:53
 #, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -115,7 +110,6 @@ msgstr "obstina"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
 #: data/core/macros/abilities.cfg:238
-#, fuzzy
 msgid "female^illuminates"
 msgstr "lumigo"
 
@@ -123,17 +117,14 @@ msgstr "lumigo"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
-msgstr "sanigo +4"
+msgstr "resanigo +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
-#, fuzzy
 msgid "female^heals +4"
-msgstr "sana"
+msgstr "resanigo +4"
 
-#
-#
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 #, fuzzy
@@ -168,17 +159,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
-msgstr "sanigo +8"
+msgstr "resanigo +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
-#, fuzzy
 msgid "female^heals +8"
-msgstr "sana"
+msgstr "resanigo +8"
 
-#
-#
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 #, fuzzy
@@ -204,19 +192,14 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "sanigo +4"
+msgstr "resanigo +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#, fuzzy
 msgid "female^heals +12"
-msgstr "sana"
+msgstr "resanigo +12"
 
-#
-#
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 #, fuzzy
@@ -254,7 +237,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
-msgstr "teleportado"
+msgstr "teleporto"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
@@ -296,7 +279,7 @@ msgstr "komandado"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
 #: data/core/macros/abilities.cfg:285
 msgid "ambush"
-msgstr "invado"
+msgstr "embusko"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
 msgid "Castle"
@@ -309,6 +292,7 @@ msgstr "Groto"
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
 #: data/core/macros/abilities.cfg:348
+#, fuzzy
 msgid "concealment"
 msgstr "embusko"
 
@@ -328,7 +312,7 @@ msgstr "Arbaro"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
 msgid "Frozen"
-msgstr ""
+msgstr "Frostitaĵo"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
 msgid "Hills"
@@ -337,18 +321,19 @@ msgstr "Montetoj"
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
 #: data/core/macros/weapon_specials.cfg:86
+#, fuzzy
 msgid "marksman"
 msgstr "pafisto"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Funga bosko"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
-msgstr "nokta embusko"
+msgstr "noktogvato"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
@@ -385,28 +370,24 @@ msgstr "kuraco"
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Redaktilo de mapo kaj scenaro"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:377
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Influo de tereno"
+msgstr "Redaktilo de tereno"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:389
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
-msgstr "Influo de tereno"
+msgstr "Redaktilo de scenaro"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "Pentra ilo"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -431,27 +412,27 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Pentri unuopajn seslaterojn."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Pentri sep seslaterojn samtempe."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Pentri dek naŭ seslaterojn samtempe."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Pentri tri seslaterojn en linio."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
 msgid "Fill Tool"
-msgstr ""
+msgstr "Pleniga ilo"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:53
@@ -472,7 +453,7 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
 msgid "Select Tool"
-msgstr ""
+msgstr "Elekta ilo"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:68
@@ -494,27 +475,27 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Elekti unuopajn seslaterojn."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Elekti sep seslaterojn samtempe."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Elekti dek naŭ seslaterojn samtempe."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Elekti tri seslaterojn en linio."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Tonduja kaj alglua ilo"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -535,27 +516,27 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Turni dekstrumen per 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Turni maldekstrumen per 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Inversigi horizontale"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Inversigi vertikale"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
 msgid "Starting Locations Tool"
-msgstr ""
+msgstr "Ilo pri komencaj pozicioj"
 
 #. [topic]: id=editor_tool_starting
 #. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
@@ -564,12 +545,12 @@ msgid ""
 "Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref>dst='.."
-"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
-"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both "
+"<ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref> and "
+"<ref>dst='..editor_mode_scenario' text='Scenario Editor'</ref> modes. The "
+"location names are shown as a list in the editor palette, clicking on the "
+"map will place that name on a hex, each location can only be placed on a "
+"single hex, and the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -595,7 +576,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Grafikaĵoj de terensupermeto de redaktilo"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:129
@@ -613,10 +594,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
-"Impassable and Unwalkable\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
+"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
+"img> Impassable and Unwalkable\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -631,10 +612,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
-"img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
+"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
+"box=yes</img>\n"
 "\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
@@ -673,10 +654,8 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Elevation Graphics"
-msgstr "Influo de tereno"
+msgstr "Grafikaĵoj de terenaltaĵo"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:173
@@ -689,7 +668,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
+msgstr "<bold>text='Rektaj supermetoj'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
@@ -710,7 +689,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Enmapa marko de pliigita alto"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -762,18 +741,16 @@ msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:210
-#, fuzzy
-#| msgid "Terrain"
 msgid "Deprecated Terrain"
-msgstr "Tereno"
+msgstr "Malaktualigita tereno"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:213
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
 "• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
@@ -788,7 +765,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:226
 msgid "Label Tool"
-msgstr ""
+msgstr "Etikeda ilo"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:227
@@ -828,7 +805,7 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:259
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Ilo pri vilaĝposedo"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:260
@@ -848,7 +825,7 @@ msgstr ""
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:274
 msgid "Unit Tool"
-msgstr ""
+msgstr "Ilo pri unuoj"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:275
@@ -868,7 +845,7 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:290
 msgid "Named Areas"
-msgstr ""
+msgstr "Nomitaj areoj"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:291
@@ -900,7 +877,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:312
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Administrilo de ludlistoj"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:313
@@ -915,7 +892,7 @@ msgstr ""
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:324
 msgid "Change Add-on ID"
-msgstr ""
+msgstr "Ŝanĝi identigilon de aldonaĵo"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:325
@@ -928,7 +905,7 @@ msgstr ""
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:334
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Redaktilo de publikigo de aldonaĵo"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:335
@@ -941,7 +918,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:343
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Redaktilo de mapo/scenaro"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:344
@@ -1072,10 +1049,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario's map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1084,7 +1061,7 @@ msgstr ""
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:419
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Uziĝas aparta dosiero por WML-okazaĵoj"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:420
@@ -1123,7 +1100,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:443
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Uzado de masko de redaktilo"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:444
@@ -1135,10 +1112,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:452
-#, fuzzy
-#| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
-msgstr "Taga tempo"
+msgstr "Redaktilo de tagtempo kaj horaro"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:453
@@ -1156,7 +1131,7 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:464
 msgid "Editor Palette"
-msgstr ""
+msgstr "Farboplato de redaktilo"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
@@ -1178,27 +1153,27 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:471
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Montri ĉiajn terenojn"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:472
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Montri nur akvajn terenojn"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:473
 msgid "Show only villages"
-msgstr ""
+msgstr "Montri nur vilaĝojn"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:485
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Dosierformo de mapo de Vesnot"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:486
 msgid "Wesnoth stores its maps in human readable plain text files."
-msgstr ""
+msgstr "Vesnot konservas siajn mapojn en homlegeblaj platatekstaj dosieroj."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:488
@@ -1281,7 +1256,7 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Enciklopedio"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
@@ -1289,12 +1264,14 @@ msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
 msgstr ""
+"<ref>dst='..calendar' text='Kalendaro'</ref>\n"
+"<ref>dst='..geography' text='Terscienco'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendaro"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1322,12 +1299,12 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:12
 #: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
-msgstr ""
+msgstr "Terscienco"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Arkan-toria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:27
@@ -1335,11 +1312,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Rivero, kiu leviĝas en la <ref>dst='heart_mountains' text='Koraj Montoj'</"
+"ref> kaj fluas orienten en Listraon."
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
 msgid "Great River"
-msgstr ""
+msgstr "Granda Rivero"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
@@ -1353,7 +1332,7 @@ msgstr ""
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
 msgid "Great Ocean"
-msgstr ""
+msgstr "Granda Oceano"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:39
@@ -1366,7 +1345,7 @@ msgstr ""
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:44
 msgid "Morogor"
-msgstr ""
+msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:45
@@ -1380,20 +1359,21 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:52
-#, fuzzy
 msgid "Green Isle"
-msgstr "Verda"
+msgstr "Verda Insulo"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Pli granda insulo, kiu kuŝas en la <ref>dst=\"great_ocean' text='Granda "
+"Oceano'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
 msgid "Old Continent"
-msgstr ""
+msgstr "Malnova Kontinento"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:59
@@ -1401,11 +1381,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Kuŝas okcidente de <ref>dst='morogor' text='Morogor'</ref> trans la "
+"<ref>dst='great_ocean' text='Granda Oceano'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:64
 msgid "Great Continent"
-msgstr ""
+msgstr "Granda Kontinento"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:65
@@ -1414,11 +1396,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"La kontinento, sur kiu la <ref>dst='kingdom_wesnoth' text='Reĝlando Vesnot'</"
+"ref> kuŝas. Ĝian okcidentan bordon ĉirkaŭbaras la <ref>dst='great_ocean' "
+"text='Grandan Oceanon'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:70
 msgid "Irdya"
-msgstr ""
+msgstr "Irdja"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:71
@@ -1432,7 +1417,7 @@ msgstr ""
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:76
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "Reĝlando de Vesnot"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
@@ -1492,7 +1477,7 @@ msgstr ""
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:106
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -1518,7 +1503,7 @@ msgstr ""
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:119
 msgid "Northlands"
-msgstr ""
+msgstr "Nordlandoj"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
@@ -1567,7 +1552,7 @@ msgstr ""
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Sudokcidentaj elfaj landoj"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
@@ -1592,9 +1577,8 @@ msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Montoj"
+msgstr "Koraj Montoj"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:155
@@ -1607,7 +1591,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:160
 msgid "Far North"
-msgstr ""
+msgstr "Malproksima Nordo"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:161
@@ -1647,10 +1631,8 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
-msgstr "Taga tempo"
+msgstr "Tagtempa horaro"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1662,7 +1644,7 @@ msgstr "Enkonduko"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
-msgstr "Ludreguloj"
+msgstr "Ludregularo"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
@@ -1671,13 +1653,13 @@ msgstr "Ludreguloj"
 #: src/help/help_topic_generators.cpp:478
 #: src/help/help_topic_generators.cpp:501
 msgid "Traits"
-msgstr "Ecoj"
+msgstr "Trajtoj"
 
 #. [section]: id=units
 #. [topic]: id=..units
 #: data/core/help.cfg:37 data/core/help.cfg:118
 msgid "Units"
-msgstr "Milit-unuoj"
+msgstr "Unuoj"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
@@ -1689,13 +1671,13 @@ msgstr "Kapabloj"
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
-msgstr "Armilspecoj"
+msgstr "Armilspecialaĵoj"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
-msgstr ""
+msgstr "Eraoj"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -1707,7 +1689,7 @@ msgstr "Terenoj"
 #. [topic]: id=..addons
 #: data/core/help.cfg:78 data/core/help.cfg:599
 msgid "Add-ons"
-msgstr ""
+msgstr "Aldonaĵoj"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1735,9 +1717,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Batalo por Vesnot' estas fantazia mov-bazita strategia ludo, kio estas iom "
-"ne kutima inter modernaj strategiaj ludoj. Dum aliaj ludoj strebas esti "
-"komplikaj, Batalo por Vesnot' klopodas je simpleco kaj en la reguloj kaj en "
+"Batalo pri Vesnot estas fantazia mov-bazita strategia ludo, kio estas iom ne "
+"kutima inter modernaj strategiaj ludoj. Dum aliaj ludoj strebas esti "
+"komplikaj, Batalo pri Vesnot klopodas je simpleco kaj en la reguloj kaj en "
 "la ludado. Sed tio ne signifas, ke la ludo estas facila - sur ĉi tiuj "
 "simplaj reguloj eblas konstrui diversajn strategiojn, kio faras tiun ludon "
 "facile komprenata, sed malfacile majstrata."
@@ -1745,7 +1727,7 @@ msgstr ""
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
 msgid "About the Game"
-msgstr "Pri ludo"
+msgstr "Pri la ludo"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:107
@@ -1880,14 +1862,16 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "<header>text='Unuoj de tiu raso'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Fundamentoj de ludregularo</header>\n"
+"\n"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -1940,14 +1924,6 @@ msgstr "Varbado kaj alvokado"
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -2039,10 +2015,6 @@ msgstr ""
 msgid "Income and Upkeep"
 msgstr "Enspezoj kaj elspezoj"
 
-#
-#
-#
-#
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
 #, fuzzy
@@ -2074,10 +2046,6 @@ msgstr ""
 "same zorgeme gardi oron, precipe ĉe kampanjo, kie vi transportas ŝparitan "
 "oron el unu al alia scenejo. Necesas observi ankaŭ: enspezojn kaj elspezojn."
 
-#
-#
-#
-#
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
 #, fuzzy
@@ -2100,10 +2068,6 @@ msgstr ""
 "12 milit-unuojn sur sama nivelo kaj 10 vilaĝojn, vi devas pagi po 2 guldenoj "
 "por turno."
 
-#
-#
-#
-#
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:222
 #, fuzzy
@@ -2132,8 +2096,6 @@ msgid ""
 "scenario."
 msgstr ""
 
-#
-#
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:228
 #, fuzzy
@@ -2156,7 +2118,7 @@ msgstr ""
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:237
 msgid "Hitpoints and Experience"
-msgstr "Sano kaj spertoj"
+msgstr "Vivpoentoj kaj sperto"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:238
@@ -2199,15 +2161,9 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:251
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Avancu al: "
+msgstr "Antaŭigo"
 
-#
-#
-#
-#
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
 msgid ""
@@ -2238,10 +2194,6 @@ msgstr ""
 "akiros multe pli da spertoj, - 4 por milit-unuo sur nivelo 0, 8 por nivelo "
 "1, 16 por nivelo 2, 24 por nivelo 3, kaj tiel plu."
 
-#
-#
-#
-#
 #. [topic]: id=advancement
 #: data/core/help.cfg:254
 #, fuzzy
@@ -2273,7 +2225,7 @@ msgstr ""
 #. [topic]: id=movement
 #: data/core/help.cfg:263
 msgid "Movement"
-msgstr "Movoj"
+msgstr "Movado"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
@@ -2319,7 +2271,7 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Moviĝo en la ludo Batalo por Vesnot estas simpla: Klaku sur la milit-unuo, "
+"Moviĝo en la ludo Batalo pri Vesnot estas simpla: Klaku sur la milit-unuo, "
 "kiun vi volas movi, poste klaku kampeton, kien vi volas movigi ĝin. Kiam "
 "estas milit-unuo markita, ĉiuj kampetoj, sur kiuj ĝi rajtas iri en ĉi tiu "
 "tiro estos reliefigitaj; kaj tiuj, sur kiuj ĝi ne rajtas iri, paliĝos. Se vi "
@@ -2328,10 +2280,6 @@ msgstr ""
 "atingi la kampeton; post klako sur kampeto, la milit-unuo moviĝos al ĝi tra "
 "la plej mallonga ebala vojo, en ĉi tiu tiro kaj ankaŭ en sekvaj."
 
-#
-#
-#
-#
 #. [topic]: id=movement
 #: data/core/help.cfg:266
 #, fuzzy
@@ -2354,10 +2302,6 @@ msgstr ""
 "propraprofite. Nur <ref>dst=ability_skirmish text='energiaj'</ref> milit-"
 "unuoj povas ingnori areon sub kontrolo."
 
-#
-#
-#
-#
 #. [topic]: id=movement
 #: data/core/help.cfg:268
 msgid ""
@@ -2405,12 +2349,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Ordo kaj nombro de atakoj'</header>"
+msgstr "<header>text='Plurludanteco kaj malfaro'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2426,7 +2366,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
 msgid "Save-loading"
-msgstr ""
+msgstr "Ŝargo de konservo"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
@@ -2479,7 +2419,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Lerno el malvenkoj"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:309
@@ -2508,6 +2448,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Jen kelkaj komunaj kialoj malvenki scenaron:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -2569,13 +2512,8 @@ msgid ""
 "scraping a victory”.)"
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2583,7 +2521,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Neverŝajnaj kialoj'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
@@ -2663,11 +2601,10 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:346
 msgid "Combat"
-msgstr "Batalo"
+msgstr "Batalado"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:347
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2675,7 +2612,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordo kaj nombro de atakoj'</header>"
+"<header>text='Ordo kaj nombro de batoj'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:347
@@ -2692,7 +2629,7 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Batalo en Batalo por Vesnot' ĉiam okazas inter du milit-unuoj sur najbaraj "
+"Batalo en Batalo pri Vesnot ĉiam okazas inter du milit-unuoj sur najbaraj "
 "kampoj. Klaku sur via  milit-unuo kaj klaku sur kontraŭla milit-unuo, kiun "
 "vi volas ataki: via milit-unuo ekmovos al malamika, kaj kiam troviĝas sur "
 "najbara kampo ekos batalo. Atakanto kaj defendanto alterne atakas ĝis ili "
@@ -2701,10 +2638,6 @@ msgstr ""
 "- tio estas kutime glavoj, hakiloj aŭ dentegoj; la malproksima - tie kutimaj "
 "armiloj estas pafarkoj, lancoj kaj magio."
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:349
 #, fuzzy
@@ -2729,13 +2662,8 @@ msgstr ""
 "vundo 5, sed orko infanteriano kun atako 9-2 povas haki nur du foje, sed kun "
 "vundo 9."
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:351
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2743,12 +2671,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Ŝanco bati'</header>"
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:353
 #, fuzzy
@@ -2773,10 +2697,6 @@ msgstr ""
 "ŝancon trafi ilin. Simile, ŝanco de elfo trafi atakanton dum kontraŭatako "
 "dependas de tereno, en kiu troviĝas atakanto."
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:355
 #, fuzzy
@@ -2797,10 +2717,6 @@ msgstr ""
 "havas dum sia atako ĉiam ŝancon almenaŭ 60% atingi celon, sen rilato al "
 "tereno."
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:357
 msgid ""
@@ -2812,10 +2728,6 @@ msgstr ""
 "\n"
 "<header>text=Damaĝo</header>"
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:359
 #, fuzzy
@@ -2839,10 +2751,6 @@ msgstr ""
 "rezistkapablo influas bazajn armilojn, elektu en menuo ĉe elektado de atako "
 "eblon <italic>text='Kalkulo de damaĝo'</italic>."
 
-#
-#
-#
-#
 #. [topic]: id=combat
 #: data/core/help.cfg:361
 #, fuzzy
@@ -2864,12 +2772,8 @@ msgstr ""
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:369
 msgid "Damage Types and Resistance"
-msgstr "Specoj de damaĝo kaj rezisteco"
+msgstr "Damaĝotipoj kaj rezisto"
 
-#
-#
-#
-#
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:370
 #, fuzzy
@@ -2906,10 +2810,6 @@ msgstr ""
 "kaj sankta. milit-unuoj havas diversan gradon de rezisteco kaj tio influas "
 "gravecon de vundoj."
 
-#
-#
-#
-#
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:372
 #, fuzzy
@@ -2925,10 +2825,6 @@ msgstr ""
 "Ekzemple skeletuloj bone rezistas al tanĉ- kaj pik-vundoj, sed male, al "
 "batoj kaj fajro, kaj ekstreme senrezistaj al sankta magio."
 
-#
-#
-#
-#
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:374
 msgid ""
@@ -2984,18 +2880,10 @@ msgid ""
 "advanced preference “Customize orb colors”."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Ŝanco por trafo'</header>"
+msgstr "<header>text='Elipsoj'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3059,7 +2947,7 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
 msgid "Time of Day"
-msgstr "Taga tempo"
+msgstr "Tagtempo"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
@@ -3079,10 +2967,6 @@ msgstr ""
 "milit-unuoj de kaoso kaŭzas nokte +25% damaĝon, kaj dum tago −25%. Neŭtralaj "
 "milit-unuoj ne estas influataj de tempo."
 
-#
-#
-#
-#
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
 #, fuzzy
@@ -3106,7 +2990,7 @@ msgstr ""
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
-msgstr "Tagiĝo"
+msgstr "Matenruĝo"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
@@ -3126,30 +3010,26 @@ msgstr "Posttagmezo"
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
-msgstr "Krepusko"
+msgstr "Vesperruĝo"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
-msgstr "La unua patrolo"
+msgstr "Unua patrolo"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
-msgstr "Memoru, ke kelkaj scenejoj okazas subtere, kie estas eterna nokto!"
+msgstr "Rimarku, ke kelkaj scenejoj okazas subtere, tie estas eterna nokto!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:485
@@ -3179,10 +3059,6 @@ msgstr ""
 msgid "Healing"
 msgstr "Sanigado"
 
-#
-#
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:497
 #, fuzzy
@@ -3205,8 +3081,6 @@ msgid ""
 "only one can occur per turn."
 msgstr ""
 
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:499
 #, fuzzy
@@ -3219,8 +3093,6 @@ msgstr ""
 "\n"
 "Vilaĝo: milit-unuo, kiu komencos movon en vilaĝo, resaniĝos je 8 punktoj."
 
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:500
 #, fuzzy
@@ -3234,8 +3106,6 @@ msgstr ""
 "<ref>dst=ability_regeneration text='Regenerado'</ref>: Kelkaj milit-unuoj "
 "(ekz. troloj) dum ĉiu turno resaniĝoj je 8 punktoj."
 
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:501
 #, fuzzy
@@ -3254,8 +3124,6 @@ msgstr ""
 "sur najbaraj kampetoj, kaj  milit-unuo povas esti resanigita maksimume je 4 "
 "punktojn de sano dum unu turno."
 
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:502
 #, fuzzy
@@ -3282,10 +3150,6 @@ msgid ""
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=healing
 #: data/core/help.cfg:504
 #, fuzzy
@@ -3348,7 +3212,7 @@ msgstr ""
 #. [topic]: id=license
 #: data/core/help.cfg:522
 msgid "License"
-msgstr "Licenco"
+msgstr "Permesilo"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
@@ -3375,10 +3239,6 @@ msgid ""
 "italic>."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:535
 #, fuzzy
@@ -3426,6 +3286,10 @@ msgid ""
 "Terrains come in two types: <italic>text='basic'</italic> and "
 "<italic>text='mixed'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Terenoj ekzistas en du tipoj: <italic>text='baza'</italic> kaj "
+"<italic>text='miksa'</italic>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:547
@@ -3434,13 +3298,8 @@ msgid ""
 "unit’s defensive capability in combat."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:549
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3448,7 +3307,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Bazaj terentipoj</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:551
@@ -3471,13 +3330,8 @@ msgid ""
 "terrain types may have unique properties like illumination effects as well."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:557
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3485,7 +3339,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Miksaj terentipoj'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:559
@@ -3559,10 +3413,6 @@ msgid ""
 "menu."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:579
 #, fuzzy
@@ -3605,13 +3455,8 @@ msgid ""
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3619,8 +3464,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Bazaj terenspecoj'</header>\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:600
@@ -3634,19 +3478,10 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:610
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Uzado de aldonaĵoj"
 
-#
-#
-#
-#
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3654,7 +3489,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Damaĝo</header>"
+"<header>text='Kampanjoj kaj scenaroj'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
@@ -3676,13 +3511,14 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Unuoj havantaj tiun specialan atakon'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Plurludantecaj kampanjoj, scenaroj kaj mapopakoj'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -3696,7 +3532,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:619
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3704,7 +3539,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordo kaj nombro de atakoj'</header>"
+"<header>text='Plurludantecaj eraoj kaj frakcioj'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:621
@@ -3726,13 +3561,12 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' dst='.."
-"eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' "
+"dst='..eras_section'</ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:627
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3740,7 +3574,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordo kaj nombro de atakoj'</header>"
+"<header>text='Modifoj'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:629
@@ -3752,13 +3586,8 @@ msgid ""
 "modifications when creating a new game."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=using_addons
 #: data/core/help.cfg:631
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3766,7 +3595,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Kernoj'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:633
@@ -3782,13 +3611,8 @@ msgid ""
 "represented as a hexagonal map with ’units’ in some way."
 msgstr ""
 
-#
-#
-#
-#
 #. [topic]: id=using_addons
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3796,7 +3620,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ŝanco por trafo'</header>"
+"<header>text='Rimedoj de kreinto'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:639
@@ -3813,7 +3637,7 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:648
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Instalado de aldonaĵoj"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
@@ -3844,7 +3668,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:662
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Forigado de aldonaĵoj"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:663
@@ -3862,8 +3686,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
-#, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
 msgstr "Ĝeneralaj komandoj"
 
@@ -3958,6 +3780,9 @@ msgid ""
 "Bring up theme selection menu.\n"
 "\n"
 msgstr ""
+"\n"
+"Aperigi etoselektan menuon.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:709
@@ -3966,6 +3791,9 @@ msgid ""
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"Eliri la scenaron (sendemande).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:712
@@ -3975,7 +3803,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Savi la ludon (sendemande).\n"
+"Konservi la ludon (sendemande).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3984,11 +3812,13 @@ msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Konservi la ludon kaj eliri la scenaron (sendemande)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:723
 msgid "Multiplayer Commands"
-msgstr ""
+msgstr "Porplurludantaj komandoj"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:726
@@ -4067,6 +3897,9 @@ msgid ""
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
+"\n"
+"Baskuli silentigon de ĉiuj observantoj.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:750
@@ -4146,6 +3979,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Montri ludstatan variablon.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:785
@@ -4171,8 +4007,6 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
-#
-#
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
@@ -4195,8 +4029,6 @@ msgstr ""
 "Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
 "serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
 
-#
-#
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:37
 #, fuzzy
@@ -4222,9 +4054,8 @@ msgstr ""
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:62
-#, fuzzy
 msgid "female^cures"
-msgstr "sentima"
+msgstr "kuraco"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:63
@@ -4235,7 +4066,6 @@ msgstr ""
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:95
-#, fuzzy
 msgid "female^regenerates"
 msgstr "regenero"
 
@@ -4253,15 +4083,14 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
 #, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "regenero"
+msgstr "regenero +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
 #, fuzzy
 msgid "female^regenerates +4"
-msgstr "regenero"
+msgstr "regenero +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
@@ -4284,10 +4113,6 @@ msgstr ""
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 #, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -4298,13 +4123,12 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "diversio"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
 msgid "female^diversion"
-msgstr "komandado"
+msgstr "diversio"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
@@ -4329,9 +4153,8 @@ msgstr ""
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
-#, fuzzy
 msgid "female^leadership"
-msgstr "komandado"
+msgstr "gvideco"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
@@ -4364,18 +4187,9 @@ msgstr ""
 msgid "illuminates"
 msgstr "lumigo"
 
-#
-#
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:239
 #, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4392,9 +4206,8 @@ msgstr ""
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:254
-#, fuzzy
 msgid "female^teleport"
-msgstr "inteligenta"
+msgstr "teleporto"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:255
@@ -4408,12 +4221,9 @@ msgstr ""
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:286
-#, fuzzy
 msgid "female^ambush"
-msgstr "lojala"
+msgstr "embusko"
 
-#
-#
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:287
 #, fuzzy
@@ -4432,16 +4242,13 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:306
 msgid "burrow"
-msgstr ""
+msgstr "nestotruo"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:307
-#, fuzzy
 msgid "female^burrow"
-msgstr "lojala"
+msgstr "nestotruo"
 
-#
-#
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:308
 #, fuzzy
@@ -4458,8 +4265,6 @@ msgstr ""
 "Malamikaj milit-unuoj nek vidas nek povas ataki la milit-unuon en arbaro, "
 "nur dum movo tujsekvanta post ĝia atako, aŭ se ili estas sur najbara kampo."
 
-#
-#
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:330
 #, fuzzy
@@ -4481,8 +4286,6 @@ msgstr ""
 msgid "female^concealment"
 msgstr "embusko"
 
-#
-#
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:350
 #, fuzzy
@@ -4502,24 +4305,16 @@ msgstr ""
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:368
 msgid "submerge"
-msgstr "subakviĝi"
+msgstr "subakviĝo"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:369
-#, fuzzy
 msgid "female^submerge"
-msgstr "potenca"
+msgstr "subakviĝo"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:370
 #, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4536,9 +4331,8 @@ msgstr ""
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:390
-#, fuzzy
 msgid "female^feeding"
-msgstr "sentima"
+msgstr "nutro"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:391
@@ -4556,220 +4350,188 @@ msgstr "Maks. BP +3, maks. SP +20%"
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
-msgstr ""
+msgstr "Tagmezo"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
-msgstr ""
+msgstr "Noktomezo"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Unua horo"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:230
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Dua horo"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:242
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Tria horo"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:254
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Kvara horo"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:266
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Kvina horo"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:278
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "La dua patrolo"
+msgstr "Dua patrolo – Sesa horo"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Mateno – Unua horo"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Mateno – Dua horo"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Mateno – Tria horo"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Mateno – Kvara horo"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Posttagmezo – Unua horo"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Posttagmezo – Dua horo"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Posttagmezo – Tria horo"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Posttagmezo – Kvara horo"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Posttagmezo – Kvina horo"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Posttagmezo – Sesa horo"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Unua patrolo – Unua horo"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Unua patrolo – Dua horo"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Unua patrolo – Tria horo"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Unua patrolo – Kvara horo"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:514
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "La unua patrolo"
+msgstr "Unua matenruĝo"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "La dua patrolo"
+msgstr "Dua matenruĝo"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:536
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Mateno"
+msgstr "Unua mateno"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:548
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Mateno"
+msgstr "Dua mateno"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:560
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Midday"
-msgstr "La unua patrolo"
+msgstr "Unua tagmezo"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:572
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "La dua patrolo"
+msgstr "Dua tagmezo"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:584
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Posttagmezo"
+msgstr "Unua posttagmezo"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:596
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Posttagmezo"
+msgstr "Dua posttagmezo"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:608
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "unua bato"
+msgstr "Unua vesperruĝo"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:619
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "La dua patrolo"
+msgstr "Dua vesperruĝo"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
-msgstr ""
+msgstr "La mallonga malhelo"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "La longa malhelo (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "La longa malhelo (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "La longa malhelo (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "La longa malhelo (4)"
 
 #: data/core/macros/special-notes.cfg:9
 msgid ""
@@ -4785,22 +4547,23 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
-msgstr ""
+msgstr "Ĉi tiu unuo kapablas je baza resanigo."
 
 #: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of rapid healing."
-msgstr ""
+msgstr "Ĉi tiu unuo kapablas je rapida resanigo."
 
 #: data/core/macros/special-notes.cfg:25
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+"Ĉi tiu unuo kapablas resanigi tiujn ĉirkaŭe, kaj kuraci ilin el veneno."
 
 #: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
+msgstr "Ĉi tiu unuo kapablas neŭtraligi efikojn de veneno en unuoj ĉirkaŭ ĝi."
 
 #: data/core/macros/special-notes.cfg:31
 msgid ""
@@ -4828,7 +4591,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr "Lumigo plialtigas la lumnivelon en apudaj areoj."
 
 #: data/core/macros/special-notes.cfg:46
 #, fuzzy
@@ -4849,8 +4612,6 @@ msgstr ""
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 
-#
-#
 #: data/core/macros/special-notes.cfg:55
 #, fuzzy
 msgid ""
@@ -4866,12 +4627,15 @@ msgstr ""
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+"Ĉi tiu unuo povas moviĝi kaŝe en profunda akvo, ne postulas aeron el surfaco."
 
 #: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Ĉi tiu unuo gajnas 1 vivpoenton aldone de sia maksimumo ĉiam, kiam ĝi "
+"mortigas vivantan unuon."
 
 #: data/core/macros/special-notes.cfg:64
 msgid ""
@@ -4930,15 +4694,8 @@ msgid ""
 "are wounded."
 msgstr ""
 
-#
-#
-#
-#
 #: data/core/macros/special-notes.cfg:91
 #, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -4992,10 +4749,6 @@ msgstr "lojala"
 msgid "Zero upkeep"
 msgstr "Nula soldo"
 
-#
-#
-#
-#
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:15
 #, fuzzy
@@ -5041,7 +4794,7 @@ msgstr "nemortinta"
 #: data/core/macros/traits.cfg:57 data/core/macros/traits.cfg:83
 #: data/core/macros/traits.cfg:109
 msgid "Immune to drain, poison, and plague"
-msgstr "Imuneco kontraŭ elsuĉo, veneno kaj plago"
+msgstr "Imuno kontraŭ elsuĉo, veneno kaj plago"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
@@ -5062,20 +4815,21 @@ msgstr ""
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr "Nemortintaj unuoj rezistas venenon, elsuĉon kaj plagon."
+msgstr ""
+"<italic>text='Nemortintaj'</italic> unuoj rezistas venenon, elsuĉon kaj "
+"plagon."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:81
 msgid "mechanical"
-msgstr "mekanika"
+msgstr "meĥanika"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:82
 msgid "female^mechanical"
-msgstr "mekanika"
+msgstr "meĥanika"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:84
@@ -5089,23 +4843,21 @@ msgstr ""
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:84
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "Nemortintaj unuoj rezistas venenon, elsuĉon kaj plagon."
+msgstr ""
+"<italic>text='Meĥanikaj'</italic> unuoj rezistas venenon, elsuĉon kaj plagon."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:107
-#, fuzzy
 msgid "elemental"
-msgstr "embusko"
+msgstr "elementa"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:108
-#, fuzzy
 msgid "female^elemental"
-msgstr "lojala"
+msgstr "elementa"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
@@ -5116,14 +4868,20 @@ msgid ""
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Elementaj unuoj ĝenerale havas elementa kiel solan trajton. Tial, ke "
+"elementaj unuoj estas energibazitaj estaĵoj, elsuĉo, veneno kaj plano ne "
+"efikas sur ili."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "Nemortintaj unuoj rezistas venenon, elsuĉon kaj plagon."
+msgstr ""
+"<italic>text='Elementaj'</italic> unuoj imunas kontraŭ veneno, elsuĉo kaj "
+"plago."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:132
@@ -5133,12 +4891,8 @@ msgstr "forta"
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:133
 msgid "female^strong"
-msgstr "potenca"
+msgstr "forta"
 
-#
-#
-#
-#
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
 #, fuzzy
@@ -5170,17 +4924,13 @@ msgstr ""
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:153
 msgid "dextrous"
-msgstr "lerta"
+msgstr "manlerta"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:154
 msgid "female^dextrous"
-msgstr "lerta"
+msgstr "manlerta"
 
-#
-#
-#
-#
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:155
 #, fuzzy
@@ -5219,10 +4969,6 @@ msgstr "rapida"
 msgid "female^quick"
 msgstr "rapida"
 
-#
-#
-#
-#
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
 #, fuzzy
@@ -5264,10 +5010,6 @@ msgstr "inteligenta"
 msgid "female^intelligent"
 msgstr "inteligenta"
 
-#
-#
-#
-#
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
 #, fuzzy
@@ -5284,11 +5026,11 @@ msgstr ""
 "\n"
 "\n"
 "Inteligentaj milit-unuoj utilas ĉe komenco de kampanjo, ĉar eblas ilin "
-"rapide avancigi sur pli altaj niveloj. Pli poste jam inteligentaj milit-"
-"unuoj ne tiel utilas, ĉar avancado post atingo de maksimaj kapabloj jam ne "
-"tiel gravas, kiel avanco sur pli alta nivelo. Se vi posedas sufiĉon da tupoj "
-"\"sur limo\" de kapabloj, eble vi volos alvoki milit-unuojn kun pli utilaj "
-"ecoj."
+"rapide antaŭigi sur pli altaj niveloj. Pli poste jam inteligentaj milit-"
+"unuoj ne tiel utilas, ĉar antaŭigo post atingo de maksimaj kapabloj jam ne "
+"tiel gravas, kiel antaŭigo sur pli alta nivelo. Se vi posedas sufiĉon da "
+"tupoj \"sur limo\" de kapabloj, eble vi volos alvoki milit-unuojn kun pli "
+"utilaj ecoj."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
@@ -5298,17 +5040,13 @@ msgstr "Inteligentaj milit-unuoj bezonas je 20% malpli da spertoj por avanco."
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
 msgid "resilient"
-msgstr "rezista"
+msgstr "rezistema"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:207
 msgid "female^resilient"
-msgstr "rezista"
+msgstr "rezistema"
 
-#
-#
-#
-#
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
 msgid ""
@@ -5370,7 +5108,7 @@ msgstr "sentima"
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Batalas normale dum nefavoraj tagtempoj"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:255 data/core/macros/traits.cfg:272
@@ -5393,7 +5131,7 @@ msgstr "nemortinta"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr ""
+msgstr "Ricevas nur 50% da defendo en surlandaj vilaĝoj"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -5407,14 +5145,13 @@ msgstr ""
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:304
 msgid "weak"
-msgstr ""
+msgstr "malforta"
 
 # undead
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:305
-#, fuzzy
 msgid "female^weak"
-msgstr "nemortinta"
+msgstr "malforta"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
@@ -5426,15 +5163,13 @@ msgstr "Nemortintaj unuoj rezistas venenon, elsuĉon kaj plagon."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
-#, fuzzy
 msgid "slow"
-msgstr "malrapidigo"
+msgstr "malrapida"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:324
-#, fuzzy
 msgid "female^slow"
-msgstr "lojala"
+msgstr "malrapida"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
@@ -5486,15 +5221,13 @@ msgstr ""
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
-#, fuzzy
 msgid "aged"
-msgstr "distance"
+msgstr "altaĝa"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:360
-#, fuzzy
 msgid "female^aged"
-msgstr "sentima"
+msgstr "altaĝa"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
@@ -5511,11 +5244,6 @@ msgstr "furioza"
 #. [berserk]: id=berserk
 #: data/core/macros/weapon_specials.cfg:10
 #, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -5539,11 +5267,6 @@ msgstr ""
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:42
 #, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -5565,9 +5288,8 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/weapon_specials.cfg:75
-#, fuzzy
 msgid "petrifies"
-msgstr "Batoj"
+msgstr "ŝtonigo"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/weapon_specials.cfg:76
@@ -5583,10 +5305,6 @@ msgstr ""
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/weapon_specials.cfg:87
 #, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -5601,10 +5319,6 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
 #, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -5627,10 +5341,6 @@ msgstr "magia"
 #. [chance_to_hit]: id=magical
 #: data/core/macros/weapon_specials.cfg:116
 #, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -5640,9 +5350,8 @@ msgstr ""
 
 #. [swarm]: id=swarm
 #: data/core/macros/weapon_specials.cfg:128
-#, fuzzy
 msgid "swarm"
-msgstr "frapo"
+msgstr "svarmi"
 
 #. [swarm]: id=swarm
 #: data/core/macros/weapon_specials.cfg:129
@@ -5672,7 +5381,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:153
 msgid "absorb"
-msgstr ""
+msgstr "absorbi"
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:154
@@ -5690,10 +5399,6 @@ msgstr ""
 #. [drains]: id=drains
 #: data/core/macros/weapon_specials.cfg:167
 #, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -5704,18 +5409,12 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/weapon_specials.cfg:177
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "unua bato"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/weapon_specials.cfg:178
 #, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -5737,7 +5436,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "stuporo"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -5799,17 +5498,17 @@ msgstr ""
 #. [race]: id=drake
 #: data/core/units.cfg:51
 msgid "race^Drake"
-msgstr "Drako"
+msgstr "Draketo"
 
 #. [race]: id=drake
 #: data/core/units.cfg:52
 msgid "race+female^Drake"
-msgstr "Drakino"
+msgstr "Draketo"
 
 #. [race]: id=drake
 #: data/core/units.cfg:53
 msgid "race^Drakes"
-msgstr "Drakoj"
+msgstr "Draketoj"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
@@ -6026,24 +5725,18 @@ msgstr ""
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Homo"
+msgstr "Falko"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:138
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Homino"
+msgstr "Falko"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:139
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Homoj"
+msgstr "Falkoj"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:140
@@ -6120,24 +5813,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:181
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Arbulo"
+msgstr "Ĉevalo"
 
 #. [race]: id=horse
 #: data/core/units.cfg:182
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ogrino"
+msgstr "Ĉevalo"
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Arbuloj"
+msgstr "Ĉevaloj"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
@@ -6161,7 +5848,7 @@ msgstr "Homo"
 #. [race]: id=human
 #: data/core/units.cfg:202
 msgid "race+female^Human"
-msgstr "Homino"
+msgstr "Homo"
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -6213,24 +5900,18 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:219
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Homo"
+msgstr "Dunpopola homo"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:220
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Homino"
+msgstr "Dunpopola homo"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Nemortintoj"
+msgstr "Dunpopolo"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:223
@@ -6378,12 +6059,12 @@ msgstr ""
 #. [race]: id=mechanical
 #: data/core/units.cfg:273
 msgid "race^Mechanical"
-msgstr "Mekanika"
+msgstr "Meĥanika"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
-msgstr "Mekanikaj"
+msgstr "Meĥanikaj"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:275
@@ -6397,19 +6078,17 @@ msgstr ""
 #. [race]: id=merman
 #: data/core/units.cfg:284
 msgid "race^Merman"
-msgstr "Marfeo"
+msgstr "Virsireno"
 
 #. [race]: id=merman
 #: data/core/units.cfg:285
 msgid "race^Mermaid"
-msgstr "Marfeinoj"
+msgstr "Sireno"
 
 #. [race]: id=merman
 #: data/core/units.cfg:286
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Trolo"
+msgstr "Gesirenoj"
 
 #. [race]: id=merman
 #: data/core/units.cfg:288
@@ -6432,8 +6111,6 @@ msgstr "Monstro"
 
 #. [race]: id=monster
 #: data/core/units.cfg:297
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monstro"
 
@@ -6457,10 +6134,8 @@ msgstr "Nago"
 
 #. [race]: id=naga
 #: data/core/units.cfg:307
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
-msgstr "Nagino"
+msgstr "Nago"
 
 #. [race]: id=naga
 #: data/core/units.cfg:308
@@ -6599,24 +6274,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Nanoj"
+msgstr "Korvo"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Drakino"
+msgstr "Korvo"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Nanoj"
+msgstr "Korvoj"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -6646,7 +6315,7 @@ msgstr "Trolo"
 #. [race]: id=troll
 #: data/core/units.cfg:366
 msgid "race+female^Troll"
-msgstr "Trolino"
+msgstr "Trolo"
 
 #. [race]: id=troll
 #: data/core/units.cfg:367
@@ -6695,17 +6364,17 @@ msgstr ""
 #. [race]: id=undead
 #: data/core/units.cfg:388
 msgid "race^Undead"
-msgstr "Nemortinto"
+msgstr "Malmortulo"
 
 #. [race]: id=undead
 #: data/core/units.cfg:389
 msgid "race+female^Undead"
-msgstr "Nemotrtinto"
+msgstr "Malmortulo"
 
 #. [race]: id=undead
 #: data/core/units.cfg:390
 msgid "race+plural^Undead"
-msgstr "Nemortintoj"
+msgstr "Malmortuloj"
 
 #. [race]: id=undead
 #: data/core/units.cfg:391
@@ -6747,19 +6416,17 @@ msgstr ""
 #. [race]: id=wolf
 #: data/core/units.cfg:404
 msgid "race^Wolf"
-msgstr ""
+msgstr "Lupo"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:405
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfino"
+msgstr "Lupo"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:406
 msgid "race^Wolves"
-msgstr ""
+msgstr "Lupoj"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:407
@@ -6827,7 +6494,7 @@ msgstr ""
 
 #: data/lua/feeding.lua:30 data/lua/feeding.lua:43
 msgid "+1 max HP"
-msgstr "+1 maksimuma BP"
+msgstr "+1 maksimuma VP"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
@@ -6837,37 +6504,33 @@ msgstr ""
 # undead
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "nemortinta"
+msgstr "stupora"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "stupora"
 
 #: src/help/help.cpp:211
 msgid "Close"
-msgstr "Fermu"
+msgstr "Fermi"
 
 #: src/help/help.cpp:215
 msgid "Help"
 msgstr "Helpo"
 
 #: src/help/help.cpp:267 src/help/help.cpp:271
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "Eraro ĉe analizado de helpteksto:"
+msgstr "Eraro dum analizo de helpteksto:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Plej bona el"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Plej malbona el"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
@@ -6908,65 +6571,44 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:604
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Specialaj notoj:"
+msgstr "Specialaj notoj:"
 
 #: src/help/help_topic_generators.cpp:193
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
-msgstr "Tereno"
+msgstr "Baza tereno: "
 
 #: src/help/help_topic_generators.cpp:213
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Kosto de movo"
+msgstr "Ecoj pri movo: "
 
 #: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
-msgstr ""
+msgstr "Ecoj pri defendo: "
 
 #: src/help/help_topic_generators.cpp:297
-#, fuzzy
-#| msgid "level"
 msgid "Level"
 msgstr "Nivelo"
 
 #: src/help/help_topic_generators.cpp:361
 msgid "Advances from: "
-msgstr "Avanca de: "
+msgstr "Antaŭiĝas el: "
 
 #: src/help/help_topic_generators.cpp:363
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Avanca de: "
+msgstr "Antaŭiĝas al: "
 
 #: src/help/help_topic_generators.cpp:392
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base unit: "
-msgstr "Tereno"
+msgstr "Baza unuo: "
 
 #: src/help/help_topic_generators.cpp:397
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base units: "
-msgstr "Tereno"
+msgstr "Bazaj unuoj: "
 
 #: src/help/help_topic_generators.cpp:415
-#, fuzzy
 msgid "Variations: "
-msgstr "Frakcio"
+msgstr "Variaĵoj: "
 
 #: src/help/help_topic_generators.cpp:439
 msgid "race^Miscellaneous"
@@ -6974,32 +6616,27 @@ msgstr "Diversaj"
 
 #: src/help/help_topic_generators.cpp:441
 msgid "Race: "
-msgstr "Raso:"
+msgstr "Raso: "
 
 #: src/help/help_topic_generators.cpp:511
 msgid "Abilities: "
-msgstr "Kapabloj:"
+msgstr "Kapabloj: "
 
 #: src/help/help_topic_generators.cpp:537
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Kapabloj:"
+msgstr "Plibonigoj de kapabloj: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:567
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "Sano:"
+msgstr "VP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:571
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
 msgstr "Movoj:"
 
@@ -7008,7 +6645,7 @@ msgstr "Movoj:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:576
 msgid "Vision:"
-msgstr ""
+msgstr "Vido:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -7022,28 +6659,22 @@ msgstr "frapo"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:587
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Kostoj:"
+msgstr "Kosto:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:591
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Aparteneco:"
+msgstr "Aparteno:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:598
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Bezonataj spertoj:"
+msgstr "Bezonataj SP:"
 
 #: src/help/help_topic_generators.cpp:616
 msgid "unit help^Attacks"
@@ -7075,17 +6706,15 @@ msgstr "Rezistoj"
 
 #: src/help/help_topic_generators.cpp:706
 msgid "Attack Type"
-msgstr "Ataktipo"
+msgstr "Atakspeco"
 
 #: src/help/help_topic_generators.cpp:707
 msgid "Resistance"
 msgstr "Rezisto"
 
 #: src/help/help_topic_generators.cpp:737
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
-msgstr "Influo de tereno"
+msgstr "Modifiloj de tereno"
 
 #: src/help/help_topic_generators.cpp:741
 msgid "Terrain"
@@ -7101,997 +6730,13 @@ msgstr "Kosto de movo"
 
 #: src/help/help_topic_generators.cpp:747
 #, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Defendo"
 
 #: src/help/help_topic_generators.cpp:752
 msgid "Vision Cost"
-msgstr ""
+msgstr "Kosto de vido"
 
 #: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr ""
-
-#, fuzzy
-#~| msgid "firststrike"
-#~ msgid "first verse"
-#~ msgstr "unua bato"
-
-#, fuzzy
-#~| msgid "Second Watch"
-#~ msgid "second verse"
-#~ msgstr "La dua patrolo"
-
-#~ msgid "Village"
-#~ msgstr "Vilaĝo"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Komandado:\n"
-#~ "Tiu ĉi milit-unuo kapablas gvidi ĉirkaŭajn milit-unuojn, ili batalas pli "
-#~ "bone.\n"
-#~ "\n"
-#~ "Aliancaj milit-unuoj malplinivelaj kaŭzas ĉe najbaraj kampoj pli altan "
-#~ "damaĝon. Se via  milit-unuo troviĝas apud alianca malplinivela milit-unuo "
-#~ "kun komandado, kaŭzos dum atako je 25% pli grandan damaĝon por ĉiu "
-#~ "niveldiferenco de la milit-unuoj."
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Instrukcioj al Batalo por Vesnot"
-
-#, fuzzy
-#~ msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-#~ msgstr "verda, se la unuo en ĉi ludmovo ne moviĝis"
-
-#, fuzzy
-#~ msgid ""
-#~ "• <bold>text='Yellow'</bold> if it has moved, but could still move "
-#~ "further or attack."
-#~ msgstr "flava - se ĝi jam moviĝis, sed ankoraŭ povas moviĝi aŭ ataki, aŭ"
-
-#~ msgid "Orbs"
-#~ msgstr "Sferoj"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "Ĉe ĉiu via milit-unuo supre de montrilo de sano, troviĝas kolora sfero. "
-#~ "Signifo de koloroj:"
-
-#, fuzzy
-#~ msgid " blue if the unit is an ally you do not control."
-#~ msgstr "Blua sfero montras milit-unuon, kiun vi ne povas kontroli."
-
-#, fuzzy
-#~ msgid " Enemy units have no orb on top of their energy bar."
-#~ msgstr "Malamikaj unuoj havas neniun sferon super energiindikatoro"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ " option at the title screen.\n"
-#~ "\n"
-#~ "<header>text='What you get'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Pure Map Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Scenario Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Cores</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#, fuzzy
-#~| msgid "race^Orc"
-#~ msgid "race^Roc"
-#~ msgstr "Orko"
-
-#, fuzzy
-#~| msgid "race+female^Orc"
-#~ msgid "race+female^Roc"
-#~ msgstr "Orkino"
-
-#, fuzzy
-#~| msgid "race^Orcs"
-#~ msgid "race^Rocs"
-#~ msgstr "Orkoj"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ordo kaj nombro de atakoj'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Pure Map Mode</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Scenario Mode</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#, fuzzy
-#~| msgid "Fundamentals of Gameplay"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Fundamentals of Gameplay</big>\n"
-#~ "\n"
-#~ msgstr "Bazaj reguloj de la ludo"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Chance to Hit</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Basic Terrain Types</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Mixed Terrain Types</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Defense Caps</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Basic Terrain Types</big>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"
-
-#
-#
-#
-#
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text=Damage</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Campaigns and Scenarios</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Damaĝo</header>"
-
-#~ msgid "race^Mermen"
-#~ msgstr "Marfeoj"
-
-#~ msgid "ingame_help_item^Contributors"
-#~ msgstr "Kontribuantoj"
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Homo"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Homino"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Mekanikaj"
-
-#, fuzzy
-#~ msgid "female^nightstalk"
-#~ msgstr "nokta embusko"
-
-#, fuzzy
-#~| msgid ""
-#~| "Plague:\n"
-#~| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~| "unit identical to and on the same side as the unit with the Plague "
-#~| "attack. This doesn’t work on Undead or units in villages."
-#~ msgid ""
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "unit identical to and on the same side as the unit with the Plague "
-#~ "attack. This doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Plago:\n"
-#~ "Se unuo estas murdita per plag-atako, fariĝos el ĝi egala milit-unuo kaj "
-#~ "batalos sur sama flanko kiel tiu, kiu mortigis la unuon. Tio ne validas "
-#~ "ĉe nemortintoj kaj unuoj en vilaĝo."
-
-#~ msgid "Intelligent"
-#~ msgstr "Inteligenta"
-
-#~ msgid "Quick"
-#~ msgstr "Rapida"
-
-#~ msgid "Resilient"
-#~ msgstr "Rezistema"
-
-#~ msgid "Strong"
-#~ msgstr "Forta"
-
-#~ msgid "Fearless"
-#~ msgstr "Sentima"
-
-#, fuzzy
-#~ msgid "Feral"
-#~ msgstr "Muro de groto"
-
-#~ msgid "Loyal"
-#~ msgstr "Fidela"
-
-#~ msgid "trait^Undead"
-#~ msgstr "Nemortinta"
-
-#~ msgid "trait^Mechanical"
-#~ msgstr "Mekanika"
-
-#, fuzzy
-#~ msgid "trait^Elemental"
-#~ msgstr "embusko"
-
-#~ msgid "Dextrous"
-#~ msgstr "Lerta"
-
-#~ msgid "Healthy"
-#~ msgstr "Sana"
-
-#, fuzzy
-#~ msgid "Dim"
-#~ msgstr "Meza"
-
-#, fuzzy
-#~ msgid "Slow"
-#~ msgstr "Bremsigita"
-
-#, fuzzy
-#~| msgid "trait^Undead"
-#~ msgid "trait^Aged"
-#~ msgstr "Nemortinta"
-
-#, fuzzy
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "Viaj milit-unuoj en bataloj nepre estos vunditaj. Se estas milit-unuo "
-#~ "<ref>dst=experience_and_advancement text='avancita'</ref>, plene ĝi "
-#~ "resaniĝos. Tio povas okazi en batalo kun kontraŭlo, aŭ dum via aŭ "
-#~ "kontraŭla tiro. Vesnot ebligas kuraci milit-unuon ankaŭ alimaniere. Tio "
-#~ "eblas fari komence de ĉiu turno, antaŭ ol vi ektiros."
-
-#, fuzzy
-#~ msgid "Factions"
-#~ msgstr "Frakcio"
-
-#~ msgid "Overview"
-#~ msgstr "Trarigardo"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on easy."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Komence taŭgas premi butonon <italic>text=Instruado</italic> en la ĉefa "
-#~ "menuo. Tio startos interaktivan trejnadon, kiu instruos vin fundamentojn "
-#~ "de Vesnot. Poste ni rekomendas unue ludi kampanjon Tronheredanto - premu "
-#~ "<italic>text=Kampanjo</italic> kaj poste <italic>text='Heredanto de la "
-#~ "Trono'</italic>. Batalo por Vesnot' povas esti relative komplika, tial vi "
-#~ "prefere elektu <italic>text=facila</italic>n nivelon. "
-
-#, fuzzy
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "Tiu ĉi paĝo enhavas ĉion, kion vi bezonas scii por ludi Batalon por "
-#~ "Vesnot. Enhavas instrukciojn kaj bazajn lud-mekaniaĵojn. Dum ludo sur ĉi "
-#~ "tiuj paĝoj aperados novaj informoj, samtempe kiel vi renkontados novajn "
-#~ "paĝojn de ludo. Pli detalajn informojn pri eksterordinaraj situacioj vi "
-#~ "trovos sur sekvaj paĝoj."
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
-#~ "follow on from each other, telling a story. In a campaign, you often need "
-#~ "to play more carefully, preserving your best troops so that they can be "
-#~ "used again in later scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Militekspedicio konsistas el kelkaj sinsekvaj scenejoj. Kutime vi devas "
-#~ "ludi pli atenteme kaj ŝpari viajn la plej bonajn milit-unuojn por sekva "
-#~ "uzoado en postaj partoj."
-
-#, fuzzy
-#~ msgid ""
-#~ "The game takes place over a series of battles, called "
-#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
-#~ "the troops of one or more adversaries. You can play against the computer, "
-#~ "or with friends who each take turns sitting at the computer (hotseat "
-#~ "play). If your computer is connected to a computer network, you can also "
-#~ "play against other people connected to that network. If your computer has "
-#~ "a connection to the Internet, you can play against other people across "
-#~ "the Internet."
-#~ msgstr ""
-#~ "La ludo konsistas el serio de bataloj nomitaj scenejoj. Ĉiu scenejo "
-#~ "staras viajn bataltrupojn kontraŭ bataltrupoj de unu, aŭ kelkajn "
-#~ "kontraŭlojn. Vi povas ludi mem kontraŭ komputilo, aŭ altereni kun amikoj "
-#~ "sidantaj ĉe komputilo (tn. varma seĝo). Se via komputilo estas konektita "
-#~ "al loka reto, vi povas ludi ankaŭ kontraŭ ceteraj retuzantoj. Se vi havas "
-#~ "komputilon konektitan al interreto, vi povas ludi kontraŭ ceteraj homoj "
-#~ "en interreto."
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "Spertoj kaj avanco"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='Unuoj havantaj tiun specialan atakon'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
-
-#, fuzzy
-#~ msgid "Leaders:"
-#~ msgstr "Komandanto:"
-
-#, fuzzy
-#~ msgid "Recruits:"
-#~ msgstr "Varbitaj:"
-
-#~ msgid "Era:"
-#~ msgstr "Erao:"
-
-#, fuzzy
-#~ msgid "Factions:"
-#~ msgstr "Frakcio"
-
-#~ msgid " < Back"
-#~ msgstr "< Reen"
-
-#~ msgid "Forward >"
-#~ msgstr "Plu >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Referenco al nekonata temo:"
-
-#, fuzzy
-#~ msgid "Caste"
-#~ msgstr "Kastelo"
-
-#, fuzzy
-#~ msgid "Breeding Pen"
-#~ msgstr "nutro"
-
-#, fuzzy
-#~ msgid "Hatchling"
-#~ msgstr "Sanigado"
-
-#, fuzzy
-#~ msgid "Fledgling"
-#~ msgstr "Sanigado"
-
-#, fuzzy
-#~ msgid "Intendant"
-#~ msgstr "Inteligenta"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "frapo"
-
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Grassland'</italic> represents open plains, whether "
-#~ "cultivated, cut back for grazing, or wild. Being open ground, grassland "
-#~ "is both very easy to move across, but is also difficult to defend oneself "
-#~ "in. Typically, those units that perform best on grassland are either "
-#~ "cavalry, or very agile units which take advantage of the open space.\n"
-#~ "\n"
-#~ "Most units have defense of 30 to 40% on grassland."
-#~ msgstr ""
-#~ "Herbejoj simbolas malfermitajn ebenaĵojn, kultivitaj, aŭ lasitaj por "
-#~ "paŝtado, aŭ sovaĝaj. En malfermita spaco eblas facile moviĝi, sed "
-#~ "malfacile defendi. Sur ebenaĵo kutime bone batalas rajd-milit-unuoj, aŭ "
-#~ "ege viglaj milit-unuoj, por kiuj malfermita spaco taŭgas.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas sur ebenaĵo defendon 30-40%"
-
-#~ msgid "Road"
-#~ msgstr "Vojo"
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
-#~ "travelers passing over them. As far as gameplay is concerned, roads "
-#~ "behave as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Vojoj konsistas el tretita argilo kreitaj de multaj pasantoj. Koncerne "
-#~ "lud-ruloj, la vojoj estas tio sama kiel <ref>dst=terrain_grassland "
-#~ "text=\"ebenaĵoj\"</ref>."
-
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Forests'</italic> represent any woodland with significant "
-#~ "undergrowth, enough to hinder passage. Though they slow nearly everyone "
-#~ "down, forests do offer better defense to most units than open ground. "
-#~ "Cavalry, however, have so much trouble navigating them that any benefit "
-#~ "gained by stealth is negated. Elves are an exception to this general rule "
-#~ "for forests. Not only do they possess full movement in forests, but they "
-#~ "also gain a considerable defensive bonus. Dwarves are another exception "
-#~ "to this rule; though they are able to plow through the forests without "
-#~ "much loss of speed, their utter unfamiliarity with the terrain causes "
-#~ "them to receive no defensive bonus.\n"
-#~ "\n"
-#~ "Most units have 50% defense in forests, but cavalry are limited to 30%. "
-#~ "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted "
-#~ "units. Dwarves generally receive only 30% defense in forests.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Arbaroj estas areo kun sufiĉa ligna kreskaĵaro, kiu malrapidigas iradon. "
-#~ "Malgraŭ tio, ke arbaro preskaŭ ĉiujn malrapidigas, ofte proponas al milit-"
-#~ "unuoj pli bonan defendon ol ebligas malfermitaj ebenaĵoj. Ekz. kavalerio "
-#~ "en arbaro malfacile orientiĝas, kaj tial perdas ia ajn utilon el ŝirmo. "
-#~ "Sed elfoj estas escepto. Ne nur ili povas moviĝi rapide, sed akiras "
-#~ "konsiderindan defend- bonifikon. Ankaŭ nanoj estas escepto: malgraŭ tio "
-#~ "ke ili kapablas rapide trahaki tra arbaro, la tereno estas por ili tiel "
-#~ "ne konata, ke ili ne scias uzi ĝin por defendo."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Hills'</italic> represent any reasonably rough terrain, "
-#~ "with enough dips and rises in the ground to provide some cover. Hills are "
-#~ "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#~ "enough familiarity with the terrain that they can pass through it without "
-#~ "being slowed down. Cavalry have enough trouble navigating the terrain "
-#~ "that any defensive aid lent by cover is negated.\n"
-#~ "\n"
-#~ "Most units have about 50% defense in hills, whereas cavalry are limited "
-#~ "to 40%. Dwarves enjoy 60% defense in hills.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Montetoj simbolas relative malebenan terenon, kie troviĝas valoj kaj "
-#~ "montoj kreantaj kaŝejoj. Plimulto el milit-unuoj en montaro malfacile "
-#~ "moviĝas. Nanoj, troloj kaj orkoj tie sentiĝas kvazaŭ hejme, kaj povas "
-#~ "rapide trairadi sen malrapidigo. Rajdistoj kutime ne bone orientiĝas en "
-#~ "ĉi tiu tereno, kaj tial ricevas nenian defend-bonifikon."
-
-#~ msgid "Mountains"
-#~ msgstr "Montoj"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Mountains'</italic> are steep enough that units often have "
-#~ "to climb over obstacles to move. By this nature, they provide a "
-#~ "considerable defensive bonus for most troops, but they also severely "
-#~ "impede any passage through them. Most cavalry simply cannot enter "
-#~ "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#~ "are the goblin wolf riders. Both dwarves and trolls are native to "
-#~ "mountainous terrain, and have a very easy time getting around.\n"
-#~ "\n"
-#~ "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#~ "70%."
-#~ msgstr ""
-#~ "Montoj estas kutime krutaj, kaj milit-unuoj devas tie tragrimpi diversajn "
-#~ "barojn. Montoj tial ebligas altan defend-bonifikon por plimulto da milit-"
-#~ "unuoj, sed samtempe malarapidigas movon. Plimulto el rajd-milit-unuoj sur "
-#~ "ĉi tiun terenon ne povas veni; escepto estas elf-rajdantoj kaj gobloj-"
-#~ "luprajdantoj. Nanoj kaj troloj ĉi tie estas hejme, kaj tial ili en montoj "
-#~ "facile moviĝas."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps "
-#~ "slow down nearly everyone, and inhibit their ability to defend "
-#~ "themselves. An exception to this is any race bodily skilled in navigating "
-#~ "water; these receive both full movement and a defensive bonus. Those that "
-#~ "make their living in the wetlands are also adept at using this terrain "
-#~ "for cover.\n"
-#~ "\n"
-#~ "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#~ "all generally enjoy 60%."
-#~ msgstr ""
-#~ "Marĉoj prezentiĝas per diversaj specoj de malseka tero. Marĉoj "
-#~ "malrapidigas ĉiujn kaj malebligas efikan defendon. Escepto estas estaĵoj "
-#~ "adaptitaj al moviĝo en akvo; ili moviĝas rapide kaj posedas protekt-"
-#~ "bonifikon.Plimulto el milit-unuoj akiras en marĉoj defend-bonifikon 30%. "
-#~ "Maraj homoj, nagoj kaj saŭroj akiras 60%."
-
-#~ msgid "Shallow Water"
-#~ msgstr "Malprofunda akvo"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Shallow water'</italic> represents any body of water deep "
-#~ "enough to come up to roughly a man’s waist. This is enough to slow down "
-#~ "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#~ "water reaches up almost to their heads, have an extremely hard time of "
-#~ "this. The exception is any race whose bodies naturally lend themselves to "
-#~ "swimming, for which they receive a considerable defensive bonus and full "
-#~ "movement.\n"
-#~ "\n"
-#~ "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#~ "naga and mermen enjoy 60%."
-#~ msgstr ""
-#~ "Malprofunda akvo signifas, ke akvonivelo atingas nur ĝis talio al "
-#~ "plenkreskulo. Tio sufiĉas por malrapidigo preskaŭ por ĉiuj, kaj faras "
-#~ "ilin tre vundeblajn. Ĉar ĉe nanoj akvo atingas ĝis kolo, estas tio tre "
-#~ "malfacila por ili. Escepto estas estuloj kun korpoj akomoditaj por naĝi.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas en malprofunda akvo defendon 20-30%, nagoj "
-#~ "kaj maraj homoj havas 60%."
-
-#~ msgid "Deep Water"
-#~ msgstr "Profunda akvo"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Deep water'</italic> represents any body of water deep "
-#~ "enough to cover a man’s head. Most units cannot enter deep water: it is "
-#~ "the domain of units which can either fly, or are exceptionally strong "
-#~ "swimmers.\n"
-#~ "\n"
-#~ "Mermen and naga both receive 50% defense in deep water, with full "
-#~ "movement."
-#~ msgstr ""
-#~ "Profunda akvo signifas nivelon superantan kapon de plenkreskulo. Plimulto "
-#~ "el milit-unuoj ne povas eniri en tiel profundan akvon; tio estas "
-#~ "ekskluziva areo de flugantaj kaj bone naĝantaj milit-unuoj."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Frozen'</italic> terrain represents any flat area that is "
-#~ "covered by snow or ice. Most units are slowed down on it, and have a "
-#~ "harder time defending themselves. Note that swimming units, even those "
-#~ "who can breathe underwater, cannot swim underneath ice.\n"
-#~ "\n"
-#~ "Most units have 20 to 40% defense in frozen terrain."
-#~ msgstr ""
-#~ "Neĝo prezentas ebenan areon, kiu estas frosigita - ĉu daŭre (ekz. "
-#~ "tundro), aŭ portempe (ekz. neĝkovrita herbejo). Neĝo malrapidigas "
-#~ "plimulto el milit-unuoj kaj malfaciligas defendon."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#~ "Nearly all units receive a considerable bonus to their defense by being "
-#~ "stationed in a castle, and most units receive full movement in a castle. "
-#~ "Stationing units in a castle represents its defensive capability. Without "
-#~ "a unit in each wall hex, an enemy can simply sneak into the castle "
-#~ "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#~ "\n"
-#~ "Most units have about 60% defense in a castle.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Kasteloj estas ia ajn daŭraj fortikaĵoj. Preskaŭ ĉiu milit-unuo ricevas "
-#~ "en kastelo grandan bonifikon por defendo, kaj povas moviĝi plenrapide. "
-#~ "Bone defendita estas nur tiu kastelo, en kiu estas multaj milit-unuoj. Se "
-#~ "estas randa kampeto de kastelo vaka, malamiko povas simple tragliti enen "
-#~ "sen batalo, kaj akiras per tio saman defend-bonifikon kiel ĉiuj aliaj.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas en kastelo defendon ĉirkaŭ 60%."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "The instability of <italic>text='sand'</italic> makes it harder for most "
-#~ "units to cross, and leaves them wide open to attack. In contrast, the "
-#~ "wide feet or snakelike bodies of the reptilian races make sand much "
-#~ "easier for them to navigate.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in sand."
-#~ msgstr ""
-#~ "Sablo malrapidigas movon por plimulto da milit-unuoj kaj malebligas "
-#~ "plenan defendon. Nur milit-unuoj kun larĝaj plandoj aŭ serpentaj korpoj "
-#~ "moviĝas en sablo facile.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas en sablo defendon 20-30%."
-
-#~ msgid "Desert"
-#~ msgstr "Dezerto"
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Deserts'</italic> have a somewhat different composition "
-#~ "than small sand pits or beaches, however for gameplay purposes they are "
-#~ "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
-#~ msgstr ""
-#~ "Dezertoj havas diferencan konsiston ol malgrandaj sablaj kavoj aŭ plaĝoj, "
-#~ "sed ludon influas simile. Rigardu ref>dst=terrain_sand text='sablo'</ref>."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#~ "with enough room for a unit to pass. Most units are wholly unfamiliar "
-#~ "with the terrain, and thus are both slowed down and hindered in defense. "
-#~ "Dwarves and trolls, who make their homes in caves, both have a relatively "
-#~ "easy time navigating this terrain, especially dwarves, who by dint of "
-#~ "their small size can navigate many obstacles that other races cannot. "
-#~ "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#~ "text='illuminated'</ref>.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
-#~ msgstr ""
-#~ "Kaverna tereno prezentas ia ajn subteran koridoron, en kiu povas eniĝi "
-#~ "milit-milit-unuo. Plimulto da milit-unuoj ne havas spertojn kun ĉi "
-#~ "tereno, kaj tial estas malrapidaj kaj malfacile defendas sin. Nanoj kaj "
-#~ "troloj vivas en kavoj, tial ili ĉi tie relative facile moviĝas; precipe "
-#~ "nanoj, kiuj dank´al malgrandeco facile evitas multajn barojn.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas en kavoj defendon 20-30%, nanoj havas 50%"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#~ "water and wind, carrying erosive particles that carve the rock. It "
-#~ "resembles a scraggy underground cavern which reduces efficiency of most "
-#~ "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#~ "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#~ "who by dint of their small size have the full advantage of navigation in "
-#~ "such topography. Occasionally caves are "
-#~ "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#~ "\n"
-#~ "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#~ "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
-#~ msgstr ""
-#~ "Kaverna tereno prezentas ia ajn subteran koridoron, en kiu povas eniĝi "
-#~ "milit-milit-unuo. Plimulto da milit-unuoj ne havas spertojn kun ĉi "
-#~ "tereno, kaj tial estas malrapidaj kaj malfacile defendas sin. Nanoj kaj "
-#~ "troloj vivas en kavoj, tial ili ĉi tie relative facile moviĝas; precipe "
-#~ "nanoj, kiuj dank´al malgrandeco facile evitas multajn barojn.\n"
-#~ "\n"
-#~ "Plimulto el milit-unuoj havas en kavoj defendon 20-30%, nanoj havas 50%"
-
-#~ msgid "Illuminated Cave"
-#~ msgstr "Lumigita kaverno"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Villages'</italic> represent any group of buildings, human "
-#~ "or otherwise. Almost all units, even cavalry, have an easy time "
-#~ "navigating villages, and most units gain a defensive bonus from being "
-#~ "stationed in a village. Villages allow units the resources to clean and "
-#~ "tend to their wounds, which allows any unit stationed therein to heal "
-#~ "eight hitpoints each turn, or to be cured of poison.\n"
-#~ "\n"
-#~ "Most units have 50 to 60% defense in villages, whereas cavalry receive "
-#~ "only 40%.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Vilaĝo prezentas ia ajn domaron, ĉu homan aŭ ne. Preskaŭ ĉiuj milit-unuoj "
-#~ "facile moviĝas tra vilaĝo, kaj plimulto el milit-unuoj ricevas dum "
-#~ "restado en vilaĝo defend-bonifikon. Vilaĝoj samtempe donas al milit-unuoj "
-#~ "rimedoj por flegi vundojn, kio ebligas al ĉiu milit-unuo restanta en "
-#~ "vilaĝo resanigi po 8 punktoj dum ĉiu turno, aŭ resanĝi el veneniĝo."
-
-#~ msgid "Submerged Village"
-#~ msgstr "Subakvigita vilaĝo"
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#~ "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#~ "have a hard time navigating and defending these villages. However, like "
-#~ "any village, the facilites are available to all creatures which allow "
-#~ "units to tend to their wounds. Any unit stationed in a village can heal "
-#~ "eight hitpoints each turn, or be cured of poison.\n"
-#~ "\n"
-#~ "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#~ "based units usually have a low defense."
-#~ msgstr ""
-#~ "Vilaĝo prezentas ia ajn domaron, ĉu homan aŭ ne. Preskaŭ ĉiuj milit-unuoj "
-#~ "facile moviĝas tra vilaĝo, kaj plimulto el milit-unuoj ricevas dum "
-#~ "restado en vilaĝo defend-bonifikon. Vilaĝoj samtempe donas al milit-unuoj "
-#~ "rimedoj por flegi vundojn, kio ebligas al ĉiu milit-unuo restanta en "
-#~ "vilaĝo resanigi po 8 punktoj dum ĉiu turno, aŭ resanĝi el veneniĝo."
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge "
-#~ "which, as the name implies, cannot be crossed simply by walking. Chasms "
-#~ "are noted for sheer walls which would take days to traverse. As far as "
-#~ "gameplay is concerned, only units capable of flying can cross this "
-#~ "terrain."
-#~ msgstr ""
-#~ "Kanjono estas tera fendaĵo ege profunda. La kanjonoj  havas  krutajn "
-#~ "deklivojn, tragrimpi ilin daŭrus multaj tagoj. Efektive en ludo  la "
-#~ "kanjonoj estas traireblaj  nu porr flugantaj milit-unuoj."
-
-#~ msgid "Lava"
-#~ msgstr "Lafo"
-
-#, fuzzy
-#~ msgid ""
-#~ "The dangers inherent in trying to walk on <italic>text='lava'</italic> "
-#~ "are fairly obvious. As far as movement is concerned, lava is equivalent "
-#~ "to <ref>dst='terrain_unwalkable' text='unwalkable'</ref> terrain, and can "
-#~ "only be crossed by those units capable of flying a considerable distance "
-#~ "above it. The molten magma also produces a substantial glow, illuminating "
-#~ "the area immediately above it. This provides an attack bonus for lawful "
-#~ "units and removes the attack bonus from chaotic units."
-#~ msgstr ""
-#~ "Danĝero rezultanta el provo trairi varmegan lafon estas evidenta por ĉiu. "
-#~ "Tra ĉi tiu tereno povas trairi nur milit-unuoj kiuj kapablas sufiĉe alte "
-#~ "flugi."
-
-#~ msgid "River Ford"
-#~ msgstr "Rivera vadejo"
-
-#~ msgid ""
-#~ "When a river happens to be extremely shallow, passing over it is a "
-#~ "trivial matter for land based units. Moreover, any creature best adapted "
-#~ "to swimming has full mobility even at such places in the river. As far as "
-#~ "gameplay is concerned, a river ford is treated as either grassland or "
-#~ "shallow water, choosing whichever one offers the best defensive and "
-#~ "movement bonuses for the unit on it."
-#~ msgstr "Se rivero estas malprofunda, por "
-
-#, fuzzy
-#~ msgid "Coastal Reef"
-#~ msgstr "Kastelo"
-
-#~ msgid "Bridge"
-#~ msgstr "Ponto"
-
-#
-#, fuzzy
-#~ msgid ""
-#~ "To those capable of building one, the ability to lay a "
-#~ "<italic>text='bridge'</italic> offers a liberation from the fickle nature "
-#~ "of waterways, whose fords come and go with the rise and fall of the "
-#~ "waterline. This is to say nothing of the luxury of dry feet, the loss of "
-#~ "which is no laughing matter in the cold months of the year.\n"
-#~ "\n"
-#~ "For those who go by land or sea, a bridge is the best of both worlds — "
-#~ "for gameplay purposes, it is treated either as grassland or the "
-#~ "underlying water, whichever offers the best movement and defensive "
-#~ "bonuses for the unit occupying the bridge hex. Note that a swimming unit "
-#~ "and a land unit are not capable of occupying a bridge hex at the same "
-#~ "time."
-#~ msgstr ""
-#~ "Konstrui ponton donas al loĝantaro eblon eviti vadi en akvo. Trairi "
-#~ "riveron kun seka piedo precipe agrablas dum la plej malvarmaj monatoj de "
-#~ "jaro."
-
-#, fuzzy
-#~ msgid "Impassable"
-#~ msgstr "Netrapaseblaj montoj"
-
-#~ msgid ""
-#~ "Berserk:\n"
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "Furiozo:\n"
-#~ "Ĉe atako aŭ ĉe defendo, tiu ĉi atakspeco daŭras ĝis morto de unu el "
-#~ "kontraŭuloj."
-
-#~ msgid ""
-#~ "Magical:\n"
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the unit being attacked."
-#~ msgstr ""
-#~ "Magia:\n"
-#~ "Tiu ĉi atako havas ĉiam 70% ŝancon trafi sendepende de defendanta unuo."
-
-#~ msgid ""
-#~ "First Strike:\n"
-#~ "This unit always strikes first with this attack, even if they are "
-#~ "defending."
-#~ msgstr ""
-#~ "Unua atako:\n"
-#~ "Per ĉi tiu atako la milit-unuo ĉiam atakas kiel unua, ankaŭ ĉe defendado."
-
-#, fuzzy
-#~| msgid ""
-#~| "Berserk:\n"
-#~| "Whether used offensively or defensively, this attack presses the "
-#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~| "have occurred."
-#~ msgid ""
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "Furiozo:\n"
-#~ "Ĉe atako aŭ ĉe defendo, tiu ĉi atakspeco daŭras ĝis morto de unu el "
-#~ "kontraŭuloj."
-
-#, fuzzy
-#~| msgid "firststrike"
-#~ msgid "true strike"
-#~ msgstr "unua bato"
-
-#, fuzzy
-#~| msgid ""
-#~| "Magical:\n"
-#~| "This attack always has a 70% chance to hit regardless of the defensive "
-#~| "ability of the unit being attacked."
-#~ msgid ""
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the champion being attacked."
-#~ msgstr ""
-#~ "Magia:\n"
-#~ "Tiu ĉi atako havas ĉiam 70% ŝancon trafi sendepende de defendanta unuo."
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ŝanco por trafo'</header>"

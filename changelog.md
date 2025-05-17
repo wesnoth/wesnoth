@@ -12,7 +12,7 @@
 ### Terrain
    * Fix bluff/gulch terrain overlays being conspicuously visible on the minimap display (bug #8924).
 ### Translations
-   * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, Italian, Japanese
+   * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Esperanto, Finnish, Italian, Japanese
 ### Units
 ### User interface
    * Fixed an issue with the Help browser over-scaling portraits up on configurations with a pixel scale higher than 1 (e.g. macOS and Retina screens), causing blurry rendering and lacking enough room for text.
