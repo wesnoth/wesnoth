@@ -861,9 +861,6 @@ void addon_manager::execute_action_on_selected_addon()
 void addon_manager::install_addon(const addon_info& addon)
 {
 	addon_info versioned_addon = addon;
-	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		set_parent(stk->get_layer_grid(1));
-	}
 	if(addon.id == find_widget<addon_list>("addons").get_selected_addon()->id) {
 		versioned_addon.current_version = find_widget<menu_button>("version_filter").get_value_string();
 	}
