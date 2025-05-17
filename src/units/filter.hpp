@@ -84,7 +84,7 @@ namespace unit_filter_impl
 		unit_filter_compound(const vconfig& cfg);
 
 		template<typename C, typename F>
-		void create_attribute(const config::attribute_value c, C conv, F func);
+		void create_attribute(const config::attribute_value& c, C conv, F func);
 		template<typename F>
 		void create_child(const vconfig& c, F func);
 
