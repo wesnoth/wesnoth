@@ -815,30 +815,34 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 
-						const auto adjacent = get_adjacent_tiles(args.loc);
-						for(unsigned i = 0; i < adjacent.size(); ++i) {
-							const unit_map::const_iterator it = units.find(adjacent[i]);
-							if (it == units.end() || it->incapacitated())
-								continue;
-							if (&*it == (args.u.shared_from_this()).get())
-								continue;
+						if(!c.get_parsed_config().has_attribute("affect_adjacent") || c.get_parsed_config()["affect_adjacent"].to_bool()) {
+							const auto adjacent = get_adjacent_tiles(args.loc);
+							for(unsigned i = 0; i < adjacent.size(); ++i) {
+								const unit_map::const_iterator it = units.find(adjacent[i]);
+								if(it == units.end() || it->incapacitated())
+									continue;
+								if(&*it == (args.u.shared_from_this()).get())
+									continue;
 
-							for(const auto [key, cfg] : it->abilities().all_children_view()) {
-								if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
-									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
-										return true;
+								for(const auto [key, cfg] : it->abilities().all_children_view()) {
+									if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
+										if(args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
+											return true;
+										}
 									}
 								}
 							}
 						}
 
-						for(const unit& unit_itor : units) {
-							if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
-								continue;
-							}
-							for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
-								if(args.u.get_dist_ability_bool(cfg, key, args.loc, unit_itor, unit_itor.get_location())) {
-									return true;
+						if(!c.get_parsed_config().has_attribute("affect_distant") || c.get_parsed_config()["affect_distant"].to_bool()) {
+							for(const unit& unit_itor : units) {
+								if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == args.u.shared_from_this().get()) {
+									continue;
+								}
+								for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
+									if(args.u.get_dist_ability_bool(cfg, key, args.loc, unit_itor, unit_itor.get_location())) {
+										return true;
+									}
 								}
 							}
 						}

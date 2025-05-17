@@ -2333,6 +2333,8 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 		return false;
 	}
 	const unit_map& units = get_unit_map();
+	bool check_adjacent = !filter.has_attribute("affect_adjacent") || filter["affect_adjacent"].to_bool();
+	bool check_distant = !filter.has_attribute("affect_distant") || filter["affect_distant"].to_bool();
 	if(self_){
 		for(const auto [key, cfg] : (*self_).abilities().all_children_view()) {
 			if(self_->ability_matches_filter(cfg, key, filter)){
@@ -2341,30 +2343,32 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 				}
 			}
 		}
+		if(check_adjacent) {
+			const auto adjacent = get_adjacent_tiles(self_loc_);
+			for(unsigned i = 0; i < adjacent.size(); ++i) {
+				const unit_map::const_iterator it = units.find(adjacent[i]);
+				if(it == units.end() || it->incapacitated())
+					continue;
+				if(&*it == self_.get())
+					continue;
 
-		const auto adjacent = get_adjacent_tiles(self_loc_);
-		for(unsigned i = 0; i < adjacent.size(); ++i) {
-			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it == units.end() || it->incapacitated())
-				continue;
-			if ( &*it == self_.get() )
-				continue;
-
-			for(const auto [key, cfg] : it->abilities().all_children_view()) {
-				if(it->ability_matches_filter(cfg, key, filter) && check_adj_abilities(cfg, key, i , *it)){
-					return true;
+				for(const auto [key, cfg] : it->abilities().all_children_view()) {
+					if(it->ability_matches_filter(cfg, key, filter) && check_adj_abilities(cfg, key, i , *it)) {
+						return true;
+					}
 				}
 			}
 		}
+		if(check_distant) {
+			for(const unit& unit_itor : units) {
+				if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == self_.get()) {
+					continue;
+				}
 
-		for(const unit& unit_itor : units) {
-			if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == self_.get()) {
-				continue;
-			}
-
-			for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
-				if(unit_itor.ability_matches_filter(cfg, key, filter) && check_dist_abilities(cfg, key, unit_itor, unit_itor.get_location())) {
-					return true;
+				for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
+					if(unit_itor.ability_matches_filter(cfg, key, filter) && check_dist_abilities(cfg, key, unit_itor, unit_itor.get_location())) {
+						return true;
+					}
 				}
 			}
 		}
@@ -2377,29 +2381,33 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 			}
 		}
 
-		const auto adjacent = get_adjacent_tiles(other_loc_);
-		for(unsigned i = 0; i < adjacent.size(); ++i) {
-			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it == units.end() || it->incapacitated())
-				continue;
-			if ( &*it == other_.get() )
-				continue;
+		if(check_adjacent) {
+			const auto adjacent = get_adjacent_tiles(other_loc_);
+			for(unsigned i = 0; i < adjacent.size(); ++i) {
+				const unit_map::const_iterator it = units.find(adjacent[i]);
+				if(it == units.end() || it->incapacitated())
+					continue;
+				if(&*it == other_.get())
+					continue;
 
-			for(const auto [key, cfg] : it->abilities().all_children_view()) {
-				if(it->ability_matches_filter(cfg, key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), cfg, other_, *it, i, other_loc_, AFFECT_OTHER, key)){
-					return true;
+				for(const auto [key, cfg] : it->abilities().all_children_view()) {
+					if(it->ability_matches_filter(cfg, key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), cfg, other_, *it, i, other_loc_, AFFECT_OTHER, key)) {
+						return true;
+					}
 				}
 			}
 		}
 
-		for(const unit& unit_itor : units) {
-			if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == other_.get()) {
-				continue;
-			}
+		if(check_distant) {
+			for(const unit& unit_itor : units) {
+				if(!unit_itor.has_ability_distant() || unit_itor.incapacitated() || &unit_itor == other_.get()) {
+					continue;
+				}
 
-			for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
-				if(unit_itor.ability_matches_filter(cfg, key, filter) && check_dist_abilities_impl(other_attack_, shared_from_this(), cfg, other_, unit_itor, other_loc_, unit_itor.get_location(), AFFECT_OTHER, key)) {
-					return true;
+				for(const auto [key, cfg] : unit_itor.abilities().all_children_view()) {
+					if(unit_itor.ability_matches_filter(cfg, key, filter) && check_dist_abilities_impl(other_attack_, shared_from_this(), cfg, other_, unit_itor, other_loc_, unit_itor.get_location(), AFFECT_OTHER, key)) {
+						return true;
+					}
 				}
 			}
 		}
