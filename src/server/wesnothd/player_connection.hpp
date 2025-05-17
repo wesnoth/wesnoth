@@ -30,11 +30,11 @@ class game;
 class player_record
 {
 public:
-	template<class SocketPtr>
-	player_record(const SocketPtr socket, const player& player)
+	template<typename SocketPtr, typename... Args>
+	player_record(const SocketPtr socket, Args&&... args)
 		: login_time(std::chrono::steady_clock::now())
 		, socket_(socket)
-		, player_(player)
+		, player_(std::forward<Args>(args)...)
 		, game_()
 		, ip_address(client_address(socket))
 	{

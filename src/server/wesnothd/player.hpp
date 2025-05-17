@@ -70,7 +70,7 @@ public:
 	const std::set<int>& get_queues() const { return in_queues_; }
 
 private:
-	const std::string name_;
+	std::string name_;
 	std::string version_;
 	std::string source_;
 	simple_wml::node& cfg_;
@@ -79,8 +79,8 @@ private:
 
 	std::chrono::steady_clock::time_point flood_start_;
 	unsigned int messages_since_flood_start_;
-	const std::size_t MaxMessages;
-	const std::chrono::seconds TimePeriod;
+	std::size_t MaxMessages;
+	std::chrono::seconds TimePeriod;
 	STATUS status_;
 	bool moderator_;
 	unsigned long long login_id_;

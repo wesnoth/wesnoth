@@ -840,21 +840,20 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	wesnothd::player player_data {
-			username,
-			player_cfg,
-			user_handler_ ? user_handler_->get_forum_id(username) : 0,
-			registered,
-			client_version,
-			client_source,
-			user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
-			default_max_messages_,
-			default_time_period_,
-			is_moderator
-	};
-	bool inserted;
-	player_iterator new_player;
-	std::tie(new_player, inserted) = player_connections_.insert(player_connections::value_type(socket, player_data));
+	auto [new_player, inserted] = player_connections_.emplace(
+		socket,
+		username,
+		player_cfg,
+		user_handler_ ? user_handler_->get_forum_id(username) : 0,
+		registered,
+		client_version,
+		client_source,
+		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
+		default_max_messages_,
+		default_time_period_,
+		is_moderator
+	);
+
 	assert(inserted && "unexpected duplicate username");
 
 	simple_wml::document join_lobby_response;
