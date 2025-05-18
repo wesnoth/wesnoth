@@ -579,6 +579,9 @@
 0 heal_add_multiply
 0 heal_add_sub
 0 heal_affect_self
+0 heal_affect_allies
+0 heal_affect_allies_distant
+0 heal_affect_allies_adjacent_distant
 0 heal_affect_enemies
 0 heal_affect_everybody
 0 heal_divide
@@ -612,6 +615,9 @@
 0 regenerate_add_multiply
 0 regenerate_add_sub
 0 regenerate_affect_self_no
+0 regenerate_affect_allies
+0 regenerate_affect_allies_distant
+0 regenerate_affect_allies_adjacent_distant
 0 regenerate_affect_enemies
 0 regenerate_affect_everybody
 0 regenerate_divide
@@ -644,6 +650,9 @@
 0 resistance_add_multiply
 0 resistance_add_sub
 0 resistance_affect_self_no
+0 resistance_affect_allies
+0 resistance_affect_allies_distant
+0 resistance_affect_allies_adjacent_distant
 0 resistance_affect_enemies
 0 resistance_affect_everybody
 0 resistance_divide
@@ -688,6 +697,9 @@
 0 leadership_add_multiply
 0 leadership_add_sub
 0 leadership_affect_self_no
+0 leadership_affect_allies
+0 leadership_affect_allies_distant
+0 leadership_affect_allies_adjacent_distant
 0 leadership_affect_enemies
 0 leadership_affect_everybody
 0 leadership_divide
@@ -719,6 +731,8 @@
 0 illuminates_add_multiply
 0 illuminates_add_sub
 0 illuminates_affect_allies
+0 illuminates_affect_allies_distant
+0 illuminates_affect_allies_adjacent_distant
 0 illuminates_affect_enemies
 0 illuminates_affect_everybody
 0 illuminates_affect_self_no
@@ -760,6 +774,8 @@
 0 no_skirmisher
 0 skirmisher_adjacent_enemies
 0 skirmisher_adjacent
+0 skirmisher_distant
+0 skirmisher_adjacent_distant
 # hides ability tests
 0 hides_self
 0 hides_nobody
@@ -768,6 +784,8 @@
 0 no_teleport
 0 teleport_no_tunnel
 0 teleport_adjacent_allies
+0 teleport_distant_allies
+0 teleport_adjacent_distant_allies
 0 tunnel_filter_teleport_unit
 0 tunnel_target_teleport_unit_fail
 0 tunnel_target_teleport_unit_succeed
@@ -781,6 +799,8 @@
 0 attacks_add_multiply
 0 attacks_add_sub
 0 attacks_affect_allies
+0 attacks_affect_allies_distant
+0 attacks_affect_allies_adjacent_distant
 0 attacks_affect_self_no
 0 attacks_affect_enemies
 0 attacks_affect_everybody
@@ -816,6 +836,8 @@
 0 berserk_add_multiply
 0 berserk_add_sub
 0 berserk_affect_allies
+0 berserk_affect_allies_distant
+0 berserk_affect_allies_adjacent_distant
 0 berserk_affect_self_no
 0 berserk_affect_enemies
 0 berserk_affect_everybody
@@ -850,6 +872,8 @@
 0 chance_to_hit_add_multiply
 0 chance_to_hit_add_sub
 0 chance_to_hit_affect_allies
+0 chance_to_hit_affect_allies_distant
+0 chance_to_hit_affect_allies_adjacent_distant
 0 chance_to_hit_affect_self_no
 0 chance_to_hit_affect_enemies
 0 chance_to_hit_affect_everybody
@@ -882,6 +906,8 @@
 0 damage_add_multiply
 0 damage_add_sub
 0 damage_affect_allies
+0 damage_affect_allies_distant
+0 damage_affect_allies_adjacent_distant
 0 damage_affect_self_no
 0 damage_affect_enemies
 0 damage_affect_everybody
@@ -937,6 +963,8 @@
 # disable tests
 0 disable_ability
 0 disable_affect_allies
+0 disable_affect_allies_distant
+0 disable_affect_allies_adjacent_distant
 0 disable_affect_self_no
 0 disable_affect_enemies
 0 disable_affect_everybody
@@ -948,6 +976,8 @@
 0 drains_add_multiply
 0 drains_add_sub
 0 drains_affect_allies
+0 drains_affect_allies_distant
+0 drains_affect_allies_adjacent_distant
 0 drains_affect_self_no
 0 drains_affect_enemies
 0 drains_affect_everybody
@@ -981,6 +1011,8 @@
 # firststrike tests
 0 firststrike_ability
 0 firststrike_affect_allies
+0 firststrike_affect_allies_distant
+0 firststrike_affect_allies_adjacent_distant
 0 firststrike_affect_self_no
 0 firststrike_affect_enemies
 0 firststrike_affect_everybody
@@ -992,6 +1024,8 @@
 0 heal_on_hit_add_multiply
 0 heal_on_hit_add_sub
 0 heal_on_hit_affect_allies
+0 heal_on_hit_affect_allies_distant
+0 heal_on_hit_affect_allies_adjacent_distant
 0 heal_on_hit_affect_self_no
 0 heal_on_hit_affect_enemies
 0 heal_on_hit_affect_everybody
@@ -1022,12 +1056,16 @@
 # petrifies tests
 0 petrifies_ability
 0 petrifies_affect_allies
+0 petrifies_affect_allies_distant
+0 petrifies_affect_allies_adjacent_distant
 0 petrifies_affect_self_no
 0 petrifies_affect_enemies
 0 petrifies_affect_everybody
 # plague tests
 0 plague_ability
 0 plague_affect_allies
+0 plague_affect_allies_distant
+0 plague_affect_allies_adjacent_distant
 0 plague_affect_self_no
 0 plague_affect_enemies
 0 plague_affect_everybody
@@ -1036,17 +1074,22 @@
 # poison tests
 0 poison_ability
 0 poison_affect_allies
+0 poison_affect_allies_distant
+0 poison_affect_allies_adjacent_distant
 0 poison_affect_self_no
 0 poison_affect_enemies
 0 poison_affect_everybody
 # slow tests
 0 slow_ability
 0 slow_affect_allies
+0 slow_affect_allies_distant
+0 slow_affect_allies_adjacent_distant
 0 slow_affect_self_no
 0 slow_affect_enemies
 0 slow_affect_everybody
 # swarm tests
 0 swarm_affect_allies
+0 swarm_affect_allies_adjacent_distant
 0 swarm_affect_enemies
 0 swarm_affect_everybody
 0 swarm_affect_self_no
