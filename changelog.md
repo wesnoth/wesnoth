@@ -11,6 +11,7 @@
    * Updated translations: British English, Czech, Esperanto, Finnish, Italian
 ### Units
 ### User interface
+   * It is now possible to mark certain units as favorite in Unit List and Recall dialogs. Units can be sorted by whether they are favorite or not.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
 

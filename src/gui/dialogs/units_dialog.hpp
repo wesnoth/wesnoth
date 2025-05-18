@@ -110,6 +110,12 @@ public:
 		return *this;
 	}
 
+	units_dialog& set_show_favorite(bool show = true)
+	{
+		show_mark_favorite_ = show;
+		return *this;
+	}
+
 	units_dialog& set_show_variations(bool show = true)
 	{
 		show_variations_ = show;
@@ -230,6 +236,7 @@ private:
 
 	bool show_rename_;
 	bool show_dismiss_;
+	bool show_mark_favorite_;
 	bool show_variations_;
 
 	std::pair<std::string, sort_order::type> sort_order_;
@@ -254,6 +261,7 @@ private:
 	// FIXME only thing needing team
 	void dismiss_unit(std::vector<unit_const_ptr>& unit_list, const team& team);
 	void rename_unit(std::vector<unit_const_ptr>& unit_list);
+	void toggle_favorite(std::vector<unit_const_ptr>& unit_list);
 
 	void show_list(listbox& list);
 	void show_help() const;
