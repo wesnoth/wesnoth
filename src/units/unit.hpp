@@ -2098,6 +2098,16 @@ private:
 
 	bool is_fearless_, is_healthy_;
 
+	// Unit list/recall list favorite unit marking
+	bool is_favorite_;
+
+public:
+	bool favorite() const { return is_favorite_; }
+
+	void set_favorite(bool favorite) { is_favorite_ = favorite; }
+
+private:
+
 	utils::string_map modification_descriptions_;
 
 	// Animations:

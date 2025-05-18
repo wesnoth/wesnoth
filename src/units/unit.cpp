@@ -143,7 +143,8 @@ namespace
 		"flag_rgb",
 		"language_name",
 		"image",
-		"image_icon"
+		"image_icon",
+		"favorite"
 	};
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
@@ -305,6 +306,7 @@ unit::unit(const unit& o)
 	, interrupted_move_(o.interrupted_move_)
 	, is_fearless_(o.is_fearless_)
 	, is_healthy_(o.is_healthy_)
+	, is_favorite_(o.is_favorite_)
 	, modification_descriptions_(o.modification_descriptions_)
 	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
 	, hidden_(o.hidden_)
@@ -387,6 +389,7 @@ unit::unit(unit_ctor_t)
 	, interrupted_move_()
 	, is_fearless_(false)
 	, is_healthy_(false)
+	, is_favorite_(false)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
 	, hidden_(false)
@@ -419,16 +422,18 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	role_ = cfg["role"].str();
 	//, facing_(map_location::direction::indeterminate)
 	//, anim_comp_(new unit_animation_component(*this))
-	hidden_ = cfg["hidden"].to_bool(false);
+	hidden_ = cfg["hidden"].to_bool();
 	random_traits_ = true;
 	generate_name_ = true;
-	side_ = cfg["side"].to_int();
 
+	side_ = cfg["side"].to_int();
 	if(side_ <= 0) {
 		side_ = 1;
 	}
-
 	validate_side(side_);
+
+	is_favorite_ = cfg["favorite"].to_bool();
+
 	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
@@ -1595,6 +1600,8 @@ void unit::write(config& cfg, bool write_all) const
 	cfg["gender"] = gender_string(gender_);
 	cfg["variation"] = variation_;
 	cfg["role"] = role_;
+
+	cfg["favorite"] = is_favorite_;
 
 	config status_flags;
 	for(const std::string& state : get_states()) {

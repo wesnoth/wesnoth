@@ -60,6 +60,13 @@ namespace
 // Index 2 is by-level
 std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
 utils::optional<decltype(sort_default)> sort_last;
+
+std::string star(bool starred)
+{
+	// Filled/unfilled five-pointed stars, used as favorite unit marker
+	return starred ? "\u2605" : "\u2606";
+}
+
 }
 
 REGISTER_DIALOG(units_dialog)
@@ -72,6 +79,7 @@ units_dialog::units_dialog()
 	, cancel_label_(_("Cancel"))
 	, show_rename_(false)
 	, show_dismiss_(false)
+	, show_mark_favorite_(false)
 	, show_variations_(false)
 	, sort_order_(sort_default)
 	, gender_(unit_race::GENDER::MALE)
@@ -152,6 +160,7 @@ void units_dialog::pre_show()
 	find_widget<button>("cancel").set_label(cancel_label_);
 	find_widget<button>("dismiss").set_visible(show_dismiss_);
 	find_widget<button>("rename").set_visible(show_rename_);
+	find_widget<button>("mark_favorite").set_visible(show_mark_favorite_);
 	find_widget<grid>("variation_gender_grid").set_visible(show_variations_);
 
 	// Gender and variation selectors
@@ -311,6 +320,25 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 	if(list.get_item_count() == 0) {
 		set_retval(retval::CANCEL);
 	}
+}
+
+void units_dialog::toggle_favorite(std::vector<unit_const_ptr>& unit_list)
+{
+	listbox& list = find_widget<listbox>("main_list");
+
+	selected_index_ = list.get_selected_row();
+	if (selected_index_ == -1) {
+		return;
+	}
+
+	unit& selected_unit = const_cast<unit&>(*unit_list[selected_index_]);
+	selected_unit.set_favorite(!selected_unit.favorite());
+
+	list.get_row_grid(selected_index_)->find_widget<label>("unit_favorite")
+		.set_label(star(selected_unit.favorite()));
+
+	list_item_clicked();
+	invalidate_layout();
 }
 
 void units_dialog::show_help() const
@@ -531,15 +559,26 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		.set_ok_label(_("Scroll To"))
 		.set_help_topic("..units")
 		.set_row_num(unit_list.size())
-		.set_show_rename(true);
+		.set_show_rename(true)
+		.set_show_favorite(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
-	connect_signal_mouse_left_click(rename, std::bind([&]() {
+	connect_signal_mouse_left_click(rename, [&](auto&&...) {
 		dlg->rename_unit(unit_list);
-	}));
+	});
+
+	// Mark favorite functionality
+	button& favorite = dlg->find_widget<button>("mark_favorite");
+	connect_signal_mouse_left_click(favorite, [&](auto&&...) {
+		dlg->toggle_favorite(unit_list);
+	});
 
 	auto set_column = dlg->make_column_builder(unit_list);
+
+	set_column("unit_favorite", [](const auto& unit) {
+		return star(unit->favorite());
+	}, sort_type::generator);
 
 	set_column("unit_name",
 		[](const auto& unit) {
@@ -669,21 +708,32 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recall_list.size())
 		.set_show_rename(true)
-		.set_show_dismiss(true);
+		.set_show_dismiss(true)
+		.set_show_favorite(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
-	connect_signal_mouse_left_click(rename, std::bind([&]() {
+	connect_signal_mouse_left_click(rename, [&](auto&&...) {
 		dlg->rename_unit(recall_list);
-	}));
+	});
 
 	// Dismiss functionality
 	button& dismiss = dlg->find_widget<button>("dismiss");
-	connect_signal_mouse_left_click(dismiss, std::bind([&]() {
+	connect_signal_mouse_left_click(dismiss, [&](auto&&...) {
 		dlg->dismiss_unit(recall_list, team);
-	}));
+	});
+
+	// Mark favorite functionality
+	button& favorite = dlg->find_widget<button>("mark_favorite");
+	connect_signal_mouse_left_click(favorite, [&](auto&&...) {
+		dlg->toggle_favorite(recall_list);
+	});
 
 	auto set_column = dlg->make_column_builder(recall_list);
+
+	set_column("unit_favorite", [](const auto& unit) {
+		return star(unit->favorite());
+	}, sort_type::generator);
 
 	set_column("unit_image", [recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
