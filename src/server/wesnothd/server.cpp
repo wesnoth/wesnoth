@@ -189,8 +189,7 @@ static bool make_change_diff(const simple_wml::node& src,
 
 static std::string player_status(const wesnothd::player_record& player)
 {
-	auto logged_on_time = std::chrono::steady_clock::now() - player.login_time;
-	auto [d, h, m, s] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, logged_on_time);
+	auto [d, h, m, s] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, player.time_logged_on());
 	std::ostringstream out;
 	out << "'" << player.name() << "' @ " << player.client_ip()
 		<< " logged on for "
