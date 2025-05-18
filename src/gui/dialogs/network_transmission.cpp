@@ -25,8 +25,6 @@
 
 namespace gui2::dialogs
 {
-using namespace std::chrono_literals;
-
 REGISTER_DIALOG(network_transmission)
 
 void network_transmission::pump_monitor::process()
@@ -54,7 +52,6 @@ void network_transmission::pump_monitor::process()
 
 	if(connection_->finished()) {
 		window_->set_retval(retval::OK);
-		window_ = nullptr;
 	}
 }
 
@@ -87,6 +84,9 @@ void network_transmission::pre_show()
 
 void network_transmission::post_show()
 {
+	// In case we close the dialog before transmission is complete
+	pump_monitor_.window_ = nullptr;
+
 	if(get_retval() == retval::CANCEL) {
 		connection_->cancel();
 	}
