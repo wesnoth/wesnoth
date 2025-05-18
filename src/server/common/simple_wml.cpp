@@ -600,10 +600,10 @@ void node::remove_child(const char* name, std::size_t index)
 
 node* node::child(const char* name)
 {
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			assert(i->second.empty() == false);
-			return i->second.front();
+	for(auto& [key, node_list] : children_) {
+		if(key == name) {
+			assert(node_list.empty() == false);
+			return node_list.front();
 		}
 	}
 
@@ -612,12 +612,12 @@ node* node::child(const char* name)
 
 const node* node::child(const char* name) const
 {
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			if(i->second.empty()) {
+	for(const auto& [key, node_list] : children_) {
+		if(key == name) {
+			if(node_list.empty()) {
 				return nullptr;
 			} else {
-				return i->second.front();
+				return node_list.front();
 			}
 		}
 	}
@@ -635,9 +635,9 @@ node& node::child_or_add(const char* name)
 
 const node::child_list& node::children(const char* name) const
 {
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			return i->second;
+	for(const auto& [key, node_list] : children_) {
+		if(key == name) {
+			return node_list;
 		}
 	}
 
@@ -704,15 +704,15 @@ int node::output_size() const
 	}
 
 	int res = 0;
-	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		res += i->key.size() + i->value.size() + 4;
+	for(const auto& [key, value] : attr_) {
+		res += key.size() + value.size() + 4;
 	}
 
 	std::size_t count_children = 0;
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			res += i->first.size()*2 + 7;
-			res += (*j)->output_size();
+	for(const auto& [key, node_list] : children_) {
+		for(const simple_wml::node* child_node : node_list) {
+			res += key.size() * 2 + 7;
+			res += child_node->output_size();
 			++count_children;
 		}
 	}
@@ -728,16 +728,15 @@ void node::shift_buffers(ptrdiff_t offset)
 		output_cache_ = string_span(output_cache_.begin() + offset, output_cache_.size());
 	}
 
-	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		i->key = string_span(i->key.begin() + offset, i->key.size());
-		i->value = string_span(i->value.begin() + offset, i->value.size());
+	for(auto& [key, value] : attr_) {
+		key = string_span(key.begin() + offset, key.size());
+		value = string_span(value.begin() + offset, value.size());
 	}
 
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		string_span& key = i->first;
+	for(auto& [key, node_list] : children_) {
 		key = string_span(key.begin() + offset, key.size());
-		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			(*j)->shift_buffers(offset);
+		for(simple_wml::node* node : node_list) {
+			node->shift_buffers(offset);
 		}
 	}
 }
