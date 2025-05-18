@@ -754,19 +754,19 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 
 	char* begin = buf;
 
-	for(node::attribute& a : attr_) {
-		memcpy(buf, a.key.begin(), a.key.size());
+	for(auto& [key, value] : attr_) {
+		memcpy(buf, key.begin(), key.size());
 		if(cache_status == REFRESH_CACHE) {
-			a.key = string_span(buf, a.key.size());
+			key = string_span(buf, key.size());
 		}
-		buf += a.key.size();
+		buf += key.size();
 		*buf++ = '=';
 		*buf++ = '"';
-		memcpy(buf, a.value.begin(), a.value.size());
+		memcpy(buf, value.begin(), value.size());
 		if(cache_status == REFRESH_CACHE) {
-			a.value = string_span(buf, a.value.size());
+			value = string_span(buf, value.size());
 		}
-		buf += a.value.size();
+		buf += value.size();
 		*buf++ = '"';
 		*buf++ = '\n';
 	}
