@@ -43,6 +43,7 @@ struct tooltip
 	std::string message;
 	std::string action;
 	font::floating_label label;
+	bool label_initialized = false;
 
 	void init_label();
 	void update_label_pos();
@@ -51,7 +52,6 @@ struct tooltip
 tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act)
 	: origin(r), message(msg), action(act), label(msg)
 {
-	init_label();
 	DBG_FT << "created tooltip for " << origin << " at " << loc;
 }
 
@@ -61,14 +61,10 @@ void tooltip::init_label()
 	rect game_canvas = video::game_canvas();
 	unsigned int border = 10;
 
-	rect huge;
-	huge.h=1000000;
-	huge.w=1000000;
-
 	label.set_font_size(font_size);
 	label.set_color(font::NORMAL_COLOR);
-	label.set_clip_rect(huge);
 	label.set_width(text_width);   // If tooltip will be too tall for game_canvas, this could be scaled up appropriately
+	label.set_height(1000000); // Functionally unbounded on first pass
 	label.set_alignment(font::LEFT_ALIGN);
 	label.set_bg_color(bgcolor);
 	label.set_border_size(border);
@@ -105,13 +101,9 @@ void tooltip::init_label()
 		}
 		new_text_width *= 1.3;
 	}
-	// I don't know if it's strictly necessary to create the texture yet again just to make sure the clip_rect is set to game_canvas
-	// but it seems like the safe course of action.
-	label.set_clip_rect(game_canvas);
-	label.clear_texture();
-	label.create_texture();
 
 	update_label_pos();
+	label_initialized = true;
 }
 
 void tooltip::update_label_pos()
@@ -209,9 +201,13 @@ void manager::layout()
 	if(!active_tooltip) {
 		return;
 	}
+	tooltip& tip = tips.at(active_tooltip);
+	if(!tip.label_initialized) {
+		tip.init_label();
+	}
 	// Update the active tooltip's draw state.
 	// This will trigger redraws if necessary.
-	tips.at(active_tooltip).label.update(std::chrono::steady_clock::now());
+	tip.label.update(std::chrono::steady_clock::now());
 }
 
 bool manager::expose(const rect& region)
@@ -311,7 +307,7 @@ int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::s
 	clear_tooltips(origin);
 	// Create and add a new tooltip
 	int id = tooltip_id++;
-	tips.emplace(id, tooltip(origin, message, action));
+	tips.try_emplace(id, origin, message, action);
 	return id;
 }
 
