@@ -56,13 +56,10 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
  * horizontally, an ellipsis will be displayed at the end of it.
  * If area is empty, the text will not be clipped.
  *
- * If use_tooltips is true, then text with an ellipsis will have a tooltip
- * set for it equivalent to the entire contents of the text.
- *
  * A bounding rectangle of the text is returned. If actually_draw is true
  * the text will also be drawn to the screen. Otherwise only the bounding
  * rectangle is returned.
  */
-rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y);
 
 } // end namespace font
