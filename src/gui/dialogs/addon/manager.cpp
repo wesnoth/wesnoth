@@ -1193,12 +1193,12 @@ void addon_manager::on_addon_select()
 
 void addon_manager::on_selected_version_change()
 {
-	widget* parent_of_addons_list = parent();
+	widget* parent = this;
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		parent_of_addons_list = stk->get_layer_grid(0);
+		parent = stk->get_layer_grid(0);
 	}
 
-	const addon_info* info = parent_of_addons_list->find_widget<addon_list>("addons").get_selected_addon();
+	const addon_info* info = parent->find_widget<addon_list>("addons").get_selected_addon();
 
 	if(info == nullptr) {
 		return;
@@ -1206,11 +1206,11 @@ void addon_manager::on_selected_version_change()
 
 	if(!tracking_info_[info->id].can_publish && is_installed_addon_status(tracking_info_[info->id].state)) {
 		bool updatable = tracking_info_[info->id].installed_version
-						 != find_widget<menu_button>("version_filter").get_value_string();
-		stacked_widget& action_stack = find_widget<stacked_widget>("action_stack");
+						 != parent->find_widget<menu_button>("version_filter").get_value_string();
+		stacked_widget& action_stack = parent->find_widget<stacked_widget>("action_stack");
 		action_stack.select_layer(0);
 
-		stacked_widget& install_update_stack = find_widget<stacked_widget>("install_update_stack");
+		stacked_widget& install_update_stack = parent->find_widget<stacked_widget>("install_update_stack");
 		install_update_stack.select_layer(1);
 		find_widget<button>("update").set_active(updatable);
 	}
