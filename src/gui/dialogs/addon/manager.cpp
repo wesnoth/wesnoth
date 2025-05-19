@@ -862,7 +862,9 @@ void addon_manager::install_addon(const addon_info& addon)
 {
 	addon_info versioned_addon = addon;
 	if(addon.id == find_widget<addon_list>("addons").get_selected_addon()->id) {
-		versioned_addon.current_version = find_widget<menu_button>("version_filter").get_value_string();
+		if (menu_button* list = find_widget<menu_button>("version_filter", false, false)) {
+			versioned_addon.current_version = list->get_value_string();
+		}
 	}
 
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
@@ -1193,7 +1195,6 @@ void addon_manager::on_selected_version_change()
 {
 	widget* parent_of_addons_list = parent();
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		set_parent(stk->get_layer_grid(1));
 		parent_of_addons_list = stk->get_layer_grid(0);
 	}
 
