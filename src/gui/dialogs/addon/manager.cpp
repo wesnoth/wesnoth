@@ -1212,7 +1212,7 @@ void addon_manager::on_selected_version_change()
 
 		stacked_widget& install_update_stack = parent->find_widget<stacked_widget>("install_update_stack");
 		install_update_stack.select_layer(1);
-		find_widget<button>("update").set_active(updatable);
+		parent->find_widget<button>("update").set_active(updatable);
 	}
 }
 
