@@ -662,8 +662,6 @@ display::overlay_map& game_display::get_overlays()
 
 std::vector<texture> game_display::get_reachmap_images(const map_location& loc) const
 {
-	// Use get_direction() from display.cpp namespace display_direction
-	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
@@ -732,7 +730,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			}
 
 			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
-				stream << get_direction(i);
+				stream << "-" << map_location::write_direction(map_location::direction{i});
 				if(!image::exists(stream.str() + ".png")) {
 					DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
 					// If we don't have any surface at all,

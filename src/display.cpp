@@ -822,18 +822,6 @@ gui::button::TYPE string_to_button_type(const std::string& type)
 	}
 }
 } // namespace
-namespace display_direction
-{
-
-	// named namespace called in game_display.cpp
-
-const std::string& get_direction(std::size_t n)
-{
-	using namespace std::literals::string_literals;
-	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
-	return dirs[n >= dirs.size() ? 0 : n];
-}
-} // namespace display_direction
 
 void display::create_buttons()
 {
@@ -944,7 +932,6 @@ void display::unhide_buttons()
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
-	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
@@ -994,7 +981,7 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 				stream << *image_prefix[v];
 
 				for(int cap2 = 0; v == tiles[i] && cap2 != 6; i = (i + 1) % 6, ++cap2) {
-					stream << get_direction(i);
+					stream << "-" << map_location::write_direction(map_location::direction{i});
 
 					if(!image::exists(stream.str() + ".png")) {
 						// If we don't have any surface at all,
