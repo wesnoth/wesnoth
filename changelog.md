@@ -1,22 +1,14 @@
-## Version 1.18.4+dev
-### Add-ons client
-### Add-ons server
-### Campaigns
+## Version 1.18.5
 ### Editor
    * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115).
-### Multiplayer
 ### Networking
    * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
-### Lua API
-### Packaging
 ### Terrain
    * Fix bluff/gulch terrain overlays being conspicuously visible on the minimap display (bug #8924).
 ### Translations
    * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Esperanto, Finnish, Italian, Japanese
-### Units
 ### User interface
    * Fixed an issue with the Help browser over-scaling portraits up on configurations with a pixel scale higher than 1 (e.g. macOS and Retina screens), causing blurry rendering and lacking enough room for text.
-### WML Engine
 ### Miscellaneous and Bug Fixes
    * Fix failure to build with recent versions of Visual Studio due to missing `<chrono>` include.
    * Support compilation with GCC 15.
