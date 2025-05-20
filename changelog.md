@@ -1,19 +1,27 @@
 ## Version 1.19.11+dev
 ### Add-ons client
-### Add-ons server
+   * Fixed downloading an add-on causing a crash.
 ### Campaigns
-### Editor
+   * Son of the Black Eye
+     * S15: improved AI behavior.
+   * The Deceiver’s Gambit
+     * Easy and Normal difficulties are now more challenging
+     * Delfador now references Elende's prophecy much more in Part II
+     * Numerous minor dialogue changes, scenario tweaks, and bug fixes
+     * Various dialogue tweaks in Part II to better-resolve some of Part I's lingering plot threads.
+     * S11: use simple_attack MAI for AI-vs-AI fighting, to reduce lag
+     * S11: reduced number of Orcish Adepts/Shamans, and added a voiceline when one of them is attacked
+     * S13: replaced Orcish Adepts/Shamans with regular cannon-fodder units.
 ### Multiplayer
-### Lua API
-### Packaging
-### Terrain
+   * Added support for server-side queueing.
 ### Translations
    * Updated translations: British English, Czech, Esperanto, Finnish, Italian
 ### Units
+   * Added and updated a variety of boats.
 ### User interface
    * It is now possible to mark certain units as favorite in Unit List and Recall dialogs. Units can be sorted by whether they are favorite or not.
-### WML Engine
-### Miscellaneous and Bug Fixes
+   * Fixed Wesnoth freezing when using a textbox.
+   * Add support for marking units as favorites in the recall list.
 
 ## Version 1.19.11
 ### Campaigns
