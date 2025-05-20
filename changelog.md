@@ -1,4 +1,4 @@
-## Version 1.19.11+dev
+## Version 1.19.12
 ### Add-ons client
    * Fixed downloading an add-on causing a crash.
 ### Campaigns
