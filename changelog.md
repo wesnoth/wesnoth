@@ -1,3 +1,18 @@
+## Version 1.18.5+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
 ## Version 1.18.5
 ### Editor
    * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115).
