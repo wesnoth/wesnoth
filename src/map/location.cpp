@@ -154,48 +154,46 @@ std::vector<map_location::direction> map_location::parse_directions(const std::s
 std::string map_location::write_direction(map_location::direction dir)
 {
 	switch(dir) {
-		case direction::north:
-			return std::string("n");
-		case direction::north_east:
-			return std::string("ne");
-		case direction::north_west:
-			return std::string("nw");
-		case direction::south:
-			return std::string("s");
-		case direction::south_east:
-			return std::string("se");
-		case direction::south_west:
-			return std::string("sw");
-		default:
-			return std::string();
-
+	case direction::north:
+		return std::string("n");
+	case direction::north_east:
+		return std::string("ne");
+	case direction::north_west:
+		return std::string("nw");
+	case direction::south:
+		return std::string("s");
+	case direction::south_east:
+		return std::string("se");
+	case direction::south_west:
+		return std::string("sw");
+	default:
+		return std::string();
 	}
 }
 
 std::string map_location::write_translated_direction(map_location::direction dir)
 {
 	switch(dir) {
-		case direction::north:
-			return _("North");
-		case direction::north_east:
-			return _("North East");
-		case direction::north_west:
-			return _("North West");
-		case direction::south:
-			return _("South");
-		case direction::south_east:
-			return _("South East");
-		case direction::south_west:
-			return _("South West");
-		default:
-			return std::string();
-
+	case direction::north:
+		return _("North");
+	case direction::north_east:
+		return _("North East");
+	case direction::north_west:
+		return _("North West");
+	case direction::south:
+		return _("South");
+	case direction::south_east:
+		return _("South East");
+	case direction::south_west:
+		return _("South West");
+	default:
+		return std::string();
 	}
 }
 
-map_location::map_location(const config& cfg, const variable_set *variables) :
-		x(-1000),
-		y(-1000)
+map_location::map_location(const config& cfg, const variable_set* variables)
+	: x(-1000)
+	, y(-1000)
 {
 	std::string xs = cfg["x"], ys = cfg["y"];
 	if (variables)
