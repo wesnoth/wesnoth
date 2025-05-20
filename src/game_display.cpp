@@ -205,17 +205,25 @@ void game_display::draw_invalidated()
 
 namespace
 {
-const std::string mouseover_normal_top = "misc/hover-hex-top.png~RC(magenta>gold)";
-const std::string mouseover_normal_bot = "misc/hover-hex-bottom.png~RC(magenta>gold)";
+const image::locator mouseover_normal_top
+	{"misc/hover-hex-top.png", "~RC(magenta>gold)"};
+const image::locator mouseover_normal_bot
+	{"misc/hover-hex-bottom.png", "~RC(magenta>gold)"};
 
-const std::string mouseover_enemy_top = "misc/hover-hex-enemy-top.png~RC(magenta>red)";
-const std::string mouseover_enemy_bot = "misc/hover-hex-enemy-bottom.png~RC(magenta>red)";
+const image::locator mouseover_enemy_top
+	{"misc/hover-hex-enemy-top.png", "~RC(magenta>red)"};
+const image::locator mouseover_enemy_bot
+	{"misc/hover-hex-enemy-bottom.png", "~RC(magenta>red)"};
 
-const std::string mouseover_self_top = "misc/hover-hex-top.png~RC(magenta>green)";
-const std::string mouseover_self_bot = "misc/hover-hex-bottom.png~RC(magenta>green)";
+const image::locator mouseover_self_top
+	{"misc/hover-hex-top.png", "~RC(magenta>green)"};
+const image::locator mouseover_self_bot
+	{"misc/hover-hex-bottom.png", "~RC(magenta>green)"};
 
-const std::string mouseover_ally_top = "misc/hover-hex-top.png~RC(magenta>lightblue)";
-const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+const image::locator mouseover_ally_top
+	{"misc/hover-hex-top.png", "~RC(magenta>lightblue)"};
+const image::locator mouseover_ally_bot
+	{"misc/hover-hex-bottom.png", "~RC(magenta>lightblue)"};
 
 /**
  * Function to return 2 half-hex footsteps images for the given location.
@@ -309,8 +317,8 @@ void game_display::draw_hex(const map_location& loc)
 			hex_top_layer = drawing_layer::mouseover_top;
 		}
 
-		const std::string* mo_top_path;
-		const std::string* mo_bot_path;
+		const image::locator* mo_top_path;
+		const image::locator* mo_bot_path;
 
 		if(u == nullptr) {
 			mo_top_path = &mouseover_normal_top;
