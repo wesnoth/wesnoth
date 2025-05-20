@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-28 12:38-0500\n"
+"POT-Creation-Date: 2025-05-20 17:25-0500\n"
 "PO-Revision-Date: 2025-02-20 14:27+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -512,12 +512,12 @@ msgid ""
 "Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both "
-"<ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref> and "
-"<ref>dst='..editor_mode_scenario' text='Scenario Editor'</ref> modes. The "
-"location names are shown as a list in the editor palette, clicking on the "
-"map will place that name on a hex, each location can only be placed on a "
-"single hex, and the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -561,10 +561,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
-"img> Impassable and Unwalkable\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -579,10 +579,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
-"box=yes</img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
 "\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
@@ -716,8 +716,8 @@ msgstr ""
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:213
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
 "• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
@@ -1022,10 +1022,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario's map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1629,8 +1629,8 @@ msgstr "খেলা"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:478
-#: src/help/help_topic_generators.cpp:501
+#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:505
 msgid "Traits"
 msgstr "বৈশিষ্ট্য"
 
@@ -3202,8 +3202,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' "
-"dst='..eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' dst='.."
+"eras_section'</ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -5933,15 +5933,15 @@ msgstr "হতচকিত"
 msgid "stunned"
 msgstr "হতচকিত"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "বন্ধ"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:187
 msgid "Help"
 msgstr "সাহায্য"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:239 src/help/help.cpp:243
 msgid "Parse error when parsing help text:"
 msgstr "সাহ্যয্যের তথ্য পড়ার সময় ত্রুটি:"
 
@@ -5992,7 +5992,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:604
+#: src/help/help_topic_generators.cpp:608
 msgid "Special Notes:"
 msgstr "বিশেষ তথ্য:"
 
@@ -6014,152 +6014,152 @@ msgstr "প্রতিরক্ষামূলক বৈশিষ্ট্য:"
 msgid "Level"
 msgstr "পর্যায়"
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:365
 msgid "Advances from: "
 msgstr "উন্নীত হয়েছে: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:367
 msgid "Advances to: "
 msgstr "উন্নীত হবে: "
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:396
 msgid "Base unit: "
 msgstr "মূল ইউনিট: "
 
-#: src/help/help_topic_generators.cpp:397
+#: src/help/help_topic_generators.cpp:401
 msgid "Base units: "
 msgstr "মূল ইউনিটগুলি: "
 
-#: src/help/help_topic_generators.cpp:415
+#: src/help/help_topic_generators.cpp:419
 msgid "Variations: "
 msgstr "প্রকার: "
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:443
 msgid "race^Miscellaneous"
 msgstr "বিভিন্ন"
 
-#: src/help/help_topic_generators.cpp:441
+#: src/help/help_topic_generators.cpp:445
 msgid "Race: "
 msgstr "জাতি: "
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:515
 msgid "Abilities: "
 msgstr "দক্ষতা: "
 
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:541
 msgid "Ability Upgrades: "
 msgstr "দক্ষতা বৃদ্ধি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:571
 msgid "HP:"
 msgstr "জীবন:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:575
 msgid "Moves:"
 msgstr "স্থানান্তর সংখ্যা:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:580
 msgid "Vision:"
 msgstr "দৃষ্টি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:586
 msgid "Jamming:"
 msgstr "জ্যামিং:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:591
 msgid "Cost:"
 msgstr "মূল্য:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:591
+#: src/help/help_topic_generators.cpp:595
 msgid "Alignment:"
 msgstr "স্বভাব:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:598
+#: src/help/help_topic_generators.cpp:602
 msgid "Required XP:"
 msgstr "প্রয়োজনীয় অভিজ্ঞতা:"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Attacks"
 msgstr "আক্রমণসমূহ"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:627
 msgid "unit help^Name"
 msgstr "নাম"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:628
 msgid "Strikes"
 msgstr "আঘাত সংখ্যা"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:629
 msgid "Range"
 msgstr "সীমা"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:630
 msgid "Type"
 msgstr "প্রকৃতি"
 
-#: src/help/help_topic_generators.cpp:627
+#: src/help/help_topic_generators.cpp:631
 msgid "Special"
 msgstr "বিশেষত্ব"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistances"
 msgstr "প্রতিরোধসমূহ"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:710
 msgid "Attack Type"
 msgstr "আক্রমণের প্রকৃতি"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:711
 msgid "Resistance"
 msgstr "প্রতিরোধ"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain Modifiers"
 msgstr "ভূমিরূপ পরিবর্তনগুলি"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:745
 msgid "Terrain"
 msgstr "ভূমি"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense"
 msgstr "সুরক্ষা"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:747
 msgid "Movement Cost"
 msgstr "স্থানান্তরের মূল্য"
 
-#: src/help/help_topic_generators.cpp:747
+#: src/help/help_topic_generators.cpp:751
 msgid "Defense Cap"
 msgstr "সুরক্ষার সীমা"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:756
 msgid "Vision Cost"
 msgstr "দৃষ্টিমূল্য"
 
-#: src/help/help_topic_generators.cpp:756
+#: src/help/help_topic_generators.cpp:760
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
 

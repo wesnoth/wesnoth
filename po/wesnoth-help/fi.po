@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-28 12:38-0500\n"
+"POT-Creation-Date: 2025-05-20 17:25-0500\n"
 "PO-Revision-Date: 2023-12-04 12:57+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -535,12 +535,12 @@ msgid ""
 "Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both "
-"<ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref> and "
-"<ref>dst='..editor_mode_scenario' text='Scenario Editor'</ref> modes. The "
-"location names are shown as a list in the editor palette, clicking on the "
-"map will place that name on a hex, each location can only be placed on a "
-"single hex, and the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -584,10 +584,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
-"img> Impassable and Unwalkable\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -602,10 +602,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
-"box=yes</img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
 "\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
@@ -743,8 +743,8 @@ msgstr "maasto"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:213
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
 "• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
@@ -1043,10 +1043,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario's map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1769,8 +1769,8 @@ msgstr ""
 "Annuvinin provinssiksi, mutta haltioille se on Wesmere.\n"
 "\n"
 "    • Huomattavia maanmuotoja:\n"
-"          ◦ Heart Mountains: Käytännössä läpipääsemätön este Arkan-thoria "
-"-joen maaston ja Pohjoisten tasankojen välissä          ◦ Sydänhampaat: "
+"          ◦ Heart Mountains: Käytännössä läpipääsemätön este Arkan-thoria -"
+"joen maaston ja Pohjoisten tasankojen välissä          ◦ Sydänhampaat: "
 "Erityisen luotaantyöntävä terävien huippujen alue Vrug -järvestä lounaaseen "
 "ja Wesmerestä pohjoiseen; kaikkein vaarallisin Sydänvuorten alue. jota "
 "asuttavat vain erakot, hullut ja maagit\n"
@@ -1805,8 +1805,8 @@ msgstr "Lounaismaat"
 #| "          ◦ None known\n"
 #| "    • Notable land features:\n"
 #| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-#| "the southwest—much farther than is charted—and is home to "
-#| "<ref>dst='..race_elf' text='elves'</ref>."
+#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
+#| "race_elf' text='elves'</ref>."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1834,8 +1834,8 @@ msgstr ""
 "          ◦ Ei tietoa\n"
 "    • Huomattavat maanmuodot:\n"
 "          ◦ Aethenin metsä: Suurin eteläinen metsä, jatkuen pitkälle "
-"lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat "
-"<ref>dst='..race_elf' text='haltiat'</ref>."
+"lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat <ref>dst='.."
+"race_elf' text='haltiat'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
@@ -1849,8 +1849,8 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
-"Käytännössä läpipääsemätön este <ref>dst='arkan_thoria' text='Arkan-thoria "
-"-joen'</ref> maaston ja <ref>dst='far_north' text='Pohjoisten Tasankojen'</"
+"Käytännössä läpipääsemätön este <ref>dst='arkan_thoria' text='Arkan-thoria -"
+"joen'</ref> maaston ja <ref>dst='far_north' text='Pohjoisten Tasankojen'</"
 "ref> välissä."
 
 #. [topic]: id=far_north
@@ -1980,8 +1980,8 @@ msgstr "Pelaaminen"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:478
-#: src/help/help_topic_generators.cpp:501
+#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:505
 msgid "Traits"
 msgstr "Ominaisuudet"
 
@@ -2255,9 +2255,8 @@ msgid ""
 msgstr ""
 "Pelatessasi saat monista käsitteistä lyhyen kuvauksen pitämällä kursoria "
 "niiden päällä, esimerkiksi tilannepaneelissa. Tämä ominaisuus on erityisen "
-"hyödyllinen kohdatessasi uusia ominaisuuksia, esimerkiksi "
-"<ref>dst='..abilities_section' text='erikoistaitoja'</ref>, ensimmäistä "
-"kertaa."
+"hyödyllinen kohdatessasi uusia ominaisuuksia, esimerkiksi <ref>dst='.."
+"abilities_section' text='erikoistaitoja'</ref>, ensimmäistä kertaa."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
@@ -2276,8 +2275,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kun voitat tehtävän, kartta harmaantuu ja <bold>text='Lopeta vuoro'</bold> "
-"-nappi muuttuu <bold>text='Päätä tehtävä'</bold>-napiksi. Voit vielä tehdä "
+"Kun voitat tehtävän, kartta harmaantuu ja <bold>text='Lopeta vuoro'</bold> -"
+"nappi muuttuu <bold>text='Päätä tehtävä'</bold>-napiksi. Voit vielä tehdä "
 "asioita, kuten muuttaa tallennusasetuksia tai (moninpelissä) keskustella "
 "muiden pelaajien kanssa, ennen kuin painat lopetusnappia päästääksesi "
 "takaisin palvelimen aulaan/valikkoon."
@@ -2337,16 +2336,16 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit "
-#| "<ref>dst='..units' text='units'</ref> into your army. To recruit, you "
-#| "must have your leader (for instance, Konrad in the <italic>text='Heir to "
-#| "the Throne'</italic> campaign) on the keep hex of a "
-#| "<ref>dst='terrain_castle' text='castle'</ref>. Then you may recruit by "
-#| "either choosing <bold>text='Recruit'</bold> from the menu or right-"
-#| "clicking on a hex and selecting <bold>text='Recruit'</bold>. This brings "
-#| "up the recruit menu, which lists units available for recruitment, along "
-#| "with their gold cost. Click on a unit to see its statistics, then press "
-#| "the recruit button to recruit it."
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the recruit button to "
+#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -3728,8 +3727,8 @@ msgstr ""
 "Nämä olivat Wesnothin perusteet. Saatat haluta lukea lisää perusstrategiasta "
 "tai tutustua paremmin <ref>dst='..traits_section' text='piirteisiin'</ref> "
 "ja <ref>dst='..abilities_section' text='erikoistaitoihin'</ref>. Tässä "
-"vaiheessa tiedät kaiken mitä tarvitset pelataksesi Valtaistuimen perillinen "
-"-kampanjaa. Pidä hauskaa, ja onnea matkaan!"
+"vaiheessa tiedät kaiken mitä tarvitset pelataksesi Valtaistuimen perillinen -"
+"kampanjaa. Pidä hauskaa, ja onnea matkaan!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:522
@@ -4137,8 +4136,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' "
-"dst='..eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' dst='.."
+"eras_section'</ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -4287,8 +4286,8 @@ msgstr "Yleiset komennot"
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
-#| "(press 'm' first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -7768,15 +7767,15 @@ msgstr "epäkuollut"
 msgid "stunned"
 msgstr ""
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Sulje"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:187
 msgid "Help"
 msgstr "Apua"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:239 src/help/help.cpp:243
 msgid "Parse error when parsing help text:"
 msgstr "Tulkintavirhe aputekstissä:"
 
@@ -7826,7 +7825,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:604
+#: src/help/help_topic_generators.cpp:608
 msgid "Special Notes:"
 msgstr "Erityistiedot:"
 
@@ -7850,71 +7849,71 @@ msgstr ""
 msgid "Level"
 msgstr "Taso"
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:365
 msgid "Advances from: "
 msgstr "Ylenee yksiköstä: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:367
 msgid "Advances to: "
 msgstr "Ylenee yksiköksi: "
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:396
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "maasto"
 
-#: src/help/help_topic_generators.cpp:397
+#: src/help/help_topic_generators.cpp:401
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "maasto"
 
-#: src/help/help_topic_generators.cpp:415
+#: src/help/help_topic_generators.cpp:419
 msgid "Variations: "
 msgstr "Variaatiot:"
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:443
 msgid "race^Miscellaneous"
 msgstr "Sekalainen"
 
-#: src/help/help_topic_generators.cpp:441
+#: src/help/help_topic_generators.cpp:445
 msgid "Race: "
 msgstr "Laji: "
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:515
 msgid "Abilities: "
 msgstr "Erikoistaidot: "
 
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:541
 msgid "Ability Upgrades: "
 msgstr "Taitopäivitykset: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:571
 msgid "HP:"
 msgstr "EP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:575
 msgid "Moves:"
 msgstr "Liikepisteitä:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:580
 msgid "Vision:"
 msgstr "Näkyvyys:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Swarming"
 msgid "Jamming:"
@@ -7923,87 +7922,87 @@ msgstr "parveilu"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:591
 msgid "Cost:"
 msgstr "Hinta:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:591
+#: src/help/help_topic_generators.cpp:595
 msgid "Alignment:"
 msgstr "Suuntautuminen:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:598
+#: src/help/help_topic_generators.cpp:602
 msgid "Required XP:"
 msgstr "Vaadittu kokemus (KP):"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Attacks"
 msgstr "Hyökkäykset"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:627
 msgid "unit help^Name"
 msgstr "Nimi"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:628
 msgid "Strikes"
 msgstr "Iskut"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:629
 msgid "Range"
 msgstr "etäisyys"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:630
 msgid "Type"
 msgstr "tyyppi"
 
-#: src/help/help_topic_generators.cpp:627
+#: src/help/help_topic_generators.cpp:631
 msgid "Special"
 msgstr "erikoisuus"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistances"
 msgstr "Vastustukset"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:710
 msgid "Attack Type"
 msgstr "hyökkäystyyppi"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:711
 msgid "Resistance"
 msgstr "vastustus"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain Modifiers"
 msgstr "Maaston vaikutus"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:745
 msgid "Terrain"
 msgstr "maasto"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense"
 msgstr "Puolustus"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:747
 msgid "Movement Cost"
 msgstr "Liikkumiskustannus"
 
-#: src/help/help_topic_generators.cpp:747
+#: src/help/help_topic_generators.cpp:751
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Puolustus"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:756
 msgid "Vision Cost"
 msgstr "Näkyvyyskustannus"
 
-#: src/help/help_topic_generators.cpp:756
+#: src/help/help_topic_generators.cpp:760
 msgid "Jamming Cost"
 msgstr ""
 
@@ -8624,9 +8623,9 @@ msgstr ""
 #~ "Pelaaminen tapahtuu taistelujen sarjana. Näitä taisteluja kutsutaan "
 #~ "joskus myös skenaarioiksi. Joka taistelussa joukkosi saavat vastaansa "
 #~ "yhden tai useamman vastustajan joukot. Voit pelata joko tietokonetta "
-#~ "vastaan, tai ystäviesi kanssa vuorotellen samalla tietokoneella (hotseat "
-#~ "-peli). Jos koneesi on kytketty tietoverkkoon tai internetiin, voit "
-#~ "pelata muiden samaan verkkoon kytkeytyneiden kanssa."
+#~ "vastaan, tai ystäviesi kanssa vuorotellen samalla tietokoneella (hotseat -"
+#~ "peli). Jos koneesi on kytketty tietoverkkoon tai internetiin, voit pelata "
+#~ "muiden samaan verkkoon kytkeytyneiden kanssa."
 
 #~ msgid "Experience and Advancement"
 #~ msgstr "Kokemus ja yleneminen"

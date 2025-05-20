@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-28 12:38-0500\n"
+"POT-Creation-Date: 2025-05-20 17:25-0500\n"
 "PO-Revision-Date: 2024-11-22 20:35+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -588,12 +588,12 @@ msgid ""
 "Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both "
-"<ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref> and "
-"<ref>dst='..editor_mode_scenario' text='Scenario Editor'</ref> modes. The "
-"location names are shown as a list in the editor palette, clicking on the "
-"map will place that name on a hex, each location can only be placed on a "
-"single hex, and the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -618,11 +618,11 @@ msgstr ""
 "يحدد موضع بداية قائد الجانب.\n"
 "\n"
 "تحدد هذه الأداة مواقع البداية الافتراضية لقادة الجانب، والمواقع الخاصة "
-"المسماة. يتم تمكين كلا النوعين من المواقع في كل من وضعي "
-"<ref>dst='..editor_mode_terrain' text='محرر الخريطة'</ref> و "
-"<ref>dst='..editor_mode_scenario' text='محرر السيناريو'</ref>. يتم عرض أسماء "
-"المواقع كقائمة في لوحة المحرر، سيؤدي النقر على الخريطة إلى وضع هذا الاسم على "
-"سداسي، يمكن وضع كل موقع على سداسي واحد فقط، وسيسمح المحرر بموقع واحد فقط لكل "
+"المسماة. يتم تمكين كلا النوعين من المواقع في كل من وضعي <ref>dst='.."
+"editor_mode_terrain' text='محرر الخريطة'</ref> و <ref>dst='.."
+"editor_mode_scenario' text='محرر السيناريو'</ref>. يتم عرض أسماء المواقع "
+"كقائمة في لوحة المحرر، سيؤدي النقر على الخريطة إلى وضع هذا الاسم على سداسي، "
+"يمكن وضع كل موقع على سداسي واحد فقط، وسيسمح المحرر بموقع واحد فقط لكل "
 "سداسي.\n"
 "\n"
 "لإضافة مواقع خاصة مسماة، انقر على \"إضافة\" في الجزء السفلي من لوحة المحرر، "
@@ -664,10 +664,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
-"img> Impassable and Unwalkable\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -676,10 +676,10 @@ msgid ""
 msgstr ""
 "<bold>text='تراكب الحركة'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
-"img> غير سالكة وغير قابلة للسير\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> غير "
+"سالكة وغير قابلة للسير\n"
 "\n"
 "على الرغم من سهولة ملاحظتها في المحرر، إلا أنها غير مرئية في اللعبة، لذا فإن "
 "التضاريس المختلطة التي تنشئها تبدو مثل التضاريس الأساسية. فهي تنشئ تضاريس "
@@ -693,10 +693,10 @@ msgstr ""
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
-"box=yes</img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
 "\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
@@ -709,10 +709,10 @@ msgid ""
 msgstr ""
 "<bold>text='تراكب القلعة'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
-"box=yes</img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
 "\n"
 "تسمح إضافة أي من هذه التراكبات إلى سداسي غير قابل للمرور بتجنيد الوحدات على "
 "سداسي. تسمح الحراسة أيضًا للقائد بالتجنيد من هناك.\n"
@@ -893,8 +893,8 @@ msgstr "التضاريس المهملة"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:213
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
 "• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
@@ -1351,10 +1351,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario's map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -2223,8 +2223,8 @@ msgstr "قواعد اللعب"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:478
-#: src/help/help_topic_generators.cpp:501
+#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:505
 msgid "Traits"
 msgstr "السمات"
 
@@ -2521,8 +2521,8 @@ msgid ""
 msgstr ""
 "أثناء اللعب، ضع في اعتبارك أنه يمكنك تمرير الفأرة فوق العديد من العناصر في "
 "اللعبة، مثل المعلومات المعروضة في جزء الحالة، لمشاهدة وصف موجز يشرح كل عنصر. "
-"يكون هذا مفيدًا بشكل خاص عندما تصادف عناصر جديدة، مثل "
-"<ref>dst='..abilities_section' text='القدرات'</ref>، للمرة الأولى."
+"يكون هذا مفيدًا بشكل خاص عندما تصادف عناصر جديدة، مثل <ref>dst='.."
+"abilities_section' text='القدرات'</ref>، للمرة الأولى."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
@@ -4036,10 +4036,9 @@ msgid ""
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
 "هذا ختام أساسيات ويسنوث. قد ترغب في قراءة الاستراتيجية الأساسية، أو التعرف "
-"على <ref>dst='..traits_section' text='سمات'</ref> و "
-"<ref>dst='..abilities_section' text='قدرات'</ref>، لكنك الآن تعرف كل ما "
-"تحتاج إلى معرفته للعب حملة <italic>text='وريث العرش'</italic>. استمتع، وحظًا "
-"موفقًا!"
+"على <ref>dst='..traits_section' text='سمات'</ref> و <ref>dst='.."
+"abilities_section' text='قدرات'</ref>، لكنك الآن تعرف كل ما تحتاج إلى معرفته "
+"للعب حملة <italic>text='وريث العرش'</italic>. استمتع، وحظًا موفقًا!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:522
@@ -4494,13 +4493,13 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what eras you have loaded in the <ref>text='eras' "
-"dst='..eras_section'</ref> of the help."
+"You can see what eras you have loaded in the <ref>text='eras' dst='.."
+"eras_section'</ref> of the help."
 msgstr ""
 "\n"
 "\n"
-"يمكنك رؤية العصور التي قمت بتحميلها في <ref>text='عصور' "
-"dst='..eras_section'</ref> للمساعدة."
+"يمكنك رؤية العصور التي قمت بتحميلها في <ref>text='عصور' dst='.."
+"eras_section'</ref> للمساعدة."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:627
@@ -4663,10 +4662,10 @@ msgstr ""
 "خادم الإضافات. سيتم تقديم خيارات لك لإزالة أي عدد من الوظائف الإضافية "
 "المثبتة حاليًا.\n"
 "\n"
-"لا يمكن إزالة الإضافات التي تحتوي على معلومات النشر (ملفات "
-"<italic>text='.pbl'</italic>) المرفقة بها، وذلك لمنع فقدها عن طريق الخطأ. "
-"إذا لزم الأمر، يجب عليك حذف ملفات المعلومات أو الإضافات نفسها يدويًا باستخدام "
-"مدير الملفات الذي توفره منصتك."
+"لا يمكن إزالة الإضافات التي تحتوي على معلومات النشر (ملفات <italic>text='."
+"pbl'</italic>) المرفقة بها، وذلك لمنع فقدها عن طريق الخطأ. إذا لزم الأمر، "
+"يجب عليك حذف ملفات المعلومات أو الإضافات نفسها يدويًا باستخدام مدير الملفات "
+"الذي توفره منصتك."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
@@ -4683,9 +4682,9 @@ msgid ""
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"يمكن إصدار هذه الأوامر إما عبر سطر الأوامر عن طريق إضافة بادئة لها بـ ':' "
-"(كما هو موضح هنا) أو عبر الدردشة عن طريق بادئتها بـ '/' (اضغط 'm' أولاً لفتح "
-"خط الدردشة).\n"
+"يمكن إصدار هذه الأوامر إما عبر سطر الأوامر عن طريق إضافة بادئة لها بـ "
+"':' (كما هو موضح هنا) أو عبر الدردشة عن طريق بادئتها بـ '/' (اضغط 'm' أولاً "
+"لفتح خط الدردشة).\n"
 " \n"
 
 #. [topic]: id=general_commands
@@ -8073,15 +8072,15 @@ msgstr "مصدومة"
 msgid "stunned"
 msgstr "مصدوم"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "غلق"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:187
 msgid "Help"
 msgstr "المساعدة"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:239 src/help/help.cpp:243
 msgid "Parse error when parsing help text:"
 msgstr "خطأ في التحليل عند تحليل نص التعليمات:"
 
@@ -8137,7 +8136,7 @@ msgstr ""
 "للقائد الموجود في منطقة متصلة بالتجنيد على هذه السداسية."
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:604
+#: src/help/help_topic_generators.cpp:608
 msgid "Special Notes:"
 msgstr "ملاحظات خاصة:"
 
@@ -8157,151 +8156,151 @@ msgstr "خصائص الدفاع: "
 msgid "Level"
 msgstr "المستوى"
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:365
 msgid "Advances from: "
 msgstr "يتطور من: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:367
 msgid "Advances to: "
 msgstr "يتطور إلى: "
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:396
 msgid "Base unit: "
 msgstr "الوحدة الأساس: "
 
-#: src/help/help_topic_generators.cpp:397
+#: src/help/help_topic_generators.cpp:401
 msgid "Base units: "
 msgstr "الوحدات الأساس: "
 
-#: src/help/help_topic_generators.cpp:415
+#: src/help/help_topic_generators.cpp:419
 msgid "Variations: "
 msgstr "التنويعات: "
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:443
 msgid "race^Miscellaneous"
 msgstr "متنوعة"
 
-#: src/help/help_topic_generators.cpp:441
+#: src/help/help_topic_generators.cpp:445
 msgid "Race: "
 msgstr "العرق: "
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:515
 msgid "Abilities: "
 msgstr "القدرات: "
 
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:541
 msgid "Ability Upgrades: "
 msgstr "تطورات القدرات: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:571
 msgid "HP:"
 msgstr "نقاط الحياة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:575
 msgid "Moves:"
 msgstr "الحركات:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:580
 msgid "Vision:"
 msgstr "الرؤية:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:586
 msgid "Jamming:"
 msgstr "القفز:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:591
 msgid "Cost:"
 msgstr "الكلفة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:591
+#: src/help/help_topic_generators.cpp:595
 msgid "Alignment:"
 msgstr "التوجه:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:598
+#: src/help/help_topic_generators.cpp:602
 msgid "Required XP:"
 msgstr "التجربة المطلوبة:"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Attacks"
 msgstr "الهجمات"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:627
 msgid "unit help^Name"
 msgstr "الاسم"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:628
 msgid "Strikes"
 msgstr "الضربات"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:629
 msgid "Range"
 msgstr "المدى"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:630
 msgid "Type"
 msgstr "النوع"
 
-#: src/help/help_topic_generators.cpp:627
+#: src/help/help_topic_generators.cpp:631
 msgid "Special"
 msgstr "الخاصية"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistances"
 msgstr "الدفاعات"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:710
 msgid "Attack Type"
 msgstr "نوع الهجوم"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:711
 msgid "Resistance"
 msgstr "المقاومة"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain Modifiers"
 msgstr "مغير الأرض"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:745
 msgid "Terrain"
 msgstr "الارضية"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense"
 msgstr "الدفاع"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:747
 msgid "Movement Cost"
 msgstr "كلفة الحركة"
 
-#: src/help/help_topic_generators.cpp:747
+#: src/help/help_topic_generators.cpp:751
 msgid "Defense Cap"
 msgstr "حدّ الدفاع"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:756
 msgid "Vision Cost"
 msgstr "كلفة الرؤية"
 
-#: src/help/help_topic_generators.cpp:756
+#: src/help/help_topic_generators.cpp:760
 msgid "Jamming Cost"
 msgstr "كلفة القفز"

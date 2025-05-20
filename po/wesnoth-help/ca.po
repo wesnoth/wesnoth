@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-28 12:38-0500\n"
+"POT-Creation-Date: 2025-05-20 17:25-0500\n"
 "PO-Revision-Date: 2021-01-12 12:43+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -1916,8 +1916,8 @@ msgstr "Joc"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:478
-#: src/help/help_topic_generators.cpp:501
+#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:505
 msgid "Traits"
 msgstr "Trets"
 
@@ -8377,15 +8377,15 @@ msgstr "no morta"
 msgid "stunned"
 msgstr ""
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Tanca"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:187
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:239 src/help/help.cpp:243
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -8437,7 +8437,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:604
+#: src/help/help_topic_generators.cpp:608
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -8471,53 +8471,53 @@ msgstr ""
 msgid "Level"
 msgstr "nivell"
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:365
 msgid "Advances from: "
 msgstr "Avança de: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:367
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Avança de: "
 
-#: src/help/help_topic_generators.cpp:392
+#: src/help/help_topic_generators.cpp:396
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Terreny"
 
-#: src/help/help_topic_generators.cpp:397
+#: src/help/help_topic_generators.cpp:401
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Terreny"
 
-#: src/help/help_topic_generators.cpp:415
+#: src/help/help_topic_generators.cpp:419
 #, fuzzy
 msgid "Variations: "
 msgstr "Facció"
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:443
 msgid "race^Miscellaneous"
 msgstr "Miscel·lània"
 
-#: src/help/help_topic_generators.cpp:441
+#: src/help/help_topic_generators.cpp:445
 msgid "Race: "
 msgstr "Raça: "
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:515
 msgid "Abilities: "
 msgstr "Habilitats: "
 
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:541
 msgid "Ability Upgrades: "
 msgstr "Habilitats millorades: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:571
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -8526,7 +8526,7 @@ msgstr "HP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:575
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -8535,14 +8535,14 @@ msgstr "Moviments: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:580
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 msgid "Jamming:"
 msgstr "eixam"
@@ -8550,7 +8550,7 @@ msgstr "eixam"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:591
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -8559,7 +8559,7 @@ msgstr "Cost: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:591
+#: src/help/help_topic_generators.cpp:595
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -8568,77 +8568,77 @@ msgstr "Alineació: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:598
+#: src/help/help_topic_generators.cpp:602
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Experiència requerida: "
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Attacks"
 msgstr "Atacs"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:627
 msgid "unit help^Name"
 msgstr "Nom"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:628
 msgid "Strikes"
 msgstr "Cops"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:629
 msgid "Range"
 msgstr "Abast"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:630
 msgid "Type"
 msgstr "Tipus"
 
-#: src/help/help_topic_generators.cpp:627
+#: src/help/help_topic_generators.cpp:631
 msgid "Special"
 msgstr "Especial"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistances"
 msgstr "Resistències"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:710
 msgid "Attack Type"
 msgstr "Tipus d'atac"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:711
 msgid "Resistance"
 msgstr "Resistència"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:741
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "Editor de terreny"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:745
 msgid "Terrain"
 msgstr "Terreny"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:747
 msgid "Movement Cost"
 msgstr "Cost del moviment"
 
-#: src/help/help_topic_generators.cpp:747
+#: src/help/help_topic_generators.cpp:751
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Defensa"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:756
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:756
+#: src/help/help_topic_generators.cpp:760
 msgid "Jamming Cost"
 msgstr ""
 
