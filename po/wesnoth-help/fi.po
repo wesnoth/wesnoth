@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2025-05-20 17:31-0500\n"
 "PO-Revision-Date: 2023-12-04 12:57+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -70,7 +70,7 @@ msgstr ""
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:679
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:737
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -78,7 +78,7 @@ msgstr "uskollinen"
 
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:680
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #, fuzzy
 #| msgid "Zero upkeep"
@@ -87,7 +87,7 @@ msgstr "Ei ylläpitoa"
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
 #: data/core/macros/weapon_specials.cfg:117
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -98,7 +98,7 @@ msgstr ""
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
 #: data/core/macros/weapon_specials.cfg:116
 msgid "magical"
 msgstr "maaginen"
@@ -154,7 +154,7 @@ msgid "Colonel Dommel"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
-msgid "Captain Kestrel"
+msgid "Kestrel"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:150
@@ -241,22 +241,6 @@ msgstr ""
 msgid ""
 "I am grievously injured; I can be of no further aid in your quest. Fight on "
 "without me, Delfador!"
-msgstr ""
-
-#. [message]: speaker=Kaylan
-#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:666
-msgid ""
-"Many Knights choose the path of the Paladin, Delfador, but I am an heir of "
-"the Horse Lords. I shall be a Grand Knight."
-msgstr ""
-
-#. [message]: speaker=Kaylan
-#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:676
-msgid ""
-"I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
-"the Paladin, but such is unbecoming for an heir of the Horse Lords."
 msgstr ""
 
 #. [resistance]: id=garak_steadfast
@@ -694,12 +678,12 @@ msgstr ""
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -741,9 +725,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -758,9 +742,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -893,8 +877,8 @@ msgstr "maasto"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:210
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1185,10 +1169,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1337,8 +1321,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -2067,8 +2051,8 @@ msgstr ""
 "Annuvinin provinssiksi, mutta haltioille se on Wesmere.\n"
 "\n"
 "    • Huomattavia maanmuotoja:\n"
-"          ◦ Heart Mountains: Käytännössä läpipääsemätön este Arkan-thoria "
-"-joen maaston ja Pohjoisten tasankojen välissä          ◦ Sydänhampaat: "
+"          ◦ Heart Mountains: Käytännössä läpipääsemätön este Arkan-thoria -"
+"joen maaston ja Pohjoisten tasankojen välissä          ◦ Sydänhampaat: "
 "Erityisen luotaantyöntävä terävien huippujen alue Vrug -järvestä lounaaseen "
 "ja Wesmerestä pohjoiseen; kaikkein vaarallisin Sydänvuorten alue. jota "
 "asuttavat vain erakot, hullut ja maagit\n"
@@ -2103,8 +2087,8 @@ msgstr "Lounaismaat"
 #| "          ◦ None known\n"
 #| "    • Notable land features:\n"
 #| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-#| "the southwest—much farther than is charted—and is home to "
-#| "<ref>dst='..race_elf' text='elves'</ref>."
+#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
+#| "race_elf' text='elves'</ref>."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2121,16 +2105,16 @@ msgstr ""
 "          ◦ Ei tietoa\n"
 "    • Huomattavat maanmuodot:\n"
 "          ◦ Aethenin metsä: Suurin eteläinen metsä, jatkuen pitkälle "
-"lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat "
-"<ref>dst='..race_elf' text='haltiat'</ref>."
+"lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat <ref>dst='.."
+"race_elf' text='haltiat'</ref>."
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2659,9 +2643,8 @@ msgid ""
 msgstr ""
 "Pelatessasi saat monista käsitteistä lyhyen kuvauksen pitämällä kursoria "
 "niiden päällä, esimerkiksi tilannepaneelissa. Tämä ominaisuus on erityisen "
-"hyödyllinen kohdatessasi uusia ominaisuuksia, esimerkiksi "
-"<ref>dst='..abilities_section' text='erikoistaitoja'</ref>, ensimmäistä "
-"kertaa."
+"hyödyllinen kohdatessasi uusia ominaisuuksia, esimerkiksi <ref>dst='.."
+"abilities_section' text='erikoistaitoja'</ref>, ensimmäistä kertaa."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
@@ -2689,8 +2672,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kun voitat tehtävän, kartta harmaantuu ja <bold>text='Lopeta vuoro'</bold> "
-"-nappi muuttuu <bold>text='Päätä tehtävä'</bold>-napiksi. Voit vielä tehdä "
+"Kun voitat tehtävän, kartta harmaantuu ja <bold>text='Lopeta vuoro'</bold> -"
+"nappi muuttuu <bold>text='Päätä tehtävä'</bold>-napiksi. Voit vielä tehdä "
 "asioita, kuten muuttaa tallennusasetuksia tai (moninpelissä) keskustella "
 "muiden pelaajien kanssa, ennen kuin painat lopetusnappia päästääksesi "
 "takaisin palvelimen aulaan/valikkoon."
@@ -2750,16 +2733,16 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit "
-#| "<ref>dst='..units' text='units'</ref> into your army. To recruit, you "
-#| "must have your leader (for instance, Konrad in the <italic>text='Heir to "
-#| "the Throne'</italic> campaign) on the keep hex of a "
-#| "<ref>dst='terrain_castle' text='castle'</ref>. Then you may recruit by "
-#| "either choosing <bold>text='Recruit'</bold> from the menu or right-"
-#| "clicking on a hex and selecting <bold>text='Recruit'</bold>. This brings "
-#| "up the recruit menu, which lists units available for recruitment, along "
-#| "with their gold cost. Click on a unit to see its statistics, then press "
-#| "the recruit button to recruit it."
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the recruit button to "
+#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref dst='..units'>units</"
@@ -4082,36 +4065,44 @@ msgstr ""
 "ovat päivää, iltayö ja aamuyö yötä:\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:476
-msgid ""
-"\n"
-"<table>\n"
-"    <row>\n"
-"        <col>Dawn</col><col><img src='misc/time-schedules/default/schedule-"
-"dawn.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Morning</col><col><img src='misc/time-schedules/default/"
-"schedule-morning.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Afternoon</col><col><img src='misc/time-schedules/default/"
-"schedule-afternoon.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Dusk</col><col><img src='misc/time-schedules/default/schedule-"
-"dusk.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>First Watch</col><col><img src='misc/time-schedules/default/"
-"schedule-firstwatch.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Second Watch</col><col><img src='misc/time-schedules/default/"
-"schedule-secondwatch.png'/></col>\n"
-"    </row>\n"
-"</table>"
-msgstr ""
+#. [time]: id=dawn
+#. [time]: id=dawn_hour
+#: data/core/help.cfg:479 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290
+msgid "Dawn"
+msgstr "Aamu"
+
+#. [topic]: id=time_of_day
+#. [time]: id=morning
+#: data/core/help.cfg:482 data/core/macros/schedules.cfg:28
+msgid "Morning"
+msgstr "Aamupäivä"
+
+#. [topic]: id=time_of_day
+#. [time]: id=afternoon
+#: data/core/help.cfg:485 data/core/macros/schedules.cfg:46
+msgid "Afternoon"
+msgstr "Iltapäivä"
+
+#. [topic]: id=time_of_day
+#. [time]: id=dusk
+#. [time]: id=dusk_hour
+#: data/core/help.cfg:488 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411
+msgid "Dusk"
+msgstr "Ilta"
+
+#. [topic]: id=time_of_day
+#. [time]: id=first_watch
+#: data/core/help.cfg:491 data/core/macros/schedules.cfg:67
+msgid "First Watch"
+msgstr "Iltayö"
+
+#. [topic]: id=time_of_day
+#. [time]: id=second_watch
+#: data/core/help.cfg:494 data/core/macros/schedules.cfg:91
+msgid "Second Watch"
+msgstr "Aamuyö"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:497
@@ -4329,17 +4320,16 @@ msgstr "Yhteenveto"
 #| "luck!"
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Nämä olivat Wesnothin perusteet. Saatat haluta lukea lisää perusstrategiasta "
 "tai tutustua paremmin <ref>dst='..traits_section' text='piirteisiin'</ref> "
 "ja <ref>dst='..abilities_section' text='erikoistaitoihin'</ref>. Tässä "
-"vaiheessa tiedät kaiken mitä tarvitset pelataksesi Valtaistuimen perillinen "
-"-kampanjaa. Pidä hauskaa, ja onnea matkaan!"
+"vaiheessa tiedät kaiken mitä tarvitset pelataksesi Valtaistuimen perillinen -"
+"kampanjaa. Pidä hauskaa, ja onnea matkaan!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:536
@@ -4879,8 +4869,8 @@ msgstr "Yleiset komennot"
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
-#| "(press 'm' first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -5672,49 +5662,17 @@ msgstr ""
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Enimmäis-EP-bonus +3, enimmäis-KP  +20%"
 
-#. [time]: id=dawn
-#. [time]: id=dawn_hour
-#: data/core/macros/schedules.cfg:16 data/core/macros/schedules.cfg:290
-msgid "Dawn"
-msgstr "Aamu"
-
-#. [time]: id=morning
-#: data/core/macros/schedules.cfg:28
-msgid "Morning"
-msgstr "Aamupäivä"
-
 #. [time]: id=midday
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "Keskipäivä"
 
-#. [time]: id=afternoon
-#: data/core/macros/schedules.cfg:46
-msgid "Afternoon"
-msgstr "Iltapäivä"
-
-#. [time]: id=dusk
-#. [time]: id=dusk_hour
-#: data/core/macros/schedules.cfg:55 data/core/macros/schedules.cfg:411
-msgid "Dusk"
-msgstr "Ilta"
-
-#. [time]: id=first_watch
-#: data/core/macros/schedules.cfg:67
-msgid "First Watch"
-msgstr "Iltayö"
-
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "Keskiyö"
-
-#. [time]: id=second_watch
-#: data/core/macros/schedules.cfg:91
-msgid "Second Watch"
-msgstr "Aamuyö"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
@@ -8805,8 +8763,8 @@ msgstr ""
 #~| "          ◦ None known\n"
 #~| "    • Notable land features:\n"
 #~| "          ◦ Aethen Forest: The largest southern forest, it extends far "
-#~| "to the southwest—much farther than is charted—and is home to "
-#~| "<ref>dst='..race_elf' text='elves'</ref>."
+#~| "to the southwest—much farther than is charted—and is home to <ref>dst='.."
+#~| "race_elf' text='elves'</ref>."
 #~ msgid ""
 #~ "<header>text='Notable land features:'</header>\n"
 #~ "    • Aethenwood: The largest southern forest, it extends far to the "
@@ -8823,8 +8781,8 @@ msgstr ""
 #~ "          ◦ Ei tietoa\n"
 #~ "    • Huomattavat maanmuodot:\n"
 #~ "          ◦ Aethenin metsä: Suurin eteläinen metsä, jatkuen pitkälle "
-#~ "lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat "
-#~ "<ref>dst='..race_elf' text='haltiat'</ref>."
+#~ "lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat <ref>dst='.."
+#~ "race_elf' text='haltiat'</ref>."
 
 #, fuzzy
 #~| msgid ""
@@ -9458,9 +9416,9 @@ msgstr ""
 #~ "Pelaaminen tapahtuu taistelujen sarjana. Näitä taisteluja kutsutaan "
 #~ "joskus myös skenaarioiksi. Joka taistelussa joukkosi saavat vastaansa "
 #~ "yhden tai useamman vastustajan joukot. Voit pelata joko tietokonetta "
-#~ "vastaan, tai ystäviesi kanssa vuorotellen samalla tietokoneella (hotseat "
-#~ "-peli). Jos koneesi on kytketty tietoverkkoon tai internetiin, voit "
-#~ "pelata muiden samaan verkkoon kytkeytyneiden kanssa."
+#~ "vastaan, tai ystäviesi kanssa vuorotellen samalla tietokoneella (hotseat -"
+#~ "peli). Jos koneesi on kytketty tietoverkkoon tai internetiin, voit pelata "
+#~ "muiden samaan verkkoon kytkeytyneiden kanssa."
 
 #~ msgid "Experience and Advancement"
 #~ msgstr "Kokemus ja yleneminen"

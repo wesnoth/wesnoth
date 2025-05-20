@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-05-20 22:31 UTC\n"
 "PO-Revision-Date: 2024-06-22 16:09+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -477,6 +477,12 @@ msgstr "крижана буря"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
+#: data/core/units/boats/Elf_Cutter.cfg:95
+#: data/core/units/boats/Elf_Sloop.cfg:95
+#: data/core/units/boats/Orc_Barge.cfg:102
+#: data/core/units/boats/Orc_Battle-Barge.cfg:121
+#: data/core/units/boats/Orc_Rigship.cfg:76
+#: data/core/units/boats/Orc_Warship.cfg:76
 #: data/core/units/boats/Raider_Coastal.cfg:139
 #: data/core/units/boats/Raider_Iron.cfg:146
 #: data/core/units/dunefolk/Marauder.cfg:70
@@ -1287,12 +1293,12 @@ msgstr ""
 "передається кажанові."
 
 #. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:4
+#: data/core/units/boats/Boat.cfg:10
 msgid "Boat"
 msgstr "Човен"
 
 #. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:21
+#: data/core/units/boats/Boat.cfg:26
 #, fuzzy
 #| msgid ""
 #| "Propelled by oars or small sails, boats are used to travel short "
@@ -1304,13 +1310,29 @@ msgstr ""
 "Забезпечені веслами або маленькими вітрилами човни служать для коротких "
 "переправ по воді або перетину мілини, де великі кораблі не пройдуть."
 
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:5
+msgid "Canoe"
+msgstr ""
+
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:19
+msgid ""
+"A Canoe is a small, open-top water vessel commonly used for transportation "
+"or hunting.  Their light-weight construction allows them to be carried "
+"around barriers or between unconnected bodies of water.  Almost every "
+"intelligent race has some form of canoe."
+msgstr ""
+
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:4
+#: data/core/units/boats/Derelict_Ship.cfg:4
 msgid "Derelict Hulk"
 msgstr ""
 
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:18
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Derelict_Ship.cfg:18
+#: data/core/units/boats/Ghost_Ship.cfg:30
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
 "are merely ruined ships that will soon sink, but there are tales of others "
@@ -1318,9 +1340,43 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Derelict_Galleon.cfg:135
+#: data/core/units/boats/Derelict_Ship.cfg:135
 msgid "jetsam"
 msgstr ""
+
+#. [unit_type]: id=Elvish Cutter, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:5
+#, fuzzy
+#| msgid "Elvish Outrider"
+msgid "Elvish Cutter"
+msgstr "Ельфійський передвісник"
+
+#. [unit_type]: id=Elvish Cutter, race=ship
+#. [unit_type]: id=Elvish Sloop, race=ship
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#. [unit_type]: id=Orcish Rigship, race=ship
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:19
+#: data/core/units/boats/Elf_Sloop.cfg:19
+#: data/core/units/boats/Orc_Battle-Barge.cfg:20
+#: data/core/units/boats/Orc_Rigship.cfg:19
+#: data/core/units/boats/Orc_Warship.cfg:19
+msgid "..."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/boats/Elf_Cutter.cfg:104
+#: data/core/units/boats/Elf_Sloop.cfg:107 data/core/units/elves/Druid.cfg:35
+#: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "пастка"
+
+#. [unit_type]: id=Elvish Sloop, race=ship
+#: data/core/units/boats/Elf_Sloop.cfg:5
+#, fuzzy
+#| msgid "Elvish Scout"
+msgid "Elvish Sloop"
+msgstr "Ельфійський розвідник"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1354,7 +1410,7 @@ msgid "Galleon"
 msgstr "Галеон"
 
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:23
+#: data/core/units/boats/Galleon.cfg:24
 msgid ""
 "Galleons are large and sturdy wooden ships used primarily for swift "
 "transport of goods across rivers and oceans in large quantities. The "
@@ -1363,13 +1419,94 @@ msgid ""
 "crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:4
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Ghost_Ship.cfg:16
+#, fuzzy
+#| msgid "Ghost"
+msgid "Ghost Ship"
+msgstr "Дух"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Ghost_Ship.cfg:182
+#: data/core/units/humans/Mage_Elder.cfg:35
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
+msgid "lightning"
+msgstr "блискавка"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Ghost_Ship.cfg:194
+msgid "black wind"
+msgstr ""
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Archer"
+msgid "Orcish Barge"
+msgstr "Оркський лучник"
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:20
+msgid ""
+"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"seen in almost any other ship.  But what they lack in speed and grace, they "
+"make up for with their rugged utility in navigating rivers and swamps.  "
+"Their primary means of movement comes from a large, symmetric sail held at "
+"three points for downwind propulsion.  When currents and winds lead to the "
+"wrong direction, the crew must use poles and anchors to move the barge in "
+"the intended direction.\n"
+"\n"
+"Barges serve as transports for either supplies or troops, but they have been "
+"used as pickets in larger conflicts.  They lack any specific weaponry, but "
+"the crew is equipped with the crude orcish bows that can be deterent enough "
+"in many situations.\n"
+"\n"
+"These barges are very ineffective in the high seas, little better than a "
+"floating wreck."
+msgstr ""
+
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Ruler"
+msgid "Orcish Battle Barge"
+msgstr "Правитель орків"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Orc_Battle-Barge.cfg:112
+msgid "catapult"
+msgstr ""
+
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:5
+#, fuzzy
+#| msgid "Orcish Nightblade"
+msgid "Orcish Rigship"
+msgstr "Оркський душогуб"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Orc_Rigship.cfg:85
+#: data/core/units/boats/Orc_Warship.cfg:85
+#, fuzzy
+#| msgid "fire"
+msgid "firebow"
+msgstr "вогонь"
+
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:5
+#, fuzzy
+#| msgid "Orcish Warrior"
+msgid "Orcish Warship"
+msgstr "Оркський воїн"
+
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Pirate_Galleon.cfg:10
 msgid "Pirate Galleon"
 msgstr "Піратський галеон"
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:22
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Pirate_Galleon.cfg:29
 #, fuzzy
 #| msgid ""
 #| "Pirate galleons are to transport ships what wolves are to sheep. The "
@@ -1385,10 +1522,46 @@ msgstr ""
 "вантажу."
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:160
-#: data/core/units/boats/Transport_Galleon.cfg:158
+#: data/core/units/boats/Pirate_Galleon.cfg:67
+#: data/core/units/boats/Pirate_Ship.cfg:160
+#: data/core/units/boats/Transport_Galleon.cfg:67
+#: data/core/units/boats/Transport_Ship.cfg:158
 msgid "ballista"
 msgstr "баліста"
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:4
+msgid "Pirate Ship"
+msgstr ""
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Pirate galleons are to transport ships what wolves are to sheep. The "
+#| "pirates who crew them are more than happy to help relieve other ships of "
+#| "their weighty cargo."
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo."
+msgstr ""
+"Для транспортних кораблів піратський галеон — як вовк для овець. Його "
+"піратська команда завжди рада допомогти іншим судам позбавитися від важкого "
+"вантажу."
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:5
+msgid "Raft"
+msgstr ""
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:19
+msgid ""
+"Rafts can be an efficient means of downriver transport, but they can also be "
+"an improvised vessel of desperation, patched together from the wreck of a "
+"larger ship."
+msgstr ""
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1441,19 +1614,46 @@ msgstr ""
 msgid "naval ram"
 msgstr "Кавалерист"
 
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:4
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:5
+msgid "Skiff"
+msgstr ""
+
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Propelled by oars or small sails, boats are used to travel short "
+#| "distances and in shallows where large ships cannot navigate."
+msgid ""
+"Propelled by oars or small sails, skiffs are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+"Забезпечені веслами або маленькими вітрилами човни служать для коротких "
+"переправ по воді або перетину мілини, де великі кораблі не пройдуть."
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Transport_Galleon.cfg:10
 msgid "Transport Galleon"
 msgstr "Транспортний галеон"
 
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:20
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Transport_Galleon.cfg:28
+#: data/core/units/boats/Transport_Ship.cfg:20
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
 msgstr ""
 "Транспортні галеони — це добре озброєні галеони, що перевозять війська. "
 "Досягнувши берега, вони можуть висадити на берег десант."
+
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Transport_Ship.cfg:4
+#, fuzzy
+#| msgid "Transport Galleon"
+msgid "Transport Ship"
+msgstr "Транспортний галеон"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -3178,12 +3378,6 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
-#: data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "пастка"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
@@ -4946,13 +5140,6 @@ msgid ""
 msgstr ""
 "Колись могутні, Старі маги трохи втратили силу від років, проведених в боях. "
 "Проте, на полі бою все ще слід побоюватися ударів їх блискавок."
-
-#. [attack]: type=fire
-#: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:100
-#: data/core/units/monsters/Raven_Omen.cfg:90
-msgid "lightning"
-msgstr "блискавка"
 
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4

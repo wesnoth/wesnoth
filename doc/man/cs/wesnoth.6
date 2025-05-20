@@ -74,7 +74,7 @@ možnost zobrazení dialogového okna pro testování grafického uživatelskéh
 rozhraní.
 .TP 
 \fB\-\-core\fP\fI\ id_jádra\fP
-Overrides the loaded core with the one whose id is specified.
+Nahradí načtené jádro tím, jehož identifikátor je zadán.
 .TP 
 \fB\-\-data\-dir\fP\fI\ adresář\fP
 Overrides the data directory with the one specified. The data directory is
@@ -123,11 +123,12 @@ načtení mapy v\ tomto umístění.
 pro toto sezení použije daný \fIjazyk\fP (symbol). Příklad: \fB\-\-language pl_PL\fP.
 .TP 
 \fB\-\-log\-\fP\fIúroveň\fP\fB=\fP\fIoblast1\fP\fB,\fP\fIoblast2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro výběr podskupiny
+oblastí lze použít zástupný znak \fB*\fP, např. gui/* nebo conf* nebo *
+(poslední zmíněný odpovídá všem oblastem). Dostupné úrovně: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Pro většinu oblastí je výchozí
+použitá úroveň \fBwarning\fP, ale pro oblast \fBdeprecation\fP, pokud není
+společně s\ volbou \fB\-d\fP, je výchozí úrovní \fBnone\fP. Tuto volbu je možné
+zadat vícekrát.
 .TP 
 \fB\-\-log\-precise\fP
 použije v\ záznamech časové značky s\ větší přesností.

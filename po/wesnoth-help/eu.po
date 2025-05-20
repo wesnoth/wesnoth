@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2025-05-20 17:31-0500\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:679
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:737
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -79,7 +79,7 @@ msgstr "leial"
 
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:680
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #, fuzzy
 #| msgid "Zero upkeep"
@@ -88,7 +88,7 @@ msgstr "Zaintza gasturik ez"
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
 #: data/core/macros/weapon_specials.cfg:117
 #, fuzzy
 msgid ""
@@ -100,7 +100,7 @@ msgstr ""
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1290
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
 #: data/core/macros/weapon_specials.cfg:116
 msgid "magical"
 msgstr "magikoa"
@@ -154,7 +154,7 @@ msgid "Colonel Dommel"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
-msgid "Captain Kestrel"
+msgid "Kestrel"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:150
@@ -241,22 +241,6 @@ msgstr ""
 msgid ""
 "I am grievously injured; I can be of no further aid in your quest. Fight on "
 "without me, Delfador!"
-msgstr ""
-
-#. [message]: speaker=Kaylan
-#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:666
-msgid ""
-"Many Knights choose the path of the Paladin, Delfador, but I am an heir of "
-"the Horse Lords. I shall be a Grand Knight."
-msgstr ""
-
-#. [message]: speaker=Kaylan
-#. Sir Kaylan is a Knight, and has reached max-XP. He reappears in HttT's Blackwater Port, so we need to force him to be a Grand Knight even if the player chooses to advance him to a Paladin
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:676
-msgid ""
-"I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
-"the Paladin, but such is unbecoming for an heir of the Horse Lords."
 msgstr ""
 
 #. [resistance]: id=garak_steadfast
@@ -3094,36 +3078,44 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:476
-msgid ""
-"\n"
-"<table>\n"
-"    <row>\n"
-"        <col>Dawn</col><col><img src='misc/time-schedules/default/schedule-"
-"dawn.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Morning</col><col><img src='misc/time-schedules/default/"
-"schedule-morning.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Afternoon</col><col><img src='misc/time-schedules/default/"
-"schedule-afternoon.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Dusk</col><col><img src='misc/time-schedules/default/schedule-"
-"dusk.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>First Watch</col><col><img src='misc/time-schedules/default/"
-"schedule-firstwatch.png'/></col>\n"
-"    </row>\n"
-"    <row>\n"
-"        <col>Second Watch</col><col><img src='misc/time-schedules/default/"
-"schedule-secondwatch.png'/></col>\n"
-"    </row>\n"
-"</table>"
-msgstr ""
+#. [time]: id=dawn
+#. [time]: id=dawn_hour
+#: data/core/help.cfg:479 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290
+msgid "Dawn"
+msgstr "Egunsentia"
+
+#. [topic]: id=time_of_day
+#. [time]: id=morning
+#: data/core/help.cfg:482 data/core/macros/schedules.cfg:28
+msgid "Morning"
+msgstr "Goiza"
+
+#. [topic]: id=time_of_day
+#. [time]: id=afternoon
+#: data/core/help.cfg:485 data/core/macros/schedules.cfg:46
+msgid "Afternoon"
+msgstr "Arratsaldea"
+
+#. [topic]: id=time_of_day
+#. [time]: id=dusk
+#. [time]: id=dusk_hour
+#: data/core/help.cfg:488 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411
+msgid "Dusk"
+msgstr "Ilunabarra"
+
+#. [topic]: id=time_of_day
+#. [time]: id=first_watch
+#: data/core/help.cfg:491 data/core/macros/schedules.cfg:67
+msgid "First Watch"
+msgstr "Lehen ikusketa"
+
+#. [topic]: id=time_of_day
+#. [time]: id=second_watch
+#: data/core/help.cfg:494 data/core/macros/schedules.cfg:91
+msgid "Second Watch"
+msgstr "Bigarren ikusketa"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:497
@@ -4337,49 +4329,17 @@ msgstr ""
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr ""
 
-#. [time]: id=dawn
-#. [time]: id=dawn_hour
-#: data/core/macros/schedules.cfg:16 data/core/macros/schedules.cfg:290
-msgid "Dawn"
-msgstr "Egunsentia"
-
-#. [time]: id=morning
-#: data/core/macros/schedules.cfg:28
-msgid "Morning"
-msgstr "Goiza"
-
 #. [time]: id=midday
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr ""
 
-#. [time]: id=afternoon
-#: data/core/macros/schedules.cfg:46
-msgid "Afternoon"
-msgstr "Arratsaldea"
-
-#. [time]: id=dusk
-#. [time]: id=dusk_hour
-#: data/core/macros/schedules.cfg:55 data/core/macros/schedules.cfg:411
-msgid "Dusk"
-msgstr "Ilunabarra"
-
-#. [time]: id=first_watch
-#: data/core/macros/schedules.cfg:67
-msgid "First Watch"
-msgstr "Lehen ikusketa"
-
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr ""
-
-#. [time]: id=second_watch
-#: data/core/macros/schedules.cfg:91
-msgid "Second Watch"
-msgstr "Bigarren ikusketa"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2025-05-20 17:31-0500\n"
 "PO-Revision-Date: 2025-03-20 20:17+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
-"<ref>dst='..terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2659,7 +2659,7 @@ msgstr "Uložit heslo (zašifrované)"
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
 #: data/gui/themes/default/dialogs/wml_message.cfg:444
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
-#: src/gui/dialogs/units_dialog.cpp:71
+#: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
 msgstr "OK"
 
@@ -2717,8 +2717,8 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
-#: src/gui/dialogs/units_dialog.cpp:72 src/hotkey/hotkey_command.cpp:79
+#: data/gui/themes/default/dialogs/units_dialog.cfg:621
+#: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -2817,7 +2817,7 @@ msgstr "Aktualizováno:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:656
 msgid "No description available."
 msgstr "Popis není dostupný."
 
@@ -2862,7 +2862,7 @@ msgstr "Aktualizovat rozšíření"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1061
+#: src/gui/dialogs/addon/manager.cpp:1060
 msgid "Uninstall add-on"
 msgstr "Odinstalovat rozšíření"
 
@@ -2890,7 +2890,7 @@ msgstr "Závislosti:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1136
+#: src/gui/dialogs/addon/manager.cpp:1135
 msgid "addon_dependencies^None"
 msgstr "Žádné"
 
@@ -2904,7 +2904,7 @@ msgstr "Překlady:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1150
+#: src/gui/dialogs/addon/manager.cpp:1149
 msgid "translations^None"
 msgstr "žádné"
 
@@ -2940,7 +2940,7 @@ msgstr "Správce rozšíření"
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
 #: src/gui/dialogs/addon/manager.cpp:570 src/gui/dialogs/addon/manager.cpp:844
-#: src/gui/dialogs/addon/manager.cpp:942
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "Add-on Details"
 msgstr "Podrobnosti o rozšíření"
 
@@ -3101,7 +3101,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
-#: data/gui/themes/default/dialogs/units_dialog.cfg:33
+#: data/gui/themes/default/dialogs/units_dialog.cfg:48
 #: data/gui/themes/default/widgets/addon_list.cfg:78
 msgid "Name"
 msgstr "Název"
@@ -3420,7 +3420,7 @@ msgstr "Upravit rozvrh dne"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:231
+#: src/gui/dialogs/units_dialog.cpp:240
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -3496,14 +3496,10 @@ msgstr "Ukázat změny barev na mapě"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1034
-#: src/gui/dialogs/editor/custom_tod.cpp:183
-#: src/gui/dialogs/editor/custom_tod.cpp:190
-#: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:321
-#: src/gui/dialogs/editor/edit_unit.cpp:329
-#: src/gui/dialogs/editor/edit_unit.cpp:337
-#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/editor/custom_tod.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:323
+#: src/gui/dialogs/editor/edit_unit.cpp:1030
 #: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "Potvrdit"
@@ -3876,7 +3872,7 @@ msgstr "Identifikátor:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Experience modifier:"
 msgstr "Modifikátor zkušenostních bodů:"
 
@@ -3944,7 +3940,7 @@ msgstr "Zlato:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:303
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Gold per village:"
 msgstr "Zlato za vesnici:"
 
@@ -4198,7 +4194,7 @@ msgstr "Vyber generátor map:"
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -4236,7 +4232,7 @@ msgstr "Výška:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:442
+#: src/gui/dialogs/units_dialog.cpp:470
 msgid "Create"
 msgstr "Vytvoř"
 
@@ -4635,7 +4631,7 @@ msgstr "Nastavení scénáře"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:531
+#: src/gui/dialogs/units_dialog.cpp:559
 msgid "Scroll To"
 msgstr "Posunout na"
 
@@ -5075,14 +5071,14 @@ msgstr "Vytvořit hru"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: src/gui/dialogs/multiplayer/lobby.cpp:867
+#: src/gui/dialogs/multiplayer/lobby.cpp:975
 msgid "Join"
 msgstr "Připojit se"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: src/gui/dialogs/multiplayer/lobby.cpp:835
+#: src/gui/dialogs/multiplayer/lobby.cpp:943
 msgid "Observe"
 msgstr "Sledovat"
 
@@ -5140,8 +5136,20 @@ msgstr "Vstoupit se zavázanýma očima"
 msgid "Do not show the map until given control of a side"
 msgstr "Neukázat mapu dokud není dána kontrola nad stranou"
 
+#. [button]: id=join_queue
+#: data/gui/themes/default/dialogs/lobby_main.cfg:695
+msgid "Join Queue"
+msgstr ""
+
+#. [button]: id=leave_queue
+#: data/gui/themes/default/dialogs/lobby_main.cfg:702
+#, fuzzy
+#| msgid "Leave"
+msgid "Leave Queue"
+msgstr "Opustit"
+
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:729
+#: data/gui/themes/default/dialogs/lobby_main.cfg:801
 msgid "Multiplayer Lobby"
 msgstr "Čekárna hry více hráčů"
 
@@ -5713,7 +5721,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:176
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:181
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Map size:"
 msgstr "Velikost mapy:"
 
@@ -5725,14 +5733,14 @@ msgstr "Náhodné"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:182
-#: data/gui/themes/default/dialogs/units_dialog.cfg:464
+#: data/gui/themes/default/dialogs/units_dialog.cfg:496
 msgid "Male"
 msgstr "Muž"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:184
-#: data/gui/themes/default/dialogs/units_dialog.cfg:475
+#: data/gui/themes/default/dialogs/units_dialog.cfg:507
 msgid "Female"
 msgstr "Žena"
 
@@ -5828,7 +5836,7 @@ msgstr "Nikdo/nic"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:401
-#: src/gui/dialogs/multiplayer/lobby.cpp:428
+#: src/gui/dialogs/multiplayer/lobby.cpp:430
 msgid "Modifications"
 msgstr "Rozšíření"
 
@@ -6876,60 +6884,74 @@ msgstr "Zaútočit"
 msgid "Attack Enemy"
 msgstr "Napadni nepřítele"
 
+#. [toggle_button]: id=unit_favorite
+#. [button]: id=mark_favorite
+#. Filled five pointed star, used as favorite unit marker
+#. Filled five pointed star, used as favorite unit marker
+#: data/gui/themes/default/dialogs/units_dialog.cfg:24
+#: data/gui/themes/default/dialogs/units_dialog.cfg:572
+msgid "★"
+msgstr ""
+
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/units_dialog.cfg:47
+#: data/gui/themes/default/dialogs/units_dialog.cfg:62
 #: data/gui/themes/default/widgets/addon_list.cfg:151
 msgid "Type"
 msgstr "Typ"
 
 #. [toggle_button]: id=unit_level
-#: data/gui/themes/default/dialogs/units_dialog.cfg:61
+#: data/gui/themes/default/dialogs/units_dialog.cfg:76
 msgid "Lvl"
 msgstr "Úr"
 
 #. [toggle_button]: id=unit_moves
-#: data/gui/themes/default/dialogs/units_dialog.cfg:75
+#: data/gui/themes/default/dialogs/units_dialog.cfg:90
 msgid "Moves"
 msgstr "Kroků"
 
 #. [toggle_button]: id=unit_hp
-#: data/gui/themes/default/dialogs/units_dialog.cfg:89
+#: data/gui/themes/default/dialogs/units_dialog.cfg:104
 msgid "HP"
 msgstr "HP"
 
 #. [toggle_button]: id=unit_xp
-#: data/gui/themes/default/dialogs/units_dialog.cfg:103
+#: data/gui/themes/default/dialogs/units_dialog.cfg:118
 msgid "XP"
 msgstr "XP"
 
 #. [toggle_button]: id=unit_status
-#: data/gui/themes/default/dialogs/units_dialog.cfg:118
+#: data/gui/themes/default/dialogs/units_dialog.cfg:133
 msgid "Status"
 msgstr "Stav"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
-#: data/gui/themes/default/dialogs/units_dialog.cfg:132
+#: data/gui/themes/default/dialogs/units_dialog.cfg:147
 #: src/gui/widgets/unit_preview_pane.cpp:390
 #: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "Vlastnosti"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:371
+#: data/gui/themes/default/dialogs/units_dialog.cfg:403
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Hledat jméno, typ, úroveň nebo vlastnost jednotky"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:516
+#: data/gui/themes/default/dialogs/units_dialog.cfg:548
 msgid "Dismiss"
 msgstr "Propustit"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:527
+#: data/gui/themes/default/dialogs/units_dialog.cfg:559
 msgid "Rename"
 msgstr "Přejmenovat"
+
+#. [button]: id=mark_favorite
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
+msgid "Mark/unmark the selected unit as favorite"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6942,8 +6964,8 @@ msgstr "Chyba"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/themes/default/dialogs/wml_error.cfg:112
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
-#: src/gui/dialogs/multiplayer/lobby.cpp:192 src/gui/dialogs/wml_error.cpp:156
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:156
 msgid "Details:"
 msgstr "Podrobnosti:"
 
@@ -7041,7 +7063,7 @@ msgstr "<neznámý OS>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1820
+#: src/filesystem.cpp:1838
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 
@@ -7127,14 +7149,13 @@ msgstr "Dokončeno $count/$total"
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:1000
-#: src/gui/dialogs/addon/manager.cpp:1042
+#: src/gui/dialogs/addon/manager.cpp:999 src/gui/dialogs/addon/manager.cpp:1041
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1018
-#: src/gui/dialogs/addon/manager.cpp:1045
+#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1044
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Odpověď"
@@ -7399,7 +7420,7 @@ msgstr "Žádné dostupné rozšíření"
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
-#: src/gui/dialogs/addon/manager.cpp:885
+#: src/gui/dialogs/addon/manager.cpp:884
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7407,15 +7428,15 @@ msgstr ""
 "Následující rozšíření má zřejmě informace pro publikaci nebo správu verzí a "
 "nebude proto odstraněno:"
 
-#: src/gui/dialogs/addon/manager.cpp:893
+#: src/gui/dialogs/addon/manager.cpp:892
 msgid "The following add-on could not be deleted properly:"
 msgstr "Následující rozšíření nebylo možno správně odstranit:"
 
-#: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/addon/manager.cpp:972
 msgid "Warning"
 msgstr "Varování"
 
-#: src/gui/dialogs/addon/manager.cpp:974
+#: src/gui/dialogs/addon/manager.cpp:973
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7423,19 +7444,19 @@ msgstr ""
 "Vzdálená verze tohoto rozšíření je vyšší nebo stejná vůči verzi, která je "
 "nahrávána. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:992
+#: src/gui/dialogs/addon/manager.cpp:991
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr "Atribut passphrase nemůže být přítomen, když se používá forum_auth."
 
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:996
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Neplatná cesta k ikoně. Ujisti se, že cesta ukazuje na platný obrázek."
 
-#: src/gui/dialogs/addon/manager.cpp:1003
+#: src/gui/dialogs/addon/manager.cpp:1002
 msgid "The add-on was rejected by the server:"
 msgstr "Rozšíření bylo serverem odmítnuto:"
 
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1029
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7443,23 +7464,23 @@ msgstr ""
 "Smazání „$addon|“ natrvalo vymaže jeho počty stažení a nahrání na serveru "
 "s rozšířeními. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:1062
+#: src/gui/dialogs/addon/manager.cpp:1061
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Chceš odinstalovat „$addon|“?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1095
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%-d. %B %Y, %I:%M"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1098
+#: src/gui/dialogs/addon/manager.cpp:1097
 msgid "%B %d %Y, %H:%M"
 msgstr "%-d. %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1153
+#: src/gui/dialogs/addon/manager.cpp:1152
 msgid "url^None"
 msgstr "Žádná"
 
@@ -7496,7 +7517,7 @@ msgid "Missing Campaigns"
 msgstr "Chybějící tažení"
 
 #: src/gui/dialogs/campaign_selection.cpp:442
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
+#: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Žádné"
 
@@ -7537,8 +7558,8 @@ msgstr ""
 msgid "Choose File"
 msgstr "Vybrat soubor"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:316
+#: src/gui/dialogs/editor/custom_tod.cpp:182
+#: src/gui/dialogs/editor/edit_unit.cpp:318
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7575,7 +7596,7 @@ msgid "Faction"
 msgstr "Frakce"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "Era"
 msgstr "Éra"
 
@@ -7655,11 +7676,11 @@ msgstr "všestranný bojovník"
 msgid "healer"
 msgstr "léčitel"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1032
+#: src/gui/dialogs/editor/edit_unit.cpp:1029
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Neuložené změny budou ztraceny. Chceš odejít?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1051
+#: src/gui/dialogs/editor/edit_unit.cpp:1048
 msgid "Unit type saved."
 msgstr "Typ jednotky uložen."
 
@@ -7760,8 +7781,8 @@ msgid "dir_size^Unknown"
 msgstr "Neznámá"
 
 #: src/gui/dialogs/game_cache_options.cpp:97
-#: src/gui/dialogs/network_transmission.cpp:48
-#: src/gui/dialogs/network_transmission.cpp:49
+#: src/gui/dialogs/network_transmission.cpp:46
+#: src/gui/dialogs/network_transmission.cpp:47
 #: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
 msgstr "B"
@@ -7872,12 +7893,12 @@ msgid "Unknown"
 msgstr "Neznámý"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "no"
 msgstr "ne"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "yes"
 msgstr "ano"
 
@@ -8012,11 +8033,11 @@ msgstr "Náhodně"
 msgid "Do you really want to log out?"
 msgstr "Opravdu se chceš odhlásit?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:172
+#: src/gui/dialogs/multiplayer/lobby.cpp:174
 msgid "Incompatible User-made Content"
 msgstr "Nekompatibilní uživatelský obsah"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:173
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
@@ -8026,11 +8047,11 @@ msgstr ""
 "jsou s tvojí verzí nekompatibilní. Můžeš navrhnout hostiteli, aby svá "
 "rozšíření aktualizoval."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:188
+#: src/gui/dialogs/multiplayer/lobby.cpp:190
 msgid "Missing User-made Content"
 msgstr "Chybějící uživatelský obsah"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:189
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -8040,39 +8061,39 @@ msgstr ""
 "rozšíření, aby ses mohl připojit.\n"
 "Chceš je zkusit nainstalovat?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:366
+#: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Hry: zobrazeno $num_shown ze $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:388
+#: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Éra: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:418
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
 msgstr "Nenainstalováno"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Reloaded:"
 msgstr "Načteno:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Shared vision:"
 msgstr "Sdílený pohled:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shuffle sides:"
 msgstr "Zamíchat strany:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Time limit:"
 msgstr "Časový limit:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Use map settings:"
 msgstr "Použij nastavení z mapy:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:465
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -8080,33 +8101,33 @@ msgstr ""
 "Jedno nebo více rozšíření musí být nainstalováno,\n"
 "aby se dalo připojit k této hře."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Observers allowed"
 msgstr "Pozorovatelé povoleni"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers not allowed"
 msgstr "Pozorovatelé zakázáni"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:619
+#: src/gui/dialogs/multiplayer/lobby.cpp:621
 msgid "lobby"
 msgstr "čekárna"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:835
+#: src/gui/dialogs/multiplayer/lobby.cpp:943
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr "Tato hra nepovoluje pozorovatele. Sledovat pomocí práv moderátora?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:846
+#: src/gui/dialogs/multiplayer/lobby.cpp:954
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
-"bugs.wesnoth.org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
+"org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:867
+#: src/gui/dialogs/multiplayer/lobby.cpp:975
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr "Tato hra je chráněna heslem. Připojit se pomocí práv moderátora?"
 
@@ -8150,41 +8171,41 @@ msgstr "Vlastní scénáře"
 msgid "Random Maps"
 msgstr "Náhodné mapy"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:272
 msgid "No games found."
 msgstr "Žádné hry nenalezeny."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found."
 msgstr "Žádný věk nenalezen."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:333
 msgid "No eras found"
 msgstr "Žádný věk nenalezen"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:602
 msgid "No eras available for this game."
 msgstr "Pro tuto hru není k dispozici žádný věk."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
 msgid "number of players^$min to $max"
 msgstr "$min až $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:919
 msgid "The selected game has no sides!"
 msgstr "Vybraná hra nemá žádné strany!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
 msgid "The selected game cannot be created."
 msgstr "Vybraná hra nemůže být vytvořena."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
 msgid "Choose Starting Scenario"
 msgstr "Vybrat počáteční scénář"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
 msgid "Select at which point to begin this campaign."
 msgstr "Vyber, odkud zahájit toto tažení."
 
@@ -8367,65 +8388,67 @@ msgstr "Verze $version"
 msgid "Choose Test Scenario"
 msgstr "Vybrat testovací scénář"
 
-#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:240 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Přejmenovat jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:264
-msgid "This unit is loyal and requires no upkeep."
+#: src/gui/dialogs/units_dialog.cpp:273
+#, fuzzy
+#| msgid "This unit is loyal and requires no upkeep."
+msgid "This unit requires no upkeep."
 msgstr "Tato jednotka je věrná a nevyžaduje žádné zaopatření."
 
-#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
-#: src/gui/dialogs/units_dialog.cpp:275
+#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
+#: src/gui/dialogs/units_dialog.cpp:284
 msgid "Do you really want to dismiss him?"
 msgstr "Opravdu ho chceš propustit?"
 
-#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
-#: src/gui/dialogs/units_dialog.cpp:276
+#: src/gui/dialogs/units_dialog.cpp:275 src/gui/dialogs/units_dialog.cpp:280
+#: src/gui/dialogs/units_dialog.cpp:285
 msgid "Do you really want to dismiss her?"
 msgstr "Opravdu ji chceš propustit?"
 
-#: src/gui/dialogs/units_dialog.cpp:269
+#: src/gui/dialogs/units_dialog.cpp:278
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Tato jednotka je zkušená, má pokročilé úrovně."
 
-#: src/gui/dialogs/units_dialog.cpp:274
+#: src/gui/dialogs/units_dialog.cpp:283
 msgid "This unit is close to advancing a level."
 msgstr "Tato jednotka bude brzy povýšena na další úroveň."
 
-#: src/gui/dialogs/units_dialog.cpp:280
+#: src/gui/dialogs/units_dialog.cpp:289
 msgid "Dismiss Unit"
 msgstr "Propustit jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:405
+#: src/gui/dialogs/units_dialog.cpp:433
 msgid "unit_variation^Default Variation"
 msgstr "Výchozí varianta"
 
-#: src/gui/dialogs/units_dialog.cpp:441
+#: src/gui/dialogs/units_dialog.cpp:469
 msgid "Create Unit"
 msgstr "Vytvořit jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:512
+#: src/gui/dialogs/units_dialog.cpp:540
 msgid "Recruit Unit"
 msgstr "Naverbovat jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:541 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Naverbovat"
 
-#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:558 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Seznam jednotek"
 
-#: src/gui/dialogs/units_dialog.cpp:667
+#: src/gui/dialogs/units_dialog.cpp:706
 msgid "Recall Unit"
 msgstr "Povolat jednotku"
 
-#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:707 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Povolat"
 
-#: src/gui/dialogs/units_dialog.cpp:787
+#: src/gui/dialogs/units_dialog.cpp:837
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8433,7 +8456,7 @@ msgstr ""
 "Tato jednotka nemůže být povolána, protože v tomto bodě tvého plánu nebudeš "
 "mít dost zlata."
 
-#: src/gui/dialogs/units_dialog.cpp:789
+#: src/gui/dialogs/units_dialog.cpp:839
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Tato jednotka nemůže být povolána, protože nemáš dost zlata."
 
@@ -8577,7 +8600,7 @@ msgstr "Pro stromové zobrazení nejsou stanoveny žádné uzly."
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "[node]id „root“ je vyhrazen implementací."
 
-#: src/gui/widgets/tree_view_node.cpp:106
+#: src/gui/widgets/tree_view_node.cpp:57
 msgid "Unknown builder id for tree view node."
 msgstr "Neznámý identifikátor sestavitele pro uzel stromového zobrazení."
 

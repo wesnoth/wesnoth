@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2025-05-20 17:31-0500\n"
 "PO-Revision-Date: 2023-06-04 00:11+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -2742,7 +2742,7 @@ msgstr "Guardar contraseña localmente (cifrada)"
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
 #: data/gui/themes/default/dialogs/wml_message.cfg:444
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
-#: src/gui/dialogs/units_dialog.cpp:71
+#: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
 msgstr "Aceptar"
 
@@ -2800,8 +2800,8 @@ msgstr "Aceptar"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
-#: src/gui/dialogs/units_dialog.cpp:72 src/hotkey/hotkey_command.cpp:79
+#: data/gui/themes/default/dialogs/units_dialog.cfg:621
+#: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2900,7 +2900,7 @@ msgstr "Actualizado:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:655
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:656
 msgid "No description available."
 msgstr "No hay una descripción disponible."
 
@@ -2945,7 +2945,7 @@ msgstr "Actualizar el complemento"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1061
+#: src/gui/dialogs/addon/manager.cpp:1060
 msgid "Uninstall add-on"
 msgstr "Desinstalar el complemento"
 
@@ -2973,7 +2973,7 @@ msgstr "Dependencias:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1136
+#: src/gui/dialogs/addon/manager.cpp:1135
 msgid "addon_dependencies^None"
 msgstr "Ninguna"
 
@@ -2987,7 +2987,7 @@ msgstr "Traducciones:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1150
+#: src/gui/dialogs/addon/manager.cpp:1149
 msgid "translations^None"
 msgstr "Ninguna"
 
@@ -3023,7 +3023,7 @@ msgstr "Gestor de complementos"
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
 #: src/gui/dialogs/addon/manager.cpp:570 src/gui/dialogs/addon/manager.cpp:844
-#: src/gui/dialogs/addon/manager.cpp:942
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "Add-on Details"
 msgstr "Detalles del complemento"
 
@@ -3178,7 +3178,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
-#: data/gui/themes/default/dialogs/units_dialog.cfg:33
+#: data/gui/themes/default/dialogs/units_dialog.cfg:48
 #: data/gui/themes/default/widgets/addon_list.cfg:78
 msgid "Name"
 msgstr "Nombre"
@@ -3497,7 +3497,7 @@ msgstr "Editar fases horarias del día"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:231
+#: src/gui/dialogs/units_dialog.cpp:240
 msgid "Name:"
 msgstr "Nombre:"
 
@@ -3573,14 +3573,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1034
-#: src/gui/dialogs/editor/custom_tod.cpp:183
-#: src/gui/dialogs/editor/custom_tod.cpp:190
-#: src/gui/dialogs/editor/custom_tod.cpp:197
-#: src/gui/dialogs/editor/edit_unit.cpp:321
-#: src/gui/dialogs/editor/edit_unit.cpp:329
-#: src/gui/dialogs/editor/edit_unit.cpp:337
-#: src/gui/dialogs/editor/edit_unit.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/editor/custom_tod.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:323
+#: src/gui/dialogs/editor/edit_unit.cpp:1030
 #: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
 msgid "Confirm"
 msgstr "Confirmar"
@@ -3947,7 +3943,7 @@ msgstr "Identificador:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Experience modifier:"
 msgstr "Modificador de experiencia:"
 
@@ -4018,7 +4014,7 @@ msgstr "Oro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:303
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Gold per village:"
 msgstr "Oro por aldea:"
 
@@ -4312,7 +4308,7 @@ msgstr "Seleccione un generador de mapas:"
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -4350,7 +4346,7 @@ msgstr "Altura:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:442
+#: src/gui/dialogs/units_dialog.cpp:470
 msgid "Create"
 msgstr "Crear"
 
@@ -4746,7 +4742,7 @@ msgstr "Configuración del escenario"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:531
+#: src/gui/dialogs/units_dialog.cpp:559
 msgid "Scroll To"
 msgstr "Desplazamiento hacia"
 
@@ -5184,14 +5180,14 @@ msgstr "Crear partida"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: src/gui/dialogs/multiplayer/lobby.cpp:867
+#: src/gui/dialogs/multiplayer/lobby.cpp:975
 msgid "Join"
 msgstr "Unirse"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: src/gui/dialogs/multiplayer/lobby.cpp:835
+#: src/gui/dialogs/multiplayer/lobby.cpp:943
 msgid "Observe"
 msgstr "Observar"
 
@@ -5249,8 +5245,20 @@ msgstr "Entrada a ciegas"
 msgid "Do not show the map until given control of a side"
 msgstr "No se muestra el mapa hasta haber dado el control a un bando"
 
+#. [button]: id=join_queue
+#: data/gui/themes/default/dialogs/lobby_main.cfg:695
+msgid "Join Queue"
+msgstr ""
+
+#. [button]: id=leave_queue
+#: data/gui/themes/default/dialogs/lobby_main.cfg:702
+#, fuzzy
+#| msgid "Leave"
+msgid "Leave Queue"
+msgstr "Salir"
+
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:729
+#: data/gui/themes/default/dialogs/lobby_main.cfg:801
 msgid "Multiplayer Lobby"
 msgstr "Sala multijugador"
 
@@ -5825,7 +5833,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:176
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:181
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Map size:"
 msgstr "Tamaño del mapa:"
 
@@ -5837,14 +5845,14 @@ msgstr "Aleatorio"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:182
-#: data/gui/themes/default/dialogs/units_dialog.cfg:464
+#: data/gui/themes/default/dialogs/units_dialog.cfg:496
 msgid "Male"
 msgstr "Masculino"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:184
-#: data/gui/themes/default/dialogs/units_dialog.cfg:475
+#: data/gui/themes/default/dialogs/units_dialog.cfg:507
 msgid "Female"
 msgstr "Femenino"
 
@@ -5943,7 +5951,7 @@ msgstr "Ningún"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:401
-#: src/gui/dialogs/multiplayer/lobby.cpp:428
+#: src/gui/dialogs/multiplayer/lobby.cpp:430
 msgid "Modifications"
 msgstr "Modificaciones"
 
@@ -7036,60 +7044,74 @@ msgstr "Atacar"
 msgid "Attack Enemy"
 msgstr "Atacar enemigo"
 
+#. [toggle_button]: id=unit_favorite
+#. [button]: id=mark_favorite
+#. Filled five pointed star, used as favorite unit marker
+#. Filled five pointed star, used as favorite unit marker
+#: data/gui/themes/default/dialogs/units_dialog.cfg:24
+#: data/gui/themes/default/dialogs/units_dialog.cfg:572
+msgid "★"
+msgstr ""
+
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/units_dialog.cfg:47
+#: data/gui/themes/default/dialogs/units_dialog.cfg:62
 #: data/gui/themes/default/widgets/addon_list.cfg:151
 msgid "Type"
 msgstr "Tipo"
 
 #. [toggle_button]: id=unit_level
-#: data/gui/themes/default/dialogs/units_dialog.cfg:61
+#: data/gui/themes/default/dialogs/units_dialog.cfg:76
 msgid "Lvl"
 msgstr "Nv"
 
 #. [toggle_button]: id=unit_moves
-#: data/gui/themes/default/dialogs/units_dialog.cfg:75
+#: data/gui/themes/default/dialogs/units_dialog.cfg:90
 msgid "Moves"
 msgstr "Movimientos"
 
 #. [toggle_button]: id=unit_hp
-#: data/gui/themes/default/dialogs/units_dialog.cfg:89
+#: data/gui/themes/default/dialogs/units_dialog.cfg:104
 msgid "HP"
 msgstr "PV"
 
 #. [toggle_button]: id=unit_xp
-#: data/gui/themes/default/dialogs/units_dialog.cfg:103
+#: data/gui/themes/default/dialogs/units_dialog.cfg:118
 msgid "XP"
 msgstr "PX"
 
 #. [toggle_button]: id=unit_status
-#: data/gui/themes/default/dialogs/units_dialog.cfg:118
+#: data/gui/themes/default/dialogs/units_dialog.cfg:133
 msgid "Status"
 msgstr "Estado"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
-#: data/gui/themes/default/dialogs/units_dialog.cfg:132
+#: data/gui/themes/default/dialogs/units_dialog.cfg:147
 #: src/gui/widgets/unit_preview_pane.cpp:390
 #: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
 msgstr "Rasgos"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:371
+#: data/gui/themes/default/dialogs/units_dialog.cfg:403
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Búsqueda por nombre, tipo, nivel o rasgo de unidad"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:516
+#: data/gui/themes/default/dialogs/units_dialog.cfg:548
 msgid "Dismiss"
 msgstr "Descartar"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:527
+#: data/gui/themes/default/dialogs/units_dialog.cfg:559
 msgid "Rename"
 msgstr "Renombrar"
+
+#. [button]: id=mark_favorite
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
+msgid "Mark/unmark the selected unit as favorite"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7102,8 +7124,8 @@ msgstr "Error"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/themes/default/dialogs/wml_error.cfg:112
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
-#: src/gui/dialogs/multiplayer/lobby.cpp:192 src/gui/dialogs/wml_error.cpp:156
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:156
 msgid "Details:"
 msgstr "Detalles:"
 
@@ -7202,7 +7224,7 @@ msgstr "<desconocido>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1820
+#: src/filesystem.cpp:1838
 msgid "language code for localized resources^en_US"
 msgstr "es"
 
@@ -7300,14 +7322,13 @@ msgstr "Completado"
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:1000
-#: src/gui/dialogs/addon/manager.cpp:1042
+#: src/gui/dialogs/addon/manager.cpp:999 src/gui/dialogs/addon/manager.cpp:1041
 msgid "The server responded with an error:"
 msgstr "El servidor devolvió un error:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1018
-#: src/gui/dialogs/addon/manager.cpp:1045
+#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1044
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Respuesta"
@@ -7580,7 +7601,7 @@ msgstr "No hay disponible ningún complemento"
 msgid "There are no add-ons available for download from this server."
 msgstr "No hay complementos disponibles para descargar en este servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:885
+#: src/gui/dialogs/addon/manager.cpp:884
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7588,15 +7609,15 @@ msgstr ""
 "El siguiente complemento aparenta tener información sobre publicación o "
 "control de versión guardada localmente, y no será eliminado:"
 
-#: src/gui/dialogs/addon/manager.cpp:893
+#: src/gui/dialogs/addon/manager.cpp:892
 msgid "The following add-on could not be deleted properly:"
 msgstr "El siguiente complemento podría no haber sido borrado adecuadamente:"
 
-#: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/addon/manager.cpp:972
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/dialogs/addon/manager.cpp:974
+#: src/gui/dialogs/addon/manager.cpp:973
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7604,22 +7625,22 @@ msgstr ""
 "La versión remota de este complemento es mayor o igual a la versión que está "
 "siendo subida. ¿Desea continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:992
+#: src/gui/dialogs/addon/manager.cpp:991
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 "El atributo de contraseña no puede estar presente cuando se usa forum_auth."
 
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:996
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Ubicación de icono no válida. Asegúrese de que la ubicación apunta a una "
 "imagen válida."
 
-#: src/gui/dialogs/addon/manager.cpp:1003
+#: src/gui/dialogs/addon/manager.cpp:1002
 msgid "The add-on was rejected by the server:"
 msgstr "El complemento ha sido rechazado por el servidor:"
 
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1029
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7627,25 +7648,25 @@ msgstr ""
 "Al borrar '$addon|' se eliminarán permanentemente sus recuentos de subidas y "
 "bajadas en el servidor de complementos. ¿Desea continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:1062
+#: src/gui/dialogs/addon/manager.cpp:1061
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "¿Desea desinstalar '$addon|'?"
 
 # TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1095
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d %B %Y, %I:%M %p"
 
 # TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1098
+#: src/gui/dialogs/addon/manager.cpp:1097
 msgid "%B %d %Y, %H:%M"
 msgstr "%d %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1153
+#: src/gui/dialogs/addon/manager.cpp:1152
 msgid "url^None"
 msgstr "Ninguna"
 
@@ -7688,7 +7709,7 @@ msgid "Missing Campaigns"
 msgstr "Campañas"
 
 #: src/gui/dialogs/campaign_selection.cpp:442
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
+#: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Ninguna"
 
@@ -7731,8 +7752,8 @@ msgstr ""
 msgid "Choose File"
 msgstr "Elija jugador"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:179
-#: src/gui/dialogs/editor/edit_unit.cpp:316
+#: src/gui/dialogs/editor/custom_tod.cpp:182
+#: src/gui/dialogs/editor/edit_unit.cpp:318
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7777,7 +7798,7 @@ msgid "Faction"
 msgstr "Acción"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "Era"
 msgstr "Era"
 
@@ -7875,13 +7896,13 @@ msgstr ""
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1032
+#: src/gui/dialogs/editor/edit_unit.cpp:1029
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "El juego ya existe. ¿Quiere sobrescribirlo?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1051
+#: src/gui/dialogs/editor/edit_unit.cpp:1048
 msgid "Unit type saved."
 msgstr ""
 
@@ -7980,8 +8001,8 @@ msgid "dir_size^Unknown"
 msgstr "Desconocido"
 
 #: src/gui/dialogs/game_cache_options.cpp:97
-#: src/gui/dialogs/network_transmission.cpp:48
-#: src/gui/dialogs/network_transmission.cpp:49
+#: src/gui/dialogs/network_transmission.cpp:46
+#: src/gui/dialogs/network_transmission.cpp:47
 #: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
 msgstr "B"
@@ -8093,12 +8114,12 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "no"
 msgstr "no"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "yes"
 msgstr "sí"
 
@@ -8236,11 +8257,11 @@ msgstr "Aleatorio"
 msgid "Do you really want to log out?"
 msgstr "¿Está seguro de que quiere salir?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:172
+#: src/gui/dialogs/multiplayer/lobby.cpp:174
 msgid "Incompatible User-made Content"
 msgstr "El contenido creado por el usuario es incompatible"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:173
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 #, fuzzy
 #| msgid ""
 #| "This game cannot be joined because the host has out-of-date add-ons that "
@@ -8255,11 +8276,11 @@ msgstr ""
 "obsoletos que son incompatibles con su versión. Quizás podría sugerir al "
 "servidor que actualice los complementos."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:188
+#: src/gui/dialogs/multiplayer/lobby.cpp:190
 msgid "Missing User-made Content"
 msgstr "No se ha encontrado contenido creado por el usuario"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:189
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -8269,39 +8290,39 @@ msgstr ""
 "actualicen uno o más complementos creación de usuario.\n"
 "¿Desea intentar su instalación?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:366
+#: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Partidas: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:388
+#: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:418
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
 msgstr "sin instalar"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Reloaded:"
 msgstr "Recargada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Shared vision:"
 msgstr "Vista compartida:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shuffle sides:"
 msgstr "Bandos mezclados:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Time limit:"
 msgstr "Límite de tiempo:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Use map settings:"
 msgstr "Usar ajustes del mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:465
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -8309,19 +8330,19 @@ msgstr ""
 "Uno o más complementos han de ser instalados\n"
 "para poder unirse a esta partida."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Observers allowed"
 msgstr "Se permiten observadores"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers not allowed"
 msgstr "No se permiten observadores"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:619
+#: src/gui/dialogs/multiplayer/lobby.cpp:621
 msgid "lobby"
 msgstr "sala"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:835
+#: src/gui/dialogs/multiplayer/lobby.cpp:943
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8331,7 +8352,7 @@ msgstr ""
 "Este juego no permite observadores. ¿Observar usando los derechos de "
 "moderador de todos modos?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:846
+#: src/gui/dialogs/multiplayer/lobby.cpp:954
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8340,7 +8361,7 @@ msgstr ""
 "complementos que respalda la sala multijugador. Por favor, informe de esto a "
 "https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:867
+#: src/gui/dialogs/multiplayer/lobby.cpp:975
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Este juego está protegido con contraseña. ¿Unirse usando los derechos de "
@@ -8386,41 +8407,41 @@ msgstr "Escenarios personalizados"
 msgid "Random Maps"
 msgstr "Mapas aleatorios"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:270
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:272
 msgid "No games found."
 msgstr "No se han encontrado partidas."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:331
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
 msgid "No eras found."
 msgstr "No se han encontrado eras."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:333
 msgid "No eras found"
 msgstr "No se han encontrado eras"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:601
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:602
 msgid "No eras available for this game."
 msgstr "No hay eras disponibles para esta partida."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
 msgid "number of players^$min to $max"
 msgstr "$min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:918
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:919
 msgid "The selected game has no sides!"
 msgstr "¡No quedan bandos para la partida seleccionada!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
 msgid "The selected game cannot be created."
 msgstr "No puede crearse la partida seleccionada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
 msgid "Choose Starting Scenario"
 msgstr "Seleccione escenario de inicio"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:998
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
 msgid "Select at which point to begin this campaign."
 msgstr "Seleccione en que punto comenzar esta campaña."
 
@@ -8606,65 +8627,67 @@ msgstr "Versión $version"
 msgid "Choose Test Scenario"
 msgstr "Seleccione escenario de prueba"
 
-#: src/gui/dialogs/units_dialog.cpp:231 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:240 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/gui/dialogs/units_dialog.cpp:264
-msgid "This unit is loyal and requires no upkeep."
+#: src/gui/dialogs/units_dialog.cpp:273
+#, fuzzy
+#| msgid "This unit is loyal and requires no upkeep."
+msgid "This unit requires no upkeep."
 msgstr "Esta unidad es leal y no requiere mantenimiento."
 
-#: src/gui/dialogs/units_dialog.cpp:265 src/gui/dialogs/units_dialog.cpp:270
-#: src/gui/dialogs/units_dialog.cpp:275
+#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
+#: src/gui/dialogs/units_dialog.cpp:284
 msgid "Do you really want to dismiss him?"
 msgstr "¿Está seguro de que quiere descartarlo?"
 
-#: src/gui/dialogs/units_dialog.cpp:266 src/gui/dialogs/units_dialog.cpp:271
-#: src/gui/dialogs/units_dialog.cpp:276
+#: src/gui/dialogs/units_dialog.cpp:275 src/gui/dialogs/units_dialog.cpp:280
+#: src/gui/dialogs/units_dialog.cpp:285
 msgid "Do you really want to dismiss her?"
 msgstr "¿Está seguro de que quiere descartarla?"
 
-#: src/gui/dialogs/units_dialog.cpp:269
+#: src/gui/dialogs/units_dialog.cpp:278
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Esta unidad es experimentada puesto que ha subido de nivel."
 
-#: src/gui/dialogs/units_dialog.cpp:274
+#: src/gui/dialogs/units_dialog.cpp:283
 msgid "This unit is close to advancing a level."
 msgstr "Esta unidad está a punto de subir de nivel."
 
-#: src/gui/dialogs/units_dialog.cpp:280
+#: src/gui/dialogs/units_dialog.cpp:289
 msgid "Dismiss Unit"
 msgstr "Descartar unidad"
 
-#: src/gui/dialogs/units_dialog.cpp:405
+#: src/gui/dialogs/units_dialog.cpp:433
 msgid "unit_variation^Default Variation"
 msgstr "Variación predeterminada"
 
-#: src/gui/dialogs/units_dialog.cpp:441
+#: src/gui/dialogs/units_dialog.cpp:469
 msgid "Create Unit"
 msgstr "Crear unidad"
 
-#: src/gui/dialogs/units_dialog.cpp:512
+#: src/gui/dialogs/units_dialog.cpp:540
 msgid "Recruit Unit"
 msgstr "Reclutar unidades"
 
-#: src/gui/dialogs/units_dialog.cpp:513 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:541 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/gui/dialogs/units_dialog.cpp:530 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:558 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/gui/dialogs/units_dialog.cpp:667
+#: src/gui/dialogs/units_dialog.cpp:706
 msgid "Recall Unit"
 msgstr "Reincorporar unidad"
 
-#: src/gui/dialogs/units_dialog.cpp:668 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:707 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/gui/dialogs/units_dialog.cpp:787
+#: src/gui/dialogs/units_dialog.cpp:837
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8672,7 +8695,7 @@ msgstr ""
 "No se puede reincorporar esta unidad debido a que no dispondrá de oro "
 "suficiente en este punto de su plan."
 
-#: src/gui/dialogs/units_dialog.cpp:789
+#: src/gui/dialogs/units_dialog.cpp:839
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "No se puede reincorporar esta unidad debido a que no dispone de oro "
@@ -8832,7 +8855,7 @@ msgstr "No hay nodos definidos para la vista de árbol."
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "La id. de [node] «root» está reservada para el despliegue."
 
-#: src/gui/widgets/tree_view_node.cpp:106
+#: src/gui/widgets/tree_view_node.cpp:57
 msgid "Unknown builder id for tree view node."
 msgstr "Id. de generador desconocido para el nodo de vista de árbol."
 
