@@ -735,8 +735,8 @@ void node::shift_buffers(ptrdiff_t offset)
 
 	for(auto& [key, node_list] : children_) {
 		key = string_span(key.begin() + offset, key.size());
-		for(simple_wml::node* node : node_list) {
-			node->shift_buffers(offset);
+		for(simple_wml::node* child_node : node_list) {
+			child_node->shift_buffers(offset);
 		}
 	}
 }
