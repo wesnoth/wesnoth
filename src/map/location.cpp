@@ -398,6 +398,41 @@ map_location map_location::get_direction(map_location::direction dir, unsigned i
 	}*/
 }
 
+std::vector<map_location> map_location::get_ring(int min, int max) const
+{
+	std::vector<map_location> tiles;
+
+	// Convert this location to cubic coordinates
+	cubic_location cubic_center = this->to_cubic();
+
+	// Enumerate range in cubic coordinates
+	for (int dx = -max; dx <= max; ++dx) {
+		for (int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
+			int dz = -dx - dy;
+
+			// Calculate Manhattan distance in cubic coordinates
+			int distance = (std::abs(dx) + std::abs(dy) + std::abs(dz)) / 2;
+
+			// Skip positions outside our min/max range
+			if (distance < min || distance > max) {
+				continue;
+			}
+
+			// Create new cubic location
+			cubic_location neighbor{
+				cubic_center.q + dx,
+				cubic_center.r + dy,
+				cubic_center.s + dz
+			};
+
+			// Convert back to map coordinates and add to tiles
+			tiles.push_back(from_cubic(neighbor));
+		}
+	}
+
+	return tiles;
+}
+
 void write_location_range(const std::set<map_location>& locs, config& cfg)
 {
 	if(locs.empty()){
