@@ -164,8 +164,8 @@ public:
 	config(const config &);
 	config &operator=(const config &);
 
-	config(config &&);
-	config &operator=(config &&);
+	config(config &&) noexcept;
+	config &operator=(config &&) noexcept;
 
 	/**
 	 * Creates a config object with an empty child of name @a child.

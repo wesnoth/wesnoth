@@ -69,7 +69,7 @@ public:
 	locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
 
 	locator& operator=(const locator& a) = default;
-	locator& operator=(locator&&) = default;
+	locator& operator=(locator&&) noexcept = default;
 
 	/** Returns a copy of this locator with the given IPF */
 	locator clone(const std::string& mods) const;

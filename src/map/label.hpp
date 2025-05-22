@@ -129,7 +129,7 @@ public:
 	terrain_label(const map_labels&, const config&);
 
 	/** Move ctor. */
-	terrain_label(terrain_label&&);
+	terrain_label(terrain_label&&) noexcept;
 
 	~terrain_label();
 

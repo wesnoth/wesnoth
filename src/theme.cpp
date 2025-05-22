@@ -599,8 +599,6 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 	set_resolution(screen);
 }
 
-theme& theme::operator=(theme&& other) = default;
-
 bool theme::set_resolution(const SDL_Rect& screen)
 {
 	screen_dimensions_ = screen;

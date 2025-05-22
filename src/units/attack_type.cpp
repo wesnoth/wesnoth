@@ -691,7 +691,7 @@ attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const c
 	parent->open_queries_.emplace_back(&special);
 }
 
-attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
+attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other) noexcept
 {
 	std::swap(parent, other.parent);
 }
@@ -700,7 +700,7 @@ attack_type::recursion_guard::operator bool() const {
 	return bool(parent);
 }
 
-attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other)
+attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other) noexcept
 {
 	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
 	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,

@@ -107,8 +107,8 @@ public:
 	unit_filter(const unit_filter&) = default;
 	unit_filter& operator=(const unit_filter&) = default;
 
-	unit_filter(unit_filter&&) = default;
-	unit_filter& operator=(unit_filter&&) = default;
+	unit_filter(unit_filter&&) noexcept = default;
+	unit_filter& operator=(unit_filter&&) noexcept = default;
 
 	unit_filter& set_use_flat_tod(bool value) {
 		use_flat_tod_ = value;
