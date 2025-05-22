@@ -76,6 +76,8 @@ void help_browser::pre_show()
 	back_button.set_active(false);
 	connect_signal_mouse_left_click(back_button, std::bind(&help_browser::on_history_navigate, this, true));
 	connect_signal_mouse_left_click(next_button, std::bind(&help_browser::on_history_navigate, this, false));
+	connect_signal<event::FORWARD_BUTTON_DOWN>(std::bind(&help_browser::on_history_navigate, this, true));
+	connect_signal<event::BACK_BUTTON_DOWN>(std::bind(&help_browser::on_history_navigate, this, false));
 
 	toggle_button& contents = find_widget<toggle_button>("contents");
 
