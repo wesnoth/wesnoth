@@ -40,12 +40,12 @@ top_level_drawable& top_level_drawable::operator=(const top_level_drawable&)
 	return *this;
 }
 
-top_level_drawable::top_level_drawable(top_level_drawable&&)
+top_level_drawable::top_level_drawable(top_level_drawable&&) noexcept
 {
 	draw_manager::register_drawable(this);
 }
 
-top_level_drawable& top_level_drawable::operator=(top_level_drawable&&)
+top_level_drawable& top_level_drawable::operator=(top_level_drawable&&) noexcept
 {
 	draw_manager::register_drawable(this);
 	return *this;

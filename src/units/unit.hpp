@@ -1908,9 +1908,9 @@ private:
 		 */
 		operator bool() const;
 
-		recursion_guard(recursion_guard&& other);
+		recursion_guard(recursion_guard&& other) noexcept;
 		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(recursion_guard&&) noexcept;
 		recursion_guard& operator=(const recursion_guard&) = delete;
 		~recursion_guard();
 	private:

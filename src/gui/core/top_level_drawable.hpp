@@ -57,8 +57,8 @@ protected:
 	// These make sure the TLD is registered.
 	top_level_drawable(const top_level_drawable&);
 	top_level_drawable& operator=(const top_level_drawable&);
-	top_level_drawable(top_level_drawable&&);
-	top_level_drawable& operator=(top_level_drawable&&);
+	top_level_drawable(top_level_drawable&&) noexcept;
+	top_level_drawable& operator=(top_level_drawable&&) noexcept;
 
 public:
 	/**

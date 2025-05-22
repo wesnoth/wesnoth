@@ -332,8 +332,8 @@ public:
 	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
 
 	/** But we *do* want move semantics. */
-	wml_hotkey_record(wml_hotkey_record&&) = default;
-	wml_hotkey_record& operator=(wml_hotkey_record&&) = default;
+	wml_hotkey_record(wml_hotkey_record&&) noexcept = default;
+	wml_hotkey_record& operator=(wml_hotkey_record&&) noexcept= default;
 
 	/** Registers a hotkey_command for a WML hotkey with the given ID if one does not already exist. */
 	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);

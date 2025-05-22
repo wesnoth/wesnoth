@@ -395,7 +395,7 @@ unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
 	u.open_queries_.emplace_back(&ability);
 }
 
-unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)
+unit::recursion_guard::recursion_guard(unit::recursion_guard&& other) noexcept
 {
 	std::swap(parent, other.parent);
 }
@@ -404,7 +404,7 @@ unit::recursion_guard::operator bool() const {
 	return bool(parent);
 }
 
-unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& other)
+unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& other) noexcept
 {
 	assert(this != &other);
 	assert(!parent);

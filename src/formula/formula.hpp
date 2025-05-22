@@ -37,8 +37,8 @@ public:
 	formula(const std::string& str, function_symbol_table* symbols = nullptr, bool manage_symbols = false);
 	formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols = nullptr);
 
-	formula(formula&&) = default;
-	formula& operator=(formula&&) = default;
+	formula(formula&&) noexcept = default;
+	formula& operator=(formula&&) noexcept = default;
 
 	// Since function_symbol_table is an incomplete type at this point,
 	// a destructor must be defined out-of-line once its definition is

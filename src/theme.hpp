@@ -247,7 +247,7 @@ public:
 	explicit theme(const config& cfg, const SDL_Rect& screen);
 	theme(const theme&) = delete;
 	theme& operator=(const theme&) = delete;
-	theme& operator=(theme&&);
+	theme& operator=(theme&&) noexcept = default;
 
 	bool set_resolution(const SDL_Rect& screen);
 	void modify(const config &cfg);

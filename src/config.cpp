@@ -112,14 +112,14 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
-config::config(config&& cfg)
+config::config(config&& cfg) noexcept
 	: values_(std::move(cfg.values_))
 	, children_(std::move(cfg.children_))
 	, ordered_children(std::move(cfg.ordered_children))
 {
 }
 
-config& config::operator=(config&& cfg)
+config& config::operator=(config&& cfg) noexcept
 {
 	clear();
 	swap(cfg);
