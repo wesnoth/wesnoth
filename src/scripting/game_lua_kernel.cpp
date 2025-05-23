@@ -192,8 +192,8 @@ void game_lua_kernel::log_error(char const * msg, char const * context)
 void game_lua_kernel::lua_chat(const std::string& caption, const std::string& msg)
 {
 	if (game_display_) {
-		game_display_->get_chat_manager().add_chat_message(std::time(nullptr), caption, 0, msg,
-			events::chat_handler::MESSAGE_PUBLIC, false);
+		game_display_->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), caption, 0, msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
