@@ -316,7 +316,7 @@ void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 

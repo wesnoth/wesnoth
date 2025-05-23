@@ -1190,8 +1190,8 @@ std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_v
 void chat_message(const std::string& caption, const std::string& msg)
 {
 	if (!game_display::get_singleton()) return;
-	game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), caption, 0, msg,
-														   events::chat_handler::MESSAGE_PUBLIC, false);
+	game_display::get_singleton()->get_chat_manager().add_chat_message(
+		std::chrono::system_clock::now(), caption, 0, msg, events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
 void push_error_handler(lua_State *L)

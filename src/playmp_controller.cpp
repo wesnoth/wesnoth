@@ -265,7 +265,7 @@ bool playmp_controller::is_host() const
 
 void playmp_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(std::time(nullptr), "", 0,
+	gui_->get_chat_manager().add_chat_message(std::chrono::system_clock::now(), "", 0,
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may "
 		  "use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);
@@ -396,15 +396,23 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"].to_int(),
-				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
-				prefs::get().message_bell());
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(),
+			message.value()["sender"],
+			message.value()["side"].to_int(),
+			message.value()["message"],
+			events::chat_handler::MESSAGE_PUBLIC,
+			prefs::get().message_bell());
 	}
 	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
-				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
-				prefs::get().message_bell());
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(),
+			"whisper: " + whisper["sender"].str(),
+			0,
+			whisper["message"],
+			events::chat_handler::MESSAGE_PRIVATE,
+			prefs::get().message_bell());
 	}
 	else if (auto observer = cfg.optional_child("observer") )
 	{

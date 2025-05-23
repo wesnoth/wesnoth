@@ -282,7 +282,7 @@ DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 
 	if(game_config::debug && game_display::get_singleton()) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), speaker, 0, str, events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), speaker, 0, str, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 
 	return value;
@@ -322,7 +322,7 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 
 	if(game_config::debug && game_display::get_singleton()) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 
 	return value;

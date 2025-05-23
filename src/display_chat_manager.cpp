@@ -42,7 +42,7 @@ display_chat_manager::chat_message::chat_message(int speaker, int h)
 {}
 
 
-void display_chat_manager::add_chat_message(const std::time_t& time, const std::string& speaker,
+void display_chat_manager::add_chat_message(const std::chrono::system_clock::time_point& time, const std::string& speaker,
 		int side, const std::string& message, events::chat_handler::MESSAGE_TYPE type,
 		bool bell)
 {
@@ -146,7 +146,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << prefs::get().get_chat_timestamp(std::chrono::system_clock::from_time_t(time)) << str.str();
+	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
 
 	const SDL_Rect rect = my_disp_.map_outside_area();
 

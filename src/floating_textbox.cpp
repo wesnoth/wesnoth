@@ -137,8 +137,8 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
-					events::chat_handler::MESSAGE_PRIVATE, false);
+			game_display::get_singleton()->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, completion_list, events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);
 	}
