@@ -236,11 +236,6 @@ public class InitActivity extends Activity {
 			storeStatus(status);
 
 			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
-			try {
-				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
-			} catch (IOException ioe) {
-				Log.e("InitActivity", "IO exception", ioe);
-			}
 
 			Log.d("InitActivity", "Stop unpack");
 
