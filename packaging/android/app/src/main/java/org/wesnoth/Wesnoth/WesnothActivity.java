@@ -27,27 +27,27 @@ import org.libsdl.app.SDLActivity;
 public class WesnothActivity extends SDLActivity
 {
 
-// Needs to be inside an activity so we can use `startActivity`.
-public void open(String url) {
-	Log.d("WesnothActivity", "opening " + url);
-	Intent openIntent = new Intent(Intent.ACTION_VIEW);
-	openIntent.setData(Uri.parse(url));
-	startActivity(openIntent);
-}
-
-public double getBatteryPercentage() {
-	// From https://stackoverflow.com/a/42327441
-	if (Build.VERSION.SDK_INT >= 21) {
-		BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
-		return (double) bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-	} else {
-		IntentFilter iFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-		Intent batteryStatus = registerReceiver(null, iFilter);
-		int level = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) : -1;
-		int scale = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1) : -1;
-		double batteryPct = level / (double) scale;
-		return batteryPct * 100;
+	// Needs to be inside an activity so we can use `startActivity`.
+	public void open(String url) {
+		Log.d("WesnothActivity", "opening " + url);
+		Intent openIntent = new Intent(Intent.ACTION_VIEW);
+		openIntent.setData(Uri.parse(url));
+		startActivity(openIntent);
 	}
-}
+	
+	public double getBatteryPercentage() {
+		// From https://stackoverflow.com/a/42327441
+		if (Build.VERSION.SDK_INT >= 21) {
+			BatteryManager bm = (BatteryManager) getSystemService(BATTERY_SERVICE);
+			return (double) bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+		} else {
+			IntentFilter iFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+			Intent batteryStatus = registerReceiver(null, iFilter);
+			int level = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) : -1;
+			int scale = batteryStatus != null ? batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1) : -1;
+			double batteryPct = level / (double) scale;
+			return batteryPct * 100;
+		}
+	}
 
 }
