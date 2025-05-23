@@ -184,7 +184,7 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 
 	// This function defines in which direction loc is relative to from_loc
 	// either by pointing to the hexagon loc is on or by pointing to the hexagon adjacent to from_loc closest to loc.
-	utils::optional<int> find_direction(const map_location& loc, const map_location& from_loc, unsigned int distance)
+	int find_direction(const map_location& loc, const map_location& from_loc, unsigned int distance)
 	{
 		const auto adjacent = get_adjacent_tiles(from_loc);
 		for(unsigned j = 0; j < adjacent.size(); ++j) {
@@ -193,7 +193,7 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 				return j;
 			}
 		}
-		return utils::nullopt;
+		return 0;
 	}
 }
 
@@ -225,9 +225,9 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if(distance > *u.affect_distant(tag_name)) {
 			continue;
 		}
-		utils::optional<int> dir = find_direction(loc, from_loc, distance);
+		int dir = find_direction(loc, from_loc, distance);
 		for(const config& i : u.abilities_.child_range(tag_name)) {
-			if(get_adj_ability_bool(i, tag_name, distance, *dir, loc, u, from_loc)) {
+			if(get_adj_ability_bool(i, tag_name, distance, dir, loc, u, from_loc)) {
 				return true;
 			}
 		}
@@ -267,9 +267,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if(distance > *u.affect_distant(tag_name)) {
 			continue;
 		}
-		utils::optional<int> dir = find_direction(loc, from_loc, distance);
+		int dir = find_direction(loc, from_loc, distance);
 		for(const config& i : u.abilities_.child_range(tag_name)) {
-			if(get_adj_ability_bool(i, tag_name, distance, *dir, loc, u, from_loc)) {
+			if(get_adj_ability_bool(i, tag_name, distance, dir, loc, u, from_loc)) {
 				res.emplace_back(&i, loc, from_loc);
 			}
 		}
@@ -624,9 +624,9 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 		if(distance > *u.has_ability_distant_image()) {
 			continue;
 		}
-		utils::optional<int> dir = find_direction(loc_, from_loc, distance);
+		int dir = find_direction(loc_, from_loc, distance);
 		for(const auto [key, cfg] : u.abilities_.all_children_view()) {
-			if(!cfg[image_type + "_image"].str().empty() && get_adj_ability_bool(cfg, key, distance, *dir, loc_, u, from_loc))
+			if(!cfg[image_type + "_image"].str().empty() && get_adj_ability_bool(cfg, key, distance, dir, loc_, u, from_loc))
 			{
 				add_string_to_vector(image_list, cfg, image_type + "_image");
 			}
@@ -1163,12 +1163,12 @@ void attack_type::weapon_specials_impl_adj(
 			if(distance > *u.has_ability_distant()) {
 				continue;
 			}
-			utils::optional<int> dir = find_direction(self_loc, from_loc, distance);
+			int dir = find_direction(self_loc, from_loc, distance);
 			for(const auto [key, cfg] : u.abilities().all_children_view()) {
 				bool tag_checked = !checking_tags.empty() ? checking_tags.count(key) != 0 : true;
 				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
 				bool affect_allies = !affect_adjacents.empty() ? cfg[affect_adjacents].to_bool(default_bool) : true;
-				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, cfg, self, u, distance, *dir, self_loc, from_loc, whom, key, leader_bool) && affect_allies;
+				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, cfg, self, u, distance, dir, self_loc, from_loc, whom, key, leader_bool) && affect_allies;
 				add_name(temp_string, active, cfg["name"].str(), checking_name);
 			}
 		}
@@ -1861,14 +1861,14 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if(distance > *distant) {
 				continue;
 			}
-			utils::optional<int> dir = find_direction(self_loc_, from_loc, distance);
+			int dir = find_direction(self_loc_, from_loc, distance);
 
 			std::vector<special_match> special_tag_matches_adj;
 			std::vector<special_match> special_id_matches_adj;
 			get_ability_children(special_tag_matches_adj, special_id_matches_adj, u.abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches_adj) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, distance, *dir, u, from_loc)) {
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, distance, dir, u, from_loc)) {
 						return true;
 					}
 				}
@@ -1876,7 +1876,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 
 			if(special_id){
 				for(const special_match& entry : special_id_matches_adj) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, distance, *dir, u, from_loc)) {
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, distance, dir, u, from_loc)) {
 						return true;
 					}
 				}
@@ -1914,21 +1914,21 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if(distance > *distant) {
 				continue;
 			}
-			utils::optional<int> dir = find_direction(other_loc_, from_loc, distance);
+			int dir = find_direction(other_loc_, from_loc, distance);
 
 			std::vector<special_match> special_tag_matches_odist;
 			std::vector<special_match> special_id_matches_odist;
 			get_ability_children(special_tag_matches_odist, special_id_matches_odist, u.abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches_odist) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, *dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
 						return true;
 					}
 				}
 			}
 			if(special_id){
 				for(const special_match& entry : special_id_matches_odist) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, *dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
 						return true;
 					}
 				}
@@ -2205,10 +2205,10 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 				if(distance > *u.has_ability_distant()) {
 					continue;
 				}
-				utils::optional<int> dir = find_direction(self_loc_, from_loc, distance);
+				int dir = find_direction(self_loc_, from_loc, distance);
 
 				for(const auto [key, cfg] : u.abilities().all_children_view()) {
-					if(u.ability_matches_filter(cfg, key, filter) && check_adj_abilities(cfg, key, distance, *dir, u, from_loc)) {
+					if(u.ability_matches_filter(cfg, key, filter) && check_adj_abilities(cfg, key, distance, dir, u, from_loc)) {
 						return true;
 					}
 				}
@@ -2233,10 +2233,10 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 				if(distance > *u.has_ability_distant()) {
 					continue;
 				}
-				utils::optional<int> dir = find_direction(other_loc_, from_loc, distance);
+				int dir = find_direction(other_loc_, from_loc, distance);
 
 				for(const auto [key, cfg] : u.abilities().all_children_view()) {
-					if(u.ability_matches_filter(cfg, key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), cfg, other_, u, distance, *dir, other_loc_, from_loc, AFFECT_OTHER, key)) {
+					if(u.ability_matches_filter(cfg, key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), cfg, other_, u, distance, dir, other_loc_, from_loc, AFFECT_OTHER, key)) {
 						return true;
 					}
 				}
