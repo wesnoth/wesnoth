@@ -251,28 +251,27 @@ public class InitActivity extends Activity {
 						getResources().openRawResource(R.raw.cacert),
 						new FileOutputStream(certFile));
 				}
+				
+				// Store status
+				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
 			} catch (Exception e) {
 				Log.e("InitActivity", "Exception", e);
 			}
 
 			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
-			try {
-				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
-			} catch (IOException ioe) {
-				Log.e("InitActivity", "IO exception", ioe);
-			}
 
 			Log.d("InitActivity", "Stop unpack");
 
 			// Launch Wesnoth
-			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-			
-			progressText.setText("Launching Wesnoth...");
-			Log.d("InitActivity", "Launch wesnoth");
-			Intent launchIntent = new Intent(this, WesnothActivity.class);
-			launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(launchIntent);
-			finish();
+			runOnUiThread(() -> {
+				getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+				progressText.setText("Launching Wesnoth...");
+				Log.d("InitActivity", "Launch wesnoth");
+				Intent launchIntent = new Intent(this, WesnothActivity.class);
+				launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(launchIntent);
+				finish();
+			});
 		});
 	}
 	
