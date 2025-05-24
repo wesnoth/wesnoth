@@ -49,6 +49,10 @@
 
 #endif
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
+
 #ifdef _WIN32
 #include <boost/locale.hpp>
 
@@ -678,6 +682,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+
 	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
@@ -753,6 +758,8 @@ void set_user_data_dir(std::string newprefdir)
 		} else {
 			newprefdir = "~/.wesnoth" + get_version_path_suffix();
 		}
+#elif defined(__ANDROID__)
+		newprefdir = SDL_AndroidGetExternalStoragePath();
 #else
 		const char* h = std::getenv("HOME");
 		std::string home = h ? h : "";

@@ -57,6 +57,10 @@
 
 #endif
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
+
 static lg::log_domain log_desktop("desktop");
 #define ERR_DU LOG_STREAM(err, log_desktop)
 #define LOG_DU LOG_STREAM(info, log_desktop)
@@ -394,6 +398,10 @@ std::string os_version()
 	version += ")";
 
 	return base + " " + version + " " + windows_runtime_arch();
+
+#elif defined(__ANDROID__)
+
+	return formatter() << "Android (API level " << SDL_GetAndroidSDKVersion() << ")";
 
 #else
 

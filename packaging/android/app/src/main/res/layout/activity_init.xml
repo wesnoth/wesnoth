@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/screen"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:gravity="center">
+		
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/wesnoth_icon"/>
+			
+		<Space
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"/>
+		
+		<TextView
+			android:id="@+id/download_msg"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:textSize="16sp"/>
+		
+		<Space
+			android:layout_width="wrap_content"
+			android:layout_height="10dp"/>
+			
+		<ProgressBar
+			style="@android:style/Widget.ProgressBar.Horizontal"
+			android:id="@+id/download_progress"
+			android:min="0"
+			android:layout_width="400dp"
+			android:layout_height="wrap_content"
+			android:progressTint="#003E5F"/>
+			
+		<TextView
+			android:id="@+id/tap_label"
+			android:background="@android:color/transparent"
+			android:textStyle="bold"
+			android:textSize="22sp"
+			android:textColor="#ffffff"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+	</LinearLayout>
+	
+	<ImageButton
+			android:id="@+id/settings_btn"
+			android:background="@android:color/transparent"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentRight="true"
+			android:padding="10dp"
+			android:src="@drawable/settings"/>
+</RelativeLayout>
