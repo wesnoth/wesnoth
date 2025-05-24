@@ -45,9 +45,7 @@ plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	, playing_()
 	, kernel_(kernel)
 {
-#ifndef __ANDROID__
 	assert(!singleton);
-#endif
 	singleton = this;
 
 	kernel_->load_core();
