@@ -64,16 +64,10 @@ public class InitActivity extends Activity {
 	private long max = 0;
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final String archiveURL =
+	private final static String ARCHIVE_URL =
 		"https://sourceforge.net/projects/wesnoth/files/android/%s/download";
 
 	private File dataDir;
-
-	static {
-		packages.put("Core Data", "master.zip");
-		packages.put("Music", "music.zip");
-		packages.put("Patch", "patch.zip");
-	}
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -81,17 +75,21 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
+		packages.put("Core Data", "master.zip");
+		packages.put("Music", "music.zip");
+		packages.put("Patch", "patch.zip");
+
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
-		
+
 		// Keep the screen on while this task runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		
+
 		initSettingsMenu();
-		
+
 		doPowerCheckAndStart();
 	}
-	
+
 	public void onActivityResult(int reqCode, int resCode, Intent intent) {
 		// Start the asset download only after the user has returned from
 		// battery save settings, if they already went there via the
@@ -102,7 +100,7 @@ public class InitActivity extends Activity {
 			initializeAssetsFromZip(intent.getData());
 		}
 	}
-	
+
 	// Create the settings menu ui
 	private void initSettingsMenu() {
 		ImageButton btnSettings = findViewById(R.id.settings_btn);
@@ -124,7 +122,7 @@ public class InitActivity extends Activity {
 			settingsMenu.show();
 		});
 	}
-	
+
 	// Note: wrap in runOnUiThread(()-> {...}) if called from another thread
 	private void showLaunchScreen() {
 		findViewById(R.id.download_progress).setVisibility(View.INVISIBLE);
@@ -133,7 +131,7 @@ public class InitActivity extends Activity {
 		lblTap.setText("Tap to Start");
 		lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
 	}
-	
+
 	// Note: wrap in runOnUiThread(()-> {...}) if called from another thread
 	private void showProgressScreen() {
 		TextView lblTap = findViewById(R.id.tap_label);
@@ -144,7 +142,7 @@ public class InitActivity extends Activity {
 		progressText.setVisibility(View.VISIBLE);
 		findViewById(R.id.download_progress).setVisibility(View.VISIBLE);
 	}
-	
+
 	// Check if battery saver is on, and prompt to turn off
 	// then start the main task
 	private void doPowerCheckAndStart() {
@@ -164,7 +162,7 @@ public class InitActivity extends Activity {
 			initialize();
 		}
 	}
-	
+
 	// Initialize gamedata directory
 	private void initMainDataDir() {
 		dataDir = new File(getExternalFilesDir(null), "gamedata");
@@ -173,29 +171,29 @@ public class InitActivity extends Activity {
 		}
 		Log.d("InitActivity", "Creating " + dataDir);
 	}
-	
+
 	private void initialize() {
 		runOnUiThread(()-> {
 			showLaunchScreen();
 			findViewById(R.id.screen).setOnClickListener(e -> initializeAssets());
 		});
 	}
-	
+
 	private void initializeAssets() {
 		initMainDataDir();
-		
+
 		showProgressScreen();
 		TextView progressText = findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
-		
+
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
 
 			Properties status = new Properties();
 			File statusFile = new File(dataDir, "status.properties");
-			try {
+			try (FileInputStream statusStream = new FileInputStream(statusFile)) {
 				if (statusFile.exists()) {
-					status.load(new FileInputStream(statusFile));
+					status.load(statusStream);
 				} else {
 					statusFile.createNewFile();
 				}
@@ -206,8 +204,8 @@ public class InitActivity extends Activity {
 			for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
 				String name = entry.getValue();
 				String uiname = entry.getKey();
-	
-				File f = new File(dataDir, name);
+
+				File packageFile = new File(dataDir, name);
 				long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
 
 				// Download file
@@ -215,11 +213,11 @@ public class InitActivity extends Activity {
 					Log.d("InitActivity", "Start download " + name);
 					try {
 						lastModified = downloadFile(
-							String.format(archiveURL, name),
-							f,
+							String.format(ARCHIVE_URL, name),
+							packageFile,
 							uiname,
 							lastModified);
-						
+
 						status.setProperty("modified." + name, "" + lastModified);
 					} catch (Exception e) {
 						Log.e("Download", "security error", e);
@@ -227,11 +225,11 @@ public class InitActivity extends Activity {
 
 					// Unpack archive
 					// TODO Checksum verification?
-					if (f.exists()) {
+					if (packageFile.exists()) {
 						Log.d("InitActivity", "Start unpack " + name);
 
-						if (unpackArchive(f, dataDir, uiname)) {
-							f.delete();
+						if (unpackArchive(packageFile, dataDir, uiname)) {
+							packageFile.delete();
 							status.setProperty("unpack." + name, "true");
 						}
 					}
@@ -239,21 +237,23 @@ public class InitActivity extends Activity {
 			}
 
 			// Extract certificates file
-			try {
-				File certDir = new File(dataDir, "certificates");
-				if (!certDir.exists()) {
-					certDir.mkdir();
-				}
-				File certFile = new File(certDir, "cacert.pem");
+			File certDir = new File(dataDir, "certificates");
+			if (!certDir.exists()) {
+				certDir.mkdir();
+			}
+			File certFile = new File(certDir, "cacert.pem");
+			try (
+				FileOutputStream certStream = new FileOutputStream(certFile);
+				FileOutputStream statusStream = new FileOutputStream(statusFile)
+			)
+			{
 				if (!certFile.exists()) {
 					certFile.createNewFile();
-					copyStream(
-						getResources().openRawResource(R.raw.cacert),
-						new FileOutputStream(certFile));
+					copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 				}
-				
+
 				// Store status
-				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
+				status.store(statusStream, "Wesnoth Assets Status");
 			} catch (Exception e) {
 				Log.e("InitActivity", "Exception", e);
 			}
@@ -274,23 +274,23 @@ public class InitActivity extends Activity {
 			});
 		});
 	}
-	
+
 	private void initializeAssetsFromZip(Uri uri) {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			initMainDataDir();
-			
+
 			runOnUiThread(() -> showProgressScreen());
-			
+
 			if (unpackArchive(uri, dataDir, "Core")) {
 				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
 			} else {
 				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
 			}
-			
+
 			runOnUiThread(() -> showLaunchScreen());
 		});
 	}
-	
+
 	private void clearGameData(File dataDir) {
 		new AlertDialog.Builder(this)
 			.setTitle("Confirm Deletion")
@@ -312,7 +312,7 @@ public class InitActivity extends Activity {
 			.setCancelable(false)
 			.show();
 	}
-	
+
 	// Show a file chooser to open a file
 	private void openFile() {
 		Intent inttOpen = new Intent(Intent.ACTION_GET_CONTENT);
@@ -337,7 +337,7 @@ public class InitActivity extends Activity {
 		// progress starts from 0 but asset counting starts from 1.
 		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
 	}
-	
+
 	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
 		byte[] buffer = new byte[8192];
 		int length;
@@ -345,7 +345,7 @@ public class InitActivity extends Activity {
 			out.write(buffer, 0, length);
 		}
 	}
-	
+
 	private void copyStream(InputStream in, OutputStream out) throws IOException {
 		copyStreamNoClose(in, out);
 		out.close();
@@ -401,10 +401,12 @@ public class InitActivity extends Activity {
 
 			out.close();
 			in.close();
-			
+
+			conn.disconnect();
+
 			Log.d("Download", "Download success from URL: " + url);
 			return newModified;
-			
+
 		} catch (MalformedURLException mue) {
 			Log.e("Download", "Malformed url exception", mue);
 		} catch (IOException ioe) {
@@ -412,31 +414,18 @@ public class InitActivity extends Activity {
 		} catch (SecurityException se) {
 			Log.e("Download", "Security exception", se);
 		}
-		
+
 		return 0;
 	}
 
 	private boolean unpackArchive(Uri uri, File destdir, String type) {
 		Log.d("Unpack", "Start");
-		
-		InputStream zipstream = null;
-		try {
-			zipstream = getContentResolver().openInputStream(uri);
-		} catch (FileNotFoundException fe) {
-			Log.e("Unpack", "File not found exception", fe);
-			return false;
-		}
 
-		if (zipstream == null) {
-			Log.e("Unpack", "File for " + type + " is null!");
-			return false;
-		}
-
-		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
+		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
 			progress = 1;
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
-			
+
 			ZipEntry ze;
 			while ((ze = zf.getNextEntry()) != null) {
 				runOnUiThread(() -> updateUnpackProgress(progress, type));
@@ -455,7 +444,7 @@ public class InitActivity extends Activity {
 				Log.d("Unpack", "Unpacking " + type + ":" + progress);
 				progress++;
 			}
-			
+
 			Log.d("Unpack", "Done unpacking " + type);
 			return true;
 		} catch (ZipException e) {
@@ -465,10 +454,10 @@ public class InitActivity extends Activity {
 		} catch (IOException e) {
 			Log.e("Unpack", "IO exception", e);
 		}
-		
+
 		return false;
 	}
-	
+
 	private boolean unpackArchive(File zipfile, File destdir, String type) {
 		Log.d("Unpack", "Start");
 
@@ -508,7 +497,7 @@ public class InitActivity extends Activity {
 				Log.d("Unpack", "Unpacking " + type + ":" + progress + "/" + max);
 				progress++;
 			}
-			
+
 			Log.d("Unpack", "Done unpacking " + type);
 			return true;
 		} catch (ZipException e) {
@@ -518,7 +507,7 @@ public class InitActivity extends Activity {
 		} catch (IOException e) {
 			Log.e("Unpack", "IO exception", e);
 		}
-		
+
 		return false;
 	}
 
