@@ -165,6 +165,7 @@ std::vector<std::string> enumerate_addons_internal(ADDON_ENUM_CRITERIA filter)
 	const auto& addons_root = filesystem::get_addons_dir();
 	filesystem::get_files_in_dir(addons_root, nullptr, &addon_dirnames);
 
+	res.emplace_back("mainline"); // Add-on with id="mainline" is the core
 	for(const auto& addon_name : addon_dirnames) {
 		if(filesystem::file_exists(addons_root + "/" + addon_name + "/_main.cfg") &&
 		   (filter != ADDON_HAS_PBL || have_addon_pbl_info(addon_name)))
