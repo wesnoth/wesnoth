@@ -56,7 +56,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Unknown debug level: '$level'.", symbols);
 		ERR_NG << msg;
-		add_chat_message(std::time(nullptr), _("error"), 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
 	}
 	if (!lg::set_log_domain_severity(domain, severity)) {
@@ -65,7 +65,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Unknown debug domain: '$domain'.", symbols);
 		ERR_NG << msg;
-		add_chat_message(std::time(nullptr), _("error"), 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
 	}
 	else {
@@ -75,7 +75,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Switched domain: '$domain' to level: '$level'.", symbols);
 		LOG_NG << msg;
-		add_chat_message(std::time(nullptr), "log", 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), "log", 0, msg);
 	}
 }
 
@@ -142,14 +142,14 @@ void chat_handler::add_whisper_sent(const std::string& receiver, const std::stri
 {
 	utils::string_map symbols;
 	symbols["receiver"] = receiver;
-	add_chat_message(std::time(nullptr), VGETTEXT("whisper to $receiver", symbols), 0, message);
+	add_chat_message(std::chrono::system_clock::now(), VGETTEXT("whisper to $receiver", symbols), 0, message);
 }
 
 void chat_handler::add_whisper_received(const std::string& sender, const std::string& message)
 {
 	utils::string_map symbols;
 	symbols["sender"] = sender;
-	add_chat_message(std::time(nullptr), VGETTEXT("whisper: $sender", symbols), 0, message);
+	add_chat_message(std::chrono::system_clock::now(), VGETTEXT("whisper: $sender", symbols), 0, message);
 }
 
 void chat_handler::send_chat_room_message(const std::string& room,
@@ -171,7 +171,7 @@ void chat_handler::add_chat_room_message_sent(const std::string &room, const std
 void chat_handler::add_chat_room_message_received(const std::string &room,
 	const std::string &speaker, const std::string &message)
 {
-	add_chat_message(std::time(nullptr), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
+	add_chat_message(std::chrono::system_clock::now(), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
 }
 
 }

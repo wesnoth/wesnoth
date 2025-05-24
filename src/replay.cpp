@@ -750,8 +750,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"].to_int();
-					auto as_time_t = std::chrono::system_clock::to_time_t(get_time(*speak)); // FIXME: remove
-					game_display::get_singleton()->get_chat_manager().add_chat_message(as_time_t, speaker_name, side, message,
+					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						prefs::get().message_bell());

@@ -1042,7 +1042,7 @@ bool menu_handler::do_speak()
 			textbox_info_.box()->text(), textbox_info_.check() != nullptr ? textbox_info_.check()->checked() : false);
 }
 
-void menu_handler::add_chat_message(const std::time_t& time,
+void menu_handler::add_chat_message(const std::chrono::system_clock::time_point& time,
 		const std::string& speaker,
 		int side,
 		const std::string& message,
@@ -1190,7 +1190,7 @@ protected:
 
 	void print(const std::string& title, const std::string& message)
 	{
-		menu_handler_.add_chat_message(std::time(nullptr), title, 0, message);
+		menu_handler_.add_chat_message(std::chrono::system_clock::now(), title, 0, message);
 	}
 
 	void init_map()
@@ -1336,8 +1336,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	resources::recorder->speak(cfg);
 
-	auto as_time_t = std::chrono::system_clock::to_time_t(now); // FIXME: remove
-	add_chat_message(as_time_t, cfg["id"], side, message,
+	add_chat_message(now, cfg["id"], side, message,
 			private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);
 }
 
@@ -2096,10 +2095,10 @@ void console_handler::do_whiteboard_options()
 void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_handler& /*mousehandler*/)
 {
 	try {
-		add_chat_message(std::time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
+		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
-		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());
+		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());
 	}
 }
 
