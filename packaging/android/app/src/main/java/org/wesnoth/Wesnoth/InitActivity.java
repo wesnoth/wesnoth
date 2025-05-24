@@ -64,16 +64,10 @@ public class InitActivity extends Activity {
 	private long max = 0;
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final String archiveURL =
+	private final static String ARCHIVE_URL =
 		"https://sourceforge.net/projects/wesnoth/files/android/%s/download";
 
 	private File dataDir;
-
-	static {
-		packages.put("Core Data", "master.zip");
-		packages.put("Music", "music.zip");
-		packages.put("Patch", "patch.zip");
-	}
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -81,6 +75,10 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
+		packages.put("Core Data", "master.zip");
+		packages.put("Music", "music.zip");
+		packages.put("Patch", "patch.zip");
+
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
@@ -462,12 +460,7 @@ public class InitActivity extends Activity {
 			return false;
 		}
 
-		if (zipstream == null) {
-			Log.e("Unpack", "File for " + type + " is null!");
-			return false;
-		}
-
-		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
+		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
 			progress = 1;
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
