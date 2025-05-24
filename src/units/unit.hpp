@@ -1312,20 +1312,20 @@ public:
 	}
 
 	/** Gets if this unit own ability of @a tag_name type with [affect_adjacent] subtags. */
-	utils::optional<unsigned int> affect_distant(const std::string& tag_name) const
+	utils::optional<std::size_t> affect_distant(const std::string& tag_name) const
 	{
-		std::map<std::string, utils::optional<unsigned int>> temp_ = affect_distant_;
-		return temp_[tag_name];
+		std::map<std::string, utils::optional<std::size_t>> temp = affect_distant_;
+		return temp[tag_name];
 	}
 
 	/** Gets if this unit own ability with [affect_adjacent] subtags. */
-	utils::optional<unsigned int> has_ability_distant() const
+	utils::optional<std::size_t> has_ability_distant() const
 	{
 		return has_ability_distant_;
 	}
 
 	/** Gets if this unit own ability with [affect_adjacent] subtags in same time what halo_image or overlay_image attributes. */
-	utils::optional<unsigned int> has_ability_distant_image() const
+	utils::optional<std::size_t> has_ability_distant_image() const
 	{
 		return has_ability_distant_image_;
 	}
@@ -1796,7 +1796,7 @@ public:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool(const config& cfg, const std::string& ability, unsigned int dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
+	bool get_adj_ability_bool(const config& cfg, const std::string& ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
 	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1809,7 +1809,7 @@ public:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, unsigned int dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1969,7 +1969,7 @@ private:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool ability_affects_adjacent(const std::string& ability, const config& cfg, unsigned int dist, int dir, const map_location& loc, const unit& from) const;
+	bool ability_affects_adjacent(const std::string& ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const;
 	/**
 	 * Check if an ability affects the owning unit.
 	 * @param ability The type (tag name) of the ability
@@ -2188,16 +2188,16 @@ private:
 	 * Used for easing checking if unit own a ability of specified type with [affect_adjacent] sub tag.
 	 *
 	 */
-	std::map<std::string, utils::optional<unsigned int>> affect_distant_;
+	std::map<std::string, utils::optional<std::size_t>> affect_distant_;
 	/**
 	 * Used for easing checking if unit own a ability with [affect_adjacent] sub tag.
 	 *
 	 */
-	utils::optional<unsigned int> has_ability_distant_;
+	utils::optional<std::size_t> has_ability_distant_;
 	/**
 	 * used if ability own halo_image or overlay_image attributes in same time what [affect_adjacent].
 	 */
-	utils::optional<unsigned int> has_ability_distant_image_;
+	utils::optional<std::size_t> has_ability_distant_image_;
 	void set_has_ability_distant();
 };
 
