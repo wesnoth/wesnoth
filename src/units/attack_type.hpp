@@ -272,7 +272,7 @@ private:
 	 * @param from unit distant to self_ is checked.
 	 * @param from_loc location of @a from
 	 */
-	bool check_adj_abilities(const config& cfg, const std::string& special, unsigned int dist, int dir, const unit& from, const map_location& from_loc) const;
+	bool check_adj_abilities(const config& cfg, const std::string& special, std::size_t dist, int dir, const unit& from, const map_location& from_loc) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool in_abilities_tag = false) const;
 
@@ -355,7 +355,7 @@ private:
 		const config& special,
 		const unit_const_ptr& u,
 		const unit& from,
-		unsigned int dist,
+		std::size_t dist,
 		int dir,
 		const map_location& loc,
 		const map_location& from_loc,

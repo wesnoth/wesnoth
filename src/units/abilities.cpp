@@ -182,19 +182,22 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 		return cfg["affect_allies"].to_bool();
 }
 
-	// This function defines in which direction loc is relative to from_loc
-	// either by pointing to the hexagon loc is on or by pointing to the hexagon adjacent to from_loc closest to loc.
-	int find_direction(const map_location& loc, const map_location& from_loc, unsigned int distance)
-	{
-		const auto adjacent = get_adjacent_tiles(from_loc);
-		for(unsigned j = 0; j < adjacent.size(); ++j) {
-			bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], loc) == (distance - 1) : adjacent[j] == loc;
-			if(adj_or_dist) {
-				return j;
-			}
+/**
+ * This function defines in which direction loc is relative to from_loc
+ * either by pointing to the hexagon loc is on or by pointing to the hexagon adjacent to from_loc closest to loc.
+ */
+int find_direction(const map_location& loc, const map_location& from_loc, std::size_t distance)
+{
+	const auto adjacent = get_adjacent_tiles(from_loc);
+	for(std::size_t j = 0; j < adjacent.size(); ++j) {
+		bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], loc) == (distance - 1) : adjacent[j] == loc;
+		if(adj_or_dist) {
+			return j;
 		}
-		return 0;
 	}
+	return 0;
+}
+
 }
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
@@ -213,7 +216,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	const unit_map& units = get_unit_map();
 
 	// Check for each unit present on the map that it corresponds to the criteria
-	// (possession of an ability with [affect_adjacent] via a bollean variable, not incapacitated,
+	// (possession of an ability with [affect_adjacent] via a boolean variable, not incapacitated,
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
@@ -221,7 +224,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
-		unsigned int distance = distance_between(from_loc, loc);
+		std::size_t distance = distance_between(from_loc, loc);
 		if(distance > *u.affect_distant(tag_name)) {
 			continue;
 		}
@@ -255,7 +258,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	const unit_map& units = get_unit_map();
 
 	// Check for each unit present on the map that it corresponds to the criteria
-	// (possession of an ability with [affect_adjacent] via a bollean variable, not incapacitated,
+	// (possession of an ability with [affect_adjacent] via a boolean variable, not incapacitated,
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// If so, add to unit_ability_list.
 	for(const unit& u : units) {
@@ -263,7 +266,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
-		unsigned int distance = distance_between(from_loc, loc);
+		std::size_t distance = distance_between(from_loc, loc);
 		if(distance > *u.affect_distant(tag_name)) {
 			continue;
 		}
@@ -519,7 +522,7 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 	return true;
 }
 
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg, unsigned int dist, int dir, const map_location& loc, const unit& from) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const
 {
 	if(!cfg.has_child("affect_adjacent")) {
 		return false;
@@ -528,13 +531,13 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 
 	assert(dir >=0 && dir <= 5);
 	map_location::direction direction{ dir };
-	unsigned int radius = 1;
+	std::size_t radius = 1;
 
 	for (const config &i : cfg.child_range("affect_adjacent"))
 	{
 		if(i["radius"] != "all_map") {
 			radius = i["radius"].to_int(1);
-			if(radius == 0) {
+			if(radius <= 0) {
 				continue;
 			}
 			if(dist > radius) {
@@ -620,7 +623,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
-		unsigned int distance = distance_between(from_loc, loc_);
+		std::size_t distance = distance_between(from_loc, loc_);
 		if(distance > *u.has_ability_distant_image()) {
 			continue;
 		}
@@ -1159,7 +1162,7 @@ void attack_type::weapon_specials_impl_adj(
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
-			unsigned int distance = distance_between(from_loc, self_loc);
+			std::size_t distance = distance_between(from_loc, self_loc);
 			if(distance > *u.has_ability_distant()) {
 				continue;
 			}
@@ -1764,7 +1767,7 @@ bool unit::get_self_ability_bool(const config& cfg, const std::string& ability, 
 	return (ability_active_impl(ability, cfg, loc) && ability_affects_self(ability, cfg, loc));
 }
 
-bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, unsigned int dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const
+bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const
 {
 	auto filter_lock = from.update_variables_recursion(cfg);
 	if(!filter_lock) {
@@ -1779,7 +1782,7 @@ bool unit::get_self_ability_bool_weapon(const config& special, const std::string
 	return (get_self_ability_bool(special, tag_name, loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
-bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, unsigned int dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
+bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
 {
 	return (get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
@@ -1804,12 +1807,12 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 	return false;
 }
 
-bool attack_type::check_adj_abilities(const config& cfg, const std::string& special, unsigned int dist, int dir, const unit& from, const map_location& from_loc) const
+bool attack_type::check_adj_abilities(const config& cfg, const std::string& special, std::size_t dist, int dir, const unit& from, const map_location& from_loc) const
 {
 	return check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, from, dist, dir, self_loc_, from_loc, AFFECT_SELF, special, true);
 }
 
-bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, unsigned int dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
 {
 	if(tag_name == "leadership" && leader_bool) {
 		if(u->get_adj_ability_bool_weapon(special, tag_name, dist, dir, loc, from, from_loc, self_attack, other_attack)) {
@@ -1852,12 +1855,12 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 		}
 
 		for(const unit& u : units) {
-			utils::optional<unsigned int> distant = special_tags ? u.affect_distant(special) : u.has_ability_distant();
+			utils::optional<std::size_t> distant = special_tags ? u.affect_distant(special) : u.has_ability_distant();
 			if(!distant || u.incapacitated() || &u == self_.get()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
-			unsigned int distance = distance_between(from_loc, self_loc_);
+			std::size_t distance = distance_between(from_loc, self_loc_);
 			if(distance > *distant) {
 				continue;
 			}
@@ -1905,29 +1908,29 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 		}
 
 		for(const unit& u : units) {
-			utils::optional<unsigned int> distant = special_tags ? u.affect_distant(special) : u.has_ability_distant();
+			utils::optional<std::size_t> distant = special_tags ? u.affect_distant(special) : u.has_ability_distant();
 			if(!distant || u.incapacitated() || &u == other_.get()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
-			unsigned int distance = distance_between(from_loc, other_loc_);
+			std::size_t distance = distance_between(from_loc, other_loc_);
 			if(distance > *distant) {
 				continue;
 			}
 			int dir = find_direction(other_loc_, from_loc, distance);
 
-			std::vector<special_match> special_tag_matches_odist;
-			std::vector<special_match> special_id_matches_odist;
-			get_ability_children(special_tag_matches_odist, special_id_matches_odist, u.abilities(), special, special_id , special_tags);
+			std::vector<special_match> special_tag_matches_oadj;
+			std::vector<special_match> special_id_matches_oadj;
+			get_ability_children(special_tag_matches_oadj, special_id_matches_oadj, u.abilities(), special, special_id , special_tags);
 			if(special_tags){
-				for(const special_match& entry : special_tag_matches_odist) {
+				for(const special_match& entry : special_tag_matches_oadj) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
 						return true;
 					}
 				}
 			}
 			if(special_id){
-				for(const special_match& entry : special_id_matches_odist) {
+				for(const special_match& entry : special_id_matches_oadj) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, u, distance, dir, other_loc_, from_loc, AFFECT_OTHER, entry.tag_name)) {
 						return true;
 					}
@@ -2201,7 +2204,7 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
-				unsigned int distance = distance_between(from_loc, self_loc_);
+				std::size_t distance = distance_between(from_loc, self_loc_);
 				if(distance > *u.has_ability_distant()) {
 					continue;
 				}
@@ -2229,7 +2232,7 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
-				unsigned int distance = distance_between(from_loc, other_loc_);
+				std::size_t distance = distance_between(from_loc, other_loc_);
 				if(distance > *u.has_ability_distant()) {
 					continue;
 				}
