@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 22:31 UTC\n"
-"PO-Revision-Date: 2025-03-18 00:10+1100\n"
+"PO-Revision-Date: 2025-05-21 13:38+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1281,7 +1281,7 @@ msgstr ""
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "Canoe"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:19
@@ -1291,6 +1291,10 @@ msgid ""
 "around barriers or between unconnected bodies of water.  Almost every "
 "intelligent race has some form of canoe."
 msgstr ""
+"A Canoe is a small, open-top water vessel commonly used for transportation "
+"or hunting. Their light-weight construction allows them to be carried around "
+"barriers or between unconnected bodies of water. Almost every intelligent "
+"race has some form of canoe."
 
 #. [unit_type]: id=Derelict Hulk, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
@@ -1317,10 +1321,8 @@ msgstr "jetsam"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
-#, fuzzy
-#| msgid "Elvish Outrider"
 msgid "Elvish Cutter"
-msgstr "Elvish Outrider"
+msgstr "Elvish Cutter"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #. [unit_type]: id=Elvish Sloop, race=ship
@@ -1333,7 +1335,7 @@ msgstr "Elvish Outrider"
 #: data/core/units/boats/Orc_Rigship.cfg:19
 #: data/core/units/boats/Orc_Warship.cfg:19
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Elf_Cutter.cfg:104
@@ -1344,10 +1346,8 @@ msgstr "ensnare"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "Elvish Scout"
+msgstr "Elvish Sloop"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1399,10 +1399,8 @@ msgstr ""
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "Ghost"
+msgstr "Ghost Ship"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Ghost_Ship.cfg:182
@@ -1415,14 +1413,12 @@ msgstr "lightning"
 #. [attack]: type=impact
 #: data/core/units/boats/Ghost_Ship.cfg:194
 msgid "black wind"
-msgstr ""
+msgstr "black wind"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "Orcish Archer"
+msgstr "Orcish Barge"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:20
@@ -1443,40 +1439,47 @@ msgid ""
 "These barges are very ineffective in the high seas, little better than a "
 "floating wreck."
 msgstr ""
+"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"seen in almost any other ship. But what they lack in speed and grace, they "
+"make up for with their rugged utility in navigating rivers and swamps. Their "
+"primary means of movement comes from a large, symmetric sail held at three "
+"points for down-wind propulsion. When currents and winds lead to the wrong "
+"direction, the crew must use poles and anchors to move the barge in the "
+"intended direction.\n"
+"\n"
+"Barges serve as transports for either supplies or troops, but they have been "
+"used as pickets in larger conflicts. They lack any specific weaponry, but "
+"the crew is equipped with the crude orcish bows that can be deterrent enough "
+"in many situations.\n"
+"\n"
+"These barges are very ineffective in the high seas, little better than a "
+"floating wreck."
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "Orcish Ruler"
+msgstr "Orcish Battle Barge"
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:112
 msgid "catapult"
-msgstr ""
+msgstr "catapult"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "Orcish Nightblade"
+msgstr "Orcish Rig-ship"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Orc_Rigship.cfg:85
 #: data/core/units/boats/Orc_Warship.cfg:85
-#, fuzzy
-#| msgid "fire"
 msgid "firebow"
-msgstr "fire"
+msgstr "fire-bow"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "Orcish Warrior"
+msgstr "Orcish Warship"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:10
@@ -1505,28 +1508,23 @@ msgstr "ballista"
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:4
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Pirate Ship"
 
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate Galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
-"Pirate Galleons are to transport ships what wolves are to sheep. The pirates "
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
 msgid "Raft"
-msgstr ""
+msgstr "Raft"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:19
@@ -1535,6 +1533,9 @@ msgid ""
 "an improvised vessel of desperation, patched together from the wreck of a "
 "larger ship."
 msgstr ""
+"Rafts can be an efficient means of downriver transport, but they can also be "
+"an improvised vessel of desperation, patched together from the wreck of a "
+"larger ship."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1604,19 +1605,15 @@ msgstr "naval ram"
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
-msgstr ""
+msgstr "Skiff"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, Boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"Propelled by oars or small sails, Boats are used to travel short distances "
+"Propelled by oars or small sails, skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
@@ -1637,10 +1634,8 @@ msgstr ""
 
 #. [unit_type]: id=Transport Ship, race=ship
 #: data/core/units/boats/Transport_Ship.cfg:4
-#, fuzzy
-#| msgid "Transport Galleon"
 msgid "Transport Ship"
-msgstr "Transport Galleon"
+msgstr "Transport Ship"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
