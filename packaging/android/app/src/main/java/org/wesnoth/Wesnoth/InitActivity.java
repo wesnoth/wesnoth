@@ -82,8 +82,10 @@ public class InitActivity extends Activity {
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
-		// Keep the screen on while this task runs
+		// Keep the screen on while this activity runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
+		initMainDataDir();
 
 		initSettingsMenu();
 
@@ -180,8 +182,6 @@ public class InitActivity extends Activity {
 	}
 
 	private void initializeAssets() {
-		initMainDataDir();
-
 		showProgressScreen();
 		TextView progressText = findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
@@ -296,8 +296,6 @@ public class InitActivity extends Activity {
 
 	private void initializeAssetsFromZip(Uri uri) {
 		Executors.newSingleThreadExecutor().execute(() -> {
-			initMainDataDir();
-
 			runOnUiThread(() -> showProgressScreen());
 
 			Properties status = initStatusFile(dataDir);
