@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2025-02-22 18:42+0100\n"
+"PO-Revision-Date: 2025-05-10 16:34+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -230,22 +230,20 @@ msgstr ""
 #: doc/man/wesnoth.6:72
 #, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<--core>I<\\ identificatore>"
+msgstr "B<--core>I<\\ id_nucleo>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
 msgstr ""
-"sostituisce la directory base caricata con quella specificata "
-"nell’identificatore."
+"Sostituisce il nucleo caricato con quello specificato nell’identificatore "
+"id_nucleo."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
 #, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr "B<--data-dir>I<\\ directory>"
+msgstr "B<--data-dir>I<\\ cartella>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
@@ -253,6 +251,8 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"Sostituisce la cartella dati con quella specificata. La cartella dei dati è "
+"quella che contiene le sottocartelle 'data', 'fonts', 'images' e altre."
 
 # type: TP
 #. type: TP
@@ -283,8 +283,8 @@ msgid ""
 "mode)."
 msgstr ""
 "abilita le opzioni aggiuntive di controllo all’interno del gioco (vedi il "
-"wiki presso https://www.wesnoth.org/wiki/CommandMode per maggiori "
-"informazioni sulla shell di comando)."
+"wiki https://www.wesnoth.org/wiki/CommandMode per maggiori informazioni "
+"sulla shell di comando)."
 
 # type: TP
 #. type: TP
@@ -439,13 +439,6 @@ msgstr "B<--log->I<livello>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -454,12 +447,14 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"imposta il livello di dettaglio dei log dei domini di debug. Puoi usare "
-"B<all> per selezionare tutti i domini di debug. Livelli disponibili: "
-"B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Normalmente è "
-"usato il livello B<warning> per la maggior parte dei domini, ma il livello "
-"B<deprecation> corrisponde al livello none, a meno che non sia usato in "
-"combinazione con l’opzione B<-d>."
+"imposta il livello di dettaglio dei log dei domini. Puoi usare B<*> per "
+"selezionare un sottoinsieme dei domini, qualcosa tipo gui/* o conf* o * "
+"(quast’ultimo seleziona tutti i domini).  Livelli disponibili: B<error>,\\ "
+"B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>.  Normalmente è usato il "
+"livello B<warning> per la maggior parte dei domini, ma il livello "
+"B<deprecation> corrisponde al livello B<none>, a meno che non sia usato in "
+"combinazione con l’opzione B<-d>.  Questa opzione può essere specificata "
+"diverse volte."
 
 # type: TP
 #. type: TP
