@@ -129,7 +129,7 @@ public class InitActivity extends Activity {
 	private void showLaunchScreen() {
 		findViewById(R.id.download_progress).setVisibility(View.INVISIBLE);
 		findViewById(R.id.download_msg).setVisibility(View.INVISIBLE);
-		TextView lblTap = (TextView) findViewById(R.id.tap_label);
+		TextView lblTap = findViewById(R.id.tap_label);
 		lblTap.setText("Tap to Start");
 		lblTap.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
 	}
@@ -139,9 +139,7 @@ public class InitActivity extends Activity {
 		TextView lblTap = findViewById(R.id.tap_label);
 		lblTap.clearAnimation();
 		lblTap.setVisibility(View.INVISIBLE);
-
-		TextView progressText = findViewById(R.id.download_msg);
-		progressText.setVisibility(View.VISIBLE);
+		findViewById(R.id.download_msg).setVisibility(View.VISIBLE);
 		findViewById(R.id.download_progress).setVisibility(View.VISIBLE);
 	}
 
@@ -182,6 +180,7 @@ public class InitActivity extends Activity {
 	}
 
 	private void initializeAssets() {
+		findViewById(R.id.screen).setOnClickListener(null);
 		showProgressScreen();
 		TextView progressText = findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
