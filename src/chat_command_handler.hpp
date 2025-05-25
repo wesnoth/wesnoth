@@ -89,7 +89,7 @@ protected:
 		register_command("muteall", &chat_command_handler::do_network_send,
 			_("Mute/Unmute all observers. (toggles)"), "");
 		register_command("ping", &chat_command_handler::do_network_send,
-			_("Send some data to the server. Can be used to verify the network connection and notice disconnects."));
+			_("Measure roundtrip packet time between client and server."));
 		register_command("report", &chat_command_handler::do_mp_report,
 			_("Report abuse, rule violations, etc. to the server moderators. "
 				"Make sure to mention relevant nicknames, etc."), "");

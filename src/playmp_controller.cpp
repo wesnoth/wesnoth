@@ -34,6 +34,7 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "video.hpp" // only for faked
@@ -456,6 +457,19 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 		if(is_linger_mode()) {
 			end_turn_enable(true);
 		}
+	}
+	else if(auto ping = cfg.optional_child("ping")) {
+		auto now = std::chrono::steady_clock::now();
+
+		// Not using parse_timestamp since we need the steady clock
+		auto start = std::chrono::steady_clock::time_point{
+			std::chrono::steady_clock::duration{(*ping)["start_time"].to_long_long()}};
+
+		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(now - start);
+		std::string msg = formatter() << "Packet roundtrip took " << delta.count() << "ms";
+
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), "ping", 0, msg, events::chat_handler::MESSAGE_PUBLIC, prefs::get().message_bell());
 	}
 	else
 	{
