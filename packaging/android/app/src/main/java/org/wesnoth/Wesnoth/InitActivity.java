@@ -182,6 +182,7 @@ public class InitActivity extends Activity {
 	}
 
 	private void initializeAssets() {
+		findViewById(R.id.screen).setOnClickListener(null);
 		showProgressScreen();
 		TextView progressText = findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
