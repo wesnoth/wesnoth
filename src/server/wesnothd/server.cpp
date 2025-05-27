@@ -1422,16 +1422,17 @@ void server::handle_nickserv(player_iterator player, simple_wml::node& nickserv)
 void server::handle_ping(player_iterator player, simple_wml::node& data)
 {
 	// IMPORTANT: the time resolution is undefined. It will vary based on client
-	const simple_wml::string_span& time = data["start_time"];
+	const simple_wml::string_span& time = data["requested_at"];
 
 	if(time.empty()) {
-		send_server_message(player, "Ping start time unspecified", "error");
+		send_server_message(player, "Ping request time unspecified", "error");
 		return;
 	}
 
 	simple_wml::document res;
 	simple_wml::node& ping = res.root().add_child("ping");
-	ping.set_attr_dup("start_time", time);
+	ping.set_attr_dup("requested_at", time);
+	ping.set_attr_int("processed_at", chrono::serialize_timestamp(std::chrono::system_clock::now()));
 
 	send_to_player(player, res);
 }
