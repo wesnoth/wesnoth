@@ -719,7 +719,9 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             //blend all four corners of current pixel
             if (blendingNeeded(blend_xy))
             {
-                const auto& ker3 = reinterpret_cast<const Kernel_3x3&>(ker4); //"The Things We Do for Perf"
+                Kernel_3x3 ker3;
+                std::memcpy(&ker3, &ker4, sizeof ker3);
+
                 blendPixel<Scaler, ColorDistance, ROT_0  >(ker3, out, trgWidth, blend_xy, cfg);
                 blendPixel<Scaler, ColorDistance, ROT_90 >(ker3, out, trgWidth, blend_xy, cfg);
                 blendPixel<Scaler, ColorDistance, ROT_180>(ker3, out, trgWidth, blend_xy, cfg);
