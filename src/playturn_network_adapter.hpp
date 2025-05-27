@@ -35,9 +35,6 @@ public:
 	bool read(config& dst);
 	//returns false if there is still data in the internal buffer.
 	bool is_at_end() const;
-	void set_source(source_type source);
-	//returns a function to be passed to set_source.
-	static source_type get_source_from_config(config& src);
 	void push_front(config&& cfg);
 private:
 	//reads data from the network stream.

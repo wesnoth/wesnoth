@@ -136,9 +136,7 @@ playturn_network_adapter::playturn_network_adapter(source_type source)
 	, next_command_num_(0)
 
 {
-
 }
-
 
 playturn_network_adapter::~playturn_network_adapter()
 {
@@ -148,29 +146,4 @@ playturn_network_adapter::~playturn_network_adapter()
 			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data";
 		}
 	} catch (...) {}
-}
-
-void playturn_network_adapter::set_source(source_type source)
-{
-	network_reader_ = std::move(source);
-}
-
-
-static bool read_config(config& src, config& dst)
-{
-	assert(dst.empty());
-	if(!src.empty())
-	{
-		src.swap(dst);
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config& cfg)
-{
-	return std::bind(read_config, std::ref(cfg), std::placeholders::_1);
 }
