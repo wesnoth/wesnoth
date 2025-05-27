@@ -341,7 +341,7 @@ void addon_manager::pre_show()
 	list.set_delete_function(std::bind(&addon_manager::delete_addon,
 		this, std::placeholders::_1));
 
-	list.set_modified_signal_handler([this]() { on_addon_select(); });
+	connect_signal_notify_modified(list, [this](auto&&...) { on_addon_select(); });
 
 	fetch_addons_list();
 	load_addon_list();

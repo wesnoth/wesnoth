@@ -384,6 +384,9 @@ void addon_list::finalize_setup()
 	);
 
 	list.set_active_sorter("sort_0", sort_order::type::ascending);
+
+	// Propagate any modified events from the internal listbox to the widget as a whole
+	connect_signal_notify_modified(list, [this](auto&&...) { fire(event::NOTIFY_MODIFIED, *this, nullptr); });
 }
 
 void addon_list::set_addon_order(const addon_sort_func& func)
