@@ -16,6 +16,7 @@
 
 #include "xbrz.hpp"
 #include <cassert>
+#include <cstring>
 #include <vector>
 #include <algorithm>
 #include <cmath> //std::sqrt
