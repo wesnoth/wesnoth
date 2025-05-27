@@ -94,7 +94,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	else if (cmd == "ping") {
 		// Not using serialize_timestamp here since we need the steady clock
 		auto now = std::chrono::steady_clock::now();
-		data.add_child("ping")["start_time"] = now.time_since_epoch();
+		data.add_child("ping")["requested_at"] = now.time_since_epoch();
 	}
 	else if (cmd == "report") {
 		data.add_child("query")["type"] = "report " + args;

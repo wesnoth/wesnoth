@@ -463,7 +463,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 		// Not using parse_timestamp since we need the steady clock
 		auto start = std::chrono::steady_clock::time_point{
-			std::chrono::steady_clock::duration{(*ping)["start_time"].to_long_long()}};
+			std::chrono::steady_clock::duration{(*ping)["requested_at"].to_long_long()}};
 
 		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(now - start);
 		std::string msg = formatter() << "Packet roundtrip took " << delta.count() << "ms";
