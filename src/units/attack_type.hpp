@@ -81,7 +81,7 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
+	bool has_special(const std::string& special, bool simple_check = false, bool special_id = false, bool special_tags = true) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
@@ -124,14 +124,14 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_weapon_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_weapon_ability(const std::string& special, bool special_id = false, bool special_tags = true) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_special_or_ability(const std::string& special, bool special_id = false, bool special_tags = true) const;
 	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
