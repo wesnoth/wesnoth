@@ -846,7 +846,8 @@ void node::apply_diff(const node& diff)
 	const node* deletes = diff.child("delete");
 	if(deletes != nullptr) {
 		for(const node::attribute& a : deletes->attr_) {
-			auto range = std::equal_range(attr_.begin(), attr_.end(), a.key, string_span_pair_comparer());
+			std::pair<attribute_list::iterator,
+	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), a.key, string_span_pair_comparer());
 			if(range.first != range.second) {
 				attr_.erase(range.first);
 			}
