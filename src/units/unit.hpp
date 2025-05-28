@@ -1314,8 +1314,8 @@ public:
 	/** Gets if this unit own ability of @a tag_name type with [affect_adjacent] subtags. */
 	utils::optional<std::size_t> affect_distant(const std::string& tag_name) const
 	{
-		std::map<std::string, utils::optional<std::size_t>> temp = affect_distant_;
-		return temp[tag_name];
+		auto iter = affect_distant_.find(tag_name);
+		return iter != affect_distant_.end() ? iter->second : utils::nullopt;
 	}
 
 	/** Gets if this unit own ability with [affect_adjacent] subtags. */
