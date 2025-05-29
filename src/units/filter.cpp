@@ -293,26 +293,6 @@ void unit_filter_compound::create_attribute(const config::attribute_value& v, C 
 	}
 }
 
-namespace {
-
-	struct ability_match
-	{
-		std::string tag_name;
-		const config* cfg;
-	};
-
-	void get_ability_children_id(std::vector<ability_match>& id_result,
-	                           const config& parent, const std::string& id) {
-		for (const auto [key, cfg] : parent.all_children_view())
-		{
-			if(cfg["id"] == id) {
-				ability_match special = { key, &cfg };
-				id_result.push_back(special);
-			}
-		}
-	}
-}
-
 void unit_filter_compound::fill(const vconfig& cfg)
 	{
 		const config& literal = cfg.get_config();
@@ -412,43 +392,37 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["ability_id_active"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_set(c.str()); },
+			[](const std::set<std::string>& abilities, const unit_filter_args& args)
 			{
 				const unit_map& units = args.context().get_disp_context().units();
-				for(const std::string& ability : abilities) {
-					std::vector<ability_match> ability_id_matches_self;
-					get_ability_children_id(ability_id_matches_self, args.u.abilities(), ability);
-					for(const ability_match& entry : ability_id_matches_self) {
-						if (args.u.get_self_ability_bool(*entry.cfg, entry.tag_name, args.loc)) {
-							return true;
+				for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
+					if(abilities.count(cfg["id"]) != 0 && args.u.get_self_ability_bool(cfg, key, args.loc)) {
+						return true;
+					}
+				}
+
+				for(const unit& unit : units) {
+					if(!unit.has_ability_distant() || unit.incapacitated() || &unit == args.u.shared_from_this().get()) {
+						continue;
+					}
+					const map_location& from_loc = unit.get_location();
+					std::size_t distance = distance_between(from_loc, args.loc);
+					if(distance > *unit.has_ability_distant()) {
+						continue;
+					}
+					utils::optional<int> dir;
+					const auto adjacent = get_adjacent_tiles(from_loc);
+					for(std::size_t j = 0; j < adjacent.size(); ++j) {
+						bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
+						if(adj_or_dist) {
+							dir = j;
+							break;
 						}
 					}
-
-					for(const unit& unit : units) {
-						if(!unit.has_ability_distant() || unit.incapacitated() || &unit == args.u.shared_from_this().get()) {
-							continue;
-						}
-						const map_location& from_loc = unit.get_location();
-						std::size_t distance = distance_between(from_loc, args.loc);
-						if(distance > *unit.has_ability_distant()) {
-							continue;
-						}
-						utils::optional<int> dir;
-						const auto adjacent = get_adjacent_tiles(from_loc);
-						for(std::size_t j = 0; j < adjacent.size(); ++j) {
-							bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
-							if(adj_or_dist) {
-								dir = j;
-								break;
-							}
-						}
-						std::vector<ability_match> ability_id_matches_adj;
-						get_ability_children_id(ability_id_matches_adj, unit.abilities(), ability);
-						for(const ability_match& entry : ability_id_matches_adj) {
-							if(args.u.get_adj_ability_bool(*entry.cfg, entry.tag_name, distance, *dir, args.loc, unit, from_loc)) {
-								return true;
-							}
+					for(const auto [key, cfg] : unit.abilities().all_children_view()) {
+						if(abilities.count(cfg["id"]) != 0 && args.u.get_adj_ability_bool(cfg, key, distance, *dir, args.loc, unit, from_loc)) {
+							return true;
 						}
 					}
 				}
