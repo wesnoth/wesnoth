@@ -58,9 +58,9 @@ namespace utils::charconv
 	}
 
 	template<typename T>
-	std::enable_if_t<std::is_integral_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10 )
+	std::enable_if_t<std::is_integral_v<T>, std::from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10 )
 	{
-		return charconv_impl::from_chars(first, last, value, base);
+		return std::from_chars(first, last, value, base);
 	}
 
 #ifndef USE_FALLBACK_CHARCONV
