@@ -19,6 +19,7 @@
 #include <array>
 #include <assert.h>
 #include <cctype>
+#include <charconv>
 #include <string_view>
 #include <string>
 #include <stdexcept>
@@ -40,7 +41,6 @@
 #include <boost/charconv.hpp>
 namespace charconv_impl = boost::charconv;
 #else
-#include <charconv>
 namespace charconv_impl = std;
 #endif
 
