@@ -78,10 +78,8 @@ public:
 	 * @return True iff the special @a special is active.
 	 * @param special The special being checked.
 	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special(const std::string& special, bool simple_check = false, bool special_id = false, bool special_tags = true) const;
+	bool has_special(const std::string& special, bool simple_check = false) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
@@ -118,20 +116,17 @@ public:
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
 	unit_ability_list get_specials_and_abilities(const std::string& special) const;
-	/** used for abilities used like weapon
-	 * @return True if the ability @a special is active.
-	 * @param special The special being checked.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
-	 */
-	bool has_weapon_ability(const std::string& special, bool special_id = false, bool special_tags = true) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special_or_ability(const std::string& special, bool special_id = false, bool special_tags = true) const;
+	bool has_special_or_ability(const std::string& special) const;
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
+	 * @param filter contain attributes to check(special_id, special_type etc...).
+	 */
+	bool has_filter_special_or_ability(const config& filter, bool simple_check = false) const;
 	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
@@ -145,8 +140,6 @@ public:
 	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
 	 * @param filter if special check with filter, return true.
 	 */
-	bool has_special_with_filter(const config & filter) const;
-	bool has_ability_with_filter(const config & filter) const;
 	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
