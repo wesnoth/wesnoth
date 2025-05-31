@@ -65,11 +65,7 @@ jobs:
           }
           return=0
           # cycle through the changed image files, make sure they have the right fields
-          for file in "${png_files[@]}"; do
-            checktag XMP:Creator "$file" || return=1
-            checkrights XMP:Rights "$file" || return=1
-          done
-          for file in "${jpg_files[@]}" "${webp_files[@]}"; do
+          for file in "${jpg_files[@]}" "${webp_files[@]}" "${png_files[@]}"; do
             checktag EXIF:Artist "$file" || return=1
             checkrights EXIF:Copyright "$file" || return=1
           done
