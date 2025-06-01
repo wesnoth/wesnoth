@@ -49,7 +49,7 @@ void synched_choice_wait::pre_show()
 	button& quit_button = find_widget<button>("btn_quit_game");
 
 	connect_signal_mouse_left_click(quit_button,
-		std::bind(&quit_confirmation::quit_to_title));
+		[](auto&&...) { quit_confirmation::quit_to_title(); });
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
