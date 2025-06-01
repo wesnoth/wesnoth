@@ -50,56 +50,7 @@ static lg::log_domain log_unit("unit");
 
 /* ** unit_type ** */
 
-unit_type::unit_type(const unit_type& o)
-	: cfg_(o.cfg_)
-	, id_(o.id_)
-	, debug_id_(o.debug_id_)
-	, parent_id_(o.parent_id_)
-	, base_unit_id_(o.base_unit_id_)
-	, type_name_(o.type_name_)
-	, description_(o.description_)
-	, hitpoints_(o.hitpoints_)
-	, hp_bar_scaling_(o.hp_bar_scaling_)
-	, xp_bar_scaling_(o.xp_bar_scaling_)
-	, level_(o.level_)
-	, recall_cost_(o.recall_cost_)
-	, movement_(o.movement_)
-	, vision_(o.vision_)
-	, jamming_(o.jamming_)
-	, max_attacks_(o.max_attacks_)
-	, cost_(o.cost_)
-	, usage_(o.usage_)
-	, undead_variation_(o.undead_variation_)
-	, image_(o.image_)
-	, icon_(o.icon_)
-	, small_profile_(o.small_profile_)
-	, profile_(o.profile_)
-	, flag_rgb_(o.flag_rgb_)
-	, num_traits_(o.num_traits_)
-	, variations_(o.variations_)
-	, default_variation_(o.default_variation_)
-	, variation_name_(o.variation_name_)
-	, race_(o.race_)
-	, abilities_(o.abilities_)
-	, adv_abilities_(o.adv_abilities_)
-	, zoc_(o.zoc_)
-	, hide_help_(o.hide_help_)
-	, do_not_list_(o.do_not_list_)
-	, advances_to_(o.advances_to_)
-	, advancements_(o.advancements_)
-	, experience_needed_(o.experience_needed_)
-	, alignment_(o.alignment_)
-	, movement_type_(o.movement_type_)
-	, possible_traits_(o.possible_traits_)
-	, genders_(o.genders_)
-	, animations_(o.animations_)
-	, build_status_(o.build_status_)
-{
-	gender_types_[0].reset(gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr);
-	gender_types_[1].reset(gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr);
-}
-
-unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & parent_id)
+unit_type::unit_type(default_ctor_t, const config& cfg, const std::string & parent_id)
 	: cfg_(nullptr)
 	, built_cfg_()
 	, has_cfg_build_()
@@ -155,14 +106,14 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	check_id(parent_id_);
 }
 unit_type::unit_type(const config& cfg, const std::string & parent_id)
-	: unit_type(defaut_ctor_t(), cfg, parent_id)
+	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	cfg_ = &cfg;
 
 }
 
 unit_type::unit_type(config&& cfg, const std::string & parent_id)
-	: unit_type(defaut_ctor_t(), cfg, parent_id)
+	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	built_cfg_ = std::make_unique<config>(std::move(cfg));
 }

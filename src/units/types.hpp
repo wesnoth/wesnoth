@@ -42,8 +42,8 @@ typedef std::map<std::string, movetype> movement_type_map;
 class unit_type
 {
 private:
-	struct defaut_ctor_t {};
-	unit_type(defaut_ctor_t, const config& cfg, const std::string& parent_id);
+	struct default_ctor_t {};
+	unit_type(default_ctor_t, const config& cfg, const std::string& parent_id);
 
 public:
 	using error = unit_type_error;
@@ -60,9 +60,14 @@ public:
 	 * @note @a cfg is copied
 	 */
 	explicit unit_type(config&& cfg, const std::string& parent_id="");
-	unit_type();
-	unit_type(const unit_type& o);
-	unit_type(unit_type&& o) = default;
+
+	unit_type() = delete;
+
+	unit_type(const unit_type&) = delete;
+	unit_type& operator=(const unit_type&) = delete;
+
+	unit_type(unit_type&&) noexcept = default;
+	unit_type& operator=(unit_type&&) noexcept = default;
 
 	~unit_type();
 
