@@ -924,7 +924,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
-				int resistance = enemy.resistance_against(at, false, loc);
+				int resistance = enemy.resistance_against(at, false, loc, nullptr, true);
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}
