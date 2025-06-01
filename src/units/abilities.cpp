@@ -983,20 +983,28 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 
 	for(const auto [key, cfg] : specials_.all_children_view()) {
 		if(!active_list || special_active(cfg, AFFECT_EITHER, key)) {
-			const t_string& name = cfg["name"];
-			if(!name.empty()) {
-				if(key == "plague") {
-					const unit_type type = unit_types.types().at(cfg["type"].str());
-					res.emplace_back(
-						VGETTEXT(cfg["name"].t_str().c_str(), {{"type", type.type_name()}}),
-						VGETTEXT(cfg["description"].t_str().c_str(), {{"type", type.type_name()}}));
-				} else {
-					res.emplace_back(name, cfg["description"].t_str());
-				}
+			std::string name = cfg["name"];
+			std::string desc = cfg["description"];
 
-				if(active_list) {
-					active_list->push_back(true);
-				}
+			if(name.empty()) {
+				continue;
+			}
+
+			auto iter = unit_types.types().find(cfg["type"].str());
+
+			// TODO: warn if an invalid type is specified?
+			if(iter != unit_types.types().end()) {
+				const unit_type& type = iter->second;
+				utils::string_map symbols{{ "type", type.type_name() }};
+
+				name = utils::interpolate_variables_into_string(name, &symbols);
+				desc = utils::interpolate_variables_into_string(desc, &symbols);
+			}
+
+			res.emplace_back(name, desc);
+
+			if(active_list) {
+				active_list->push_back(true);
 			}
 		} else {
 			const t_string& name = cfg.get_or("name_inactive", "name").t_str();
