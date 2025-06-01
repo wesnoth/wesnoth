@@ -316,8 +316,6 @@ private:
 	void fill_variations_and_gender();
 	std::unique_ptr<unit_type> create_sub_type(const config& var_cfg, bool default_inherit);
 
-	unit_type& operator=(const unit_type& o) = delete;
-
 	const config* cfg_;
 	friend class unit_type_data;
 	mutable std::unique_ptr<config> built_cfg_;
