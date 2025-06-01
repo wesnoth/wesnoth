@@ -1836,6 +1836,15 @@ int unit::resistance_against(const std::string& damage_name, bool attacker, cons
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
 		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
 	});
+	if(opp_weapon) {
+		std::pair<std::string, std::set<std::string>> all_damage_types = opp_weapon->damage_types();
+		all_damage_types.second.emplace(all_damage_types.first);
+		int res = INT_MIN;
+		for(auto damage_type : all_damage_types.second) {
+			res = std::max(res, resistance_value(resistance_list, damage_type));
+		}
+		return res;
+	}
 	return resistance_value(resistance_list, damage_name);
 }
 
