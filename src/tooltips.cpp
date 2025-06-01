@@ -158,8 +158,6 @@ int active_tooltip = 0;
 
 int tooltip_id = 1;
 
-surface current_background = nullptr;
-
 // Is this a freaking singleton or is it not?
 // This is horrible, but that's how the usage elsewhere is.
 // If you want to fix this, either make it an actual singleton,
