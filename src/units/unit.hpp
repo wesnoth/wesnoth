@@ -1054,8 +1054,9 @@ public:
 	 * @param loc The unit's location (to resolve [resistance] abilities)
 	 * @param weapon The weapon to check for any abilities or weapon specials
 	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
+	 * @param for_tooltip if true, the function `effective_damage_type` shouldn't be called if `opp_weapon` exists.
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr, bool for_tooltip = false) const;
 
 	/**
 	 * The unit's resistance against a given attack
@@ -1063,10 +1064,11 @@ public:
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
 	 * @param weapon The weapon to check for any abilities or weapon specials
+	 * @param for_tooltip if true, the function `effective_damage_type` shouldn't be called if `opp_weapon` exists.
 	 */
-	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
+	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, bool for_tooltip = false) const
 	{
-		return resistance_against(atk.type(), attacker, loc , weapon, atk.shared_from_this());
+		return resistance_against(atk.type(), attacker, loc , weapon, atk.shared_from_this(), for_tooltip);
 	}
 
 	/** Gets resistances without any abilities applied. */
