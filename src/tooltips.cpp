@@ -69,6 +69,7 @@ void tooltip::init_label()
 	label.set_bg_color(bgcolor);
 	label.set_border_size(border);
 
+	label.clear_texture();
 	label.create_texture();
 
 	point lsize = label.get_draw_size();
