@@ -111,13 +111,13 @@ void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::
 bool blacklist_pattern_list::match_file(const std::string& name) const
 {
 	return std::any_of(file_patterns_.begin(), file_patterns_.end(),
-					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+		[&name](const std::string& pattern) { return utils::wildcard_string_match(name, pattern); });
 }
 
 bool blacklist_pattern_list::match_dir(const std::string& name) const
 {
 	return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
-					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+		[&name](const std::string& pattern) { return utils::wildcard_string_match(name, pattern); });
 }
 
 std::string autodetect_game_data_dir(std::string exe_dir)
