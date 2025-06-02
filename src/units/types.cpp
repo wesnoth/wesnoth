@@ -53,7 +53,6 @@ static lg::log_domain log_unit("unit");
 unit_type::unit_type(default_ctor_t, const config& cfg, const std::string & parent_id)
 	: cfg_(nullptr)
 	, built_cfg_()
-	, has_cfg_build_()
 	, id_(cfg.has_attribute("id") ? cfg["id"].str() : parent_id)
 	, debug_id_()
 	, parent_id_(!parent_id.empty() ? parent_id : id_)
@@ -105,22 +104,17 @@ unit_type::unit_type(default_ctor_t, const config& cfg, const std::string & pare
 	check_id(id_);
 	check_id(parent_id_);
 }
+
 unit_type::unit_type(const config& cfg, const std::string & parent_id)
 	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	cfg_ = &cfg;
-
 }
 
 unit_type::unit_type(config&& cfg, const std::string & parent_id)
 	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	built_cfg_ = std::make_unique<config>(std::move(cfg));
-}
-
-
-unit_type::~unit_type()
-{
 }
 
 unit_type::ability_metadata::ability_metadata(const config& cfg)

@@ -61,15 +61,11 @@ public:
 	 */
 	explicit unit_type(config&& cfg, const std::string& parent_id="");
 
-	unit_type() = delete;
-
 	unit_type(const unit_type&) = delete;
 	unit_type& operator=(const unit_type&) = delete;
 
 	unit_type(unit_type&&) noexcept = default;
 	unit_type& operator=(unit_type&&) noexcept = default;
-
-	~unit_type();
 
 	/**
 	 * Records the status of the lazy building of unit types.
@@ -319,7 +315,6 @@ private:
 	const config* cfg_;
 	friend class unit_type_data;
 	mutable std::unique_ptr<config> built_cfg_;
-	mutable bool has_cfg_build_;
 	mutable attack_list attacks_cache_;
 
 	std::string id_;
