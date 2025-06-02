@@ -117,6 +117,10 @@ unit_type::unit_type(config&& cfg, const std::string & parent_id)
 	built_cfg_ = std::make_unique<config>(std::move(cfg));
 }
 
+unit_type::~unit_type()
+{
+}
+
 unit_type::ability_metadata::ability_metadata(const config& cfg)
 	: id(cfg["id"])
 	, name(cfg["name"].t_str())

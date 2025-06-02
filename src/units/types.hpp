@@ -67,6 +67,8 @@ public:
 	unit_type(unit_type&&) noexcept = default;
 	unit_type& operator=(unit_type&&) noexcept = default;
 
+	~unit_type();
+
 	/**
 	 * Records the status of the lazy building of unit types.
 	 * These are in order of increasing levels of being built.
