@@ -62,6 +62,7 @@ private:
 	void handle_whisper(player_iterator player, simple_wml::node& whisper);
 	void handle_query(player_iterator player, simple_wml::node& query);
 	void handle_nickserv(player_iterator player, simple_wml::node& nickserv);
+	void handle_ping(player_iterator player, simple_wml::node& nickserv);
 	void handle_message(player_iterator player, simple_wml::node& message);
 	void handle_create_game(player_iterator player, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
