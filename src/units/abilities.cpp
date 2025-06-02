@@ -990,7 +990,9 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 				continue;
 			}
 
-			auto iter = unit_types.types().find(cfg["type"].str());
+			const auto iter = key == "plague" // Only [plague] supports a type key
+				? unit_types.types().find(cfg["type"].str());
+				: unit_types.types().end();
 
 			// TODO: warn if an invalid type is specified?
 			if(iter != unit_types.types().end()) {
