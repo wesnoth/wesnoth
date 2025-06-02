@@ -94,7 +94,7 @@ void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND
 
 	try {
 		button& btn = find_widget<button>(id);
-		connect_signal_mouse_left_click(btn, std::bind(callback));
+		connect_signal_mouse_left_click(btn, [callback](auto&&...) { std::invoke(callback); });
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << e.user_message;
 		prefs::get().set_gui2_theme("default");
@@ -253,7 +253,7 @@ void title_screen::init_callbacks()
 	//
 	// About
 	//
-	register_button("about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
+	register_button("about", hotkey::HOTKEY_NULL, [] { game_version::display(); });
 
 	//
 	// Campaign

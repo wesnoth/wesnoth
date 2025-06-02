@@ -481,7 +481,7 @@ void preferences_dialog::initialize_callbacks()
 
 	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<button>("cachemg"),
-			std::bind(&gui2::dialogs::game_cache_options::display<>));
+		[](auto&&...) { dialogs::game_cache_options::display(); });
 
 	//
 	// DISPLAY PANEL
@@ -740,10 +740,8 @@ void preferences_dialog::initialize_callbacks()
 				toggle_box.set_visible(widget::visibility::visible);
 				toggle_box.set_value(preferences_dialog_friend::get(pref_name, option.cfg["default"].to_bool()));
 
-				// A lambda alone would be more verbose because it'd need to specify all the parameters.
-				connect_signal_mouse_left_click(toggle_box, std::bind(
-					[&, pref_name]() { preferences_dialog_friend::set(pref_name, toggle_box.get_value_bool()); }
-				));
+				connect_signal_mouse_left_click(toggle_box,
+					[&, pref_name](auto&&...) { preferences_dialog_friend::set(pref_name, toggle_box.get_value_bool()); });
 
 				gui2::bind_status_label<toggle_button>(
 					main_grid, "value_toggle", default_status_value_getter<toggle_button>, "value");
@@ -764,10 +762,8 @@ void preferences_dialog::initialize_callbacks()
 
 				slide.set_value(preferences_dialog_friend::get(pref_name, option.cfg["default"].to_int()));
 
-				// A lambda alone would be more verbose because it'd need to specify all the parameters.
-				connect_signal_notify_modified(slide, std::bind(
-					[&, pref_name]() { preferences_dialog_friend::set(pref_name, slide.get_value()); }
-				));
+				connect_signal_notify_modified(slide,
+					[&, pref_name](auto&&...) { preferences_dialog_friend::set(pref_name, slide.get_value()); });
 
 				gui2::bind_status_label<slider>(main_grid, "setter", default_status_value_getter<slider>, "value");
 
