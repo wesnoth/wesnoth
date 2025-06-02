@@ -600,10 +600,10 @@ void node::remove_child(const char* name, std::size_t index)
 
 node* node::child(const char* name)
 {
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			assert(i->second.empty() == false);
-			return i->second.front();
+	for(auto& [key, node_list] : children_) {
+		if(key == name) {
+			assert(node_list.empty() == false);
+			return node_list.front();
 		}
 	}
 
@@ -612,12 +612,12 @@ node* node::child(const char* name)
 
 const node* node::child(const char* name) const
 {
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			if(i->second.empty()) {
+	for(const auto& [key, node_list] : children_) {
+		if(key == name) {
+			if(node_list.empty()) {
 				return nullptr;
 			} else {
-				return i->second.front();
+				return node_list.front();
 			}
 		}
 	}
@@ -635,9 +635,9 @@ node& node::child_or_add(const char* name)
 
 const node::child_list& node::children(const char* name) const
 {
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->first == name) {
-			return i->second;
+	for(const auto& [key, node_list] : children_) {
+		if(key == name) {
+			return node_list;
 		}
 	}
 
@@ -704,15 +704,15 @@ int node::output_size() const
 	}
 
 	int res = 0;
-	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		res += i->key.size() + i->value.size() + 4;
+	for(const auto& [key, value] : attr_) {
+		res += key.size() + value.size() + 4;
 	}
 
 	std::size_t count_children = 0;
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			res += i->first.size()*2 + 7;
-			res += (*j)->output_size();
+	for(const auto& [key, node_list] : children_) {
+		for(const simple_wml::node* child_node : node_list) {
+			res += key.size() * 2 + 7;
+			res += child_node->output_size();
 			++count_children;
 		}
 	}
@@ -728,16 +728,15 @@ void node::shift_buffers(ptrdiff_t offset)
 		output_cache_ = string_span(output_cache_.begin() + offset, output_cache_.size());
 	}
 
-	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		i->key = string_span(i->key.begin() + offset, i->key.size());
-		i->value = string_span(i->value.begin() + offset, i->value.size());
+	for(auto& [key, value] : attr_) {
+		key = string_span(key.begin() + offset, key.size());
+		value = string_span(value.begin() + offset, value.size());
 	}
 
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		string_span& key = i->first;
+	for(auto& [key, node_list] : children_) {
 		key = string_span(key.begin() + offset, key.size());
-		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			(*j)->shift_buffers(offset);
+		for(simple_wml::node* child_node : node_list) {
+			child_node->shift_buffers(offset);
 		}
 	}
 }
@@ -755,28 +754,27 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 
 	char* begin = buf;
 
-	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		memcpy(buf, i->key.begin(), i->key.size());
+	for(auto& [key, value] : attr_) {
+		memcpy(buf, key.begin(), key.size());
 		if(cache_status == REFRESH_CACHE) {
-			i->key = string_span(buf, i->key.size());
+			key = string_span(buf, key.size());
 		}
-		buf += i->key.size();
+		buf += key.size();
 		*buf++ = '=';
 		*buf++ = '"';
-		memcpy(buf, i->value.begin(), i->value.size());
+		memcpy(buf, value.begin(), value.size());
 		if(cache_status == REFRESH_CACHE) {
-			i->value = string_span(buf, i->value.size());
+			value = string_span(buf, value.size());
 		}
-		buf += i->value.size();
+		buf += value.size();
 		*buf++ = '"';
 		*buf++ = '\n';
 	}
 
-	for(std::vector<node_pos>::const_iterator i = ordered_children_.begin();
-	    i != ordered_children_.end(); ++i) {
-		assert(i->child_map_index < children_.size());
-		assert(i->child_list_index < children_[i->child_map_index].second.size());
-		string_span& attr = children_[i->child_map_index].first;
+	for(const node::node_pos& pos : ordered_children_) {
+		assert(pos.child_map_index < children_.size());
+		assert(pos.child_list_index < children_[pos.child_map_index].second.size());
+		string_span& attr = children_[pos.child_map_index].first;
 		*buf++ = '[';
 		memcpy(buf, attr.begin(), attr.size());
 		if(cache_status == REFRESH_CACHE) {
@@ -785,7 +783,7 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 		buf += attr.size();
 		*buf++ = ']';
 		*buf++ = '\n';
-		children_[i->child_map_index].second[i->child_list_index]->output(buf, cache_status);
+		children_[pos.child_map_index].second[pos.child_list_index]->output(buf, cache_status);
 		*buf++ = '[';
 		*buf++ = '/';
 		memcpy(buf, attr.begin(), attr.size());
@@ -814,21 +812,20 @@ std::string node_to_string(const node& n)
 void node::copy_into(node& n) const
 {
 	n.set_dirty();
-	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		char* key = i->key.duplicate();
-		char* value = i->value.duplicate();
+	for(const node::attribute& a : attr_) {
+		char* key = a.key.duplicate();
+		char* value = a.value.duplicate();
 		n.doc_->take_ownership_of_buffer(key);
 		n.doc_->take_ownership_of_buffer(value);
 		n.set_attr(key, value);
 	}
 
-	for(std::vector<node_pos>::const_iterator i = ordered_children_.begin();
-	    i != ordered_children_.end(); ++i) {
-		assert(i->child_map_index < children_.size());
-		assert(i->child_list_index < children_[i->child_map_index].second.size());
-		char* buf = children_[i->child_map_index].first.duplicate();
+	for(const node::node_pos& pos : ordered_children_) {
+		assert(pos.child_map_index < children_.size());
+		assert(pos.child_list_index < children_[pos.child_map_index].second.size());
+		char* buf = children_[pos.child_map_index].first.duplicate();
 		n.doc_->take_ownership_of_buffer(buf);
-		children_[i->child_map_index].second[i->child_list_index]->copy_into(n.add_child(buf));
+		children_[pos.child_map_index].second[pos.child_list_index]->copy_into(n.add_child(buf));
 	}
 }
 
@@ -837,9 +834,9 @@ void node::apply_diff(const node& diff)
 	set_dirty();
 	const node* inserts = diff.child("insert");
 	if(inserts != nullptr) {
-		for(attribute_list::const_iterator i = inserts->attr_.begin(); i != inserts->attr_.end(); ++i) {
-			char* name = i->key.duplicate();
-			char* value = i->value.duplicate();
+		for(const node::attribute& a : inserts->attr_) {
+			char* name = a.key.duplicate();
+			char* value = a.value.duplicate();
 			set_attr(name, value);
 			doc_->take_ownership_of_buffer(name);
 			doc_->take_ownership_of_buffer(value);
@@ -848,53 +845,47 @@ void node::apply_diff(const node& diff)
 
 	const node* deletes = diff.child("delete");
 	if(deletes != nullptr) {
-		for(attribute_list::const_iterator i = deletes->attr_.begin(); i != deletes->attr_.end(); ++i) {
+		for(const node::attribute& a : deletes->attr_) {
 			std::pair<attribute_list::iterator,
-	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->key, string_span_pair_comparer());
+	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), a.key, string_span_pair_comparer());
 			if(range.first != range.second) {
 				attr_.erase(range.first);
 			}
 		}
 	}
 
-	const child_list& child_changes = diff.children("change_child");
-	for(child_list::const_iterator i = child_changes.begin(); i != child_changes.end(); ++i) {
-		const std::size_t index = (**i)["index"].to_int();
-		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
-			const string_span& name = j->first;
-			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+	for(const simple_wml::node* node : diff.children("change_child")) {
+		const std::size_t index = (*node)["index"].to_int();
+		for(const auto& [name, node_list] : node->children_) {
+			for(const simple_wml::node* child_node : node_list) {
 				child_map::iterator itor = find_in_map(children_, name);
 				if(itor != children_.end()) {
 					if(index < itor->second.size()) {
-						itor->second[index]->apply_diff(**k);
+						itor->second[index]->apply_diff(*child_node);
 					}
 				}
 			}
 		}
 	}
 
-	const child_list& child_inserts = diff.children("insert_child");
-	for(child_list::const_iterator i = child_inserts.begin(); i != child_inserts.end(); ++i) {
-		const std::size_t index = (**i)["index"].to_int();
-		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
-			const string_span& name = j->first;
-			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+	for(const simple_wml::node* node : diff.children("insert_child")) {
+		const std::size_t index = (*node)["index"].to_int();
+		for(const auto& [name, node_list] : node->children_) {
+			for(const simple_wml::node* child_node : node_list) {
 				char* buf = name.duplicate();
 				doc_->take_ownership_of_buffer(buf);
-				(*k)->copy_into(add_child_at(buf, index));
+				child_node->copy_into(add_child_at(buf, index));
 			}
 		}
 	}
 
-	const child_list& child_deletes = diff.children("delete_child");
-	for(child_list::const_iterator i = child_deletes.begin(); i != child_deletes.end(); ++i) {
-		const std::size_t index = (**i)["index"].to_int();
-		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
-			if(j->second.empty()) {
+	for(const simple_wml::node* node : diff.children("delete_child")) {
+		const std::size_t index = (*node)["index"].to_int();
+		for(const auto& [name, node_list] : node->children_) {
+			if(node_list.empty()) {
 				continue;
 			}
 
-			const string_span& name = j->first;
 			remove_child(name, index);
 		}
 	}
@@ -904,9 +895,9 @@ void node::set_doc(document* doc)
 {
 	doc_ = doc;
 
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			(*j)->set_doc(doc);
+	for(const auto& [_, node_list] : children_) {
+		for(simple_wml::node* child_node : node_list) {
+			child_node->set_doc(doc);
 		}
 	}
 }
@@ -914,10 +905,10 @@ void node::set_doc(document* doc)
 int node::nchildren() const
 {
 	int res = 0;
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+	for(const auto& [_, node_list] : children_) {
+		for(const simple_wml::node* child_node : node_list) {
 			++res;
-			res += (*j)->nchildren();
+			res += child_node->nchildren();
 		}
 	}
 
@@ -927,9 +918,9 @@ int node::nchildren() const
 int node::nattributes_recursive() const
 {
 	int res = attr_.capacity();
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			res += (*j)->nattributes_recursive();
+	for(const auto& [_, node_list] : children_) {
+		for(const simple_wml::node* child_node : node_list) {
+			res += child_node->nattributes_recursive();
 		}
 	}
 
