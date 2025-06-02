@@ -385,6 +385,23 @@ void playmp_controller::process_network_data(bool unsync_only)
 	}
 }
 
+namespace
+{
+/** Data sent by the server in response to the ping command. */
+struct ping_response
+{
+	explicit ping_response(const config& cfg)
+		: requested_at(std::chrono::steady_clock::duration{cfg["requested_at"].to_long_long()})
+		, processed_at(chrono::parse_timestamp(cfg["processed_at"]))
+	{
+	}
+
+	std::chrono::steady_clock::time_point requested_at;
+	std::chrono::system_clock::time_point processed_at;
+};
+
+} // namespace
+
 playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(const config& cfg, bool chat_only)
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
@@ -460,12 +477,9 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	}
 	else if(auto ping = cfg.optional_child("ping")) {
 		auto now = std::chrono::steady_clock::now();
+		ping_response packet{*ping};
 
-		// Not using parse_timestamp since we need the steady clock
-		auto start = std::chrono::steady_clock::time_point{
-			std::chrono::steady_clock::duration{(*ping)["requested_at"].to_long_long()}};
-
-		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(now - start);
+		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(now - packet.requested_at);
 		std::string msg = formatter() << "Packet roundtrip took " << delta.count() << "ms";
 
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
