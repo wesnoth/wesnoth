@@ -341,25 +341,25 @@ DEF_GETTER(g) DEF_GETTER(h) DEF_GETTER(i)
 #undef DEF_GETTER
 
 #define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_0>(const Kernel_4x4& ker) { return ker.y; }
-DEF_GETTER(a, a) DEF_GETTER(b, b) DEF_GETTER(c, c)
+//DEF_GETTER(a, a) DEF_GETTER(b, b) DEF_GETTER(c, c)
 DEF_GETTER(d, e) DEF_GETTER(e, f) DEF_GETTER(f, g)
 DEF_GETTER(g, i) DEF_GETTER(h, j) DEF_GETTER(i, k)
 #undef DEF_GETTER
 
 #define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_90>(const Kernel_4x4& ker) { return ker.y; }
-DEF_GETTER(a, i) DEF_GETTER(b, e) DEF_GETTER(c, a)
+//DEF_GETTER(a, i) DEF_GETTER(b, e) DEF_GETTER(c, a)
 DEF_GETTER(d, j) DEF_GETTER(e, f) DEF_GETTER(f, b)
 DEF_GETTER(g, k) DEF_GETTER(h, g) DEF_GETTER(i, c)
 #undef DEF_GETTER
 
 #define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_180>(const Kernel_4x4& ker) { return ker.y; }
-DEF_GETTER(a, k) DEF_GETTER(b, j) DEF_GETTER(c, i)
+//DEF_GETTER(a, k) DEF_GETTER(b, j) DEF_GETTER(c, i)
 DEF_GETTER(d, g) DEF_GETTER(e, f) DEF_GETTER(f, e)
 DEF_GETTER(g, c) DEF_GETTER(h, b) DEF_GETTER(i, a)
 #undef DEF_GETTER
 
 #define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_270>(const Kernel_4x4& ker) { return ker.y; }
-DEF_GETTER(a, c) DEF_GETTER(b, g) DEF_GETTER(c, k)
+//DEF_GETTER(a, c) DEF_GETTER(b, g) DEF_GETTER(c, k)
 DEF_GETTER(d, b) DEF_GETTER(e, f) DEF_GETTER(f, j)
 DEF_GETTER(g, a) DEF_GETTER(h, e) DEF_GETTER(i, i)
 #undef DEF_GETTER
