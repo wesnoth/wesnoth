@@ -1031,6 +1031,46 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			add_text(res, "\n", "");
 		}
 	}
+
+	// 'abilities' version of special_tooltips is below.
+	{
+		//If we have a second unit, do the 2-unit specials_context
+		bool attacking = (u.side() == rc.screen().playing_team().side());
+		auto ctx = (sec_u == nullptr)
+	? at.specials_context(u.shared_from_this(), hex, attacking)
+	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
+
+		boost::dynamic_bitset<> active;
+		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
+		const std::size_t specials_size = specials.size();
+		for ( std::size_t i = 0; i != specials_size; ++i )
+		{
+			// Aliases for readability:
+			const auto& [name, description] = specials[i];
+			const color_t& details_color =
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+
+			str << span_color(details_color, "  ", "  ", name) << '\n';
+			const std::string help_page = "weaponspecial_" + name.base_str();
+			tooltip << _("Weapon special: ") << markup::bold(name);
+			if (!active[i]) {
+				tooltip << markup::italic(_(" (inactive)"));
+			}
+			tooltip << '\n' << description;
+
+			add_text(res, flush(str), flush(tooltip), help_page);
+		}
+
+		if(!specials.empty()) {
+			// Add some padding so the end of the specials list
+			// isn't too close vertically to the attack icons of
+			// the next attack. Also for symmetry with the padding
+			// above the list of specials (below the attack icon line).
+			const std::string spacer = "misc/blank.png~CROP(0, 0, 1, 5)";
+			add_image(res, spacer, "");
+			add_text(res, "\n", "");
+		}
+	}
 	return damage;
 }
 
