@@ -527,7 +527,7 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CCFLAGS = ["-fcolor-diagnostics"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
+        env.AppendUnique(CCFLAGS = Split("-Wno-c++20-extensions -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
         env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
 
         if env['strict']:
