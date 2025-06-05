@@ -856,7 +856,7 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 	return below;
 }
 
-void tree_view_node::select_node(bool expand_parents)
+void tree_view_node::select_node(bool expand_parents, bool fire_event)
 {
 	if(!label_ || label_->get_value_bool()) {
 		return;
@@ -875,7 +875,9 @@ void tree_view_node::select_node(bool expand_parents)
 
 	get_tree_view().selected_item_ = this;
 
-	get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
+	if (fire_event) {
+		get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
+	}
 
 	label_->set_value_bool(true);
 }

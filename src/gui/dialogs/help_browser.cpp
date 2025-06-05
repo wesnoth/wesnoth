@@ -213,7 +213,7 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		}
 		tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 		tree_view_node& selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp);
-		selected_node.select_node(true);
+		selected_node.select_node(true, false);
 
 		find_widget<label>("topic_title").set_label(topic->title);
 		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
@@ -221,7 +221,7 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		invalidate_layout();
 	}
 
-	if (add_to_history) {
+	if(add_to_history) {
 		// history pos is 0 initially, so it's already at first entry
 		// no need to increment first time
 		if (!history_.empty()) {
