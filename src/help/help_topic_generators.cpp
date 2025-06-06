@@ -563,10 +563,10 @@ std::string unit_topic_generator::operator()() const {
 
 		bool start = true;
 
-		for(auto iter = type_.abilities_metadata().begin(); iter != type_.abilities_metadata().end(); ++iter) {
-			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
+		for(const auto& ability : type_.abilities_metadata()) {
+			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
 
-			if(iter->name.empty()) {
+			if(ability.name.empty()) {
 				continue;
 			}
 
@@ -576,7 +576,7 @@ std::string unit_topic_generator::operator()() const {
 				start = false;
 			}
 
-			std::string lang_ability = translation::gettext(iter->name.c_str());
+			std::string lang_ability = translation::gettext(ability.name.c_str());
 			ss << markup::make_link(lang_ability, ref_id);
 		}
 
@@ -589,10 +589,10 @@ std::string unit_topic_generator::operator()() const {
 
 		bool start = true;
 
-		for(auto iter = type_.adv_abilities_metadata().begin(); iter != type_.adv_abilities_metadata().end(); ++iter) {
-			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
+		for(const auto& ability : type_.adv_abilities_metadata()) {
+			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
 
-			if(iter->name.empty()) {
+			if(ability.name.empty()) {
 				continue;
 			}
 
@@ -602,7 +602,7 @@ std::string unit_topic_generator::operator()() const {
 				start = false;
 			}
 
-			std::string lang_ability = translation::gettext(iter->name.c_str());
+			std::string lang_ability = translation::gettext(ability.name.c_str());
 			ss << markup::make_link(lang_ability, ref_id);
 		}
 
@@ -800,12 +800,11 @@ std::string unit_topic_generator::operator()() const {
 		markup::tag("col", markup::bold(_("Attack Type"))),
 		markup::tag("col", markup::bold(_("Resistance"))));
 
-	utils::string_map_res dam_tab = movement_type.damage_table();
 	bool odd_row = true;
-	for(std::pair<std::string, std::string> dam_it : dam_tab) {
+	for(const auto& [damage_type, damage_resistance] : movement_type.damage_table()) {
 		int resistance = 100;
 		try {
-			resistance -= std::stoi(dam_it.second);
+			resistance -= std::stoi(damage_resistance);
 		} catch(std::invalid_argument&) {}
 		std::string resist = std::to_string(resistance) + '%';
 		const std::size_t pos = resist.find('-');
@@ -813,8 +812,8 @@ std::string unit_topic_generator::operator()() const {
 			resist.replace(pos, 1, font::unicode_minus);
 		}
 		std::string color = unit_helper::resistance_color(resistance);
-		const std::string lang_type = string_table["type_" + dam_it.first];
-		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
+		const std::string lang_type = string_table["type_" + damage_type];
+		const std::string type_icon = "icons/profiles/" + damage_type + ".png~SCALE_INTO(16,16)";
 		table_ss << markup::tag("row",
 			{ {"bgcolor", (odd_row ? "table_row1" : "table_row2")} },
 			markup::tag("col", markup::img(type_icon), ' ', lang_type),
