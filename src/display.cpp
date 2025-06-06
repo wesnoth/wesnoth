@@ -275,15 +275,13 @@ void display::reinit_flags_for_team(const team& t)
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
 
-	std::vector<std::string> items = utils::square_parenthetical_split(flag);
-
-	for(const std::string& item : items) {
-		const std::vector<std::string>& sub_items = utils::split(item, ':');
-		std::string str = item;
+	for(const std::string& item : utils::square_parenthetical_split(flag)) {
+		const std::vector<std::string> sub_items = utils::split(item, ':');
+		std::string img_path = item;
 		auto time = 100ms;
 
 		if(sub_items.size() > 1) {
-			str = sub_items.front();
+			img_path = sub_items.front();
 			try {
 				time = std::max(1ms, std::chrono::milliseconds{std::stoi(sub_items.back())});
 			} catch(const std::invalid_argument&) {
@@ -291,9 +289,7 @@ void display::reinit_flags_for_team(const team& t)
 			}
 		}
 
-		std::stringstream temp;
-		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-		image::locator flag_image(temp.str());
+		image::locator flag_image(img_path, formatter{} << "~RC(" << old_rgb << ">" << new_rgb << ")");
 		temp_anim.add_frame(time, flag_image);
 	}
 
@@ -952,11 +948,9 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 
 	for(int v = FOG; v != CLEAR; ++v) {
 		// Find somewhere that doesn't have overlap to use as a starting point
-		int start;
-		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != v) {
-				break;
-			}
+		int start{0};
+		while(start < 6 && tiles[start] == v) {
+			++start;
 		}
 
 		if(start == 6) {

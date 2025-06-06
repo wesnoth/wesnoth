@@ -573,9 +573,8 @@ bool game_display::unhighlight_reach()
 
 void game_display::invalidate_route()
 {
-	for(std::vector<map_location>::const_iterator i = route_.steps.begin();
-	    i != route_.steps.end(); ++i) {
-		invalidate(*i);
+	for(const map_location& step : route_.steps) {
+		invalidate(step);
 	}
 }
 
