@@ -4685,13 +4685,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_rawset(L, -3);
 	}
 
-
-	std::vector<std::string> c_types = c->get_children_types();
-
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); ++t)
-	{
-		std::vector<ai::component*> children = c->get_children(*t);
-		std::string type = *t;
+	for(const std::string& type : c->get_children_types()) {
 		if (type == "aspect" || type == "goal" || type == "engine")
 		{
 			continue;
@@ -4700,10 +4694,9 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
 
-		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); ++i)
-		{
-			lua_pushstring(L, (*i)->get_name().c_str());
-			push_component(L, *i, type);
+		for(ai::component* child : c->get_children(type)) {
+			lua_pushstring(L, child->get_name().c_str());
+			push_component(L, child, type);
 			lua_rawset(L, -3);
 
 			//if (type == "candidate_action")
@@ -4715,8 +4708,6 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 
 		lua_rawset(L, -3); // setting the child table
 	}
-
-
 }
 
 /**
@@ -4740,13 +4731,10 @@ static int intf_debug_ai(lua_State *L)
 	ai::component* c = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
 
 	// Bad, but works
-	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = nullptr;
-	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); ++i)
-	{
-		if ((*i)->get_name() == "lua")
-		{
-			lua_engine = dynamic_cast<ai::engine_lua *>(*i);
+	for(ai::component* engine : c->get_children("engine")) {
+		if(engine->get_name() == "lua") {
+			lua_engine = dynamic_cast<ai::engine_lua*>(engine);
 		}
 	}
 
