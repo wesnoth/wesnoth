@@ -735,14 +735,14 @@ public:
 	{
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
-		child* item = new child;
-		list_builder.build(item->child_grid);
+		auto item = std::make_unique<child>();
+		grid& child_grid = item->child_grid;
 
-		init(&item->child_grid, item_data, callback);
+		list_builder.build(child_grid);
+		init(&child_grid, item_data, callback);
 
-		const unsigned item_index = index == -1 ? items_.size() : index;
-
-		items_.emplace(items_.begin() + item_index, item);
+		const std::size_t item_index = index == -1 ? items_.size() : index;
+		items_.emplace(items_.begin() + item_index, std::move(item));
 
 		order_dirty_ = true;
 
@@ -751,10 +751,10 @@ public:
 		my_placement::create_item(item_index);
 
 		if(!is_selected(item_index)) {
-			select_action::select(item->child_grid, false);
+			select_action::select(child_grid, false);
 		}
 
-		return item->child_grid;
+		return child_grid;
 	}
 
 	/** Inherited from generator_base. */
@@ -926,19 +926,11 @@ private:
 	/** Definition of an item. */
 	struct child
 	{
-		child()
-			: child_grid()
-			, selected(false)
-			, shown(true)
-			, ordered_index(0)
-		{
-		}
-
 		/** The grid containing the widgets. */
 		grid child_grid;
 
 		/** Is the item selected or not. */
-		bool selected;
+		bool selected = false;
 
 		/**
 		 * Is the row shown or not.
@@ -949,9 +941,9 @@ private:
 		 * @todo functions now test for visible and shown, that can use some
 		 * polishing.
 		 */
-		bool shown;
+		bool shown = true;
 
-		std::size_t ordered_index;
+		std::size_t ordered_index = 0;
 	};
 
 	/** The number of selected items. */
