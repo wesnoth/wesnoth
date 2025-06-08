@@ -61,11 +61,11 @@ public:
 
 	virtual ~base_property_handler() {}
 
-	virtual component* handle_get(const path_element &child) = 0;
+	virtual component* handle_get(const path_element &child) const = 0;
 	virtual bool handle_change(const path_element &child, config cfg) = 0;
 	virtual bool handle_add(const path_element &child, const config &cfg) = 0;
 	virtual bool handle_delete(const path_element &child) = 0;
-	virtual std::vector< component* > handle_get_children() = 0;
+	virtual std::vector<component*> handle_get_children() const = 0;
 };
 
 typedef std::shared_ptr< base_property_handler > property_handler_ptr;
@@ -80,7 +80,7 @@ public:
 	vector_property_handler(const std::string &property, ptr_vector &values, Factory&& construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		if (i!=values_.end()){
@@ -130,7 +130,7 @@ public:
 		return false;
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children;
 		for (ptr v : values_) {
@@ -179,7 +179,7 @@ public:
 	{
 	}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		// special case - 'get the default facet'
 		if (child.id == "default_facet") {
@@ -200,7 +200,7 @@ public:
 		return vector_property_handler<T>::handle_change(child, cfg);
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children = vector_property_handler<T>::handle_get_children();
 		children.push_back(default_.get());
@@ -223,7 +223,7 @@ public:
 	{
 	}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		typename aspect_map::const_iterator a = aspects_.find(child.id);
 		if (a!=aspects_.end()){
@@ -263,7 +263,7 @@ public:
 		return false;
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children;
 		for (typename aspect_map::value_type a : aspects_) {
