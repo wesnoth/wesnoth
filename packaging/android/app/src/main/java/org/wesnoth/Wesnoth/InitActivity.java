@@ -307,7 +307,7 @@ public class InitActivity extends Activity {
 				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
 			}
 
-			runOnUiThread(() -> showLaunchScreen());
+			runOnUiThread(() -> recreate());
 		});
 	}
 
@@ -323,6 +323,7 @@ public class InitActivity extends Activity {
 						.map(Path::toFile)
 						.forEach(File::delete);
 					Toast.makeText(this, "Cleared!", Toast.LENGTH_SHORT).show();
+					recreate();
 				} catch (IOException ioe) {
 					Log.e("InitActivity", "IO exception", ioe);
 					Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
@@ -365,7 +366,13 @@ public class InitActivity extends Activity {
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
-		progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
+		// also, when installing from zip the total number of files is
+		// not available, so don't show it in that case.
+		if (max > 0) {
+			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
+		} else {
+			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + ")");
+		}
 	}
 
 	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
