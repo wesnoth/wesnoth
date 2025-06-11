@@ -1127,7 +1127,7 @@ void prefs::set_sub_achievement(const std::string& content_for, const std::strin
 			{
 				if(in_progress["id"].str() == id)
 				{
-					std::vector<std::string> sub_ids = utils::split(ach["ids"]);
+					std::vector<std::string> sub_ids = utils::split(in_progress["sub_ids"]);
 
 					if(std::find(sub_ids.begin(), sub_ids.end(), sub_id) == sub_ids.end())
 					{
