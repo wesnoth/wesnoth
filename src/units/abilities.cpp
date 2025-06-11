@@ -898,6 +898,61 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	return res;
 }
 
+std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_tooltips(
+	boost::dynamic_bitset<>* active_list) const
+{
+	std::vector<std::pair<t_string, t_string>> res;
+	if(active_list) {
+		active_list->clear();
+	}
+	std::set<std::string> checking_name;
+	if(!self_) {
+		return res;
+	}
+	for(const auto [key, cfg] : self_->abilities().all_children_view()) {
+		if(!active_list || check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+			const std::string name = cfg["name_affected"];
+			const std::string desc = cfg["description_affected"];
+
+			if(name.empty() || checking_name.count(name) != 0) {
+				continue;
+			}
+			res.emplace_back(name, desc);
+			checking_name.insert(name);
+			if(active_list) {
+				active_list->push_back(true);
+			}
+		}
+	}
+	for(const unit& u : get_unit_map()) {
+		if(!u.has_ability_distant() || u.incapacitated() || &u == self_.get()) {
+			continue;
+		}
+		const map_location& from_loc = u.get_location();
+		std::size_t distance = distance_between(from_loc, self_loc_);
+		if(distance > *u.has_ability_distant()) {
+			continue;
+		}
+		int dir = find_direction(self_loc_, from_loc, distance);
+		for(const auto [key, cfg] : u.abilities().all_children_view()) {
+			if(!active_list || check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+				const std::string name = cfg["name_affected"];
+				const std::string desc = cfg["description_affected"];
+
+				if(name.empty() || checking_name.count(name) != 0) {
+					continue;
+				}
+				res.emplace_back(name, desc);
+				checking_name.insert(name);
+				if(active_list) {
+					active_list->push_back(true);
+				}
+			}
+		}
+	}
+	return res;
+}
+
 /**
  * static used in weapon_specials (bool only_active) and
  * @return a string and a set_string for the weapon_specials function below.
@@ -978,9 +1033,9 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 	std::string temp_string, weapon_abilities;
 	std::set<std::string> checking_name;
 	for(const auto [key, cfg] : specials_.all_children_view()) {
-		if((checking_tags.count(key) != 0)){
+		if(checking_tags.count(key) != 0) {
 			const bool active = special_active(cfg, AFFECT_SELF, key);
-			add_name(temp_string, active, cfg["name"].str(), checking_name);
+			add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
@@ -1001,7 +1056,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 		for(const auto [key, cfg] : other_attack_->specials_.all_children_view()) {
 			if((checking_tags.count(key) != 0)){
 				const bool active = other_attack_->special_active(cfg, AFFECT_OTHER, key);
-				add_name(temp_string, active, cfg["name"].str(), checking_name);
+				add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
 			}
 		}
 	}
@@ -1027,7 +1082,7 @@ void attack_type::weapon_specials_impl_self(
 		for(const auto [key, cfg] : self->abilities().all_children_view()){
 			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(key) != 0) : true;
 			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, cfg, self, self_loc, whom, key, leader_bool);
-			add_name(temp_string, active, cfg["name"].str(), checking_name);
+			add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
 		}
 	}
 }
@@ -1061,7 +1116,7 @@ void attack_type::weapon_specials_impl_adj(
 				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
 				bool affect_allies = !affect_adjacents.empty() ? cfg[affect_adjacents].to_bool(default_bool) : true;
 				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, cfg, self, u, distance, dir, self_loc, from_loc, whom, key, leader_bool) && affect_allies;
-				add_name(temp_string, active, cfg["name"].str(), checking_name);
+				add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
 			}
 		}
 	}
