@@ -928,8 +928,12 @@ void patch_movetype(movetype& mt,
 			}
 		}
 
-		LOG_CONFIG << " formula=" << formula_str << ", resolves to " << formula(original);
-		temp_cfg[new_key] = formula(original);
+		try {
+			temp_cfg[new_key] = formula(original);
+		} catch(const wfl::formula_error&) {
+			ERR_CF << "Error evaluating movetype formula: " << formula_str;
+			return;
+		}
 	}
 	mt.merge(temp_cfg, type_to_patch, true);
 }
