@@ -22,6 +22,7 @@
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "image_factory.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
@@ -32,6 +33,7 @@
 #include <SDL2/SDL_image.h>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem/path.hpp>
 
 #if BOOST_VERSION >= 108100
 
@@ -179,15 +181,10 @@ std::set<std::string> precached_dirs;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
-const std::string data_uri_prefix = "data:";
-struct parsed_data_URI{
-	explicit parsed_data_URI(std::string_view data_URI);
-	std::string_view scheme;
-	std::string_view mime;
-	std::string_view base64;
-	std::string_view data;
-	bool good;
-};
+constexpr std::string_view data_uri_prefix = "data:";
+
+} // end anon namespace
+
 parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 {
 	const std::size_t colon = data_URI.find(':');
@@ -204,8 +201,6 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 	data = after_scheme.substr(comma + 1);
 	good = (scheme == "data" && base64 == "base64" && mime.length() > 0 && data.length() > 0);
 }
-
-} // end anon namespace
 
 void flush_cache()
 {
@@ -324,72 +319,6 @@ bool locator::operator<(const locator& a) const
 	return false;
 }
 
-// Load overlay image and compose it with the original surface.
-static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
-{
-	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-	if(!ovr_surf) {
-		return;
-	}
-
-	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
-
-	sdl_blit(ovr_surf, nullptr, orig_surf, &area);
-}
-
-static surface load_image_file(const image::locator& loc)
-{
-	surface res;
-	const std::string& name = loc.get_filename();
-
-	auto location = filesystem::get_binary_file_location("images", name);
-
-	// Many images have been converted from PNG to WEBP format,
-	// but the old filename may still be saved in savegame files etc.
-	// If the file does not exist in ".png" format, also try ".webp".
-	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
-	if(!location && (boost::algorithm::ends_with(name, ".png") || boost::algorithm::ends_with(name, ".jpg"))) {
-		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
-		location = filesystem::get_binary_file_location("images", webp_name);
-		if(location) {
-			WRN_IMG << "Replaced missing '" << name << "' with found '"
-			        << webp_name << "'.";
-		}
-	}
-
-	{
-		if(location) {
-			// Check if there is a localized image.
-			const auto loc_location = filesystem::get_localized_path(location.value());
-			if(loc_location) {
-				location = loc_location.value();
-			}
-
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
-			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-
-			// If there was no standalone localized image, check if there is an overlay.
-			if(res && !loc_location) {
-				const auto ovr_location = filesystem::get_localized_path(location.value(), "--overlay");
-				if(ovr_location) {
-					add_localized_overlay(ovr_location.value(), res);
-				}
-			}
-		}
-	}
-
-	if(!res && !name.empty()) {
-		ERR_IMG << "could not open image '" << name << "'";
-		if(game_config::debug && name != game_config::images::missing)
-			return get_surface(game_config::images::missing, UNSCALED);
-		if(name != game_config::images::blank)
-			return get_surface(game_config::images::blank, UNSCALED);
-	}
-
-	return res;
-}
-
 static surface load_image_sub_file(const image::locator& loc)
 {
 	// Create a new surface in-memory on which to apply the modifications
@@ -449,38 +378,6 @@ static surface load_image_sub_file(const image::locator& loc)
 		}
 
 		is_empty_hex_.add_to_cache(loc, is_empty);
-	}
-
-	return surf;
-}
-
-static surface load_image_data_uri(const image::locator& loc)
-{
-	surface surf;
-
-	parsed_data_URI parsed{loc.get_filename()};
-
-	if(!parsed.good) {
-		std::string_view fn = loc.get_filename();
-		std::string_view stripped = fn.substr(0, fn.find(","));
-		ERR_IMG << "Invalid data URI: " << stripped;
-	} else if(parsed.mime.substr(0, 5) != "image") {
-		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
-	} else {
-		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size())};
-
-		if(image_data.empty()) {
-			ERR_IMG << "Invalid encoding in data URI";
-		} else if(parsed.mime == "image/png") {
-			surf = IMG_LoadPNG_RW(rwops.release());
-		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadJPG_RW(rwops.release());
-		} else if(parsed.mime == "image/webp") {
-			surf = IMG_LoadWEBP_RW(rwops.release());
-		} else {
-			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
-		}
 	}
 
 	return surf;
@@ -575,22 +472,6 @@ static surface apply_light(surface surf, const std::vector<light_adjust>& ls)
 	return surf;
 }
 
-static surface load_from_disk(const locator& loc)
-{
-	switch(loc.get_type()) {
-	case locator::FILE:
-		if(loc.is_data_uri()){
-			return load_image_data_uri(loc);
-		} else {
-			return load_image_file(loc);
-		}
-	case locator::SUB_FILE:
-		return load_image_sub_file(loc);
-	default:
-		return surface(nullptr);
-	}
-}
-
 manager::manager()
 {
 }
@@ -660,6 +541,11 @@ static surface get_tod_colored(const locator& i_locator, bool skip_cache = false
 /** translate type to a simpler one when possible */
 static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 {
+	if(type >= NUM_TYPES) {
+		WRN_IMG << "Unknown image type; falling back to UNSCALED";
+		return UNSCALED;
+	}
+
 	if(type == TOD_COLORED) {
 		if(red_adjust == 0 && green_adjust == 0 && blue_adjust == 0) {
 			type = HEXED;
@@ -681,19 +567,13 @@ surface get_surface(
 	TYPE type,
 	bool skip_cache)
 {
-	surface res;
-
 	if(i_locator.is_void()) {
-		return res;
+		return {};
 	}
 
 	type = simplify_type(i_locator, type);
 
 	// select associated cache
-	if(type >= NUM_TYPES) {
-		WRN_IMG << "get_surface called with unknown image type";
-		return res;
-	}
 	surface_cache& imap = surfaces_[type];
 
 	// return the image if already cached
@@ -703,11 +583,22 @@ surface get_surface(
 		DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
 	}
 
+	surface res;
+
 	// not cached, generate it
 	switch(type) {
 	case UNSCALED:
-		// If type is unscaled, directly load the image from the disk.
-		res = load_from_disk(i_locator);
+		switch(i_locator.get_type()) {
+		case locator::FILE:
+			res = factory<surface>::load(i_locator);
+			break;
+		case locator::SUB_FILE:
+			res = load_image_sub_file(i_locator);
+			break;
+		default:
+			throw game::error("Invalid image::locator type");
+		}
+
 		break;
 	case TOD_COLORED:
 		res = get_tod_colored(i_locator, skip_cache);
@@ -947,10 +838,8 @@ texture get_texture(const image::locator& i_locator, TYPE type, bool skip_cache)
 /** Returns a texture for the corresponding image. */
 texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type, bool skip_cache)
 {
-	texture res;
-
 	if(i_locator.is_void()) {
-		return res;
+		return {};
 	}
 
 	type = simplify_type(i_locator, type);
@@ -972,9 +861,6 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 		cache = &textures_[quality];
 	}
 
-	//
-	// Now attempt to find a cached texture. If found, return it.
-	//
 	if(const texture* cached_texture = cache->locate_in_cache(i_locator)) {
 		return *cached_texture;
 	} else {
@@ -987,11 +873,11 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	// once we get OGL and shader support.
 	//
 
-	// Get it from the surface cache, also setting the desired scale quality.
-	const bool linear_scaling = quality == scale_quality::linear ? true : false;
-	if(i_locator.get_modifications().empty()) {
-		// skip cache if we're loading plain files with no modifications
-		res = texture(get_surface(i_locator, type, true), linear_scaling);
+	const bool linear_scaling = quality == scale_quality::linear;
+	texture res;
+
+	if(type == UNSCALED && i_locator.get_type() == locator::FILE) {
+		res = factory<texture>::load(i_locator);
 	} else {
 		res = texture(get_surface(i_locator, type, skip_cache), linear_scaling);
 	}

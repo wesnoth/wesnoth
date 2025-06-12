@@ -20,6 +20,7 @@
 #include <SDL2/SDL_surface.h>
 
 #include <ostream>
+#include <string>
 
 class surface
 {
@@ -32,6 +33,9 @@ public:
 
 	surface(const surface& s);
 	surface(surface&& s) noexcept;
+
+	/** Loads the specified image from disk directly to a texture. */
+	static surface from_disk(const std::string& path);
 
 	~surface();
 
