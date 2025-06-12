@@ -240,7 +240,9 @@ namespace
 {
 void display_float(const map_location& location, const std::string& text)
 {
-	game_display::get_singleton()->float_label(location, text, color_t(255, 0, 0));
+	if(auto gd = game_display::get_singleton()) {
+		gd->float_label(location, text, color_t(255, 0, 0));
+	}
 }
 } // end anon namespace
 
