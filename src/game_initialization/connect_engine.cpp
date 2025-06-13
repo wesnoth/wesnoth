@@ -28,9 +28,6 @@
 #include "side_controller.hpp"
 #include "team.hpp"
 
-#include <boost/range/adaptor/indirected.hpp>
-#include <boost/range/algorithm/sort.hpp>
-
 #include <array>
 #include <cstdlib>
 
@@ -65,21 +62,23 @@ const std::set<std::string> children_to_swap {
 
 void sort_faction_options(std::vector<const config*>& factions)
 {
-	boost::range::sort(factions | boost::adaptors::indirected,
-		[](const config& lhs, const config& rhs) {
-			// Random factions always first.
-			// Since some eras have multiple random options we can't just assume there is
-			// only one random faction on top of the list.
-			if(lhs["random_faction"].to_bool() && !rhs["random_faction"].to_bool()) {
-				return true;
-			}
+	// Since some eras have multiple random options we can't just
+	// assume there is only one random faction on top of the list.
+	std::sort(factions.begin(), factions.end(), [](const config* lhs, const config* rhs) {
+		bool lhs_rand = (*lhs)["random_faction"].to_bool();
+		bool rhs_rand = (*rhs)["random_faction"].to_bool();
 
-			if(!lhs["random_faction"].to_bool() && rhs["random_faction"].to_bool()) {
-				return false;
-			}
+		// Random factions always first.
+		if(lhs_rand && !rhs_rand) {
+			return true;
+		}
 
-			return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
-		});
+		if(!lhs_rand && rhs_rand) {
+			return false;
+		}
+
+		return translation::compare((*lhs)["name"].str(), (*rhs)["name"].str()) < 0;
+	});
 }
 
 } // end anon namespace
