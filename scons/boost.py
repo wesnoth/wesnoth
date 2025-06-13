@@ -73,6 +73,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "context" : "context/continuation.hpp",
                       "charconv" : "charconv.hpp",
                       "coroutine" : "coroutine/coroutine.hpp",
+                      "process" : "process/shell.hpp",
                       "graph" : "graph/graph_traits.hpp" }
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
