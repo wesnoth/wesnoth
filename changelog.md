@@ -12,6 +12,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * Added [era] auto_sort key to control automatic alphabetical sorting.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.12
