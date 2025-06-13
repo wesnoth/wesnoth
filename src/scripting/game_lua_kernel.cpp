@@ -2558,6 +2558,7 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
  * - duration: display duration (integer or the string "unlimited")
  * - fade_time: duration of fade-out
  * - location: screen offset
+ * - padding: text padding
  * - valign: vertical alignment and anchoring - "top", "center", or "bottom"
  * - halign: horizontal alignment and anchoring - "left", "center", or "right"
  * Returns: label handle
@@ -2587,6 +2588,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	// everything needed to read in a pair of coordinates.
 	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
 	map_location loc{0, 0, wml_loc()};
+	int padding = 0;
 	if(lua_istable(L, idx+1)) {
 		if(luaW_tableget(L, idx+1, "size")) {
 			size = luaL_checkinteger(L, -1);
@@ -2671,6 +2673,9 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		if(luaW_tableget(L, idx+1, "location")) {
 			loc = luaW_checklocation(L, -1);
 		}
+		if(luaW_tableget(L, idx+1, "padding")) {
+			padding = std::max<int>(0, lua_tointeger(L, -1));
+		}
 		if(luaW_tableget(L, idx+1, "halign")) {
 			static const char* options[] = {"left", "center", "right"};
 			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
@@ -2723,7 +2728,8 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	flabel.set_color(color);
 	flabel.set_bg_color(bgcolor);
 	flabel.set_alignment(alignment);
-	flabel.set_position(x, y);
+	flabel.set_position(x + padding, y + padding);
+	flabel.set_border_size(padding);
 	flabel.set_lifetime(milliseconds{lifetime}, milliseconds{fadeout});
 	flabel.set_clip_rect(rect);
 
