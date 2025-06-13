@@ -924,9 +924,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
-				const_attack_ptr weapon  = at.shared_from_this();
-				auto ctx = weapon->specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
-				int resistance = enemy.resistance_against(*weapon, false, loc, nullptr);
+				auto ctx = at.specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
+				int resistance = enemy.resistance_against(at, false, loc, nullptr);
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}
