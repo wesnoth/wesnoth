@@ -34,6 +34,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -59,9 +60,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class InitActivity extends Activity {
-	private int length = 0;
-	private int progress = 0;
-	private long max = 0;
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
 	private final static String ARCHIVE_URL =
@@ -118,7 +116,6 @@ public class InitActivity extends Activity {
 					showZIPHelpDialog();
 					return true;
 				}
-				// TODO implement other menu items
 				return false;
 			});
 			settingsMenu.show();
@@ -354,14 +351,14 @@ public class InitActivity extends Activity {
 		startActivityForResult(inttOpen2, 2);
 	}
 
-	private void updateDownloadProgress(int progress, String type) {
+	private void updateDownloadProgress(int progress, int max, String type) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
 		progressText.setText("Downloading " + type + " ... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
 	}
 
-	private void updateUnpackProgress(int progress, String type) {
+	private void updateUnpackProgress(int progress, int max, String type) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
@@ -403,15 +400,15 @@ public class InitActivity extends Activity {
 			conn.setConnectTimeout(10000); // 10 seconds
 			conn.setReadTimeout(10000);    // 10 seconds
 
-			int response = conn.getResponseCode();
-
+			final int response = conn.getResponseCode();
 			if (response != HttpURLConnection.HTTP_OK) {
 				Log.e("Download", "Server returned response: " + response);
 				return newModified;
 			}
 
-			max = conn.getContentLengthLong();
-			progress = 0;
+			final int max = (int) conn.getContentLengthLong();
+			final AtomicInteger progress = new AtomicInteger(0);
+			final AtomicInteger length = new AtomicInteger(0);
 			newModified = conn.getLastModified();
 			// File did not change on server, don't download.
 			if (newModified == modified) {
@@ -426,14 +423,15 @@ public class InitActivity extends Activity {
 
 			runOnUiThread(() -> {
 				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-				progressBar.setMax((int) max);
+				progressBar.setMax(max);
 				progressBar.setProgress(0);
 			});
 
-			while ((length = in.read(buffer)) > 0) {
-				progress += length;
-				out.write(buffer, 0, length);
-				runOnUiThread(() -> updateDownloadProgress(progress, type));
+			length.set(in.read(buffer));
+			while (length.get() > 0) {
+				out.write(buffer, 0, length.get());
+				runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
+				length.set(in.read(buffer));
 			}
 
 			out.close();
@@ -465,13 +463,13 @@ public class InitActivity extends Activity {
 		}
 
 		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
-			progress = 1;
+			AtomicInteger progress = new AtomicInteger(1);
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
 
 			ZipEntry ze;
 			while ((ze = zf.getNextEntry()) != null) {
-				runOnUiThread(() -> updateUnpackProgress(progress, type));
+				runOnUiThread(() -> updateUnpackProgress(progress.get(), 0, type));
 
 				if (ze.isDirectory()) {
 					File dir = new File(destdir, ze.getName());
@@ -484,8 +482,8 @@ public class InitActivity extends Activity {
 					out.close();
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress);
-				progress++;
+				Log.d("Unpack", "Unpacking " + type + ":" + progress.get());
+				progress.incrementAndGet();
 			}
 
 			Log.d("Unpack", "Done unpacking " + type);
@@ -512,8 +510,8 @@ public class InitActivity extends Activity {
 		try (ZipFile zf = new ZipFile(zipfile)) {
 			Enumeration<? extends ZipEntry> e = zf.entries();
 
-			progress = 0;
-			max = zf.size();
+			AtomicInteger progress = new AtomicInteger(1);
+			final int max = zf.size();
 
 			runOnUiThread(() -> {
 				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
@@ -524,7 +522,7 @@ public class InitActivity extends Activity {
 			while (e.hasMoreElements()) {
 				ZipEntry ze = (ZipEntry) e.nextElement();
 
-				runOnUiThread(() -> updateUnpackProgress(progress, type));
+				runOnUiThread(() -> updateUnpackProgress(progress.get(), max, type));
 
 				if (ze.isDirectory()) {
 					File dir = new File(destdir, ze.getName());
@@ -537,8 +535,8 @@ public class InitActivity extends Activity {
 						new FileOutputStream(new File(destdir, ze.getName())));
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress + "/" + max);
-				progress++;
+				Log.d("Unpack", "Unpacking " + type + ":" + progress.get() + "/" + max);
+				progress.incrementAndGet();
 			}
 
 			Log.d("Unpack", "Done unpacking " + type);
