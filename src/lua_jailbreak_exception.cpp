@@ -17,9 +17,6 @@
 
 #include <cassert>
 
-int lua_jailbreak_exception::jail_depth = 0;
-lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
-
 void lua_jailbreak_exception::store() const noexcept
 {
 	/*
