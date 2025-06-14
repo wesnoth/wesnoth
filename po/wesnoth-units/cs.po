@@ -12,15 +12,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 22:31 UTC\n"
-"PO-Revision-Date: 2025-04-16 23:59+0200\n"
-"Last-Translator: Septim <septim@centrum.cz>\n"
+"PO-Revision-Date: 2025-06-03 20:37+0200\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.5\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -1288,7 +1287,7 @@ msgstr ""
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "Kánoe"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:19
@@ -1298,6 +1297,10 @@ msgid ""
 "around barriers or between unconnected bodies of water.  Almost every "
 "intelligent race has some form of canoe."
 msgstr ""
+"Kánoe je malé, otevřené vodní plavidlo, které se běžně používá k přepravě "
+"nebo lovu. Její lehká stavba umožňuje přenášení kolem překážek nebo mezi "
+"nespojenými vodními plochami. Téměř každá inteligentní rasa má nějaký druh "
+"kánoe."
 
 #. [unit_type]: id=Derelict Hulk, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
@@ -1325,10 +1328,8 @@ msgstr "trosky"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
-#, fuzzy
-#| msgid "Elvish Outrider"
 msgid "Elvish Cutter"
-msgstr "Elfí eskorta"
+msgstr "Elfí kutr"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #. [unit_type]: id=Elvish Sloop, race=ship
@@ -1341,7 +1342,7 @@ msgstr "Elfí eskorta"
 #: data/core/units/boats/Orc_Rigship.cfg:19
 #: data/core/units/boats/Orc_Warship.cfg:19
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Elf_Cutter.cfg:104
@@ -1352,10 +1353,8 @@ msgstr "polapení"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "Elfí průzkumník"
+msgstr "Elfí šalupa"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1408,10 +1407,8 @@ msgstr ""
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "Duch"
+msgstr "Loď duchů"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Ghost_Ship.cfg:182
@@ -1424,14 +1421,12 @@ msgstr "blesk"
 #. [attack]: type=impact
 #: data/core/units/boats/Ghost_Ship.cfg:194
 msgid "black wind"
-msgstr ""
+msgstr "černý dech"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "Skřetí lučištník"
+msgstr "Skřetí bárka"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:20
@@ -1452,40 +1447,46 @@ msgid ""
 "These barges are very ineffective in the high seas, little better than a "
 "floating wreck."
 msgstr ""
+"Skřetí bárky jsou hrubé konstrukce, které postrádají jakoukoli řemeslnou "
+"zručnost, jakou známe z téměř všech ostatních lodí. To, co jim chybí na "
+"rychlosti a ladnosti, však vynahrazují svou odolností při plavbě po řekách "
+"a v močálech. Jejich hlavním pohonným prostředkem je velká souměrná plachta "
+"upevněná ve třech bodech, která slouží k pohybu po větru. Pokud proudy "
+"a vítr nesou bárku nesprávným směrem, musí posádka použít tyče a kotvy.\n"
+"\n"
+"Bárky slouží jako dopravní lodě buď pro zásoby, nebo pro vojáky, ale ve "
+"větších střetech se používají i jako předsunuté hlídky. Postrádají jakoukoli "
+"vlastní výzbroj, ale posádka je vybavena hrubými skřetími luky, které mohou "
+"být v mnoha situacích dostatečně odstrašující.\n"
+"\n"
+"Na volném moři jsou tyto bárky velmi slabé, jen o málo lepší než plovoucí "
+"vrak."
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "Skřetí vládce"
+msgstr "Skřetí bitevní bárka"
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:112
 msgid "catapult"
-msgstr ""
+msgstr "katapult"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "Skřetí šerobřit"
+msgstr "Skřetí galéra"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Orc_Rigship.cfg:85
 #: data/core/units/boats/Orc_Warship.cfg:85
-#, fuzzy
-#| msgid "fire"
 msgid "firebow"
-msgstr "oheň"
+msgstr "ohnivý luk"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "Skřetí válečník"
+msgstr "Skřetí válečná loď"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:10
@@ -1514,15 +1515,10 @@ msgstr "balista"
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:4
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Pirátská loď"
 
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate Galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -1535,7 +1531,7 @@ msgstr ""
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
 msgid "Raft"
-msgstr ""
+msgstr "Vor"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:19
@@ -1544,6 +1540,9 @@ msgid ""
 "an improvised vessel of desperation, patched together from the wreck of a "
 "larger ship."
 msgstr ""
+"Vory mohou být účinným prostředkem pro přepravu po řece, ale také "
+"improvizovaným plavidlem ze zoufalství, které bylo poskládáno z vraku větší "
+"lodi."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1610,14 +1609,10 @@ msgstr "kloun"
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
-msgstr ""
+msgstr "Lodice"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, Boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
@@ -1644,10 +1639,8 @@ msgstr ""
 
 #. [unit_type]: id=Transport Ship, race=ship
 #: data/core/units/boats/Transport_Ship.cfg:4
-#, fuzzy
-#| msgid "Transport Galleon"
 msgid "Transport Ship"
-msgstr "Dopravní galeona"
+msgstr "Dopravní loď"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4

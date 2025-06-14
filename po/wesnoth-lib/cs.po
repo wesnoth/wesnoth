@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:31-0500\n"
-"PO-Revision-Date: 2025-03-20 20:17+0100\n"
+"PO-Revision-Date: 2025-05-26 23:45+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
-"terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
+"<ref>dst='..terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -4940,7 +4940,7 @@ msgstr "Ukázat témata"
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
-msgstr ""
+msgstr "Prohledat názvy témat nápovědy"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5139,14 +5139,12 @@ msgstr "Neukázat mapu dokud není dána kontrola nad stranou"
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:695
 msgid "Join Queue"
-msgstr ""
+msgstr "Připojit se do fronty"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:702
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Opustit"
+msgstr "Opustit frontu"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:801
@@ -6596,22 +6594,22 @@ msgstr "Možnosti mapy dosahu"
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
 msgid "Highlight Color"
-msgstr ""
+msgstr "Barva zvýraznění"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Barva zvýraznění nepřítele"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Neprůhlednost okraje:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Neprůhlednost odstínu:"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6891,7 +6889,7 @@ msgstr "Napadni nepřítele"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:572
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -6951,7 +6949,7 @@ msgstr "Přejmenovat"
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Označit/odznačit vybranou jednotku jako oblíbenou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7140,7 +7138,7 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
 msgid "Completed $count/$total"
@@ -8124,8 +8122,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
-"org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:975
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8393,10 +8391,8 @@ msgid "Rename Unit"
 msgstr "Přejmenovat jednotku"
 
 #: src/gui/dialogs/units_dialog.cpp:273
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "Tato jednotka je věrná a nevyžaduje žádné zaopatření."
+msgstr "Tato jednotka nevyžaduje žádné zaopatření."
 
 #: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
 #: src/gui/dialogs/units_dialog.cpp:284
@@ -8614,18 +8610,18 @@ msgstr "(Útok / Obrana)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:224
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Zbývající: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:227
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Tato jednotka může zaútočit vícekrát za kolo."
 
 #: src/gui/widgets/unit_preview_pane.cpp:269
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "používá $num útok"
+msgstr[1] "používá $num útoky"
+msgstr[2] "používá $num útoků"
 
 #: src/gui/widgets/unit_preview_pane.cpp:312
 #: src/gui/widgets/unit_preview_pane.cpp:343
@@ -9585,15 +9581,3 @@ msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."
-
-#~ msgid "Battle For Wesnoth Help"
-#~ msgstr "Nápověda Bitvy o Wesnoth"
-
-#~ msgid "corrupted original file"
-#~ msgstr "poškozený původní soubor"
-
-#~ msgid "Hide"
-#~ msgstr "Skrýt"
-
-#~ msgid "Hide tip of the day"
-#~ msgstr "Skrýt tip dne"
