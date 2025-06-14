@@ -223,7 +223,6 @@ public:
 	void zoom_out();
 	void zoom_default();
 	void map_screenshot();
-	void quit_to_main_menu();
 };
 /* Functions to be called every time a event is intercepted.
  * Will call the relevant function in executor if the event is not nullptr.
