@@ -1827,9 +1827,9 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon, bool for_tooltip) const
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
-	if(opp_weapon && !for_tooltip) {
+	if(opp_weapon) {
 		return opp_weapon->effective_damage_type().second;
 	}
 	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
