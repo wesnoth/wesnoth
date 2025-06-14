@@ -34,7 +34,7 @@ function set_terrain_impl(data)
 		for j = 1, num_tiles do
 			local loc = locs[i][j]
 			if chance >= 1000 or chance >= mathx.random(1000) then
-				map[loc] = wesnoth.map['replace_' .. layer](mathx.random_choice(terrains))
+				map[loc] = wesnoth.map.replace[layer](mathx.random_choice(terrains))
 				nlocs_changed = nlocs_changed + 1
 			end
 		end
