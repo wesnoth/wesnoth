@@ -397,10 +397,8 @@ static void trim_items(std::vector<T>& newitems)
 }
 
 template<typename F>
-static void foreach_autosave(int turn, saved_game& sg, F func) {
-
-	const compression::format comp_format = prefs::get().save_compression_format();
-
+static void foreach_autosave(int turn, saved_game& sg, F func)
+{
 	compression::format compression_format = prefs::get().save_compression_format();
 	savegame::autosave_savegame autosave(sg, compression_format);
 	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
@@ -410,13 +408,13 @@ static void foreach_autosave(int turn, saved_game& sg, F func) {
 	for(; turn != 0; turn--) {
 		const std::string name = autosave.create_filename(turn);
 
-		if(savegame::save_game_exists(name, comp_format)) {
-			func(turn, name + compression::format_extension(comp_format));
+		if(savegame::save_game_exists(name, compression_format)) {
+			func(turn, name + compression::format_extension(compression_format));
 		}
 	}
 
-	if(savegame::save_game_exists(start_name, comp_format)) {
-		func(0, start_name + compression::format_extension(comp_format));
+	if(savegame::save_game_exists(start_name, compression_format)) {
+		func(0, start_name + compression::format_extension(compression_format));
 	}
 }
 
