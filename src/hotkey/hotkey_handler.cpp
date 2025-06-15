@@ -465,7 +465,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& i
 	items.insert(pos, newitems.begin(), newitems.end());
 }
 
-void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	if(context_menu) {
 		last_context_menu_x_ = xloc;
@@ -483,7 +483,6 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 		}
 	}
 
-
 	// Iterate in reverse to avoid also iterating over the new inserted items
 	for(int i = items.size() - 1; i >= 0; i--) {
 		if(items[i]["id"] == "AUTOSAVES") {
@@ -499,7 +498,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 		return;
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
+	command_executor::show_menu(items, xloc, yloc, context_menu);
 }
 
 bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& cmd) const

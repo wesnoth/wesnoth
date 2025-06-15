@@ -102,7 +102,7 @@ class editor_controller : public controller_base,
 		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;
 
 		/** controller_base override */
-		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
+		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
 
 		void show_help() override;
 		void status_table() override;

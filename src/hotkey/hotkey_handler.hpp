@@ -121,7 +121,7 @@ public:
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;
-	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
+	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.

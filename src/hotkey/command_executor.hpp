@@ -161,19 +161,19 @@ public:
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
 	virtual ACTION_STATE get_action_state(const hotkey::ui_command&) const { return ACTION_STATELESS; }
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
-	std::string get_menu_image(display& disp, const std::string& command, int index=-1) const;
+	std::string get_menu_image(const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
-	void get_menu_images(display &, std::vector<config>& items);
+	void get_menu_images(std::vector<config>& items);
 	void surrender_game();
 	// @a items_arg the items in the menus to be shows, each item can have the folliwng attributes:
 	//   'id':    The id describing the action, will be passed to do_execute_commnd and can_execute_commnd,
 	//            If 'id' specifies a known hotkey command or theme item the other attributes can be generated from it.
 	//   'label': The label for this menu entry.
 	//   'icon':  The icon for this menu entry.
-	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu);
 	// @a items_arg the actions to be exceuted, exceutes all of the actions, it looks like the idea is to associate
 	//  multiple actions with a single menu button, not sure whether it is actually used.
-	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
 	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
 	void queue_command(const SDL_Event& event, int index = -1);

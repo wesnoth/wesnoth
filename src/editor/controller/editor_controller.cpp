@@ -750,7 +750,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					std::vector<config> items;
 					items.emplace_back("id", "editor-playlist");
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
-					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
+					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false);
 					return true;
 				}
 			case SCHEDULE:
@@ -1175,7 +1175,7 @@ void editor_controller::show_help()
 	help::show_help("..editor");
 }
 
-void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	if(context_menu) {
 		if(!get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
@@ -1276,7 +1276,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		});
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
+	command_executor::show_menu(items, xloc, yloc, context_menu);
 }
 
 void editor_controller::preferences()
