@@ -156,14 +156,9 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	return false;
 }
 
-bool mouse_handler_base::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
-											map_location loc, bool click)
+bool mouse_handler_base::mouse_button_event(
+	const SDL_MouseButtonEvent& /*event*/, uint8_t /*button*/, map_location /*loc*/, bool /*click*/)
 {
-	(void)event;
-	(void)button;
-	(void)loc;
-	(void)click;
-
 	return false;
 }
 
