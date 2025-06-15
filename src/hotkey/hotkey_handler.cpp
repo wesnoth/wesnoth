@@ -51,8 +51,6 @@ play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game
 	, menu_handler_(pc.get_menu_handler())
 	, mouse_handler_(pc.get_mouse_handler_base())
 	, saved_game_(sg)
-	, last_context_menu_x_(0)
-	, last_context_menu_y_(0)
 {}
 
 play_controller::hotkey_handler::~hotkey_handler(){}
@@ -465,11 +463,6 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& i
 
 void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
-	if(context_menu) {
-		last_context_menu_x_ = xloc;
-		last_context_menu_y_ = yloc;
-	}
-
 	std::vector<config> items;
 	for(const auto& item : items_arg) {
 

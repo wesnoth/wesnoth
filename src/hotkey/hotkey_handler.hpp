@@ -63,8 +63,6 @@ private:
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
 	 */
 	void expand_wml_commands(std::vector<config>& items, int i);
-	int last_context_menu_x_;
-	int last_context_menu_y_;
 
 protected:
 	bool browse() const;
