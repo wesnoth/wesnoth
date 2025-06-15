@@ -25,19 +25,19 @@ namespace hotkey {
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF, ACTION_SELECTED, ACTION_DESELECTED };
 
-/// Used as the main paramneter for can_execute_command/do_execute_command
+/// Used as the main parameter for can_execute_command/do_execute_command
 /// These functions are used to execute hotkeys but also to execute menu items,
 /// (Most menu items point to the same action as a hotkey but not all)
 struct ui_command
 {
 	/// The hotkey::HOTKEY_COMMAND associated with this action, HOTKEY_NULL for actions that don't allow hotkey binding.
 	/// different actions of the ame type might have the same HOTKEY_COMMAND (like different wml menu items that allow
-	//  hotkey bindings.). This is prefered to be used for comparision over id (for example being an enum makes it
-	/// imposible to make typos in the id and its faster, plus c++ unfortunateley doesn't allow switch statements with
-	//  strings)
+	/// hotkey bindings.). This is preferred to be used for comparision over id (for example being an enum makes it
+	/// impossible to make typos in the id and its faster, plus c++ unfortunately doesn't allow switch statements with
+	/// strings)
 	hotkey::HOTKEY_COMMAND hotkey_command;
 	/// The string command, never empty, describes the action uniquely. when the action is the result of a menu click
-	//  this matches the id element of the clicked item (the id paraemter of show_menu)
+	/// this matches the id element of the clicked item (the id parameter of show_menu)
 	std::string id;
 	/// When this action was the result of a menu click, this is the index of the clicked item in the menu.
 	int index;
