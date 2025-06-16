@@ -447,19 +447,12 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 
 void command_executor::execute_action(const std::vector<std::string>& items_arg)
 {
-	std::vector<std::string> items = items_arg;
-	if (items.empty()) {
-		return;
-	}
-
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
-		hotkey::ui_command cmd = hotkey::ui_command(*i);
-		if (can_execute_command(cmd)) {
+	for(const std::string& item : items_arg) {
+		auto cmd = hotkey::ui_command(item);
+		if(can_execute_command(cmd)) {
 			do_execute_command(cmd);
 			set_button_state();
 		}
-		++i;
 	}
 }
 
