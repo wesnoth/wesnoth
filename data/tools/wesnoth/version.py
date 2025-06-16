@@ -2,8 +2,8 @@
 
 major = 1
 minor = 19
-release = 12
-dev_suffix = "+dev" # either use "+dev", "-dev", "" (empty string) or None
+release = 13
+dev_suffix = "" # either use "+dev", "-dev", "" (empty string) or None
 
 as_string = "{}.{}.{}{}".format(major,
                                 minor,

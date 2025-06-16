@@ -1,12 +1,4 @@
-## Version 1.19.12+dev
-### Add-ons client
-### Add-ons server
-### Campaigns
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
+## Version 1.19.13
 ### Translations
    * Updated translations: Bengali, British English, Czech, Italian
 ### Units
