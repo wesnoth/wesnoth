@@ -19,22 +19,23 @@
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_events/wmi_manager.hpp"
-#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "preferences/preferences.hpp"
 #include "savegame.hpp"
+#include "units/unit.hpp"
+#include "utils/ranges.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
 
+#include <numeric>
+
 namespace balg = boost::algorithm;
-
-#include "units/unit.hpp"
-
 
 #define ERR_G  LOG_STREAM(err,   lg::general())
 #define WRN_G  LOG_STREAM(warn,   lg::general())
@@ -380,85 +381,59 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 	}
 }
 
-template<typename T>
-static void trim_items(std::vector<T>& newitems)
-{
-	if(newitems.size() > 5) {
-		std::vector<T> subitems;
-		subitems.push_back(std::move(newitems[0]));
-		subitems.push_back(std::move(newitems[1]));
-		subitems.push_back(std::move(newitems[newitems.size() / 3]));
-		subitems.push_back(std::move(newitems[newitems.size() * 2 / 3]));
-		subitems.push_back(std::move(newitems.back()));
-		newitems = subitems;
-	}
-}
-
 template<typename F>
-static void foreach_autosave(int turn, saved_game& sg, F func)
+static void foreach_autosave(int current_turn, saved_game& sg, F func)
 {
 	compression::format compression_format = prefs::get().save_compression_format();
-	savegame::autosave_savegame autosave(sg, compression_format);
-	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
+	auto autosave = savegame::autosave_savegame(sg, compression_format);
+	auto starting = savegame::scenariostart_savegame(sg, compression_format);
 
-	const std::string start_name = scenariostart_save.create_filename();
+	// Generate a list of turn numbers from n to 0, descending
+	auto turn_range = std::vector<int>(current_turn);
+	std::iota(turn_range.rbegin(), turn_range.rend(), 0);
 
-	for(; turn != 0; turn--) {
-		const std::string name = autosave.create_filename(turn);
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	auto filtered = turn_range | utils::views::filter([&](int turn) {
+		return turn == 0
+			|| turn == 1
+			|| turn == current_turn / 3
+			|| turn == current_turn * 2 / 3
+			|| turn == current_turn;
+	});
+
+	for(int turn : filtered) {
+		const std::string name = turn == 0
+			? starting.create_filename()
+			: autosave.create_filename(turn);
 
 		if(savegame::save_game_exists(name, compression_format)) {
 			func(turn, name + compression::format_extension(compression_format));
 		}
 	}
-
-	if(savegame::save_game_exists(start_name, compression_format)) {
-		func(0, start_name + compression::format_extension(compression_format));
-	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items, int i)
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items)
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> newitems;
-
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
 		std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
-		newitems.emplace_back("label", label, "id", quickload_prefix + filename);
+		items.emplace_back("label", label, "id", quickload_prefix + filename);
 	});
-	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
-	trim_items(newitems);
-
-	items.insert(pos, newitems.begin(), newitems.end());
 }
 
-void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items, int i)
+void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items)
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> newitems;
-
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
 		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
-		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
+		items.emplace_back("label", label, "id", quickreplay_prefix + filename);
 	});
-	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
-	trim_items(newitems);
-
-	items.insert(pos, newitems.begin(), newitems.end());
 }
 
-void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
+void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items)
 {
-
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> newitems;
-
-	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), newitems,
+	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), items,
 		gamestate(), gamestate().gamedata_, play_controller_.get_units());
-
-	// Replace this placeholder entry with available menu items.
-	items.insert(pos, newitems.begin(), newitems.end());
 }
 
 void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
@@ -467,21 +442,16 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 	for(const auto& item : items_arg) {
 
 		std::string id = item["id"];
-		hotkey::ui_command cmd = hotkey::ui_command(id);
+		auto cmd = hotkey::ui_command(id);
 
-		if(id == "wml" || (can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))) {
+		if(id == "AUTOSAVES") {
+			expand_autosaves(items);
+		} else if(id == "QUICKREPLAY") {
+			expand_quickreplay(items);
+		} else if(id == "wml") {
+			expand_wml_commands(items);
+		} else if(can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
 			items.emplace_back("id", id);
-		}
-	}
-
-	// Iterate in reverse to avoid also iterating over the new inserted items
-	for(int i = items.size() - 1; i >= 0; i--) {
-		if(items[i]["id"] == "AUTOSAVES") {
-			expand_autosaves(items, i);
-		} else if(items[i]["id"] == "QUICKREPLAY") {
-			expand_quickreplay(items, i);
-		} else if(items[i]["id"] == "wml") {
-			expand_wml_commands(items, i);
 		}
 	}
 
