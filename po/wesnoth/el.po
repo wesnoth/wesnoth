@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -3608,7 +3608,7 @@ msgstr "Καμία"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:636
+#: src/hotkey/command_executor.cpp:637
 msgid "Screenshot"
 msgstr "Φωτογραφία"
 
@@ -3931,8 +3931,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
-#: src/scripting/game_lua_kernel.cpp:3784
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3753
+#: src/scripting/game_lua_kernel.cpp:3788
 msgid "input"
 msgstr ""
 
@@ -4748,9 +4748,10 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:188
 msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
+"Once a unit reaches maximum level, further advancement provides a minor "
+"bonus called an “AMLA” — “After Maximum Level Advancement.” Some campaigns "
+"let you choose between several AMLA options, but the only default AMLA is a "
+"+3 bonus to maximum hitpoints. AMLAs are usually weaker than the normal "
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
@@ -5705,9 +5706,7 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
 #: src/chat_command_handler.hpp:92
-msgid ""
-"Send some data to the server. Can be used to verify the network connection "
-"and notice disconnects."
+msgid "Measure roundtrip packet time between client and server."
 msgstr ""
 
 #: src/chat_command_handler.hpp:94
@@ -5797,11 +5796,11 @@ msgstr ""
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/chat_events.cpp:145
+#: src/chat_events.cpp:147
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:154
 msgid "whisper: $sender"
 msgstr ""
 
@@ -5928,63 +5927,63 @@ msgstr ""
 msgid "Invalid color in range: "
 msgstr "Άκυρη περιοχή"
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:268
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:247
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:272
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:292
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:258
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "Το παιχνίδι τελείωσε."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:270
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:271
 #, fuzzy
 #| msgid "No era information found."
 msgid "File not found."
 msgstr "Δεν βρέθηκαν πληροφορίες για την εποχή."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:293
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:294
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:304
 msgid "Can’t locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:305
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "(Το παιχνίδι τώρα θα κλείσει)"
 
-#: src/game_config_manager.cpp:363
+#: src/game_config_manager.cpp:366
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5992,7 +5991,7 @@ msgid ""
 "loading add-ons."
 msgstr "Σφάλμα κατά τη φόρτωση αρχείων διάρθρωσης"
 
-#: src/game_config_manager.cpp:370
+#: src/game_config_manager.cpp:373
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6000,7 +5999,7 @@ msgid ""
 "default core files."
 msgstr "Σφάλμα κατά τη φόρτωση αρχείων διάρθρωσης"
 
-#: src/game_config_manager.cpp:379
+#: src/game_config_manager.cpp:382
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6010,18 +6009,18 @@ msgstr "Σφάλμα κατά τη φόρτωση αρχείων διάρθρω�
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:404
+#: src/game_config_manager.cpp:407
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:441
+#: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:637
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -6030,7 +6029,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Οι παρακάτω επεκτάσεις είχαν πρόβλημα καί δεν έγινε δυνατόν να φορτωθούν: "
 
-#: src/game_config_manager.cpp:638
+#: src/game_config_manager.cpp:641
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6053,38 +6052,38 @@ msgstr "Διόρθωση σφαλμάτων: "
 msgid "Info: "
 msgstr "Πληροφορίες: "
 
-#: src/game_initialization/connect_engine.cpp:98
+#: src/game_initialization/connect_engine.cpp:120
 msgid "Team"
 msgstr "Ομάδα"
 
-#: src/game_initialization/connect_engine.cpp:944
+#: src/game_initialization/connect_engine.cpp:951
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Ανώνυμος τοπικός παίκτης"
 
-#: src/game_initialization/connect_engine.cpp:949
-#: src/game_initialization/connect_engine.cpp:1192
+#: src/game_initialization/connect_engine.cpp:956
+#: src/game_initialization/connect_engine.cpp:1199
 msgid "Computer Player"
 msgstr "Παίκτης ελεγχόμενος από τον υπολογιστή"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:998
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1188
+#: src/game_initialization/connect_engine.cpp:1195
 msgid "Network Player"
 msgstr "Δικτυακός παίκτης"
 
-#: src/game_initialization/connect_engine.cpp:1191
+#: src/game_initialization/connect_engine.cpp:1198
 msgid "Local Player"
 msgstr "Τοπικός Παίκτης"
 
-#: src/game_initialization/connect_engine.cpp:1193
+#: src/game_initialization/connect_engine.cpp:1200
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1196
+#: src/game_initialization/connect_engine.cpp:1203
 #, fuzzy
 msgid "Reserved"
 msgstr "Επανεκκίνηση"
@@ -6613,43 +6612,43 @@ msgstr "όχι"
 msgid "yes"
 msgstr "ναι"
 
-#: src/help/help_impl.cpp:401
+#: src/help/help_impl.cpp:398
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:402 src/help/help_impl.cpp:441
+#: src/help/help_impl.cpp:399 src/help/help_impl.cpp:438
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of Day Schedule"
 msgstr "Ώρα της ημέρας: "
 
-#: src/help/help_impl.cpp:432
+#: src/help/help_impl.cpp:429
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Νομιμόφρονες μονάδες: "
 
-#: src/help/help_impl.cpp:433
+#: src/help/help_impl.cpp:430
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Ουδέτερες μονάδες: "
 
-#: src/help/help_impl.cpp:434
+#: src/help/help_impl.cpp:431
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Χαοτικές μονάδες: "
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:432
 msgid "Liminal Bonus:"
 msgstr ""
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:433
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:528
+#: src/help/help_impl.cpp:519
 #, fuzzy
 msgid "Units with this special attack"
 msgstr ""
@@ -6657,7 +6656,7 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:592
+#: src/help/help_impl.cpp:580
 #, fuzzy
 msgid "Units with this ability"
 msgstr ""
@@ -6665,55 +6664,55 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:616
 #, fuzzy
 msgid "Factions"
 msgstr "Παράταξη"
 
-#: src/help/help_impl.cpp:676
+#: src/help/help_impl.cpp:664
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Φυλή: "
 
-#: src/help/help_impl.cpp:685 src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:673 src/help/help_impl.cpp:1121
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Νοοτροπία: "
 
-#: src/help/help_impl.cpp:692
+#: src/help/help_impl.cpp:680
 #, fuzzy
 msgid "Leaders"
 msgstr "Αρχηγός:"
 
-#: src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:689
 msgid "Recruits"
 msgstr "Στρατολόγηση"
 
-#: src/help/help_impl.cpp:786 src/units/types.cpp:489
+#: src/help/help_impl.cpp:774 src/units/types.cpp:438
 msgid "No description available."
 msgstr "Δεν υπάρχει διαθέσιμη περιγραφή."
 
-#: src/help/help_impl.cpp:896 src/help/help_impl.cpp:1110
+#: src/help/help_impl.cpp:884 src/help/help_impl.cpp:1098
 #, fuzzy
 #| msgid "race^Merman"
 msgid "race^Miscellaneous"
 msgstr "Γοργόνος"
 
-#: src/help/help_impl.cpp:1133 src/reports.cpp:394 src/reports.cpp:974
+#: src/help/help_impl.cpp:1121 src/reports.cpp:394 src/reports.cpp:974
 msgid "Alignment: "
 msgstr "Νοοτροπία: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1152
+#: src/help/help_impl.cpp:1140
 msgid ""
 "This is a group of units, all of whom are <ref "
 "dst='$topic_id'>$help_taxonomy</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1157
+#: src/help/help_impl.cpp:1145
 #, fuzzy
 msgid "Subgroups of units within this group"
 msgstr ""
@@ -6721,7 +6720,7 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:1159
+#: src/help/help_impl.cpp:1147
 #, fuzzy
 msgid "Groups of units within this race"
 msgstr ""
@@ -6729,13 +6728,13 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:1168
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid "Units of this race:"
 msgid "Units of this group"
 msgstr "Μονάδες αυτής της φυλής:"
 
-#: src/help/help_impl.cpp:1170
+#: src/help/help_impl.cpp:1158
 #, fuzzy
 #| msgid "Units of this race:"
 msgid "Units of this race"
@@ -6751,42 +6750,42 @@ msgstr "Θές πραγματικά νά σβήσεις αυτό τό παιχν
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:812
+#: src/hotkey/command_executor.cpp:813
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Φωτογραφία"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "($hotkey για συνέχεια) "
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:227
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 #, fuzzy
 #| msgid "Back to start"
 msgid "Back to Start"
 msgstr "Πίσω στην αρχή"
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 msgid "Back to Turn "
 msgstr "Επιστροφή στον γύρο "
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 #, fuzzy
 #| msgid "Back to start"
 msgid "Replay from Start"
 msgstr "Πίσω στην αρχή"
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 #, fuzzy
 #| msgid "play turn"
 msgid "Replay from Turn "
@@ -6798,12 +6797,12 @@ msgstr "αναπαραγωγή γύρου"
 msgid "(press $hotkey to deactivate)"
 msgstr "($hotkey για συνέχεια) "
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2081
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2080
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Γενικές διαταγές"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2084
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2083
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Γενικές διαταγές"
@@ -7316,114 +7315,114 @@ msgstr ""
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:1413
+#: src/menu_events.cpp:1412
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 
-#: src/menu_events.cpp:1460
+#: src/menu_events.cpp:1459
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1463
+#: src/menu_events.cpp:1462
 msgid "Can’t droid networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1475 src/menu_events.cpp:1491 src/menu_events.cpp:1523
+#: src/menu_events.cpp:1474 src/menu_events.cpp:1490 src/menu_events.cpp:1522
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1485 src/menu_events.cpp:1541
+#: src/menu_events.cpp:1484 src/menu_events.cpp:1540
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1487
+#: src/menu_events.cpp:1486
 msgid "Side ‘$side’ is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1501 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1500 src/menu_events.cpp:1532
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1502
 msgid "Side ‘$side’ is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1507
+#: src/menu_events.cpp:1506
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1516
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1518
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1544
+#: src/menu_events.cpp:1543
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1552
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr ""
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1588
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1593
 msgid "Can’t idle networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1599
+#: src/menu_events.cpp:1598
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1659
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1670
+#: src/menu_events.cpp:1669
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1686
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1693
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1816
+#: src/menu_events.cpp:1815
 msgid "Choose Scenario (Debug!)"
 msgstr "Επιλογή αποστολής (Αποσφαλμάτωση!)"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1851
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1854
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1861
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1881
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1883
+#: src/menu_events.cpp:1882
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7432,42 +7431,42 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1887
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:1937
+#: src/menu_events.cpp:1936
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:1970
+#: src/menu_events.cpp:1969
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1987
 msgid ""
 "Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:2014
+#: src/menu_events.cpp:2013
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:2028
+#: src/menu_events.cpp:2027
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/menu_events.cpp:2035
+#: src/menu_events.cpp:2034
 msgid "Invalid location"
 msgstr "Άκυρη περιοχή"
 
-#: src/menu_events.cpp:2108
+#: src/menu_events.cpp:2107
 msgid "prompt^Command:"
 msgstr "Εντολή:"
 
-#: src/menu_events.cpp:2134
+#: src/menu_events.cpp:2133
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
@@ -7500,7 +7499,7 @@ msgid "Other aspects: "
 msgstr "Παρακολουθήστε το Παιχνίδι"
 
 #: src/mouse_events.cpp:1510 src/mouse_events.cpp:1524 src/reports.cpp:821
-#: src/reports.cpp:1109 src/reports.cpp:1121
+#: src/reports.cpp:1149 src/reports.cpp:1161
 msgid "Weapon: "
 msgstr "Όπλο: "
 
@@ -7509,7 +7508,7 @@ msgid "Type: "
 msgstr "Τύπος: "
 
 #: src/mouse_events.cpp:1512 src/mouse_events.cpp:1526 src/reports.cpp:822
-#: src/reports.cpp:1110
+#: src/reports.cpp:1150
 msgid "Damage: "
 msgstr "Ζημιά: "
 
@@ -7560,38 +7559,36 @@ msgstr ""
 msgid "Turn changed"
 msgstr "εξ αποστάσεως"
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:44
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:44
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:50
+#, fuzzy
+msgid "Download complete"
+msgstr "κατεβάσματα"
+
+#: src/network_download_file.cpp:50
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The file has been downloaded."
+msgstr "Το παιχνίδι αποθηκεύτηκε"
+
+#: src/network_download_file.cpp:52
 #, fuzzy
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
 msgstr "Σφάλμα επικοινωνίας με τον διακομιστή."
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:52
 #, fuzzy
 msgid "Download error"
 msgstr "κατεβάσματα"
-
-#: src/network_download_file.cpp:72
-msgid "Confirm overwrite"
-msgstr ""
-
-#: src/network_download_file.cpp:72
-msgid "Overwrite existing file?"
-msgstr ""
-
-#: src/network_download_file.cpp:85
-#, fuzzy
-msgid "Download complete"
-msgstr "κατεβάσματα"
-
-#: src/network_download_file.cpp:85
-#, fuzzy
-#| msgid "The game has been saved"
-msgid "The file has been downloaded."
-msgstr "Το παιχνίδι αποθηκεύτηκε"
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -7659,11 +7656,11 @@ msgstr ""
 msgid "No objectives available"
 msgstr "Δεν υπάρχουν διαθέσιμοι στόχοι"
 
-#: src/playmp_controller.cpp:138
+#: src/playmp_controller.cpp:139
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:238
+#: src/playmp_controller.cpp:239
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7673,42 +7670,42 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playmp_controller.cpp:269
+#: src/playmp_controller.cpp:270
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playmp_controller.cpp:539
+#: src/playmp_controller.cpp:575
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playmp_controller.cpp:548
+#: src/playmp_controller.cpp:584
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "Μόνο στους θεατές"
 
-#: src/playmp_controller.cpp:553
+#: src/playmp_controller.cpp:589
 msgid "Replace with AI"
 msgstr "Αντικατάσταση με την τεχνητή νοημοσύνη"
 
-#: src/playmp_controller.cpp:554
+#: src/playmp_controller.cpp:590
 msgid "Replace with local player"
 msgstr "Αντικατάσταση με τοπικό παίχτη"
 
-#: src/playmp_controller.cpp:555
+#: src/playmp_controller.cpp:591
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playmp_controller.cpp:556
+#: src/playmp_controller.cpp:592
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Ματαίωση παιχνιδιού"
 
-#: src/playmp_controller.cpp:560
+#: src/playmp_controller.cpp:596
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -7866,7 +7863,7 @@ msgstr ""
 msgid "Ability: "
 msgstr "Ικανότητα: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017
+#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
 msgid " (inactive)"
 msgstr " (ανενεργός)"
 
@@ -7976,19 +7973,19 @@ msgstr "Ακρίβεια:"
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:1015
+#: src/reports.cpp:1015 src/reports.cpp:1055
 msgid "Weapon special: "
 msgstr "Ιδιαιτερότητες όπλου: "
 
-#: src/reports.cpp:1092
+#: src/reports.cpp:1132
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1122
+#: src/reports.cpp:1162
 msgid "Total damage"
 msgstr "Συνολική Ζημιά"
 
-#: src/reports.cpp:1180
+#: src/reports.cpp:1220
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7997,82 +7994,82 @@ msgstr[0] "Επιτιθέμενος"
 msgstr[1] "Επιτιθέμενος"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1187
+#: src/reports.cpp:1227
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1191
+#: src/reports.cpp:1231
 #, fuzzy
 #| msgid "No multiplayer sides."
 msgid "This unit can attack multiple times per turn."
 msgstr "Δέν υπάρχουν πλευρές γιά παιχνίδι πολλών παιχτών"
 
-#: src/reports.cpp:1283
+#: src/reports.cpp:1323
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Ώρα της ημέρας: "
 
-#: src/reports.cpp:1334
+#: src/reports.cpp:1374
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Ώρα της ημέρας: "
 
-#: src/reports.cpp:1335 src/reports.cpp:1389
+#: src/reports.cpp:1375 src/reports.cpp:1429
 msgid "Lawful units: "
 msgstr "Νομιμόφρονες μονάδες: "
 
-#: src/reports.cpp:1337 src/reports.cpp:1391
+#: src/reports.cpp:1377 src/reports.cpp:1431
 msgid "Neutral units: "
 msgstr "Ουδέτερες μονάδες: "
 
-#: src/reports.cpp:1338 src/reports.cpp:1392
+#: src/reports.cpp:1378 src/reports.cpp:1432
 msgid "Chaotic units: "
 msgstr "Χαοτικές μονάδες: "
 
-#: src/reports.cpp:1340 src/reports.cpp:1394
+#: src/reports.cpp:1380 src/reports.cpp:1434
 msgid "Liminal units: "
 msgstr ""
 
-#: src/reports.cpp:1455
+#: src/reports.cpp:1495
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Γύρος "
 
-#: src/reports.cpp:1459
+#: src/reports.cpp:1499
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid "Gold"
 msgstr "Χρυσό"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "Villages"
 msgstr "Χωριά"
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "Units"
 msgstr "Μονάδες"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8081,39 +8078,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid "Upkeep"
 msgstr "Συντήρηση"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Εισόδημα"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1745
+#: src/reports.cpp:1785
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
-#: src/reports.cpp:1762
+#: src/reports.cpp:1802
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1773
+#: src/reports.cpp:1813
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8473,38 +8470,28 @@ msgstr "Ωρα της ημέρας"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:954
-msgid "name"
-msgstr ""
-
-#: src/units/abilities.cpp:955
-#, fuzzy
-#| msgid "Description"
-msgid "description"
-msgstr "Περιγραφή"
-
-#: src/units/abilities.cpp:1063
+#: src/units/abilities.cpp:1058
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "επιβραδυμένος:"
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1067
+#: src/units/abilities.cpp:1062
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1071
+#: src/units/abilities.cpp:1066
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1084
+#: src/units/abilities.cpp:1079
 msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:485
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8512,14 +8499,14 @@ msgid "$number min range"
 msgstr "ζημιά"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:492
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:561
+#: src/units/attack_type.cpp:499
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8527,14 +8514,14 @@ msgid "$number max range"
 msgstr "ζημιά"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:568
+#: src/units/attack_type.cpp:506
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:575
+#: src/units/attack_type.cpp:513
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8542,7 +8529,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/attack_type.cpp:584
+#: src/units/attack_type.cpp:522
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8552,7 +8539,7 @@ msgstr[0] "ζημιά"
 msgstr[1] "ζημιά"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:531
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8561,7 +8548,7 @@ msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:540
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -8571,35 +8558,35 @@ msgstr[0] "χτύπημα"
 msgstr[1] "χτυπήματα"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:549
 #, fuzzy
 #| msgid "% accuracy"
 msgid "$number| accuracy"
 msgstr "% ακρίβεια"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:618
+#: src/units/attack_type.cpp:556
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:625
+#: src/units/attack_type.cpp:563
 #, fuzzy
 #| msgid "% accuracy"
 msgid "$number parry"
 msgstr "% ακρίβεια"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:632
+#: src/units/attack_type.cpp:570
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:639
+#: src/units/attack_type.cpp:577
 #, fuzzy
 #| msgid "Movement Costs:"
 msgid "$number movement point"
@@ -8608,7 +8595,7 @@ msgstr[0] "Κόστος Κίνησης:"
 msgstr[1] "Κόστος Κίνησης:"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:648
+#: src/units/attack_type.cpp:586
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -8617,7 +8604,7 @@ msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:657
+#: src/units/attack_type.cpp:595
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8627,7 +8614,7 @@ msgstr[0] "ζημιά"
 msgstr[1] "ζημιά"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:666
+#: src/units/attack_type.cpp:604
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
@@ -8672,47 +8659,47 @@ msgstr "Δεν έχετε αρκετό χρυσό για να ανακαλέσε
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Δεν έχετε αρκετό χρυσό για να ανακαλέσετε αυτή τη μονάδα"
 
-#: src/units/types.cpp:847 src/units/types.cpp:855
+#: src/units/types.cpp:796 src/units/types.cpp:804
 msgid "female^lawful"
 msgstr "νομοταγής"
 
-#: src/units/types.cpp:849
+#: src/units/types.cpp:798
 msgid "female^neutral"
 msgstr "ουδέτερη"
 
-#: src/units/types.cpp:851
+#: src/units/types.cpp:800
 msgid "female^chaotic"
 msgstr "χαοτική"
 
-#: src/units/types.cpp:853
+#: src/units/types.cpp:802
 #, fuzzy
 msgid "female^liminal"
 msgstr "νομοταγής"
 
-#: src/units/types.cpp:861 src/units/types.cpp:869
+#: src/units/types.cpp:810 src/units/types.cpp:818
 #, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "νομοταγής"
 
-#: src/units/types.cpp:863
+#: src/units/types.cpp:812
 msgid "neutral"
 msgstr "ουδέτερος"
 
-#: src/units/types.cpp:865
+#: src/units/types.cpp:814
 msgid "chaotic"
 msgstr "χαοτικός"
 
-#: src/units/types.cpp:867
+#: src/units/types.cpp:816
 msgid "liminal"
 msgstr ""
 
-#: src/units/unit.cpp:360
+#: src/units/unit.cpp:363
 #, fuzzy
 msgid "This unit cannot be dismissed."
 msgstr "Επιλέξτε όπλο:"
 
-#: src/units/unit.cpp:727
+#: src/units/unit.cpp:759
 #, fuzzy
 #| msgid ""
 #| "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8721,17 +8708,17 @@ msgstr ""
 "Αυτή η μονάδα είναι αόρατη. Οι αντίπαλες μονάδες δεν μπορούν να την "
 "εντοπίσουν ή να της επιτεθούν."
 
-#: src/units/unit.cpp:1991
+#: src/units/unit.cpp:2024
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2030
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2040
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8739,25 +8726,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2046
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2017
+#: src/units/unit.cpp:2050
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2022
+#: src/units/unit.cpp:2055
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2026
+#: src/units/unit.cpp:2059
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8766,13 +8753,13 @@ msgid_plural ""
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2066
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2512
+#: src/units/unit.cpp:2551
 msgid "$effect_description per level"
 msgstr ""
 
@@ -8796,14 +8783,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:779
+#: src/wesnoth.cpp:785
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:780
+#: src/wesnoth.cpp:786
 #, fuzzy
 #| msgid "Loading data files"
 msgid "Logging Failure"
@@ -8838,6 +8825,11 @@ msgstr "Αντικατάσταση με $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Επιλογές Πίνακα"
+
+#, fuzzy
+#~| msgid "Description"
+#~ msgid "description"
+#~ msgstr "Περιγραφή"
 
 #~ msgid "Era:"
 #~ msgstr "Εποχή:"

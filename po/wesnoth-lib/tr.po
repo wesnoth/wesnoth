@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2024-11-07 16:06+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -6224,7 +6224,7 @@ msgstr "Klavye kısayolu"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6237,7 +6237,7 @@ msgstr "Oyunda müsait"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6250,7 +6250,7 @@ msgstr "Düzenleyicide müsait"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:910
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -7079,7 +7079,7 @@ msgstr "Win32 bildirimleri geri ucu"
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa bildirimleri geri ucu"
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:125
+#: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr "<bilinmiyor>"
 
@@ -7111,7 +7111,7 @@ msgstr "Başlangıç"
 msgid "filesystem_path_system^Root"
 msgstr "Kök"
 
-#: src/desktop/version.cpp:405
+#: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
 msgstr "<bilinmeyen>"
 
@@ -7125,7 +7125,7 @@ msgstr "<bilinmeyen>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1838
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "tr"
 
@@ -7185,7 +7185,7 @@ msgstr "Durum için belirlenmiş bir çizim bölümü yok."
 msgid "No resolution defined for "
 msgstr "Tanımlı bir çözünürlük yok."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -8377,12 +8377,12 @@ msgstr "Geçersiz kullanıcı adı"
 msgid "Not on friends or ignore lists"
 msgstr "Arkadaşlar veya gözardı edilenler listenizde değil"
 
-#: src/gui/dialogs/preferences_dialog.cpp:954
-#: src/gui/dialogs/preferences_dialog.cpp:1018
+#: src/gui/dialogs/preferences_dialog.cpp:930
+#: src/gui/dialogs/preferences_dialog.cpp:994
 msgid "No hotkey selected"
 msgstr "Hiç kısayol seçilmedi"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:958
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8391,15 +8391,15 @@ msgstr ""
 "kullanılıyor.\n"
 "“<b>$new_hotkey_action|</b>” ile değiştirilsin mi?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:988
+#: src/gui/dialogs/preferences_dialog.cpp:964
 msgid "Reassign Hotkey"
 msgstr "Klavye Kısayollarını tekrar ata"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "All hotkeys have been reset to their default values."
 msgstr "Bütün kısayollar ilk değerlerine sıfırlandı."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "Hotkeys Reset"
 msgstr "Kısayolları Sıfırla"
 

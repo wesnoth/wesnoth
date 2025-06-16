@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4581,7 +4581,7 @@ msgstr "Chan eil"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:636
+#: src/hotkey/command_executor.cpp:637
 msgid "Screenshot"
 msgstr "Glacadh-sgrìn"
 
@@ -4918,8 +4918,8 @@ msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
-#: src/scripting/game_lua_kernel.cpp:3784
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3753
+#: src/scripting/game_lua_kernel.cpp:3788
 msgid "input"
 msgstr "ion-chur"
 
@@ -5837,10 +5837,18 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:188
+#, fuzzy
+#| msgid ""
+#| "Instead of leveling up, high-level units gain an <i>After Maximum Level "
+#| "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+#| "hitpoints by three and fully heals it. This is much less than the normal "
+#| "benefits of advancing a level, so it is generally wiser to advance your "
+#| "lower-level units instead."
 msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
+"Once a unit reaches maximum level, further advancement provides a minor "
+"bonus called an “AMLA” — “After Maximum Level Advancement.” Some campaigns "
+"let you choose between several AMLA options, but the only default AMLA is a "
+"+3 bonus to maximum hitpoints. AMLAs are usually weaker than the normal "
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
@@ -6943,13 +6951,8 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Mùch/Dì-mhùch a h-uile amharc. (toglaidh seo)"
 
 #: src/chat_command_handler.hpp:92
-msgid ""
-"Send some data to the server. Can be used to verify the network connection "
-"and notice disconnects."
+msgid "Measure roundtrip packet time between client and server."
 msgstr ""
-"Cuir dàta air choireigin dhan fhrithealaiche. Gabhaidh seo a chleachdadh "
-"airson an ceangal ris an lìonra a dhearbhadh agus mothachadh do bhriseadh a’ "
-"cheangail."
 
 #: src/chat_command_handler.hpp:94
 msgid ""
@@ -7039,11 +7042,11 @@ msgstr "Àrainn dì-bhugaidh nach aithne dhuinn: “$domain|.”"
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Àrainn: “$domain|” air atharrachadh gu leibheil: “$level|.”"
 
-#: src/chat_events.cpp:145
+#: src/chat_events.cpp:147
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:154
 msgid "whisper: $sender"
 msgstr "cagair: $sender"
 
@@ -7182,60 +7185,60 @@ msgstr ""
 msgid "Invalid color in range: "
 msgstr "Dath mì-dhligheach san raon: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:268
 msgid "Error validating data core."
 msgstr "Mearachd le dearbhadh eitean an dàta."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:247
 msgid "Found a core without id attribute."
 msgstr "Lorg sinn eitean gun bhuadh id."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:272
 msgid "Skipping the core."
 msgstr "A’ gearradh leum thar an eitein."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:292
 msgid "Core ID: "
 msgstr "ID eitein: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:258
 msgid "The ID is already in use."
 msgstr "Tha an ID seo ga chleachdadh mar-thà."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:270
 msgid "Core Path: "
 msgstr "Slighe eitein: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:271
 msgid "File not found."
 msgstr "Cha deach am faidhle a lorg."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
 msgid "Error loading core data."
 msgstr "Mearachd le luchdadh dàta an eitein."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:293
 msgid "Error loading the core with named id."
 msgstr "Mearachd a’ luchdadh an eitein air a bheil id ainmichte."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:294
 msgid "Falling back to the default core."
 msgstr "A’ tilleadh dhan eitean bhunaiteach."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:304
 #, fuzzy
 #| msgid "Can't locate the default core."
 msgid "Can’t locate the default core."
 msgstr "Cha do lorg sinn an t-eitean bunaiteach."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:305
 msgid "The game will now exit."
 msgstr "Thèid an geama seo fhàgail a-nis."
 
-#: src/game_config_manager.cpp:363
+#: src/game_config_manager.cpp:366
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -7243,7 +7246,7 @@ msgstr ""
 "Mearachd a’ luchdadh faidhlichean rèiteachaidh gnàthaichte a’ gheama. "
 "Feuchaidh an geama ris gun a bhith a’ luchdadh nan tuilleadan."
 
-#: src/game_config_manager.cpp:370
+#: src/game_config_manager.cpp:373
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -7251,7 +7254,7 @@ msgstr ""
 "Mearachd a’ luchdadh faidhlichean rèiteachaidh gnàthaichte a’ gheama. "
 "Tillidh an geama dha dh’fhaidhlichean an eitein bhunaitich."
 
-#: src/game_config_manager.cpp:379
+#: src/game_config_manager.cpp:382
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -7261,18 +7264,18 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:404
+#: src/game_config_manager.cpp:407
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:441
+#: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "cleachd am macro leis an aon ainm san taga [campaign] ’na àite"
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:637
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -7284,7 +7287,7 @@ msgstr[2] ""
 msgstr[3] ""
 "Tha mearachdan sna tuilleadain seo is cha b’ urrainn dhuinn an luchdadh:"
 
-#: src/game_config_manager.cpp:638
+#: src/game_config_manager.cpp:641
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7309,36 +7312,36 @@ msgstr "Dì-bhugachadh: "
 msgid "Info: "
 msgstr "Fios: "
 
-#: src/game_initialization/connect_engine.cpp:98
+#: src/game_initialization/connect_engine.cpp:120
 msgid "Team"
 msgstr "Sgioba"
 
-#: src/game_initialization/connect_engine.cpp:944
+#: src/game_initialization/connect_engine.cpp:951
 msgid "Anonymous player"
 msgstr "Cluicheadair gun ainm"
 
-#: src/game_initialization/connect_engine.cpp:949
-#: src/game_initialization/connect_engine.cpp:1192
+#: src/game_initialization/connect_engine.cpp:956
+#: src/game_initialization/connect_engine.cpp:1199
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:998
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1188
+#: src/game_initialization/connect_engine.cpp:1195
 msgid "Network Player"
 msgstr "Lìonraidh"
 
-#: src/game_initialization/connect_engine.cpp:1191
+#: src/game_initialization/connect_engine.cpp:1198
 msgid "Local Player"
 msgstr "Ionadail"
 
-#: src/game_initialization/connect_engine.cpp:1193
+#: src/game_initialization/connect_engine.cpp:1200
 msgid "Nobody"
 msgstr "Gun_ainm"
 
-#: src/game_initialization/connect_engine.cpp:1196
+#: src/game_initialization/connect_engine.cpp:1203
 msgid "Reserved"
 msgstr "Glèidhte"
 
@@ -7915,82 +7918,82 @@ msgstr "dheth"
 msgid "yes"
 msgstr "air"
 
-#: src/help/help_impl.cpp:401
+#: src/help/help_impl.cpp:398
 msgid "Only available during a scenario."
 msgstr "Chan eil seo ri fhaighinn ach ann an cnàmh-sgeulan."
 
-#: src/help/help_impl.cpp:402 src/help/help_impl.cpp:441
+#: src/help/help_impl.cpp:399 src/help/help_impl.cpp:438
 msgid "Time of Day Schedule"
 msgstr "Sgeideal àm dhen latha"
 
-#: src/help/help_impl.cpp:432
+#: src/help/help_impl.cpp:429
 msgid "Lawful Bonus:"
 msgstr "Duais dligheachd:"
 
-#: src/help/help_impl.cpp:433
+#: src/help/help_impl.cpp:430
 msgid "Neutral Bonus:"
 msgstr "Duais neodrachd:"
 
-#: src/help/help_impl.cpp:434
+#: src/help/help_impl.cpp:431
 msgid "Chaotic Bonus:"
 msgstr "Duais coimeasgachd:"
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:432
 msgid "Liminal Bonus:"
 msgstr "Duais stairsnich:"
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:433
 msgid "Schedule"
 msgstr "Sgeideal"
 
-#: src/help/help_impl.cpp:528
+#: src/help/help_impl.cpp:519
 #, fuzzy
 #| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
 msgstr ""
 "<header>text='Aonadan aig a bheil an ionnsaigh shònraichte seo'</header>"
 
-#: src/help/help_impl.cpp:592
+#: src/help/help_impl.cpp:580
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
 msgstr "<header>text='Aonadan aig a bheil an comas seo'</header>"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:616
 msgid "Factions"
 msgstr "Buidhnean"
 
-#: src/help/help_impl.cpp:676
+#: src/help/help_impl.cpp:664
 msgid "Races: "
 msgstr "Cinnidhean: "
 
-#: src/help/help_impl.cpp:685 src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:673 src/help/help_impl.cpp:1121
 msgid "Alignments: "
 msgstr "Co-thaobhaidhean: "
 
-#: src/help/help_impl.cpp:692
+#: src/help/help_impl.cpp:680
 msgid "Leaders"
 msgstr "Ceannardan"
 
-#: src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:689
 msgid "Recruits"
 msgstr "Luchd air trusadh"
 
-#: src/help/help_impl.cpp:786 src/units/types.cpp:489
+#: src/help/help_impl.cpp:774 src/units/types.cpp:438
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
-#: src/help/help_impl.cpp:896 src/help/help_impl.cpp:1110
+#: src/help/help_impl.cpp:884 src/help/help_impl.cpp:1098
 msgid "race^Miscellaneous"
 msgstr "Measgaichte"
 
-#: src/help/help_impl.cpp:1133 src/reports.cpp:394 src/reports.cpp:974
+#: src/help/help_impl.cpp:1121 src/reports.cpp:394 src/reports.cpp:974
 msgid "Alignment: "
 msgstr "Co-thaobhadh: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1152
+#: src/help/help_impl.cpp:1140
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -8002,25 +8005,25 @@ msgstr ""
 "Seo buidhean de dh’aonadan agus ’s e <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref> a th’ annta uile"
 
-#: src/help/help_impl.cpp:1157
+#: src/help/help_impl.cpp:1145
 #, fuzzy
 #| msgid "<header>text='Subgroups of units within this group'</header>"
 msgid "Subgroups of units within this group"
 msgstr "<header>text='Fo-bhuidhnean de dh’aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1159
+#: src/help/help_impl.cpp:1147
 #, fuzzy
 #| msgid "<header>text='Groups of units within this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='Buidhnean de dh’aonadan sa chinneadh seo'</header>"
 
-#: src/help/help_impl.cpp:1168
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid "<header>text='Units of this group'</header>"
 msgid "Units of this group"
 msgstr "<header>text='Aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1170
+#: src/help/help_impl.cpp:1158
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -8034,37 +8037,37 @@ msgstr "A bheil thu cinnteach gu bheil thu airson an geama a ghèilleadh?"
 msgid "Surrender"
 msgstr "Gèill"
 
-#: src/hotkey/command_executor.cpp:812
+#: src/hotkey/command_executor.cpp:813
 msgid "Map-Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 msgid "(press $hk to disable)"
 msgstr "(brùth air $hk gus a chur à comas)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 msgid "Accelerated speed enabled!"
 msgstr "Tha luaths luathaichte an comas!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:227
 msgid "Accelerated speed disabled!"
 msgstr "Tha luaths luathaichte à comas!"
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 msgid "Back to Start"
 msgstr "Till dhan toiseach"
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 msgid "Back to Turn "
 msgstr "Till dhan chuairt "
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 #, fuzzy
 #| msgid "Ready to start!"
 msgid "Replay from Start"
 msgstr "Deiseil gus tòiseachadh!"
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 #, fuzzy
 #| msgid "play turn"
 msgid "Replay from Turn "
@@ -8074,11 +8077,11 @@ msgstr "cluich cuairt"
 msgid "(press $hotkey to deactivate)"
 msgstr "(brùth air $hotkey gus a chur à comas)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2081
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2080
 msgid "Planning mode activated!"
 msgstr "Chaidh am modh planaidh air a chur air!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2084
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2083
 msgid "Planning mode deactivated!"
 msgstr "Chaidh am modh planaidh air a chur dheth!"
 
@@ -8643,25 +8646,25 @@ msgstr "Toglaich modh-planaidh."
 msgid "Access whiteboard options dialog."
 msgstr "Rach dha chòmhradh roghainnean a’ bhùird-ghil."
 
-#: src/menu_events.cpp:1413
+#: src/menu_events.cpp:1412
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 "Cha b’ urrainn dhuinn leubail no aonad a lorg sa bheil an sreang “$search”."
 
-#: src/menu_events.cpp:1460
+#: src/menu_events.cpp:1459
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr ""
 "Chan urrainn dhan IF smachd a ghabhail air taobh mì-dhligheach: “$side|.”"
 
-#: src/menu_events.cpp:1463
+#: src/menu_events.cpp:1462
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can’t droid networked side: ‘$side’."
 msgstr "Chan urrainn dhan IF smachd a ghabhail air taobh lìonraidh: “$side|.”"
 
-#: src/menu_events.cpp:1475 src/menu_events.cpp:1491 src/menu_events.cpp:1523
+#: src/menu_events.cpp:1474 src/menu_events.cpp:1490 src/menu_events.cpp:1522
 #, fuzzy
 #| msgid ""
 #| "It is not allowed to change a side from AI to human control when it's not "
@@ -8673,31 +8676,31 @@ msgstr ""
 "Chan fhaod thu taobh atharrachadh o smachd IF gu smachd daonnda mur e a’ "
 "chuairt agad fhèin a th’ ann."
 
-#: src/menu_events.cpp:1485 src/menu_events.cpp:1541
+#: src/menu_events.cpp:1484 src/menu_events.cpp:1540
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "Tha “$side” fo smachd IF a-nis."
 
-#: src/menu_events.cpp:1487
+#: src/menu_events.cpp:1486
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is already droided."
 msgstr "Tha “$side” fo smachd na h-IF mu thràth."
 
-#: src/menu_events.cpp:1501 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1500 src/menu_events.cpp:1532
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: human."
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "Tha “$side” fo smachd daonna a-nis."
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1502
 #, fuzzy
 #| msgid "Side '$side' is already not droided."
 msgid "Side ‘$side’ is already not droided."
 msgstr "Tha “$side” fo smachd daonnda mu thràth."
 
-#: src/menu_events.cpp:1507
+#: src/menu_events.cpp:1506
 #, fuzzy
 #| msgid ""
 #| "It is not allowed to change a side from human to AI control when it's not "
@@ -8709,19 +8712,19 @@ msgstr ""
 "Chan fhaod thu taobh atharrachadh o smachd daonnda gu smachd IF mur e a’ "
 "chuairt agad fhèin a th’ ann."
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1516
 #, fuzzy
 #| msgid "Side '$side' controller is now fully controlled by: AI."
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "Tha “$side” fo làn-smachd na h-IF a-nis."
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1518
 #, fuzzy
 #| msgid "Side '$side' is already fully AI controlled."
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "Tha “$side” fo làn-smachd na h-IF mu thràth."
 
-#: src/menu_events.cpp:1544
+#: src/menu_events.cpp:1543
 #, fuzzy
 #| msgid ""
 #| "Invalid action provided for side '$side'. Valid actions are: on, off, "
@@ -8732,44 +8735,44 @@ msgstr ""
 "Chaidh gnìomh mì-dhligheach a sholar dhan taobh “$side”. Seo na gnìomhan "
 "dligheach: on, off, full."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1552
 #, fuzzy
 #| msgid "Side '$side' is already fully AI controlled."
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr "Tha “$side” fo làn-smachd na h-IF mu thràth."
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1588
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr "Chan urrainn dhut taobh mì-dhligheach a chur ’na thàmh: “$side|.”"
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1593
 #, fuzzy
 #| msgid "Can't idle networked side: '$side'."
 msgid "Can’t idle networked side: ‘$side’."
 msgstr "Chan urrainn dhut an taobh lìonraidh a chur ’na thàmh: “$side|.”"
 
-#: src/menu_events.cpp:1599
+#: src/menu_events.cpp:1598
 #, fuzzy
 #| msgid "Can't idle local ai side: '$side'."
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr "Chan urrainn dhut taobh IF ionadail a chur ’na thàmh: “$side|.”"
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1659
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "Cha ghabh smachd air taobh mì-dhligheach atharrachadh: “$side|.”"
 
-#: src/menu_events.cpp:1670
+#: src/menu_events.cpp:1669
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr ""
 "Cha ghabh smachd air taobh taobh a-muigh nan crìochan atharrachadh: “$side|.”"
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1686
 #, fuzzy
 #| msgid "Can't query control of invalid side: '$side'."
 msgid "Can’t query control of invalid side: ‘$side’."
@@ -8777,7 +8780,7 @@ msgstr ""
 "Chan urrainn dhut an staid aig smachd air taobh mì-dhligheach fhaighinn: "
 "“$side|.”"
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1693
 #, fuzzy
 #| msgid "Can't query control of out-of-bounds side: '$side'."
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
@@ -8785,27 +8788,27 @@ msgstr ""
 "Chan urrainn dhut an staid aig smachd air taobh taobh a-muigh nan crìochan "
 "fhaighinn: “$side|.”"
 
-#: src/menu_events.cpp:1816
+#: src/menu_events.cpp:1815
 msgid "Choose Scenario (Debug!)"
 msgstr "Tagh cnàmh-sgeul (dì-bhugadh!)"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1851
 msgid "Debug mode activated!"
 msgstr "Modh dì-bhugaidh air a chur air!"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1854
 msgid "Debug mode not available in network games"
 msgstr "Chan eil modh dì-bhugaidh ri fhaighinn ann an geamannan lìonraidh"
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1861
 msgid "Debug mode deactivated!"
 msgstr "Modh dì-bhugaidh air a chur dheth!"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1881
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "RABHADH! Modh Lua nach eil sàbhailte"
 
-#: src/menu_events.cpp:1883
+#: src/menu_events.cpp:1882
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8819,19 +8822,19 @@ msgstr ""
 "\n"
 "Na lean air adhart mu eil tui eòlach air na tha thu a' dèanamh."
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1887
 msgid "Unsafe mode enabled!"
 msgstr "Modh neo-thèarainte air a chur air!"
 
-#: src/menu_events.cpp:1937
+#: src/menu_events.cpp:1936
 msgid "Variable not found"
 msgstr "Cha deach caochladair a lorg"
 
-#: src/menu_events.cpp:1970
+#: src/menu_events.cpp:1969
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1987
 #, fuzzy
 #| msgid ""
 #| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -8843,25 +8846,25 @@ msgstr ""
 "Co-thaobhadh mì-dhligheach: “$alignment|.” Feumaidh e bhith dligheach, "
 "neodrach, coimeasgach no stairsnich."
 
-#: src/menu_events.cpp:2014
+#: src/menu_events.cpp:2013
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "A bheil thu airson a h-uile aonad a lorg thu a thoirt air falbh bhon "
 "chobhair?"
 
-#: src/menu_events.cpp:2028
+#: src/menu_events.cpp:2027
 msgid "Invalid unit type"
 msgstr "Seòrsa aonaid mì-dhligheach"
 
-#: src/menu_events.cpp:2035
+#: src/menu_events.cpp:2034
 msgid "Invalid location"
 msgstr "Àite mì-dhligheach"
 
-#: src/menu_events.cpp:2108
+#: src/menu_events.cpp:2107
 msgid "prompt^Command:"
 msgstr "Àithne:"
 
-#: src/menu_events.cpp:2134
+#: src/menu_events.cpp:2133
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
@@ -8893,7 +8896,7 @@ msgid "Other aspects: "
 msgstr "Sàbhail an geama"
 
 #: src/mouse_events.cpp:1510 src/mouse_events.cpp:1524 src/reports.cpp:821
-#: src/reports.cpp:1109 src/reports.cpp:1121
+#: src/reports.cpp:1149 src/reports.cpp:1161
 msgid "Weapon: "
 msgstr "Arm: "
 
@@ -8902,7 +8905,7 @@ msgid "Type: "
 msgstr "Seòrsa: "
 
 #: src/mouse_events.cpp:1512 src/mouse_events.cpp:1526 src/reports.cpp:822
-#: src/reports.cpp:1110
+#: src/reports.cpp:1150
 msgid "Damage: "
 msgstr "Dochann: "
 
@@ -8947,8 +8950,25 @@ msgstr "Ghabh $name smachd"
 msgid "Turn changed"
 msgstr "Cuairt air atharrachadh"
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:44
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:44
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:50
+msgid "Download complete"
+msgstr ""
+
+#: src/network_download_file.cpp:50
+#, fuzzy
+#| msgid "The game has been saved."
+msgid "The file has been downloaded."
+msgstr "Chaidh an geama a shàbhaladh."
+
+#: src/network_download_file.cpp:52
 #, fuzzy
 #| msgid ""
 #| "An error occurred while downloading the add-ons list from the server."
@@ -8958,28 +8978,9 @@ msgid ""
 msgstr ""
 "Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:52
 msgid "Download error"
 msgstr ""
-
-#: src/network_download_file.cpp:72
-msgid "Confirm overwrite"
-msgstr ""
-
-#: src/network_download_file.cpp:72
-msgid "Overwrite existing file?"
-msgstr ""
-
-#: src/network_download_file.cpp:85
-msgid "Download complete"
-msgstr ""
-
-#: src/network_download_file.cpp:85
-#, fuzzy
-#| msgid "The game has been saved."
-msgid "The file has been downloaded."
-msgstr "Chaidh an geama a shàbhaladh."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -9071,12 +9072,12 @@ msgstr ""
 msgid "No objectives available"
 msgstr "Chan eil amasan ri fhaighinn"
 
-#: src/playmp_controller.cpp:138
+#: src/playmp_controller.cpp:139
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 "A’ neo-dhèanamh gluasadan nach deach a chur dhan fhrithealaiche fhathast."
 
-#: src/playmp_controller.cpp:238
+#: src/playmp_controller.cpp:239
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9094,7 +9095,7 @@ msgstr ""
 "\n"
 "A bheil thu airson loga nam mearachd aig a’ gheama a shàbhaladh?"
 
-#: src/playmp_controller.cpp:269
+#: src/playmp_controller.cpp:270
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -9104,31 +9105,31 @@ msgstr ""
 "feumaidh tu cò stiùiricheas e iomruineadh. ’S urrainn dhut :droid, :control "
 "no :give_control a chleachdadh, mar eisimpleir."
 
-#: src/playmp_controller.cpp:539
+#: src/playmp_controller.cpp:575
 msgid "Give control to their ally $player"
 msgstr "Thoir an smachd dhan chaidreabhach $player aca"
 
-#: src/playmp_controller.cpp:548
+#: src/playmp_controller.cpp:584
 msgid "Give control to observer $player"
 msgstr "Thoir an smachd dhan amharc $player"
 
-#: src/playmp_controller.cpp:553
+#: src/playmp_controller.cpp:589
 msgid "Replace with AI"
 msgstr "Cuir IF ’na àite"
 
-#: src/playmp_controller.cpp:554
+#: src/playmp_controller.cpp:590
 msgid "Replace with local player"
 msgstr "Cuir cluicheadair ionadail ’na àite"
 
-#: src/playmp_controller.cpp:555
+#: src/playmp_controller.cpp:591
 msgid "Set side to idle"
 msgstr "Cuir an taobh ’na thàmh"
 
-#: src/playmp_controller.cpp:556
+#: src/playmp_controller.cpp:592
 msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
-#: src/playmp_controller.cpp:560
+#: src/playmp_controller.cpp:596
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -9298,7 +9299,7 @@ msgstr ""
 msgid "Ability: "
 msgstr "Comas: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017
+#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
 msgid " (inactive)"
 msgstr " (neo-ghnìomhach)"
 
@@ -9402,19 +9403,19 @@ msgstr "Pongalachd:"
 msgid "Parry:"
 msgstr "Cuir seachad:"
 
-#: src/reports.cpp:1015
+#: src/reports.cpp:1015 src/reports.cpp:1055
 msgid "Weapon special: "
 msgstr "Ionnsaigh shònraichte: "
 
-#: src/reports.cpp:1092
+#: src/reports.cpp:1132
 msgid "weapon^None"
 msgstr "Chan eil gin"
 
-#: src/reports.cpp:1122
+#: src/reports.cpp:1162
 msgid "Total damage"
 msgstr "Dochann iomlan"
 
-#: src/reports.cpp:1180
+#: src/reports.cpp:1220
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Ionnsaigh"
@@ -9423,43 +9424,43 @@ msgstr[2] "Ionnsaighean"
 msgstr[3] "Ionnsaighean"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1187
+#: src/reports.cpp:1227
 msgid "Remaining: $left/$max"
 msgstr "Air fhàgail: $left/$max"
 
-#: src/reports.cpp:1191
+#: src/reports.cpp:1231
 msgid "This unit can attack multiple times per turn."
 msgstr "’S urrainn dhan aonad seo iomadh ionnsaigh a thoirt gach cuairt."
 
-#: src/reports.cpp:1283
+#: src/reports.cpp:1323
 msgid "Time of day schedule:"
 msgstr "Sgeideal àm dhen latha:"
 
-#: src/reports.cpp:1334
+#: src/reports.cpp:1374
 msgid "Time of day:"
 msgstr "Àm dhen latha:"
 
-#: src/reports.cpp:1335 src/reports.cpp:1389
+#: src/reports.cpp:1375 src/reports.cpp:1429
 msgid "Lawful units: "
 msgstr "Aonadan dligheach: "
 
-#: src/reports.cpp:1337 src/reports.cpp:1391
+#: src/reports.cpp:1377 src/reports.cpp:1431
 msgid "Neutral units: "
 msgstr "Aonadan neodrach: "
 
-#: src/reports.cpp:1338 src/reports.cpp:1392
+#: src/reports.cpp:1378 src/reports.cpp:1432
 msgid "Chaotic units: "
 msgstr "Aonadan coimeasgach: "
 
-#: src/reports.cpp:1340 src/reports.cpp:1394
+#: src/reports.cpp:1380 src/reports.cpp:1434
 msgid "Liminal units: "
 msgstr "Aonadan stairsnich: "
 
-#: src/reports.cpp:1455
+#: src/reports.cpp:1495
 msgid "Turn Number"
 msgstr "Àireamh na cuairte"
 
-#: src/reports.cpp:1459
+#: src/reports.cpp:1499
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -9467,34 +9468,34 @@ msgstr ""
 "Thig an geama gu crìch nuair a thèid e thairis air an àireamh dhe chuairtean "
 "a dh’innseas an dàrna àireamh."
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid "Gold"
 msgstr "Òr"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "An uiread a dh’òr a tha ri làimh dhut an-dràsta gus ionadan a thrusadh ’s am "
 "feachd agad a chumail."
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "The fraction of known villages that your side has captured."
 msgstr "A’ bhloigh dhe na bailtean aithnichte a cheannsaich do thaobh."
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "Villages"
 msgstr "Bailtean"
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "The total number of units on your side."
 msgstr "Àireamh shlàn nan aonadan ri do thaobh."
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "Units"
 msgstr "Aonadan"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -9509,15 +9510,15 @@ msgstr ""
 "steach na bheir na bailtean dhut – is ciall dha seo an uiread a dh’òr a "
 "rachadh a thoirt air falbh uat nan robh thu air na bailtean uile a chall."
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid "Upkeep"
 msgstr "Beathachadh"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 msgid "Net Income"
 msgstr "Teachd a-steach lom"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -9526,23 +9527,23 @@ msgstr ""
 "cuairt, le aire air an teachd a-steach a gheibh thu o bhailtean fo do smachd "
 "agus pàigheadh a’ bheathachaidh."
 
-#: src/reports.cpp:1745
+#: src/reports.cpp:1785
 msgid "Observers:"
 msgstr "Amhairc:"
 
-#: src/reports.cpp:1762
+#: src/reports.cpp:1802
 msgid "Clock"
 msgstr "Cleoc"
 
-#: src/reports.cpp:1773
+#: src/reports.cpp:1813
 msgid "Battery"
 msgstr "Bataraidh"
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Countdown until your turn automatically ends."
 msgstr "Cunntadh sìos gus an dig do chuairt gu crìch gu fèin-obrachail."
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Turn Countdown"
 msgstr "Cunntas sìos cuairte"
 
@@ -9925,38 +9926,28 @@ msgstr "Bun-àm dhen latha"
 msgid "This Time of Day is only a Stub!"
 msgstr "Chan eil an t-àm dhen latha seo ach ’na bhun-àm!"
 
-#: src/units/abilities.cpp:954
-msgid "name"
-msgstr ""
-
-#: src/units/abilities.cpp:955
-#, fuzzy
-#| msgid "No description available."
-msgid "description"
-msgstr "Chan eil tuairisgeul ri fhaighinn."
-
-#: src/units/abilities.cpp:1063
+#: src/units/abilities.cpp:1058
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "maille air: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1067
+#: src/units/abilities.cpp:1062
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1071
+#: src/units/abilities.cpp:1066
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1084
+#: src/units/abilities.cpp:1079
 msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:485
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9964,7 +9955,7 @@ msgid "$number min range"
 msgstr "$number a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:492
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9972,7 +9963,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> a dhochann"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:561
+#: src/units/attack_type.cpp:499
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9980,7 +9971,7 @@ msgid "$number max range"
 msgstr "$number a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:568
+#: src/units/attack_type.cpp:506
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9988,7 +9979,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:575
+#: src/units/attack_type.cpp:513
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> a dhochann"
@@ -9996,7 +9987,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> a dhochann"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> a dhochann"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> a dhochann"
 
-#: src/units/attack_type.cpp:584
+#: src/units/attack_type.cpp:522
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number a dhochann"
@@ -10005,7 +9996,7 @@ msgstr[2] "$number a dhochann"
 msgstr[3] "$number a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:531
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> bhuille"
@@ -10014,7 +10005,7 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> buillean"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> buille"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:540
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number bhuille"
@@ -10023,27 +10014,27 @@ msgstr[2] "$number buillean"
 msgstr[3] "$number buille"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:549
 msgid "$number| accuracy"
 msgstr "$number| a phongalachd"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:618
+#: src/units/attack_type.cpp:556
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> a phongalachd"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:625
+#: src/units/attack_type.cpp:563
 msgid "$number parry"
 msgstr "$number a chur seachad"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:632
+#: src/units/attack_type.cpp:570
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chur seachad"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:639
+#: src/units/attack_type.cpp:577
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number phuing-gluasaid"
@@ -10052,7 +10043,7 @@ msgstr[2] "$number puingean-gluasaid"
 msgstr[3] "$number puing-gluasaid"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:648
+#: src/units/attack_type.cpp:586
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
@@ -10061,7 +10052,7 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> puingean gluasaid"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:657
+#: src/units/attack_type.cpp:595
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -10073,7 +10064,7 @@ msgstr[2] "$number a dhochann"
 msgstr[3] "$number a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:666
+#: src/units/attack_type.cpp:604
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 #| msgid_plural ""
@@ -10124,45 +10115,45 @@ msgstr ""
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Chan eil òr gu leòr agad gus an t-aonad seo a thrusadh."
 
-#: src/units/types.cpp:847 src/units/types.cpp:855
+#: src/units/types.cpp:796 src/units/types.cpp:804
 msgid "female^lawful"
 msgstr "dhligheach"
 
-#: src/units/types.cpp:849
+#: src/units/types.cpp:798
 msgid "female^neutral"
 msgstr "neodrach"
 
-#: src/units/types.cpp:851
+#: src/units/types.cpp:800
 msgid "female^chaotic"
 msgstr "choimeasgach"
 
-#: src/units/types.cpp:853
+#: src/units/types.cpp:802
 msgid "female^liminal"
 msgstr "stairsnich"
 
-#: src/units/types.cpp:861 src/units/types.cpp:869
+#: src/units/types.cpp:810 src/units/types.cpp:818
 msgid "lawful"
 msgstr "dligheach"
 
-#: src/units/types.cpp:863
+#: src/units/types.cpp:812
 msgid "neutral"
 msgstr "neodrach"
 
-#: src/units/types.cpp:865
+#: src/units/types.cpp:814
 msgid "chaotic"
 msgstr "coimeasgach"
 
-#: src/units/types.cpp:867
+#: src/units/types.cpp:816
 msgid "liminal"
 msgstr "stairsnich"
 
-#: src/units/unit.cpp:360
+#: src/units/unit.cpp:363
 #, fuzzy
 #| msgid "This unit has no usable weapons."
 msgid "This unit cannot be dismissed."
 msgstr "Chan eil arm feumail air an aonad seo."
 
-#: src/units/unit.cpp:727
+#: src/units/unit.cpp:759
 #, fuzzy
 #| msgid ""
 #| "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -10171,15 +10162,15 @@ msgstr ""
 "Tha an t-aonad seo neo-fhaicsinneach. Cha ghabh fhaicinn no ionnsaigh a "
 "thoirt air le aonadan nàmhad."
 
-#: src/units/unit.cpp:1991
+#: src/units/unit.cpp:2024
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2030
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PB"
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2040
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
@@ -10187,19 +10178,19 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2046
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
 
-#: src/units/unit.cpp:2017
+#: src/units/unit.cpp:2050
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chasg"
 
-#: src/units/unit.cpp:2022
+#: src/units/unit.cpp:2055
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE airson àrdachadh"
 
-#: src/units/unit.cpp:2026
+#: src/units/unit.cpp:2059
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -10212,11 +10203,11 @@ msgstr[2] ""
 msgstr[3] ""
 "<span color=\"$color\">$number_or_percent</span> ionnsaigh gach cuairt"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2066
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chosgais ais-ghairm"
 
-#: src/units/unit.cpp:2512
+#: src/units/unit.cpp:2551
 msgid "$effect_description per level"
 msgstr "$effect_description gach leibheil"
 
@@ -10240,14 +10231,14 @@ msgstr "$year RF"
 msgid "$year AF"
 msgstr "$year BF"
 
-#: src/wesnoth.cpp:779
+#: src/wesnoth.cpp:785
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:780
+#: src/wesnoth.cpp:786
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
@@ -10276,6 +10267,19 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid ""
+#~ "Send some data to the server. Can be used to verify the network "
+#~ "connection and notice disconnects."
+#~ msgstr ""
+#~ "Cuir dàta air choireigin dhan fhrithealaiche. Gabhaidh seo a chleachdadh "
+#~ "airson an ceangal ris an lìonra a dhearbhadh agus mothachadh do bhriseadh "
+#~ "a’ cheangail."
+
+#, fuzzy
+#~| msgid "No description available."
+#~ msgid "description"
+#~ msgstr "Chan eil tuairisgeul ri fhaighinn."
 
 #~ msgid "Era:"
 #~ msgstr "Linn:"

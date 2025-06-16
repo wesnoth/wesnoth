@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 22:31 UTC\n"
+"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
 "PO-Revision-Date: 2019-02-10 15:56+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -440,14 +440,14 @@ msgstr "šalčio audra"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
-#: data/core/units/boats/Elf_Cutter.cfg:95
-#: data/core/units/boats/Elf_Sloop.cfg:95
-#: data/core/units/boats/Orc_Barge.cfg:102
-#: data/core/units/boats/Orc_Battle-Barge.cfg:121
-#: data/core/units/boats/Orc_Rigship.cfg:76
-#: data/core/units/boats/Orc_Warship.cfg:76
-#: data/core/units/boats/Raider_Coastal.cfg:139
-#: data/core/units/boats/Raider_Iron.cfg:146
+#: data/core/units/boats/Elf_Cutter.cfg:99
+#: data/core/units/boats/Elf_Sloop.cfg:99
+#: data/core/units/boats/Orc_Barge.cfg:108
+#: data/core/units/boats/Orc_Battle-Barge.cfg:127
+#: data/core/units/boats/Orc_Rigship.cfg:79
+#: data/core/units/boats/Orc_Warship.cfg:79
+#: data/core/units/boats/Raider_Coastal.cfg:146
+#: data/core/units/boats/Raider_Iron.cfg:153
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -822,7 +822,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
 #: data/core/units/dunefolk/Explorer.cfg:35
-#: data/core/units/dunefolk/Rover.cfg:32
+#: data/core/units/dunefolk/Rover.cfg:84
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -1228,24 +1228,6 @@ msgstr ""
 "būtybių krauju. Nors jų iltys ir nėra labai galingos, aukų jėgos "
 "išsiurbiamos kartu su jų krauju ir atitenka šikšnosparniams."
 
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:10
-msgid "Boat"
-msgstr "Valtis"
-
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
-msgid ""
-"Propelled by oars or small sails, Boats are used to travel short distances "
-"and in shallows where large ships cannot navigate."
-msgstr ""
-"Valtys, varomos irklais ar mažomis burėmis, naudojamos nuplaukti nedideliems "
-"atstumams sekliuose vandenyse, kur negali praplaukti dideli laivai."
-
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
@@ -1255,9 +1237,9 @@ msgstr ""
 #: data/core/units/boats/Canoe.cfg:19
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
-"or hunting.  Their light-weight construction allows them to be carried "
-"around barriers or between unconnected bodies of water.  Almost every "
-"intelligent race has some form of canoe."
+"or hunting. Their light-weight construction allows them to be carried around "
+"barriers or between unconnected bodies of water. Almost every intelligent "
+"race has some form of canoe."
 msgstr ""
 
 #. [unit_type]: id=Derelict Hulk, race=ship
@@ -1276,7 +1258,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Derelict_Ship.cfg:135
+#: data/core/units/boats/Derelict_Ship.cfg:145
 msgid "jetsam"
 msgstr ""
 
@@ -1301,8 +1283,8 @@ msgid "..."
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Elf_Cutter.cfg:104
-#: data/core/units/boats/Elf_Sloop.cfg:107 data/core/units/elves/Druid.cfg:35
+#: data/core/units/boats/Elf_Cutter.cfg:108
+#: data/core/units/boats/Elf_Sloop.cfg:111 data/core/units/elves/Druid.cfg:35
 #: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
 msgid "ensnare"
 msgstr "spąstai"
@@ -1331,28 +1313,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:165
+#: data/core/units/boats/Fireship.cfg:170
 msgid "ember"
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:174
+#: data/core/units/boats/Fireship.cfg:179
 msgid "crash"
-msgstr ""
-
-#. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:6
-msgid "Galleon"
-msgstr "Galionas"
-
-#. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:24
-msgid ""
-"Galleons are large and sturdy wooden ships used primarily for swift "
-"transport of goods across rivers and oceans in large quantities. The "
-"earliest Galleons were built long ago by ancient sailors from the Green "
-"Isle, before even the times of Haldric. Centuries later, their skillfully-"
-"crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
 
 #. [unit_type]: id=Ghost Ship, race=ship
@@ -1363,7 +1330,7 @@ msgid "Ghost Ship"
 msgstr "Vaiduoklis"
 
 #. [attack]: type=fire
-#: data/core/units/boats/Ghost_Ship.cfg:182
+#: data/core/units/boats/Ghost_Ship.cfg:191
 #: data/core/units/humans/Mage_Elder.cfg:35
 #: data/core/units/monsters/Raven_Harbinger.cfg:100
 #: data/core/units/monsters/Raven_Omen.cfg:90
@@ -1371,77 +1338,50 @@ msgid "lightning"
 msgstr "žaibas"
 
 #. [attack]: type=impact
-#: data/core/units/boats/Ghost_Ship.cfg:194
+#: data/core/units/boats/Ghost_Ship.cfg:203
 msgid "black wind"
 msgstr ""
 
-#. [unit_type]: id=Orcish Barge, race=ship
-#: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
-msgid "Orcish Barge"
-msgstr "Orkas lankininkas"
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:7
+msgid "Boat"
+msgstr "Valtis"
 
-#. [unit_type]: id=Orcish Barge, race=ship
-#: data/core/units/boats/Orc_Barge.cfg:20
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Propelled by oars or small sails, boats are used to travel short "
+#| "distances and in shallows where large ships cannot navigate."
 msgid ""
-"Orcish barges are crude constructions, devoid of any of the craftsmanship "
-"seen in almost any other ship.  But what they lack in speed and grace, they "
-"make up for with their rugged utility in navigating rivers and swamps.  "
-"Their primary means of movement comes from a large, symmetric sail held at "
-"three points for downwind propulsion.  When currents and winds lead to the "
-"wrong direction, the crew must use poles and anchors to move the barge in "
-"the intended direction.\n"
-"\n"
-"Barges serve as transports for either supplies or troops, but they have been "
-"used as pickets in larger conflicts.  They lack any specific weaponry, but "
-"the crew is equipped with the crude orcish bows that can be deterent enough "
-"in many situations.\n"
-"\n"
-"These barges are very ineffective in the high seas, little better than a "
-"floating wreck."
+"Propelled by oars or small sails, Boats are used to travel short distances "
+"and in shallows where large ships cannot navigate."
 msgstr ""
+"Valtys, varomos irklais ar mažomis burėmis, naudojamos nuplaukti nedideliems "
+"atstumams sekliuose vandenyse, kur negali praplaukti dideli laivai."
 
-#. [unit_type]: id=Orcish Battle Barge, race=ship
-#: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
-msgid "Orcish Battle Barge"
-msgstr "Orkų valdovas"
+#. [unit_type]: id=Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Galleon.cfg:6
+msgid "Galleon"
+msgstr "Galionas"
 
-#. [attack]: type=impact
-#: data/core/units/boats/Orc_Battle-Barge.cfg:112
-msgid "catapult"
+#. [unit_type]: id=Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Galleon.cfg:21
+msgid ""
+"Galleons are large and sturdy wooden ships used primarily for swift "
+"transport of goods across rivers and oceans in large quantities. The "
+"earliest Galleons were built long ago by ancient sailors from the Green "
+"Isle, before even the times of Haldric. Centuries later, their skillfully-"
+"crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
-
-#. [unit_type]: id=Orcish Rigship, race=ship
-#: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-msgid "Orcish Rigship"
-msgstr "Orkų vadas"
-
-#. [attack]: type=fire
-#: data/core/units/boats/Orc_Rigship.cfg:85
-#: data/core/units/boats/Orc_Warship.cfg:85
-#, fuzzy
-#| msgid "fireball"
-msgid "firebow"
-msgstr "ugnies kamuolys"
-
-#. [unit_type]: id=Orcish Warship, race=ship
-#: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
-msgid "Orcish Warship"
-msgstr "Orkų karys"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
-#: data/core/units/boats/Pirate_Galleon.cfg:10
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:7
 msgid "Pirate Galleon"
 msgstr "Piratų galionas"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
-#: data/core/units/boats/Pirate_Galleon.cfg:29
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:23
 #, fuzzy
 #| msgid ""
 #| "Pirate galleons are to transport ships what wolves are to sheep. The "
@@ -1457,12 +1397,88 @@ msgstr ""
 "atsikratyti jų sunkaus krovinio."
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:67
-#: data/core/units/boats/Pirate_Ship.cfg:160
-#: data/core/units/boats/Transport_Galleon.cfg:67
-#: data/core/units/boats/Transport_Ship.cfg:158
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:26
+#: data/core/units/boats/Pirate_Ship.cfg:169
+#: data/core/units/boats/Transport_Ship.cfg:168
 msgid "ballista"
 msgstr "balista"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:7
+msgid "Transport Galleon"
+msgstr "Transporto galionas"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:22
+#: data/core/units/boats/Transport_Ship.cfg:20
+msgid ""
+"Transport Galleons are well-armed ships that carry troops. If they reach the "
+"shore, they can land the troops to attack."
+msgstr ""
+"Transporto galionai yra gerai apginkluoti laivai, kurie gali plukdyti "
+"karius. Jeigu jie pasiekia krantą, jie gali išlaipinti karius puolimui."
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Archer"
+msgid "Orcish Barge"
+msgstr "Orkas lankininkas"
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:20
+msgid ""
+"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"seen in almost any other ship. But what they lack in speed and grace, they "
+"make up for with their rugged utility in navigating rivers and swamps. Their "
+"primary means of movement comes from a large, symmetric sail held at three "
+"points for downwind propulsion. When currents and winds lead to the wrong "
+"direction, the crew must use poles and anchors to move the barge in the "
+"intended direction.\n"
+"\n"
+"Barges serve as transports for either supplies or troops, but they have been "
+"used as pickets in larger conflicts. They lack any specific weaponry, but "
+"the crew is equipped with the crude orcish bows that can be deterrent enough "
+"in many situations.\n"
+"\n"
+"These barges are very ineffective in the high seas, little better than a "
+"floating wreck."
+msgstr ""
+
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Ruler"
+msgid "Orcish Battle Barge"
+msgstr "Orkų valdovas"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Orc_Battle-Barge.cfg:118
+msgid "catapult"
+msgstr ""
+
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:5
+#, fuzzy
+msgid "Orcish Rigship"
+msgstr "Orkų vadas"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Orc_Rigship.cfg:88
+#: data/core/units/boats/Orc_Warship.cfg:88
+#, fuzzy
+#| msgid "fireball"
+msgid "firebow"
+msgstr "ugnies kamuolys"
+
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:5
+#, fuzzy
+#| msgid "Orcish Warrior"
+msgid "Orcish Warship"
+msgstr "Orkų karys"
 
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:4
@@ -1543,7 +1559,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Raider_Iron.cfg:156
+#: data/core/units/boats/Raider_Iron.cfg:163
 #, fuzzy
 #| msgid "Cavalryman"
 msgid "naval ram"
@@ -1566,22 +1582,6 @@ msgid ""
 msgstr ""
 "Valtys, varomos irklais ar mažomis burėmis, naudojamos nuplaukti nedideliems "
 "atstumams sekliuose vandenyse, kur negali praplaukti dideli laivai."
-
-#. [unit_type]: id=Transport Galleon, race=mechanical
-#: data/core/units/boats/Transport_Galleon.cfg:10
-msgid "Transport Galleon"
-msgstr "Transporto galionas"
-
-#. [unit_type]: id=Transport Galleon, race=mechanical
-#. [unit_type]: id=Transport Ship, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:28
-#: data/core/units/boats/Transport_Ship.cfg:20
-msgid ""
-"Transport Galleons are well-armed ships that carry troops. If they reach the "
-"shore, they can land the troops to attack."
-msgstr ""
-"Transporto galionai yra gerai apginkluoti laivai, kurie gali plukdyti "
-"karius. Jeigu jie pasiekia krantą, jie gali išlaipinti karius puolimui."
 
 #. [unit_type]: id=Transport Ship, race=ship
 #: data/core/units/boats/Transport_Ship.cfg:4
@@ -2141,6 +2141,8 @@ msgstr ""
 #: data/core/units/dunefolk/Paragon.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:39
 #: data/core/units/dunefolk/Soldier.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:35
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
 msgstr ""
@@ -2220,7 +2222,7 @@ msgstr ""
 #: data/core/units/dunefolk/Cataphract.cfg:64
 #: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:93
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -2714,16 +2716,6 @@ msgid ""
 "opportunity and make his strike count. Honing in with almost unnatural "
 "accuracy, a contingent of of swordsmen is enough to crack even the sternest "
 "of defenses."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:26
-msgid "forceful scimitar strike"
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:35
-msgid "balanced scimitar slash"
 msgstr ""
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk

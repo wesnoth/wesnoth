@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2025-03-11 20:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -6127,7 +6127,7 @@ msgstr "快捷键"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6140,7 +6140,7 @@ msgstr "游戏中可用"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6153,7 +6153,7 @@ msgstr "编辑器中可用"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:910
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6966,7 +6966,7 @@ msgstr "Win32提醒后端"
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa提醒后端"
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:125
+#: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr "<未知>"
 
@@ -7000,7 +7000,7 @@ msgstr "主目录"
 msgid "filesystem_path_system^Root"
 msgstr "根目录"
 
-#: src/desktop/version.cpp:405
+#: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
 msgstr "<未知>"
 
@@ -7014,7 +7014,7 @@ msgstr "<未知>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1838
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
@@ -7076,7 +7076,7 @@ msgstr "没有已定义的状态或绘图区域。"
 msgid "No resolution defined for "
 msgstr "没有已定义的分辨率。"
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -8253,12 +8253,12 @@ msgstr "无效用户名"
 msgid "Not on friends or ignore lists"
 msgstr "不在好友或忽略列表上"
 
-#: src/gui/dialogs/preferences_dialog.cpp:954
-#: src/gui/dialogs/preferences_dialog.cpp:1018
+#: src/gui/dialogs/preferences_dialog.cpp:930
+#: src/gui/dialogs/preferences_dialog.cpp:994
 msgid "No hotkey selected"
 msgstr "未选定热键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:958
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8266,15 +8266,15 @@ msgstr ""
 "“<b>$hotkey_sequence</b>”目前已用于“<b>$old_hotkey_action</b>”。\n"
 "你希望将该快捷键序列重新指定给“<b>$new_hotkey_action|</b>”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:988
+#: src/gui/dialogs/preferences_dialog.cpp:964
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快捷键都已被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 

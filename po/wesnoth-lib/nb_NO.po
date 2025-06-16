@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2024-11-01 00:20+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
@@ -6094,7 +6094,7 @@ msgstr "Hurtigtast"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6107,7 +6107,7 @@ msgstr "Tilgjengelig i spillet"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6120,7 +6120,7 @@ msgstr "Tilgjengelig i kartbehandler"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:910
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6933,7 +6933,7 @@ msgstr ""
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:125
+#: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -6965,7 +6965,7 @@ msgstr "Hjem"
 msgid "filesystem_path_system^Root"
 msgstr "Root"
 
-#: src/desktop/version.cpp:405
+#: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
 msgstr "<ukjent>"
 
@@ -6979,7 +6979,7 @@ msgstr "<ukjent>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1838
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "nb_NO"
 
@@ -7039,7 +7039,7 @@ msgstr "Tegneseksjon er udefinert for tilstand."
 msgid "No resolution defined for "
 msgstr "Ingen definert oppløsning."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -8225,28 +8225,28 @@ msgstr "Ugyldig brukernavn"
 msgid "Not on friends or ignore lists"
 msgstr "Ikke venne- eller ignoreringslisten"
 
-#: src/gui/dialogs/preferences_dialog.cpp:954
-#: src/gui/dialogs/preferences_dialog.cpp:1018
+#: src/gui/dialogs/preferences_dialog.cpp:930
+#: src/gui/dialogs/preferences_dialog.cpp:994
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:958
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:988
+#: src/gui/dialogs/preferences_dialog.cpp:964
 #, fuzzy
 #| msgid "Save Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Lagre hurtigtaster"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2025-03-21 10:15+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -4226,7 +4226,7 @@ msgstr "لا"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:636
+#: src/hotkey/command_executor.cpp:637
 msgid "Screenshot"
 msgstr "لقطة"
 
@@ -4560,8 +4560,8 @@ msgstr "غير قابل للشفاء"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
-#: src/scripting/game_lua_kernel.cpp:3784
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3753
+#: src/scripting/game_lua_kernel.cpp:3788
 msgid "input"
 msgstr "مدخل"
 
@@ -5408,10 +5408,18 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:188
+#, fuzzy
+#| msgid ""
+#| "Instead of leveling up, high-level units gain an <i>After Maximum Level "
+#| "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+#| "hitpoints by three and fully heals it. This is much less than the normal "
+#| "benefits of advancing a level, so it is generally wiser to advance your "
+#| "lower-level units instead."
 msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
+"Once a unit reaches maximum level, further advancement provides a minor "
+"bonus called an “AMLA” — “After Maximum Level Advancement.” Some campaigns "
+"let you choose between several AMLA options, but the only default AMLA is a "
+"+3 bonus to maximum hitpoints. AMLAs are usually weaker than the normal "
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
@@ -6452,12 +6460,8 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "كتم/إلغاء كتم صوت كافة المراقبين."
 
 #: src/chat_command_handler.hpp:92
-msgid ""
-"Send some data to the server. Can be used to verify the network connection "
-"and notice disconnects."
+msgid "Measure roundtrip packet time between client and server."
 msgstr ""
-"إرسال بعض البيانات إلى الخادم. يمكن استخدامها للتحقق من اتصال الشبكة وإشعار "
-"قطع الاتصال."
 
 #: src/chat_command_handler.hpp:94
 msgid ""
@@ -6543,11 +6547,11 @@ msgstr "مجال تصحيح غير معروف: '$domain'."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "المجال المحول: '$domain' إلى المستوى: '$level'."
 
-#: src/chat_events.cpp:145
+#: src/chat_events.cpp:147
 msgid "whisper to $receiver"
 msgstr "همس $receiver"
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:154
 msgid "whisper: $sender"
 msgstr "همس: $sender"
 
@@ -6695,58 +6699,58 @@ msgstr "انتهت المدة"
 msgid "Invalid color in range: "
 msgstr "لون غير صالح في النطاق: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:268
 msgid "Error validating data core."
 msgstr "خطأ في التحقق من صحة البيانات الأساسية."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:247
 msgid "Found a core without id attribute."
 msgstr "تم العثور على نواة بدون سمة المعرف."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:272
 msgid "Skipping the core."
 msgstr "تخطي النواة."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:292
 msgid "Core ID: "
 msgstr "المعرف الأساسي: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:258
 msgid "The ID is already in use."
 msgstr "المعرف قيد الاستخدام بالفعل."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:270
 msgid "Core Path: "
 msgstr "المسار الأساسي: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:271
 msgid "File not found."
 msgstr "لم يتم العثور على الملف."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
 msgid "Error loading core data."
 msgstr "خطأ في تحميل البيانات الأساسية."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:293
 msgid "Error loading the core with named id."
 msgstr "خطأ في تحميل المركز بالمعرف المسمى."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:294
 msgid "Falling back to the default core."
 msgstr "الرجوع إلى النواة الافتراضية."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:304
 msgid "Can’t locate the default core."
 msgstr "لا يمكن تحديد موقع المركز الافتراضي."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:305
 msgid "The game will now exit."
 msgstr "سيتم الآن الخروج من اللعبة."
 
-#: src/game_config_manager.cpp:363
+#: src/game_config_manager.cpp:366
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6754,7 +6758,7 @@ msgstr ""
 "حدث خطأ أثناء تحميل ملفات تكوين اللعبة المخصصة. سيتم تجربة اللعبة بدون تحميل "
 "الإضافات."
 
-#: src/game_config_manager.cpp:370
+#: src/game_config_manager.cpp:373
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6762,7 +6766,7 @@ msgstr ""
 "حدث خطأ أثناء تحميل ملفات تكوين اللعبة المخصصة. ستعود اللعبة إلى الملفات "
 "الأساسية القياسية."
 
-#: src/game_config_manager.cpp:379
+#: src/game_config_manager.cpp:382
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -6772,7 +6776,7 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:404
+#: src/game_config_manager.cpp:407
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
@@ -6782,11 +6786,11 @@ msgstr ""
 "إلى '$higher_level'؛ من فضلك اطلب من مؤلف الوظيفة الإضافية استخدام "
 "[modify_unit_type] بدلاً من ذلك."
 
-#: src/game_config_manager.cpp:441
+#: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "بدلاً من ذلك، استخدم الماكرو الذي يحمل نفس الاسم في علامة [campaign]"
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:637
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "تحتوي الإضافة التالية على أخطاء ولا يمكن تحميلها:"
@@ -6796,7 +6800,7 @@ msgstr[3] "تحتوي الإضافات التالية على أخطاء ولا �
 msgstr[4] "تحتوي الإضافات التالية على أخطاء ولا يمكن تحميلها:"
 msgstr[5] "تحتوي الإضافات التالية على أخطاء ولا يمكن تحميلها:"
 
-#: src/game_config_manager.cpp:638
+#: src/game_config_manager.cpp:641
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6823,36 +6827,36 @@ msgstr "وضع تصحيح الأخطاء: "
 msgid "Info: "
 msgstr "معلومات: "
 
-#: src/game_initialization/connect_engine.cpp:98
+#: src/game_initialization/connect_engine.cpp:120
 msgid "Team"
 msgstr "فريق"
 
-#: src/game_initialization/connect_engine.cpp:944
+#: src/game_initialization/connect_engine.cpp:951
 msgid "Anonymous player"
 msgstr "لاعب مجهول"
 
-#: src/game_initialization/connect_engine.cpp:949
-#: src/game_initialization/connect_engine.cpp:1192
+#: src/game_initialization/connect_engine.cpp:956
+#: src/game_initialization/connect_engine.cpp:1199
 msgid "Computer Player"
 msgstr "مشغل الكمبيوتر"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:998
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1188
+#: src/game_initialization/connect_engine.cpp:1195
 msgid "Network Player"
 msgstr "مشغل الشبكة"
 
-#: src/game_initialization/connect_engine.cpp:1191
+#: src/game_initialization/connect_engine.cpp:1198
 msgid "Local Player"
 msgstr "لاعب محلي"
 
-#: src/game_initialization/connect_engine.cpp:1193
+#: src/game_initialization/connect_engine.cpp:1200
 msgid "Nobody"
 msgstr "لا أحد"
 
-#: src/game_initialization/connect_engine.cpp:1196
+#: src/game_initialization/connect_engine.cpp:1203
 msgid "Reserved"
 msgstr "محجوز"
 
@@ -7360,81 +7364,81 @@ msgstr "لا"
 msgid "yes"
 msgstr "نعم"
 
-#: src/help/help_impl.cpp:401
+#: src/help/help_impl.cpp:398
 msgid "Only available during a scenario."
 msgstr "متوفر فقط أثناء السيناريو."
 
-#: src/help/help_impl.cpp:402 src/help/help_impl.cpp:441
+#: src/help/help_impl.cpp:399 src/help/help_impl.cpp:438
 msgid "Time of Day Schedule"
 msgstr "جدول الوقت من اليوم"
 
-#: src/help/help_impl.cpp:432
+#: src/help/help_impl.cpp:429
 msgid "Lawful Bonus:"
 msgstr "مكافأة النهار:"
 
-#: src/help/help_impl.cpp:433
+#: src/help/help_impl.cpp:430
 msgid "Neutral Bonus:"
 msgstr "مكافأة المحايدة:"
 
-#: src/help/help_impl.cpp:434
+#: src/help/help_impl.cpp:431
 msgid "Chaotic Bonus:"
 msgstr "مكافأة اللليلية:"
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:432
 msgid "Liminal Bonus:"
 msgstr "مكافأة الحدية:"
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:433
 msgid "Schedule"
 msgstr "الجدول الزمني"
 
-#: src/help/help_impl.cpp:528
+#: src/help/help_impl.cpp:519
 #, fuzzy
 #| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
 msgstr "<header>text='الوحدات ذات الهجوم الخاص'</header>"
 
-#: src/help/help_impl.cpp:592
+#: src/help/help_impl.cpp:580
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
 msgstr "<header>text='الوحدات التي تتمتع بهذه القدرة'</header>"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:616
 msgid "Factions"
 msgstr "الفصائل"
 
-#: src/help/help_impl.cpp:676
+#: src/help/help_impl.cpp:664
 msgid "Races: "
 msgstr "الأعراق: "
 
-#: src/help/help_impl.cpp:685 src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:673 src/help/help_impl.cpp:1121
 msgid "Alignments: "
 msgstr "التوجهات: "
 
-#: src/help/help_impl.cpp:692
+#: src/help/help_impl.cpp:680
 msgid "Leaders"
 msgstr "القادة"
 
-#: src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:689
 msgid "Recruits"
 msgstr "المجندين"
 
-#: src/help/help_impl.cpp:786 src/units/types.cpp:489
+#: src/help/help_impl.cpp:774 src/units/types.cpp:438
 msgid "No description available."
 msgstr "لا يوجد وصف متوفر."
 
-#: src/help/help_impl.cpp:896 src/help/help_impl.cpp:1110
+#: src/help/help_impl.cpp:884 src/help/help_impl.cpp:1098
 msgid "race^Miscellaneous"
 msgstr "عرق غير مصنف"
 
-#: src/help/help_impl.cpp:1133 src/reports.cpp:394 src/reports.cpp:974
+#: src/help/help_impl.cpp:1121 src/reports.cpp:394 src/reports.cpp:974
 msgid "Alignment: "
 msgstr "التوجه: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1152
+#: src/help/help_impl.cpp:1140
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7446,25 +7450,25 @@ msgstr ""
 "هذه مجموعة من الوحدات، جميعها <ref>dst='$topic_id' text='$help_taxonomy'</"
 "ref>."
 
-#: src/help/help_impl.cpp:1157
+#: src/help/help_impl.cpp:1145
 #, fuzzy
 #| msgid "<header>text='Subgroups of units within this group'</header>"
 msgid "Subgroups of units within this group"
 msgstr "<header>text='مجموعات فرعية من الوحدات ضمن هذه المجموعة'</header>"
 
-#: src/help/help_impl.cpp:1159
+#: src/help/help_impl.cpp:1147
 #, fuzzy
 #| msgid "<header>text='Groups of units within this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='مجموعات الوحدات ضمن هذا السباق'</header>"
 
-#: src/help/help_impl.cpp:1168
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid "<header>text='Units of this group'</header>"
 msgid "Units of this group"
 msgstr "<header>text='وحدات هذه المجموعة'</header>"
 
-#: src/help/help_impl.cpp:1170
+#: src/help/help_impl.cpp:1158
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -7478,35 +7482,35 @@ msgstr "هل تريد حقًا التنازل عن اللعب؟"
 msgid "Surrender"
 msgstr "الاستسلام"
 
-#: src/hotkey/command_executor.cpp:812
+#: src/hotkey/command_executor.cpp:813
 msgid "Map-Screenshot"
 msgstr "لقطة شاشة للخريطة"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 msgid "(press $hk to disable)"
 msgstr "(اضغط $hk للتعطيل)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:223
 msgid "Accelerated speed enabled!"
 msgstr "تم تفعيل السرعة المتسارعة!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:227
 msgid "Accelerated speed disabled!"
 msgstr "تم تعطيل السرعة المتسارعة!"
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 msgid "Back to Start"
 msgstr "العودة إلى البداية"
 
-#: src/hotkey/hotkey_handler.cpp:430
+#: src/hotkey/hotkey_handler.cpp:426
 msgid "Back to Turn "
 msgstr "العودة إلى الدور "
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 msgid "Replay from Start"
 msgstr "الإعادة من البداية"
 
-#: src/hotkey/hotkey_handler.cpp:446
+#: src/hotkey/hotkey_handler.cpp:442
 msgid "Replay from Turn "
 msgstr "اعادة اللعب انطلاقا من دور "
 
@@ -7514,11 +7518,11 @@ msgstr "اعادة اللعب انطلاقا من دور "
 msgid "(press $hotkey to deactivate)"
 msgstr "(اضغط على $hotkey لإلغاء التنشيط)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2081
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2080
 msgid "Planning mode activated!"
 msgstr "تم تفعيل وضع التخطيط!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2084
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2083
 msgid "Planning mode deactivated!"
 msgstr "تم تعطيل وضع التخطيط!"
 
@@ -8044,115 +8048,115 @@ msgstr "تبديل وضع التخطيط."
 msgid "Access whiteboard options dialog."
 msgstr "الوصول إلى مربع حوار خيارات لوحة المعلومات."
 
-#: src/menu_events.cpp:1413
+#: src/menu_events.cpp:1412
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "تعذر العثور على التسمية أو الوحدة التي تحتوي على السلسلة '$search'."
 
-#: src/menu_events.cpp:1460
+#: src/menu_events.cpp:1459
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr "لا يمكن تغيير تعريف الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1463
+#: src/menu_events.cpp:1462
 msgid "Can’t droid networked side: ‘$side’."
 msgstr "لا يمكن إعادة تعريف الجانب المتصل بالشبكة: '$side'."
 
-#: src/menu_events.cpp:1475 src/menu_events.cpp:1491 src/menu_events.cpp:1523
+#: src/menu_events.cpp:1474 src/menu_events.cpp:1490 src/menu_events.cpp:1522
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr "لا يجوز تغيير الجانب من الذكاء الاصطناعي إلى التحكم البشري خارج دورك."
 
-#: src/menu_events.cpp:1485 src/menu_events.cpp:1541
+#: src/menu_events.cpp:1484 src/menu_events.cpp:1540
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "يتم الآن التحكم في الجانب '$side' بواسطة: الذكاء الصناعي."
 
-#: src/menu_events.cpp:1487
+#: src/menu_events.cpp:1486
 msgid "Side ‘$side’ is already droided."
 msgstr "الجانب '$side' تم إعادة تعريفه بالفعل."
 
-#: src/menu_events.cpp:1501 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1500 src/menu_events.cpp:1532
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "يتم الآن التحكم في الجانب '$side' بواسطة: الانسان."
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1502
 msgid "Side ‘$side’ is already not droided."
 msgstr "الجانب '$side' لم يتم إعادة تعريفه بالفعل."
 
-#: src/menu_events.cpp:1507
+#: src/menu_events.cpp:1506
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 "لا يجوز تغيير الجانب من التحكم البشري إلى تحكم الذكاء الاصطناعي خارج دورك."
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1516
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "يتم الآن التحكم بالكامل في الجانب '$side' بواسطة: الذكاء الصناعي."
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1518
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "الجانب '$side' يتم التحكم فيه بالكامل بواسطة الذكاء الاصطناعي."
 
-#: src/menu_events.cpp:1544
+#: src/menu_events.cpp:1543
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 "تم توفير إجراء غير صالح للجانب '$side'. الإجراءات الصالحة هي: تشغيل، إيقاف، "
 "الكل."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1552
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr "الجانب ‘$side’ ليس لاعباً بشرياً أو لاعب ذكاء اصطناعي."
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1588
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr "لا يمكن تفعيل خمول الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1593
 msgid "Can’t idle networked side: ‘$side’."
 msgstr "لا يمكن تفعيل خمول الجانب المتصل بالشبكة: '$side'."
 
-#: src/menu_events.cpp:1599
+#: src/menu_events.cpp:1598
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr "لا يمكن تفعيل الخمول لجانب الذكاء الاصطناعي المحلي: '$side'."
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1659
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "لا يمكن تغيير التحكم في الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1670
+#: src/menu_events.cpp:1669
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "لا يمكن تغيير التحكم في الجانب خارج الحدود: '$side'."
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1686
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "لا يمكن الاستعلام عن التحكم في الجانب غير الصالح: '$side'."
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1693
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "لا يمكن الاستعلام عن التحكم في الجانب خارج الحدود: '$side'."
 
-#: src/menu_events.cpp:1816
+#: src/menu_events.cpp:1815
 msgid "Choose Scenario (Debug!)"
 msgstr "اختيار السيناريو (تصحيح!)"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1851
 msgid "Debug mode activated!"
 msgstr "تم تفعيل وضع التصحيح!"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1854
 msgid "Debug mode not available in network games"
 msgstr "وضع التصحيح غير متوفر في ألعاب الشبكة"
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1861
 msgid "Debug mode deactivated!"
 msgstr "تم إلغاء وضع التصحيح!"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1881
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "تحذير! وضع Lua غير الآمن"
 
-#: src/menu_events.cpp:1883
+#: src/menu_events.cpp:1882
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8165,44 +8169,44 @@ msgstr ""
 "\n"
 "لا تستمر إلا إذا كنت تعرف حقًا ما تفعله."
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1887
 msgid "Unsafe mode enabled!"
 msgstr "تم تمكين الوضع غير الآمن!"
 
-#: src/menu_events.cpp:1937
+#: src/menu_events.cpp:1936
 msgid "Variable not found"
 msgstr "لم يتم العثور على المتغير"
 
-#: src/menu_events.cpp:1970
+#: src/menu_events.cpp:1969
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr "فشل أمر التصحيح 'الوحدة: $unit': لم يتم تحديد أو المرور فوق أي وحدة."
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1987
 msgid ""
 "Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 "توجّه غير صالح: '$alignment'، يجب أن تكون نهارية أو محايدة أو ليلية أو حدية."
 
-#: src/menu_events.cpp:2014
+#: src/menu_events.cpp:2013
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "هل ترغب في مسح كافة الوحدات المكتشفة لديك من المساعدة؟"
 
-#: src/menu_events.cpp:2028
+#: src/menu_events.cpp:2027
 msgid "Invalid unit type"
 msgstr "نوع الوحدة غير صالح"
 
-#: src/menu_events.cpp:2035
+#: src/menu_events.cpp:2034
 msgid "Invalid location"
 msgstr "موقع غير صالح"
 
 # #po: arabic try to force LtR reading of :الامر
-#: src/menu_events.cpp:2108
+#: src/menu_events.cpp:2107
 msgid "prompt^Command:"
 msgstr "command(امر تصحيح):"
 
 # #po: arabic try to force LtR reading of :الامر
-#: src/menu_events.cpp:2134
+#: src/menu_events.cpp:2133
 msgid "prompt^Formula:"
 msgstr "المعادلة:"
 
@@ -8227,7 +8231,7 @@ msgid "Other aspects: "
 msgstr "خواص أخرى: "
 
 #: src/mouse_events.cpp:1510 src/mouse_events.cpp:1524 src/reports.cpp:821
-#: src/reports.cpp:1109 src/reports.cpp:1121
+#: src/reports.cpp:1149 src/reports.cpp:1161
 msgid "Weapon: "
 msgstr "السلاح: "
 
@@ -8236,7 +8240,7 @@ msgid "Type: "
 msgstr "الصنف: "
 
 #: src/mouse_events.cpp:1512 src/mouse_events.cpp:1526 src/reports.cpp:822
-#: src/reports.cpp:1110
+#: src/reports.cpp:1150
 msgid "Damage: "
 msgstr "الضرر: "
 
@@ -8281,33 +8285,31 @@ msgstr "$name سيطر"
 msgid "Turn changed"
 msgstr "تغير الدور"
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:44
+msgid "Confirm overwrite"
+msgstr "تأكيد الكتابة الفوقية"
+
+#: src/network_download_file.cpp:44
+msgid "Overwrite existing file?"
+msgstr "هل تريد الكتابة فوق الملف الموجود؟"
+
+#: src/network_download_file.cpp:50
+msgid "Download complete"
+msgstr "اكتمل التحميل"
+
+#: src/network_download_file.cpp:50
+msgid "The file has been downloaded."
+msgstr "تم تنزيل الملف."
+
+#: src/network_download_file.cpp:52
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
 msgstr "حدث خطأ أثناء تنزيل الملف. تحقق من سجلات اللعبة لمزيد من المعلومات."
 
-#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
-#: src/network_download_file.cpp:91
+#: src/network_download_file.cpp:52
 msgid "Download error"
 msgstr "خطأ في التحميل"
-
-#: src/network_download_file.cpp:72
-msgid "Confirm overwrite"
-msgstr "تأكيد الكتابة الفوقية"
-
-#: src/network_download_file.cpp:72
-msgid "Overwrite existing file?"
-msgstr "هل تريد الكتابة فوق الملف الموجود؟"
-
-#: src/network_download_file.cpp:85
-msgid "Download complete"
-msgstr "اكتمل التحميل"
-
-#: src/network_download_file.cpp:85
-msgid "The file has been downloaded."
-msgstr "تم تنزيل الملف."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8396,11 +8398,11 @@ msgstr "حالما يتم اصلاح الحملة، ستضطر لإعادة آخ
 msgid "No objectives available"
 msgstr "لا أهداف محددة"
 
-#: src/playmp_controller.cpp:138
+#: src/playmp_controller.cpp:139
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "الحركات التي تم التراجع عنها لم ترسل بعد للسيرفر."
 
-#: src/playmp_controller.cpp:238
+#: src/playmp_controller.cpp:239
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8416,7 +8418,7 @@ msgstr ""
 "\n"
 "هل تريد حفظ سجل أخطاء لعبتك؟"
 
-#: src/playmp_controller.cpp:269
+#: src/playmp_controller.cpp:270
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -8425,31 +8427,31 @@ msgstr ""
 "هذا الجانب في حالة خمول. لمتابعة اللعبة، يجب تعيينها إلى وحدة تحكم أخرى. "
 "يمكنك استخدام :droid، :control أو :give_control على سبيل المثال."
 
-#: src/playmp_controller.cpp:539
+#: src/playmp_controller.cpp:575
 msgid "Give control to their ally $player"
 msgstr "منح السيطرة لحليفهم $player"
 
-#: src/playmp_controller.cpp:548
+#: src/playmp_controller.cpp:584
 msgid "Give control to observer $player"
 msgstr "منح التحكم للمراقب $player"
 
-#: src/playmp_controller.cpp:553
+#: src/playmp_controller.cpp:589
 msgid "Replace with AI"
 msgstr "التعويض بالذكاء الصناعي"
 
-#: src/playmp_controller.cpp:554
+#: src/playmp_controller.cpp:590
 msgid "Replace with local player"
 msgstr "التعويض بلاعب محلي"
 
-#: src/playmp_controller.cpp:555
+#: src/playmp_controller.cpp:591
 msgid "Set side to idle"
 msgstr "تحديد الطرف كغير فاعل"
 
-#: src/playmp_controller.cpp:556
+#: src/playmp_controller.cpp:592
 msgid "Save and abort game"
 msgstr "تسجيل ومغادرة"
 
-#: src/playmp_controller.cpp:560
+#: src/playmp_controller.cpp:596
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8599,7 +8601,7 @@ msgstr "هذه الوحدة منيعة. لا يمكن رؤيتها أو مهاج
 msgid "Ability: "
 msgstr "القدرات: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017
+#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
 msgid " (inactive)"
 msgstr " (غير مفعل)"
 
@@ -8703,19 +8705,19 @@ msgstr "الدقة:"
 msgid "Parry:"
 msgstr "التحدي:"
 
-#: src/reports.cpp:1015
+#: src/reports.cpp:1015 src/reports.cpp:1055
 msgid "Weapon special: "
 msgstr "خاصية السلاح: "
 
-#: src/reports.cpp:1092
+#: src/reports.cpp:1132
 msgid "weapon^None"
 msgstr "لا سلاح"
 
-#: src/reports.cpp:1122
+#: src/reports.cpp:1162
 msgid "Total damage"
 msgstr "الضرر الجملي"
 
-#: src/reports.cpp:1180
+#: src/reports.cpp:1220
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "هجمة"
@@ -8726,74 +8728,74 @@ msgstr[4] "هجوما"
 msgstr[5] "هجمة"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1187
+#: src/reports.cpp:1227
 msgid "Remaining: $left/$max"
 msgstr "المتبقي: $left/$max"
 
-#: src/reports.cpp:1191
+#: src/reports.cpp:1231
 msgid "This unit can attack multiple times per turn."
 msgstr "هذه الوحدة يمكنها الهجوم عدة مرات في الدور الواحد."
 
-#: src/reports.cpp:1283
+#: src/reports.cpp:1323
 msgid "Time of day schedule:"
 msgstr "جدول توقيت اليوم:"
 
-#: src/reports.cpp:1334
+#: src/reports.cpp:1374
 msgid "Time of day:"
 msgstr "توقيت اليوم:"
 
-#: src/reports.cpp:1335 src/reports.cpp:1389
+#: src/reports.cpp:1375 src/reports.cpp:1429
 msgid "Lawful units: "
 msgstr "الوحدات النهارية: "
 
-#: src/reports.cpp:1337 src/reports.cpp:1391
+#: src/reports.cpp:1377 src/reports.cpp:1431
 msgid "Neutral units: "
 msgstr "الوحدات المحايدة "
 
-#: src/reports.cpp:1338 src/reports.cpp:1392
+#: src/reports.cpp:1378 src/reports.cpp:1432
 msgid "Chaotic units: "
 msgstr "الوحدات الليلية "
 
-#: src/reports.cpp:1340 src/reports.cpp:1394
+#: src/reports.cpp:1380 src/reports.cpp:1434
 msgid "Liminal units: "
 msgstr "الوحدات الفجرية "
 
-#: src/reports.cpp:1455
+#: src/reports.cpp:1495
 msgid "Turn Number"
 msgstr "رقم الدور"
 
-#: src/reports.cpp:1459
+#: src/reports.cpp:1499
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "عند تجاوز عدد الأدوار الاقصى المحدد تنتهي اللعبة."
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid "Gold"
 msgstr "الذهب"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1522
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "كمية الذهب المتوفرة لتجنيد وصيانة الوحدات."
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "The fraction of known villages that your side has captured."
 msgstr "عدد المدن التي يسيطر عليها طرفك."
 
-#: src/reports.cpp:1500
+#: src/reports.cpp:1540
 msgid "Villages"
 msgstr "المدن"
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "The total number of units on your side."
 msgstr "عدد الوحدات في طرفك."
 
-#: src/reports.cpp:1505
+#: src/reports.cpp:1545
 msgid "Units"
 msgstr "الوحدات"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8806,15 +8808,15 @@ msgstr ""
 "هو التكلفة الإجمالية للصيانة، بما في ذلك تلك التي تغطيها القرى - وبعبارة "
 "أخرى، كمية الذهب التي سيتم خصمها إذا فقدت جميع القرى."
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1554
 msgid "Upkeep"
 msgstr "الصيانة"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 msgid "Net Income"
 msgstr "المدخول الخام"
 
-#: src/reports.cpp:1544
+#: src/reports.cpp:1584
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8822,23 +8824,23 @@ msgstr ""
 "صافي مبلغ الذهب الذي تكسبه أو تخسره في كل دور، مع الأخذ في الاعتبار الدخل من "
 "القرى الخاضعة للسيطرة ودفع الصيانة."
 
-#: src/reports.cpp:1745
+#: src/reports.cpp:1785
 msgid "Observers:"
 msgstr "المراقبون:"
 
-#: src/reports.cpp:1762
+#: src/reports.cpp:1802
 msgid "Clock"
 msgstr "الساعة"
 
-#: src/reports.cpp:1773
+#: src/reports.cpp:1813
 msgid "Battery"
 msgstr "البطارية"
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Countdown until your turn automatically ends."
 msgstr "ميقات يحدد الزمن قبل نهاية دورك آليا."
 
-#: src/reports.cpp:1818
+#: src/reports.cpp:1858
 msgid "Turn Countdown"
 msgstr "ميقات الدور"
 
@@ -9194,56 +9196,46 @@ msgstr "روتين الوقت من اليوم"
 msgid "This Time of Day is only a Stub!"
 msgstr "هذا الوقت من اليوم هو مجرد روتين!"
 
-#: src/units/abilities.cpp:954
-msgid "name"
-msgstr ""
-
-#: src/units/abilities.cpp:955
-#, fuzzy
-#| msgid "No description available."
-msgid "description"
-msgstr "لا يوجد وصف متوفر."
-
-#: src/units/abilities.cpp:1063
+#: src/units/abilities.cpp:1058
 msgid "Owned: "
 msgstr "يملكه: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1067
+#: src/units/abilities.cpp:1062
 msgid "Taught: "
 msgstr "علم: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1071
+#: src/units/abilities.cpp:1066
 msgid "Taught: (by an enemy): "
 msgstr "علّمت: (من قبل عدو): "
 
-#: src/units/abilities.cpp:1084
+#: src/units/abilities.cpp:1079
 msgid "Used by opponent: "
 msgstr "يستخدمه الخصم: "
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:485
 msgid "$number min range"
 msgstr "$number ضرر أدنى"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:492
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضرر أدنى"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:561
+#: src/units/attack_type.cpp:499
 msgid "$number max range"
 msgstr "$number ضرر أقصى"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:568
+#: src/units/attack_type.cpp:506
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضررأقصى"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:575
+#: src/units/attack_type.cpp:513
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ضرر"
@@ -9253,7 +9245,7 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> أضرار"
 
-#: src/units/attack_type.cpp:584
+#: src/units/attack_type.cpp:522
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number ضرر"
@@ -9264,7 +9256,7 @@ msgstr[4] "$number أضرار"
 msgstr[5] "$number أضرار"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:531
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> إصابة"
@@ -9275,7 +9267,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> إصابات"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> إصابات"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:540
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number إصابة"
@@ -9286,27 +9278,27 @@ msgstr[4] "$number إصابات"
 msgstr[5] "$number إصابات"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:549
 msgid "$number| accuracy"
 msgstr "$number| الدقة"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:618
+#: src/units/attack_type.cpp:556
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> الدقة"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:625
+#: src/units/attack_type.cpp:563
 msgid "$number parry"
 msgstr "$number تحدي"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:632
+#: src/units/attack_type.cpp:570
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> تحدي"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:639
+#: src/units/attack_type.cpp:577
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number نقطة حركة"
@@ -9317,7 +9309,7 @@ msgstr[4] "$number نقاط حركة"
 msgstr[5] "$number نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:648
+#: src/units/attack_type.cpp:586
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> نقطة حركة"
@@ -9328,7 +9320,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:657
+#: src/units/attack_type.cpp:595
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number هجوم مستخدم"
@@ -9339,7 +9331,7 @@ msgstr[4] "$number هجوم مستخدم"
 msgstr[5] "$number هجوم مستخدم"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:666
+#: src/units/attack_type.cpp:604
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> هجوم مستخدم"
@@ -9381,55 +9373,55 @@ msgstr ""
 msgid "You do not have enough gold to recruit this unit."
 msgstr "ليس لديك ما يكفي من الذهب لتجنيد هذه الوحدة."
 
-#: src/units/types.cpp:847 src/units/types.cpp:855
+#: src/units/types.cpp:796 src/units/types.cpp:804
 msgid "female^lawful"
 msgstr "نهارية"
 
-#: src/units/types.cpp:849
+#: src/units/types.cpp:798
 msgid "female^neutral"
 msgstr "الوحدات المحايدة"
 
-#: src/units/types.cpp:851
+#: src/units/types.cpp:800
 msgid "female^chaotic"
 msgstr "ظلامي"
 
-#: src/units/types.cpp:853
+#: src/units/types.cpp:802
 msgid "female^liminal"
 msgstr "فجرية"
 
-#: src/units/types.cpp:861 src/units/types.cpp:869
+#: src/units/types.cpp:810 src/units/types.cpp:818
 msgid "lawful"
 msgstr "نهاري"
 
-#: src/units/types.cpp:863
+#: src/units/types.cpp:812
 msgid "neutral"
 msgstr "محايد"
 
-#: src/units/types.cpp:865
+#: src/units/types.cpp:814
 msgid "chaotic"
 msgstr "ظلامي"
 
-#: src/units/types.cpp:867
+#: src/units/types.cpp:816
 msgid "liminal"
 msgstr "حدي"
 
-#: src/units/unit.cpp:360
+#: src/units/unit.cpp:363
 msgid "This unit cannot be dismissed."
 msgstr "لا يمكن استبعاد هذه الوحدة."
 
-#: src/units/unit.cpp:727
+#: src/units/unit.cpp:759
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "هذه الوحدة هي قائد ولا يمكن الاستغناء عنها."
 
-#: src/units/unit.cpp:1991
+#: src/units/unit.cpp:2024
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2030
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> نقطة حياة"
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2040
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> حركة"
@@ -9439,19 +9431,19 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> حركات"
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> حركة"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> حركة"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2046
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> الرؤية"
 
-#: src/units/unit.cpp:2017
+#: src/units/unit.cpp:2050
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> تشويش"
 
-#: src/units/unit.cpp:2022
+#: src/units/unit.cpp:2055
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> نقطة خبرة  للتقدم"
 
-#: src/units/unit.cpp:2026
+#: src/units/unit.cpp:2059
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9462,11 +9454,11 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> هجمات في ال
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> هجوم في الدور"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> هجوم في الدور"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2066
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> تكلفة الاستدعاء"
 
-#: src/units/unit.cpp:2512
+#: src/units/unit.cpp:2551
 msgid "$effect_description per level"
 msgstr "$effect_description لكل مستوى"
 
@@ -9490,7 +9482,7 @@ msgstr "$year قبل الانهيار"
 msgid "$year AF"
 msgstr "$year بعد الانهيار"
 
-#: src/wesnoth.cpp:779
+#: src/wesnoth.cpp:785
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9500,7 +9492,7 @@ msgstr ""
 "المجلد غير الصحيحة، أو برنامج مكافحة الفيروسات الذي يقيد الوصول إلى المجلد، "
 "أو استخدام OneDrive لإدارة مجلد المستندات."
 
-#: src/wesnoth.cpp:780
+#: src/wesnoth.cpp:786
 msgid "Logging Failure"
 msgstr "فشل التسجيل"
 
@@ -9527,6 +9519,18 @@ msgstr "إخفاء مخططات اللاعب $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "خيارات اللوحة"
+
+#~ msgid ""
+#~ "Send some data to the server. Can be used to verify the network "
+#~ "connection and notice disconnects."
+#~ msgstr ""
+#~ "إرسال بعض البيانات إلى الخادم. يمكن استخدامها للتحقق من اتصال الشبكة "
+#~ "وإشعار قطع الاتصال."
+
+#, fuzzy
+#~| msgid "No description available."
+#~ msgid "description"
+#~ msgstr "لا يوجد وصف متوفر."
 
 #~ msgid "Era:"
 #~ msgstr "العصر:"

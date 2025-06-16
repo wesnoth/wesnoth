@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2015-02-15 14:45+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -6606,7 +6606,7 @@ msgstr "Karstie taustiņi"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -6619,7 +6619,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -6632,7 +6632,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:910
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "mainmenu_hotkeys^M"
 msgstr ""
 
@@ -7496,7 +7496,7 @@ msgstr ""
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:125
+#: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -7528,7 +7528,7 @@ msgstr ""
 msgid "filesystem_path_system^Root"
 msgstr ""
 
-#: src/desktop/version.cpp:405
+#: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
 msgstr ""
 
@@ -7542,7 +7542,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1838
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "lv_LV,lv"
 
@@ -7604,7 +7604,7 @@ msgstr "Nav definēts stāvoklis vai zīmējšanas sadaļa."
 msgid "No resolution defined for "
 msgstr "Izšķirtspēja nav iestatīta."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -8884,12 +8884,12 @@ msgstr "Nederīgs lietotājvārds"
 msgid "Not on friends or ignore lists"
 msgstr "Skatīt un rediģēt draugu un ignorēto sarakstu"
 
-#: src/gui/dialogs/preferences_dialog.cpp:954
-#: src/gui/dialogs/preferences_dialog.cpp:1018
+#: src/gui/dialogs/preferences_dialog.cpp:930
+#: src/gui/dialogs/preferences_dialog.cpp:994
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:958
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -8901,15 +8901,15 @@ msgstr ""
 "\"$hotkey_sequence|\" tiek lietots ar \"$old_hotkey_action|\".Vai tu gribi "
 "mainīt uz \"$new_hotkey_action|\"?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:988
+#: src/gui/dialogs/preferences_dialog.cpp:964
 msgid "Reassign Hotkey"
 msgstr "Pārlikt karsto taustiņu"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "All hotkeys have been reset to their default values."
 msgstr "Visi karstie taustiņi tika atgriesti noklusētajā stāvoklī."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "Hotkeys Reset"
 msgstr "Atiestatīt karstos taustiņus"
 

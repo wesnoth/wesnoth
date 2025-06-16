@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-06-15 22:18-0500\n"
 "PO-Revision-Date: 2025-03-21 22:08+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -5924,7 +5924,7 @@ msgstr "হটকি"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -5937,7 +5937,7 @@ msgstr "খেলায় উপলব্ধ"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:909
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5950,7 +5950,7 @@ msgstr "মানচিত্র পরিমার্জকে উপলব্�
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:910
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6739,7 +6739,7 @@ msgstr "উইন32 সূচনা ব্যাক এন্ড"
 msgid "feature^Cocoa notifications back end"
 msgstr "কোকোয়া সূচনা ব্যাকএন্ড"
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:125
+#: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr "<অজানা>"
 
@@ -6771,7 +6771,7 @@ msgstr ""
 msgid "filesystem_path_system^Root"
 msgstr ""
 
-#: src/desktop/version.cpp:405
+#: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
 msgstr ""
 
@@ -6785,7 +6785,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1838
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "bn"
 
@@ -6843,7 +6843,7 @@ msgstr ""
 msgid "No resolution defined for "
 msgstr "কোনো ডিফল্ট জিইউআই নেই ।"
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -7981,26 +7981,26 @@ msgstr "ভুল ব্যবহারকারীর নাম"
 msgid "Not on friends or ignore lists"
 msgstr "বন্ধুদের বা উপেক্ষিতের তালিকায় নেই"
 
-#: src/gui/dialogs/preferences_dialog.cpp:954
-#: src/gui/dialogs/preferences_dialog.cpp:1018
+#: src/gui/dialogs/preferences_dialog.cpp:930
+#: src/gui/dialogs/preferences_dialog.cpp:994
 msgid "No hotkey selected"
 msgstr "কোনো হটকি নির্বাচন করা হয়নি"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:958
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:988
+#: src/gui/dialogs/preferences_dialog.cpp:964
 msgid "Reassign Hotkey"
 msgstr "হটকি পাল্টান"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "All hotkeys have been reset to their default values."
 msgstr "সমস্ত হটকি তাদের স্বাভাবিক মানে পাল্টে দেওয়া হয়েছে"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:981
 msgid "Hotkeys Reset"
 msgstr ""
 
