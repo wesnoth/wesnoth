@@ -431,15 +431,13 @@ void controller_base::play_slice()
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const rect& action_loc = a->location(video::game_canvas());
-		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
-
+		execute_action(a->items());
 		return;
 	}
 
 	auto str_vec = additional_actions_pressed();
 	if(!str_vec.empty()) {
-		execute_action(str_vec, 0, 0, false);
+		execute_action(str_vec);
 		return;
 	}
 
@@ -483,7 +481,7 @@ void controller_base::show_menu(
 	cmd_exec->show_menu(items, xloc, yloc, context_menu);
 }
 
-void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+void controller_base::execute_action(const std::vector<std::string>& items_arg)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
 	if(!cmd_exec) {
@@ -502,7 +500,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 		return;
 	}
 
-	cmd_exec->execute_action(items, xloc, yloc, context_menu);
+	cmd_exec->execute_action(items);
 }
 
 bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
