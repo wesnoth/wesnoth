@@ -10,10 +10,20 @@
 ### Translations
    * Updated translations: Bengali, British English, Czech, Italian
 ### Units
+   * Added Dune Rover attack, defend, and standing animations
 ### User interface
+   * Fixed sidebar unit tooltip no longer taking damage resistances into account
+   * Fixed the progress bar for sub achievements not updating correctly
 ### WML Engine
    * Added [era] auto_sort key to control automatic alphabetical sorting.
+   * add 'name_affected' and 'description_affected' that are displayed in unit sidebar for abilities used like specials.
+   * modify [affect_adjacent] tag to allow abilities to affect all units in a given radius who is to 1 by default
+   * modify [filter_adjacent] tag to allow to filter all units in a given radius who is to 1 by default
+   * Abilities with id=poison that aren't in a [poison] tag will no longer inflict poison
 ### Miscellaneous and Bug Fixes
+   * Fixed opening the map editor or starting a campaign crashing on some systems
+   * Hovering over the grey bat in SotA no longer causes a crash
+   * Li'sar is no longer a disco queen
 
 ## Version 1.19.12
 ### Add-ons client
