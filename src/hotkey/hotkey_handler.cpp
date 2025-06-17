@@ -389,16 +389,16 @@ static void foreach_autosave(int current_turn, saved_game& sg, F func)
 	auto starting = savegame::scenariostart_savegame(sg, compression_format);
 
 	// Generate a list of turn numbers from n to 0, descending
-	auto turn_range = std::vector<int>(current_turn);
+	auto turn_range = std::vector<int>(current_turn + 1);
 	std::iota(turn_range.rbegin(), turn_range.rend(), 0);
 
 	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
 	auto filtered = turn_range | utils::views::filter([&](int turn) {
 		return turn == 0
-			|| turn == 1
+			|| turn == current_turn
+			|| turn == current_turn - 1
 			|| turn == current_turn / 3
-			|| turn == current_turn * 2 / 3
-			|| turn == current_turn;
+			|| turn == current_turn * 2 / 3;
 	});
 
 	for(int turn : filtered) {
@@ -412,7 +412,7 @@ static void foreach_autosave(int current_turn, saved_game& sg, F func)
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items)
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items) const
 {
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
@@ -421,7 +421,7 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 	});
 }
 
-void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items)
+void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items) const
 {
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
