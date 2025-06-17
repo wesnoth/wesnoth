@@ -1426,6 +1426,25 @@ double attack_type::modified_damage() const
 	return damage_value;
 }
 
+int attack_type::modified_chance_to_hit(int cth) const
+{
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
+	unit_ability_list abil_list(loc);
+	if(self_) {
+		abil_list.append_if(self_->get_abilities("defense", self_loc_), [&](const unit_ability& i) {
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, "defense", true);
+		});
+	}
+
+	if(other_) {
+		abil_list.append_if(other_->get_abilities("defense", other_loc_), [&](const unit_ability& i) {
+			return special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, "defense", true);
+		});
+	}
+	cth = std::clamp(100 - composite_value(abil_list, 100 - cth), 0, 100);
+	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 

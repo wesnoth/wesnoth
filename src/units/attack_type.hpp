@@ -104,6 +104,10 @@ public:
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	double modified_damage() const;
+	/** Return the defense value, considering specials.
+	 * @param cth The chance_to_hit value modified or not by function.
+	 */
+	int modified_chance_to_hit(int cth) const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
