@@ -467,6 +467,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
 	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
 
+	bool adjacent_match = cfg.has_child(filter_adjacent) ? false : true;
 	for(const config &i : cfg.child_range(filter_adjacent)) {
 		std::size_t radius = i["radius"].to_int(1);
 		std::size_t count = 0;
@@ -503,13 +504,19 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		}
 
 		if(i["count"].empty() && count == 0) {
-			return false;
-		}
-		if(!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
-			return false;
+			continue;
+		} else if(!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
+			continue;
+		} else {
+			adjacent_match = true;
+			break;
 		}
 	}
+	if(!adjacent_match) {
+		return false;
+	}
 
+	bool adjacent_location_match = cfg.has_child(filter_adjacent_location) ? false : true;
 	for(const config &i : cfg.child_range(filter_adjacent_location)) {
 		std::size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
@@ -525,8 +532,14 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count =i["count"];
 		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)) {
-			return false;
+			continue;
+		} else {
+			adjacent_location_match = true;
+			break;
 		}
+	}
+	if(!adjacent_location_match) {
+		return false;
 	}
 
 	return true;
