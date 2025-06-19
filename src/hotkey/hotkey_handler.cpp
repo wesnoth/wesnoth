@@ -408,7 +408,7 @@ void foreach_autosave(int turn, saved_game& sg, F func)
 
 	for(; turn >= 0; --turn) {
 		const std::string name = turn > 0
-			? autosave.create_filename(turn);
+			? autosave.create_filename(turn)
 			: starting.create_filename();
 
 		if(savegame::save_game_exists(name, compression_format)) {
