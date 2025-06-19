@@ -407,9 +407,9 @@ void foreach_autosave(int turn, saved_game& sg, F func)
 	auto starting = savegame::scenariostart_savegame(sg, compression_format);
 
 	for(; turn >= 0; --turn) {
-		const std::string name = turn == 0
-			: starting.create_filename()
+		const std::string name = turn > 0
 			? autosave.create_filename(turn);
+			: starting.create_filename();
 
 		if(savegame::save_game_exists(name, compression_format)) {
 			func(turn, name + compression::format_extension(compression_format));
