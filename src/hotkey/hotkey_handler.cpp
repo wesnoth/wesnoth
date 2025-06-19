@@ -28,12 +28,9 @@
 #include "preferences/preferences.hpp"
 #include "savegame.hpp"
 #include "units/unit.hpp"
-#include "utils/ranges.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
-
-#include <numeric>
 
 namespace balg = boost::algorithm;
 
@@ -381,30 +378,38 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 	}
 }
 
+namespace
+{
+template<typename T>
+void append_items(std::vector<T>&& newitems, std::vector<T>& out)
+{
+	auto input = std::move(newitems);
+
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	if(input.size() > 5) {
+		out.push_back(std::move(input[0]));
+		out.push_back(std::move(input[1]));
+		out.push_back(std::move(input[input.size() / 3]));
+		out.push_back(std::move(input[input.size() * 2 / 3]));
+		out.push_back(std::move(input.back()));
+		return;
+	}
+
+	// Range is small enough; append the whole thing
+	std::move(input.begin(), input.end(), std::back_inserter(out));
+}
+
 template<typename F>
-static void foreach_autosave(int current_turn, saved_game& sg, F func)
+void foreach_autosave(int turn, saved_game& sg, F func)
 {
 	compression::format compression_format = prefs::get().save_compression_format();
 	auto autosave = savegame::autosave_savegame(sg, compression_format);
 	auto starting = savegame::scenariostart_savegame(sg, compression_format);
 
-	// Generate a list of turn numbers from n to 0, descending
-	auto turn_range = std::vector<int>(current_turn + 1);
-	std::iota(turn_range.rbegin(), turn_range.rend(), 0);
-
-	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
-	auto filtered = turn_range | utils::views::filter([&](int turn) {
-		return turn == 0
-			|| turn == current_turn
-			|| turn == current_turn - 1
-			|| turn == current_turn / 3
-			|| turn == current_turn * 2 / 3;
-	});
-
-	for(int turn : filtered) {
+	for(; turn >= 0; --turn) {
 		const std::string name = turn == 0
-			? starting.create_filename()
-			: autosave.create_filename(turn);
+			: starting.create_filename()
+			? autosave.create_filename(turn);
 
 		if(savegame::save_game_exists(name, compression_format)) {
 			func(turn, name + compression::format_extension(compression_format));
@@ -412,22 +417,32 @@ static void foreach_autosave(int current_turn, saved_game& sg, F func)
 	}
 }
 
+} // namespace
+
 void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items) const
 {
+	std::vector<config> newitems;
+
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
 		std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
-		items.emplace_back("label", label, "id", quickload_prefix + filename);
+		newitems.emplace_back("label", label, "id", quickload_prefix + filename);
 	});
+
+	append_items(std::move(newitems), items);
 }
 
 void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items) const
 {
+	std::vector<config> newitems;
+
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
 		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
-		items.emplace_back("label", label, "id", quickreplay_prefix + filename);
+		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
 	});
+
+	append_items(std::move(newitems), items);
 }
 
 void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items)
