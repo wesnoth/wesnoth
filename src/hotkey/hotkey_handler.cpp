@@ -104,19 +104,6 @@ void play_controller::hotkey_handler::preferences(){
 	menu_handler_.preferences();
 }
 
-void play_controller::hotkey_handler::left_mouse_click(){
-	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
-	SDL_MouseButtonEvent event;
-
-	event.button = 1;
-	event.x = x + 30;
-	event.y = y + 30;
-	event.which = 0;
-	event.state = SDL_PRESSED;
-
-	mouse_handler_.mouse_press(event, false);
-}
-
 void play_controller::hotkey_handler::select_and_action() {
 	mouse_handler_.select_or_action(browse());
 }
@@ -136,20 +123,6 @@ void play_controller::hotkey_handler::deselect_hex(){
 void play_controller::hotkey_handler::select_hex(){
 	mouse_handler_.select_hex(gui()->mouseover_hex(), false);
 }
-
-void play_controller::hotkey_handler::right_mouse_click(){
-	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
-	SDL_MouseButtonEvent event;
-
-	event.button = 3;
-	event.x = x + 30;
-	event.y = y + 30;
-	event.which = 0;
-	event.state = SDL_PRESSED;
-
-	mouse_handler_.mouse_press(event, true);
-}
-
 
 void play_controller::hotkey_handler::cycle_units(){
 	mouse_handler_.cycle_units(browse());

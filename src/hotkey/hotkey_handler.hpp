@@ -52,9 +52,6 @@ private:
 	// Private data related to menu implementation (expansion of AUTOSAVES, WML entries)
 	//
 
-	/** A smart pointer used when retrieving menu items. */
-	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
-
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<config>& items) const;
 	void expand_quickreplay(std::vector<config>& items) const;
@@ -78,13 +75,11 @@ public:
 	virtual void objectives() override;
 	virtual void show_statistics() override;
 	virtual void unit_list() override;
-	virtual void left_mouse_click() override;
 	virtual void move_action() override;
 	virtual void select_and_action() override;
 	virtual void touch_hex() override;
 	virtual void select_hex() override;
 	virtual void deselect_hex() override;
-	virtual void right_mouse_click() override;
 	virtual void status_table() override;
 	virtual void save_game() override;
 	virtual void save_replay() override;
