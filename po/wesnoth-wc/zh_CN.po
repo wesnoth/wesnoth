@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2025-03-11 14:58+0800\n"
+"PO-Revision-Date: 2025-06-20 18:07+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -114,10 +114,8 @@ msgstr "幼年食人魔、亡灵和北陆之民"
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "联盟"
+msgstr ""
 
 #. [multiplayer_side]: id=The Cult, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
@@ -131,10 +129,8 @@ msgstr "幼年食人魔、 龙人和北陆之民"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "联盟"
+msgstr ""
 
 #. [multiplayer_side]: id=The Empire, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
@@ -183,10 +179,8 @@ msgstr ""
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "部落"
+msgstr ""
 
 #. [multiplayer_side]: id=The Militia, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
@@ -1747,14 +1741,10 @@ msgstr "酷。我们的空中力量总是越强越好。"
 
 #. a Drake Fighter joins a player's side; they will have their standard weapon (a "war blade" in English)
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
-#, fuzzy
-#| msgid ""
-#| "The ancient spirits tell me my destiny lies with yours. My sword is at "
-#| "your command."
 msgid ""
 "The ancient spirits tell me my destiny lies with yours. My blade is at your "
 "command."
-msgstr "古老灵魂告诉我，我的命运与你同在。我的剑听从你的指挥。"
+msgstr "古老灵魂告诉我，我的命运与你同在。我的战刃听从你的指挥。"
 
 #. a Drake Clasher joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:258
@@ -2073,16 +2063,6 @@ msgstr "派系"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, "
@@ -2092,10 +2072,11 @@ msgid ""
 "The available heroes, deserters, and random leaders also depend on your "
 "factions; the items you can get do not depend on the faction you choose."
 msgstr ""
-"世界征服II时代包括由成对的主线派系组成的派系。其中一个派系会有医者可用（龙"
-"人、义军和保王党人），另一个则没有（兽人、矮人和亡灵）。征募名单也是成对组织"
-"的，所以有时，在征募想要的单位之前，你必须先征募一个不同的单位。可用的英雄、"
-"逃兵和随机首领也取决于你的派系。而你能得到的物品则不取决于你选择的派系。"
+"世界征服时代包括由成对的主线派系组成的派系。其中一个派系会有医者可用（龙人、"
+"沙丘游民、义军和保王党人），另一个则没有（兽人、矮人和亡灵）。征募名单也是成"
+"对组织的，所以有时，在征募想要的单位之前，你必须先征募一个不同的单位。可用的"
+"英雄、逃兵和随机首领也取决于你的派系。而你能得到的物品则不取决于你选择的派"
+"系。"
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
@@ -2414,7 +2395,7 @@ msgstr "韧甲"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
 msgid "blade/impact/pierce: up to 10% resistances, steadfast"
-msgstr ""
+msgstr "刃器/冲击/穿刺：高达10%抗性，坚定"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:10
@@ -2477,7 +2458,7 @@ msgstr "牛黄"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:93
 msgid "fearless, undead, healthy, tenacity"
-msgstr ""
+msgstr "无惧，亡灵，康健，顽强"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
@@ -2533,7 +2514,7 @@ msgstr "被诅咒的生命象征"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:176
 msgid "ranged: drains"
-msgstr ""
+msgstr "远战：吸血"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:177
@@ -2548,10 +2529,8 @@ msgstr "鹰眼长弓"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:195
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range|：奥术且+25%伤害"
+msgstr "远战：精准及+25%伤害"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:196
@@ -2617,7 +2596,7 @@ msgstr "食尸妖鬼精华"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:268
 msgid "feeding, +3 HP"
-msgstr ""
+msgstr "食尸，+3生命"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:269
@@ -2637,7 +2616,7 @@ msgstr "火之心"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:292
 msgid "melee: fire and +25% damage, +30 resistance vs fire"
-msgstr ""
+msgstr "近战：火焰及+25%伤害，+30对火焰的抗性"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:293
@@ -2656,7 +2635,7 @@ msgstr "先驱者铠甲"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:312
 msgid "illuminates, lawful, heals +4, firststrike"
-msgstr ""
+msgstr "照明，守序，疗伤+4，先制"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:313
@@ -2676,7 +2655,7 @@ msgstr "圣水"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:350
 msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
-msgstr ""
+msgstr "近战：奥术及+25%伤害，+30对奥术的抗性"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:351
@@ -2695,18 +2674,14 @@ msgstr "冰弓"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:374
 msgid "19-1 ranged-cold slows"
-msgstr ""
+msgstr "19-1 远程-冰寒 减速"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
-#, fuzzy
-#| msgid ""
-#| "Draw this magical bow summon an ice arrow that will freeze and slow its "
-#| "target upon hit."
 msgid ""
 "Draw this magical bow to summon an ice arrow that will freeze and slow its "
 "target upon hit."
-msgstr "拉开这把神奇的弓，便能召唤出一支冰箭，命中后会冻结目标并减缓其速度。"
+msgstr "拉开这把神奇的弓以召唤出一支冰箭，命中后会冻结目标并减缓其速度。"
 
 #. [effect]: type=cold
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:380
@@ -2738,12 +2713,10 @@ msgstr "奇妙混合物"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:441
-#, fuzzy
-#| msgid "no undead^consumed by a living being:"
 msgid ""
 "no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
 "advance"
-msgstr "被活物吃掉："
+msgstr "被活物吃掉：+1伤害，+1移动，且升级-20%经验"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:442
@@ -2780,7 +2753,7 @@ msgstr "霜冻指环"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:491
 msgid "melee: cold and slows"
-msgstr ""
+msgstr "近战：冰寒和减速"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:492
@@ -2818,10 +2791,8 @@ msgstr "年长树人的根"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:528
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range|：奥术且+25%伤害"
+msgstr "冲击：+1攻击次数并+2伤害"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:529
@@ -2837,7 +2808,7 @@ msgstr "符文剑"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:545
 msgid "melee: magical"
-msgstr ""
+msgstr "近战：魔法"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:546
@@ -2854,7 +2825,7 @@ msgstr "光芒之杖"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:564
 msgid "11-3 ranged-arcane magical"
-msgstr ""
+msgstr "11-3 远程-奥术 魔法"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
@@ -2986,10 +2957,8 @@ msgstr "秘密典籍"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:725
-#, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "经验值后升级"
+msgstr "-50%升级所需经验"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:726
@@ -3176,7 +3145,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:102
 msgid "melee: +1 strikes"
-msgstr ""
+msgstr "近战：+1攻击次数"
 
 #. [trainer]: type=Elvish Ranger
 #: data/campaigns/World_Conquest/resources/data/training.cfg:120
@@ -3229,10 +3198,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
-#, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "脱战"
+msgstr "远战：脱战"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3482,7 +3449,7 @@ msgstr "散文、语法和文字助理"
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
 msgid "Minor Code Contributors"
-msgstr ""
+msgstr "次要代码贡献者"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
