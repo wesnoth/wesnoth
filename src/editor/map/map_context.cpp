@@ -21,6 +21,7 @@
 #include "editor/action/action.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -43,7 +44,7 @@ editor_team_info::editor_team_info(const team& t)
 	, name(t.user_team_name())
 	, recruit_list(utils::join(t.recruits(), ","))
 	, gold(t.gold())
-	, income(t.base_income())
+	, income(t.base_income() - game_config::base_income)
 	, village_income(t.village_gold())
 	, village_support(t.village_support())
 	, fog(t.uses_fog())
@@ -495,7 +496,7 @@ void map_context::load_scenario()
 			teams_.back().set_recruits(utils::split_set(side["recruit"].str(), ','));
 		}
 	}
-
+	
 	tod_manager_.reset(new tod_manager(scenario));
 
 	auto event = scenario.find_child("event", "id", "editor_event-start");
@@ -792,7 +793,7 @@ config map_context::to_config()
 		side["share_vision"] = team_shared_vision::get_string(team.share_vision());
 
 		side["gold"] = team.gold();
-		side["income"] = team.base_income();
+		side["income"] = team.base_income() - game_config::base_income;
 
 		for(const map_location& village : team.villages()) {
 			village.write(side.add_child("village"));
