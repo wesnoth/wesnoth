@@ -56,13 +56,13 @@ private:
 	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
-	void expand_autosaves(std::vector<config>& items, int i);
-	void expand_quickreplay(std::vector<config>& items, int i);
+	void expand_autosaves(std::vector<config>& items) const;
+	void expand_quickreplay(std::vector<config>& items) const;
 
 	/**
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
 	 */
-	void expand_wml_commands(std::vector<config>& items, int i);
+	void expand_wml_commands(std::vector<config>& items);
 
 protected:
 	bool browse() const;
