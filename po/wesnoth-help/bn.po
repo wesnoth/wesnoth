@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-06-15 22:18-0500\n"
-"PO-Revision-Date: 2025-02-20 14:27+0530\n"
+"PO-Revision-Date: 2025-06-20 20:39+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -78,8 +78,6 @@ msgstr "বিশ্বস্ত"
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
-#, fuzzy
-#| msgid "Zero upkeep"
 msgid "Zero upkeep."
 msgstr "ভারবহনের মূল্য শূন্য"
 
@@ -91,6 +89,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"আক্রান্ত ইউনিটের রক্ষণাত্মক দক্ষতা নির্বিশেষে এই আক্রমণের সবসময়েই 70% আঘাত করার "
+"সম্ভবনা রয়েছে ।"
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
@@ -111,7 +111,7 @@ msgstr "বুদ্ধিমান"
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "বুদ্ধিমান ইউনিটদের উন্নিত হতে স্বাভাবিকের থেকে 20% কম অভিজ্ঞতা লাগে"
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:50
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:57
@@ -651,12 +651,12 @@ msgstr "সূচনাকালীন অবস্থান টুল"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -698,9 +698,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -715,9 +715,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -752,7 +752,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:163
 msgid "Terrain Elevation Graphics"
-msgstr ""
+msgstr "ভূমিরূপ উচ্চতা গ্রাফিক্স"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:165
@@ -766,7 +766,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:168
 msgid "editor^<header>Direct Overlays</header>"
-msgstr ""
+msgstr "প্রত্যক্ষ অভিলেপনগুলি"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
@@ -785,17 +785,17 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
 msgid "editor^<header>Elevation Floodfill</header>"
-msgstr ""
+msgstr "উচ্চতা ফ্লাডফিল"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:181
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "মানচিত্র উচ্চভূমি নির্দেশক"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
 msgid "Raised elevation editor palette icon"
-msgstr ""
+msgstr "উচ্চভূমি পরিমার্জক প্যালেট আইকন"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:189
@@ -831,15 +831,15 @@ msgstr ""
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
 msgid "Deprecated Terrain"
-msgstr ""
+msgstr "বাতিল ভূমিরূপ"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:210
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -854,7 +854,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:224
 msgid "Label Tool"
-msgstr ""
+msgstr "লেবেল টুল"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:225
@@ -872,7 +872,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "আইটেম টুল (সিনারি টুল)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:240
@@ -894,7 +894,7 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:257
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "গ্রামের নিয়ন্ত্রণ টুল"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:258
@@ -913,7 +913,7 @@ msgstr ""
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:273
 msgid "Unit Tool"
-msgstr ""
+msgstr "ইউনিট টুল"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:274
@@ -931,7 +931,7 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:288
 msgid "Named Areas"
-msgstr ""
+msgstr "নামযুক্ত এলাকগুলি"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:289
@@ -1136,10 +1136,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1148,7 +1148,7 @@ msgstr ""
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:416
 msgid "Separate Event Files"
-msgstr ""
+msgstr "আলাদা ইভেন্ট ফাইল"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:417
@@ -1189,7 +1189,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:440
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "পরিমার্জক মাস্ক ব্যবহার"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:441
@@ -1202,7 +1202,7 @@ msgstr ""
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:449
 msgid "ToD and Schedule Editor"
-msgstr ""
+msgstr "দিনের সময় ও দিনপঞ্জী পরিমার্জক"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:450
@@ -1219,7 +1219,7 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:460
 msgid "Editor Palette"
-msgstr ""
+msgstr "পরিমার্জক প্যালেট"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
@@ -1256,12 +1256,13 @@ msgstr "শুধু গ্রাম দেখান"
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:483
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "ওয়েসনথ মানচিত্র ফরম্যাট"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:484
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"ওয়েসনথ মানব পাঠনযোগ্য সাধারণ টেক্সট ফাইলে এটির মানচিত্রগুলি সঞ্চয় করে রাখে ।"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:486
@@ -1286,8 +1287,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1403,6 +1404,8 @@ msgid ""
 "A river rising in the <ref dst='heart_mountains'>Heart Mountains</ref> and "
 "running east to the Listra."
 msgstr ""
+"<ref dst='heart_mountains'>হৃদয় পর্বতমালা</ref> থেকে বেরিয়ে পূর্বে লিস্ট্রার দিকে "
+"প্রবাহিত হওয়া একটি নদী ।"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
@@ -1417,6 +1420,10 @@ msgid ""
 "dst='northlands'>Northlands</ref>. It empties to the <ref "
 "dst='great_ocean'>ocean</ref> at <ref dst='elensefar'>Elensefar</ref>."
 msgstr ""
+"বিরাট নদী <ref dst='kingdom_wesnoth'>ওয়েসনথ রাজ্য</ref> এবং <ref "
+"dst='northlands'>উত্তরভূমির</ref> মাঝের সীমারেখা নির্ধারণ করে । এটি <ref "
+"dst='elensefar'>এলেনসেফারে</ref> <ref dst='great_ocean'>সমুদ্রে</ref> গিয়ে "
+"মেশে ।"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:35
@@ -1437,6 +1444,9 @@ msgid ""
 "rivers eventually flow to it. Far to the west in the Great Ocean is a huge "
 "archipelago called <ref dst='morogor'>Morogor</ref>."
 msgstr ""
+"<ref dst='great_continent'>মহাদেশের</ref> পশ্চিমে রয়েছে এবং সকল নদীগুলি শেষে "
+"এখানে এসে মেশে । বিরাট সমুদ্রের বহু পশ্চিমে একটি সুবিশাল দ্বীপপুঞ্জ রয়েছে যা <ref "
+"dst='morogor'>মোরোগোর</ref> নামে পরিচিত ।"
 
 #. [topic]: id=great_ocean
 #. Great Ocean
@@ -1487,6 +1497,8 @@ msgid ""
 "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
 "formerly home to the Islefolk and Wesfolk."
 msgstr ""
+"<ref dst='great_ocean'>বিরাট সমুদ্রে</ref> থাকা একটি আরও বড় দ্বীপ, যেখানে আগে "
+"দ্বীপবাসী এবং পশ্চিমাবাসীরা থাকতেন ।"
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
@@ -1502,6 +1514,15 @@ msgid ""
 "Jevyan.\n"
 "    • Blackmore: A small settlement north of the Oldwood."
 msgstr ""
+"<header>গুরুত্বপূর্ণ শহর:</header>\n"
+"    • সাউথবে: সর্ববৃহৎ দ্বীপবাসী রাজ্যের রাজধানী ।\n"
+"    • ক্লিয়ারওয়াটার বন্দর: দ্বীপবাসী রাজ্যের দ্বিতীয় বৃহত্তম শহর এবং এখানে একটি "
+"গুরুত্বপূর্ণ বন্দর রয়েছে ।\n"
+"    • স্টর্মভেল: একটি বড় দ্বীপবাসী রাজ্য যা একসময় প্রথম হ্যালড্রিকের পূর্বপুরুষেরা শাসন "
+"করতেন ।\n"
+"    • জেভইয়ান’স্ হ্যাভেন: পশ্চিমাবাসীদের রাজধানী এবং জনপ্রিয় লিচ-লর্ড জেভইয়ানের "
+"বাড়ি ।\n"
+"    • ব্ল্যাকমোর: ওল্ডউডের উত্তরে থাকা একটি ছোটো বসতি ।"
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
@@ -1678,7 +1699,7 @@ msgstr ""
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:160
 msgid "Northlands"
-msgstr ""
+msgstr "উত্তরভূমি"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:161
@@ -1762,8 +1783,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
-"race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref "
+"dst='..race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -1864,8 +1885,6 @@ msgstr ""
 
 #. [topic]: id=far_south
 #: data/core/encyclopedia/geography.cfg:249
-#, fuzzy
-#| msgid "Far North"
 msgid "Far South"
 msgstr "সূদূর উত্তর"
 
@@ -1897,7 +1916,7 @@ msgstr ""
 #. [section]: id=schedule
 #: data/core/help.cfg:10
 msgid "Time of Day Schedule"
-msgstr "দিনের সময়সূচী"
+msgstr "দিনপঞ্জী"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -2221,6 +2240,10 @@ msgid ""
 "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
 "information."
 msgstr ""
+"\n"
+"\n"
+"শুধু নিয়োগ বা পুনরায় ডাকার জন্য নয়, ইউনিটদের ভারবহন করার জন্যও টাকার প্রয়োজন হয় । "
+"আরও তথ্যের জন্য <ref dst='income_and_upkeep'>আয় ও খরচ</ref> দেখুন ।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:213
@@ -2339,6 +2362,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"উন্নয়ণের জন্য ইউনিটদের সাধারণত কিছু পরিমাণ অভিজ্ঞতার প্রয়োজন হয় (বুদ্ধিমান দক্ষতাযুক্ত "
+"ইউনিটদের জন্য 20% কম) । একবার এই পরিমাণ অভিজ্ঞতা অর্জন করলেই তারা তৎক্ষণাৎ "
+"পরবর্তী পর্যায়ে উন্নীত হয় । কিছু ক্ষেত্রে, আপনাকে উন্নয়ণের জন্য একাধিক বিকল্প দেওয়া "
+"হতে পারে ।"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:250
@@ -2427,6 +2456,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"শত্রুপক্ষ পরবর্তী দানে কোথায় যেতে পারবে তা দেখাবার জন্য, Ctrl-v বা Cmd-v টিপুন । "
+"Ctrl-b বা Cmd-b দেখায় আপনার ইউনিটগুলি মানচিত্রে তাদের পথরোধ না করলে তারা কোথায় "
+"যেতে পারত ।"
 
 #. [topic]: id=vision
 #: data/core/help.cfg:275
@@ -3179,10 +3213,11 @@ msgstr "উপসংহার"
 #: data/core/help.cfg:531
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref dst='.."
-"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref "
+"dst='..traits_section'>traits</ref> and <ref "
+"dst='..abilities_section'>abilities</ref>, but you now know everything you "
+"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
+"good luck!"
 msgstr ""
 
 #. [topic]: id=license
@@ -4440,6 +4475,8 @@ msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
+"এই ইউনিটটির লড়াইয়ের দক্ষতা এটিকে প্রতিপক্ষের নিয়ন্ত্রণের ক্ষেত্রকে উপেক্ষা করে তাদের "
+"চারপাশে অবাধে চলাফেরা করতে দেয় ।"
 
 #: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
@@ -4629,6 +4666,12 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"সাধারণত না-মৃত ইউনিটদের একমাত্র দক্ষতা হল না-মৃত । যেহেতু না-মৃতরা প্রকৃতপক্ষে "
+"লড়াইয়ের জন্য পুনরায় উঠে দাঁড়ানো মৃতদেহ, তাদের ওপর বিষের কোনো প্রভাব নেই । তাই যে "
+"সকল শত্রুরা তাদের আক্রমণে বিষ ব্যবহার করে, তাদের বিরুদ্ধে এরা অত্যন্ত গুরুত্বপূর্ণ হতে "
+"পারে ।"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
@@ -4905,8 +4948,8 @@ msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
-"<italic>text='দূর্বল'</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের "
-"ক্ষতি সাধারণের থেকে 1 কম হয় ।"
+"<italic>দূর্বল</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের ক্ষতি "
+"সাধারণের থেকে 1 কম হয় ।"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -4960,8 +5003,8 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"<italic>text='অল্পবুদ্ধি'</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী "
-"অভিজ্ঞতা লাগে ।"
+"<italic>অল্পবুদ্ধি</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী অভিজ্ঞতা "
+"লাগে ।"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
@@ -4979,6 +5022,8 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
+"<italic>বয়স্ক</italic> বৈশিষ্ট্যযুক্ত ইউনিটগুলির জীবনসংখ্যা 8 কম এবং তাদের স্থানান্তর "
+"সংখ্যা ও নিকট আক্রমণের ক্ষতি 1 কম হয় ।"
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:7
@@ -5024,19 +5069,14 @@ msgstr "প্লেগ"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:54
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a $type "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
 "যখন একটি ইউনিট প্লেগ আক্রমণের দ্বারা নিহত হয়, তখন সেই ইউনিটটি প্লেগ আক্রমণকারী "
-"পক্ষের একটি চলমান শব ইউনিটে পাল্টে যায় । এটি না-মৃত বা গ্রামে দাঁড়িয়ে থাকা "
-"ইউনিটদের ওপর কার্যকরী নয় ।"
+"পক্ষের একটি $type ইউনিটে পাল্টে যায় । এটি না-মৃত বা গ্রামে দাঁড়িয়ে থাকা ইউনিটদের "
+"ওপর কার্যকরী নয় ।"
 
 #. [slow]: id=slow
 #: data/core/macros/weapon_specials.cfg:81
@@ -6426,44 +6466,32 @@ msgid "Advances to:"
 msgstr "উন্নীত হবে: "
 
 #: src/help/help_topic_generators.cpp:447
-#, fuzzy
-#| msgid "Base unit: "
 msgid "Base unit:"
-msgstr "মূল ইউনিট: "
+msgstr "মূল ইউনিট:"
 
 #: src/help/help_topic_generators.cpp:452
-#, fuzzy
-#| msgid "Base units: "
 msgid "Base units:"
-msgstr "মূল ইউনিটগুলি: "
+msgstr "মূল ইউনিটগুলি:"
 
 #: src/help/help_topic_generators.cpp:470
-#, fuzzy
-#| msgid "Variations: "
 msgid "Variations:"
-msgstr "প্রকার: "
+msgstr "প্রকার:"
 
 #: src/help/help_topic_generators.cpp:497
 msgid "race^Miscellaneous"
 msgstr "বিভিন্ন"
 
 #: src/help/help_topic_generators.cpp:499
-#, fuzzy
-#| msgid "Race: "
 msgid "Race:"
-msgstr "জাতি: "
+msgstr "জাতি:"
 
 #: src/help/help_topic_generators.cpp:562
-#, fuzzy
-#| msgid "Abilities: "
 msgid "Abilities:"
-msgstr "দক্ষতা: "
+msgstr "দক্ষতা:"
 
 #: src/help/help_topic_generators.cpp:588
-#, fuzzy
-#| msgid "Ability Upgrades: "
 msgid "Ability Upgrades:"
-msgstr "দক্ষতা বৃদ্ধি:"
+msgstr "দক্ষতা উন্নয়ণ:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6515,20 +6543,16 @@ msgid "Required XP:"
 msgstr "প্রয়োজনীয় অভিজ্ঞতা:"
 
 #: src/help/help_topic_generators.cpp:667
-#, fuzzy
-#| msgid "Attack Type"
 msgid "Attacks"
-msgstr "আক্রমণের প্রকৃতি"
+msgstr "আক্রমণ"
 
 #: src/help/help_topic_generators.cpp:670
-#, fuzzy
-#| msgid "Attack Type"
 msgid "Attacks per turn: "
-msgstr "আক্রমণের প্রকৃতি"
+msgstr "প্রতি দানে আক্রমণ:"
 
 #: src/help/help_topic_generators.cpp:689
 msgid "Name"
-msgstr ""
+msgstr "নাম"
 
 #: src/help/help_topic_generators.cpp:690
 msgid "Strikes"
@@ -6549,8 +6573,8 @@ msgstr "বিশেষত্ব"
 #: src/help/help_topic_generators.cpp:715
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num-টি আক্রমণ ব্যবহার করে"
+msgstr[1] "$num-টি আক্রমণ ব্যবহার করে"
 
 #: src/help/help_topic_generators.cpp:795
 msgid "Resistances"
