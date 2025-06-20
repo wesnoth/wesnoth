@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-02-20 14:27+0530\n"
+"PO-Revision-Date: 2025-06-20 20:39+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -622,7 +622,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
 msgid "Terrain Elevation Graphics"
-msgstr ""
+msgstr "ভূমিরূপ উচ্চতা গ্রাফিক্স"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:173
@@ -634,8 +634,10 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
+#, fuzzy
+#| msgid "editor^<header>Direct Overlays</header>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
+msgstr "প্রত্যক্ষ অভিলেপনগুলি"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
@@ -650,13 +652,15 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
+#, fuzzy
+#| msgid "editor^<header>Elevation Floodfill</header>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
+msgstr "উচ্চতা ফ্লাডফিল"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "মানচিত্র উচ্চভূমি নির্দেশক"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -709,7 +713,7 @@ msgstr ""
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:210
 msgid "Deprecated Terrain"
-msgstr ""
+msgstr "বাতিল ভূমিরূপ"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -732,7 +736,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:226
 msgid "Label Tool"
-msgstr ""
+msgstr "লেবেল টুল"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:227
@@ -751,7 +755,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:242
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "আইটেম টুল (সিনারি টুল)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:243
@@ -772,7 +776,7 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:259
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "গ্রামের নিয়ন্ত্রণ টুল"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:260
@@ -792,7 +796,7 @@ msgstr ""
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:274
 msgid "Unit Tool"
-msgstr ""
+msgstr "ইউনিট টুল"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:275
@@ -812,7 +816,7 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:290
 msgid "Named Areas"
-msgstr ""
+msgstr "নামযুক্ত এলাকগুলি"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:291
@@ -1073,7 +1077,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:443
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "পরিমার্জক মাস্ক ব্যবহার"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:444
@@ -1086,7 +1090,7 @@ msgstr ""
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:452
 msgid "ToD and Schedule Editor"
-msgstr ""
+msgstr "দিনের সময় ও দিনপঞ্জী পরিমার্জক"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:453
@@ -1104,7 +1108,7 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:464
 msgid "Editor Palette"
-msgstr ""
+msgstr "পরিমার্জক প্যালেট"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
@@ -1141,12 +1145,13 @@ msgstr "শুধু গ্রাম দেখান"
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:485
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "ওয়েসনথ মানচিত্র ফরম্যাট"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:486
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"ওয়েসনথ মানব পাঠনযোগ্য সাধারণ টেক্সট ফাইলে এটির মানচিত্রগুলি সঞ্চয় করে রাখে ।"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:488
@@ -1296,10 +1301,16 @@ msgstr "আর্কান-থোরিয়া"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:27
+#, fuzzy
+#| msgid ""
+#| "A river rising in the <ref dst='heart_mountains'>Heart Mountains</ref> "
+#| "and running east to the Listra."
 msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"<ref dst='heart_mountains'>হৃদয় পর্বতমালা</ref> থেকে বেরিয়ে পূর্বে লিস্ট্রার দিকে "
+"প্রবাহিত হওয়া একটি নদী ।"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
@@ -1308,12 +1319,22 @@ msgstr "বিরাট নদী"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "The Great River forms the boundary between the <ref "
+#| "dst='kingdom_wesnoth'>Kingdom of Wesnoth</ref> and the <ref "
+#| "dst='northlands'>Northlands</ref>. It empties to the <ref "
+#| "dst='great_ocean'>ocean</ref> at <ref dst='elensefar'>Elensefar</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
+"বিরাট নদী <ref dst='kingdom_wesnoth'>ওয়েসনথ রাজ্য</ref> এবং <ref "
+"dst='northlands'>উত্তরভূমির</ref> মাঝের সীমারেখা নির্ধারণ করে । এটি <ref "
+"dst='elensefar'>এলেনসেফারে</ref> <ref dst='great_ocean'>সমুদ্রে</ref> গিয়ে "
+"মেশে ।"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -1322,11 +1343,19 @@ msgstr "বিরাট সাগর"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:39
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of the <ref dst='great_continent'>continent</ref> and "
+#| "all rivers eventually flow to it. Far to the west in the Great Ocean is a "
+#| "huge archipelago called <ref dst='morogor'>Morogor</ref>."
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
 "a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"<ref dst='great_continent'>মহাদেশের</ref> পশ্চিমে রয়েছে এবং সকল নদীগুলি শেষে "
+"এখানে এসে মেশে । বিরাট সমুদ্রের বহু পশ্চিমে একটি সুবিশাল দ্বীপপুঞ্জ রয়েছে যা <ref "
+"dst='morogor'>মোরোগোর</ref> নামে পরিচিত ।"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:44
@@ -1350,9 +1379,15 @@ msgstr "সবুজ দ্বীপ"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
+#, fuzzy
+#| msgid ""
+#| "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
+#| "formerly home to the Islefolk and Wesfolk."
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"<ref dst='great_ocean'>বিরাট সমুদ্রে</ref> থাকা একটি আরও বড় দ্বীপ, যেখানে আগে "
+"দ্বীপবাসী এবং পশ্চিমাবাসীরা থাকতেন ।"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -1373,11 +1408,21 @@ msgstr "বিরাট মহাদেশ"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:65
+#, fuzzy
+#| msgid ""
+#| "The Great River forms the boundary between the <ref "
+#| "dst='kingdom_wesnoth'>Kingdom of Wesnoth</ref> and the <ref "
+#| "dst='northlands'>Northlands</ref>. It empties to the <ref "
+#| "dst='great_ocean'>ocean</ref> at <ref dst='elensefar'>Elensefar</ref>."
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"বিরাট নদী <ref dst='kingdom_wesnoth'>ওয়েসনথ রাজ্য</ref> এবং <ref "
+"dst='northlands'>উত্তরভূমির</ref> মাঝের সীমারেখা নির্ধারণ করে । এটি <ref "
+"dst='elensefar'>এলেনসেফারে</ref> <ref dst='great_ocean'>সমুদ্রে</ref> গিয়ে "
+"মেশে ।"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:70
@@ -1482,7 +1527,7 @@ msgstr ""
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:119
 msgid "Northlands"
-msgstr ""
+msgstr "উত্তরভূমি"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
@@ -1611,7 +1656,7 @@ msgstr ""
 #. [section]: id=schedule
 #: data/core/help.cfg:10
 msgid "Time of Day Schedule"
-msgstr "দিনের সময়সূচী"
+msgstr "দিনপঞ্জী"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1779,6 +1824,12 @@ msgstr "অজানা ইউনিট"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:158
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "This unit is unknown for the moment. You must discover it in the game to "
+#| "be allowed to see its description."
 msgid ""
 "\n"
 "\n"
@@ -1925,6 +1976,13 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Units not only cost gold to Recruit or Recall, they also require money to "
+#| "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for "
+#| "more information."
 msgid ""
 "\n"
 "\n"
@@ -1932,6 +1990,10 @@ msgid ""
 "support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> for "
 "more information."
 msgstr ""
+"\n"
+"\n"
+"শুধু নিয়োগ বা পুনরায় ডাকার জন্য নয়, ইউনিটদের ভারবহন করার জন্যও টাকার প্রয়োজন হয় । "
+"আরও তথ্যের জন্য <ref dst='income_and_upkeep'>আয় ও খরচ</ref> দেখুন ।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:215
@@ -2054,6 +2116,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"উন্নয়ণের জন্য ইউনিটদের সাধারণত কিছু পরিমাণ অভিজ্ঞতার প্রয়োজন হয় (বুদ্ধিমান দক্ষতাযুক্ত "
+"ইউনিটদের জন্য 20% কম) । একবার এই পরিমাণ অভিজ্ঞতা অর্জন করলেই তারা তৎক্ষণাৎ "
+"পরবর্তী পর্যায়ে উন্নীত হয় । কিছু ক্ষেত্রে, আপনাকে উন্নয়ণের জন্য একাধিক বিকল্প দেওয়া "
+"হতে পারে ।"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2142,6 +2210,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"শত্রুপক্ষ পরবর্তী দানে কোথায় যেতে পারবে তা দেখাবার জন্য, Ctrl-v বা Cmd-v টিপুন । "
+"Ctrl-b বা Cmd-b দেখায় আপনার ইউনিটগুলি মানচিত্রে তাদের পথরোধ না করলে তারা কোথায় "
+"যেতে পারত ।"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:277
@@ -3226,11 +3299,13 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:631
+#, fuzzy
+#| msgid "editor^<header>Direct Overlays</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Cores'</header>"
-msgstr ""
+msgstr "প্রত্যক্ষ অভিলেপনগুলি"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:633
@@ -4136,6 +4211,8 @@ msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
+"এই ইউনিটটির লড়াইয়ের দক্ষতা এটিকে প্রতিপক্ষের নিয়ন্ত্রণের ক্ষেত্রকে উপেক্ষা করে তাদের "
+"চারপাশে অবাধে চলাফেরা করতে দেয় ।"
 
 #: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
@@ -4330,6 +4407,12 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"সাধারণত না-মৃত ইউনিটদের একমাত্র দক্ষতা হল না-মৃত । যেহেতু না-মৃতরা প্রকৃতপক্ষে "
+"লড়াইয়ের জন্য পুনরায় উঠে দাঁড়ানো মৃতদেহ, তাদের ওপর বিষের কোনো প্রভাব নেই । তাই যে "
+"সকল শত্রুরা তাদের আক্রমণে বিষ ব্যবহার করে, তাদের বিরুদ্ধে এরা অত্যন্ত গুরুত্বপূর্ণ হতে "
+"পারে ।"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
@@ -4503,7 +4586,7 @@ msgstr ""
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "বুদ্ধিমান ইউনিটদের উন্নিত হতে স্বাভাবিকের থেকে 20% কম অভিজ্ঞতা লাগে"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -4616,8 +4699,8 @@ msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
-"<italic>text='দূর্বল'</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের "
-"ক্ষতি সাধারণের থেকে 1 কম হয় ।"
+"<italic>দূর্বল</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের ক্ষতি "
+"সাধারণের থেকে 1 কম হয় ।"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -4671,8 +4754,8 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"<italic>text='অল্পবুদ্ধি'</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী "
-"অভিজ্ঞতা লাগে ।"
+"<italic>অল্পবুদ্ধি</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী অভিজ্ঞতা "
+"লাগে ।"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
@@ -4690,6 +4773,8 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
+"<italic>বয়স্ক</italic> বৈশিষ্ট্যযুক্ত ইউনিটগুলির জীবনসংখ্যা 8 কম এবং তাদের স্থানান্তর "
+"সংখ্যা ও নিকট আক্রমণের ক্ষতি 1 কম হয় ।"
 
 #. [berserk]: id=berserk
 #: data/core/macros/weapon_specials.cfg:9
@@ -4713,11 +4798,19 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+#| msgid ""
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "$type on the same side as the unit with the Plague attack. This doesn’t "
+#| "work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
+"যখন একটি ইউনিট প্লেগ আক্রমণের দ্বারা নিহত হয়, তখন সেই ইউনিটটি প্লেগ আক্রমণকারী "
+"পক্ষের একটি $type ইউনিটে পাল্টে যায় । এটি না-মৃত বা গ্রামে দাঁড়িয়ে থাকা ইউনিটদের "
+"ওপর কার্যকরী নয় ।"
 
 #. [slow]: id=slow
 #: data/core/macros/weapon_specials.cfg:65
@@ -4776,6 +4869,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"আক্রান্ত ইউনিটের রক্ষণাত্মক দক্ষতা নির্বিশেষে এই আক্রমণের সবসময়েই 70% আঘাত করার "
+"সম্ভবনা রয়েছে ।"
 
 #. [swarm]: id=swarm
 #: data/core/macros/weapon_specials.cfg:128
@@ -5993,6 +6088,8 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:608
+#, fuzzy
+#| msgid "Special Notes:"
 msgid "Special Notes:"
 msgstr "বিশেষ তথ্য:"
 
@@ -6015,40 +6112,56 @@ msgid "Level"
 msgstr "পর্যায়"
 
 #: src/help/help_topic_generators.cpp:365
+#, fuzzy
+#| msgid "Advances from: "
 msgid "Advances from: "
 msgstr "উন্নীত হয়েছে: "
 
 #: src/help/help_topic_generators.cpp:367
+#, fuzzy
+#| msgid "Advances to: "
 msgid "Advances to: "
 msgstr "উন্নীত হবে: "
 
 #: src/help/help_topic_generators.cpp:396
+#, fuzzy
+#| msgid "Base unit:"
 msgid "Base unit: "
-msgstr "মূল ইউনিট: "
+msgstr "মূল ইউনিট:"
 
 #: src/help/help_topic_generators.cpp:401
+#, fuzzy
+#| msgid "Base units:"
 msgid "Base units: "
-msgstr "মূল ইউনিটগুলি: "
+msgstr "মূল ইউনিটগুলি:"
 
 #: src/help/help_topic_generators.cpp:419
+#, fuzzy
+#| msgid "Variations:"
 msgid "Variations: "
-msgstr "প্রকার: "
+msgstr "প্রকার:"
 
 #: src/help/help_topic_generators.cpp:443
 msgid "race^Miscellaneous"
 msgstr "বিভিন্ন"
 
 #: src/help/help_topic_generators.cpp:445
+#, fuzzy
+#| msgid "Race:"
 msgid "Race: "
-msgstr "জাতি: "
+msgstr "জাতি:"
 
 #: src/help/help_topic_generators.cpp:515
+#, fuzzy
+#| msgid "Abilities:"
 msgid "Abilities: "
-msgstr "দক্ষতা: "
+msgstr "দক্ষতা:"
 
 #: src/help/help_topic_generators.cpp:541
+#, fuzzy
+#| msgid "Ability Upgrades:"
 msgid "Ability Upgrades: "
-msgstr "দক্ষতা বৃদ্ধি:"
+msgstr "দক্ষতা উন্নয়ণ:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6163,6 +6276,79 @@ msgstr "দৃষ্টিমূল্য"
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
 
+#~ msgid "Zero upkeep."
+#~ msgstr "ভারবহনের মূল্য শূন্য"
+
+#~ msgid "Raised elevation editor palette icon"
+#~ msgstr "উচ্চভূমি পরিমার্জক প্যালেট আইকন"
+
+#~ msgid "Separate Event Files"
+#~ msgstr "আলাদা ইভেন্ট ফাইল"
+
+#~ msgid ""
+#~ "<header>Notable cities:</header>\n"
+#~ "    • Southbay: The capital of the largest Islefolk kingdom.\n"
+#~ "    • Clearwater Port: The second largest Islefolk city and the location "
+#~ "of a major port.\n"
+#~ "    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
+#~ "Haldric I.\n"
+#~ "    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-"
+#~ "lord Jevyan.\n"
+#~ "    • Blackmore: A small settlement north of the Oldwood."
+#~ msgstr ""
+#~ "<header>গুরুত্বপূর্ণ শহর:</header>\n"
+#~ "    • সাউথবে: সর্ববৃহৎ দ্বীপবাসী রাজ্যের রাজধানী ।\n"
+#~ "    • ক্লিয়ারওয়াটার বন্দর: দ্বীপবাসী রাজ্যের দ্বিতীয় বৃহত্তম শহর এবং এখানে একটি "
+#~ "গুরুত্বপূর্ণ বন্দর রয়েছে ।\n"
+#~ "    • স্টর্মভেল: একটি বড় দ্বীপবাসী রাজ্য যা একসময় প্রথম হ্যালড্রিকের পূর্বপুরুষেরা "
+#~ "শাসন করতেন ।\n"
+#~ "    • জেভইয়ান’স্ হ্যাভেন: পশ্চিমাবাসীদের রাজধানী এবং জনপ্রিয় লিচ-লর্ড "
+#~ "জেভইয়ানের বাড়ি ।\n"
+#~ "    • ব্ল্যাকমোর: ওল্ডউডের উত্তরে থাকা একটি ছোটো বসতি ।"
+
+#~ msgid "Far South"
+#~ msgstr "সূদূর উত্তর"
+
+#, fuzzy
+#~| msgid "Vision:"
+#~ msgid "Vision"
+#~ msgstr "দৃষ্টি:"
+
+#, fuzzy
+#~| msgid "female^weak"
+#~ msgid "female^swamp lurk"
+#~ msgstr "দূর্বল"
+
+#, fuzzy
+#~| msgid "plague"
+#~ msgid "plague ($type)"
+#~ msgstr "প্লেগ"
+
+#, fuzzy
+#~| msgid "race^Bat"
+#~ msgid "race^Cat"
+#~ msgstr "বাদুড়"
+
+#, fuzzy
+#~| msgid "race+female^Bat"
+#~ msgid "race+female^Cat"
+#~ msgstr "বাদুড়"
+
+#, fuzzy
+#~| msgid "race^Bats"
+#~ msgid "race^Cats"
+#~ msgstr "বাদুড়েরা"
+
+#, fuzzy
+#~| msgid "race^Saurian"
+#~ msgid "race^Ship"
+#~ msgstr "সরিয়ান"
+
+#, fuzzy
+#~| msgid "race+plural^Mechanical"
+#~ msgid "race+plural^Ships"
+#~ msgstr "যান্ত্রিক"
+
 #~ msgid "Basic terrain type: $types"
 #~ msgid_plural "Basic terrain types: $types"
 #~ msgstr[0] "মূল ভূমিরূপ: $types"
@@ -6170,3 +6356,17 @@ msgstr "জ্যামিং মূল্য"
 
 #~ msgid "Typical base terrain: $type"
 #~ msgstr "স্বাভাবিক মূল ভূমিরূপ: $type"
+
+#~ msgid "Attacks"
+#~ msgstr "আক্রমণ"
+
+#~ msgid "Attacks per turn: "
+#~ msgstr "প্রতি দানে আক্রমণ:"
+
+#~ msgid "Name"
+#~ msgstr "নাম"
+
+#~ msgid "uses $num attack"
+#~ msgid_plural "uses $num attacks"
+#~ msgstr[0] "$num-টি আক্রমণ ব্যবহার করে"
+#~ msgstr[1] "$num-টি আক্রমণ ব্যবহার করে"
