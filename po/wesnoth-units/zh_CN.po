@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-06-16 03:18 UTC\n"
-"PO-Revision-Date: 2024-10-10 22:01+0800\n"
+"PO-Revision-Date: 2025-04-01 11:27+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -1183,27 +1183,29 @@ msgstr "流星锤"
 #. [effect]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:157
 msgid "taunting strike"
-msgstr ""
+msgstr "嘲讽打击"
 
 #. [advancement]: id=run_by_taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:184
 msgid "Run By (Taunting strike)"
 msgstr ""
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [advancement]: id=strength_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:202
+#, fuzzy
 msgid "Strength Training"
-msgstr ""
+msgstr "力量训练"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:214
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "弓术训练"
 
 #. [advancement]: id=strong_shots
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
 msgid "Strong Shots"
-msgstr ""
+msgstr "强力射击"
 
 #. [advancement]: id=Bowman
 #. [unit_type]: id=Bowman, race=human, gender=male
@@ -1215,12 +1217,12 @@ msgstr "弓手"
 #. [advancement]: id=piercing_shot
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:260
 msgid "Piercing Shot"
-msgstr ""
+msgstr "穿透射击"
 
 #. [effect]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:268
 msgid "piercing shot"
-msgstr ""
+msgstr "穿透射击"
 
 #. [effect]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
@@ -1534,11 +1536,6 @@ msgstr ""
 
 #. [unit_type]: id=Pirate Ship, race=ship
 #: data/core/units/boats/Pirate_Ship.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -4005,7 +4002,8 @@ msgstr ""
 "\n"
 "逸闻真伪，止能度之，精灵先锋，皆有迅足。"
 
-# 在”灼热双日之下“战役中，单位”Quenoth Ranger“的描述中特别提到，把这些奎诺单位称为”Ranger“并不准确，因为”Quenoth Ranger“和曾经拥有同样“Ranger”头衔的那些“自然探险家”并没有多少相同之处。
+# 在”灼热双日之下“战役中，单位”Quenoth Ranger“的描述中特别提到，把这些奎诺单位称为”Ranger“并不准确，因为”Quenoth
+# Ranger“和曾经拥有同样“Ranger”头衔的那些“自然探险家”并没有多少相同之处。
 # 为了在中文中体现出这种“不合适”，“Ranger”的译文必须含有“自然探险家”要素。因此，其译文从“游侠”改为“巡林者”。
 #. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:3
@@ -6424,8 +6422,10 @@ msgstr ""
 msgid "Giant Ant Egg"
 msgstr "巨蚁卵"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
+#, fuzzy
 msgid ""
 "Giant Ants are common in almost any environment, and the eggs from which "
 "they emerge can often be found in caves or any sheltered environment. Most "
@@ -6433,6 +6433,8 @@ msgid ""
 "any suitable location.\n"
 "\n"
 msgstr ""
+"巨型蚂蚁几乎在任何环境中都很常见，它们的卵通常可在洞穴或任何遮蔽处发现。多数"
+"蚁卵来自蚁群中的某位蚁后，但工蚁会将其搬运至适宜地点孵化。"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
@@ -6441,12 +6443,22 @@ msgstr "火蚁卵"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
+#, fuzzy
+#| msgid ""
+#| "In large numbers, Fire Ants can be a real menace, and those threatening "
+#| "numbers start with their eggs. Most Fire Ant eggs come from one of the "
+#| "colony queens, but the workers transport them to any suitable location.\n"
+#| "\n"
 msgid ""
 "In large numbers, Fire Ants can be a real menace, and those threatening "
 "numbers start with their eggs. Most Fire Ant Eggs come from one of the "
 "colony queens, but the workers transport them to any suitable location.\n"
 "\n"
 msgstr ""
+"一旦形成规模，火蚁便会构成真正的威胁，而其庞大的数量始于蚁卵。多数火蚁卵由蚁"
+"群中的蚁后产出，但工蚁会将其搬运至任何适宜的地点。\n"
+"\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
@@ -6490,14 +6502,12 @@ msgstr "火蚁后"
 msgid ""
 "Fire ants possess fierce fangs and an unusual ability to generate fire, and "
 "the queen is no different."
-msgstr ""
+msgstr "火蚁拥有锋利的颚和一种不寻常的喷火能力，蚁后也不例外。"
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebane Ant"
-msgstr "火蚁"
+msgstr ""
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:51
@@ -6513,13 +6523,18 @@ msgstr ""
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebomb Ant"
-msgstr "火蚁"
+msgstr "火弹蚁"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:53
+#, fuzzy
+#| msgid ""
+#| "More developed and specialized Fire Ants can take different forms. The "
+#| "firebomb ants can produce and carry large quantities of their flammable "
+#| "spray in a swollen abdomen, which can make for a fearsome attack, but it "
+#| "also makes them weak to physical attacks and they cannot sustain the fire "
+#| "as their health fails."
 msgid ""
 "More developed and specialized Fire Ants can take different forms. The "
 "Firebomb Ants can produce and carry large quantities of their flammable "
@@ -6527,14 +6542,19 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
+"更为发达且特化的火蚁能呈现不同形态。火弹蚁可通过膨胀的腹部大量生成并携带易燃"
+"喷雾，这种能力使其能发动骇人的攻击，但同时也导致它们面对物理攻击极为脆弱，且"
+"随着生命值下降将无法维持火焰喷射。"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
 msgid "Giant Ant Queen"
 msgstr "巨蚁后"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
+#, fuzzy
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. The queens are not royalty as many "
@@ -6545,6 +6565,11 @@ msgid ""
 "a very short continued existence — and if their flesh is warm and "
 "nourishing, they can host an ant egg."
 msgstr ""
+"巨型蚂蚁几乎在任何环境中都很常见，从地底深处的洞穴到高耸的山巅。它们的蚁后并"
+"非其他种族所理解的皇室成员，但作为蚁巢运转的核心，它们会不惜一切代价被保护。"
+"作为巢穴的核心，蚁后必须是精明的战术家；作为敌对巢穴的目标，它们也必须是敏捷"
+"的战士。普通人类或兽人若得以见蚁后，其生命往往很快终结——倘若他们的血肉温热且"
+"富有营养，还可能成为蚂蚁卵的宿主。"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
@@ -6554,10 +6579,6 @@ msgstr "战蚁"
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
 #, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
@@ -7374,7 +7395,7 @@ msgstr ""
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:4
 msgid "Raven"
-msgstr ""
+msgstr "渡鸦"
 
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:18
@@ -7386,13 +7407,17 @@ msgid ""
 "for the living, rather than rot and the finality of the tomb."
 msgstr ""
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:4
+#, fuzzy
 msgid "War Harbinger"
-msgstr ""
+msgstr "战争预兆"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:19
+#, fuzzy
 msgid ""
 "Ravens follow armies to feast upon the refuse and corpses that are the fruit "
 "of war. This leads to folk wisdom that the dark birds are agents of the "
@@ -7400,28 +7425,40 @@ msgid ""
 "been seen to wear crude ornaments and lead groups in a noisy chorus of calls "
 "and cries, a reliable sign that war is imminent."
 msgstr ""
+"乌鸦随军而行，以战争遗留的残渣与尸体为食。民间由此流传一种说法：这些黑鸟是象"
+"征冲突的超自然力量的使者。有人目睹体型较大的乌鸦佩戴粗陋饰物，带领鸦群发出嘈"
+"杂的鸣叫，这被视为战争即将爆发的可靠征兆。"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:4
+#, fuzzy
 msgid "Dark Omen"
-msgstr ""
+msgstr "黑暗预兆"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:18
+#, fuzzy
 msgid ""
 "Ravens follow armies to feast upon the refuse and corpses that are the fruit "
 "of war. This leads to folk wisdom that the dark birds are agents of the "
 "supernatural forces associated with conflict. The unusual abilities "
 "displayed by some have only supported this notion."
 msgstr ""
+"乌鸦尾随军队，以战争衍生的垃圾与尸体为食。这一习性催生了民间传说，认为这些黑"
+"色鸟禽是冲突中超自然力量的代言者。某些乌鸦展现出的异常能力，更佐证了这种观"
+"点。"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr "鹏鸟"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:20
+#, fuzzy
 msgid ""
 "In remote desert mountains, far from any city or settlement, enormous "
 "raptors are rumoured to nest in the lofty crags. Travellers and nomads claim "
@@ -7437,6 +7474,15 @@ msgid ""
 "disappear when trying to cross the harsh ranges. If you must traverse the "
 "great deserts, keep an eye to the sky."
 msgstr ""
+"在远离城市与聚落的偏远荒漠群山中，传说有巨型猛禽栖息于高耸的峭壁间。旅人与游"
+"牧民声称目睹过这些怪物毫无预兆地将牲畜甚至成人攫入云霄。尽管不应过分采信沙漠"
+"游荡者的叙述，但比起水手醉酒后的荒诞谎言——他们信誓旦旦说见过装备齐全的船只试"
+"图穿越寸草不生的绝壁狭谷时，被投掷巨石的金雕击沉——这些传说倒显得不那么离"
+"奇。\n"
+"\n"
+"无论这些夸张故事里蕴含多少真实成分，无可否认的是，这片荒漠确是险恶之地。商队"
+"与军队试图穿越严酷山脉时，有时便会消失无踪。若你不得不横跨浩瀚沙海，切记时刻"
+"警惕苍穹之上的动静。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Roc.cfg:75
@@ -7477,12 +7523,13 @@ msgstr "喷射"
 #. [unit_type]: id=Sand Scamperer, race=monster
 #: data/core/units/monsters/Sand_Scamperer.cfg:8
 #, fuzzy
-#| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
 msgstr "凿沙兽"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Sand Scamperer, race=monster
 #: data/core/units/monsters/Sand_Scamperer.cfg:31
+#, fuzzy
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -7490,6 +7537,9 @@ msgid ""
 "energy, making fire and magic-based attacks the most effective way to take "
 "this venomous critter down."
 msgstr ""
+"这令人惊叹的生物在灼热的沙漠沙地上迅速穿行。其躯体覆盖着厚厚的沙色外骨骼，能"
+"吸收一切冲击伤害。但它的外壳高度易燃且对奥术能量极为脆弱，因此火焰与魔法攻击"
+"是制服这种剧毒小兽最有效的手段。"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -7566,10 +7616,12 @@ msgstr ""
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:4
 msgid "Shadow Jumping Spider"
-msgstr ""
+msgstr "影跳蛛"
 
+# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:29
+#, fuzzy
 msgid ""
 "Unlike the feared Giant Spider that uses poison and webs to catch prey, the "
 "Shadow Jumper relies on speed and the element of surprise. These stealthy, "
@@ -7583,6 +7635,13 @@ msgid ""
 "wanderers on the ground below. While they prefer the shadows, they are "
 "perfectly capable of hunting in the broad daylight."
 msgstr ""
+"与那令人畏惧、以毒液和蛛网捕捉猎物的巨型蜘蛛不同，暗影跃行蛛凭借速度与突袭制"
+"胜。这些行动隐秘、目光锐利的猎手悄然潜至攻击距离内，继而扑咬猎物，据说其噬咬"
+"之力可贯穿钢铁。一旦突破猎物的防御，这些蜘蛛便会以与其冷酷天性相符的迅捷姿"
+"态，汲取一切可得的养分。\n"
+"\n"
+"这类巨型跳蛛常与结网近亲共栖于幽暗洞穴，却也游荡于森林冠层，伏击下方地面的不"
+"幸旅人。它们虽偏爱阴影，却完全能在光天化日下展开猎杀。"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -7716,6 +7775,8 @@ msgid ""
 "these great wolves are usually faster and hardier, making even just a single "
 "one a grave threat to an unwary traveler."
 msgstr ""
+"有些狼能长到异常巨大的体型，使其外表格外凶残。这些巨狼虽不比普通狼强壮多少，"
+"但通常更为敏捷且耐力惊人，即便单独一只对毫无戒备的旅行者而言也是致命威胁。"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -9060,7 +9121,6 @@ msgstr "蝎"
 #: data/core/units/undead/Corpse_Soulless.cfg:380
 #: data/core/units/undead/Corpse_Walking.cfg:381
 #, fuzzy
-#| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
 msgstr "蜘蛛"
 
@@ -9398,7 +9458,7 @@ msgstr ""
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr ""
+msgstr "死亡扈从"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -9409,6 +9469,9 @@ msgid ""
 "pick up a good deal of the Knight’s power, including the ability to command "
 "underlings."
 msgstr ""
+"某些时候最强大的将军和战士，受仇恨和恐怖的诅咒，作为死亡骑士重新来到这个世"
+"界。死亡扈从服务他们以获得足够的邪恶力量从而变成死亡骑士。在此过程他们很好的"
+"学会运用骑士的力量，包括指挥属下的能力。"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -9758,14 +9821,14 @@ msgid ""
 "this craft can only be speculated on by other races."
 msgstr ""
 
+#~ msgid "Galleons are blue-water ships built for trade and transport."
+#~ msgstr "大帆船是为商业和运输制造的海船。"
+
 #~ msgid "forceful scimitar strike"
 #~ msgstr "强力弯刀打击"
 
 #~ msgid "balanced scimitar slash"
 #~ msgstr "平衡弯刀砍击"
-
-#~ msgid "Galleons are blue-water ships built for trade and transport."
-#~ msgstr "大帆船是为商业和运输制造的海船。"
 
 #~ msgid "gossamer"
 #~ msgstr "蛛丝"
@@ -9801,30 +9864,3 @@ msgstr ""
 #~ "These woses are able to command forest plants such as vines and creepers "
 #~ "to hinder their enemies."
 #~ msgstr "这些树人会指挥森林植物，例如藤蔓来阻碍敌人。"
-
-#~ msgid ""
-#~ "Far from human cities in the great desert mountains, the large birds of "
-#~ "prey known as Rocs can sometimes be found rapidly scouring the sands on "
-#~ "their hunts. Despite their large size, Rocs tend to be reclusive and are "
-#~ "only rarely encountered by other sapient races. Their elusive nature has "
-#~ "raised them to near mythological status, particularly among the nomads of "
-#~ "the deserts.\n"
-#~ "\n"
-#~ "Unlike other avians, such as falcons or hawks, the individualistic and "
-#~ "intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer "
-#~ "its aid to a traveler in need, usually in exchange for a small trinket or "
-#~ "shiny bauble."
-#~ msgstr ""
-#~ "在远离人类城市的大沙漠的山脉中，有时可以发现被称为鹏鸟的大型猛禽飞快地掠过"
-#~ "沙地，搜寻猎物。鹏鸟尽管体型庞大，但喜欢隐居，其他有智慧的种族很少遇到它"
-#~ "们。这种避世的本性把它们提升到了接近神话般的地位，特别是在沙漠的游牧民族之"
-#~ "中。\n"
-#~ "\n"
-#~ "与其他鸟类，如隼或雕不同，独立而聪慧的鹏鸟几乎是不可驯服的。偶尔，鹏鸟会向"
-#~ "有需要的旅行者提供帮助，通常是为了换取一个小饰品或闪亮的小玩意。"
-
-#~ msgid "Giant Stoat"
-#~ msgstr "巨鼬"
-
-#~ msgid "Giant Stoats are obsolete, use Frost Stoat."
-#~ msgstr "巨鼬已经过时，请使用霜鼬。"
