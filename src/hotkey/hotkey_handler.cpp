@@ -486,19 +486,19 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	switch(cmd.hotkey_command) {
 
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (prefs::get().minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_villages());
 	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-		return (prefs::get().minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_movement_coding());
 	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (prefs::get().minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_terrain_coding());
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-		return (prefs::get().minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_units());
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (prefs::get().minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_terrain());
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
-		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(gui()->get_zoom_factor() == 1.0);
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return gui()->viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return hotkey::on_if(gui()->viewing_team().auto_shroud_updates() == false);
 	default:
 		return hotkey::ACTION_STATELESS;
 	}

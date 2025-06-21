@@ -25,6 +25,18 @@ namespace hotkey {
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF, ACTION_SELECTED, ACTION_DESELECTED };
 
+/** Returns ACTION_ON if @a condition is true, else ACTION_OFF. */
+inline ACTION_STATE on_if(bool condition)
+{
+	return condition ? ACTION_ON : ACTION_OFF;
+}
+
+/** Returns ACTION_SELECTED if @a condition is true, else ACTION_DESELECTED. */
+inline ACTION_STATE selected_if(bool condition)
+{
+	return condition ? ACTION_SELECTED : ACTION_DESELECTED;
+}
+
 /// Used as the main parameter for can_execute_command/do_execute_command
 /// These functions are used to execute hotkeys but also to execute menu items,
 /// (Most menu items point to the same action as a hotkey but not all)
