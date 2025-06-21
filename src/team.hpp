@@ -18,7 +18,6 @@
 #include "color_range.hpp"
 #include "config.hpp"
 #include "defeat_condition.hpp"
-#include "game_config.hpp"
 #include "game_events/fwd.hpp"
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
@@ -181,7 +180,7 @@ public:
 	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
 	int raw_income() const { return info_.income; }
-	int base_income() const { return info_.income + game_config::base_income; }
+	int base_income() const;
 	int village_gold() const { return info_.income_per_village; }
 	int recall_cost() const { return info_.recall_cost; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
@@ -200,7 +199,7 @@ public:
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { info_.gold -= amount; }
 	void set_raw_income(int amount) { info_.income = amount; }
-	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
+	void set_base_income(int amount);
 	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
 	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
