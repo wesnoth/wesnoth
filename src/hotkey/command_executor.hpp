@@ -21,9 +21,21 @@
 
 class display;
 
-namespace hotkey {
+namespace hotkey
+{
+enum class action_state { stateless, on, off, selected, deselected };
 
-enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF, ACTION_SELECTED, ACTION_DESELECTED };
+/** Returns action_state::on if @a condition is true, else action_state::off. */
+inline action_state on_if(bool condition)
+{
+	return condition ? action_state::on : action_state::off;
+}
+
+/** Returns action_state::selected if @a condition is true, else action_state::deselected. */
+inline action_state selected_if(bool condition)
+{
+	return condition ? action_state::selected : action_state::deselected;
+}
 
 /// Used as the main parameter for can_execute_command/do_execute_command
 /// These functions are used to execute hotkeys but also to execute menu items,
@@ -157,7 +169,7 @@ public:
 	// Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(const hotkey::ui_command&) const { return ""; }
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
-	virtual ACTION_STATE get_action_state(const hotkey::ui_command&) const { return ACTION_STATELESS; }
+	virtual action_state get_action_state(const hotkey::ui_command&) const { return action_state::stateless; }
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.

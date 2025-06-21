@@ -96,7 +96,7 @@ class editor_controller : public controller_base,
 		bool can_execute_command(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(const hotkey::ui_command& command) const override;
+		hotkey::action_state get_action_state(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
 		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;

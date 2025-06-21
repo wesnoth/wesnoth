@@ -110,7 +110,7 @@ public:
 
 	virtual std::string get_action_image(const hotkey::ui_command&) const override;
 	virtual void load_autosave(const std::string& filename, bool start_replay = false);
-	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
+	virtual hotkey::action_state get_action_state(const hotkey::ui_command&) const override;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;

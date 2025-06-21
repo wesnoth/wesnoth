@@ -462,7 +462,7 @@ std::string command_executor::get_menu_image(const std::string& command, int ind
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
 	hotkey::ui_command cmd = hotkey::ui_command(command, index);
-	const hotkey::ACTION_STATE state = get_action_state(cmd);
+	const hotkey::action_state state = get_action_state(cmd);
 
 	const theme::menu* menu = display::get_singleton()->get_theme().get_menu_item(command);
 	if (menu) {
@@ -471,8 +471,8 @@ std::string command_executor::get_menu_image(const std::string& command, int ind
 
 	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
-			case ACTION_ON:
-			case ACTION_SELECTED:
+			case action_state::on:
+			case action_state::selected:
 				return pressed_image_name + "~CROP(3,3,18,18)";
 			default:
 				return base_image_name + "~CROP(3,3,18,18)";
@@ -480,13 +480,13 @@ std::string command_executor::get_menu_image(const std::string& command, int ind
 	}
 
 	switch (get_action_state(cmd)) {
-		case ACTION_ON:
+		case action_state::on:
 			return game_config::images::checked_menu;
-		case ACTION_OFF:
+		case action_state::off:
 			return game_config::images::unchecked_menu;
-		case ACTION_SELECTED:
+		case action_state::selected:
 			return game_config::images::selected_menu;
-		case ACTION_DESELECTED:
+		case action_state::deselected:
 			return game_config::images::deselected_menu;
 		default: return get_action_image(cmd);
 	}
@@ -705,17 +705,17 @@ void command_executor_default::set_button_state()
 			if (!can_execute) continue;
 			enabled = true;
 
-			ACTION_STATE state = get_action_state(command_obj);
+			action_state state = get_action_state(command_obj);
 			switch (state) {
-			case ACTION_SELECTED:
-			case ACTION_ON:
+			case action_state::selected:
+			case action_state::on:
 				button->set_check(true);
 				break;
-			case ACTION_OFF:
-			case ACTION_DESELECTED:
+			case action_state::off:
+			case action_state::deselected:
 				button->set_check(false);
 				break;
-			case ACTION_STATELESS:
+			case action_state::stateless:
 				break;
 			default:
 				break;
