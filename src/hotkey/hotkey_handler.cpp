@@ -481,7 +481,7 @@ std::string play_controller::hotkey_handler::get_action_image(const hotkey::ui_c
 	return command_executor::get_action_image(cmd);
 }
 
-hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
+hotkey::action_state play_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
 	switch(cmd.hotkey_command) {
 
@@ -500,7 +500,7 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return hotkey::on_if(gui()->viewing_team().auto_shroud_updates() == false);
 	default:
-		return hotkey::ACTION_STATELESS;
+		return hotkey::action_state::stateless;
 	}
 }
 

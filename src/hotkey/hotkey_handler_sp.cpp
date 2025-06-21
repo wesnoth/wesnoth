@@ -193,7 +193,7 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 
-hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
+hotkey::action_state playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
 	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_WB_TOGGLE:
