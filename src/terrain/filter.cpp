@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

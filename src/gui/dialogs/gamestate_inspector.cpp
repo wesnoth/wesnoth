@@ -25,6 +25,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_config.hpp"
 #include "serialization/markup.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
