@@ -30,6 +30,7 @@
 #include "resources.hpp"
 #include "ai/lua/core.hpp"
 #include "ai/lua/lua_object.hpp"
+#include "game_config.hpp"
 #include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "units/unit.hpp"

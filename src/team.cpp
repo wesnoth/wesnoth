@@ -23,6 +23,7 @@
 #include "ai/manager.hpp"
 #include "color.hpp"
 #include "formula/string_utils.hpp"     // for VGETTEXT
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
 #include "lexical_cast.hpp"
@@ -409,6 +410,16 @@ void team::write(config& cfg) const
 
 	cfg["countdown_time"] = countdown_time_;
 	cfg["action_bonus_count"] = action_bonus_count_;
+}
+
+int team::base_income() const
+{
+	return info_.income + game_config::base_income;
+}
+
+void team::set_base_income(int amount)
+{
+	info_.income = amount - game_config::base_income;
 }
 
 void team::fix_villages(const gamemap &map)
