@@ -540,7 +540,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	}
 }
 
-hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_command& cmd) const
+hotkey::action_state editor_controller::get_action_state(const hotkey::ui_command& cmd) const
 {
 	using namespace hotkey;
 	int index = cmd.index;
@@ -625,13 +625,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		case editor::MAP:
 			return hotkey::selected_if(index == context_manager_->current_context_index());
 		case editor::LOAD_MRU:
-			return ACTION_STATELESS;
+			return hotkey::action_state::stateless;
 		case editor::PALETTE:
-			return ACTION_STATELESS;
+			return hotkey::action_state::stateless;
 		case editor::AREA:
 			return hotkey::selected_if(index == get_current_map_context().get_active_area());
 		case editor::ADDON:
-			return ACTION_STATELESS;
+			return hotkey::action_state::stateless;
 		case editor::SIDE:
 			return hotkey::selected_if(static_cast<std::size_t>(index) == gui_->playing_team_index());
 		case editor::TIME:
@@ -665,7 +665,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 				return hotkey::selected_if(un->facing() == map_location::direction{index});
 			}
 		}
-		return ACTION_ON;
+		return hotkey::action_state::on;
 		default:
 			return command_executor::get_action_state(cmd);
 	}
