@@ -180,6 +180,7 @@ public:
 	int side() const { return info_.side; }
 	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
+	int raw_income() const { return info_.income; }
 	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
 	int recall_cost() const { return info_.recall_cost; }
@@ -198,6 +199,7 @@ public:
 	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { info_.gold -= amount; }
+	void set_raw_income(int amount) { info_.income = amount; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
 	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
