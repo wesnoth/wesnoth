@@ -197,7 +197,7 @@ hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(con
 {
 	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_WB_TOGGLE:
-		return whiteboard_manager_->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(whiteboard_manager_->is_active());
 	default:
 		return play_controller::hotkey_handler::get_action_state(cmd);
 	}

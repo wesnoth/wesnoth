@@ -550,50 +550,45 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 	{
 		unit_map::const_unit_iterator un =
 				get_current_map_context().units().find(gui_->mouseover_hex());
-		return un->loyal() ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(un->loyal());
 
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 	{
 		unit_map::const_unit_iterator un =
 				get_current_map_context().units().find(gui_->mouseover_hex());
-		return un->can_recruit() ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(un->can_recruit());
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 	{
 		unit_map::const_unit_iterator un =
 				get_current_map_context().units().find(gui_->mouseover_hex());
-		return (!un->unrenamable()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(!un->unrenamable());
 	}
 	//TODO remove hardcoded hotkey names
 	case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-		return context_manager_->is_active_transitions_hotkey("editor-auto-update-transitions")
-				? ACTION_SELECTED : ACTION_DESELECTED;
+		return hotkey::selected_if(context_manager_->is_active_transitions_hotkey("editor-auto-update-transitions"));
 	case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
-		return context_manager_->is_active_transitions_hotkey("editor-partial-update-transitions")
-				? ACTION_SELECTED : ACTION_DESELECTED;
+		return hotkey::selected_if(context_manager_->is_active_transitions_hotkey("editor-partial-update-transitions"));
 	case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
-		return context_manager_->is_active_transitions_hotkey("editor-no-update-transitions")
-				? ACTION_SELECTED : ACTION_DESELECTED;
+		return hotkey::selected_if(context_manager_->is_active_transitions_hotkey("editor-no-update-transitions"));
 	case HOTKEY_EDITOR_BRUSH_1:
-		return toolkit_->is_active_brush("brush-1") ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_active_brush("brush-1"));
 	case HOTKEY_EDITOR_BRUSH_2:
-		return toolkit_->is_active_brush("brush-2") ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_active_brush("brush-2"));
 	case HOTKEY_EDITOR_BRUSH_3:
-		return toolkit_->is_active_brush("brush-3") ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_active_brush("brush-3"));
 	case HOTKEY_EDITOR_BRUSH_NW_SE:
-		return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_active_brush("brush-nw-se"));
 	case HOTKEY_EDITOR_BRUSH_SW_NE:
-		return toolkit_->is_active_brush("brush-sw-ne") ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_active_brush("brush-sw-ne"));
 
 	case HOTKEY_TOGGLE_GRID:
-		return prefs::get().grid() ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().grid());
 	case HOTKEY_EDITOR_SELECT_ALL:
-		return get_current_map_context().map().everything_selected() ?
-				ACTION_SELECTED : ACTION_DESELECTED;
+		return hotkey::selected_if(get_current_map_context().map().everything_selected());
 	case HOTKEY_EDITOR_SELECT_NONE:
-		return get_current_map_context().map().selection().empty() ?
-				ACTION_SELECTED : ACTION_DESELECTED;
+		return hotkey::selected_if(get_current_map_context().map().selection().empty());
 	case HOTKEY_EDITOR_TOOL_FILL:
 	case HOTKEY_EDITOR_TOOL_LABEL:
 	case HOTKEY_EDITOR_TOOL_PAINT:
@@ -603,62 +598,56 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 	case HOTKEY_EDITOR_TOOL_UNIT:
 	case HOTKEY_EDITOR_TOOL_VILLAGE:
 	case HOTKEY_EDITOR_TOOL_ITEM:
-		return toolkit_->is_mouse_action_set(cmd.hotkey_command) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(toolkit_->is_mouse_action_set(cmd.hotkey_command));
 	case HOTKEY_EDITOR_DRAW_COORDINATES:
-		return gui_->debug_flag_set(display::DEBUG_COORDINATES) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(gui_->debug_flag_set(display::DEBUG_COORDINATES));
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-		return gui_->debug_flag_set(display::DEBUG_TERRAIN_CODES) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(gui_->debug_flag_set(display::DEBUG_TERRAIN_CODES));
 	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
-		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS));
 	case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
-		return gui_->help_string_enabled() ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(gui_->help_string_enabled());
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (prefs::get().minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_villages());
 	case HOTKEY_MINIMAP_CODING_UNIT:
-		return (prefs::get().minimap_movement_coding()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_movement_coding());
 	case HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (prefs::get().minimap_terrain_coding()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_terrain_coding());
 	case HOTKEY_MINIMAP_DRAW_UNITS:
-		return (prefs::get().minimap_draw_units()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_units());
 	case HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (prefs::get().minimap_draw_terrain()) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(prefs::get().minimap_draw_terrain());
 	case HOTKEY_ZOOM_DEFAULT:
-		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
+		return hotkey::on_if(gui_->get_zoom_factor() == 1.0);
 
 	case HOTKEY_NULL:
 		switch (active_menu_) {
 		case editor::MAP:
-			return index == context_manager_->current_context_index()
-					? ACTION_SELECTED : ACTION_DESELECTED;
+			return hotkey::selected_if(index == context_manager_->current_context_index());
 		case editor::LOAD_MRU:
 			return ACTION_STATELESS;
 		case editor::PALETTE:
 			return ACTION_STATELESS;
 		case editor::AREA:
-			return index == get_current_map_context().get_active_area()
-					? ACTION_SELECTED : ACTION_DESELECTED;
+			return hotkey::selected_if(index == get_current_map_context().get_active_area());
 		case editor::ADDON:
 			return ACTION_STATELESS;
 		case editor::SIDE:
-			return static_cast<std::size_t>(index) == gui_->playing_team_index()
-					? ACTION_SELECTED : ACTION_DESELECTED;
+			return hotkey::selected_if(static_cast<std::size_t>(index) == gui_->playing_team_index());
 		case editor::TIME:
-			return index ==	get_current_map_context().get_time_manager()->get_current_time()
-					? ACTION_SELECTED : ACTION_DESELECTED;
+			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_time());
 		case editor::LOCAL_TIME:
-			return index ==	get_current_map_context().get_time_manager()->get_current_area_time(
-					get_current_map_context().get_active_area())
-					? ACTION_SELECTED : ACTION_DESELECTED;
+			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_area_time(
+				get_current_map_context().get_active_area()));
 		case editor::MUSIC:
-			return get_current_map_context().is_in_playlist(music_tracks_[index].id())
-					? ACTION_ON : ACTION_OFF;
+			return hotkey::on_if(get_current_map_context().is_in_playlist(music_tracks_[index].id()));
 		case editor::SCHEDULE:
 			{
 				tods_map::const_iterator it = tods_.begin();
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times();
-				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
+				return hotkey::selected_if(times1 == times2);
 			}
 		case editor::LOCAL_SCHEDULE:
 			{
@@ -667,13 +656,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 				const std::vector<time_of_day>& times1 = it->second.second;
 				int active_area = get_current_map_context().get_active_area();
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times(active_area);
-				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
+				return hotkey::selected_if(times1 == times2);
 			}
 		case editor::UNIT_FACING:
 			{
 				unit_map::const_unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
 				assert(un != get_current_map_context().units().end());
-				return un->facing() == map_location::direction{index} ? ACTION_SELECTED : ACTION_DESELECTED;
+				return hotkey::selected_if(un->facing() == map_location::direction{index});
 			}
 		}
 		return ACTION_ON;
