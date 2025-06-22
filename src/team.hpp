@@ -179,35 +179,35 @@ public:
 	int side() const { return info_.side; }
 	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
-	
+
 	/**
 	 * @return The income for this side exactly as defined in the [side] tag.
 	 */
 	int raw_income() const { return info_.income; }
-	
+
 	/**
 	 * @return The income for this side as defined in the [side] tag
 	 *         with base income from [game_config] added.
 	 */
 	int base_income() const;
-	
+
 	int village_gold() const { return info_.income_per_village; }
 	int recall_cost() const { return info_.recall_cost; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	void set_recall_cost(int cost) { info_.recall_cost = cost; }
 	int total_income() const { return base_income() + static_cast<int>(villages_.size()) * info_.income_per_village; }
-	
+
 	/**
 	 *  @return The number of unit levels each village can support,
 	 *          i.e. how much upkeep each village can bear.
 	 */
 	int village_support() const { return info_.support_per_village; }
-	
+
 	/**
 	 *  @param support   The number of unit levels each village can support
 	 */
 	void set_village_support(int support) { info_.support_per_village = support; }
-	
+
 	/**
 	 *  @return Calculated total support capacity, based on support_per_village.
 	 */
@@ -217,14 +217,14 @@ public:
 	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { info_.gold -= amount; }
-	
+
 	/**
 	 *  Sets the income of this side to the given value.
 	 *  Base income from `[game_config]` is not added.
 	 *  @param amount   The income amount
 	 */
 	void set_raw_income(int amount) { info_.income = amount; }
-	
+
 	/**
 	 *  Sets the income of this side to the given value with
 	 *  base income from `[game_config]` added to it.
