@@ -238,6 +238,10 @@ void mp_create_game::pre_show()
 		find_widget<button>("load_game"),
 		std::bind(&mp_create_game::load_game_callback, this));
 
+	connect_signal_mouse_left_click(
+		find_widget<button>("save_preset"),
+		std::bind(&mp_create_game::save_preset, this));
+
 	// Custom dialog close hook
 	set_exit_hook(window::exit_hook::ok_only, [this] { return dialog_exit_hook(); });
 
@@ -873,6 +877,31 @@ void mp_create_game::load_game_callback()
 	}
 
 	set_retval(LOAD_GAME);
+}
+
+void mp_create_game::save_preset()
+{
+	config root;
+	config& preset = root.add_child("game_preset");
+	preset["scenario"] = create_engine_.current_level().id();
+	preset["era"] = create_engine_.current_era().id;
+	preset["fog"] = fog_->get_widget_value();
+	preset["shroud"] = shroud_->get_widget_value();
+	preset["village_gold"] = gold_->get_widget_value();
+	preset["village_support"] = support_->get_widget_value();
+	preset["experience_modifier"] = experience_->get_widget_value();
+	preset["countdown"] = time_limit_->get_widget_value();
+	preset["countdown_turn_limit"] = init_turn_limit_->get_widget_value();
+	preset["countdown_action_bonus"] = action_bonus_->get_widget_value();
+	preset["countdown_turn_bonus"] = turn_bonus_->get_widget_value();
+	preset["countdown_reservoir"] = reservoir_->get_widget_value();
+	preset["random_start_time"] = start_time_->get_widget_value();
+	preset["shuffle_sides"] = shuffle_sides_->get_widget_value();
+	preset["turns"] = turns_->get_widget_value();
+	preset["observer"] = observers_->get_widget_value();
+	preset["use_map_settings"] = use_map_settings_->get_widget_value();
+
+	prefs::get().add_game_preset(root);
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()

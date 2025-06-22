@@ -63,7 +63,7 @@ public:
 		OBSERVE,
 		CREATE, /** player clicked the Create button */
 		RELOAD_CONFIG,
-		CREATE_PRESET /** player clicked Join button on an [mp_queue] game, but there was no existing game to join */
+		CREATE_PRESET
 	};
 
 	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; }
@@ -103,6 +103,8 @@ private:
 
 	/** Entry wrapper for @ref enter_game, where game is located by game id. */
 	void enter_game_by_id(const int game_id, JOIN_MODE mode);
+
+	void delete_preset(const int game_id);
 
 	/** Enter game by index, where index is the selected game listbox row. */
 	void enter_selected_game(JOIN_MODE mode);
@@ -152,6 +154,7 @@ private:
 	field_bool* filter_slots_;
 	field_bool* filter_invert_;
 	bool filter_auto_hosted_;
+	bool filter_game_presets_;
 
 	text_box* filter_text_;
 

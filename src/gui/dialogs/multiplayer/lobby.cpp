@@ -92,6 +92,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  [](bool v) {prefs::get().set_fi_invert(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_auto_hosted_(false)
+	, filter_game_presets_(false)
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
@@ -506,8 +507,28 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 		return;
 	}
 
+	//
+	// Presets buttons
+	//
+	if(game.game_preset) {
+		button& delete_preset = grid->find_widget<button>("delete_preset");
+
+		connect_signal_mouse_left_click(delete_preset, std::bind(&mp_lobby::delete_preset, this, game.id));
+	} else {
+		grid->find_widget<button>("delete_preset").set_visible(widget::visibility::invisible);
+	}
+
+	//
+	// Enter game by double clicking row
+	//
 	connect_signal_mouse_left_double_click(row_panel,
 		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
+}
+
+void mp_lobby::delete_preset(const int game_id)
+{
+	prefs::get().remove_game_preset(game_id);
+	refresh_lobby();
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -691,6 +712,7 @@ void mp_lobby::pre_show()
 void mp_lobby::tab_switch_callback()
 {
 	filter_auto_hosted_ = find_widget<listbox>("games_list_tab_bar").get_selected_row() == 1;
+	filter_game_presets_ = find_widget<listbox>("games_list_tab_bar").get_selected_row() == 2;
 	update_gamelist_filter();
 }
 
@@ -988,30 +1010,46 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	join_data["mp_scenario"] = game.scenario_id;
 	mp::send_to_server(response);
 
-	if(game.id >= 0) {
-		joined_game_id_ = game.id;
+	joined_game_id_ = game.id;
 
-		// We're all good. Close lobby and proceed to game!
-		set_retval(try_join ? JOIN : OBSERVE);
-	}
+	// We're all good. Close lobby and proceed to game!
+	set_retval(try_join ? JOIN : OBSERVE);
 }
 
 void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 {
-	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
+	if(!filter_game_presets_) {
+		mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
 
-	if(!game_ptr) {
-		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
-		return;
+		if(!game_ptr) {
+			ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
+			return;
+		}
+
+		enter_game(*game_ptr, mode);
+	} else {
+		enter_selected_game(mode);
 	}
-
-	enter_game(*game_ptr, mode);
 }
 
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
+	if(!filter_game_presets_) {
 	auto index = gamelistbox_->get_selected_row();
 	enter_game(*lobby_info_.games().at(index), mode);
+	} else {
+		mp::game_info* game = lobby_info_.games().at(gamelistbox_->get_selected_row());
+		if(game) {
+			optional_const_config preset = prefs::get().get_game_preset(game->id);
+
+			if(preset) {
+				queue_game_scenario_id_ = preset["scenario"].str();
+				queue_game_server_preset_ = *preset;
+				queue_id_ = preset["id"].to_int();
+				set_retval(CREATE_PRESET);
+			}
+		}
+	}
 }
 
 void mp_lobby::refresh_lobby()
@@ -1062,6 +1100,10 @@ void mp_lobby::game_filter_init()
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		return info.auto_hosted == filter_auto_hosted_;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return info.game_preset == filter_game_presets_;
 	});
 
 	lobby_info_.set_game_filter_invert(

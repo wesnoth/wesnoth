@@ -611,15 +611,7 @@ void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario,
 	// else look for them locally
 	if(preset_scenario && server_preset) {
 		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(queue_type::type::server_preset, queue_id);
-	} else if(preset_scenario && !server_preset) {
-		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
-			if(game["scenario"].str() == preset_scenario.value()) {
-				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(queue_type::type::client_preset);
-				return;
-			}
-		}
+		enter_staging_mode(queue_id >= 0 ? queue_type::type::server_preset : queue_type::type::normal, queue_id);
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {

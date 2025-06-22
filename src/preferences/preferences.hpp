@@ -369,6 +369,11 @@ public:
 	bool is_campaign_completed(const std::string& campaign_id);
 	bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level);
 
+	void add_game_preset(config& preset);
+	void remove_game_preset(int id);
+	std::vector<config> get_game_presets();
+	optional_const_config get_game_preset(int id);
+
 	const std::vector<game_config::server_info>& builtin_servers_list();
 	std::vector<game_config::server_info> user_servers_list();
 	void set_user_servers_list(const std::vector<game_config::server_info>& value);
@@ -840,6 +845,7 @@ private:
 		prefs_list::history,
 		prefs_list::options,
 		prefs_list::server,
+		prefs_list::game_preset,
 	};
 	static constexpr std::array unsynced_attributes_{
 		prefs_list::auto_pixel_scale,
