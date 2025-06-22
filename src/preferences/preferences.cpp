@@ -1553,11 +1553,11 @@ const std::vector<game_config::server_info>& prefs::builtin_servers_list()
 void prefs::add_game_preset(config& preset)
 {
 	if(preset.has_child(prefs_list::game_preset) && preset.all_children_count() == 1 && preset.attribute_count() == 0) {
-		int max = 0;
+		int min = 0;
 		for(const auto& c : preferences_.child_range(prefs_list::game_preset)) {
-			max = std::min(max, c["id"].to_int());
+			min = std::min(min, c["id"].to_int());
 		}
-		preset.mandatory_child(prefs_list::game_preset)["id"] = max-1;
+		preset.mandatory_child(prefs_list::game_preset)["id"] = min-1;
 		preferences_.append(preset);
 	}
 }
