@@ -196,6 +196,7 @@ void drop_down_menu::pre_show()
 			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
+			checkbox->set_linked_group("icons");
 
 			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
 			if(parent_) {
