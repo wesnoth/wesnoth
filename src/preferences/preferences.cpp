@@ -1578,7 +1578,7 @@ std::vector<config> prefs::get_game_presets()
 
 optional_const_config prefs::get_game_preset(int id)
 {
-	return preferences_.find_child(std::string(prefs_list::game_preset), "id", std::to_string(id));
+	return preferences_.find_child(prefs_list::game_preset, "id", std::to_string(id));
 }
 
 std::vector<game_config::server_info> prefs::user_servers_list()
