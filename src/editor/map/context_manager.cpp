@@ -214,7 +214,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Load Map"))
+	dlg.set_title(_("Load Map or Scenario"))
 	   .set_path(fn);
 
 	if(dlg.show()) {
