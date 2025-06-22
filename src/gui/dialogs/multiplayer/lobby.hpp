@@ -101,9 +101,6 @@ private:
 	 */
 	void enter_game(const mp::game_info& game, JOIN_MODE mode);
 
-	/** Entry wrapper for @ref enter_game, where game is located by index. */
-	void enter_game_by_index(const int index, JOIN_MODE mode);
-
 	/** Entry wrapper for @ref enter_game, where game is located by game id. */
 	void enter_game_by_id(const int game_id, JOIN_MODE mode);
 
