@@ -1046,7 +1046,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 	for(const auto [key, cfg] : specials_.all_children_view()) {
 		if(checking_tags.count(key) != 0) {
 			const bool active = special_active(cfg, AFFECT_SELF, key);
-			add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
+			add_name(temp_string, active, cfg["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
@@ -1067,7 +1067,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 		for(const auto [key, cfg] : other_attack_->specials_.all_children_view()) {
 			if((checking_tags.count(key) != 0)){
 				const bool active = other_attack_->special_active(cfg, AFFECT_OTHER, key);
-				add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
+				add_name(temp_string, active, cfg["name"].str(), checking_name);
 			}
 		}
 	}
