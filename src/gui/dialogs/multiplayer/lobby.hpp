@@ -66,7 +66,6 @@ public:
 		CREATE_PRESET
 	};
 
-	const std::string queue_game_scenario_id() const { return queue_game_scenario_id_; }
 	const config queue_game_server_preset() const { return queue_game_server_preset_; }
 	int queue_id() const { return queue_id_; }
 
@@ -183,7 +182,6 @@ private:
 
 	int& joined_game_id_;
 
-	std::string queue_game_scenario_id_;
 	config queue_game_server_preset_;
 	int queue_id_;
 

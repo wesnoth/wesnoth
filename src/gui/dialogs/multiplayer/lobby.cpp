@@ -106,7 +106,6 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
-	, queue_game_scenario_id_()
 	, queue_game_server_preset_()
 {
 	set_show_even_without_video(true);
@@ -849,7 +848,6 @@ void mp_lobby::process_network_data(const config& data)
 			return;
 		}
 	} else if(auto create = data.optional_child("create_game")) {
-		queue_game_scenario_id_ = create["mp_scenario"].str();
 		queue_game_server_preset_ = create.value().mandatory_child("game");
 		queue_id_ = create["queue_id"].to_int();
 		set_retval(CREATE_PRESET);
@@ -1035,15 +1033,14 @@ void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
 	if(!filter_game_presets_) {
-	auto index = gamelistbox_->get_selected_row();
-	enter_game(*lobby_info_.games().at(index), mode);
+		auto index = gamelistbox_->get_selected_row();
+		enter_game(*lobby_info_.games().at(index), mode);
 	} else {
 		mp::game_info* game = lobby_info_.games().at(gamelistbox_->get_selected_row());
 		if(game) {
 			optional_const_config preset = prefs::get().get_game_preset(game->id);
 
 			if(preset) {
-				queue_game_scenario_id_ = preset["scenario"].str();
 				queue_game_server_preset_ = *preset;
 				queue_id_ = preset["id"].to_int();
 				set_retval(CREATE_PRESET);

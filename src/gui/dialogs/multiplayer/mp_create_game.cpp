@@ -901,7 +901,7 @@ void mp_create_game::save_preset()
 	preset["observer"] = observers_->get_widget_value();
 	preset["use_map_settings"] = use_map_settings_->get_widget_value();
 
-	prefs::get().add_game_preset(root);
+	prefs::get().add_game_preset(std::move(root));
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()

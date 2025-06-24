@@ -369,9 +369,9 @@ public:
 	bool is_campaign_completed(const std::string& campaign_id);
 	bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level);
 
-	void add_game_preset(config& preset);
+	void add_game_preset(config&& preset_data);
 	void remove_game_preset(int id);
-	std::vector<config> get_game_presets();
+	config::child_itors get_game_presets();
 	optional_const_config get_game_preset(int id);
 
 	const std::vector<game_config::server_info>& builtin_servers_list();

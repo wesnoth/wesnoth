@@ -1550,8 +1550,10 @@ const std::vector<game_config::server_info>& prefs::builtin_servers_list()
 	return pref_servers;
 }
 
-void prefs::add_game_preset(config& preset)
+void prefs::add_game_preset(config&& preset_data)
 {
+	config preset{ prefs_list::game_preset, std::move(preset_data) };
+
 	if(preset.has_child(prefs_list::game_preset) && preset.all_children_count() == 1 && preset.attribute_count() == 0) {
 		int min = 0;
 		for(const auto& c : preferences_.child_range(prefs_list::game_preset)) {
@@ -1567,13 +1569,9 @@ void prefs::remove_game_preset(int id)
 	preferences_.remove_children(prefs_list::game_preset, [&id](const config& preset) {return preset["id"] == id;});
 }
 
-std::vector<config> prefs::get_game_presets()
+config::child_itors prefs::get_game_presets()
 {
-	std::vector<config> presets;
-	for(const config& preset : preferences_.child_range(prefs_list::game_preset)) {
-		presets.emplace_back(preset);
-	}
-	return presets;
+	return preferences_.child_range(prefs_list::game_preset);
 }
 
 optional_const_config prefs::get_game_preset(int id)
