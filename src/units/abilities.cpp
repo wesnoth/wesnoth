@@ -77,6 +77,26 @@ namespace {
 			}
 		}
 	};
+
+	// TODO this method should be more generic, so that it can substitute more [special] keys
+	/** Substitute $type for plague special */
+	std::string substitute_plague_type(const std::string& str, const std::string& tag_name, const config& ability_or_special) {
+		if(tag_name == "plague") {
+			// Only [plague] supports a type key
+			const auto iter = unit_types.types().find(ability_or_special["type"]);
+
+			// TODO: warn if an invalid type is specified?
+			if(iter == unit_types.types().end()) {
+				return str;
+			}
+
+			const unit_type& type = iter->second;
+			utils::string_map symbols{{ "type", type.type_name() }};
+			return utils::interpolate_variables_into_string(str, &symbols);
+		}
+
+		return str;
+	}
 }
 
 /*
@@ -311,17 +331,17 @@ namespace {
 	 *
 	 * @returns Whether name was resolved and quadruple added.
 	 */
-	bool add_ability_tooltip(const config& ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
+	bool add_ability_tooltip(const config& ab, const std::string& tag_name, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
 	{
-		if (active) {
+		if(active) {
 			const t_string& name = gender_value(ab, gender, "name", "female_name", "name").t_str();
 
-			if (!name.empty()) {
+			if(!name.empty()) {
 				res.emplace_back(
 						ab["id"],
 						ab["name"].t_str(),
-						name,
-						ab["description"].t_str() );
+						substitute_plague_type(name, tag_name, ab),
+						substitute_plague_type(ab["description"].t_str(), tag_name, ab));
 				return true;
 			}
 		} else {
@@ -331,13 +351,14 @@ namespace {
 						"female_name_inactive", "name_inactive");
 			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
 				gender_value(ab, gender, "name", "female_name", "name").t_str();
+			const t_string& desc = ab.get_or("description_inactive", "description").t_str();
 
-			if (!name.empty()) {
+			if(!name.empty()) {
 				res.emplace_back(
 						ab["id"],
 						ab.get_or("name_inactive", "name").t_str(),
-						name,
-						ab.get_or("description_inactive", "description").t_str() );
+						substitute_plague_type(name, tag_name, ab),
+						substitute_plague_type(desc, tag_name, ab));
 				return true;
 			}
 		}
@@ -350,9 +371,9 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 {
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 
-	for(const auto [_, cfg] : this->abilities_.all_children_view())
+	for(const auto [tag_name, cfg] : abilities_.all_children_view())
 	{
-		add_ability_tooltip(cfg, gender_, res, true);
+		add_ability_tooltip(cfg, tag_name, gender_, res, true);
 	}
 
 	return res;
@@ -363,10 +384,10 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	active_list.clear();
 
-	for(const auto [key, cfg] : this->abilities_.all_children_view())
+	for(const auto [tag_name, cfg] : abilities_.all_children_view())
 	{
-		bool active = ability_active(key, cfg, loc);
-		if (add_ability_tooltip(cfg, gender_, res, active))
+		bool active = ability_active(tag_name, cfg, loc);
+		if(add_ability_tooltip(cfg, tag_name, gender_, res, active))
 		{
 			active_list.push_back(active);
 		}
@@ -820,6 +841,7 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
 	if(simple_check && specials().has_child(special)) {
 		return true;
 	}
+
 	for(const config &i : specials().child_range(special)) {
 		if(special_active(i, AFFECT_SELF, special)) {
 			return true;
@@ -886,38 +908,27 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	}
 
 	for(const auto [key, cfg] : specials_.all_children_view()) {
-		if(!active_list || special_active(cfg, AFFECT_EITHER, key)) {
-			std::string name = cfg["name"];
-			std::string desc = cfg["description"];
+		bool active = !active_list || special_active(cfg, AFFECT_EITHER, key);
 
-			if(name.empty()) {
-				continue;
-			}
+		std::string name = active
+			? cfg["name"].str()
+			: cfg.get_or("name_inactive", "name").str();
 
-			const auto iter = key == "plague" // Only [plague] supports a type key
-				? unit_types.types().find(cfg["type"].str())
-				: unit_types.types().end();
+		if(name.empty()) {
+			continue;
+		}
 
-			// TODO: warn if an invalid type is specified?
-			if(iter != unit_types.types().end()) {
-				const unit_type& type = iter->second;
-				utils::string_map symbols{{ "type", type.type_name() }};
+		std::string desc = active
+			? cfg["description"].str()
+			: cfg.get_or("description_inactive", "description").str();
 
-				name = utils::interpolate_variables_into_string(name, &symbols);
-				desc = utils::interpolate_variables_into_string(desc, &symbols);
-			}
+		res.emplace_back(
+			substitute_plague_type(name, key, cfg),
+			substitute_plague_type(desc, key, cfg)
+		);
 
-			res.emplace_back(name, desc);
-
-			if(active_list) {
-				active_list->push_back(true);
-			}
-		} else {
-			const t_string& name = cfg.get_or("name_inactive", "name").t_str();
-			if(!name.empty()) {
-				res.emplace_back(name, cfg.get_or("description_inactive", "description").t_str() );
-				active_list->push_back(false);
-			}
+		if(active_list) {
+			active_list->push_back(active);
 		}
 	}
 	return res;
@@ -988,12 +999,10 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
  */
 static void add_name(std::string& temp_string, bool active, const std::string& name, std::set<std::string>& checking_name)
 {
-	if (active) {
-		if (!name.empty() && checking_name.count(name) == 0) {
-			checking_name.insert(name);
-			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += markup::span_color(font::TITLE_COLOR, name);
-		}
+	if (active && !name.empty() && checking_name.count(name) == 0) {
+		checking_name.insert(name);
+		if (!temp_string.empty()) temp_string += ", ";
+		temp_string += markup::span_color(font::TITLE_COLOR, name);
 	}
 }
 
@@ -1007,38 +1016,35 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 std::string attack_type::weapon_specials() const
 {
 	//log_scope("weapon_specials");
-	std::string res;
-	for(const auto [key, cfg] : specials_.all_children_view())
-	{
+	std::vector<std::string> specials;
+
+	for(const auto [key, cfg] : specials_.all_children_view()) {
 		const bool active = special_active(cfg, AFFECT_EITHER, key);
 
-		const std::string& name =
-			active
+		std::string name = active
 			? cfg["name"].str()
 			: cfg.get_or("name_inactive", "name").str();
-		if (!name.empty()) {
-			if (!res.empty()) {
-				res += ", ";
-			}
 
-			if (!active) {
-				res += markup::span_color(font::INACTIVE_COLOR, name);
-			} else {
-				res += name;
-			}
+		if(name.empty()) {
+			continue;
 		}
+
+		name = substitute_plague_type(name, key, cfg);
+
+		specials.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 	}
+
+	// FIXME: clean this up...
 	std::string temp_string;
 	std::set<std::string> checking_name;
 	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, {}, "affect_allies");
-	if(!temp_string.empty() && !res.empty()) {
-		temp_string = ", \n" + temp_string;
-		res += temp_string;
-	} else if (!temp_string.empty()){
-		res = temp_string;
+
+	if(!temp_string.empty()) {
+		specials.push_back("\n" + std::move(temp_string));
 	}
-	return res;
+
+	return utils::join(specials, ", ");
 }
 
 static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
