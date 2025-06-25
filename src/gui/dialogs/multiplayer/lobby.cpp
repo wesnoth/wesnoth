@@ -930,6 +930,17 @@ void mp_lobby::process_gamelist_diff(const config& data)
 
 void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 {
+	if(game.id < 0) {
+		optional_const_config preset = prefs::get().get_game_preset(game.id);
+
+		if(preset) {
+			queue_game_server_preset_ = *preset;
+			queue_id_ = preset["id"].to_int();
+			set_retval(CREATE_PRESET);
+			return;
+		}
+	}
+
 	switch(mode) {
 	case DO_JOIN:
 		if(!game.can_join()) {
@@ -1016,37 +1027,23 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 
 void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 {
-	if(!filter_game_presets_) {
-		mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
+	// 0 or positive is a normal game
+	// negative is a preset
+	mp::game_info* game_ptr = game_id >= 0
+		? lobby_info_.get_game_by_id(game_id)
+		: lobby_info_.games().at(gamelistbox_->get_selected_row());
 
-		if(!game_ptr) {
-			ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
-			return;
-		}
-
-		enter_game(*game_ptr, mode);
-	} else {
-		enter_selected_game(mode);
+	if(!game_ptr) {
+		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
+		return;
 	}
+
+	enter_game(*game_ptr, mode);
 }
 
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
-	if(!filter_game_presets_) {
-		auto index = gamelistbox_->get_selected_row();
-		enter_game(*lobby_info_.games().at(index), mode);
-	} else {
-		mp::game_info* game = lobby_info_.games().at(gamelistbox_->get_selected_row());
-		if(game) {
-			optional_const_config preset = prefs::get().get_game_preset(game->id);
-
-			if(preset) {
-				queue_game_server_preset_ = *preset;
-				queue_id_ = preset["id"].to_int();
-				set_retval(CREATE_PRESET);
-			}
-		}
-	}
+	enter_game(*lobby_info_.games().at(gamelistbox_->get_selected_row()), mode);
 }
 
 void mp_lobby::refresh_lobby()
