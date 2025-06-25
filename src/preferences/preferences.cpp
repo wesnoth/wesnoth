@@ -1554,14 +1554,12 @@ void prefs::add_game_preset(config&& preset_data)
 {
 	config preset{ prefs_list::game_preset, std::move(preset_data) };
 
-	if(preset.has_child(prefs_list::game_preset) && preset.all_children_count() == 1 && preset.attribute_count() == 0) {
-		int min = 0;
-		for(const auto& c : preferences_.child_range(prefs_list::game_preset)) {
-			min = std::min(min, c["id"].to_int());
-		}
-		preset.mandatory_child(prefs_list::game_preset)["id"] = min-1;
-		preferences_.append(preset);
+	int min = 0;
+	for(const auto& c : preferences_.child_range(prefs_list::game_preset)) {
+		min = std::min(min, c["id"].to_int());
 	}
+	preset.mandatory_child(prefs_list::game_preset)["id"] = min-1;
+	preferences_.append(preset);
 }
 
 void prefs::remove_game_preset(int id)

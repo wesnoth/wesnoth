@@ -881,8 +881,7 @@ void mp_create_game::load_game_callback()
 
 void mp_create_game::save_preset()
 {
-	config root;
-	config& preset = root.add_child("game_preset");
+	config preset;
 	preset["scenario"] = create_engine_.current_level().id();
 	preset["era"] = create_engine_.current_era().id;
 	preset["fog"] = fog_->get_widget_value();
@@ -901,7 +900,7 @@ void mp_create_game::save_preset()
 	preset["observer"] = observers_->get_widget_value();
 	preset["use_map_settings"] = use_map_settings_->get_widget_value();
 
-	prefs::get().add_game_preset(std::move(root));
+	prefs::get().add_game_preset(std::move(preset));
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()
