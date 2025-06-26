@@ -666,6 +666,7 @@ void mp_create_game::update_games_list()
 	const int index = find_widget<menu_button>("game_types").get_value();
 
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
+	find_widget<button>("save_preset").set_active(level_types_[index].first == level_type::type::scenario);
 }
 
 void mp_create_game::display_games_of_type(level_type::type type, const std::string& level)
