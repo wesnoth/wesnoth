@@ -407,7 +407,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	if (current_level_data["type"] == "hybrid" && state_.classification().is_multiplayer()) {
 		// for hybrid campaigns in MP mode let's make a clarification in the abbrev
 		// so saves for sp and mp runs don't get confused
-		state_.classification().abbrev = state_.classification().abbrev + _("-MP");
+		state_.classification().abbrev = state_.classification().abbrev + "-" + _("MP");
 	}
 
 
