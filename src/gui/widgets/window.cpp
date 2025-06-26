@@ -1203,7 +1203,7 @@ void window::keyboard_capture(widget* widget)
 	assert(event_distributor_);
 #ifndef __ANDROID__
 	event_distributor_->keyboard_capture(widget);
-#endif	
+#endif
 
 }
 
