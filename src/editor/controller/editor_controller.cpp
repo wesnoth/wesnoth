@@ -49,12 +49,13 @@
 #include "floating_label.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
-#include "sound.hpp"
-#include "units/unit.hpp"
-#include "units/animation_component.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 #include "serialization/chrono.hpp"
+#include "sound.hpp"
+#include "units/animation_component.hpp"
+#include "units/unit.hpp"
+#include "utils/scope_exit.hpp"
 
 #include <functional>
 
@@ -70,7 +71,7 @@ editor_controller::editor_controller(bool clear_id)
 	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
-	, active_menu_(editor::MAP)
+	, active_menu_(editor::NONE)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
@@ -329,6 +330,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 					case editor::MUSIC:
 					case editor::LOCAL_TIME:
 					case editor::UNIT_FACING:
+					case editor::NONE:
 						return true;
 				}
 			}
@@ -665,6 +667,8 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 				return hotkey::selected_if(un->facing() == map_location::direction{index});
 			}
 		}
+		case editor::NONE:
+			return hotkey::action_state::stateless;
 		return hotkey::action_state::on;
 		default:
 			return command_executor::get_action_state(cmd);
@@ -764,10 +768,11 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					assert(un != get_current_map_context().units().end());
 					un->set_facing(map_location::direction(index));
 					un->anim_comp().set_standing();
-					active_menu_ = MAP;
 					return true;
 				}
 			}
+			case NONE:
+				return true;
 			return true;
 
 			//Zoom
@@ -1166,6 +1171,9 @@ void editor_controller::show_help()
 
 void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
+	// Ensure active_menu_ is only valid within the scope of this function.
+	ON_SCOPE_EXIT(this) { active_menu_ = editor::NONE; };
+
 	if(context_menu) {
 		if(!get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;

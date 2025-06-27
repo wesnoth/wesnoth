@@ -47,7 +47,8 @@ enum menu_type {
 	SCHEDULE,
 	LOCAL_SCHEDULE,
 	MUSIC,
-	UNIT_FACING
+	UNIT_FACING,
+	NONE
 };
 
 /**
@@ -100,6 +101,9 @@ class editor_controller : public controller_base,
 
 		/** command_executor override */
 		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;
+
+		/** command_executor override */
+		bool keep_menu_open() const override;
 
 		/** controller_base override */
 		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
