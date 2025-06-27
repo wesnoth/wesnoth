@@ -1169,6 +1169,12 @@ void editor_controller::show_help()
 	help::show_help("..editor");
 }
 
+bool editor_controller::keep_menu_open() const
+{
+	// Keep the music menu open to allow multiple selections easily
+	return active_menu_ == editor::MUSIC;
+}
+
 void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	// Ensure active_menu_ is only valid within the scope of this function.

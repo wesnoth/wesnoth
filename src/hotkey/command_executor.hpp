@@ -186,6 +186,12 @@ public:
 	//  multiple actions with a single menu button, not sure whether it is actually used.
 	void execute_action(const std::vector<std::string>& items_arg);
 
+	/** If true, the menu will remain open after an item has been selected. */
+	virtual bool keep_menu_open() const
+	{
+		return false;
+	}
+
 	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
 	void queue_command(const SDL_Event& event, int index = -1);
 	bool run_queued_commands();
