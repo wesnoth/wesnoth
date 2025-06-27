@@ -77,26 +77,6 @@ namespace {
 			}
 		}
 	};
-
-	// TODO this method should be more generic, so that it can substitute more [special] keys
-	/** Substitute $type for plague special */
-	std::string substitute_plague_type(const std::string& str, const std::string& tag_name, const config& ability_or_special) {
-		if(tag_name == "plague") {
-			// Only [plague] supports a type key
-			const auto iter = unit_types.types().find(ability_or_special["type"]);
-
-			// TODO: warn if an invalid type is specified?
-			if(iter == unit_types.types().end()) {
-				return str;
-			}
-
-			const unit_type& type = iter->second;
-			utils::string_map symbols{{ "type", type.type_name() }};
-			return utils::interpolate_variables_into_string(str, &symbols);
-		}
-
-		return str;
-	}
 }
 
 /*
@@ -340,8 +320,8 @@ namespace {
 				res.emplace_back(
 						ab["id"],
 						ab["name"].t_str(),
-						substitute_plague_type(name, tag_name, ab),
-						substitute_plague_type(ab["description"].t_str(), tag_name, ab));
+						unit_abilities::substitute_variables(name, tag_name, ab),
+						unit_abilities::substitute_variables(ab["description"].t_str(), tag_name, ab));
 				return true;
 			}
 		} else {
@@ -357,8 +337,8 @@ namespace {
 				res.emplace_back(
 						ab["id"],
 						ab.get_or("name_inactive", "name").t_str(),
-						substitute_plague_type(name, tag_name, ab),
-						substitute_plague_type(desc, tag_name, ab));
+						unit_abilities::substitute_variables(name, tag_name, ab),
+						unit_abilities::substitute_variables(desc, tag_name, ab));
 				return true;
 			}
 		}
@@ -923,8 +903,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 			: cfg.get_or("description_inactive", "description").str();
 
 		res.emplace_back(
-			substitute_plague_type(name, key, cfg),
-			substitute_plague_type(desc, key, cfg)
+			unit_abilities::substitute_variables(name, key, cfg),
+			unit_abilities::substitute_variables(desc, key, cfg)
 		);
 
 		if(active_list) {
@@ -1029,7 +1009,7 @@ std::string attack_type::weapon_specials() const
 			continue;
 		}
 
-		name = substitute_plague_type(name, key, cfg);
+		name = unit_abilities::substitute_variables(name, key, cfg);
 
 		specials.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 	}
@@ -2428,6 +2408,26 @@ bool filter_base_matches(const config& cfg, int def)
 			(cond_le.empty() || def <= cond_le.to_int());
 	}
 	return true;
+}
+
+// TODO add more [specials] keys
+// Currently supports only [plague]type= -> $type
+std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special) {
+	if(tag_name == "plague") {
+		// Substitute [plague]type= as $type
+		const auto iter = unit_types.types().find(ability_or_special["type"]);
+
+		// TODO: warn if an invalid type is specified?
+		if(iter == unit_types.types().end()) {
+			return str;
+		}
+
+		const unit_type& type = iter->second;
+		utils::string_map symbols{{ "type", type.type_name() }};
+		return utils::interpolate_variables_into_string(str, &symbols);
+	}
+
+	return str;
 }
 
 effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
