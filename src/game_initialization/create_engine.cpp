@@ -251,6 +251,7 @@ create_engine::create_engine(saved_game& state)
 	type_map_.emplace(level_type::type::campaign, type_list());
 	type_map_.emplace(level_type::type::sp_campaign, type_list());
 	type_map_.emplace(level_type::type::random_map, type_list());
+	type_map_.emplace(level_type::type::preset, type_list());
 
 	DBG_MP << "restoring game config";
 
@@ -734,6 +735,15 @@ void create_engine::init_all_levels()
 			type_map_[level_type::type::random_map].games.emplace_back(new random_map(data));
 		} else {
 			type_map_[level_type::type::scenario].games.emplace_back(new scenario(data));
+		}
+	}
+
+	// Presets.
+	for(const config& preset : prefs::get().get_game_presets()) {
+		optional_const_config data = game_config_.find_child("multiplayer", "id", preset["scenario"].str());
+
+		if(data) {
+			type_map_[level_type::type::preset].games.emplace_back(new scenario(*data));
 		}
 	}
 

@@ -125,6 +125,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		{level_type::type::user_map, _("Custom Maps")},
 		{level_type::type::user_scenario, _("Custom Scenarios")},
 		{level_type::type::random_map, _("Random Maps")},
+		{level_type::type::preset, _("Presets")},
 	};
 
 	utils::erase_if(level_types_, [this](level_type_info& type_info) {
@@ -291,7 +292,9 @@ void mp_create_game::pre_show()
 		return 0;
 	};
 
-	game_menu_button.set_values(game_types, get_initial_type_index());
+	int initial_type = get_initial_type_index();
+	game_menu_button.set_values(game_types, initial_type);
+	find_widget<button>("save_preset").set_active(level_type::get_enum(initial_type) == level_type::type::scenario);
 
 	connect_signal_notify_modified(game_menu_button,
 		std::bind(&mp_create_game::update_games_list, this));
@@ -767,6 +770,7 @@ void mp_create_game::update_details()
 
 
 	switch(create_engine_.current_level_type()) {
+		case level_type::type::preset:
 		case level_type::type::scenario:
 		case level_type::type::user_map:
 		case level_type::type::user_scenario:
