@@ -456,47 +456,20 @@ void controller_base::play_slice()
 	}
 }
 
-void controller_base::show_menu(
-		const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
+void controller_base::show_menu(const std::vector<config>& items, int xloc, int yloc, bool context_menu)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
 	if(!cmd_exec) {
-		return;
-	}
-
-	std::vector<config> items;
-	for(const config& c : items_arg) {
-		const std::string& id = c["id"];
-		const hotkey::ui_command cmd = hotkey::ui_command(id);
-
-		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
-			items.emplace_back(c);
-		}
-	}
-
-	if(items.empty()) {
 		return;
 	}
 
 	cmd_exec->show_menu(items, xloc, yloc, context_menu);
 }
 
-void controller_base::execute_action(const std::vector<std::string>& items_arg)
+void controller_base::execute_action(const std::vector<std::string>& items)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
 	if(!cmd_exec) {
-		return;
-	}
-
-	std::vector<std::string> items;
-	for(const std::string& item : items_arg) {
-		hotkey::ui_command cmd = hotkey::ui_command(item);
-		if(cmd_exec->can_execute_command(cmd)) {
-			items.push_back(item);
-		}
-	}
-
-	if(items.empty()) {
 		return;
 	}
 
