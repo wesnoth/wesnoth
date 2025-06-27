@@ -1172,97 +1172,92 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		}
 	}
 
-	std::vector<config> items;
+	std::vector<config> filtered;
 	for(const auto& c : items_arg) {
 		const std::string& id = c["id"];
-
-		const hotkey::ui_command cmd = hotkey::ui_command(hotkey::get_hotkey_command(id));
+		const auto cmd = hotkey::ui_command(id);
 
 		if((can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))
 			|| cmd.hotkey_command == hotkey::HOTKEY_NULL)
 		{
-			items.emplace_back("id", id);
+			filtered.emplace_back("id", id);
 		}
 	}
 
 	// No point in showing an empty menu.
-	if(items.empty()) {
+	if(filtered.empty()) {
 		return;
 	}
 
 	// Based on the ID of the first entry, we fill the menu contextually.
-	const std::string& first_id = items.front()["id"];
+	const std::string& first_id = filtered.front()["id"];
+	std::vector<config> items;
 
 	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items, 0);
+		context_manager_->expand_load_mru_menu(items);
 	}
 
-	if(first_id == "editor-switch-map") {
+	else if(first_id == "editor-switch-map") {
 		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items, 0);
+		context_manager_->expand_open_maps_menu(items);
 	}
 
-	if(first_id == "editor-palette-groups") {
+	else if(first_id == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items, 0);
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 	}
 
-	if(first_id == "editor-switch-side") {
+	else if(first_id == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items, 0);
+		context_manager_->expand_sides_menu(items);
 	}
 
-	if(first_id == "editor-switch-area") {
+	else if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items, 0);
+		context_manager_->expand_areas_menu(items);
 	}
 
-	if(first_id == "editor-pbl") {
+	else if(first_id == "editor-pbl") {
 		active_menu_ = editor::ADDON;
 	}
 
-	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
+	else if(first_id == "editor-switch-time") {
 		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items, 0);
+		context_manager_->expand_time_menu(items);
 	}
 
-	if(first_id == "editor-assign-local-time") {
-		active_menu_ = editor::LOCAL_TIME;
-		context_manager_->expand_local_time_menu(items, 0);
-	}
-
-	if(first_id == "menu-unit-facings") {
+	else if(first_id == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
-		auto pos = items.erase(items.begin());
-		int dir = 0;
-		std::generate_n(std::inserter<std::vector<config>>(items, pos), static_cast<int>(map_location::direction::indeterminate), [&dir]() -> config {
-			return config {"label", map_location::write_translated_direction(map_location::direction(dir++))};
+		auto count = static_cast<int>(map_location::direction::indeterminate);
+		std::generate_n(std::back_inserter(items), count, [dir = 0]() mutable {
+			return config{"label", map_location::write_translated_direction(map_location::direction(dir++))};
 		});
 	}
 
-	if(first_id == "editor-playlist") {
+	else if(first_id == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
-		auto pos = items.erase(items.begin());
-		std::transform(music_tracks_.begin(), music_tracks_.end(), std::inserter<std::vector<config>>(items, pos), [](const sound::music_track& track) -> config {
-			return config {"label", track.title().empty() ? track.id() : track.title()};
-		});
+		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(items),
+			[](const sound::music_track& track) {
+				return config{"label", track.title().empty() ? track.id() : track.title()};
+			});
 	}
 
-	if(first_id == "editor-assign-schedule") {
+	else if(first_id == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
-		auto pos = items.erase(items.begin());
-		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config {"label", tod.second.first};
-		});
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(items),
+			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
 	}
 
-	if(first_id == "editor-assign-local-schedule") {
+	else if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
-		auto pos = items.erase(items.begin());
-		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config {"label", tod.second.first};
-		});
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(items),
+			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
+	}
+
+	// Splice the lists
+	if(filtered.size() > 1) {
+		std::move(filtered.begin() + 1, filtered.end(), std::back_inserter(items));
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu);
