@@ -1172,7 +1172,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		}
 	}
 
-	std::vector<config> filtered;
+	std::vector<config> items;
 	for(const auto& c : items_arg) {
 		const std::string& id = c["id"];
 		const auto cmd = hotkey::ui_command(id);
@@ -1180,42 +1180,44 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		if((can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))
 			|| cmd.hotkey_command == hotkey::HOTKEY_NULL)
 		{
-			filtered.emplace_back("id", id);
+			items.emplace_back("id", id);
 		}
 	}
 
 	// No point in showing an empty menu.
-	if(filtered.empty()) {
+	if(items.empty()) {
 		return;
 	}
 
 	// Based on the ID of the first entry, we fill the menu contextually.
-	const std::string& first_id = filtered.front()["id"];
-	std::vector<config> items;
+	const std::string& first_id = items.front()["id"];
+
+	// All generated items (might be empty).
+	std::vector<config> generated;
 
 	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items);
+		context_manager_->expand_load_mru_menu(generated);
 	}
 
 	else if(first_id == "editor-switch-map") {
 		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items);
+		context_manager_->expand_open_maps_menu(generated);
 	}
 
 	else if(first_id == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(generated);
 	}
 
 	else if(first_id == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items);
+		context_manager_->expand_sides_menu(generated);
 	}
 
 	else if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items);
+		context_manager_->expand_areas_menu(generated);
 	}
 
 	else if(first_id == "editor-pbl") {
@@ -1224,20 +1226,25 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 	else if(first_id == "editor-switch-time") {
 		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items);
+		context_manager_->expand_time_menu(generated);
+	}
+
+	else if(first_id == "editor-assign-local-time") {
+		active_menu_ = editor::LOCAL_TIME;
+		context_manager_->expand_local_time_menu(generated);
 	}
 
 	else if(first_id == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
 		auto count = static_cast<int>(map_location::direction::indeterminate);
-		std::generate_n(std::back_inserter(items), count, [dir = 0]() mutable {
+		std::generate_n(std::back_inserter(generated), count, [dir = 0]() mutable {
 			return config{"label", map_location::write_translated_direction(map_location::direction(dir++))};
 		});
 	}
 
 	else if(first_id == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
-		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(items),
+		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(generated),
 			[](const sound::music_track& track) {
 				return config{"label", track.title().empty() ? track.id() : track.title()};
 			});
@@ -1245,22 +1252,28 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 	else if(first_id == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
-		std::transform(tods_.begin(), tods_.end(), std::back_inserter(items),
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
 			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
 	}
 
 	else if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
-		std::transform(tods_.begin(), tods_.end(), std::back_inserter(items),
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
 			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
 	}
 
-	// Splice the lists
-	if(filtered.size() > 1) {
-		std::move(filtered.begin() + 1, filtered.end(), std::back_inserter(items));
+	else {
+		// No placeholders, show everything
+		command_executor::show_menu(items, xloc, yloc, context_menu);
+		return;
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu);
+	// Splice the lists, excluding placeholder entry
+	if(items.size() > 1) {
+		std::move(items.begin() + 1, items.end(), std::back_inserter(generated));
+	}
+
+	command_executor::show_menu(generated, xloc, yloc, context_menu);
 }
 
 void editor_controller::preferences()
