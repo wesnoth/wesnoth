@@ -666,9 +666,9 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 				assert(un != get_current_map_context().units().end());
 				return hotkey::selected_if(un->facing() == map_location::direction{index});
 			}
-		}
 		case editor::NONE:
 			return hotkey::action_state::stateless;
+		}
 		return hotkey::action_state::on;
 		default:
 			return command_executor::get_action_state(cmd);
@@ -770,9 +770,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					un->anim_comp().set_standing();
 					return true;
 				}
-			}
 			case NONE:
 				return true;
+			}
 			return true;
 
 			//Zoom
