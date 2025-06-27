@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-01-07 12:07+0200\n"
+"PO-Revision-Date: 2025-06-24 22:31+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -132,6 +132,10 @@ msgstr "Taistelu Wesnothista"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
@@ -146,6 +150,11 @@ msgstr "Sankareiden aika"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -257,6 +266,15 @@ msgstr "Draakit"
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:14
 #: data/multiplayer/factions/drakes-default.cfg:14
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Drakes'</bold> are a faction of dragon-like "
+#| "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
+#| "<ref>text='Saurian' dst='..race_lizard'</ref> allies. Drakes are "
+#| "descendants of dragons, but smaller in size. Saurians are considerably "
+#| "smaller than Drakes and from different ancestry. Together, the Drake "
+#| "faction has high mobility but low defense, leading to unusual tactics for "
+#| "a <ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgid ""
 "The <bold>text='Drakes'</bold> are a faction of dragon-like "
 "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
@@ -284,6 +302,15 @@ msgstr "Dyynikansa"
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
 #: data/multiplayer/factions/dunefolk-default.cfg:14
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
+#| "and hills of the southern lands. The Dunefolk specialize in using terrain "
+#| "features to coordinate attacks at dawn or dusk. Their ranks boast lawful "
+#| "and liminal units, healers, high-accuracy melee fighters, and fearsome "
+#| "horse-mounted archers. While Dunefolk units tend to be more expensive "
+#| "than those of the Loyalist faction, they make up for this with high "
+#| "mobility — especially on hilly terrains."
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -311,6 +338,17 @@ msgstr "Knalgan liittokunta"
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:13
 #: data/multiplayer/factions/knalgans-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Knalgan Alliance'</bold> is a faction of "
+#| "<ref>text='Dwarves' dst='..race_dwarf'</ref> and their outlaw "
+#| "<ref>text='Human' dst='..race_human'</ref> allies. Dwarves are an old "
+#| "race who live underground and have tough, but short, warriors. The "
+#| "outlaws are humans who are not socially acceptable among others of their "
+#| "race, but have become allies of the dwarves due to common enemies. This "
+#| "leads to a combination of tough and defensive dwarves who are only good "
+#| "on certain terrain and humans who can cover ground that dwarves are not "
+#| "good at fighting in."
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
 "dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' "
@@ -341,6 +379,13 @@ msgstr "Uskolliset"
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:14
 #: data/multiplayer/factions/loyalists-default.cfg:14
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
+#| "dst='..race_human'</ref> who are loyal to the throne of Wesnoth. Humans "
+#| "are a versatile race who specialize in many different areas. Similarly, "
+#| "the Loyalist faction is a very versatile melee-oriented faction with "
+#| "important ranged support from bowmen and mages."
 msgid ""
 "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
 "dst='..race_human'</ref> who are loyal to the throne of Wesnoth. Humans are "
@@ -364,6 +409,16 @@ msgstr "Pohjalaiset"
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
+#| "dst='..race_orc'</ref> and their allies who live in the north of the "
+#| "Great Continent, thus their name. Northerners consist of the warrior orcs "
+#| "race, the enslaved <ref>text='goblins' dst='..race_goblin'</ref>, "
+#| "<ref>text='trolls' dst='..race_troll'</ref> who are tricked into combat "
+#| "by the orcs, and the serpentine <ref>text='naga' dst='..race_naga'</ref>. "
+#| "The Northerners play best by taking advantage of having many low-cost and "
+#| "high HP soldiers."
 msgid ""
 "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
 "dst='..race_orc'</ref> and their allies who live in the north of the Great "
@@ -392,6 +447,19 @@ msgstr "Kapinalliset"
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:14
 #: data/multiplayer/factions/rebels-default.cfg:14
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' "
+#| "dst='..race_elf'</ref> and their various forest-dwelling allies. They get "
+#| "their human name, Rebels, from the time of Heir to the Throne, when they "
+#| "started the rebellion against the evil Queen Asheviere. Elves are a "
+#| "magical race that are masters of the bow and are capable of living many "
+#| "years longer than humans. In harmony with nature, the elves find allies "
+#| "with the <ref>text='human' dst='..race_human'</ref> mages, certain "
+#| "<ref>text='merfolk' dst='..race_merman'</ref>, and tree creatures called "
+#| "<ref>text='Woses' dst='..race_wose'</ref>. Rebels are best played taking "
+#| "advantage of their high forest defense, mastery of ranged attacks, and "
+#| "the elves’ neutral alignment."
 msgid ""
 "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' "
 "dst='..race_elf'</ref> and their various forest-dwelling allies. They get "
@@ -427,6 +495,17 @@ msgstr "Epäkuolleet"
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:14
 #: data/multiplayer/factions/undead-default.cfg:14
+#, fuzzy
+#| msgid ""
+#| "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' "
+#| "dst='..race_undead'</ref> creatures and <ref>text='human' "
+#| "dst='..race_human'</ref> practitioners of dark arts that usually "
+#| "accompany them. Often, these “Dark Adepts” are the units that do the most "
+#| "damage for the faction, but they have a major vulnerability — their "
+#| "practicing of this forbidden, evil magic has consumed all their energy "
+#| "and so they have no melee attack at all. The Undead are a very aggressive "
+#| "faction and the most powerful <ref>text='Default Era' "
+#| "dst='..era_era_default'</ref> faction at nighttime."
 msgid ""
 "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' "
 "dst='..race_undead'</ref> creatures and <ref>text='human' "
@@ -455,6 +534,21 @@ msgstr "2p — Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus "
+#| "of mystical energy whose chaotic nature was able to prevent her escape. "
+#| "Over the centuries, however, Sulla gradually attuned her powers to the "
+#| "maelstrom of disorder that is the Aethermaw, and has now begun to project "
+#| "its influence onto the material plane, drawing in entire regions of land "
+#| "from hundreds of different worlds, realities and time-periods. She "
+#| "experiments with these disparate pieces of the cosmos, manipulating them, "
+#| "merging them and sending them back and forth between the Aethermaw and "
+#| "their place of origin. Perhaps, as her mastery over the Aethermaw grows, "
+#| "Sulla will one day break free of its bonds. Until that time comes, she "
+#| "will continue to amuse herself by arranging battles between the mortal "
+#| "beings unlucky enough to be drawn into its depths. Designed by Doc "
+#| "Paterson."
 msgid ""
 "Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus of "
 "mystical energy whose chaotic nature was able to prevent her escape. Over "
@@ -562,6 +656,10 @@ msgstr "Kukista vihollisjohtaja"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
+#, fuzzy
+#| msgid ""
+#| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
+#| "and demands that you amuse her by doing battle."
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
@@ -580,6 +678,11 @@ msgstr ""
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
+#, fuzzy
+#| msgid ""
+#| "Beginning on turn 4, the Great Mage Sulla will begin to unite the two "
+#| "halves of the battlefield. The process will be complete by the end of "
+#| "turn 6."
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -2502,31 +2605,23 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:63
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "Southwest"
 msgstr "Lounas"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:73
-#, fuzzy
-#| msgid "teamname^Southeast"
 msgid "Southeast"
 msgstr "Kaakko"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:83
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northeast"
-msgstr "Pohjalaiset"
+msgstr "Luode"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:93
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northwest"
-msgstr "Pohjalaiset"
+msgstr "Luode"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:106
@@ -2557,9 +2652,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:139
-#, fuzzy
 msgid "Defeat enemy leaders"
-msgstr "Päällikkösi kuolema."
+msgstr "Kukista vihollisjohtajat"
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:143
@@ -3116,8 +3210,10 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
+#, fuzzy
+#| msgid "3p — Elevation Test"
 msgid "3p - Elevation Test"
-msgstr "3p - Korkeustaso testi"
+msgstr "3p — Korkeustaso testi"
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6

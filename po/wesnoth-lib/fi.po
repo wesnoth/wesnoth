@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2024-12-15 00:38+0200\n"
+"PO-Revision-Date: 2025-06-24 22:48+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -61,17 +61,17 @@ msgstr "Aita"
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
 #: data/core/terrain.cfg:3378 data/core/terrain.cfg:3379
 msgid "Deep Water"
-msgstr "Syvää vettä"
+msgstr "syvää vettä"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:24
 msgid "Gray Deep Water"
-msgstr "Syvää harmaata vettä"
+msgstr "syvää harmaata vettä"
 
 #. [terrain_type]: id=deep_water_medium
 #: data/core/terrain.cfg:35
 msgid "Medium Deep Water"
-msgstr "Melko syvää vettä"
+msgstr "melko syvää vettä"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
@@ -1896,7 +1896,7 @@ msgstr "Sumu"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3253 data/core/terrain.cfg:3254
 msgid "Fungus"
-msgstr "Sieni"
+msgstr "sieni"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3257
@@ -2265,7 +2265,7 @@ msgstr ""
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3462 data/core/terrain.cfg:3463
 msgid "Rails"
-msgstr "Raiteet"
+msgstr "raiteet"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3465
@@ -4261,6 +4261,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> perustuu vapaaehtoisiin kehitystyön kaikilla "
+"osa-alueilla, mukaan lukien käännöstyössä. Käännökset saattavat jäädä "
+"jälkeen ja vanheta tai jopa kokonaan päätyä hylätyiksi."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4271,6 +4274,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Huom:</b> Näytetyt käännösprosentit koskevat vain ydinkäyttöliittymää ja "
+"pelinsisäistä ohjetta. Tarkemmat tilastot, mukaan lukien kampanjakohtaiset "
+"tiedot, löytyvät seuraavalta sivulta:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4280,11 +4286,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Jos olet kiinnostunut pelin kääntämisestä itse, lisätietoja saat seuraavasta "
+"linkistä:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Näytä keskeneräiset tai hylätyt käännökset"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -4301,7 +4309,7 @@ msgstr "Yleinen aula"
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Pelinhaku"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:140
@@ -4949,7 +4957,7 @@ msgstr "Peliasetukset"
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:748
 msgid "Any"
-msgstr "Mikä tahansa"
+msgstr "Kaikki"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:881
@@ -5589,9 +5597,9 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 #, fuzzy
-#| msgid "Interface theme:"
+#| msgid "In-game theme:"
 msgid "Interface theme:"
-msgstr "Käyttöliittymän teema:"
+msgstr "Pelin sisäinen teema:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -7773,6 +7781,8 @@ msgid "Rename Unit"
 msgstr "Nimeä yksikkö uudelleen"
 
 #: src/gui/dialogs/unit_recall.cpp:363
+#, fuzzy
+#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Tämä yksikkö on uskollinen eikä vaadi ylläpitoa."
 
@@ -8497,10 +8507,8 @@ msgid "Item Tool"
 msgstr "Kohteet-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:205
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Hiiren vasen nappi asettaa uuden kohteen."
+msgstr "Hiiren vasen nappi asettaa uuden kohteen. Oikea nappi poistaa kohteen."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid ""
@@ -8900,6 +8908,54 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
+#~ msgid "Gravel"
+#~ msgstr "sora"
+
+#~ msgid "Tip of the Day"
+#~ msgstr "Päivän vinkki"
+
+#~ msgid "Show tip of the day"
+#~ msgstr "Näytä päivän neuvo"
+
+#~ msgid "About"
+#~ msgstr "Tietoa"
+
+#~ msgid "General information about Battle for Wesnoth"
+#~ msgstr "Yleistä tietoa Taistelu Wesnothista"
+
+#, fuzzy
+#~| msgid "Change the in-game theme"
+#~ msgid "Visit the in-game help"
+#~ msgstr "Vaihda pelin sisäistä teemaa"
+
+#, fuzzy
+#~| msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
+#~ msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Kotisivu:</b>"
+
+#, fuzzy
+#~| msgid "Select the add-on version"
+#~ msgid "Delete selected add-on (admin)"
+#~ msgstr "Valitse lisäosan versio"
+
+#, fuzzy
+#~| msgid "Select the add-on version"
+#~ msgid "Hide selected add-on (admin)"
+#~ msgstr "Valitse lisäosan versio"
+
+#~ msgid ""
+#~ "In addition to the mainline campaigns, Wesnoth also has an ever-growing "
+#~ "list of add-on content created by other players available via the Add-ons "
+#~ "server, included but not limited to more single and multiplayer "
+#~ "campaigns, multiplayer maps, additional media and various other content! "
+#~ "Be sure to give it a try!"
+#~ msgstr ""
+#~ "Pääkampanjoiden lisäksi Wesnothissa on alati kasvava määrä muiden "
+#~ "pelaajien luomaa lisäsisältöä, jota voi ladata Lisäosat-palvelimelta. "
+#~ "Tarjolla on muun muassa lisää yksin- ja moninpelikampanjoita, "
+#~ "moninpelikarttoja, lisämateriaalia sekä monenlaista muuta sisältöä! "
+#~ "Kokeile ihmeessä!"
+
 #~ msgid "Filter by campaign completion status"
 #~ msgstr "Suodata kampanjat niiden läpäisyjen mukaan"
 
@@ -8988,42 +9044,49 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgstr "Pelaaja liittyi"
 
 #, fuzzy
+#~| msgid ""
+#~| "Comma delimited list of forum usernames of other people who are allowed "
+#~| "to upload updates for this add-on."
+#~ msgid ""
+#~ "Comma delimited list of forum usernames of other people who are allowed "
+#~ "to upload updates for this add-on or delete this add-on."
+#~ msgstr ""
+#~ "Pilkulla erotettu luettelo muiden sellaisten henkilöiden foorumin "
+#~ "käyttäjätunnuksista, jotka saavat ladata päivityksiä tähän lisäosaan."
+
+#, fuzzy
+#~| msgid "Secondary Authors:"
+#~ msgid "Primary Authors:"
+#~ msgstr "Toissijaiset tekijät:"
+
+#, fuzzy
 #~| msgid "Image:"
 #~ msgid "Unit Image:"
 #~ msgstr "Kuva:"
 
+#~ msgid "Portrait:"
+#~ msgstr "Muotokuva:"
+
 #~ msgid "Gender:"
 #~ msgstr "Sukupuoli:"
 
-#, fuzzy
-#~| msgid "gender^Random"
 #~ msgid "gender^Male"
-#~ msgstr "Satunnainen"
+#~ msgstr "Miespuolinen"
 
-#, fuzzy
-#~| msgid "Female"
 #~ msgid "gender^Female"
 #~ msgstr "Nainen"
 
-#, fuzzy
-#~| msgid "Advance Unit"
 #~ msgid "Advances to:"
-#~ msgstr "Ylennä yksikkö"
+#~ msgstr "Ylenee yksiköksi:"
 
-#, fuzzy
-#~| msgid "Race"
 #~ msgid "Race:"
-#~ msgstr "Rotu"
+#~ msgstr "Rotu:"
 
-#, fuzzy
-#~| msgid "HP: "
 #~ msgid "HP:"
-#~ msgstr "EP: "
+#~ msgstr "EP:"
 
-#, fuzzy
-#~| msgid "XP: "
 #~ msgid "XP:"
-#~ msgstr "KP: "
+#~ msgstr "KP:"
 
 #, fuzzy
 #~| msgid "Movement Costs:"
@@ -9040,40 +9103,30 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Delete Attack"
 #~ msgstr "Valitse/Liikuta/Hyökkää"
 
-#, fuzzy
-#~| msgid "Damage"
 #~ msgid "Damage:"
-#~ msgstr "Vahinko"
+#~ msgstr "Vahinko:"
 
-#, fuzzy
-#~| msgid "Hits"
 #~ msgid "Hits:"
-#~ msgstr "Osumia"
+#~ msgstr "Osumia:"
 
 #, fuzzy
 #~| msgid "Profile"
 #~ msgid "Small Profile"
 #~ msgstr "Profiili"
 
-#, fuzzy
-#~| msgid "Abilities"
 #~ msgid "Abilities:"
-#~ msgstr "Erikoistaidot"
+#~ msgstr "Erikoistaidot:"
 
 #, fuzzy
 #~| msgid "Content Type:"
 #~ msgid "Movetype:"
 #~ msgstr "Sisällön tyyppi:"
 
-#, fuzzy
-#~| msgid "Defender"
 #~ msgid "Defense:"
-#~ msgstr "Puolustaja"
+#~ msgstr "Puolustus:"
 
-#, fuzzy
-#~| msgid "Resistances: "
 #~ msgid "Resistances:"
-#~ msgstr "Vastustukset: "
+#~ msgstr "Vastustukset:"
 
 #, fuzzy
 #~| msgid "Image:"
@@ -9147,6 +9200,12 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Show Topics"
 #~ msgstr "Näytä pelin tekijät"
 
+#~ msgid "Join Queue"
+#~ msgstr "Liity jonoon"
+
+#~ msgid "Leave Queue"
+#~ msgstr "Poistu jonosta"
+
 #~ msgid "Faction:"
 #~ msgstr "Liittouma:"
 
@@ -9164,8 +9223,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ "Isännöi oma\n"
 #~ "verkkopeli"
 
-#, fuzzy
-#~| msgid "Interface theme:"
 #~ msgid "UI theme:"
 #~ msgstr "Käyttöliittymän teema:"
 
@@ -9183,13 +9240,40 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Apply"
 #~ msgstr "Hyväksy"
 
-#~ msgid "About"
-#~ msgstr "Tietoa"
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Show gameplay tips on the main menu"
+#~ msgstr "Näytä seuraava vinkki"
 
 #, fuzzy
-#~| msgid "The Battle for Wesnoth"
-#~ msgid "General information about Battle for Wesnoth"
-#~ msgstr "Taistelu Wesnothista"
+#~| msgid "Random map options: "
+#~ msgid "Reach Map Options"
+#~ msgstr "Satunnaiskartta-asetuksia: "
+
+#~ msgid "Highlight Color"
+#~ msgstr "Korostusväri"
+
+#~ msgid "Enemy Highlight Color"
+#~ msgstr "Vihollisen korostusväri"
+
+#~ msgid "Border Opacity:"
+#~ msgstr "Reunaviivan läpinäkyvyys:"
+
+#~ msgid "Tint Opacity:"
+#~ msgstr "Värisävyn läpinäkyvyys"
+
+#~ msgid "★"
+#~ msgstr "★"
+
+#, fuzzy
+#~| msgid "Completed: Gold"
+#~ msgid "Completed $count/$total"
+#~ msgstr "Läpäisty: Kulta"
+
+#, fuzzy
+#~| msgid "Password Required"
+#~ msgid "Password not provided"
+#~ msgstr "Salasanamuistutus"
 
 #, fuzzy
 #~| msgid "addons_of_type^Cores"
@@ -9201,10 +9285,8 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "game^Get Add-ons"
 #~ msgstr "Lisäosat"
 
-#, fuzzy
-#~| msgid "Campaign"
 #~ msgid "More campaigns..."
-#~ msgstr "Kampanjat"
+#~ msgstr "Lisää kampanjoita..."
 
 #, fuzzy
 #~| msgid "Choose Player"
@@ -9251,8 +9333,8 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid ""
 #~ "‘list_data’ must have the same number of columns as the ‘list_definition’."
 #~ msgstr ""
-#~ "’list_data’:lla täytyy olla sama määrä kolumneja kuin ’list_definition’:"
-#~ "lla."
+#~ "’list_data’:lla täytyy olla sama määrä kolumneja kuin "
+#~ "’list_definition’:lla."
 
 #, fuzzy
 #~| msgid "Opening links is not supported, contact your packager"
@@ -9266,25 +9348,20 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "No grid defined for tab container control"
 #~ msgstr "Puunäkymää varten ei ole määritelty ruudukkoa."
 
-#, fuzzy
-#~| msgid "Loading..."
 #~ msgid "Load Turn..."
-#~ msgstr "Ladataan..."
+#~ msgstr "Ladataan vuoroa..."
 
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Teleport Unit (Debug!)"
-#~ msgstr "Luo yksikkö (Debug!)"
+#~ msgstr "Teleporttaa yksikkö (Debug!)"
 
-#, fuzzy
-#~| msgid "Next Unit"
 #~ msgid "New Unit Type"
-#~ msgstr "Seuraava yksikkö"
+#~ msgstr "Uusi yksikkö tyyppi"
 
-#, fuzzy
-#~| msgid "Edit Scenario"
 #~ msgid "Load Map/Scenario"
-#~ msgstr "Muokkaa skenaariota"
+#~ msgstr "Lataa kartta/skenaario"
+
+#~ msgid "Convert To Scenario"
+#~ msgstr "Muunna skenaarioksi"
 
 #, fuzzy
 #~| msgid "Select the add-on version"
@@ -9296,15 +9373,18 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Open Add-on folder"
 #~ msgstr "Avaa tallennuskansiota"
 
-#, fuzzy
-#~| msgid "Starting game"
 #~ msgid "Start Game (MP)"
-#~ msgstr "Aloitetaan peliä"
+#~ msgstr "Aloita peli (MP)"
 
 #, fuzzy
 #~| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 #~ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 #~ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
+
+#, fuzzy
+#~| msgid "Show next tip of the day"
+#~ msgid "Hide tip of the day"
+#~ msgstr "Näytä seuraava vinkki"
 
 #, fuzzy
 #~| msgid "page^Copy"
@@ -9429,9 +9509,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "Show grid"
 #~ msgstr "Näytä ruudukko"
-
-#~ msgid "Change the in-game theme"
-#~ msgstr "Vaihda pelin sisäistä teemaa"
 
 #~ msgid ""
 #~ "The key '$key' is deprecated and support will be removed in version "
@@ -10278,9 +10355,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "Delete Planned Action"
 #~ msgstr "Poista suunniteltu toiminto"
-
-#~ msgid "Move Action Up Queue"
-#~ msgstr "Siirrä komento ylöspäin"
 
 #~ msgid "Move Action Down Queue"
 #~ msgstr "Siirrä komento alaspäin"
