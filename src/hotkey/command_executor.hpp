@@ -57,15 +57,16 @@ struct ui_command
 		: hotkey_command(hotkey_command)
 		, id(id)
 		, index(index)
-	{ }
+	{
+	}
 	explicit ui_command(const hotkey::hotkey_command& cmd, int index = -1)
 		: ui_command(cmd.command, cmd.id, index)
-	{ }
+	{
+	}
 	// the string @param id references must live longer than this object.
 	explicit ui_command(std::string_view id, int index = -1)
-		: ui_command(hotkey::HOTKEY_NULL, id, index)
+		: ui_command(hotkey::get_hotkey_command(id), index)
 	{
-		hotkey_command = hotkey::get_hotkey_command(std::string(id)).command;
 	}
 };
 
