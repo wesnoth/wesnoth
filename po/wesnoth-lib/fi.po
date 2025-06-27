@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-06-15 22:18-0500\n"
-"PO-Revision-Date: 2024-12-15 00:38+0200\n"
+"PO-Revision-Date: 2025-06-24 22:48+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -61,17 +61,17 @@ msgstr "Aita"
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
 #: data/core/terrain.cfg:3376 data/core/terrain.cfg:3377
 msgid "Deep Water"
-msgstr "Syvää vettä"
+msgstr "syvää vettä"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:24
 msgid "Gray Deep Water"
-msgstr "Syvää harmaata vettä"
+msgstr "syvää harmaata vettä"
 
 #. [terrain_type]: id=deep_water_medium
 #: data/core/terrain.cfg:35
 msgid "Medium Deep Water"
-msgstr "Melko syvää vettä"
+msgstr "melko syvää vettä"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
@@ -262,7 +262,7 @@ msgstr "puhtaita harmaita mukulakiviä"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "sora"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -1900,7 +1900,7 @@ msgstr "Sumu"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3251 data/core/terrain.cfg:3252
 msgid "Fungus"
-msgstr "Sieni"
+msgstr "sieni"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3255
@@ -2264,7 +2264,7 @@ msgstr ""
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3460 data/core/terrain.cfg:3461
 msgid "Rails"
-msgstr "Raiteet"
+msgstr "raiteet"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3463
@@ -2357,19 +2357,15 @@ msgstr "Näytä seuraava vinkki"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Seuraava vinkki"
+msgstr "Päivän vinkki"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Näytä seuraava vinkki"
+msgstr "Näytä päivän neuvo"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
@@ -2380,10 +2376,8 @@ msgstr "Tietoa"
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
 #: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Taistelu Wesnothista"
+msgstr "Yleistä tietoa Taistelu Wesnothista"
 
 #. [button]: id=language
 #. [label]
@@ -3089,6 +3083,10 @@ msgid ""
 "multiplayer maps, additional media and various other content! Be sure to "
 "give it a try!"
 msgstr ""
+"Pääkampanjoiden lisäksi Wesnothissa on alati kasvava määrä muiden pelaajien "
+"luomaa lisäsisältöä, jota voi ladata Lisäosat-palvelimelta. Tarjolla on muun "
+"muassa lisää yksin- ja moninpelikampanjoita, moninpelikarttoja, "
+"lisämateriaalia sekä monenlaista muuta sisältöä! Kokeile ihmeessä!"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
@@ -4035,7 +4033,7 @@ msgstr "Kuva:"
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:210
 msgid "Portrait:"
-msgstr ""
+msgstr "Muotokuva:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:221
@@ -4051,31 +4049,23 @@ msgstr "Sukupuoli:"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:254
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Satunnainen"
+msgstr "Miespuolinen"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:255
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Nainen"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:270
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Ylennä yksikkö"
+msgstr "Ylenee yksiköksi:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:296
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Rotu"
+msgstr "Rotu:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:349
@@ -4084,17 +4074,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:375
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "EP: "
+msgstr "EP:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:405
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "KP: "
+msgstr "KP:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:435
@@ -4148,17 +4134,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:731
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Vahinko"
+msgstr "Vahinko:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:758
-#, fuzzy
-#| msgid "Hits"
 msgid "Hits:"
-msgstr "Osumia"
+msgstr "Osumia:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:786
@@ -4174,10 +4156,8 @@ msgstr "Profiili"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:839
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Erikoistaidot"
+msgstr "Erikoistaidot:"
 
 #. [label]: id=movetype_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:865
@@ -4195,17 +4175,13 @@ msgstr "Liikkumiskulut:"
 
 #. [label]: id=defense_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:961
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Puolustaja"
+msgstr "Puolustus:"
 
 #. [label]: id=resistance_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1014
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Vastustukset: "
+msgstr "Vastustukset:"
 
 #. [label]: id=usage_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1067
@@ -5018,6 +4994,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> perustuu vapaaehtoisiin kehitystyön kaikilla "
+"osa-alueilla, mukaan lukien käännöstyössä. Käännökset saattavat jäädä "
+"jälkeen ja vanheta tai jopa kokonaan päätyä hylätyiksi."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5028,6 +5007,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Huom:</b> Näytetyt käännösprosentit koskevat vain ydinkäyttöliittymää ja "
+"pelinsisäistä ohjetta. Tarkemmat tilastot, mukaan lukien kampanjakohtaiset "
+"tiedot, löytyvät seuraavalta sivulta:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5037,11 +5019,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Jos olet kiinnostunut pelin kääntämisestä itse, lisätietoja saat seuraavasta "
+"linkistä:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Näytä keskeneräiset tai hylätyt käännökset"
 
 #. [label]: id=status
 #: data/gui/themes/default/dialogs/loadscreen.cfg:183
@@ -5058,7 +5042,7 @@ msgstr "Yleinen aula"
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/themes/default/dialogs/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Pelinhaku"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:140
@@ -5190,17 +5174,13 @@ msgstr "Älä näytä karttaa kunnes annettu ohjat osapuolelle"
 
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:695
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "Join Queue"
-msgstr "Siirrä komento ylöspäin"
+msgstr "Liity jonoon"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:702
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Poistu"
+msgstr "Poistu jonosta"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:801
@@ -5712,7 +5692,7 @@ msgstr "Peliasetukset"
 #. [slider]: id=num_players
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:748
 msgid "Any"
-msgstr "Mikä tahansa"
+msgstr "Kaikki"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:881
@@ -6324,10 +6304,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Käyttöliittymän teema:"
+msgstr "Pelin sisäinen teema:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
@@ -6340,8 +6318,6 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
 msgstr "Käyttöliittymän teema:"
 
@@ -6652,22 +6628,22 @@ msgstr "Satunnaiskartta-asetuksia: "
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
 msgid "Highlight Color"
-msgstr ""
+msgstr "Korostusväri"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Vihollisen korostusväri"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Reunaviivan läpinäkyvyys:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Värisävyn läpinäkyvyys"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6948,7 +6924,7 @@ msgstr "Hyökkää vihollista"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:572
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7584,10 +7560,8 @@ msgid "game^Get Add-ons"
 msgstr "Lisäosat"
 
 #: src/gui/dialogs/campaign_selection.cpp:394
-#, fuzzy
-#| msgid "Campaign"
 msgid "More campaigns..."
-msgstr "Kampanjat"
+msgstr "Lisää kampanjoita..."
 
 #: src/gui/dialogs/campaign_selection.cpp:408
 msgid "Missing Campaigns"
@@ -8955,10 +8929,8 @@ msgid "Save Map"
 msgstr "Tallenna kartta"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Ladataan..."
+msgstr "Ladataan vuoroa..."
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9009,10 +8981,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Tapa yksikkö (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Luo yksikkö (Debug!)"
+msgstr "Teleporttaa yksikkö (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Objectives"
@@ -9150,10 +9120,8 @@ msgid "Assign Local Time"
 msgstr "Aseta paikallinen aika"
 
 #: src/hotkey/hotkey_command.cpp:178
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Seuraava yksikkö"
+msgstr "Uusi yksikkö tyyppi"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Time Schedule Editor"
@@ -9168,20 +9136,16 @@ msgid "New Scenario"
 msgstr "Uusi skenaario"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Muokkaa skenaariota"
+msgstr "Lataa kartta/skenaario"
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Save Map As"
 msgstr "Tallenna kartta nimellä"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Valitse testiskenaario"
+msgstr "Muunna skenaarioksi"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9300,10 +9264,8 @@ msgid "Item Tool"
 msgstr "Kohteet-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Hiiren vasen nappi asettaa uuden kohteen."
+msgstr "Hiiren vasen nappi asettaa uuden kohteen. Oikea nappi poistaa kohteen."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9605,10 +9567,8 @@ msgid "Change Language"
 msgstr "Vaihda käytettävää kieltä"
 
 #: src/hotkey/hotkey_command.cpp:301
-#, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Aloitetaan peliä"
+msgstr "Aloita peli (MP)"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
@@ -10979,8 +10939,8 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ "'stack_data' must have the same number of columns as the "
 #~ "'list_definition'."
 #~ msgstr ""
-#~ "”list_data”:lla täytyy olla sama määrä kolumneja kuin ”list_definition”:"
-#~ "lla."
+#~ "”list_data”:lla täytyy olla sama määrä kolumneja kuin "
+#~ "”list_definition”:lla."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Säädä kirkkautta"
