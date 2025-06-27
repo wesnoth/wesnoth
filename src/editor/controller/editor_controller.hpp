@@ -34,23 +34,6 @@ struct floating_label_context;
 
 namespace editor {
 
-
-enum menu_type {
-	MAP,
-	LOAD_MRU,
-	PALETTE,
-	AREA,
-	ADDON,
-	SIDE,
-	TIME,
-	LOCAL_TIME,
-	SCHEDULE,
-	LOCAL_SCHEDULE,
-	MUSIC,
-	UNIT_FACING,
-	NONE
-};
-
 /**
  * The editor_controller class contains the mouse and keyboard event handling
  * routines for the editor. It also serves as the main editor class with the
@@ -198,6 +181,21 @@ class editor_controller : public controller_base,
 		virtual std::vector<std::string> additional_actions_pressed() override;
 
 	private:
+		enum class menu_type {
+			map,
+			load_mru,
+			palette,
+			area,
+			addon,
+			side,
+			time,
+			local_time,
+			schedule,
+			local_schedule,
+			music,
+			unit_facing,
+			none
+		};
 
 		/** init the display object and general set-up */
 		void init_gui();
@@ -227,7 +225,8 @@ class editor_controller : public controller_base,
 		 */
 		void redo() override;
 
-		editor::menu_type active_menu_;
+		/** The currently invoked dropdown menu. Outside of show_menu, this will be menu_type::none. */
+		menu_type active_menu_;
 
 		/** Reports object. Must be initialized before the gui_ */
 		const std::unique_ptr<reports> reports_;
