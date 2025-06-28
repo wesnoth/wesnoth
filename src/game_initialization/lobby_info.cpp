@@ -19,6 +19,7 @@
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
+#include "preferences/preferences.hpp"
 
 
 static lg::log_domain log_engine("engine");
@@ -121,8 +122,7 @@ void lobby_info::process_gamelist(const config& data)
 
 	games_by_id_.clear();
 
-	int queued_id = 0;
-	for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
+	for(const config& game : prefs::get().get_game_presets()) {
 		config qgame;
 		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
 		int human_sides = 0;
@@ -135,11 +135,10 @@ void lobby_info::process_gamelist(const config& data)
 			ERR_LB << "No human sides for scenario " << game["scenario"];
 			continue;
 		}
-		// negative id means a queue-defined game
-		queued_id--;
-		qgame["id"] = queued_id;
-		// all are set as auto_hosted so they show up in that tab of the MP lobby
-		qgame["auto_hosted"] = true;
+		// negative id means a game preset
+		qgame["id"] = game["id"].to_int();
+		// all are set as game_preset so they show up in that tab of the MP lobby
+		qgame["game_preset"] = true;
 
 		qgame["name"] = scenario["name"];
 		qgame["mp_scenario"] = game["scenario"];
@@ -151,7 +150,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["experience_modifier"] = game["experience_modifier"];
 
 		qgame["mp_countdown"] = game["countdown"];
-		if(qgame["countdown"].to_bool()) {
+		if(qgame["mp_countdown"].to_bool()) {
 			qgame["mp_countdown_reservoir_time"] = game["countdown_reservoir_time"];
 			qgame["mp_countdown_init_time"] = game["countdown_init_time"];
 			qgame["mp_countdown_action_bonus"] = game["countdown_action_bonus"];

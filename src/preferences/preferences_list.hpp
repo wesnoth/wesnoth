@@ -117,6 +117,8 @@ struct preferences_list_defines
 	ADDPREF(floating_labels)
 	/** whether to use fullscreen mode */
 	ADDPREF(fullscreen)
+	/** saved options for game creation */
+	ADDPREF(game_preset)
 	/** whether to show a hex grid overlay on the map */
 	ADDPREF(grid)
 	/** the gui2 theme name */
@@ -441,6 +443,7 @@ struct preferences_list_defines
 		fi_vacant_slots,
 		floating_labels,
 		fullscreen,
+		game_preset,
 		grid,
 		gui2_theme,
 		hide_whiteboard,

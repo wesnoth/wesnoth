@@ -129,6 +129,8 @@ private:
 
 	void load_game_callback();
 
+	void save_preset();
+
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
 

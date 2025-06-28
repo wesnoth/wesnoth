@@ -105,6 +105,7 @@ struct game_info
 	bool has_friends;
 	bool has_ignored;
 	bool auto_hosted;
+	bool game_preset;
 
 	enum class disp_status {
 		CLEAN,

@@ -135,9 +135,8 @@ private:
 
 	/**
 	 * Opens the MP Create screen for hosts to configure a new game.
-	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt, int queue_id = 0);
+	void enter_create_mode(utils::optional<config> preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
 	void enter_staging_mode(queue_type::type queue_type, int queue_id = 0);
@@ -565,7 +564,6 @@ bool mp_manager::enter_lobby_mode()
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
-			preset_scenario = dlg.queue_game_scenario_id();
 			server_preset = dlg.queue_game_server_preset();
 			queue_id = dlg.queue_id();
 		}
@@ -573,7 +571,7 @@ bool mp_manager::enter_lobby_mode()
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset), queue_id);
+				enter_create_mode(utils::make_optional(server_preset), queue_id);
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
@@ -603,23 +601,15 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset, int queue_id)
+void mp_manager::enter_create_mode(utils::optional<config> preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
 	// if this is using pre-determined settings and the settings came from the server, use those
 	// else look for them locally
-	if(preset_scenario && server_preset) {
-		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(queue_type::type::server_preset, queue_id);
-	} else if(preset_scenario && !server_preset) {
-		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
-			if(game["scenario"].str() == preset_scenario.value()) {
-				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(queue_type::type::client_preset);
-				return;
-			}
-		}
+	if(preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, preset.value());
+		enter_staging_mode(queue_id >= 0 ? queue_type::type::server_preset : queue_type::type::normal, queue_id);
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
