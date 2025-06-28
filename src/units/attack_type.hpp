@@ -80,7 +80,7 @@ public:
 	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
 	 */
 	bool has_special(const std::string& special, bool simple_check = false) const;
-	unit_ability_list get_specials(const std::string& special) const;
+	unit_ability_list get_specials(const std::string& special, bool inverse_affect = false) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
@@ -104,6 +104,10 @@ public:
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	double modified_damage() const;
+	/** Return the defense value, considering specials.
+	 * @param cth The chance_to_hit value modified or not by function.
+	 */
+	int modified_chance_to_hit(int cth) const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
@@ -111,12 +115,13 @@ public:
 	 */
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
-	unit_ability_list get_weapon_ability(const std::string& ability) const;
+	unit_ability_list get_weapon_ability(const std::string& ability, bool inverse_affect = false) const;
 	/**
 	 * @param special the tag name to check for
+	 * @param inverse_affect If true, the effect of apply_to are inversed
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
-	unit_ability_list get_specials_and_abilities(const std::string& special) const;
+	unit_ability_list get_specials_and_abilities(const std::string& special, bool inverse_affect = false) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
