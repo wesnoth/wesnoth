@@ -6,7 +6,7 @@ from config_check_utils import *
 from os import environ
 from SCons.Util import PrependPath
 
-def CheckSDL2(context, require_version):
+def CheckSDL3(context, require_version):
     version = require_version.split(".", 2)
     major_version = version[0]
     minor_version = version[1]
@@ -22,8 +22,8 @@ def CheckSDL2(context, require_version):
 
     if env["PLATFORM"] != "win32" or sys.platform == "msys":
         for foo_config in [
-            "pkg-config --cflags --libs $PKG_CONFIG_FLAGS sdl2",
-            "sdl2-config --cflags --libs"
+            "pkg-config --cflags --libs $PKG_CONFIG_FLAGS sdl3",
+            "sdl3-config --cflags --libs"
             ]:
             try:
                 env.ParseConfig(foo_config)
@@ -33,14 +33,14 @@ def CheckSDL2(context, require_version):
                 break
     else:
         if sdldir:
-            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL2")], LIBPATH = [os.path.join(sdldir, "lib")])
-        env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE", "-DREQ_MAJOR="+major_version, "-DREQ_MINOR="+minor_version, "-DREQ_PATCH="+patchlevel])
-        env.AppendUnique(LIBS = Split("mingw32 SDL2main SDL2"))
+            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL3")], LIBPATH = [os.path.join(sdldir, "lib")])
+        env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
+        env.AppendUnique(LIBS = Split("mingw32 SDL3main SDL3"))
         env.AppendUnique(LINKFLAGS = ["-mwindows", "-fstack-protector"])
 
-    cpp_file = File("src/conftests/sdl2.cpp").rfile().abspath
+    cpp_file = File("src/conftests/sdl3.cpp").rfile().abspath
     if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2.cpp"
+        cpp_file = "src/conftests/sdl3.cpp"
 
     with open(cpp_file, 'r') as file:
         test_program = file.read()
@@ -53,14 +53,14 @@ def CheckSDL2(context, require_version):
             restore_env(context.env, backup)
             return False
 
-def CheckSDL2Image(context):
+def CheckSDL3Image(context):
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
-    context.Message("Checking for SDL2_image library... ")
-    context.env.AppendUnique(LIBS = ["SDL2_image"])
+    context.Message("Checking for SDL3_image library... ")
+    context.env.AppendUnique(LIBS = ["SDL3_image"])
 
-    cpp_file = File("src/conftests/sdl2_image.cpp").rfile().abspath
+    cpp_file = File("src/conftests/sdl3_image.cpp").rfile().abspath
     if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_image.cpp"
+        cpp_file = "src/conftests/sdl3_image.cpp"
 
     with open(cpp_file, 'r') as file:
         test_program = file.read()
@@ -73,14 +73,14 @@ def CheckSDL2Image(context):
             restore_env(context.env, backup)
             return False
 
-def CheckSDL2Mixer(context):
+def CheckSDL3Mixer(context):
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
-    context.Message("Checking for SDL2_mixer library... ")
-    context.env.AppendUnique(LIBS = ["SDL2_mixer"])
+    context.Message("Checking for SDL3_mixer library... ")
+    context.env.AppendUnique(LIBS = ["SDL3_mixer"])
 
-    cpp_file = File("src/conftests/sdl2_mixer.cpp").rfile().abspath
+    cpp_file = File("src/conftests/sdl3_mixer.cpp").rfile().abspath
     if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_mixer.cpp"
+        cpp_file = "src/conftests/sdl3_mixer.cpp"
 
     with open(cpp_file, 'r') as file:
         test_program = file.read()
@@ -96,7 +96,7 @@ def CheckSDL2Mixer(context):
 def CheckOgg(context):
     context.env["ENV"]["SDL_AUDIODRIVER"] = "dummy"
 
-    cpp_file = File("src/conftests/sdl2_audio.cpp").rfile().get_contents().decode()
+    cpp_file = File("src/conftests/sdl3_audio.cpp").rfile().get_contents().decode()
 
     # file1 (absolute path) works most places
     # file2 (relative path) is required for msys2 on windows
@@ -125,7 +125,7 @@ def CheckOgg(context):
             return False
 
 def CheckPNG(context):
-    cpp_file = File("src/conftests/sdl2_png.cpp").rfile().get_contents().decode()
+    cpp_file = File("src/conftests/sdl3_png.cpp").rfile().get_contents().decode()
 
     img_file1 = File("data/core/images/scons_conftest_images/end-n.png").rfile().abspath
     img_file2 = "data/core/images/scons_conftest_images/end-n.png"
@@ -150,7 +150,7 @@ def CheckPNG(context):
             return False
 
 def CheckWebP(context):
-    cpp_file = File("src/conftests/sdl2_webp.cpp").rfile().get_contents().decode()
+    cpp_file = File("src/conftests/sdl3_webp.cpp").rfile().get_contents().decode()
 
     img_file1 = File("data/core/images/scons_conftest_images/end-n.webp").rfile().abspath
     img_file2 = "data/core/images/scons_conftest_images/end-n.webp"
@@ -175,7 +175,7 @@ def CheckWebP(context):
             return False
 
 def CheckJPG(context):
-    cpp_file = File("src/conftests/sdl2_jpg.cpp").rfile().get_contents().decode()
+    cpp_file = File("src/conftests/sdl3_jpg.cpp").rfile().get_contents().decode()
 
     img_file1 = File("data/core/images/scons_conftest_images/end-n.jpg").rfile().abspath
     img_file2 = "data/core/images/scons_conftest_images/end-n.jpg"
@@ -199,9 +199,9 @@ def CheckJPG(context):
             context.Result("no")
             return False
 
-config_checks = { 'CheckSDL2Image' : CheckSDL2Image,
-                  'CheckSDL2Mixer' : CheckSDL2Mixer,
-                  'CheckSDL2': CheckSDL2,
+config_checks = { 'CheckSDL3Image' : CheckSDL3Image,
+                  'CheckSDL3Mixer' : CheckSDL3Mixer,
+                  'CheckSDL3': CheckSDL3,
                   'CheckOgg' : CheckOgg,
                   'CheckPNG' : CheckPNG,
                   'CheckJPG' : CheckJPG,

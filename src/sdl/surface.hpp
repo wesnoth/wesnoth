@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2025
+	Copyright (C) 2003 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/span.hpp"
 
-#include <SDL2/SDL_surface.h>
+#include <SDL3/SDL.h>
 
 #include <ostream>
 

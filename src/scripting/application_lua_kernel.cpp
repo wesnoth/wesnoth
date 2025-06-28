@@ -52,6 +52,8 @@
 #include <utility>
 
 #include <functional>
+#include <boost/range/adaptors.hpp>
+#include <SDL3/SDL.h>
 
 #include "lua/wrapper_lauxlib.h"
 

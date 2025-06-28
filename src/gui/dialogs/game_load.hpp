@@ -21,7 +21,7 @@
 #include "save_index.hpp"
 #include "savegame.hpp"
 
-#include <SDL2/SDL_keycode.h>
+#include <SDL3/SDL_keycode.h>
 
 namespace gui2::dialogs
 {
