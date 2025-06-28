@@ -519,7 +519,7 @@ theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
 		items_.emplace_back("id", item);
 	}
 
-	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"]);
+	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"].str());
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
 		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + cmd.tooltip;
 	} else if(cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {

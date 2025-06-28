@@ -23,6 +23,7 @@
 #include "ai/manager.hpp"
 #include "ai/composite/rca.hpp"
 #include "game_board.hpp"
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

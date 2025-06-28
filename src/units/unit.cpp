@@ -472,26 +472,20 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		if(!filter_recall.null())
 			filter_recall_ = filter_recall.get_config();
 
-		const vconfig::child_list& events = vcfg->get_children("event");
-		for(const vconfig& e : events) {
+		for(const vconfig& e : vcfg->get_children("event")) {
 			events_.add_child("event", e.get_config());
 		}
-		const vconfig::child_list& abilities_tags = vcfg->get_children("abilities");
-		for(const vconfig& abilities_tag : abilities_tags) {
+		for(const vconfig& abilities_tag : vcfg->get_children("abilities")) {
 			for(const auto& [key, child] : abilities_tag.all_ordered()) {
-				const vconfig::child_list& ability_events = child.get_children("event");
-				for(const vconfig& ability_event : ability_events) {
+				for(const vconfig& ability_event : child.get_children("event")) {
 					events_.add_child("event", ability_event.get_config());
 				}
 			}
 		}
-		const vconfig::child_list& attacks = vcfg->get_children("attack");
-		for(const vconfig& attack : attacks) {
-			const vconfig::child_list& specials_tags = attack.get_children("specials");
-			for(const vconfig& specials_tag : specials_tags) {
+		for(const vconfig& attack : vcfg->get_children("attack")) {
+			for(const vconfig& specials_tag : attack.get_children("specials")) {
 				for(const auto& [key, child] : specials_tag.all_ordered()) {
-					const vconfig::child_list& special_events = child.get_children("event");
-					for(const vconfig& special_event : special_events) {
+					for(const vconfig& special_event : child.get_children("event")) {
 						events_.add_child("event", special_event.get_config());
 					}
 				}

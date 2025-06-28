@@ -397,8 +397,10 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 	std::vector<config> newitems;
 
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
-		// TODO: should this use variable substitution instead?
-		std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
+		std::string label = turn > 0
+			? VGETTEXT("Back to Turn $number", {{"number", std::to_string(turn)}})
+			       : _("Back to Start");
+
 		newitems.emplace_back("label", label, "id", quickload_prefix + filename);
 	});
 
@@ -410,8 +412,10 @@ void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& it
 	std::vector<config> newitems;
 
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
-		// TODO: should this use variable substitution instead?
-		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
+		std::string label = turn > 0
+			? VGETTEXT("Replay from Turn $number", {{"number", std::to_string(turn)}})
+			       : _("Replay from Start");
+
 		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
 	});
 

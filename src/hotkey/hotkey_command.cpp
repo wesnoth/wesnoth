@@ -365,7 +365,7 @@ bool is_scope_active(hk_scopes s)
 	return s.any();
 }
 
-const hotkey_command& get_hotkey_command(const std::string& command)
+const hotkey_command& get_hotkey_command(std::string_view command)
 {
 	try {
 		return registered_hotkeys.at(command);
@@ -379,7 +379,7 @@ const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands()
 	return registered_hotkeys;
 }
 
-bool has_hotkey_command(const std::string& id)
+bool has_hotkey_command(std::string_view id)
 {
 	return get_hotkey_command(id).command != hotkey::HOTKEY_NULL;
 }

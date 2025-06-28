@@ -252,7 +252,14 @@ void unit_type::build_help_index(
 
 	if(auto abil_cfg = cfg.optional_child("abilities")) {
 		for(const auto [key, cfg] : abil_cfg->all_children_view()) {
-			abilities_.emplace_back(cfg);
+			config subst_cfg(cfg);
+			subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
+			subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
+			subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
+			subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
+			subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
+			subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
+			abilities_.emplace_back(subst_cfg);
 		}
 	}
 

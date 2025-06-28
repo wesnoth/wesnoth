@@ -37,11 +37,8 @@ sdl_handler_vector editor_palette<Item>::handler_members()
 }
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items, int i)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items)
 {
-	auto pos = items.erase(items.begin() + i);
-
-	std::vector<config> groups;
 	const std::vector<item_group>& item_groups = get_groups();
 
 	for (std::size_t mci = 0; mci < item_groups.size(); ++mci) {
@@ -61,13 +58,8 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 			img += ".png";
 		}
 
-		groups.emplace_back(
-			"label", groupname,
-			"icon", img
-		);
+		items.emplace_back("label", groupname, "icon", img);
 	}
-
-	items.insert(pos, groups.begin(), groups.end());
 }
 
 template<class Item>

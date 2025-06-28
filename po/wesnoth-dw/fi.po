@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-03-17 04:21 UTC\n"
-"PO-Revision-Date: 2023-01-14 15:03+0200\n"
+"PO-Revision-Date: 2025-06-24 13:49+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -67,15 +67,6 @@ msgstr "Triton"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:23
-#, fuzzy
-#| msgid ""
-#| "You are Kai Krellis, son and heir of the last merman king but only a "
-#| "child. A necromancer is turning your subjects into undead slaves! Lead "
-#| "your people on a mission to convince a powerful mer-sorceress to help you "
-#| "repel the invasion. The oceans near the Northern Lands are perilous, so "
-#| "you will need cunning and bravery to survive. But first you need to gain "
-#| "the respect of your troops!\n"
-#| "\n"
 msgid ""
 "You are Kai Krellis, son and heir of the last merman king but only a child. "
 "A necromancer is turning your subjects into undead slaves! Lead your people "
@@ -1175,19 +1166,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
-#, fuzzy
-#| msgid ""
-#| "You can choose when the slaves come out of their villages and attack "
-#| "their captors. When you are ready, right-click anywhere and select "
-#| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right-click anywhere and select ‘Inspire the "
 "slaves to revolt’."
 msgstr ""
 "Voit valita milloin orjat nousevat kapinaan vangitsijoitaan vastaan. Kun "
-"haluat kylän nousevan kapinaan, klikkaa kylää oikealla painikkeella ja "
-"valitse \"kapina\"."
+"olet valmis, klikkaa painikkeella mistä tahansaja valitse \"Levitä "
+"kapinahenkeä\"."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -2145,17 +2131,17 @@ msgstr "Etsi Caladon"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:84
 msgid "Move a merfolk unit to Caladon’s shack and talk to him"
-msgstr ""
+msgstr "Siirrä merenväen yksikkö Caladonin vajalle ja juttele hänen kanssaan."
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:94
 msgid "You can also visit Caladon with Keshan"
-msgstr ""
+msgstr "Myös Keshan voi vierailla Caladonin luona."
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:107
 msgid "You can also visit Caladon with Inky"
-msgstr ""
+msgstr "Myös Musti voi vierailla Caladonin luona."
 
 #. [unit]: type=Silver Mage, id=Caladon
 #. [side]
@@ -2215,7 +2201,7 @@ msgstr "Iip, iip, iip!"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:460
 msgid "Another of these ACCURSED bats! BEGONE!"
-msgstr ""
+msgstr "Taas yksi näistä KIRTOUISTA lepakoista! MENE POIS!"
 
 #. [floating_text]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:480
@@ -2225,35 +2211,36 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
 msgid "Caladon does not seem to be very happy about the bat infestation."
-msgstr ""
+msgstr "Caladon ei vaikuta olevan mielissään lepakkoinvaasioista. "
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
 msgid "He might be more welcoming of one of our people."
-msgstr ""
+msgstr "Hän saattaisi suhtautua myötämielisemmin johonkuhun omasta väestämme."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:509
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:580
 msgid "Let’s go, men!"
-msgstr ""
+msgstr "Mennään miehet!"
 
 #. [label]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:513
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:584
 msgid "Caladon’s shack"
-msgstr ""
+msgstr "Caladonin vaja"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:538
 msgid "What kind of abomination is THAT!?!"
-msgstr ""
+msgstr "Mikä turkasen iljetys TUO ON!?!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
 msgid "It appears that Caladon does not want to deal with the undead."
 msgstr ""
+"Vaikuttaa siltä että Caladon ei halua olla tekemisissä epäkuolleiden kanssa."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:626
@@ -2263,7 +2250,7 @@ msgstr "Täällä on joku."
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:632
 msgid "Gllllbbbg!"
-msgstr ""
+msgstr "Gllllbbbg!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:638
@@ -3249,11 +3236,6 @@ msgstr "Soturikuningas"
 
 #. [unit_type]: id=Merman Warrior King, race=merman
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Warrior kings often become legendary in their own time. Their skill and "
-#| "strength allows them to be truly formidable in battle. They are also fast "
-#| "despite their heavy armor. Even skilled soldiers look upon them with awe."
 msgid ""
 "Warrior Kings often become legendary in their own time. Their skill and "
 "strength allows them to be truly formidable in battle. They are also fast "
@@ -3261,7 +3243,7 @@ msgid ""
 msgstr ""
 "Soturikuninkaat ovat legendoja jo eläessään. Heidän taidot ja voimat "
 "herättävät pelkoa vihollisessa. He ovat myös ällistyttävän nopeita raskaissa "
-"varustuksissa. Jopa veteraanit ihailevat häntä."
+"varustuksissa. Jopa veteraanit ihailevat heitä."
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:4
@@ -3270,19 +3252,14 @@ msgstr "Nuori kuningas"
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:20
-#, fuzzy
-#| msgid ""
-#| "A young king with some battle experience will be treated with some "
-#| "respect. Common citizens will be inspired to do their utmost when the "
-#| "king is nearby, but battle-hardened veterans will be less impressed."
 msgid ""
 "A Young King with some battle experience will be treated with some respect. "
 "Common citizens will be inspired to do their utmost when the king is nearby, "
 "but battle-hardened veterans will be less impressed."
 msgstr ""
-"Pienellä taistelukokemuksella saa hieman kunnioitusta. Tavalliset "
-"kansalaiset tekevät kaikkensa kuninkaan ollessa lähellä, mutta taistelun "
-"karaisemat veteraanit eivät kovinkaan innostu."
+"Nuoret kuninkaat ansaitsevat pienellä taistelukokemuksellaan hieman "
+"kunnioitusta. Tavalliset kansalaiset tekevät kaikkensa kuninkaan ollessa "
+"lähellä, mutta taistelun karaisemat veteraanit eivät kovinkaan innostu."
 
 #. shown in the status table
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:73

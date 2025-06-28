@@ -57,15 +57,16 @@ struct ui_command
 		: hotkey_command(hotkey_command)
 		, id(id)
 		, index(index)
-	{ }
+	{
+	}
 	explicit ui_command(const hotkey::hotkey_command& cmd, int index = -1)
 		: ui_command(cmd.command, cmd.id, index)
-	{ }
+	{
+	}
 	// the string @param id references must live longer than this object.
 	explicit ui_command(std::string_view id, int index = -1)
-		: ui_command(hotkey::HOTKEY_NULL, id, index)
+		: ui_command(hotkey::get_hotkey_command(id), index)
 	{
-		hotkey_command = hotkey::get_hotkey_command(std::string(id)).command;
 	}
 };
 
@@ -184,6 +185,12 @@ public:
 	// @a items_arg the actions to be exceuted, exceutes all of the actions, it looks like the idea is to associate
 	//  multiple actions with a single menu button, not sure whether it is actually used.
 	void execute_action(const std::vector<std::string>& items_arg);
+
+	/** If true, the menu will remain open after an item has been selected. */
+	virtual bool keep_menu_open() const
+	{
+		return false;
+	}
 
 	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
 	void queue_command(const SDL_Event& event, int index = -1);

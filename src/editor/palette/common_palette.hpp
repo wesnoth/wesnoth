@@ -73,7 +73,7 @@ public:
 	virtual const std::vector<item_group>& get_groups() const = 0;
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) = 0;
+	virtual void expand_palette_groups_menu(std::vector<config>& items) = 0;
 
 	//item
 	virtual std::size_t num_items() = 0;

@@ -49,12 +49,13 @@
 #include "floating_label.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
-#include "sound.hpp"
-#include "units/unit.hpp"
-#include "units/animation_component.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 #include "serialization/chrono.hpp"
+#include "sound.hpp"
+#include "units/animation_component.hpp"
+#include "units/unit.hpp"
+#include "utils/scope_exit.hpp"
 
 #include <functional>
 
@@ -70,7 +71,7 @@ editor_controller::editor_controller(bool clear_id)
 	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
-	, active_menu_(editor::MAP)
+	, active_menu_(menu_type::none)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
@@ -313,22 +314,23 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 				unsigned i = static_cast<unsigned>(index);
 
 				switch (active_menu_) {
-					case editor::MAP:
+					case menu_type::map:
 						if (i < context_manager_->open_maps()) {
 							return true;
 						}
 						return false;
-					case editor::LOAD_MRU:
-					case editor::PALETTE:
-					case editor::AREA:
-					case editor::ADDON:
-					case editor::SIDE:
-					case editor::TIME:
-					case editor::SCHEDULE:
-					case editor::LOCAL_SCHEDULE:
-					case editor::MUSIC:
-					case editor::LOCAL_TIME:
-					case editor::UNIT_FACING:
+					case menu_type::load_mru:
+					case menu_type::palette:
+					case menu_type::area:
+					case menu_type::addon:
+					case menu_type::side:
+					case menu_type::time:
+					case menu_type::schedule:
+					case menu_type::local_schedule:
+					case menu_type::music:
+					case menu_type::local_time:
+					case menu_type::unit_facing:
+					case menu_type::none:
 						return true;
 				}
 			}
@@ -622,26 +624,26 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 
 	case HOTKEY_NULL:
 		switch (active_menu_) {
-		case editor::MAP:
+		case menu_type::map:
 			return hotkey::selected_if(index == context_manager_->current_context_index());
-		case editor::LOAD_MRU:
+		case menu_type::load_mru:
 			return hotkey::action_state::stateless;
-		case editor::PALETTE:
+		case menu_type::palette:
 			return hotkey::action_state::stateless;
-		case editor::AREA:
+		case menu_type::area:
 			return hotkey::selected_if(index == get_current_map_context().get_active_area());
-		case editor::ADDON:
+		case menu_type::addon:
 			return hotkey::action_state::stateless;
-		case editor::SIDE:
+		case menu_type::side:
 			return hotkey::selected_if(static_cast<std::size_t>(index) == gui_->playing_team_index());
-		case editor::TIME:
+		case menu_type::time:
 			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_time());
-		case editor::LOCAL_TIME:
+		case menu_type::local_time:
 			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_area_time(
 				get_current_map_context().get_active_area()));
-		case editor::MUSIC:
+		case menu_type::music:
 			return hotkey::on_if(get_current_map_context().is_in_playlist(music_tracks_[index].id()));
-		case editor::SCHEDULE:
+		case menu_type::schedule:
 			{
 				tods_map::const_iterator it = tods_.begin();
 				std::advance(it, index);
@@ -649,7 +651,7 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times();
 				return hotkey::selected_if(times1 == times2);
 			}
-		case editor::LOCAL_SCHEDULE:
+		case menu_type::local_schedule:
 			{
 				tods_map::const_iterator it = tods_.begin();
 				std::advance(it, index);
@@ -658,12 +660,14 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times(active_area);
 				return hotkey::selected_if(times1 == times2);
 			}
-		case editor::UNIT_FACING:
+		case menu_type::unit_facing:
 			{
 				unit_map::const_unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
 				assert(un != get_current_map_context().units().end());
 				return hotkey::selected_if(un->facing() == map_location::direction{index});
 			}
+		case menu_type::none:
+			return hotkey::action_state::stateless;
 		}
 		return hotkey::action_state::on;
 		default:
@@ -686,7 +690,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	switch (command) {
 		case HOTKEY_NULL:
 			switch (active_menu_) {
-			case MAP:
+			case menu_type::map:
 				if (index >= 0) {
 					unsigned i = static_cast<unsigned>(index);
 					if (i < context_manager_->size()) {
@@ -696,20 +700,20 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					}
 				}
 				return false;
-			case LOAD_MRU:
+			case menu_type::load_mru:
 				if (index >= 0) {
 					context_manager_->load_mru_item(static_cast<unsigned>(index));
 				}
 				return true;
-			case PALETTE:
+			case menu_type::palette:
 				toolkit_->get_palette_manager()->set_group(index);
 				return true;
-			case SIDE:
+			case menu_type::side:
 				gui_->set_viewing_team_index(index, true);
 				gui_->set_playing_team_index(index);
 				toolkit_->get_palette_manager()->draw_contents();
 				return true;
-			case AREA:
+			case menu_type::area:
 				{
 					get_current_map_context().set_active_area(index);
 					const std::set<map_location>& area =
@@ -718,20 +722,20 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					gui_->scroll_to_tiles({ area.begin(), area.end() });
 					return true;
 				}
-			case ADDON:
+			case menu_type::addon:
 				return true;
-			case TIME:
+			case menu_type::time:
 				{
 					get_current_map_context().set_starting_time(index);
 					gui_->update_tod();
 					return true;
 				}
-			case LOCAL_TIME:
+			case menu_type::local_time:
 				{
 					get_current_map_context().set_local_starting_time(index);
 					return true;
 				}
-			case MUSIC:
+			case menu_type::music:
 				{
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
@@ -742,7 +746,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false);
 					return true;
 				}
-			case SCHEDULE:
+			case menu_type::schedule:
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
@@ -751,22 +755,23 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					gui_->update_tod();
 					return true;
 				}
-			case LOCAL_SCHEDULE:
+			case menu_type::local_schedule:
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
 					get_current_map_context().replace_local_schedule(iter->second.second);
 					return true;
 				}
-			case UNIT_FACING:
+			case menu_type::unit_facing:
 				{
 					unit_map::unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
 					assert(un != get_current_map_context().units().end());
 					un->set_facing(map_location::direction(index));
 					un->anim_comp().set_standing();
-					active_menu_ = MAP;
 					return true;
 				}
+			case menu_type::none:
+				return true;
 			}
 			return true;
 
@@ -900,15 +905,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			change_unit_id();
 			return true;
 
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool unrenamable = un->unrenamable();
 			un->set_unrenamable(!unrenamable);
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		{
 			map_location loc = gui_->mouseover_hex();
@@ -916,22 +920,22 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool loyal = un->loyal();
 			un->set_loyal(!loyal);
+			return true;
 		}
-		return true;
 		case HOTKEY_DELETE_UNIT:
 		{
 			map_location loc = gui_->mouseover_hex();
 			perform_delete(std::make_unique<editor_action_unit_delete>(loc));
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
@@ -1164,8 +1168,17 @@ void editor_controller::show_help()
 	help::show_help("..editor");
 }
 
+bool editor_controller::keep_menu_open() const
+{
+	// Keep the music menu open to allow multiple selections easily
+	return active_menu_ == menu_type::music;
+}
+
 void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
 {
+	// Ensure active_menu_ is only valid within the scope of this function.
+	ON_SCOPE_EXIT(this) { active_menu_ = menu_type::none; };
+
 	if(context_menu) {
 		if(!get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;
@@ -1175,8 +1188,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	std::vector<config> items;
 	for(const auto& c : items_arg) {
 		const std::string& id = c["id"];
-
-		const hotkey::ui_command cmd = hotkey::ui_command(hotkey::get_hotkey_command(id));
+		const auto cmd = hotkey::ui_command(id);
 
 		if((can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))
 			|| cmd.hotkey_command == hotkey::HOTKEY_NULL)
@@ -1193,79 +1205,88 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	// Based on the ID of the first entry, we fill the menu contextually.
 	const std::string& first_id = items.front()["id"];
 
+	// All generated items (might be empty).
+	std::vector<config> generated;
+
 	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
-		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items, 0);
+		active_menu_ = menu_type::load_mru;
+		context_manager_->expand_load_mru_menu(generated);
 	}
 
-	if(first_id == "editor-switch-map") {
-		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items, 0);
+	else if(first_id == "editor-switch-map") {
+		active_menu_ = menu_type::map;
+		context_manager_->expand_open_maps_menu(generated);
 	}
 
-	if(first_id == "editor-palette-groups") {
-		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items, 0);
+	else if(first_id == "editor-palette-groups") {
+		active_menu_ = menu_type::palette;
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(generated);
 	}
 
-	if(first_id == "editor-switch-side") {
-		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items, 0);
+	else if(first_id == "editor-switch-side") {
+		active_menu_ = menu_type::side;
+		context_manager_->expand_sides_menu(generated);
 	}
 
-	if(first_id == "editor-switch-area") {
-		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items, 0);
+	else if(first_id == "editor-switch-area") {
+		active_menu_ = menu_type::area;
+		context_manager_->expand_areas_menu(generated);
 	}
 
-	if(first_id == "editor-pbl") {
-		active_menu_ = editor::ADDON;
+	else if(first_id == "editor-pbl") {
+		active_menu_ = menu_type::addon;
 	}
 
-	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
-		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items, 0);
+	else if(first_id == "editor-switch-time") {
+		active_menu_ = menu_type::time;
+		context_manager_->expand_time_menu(generated);
 	}
 
-	if(first_id == "editor-assign-local-time") {
-		active_menu_ = editor::LOCAL_TIME;
-		context_manager_->expand_local_time_menu(items, 0);
+	else if(first_id == "editor-assign-local-time") {
+		active_menu_ = menu_type::local_time;
+		context_manager_->expand_local_time_menu(generated);
 	}
 
-	if(first_id == "menu-unit-facings") {
-		active_menu_ = editor::UNIT_FACING;
-		auto pos = items.erase(items.begin());
-		int dir = 0;
-		std::generate_n(std::inserter<std::vector<config>>(items, pos), static_cast<int>(map_location::direction::indeterminate), [&dir]() -> config {
-			return config {"label", map_location::write_translated_direction(map_location::direction(dir++))};
+	else if(first_id == "menu-unit-facings") {
+		active_menu_ = menu_type::unit_facing;
+		auto count = static_cast<int>(map_location::direction::indeterminate);
+		std::generate_n(std::back_inserter(generated), count, [dir = 0]() mutable {
+			return config{"label", map_location::write_translated_direction(map_location::direction(dir++))};
 		});
 	}
 
-	if(first_id == "editor-playlist") {
-		active_menu_ = editor::MUSIC;
-		auto pos = items.erase(items.begin());
-		std::transform(music_tracks_.begin(), music_tracks_.end(), std::inserter<std::vector<config>>(items, pos), [](const sound::music_track& track) -> config {
-			return config {"label", track.title().empty() ? track.id() : track.title()};
-		});
+	else if(first_id == "editor-playlist") {
+		active_menu_ = menu_type::music;
+		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(generated),
+			[](const sound::music_track& track) {
+				return config{"label", track.title().empty() ? track.id() : track.title()};
+			});
 	}
 
-	if(first_id == "editor-assign-schedule") {
-		active_menu_ = editor::SCHEDULE;
-		auto pos = items.erase(items.begin());
-		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config {"label", tod.second.first};
-		});
+	else if(first_id == "editor-assign-schedule") {
+		active_menu_ = menu_type::schedule;
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
+			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
 	}
 
-	if(first_id == "editor-assign-local-schedule") {
-		active_menu_ = editor::LOCAL_SCHEDULE;
-		auto pos = items.erase(items.begin());
-		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config {"label", tod.second.first};
-		});
+	else if(first_id == "editor-assign-local-schedule") {
+		active_menu_ = menu_type::local_schedule;
+		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
+			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu);
+	else {
+		// No placeholders, show everything
+		command_executor::show_menu(items, xloc, yloc, context_menu);
+		return;
+	}
+
+	// Splice the lists, excluding placeholder entry
+	if(items.size() > 1) {
+		std::move(items.begin() + 1, items.end(), std::back_inserter(generated));
+	}
+
+	command_executor::show_menu(generated, xloc, yloc, context_menu);
 }
 
 void editor_controller::preferences()

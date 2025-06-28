@@ -996,17 +996,6 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	}
 }
 
-void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
-{
-	try {
-		enter_game(*lobby_info_.games().at(index), mode);
-	} catch(const std::out_of_range&) {
-		// Game index was invalid!
-		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
-		       << "Games vector size is " << lobby_info_.games().size();
-	}
-}
-
 void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 {
 	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
@@ -1021,7 +1010,8 @@ void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
-	enter_game_by_index(gamelistbox_->get_selected_row(), mode);
+	auto index = gamelistbox_->get_selected_row();
+	enter_game(*lobby_info_.games().at(index), mode);
 }
 
 void mp_lobby::refresh_lobby()

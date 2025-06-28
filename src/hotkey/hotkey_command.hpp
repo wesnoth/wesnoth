@@ -314,12 +314,12 @@ private:
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
 /** returns the hotkey_command with the given name */
-NOT_DANGLING const hotkey_command& get_hotkey_command(const std::string& command);
+NOT_DANGLING const hotkey_command& get_hotkey_command(std::string_view command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
-bool has_hotkey_command(const std::string& id);
+bool has_hotkey_command(std::string_view id);
 
 /**
  * RAII helper class to control the lifetime of a WML hotkey_command.
