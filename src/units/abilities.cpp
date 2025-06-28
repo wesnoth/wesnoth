@@ -476,7 +476,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, loc);
-			if(from_loc == loc || distance > radius || !ufilt(u, self)) {
+			if(&u == &self || distance > radius || !ufilt(u, self)) {
 				continue;
 			}
 			int dir = 0;
