@@ -905,15 +905,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			change_unit_id();
 			return true;
 
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool unrenamable = un->unrenamable();
 			un->set_unrenamable(!unrenamable);
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		{
 			map_location loc = gui_->mouseover_hex();
@@ -921,22 +920,22 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool loyal = un->loyal();
 			un->set_loyal(!loyal);
+			return true;
 		}
-		return true;
 		case HOTKEY_DELETE_UNIT:
 		{
 			map_location loc = gui_->mouseover_hex();
 			perform_delete(std::make_unique<editor_action_unit_delete>(loc));
+			return true;
 		}
-		return true;
 		case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
