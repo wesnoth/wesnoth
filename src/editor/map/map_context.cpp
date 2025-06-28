@@ -43,7 +43,7 @@ editor_team_info::editor_team_info(const team& t)
 	, name(t.user_team_name())
 	, recruit_list(utils::join(t.recruits(), ","))
 	, gold(t.gold())
-	, income(t.raw_income())
+	, income(t.base_income())
 	, village_income(t.village_gold())
 	, village_support(t.village_support())
 	, fog(t.uses_fog())
@@ -328,7 +328,7 @@ void map_context::set_side_setup(editor_team_info& info)
 	t.have_leader(!info.no_leader);
 	t.change_controller(info.controller);
 	t.set_gold(info.gold);
-	t.set_raw_income(info.income);
+	t.set_base_income(info.income);
 	t.set_hidden(info.hidden);
 	t.set_fog(info.fog);
 	t.set_shroud(info.shroud);
