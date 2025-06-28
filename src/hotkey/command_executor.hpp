@@ -166,15 +166,14 @@ public:
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
 
-	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsistent.
-	// Gets the action's image (if any). Displayed left of the action text in menus.
-	virtual std::string get_action_image(const hotkey::ui_command&) const { return ""; }
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
 	virtual action_state get_action_state(const hotkey::ui_command&) const { return action_state::stateless; }
-	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
-	std::string get_menu_image(const std::string& command, int index=-1) const;
-	// Returns a vector of images for a given menu.
-	void get_menu_images(std::vector<config>& items);
+
+private:
+	void get_menu_controls(config& item, int index = -1) const;
+	void populate_menu_item_info(config& item, int index) const;
+
+public:
 	void surrender_game();
 	// @a items_arg the items in the menus to be shows, each item can have the folliwng attributes:
 	//   'id':    The id describing the action, will be passed to do_execute_commnd and can_execute_commnd,

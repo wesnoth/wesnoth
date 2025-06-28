@@ -36,6 +36,7 @@ REGISTER_DIALOG(drop_down_menu)
 
 drop_down_menu::entry_data::entry_data(const config& cfg)
 	: checkbox()
+	, radio()
 	, icon(cfg["icon"].str())
 	, image()
 	, label(cfg["label"].t_str())
@@ -45,6 +46,10 @@ drop_down_menu::entry_data::entry_data(const config& cfg)
 	// Checkboxes take precedence in column 1
 	if(cfg.has_attribute("checkbox")) {
 		checkbox = cfg["checkbox"].to_bool(false);
+	}
+
+	if(cfg.has_attribute("radio")) {
+		radio = cfg["radio"].to_bool(false);
 	}
 
 	// Images take precedence in column 2
@@ -83,6 +88,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	: modal_dialog(window_id())
 	, parent_(parent)
 	, items_(items.begin(), items.end())
+	, radio_manager_()
 	, button_pos_(parent->get_rectangle())
 	, selected_item_(selected_item)
 	, selected_item_pos_(-1, -1)
@@ -96,6 +102,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	: modal_dialog(window_id())
 	, parent_(nullptr)
 	, items_(items.begin(), items.end())
+	, radio_manager_()
 	, button_pos_(button_pos)
 	, selected_item_(selected_item)
 	, use_markup_(use_markup)
@@ -204,7 +211,49 @@ void drop_down_menu::pre_show()
 					*checkbox, [this](auto&&...) { parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
 			}
 
+			// TODO: remove this block once the main UI uses GUI2
+			else if(legacy_menu_mode_) {
+				// For the in-game theme menus, it's easier to disable explicit UI interaction with
+				// the checkboxes; most of the time we want the dialog to close regardless of whether
+				// you selected them directly or they were toggled by the row click handler.
+				checkbox->set_active(false);
+
+				// We still register a callback for cases where the dialog *is* explicitly kept open,
+				// since we need to handle the resulting action here rather than after the menu closes.
+				if(keep_open_) {
+					connect_signal_notify_modified(*checkbox, [this, index = list.get_item_count() - 1](auto&&...) {
+						if(theme_transition_toggle_callback_) {
+							theme_transition_toggle_callback_(index);
+						}
+					});
+				}
+			}
+
 			mi_grid.swap_child("icon", std::move(checkbox), false);
+		}
+
+		if(entry.radio) {
+			// Initialize the group manager as soon as we see a radio button
+			if(!radio_manager_) {
+				radio_manager_.emplace();
+			}
+
+			auto radio = build_single_widget_instance<toggle_button>(config{"definition", "radio_no_label"});
+			radio->set_id("checkbox"); // Yes, the id should be 'checkbox'
+			radio->set_value_bool(*entry.radio);
+			radio->set_linked_group("icons");
+
+			// TODO: remove this block once the main UI uses GUI2
+			if(legacy_menu_mode_) {
+				// See comment above
+				radio->set_active(false);
+			}
+
+			// Associate this widget with its current row index
+			auto row_index = list.get_item_count() - 1;
+			radio_manager_->add_member(radio.get(), row_index);
+
+			mi_grid.swap_child("icon", std::move(radio), false);
 		}
 
 		if(entry.image) {
@@ -213,6 +262,21 @@ void drop_down_menu::pre_show()
 
 			mi_grid.swap_child("label", std::move(img), false);
 		}
+	}
+
+	if(radio_manager_) {
+		radio_manager_->on_modified([this](widget&, int index) {
+			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
+			// TODO: verify whether this is the best way to pass radio button events up to the parent
+			if(parent_) {
+				parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
+			}
+
+			// TODO: remove this block once the main UI uses GUI2
+			else if(legacy_menu_mode_ && keep_open_ && theme_transition_toggle_callback_) {
+				theme_transition_toggle_callback_(index);
+			}
+		});
 	}
 
 	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
@@ -233,11 +297,11 @@ void drop_down_menu::pre_show()
 
 	// Dismiss on resize.
 	connect_signal<event::SDL_VIDEO_RESIZE>(
-		[this](auto&&...){ resize_callback(*this); }, event::dispatcher::front_child);
+		[this](auto&&...) { resize_callback(*this); }, event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
 	connect_signal_notify_modified(list,
-		[this](auto&&...){ callback_flip_embedded_toggle(*this); });
+		[this](auto&&...) { callback_flip_embedded_toggle(*this); });
 }
 
 void drop_down_menu::post_show()
@@ -258,7 +322,6 @@ void drop_down_menu::post_show()
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 {
 	const listbox& list = find_widget<const listbox>("list", true);
-
 	boost::dynamic_bitset<> states;
 
 	for(unsigned i = 0; i < list.get_item_count(); ++i) {

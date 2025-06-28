@@ -480,11 +480,6 @@ bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& 
 	}
 }
 
-std::string play_controller::hotkey_handler::get_action_image(const hotkey::ui_command& cmd) const
-{
-	return command_executor::get_action_image(cmd);
-}
-
 hotkey::action_state play_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
 	switch(cmd.hotkey_command) {
