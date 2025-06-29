@@ -246,16 +246,11 @@ struct hotkey_command_temp;
  */
 struct hotkey_command
 {
-	hotkey_command() = delete;
-
 	/** Constructs a new command from a temporary static hotkey object. */
 	hotkey_command(const hotkey_command_temp& temp_command);
 
 	/** @todo: see if we can remove this with c++20. Aggregate initialization with try_emplace?*/
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
-
-	hotkey_command(const hotkey_command&) = default;
-	hotkey_command& operator=(const hotkey_command&) = default;
 
 	/** The command associated with this hotkey. Does not need to be unique. */
 	HOTKEY_COMMAND command;
