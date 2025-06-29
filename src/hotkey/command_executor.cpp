@@ -35,8 +35,6 @@
 #include "sdl/input.hpp" // get_mouse_state
 #include "video.hpp" // toggle_fullscreen
 
-
-
 #include <ios>
 #include <set>
 
@@ -411,16 +409,33 @@ void command_executor::surrender_game() {
 
 void command_executor::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool /*context_menu*/)
 {
-	std::vector<config> items = items_arg;
-	if (items.empty()) return;
+	if(items_arg.empty()) {
+		return;
+	}
 
-	get_menu_images(items);
+	// FIXME: take the argument by value
+	std::vector<config> items = items_arg;
+	for(std::size_t i = 0; i < items.size(); ++i) {
+		populate_menu_item_info(items[i], i);
+	}
+
+	const auto do_command = [&](int selected_item) {
+		std::string id = items[selected_item]["id"].str();
+		do_execute_command(hotkey::ui_command(id, selected_item));
+		set_button_state();
+	};
 
 	int res = -1;
 	point selection_pos;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
-		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
+		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, keep_menu_open());
+
+		// Transitional API. Remove once the game UI is using GUI2.
+		// Callback will only fire if keep_menu_open is false
+		mmenu.set_legacy_menu_mode(true);
+		mmenu.set_legacy_toggle_callback(do_command);
+
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
 			if(res >= 0) {
@@ -432,16 +447,16 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 			}
 		}
 	} // This will kill the dialog.
-	if (res < 0 || std::size_t(res) >= items.size()) return;
+
+	if(res < 0 || std::size_t(res) >= items.size()) {
+		return;
+	}
 
 	std::string id = items[res]["id"];
-	const theme::menu* submenu = display::get_singleton()->get_theme().get_menu_item(id);
-	if (submenu) {
-		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context());
+	if(const theme::menu* submenu = display::get_singleton()->get_theme().get_menu_item(id)) {
+		show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context());
 	} else {
-		hotkey::ui_command cmd = hotkey::ui_command(id, res);
-		do_execute_command(cmd);
-		set_button_state();
+		do_command(res);
 	}
 }
 
@@ -456,72 +471,78 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg)
 	}
 }
 
-std::string command_executor::get_menu_image(const std::string& command, int index) const
+void command_executor::get_menu_controls(config& item, int index) const
 {
-	const std::string base_image_name = "icons/action/" + command + "_25.png";
-	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
+	const std::string& command = item["id"];
 
-	hotkey::ui_command cmd = hotkey::ui_command(command, index);
-	const hotkey::action_state state = get_action_state(cmd);
+	// FIXME: better integrate this with GUI2
+	const std::string default_image = "icons/action/" + command + "_25.png";
+	const std::string pressed_image = "icons/action/" + command + "_25-pressed.png";
 
-	const theme::menu* menu = display::get_singleton()->get_theme().get_menu_item(command);
-	if (menu) {
-		return "icons/arrows/short_arrow_right_25.png~CROP(3,3,18,18)"; // TODO should not be hardcoded
-	}
+	auto cmd = hotkey::ui_command(command, index);
+	hotkey::action_state state = get_action_state(cmd);
 
-	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
-		switch (state) {
-			case action_state::on:
-			case action_state::selected:
-				return pressed_image_name + "~CROP(3,3,18,18)";
-			default:
-				return base_image_name + "~CROP(3,3,18,18)";
+	// An image set, if present, takes precedence over toggle buttons to represent
+	// an item's state. See the editor's terrain category dropdown for an example.
+	if(filesystem::file_exists(game_config::path + "/images/" + default_image)) {
+		switch(state) {
+		case action_state::on:
+		case action_state::selected:
+			item["icon"] = pressed_image + "~CROP(3,3,18,18)";
+			return;
+		default:
+			item["icon"] = default_image + "~CROP(3,3,18,18)";
+			return;
 		}
 	}
 
-	switch (get_action_state(cmd)) {
-		case action_state::on:
-			return game_config::images::checked_menu;
-		case action_state::off:
-			return game_config::images::unchecked_menu;
-		case action_state::selected:
-			return game_config::images::selected_menu;
-		case action_state::deselected:
-			return game_config::images::deselected_menu;
-		default: return get_action_image(cmd);
+	switch(state) {
+	case action_state::on:
+		item["checkbox"] = true;
+		break;
+	case action_state::off:
+		item["checkbox"] = false;
+		break;
+	case action_state::selected:
+		item["radio"] = true;
+		break;
+	case action_state::deselected:
+		item["radio"] = false;
+		break;
+	case action_state::stateless:
+		// Do nothing
+		break;
 	}
 }
 
-void command_executor::get_menu_images(std::vector<config>& items)
+void command_executor::populate_menu_item_info(config& item, int index) const
 {
-	for(std::size_t i = 0; i < items.size(); ++i) {
-		config& item = items[i];
+	const std::string& item_id = item["id"];
+	const auto& hk = hotkey::get_hotkey_command(item_id);
+	const theme& theme = display::get_singleton()->get_theme();
 
-		const std::string& item_id = item["id"];
-		const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(item_id).command;
+	// Submenu
+	if(const theme::menu* menu = theme.get_menu_item(item_id)) {
+		item["icon"] = "icons/arrows/short_arrow_right_25.png~CROP(3,3,18,18)"; // TODO: should not be hardcoded
+		item["label"] = menu->title();
+		return;
+	}
 
-		//see if this menu item has an associated image
-		std::string img(get_menu_image(item_id, i));
-		if (img.empty() == false) {
-			item["icon"] = img;
-		}
+	// Populate icons and enable toggle buttons
+	get_menu_controls(item, index);
 
-		const theme& theme = display::get_singleton()->get_theme();
-		const theme::menu* menu = theme.get_menu_item(item_id);
-		if(menu) {
-			item["label"] = menu->title();
-		} else if(hk != hotkey::HOTKEY_NULL) {
-			std::string desc = hotkey::get_hotkey_command(item_id).description;
-			if(hk == HOTKEY_ENDTURN) {
-				const theme::action *b = theme.get_action_item("button-endturn");
-				if (b) {
-					desc = b->title();
-				}
+	if(hk.command != hotkey::HOTKEY_NULL) {
+		std::string desc = hk.description;
+
+		// TODO: why does this get special handling?
+		if(hk.command == HOTKEY_ENDTURN) {
+			if(const theme::action* b = theme.get_action_item("button-endturn")) {
+				desc = b->title();
 			}
-
-			item["label"] = desc;
-			item["details"] = hotkey::get_names(item_id);
 		}
+
+		item["label"] = desc;
+		item["details"] = hotkey::get_names(item_id);
 	}
 }
 

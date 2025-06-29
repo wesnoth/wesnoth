@@ -740,10 +740,6 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					get_current_map_context().add_to_playlist(music_tracks_[index]);
-					std::vector<config> items;
-					items.emplace_back("id", "editor-playlist");
-					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
-					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false);
 					return true;
 				}
 			case menu_type::schedule:

@@ -108,7 +108,6 @@ public:
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 
-	virtual std::string get_action_image(const hotkey::ui_command&) const override;
 	virtual void load_autosave(const std::string& filename, bool start_replay = false);
 	virtual hotkey::action_state get_action_state(const hotkey::ui_command&) const override;
 	/** Check if a command can be executed. */

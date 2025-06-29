@@ -212,10 +212,6 @@ std::string
 	tod_bright,
 	tod_dark,
 	// TODO: de-hardcode this
-	selected_menu   = "buttons/radiobox-pressed.png",
-	deselected_menu = "buttons/radiobox.png",
-	checked_menu    = "buttons/checkbox-pressed.png",
-	unchecked_menu  = "buttons/checkbox.png",
 	wml_menu        = "buttons/WML-custom.png",
 	level,
 	ellipsis,
