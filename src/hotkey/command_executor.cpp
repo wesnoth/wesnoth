@@ -783,7 +783,7 @@ bool command_executor::run_queued_commands()
 
 void command_executor::execute_quit_command()
 {
-	do_execute_command(ui_command(hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME)));
+	do_execute_command(ui_command(hotkey::get_hotkey_command(hotkey::HOTKEY_QUIT_GAME)));
 }
 
 void command_executor_default::recalculate_minimap()

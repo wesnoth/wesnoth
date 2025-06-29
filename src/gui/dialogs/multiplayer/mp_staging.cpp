@@ -79,7 +79,7 @@ void mp_staging::pre_show()
 	std::stringstream tooltip;
 	tooltip
 		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})
-		<< hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_MP_START_GAME).id);
+		<< hotkey::get_names(hotkey::get_hotkey_command(hotkey::HOTKEY_MP_START_GAME).id);
 	find_widget<button>("ok").set_tooltip(tooltip.str());
 
 	//

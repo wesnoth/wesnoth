@@ -283,12 +283,6 @@ struct hotkey_command
 
 	/** returns the command that is treated as null */
 	static const hotkey_command& null_command();
-
-	/**
-	 * the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
-	 * to be able to call it with HOTKEY_COMMAND, this function was created
-	 */
-	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
 class scope_changer
@@ -308,8 +302,11 @@ private:
  */
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
-/** returns the hotkey_command with the given name */
+/** Returns the hotkey_command with the given id */
 NOT_DANGLING const hotkey_command& get_hotkey_command(std::string_view command);
+
+/** Returns the hotkey_command with the given command */
+NOT_DANGLING const hotkey_command& get_hotkey_command(HOTKEY_COMMAND command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);

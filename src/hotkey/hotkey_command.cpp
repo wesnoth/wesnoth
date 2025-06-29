@@ -374,6 +374,18 @@ const hotkey_command& get_hotkey_command(std::string_view command)
 	}
 }
 
+const hotkey_command& get_hotkey_command(hotkey::HOTKEY_COMMAND command)
+{
+	for(const auto& [id, cmd] : registered_hotkeys) {
+		if(cmd.command == command) {
+			return cmd;
+		}
+	}
+
+	ERR_G << "No hotkey with requested command '" << command << "' found. Returning null hotkey.";
+	return hotkey_command::null_command();
+}
+
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands()
 {
 	return registered_hotkeys;
@@ -476,18 +488,6 @@ bool hotkey_command::null() const
 	}
 
 	return false;
-}
-
-const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
-{
-	for(auto& [id, cmd] : registered_hotkeys) {
-		if(cmd.command == command) {
-			return cmd;
-		}
-	}
-
-	ERR_G << "No hotkey with requested command '" << command << "' found. Returning null hotkey.";
-	return hotkey_command::null_command();
 }
 
 void init_hotkey_commands()
