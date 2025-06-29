@@ -193,7 +193,7 @@ protected:
 	 * Determines whether the command should be in the context menu or not.
 	 * Independent of whether or not we can actually execute the command.
 	 */
-	virtual bool in_context_menu(const hotkey::ui_command& cmd) const
+	virtual bool in_context_menu(const hotkey::ui_command&) const
 	{
 		return true;
 	}
