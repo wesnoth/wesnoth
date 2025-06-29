@@ -475,8 +475,3 @@ void controller_base::execute_action(const std::vector<std::string>& items)
 
 	cmd_exec->execute_action(items);
 }
-
-bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
-{
-	return true;
-}

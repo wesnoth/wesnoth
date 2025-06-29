@@ -115,10 +115,6 @@ public:
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;
 	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
 
-	/**
-	 *  Determines whether the command should be in the context menu or not.
-	 *  Independent of whether or not we can actually execute the command.
-	 */
-	bool in_context_menu(const hotkey::ui_command& cmd) const;
-
+	/** Inherited from command_executor. */
+	bool in_context_menu(const hotkey::ui_command& cmd) const override;
 };

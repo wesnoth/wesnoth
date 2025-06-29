@@ -189,6 +189,15 @@ protected:
 		return action_state::stateless;
 	}
 
+	/**
+	 * Determines whether the command should be in the context menu or not.
+	 * Independent of whether or not we can actually execute the command.
+	 */
+	virtual bool in_context_menu(const hotkey::ui_command& cmd) const
+	{
+		return true;
+	}
+
 private:
 	void populate_menu_controls(config& item, int index) const;
 	void populate_menu_item_info(config& item, int index) const;
