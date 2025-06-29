@@ -309,236 +309,236 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	using namespace hotkey; //reduce hotkey:: clutter
 	int index = cmd.index;
 	switch(cmd.hotkey_command) {
-		case HOTKEY_NULL:
-			if (index >= 0) {
-				unsigned i = static_cast<unsigned>(index);
+	case HOTKEY_NULL:
+		if (index >= 0) {
+			unsigned i = static_cast<unsigned>(index);
 
-				switch (active_menu_) {
-					case menu_type::map:
-						if (i < context_manager_->open_maps()) {
-							return true;
-						}
-						return false;
-					case menu_type::load_mru:
-					case menu_type::palette:
-					case menu_type::area:
-					case menu_type::addon:
-					case menu_type::side:
-					case menu_type::time:
-					case menu_type::schedule:
-					case menu_type::local_schedule:
-					case menu_type::music:
-					case menu_type::local_time:
-					case menu_type::unit_facing:
-					case menu_type::none:
-						return true;
+			switch (active_menu_) {
+			case menu_type::map:
+				if (i < context_manager_->open_maps()) {
+					return true;
 				}
+				return false;
+			case menu_type::load_mru:
+			case menu_type::palette:
+			case menu_type::area:
+			case menu_type::addon:
+			case menu_type::side:
+			case menu_type::time:
+			case menu_type::schedule:
+			case menu_type::local_schedule:
+			case menu_type::music:
+			case menu_type::local_time:
+			case menu_type::unit_facing:
+			case menu_type::none:
+				return true;
 			}
-			return false;
-		case HOTKEY_EDITOR_PALETTE_GROUPS:
-			return true;
-		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
-			return toolkit_->get_palette_manager()->can_scroll_up();
-		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
-			return toolkit_->get_palette_manager()->can_scroll_down();
-		case HOTKEY_ZOOM_IN:
-			return !gui_->zoom_at_max();
-		case HOTKEY_ZOOM_OUT:
-			return !gui_->zoom_at_min();
-		case HOTKEY_ZOOM_DEFAULT:
-		case HOTKEY_FULLSCREEN:
-		case HOTKEY_SCREENSHOT:
-		case HOTKEY_MAP_SCREENSHOT:
-		case HOTKEY_TOGGLE_GRID:
-		case HOTKEY_MOUSE_SCROLL:
-		case HOTKEY_ANIMATE_MAP:
-		case HOTKEY_MUTE:
-		case HOTKEY_PREFERENCES:
-		case HOTKEY_HELP:
-		case HOTKEY_QUIT_GAME:
-		case HOTKEY_SCROLL_UP:
-		case HOTKEY_SCROLL_DOWN:
-		case HOTKEY_SCROLL_LEFT:
-		case HOTKEY_SCROLL_RIGHT:
-			return true; //general hotkeys we can always do
-
-		case HOTKEY_UNIT_LIST:
-			return !get_current_map_context().units().empty();
-
-		// TODO Disabling this for now until the functionality can be implemnted.
-		// See the status_table() method
-		case HOTKEY_STATUS_TABLE:
-			//return !get_current_map_context().teams().empty();
-			return false;
-		/////////////////////////////
-
-		case HOTKEY_TERRAIN_DESCRIPTION:
-			return gui().mouseover_hex().valid();
-
-			// unit tool related
-		case HOTKEY_DELETE_UNIT:
-		case HOTKEY_RENAME_UNIT:
-		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
-		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
-		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
-		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
-		case HOTKEY_EDITOR_UNIT_FACING:
-		case HOTKEY_UNIT_DESCRIPTION:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map& units = get_current_map_context().units();
-			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
-					units.find(loc) != units.end());
 		}
+		return false;
+	case HOTKEY_EDITOR_PALETTE_GROUPS:
+		return true;
+	case HOTKEY_EDITOR_PALETTE_UPSCROLL:
+		return toolkit_->get_palette_manager()->can_scroll_up();
+	case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
+		return toolkit_->get_palette_manager()->can_scroll_down();
+	case HOTKEY_ZOOM_IN:
+		return !gui_->zoom_at_max();
+	case HOTKEY_ZOOM_OUT:
+		return !gui_->zoom_at_min();
+	case HOTKEY_ZOOM_DEFAULT:
+	case HOTKEY_FULLSCREEN:
+	case HOTKEY_SCREENSHOT:
+	case HOTKEY_MAP_SCREENSHOT:
+	case HOTKEY_TOGGLE_GRID:
+	case HOTKEY_MOUSE_SCROLL:
+	case HOTKEY_ANIMATE_MAP:
+	case HOTKEY_MUTE:
+	case HOTKEY_PREFERENCES:
+	case HOTKEY_HELP:
+	case HOTKEY_QUIT_GAME:
+	case HOTKEY_SCROLL_UP:
+	case HOTKEY_SCROLL_DOWN:
+	case HOTKEY_SCROLL_LEFT:
+	case HOTKEY_SCROLL_RIGHT:
+		return true; //general hotkeys we can always do
 
-		case HOTKEY_UNDO:
-		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			return get_current_map_context().can_undo();
-		case HOTKEY_REDO:
-			return get_current_map_context().can_redo();
+	case HOTKEY_UNIT_LIST:
+		return !get_current_map_context().units().empty();
 
-		case TITLE_SCREEN__RELOAD_WML:
-		case HOTKEY_QUIT_TO_DESKTOP:
-		case HOTKEY_EDITOR_MAP_NEW:
-		case HOTKEY_EDITOR_SCENARIO_NEW:
-		case HOTKEY_EDITOR_MAP_LOAD:
-		case HOTKEY_EDITOR_MAP_SAVE_AS:
-			return true;
+	// TODO Disabling this for now until the functionality can be implemnted.
+	// See the status_table() method
+	case HOTKEY_STATUS_TABLE:
+		//return !get_current_map_context().teams().empty();
+		return false;
+	/////////////////////////////
 
-		// Can be enabled as long as a valid addon_id is set
-		case HOTKEY_EDITOR_EDIT_UNIT:
-			return !current_addon_id_.empty();
+	case HOTKEY_TERRAIN_DESCRIPTION:
+		return gui().mouseover_hex().valid();
 
-		// Only enable when editing a scenario
-		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
-			return get_current_map_context().is_pure_map();
+		// unit tool related
+	case HOTKEY_DELETE_UNIT:
+	case HOTKEY_RENAME_UNIT:
+	case HOTKEY_EDITOR_UNIT_CHANGE_ID:
+	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
+	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+	case HOTKEY_EDITOR_UNIT_FACING:
+	case HOTKEY_UNIT_DESCRIPTION:
+	{
+		map_location loc = gui_->mouseover_hex();
+		const unit_map& units = get_current_map_context().units();
+		return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
+				units.find(loc) != units.end());
+	}
 
-		// Only enable when editing a scenario
-		case HOTKEY_EDITOR_CUSTOM_TODS:
-		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			return !get_current_map_context().is_pure_map();
+	case HOTKEY_UNDO:
+	case HOTKEY_EDITOR_PARTIAL_UNDO:
+		return get_current_map_context().can_undo();
+	case HOTKEY_REDO:
+		return get_current_map_context().can_redo();
 
-		case HOTKEY_EDITOR_PBL:
-		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-		case HOTKEY_EDITOR_SELECT_ADDON:
-		case HOTKEY_EDITOR_OPEN_ADDON:
-			return true;
+	case TITLE_SCREEN__RELOAD_WML:
+	case HOTKEY_QUIT_TO_DESKTOP:
+	case HOTKEY_EDITOR_MAP_NEW:
+	case HOTKEY_EDITOR_SCENARIO_NEW:
+	case HOTKEY_EDITOR_MAP_LOAD:
+	case HOTKEY_EDITOR_MAP_SAVE_AS:
+		return true;
 
-		case HOTKEY_EDITOR_AREA_ADD:
-		case HOTKEY_EDITOR_SIDE_NEW:
-			return !get_current_map_context().is_pure_map();
+	// Can be enabled as long as a valid addon_id is set
+	case HOTKEY_EDITOR_EDIT_UNIT:
+		return !current_addon_id_.empty();
 
-		case HOTKEY_EDITOR_SIDE_EDIT:
-		case HOTKEY_EDITOR_SIDE_REMOVE:
-			return !get_current_map_context().teams().empty();
+	// Only enable when editing a scenario
+	case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+		return get_current_map_context().is_pure_map();
 
-		// brushes
-		case HOTKEY_EDITOR_BRUSH_NEXT:
-		case HOTKEY_EDITOR_BRUSH_1:
-		case HOTKEY_EDITOR_BRUSH_2:
-		case HOTKEY_EDITOR_BRUSH_3:
-		case HOTKEY_EDITOR_BRUSH_NW_SE:
-		case HOTKEY_EDITOR_BRUSH_SW_NE:
-			return get_mouse_action().supports_brushes();
+	// Only enable when editing a scenario
+	case HOTKEY_EDITOR_CUSTOM_TODS:
+	case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
+		return !get_current_map_context().is_pure_map();
 
-		case HOTKEY_EDITOR_TOOL_NEXT:
-			return true;
-		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
-			return toolkit_->get_palette_manager()->active_palette().supports_swap();
-		case HOTKEY_EDITOR_MAP_SAVE:
-			return get_current_map_context().modified();
-		case HOTKEY_EDITOR_MAP_SAVE_ALL:
-			{
-				std::string dummy;
-				return context_manager_->modified_maps(dummy) > 1;
-			}
-		case HOTKEY_EDITOR_PLAYLIST:
-		case HOTKEY_EDITOR_SCHEDULE:
-			return !get_current_map_context().is_pure_map();
-		case HOTKEY_EDITOR_MAP_SWITCH:
-		case HOTKEY_EDITOR_MAP_CLOSE:
-			return true;
-		case HOTKEY_EDITOR_MAP_REVERT:
-			return !get_current_map_context().get_filename().empty()
-					&& get_current_map_context().modified();
+	case HOTKEY_EDITOR_PBL:
+	case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+	case HOTKEY_EDITOR_SELECT_ADDON:
+	case HOTKEY_EDITOR_OPEN_ADDON:
+		return true;
 
-		// Tools
-		// Pure map editing tools this can be used all the time.
-		case HOTKEY_EDITOR_TOOL_PAINT:
-		case HOTKEY_EDITOR_TOOL_FILL:
-		case HOTKEY_EDITOR_TOOL_SELECT:
-		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-			return true;
-		// WWL dependent tools which don't rely on defined sides.
-		case HOTKEY_EDITOR_SCENARIO_EDIT:
-		case HOTKEY_EDITOR_TOOL_LABEL:
-		case HOTKEY_EDITOR_TOOL_ITEM:
-			return !get_current_map_context().is_pure_map();
-		case HOTKEY_EDITOR_TOOL_UNIT:
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return !get_current_map_context().teams().empty();
+	case HOTKEY_EDITOR_AREA_ADD:
+	case HOTKEY_EDITOR_SIDE_NEW:
+		return !get_current_map_context().is_pure_map();
 
-		case HOTKEY_EDITOR_AREA_REMOVE:
-		case HOTKEY_EDITOR_AREA_RENAME:
-		case HOTKEY_EDITOR_LOCAL_TIME:
-			return !get_current_map_context().is_pure_map() &&
-					!get_current_map_context().get_time_manager()->get_area_ids().empty();
+	case HOTKEY_EDITOR_SIDE_EDIT:
+	case HOTKEY_EDITOR_SIDE_REMOVE:
+		return !get_current_map_context().teams().empty();
 
-		case HOTKEY_EDITOR_AREA_SAVE:
-			return 	!get_current_map_context().is_pure_map() &&
-					!get_current_map_context().get_time_manager()->get_area_ids().empty()
-					&& !get_current_map_context().map().selection().empty();
+	// brushes
+	case HOTKEY_EDITOR_BRUSH_NEXT:
+	case HOTKEY_EDITOR_BRUSH_1:
+	case HOTKEY_EDITOR_BRUSH_2:
+	case HOTKEY_EDITOR_BRUSH_3:
+	case HOTKEY_EDITOR_BRUSH_NW_SE:
+	case HOTKEY_EDITOR_BRUSH_SW_NE:
+		return get_mouse_action().supports_brushes();
 
-		case HOTKEY_EDITOR_SELECTION_EXPORT:
-		case HOTKEY_EDITOR_SELECTION_CUT:
-		case HOTKEY_EDITOR_SELECTION_COPY:
-		case HOTKEY_EDITOR_SELECTION_FILL:
-			return !get_current_map_context().map().selection().empty()
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
-		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-			return (get_current_map_context().map().selection().size() > 1
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
-		case HOTKEY_EDITOR_SELECTION_ROTATE:
-		case HOTKEY_EDITOR_SELECTION_FLIP:
-		case HOTKEY_EDITOR_CLIPBOARD_PASTE:
-			return !context_manager_->clipboard_empty();
-		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
-		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
-		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
-		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
-			return !context_manager_->clipboard_empty()
-					&& toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
-		case HOTKEY_EDITOR_SELECT_ALL:
-		case HOTKEY_EDITOR_SELECT_NONE:
-			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
-		case HOTKEY_EDITOR_SELECT_INVERSE:
-			return !get_current_map_context().map().selection().empty()
-					&& !get_current_map_context().map().everything_selected()
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
-		case HOTKEY_EDITOR_MAP_RESIZE:
-		case HOTKEY_EDITOR_MAP_GENERATE:
-		case HOTKEY_EDITOR_MAP_APPLY_MASK:
-		case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
-		case HOTKEY_EDITOR_REFRESH:
-		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
-		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
-		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
-		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
-		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
-		case HOTKEY_MINIMAP_CODING_TERRAIN:
-		case HOTKEY_MINIMAP_CODING_UNIT:
-		case HOTKEY_MINIMAP_DRAW_UNITS:
-		case HOTKEY_MINIMAP_DRAW_TERRAIN:
-		case HOTKEY_MINIMAP_DRAW_VILLAGES:
-		case HOTKEY_EDITOR_REMOVE_LOCATION:
-			return true;
-		case HOTKEY_EDITOR_DRAW_COORDINATES:
-		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
-			return true;
-		default:
-			return false;
+	case HOTKEY_EDITOR_TOOL_NEXT:
+		return true;
+	case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
+		return toolkit_->get_palette_manager()->active_palette().supports_swap();
+	case HOTKEY_EDITOR_MAP_SAVE:
+		return get_current_map_context().modified();
+	case HOTKEY_EDITOR_MAP_SAVE_ALL:
+		{
+			std::string dummy;
+			return context_manager_->modified_maps(dummy) > 1;
+		}
+	case HOTKEY_EDITOR_PLAYLIST:
+	case HOTKEY_EDITOR_SCHEDULE:
+		return !get_current_map_context().is_pure_map();
+	case HOTKEY_EDITOR_MAP_SWITCH:
+	case HOTKEY_EDITOR_MAP_CLOSE:
+		return true;
+	case HOTKEY_EDITOR_MAP_REVERT:
+		return !get_current_map_context().get_filename().empty()
+				&& get_current_map_context().modified();
+
+	// Tools
+	// Pure map editing tools this can be used all the time.
+	case HOTKEY_EDITOR_TOOL_PAINT:
+	case HOTKEY_EDITOR_TOOL_FILL:
+	case HOTKEY_EDITOR_TOOL_SELECT:
+	case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+		return true;
+	// WWL dependent tools which don't rely on defined sides.
+	case HOTKEY_EDITOR_SCENARIO_EDIT:
+	case HOTKEY_EDITOR_TOOL_LABEL:
+	case HOTKEY_EDITOR_TOOL_ITEM:
+		return !get_current_map_context().is_pure_map();
+	case HOTKEY_EDITOR_TOOL_UNIT:
+	case HOTKEY_EDITOR_TOOL_VILLAGE:
+		return !get_current_map_context().teams().empty();
+
+	case HOTKEY_EDITOR_AREA_REMOVE:
+	case HOTKEY_EDITOR_AREA_RENAME:
+	case HOTKEY_EDITOR_LOCAL_TIME:
+		return !get_current_map_context().is_pure_map() &&
+				!get_current_map_context().get_time_manager()->get_area_ids().empty();
+
+	case HOTKEY_EDITOR_AREA_SAVE:
+		return 	!get_current_map_context().is_pure_map() &&
+				!get_current_map_context().get_time_manager()->get_area_ids().empty()
+				&& !get_current_map_context().map().selection().empty();
+
+	case HOTKEY_EDITOR_SELECTION_EXPORT:
+	case HOTKEY_EDITOR_SELECTION_CUT:
+	case HOTKEY_EDITOR_SELECTION_COPY:
+	case HOTKEY_EDITOR_SELECTION_FILL:
+		return !get_current_map_context().map().selection().empty()
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
+	case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
+		return (get_current_map_context().map().selection().size() > 1
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
+	case HOTKEY_EDITOR_SELECTION_ROTATE:
+	case HOTKEY_EDITOR_SELECTION_FLIP:
+	case HOTKEY_EDITOR_CLIPBOARD_PASTE:
+		return !context_manager_->clipboard_empty();
+	case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
+	case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
+	case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
+	case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
+		return !context_manager_->clipboard_empty()
+				&& toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
+	case HOTKEY_EDITOR_SELECT_ALL:
+	case HOTKEY_EDITOR_SELECT_NONE:
+		return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
+	case HOTKEY_EDITOR_SELECT_INVERSE:
+		return !get_current_map_context().map().selection().empty()
+				&& !get_current_map_context().map().everything_selected()
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
+	case HOTKEY_EDITOR_MAP_RESIZE:
+	case HOTKEY_EDITOR_MAP_GENERATE:
+	case HOTKEY_EDITOR_MAP_APPLY_MASK:
+	case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
+	case HOTKEY_EDITOR_REFRESH:
+	case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
+	case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+	case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
+	case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
+	case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+	case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+	case HOTKEY_MINIMAP_CODING_TERRAIN:
+	case HOTKEY_MINIMAP_CODING_UNIT:
+	case HOTKEY_MINIMAP_DRAW_UNITS:
+	case HOTKEY_MINIMAP_DRAW_TERRAIN:
+	case HOTKEY_MINIMAP_DRAW_VILLAGES:
+	case HOTKEY_EDITOR_REMOVE_LOCATION:
+		return true;
+	case HOTKEY_EDITOR_DRAW_COORDINATES:
+	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
+		return true;
+	default:
+		return false;
 	}
 }
 
@@ -553,7 +553,6 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 		unit_map::const_unit_iterator un =
 				get_current_map_context().units().find(gui_->mouseover_hex());
 		return hotkey::on_if(un->loyal());
-
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 	{
@@ -670,8 +669,8 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 			return hotkey::action_state::stateless;
 		}
 		return hotkey::action_state::on;
-		default:
-			return command_executor::get_action_state(cmd);
+	default:
+		return command_executor::get_action_state(cmd);
 	}
 }
 
@@ -688,465 +687,465 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	}
 
 	switch (command) {
-		case HOTKEY_NULL:
-			switch (active_menu_) {
-			case menu_type::map:
-				if (index >= 0) {
-					unsigned i = static_cast<unsigned>(index);
-					if (i < context_manager_->size()) {
-						context_manager_->switch_context(index);
-						toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
-						return true;
-					}
-				}
-				return false;
-			case menu_type::load_mru:
-				if (index >= 0) {
-					context_manager_->load_mru_item(static_cast<unsigned>(index));
-				}
-				return true;
-			case menu_type::palette:
-				toolkit_->get_palette_manager()->set_group(index);
-				return true;
-			case menu_type::side:
-				gui_->set_viewing_team_index(index, true);
-				gui_->set_playing_team_index(index);
-				toolkit_->get_palette_manager()->draw_contents();
-				return true;
-			case menu_type::area:
-				{
-					get_current_map_context().set_active_area(index);
-					const std::set<map_location>& area =
-							get_current_map_context().get_time_manager()->get_area_by_index(index);
-					get_current_map_context().select_area(index);
-					gui_->scroll_to_tiles({ area.begin(), area.end() });
+	case HOTKEY_NULL:
+		switch (active_menu_) {
+		case menu_type::map:
+			if (index >= 0) {
+				unsigned i = static_cast<unsigned>(index);
+				if (i < context_manager_->size()) {
+					context_manager_->switch_context(index);
+					toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
 					return true;
 				}
-			case menu_type::addon:
-				return true;
-			case menu_type::time:
-				{
-					get_current_map_context().set_starting_time(index);
-					gui_->update_tod();
-					return true;
-				}
-			case menu_type::local_time:
-				{
-					get_current_map_context().set_local_starting_time(index);
-					return true;
-				}
-			case menu_type::music:
-				{
-					//TODO mark the map as changed
-					sound::play_music_once(music_tracks_[index].id());
-					get_current_map_context().add_to_playlist(music_tracks_[index]);
-					return true;
-				}
-			case menu_type::schedule:
-				{
-					tods_map::iterator iter = tods_.begin();
-					std::advance(iter, index);
-					get_current_map_context().replace_schedule(iter->second.second);
-					// TODO: test again after the assign-schedule menu is fixed. Should work, though.
-					gui_->update_tod();
-					return true;
-				}
-			case menu_type::local_schedule:
-				{
-					tods_map::iterator iter = tods_.begin();
-					std::advance(iter, index);
-					get_current_map_context().replace_local_schedule(iter->second.second);
-					return true;
-				}
-			case menu_type::unit_facing:
-				{
-					unit_map::unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
-					assert(un != get_current_map_context().units().end());
-					un->set_facing(map_location::direction(index));
-					un->anim_comp().set_standing();
-					return true;
-				}
-			case menu_type::none:
-				return true;
+			}
+			return false;
+		case menu_type::load_mru:
+			if (index >= 0) {
+				context_manager_->load_mru_item(static_cast<unsigned>(index));
 			}
 			return true;
-
-			//Zoom
-		case HOTKEY_ZOOM_IN:
-			gui_->set_zoom(true);
-			get_current_map_context().get_labels().recalculate_labels();
-			toolkit_->set_mouseover_overlay(*gui_);
+		case menu_type::palette:
+			toolkit_->get_palette_manager()->set_group(index);
 			return true;
-		case HOTKEY_ZOOM_OUT:
-			gui_->set_zoom(false);
-			get_current_map_context().get_labels().recalculate_labels();
-			toolkit_->set_mouseover_overlay(*gui_);
+		case menu_type::side:
+			gui_->set_viewing_team_index(index, true);
+			gui_->set_playing_team_index(index);
+			toolkit_->get_palette_manager()->draw_contents();
 			return true;
-		case HOTKEY_ZOOM_DEFAULT:
-			gui_->toggle_default_zoom();
-			get_current_map_context().get_labels().recalculate_labels();
-			toolkit_->set_mouseover_overlay(*gui_);
-			return true;
-
-			//Palette
-		case HOTKEY_EDITOR_PALETTE_GROUPS:
- 			//TODO this code waits for the gui2 dialog to get ready
- //			std::vector< std::pair< std::string, std::string >> blah_items;
- //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
- //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
- //			gui2::teditor_select_palette_group::execute(selected, blah_items);
-			return true;
-		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
-			toolkit_->get_palette_manager()->scroll_up();
-			return true;
-		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
-			toolkit_->get_palette_manager()->scroll_down();
-			return true;
-
-		case HOTKEY_QUIT_GAME:
-			if(quit_confirmation::quit()) {
-				do_quit_ = true;
-				quit_mode_ = EXIT_NORMAL;
+		case menu_type::area:
+			{
+				get_current_map_context().set_active_area(index);
+				const std::set<map_location>& area =
+						get_current_map_context().get_time_manager()->get_area_by_index(index);
+				get_current_map_context().select_area(index);
+				gui_->scroll_to_tiles({ area.begin(), area.end() });
+				return true;
 			}
+		case menu_type::addon:
 			return true;
-		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_confirmation::quit_to_desktop();
+		case menu_type::time:
+			{
+				get_current_map_context().set_starting_time(index);
+				gui_->update_tod();
+				return true;
+			}
+		case menu_type::local_time:
+			{
+				get_current_map_context().set_local_starting_time(index);
+				return true;
+			}
+		case menu_type::music:
+			{
+				//TODO mark the map as changed
+				sound::play_music_once(music_tracks_[index].id());
+				get_current_map_context().add_to_playlist(music_tracks_[index]);
+				return true;
+			}
+		case menu_type::schedule:
+			{
+				tods_map::iterator iter = tods_.begin();
+				std::advance(iter, index);
+				get_current_map_context().replace_schedule(iter->second.second);
+				// TODO: test again after the assign-schedule menu is fixed. Should work, though.
+				gui_->update_tod();
+				return true;
+			}
+		case menu_type::local_schedule:
+			{
+				tods_map::iterator iter = tods_.begin();
+				std::advance(iter, index);
+				get_current_map_context().replace_local_schedule(iter->second.second);
+				return true;
+			}
+		case menu_type::unit_facing:
+			{
+				unit_map::unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
+				assert(un != get_current_map_context().units().end());
+				un->set_facing(map_location::direction(index));
+				un->anim_comp().set_standing();
+				return true;
+			}
+		case menu_type::none:
 			return true;
-		case TITLE_SCREEN__RELOAD_WML:
-			context_manager_->save_contexts();
+		}
+		return true;
+
+		//Zoom
+	case HOTKEY_ZOOM_IN:
+		gui_->set_zoom(true);
+		get_current_map_context().get_labels().recalculate_labels();
+		toolkit_->set_mouseover_overlay(*gui_);
+		return true;
+	case HOTKEY_ZOOM_OUT:
+		gui_->set_zoom(false);
+		get_current_map_context().get_labels().recalculate_labels();
+		toolkit_->set_mouseover_overlay(*gui_);
+		return true;
+	case HOTKEY_ZOOM_DEFAULT:
+		gui_->toggle_default_zoom();
+		get_current_map_context().get_labels().recalculate_labels();
+		toolkit_->set_mouseover_overlay(*gui_);
+		return true;
+
+		//Palette
+	case HOTKEY_EDITOR_PALETTE_GROUPS:
+		//TODO this code waits for the gui2 dialog to get ready
+//			std::vector< std::pair< std::string, std::string >> blah_items;
+//			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
+//			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
+//			gui2::teditor_select_palette_group::execute(selected, blah_items);
+		return true;
+	case HOTKEY_EDITOR_PALETTE_UPSCROLL:
+		toolkit_->get_palette_manager()->scroll_up();
+		return true;
+	case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
+		toolkit_->get_palette_manager()->scroll_down();
+		return true;
+
+	case HOTKEY_QUIT_GAME:
+		if(quit_confirmation::quit()) {
 			do_quit_ = true;
-			quit_mode_ = EXIT_RELOAD_DATA;
+			quit_mode_ = EXIT_NORMAL;
+		}
+		return true;
+	case HOTKEY_QUIT_TO_DESKTOP:
+		quit_confirmation::quit_to_desktop();
+		return true;
+	case TITLE_SCREEN__RELOAD_WML:
+		context_manager_->save_contexts();
+		do_quit_ = true;
+		quit_mode_ = EXIT_RELOAD_DATA;
+		return true;
+	case HOTKEY_EDITOR_EDIT_UNIT:
+		unit_editor_dialog();
+		return true;
+	case HOTKEY_EDITOR_CUSTOM_TODS:
+		custom_tods_dialog();
+		return true;
+	case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
+		toolkit_->get_palette_manager()->active_palette().swap();
+		return true;
+	case HOTKEY_EDITOR_PARTIAL_UNDO:
+		if (dynamic_cast<const editor_action_chain*>(get_current_map_context().last_undo_action()) != nullptr) {
+			get_current_map_context().partial_undo();
+			context_manager_->refresh_after_action();
+		} else {
+			undo();
+		}
+		return true;
+
+		//Tool Selection
+	case HOTKEY_EDITOR_TOOL_PAINT:
+	case HOTKEY_EDITOR_TOOL_FILL:
+	case HOTKEY_EDITOR_TOOL_SELECT:
+	case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+	case HOTKEY_EDITOR_TOOL_LABEL:
+	case HOTKEY_EDITOR_TOOL_UNIT:
+	case HOTKEY_EDITOR_TOOL_VILLAGE:
+	case HOTKEY_EDITOR_TOOL_ITEM:
+		toolkit_->hotkey_set_mouse_action(command);
+		return true;
+
+	case HOTKEY_EDITOR_PBL:
+		if(initialize_addon()) {
+			context_manager_->edit_pbl();
+		}
+		return true;
+
+	case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+		if(initialize_addon()) {
+			context_manager_->change_addon_id();
+		}
+		return true;
+
+	case HOTKEY_EDITOR_SELECT_ADDON:
+		initialize_addon();
+		return true;
+
+	case HOTKEY_EDITOR_OPEN_ADDON:
+	{
+		if (!initialize_addon()) {
+			gui2::show_error_message("Could not initialize add-on!");
 			return true;
-		case HOTKEY_EDITOR_EDIT_UNIT:
-			unit_editor_dialog();
-			return true;
-		case HOTKEY_EDITOR_CUSTOM_TODS:
-			custom_tods_dialog();
-			return true;
-		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
-			toolkit_->get_palette_manager()->active_palette().swap();
-			return true;
-		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			if (dynamic_cast<const editor_action_chain*>(get_current_map_context().last_undo_action()) != nullptr) {
-				get_current_map_context().partial_undo();
-				context_manager_->refresh_after_action();
+		}
+
+		gui2::dialogs::file_dialog dlg;
+
+		dlg.set_title(_("Add-on Files"))
+			.set_path(filesystem::get_current_editor_dir(current_addon_id_));
+
+		if (dlg.show()) {
+			std::string filepath = dlg.path();
+			if (filesystem::is_map(filepath) || filesystem::is_cfg(filepath)) {
+				// Open map or scenario
+				context_manager_->load_map(filepath, true);
 			} else {
-				undo();
-			}
-			return true;
-
-			//Tool Selection
-		case HOTKEY_EDITOR_TOOL_PAINT:
-		case HOTKEY_EDITOR_TOOL_FILL:
-		case HOTKEY_EDITOR_TOOL_SELECT:
-		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-		case HOTKEY_EDITOR_TOOL_LABEL:
-		case HOTKEY_EDITOR_TOOL_UNIT:
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
-		case HOTKEY_EDITOR_TOOL_ITEM:
-			toolkit_->hotkey_set_mouse_action(command);
-			return true;
-
-		case HOTKEY_EDITOR_PBL:
-			if(initialize_addon()) {
-				context_manager_->edit_pbl();
-			}
-			return true;
-
-		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			if(initialize_addon()) {
-				context_manager_->change_addon_id();
-			}
-			return true;
-
-		case HOTKEY_EDITOR_SELECT_ADDON:
-			initialize_addon();
-			return true;
-
-		case HOTKEY_EDITOR_OPEN_ADDON:
-		{
-			if (!initialize_addon()) {
-				gui2::show_error_message("Could not initialize add-on!");
-				return true;
-			}
-
-			gui2::dialogs::file_dialog dlg;
-
-			dlg.set_title(_("Add-on Files"))
-				.set_path(filesystem::get_current_editor_dir(current_addon_id_));
-
-			if (dlg.show()) {
-				std::string filepath = dlg.path();
-				if (filesystem::is_map(filepath) || filesystem::is_cfg(filepath)) {
-					// Open map or scenario
-					context_manager_->load_map(filepath, true);
+				// Open file using OS application for that format
+				if (desktop::open_object_is_supported()) {
+					desktop::open_object(filepath);
 				} else {
-					// Open file using OS application for that format
-					if (desktop::open_object_is_supported()) {
-						desktop::open_object(filepath);
-					} else {
-						gui2::show_message("", _("Opening files is not supported, contact your packager"), gui2::dialogs::message::auto_close);
-					}
+					gui2::show_message("", _("Opening files is not supported, contact your packager"), gui2::dialogs::message::auto_close);
 				}
 			}
-
-			return true;
 		}
 
-		case HOTKEY_EDITOR_AREA_ADD:
-			add_area();
-			return true;
+		return true;
+	}
 
-		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
-			change_unit_id();
-			return true;
+	case HOTKEY_EDITOR_AREA_ADD:
+		add_area();
+		return true;
 
-		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
-			bool unrenamable = un->unrenamable();
-			un->set_unrenamable(!unrenamable);
+	case HOTKEY_EDITOR_UNIT_CHANGE_ID:
+		change_unit_id();
+		return true;
+
+	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+	{
+		map_location loc = gui_->mouseover_hex();
+		const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+		bool unrenamable = un->unrenamable();
+		un->set_unrenamable(!unrenamable);
+		return true;
+	}
+	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
+	{
+		map_location loc = gui_->mouseover_hex();
+		const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+		bool canrecruit = un->can_recruit();
+		un->set_can_recruit(!canrecruit);
+		un->anim_comp().set_standing();
+		return true;
+	}
+	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+	{
+		map_location loc = gui_->mouseover_hex();
+		const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+		bool loyal = un->loyal();
+		un->set_loyal(!loyal);
+		return true;
+	}
+	case HOTKEY_DELETE_UNIT:
+	{
+		map_location loc = gui_->mouseover_hex();
+		perform_delete(std::make_unique<editor_action_unit_delete>(loc));
+		return true;
+	}
+	case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
+		toolkit_->hotkey_set_mouse_action(command);
+		return true;
+
+		//Clipboard
+	case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
+		context_manager_->get_clipboard().rotate_60_cw();
+		toolkit_->update_mouse_action_highlights();
+		return true;
+	case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
+		context_manager_->get_clipboard().rotate_60_ccw();
+		toolkit_->update_mouse_action_highlights();
+		return true;
+	case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
+		context_manager_->get_clipboard().flip_horizontal();
+		toolkit_->update_mouse_action_highlights();
+		return true;
+	case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
+		context_manager_->get_clipboard().flip_vertical();
+		toolkit_->update_mouse_action_highlights();
+		return true;
+
+		//Brushes
+	case HOTKEY_EDITOR_BRUSH_NEXT:
+		toolkit_->cycle_brush();
+		return true;
+	case HOTKEY_EDITOR_BRUSH_1:
+		toolkit_->set_brush("brush-1");
+		return true;
+	case HOTKEY_EDITOR_BRUSH_2:
+		toolkit_->set_brush("brush-2");
+		return true;
+	case HOTKEY_EDITOR_BRUSH_3:
+		toolkit_->set_brush("brush-3");
+		return true;
+	case HOTKEY_EDITOR_BRUSH_NW_SE:
+		toolkit_->set_brush("brush-nw-se");
+		return true;
+	case HOTKEY_EDITOR_BRUSH_SW_NE:
+		toolkit_->set_brush("brush-sw-ne");
+		return true;
+
+	case HOTKEY_EDITOR_SELECTION_COPY:
+		copy_selection();
+		return true;
+	case HOTKEY_EDITOR_SELECTION_CUT:
+		cut_selection();
+		return true;
+	case HOTKEY_EDITOR_AREA_RENAME:
+		context_manager_->rename_area_dialog();
+		return true;
+	case HOTKEY_EDITOR_AREA_SAVE:
+		save_area();
+		return true;
+	case HOTKEY_EDITOR_SELECTION_EXPORT:
+		export_selection_coords();
+		return true;
+	case HOTKEY_EDITOR_SELECT_ALL:
+		if(!get_current_map_context().map().everything_selected()) {
+			context_manager_->perform_refresh(editor_action_select_all());
 			return true;
 		}
-		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
-			bool canrecruit = un->can_recruit();
-			un->set_can_recruit(!canrecruit);
-			un->anim_comp().set_standing();
+		[[fallthrough]];
+	case HOTKEY_EDITOR_SELECT_INVERSE:
+		context_manager_->perform_refresh(editor_action_select_inverse());
+		return true;
+	case HOTKEY_EDITOR_SELECT_NONE:
+		context_manager_->perform_refresh(editor_action_select_none());
+		return true;
+	case HOTKEY_EDITOR_SELECTION_FILL:
+		context_manager_->fill_selection();
+		return true;
+	case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
+		context_manager_->perform_refresh(editor_action_shuffle_area(
+				get_current_map_context().map().selection()));
+		return true;
+
+	case HOTKEY_EDITOR_SCENARIO_EDIT:
+		context_manager_->edit_scenario_dialog();
+		return true;
+
+	case HOTKEY_EDITOR_AREA_REMOVE:
+		get_current_map_context().remove_area(
+				get_current_map_context().get_active_area());
+		return true;
+
+	// map specific
+	case HOTKEY_EDITOR_MAP_CLOSE:
+		context_manager_->close_current_context();
+		// Copy behaviour from when switching windows to always reset the active tool to the Paint Tool
+		// This avoids the situation of having a scenario-specific tool active in a map context which can cause a crash if used
+		// Not elegant but at least avoids a potential crash and is consistent with existing behaviour
+		toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
+		return true;
+	case HOTKEY_EDITOR_MAP_LOAD:
+		context_manager_->load_map_dialog();
+		return true;
+	case HOTKEY_EDITOR_MAP_REVERT:
+		context_manager_->revert_map();
+		return true;
+	case HOTKEY_EDITOR_MAP_NEW:
+		context_manager_->new_map_dialog();
+		return true;
+	case HOTKEY_EDITOR_SCENARIO_NEW:
+		if(initialize_addon()) {
+			context_manager_->new_scenario_dialog();
+		}
+		return true;
+	case HOTKEY_EDITOR_MAP_SAVE:
+		save_map();
+		return true;
+	case HOTKEY_EDITOR_MAP_SAVE_ALL:
+		context_manager_->save_all_maps();
+		return true;
+	case HOTKEY_EDITOR_MAP_SAVE_AS:
+		context_manager_->save_map_as_dialog();
+		return true;
+	case HOTKEY_EDITOR_MAP_TO_SCENARIO:
+		if(initialize_addon()) {
+			context_manager_->map_to_scenario();
+		}
+		return true;
+	case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
+		if(initialize_addon()) {
+			context_manager_->save_scenario_as_dialog();
+		}
+		return true;
+	case HOTKEY_EDITOR_MAP_GENERATE:
+		context_manager_->generate_map_dialog();
+		return true;
+	case HOTKEY_EDITOR_MAP_APPLY_MASK:
+		context_manager_->apply_mask_dialog();
+		return true;
+	case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
+		context_manager_->create_mask_to_dialog();
+		return true;
+	case HOTKEY_EDITOR_MAP_RESIZE:
+		context_manager_->resize_map_dialog();
+		return true;
+
+	// Side specific ones
+	case HOTKEY_EDITOR_SIDE_NEW:
+		if(get_current_map_context().teams().size() >= 9) {
+			size_t new_side_num = get_current_map_context().teams().size() + 1;
+			toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
+		}
+		get_current_map_context().new_side();
+		gui_->init_flags();
+		return true;
+	case HOTKEY_EDITOR_SIDE_REMOVE:
+		gui_->set_viewing_team_index(0, true);
+		gui_->set_playing_team_index(0);
+		get_current_map_context().remove_side();
+		return true;
+	case HOTKEY_EDITOR_SIDE_EDIT:
+		context_manager_->edit_side_dialog(gui_->viewing_team());
+		return true;
+
+	// Transitions
+	case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
+		context_manager_->set_update_transitions_mode(2);
+		return true;
+	case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+		context_manager_->set_update_transitions_mode(1);
+		return true;
+	case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
+		context_manager_->set_update_transitions_mode(0);
+		return true;
+	case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
+		if(context_manager_->toggle_update_transitions()) {
 			return true;
 		}
-		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
-			bool loyal = un->loyal();
-			un->set_loyal(!loyal);
-			return true;
+		[[fallthrough]];
+	case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
+		context_manager_->refresh_all();
+		return true;
+	// Refresh
+	case HOTKEY_EDITOR_REFRESH:
+		context_manager_->reload_map();
+		return true;
+	case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+		refresh_image_cache();
+		return true;
+
+	case HOTKEY_EDITOR_DRAW_COORDINATES:
+		gui().toggle_debug_flag(display::DEBUG_COORDINATES);
+		prefs::get().set_editor_draw_hex_coordinates(gui().debug_flag_set(display::DEBUG_COORDINATES));
+		gui().invalidate_all();
+		return true;
+	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+		gui().toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
+		prefs::get().set_editor_draw_terrain_codes(gui().debug_flag_set(display::DEBUG_TERRAIN_CODES));
+		gui().invalidate_all();
+		return true;
+	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
+		gui().toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
+		prefs::get().set_editor_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
+		gui().invalidate_all();
+		return true;
+	case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+		gui().set_help_string_enabled(!gui().help_string_enabled());
+		prefs::get().set_editor_help_text_shown(gui().help_string_enabled());
+		return true;
+	case HOTKEY_EDITOR_REMOVE_LOCATION: {
+		location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
+		if (lp) {
+			perform_delete(std::make_unique<editor_action_starting_position>(map_location(), lp->selected_item()));
+			// No idea if this is the right thing to call, but it ensures starting
+			// position labels get removed on delete.
+			context_manager_->refresh_after_action();
 		}
-		case HOTKEY_DELETE_UNIT:
-		{
-			map_location loc = gui_->mouseover_hex();
-			perform_delete(std::make_unique<editor_action_unit_delete>(loc));
-			return true;
-		}
-		case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
-			toolkit_->hotkey_set_mouse_action(command);
-			return true;
-
-			//Clipboard
-		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
-			context_manager_->get_clipboard().rotate_60_cw();
-			toolkit_->update_mouse_action_highlights();
-			return true;
-		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
-			context_manager_->get_clipboard().rotate_60_ccw();
-			toolkit_->update_mouse_action_highlights();
-			return true;
-		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
-			context_manager_->get_clipboard().flip_horizontal();
-			toolkit_->update_mouse_action_highlights();
-			return true;
-		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
-			context_manager_->get_clipboard().flip_vertical();
-			toolkit_->update_mouse_action_highlights();
-			return true;
-
-			//Brushes
-		case HOTKEY_EDITOR_BRUSH_NEXT:
-			toolkit_->cycle_brush();
-			return true;
-		case HOTKEY_EDITOR_BRUSH_1:
-			toolkit_->set_brush("brush-1");
-			return true;
-		case HOTKEY_EDITOR_BRUSH_2:
-			toolkit_->set_brush("brush-2");
-			return true;
-		case HOTKEY_EDITOR_BRUSH_3:
-			toolkit_->set_brush("brush-3");
-			return true;
-		case HOTKEY_EDITOR_BRUSH_NW_SE:
-			toolkit_->set_brush("brush-nw-se");
-			return true;
-		case HOTKEY_EDITOR_BRUSH_SW_NE:
-			toolkit_->set_brush("brush-sw-ne");
-			return true;
-
-		case HOTKEY_EDITOR_SELECTION_COPY:
-			copy_selection();
-			return true;
-		case HOTKEY_EDITOR_SELECTION_CUT:
-			cut_selection();
-			return true;
-		case HOTKEY_EDITOR_AREA_RENAME:
-			context_manager_->rename_area_dialog();
-			return true;
-		case HOTKEY_EDITOR_AREA_SAVE:
-			save_area();
-			return true;
-		case HOTKEY_EDITOR_SELECTION_EXPORT:
-			export_selection_coords();
-			return true;
-		case HOTKEY_EDITOR_SELECT_ALL:
-			if(!get_current_map_context().map().everything_selected()) {
-				context_manager_->perform_refresh(editor_action_select_all());
-				return true;
-			}
-			[[fallthrough]];
-		case HOTKEY_EDITOR_SELECT_INVERSE:
-			context_manager_->perform_refresh(editor_action_select_inverse());
-			return true;
-		case HOTKEY_EDITOR_SELECT_NONE:
-			context_manager_->perform_refresh(editor_action_select_none());
-			return true;
-		case HOTKEY_EDITOR_SELECTION_FILL:
-			context_manager_->fill_selection();
-			return true;
-		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-			context_manager_->perform_refresh(editor_action_shuffle_area(
-					get_current_map_context().map().selection()));
-			return true;
-
-		case HOTKEY_EDITOR_SCENARIO_EDIT:
-			context_manager_->edit_scenario_dialog();
-			return true;
-
-		case HOTKEY_EDITOR_AREA_REMOVE:
-			get_current_map_context().remove_area(
-					get_current_map_context().get_active_area());
-			return true;
-
-		// map specific
-		case HOTKEY_EDITOR_MAP_CLOSE:
-			context_manager_->close_current_context();
-			// Copy behaviour from when switching windows to always reset the active tool to the Paint Tool
-			// This avoids the situation of having a scenario-specific tool active in a map context which can cause a crash if used
-			// Not elegant but at least avoids a potential crash and is consistent with existing behaviour
-			toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
-			return true;
-		case HOTKEY_EDITOR_MAP_LOAD:
-			context_manager_->load_map_dialog();
-			return true;
-		case HOTKEY_EDITOR_MAP_REVERT:
-			context_manager_->revert_map();
-			return true;
-		case HOTKEY_EDITOR_MAP_NEW:
-			context_manager_->new_map_dialog();
-			return true;
-		case HOTKEY_EDITOR_SCENARIO_NEW:
-			if(initialize_addon()) {
-				context_manager_->new_scenario_dialog();
-			}
-			return true;
-		case HOTKEY_EDITOR_MAP_SAVE:
-			save_map();
-			return true;
-		case HOTKEY_EDITOR_MAP_SAVE_ALL:
-			context_manager_->save_all_maps();
-			return true;
-		case HOTKEY_EDITOR_MAP_SAVE_AS:
-			context_manager_->save_map_as_dialog();
-			return true;
-		case HOTKEY_EDITOR_MAP_TO_SCENARIO:
-			if(initialize_addon()) {
-				context_manager_->map_to_scenario();
-			}
-			return true;
-		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			if(initialize_addon()) {
-				context_manager_->save_scenario_as_dialog();
-			}
-			return true;
-		case HOTKEY_EDITOR_MAP_GENERATE:
-			context_manager_->generate_map_dialog();
-			return true;
-		case HOTKEY_EDITOR_MAP_APPLY_MASK:
-			context_manager_->apply_mask_dialog();
-			return true;
-		case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
-			context_manager_->create_mask_to_dialog();
-			return true;
-		case HOTKEY_EDITOR_MAP_RESIZE:
-			context_manager_->resize_map_dialog();
-			return true;
-
-		// Side specific ones
-		case HOTKEY_EDITOR_SIDE_NEW:
-			if(get_current_map_context().teams().size() >= 9) {
-				size_t new_side_num = get_current_map_context().teams().size() + 1;
-				toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
-			}
-			get_current_map_context().new_side();
-			gui_->init_flags();
-			return true;
-		case HOTKEY_EDITOR_SIDE_REMOVE:
-			gui_->set_viewing_team_index(0, true);
-			gui_->set_playing_team_index(0);
-			get_current_map_context().remove_side();
-			return true;
-		case HOTKEY_EDITOR_SIDE_EDIT:
-			context_manager_->edit_side_dialog(gui_->viewing_team());
-			return true;
-
-		// Transitions
-		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
-			context_manager_->set_update_transitions_mode(2);
-			return true;
-		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_transitions_mode(1);
-			return true;
-		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_transitions_mode(0);
-			return true;
-		case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
-			if(context_manager_->toggle_update_transitions()) {
-				return true;
-			}
-			[[fallthrough]];
-		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
-			context_manager_->refresh_all();
-			return true;
-		// Refresh
-		case HOTKEY_EDITOR_REFRESH:
-			context_manager_->reload_map();
-			return true;
-		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
-			refresh_image_cache();
-			return true;
-
-		case HOTKEY_EDITOR_DRAW_COORDINATES:
-			gui().toggle_debug_flag(display::DEBUG_COORDINATES);
-			prefs::get().set_editor_draw_hex_coordinates(gui().debug_flag_set(display::DEBUG_COORDINATES));
-			gui().invalidate_all();
-			return true;
-		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-			gui().toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
-			prefs::get().set_editor_draw_terrain_codes(gui().debug_flag_set(display::DEBUG_TERRAIN_CODES));
-			gui().invalidate_all();
-			return true;
-		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
-			gui().toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
-			prefs::get().set_editor_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
-			gui().invalidate_all();
-			return true;
-		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
-			gui().set_help_string_enabled(!gui().help_string_enabled());
-			prefs::get().set_editor_help_text_shown(gui().help_string_enabled());
-			return true;
-		case HOTKEY_EDITOR_REMOVE_LOCATION: {
-			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
-			if (lp) {
-				perform_delete(std::make_unique<editor_action_starting_position>(map_location(), lp->selected_item()));
-				// No idea if this is the right thing to call, but it ensures starting
-				// position labels get removed on delete.
-				context_manager_->refresh_after_action();
-			}
-			return true;
-		}
-		default:
-			return hotkey::command_executor::do_execute_command(cmd, press, release);
+		return true;
+	}
+	default:
+		return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
 }
 
