@@ -298,6 +298,18 @@ static int impl_terrainmap_get(lua_State *L)
 		luaL_setmetatable(L, maplocationKey);
 		return 1;
 	}
+	if(strcmp(m, "size") == 0) {
+		lua_pushinteger(L, tm.total_width());
+		lua_pushinteger(L, tm.total_height());
+		lua_pushinteger(L, tm.border_size());
+		return 3;
+	}
+	if(strcmp(m, "playable_size") == 0) {
+		lua_pushinteger(L, tm.w());
+		lua_pushinteger(L, tm.h());
+		lua_pushinteger(L, tm.border_size());
+		return 3;
+	}
 	if(luaW_getglobal(L, "wesnoth", "map", m)) {
 		return 1;
 	}
