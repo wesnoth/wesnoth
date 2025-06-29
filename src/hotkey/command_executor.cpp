@@ -471,7 +471,7 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg)
 	}
 }
 
-void command_executor::get_menu_controls(config& item, int index) const
+void command_executor::populate_menu_controls(config& item, int index) const
 {
 	const std::string& command = item["id"];
 
@@ -529,7 +529,7 @@ void command_executor::populate_menu_item_info(config& item, int index) const
 	}
 
 	// Populate icons and enable toggle buttons
-	get_menu_controls(item, index);
+	populate_menu_controls(item, index);
 
 	if(hk.command != hotkey::HOTKEY_NULL) {
 		std::string desc = hk.description;
@@ -781,6 +781,11 @@ bool command_executor::run_queued_commands()
 	return !commands.empty();
 }
 
+void command_executor::execute_quit_command()
+{
+	do_execute_command(ui_command(hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME)));
+}
+
 void command_executor_default::recalculate_minimap()
 {
 	get_display().recalculate_minimap();
@@ -793,7 +798,6 @@ void command_executor_default::lua_console()
 	} else {
 		command_executor::lua_console();
 	}
-
 }
 
 void command_executor::lua_console()

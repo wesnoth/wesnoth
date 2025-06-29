@@ -74,7 +74,6 @@ struct ui_command
 // to execute hotkey commands.
 class command_executor
 {
-
 protected:
 	virtual ~command_executor() {}
 
@@ -166,24 +165,33 @@ public:
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
 
-	// Does the action control a toggle switch? If so, return the state of the action (on or off).
-	virtual action_state get_action_state(const hotkey::ui_command&) const { return action_state::stateless; }
-
-private:
-	void get_menu_controls(config& item, int index = -1) const;
-	void populate_menu_item_info(config& item, int index) const;
-
-public:
 	void surrender_game();
-	// @a items_arg the items in the menus to be shows, each item can have the folliwng attributes:
-	//   'id':    The id describing the action, will be passed to do_execute_commnd and can_execute_commnd,
+	void execute_quit_command();
+
+	// @a items_arg the items in the menus to be shows, each item can have the following attributes:
+	//   'id':    The id describing the action, will be passed to do_execute_command and can_execute_command,
 	//            If 'id' specifies a known hotkey command or theme item the other attributes can be generated from it.
 	//   'label': The label for this menu entry.
 	//   'icon':  The icon for this menu entry.
 	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu);
-	// @a items_arg the actions to be exceuted, exceutes all of the actions, it looks like the idea is to associate
+
+	// @a items_arg the actions to be executed, executes all of the actions, it looks like the idea is to associate
 	//  multiple actions with a single menu button, not sure whether it is actually used.
 	void execute_action(const std::vector<std::string>& items_arg);
+
+protected:
+	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
+	virtual bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false);
+
+	// Does the action control a toggle switch? If so, return the state of the action (on or off).
+	virtual action_state get_action_state(const hotkey::ui_command&) const
+	{
+		return action_state::stateless;
+	}
+
+private:
+	void populate_menu_controls(config& item, int index) const;
+	void populate_menu_item_info(config& item, int index) const;
 
 	/** If true, the menu will remain open after an item has been selected. */
 	virtual bool keep_menu_open() const
@@ -191,24 +199,6 @@ public:
 		return false;
 	}
 
-	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
-	void queue_command(const SDL_Event& event, int index = -1);
-	bool run_queued_commands();
-	void execute_quit_command()
-	{
-		const hotkey_command& quit_hotkey = hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
-		do_execute_command(ui_command(quit_hotkey));
-	}
-
-	void handle_keyup()
-	{
-		press_event_sent_ = false;
-	}
-
-protected:
-	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false);
-
-private:
 	struct queued_command
 	{
 		queued_command(const hotkey_command& command_, int index_, bool press_, bool release_)
@@ -226,7 +216,17 @@ private:
 
 	bool press_event_sent_ = false;
 	std::vector<queued_command> command_queue_;
+
+public:
+	void queue_command(const SDL_Event& event, int index = -1);
+	bool run_queued_commands();
+
+	void handle_keyup()
+	{
+		press_event_sent_ = false;
+	}
 };
+
 class command_executor_default : public command_executor
 {
 protected:
@@ -240,6 +240,7 @@ public:
 	void zoom_default();
 	void map_screenshot();
 };
+
 /* Functions to be called every time a event is intercepted.
  * Will call the relevant function in executor if the event is not nullptr.
  * Also handles some events in the function itself,
