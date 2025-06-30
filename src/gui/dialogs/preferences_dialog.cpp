@@ -733,9 +733,7 @@ void preferences_dialog::initialize_callbacks()
 				connect_signal_mouse_left_click(toggle_box,
 					[&, pref_name](auto&&...) { preferences_dialog_friend::set(pref_name, toggle_box.get_value_bool()); });
 
-				gui2::bind_status_label<toggle_button>(
-					main_grid, "value_toggle", default_status_value_getter<toggle_button>, "value");
-
+				gui2::bind_default_status_label(toggle_box, "value");
 				break;
 			}
 
@@ -755,8 +753,7 @@ void preferences_dialog::initialize_callbacks()
 				connect_signal_notify_modified(slide,
 					[&, pref_name](auto&&...) { preferences_dialog_friend::set(pref_name, slide.get_value()); });
 
-				gui2::bind_status_label<slider>(main_grid, "setter", default_status_value_getter<slider>, "value");
-
+				gui2::bind_default_status_label(slide, "value");
 				break;
 			}
 
@@ -797,8 +794,7 @@ void preferences_dialog::initialize_callbacks()
 				connect_signal_notify_modified(menu,
 					[=](widget& w, auto&&...) { preferences_dialog_friend::set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); });
 
-				gui2::bind_status_label<menu_button>(main_grid, "setter", default_status_value_getter<menu_button>, "value");
-
+				gui2::bind_default_status_label(menu, "value");
 				break;
 			}
 
@@ -809,7 +805,6 @@ void preferences_dialog::initialize_callbacks()
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
 				main_grid->swap_child("value", std::move(value_widget), true);
-
 				break;
 			}
 		}
@@ -1109,13 +1104,9 @@ void preferences_dialog::pre_show()
 	// is not the case for those in Advanced
 	//
 
-	gui2::bind_status_label<slider>(this, "max_saves_slider");
-	gui2::bind_status_label<slider>(this, "turbo_slider");
-	gui2::bind_status_label<slider>(this, "pixel_scale_slider");
-
-	//gui2::bind_status_label<slider>("scaling_slider",   [](slider& s)->std::string {
-	//	return s.get_value_label() + "%";
-	//});
+	gui2::bind_default_status_label(find_widget<slider>("max_saves_slider"));
+	gui2::bind_default_status_label(find_widget<slider>("turbo_slider"));
+	gui2::bind_default_status_label(find_widget<slider>("pixel_scale_slider"));
 
 	listbox& selector = find_widget<listbox>("selector");
 	stacked_widget& pager = find_widget<stacked_widget>("pager");

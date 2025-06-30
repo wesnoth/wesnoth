@@ -17,6 +17,7 @@
 #include "gui/dialogs/editor/generator_settings.hpp"
 
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -26,10 +27,23 @@
 
 namespace gui2::dialogs
 {
+namespace
+{
+constexpr int max_coastal = 5;
+constexpr int extra_size_per_player = 2;
+constexpr int min_size = 20;
 
-static int max_coastal = 5;
-static int extra_size_per_player = 2;
-static int min_size = 20;
+std::string get_village_description(int count)
+{
+	return VGETTEXT("$count/1000 tiles", {{"count", std::to_string(count)}});
+}
+
+std::string get_landform_description(int count)
+{
+	return count == 0 ? _("Inland") : (count < max_coastal ? _("Coastal") : _("Island"));
+}
+
+} // namespace
 
 REGISTER_DIALOG(generator_settings)
 
@@ -38,8 +52,6 @@ generator_settings::generator_settings(generator_data& data)
 	, players_(register_integer("players", true, data.nplayers))
 	, width_(register_integer("width",     true, data.width))
 	, height_(register_integer("height",   true, data.height))
-	, update_width_label_()
-	, update_height_label_()
 {
 	register_integer("hills_num",    true, data.iterations);
 	register_integer("hills_size",   true, data.hill_size);
@@ -58,19 +70,18 @@ void generator_settings::pre_show()
 	connect_signal_notify_modified(*players_->get_widget(), std::bind(
 		&generator_settings::adjust_minimum_size_by_players, this));
 
-	gui2::bind_status_label<slider>(this, "players");
+	gui2::bind_default_status_label(find_widget<slider>("players"));
+	gui2::bind_default_status_label(find_widget<slider>("castle_size"));
+	gui2::bind_default_status_label(find_widget<slider>("width"));
+	gui2::bind_default_status_label(find_widget<slider>("height"));
 
-	update_width_label_  = gui2::bind_status_label<slider>(this, "width");
-	update_height_label_ = gui2::bind_status_label<slider>(this, "height");
+	gui2::bind_status_label(find_widget<slider>("villages"),
+		[](const slider& s) { return get_village_description(s.get_value()); });
+	gui2::bind_status_label(find_widget<slider>("landform"),
+		[](const slider& s) { return get_landform_description(s.get_value()); });
 
 	// Update min size initially.
-	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
 	adjust_minimum_size_by_players();
-
-	gui2::bind_status_label<slider>(this, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
-	gui2::bind_status_label<slider>(this, "castle_size");
-	gui2::bind_status_label<slider>(this, "landform", [](const slider& s) {
-		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
 void generator_settings::adjust_minimum_size_by_players()
@@ -84,9 +95,6 @@ void generator_settings::adjust_minimum_size_by_players()
 
 	update_dimension_slider(width_);
 	update_dimension_slider(height_);
-
-	update_width_label_();
-	update_height_label_();
 }
 
 } // namespace dialogs
