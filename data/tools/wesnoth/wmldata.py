@@ -16,7 +16,6 @@ not allow composed strings like above.
 """
 
 import re, sys
-import codecs
 
 class Data:
     """Common subclass."""
