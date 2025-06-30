@@ -361,14 +361,14 @@ void mp_create_game::pre_show()
 	//
 	// Set up the setting status labels
 	//
-	bind_status_label<slider>(this, turns_->id());
-	bind_status_label<slider>(this, gold_->id());
-	bind_status_label<slider>(this, support_->id());
-	bind_status_label<slider>(this, experience_->id());
-	bind_status_label<slider>(this, init_turn_limit_->id());
-	bind_status_label<slider>(this, turn_bonus_->id());
-	bind_status_label<slider>(this, reservoir_->id());
-	bind_status_label<slider>(this, action_bonus_->id());
+	bind_default_status_label(static_cast<slider&>(*turns_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*gold_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*support_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*experience_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*init_turn_limit_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*turn_bonus_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*reservoir_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*action_bonus_->get_widget()));
 
 	//
 	// Timer reset button
