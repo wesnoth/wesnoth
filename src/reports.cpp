@@ -1829,17 +1829,16 @@ REPORT_GENERATOR(report_countdown, rc)
 	using std::chrono::duration_cast;
 #ifdef __cpp_lib_format
 	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
-	time_str << std::format("%M:%S", sec);
+	time_str << std::format("{:%M:%S}", sec);
 #else
+	auto fmt = [](const auto& duration) -> std::string {
+		return formatter{} << std::setw(2) << std::setfill('0') << duration.count();
+	};
+
 	// Create the time string
 	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
 	auto min = duration_cast<std::chrono::minutes>(sec);
-	time_str << min.count() << ':';
-	sec = sec % min;
-	if (sec < 10s) {
-		time_str << '0';
-	}
-	time_str << sec.count();
+	time_str << fmt(min) << ':' << fmt(sec - min);
 #endif
 
 	// Colorize the time string
