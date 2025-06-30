@@ -311,7 +311,7 @@ void playsingle_controller::play_scenario_main_loop()
 	LOG_NG << "starting main loop... " << timer();
 
 	ai_testing::log_game_start();
-	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
+	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_linger() )) {
 		try {
 			play_some();
 		} catch(const reset_gamestate_exception& ex) {
@@ -628,7 +628,7 @@ void playsingle_controller::linger()
 			replay_controller_.reset();
 		}
 	}
-	while(!end_turn_requested_) {
+	while(!end_linger()) {
 		play_slice();
 	}
 

@@ -71,6 +71,7 @@ public:
 	virtual void on_not_observer() override {}
 	virtual bool is_host() const { return true; }
 	virtual void maybe_linger();
+	virtual bool end_linger() { return end_turn_requested_; }
 
 	void end_turn();
 	void force_end_turn() override;
