@@ -26,6 +26,8 @@
 #include <set>
 #include <stack>
 
+#include <boost/algorithm/string/trim.hpp>
+
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
 #define LOG_FT LOG_STREAM(info, log_font)
@@ -55,7 +57,7 @@ floating_label::floating_label(const std::string& text)
 	, alpha_(0)
 	, fadeout_(0)
 	, time_start_()
-	, text_(text)
+	, text_(boost::trim_copy(text))
 	, font_size_(SIZE_SMALL)
 	, color_(NORMAL_COLOR)
 	, bgcolor_(0, 0, 0, SDL_ALPHA_TRANSPARENT)
@@ -134,12 +136,7 @@ bool floating_label::create_texture()
 		.set_characters_per_line(0)
 		.set_add_outline(bgcolor_.a == 0);
 
-	// ignore last '\n'
-	if(!text_.empty() && *(text_.rbegin()) == '\n') {
-		text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
-	} else {
-		text.set_text(text_, use_markup_);
-	}
+	text.set_text(text_, use_markup_);
 
 	tex_ = text.render_and_get_texture();
 	if(!tex_) {
