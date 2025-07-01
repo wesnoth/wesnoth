@@ -787,7 +787,7 @@ point current_resolution()
 	if (testing_) {
 		return test_resolution_;
 	}
-	return point(window->get_size()); // Convert from plain SDL_Point
+	return window->get_size();
 }
 
 bool is_fullscreen()

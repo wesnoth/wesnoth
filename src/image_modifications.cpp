@@ -279,7 +279,7 @@ public:
 	}
 
 private:
-	SDL_Point coord;
+	point coord;
 	int w, h;
 };
 
