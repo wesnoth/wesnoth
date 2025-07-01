@@ -356,7 +356,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 	// Scroll with middle-mouse if enabled
 	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
-		const SDL_Point original_loc = mh_base.get_scroll_start();
+		const point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {
 			if(get_display().map_outside_area().contains(mousex, mousey)

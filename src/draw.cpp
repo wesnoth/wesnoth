@@ -202,7 +202,7 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
-void draw::points(const std::vector<SDL_Point>& points)
+void draw::points(const std::vector<point>& points)
 {
 	DBG_D << points.size() << " points";
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
@@ -232,7 +232,7 @@ void draw::circle(int cx, int cy, int r, uint8_t octants)
 	int x = r;
 	int y = 0;
 
-	std::vector<SDL_Point> points;
+	std::vector<point> points;
 
 	while(!(y > x)) {
 		if(octants & 0x04) points.push_back({cx + x, cy + y});

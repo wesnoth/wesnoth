@@ -165,7 +165,7 @@ void line(int from_x, int from_y, int to_x, int to_y);
 void line(int from_x, int from_y, int to_x, int to_y, const color_t& c);
 
 /** Draw a set of points. */
-void points(const std::vector<SDL_Point>& points);
+void points(const std::vector<point>& points);
 
 /** Draw a single point. */
 void point(int x, int y);

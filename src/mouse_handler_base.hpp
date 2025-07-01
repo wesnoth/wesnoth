@@ -205,7 +205,7 @@ public:
 		scroll_start_y_ = y;
 	}
 
-	const SDL_Point get_scroll_start() const
+	const point get_scroll_start() const
 	{
 		return {scroll_start_x_, scroll_start_y_};
 	}

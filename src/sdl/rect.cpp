@@ -53,7 +53,7 @@ bool rect::empty() const
 
 bool rect::contains(int x, int y) const
 {
-	SDL_Point p{x, y};
+	point p{x, y};
 	return SDL_PointInRect(&p, this) != SDL_FALSE;
 }
 
