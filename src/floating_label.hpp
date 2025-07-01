@@ -111,7 +111,7 @@ public:
 
 private:
 
-	std::chrono::milliseconds get_time_alive(const clock::time_point& current_time) const;
+	clock::duration get_time_alive(const clock::time_point& current_time) const;
 	int xpos(std::size_t width) const;
 	point get_pos(const clock::time_point& time) const;
 	uint8_t get_alpha(const clock::time_point& time) const;
