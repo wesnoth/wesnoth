@@ -91,9 +91,8 @@ void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, c
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
-	float x, y;
-	sdl::get_mouse_state(&x, &y);
-	mouse_motion(static_cast<int>(x), static_cast<int>(y), browse, true, loc);
+	auto [x, y] = sdl::get_mouse_location();
+	mouse_motion(x, y, browse, true, loc);
 }
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)

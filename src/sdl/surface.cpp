@@ -17,8 +17,6 @@
 #include "color.hpp"
 #include "sdl/rect.hpp"
 
-const SDL_PixelFormat neutral_format = SDL_PIXELFORMAT_ARGB8888;
-
 #include <utility>
 
 namespace
@@ -68,7 +66,7 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-	surface_ = SDL_CreateSurface(w, h, neutral_format);
+	surface_ = SDL_CreateSurface(w, h, SDL_PIXELFORMAT_ARGB8888);
 }
 
 surface::surface(const surface& s)
@@ -108,7 +106,7 @@ surface& surface::operator=(surface&& s) noexcept
 surface surface::clone() const
 {
 	// Use SDL_ConvertSurfaceFormat to make a copy
-	return surface(SDL_ConvertSurface(surface_, neutral_format));
+	return surface(SDL_ConvertSurface(surface_, SDL_PIXELFORMAT_ARGB8888));
 }
 
 std::size_t surface::area() const
