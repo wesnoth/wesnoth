@@ -592,8 +592,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			{
 				if(is_selection())
 				{
-					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
-					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
+					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);

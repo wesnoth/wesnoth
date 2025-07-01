@@ -200,7 +200,7 @@ namespace {
 		if (search_counter == 0) search_counter = 2;
 
 		static std::vector<node> nodes;
-		nodes.resize(static_cast<size_t>(map.w()) * map.h());
+		nodes.resize(static_cast<std::size_t>(map.w()) * map.h());
 
 		indexer index(map.w(), map.h());
 		comp node_comp(nodes);
@@ -285,7 +285,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	std::vector< std::vector<int>> scores( number_of_teams );
 
 	for( std::size_t i = 0; i< number_of_teams; ++i)
-		scores[i].resize(static_cast<size_t>(w)*h);
+		scores[i].resize(static_cast<std::size_t>(w)*h);
 
 	/* // TODO: Do we need this?
 	for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i) {

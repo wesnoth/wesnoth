@@ -1074,7 +1074,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	// Side specific ones
 	case HOTKEY_EDITOR_SIDE_NEW:
 		if(get_current_map_context().teams().size() >= 9) {
-			size_t new_side_num = get_current_map_context().teams().size() + 1;
+			std::size_t new_side_num = get_current_map_context().teams().size() + 1;
 			toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
 		}
 		get_current_map_context().new_side();

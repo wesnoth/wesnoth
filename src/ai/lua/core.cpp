@@ -776,13 +776,13 @@ static int impl_ai_aspect_get(lua_State* L)
 		}
 		lua_createtable(L, 0, 2);
 		lua_createtable(L, attackers.size(), 0);
-		for(size_t i = 0; i < attackers.size(); i++) {
+		for(std::size_t i = 0; i < attackers.size(); i++) {
 			luaW_pushunit(L, attackers[i]->underlying_id());
 			lua_rawseti(L, -2, i + 1);
 		}
 		lua_setfield(L, -2, "own");
 		lua_createtable(L, enemies.size(), 0);
-		for(size_t i = 0; i < enemies.size(); i++) {
+		for(std::size_t i = 0; i < enemies.size(); i++) {
 			luaW_pushunit(L, enemies[i]->underlying_id());
 			lua_rawseti(L, -2, i + 1);
 		}
@@ -954,11 +954,11 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 	lua_setmetatable(L, -2); // [-1: ai table]
 }
 
-static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
+static std::size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 {
 	// Retrieve the ai elements table from the registry.
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AIs registry table]
-	size_t length_ai = lua_rawlen(L, -1); // length of table
+	std::size_t length_ai = lua_rawlen(L, -1); // length of table
 	lua_newtable(L); // [-1: AI state table  -2: AIs registry table]
 	generate_and_push_ai_table(L, engine); // [-1: AI routines  -2: AI state  -3: AIs registry]
 	lua_setfield(L, -2, "ai"); // [-1: AI state  -2: AIs registry]
@@ -987,7 +987,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		return nullptr;
 	}
 	//push data table here
-	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
+	std::size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
 	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
 	lua_setfield(L, -2, "update_self"); // [-1: AI state  -2: AI code]
 	lua_pushlightuserdata(L, engine);
@@ -1031,7 +1031,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	// Retrieve the ai elements table from the registry.
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
-	size_t length = lua_rawlen(L, -1);//length of ais_table
+	std::size_t length = lua_rawlen(L, -1);//length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: f  -2: ais_table  -3: f]
 	lua_rawseti(L, -2, length + 1);// ais_table[length+1]=f.  stack size is now 2 [-1: ais_table  -2: f]
 	lua_remove(L, -1);//stack size is now 1 [-1: f]

@@ -1495,7 +1495,7 @@ static int impl_mp_settings_get(lua_State* L)
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
 		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
-		size_t i = luaL_checkinteger(L, 2);
+		std::size_t i = luaL_checkinteger(L, 2);
 		if(i == 1) {
 			lua_createtable(L, 2, 0);
 			lua_pushstring(L, "options");
@@ -4556,7 +4556,7 @@ int game_lua_kernel::intf_get_label(lua_State* L)
 				break;
 			// Side number - get label belonging to that side's team
 			case LUA_TNUMBER:
-				if(size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
+				if(std::size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
 					label = screen.labels().get_label(loc, teams().at(n - 1).team_name());
 				}
 				break;

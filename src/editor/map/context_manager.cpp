@@ -137,8 +137,8 @@ void context_manager::refresh_all()
 		if(!get_map_context().is_pure_map()) {
 			// If the scenario has more than 9 teams, add locations for them
 			// (First 9 teams are always in the list)
-			size_t n_teams = get_map_context().teams().size();
-			for(size_t i = 10; i <= n_teams; i++) {
+			std::size_t n_teams = get_map_context().teams().size();
+			for(std::size_t i = 10; i <= n_teams; i++) {
 				locs_->add_item(std::to_string(i));
 			}
 		}

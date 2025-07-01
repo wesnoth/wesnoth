@@ -76,7 +76,7 @@ namespace utils::charconv
 
 	// the maximum size of a string that to_chars produces for type T, with the default chars_format
 	template<class T>
-	constexpr size_t buffer_size = 50;
+	constexpr std::size_t buffer_size = 50;
 }
 
 namespace utils
@@ -98,7 +98,7 @@ namespace utils
 	struct charconv_buffer
 	{
 		std::array<char, utils::charconv::buffer_size<TNum>> buffer;
-		size_t size;
+		std::size_t size;
 
 		charconv_buffer()
 			: size(0)

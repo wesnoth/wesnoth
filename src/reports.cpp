@@ -1182,12 +1182,12 @@ static config unit_weapons(const reports::context& rc, const unit_const_ptr& att
 		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
 
 		//TODO fendrin -- make that dynamically
-		size_t max_hp_distrib_rows_ = 10;
+		std::size_t max_hp_distrib_rows_ = 10;
 
 		// We store a few of the highest probability hitpoint values.
-		size_t nb_elem = std::min<size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
+		std::size_t nb_elem = std::min<std::size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
 
-		for(size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
+		for(std::size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
 			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 

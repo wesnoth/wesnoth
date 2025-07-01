@@ -2997,7 +2997,7 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 			// propagate invalidation
 			// 'i' is already in, but I suspect that splitting the range is bad
 			// especially because locs are often adjacents
-			size_t previous_size = invalidated_.size();
+			std::size_t previous_size = invalidated_.size();
 			invalidated_.insert(locs.begin(), locs.end());
 			result = previous_size < invalidated_.size();
 		}

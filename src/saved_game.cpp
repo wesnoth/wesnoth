@@ -350,7 +350,7 @@ void saved_game::check_require_scenario()
 }
 
 // "non scenario" at the time of writing this meaning any era, campaign, mods, or resources (see expand_mp_events() below).
-void saved_game::load_non_scenario(const std::string& type, const std::string& id, size_t pos)
+void saved_game::load_non_scenario(const std::string& type, const std::string& id, std::size_t pos)
 {
 	if(auto cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
 		// Note the addon_id if this mod is required to play the game in mp.
@@ -434,7 +434,7 @@ void saved_game::expand_mp_events()
 		while(starting_point_.has_child("load_resource")) {
 			assert(starting_point_.child_count("load_resource") > 0);
 			std::string id = starting_point_.mandatory_child("load_resource")["id"];
-			size_t pos = starting_point_.find_total_first_of("load_resource");
+			std::size_t pos = starting_point_.find_total_first_of("load_resource");
 			starting_point_.remove_child("load_resource", 0);
 			if(loaded_resources.find(id) == loaded_resources.end()) {
 				loaded_resources.insert(id);

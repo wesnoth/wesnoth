@@ -129,12 +129,12 @@ point rich_label::get_image_size(config& img_cfg) const
 	};
 }
 
-std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text)
+std::pair<std::size_t, std::size_t> rich_label::add_text(config& curr_item, const std::string& text)
 {
 	auto& attr = curr_item["text"];
-	size_t start = attr.str().size();
+	std::size_t start = attr.str().size();
 	attr = attr.str() + text;
-	size_t end = attr.str().size();
+	std::size_t end = attr.str().size();
 	return { start, end };
 }
 
@@ -142,8 +142,8 @@ void rich_label::add_attribute(
 	config& curr_item,
 	const std::string& attr_name,
 	const std::string& extra_data,
-	size_t start,
-	size_t end)
+	std::size_t start,
+	std::size_t end)
 {
 	if (start == end && start != 0) {
 		return;
@@ -163,7 +163,7 @@ void rich_label::add_attribute(
 	}
 }
 
-std::pair<size_t, size_t> rich_label::add_text_with_attribute(
+std::pair<std::size_t, std::size_t> rich_label::add_text_with_attribute(
 	config& curr_item,
 	const std::string& text,
 	const std::string& attr_name,
@@ -228,9 +228,9 @@ void rich_label::add_link(
 	}
 }
 
-size_t rich_label::get_split_location(std::string_view text, const point& pos)
+std::size_t rich_label::get_split_location(std::string_view text, const point& pos)
 {
-	size_t len = get_offset_from_xy(pos);
+	std::size_t len = get_offset_from_xy(pos);
 	if (len >= text.size() - 1) {
 		return text.size() - 1;
 	}
@@ -653,7 +653,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if(wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+					std::size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
 					std::string removed_part = (*curr_item)["text"].str().substr(len+1);
