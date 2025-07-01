@@ -167,8 +167,15 @@ void floating_label::update(const clock::time_point& time)
 	}
 
 	rect draw_loc{get_pos(time), tex_.draw_size()};
-
 	uint8_t new_alpha = get_alpha(time);
+
+	// Nothing has changed
+	// FIXME: we consider border too since otherwise we get flickering under floating
+	// labels with a background (see bug #7700). This isn't ideal for chat messages or
+	// tooltips, but it optimizes the usual case (map labels).
+	if(screen_loc_ == draw_loc && alpha_ == new_alpha && border_ == 0) {
+		return;
+	}
 
 	// Invalidate former draw loc
 	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
