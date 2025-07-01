@@ -128,7 +128,7 @@ rect pango_draw_text(bool actually_draw, const rect& area, int size, const color
 
 	auto t = ptext.render_and_get_texture();
 
-	SDL_Rect res = {x, y, t.w(), t.h()};
+	rect res = {x, y, t.w(), t.h()};
 
 	if(actually_draw) {
 		draw::blit(t, res);

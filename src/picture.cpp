@@ -333,7 +333,7 @@ static void add_localized_overlay(const std::string& ovr_file, surface& orig_sur
 		return;
 	}
 
-	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
+	rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
 	sdl_blit(ovr_surf, nullptr, orig_surf, &area);
 }

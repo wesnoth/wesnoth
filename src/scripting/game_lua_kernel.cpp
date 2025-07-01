@@ -2685,7 +2685,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		font::remove_floating_label(*handle);
 	}
 
-	const SDL_Rect rect = game_display_->map_outside_area();
+	const rect rect = game_display_->map_outside_area();
 	if(width_ratio > 0) {
 		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}

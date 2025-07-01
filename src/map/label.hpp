@@ -18,9 +18,9 @@
 #include "color.hpp"
 #include "font/standard_colors.hpp"
 #include "map/location.hpp"
+#include "sdl/rect.hpp"
 #include "tstring.hpp"
 
-#include <SDL2/SDL_rect.h>
 #include <map>
 #include <string>
 
@@ -230,5 +230,5 @@ private:
 	const map_labels* parent_;
 	map_location loc_;
 
-	SDL_Rect get_rect() const;
+	rect get_rect() const;
 };

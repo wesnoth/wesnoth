@@ -73,7 +73,7 @@ protected:
 	virtual void draw_contents();
 
 private:
-	SDL_Rect grip_area() const;
+	rect grip_area() const;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
 	STATE state_;

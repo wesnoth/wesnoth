@@ -516,7 +516,7 @@ rect display::map_outside_area() const
 	}
 }
 
-bool display::outside_area(const SDL_Rect& area, const int x, const int y)
+bool display::outside_area(const rect& area, const int x, const int y)
 {
 	const int x_thresh = hex_size();
 	const int y_thresh = hex_size();
@@ -728,7 +728,7 @@ surface display::screenshot(bool map_screenshot)
 	viewport_origin_ = {0, 0};
 
 	// Reroute render output to a separate texture until the end of scope.
-	SDL_Rect area = max_map_area();
+	rect area = max_map_area();
 	if (area.w > 1 << 16 || area.h > 1 << 16) {
 		WRN_DP << "Excessively large map screenshot area";
 	}
@@ -3005,12 +3005,12 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 	return result;
 }
 
-bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
+bool display::invalidate_visible_locations_in_rect(const rect& rect)
 {
 	return invalidate_locations_in_rect(map_area().intersect(rect));
 }
 
-bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
+bool display::invalidate_locations_in_rect(const rect& rect)
 {
 	if(invalidateAll_ && !map_screenshot_)
 		return false;

@@ -98,7 +98,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 {
 }
 
-drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
+drop_down_menu::drop_down_menu(rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
 	: modal_dialog(window_id())
 	, parent_(nullptr)
 	, items_(items.begin(), items.end())

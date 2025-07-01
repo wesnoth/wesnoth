@@ -40,7 +40,7 @@ container_base::container_base(const implementation::builder_styled_widget& buil
 		event::dispatcher::back_pre_child);
 }
 
-SDL_Rect container_base::get_client_rect() const
+rect container_base::get_client_rect() const
 {
 	return get_rectangle();
 }
@@ -136,7 +136,7 @@ void container_base::place(const point& origin, const point& size)
 {
 	styled_widget::place(origin, size);
 
-	const SDL_Rect rect = get_client_rect();
+	const rect rect = get_client_rect();
 	const point client_size(rect.w, rect.h);
 	const point client_position(rect.x, rect.y);
 	grid_.place(client_position, client_size);
@@ -183,12 +183,12 @@ void container_base::set_origin(const point& origin)
 	// Inherited.
 	widget::set_origin(origin);
 
-	const SDL_Rect rect = get_client_rect();
+	const rect rect = get_client_rect();
 	const point client_position(rect.x, rect.y);
 	grid_.set_origin(client_position);
 }
 
-void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
+void container_base::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	widget::set_visible_rectangle(rectangle);

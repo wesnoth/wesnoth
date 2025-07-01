@@ -42,9 +42,9 @@ sdl_handler_vector scrollarea::handler_members()
 	return h;
 }
 
-void scrollarea::update_location(const SDL_Rect& rect)
+void scrollarea::update_location(const rect& rect)
 {
-	SDL_Rect r = rect;
+	::rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
 	if (shown_scrollbar_) {
 		int w = r.w - scrollbar_.width();

@@ -141,9 +141,9 @@ void scrollbar::scroll_up()
 	move_position(-scroll_rate_);
 }
 
-SDL_Rect scrollbar::grip_area() const
+rect scrollbar::grip_area() const
 {
-	const SDL_Rect& loc = location();
+	const rect& loc = location();
 	if (full_height_ == grip_height_)
 		return loc;
 	int h = static_cast<int>(loc.h) * grip_height_ / full_height_;
@@ -184,7 +184,7 @@ void scrollbar::draw_contents()
 		break;
 	}
 
-	SDL_Rect grip = grip_area();
+	rect grip = grip_area();
 
 	int mid_height = grip.h - top_img.h() - bot_img.h();
 	if (mid_height <= 0) {
@@ -194,7 +194,7 @@ void scrollbar::draw_contents()
 		mid_height = 1;
 	}
 
-	SDL_Rect groove = location();
+	rect groove = location();
 
 	if (grip.h > groove.h) {
 		PLAIN_LOG << "abort draw scrollbar: grip too large";
@@ -206,7 +206,7 @@ void scrollbar::draw_contents()
 	draw::fill(groove, c);
 
 	// Draw scrollbar "grip"
-	SDL_Rect dest{grip.x, grip.y, top_img.w(), top_img.h()};
+	rect dest{grip.x, grip.y, top_img.w(), top_img.h()};
 	draw::blit(top_img, dest);
 
 	dest = {dest.x, dest.y + top_img.h(), mid_img.w(), mid_height};

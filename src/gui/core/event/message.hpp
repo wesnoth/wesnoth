@@ -57,7 +57,7 @@ struct message
 /** The message for MESSAGE_SHOW_TOOLTIP. */
 struct message_show_tooltip : public message
 {
-	message_show_tooltip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
+	message_show_tooltip(const std::string& message_, const point& location_, const rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -69,13 +69,13 @@ struct message_show_tooltip : public message
 	const point location;
 
 	/** The size of the entity requesting to show a tooltip. */
-	const SDL_Rect source_rect;
+	const rect source_rect;
 };
 
 /** The message for MESSAGE_SHOW_HELPTIP. */
 struct message_show_helptip : public message
 {
-	message_show_helptip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
+	message_show_helptip(const std::string& message_, const point& location_, const rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -87,7 +87,7 @@ struct message_show_helptip : public message
 	const point location;
 
 	/** The size of the entity requesting to show a helptip. */
-	const SDL_Rect source_rect;
+	const rect source_rect;
 };
 
 } // namespace event

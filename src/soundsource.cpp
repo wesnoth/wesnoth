@@ -195,7 +195,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
-	SDL_Rect area = disp.map_area();
+	rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
 	int distance = distance_between(loc, center);
 

@@ -19,7 +19,7 @@
 #include "tstring.hpp"
 #include "widgets/widget.hpp"
 
-struct SDL_Rect;
+struct rect;
 
 namespace editor {
 
@@ -64,7 +64,7 @@ public:
 	virtual bool can_scroll_down() = 0;
 
 	//drawing
-	virtual void adjust_size(const SDL_Rect& target) = 0;
+	virtual void adjust_size(const rect& target) = 0;
 
 	//group
 	virtual void set_group(std::size_t index) = 0;

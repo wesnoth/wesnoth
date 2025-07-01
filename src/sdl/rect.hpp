@@ -116,32 +116,32 @@ public:
 	bool contains(const point& p) const;
 
 	/** Whether the given rectangle is completely contained by this one. */
-	bool contains(const SDL_Rect& r) const;
+	bool contains(const rect& r) const;
 
 	/** Whether the given rectangle and this rectangle overlap. */
-	bool overlaps(const SDL_Rect& r) const;
+	bool overlaps(const rect& r) const;
 
 	/**
 	 * Calculates the minimal rectangle that completely contains both
 	 * this rectangle and the given rectangle.
 	 */
-	rect minimal_cover(const SDL_Rect& r) const;
+	rect minimal_cover(const rect& r) const;
 
 	/** Minimally expand this rect to fully contain another. */
-	rect& expand_to_cover(const SDL_Rect& r);
+	rect& expand_to_cover(const rect& r);
 
 	/**
 	 * Calculates the intersection of this rectangle and another;
 	 * that is, the maximal rectangle that is contained by both.
 	 */
-	rect intersect(const SDL_Rect& r) const;
+	rect intersect(const rect& r) const;
 
 	/**
 	 * Clip this rectangle by the given rectangle.
 	 *
 	 * This rectangle will be reduced to the intersection of both rectangles.
 	 */
-	void clip(const SDL_Rect& r);
+	void clip(const rect& r);
 
 	/**
 	 * Shift the rectangle by the given relative position.

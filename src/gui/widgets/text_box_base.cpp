@@ -487,7 +487,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
-			SDL_Rect rect = get_rectangle();
+			rect rect = get_rectangle();
 			if(new_len > 0) {
 				rect.x += get_cursor_position(ime_start_point_).x;
 				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
