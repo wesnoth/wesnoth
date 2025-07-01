@@ -224,9 +224,9 @@ void floating_label::set_lifetime(const std::chrono::milliseconds& lifetime, con
 	time_start_	= std::chrono::steady_clock::now();
 }
 
-std::chrono::milliseconds floating_label::get_time_alive(const clock::time_point& current_time) const
+auto floating_label::get_time_alive(const clock::time_point& current_time) const -> clock::duration
 {
-	return std::chrono::duration_cast<std::chrono::milliseconds>(current_time - time_start_);
+	return current_time - time_start_;
 }
 
 point floating_label::get_pos(const clock::time_point& time) const
@@ -235,7 +235,7 @@ point floating_label::get_pos(const clock::time_point& time) const
 	double new_y = ypos_;
 
 	if(xmove_ != 0.0 || ymove_ != 0.0) {
-		auto time_alive = get_time_alive(time);
+		auto time_alive = std::chrono::duration_cast<std::chrono::milliseconds>(get_time_alive(time));
 		new_x += time_alive.count() * xmove_;
 		new_y += time_alive.count() * ymove_;
 	}
