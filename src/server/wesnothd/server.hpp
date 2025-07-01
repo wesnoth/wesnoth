@@ -73,10 +73,10 @@ private:
 	void remove_player(player_iterator player);
 
 public:
-	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
-	void send_server_message(player_iterator player, const std::string& message, const std::string& type) {
+	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type, const std::string& original_receiver = "");
+	void send_server_message(player_iterator player, const std::string& message, const std::string& type, const std::string& original_receiver = "") {
 		utils::visit(
-			[this, &message, &type](auto&& socket) { send_server_message(socket, message, type); },
+			[this, &message, &type, &original_receiver](auto&& socket) { send_server_message(socket, message, type, original_receiver); },
 			player->socket()
 		);
 	}
