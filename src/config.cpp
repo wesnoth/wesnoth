@@ -495,10 +495,10 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 	return *v[index];
 }
 
-size_t config::find_total_first_of(config_key_type key, size_t start)
+std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
 {
 	assert(start <= ordered_children.size());
-	const size_t npos = static_cast<size_t>(-1);
+	const std::size_t npos = static_cast<std::size_t>(-1);
 
 	auto pos = std::find_if(ordered_begin() + start, ordered_end(), [&](const config::any_child& can){ return can.key == key; });
 
@@ -506,7 +506,7 @@ size_t config::find_total_first_of(config_key_type key, size_t start)
 		return npos;
 	}
 
-	return static_cast<size_t>(pos - ordered_begin());
+	return static_cast<std::size_t>(pos - ordered_begin());
 }
 
 config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)

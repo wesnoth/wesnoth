@@ -198,7 +198,7 @@ bool execute_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".";
 
-	std::function<void(size_t)> callback = nullptr;
+	std::function<void(std::size_t)> callback = nullptr;
 	{
 		std::scoped_lock lock(timers_mutex);
 

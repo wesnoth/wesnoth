@@ -748,7 +748,7 @@ static int impl_namedtuple_compare(lua_State* L) {
 	if(lnames != rnames) goto NOT_EQUAL;
 	lua_pop(L, 2);
 	// They are equal if all of the corresponding members in each tuple are equal.
-	for(size_t i = 1; i <= lnames.size(); i++) {
+	for(std::size_t i = 1; i <= lnames.size(); i++) {
 		lua_rawgeti(L, 1, i);
 		lua_rawgeti(L, 2, i);
 		if(!lua_compare(L, 3, 4, LUA_OPEQ)) goto NOT_EQUAL;
@@ -779,7 +779,7 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 	if(!names.empty()) {
 		str << names[0];
 	}
-	for(size_t i = 1; i < names.size(); i++) {
+	for(std::size_t i = 1; i < names.size(); i++) {
 		str << ", " << names[i];
 	}
 	str << ')';
@@ -1169,7 +1169,7 @@ bool luaW_tableget(lua_State *L, int index, const char* key)
 
 std::string_view luaW_tostring(lua_State *L, int index)
 {
-	size_t len = 0;
+	std::size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		throw luaL_error (L, "not a string");
@@ -1179,7 +1179,7 @@ std::string_view luaW_tostring(lua_State *L, int index)
 
 std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def)
 {
-	size_t len = 0;
+	std::size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		return def;

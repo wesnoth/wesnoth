@@ -55,8 +55,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
-	const std::size_t map_width  = static_cast<size_t>(std::max(0, map.w())) * scale * 3 / 4;
-	const std::size_t map_height = static_cast<size_t>(std::max(0, map.h())) * scale;
+	const std::size_t map_width  = static_cast<std::size_t>(std::max(0, map.w())) * scale * 3 / 4;
+	const std::size_t map_height = static_cast<std::size_t>(std::max(0, map.h())) * scale;
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {

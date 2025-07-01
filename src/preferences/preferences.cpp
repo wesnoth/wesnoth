@@ -2015,7 +2015,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 
 	return result;
 #else
-	size_t outWritten = 0;
+	std::size_t outWritten = 0;
 	preferences::secure_buffer result(plaintext.size(), '\0');
 
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
@@ -2103,7 +2103,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 
 	return result;
 #else
-	size_t outWritten = 0;
+	std::size_t outWritten = 0;
 	preferences::secure_buffer result(encrypted.size(), '\0');
 
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,

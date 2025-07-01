@@ -684,7 +684,7 @@ type_gender_variation choose_unit()
 
 	const auto& create_dlg = units_dialog::build_create_dialog(types_list);
 	// Restore saved choices
-	for (size_t i = 0; i < types_list.size(); i++) {
+	for (std::size_t i = 0; i < types_list.size(); i++) {
 		if (types_list[i]->id() == last_created_unit) {
 			create_dlg->set_selected_index(i);
 			create_dlg->set_gender(last_gender);

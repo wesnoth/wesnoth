@@ -31,9 +31,9 @@ static lg::log_domain log_network("network");
 
 namespace network
 {
-	static size_t write_callback(char* contents, size_t size, size_t nmemb, void* buffer)
+	static std::size_t write_callback(char* contents, std::size_t size, std::size_t nmemb, void* buffer)
 	{
-		size_t amount = size * nmemb;
+		std::size_t amount = size * nmemb;
 		static_cast<std::string*>(buffer)->append(contents, amount);
 		DBG_NW << "Downloaded " << amount << " bytes.";
 		return amount;

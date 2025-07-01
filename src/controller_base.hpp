@@ -215,5 +215,5 @@ private:
 
 	bool last_mouse_is_touch_;
 	/** Context menu timer */
-	size_t long_touch_timer_;
+	std::size_t long_touch_timer_;
 };

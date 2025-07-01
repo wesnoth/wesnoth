@@ -172,8 +172,8 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		size_t plain_text_len = utf8::size(plain_text());
-		size_t cursor_pos = selection_start_ + utf8::size(unicode);
+		std::size_t plain_text_len = utf8::size(plain_text());
+		std::size_t cursor_pos = selection_start_ + utf8::size(unicode);
 		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
 			cursor_pos = plain_text_len;
 		}
@@ -183,14 +183,14 @@ void text_box_base::insert_char(const std::string& unicode)
 	}
 }
 
-size_t text_box_base::get_composition_length() const
+std::size_t text_box_base::get_composition_length() const
 {
 	if(!is_composing()) {
 		return 0;
 	}
 
-	size_t text_length = utf8::size(text_.text());
-	size_t text_cached_length = utf8::size(text_cached_);
+	std::size_t text_length = utf8::size(text_.text());
+	std::size_t text_cached_length = utf8::size(text_cached_);
 	if(text_length < text_cached_length) {
 		return 0;
 	}

@@ -657,7 +657,7 @@ private:
 	 * @return The player who owns the side at index @a index.
 	 * nullopt if wither index is invalid or the side is not owned.
 	 */
-	utils::optional<player_iterator> get_side_player(size_t index) const
+	utils::optional<player_iterator> get_side_player(std::size_t index) const
 	{
 		return index >= sides_.size() ? utils::optional<player_iterator>() : sides_[index];
 	}

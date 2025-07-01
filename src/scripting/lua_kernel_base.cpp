@@ -101,7 +101,7 @@ static int impl_version_get(lua_State* L)
 	if(lua_isinteger(L, 2)) {
 		int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
-		if(n >= 0 && size_t(n) < components.size()) {
+		if(n >= 0 && std::size_t(n) < components.size()) {
 			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);
@@ -691,19 +691,19 @@ static int intf_object_dir(lua_State* L)
 	}
 	int fcn_idx = lua_gettop(L);
 	auto keys = luaW_get_attributes(L, 1);
-	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
+	std::size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](std::size_t max, const std::string& next) {
 		return std::max(max, next.size());
 	});
 	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
-	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
-	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
-	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
-	size_t n_rows = ceil(keys.size() / double(n_cols));
-	for(size_t i = 0; i < n_rows; i++) {
+	static const std::size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
+	std::size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
+	std::size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
+	std::size_t n_rows = ceil(keys.size() / double(n_cols));
+	for(std::size_t i = 0; i < n_rows; i++) {
 		std::ostringstream line;
 		line.fill(' ');
 		line.setf(std::ios::left);
-		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
+		for(std::size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
 			int save_top = lua_gettop(L);
 			ON_SCOPE_EXIT(&) {
 				lua_settop(L, save_top);
@@ -1142,7 +1142,7 @@ config luaW_serialize_function(lua_State* L, int func)
 			break;
 		case LUA_TTABLE:
 			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()) {
-				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+				for(std::size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
 					lua_rawgeti(L, idx, i);
 					config& cfg = upvalues.add_child(name);
 					luaW_toscalar(L, -1, cfg["value"]);
@@ -1162,7 +1162,7 @@ config luaW_serialize_function(lua_State* L, int func)
 				upvalues.add_child(name, cfg)["upvalue_type"] = names.empty() ? "config" : "named tuple";
 				break;
 			} else {
-				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+				for(std::size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
 					lua_rawgeti(L, idx, i);
 					config& cfg = upvalues.add_child(name);
 					luaW_toscalar(L, -1, cfg["value"]);
@@ -1415,7 +1415,7 @@ static void push_color_palette(lua_State* L, const std::vector<color_t>& palette
 	lua_createtable(L, palette.size(), 1);
 	lua_rotate(L, -2, 1); // swap new table with previous element on stack
 	lua_setfield(L, -2, "name");
-	for(size_t i = 0; i < palette.size(); i++) {
+	for(std::size_t i = 0; i < palette.size(); i++) {
 		luaW_push_namedtuple(L, {"r", "g", "b", "a"});
 		lua_pushinteger(L, palette[i].r);
 		lua_rawseti(L, -2, 1);

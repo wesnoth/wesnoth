@@ -202,7 +202,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<std::size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
