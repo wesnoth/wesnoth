@@ -166,8 +166,7 @@ void floating_label::update(const clock::time_point& time)
 		return;
 	}
 
-	point new_pos = get_pos(time);
-	rect draw_loc {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
+	rect draw_loc{get_pos(time), tex_.draw_size()};
 
 	uint8_t new_alpha = get_alpha(time);
 
@@ -230,13 +229,19 @@ std::chrono::milliseconds floating_label::get_time_alive(const clock::time_point
 	return std::chrono::duration_cast<std::chrono::milliseconds>(current_time - time_start_);
 }
 
-point floating_label::get_pos(const clock::time_point& time)
+point floating_label::get_pos(const clock::time_point& time) const
 {
-	auto time_alive = get_time_alive(time);
-	return {
-		static_cast<int>(time_alive.count() * xmove_ + xpos(tex_.w())),
-		static_cast<int>(time_alive.count() * ymove_ + ypos_)
-	};
+	double new_x = xpos(tex_.w());
+	double new_y = ypos_;
+
+	if(xmove_ != 0.0 || ymove_ != 0.0) {
+		auto time_alive = get_time_alive(time);
+		new_x += time_alive.count() * xmove_;
+		new_y += time_alive.count() * ymove_;
+	}
+
+	// TODO: return a floating point point
+	return {static_cast<int>(new_x), static_cast<int>(new_y)};
 }
 
 uint8_t floating_label::get_alpha(const clock::time_point& time) const
