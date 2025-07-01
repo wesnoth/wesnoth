@@ -277,9 +277,9 @@ void move_floating_label(int handle, double xmove, double ymove)
 
 void scroll_floating_labels(double xmove, double ymove)
 {
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
-			i->second.move(xmove, ymove);
+	for(auto& [id, label] : labels) {
+		if(label.scroll() == ANCHOR_LABEL_MAP) {
+			label.move(xmove, ymove);
 		}
 	}
 }
@@ -313,12 +313,12 @@ void show_floating_label(int handle, bool value)
 	}
 }
 
-SDL_Rect get_floating_label_rect(int handle)
+rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
 		if (i->second.create_texture()) {
-			SDL_Point size = i->second.get_draw_size();
+			point size = i->second.get_draw_size();
 			return {0, 0, size.x, size.y};
 		}
 	}
