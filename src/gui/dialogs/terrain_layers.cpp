@@ -69,7 +69,7 @@ void terrain_layers::pre_show()
 		std::ostringstream image_steam;
 
 		const int tz = game_config::tile_size;
-		SDL_Rect r {0,0,tz,tz};
+		rect r {0,0,tz,tz};
 
 		const point img_size = image::get_size(img.get_filename());
 

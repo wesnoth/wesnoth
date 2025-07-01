@@ -37,7 +37,7 @@ public:
 	drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open);
 
 	/** Menu was invoked manually. Position and markup settings must be provided here. */
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
+	drop_down_menu(rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
 
 	int selected_item() const
 	{
@@ -94,7 +94,7 @@ private:
 	 * Note: we don't adjust the location of this dialog to when resizing the window.
 	 * Instead this dialog automatically closes itself on resizing.
 	 */
-	SDL_Rect button_pos_;
+	rect button_pos_;
 
 	int selected_item_;
 	point selected_item_pos_;

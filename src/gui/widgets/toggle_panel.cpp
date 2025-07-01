@@ -137,12 +137,12 @@ unsigned toggle_panel::get_state() const
 	return state_ + COUNT * state_num_;
 }
 
-SDL_Rect toggle_panel::get_client_rect() const
+rect toggle_panel::get_client_rect() const
 {
 	const auto conf = cast_config_to<toggle_panel_definition>();
 	assert(conf);
 
-	SDL_Rect result = get_rectangle();
+	rect result = get_rectangle();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;

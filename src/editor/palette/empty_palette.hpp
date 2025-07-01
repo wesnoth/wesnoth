@@ -41,7 +41,7 @@ public:
 	virtual bool can_scroll_down() override { return false;}
 
 	//drawing
-	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
+	virtual void adjust_size(const rect& /*target*/) override {}
 
 	void hide(bool /*hidden*/) override
 	{

@@ -428,7 +428,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	int res = -1;
 	point selection_pos;
 	{
-		SDL_Rect pos {xloc, yloc, 1, 1};
+		rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, keep_menu_open());
 
 		// Transitional API. Remove once the game UI is using GUI2.

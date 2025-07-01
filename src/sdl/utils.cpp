@@ -843,7 +843,7 @@ void light_surface(surface& nsurf, const surface &lightmap)
 	}
 }
 
-void blur_surface(surface& surf, SDL_Rect rect, int depth)
+void blur_surface(surface& surf, rect rect, int depth)
 {
 	if(surf == nullptr) {
 		return;
@@ -1097,7 +1097,7 @@ void blur_alpha_surface(surface& res, int depth)
 	}
 }
 
-surface cut_surface(const surface &surf, const SDL_Rect& r)
+surface cut_surface(const surface &surf, const rect& r)
 {
 	if(surf == nullptr)
 		return nullptr;
@@ -1115,8 +1115,8 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy
-	SDL_Rect src_rect = r;
-	SDL_Rect dst_rect { 0, 0, r.w, r.h };
+	rect src_rect = r;
+	rect dst_rect { 0, 0, r.w, r.h };
 
 	if (src_rect.x < 0) {
 		if (src_rect.x + src_rect.w <= 0)
@@ -1352,7 +1352,7 @@ void flop_surface(surface& nsurf)
 	}
 }
 
-surface get_surface_portion(const surface &src, SDL_Rect &area)
+surface get_surface_portion(const surface &src, rect &area)
 {
 	if (src == nullptr) {
 		return nullptr;

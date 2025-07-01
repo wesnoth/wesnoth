@@ -59,7 +59,7 @@ namespace gui{
 		if (box_ == nullptr)
 			return;
 
-		const SDL_Rect& area = gui.map_outside_area();
+		const rect& area = gui.map_outside_area();
 
 		const int border_size = 10;
 
@@ -79,7 +79,7 @@ namespace gui{
 		if (label_ == 0)
 			return;
 
-		const SDL_Rect& label_area = font::get_floating_label_rect(label_);
+		const rect& label_area = font::get_floating_label_rect(label_);
 		const int textbox_width = area.w - label_area.w - border_size*3;
 
 		if(textbox_width <= 0) {
@@ -88,7 +88,7 @@ namespace gui{
 		}
 
 		if(box_ != nullptr) {
-			const SDL_Rect rect {
+			const rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width

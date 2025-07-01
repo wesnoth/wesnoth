@@ -62,7 +62,7 @@ public:
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const SDL_Rect& target) override;
+	void adjust_size(const rect& target) override;
 
 	virtual bool scroll_up() override;
 	virtual bool can_scroll_up() override;

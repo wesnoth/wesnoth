@@ -605,7 +605,7 @@ void grid::set_origin(const point& origin)
 	}
 }
 
-void grid::set_visible_rectangle(const SDL_Rect& rectangle)
+void grid::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	widget::set_visible_rectangle(rectangle);

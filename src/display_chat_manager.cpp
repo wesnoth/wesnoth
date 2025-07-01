@@ -148,7 +148,7 @@ void display_chat_manager::add_chat_message(const std::chrono::system_clock::tim
 	std::stringstream message_complete;
 	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
 
-	const SDL_Rect rect = my_disp_.map_outside_area();
+	const rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
 	spk_flabel.set_font_size(font::SIZE_15);

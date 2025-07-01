@@ -136,7 +136,7 @@ private:
 class location_palette_button : public gui::button
 {
 public:
-	location_palette_button(const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
+	location_palette_button(const rect& location, const std::string& text, const std::function<void (void)>& callback)
 		: gui::button(text)
 		, callback_(callback)
 	{
@@ -238,20 +238,20 @@ bool location_palette::scroll_down()
 	return scrolled;
 }
 
-void location_palette::adjust_size(const SDL_Rect& target)
+void location_palette::adjust_size(const rect& target)
 {
 	const int button_height = 22;
 	const int button_y = 30;
 	int bottom = target.y + target.h;
 	if (!button_goto_) {
-		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
+		button_goto_.reset(new location_palette_button(rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 			map_location pos = disp_.get_map().special_location(selected_item_);
 			if (pos.valid()) {
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
 		}));
-		button_add_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
+		button_add_.reset(new location_palette_button(rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
 				static const boost::regex valid_id("[a-zA-Z0-9_]+");
@@ -268,12 +268,12 @@ void location_palette::adjust_size(const SDL_Rect& target)
 				}
 			}
 		}));
-		button_delete_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
+		button_delete_.reset(new location_palette_button(rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
 	}
 	else {
-		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
-		button_add_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
-		button_delete_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
+		button_goto_->set_location(rect{ target.x , bottom -= button_y, target.w - 10, button_height });
+		button_add_->set_location(rect{ target.x , bottom -= button_y, target.w - 10, button_height });
+		button_delete_->set_location(rect{ target.x , bottom -= button_y, target.w - 10, button_height });
 	}
 
 	const int space_for_items = bottom - target.y;
@@ -294,7 +294,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
 	// because adjust_size() also handles moving left and right when the window's width is changed.
-	SDL_Rect dstrect;
+	rect dstrect;
 	dstrect.w = target.w - 10;
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {

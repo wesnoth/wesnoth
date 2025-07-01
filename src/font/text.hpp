@@ -103,7 +103,7 @@ private:
 	 * drawing-space. This function has only been made private to preserve
 	 * the drawing-space encapsulation.
 	 */
-	texture render_texture(const SDL_Rect& viewport);
+	texture render_texture(const rect& viewport);
 
 	/**
 	 * Returns the rendered text.
@@ -117,7 +117,7 @@ private:
 	 * width and height will be at least viewport.w and viewport.h (although
 	 * they may be larger).
 	 */
-	surface render_surface(const SDL_Rect& viewport);
+	surface render_surface(const rect& viewport);
 
 public:
 	/** Returns the size of the text, in drawing coordinates. */
@@ -486,13 +486,13 @@ private:
 	 * @param viewport The area to draw, which can be a subset of the text. This
 	 * rectangle's coordinates use render-space's scale.
 	 */
-	surface create_surface(const SDL_Rect& viewport);
+	surface create_surface(const rect& viewport);
 
 	/**
 	 * This is part of create_surface(viewport). The separation is a legacy
 	 * from workarounds to the size limits of cairo_surface_t.
 	 */
-	void render(PangoLayout& layout, const SDL_Rect& viewport);
+	void render(PangoLayout& layout, const rect& viewport);
 
 	/**
 	 * Buffer to store the image on.

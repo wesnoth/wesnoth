@@ -355,7 +355,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 
 		const int bar_len = std::max(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
-		const SDL_Rect bar_rect_1 {
+		const rect bar_rect_1 {
 			hp_sep + 4,
 			6 + (fs + 2) * i,
 			bar_len,

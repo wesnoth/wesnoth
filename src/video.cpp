@@ -606,7 +606,7 @@ void render_screen()
 	reset_render_target();
 }
 
-surface read_pixels(SDL_Rect* r)
+surface read_pixels(rect* r)
 {
 	if (!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -646,7 +646,7 @@ surface read_pixels(SDL_Rect* r)
 	return s;
 }
 
-surface read_pixels_low_res(SDL_Rect* r)
+surface read_pixels_low_res(rect* r)
 {
 	if(!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -750,7 +750,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	// The maximum size to which this window can be set. For some reason this won't
 	// pop up as a display mode of its own.
-	SDL_Rect bounds;
+	rect bounds;
 	SDL_GetDisplayBounds(display_index, &bounds);
 
 	SDL_DisplayMode mode;

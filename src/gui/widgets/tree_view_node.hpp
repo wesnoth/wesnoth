@@ -308,7 +308,7 @@ private:
 	place(const unsigned indentation_step_size, point origin, unsigned width);
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override;

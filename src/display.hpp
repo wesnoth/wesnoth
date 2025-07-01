@@ -241,7 +241,7 @@ public:
 	rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
-	static bool outside_area(const SDL_Rect& area, const int x,const int y);
+	static bool outside_area(const rect& area, const int x,const int y);
 
 	/**
 	 * Function which returns the width of a hex in pixels,
@@ -264,7 +264,7 @@ public:
 	}
 
 	/** Scale the width and height of a rect by the current zoom factor */
-	static rect scaled_to_zoom(const SDL_Rect& r)
+	static rect scaled_to_zoom(const rect& r)
 	{
 		const double zf = get_zoom_factor();
 		return {r.x, r.y, int(r.w * zf), int(r.h * zf)};
@@ -438,8 +438,8 @@ public:
 	bool propagate_invalidation(const std::set<map_location>& locs);
 
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
-	bool invalidate_locations_in_rect(const SDL_Rect& rect);
-	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
+	bool invalidate_locations_in_rect(const rect& rect);
+	bool invalidate_visible_locations_in_rect(const rect& rect);
 
 	/**
 	 * Function to invalidate animated terrains and units which may have changed.
@@ -733,7 +733,7 @@ protected:
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	std::function<rect(rect)> minimap_renderer_;
-	SDL_Rect minimap_location_;
+	rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;
 	int diagnostic_label_;

@@ -202,7 +202,7 @@ button::~button()
 void button::calculate_size()
 {
 	if (type_ == TYPE_IMAGE){
-		SDL_Rect loc_image = location();
+		rect loc_image = location();
 		loc_image.h = image_.h();
 		loc_image.w = image_.w();
 		set_location(loc_image);
@@ -309,8 +309,8 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect loc = location();
-	SDL_Rect clipArea = loc;
+	rect loc = location();
+	rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
@@ -331,7 +331,7 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
-	SDL_Rect dest = loc;
+	rect dest = loc;
 	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO) {
 		// Scale other button types to match the base image?
 		dest.w = image_.w();

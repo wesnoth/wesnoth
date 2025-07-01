@@ -114,7 +114,7 @@ pango_text::pango_text()
 	pango_cairo_context_set_shape_renderer(context_.get(), render_image_shape, nullptr, nullptr);
 }
 
-texture pango_text::render_texture(const SDL_Rect& viewport)
+texture pango_text::render_texture(const rect& viewport)
 {
 	return with_draw_scale(texture(render_surface(viewport)));
 }
@@ -126,7 +126,7 @@ texture pango_text::render_and_get_texture()
 	return with_draw_scale(texture(create_surface()));
 }
 
-surface pango_text::render_surface(const SDL_Rect& viewport)
+surface pango_text::render_surface(const rect& viewport)
 {
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
@@ -706,7 +706,7 @@ static void from_cairo_format(uint32_t & c)
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
 
-void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport)
+void pango_text::render(PangoLayout& layout, const rect& viewport)
 {
 	auto cairo_surface = cairo::create_surface(&surface_buffer_[0], point{ viewport.w, viewport.h }); // TODO: use rect::size
 	auto cairo_context = cairo::create_context(cairo_surface);
@@ -766,7 +766,7 @@ surface pango_text::create_surface()
 	return create_surface({0, 0, rect_.x + rect_.width, rect_.y + rect_.height});
 }
 
-surface pango_text::create_surface(const SDL_Rect& viewport)
+surface pango_text::create_surface(const rect& viewport)
 {
 	assert(layout_.get());
 

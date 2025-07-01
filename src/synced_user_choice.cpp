@@ -81,7 +81,7 @@ namespace
 		void start_show_label()
 		{
 			assert(label_id_ == -1);
-			SDL_Rect area = display::get_singleton()->map_outside_area();
+			rect area = display::get_singleton()->map_outside_area();
 			font::floating_label flabel(message_);
 			flabel.set_font_size(font::SIZE_LARGE);
 			flabel.set_color(font::NORMAL_COLOR);

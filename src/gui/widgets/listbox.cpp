@@ -381,8 +381,8 @@ void listbox::place(const point& origin, const point& size)
 	} else if(selected_item != -1) {
 		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible";
 
-		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+		const rect& visible = content_visible_area();
+		rect rect = generator_->item(selected_item).get_rectangle();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -465,8 +465,8 @@ point listbox::calculate_best_size() const
 
 void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direction)
 {
-	const SDL_Rect& visible = content_visible_area();
-	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
+	const rect& visible = content_visible_area();
+	rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
 
 	// When scrolling make sure the new items are visible...
 	if(direction == KEY_VERTICAL) {
@@ -655,7 +655,7 @@ void listbox::update_layout()
 
 	content_grid()->place(content_grid()->get_origin(), size);
 
-	const SDL_Rect& visible = content_visible_area_;
+	const rect& visible = content_visible_area_;
 	content_grid()->set_visible_rectangle(visible);
 
 	queue_redraw();

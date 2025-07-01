@@ -196,8 +196,8 @@ bool tree_view::handle_up_down_arrow()
 {
 	if(tree_view_node* next = get_next_node<func>()) {
 		next->select_node();
-		SDL_Rect visible = content_visible_area();
-		SDL_Rect rect = next->get_grid().get_rectangle();
+		rect visible = content_visible_area();
+		rect rect = next->get_grid().get_rectangle();
 		visible.y = rect.y; // - content_grid()->get_y();
 		visible.h = rect.h;
 		show_content_rect(visible);

@@ -27,7 +27,6 @@
 #include "sdl/rect.hpp"
 
 #include <memory>
-#include <SDL2/SDL_rect.h>
 
 class game_config_view;
 
@@ -50,14 +49,14 @@ class theme
 		object(std::size_t sw, std::size_t sh, const config& cfg);
 		virtual ~object() { }
 
-		virtual rect& location(const SDL_Rect& screen) const;
+		virtual rect& location(const rect& screen) const;
 		const rect& get_location() const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
 		// This supports relocating of theme elements ingame.
 		// It is needed for [change] tags in theme WML.
 		void modify_location(const _rect& rect);
-		void modify_location(const std::string& rect_str, SDL_Rect rect_ref);
+		void modify_location(const std::string& rect_str, rect rect_ref);
 
 		// All on-screen objects have 'anchoring' in the x and y dimensions.
 		// 'fixed' means that they have fixed co-ordinates and don't move.
@@ -244,12 +243,12 @@ public:
 		std::vector<config> items_;
 	};
 
-	explicit theme(const config& cfg, const SDL_Rect& screen);
+	explicit theme(const config& cfg, const rect& screen);
 	theme(const theme&) = delete;
 	theme& operator=(const theme&) = delete;
 	theme& operator=(theme&&) noexcept = default;
 
-	bool set_resolution(const SDL_Rect& screen);
+	bool set_resolution(const rect& screen);
 	void modify(const config &cfg);
 
 	const std::vector<panel>& panels() const { return panels_; }
@@ -271,13 +270,13 @@ public:
 	const menu *get_menu_item(const std::string &key) const;
 	const action* get_action_item(const std::string &key) const;
 
-	const rect& main_map_location(const SDL_Rect& screen) const
+	const rect& main_map_location(const rect& screen) const
 		{ return main_map_.location(screen); }
-	const rect& mini_map_location(const SDL_Rect& screen) const
+	const rect& mini_map_location(const rect& screen) const
 		{ return mini_map_.location(screen); }
-	const rect& unit_image_location(const SDL_Rect& screen) const
+	const rect& unit_image_location(const rect& screen) const
 		{ return unit_image_.location(screen); }
-	const rect& palette_location(const SDL_Rect& screen) const
+	const rect& palette_location(const rect& screen) const
 		{ return palette_.location(screen); }
 
 	const border_t& border() const { return border_; }
@@ -311,7 +310,7 @@ private:
 
 	border_t border_;
 
-	SDL_Rect screen_dimensions_;
+	rect screen_dimensions_;
 	std::size_t cur_spec_width_, cur_spec_height_;
 
 	static inline std::map<std::string, config> known_themes{};
