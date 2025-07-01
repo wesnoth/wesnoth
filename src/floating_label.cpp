@@ -20,6 +20,7 @@
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "video.hpp"
 
 #include <map>
@@ -238,21 +239,16 @@ point floating_label::get_pos(const clock::time_point& time)
 	};
 }
 
-uint8_t floating_label::get_alpha(const clock::time_point& time)
+uint8_t floating_label::get_alpha(const clock::time_point& time) const
 {
 	if(lifetime_ >= 0ms && fadeout_ > 0ms) {
 		auto time_alive = get_time_alive(time);
-		if(time_alive >= lifetime_ && tex_ != nullptr) {
-			// fade out moving floating labels
-			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
-			if (alpha_sub >= 255) {
-				return 0;
-			} else {
-				return 255 - alpha_sub;
-			}
+		if(time_alive >= lifetime_) {
+			double progress = chrono::normalize_progress(time_alive - lifetime_, fadeout_);
+			return float_to_color(1.0 - progress);
 		}
 	}
-	return 255;
+	return ALPHA_OPAQUE;
 }
 
 int add_floating_label(const floating_label& flabel)
