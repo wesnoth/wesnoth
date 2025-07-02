@@ -532,17 +532,23 @@ void command_executor::populate_menu_item_info(config& item, int index) const
 	populate_menu_controls(item, index);
 
 	if(hk.command != hotkey::HOTKEY_NULL) {
-		std::string desc = hk.description;
-
-		// TODO: why does this get special handling?
-		if(hk.command == HOTKEY_ENDTURN) {
-			if(const theme::action* b = theme.get_action_item("button-endturn")) {
-				desc = b->title();
-			}
-		}
-
-		item["label"] = desc;
 		item["details"] = hotkey::get_names(item_id);
+
+		switch(hk.command) {
+		case hotkey::HOTKEY_WML:
+			break; // Labels are handled by the menu item manager
+
+		case hotkey::HOTKEY_ENDTURN:
+			if(const theme::action* b = theme.get_action_item("button-endturn")) {
+				item["label"] = b->title();
+				break;
+			}
+			[[fallthrough]];
+
+		default:
+			item["label"] = hk.description;
+			break;
+		}
 	}
 }
 
