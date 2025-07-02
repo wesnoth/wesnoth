@@ -20,8 +20,6 @@
 
 #include "animated.hpp"
 
-#include <SDL3/SDL_timer.h>
-
 // Put these here to ensure that there's only
 // one instance of the current_ticks variable
 namespace {

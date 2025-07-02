@@ -16,7 +16,6 @@
 
 #include "events.hpp"
 #include <chrono>
-#include <SDL3/SDL_timer.h>
 
 class team;
 class countdown_clock : public events::pump_monitor
