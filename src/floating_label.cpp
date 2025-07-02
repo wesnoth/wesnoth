@@ -330,7 +330,7 @@ rect get_floating_label_rect(int handle)
 			return {0, 0, size.x, size.y};
 		}
 	}
-	return sdl::empty_rect;
+	return {};
 }
 
 floating_label_context::floating_label_context()

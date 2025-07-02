@@ -44,7 +44,6 @@ textbox::textbox(int width, const std::string& text, bool editable, std::size_t 
 	     edit_target_(nullptr)
 		,listening_(false)
 {
-	// const int height = font::pango_draw_text(nullptr,sdl::empty_rect,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);

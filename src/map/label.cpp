@@ -502,7 +502,7 @@ rect terrain_label::get_rect() const
 {
 	display* disp = display::get_singleton();
 	if(!disp) {
-		return sdl::empty_rect;
+		return {};
 	}
 
 	rect res = disp->get_location_rect(loc_);

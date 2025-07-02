@@ -157,7 +157,7 @@ display::display(const display_context* dc,
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &context().map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_renderer_(nullptr)
-	, minimap_location_(sdl::empty_rect)
+	, minimap_location_()
 	, redraw_background_(false)
 	, invalidateAll_(true)
 	, diagnostic_label_(0)

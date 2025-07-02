@@ -369,7 +369,7 @@ rect widget::calculate_clipping_rectangle() const
 {
 	switch(get_drawing_action()) {
 	case redraw_action::none:
-		return sdl::empty_rect;
+		return {};
 	case redraw_action::partly:
 		return clipping_rectangle_;
 	case redraw_action::full:

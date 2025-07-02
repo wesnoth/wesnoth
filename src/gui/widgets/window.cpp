@@ -712,7 +712,7 @@ void window::render()
 	draw::clear();
 
 	draw();
-	awaiting_rerender_ = sdl::empty_rect;
+	awaiting_rerender_ = {};
 }
 
 bool window::expose(const rect& region)

@@ -593,7 +593,7 @@ rect draw::get_clip()
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
 	if (!renderer()) {
-		return sdl::empty_rect;
+		return {};
 	}
 
 	if (!SDL_RenderIsClipEnabled(renderer())) {
@@ -683,7 +683,7 @@ rect draw::get_viewport()
 {
 	if (!renderer()) {
 		WRN_D << "no renderer available to get viewport";
-		return sdl::empty_rect;
+		return {};
 	}
 
 	::rect viewport;

@@ -210,7 +210,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::TITLE_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(false, {}, font_size_, font::TITLE_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
