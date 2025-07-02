@@ -119,8 +119,10 @@ void help_browser::pre_show()
 
 	add_topics_for_section(toplevel_, topic_tree.get_root_node());
 
-	tree_view_node& initial_node = topic_tree.find_widget<tree_view_node>(initial_topic_);
-	initial_node.select_node(true);
+	tree_view_node* initial_node = topic_tree.find_widget<tree_view_node>(initial_topic_, false, false);
+	if(initial_node) {
+		initial_node->select_node(true);
+	}
 
 	on_topic_select();
 }
