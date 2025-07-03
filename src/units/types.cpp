@@ -29,7 +29,6 @@
 #include "units/animation.hpp"
 #include "units/unit.hpp"
 
-#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/range/algorithm_ext/erase.hpp>
@@ -899,7 +898,7 @@ void patch_movetype(movetype& mt,
 		// before the formula is evaluated.
 		std::list<config> config_copies;
 
-		gui2::typed_formula<int> formula(formula_str, default_val);
+		auto formula = wfl::formula(formula_str);
 		wfl::map_formula_callable original;
 
 		// These three need to follow movetype's fallback system, where values for
@@ -936,7 +935,7 @@ void patch_movetype(movetype& mt,
 		}
 
 		try {
-			temp_cfg[new_key] = formula(original);
+			temp_cfg[new_key] = formula.evaluate(original).as_int(default_val);
 		} catch(const wfl::formula_error&) {
 			ERR_CF << "Error evaluating movetype formula: " << formula_str;
 			return;
