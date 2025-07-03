@@ -30,10 +30,17 @@
 #include "game_version.hpp"
 #endif
 
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h> // SDL_Texture
 
 #include <cassert>
 #include <vector>
+
+#ifdef __ANDROID__
+extern "C" {
+	SDL_Surface* Android_AP_getFrameBuffer();
+}
+#endif
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
@@ -371,6 +378,10 @@ void init_window(bool hidden)
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
+#ifdef __ANDROID__
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
+#endif
+
 	if(hidden) {
 		LOG_DP << "hiding main window";
 		window_flags |= SDL_WINDOW_HIDDEN;
@@ -397,6 +408,10 @@ void init_window(bool hidden)
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+
+#ifdef __ANDROID__
+	window->set_size(w, h);
+#endif
 
 	update_framebuffer();
 }
@@ -540,8 +555,10 @@ void reset_render_target()
 
 texture get_render_target()
 {
+#ifndef __ANDROID__
 	// This should always be up-to-date, but assert for sanity.
 	assert(current_render_target_ == SDL_GetRenderTarget(get_renderer()));
+#endif
 	return current_render_target_;
 }
 
@@ -589,7 +606,7 @@ void render_screen()
 	reset_render_target();
 }
 
-surface read_pixels(SDL_Rect* r)
+surface read_pixels(rect* r)
 {
 	if (!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -629,7 +646,7 @@ surface read_pixels(SDL_Rect* r)
 	return s;
 }
 
-surface read_pixels_low_res(SDL_Rect* r)
+surface read_pixels_low_res(rect* r)
 {
 	if(!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -733,7 +750,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	// The maximum size to which this window can be set. For some reason this won't
 	// pop up as a display mode of its own.
-	SDL_Rect bounds;
+	rect bounds;
 	SDL_GetDisplayBounds(display_index, &bounds);
 
 	SDL_DisplayMode mode;
@@ -770,7 +787,7 @@ point current_resolution()
 	if (testing_) {
 		return test_resolution_;
 	}
-	return point(window->get_size()); // Convert from plain SDL_Point
+	return window->get_size();
 }
 
 bool is_fullscreen()

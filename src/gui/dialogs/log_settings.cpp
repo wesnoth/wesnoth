@@ -60,13 +60,8 @@ void log_settings::pre_show()
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
-		widget_data data;
-		widget_item item;
 
-		item["label"] = this_domain;
-		data["label"] = item;
-
-		logger_box.add_row(data);
+		logger_box.add_row(widget_data{{ "label", {{ "label", this_domain }}}});
 		group<std::string>& group = groups_[this_domain];
 
 		grid* this_grid = logger_box.get_row_grid(i);

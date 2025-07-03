@@ -18,7 +18,6 @@
 #include "color.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 
 #include <chrono>
@@ -54,12 +53,12 @@ public:
 		xpos_ = xpos;
 		ypos_ = ypos;
 	}
-	// set the amount to move the text each frame
+	// set the amount to move the text each millisecond
 	void set_move(double xmove, double ymove){
 		xmove_ = xmove;
 		ymove_ = ymove;
 	}
-	// set the number of frames to display the text for, or -1 to display until removed
+	// set the number of milliseconds to display the text for, or -1 to display until removed
 	void set_lifetime(const std::chrono::milliseconds& lifetime, const std::chrono::milliseconds& fadeout = std::chrono::milliseconds{100});
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
@@ -69,7 +68,7 @@ public:
 	// set width for word wrapping (use -1 to disable it)
 	void set_width(int w) {width_ = w;}
 	void set_height(int h) { height_ = h; }
-	void set_clip_rect(const SDL_Rect& r) {clip_rect_ = r;}
+	void set_clip_rect(const rect& r) {clip_rect_ = r;}
 	void set_alignment(ALIGN align) {align_ = align;}
 	void set_scroll_mode(LABEL_SCROLL_MODE scroll) {scroll_ = scroll;}
 	void use_markup(bool b) {use_markup_ = b;}
@@ -93,7 +92,7 @@ public:
 	void clear_texture();
 
 	/** Return the size of the label in drawing coordinates */
-	SDL_Point get_draw_size() const
+	point get_draw_size() const
 	{
 		return get_bg_rect({0, 0, tex_.w(), tex_.h()}).size();
 	}
@@ -112,10 +111,10 @@ public:
 
 private:
 
-	std::chrono::milliseconds get_time_alive(const clock::time_point& current_time) const;
+	clock::duration get_time_alive(const clock::time_point& current_time) const;
 	int xpos(std::size_t width) const;
-	point get_pos(const clock::time_point& time);
-	uint8_t get_alpha(const clock::time_point& time);
+	point get_pos(const clock::time_point& time) const;
+	uint8_t get_alpha(const clock::time_point& time) const;
 	rect get_bg_rect(const rect& text_rect) const;
 	texture tex_;
 	rect screen_loc_;
@@ -128,7 +127,7 @@ private:
 	double xpos_, ypos_, xmove_, ymove_;
 	std::chrono::milliseconds lifetime_;
 	int width_, height_;
-	SDL_Rect clip_rect_;
+	rect clip_rect_;
 	bool visible_;
 	font::ALIGN align_;
 	int border_;
@@ -158,7 +157,8 @@ void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout 
 /** hides or shows a floating label */
 void show_floating_label(int handle, bool show);
 
-SDL_Rect get_floating_label_rect(int handle);
+// TODO: refactor out. This only gives size, not position
+rect get_floating_label_rect(int handle);
 void draw_floating_labels();
 void update_floating_labels();
 

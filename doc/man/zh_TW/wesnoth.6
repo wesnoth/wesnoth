@@ -60,10 +60,11 @@ Adds the option to show a clock for testing the drawing timer. Also adds the
 option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-以指定 ID 的核心來覆寫被讀取的核心。
+Overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-以指定的目錄來覆寫資料目錄
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
 .TP 
 \fB\-\-data\-path\fP
 印出資料目錄的路徑並退出。
@@ -102,8 +103,11 @@ http://www.wesnoth.org/wiki/CommandMode）。
 在這個階段使用語言 \fIlang\fP（符號）。例如：\fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-設定日誌域的嚴重等級。\fBall\fP 可以用來匹配任何日誌域。可使用的等級有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP。預設的情況下，\fBwarning\fP 等級會被用於大部分的日誌域，但 \fBdeprecation\fP 預設是
-\fBnone\fP，除非和 \fB\-d\fP 選項一併使用。
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
 .TP 
 \fB\-\-log\-precise\fP
 以更精確的方式顯示日誌中的時間戳記。

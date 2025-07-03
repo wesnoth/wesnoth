@@ -446,6 +446,22 @@ public:
 		unrenamable_ = unrenamable;
 	}
 
+	/**
+	 * Whether this unit can be dismissed.
+	 *
+	 * This flag is used by the Unit Recall dialog.
+	 */
+	bool dismissable() const
+	{
+		return dismissable_;
+	}
+
+	/** A message of why this unit cannot be dismissed. */
+	t_string block_dismiss_message() const
+	{
+		return dismiss_message_;
+	}
+
 	/** A detailed description of this unit. */
 	t_string unit_description() const
 	{
@@ -1295,6 +1311,25 @@ public:
 		return is_healthy_;
 	}
 
+	/** Gets if this unit own ability of @a tag_name type with [affect_adjacent] subtags. */
+	utils::optional<std::size_t> affect_distant(const std::string& tag_name) const
+	{
+		auto iter = affect_distant_.find(tag_name);
+		return iter != affect_distant_.end() ? iter->second : utils::nullopt;
+	}
+
+	/** Gets if this unit own ability with [affect_adjacent] subtags. */
+	utils::optional<std::size_t> has_ability_distant() const
+	{
+		return has_ability_distant_;
+	}
+
+	/** Gets if this unit own ability with [affect_adjacent] subtags in same time what halo_image or overlay_image attributes. */
+	utils::optional<std::size_t> has_ability_distant_image() const
+	{
+		return has_ability_distant_image_;
+	}
+
 	/**
 	 * @}
 	 * @defgroup unit_mvmt Movement and location functions
@@ -1756,21 +1791,25 @@ public:
 	 * @param cfg the const config to one of abilities @a ability checked.
 	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
-	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
-	 * @param dir direction to research a unit adjacent to @a this.
+	 * @param from unit distant to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param from_loc the 'other unit' location.
+	 * @param dist distance between unit distant and @a this.
+	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool(const config& cfg, const std::string& ability, int dir, const map_location& loc, const unit& from) const;
+	bool get_adj_ability_bool(const config& cfg, const std::string& ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
 	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
 	 * @param tag_name name of ability type checked.
 	 * @param loc location of the unit checked.
 	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
-	 * @param dir direction to research a unit adjacent to @a this.
+	 * @param from_loc location of the @a from unit.
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
+	 * @param dist distance between unit distant and @a this.
+	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const const_attack_ptr& weapon=nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1892,9 +1931,9 @@ private:
 		 */
 		operator bool() const;
 
-		recursion_guard(recursion_guard&& other);
+		recursion_guard(recursion_guard&& other) noexcept;
 		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(recursion_guard&&) noexcept;
 		recursion_guard& operator=(const recursion_guard&) = delete;
 		~recursion_guard();
 	private:
@@ -1922,15 +1961,15 @@ private:
 	bool ability_active_impl(const std::string& ability, const config& cfg, const map_location& loc) const;
 
 	/**
-	 * Check if an ability affects adjacent units.
+	 * Check if an ability affects distant units.
 	 * @param ability The type (tag name) of the ability
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @param from The "other unit" for filter matching
-	 * @param dir The direction the unit is facing
+	 * @param dist distance between unit distant and @a this.
+	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
-
+	bool ability_affects_adjacent(const std::string& ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const;
 	/**
 	 * Check if an ability affects the owning unit.
 	 * @param ability The type (tag name) of the ability
@@ -2020,6 +2059,8 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
+	bool dismissable_;
+	t_string dismiss_message_;
 
 	int side_;
 
@@ -2080,6 +2121,16 @@ private:
 
 	bool is_fearless_, is_healthy_;
 
+	// Unit list/recall list favorite unit marking
+	bool is_favorite_;
+
+public:
+	bool favorite() const { return is_favorite_; }
+
+	void set_favorite(bool favorite) { is_favorite_ = favorite; }
+
+private:
+
 	utils::string_map modification_descriptions_;
 
 	// Animations:
@@ -2132,6 +2183,22 @@ private:
 	{
 		invisibility_cache_.clear();
 	}
+
+	/**
+	 * Used for easing checking if unit own a ability of specified type with [affect_adjacent] sub tag.
+	 *
+	 */
+	std::map<std::string, utils::optional<std::size_t>> affect_distant_;
+	/**
+	 * Used for easing checking if unit own a ability with [affect_adjacent] sub tag.
+	 *
+	 */
+	utils::optional<std::size_t> has_ability_distant_;
+	/**
+	 * used if ability own halo_image or overlay_image attributes in same time what [affect_adjacent].
+	 */
+	utils::optional<std::size_t> has_ability_distant_image_;
+	void set_has_ability_distant();
 };
 
 /**

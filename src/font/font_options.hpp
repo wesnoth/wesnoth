@@ -20,28 +20,22 @@
 namespace font
 {
 
-/**
- * Font classes for get_font_families().
- */
-enum family_class
+enum class family_class
 {
-	FONT_SANS_SERIF,
-	FONT_MONOSPACE,
-	FONT_LIGHT,
-	FONT_SCRIPT,
+	sans_serif,
+	monospace,
+	script,
 };
 
-inline family_class str_to_family_class(const std::string& str)
+inline family_class decode_family_class(const std::string& str)
 {
 	if(str == "monospace") {
-		return FONT_MONOSPACE;
-	} else if(str == "light") {
-		return FONT_LIGHT;
+		return family_class::monospace;
 	} else if(str == "script") {
-		return FONT_SCRIPT;
+		return family_class::script;
+	} else {
+		return family_class::sans_serif;
 	}
-
-	return FONT_SANS_SERIF;
 }
 
 } // end namespace font

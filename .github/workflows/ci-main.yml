@@ -30,7 +30,7 @@ jobs:
           ./utils/CI/utf8_bom_dog.sh
       - name: Whitespace and WML indentation check
         if: success() || failure()
-        run: ./utils/CI/fix_whitespace.sh; git status; git diff --exit-code
+        run: ./utils/CI/fix_whitespace.sh && git status && git diff --exit-code
       - name: WML missing images check
         if: success() || failure()
         run: utils/CI/check_wml_images.sh
@@ -78,8 +78,6 @@ jobs:
 
 # 1) wesnothd and campaignd should be buildable without SDL2 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
-# 3) mariadbpp currently has a deprecation warning that causes strict builds to fail
-#    scons doesn't build it for the wesnoth client and the boost tests, but cmake apparently does
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
         run: |
@@ -88,11 +86,11 @@ jobs:
               build() {
                 ldconfig
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-                  extra_flags_config="-pipe" forum_user_handler=true \
+                  extra_flags_config="-pipe" forum_user_handler=true strict=true \
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
                   jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
-              build strict=true wesnoth boost_unit_tests
+              build wesnoth boost_unit_tests
 
               build cdb
               # disable all warnings since we have coverage on them in a standard build, and clang-tidy
@@ -101,26 +99,26 @@ jobs:
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              build strict=false wesnothd campaignd
+              build wesnothd campaignd
               ;;
             cmake)
               build() {
                 ldconfig
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
-                  -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
+                  -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true -DENABLE_STRICT_COMPILATION=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
                   -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
               }
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
               rm -R /usr/local/include/boost
-              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true -DENABLE_STRICT_COMPILATION=false
+              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
               make conftests
               make VERBOSE=1 -j2
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false -DENABLE_STRICT_COMPILATION=false
+              build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
               make VERBOSE=1 -j2
               ;;
           esac
@@ -156,7 +154,7 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: success() || steps.build.outcome == 'success'
+        if: matrix.cc == 'clang' && (success() || steps.build.outcome == 'success')
         run: ./run_boost_tests
 
   steam-runtime:

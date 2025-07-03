@@ -30,10 +30,13 @@
 #include <boost/algorithm/string.hpp>
 
 #include <map>
-#include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>
+
+#ifdef __ANDROID__
+#include <android/log.h>
+#endif
 
 #ifdef _WIN32
 #include <io.h>
@@ -53,6 +56,31 @@ class null_streambuf : public std::streambuf
 public:
 	null_streambuf() {}
 };
+
+#ifdef __ANDROID__
+class android_log_buf : public std::streambuf
+{
+	std::string output;
+	void write() {
+		auto newline { output.find_first_of("\n") };
+		if(newline != std::string::npos) {
+			__android_log_write(ANDROID_LOG_INFO, "wesnoth", output.substr(0, newline).c_str());
+			output = output.substr(newline+1);
+		}
+	}
+protected:
+	virtual std::streamsize xsputn(const char_type* s, std::streamsize n) override {
+		output.append(s, n);
+		write();
+		return n;
+	}
+	virtual int_type overflow(int_type ch) override {
+		output.push_back(ch);
+		write();
+		return 1;
+	}
+};
+#endif
 
 } // end anonymous namespace
 
@@ -74,6 +102,10 @@ static std::ostream *output_stream_ = nullptr;
  */
 static std::ostream& output()
 {
+#ifdef __ANDROID__
+	static std::ostream android_ostream(new android_log_buf);
+	return android_ostream;
+#endif
 	if(output_stream_) {
 		return *output_stream_;
 	}
@@ -133,11 +165,11 @@ void rotate_logs(const std::string& log_dir)
 std::string unique_log_filename()
 {
 	std::ostringstream o;
-	const std::time_t cur = std::time(nullptr);
+	const auto now = std::chrono::system_clock::now();
 	randomness::mt_rng rng;
 
 	o << lg::log_file_prefix
-	  << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-")
+	  << chrono::format_local_timestamp(now, "%Y%m%d-%H%M%S-")
 	  << rng.get_next_random();
 
 	return o.str();
@@ -346,23 +378,21 @@ log_domain::log_domain(char const *name, severity severity)
 
 bool set_log_domain_severity(const std::string& name, severity severity)
 {
-	std::string::size_type s = name.size();
 	if (name == "all") {
 		for(logd &l : *domains) {
 			l.second = severity;
 		}
-	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		for(logd &l : *domains) {
-			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
-				l.second = severity;
-		}
+		return true;
 	} else {
-		domain_map::iterator it = domains->find(name);
-		if (it == domains->end())
-			return false;
-		it->second = severity;
+		bool any_matched = false;
+		for (logd &l : *domains) {
+			if (utils::wildcard_string_match(l.first, name)) {
+				l.second = severity;
+				any_matched = true;
+			}
+		}
+		return any_matched;
 	}
-	return true;
 }
 bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
@@ -468,7 +498,7 @@ void log_in_progress::operator|(const formatter& message)
 		stream_ << "  ";
 	if(timestamp_) {
 		auto now = std::chrono::system_clock::now();
-		stream_ << chrono::format_local_timestamp(now); // Truncates precision to seconds
+		stream_ << chrono::format_local_timestamp(now, "%Y%m%d %H:%M:%S"); // Truncates precision to seconds
 		if(precise_timestamp) {
 			auto as_seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);

@@ -31,7 +31,7 @@ bool chat_command_handler::is_enabled(const map_command_handler<chat_command_han
 
 void chat_command_handler::print(const std::string& title, const std::string& message)
 {
-	chat_handler_.add_chat_message(std::time(nullptr), title, 0, message);
+	chat_handler_.add_chat_message(std::chrono::system_clock::now(), title, 0, message);
 }
 
 void chat_command_handler::do_emote()

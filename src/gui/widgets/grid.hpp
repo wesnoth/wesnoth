@@ -268,7 +268,7 @@ public:
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;

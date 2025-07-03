@@ -23,6 +23,7 @@
 #include "ai/manager.hpp"
 #include "ai/composite/rca.hpp"
 #include "game_board.hpp"
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -1339,12 +1340,11 @@ double get_healing_phase::evaluate()
 		    !u.get_ability_bool("regenerate") && is_allowed_unit(*u_it))
 		{
 			// Look for the village which is the least vulnerable to enemy attack.
-			typedef std::multimap<map_location,map_location>::const_iterator Itor;
-			std::pair<Itor,Itor> it = get_srcdst().equal_range(u_it->get_location());
+			auto it = get_srcdst().equal_range(u_it->get_location());
 			double best_vulnerability = 100000.0;
 			// Make leader units more unlikely to move to vulnerable villages
 			const double leader_penalty = (u.can_recruit()?2.0:1.0);
-			Itor best_loc = it.second;
+			auto best_loc = it.second;
 			while(it.first != it.second) {
 				const map_location& dst = it.first->second;
 				if (resources::gameboard->map().gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
@@ -1444,8 +1444,7 @@ double retreat_phase::evaluate()
 				// is most in our favor.
 				// If we can't find anywhere where we like the power balance,
 				// just try to get to the best defensive hex.
-				typedef move_map::const_iterator Itor;
-				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->get_location());
+				auto itors = get_srcdst().equal_range(i->get_location());
 				map_location best_pos, best_defensive(i->get_location());
 
 				double best_rating = -1000.0;

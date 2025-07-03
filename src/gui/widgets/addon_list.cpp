@@ -220,13 +220,13 @@ void addon_list::set_addons(const addons_list& addons)
 		item["label"] = addon.display_type();
 		data.emplace("type", item);
 
-		grid* row_grid = &list.add_row(data);
+		grid& row_grid = list.add_row(data);
 
 		// Set special retval for the toggle panels
-		row_grid->find_widget<toggle_panel>("list_panel").set_retval(DEFAULT_ACTION_RETVAL);
+		row_grid.find_widget<toggle_panel>("list_panel").set_retval(DEFAULT_ACTION_RETVAL);
 
 		// The control button grid is excluded on lower resolutions.
-		grid* control_grid = row_grid->find_widget<grid>("single_install_buttons", false, false);
+		grid* control_grid = row_grid.find_widget<grid>("single_install_buttons", false, false);
 		if(!control_grid) {
 			continue;
 		}
@@ -301,7 +301,7 @@ void addon_list::set_addons(const addons_list& addons)
 		}
 
 		control_grid->set_visible(install_buttons_visibility_);
-		row_grid->find_widget<label>("installation_status").set_visible(install_status_visibility_);
+		row_grid.find_widget<label>("installation_status").set_visible(install_status_visibility_);
 	}
 
 	select_first_addon();
@@ -384,6 +384,9 @@ void addon_list::finalize_setup()
 	);
 
 	list.set_active_sorter("sort_0", sort_order::type::ascending);
+
+	// Propagate any modified events from the internal listbox to the widget as a whole
+	connect_signal_notify_modified(list, [this](auto&&...) { fire(event::NOTIFY_MODIFIED, *this, nullptr); });
 }
 
 void addon_list::set_addon_order(const addon_sort_func& func)

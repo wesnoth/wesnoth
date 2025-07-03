@@ -105,6 +105,8 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
+	, queue_game_scenario_id_()
+	, queue_game_server_preset_()
 {
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
@@ -112,10 +114,10 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 
 	/*** Local hotkeys. ***/
 	window::register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
+		[](auto&&...) { help::show_help(); return true; });
 
 	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
+		[this](auto&&...) { show_preferences_button_callback(); return true; });
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -653,6 +655,17 @@ void mp_lobby::pre_show()
 	listbox& tab_bar = find_widget<listbox>("games_list_tab_bar");
 	connect_signal_notify_modified(tab_bar, std::bind(&mp_lobby::tab_switch_callback, this));
 
+	// server-side queue join button
+	button* queue_join_button = find_widget<button>("join_queue", false, true);
+	connect_signal_mouse_left_click(*queue_join_button, std::bind(&mp_lobby::join_queue, this));
+
+	// server-side queue leave button
+	button* queue_leave_button = find_widget<button>("leave_queue", false, true);
+	connect_signal_mouse_left_click(*queue_leave_button, std::bind(&mp_lobby::leave_queue, this));
+
+	// server-side queues list
+	update_queue_list();
+
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
@@ -686,6 +699,38 @@ void mp_lobby::open_profile_url()
 	const mp::user_info* info = player_list_.get_selected_info();
 	if(info && info->forum_id != 0) {
 		desktop::open_object(mp::get_profile_link(info->forum_id));
+	}
+}
+
+void mp_lobby::join_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		config join_server_queue;
+
+		config& queue_req = join_server_queue.add_child("join_server_queue");
+		queue_req["queue_id"] = queue.id;
+		mp::send_to_server(join_server_queue);
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
+	}
+}
+
+void mp_lobby::leave_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		config leave_server_queue;
+
+		config& queue_req = leave_server_queue.add_child("leave_server_queue");
+		queue_req["queue_id"] = queue.id;
+		mp::send_to_server(leave_server_queue);
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}
 }
 
@@ -740,6 +785,31 @@ void mp_lobby::network_handler()
 	}
 }
 
+void mp_lobby::update_queue_list()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	queues_listbox->clear();
+
+	std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.display_name < q2.display_name; });
+
+	for(const mp::queue_info& info : queues) {
+		widget_data data;
+		widget_item item;
+
+		item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
+		data.emplace("is_in_queue", item);
+
+		item["label"] = info.display_name;
+		data.emplace("queue_name", item);
+
+		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
+		data.emplace("queue_player_count", item);
+
+		queues_listbox->add_row(data);
+	}
+}
+
 void mp_lobby::process_network_data(const config& data)
 {
 	if(auto error = data.optional_child("error")) {
@@ -756,6 +826,51 @@ void mp_lobby::process_network_data(const config& data)
 			announcements_ = info["message"].str();
 			return;
 		}
+	} else if(auto create = data.optional_child("create_game")) {
+		queue_game_scenario_id_ = create["mp_scenario"].str();
+		queue_game_server_preset_ = create.value().mandatory_child("game");
+		queue_id_ = create["queue_id"].to_int();
+		set_retval(CREATE_PRESET);
+		return;
+	} else if(auto join_game = data.optional_child("join_game")) {
+		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
+		return;
+	} else if(auto queue_update = data.optional_child("queue_update")) {
+		std::vector<mp::queue_info>& queues = mp::get_server_queues();
+		if(queue_update["action"].str() == "add") {
+			mp::queue_info& new_info = queues.emplace_back();
+			new_info.id = queue_update["queue_id"].to_int();
+			new_info.players_required = queue_update["players_required"].to_int();
+			new_info.display_name = queue_update["display_name"].str();
+			new_info.scenario_id = queue_update["scenario_id"].str();
+		} else {
+			for(mp::queue_info& info : queues) {
+				if(info.id == queue_update["queue_id"].to_int()) {
+					if(queue_update["action"].str() == "remove") {
+						utils::erase_if(queues, [&](const mp::queue_info& i) { return i.id == queue_update["queue_id"].to_int(); });
+					} else if(queue_update["action"].str() == "update") {
+						if(queue_update->has_attribute("scenario_id")) {
+							info.scenario_id = queue_update["scenario_id"].str();
+						}
+						if(queue_update->has_attribute("display_name")) {
+							info.display_name = queue_update["display_name"].str();
+						}
+						if(queue_update->has_attribute("players_required")) {
+							info.players_required = queue_update["players_required"].to_int();
+						}
+						if(queue_update->has_attribute("current_players")){
+							info.current_players = utils::split_set(queue_update["current_players"].str());
+						}
+					} else {
+						continue;
+					}
+				}
+			}
+		}
+
+		update_queue_list();
+
+		return;
 	}
 
 	chatbox_->process_network_data(data);
@@ -870,21 +985,14 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
+	join_data["mp_scenario"] = game.scenario_id;
 	mp::send_to_server(response);
-	joined_game_id_ = game.id;
 
-	// We're all good. Close lobby and proceed to game!
-	set_retval(try_join ? JOIN : OBSERVE);
-}
+	if(game.id >= 0) {
+		joined_game_id_ = game.id;
 
-void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
-{
-	try {
-		enter_game(*lobby_info_.games().at(index), mode);
-	} catch(const std::out_of_range&) {
-		// Game index was invalid!
-		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
-		       << "Games vector size is " << lobby_info_.games().size();
+		// We're all good. Close lobby and proceed to game!
+		set_retval(try_join ? JOIN : OBSERVE);
 	}
 }
 
@@ -902,17 +1010,13 @@ void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
-	enter_game_by_index(gamelistbox_->get_selected_row(), mode);
+	auto index = gamelistbox_->get_selected_row();
+	enter_game(*lobby_info_.games().at(index), mode);
 }
 
 void mp_lobby::refresh_lobby()
 {
 	mp::send_to_server(config("refresh_lobby"));
-}
-
-void mp_lobby::show_help_callback()
-{
-	help::show_help();
 }
 
 void mp_lobby::show_preferences_button_callback()

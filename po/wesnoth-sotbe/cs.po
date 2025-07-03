@@ -6,22 +6,23 @@
 # Anežka Bubeníčková <masozravapalma@gmail.cz>, 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2025
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
-"PO-Revision-Date: 2024-12-28 23:52+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"PO-Revision-Date: 2025-04-29 23:53+0200\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -93,17 +94,13 @@ msgstr "Návrh tažení"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:40
-#, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Current Campaign Maintainer"
-msgstr "Údržba tažení"
+msgstr "Současný správce tažení"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46
-#, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Campaign Maintainers (former)"
-msgstr "Údržba tažení"
+msgstr "Správci tažení (bývalí)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:55
@@ -1620,11 +1617,6 @@ msgstr "Jsou šamani v bezpečí?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:238
-#, fuzzy
-#| msgid ""
-#| "When we realized that there was no way we could hold the humans off, we "
-#| "sent them east to a place near the Mourned Hills along with most of our "
-#| "women and children. The rest of us remained here to buy them some time."
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
@@ -1633,8 +1625,10 @@ msgid ""
 "been three days since their evacuation."
 msgstr ""
 "Když jsme si uvědomili, že není způsob jak lidi zadržet, poslali jsme je "
-"s našimi ženami a dětmi východně, na místo poblíž Truchlivých vrchů. My jsme "
-"tu zůstali a pokoušíme se jim získat nějaký čas."
+"s našimi ženami a dětmi východně, na místo poblíž Truchlivých vrchů. Většina "
+"našich pěšáků a lučištníků šla s nimi, aby zajistila jejich bezpečnost. My "
+"jsme tu zůstali a pokoušíme se jim získat nějaký čas. Od jejich vysídlení "
+"uplynuly už tři dny."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:243
@@ -1706,6 +1700,8 @@ msgid ""
 "consuming but much safer compared to the direct route through the Desert of "
 "Death."
 msgstr ""
+"Nejspíš zvolili cestu podhůřím. Je časově náročná, ale mnohem bezpečnější ve "
+"srovnání s přímou cestou přes Poušť smrti."
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:399
@@ -2223,7 +2219,7 @@ msgstr "Pokud jde o tohoto slabocha, tak já mu osobně setnu hlavu."
 #. In this string, the speaker is male while the person described as a "weakling" is female.
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:335
 msgid "female^With pleasure. But what should I do with this weakling?"
-msgstr "S potěšením. Co mám udělat s tímhle slabochem?"
+msgstr "S potěšením. Co mám udělat s touhle chudinkou?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:340
@@ -2413,7 +2409,7 @@ msgid ""
 "Kapou’e, rumors tell of you making a long trip to seek assistance from us, "
 "and escorting Pirk, Gork and Vraurk. The Council is grateful for that."
 msgstr ""
-"Kapou’e, šeptá se, že jsi podnikl dlouhou cestu, abys vyhledal naši pomoc "
+"Kapou’e, říká se, že jsi podnikl dlouhou cestu, abys vyhledal naši pomoc "
 "a doprovodil Pirka, Gorka a Vraurka. Rada ti za to děkuje."
 
 #. [message]: speaker=Fabstep
@@ -2501,14 +2497,8 @@ msgstr "Počkej na Inarix, která ve 4. kole dorazí z jihu"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:48
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid "Escort Inarix and at least four saurians to Prestim."
-msgstr ""
-"Abys mohl později rekrutovat ještěráky, přiveď Inarix a nejméně čtyři "
-"ještěráky do bezpečí"
+msgstr "Doprovoď Inarix a nejméně čtyři ještěráky do Prestimu."
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:75
@@ -2517,16 +2507,12 @@ msgstr "Kdo odpálí most, zemře."
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:78
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety."
 msgstr ""
-"Abys mohl později rekrutovat ještěráky, přiveď Inarix a nejméně čtyři "
-"ještěráky do bezpečí"
+"Abys mohl později rekrutovat ještěráky, přiveď Inarix a nejméně čtyři "
+"ještěráky do bezpečí."
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
@@ -4055,7 +4041,7 @@ msgid "What! Fight like an orc, you gutless coward!"
 msgstr "Co?! Bojuj jako skřet, ty bezvýznamný zbabělče."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:292
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
 msgid ""
 "Hey Chief, it’s pretty odd. Shan Taum doesn’t seem to have too many of his "
 "men around. He was given control of half the Great Horde. Do you think they "
@@ -4065,7 +4051,7 @@ msgstr ""
 "mužů. Dostal velení nad polovinou Velké hordy. Myslíte, že ho opustili?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:302
 msgid ""
 "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out like "
 "we did to clobber the other tribes into his rule. In any case, it will be "
@@ -4075,7 +4061,7 @@ msgstr ""
 "další kmeny pod svou nadvládu. V každém případě to pro nás bude výhodné."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:306
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:311
 msgid ""
 "Good, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
@@ -4209,18 +4195,26 @@ msgstr ""
 "Howgarthe? Ty a tvoje vlezlá aliance se vždycky objevíte v nejhorší možnou "
 "dobu."
 
+#. [message]: speaker=Earl Lanbec'h
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:441
+msgid ""
+"Curses! He is here already?! I had the messengers of the Alliance bribed to "
+"ensure no messages reached Dwarven Doors. I suppose it was only a matter of "
+"time..."
+msgstr ""
+
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:440
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
 msgid "Just who do you think you are, slug?"
 msgstr "Kdo si myslíš, že jsi, lidský červe?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
 msgid "I am Howgarth of the Northern Alliance, successor to the late Rahul I."
 msgstr "Jsem Howgart III., vůdce Severní aliance, nástupce Rahula I."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:458
 msgid ""
 "This is a strictly territorial matter, Howgarth. The Northern Alliance has "
 "no right to intervene in this affair."
@@ -4229,7 +4223,7 @@ msgstr ""
 "do této záležitosti zasahovat."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:457
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
 "treaty some seventeen years ago between your people and the orcs, which both "
@@ -4241,7 +4235,7 @@ msgstr ""
 "Jako organizátor a svědek té smlouvy mám povinnost poznat, kdy je to vážné."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:469
 msgid ""
 "Well, good for you. As a matter of fact, this land is clearly defined under "
 "your precious treaty as human territory. So if you are so keen on being all "
@@ -4252,7 +4246,7 @@ msgstr ""
 "a vznešený, pak nám musí tví muži pomoci zatlačit skřetí hrozbu zpět."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:474
 msgid ""
 "Cease your lies, Lanbec’h. We all know that you were the one who started "
 "this war. But enough. It is time for all this to end. I call for both sides "
@@ -4263,7 +4257,7 @@ msgstr ""
 "k vyjednávání a budeme o této záležitosti rokovat."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:473
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
 msgid ""
 "Ha ha, very funny, old fool. You think we are stupid enough to fall for "
 "that? I’ve not forgotten what you people did to my father."
@@ -4272,12 +4266,12 @@ msgstr ""
 "to skočili? Nezapomněl jsem, co vaši lidé provedli mému otci."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:485
 msgid "What in the world are you talking about?"
 msgstr "O čem to mluvíš?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:484
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
 msgid ""
 "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago, you people "
 "assassinated my father after inviting him to join the Northern Alliance."
@@ -4286,7 +4280,7 @@ msgstr ""
 "zabili mého otce poté, co jste ho pozvali, aby se přidal k Severní alianci."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:496
 msgid ""
 "What? We received word that he declined our invitation and that was the end "
 "of the matter. I know nothing of his assassination. As a matter of fact, I "
@@ -4297,17 +4291,17 @@ msgstr ""
 "posel přinesl Rahulovi Karunovu odpověď."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:495
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:501
 msgid "Messenger, what messenger?"
 msgstr "Posel? Jaký posel?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:501
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:507
 msgid "If I remember correctly, it was some orc named Shan Taum."
 msgstr "Jestli si pamatuji správně, byl to skřet jménem Šan Taum."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:506
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:512
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "Zábavné. To jméno zní kupodivu povědomě..."
 

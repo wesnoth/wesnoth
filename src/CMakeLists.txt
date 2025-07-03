@@ -218,14 +218,7 @@ if(ENABLE_GAME)
 		${game-external-libs}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+		${Boost_LIBRARIES}
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
@@ -264,15 +257,7 @@ if(ENABLE_TESTS)
 		${game-external-libs}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
-		Boost::unit_test_framework
+		${Boost_LIBRARIES}
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
@@ -313,14 +298,7 @@ if(ENABLE_SERVER)
 		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+		${Boost_LIBRARIES}
 	)
 	if(MSVC)
 		target_link_options(wesnothd PRIVATE /WX)
@@ -354,14 +332,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+		${Boost_LIBRARIES}
 	)
 	if(MSVC)
 		target_link_options(campaignd PRIVATE /WX)

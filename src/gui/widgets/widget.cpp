@@ -360,16 +360,16 @@ void widget::set_linked_group(const std::string& linked_group)
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect widget::calculate_blitting_rectangle() const
+rect widget::calculate_blitting_rectangle() const
 {
 	return get_rectangle();
 }
 
-SDL_Rect widget::calculate_clipping_rectangle() const
+rect widget::calculate_clipping_rectangle() const
 {
 	switch(get_drawing_action()) {
 	case redraw_action::none:
-		return sdl::empty_rect;
+		return {};
 	case redraw_action::partly:
 		return clipping_rectangle_;
 	case redraw_action::full:
@@ -442,13 +442,13 @@ bool widget::draw_foreground()
 	return impl_draw_foreground();
 }
 
-SDL_Rect widget::get_dirty_rectangle() const
+rect widget::get_dirty_rectangle() const
 {
 	return redraw_action_ == redraw_action::full ? get_rectangle()
 												  : clipping_rectangle_;
 }
 
-void widget::set_visible_rectangle(const SDL_Rect& rectangle)
+void widget::set_visible_rectangle(const rect& rectangle)
 {
 	clipping_rectangle_ = get_rectangle().intersect(rectangle);
 

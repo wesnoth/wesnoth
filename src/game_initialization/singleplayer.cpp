@@ -133,7 +133,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 bool configure_campaign(saved_game& state, ng::create_engine& create_eng)
 {
-	create_eng.get_state().mp_settings().use_map_settings = false;
+	create_eng.get_state().mp_settings().use_map_settings = true;
 	if(!gui2::dialogs::sp_options_configure::execute(create_eng)) {
 		return false;
 	}

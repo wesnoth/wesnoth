@@ -16,14 +16,16 @@
 #include "units/animation_component.hpp"
 
 #include "config.hpp"
-#include "display.hpp"
-#include "map/map.hpp"
+#include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
 #include <set>
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 using namespace std::chrono_literals;
 
@@ -194,6 +196,18 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 	refreshing_ = false;
 	anim_.reset();
+}
+
+void unit_animation_component::reset_affect_adjacent(const unit_map& units)
+{
+	if(u_.has_ability_distant_image()) {
+		for(const unit& unit : units) {
+			if(unit.incapacitated() || &unit == &u_) {
+				continue;
+			}
+			unit.anim_comp().set_standing();
+		}
+	}
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {

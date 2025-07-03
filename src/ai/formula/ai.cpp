@@ -125,9 +125,8 @@ void formula_ai::handle_exception(const formula_error& e, const std::string& fai
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "wfl", get_side(), msg,
-				events::chat_handler::MESSAGE_PUBLIC, false);
-
+	game_display::get_singleton()->get_chat_manager().add_chat_message(
+		std::chrono::system_clock::now(), "wfl", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
 formula_ptr formula_ai::create_optional_formula(const std::string& formula_string) const {
@@ -610,10 +609,7 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 		return true;
 	}
 	move_map::const_iterator i;
-	std::pair<move_map::const_iterator,
-			  move_map::const_iterator> unit_moves;
-
-	unit_moves = get_srcdst().equal_range(unit_A);
+	auto unit_moves = get_srcdst().equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
 		if (tiles_adjacent((*i).second,unit_B)) {
 			return true;

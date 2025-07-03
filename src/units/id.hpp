@@ -15,8 +15,6 @@
 
 #pragma once
 
-#include <ctime>
-
 namespace n_unit {
 
 	struct unit_id

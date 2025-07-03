@@ -83,6 +83,14 @@ cmake-build-release
 # KDevelop caches (KDevelop 4.3.1, KDE Development Platform 4.8.4).
 *.kate-swp
 
+# Gradle
+packaging/android/build
+packaging/android/classes
+packaging/android/compiled
+packaging/android/gen
+packaging/android/.gradle
+packaging/android/app/build
+
 # autotools
 config.h
 config.h.in
@@ -226,3 +234,6 @@ widgets_tested.log
 
 # clangd cache
 .cache/clangd
+
+# fontfig cache directory
+LOCAL_APPDATA_FONTCONFIG_CACHE

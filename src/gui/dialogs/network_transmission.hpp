@@ -18,7 +18,6 @@
 #include "events.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
-#include "utils/optional_reference.hpp"
 
 namespace gui2::dialogs
 {
@@ -54,11 +53,11 @@ private:
 		virtual void process();
 
 		pump_monitor(connection_data*& connection)
-			: connection_(connection), window_()
+			: connection_(connection), window_(nullptr)
 		{
 		}
 
-		utils::optional_reference<window> window_;
+		window* window_;
 	} pump_monitor_;
 
 public:

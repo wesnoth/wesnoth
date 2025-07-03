@@ -21,7 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-
 #include "help/help.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -38,6 +37,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
@@ -341,7 +341,7 @@ void addon_manager::pre_show()
 	list.set_delete_function(std::bind(&addon_manager::delete_addon,
 		this, std::placeholders::_1));
 
-	list.set_modified_signal_handler([this]() { on_addon_select(); });
+	connect_signal_notify_modified(list, [this](auto&&...) { on_addon_select(); });
 
 	fetch_addons_list();
 	load_addon_list();
@@ -861,11 +861,10 @@ void addon_manager::execute_action_on_selected_addon()
 void addon_manager::install_addon(const addon_info& addon)
 {
 	addon_info versioned_addon = addon;
-	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		set_parent(stk->get_layer_grid(1));
-	}
 	if(addon.id == find_widget<addon_list>("addons").get_selected_addon()->id) {
-		versioned_addon.current_version = find_widget<menu_button>("version_filter").get_value_string();
+		if (menu_button* list = find_widget<menu_button>("version_filter", false, false)) {
+			versioned_addon.current_version = list->get_value_string();
+		}
 	}
 
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
@@ -1097,8 +1096,7 @@ static std::string format_addon_time(const std::chrono::system_clock::time_point
 		// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 		: _("%B %d %Y, %H:%M");
 
-	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	return translation::strftime(format, std::localtime(&as_time_t));
+	return chrono::format_local_timestamp(time, format);
 }
 
 void addon_manager::on_addon_select()
@@ -1195,13 +1193,12 @@ void addon_manager::on_addon_select()
 
 void addon_manager::on_selected_version_change()
 {
-	widget* parent_of_addons_list = parent();
+	widget* parent = this;
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		set_parent(stk->get_layer_grid(1));
-		parent_of_addons_list = stk->get_layer_grid(0);
+		parent = stk->get_layer_grid(0);
 	}
 
-	const addon_info* info = parent_of_addons_list->find_widget<addon_list>("addons").get_selected_addon();
+	const addon_info* info = parent->find_widget<addon_list>("addons").get_selected_addon();
 
 	if(info == nullptr) {
 		return;
@@ -1209,13 +1206,13 @@ void addon_manager::on_selected_version_change()
 
 	if(!tracking_info_[info->id].can_publish && is_installed_addon_status(tracking_info_[info->id].state)) {
 		bool updatable = tracking_info_[info->id].installed_version
-						 != find_widget<menu_button>("version_filter").get_value_string();
-		stacked_widget& action_stack = find_widget<stacked_widget>("action_stack");
+						 != parent->find_widget<menu_button>("version_filter").get_value_string();
+		stacked_widget& action_stack = parent->find_widget<stacked_widget>("action_stack");
 		action_stack.select_layer(0);
 
-		stacked_widget& install_update_stack = find_widget<stacked_widget>("install_update_stack");
+		stacked_widget& install_update_stack = parent->find_widget<stacked_widget>("install_update_stack");
 		install_update_stack.select_layer(1);
-		find_widget<button>("update").set_active(updatable);
+		parent->find_widget<button>("update").set_active(updatable);
 	}
 }
 

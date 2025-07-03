@@ -105,6 +105,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
 	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
+#ifdef __ANDROID__
+	game_config::scoped_preproc_define android("ANDROID", true);
+#endif
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 

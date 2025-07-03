@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -239,7 +240,9 @@ namespace
 {
 void display_float(const map_location& location, const std::string& text)
 {
-	game_display::get_singleton()->float_label(location, text, color_t(255, 0, 0));
+	if(auto gd = game_display::get_singleton()) {
+		gd->float_label(location, text, color_t(255, 0, 0));
+	}
 }
 } // end anon namespace
 
@@ -266,36 +269,25 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 {
-	variant var1 = args()[0]->evaluate(variables, fdb);
+	std::string speaker = "WFL";
+	int i_value = 0;
 
-	std::string str1, str2;
-
-	if(args().size() == 1) {
-		str1 = var1.to_debug_string(true);
-
-		LOG_SF << str1;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var1;
-	} else {
-		str1 = var1.string_cast();
-
-		const variant var2 = args()[1]->evaluate(variables, fdb);
-		str2 = var2.to_debug_string(true);
-
-		LOG_SF << str1 << ": " << str2;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var2;
+	if(args().size() == 2) {
+		speaker = args()[0]->evaluate(variables, fdb).string_cast();
+		i_value = 1;
 	}
+
+	variant value = args()[i_value]->evaluate(variables, fdb);
+	const std::string str = value.to_debug_string(true);
+
+	LOG_SF << speaker << ": " << str;
+
+	if(game_config::debug && game_display::get_singleton()) {
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), speaker, 0, str, events::chat_handler::MESSAGE_PUBLIC, false);
+	}
+
+	return value;
 }
 
 DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
@@ -309,26 +301,30 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 	}
 
 	const variant value = args()[i_value]->evaluate(variables, fdb);
+	const int run_count = 1000;
 	std::chrono::steady_clock::duration run_time;
 
-	for(int i = 1; i < 1000; i++) {
+	for(int i = 0; i < run_count; i++) {
 		const auto start = std::chrono::steady_clock::now();
 		args()[i_value]->evaluate(variables, fdb);
 		run_time += std::chrono::steady_clock::now() - start;
 	}
 
+	// Average execution time over all runs
+	auto average_ms = std::chrono::duration_cast<std::chrono::milliseconds>(run_time / run_count);
+
 	std::ostringstream str;
 #ifdef __cpp_lib_format
-	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time) << " on average";
+	str << "Evaluated in " << average_ms << " on average";
 #else
-	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time).count() << " ms on average";
+	str << "Evaluated in " << average_ms.count() << " ms on average";
 #endif
 
 	LOG_SF << speaker << ": " << str.str();
 
 	if(game_config::debug && game_display::get_singleton()) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 
 	return value;
@@ -500,6 +496,13 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
 	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
+}
+
+DEFINE_WFL_FUNCTION(byte_index, 2, 2)
+{
+	return variant(utf8::index(
+		args()[0]->evaluate(variables, fdb).as_string(),
+		args()[1]->evaluate(variables, fdb).as_int()));
 }
 
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
@@ -1550,7 +1553,7 @@ function_symbol_table::function_symbol_table(const std::shared_ptr<function_symb
 
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
-	custom_formulas_.emplace(name, std::move(fcn));
+	custom_formulas_.insert_or_assign(name, std::move(fcn));
 }
 
 expression_ptr function_symbol_table::create_function(
@@ -1647,6 +1650,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(starts_with);
 		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(byte_index);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
 		DECLARE_WFL_FUNCTION(cos);

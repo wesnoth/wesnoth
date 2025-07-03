@@ -66,13 +66,6 @@ public:
 	}
 
 	/**
-	 * Returns the translated description
-	 * @todo unused
-	 * @return internationalised description of the command.
-	 **/
-	const std::string get_description() const;
-
-	/**
 	 * This controls whether the item should appear in the hotkey preferences.
 	 * @return true if the item should be hidden
 	 **/
@@ -157,12 +150,12 @@ public:
 	 * Return "name" of hotkey. Example :"ctrl+alt+g"
 	 * @return The string representation of the keybindings
 	 */
-	const std::string get_name() const;
+	std::string get_name() const;
 
 	/**
 	 * Used to evaluate whether:
 	 * 1. The hotkey is valid in the current scope.
-	 * 2. The Keyboard modifiers and SDL_Event mathes this hotkey.
+	 * 2. The Keyboard modifiers and SDL_Event matches this hotkey.
 	 *
 	 * @param event The SDL_Event that has triggered and is being evaluated.
 	 */
@@ -351,12 +344,6 @@ bool has_hotkey_item(const std::string& command);
  * @param item The item to add.
  */
 void add_hotkey(hotkey_ptr item);
-
-/**
- * Remove a hotkey from the list of hotkeys
- * @todo unusued?
- */
-void del_hotkey(const hotkey_ptr& item);
 
 /**
  * Create a new hotkey item for a command from an SDL_Event.

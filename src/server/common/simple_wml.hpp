@@ -42,10 +42,14 @@ public:
 	{}
 	string_span(const char* begin, const char* end) : str_(begin), size_(end - begin)
 	{}
+	string_span(std::string str) : str_(str.c_str()), size_(str.size())
+	{}
 
 	typedef const char* const_iterator;
 	typedef const char* iterator;
 	typedef const char value_type;
+
+	operator std::string_view() const { return std::string_view(str_, size_); }
 
 	bool operator==(const char* o) const {
 		const char* i1 = str_;
@@ -143,6 +147,8 @@ public:
 	//returns. The key buffer must remain valid for the lifetime of the node.
 	node& set_attr_dup(const char* key, const char* value);
 	node& set_attr_dup(const char* key, const string_span& value);
+	/** As above but convert @a value to a WML value  */
+	node& set_attr_esc(const char* key, string_span value);
 
 	node& set_attr_int(const char* key, int value);
 
@@ -219,7 +225,6 @@ private:
 
 	void insert_ordered_child(int child_map_index, int child_list_index);
 	void remove_ordered_child(int child_map_index, int child_list_index);
-	void insert_ordered_child_list(int child_map_index);
 	void remove_ordered_child_list(int child_map_index);
 
 	void check_ordered_children() const;
@@ -242,6 +247,7 @@ public:
 	explicit document(string_span compressed_buf);
 	~document();
 	const char* dup_string(const char* str);
+	const char* esc_string(string_span str);
 	node& root() { if(!root_) { generate_root(); } return *root_; }
 	const node& root() const { if(!root_) { const_cast<document*>(this)->generate_root(); } return *root_; }
 

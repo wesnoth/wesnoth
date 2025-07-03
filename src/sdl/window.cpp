@@ -18,7 +18,12 @@
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 
+#include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_render.h>
+
+#ifdef __ANDROID__
+#include <SDL2/SDL_mouse.h>
+#endif
 
 namespace sdl
 {
@@ -48,6 +53,10 @@ window::window(const std::string& title,
 	// Note that SDL_HINT_RENDER_DRIVER implies SDL_HINT_RENDER_BATCHING is
 	// disabled, according to https://discourse.libsdl.org/t/a-couple-of-questions-regarding-batching-in-sdl-2-0-10/26453/2.
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
+#endif
+
+#ifdef __ANDROID__
+	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
 #endif
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
@@ -97,20 +106,29 @@ window::~window()
 
 void window::set_size(const int w, const int h)
 {
+#ifdef __ANDROID__
+	SDL_RenderSetLogicalSize(SDL_GetRenderer(window_), w, h);
+	SDL_WarpMouseInWindow(window_, w / 2, h / 2);
+#else
 	SDL_SetWindowSize(window_, w, h);
+#endif
 }
 
-SDL_Point window::get_size()
+point window::get_size()
 {
-	SDL_Point res;
+	point res;
+#ifdef __ANDROID__
+	SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
+#else
 	SDL_GetWindowSize(*this, &res.x, &res.y);
+#endif
 
 	return res;
 }
 
-SDL_Point window::get_output_size()
+point window::get_output_size()
 {
-	SDL_Point res;
+	point res;
 	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
 
 	return res;
@@ -118,27 +136,37 @@ SDL_Point window::get_output_size()
 
 void window::center()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+#endif
 }
 
 void window::maximize()
 {
+#ifndef __ANDROID__
 	SDL_MaximizeWindow(window_);
+#endif
 }
 
 void window::to_window()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowFullscreen(window_, 0);
+#endif
 }
 
 void window::restore()
 {
+#ifndef __ANDROID__
 	SDL_RestoreWindow(window_);
+#endif
 }
 
 void window::full_screen()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+#endif
 }
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -155,6 +183,7 @@ void window::render()
 	SDL_RenderPresent(*this);
 }
 
+#ifndef __ANDROID__
 void window::set_title(const std::string& title)
 {
 	SDL_SetWindowTitle(window_, title.c_str());
@@ -165,14 +194,19 @@ void window::set_icon(const surface& icon)
 	SDL_SetWindowIcon(window_, icon);
 }
 
-uint32_t window::get_flags()
-{
-	return SDL_GetWindowFlags(window_);
-}
-
 void window::set_minimum_size(int min_w, int min_h)
 {
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+}
+#else
+void window::set_title(const std::string&) {};
+void window::set_icon(const surface&) {};
+void window::set_minimum_size(int, int) {};
+#endif
+
+uint32_t window::get_flags()
+{
+	return SDL_GetWindowFlags(window_);
 }
 
 int window::get_display_index()

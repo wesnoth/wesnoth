@@ -1,4 +1,4 @@
-## Version 1.19.9+dev
+## Version 1.19.13+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
@@ -8,10 +8,107 @@
 ### Packaging
 ### Terrain
 ### Translations
+   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Finnish
 ### Units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+
+## Version 1.19.13
+### Translations
+   * Updated translations: Bengali, British English, Czech, Italian
+### Units
+   * Added Dune Rover attack, defend, and standing animations
+### User interface
+   * Fixed sidebar unit tooltip no longer taking damage resistances into account
+   * Fixed the progress bar for sub achievements not updating correctly
+### WML Engine
+   * Added [era] auto_sort key to control automatic alphabetical sorting.
+   * add 'name_affected' and 'description_affected' that are displayed in unit sidebar for abilities used like specials.
+   * modify [affect_adjacent] tag to allow abilities to affect all units in a given radius who is to 1 by default
+   * modify [filter_adjacent] tag to allow to filter all units in a given radius who is to 1 by default
+   * Abilities with id=poison that aren't in a [poison] tag will no longer inflict poison
+### Miscellaneous and Bug Fixes
+   * Fixed opening the map editor or starting a campaign crashing on some systems
+   * Hovering over the grey bat in SotA no longer causes a crash
+   * Li'sar is no longer a disco queen
+
+## Version 1.19.12
+### Add-ons client
+   * Fixed downloading an add-on causing a crash.
+### Campaigns
+   * Son of the Black Eye
+     * S15: improved AI behavior.
+   * The Deceiver’s Gambit
+     * Easy and Normal difficulties are now more challenging
+     * Delfador now references Elende's prophecy much more in Part II
+     * Numerous minor dialogue changes, scenario tweaks, and bug fixes
+     * Various dialogue tweaks in Part II to better-resolve some of Part I's lingering plot threads.
+     * S11: use simple_attack MAI for AI-vs-AI fighting, to reduce lag
+     * S11: reduced number of Orcish Adepts/Shamans, and added a voiceline when one of them is attacked
+     * S13: replaced Orcish Adepts/Shamans with regular cannon-fodder units.
+### Multiplayer
+   * Added support for server-side queueing.
+### Translations
+   * Updated translations: British English, Czech, Esperanto, Finnish, Italian
+### Units
+   * Added and updated a variety of boats.
+### User interface
+   * It is now possible to mark certain units as favorite in Unit List and Recall dialogs. Units can be sorted by whether they are favorite or not.
+   * Fixed Wesnoth freezing when using a textbox.
+   * Add support for marking units as favorites in the recall list.
+
+## Version 1.19.11
+### Campaigns
+   * The Deceiver's Gambit
+     * Spells: clarified "Counterspell" description
+     * S05: the allied AIs now attack at Dawn instead of Second Watch
+     * S08: changed Trappers' dialogue to be less overtly hostile
+     * S14: the final boss now heals less on lower difficulties
+### Editor
+   * Clear old time-of-day schedule before saving new one, resolves scenario file bloat (issue #10115)
+### Multiplayer
+   * Resolve crash on attempting to download MP replay from server, when using cURL 7.85.0 or later (issue #10139).
+### Translations
+   * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Simplified), Czech, Italian, Japanese
+### Units
+   * Necromancer:
+     * Changes to emphasize the Necro's thematic plague ability, while lowering his/her durability closer to that of other mages:
+     * hitpoints 76 -> 64, impact resist 10% -> 0%, cold resist 0% -> 10%
+     * plague staff (melee impact) 6-3 -> 7-3
+     * chill wave (ranged cold) 19-2 -> 20-2
+     * shadow wave (ranged arcane) 16-2 -> 13-2, added "plague" weapon special
+### User interface
+   * UI support the multi-hex ranged attacks has been added
+   * Support for 800xN window sizes has been removed
+### WML Engine
+   * Added WFL `byte_index` function to convert between character indices and byte indices, accounting for multi-byte characters
+   * IPFs that affect color values no longer skip fully transparent pixels.
+### Miscellaneous and Bug Fixes
+   * Fixed the Pick Unit Advancement modification throwing lua errors on every recruitment
+   * Fixed unit appearance not being immediately updated when affected by an ability
+
+## Version 1.19.10
+### Campaigns
+   * Fixed campaigns not using the correct map settings
+### Editor
+   * `Convert To Scenario` menu item added to `File` menu that allows converting an already opened map to a scenario.
+### Multiplayer
+   * Added the foundation for multiplayer queueing
+### Lua API
+   * Add `mvt_alias` and `def_alias` to `wesnoth.terrain_types`.
+### Packaging
+   * Boost 1.70 or later is now required
+### Translations
+   * Updated translations: Bengali, British English, Finnish, Italian
+### User interface
+   * It is now possible to search help topics by name/id in the Help Browser.
+### WML Engine
+   * `[unit]dismissable` and `[unit]block_dismiss_message` keys added that allow marking an unit as dismissable, and what message to show if user clicks `Dismiss` button in Unit Recall dialog.
+   * Added [have_side] as a conditional tag. It takes the same arguments as [filter_side]. It returns true if a side matching the SSF exists, false otherwise. Added to the schema.
+### Miscellaneous and Bug Fixes
+   * GUI.pyw: use the Windows API through the `ctypes` library to detect the user's language on Windows (#9972).
+   * Fixed persistent WML being stored in the wrong folder
 
 ## Version 1.19.9
 ### Campaigns

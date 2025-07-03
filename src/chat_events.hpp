@@ -17,7 +17,7 @@
 #pragma once
 
 class config;
-#include <ctime>
+#include <chrono>
 #include <string>
 
 namespace events {
@@ -34,10 +34,10 @@ public:
 
 	virtual void send_to_server(const config& cfg) = 0;
 protected:
-	void do_speak(const std::string& message, bool allies_only=false);
+	bool do_speak(const std::string& message, bool allies_only=false);
 
 	//called from do_speak
-	virtual void add_chat_message(const std::time_t& time,
+	virtual void add_chat_message(const std::chrono::system_clock::time_point& time,
 			const std::string& speaker, int side, const std::string& message,
 			MESSAGE_TYPE type=MESSAGE_PRIVATE) = 0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false) = 0;

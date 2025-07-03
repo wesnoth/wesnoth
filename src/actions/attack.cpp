@@ -360,8 +360,8 @@ battle_context::battle_context(
 	, attacker_combatant_()
 	, defender_combatant_()
 {
-	size_t a_wep_uindex = static_cast<size_t>(a_wep_index);
-	size_t d_wep_uindex = static_cast<size_t>(d_wep_index);
+	std::size_t a_wep_uindex = static_cast<std::size_t>(a_wep_index);
+	std::size_t d_wep_uindex = static_cast<std::size_t>(d_wep_index);
 
 	const_attack_ptr a_wep(a_wep_uindex < attacker->attacks().size() ? attacker->attacks()[a_wep_index].shared_from_this() : nullptr);
 	const_attack_ptr d_wep(d_wep_uindex < defender->attacks().size() ? defender->attacks()[d_wep_index].shared_from_this() : nullptr);
@@ -535,7 +535,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(size_t i = 0; i < attacker->attacks().size(); ++i) {
+	for(std::size_t i = 0; i < attacker->attacks().size(); ++i) {
 		const attack_type& att = attacker->attacks()[i];
 
 		if(att.attack_weight() <= 0) {
@@ -592,7 +592,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(size_t i = 0; i < defender->attacks().size(); ++i) {
+	for(std::size_t i = 0; i < defender->attacks().size(); ++i) {
 		const attack_type& def = defender->attacks()[i];
 		if(def.range() != att.range() || def.defense_weight() <= 0) {
 			//no need to calculate the battle_context here.

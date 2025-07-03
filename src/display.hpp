@@ -52,6 +52,7 @@ namespace wb {
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "gui/core/top_level_drawable.hpp"
+#include "gui/core/tracked_drawable.hpp"
 #include "halo.hpp"
 #include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
@@ -62,8 +63,6 @@ namespace wb {
 #include "theme.hpp"
 #include "widgets/button.hpp"
 
-#include <boost/circular_buffer.hpp>
-
 #include <bitset>
 #include <functional>
 #include <chrono>
@@ -72,14 +71,6 @@ namespace wb {
 #include <map>
 #include <memory>
 #include <vector>
-
-namespace display_direction {
-	/**
-	 * @note needs to be defined after includes
-	 *       as it uses std::string
-	 */
-	const std::string& get_direction(std::size_t n);
-}
 
 struct submerge_data
 {
@@ -93,7 +84,7 @@ class gamemap;
 /**
  * Sort-of-Singleton that many classes, both GUI and non-GUI, use to access the game data.
  */
-class display : public gui2::top_level_drawable
+class display : public gui2::top_level_drawable, public gui2::tracked_drawable
 {
 public:
 	display(const display_context* dc,
@@ -250,7 +241,7 @@ public:
 	rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
-	static bool outside_area(const SDL_Rect& area, const int x,const int y);
+	static bool outside_area(const rect& area, const int x,const int y);
 
 	/**
 	 * Function which returns the width of a hex in pixels,
@@ -273,7 +264,7 @@ public:
 	}
 
 	/** Scale the width and height of a rect by the current zoom factor */
-	static rect scaled_to_zoom(const SDL_Rect& r)
+	static rect scaled_to_zoom(const rect& r)
 	{
 		const double zf = get_zoom_factor();
 		return {r.x, r.y, int(r.w * zf), int(r.h * zf)};
@@ -447,8 +438,8 @@ public:
 	bool propagate_invalidation(const std::set<map_location>& locs);
 
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
-	bool invalidate_locations_in_rect(const SDL_Rect& rect);
-	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
+	bool invalidate_locations_in_rect(const rect& rect);
+	bool invalidate_visible_locations_in_rect(const rect& rect);
 
 	/**
 	 * Function to invalidate animated terrains and units which may have changed.
@@ -464,10 +455,6 @@ public:
 	void reset_standing_animations();
 
 	terrain_builder& get_builder() {return *builder_;}
-
-	void update_fps_label();
-	void clear_fps_label();
-	void update_fps_count();
 
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
@@ -746,7 +733,7 @@ protected:
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	std::function<rect(rect)> minimap_renderer_;
-	SDL_Rect minimap_location_;
+	rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;
 	int diagnostic_label_;
@@ -756,13 +743,6 @@ protected:
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
-
-	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
-	int current_frame_sample_ = 0;
-	unsigned int fps_counter_;
-	std::chrono::steady_clock::time_point fps_start_;
-	unsigned int fps_actual_;
-	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;
@@ -907,8 +887,6 @@ protected:
 	virtual overlay_map& get_overlays() = 0;
 
 private:
-	/** Handle for the label which displays frames per second. */
-	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */
 	int invalidated_hexes_;
 	int drawn_hexes_;
@@ -959,8 +937,6 @@ private:
 	std::map<map_location, std::list<arrow*>> arrows_map_;
 
 	tod_color color_adjust_;
-
-	std::vector<std::tuple<int, int, int>> fps_history_;
 
 protected:
 	static display * singleton_;

@@ -246,7 +246,6 @@ void slider::set_value_labels(const std::vector<t_string>& value_labels)
 	set_value_labels(std::bind(&default_value_label_generator, value_labels, std::placeholders::_1, std::placeholders::_2));
 }
 
-
 void slider::set_value_range(int min_value, int max_value)
 {
 	// Settng both at once instead of having multiple functions set_min(),
@@ -268,9 +267,11 @@ void slider::set_value_range(int min_value, int max_value)
 	slider_set_item_last(diff / step_size_);
 	set_value(old_value);
 
+	// set_value won't fire this since the actual slider value hasn't changed
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	assert(min_value == get_minimum_value());
 	assert(max_value == get_maximum_value());
-
 }
 
 void slider::set_step_size(int step_size)

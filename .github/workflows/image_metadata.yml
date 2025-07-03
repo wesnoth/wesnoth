@@ -26,64 +26,47 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+        env:
+          _debug: ${{ toJSON(github) }}
 
-      - name: check image EXIF metadata
+      - name: check image metadata
         run: |
           git log --graph --pretty=format:'%h %G?%d %s (%cr) <%an> (%cn)' "$BASE_SHA^".."$HEAD_SHA"
-          mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|je?pg)$')
-          # cycle through the changed image files, make sure they have the right fields
-          for file in "${image_files[@]}"; do
-            # check Artist tag, fail if missing
-            artist="$(exiftool -p '$Artist' "$file")"
-            if [ "$artist" ]; then
-              printf 'Artist tag in %s is %s\n' "$file" "$artist"
-            else
-              printf 'no Artist EXIF tag in %s\n' "$file"
-              exit 1
-            fi
-            # check Copyright tag, fail if missing or wrong type
-            copyright="$(exiftool -p '$Copyright' "$file")"
-            case $copyright in
-              'GNU GPL v2+'|'CC BY-SA 4.0'|CC0)
-                printf 'Copyright tag in %s is %s\n' "$file" "$copyright"
-                ;;
-              '')
-                printf 'no Copyright EXIF tag in %s\n' "$file"
-                exit 1
-                ;;
-              *)
-                printf 'Copyright tag %s in file %s is not an accepted license! Must be one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$copyright" "$file"
-                exit 1
-                ;;
-            esac
-          done
 
-      - name: check png XMP metadata
-        run: |
-          mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.png$')
-          # cycle through the changed image files, make sure they have the right fields
-          for file in "${image_files[@]}"; do
-            # check Creator tag, fail if missing
-            artist="$(exiftool -p '$XMP:Creator' "$file")"
-            if [ "$artist" ]; then
-              printf 'Creator tag in %s is %s\n' "$file" "$artist"
-            else
-              printf 'no Creator XMP tag in %s\n' "$file"
-              exit 1
-            fi
-            # check Rights tag, fail if missing or wrong type
-            copyright="$(exiftool -p '$XMP:Rights' "$file")"
-            case $copyright in
-              'GNU GPL v2+'|'CC BY-SA 4.0'|CC0)
-                printf 'Rights tag in %s is %s\n' "$file" "$copyright"
-                ;;
-              '')
-                printf 'no Rights XMP tag in %s\n' "$file"
-                exit 1
-                ;;
-              *)
-                printf 'Rights tag %s in file %s is not an accepted license! Must be one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$copyright" "$file"
-                exit 1
-                ;;
+          mapfile -t png_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" -- '*.png')
+          mapfile -t jpg_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" -- '*.jpg' '*.jpeg')
+          mapfile -t webp_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" -- '*.webp')
+
+          printf '\n\nmetadata of all changed files:\n'
+          ((${#png_files[@]} > 0)) && exiftool -q -f \
+            -p '$Directory/$FileName' \
+            -p $'PNG:\tCreateDate=$PNG:CreateDate,ModifyDate=$PNG:ModifyDate,Copyright=$PNG:Copyright,Artist=$PNG:Artist' \
+            -p $'EXIF:\tCreateDate=$EXIF:CreateDate,ModifyDate=$EXIF:ModifyDate,Copyright=$EXIF:Copyright,Artist=$EXIF:Artist' \
+            -p $'XMP:\tCreateDate=$XMP:CreateDate,ModifyDate=$XMP:ModifyDate,Rights=$XMP:Rights,Creator=$XMP:Creator' \
+            -p 'UserComment=$UserComment' \
+            -p '' -- "${png_files[@]}"
+          ((${#jpg_files[@]} + ${#webp_files[@]} > 0)) && exiftool -q -f \
+            -p '$Directory/$FileName' \
+            -p $'EXIF:\tCreateDate=$EXIF:CreateDate,ModifyDate=$EXIF:ModifyDate,Copyright=$EXIF:Copyright,Artist=$EXIF:Artist' \
+            -p $'XMP:\tCreateDate=$XMP:CreateDate,ModifyDate=$XMP:ModifyDate,Rights=$XMP:Rights,Creator=$XMP:Creator' \
+            -p 'UserComment=$UserComment' \
+            -p '' -- "${jpg_files[@]}" "${webp_files[@]}"
+
+          checktag() {
+            tag=$(exiftool -m -p "\$$1" "$2")
+            [ "$tag" ] || { printf '%s: %s tag is missing or empty!\n' "$2" "$1"; return 1; }
+          }
+          checkrights() {
+            tag=$(exiftool -m -p "\$$1" "$2")
+            case $tag in
+              'GNU GPL v2+'|'CC BY-SA 4.0'|CC0) return 0;;
+              *) printf '%s: %s tag (%s) must contain one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$2" "$1" "$tag"; return 1;;
             esac
+          }
+          return=0
+          # cycle through the changed image files, make sure they have the right fields
+          for file in "${jpg_files[@]}" "${webp_files[@]}" "${png_files[@]}"; do
+            checktag EXIF:Artist "$file" || return=1
+            checkrights EXIF:Copyright "$file" || return=1
           done
+          exit "$return"

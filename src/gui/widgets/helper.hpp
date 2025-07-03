@@ -31,14 +31,6 @@ class map_formula_callable;
 
 namespace gui2
 {
-/**
- * Converts a color string to a color.
- *
- * @param color                   A color string, @see color_t::from_rgba_string.
- *
- * @returns                       The color.
- */
-color_t decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.

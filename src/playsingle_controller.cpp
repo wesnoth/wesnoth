@@ -308,7 +308,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << timer();
+	LOG_NG << "starting main loop... " << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
@@ -696,7 +696,7 @@ void playsingle_controller::play_ai_turn()
  */
 void playsingle_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(std::time(nullptr), "Wesnoth", 0,
+	gui_->get_chat_manager().add_chat_message(std::chrono::system_clock::now(), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

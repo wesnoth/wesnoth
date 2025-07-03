@@ -116,6 +116,8 @@ namespace
 		"experience",
 		"resting",
 		"unrenamable",
+		"dismissable",
+		"block_dismiss_message",
 		"alignment",
 		"canrecruit",
 		"extra_recruit",
@@ -141,7 +143,8 @@ namespace
 		"flag_rgb",
 		"language_name",
 		"image",
-		"image_icon"
+		"image_icon",
+		"favorite"
 	};
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
@@ -270,6 +273,8 @@ unit::unit(const unit& o)
 	, flag_rgb_(o.flag_rgb_)
 	, image_mods_(o.image_mods_)
 	, unrenamable_(o.unrenamable_)
+	, dismissable_(o.dismissable_)
+	, dismiss_message_(o.dismiss_message_)
 	, side_(o.side_)
 	, gender_(o.gender_)
 	, formula_man_(new unit_formula_manager(o.formula_manager()))
@@ -301,6 +306,7 @@ unit::unit(const unit& o)
 	, interrupted_move_(o.interrupted_move_)
 	, is_fearless_(o.is_fearless_)
 	, is_healthy_(o.is_healthy_)
+	, is_favorite_(o.is_favorite_)
 	, modification_descriptions_(o.modification_descriptions_)
 	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
 	, hidden_(o.hidden_)
@@ -319,7 +325,10 @@ unit::unit(const unit& o)
 	, small_profile_(o.small_profile_)
 	, changed_attributes_(o.changed_attributes_)
 	, invisibility_cache_()
+	, has_ability_distant_(o.has_ability_distant_)
+	, has_ability_distant_image_(o.has_ability_distant_image_)
 {
+	affect_distant_ = o.affect_distant_;
 	// Copy the attacks rather than just copying references
 	for(auto& a : attacks_) {
 		a.reset(new attack_type(*a));
@@ -350,6 +359,8 @@ unit::unit(unit_ctor_t)
 	, flag_rgb_()
 	, image_mods_()
 	, unrenamable_(false)
+	, dismissable_(true)
+	, dismiss_message_(_("This unit cannot be dismissed."))
 	, side_(0)
 	, gender_(unit_race::NUM_GENDERS)
 	, formula_man_(new unit_formula_manager())
@@ -381,6 +392,7 @@ unit::unit(unit_ctor_t)
 	, interrupted_move_()
 	, is_fearless_(false)
 	, is_healthy_(false)
+	, is_favorite_(false)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
 	, hidden_(false)
@@ -397,7 +409,34 @@ unit::unit(unit_ctor_t)
 	, upkeep_(upkeep_full{})
 	, changed_attributes_(0)
 	, invisibility_cache_()
+	, has_ability_distant_(utils::nullopt)
+	, has_ability_distant_image_(utils::nullopt)
 {
+	affect_distant_.clear();
+}
+
+void unit::set_has_ability_distant()
+{
+	// check if unit own abilities with [affect_adjacent/distant]
+	// else variables are false or erased.
+	affect_distant_.clear();
+	has_ability_distant_ = utils::nullopt;
+	has_ability_distant_image_ = utils::nullopt;
+	for(const auto [key, ability] : abilities_.all_children_view()) {
+		for (const config &i : ability.child_range("affect_adjacent")) {
+			// if 'radius' = "all_map" then radius is to maximum.
+			unsigned int radius = i["radius"] != "all_map" ? i["radius"].to_int(1) : INT_MAX;
+			if(!affect_distant_[key] || *affect_distant_[key] < radius) {
+				affect_distant_[key] = radius;
+			}
+			if(!has_ability_distant_ || *has_ability_distant_ < radius) {
+				has_ability_distant_ =  radius;
+			}
+			if((!has_ability_distant_image_ || *has_ability_distant_image_ < radius) && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))) {
+				has_ability_distant_image_ = radius;
+			}
+		}
+	}
 }
 
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
@@ -413,16 +452,18 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	role_ = cfg["role"].str();
 	//, facing_(map_location::direction::indeterminate)
 	//, anim_comp_(new unit_animation_component(*this))
-	hidden_ = cfg["hidden"].to_bool(false);
+	hidden_ = cfg["hidden"].to_bool();
 	random_traits_ = true;
 	generate_name_ = true;
-	side_ = cfg["side"].to_int();
 
+	side_ = cfg["side"].to_int();
 	if(side_ <= 0) {
 		side_ = 1;
 	}
-
 	validate_side(side_);
+
+	is_favorite_ = cfg["favorite"].to_bool();
+
 	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
@@ -431,26 +472,20 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		if(!filter_recall.null())
 			filter_recall_ = filter_recall.get_config();
 
-		const vconfig::child_list& events = vcfg->get_children("event");
-		for(const vconfig& e : events) {
+		for(const vconfig& e : vcfg->get_children("event")) {
 			events_.add_child("event", e.get_config());
 		}
-		const vconfig::child_list& abilities_tags = vcfg->get_children("abilities");
-		for(const vconfig& abilities_tag : abilities_tags) {
+		for(const vconfig& abilities_tag : vcfg->get_children("abilities")) {
 			for(const auto& [key, child] : abilities_tag.all_ordered()) {
-				const vconfig::child_list& ability_events = child.get_children("event");
-				for(const vconfig& ability_event : ability_events) {
+				for(const vconfig& ability_event : child.get_children("event")) {
 					events_.add_child("event", ability_event.get_config());
 				}
 			}
 		}
-		const vconfig::child_list& attacks = vcfg->get_children("attack");
-		for(const vconfig& attack : attacks) {
-			const vconfig::child_list& specials_tags = attack.get_children("specials");
-			for(const vconfig& specials_tag : specials_tags) {
+		for(const vconfig& attack : vcfg->get_children("attack")) {
+			for(const vconfig& specials_tag : attack.get_children("specials")) {
 				for(const auto& [key, child] : specials_tag.all_ordered()) {
-					const vconfig::child_list& special_events = child.get_children("event");
-					for(const vconfig& special_event : special_events) {
+					for(const vconfig& special_event : child.get_children("event")) {
 						events_.add_child("event", special_event.get_config());
 					}
 				}
@@ -656,6 +691,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 	}
 
+	set_has_ability_distant();
+
 	if(const config::attribute_value* v = cfg.get("alignment")) {
 		set_attr_changed(UA_ALIGNMENT);
 		auto new_align = unit_alignments::get_enum(v->str());
@@ -709,6 +746,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	experience_ = cfg["experience"].to_int();
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
+
+	// leader units can't be dismissed by default
+	dismissable_ = cfg["dismissable"].to_bool(!canrecruit_);
+	if(canrecruit_) {
+		dismiss_message_ = _ ("This unit is a leader and cannot be dismissed.");
+	}
+	if(!cfg["block_dismiss_message"].blank()) {
+		dismiss_message_ = cfg["block_dismiss_message"].t_str();
+	}
 
 	// We need to check to make sure that the cfg is not blank and if it
 	// isn't pull that value otherwise it goes with the default of -1.
@@ -1106,6 +1152,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	if(bool_profile && profile_ != new_type.big_profile()) {
 		set_attr_changed(UA_PROFILE);
 	}
+	set_has_ability_distant();
 }
 
 std::string unit::big_profile() const
@@ -1581,6 +1628,8 @@ void unit::write(config& cfg, bool write_all) const
 	cfg["variation"] = variation_;
 	cfg["role"] = role_;
 
+	cfg["favorite"] = is_favorite_;
+
 	config status_flags;
 	for(const std::string& state : get_states()) {
 		status_flags[state] = true;
@@ -1637,6 +1686,8 @@ void unit::write(config& cfg, bool write_all) const
 	}
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
+	cfg["dismissable"] = dismissable_;
+	cfg["block_dismiss_message"] = dismiss_message_;
 
 	cfg["attacks_left"] = attacks_left_;
 	if(write_all || get_attr_changed(UA_MAX_AP)) {
@@ -1772,7 +1823,7 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 
 int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
-	if(opp_weapon){
+	if(opp_weapon) {
 		return opp_weapon->effective_damage_type().second;
 	}
 	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
@@ -2414,6 +2465,12 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 	// In case the effect carries EventWML, apply it now
 	if(resources::game_events && resources::lua_kernel) {
 		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel);
+	}
+
+	// verify what unit own ability with [affect_adjacent] before edit has_ability_distant_ and has_ability_distant_image_.
+	// It is place here for what variables can't be true if unit don't own abilities with [affect_adjacent](after apply_to=remove_ability by example)
+	if(apply_to == "new_ability" || apply_to == "remove_ability") {
+		set_has_ability_distant();
 	}
 }
 

@@ -19,6 +19,7 @@
 #include <array>
 #include <assert.h>
 #include <cctype>
+#include <charconv>
 #include <string_view>
 #include <string>
 #include <stdexcept>
@@ -40,7 +41,6 @@
 #include <boost/charconv.hpp>
 namespace charconv_impl = boost::charconv;
 #else
-#include <charconv>
 namespace charconv_impl = std;
 #endif
 
@@ -58,9 +58,9 @@ namespace utils::charconv
 	}
 
 	template<typename T>
-	std::enable_if_t<std::is_integral_v<T>, from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10 )
+	std::enable_if_t<std::is_integral_v<T>, std::from_chars_result> from_chars(const char* first, const char* last, T& value, int base = 10 )
 	{
-		return charconv_impl::from_chars(first, last, value, base);
+		return std::from_chars(first, last, value, base);
 	}
 
 #ifndef USE_FALLBACK_CHARCONV
@@ -76,7 +76,7 @@ namespace utils::charconv
 
 	// the maximum size of a string that to_chars produces for type T, with the default chars_format
 	template<class T>
-	constexpr size_t buffer_size = 50;
+	constexpr std::size_t buffer_size = 50;
 }
 
 namespace utils
@@ -98,7 +98,7 @@ namespace utils
 	struct charconv_buffer
 	{
 		std::array<char, utils::charconv::buffer_size<TNum>> buffer;
-		size_t size;
+		std::size_t size;
 
 		charconv_buffer()
 			: size(0)

@@ -696,10 +696,10 @@ void pump()
 		if(event_contexts.empty() == false) {
 			// As pump() can recurse, pretty much anything can happen here
 			// including destroying handlers or the event context.
-			size_t ec_index = event_contexts.size();
+			std::size_t ec_index = event_contexts.size();
 			context& c = event_contexts.back();
 			handler_list& h = c.handlers;
-			size_t h_size = h.size();
+			std::size_t h_size = h.size();
 			for(auto it = h.begin(); it != h.end(); ++it) {
 				// Pass the event on to the handler.
 				(*it)->handle_event(event);

@@ -56,7 +56,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Unknown debug level: '$level'.", symbols);
 		ERR_NG << msg;
-		add_chat_message(std::time(nullptr), _("error"), 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
 	}
 	if (!lg::set_log_domain_severity(domain, severity)) {
@@ -65,7 +65,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Unknown debug domain: '$domain'.", symbols);
 		ERR_NG << msg;
-		add_chat_message(std::time(nullptr), _("error"), 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
 	}
 	else {
@@ -75,7 +75,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 			VGETTEXT("Switched domain: '$domain' to level: '$level'.", symbols);
 		LOG_NG << msg;
-		add_chat_message(std::time(nullptr), "log", 0, msg);
+		add_chat_message(std::chrono::system_clock::now(), "log", 0, msg);
 	}
 }
 
@@ -92,7 +92,9 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 		data.add_child(cmd)["username"] = args;
 	}
 	else if (cmd == "ping") {
-		data[cmd] = std::to_string(std::time(nullptr));
+		// Not using serialize_timestamp here since we need the steady clock
+		auto now = std::chrono::steady_clock::now();
+		data.add_child("ping")["requested_at"] = now.time_since_epoch();
 	}
 	else if (cmd == "report") {
 		data.add_child("query")["type"] = "report " + args;
@@ -103,25 +105,25 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	send_to_server(data);
 }
 
-void chat_handler::do_speak(const std::string& message, bool allies_only)
+bool chat_handler::do_speak(const std::string& message, bool allies_only)
 {
 	if (message.empty() || message == "/") {
-		return;
+		return false;
 	}
 	bool is_command = (message[0] == '/');
 	bool quoted_command = (is_command && message[1] == ' ');
 
 	if (!is_command) {
 		send_chat_message(message, allies_only);
-		return;
+		return true;
 	}
 	else if (quoted_command) {
 		send_chat_message(std::string(message.begin() + 2, message.end()), allies_only);
-		return;
+		return true;
 	}
 	std::string cmd(message.begin() + 1, message.end());
 	chat_command_handler cch(*this, allies_only);
-	cch.dispatch(cmd);
+	return cch.dispatch(cmd);
 }
 
 void chat_handler::user_relation_changed(const std::string& /*name*/)
@@ -142,14 +144,14 @@ void chat_handler::add_whisper_sent(const std::string& receiver, const std::stri
 {
 	utils::string_map symbols;
 	symbols["receiver"] = receiver;
-	add_chat_message(std::time(nullptr), VGETTEXT("whisper to $receiver", symbols), 0, message);
+	add_chat_message(std::chrono::system_clock::now(), VGETTEXT("whisper to $receiver", symbols), 0, message);
 }
 
 void chat_handler::add_whisper_received(const std::string& sender, const std::string& message)
 {
 	utils::string_map symbols;
 	symbols["sender"] = sender;
-	add_chat_message(std::time(nullptr), VGETTEXT("whisper: $sender", symbols), 0, message);
+	add_chat_message(std::chrono::system_clock::now(), VGETTEXT("whisper: $sender", symbols), 0, message);
 }
 
 void chat_handler::send_chat_room_message(const std::string& room,
@@ -171,7 +173,7 @@ void chat_handler::add_chat_room_message_sent(const std::string &room, const std
 void chat_handler::add_chat_room_message_received(const std::string &room,
 	const std::string &speaker, const std::string &message)
 {
-	add_chat_message(std::time(nullptr), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
+	add_chat_message(std::chrono::system_clock::now(), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
 }
 
 }

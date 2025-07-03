@@ -49,12 +49,6 @@ public:
 	/** Sets the add-ons to show. */
 	void set_addons(const addons_list& addons);
 
-	/** Sets up a callback that will be called when the player selects an add-on. */
-	void set_modified_signal_handler(const std::function<void()>& callback)
-	{
-		connect_signal_notify_modified(get_listbox(), std::bind(callback));
-	}
-
 	/** Returns the selected add-on. */
 	const addon_info* get_selected_addon() const;
 

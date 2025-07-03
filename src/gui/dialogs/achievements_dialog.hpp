@@ -25,12 +25,11 @@ namespace gui2::dialogs
 class achievements_dialog : public modal_dialog
 {
 public:
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(achievements_dialog)
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(achievements_dialog)
 
 	achievements_dialog();
 
 private:
-	achievements achieve_;
 	std::string last_selected_;
 	listbox* achievements_box_;
 	menu_button* content_names_;

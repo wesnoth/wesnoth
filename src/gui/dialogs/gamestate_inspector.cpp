@@ -25,6 +25,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_config.hpp"
 #include "serialization/markup.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
@@ -49,7 +50,7 @@ namespace
 inline std::string config_to_string(const config& cfg)
 {
 	std::ostringstream s;
-	write(s, cfg);
+	io::write(s, cfg);
 	return s.str();
 }
 
@@ -365,15 +366,17 @@ public:
 	template<typename C>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
-		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1));
+		callbacks.emplace(node_path, [=, sub_controller = get_controller<C>()](auto& node) {
+			std::invoke(fcn, *sub_controller, node);
+		});
 	}
 
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
-		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1, param));
+		callbacks.emplace(node_path, [=, sub_controller = get_controller<C>()](auto& node) {
+			std::invoke(fcn, *sub_controller, node, param);
+		});
 	}
 
 	void bind(window& window)
@@ -385,27 +388,19 @@ public:
 		auto right_button = window.find_widget<button>("page_right", false, true);
 
 		connect_signal_notify_modified(*stuff_list,
-			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, std::placeholders::_1));
+			[this](widget& w, auto&&...) { handle_stuff_list_item_clicked(w); });
 
-		connect_signal_mouse_left_click(
-				*copy_button,
-				std::bind(&gamestate_inspector::controller::handle_copy_button_clicked,
-					this));
+		connect_signal_mouse_left_click(*copy_button,
+			[this](auto&&...) { handle_copy_button_clicked(); });
 
-		connect_signal_mouse_left_click(
-				*lua_button,
-				std::bind(&gamestate_inspector::controller::handle_lua_button_clicked,
-					this, std::ref(window)));
+		connect_signal_mouse_left_click(*lua_button,
+			[this, &window](auto&&...) { handle_lua_button_clicked(window); }); // TODO: no window ref
 
-		connect_signal_mouse_left_click(
-				*left_button,
-				std::bind(&gamestate_inspector::controller::handle_page_button_clicked,
-					this, false));
+		connect_signal_mouse_left_click(*left_button,
+			[this](auto&&...) { handle_page_button_clicked(false); });
 
-		connect_signal_mouse_left_click(
-				*right_button,
-				std::bind(&gamestate_inspector::controller::handle_page_button_clicked,
-					this, true));
+		connect_signal_mouse_left_click(*right_button,
+			[this](auto&&...) { handle_page_button_clicked(true); });
 
 		left_button->set_visible(widget::visibility::invisible);
 		right_button->set_visible(widget::visibility::invisible);

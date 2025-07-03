@@ -79,21 +79,21 @@ namespace t_translation {
 
 		ter_map() = default;
 		ter_map(const ter_map&) = default;
-		ter_map(ter_map&&) = default;
+		ter_map(ter_map&&) noexcept = default;
 
-		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<size_t>(w) * h, fill), w(w), h(h) {}
+		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<std::size_t>(w) * h, fill), w(w), h(h) {}
 
 		ter_map & operator= (const ter_map &) = default;
-		ter_map & operator= (ter_map &&) = default;
+		ter_map & operator= (ter_map &&) noexcept = default;
 
-		terrain_code& get(int x, int y) { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
-		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
+		terrain_code& get(int x, int y) { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
+		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
 
 		std::vector<terrain_code> data;
 		int w;
 		int h;
-		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<size_t>(h) * x; }
-		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<size_t>(h) * x; }
+		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<std::size_t>(h) * x; }
+		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<std::size_t>(h) * x; }
 	};
 
 	/**
@@ -176,7 +176,7 @@ namespace t_translation {
 	 *                  the first group is the base terrain,
 	 *                  the second the overlay terrain.
 	 *
-	 * @param filler    if there's no layer this value will be used as the second layer
+	 * @param filler    If no overlay is specified this value will be used.
 	 *
 	 * @return          A single terrain code
 	 */
@@ -198,11 +198,11 @@ namespace t_translation {
 	 * Reads a list of terrains from a string, when reading the
 	 *
 	 * @param str		A string with one or more terrain codes (see read_terrain_code)
-	 * @param filler	If there's no layer, this value will be used as the second layer
+	 * @param filler	If no overlay is specified this value will be used.
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
+	ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.

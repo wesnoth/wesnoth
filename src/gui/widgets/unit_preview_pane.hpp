@@ -94,7 +94,11 @@ private:
 	std::string image_mods_;
 
 	template<typename T> // This is only a template to avoid including units/attack.hpp
-	void print_attack_details(T attacks, tree_view_node& parent_node);
+	void print_attack_details(
+		T attacks,
+		const int attacks_left,
+		const int max_attacks,
+		tree_view_node& parent_node);
 
 	enum state_t {
 		ENABLED

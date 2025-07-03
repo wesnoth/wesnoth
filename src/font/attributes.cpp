@@ -13,11 +13,14 @@
 */
 
 #include "font/attributes.hpp"
+#include "font/cairo.hpp"
 #include "font/font_config.hpp"
 
 #include "color.hpp"
 #include "gui/core/log.hpp"
+#include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "sdl/surface.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
 
@@ -56,17 +59,6 @@ public:
 private:
 	std::unique_ptr<PangoAttribute, void(*)(PangoAttribute*)> value_;
 };
-
-/** Pango sometimes handles colors as 16 bit integers. */
-constexpr std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16(const color_t& color)
-{
-	return {
-		color.r / 255.0 * std::numeric_limits<uint16_t>::max(),
-		color.g / 255.0 * std::numeric_limits<uint16_t>::max(),
-		color.b / 255.0 * std::numeric_limits<uint16_t>::max()
-	};
-}
-
 } // anon namespace
 
 void add_attribute_size(attribute_list& list, unsigned offset_start, unsigned offset_end, int size)
@@ -126,7 +118,7 @@ void add_attribute_underline(attribute_list& list, unsigned offset_start, unsign
 
 void add_attribute_fg_color(attribute_list& list, unsigned offset_start, unsigned offset_end, const color_t& color)
 {
-	auto [col_r, col_g, col_b] = color_to_uint16(color);
+	auto [col_r, col_g, col_b] = color.to_pango_format();
 
 	attribute attr {
 		pango_attr_foreground_new(col_r, col_g, col_b),
@@ -142,7 +134,7 @@ void add_attribute_fg_color(attribute_list& list, unsigned offset_start, unsigne
 
 void add_attribute_bg_color(attribute_list& list, unsigned offset_start, unsigned offset_end, const color_t& color)
 {
-	auto [col_r, col_g, col_b] = color_to_uint16(color);
+	auto [col_r, col_g, col_b] = color.to_pango_format();
 
 	attribute attr {
 		pango_attr_background_new(col_r, col_g, col_b),
@@ -166,7 +158,46 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
 
 	DBG_GUI_D << "attribute: font family";
 	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
-	DBG_GUI_D << "font family: " << family;
+	DBG_GUI_D << "font family: " << family_name;
+
+	attr.add_to(list);
+}
+
+void add_attribute_line_height(attribute_list& list, unsigned offset_start, unsigned offset_end, const double factor)
+{
+	attribute attr {
+		pango_attr_line_height_new(factor),
+		offset_start, offset_end
+	};
+
+	DBG_GUI_D << "attribute: line height (relative)";
+	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+	DBG_GUI_D << "factor: " << factor;
+
+	attr.add_to(list);
+}
+
+void add_attribute_image_shape(attribute_list& list, unsigned offset_start, unsigned offset_end, const std::string& image_path)
+{
+	surface surf = ::image::get_surface(image_path);
+	int scale = video::get_pixel_scale();
+	auto cairo_surface = cairo::create_surface(
+		reinterpret_cast<uint8_t*>(surf->pixels), point(surf->w, surf->h));
+	PangoRectangle bounds {
+		0,
+		-PANGO_SCALE * surf->h * scale,
+		PANGO_SCALE * surf->w * scale,
+		PANGO_SCALE * surf->h * scale
+	};
+
+	attribute attr {
+		pango_attr_shape_new_with_data(&bounds, &bounds, cairo_surface.release(), nullptr, nullptr),
+		offset_start, offset_end
+	};
+
+	DBG_GUI_D << "attribute: shape";
+	DBG_GUI_D << "attribute start: " << offset_start << " end : " << offset_end;
+	DBG_GUI_D << "image path: " << image_path;
 
 	attr.add_to(list);
 }

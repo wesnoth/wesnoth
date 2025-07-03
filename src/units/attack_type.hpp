@@ -78,12 +78,11 @@ public:
 	 * @return True iff the special @a special is active.
 	 * @param special The special being checked.
 	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
+	bool has_special(const std::string& special, bool simple_check = false) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
@@ -118,20 +117,17 @@ public:
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
 	unit_ability_list get_specials_and_abilities(const std::string& special) const;
-	/** used for abilities used like weapon
-	 * @return True if the ability @a special is active.
-	 * @param special The special being checked.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
-	 */
-	bool has_weapon_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
-	 * @param special_id If true, match @a special against the @c id of special tags.
-	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_special_or_ability(const std::string& special) const;
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
+	 * @param filter contain attributes to check(special_id, special_type etc...).
+	 */
+	bool has_filter_special_or_ability(const config& filter, bool simple_check = false) const;
 	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
@@ -145,8 +141,6 @@ public:
 	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
 	 * @param filter if special check with filter, return true.
 	 */
-	bool has_special_with_filter(const config & filter) const;
-	bool has_ability_with_filter(const config & filter) const;
 	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
@@ -192,9 +186,9 @@ public:
 		 */
 		operator bool() const;
 
-		recursion_guard(recursion_guard&& other);
+		recursion_guard(recursion_guard&& other) noexcept;
 		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(recursion_guard&&) noexcept;
 		recursion_guard& operator=(const recursion_guard&) = delete;
 		~recursion_guard();
 	private:
@@ -267,12 +261,14 @@ private:
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.
 	 * @param special The special ability type who is being checked.
-	 * @param dir direction to research a unit adjacent to self_.
-	 * @param from unit adjacent to self_ is checked.
+	 * @param dist distance between unit distant and self_.
+	 * @param dir direction to research a unit distant to self_.
+	 * @param from unit distant to self_ is checked.
+	 * @param from_loc location of @a from
 	 */
-	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
+	bool check_adj_abilities(const config& cfg, const std::string& special, std::size_t dist, int dir, const unit& from, const map_location& from_loc) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-	                    const std::string& filter_self ="filter_self") const;
+	                    bool in_abilities_tag = false) const;
 
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
 	 * @param[in,out] temp_string the string modified and returned
@@ -338,9 +334,11 @@ private:
 	 * @param other_attack the attack used by opponent.
 	 * @param special the config to one special ability checked.
 	 * @param u the unit who is or not affected by an abilities owned by @a from.
-	 * @param from unit adjacent to @a u is checked.
-	 * @param dir direction to research a unit adjacent to @a u.
+	 * @param from unit distant to @a u is checked.
+	 * @param dist distance between unit distant and @a u.
+	 * @param dir direction to research a unit distant to @a u.
 	 * @param loc location of the unit checked.
+	 * @param from_loc location of the unit distant to @a u.
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
@@ -351,11 +349,13 @@ private:
 		const config& special,
 		const unit_const_ptr& u,
 		const unit& from,
+		std::size_t dist,
 		int dir,
 		const map_location& loc,
+		const map_location& from_loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool = false
 	);
 
 	static bool special_active_impl(
@@ -364,7 +364,7 @@ private:
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,
-		const std::string& filter_self ="filter_self"
+		bool in_abilities_tag = false
 	);
 
 	// Used via specials_context() to control which specials are

@@ -47,7 +47,7 @@ public:
 	/** Access the event handler. */
 	event_handler* operator->() {return handler_.get();}
 	event_handler& operator*() {return *handler_;}
-	pending_event_handler(pending_event_handler&&) = default;
+	pending_event_handler(pending_event_handler&&) noexcept = default;
 	~pending_event_handler();
 };
 

@@ -1818,13 +1818,13 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 {
 	config parsed_cfg(cfg.has_child("value") ? cfg.mandatory_child("value") : cfg);
 	// First, transform simplified tags into [recruit] tags.
-	for (config pattern : parsed_cfg.child_range("pattern")) {
+	for (const config& pattern : parsed_cfg.child_range("pattern")) {
 		parsed_cfg["pattern"] = true;
-		parsed_cfg.add_child("recruit", std::move(pattern));
+		parsed_cfg.add_child("recruit", pattern);
 	}
-	for (config total : parsed_cfg.child_range("total")) {
+	for (const config& total : parsed_cfg.child_range("total")) {
 		parsed_cfg["total"] = true;
-		parsed_cfg.add_child("recruit", std::move(total));
+		parsed_cfg.add_child("recruit", total);
 	}
 	parsed_cfg.clear_children("pattern", "total");
 	// Then, if there's no [recruit], add one.
@@ -1832,18 +1832,18 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 		parsed_cfg.add_child("recruit", config {"importance", 0});
 	}
 	// Finally, populate our lists
-	for (config job : parsed_cfg.child_range("recruit")) {
+	for (const config& job : parsed_cfg.child_range("recruit")) {
 		create_job(jobs_, job);
 	}
-	for (config lim : parsed_cfg.child_range("limit")) {
+	for (const config& lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	std::function<void(std::vector<std::shared_ptr<recruit_job>>&, const config&)> factory_jobs =
-		std::bind(&recruitment_aspect::create_job, *this, std::placeholders::_1, std::placeholders::_2);
-	std::function<void(std::vector<std::shared_ptr<recruit_limit>>&, const config&)> factory_limits =
-		std::bind(&recruitment_aspect::create_limit, *this, std::placeholders::_1, std::placeholders::_2);
-	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
-	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
+
+	register_vector_property(property_handlers(), "recruit", jobs_,
+		[this](auto&&... args) { create_job(args...); });
+
+	register_vector_property(property_handlers(), "limit", limits_,
+		[this](auto&&... args) { create_limit(args...); });
 }
 
 void recruitment_aspect::recalculate() const {

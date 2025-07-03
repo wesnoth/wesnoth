@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "queue_type.hpp"
 #include "mt_rng.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
@@ -37,6 +38,8 @@ class game
 public:
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
+			queue_type::type queue_type,
+			int queue_id,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -72,6 +75,11 @@ public:
 	void next_db_id()
 	{
 		db_id_ = db_id_num++;
+	}
+
+	int queue_id()
+	{
+		return queue_id_;
 	}
 
 	/**
@@ -138,6 +146,8 @@ public:
 	{
 		return level_.child("snapshot") || level_.child("scenario");
 	}
+
+	const std::string get_scenario_id() const;
 
 	/**
 	 * The non-const version.
@@ -611,6 +621,22 @@ public:
 		observers_.clear();
 	}
 
+	queue_type::type q_type() const
+	{
+		return queue_type_;
+	}
+
+	bool is_open_queue_game(int q_id) {
+		return queue_type_ == queue_type::type::server_preset &&
+			!started_ &&
+			q_id == queue_id_ &&
+			get_vacant_slots() != 0;
+	}
+
+	int get_vacant_slots() {
+		return description_->child("slot_data")->attr("vacant").to_int();
+	}
+
 private:
 	// forbidden operations
 	game(const game&) = delete;
@@ -631,7 +657,7 @@ private:
 	 * @return The player who owns the side at index @a index.
 	 * nullopt if wither index is invalid or the side is not owned.
 	 */
-	utils::optional<player_iterator> get_side_player(size_t index) const
+	utils::optional<player_iterator> get_side_player(std::size_t index) const
 	{
 		return index >= sides_.size() ? utils::optional<player_iterator>() : sides_[index];
 	}
@@ -956,6 +982,12 @@ private:
 	 * New requests should never have a lower value than this.
 	 */
 	int last_choice_request_id_;
+
+	/** Whether this game was created manually or by joining a queue */
+	queue_type::type queue_type_;
+
+	/** Which server-side queue this game came from */
+	int queue_id_;
 };
 
 } // namespace wesnothd

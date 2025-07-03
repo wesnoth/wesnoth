@@ -142,6 +142,86 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	set_allow_plugin_skip(false);
 }
 
+// NOLINTNEXTLINE(performance-unnecessary-value-param)
+void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
+{
+	// from constructor
+	ng::create_engine create(state);
+	create.init_active_mods();
+	create.get_state().clear();
+	create.get_state().classification().type = campaign_type::type::multiplayer;
+
+	// from pre_show
+	create.set_current_level_type(level_type::type::scenario);
+	const auto& levels = create.get_levels_by_type(level_type::type::scenario);
+	for(std::size_t i = 0; i < levels.size(); i++) {
+		if(levels[i]->id() == presets["scenario"].str()) {
+			create.set_current_level(i);
+		}
+	}
+
+	create.set_current_era_id(presets["era"]);
+
+	// from post_show
+	create.prepare_for_era_and_mods();
+	create.prepare_for_scenario();
+	create.get_parameters();
+	create.prepare_for_new_level();
+
+	mp_game_settings& params = create.get_state().mp_settings();
+	params.mp_scenario = presets["scenario"].str();
+	params.use_map_settings = true;
+	params.num_turns = presets["turn_count"].to_int(-1);
+	params.village_gold = presets["village_gold"].to_int();
+	params.village_support = presets["village_support"].to_int();
+	params.xp_modifier = presets["experience_modifier"].to_int();
+	params.random_start_time = presets["random_start_time"].to_bool();
+	params.fog_game = presets["fog"].to_bool();
+	params.shroud_game = presets["shroud"].to_bool();
+
+	// write to scenario
+	// queue games are supposed to all use the same settings, not be modified by the user
+	// can be removed later if we jump straight from the lobby into a game instead of going to the staging screen to wait for other players to join
+	config& scenario = create.get_state().get_starting_point();
+
+	if(params.random_start_time) {
+		if(!tod_manager::is_start_ToD(scenario["random_start_time"])) {
+			scenario["random_start_time"] = true;
+		}
+	} else {
+		scenario["random_start_time"] = false;
+	}
+
+	scenario["experience_modifier"] = params.xp_modifier;
+	scenario["turns"] = params.num_turns;
+
+	for(config& side : scenario.child_range("side")) {
+		side["controller_lock"] = true;
+		side["team_lock"] = true;
+		side["gold_lock"] = true;
+		side["income_lock"] = true;
+
+		side["fog"] = params.fog_game;
+		side["shroud"] = params.shroud_game;
+		side["village_gold"] = params.village_gold;
+		side["village_support"] = params.village_support;
+	}
+
+	params.mp_countdown = presets["countdown"].to_bool();
+	params.mp_countdown_init_time = std::chrono::seconds{presets["countdown_init_time"].to_int()};
+	params.mp_countdown_turn_bonus = std::chrono::seconds{presets["countdown_turn_bonus"].to_int()};
+	params.mp_countdown_reservoir_time = std::chrono::seconds{presets["countdown_reservoir_time"].to_int()};
+	params.mp_countdown_action_bonus = std::chrono::seconds{presets["countdown_action_bonus"].to_int()};
+
+	params.allow_observers = true;
+	params.private_replay = false;
+	create.get_state().classification().oos_debug = false;
+	params.shuffle_sides = presets["shuffle_sides"].to_bool();
+
+	params.mode = random_faction_mode::type::no_mirror;
+	params.name = settings::game_name_default();
+}
+
 void mp_create_game::pre_show()
 {
 	find_widget<text_box>("game_name").set_value(local_mode_ ? "" : settings::game_name_default());
@@ -219,13 +299,7 @@ void mp_create_game::pre_show()
 
 	const auto& activemods = prefs::get().modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		widget_data data;
-		widget_item item;
-
-		item["label"] = mod->name;
-		data.emplace("mod_name", item);
-
-		grid* row_grid = &mod_list_->add_row(data);
+		grid* row_grid = &mod_list_->add_row(widget_data{{ "mod_name", {{ "label", mod->name }}}});
 
 		row_grid->find_widget<toggle_panel>("panel").set_tooltip(mod->description);
 
@@ -287,14 +361,14 @@ void mp_create_game::pre_show()
 	//
 	// Set up the setting status labels
 	//
-	bind_status_label<slider>(this, turns_->id());
-	bind_status_label<slider>(this, gold_->id());
-	bind_status_label<slider>(this, support_->id());
-	bind_status_label<slider>(this, experience_->id());
-	bind_status_label<slider>(this, init_turn_limit_->id());
-	bind_status_label<slider>(this, turn_bonus_->id());
-	bind_status_label<slider>(this, reservoir_->id());
-	bind_status_label<slider>(this, action_bonus_->id());
+	bind_default_status_label(static_cast<slider&>(*turns_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*gold_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*support_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*experience_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*init_turn_limit_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*turn_bonus_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*reservoir_->get_widget()));
+	bind_default_status_label(static_cast<slider&>(*action_bonus_->get_widget()));
 
 	//
 	// Timer reset button

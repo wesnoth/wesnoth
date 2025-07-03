@@ -142,7 +142,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 
 	// Temporarily insert unit into unit_map
 	// unit map takes ownership of temp_unit
-	const size_t old_id = temp_unit_->underlying_id();
+	const std::size_t old_id = temp_unit_->underlying_id();
 	unit_map.insert(temp_unit_);
 
 	//in the past there was a bug where the map changed the unit ids here (because a unit with that id already existed) which caused crashes later.

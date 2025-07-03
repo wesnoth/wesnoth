@@ -93,9 +93,16 @@ void story_viewer::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("prev"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
-	find_widget<scroll_label>("part_text")
-		.connect_signal<event::LEFT_BUTTON_CLICK>(
-			std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD), queue_position::front_pre_child);
+	connect_signal<event::BACK_BUTTON_CLICK>([this](auto&&...) {
+		nav_button_callback(DIR_BACKWARDS);
+	}, event::dispatcher::front_pre_child);
+	connect_signal<event::FORWARD_BUTTON_CLICK>([this](auto&&...) {
+		nav_button_callback(DIR_FORWARD);
+	}, event::dispatcher::front_pre_child);
+
+	find_widget<scroll_label>("part_text").connect_signal<event::LEFT_BUTTON_CLICK>([this](auto&&...) {
+		nav_button_callback(DIR_FORWARD);
+	}, event::dispatcher::front_pre_child);
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
@@ -233,7 +240,7 @@ void story_viewer::display_part()
 
 	cfg.add_child("image", get_title_area_decor_config());
 
-	window_canvas.set_cfg(cfg);
+	window_canvas.set_shapes(cfg);
 
 	// Needed to make the background redraw correctly.
 	window_canvas.update_size_variables();
@@ -370,7 +377,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["name"] = floating_image.file();
 		config cfg{"image", std::move(image)};
 
-		window_canvas.append_cfg(cfg);
+		window_canvas.append_shapes(cfg);
 
 		// Needed to make the background redraw correctly.
 		window_canvas.update_size_variables();

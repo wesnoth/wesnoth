@@ -50,7 +50,7 @@ namespace events
 class menu_handler : private chat_handler
 {
 public:
-	menu_handler(game_display* gui, play_controller& pc);
+	menu_handler(play_controller& pc);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();
@@ -115,7 +115,7 @@ public:
 
 	/** @return Whether or not the recruit was successful */
 	bool do_recruit(const std::string& name, int side_num, map_location& target_hex);
-	void do_speak();
+	bool do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str);
 	void do_ai_formula(const std::string& str, int side_num, mouse_handler& mousehandler);
@@ -126,7 +126,7 @@ public:
 	game_board& board() const;
 
 protected:
-	void add_chat_message(const std::time_t& time,
+	void add_chat_message(const std::chrono::system_clock::time_point& time,
 			const std::string& speaker,
 			int side,
 			const std::string& message,

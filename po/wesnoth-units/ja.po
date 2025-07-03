@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
+"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -386,7 +386,9 @@ msgid "Paladin"
 msgstr "聖騎士"
 
 #. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
+#: data/core/units/humans/Horse_Paladin.cfg:20
 #, fuzzy
 #| msgid ""
 #| "Knights of the highest virtue, Paladins have sworn their strength not to "
@@ -420,7 +422,7 @@ msgid ""
 "Full Paladins are generally not quite as fearsome as the ‘Grand Knights’ "
 "that champion most armies, but they are first-class fighters nonetheless. "
 "Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a paladin is very powerful in fighting magical or "
+"curious abilities; a Paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 "最も高潔な騎士、聖騎士（Paladin）は国王と王位にではなく、理想それ自身に彼らの"
@@ -471,8 +473,14 @@ msgstr "冷気の大嵐"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
-#: data/core/units/boats/Raider_Coastal.cfg:139
-#: data/core/units/boats/Raider_Iron.cfg:146
+#: data/core/units/boats/Elf_Cutter.cfg:99
+#: data/core/units/boats/Elf_Sloop.cfg:99
+#: data/core/units/boats/Orc_Barge.cfg:108
+#: data/core/units/boats/Orc_Battle-Barge.cfg:127
+#: data/core/units/boats/Orc_Rigship.cfg:79
+#: data/core/units/boats/Orc_Warship.cfg:79
+#: data/core/units/boats/Raider_Coastal.cfg:146
+#: data/core/units/boats/Raider_Iron.cfg:153
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -861,7 +869,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
 #: data/core/units/dunefolk/Explorer.cfg:35
-#: data/core/units/dunefolk/Rover.cfg:32
+#: data/core/units/dunefolk/Rover.cfg:84
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -1298,31 +1306,29 @@ msgstr ""
 "す。その牙はそれほど強力ではありませんが、獲物の血とともに体力を奪い、それを"
 "自身のものとします。"
 
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:4
-msgid "Boat"
-msgstr "小舟"
-
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
-msgid ""
-"Propelled by oars or small sails, Boats are used to travel short distances "
-"and in shallows where large ships cannot navigate."
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:5
+msgid "Canoe"
 msgstr ""
-"オールや小さな帆によって進む小舟（Boat）は、短距離を移動する場合や大きな船で"
-"は航行することのできない浅瀬を移動するために使われます。"
+
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:19
+msgid ""
+"A Canoe is a small, open-top water vessel commonly used for transportation "
+"or hunting. Their light-weight construction allows them to be carried around "
+"barriers or between unconnected bodies of water. Almost every intelligent "
+"race has some form of canoe."
+msgstr ""
 
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:4
+#: data/core/units/boats/Derelict_Ship.cfg:4
 msgid "Derelict Hulk"
 msgstr ""
 
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:18
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Derelict_Ship.cfg:18
+#: data/core/units/boats/Ghost_Ship.cfg:30
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
 "are merely ruined ships that will soon sink, but there are tales of others "
@@ -1330,16 +1336,48 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Derelict_Galleon.cfg:135
+#: data/core/units/boats/Derelict_Ship.cfg:145
 msgid "jetsam"
 msgstr ""
 
+#. [unit_type]: id=Elvish Cutter, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:5
+#, fuzzy
+#| msgid "Elvish Outrider"
+msgid "Elvish Cutter"
+msgstr "エルフの騎馬従者"
+
+#. [unit_type]: id=Elvish Cutter, race=ship
+#. [unit_type]: id=Elvish Sloop, race=ship
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#. [unit_type]: id=Orcish Rigship, race=ship
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:19
+#: data/core/units/boats/Elf_Sloop.cfg:19
+#: data/core/units/boats/Orc_Battle-Barge.cfg:20
+#: data/core/units/boats/Orc_Rigship.cfg:19
+#: data/core/units/boats/Orc_Warship.cfg:19
+msgid "..."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/boats/Elf_Cutter.cfg:108
+#: data/core/units/boats/Elf_Sloop.cfg:111 data/core/units/elves/Druid.cfg:35
+#: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "罠の術"
+
+#. [unit_type]: id=Elvish Sloop, race=ship
+#: data/core/units/boats/Elf_Sloop.cfg:5
+#, fuzzy
+#| msgid "Elvish Scout"
+msgid "Elvish Sloop"
+msgstr "エルフの斥候"
+
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fireship"
-msgstr "炎のレイス"
+msgstr ""
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:18
@@ -1351,32 +1389,75 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:165
+#: data/core/units/boats/Fireship.cfg:170
 msgid "ember"
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:174
+#: data/core/units/boats/Fireship.cfg:179
 msgid "crash"
 msgstr ""
 
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Ghost_Ship.cfg:16
+#, fuzzy
+#| msgid "Ghost"
+msgid "Ghost Ship"
+msgstr "ゴースト"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Ghost_Ship.cfg:191
+#: data/core/units/humans/Mage_Elder.cfg:35
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
+msgid "lightning"
+msgstr "雷"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Ghost_Ship.cfg:203
+msgid "black wind"
+msgstr ""
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:7
+msgid "Boat"
+msgstr "小舟"
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Propelled by oars or small sails, boats are used to travel short "
+#| "distances and in shallows where large ships cannot navigate."
+msgid ""
+"Propelled by oars or small sails, Boats are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+"オールや小さな帆によって進む小舟（Boat）は、短距離を移動する場合や大きな船で"
+"は航行することのできない浅瀬を移動するために使われます。"
+
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:6
+#: data/core/units/boats/Legacy_Galleon.cfg:6
 msgid "Galleon"
 msgstr "ガレオン船"
 
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:23
-msgid "Galleons are blue-water ships built for trade and transport."
-msgstr "ガレオン船（Galleon）は貿易や輸送のために建造された海洋船です。"
+#: data/core/units/boats/Legacy_Galleon.cfg:21
+msgid ""
+"Galleons are large and sturdy wooden ships used primarily for swift "
+"transport of goods across rivers and oceans in large quantities. The "
+"earliest Galleons were built long ago by ancient sailors from the Green "
+"Isle, before even the times of Haldric. Centuries later, their skillfully-"
+"crafted designs continue to be used by many Wesnothian sailors."
+msgstr ""
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:4
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:7
 msgid "Pirate Galleon"
 msgstr "海賊ガレオン船"
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:22
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:23
 #, fuzzy
 #| msgid ""
 #| "Pirate galleons are to transport ships what wolves are to sheep. The "
@@ -1392,10 +1473,123 @@ msgstr ""
 "よりの楽しみです。"
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:160
-#: data/core/units/boats/Transport_Galleon.cfg:158
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:26
+#: data/core/units/boats/Pirate_Ship.cfg:169
+#: data/core/units/boats/Transport_Ship.cfg:168
 msgid "ballista"
 msgstr "バリスタ"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:7
+msgid "Transport Galleon"
+msgstr "輸送ガレオン船"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:22
+#: data/core/units/boats/Transport_Ship.cfg:20
+msgid ""
+"Transport Galleons are well-armed ships that carry troops. If they reach the "
+"shore, they can land the troops to attack."
+msgstr ""
+"輸送ガレオン船（Transport Galleon）は軍隊を輸送する完全武装船です。この船が岸"
+"に着いたなら、攻撃のためにその軍隊を上陸させることができます。"
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Archer"
+msgid "Orcish Barge"
+msgstr "オークの弓兵"
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:20
+msgid ""
+"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"seen in almost any other ship. But what they lack in speed and grace, they "
+"make up for with their rugged utility in navigating rivers and swamps. Their "
+"primary means of movement comes from a large, symmetric sail held at three "
+"points for downwind propulsion. When currents and winds lead to the wrong "
+"direction, the crew must use poles and anchors to move the barge in the "
+"intended direction.\n"
+"\n"
+"Barges serve as transports for either supplies or troops, but they have been "
+"used as pickets in larger conflicts. They lack any specific weaponry, but "
+"the crew is equipped with the crude orcish bows that can be deterrent enough "
+"in many situations.\n"
+"\n"
+"These barges are very ineffective in the high seas, little better than a "
+"floating wreck."
+msgstr ""
+
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:5
+#, fuzzy
+#| msgid "Orcish Ruler"
+msgid "Orcish Battle Barge"
+msgstr "オークの支配者"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Orc_Battle-Barge.cfg:118
+msgid "catapult"
+msgstr ""
+
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:5
+#, fuzzy
+#| msgid "Orcish Nightblade"
+msgid "Orcish Rigship"
+msgstr "オークの夜刀"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Orc_Rigship.cfg:88
+#: data/core/units/boats/Orc_Warship.cfg:88
+#, fuzzy
+#| msgid "fire"
+msgid "firebow"
+msgstr "火炎"
+
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:5
+#, fuzzy
+#| msgid "Orcish Warrior"
+msgid "Orcish Warship"
+msgstr "オークの戦士"
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:4
+msgid "Pirate Ship"
+msgstr ""
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Pirate galleons are to transport ships what wolves are to sheep. The "
+#| "pirates who crew them are more than happy to help relieve other ships of "
+#| "their weighty cargo."
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo."
+msgstr ""
+"海賊ガレオン船（Pirate galleon）は輸送船にとって、羊に対する狼のようなもので"
+"す。乗っている海賊達は、他の船からその重たい貨物を取り除くのを手伝うのがなに"
+"よりの楽しみです。"
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:5
+msgid "Raft"
+msgstr ""
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:19
+msgid ""
+"Rafts can be an efficient means of downriver transport, but they can also be "
+"an improvised vessel of desperation, patched together from the wreck of a "
+"larger ship."
+msgstr ""
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1442,25 +1636,36 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Raider_Iron.cfg:156
+#: data/core/units/boats/Raider_Iron.cfg:163
 #, fuzzy
 #| msgid "Cavalryman"
 msgid "naval ram"
 msgstr "竜騎兵"
 
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:4
-msgid "Transport Galleon"
-msgstr "輸送ガレオン船"
-
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:20
-msgid ""
-"Transport Galleons are well-armed ships that carry troops. If they reach the "
-"shore, they can land the troops to attack."
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:5
+msgid "Skiff"
 msgstr ""
-"輸送ガレオン船（Transport Galleon）は軍隊を輸送する完全武装船です。この船が岸"
-"に着いたなら、攻撃のためにその軍隊を上陸させることができます。"
+
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Propelled by oars or small sails, boats are used to travel short "
+#| "distances and in shallows where large ships cannot navigate."
+msgid ""
+"Propelled by oars or small sails, skiffs are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+"オールや小さな帆によって進む小舟（Boat）は、短距離を移動する場合や大きな船で"
+"は航行することのできない浅瀬を移動するために使われます。"
+
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Transport_Ship.cfg:4
+#, fuzzy
+#| msgid "Transport Galleon"
+msgid "Transport Ship"
+msgstr "輸送ガレオン船"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -2126,6 +2331,8 @@ msgstr ""
 #: data/core/units/dunefolk/Paragon.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:39
 #: data/core/units/dunefolk/Soldier.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:35
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
 msgstr "シミター"
@@ -2223,7 +2430,7 @@ msgstr ""
 #: data/core/units/dunefolk/Cataphract.cfg:64
 #: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:93
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -2346,10 +2553,10 @@ msgstr "デューンの女ハリアー"
 #| "cripple the target, allowing the main Dunefolk force to close in and "
 #| "finish the job."
 msgid ""
-"While Harriers can fulfill a similar role to striders in hampering enemy "
+"While Harriers can fulfill a similar role to Striders in hampering enemy "
 "forces, their epithet is actually derived from the harrier hawks they employ "
 "to maintain contact with the bulk of a Dunefolk troop. Most commonly found "
-"operating behind enemy lines, harriers are usually tasked with providing "
+"operating behind enemy lines, Harriers are usually tasked with providing "
 "useful intelligence on enemy troop movements, which alone is enough of an "
 "edge for most Dunefolk armies to outmaneuver their foes. However, when the "
 "time is right, these agile warriors gather together and strike at the rear "
@@ -2389,7 +2596,7 @@ msgstr "デューンの薬採り"
 #| "their travels, many of these men are even able to heal themselves."
 msgid ""
 "As those responsible for caring for the ill and wounded among the Dunefolk, "
-"herbalists possess both the medicinal skills to heal a variety of "
+"Herbalists possess both the medicinal skills to heal a variety of "
 "afflictions and the skill to seek and gather restorative herbs. Their "
 "motivations are many; some look to it as an adventure or as a steady source "
 "of pay while others feel it to be a duty to their society. No matter the "
@@ -2657,7 +2864,7 @@ msgid ""
 "equally effective in defense and offense as well as in ranged or close "
 "combat. They are experienced hunters and trackers, hardy inhabitants of the "
 "deserts and hills that they call home. While lacking training as formal "
-"troops, the skills these rovers employ for survival in the desert translate "
+"troops, the skills these Rovers employ for survival in the desert translate "
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
@@ -2689,7 +2896,7 @@ msgstr "デューンの焦痕兵"
 msgid ""
 "The Scorcher’s moniker is derived not from the destruction they wreak on "
 "adversarial formations, but on their own singed appearances. By "
-"experimenting endlessly with their equipment, most scorchers inevitably "
+"experimenting endlessly with their equipment, most Scorchers inevitably "
 "overstep their bounds at some point and are seared by the highly volatile "
 "Sanbaar sap that soaks their weapons. Bearing their burns as a mark of pride "
 "in their work, these archers relish igniting great swaths of flame on the "
@@ -2924,7 +3131,7 @@ msgid ""
 "tactic can be applied in the opposite scenario of a Dunefolk retreat; an "
 "advancing army can be hampered, allowing injured Dunefolk warriors time to "
 "recuperate. The danger of such a tactic is that despite their elusiveness, "
-"striders are fairly fragile in direct combat and are easily taken down if "
+"Striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
 "デューンフォークの急襲には1つの大きな欠点があります。それは、デューンフォーク"
@@ -3001,16 +3208,6 @@ msgstr ""
 "はたった一度に限られる可能性がありますが、経験豊富な剣士は高確率でその好機を"
 "捉え、有効な打撃とします。不自然とさえ言える程の正確さを錬磨することにより、"
 "剣士の部隊は最も堅固な防御さえ崩し得るに充分な能力を有します。"
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:26
-msgid "forceful scimitar strike"
-msgstr "力強いシミターの打ち込み"
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:35
-msgid "balanced scimitar slash"
-msgstr "バランスの良いシミターの斬撃"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -3125,7 +3322,7 @@ msgstr "デューンの風矢"
 #| "ranged combat among the Dunefolk."
 msgid ""
 "Archery on horseback presents a number of additional challenges that very "
-"few are able to overcome. What separates the renowned windbolts from other "
+"few are able to overcome. What separates the renowned Windbolts from other "
 "bowmen is their ability to not only master these difficulties, but turn them "
 "into advantages instead. Making use of their steeds’ great speed, a Windbolt "
 "is actually a better archer when mounted as compared to on land. The extra "
@@ -3156,7 +3353,7 @@ msgid ""
 "beasts when provoked. When truly enraged they can even tear apart "
 "experienced warriors with relative ease. Most travelers would run or fight "
 "in their mighty presence, yet a few are able to tame these wild creatures. "
-"These Dunefolk riders spend years, even decades of their lives bonding with "
+"These Dunefolk Riders spend years, even decades of their lives bonding with "
 "them, slowly building up their trust until they have gained true mastery "
 "over the skies. The most experienced of these Wyvern Riders have ascended to "
 "be the greatest and most revered travelers of the land. While they do not "
@@ -3617,7 +3814,7 @@ msgid ""
 "enhancing their already potent abilities to foster and manipulate natural "
 "energies. Perhaps the most notable effect of these Druids’ magic is the "
 "marked sense of motion in the deep woodlands that they preserve. Outsiders "
-"wandering through Elven woods often speak of entangling roots and vines, "
+"wandering through elven woods often speak of entangling roots and vines, "
 "moving nearly as fast as a warrior’s marching pace, or the creaking shamble "
 "of ancient trees, lumbering across entire camps in just a single night. The "
 "forest and the earth become almost like a connected entity, something that "
@@ -3634,12 +3831,6 @@ msgstr ""
 "つの有機体として生命活動をおこなっているかのようになります。ドルイドの丁寧な"
 "管理の元に繁茂することで森は次々に魔法を輝かせ、ドルイドの力も共鳴してさらに"
 "強化されます。"
-
-#. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
-#: data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "罠の術"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
@@ -3800,12 +3991,12 @@ msgstr "エルフの貴婦人"
 #| "often as diplomats and peacekeepers, holding high authority during times "
 #| "of amity and taking a lesser role in times of war."
 msgid ""
-"Usually strongly connected with the earthly aspect of Elven magic, noble "
+"Usually strongly connected with the earthly aspect of elven magic, noble "
 "Ladies of the elvish enclaves are associated with wisdom and preservation. "
-"As those entrusted with maintaining many of the more venerated Elvish "
+"As those entrusted with maintaining many of the more venerated elvish "
 "traditions, they play a large role in safeguarding the tranquility and "
 "natural wonder of their renowned forest sanctuaries. Unlike their "
-"counterparts in the lords, many of whom gain great individual insight "
+"counterparts in the Lords, many of whom gain great individual insight "
 "through their use of arcane magic, most Ladies spread their power throughout "
 "the societal orders that they guide, often at some cost to their own "
 "personal abilities. For this reason, they serve most often as diplomats and "
@@ -3929,7 +4120,7 @@ msgid ""
 "battlefronts into smaller skirmishes, transforming ordinary campaigns into "
 "dispersed guerrilla warfare. Engaging elves in their own homes is a daunting "
 "task for any invasion force, precisely because of the skillful maneuvering "
-"of the marshals who are entrusted with the protection of their people."
+"of the Marshals who are entrusted with the protection of their people."
 msgstr ""
 "エルフは開戦を扇動することはあまりありません。一方で、彼らは避けられない戦い"
 "に怯えたりもしません。そのため、エルフも戦略眼を持った少数の指揮官達を常に維"
@@ -4081,7 +4272,7 @@ msgstr "エルフの騎兵"
 #| "engagement means that these riders are the oft unsung heroes of war, left "
 #| "supporting their brethren from the back lines."
 msgid ""
-"The prevalence of guerrilla tactics in Elven strategy results in great "
+"The prevalence of guerrilla tactics in elven strategy results in great "
 "emphasis on maintaining highly mobile units capable of fighting on an "
 "adaptable battlefront. This style of warfare requires rapid communication "
 "between small skirmish groups and the ability to quickly transfer troops "
@@ -4259,12 +4450,12 @@ msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
 "natural, or corporeal world, and divination into the arcane plane. The "
 "latter, as a power that is difficult to control and ill-understood even by "
-"most of its practitioners, is not often sought after by the Elves. Wielders "
+"most of its practitioners, is not often sought after by the elves. Wielders "
 "of the arcane face significant risk in studying the volatile nature of their "
 "discipline and quickly learn to respect the disruptive power of their craft. "
 "This destructive nature most commonly manifests itself as gouts of ‘faerie "
 "fire’, which is among the most readily mastered skills for an Elvish "
-"Sorceress. While a rather superficial application of this art, the Elves "
+"Sorceress. While a rather superficial application of this art, the elves "
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
@@ -4649,59 +4840,6 @@ msgstr ""
 "穴を開けることに優れています。しかしながら、彼らは防御での使用は限られたもの"
 "となります。"
 
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "\n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
-msgid ""
-"Knights of the highest virtue, Paladins have sworn their strength not to "
-"king and crown, but to ideals themselves; of chivalry, and the stewardship "
-"of everything that is good. They may serve in the armies of the world, but "
-"their first loyalties often lie with groups of their own making; secret, "
-"monastic orders that cross political and cultural boundaries. Rulers are "
-"sometimes wary of them, for the Paladins’ loyalty is only as strong as the "
-"liege’s apparent virtue. This has led the more darkly ambitious to either "
-"attempt to defame and disperse these groups, or more rarely, to conjure "
-"elaborate deceptions to keep these otherwise staunchly loyal troops in "
-"service.\n"
-"\n"
-"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-"that champion most armies, but they are first-class fighters nonetheless. "
-"Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a Paladin is very powerful in fighting magical or "
-"unnatural things, and most have some skill at medicine and healing."
-msgstr ""
-"最も高潔な騎士、聖騎士（Paladin）は国王と王位にではなく、理想それ自身に彼らの"
-"力を誓いました。騎士道と、善であるもの全てに仕える執事の職です。彼らは世界の"
-"軍隊に所属しているかもしれませんが、彼らの最初の忠誠はしばしば彼ら自身の製作"
-"の集団、秘密の、政治と文化の境界が交わる僧院騎士団にあります。聖騎士の忠誠心"
-"は主君の見せ掛けの美徳と同程度しか強くないので、統治者は時折彼らを警戒しま"
-"す。このことは、これらの集団を貶めて解散させようと試みる、あるいはより稀です"
-"が、彼らを別の固く忠実な服務中の兵隊に保つ入念な欺きを生み出す、双方のより邪"
-"悪な意思へと導きます。\n"
-"    \n"
-"一般的に聖騎士は、ほとんどの軍のチャンピオンである「近衛騎士」と同じだけ恐ろ"
-"しいわけではありません。しかしそれでもなお、彼らは一級の戦士です。その上彼ら"
-"の知恵と信仰心は、これらの僧兵にとある不思議な能力を与えました。聖騎士は魔法"
-"的あるいは不自然な存在と戦う際に大変強力で、たいていの者は医術と治療の能力を"
-"いくらか備えています。"
-
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -4793,7 +4931,7 @@ msgstr "竜騎兵"
 #| "Cavalrymen are very useful for taking and holding positions on open "
 #| "ground, for screening friendly soldiers, and also for scouting work."
 msgid ""
-"Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
+"Cavalrymen are distinguished from Horsemen by their tactics and equipment. A "
 "Cavalryman wears heavier armor, and carries a sword and shield, rather than "
 "a lance. Their tactics do not include charging; instead they maneuver to "
 "slash with a sword, using both horse and rider as an effective tool of "
@@ -4980,7 +5118,7 @@ msgid ""
 "\n"
 "However, a halberd is notably more expensive to craft than a spear, and in "
 "the hands of a novice, much less effective. In the armies of Wesnoth, it is "
-"customary only to grant these weapons to veteran pikemen, who have proven "
+"customary only to grant these weapons to veteran Pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
 "ハルバード兵（Halberdier）\n"
@@ -5024,7 +5162,7 @@ msgid ""
 "Heavy Infantry are brawny fighters clad in full plate and wielding massive "
 "impact weapons. Though they fight with unmatched power in melee combat, they "
 "have poor mobility and are best employed in static defense of fortified "
-"positions. A few of these in battle line will stiffen it considerably, "
+"positions. A few of these in a battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
 "重歩兵（Heavy Infantryman）は全身鎧を着て重い打撃武器を扱うたくましい戦士で"
@@ -5220,12 +5358,12 @@ msgstr "熟練槍兵"
 #| "proper discipline and tactics, pikemen can also hold most other infantry "
 #| "at bay."
 msgid ""
-"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
+"Promising Spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
 "collection of leather armor they wore as recruits. A pike is a much longer "
 "weapon than a spear, and thus facilitates different combat tactics. A wall "
 "of Pikemen is the bane of any cavalry charge, and with proper discipline and "
-"tactics, pikemen can also hold most other infantry at bay."
+"tactics, Pikemen can also hold most other infantry at bay."
 msgstr ""
 "熟練槍兵（Pikeman）\n"
 "\n"
@@ -5525,13 +5663,6 @@ msgstr ""
 "かつての偉大な老魔術師（Elder Mage）は、飽きるほどの戦いの年月によって自身の"
 "力が少し弱まっているのに気づきます。それにも関わらず、彼らの強力な雷撃のため"
 "に、戦場で恐れられることに変わりはありませんでした。"
-
-#. [attack]: type=fire
-#: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:100
-#: data/core/units/monsters/Raven_Omen.cfg:90
-msgid "lightning"
-msgstr "雷"
 
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -6896,11 +7027,17 @@ msgstr "洞窟熊"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
+#| "Adapted to roaming the dark caves, they have a keen sense of smell and "
+#| "hearing, but poor eyesight. When a rival predator, or some other threat, "
+#| "gets too close, a bear will reliably attack."
 msgid ""
 "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
 "Adapted to roaming the dark caves, they have a keen sense of smell and "
 "hearing, but poor eyesight. When a rival predator, or some other threat, "
-"gets too close, a bear will reliably attack."
+"gets too close, a Bear will undoubtedly attack."
 msgstr ""
 "洞窟熊（Cave Bear）は大きく強力な獣で、鋭い爪と大きな歯を備えています。暗い洞"
 "窟をうろつくことに適応しており、嗅覚と聴覚は鋭いですが視覚は衰えています。ラ"
@@ -6914,10 +7051,15 @@ msgstr "森猪"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
+#, fuzzy
+#| msgid ""
+#| "As boars age, their already formidable teeth grow longer and more "
+#| "numerous. A mature, tamed boar is a valuable asset to any farmer, but an "
+#| "angry wild boar is a challenge even to the best hunters."
 msgid ""
-"As boars age, their already formidable teeth grow longer and more numerous. "
-"A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
-"boar is a challenge even to the best hunters."
+"As Boars age, their already formidable teeth grow longer and more numerous. "
+"A mature, tamed Boar is a valuable asset to any farmer, but an angry wild "
+"Boar is a challenge even to the best hunters."
 msgstr ""
 "森猪（Woodland Boar）\n"
 "\n"
@@ -6962,8 +7104,17 @@ msgstr "ピラニア"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
+#, fuzzy
+#| msgid ""
+#| "The giant caribe are seldom encountered in the inland rivers near Weldyn, "
+#| "but tales of their ferocious attacks have spread far and wide. Their "
+#| "angry red eyes are embedded in an armored face. While it is their teeth "
+#| "that are a dangerous weapon, they do posses small, bony arms and claws, "
+#| "which they can use to extricate themselves from situations dire to most "
+#| "other fish. These fish are unusually clever and should not be "
+#| "underestimated."
 msgid ""
-"The giant caribe are seldom encountered in the inland rivers near Weldyn, "
+"The giant Caribe are seldom encountered in the inland rivers near Weldyn, "
 "but tales of their ferocious attacks have spread far and wide. Their angry "
 "red eyes are embedded in an armored face. While it is their teeth that are a "
 "dangerous weapon, they do posses small, bony arms and claws, which they can "
@@ -6983,8 +7134,12 @@ msgstr "狩猟ピラニア"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
+#, fuzzy
+#| msgid ""
+#| "As they age, the giant caribe become bigger and more dangerous. They also "
+#| "learn to use seaweed to ensnare prey or enemies."
 msgid ""
-"As they age, the giant caribe become bigger and more dangerous. They also "
+"As they age, the giant Caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
 "狩猟ピラニア（Hunter Caribe）\n"
@@ -9411,7 +9566,7 @@ msgstr "ガスト"
 #| "defeated, they eat the rest of the body, gaining strength in the process."
 msgid ""
 "The Ghast is a creature taken from humankind’s most primal nightmares. "
-"Unlike their lesser cousins, ghouls and necrophages, Ghasts are not patient "
+"Unlike their lesser cousins, Ghouls and Necrophages, Ghasts are not patient "
 "enough to wait for their victim to die from poison before consuming the "
 "body. They attack directly with their enormous mouths, trying to rip the "
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
@@ -9808,7 +9963,7 @@ msgstr "リッチ"
 msgid ""
 "A Lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
-"becoming a lich one cheats death of that which truly gives it terror. For it "
+"becoming a Lich one cheats death of that which truly gives it terror. For it "
 "is the mind that is retained, and the spirit which follows, though the body "
 "may wither away.\n"
 "\n"
@@ -9848,7 +10003,7 @@ msgstr ""
 "た。"
 
 #. [female]: gender=female
-#: data/core/units/undead/Necromancer.cfg:152
+#: data/core/units/undead/Necromancer.cfg:153
 msgid "female^Necromancer"
 msgstr "女ネクロマンサー"
 
@@ -9946,7 +10101,7 @@ msgstr ""
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr "Death Squire"
+msgstr "死の従者"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -10340,12 +10495,17 @@ msgid ""
 "this craft can only be speculated on by other races."
 msgstr ""
 
-#~ msgid ""
-#~ "These woses are able to command forest plants such as vines and creepers "
-#~ "to hinder their enemies."
-#~ msgstr ""
-#~ "呪術師ウーズ（Wose Shaman）はつる植物や蔦などの森林植物に命じて敵を絡めと"
-#~ "ることができます。"
+#~ msgid "forceful scimitar strike"
+#~ msgstr "力強いシミターの打ち込み"
+
+#~ msgid "balanced scimitar slash"
+#~ msgstr "バランスの良いシミターの斬撃"
+
+#~ msgid "Galleons are blue-water ships built for trade and transport."
+#~ msgstr "ガレオン船（Galleon）は貿易や輸送のために建造された海洋船です。"
+
+#~ msgid "gossamer"
+#~ msgstr "クモの巣"
 
 #~ msgid "swamp lurk"
 #~ msgstr "沼隠れ"
@@ -10378,5 +10538,9 @@ msgstr ""
 #~ "成しませんが、そのような状況であればナーガはより良いアドバンテージが得られ"
 #~ "る地形を探すでしょう。"
 
-#~ msgid "gossamer"
-#~ msgstr "クモの巣"
+#~ msgid ""
+#~ "These woses are able to command forest plants such as vines and creepers "
+#~ "to hinder their enemies."
+#~ msgstr ""
+#~ "呪術師ウーズ（Wose Shaman）はつる植物や蔦などの森林植物に命じて敵を絡めと"
+#~ "ることができます。"

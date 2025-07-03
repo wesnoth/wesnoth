@@ -26,6 +26,9 @@
 
 #include <boost/logic/tribool.hpp>
 
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_mouse.h>
+
 #include <array>
 #include <memory>
 
@@ -86,9 +89,8 @@ bool use_color_cursors()
 	return game_config::editor == false && prefs::get().use_color_cursors();
 }
 
-SDL_Cursor* create_cursor(surface surf)
+SDL_Cursor* create_cursor(const surface& surf)
 {
-	surf.make_neutral();
 	if(surf == nullptr) {
 		return nullptr;
 	}

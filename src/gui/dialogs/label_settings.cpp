@@ -83,7 +83,6 @@ label_settings::label_settings(display_context& dc)
 void label_settings::pre_show()
 {
 	listbox& cats_listbox = find_widget<listbox>("label_types");
-	widget_data list_data;
 
 	for(const auto& label_entry : all_labels_) {
 		const std::string& category = label_entry.first;
@@ -102,8 +101,7 @@ void label_settings::pre_show()
 			name = markup::span_color(tc, name);
 		}
 
-		list_data["cat_name"]["label"] = name;
-		grid* grid = &cats_listbox.add_row(list_data);
+		grid* grid = &cats_listbox.add_row(widget_data{{ "cat_name", {{ "label", name }}}});
 
 		toggle_button& status = grid->find_widget<toggle_button>("cat_status");
 		status.set_value(visible);

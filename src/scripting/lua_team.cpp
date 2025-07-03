@@ -85,7 +85,7 @@ SIDE_GETTER("village_gold", int) {
 }
 
 SIDE_SETTER("village_gold", int) {
-	t.set_village_support(value);
+	t.set_village_gold(value);
 }
 
 SIDE_GETTER("village_support", int) {

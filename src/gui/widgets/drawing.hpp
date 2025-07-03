@@ -38,12 +38,12 @@ public:
 
 	void set_drawing_data(const ::config& cfg)
 	{
-		get_drawing_canvas().set_cfg(cfg);
+		get_drawing_canvas().set_shapes(cfg);
 	}
 
 	void append_drawing_data(const ::config& cfg)
 	{
-		get_drawing_canvas().append_cfg(cfg);
+		get_drawing_canvas().append_shapes(cfg);
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/

@@ -17,7 +17,6 @@
 #include <boost/test/unit_test.hpp>
 
 #include <array>
-#include <ctime>
 
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"

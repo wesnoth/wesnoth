@@ -1,12 +1,18 @@
+# Esperanto translation for Battle for Wesnoth.
+# This file is distributed under the same license as the Battle for Wesnoth
+# package.
+#
+# Former translator:
+#   Aleksej Korgenkov <grimpanto@mail.ru>
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
+"Project-Id-Version: Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2008-02-12 20:47+0200\n"
-"Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
-"Language-Team: eo-EO\n"
-"Language: \n"
+"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"PO-Revision-Date: 2025-05-13 00:22-0300\n"
+"Last-Translator: Mariano Street <mctpyt@proton.me>\n"
+"Language-Team: Esperanto <https://wiki.wesnoth.org/Esperanto_translation>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,27 +23,27 @@ msgstr ""
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr ""
+msgstr "Unuopa seslatero"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "1-radiusa seslatero"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "2-radiusa seslatero"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Seslaterlinio NOk-SOr"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 msgid "Hex Line SW-NE"
-msgstr ""
+msgstr "Seslaterlinio SOk-NOr"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -62,7 +68,7 @@ msgstr "dezerto"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "ornamoj"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
@@ -72,7 +78,7 @@ msgstr "arbaro"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "autuno"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -82,7 +88,7 @@ msgstr "glaciita"
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr "monteca"
+msgstr "malglata"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
@@ -92,7 +98,7 @@ msgstr "kaverno"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "baro"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -107,60 +113,58 @@ msgstr "kastelo"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "ponto"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
-msgstr ""
+msgstr "speciala"
 
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "altaĵo"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr ""
+msgstr "Neniu"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr ""
+msgstr "Testo"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
 msgid "Default"
-msgstr ""
+msgstr "Defaŭlta"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr ""
+msgstr "Somero"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr ""
+msgstr "Vintro"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24-hora horaro"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr ""
+msgstr "Post la falo"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Eliri"
+msgstr "Redaktilo"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -170,12 +174,12 @@ msgstr "Dosiero"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Ŝargi el lastaj"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:80
 msgid "Map"
-msgstr ""
+msgstr "Mapo"
 
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
@@ -184,36 +188,33 @@ msgstr ""
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
-#, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Haltigi ĝisdatigon de transiroj"
+msgstr "Ĝisdatigo de transiro"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:101
-#, fuzzy
 msgid "Window"
-msgstr "Malfari"
+msgstr "Fenestro"
 
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Aldonaĵo"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
 msgid "Areas"
-msgstr ""
+msgstr "Areoj"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:127
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Atribui lokan tempon"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Atribui lokan horaron"
 
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
@@ -223,7 +224,7 @@ msgstr ""
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
 msgid "Side"
-msgstr ""
+msgstr "Flanko"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:168
@@ -233,90 +234,98 @@ msgstr "vilaĝoj"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:184
 msgid "units"
-msgstr ""
+msgstr "unuoj"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Menuo pri horaro"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:490
 msgid "Playlist"
-msgstr ""
+msgstr "Ludlisto"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Atribui horaron"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Identigilo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
-msgstr ""
+msgstr "Nomo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
-msgstr ""
+msgstr "Tipo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
-msgstr ""
+msgstr "Nivelo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
-msgstr ""
+msgstr "Kosto: "
 
-#: src/editor/controller/editor_controller.cpp:187
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
-msgstr ""
+msgstr "Neriparebla eraro"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Ĉu vi vere volas eliri?"
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
+"Ĉu vi vere volas eliri? Ŝanĝoj al ĉi tiu mapo post la lasta konservado "
+"perdiĝos."
 
-#: src/editor/controller/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Ĉu vi vere volas eliri? La jenaj mapoj modifiĝis kaj ĉiuj ŝanĝoj post la "
+"lasta konservado perdiĝos:"
 
-#: src/editor/controller/editor_controller.cpp:238
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Ne troviĝis redaktila tagtempo."
 
-#: src/editor/controller/editor_controller.cpp:882
+#: src/editor/controller/editor_controller.cpp:885
+#, fuzzy
+#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr ""
+msgstr "Aldonaĵo"
 
-#: src/editor/controller/editor_controller.cpp:895
+#: src/editor/controller/editor_controller.cpp:898
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
+msgstr "Subteno de tondujo ne troviĝis, kontaktu vian pakiston"
 
-#: src/editor/controller/editor_controller.cpp:1315
+#: src/editor/controller/editor_controller.cpp:1323
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Ŝanĝi identigilon de unuo"
 
-#: src/editor/controller/editor_controller.cpp:1316
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "ID:"
-msgstr ""
+msgstr "Identigilo:"
 
-#: src/editor/controller/editor_controller.cpp:1332
+#: src/editor/controller/editor_controller.cpp:1340
 msgid "Rename Unit"
-msgstr ""
+msgstr "Alinomigi unuon"
 
-#: src/editor/controller/editor_controller.cpp:1333
+#: src/editor/controller/editor_controller.cpp:1341
 msgid "Name:"
-msgstr ""
+msgstr "Nomo:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
@@ -328,381 +337,268 @@ msgstr ""
 
 #: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
-msgstr ""
+msgstr "Ŝargi mapon"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1133
 msgid "New Map"
-msgstr ""
+msgstr "Nova mapo"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
-#, fuzzy
-#| msgid "Save the Map As"
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1133
 msgid "New Scenario"
-msgstr "Savi la Mapon Kiel..."
+msgstr "Nova scenaro"
 
 #: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
-msgstr ""
+msgstr "Sen lastaj dosieroj"
 
 #: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
-msgstr ""
+msgstr "Sennoma areo"
 
 #: src/editor/map/context_manager.cpp:451
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "New Side"
-msgstr "Savi la Mapon Kiel..."
+msgstr "Nova flanko"
 
 #: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
-msgstr ""
+msgstr "Apliki maskon"
 
 #: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
-msgstr ""
+msgstr "Eraris ŝargo de masko"
 
 #: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
-msgstr ""
+msgstr "Identigilo:"
 
 #: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
-msgstr ""
+msgstr "Alinomigi areon"
 
 #: src/editor/map/context_manager.cpp:550
-#, fuzzy
 msgid "Choose Target Map"
-msgstr "Elektu Mapon por Ŝarĝado"
+msgstr "Elekti celan mapon"
 
 #: src/editor/map/context_manager.cpp:559
-#: src/editor/map/context_manager.cpp:985
+#: src/editor/map/context_manager.cpp:984
 msgid "Error loading map"
-msgstr ""
+msgstr "Eraris ŝargo de mapo"
 
 #: src/editor/map/context_manager.cpp:691
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Savi la Mapon Kiel..."
+msgstr "Konservi mapon kiel..."
 
 #: src/editor/map/context_manager.cpp:708
 #: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
-msgstr ""
+msgstr "Eraro"
 
 #: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:758
-#, fuzzy
-#| msgid "Do you want to save the map before quitting?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Ĉu vi volas savi la mapon antaŭ eliro?"
+msgstr "Ĉu vi vere volas konservi $type1 en la dosierujon $type2?"
 
 #: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:926
+#: src/editor/map/context_manager.cpp:925
 msgid "This map is already open."
-msgstr ""
+msgstr "Ĉi tiu mapo jam malfermitas."
 
 #: src/editor/map/context_manager.cpp:740
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Scenario As"
-msgstr "Savi la Mapon Kiel..."
+msgstr "Konservi scenaron kiel"
 
 #: src/editor/map/context_manager.cpp:766
 msgid "This scenario is already open."
-msgstr ""
+msgstr "Ĉi tiu scenaro jam malfermitas."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:799
 msgid "No random map generators found."
-msgstr ""
+msgstr "Ne troviĝis generilojn de hazarda mapo."
 
-#: src/editor/map/context_manager.cpp:813
-#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:817
 msgid "Map creation failed."
-msgstr ""
+msgstr "Kreo de mapo malsukcesis."
+
+#: src/editor/map/context_manager.cpp:832
+msgid "Unsaved Changes"
+msgstr "Nekonservitaj ŝanĝoj"
 
 #: src/editor/map/context_manager.cpp:833
-msgid "Unsaved Changes"
-msgstr ""
-
-#: src/editor/map/context_manager.cpp:834
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
+"Ĉu vi volas forĵeti ĉiujn ŝanĝojn faritajn al la mapo ekde la lasta konservo?"
 
-#: src/editor/map/context_manager.cpp:887
-#, fuzzy
-#| msgid "Map saved."
+#: src/editor/map/context_manager.cpp:886
 msgid "Scenario saved."
-msgstr "Mapo estas savita."
+msgstr "Scenaro konserviĝis."
 
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:901
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
-msgstr "Mapo estas savita."
+msgstr "Mapo konserviĝis."
+
+#: src/editor/map/context_manager.cpp:976
+msgid "Loaded embedded map data"
+msgstr "Ŝargiĝis enkorpigitajn mapdatumojn"
 
 #: src/editor/map/context_manager.cpp:977
-msgid "Loaded embedded map data"
-msgstr ""
-
-#: src/editor/map/context_manager.cpp:978
-#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:980
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapo ŝargiĝis el scenaro"
 
-#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:980
 msgid "Loaded referenced map file:"
-msgstr ""
+msgstr "Ŝargiĝis referencita mapdosiero:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
-msgstr ""
+msgstr "Ludanto $side_num"
 
 #: src/editor/map/editor_map.cpp:281
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "La grando de la cela mapo malsamas de tiu de la nuna mapo"
 
 #: src/editor/map/map_context.cpp:186
 msgid "File not found"
-msgstr ""
+msgstr "Dosiero netrovita"
 
 #: src/editor/map/map_context.cpp:193
 msgid "Empty file"
-msgstr ""
+msgstr "Malplena dosiero"
 
 #: src/editor/map/map_context.cpp:202
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "Dosiero ne havas finaĵon .map aŭ .cfg"
 
 #: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"La mapdosiero aspektas kiel scenaro, sed la valoro map_data ne referencas "
+"ekzistantan dosieron"
 
 #: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "Found the characters '<<' indicating inline lua is present - aborting"
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
+"Troviĝis la signoj '<<', ili indikas, ke enteksta Lua ĉeestas – ĉesiĝas"
 
 #: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Malsukcesis ŝargo de scenaro, provatas ŝargi nur la mapon."
 
 #: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
+"La mapdosiero aspektas kiel scenaro, sed la valoro map_file ne referencas "
+"ekzistantan dosieron"
 
 #: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Ne eblis analizi dosieron por trovi mapdatumojn"
 
-#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#: src/editor/map/map_context.cpp:827 src/editor/map/map_context.cpp:867
 #, fuzzy
-#| msgid "Could not save the map: $msg"
+#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Vi ne povas savi mapon: $msg"
+msgstr "Ne eblis konservi scenaron: $msg"
 
-#: src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:861
+#, fuzzy
+#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr ""
+msgstr "Menuo pri horaro"
 
-#: src/editor/map/map_context.cpp:909
-#, fuzzy
-#| msgid "Could not save the map: $msg"
+#: src/editor/map/map_context.cpp:907
 msgid "Could not save the scenario: $msg"
-msgstr "Vi ne povas savi mapon: $msg"
+msgstr "Ne eblis konservi scenaron: $msg"
 
-#: src/editor/map/map_context.cpp:940
-#, fuzzy
+#: src/editor/map/map_context.cpp:938
 msgid "Could not save into scenario"
-msgstr "Vi ne povas savi mapon: $msg"
+msgstr "Ne eblis konservi en scenaron"
 
-#: src/editor/map/map_context.cpp:950
+#: src/editor/map/map_context.cpp:948
 msgid "Could not save the map: $msg"
-msgstr "Vi ne povas savi mapon: $msg"
+msgstr "Ne eblis konservi mapon: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Nekonata grupo)"
 
 #: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
-msgstr ""
+msgstr "(nekerna)"
 
 #: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Ne funkcios enlude sen kroma zorgo."
 
 #: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr ""
+msgstr " | Dekstreklaku por forigi"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
-msgstr ""
+msgstr "Iri al"
 
 #: src/editor/palette/location_palette.cpp:254
 msgid "Add"
-msgstr ""
+msgstr "Aldoni"
 
 #: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Nova identigilo de pozicio"
 
 #: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
-msgstr ""
+msgstr "Nevalida identigilo de pozicio"
 
 #: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
-msgstr ""
+msgstr "Forigi"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "Maldekstra klako: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "Dekstra klako: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Maj + maldekstra-klako: pentri nur plusan tavolon"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Maj + maldekstra-klako: pentri nur bazan tavolon"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Kmd + klako: kopii terenon"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Stir + klako: kopii terenon"
 
-#, fuzzy
-#~ msgid "player^None"
-#~ msgstr "Ludanto"
+#~ msgid "Choose File"
+#~ msgstr "Elekti dosieron"
 
-#~ msgid "None"
-#~ msgstr "Neniu"
-
-#, fuzzy
-#~ msgid "Choose a File to Open"
-#~ msgstr "Elektu Mapon por Ŝarĝado"
-
-#, fuzzy
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Elektu Mapon por Ŝarĝado"
-
-#, fuzzy
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
-
-#~ msgid "Player"
-#~ msgstr "Ludanto"
-
-#, fuzzy
-#~| msgid "Battle for Wesnoth Map Editor"
-#~ msgid "The Battle for Wesnoth"
-#~ msgstr "Batalo por Vesnot: Redaktilo de mapoj."
-
-#~ msgid "Edit"
-#~ msgstr "Redakti"
-
-#~ msgid "Undo"
-#~ msgstr "Malfari"
-
-#~ msgid "Redo"
-#~ msgstr "Refari"
-
-#, fuzzy
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Ĝisdatigi transirojn"
-
-#, fuzzy
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Ĝisdatigi transirojn"
-
-#, fuzzy
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Ĝisdatigi transirojn"
-
-#~ msgid "FG"
-#~ msgstr "Antaŭa"
-
-#~ msgid "BG"
-#~ msgstr "Malantaŭa"
-
-#~ msgid "Settings"
-#~ msgstr "Agordaĵoj"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Pentri ĉelojn"
-
-#~ msgid "Fill"
-#~ msgstr "Plenigi"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Marki startan pozicion de ludanto"
-
-#~ msgid "Zoom in"
-#~ msgstr "Zomi"
-
-#~ msgid "Zoom out"
-#~ msgstr "Malzomi"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Defaŭlta zomo"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Ŝalti kradeton"
-
-#~ msgid "Resize the map"
-#~ msgstr "Ŝanĝi grandecon de la mapo"
-
-#~ msgid "Flip map"
-#~ msgstr "Renversi mapon"
-
-#~ msgid "Language"
-#~ msgstr "Lingvo"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Elektu vian preferan lingvon:"
-
-#~ msgid "Which Player?"
-#~ msgstr "Kiu Ludanto?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Kiu ludanto komencos ĉi tie?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Averto: Nelegala simbolo en nomo de la mapo. Vi devas savi mapon kun alia "
-#~ "nomo."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "La dosiero ne enhavas mapon."
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Eraro: Nelegala simbolo en nomo de dosiero."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Ne eblas ŝanĝi grandecon de la mapo, la menciita estas pli granda ol "
-#~ "maksimuma, grandeco="
-
-#~ msgid " maximum="
-#~ msgstr "maksimumo="
+#~ msgid "Select"
+#~ msgstr "Elekti"

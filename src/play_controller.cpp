@@ -142,8 +142,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, plugins_context_()
 	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
-	, mouse_handler_(nullptr, *this)
-	, menu_handler_(nullptr, *this)
+	, mouse_handler_(*this)
+	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()
@@ -234,12 +234,8 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		prefs::get().encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << timer();
-		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
-
-		LOG_NG << "building terrain rules... " << timer();
-		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-
+		LOG_NG << "initializing display (includes theme init and building terrain rules)... " << timer();
+		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if(start_faded_) {
@@ -258,7 +254,6 @@ void play_controller::init(const config& level)
 			}
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
@@ -681,8 +676,10 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
+		if (menu_handler_.do_speak()) {
+			menu_handler_.get_textbox().memorize_command(str);
+			menu_handler_.get_textbox().close();
+		}
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
@@ -703,12 +700,6 @@ void play_controller::enter_textbox()
 void play_controller::textbox_move_vertically(bool up)
 {
 	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
-		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
-		// Not handling messages to avoid spam
 		return;
 	}
 

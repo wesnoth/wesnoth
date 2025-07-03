@@ -51,10 +51,11 @@ def find_boost(env):
 
 def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     env = context.env
+    header_only_str = " (header-only)" if header_only else ""
     if require_version:
-        context.Message("Checking for Boost %s library version >= %s... " % (boost_lib, require_version))
+        context.Message("Checking for Boost %s library%s version >= %s... " % (boost_lib, header_only_str, require_version))
     else:
-        context.Message("Checking for Boost %s library... " % boost_lib)
+        context.Message("Checking for Boost %s library%s... " % (boost_lib, header_only_str))
 
     if not env.get("boostdir", "") and not env.get("boostlibdir", ""):
         find_boost(env)
@@ -72,6 +73,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "context" : "context/continuation.hpp",
                       "charconv" : "charconv.hpp",
                       "coroutine" : "coroutine/coroutine.hpp",
+                      "process" : "process/shell.hpp",
                       "graph" : "graph/graph_traits.hpp" }
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
@@ -84,7 +86,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
             env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:
         env.PrependUnique(LIBS = [libname])
-    if boost_lib == "thread" and env["PLATFORM"] == "posix":
+    if (boost_lib == "thread" or boost_lib == "asio") and env["PLATFORM"] == "posix":
         env.AppendUnique(CCFLAGS = ["-pthread"], LINKFLAGS = ["-pthread"])
 
     test_program = """

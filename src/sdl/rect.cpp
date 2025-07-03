@@ -53,7 +53,7 @@ bool rect::empty() const
 
 bool rect::contains(int x, int y) const
 {
-	SDL_Point p{x, y};
+	point p{x, y};
 	return SDL_PointInRect(&p, this) != SDL_FALSE;
 }
 
@@ -62,7 +62,7 @@ bool rect::contains(const point& point) const
 	return SDL_PointInRect(&point, this) != SDL_FALSE;
 }
 
-bool rect::contains(const SDL_Rect& r) const
+bool rect::contains(const rect& r) const
 {
 	if(this->x > r.x) return false;
 	if(this->y > r.y) return false;
@@ -71,25 +71,25 @@ bool rect::contains(const SDL_Rect& r) const
 	return true;
 }
 
-bool rect::overlaps(const SDL_Rect& r) const
+bool rect::overlaps(const rect& r) const
 {
 	return SDL_HasIntersection(this, &r);
 }
 
-rect rect::minimal_cover(const SDL_Rect& other) const
+rect rect::minimal_cover(const rect& other) const
 {
 	rect result;
 	SDL_UnionRect(this, &other, &result);
 	return result;
 }
 
-rect& rect::expand_to_cover(const SDL_Rect& other)
+rect& rect::expand_to_cover(const rect& other)
 {
 	SDL_UnionRect(this, &other, this);
 	return *this;
 }
 
-rect rect::intersect(const SDL_Rect& other) const
+rect rect::intersect(const rect& other) const
 {
 	rect result;
 	if(!SDL_IntersectRect(this, &other, &result)) {
@@ -98,7 +98,7 @@ rect rect::intersect(const SDL_Rect& other) const
 	return result;
 }
 
-void rect::clip(const SDL_Rect& other)
+void rect::clip(const rect& other)
 {
 	*this = this->intersect(other);
 }

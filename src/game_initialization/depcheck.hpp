@@ -146,6 +146,7 @@ public:
 	 * @return the index of the era
 	 */
 	int get_era_index() const;
+	int get_era_index(const std::string& id) const;
 
 	/**
 	 * Returns the selected scenario

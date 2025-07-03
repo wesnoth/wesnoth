@@ -46,7 +46,7 @@ game_config_view default_hotkey_cfg_;
 const int TOUCH_MOUSE_INDEX = 255;
 }; // namespace
 
-const std::string hotkey_base::get_name() const
+std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
@@ -323,13 +323,6 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	}
 
 	return text_ == other_k->text_;
-}
-
-void del_hotkey(const hotkey_ptr& item)
-{
-	if(!hotkeys_.empty()) {
-		utils::erase(hotkeys_, item);
-	}
 }
 
 void add_hotkey(hotkey_ptr item)

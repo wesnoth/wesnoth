@@ -26,6 +26,10 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_keyboard.h>
+#endif
+
 #include <functional>
 #include <limits>
 
@@ -50,8 +54,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_alpha_(0)
 	, cursor_blink_rate_(750ms)
 {
-	auto cfg = get_control(control_type, builder.definition);
-	set_font_family(cfg->text_font_family);
+	set_font_family(get_config()->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
@@ -169,8 +172,8 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		size_t plain_text_len = utf8::size(plain_text());
-		size_t cursor_pos = selection_start_ + utf8::size(unicode);
+		std::size_t plain_text_len = utf8::size(plain_text());
+		std::size_t cursor_pos = selection_start_ + utf8::size(unicode);
 		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
 			cursor_pos = plain_text_len;
 		}
@@ -180,14 +183,14 @@ void text_box_base::insert_char(const std::string& unicode)
 	}
 }
 
-size_t text_box_base::get_composition_length() const
+std::size_t text_box_base::get_composition_length() const
 {
 	if(!is_composing()) {
 		return 0;
 	}
 
-	size_t text_length = utf8::size(text_.text());
-	size_t text_cached_length = utf8::size(text_cached_);
+	std::size_t text_length = utf8::size(text_.text());
+	std::size_t text_cached_length = utf8::size(text_cached_);
 	if(text_length < text_cached_length) {
 		return 0;
 	}
@@ -198,9 +201,11 @@ size_t text_box_base::get_composition_length() const
 void text_box_base::interrupt_composition()
 {
 	ime_composing_ = false;
+#ifndef __ANDROID__
 	// We need to inform the IME that text input is no longer in progress.
 	SDL_StopTextInput();
 	SDL_StartTextInput();
+#endif
 }
 
 void text_box_base::copy_selection()
@@ -296,6 +301,13 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
+#ifdef __ANDROID__
+		if (state_ == state_t::FOCUSED) {
+			SDL_StartTextInput();
+		} else {
+			SDL_StopTextInput();
+		}
+#endif
 		queue_redraw();
 	}
 }
@@ -475,7 +487,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
-			SDL_Rect rect = get_rectangle();
+			rect rect = get_rectangle();
 			if(new_len > 0) {
 				rect.x += get_cursor_position(ime_start_point_).x;
 				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;

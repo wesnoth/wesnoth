@@ -53,57 +53,56 @@ tree_view_node::tree_view_node(const std::string& id,
 		return;
 	}
 
-	if(const auto opt = get_tree_view().get_node_definition(id)) {
-		const auto& node_definition = **opt;
+	const auto opt = get_tree_view().get_node_definition(id);
+	VALIDATE_WITH_DEV_MESSAGE(opt, _("Unknown builder id for tree view node."), id);
 
-		node_definition.builder->build(grid_);
-		init_grid(&grid_, data);
+	const auto& node_definition = **opt;
 
-		if(parent_node_ && parent_node_->toggle_) {
-			dynamic_cast<widget&>(*parent_node_->toggle_).set_visible(widget::visibility::visible);
+	node_definition.builder->build(grid_);
+	init_grid(&grid_, data);
+
+	if(parent_node_ && parent_node_->toggle_) {
+		dynamic_cast<widget&>(*parent_node_->toggle_).set_visible(widget::visibility::visible);
+	}
+
+	if(node_definition.unfolded) {
+		unfolded_ = true;
+	}
+
+	widget* toggle_widget = grid_.find("tree_view_node_toggle", false);
+	toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
+
+	if(toggle_) {
+		toggle_widget->set_visible(widget::visibility::hidden);
+
+		toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2));
+
+		toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2),
+			event::dispatcher::back_post_child);
+
+		if(unfolded_) {
+			toggle_->set_value(1);
 		}
+	}
 
-		if(node_definition.unfolded) {
-			unfolded_ = true;
+	widget* label_widget = grid_.find("tree_view_node_label", false);
+	label_ = dynamic_cast<selectable_item*>(label_widget);
+
+	if(label_) {
+		label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+			event::dispatcher::front_child);
+
+		label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+			event::dispatcher::front_pre_child);
+
+		if(!get_tree_view().selected_item_) {
+			get_tree_view().selected_item_ = this;
+			label_->set_value(true);
 		}
-
-		widget* toggle_widget = grid_.find("tree_view_node_toggle", false);
-		toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
-
-		if(toggle_) {
-			toggle_widget->set_visible(widget::visibility::hidden);
-
-			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2));
-
-			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_toggle_left_click, this, std::placeholders::_2),
-				event::dispatcher::back_post_child);
-
-			if(unfolded_) {
-				toggle_->set_value(1);
-			}
-		}
-
-		widget* label_widget = grid_.find("tree_view_node_label", false);
-		label_ = dynamic_cast<selectable_item*>(label_widget);
-
-		if(label_) {
-			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
-				event::dispatcher::front_child);
-
-			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
-				event::dispatcher::front_pre_child);
-
-			if(!get_tree_view().selected_item_) {
-				get_tree_view().selected_item_ = this;
-				label_->set_value(true);
-			}
-		}
-	} else {
-		FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 	}
 }
 
@@ -616,7 +615,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	return origin.y - offset;
 }
 
-void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
+void tree_view_node::set_visible_rectangle(const rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";
@@ -857,7 +856,7 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 	return below;
 }
 
-void tree_view_node::select_node(bool expand_parents)
+void tree_view_node::select_node(bool expand_parents, bool fire_event)
 {
 	if(!label_ || label_->get_value_bool()) {
 		return;
@@ -876,7 +875,9 @@ void tree_view_node::select_node(bool expand_parents)
 
 	get_tree_view().selected_item_ = this;
 
-	get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
+	if (fire_event) {
+		get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
+	}
 
 	label_->set_value_bool(true);
 }

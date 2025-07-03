@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 006a8fb9..64c6b72a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -78,7 +78,7 @@ LT_CURRENT  = @LT_CURRENT@
+ LT_RELEASE  = @LT_RELEASE@
+ LT_REVISION = @LT_REVISION@
+ LT_EXTRA    = @LT_EXTRA@
+-LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
++LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -avoid-version
+ 
+ all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
+ 

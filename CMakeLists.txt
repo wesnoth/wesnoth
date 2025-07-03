@@ -6,7 +6,7 @@ project(wesnoth)
 include(CheckCXXCompilerFlag)
 include(CTest)
 
-# use our own version of FindBoost.cmake and other Find* scripts
+# use our own version of Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
@@ -52,7 +52,15 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.67")
+set(BOOST_VERSION "1.70")
+set(BOOST_REQ_COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+
+if(ENABLE_TESTS)
+  list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
+endif()
+
+find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
+                                           OPTIONAL_COMPONENTS charconv process)
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)
@@ -93,7 +101,6 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -104,7 +111,7 @@ find_package(X11)
 
 if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
-	add_definitions(-DLUA_USE_POSIX)
+	add_compile_definitions(LUA_USE_POSIX)
 endif()
 
 #check for some compiler/arch specific things and export defines accordingly...
@@ -200,7 +207,7 @@ if(NOT MSVC)
 
 	endif()
 
-	set(COMPILER_FLAGS "-Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
+	set(COMPILER_FLAGS "-Wall -Wextra -Wno-c++20-extensions -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
@@ -310,7 +317,7 @@ if(NOT MSVC)
 		endif()
 
 		if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
-			add_definitions(-D_FORTIFY_SOURCE=2)
+			add_compile_definitions(_FORTIFY_SOURCE=2)
 		endif()
 	endif()
 
@@ -318,13 +325,13 @@ if(NOT MSVC)
 		set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
 	endif()
 
-	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
+	add_compile_definitions(WESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
 
 	if(X11_FOUND)
-		add_definitions(-D_X11)
+		add_compile_definitions(_X11)
 	endif()
 
-	add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+	add_compile_definitions(LOCALEDIR="${LOCALEDIR}")
 
 # -rdynamic is automatically added, but we don't need it, and it increases the executable size
 	RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
@@ -436,15 +443,15 @@ if(NOT MSVC)
 # Enabling GLIBCXX_ASSERTIONS puts bounds-checks on std::vector::operator[], etc
 	if(GLIBCXX_ASSERTIONS)
 		MESSAGE("Defining _GLIBCXX_ASSERTIONS")
-		add_definitions(-D_GLIBCXX_ASSERTIONS)
+		add_compile_definitions(_GLIBCXX_ASSERTIONS)
 	endif()
 
 # GLIBCXX_DEBUG enables more checks that GLIBCXX_ASSERTIONS, but changes the ABI of Boost's program_options library.
 # When _GLIBCXX_DEBUG is defined, _GLIBCXX_ASSERTIONS is automatically implied (Gnu's c++config.h will define it).
 	if(GLIBCXX_DEBUG)
 		MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
-		add_definitions(-D_GLIBCXX_DEBUG)
-		add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+		add_compile_definitions(_GLIBCXX_DEBUG)
+		add_compile_definitions(_GLIBCXX_DEBUG_PEDANTIC)
 	endif()
 
 # #
@@ -480,7 +487,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=0x0A00 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_compile_definitions(_WIN32_WINNT=0x0A00 _CRT_SECURE_NO_WARNINGS _WINSOCK_DEPRECATED_NO_WARNINGS NOMINMAX _MSVC_STL_HARDENING=1 _MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -498,30 +505,29 @@ endif()
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
 if(IS_ABSOLUTE "${LOCALEDIR}")
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
+	add_compile_definitions(HAS_RELATIVE_LOCALEDIR=0)
 	set(LOCALE_INSTALL ${LOCALEDIR})
 else()
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
+	add_compile_definitions(HAS_RELATIVE_LOCALEDIR=1)
 	set(LOCALE_INSTALL ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME}/${LOCALEDIR})
 endif()
 
-add_definitions(-DFIFODIR="${FIFO_DIR}")
+add_compile_definitions(FIFODIR="${FIFO_DIR}")
 
 if(PREFERENCES_DIR)
-	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR}")
+	add_compile_definitions(PREFERENCES_DIR="${PREFERENCES_DIR}")
 endif()
 
-
 if(DEFAULT_PREFS_FILE)
-	add_definitions(-DDEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE}")
+	add_compile_definitions(DEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE}")
 
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
-		add_definitions(-DHAS_RELATIVE_DEFPREF)
+		add_compile_definitions(HAS_RELATIVE_DEFPREF)
 	endif()
 endif()
 
 if(ENABLE_DEBUG_WINDOW_LAYOUT)
-	add_definitions(-DDEBUG_WINDOW_LAYOUT_GRAPHS)
+	add_compile_definitions(DEBUG_WINDOW_LAYOUT_GRAPHS)
 endif()
 
 #
@@ -546,20 +552,16 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 		find_package(SDL2_mixer CONFIG REQUIRED)
 	endif()
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
-	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.44.0)
-	pkg_check_modules(PANGO REQUIRED pango>=1.44.0)
+	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.50.0)
+	pkg_check_modules(PANGO REQUIRED pango>=1.50.0)
 	pkg_check_modules(LIBREADLINE readline)
-endif()
-
-if(ENABLE_TESTS)
-	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
 endif()
 
 if(ENABLE_GAME)
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
 		if(LIBDBUS_FOUND)
-			add_definitions(-DHAVE_LIBDBUS)
+			add_compile_definitions(HAVE_LIBDBUS)
 		else()
 			message("Could not find dbus-1, Disabling notification support.")
 		endif()
@@ -569,7 +571,7 @@ if(ENABLE_GAME)
 
 	find_package(History)
 	if(HISTORY_FOUND)
-		add_definitions(-DHAVE_HISTORY)
+		add_compile_definitions(HAVE_HISTORY)
 	endif()
 endif()
 

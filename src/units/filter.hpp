@@ -84,7 +84,7 @@ namespace unit_filter_impl
 		unit_filter_compound(const vconfig& cfg);
 
 		template<typename C, typename F>
-		void create_attribute(const config::attribute_value c, C conv, F func);
+		void create_attribute(const config::attribute_value& c, C conv, F func);
 		template<typename F>
 		void create_child(const vconfig& c, F func);
 
@@ -107,8 +107,8 @@ public:
 	unit_filter(const unit_filter&) = default;
 	unit_filter& operator=(const unit_filter&) = default;
 
-	unit_filter(unit_filter&&) = default;
-	unit_filter& operator=(unit_filter&&) = default;
+	unit_filter(unit_filter&&) noexcept = default;
+	unit_filter& operator=(unit_filter&&) noexcept = default;
 
 	unit_filter& set_use_flat_tod(bool value) {
 		use_flat_tod_ = value;

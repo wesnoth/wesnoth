@@ -372,6 +372,7 @@
 0 backstab_inactive_with_bobs_ally_behind_bob
 0 reflexive_drains
 0 reflexive_poison
+0 poison_id_no_work
 0 reflexive_slow
 0 replace_special_with_filter_in_attack_event_active
 0 replace_special_with_filter_in_attack_event_inactive
@@ -411,8 +412,43 @@
 0 taught_resistance_with_three_attack_types
 0 swarms_filter_student_by_type
 0 swarms_effects_not_checkable
+0 affect_adjacent_direction_active
+0 affect_adjacent_direction_inactive
+0 affect_distant_direction_active
+0 affect_distant_direction_inactive
+0 filter_adjacent_location_count_three_active
+0 filter_adjacent_location_count_zero_active
+0 filter_adjacent_location_count_zero_inactive
+0 filter_adjacent_active
+0 filter_adjacent_inactive
+0 filter_adjacent_student_active
+0 filter_adjacent_student_inactive
+0 filter_adjacent_direction_active
+0 filter_adjacent_direction_inactive
 0 filter_special_id_active
 0 filter_ability_special_id_active
+0 affect_distant_active
+0 affect_distant_inactive
+0 affect_distant_active_with_second_ability
+0 affect_distant_active_with_second_ability_type
+0 affect_distant_inactive_with_second_ability
+0 affect_distant_inactive_with_second_ability_type
+0 affect_distant_leadership_filter_weapon_match
+0 affect_distant_leadership_filter_weapon_no_match
+0 affect_distant_special_id_active_match
+0 affect_distant_special_id_active_no_match
+0 affect_distant_filter_special_match
+0 affect_distant_filter_special_no_match
+0 filter_filter_adjacent_self_inactive
+0 filter_adjacent_self_inactive
+0 filter_distant_active
+0 filter_distant_inactive
+0 filter_filter_distant_active
+0 filter_filter_distant_inactive
+0 filter_distant_direction_active
+0 filter_distant_direction_inactive
+0 filter_filter_distant_direction_active
+0 filter_filter_distant_direction_inactive
 0 filter_special_id_not_exists
 0 special_id_active_lua_function
 0 leadership_when_other_has_special
@@ -554,6 +590,8 @@
 0 heal_add_multiply
 0 heal_add_sub
 0 heal_affect_self
+0 heal_affect_allies
+0 heal_affect_allies_distant
 0 heal_affect_enemies
 0 heal_affect_everybody
 0 heal_divide
@@ -587,6 +625,8 @@
 0 regenerate_add_multiply
 0 regenerate_add_sub
 0 regenerate_affect_self_no
+0 regenerate_affect_allies
+0 regenerate_affect_allies_distant
 0 regenerate_affect_enemies
 0 regenerate_affect_everybody
 0 regenerate_divide
@@ -619,6 +659,8 @@
 0 resistance_add_multiply
 0 resistance_add_sub
 0 resistance_affect_self_no
+0 resistance_affect_allies
+0 resistance_affect_allies_distant
 0 resistance_affect_enemies
 0 resistance_affect_everybody
 0 resistance_divide
@@ -663,6 +705,8 @@
 0 leadership_add_multiply
 0 leadership_add_sub
 0 leadership_affect_self_no
+0 leadership_affect_allies
+0 leadership_affect_allies_distant
 0 leadership_affect_enemies
 0 leadership_affect_everybody
 0 leadership_divide
@@ -694,6 +738,7 @@
 0 illuminates_add_multiply
 0 illuminates_add_sub
 0 illuminates_affect_allies
+0 illuminates_affect_allies_distant
 0 illuminates_affect_enemies
 0 illuminates_affect_everybody
 0 illuminates_affect_self_no
@@ -756,6 +801,7 @@
 0 attacks_add_multiply
 0 attacks_add_sub
 0 attacks_affect_allies
+0 attacks_affect_allies_distant
 0 attacks_affect_self_no
 0 attacks_affect_enemies
 0 attacks_affect_everybody
@@ -791,6 +837,7 @@
 0 berserk_add_multiply
 0 berserk_add_sub
 0 berserk_affect_allies
+0 berserk_affect_allies_distant
 0 berserk_affect_self_no
 0 berserk_affect_enemies
 0 berserk_affect_everybody
@@ -825,6 +872,7 @@
 0 chance_to_hit_add_multiply
 0 chance_to_hit_add_sub
 0 chance_to_hit_affect_allies
+0 chance_to_hit_affect_allies_distant
 0 chance_to_hit_affect_self_no
 0 chance_to_hit_affect_enemies
 0 chance_to_hit_affect_everybody
@@ -857,6 +905,7 @@
 0 damage_add_multiply
 0 damage_add_sub
 0 damage_affect_allies
+0 damage_affect_allies_distant
 0 damage_affect_self_no
 0 damage_affect_enemies
 0 damage_affect_everybody
@@ -912,6 +961,7 @@
 # disable tests
 0 disable_ability
 0 disable_affect_allies
+0 disable_affect_allies_distant
 0 disable_affect_self_no
 0 disable_affect_enemies
 0 disable_affect_everybody
@@ -923,6 +973,7 @@
 0 drains_add_multiply
 0 drains_add_sub
 0 drains_affect_allies
+0 drains_affect_allies_distant
 0 drains_affect_self_no
 0 drains_affect_enemies
 0 drains_affect_everybody
@@ -956,6 +1007,7 @@
 # firststrike tests
 0 firststrike_ability
 0 firststrike_affect_allies
+0 firststrike_affect_allies_distant
 0 firststrike_affect_self_no
 0 firststrike_affect_enemies
 0 firststrike_affect_everybody
@@ -967,6 +1019,7 @@
 0 heal_on_hit_add_multiply
 0 heal_on_hit_add_sub
 0 heal_on_hit_affect_allies
+0 heal_on_hit_affect_allies_distant
 0 heal_on_hit_affect_self_no
 0 heal_on_hit_affect_enemies
 0 heal_on_hit_affect_everybody
@@ -997,12 +1050,14 @@
 # petrifies tests
 0 petrifies_ability
 0 petrifies_affect_allies
+0 petrifies_affect_allies_distant
 0 petrifies_affect_self_no
 0 petrifies_affect_enemies
 0 petrifies_affect_everybody
 # plague tests
 0 plague_ability
 0 plague_affect_allies
+0 plague_affect_allies_distant
 0 plague_affect_self_no
 0 plague_affect_enemies
 0 plague_affect_everybody
@@ -1011,17 +1066,20 @@
 # poison tests
 0 poison_ability
 0 poison_affect_allies
+0 poison_affect_allies_distant
 0 poison_affect_self_no
 0 poison_affect_enemies
 0 poison_affect_everybody
 # slow tests
 0 slow_ability
 0 slow_affect_allies
+0 slow_affect_allies_distant
 0 slow_affect_self_no
 0 slow_affect_enemies
 0 slow_affect_everybody
 # swarm tests
 0 swarm_affect_allies
+0 swarm_affect_allies_distant
 0 swarm_affect_enemies
 0 swarm_affect_everybody
 0 swarm_affect_self_no

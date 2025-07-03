@@ -382,7 +382,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	cv[i - 1].set_cfg(cfg);
+	cv[i - 1].set_shapes(cfg);
 	c->queue_redraw();
 	return 0;
 }

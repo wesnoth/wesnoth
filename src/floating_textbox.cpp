@@ -59,7 +59,7 @@ namespace gui{
 		if (box_ == nullptr)
 			return;
 
-		const SDL_Rect& area = gui.map_outside_area();
+		const rect& area = gui.map_outside_area();
 
 		const int border_size = 10;
 
@@ -79,7 +79,7 @@ namespace gui{
 		if (label_ == 0)
 			return;
 
-		const SDL_Rect& label_area = font::get_floating_label_rect(label_);
+		const rect& label_area = font::get_floating_label_rect(label_);
 		const int textbox_width = area.w - label_area.w - border_size*3;
 
 		if(textbox_width <= 0) {
@@ -88,7 +88,7 @@ namespace gui{
 		}
 
 		if(box_ != nullptr) {
-			const SDL_Rect rect {
+			const rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width
@@ -137,8 +137,8 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
-					events::chat_handler::MESSAGE_PRIVATE, false);
+			game_display::get_singleton()->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, completion_list, events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);
 	}

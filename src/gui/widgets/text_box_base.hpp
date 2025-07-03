@@ -62,8 +62,9 @@ public:
 	void set_maximum_length(const std::size_t maximum_length);
 
 	/**
-	 * Wrapper function, returns length of the text in pango column offsets.
-	 * See @ref font::pango_text::get_length.
+	 * Wrapper function, see @ref font::pango_text::get_length.
+	 *
+	 * @returns length of the text in pango column offsets.
 	 */
 	std::size_t get_length() const
 	{
@@ -71,8 +72,9 @@ public:
 	}
 
 	/**
-	 * Wrapper function, returns a vector with the lines.
-	 * See @ref font::pango_text::get_lines.
+	 * Wrapper function, see @ref font::pango_text::get_lines.
+	 *
+	 * @returns returns a vector with the lines.
 	 */
 	std::vector<std::string> get_lines()
 	{
@@ -80,9 +82,9 @@ public:
 	}
 
 	/**
-	 * Wrapper function, returns the line corresponding
-	 * to index.
-	 * See @ref font::pango_text::get_line.
+	 * Wrapper function, see @ref font::pango_text::get_line.
+	 *
+	 * @returns the line corresponding to index.
 	 */
 	PangoLayoutLine* get_line(int index)
 	{
@@ -90,19 +92,19 @@ public:
 	}
 
 	/**
-	 * Wrapper function, return the line number
-	 * given the byte index.
-	 * See @ref font::pango_text::get_line_num_from_offset.
+	 * Wrapper function, see @ref font::pango_text::index_to_line_x.
+	 *
+	 * @returns the line number given the byte index.
 	 */
 	int get_line_number(const unsigned offset)
 	{
-		return text_.get_line_num_from_offset(offset);
+		return text_.index_to_line_x(offset).first;
 	}
 
 	/**
-	 * Wrapper function, return the cursor position
-	 * given the byte index.
-	 * See @ref font::pango_text::get_cursor_pos_from_index.
+	 * Wrapper function, see @ref font::pango_text::get_cursor_pos_from_index.
+	 *
+	 * @returns the cursor position given the byte index.
 	 */
 	point get_cursor_pos_from_index(const unsigned offset) const
 	{
@@ -110,8 +112,9 @@ public:
 	}
 
 	/**
-	 * Wrapper function, return number of lines.
-	 * See @ref font::pango_text::get_lines_count.
+	 * Wrapper function, see @ref font::pango_text::get_lines_count.
+	 *
+	 * @returns the number of lines.
 	 */
 	unsigned get_lines_count() const
 	{
@@ -208,7 +211,7 @@ public:
 
 protected:
 	/** Get length of composition text by IME **/
-	size_t get_composition_length() const;
+	std::size_t get_composition_length() const;
 
 	/**
 	 * Moves the cursor to the end of the line.
@@ -307,15 +310,9 @@ protected:
 		return text_.get_column_line(position);
 	}
 
-	font::family_class get_font_family()
-	{
-		return font_family_;
-	}
-
 	void set_font_family(font::family_class fclass)
 	{
-		font_family_ = fclass;
-		text_.set_family_class(font_family_);
+		text_.set_family_class(fclass);
 	}
 
 	void set_font_size(const unsigned font_size)
@@ -401,9 +398,6 @@ private:
 
 	/** The text entered in the widget. */
 	font::pango_text text_;
-
-	/** font family */
-	font::family_class font_family_;
 
 	/** Cached version of the text without any pending IME modifications. */
 	std::string text_cached_;

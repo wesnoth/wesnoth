@@ -316,7 +316,7 @@ void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
@@ -467,9 +467,8 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	pos.vulnerability = 10000.0;
 	pos.support = 0.0;
 
-	typedef move_map::const_iterator Itor;
-	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
-	for(Itor i = itors.first; i != itors.second; ++i) {
+	auto itors = srcdst.equal_range(loc);
+	for(auto i = itors.first; i != itors.second; ++i) {
 		const int defense = itor->defense_modifier(resources::gameboard->map().get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
@@ -1011,9 +1010,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 		const t_translation::terrain_code terrain = map_[locs[i]];
 
-		typedef move_map::const_iterator Itor;
-		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
+		auto its = dstsrc.equal_range(locs[i]);
 
 		map_location* const beg_used = used_locs;
 		map_location* end_used = used_locs + num_used_locs;
@@ -1021,7 +1018,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 		int best_rating = 0;
 		map_location best_unit;
 
-		for(Itor it = its.first; it != its.second; ++it) {
+		for(auto it = its.first; it != its.second; ++it) {
 			const unit_map::const_iterator u = units_.find(it->second);
 
 			// Unit might have been killed, and no longer exist

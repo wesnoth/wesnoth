@@ -265,7 +265,7 @@ rect to_output(const rect& draw_space_rect);
  *                If not null, this will be modified to reflect the
  *                portion of the draw area that has been returned.
  */
-surface read_pixels(SDL_Rect* r = nullptr);
+surface read_pixels(rect* r = nullptr);
 
 /**
  * The same as read_pixels, but returns a low-resolution surface
@@ -273,7 +273,7 @@ surface read_pixels(SDL_Rect* r = nullptr);
  *
  * This should be considered deprecated, and phased out ASAP.
  */
-surface read_pixels_low_res(SDL_Rect* r = nullptr);
+surface read_pixels_low_res(rect* r = nullptr);
 
 
 /****************************/

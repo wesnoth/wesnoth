@@ -103,22 +103,22 @@ public:
 	void rename_area_dialog();
 
 	/** Menu expanding for open maps list */
-	void expand_open_maps_menu(std::vector<config>& items, int i);
+	void expand_open_maps_menu(std::vector<config>& items) const;
 
 	/** Menu expanding for most recent loaded list */
-	void expand_load_mru_menu(std::vector<config>& items, int i);
+	void expand_load_mru_menu(std::vector<config>& items) const;
 
 	/** Menu expanding for the map's player sides */
-	void expand_sides_menu(std::vector<config>& items, int i);
+	void expand_sides_menu(std::vector<config>& items) const;
 
 	/** Menu expanding for the map's defined areas */
-	void expand_areas_menu(std::vector<config>& items, int i);
+	void expand_areas_menu(std::vector<config>& items) const;
 
 	/** Menu expanding for the map's defined areas */
-	void expand_time_menu(std::vector<config>& items, int i);
+	void expand_time_menu(std::vector<config>& items) const;
 
 	/** Menu expanding for the map's defined areas */
-	void expand_local_time_menu(std::vector<config>& items, int i);
+	void expand_local_time_menu(std::vector<config>& items) const;
 
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
@@ -261,6 +261,11 @@ public:
 	/** Switches the context to the one under the specified index. */
 	void switch_context(const int index, const bool force = false);
 
+	/**
+	 * Convert existing map to scenario.
+	 */
+	void map_to_scenario();
+
 private:
 	/**
 	 * Save the map under a given filename. Displays an error message on failure.
@@ -268,6 +273,8 @@ private:
 	 */
 	bool write_map(bool display_confirmation = true);
 	bool write_scenario(bool display_confirmation = true);
+
+	void init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map = true);
 
 	/**
 	 * Create a new map.

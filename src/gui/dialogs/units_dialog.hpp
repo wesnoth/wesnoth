@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/sort_order.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -45,16 +46,31 @@ public:
 		return selected_index_ != -1;
 	}
 
+	void set_selected_index(int selected)
+	{
+		selected_index_ = selected;
+	}
+
 	/** Gender choice from the user. */
 	unit_race::GENDER gender() const
 	{
 		return gender_;
 	}
 
+	void set_gender(const unit_race::GENDER gender)
+	{
+		gender_ = gender;
+	}
+
 	/** Variation choice from the user. */
 	std::string variation() const
 	{
 		return variation_;
+	}
+
+	void set_variation(const std::string& variation)
+	{
+		variation_ = variation;
 	}
 
 	void clear_variation()
@@ -94,6 +110,12 @@ public:
 		return *this;
 	}
 
+	units_dialog& set_show_favorite(bool show = true)
+	{
+		show_mark_favorite_ = show;
+		return *this;
+	}
+
 	units_dialog& set_show_variations(bool show = true)
 	{
 		show_variations_ = show;
@@ -109,6 +131,12 @@ public:
 	units_dialog& set_row_num(const std::size_t row_num)
 	{
 		num_rows_ = row_num;
+		return *this;
+	}
+
+	units_dialog& set_sort_by(std::pair<std::string, sort_order::type> sort_order)
+	{
+		sort_order_ = sort_order;
 		return *this;
 	}
 
@@ -208,8 +236,10 @@ private:
 
 	bool show_rename_;
 	bool show_dismiss_;
+	bool show_mark_favorite_;
 	bool show_variations_;
 
+	std::pair<std::string, sort_order::type> sort_order_;
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
 	std::function<std::vector<std::string>(std::size_t)> filter_gen_;
@@ -231,6 +261,7 @@ private:
 	// FIXME only thing needing team
 	void dismiss_unit(std::vector<unit_const_ptr>& unit_list, const team& team);
 	void rename_unit(std::vector<unit_const_ptr>& unit_list);
+	void toggle_favorite(std::vector<unit_const_ptr>& unit_list);
 
 	void show_list(listbox& list);
 	void show_help() const;

@@ -25,7 +25,6 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "font/attributes.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -37,12 +36,11 @@
 #include "picture.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // blur_surface
 #include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
-
-#include <iostream>
 
 namespace gui2
 {
@@ -220,22 +218,18 @@ void circle_shape::draw(wfl::map_formula_callable& variables)
 	 * silly unless there has been a resize. So to optimize we should use an
 	 * extra flag or do the calculation in a separate routine.
 	 */
-
 	const int x = x_(variables);
 	const int y = y_(variables);
 	const unsigned radius = radius_(variables);
-
-	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
-
 	const color_t fill_color = fill_color_(variables);
-	if(!fill_color.null() && radius) {
-		draw::disc(x, y, radius, fill_color);
+	if (!fill_color.null()) {
+		draw::cairo_disc(x, y, radius, fill_color);
 	}
 
 	const color_t border_color = border_color_(variables);
-	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw::circle(x, y, radius - i, border_color);
-	}
+	draw::cairo_circle(x, y, radius, border_color, border_thickness_);
+
+	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
@@ -332,7 +326,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
 
-	const SDL_Rect dst_rect { x, y, w, h };
+	const rect dst_rect { x, y, w, h };
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch(resize_mode_) {
@@ -394,26 +388,88 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
+namespace
+{
+/** Populates the attribute list from the given config child range. */
+auto parse_attributes(const config::const_child_itors& range)
+{
+	// TODO: most of the time this will be empty, unless you're using rich_label.
+	// It's a lot of memory allocations to always have a valid object here...
+	// Do we need store it as an optional?
+	font::attribute_list text_attributes;
+
+	for(const config& attr : range) {
+		const std::string name = attr["name"];
+
+		if(name.empty()) {
+			continue;
+		}
+
+		const unsigned start = attr["start"].to_int(PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING);
+		const unsigned end = attr["end"].to_int(PANGO_ATTR_INDEX_TO_TEXT_END);
+
+		// Attributes with start == end set won't do anything, so skip
+		if (start == end) {
+			WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
+			continue;
+		}
+
+		if (name == "color" || name == "fgcolor" || name == "foreground") {
+			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "bgcolor" || name == "background") {
+			add_attribute_bg_color(text_attributes, start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
+		} else if (name == "font_size" || name == "size") {
+			add_attribute_size(text_attributes, start, end, attr["value"].to_int(font::SIZE_NORMAL));
+		} else if (name == "font_family" || name == "face") {
+			add_attribute_font_family(text_attributes, start, end, font::decode_family_class(attr["value"]));
+		} else if (name == "weight") {
+			add_attribute_weight(text_attributes, start, end, decode_text_weight(attr["value"]));
+		} else if (name == "style") {
+			add_attribute_style(text_attributes, start, end, decode_text_style(attr["value"]));
+		} else if (name == "bold" || name == "b") {
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_BOLD);
+		} else if (name == "italic" || name == "i") {
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
+		} else if (name == "underline" || name == "u") {
+			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
+		} else if (name == "line_height") {
+			add_attribute_line_height(text_attributes, start, end, attr["value"].to_double());
+		} else if (name == "image") { // An inline image that behave as a custom text glyph
+			add_attribute_image_shape(text_attributes, start, end, attr["value"]);
+		} else {
+			// Unsupported formatting or normal text
+			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
+			add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
+		}
+	}
+
+	return text_attributes;
+}
+
+} // anon namespace
+
 text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
-	, cfg_(cfg)
-	, font_family_(font::str_to_family_class(cfg["font_family"]))
+	, font_family_(font::decode_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
-	, color_(cfg["color"])
+	, color_(cfg["color"], font::NORMAL_COLOR)
 	, text_(cfg["text"])
+	, parse_text_as_formula_(cfg["parse_text_as_formula"].to_bool(true))
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
-	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
+	, link_color_(cfg["text_link_color"], font::YELLOW_COLOR)
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
 	, maximum_height_(cfg["maximum_height"], -1)
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, line_spacing_(cfg["line_spacing"].to_double(font::get_line_spacing_factor()))
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
+	, text_attributes_(parse_attributes(cfg.child_range("attribute")))
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -428,14 +484,14 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	const t_string& text = cfg_["parse_text_as_formula"].to_bool(true) ? text_(variables) : cfg_["text"].t_str();
+	const auto text = parse_text_as_formula_
+		? typed_formula<t_string>{text_}(variables)
+		: text_.t_str();
 
 	if(text.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
-
-	font::attribute_list text_attributes;
 
 	//
 	// Highlight
@@ -444,45 +500,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int highlight_end = highlight_end_(variables);
 
 	if(highlight_start != highlight_end) {
-		add_attribute_bg_color(text_attributes, highlight_start, highlight_end, highlight_color_(variables));
-	}
-
-	//
-	// Attribute subtags
-	//
-	for (const auto& attr : cfg_.child_range("attribute")) {
-		const std::string& name = attr["name"];
-
-		if (name.empty()) {
-			continue;
-		}
-
-		const unsigned start = attr["start"].to_int(0);
-		const unsigned end = attr["end"].to_int(text.size());
-
-		if (name == "color" || name == "fgcolor" || name == "foreground") {
-			add_attribute_fg_color(text_attributes, start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
-		} else if (name == "bgcolor" || name == "background") {
-			add_attribute_bg_color(text_attributes, start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
-		} else if (name == "font_size" || name == "size") {
-			add_attribute_size(text_attributes, start, end, attr["value"].to_int(font::SIZE_NORMAL));
-		} else if (name == "font_family" || name == "face") {
-			add_attribute_font_family(text_attributes, start, end, font::str_to_family_class(attr["value"]));
-		} else if (name == "weight") {
-			add_attribute_weight(text_attributes, start, end, decode_text_weight(attr["value"]));
-		} else if (name == "style") {
-			add_attribute_style(text_attributes, start, end, decode_text_style(attr["value"]));
-		} else if (name == "bold" || name == "b") {
-			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_BOLD);
-		} else if (name == "italic" || name == "i") {
-			add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
-		} else if (name == "underline" || name == "u") {
-			add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
-		} else {
-			// Unsupported formatting or normal text
-			add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
-			add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
-		}
+		add_attribute_bg_color(text_attributes_, highlight_start, highlight_end, highlight_color_(variables));
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
@@ -493,7 +511,8 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_link_color(link_color_(variables))
 		.set_text(text, text_markup_(variables));
 
-	text_renderer.set_family_class(font_family_)
+	text_renderer
+		.set_family_class(font_family_)
 		.set_font_size(font_size_(variables))
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
@@ -504,10 +523,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_)
-		.set_add_outline(outline_(variables));
+		.set_add_outline(outline_(variables))
+		.set_line_spacing(line_spacing_);
 
 	// Do this last so it can merge with attributes from markup
-	text_renderer.apply_attributes(text_attributes);
+	text_renderer.apply_attributes(text_attributes_);
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();
@@ -545,28 +565,17 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
-canvas::canvas()
+canvas::canvas(const config& cfg)
 	: shapes_()
 	, blur_depth_(0)
-	, blur_region_(sdl::empty_rect)
+	, blur_region_()
 	, deferred_(false)
 	, w_(0)
 	, h_(0)
 	, variables_()
 	, functions_()
 {
-}
-
-canvas::canvas(canvas&& c) noexcept
-	: shapes_(std::move(c.shapes_))
-	, blur_depth_(c.blur_depth_)
-	, blur_region_(c.blur_region_)
-	, deferred_(c.deferred_)
-	, w_(c.w_)
-	, h_(c.h_)
-	, variables_(c.variables_)
-	, functions_(c.functions_)
-{
+	parse_cfg(cfg);
 }
 
 // It would be better if the blur effect was managed at a higher level.

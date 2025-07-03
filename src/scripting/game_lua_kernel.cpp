@@ -121,7 +121,6 @@
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
 #include <map>                          // for map, map<>::value_type, etc
-#include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
 #include <thread>
@@ -193,8 +192,8 @@ void game_lua_kernel::log_error(char const * msg, char const * context)
 void game_lua_kernel::lua_chat(const std::string& caption, const std::string& msg)
 {
 	if (game_display_) {
-		game_display_->get_chat_manager().add_chat_message(std::time(nullptr), caption, 0, msg,
-			events::chat_handler::MESSAGE_PUBLIC, false);
+		game_display_->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), caption, 0, msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
@@ -1126,6 +1125,30 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_pushinteger(L, info.gives_healing());
 	lua_setfield(L, -2, "healing");
 
+	// movement alias
+	lua_newtable(L);
+	int idx = 1;
+	for (const auto& terrain : info.mvt_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "mvt_alias");
+
+	// defense alias
+	lua_newtable(L);
+	idx = 1;
+	for (const auto& terrain : info.def_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "def_alias");
+
 	return 1;
 }
 
@@ -1472,7 +1495,7 @@ static int impl_mp_settings_get(lua_State* L)
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
 		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
-		size_t i = luaL_checkinteger(L, 2);
+		std::size_t i = luaL_checkinteger(L, 2);
 		if(i == 1) {
 			lua_createtable(L, 2, 0);
 			lua_pushstring(L, "options");
@@ -2523,8 +2546,10 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
 }
 
 /**
- * Arg 1: text - string
- * Arg 2: options table
+ * Create a new floating label or replace an existing one.
+ * Arg 1: label handle to be replaced (optional). If unspecified, a new floating label is created.
+ * Arg 2: text - string
+ * Arg 3: options table
  * - size: font size
  * - max_width: max width for word wrapping
  * - color: font color
@@ -2539,7 +2564,19 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
  */
 int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 {
-	t_string text = luaW_checktstring(L, 1);
+	int idx = 1;
+	int* handle = nullptr;
+	if(spawn) {
+		// Creating a new label, allocate a new handle
+		handle = new(L)int();
+	} else {
+		// First argument is the label handle
+		handle = luaW_check_floating_label(L, idx);
+		idx++;
+	}
+	int handle_idx = lua_gettop(L);
+
+	t_string text = luaW_checktstring(L, idx);
 	int size = font::SIZE_SMALL;
 	int width = 0;
 	double width_ratio = 0;
@@ -2550,11 +2587,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	// everything needed to read in a pair of coordinates.
 	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
 	map_location loc{0, 0, wml_loc()};
-	if(lua_istable(L, 2)) {
-		if(luaW_tableget(L, 2, "size")) {
+	if(lua_istable(L, idx+1)) {
+		if(luaW_tableget(L, idx+1, "size")) {
 			size = luaL_checkinteger(L, -1);
 		}
-		if(luaW_tableget(L, 2, "max_width")) {
+		if(luaW_tableget(L, idx+1, "max_width")) {
 			int found_number;
 			width = lua_tointegerx(L, -1, &found_number);
 			if(!found_number) {
@@ -2570,7 +2607,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 
 			}
 		}
-		if(luaW_tableget(L, 2, "color")) {
+		if(luaW_tableget(L, idx+1, "color")) {
 			if(lua_isstring(L, -1)) {
 				color = color_t::from_hex_string(lua_tostring(L, -1));
 			} else {
@@ -2591,7 +2628,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 			}
 		}
-		if(luaW_tableget(L, 2, "bgcolor")) {
+		if(luaW_tableget(L, idx+1, "bgcolor")) {
 			if(lua_isstring(L, -1)) {
 				bgcolor = color_t::from_hex_string(lua_tostring(L, -1));
 			} else {
@@ -2612,11 +2649,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 				bgcolor.a = ALPHA_OPAQUE;
 			}
-			if(luaW_tableget(L, 2, "bgalpha")) {
+			if(luaW_tableget(L, idx+1, "bgalpha")) {
 				bgcolor.a = luaL_checkinteger(L, -1);
 			}
 		}
-		if(luaW_tableget(L, 2, "duration")) {
+		if(luaW_tableget(L, idx+1, "duration")) {
 			int found_number;
 			lifetime = lua_tointegerx(L, -1, &found_number);
 			if(!found_number) {
@@ -2628,37 +2665,27 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 			}
 		}
-		if(luaW_tableget(L, 2, "fade_time")) {
+		if(luaW_tableget(L, idx+1, "fade_time")) {
 			fadeout = lua_tointeger(L, -1);
 		}
-		if(luaW_tableget(L, 2, "location")) {
+		if(luaW_tableget(L, idx+1, "location")) {
 			loc = luaW_checklocation(L, -1);
 		}
-		if(luaW_tableget(L, 2, "halign")) {
+		if(luaW_tableget(L, idx+1, "halign")) {
 			static const char* options[] = {"left", "center", "right"};
 			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
-		if(luaW_tableget(L, 2, "valign")) {
+		if(luaW_tableget(L, idx+1, "valign")) {
 			static const char* options[] = {"top", "center", "bottom"};
 			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
 	}
 
-	int* handle = nullptr;
-	if(spawn) {
-		// Creating a new label, allocate a new handle
-		handle = new(L)int();
-	} else {
-		// First argument is the label handle
-		handle = luaW_check_floating_label(L, 1);
-	}
-	int handle_idx = lua_gettop(L);
-
 	if(*handle != 0) {
 		font::remove_floating_label(*handle);
 	}
 
-	const SDL_Rect rect = game_display_->map_outside_area();
+	const rect rect = game_display_->map_outside_area();
 	if(width_ratio > 0) {
 		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}
@@ -2771,6 +2798,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
@@ -2786,6 +2814,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		u->anim_comp().reset_affect_adjacent(units());
 	}
 
 	// Fire event if using the deprecated version or if the final argument is not false
@@ -2814,6 +2843,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			u->anim_comp().reset_affect_adjacent(units());
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
@@ -2876,6 +2906,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
+			u->anim_comp().reset_affect_adjacent(units());
 		}
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
@@ -2900,6 +2931,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
 		unit_ptr v = u->clone();
@@ -2932,6 +2964,9 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u = unit::create(cfg, false, vcfg);
+			if (u->get_location().valid()) {
+				u->anim_comp().reset_affect_adjacent(units());
+			}
 		}
 	}
 
@@ -2965,6 +3000,25 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	return 0;
 }
 
+namespace
+{
+	const unit_map& get_unit_map()
+	{
+		// Used if we're in the game, including during the construction of the display_context
+		if(resources::gameboard) {
+			return resources::gameboard->units();
+		}
+
+		// If we get here, we're in the scenario editor
+		assert(display::get_singleton());
+		return display::get_singleton()->context().units();
+	}
+	void reset_affect_adjacent(const unit& unit)
+	{
+		unit.anim_comp().reset_affect_adjacent(get_unit_map());
+	}
+}
+
 /**
  * Creates a unit from its WML description.
  * - Arg 1: WML table.
@@ -2976,6 +3030,9 @@ static int intf_create_unit(lua_State *L)
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u  = unit::create(cfg, true, vcfg);
 	luaW_pushunit(L, u);
+	if (u->get_location().valid()) {
+		reset_affect_adjacent(*u);
+	}
 	return 1;
 }
 
@@ -3135,6 +3192,9 @@ static int intf_transform_unit(lua_State *L)
 		utp = &utp->get_variation(m2);
 	}
 	u.advance_to(*utp);
+	if (u.get_location().valid()) {
+		reset_affect_adjacent(u);
+	}
 
 	return 0;
 }
@@ -4496,7 +4556,7 @@ int game_lua_kernel::intf_get_label(lua_State* L)
 				break;
 			// Side number - get label belonging to that side's team
 			case LUA_TNUMBER:
-				if(size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
+				if(std::size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
 					label = screen.labels().get_label(loc, teams().at(n - 1).team_name());
 				}
 				break;
@@ -4625,13 +4685,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_rawset(L, -3);
 	}
 
-
-	std::vector<std::string> c_types = c->get_children_types();
-
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); ++t)
-	{
-		std::vector<ai::component*> children = c->get_children(*t);
-		std::string type = *t;
+	for(const std::string& type : c->get_children_types()) {
 		if (type == "aspect" || type == "goal" || type == "engine")
 		{
 			continue;
@@ -4640,10 +4694,9 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
 
-		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); ++i)
-		{
-			lua_pushstring(L, (*i)->get_name().c_str());
-			push_component(L, *i, type);
+		for(ai::component* child : c->get_children(type)) {
+			lua_pushstring(L, child->get_name().c_str());
+			push_component(L, child, type);
 			lua_rawset(L, -3);
 
 			//if (type == "candidate_action")
@@ -4655,8 +4708,6 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 
 		lua_rawset(L, -3); // setting the child table
 	}
-
-
 }
 
 /**
@@ -4680,13 +4731,10 @@ static int intf_debug_ai(lua_State *L)
 	ai::component* c = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
 
 	// Bad, but works
-	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = nullptr;
-	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); ++i)
-	{
-		if ((*i)->get_name() == "lua")
-		{
-			lua_engine = dynamic_cast<ai::engine_lua *>(*i);
+	for(ai::component* engine : c->get_children("engine")) {
+		if(engine->get_name() == "lua") {
+			lua_engine = dynamic_cast<ai::engine_lua*>(engine);
 		}
 	}
 
@@ -5292,10 +5340,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create the unit_types table
 	cmd_log_ << lua_unit_type::register_table(L);
 
-	// Create the unit_types table
+	// Create the terrainmap metatables
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 
-	// Create the unit_types table
+	// Create the terrain_types table
 	cmd_log_ << "Adding terrain_types table...\n";
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdatauv(L, 0, 0);

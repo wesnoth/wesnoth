@@ -50,7 +50,7 @@ Wesnoth can be played on Windows, macOS, and Linux, and can be installed using:
 * standalone installers on [SourceForge](https://sourceforge.net/projects/wesnoth/files/) (Windows and macOS)
 * [Flatpak](https://flathub.org/apps/details/org.wesnoth.Wesnoth) (Linux)
 
-Additionally, Wesnoth is available for [iOS](https://apps.apple.com/us/app/battle-for-wesnoth/id575852062) and [Android](https://sourceforge.net/projects/wesnoth-on-android/files/).
+Additionally, ports are available for [iOS](https://apps.apple.com/us/app/battle-for-wesnoth/id575852062) and [Android](https://sourceforge.net/projects/wesnoth/files/android/). The iOS port is currently unmaintained and is for an older version (1.14). The Android port is available for 1.19 only (alpha).
 
 To build the game from source, see [INSTALL](/INSTALL.md) for instructions.
 
@@ -58,10 +58,10 @@ Contributing
 ------------
 
 Wesnoth is most in need of skilled C++ developers (C++14 and later), however there are things that nearly anyone can help with:
-* Simple tasks in C++. 
-* The Lua and WML used for content scripting. 
+* Simple tasks in C++.
+* The Lua and WML used for content scripting.
 * Python used by various external tools.
-* Even play testing and giving feedback on updated campaigns! 
+* Even play testing and giving feedback on updated campaigns!
 
 Additionally, Wesnoth lacks art for a variety of unit animations - anyone who would be interested in lending a hand in updating existing unit sprites or creating animations should take a look at the [Art Contributions](https://forums.wesnoth.org/viewforum.php?f=9) forum as well as contact our current art director.
 

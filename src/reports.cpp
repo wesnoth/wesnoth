@@ -20,15 +20,18 @@
 #include "color.hpp"
 #include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -40,7 +43,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/format.hpp>
-#include <ctime>
 #include <iomanip>
 #include <utility>
 
@@ -188,19 +190,19 @@ REPORT_GENERATOR(selected_unit_name, rc)
 
 static config unit_type(const unit* u)
 {
-	if (!u) return config();
-	std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
-	std::ostringstream str, tooltip;
-	str << u->type_name();
+	if(!u) return config();
+
+	std::ostringstream tooltip;
 	tooltip << _("Type: ") << markup::bold(u->type_name()) << "\n"
-		<< u->unit_description();
+	        << u->unit_description();
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
 			tooltip << font::unicode_bullet << " " << note << '\n';
 		}
 	}
-	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
+
+	return text_report(u->type_name(), tooltip.str(), help::get_unit_type_help_id(u->type()));
 }
 REPORT_GENERATOR(unit_type, rc)
 {
@@ -429,7 +431,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 		if(active[i]) {
 			str << display_name;
 		} else {
-			str << span_color(font::inactive_ability_color, display_name);
+			str << span_color(font::INACTIVE_COLOR, display_name);
 		}
 
 		if(i + 1 != abilities_size) {
@@ -922,7 +924,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
-				int resistance = enemy.resistance_against(at, false, loc);
+				auto ctx = at.specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
+				int resistance = enemy.resistance_against(at, false, loc, nullptr);
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}
@@ -1006,10 +1009,50 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			const t_string &name = specials[i].first;
 			const t_string &description = specials[i].second;
 			const color_t &details_color =
-				active[i] ? font::weapon_details_color : font::inactive_details_color;
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
 			std::string help_page = "weaponspecial_" + name.base_str();
+			tooltip << _("Weapon special: ") << markup::bold(name);
+			if (!active[i]) {
+				tooltip << markup::italic(_(" (inactive)"));
+			}
+			tooltip << '\n' << description;
+
+			add_text(res, flush(str), flush(tooltip), help_page);
+		}
+
+		if(!specials.empty()) {
+			// Add some padding so the end of the specials list
+			// isn't too close vertically to the attack icons of
+			// the next attack. Also for symmetry with the padding
+			// above the list of specials (below the attack icon line).
+			const std::string spacer = "misc/blank.png~CROP(0, 0, 1, 5)";
+			add_image(res, spacer, "");
+			add_text(res, "\n", "");
+		}
+	}
+
+	// 'abilities' version of special_tooltips is below.
+	{
+		//If we have a second unit, do the 2-unit specials_context
+		bool attacking = (u.side() == rc.screen().playing_team().side());
+		auto ctx = (sec_u == nullptr)
+	? at.specials_context(u.shared_from_this(), hex, attacking)
+	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
+
+		boost::dynamic_bitset<> active;
+		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
+		const std::size_t specials_size = specials.size();
+		for ( std::size_t i = 0; i != specials_size; ++i )
+		{
+			// Aliases for readability:
+			const auto& [name, description] = specials[i];
+			const color_t& details_color =
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+
+			str << span_color(details_color, "  ", "  ", name) << '\n';
+			const std::string help_page = "weaponspecial_" + name.base_str();
 			tooltip << _("Weapon special: ") << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));
@@ -1139,12 +1182,12 @@ static config unit_weapons(const reports::context& rc, const unit_const_ptr& att
 		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
 
 		//TODO fendrin -- make that dynamically
-		size_t max_hp_distrib_rows_ = 10;
+		std::size_t max_hp_distrib_rows_ = 10;
 
 		// We store a few of the highest probability hitpoint values.
-		size_t nb_elem = std::min<size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
+		std::size_t nb_elem = std::min<std::size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
 
-		for(size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
+		for(std::size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
 			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 
@@ -1171,9 +1214,9 @@ static config unit_weapons(const reports::context& rc, const unit_const_ptr& att
  * Display the attacks of the displayed unit against the unit passed as argument.
  * 'hex' is the location the attacker will be at during combat.
  */
-static config unit_weapons(const reports::context& rc, const unit *u, const map_location &hex)
+static config unit_weapons(const reports::context& rc, const unit* u, const map_location& hex)
 {
-	config res = config();
+	config res;
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
@@ -1189,7 +1232,7 @@ static config unit_weapons(const reports::context& rc, const unit *u, const map_
 				_("This unit can attack multiple times per turn."));
 		}
 
-		for (const attack_type &at : u->attacks())
+		for (const attack_type& at : u->attacks())
 		{
 			attack_info(rc, at, res, *u, hex);
 		}
@@ -1752,15 +1795,12 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	config report;
 	add_image(report, game_config::images::time_icon, "");
 
-	std::ostringstream ss;
-
 	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 
-	std::time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), format);
-	add_text(report, ss.str(), _("Clock"));
+	const auto now = std::chrono::system_clock::now();
+	add_text(report, chrono::format_local_timestamp(now, format), _("Clock"));
 
 	return report;
 }
@@ -1789,17 +1829,16 @@ REPORT_GENERATOR(report_countdown, rc)
 	using std::chrono::duration_cast;
 #ifdef __cpp_lib_format
 	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
-	time_str << std::format("%M:%S", sec);
+	time_str << std::format("{:%M:%S}", sec);
 #else
+	auto fmt = [](const auto& duration) -> std::string {
+		return formatter{} << std::setw(2) << std::setfill('0') << duration.count();
+	};
+
 	// Create the time string
 	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
 	auto min = duration_cast<std::chrono::minutes>(sec);
-	time_str << min.count() << ':';
-	sec = sec % min;
-	if (sec < 10s) {
-		time_str << '0';
-	}
-	time_str << sec.count();
+	time_str << fmt(min) << ':' << fmt(sec - min);
 #endif
 
 	// Colorize the time string

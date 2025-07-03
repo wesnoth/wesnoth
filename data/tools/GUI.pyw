@@ -9,14 +9,12 @@
 # This is, after all, the behavior that we want.
 
 # threading and subprocess are needed to run wmllint without freezing the window
-# codecs is used to save files as UTF8
 # locale and gettext provides internationalization and localization (i18n, l10n)
 # queue is needed to exchange information between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 
 import argparse
-import codecs
 import gettext
 import locale
 import os
@@ -24,6 +22,7 @@ import queue
 import subprocess
 import sys
 import threading
+import ctypes
 
 # tkinter modules
 import tkinter.font as font
@@ -109,14 +108,20 @@ def set_global_locale():
     # On POSIX systems, getlocale() should provide the POSIX locale name that gettext uses for finding translations.
     # However, on Windows, getlocale() returns strings likely not suitable for gettext, although getdefaultlocale()
     # does.
+    # For this reason we need to access the Windows API directly, through the ctypes library, to check
+    # the user's language and convert the LCID returned to a POSIX locale name.
     try:
-        system_locale = locale.getlocale()[0]
+        if sys.platform == "win32":
+            kernel32 = ctypes.windll.kernel32
+            # the .get() method allows falling back to US English if we don't have the translation required
+            system_locale = locale.windows_locale.get(kernel32.GetUserDefaultLangID(), "en_US")
+        else:
+            system_locale = locale.getlocale()[0]
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
     except OSError:
         # Needed for compatibility with Python <3.10, and/or Windows 7/8.
-        # TODO: Note that getdefaultlocale() is deprecated in Python 3.11 so an alternative arrangement needs to be
-        #  implemented for Windows.
+        # Note that getdefaultlocale() is deprecated in Python 3.11 and will be removed in 3.15.
         system_locale = locale.getdefaultlocale()[0]
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
@@ -1639,7 +1644,7 @@ Error code: {1}""".format(queue_item[0], queue_item[1])))
         fn = asksaveasfilename(defaultextension=".txt", filetypes=[(_("Text file"), "*.txt")], initialdir=".")
         if fn:
             try:
-                with codecs.open(fn, "w", "utf-8") as out:
+                with open(fn, "w", encoding="utf-8") as out:
                     out.write(self.text.get(1.0, END)[:-1])  # exclude the double endline at the end
                 # the output is saved, if we close we don't lose anything
                 self.text.edit_modified(False)

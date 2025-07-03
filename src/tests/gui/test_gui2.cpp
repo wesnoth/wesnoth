@@ -249,10 +249,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				// debug clock doesn't work at 800x600
-				if(resolution.first == 800 && resolution.second == 600) {
-					continue;
-				}
 				test_utils::get_fake_display(resolution.first, resolution.second);
 
 				dialog_tester<T> ctor;
@@ -340,7 +336,6 @@ namespace {
 const resolution_list& get_gui_resolutions()
 {
 	static resolution_list result {
-		{800,  600},
 		{1024, 768},
 		{1280, 1024},
 		{1680, 1050},
@@ -711,6 +706,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"campaign_selection",// segfault with LTO
 		"game_load",// segfault after disabling the above tests
 		"file_progress",
+		"fps_report", // needs something to report...
 	};
 	filesystem::delete_file(test_gui2_fixture::widgets_file);
 
@@ -1108,7 +1104,7 @@ struct dialog_tester<gui2::dialogs::migrate_version_selection>
 };
 
 class fake_chat_handler : public events::chat_handler {
-	void add_chat_message(const std::time_t&,
+	void add_chat_message(const std::chrono::system_clock::time_point&,
 		const std::string&, int, const std::string&,
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}

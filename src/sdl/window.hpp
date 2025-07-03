@@ -96,10 +96,10 @@ public:
 	 *
 	 * - vultraz, 6/27/2017
 	 */
-	SDL_Point get_size();
+	point get_size();
 
 	/** Gets the window's renderer output size, in pixels */
-	SDL_Point get_output_size();
+	point get_output_size();
 
 	/**
 	 * Dummy function for centering the window.

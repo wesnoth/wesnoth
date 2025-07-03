@@ -184,6 +184,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map/Scenario"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_TO_SCENARIO, "editor-to-scenario", N_("Convert To Scenario"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_SCENARIO_SAVE_AS, "editor-scenario-save-as", N_("Save Scenario As"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, scope_editor, HKCAT_MAP, "" },
@@ -364,7 +365,7 @@ bool is_scope_active(hk_scopes s)
 	return s.any();
 }
 
-const hotkey_command& get_hotkey_command(const std::string& command)
+const hotkey_command& get_hotkey_command(std::string_view command)
 {
 	try {
 		return registered_hotkeys.at(command);
@@ -373,12 +374,24 @@ const hotkey_command& get_hotkey_command(const std::string& command)
 	}
 }
 
+const hotkey_command& get_hotkey_command(hotkey::HOTKEY_COMMAND command)
+{
+	for(const auto& [id, cmd] : registered_hotkeys) {
+		if(cmd.command == command) {
+			return cmd;
+		}
+	}
+
+	ERR_G << "No hotkey with requested command '" << command << "' found. Returning null hotkey.";
+	return hotkey_command::null_command();
+}
+
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands()
 {
 	return registered_hotkeys;
 }
 
-bool has_hotkey_command(const std::string& id)
+bool has_hotkey_command(std::string_view id)
 {
 	return get_hotkey_command(id).command != hotkey::HOTKEY_NULL;
 }
@@ -475,18 +488,6 @@ bool hotkey_command::null() const
 	}
 
 	return false;
-}
-
-const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
-{
-	for(auto& [id, cmd] : registered_hotkeys) {
-		if(cmd.command == command) {
-			return cmd;
-		}
-	}
-
-	ERR_G << "No hotkey with requested command '" << command << "' found. Returning null hotkey.";
-	return hotkey_command::null_command();
 }
 
 void init_hotkey_commands()

@@ -200,7 +200,7 @@ namespace {
 		if (search_counter == 0) search_counter = 2;
 
 		static std::vector<node> nodes;
-		nodes.resize(static_cast<size_t>(map.w()) * map.h());
+		nodes.resize(static_cast<std::size_t>(map.w()) * map.h());
 
 		indexer index(map.w(), map.h());
 		comp node_comp(nodes);
@@ -285,7 +285,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	std::vector< std::vector<int>> scores( number_of_teams );
 
 	for( std::size_t i = 0; i< number_of_teams; ++i)
-		scores[i].resize(static_cast<size_t>(w)*h);
+		scores[i].resize(static_cast<std::size_t>(w)*h);
 
 	/* // TODO: Do we need this?
 	for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i) {
@@ -979,10 +979,9 @@ DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 
 	const map_location& loc = res.convert_to<location_callable>()->loc();
 	const ai::move_map& srcdst = ai_.get_srcdst();
-	typedef ai::move_map::const_iterator Itor;
-	std::pair<Itor,Itor> range = srcdst.equal_range(loc);
+	auto range = srcdst.equal_range(loc);
 
-	for(Itor i = range.first; i != range.second; ++i) {
+	for(auto i = range.first; i != range.second; ++i) {
 		vars.emplace_back(std::make_shared<location_callable>(i->second));
 	}
 
@@ -994,7 +993,7 @@ DEFINE_WFL_FUNCTION(units_can_reach, 2, 2)
 	std::vector<variant> vars;
 	variant dstsrc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"units_can_reach:possible_move_list"));
 	const ai::move_map& dstsrc = dstsrc_var.convert_to<move_map_callable>()->dstsrc();
-	std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
+	auto range =
 		dstsrc.equal_range(args()[1]->evaluate(variables, add_debug_info(fdb, 1, "units_can_reach:possible_move_list")).convert_to<location_callable>()->loc());
 	while(range.first != range.second) {
 		unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);

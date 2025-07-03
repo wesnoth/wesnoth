@@ -1,7 +1,7 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022, 2024
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022, 2024 - 2025.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2025
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-02-17 21:53 UTC\n"
-"PO-Revision-Date: 2025-01-28 22:37+0100\n"
+"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
+"PO-Revision-Date: 2025-06-03 20:37+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -390,25 +390,9 @@ msgid "Paladin"
 msgstr "Paladin"
 
 #. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "\n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
+#: data/core/units/humans/Horse_Paladin.cfg:20
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -424,7 +408,7 @@ msgid ""
 "Full Paladins are generally not quite as fearsome as the ‘Grand Knights’ "
 "that champion most armies, but they are first-class fighters nonetheless. "
 "Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a paladin is very powerful in fighting magical or "
+"curious abilities; a Paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 "Paladinové jsou nejoddanější z rytířů, kteří nezasvětili své zbraně službě "
@@ -476,8 +460,14 @@ msgstr "mrazivá bouře"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
-#: data/core/units/boats/Raider_Coastal.cfg:139
-#: data/core/units/boats/Raider_Iron.cfg:146
+#: data/core/units/boats/Elf_Cutter.cfg:99
+#: data/core/units/boats/Elf_Sloop.cfg:99
+#: data/core/units/boats/Orc_Barge.cfg:108
+#: data/core/units/boats/Orc_Battle-Barge.cfg:127
+#: data/core/units/boats/Orc_Rigship.cfg:79
+#: data/core/units/boats/Orc_Warship.cfg:79
+#: data/core/units/boats/Raider_Coastal.cfg:146
+#: data/core/units/boats/Raider_Iron.cfg:153
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -724,10 +714,8 @@ msgstr "velký meč"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:5
-#, fuzzy
-#| msgid "Shadow"
 msgid "Shadow Lord"
-msgstr "Stín"
+msgstr "Stínový pán"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:19
@@ -740,20 +728,23 @@ msgid ""
 "for crude physical weapons, instead channeling their energies into "
 "devastating magical attacks that undercut their enemies’ resistances."
 msgstr ""
+"Plody následování cest světla nebo temnoty jsou mágům dobře známé, ať už je "
+"to lesk bílého mága či hluboké šero nekromanta. Mnohem méně známá jsou umění "
+"stínového panstva, co patří mezi těch pár, kteří ovládají propojení bílé a "
+"černé magie. Přestože desetiletí horlivého studia a opomíjení sebe sama "
+"z nich vyčerpala síly, překonali tito učení muži a ženy potřebu hrubých "
+"fyzických zbraní a místo toho nasměrovali svou energii do zničujících "
+"magických útoků, podlamujících odpor jejich nepřátel."
 
 #. [attack]: type=blade
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:31
-#, fuzzy
-#| msgid "war blade"
 msgid "astral blade"
-msgstr "válečná čepel"
+msgstr "astrální čepel"
 
 #. [damage_type]: id=cold_damage
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:37
-#, fuzzy
-#| msgid "chill wave"
 msgid "chill"
-msgstr "vlna mrazu"
+msgstr "chlad"
 
 #. [damage_type]: id=cold_damage
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:38
@@ -761,6 +752,8 @@ msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
 msgstr ""
+"Tento útok může způsobit poškození ostřím čepele nebo chladem, podle toho, "
+"co je účinnější."
 
 #. [damage_type]: id=cold_damage
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:39
@@ -768,13 +761,13 @@ msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
 msgstr ""
+"Útok této jednotky na blízko může způsobit poškození ostřím čepele nebo "
+"chladem, podle toho, co je účinnější."
 
 #. [female]: gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:87
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "female^Shadow Lord"
-msgstr "Šedohřivka"
+msgstr "Stínová dáma"
 
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
@@ -867,7 +860,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
 #: data/core/units/dunefolk/Explorer.cfg:35
-#: data/core/units/dunefolk/Rover.cfg:32
+#: data/core/units/dunefolk/Rover.cfg:84
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -902,14 +895,6 @@ msgstr "kladivo"
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The dwarven race has always been famed for its sturdiness of build, and "
-#| "many of their warriors outfit themselves to take advantage of this. "
-#| "Dwarven guardsmen march into battle with tower shields and spears. Most "
-#| "often, their role is to hold the line, and to take a heavy toll on those "
-#| "who try to break it. As the line marches forward, they act to secure its "
-#| "hard-won advance."
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
 "of their warriors outfit themselves to take advantage of this. Dwarven "
@@ -1000,14 +985,6 @@ msgstr "sekyrka"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the single-minded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the Dwarven Sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -1283,11 +1260,6 @@ msgstr "Vampýr"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Vampire bats are flying beasts that feed on the blood of other creatures. "
-#| "While their fangs are not very powerful, the health of victims is drained "
-#| "away along with their blood, and given to the Bats."
 msgid ""
 "Vampire Bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -1297,32 +1269,39 @@ msgstr ""
 "špičáky nejsou příliš silné, vysávají ze svých obětí s jejich krví i jejich "
 "zdraví a přidávají ho ke svému."
 
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:4
-msgid "Boat"
-msgstr "Loďka"
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:5
+msgid "Canoe"
+msgstr "Kánoe"
 
-#. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:21
+#. [unit_type]: id=Canoe, race=ship
+#: data/core/units/boats/Canoe.cfg:19
 #, fuzzy
 #| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
+#| "A Canoe is a small, open-top water vessel commonly used for "
+#| "transportation or hunting.  Their light-weight construction allows them "
+#| "to be carried around barriers or between unconnected bodies of water.  "
+#| "Almost every intelligent race has some form of canoe."
 msgid ""
-"Propelled by oars or small sails, Boats are used to travel short distances "
-"and in shallows where large ships cannot navigate."
+"A Canoe is a small, open-top water vessel commonly used for transportation "
+"or hunting. Their light-weight construction allows them to be carried around "
+"barriers or between unconnected bodies of water. Almost every intelligent "
+"race has some form of canoe."
 msgstr ""
-"Lodice poháněné vesly nebo malou plachtou bývají využity pro cestování na "
-"kratší vzdálenosti a na mělčinách, kam se velké námořní koráby nemohou "
-"odvážit."
+"Kánoe je malé, otevřené vodní plavidlo, které se běžně používá k přepravě "
+"nebo lovu. Její lehká stavba umožňuje přenášení kolem překážek nebo mezi "
+"nespojenými vodními plochami. Téměř každá inteligentní rasa má nějaký druh "
+"kánoe."
 
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:4
+#: data/core/units/boats/Derelict_Ship.cfg:4
 msgid "Derelict Hulk"
 msgstr "Bludný vrak"
 
 #. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Galleon.cfg:18
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Derelict_Ship.cfg:18
+#: data/core/units/boats/Ghost_Ship.cfg:30
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
 "are merely ruined ships that will soon sink, but there are tales of others "
@@ -1334,9 +1313,39 @@ msgstr ""
 
 # Nejsou to úplně trosky, ale náklad, který byl úmyslně vhozen přes palubu, např. pro odlehčení lodi.
 #. [attack]: type=impact
-#: data/core/units/boats/Derelict_Galleon.cfg:135
+#: data/core/units/boats/Derelict_Ship.cfg:145
 msgid "jetsam"
 msgstr "trosky"
+
+#. [unit_type]: id=Elvish Cutter, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:5
+msgid "Elvish Cutter"
+msgstr "Elfí kutr"
+
+#. [unit_type]: id=Elvish Cutter, race=ship
+#. [unit_type]: id=Elvish Sloop, race=ship
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#. [unit_type]: id=Orcish Rigship, race=ship
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Elf_Cutter.cfg:19
+#: data/core/units/boats/Elf_Sloop.cfg:19
+#: data/core/units/boats/Orc_Battle-Barge.cfg:20
+#: data/core/units/boats/Orc_Rigship.cfg:19
+#: data/core/units/boats/Orc_Warship.cfg:19
+msgid "..."
+msgstr "..."
+
+#. [attack]: type=impact
+#: data/core/units/boats/Elf_Cutter.cfg:108
+#: data/core/units/boats/Elf_Sloop.cfg:111 data/core/units/elves/Druid.cfg:35
+#: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "polapení"
+
+#. [unit_type]: id=Elvish Sloop, race=ship
+#: data/core/units/boats/Elf_Sloop.cfg:5
+msgid "Elvish Sloop"
+msgstr "Elfí šalupa"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1358,37 +1367,75 @@ msgstr ""
 "jen unášeny neznatelnými větry a spodními proudy."
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:165
+#: data/core/units/boats/Fireship.cfg:170
 msgid "ember"
 msgstr "oharky"
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:174
+#: data/core/units/boats/Fireship.cfg:179
 msgid "crash"
 msgstr "náraz"
 
+#. [unit_type]: id=Ghost Ship, race=ship
+#: data/core/units/boats/Ghost_Ship.cfg:16
+msgid "Ghost Ship"
+msgstr "Loď duchů"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Ghost_Ship.cfg:191
+#: data/core/units/humans/Mage_Elder.cfg:35
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
+msgid "lightning"
+msgstr "blesk"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Ghost_Ship.cfg:203
+msgid "black wind"
+msgstr "černý dech"
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:7
+msgid "Boat"
+msgstr "Loďka"
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Legacy_Boat.cfg:23
+msgid ""
+"Propelled by oars or small sails, Boats are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+"Lodice poháněné vesly nebo malou plachtou bývají využity pro cestování na "
+"kratší vzdálenosti a na mělčinách, kam se velké námořní koráby nemohou "
+"odvážit."
+
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:6
+#: data/core/units/boats/Legacy_Galleon.cfg:6
 msgid "Galleon"
 msgstr "Galeona"
 
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:23
-msgid "Galleons are blue-water ships built for trade and transport."
-msgstr "Galeony jsou námořní lodě, určené pro obchod a přepravu všeho druhu."
+#: data/core/units/boats/Legacy_Galleon.cfg:21
+msgid ""
+"Galleons are large and sturdy wooden ships used primarily for swift "
+"transport of goods across rivers and oceans in large quantities. The "
+"earliest Galleons were built long ago by ancient sailors from the Green "
+"Isle, before even the times of Haldric. Centuries later, their skillfully-"
+"crafted designs continue to be used by many Wesnothian sailors."
+msgstr ""
+"Galeony jsou velké a robustní dřevěné lodě používané především pro rychlou "
+"přepravu velkého množství zboží po řekách a oceánech. Nejstarší galeony "
+"postavili starověcí námořníci ze Zeleného ostrova už před dávnými lety, "
+"dokonce ještě před časy Haldrika. O staletí později jejich dovedně vytvořené "
+"návrhy nadále používá mnoho wesnothských námořníků."
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:4
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:7
 msgid "Pirate Galleon"
 msgstr "Pirátská galeona"
 
-#. [unit_type]: id=Pirate Galleon, race=ship
-#: data/core/units/boats/Pirate_Galleon.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:23
 msgid ""
 "Pirate Galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -1399,10 +1446,142 @@ msgstr ""
 "nákladu, aby se od té tíhy nepotopily..."
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:160
-#: data/core/units/boats/Transport_Galleon.cfg:158
+#: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:26
+#: data/core/units/boats/Pirate_Ship.cfg:169
+#: data/core/units/boats/Transport_Ship.cfg:168
 msgid "ballista"
 msgstr "balista"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:7
+msgid "Transport Galleon"
+msgstr "Dopravní galeona"
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Legacy_Transport_Galleon.cfg:22
+#: data/core/units/boats/Transport_Ship.cfg:20
+msgid ""
+"Transport Galleons are well-armed ships that carry troops. If they reach the "
+"shore, they can land the troops to attack."
+msgstr ""
+"Dopravní galeony jsou dobře vyzbrojené lodě určené pro převoz jednotek. Když "
+"dosáhnou břehu, mohou převážené jednotky vylodit."
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:5
+msgid "Orcish Barge"
+msgstr "Skřetí bárka"
+
+#. [unit_type]: id=Orcish Barge, race=ship
+#: data/core/units/boats/Orc_Barge.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish barges are crude constructions, devoid of any of the craftsmanship "
+#| "seen in almost any other ship.  But what they lack in speed and grace, "
+#| "they make up for with their rugged utility in navigating rivers and "
+#| "swamps.  Their primary means of movement comes from a large, symmetric "
+#| "sail held at three points for downwind propulsion.  When currents and "
+#| "winds lead to the wrong direction, the crew must use poles and anchors to "
+#| "move the barge in the intended direction.\n"
+#| "\n"
+#| "Barges serve as transports for either supplies or troops, but they have "
+#| "been used as pickets in larger conflicts.  They lack any specific "
+#| "weaponry, but the crew is equipped with the crude orcish bows that can be "
+#| "deterent enough in many situations.\n"
+#| "\n"
+#| "These barges are very ineffective in the high seas, little better than a "
+#| "floating wreck."
+msgid ""
+"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"seen in almost any other ship. But what they lack in speed and grace, they "
+"make up for with their rugged utility in navigating rivers and swamps. Their "
+"primary means of movement comes from a large, symmetric sail held at three "
+"points for downwind propulsion. When currents and winds lead to the wrong "
+"direction, the crew must use poles and anchors to move the barge in the "
+"intended direction.\n"
+"\n"
+"Barges serve as transports for either supplies or troops, but they have been "
+"used as pickets in larger conflicts. They lack any specific weaponry, but "
+"the crew is equipped with the crude orcish bows that can be deterrent enough "
+"in many situations.\n"
+"\n"
+"These barges are very ineffective in the high seas, little better than a "
+"floating wreck."
+msgstr ""
+"Skřetí bárky jsou hrubé konstrukce, které postrádají jakoukoli řemeslnou "
+"zručnost, jakou známe z téměř všech ostatních lodí. To, co jim chybí na "
+"rychlosti a ladnosti, však vynahrazují svou odolností při plavbě po řekách "
+"a v močálech. Jejich hlavním pohonným prostředkem je velká souměrná plachta "
+"upevněná ve třech bodech, která slouží k pohybu po větru. Pokud proudy "
+"a vítr nesou bárku nesprávným směrem, musí posádka použít tyče a kotvy.\n"
+"\n"
+"Bárky slouží jako dopravní lodě buď pro zásoby, nebo pro vojáky, ale ve "
+"větších střetech se používají i jako předsunuté hlídky. Postrádají jakoukoli "
+"vlastní výzbroj, ale posádka je vybavena hrubými skřetími luky, které mohou "
+"být v mnoha situacích dostatečně odstrašující.\n"
+"\n"
+"Na volném moři jsou tyto bárky velmi slabé, jen o málo lepší než plovoucí "
+"vrak."
+
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:5
+msgid "Orcish Battle Barge"
+msgstr "Skřetí bitevní bárka"
+
+#. [attack]: type=impact
+#: data/core/units/boats/Orc_Battle-Barge.cfg:118
+msgid "catapult"
+msgstr "katapult"
+
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:5
+msgid "Orcish Rigship"
+msgstr "Skřetí galéra"
+
+#. [attack]: type=fire
+#: data/core/units/boats/Orc_Rigship.cfg:88
+#: data/core/units/boats/Orc_Warship.cfg:88
+msgid "firebow"
+msgstr "ohnivý luk"
+
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:5
+msgid "Orcish Warship"
+msgstr "Skřetí válečná loď"
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:4
+msgid "Pirate Ship"
+msgstr "Pirátská loď"
+
+#. [unit_type]: id=Pirate Ship, race=ship
+#: data/core/units/boats/Pirate_Ship.cfg:22
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo."
+msgstr ""
+"Pirátské galeony jsou pro dopravní lodě tím, čím jsou vlci pro ovečky. "
+"Posádka pirátské galeony ochotně pomůže jiným lodím od jejich těžkého "
+"nákladu, aby se od té tíhy nepotopily..."
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:5
+msgid "Raft"
+msgstr "Vor"
+
+#. [unit_type]: id=Raft, race=ship
+#: data/core/units/boats/Raft.cfg:19
+msgid ""
+"Rafts can be an efficient means of downriver transport, but they can also be "
+"an improvised vessel of desperation, patched together from the wreck of a "
+"larger ship."
+msgstr ""
+"Vory mohou být účinným prostředkem pro přepravu po řece, ale také "
+"improvizovaným plavidlem ze zoufalství, které bylo poskládáno z vraku větší "
+"lodi."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1411,19 +1590,6 @@ msgstr "Pobřežní veslice"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:30
-#, fuzzy
-#| msgid ""
-#| "While many larger ships rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Coastal raider ships are a very basic warship, used by several races to "
-#| "move armed forces rapidly through shallow and coastal water. They do not "
-#| "possess any specific armaments, but there are always archers amongst the "
-#| "crew."
 msgid ""
 "While many larger ships rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1475,23 +1641,29 @@ msgstr ""
 "řekách a při pobřežích jako přední doprovod pomalejších nákladních lodí."
 
 #. [attack]: type=impact
-#: data/core/units/boats/Raider_Iron.cfg:156
+#: data/core/units/boats/Raider_Iron.cfg:163
 msgid "naval ram"
 msgstr "kloun"
 
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:4
-msgid "Transport Galleon"
-msgstr "Dopravní galeona"
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:5
+msgid "Skiff"
+msgstr "Lodice"
 
-#. [unit_type]: id=Transport Galleon, race=ship
-#: data/core/units/boats/Transport_Galleon.cfg:20
+#. [unit_type]: id=Skiff, race=ship
+#: data/core/units/boats/Skiff.cfg:22
 msgid ""
-"Transport Galleons are well-armed ships that carry troops. If they reach the "
-"shore, they can land the troops to attack."
+"Propelled by oars or small sails, skiffs are used to travel short distances "
+"and in shallows where large ships cannot navigate."
 msgstr ""
-"Dopravní galeony jsou dobře vyzbrojené lodě určené pro převoz jednotek. Když "
-"dosáhnou břehu, mohou převážené jednotky vylodit."
+"Lodice poháněné vesly nebo malou plachtou bývají využity pro cestování na "
+"kratší vzdálenosti a na mělčinách, kam se velké námořní koráby nemohou "
+"odvážit."
+
+#. [unit_type]: id=Transport Ship, race=ship
+#: data/core/units/boats/Transport_Ship.cfg:4
+msgid "Transport Ship"
+msgstr "Dopravní loď"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -2147,6 +2319,8 @@ msgstr ""
 #: data/core/units/dunefolk/Paragon.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:39
 #: data/core/units/dunefolk/Soldier.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:26
+#: data/core/units/dunefolk/Swordsman.cfg:35
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
 msgstr "šavle"
@@ -2250,7 +2424,7 @@ msgstr ""
 #: data/core/units/dunefolk/Cataphract.cfg:64
 #: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:93
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -2369,24 +2543,11 @@ msgstr "Pouštní běžkyně"
 # mluví se jen o běžkyních?
 #. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:25
-#, fuzzy
-#| msgid ""
-#| "While harriers can fulfill a similar role to striders in hampering enemy "
-#| "forces, their epithet is actually derived from the harrier hawks they "
-#| "employ to maintain contact with the bulk of a Dunefolk troop. Most "
-#| "commonly found operating behind enemy lines, harriers are usually tasked "
-#| "with providing useful intelligence on enemy troop movements, which alone "
-#| "is enough of an edge for most Dunefolk armies to outmaneuver their foes. "
-#| "However, when the time is right, these agile warriors gather together and "
-#| "strike at the rear of weakened supply lines or flanks. A rain of bolas "
-#| "followed by a piercing thrust of spears is often enough to severely "
-#| "cripple the target, allowing the main Dunefolk force to close in and "
-#| "finish the job."
 msgid ""
-"While Harriers can fulfill a similar role to striders in hampering enemy "
+"While Harriers can fulfill a similar role to Striders in hampering enemy "
 "forces, their epithet is actually derived from the harrier hawks they employ "
 "to maintain contact with the bulk of a Dunefolk troop. Most commonly found "
-"operating behind enemy lines, harriers are usually tasked with providing "
+"operating behind enemy lines, Harriers are usually tasked with providing "
 "useful intelligence on enemy troop movements, which alone is enough of an "
 "edge for most Dunefolk armies to outmaneuver their foes. However, when the "
 "time is right, these agile warriors gather together and strike at the rear "
@@ -2412,23 +2573,9 @@ msgstr "Pouštní bylinkář"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:25
-#, fuzzy
-#| msgid ""
-#| "As those responsible for caring for the ill and wounded among the "
-#| "Dunefolk, herbalists possess both the medicinal skills to heal a variety "
-#| "of afflictions and the skill to seek and gather restorative herbs. Their "
-#| "motivations are many; some look to it as an adventure or as a steady "
-#| "source of pay while others feel it to be a duty to their society. No "
-#| "matter the reason, these healers are an invaluable part of Dunefolk "
-#| "society and are especially useful for their ability to administer quick "
-#| "treatments in the midst of battle or while traveling in the desert.\n"
-#| "\n"
-#| "Even among the nomadic Dunefolk, herbalists journey a great deal in "
-#| "search of the various flora and fauna that supply their work. Hardened by "
-#| "their travels, many of these men are even able to heal themselves."
 msgid ""
 "As those responsible for caring for the ill and wounded among the Dunefolk, "
-"herbalists possess both the medicinal skills to heal a variety of "
+"Herbalists possess both the medicinal skills to heal a variety of "
 "afflictions and the skill to seek and gather restorative herbs. Their "
 "motivations are many; some look to it as an adventure or as a steady source "
 "of pay while others feel it to be a duty to their society. No matter the "
@@ -2519,20 +2666,6 @@ msgstr "Pouštní nájezdník"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Some find themselves well suited to the life of a raider and may even "
-#| "form their own clans with like-minded individuals. Ever roaming the "
-#| "deserts for unwary travelers or vulnerable caravans, these horsemen make "
-#| "their livelihood off scavenging and pilfering. Having no particular "
-#| "specialty, marauders are neither the strongest warriors, nor the most "
-#| "dextrous archers, but are nevertheless among the most dangerous enemies "
-#| "out in the desert due to their sheer maneuverability. A coordinated "
-#| "marauder attack can wipe out medium-sized camps before any response is "
-#| "possible, and guerrilla tactics may allow them to prevail against "
-#| "stronger foes where brute force does not. For this reason, they are "
-#| "sometimes hired by small armies or wealthier caravans as a deterrent to "
-#| "unwanted raids."
 msgid ""
 "Some find themselves well suited to the life of a raider and may even form "
 "their own clans with like-minded individuals. Ever roaming the deserts for "
@@ -2628,16 +2761,6 @@ msgstr "Pouštní lupič"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Though rarely found in organized armies, raiders are a staple among the "
-#| "nomadic Dunefolk, who regularly ambush rival caravans and camps at night. "
-#| "In these scenarios, raw power is of little concern. The greatest "
-#| "importance is placed on speed — striking quickly and spreading as much "
-#| "chaos as possible in the shortest time possible allows these riders to "
-#| "get in and out of the blitz without fear of counterattack. Raiders are "
-#| "the fastest of the Dunefolk, capable of outpacing nearly anything they "
-#| "might encounter in the sandy deserts."
 msgid ""
 "Though rarely found in organized armies, Raiders are a staple among the "
 "nomadic Dunefolk, who regularly ambush rival caravans and camps at night. In "
@@ -2693,24 +2816,13 @@ msgstr "Pouštní tulák"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Originating from the nomadic wanderers of the open deserts, rovers are "
-#| "the representation of the most well-balanced Dunefolk soldier: flexible, "
-#| "mobile, equally effective in defense and offense as well as in ranged or "
-#| "close combat. They are experienced hunters and trackers, hardy "
-#| "inhabitants of the deserts and hills that they call home. While lacking "
-#| "training as formal troops, the skills these rovers employ for survival in "
-#| "the desert translate readily to warfare. Their unique trait of fighting "
-#| "best at dawn or dusk corresponds with the time when desert temperatures "
-#| "are the most habitable."
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, Rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
 "equally effective in defense and offense as well as in ranged or close "
 "combat. They are experienced hunters and trackers, hardy inhabitants of the "
 "deserts and hills that they call home. While lacking training as formal "
-"troops, the skills these rovers employ for survival in the desert translate "
+"troops, the skills these Rovers employ for survival in the desert translate "
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
@@ -2730,20 +2842,10 @@ msgstr "Pouštní spalovač"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:22
-#, fuzzy
-#| msgid ""
-#| "The scorcher’s moniker is derived not from the destruction they wreak on "
-#| "adversarial formations, but on their own singed appearances. By "
-#| "experimenting endlessly with their equipment, most scorchers inevitably "
-#| "overstep their bounds at some point and are seared by the highly volatile "
-#| "Sanbaar sap that soaks their weapons. Bearing their burns as a mark of "
-#| "pride in their work, these archers relish igniting great swaths of flame "
-#| "on the battlefield, though this sometimes also results in unintended "
-#| "friendly fire."
 msgid ""
 "The Scorcher’s moniker is derived not from the destruction they wreak on "
 "adversarial formations, but on their own singed appearances. By "
-"experimenting endlessly with their equipment, most scorchers inevitably "
+"experimenting endlessly with their equipment, most Scorchers inevitably "
 "overstep their bounds at some point and are seared by the highly volatile "
 "Sanbaar sap that soaks their weapons. Bearing their burns as a mark of pride "
 "in their work, these archers relish igniting great swaths of flame on the "
@@ -2770,17 +2872,6 @@ msgstr "Pouštní rváčka"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Born and raised out on the open sands, skirmishers are accustomed to the "
-#| "harsh, arid desert heat and inhospitable terrain. Compared to even other "
-#| "Dunefolk, these nomads are unnaturally agile on the unstable dunes, "
-#| "allowing them to safeguard their herds and hunt the barrens with ease. "
-#| "When applied to battle, the same agility allows them to both slip through "
-#| "enemy lines and avoid all manner of attack. These skills make skirmishers "
-#| "effective saboteurs, capable of cutting off escape routes and supply "
-#| "lines, assassinating key units, or pincering an enemy formation into a "
-#| "disadvantageous position."
 msgid ""
 "Born and raised out on the open sands, Skirmishers are accustomed to the "
 "harsh, arid desert heat and inhospitable terrain. Compared to even other "
@@ -2846,16 +2937,6 @@ msgstr "Pouštní voják"
 # Pravidelné postavení určitě není ten správný vojenský termín, ale lepší jsem nenašel ani nevymyslel.
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "While most Dunefolk castes serve an additional practical purpose beyond "
-#| "only direct warfare, cities and caravans usually train a group of "
-#| "soldiers completely dedicated to military purposes. By practicing "
-#| "intensely to hone their skills in swordplay, these warriors learn to "
-#| "navigate tricky fights in close quarters, mastering their enemies through "
-#| "melee combat. A typical Dunefolk formation makes use of this adeptness by "
-#| "placing soldiers in a spaced pattern, allowing them to assault and "
-#| "overwhelm clustered enemy lines by engaging them in quasi-single combat."
 msgid ""
 "While most Dunefolk castes serve an additional practical purpose beyond only "
 "direct warfare, cities and caravans usually train a group of Soldiers "
@@ -2882,19 +2963,6 @@ msgstr "Pouštní kopinická stráž"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The push and pull of any battle requires varying degrees of offense and "
-#| "defense. The Dunefolk no doubt value offense as the greater of the two "
-#| "and typically focus most of their efforts on training skilled swordsmen. "
-#| "However, in any band of warriors, a small number of soldiers opt to trade "
-#| "in their swords and instead fulfill the vital role of defenders. Guarding "
-#| "crucial supply lines and vantage points, spearguards are most often "
-#| "positioned slightly behind the main line and used as a supporting force "
-#| "or a deterrent to flanking attacks. Though these fighters tend to see "
-#| "less direct combat than their sword-wielding brethren, they are highly "
-#| "skilled with spear and shield and more than capable of repelling most "
-#| "advances."
 msgid ""
 "The push and pull of any battle requires varying degrees of offense and "
 "defense. The Dunefolk no doubt value offense as the greater of the two and "
@@ -2973,19 +3041,6 @@ msgstr "Pouštní chodkyně"
 # Mluví se jen o chodkyních?
 #. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:21
-#, fuzzy
-#| msgid ""
-#| "The power of any Dunefolk assault is inhibited by one major drawback: "
-#| "organized Dunefolk forces tend to be rather slow. Because of this, enemy "
-#| "forces often have the ability to regroup and call upon reinforcements, in "
-#| "which case a second assault becomes much more difficult. To combat this, "
-#| "striders exchange their rudimentary slings with heavy bolas, allowing "
-#| "them to slow retreating lines from the side and prevent a clean escape. "
-#| "The same tactic can be applied in the opposite scenario of a Dunefolk "
-#| "retreat; an advancing army can be hampered, allowing injured Dunefolk "
-#| "warriors time to recuperate. The danger of such a tactic is that despite "
-#| "their elusiveness, striders are fairly fragile in direct combat and are "
-#| "easily taken down if left exposed."
 msgid ""
 "The power of any Dunefolk assault is inhibited by one major drawback: "
 "organized Dunefolk forces tend to be rather slow. Because of this, enemy "
@@ -2996,7 +3051,7 @@ msgid ""
 "tactic can be applied in the opposite scenario of a Dunefolk retreat; an "
 "advancing army can be hampered, allowing injured Dunefolk warriors time to "
 "recuperate. The danger of such a tactic is that despite their elusiveness, "
-"striders are fairly fragile in direct combat and are easily taken down if "
+"Striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
 "Útočná vojenská síla pouštního lidu je limitována jednou hlavní nevýhodou. "
@@ -3018,17 +3073,6 @@ msgstr "Pouštní úderný jezdec"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among the many different type of Dune horsemen, there are those who most "
-#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
-#| "maces, these sunderers are sturdy, robust warriors who have both the "
-#| "disposition and skill to survive multiple skirmishes. Though not "
-#| "particularly creative or special warriors, such a rider is not impotent "
-#| "in any way — even a small group of sunderers is powerful enough to breach "
-#| "most enemy lines through sheer force. In a situation that requires it, "
-#| "these horsemen also possess enough skill at archery to weaken enemy "
-#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
@@ -3081,18 +3125,6 @@ msgstr ""
 "šavlí si dokáže počkat na příležitost a spočítat si, kdy udeřit. S "
 "vypilovanou, takřka nadpřirozenou přesností je tak jednotka bojovníků se "
 "šavlemi schopna prolomit i tu nejsevřenější obranu."
-
-# Nejsem odborník v šermířských technikách, může to být nepřesně.
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:26
-msgid "forceful scimitar strike"
-msgstr "útočný sek šavlí"
-
-# Nejsem odborník v šermířských technikách, může to být nepřesně.
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Swordsman.cfg:35
-msgid "balanced scimitar slash"
-msgstr "odsek šavlí"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -3199,22 +3231,9 @@ msgstr "Pouštní jízdní obkružovač"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Archery on horseback presents a number of additional challenges that very "
-#| "few are able to overcome. What separates the renowned windbolts from "
-#| "other bowmen is their ability to not only master these difficulties, but "
-#| "turn them into advantages instead. Making use of their steeds’ great "
-#| "speed, a windbolt is actually a better archer when mounted as compared to "
-#| "on land. The extra momentum from riding on horseback provides additional "
-#| "force to their already potent shots, and by riding in meandering "
-#| "patterns, these bowmen are able to curve the trajectories of their "
-#| "arrows, reaching targets they might not be able to otherwise. Having "
-#| "honed their craft to its apex, windbolts are the undisputed masters of "
-#| "ranged combat among the Dunefolk."
 msgid ""
 "Archery on horseback presents a number of additional challenges that very "
-"few are able to overcome. What separates the renowned windbolts from other "
+"few are able to overcome. What separates the renowned Windbolts from other "
 "bowmen is their ability to not only master these difficulties, but turn them "
 "into advantages instead. Making use of their steeds’ great speed, a Windbolt "
 "is actually a better archer when mounted as compared to on land. The extra "
@@ -3242,24 +3261,12 @@ msgstr "Jezdec na wyverně"
 
 #. [unit_type]: id=Wyvern Rider, race=monster
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Although generally peaceful, wyverns can easily become fierce and angry "
-#| "beasts when provoked. When truly enraged they can even tear apart "
-#| "experienced warriors with relative ease. Most travelers would run or "
-#| "fight in their mighty presence, yet a few are able to tame these wild "
-#| "creatures. These Dunefolk riders spend years, even decades of their lives "
-#| "bonding with them, slowly building up their trust until they have gained "
-#| "true mastery over the skies. The most experienced of these Wyvern riders "
-#| "have ascended to be the greatest and most revered travelers of the land. "
-#| "While they do not usually use their knowledge for warfare, they can be "
-#| "threatening warriors when defending their homes."
 msgid ""
 "Although generally peaceful, wyverns can easily become fierce and angry "
 "beasts when provoked. When truly enraged they can even tear apart "
 "experienced warriors with relative ease. Most travelers would run or fight "
 "in their mighty presence, yet a few are able to tame these wild creatures. "
-"These Dunefolk riders spend years, even decades of their lives bonding with "
+"These Dunefolk Riders spend years, even decades of their lives bonding with "
 "them, slowly building up their trust until they have gained true mastery "
 "over the skies. The most experienced of these Wyvern Riders have ascended to "
 "be the greatest and most revered travelers of the land. While they do not "
@@ -3426,12 +3433,6 @@ msgstr "Trpasličí runový kovář"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Dwarvish runesmiths, now practiced at their craft, carve arcane runes "
-#| "into their weapons and armor. These runes infuse the runesmith’s blows "
-#| "with power and accuracy, and disrupt the blows of their enemies, causing "
-#| "them to strike softly, weakly and on the armor of the defender."
 msgid ""
 "Dwarvish Runesmiths, now practiced at their craft, carve arcane runes into "
 "their weapons and armor. These runes infuse the Runesmith’s blows with power "
@@ -3475,14 +3476,6 @@ msgstr "Trpasličí stráž"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. Equipped with the strongest of "
-#| "Knalgan armor, these dwarves are masters of the melee and can hold a "
-#| "patch of earth with the single-minded tenacity of an oak."
 msgid ""
 "Champions among their fellow troops, the Dwarven Sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -3516,7 +3509,7 @@ msgid ""
 "make them imposing foes indeed."
 msgstr ""
 "Vybaveni tou nejsilnější plátovou a kroužkovou zbrojí z kováren Knalgy, "
-"těžkooděnci stojí v přední linii trpasličích armád. Jsou proslulí svou "
+"stojí těžkooděnci v přední linii trpasličích armád. Jsou proslulí svou "
 "odolností v žáru bitvy a jejich dokonalé ovládání válečné sekery i kladiva "
 "je činí skutečně působivými nepřáteli."
 
@@ -3634,16 +3627,6 @@ msgstr "Elfí kapitán"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:25
-#, fuzzy
-#| msgid ""
-#| "Elvish captains usually command patrols and garrisons that stand guard "
-#| "over the vast forests in elvish territory. Unlike leaders from other "
-#| "races, they are most proficient at navigating small skirmishes rather "
-#| "than large-scale battles, and are especially skilled at defensive "
-#| "maneuvering. Captains typically lead small units that remain together for "
-#| "extended periods of time, allowing them to personally mentor and befriend "
-#| "their troops. They are often observed to lead through camaraderie and "
-#| "amicability, but still command great respect from their kin."
 msgid ""
 "Elvish Captains usually command patrols and garrisons that stand guard over "
 "the vast forests in elvish territory. Unlike leaders from other races, they "
@@ -3700,26 +3683,12 @@ msgstr "Elfí druidka"
 
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Some elves choose to deepen their connection to the corporeal world, "
-#| "thereby enhancing their already potent abilities to foster and manipulate "
-#| "natural energies. Perhaps the most notable effect of these druids’ magic "
-#| "is the marked sense of motion in the deep woodlands that they preserve. "
-#| "Outsiders wandering through Elven woods often speak of entangling roots "
-#| "and vines, moving nearly as fast as a warrior’s marching pace, or the "
-#| "creaking shamble of ancient trees, lumbering across entire camps in just "
-#| "a single night. The forest and the earth become almost like a connected "
-#| "entity, something that lives and breathes like a single massive organism. "
-#| "As it flourishes under the druids’ careful tending, the forest kindles "
-#| "their magics in turn, symbiotically enhancing the already potent powers "
-#| "that these elves possess."
 msgid ""
 "Some elves choose to deepen their connection to the corporeal world, thereby "
 "enhancing their already potent abilities to foster and manipulate natural "
 "energies. Perhaps the most notable effect of these Druids’ magic is the "
 "marked sense of motion in the deep woodlands that they preserve. Outsiders "
-"wandering through Elven woods often speak of entangling roots and vines, "
+"wandering through elven woods often speak of entangling roots and vines, "
 "moving nearly as fast as a warrior’s marching pace, or the creaking shamble "
 "of ancient trees, lumbering across entire camps in just a single night. The "
 "forest and the earth become almost like a connected entity, something that "
@@ -3738,12 +3707,6 @@ msgstr ""
 "organismus. Jak les vzkvétá pod starostlivou péčí druidek, rozněcuje jim na "
 "oplátku jejich kouzla a symbioticky zvyšuje již tak mocné síly, které tyto "
 "elfky mají."
-
-#. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
-#: data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "polapení"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
@@ -3896,26 +3859,13 @@ msgstr "Elfí dáma"
 # Panské protějšky nejsou úplně dobré, ale pánské, mužské nebo lordí jsou ještě horší.
 #. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Usually strongly connected with the earthly aspect of Elven magic, noble "
-#| "ladies of the elvish enclaves are associated with wisdom and "
-#| "preservation. As those entrusted with maintaining many of the more "
-#| "venerated Elvish traditions, they play a large role in safeguarding the "
-#| "tranquility and natural wonder of their renowned forest sanctuaries. "
-#| "Unlike their counterparts in the lords, many of whom gain great "
-#| "individual insight through their use of arcane magic, most ladies spread "
-#| "their power throughout the societal orders that they guide, often at some "
-#| "cost to their own personal abilities. For this reason, they serve most "
-#| "often as diplomats and peacekeepers, holding high authority during times "
-#| "of amity and taking a lesser role in times of war."
 msgid ""
-"Usually strongly connected with the earthly aspect of Elven magic, noble "
+"Usually strongly connected with the earthly aspect of elven magic, noble "
 "Ladies of the elvish enclaves are associated with wisdom and preservation. "
-"As those entrusted with maintaining many of the more venerated Elvish "
+"As those entrusted with maintaining many of the more venerated elvish "
 "traditions, they play a large role in safeguarding the tranquility and "
 "natural wonder of their renowned forest sanctuaries. Unlike their "
-"counterparts in the lords, many of whom gain great individual insight "
+"counterparts in the Lords, many of whom gain great individual insight "
 "through their use of arcane magic, most Ladies spread their power throughout "
 "the societal orders that they guide, often at some cost to their own "
 "personal abilities. For this reason, they serve most often as diplomats and "
@@ -4023,19 +3973,6 @@ msgstr "Elfí maršál"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Elves are not often the instigators of open war, but will not shy away "
-#| "when the time comes to do battle. To this end, they maintain a small "
-#| "number of strategically-minded marshals at all times. Selected from the "
-#| "most talented patrol captains, these commanders undergo extensive "
-#| "training in various military styles, including those of the humans and "
-#| "orcs. They are unorthodox, but brilliant strategists who excel at "
-#| "breaking down large battlefronts into smaller skirmishes, transforming "
-#| "ordinary campaigns into dispersed guerrilla warfare. Engaging elves in "
-#| "their own homes is a daunting task for any invasion force, precisely "
-#| "because of the skillful maneuvering of the marshals who are entrusted "
-#| "with the protection of their people."
 msgid ""
 "Elves are not often the instigators of open war, but will not shy away when "
 "the time comes to do battle. To this end, they maintain a small number of "
@@ -4046,7 +3983,7 @@ msgid ""
 "battlefronts into smaller skirmishes, transforming ordinary campaigns into "
 "dispersed guerrilla warfare. Engaging elves in their own homes is a daunting "
 "task for any invasion force, precisely because of the skillful maneuvering "
-"of the marshals who are entrusted with the protection of their people."
+"of the Marshals who are entrusted with the protection of their people."
 msgstr ""
 "Elfové nepatří mezi časté podněcovatele otevřené války. Ale když přijde čas "
 "bojovat, nevyhýbají se jí. Za tímto účelem stále udržují malý počet "
@@ -4133,18 +4070,6 @@ msgstr "Elfí hraničář"
 
 #. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The silent watchers of the forests, Elvish rangers are masters of stealth "
-#| "and reconnaissance. Many are explorers and loners, preferring to wander "
-#| "through the towering trees sheltering the natural beauty of their homes, "
-#| "of which they are fiercely protective. While they possess considerable "
-#| "skill in both blade and bow, these archers are less adept at fighting "
-#| "other warriors on even terms, preferring instead to ambush their enemies "
-#| "from the shadows in the woods. A surprise attack from rangers can cripple "
-#| "a force many times their size and will often compel attacking armies to "
-#| "withdraw rather than risk a game of prolonged guerrilla warfare in the "
-#| "forests."
 msgid ""
 "The silent watchers of the forests, Elvish Rangers are masters of stealth "
 "and reconnaissance. Many are explorers and loners, preferring to wander "
@@ -4187,23 +4112,8 @@ msgstr "Elfí jezdec"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:21
-#, fuzzy
-#| msgid ""
-#| "The prevalence of guerrilla tactics in Elven strategy results in great "
-#| "emphasis on maintaining highly mobile units capable of fighting on an "
-#| "adaptable battlefront. This style of warfare requires rapid communication "
-#| "between small skirmish groups and the ability to quickly transfer troops "
-#| "between combat zones. Experienced Elvish riders know this well and thus "
-#| "devote most of their time to improving their horsemanship rather than "
-#| "their individual fighting skills. The speed at which they travel through "
-#| "the forest would be suicidal for any other cavalry, and they are "
-#| "tenacious enough to ride for as much as two or three days at a time "
-#| "without resting. While the intelligence and communication these horsemen "
-#| "provide is invaluable, the lack of combat prowess and front line "
-#| "engagement means that these riders are the oft unsung heroes of war, left "
-#| "supporting their brethren from the back lines."
 msgid ""
-"The prevalence of guerrilla tactics in Elven strategy results in great "
+"The prevalence of guerrilla tactics in elven strategy results in great "
 "emphasis on maintaining highly mobile units capable of fighting on an "
 "adaptable battlefront. This style of warfare requires rapid communication "
 "between small skirmish groups and the ability to quickly transfer troops "
@@ -4237,19 +4147,6 @@ msgstr "Elfí průzkumník"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Although the equines bred by the wood elves are much faster and more "
-#| "agile than regular horses, they tend to be quite a bit harder to master. "
-#| "It takes many years to train these fickle ponies, but once tamed, they "
-#| "are among the most devoted mounts. These unique horses allow Elvish "
-#| "horsemen to outpace most other cavalry on open ground and even ride "
-#| "through thick forests at full gallop. Though these riders possess some "
-#| "skill in wielding swords and bows, their greatest effectiveness lies in "
-#| "their ability to scout and outmaneuver enemy forces. Elvish scouts are "
-#| "most often used as messengers or support units and are adept at quickly "
-#| "transferring information between patrols, whom they also reinforce when "
-#| "necessary."
 msgid ""
 "Although the equines bred by the wood elves are much faster and more agile "
 "than regular horses, they tend to be quite a bit harder to master. It takes "
@@ -4374,29 +4271,16 @@ msgstr "Elfí vědma"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Elven magic most commonly diverges among two paths — manipulation of the "
-#| "natural, or corporeal world, and divination into the arcane plane. The "
-#| "latter, as a power that is difficult to control and ill-understood even "
-#| "by most of its practitioners, is not often sought after by the Elves. "
-#| "Wielders of the arcane face significant risk in studying the volatile "
-#| "nature of their discipline and quickly learn to respect the disruptive "
-#| "power of their craft. This destructive nature most commonly manifests "
-#| "itself as gouts of ‘faerie fire’, which is among the most readily "
-#| "mastered skills for an Elvish sorceress. While a rather superficial "
-#| "application of this art, the Elves nonetheless hold the arcane flame in "
-#| "high regard and are careful to utilize it with judicious caution."
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
 "natural, or corporeal world, and divination into the arcane plane. The "
 "latter, as a power that is difficult to control and ill-understood even by "
-"most of its practitioners, is not often sought after by the Elves. Wielders "
+"most of its practitioners, is not often sought after by the elves. Wielders "
 "of the arcane face significant risk in studying the volatile nature of their "
 "discipline and quickly learn to respect the disruptive power of their craft. "
 "This destructive nature most commonly manifests itself as gouts of ‘faerie "
 "fire’, which is among the most readily mastered skills for an Elvish "
-"Sorceress. While a rather superficial application of this art, the Elves "
+"Sorceress. While a rather superficial application of this art, the elves "
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
@@ -4517,19 +4401,6 @@ msgstr "Gobliní rytíř"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Battle experience strengthens not only the combat prowess of both mount "
-#| "and rider, but also heartens the bond between them. While a human knight "
-#| "may ride different steeds into battle, a ‘goblin knight’ refers to goblin "
-#| "and wolf together as a single unit, fiercely loyal to one another almost "
-#| "to a fault.\n"
-#| "\n"
-#| "Among orcs, the riders are treated as a class above goblins, even when "
-#| "separated from their mount. Orcish grunts, while feeling themselves "
-#| "superior to goblins, recognize that picking a fight with the rider is "
-#| "also picking a fight with jaws that strike faster than a sword, and "
-#| "almost as hard."
 msgid ""
 "Battle experience strengthens not only the combat prowess of both mount and "
 "rider, but also heartens the bond between them. While a human knight may "
@@ -4559,12 +4430,6 @@ msgstr "Goblin plenitel"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Some Goblins train their wolves to overcome their fear of fire. In raids, "
-#| "these goblins take a supporting role; they will torch the homes and crops "
-#| "of their foes, and also carry nets to wreak havoc against those "
-#| "attempting to rally for defense or reprisal."
 msgid ""
 "Some goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -4590,13 +4455,6 @@ msgstr "Goblin se zástavou"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
-#| "enough battles to be considered a veteran is rare enough, and it is rarer "
-#| "still for the other goblins to recognize and respect his veteran status. "
-#| "Nonetheless, a rouser’s frenzied goading effectively steels the less "
-#| "veteran fighters to strive harder and longer before they die."
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -4719,13 +4577,6 @@ msgstr "Velký rytíř"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Grand Knights have reached the acme of skill with sword and lance. "
-#| "Wearing full plate, and riding steeds bred more for power than for speed, "
-#| "these warriors form the core of any serious cavalry force. A grand knight "
-#| "at the head of a charge is a terrifying sight for infantry, and is often "
-#| "enough to break right through a defensive line."
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
 "full plate, and riding steeds bred more for power than for speed, these "
@@ -4785,60 +4636,6 @@ msgstr ""
 "že se oddělily z formace a svou úlohu plní také při narušování obranných "
 "linií. Tyto jednotky však mají jen omezené využití při obraně."
 
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "\n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
-msgid ""
-"Knights of the highest virtue, Paladins have sworn their strength not to "
-"king and crown, but to ideals themselves; of chivalry, and the stewardship "
-"of everything that is good. They may serve in the armies of the world, but "
-"their first loyalties often lie with groups of their own making; secret, "
-"monastic orders that cross political and cultural boundaries. Rulers are "
-"sometimes wary of them, for the Paladins’ loyalty is only as strong as the "
-"liege’s apparent virtue. This has led the more darkly ambitious to either "
-"attempt to defame and disperse these groups, or more rarely, to conjure "
-"elaborate deceptions to keep these otherwise staunchly loyal troops in "
-"service.\n"
-"\n"
-"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-"that champion most armies, but they are first-class fighters nonetheless. "
-"Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a Paladin is very powerful in fighting magical or "
-"unnatural things, and most have some skill at medicine and healing."
-msgstr ""
-"Paladinové jsou nejoddanější z rytířů, kteří nezasvětili své zbraně službě "
-"králi a koruně, nýbrž samotným ideálům – rytířskosti a službě všemu, co je "
-"dobré. Mohou sloužit ve světských armádách, ale spíše jsou oddáni svým "
-"vlastním organizacím, obvykle tajným mnišským řádům, které se nacházejí na "
-"pomezí politických a kulturních hranic. Vládce to částečně zneklidňuje, "
-"neboť věrnost paladinů závisí na vlastní ctnosti toho, kdo vládne. Vladaři, "
-"jejichž mysl se ubírá temnějšími cestičkami, se tedy pokoušejí jejich řady "
-"ponížit a rozmělnit, ve zřídkavějších případech pak vymýšlejí různé lsti, "
-"aby si uchovali jejich pevnou oddanost.\n"
-"\n"
-"Paladinové nejsou tak strašlivými válečníky jako velcí rytíři, šampióni "
-"většiny armád, stále však náleží mezi prvotřídní bojovníky. Jejich moudrost "
-"a ctnost jim také propůjčuje určité podivuhodné schopnosti. Paladinové "
-"disponují velkou mocí v boji proti magickým či nepřirozeným tvorům a většina "
-"také ovládá nějakou formu léčení."
-
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -4846,15 +4643,6 @@ msgstr "Jezdec na koni"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen "
-#| "are trained from childhood to ride and to follow a strict code of honor. "
-#| "A charge made by a horseman is a powerful though risky tactic, the worth "
-#| "of which has been proven time and time again on the battlefield. Horsemen "
-#| "excel against most infantry, especially those who have fallen out of "
-#| "line, but must take care against both spearmen and archers for whom their "
-#| "large size provide inviting targets."
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -4873,13 +4661,6 @@ msgstr ""
 
 #. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The use of archery in shooting something other than game was seen from "
-#| "its inception, and archers have been indispensable in warfare since time "
-#| "immemorial. Usually of humble origins, hailing from the peasantry or "
-#| "woodsmen, military bowmen are trained to competence with both a bow and a "
-#| "short sword, and are very common on the battlefield."
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -4919,18 +4700,8 @@ msgstr "Kavalerista"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cavalrymen are distinguished from horsemen by their tactics and "
-#| "equipment. A cavalryman wears heavier armor, and carries a sword and "
-#| "shield, rather than a lance. Their tactics do not include charging; "
-#| "instead they maneuver to slash with a sword, using both horse and rider "
-#| "as an effective tool of melee.\n"
-#| "\n"
-#| "Cavalrymen are very useful for taking and holding positions on open "
-#| "ground, for screening friendly soldiers, and also for scouting work."
 msgid ""
-"Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
+"Cavalrymen are distinguished from Horsemen by their tactics and equipment. A "
 "Cavalryman wears heavier armor, and carries a sword and shield, rather than "
 "a lance. Their tactics do not include charging; instead they maneuver to "
 "slash with a sword, using both horse and rider as an effective tool of "
@@ -5004,18 +4775,6 @@ msgstr "Šermíř"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Fencers belong to a school of thought that considers the armor most "
-#| "soldiers wear in combat to be their own worst enemy. While armor can only "
-#| "soften a blow, evading it leaves the defender completely unharmed. Being "
-#| "able to reliably dodge any offensive move is a luxury only afforded to "
-#| "the fit of body, and then only to those who endure rigorous training.\n"
-#| "\n"
-#| "Outfitted with only a dagger and saber, fencers are light on their feet "
-#| "and useful in many situations where their armor-bound peers are at a "
-#| "disadvantage. They relish dancing circles around troops like heavy "
-#| "infantry, mocking the weight of their full armor."
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -5087,22 +4846,6 @@ msgstr "Halapartník"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:18
-#, fuzzy
-#| msgid ""
-#| "A halberd is a heavy weapon and difficult to use, but very powerful in "
-#| "the hands of an expert. It is also much more flexible than the spear from "
-#| "which it descended. As any halberdier can tell you, the weapon possesses "
-#| "four primary striking points, two more than a spear or pike; these are "
-#| "the tip, the blade, the spike at the base of the shaft, and the inner "
-#| "point on the blade, which can be used in a motion pulling back towards "
-#| "the wielder. All this makes for a very versatile weapon in melee, "
-#| "especially against cavalry.\n"
-#| "\n"
-#| "However, a halberd is notably more expensive to craft than a spear, and "
-#| "in the hands of a novice, much less effective. In the armies of Wesnoth, "
-#| "it is customary only to grant these weapons to veteran pikemen, who have "
-#| "proven that they have the skill to employ them properly on the field of "
-#| "war."
 msgid ""
 "A halberd is a heavy weapon and difficult to use, but very powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -5115,7 +4858,7 @@ msgid ""
 "\n"
 "However, a halberd is notably more expensive to craft than a spear, and in "
 "the hands of a novice, much less effective. In the armies of Wesnoth, it is "
-"customary only to grant these weapons to veteran pikemen, who have proven "
+"customary only to grant these weapons to veteran Pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
 "Halapartna je velmi těžká a ne právě jednoduše ovladatelná zbraň, v rukou "
@@ -5147,18 +4890,11 @@ msgstr "Těžkooděnec"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Heavy infantry are brawny fighters clad in full plate and wielding "
-#| "massive impact weapons. Though they fight with unmatched power in melee "
-#| "combat, they have poor mobility and are best employed in static defense "
-#| "of fortified positions. A few of these in battle line will stiffen it "
-#| "considerably, albeit at an obvious cost in tactical flexibility."
 msgid ""
 "Heavy Infantry are brawny fighters clad in full plate and wielding massive "
 "impact weapons. Though they fight with unmatched power in melee combat, they "
 "have poor mobility and are best employed in static defense of fortified "
-"positions. A few of these in battle line will stiffen it considerably, "
+"positions. A few of these in a battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
 "Těžkooděnci jsou siláčtí válečníci obalení pláty železa a vybavení masivními "
@@ -5278,16 +5014,6 @@ msgstr "Mistr lučištník"
 
 #. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Master bowmen have reached the zenith of their art, inasmuch as any human "
-#| "is capable. Armed with both a sword, and a great yew bow, these warriors "
-#| "crown battalions of archers with their presence, bringing down many a foe "
-#| "with their well-aimed shots. Their skill with the sword is also not to be "
-#| "discounted; they are easily as good with it as any novice swordsman. Of "
-#| "the many races in the world, only the elves surpass humanity in archery, "
-#| "and their human counterparts have speculated, perhaps in envy, that this "
-#| "is only by dint of age."
 msgid ""
 "Master Bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -5344,22 +5070,13 @@ msgstr "Pikenýr"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Promising spearmen in the armies of Wesnoth are often graduated to "
-#| "wielding pikes, and are outfitted with something far superior to the "
-#| "motley collection of leather armor they wore as recruits. A pike is a "
-#| "much longer weapon than a spear, and thus facilitates different combat "
-#| "tactics. A wall of pikemen is the bane of any cavalry charge, and with "
-#| "proper discipline and tactics, pikemen can also hold most other infantry "
-#| "at bay."
 msgid ""
-"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
+"Promising Spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
 "collection of leather armor they wore as recruits. A pike is a much longer "
 "weapon than a spear, and thus facilitates different combat tactics. A wall "
 "of Pikemen is the bane of any cavalry charge, and with proper discipline and "
-"tactics, pikemen can also hold most other infantry at bay."
+"tactics, Pikemen can also hold most other infantry at bay."
 msgstr ""
 "Slibným kopiníkům armád Wesnothu je umožněno bojovat píkou a jsou obrněni "
 "něčím mnohem lepším než jen nesourodým koženým brněním, které patří k výbavě "
@@ -5447,16 +5164,6 @@ msgstr "Úderná jednotka"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Shock troopers are the elite of the heavy infantry, and a significant "
-#| "part of their use is mere intimidation. The only men who can enter their "
-#| "ranks are prodigiously well-built, and when clad in black plate brimming "
-#| "with spikes, they are a fearsome sight to behold. The sight of Shock "
-#| "Troopers breaking an enemy often does the same to the morale of any "
-#| "opposition, who sometimes wonder if such armor covers monsters, rather "
-#| "than men. The drawback of such heavy armor is, of course, the time it "
-#| "takes to move into and out of combat."
 msgid ""
 "Shock Troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -5483,14 +5190,6 @@ msgstr "Kopiník"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Swords are, for many, an expensive luxury, and one which peasants can ill "
-#| "afford. Spears are much easier to make and will do well even without a "
-#| "spearhead, though most can afford one. Clad in leather armor, and often "
-#| "armed with a shield and a few javelins, spearmen are the staple of most "
-#| "armies, often thrown into the front lines with only the most basic "
-#| "training."
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -5660,13 +5359,6 @@ msgstr ""
 "ubraly. Na bitevním poli jsou nicméně pro své mocné blesky stále obávanými "
 "protivníky."
 
-#. [attack]: type=fire
-#: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:100
-#: data/core/units/monsters/Raven_Omen.cfg:90
-msgid "lightning"
-msgstr "blesk"
-
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
@@ -5764,25 +5456,6 @@ msgstr "Stříbrný mág"
 
 #. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The many paths that a mage can take in study lead to strikingly different "
-#| "ends. Often viewed as sages, or wandering mystics, silver magi act under "
-#| "an agenda which is obscure even to their own colleagues. Though helpful "
-#| "to the magisteriums which often employ them in the field, they remain "
-#| "somewhat aloof.\n"
-#| "\n"
-#| "They have, in fact, their own order amongst the ranks of magi, an order "
-#| "which withholds certain secrets from their peers. One of these is an "
-#| "apparent ability to cross great distances, faster than one could possibly "
-#| "travel on foot. Members of the silver order ardently refuse to discuss "
-#| "the workings of this with any of their fellow magi, and on those rare "
-#| "occasions when others have pried into their work, they have abandoned the "
-#| "endeavor, never to speak of it again.\n"
-#| "\n"
-#| "Silver magi are often more physically adept than other magi, and their "
-#| "skills are of undeniable use on the battlefield, if one can manage to "
-#| "induce the mage to apply them."
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, Silver Magi act under an "
@@ -5920,15 +5593,6 @@ msgstr "Zbojník"
 
 #. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
-#, fuzzy
-#| msgid ""
-#| "After some years of service, former ‘footpads’ rise up in the ranks of "
-#| "their fellow outlaws. Having proven themselves in combat, they are given "
-#| "more dangerous tasks, and a greater share of the spoils. Though many "
-#| "opponents would mock their choice of weaponry, the outlaws are well aware "
-#| "of its deadly capacity, and also of the ready availability of ammunition. "
-#| "Outlaws are somewhat ill at ease fighting during the day, preferring the "
-#| "cover of nightfall."
 msgid ""
 "After some years of service, former ‘Footpads’ rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -5957,14 +5621,6 @@ msgstr "Vrah"
 
 #. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The greatest of thieves are sometimes tasked to take far more than their "
-#| "victim’s belongings. Masters of knife-fighting and uncannily light on "
-#| "their feet, these menacing figures will employ any means to dispatch "
-#| "their victims, be it poisoned knives thrown from afar, or a dagger "
-#| "planted in the back. Deadly at night, assassins are less able fighting "
-#| "under the sun."
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim’s belongings. Masters of knife-fighting and uncannily light on their "
@@ -6019,14 +5675,6 @@ msgstr "Lapka"
 
 #. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
-#, fuzzy
-#| msgid ""
-#| "These petty criminals are often derisively called ‘footpads’ by their "
-#| "superiors, for they are tasked with any job that requires a great deal of "
-#| "running around, often being employed as couriers, or scouts. The "
-#| "endurance and agility they gain from this serves them well in combat, and "
-#| "despite their inferior weaponry they are quite good at harrying their "
-#| "enemies, especially under cover of darkness."
 msgid ""
 "These petty criminals are often derisively called ‘Footpads’ by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -6095,14 +5743,6 @@ msgstr "Ničema"
 
 #. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The ringleaders of any group of thieves earn their positions by skill. "
-#| "These rogues have spent many an unpleasant moment darting through crowds "
-#| "and dodging away from those who wish them ill, a set of skills which is "
-#| "very handy in a fight. Masters of knifework, they can also throw knives "
-#| "with reliable accuracy, and their long hours of prowling around at night "
-#| "leave them more comfortable fighting in the dark."
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "Rogues have spent many an unpleasant moment darting through crowds and "
@@ -6178,13 +5818,6 @@ msgstr "Lupič"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Thugs come from a wide variety of sources; while a few are born into "
-#| "thuggery, many are former soldiers deemed unfit to serve in the army or "
-#| "peasants thrown off their lands. They become thugs as a means of "
-#| "sustenance. Regardless of their background, they all share a penchant for "
-#| "beating their victims with large clubs."
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -6306,16 +5939,6 @@ msgstr "Pytlák"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Though not trained as warriors, the skills possessed by a hunter "
-#| "(especially those of archery) are useful in battle. Any group of soldiers "
-#| "or bandits traveling through the wild will need a few poachers in their "
-#| "employ, not merely for hunting but for lending a hand in any serious "
-#| "fight.\n"
-#| "\n"
-#| "Because of their experience, these hunters are unusually capable at "
-#| "night, and in forests and swamps."
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -6768,14 +6391,6 @@ msgstr ""
 "při přiblížení mohou kousat."
 
 #: data/core/units/monsters/Ant_Egg.cfg:4
-#, fuzzy
-#| msgid ""
-#| "The giant ant eggs have a tough, leathery shell that takes a dedicated "
-#| "effort to break through. While this shell makes it difficult to know the "
-#| "status of the inhabitant from the outside, it does not obscure the "
-#| "outside world from the rapidly developing ant larva within. Any predator "
-#| "or foe who approaches an ant egg or breaches the shell of an adjacent "
-#| "brood member will spur that ant to hatch as a fully formed adult."
 msgid ""
 "The Giant Ant Eggs have a tough, leathery shell that takes a dedicated "
 "effort to break through. While this shell makes it difficult to know the "
@@ -6818,12 +6433,6 @@ msgstr "Vejce ohnivého mravence"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
-#, fuzzy
-#| msgid ""
-#| "In large numbers, Fire Ants can be a real menace, and those threatening "
-#| "numbers start with their eggs. Most Fire Ant eggs come from one of the "
-#| "colony queens, but the workers transport them to any suitable location.\n"
-#| "\n"
 msgid ""
 "In large numbers, Fire Ants can be a real menace, and those threatening "
 "numbers start with their eggs. Most Fire Ant Eggs come from one of the "
@@ -6843,13 +6452,6 @@ msgstr "Ohnivý mravenec"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:53
-#, fuzzy
-#| msgid ""
-#| "Small but deadly in large numbers, fire ants possess fierce fangs and an "
-#| "unusual ability to generate fire. Though these creatures typically "
-#| "function as scavengers, a burrow of fire ants can become aggressive when "
-#| "provoked and have even been known to attack small groups of threatening "
-#| "troops."
 msgid ""
 "Small but deadly in large numbers, Fire Ants possess fierce fangs and an "
 "unusual ability to generate fire. Though these creatures typically function "
@@ -6908,13 +6510,6 @@ msgstr "Zápalný mravenec"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:53
-#, fuzzy
-#| msgid ""
-#| "More developed and specialized Fire Ants can take different forms. The "
-#| "firebomb ants can produce and carry large quantities of their flammable "
-#| "spray in a swollen abdomen, which can make for a fearsome attack, but it "
-#| "also makes them weak to physical attacks and they cannot sustain the fire "
-#| "as their health fails."
 msgid ""
 "More developed and specialized Fire Ants can take different forms. The "
 "Firebomb Ants can produce and carry large quantities of their flammable "
@@ -6983,12 +6578,12 @@ msgid ""
 "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
 "Adapted to roaming the dark caves, they have a keen sense of smell and "
 "hearing, but poor eyesight. When a rival predator, or some other threat, "
-"gets too close, a bear will reliably attack."
+"gets too close, a Bear will undoubtedly attack."
 msgstr ""
-"Jeskynní medvědi jsou velká, mocná zvířata s ostrými drápy a velkými zuby. V "
-"důsledku přizpůsobení pobytu v temných jeskyních mají ostrý čich a sluch, "
+"Jeskynní medvědi jsou velká, mocná zvířata s ostrými drápy a velkými zuby. "
+"V důsledku přizpůsobení pobytu v temných jeskyních mají ostrý čich a sluch, "
 "ale špatný zrak. Když se konkurenční dravec nebo jiná hrozba přiblíží příliš "
-"blízko, medvěd spolehlivě zaútočí."
+"blízko, medvěd nepochybně zaútočí."
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
@@ -6998,9 +6593,9 @@ msgstr "Divočák"
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
 msgid ""
-"As boars age, their already formidable teeth grow longer and more numerous. "
-"A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
-"boar is a challenge even to the best hunters."
+"As Boars age, their already formidable teeth grow longer and more numerous. "
+"A mature, tamed Boar is a valuable asset to any farmer, but an angry wild "
+"Boar is a challenge even to the best hunters."
 msgstr ""
 "Jak divočáci rostou, přirůstají jim do jejich už tak impozantního chrupu "
 "další zuby a stávající se prodlužují. Dospělý kanec je cenným přínosem pro "
@@ -7022,11 +6617,6 @@ msgstr "Sele"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Young piglets are curious but just as ill-tempered as their parents, if a "
-#| "little less of a challenge in combat. But seldom is a piglet found that "
-#| "does not have a protective adult boar watching over them."
 msgid ""
 "Young Piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a Piglet found that does "
@@ -7044,7 +6634,7 @@ msgstr "Piraňa"
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
 msgid ""
-"The giant caribe are seldom encountered in the inland rivers near Weldyn, "
+"The giant Caribe are seldom encountered in the inland rivers near Weldyn, "
 "but tales of their ferocious attacks have spread far and wide. Their angry "
 "red eyes are embedded in an armored face. While it is their teeth that are a "
 "dangerous weapon, they do posses small, bony arms and claws, which they can "
@@ -7066,7 +6656,7 @@ msgstr "Piraňa lovec"
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
 msgid ""
-"As they age, the giant caribe become bigger and more dangerous. They also "
+"As they age, the giant Caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
 "Jak piraně obrovské stárnou, rostou a stávají se nebezpečnějšími. Také se "
@@ -7569,13 +7159,6 @@ msgstr "Hnědohřívák"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Bay horses are defined more by their coloration than their size or "
-#| "temperament, and can be found anywhere from the battlefield to the farm "
-#| "to the wild plains and woodlands. Though an unencumbered horse will tend "
-#| "to flee if possible, they will fight back with a powerful kick when "
-#| "cornered."
 msgid ""
 "Bay Horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
@@ -7663,12 +7246,6 @@ msgstr "Velký kůň"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Great horses are significantly larger than the usual domesticated horse, "
-#| "but despite their similar appearance, they are wild animals. Their "
-#| "obstinate and often feisty temperaments make them too difficult to tame, "
-#| "though many an arrogant prince or warlord has tried and failed."
 msgid ""
 "Great Horses are significantly larger than the usual domesticated horse, but "
 "despite their similar appearance, they are wild animals. Their obstinate and "
@@ -7912,14 +7489,6 @@ msgstr "Obří štír skalní"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-#| "has been scant evidence that they truly exist. They’ve been described as "
-#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
-#| "claws. Unlike most scorpions, they do not deliver their poison with a "
-#| "piercing stinger, but instead spray their enemies with a noxious, "
-#| "volatile stream."
 msgid ""
 "Rock Scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They’ve been described as "
@@ -8174,10 +7743,6 @@ msgstr "Vlk"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Wolves are aggressive animals that hunt in packs. Although weak "
-#| "individually, a wolf pack can kill even the strongest man in minutes."
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a Wolf pack can kill even the strongest man in minutes."
@@ -8228,15 +7793,6 @@ msgstr "Yetti"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Little is known about Yetis, ape-like creatures said to live in remote "
-#| "and snow-covered mountains. Few profess to have seen one, and their "
-#| "existence is doubted by many. Most accounts agree on several factors "
-#| "though — while slow and simple-minded, yetis are extremely resilient, and "
-#| "can kill any they encounter with their bare fists. This is enough to keep "
-#| "even the doubtful from venturing too far onto the mountains they are said "
-#| "to inhabit."
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
@@ -8735,16 +8291,6 @@ msgstr "Skřetí lučištník"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Although bows are sometimes regarded as cowardly armaments among orcs, "
-#| "the pragmatic nature of orcish warfare makes frequent use of these "
-#| "weapons, which are well-suited for those of smaller stature or build. A "
-#| "favored tactic among orcish archers is the use of flaming arrows to sow "
-#| "chaos among enemy lines, softening tough opponents for their bigger and "
-#| "stronger brethren to finish off on the frontlines. While typically poorly "
-#| "equipped themselves, these orcs can nonetheless be quite effective in "
-#| "large numbers."
 msgid ""
 "Although bows are sometimes regarded as cowardly armaments among orcs, the "
 "pragmatic nature of orcish warfare makes frequent use of these weapons, "
@@ -8794,15 +8340,6 @@ msgstr "Skřetí střelec z kuše"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Despite the heavy importance placed on combat prowess by most orcs, very "
-#| "few tribes have any semblance of formal training in any of the warring "
-#| "arts. Because of this, orcish bowmen are rather ineffective at wielding "
-#| "longbows pilfered from human or elven archers, instead preferring to arm "
-#| "themselves with more easily handled crossbows. Simplistic but potent, "
-#| "these weapons can still be deadly even when handled roughly by "
-#| "inexperienced warriors."
 msgid ""
 "Despite the heavy importance placed on combat prowess by most orcs, very few "
 "tribes have any semblance of formal training in any of the warring arts. "
@@ -8908,15 +8445,6 @@ msgstr "Skřetí vládce"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:18
-#, fuzzy
-#| msgid ""
-#| "A common misconception about the hierarchy of orcish clans is the notion "
-#| "that orcs only value brute strength. Although the leader of a smaller "
-#| "orcish troop may be the strongest fighter amongst them, the ruler of a "
-#| "large tribe has the difficult task of stifling internal feuding and in-"
-#| "fighting — something that cannot be accomplished by force alone. Such an "
-#| "orc is inevitably the most shrewd and perceptive among his peers and has "
-#| "won the respect of his brethren through leadership rather than coercion."
 msgid ""
 "A common misconception about the hierarchy of orcish clans is the notion "
 "that orcs only value brute strength. Although the leader of a smaller orcish "
@@ -9063,15 +8591,6 @@ msgstr "Skřetí válečník"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Orcish swordplay focuses almost strictly on offense, making use of their "
-#| "natural stamina to outlast their opponents through sheer resilience. A "
-#| "more seasoned orcish warrior is thus commonly seen wielding two blades, "
-#| "choosing to forego a shield and instead trade hits with enemies in melee "
-#| "range. Though a rather brutish tactic, it is still quite effective for "
-#| "these fighters, who lack the training and finesse to act on more complex "
-#| "strategies."
 msgid ""
 "Orcish swordplay focuses almost strictly on offense, making use of their "
 "natural stamina to outlast their opponents through sheer resilience. A more "
@@ -9155,12 +8674,6 @@ msgstr "Ještěrácká oštěpařka"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
-#, fuzzy
-#| msgid ""
-#| "After years of combat practice, saurians warriors that are the most "
-#| "talented in the skill of spear throwing might advance to the ranks of the "
-#| "javelineers. With better equipment and exceptional aim, saurian "
-#| "javelineers are not to be underestimated."
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
 "in the skill of spear throwing might advance to the ranks of the "
@@ -9178,14 +8691,6 @@ msgstr "Ještěrácký věštec"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Certain saurians are seen dressed in arcane regalia and covered head to "
-#| "toe in horrifying, esoteric shapes and markings, both with paint and "
-#| "tattoo. Some suspect them to be visionaries, or oracles amongst their "
-#| "ilk. But whatever ‘societal’ function they may have, they are undeniably "
-#| "powerful in the strange magics their kind possess, and are beings to be "
-#| "wary of if ever seen."
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -9313,11 +8818,6 @@ msgstr "Trollí hrdina"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Some trolls are born with an exceptional share of the strength and "
-#| "vitality that characterizes their race. In a society where might makes "
-#| "right, those of their ilk revere them as heroes."
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -9376,11 +8876,6 @@ msgstr "Trollí šaman"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Troll shamans are the mystical leaders of the trolls. Though not as "
-#| "strong or tough as other trolls, their true power lies in their fire "
-#| "magic, which they use to blast enemies with gouts of flame."
 msgid ""
 "Troll Shamans are the mystical leaders of the trolls. Though not as strong "
 "or tough as other trolls, their true power lies in their fire magic, which "
@@ -9429,13 +8924,6 @@ msgstr "Trollí mládě"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Describing a troll as a whelp is something of an oxymoron, given that "
-#| "their bodies are already much hardier than that of a grown man. They are "
-#| "clumsy and not yet capable of walking properly, forced instead to shamble "
-#| "about on all fours, but any difficulty this causes them is more than made "
-#| "up for by the raw strength of their race."
 msgid ""
 "Describing a troll as a Whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -9455,17 +8943,9 @@ msgstr "Žrout"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The ghast is a creature taken from humankind’s most primal nightmares. "
-#| "Unlike their lesser cousins, ghouls and necrophages, ghasts are not "
-#| "patient enough to wait for their victim to die from poison before "
-#| "consuming the body. They attack directly with their enormous mouths, "
-#| "trying to rip the flesh straight from their foes. Once their enemy is "
-#| "defeated, they eat the rest of the body, gaining strength in the process."
 msgid ""
 "The Ghast is a creature taken from humankind’s most primal nightmares. "
-"Unlike their lesser cousins, ghouls and necrophages, Ghasts are not patient "
+"Unlike their lesser cousins, Ghouls and Necrophages, Ghasts are not patient "
 "enough to wait for their victim to die from poison before consuming the "
 "body. They attack directly with their enormous mouths, trying to rip the "
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
@@ -9485,17 +8965,6 @@ msgstr "Požírač mrtvých"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Only the more perverse and sadistic of necromancers know what must be "
-#| "done to turn a person into a ghoul, and it is a secret they are not "
-#| "telling. The result, however, is all too well known; it is a beast that "
-#| "knows nothing of its days as a human being, a creature that shambles "
-#| "about as naked as the day it was born, and gorges itself on the flesh of "
-#| "the dead.\n"
-#| "\n"
-#| "It is because of such things that necromancy is condemned with an almost "
-#| "primal hatred in all civilized lands."
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a Ghoul, and it is a secret they are not telling. The "
@@ -9523,16 +8992,6 @@ msgstr "Požírač mrtvol"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these creatures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The Necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -9758,23 +9217,6 @@ msgstr "Temný čaroděj"
 
 #. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The dread inspired by black magic is enhanced by the secrecy and fell "
-#| "rumors which surround it. Dark sorcerers have begun to unlock the secrets "
-#| "of life and death, the latter of which is all too easy to inflict. This "
-#| "labor gives the first glimmerings of the connection between the soul and "
-#| "inert matter, and the first successful experiments in manipulating this "
-#| "bond. The terrible unknown that lurks beyond death is glimpsed, and will "
-#| "inevitably be fathomed.\n"
-#| "\n"
-#| "Despite any design they may have of using this to wrest their own "
-#| "immortality from nature’s grasp, the first results of their work have "
-#| "immediate, and unpleasant applications. The life they breathe into dead "
-#| "matter can create servants for them, servants which will work, but which "
-#| "will also kill, and will never question their masters. These creations "
-#| "have a loyalty any tyrant would dream of, and it is tempting to those "
-#| "with even the slightest desire for power."
 msgid ""
 "The dread inspired by black magic is enhanced by the secrecy and fell rumors "
 "which surround it. Dark Sorcerers have begun to unlock the secrets of life "
@@ -9853,22 +9295,10 @@ msgstr "Lich"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:19
-#, fuzzy
-#| msgid ""
-#| "A lich is the physical embodiment of black magic’s first goal: the quest "
-#| "to achieve immortality. Though a great deal is sacrificed in the rebirth, "
-#| "in becoming a lich one cheats death of that which truly gives it terror. "
-#| "For it is the mind that is retained, and the spirit which follows, though "
-#| "the body may wither away.\n"
-#| "\n"
-#| "It is not known, save perhaps by the inner circles of necromancy, whether "
-#| "life is prolonged indefinitely or simply extended. The fact that this "
-#| "question can be raised at all is a testament to the magnitude of what "
-#| "their order has achieved."
 msgid ""
 "A Lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
-"becoming a lich one cheats death of that which truly gives it terror. For it "
+"becoming a Lich one cheats death of that which truly gives it terror. For it "
 "is the mind that is retained, and the spirit which follows, though the body "
 "may wither away.\n"
 "\n"
@@ -9907,7 +9337,7 @@ msgstr ""
 "oklamání smrti."
 
 #. [female]: gender=female
-#: data/core/units/undead/Necromancer.cfg:152
+#: data/core/units/undead/Necromancer.cfg:153
 msgid "female^Necromancer"
 msgstr "Nekromantka"
 
@@ -10112,13 +9542,6 @@ msgstr "Kostlivec lučištník"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:16
-#, fuzzy
-#| msgid ""
-#| "A skeleton archer is little different from the ‘skeletons’ which often "
-#| "accompany it — it is a sin against nature, a warrior raised from the dead "
-#| "to fight once again. In their masters’ hands, these soldiers will do "
-#| "anything to achieve the tasks laid before them, for death holds no fear "
-#| "for one who is already dead."
 msgid ""
 "A Skeleton Archer is little different from the ‘skeletons’ which often "
 "accompany it — it is a sin against nature, a warrior raised from the dead to "
@@ -10215,15 +9638,6 @@ msgstr "Přízrak"
 # pův.: "neviditelní lidé"
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Sometimes called the ‘hollow men’, spectres form the right arm of their "
-#| "masters’ powers. They are an unholy terror to the living, for they are "
-#| "quite as deadly as their appearance suggests.\n"
-#| "\n"
-#| "The creation of these is itself no mean feat, but the real danger in "
-#| "encountering one is that it is likely only the harbinger of a much more "
-#| "dangerous force that will follow in its wake."
 msgid ""
 "Sometimes called the ‘hollow men’, Spectres form the right arm of their "
 "masters’ powers. They are an unholy terror to the living, for they are quite "
@@ -10377,12 +9791,21 @@ msgid ""
 "Like most woses, Saplings rarely seek out conflict, although strikes from "
 "their thrashing branches can cause some damage."
 msgstr ""
+"Nejmenší ze stromového lidu bývají nazýváni sazenky. Sazenci ještě nemají "
+"takovou sílu jako jejich starší příbuzní. Ačkoli o životním cyklu těchto "
+"záhadných tvorů je známo jen málo, mnozí spekulují, že rostou mnohem "
+"pomaleji než běžné stromy. Pokud je to pravda, tak i tito takzvaně mladiství "
+"stromoví lidé mohou být staří mnoho desítek let.\n"
+"\n"
+"Údery jejich mlátících větví sice mohou způsobit nějaká zranění, nicméně "
+"sazenci, stejně jako většina stromových lidí, nevyhledávají konflikty."
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
 msgid "Wose Shaman"
 msgstr "Stromový šaman"
 
+# Slovosled jsem hodně zpřeházel, neboť mi to přišlo ladnější.
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
 msgid ""
@@ -10394,10 +9817,18 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+"Ze zatopených a vlhkých lesů, přístupných pouze jejich samotářským "
+"obyvatelům, se vynořují cestovatelské historky o tajemných stromových "
+"šamanech. V nich se tvrdí, že tito šamani stráví staletí pilováním umění "
+"ovládat lesní rostlinstvo. Výpovědi o této zvláštní praxi jsou vyvozeny "
+"pouze z hrstky doložených setkání, kdy použití těchto sil brzdilo jejich "
+"nepřátele v boji. O podrobnostech tohoto umění mohou jiné rasy pouze "
+"spekulovat, obecně se věří, že se liší od magie elfů nebo mořských lidí."
 
-#~ msgid ""
-#~ "These woses are able to command forest plants such as vines and creepers "
-#~ "to hinder their enemies."
-#~ msgstr ""
-#~ "Tito stromoví muži jsou schopni přikázat lesním rostlinám, jako je réva a "
-#~ "jiné popínavky, aby blokovaly nepřátele."
+# Nejsem odborník v šermířských technikách, může to být nepřesně.
+#~ msgid "forceful scimitar strike"
+#~ msgstr "útočný sek šavlí"
+
+# Nejsem odborník v šermířských technikách, může to být nepřesně.
+#~ msgid "balanced scimitar slash"
+#~ msgstr "odsek šavlí"

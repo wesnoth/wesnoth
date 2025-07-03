@@ -34,23 +34,4 @@ inline auto make_ci_matcher(std::string_view filter_text)
 	};
 }
 
-inline auto make_ci_matcher(const std::vector<std::string>& keywords)
-{
-	return [keywords](auto&& text) {
-		if (text.empty()) {
-			return true;
-		}
-
-		for(const auto& keyword : keywords) {
-			for(const auto& word: utils::split(text, ' ')) {
-				if (translation::ci_search(keyword, word)) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	};
-}
-
 } // namespace translation

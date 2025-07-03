@@ -25,33 +25,33 @@
 
 namespace gui2::dialogs
 {
-using namespace std::chrono_literals;
-
 REGISTER_DIALOG(network_transmission)
 
 void network_transmission::pump_monitor::process()
 {
-	if(!window_)
+	if(!window_) {
 		return;
+	}
+
 	connection_->poll();
+
+	std::size_t completed = connection_->current();
+	std::size_t total = connection_->total();
+
+	if(total) {
+		window_->find_widget<progress_bar>("progress")
+			.set_percentage(std::round((completed * 100.) / total));
+
+		auto ss = formatter()
+			<< utils::si_string(completed, true, _("unit_byte^B")) << "/"
+			<< utils::si_string(total, true, _("unit_byte^B"));
+
+		window_->find_widget<label>("numeric_progress")
+			.set_label(ss.str());
+	}
+
 	if(connection_->finished()) {
 		window_->set_retval(retval::OK);
-	} else {
-		size_t completed, total;
-			completed = connection_->current();
-			total = connection_->total();
-		if(total) {
-			window_.ptr()->find_widget<progress_bar>("progress")
-					.set_percentage((completed * 100.) / total);
-
-			std::stringstream ss;
-			ss << utils::si_string(completed, true, _("unit_byte^B")) << "/"
-			   << utils::si_string(total, true, _("unit_byte^B"));
-
-			window_.ptr()->find_widget<label>("numeric_progress")
-					.set_label(ss.str());
-			window_->invalidate_layout();
-		}
 	}
 }
 
@@ -71,9 +71,7 @@ void network_transmission::pre_show()
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		label& subtitle_label
-				= find_widget<label>("subtitle");
-
+		label& subtitle_label = find_widget<label>("subtitle");
 		subtitle_label.set_label(subtitle_);
 		subtitle_label.set_use_markup(true);
 	}
@@ -81,12 +79,13 @@ void network_transmission::pre_show()
 	// NOTE: needed to avoid explicit calls to invalidate_layout()
 	// in network_transmission::pump_monitor::process()
 	find_widget<label>("numeric_progress").set_label(" ");
-	pump_monitor_.window_ = *this;
+	pump_monitor_.window_ = this;
 }
 
 void network_transmission::post_show()
 {
-	pump_monitor_.window_ = utils::nullopt;
+	// In case we close the dialog before transmission is complete
+	pump_monitor_.window_ = nullptr;
 
 	if(get_retval() == retval::CANCEL) {
 		connection_->cancel();

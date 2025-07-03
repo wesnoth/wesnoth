@@ -32,7 +32,10 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/markup.hpp"
 #include "serialization/unicode.hpp"
+
+#include <boost/filesystem/path.hpp>
 
 #include <algorithm>
 #include <functional>
@@ -56,6 +59,9 @@ const std::string label_parent = "..";
 
 const std::string CURRENT_DIR = ".";
 const std::string PARENT_DIR = "..";
+
+// Some fonts used for internationalization don't define this glyph
+const std::string error_marker = markup::span_attribute("face", "DejaVuSans", "✘");
 
 const int FILE_DIALOG_ITEM_RETVAL = 9001;
 const int FILE_DIALOG_MAX_ENTRY_LENGTH = 42;
@@ -91,6 +97,11 @@ inline void isort_dir_entries(std::vector<std::string>& entries)
 	// cosmetic procedure anyway.
 	std::sort(entries.begin(), entries.end(),
 			  [](const std::string& a, const std::string& b) { return translation::icompare(a, b) < 0; });
+}
+
+inline bool path_contains_space(const std::string& path)
+{
+	return std::find_if(path.begin(), path.end(), utils::portable_isspace) != path.end();
 }
 
 } // unnamed namespace
@@ -161,54 +172,50 @@ file_dialog& file_dialog::set_filename(const std::string& value)
 	return *this;
 }
 
-void file_dialog::check_filename() {
+bool file_dialog::check_filename()
+{
 	if(!save_mode_) {
-		return;
+		return true;
 	}
 
-	text_box& file_textbox = find_widget<text_box>("filename");
-	button& save_btn = find_widget<button>("ok");
+	auto& validation_msg = find_widget<styled_widget>("validation_msg");
+	auto& save_btn = find_widget<button>("ok");
 
-	// empty filename
-	const std::string& filename = file_textbox.get_value();
-	styled_widget& validation_msg = find_widget<styled_widget>("validation_msg");
+	// Most codepaths want to disable the button; do it preemptively.
+	save_btn.set_active(false);
 
-	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
-	bool wrong_ext = false;
+	boost::filesystem::path filename(find_widget<text_box>("filename").get_value());
 
-	if (stat_invalid) {
-		validation_msg.set_label(_("<span color='#00dcff' size='small'>please enter a filename</span>"));
-		save_btn.set_active(false);
-	} else {
-		// wrong extension check
-		for (const auto& extension : extensions_) {
-			if (filename.size() >= extension.size()) {
-				std::string ext = filename.substr(filename.size()-extension.size());
-				if (ext == extension) {
-					wrong_ext = false;
-					break;
-				} else {
-					wrong_ext = true;
-				}
-			} else {
-				// size of allowed extensions and the one typed don't match
-				wrong_ext = true;
-			}
-		}
-
-		if (wrong_ext) {
-			utils::string_map i18n_strings;
-			i18n_strings["extensions"] = utils::join(extensions_, ", ");
-			validation_msg.set_label(VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong extension, use $extensions</span></span>", i18n_strings));
-			save_btn.set_active(false);
-		} else if (std::find_if(filename.begin(), filename.end(), isspace) != filename.end()) {
-			validation_msg.set_label(_("<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>whitespace is not allowed in filename</span></span>"));
-			save_btn.set_active(false);
-		} else {
-			validation_msg.set_label("");
-			save_btn.set_active(true);
-		}
+	// Empty filename
+	if(filename.stem().empty()) {
+		validation_msg.set_label(markup::span_color("#00dcff", _("enter filename")));
+		return false;
 	}
+
+	// Invalid extension
+	if(!utils::contains(extensions_, filename.extension())) {
+		// TODO: make extensions_ itself a vector<t_string> if possible
+		auto as_tstrings = std::vector<t_string>(extensions_.begin(), extensions_.end());
+		utils::string_map i18n_strings{{"extensions", utils::format_disjunct_list("", as_tstrings)}};
+
+		std::string message = VGETTEXT("invalid extension (use $extensions)", i18n_strings);
+		validation_msg.set_label(markup::span_color("red", error_marker, ' ', message));
+		return false;
+	}
+
+	// Whitespace
+	if(path_contains_space(filename.string())) {
+		std::string message = _("filename contains whitespace");
+		validation_msg.set_label(markup::span_color("red", error_marker, ' ', message));
+		return false;
+	}
+
+	// Ensure there's always *some* value in the validation message (hence, whitespace)
+	// so it doesn't get hidden if there's no validation message when the dialog is opened.
+	// Since this function is called from pre_show, it's fine to do this here.
+	validation_msg.set_label(" ");
+	save_btn.set_active(true);
+	return true;
 }
 
 void file_dialog::pre_show()
@@ -249,12 +256,9 @@ void file_dialog::pre_show()
 	bookmark_paths_.clear();
 	current_bookmark_ = user_bookmarks_begin_ = -1;
 
-	widget_data data;
-
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
-		data["bookmark"]["label"] = pinfo.display_name();
-		bookmarks_bar.add_row(data);
+		bookmarks_bar.add_row(widget_data{{ "bookmark", {{ "label", pinfo.display_name() }}}});
 	}
 
 	//
@@ -269,8 +273,7 @@ void file_dialog::pre_show()
 
 	for(const auto& bookmark : user_bookmarks) {
 		bookmark_paths_.push_back(bookmark.path);
-		data["bookmark"]["label"] = bookmark.label;
-		bookmarks_bar.add_row(data);
+		bookmarks_bar.add_row(widget_data{{ "bookmark", {{ "label", bookmark.label }}}});
 	}
 
 	sync_bookmarks_bar();
@@ -375,7 +378,8 @@ bool file_dialog::process_submit_common(const std::string& name)
 	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_;
 
 	if(is_selection_type_acceptable(stype)) {
-		return save_mode_ ? confirm_overwrite(stype) : true;
+		// TODO: evaluate if we want to call check_filename() here
+		return save_mode_ ? check_filename() && confirm_overwrite(stype) : true;
 	}
 
 	switch(stype) {
@@ -596,11 +600,10 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	std::string label = name;
 	utils::ellipsis_truncate(label, FILE_DIALOG_MAX_ENTRY_LENGTH);
 
-	widget_data data;
-	data["icon"]["label"] = icon;
-	data["file"]["label"] = label;
-
-	grid& last_grid = filelist.add_row(data);
+	grid& last_grid = filelist.add_row(widget_data{
+		{ "icon", {{ "label", icon }}},
+		{ "file", {{ "label", label }}},
+	});
 
 	//
 	// Crummy hack around the lack of an option to hook into row double click

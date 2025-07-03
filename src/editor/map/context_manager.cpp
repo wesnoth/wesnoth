@@ -137,8 +137,8 @@ void context_manager::refresh_all()
 		if(!get_map_context().is_pure_map()) {
 			// If the scenario has more than 9 teams, add locations for them
 			// (First 9 teams are always in the list)
-			size_t n_teams = get_map_context().teams().size();
-			for(size_t i = 10; i <= n_teams; i++) {
+			std::size_t n_teams = get_map_context().teams().size();
+			for(std::size_t i = 10; i <= n_teams; i++) {
 				locs_->add_item(std::to_string(i));
 			}
 		}
@@ -214,7 +214,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Load Map"))
+	dlg.set_title(_("Load Map or Scenario"))
 	   .set_path(fn);
 
 	if(dlg.show()) {
@@ -329,11 +329,8 @@ void context_manager::new_scenario_dialog()
 	}
 }
 
-void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
+void context_manager::expand_open_maps_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 		map_context& mc = *map_contexts_[mci];
 
@@ -366,47 +363,32 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		contexts.emplace_back("label", label, "details", details);
+		items.emplace_back("label", label, "details", details);
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
+void context_manager::expand_load_mru_menu(std::vector<config>& items) const
 {
 	std::vector<std::string> mru = prefs::get().recent_files();
-
-	auto pos = items.erase(items.begin() + i);
-
 	if(mru.empty()) {
-		items.insert(pos, config {"label", _("No Recent Files")});
+		items.emplace_back("label", _("No Recent Files"));
 		return;
 	}
 
-	for(std::string& path : mru) {
+	for(const std::string& path : mru) {
 		// TODO: add proper leading ellipsization instead, since otherwise
 		// it'll be impossible to tell apart files with identical names and
 		// different parent paths.
-		path = filesystem::base_name(path);
+		items.emplace_back("label", filesystem::base_name(path));
 	}
-
-	std::vector<config> temp;
-	std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
-		return config {"label", str};
-	});
-
-	items.insert(pos, temp.begin(), temp.end());
 }
 
-void context_manager::expand_areas_menu(std::vector<config>& items, int i)
+void context_manager::expand_areas_menu(std::vector<config>& items) const
 {
-	tod_manager* tod = get_map_context().get_time_manager();
+	const tod_manager* tod = get_map_context().get_time_manager();
 	if(!tod) {
 		return;
 	}
-
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> area_entries;
 
 	std::vector<std::string> area_ids = tod->get_area_ids();
 
@@ -429,17 +411,12 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		area_entries.emplace_back("label", label, "details", details);
+		items.emplace_back("label", label, "details", details);
 	}
-
-	items.insert(pos, area_entries.begin(), area_entries.end());
 }
 
-void context_manager::expand_sides_menu(std::vector<config>& items, int i)
+void context_manager::expand_sides_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
 
 		const team& t = get_map_context().teams()[mci];
@@ -453,46 +430,29 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 			label << teamname;
 		}
 
-		contexts.emplace_back("label", label.str());
+		items.emplace_back("label", label.str());
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
-
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 	assert(tod_m != nullptr);
 
 	for(const time_of_day& time : tod_m->times()) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
-void context_manager::expand_local_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_local_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 
 	for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
 void context_manager::apply_mask_dialog()
@@ -784,7 +744,6 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			continue;
 		}
 
-		// TODO: we should probably use `child` with a try/catch block once that function throws
 		if(const auto generator_cfg = i.optional_child("generator")) {
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
@@ -1002,33 +961,48 @@ void context_manager::revert_map()
 	load_map(filename, false);
 }
 
-void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
-{
+void context_manager::init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map) {
 	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, true, default_schedule, current_addon_);
+		int new_id = add_map_context(m, is_pure_map, default_schedule, current_addon_);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, true, default_schedule, current_addon_);
+		replace_map_context(m, is_pure_map, default_schedule, current_addon_);
 	}
+}
+
+void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
+{
+	init_context(width, height, fill, new_context, true);
 }
 
 void context_manager::new_scenario(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
-	auto default_schedule = game_config_.find_child("editor_times", "id", "empty");
-	editor_map m(width, height, fill);
-
-	if(new_context) {
-		int new_id = add_map_context(m, false, *default_schedule, current_addon_);
-		switch_context(new_id);
-	} else {
-		replace_map_context(m, false, *default_schedule, current_addon_);
-	}
+	init_context(width, height, fill, new_context, false);
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
+	gui().set_viewing_team_index(0, true);
+	gui().set_playing_team_index(0);
+	gui_.init_flags();
+}
+
+void context_manager::map_to_scenario()
+{
+	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
+	replace_map_context(get_map_context().map(), false, default_schedule, current_addon_);
+
+	// Give the converted scenario a number of sides
+	// equal to the number of valid starting positions.
+	int start_pos_count = get_map_context().map().num_valid_starting_positions();
+	if(start_pos_count == 0) {
+		start_pos_count = 1;
+	}
+	for(int i = 0; i < start_pos_count; i++) {
+		get_map_context().new_side();
+	}
 	gui().set_viewing_team_index(0, true);
 	gui().set_playing_team_index(0);
 	gui_.init_flags();

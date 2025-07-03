@@ -42,7 +42,7 @@ display_chat_manager::chat_message::chat_message(int speaker, int h)
 {}
 
 
-void display_chat_manager::add_chat_message(const std::time_t& time, const std::string& speaker,
+void display_chat_manager::add_chat_message(const std::chrono::system_clock::time_point& time, const std::string& speaker,
 		int side, const std::string& message, events::chat_handler::MESSAGE_TYPE type,
 		bool bell)
 {
@@ -109,9 +109,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	}
 
 	int ypos = chat_message_x;
-	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += std::max(font::get_floating_label_rect(m->handle).h,
-			font::get_floating_label_rect(m->speaker_handle).h);
+	for(const auto& m : chat_messages_) {
+		ypos += std::max(font::get_floating_label_rect(m.handle).h,
+			font::get_floating_label_rect(m.speaker_handle).h);
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
@@ -146,9 +146,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << prefs::get().get_chat_timestamp(std::chrono::system_clock::from_time_t(time)) << str.str();
+	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
 
-	const SDL_Rect rect = my_disp_.map_outside_area();
+	const rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
 	spk_flabel.set_font_size(font::SIZE_15);

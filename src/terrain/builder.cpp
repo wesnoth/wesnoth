@@ -202,7 +202,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<std::size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
@@ -773,8 +773,8 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set& constrain
 		const config& global_images)
 
 {
-	terrain_constraint& constraint = add_constraints(
-			constraints, loc, t_translation::ter_match(cfg["type"].str(), t_translation::WILDCARD), global_images);
+	// default to WILDCARD overlay in [terrain_graphics] [tile] type=
+	terrain_constraint& constraint = add_constraints(constraints, loc, t_translation::ter_match(cfg["type"].str(), t_translation::WILDCARD), global_images);
 
 	std::vector<std::string> item_string = utils::square_parenthetical_split(cfg["set_flag"], ',', "[", "]");
 	constraint.set_flag.insert(constraint.set_flag.end(), item_string.begin(), item_string.end());
@@ -924,7 +924,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 					continue;
 				}
 
-				std::pair<anchormap::const_iterator, anchormap::const_iterator> range = anchors.equal_range(pos);
+				auto range = anchors.equal_range(pos);
 
 				for(; range.first != range.second; ++range.first) {
 					loc = range.first->second;

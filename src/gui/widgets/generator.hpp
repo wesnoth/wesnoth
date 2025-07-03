@@ -276,7 +276,7 @@ public:
 	virtual void set_origin(const point& origin) override = 0;
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
+	virtual void set_visible_rectangle(const rect& rectangle) override = 0;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override = 0;

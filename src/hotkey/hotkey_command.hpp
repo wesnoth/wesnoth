@@ -173,6 +173,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_MAP_RESIZE,
 	HOTKEY_EDITOR_MAP_GENERATE, HOTKEY_EDITOR_MAP_APPLY_MASK,
 	HOTKEY_EDITOR_MAP_CREATE_MASK_TO,
+	HOTKEY_EDITOR_MAP_TO_SCENARIO,
 
 	// Transitions
 	HOTKEY_EDITOR_UPDATE_TRANSITIONS, HOTKEY_EDITOR_TOGGLE_TRANSITIONS,
@@ -245,16 +246,11 @@ struct hotkey_command_temp;
  */
 struct hotkey_command
 {
-	hotkey_command() = delete;
-
 	/** Constructs a new command from a temporary static hotkey object. */
 	hotkey_command(const hotkey_command_temp& temp_command);
 
 	/** @todo: see if we can remove this with c++20. Aggregate initialization with try_emplace?*/
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
-
-	hotkey_command(const hotkey_command&) = default;
-	hotkey_command& operator=(const hotkey_command&) = default;
 
 	/** The command associated with this hotkey. Does not need to be unique. */
 	HOTKEY_COMMAND command;
@@ -287,12 +283,6 @@ struct hotkey_command
 
 	/** returns the command that is treated as null */
 	static const hotkey_command& null_command();
-
-	/**
-	 * the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
-	 * to be able to call it with HOTKEY_COMMAND, this function was created
-	 */
-	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
 class scope_changer
@@ -312,13 +302,16 @@ private:
  */
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
-/** returns the hotkey_command with the given name */
-NOT_DANGLING const hotkey_command& get_hotkey_command(const std::string& command);
+/** Returns the hotkey_command with the given id */
+NOT_DANGLING const hotkey_command& get_hotkey_command(std::string_view command);
+
+/** Returns the hotkey_command with the given command */
+NOT_DANGLING const hotkey_command& get_hotkey_command(HOTKEY_COMMAND command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
-bool has_hotkey_command(const std::string& id);
+bool has_hotkey_command(std::string_view id);
 
 /**
  * RAII helper class to control the lifetime of a WML hotkey_command.
@@ -331,8 +324,8 @@ public:
 	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
 
 	/** But we *do* want move semantics. */
-	wml_hotkey_record(wml_hotkey_record&&) = default;
-	wml_hotkey_record& operator=(wml_hotkey_record&&) = default;
+	wml_hotkey_record(wml_hotkey_record&&) noexcept = default;
+	wml_hotkey_record& operator=(wml_hotkey_record&&) noexcept= default;
 
 	/** Registers a hotkey_command for a WML hotkey with the given ID if one does not already exist. */
 	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);

@@ -38,8 +38,8 @@ namespace lua_mapgen
 		filter(const filter&) = delete;
 		filter& operator=(const filter&) = delete;
 		//moving is ok though.
-		filter(filter&&) = default;
-		filter& operator=(filter&&) = default;
+		filter(filter&&) noexcept = default;
+		filter& operator=(filter&&) noexcept = default;
 
 		~filter();
 

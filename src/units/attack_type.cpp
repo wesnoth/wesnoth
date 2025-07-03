@@ -117,12 +117,6 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::set<std::string> filter_base_type = utils::split_set(filter["base_type"].str());
-	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
-	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
-	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
-	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
-	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
 	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges_int(filter_min_range)))
@@ -178,78 +172,22 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_base_type.empty() && filter_base_type.count(attack.type()) == 0 )
 		return false;
 
-	if(!filter_special.empty()) {
+	if(filter.has_attribute("special")) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
-		bool found = false;
-		for(auto& special : filter_special) {
-			if(attack.has_special(special, true)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
 	}
-	if(!filter_special_id.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id) {
-			if(attack.has_special(special, true, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
+
+	if(filter.has_attribute("special") || filter.has_attribute("special_id") || filter.has_attribute("special_type")) {
+		if(!attack.has_filter_special_or_ability(filter, true)) {
 			return false;
 		}
 	}
 
-	if(!filter_special_active.empty()) {
+	if(filter.has_attribute("special_active")) {
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
-		bool found = false;
-		for(auto& special : filter_special_active) {
-			if(attack.has_special(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
 	}
-	if(!filter_special_id_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id_active) {
-			if(attack.has_special_or_ability(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type) {
-			if(attack.has_special(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type_active) {
-			if(attack.has_special_or_ability(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
+
+	if(filter.has_attribute("special_active") || filter.has_attribute("special_id_active") || filter.has_attribute("special_type_active")) {
+		if(!attack.has_filter_special_or_ability(filter)) {
 			return false;
 		}
 	}
@@ -265,7 +203,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
-			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
+			wfl::gamestate_function_symbol_table symbols;
+			const wfl::formula form(filter_formula, &symbols);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
@@ -690,7 +629,7 @@ attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const c
 	parent->open_queries_.emplace_back(&special);
 }
 
-attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
+attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other) noexcept
 {
 	std::swap(parent, other.parent);
 }
@@ -699,7 +638,7 @@ attack_type::recursion_guard::operator bool() const {
 	return bool(parent);
 }
 
-attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other)
+attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other) noexcept
 {
 	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
 	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,

@@ -20,7 +20,6 @@
 #include "sdl/point.hpp"
 #include "sdl/texture.hpp"
 #include "serialization/unicode.hpp"
-#include "tooltips.hpp"
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -46,7 +45,7 @@ texture pango_render_text(const std::string& text, int size, const color_t& colo
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, use_markup);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_height(-1, false)
@@ -62,7 +61,7 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 	auto& ptext = private_renderer();
 
 	ptext.set_text(line, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(font_size)
 		 .set_font_style(font_style)
 		 .set_maximum_height(-1, false)
@@ -84,7 +83,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	auto& ptext = private_renderer();
 
 	ptext.set_text(unwrapped_text, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(font_size)
 		 .set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_maximum_height(max_height, true)
@@ -105,14 +104,14 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y)
 {
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, false);
-	ptext.set_family_class(font::FONT_SANS_SERIF)
+	ptext.set_family_class(font::family_class::sans_serif)
 		 .set_font_size(size)
-		 .set_font_style(style)
+		 .set_font_style(pango_text::STYLE_NORMAL)
 		 .set_maximum_width(-1)
 		 .set_foreground_color(color)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
@@ -122,23 +121,17 @@ rect pango_draw_text(bool actually_draw, const rect& area, int size, const color
 	}
 
 	auto extents = ptext.get_size();
-	bool ellipsized = false;
 
 	if(!area.empty() && extents.x > area.w) {
 		ptext.set_maximum_width(area.w);
-		ellipsized = true;
 	}
 
 	auto t = ptext.render_and_get_texture();
 
-	SDL_Rect res = {x, y, t.w(), t.h()};
+	rect res = {x, y, t.w(), t.h()};
 
 	if(actually_draw) {
 		draw::blit(t, res);
-	}
-
-	if(ellipsized && use_tooltips) {
-		tooltips::add_tooltip(res, text);
 	}
 
 	return res;

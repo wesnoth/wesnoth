@@ -60,9 +60,10 @@
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
-#include <functional>
+#include <SDL2/SDL_timer.h>
 
 #include <algorithm>
+#include <functional>
 
 
 static lg::log_domain log_gui("gui/layout");
@@ -151,7 +152,7 @@ static void delay_event(const SDL_Event& event, const uint32_t delay)
  *
  * The event is used to show the helptip for the currently focused widget.
  */
-static void helptip()
+static bool helptip()
 {
 	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.";
 
@@ -162,6 +163,7 @@ static void helptip()
 	event.user = data;
 
 	SDL_PushEvent(&event);
+	return true;
 }
 
 /**
@@ -361,11 +363,12 @@ window::window(const builder_window::window_resolution& definition)
 
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
 
-	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
+	register_hotkey(hotkey::GLOBAL__HELPTIP,
+		[](auto&&...) { return helptip(); });
 
-	/** @todo: should eventally become part of global hotkey handling. */
+	/** @todo: should eventually become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&video::toggle_fullscreen));
+		[](auto&&...) { video::toggle_fullscreen(); return true; });
 }
 
 window::~window()
@@ -700,11 +703,16 @@ void window::render()
 	if (awaiting_rerender_.empty()) {
 		return;
 	}
+
 	DBG_DP << "window::render() local " << awaiting_rerender_;
 	auto target_setter = draw::set_render_target(render_buffer_);
 	auto clip_setter = draw::override_clip(awaiting_rerender_);
+
+	// Clear the to-be-rendered area unconditionally
+	draw::clear();
+
 	draw();
-	awaiting_rerender_ = sdl::empty_rect;
+	awaiting_rerender_ = {};
 }
 
 bool window::expose(const rect& region)
@@ -1193,7 +1201,10 @@ void window::mouse_capture(const bool capture)
 void window::keyboard_capture(widget* widget)
 {
 	assert(event_distributor_);
+#ifndef __ANDROID__
 	event_distributor_->keyboard_capture(widget);
+#endif
+
 }
 
 void window::add_to_keyboard_chain(widget* widget)

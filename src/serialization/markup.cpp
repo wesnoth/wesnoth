@@ -291,7 +291,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 
 static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match)
 {
-	size_t remaining = end - beg;
+	std::size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
 	if(remaining < match.size() + 3) {
 		throw parse_error("Unexpected eos in closing tag");

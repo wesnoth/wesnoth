@@ -518,6 +518,10 @@ int compare(const std::string& s1, const std::string& s2)
 
 int icompare(const std::string& s1, const std::string& s2)
 {
+#ifdef __ANDROID__
+	return ascii_to_lowercase(s1).compare(ascii_to_lowercase(s2));
+#endif
+
 	// todo: maybe we should replace this preprocessor check with a std::has_facet<bl::collator<char>> check?
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
@@ -552,25 +556,17 @@ int icompare(const std::string& s1, const std::string& s2)
 #endif
 }
 
-std::string strftime(const std::string& format, const std::tm* time)
-{
-	std::basic_ostringstream<char> dummy;
-	dummy.imbue(get_manager().get_locale());	// TODO: Calling imbue() with hard-coded locale appears to work with put_time in glibc, but not with get_locale()...
-	// Revert to use of boost (from 1.14) instead of std::put_time() because the latter does not appear to handle locale properly in Linux
-	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
-
-	return dummy.str();
-}
-
 bool ci_search(const std::string& s1, const std::string& s2)
 {
 	const std::locale& locale = get_manager().get_locale();
-
 	std::string ls1 = bl::to_lower(s1, locale);
 	std::string ls2 = bl::to_lower(s2, locale);
+	return std::search(ls1.begin(), ls1.end(), ls2.begin(), ls2.end()) != ls1.end();
+}
 
-	return std::search(ls1.begin(), ls1.end(),
-	                   ls2.begin(), ls2.end()) != ls1.end();
+bool ci_search(utils::span<const std::string> s1, const std::string& s2)
+{
+	return std::any_of(s1.begin(), s1.end(), [&s2](const auto& s1) { return ci_search(s1, s2); });
 }
 
 const boost::locale::info& get_effective_locale_info()

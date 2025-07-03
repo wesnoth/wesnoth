@@ -404,6 +404,12 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	state_.classification().campaign = current_level_data["id"].str();
 	state_.classification().campaign_name = current_level_data["name"].str();
 	state_.classification().abbrev = current_level_data["abbrev"].str();
+	if (current_level_data["type"] == "hybrid" && state_.classification().is_multiplayer()) {
+		// for hybrid campaigns in MP mode let's make a clarification in the abbrev
+		// so saves for sp and mp runs don't get confused
+		state_.classification().abbrev = state_.classification().abbrev + "-" + _("multiplayer^MP");
+	}
+
 
 	state_.classification().end_text = current_level_data["end_text"].str();
 	state_.classification().end_text_duration = chrono::parse_duration<std::chrono::milliseconds>(current_level_data["end_text_duration"]);
@@ -540,6 +546,15 @@ void create_engine::set_current_level(const std::size_t index)
 
 void create_engine::set_current_era_index(const std::size_t index, bool force)
 {
+	current_era_index_ = index;
+
+	dependency_manager_->try_era_by_index(index, force);
+}
+
+void create_engine::set_current_era_id(const std::string& id, bool force)
+{
+	std::size_t index = dependency_manager_->get_era_index(id);
+
 	current_era_index_ = index;
 
 	dependency_manager_->try_era_by_index(index, force);
@@ -688,7 +703,11 @@ void create_engine::init_all_levels()
 		{
 			config data;
 			try {
-				read(data, *preprocess_file(filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]));
+				// Only attempt to load .cfg files (.cfg extension is enforced in Editor save)
+				if (!filesystem::is_cfg(user_scenario_names_[i]))
+					continue;
+
+				data = io::read(*preprocess_file(filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]));
 			} catch(const config::error & e) {
 				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message;
 				ERR_CF << "Skipping file: " << (filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]);
