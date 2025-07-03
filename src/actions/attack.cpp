@@ -173,7 +173,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	cth = std::clamp(cth, 0, 100);
 
-	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
+	cth = weapon->modified_chance_to_hit(cth);
 
 
 	if(opp.get_state("invulnerable")) {
@@ -313,7 +313,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = std::clamp(cth, 0, 100);
 
-	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
+	cth = weapon->modified_chance_to_hit(cth);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 

@@ -845,14 +845,14 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
  */
-unit_ability_list attack_type::get_specials(const std::string& special) const
+unit_ability_list attack_type::get_specials(const std::string& special, bool inverse_affect) const
 {
 	//log_scope("get_specials");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
-		if(special_active(i, AFFECT_SELF, special)) {
+		if(special_active(i, !inverse_affect ? AFFECT_SELF : AFFECT_OTHER, special)) {
 			res.emplace_back(&i, loc, loc);
 		}
 	}
@@ -862,7 +862,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
-		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
+		if(other_attack_->special_active(i, !inverse_affect ? AFFECT_OTHER : AFFECT_SELF, special)) {
 			res.emplace_back(&i, other_loc_, other_loc_);
 		}
 	}
@@ -1377,6 +1377,12 @@ double attack_type::modified_damage() const
 	return damage_value;
 }
 
+int attack_type::modified_chance_to_hit(int cth) const
+{
+	cth = std::clamp(100 - composite_value(get_specials_and_abilities("defense", true), 100 - cth), 0, 100);
+	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 
@@ -1547,31 +1553,31 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
+unit_ability_list attack_type::get_weapon_ability(const std::string& ability, bool inverse_affect) const
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, true);
+			return special_active(*i.ability_cfg, !inverse_affect ? AFFECT_SELF : AFFECT_OTHER, ability, true);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true);
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, !inverse_affect ? AFFECT_OTHER : AFFECT_SELF, ability, true);
 		});
 	}
 
 	return abil_list;
 }
 
-unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+unit_ability_list attack_type::get_specials_and_abilities(const std::string& special, bool inverse_affect) const
 {
 	// get all weapon specials of the provided type
-	unit_ability_list abil_list = get_specials(special);
+	unit_ability_list abil_list = get_specials(special, inverse_affect);
 	// append all such weapon specials as abilities as well
-	abil_list.append(get_weapon_ability(special));
+	abil_list.append(get_weapon_ability(special, inverse_affect));
 	// get a list of specials/"specials as abilities" that may potentially overwrite others
 	unit_ability_list overwriters = overwrite_special_overwriter(abil_list, special);
 	if(!abil_list.empty() && !overwriters.empty()){
