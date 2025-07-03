@@ -29,7 +29,6 @@
 
 class team;
 class unit_animation_component;
-class unit_formula_manager;
 class vconfig;
 struct color_t;
 
@@ -1985,12 +1984,6 @@ private:
 	bool ability_affects_weapon(const config& cfg, const const_attack_ptr& weapon, bool is_opp) const;
 
 public:
-	/** Get the unit formula manager. */
-	unit_formula_manager& formula_manager() const
-	{
-		return *formula_man_;
-	}
-
 	/** Generates a random race-appropriate name if one has not already been provided. */
 	void generate_name();
 
@@ -2065,8 +2058,6 @@ private:
 	int side_;
 
 	unit_race::GENDER gender_;
-
-	std::unique_ptr<unit_formula_manager> formula_man_;
 
 	int movement_;
 	int max_movement_;

@@ -22,7 +22,6 @@
 
 #include "ai/ai_target.hpp"
 #include "ai/contexts.hpp"
-#include "formula/callable.hpp"
 
 //============================================================================
 namespace ai {
@@ -36,11 +35,10 @@ struct target {
 	ai_target::type type;
 };
 
-class attack_analysis : public wfl::action_callable
+class attack_analysis
 {
 public:
 	attack_analysis() :
-		wfl::action_callable(),
 		target(),
 		movements(),
 		target_value(0.0),
@@ -66,8 +64,6 @@ public:
 				 const move_map& enemy_dstsrc, double aggression);
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
-	wfl::variant get_value(const std::string& key) const override;
-	void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	bool attack_close(const map_location& loc) const;
 
@@ -118,8 +114,6 @@ public:
 
 	/** Is true if the units involved in this attack sequence are surrounded. */
 	bool is_surrounded;
-
-	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
 class default_ai_context : public virtual readwrite_context{

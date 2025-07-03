@@ -77,9 +77,6 @@ token get_token(iterator& i1, const iterator i2) {
 				} else if( *it == 'n' ) { //not
 					if( *(it+1) == 'o' && *(it+2) == 't' )
 						t = token_type::operator_token;
-				} else if( *it == 'f' ) { //fai
-					if( *(it+1) == 'a' && *(it+2) == 'i' )
-						t = token_type::keyword;
 				} else if( *it == 'w' ) { //wfl
 					if( *(it+1) == 'f' && *(it+2) == 'l' )
 						t = token_type::keyword;
@@ -90,9 +87,7 @@ token get_token(iterator& i1, const iterator i2) {
 					t = token_type::operator_token;
 			} else if( diff == 6 ) {
 				std::string s(it, i1);
-				if( s == "faiend" )
-					t = token_type::keyword;
-				else if( s == "wflend" )
+				if( s == "wflend" )
 					t = token_type::keyword;
 			} else if( diff == 9 ) {
 				std::string s(it, i1);

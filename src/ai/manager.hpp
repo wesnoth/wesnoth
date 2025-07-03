@@ -445,16 +445,9 @@ private:
 	 * @param side side number (1-based).
 	 * @param str string to evaluate.
 	 * @return string result of evaluation.
-	 * TODO: rewrite this function to use a fai or lua parser.
+	 * TODO: rewrite this function to use a lua parser.
 	 */
 	const std::string internal_evaluate_command( side_number side, const std::string& str );
-
-	/**
-	 * Determines if the command should be intercepted and evaluated as internal command.
-	 * @param str command string to check.
-	 * @return true if the command should be intercepted and evaluated.
-	 */
-	bool should_intercept( const std::string& str ) const;
 
 	// =======================================================================
 	// AI STACKS

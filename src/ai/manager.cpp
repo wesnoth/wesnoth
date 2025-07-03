@@ -480,34 +480,13 @@ const std::string manager::evaluate_command( side_number side, const std::string
 		LOG_AI_MANAGER << "AI MANAGER: pruned history";
 	}
 
-	if (!should_intercept(str)){
-		ai_composite& ai = get_active_ai_for_side(side);
-		raise_gamestate_changed();
-		return ai.evaluate(str);
-	}
-
 	return internal_evaluate_command(side,str);
-}
-
-bool manager::should_intercept( const std::string& str ) const
-{
-	if (str.length()<1) {
-		return false;
-	}
-	if (str.at(0)=='!'){
-		return true;
-	}
-	if (str.at(0)=='?'){
-		return true;
-	}
-	return false;
-
 }
 
 // this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 // yes, it doesn't look nice. but it is usable.
 // to be refactored at earliest opportunity
-// TODO: extract to separate class which will use fai or lua parser
+// TODO: extract to separate class which will use a lua parser
 const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 

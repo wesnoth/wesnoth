@@ -50,7 +50,6 @@
 #include "units/unit.hpp"                  // for unit
 #include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
-#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <cmath>                       // for sqrt
@@ -537,15 +536,6 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 	}
 	static attacks_vector av;
 	return av;
-}
-
-const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
-{
-	if (attacks_) {
-		return attacks_->get_variant();
-	}
-	static wfl::variant v;
-	return v;
 }
 
 const terrain_filter& readonly_context_impl::get_avoid() const

@@ -27,6 +27,7 @@
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "terrain/filter.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 #include "ai/default/contexts.hpp"
 #include "ai/lua/aspect_advancements.hpp"

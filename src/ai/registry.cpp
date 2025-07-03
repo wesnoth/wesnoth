@@ -28,7 +28,6 @@
 #include "ai/game_info.hpp"             // for attacks_vector
 #include "ai/composite/aspect.hpp"         // for composite_aspect, etc
 #include "ai/default/engine_cpp.hpp"  // for engine_cpp
-#include "ai/formula/engine_fai.hpp"     // for engine_fai
 #include "ai/lua/engine_lua.hpp"     // for engine_lua
 #include "ai/composite/goal.hpp"           // for register_goal_factory, etc
 #include "ai/lua/aspect_advancements.hpp"
@@ -49,9 +48,6 @@ namespace ai {
 
 static register_engine_factory<engine_cpp>
 	composite_ai_factory_cpp("cpp");
-
-static register_engine_factory<engine_fai>
-	composite_ai_factory_fai("fai");
 
 static register_engine_factory<engine_lua>
 	composite_ai_factory_lua("lua");
