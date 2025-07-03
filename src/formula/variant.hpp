@@ -67,10 +67,17 @@ public:
 	bool is_string()   const { return type() == formula_variant::type::string; }
 	bool is_map()      const { return type() == formula_variant::type::map; }
 
-	int as_int() const;
+	/**
+	 * Returns the variant's value as an integer.
+	 * If @ref is_null() is true, returns @a fallback.
+	 */
+	int as_int(int fallback = 0) const;
 
-	/** Returns variant's internal representation of decimal number: ie, 1.234 is represented as 1234 */
-	int as_decimal() const;
+	/**
+	 * Returns the variant's internal representation of decimal number: ie, 1.234 is represented as 1234.
+	 * If @ref is_null() is true, returns @a fallback.
+	 */
+	int as_decimal(int fallback = 0) const;
 
 	/** Returns a boolean state of the variant value. The implementation is type-dependent. */
 	bool as_bool() const;
