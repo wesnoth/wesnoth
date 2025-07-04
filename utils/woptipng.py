@@ -53,6 +53,7 @@ EXEC_OPTIPNG = shutil.which("optipng")
 EXEC_IMAGEMAGICK = shutil.which("convert")
 EXEC_ADVDEF = shutil.which("advdef")
 EXEC_OXIPNG = shutil.which("oxipng")
+EXEC_EXIFTOOL = shutil.which("exiftool")
 
 if os.name == "posix":
     os.nice(args.nice) # set niceness, not available on Windows
@@ -158,6 +159,37 @@ def run_oxipng(image, tmpimage):
     ]
     subprocess.call(cmd, stderr=open(os.devnull, 'w')) # discard stdout
 
+def extract_metadata(image):
+    debugprint("exiftool, reading metadata")
+    cmd = [
+        EXEC_EXIFTOOL,
+        "-s", # return tag names instead of descriptions...
+        "-t", # ... as a tab separated list
+        "-EXIF:Artist",
+        "-EXIF:Copyright",
+        "-EXIF:UserComment",
+        image
+    ]
+    output = subprocess.run(cmd, capture_output=True, encoding="utf-8").stdout
+    metadata = {}
+
+    for item in output.splitlines(): # output ends with a newline, which splitlines discards
+        key, value = item.split("\t", 1)
+        metadata[key] = value
+
+    return metadata
+
+def add_metadata(tmpimage, metadata):
+    debugprint("exiftool, adding metadata")
+    cmd = [
+        EXEC_EXIFTOOL,
+        "-overwrite_original"
+    ]
+    for key, value in metadata.items():
+        cmd.append(f"-EXIF:{key}={value}")
+    cmd.append(tmpimage)
+    subprocess.run(cmd, stdout=subprocess.DEVNULL) # discard stdout
+
 def check_progs():
     if (not EXEC_ADVDEF):
         print("ERROR: advdef binary not found!")
@@ -167,8 +199,10 @@ def check_progs():
         print("ERROR: optipng not found!")
     if (not EXEC_OXIPNG):
         print("ERROR: oxipng not found!")
+    if (not EXEC_EXIFTOOL):
+        print("ERROR: exiftool not found!")
 
-    if not (EXEC_ADVDEF and EXEC_IMAGEMAGICK and EXEC_OPTIPNG and EXEC_OXIPNG):
+    if not (EXEC_ADVDEF and EXEC_IMAGEMAGICK and EXEC_OPTIPNG and EXEC_OXIPNG and EXEC_EXIFTOOL):
         sys.exit(1)
 
 class ProcessingStatus(enum.Enum):
@@ -185,6 +219,8 @@ class ProcessingResult:
         self.size_after = size_after
 
 def optimize_image(image):
+    metadata = extract_metadata(image)
+    
     size_initial = os.path.getsize(image)
     with open(image, 'rb') as f:
         initial_file_content = f.read()
@@ -192,15 +228,19 @@ def optimize_image(image):
     tmpimage  = image + ".tmp"
 
     run_imagemagick(image, tmpimage)
+    add_metadata(tmpimage, metadata)
     verify_images(image, tmpimage, "imagemagick")
 
     run_optipng(image, tmpimage)
+    add_metadata(tmpimage, metadata)
     verify_images(image, tmpimage, "optipng")
 
     run_advdef(image, tmpimage)
+    add_metadata(tmpimage, metadata)
     verify_images(image, tmpimage, "advdef")
 
     run_oxipng(image, tmpimage)
+    add_metadata(tmpimage, metadata)
     verify_images(image, tmpimage, "oxipng")
 
     size_after = os.path.getsize(image)
