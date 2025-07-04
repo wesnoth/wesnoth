@@ -27,7 +27,7 @@ from multiprocessing import Pool
 import multiprocessing # cpu count
 from PIL import Image as PIL # compare images
 import enum
-import subprocess # launch advdef, optipng, imagemagick
+import subprocess # launch advdef, optipng, imagemagick, oxipng
 import os # os rename, niceness
 import shutil # copy files
 import argparse # argument parsing
@@ -155,7 +155,7 @@ def run_oxipng(image, tmpimage):
         "-o6",
         "--quiet",
         tmpimage,
-        ]
+    ]
     subprocess.call(cmd, stderr=open(os.devnull, 'w')) # discard stdout
 
 def check_progs():
