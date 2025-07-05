@@ -113,8 +113,13 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 			acceptor.listen();
 		}
 	} catch(const boost::system::system_error& e) {
-		ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
-		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
+		if(endpoint.protocol() == boost::asio::ip::tcp::v6() && e.code() == boost::asio::error::address_family_not_supported) {
+			WRN_SERVER << "Failed to bind port with IPv6 because IPv6 is not supported. Will try with IPv4 too.";
+			return;
+		} else {
+			ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
+			BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
+		}
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
