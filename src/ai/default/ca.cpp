@@ -30,6 +30,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
