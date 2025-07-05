@@ -347,7 +347,9 @@ void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
 		c.a / 255.0
 	);
 
-	cairo_arc(ctx, r, r, r - thickness, 0, 2 * boost::math::constants::pi<double>());
+	// Reduce the arc radius by half the stroke width so the border stays within the circle
+	double half_thickness = 1.0 * thickness / 2;
+	cairo_arc(ctx, r, r, r - half_thickness, 0, 2 * boost::math::constants::pi<double>());
 	cairo_stroke(ctx);
 
 	draw::blit(texture(sdl_surf), ::rect(cx - r, cy - r, draw_size, draw_size));
