@@ -21,8 +21,6 @@
 
 #  Please file bugs to https://github.com/matthiaskrgr/woptipng
 
-# oxipng can be found at https://github.com/shssoichiro/oxipng
-
 from multiprocessing import Pool
 import multiprocessing # cpu count
 from PIL import Image as PIL # compare images
@@ -34,7 +32,15 @@ import argparse # argument parsing
 import sys # sys.exit
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+    description="woptipng: a PNG optimizing script for The Battle for Wesnoth",
+    epilog="""You can obtain the required dependencies at the following websites:
+* OptiPNG: https://optipng.sourceforge.net
+* ImageMagick convert: https://imagemagick.org
+* AdvanceCOMP Advdef: https://www.advancemame.it
+* Oxipng: https://github.com/shssoichiro/oxipng
+* Exiftool: https://exiftool.org""")
 parser.add_argument("inpath", help="file or path (recursively) to be searched for crushable pngs", metavar='path', nargs='+', type=str)
 parser.add_argument("-d", "--debug", help="print debug information", action='store_true')
 parser.add_argument("-t", "--threshold", help="size reduction below this percentage will be discarded, default: 10", metavar='n', nargs='?', default=10, type=float)
