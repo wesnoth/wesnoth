@@ -41,6 +41,11 @@ parser.add_argument("-t", "--threshold", help="size reduction below this percent
 parser.add_argument("-j", "--jobs", help="max amount of jobs/threads. If unspecified, take number of cores found", metavar='n', nargs='?', default=multiprocessing.cpu_count(), type=int)
 parser.add_argument("-n", "--nice", help="niceness of all threads (must be positive, \
 doesn't have any effect on Windows)", metavar='n', nargs="?", default=19, type=int)
+parser.add_argument("--optipng_path", help="specify the path to the OptiPNG executable")
+parser.add_argument("--convert_path", help="specify the path to the ImageMagick convert executable")
+parser.add_argument("--advdef_path", help="specify the path to the AdvanceCOMP advdef executable")
+parser.add_argument("--oxipng_path", help="specify the path to the oxipng executable")
+parser.add_argument("--exiftool_path", help="specify the path to the exiftool executable")
 
 args = parser.parse_args()
 
@@ -49,11 +54,11 @@ INPATHS = args.inpath
 THRESHOLD = args.threshold
 MAX_THREADS = args.jobs
 # program executables
-EXEC_OPTIPNG = shutil.which("optipng")
-EXEC_IMAGEMAGICK = shutil.which("convert")
-EXEC_ADVDEF = shutil.which("advdef")
-EXEC_OXIPNG = shutil.which("oxipng")
-EXEC_EXIFTOOL = shutil.which("exiftool")
+EXEC_OPTIPNG = args.optipng_path or shutil.which("optipng")
+EXEC_IMAGEMAGICK = args.convert_path or shutil.which("convert")
+EXEC_ADVDEF = args.advdef_path or shutil.which("advdef")
+EXEC_OXIPNG = args.oxipng_path or shutil.which("oxipng")
+EXEC_EXIFTOOL = args.exiftool_path or shutil.which("exiftool")
 
 if os.name == "posix":
     os.nice(args.nice) # set niceness, not available on Windows
@@ -191,14 +196,19 @@ def add_metadata(tmpimage, metadata):
     subprocess.run(cmd, stdout=subprocess.DEVNULL) # discard stdout
 
 def check_progs():
+    debugprint(EXEC_ADVDEF)
     if (not EXEC_ADVDEF):
         print("ERROR: advdef binary not found!")
+    debugprint(EXEC_IMAGEMAGICK)
     if (not EXEC_IMAGEMAGICK):
         print("ERROR: imagemagick/convert binary not found!")
+    debugprint(EXEC_OPTIPNG)
     if (not EXEC_OPTIPNG):
         print("ERROR: optipng not found!")
+    debugprint(EXEC_OXIPNG)
     if (not EXEC_OXIPNG):
         print("ERROR: oxipng not found!")
+    debugprint(EXEC_EXIFTOOL)
     if (not EXEC_EXIFTOOL):
         print("ERROR: exiftool not found!")
 
