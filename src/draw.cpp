@@ -204,6 +204,9 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 
 void draw::points(const std::vector<::point>& points)
 {
+	// We cannot decay vector<point> to SDL_Point* unless the two types are the same size.
+	static_assert(sizeof(::point) == sizeof(SDL_Point));
+
 	DBG_D << points.size() << " points";
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
 }
