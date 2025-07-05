@@ -122,10 +122,10 @@ def run_imagemagick(image, tmpimage):
     shutil.copy(image, tmpimage)
     debugprint("imagemagick ")
     cmd = [ EXEC_IMAGEMAGICK,
+            image,
             "-strip",
             "-define",
             "png:color-type=6",
-            image,
             tmpimage
     ]
     subprocess.call(cmd)
