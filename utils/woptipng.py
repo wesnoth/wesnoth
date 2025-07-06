@@ -239,28 +239,29 @@ def optimize_image(image):
     metadata = extract_metadata(image)
     
     size_initial = os.path.getsize(image)
-    with open(image, 'rb') as f:
-        initial_file_content = f.read()
+    # make a copy of the original file and work on it
+    backup_image = image + ".original"
+    shutil.copy(image, backup_image)
 
     tmpimage  = image + ".tmp"
 
-    run_imagemagick(image, tmpimage)
+    run_imagemagick(backup_image, tmpimage)
     add_metadata(tmpimage, metadata)
-    verify_images(image, tmpimage, "imagemagick")
+    verify_images(backup_image, tmpimage, "imagemagick")
 
-    run_optipng(image, tmpimage)
+    run_optipng(backup_image, tmpimage)
     add_metadata(tmpimage, metadata)
-    verify_images(image, tmpimage, "optipng")
+    verify_images(backup_image, tmpimage, "optipng")
 
-    run_advdef(image, tmpimage)
+    run_advdef(backup_image, tmpimage)
     add_metadata(tmpimage, metadata)
-    verify_images(image, tmpimage, "advdef")
+    verify_images(backup_image, tmpimage, "advdef")
 
-    run_oxipng(image, tmpimage)
+    run_oxipng(backup_image, tmpimage)
     add_metadata(tmpimage, metadata)
-    verify_images(image, tmpimage, "oxipng")
+    verify_images(backup_image, tmpimage, "oxipng")
 
-    size_after = os.path.getsize(image)
+    size_after = os.path.getsize(backup_image)
     size_delta = size_after - size_initial
     perc_delta = (size_delta/size_initial) *100
 
@@ -286,9 +287,12 @@ def optimize_image(image):
         status = ProcessingStatus.OPTIMIZED
 
     # If the file didn't shrink sufficiently, write back the original version
-    if status != ProcessingStatus.OPTIMIZED:
-        with open(image, 'wb') as f:
-            f.write(initial_file_content)
+    if status == ProcessingStatus.OPTIMIZED:
+        shutil.copy(backup_image, image)
+
+    # remove the backup of the original file
+    if os.path.isfile(backup_image):
+        os.remove(backup_image)
 
     if summary_string:
         debugprint(summary_string.format(image=image, size_initial=size_initial, size_after=size_after, size_delta=size_delta, perc_delta=str(perc_delta)[0:6]))
