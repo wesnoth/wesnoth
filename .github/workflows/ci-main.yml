@@ -320,7 +320,7 @@ jobs:
         run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
           -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false
           -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug
-          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 17 2022" .
 
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         run: MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
