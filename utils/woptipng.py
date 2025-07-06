@@ -286,7 +286,7 @@ def optimize_image(image):
         summary_string = "optimized  {image}  from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%"
         status = ProcessingStatus.OPTIMIZED
 
-    # If the file didn't shrink sufficiently, write back the original version
+    # If the file shrank sufficiently, write back the optimized version
     if status == ProcessingStatus.OPTIMIZED:
         shutil.copy(backup_image, image)
 
