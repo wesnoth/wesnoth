@@ -179,6 +179,7 @@ def extract_metadata(image):
         "-EXIF:Artist",
         "-EXIF:Copyright",
         "-EXIF:UserComment",
+        "-EXIF:CreateDate",
         image
     ]
     output = subprocess.run(cmd, capture_output=True, encoding="utf-8").stdout
