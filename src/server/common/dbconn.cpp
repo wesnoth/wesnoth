@@ -866,6 +866,10 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 		{
 			stmt->set_signed32(i, std::get<int>(param));
 		}
+		else if(std::holds_alternative<long>(param))
+		{
+			stmt->set_signed64(i, std::get<long>(param));
+		}
 		else if(std::holds_alternative<unsigned long long>(param))
 		{
 			stmt->set_signed64(i, std::get<unsigned long long>(param));
@@ -877,6 +881,10 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 		else if(std::holds_alternative<const char*>(param))
 		{
 			stmt->set_string(i, std::get<const char*>(param));
+		}
+		else
+		{
+			ERR_SQL << "Unsupported parameter type in SQL query: " << typeid(param).name() << " at position " << i;
 		}
 		i++;
 	}
