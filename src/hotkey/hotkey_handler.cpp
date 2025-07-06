@@ -222,25 +222,29 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
 	DBG_G << "play_controller::do_execute_command: Found command:" << cmd.id;
+
+	// TODO c++20: Use string::starts_with
 	if(balg::starts_with(cmd.id, quickload_prefix)) {
-		std::string savename = std::string(cmd.id.substr(quickload_prefix.size()));
+		std::string savename = cmd.id.substr(quickload_prefix.size());
 		// Load the game by throwing load_game_exception
 		load_autosave(savename, false);
 	}
+
 	if(balg::starts_with(cmd.id, quickreplay_prefix)) {
-		std::string savename = std::string(cmd.id.substr(quickreplay_prefix.size()));
+		std::string savename = cmd.id.substr(quickreplay_prefix.size());
 		// Load the game by throwing load_game_exception
 		load_autosave(savename, true);
 	}
-	// TODO c++20: Use string::starts_with
+
 	// wml commands that don't allow hotkey bindings use hotkey::HOTKEY_NULL. othes use HOTKEY_WML
 	if(balg::starts_with(cmd.id, wml_menu_hotkey_prefix)) {
-		std::string name = std::string(cmd.id.substr(wml_menu_hotkey_prefix.length()));
+		std::string name = cmd.id.substr(wml_menu_hotkey_prefix.length());
 		const map_location& hex = mouse_handler_.get_last_hex();
 
 		return gamestate().get_wml_menu_items().fire_item(
 			name, hex, gamestate().gamedata_, gamestate(), play_controller_.get_units(), !press);
 	}
+
 	return command_executor::do_execute_command(cmd, press, release);
 }
 
