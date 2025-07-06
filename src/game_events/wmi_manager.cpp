@@ -20,13 +20,14 @@
 
 #include "game_events/wmi_manager.hpp"
 #include "game_events/menu_item.hpp"
-#include "play_controller.hpp"
-#include "resources.hpp"
 
 #include "config.hpp"
+#include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -123,26 +124,28 @@ void wmi_manager::get_items(const map_location& hex,
 		return;
 	}
 
-	// Prepare for can show().
-
-
+	// Prepare for can_show().
 	config::attribute_value x1 = gamedata.get_variable("x1");
 	config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
-	// Check each menu item.
-	for(const auto& item_pair : wml_menu_items_) {
-		item_ptr item = item_pair.second;
+	for(const auto& [id, item] : wml_menu_items_) {
+		// Not synched, or synched in an allowed context
+		bool synched_allowed = !item->is_synced() || resources::controller->can_use_synced_wml_menu();
 
 		// Can this item be shown?
-		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())
-				&& item->can_show(hex, gamedata, fc)) {
-			// Include this item.
-			items.emplace_back("id", item->hotkey_id() , "label", item->menu_text(), "icon", item->image());
+		if(!item->use_wml_menu() || !synched_allowed || !item->can_show(hex, gamedata, fc)) {
+			continue;
 		}
+
+		// Allows variables to be substituted at invocation time
+		auto description = utils::interpolate_variables_into_string(item->menu_text(), gamedata);
+		items.emplace_back("id", item->hotkey_id(), "label", description, "icon", item->image());
 	}
+
+	// Restore old values
 	gamedata.get_variable("x1") = x1;
 	gamedata.get_variable("y1") = y1;
 }

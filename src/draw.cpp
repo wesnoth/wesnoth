@@ -204,6 +204,9 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 
 void draw::points(const std::vector<::point>& points)
 {
+	// We cannot decay vector<point> to SDL_Point* unless the two types are the same size.
+	static_assert(sizeof(::point) == sizeof(SDL_Point));
+
 	DBG_D << points.size() << " points";
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
 }
@@ -320,15 +323,19 @@ void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
 		return;
 	}
 
-	int size = 2*r;
-	surface sdl_surf(size, size);
+	int draw_size = 2 * r;
+	int pixel_scale = video::get_pixel_scale();
+	int render_size = draw_size * pixel_scale;
+
+	surface sdl_surf(render_size, render_size);
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+
 	auto cairo_context = cairo::create_context(cairo_surface);
 	cairo_t* ctx = cairo_context.get();
+	cairo_scale(ctx, pixel_scale, pixel_scale);
 
 	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
-
 	cairo_set_source_rgba(ctx, 0.0, 0.0, 0.0, 0.0);
 	cairo_paint(ctx);
 
@@ -339,10 +346,13 @@ void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
 		c.b / 255.0,
 		c.a / 255.0
 	);
-	cairo_arc(ctx, r, r, r-thickness, 0, 2*boost::math::constants::pi<double>());
+
+	// Reduce the arc radius by half the stroke width so the border stays within the circle
+	double half_thickness = 1.0 * thickness / 2;
+	cairo_arc(ctx, r, r, r - half_thickness, 0, 2 * boost::math::constants::pi<double>());
 	cairo_stroke(ctx);
 
-	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+	draw::blit(texture(sdl_surf), ::rect(cx - r, cy - r, draw_size, draw_size));
 }
 
 void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
@@ -351,25 +361,29 @@ void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
 		return;
 	}
 
-	int size = 2*r;
-	surface sdl_surf(size, size);
+	int draw_size = 2 * r;
+	int pixel_scale = video::get_pixel_scale();
+	int render_size = draw_size * pixel_scale;
+
+	surface sdl_surf(render_size, render_size);
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+
 	auto cairo_context = cairo::create_context(cairo_surface);
 	cairo_t* ctx = cairo_context.get();
+	cairo_scale(ctx, pixel_scale, pixel_scale);
 
 	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
-
 	cairo_set_source_rgba(ctx,
 		c.r / 255.0,
 		c.g / 255.0,
 		c.b / 255.0,
 		c.a / 255.0
 	);
-	cairo_arc(ctx, r, r, r, 0, 2*2*boost::math::constants::pi<double>());
+	cairo_arc(ctx, r, r, r, 0, 2 * boost::math::constants::pi<double>());
 	cairo_fill(ctx);
 
-	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+	draw::blit(texture(sdl_surf), ::rect(cx - r, cy - r, draw_size, draw_size));
 }
 
 /*******************/

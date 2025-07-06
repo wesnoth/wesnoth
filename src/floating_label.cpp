@@ -382,25 +382,24 @@ void update_floating_labels()
 	if(label_contexts.empty()) {
 		return;
 	}
-	auto time = std::chrono::steady_clock::now();
 
+	auto time = std::chrono::steady_clock::now();
 	std::set<int>& context = label_contexts.top();
 
-	for(auto& [id, label] : labels) {
+	for(auto iter = labels.begin(); iter!= labels.end();) {
+		auto& [id, label] = *iter;
+
 		if(context.count(id) > 0) {
 			label.update(time);
-		}
-	}
 
-	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired(time)) {
-			DBG_FT << "removing expired floating label " << j->first;
-			context.erase(j->first);
-			labels.erase(j++);
-		} else {
-			++j;
+			if(label.expired(time)) {
+				context.erase(id);
+				iter = labels.erase(iter);
+				continue;
+			}
 		}
+
+		++iter;
 	}
 }
 
