@@ -48,7 +48,6 @@ controller_base::controller_base()
 	, scroll_carry_x_(0.0)
 	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
-	, last_mouse_is_touch_(false)
 	, long_touch_timer_(0)
 {
 }
@@ -178,12 +177,21 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		last_mouse_is_touch_ = events::is_touch(event.button);
+		if(events::is_touch(event.button)) {
+			int x = event.button.x;
+			int y = event.button.y;
 
-		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
-			long_touch_timer_ = gui2::add_timer(
-					long_touch_duration,
-					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
+			if(long_touch_timer_ == 0) {
+				long_touch_timer_ = gui2::add_timer(long_touch_duration,
+					std::bind(&controller_base::long_touch_callback, this, x, y));
+			}
+
+			if(event.button.clicks == 2) {
+				const theme::menu* menu = get_display().get_theme().context_menu();
+				if(menu && get_display().map_area().contains(x, y)) {
+					show_menu(menu->items(), x, y, true);
+				}
+			}
 		}
 
 		mh_base.mouse_press(event.button, is_browsing());
@@ -200,27 +208,9 @@ void controller_base::handle_event(const SDL_Event& event)
 			long_touch_timer_ = 0;
 		}
 
-		last_mouse_is_touch_ = events::is_touch(event.button);
-
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true);
-		}
-		break;
-	case DOUBLE_CLICK_EVENT:
-		{
-			int x = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data1));
-			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
-			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
-			   // TODO: Move to right_click_show_menu?
-			   && get_display().map_area().contains(x, y)
-			   // TODO: This chain repeats in several places, move to a method.
-			   && get_display().get_theme().context_menu() != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(),
-						  x,
-						  y,
-						  true);
-			}
 		}
 		break;
 

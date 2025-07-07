@@ -213,7 +213,6 @@ private:
 
 	keyup_listener key_release_listener_;
 
-	bool last_mouse_is_touch_;
 	/** Context menu timer */
 	std::size_t long_touch_timer_;
 };
