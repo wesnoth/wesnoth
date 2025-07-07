@@ -774,6 +774,16 @@ void discard_input()
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
 }
 
+bool is_touch(const SDL_MouseButtonEvent &event)
+{
+	return event.which == SDL_TOUCH_MOUSEID;
+}
+
+bool is_touch(const SDL_MouseMotionEvent &event)
+{
+	return event.which == SDL_TOUCH_MOUSEID;
+}
+
 void call_in_main_thread(const std::function<void(void)>& f)
 {
 	if(is_in_main_thread()) {
