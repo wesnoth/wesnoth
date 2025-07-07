@@ -39,7 +39,9 @@
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
+#include "map/location.hpp"
 #include "quit_confirmation.hpp"
+#include "theme.hpp"
 
 #include <chrono>
 
@@ -168,7 +170,7 @@ protected:
 		// No action by default
 	}
 
-	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu);
+	virtual bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 	virtual void execute_action(const std::vector<std::string>& items_arg);
 
 	void long_touch_callback(int x, int y);

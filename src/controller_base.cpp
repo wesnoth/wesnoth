@@ -81,13 +81,9 @@ void controller_base::long_touch_callback(int x, int y)
 		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
 
 		if(!yes_actually_dragging
-		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
-		   && get_display().map_area().contains(x_now, y_now))
+		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0)
 		{
-			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
-			if(m != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true);
-			}
+			show_menu(get_display().get_theme().context_menu(), { x_now, y_now }, true);
 		}
 	}
 
@@ -187,10 +183,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			}
 
 			if(event.button.clicks == 2) {
-				const theme::menu* menu = get_display().get_theme().context_menu();
-				if(menu && get_display().map_area().contains(x, y)) {
-					show_menu(menu->items(), x, y, true);
-				}
+				show_menu(get_display().get_theme().context_menu(), { x, y }, true);
 			}
 		}
 
@@ -210,7 +203,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {
-			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true);
+			show_menu(get_display().get_theme().context_menu(), { event.button.x, event.button.y }, true);
 		}
 		break;
 
@@ -414,11 +407,10 @@ void controller_base::play_slice()
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
 		const rect& menu_loc = m->location(video::game_canvas());
-		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false);
-
+		show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
 		return;
 	}
-
+	
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
 		execute_action(a->items());
@@ -446,14 +438,19 @@ void controller_base::play_slice()
 	}
 }
 
-void controller_base::show_menu(const std::vector<config>& items, int xloc, int yloc, bool context_menu)
+bool controller_base::show_menu(const theme::menu* menu, const point& loc, bool context_menu)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
-		return;
+	if(!menu || !cmd_exec) {
+		return false;
 	}
-
-	cmd_exec->show_menu(items, xloc, yloc, context_menu);
+	
+	if(!get_display().map_area().contains(loc)) {
+		return false;
+	}
+	
+	cmd_exec->show_menu(menu->items(), loc.x, loc.y, context_menu);
+	return true;
 }
 
 void controller_base::execute_action(const std::vector<std::string>& items)
