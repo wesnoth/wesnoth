@@ -113,7 +113,7 @@ public:
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;
-	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
+	void show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu) override;
 
 	/** Inherited from command_executor. */
 	bool in_context_menu(const hotkey::ui_command& cmd) const override;

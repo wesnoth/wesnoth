@@ -89,7 +89,7 @@ public:
 	bool keep_menu_open() const override;
 
 	/** controller_base override */
-	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
+	void show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu);
 
 	void show_help() override;
 	void status_table() override;

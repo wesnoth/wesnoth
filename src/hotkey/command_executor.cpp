@@ -407,7 +407,7 @@ void command_executor::surrender_game() {
 	}
 }
 
-void command_executor::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool /*context_menu*/)
+void command_executor::show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool /*context_menu*/)
 {
 	if(items_arg.empty()) {
 		return;
@@ -428,7 +428,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	int res = -1;
 	point selection_pos;
 	{
-		rect pos {xloc, yloc, 1, 1};
+		rect pos(menu_loc, {1,1});
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, keep_menu_open());
 
 		// Transitional API. Remove once the game UI is using GUI2.
@@ -440,10 +440,8 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 			res = mmenu.selected_item();
 			if(res >= 0) {
 				// Get selection coordinates for a potential submenu below
-				selection_pos = mmenu.selected_item_pos();
-				// Compensate for borders
-				selection_pos.x--;
-				selection_pos.y--;
+				// And compensate for borders
+				selection_pos = mmenu.selected_item_pos() - point{1, 1};
 			}
 		}
 	} // This will kill the dialog.
@@ -452,9 +450,8 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 		return;
 	}
 
-	std::string id = items[res]["id"];
-	if(const theme::menu* submenu = display::get_singleton()->get_theme().get_menu_item(id)) {
-		show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context());
+	if(const theme::menu* submenu = display::get_singleton()->get_theme().get_menu_item(items[res]["id"])) {
+		show_menu(submenu->items(), selection_pos, submenu->is_context());
 	} else {
 		do_command(res);
 	}

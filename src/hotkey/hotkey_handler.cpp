@@ -432,7 +432,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& i
 		.get_items(mouse_handler_.get_last_hex(), items,gamestate(), gamestate().gamedata_, play_controller_.get_units());
 }
 
-void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
+void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu)
 {
 	std::vector<config> items;
 	for(const auto& item : items_arg) {
@@ -454,7 +454,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 		return;
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu);
+	command_executor::show_menu(items, menu_loc, context_menu);
 }
 
 bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& cmd) const

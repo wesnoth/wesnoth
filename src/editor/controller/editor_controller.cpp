@@ -1169,15 +1169,15 @@ bool editor_controller::keep_menu_open() const
 	return active_menu_ == menu_type::music;
 }
 
-void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
+void editor_controller::show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu)
 {
 	// Ensure active_menu_ is only valid within the scope of this function.
 	ON_SCOPE_EXIT(this) { active_menu_ = menu_type::none; };
 
-	if(context_menu) {
-		if(!get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
-			return;
-		}
+	if(context_menu
+		&& !get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(menu_loc.x, menu_loc.y)))
+	{
+		return;
 	}
 
 	std::vector<config> items;
@@ -1272,7 +1272,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 	else {
 		// No placeholders, show everything
-		command_executor::show_menu(items, xloc, yloc, context_menu);
+		command_executor::show_menu(items, menu_loc, context_menu);
 		return;
 	}
 
@@ -1281,7 +1281,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		std::move(items.begin() + 1, items.end(), std::back_inserter(generated));
 	}
 
-	command_executor::show_menu(generated, xloc, yloc, context_menu);
+	command_executor::show_menu(generated, menu_loc, context_menu);
 }
 
 void editor_controller::preferences()

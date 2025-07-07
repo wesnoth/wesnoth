@@ -173,7 +173,7 @@ public:
 	//            If 'id' specifies a known hotkey command or theme item the other attributes can be generated from it.
 	//   'label': The label for this menu entry.
 	//   'icon':  The icon for this menu entry.
-	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu);
+	virtual void show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu);
 
 	// @a items_arg the actions to be executed, executes all of the actions, it looks like the idea is to associate
 	//  multiple actions with a single menu button, not sure whether it is actually used.

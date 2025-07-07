@@ -449,7 +449,7 @@ bool controller_base::show_menu(const theme::menu* menu, const point& loc, bool 
 		return false;
 	}
 	
-	cmd_exec->show_menu(menu->items(), loc.x, loc.y, context_menu);
+	cmd_exec->show_menu(menu->items(), loc, context_menu);
 	return true;
 }
 
