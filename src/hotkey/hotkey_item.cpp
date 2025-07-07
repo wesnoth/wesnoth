@@ -18,6 +18,7 @@
 #include "hotkey/hotkey_item.hpp"
 
 #include "config.hpp"
+#include "events.hpp"
 #include "game_config_view.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
@@ -234,7 +235,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 		return false;
 	}
 
-	if(event.button.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event.button)) {
 		return button_ == TOUCH_MOUSE_INDEX;
 	}
 

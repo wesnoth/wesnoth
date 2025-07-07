@@ -172,9 +172,23 @@ void process_tooltip_strings(int mousex, int mousey);
 /**
  * Is the event an input event?
  *
- * @returns                       Whether or not the event is an input event.
+ * @returns     Whether or not the event is an input event.
  */
 bool is_input(const SDL_Event& event);
+
+/**
+ * Check if this mouse button event is caused by a touch
+ *
+ * @returns      Whether or not this event is caused by a touch
+ */
+bool is_touch(const SDL_MouseButtonEvent& event);
+
+/**
+ * Check if this mouse motion event is caused by a touch
+ *
+ * @returns      Whether or not this event is caused by a touch
+ */
+bool is_touch(const SDL_MouseMotionEvent& event);
 
 /** Discards all input events. */
 void discard_input();

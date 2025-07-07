@@ -34,7 +34,7 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 using namespace std::chrono_literals;
-static constexpr auto long_touch_duration = 800ms;
+static constexpr auto long_touch_duration = 400ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
@@ -155,13 +155,13 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			};
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
+
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(new_event.motion, is_browsing());
 			}
 		} else {
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(event.motion, is_browsing());
 			}
 		}
@@ -178,7 +178,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+		last_mouse_is_touch_ = events::is_touch(event.button);
 
 		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
 			long_touch_timer_ = gui2::add_timer(
@@ -200,7 +200,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			long_touch_timer_ = 0;
 		}
 
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+		last_mouse_is_touch_ = events::is_touch(event.button);
 
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {

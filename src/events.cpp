@@ -532,7 +532,7 @@ void pump()
 		switch (event.type) {
 			// TODO: Implement SDL_MULTIGESTURE. Some day.
 			case SDL_MOUSEMOTION:
-				if(event.motion.which != SDL_TOUCH_MOUSEID && event.motion.state == 0) {
+				if(!events::is_touch(event.motion) && event.motion.state == 0) {
 					return;
 				}
 
@@ -655,7 +655,7 @@ void pump()
 		case SDL_MOUSEBUTTONDOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
+			if(event.button.button == SDL_BUTTON_LEFT || is_touch(event.button)) {
 				if(event.button.clicks == 2) {
 					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));

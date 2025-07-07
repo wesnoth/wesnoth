@@ -174,15 +174,15 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 
 	static clock_t touch_timestamp = 0;
 
-	if(is_touch_click(event)) {
-		if (event.state == SDL_PRESSED) {
+	if(events::is_touch(event)) {
+		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
 			touch_timestamp = clock();
 			init_dragging(dragging_touch_);
 			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
 				left_click(event.x, event.y, browse);
 			}
-		} else if (event.state == SDL_RELEASED) {
+		} else if(event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
 			if (!dragging_started_ && touch_timestamp > 0) {
@@ -289,7 +289,7 @@ bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
 		return true;
 	}
 #endif
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_LEFT && !command_active();
@@ -306,17 +306,12 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 	(void) event;
 	return false;
 #else
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_RIGHT
 			|| (event.button == SDL_BUTTON_LEFT && command_active());
 #endif
-}
-
-bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
-{
-	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
