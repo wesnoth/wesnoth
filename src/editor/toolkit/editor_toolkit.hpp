@@ -27,8 +27,7 @@ namespace editor {
 class editor_toolkit {
 
 public:
-	editor_toolkit(editor_display& gui, const CKey& key,
-			const game_config_view& game_config, context_manager& c_manager);
+	editor_toolkit(editor_display& gui, const game_config_view& game_config, context_manager& c_manager);
 
 	~editor_toolkit();
 
@@ -84,7 +83,7 @@ private:
 
 	editor_display& gui_;
 
-	const CKey& key_;
+	CKey key_;
 
 	std::unique_ptr<palette_manager> palette_manager_;
 

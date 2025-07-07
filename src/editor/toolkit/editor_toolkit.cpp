@@ -28,10 +28,9 @@
 
 namespace editor {
 
-editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
-		const game_config_view& game_config, context_manager& c_manager)
+editor_toolkit::editor_toolkit(editor_display& gui, const game_config_view& game_config, context_manager& c_manager)
 	: gui_(gui)
-	, key_(key)
+	, key_()
 	, palette_manager_()
 	, mouse_action_(nullptr)  // Will be set before this constructor ends.
 	, mouse_actions_()

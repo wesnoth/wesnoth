@@ -177,8 +177,6 @@ protected:
 
 	const game_config_view& game_config_;
 
-	CKey key_;
-
 	bool scrolling_;
 	bool scroll_up_;
 	bool scroll_down_;

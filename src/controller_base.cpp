@@ -38,7 +38,6 @@ static constexpr auto long_touch_duration = 400ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
-	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
 	, scroll_down_(false)
@@ -389,8 +388,6 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 void controller_base::play_slice()
 {
-	CKey key;
-
 	if(plugins_context* l = get_plugins_context()) {
 		l->play_slice();
 	}
