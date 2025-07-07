@@ -71,8 +71,6 @@ public:
 
 	virtual void play_slice();
 
-	void apply_keyboard_scroll(int x, int y);
-
 	void set_scroll_up(bool on)
 	{
 		scroll_up_ = on;
