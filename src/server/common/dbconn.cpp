@@ -884,7 +884,7 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 		}
 		else
 		{
-			ERR_SQL << "Unsupported parameter type in SQL query: " << typeid(param).name() << " at position " << i;
+			ERR_SQL << "Unsupported parameter type in SQL query at position " << i;
 		}
 		i++;
 	}
