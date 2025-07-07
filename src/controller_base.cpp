@@ -410,7 +410,7 @@ void controller_base::play_slice()
 		show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
 		return;
 	}
-	
+
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
 		execute_action(a->items());
@@ -444,11 +444,13 @@ bool controller_base::show_menu(const theme::menu* menu, const point& loc, bool 
 	if(!menu || !cmd_exec) {
 		return false;
 	}
-	
-	if(!get_display().map_area().contains(loc)) {
+
+	// context menus cannot appear outside map area,
+	// but main top-panel menus can.
+	if(context_menu && !get_display().map_area().contains(loc)) {
 		return false;
 	}
-	
+
 	cmd_exec->show_menu(menu->items(), loc, context_menu);
 	return true;
 }
