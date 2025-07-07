@@ -1151,7 +1151,6 @@ void play_controller::start_game()
 		set_scontext_synced sync;
 
 		// So that the code knows it can send choices immidiateley
-		// todo: im not sure whetrh this is actually needed.
 		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {
