@@ -655,12 +655,6 @@ void pump()
 		case SDL_MOUSEBUTTONDOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			if(event.button.button == SDL_BUTTON_LEFT || is_touch(event.button)) {
-				if(event.button.clicks == 2) {
-					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
-					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
-				}
-			}
 			break;
 		}
 

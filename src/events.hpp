@@ -21,7 +21,6 @@
 #include <functional>
 
 //our user-defined double-click event type
-#define DOUBLE_CLICK_EVENT SDL_USEREVENT
 #define TIMER_EVENT (SDL_USEREVENT + 1)
 #define HOVER_REMOVE_POPUP_EVENT (SDL_USEREVENT + 2)
 #define DRAW_EVENT (SDL_USEREVENT + 3)
