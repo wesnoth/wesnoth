@@ -170,7 +170,7 @@ protected:
 		// No action by default
 	}
 
-	virtual bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
+	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 	virtual void execute_action(const std::vector<std::string>& items_arg);
 
 	void long_touch_callback(int x, int y);
