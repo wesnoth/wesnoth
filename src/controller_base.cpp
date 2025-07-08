@@ -19,6 +19,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config_manager.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
@@ -34,7 +35,7 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 using namespace std::chrono_literals;
-static constexpr auto long_touch_duration = 400ms;
+static const auto long_touch_duration = gui2::settings::popup_show_delay;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
@@ -340,24 +341,22 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
 		const point original_loc = mh_base.get_scroll_start();
 
-		if(mh_base.scroll_started()) {
-			if(get_display().map_outside_area().contains(mousex, mousey)
-				&& mh_base.scroll_started())
-			{
-				// Scroll speed is proportional from the distance from the first
-				// middle click and scrolling speed preference.
-				const double speed = 0.01 * scroll_amount;
-				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
-				const double x_diff = (mousex - original_loc.x);
-				const double y_diff = (mousey - original_loc.y);
+		if(mh_base.scroll_started()
+			&& get_display().map_outside_area().contains(mousex, mousey))
+		{
+			// Scroll speed is proportional from the distance from the first
+			// middle click and scrolling speed preference.
+			const double speed = 0.01 * scroll_amount;
+			const double snap_dist = 16; // Snap to horizontal/vertical scrolling
+			const double x_diff = (mousex - original_loc.x);
+			const double y_diff = (mousey - original_loc.y);
 
-				if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
-					dx += speed * x_diff;
-				}
+			if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
+				dx += speed * x_diff;
+			}
 
-				if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
-					dy += speed * y_diff;
-				}
+			if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
+				dy += speed * y_diff;
 			}
 		} else { // Event may fire mouse down out of order with respect to initial click
 			mh_base.set_scroll_start(mousex, mousey);

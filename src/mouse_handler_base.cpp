@@ -18,6 +18,7 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "sdl/rect.hpp"
@@ -173,11 +174,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	mouse_update(browse, loc);
 
 	if(events::is_touch(event)) {
-		// FIXME: yet another touch-related constant. What is this even doing??
-		using namespace std::chrono_literals;
-		constexpr auto touch_time = 300ms;
-
 		static std::chrono::steady_clock::time_point touch_timestamp;
+		const auto touch_time = gui2::settings::popup_show_delay;
 		const auto now = std::chrono::steady_clock::now();
 
 		if(event.state == SDL_PRESSED) {
