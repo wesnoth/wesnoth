@@ -54,6 +54,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	, current_gender_("null")
 	, default_leader_type_("")
 	, default_leader_gender_("")
+	, faction_sorting_mode_(sort_order::type::ascending)
 {
 	std::string leader_id = side["id"];
 	bool found_leader;
@@ -547,6 +548,12 @@ const config& flg_manager::get_default_faction(const config& cfg)
 	} else {
 		return cfg;
 	}
+}
+
+void flg_manager::set_faction_sort_order(const config& era_config)
+{
+	auto direction = sort_order::get_enum(era_config["auto_sort"].str());
+	faction_sorting_mode_ = direction.value_or(faction_sorting_mode_);
 }
 
 } // end namespace ng

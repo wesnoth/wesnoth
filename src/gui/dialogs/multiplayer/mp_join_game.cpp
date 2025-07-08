@@ -314,6 +314,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.mandatory_child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
 		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
+		flg.set_faction_sort_order(*era); // TODO: unify with flg construction
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);

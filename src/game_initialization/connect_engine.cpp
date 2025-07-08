@@ -180,7 +180,8 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	// Create side engines.
 	int index = 0;
 	for(const config& s : sides) {
-		side_engines_.emplace_back(new side_engine(s, *this, index++));
+		auto engine = side_engines_.emplace_back(new side_engine(s, *this, index++));
+		engine->flg().set_faction_sort_order(era_config); // TODO: unify with flg construction
 	}
 
 	if(first_scenario_) {

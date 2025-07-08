@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "gui/sort_order.hpp"
+
 #include <string>
 #include <vector>
 
@@ -80,6 +82,15 @@ public:
 	bool leader_lock() const
 		{ return leader_lock_; }
 
+	/** Sets the faction list ordering from the [era] config. */
+	void set_faction_sort_order(const config& era_config);
+
+	/** The order the faction list should be sorted by default in Faction Select. */
+	sort_order::type faction_sort_order() const
+	{
+		return faction_sorting_mode_;
+	}
+
 private:
 	flg_manager(const flg_manager&) = delete;
 	flg_manager& operator=(const flg_manager&) = delete;
@@ -131,6 +142,8 @@ private:
 
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
+
+	sort_order::type faction_sorting_mode_;
 
 	static const config& get_default_faction(const config& cfg);
 };

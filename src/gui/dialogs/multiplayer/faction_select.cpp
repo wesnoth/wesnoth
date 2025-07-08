@@ -76,38 +76,22 @@ auto operator<=>(const faction_sorter& lhs, const faction_sorter& rhs)
 
 bool operator<(const faction_sorter& lhs, const faction_sorter& rhs)
 {
-	// Since some eras have multiple random options we can't just
-	// assume there is only one random faction on top of the list.
 	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
 	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
 
-	// Random factions always first.
-	if(lhs_rand && !rhs_rand) {
-		return true;
-	}
-
-	if(!lhs_rand && rhs_rand) {
-		return false;
-	}
+	if(lhs_rand && !rhs_rand) return true;
+	if(!lhs_rand && rhs_rand) return false;
 
 	return translation::compare((*lhs.cfg)["name"].str(), (*rhs.cfg)["name"].str()) < 0;
 }
 
 bool operator>(const faction_sorter& lhs, const faction_sorter& rhs)
 {
-	// Since some eras have multiple random options we can't just
-	// assume there is only one random faction on top of the list.
 	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
 	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
 
-	// Random factions always first.
-	if(lhs_rand && !rhs_rand) {
-		return false;
-	}
-
-	if(!lhs_rand && rhs_rand) {
-		return true;
-	}
+	if(lhs_rand && !rhs_rand) return false;
+	if(!lhs_rand && rhs_rand) return true;
 
 	return translation::compare((*lhs.cfg)["name"].str(), (*rhs.cfg)["name"].str()) > 0;
 }
@@ -186,7 +170,7 @@ void faction_select::pre_show()
 
 	list.select_row(flg_manager_.current_faction_index());
 	list.set_sorters([this](std::size_t i) { return faction_sorter{flg_manager_.choosable_factions()[i]}; });
-	list.set_active_sorter("sort_0", sort_order::type::ascending, true);
+	list.set_active_sorter("sort_0", flg_manager_.faction_sort_order(), true);
 
 	on_faction_select();
 }
