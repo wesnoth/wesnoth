@@ -60,27 +60,6 @@ const std::set<std::string> children_to_swap {
 	"ai"
 };
 
-void sort_faction_options(std::vector<const config*>& factions)
-{
-	// Since some eras have multiple random options we can't just
-	// assume there is only one random faction on top of the list.
-	std::sort(factions.begin(), factions.end(), [](const config* lhs, const config* rhs) {
-		bool lhs_rand = (*lhs)["random_faction"].to_bool();
-		bool rhs_rand = (*rhs)["random_faction"].to_bool();
-
-		// Random factions always first.
-		if(lhs_rand && !rhs_rand) {
-			return true;
-		}
-
-		if(!lhs_rand && rhs_rand) {
-			return false;
-		}
-
-		return translation::compare((*lhs)["name"].str(), (*rhs)["name"].str()) < 0;
-	});
-}
-
 } // end anon namespace
 
 namespace ng {
@@ -194,10 +173,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	// Selected era's factions.
 	for(const config& ms : era_config.child_range("multiplayer_side")) {
 		era_factions_.push_back(&ms);
-	}
-
-	if(era_config["auto_sort"].to_bool(true)) {
-		sort_faction_options(era_factions_);
 	}
 
 	game_config::add_color_info(game_config_view::wrap(scenario()));
