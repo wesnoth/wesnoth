@@ -45,6 +45,8 @@ struct faction_sorter
 };
 
 #ifdef __cpp_impl_three_way_comparison
+
+/** Must be defined in the same namespace for ADL reasons. */
 auto operator<=>(const faction_sorter& lhs, const faction_sorter& rhs)
 {
 	// Since some eras have multiple random options we can't just
