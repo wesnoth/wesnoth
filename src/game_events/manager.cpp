@@ -28,6 +28,7 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_event_handler("event_handler");
 #define LOG_EH LOG_STREAM(info, log_event_handler)
@@ -182,13 +183,15 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 		// error occurs in MP. If the event in question is first-time-only, it will already
 		// have been flagged as disabled by this point (such events are disabled before their
 		// actions are run). If a disabled event is encountered outside an event context,
-		// however, assert. That means something went wrong with event list cleanup.
+		// however, show an error. That means something went wrong with event list cleanup.
 		// Also silently skip them when including nonserializable events, which can happen
 		// if viewing the inspector with :inspect after removing an event from the Lua console.
-		if(eh->disabled() && (is_event_running() || include_nonserializable)) {
+		if(eh->disabled()) {
+			if(!is_event_running() && !include_nonserializable) {
+				//This could in theory happen if an exception was thrown during execute_on_events.
+				ERR_NG << "found disabled event with no event running, seems like event cleanup has failed";
+			}
 			continue;
-		} else {
-			assert(!eh->disabled());
 		}
 
 		config event_cfg;

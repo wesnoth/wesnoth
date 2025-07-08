@@ -1418,7 +1418,7 @@ bool is_root(const std::string& path)
 	//
 	// See also: <https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html>
 	//
-	const std::wstring& wpath = bfs::path{path}.make_preferred().wstring();
+	const std::wstring wpath = bfs::path{path}.make_preferred().wstring();
 	return PathIsRootW(wpath.c_str()) == TRUE;
 #endif
 }

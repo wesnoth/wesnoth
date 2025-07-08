@@ -311,17 +311,17 @@ namespace {
 	 *
 	 * @returns Whether name was resolved and quadruple added.
 	 */
-	bool add_ability_tooltip(const config& ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
+	bool add_ability_tooltip(const config& ab, const std::string& tag_name, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
 	{
-		if (active) {
+		if(active) {
 			const t_string& name = gender_value(ab, gender, "name", "female_name", "name").t_str();
 
-			if (!name.empty()) {
+			if(!name.empty()) {
 				res.emplace_back(
 						ab["id"],
 						ab["name"].t_str(),
-						name,
-						ab["description"].t_str() );
+						unit_abilities::substitute_variables(name, tag_name, ab),
+						unit_abilities::substitute_variables(ab["description"].t_str(), tag_name, ab));
 				return true;
 			}
 		} else {
@@ -331,13 +331,14 @@ namespace {
 						"female_name_inactive", "name_inactive");
 			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
 				gender_value(ab, gender, "name", "female_name", "name").t_str();
+			const t_string& desc = ab.get_or("description_inactive", "description").t_str();
 
-			if (!name.empty()) {
+			if(!name.empty()) {
 				res.emplace_back(
 						ab["id"],
 						ab.get_or("name_inactive", "name").t_str(),
-						name,
-						ab.get_or("description_inactive", "description").t_str() );
+						unit_abilities::substitute_variables(name, tag_name, ab),
+						unit_abilities::substitute_variables(desc, tag_name, ab));
 				return true;
 			}
 		}
@@ -350,9 +351,9 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 {
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 
-	for(const auto [_, cfg] : this->abilities_.all_children_view())
+	for(const auto [tag_name, cfg] : abilities_.all_children_view())
 	{
-		add_ability_tooltip(cfg, gender_, res, true);
+		add_ability_tooltip(cfg, tag_name, gender_, res, true);
 	}
 
 	return res;
@@ -363,10 +364,10 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	active_list.clear();
 
-	for(const auto [key, cfg] : this->abilities_.all_children_view())
+	for(const auto [tag_name, cfg] : abilities_.all_children_view())
 	{
-		bool active = ability_active(key, cfg, loc);
-		if (add_ability_tooltip(cfg, gender_, res, active))
+		bool active = ability_active(tag_name, cfg, loc);
+		if(add_ability_tooltip(cfg, tag_name, gender_, res, active))
 		{
 			active_list.push_back(active);
 		}
@@ -457,19 +458,17 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	return ability_active_impl(ability, cfg, loc);
 }
 
-bool unit::ability_active_impl(const std::string& ability,const config& cfg,const map_location& loc) const
+static bool ability_active_adjacent_helper(const unit& self, bool illuminates, const config& cfg, const map_location& loc, bool in_abilities_tag)
 {
-	bool illuminates = ability == "illuminates";
-
-	if (auto afilter = cfg.optional_child("filter"))
-		if ( !unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
-			return false;
-
 	const auto adjacent = get_adjacent_tiles(loc);
 
 	const unit_map& units = get_unit_map();
+	// if in_abilities_tag then it's in [abilities] tags during special_active() checking and
+	// [filter_student_adjacent] and [filter_student_adjacent] then designate 'the student' (which may be different from the owner of the ability).
+	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
+	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
 
-	for(const config &i : cfg.child_range("filter_adjacent")) {
+	for(const config &i : cfg.child_range(filter_adjacent)) {
 		std::size_t radius = i["radius"].to_int(1);
 		std::size_t count = 0;
 		unit_filter ufilt{ vconfig(i) };
@@ -477,7 +476,7 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, loc);
-			if(distance > radius || !ufilt(u, *this)) {
+			if(&u == &self || distance > radius || !ufilt(u, self)) {
 				continue;
 			}
 			int dir = 0;
@@ -497,7 +496,7 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 			}
 			if(i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
-				if(i["is_enemy"].to_bool() != dc.get_team(u.side()).is_enemy(side_)) {
+				if(i["is_enemy"].to_bool() != dc.get_team(u.side()).is_enemy(self.side())) {
 					continue;
 				}
 			}
@@ -512,15 +511,13 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 		}
 	}
 
-	for (const config &i : cfg.child_range("filter_adjacent_location"))
-	{
+	for(const config &i : cfg.child_range(filter_adjacent_location)) {
 		std::size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		adj_filter.flatten(illuminates);
 
 		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
-		for (const map_location::direction index : dirs)
-		{
+		for(const map_location::direction index : dirs) {
 			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
 				continue;
 			}
@@ -528,9 +525,24 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 		}
 		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count =i["count"];
-		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
+		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)) {
 			return false;
 		}
+	}
+
+	return true;
+}
+
+bool unit::ability_active_impl(const std::string& ability,const config& cfg,const map_location& loc) const
+{
+	bool illuminates = ability == "illuminates";
+
+	if (auto afilter = cfg.optional_child("filter"))
+		if ( !unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
+			return false;
+
+	if(!ability_active_adjacent_helper(*this, illuminates, cfg, loc, false)) {
+		return false;
 	}
 
 	return true;
@@ -809,6 +821,7 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
 	if(simple_check && specials().has_child(special)) {
 		return true;
 	}
+
 	for(const config &i : specials().child_range(special)) {
 		if(special_active(i, AFFECT_SELF, special)) {
 			return true;
@@ -875,38 +888,27 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	}
 
 	for(const auto [key, cfg] : specials_.all_children_view()) {
-		if(!active_list || special_active(cfg, AFFECT_EITHER, key)) {
-			std::string name = cfg["name"];
-			std::string desc = cfg["description"];
+		bool active = !active_list || special_active(cfg, AFFECT_EITHER, key);
 
-			if(name.empty()) {
-				continue;
-			}
+		std::string name = active
+			? cfg["name"].str()
+			: cfg.get_or("name_inactive", "name").str();
 
-			const auto iter = key == "plague" // Only [plague] supports a type key
-				? unit_types.types().find(cfg["type"].str())
-				: unit_types.types().end();
+		if(name.empty()) {
+			continue;
+		}
 
-			// TODO: warn if an invalid type is specified?
-			if(iter != unit_types.types().end()) {
-				const unit_type& type = iter->second;
-				utils::string_map symbols{{ "type", type.type_name() }};
+		std::string desc = active
+			? cfg["description"].str()
+			: cfg.get_or("description_inactive", "description").str();
 
-				name = utils::interpolate_variables_into_string(name, &symbols);
-				desc = utils::interpolate_variables_into_string(desc, &symbols);
-			}
+		res.emplace_back(
+			unit_abilities::substitute_variables(name, key, cfg),
+			unit_abilities::substitute_variables(desc, key, cfg)
+		);
 
-			res.emplace_back(name, desc);
-
-			if(active_list) {
-				active_list->push_back(true);
-			}
-		} else {
-			const t_string& name = cfg.get_or("name_inactive", "name").t_str();
-			if(!name.empty()) {
-				res.emplace_back(name, cfg.get_or("description_inactive", "description").t_str() );
-				active_list->push_back(false);
-			}
+		if(active_list) {
+			active_list->push_back(active);
 		}
 	}
 	return res;
@@ -977,12 +979,10 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
  */
 static void add_name(std::string& temp_string, bool active, const std::string& name, std::set<std::string>& checking_name)
 {
-	if (active) {
-		if (!name.empty() && checking_name.count(name) == 0) {
-			checking_name.insert(name);
-			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += markup::span_color(font::TITLE_COLOR, name);
-		}
+	if (active && !name.empty() && checking_name.count(name) == 0) {
+		checking_name.insert(name);
+		if (!temp_string.empty()) temp_string += ", ";
+		temp_string += markup::span_color(font::TITLE_COLOR, name);
 	}
 }
 
@@ -996,38 +996,35 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 std::string attack_type::weapon_specials() const
 {
 	//log_scope("weapon_specials");
-	std::string res;
-	for(const auto [key, cfg] : specials_.all_children_view())
-	{
+	std::vector<std::string> specials;
+
+	for(const auto [key, cfg] : specials_.all_children_view()) {
 		const bool active = special_active(cfg, AFFECT_EITHER, key);
 
-		const std::string& name =
-			active
+		std::string name = active
 			? cfg["name"].str()
 			: cfg.get_or("name_inactive", "name").str();
-		if (!name.empty()) {
-			if (!res.empty()) {
-				res += ", ";
-			}
 
-			if (!active) {
-				res += markup::span_color(font::INACTIVE_COLOR, name);
-			} else {
-				res += name;
-			}
+		if(name.empty()) {
+			continue;
 		}
+
+		name = unit_abilities::substitute_variables(name, key, cfg);
+
+		specials.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 	}
+
+	// FIXME: clean this up...
 	std::string temp_string;
 	std::set<std::string> checking_name;
 	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, {}, "affect_allies");
-	if(!temp_string.empty() && !res.empty()) {
-		temp_string = ", \n" + temp_string;
-		res += temp_string;
-	} else if (!temp_string.empty()){
-		res = temp_string;
+
+	if(!temp_string.empty()) {
+		specials.push_back("\n" + std::move(temp_string));
 	}
-	return res;
+
+	return utils::join(specials, ", ");
 }
 
 static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
@@ -1049,7 +1046,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 	for(const auto [key, cfg] : specials_.all_children_view()) {
 		if(checking_tags.count(key) != 0) {
 			const bool active = special_active(cfg, AFFECT_SELF, key);
-			add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
+			add_name(temp_string, active, cfg["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
@@ -1070,7 +1067,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string>& chec
 		for(const auto [key, cfg] : other_attack_->specials_.all_children_view()) {
 			if((checking_tags.count(key) != 0)){
 				const bool active = other_attack_->special_active(cfg, AFFECT_OTHER, key);
-				add_name(temp_string, active, cfg.get_or("name_affected", "name").str(), checking_name);
+				add_name(temp_string, active, cfg["name"].str(), checking_name);
 			}
 		}
 	}
@@ -2373,76 +2370,10 @@ bool attack_type::special_active_impl(
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_check_if_recursion))
 		return false;
 
-	//if filter_self != "filter_self" then it's in [abilities] tags and
-	//[filter_student_adjacent] and [filter_student_adjacent] then designate 'the student' (which may be different from the owner of the ability),
-	//while in the tags[specials] the usual names are kept.
-	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
-	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
+	// filter adjacent units or adjacent locations
+	if(self && !ability_active_adjacent_helper(*self, false, special, self_loc, in_abilities_tag))
+		return false;
 
-	const auto adjacent = get_adjacent_tiles(self_loc);
-
-	// Filter the adjacent units.
-	for(const config &i : special.child_range(filter_adjacent)) {
-		std::size_t radius = i["radius"].to_int(1);
-		std::size_t count = 0;
-		unit_filter ufilt{ vconfig(i) };
-		for(const unit& u : units) {
-			const map_location& from_loc = u.get_location();
-			std::size_t distance = distance_between(from_loc, self_loc);
-			if(distance > radius || !ufilt(u, *self)) {
-				continue;
-			}
-			int dir = 0;
-			for(unsigned j = 0; j < adjacent.size(); ++j) {
-				bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], from_loc) == (distance - 1) : adjacent[j] == from_loc;
-				if(adj_or_dist) {
-					dir = j;
-					break;
-				}
-			}
-			assert(dir >=0 && dir <= 5);
-			map_location::direction direction{ dir };
-			if(i.has_attribute("adjacent")) { //key adjacent defined
-				if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
-					continue;
-				}
-			}
-			if(i.has_attribute("is_enemy")) {
-				const display_context& dc = resources::filter_con->get_disp_context();
-				if(i["is_enemy"].to_bool() != dc.get_team(u.side()).is_enemy(self->side())) {
-					continue;
-				}
-			}
-			++count;
-		}
-
-		if(i["count"].empty() && count == 0) {
-			return false;
-		}
-		if(!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
-			return false;
-		}
-	}
-
-	// Filter the adjacent locations.
-	for (const config &i : special.child_range(filter_adjacent_location))
-	{
-		std::size_t count = 0;
-		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
-		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
-		for (const map_location::direction index : dirs)
-		{
-			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
-				continue;
-			}
-			count++;
-		}
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-		config::attribute_value i_count =i["count"];
-		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
-			return false;
-		}
-	}
 
 	return true;
 }
@@ -2477,6 +2408,26 @@ bool filter_base_matches(const config& cfg, int def)
 			(cond_le.empty() || def <= cond_le.to_int());
 	}
 	return true;
+}
+
+// TODO add more [specials] keys
+// Currently supports only [plague]type= -> $type
+std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special) {
+	if(tag_name == "plague") {
+		// Substitute [plague]type= as $type
+		const auto iter = unit_types.types().find(ability_or_special["type"]);
+
+		// TODO: warn if an invalid type is specified?
+		if(iter == unit_types.types().end()) {
+			return str;
+		}
+
+		const unit_type& type = iter->second;
+		utils::string_map symbols{{ "type", type.type_name() }};
+		return utils::interpolate_variables_into_string(str, &symbols);
+	}
+
+	return str;
 }
 
 effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :

@@ -113,7 +113,7 @@ public:
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/***** ***** ***** inherited ****** *****/
 
@@ -171,7 +171,7 @@ public:
 		return content_grid_.get();
 	}
 
-	const SDL_Rect& content_visible_area() const
+	const rect& content_visible_area() const
 	{
 		return content_visible_area_;
 	}
@@ -260,7 +260,7 @@ protected:
 	 *
 	 * @param rect                The rect which should be visible.
 	 */
-	void show_content_rect(const SDL_Rect& rect);
+	void show_content_rect(const rect& rect);
 
 	/*
 	 * The widget contains the following three grids.
@@ -510,7 +510,7 @@ private:
 	 *
 	 * The visible area for the content needs to be updated when scrolling.
 	 */
-	SDL_Rect content_visible_area_;
+	rect content_visible_area_;
 
 	/**
 	 * Function for the subclasses to do their setup.

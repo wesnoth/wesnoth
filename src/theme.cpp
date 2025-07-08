@@ -78,9 +78,9 @@ static _rect read_rect(const config& cfg)
 	return rect;
 }
 
-static SDL_Rect read_sdl_rect(const config& cfg)
+static rect read_sdl_rect(const config& cfg)
 {
-	SDL_Rect sdlrect;
+	rect sdlrect;
 	const _rect rect = read_rect(cfg);
 	sdlrect.x = rect.x1;
 	sdlrect.y = rect.y1;
@@ -274,9 +274,9 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 theme::object::object()
 	: location_modified_(false)
 	, id_()
-	, loc_(sdl::empty_rect)
-	, relative_loc_(sdl::empty_rect)
-	, last_screen_(sdl::empty_rect)
+	, loc_()
+	, relative_loc_()
+	, last_screen_()
 	, xanchor_(object::FIXED)
 	, yanchor_(object::FIXED)
 	, spec_width_(0)
@@ -288,8 +288,8 @@ theme::object::object(std::size_t sw, std::size_t sh, const config& cfg)
 	: location_modified_(false)
 	, id_(cfg["id"])
 	, loc_(read_sdl_rect(cfg))
-	, relative_loc_(sdl::empty_rect)
-	, last_screen_(sdl::empty_rect)
+	, relative_loc_()
+	, last_screen_()
 	, xanchor_(read_anchor(cfg["xanchor"]))
 	, yanchor_(read_anchor(cfg["yanchor"]))
 	, spec_width_(sw)
@@ -314,7 +314,7 @@ theme::border_t::border_t(const config& cfg)
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
 
-rect& theme::object::location(const SDL_Rect& screen) const
+rect& theme::object::location(const rect& screen) const
 {
 	if(last_screen_ == screen && !location_modified_)
 		return relative_loc_;
@@ -401,7 +401,7 @@ void theme::object::modify_location(const _rect& rect)
 	location_modified_ = true;
 }
 
-void theme::object::modify_location(const std::string& rect_str, SDL_Rect location_ref_rect)
+void theme::object::modify_location(const std::string& rect_str, rect location_ref_rect)
 {
 	_rect rect {0, 0, 0, 0};
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
@@ -519,7 +519,7 @@ theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
 		items_.emplace_back("id", item);
 	}
 
-	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"]);
+	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"].str());
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
 		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + cmd.tooltip;
 	} else if(cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
@@ -576,7 +576,7 @@ const std::string theme::action::tooltip(std::size_t index) const
 	return result.str();
 }
 
-theme::theme(const config& cfg, const SDL_Rect& screen)
+theme::theme(const config& cfg, const rect& screen)
 	: theme_reset_event_("theme_reset")
 	, cur_theme()
 	, cfg_()
@@ -599,7 +599,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 	set_resolution(screen);
 }
 
-bool theme::set_resolution(const SDL_Rect& screen)
+bool theme::set_resolution(const rect& screen)
 {
 	screen_dimensions_ = screen;
 
@@ -809,7 +809,7 @@ void theme::set_object_location(theme::object& element, const std::string& rect_
 		ref_element = find_element(ref_id);
 	}
 	if(ref_element.get_id() == ref_id) {
-		SDL_Rect location_ref_rect = ref_element.get_location();
+		rect location_ref_rect = ref_element.get_location();
 		element.modify_location(rect_str, location_ref_rect);
 	}
 }

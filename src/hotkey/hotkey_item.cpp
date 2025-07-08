@@ -18,6 +18,7 @@
 #include "hotkey/hotkey_item.hpp"
 
 #include "config.hpp"
+#include "events.hpp"
 #include "game_config_view.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
@@ -46,7 +47,7 @@ game_config_view default_hotkey_cfg_;
 const int TOUCH_MOUSE_INDEX = 255;
 }; // namespace
 
-const std::string hotkey_base::get_name() const
+std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
@@ -234,7 +235,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 		return false;
 	}
 
-	if(event.button.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event.button)) {
 		return button_ == TOUCH_MOUSE_INDEX;
 	}
 
@@ -323,13 +324,6 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	}
 
 	return text_ == other_k->text_;
-}
-
-void del_hotkey(const hotkey_ptr& item)
-{
-	if(!hotkeys_.empty()) {
-		utils::erase(hotkeys_, item);
-	}
 }
 
 void add_hotkey(hotkey_ptr item)

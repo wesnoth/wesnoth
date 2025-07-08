@@ -52,17 +52,14 @@ private:
 	// Private data related to menu implementation (expansion of AUTOSAVES, WML entries)
 	//
 
-	/** A smart pointer used when retrieving menu items. */
-	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
-
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
-	void expand_autosaves(std::vector<config>& items, int i);
-	void expand_quickreplay(std::vector<config>& items, int i);
+	void expand_autosaves(std::vector<config>& items) const;
+	void expand_quickreplay(std::vector<config>& items) const;
 
 	/**
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
 	 */
-	void expand_wml_commands(std::vector<config>& items, int i);
+	void expand_wml_commands(std::vector<config>& items);
 
 protected:
 	bool browse() const;
@@ -78,13 +75,11 @@ public:
 	virtual void objectives() override;
 	virtual void show_statistics() override;
 	virtual void unit_list() override;
-	virtual void left_mouse_click() override;
 	virtual void move_action() override;
 	virtual void select_and_action() override;
 	virtual void touch_hex() override;
 	virtual void select_hex() override;
 	virtual void deselect_hex() override;
-	virtual void right_mouse_click() override;
 	virtual void status_table() override;
 	virtual void save_game() override;
 	virtual void save_replay() override;
@@ -113,18 +108,13 @@ public:
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 
-	virtual std::string get_action_image(const hotkey::ui_command&) const override;
 	virtual void load_autosave(const std::string& filename, bool start_replay = false);
-	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
+	virtual hotkey::action_state get_action_state(const hotkey::ui_command&) const override;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;
-	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu) override;
+	void show_menu(const std::vector<config>& items_arg, const point& menu_loc, bool context_menu) override;
 
-	/**
-	 *  Determines whether the command should be in the context menu or not.
-	 *  Independent of whether or not we can actually execute the command.
-	 */
-	bool in_context_menu(const hotkey::ui_command& cmd) const;
-
+	/** Inherited from command_executor. */
+	bool in_context_menu(const hotkey::ui_command& cmd) const override;
 };

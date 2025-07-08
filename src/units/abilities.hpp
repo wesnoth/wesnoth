@@ -27,6 +27,16 @@ enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
 enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MAX=3 };
 
+/**
+ * Substitute gettext variables in name and description of abilities and specials
+ * @param str                  The string in which the substitution is to be done
+ * @param tag_name             Tag name of the special (plague, leadership, chance_to_hit etc.)
+ * @param ability_or_special   The config for the special (for example, contents inside [plague][/plague] etc.)
+ *
+ * @return The string `str` with all gettext variables substitutes with corresponding special properties
+ */
+std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special);
+
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),

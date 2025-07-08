@@ -137,8 +137,8 @@ void context_manager::refresh_all()
 		if(!get_map_context().is_pure_map()) {
 			// If the scenario has more than 9 teams, add locations for them
 			// (First 9 teams are always in the list)
-			size_t n_teams = get_map_context().teams().size();
-			for(size_t i = 10; i <= n_teams; i++) {
+			std::size_t n_teams = get_map_context().teams().size();
+			for(std::size_t i = 10; i <= n_teams; i++) {
 				locs_->add_item(std::to_string(i));
 			}
 		}
@@ -214,7 +214,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Load Map"))
+	dlg.set_title(_("Load Map or Scenario"))
 	   .set_path(fn);
 
 	if(dlg.show()) {
@@ -329,11 +329,8 @@ void context_manager::new_scenario_dialog()
 	}
 }
 
-void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
+void context_manager::expand_open_maps_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 		map_context& mc = *map_contexts_[mci];
 
@@ -366,47 +363,32 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		contexts.emplace_back("label", label, "details", details);
+		items.emplace_back("label", label, "details", details);
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
+void context_manager::expand_load_mru_menu(std::vector<config>& items) const
 {
 	std::vector<std::string> mru = prefs::get().recent_files();
-
-	auto pos = items.erase(items.begin() + i);
-
 	if(mru.empty()) {
-		items.insert(pos, config {"label", _("No Recent Files")});
+		items.emplace_back("label", _("No Recent Files"));
 		return;
 	}
 
-	for(std::string& path : mru) {
+	for(const std::string& path : mru) {
 		// TODO: add proper leading ellipsization instead, since otherwise
 		// it'll be impossible to tell apart files with identical names and
 		// different parent paths.
-		path = filesystem::base_name(path);
+		items.emplace_back("label", filesystem::base_name(path));
 	}
-
-	std::vector<config> temp;
-	std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
-		return config {"label", str};
-	});
-
-	items.insert(pos, temp.begin(), temp.end());
 }
 
-void context_manager::expand_areas_menu(std::vector<config>& items, int i)
+void context_manager::expand_areas_menu(std::vector<config>& items) const
 {
-	tod_manager* tod = get_map_context().get_time_manager();
+	const tod_manager* tod = get_map_context().get_time_manager();
 	if(!tod) {
 		return;
 	}
-
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> area_entries;
 
 	std::vector<std::string> area_ids = tod->get_area_ids();
 
@@ -429,17 +411,12 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		area_entries.emplace_back("label", label, "details", details);
+		items.emplace_back("label", label, "details", details);
 	}
-
-	items.insert(pos, area_entries.begin(), area_entries.end());
 }
 
-void context_manager::expand_sides_menu(std::vector<config>& items, int i)
+void context_manager::expand_sides_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
 
 		const team& t = get_map_context().teams()[mci];
@@ -453,46 +430,29 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 			label << teamname;
 		}
 
-		contexts.emplace_back("label", label.str());
+		items.emplace_back("label", label.str());
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
-
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 	assert(tod_m != nullptr);
 
 	for(const time_of_day& time : tod_m->times()) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
-void context_manager::expand_local_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_local_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 
 	for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
 void context_manager::apply_mask_dialog()

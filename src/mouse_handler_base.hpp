@@ -101,7 +101,6 @@ public:
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
-	bool is_touch_click(const SDL_MouseButtonEvent& event) const;
 
 	/** Called when scrolling with the mouse wheel. */
 	virtual void mouse_wheel(int xscroll, int yscroll, bool browse);
@@ -205,7 +204,7 @@ public:
 		scroll_start_y_ = y;
 	}
 
-	const SDL_Point get_scroll_start() const
+	const point get_scroll_start() const
 	{
 		return {scroll_start_x_, scroll_start_y_};
 	}

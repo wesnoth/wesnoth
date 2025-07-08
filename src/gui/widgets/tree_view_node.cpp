@@ -615,7 +615,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	return origin.y - offset;
 }
 
-void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
+void tree_view_node::set_visible_rectangle(const rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";

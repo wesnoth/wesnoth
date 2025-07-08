@@ -168,8 +168,8 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 	}
 	if(!lua_istable(L, index)) return res;
 	lua_pushvalue(L, index);
-	size_t len = lua_rawlen(L, -1);
-	for(size_t i = 0; i != len; ++i) {
+	std::size_t len = lua_rawlen(L, -1);
+	for(std::size_t i = 0; i != len; ++i) {
 		lua_geti(L, -1, i + 1);
 		res.insert(luaW_checklocation(L, -1));
 		lua_pop(L, 1);
@@ -198,8 +198,8 @@ public:
 		:list_()
 	{
 		LOG_LMG << "creating con filter";
-		size_t len = lua_rawlen(L, -1);
-		for(size_t i = 1; i != len; ++i) {
+		std::size_t len = lua_rawlen(L, -1);
+		for(std::size_t i = 1; i != len; ++i) {
 			lua_geti(L, -1, i + 1);
 			list_.emplace_back(build_filter(L, res_index, ks));
 			lua_pop(L, 1);
@@ -501,7 +501,7 @@ public:
 	void init_from_ranges(const std::string& xs, const std::string& ys) {
 		auto xvals = utils::parse_ranges_unsigned(xs), yvals = utils::parse_ranges_unsigned(ys);
 		// TODO: Probably error if they're different sizes?
-		for(size_t i = 0; i < std::min(xvals.size(), yvals.size()); i++) {
+		for(std::size_t i = 0; i < std::min(xvals.size(), yvals.size()); i++) {
 			for(int x = xvals[i].first; x <= xvals[i].second; x++) {
 				for(int y = yvals[i].first; y <= yvals[i].second; y++) {
 					inline_.insert(map_location(x, y, wml_loc()));

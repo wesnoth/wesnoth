@@ -605,7 +605,7 @@ void grid::set_origin(const point& origin)
 	}
 }
 
-void grid::set_visible_rectangle(const SDL_Rect& rectangle)
+void grid::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	widget::set_visible_rectangle(rectangle);
@@ -723,7 +723,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 	cols_ = cols;
 	row_grow_factor_.resize(rows);
 	col_grow_factor_.resize(cols);
-	children_.resize(static_cast<size_t>(rows_) * cols_);
+	children_.resize(static_cast<std::size_t>(rows_) * cols_);
 }
 
 point grid::child::get_best_size() const

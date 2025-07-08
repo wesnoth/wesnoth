@@ -339,18 +339,18 @@ private:
 class crop_modification : public modification
 {
 public:
-	crop_modification(const SDL_Rect& slice)
+	crop_modification(const rect& slice)
 		: slice_(slice)
 	{}
 	virtual void operator()(surface& src) const override;
 
-	const SDL_Rect& get_slice() const
+	const rect& get_slice() const
 	{
 		return slice_;
 	}
 
 private:
-	SDL_Rect slice_;
+	rect slice_;
 };
 
 /**

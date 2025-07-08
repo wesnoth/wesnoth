@@ -35,6 +35,9 @@ namespace
 config read_and_validate(const std::string& path)
 try {
 	preproc_map defines;
+#ifdef __ANDROID__
+	defines["ANDROID"] = preproc_define();
+#endif
 	schema_validation::schema_validator validator{filesystem::get_wml_location("schema/gui.cfg").value()};
 	return io::read(*preprocess_file(path, &defines), &validator);
 

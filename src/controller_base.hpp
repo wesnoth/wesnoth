@@ -39,7 +39,9 @@
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
+#include "map/location.hpp"
 #include "quit_confirmation.hpp"
+#include "theme.hpp"
 
 #include <chrono>
 
@@ -70,8 +72,6 @@ public:
 	virtual ~controller_base();
 
 	virtual void play_slice();
-
-	void apply_keyboard_scroll(int x, int y);
 
 	void set_scroll_up(bool on)
 	{
@@ -170,16 +170,12 @@ protected:
 		// No action by default
 	}
 
-	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu);
+	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 	virtual void execute_action(const std::vector<std::string>& items_arg);
-
-	virtual bool in_context_menu(const hotkey::ui_command& cmd) const;
 
 	void long_touch_callback(int x, int y);
 
 	const game_config_view& game_config_;
-
-	CKey key_;
 
 	bool scrolling_;
 	bool scroll_up_;
@@ -215,7 +211,6 @@ private:
 
 	keyup_listener key_release_listener_;
 
-	bool last_mouse_is_touch_;
 	/** Context menu timer */
-	size_t long_touch_timer_;
+	std::size_t long_touch_timer_;
 };

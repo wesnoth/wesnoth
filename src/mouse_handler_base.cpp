@@ -172,29 +172,34 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
-	static clock_t touch_timestamp = 0;
+	if(events::is_touch(event)) {
+		// FIXME: yet another touch-related constant. What is this even doing??
+		using namespace std::chrono_literals;
+		constexpr auto touch_time = 300ms;
 
-	if(is_touch_click(event)) {
-		if (event.state == SDL_PRESSED) {
+		static std::chrono::steady_clock::time_point touch_timestamp;
+		const auto now = std::chrono::steady_clock::now();
+
+		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
-			touch_timestamp = clock();
+			touch_timestamp = now;
 			init_dragging(dragging_touch_);
 			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
 				left_click(event.x, event.y, browse);
 			}
-		} else if (event.state == SDL_RELEASED) {
+		} else if(event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
-			if (!dragging_started_ && touch_timestamp > 0) {
-				clock_t dt = clock() - touch_timestamp;
-				if (dt > CLOCKS_PER_SEC * 3 / 10) {
+			if (!dragging_started_ && touch_timestamp != std::chrono::steady_clock::time_point{}) {
+				auto dt = now - touch_timestamp;
+				if (dt > touch_time) {
 					if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
 						// BUG: This function won't do anything in the game, need right_mouse_up()
 						right_click(event.x, event.y, browse); // show_menu_ = true;
 					}
 				}
 			} else {
-				touch_timestamp = 0;
+				touch_timestamp = {};
 			}
 
 			clear_dragging(event, browse);
@@ -289,7 +294,7 @@ bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
 		return true;
 	}
 #endif
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_LEFT && !command_active();
@@ -306,17 +311,12 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 	(void) event;
 	return false;
 #else
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_RIGHT
 			|| (event.button == SDL_BUTTON_LEFT && command_active());
 #endif
-}
-
-bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
-{
-	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)

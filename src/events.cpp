@@ -532,7 +532,7 @@ void pump()
 		switch (event.type) {
 			// TODO: Implement SDL_MULTIGESTURE. Some day.
 			case SDL_MOUSEMOTION:
-				if(event.motion.which != SDL_TOUCH_MOUSEID && event.motion.state == 0) {
+				if(!events::is_touch(event.motion) && event.motion.state == 0) {
 					return;
 				}
 
@@ -655,12 +655,6 @@ void pump()
 		case SDL_MOUSEBUTTONDOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
-				if(event.button.clicks == 2) {
-					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
-					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
-				}
-			}
 			break;
 		}
 
@@ -696,10 +690,10 @@ void pump()
 		if(event_contexts.empty() == false) {
 			// As pump() can recurse, pretty much anything can happen here
 			// including destroying handlers or the event context.
-			size_t ec_index = event_contexts.size();
+			std::size_t ec_index = event_contexts.size();
 			context& c = event_contexts.back();
 			handler_list& h = c.handlers;
-			size_t h_size = h.size();
+			std::size_t h_size = h.size();
 			for(auto it = h.begin(); it != h.end(); ++it) {
 				// Pass the event on to the handler.
 				(*it)->handle_event(event);
@@ -772,6 +766,16 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+bool is_touch(const SDL_MouseButtonEvent &event)
+{
+	return event.which == SDL_TOUCH_MOUSEID;
+}
+
+bool is_touch(const SDL_MouseMotionEvent &event)
+{
+	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 void call_in_main_thread(const std::function<void(void)>& f)

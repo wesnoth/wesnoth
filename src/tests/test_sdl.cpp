@@ -46,7 +46,7 @@ constexpr std::array<uint32_t, 6> img_4x4_to_3x2_result {
     blue,   white, 	yellow
 };
 
-template<size_t w, size_t h>
+template<std::size_t w, std::size_t h>
 surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 {
 	surface surf{w, h};
@@ -54,7 +54,7 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 	{
 		surface_lock surf_lock{surf};
 		uint32_t* const pixels = surf_lock.pixels();
-		for(size_t i = 0; i < w * h; ++i) {
+		for(std::size_t i = 0; i < w * h; ++i) {
 			pixels[i] = arr[i];
 		}
 	}

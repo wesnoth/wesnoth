@@ -9,14 +9,12 @@
 # This is, after all, the behavior that we want.
 
 # threading and subprocess are needed to run wmllint without freezing the window
-# codecs is used to save files as UTF8
 # locale and gettext provides internationalization and localization (i18n, l10n)
 # queue is needed to exchange information between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 
 import argparse
-import codecs
 import gettext
 import locale
 import os
@@ -1646,7 +1644,7 @@ Error code: {1}""".format(queue_item[0], queue_item[1])))
         fn = asksaveasfilename(defaultextension=".txt", filetypes=[(_("Text file"), "*.txt")], initialdir=".")
         if fn:
             try:
-                with codecs.open(fn, "w", "utf-8") as out:
+                with open(fn, "w", encoding="utf-8") as out:
                     out.write(self.text.get(1.0, END)[:-1])  # exclude the double endline at the end
                 # the output is saved, if we close we don't lose anything
                 self.text.edit_modified(False)

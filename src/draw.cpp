@@ -23,7 +23,7 @@
 #include "video.hpp"
 
 #include <boost/math/constants/constants.hpp>
-#include <SDL2/SDL_rect.h>
+
 #include <SDL2/SDL_render.h>
 
 static lg::log_domain log_draw("draw");
@@ -50,7 +50,7 @@ void draw::clear()
 }
 
 void draw::fill(
-	const SDL_Rect& area,
+	const ::rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a};
@@ -59,13 +59,13 @@ void draw::fill(
 }
 
 void draw::fill(
-	const SDL_Rect& area,
+	const ::rect& area,
 	uint8_t r, uint8_t g, uint8_t b)
 {
 	draw::fill(area, r, g, b, SDL_ALPHA_OPAQUE);
 }
 
-void draw::fill(const SDL_Rect& area, const color_t& c)
+void draw::fill(const ::rect& area, const color_t& c)
 {
 	draw::fill(area, c.r, c.g, c.b, c.a);
 }
@@ -94,7 +94,7 @@ void draw::fill(const SDL_FRect& rect, const color_t& c)
 	SDL_RenderFillRectF(renderer(), &rect);
 }
 
-void draw::fill(const SDL_Rect& area)
+void draw::fill(const ::rect& area)
 {
 	DBG_D << "fill " << area;
 	SDL_RenderFillRect(renderer(), &area);
@@ -141,7 +141,7 @@ static bool sdl_bad_at_rects()
 }
 
 /** For some SDL versions, draw rectangles as lines. */
-static void draw_rect_as_lines(const SDL_Rect& rect)
+static void draw_rect_as_lines(const rect& rect)
 {
 	// w and h indicate the final pixel width/height of the box.
 	// This is 1 greater than the difference in corner coordinates.
@@ -156,7 +156,7 @@ static void draw_rect_as_lines(const SDL_Rect& rect)
 	draw::line(rect.x, y2, x2, y2);
 }
 
-void draw::rect(const SDL_Rect& rect)
+void draw::rect(const ::rect& rect)
 {
 	DBG_D << "rect " << rect;
 	if (sdl_bad_at_rects()) {
@@ -165,7 +165,7 @@ void draw::rect(const SDL_Rect& rect)
 	SDL_RenderDrawRect(renderer(), &rect);
 }
 
-void draw::rect(const SDL_Rect& rect,
+void draw::rect(const ::rect& rect,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	DBG_D << "rect " << rect << ' ' << color_t{r,g,b,a};
@@ -176,12 +176,12 @@ void draw::rect(const SDL_Rect& rect,
 	SDL_RenderDrawRect(renderer(), &rect);
 }
 
-void draw::rect(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b)
+void draw::rect(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b)
 {
 	draw::rect(rect, r, g, b, SDL_ALPHA_OPAQUE);
 }
 
-void draw::rect(const SDL_Rect& rect, const color_t& c)
+void draw::rect(const ::rect& rect, const color_t& c)
 {
 	draw::rect(rect, c.r, c.g, c.b, c.a);
 }
@@ -202,8 +202,11 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
-void draw::points(const std::vector<SDL_Point>& points)
+void draw::points(const std::vector<::point>& points)
 {
+	// We cannot decay vector<point> to SDL_Point* unless the two types are the same size.
+	static_assert(sizeof(::point) == sizeof(SDL_Point));
+
 	DBG_D << points.size() << " points";
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
 }
@@ -232,7 +235,7 @@ void draw::circle(int cx, int cy, int r, uint8_t octants)
 	int x = r;
 	int y = 0;
 
-	std::vector<SDL_Point> points;
+	std::vector<::point> points;
 
 	while(!(y > x)) {
 		if(octants & 0x04) points.push_back({cx + x, cy + y});
@@ -320,15 +323,19 @@ void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
 		return;
 	}
 
-	int size = 2*r;
-	surface sdl_surf(size, size);
+	int draw_size = 2 * r;
+	int pixel_scale = video::get_pixel_scale();
+	int render_size = draw_size * pixel_scale;
+
+	surface sdl_surf(render_size, render_size);
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+
 	auto cairo_context = cairo::create_context(cairo_surface);
 	cairo_t* ctx = cairo_context.get();
+	cairo_scale(ctx, pixel_scale, pixel_scale);
 
 	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
-
 	cairo_set_source_rgba(ctx, 0.0, 0.0, 0.0, 0.0);
 	cairo_paint(ctx);
 
@@ -339,10 +346,13 @@ void draw::cairo_circle(int cx, int cy, int r, const color_t& c, int thickness)
 		c.b / 255.0,
 		c.a / 255.0
 	);
-	cairo_arc(ctx, r, r, r-thickness, 0, 2*boost::math::constants::pi<double>());
+
+	// Reduce the arc radius by half the stroke width so the border stays within the circle
+	double half_thickness = 1.0 * thickness / 2;
+	cairo_arc(ctx, r, r, r - half_thickness, 0, 2 * boost::math::constants::pi<double>());
 	cairo_stroke(ctx);
 
-	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+	draw::blit(texture(sdl_surf), ::rect(cx - r, cy - r, draw_size, draw_size));
 }
 
 void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
@@ -351,25 +361,29 @@ void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
 		return;
 	}
 
-	int size = 2*r;
-	surface sdl_surf(size, size);
+	int draw_size = 2 * r;
+	int pixel_scale = video::get_pixel_scale();
+	int render_size = draw_size * pixel_scale;
+
+	surface sdl_surf(render_size, render_size);
 	auto cairo_surface = cairo::create_surface(
 		reinterpret_cast<uint8_t*>(sdl_surf->pixels), ::point(sdl_surf->w, sdl_surf->h));
+
 	auto cairo_context = cairo::create_context(cairo_surface);
 	cairo_t* ctx = cairo_context.get();
+	cairo_scale(ctx, pixel_scale, pixel_scale);
 
 	cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
-
 	cairo_set_source_rgba(ctx,
 		c.r / 255.0,
 		c.g / 255.0,
 		c.b / 255.0,
 		c.a / 255.0
 	);
-	cairo_arc(ctx, r, r, r, 0, 2*2*boost::math::constants::pi<double>());
+	cairo_arc(ctx, r, r, r, 0, 2 * boost::math::constants::pi<double>());
 	cairo_fill(ctx);
 
-	draw::blit(texture(sdl_surf), ::rect(cx-r, cy-r, size, size));
+	draw::blit(texture(sdl_surf), ::rect(cx - r, cy - r, draw_size, draw_size));
 }
 
 /*******************/
@@ -377,7 +391,7 @@ void draw::cairo_disc(int cx, int cy, int r, const color_t& c)
 /*******************/
 
 
-void draw::blit(const texture& tex, const SDL_Rect& dst)
+void draw::blit(const texture& tex, const ::rect& dst)
 {
 	if (dst == sdl::empty_rect) {
 		return draw::blit(tex);
@@ -409,7 +423,7 @@ static SDL_RendererFlip get_flip(bool flip_h, bool flip_v)
 
 void draw::flipped(
 	const texture& tex,
-	const SDL_Rect& dst,
+	const ::rect& dst,
 	bool flip_h,
 	bool flip_v)
 {
@@ -436,7 +450,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 
 
 // TODO: highdpi - maybe expose this mirrored mode to WML somehow
-void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
+void draw::tiled(const texture& tex, const ::rect& dst, bool centered,
 	bool mirrored)
 {
 	if (!tex) { DBG_D << "null tiled"; return; }
@@ -451,7 +465,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 
 	// Just blit the image however many times is necessary.
 	bool vf = false;
-	SDL_Rect t{dst.x - xoff, dst.y - yoff, tex.w(), tex.h()};
+	::rect t{dst.x - xoff, dst.y - yoff, tex.w(), tex.h()};
 	for (; t.y < dst.y + dst.h; t.y += t.h, vf = !vf) {
 		bool hf = false;
 		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
@@ -464,7 +478,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	}
 }
 
-void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
+void draw::tiled_highres(const texture& tex, const ::rect& dst,
 	bool centered, bool mirrored)
 {
 	if (!tex) { DBG_D << "null tiled_highres"; return; }
@@ -498,7 +512,7 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	}
 }
 
-void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
+void draw::smooth_shaded(const texture& tex, const ::rect& dst,
 	const SDL_Color& cTL, const SDL_Color& cTR,
 	const SDL_Color& cBL, const SDL_Color& cBR,
 	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
@@ -517,7 +531,7 @@ void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
 	draw::smooth_shaded(tex, verts);
 }
 
-void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
+void draw::smooth_shaded(const texture& tex, const ::rect& dst,
 	const SDL_Color& cTL, const SDL_Color& cTR,
 	const SDL_Color& cBL, const SDL_Color& cBR)
 {
@@ -549,7 +563,7 @@ void draw::smooth_shaded(const texture& tex,
 /***************************/
 
 
-draw::clip_setter::clip_setter(const SDL_Rect& clip)
+draw::clip_setter::clip_setter(const ::rect& clip)
 	: c_(draw::get_clip()), clip_enabled_(draw::clip_enabled())
 {
 	draw::force_clip(clip);
@@ -564,12 +578,12 @@ draw::clip_setter::~clip_setter()
 	}
 }
 
-draw::clip_setter draw::override_clip(const SDL_Rect& clip)
+draw::clip_setter draw::override_clip(const ::rect& clip)
 {
 	return draw::clip_setter(clip);
 }
 
-draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
+draw::clip_setter draw::reduce_clip(const ::rect& clip)
 {
 	if (!draw::clip_enabled()) {
 		return draw::clip_setter(clip);
@@ -577,7 +591,7 @@ draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
 	return draw::clip_setter(draw::get_clip().intersect(clip));
 }
 
-void draw::force_clip(const SDL_Rect& clip)
+void draw::force_clip(const ::rect& clip)
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
 	if (!renderer()) {
@@ -593,7 +607,7 @@ rect draw::get_clip()
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
 	if (!renderer()) {
-		return sdl::empty_rect;
+		return {};
 	}
 
 	if (!SDL_RenderIsClipEnabled(renderer())) {
@@ -630,13 +644,13 @@ bool draw::null_clip()
 	if (!SDL_RenderIsClipEnabled(renderer())) {
 		return false;
 	}
-	SDL_Rect clip;
+	::rect clip;
 	SDL_RenderGetClipRect(renderer(), &clip);
 	return clip.w <= 0 || clip.h <= 0;
 }
 
 
-draw::viewport_setter::viewport_setter(const SDL_Rect& view)
+draw::viewport_setter::viewport_setter(const ::rect& view)
 	: v_(), c_(), clip_enabled_(draw::clip_enabled())
 {
 	v_ = draw::get_viewport();
@@ -644,7 +658,7 @@ draw::viewport_setter::viewport_setter(const SDL_Rect& view)
 	if (clip_enabled_) {
 		c_ = draw::get_clip();
 		// adjust clip for difference in viewport position
-		SDL_Rect c_view = {
+		::rect c_view = {
 			c_.x + v_.x - view.x,
 			c_.y + v_.y - view.y,
 			c_.w, c_.h
@@ -663,12 +677,12 @@ draw::viewport_setter::~viewport_setter()
 	}
 }
 
-draw::viewport_setter draw::set_viewport(const SDL_Rect& viewport)
+draw::viewport_setter draw::set_viewport(const ::rect& viewport)
 {
 	return draw::viewport_setter(viewport);
 }
 
-void draw::force_viewport(const SDL_Rect& viewport)
+void draw::force_viewport(const ::rect& viewport)
 {
 	if (!renderer()) {
 		WRN_D << "trying to force viewport will null renderer";
@@ -679,14 +693,14 @@ void draw::force_viewport(const SDL_Rect& viewport)
 	SDL_RenderSetViewport(renderer(), &viewport);
 }
 
-SDL_Rect draw::get_viewport()
+rect draw::get_viewport()
 {
 	if (!renderer()) {
 		WRN_D << "no renderer available to get viewport";
-		return sdl::empty_rect;
+		return {};
 	}
 
-	SDL_Rect viewport;
+	::rect viewport;
 	SDL_RenderGetViewport(renderer(), &viewport);
 
 	if (viewport == sdl::empty_rect) {

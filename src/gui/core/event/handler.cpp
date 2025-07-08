@@ -506,7 +506,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		// Silently ignored events.
 		case SDL_KEYUP:
-		case DOUBLE_CLICK_EVENT:
 			break;
 
 		default:

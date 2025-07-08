@@ -44,7 +44,6 @@ textbox::textbox(int width, const std::string& text, bool editable, std::size_t 
 	     edit_target_(nullptr)
 		,listening_(false)
 {
-	// const int height = font::pango_draw_text(nullptr,sdl::empty_rect,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
@@ -58,14 +57,14 @@ textbox::~textbox()
 	}
 }
 
-void textbox::update_location(const SDL_Rect& rect)
+void textbox::update_location(const rect& rect)
 {
 	scrollarea::update_location(rect);
 	update_text_cache(true);
 	queue_redraw();
 }
 
-void textbox::set_inner_location(const SDL_Rect& /*rect*/)
+void textbox::set_inner_location(const rect& /*rect*/)
 {
 	if (!text_image_) return;
 	text_pos_ = 0;
@@ -161,7 +160,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 void textbox::draw_cursor(int pos) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
-		SDL_Rect rect {
+		rect rect {
 				  location().x + pos
 				, location().y
 				, 1
@@ -181,7 +180,7 @@ void textbox::layout()
 
 void textbox::draw_contents()
 {
-	const SDL_Rect& loc = inner_location();
+	const rect& loc = inner_location();
 
 	color_t c(0, 0, 0);
 
@@ -197,7 +196,7 @@ void textbox::draw_contents()
 		src.w = std::min<std::size_t>(loc.w,text_image_.w());
 		src.h = std::min<std::size_t>(loc.h,text_image_.h());
 		src.x = text_pos_;
-		SDL_Rect dest{loc.x, loc.y, src.w, src.h};
+		rect dest{loc.x, loc.y, src.w, src.h};
 
 		// Fills the selected area
 		if(enabled() && is_selection()) {
@@ -592,8 +591,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			{
 				if(is_selection())
 				{
-					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
-					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
+					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);

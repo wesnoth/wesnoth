@@ -288,23 +288,23 @@ variant variant::get_member(const std::string& name) const
 	return variant();
 }
 
-int variant::as_int() const
+int variant::as_int(int fallback) const
 {
-	if(is_null())    { return 0; }
+	if(is_null())    { return fallback; }
 	if(is_decimal()) { return as_decimal() / 1000; }
 
 	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
 }
 
-int variant::as_decimal() const
+int variant::as_decimal(int fallback) const
 {
 	if(is_decimal()) {
 		return value_cast<variant_decimal>()->get_numeric_value();
 	} else if(is_int()) {
 		return value_cast<variant_int>()->get_numeric_value() * 1000;
 	} else if(is_null()) {
-		return 0;
+		return fallback;
 	}
 
 	throw type_error(was_expecting("an integer or a decimal", *this));

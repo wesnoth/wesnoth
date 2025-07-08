@@ -34,11 +34,10 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 using namespace std::chrono_literals;
-static constexpr auto long_touch_duration = 800ms;
+static constexpr auto long_touch_duration = 400ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
-	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
 	, scroll_down_(false)
@@ -48,7 +47,6 @@ controller_base::controller_base()
 	, scroll_carry_x_(0.0)
 	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
-	, last_mouse_is_touch_(false)
 	, long_touch_timer_(0)
 {
 }
@@ -82,13 +80,9 @@ void controller_base::long_touch_callback(int x, int y)
 		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
 
 		if(!yes_actually_dragging
-		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
-		   && get_display().map_area().contains(x_now, y_now))
+		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0)
 		{
-			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
-			if(m != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true);
-			}
+			show_menu(get_display().get_theme().context_menu(), { x_now, y_now }, true);
 		}
 	}
 
@@ -155,13 +149,13 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			};
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
+
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(new_event.motion, is_browsing());
 			}
 		} else {
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(event.motion, is_browsing());
 			}
 		}
@@ -178,12 +172,18 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+		if(events::is_touch(event.button)) {
+			int x = event.button.x;
+			int y = event.button.y;
 
-		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
-			long_touch_timer_ = gui2::add_timer(
-					long_touch_duration,
-					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
+			if(long_touch_timer_ == 0) {
+				long_touch_timer_ = gui2::add_timer(long_touch_duration,
+					std::bind(&controller_base::long_touch_callback, this, x, y));
+			}
+
+			if(event.button.clicks == 2) {
+				show_menu(get_display().get_theme().context_menu(), { x, y }, true);
+			}
 		}
 
 		mh_base.mouse_press(event.button, is_browsing());
@@ -200,27 +200,9 @@ void controller_base::handle_event(const SDL_Event& event)
 			long_touch_timer_ = 0;
 		}
 
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
-
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {
-			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true);
-		}
-		break;
-	case DOUBLE_CLICK_EVENT:
-		{
-			int x = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data1));
-			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
-			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
-			   // TODO: Move to right_click_show_menu?
-			   && get_display().map_area().contains(x, y)
-			   // TODO: This chain repeats in several places, move to a method.
-			   && get_display().get_theme().context_menu() != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(),
-						  x,
-						  y,
-						  true);
-			}
+			show_menu(get_display().get_theme().context_menu(), { event.button.x, event.button.y }, true);
 		}
 		break;
 
@@ -262,7 +244,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case TIMER_EVENT:
-		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
+		gui2::execute_timer(reinterpret_cast<std::size_t>(event.user.data1));
 		break;
 
 	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
@@ -356,7 +338,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 	// Scroll with middle-mouse if enabled
 	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
-		const SDL_Point original_loc = mh_base.get_scroll_start();
+		const point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {
 			if(get_display().map_outside_area().contains(mousex, mousey)
@@ -406,8 +388,6 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 void controller_base::play_slice()
 {
-	CKey key;
-
 	if(plugins_context* l = get_plugins_context()) {
 		l->play_slice();
 	}
@@ -424,8 +404,7 @@ void controller_base::play_slice()
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
 		const rect& menu_loc = m->location(video::game_canvas());
-		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false);
-
+		show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
 		return;
 	}
 
@@ -456,54 +435,29 @@ void controller_base::play_slice()
 	}
 }
 
-void controller_base::show_menu(
-		const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu)
+bool controller_base::show_menu(const theme::menu* menu, const point& loc, bool context_menu)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
-		return;
+	if(!menu || !cmd_exec) {
+		return false;
 	}
 
-	std::vector<config> items;
-	for(const config& c : items_arg) {
-		const std::string& id = c["id"];
-		const hotkey::ui_command cmd = hotkey::ui_command(id);
-
-		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
-			items.emplace_back(c);
-		}
+	// context menus cannot appear outside map area,
+	// but main top-panel menus can.
+	if(context_menu && !get_display().map_area().contains(loc)) {
+		return false;
 	}
 
-	if(items.empty()) {
-		return;
-	}
-
-	cmd_exec->show_menu(items, xloc, yloc, context_menu);
+	cmd_exec->show_menu(menu->items(), loc, context_menu);
+	return true;
 }
 
-void controller_base::execute_action(const std::vector<std::string>& items_arg)
+void controller_base::execute_action(const std::vector<std::string>& items)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
 	if(!cmd_exec) {
-		return;
-	}
-
-	std::vector<std::string> items;
-	for(const std::string& item : items_arg) {
-		hotkey::ui_command cmd = hotkey::ui_command(item);
-		if(cmd_exec->can_execute_command(cmd)) {
-			items.push_back(item);
-		}
-	}
-
-	if(items.empty()) {
 		return;
 	}
 
 	cmd_exec->execute_action(items);
-}
-
-bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
-{
-	return true;
 }

@@ -889,7 +889,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
 			// invalidate our hexes and return whether or not was successful.
-			const SDL_Rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
+			const rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 
 			result.insert(src);

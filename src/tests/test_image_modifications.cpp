@@ -370,7 +370,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const SDL_Rect& slice = mod->get_slice();
+	const rect& slice = mod->get_slice();
 
 	BOOST_CHECK_EQUAL(slice.x, 1);
 	BOOST_CHECK_EQUAL(slice.y, 0);
@@ -392,7 +392,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const SDL_Rect& slice = mod->get_slice();
+	const rect& slice = mod->get_slice();
 
 	BOOST_CHECK_EQUAL(slice.x, 1);
 	BOOST_CHECK_EQUAL(slice.y, 2);
@@ -414,7 +414,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const SDL_Rect& slice = mod->get_slice();
+	const rect& slice = mod->get_slice();
 
 	BOOST_CHECK_EQUAL(slice.x, 1);
 	BOOST_CHECK_EQUAL(slice.y, 2);
@@ -436,7 +436,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const SDL_Rect& slice = mod->get_slice();
+	const rect& slice = mod->get_slice();
 
 	BOOST_CHECK_EQUAL(slice.x, 1);
 	BOOST_CHECK_EQUAL(slice.y, 2);

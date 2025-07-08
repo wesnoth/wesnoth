@@ -600,12 +600,18 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 
 	rect loc_rect = get_location_rect(loc);
 
+	using namespace std::chrono_literals;
+	const auto lifetime = 1s / turbo_speed();
+
+	// Base speed is 100 pixels per second, taken in milliseconds
+	const double pixels_per_millisecond = 0.1 * turbo_speed() * get_zoom_factor();
+
 	font::floating_label flabel(text);
 	flabel.set_font_size(int(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
 	flabel.set_color(color);
 	flabel.set_position(loc_rect.center().x, loc_rect.y); // middle of top edge
-	flabel.set_move(0, -0.1 * turbo_speed() * get_zoom_factor());
-	flabel.set_lifetime(std::chrono::milliseconds{static_cast<int>(1000 / turbo_speed())});
+	flabel.set_move(0, -pixels_per_millisecond); // moving up
+	flabel.set_lifetime(0ms, std::chrono::round<std::chrono::milliseconds>(lifetime));
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);

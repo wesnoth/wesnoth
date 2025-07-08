@@ -279,7 +279,7 @@ public:
 	}
 
 private:
-	SDL_Point coord;
+	point coord;
 	int w, h;
 };
 
@@ -329,7 +329,7 @@ void adjust_channels_modification::operator()(surface& src) const
 
 void crop_modification::operator()(surface& src) const
 {
-	SDL_Rect area = slice_;
+	rect area = slice_;
 	if(area.w == 0) {
 		area.w = src->w;
 	}
@@ -377,7 +377,7 @@ void blit_modification::operator()(surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	SDL_Rect r {x_, y_, 0, 0};
+	rect r {x_, y_, 0, 0};
 	sdl_blit(surf_, nullptr, src, &r);
 }
 
@@ -388,7 +388,7 @@ void mask_modification::operator()(surface& src) const
 		return;
 	}
 
-	SDL_Rect r {x_, y_, 0, 0};
+	rect r {x_, y_, 0, 0};
 	surface new_mask(src->w, src->h);
 	sdl_blit(mask_, nullptr, new_mask, &r);
 	mask_surface(src, new_mask);
@@ -868,7 +868,7 @@ REGISTER_MOD_PARSER(CROP, args)
 		return nullptr;
 	}
 
-	SDL_Rect slice_rect { 0, 0, 0, 0 };
+	rect slice_rect { 0, 0, 0, 0 };
 
 	slice_rect.x = utils::from_chars<int16_t>(slice_params[0]).value_or(0);
 

@@ -37,11 +37,8 @@ sdl_handler_vector editor_palette<Item>::handler_members()
 }
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items, int i)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items)
 {
-	auto pos = items.erase(items.begin() + i);
-
-	std::vector<config> groups;
 	const std::vector<item_group>& item_groups = get_groups();
 
 	for (std::size_t mci = 0; mci < item_groups.size(); ++mci) {
@@ -61,13 +58,8 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 			img += ".png";
 		}
 
-		groups.emplace_back(
-			"label", groupname,
-			"icon", img
-		);
+		items.emplace_back("label", groupname, "icon", img);
 	}
-
-	items.insert(pos, groups.begin(), groups.end());
 }
 
 template<class Item>
@@ -157,7 +149,7 @@ std::size_t editor_palette<Item>::active_group_index()
 }
 
 template<class Item>
-void editor_palette<Item>::adjust_size(const SDL_Rect& target)
+void editor_palette<Item>::adjust_size(const rect& target)
 {
 	// The number of columns is passed to the constructor, and isn't changed afterwards. It's likely to be
 	// exactly 4, but will always be a small number which makes the next cast reasonable.
@@ -179,7 +171,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 
 	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
 	// because adjust_size() also handles moving left and right when the window's width is changed.
-	SDL_Rect dstrect;
+	rect dstrect;
 	dstrect.w = item_size_ + 2;
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {

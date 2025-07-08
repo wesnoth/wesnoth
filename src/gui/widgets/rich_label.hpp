@@ -247,9 +247,9 @@ private:
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
 
-	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
-	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", size_t start = 0, size_t end = 0);
-	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
+	std::pair<std::size_t, std::size_t> add_text(config& curr_item, const std::string& text);
+	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", std::size_t start = 0, std::size_t end = 0);
+	std::pair<std::size_t, std::size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
 
 	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
 
@@ -259,7 +259,7 @@ private:
 
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
 
-	size_t get_split_location(std::string_view text, const point& pos);
+	std::size_t get_split_location(std::string_view text, const point& pos);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;

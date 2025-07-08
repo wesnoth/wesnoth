@@ -219,7 +219,7 @@ struct horizontal_list : public virtual generator_base
 	 *
 	 * @param rectangle           The visible rectangle.
 	 */
-	void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
@@ -291,7 +291,7 @@ struct vertical_list : public virtual generator_base
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
@@ -375,7 +375,7 @@ struct table : public virtual generator_base
 	virtual void set_origin(const point& /*origin*/) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& /*rectangle*/) override;
+	void set_visible_rectangle(const rect& /*rectangle*/) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& /*coordinate*/
@@ -446,7 +446,7 @@ struct independent : public virtual generator_base
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
@@ -822,7 +822,7 @@ public:
 	}
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override
+	virtual void set_visible_rectangle(const rect& rectangle) override
 	{
 		my_placement::set_visible_rectangle(rectangle);
 	}

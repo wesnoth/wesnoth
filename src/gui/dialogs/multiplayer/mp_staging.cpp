@@ -76,11 +76,9 @@ void mp_staging::pre_show()
 
 	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
 	register_hotkey(hotkey::HOTKEY_MP_START_GAME, [this](auto&&...) { start_game(); return true; });
-	std::stringstream tooltip;
-	tooltip
-		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})
-		<< hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_MP_START_GAME).id);
-	find_widget<button>("ok").set_tooltip(tooltip.str());
+
+	auto bindings = hotkey::get_names(hotkey::get_hotkey_command(hotkey::HOTKEY_MP_START_GAME).id);
+	find_widget<button>("ok").set_tooltip(VGETTEXT("Hotkey(s): $bindings", {{ "bindings", bindings }}));
 
 	//
 	// Set title and status widget states

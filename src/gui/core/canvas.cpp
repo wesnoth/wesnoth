@@ -326,7 +326,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
 
-	const SDL_Rect dst_rect { x, y, w, h };
+	const rect dst_rect { x, y, w, h };
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch(resize_mode_) {
@@ -568,7 +568,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 canvas::canvas(const config& cfg)
 	: shapes_()
 	, blur_depth_(0)
-	, blur_region_(sdl::empty_rect)
+	, blur_region_()
 	, deferred_(false)
 	, w_(0)
 	, h_(0)

@@ -1550,6 +1550,33 @@ const std::vector<game_config::server_info>& prefs::builtin_servers_list()
 	return pref_servers;
 }
 
+void prefs::add_game_preset(config&& preset_data)
+{
+	config preset{ prefs_list::game_preset, std::move(preset_data) };
+
+	int min = 0;
+	for(const auto& c : preferences_.child_range(prefs_list::game_preset)) {
+		min = std::min(min, c["id"].to_int());
+	}
+	preset.mandatory_child(prefs_list::game_preset)["id"] = min-1;
+	preferences_.append(preset);
+}
+
+void prefs::remove_game_preset(int id)
+{
+	preferences_.remove_children(prefs_list::game_preset, [&id](const config& preset) {return preset["id"] == id;});
+}
+
+config::child_itors prefs::get_game_presets()
+{
+	return preferences_.child_range(prefs_list::game_preset);
+}
+
+optional_const_config prefs::get_game_preset(int id)
+{
+	return preferences_.find_child(prefs_list::game_preset, "id", std::to_string(id));
+}
+
 std::vector<game_config::server_info> prefs::user_servers_list()
 {
 	std::vector<game_config::server_info> pref_servers;
@@ -2015,7 +2042,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 
 	return result;
 #else
-	size_t outWritten = 0;
+	std::size_t outWritten = 0;
 	preferences::secure_buffer result(plaintext.size(), '\0');
 
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
@@ -2103,7 +2130,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 
 	return result;
 #else
-	size_t outWritten = 0;
+	std::size_t outWritten = 0;
 	preferences::secure_buffer result(encrypted.size(), '\0');
 
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,

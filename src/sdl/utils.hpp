@@ -124,7 +124,7 @@ void brighten_image(surface& surf, int32_t amount);
  *                           No RLE or Alpha bits are set.
  *  @retval 0                if error or the portion is outside of the surface.
  */
-surface get_surface_portion(const surface &surf, SDL_Rect &rect);
+surface get_surface_portion(const surface &surf, rect &rect);
 
 void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 void adjust_surface_alpha_add(surface& surf, int amount);
@@ -152,7 +152,7 @@ void light_surface(surface& surf, const surface &lightmap);
  * @param rect                    The part of the surface to blur.
  * @param depth                   The depth of the blurring.
  */
-void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
+void blur_surface(surface& surf, rect rect, int depth = 1);
 
 /**
  * Cross-fades a surface with alpha channel.
@@ -163,7 +163,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
 void blur_alpha_surface(surface& surf, int depth = 1);
 
 /** Cuts a rectangle from a surface. */
-surface cut_surface(const surface &surf, const SDL_Rect& r);
+surface cut_surface(const surface &surf, const rect& r);
 
 /**
  * Blends a surface with a color.

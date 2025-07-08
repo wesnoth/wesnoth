@@ -114,9 +114,9 @@ void window::set_size(const int w, const int h)
 #endif
 }
 
-SDL_Point window::get_size()
+point window::get_size()
 {
-	SDL_Point res;
+	point res;
 #ifdef __ANDROID__
 	SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
 #else
@@ -126,9 +126,9 @@ SDL_Point window::get_size()
 	return res;
 }
 
-SDL_Point window::get_output_size()
+point window::get_output_size()
 {
-	SDL_Point res;
+	point res;
 	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
 
 	return res;

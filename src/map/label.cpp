@@ -498,14 +498,14 @@ void terrain_label::calculate_shroud()
 	}
 }
 
-SDL_Rect terrain_label::get_rect() const
+rect terrain_label::get_rect() const
 {
 	display* disp = display::get_singleton();
 	if(!disp) {
-		return sdl::empty_rect;
+		return {};
 	}
 
-	SDL_Rect res = disp->get_location_rect(loc_);
+	rect res = disp->get_location_rect(loc_);
 	res.x += disp->hex_size() / 4;
 	res.w -= disp->hex_size() / 2;
 

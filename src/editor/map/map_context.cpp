@@ -792,7 +792,7 @@ config map_context::to_config()
 		side["share_vision"] = team_shared_vision::get_string(team.share_vision());
 
 		side["gold"] = team.gold();
-		side["income"] = team.base_income();
+		side["income"] = team.raw_income();
 
 		for(const map_location& village : team.villages()) {
 			village.write(side.add_child("village"));

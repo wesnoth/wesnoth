@@ -23,6 +23,7 @@
 #include "ai/manager.hpp"
 #include "color.hpp"
 #include "formula/string_utils.hpp"     // for VGETTEXT
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
 #include "lexical_cast.hpp"
@@ -172,18 +173,18 @@ void team::team_info::read(const config& cfg)
 {
 	gold = cfg["gold"].to_int();
 	income = cfg["income"].to_int();
-	team_name = cfg["team_name"].str();
+	team_name = cfg["team_name"].str(cfg["side"].str());
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
 	faction = cfg["faction"].str();
 	faction_name = cfg["faction_name"];
-	save_id = cfg["save_id"].str();
+	id = cfg["id"].str();
+	save_id = cfg["save_id"].str(id);
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
 	action_bonus_count = cfg["action_bonus_count"].to_int();
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
-	id = cfg["id"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
 	objectives = cfg["objectives"];
 	objectives_changed = cfg["objectives_changed"].to_bool();
@@ -222,20 +223,7 @@ void team::team_info::read(const config& cfg)
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
-	if(!cfg["start_gold"].empty()) {
-		start_gold = cfg["start_gold"].to_int();
-	} else {
-		start_gold = gold;
-	}
-
-	if(team_name.empty()) {
-		team_name = cfg["side"].str();
-	}
-
-	if(save_id.empty()) {
-		save_id = id;
-	}
-
+	start_gold = cfg["start_gold"].to_int(gold);
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
@@ -411,13 +399,22 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
+int team::base_income() const
+{
+	return raw_income() + game_config::base_income;
+}
+
+void team::set_base_income(int amount)
+{
+	set_raw_income(amount - game_config::base_income);
+}
+
 void team::fix_villages(const gamemap &map)
 {
 	for (auto it = villages_.begin(); it != villages_.end(); ) {
 		if (map.is_village(*it)) {
 			++it;
-		}
-		else {
+		} else {
 			it = villages_.erase(it);
 		}
 	}
@@ -483,10 +480,8 @@ int team::minimum_recruit_price() const
 		const unit_type* ut = unit_types.find(recruit);
 		if(!ut) {
 			continue;
-		} else {
-			if(ut->cost() < min) {
-				min = ut->cost();
-			}
+		} else if(ut->cost() < min) {
+			min = ut->cost();
 		}
 	}
 

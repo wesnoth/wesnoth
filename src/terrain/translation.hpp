@@ -81,19 +81,19 @@ namespace t_translation {
 		ter_map(const ter_map&) = default;
 		ter_map(ter_map&&) noexcept = default;
 
-		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<size_t>(w) * h, fill), w(w), h(h) {}
+		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<std::size_t>(w) * h, fill), w(w), h(h) {}
 
 		ter_map & operator= (const ter_map &) = default;
 		ter_map & operator= (ter_map &&) noexcept = default;
 
-		terrain_code& get(int x, int y) { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
-		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<size_t>(x) * h + y; return data.at(index); }
+		terrain_code& get(int x, int y) { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
+		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
 
 		std::vector<terrain_code> data;
 		int w;
 		int h;
-		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<size_t>(h) * x; }
-		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<size_t>(h) * x; }
+		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<std::size_t>(h) * x; }
+		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<std::size_t>(h) * x; }
 	};
 
 	/**

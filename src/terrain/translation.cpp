@@ -227,7 +227,7 @@ ter_list read_list(std::string_view str, const ter_layer filler)
 
 		// Get a terrain chunk
 		const std::string separators = ",";
-		const size_t pos_separator = str.find_first_of(separators, offset);
+		const std::size_t pos_separator = str.find_first_of(separators, offset);
 		std::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk

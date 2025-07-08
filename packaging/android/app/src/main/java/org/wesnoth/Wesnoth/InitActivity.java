@@ -62,8 +62,9 @@ import android.widget.Toast;
 public class InitActivity extends Activity {
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
+	private final static String VERSION_ID = "1.19.13";
 	private final static String ARCHIVE_URL =
-		"https://sourceforge.net/projects/wesnoth/files/android/%s/download";
+		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
 
 	private File dataDir;
 
@@ -198,10 +199,11 @@ public class InitActivity extends Activity {
 
 					// Download file
 					if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
-						Log.d("InitActivity", "Start download " + name);
+						final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
+						Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
 						try {
 							lastModified = downloadFile(
-								String.format(ARCHIVE_URL, name),
+								downloadAddr,
 								packageFile,
 								uiname,
 								lastModified);

@@ -148,7 +148,7 @@ void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 
 	if (whiteboard_manager_->is_active()) {
-		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
+		std::string hk = hotkey::get_names(hotkey::get_hotkey_command(hotkey::HOTKEY_WB_TOGGLE).id);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 
@@ -193,11 +193,11 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 
-hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
+hotkey::action_state playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
 	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_WB_TOGGLE:
-		return whiteboard_manager_->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(whiteboard_manager_->is_active());
 	default:
 		return play_controller::hotkey_handler::get_action_state(cmd);
 	}

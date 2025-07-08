@@ -71,9 +71,9 @@ void clear();
  * @param b         The blue  component of the fill colour, 0-255.
  * @param a         The alpha component of the fill colour, 0-255.
  */
-void fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-void fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b);
-void fill(const SDL_Rect& rect, const color_t& color);
+void fill(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void fill(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b);
+void fill(const ::rect& rect, const color_t& color);
 void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void fill(uint8_t r, uint8_t g, uint8_t b);
 void fill(const color_t& color);
@@ -90,7 +90,7 @@ void fill(const SDL_FRect& rect, const color_t& color);
  *
  * @param rect      The area to fill, in drawing coordinates.
  */
-void fill(const SDL_Rect& rect);
+void fill(const ::rect& rect);
 void fill();
 
 /**
@@ -125,7 +125,7 @@ void set_blend_mode(SDL_BlendMode b);
  *
  * @param rect      The rectangle to draw, in drawing coordinates.
  */
-void rect(const SDL_Rect& rect);
+void rect(const ::rect& rect);
 
 /**
  * Draw a rectangle using the given colour.
@@ -136,9 +136,9 @@ void rect(const SDL_Rect& rect);
  * @param b         The blue  component of the drawing colour, 0-255.
  * @param a         The alpha component of the drawing colour, 0-255.
  */
-void rect(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-void rect(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b);
-void rect(const SDL_Rect& rect, const color_t& color);
+void rect(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void rect(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b);
+void rect(const ::rect& rect, const color_t& color);
 
 /**
  * Draw a line.
@@ -165,7 +165,7 @@ void line(int from_x, int from_y, int to_x, int to_y);
 void line(int from_x, int from_y, int to_x, int to_y, const color_t& c);
 
 /** Draw a set of points. */
-void points(const std::vector<SDL_Point>& points);
+void points(const std::vector<::point>& points);
 
 /** Draw a single point. */
 void point(int x, int y);
@@ -238,7 +238,7 @@ void cairo_disc(int cx, int cy, int r, const color_t& c);
  *                  in low-resolution game-native drawing coordinates.
  *                  If null, this fills the entire render target.
  */
-void blit(const texture& tex, const SDL_Rect& dst);
+void blit(const texture& tex, const ::rect& dst);
 void blit(const texture& tex);
 
 /**
@@ -255,7 +255,7 @@ void blit(const texture& tex);
  * @param flip_v    Whether to flip/mirror the texture vertically.
  */
 void flipped(const texture& tex,
-	const SDL_Rect& dst,
+	const ::rect& dst,
 	bool flip_h = true,
 	bool flip_v = false
 );
@@ -279,7 +279,7 @@ void flipped(const texture& tex, bool flip_h = true, bool flip_v = false);
  *                  better for images that are not perfect tiles.
  */
 void tiled(const texture& tex,
-	const SDL_Rect& dst,
+	const ::rect& dst,
 	bool centered = false,
 	bool mirrored = false
 );
@@ -290,7 +290,7 @@ void tiled(const texture& tex,
  * identical to draw::tiled().
  */
 void tiled_highres(const texture& tex,
-	const SDL_Rect& dst,
+	const ::rect& dst,
 	bool centered = false,
 	bool mirrored = false
 );
@@ -316,13 +316,13 @@ void tiled_highres(const texture& tex,
  * @param uvBL  The UV texture coordinate at the bottom-left corner
  * @param uvBR  The UV texture coordinate at the bottom-right corner
  */
-void smooth_shaded(const texture& tex, const SDL_Rect& dst,
+void smooth_shaded(const texture& tex, const ::rect& dst,
 	const SDL_Color& cTL, const SDL_Color& cTR,
 	const SDL_Color& cBL, const SDL_Color& cBR,
 	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
 	const SDL_FPoint& uvBL, const SDL_FPoint& uvBR
 );
-void smooth_shaded(const texture& tex, const SDL_Rect& dst,
+void smooth_shaded(const texture& tex, const ::rect& dst,
 	const SDL_Color& cTL, const SDL_Color& cTR,
 	const SDL_Color& cBL, const SDL_Color& cBR
 );
@@ -345,10 +345,10 @@ void smooth_shaded(const texture& tex,
 class clip_setter
 {
 public:
-	explicit clip_setter(const SDL_Rect& clip);
+	explicit clip_setter(const ::rect& clip);
 	~clip_setter();
 private:
-	SDL_Rect c_;
+	::rect c_;
 	bool clip_enabled_;
 };
 
@@ -365,7 +365,7 @@ private:
  *                      the clipping region will be restored to whatever
  *                      it was before this call.
  */
-[[nodiscard]] clip_setter override_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter override_clip(const ::rect& clip);
 
 /**
  * Set the clipping area to the intersection of the current clipping
@@ -373,14 +373,14 @@ private:
  *
  * Otherwise acts as override_clip().
  */
-[[nodiscard]] clip_setter reduce_clip(const SDL_Rect& clip);
+[[nodiscard]] clip_setter reduce_clip(const ::rect& clip);
 
 /**
  * Set the clipping area, without any provided way of setting it back.
  *
  * @param clip          The clipping area, in draw-space coordinates.
  */
-void force_clip(const SDL_Rect& clip);
+void force_clip(const ::rect& clip);
 
 /**
  * Get the current clipping area, in draw coordinates.
@@ -417,11 +417,11 @@ bool null_clip();
 class viewport_setter
 {
 public:
-	explicit viewport_setter(const SDL_Rect& viewport);
+	explicit viewport_setter(const ::rect& viewport);
 	~viewport_setter();
 private:
-	SDL_Rect v_;
-	SDL_Rect c_;
+	::rect v_;
+	::rect c_;
 	bool clip_enabled_;
 };
 
@@ -444,7 +444,7 @@ private:
  *                      destroyed the viewport will be restored to whatever
  *                      it was before this call.
  */
-[[nodiscard]] viewport_setter set_viewport(const SDL_Rect& viewport);
+[[nodiscard]] viewport_setter set_viewport(const ::rect& viewport);
 
 /**
  * Set the viewport, without any provided way of setting it back.
@@ -455,7 +455,7 @@ private:
  * @param viewport      The viewport, in absolute draw-space coordinates.
  *                      If null, the viewport is reset to the full draw area.
  */
-void force_viewport(const SDL_Rect& viewport);
+void force_viewport(const ::rect& viewport);
 
 /**
  * Get the current viewport.
@@ -463,7 +463,7 @@ void force_viewport(const SDL_Rect& viewport);
  * @returns             The current viewport, in the coordinate space of
  *                      the original drawing surface
  */
-SDL_Rect get_viewport();
+::rect get_viewport();
 
 
 /**

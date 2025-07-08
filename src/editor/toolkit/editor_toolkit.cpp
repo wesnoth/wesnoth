@@ -28,10 +28,9 @@
 
 namespace editor {
 
-editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
-		const game_config_view& game_config, context_manager& c_manager)
+editor_toolkit::editor_toolkit(editor_display& gui, const game_config_view& game_config, context_manager& c_manager)
 	: gui_(gui)
-	, key_(key)
+	, key_()
 	, palette_manager_()
 	, mouse_action_(nullptr)  // Will be set before this constructor ends.
 	, mouse_actions_()
@@ -86,7 +85,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"].str()).command;
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);

@@ -20,11 +20,14 @@
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "video.hpp"
 
 #include <map>
 #include <set>
 #include <stack>
+
+#include <boost/algorithm/string/trim.hpp>
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -55,7 +58,7 @@ floating_label::floating_label(const std::string& text)
 	, alpha_(0)
 	, fadeout_(0)
 	, time_start_()
-	, text_(text)
+	, text_(boost::trim_copy(text))
 	, font_size_(SIZE_SMALL)
 	, color_(NORMAL_COLOR)
 	, bgcolor_(0, 0, 0, SDL_ALPHA_TRANSPARENT)
@@ -134,12 +137,7 @@ bool floating_label::create_texture()
 		.set_characters_per_line(0)
 		.set_add_outline(bgcolor_.a == 0);
 
-	// ignore last '\n'
-	if(!text_.empty() && *(text_.rbegin()) == '\n') {
-		text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
-	} else {
-		text.set_text(text_, use_markup_);
-	}
+	text.set_text(text_, use_markup_);
 
 	tex_ = text.render_and_get_texture();
 	if(!tex_) {
@@ -168,10 +166,16 @@ void floating_label::update(const clock::time_point& time)
 		return;
 	}
 
-	point new_pos = get_pos(time);
-	rect draw_loc {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
-
+	rect draw_loc{get_pos(time), tex_.draw_size()};
 	uint8_t new_alpha = get_alpha(time);
+
+	// Nothing has changed
+	// FIXME: we consider border too since otherwise we get flickering under floating
+	// labels with a background (see bug #7700). This isn't ideal for chat messages or
+	// tooltips, but it optimizes the usual case (map labels).
+	if(screen_loc_ == draw_loc && alpha_ == new_alpha && border_ == 0) {
+		return;
+	}
 
 	// Invalidate former draw loc
 	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
@@ -227,35 +231,36 @@ void floating_label::set_lifetime(const std::chrono::milliseconds& lifetime, con
 	time_start_	= std::chrono::steady_clock::now();
 }
 
-std::chrono::milliseconds floating_label::get_time_alive(const clock::time_point& current_time) const
+auto floating_label::get_time_alive(const clock::time_point& current_time) const -> clock::duration
 {
-	return std::chrono::duration_cast<std::chrono::milliseconds>(current_time - time_start_);
+	return current_time - time_start_;
 }
 
-point floating_label::get_pos(const clock::time_point& time)
+point floating_label::get_pos(const clock::time_point& time) const
 {
-	auto time_alive = get_time_alive(time);
-	return {
-		static_cast<int>(time_alive.count() * xmove_ + xpos(tex_.w())),
-		static_cast<int>(time_alive.count() * ymove_ + ypos_)
-	};
+	double new_x = xpos(tex_.w());
+	double new_y = ypos_;
+
+	if(xmove_ != 0.0 || ymove_ != 0.0) {
+		auto time_alive = std::chrono::duration_cast<std::chrono::milliseconds>(get_time_alive(time));
+		new_x += time_alive.count() * xmove_;
+		new_y += time_alive.count() * ymove_;
+	}
+
+	// TODO: return a floating point point
+	return {static_cast<int>(new_x), static_cast<int>(new_y)};
 }
 
-uint8_t floating_label::get_alpha(const clock::time_point& time)
+uint8_t floating_label::get_alpha(const clock::time_point& time) const
 {
 	if(lifetime_ >= 0ms && fadeout_ > 0ms) {
 		auto time_alive = get_time_alive(time);
-		if(time_alive >= lifetime_ && tex_ != nullptr) {
-			// fade out moving floating labels
-			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
-			if (alpha_sub >= 255) {
-				return 0;
-			} else {
-				return 255 - alpha_sub;
-			}
+		if(time_alive >= lifetime_) {
+			double progress = chrono::normalize_progress(time_alive - lifetime_, fadeout_);
+			return float_to_color(1.0 - progress);
 		}
 	}
-	return 255;
+	return ALPHA_OPAQUE;
 }
 
 int add_floating_label(const floating_label& flabel)
@@ -280,9 +285,9 @@ void move_floating_label(int handle, double xmove, double ymove)
 
 void scroll_floating_labels(double xmove, double ymove)
 {
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
-			i->second.move(xmove, ymove);
+	for(auto& [id, label] : labels) {
+		if(label.scroll() == ANCHOR_LABEL_MAP) {
+			label.move(xmove, ymove);
 		}
 	}
 }
@@ -316,16 +321,16 @@ void show_floating_label(int handle, bool value)
 	}
 }
 
-SDL_Rect get_floating_label_rect(int handle)
+rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
 		if (i->second.create_texture()) {
-			SDL_Point size = i->second.get_draw_size();
+			point size = i->second.get_draw_size();
 			return {0, 0, size.x, size.y};
 		}
 	}
-	return sdl::empty_rect;
+	return {};
 }
 
 floating_label_context::floating_label_context()
@@ -377,25 +382,24 @@ void update_floating_labels()
 	if(label_contexts.empty()) {
 		return;
 	}
-	auto time = std::chrono::steady_clock::now();
 
+	auto time = std::chrono::steady_clock::now();
 	std::set<int>& context = label_contexts.top();
 
-	for(auto& [id, label] : labels) {
+	for(auto iter = labels.begin(); iter!= labels.end();) {
+		auto& [id, label] = *iter;
+
 		if(context.count(id) > 0) {
 			label.update(time);
-		}
-	}
 
-	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired(time)) {
-			DBG_FT << "removing expired floating label " << j->first;
-			context.erase(j->first);
-			labels.erase(j++);
-		} else {
-			++j;
+			if(label.expired(time)) {
+				context.erase(id);
+				iter = labels.erase(iter);
+				continue;
+			}
 		}
+
+		++iter;
 	}
 }
 

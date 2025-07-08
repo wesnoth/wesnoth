@@ -45,7 +45,7 @@ struct catalog_metadata {
 
 private:
   std::string find_header_line(const std::string & header, const std::string & label) {
-    size_t idx = header.find(label);
+    std::size_t idx = header.find(label);
     if (idx == std::string::npos) {
       return "";
     }

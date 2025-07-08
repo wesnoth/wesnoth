@@ -87,7 +87,7 @@ private:
 		touchedDownImage_, touchedUpImage_, touchedBothImage_;
 	//	disabledImage_, pressedDownDisabledImage_, pressedUpDisabledImage_, pressedBothDisabledImage_;
 
-	SDL_Rect textRect_;
+	rect textRect_;
 
 	enum STATE { UNINIT,
 		NORMAL, ACTIVE,

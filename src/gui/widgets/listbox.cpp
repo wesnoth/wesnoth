@@ -91,28 +91,22 @@ listbox::listbox(const implementation::builder_listbox_base& builder)
 
 grid& listbox::add_row(const widget_item& item, const int index)
 {
-	assert(generator_);
 	grid& row = generator_->create_item(index, *list_builder_, item, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
-
 	return row;
 }
 
 grid& listbox::add_row(const widget_data& data, const int index)
 {
-	assert(generator_);
 	grid& row = generator_->create_item(index, *list_builder_, data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
-
 	return row;
 }
 
 void listbox::remove_row(const unsigned row, unsigned count)
 {
-	assert(generator_);
-
 	if(row >= get_item_count()) {
 		return;
 	}
@@ -158,20 +152,16 @@ void listbox::clear()
 
 unsigned listbox::get_item_count() const
 {
-	assert(generator_);
 	return generator_->get_item_count();
 }
 
 void listbox::set_row_active(const unsigned row, const bool active)
 {
-	assert(generator_);
 	generator_->item(row).set_active(active);
 }
 
 void listbox::set_row_shown(const unsigned row, const bool shown)
 {
-	assert(generator_);
-
 	window* window = get_window();
 	assert(window);
 
@@ -205,7 +195,6 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 {
-	assert(generator_);
 	assert(shown.size() == get_item_count());
 
 	if(generator_->get_items_shown() == shown) {
@@ -266,14 +255,12 @@ boost::dynamic_bitset<> listbox::get_rows_shown() const
 
 const grid* listbox::get_row_grid(const unsigned row) const
 {
-	assert(generator_);
 	// rename this function and can we return a reference??
 	return &generator_->item(row);
 }
 
 grid* listbox::get_row_grid(const unsigned row)
 {
-	assert(generator_);
 	return &generator_->item(row);
 }
 
@@ -282,7 +269,6 @@ bool listbox::select_row(const unsigned row, const bool select)
 	if(row >= get_item_count()) {
 		throw std::invalid_argument("invalid listbox index");
 	}
-	assert(generator_);
 
 	unsigned int before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
@@ -292,26 +278,21 @@ bool listbox::select_row(const unsigned row, const bool select)
 
 bool listbox::select_row_at(const unsigned row, const bool select)
 {
-	assert(generator_);
 	return select_row(generator_->get_item_at_ordered(row), select);
 }
 
 bool listbox::row_selected(const unsigned row)
 {
-	assert(generator_);
 	return generator_->is_selected(row);
 }
 
 int listbox::get_selected_row() const
 {
-	assert(generator_);
 	return generator_->get_selected_item();
 }
 
 void listbox::list_item_clicked(widget& caller)
 {
-	assert(generator_);
-
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
@@ -400,8 +381,8 @@ void listbox::place(const point& origin, const point& size)
 	} else if(selected_item != -1) {
 		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible";
 
-		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+		const rect& visible = content_visible_area();
+		rect rect = generator_->item(selected_item).get_rectangle();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -484,8 +465,8 @@ point listbox::calculate_best_size() const
 
 void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direction)
 {
-	const SDL_Rect& visible = content_visible_area();
-	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
+	const rect& visible = content_visible_area();
+	rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
 
 	// When scrolling make sure the new items are visible...
 	if(direction == KEY_VERTICAL) {
@@ -505,8 +486,6 @@ void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direct
 
 void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
-	assert(generator_);
-
 	generator_->handle_key_up_arrow(modifier, handled);
 
 	if(handled) {
@@ -519,8 +498,6 @@ void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 void listbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
-	assert(generator_);
-
 	generator_->handle_key_down_arrow(modifier, handled);
 
 	if(handled) {
@@ -533,8 +510,6 @@ void listbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 void listbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
-	assert(generator_);
-
 	generator_->handle_key_left_arrow(modifier, handled);
 
 	// Inherited.
@@ -547,8 +522,6 @@ void listbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 
 void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
-	assert(generator_);
-
 	generator_->handle_key_right_arrow(modifier, handled);
 
 	// Inherited.
@@ -609,7 +582,6 @@ void listbox::order_by_column(unsigned column, widget& widget)
 void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
-
 	update_layout();
 }
 
@@ -683,7 +655,7 @@ void listbox::update_layout()
 
 	content_grid()->place(content_grid()->get_origin(), size);
 
-	const SDL_Rect& visible = content_visible_area_;
+	const rect& visible = content_visible_area_;
 	content_grid()->set_visible_rectangle(visible);
 
 	queue_redraw();
@@ -695,7 +667,6 @@ listbox_definition::listbox_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing listbox " << id;
-
 	load_resolutions<resolution>(cfg);
 }
 
@@ -756,7 +727,6 @@ builder_listbox_base::builder_listbox_base(const config& cfg, const generator_ba
 	, allow_selection(cfg["allow_selection"].to_bool(true))
 {
 	auto l = cfg.optional_child("list_definition");
-
 	VALIDATE(l, _("No list defined."));
 
 	list_builder = std::make_shared<builder_grid>(*l);

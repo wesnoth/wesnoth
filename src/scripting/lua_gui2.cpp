@@ -262,14 +262,14 @@ int show_gamestate_inspector(const std::string& name, const game_data& data, con
 int intf_show_recruit_dialog(lua_State* L)
 {
 	int idx = 1;
-	const size_t len = lua_rawlen(L, idx);
+	const std::size_t len = lua_rawlen(L, idx);
 	if (!lua_istable(L, idx)) {
 		return luaL_error(L, "List of unit types not specified!");
 	}
 
 	std::vector<const unit_type*> types;
 	types.reserve(len);
-	for (size_t i = 1; i <= len; i++) {
+	for (std::size_t i = 1; i <= len; i++) {
 		lua_rawgeti(L, idx, i);
 		const unit_type* ut = luaW_tounittype(L, -1);
 		if (ut) {
@@ -318,14 +318,14 @@ int intf_show_recruit_dialog(lua_State* L)
 int intf_show_recall_dialog(lua_State* L)
 {
 	int idx = 1;
-	const size_t len = lua_rawlen(L, idx);
+	const std::size_t len = lua_rawlen(L, idx);
 	if (!lua_istable(L, idx)) {
 		return luaL_error(L, "List of units not specified!");
 	}
 
 	std::vector<unit_const_ptr> units;
 	units.reserve(len);
-	for (size_t i = 1; i <= len; i++) {
+	for (std::size_t i = 1; i <= len; i++) {
 		lua_rawgeti(L, idx, i);
 		unit_const_ptr u(luaW_tounit_ptr(L, -1));
 		if (u) {

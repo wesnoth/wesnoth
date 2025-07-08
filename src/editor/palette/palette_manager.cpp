@@ -47,7 +47,7 @@ void palette_manager::set_group(std::size_t index)
 
 void palette_manager::adjust_size()
 {
-	const SDL_Rect& rect = gui_.palette_area();
+	const rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
 	active_palette().adjust_size(rect);
