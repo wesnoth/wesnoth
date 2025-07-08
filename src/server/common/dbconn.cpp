@@ -884,7 +884,7 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 		}
 		else
 		{
-			throw mariadb::exception::base("Unsupported parameter type in SQL query at position " + std::to_string(i));
+			throw mariadb::exception::base("Unsupported parameter type in SQL query at position " + std::to_string(i) + " for sql: " + sql);
 		}
 		i++;
 	}
