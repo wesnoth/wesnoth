@@ -31,10 +31,15 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 
 namespace ng
 {
+era_metadata::era_metadata(const config& cfg)
+	: faction_sort_order(sort_order::get_enum(cfg["auto_sort"].str()).value_or(sort_order::type::ascending))
+{
+}
 
-flg_manager::flg_manager(const std::vector<const config*>& era_factions,
+flg_manager::flg_manager(const era_metadata& era_info, const std::vector<const config*>& era_factions,
 		const config& side, const bool lock_settings, const bool use_map_settings, const bool saved_game)
-	: era_factions_(era_factions)
+	: era_info_(era_info)
+	, era_factions_(era_factions)
 	, side_num_(side["side"].to_int())
 	, faction_from_recruit_(side["faction_from_recruit"].to_bool())
 	, original_faction_(get_default_faction(side)["faction"].str())
@@ -54,7 +59,6 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	, current_gender_("null")
 	, default_leader_type_("")
 	, default_leader_gender_("")
-	, faction_sorting_mode_(sort_order::type::ascending)
 {
 	std::string leader_id = side["id"];
 	bool found_leader;
@@ -548,12 +552,6 @@ const config& flg_manager::get_default_faction(const config& cfg)
 	} else {
 		return cfg;
 	}
-}
-
-void flg_manager::set_faction_sort_order(const config& era_config)
-{
-	auto direction = sort_order::get_enum(era_config["auto_sort"].str());
-	faction_sorting_mode_ = direction.value_or(faction_sorting_mode_);
 }
 
 } // end namespace ng

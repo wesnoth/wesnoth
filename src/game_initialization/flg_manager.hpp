@@ -27,11 +27,22 @@ namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
+// TODO: use this for more [era] stuff
+// TODO: move this somewhere more general
+struct era_metadata
+{
+	/** Parses an [era] tag. */
+	explicit era_metadata(const config& cfg);
+
+	/** The order to display factions when a player selects their leader. */
+	sort_order::type faction_sort_order;
+};
+
 /** FLG stands for faction, leader and gender. */
 class flg_manager
 {
 public:
-	flg_manager(const std::vector<const config*>& era_factions,
+	flg_manager(const era_metadata& era_info, const std::vector<const config*>& era_factions,
 		const config& side, bool lock_settings, bool use_map_settings, bool saved_game);
 
 	void set_current_faction(const unsigned index);
@@ -82,13 +93,9 @@ public:
 	bool leader_lock() const
 		{ return leader_lock_; }
 
-	/** Sets the faction list ordering from the [era] config. */
-	void set_faction_sort_order(const config& era_config);
-
-	/** The order the faction list should be sorted by default in Faction Select. */
-	sort_order::type faction_sort_order() const
+	const era_metadata& get_era_info() const
 	{
-		return faction_sorting_mode_;
+		return era_info_;
 	}
 
 private:
@@ -112,6 +119,8 @@ private:
 	int leader_index(const std::string& leader) const;
 	/** returns -1 if no gender with that name was found */
 	int gender_index(const std::string& gender) const;
+
+	const era_metadata& era_info_;
 
 	const std::vector<const config*>& era_factions_;
 
@@ -142,8 +151,6 @@ private:
 
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
-
-	sort_order::type faction_sorting_mode_;
 
 	static const config& get_default_faction(const config& cfg);
 };

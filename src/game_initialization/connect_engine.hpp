@@ -136,6 +136,8 @@ private:
 	std::vector<const config*> era_factions_;
 	std::vector<team_data_pod> team_data_;
 
+	ng::era_metadata era_info_;
+
 	std::set<std::string>& connected_users_rw();
 };
 

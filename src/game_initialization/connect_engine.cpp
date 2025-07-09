@@ -65,7 +65,7 @@ const std::set<std::string> children_to_swap {
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_game_metadata* metadata)
-	: level_()
+	: level_(mp::initial_level_config(state))
 	, state_(state)
 	, params_(state.mp_settings())
 	, default_controller_(metadata ? CNTR_NETWORK : CNTR_LOCAL)
@@ -75,13 +75,8 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	, side_engines_()
 	, era_factions_()
 	, team_data_()
+	, era_info_(level_.mandatory_child("era"))
 {
-	// Initial level config from the mp_game_settings.
-	level_ = mp::initial_level_config(state_);
-	if(level_.empty()) {
-		return;
-	}
-
 	const config& era_config = level_.mandatory_child("era");
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
@@ -181,7 +176,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	int index = 0;
 	for(const config& s : sides) {
 		auto engine = side_engines_.emplace_back(new side_engine(s, *this, index++));
-		engine->flg().set_faction_sort_order(era_config); // TODO: unify with flg construction
 	}
 
 	if(first_scenario_) {
