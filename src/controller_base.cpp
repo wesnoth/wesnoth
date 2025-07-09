@@ -35,7 +35,6 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 using namespace std::chrono_literals;
-static const auto long_touch_duration = gui2::settings::popup_show_delay;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
@@ -178,12 +177,8 @@ void controller_base::handle_event(const SDL_Event& event)
 			int y = event.button.y;
 
 			if(long_touch_timer_ == 0) {
-				long_touch_timer_ = gui2::add_timer(long_touch_duration,
+				long_touch_timer_ = gui2::add_timer(gui2::settings::popup_show_delay,
 					std::bind(&controller_base::long_touch_callback, this, x, y));
-			}
-
-			if(event.button.clicks == 2) {
-				show_menu(get_display().get_theme().context_menu(), { x, y }, true);
 			}
 		}
 

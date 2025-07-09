@@ -1121,8 +1121,6 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 
 	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
 		select_or_action(browse);
-	} else {
-		deselect_hex();
 	}
 }
 
