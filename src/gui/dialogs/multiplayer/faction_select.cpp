@@ -172,7 +172,7 @@ void faction_select::pre_show()
 
 	list.select_row(flg_manager_.current_faction_index());
 	list.set_sorters([this](std::size_t i) { return faction_sorter{flg_manager_.choosable_factions()[i]}; });
-	list.set_active_sorter("sort_0", flg_manager_.get_era_info().faction_sort_order, true);
+	list.set_active_sorter("sort_0", flg_manager_.era_info().faction_sort_order, true);
 
 	on_faction_select();
 }

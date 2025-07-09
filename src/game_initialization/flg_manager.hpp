@@ -93,7 +93,7 @@ public:
 	bool leader_lock() const
 		{ return leader_lock_; }
 
-	const era_metadata& get_era_info() const
+	const era_metadata& era_info() const
 	{
 		return era_info_;
 	}
