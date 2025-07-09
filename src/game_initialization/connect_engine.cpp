@@ -816,7 +816,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
+	, flg_(parent_.era_info_, parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
 	, allow_changes_(parent_.params_.saved_game != saved_game_mode::type::midgame && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
