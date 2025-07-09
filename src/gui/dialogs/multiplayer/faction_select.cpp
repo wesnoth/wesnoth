@@ -54,12 +54,8 @@ auto operator<=>(const faction_sorter& lhs, const faction_sorter& rhs)
 	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
 	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
 
-	// Random factions always first.
-	if(lhs_rand && !rhs_rand) {
-		return std::strong_ordering::less;
-	}
-
-	if(!lhs_rand && rhs_rand) {
+	// Group random factions together.
+	if(lhs_rand <=> rhs_rand != 0) {
 		return std::strong_ordering::greater;
 	}
 
@@ -97,6 +93,7 @@ bool operator>(const faction_sorter& lhs, const faction_sorter& rhs)
 
 	return translation::compare((*lhs.cfg)["name"].str(), (*rhs.cfg)["name"].str()) > 0;
 }
+
 #endif
 
 } // namespace
