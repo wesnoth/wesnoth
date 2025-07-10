@@ -291,11 +291,8 @@ void connect_engine::update_and_send_diff()
 	config old_level = level_;
 	update_level();
 
-	config diff = level_.get_diff(old_level);
-	if(!diff.empty()) {
-		config scenario_diff;
-		scenario_diff.add_child("scenario_diff", std::move(diff));
-		mp::send_to_server(scenario_diff);
+	if(config diff = level_.get_diff(old_level); !diff.empty()) {
+		mp::send_to_server(config{"scenario_diff", std::move(diff)});
 	}
 }
 
@@ -423,8 +420,7 @@ void connect_engine::start_game()
 	}
 
 	// Make other clients not show the results of resolve_random().
-	config lock("stop_updates");
-	mp::send_to_server(lock);
+	mp::send_to_server(config{"stop_updates"});
 
 	update_and_send_diff();
 
@@ -433,7 +429,7 @@ void connect_engine::start_game()
 	// Build the gamestate object after updating the level.
 	mp::level_to_gamestate(level_, state_);
 
-	mp::send_to_server(config("start_game"));
+	mp::send_to_server(config{"start_game"});
 }
 
 void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
@@ -533,14 +529,13 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	// Build the gamestate object after updating the level
 	mp::level_to_gamestate(level_, state_);
-	mp::send_to_server(config("start_game"));
+	mp::send_to_server(config{"start_game"});
 }
 
 void connect_engine::leave_game()
 {
 	DBG_MP << "leaving the game";
-
-	mp::send_to_server(config("leave_game"));
+	mp::send_to_server(config{"leave_game"});
 }
 
 std::pair<bool, bool> connect_engine::process_network_data(const config& data)
@@ -578,12 +573,8 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
 		if(name.empty()) {
-			config response;
-			response["failed"] = true;
-			mp::send_to_server(response);
-
+			mp::send_to_server(config{"failed", true});
 			ERR_CF << "ERROR: No username provided with the side.";
-
 			return result;
 		}
 
@@ -591,19 +582,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			// TODO: Seems like a needless limitation
 			// to only allow one side per player.
 			if(find_user_side_index_by_id(name) != -1) {
-				config response;
-				response["failed"] = true;
-				response["message"] = "The nickname '" + name +
-					"' is already in use.";
-				mp::send_to_server(response);
-
+				mp::send_to_server(config{"failed", true, "message", "The nickname '" + name + "' is already in use."});
 				return result;
 			} else {
 				connected_users_rw().erase(name);
 				update_side_controller_options();
-				config observer_quit;
-				observer_quit.add_child("observer_quit")["name"] = name;
-				mp::send_to_server(observer_quit);
+				mp::send_to_server(config{"observer_quit", config{"name", name}});
 			}
 		}
 
@@ -622,20 +606,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				}
 
 				if(side_taken >= side_engines_.size()) {
-					config response;
-					response["failed"] = true;
-					mp::send_to_server(response);
-
-					config res;
-					config& kick = res.add_child("kick");
-					kick["username"] = data["name"];
-					mp::send_to_server(res);
+					mp::send_to_server(config{"failed", true});
+					mp::send_to_server(config{"kick", config{"username", data["name"]}});
 
 					update_and_send_diff();
 
-					ERR_CF << "ERROR: Couldn't assign a side to '" <<
-						name << "'";
-
+					ERR_CF << "ERROR: Couldn't assign a side to '" << name << "'";
 					return result;
 				}
 			}
@@ -653,10 +629,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			LOG_NW << "sent player data";
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken;
-
-			config response;
-			response["failed"] = true;
-			mp::send_to_server(response);
+			mp::send_to_server(config{"failed", true});
 		}
 	}
 
@@ -726,9 +699,7 @@ void connect_engine::send_level_data() const
 		});
 		mp::send_to_server(level_);
 	} else {
-		config next_level;
-		next_level.add_child("store_next_scenario", level_);
-		mp::send_to_server(next_level);
+		mp::send_to_server(config{"store_next_scenario", level_});
 	}
 }
 
@@ -823,7 +794,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	//TODO: what should we do if color_ is out of range?
 	, color_id_(color_options_.at(color_))
 {
-
 	// Save default attributes that could be overwritten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
 	cfg_.clear_children("default_faction");
@@ -837,7 +807,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 			"gender", (p_cfg)["gender"],
 		});
 	}
-
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1;

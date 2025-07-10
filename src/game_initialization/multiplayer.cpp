@@ -317,11 +317,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 		}
 
 		if(data.has_child("version")) {
-			config res;
-			config& cfg = res.add_child("version");
-			cfg["version"] = game_config::wesnoth_version.str();
-			cfg["client_source"] = game_config::dist_channel_id();
-			conn->send_data(res);
+			std::string version = game_config::wesnoth_version;
+			std::string channel = game_config::dist_channel_id();
+			conn->send_data(config{"version", config{"version", version, "client_source", channel}});
 		}
 
 		if(const auto error = data.optional_child("error")) {
@@ -337,11 +335,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 		while(true) {
 			std::string login = prefs::get().login();
 
-			config response;
-			config& sp = response.add_child("login");
-			sp["username"] = login;
-
-			conn->send_data(response);
+			conn->send_data(config{"login", config{"username", login}});
 			conn->wait_and_receive_data(data);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -393,10 +387,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 					// 2) TLS encryption is not enabled, in which case the server should not be requesting a password in the first place
 					// 3) This is being used for local testing/development, so using an insecure connection is enabled manually
 
-					sp["password"] = password;
-
 					// Once again send our request...
-					conn->send_data(response);
+					conn->send_data(config{"login", config{"username", login, "password", password}});
 					conn->wait_and_receive_data(data);
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -531,7 +523,7 @@ void mp_manager::run_lobby_loop()
 
 		lobby_info.refresh_installed_addons_cache();
 
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
@@ -594,7 +586,7 @@ bool mp_manager::enter_lobby_mode()
 			}
 
 			// Update lobby content
-			connection->send_data(config("refresh_lobby"));
+			connection->send_data(config{"refresh_lobby"});
 		}
 	}
 
@@ -613,7 +605,7 @@ void mp_manager::enter_create_mode(utils::optional<config> preset, int queue_id)
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
@@ -645,7 +637,7 @@ void mp_manager::enter_staging_mode(queue_type::type queue_type, int queue_id)
 	}
 
 	if(connection) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 	}
 }
 
@@ -673,7 +665,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
-			connection->send_data(config("leave_game"));
+			connection->send_data(config{"leave_game"});
 			return;
 		}
 
@@ -686,7 +678,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		controller.play_game();
 	}
 
-	connection->send_data(config("leave_game"));
+	connection->send_data(config{"leave_game"});
 }
 
 bool mp_manager::post_scenario_staging(ng::connect_engine& engine)
@@ -699,7 +691,7 @@ bool mp_manager::post_scenario_wait(bool observe)
 	gui2::dialogs::mp_join_game dlg(state, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 		return false;
 	}
 

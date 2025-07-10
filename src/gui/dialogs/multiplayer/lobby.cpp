@@ -729,11 +729,7 @@ void mp_lobby::join_queue()
 	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
 	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
 		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
-		config join_server_queue;
-
-		config& queue_req = join_server_queue.add_child("join_server_queue");
-		queue_req["queue_id"] = queue.id;
-		mp::send_to_server(join_server_queue);
+		mp::send_to_server(config{"join_server_queue", config{"queue_id", queue.id}});
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}
@@ -745,11 +741,7 @@ void mp_lobby::leave_queue()
 	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
 	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
 		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
-		config leave_server_queue;
-
-		config& queue_req = leave_server_queue.add_child("leave_server_queue");
-		queue_req["queue_id"] = queue.id;
-		mp::send_to_server(leave_server_queue);
+		mp::send_to_server(config{"leave_server_queue", config{"queue_id", queue.id}});
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}
@@ -996,9 +988,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		return;
 	}
 
-	config response;
-
-	config& join_data = response.add_child("join");
+	config join_data;
 	join_data["id"] = std::to_string(game.id);
 	join_data["observe"] = try_obsv;
 
@@ -1017,7 +1007,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	}
 
 	join_data["mp_scenario"] = game.scenario_id;
-	mp::send_to_server(response);
+	mp::send_to_server(config{"join", std::move(join_data)});
 
 	joined_game_id_ = game.id;
 
