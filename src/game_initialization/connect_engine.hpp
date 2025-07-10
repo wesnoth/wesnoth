@@ -46,8 +46,6 @@ public:
 	connect_engine(saved_game& state,
 		const bool first_scenario, mp_game_metadata* metadata);
 
-	config* current_config();
-
 	void import_user(const std::string& name, const bool observer,
 		int side_taken = -1);
 	void import_user(const config& data, const bool observer,

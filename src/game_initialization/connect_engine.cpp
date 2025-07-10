@@ -83,7 +83,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	force_lock_settings_ = (state.mp_settings().saved_game != saved_game_mode::type::midgame) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
-	config::child_itors sides = current_config()->child_range("side");
+	config::child_itors sides = scenario().child_range("side");
 
 	// AI algorithms.
 	ai::configuration::add_era_ai_from_config(era_config);
@@ -194,11 +194,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 	// If we are connected, send data to the connected host.
 	send_level_data();
-}
-
-
-config* connect_engine::current_config() {
-	return &scenario();
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer, int side_taken)
