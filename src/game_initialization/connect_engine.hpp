@@ -100,7 +100,7 @@ public:
 		return team_data_;
 	}
 
-	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
+	const std::vector<side_engine_ptr>& side_engines() const { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
