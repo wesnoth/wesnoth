@@ -578,12 +578,8 @@ void mp_join_game::post_show()
 	}
 
 	if(get_retval() == retval::OK) {
-
 		mp::level_to_gamestate(level_, state_);
-
 		mp::ui_alerts::game_has_begun();
-	} else if(observe_game_) {
-		mp::send_to_server(config{"observer_quit", config{"name", prefs::get().login()}});
 	} else {
 		mp::send_to_server(config{"leave_game"});
 	}

@@ -603,7 +603,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
 		if(name.empty()) {
-			mp::send_to_server(config{"failed", true});
 			ERR_CF << "ERROR: No username provided with the side.";
 			return result;
 		}
@@ -612,12 +611,10 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			// TODO: Seems like a needless limitation
 			// to only allow one side per player.
 			if(find_user_side_index_by_id(name) != -1) {
-				mp::send_to_server(config{"failed", true, "message", "The nickname '" + name + "' is already in use."});
 				return result;
 			} else {
 				connected_users_rw().erase(name);
 				update_side_controller_options();
-				mp::send_to_server(config{"observer_quit", config{"name", name}});
 			}
 		}
 
@@ -636,7 +633,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				}
 
 				if(side_taken >= side_engines_.size()) {
-					mp::send_to_server(config{"failed", true});
 					mp::send_to_server(config{"kick", config{"username", data["name"]}});
 
 					update_and_send_diff();
@@ -659,7 +655,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			LOG_NW << "sent player data";
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken;
-			mp::send_to_server(config{"failed", true});
 		}
 	}
 
