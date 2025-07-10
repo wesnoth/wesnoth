@@ -1378,11 +1378,12 @@ struct dialog_tester<faction_select>
 {
 	config era_cfg, side_cfg;
 	std::vector<const config*> eras;
+	ng::era_metadata era;
 	ng::flg_manager flg;
 	std::string color;
 	dialog_tester()
-		: era_cfg(), side_cfg(), eras(1, &era_cfg) // TODO: Add an actual era definition
-		, flg(eras, side_cfg, false, false, false)
+		: era_cfg(), side_cfg(), eras(1, &era_cfg), era(era_cfg) // TODO: Add an actual era definition
+		, flg(era, eras, side_cfg, false, false, false)
 		, color("teal")
 	{}
 	faction_select* create() {

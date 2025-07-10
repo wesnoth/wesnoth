@@ -60,33 +60,12 @@ const std::set<std::string> children_to_swap {
 	"ai"
 };
 
-void sort_faction_options(std::vector<const config*>& factions)
-{
-	// Since some eras have multiple random options we can't just
-	// assume there is only one random faction on top of the list.
-	std::sort(factions.begin(), factions.end(), [](const config* lhs, const config* rhs) {
-		bool lhs_rand = (*lhs)["random_faction"].to_bool();
-		bool rhs_rand = (*rhs)["random_faction"].to_bool();
-
-		// Random factions always first.
-		if(lhs_rand && !rhs_rand) {
-			return true;
-		}
-
-		if(!lhs_rand && rhs_rand) {
-			return false;
-		}
-
-		return translation::compare((*lhs)["name"].str(), (*rhs)["name"].str()) < 0;
-	});
-}
-
 } // end anon namespace
 
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_game_metadata* metadata)
-	: level_()
+	: level_(mp::initial_level_config(state))
 	, state_(state)
 	, params_(state.mp_settings())
 	, default_controller_(metadata ? CNTR_NETWORK : CNTR_LOCAL)
@@ -96,13 +75,8 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	, side_engines_()
 	, era_factions_()
 	, team_data_()
+	, era_info_(level_.mandatory_child("era"))
 {
-	// Initial level config from the mp_game_settings.
-	level_ = mp::initial_level_config(state_);
-	if(level_.empty()) {
-		return;
-	}
-
 	const config& era_config = level_.mandatory_child("era");
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
@@ -194,10 +168,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	// Selected era's factions.
 	for(const config& ms : era_config.child_range("multiplayer_side")) {
 		era_factions_.push_back(&ms);
-	}
-
-	if(era_config["auto_sort"].to_bool(true)) {
-		sort_faction_options(era_factions_);
 	}
 
 	game_config::add_color_info(game_config_view::wrap(scenario()));
@@ -846,7 +816,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
+	, flg_(parent_.era_info_, parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
 	, allow_changes_(parent_.params_.saved_game != saved_game_mode::type::midgame && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
