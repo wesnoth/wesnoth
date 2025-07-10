@@ -65,9 +65,8 @@ public:
 
 	void leave_game();
 
-	// Return pair first element specifies whether to leave the game
-	// and second element whether to silently update UI.
-	std::pair<bool, bool> process_network_data(const config& data);
+	// Returns true if a signal to leave the game was received
+	bool process_network_data(const config& data);
 
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.

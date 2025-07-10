@@ -533,13 +533,10 @@ void connect_engine::leave_game()
 	mp::send_to_server(config{"leave_game"});
 }
 
-std::pair<bool, bool> connect_engine::process_network_data(const config& data)
+bool connect_engine::process_network_data(const config& data)
 {
-	std::pair<bool, bool> result(false, true);
-
 	if(data.has_child("leave_game")) {
-		result.first = true;
-		return result;
+		return true;
 	}
 
 	// A side has been dropped.
@@ -556,8 +553,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			side_to_drop->reset();
 
 			update_and_send_diff();
-
-			return result;
+			return false;
 		}
 	}
 
@@ -569,14 +565,14 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		const std::string name = data["name"];
 		if(name.empty()) {
 			ERR_CF << "ERROR: No username provided with the side.";
-			return result;
+			return false;
 		}
 
 		if(connected_users().find(name) != connected_users().end()) {
 			// TODO: Seems like a needless limitation
 			// to only allow one side per player.
 			if(find_user_side_index_by_id(name) != -1) {
-				return result;
+				return false;
 			} else {
 				connected_users_rw().erase(name);
 				update_side_controller_options();
@@ -603,7 +599,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 					update_and_send_diff();
 
 					ERR_CF << "ERROR: Couldn't assign a side to '" << name << "'";
-					return result;
+					return false;
 				}
 			}
 
@@ -615,8 +611,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			// Wait for them to choose faction if allowed.
 			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes());
 			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes();
-			result.second = false;
-
 			LOG_NW << "sent player data";
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken;
@@ -651,7 +645,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		}
 	}
 
-	return result;
+	return false;
 }
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
