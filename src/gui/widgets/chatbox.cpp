@@ -253,9 +253,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
 	add_chat_message(std::chrono::system_clock::now(), prefs::get().login(), 0, message);
-
-	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
-	send_to_server(c);
+	send_to_server(::config{"message", ::config{"message", message, "sender", prefs::get().login()}});
 }
 
 void chatbox::clear_messages()

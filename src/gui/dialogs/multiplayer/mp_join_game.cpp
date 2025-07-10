@@ -87,7 +87,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		mp::send_to_server(config("load_next_scenario"));
+		mp::send_to_server(config{"load_next_scenario"});
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -324,8 +324,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 			}
 		}
 
-		config faction;
-		config& change = faction.add_child("change_faction");
+		config change;
 		change["change_faction"] = true;
 		change["name"] = prefs::get().login();
 		change["faction"] = flg.current_faction()["id"];
@@ -334,7 +333,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		mp::send_to_server(faction);
+		mp::send_to_server(config{"change_faction", std::move(change)});
 	}
 
 	return true;
@@ -584,9 +583,9 @@ void mp_join_game::post_show()
 
 		mp::ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		mp::send_to_server(config("observer_quit", config { "name", prefs::get().login() }));
+		mp::send_to_server(config{"observer_quit", config{"name", prefs::get().login()}});
 	} else {
-		mp::send_to_server(config("leave_game"));
+		mp::send_to_server(config{"leave_game"});
 	}
 }
 
