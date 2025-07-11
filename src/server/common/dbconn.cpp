@@ -861,7 +861,7 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 	unsigned i = 0;
 	for(const auto& param : params)
 	{
-		std::visit([&](const auto& p) {
+		std::visit([&i, &stmt](const auto& p) {
 			using T = std::remove_cv_t<std::remove_reference_t<decltype(p)>>;
 			if constexpr (std::is_same_v<T, bool>) {
 				stmt->set_boolean(i, p);
