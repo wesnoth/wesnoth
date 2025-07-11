@@ -20,6 +20,9 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
+
+#include <type_traits>
 
 static lg::log_domain log_sql_handler("sql_executor");
 #define ERR_SQL LOG_STREAM(err, log_sql_handler)
@@ -858,26 +861,24 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 	unsigned i = 0;
 	for(const auto& param : params)
 	{
-		if(std::holds_alternative<bool>(param))
-		{
-			stmt->set_boolean(i, std::get<bool>(param));
-		}
-		else if(std::holds_alternative<int>(param))
-		{
-			stmt->set_signed32(i, std::get<int>(param));
-		}
-		else if(std::holds_alternative<unsigned long long>(param))
-		{
-			stmt->set_signed64(i, std::get<unsigned long long>(param));
-		}
-		else if(std::holds_alternative<std::string>(param))
-		{
-			stmt->set_string(i, std::get<std::string>(param));
-		}
-		else if(std::holds_alternative<const char*>(param))
-		{
-			stmt->set_string(i, std::get<const char*>(param));
-		}
+		std::visit([&i, &stmt](const auto& p) {
+			using T = std::remove_cv_t<std::remove_reference_t<decltype(p)>>;
+			if constexpr (std::is_same_v<T, bool>) {
+				stmt->set_boolean(i, p);
+			} else if constexpr (std::is_same_v<T, int>) {
+				stmt->set_signed32(i, p);
+			} else if constexpr (std::is_same_v<T, long>) {
+				stmt->set_signed64(i, p);
+			} else if constexpr (std::is_same_v<T, unsigned long long>) {
+				stmt->set_signed64(i, p);
+			} else if constexpr (std::is_same_v<T, std::string>) {
+				stmt->set_string(i, p);
+			} else if constexpr (std::is_same_v<T, const char*>) {
+				stmt->set_string(i, p);
+			} else {
+				static_assert(utils::dependent_false_v<T>, "Unsupported parameter type in SQL query");
+			}
+		}, param);
 		i++;
 	}
 

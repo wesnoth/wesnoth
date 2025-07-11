@@ -27,6 +27,7 @@
 #include <vector>
 #include <unordered_map>
 
+// make sure to update dbconn::query() as well when changing these listed values
 typedef std::vector<std::variant<bool, int, long, unsigned long long, std::string, const char*>> sql_parameters;
 
 /**
