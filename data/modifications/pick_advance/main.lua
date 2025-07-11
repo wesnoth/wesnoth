@@ -5,21 +5,6 @@ local F = wesnoth.require "functional"
 local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
 
-wesnoth.wml_actions.set_menu_item {
-	id = "pickadvance",
-	description = _ "Plan Advancement",
-	T.show_if {
-		T.lua {
-			code = "return pickadvance.menu_available()"
-		},
-	},
-	T.command {
-		T.lua {
-			code = "pickadvance.pick_advance()"
-		}
-	}
-}
-
 -- replace any non-alphanumeric characters with an underscore
 local function clean_type_func(unit_type)
 	return string.gsub(unit_type, "[^a-zA-Z0-9]", "_")
@@ -198,6 +183,23 @@ local function map_has_keeps()
 		end
 	end
 end
+
+on_event("prestart", function()
+	wesnoth.wml_actions.set_menu_item {
+		id = "pickadvance",
+		description = _ "Plan Advancement",
+		T.show_if {
+			T.lua {
+				code = "return pickadvance.menu_available()"
+			},
+		},
+		T.command {
+			T.lua {
+				code = "pickadvance.pick_advance()"
+			}
+		}
+	}
+end)
 
 -- on start determine whether choosing an advancement is force for each unit
 on_event("start", function()
