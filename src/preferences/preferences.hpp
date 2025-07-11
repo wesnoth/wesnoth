@@ -612,6 +612,7 @@ public:
 	PREF_GETTER_SETTER(game_created_lobby, bool, desktop::notifications::available())
 	PREF_GETTER_SETTER(game_created_notif, bool, true)
 	PREF_GETTER_SETTER(editor_help_text_shown, bool, true)
+	PREF_GETTER_SETTER(show_attack_miss_indicator, bool, false)
 #undef PREF_GETTER_SETTER
 	void clear_mp_alert_prefs();
 
@@ -824,6 +825,7 @@ private:
 		prefs_list::show_all_units_in_help,
 		prefs_list::show_combat,
 		prefs_list::show_deprecation,
+		prefs_list::show_attack_miss_indicator,
 		prefs_list::use_twelve_hour_clock_format,
 		prefs_list::mp_era,
 		prefs_list::mp_level,

@@ -1081,6 +1081,10 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 
 				extra_hit_sounds.push_back(game_config::sounds::status::petrified);
 			}
+		} else {
+			if(prefs::get().show_attack_miss_indicator()) {
+				float_text << _("attack^miss");
+			}
 		}
 
 		unit_display::unit_attack(
