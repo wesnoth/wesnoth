@@ -20,6 +20,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <type_traits>
 
@@ -853,9 +854,6 @@ unsigned long long dbconn::modify_get_id(const mariadb::connection_ref& connecti
 	}
 }
 
-template<class T>
-inline constexpr bool always_false_v = false;
-
 mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	mariadb::statement_ref stmt = connection->create_statement(sql);
@@ -878,7 +876,7 @@ mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, 
 			} else if constexpr (std::is_same_v<T, const char*>) {
 				stmt->set_string(i, p);
 			} else {
-				static_assert(always_false_v<T>, "Unsupported parameter type in SQL query");
+				static_assert(utils::dependent_false_v<T>, "Unsupported parameter type in SQL query");
 			}
 		}, param);
 		i++;
