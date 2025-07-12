@@ -46,25 +46,25 @@ struct ability_list_defines
 
 	ENUM_AND_ARRAY(heals, regenerate, resistance, leadership, skirmisher, illuminates, teleport, hides, dummy, attacks, berserk, chance_to_hit, damage, damage_type, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm)
 
-	static const std::set<std::string> weapon_number_tags()
+	static const std::set<std::string>& weapon_number_tags()
 	{
 		static std::set<std::string> tags{attacks, damage, chance_to_hit, berserk, swarm, drains, heal_on_hit};
 		return tags;
 	}
 
-	static const std::set<std::string> no_weapon_number_tags()
+	static const std::set<std::string>& no_weapon_number_tags()
 	{
 		static std::set<std::string> tags{disable, plague, slow, petrifies, firststrike, poison, damage_type};
 		return tags;
 	}
 
-	static const std::set<std::string> ability_value_tags()
+	static const std::set<std::string>& ability_value_tags()
 	{
 		static std::set<std::string> tags{resistance, leadership, heals, regenerate, illuminates};
 		return tags;
 	}
 
-	static const std::set<std::string> ability_no_value_tags()
+	static const std::set<std::string>& ability_no_value_tags()
 	{
 		static std::set<std::string> tags{teleport, hides, skirmisher};
 		return tags;
