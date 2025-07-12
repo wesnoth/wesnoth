@@ -434,6 +434,7 @@ void preferences_dialog::initialize_callbacks()
 
 	// Set the value label transform function.
 	find_widget<slider>("turbo_slider").set_value_labels(
+		// TODO: this should probably be a locale dependent string (use comma/dot depending on language)
 		[this](int pos, int /*max*/)->t_string { return lexical_cast<std::string>(accl_speeds_[pos]); }
 	);
 

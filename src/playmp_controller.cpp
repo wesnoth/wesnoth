@@ -296,6 +296,12 @@ void playmp_controller::maybe_linger()
 	end_turn_requested_ = true;
 }
 
+bool playmp_controller::end_linger()
+{
+	bool need_wait = !is_host() && gamestate().has_next_scenario();
+	return need_wait ? next_scenario_notified_ : playsingle_controller::end_linger();
+}
+
 void playmp_controller::surrender(int side_number)
 {
 	undo_stack().clear();
@@ -378,9 +384,6 @@ void playmp_controller::process_network_data(bool unsync_only)
 			// incoming data, like [change_controller].
 			network_reader_.push_front(std::move(cfg));
 			return;
-		}
-		if(next_scenario_notified_) {
-			end_turn();
 		}
 	}
 }

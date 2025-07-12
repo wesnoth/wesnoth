@@ -253,6 +253,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
+			//this in particular makes sure the choices are sent immediately
 			synced_context::block_undo();
 		}
 	}
@@ -368,10 +369,8 @@ void user_choice_manager::ask_local_choice()
 	resources::recorder->user_input(tagname_, cfg, local_choice_);
 	res_[local_choice_] = cfg;
 
-	//send data to others.
-	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
-	//TODO: we should send user choices during nonundoable actions immediately.
-	if(synced_context::undo_blocked() || current_side_ != local_choice_)
+	//send data to others, if needed.
+	if(synced_context::undo_blocked())
 	{
 		synced_context::send_user_choice();
 	}
