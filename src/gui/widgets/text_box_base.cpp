@@ -702,7 +702,6 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-	
 	if(state_ != FOCUSED) {
 		set_state(HOVERED);
 	}
