@@ -13,6 +13,7 @@
 ### User interface
    * On touch devices, double tap no longer shows context menu. It can still be accessed via long press. Single tap selects the unit. Another single tap on a hex shows hover info, which was previously not available. Single tap select followed by double tap on a hex moves the unit. Dragging now indicates the path and defense.
 ### WML Engine
+   * Custom WML menu items now support an accompanying toggle button.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.13

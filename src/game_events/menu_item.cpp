@@ -72,6 +72,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
 	, hotkey_record_()
+	, toggle_state_variable_()
 	, image_(cfg["image"].str())
 	, description_(cfg["description"].t_str())
 	, show_if_(cfg.child_or_empty("show_if"), true)
@@ -87,6 +88,11 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	if(cfg.has_attribute("needs_select")) {
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
 	}
+
+	// We know the key is present if the tag is.
+	if(auto toggle = cfg.optional_child("toggle")) {
+		toggle_state_variable_ = (*toggle)["state_variable"].str();
+	}
 }
 
 // Constructor for items defined in an event.
@@ -95,6 +101,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
 	, hotkey_record_()
+	, toggle_state_variable_()
 	, image_()
 	, description_()
 	, show_if_(vconfig::empty_vconfig())
@@ -121,6 +128,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, w
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
 	, hotkey_record_(std::move(original.hotkey_record_)) // Make sure we have full lifetime control of the old record
+	, toggle_state_variable_(original.toggle_state_variable_)
 	, image_(original.image_)
 	, description_(original.description_)
 	, show_if_(original.show_if_)
@@ -142,7 +150,6 @@ const std::string& wml_menu_item::image() const
 	// Default the image?
 	return image_.empty() ? game_config::images::wml_menu : image_;
 }
-
 
 bool wml_menu_item::can_show(const map_location& hex, const game_data& data, filter_context& filter_con) const
 {
@@ -264,6 +271,10 @@ void wml_menu_item::to_config(config& cfg) const
 	if(!default_hotkey_.empty()) {
 		cfg.add_child("default_hotkey", default_hotkey_);
 	}
+
+	if(toggle_state_variable_) {
+		cfg.add_child("toggle", config{"state_variable", *toggle_state_variable_});
+	}
 }
 
 void wml_menu_item::update(const vconfig& vcfg)
@@ -319,6 +330,15 @@ void wml_menu_item::update(const vconfig& vcfg)
 	if(const vconfig& cmd = vcfg.child("command")) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
 		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
+	}
+
+	if(const vconfig& toggle = vcfg.child("toggle")) {
+		const config::attribute_value& var = toggle["state_variable"];
+		if(!var.empty()) {
+			toggle_state_variable_ = var.str();
+		} else {
+			ERR_NG << "[toggle] state_variable key missing or empty for menu item '" << item_id_ << "'";
+		}
 	}
 
 	// Update the registered hotkey?
