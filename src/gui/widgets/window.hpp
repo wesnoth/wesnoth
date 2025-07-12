@@ -701,6 +701,7 @@ public:
 	// dispatcher. Chaining probably should remain exclusive to windows.
 	void mouse_capture(const bool capture = true);
 	void keyboard_capture(widget* widget);
+	void capture_and_show_keyboard(widget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
