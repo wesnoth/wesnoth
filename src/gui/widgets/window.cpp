@@ -1204,7 +1204,12 @@ void window::keyboard_capture(widget* widget)
 #ifndef __ANDROID__
 	event_distributor_->keyboard_capture(widget);
 #endif
+}
 
+void window::capture_and_show_keyboard(widget* widget)
+{
+	assert(event_distributor_);
+	event_distributor_->keyboard_capture(widget);
 }
 
 void window::add_to_keyboard_chain(widget* widget)

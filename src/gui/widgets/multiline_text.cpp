@@ -415,7 +415,7 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	get_window()->keyboard_capture(this);
+	get_window()->capture_and_show_keyboard(this);
 	get_window()->mouse_capture();
 
 	point mouse_pos = get_mouse_position();
