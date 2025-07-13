@@ -229,14 +229,15 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		int most_sub = 0;
 
 		// Find the "illuminates" effects from units that can affect loc.
-		std::array<map_location, 7> locs;
-		locs[0] = loc;
-		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
-
-		for(std::size_t i = 0; i < locs.size(); ++i) {
-			const auto itor = units.find(locs[i]);
-			if(itor != units.end() && !itor->incapacitated()) {
-				unit_ability_list illum = itor->get_abilities("illuminates");
+		for(const unit& u : units) {
+			if(!u.incapacitated()) {
+				const map_location& u_loc = u.get_location();
+				std::size_t distance = distance_between(u_loc, loc);
+				unit_ability_list illum = u.get_abilities("illuminates");
+				utils::erase_if(illum, [&](const unit_ability& i) {
+					std::size_t radius = (*i.ability_cfg)["radius"] != "all_map" ? (*i.ability_cfg)["radius"].to_int(1) : INT_MAX;
+					return distance > radius;
+				});
 				if(!illum.empty()) {
 					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
