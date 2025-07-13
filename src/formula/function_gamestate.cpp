@@ -482,14 +482,16 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 
 DEFINE_WFL_FUNCTION(unit_tod_modifier, 1, 2)
 {
-	variant var0 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "unit_tod_modifier:unit"));
-	variant var1 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "unit_tod_modifier:location"));
-
-	const unit& unit
-		= var0.convert_to<unit_callable>()->get_unit();
+	const unit& unit = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "unit_tod_modifier:unit"))
+		.convert_to<unit_callable>()
+		->get_unit();
 
 	const map_location loc = args().size() == 2
-		? var1.convert_to<location_callable>()->loc()
+		? args()[1]
+			->evaluate(variables, add_debug_info(fdb, 1, "unit_tod_modifier:location"))
+			.convert_to<location_callable>()
+			->loc()
 		: unit.get_location();
 
 	return variant(combat_modifier(
