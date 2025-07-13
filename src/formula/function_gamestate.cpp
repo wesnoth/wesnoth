@@ -14,18 +14,19 @@
 */
 
 #include "formula/function_gamestate.hpp"
-
 #include "formula/callable_objects.hpp"
-#include <utility>
 
-#include "resources.hpp"
+#include "actions/attack.hpp"
 #include "game_board.hpp"
 #include "map/map.hpp"
 #include "pathutils.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "tod_manager.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
-#include "play_controller.hpp"
-#include "tod_manager.hpp"
+
+#include <utility>
 
 namespace wfl {
 
@@ -443,6 +444,36 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 	return variant(bonus);
 }
 
+DEFINE_WFL_FUNCTION(unit_tod_modifier, 1, 2)
+{
+	variant var0 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "unit_tod_modifier:unit"));
+	variant var1 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "unit_tod_modifier:location"));
+
+	const unit& unit
+		= var0.convert_to<unit_callable>()->get_unit();
+
+	const map_location loc = args().size() == 2
+		? var1.convert_to<location_callable>()->loc()
+		: unit.get_location();
+
+	return variant(combat_modifier(
+		resources::gameboard->units(), resources::gameboard->map(), loc, unit.alignment(), unit.is_fearless()));
+}
+
+DEFINE_WFL_FUNCTION(is_shrouded, 2, 2)
+{
+	auto arg0 = args()[0]->evaluate(variables, fdb).convert_to<location_callable>();
+	auto arg1 = args()[1]->evaluate(variables, fdb).convert_to<team_callable>();
+	return variant(arg1->get_team().shrouded(arg0->loc()));
+}
+
+DEFINE_WFL_FUNCTION(is_fogged, 2, 2)
+{
+	auto arg0 = args()[0]->evaluate(variables, fdb).convert_to<location_callable>();
+	auto arg1 = args()[1]->evaluate(variables, fdb).convert_to<team_callable>();
+	return variant(arg1->get_team().fogged(arg0->loc()));
+}
+
 } // namespace gamestate
 
 gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent) : function_symbol_table(parent) {
@@ -461,6 +492,9 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shar
 	DECLARE_WFL_FUNCTION(enemy_of);
 	DECLARE_WFL_FUNCTION(tod_bonus);
 	DECLARE_WFL_FUNCTION(base_tod_bonus);
+	DECLARE_WFL_FUNCTION(unit_tod_modifier);
+	DECLARE_WFL_FUNCTION(is_shrouded);
+	DECLARE_WFL_FUNCTION(is_fogged);
 }
 
 }

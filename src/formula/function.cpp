@@ -16,11 +16,13 @@
 #include "formula/function.hpp"
 
 #include "color.hpp"
+#include "filesystem.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/debugger.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+#include "map/label.hpp"
 #include "pathutils.hpp"
 #include "serialization/unicode.hpp"
 
@@ -265,6 +267,21 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 		display_float(location, text);
 		return var2;
 	}
+}
+
+DEFINE_WFL_FUNCTION(debug_label, 2, 2)
+{
+	variant var0 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[1]->evaluate(variables, fdb);
+
+	if(game_config::debug && display::get_singleton()) {
+		const map_location loc = var0.convert_to<location_callable>()->loc();
+		const std::string text = var1.is_string() ? var1.as_string() : var1.to_debug_string();
+
+		display::get_singleton()->labels().set_label(loc, text);
+	}
+
+	return variant(std::vector<variant>{var0, var1});
 }
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
@@ -1318,6 +1335,36 @@ DEFINE_WFL_FUNCTION(distance_between, 2, 2)
 	return variant(distance_between(loc1, loc2));
 }
 
+DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
+{
+	const map_location loc = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location"))
+		.convert_to<location_callable>()
+		->loc();
+
+	const std::vector<variant> locations = args()[1]
+		->evaluate(variables, add_debug_info(fdb, 1, "nearest_loc:locations"))
+		.as_list();
+
+#ifdef __cpp_lib_ranges
+	auto nearest = std::ranges::min_element(locations, {},
+		[&](const variant& cmp) { return distance_between(loc, cmp.convert_to<location_callable>()->loc()); });
+#else
+	auto nearest = std::min_element(locations.begin(), locations.end(), [&](const variant& cmp1, const variant& cmp2) {
+		return std::less{}(
+			distance_between(loc, cmp1.convert_to<location_callable>()->loc()),
+			distance_between(loc, cmp2.convert_to<location_callable>()->loc())
+		);
+	});
+#endif
+
+	if(nearest == locations.end()) {
+		return variant(std::make_shared<location_callable>(nearest->convert_to<location_callable>()->loc()));
+	} else {
+		return variant();
+	}
+}
+
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
 	const map_location loc = args()[0]
@@ -1426,6 +1473,25 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 		: 1;
 
 	return variant(std::make_shared<location_callable>(loc.rotate_right_around_center(center, n)));
+}
+
+DEFINE_WFL_FUNCTION(run_file, 1, 1)
+{
+	const std::string file = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "run_file:file"))
+		.string_cast();
+
+	// NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
+	auto path = filesystem::get_wml_location(file);
+	if(!path) {
+		return variant();
+	}
+
+	auto builtins = function_symbol_table::get_builtins();
+	std::string formula_string = filesystem::read_file(path.value());
+
+	auto parsed_formula = formula::create_optional_formula(formula_string, builtins.get());
+	return formula::evaluate(parsed_formula, variables, add_debug_info(fdb, -1, "run_file:formula_from_file"));
 }
 
 DEFINE_WFL_FUNCTION(type, 1, 1)
@@ -1605,6 +1671,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(max);
 		DECLARE_WFL_FUNCTION(choose);
 		DECLARE_WFL_FUNCTION(debug_float);
+		DECLARE_WFL_FUNCTION(debug_label);
 		DECLARE_WFL_FUNCTION(debug_print);
 		DECLARE_WFL_FUNCTION(debug_profile);
 		DECLARE_WFL_FUNCTION(wave);
@@ -1633,12 +1700,14 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(pair);
 		DECLARE_WFL_FUNCTION(loc);
 		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(nearest_loc);
 		DECLARE_WFL_FUNCTION(adjacent_locs);
 		DECLARE_WFL_FUNCTION(locations_in_radius);
 		DECLARE_WFL_FUNCTION(are_adjacent);
 		DECLARE_WFL_FUNCTION(relative_dir);
 		DECLARE_WFL_FUNCTION(direction_from);
 		DECLARE_WFL_FUNCTION(rotate_loc_around);
+		DECLARE_WFL_FUNCTION(run_file);
 		DECLARE_WFL_FUNCTION(index_of);
 		DECLARE_WFL_FUNCTION(keys);
 		DECLARE_WFL_FUNCTION(values);
