@@ -55,8 +55,6 @@ public:
 
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
-	virtual std::string evaluate(const std::string &str);
-
 	void apply_micro_ai(const config& cfg);
 
 	/**

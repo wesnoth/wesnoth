@@ -25,11 +25,11 @@
 #include "actions/create.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
-#include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "color.hpp"
 #include "display_chat_manager.hpp"
 #include "font/standard_colors.hpp"
+#include "formula/callable_objects.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
@@ -2092,10 +2092,12 @@ void console_handler::do_whiteboard_options()
 	}
 }
 
-void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_handler& /*mousehandler*/)
+// TODO: rename this function - it only does general wfl now
+void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse_handler& /*mousehandler*/)
 {
 	try {
-		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
+		wfl::variant result = wfl::formula(str).evaluate(wfl::gamestate_callable());
+		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, result.to_debug_string());
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
 		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());

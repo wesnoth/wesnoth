@@ -290,9 +290,6 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg) {
 		}
 		if (aiparam.has_attribute("engine")) {
 			engine = aiparam["engine"].str();
-			if(engine == "fai") {
-				deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
-			}
 		}
 		if (aiparam.has_attribute("ai_algorithm")) {
 			if (algorithm.empty()) {
@@ -320,12 +317,6 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg) {
 			if (just_copy_tags.count(child_key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child_key, child_cfg);
-				if(
-				   (child_key != "modify_ai" && child_cfg["engine"] == "fai") ||
-				   (child_key == "modify_ai" && child_cfg.all_children_count() > 0 && child_cfg.all_children_range().front().cfg["engine"] == "fai")
-				) {
-					deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
-				}
 				continue;
 			} else if(old_goal_tags.count(child_key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
