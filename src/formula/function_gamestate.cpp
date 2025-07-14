@@ -14,22 +14,59 @@
 */
 
 #include "formula/function_gamestate.hpp"
-
 #include "formula/callable_objects.hpp"
-#include <utility>
 
-#include "resources.hpp"
+#include "actions/attack.hpp"
+#include "filesystem.hpp"
 #include "game_board.hpp"
+#include "map/label.hpp"
 #include "map/map.hpp"
 #include "pathutils.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "tod_manager.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
-#include "play_controller.hpp"
-#include "tod_manager.hpp"
+
+#include <utility>
 
 namespace wfl {
 
 namespace gamestate {
+
+DEFINE_WFL_FUNCTION(run_file, 1, 1)
+{
+	variant var = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "run_file:file"));
+
+	// NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
+	auto path = filesystem::get_wml_location(var.as_string());
+	if(!path) {
+		return variant();
+	}
+
+	std::string formula_string = filesystem::read_file(path.value());
+	gamestate_function_symbol_table symbols;
+
+	auto parsed_formula = formula::create_optional_formula(formula_string, &symbols);
+	return formula::evaluate(parsed_formula, variables, add_debug_info(fdb, -1, "run_file:formula_from_file"));
+}
+
+DEFINE_WFL_FUNCTION(debug_label, 2, 2)
+{
+	variant var0 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[1]->evaluate(variables, fdb);
+
+	if(game_config::debug) {
+		const team& team = resources::controller->current_team();
+		const map_location loc = var0.convert_to<location_callable>()->loc();
+		const std::string text = var1.is_string() ? var1.as_string() : var1.to_debug_string();
+
+		display::get_singleton()->labels().set_label(
+			loc, text, team.side(), team.team_name(), team::get_side_color(team.side()));
+	}
+
+	return variant(std::vector{var0, var1});
+}
 
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
@@ -443,11 +480,59 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 	return variant(bonus);
 }
 
+DEFINE_WFL_FUNCTION(unit_tod_modifier, 1, 2)
+{
+	const unit& unit = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "unit_tod_modifier:unit"))
+		.convert_to<unit_callable>()
+		->get_unit();
+
+	const map_location loc = args().size() == 2
+		? args()[1]
+			->evaluate(variables, add_debug_info(fdb, 1, "unit_tod_modifier:location"))
+			.convert_to<location_callable>()
+			->loc()
+		: unit.get_location();
+
+	return variant(combat_modifier(
+		resources::gameboard->units(), resources::gameboard->map(), loc, unit.alignment(), unit.is_fearless()));
+}
+
+DEFINE_WFL_FUNCTION(is_shrouded, 2, 2)
+{
+	variant var0 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[1]->evaluate(variables, fdb);
+
+	try {
+		const map_location loc = var0.convert_to<location_callable>()->loc();
+		return variant(resources::gameboard->get_team(var1.as_int()).shrouded(loc));
+
+	} catch(const std::out_of_range&) {
+		return variant();
+	}
+}
+
+DEFINE_WFL_FUNCTION(is_fogged, 2, 2)
+{
+	variant var0 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[1]->evaluate(variables, fdb);
+
+	try {
+		const map_location loc = var0.convert_to<location_callable>()->loc();
+		return variant(resources::gameboard->get_team(var1.as_int()).fogged(loc));
+
+	} catch(const std::out_of_range&) {
+		return variant();
+	}
+}
+
 } // namespace gamestate
 
 gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent) : function_symbol_table(parent) {
 	using namespace gamestate;
 	function_symbol_table& functions_table = *this;
+	DECLARE_WFL_FUNCTION(run_file);
+	DECLARE_WFL_FUNCTION(debug_label);
 	DECLARE_WFL_FUNCTION(get_unit_type);
 	DECLARE_WFL_FUNCTION(unit_at);
 	DECLARE_WFL_FUNCTION(resistance_on);
@@ -461,6 +546,9 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shar
 	DECLARE_WFL_FUNCTION(enemy_of);
 	DECLARE_WFL_FUNCTION(tod_bonus);
 	DECLARE_WFL_FUNCTION(base_tod_bonus);
+	DECLARE_WFL_FUNCTION(unit_tod_modifier);
+	DECLARE_WFL_FUNCTION(is_shrouded);
+	DECLARE_WFL_FUNCTION(is_fogged);
 }
 
 }

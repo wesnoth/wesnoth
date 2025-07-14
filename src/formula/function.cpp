@@ -1318,6 +1318,36 @@ DEFINE_WFL_FUNCTION(distance_between, 2, 2)
 	return variant(distance_between(loc1, loc2));
 }
 
+DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
+{
+	const map_location loc = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location"))
+		.convert_to<location_callable>()
+		->loc();
+
+	const std::vector<variant> locations = args()[1]
+		->evaluate(variables, add_debug_info(fdb, 1, "nearest_loc:locations"))
+		.as_list();
+
+#ifdef __cpp_lib_ranges
+	auto nearest = std::ranges::min_element(locations, {},
+		[&](const variant& cmp) { return distance_between(loc, cmp.convert_to<location_callable>()->loc()); });
+#else
+	auto nearest = std::min_element(locations.begin(), locations.end(), [&](const variant& cmp1, const variant& cmp2) {
+		return std::less{}(
+			distance_between(loc, cmp1.convert_to<location_callable>()->loc()),
+			distance_between(loc, cmp2.convert_to<location_callable>()->loc())
+		);
+	});
+#endif
+
+	if(nearest != locations.end()) {
+		return variant(std::make_shared<location_callable>(nearest->convert_to<location_callable>()->loc()));
+	} else {
+		return variant();
+	}
+}
+
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
 	const map_location loc = args()[0]
@@ -1633,6 +1663,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(pair);
 		DECLARE_WFL_FUNCTION(loc);
 		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(nearest_loc);
 		DECLARE_WFL_FUNCTION(adjacent_locs);
 		DECLARE_WFL_FUNCTION(locations_in_radius);
 		DECLARE_WFL_FUNCTION(are_adjacent);
