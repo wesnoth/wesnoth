@@ -107,5 +107,5 @@ t_string recruit_message(
 	const std::string& type_id,
 	map_location& target_hex,
 	map_location& recruited_from,
-	team& current_team);
+	const team& current_team);
 }

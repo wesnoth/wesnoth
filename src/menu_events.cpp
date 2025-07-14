@@ -340,6 +340,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, map_locatio
 	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+		current_team.last_recruit(name);
 
 		// Do the recruiting.
 		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));

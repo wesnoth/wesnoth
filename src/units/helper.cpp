@@ -171,7 +171,7 @@ t_string recruit_message(
 	const std::string& type_id,
 	map_location& target_hex,
 	map_location& recruited_from,
-	team& current_team)
+	const team& current_team)
 {
 	const unit_type* u_type = unit_types.find(type_id);
 	if(u_type == nullptr) {
@@ -202,7 +202,6 @@ t_string recruit_message(
 			return _("You do not have enough gold to recruit this unit.");
 	}
 
-	current_team.last_recruit();
 	const events::command_disabler disable_commands;
 
 	{
