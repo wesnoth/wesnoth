@@ -717,9 +717,6 @@ type_gender_variation choose_unit()
  * (Intended for use with any units created via debug mode.)
  */
 void create_and_place(
-	game_display&,
-	const gamemap&,
-	unit_map&,
 	const map_location& loc,
 	const unit_type& u_type,
 	unit_race::GENDER gender = unit_race::NUM_GENDERS,
@@ -746,12 +743,11 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	// Save the current mouse location before popping up the choice menu (which
 	// gives time for the mouse to move, changing the location).
 	const map_location destination = mousehandler.get_last_hex();
-	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
 	if(const auto& [type, gender, variation] = choose_unit(); type != nullptr) {
 		// Make it so.
-		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *type, gender, variation);
+		create_and_place(destination, *type, gender, variation);
 	}
 }
 
@@ -2030,7 +2026,7 @@ void console_handler::do_create()
 		}
 
 		// Create the unit.
-		create_and_place(*menu_handler_.gui_, menu_handler_.pc_.get_map(), menu_handler_.pc_.get_units(), loc, *ut);
+		create_and_place(loc, *ut);
 	} else {
 		command_failed(_("Invalid location"));
 	}
