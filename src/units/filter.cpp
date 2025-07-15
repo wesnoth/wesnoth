@@ -94,7 +94,7 @@ unit_const_ptr unit_filter::first_match_on_map() const {
 namespace {
 bool same_unit(const unit& u, const unit& unit)
 {
-	return (&u == &unit || u.id() == unit.id());
+	return (u.get_location() == unit.get_location() || u.id() == unit.id());
 }
 }
 

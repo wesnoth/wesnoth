@@ -199,11 +199,11 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 }
 
 /**
- * This function return true if units checked are the same, or own same id like in case of moves.
+ * This function return true if locations checked are the same, or if units have same id.
  */
 bool same_unit(const unit& u, const unit& unit)
 {
-	return (&u == &unit || u.id() == unit.id());
+	return (u.get_location() == unit.get_location() || u.id() == unit.id());
 }
 
 }
