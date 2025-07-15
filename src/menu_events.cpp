@@ -272,7 +272,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	team& current_team = board().get_team(side_num);
 	const int reserved_gold = unit_helper::planned_gold_spent(side_num);
 
-	std::size_t selected_index = -1, i = 0;
+	int selected_index = -1, i = 0;
 
 	for(const auto& recruit : actions::get_recruits(side_num, last_hex)) {
 		const unit_type* type = unit_types.find(recruit);
@@ -331,19 +331,37 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	const std::string& last_recruit = recruiter.last_recruit();
 	if(last_recruit.empty()) return;
 
-	std::string error = unit_helper::check_recruit_purse(
-		unit_types.find(last_recruit)->cost(), recruiter.gold(), unit_helper::planned_gold_spent(side_num));
+	// Assume we stored a valid type
+	const unit_type& type = *unit_types.find(last_recruit);
 
-	if(error.empty()) {
-		do_recruit(last_recruit, side_num, last_hex);
-	} else {
-		gui2::show_transient_message("", error);
+	const auto validation = std::array
+	{
+		// The recruit list may have been modified since the last recruit...
+		unit_helper::check_recruit_list(
+			actions::get_recruits(recruiter.side(), last_hex), last_recruit, type.type_name()),
+
+		// ...or we may be unable to afford any more units.
+		unit_helper::check_recruit_purse(
+			type.cost(), recruiter.gold(), unit_helper::planned_gold_spent(side_num)),
+	};
+
+	// Show the first non-empty error
+	for(const std::string& err : validation) {
+		if(!err.empty()) {
+			gui2::show_transient_message("", err);
+			return;
+		}
 	}
+
+	do_recruit(last_recruit, side_num, last_hex);
 }
 
 bool menu_handler::do_recruit(const std::string& type, int side_num, const map_location& target_hex)
 {
-	// NOTE: dst may not equal target_hex after validation
+	// TODO: do we still need this? Can't tell what exactly it's guarding...
+	const events::command_disabler disable_commands;
+
+	// NOTE: dst may not equal target_hex after validation (when repeating recruits, for example)
 	const auto [err, dst, src] = unit_helper::validate_recruit_target(type, side_num, target_hex);
 
 	if(!err.empty()) {
@@ -361,8 +379,6 @@ bool menu_handler::do_recruit(const std::string& type, int side_num, const map_l
 	team& recruiter = board().get_team(side_num);
 	recruiter.set_action_bonus_count(1 + recruiter.action_bonus_count());
 	recruiter.last_recruit(type);
-
-	const events::command_disabler disable_commands;
 
 	// Do the recruiting.
 	synced_context::run_and_throw("recruit", replay_helper::get_recruit(type, dst, src));

@@ -183,6 +183,16 @@ std::string check_recruit_purse(int unit_cost, int current_purse, int investment
 	return "";
 }
 
+std::string check_recruit_list(
+	const std::set<std::string>& recruits, const std::string& type, const t_string& type_name)
+{
+	if(!utils::contains(recruits, type)) {
+		return VGETTEXT("You cannot recruit another $unit_type at this time.", {{"unit_type", type_name}});
+	}
+
+	return "";
+}
+
 std::tuple<std::string, map_location, map_location> validate_recruit_target(
 	const std::string& type, int side_number, const map_location& target_hex)
 {

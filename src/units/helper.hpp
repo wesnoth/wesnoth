@@ -107,6 +107,10 @@ int planned_gold_spent(int side_num);
 /** @returns an error message if the given unit cost is unaffordable. */
 std::string check_recruit_purse(int unit_cost, int current_purse, int investments);
 
+/** @returns an error message if the given unit is not on the given side's recruit list. */
+std::string check_recruit_list(
+	const std::set<std::string>& recruits, const std::string& type, const t_string& type_name);
+
 /**
  * Verifies that @a target_hex is a valid recruit location for the given side.
  *
