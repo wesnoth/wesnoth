@@ -47,6 +47,7 @@ public:
 	int min_range() const { return min_range_; }
 	int max_range() const { return max_range_; }
 	std::string accuracy_parry_description() const;
+	std::string accuracy_parry_tooltip() const;
 	int accuracy() const { return accuracy_; }
 	int parry() const { return parry_; }
 	int damage() const { return damage_; }

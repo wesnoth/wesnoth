@@ -16,7 +16,6 @@
 
 #include "gui/widgets/unit_preview_pane.hpp"
 
-
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/drawing.hpp"
@@ -216,10 +215,9 @@ void unit_preview_pane::print_attack_details(
 		return;
 	}
 
-
 	auto& header_node = add_name_tree_node(parent_node, "header", markup::bold(_("Attacks")));
 
-	if (max_attacks > 1) {
+	if(max_attacks > 1) {
 		add_name_tree_node(header_node, "item",
 			VGETTEXT("Remaining: $left/$max",
 				{{"left", std::to_string(attacks_left)},
@@ -236,7 +234,7 @@ void unit_preview_pane::print_attack_details(
 		const t_string& range = string_table["range_" + a.range()];
 		const t_string& type = string_table["type_" + a.type()];
 
-		const std::string label = markup::span_color(
+		const std::string dmg_label = markup::span_color(
 			font::unit_type_color, a.damage(), font::weapon_numbers_sep, a.num_attacks(), " ", a.name());
 
 		auto& subsection = header_node.add_child(
@@ -244,7 +242,7 @@ void unit_preview_pane::print_attack_details(
 			{
 				{ "image_range", { { "label", range_png } } },
 				{ "image_type", { { "label", type_png } } },
-				{ "name", { { "label", label }, { "use_markup", "true" } } },
+				{ "name", { { "label", dmg_label }, { "use_markup", "true" } } },
 			}
 		);
 
@@ -259,7 +257,17 @@ void unit_preview_pane::print_attack_details(
 			);
 		}
 
-		if (max_attacks > 1) {
+		const std::string acc_parry_str = a.accuracy_parry_description();
+		if(!acc_parry_str.empty()) {
+			add_name_tree_node(
+				subsection,
+				"item",
+				markup::span_color(font::weapon_details_color, acc_parry_str),
+				a.accuracy_parry_tooltip()
+			);
+		}
+
+		if(max_attacks > 1) {
 			add_name_tree_node(
 				subsection,
 				"item",
