@@ -343,14 +343,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 
 bool menu_handler::do_recruit(const std::string& type, int side_num, const map_location& target_hex)
 {
-	if(auto wb = pc_.get_whiteboard()) {
-		if(wb->save_recruit(type, side_num, target_hex)) {
-			return false;
-		}
-	}
-
-	team& recruiter = board().get_team(side_num);
-	const events::command_disabler disable_commands;
+	// NOTE: dst may not equal target_hex after validation
 	const auto [err, dst, src] = unit_helper::validate_recruit_target(type, side_num, target_hex);
 
 	if(!err.empty()) {
@@ -358,9 +351,18 @@ bool menu_handler::do_recruit(const std::string& type, int side_num, const map_l
 		return false;
 	}
 
+	if(auto wb = pc_.get_whiteboard()) {
+		if(wb->save_recruit(type, side_num, dst)) {
+			return false;
+		}
+	}
+
 	// MP_COUNTDOWN grant time bonus for recruiting
+	team& recruiter = board().get_team(side_num);
 	recruiter.set_action_bonus_count(1 + recruiter.action_bonus_count());
 	recruiter.last_recruit(type);
+
+	const events::command_disabler disable_commands;
 
 	// Do the recruiting.
 	synced_context::run_and_throw("recruit", replay_helper::get_recruit(type, dst, src));
