@@ -982,15 +982,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		if (!accuracy_parry.empty())
 		{
 			str << span_color(font::weapon_details_color, "  ", accuracy_parry) << "\n";
-			int accuracy = at.accuracy();
-			if (accuracy) {
-				tooltip << _("Accuracy:") << markup::bold(utils::signed_percent(accuracy)) << "\n";
-			}
-			int parry = at.parry();
-			if (parry) {
-				tooltip << _("Parry:") << markup::bold(utils::signed_percent(parry)) << "\n";
-			}
-			add_text(res, flush(str), flush(tooltip));
+			add_text(res, flush(str), at.accuracy_parry_tooltip());
 		}
 	}
 
