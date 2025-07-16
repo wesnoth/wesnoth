@@ -191,9 +191,8 @@ std::string check_recruit_list(
 		return "";
 	}
 
-	// FIXME: this is grammatically incorrect in English if the name starts with a vowel.
 	utils::string_map symbols{{ "unit_type", u_type->type_name() }};
-	return VGETTEXT("You cannot recruit a $unit_type at this time.", symbols);
+	return VGETTEXT("The $unit_type is not available to recruit.", symbols);
 }
 
 std::tuple<std::string, map_location, map_location> validate_recruit_target(
