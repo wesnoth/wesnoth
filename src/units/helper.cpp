@@ -164,55 +164,48 @@ std::string format_movement_string(const int moves_left, const int moves_max, bo
 	}
 }
 
-// TODO: Return multiple strings here, in case more than one error applies? For
-// example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
-// leader not on keep (extrarecruit=Mage) and not enough gold.
-t_string recruit_message(
-	const std::string& type_id,
-	map_location& target_hex,
-	map_location& recruited_from,
-	const team& current_team)
+int planned_gold_spent(int side_number)
 {
-	const unit_type* u_type = unit_types.find(type_id);
-	if(u_type == nullptr) {
-		return _("Internal error. Please report this as a bug! Details:\n")
-			+ "unit_helper::recruit_message: u_type == nullptr for " + type_id;
-	}
+	wb::future_map future; // FIXME: why not future_map_if_active?
+	auto wb = resources::controller->get_whiteboard();
+	return wb ? wb->get_spent_gold_for(side_number) : 0;
+}
 
-	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(current_team.side(), target_hex), type_id)) {
-		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
-				utils::string_map{{ "unit_type_name", u_type->type_name() }});
-	}
-
-	// TODO take a wb::future_map RAII as units_dialog does
-	int wb_gold = 0;
-	{
-		wb::future_map future;
-		wb_gold = (resources::controller->get_whiteboard()
-			? resources::controller->get_whiteboard()->get_spent_gold_for(current_team.side())
-			: 0);
-	}
-	if(u_type->cost() > current_team.gold() - wb_gold)
-	{
-		if(wb_gold > 0)
+std::string check_recruit_purse(int unit_cost, int current_purse, int investments)
+{
+	if(unit_cost > (current_purse - investments)) {
+		return investments > 0
 			// TRANSLATORS: "plan" refers to Planning Mode
-			return _("At this point in your plan, you will not have enough gold to recruit this unit.");
-		else
-			return _("You do not have enough gold to recruit this unit.");
+			? _("At this point in your plan, you will not have enough gold to recruit this unit.")
+			: _("You do not have enough gold to recruit this unit.");
+		}
+
+	return "";
+}
+
+std::string check_recruit_list(
+	const std::string& type, int side_number, const map_location& target_hex)
+{
+	const unit_type* u_type = unit_types.find(type);
+	if(!u_type || utils::contains(actions::get_recruits(side_number, target_hex), type)) {
+		return "";
 	}
 
-	const events::command_disabler disable_commands;
-
-	{
-		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		std::string msg = actions::find_recruit_location(current_team.side(), target_hex, recruited_from, type_id);
-		if(!msg.empty()) {
-			return msg;
-		}
-	} // end planned unit map scope
-
-	return {};
+	utils::string_map symbols{{ "unit_type", u_type->type_name() }};
+	return VGETTEXT("The $unit_type is not available to recruit.", symbols);
 }
 
+std::tuple<std::string, map_location, map_location> validate_recruit_target(
+	const std::string& type, int side_number, const map_location& target_hex)
+{
+	// start planned unit map scope if in planning mode
+	wb::future_map_if_active future;
+
+	map_location recruit_to = target_hex;
+	map_location recruit_from; // Populated below
+
+	std::string msg = actions::find_recruit_location(side_number, recruit_to, recruit_from, type);
+	return std::tuple(msg, recruit_to, recruit_from);
 }
+
+} // unit_helper

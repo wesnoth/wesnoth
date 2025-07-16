@@ -101,11 +101,25 @@ std::string format_level_string(const int level, bool recallable);
  */
 std::string format_movement_string(const int moves_left, const int moves_max, const bool active = true);
 
-/** @return If the recruit is possible, an empty optional and set @a recruited_from;
-	otherwise, return an error message string describing the reason. */
-t_string recruit_message(
-	const std::string& type_id,
-	map_location& target_hex,
-	map_location& recruited_from,
-	const team& current_team);
-}
+/** @returns the amount of gold tied up in the given side's planned actions. */
+int planned_gold_spent(int side_number);
+
+/** @returns an error message if the given unit cost is unaffordable. */
+std::string check_recruit_purse(int unit_cost, int current_purse, int investments);
+
+/** @returns an error message if the given unit is not on the given side's recruit list. */
+std::string check_recruit_list(
+	const std::string& type, int side_number, const map_location& target_hex);
+
+/**
+ * Verifies that @a target_hex is a valid recruit location for the given side.
+ *
+ * @returns a tuple consisting of
+ * - any applicable error message
+ * - the valid recruit target hex
+ * - the valid recruit source hex
+ */
+std::tuple<std::string, map_location, map_location> validate_recruit_target(
+	const std::string& type, int side_number, const map_location& target_hex);
+
+} // namespace unit_helper
