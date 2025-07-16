@@ -917,8 +917,13 @@ function wml_actions.reset_fog(cfg)
 end
 
 function wesnoth.wml_actions.change_theme(cfg)
+	-- If we're in a replay, we need to be using the replay theme.
+	-- Ignore in-replay requests to change to a different theme. 
+	if wesnoth.current.user_is_replaying then
+		return
+	end
+	
 	local new_theme = cfg.theme
-
 	if new_theme == nil then
 		new_theme = ""
 	end
