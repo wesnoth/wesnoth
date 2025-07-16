@@ -1625,7 +1625,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	gui().clear_attack_indicator();
 	gui().unhighlight_reach();
 
-	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
+	current_team().increment_action_bonus_count();
 	// TODO: change ToD to be location specific for the defender
 
 	const tod_manager& tod_man = pc_.get_tod_manager();

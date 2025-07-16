@@ -208,7 +208,7 @@ struct take_village_step : undo_action
 			get_village(loc, original_village_owner, nullptr, false);
 			// MP_COUNTDOWN take away capture bonus
 			if(take_village_timebonus) {
-				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+				current_team.decrement_action_bonus_count();
 			}
 		}
 		return true;
@@ -251,7 +251,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	}
 
 	if(grants_timebonus) {
-		t->set_action_bonus_count(1 + t->action_bonus_count());
+		t->increment_action_bonus_count();
 		*action_timebonus = true;
 	}
 

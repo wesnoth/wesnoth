@@ -92,7 +92,7 @@ bool recruit_action::undo(int side)
 	current_team.spend_gold(-un.type().cost());
 
 	//MP_COUNTDOWN take away recruit bonus
-	current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+	current_team.decrement_action_bonus_count();
 
 	// invalidate before erasing allow us
 	// to also do the overlapped hexes
