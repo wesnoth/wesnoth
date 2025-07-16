@@ -922,7 +922,7 @@ function wesnoth.wml_actions.change_theme(cfg)
 	if wesnoth.current.user_is_replaying then
 		return
 	end
-	
+
 	local new_theme = cfg.theme
 	if new_theme == nil then
 		new_theme = ""
