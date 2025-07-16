@@ -276,7 +276,6 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	for(const auto& recruit : actions::get_recruits(side_num, last_hex)) {
 		const unit_type* type = unit_types.find(recruit);
-
 		if(type) {
 			recruit_list.push_back(type);
 		} else {
@@ -327,22 +326,18 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
-	team& recruiter = board().get_team(side_num);
-	const std::string& last_recruit = recruiter.last_recruit();
+	team& current_team = board().get_team(side_num);
+	const std::string& last_recruit = current_team.last_recruit();
 	if(last_recruit.empty()) return;
-
-	// Assume we stored a valid type
-	const unit_type& type = *unit_types.find(last_recruit);
 
 	const auto validation = std::array
 	{
 		// The recruit list may have been modified since the last recruit...
-		unit_helper::check_recruit_list(
-			actions::get_recruits(recruiter.side(), last_hex), last_recruit, type.type_name()),
+		unit_helper::check_recruit_list(last_recruit, current_team.side(), last_hex),
 
 		// ...or we may be unable to afford any more units.
 		unit_helper::check_recruit_purse(
-			type.cost(), recruiter.gold(), unit_helper::planned_gold_spent(side_num)),
+			unit_types.find(last_recruit)->cost(), current_team.gold(), unit_helper::planned_gold_spent(side_num)),
 	};
 
 	// Show the first non-empty error
@@ -376,9 +371,9 @@ bool menu_handler::do_recruit(const std::string& type, int side_num, const map_l
 	}
 
 	// MP_COUNTDOWN grant time bonus for recruiting
-	team& recruiter = board().get_team(side_num);
-	recruiter.set_action_bonus_count(1 + recruiter.action_bonus_count());
-	recruiter.last_recruit(type);
+	team& current_team = board().get_team(side_num);
+	current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+	current_team.last_recruit(type);
 
 	// Do the recruiting.
 	synced_context::run_and_throw("recruit", replay_helper::get_recruit(type, dst, src));

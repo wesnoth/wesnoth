@@ -164,11 +164,11 @@ std::string format_movement_string(const int moves_left, const int moves_max, bo
 	}
 }
 
-int planned_gold_spent(int side_num)
+int planned_gold_spent(int side_number)
 {
 	wb::future_map future; // FIXME: why not future_map_if_active?
 	auto wb = resources::controller->get_whiteboard();
-	return wb ? wb->get_spent_gold_for(side_num) : 0;
+	return wb ? wb->get_spent_gold_for(side_number) : 0;
 }
 
 std::string check_recruit_purse(int unit_cost, int current_purse, int investments)
@@ -184,13 +184,16 @@ std::string check_recruit_purse(int unit_cost, int current_purse, int investment
 }
 
 std::string check_recruit_list(
-	const std::set<std::string>& recruits, const std::string& type, const t_string& type_name)
+	const std::string& type, int side_number, const map_location& target_hex)
 {
-	if(!utils::contains(recruits, type)) {
-		return VGETTEXT("You cannot recruit another $unit_type at this time.", {{"unit_type", type_name}});
+	const unit_type* u_type = unit_types.find(type);
+	if(!u_type || utils::contains(actions::get_recruits(side_number, target_hex), type)) {
+		return "";
 	}
 
-	return "";
+	// FIXME: this is grammatically incorrect in English if the name starts with a vowel.
+	utils::string_map symbols{{ "unit_type", u_type->type_name() }};
+	return VGETTEXT("You cannot recruit a $unit_type at this time.", symbols);
 }
 
 std::tuple<std::string, map_location, map_location> validate_recruit_target(
