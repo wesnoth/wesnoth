@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'org.wesnoth.Wesnoth'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "org.wesnoth.Wesnoth"
         minSdk 23
-        targetSdk 33
+        targetSdk 35
         versionCode 11913
         versionName "1.19.13"
     }
@@ -45,4 +45,7 @@ android {
         }
     }
 
+    dependencies {
+        implementation "androidx.core:core:1.16.0"
+    }
 }

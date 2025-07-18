@@ -15,12 +15,16 @@
 
 package org.wesnoth.Wesnoth;
 
+import java.io.File;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.util.Log;
+
+import androidx.core.content.FileProvider;
 
 import org.libsdl.app.SDLActivity;
 
@@ -31,10 +35,20 @@ public class WesnothActivity extends SDLActivity
 	public void open(String url) {
 		Log.d("WesnothActivity", "opening " + url);
 		Intent openIntent = new Intent(Intent.ACTION_VIEW);
-		openIntent.setData(Uri.parse(url));
+		if (url.startsWith("http://") || url.startsWith("https://")) {
+			openIntent.setData(Uri.parse(url));
+		} else {
+			File file = new File(url);
+			Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+			openIntent.setDataAndType(uri, "*/*");
+			openIntent.setFlags(
+				Intent.FLAG_GRANT_READ_URI_PERMISSION
+				| Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+			);
+		}
 		startActivity(openIntent);
 	}
-	
+
 	public double getBatteryPercentage() {
 		// From https://stackoverflow.com/a/42327441
 		if (Build.VERSION.SDK_INT >= 21) {
