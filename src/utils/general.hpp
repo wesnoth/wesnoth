@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <functional>
 #include <string>
 
 namespace utils
