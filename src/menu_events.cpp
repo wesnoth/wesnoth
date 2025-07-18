@@ -319,8 +319,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	const unit_type* type = recruit_list[dlg->get_selected_index()];
 	last_recruit = type->id();
 
-	if(dlg->get_retval() == gui2::retval::OK && dlg->is_selected()) {
-		do_recruit(type->id(), side_num, last_hex);
+	if(dlg->get_retval() == gui2::retval::OK) {
+		if(err_msgs_map[type].empty()) {
+			do_recruit(type->id(), side_num, last_hex);
+		} else {
+			gui2::show_transient_message("", err_msgs_map[type]);
+		}
 	}
 }
 
