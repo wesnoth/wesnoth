@@ -1646,23 +1646,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	);
 }
 
-std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const
-{
-	std::set<map_location> res;
-
-	const team& uteam = pc_.get_teams()[side - 1];
-
-	for(const map_location& aloc : get_adjacent_tiles(loc)) {
-		unit_map::const_iterator i = find_unit(aloc);
-
-		if(i && uteam.is_enemy(i->side())) {
-			res.insert(aloc);
-		}
-	}
-
-	return res;
-}
-
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)
 {
 	game_board& board = pc_.gamestate().board_;

@@ -66,9 +66,6 @@ public:
 
 	const pathfind::marked_route& get_current_route() const { return current_route_; }
 
-	//get visible adjacent enemies of 1-based side around location loc
-	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;
-
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
 	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src);
