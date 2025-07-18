@@ -332,9 +332,7 @@ void addon_list::select_addon(const std::string& id)
 {
 	listbox& list = get_listbox();
 
-	auto iter = std::find_if(addon_vector_.begin(), addon_vector_.end(),
-		[&id](const addon_info* a) { return a->id == id; }
-	);
+	auto iter = utils::ranges::find(addon_vector_, id, &addon_info::id);
 
 	// Corner case: if you publish an addon with an out-of-folder .pbl file and
 	// delete it locally before deleting it from the server, the game will try

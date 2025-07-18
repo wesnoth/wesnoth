@@ -99,7 +99,7 @@ std::string get_unknown_exception_type();
 /**
  * Convenience wrapper for using std::remove_if on a container.
  *
- * todoc++20 use C++20's std::erase_if instead. The C++20 function returns the number of elements
+ * @todo c++20 use C++20's std::erase_if instead. The C++20 function returns the number of elements
  * removed; this one could do that but it seems unnecessary to add it unless something is using it.
  */
 template<typename Container, typename Predicate>
@@ -125,6 +125,7 @@ std::size_t erase(Container& container, const Value& value)
 /**
  * Convenience wrapper for using std::sort on a container.
  *
+ * @todo C++20: use std::ranges::sort
  */
 template<typename Container, typename Predicate>
 void sort_if(Container& container, const Predicate& predicate)
@@ -134,7 +135,6 @@ void sort_if(Container& container, const Predicate& predicate)
 
 /**
  * Convenience wrapper for using find on a container without needing to comare to end()
- *
  */
 template<typename Container, typename Value>
 auto* find(Container& container, const Value& value)
@@ -142,5 +142,40 @@ auto* find(Container& container, const Value& value)
 	auto res = container.find(value);
 	return (res == container.end()) ? nullptr : &*res;
 }
+
+/**
+ * Conveniences wrapper for range algorithms.
+ *
+ * @todo C++20: use std::ranges
+ */
+namespace ranges
+{
+namespace implementation
+{
+struct identity
+{
+	template<typename T>
+	constexpr T&& operator()(T&& t) const noexcept
+	{
+		return std::forward<T>(t);
+	}
+};
+
+} // namespace implementation
+
+template<typename Container, typename Value, typename Projection = implementation::identity>
+auto find(Container& container, const Value& value, const Projection& projection = {})
+{
+	auto end = container.end();
+	for(auto iter = container.begin(); iter != end; ++iter) {
+		if(std::invoke(projection, *iter) == value) {
+			return iter;
+		}
+	}
+
+	return end;
+}
+
+} // namespace ranges
 
 } // namespace utils

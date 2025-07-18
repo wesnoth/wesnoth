@@ -177,11 +177,10 @@ public:
 	static const std::string& type();
 
 	/** Optionally returns the node definition with the given id, or nullopt if not found. */
-	utils::optional<decltype(node_definitions_)::const_iterator> get_node_definition(const std::string& id) const
+	auto get_node_definition(const std::string& id) const
 	{
-		const auto def = std::find_if(
-			node_definitions_.begin(), node_definitions_.end(), [&id](const auto& d) { return d.id == id; });
-		return def != node_definitions_.end() ? utils::make_optional(def) : utils::nullopt;
+		const auto def = utils::ranges::find(node_definitions_, id, &node_definition::id);
+		return def != node_definitions_.end() ? utils::optional(def) : utils::nullopt;
 	}
 
 private:

@@ -28,6 +28,7 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
 #include "team.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -568,8 +569,7 @@ void scoped_recall_unit::activate()
 	assert(resources::gameboard);
 
 	const std::vector<team>& teams = resources::gameboard->teams();
-
-	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
+	auto team_it = utils::ranges::find(teams, player_, &team::save_id_or_number);
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {
