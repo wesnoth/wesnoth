@@ -180,7 +180,7 @@ public:
 	auto get_node_definition(const std::string& id) const
 	{
 		const auto def = utils::ranges::find(node_definitions_, id, &node_definition::id);
-		return def != node_definitions_.end() ? utils::optional(def) : utils::nullopt;
+		return def != node_definitions_.end() ? utils::make_optional(def) : utils::nullopt;
 	}
 
 private:

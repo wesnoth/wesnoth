@@ -118,7 +118,8 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 void display::add_overlay(const map_location& loc, overlay&& ov)
 {
 	std::vector<overlay>& overlays = get_overlays()[loc];
-	auto pos = utils::ranges::find(overlays, ov.z_order, &overlay::z_order);
+	auto pos = std::find_if(overlays.begin(), overlays.end(),
+		[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
 
 	auto inserted = overlays.emplace(pos, std::move(ov));
 	if(const std::string& halo = inserted->halo; !halo.empty()) {
