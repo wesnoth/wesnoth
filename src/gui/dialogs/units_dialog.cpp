@@ -688,11 +688,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	std::vector<unit_const_ptr>& recall_list,
 	const team& team)
 {
-	int wb_gold = 0;
-	if(resources::controller && resources::controller->get_whiteboard()) {
-		wb::future_map future; // So gold takes into account planned spending
-		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(team.side());
-	}
+	int wb_gold = unit_helper::planned_gold_spent(team.side());
 
 	// Lambda to check if a unit is recallable
 	const auto recallable = [wb_gold, &team](const unit& unit) {
