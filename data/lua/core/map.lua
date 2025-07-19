@@ -35,10 +35,10 @@ function wesnoth.map.read_location(...)
 end
 
 function wesnoth.map.nearest_loc(to, candidates)
-    local F = wesnoth.require "functional"
-    return F.choose(candidates, function(loc)
-        return -wesnoth.map.distance_between(to, loc)
-    end)
+	local F = wesnoth.require "functional"
+	return F.choose(candidates, function(loc)
+		return -wesnoth.map.distance_between(to, loc)
+	end)
 end
 
 if wesnoth.kernel_type() ~= "Application Lua Kernel" then
