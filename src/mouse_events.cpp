@@ -1443,7 +1443,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 				defw_type = string_table["type_" + defw_type];
 			}
 
-			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
+			const std::set<std::string> checking_tags_other = {"defense", "damage_type", "disable", "berserk", "drains",
 				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 			std::string attw_specials = attacker_weapon.weapon_specials();
 			std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
