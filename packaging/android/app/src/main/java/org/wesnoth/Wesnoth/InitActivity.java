@@ -83,7 +83,7 @@ public class InitActivity extends Activity {
 
 		// Keep the screen on while this activity runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		
+
 		initMainDataDir();
 
 		initSettingsMenu();
@@ -277,16 +277,19 @@ public class InitActivity extends Activity {
 
 	// Extract certificate file from apk raw resource
 	private void extractNetworkCertificate() {
+		// TODO update mechanism for this file
 		File certDir = new File(dataDir, "certificates");
 		if (!certDir.exists()) {
 			certDir.mkdir();
 		}
 		File certFile = new File(certDir, "cacert.pem");
+		if (certFile.exists()) {
+			return;
+		}
+
 		try (FileOutputStream certStream = new FileOutputStream(certFile)) {
-			if (!certFile.exists()) {
-				certFile.createNewFile();
-				copyStream(getResources().openRawResource(R.raw.cacert), certStream);
-			}
+			certFile.createNewFile();
+			copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 		} catch (Exception e) {
 			Log.e("InitActivity", "Exception", e);
 		}
