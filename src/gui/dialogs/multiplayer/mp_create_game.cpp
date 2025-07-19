@@ -281,9 +281,8 @@ void mp_create_game::pre_show()
 
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
-		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == *level_type::get_enum(prefs::get().mp_level_type());
-		});
+		const auto index = utils::ranges::find(level_types_,
+			level_type::get_enum(prefs::get().mp_level_type()).value(), &level_type_info::first);
 
 		if(index != level_types_.end()) {
 			return std::distance(level_types_.begin(), index);
@@ -537,15 +536,8 @@ void mp_create_game::sync_with_depcheck()
 			create_engine_.set_current_level(new_level_index);
 			selected_game_index_ = new_level_index;
 
-#ifdef __cpp_lib_ranges
-			auto iter = std::ranges::find(level_types_, new_level_type, &level_type_info::first);
-#else
-			auto iter = std::find_if(level_types_.begin(), level_types_.end(),
-				[type = new_level_type](const level_type_info& info) { return info.first == type; });
-#endif
-
-			auto& game_types_list = find_widget<menu_button>("game_types");
-			game_types_list.set_value(std::distance(level_types_.begin(), iter));
+			auto iter = utils::ranges::find(level_types_, new_level_type, &level_type_info::first);
+			find_widget<menu_button>("game_types").set_value(std::distance(level_types_.begin(), iter));
 
 			if(different_type) {
 				display_games_of_type(new_level_type, create_engine_.current_level().id());

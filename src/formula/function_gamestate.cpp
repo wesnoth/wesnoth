@@ -158,9 +158,8 @@ DEFINE_WFL_FUNCTION(defense_on, 2, 2)
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
 		const std::string id = tc->get_value("id").as_string();
-		auto iter = std::find_if(tdata->map().begin(), tdata->map().end(), [id](const std::pair<t_translation::terrain_code, terrain_type>& p) {
-			return id == p.second.id();
-		});
+		auto iter = utils::ranges::find(tdata->map(), id,
+			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
 		if(iter == tdata->map().end()) {
 			return variant();
 		}
@@ -207,9 +206,8 @@ DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
 		const std::string id = tc->get_value("id").as_string();
-		auto iter = std::find_if(tdata->map().begin(), tdata->map().end(), [id](const std::pair<t_translation::terrain_code, terrain_type>& p) {
-			return id == p.second.id();
-		});
+		auto iter = utils::ranges::find(tdata->map(), id,
+			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
 		if(iter == tdata->map().end()) {
 			return variant();
 		}
@@ -256,9 +254,8 @@ DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
 		const std::string id = tc->get_value("id").as_string();
-		auto iter = std::find_if(tdata->map().begin(), tdata->map().end(), [id](const std::pair<t_translation::terrain_code, terrain_type>& p) {
-			return id == p.second.id();
-		});
+		auto iter = utils::ranges::find(tdata->map(), id,
+			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
 		if(iter == tdata->map().end()) {
 			return variant();
 		}
@@ -305,9 +302,8 @@ DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
 		const std::string id = tc->get_value("id").as_string();
-		auto iter = std::find_if(tdata->map().begin(), tdata->map().end(), [id](const std::pair<t_translation::terrain_code, terrain_type>& p) {
-			return id == p.second.id();
-		});
+		auto iter = utils::ranges::find(tdata->map(), id,
+			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
 		if(iter == tdata->map().end()) {
 			return variant();
 		}
@@ -354,9 +350,8 @@ DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
 		const std::string id = tc->get_value("id").as_string();
-		auto iter = std::find_if(tdata->map().begin(), tdata->map().end(), [id](const std::pair<t_translation::terrain_code, terrain_type>& p) {
-			return id == p.second.id();
-		});
+		auto iter = utils::ranges::find(tdata->map(), id,
+			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
 		if(iter == tdata->map().end()) {
 			return variant();
 		}

@@ -108,6 +108,7 @@
 #include "units/map.hpp"                // for unit_map, etc
 #include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"              // for unit_type_data, unit_types, etc
+#include "utils/general.hpp"
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
@@ -1004,9 +1005,7 @@ SCHEDULE_GETTER("time_of_day", std::string) {
 
 SCHEDULE_SETTER("time_of_day", std::string) {
 	const auto& times = sched.area_index < 0 ? sched.tod_man().times() : sched.tod_man().times(sched.area_index);
-	auto iter = std::find_if(times.begin(), times.end(), [&value](const time_of_day& tod) {
-		return tod.id == value;
-	});
+	auto iter = utils::ranges::find(times, value, &time_of_day::id);
 	if(iter == times.end()) {
 		std::ostringstream err;
 		err << "invalid time of day ID for ";

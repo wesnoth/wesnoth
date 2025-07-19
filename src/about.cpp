@@ -20,6 +20,7 @@
 #include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <map>
 
@@ -98,8 +99,7 @@ const credits_data& get_credits_data()
 
 utils::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign)
 {
-	const credits_data::const_iterator res = std::find_if(parsed_credits_data.begin(), parsed_credits_data.end(),
-		[&campaign](const credits_group& group) { return group.id == campaign; });
+	const auto res = utils::ranges::find(get_credits_data(), campaign, &credits_group::id);
 	return res != parsed_credits_data.end() ? utils::make_optional(res) : utils::nullopt;
 }
 

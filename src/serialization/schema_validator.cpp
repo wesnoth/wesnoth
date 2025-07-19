@@ -317,13 +317,13 @@ void schema_validator::detect_link_cycles(const std::string& filename) {
 
 	boost::depth_first_search(link_graph,
 		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::source(edge, link_graph); });
+			const auto source = utils::ranges::find(link_map, boost::source(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(source != link_map.end());
 
-			const auto target = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::target(edge, link_graph); });
+			const auto target = utils::ranges::find(link_map, boost::target(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(target != link_map.end());
 
@@ -592,13 +592,13 @@ void schema_validator::detect_derivation_cycles()
 {
 	boost::depth_first_search(derivation_graph_,
 		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::source(edge, derivation_graph_); });
+			const auto source = utils::ranges::find(derivation_map_, boost::source(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(source != derivation_map_.end());
 
-			const auto target = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::target(edge, derivation_graph_); });
+			const auto target = utils::ranges::find(derivation_map_, boost::target(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(target != derivation_map_.end());
 
