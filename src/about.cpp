@@ -99,7 +99,7 @@ const credits_data& get_credits_data()
 
 utils::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign)
 {
-	const auto res = utils::ranges::find(parsed_credits_data, campaign, &credits_group::id);
+	const auto res = utils::ranges::find(get_credits_data(), campaign, &credits_group::id);
 	return res != parsed_credits_data.end() ? utils::make_optional(res) : utils::nullopt;
 }
 

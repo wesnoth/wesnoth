@@ -452,12 +452,10 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	return &open_windows_.back();
 }
 
-void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
+void chatbox::close_window_button_callback(const std::string& room_name, bool& handled, bool& halt)
 {
-	const int index = std::distance(open_windows_.begin(),
-		utils::ranges::find(open_windows_, room_name, &lobby_chat_window::name));
-
-	close_window(index);
+	close_window(std::distance(open_windows_.begin(),
+		utils::ranges::find(open_windows_, room_name, &lobby_chat_window::name)));
 
 	handled = halt = true;
 }

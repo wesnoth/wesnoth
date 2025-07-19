@@ -537,8 +537,7 @@ void mp_create_game::sync_with_depcheck()
 			selected_game_index_ = new_level_index;
 
 			auto iter = utils::ranges::find(level_types_, new_level_type, &level_type_info::first);
-			auto& game_types_list = find_widget<menu_button>("game_types");
-			game_types_list.set_value(std::distance(level_types_.begin(), iter));
+			find_widget<menu_button>("game_types").set_value(std::distance(level_types_.begin(), iter));
 
 			if(different_type) {
 				display_games_of_type(new_level_type, create_engine_.current_level().id());
