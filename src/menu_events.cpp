@@ -1644,21 +1644,6 @@ void console_handler::do_theme()
 	prefs::get().show_theme_dialog();
 }
 
-struct save_id_matches
-{
-	save_id_matches(const std::string& save_id)
-		: save_id_(save_id)
-	{
-	}
-
-	bool operator()(const team& t) const
-	{
-		return t.save_id() == save_id_;
-	}
-
-	std::string save_id_;
-};
-
 void console_handler::do_control()
 {
 	// :control <side> <nick>
@@ -1678,7 +1663,7 @@ void console_handler::do_control()
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(const bad_lexical_cast&) {
 		const auto& teams = menu_handler_.pc_.get_teams();
-		const auto it_t = std::find_if(teams.begin(), teams.end(), save_id_matches(side));
+		const auto it_t = utils::ranges::find(teams, side, &team::save_id);
 
 		if(it_t == teams.end()) {
 			utils::string_map symbols;

@@ -20,6 +20,7 @@
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
+#include "utils/general.hpp"
 #include "utils/rate_counter.hpp"
 
 #include <SDL2/SDL.h>
@@ -180,9 +181,8 @@ std::shared_ptr<sound::music_track> previous_track;
 
 std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(const sound::music_track& track)
 {
-	return std::find_if(current_track_list.begin(), current_track_list.end(),
-		[&track](const std::shared_ptr<const sound::music_track>& ptr) { return *ptr == track; }
-	);
+	return utils::ranges::find(current_track_list, track,
+		[](const std::shared_ptr<const sound::music_track>& ptr) { return *ptr; });
 }
 
 } // end anon namespace

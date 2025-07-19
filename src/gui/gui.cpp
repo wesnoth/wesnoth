@@ -155,8 +155,8 @@ void switch_theme(const std::string& theme_id)
 	if(theme_id.empty() || theme_id == "default") {
 		current_gui = default_gui;
 	} else {
-		current_gui = std::find_if(guis.begin(), guis.end(),
-			[&](const auto& theme) { return theme.first == theme_id; });
+		current_gui = utils::ranges::find(guis, theme_id,
+			[&](const auto& theme) { return theme.first; });
 
 		if(current_gui == guis.end()) {
 			ERR_GUI_P << "Missing [gui] definition for '" << theme_id << "'";

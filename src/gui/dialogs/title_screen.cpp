@@ -393,10 +393,7 @@ void title_screen::update_static_labels()
 		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
 		const auto& langs = get_languages(true);
 
-		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
-			return lang.localename == boost_name;
-		});
-
+		auto lang_def = utils::ranges::find(langs, boost_name, &language_def::localename);
 		if(lang_def != langs.end()) {
 			lang_button->set_label(lang_def->language.str());
 		} else if(boost_name == "c" || boost_name == "C") {

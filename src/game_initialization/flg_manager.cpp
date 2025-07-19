@@ -435,10 +435,8 @@ void flg_manager::update_choosable_genders()
 void flg_manager::select_default_faction()
 {
 	const std::string& default_faction = original_faction_;
-	auto default_faction_it = std::find_if(choosable_factions_.begin(), choosable_factions_.end(),
-		[&default_faction](const config* faction) {
-			return (*faction)["id"] == default_faction;
-		});
+	auto default_faction_it = utils::ranges::find(choosable_factions_, default_faction,
+		[](const config* faction) { return (*faction)["id"]; });
 
 	if(default_faction_it != choosable_factions_.end()) {
 		set_current_faction(std::distance(choosable_factions_.begin(), default_faction_it));

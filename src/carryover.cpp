@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -154,26 +155,11 @@ void carryover_info::remove_side(const std::string& id) {
 	}
 }
 
-struct save_id_equals
-{
-	save_id_equals(const std::string& val) : value (val) {}
-	bool operator () (carryover& v2) const
-	{
-		return value == v2.get_save_id();
-	}
-
-	std::string value;
-};
-
 void carryover_info::transfer_all_to(config& side_cfg){
 	if(side_cfg["save_id"].empty()){
 		side_cfg["save_id"] = side_cfg["id"];
 	}
-	std::vector<carryover>::iterator iside = std::find_if(
-		carryover_sides_.begin(),
-		carryover_sides_.end(),
-		save_id_equals(side_cfg["save_id"])
-	);
+	auto iside = utils::ranges::find(carryover_sides_, side_cfg["save_id"], &carryover::get_save_id);
 	if(iside != carryover_sides_.end())
 	{
 		iside->transfer_all_gold_to(side_cfg);
@@ -255,11 +241,7 @@ void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
 {
 	for(const carryover & old_side : old_carryover.carryover_sides_)
 	{
-		std::vector<carryover>::iterator iside = std::find_if(
-			carryover_sides_.begin(),
-			carryover_sides_.end(),
-			save_id_equals(old_side.get_save_id())
-			);
+		auto iside = utils::ranges::find(carryover_sides_, old_side.get_save_id(), &carryover::get_save_id);
 		//add the side if don't already have it.
 		if(iside == carryover_sides_.end())
 		{

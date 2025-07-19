@@ -227,7 +227,7 @@ public:
 	 */
 	lobby_chat_window* find_or_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close, const std::string& initial_text);
 
-	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
+	void close_window_button_callback(const std::string& room_name, bool& handled, bool& halt);
 
 	void process_message(const ::config& data, bool whisper = false);
 

@@ -469,8 +469,7 @@ void addon_manager::pre_show()
 		const sort_order::type saved_order_direction = prefs::get().addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
-			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
-				[&saved_order_name](const addon_order& order) {return order.as_preference == saved_order_name;});
+			auto order_it = utils::ranges::find(all_orders_, saved_order_name, &addon_order::as_preference);
 			if(order_it != all_orders_.end()) {
 				int index = 2 * (std::distance(all_orders_.begin(), order_it));
 				addon_list::addon_sort_func func;
@@ -655,11 +654,8 @@ boost::dynamic_bitset<> addon_manager::get_name_filter_visibility() const
 
 	for(const auto& a : addons_)
 	{
-		const config& addon_cfg = *std::find_if(addon_cfgs.begin(), addon_cfgs.end(),
-			[&a](const config& cfg)
-		{
-			return cfg["name"] == a.first;
-		});
+		const config& addon_cfg = *utils::ranges::find(addon_cfgs, a.first,
+			[](const config& cfg) { return cfg["name"]; });
 
 		res.push_back(filter(addon_cfg));
 	}
@@ -734,11 +730,8 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 
 		for(const auto& a : addons_) {
 			int index = std::distance(type_filter_types_.begin(),
-				std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
-					[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
-						return entry.first == a.second.type;
-					})
-				);
+				utils::ranges::find(type_filter_types_, a.second.type,
+					[](const std::pair<ADDON_TYPE, std::string>& entry) { return entry.first; }));
 			res.push_back(toggle_states[index]);
 		}
 		return res;
@@ -824,8 +817,7 @@ void addon_manager::order_addons()
 void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
 {
 	menu_button& order_menu = find_widget<menu_button>("order_dropdown");
-	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
-		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
+	auto order_it = utils::ranges::find(all_orders_, static_cast<int>(sort_column), &addon_order::column_index);
 	int index = 2 * (std::distance(all_orders_.begin(), order_it));
 	if(order == sort_order::type::descending) {
 		++index;

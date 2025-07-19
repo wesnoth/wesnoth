@@ -782,17 +782,11 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
 		DBG_CF << "Key ‘" << name << "’ value ‘" << value << "’ pair not found as child of key ‘" << key << "’.";
-
-
 		return utils::nullopt;
 	}
 
-	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
-		[&](const std::unique_ptr<config>& pcfg) {
-			const config& cfg = *pcfg;
-			return cfg[name] == value;
-		}
-	);
+	const child_list::iterator j = utils::ranges::find(i->second, value,
+		[&](const std::unique_ptr<config>& pcfg) { return (*pcfg)[name]; });
 
 	if(j != i->second.end()) {
 		return **j;
