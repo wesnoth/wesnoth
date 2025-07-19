@@ -65,8 +65,8 @@ std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view
 	const point node_size = node->get_size();
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
-	auto node_itor = utils::ranges::find(siblings, node, [node](const auto& c) { return c.get(); });
 
+	auto node_itor = utils::ranges::find(siblings, node, [](const auto& c) { return c.get(); });
 	assert(node_itor != siblings.end());
 
 	auto old_node = std::move(*node_itor);
