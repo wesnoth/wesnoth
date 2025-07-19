@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-01-31 00:06+0100\n"
+"PO-Revision-Date: 2025-07-15 22:33+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -7852,8 +7852,10 @@ msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
 #: src/gui/dialogs/unit_recall.cpp:363
+#, fuzzy
+#| msgid "This unit requires no upkeep."
 msgid "This unit is loyal and requires no upkeep."
-msgstr "Ez az egység hűséges, így nincs fenntartási költsége."
+msgstr "Ennek az egységnek nincs fenntartási költsége."
 
 #: src/gui/dialogs/unit_recall.cpp:364 src/gui/dialogs/unit_recall.cpp:369
 #: src/gui/dialogs/unit_recall.cpp:374
@@ -8989,20 +8991,20 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Gravel"
 #~ msgstr "Föveny"
 
-#~ msgid "Hide"
-#~ msgstr "Elrejt"
+#~ msgid "Tip of the Day"
+#~ msgstr "Napi tipp"
 
-#~ msgid "Hide tip of the day"
-#~ msgstr "Napi tipp elrejtése"
-
-#~ msgid "Visit the in-game help"
-#~ msgstr "Játékon belüli súgó megtekintése"
+#~ msgid "Show tip of the day"
+#~ msgstr "Napi tipp megjelenítése"
 
 #~ msgid "About"
 #~ msgstr "Rólunk"
 
 #~ msgid "General information about Battle for Wesnoth"
 #~ msgstr "Általános információk a Harc Wesnothért játékról"
+
+#~ msgid "Visit the in-game help"
+#~ msgstr "Játékon belüli súgó megtekintése"
 
 #~ msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
 #~ msgstr "<b><span font_family='DejaVu Sans'>✔</span> átmásolva</b>"
@@ -9024,6 +9026,19 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "List hidden add-ons (admin)"
 #~ msgstr "Rejtett bővítmények listázása (admin)"
+
+#~ msgid ""
+#~ "In addition to the mainline campaigns, Wesnoth also has an ever-growing "
+#~ "list of add-on content created by other players available via the Add-ons "
+#~ "server, included but not limited to more single and multiplayer "
+#~ "campaigns, multiplayer maps, additional media and various other content! "
+#~ "Be sure to give it a try!"
+#~ msgstr ""
+#~ "A fő kampányok mellett a játéknak egyre bővülő listája van a más "
+#~ "játékosok által készített kiegészítő tartalmakról is, amelyek elérhetők "
+#~ "az Add-ons szerveren keresztül, beleértve, de nem kizárólagosan több egy- "
+#~ "és többjátékos kampányt, többjátékos térképeket, kiegészítő eszközöket és "
+#~ "különféle egyéb tartalmakat! Mindenképpen próbáld ki!"
 
 #~ msgid "Filter by campaign completion status"
 #~ msgstr "Hadjárat befejezettség szerinti szűrés"
@@ -9276,6 +9291,15 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Show Topics"
 #~ msgstr "Témakörök megjelenítése"
 
+#~ msgid "Search help topic names"
+#~ msgstr "Súgótémakörök nevének keresése"
+
+#~ msgid "Join Queue"
+#~ msgstr "Csatlakozás a várólistához"
+
+#~ msgid "Leave Queue"
+#~ msgstr "Várólistából kilépés"
+
 #~ msgid "Faction:"
 #~ msgstr "Szövetség:"
 
@@ -9306,14 +9330,38 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Apply"
 #~ msgstr "Alkalmaz"
 
-#~ msgid "Show tip of the day"
-#~ msgstr "Napi tipp megjelenítése"
-
 #~ msgid "Show gameplay tips on the main menu"
 #~ msgstr "Játéktippek megjelenítése a főmenüben"
 
+#~ msgid "Reach Map Options"
+#~ msgstr "Térkép beállítások elérése"
+
+#~ msgid "Highlight Color"
+#~ msgstr "Kiemelés színe"
+
+#~ msgid "Enemy Highlight Color"
+#~ msgstr "Ellenség kiemelés színe"
+
+#~ msgid "Border Opacity:"
+#~ msgstr "Szegély áttetszősége:"
+
+#~ msgid "Tint Opacity:"
+#~ msgstr "Szín áttetszősége:"
+
+#~ msgid "★"
+#~ msgstr "★"
+
+#~ msgid "Mark/unmark the selected unit as favorite"
+#~ msgstr "Kiválasztott egység kedvencnek jelölése/törlése"
+
 #~ msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
 #~ msgstr "oldal^<span font_family='DejaVu Sans'>✔</span> átmásolva"
+
+#~ msgid "$title ($count/$total)"
+#~ msgstr "$title ($count/$total)"
+
+#~ msgid "Completed $count/$total"
+#~ msgstr "Teljesítve: $count/$total"
 
 #~ msgid "Password not provided"
 #~ msgstr "Jelszó nem meghatározott"
@@ -9326,19 +9374,6 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "More campaigns..."
 #~ msgstr "Még több hadjárat..."
-
-#~ msgid ""
-#~ "In addition to the mainline campaigns, Wesnoth also has an ever-growing "
-#~ "list of add-on content created by other players available via the Add-ons "
-#~ "server, included but not limited to more single and multiplayer "
-#~ "campaigns, multiplayer maps, additional media and various other content! "
-#~ "Be sure to give it a try!"
-#~ msgstr ""
-#~ "A fő kampányok mellett a játéknak egyre bővülő listája van a más "
-#~ "játékosok által készített kiegészítő tartalmakról is, amelyek elérhetők "
-#~ "az Add-ons szerveren keresztül, beleértve, de nem kizárólagosan több egy- "
-#~ "és többjátékos kampányt, többjátékos térképeket, kiegészítő eszközöket és "
-#~ "különféle egyéb tartalmakat! Mindenképpen próbáld ki!"
 
 #~ msgid "Choose File"
 #~ msgstr "Válassz fájlt"
@@ -9424,11 +9459,19 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ "Linkek megnyitása nem támogatott, vedd fel a kapcsolatot a csomagod "
 #~ "készítőjével. A hivatkozás URL-je a vágólapra lett másolva."
 
-#~ msgid "corrupted original file"
-#~ msgstr "hibás eredeti fájl"
-
 #~ msgid "No grid defined for tab container control"
 #~ msgstr "Nincs rács definiálva a laptároló vezérlőhöz"
+
+#~ msgid "Remaining: $left/$max"
+#~ msgstr "Hátravan: $left/$max"
+
+#~ msgid "This unit can attack multiple times per turn."
+#~ msgstr "Ez az egység körönként többször támadhat."
+
+#~ msgid "uses $num attack"
+#~ msgid_plural "uses $num attacks"
+#~ msgstr[0] "$num támadást használ"
+#~ msgstr[1] "$num támadást használ"
 
 #~ msgid "Load Turn..."
 #~ msgstr "Kör betöltése..."
@@ -9442,6 +9485,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Load Map/Scenario"
 #~ msgstr "Térkép/Küldetés betöltése"
 
+#~ msgid "Convert To Scenario"
+#~ msgstr "Konvertálás küldetéssé"
+
 #~ msgid "Select active Add-on"
 #~ msgstr "Aktív kiegészítő kiválasztása"
 
@@ -9453,6 +9499,15 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 #~ msgstr "A kötelező ‘$tag|’ alcímke nincs beállítva itt: ‘[$section|]’."
+
+#~ msgid "corrupted original file"
+#~ msgstr "hibás eredeti fájl"
+
+#~ msgid "Hide"
+#~ msgstr "Elrejt"
+
+#~ msgid "Hide tip of the day"
+#~ msgstr "Napi tipp elrejtése"
 
 #~ msgid "page^✔ Copied"
 #~ msgstr "✔ másolva"
