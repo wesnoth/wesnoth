@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-06-15 22:18-0500\n"
-"PO-Revision-Date: 2025-01-31 00:06+0100\n"
+"PO-Revision-Date: 2025-07-15 22:33+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -2382,10 +2382,8 @@ msgstr "Mutasd a következő tippet"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Következő napi tipp"
+msgstr "Napi tipp"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
@@ -4970,7 +4968,7 @@ msgstr "Témakörök megjelenítése"
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
-msgstr ""
+msgstr "Súgótémakörök nevének keresése"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5173,14 +5171,12 @@ msgstr "Ne mutassa a térképet, amíg nincs irányított oldal"
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:695
 msgid "Join Queue"
-msgstr ""
+msgstr "Csatlakozás a várólistához"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:702
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Vissza"
+msgstr "Várólistából kilépés"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:801
@@ -6641,30 +6637,28 @@ msgstr "Nem jelöltél barátnak, illetve nem blokkolsz egyetlen játékost sem.
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
-#, fuzzy
-#| msgid "Random map options: "
 msgid "Reach Map Options"
-msgstr "Véletlen térkép beállításai: "
+msgstr "Térkép beállítások elérése"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
 msgid "Highlight Color"
-msgstr ""
+msgstr "Kiemelés színe"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Ellenség kiemelés színe"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Szegély áttetszősége:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Szín áttetszősége:"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6946,7 +6940,7 @@ msgstr "Ellenség megtámadása"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:572
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7006,7 +7000,7 @@ msgstr "Átnevezés"
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Kiválasztott egység kedvencnek jelölése/törlése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7194,13 +7188,11 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed: Gold"
 msgid "Completed $count/$total"
-msgstr "Teljesítve: Arany"
+msgstr "Teljesítve: $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -8466,10 +8458,8 @@ msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
 #: src/gui/dialogs/units_dialog.cpp:273
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "Ez az egység hűséges, így nincs fenntartási költsége."
+msgstr "Ennek az egységnek nincs fenntartási költsége."
 
 #: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
 #: src/gui/dialogs/units_dialog.cpp:284
@@ -8687,17 +8677,17 @@ msgstr "(Tám / Véd)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:224
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Hátravan: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:227
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Ez az egység körönként többször támadhat."
 
 #: src/gui/widgets/unit_preview_pane.cpp:269
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num támadást használ"
+msgstr[1] "$num támadást használ"
 
 #: src/gui/widgets/unit_preview_pane.cpp:312
 #: src/gui/widgets/unit_preview_pane.cpp:343
@@ -9131,10 +9121,8 @@ msgid "Save Map As"
 msgstr "Térkép mentése más néven"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Próba küldetés kiválasztása"
+msgstr "Konvertálás küldetéssé"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
