@@ -716,57 +716,58 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// stored in current_track_list.
 	//
 	// vultraz 5/8/2017
+	// vultraz 2025-07-19 function has been updated, can someone check again
 	//
 
-	music_track track(music_node);
-
-	if(!track.valid() && !track.id().empty()) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.";
+	auto track = std::make_shared<music_track>(music_node);
+	if(!track->valid()) {
+		ERR_AUDIO << "cannot open track '" << track->id() << "'; disabled in this playlist.";
+		return;
 	}
 
 	// If they say play once, we don't alter playlist.
-	if(track.play_once()) {
+	if(track->play_once()) {
 		set_previous_track(current_track);
-		current_track = std::make_shared<music_track>(track);
+		current_track = std::move(track);
 		current_track_index = current_track_list.size();
 		play_music();
 		return;
 	}
 
 	// Clear play list unless they specify append.
-	if(!track.append()) {
+	if(!track->append()) {
 		current_track_list.clear();
 	}
 
-	if(!track.valid()) {
-		return;
-	}
-
-	auto iter = find_track(track);
+	auto iter = find_track(*track);
 	// Avoid 2 tracks with the same name, since that can cause an infinite loop
 	// in choose_track(), 2 tracks with the same name will always return the
 	// current track and track_ok() doesn't allow that.
 	if(iter == current_track_list.end()) {
-		if(i < 0 || static_cast<std::size_t>(i) >= current_track_list.size()) {
-			current_track_list.emplace_back(new music_track(track));
-			iter = current_track_list.end() - 1;
-		} else {
-			iter = current_track_list.emplace(current_track_list.begin() + 1, new music_track(track));
-			if(current_track_index >= static_cast<std::size_t>(i)) {
-				current_track_index++;
-			}
+		auto insert_at = (i >= 0 && static_cast<std::size_t>(i) < current_track_list.size())
+			? current_track_list.begin() + i
+			: current_track_list.end();
+
+		// Copy the track pointer so our local variable remains non-null.
+		iter = current_track_list.insert(insert_at, track);
+		auto new_track_index = std::distance(current_track_list.cbegin(), iter);
+
+		// If we inserted the new track *before* the current track, adjust
+		// cached index so it still points to the same element.
+		if(new_track_index <= current_track_index) {
+			++current_track_index;
 		}
 	} else {
-		ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'";
+		ERR_AUDIO << "tried to add duplicate track '" << track->file_path() << "'";
 	}
 
 	// They can tell us to start playing this list immediately.
-	if(track.immediate()) {
+	if(track->immediate()) {
 		set_previous_track(current_track);
 		current_track = *iter;
-		current_track_index = iter - current_track_list.begin();
+		current_track_index = std::distance(current_track_list.cbegin(), iter);
 		play_music();
-	} else if(!track.append() && !allow_interrupt_current_track && current_track) {
+	} else if(!track->append() && !allow_interrupt_current_track && current_track) {
 		// Make sure the current track will finish first
 		current_track->set_play_once(true);
 	}
