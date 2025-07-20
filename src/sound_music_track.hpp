@@ -29,7 +29,6 @@ namespace sound {
 class music_track
 {
 public:
-	music_track();
 	music_track(const config& node);
 	explicit music_track(const std::string& v_name);
 	void write(config& parent_node, bool append) const;

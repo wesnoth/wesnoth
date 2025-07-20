@@ -27,18 +27,6 @@ static lg::log_domain log_audio("audio");
 
 namespace sound {
 
-music_track::music_track()
-	: id_()
-	, file_path_()
-	, ms_before_(0)
-	, ms_after_(0)
-	, once_(false)
-	, append_(false)
-	, immediate_(false)
-	, shuffle_(true)
-{
-}
-
 music_track::music_track(const config& node)
 	: id_(node["name"])
 	, file_path_()
