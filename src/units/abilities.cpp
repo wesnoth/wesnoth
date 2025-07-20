@@ -1749,7 +1749,7 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 			return true;
 		}
 	}
-	if(u->checking_tags().count(tag_name) != 0){
+	if(abilities_list::all_weapon_tags().count(tag_name) != 0){
 		if(u->get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
 			return true;
 		}
@@ -1769,7 +1769,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 			return true;
 		}
 	}
-	if(u->checking_tags().count(tag_name) != 0) {
+	if(abilities_list::all_weapon_tags().count(tag_name) != 0) {
 		if(u->get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
 			return true;
 		}

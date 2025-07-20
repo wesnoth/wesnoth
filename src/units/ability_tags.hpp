@@ -75,5 +75,11 @@ struct ability_list_defines
 		static std::set<std::string> tags{teleport, hides, skirmisher};
 		return tags;
 	}
+
+	static const std::set<std::string>& all_weapon_tags()
+	{
+		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
+		return tags;
+	}
 };
 using abilities_list = string_enums::enum_base<ability_list_defines>;
