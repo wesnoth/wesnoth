@@ -25,6 +25,7 @@
 #include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
+#include "units/ability_tags.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
@@ -698,7 +699,7 @@ void unit_attack(display * disp, game_board & board,
 	}
 
 	unit_ability_list abilities = att->get_location();
-	for(auto& special : attacker.checking_tags()) {
+	for(auto& special : abilities_list::all_weapon_tags()) {
 		abilities.append(weapon->get_weapon_ability(special));
 	}
 
@@ -778,7 +779,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	const unit_map& units = disp->context().units();
 	if(attacker) {
 		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
-		for(auto& special : attacker->checking_tags()) {
+		for(auto& special : abilities_list::all_weapon_tags()) {
 			attacker_abilities.append(attacker->get_abilities(special));
 		}
 		for(const unit_ability& ability : attacker_abilities) {
@@ -790,7 +791,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 	if(defender) {
 		unit_ability_list defender_abilities = defender->get_abilities("resistance");
-		for(auto& special : defender->checking_tags()) {
+		for(auto& special : abilities_list::all_weapon_tags()) {
 			defender_abilities.append(defender->get_abilities(special));
 		}
 		for(const unit_ability& ability : defender_abilities) {

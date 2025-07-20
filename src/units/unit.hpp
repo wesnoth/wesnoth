@@ -1837,8 +1837,6 @@ public:
 
 	const config &abilities() const { return abilities_; }
 
-	const std::set<std::string>& checking_tags() const { return checking_tags_; };
-
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
 	 * with all abilities shown as active.
@@ -1941,7 +1939,6 @@ private:
 
 	recursion_guard update_variables_recursion(const config& ability) const;
 
-	const std::set<std::string> checking_tags_{"defense", "disable", "attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
 	 * Check if an ability is active. Includes checks to prevent excessive recursion.
 	 * @param ability The type (tag name) of the ability
