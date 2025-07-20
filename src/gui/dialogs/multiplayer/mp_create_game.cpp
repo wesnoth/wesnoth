@@ -197,7 +197,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	scenario["turns"] = params.num_turns;
 
 	for(config& side : scenario.child_range("side")) {
-		side["controller_lock"] = true;
+		side["controller_lock"] = false;
 		side["team_lock"] = true;
 		side["gold_lock"] = true;
 		side["income_lock"] = true;
