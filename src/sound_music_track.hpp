@@ -29,11 +29,13 @@ namespace sound {
 class music_track
 {
 public:
-	music_track(const config& node);
-	explicit music_track(const std::string& v_name);
-	void write(config& parent_node, bool append) const;
+	music_track(const std::string& file_path, const config& node);
+	music_track(const std::string& file_path, const std::string& file);
 
-	bool valid() const { return file_path_.empty() != true; }
+	static std::shared_ptr<music_track> create(const config& cfg);
+	static std::shared_ptr<music_track> create(const std::string& file);
+
+	void write(config& parent_node, bool append) const;
 
 	bool append() const { return append_; }
 	bool immediate() const { return immediate_; }
@@ -53,18 +55,17 @@ public:
 	void set_title(const std::string& v) { title_ = v; }
 
 private:
-	void resolve();
-
 	std::string id_;
 	std::string file_path_;
 	std::string title_;
 
-	std::chrono::milliseconds ms_before_, ms_after_;
+	std::chrono::milliseconds ms_before_{0};
+	std::chrono::milliseconds ms_after_{0};
 
-	bool once_;
-	bool append_;
-	bool immediate_;
-	bool shuffle_;
+	bool once_ = false;
+	bool append_ = false;
+	bool immediate_ = false;
+	bool shuffle_ = true;
 };
 
 std::shared_ptr<music_track> get_track(unsigned int i);
@@ -76,5 +77,5 @@ inline bool operator==(const sound::music_track& a, const sound::music_track& b)
 	return a.file_path() == b.file_path();
 }
 inline bool operator!=(const sound::music_track& a, const sound::music_track& b) {
-	return a.file_path() != b.file_path();
+	return !operator==(a, b);
 }

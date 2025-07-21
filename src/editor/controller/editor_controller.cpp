@@ -59,11 +59,30 @@
 
 #include <functional>
 
-namespace {
-static std::vector<std::string> saved_windows_;
+namespace editor
+{
+namespace
+{
+auto parse_editor_music(const config_array_view& editor_music_range)
+{
+	std::vector<std::shared_ptr<sound::music_track>> tracks;
+
+	for(const config& editor_music : editor_music_range) {
+		for(const config& music : editor_music.child_range("music")) {
+			if(auto track = sound::music_track::create(music)) {
+				tracks.push_back(std::move(track));
+			}
+		}
+	}
+
+	if(tracks.empty()) {
+		ERR_ED << "No editor music defined";
+	}
+
+	return tracks;
 }
 
-namespace editor {
+} // namespace
 
 std::string editor_controller::current_addon_id_ = "";
 
@@ -82,7 +101,7 @@ editor_controller::editor_controller(bool clear_id)
 	, help_manager_(nullptr)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
-	, music_tracks_()
+	, music_tracks_(parse_editor_music(game_config_.child_range("editor_music")))
 {
 	if(clear_id) {
 		editor_controller::current_addon_id_ = "";
@@ -93,7 +112,6 @@ editor_controller::editor_controller(bool clear_id)
 	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
 	init_tods(game_config_);
-	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
@@ -147,25 +165,6 @@ void editor_controller::init_tods(const game_config_view& game_config)
 
 	if (tods_.empty()) {
 		ERR_ED << "No editor time-of-day defined";
-	}
-}
-
-void editor_controller::init_music(const game_config_view& game_config)
-{
-	const std::string tag_name = "editor_music";
-	if (game_config.child_range(tag_name).size() == 0) {
-		ERR_ED << "No editor music defined";
-	}
-	else {
-		for (const config& editor_music : game_config.child_range(tag_name)) {
-			for (const config& music : editor_music.child_range("music")) {
-				sound::music_track track(music);
-				if (track.file_path().empty())
-					WRN_ED << "Music track " << track.id() << " not found.";
-				else
-					music_tracks_.emplace_back(music);
-			}
-		}
 	}
 }
 
@@ -641,7 +640,7 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_area_time(
 				get_current_map_context().get_active_area()));
 		case menu_type::music:
-			return hotkey::on_if(get_current_map_context().is_in_playlist(music_tracks_[index].id()));
+			return hotkey::on_if(get_current_map_context().playlist_contains(music_tracks_[index]));
 		case menu_type::schedule:
 			{
 				tods_map::const_iterator it = tods_.begin();
@@ -737,8 +736,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		case menu_type::music:
 			{
 				//TODO mark the map as changed
-				sound::play_music_once(music_tracks_[index].id());
-				get_current_map_context().add_to_playlist(music_tracks_[index]);
+				sound::play_music_once(music_tracks_[index]->id());
+				get_current_map_context().toggle_track(music_tracks_[index]);
 				return true;
 			}
 		case menu_type::schedule:
@@ -1253,8 +1252,8 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 	else if(first_id == "editor-playlist") {
 		active_menu_ = menu_type::music;
 		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(generated),
-			[](const sound::music_track& track) {
-				return config{"label", track.title().empty() ? track.id() : track.title()};
+			[](const std::shared_ptr<sound::music_track>& track) {
+				return config{"label", track->title().empty() ? track->id() : track->title()};
 			});
 	}
 
@@ -1620,4 +1619,4 @@ std::vector<std::string> editor_controller::additional_actions_pressed()
 	return toolkit_->get_palette_manager()->active_palette().action_pressed();
 }
 
-} //end namespace editor
+} // end namespace editor
