@@ -209,16 +209,11 @@ public:
 		active_area_ = index;
 	}
 
-	bool is_in_playlist(std::string track_id) {
-		return music_tracks_.find(track_id) != music_tracks_.end();
-	}
+	/** Checks whether the given track is part of current playlist. */
+	bool playlist_contains(const std::shared_ptr<sound::music_track>& track) const;
 
-	void add_to_playlist(const sound::music_track& track) {
-
-		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.emplace(track.id(), track);
-		else music_tracks_.erase(track.id());
-	}
+	/** Remove the given track from the current playlist if present, else appends it. */
+	void toggle_track(const std::shared_ptr<sound::music_track>& track);
 
 	/**
 	 * Draw a terrain on a single location on the map.
@@ -514,8 +509,7 @@ private:
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
 
-	typedef std::map<std::string, sound::music_track> music_map;
-	music_map music_tracks_;
+	std::list<std::shared_ptr<sound::music_track>> music_tracks_;
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;

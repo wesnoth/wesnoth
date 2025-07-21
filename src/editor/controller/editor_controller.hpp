@@ -48,9 +48,6 @@ public:
 	editor_controller(const editor_controller&) = delete;
 	editor_controller& operator=(const editor_controller&) = delete;
 
-	/**
-	 * The constructor.
-	 */
 	editor_controller(bool clear_id);
 
 	~editor_controller();
@@ -202,9 +199,6 @@ private:
 	/** init the available time-of-day settings */
 	void init_tods(const game_config_view& game_config);
 
-	/** init background music for the editor */
-	void init_music(const game_config_view& game_config);
-
 	/** Reload images */
 	void refresh_image_cache();
 
@@ -253,7 +247,7 @@ private:
 	bool do_quit_;
 	EXIT_STATUS quit_mode_;
 
-	std::vector<sound::music_track> music_tracks_;
+	std::vector<std::shared_ptr<sound::music_track>> music_tracks_;
 };
 
 } //end namespace editor
