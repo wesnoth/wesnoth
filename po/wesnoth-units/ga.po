@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: 2012-02-22 15:27-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -111,7 +111,7 @@ msgstr "tonn scátha"
 #: data/core/units/elves/Shaman.cfg:33 data/core/units/elves/Sorceress.cfg:26
 #: data/core/units/humans/Mage.cfg:28 data/core/units/humans/Mage_Arch.cfg:38
 #: data/core/units/humans/Mage_Elder.cfg:26
-#: data/core/units/humans/Mage_Great.cfg:32
+#: data/core/units/humans/Mage_Great.cfg:33
 #: data/core/units/humans/Mage_Red.cfg:31
 #: data/core/units/humans/Mage_Silver.cfg:38
 #: data/core/units/humans/Mage_White.cfg:47
@@ -132,7 +132,6 @@ msgstr "bachall"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:73
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:73
-#: data/campaigns/The_South_Guard/units/Mari2-relaxed.cfg:40
 #: data/campaigns/The_South_Guard/units/Mari2.cfg:39
 #: data/campaigns/The_South_Guard/units/Mari3.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:39
@@ -290,6 +289,8 @@ msgstr "súiste iarainn"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:35
+#: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:64
+#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:30
@@ -338,7 +339,8 @@ msgstr "claíomh"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
 #: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:52
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:53
-#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:51
+#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:61
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
@@ -361,7 +363,7 @@ msgstr "crosbhogha"
 #: data/campaigns/Liberty/units/Maddock.cfg:51
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:44
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Maddock.cfg:54
-#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:42
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:44
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
 #: data/core/units/humans/Loyalist_General.cfg:44
@@ -451,13 +453,12 @@ msgstr "anfa fuar"
 #: data/core/units/boats/Orc_Warship.cfg:79
 #: data/core/units/boats/Raider_Coastal.cfg:146
 #: data/core/units/boats/Raider_Iron.cfg:153
-#: data/core/units/dunefolk/Marauder.cfg:70
-#: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
-#: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
-#: data/core/units/elves/Champion.cfg:35 data/core/units/elves/Fighter.cfg:31
-#: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Marshal.cfg:48
-#: data/core/units/elves/Outrider.cfg:54 data/core/units/elves/Ranger.cfg:47
-#: data/core/units/elves/Rider.cfg:41 data/core/units/elves/Scout.cfg:41
+#: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:48
+#: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:35
+#: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
+#: data/core/units/elves/Marshal.cfg:48 data/core/units/elves/Outrider.cfg:54
+#: data/core/units/elves/Ranger.cfg:47 data/core/units/elves/Rider.cfg:41
+#: data/core/units/elves/Scout.cfg:41
 #: data/core/units/humans/Loyalist_Bowman.cfg:32
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Woodsman_Huntsman.cfg:48
@@ -498,8 +499,8 @@ msgstr "bogha"
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/undead/Corpse_Ghoul.cfg:32
-#: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Corpse_Ghoul.cfg:37
+#: data/core/units/undead/Corpse_Necrophage.cfg:31
 #: data/core/units/undead/Corpse_Soulless.cfg:186
 #: data/core/units/undead/Corpse_Walking.cfg:187
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
@@ -511,7 +512,6 @@ msgstr "crúba"
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:23
 #: data/campaigns/Secrets_of_the_Ancients/units/Sea_Captain.cfg:26
-#: data/campaigns/The_South_Guard/units/Mari2-relaxed.cfg:29
 #: data/campaigns/The_South_Guard/units/Mari2.cfg:28
 #: data/campaigns/The_South_Guard/units/Mari3.cfg:27
 #: data/core/units/humans/Loyalist_Duelist.cfg:36
@@ -625,7 +625,7 @@ msgstr "mallacht"
 #: data/core/units/monsters/Scarab.cfg:44
 #: data/core/units/monsters/Seahorse.cfg:34
 #: data/core/units/monsters/Wild_Wyvern.cfg:97
-#: data/core/units/undead/Corpse_Ghast.cfg:27
+#: data/core/units/undead/Corpse_Ghast.cfg:32
 #: data/core/units/undead/Corpse_Soulless.cfg:154
 #: data/core/units/undead/Corpse_Soulless.cfg:170
 #: data/core/units/undead/Corpse_Soulless.cfg:270
@@ -1029,6 +1029,27 @@ msgstr ""
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "Ealbh Siógach"
+
+#. [unit_type]: id=Cavalryman Commander, race=human
+#. [unit_type]: id=Cavalryman, race=human
+#: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:14
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:4
+msgid "Cavalryman"
+msgstr "Marcach Airm"
+
+#. [unit_type]: id=Dragoon Commander, race=human
+#. [unit_type]: id=Dragoon, race=human
+#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:5
+#: data/core/units/humans/Loyalist_Dragoon.cfg:4
+msgid "Dragoon"
+msgstr "Dragún"
+
+#. [unit_type]: id=Cavalier Commander, race=human
+#. [unit_type]: id=Cavalier, race=human
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:5
+#: data/core/units/humans/Loyalist_Cavalier.cfg:4
+msgid "Cavalier"
+msgstr "Cúirteoir"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Gerrick2_Veteran_Infantryman.cfg:31
@@ -1577,7 +1598,7 @@ msgstr "crúba chatha"
 #: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:32
-#: data/core/units/monsters/Fire_Wisp.cfg:33
+#: data/core/units/monsters/Fire_Wisp.cfg:53
 #: data/core/units/monsters/Fire_Wraith.cfg:60
 msgid "fire breath"
 msgstr "anáil thine"
@@ -2342,11 +2363,16 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/dunefolk/Marauder.cfg:61
+#: data/core/units/dunefolk/Marauder.cfg:62
 #: data/core/units/dunefolk/Raider.cfg:59
 #: data/core/units/goblins/Pillager.cfg:68
 msgid "torch"
 msgstr "tóirse"
+
+#. [attack]: type=pierce
+#: data/core/units/dunefolk/Marauder.cfg:71
+msgid "rope dart"
+msgstr ""
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
@@ -2404,6 +2430,11 @@ msgid ""
 "blitz without fear of counterattack. Raiders are the fastest of the "
 "Dunefolk, capable of outpacing nearly anything they might encounter in the "
 "sandy deserts."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dunefolk/Raider.cfg:68
+msgid "dart"
 msgstr ""
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
@@ -3752,11 +3783,6 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Cavalier, race=human
-#: data/core/units/humans/Loyalist_Cavalier.cfg:4
-msgid "Cavalier"
-msgstr "Cúirteoir"
-
-#. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
@@ -3764,11 +3790,6 @@ msgid ""
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-
-#. [unit_type]: id=Cavalryman, race=human
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:4
-msgid "Cavalryman"
-msgstr "Marcach Airm"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
@@ -3782,11 +3803,6 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
-
-#. [unit_type]: id=Dragoon, race=human
-#: data/core/units/humans/Loyalist_Dragoon.cfg:4
-msgid "Dragoon"
-msgstr "Dragún"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:19
@@ -4227,7 +4243,7 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:47
-#: data/core/units/humans/Mage_Great.cfg:41
+#: data/core/units/humans/Mage_Great.cfg:42
 #: data/core/units/humans/Mage_Red.cfg:40
 msgid "fireball"
 msgstr "caor thine"
@@ -4251,12 +4267,12 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
-#: data/core/units/humans/Mage_Great.cfg:4
+#: data/core/units/humans/Mage_Great.cfg:5
 msgid "Great Mage"
 msgstr "Asarlaí Mhór"
 
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
-#: data/core/units/humans/Mage_Great.cfg:19
+#: data/core/units/humans/Mage_Great.cfg:20
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -4272,14 +4288,14 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/humans/Mage_Great.cfg:23
+#: data/core/units/humans/Mage_Great.cfg:24
 msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
 
 #. [female]: gender=female
-#: data/core/units/humans/Mage_Great.cfg:90
+#: data/core/units/humans/Mage_Great.cfg:86
 msgid "female^Great Mage"
 msgstr "Asarlaí Mhór"
 
@@ -4782,7 +4798,7 @@ msgstr "Banfháidh Maighdine Mhara"
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
-"these ladies of the water is a recurring motif in tale and song; such as the "
+"these ladies of the water is a recurring motif in tale and song; such as "
 "that of the knights of the silver spire, cornered and slain to a man at the "
 "banks of the Alavynne, but who rode again the next day, in full number, and "
 "wrought the downfall of the crimson duke."
@@ -5499,7 +5515,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Wisp.cfg:24
+#: data/core/units/monsters/Fire_Wisp.cfg:44
 #, fuzzy
 #| msgid "fire breath"
 msgid "fire bash"

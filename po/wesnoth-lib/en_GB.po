@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-15 22:18-0500\n"
+"POT-Creation-Date: 2025-07-20 22:54-0500\n"
 "PO-Revision-Date: 2025-05-21 13:25+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1890,7 +1890,7 @@ msgstr "Art Placeholder"
 #: data/core/terrain.cfg:3214
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:206
 #: data/gui/themes/default/dialogs/game_stats.cfg:384
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:405
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:390
 msgid "Shroud"
 msgstr "Shroud"
 
@@ -2320,7 +2320,7 @@ msgstr ""
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:474
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:459
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
@@ -2501,7 +2501,7 @@ msgstr "Start the map editor"
 #. [grid]
 #. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
-#: data/gui/themes/default/dialogs/game_version.cfg:904
+#: data/gui/themes/default/dialogs/game_version.cfg:903
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr "Community"
@@ -2523,7 +2523,7 @@ msgstr "Configure the game’s settings"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
-#: data/gui/themes/default/dialogs/lobby_main.cfg:571
+#: data/gui/themes/default/dialogs/lobby_main.cfg:600
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2548,7 +2548,7 @@ msgstr "Visit the in-game help"
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
 #: data/gui/themes/celes/dialogs/title_screen.cfg:298
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:234
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:205
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit"
@@ -2582,17 +2582,17 @@ msgstr "<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/themes/celes/widgets/window_default.cfg:106
+#: data/gui/themes/celes/widgets/window_default.cfg:57
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:247
 #: data/gui/themes/default/dialogs/game_stats.cfg:843
-#: data/gui/themes/default/dialogs/game_version.cfg:992
+#: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:274
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2623,7 +2623,7 @@ msgstr "User Name:"
 #. [grid]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:95
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:217
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1036
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:1021
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:90
 #: data/gui/themes/default/dialogs/mp_login.cfg:143
 msgid "Password:"
@@ -2650,13 +2650,13 @@ msgstr "Save password locally (encrypted)"
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:287
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:469
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1243
-#: data/gui/themes/default/dialogs/file_dialog.cfg:506
+#: data/gui/themes/default/dialogs/file_dialog.cfg:504
 #: data/gui/themes/default/dialogs/folder_create.cfg:119
 #: data/gui/themes/default/dialogs/label_settings.cfg:137
 #: data/gui/themes/default/dialogs/logging.cfg:259
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:114
 #: data/gui/themes/default/dialogs/mp_change_control.cfg:203
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:381
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:411
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:136
 #: data/gui/themes/default/dialogs/mp_login.cfg:243
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
@@ -2701,7 +2701,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:214
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:126
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:282
-#: data/gui/themes/default/dialogs/file_dialog.cfg:519
+#: data/gui/themes/default/dialogs/file_dialog.cfg:517
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
 #: data/gui/themes/default/dialogs/game_load.cfg:653
@@ -2712,10 +2712,10 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/message.cfg:149
 #: data/gui/themes/default/dialogs/mp_change_control.cfg:216
 #: data/gui/themes/default/dialogs/mp_connect.cfg:314
-#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
-#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
-#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:393
+#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:475
+#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:393
+#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:350
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:423
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:149
 #: data/gui/themes/default/dialogs/mp_login.cfg:257
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:370
@@ -2730,7 +2730,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:621
+#: data/gui/themes/default/dialogs/units_dialog.cfg:623
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Cancel"
@@ -2830,7 +2830,7 @@ msgstr "Updated:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:656
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:662
 msgid "No description available."
 msgstr "No description available."
 
@@ -2875,7 +2875,7 @@ msgstr "Update add-on"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1060
+#: src/gui/dialogs/addon/manager.cpp:1052
 msgid "Uninstall add-on"
 msgstr "Uninstall add-on"
 
@@ -2903,7 +2903,7 @@ msgstr "Dependencies:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1135
+#: src/gui/dialogs/addon/manager.cpp:1127
 msgid "addon_dependencies^None"
 msgstr "None"
 
@@ -2917,7 +2917,7 @@ msgstr "Translations:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1149
+#: src/gui/dialogs/addon/manager.cpp:1141
 msgid "translations^None"
 msgstr "None"
 
@@ -2952,8 +2952,8 @@ msgstr "Add-ons Manager"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
-#: src/gui/dialogs/addon/manager.cpp:570 src/gui/dialogs/addon/manager.cpp:844
-#: src/gui/dialogs/addon/manager.cpp:941
+#: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
+#: src/gui/dialogs/addon/manager.cpp:933
 msgid "Add-on Details"
 msgstr "Add-on Details"
 
@@ -3112,6 +3112,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
 #: data/gui/themes/default/dialogs/units_dialog.cfg:48
 #: data/gui/themes/default/widgets/addon_list.cfg:78
@@ -3192,7 +3193,7 @@ msgstr "Show completed campaigns"
 #. [label]
 #. [label]: id=mods_header
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:220
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Modifications:"
 
@@ -3431,7 +3432,7 @@ msgstr "Edit Time Schedule"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:240
+#: src/gui/dialogs/units_dialog.cpp:239
 msgid "Name:"
 msgstr "Name:"
 
@@ -3507,11 +3508,11 @@ msgstr "Preview colour changes on map"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1025
 #: src/gui/dialogs/editor/custom_tod.cpp:187
 #: src/gui/dialogs/editor/edit_unit.cpp:323
 #: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
+#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -3807,7 +3808,7 @@ msgstr "Add"
 #. [button]: id=delete
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
-#: data/gui/themes/default/dialogs/file_dialog.cfg:349
+#: data/gui/themes/default/dialogs/file_dialog.cfg:347
 #: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
@@ -3824,7 +3825,7 @@ msgstr "Validate"
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:464
 #: data/gui/themes/default/dialogs/game_save.cfg:120
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:230 src/hotkey/hotkey_command.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:237 src/hotkey/hotkey_command.cpp:185
 msgid "Save"
 msgstr "Save"
 
@@ -4084,7 +4085,7 @@ msgstr "Movement:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:220
+#: src/gui/widgets/unit_preview_pane.cpp:218
 msgid "Attacks"
 msgstr "Attacks"
 
@@ -4146,7 +4147,7 @@ msgstr "Move Type:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
-#: src/gui/widgets/unit_preview_pane.cpp:152
+#: src/gui/widgets/unit_preview_pane.cpp:151
 msgid "Movement Costs:"
 msgstr "Movement Costs:"
 
@@ -4203,7 +4204,7 @@ msgstr "Choose a map generator:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:923
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:908
 #: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Settings"
@@ -4242,7 +4243,7 @@ msgstr "Height:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:470
+#: src/gui/dialogs/units_dialog.cpp:469
 msgid "Create"
 msgstr "Create"
 
@@ -4299,33 +4300,33 @@ msgid "File:"
 msgstr "File:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/file_dialog.cfg:190
+#: data/gui/themes/default/dialogs/file_dialog.cfg:189
 msgid "Places"
 msgstr "Places"
 
 #. [button]: id=add_bookmark
-#: data/gui/themes/default/dialogs/file_dialog.cfg:281
+#: data/gui/themes/default/dialogs/file_dialog.cfg:280
 msgid "Bookmarks the current folder"
 msgstr "Bookmarks the current folder"
 
 #. [button]: id=remove_bookmark
-#: data/gui/themes/default/dialogs/file_dialog.cfg:293
+#: data/gui/themes/default/dialogs/file_dialog.cfg:292
 msgid "Removes the current bookmark"
 msgstr "Removes the current bookmark"
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/dialogs/file_dialog.cfg:320
+#: data/gui/themes/default/dialogs/file_dialog.cfg:319
 msgid "Open External"
 msgstr "Open External"
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/dialogs/file_dialog.cfg:321
+#: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open selected using platform’s default applications"
 msgstr "Open selected using platform’s default applications"
 
 #. [button]: id=new_dir
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/file_dialog.cfg:335
+#: data/gui/themes/default/dialogs/file_dialog.cfg:334
 #: data/gui/themes/default/dialogs/folder_create.cfg:43
 msgid "New Folder"
 msgstr "New Folder"
@@ -4336,47 +4337,47 @@ msgid "Formula debugger"
 msgstr "Formula debugger"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:59
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:54
 msgid "Welcome"
 msgstr "Welcome"
 
 #. [label]: id=state
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:71
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:66
 msgid "state"
 msgstr "state"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:85
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:79
 msgid "Call stack"
 msgstr "Call stack"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:94
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:89
 msgid "Actions"
 msgstr "Actions"
 
 #. [button]: id=step
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:128
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:122
 msgid "Step operation"
 msgstr "Step operation"
 
 #. [button]: id=next
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:139
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:134
 msgid "Next operation"
 msgstr "Next operation"
 
 #. [button]: id=stepout
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:150
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:146
 msgid "Step out"
 msgstr "Step out"
 
 #. [button]: id=continue
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:161
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:158
 msgid "Continue"
 msgstr "Continue"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:178
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:174
 msgid "Execution trace"
 msgstr "Execution trace"
 
@@ -4451,7 +4452,7 @@ msgstr "Date"
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/themes/default/dialogs/game_load.cfg:308
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:944
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:929
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "Load Game"
@@ -4636,7 +4637,7 @@ msgstr "Scenario Settings"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:559
+#: src/gui/dialogs/units_dialog.cpp:558
 msgid "Scroll To"
 msgstr "Scroll To"
 
@@ -4682,23 +4683,23 @@ msgstr ""
 "feature:</i>"
 
 #. [button]: id=issue
-#: data/gui/themes/default/dialogs/game_version.cfg:313
+#: data/gui/themes/default/dialogs/game_version.cfg:312
 msgid "Report Issue"
 msgstr "Report Issue"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:322
+#: data/gui/themes/default/dialogs/game_version.cfg:321
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 msgstr "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
-#: data/gui/themes/default/dialogs/game_version.cfg:335
+#: data/gui/themes/default/dialogs/game_version.cfg:334
 msgid "View Manual"
 msgstr "View Manual"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:343
+#: data/gui/themes/default/dialogs/game_version.cfg:342
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
@@ -4708,52 +4709,52 @@ msgstr ""
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
-#: data/gui/themes/default/dialogs/game_version.cfg:356
+#: data/gui/themes/default/dialogs/game_version.cfg:355
 msgid "Migrate"
 msgstr "Migrate"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:393
+#: data/gui/themes/default/dialogs/game_version.cfg:392
 msgid "Game data:"
 msgstr "Game data:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:395
+#: data/gui/themes/default/dialogs/game_version.cfg:394
 msgid "User data:"
 msgstr "User data:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:397
+#: data/gui/themes/default/dialogs/game_version.cfg:396
 msgid "Saved games:"
 msgstr "Saved games:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:399
+#: data/gui/themes/default/dialogs/game_version.cfg:398
 msgid "Add-ons:"
 msgstr "Add-ons:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:401
+#: data/gui/themes/default/dialogs/game_version.cfg:400
 msgid "Cache:"
 msgstr "Cache:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:403
+#: data/gui/themes/default/dialogs/game_version.cfg:402
 msgid "Logs:"
 msgstr "Logs:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:405
+#: data/gui/themes/default/dialogs/game_version.cfg:404
 msgid "Screenshots:"
 msgstr "Screenshots:"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:439
+#: data/gui/themes/default/dialogs/game_version.cfg:438
 msgid "Log File"
 msgstr "Log File"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:440
+#: data/gui/themes/default/dialogs/game_version.cfg:439
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
@@ -4762,22 +4763,22 @@ msgstr ""
 "useful debug information"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:470
+#: data/gui/themes/default/dialogs/game_version.cfg:469
 msgid "library^Name"
 msgstr "Name"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:481
+#: data/gui/themes/default/dialogs/game_version.cfg:480
 msgid "library^Build version"
 msgstr "Build version"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:493
+#: data/gui/themes/default/dialogs/game_version.cfg:492
 msgid "library^Runtime version"
 msgstr "Run-time version"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:574
+#: data/gui/themes/default/dialogs/game_version.cfg:573
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
@@ -4785,42 +4786,42 @@ msgstr ""
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:654
+#: data/gui/themes/default/dialogs/game_version.cfg:653
 msgid "Forums"
 msgstr "Forums"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:673
+#: data/gui/themes/default/dialogs/game_version.cfg:672
 msgid "Discord"
 msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
-#: data/gui/themes/default/dialogs/game_version.cfg:692
+#: data/gui/themes/default/dialogs/game_version.cfg:691
 msgid "IRC"
 msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:711
+#: data/gui/themes/default/dialogs/game_version.cfg:710
 msgid "Steam"
 msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:730
+#: data/gui/themes/default/dialogs/game_version.cfg:729
 msgid "Reddit"
 msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
-#: data/gui/themes/default/dialogs/game_version.cfg:749
+#: data/gui/themes/default/dialogs/game_version.cfg:748
 msgid "Donate"
 msgstr "Donate"
 
 #. [label]: id=description
-#: data/gui/themes/default/dialogs/game_version.cfg:845
+#: data/gui/themes/default/dialogs/game_version.cfg:844
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr "An open-source, turn-based strategy game with a high fantasy theme."
 
@@ -4828,8 +4829,8 @@ msgstr "An open-source, turn-based strategy game with a high fantasy theme."
 #. [tab]
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/themes/default/dialogs/game_version.cfg:880
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:579
+#: data/gui/themes/default/dialogs/game_version.cfg:879
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:564
 #: data/gui/themes/default/dialogs/preferences.cfg:292
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
 #: data/gui/themes/default/dialogs/server_info.cfg:181
@@ -4838,27 +4839,27 @@ msgid "General"
 msgstr "General"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:886
+#: data/gui/themes/default/dialogs/game_version.cfg:885
 msgid "Paths"
 msgstr "Paths"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:892
+#: data/gui/themes/default/dialogs/game_version.cfg:891
 msgid "Libraries"
 msgstr "Libraries"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:898
+#: data/gui/themes/default/dialogs/game_version.cfg:897
 msgid "Features"
 msgstr "Features"
 
 #. [button]: id=credits
-#: data/gui/themes/default/dialogs/game_version.cfg:958
+#: data/gui/themes/default/dialogs/game_version.cfg:957
 msgid "Credits"
 msgstr "Credits"
 
 #. [button]: id=license
-#: data/gui/themes/default/dialogs/game_version.cfg:973
+#: data/gui/themes/default/dialogs/game_version.cfg:972
 msgid "License"
 msgstr "Licence"
 
@@ -4893,7 +4894,7 @@ msgstr "Map Generator Settings"
 #. [grid]
 #. [label]
 #: data/gui/themes/default/dialogs/generator_settings.cfg:105
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:729
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:714
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:132
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:151
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:137
@@ -5012,57 +5013,72 @@ msgstr "General Lobby"
 msgid "Matchmaking"
 msgstr "Match-making"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#. saved settings to start a game with, such as era, map, fog, etc
+#: data/gui/themes/default/dialogs/lobby_main.cfg:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
+msgid "Presets"
+msgstr ""
+
 #. [label]: id=map
-#: data/gui/themes/default/dialogs/lobby_main.cfg:140
+#: data/gui/themes/default/dialogs/lobby_main.cfg:153
 msgid "Games"
 msgstr "Games"
 
 #. [image]: id=needs_password
-#: data/gui/themes/default/dialogs/lobby_main.cfg:259
+#: data/gui/themes/default/dialogs/lobby_main.cfg:272
 msgid "Requires a password to join"
 msgstr "Requires a password to join"
 
+#. [button]: id=delete_preset
+#: data/gui/themes/default/dialogs/lobby_main.cfg:305
+#, fuzzy
+#| msgid "Delete Unit"
+msgid "Delete this preset"
+msgstr "Delete Unit"
+
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/themes/default/dialogs/lobby_main.cfg:448
+#: data/gui/themes/default/dialogs/lobby_main.cfg:477
 msgid "Vacant slots"
 msgstr "Vacant slots"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/themes/default/dialogs/lobby_main.cfg:449
+#: data/gui/themes/default/dialogs/lobby_main.cfg:478
 msgid "Only show games with vacant slots"
 msgstr "Only show games with vacant slots"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/lobby_main.cfg:461
+#: data/gui/themes/default/dialogs/lobby_main.cfg:490
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Friends"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/themes/default/dialogs/lobby_main.cfg:462
+#: data/gui/themes/default/dialogs/lobby_main.cfg:491
 msgid "Only show games with friends"
 msgstr "Only show games with friends"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/themes/default/dialogs/lobby_main.cfg:474
+#: data/gui/themes/default/dialogs/lobby_main.cfg:503
 msgid "Blocked players"
 msgstr "Blocked players"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/themes/default/dialogs/lobby_main.cfg:475
+#: data/gui/themes/default/dialogs/lobby_main.cfg:504
 msgid "Show games that include players you have blocked"
 msgstr "Show games that include players you have blocked"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/themes/default/dialogs/lobby_main.cfg:487
+#: data/gui/themes/default/dialogs/lobby_main.cfg:516
 msgid "Invert filter"
 msgstr "Invert filter"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/lobby_main.cfg:512
+#: data/gui/themes/default/dialogs/lobby_main.cfg:541
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5074,29 +5090,29 @@ msgstr "Create Game"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: src/gui/dialogs/multiplayer/lobby.cpp:975
+#: data/gui/themes/default/dialogs/lobby_main.cfg:561
+#: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "Join"
 msgstr "Join"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: src/gui/dialogs/multiplayer/lobby.cpp:943
+#: data/gui/themes/default/dialogs/lobby_main.cfg:573
+#: src/gui/dialogs/multiplayer/lobby.cpp:966
 msgid "Observe"
 msgstr "Observe"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/lobby_main.cfg:559
+#: data/gui/themes/default/dialogs/lobby_main.cfg:588
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Announcements"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:621
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:187
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:422
@@ -5105,53 +5121,53 @@ msgstr "Profile"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:633
+#: data/gui/themes/default/dialogs/lobby_main.cfg:662
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Match History"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
 msgid "Log Out"
 msgstr "Log Out"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
+#: data/gui/themes/default/dialogs/lobby_main.cfg:699
 msgid "Normal Replays"
 msgstr "Normal Replays"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:674
+#: data/gui/themes/default/dialogs/lobby_main.cfg:703
 msgid "Quick Replays"
 msgstr "Quick Replays"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
+#: data/gui/themes/default/dialogs/lobby_main.cfg:704
 msgid "Skip quickly to the active turn when observing"
 msgstr "Skip quickly to the active turn when observing"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:679
+#: data/gui/themes/default/dialogs/lobby_main.cfg:708
 msgid "Enter Blindfolded"
 msgstr "Enter Blindfolded"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:680
+#: data/gui/themes/default/dialogs/lobby_main.cfg:709
 msgid "Do not show the map until given control of a side"
 msgstr "Do not show the map until given control of a side"
 
 #. [button]: id=join_queue
-#: data/gui/themes/default/dialogs/lobby_main.cfg:695
+#: data/gui/themes/default/dialogs/lobby_main.cfg:728
 msgid "Join Queue"
 msgstr "Join Queue"
 
 #. [button]: id=leave_queue
-#: data/gui/themes/default/dialogs/lobby_main.cfg:702
+#: data/gui/themes/default/dialogs/lobby_main.cfg:738
 msgid "Leave Queue"
 msgstr "Leave Queue"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:801
+#: data/gui/themes/default/dialogs/lobby_main.cfg:844
 msgid "Multiplayer Lobby"
 msgstr "Multiplayer Lobby"
 
@@ -5470,244 +5486,244 @@ msgid "Address"
 msgstr "Address"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:119
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:108
 msgid "Eras:"
 msgstr "Eras:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:155
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:144
 msgid "Random Faction Matchups:"
 msgstr "Random Faction Match-ups:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:156
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:145
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr "Allow for mirror match-ups when random factions are chosen"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:177
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:166
 msgid "Independent"
 msgstr "Independent"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:178
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:167
 msgid "Independent: Random factions assigned independently"
 msgstr "Independent: Random factions assigned independently"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:182
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:171
 msgid "No Mirror"
 msgstr "No Mirror"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:183
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:172
 msgid "No Mirror: No two players will get the same faction"
 msgstr "No Mirror: No two players will get the same faction"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:187
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:176
 msgid "No Ally Mirror"
 msgstr "No Ally Mirror"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:188
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:177
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "No Ally Mirror: No two allied players will get the same faction"
 
 #. [toggle_button]: id=use_map_settings
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:330
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:319
 msgid "Use Map Settings"
 msgstr "Use Map Settings"
 
 #. [toggle_button]: id=use_map_settings
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:331
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:320
 msgid "Use scenario specific settings"
 msgstr "Use scenario specific settings"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:347
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "Number of Turns"
 msgstr "Number of Turns"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:347
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "The maximum number of turns the game can last"
 msgstr "The maximum number of turns the game can last"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:348
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:337
 msgid "unlimited"
 msgstr "unlimited"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:351
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "The amount of income each village yields per turn"
 msgstr "The amount of income each village yields per turn"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:351
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "Village Gold"
 msgstr "Village Gold"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:353
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "The number of unit levels each village can support"
 msgstr "The number of unit levels each village can support"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:353
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "Village Support"
 msgstr "Village Support"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:355
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:344
 msgid "Experience Modifier"
 msgstr "Experience Modifier"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:355
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:344
 msgid "The amount of experience a unit needs to advance"
 msgstr "The amount of experience a unit needs to advance"
 
 #. [toggle_button]: id=fog
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:389
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:374
 msgid "Fog of War"
 msgstr "Fog of War"
 
 #. [toggle_button]: id=fog
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:390
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:375
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Enemy units cannot be seen unless they are in range of your units"
 
 #. [toggle_button]: id=shroud
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:406
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:391
 msgid "The map is unknown until your units explore it"
 msgstr "The map is unknown until your units explore it"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:422
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:407
 msgid "Random Start Time"
 msgstr "Random Start Time"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:423
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:408
 msgid "Randomize the starting time of day"
 msgstr "Randomize the starting time of day"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:459
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:444
 msgid "Time Limit"
 msgstr "Time Limit"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:460
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:445
 msgid "Enable custom time limits"
 msgstr "Enable custom time limits"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:497
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Initial Limit"
 msgstr "Initial Limit"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:497
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Longest time allowed for first turn (seconds)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:499
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Time for general tasks each turn (seconds)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:499
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Turn Bonus"
 msgstr "Turn Bonus"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:501
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:486
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Longest time possible for any turn (seconds)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:501
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:486
 msgid "Reservoir"
 msgstr "Reservoir"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:503
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:488
 msgid "Action Bonus"
 msgstr "Action Bonus"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:503
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:488
 msgid "Time for each attack, recruit, and capture"
 msgstr "Time for each attack, recruit, and capture"
 
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:592
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:577
 msgid "Custom Options"
 msgstr "Custom Options"
 
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:605
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:590
 msgid "Game Settings"
 msgstr "Game Settings"
 
 #. [slider]: id=num_players
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:748
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:733
 msgid "Any"
 msgstr "Any"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:881
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:866
 msgid "Random map options: "
 msgstr "Random map options: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:902
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:887
 msgid "Regenerate"
 msgstr "Regenerate"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:975
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Assign sides to players at random"
 msgstr "Assign sides to players at random"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:975
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Shuffle Sides"
 msgstr "Shuffle Sides"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:979
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Allow users who are not playing to watch the game"
 msgstr "Allow users who are not playing to watch the game"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:979
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Observers"
 msgstr "Observers"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:983
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Strict Synchronization"
 msgstr "Strict Synchronization"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:983
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Stricter checks for out-of-sync errors"
 msgstr "Stricter checks for out-of-sync errors"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:987
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Private Replay"
 msgstr "Private Replay"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:987
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Whether the replay will be publicly available"
 msgstr "Whether the replay will be publicly available"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1003
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:988
 msgid "Name of game:"
 msgstr "Name of game:"
 
 #. [text_box]: id=game_password
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1050
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:1035
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
@@ -5722,32 +5738,41 @@ msgstr ""
 msgid "Map size:"
 msgstr "Map size:"
 
+#. [button]: id=save_preset
+#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
+#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
+#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
+#, fuzzy
+#| msgid "Saved Games"
+msgid "Save Preset"
+msgstr "Saved Games"
+
 #. [row]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:180
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
 msgid "gender^Random"
 msgstr "Random"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:182
-#: data/gui/themes/default/dialogs/units_dialog.cfg:496
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
+#: data/gui/themes/default/dialogs/units_dialog.cfg:498
 msgid "Male"
 msgstr "Male"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:184
-#: data/gui/themes/default/dialogs/units_dialog.cfg:507
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
+#: data/gui/themes/default/dialogs/units_dialog.cfg:509
 msgid "Female"
 msgstr "Female"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:217
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:247
 msgid "Recruits"
 msgstr "Recruits"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:308
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:338
 msgid "Choose Your Leader"
 msgstr "Choose Your Leader"
 
@@ -5783,7 +5808,7 @@ msgstr "Faction:"
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
 #: data/gui/themes/default/dialogs/mp_staging.cfg:671
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:516
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:514
 msgid "Waiting for players to join..."
 msgstr "Waiting for players to join..."
 
@@ -6054,12 +6079,14 @@ msgstr "Do not allow automatic movements at the beginning of a turn"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
-msgid "Turn dialog"
-msgstr "Turn dialogue"
+msgid "Turn prompt"
+msgstr ""
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-msgid "Display a dialog at the beginning of your turn"
+#, fuzzy
+#| msgid "Display a dialog at the beginning of your turn"
+msgid "Display a prompt at the beginning of your turn"
 msgstr "Display a dialogue at the beginning of your turn"
 
 #. [toggle_button]: id=whiteboard_on_start
@@ -6164,7 +6191,7 @@ msgstr "Hot-key"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:884
+#: src/gui/dialogs/preferences_dialog.cpp:879
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6177,7 +6204,7 @@ msgstr "Available in game"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6190,7 +6217,7 @@ msgstr "Available in editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6396,72 +6423,72 @@ msgid "Volume:"
 msgstr "Volume:"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:82
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:80
 msgid "Pause music on focus loss"
 msgstr "Pause music on focus loss"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:83
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:81
 msgid "Pause the music when you switch to any other window"
 msgstr "Pause the music when you switch to any other window"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:104
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects"
 msgstr "Sound effects"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:104
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects on/off"
 msgstr "Sound effects on/off"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:105
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:97
 msgid "Change the sound effects volume"
 msgstr "Change the sound effects volume"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:115
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music"
 msgstr "Music"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:115
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music on/off"
 msgstr "Music on/off"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:116
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:110
 msgid "Change the music volume"
 msgstr "Change the music volume"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:127
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Play a bell sound at the beginning of your turn"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:127
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Turn bell"
 msgstr "Turn bell"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:128
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:124
 msgid "Change the bell volume"
 msgstr "Change the bell volume"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:137
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "Turn menu and button sounds on/off"
 msgstr "Turn menu and button sounds on/off"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:137
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "User interface sounds"
 msgstr "User interface sounds"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:138
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:136
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Change the sound volume for button clicks, etc."
 
@@ -6878,7 +6905,7 @@ msgstr "Attack Enemy"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:572
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "★"
 msgstr "★"
 
@@ -6917,28 +6944,28 @@ msgstr "Status"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:147
-#: src/gui/widgets/unit_preview_pane.cpp:390
-#: src/gui/widgets/unit_preview_pane.cpp:525
+#: src/gui/widgets/unit_preview_pane.cpp:398
+#: src/gui/widgets/unit_preview_pane.cpp:533
 msgid "Traits"
 msgstr "Traits"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:403
+#: data/gui/themes/default/dialogs/units_dialog.cfg:405
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Search for unit name, unit type name, unit level, or trait"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:548
+#: data/gui/themes/default/dialogs/units_dialog.cfg:550
 msgid "Dismiss"
 msgstr "Dismiss"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:559
+#: data/gui/themes/default/dialogs/units_dialog.cfg:561
 msgid "Rename"
 msgstr "Rename"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:573
+#: data/gui/themes/default/dialogs/units_dialog.cfg:575
 msgid "Mark/unmark the selected unit as favorite"
 msgstr "Mark/un-mark the selected unit as favourite"
 
@@ -7107,7 +7134,7 @@ msgstr "No draw section defined for state."
 msgid "No resolution defined for "
 msgstr "No resolution defined for "
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:428
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -7137,13 +7164,13 @@ msgstr "Completed $count/$total"
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:999 src/gui/dialogs/addon/manager.cpp:1041
+#: src/gui/dialogs/addon/manager.cpp:991 src/gui/dialogs/addon/manager.cpp:1033
 msgid "The server responded with an error:"
 msgstr "The server responded with an error:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1017
-#: src/gui/dialogs/addon/manager.cpp:1044
+#: src/gui/dialogs/addon/manager.cpp:1009
+#: src/gui/dialogs/addon/manager.cpp:1036
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Response"
@@ -7392,23 +7419,23 @@ msgstr "descending"
 msgid "newest to oldest"
 msgstr "newest to oldest"
 
-#: src/gui/dialogs/addon/manager.cpp:567
+#: src/gui/dialogs/addon/manager.cpp:566
 msgid "addons^Back to List"
 msgstr "Back to List"
 
-#: src/gui/dialogs/addon/manager.cpp:579
+#: src/gui/dialogs/addon/manager.cpp:578
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "An error occurred while downloading the add-ons list from the server."
 
-#: src/gui/dialogs/addon/manager.cpp:617
+#: src/gui/dialogs/addon/manager.cpp:616
 msgid "No Add-ons Available"
 msgstr "No Add-ons Available"
 
-#: src/gui/dialogs/addon/manager.cpp:617
+#: src/gui/dialogs/addon/manager.cpp:616
 msgid "There are no add-ons available for download from this server."
 msgstr "There are no add-ons available for download from this server."
 
-#: src/gui/dialogs/addon/manager.cpp:884
+#: src/gui/dialogs/addon/manager.cpp:876
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7416,15 +7443,15 @@ msgstr ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 
-#: src/gui/dialogs/addon/manager.cpp:892
+#: src/gui/dialogs/addon/manager.cpp:884
 msgid "The following add-on could not be deleted properly:"
 msgstr "The following add-on could not be deleted properly:"
 
-#: src/gui/dialogs/addon/manager.cpp:972
+#: src/gui/dialogs/addon/manager.cpp:964
 msgid "Warning"
 msgstr "Warning"
 
-#: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/addon/manager.cpp:965
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7432,19 +7459,19 @@ msgstr ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 
-#: src/gui/dialogs/addon/manager.cpp:991
+#: src/gui/dialogs/addon/manager.cpp:983
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr "The passphrase attribute cannot be present when forum_auth is used."
 
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:988
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Invalid icon path. Make sure the path points to a valid image."
 
-#: src/gui/dialogs/addon/manager.cpp:1002
+#: src/gui/dialogs/addon/manager.cpp:994
 msgid "The add-on was rejected by the server:"
 msgstr "The add-on was rejected by the server:"
 
-#: src/gui/dialogs/addon/manager.cpp:1029
+#: src/gui/dialogs/addon/manager.cpp:1021
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7452,23 +7479,23 @@ msgstr ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 
-#: src/gui/dialogs/addon/manager.cpp:1061
+#: src/gui/dialogs/addon/manager.cpp:1053
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Do you want to uninstall '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1094
+#: src/gui/dialogs/addon/manager.cpp:1086
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d %B %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1097
+#: src/gui/dialogs/addon/manager.cpp:1089
 msgid "%B %d %Y, %H:%M"
 msgstr "%d %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1152
+#: src/gui/dialogs/addon/manager.cpp:1144
 msgid "url^None"
 msgstr "None"
 
@@ -7672,67 +7699,63 @@ msgstr "Unsaved changes will be lost. Do you want to leave?"
 msgid "Unit type saved."
 msgstr "Unit type saved."
 
-#: src/gui/dialogs/editor/generator_settings.cpp:70
-msgid "/1000 tiles"
+#: src/gui/dialogs/editor/generator_settings.cpp:38
+#, fuzzy
+#| msgid "/1000 tiles"
+msgid "$count/1000 tiles"
 msgstr "/1000 tiles"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
 msgstr "Coastal"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Inland"
 msgstr "Inland"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Island"
 msgstr "Island"
 
-#: src/gui/dialogs/file_dialog.cpp:105
+#: src/gui/dialogs/file_dialog.cpp:116
 msgid "Find File"
 msgstr "Find File"
 
-#: src/gui/dialogs/file_dialog.cpp:180
-msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-msgstr "<span color='#00dcff' size='small'>please enter a file name</span>"
+#: src/gui/dialogs/file_dialog.cpp:191
+#, fuzzy
+#| msgid "Winter Elven Castle"
+msgid "enter filename"
+msgstr "Winter Elven Castle"
 
-#: src/gui/dialogs/file_dialog.cpp:202
-msgid ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
-"extension, use $extensions</span></span>"
+#: src/gui/dialogs/file_dialog.cpp:201
+msgid "invalid extension (use $extensions)"
 msgstr ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
-"extension, use $extensions</span></span>"
 
-#: src/gui/dialogs/file_dialog.cpp:205
-msgid ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span "
-"size='small'>whitespace is not allowed in filename</span></span>"
+#: src/gui/dialogs/file_dialog.cpp:208
+msgid "filename contains whitespace"
 msgstr ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>white-"
-"space is not allowed in file name</span></span>"
 
-#: src/gui/dialogs/file_dialog.cpp:230
+#: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
 msgstr "Open"
 
-#: src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:313
 msgid "Opening files is not supported, contact your packager"
 msgstr "Opening files is not supported, contact your packager"
 
-#: src/gui/dialogs/file_dialog.cpp:363
+#: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "The file already exists. Do you wish to overwrite it?"
 
-#: src/gui/dialogs/file_dialog.cpp:387
+#: src/gui/dialogs/file_dialog.cpp:395
 msgid "The file or folder $path cannot be created."
 msgstr "The file or folder $path cannot be created."
 
-#: src/gui/dialogs/file_dialog.cpp:393
+#: src/gui/dialogs/file_dialog.cpp:401
 msgid "The file or folder $path does not exist."
 msgstr "The file or folder $path does not exist."
 
-#: src/gui/dialogs/file_dialog.cpp:769
+#: src/gui/dialogs/file_dialog.cpp:777
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7740,19 +7763,19 @@ msgstr ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 
-#: src/gui/dialogs/file_dialog.cpp:787
+#: src/gui/dialogs/file_dialog.cpp:795
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "The following folder and its contents will be permanently deleted:"
 
-#: src/gui/dialogs/file_dialog.cpp:788
+#: src/gui/dialogs/file_dialog.cpp:796
 msgid "The following file will be permanently deleted:"
 msgstr "The following file will be permanently deleted:"
 
-#: src/gui/dialogs/file_dialog.cpp:789
+#: src/gui/dialogs/file_dialog.cpp:797
 msgid "Do you wish to continue?"
 msgstr "Do you wish to continue?"
 
-#: src/gui/dialogs/file_dialog.cpp:801
+#: src/gui/dialogs/file_dialog.cpp:809
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -8011,8 +8034,8 @@ msgstr ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:134
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:500
+#: src/gui/dialogs/multiplayer/faction_select.cpp:200
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:498
 msgid "Random"
 msgstr "Random"
 
@@ -8096,17 +8119,17 @@ msgstr "Observers allowed"
 msgid "Observers not allowed"
 msgstr "Observers not allowed"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:621
+#: src/gui/dialogs/multiplayer/lobby.cpp:641
 msgid "lobby"
 msgstr "lobby"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:943
+#: src/gui/dialogs/multiplayer/lobby.cpp:966
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:954
+#: src/gui/dialogs/multiplayer/lobby.cpp:977
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8114,7 +8137,7 @@ msgstr ""
 "Something is wrong with the add-on version, check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:975
+#: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr "This game is password protected. Join using moderator rights anyway?"
 
@@ -8158,41 +8181,41 @@ msgstr "Custom Scenarios"
 msgid "Random Maps"
 msgstr "Random Maps"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:272
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "No games found."
 msgstr "No games found."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
 msgid "No eras found."
 msgstr "No eras found."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:333
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:339
 msgid "No eras found"
 msgstr "No eras found"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:602
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:608
 msgid "No eras available for this game."
 msgstr "No eras available for this game."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:814
 msgid "number of players^$min to $max"
 msgstr "$min to $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:919
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:951
 msgid "The selected game has no sides!"
 msgstr "The selected game has no sides!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:958
 msgid "The selected game cannot be created."
 msgstr "The selected game cannot be created."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
 msgid "Choose Starting Scenario"
 msgstr "Choose Starting Scenario"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
 msgid "Select at which point to begin this campaign."
 msgstr "Select at which point to begin this campaign."
 
@@ -8217,7 +8240,7 @@ msgid "empty"
 msgstr "empty"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:107
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 msgid "this game"
 msgstr "this game"
 
@@ -8229,11 +8252,17 @@ msgstr "Lobby"
 msgid "Game"
 msgstr "Game"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:310
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:81
+#, fuzzy
+#| msgid "Hotkey Settings"
+msgid "Hotkey(s): $bindings"
+msgstr "Hotkey Settings"
+
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
 msgstr "Invalid Colour"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:517
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to choose factions..."
 msgstr "Waiting for players to choose factions..."
 
@@ -8262,12 +8291,12 @@ msgstr "Invalid username"
 msgid "Not on friends or ignore lists"
 msgstr "Not on friends or ignore lists"
 
-#: src/gui/dialogs/preferences_dialog.cpp:930
-#: src/gui/dialogs/preferences_dialog.cpp:994
+#: src/gui/dialogs/preferences_dialog.cpp:925
+#: src/gui/dialogs/preferences_dialog.cpp:989
 msgid "No hotkey selected"
 msgstr "No hot-key selected"
 
-#: src/gui/dialogs/preferences_dialog.cpp:958
+#: src/gui/dialogs/preferences_dialog.cpp:953
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8275,15 +8304,15 @@ msgstr ""
 "‘<b>$hotkey_sequence|</b>’ is in use by ‘<b>$old_hotkey_action|</b>’.\n"
 "Do you wish to re-assign it to ‘<b>$new_hotkey_action|</b>’?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid "Reassign Hotkey"
 msgstr "Re-assign Hot-key"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:976
 msgid "All hotkeys have been reset to their default values."
 msgstr "All hot-keys have been reset to their default values."
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:976
 msgid "Hotkeys Reset"
 msgstr "Hot-keys Reset"
 
@@ -8371,69 +8400,69 @@ msgstr "Screenshot"
 msgid "Version $version"
 msgstr "Version $version"
 
-#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Choose Test Scenario"
 
-#: src/gui/dialogs/units_dialog.cpp:240 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:239 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Rename Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:273
+#: src/gui/dialogs/units_dialog.cpp:272
 msgid "This unit requires no upkeep."
 msgstr "This unit requires no upkeep."
 
-#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
-#: src/gui/dialogs/units_dialog.cpp:284
+#: src/gui/dialogs/units_dialog.cpp:273 src/gui/dialogs/units_dialog.cpp:278
+#: src/gui/dialogs/units_dialog.cpp:283
 msgid "Do you really want to dismiss him?"
 msgstr "Do you really want to dismiss him?"
 
-#: src/gui/dialogs/units_dialog.cpp:275 src/gui/dialogs/units_dialog.cpp:280
-#: src/gui/dialogs/units_dialog.cpp:285
+#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
+#: src/gui/dialogs/units_dialog.cpp:284
 msgid "Do you really want to dismiss her?"
 msgstr "Do you really want to dismiss her?"
 
-#: src/gui/dialogs/units_dialog.cpp:278
+#: src/gui/dialogs/units_dialog.cpp:277
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "This unit is an experienced one, having advanced levels."
 
-#: src/gui/dialogs/units_dialog.cpp:283
+#: src/gui/dialogs/units_dialog.cpp:282
 msgid "This unit is close to advancing a level."
 msgstr "This unit is close to advancing a level."
 
-#: src/gui/dialogs/units_dialog.cpp:289
+#: src/gui/dialogs/units_dialog.cpp:288
 msgid "Dismiss Unit"
 msgstr "Dismiss Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:433
+#: src/gui/dialogs/units_dialog.cpp:432
 msgid "unit_variation^Default Variation"
 msgstr "Default Variation"
 
-#: src/gui/dialogs/units_dialog.cpp:469
+#: src/gui/dialogs/units_dialog.cpp:468
 msgid "Create Unit"
 msgstr "Create Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:540
+#: src/gui/dialogs/units_dialog.cpp:539
 msgid "Recruit Unit"
 msgstr "Recruit Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:541 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:540 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Recruit"
 
-#: src/gui/dialogs/units_dialog.cpp:558 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:557 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Unit List"
 
-#: src/gui/dialogs/units_dialog.cpp:706
+#: src/gui/dialogs/units_dialog.cpp:701
 msgid "Recall Unit"
 msgstr "Recall Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:707 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:702 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Recall"
 
-#: src/gui/dialogs/units_dialog.cpp:837
+#: src/gui/dialogs/units_dialog.cpp:832
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8441,11 +8470,11 @@ msgstr ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 
-#: src/gui/dialogs/units_dialog.cpp:839
+#: src/gui/dialogs/units_dialog.cpp:834
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "This unit cannot be recalled because you do not have enough gold."
 
-#: src/gui/gui.cpp:130
+#: src/gui/gui.cpp:133
 msgid "No default gui defined."
 msgstr "No default gui defined."
 
@@ -8474,15 +8503,15 @@ msgstr "Delete add-on from server"
 msgid "NEW"
 msgstr "NEW"
 
-#: src/gui/widgets/chatbox.cpp:300
+#: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
 msgstr "whisper to $receiver"
 
-#: src/gui/widgets/chatbox.cpp:384
+#: src/gui/widgets/chatbox.cpp:382
 msgid "Joined <i>$name</i>"
 msgstr "Joined <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:390
+#: src/gui/widgets/chatbox.cpp:388
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8502,17 +8531,17 @@ msgstr "Open link?"
 msgid "Copied link!"
 msgstr "Copied link!"
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 
-#: src/gui/widgets/listbox.cpp:760 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "No list defined."
 
-#: src/gui/widgets/listbox.cpp:765
+#: src/gui/widgets/listbox.cpp:735
 msgid "A ‘list_definition’ should contain one row."
 msgstr "A ‘list_definition’ should contain one row."
 
@@ -8558,7 +8587,7 @@ msgstr "Invalid size."
 msgid "No widget defined."
 msgstr "No widget defined."
 
-#: src/gui/widgets/slider.cpp:355
+#: src/gui/widgets/slider.cpp:356
 msgid "The number of value_labels and values don’t match."
 msgstr "The number of value_labels and values don’t match."
 
@@ -8566,7 +8595,7 @@ msgstr "The number of value_labels and values don’t match."
 msgid "No stack layers defined."
 msgstr "No stack layers defined."
 
-#: src/gui/widgets/styled_widget.cpp:592
+#: src/gui/widgets/styled_widget.cpp:591
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Found a widget with a helptip and without a tooltip."
 
@@ -8574,11 +8603,11 @@ msgstr "Found a widget with a helptip and without a tooltip."
 msgid "No grid defined for tab container control"
 msgstr "No grid defined for tab container control"
 
-#: src/gui/widgets/tree_view.cpp:288
+#: src/gui/widgets/tree_view.cpp:287
 msgid "No nodes defined for a tree view."
 msgstr "No nodes defined for a tree view."
 
-#: src/gui/widgets/tree_view.cpp:318
+#: src/gui/widgets/tree_view.cpp:317
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "[node]id ‘root’ is reserved for the implementation."
 
@@ -8586,62 +8615,62 @@ msgstr "[node]id ‘root’ is reserved for the implementation."
 msgid "Unknown builder id for tree view node."
 msgstr "Unknown builder id for tree view node."
 
-#: src/gui/widgets/unit_preview_pane.cpp:136
+#: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
 msgstr "Resistances: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:138
+#: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
 msgstr "(Att / Def)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:224
+#: src/gui/widgets/unit_preview_pane.cpp:222
 msgid "Remaining: $left/$max"
 msgstr "Remaining: $left/$max"
 
-#: src/gui/widgets/unit_preview_pane.cpp:227
+#: src/gui/widgets/unit_preview_pane.cpp:225
 msgid "This unit can attack multiple times per turn."
 msgstr "This unit can attack multiple times per turn."
 
-#: src/gui/widgets/unit_preview_pane.cpp:269
+#: src/gui/widgets/unit_preview_pane.cpp:277
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "uses $num attack"
 msgstr[1] "uses $num attacks"
 
-#: src/gui/widgets/unit_preview_pane.cpp:312
-#: src/gui/widgets/unit_preview_pane.cpp:343
-#: src/gui/widgets/unit_preview_pane.cpp:452
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:320
+#: src/gui/widgets/unit_preview_pane.cpp:351
+#: src/gui/widgets/unit_preview_pane.cpp:460
+#: src/gui/widgets/unit_preview_pane.cpp:492
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:350
-#: src/gui/widgets/unit_preview_pane.cpp:363
-#: src/gui/widgets/unit_preview_pane.cpp:491
-#: src/gui/widgets/unit_preview_pane.cpp:508
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:371
+#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:516
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:352
-#: src/gui/widgets/unit_preview_pane.cpp:368
-#: src/gui/widgets/unit_preview_pane.cpp:494
-#: src/gui/widgets/unit_preview_pane.cpp:496
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:360
+#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:502
+#: src/gui/widgets/unit_preview_pane.cpp:504
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "XP: "
 msgstr "XP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:370
-#: src/gui/widgets/unit_preview_pane.cpp:515
+#: src/gui/widgets/unit_preview_pane.cpp:378
+#: src/gui/widgets/unit_preview_pane.cpp:523
 msgid "Experience Modifier: "
 msgstr "Experience Modifier: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:373
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:381
+#: src/gui/widgets/unit_preview_pane.cpp:526
 msgid "MP: "
 msgstr "MP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:400
-#: src/gui/widgets/unit_preview_pane.cpp:539
+#: src/gui/widgets/unit_preview_pane.cpp:408
+#: src/gui/widgets/unit_preview_pane.cpp:547
 msgid "Abilities"
 msgstr "Abilities"
 
@@ -8743,7 +8772,9 @@ msgid "Select/Move/Attack"
 msgstr "Select/Move/Attack"
 
 #: src/hotkey/hotkey_command.cpp:84
-msgid "Touch"
+#, fuzzy
+#| msgid "Touch"
+msgid "Touch Hex"
 msgstr "Touch"
 
 #: src/hotkey/hotkey_command.cpp:85
@@ -9523,11 +9554,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Find Server Application"
 
-#: src/preferences/preferences.cpp:1797
+#: src/preferences/preferences.cpp:1824
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1799
+#: src/preferences/preferences.cpp:1826
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9558,6 +9589,26 @@ msgstr "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "In section ‘[$section|]’ the mandatory sub-tag ‘[$tag|]’ is missing."
+
+#~ msgid "Turn dialog"
+#~ msgstr "Turn dialogue"
+
+#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
+#~ msgstr "<span color='#00dcff' size='small'>please enter a file name</span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>wrong extension, use $extensions</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>wrong extension, use $extensions</span></span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>whitespace is not allowed in filename</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>white-space is not allowed in file name</span></span>"
 
 #~ msgid "Battle For Wesnoth Help"
 #~ msgstr "Battle For Wesnoth Help"
@@ -10720,9 +10771,6 @@ msgstr "In section ‘[$section|]’ the mandatory sub-tag ‘[$tag|]’ is miss
 
 #~ msgid "Clears the current bindings for \"$hotkey_description|\""
 #~ msgstr "Clears the current bindings for \"$hotkey_description|\""
-
-#~ msgid "Hotkey Settings"
-#~ msgstr "Hotkey Settings"
 
 #~ msgid "Reset all bindings to the default values"
 #~ msgstr "Reset all bindings to the default values"

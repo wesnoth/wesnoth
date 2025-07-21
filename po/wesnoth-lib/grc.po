@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-15 22:18-0500\n"
+"POT-Creation-Date: 2025-07-20 22:54-0500\n"
 "PO-Revision-Date: 2025-07-19 11:45+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: \n"
@@ -299,8 +299,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Ἔρημοι'</italic> ἑτέραν σύστασιν ἢ μικροὶ ψαμμώδεις τόποι ἢ "
-"αἰγιαλοὶ ἔχουσιν, ἀλλὰ πρὸς παίγνιον ταὐτὰ κρίνονται. Ἴδε "
-"<ref>dst='..terrain_sand' text='ψάμμον'</ref>."
+"αἰγιαλοὶ ἔχουσιν, ἀλλὰ πρὸς παίγνιον ταὐτὰ κρίνονται. Ἴδε <ref>dst='.."
+"terrain_sand' text='ψάμμον'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -1891,7 +1891,7 @@ msgstr "Τέχνης Ἀντιμετάθεσις"
 #: data/core/terrain.cfg:3214
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:206
 #: data/gui/themes/default/dialogs/game_stats.cfg:384
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:405
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:390
 msgid "Shroud"
 msgstr "Καλύπτρα"
 
@@ -2316,7 +2316,7 @@ msgstr ""
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:474
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:459
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
@@ -2497,7 +2497,7 @@ msgstr "Ἄρχειν τοῦ χάρτου διευθυντοῦ"
 #. [grid]
 #. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
-#: data/gui/themes/default/dialogs/game_version.cfg:904
+#: data/gui/themes/default/dialogs/game_version.cfg:903
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
 msgstr "Κοινότης"
@@ -2519,7 +2519,7 @@ msgstr "Διορθοῦν τὰς τοῦ παιγνίου διατάξεις"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
-#: data/gui/themes/default/dialogs/lobby_main.cfg:571
+#: data/gui/themes/default/dialogs/lobby_main.cfg:600
 #: data/gui/themes/default/dialogs/preferences.cfg:213
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
@@ -2544,7 +2544,7 @@ msgstr "Ἐντὸς παιγνίου βοηθείας ἐπισκέψασθαι
 #. [button]: id=cancel
 #. [button]: id=quit_without_surrender
 #: data/gui/themes/celes/dialogs/title_screen.cfg:298
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:234
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:205
 #: data/gui/themes/default/dialogs/surrender_quit.cfg:99
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit"
@@ -2578,17 +2578,17 @@ msgstr "<b><span font_family='DejaVu Sans'>✔</span> Ἀντεγράφη</b>"
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/themes/celes/widgets/window_default.cfg:106
+#: data/gui/themes/celes/widgets/window_default.cfg:57
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:302
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:247
 #: data/gui/themes/default/dialogs/game_stats.cfg:843
-#: data/gui/themes/default/dialogs/game_version.cfg:992
+#: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:274
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2619,7 +2619,7 @@ msgstr "Ὄνομα χρώστου:"
 #. [grid]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:95
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:217
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1036
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:1021
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:90
 #: data/gui/themes/default/dialogs/mp_login.cfg:143
 msgid "Password:"
@@ -2646,13 +2646,13 @@ msgstr "Σῴζειν σύνθημα ἐγχώριον (κεκρυμμένον)"
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:287
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:469
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1243
-#: data/gui/themes/default/dialogs/file_dialog.cfg:506
+#: data/gui/themes/default/dialogs/file_dialog.cfg:504
 #: data/gui/themes/default/dialogs/folder_create.cfg:119
 #: data/gui/themes/default/dialogs/label_settings.cfg:137
 #: data/gui/themes/default/dialogs/logging.cfg:259
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:114
 #: data/gui/themes/default/dialogs/mp_change_control.cfg:203
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:381
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:411
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:136
 #: data/gui/themes/default/dialogs/mp_login.cfg:243
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
@@ -2697,7 +2697,7 @@ msgstr "Εὖ"
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:214
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:126
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:282
-#: data/gui/themes/default/dialogs/file_dialog.cfg:519
+#: data/gui/themes/default/dialogs/file_dialog.cfg:517
 #: data/gui/themes/default/dialogs/file_progress.cfg:94
 #: data/gui/themes/default/dialogs/folder_create.cfg:133
 #: data/gui/themes/default/dialogs/game_load.cfg:653
@@ -2708,10 +2708,10 @@ msgstr "Εὖ"
 #: data/gui/themes/default/dialogs/message.cfg:149
 #: data/gui/themes/default/dialogs/mp_change_control.cfg:216
 #: data/gui/themes/default/dialogs/mp_connect.cfg:314
-#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
-#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
-#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:393
+#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:475
+#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:393
+#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:350
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:423
 #: data/gui/themes/default/dialogs/mp_join_game_password_prompt.cfg:149
 #: data/gui/themes/default/dialogs/mp_login.cfg:257
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:370
@@ -2726,7 +2726,7 @@ msgstr "Εὖ"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:621
+#: data/gui/themes/default/dialogs/units_dialog.cfg:623
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Ἀκυροῦν"
@@ -2826,7 +2826,7 @@ msgstr "Ἐνημερώθη:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:656
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:662
 msgid "No description available."
 msgstr "Οὐδεμία περιγραφὴ πρόκειται."
 
@@ -2871,7 +2871,7 @@ msgstr "Προσθήκην Ἐνημερoῦν"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1060
+#: src/gui/dialogs/addon/manager.cpp:1052
 msgid "Uninstall add-on"
 msgstr "Προσθήκην Ἐξαιρεῖν"
 
@@ -2899,7 +2899,7 @@ msgstr "Ἐξαρτήσεις:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1135
+#: src/gui/dialogs/addon/manager.cpp:1127
 msgid "addon_dependencies^None"
 msgstr "προσθήκηἐξαρτήσεις^Οὐδεμία"
 
@@ -2913,7 +2913,7 @@ msgstr "Μεταφράσεις:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1149
+#: src/gui/dialogs/addon/manager.cpp:1141
 msgid "translations^None"
 msgstr "Οὐδεμία"
 
@@ -2948,8 +2948,8 @@ msgstr "Προσθηκῶν Διαχειριστής"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
-#: src/gui/dialogs/addon/manager.cpp:570 src/gui/dialogs/addon/manager.cpp:844
-#: src/gui/dialogs/addon/manager.cpp:941
+#: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
+#: src/gui/dialogs/addon/manager.cpp:933
 msgid "Add-on Details"
 msgstr "Προσθήκης Λεπτομέρειαι"
 
@@ -3108,6 +3108,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:45
 #: data/gui/themes/default/dialogs/units_dialog.cfg:48
 #: data/gui/themes/default/widgets/addon_list.cfg:78
@@ -3188,7 +3189,7 @@ msgstr "Δεῖξαι συμπεπληρωμένας στρατηγίας"
 #. [label]
 #. [label]: id=mods_header
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:220
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Τροποποιήσεις:"
 
@@ -3429,7 +3430,7 @@ msgstr "Ὡρολογίου Σχολαστέον"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:240
+#: src/gui/dialogs/units_dialog.cpp:239
 msgid "Name:"
 msgstr "Ὄνομα:"
 
@@ -3505,11 +3506,11 @@ msgstr "Χρωμάτων τροπὰς ἐπὶ χάρτου προθεωρεῖ
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1025
 #: src/gui/dialogs/editor/custom_tod.cpp:187
 #: src/gui/dialogs/editor/edit_unit.cpp:323
 #: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:364 src/gui/dialogs/file_dialog.cpp:791
+#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Ἐπιβεβαιοῦν"
 
@@ -3805,7 +3806,7 @@ msgstr "Προστιθέναι"
 #. [button]: id=delete
 #. [button]: id=server_delete
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:421
-#: data/gui/themes/default/dialogs/file_dialog.cfg:349
+#: data/gui/themes/default/dialogs/file_dialog.cfg:347
 #: data/gui/themes/default/dialogs/game_load.cfg:605
 #: data/gui/themes/default/dialogs/mp_connect.cfg:284
 msgid "Delete"
@@ -3822,7 +3823,7 @@ msgstr "Βεβαιοῦν"
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:464
 #: data/gui/themes/default/dialogs/game_save.cfg:120
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:230 src/hotkey/hotkey_command.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:237 src/hotkey/hotkey_command.cpp:185
 msgid "Save"
 msgstr "Σῴζειν"
 
@@ -4082,7 +4083,7 @@ msgstr "Κίνησις:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:220
+#: src/gui/widgets/unit_preview_pane.cpp:218
 msgid "Attacks"
 msgstr "Ἐπιθέσεις"
 
@@ -4144,7 +4145,7 @@ msgstr "Εἶδος Κινήσεως:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
-#: src/gui/widgets/unit_preview_pane.cpp:152
+#: src/gui/widgets/unit_preview_pane.cpp:151
 msgid "Movement Costs:"
 msgstr "Δαπαναὶ Κινήσεως:"
 
@@ -4201,7 +4202,7 @@ msgstr "Δημιουργὸν χάρτου αἱρεῖσθαι:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:923
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:908
 #: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Διατάξεις"
@@ -4240,7 +4241,7 @@ msgstr "Ὕψος:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:470
+#: src/gui/dialogs/units_dialog.cpp:469
 msgid "Create"
 msgstr "Ποιεῖν"
 
@@ -4297,33 +4298,33 @@ msgid "File:"
 msgstr "Ἀρχεῖον:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/file_dialog.cfg:190
+#: data/gui/themes/default/dialogs/file_dialog.cfg:189
 msgid "Places"
 msgstr "Τόποι"
 
 #. [button]: id=add_bookmark
-#: data/gui/themes/default/dialogs/file_dialog.cfg:281
+#: data/gui/themes/default/dialogs/file_dialog.cfg:280
 msgid "Bookmarks the current folder"
 msgstr "Τὸν νῦν φάκελον στηλογραφεῖν"
 
 #. [button]: id=remove_bookmark
-#: data/gui/themes/default/dialogs/file_dialog.cfg:293
+#: data/gui/themes/default/dialogs/file_dialog.cfg:292
 msgid "Removes the current bookmark"
 msgstr "Τὴν νῦν στηλογραφίαν ἀφανίζειν"
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/dialogs/file_dialog.cfg:320
+#: data/gui/themes/default/dialogs/file_dialog.cfg:319
 msgid "Open External"
 msgstr "Ἔξωθεν Ἀνοίγειν"
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/dialogs/file_dialog.cfg:321
+#: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open selected using platform’s default applications"
 msgstr "Ἐκλεγόμενον ἀνοίγειν τοῖς πλατφόρμας προορισμένοις ὀργάνοις"
 
 #. [button]: id=new_dir
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/file_dialog.cfg:335
+#: data/gui/themes/default/dialogs/file_dialog.cfg:334
 #: data/gui/themes/default/dialogs/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Νέος Φάκελος"
@@ -4334,47 +4335,47 @@ msgid "Formula debugger"
 msgstr "Σφαλμάτων Ἔλεγχος"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:59
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:54
 msgid "Welcome"
 msgstr "Χαίρετε"
 
 #. [label]: id=state
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:71
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:66
 msgid "state"
 msgstr "κατάστασις"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:85
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:79
 msgid "Call stack"
 msgstr "Κλήσεων Σωρός"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:94
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:89
 msgid "Actions"
 msgstr "Πράξεις"
 
 #. [button]: id=step
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:128
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:122
 msgid "Step operation"
 msgstr "Βῆμα ἐργασίας"
 
 #. [button]: id=next
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:139
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:134
 msgid "Next operation"
 msgstr "Ἐπιούσην ἐργασίαν"
 
 #. [button]: id=stepout
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:150
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:146
 msgid "Step out"
 msgstr "Ἔξοδος"
 
 #. [button]: id=continue
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:161
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:158
 msgid "Continue"
 msgstr "Ἐπιμένειν"
 
 #. [label]
-#: data/gui/themes/default/dialogs/formula_debugger.cfg:178
+#: data/gui/themes/default/dialogs/formula_debugger.cfg:174
 msgid "Execution trace"
 msgstr "Πραγμάτων Ἶχνος"
 
@@ -4449,7 +4450,7 @@ msgstr "Ἡμέρα"
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/themes/default/dialogs/game_load.cfg:308
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:944
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:929
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Load Game"
 msgstr "Σωτηρίαν Φορτίζειν"
@@ -4634,7 +4635,7 @@ msgstr "Σκηνικαὶ Διατάξεις"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:559
+#: src/gui/dialogs/units_dialog.cpp:558
 msgid "Scroll To"
 msgstr "Πρὸς τοῦτο ἑλίσσειν"
 
@@ -4681,23 +4682,23 @@ msgstr ""
 "αἰτεῖν:</i>"
 
 #. [button]: id=issue
-#: data/gui/themes/default/dialogs/game_version.cfg:313
+#: data/gui/themes/default/dialogs/game_version.cfg:312
 msgid "Report Issue"
 msgstr "Σφάλμα Ἀναγγέλλειν"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:322
+#: data/gui/themes/default/dialogs/game_version.cfg:321
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 msgstr "<i><span font_family='DejaVu Sans'>➤</span> Βίβλον Παιδιῶν ἰδεῖν:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
-#: data/gui/themes/default/dialogs/game_version.cfg:335
+#: data/gui/themes/default/dialogs/game_version.cfg:334
 msgid "View Manual"
 msgstr "Βίβλον Ἰδεῖν"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:343
+#: data/gui/themes/default/dialogs/game_version.cfg:342
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
@@ -4707,52 +4708,52 @@ msgstr ""
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
-#: data/gui/themes/default/dialogs/game_version.cfg:356
+#: data/gui/themes/default/dialogs/game_version.cfg:355
 msgid "Migrate"
 msgstr "Διαβιβάζειν"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:393
+#: data/gui/themes/default/dialogs/game_version.cfg:392
 msgid "Game data:"
 msgstr "Παιδιῆς δεδομένα:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:395
+#: data/gui/themes/default/dialogs/game_version.cfg:394
 msgid "User data:"
 msgstr "Χρωμένων δεδομένα:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:397
+#: data/gui/themes/default/dialogs/game_version.cfg:396
 msgid "Saved games:"
 msgstr "Σωτηρίαι:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:399
+#: data/gui/themes/default/dialogs/game_version.cfg:398
 msgid "Add-ons:"
 msgstr "Προσθήκαι:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:401
+#: data/gui/themes/default/dialogs/game_version.cfg:400
 msgid "Cache:"
 msgstr "Θησαυρισμός:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:403
+#: data/gui/themes/default/dialogs/game_version.cfg:402
 msgid "Logs:"
 msgstr "Ὑπομνήματα:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:405
+#: data/gui/themes/default/dialogs/game_version.cfg:404
 msgid "Screenshots:"
 msgstr "Ἀποτυπώματα:"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:439
+#: data/gui/themes/default/dialogs/game_version.cfg:438
 msgid "Log File"
 msgstr "Ὑπομνημάτων Ἀρχεῖον"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:440
+#: data/gui/themes/default/dialogs/game_version.cfg:439
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
@@ -4761,64 +4762,64 @@ msgstr ""
 "δεδομένα ἐνδέχεται εἶναι"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:470
+#: data/gui/themes/default/dialogs/game_version.cfg:469
 msgid "library^Name"
 msgstr "Ὄνομα"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:481
+#: data/gui/themes/default/dialogs/game_version.cfg:480
 msgid "library^Build version"
 msgstr "Ἔκδοσις κατασκευῆς"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:493
+#: data/gui/themes/default/dialogs/game_version.cfg:492
 msgid "library^Runtime version"
 msgstr "Ἔκδοσις δραπέτου"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:574
+#: data/gui/themes/default/dialogs/game_version.cfg:573
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr "Τάδε ἴδια ἐξελέγησαν ὅτε οὗτος ὁ Οὐεσνοθίων ἐκατασκευάζετο:"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:654
+#: data/gui/themes/default/dialogs/game_version.cfg:653
 msgid "Forums"
 msgstr "Ἀγοραί"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:673
+#: data/gui/themes/default/dialogs/game_version.cfg:672
 msgid "Discord"
 msgstr "Διασκορπισμός"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
-#: data/gui/themes/default/dialogs/game_version.cfg:692
+#: data/gui/themes/default/dialogs/game_version.cfg:691
 msgid "IRC"
 msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:711
+#: data/gui/themes/default/dialogs/game_version.cfg:710
 msgid "Steam"
 msgstr "Ἀτμίδιον"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:730
+#: data/gui/themes/default/dialogs/game_version.cfg:729
 msgid "Reddit"
 msgstr "Ἐρυθρῆ Βίβλος"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
-#: data/gui/themes/default/dialogs/game_version.cfg:749
+#: data/gui/themes/default/dialogs/game_version.cfg:748
 msgid "Donate"
 msgstr "Χορηγεῖν"
 
 #. [label]: id=description
-#: data/gui/themes/default/dialogs/game_version.cfg:845
+#: data/gui/themes/default/dialogs/game_version.cfg:844
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr "Παιδιὰ στρατηγικὴ τροπαῖς, ἀνεῳγμένη πηγή, μετὰ ὑψηλῆς φαντασίας."
 
@@ -4826,8 +4827,8 @@ msgstr "Παιδιὰ στρατηγικὴ τροπαῖς, ἀνεῳγμέν�
 #. [tab]
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/themes/default/dialogs/game_version.cfg:880
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:579
+#: data/gui/themes/default/dialogs/game_version.cfg:879
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:564
 #: data/gui/themes/default/dialogs/preferences.cfg:292
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
 #: data/gui/themes/default/dialogs/server_info.cfg:181
@@ -4836,27 +4837,27 @@ msgid "General"
 msgstr "Καθολικὰ"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:886
+#: data/gui/themes/default/dialogs/game_version.cfg:885
 msgid "Paths"
 msgstr "Ὁδοί"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:892
+#: data/gui/themes/default/dialogs/game_version.cfg:891
 msgid "Libraries"
 msgstr "Βιβλιοθῆκαι"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:898
+#: data/gui/themes/default/dialogs/game_version.cfg:897
 msgid "Features"
 msgstr "Ἴδια"
 
 #. [button]: id=credits
-#: data/gui/themes/default/dialogs/game_version.cfg:958
+#: data/gui/themes/default/dialogs/game_version.cfg:957
 msgid "Credits"
 msgstr "Ἐπιγραφαί"
 
 #. [button]: id=license
-#: data/gui/themes/default/dialogs/game_version.cfg:973
+#: data/gui/themes/default/dialogs/game_version.cfg:972
 msgid "License"
 msgstr "Ἄδεια"
 
@@ -4891,7 +4892,7 @@ msgstr "Διατάξεις Χάρτου Δημιουργοῦ"
 #. [grid]
 #. [label]
 #: data/gui/themes/default/dialogs/generator_settings.cfg:105
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:729
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:714
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:132
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:151
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:137
@@ -5007,57 +5008,72 @@ msgstr "Καθολικὴ Στοά"
 msgid "Matchmaking"
 msgstr "Συμβολαί"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#. saved settings to start a game with, such as era, map, fog, etc
+#: data/gui/themes/default/dialogs/lobby_main.cfg:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
+msgid "Presets"
+msgstr ""
+
 #. [label]: id=map
-#: data/gui/themes/default/dialogs/lobby_main.cfg:140
+#: data/gui/themes/default/dialogs/lobby_main.cfg:153
 msgid "Games"
 msgstr "Παιδιαί"
 
 #. [image]: id=needs_password
-#: data/gui/themes/default/dialogs/lobby_main.cfg:259
+#: data/gui/themes/default/dialogs/lobby_main.cfg:272
 msgid "Requires a password to join"
 msgstr "Σύνθημα δέεται πρὸς εἴσοδον"
 
+#. [button]: id=delete_preset
+#: data/gui/themes/default/dialogs/lobby_main.cfg:305
+#, fuzzy
+#| msgid "Delete Unit"
+msgid "Delete this preset"
+msgstr "Στρατιώτην Ἐξαλείφειν"
+
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/themes/default/dialogs/lobby_main.cfg:448
+#: data/gui/themes/default/dialogs/lobby_main.cfg:477
 msgid "Vacant slots"
 msgstr "Κεναὶ Θέσεις"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/themes/default/dialogs/lobby_main.cfg:449
+#: data/gui/themes/default/dialogs/lobby_main.cfg:478
 msgid "Only show games with vacant slots"
 msgstr "Μόνον παιδιὰς μετὰ κενῶν θέσεων δεικνύναι"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/lobby_main.cfg:461
+#: data/gui/themes/default/dialogs/lobby_main.cfg:490
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Φίλοι"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/themes/default/dialogs/lobby_main.cfg:462
+#: data/gui/themes/default/dialogs/lobby_main.cfg:491
 msgid "Only show games with friends"
 msgstr "Μόνον παιδιὰς μετὰ φίλων δεικνύναι"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/themes/default/dialogs/lobby_main.cfg:474
+#: data/gui/themes/default/dialogs/lobby_main.cfg:503
 msgid "Blocked players"
 msgstr "Ἀποκλῃσμένοι Παίζοντες"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/themes/default/dialogs/lobby_main.cfg:475
+#: data/gui/themes/default/dialogs/lobby_main.cfg:504
 msgid "Show games that include players you have blocked"
 msgstr "Παιδιὰς μετὰ ἀποκλῃσμένων παιζόντων δεικνύναι"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/themes/default/dialogs/lobby_main.cfg:487
+#: data/gui/themes/default/dialogs/lobby_main.cfg:516
 msgid "Invert filter"
 msgstr "Φίλτρον ἀντιστρέφειν"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/lobby_main.cfg:512
+#: data/gui/themes/default/dialogs/lobby_main.cfg:541
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:45
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:445
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:44
@@ -5069,29 +5085,29 @@ msgstr "Παιδιὰν Ποιεῖν"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/themes/default/dialogs/lobby_main.cfg:532
-#: src/gui/dialogs/multiplayer/lobby.cpp:975
+#: data/gui/themes/default/dialogs/lobby_main.cfg:561
+#: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "Join"
 msgstr "Εἰσέρχεσθαι"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/themes/default/dialogs/lobby_main.cfg:544
-#: src/gui/dialogs/multiplayer/lobby.cpp:943
+#: data/gui/themes/default/dialogs/lobby_main.cfg:573
+#: src/gui/dialogs/multiplayer/lobby.cpp:966
 msgid "Observe"
 msgstr "Θεᾶσθαι"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/lobby_main.cfg:559
+#: data/gui/themes/default/dialogs/lobby_main.cfg:588
 #: data/gui/themes/default/dialogs/server_info.cfg:168
 msgid "Announcements"
 msgstr "Ἀναγγέλματα"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
-#: data/gui/themes/default/dialogs/lobby_main.cfg:621
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:157
+#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:187
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:132
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:362
 #: data/gui/themes/default/widgets/unit_preview_pane.cfg:422
@@ -5100,53 +5116,53 @@ msgstr "Προφίλ"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/lobby_main.cfg:633
+#: data/gui/themes/default/dialogs/lobby_main.cfg:662
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Μάχης Ἱστορία"
 
 #. [button]: id=quit
-#: data/gui/themes/default/dialogs/lobby_main.cfg:650
+#: data/gui/themes/default/dialogs/lobby_main.cfg:679
 msgid "Log Out"
 msgstr "Ἐξέρχεσθαι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:670
+#: data/gui/themes/default/dialogs/lobby_main.cfg:699
 msgid "Normal Replays"
 msgstr "Κανονικαὶ Ἀναδρασκελίαι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:674
+#: data/gui/themes/default/dialogs/lobby_main.cfg:703
 msgid "Quick Replays"
 msgstr "Ταχεῖαι Ἀναδρασκελίαι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:675
+#: data/gui/themes/default/dialogs/lobby_main.cfg:704
 msgid "Skip quickly to the active turn when observing"
 msgstr "Ἐπὶ τὴν ἐνεργὴν τροπὴν ταχέως ἵεσθαι θεώμενον"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:679
+#: data/gui/themes/default/dialogs/lobby_main.cfg:708
 msgid "Enter Blindfolded"
 msgstr "Τυφλὸς Εἰσέρχεσθαι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:680
+#: data/gui/themes/default/dialogs/lobby_main.cfg:709
 msgid "Do not show the map until given control of a side"
 msgstr "Μὴ δεικνύναι τὸν χάρτην πρὶν πλευρᾶς ἐπικρατεῖν"
 
 #. [button]: id=join_queue
-#: data/gui/themes/default/dialogs/lobby_main.cfg:695
+#: data/gui/themes/default/dialogs/lobby_main.cfg:728
 msgid "Join Queue"
 msgstr "Σειρᾷ Ἐγγράφεσθαι"
 
 #. [button]: id=leave_queue
-#: data/gui/themes/default/dialogs/lobby_main.cfg:702
+#: data/gui/themes/default/dialogs/lobby_main.cfg:738
 msgid "Leave Queue"
 msgstr "Σειρᾷ Ἐξέρχεσθαι"
 
 #. [label]
-#: data/gui/themes/default/dialogs/lobby_main.cfg:801
+#: data/gui/themes/default/dialogs/lobby_main.cfg:844
 msgid "Multiplayer Lobby"
 msgstr "Πολυπαικτικὴ Στοά"
 
@@ -5464,244 +5480,244 @@ msgid "Address"
 msgstr "Τόπος"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:119
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:108
 msgid "Eras:"
 msgstr "Χρόνων γενεαί:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:155
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:144
 msgid "Random Faction Matchups:"
 msgstr "Τύχαι φυλῶν:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:156
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:145
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr "Ἐᾶν ὁμοίας μάχας ὅταν τύχῃ φυλαὶ αἱρεθῶσι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:177
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:166
 msgid "Independent"
 msgstr "Αὐτόνομοι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:178
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:167
 msgid "Independent: Random factions assigned independently"
 msgstr "Αὐτόνομοι: Τύχαι φυλαὶ ἰδίᾳ δίδοσθαι"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:182
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:171
 msgid "No Mirror"
 msgstr "Οὐκ ἴσος"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:183
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:172
 msgid "No Mirror: No two players will get the same faction"
 msgstr "Οὐκ ἴσος: Μηδένα δύο παίκτας τὴν αὐτὴν φυλὴν λαβεῖν"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:187
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:176
 msgid "No Ally Mirror"
 msgstr "Οὐκ ἴσος ξύμμαχος"
 
 #. [option]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:188
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:177
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "Οὐκ ἴσος ξύμμαχος: Μηδένα δύο ξυμμάχους τὴν αὐτὴν φυλὴν λαβεῖν"
 
 #. [toggle_button]: id=use_map_settings
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:330
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:319
 msgid "Use Map Settings"
 msgstr "Χρῆσθαι γῆς θεσμοῖς"
 
 #. [toggle_button]: id=use_map_settings
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:331
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:320
 msgid "Use scenario specific settings"
 msgstr "Χρῆσθαι θεσμοῖς κατὰ τὴν γῆν"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:347
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "Number of Turns"
 msgstr "Ἀριθμὸς Τροπῶν"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:347
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "The maximum number of turns the game can last"
 msgstr "Ὁ πλεῖστος ἀριθμὸς τροπῶν ὅσον ἀγὼν δύναται διαμεῖναι"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:348
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:337
 msgid "unlimited"
 msgstr "ἄπειρος"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:351
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "The amount of income each village yields per turn"
 msgstr "Ὁ ἀριθμὸς χρυσοῦ ὃν ἑκάστη κώμη ἀποφέρει κατὰ τροπήν"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:351
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "Village Gold"
 msgstr "Κώμης χρυσός"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:353
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "The number of unit levels each village can support"
 msgstr "Ὁ ἀριθμὸς στρατιωτικῶν βαθμῶν οὓς ἑκάστη κώμη τρέφειν δύναται"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:353
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "Village Support"
 msgstr "Κώμης τροφή"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:355
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:344
 msgid "Experience Modifier"
 msgstr "Μεταποιητὴς Ἔμπειρος"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:355
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:344
 msgid "The amount of experience a unit needs to advance"
 msgstr "Ὁ ἀριθμὸς ἐμπειρίας οὗ δεῖ στρατιώτῃ προκόψαι"
 
 #. [toggle_button]: id=fog
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:389
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:374
 msgid "Fog of War"
 msgstr "Ὅμιχλη πολέμου"
 
 #. [toggle_button]: id=fog
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:390
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:375
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Ἐχθρῶν στρατιῶται οὐκ ὀφθῆναι δυνατοὶ ἐὰν μὴ ἐν τῷ σῷ στρατεύματι ὦσι"
 
 #. [toggle_button]: id=shroud
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:406
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:391
 msgid "The map is unknown until your units explore it"
 msgstr "Ἡ γῆ ἄγνωστος μέχρις ἂν σοὶ στρατιῶται ἐξερευνήσωσι"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:422
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:407
 msgid "Random Start Time"
 msgstr "Τύχη ἀρχομένου χρόνου"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:423
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:408
 msgid "Randomize the starting time of day"
 msgstr "Τύχῃ τὸν ἀρχόμενον τῆς ἡμέρας χρόνον αἱρεῖσθαι"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:459
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:444
 msgid "Time Limit"
 msgstr "Χρόνου ὅριον"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:460
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:445
 msgid "Enable custom time limits"
 msgstr "Ἐνεργεῖν ἰδίους χρόνων ὁρίους"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:497
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Initial Limit"
 msgstr "Ἀρχικὸν ὅριον"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:497
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Ὁ πλεῖστος χρόνος τῇ πρώτῃ τροπῇ ἀπονεμηθεὶς (δεύτερα)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:499
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Χρόνος ἑκάστῃ τροπῇ κοινῶν ἔργων (δεύτερα)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:499
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Turn Bonus"
 msgstr "Τροπῆς πρόσθεμα"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:501
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:486
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Ὁ πλεῖστος χρόνος τῇ τινι τροπῇ ἀπονεμηθεὶς (δεύτερα)"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:501
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:486
 msgid "Reservoir"
 msgstr "Ἀποθήκη"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:503
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:488
 msgid "Action Bonus"
 msgstr "Ἔργου πρόσθεμα"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:503
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:488
 msgid "Time for each attack, recruit, and capture"
 msgstr "Χρόνος ἑκάστῃ προσβολῇ, στρατολογίᾳ, ἁλώσει"
 
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:592
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:577
 msgid "Custom Options"
 msgstr "Ἴδιαι αἱρέσεις"
 
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:605
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:590
 msgid "Game Settings"
 msgstr "Ἀγῶνος θεσμοί"
 
 #. [slider]: id=num_players
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:748
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:733
 msgid "Any"
 msgstr "Ὅστισοῦν"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:881
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:866
 msgid "Random map options: "
 msgstr "Τύχης γῆς αἱρέσεις: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:902
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:887
 msgid "Regenerate"
 msgstr "Ἀναγεννᾶν"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:975
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Assign sides to players at random"
 msgstr "Τύχῃ πλευρὰς παίκταις νέμειν"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:975
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Shuffle Sides"
 msgstr "Πλευρὰς κληροῦν"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:979
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Allow users who are not playing to watch the game"
 msgstr "Ἐᾶν θεατὰς μὴ παίζοντας ἀγῶνα θεᾶσθαι"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:979
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Observers"
 msgstr "Θεαταί"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:983
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Strict Synchronization"
 msgstr "Ἀκριβὴς σύμπνοια"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:983
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Stricter checks for out-of-sync errors"
 msgstr "Ἀκριβεστέρα ζήτησις ἁμαρτημάτων ἀσυμφωνίας"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:987
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Private Replay"
 msgstr "ἴδιος ἀναδιπλασιασμός"
 
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:987
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Whether the replay will be publicly available"
 msgstr "Εἰ ὁ ἀναδιπλασιασμός δημόσιος παρέσται"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1003
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:988
 msgid "Name of game:"
 msgstr "Ἀγῶνος ὄνομα:"
 
 #. [text_box]: id=game_password
-#: data/gui/themes/default/dialogs/mp_create_game.cfg:1050
+#: data/gui/themes/default/dialogs/mp_create_game.cfg:1035
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr "Τίθεσθαι σύνθημα ὃ δεῖ εἰσερχομένους παίκτας γράφειν"
@@ -5715,32 +5731,41 @@ msgstr "Τίθεσθαι σύνθημα ὃ δεῖ εἰσερχομένους 
 msgid "Map size:"
 msgstr "Γῆς μέγεθος:"
 
+#. [button]: id=save_preset
+#: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
+#: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
+#: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
+#, fuzzy
+#| msgid "Saved Games"
+msgid "Save Preset"
+msgstr "Σῳζόμενοι Παιγνίδαι"
+
 #. [row]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:180
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
 msgid "gender^Random"
 msgstr "Τύχη"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:182
-#: data/gui/themes/default/dialogs/units_dialog.cfg:496
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
+#: data/gui/themes/default/dialogs/units_dialog.cfg:498
 msgid "Male"
 msgstr "Ἄρρην"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:184
-#: data/gui/themes/default/dialogs/units_dialog.cfg:507
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
+#: data/gui/themes/default/dialogs/units_dialog.cfg:509
 msgid "Female"
 msgstr "Θῆλυς"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:217
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:247
 msgid "Recruits"
 msgstr "Στρατολογεῖσθαι"
 
 #. [label]
-#: data/gui/themes/default/dialogs/mp_faction_select.cfg:308
+#: data/gui/themes/default/dialogs/mp_faction_select.cfg:338
 msgid "Choose Your Leader"
 msgstr "Ἑλέσθαι Σὸν Ἡγεμόνα"
 
@@ -5775,7 +5800,7 @@ msgstr "Φυλή:"
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
 #: data/gui/themes/default/dialogs/mp_staging.cfg:671
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:516
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:514
 msgid "Waiting for players to join..."
 msgstr "Μένοντες παίκτας προσγενέσθαι..."
 
@@ -6046,12 +6071,14 @@ msgstr "Μὴ ἐᾶν αὐτοκινήτους κινήσεις ἀρχομέ�
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
-msgid "Turn dialog"
-msgstr "Τροπῆς διάλογος"
+msgid "Turn prompt"
+msgstr ""
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-msgid "Display a dialog at the beginning of your turn"
+#, fuzzy
+#| msgid "Display a dialog at the beginning of your turn"
+msgid "Display a prompt at the beginning of your turn"
 msgstr "Διάλογον δεικνύναι ἀρχομένης τῆς σῆς τροπῆς"
 
 #. [toggle_button]: id=whiteboard_on_start
@@ -6159,7 +6186,7 @@ msgstr "Θερμὴ κλείς"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:884
+#: src/gui/dialogs/preferences_dialog.cpp:879
 msgid "game_hotkeys^G"
 msgstr "Γ"
 
@@ -6172,7 +6199,7 @@ msgstr "Παρὸν ἐν ἀγῶνι"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "editor_hotkeys^E"
 msgstr "Ε"
 
@@ -6185,7 +6212,7 @@ msgstr "Παρὸν ἐν μεταποιητῇ"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "mainmenu_hotkeys^M"
 msgstr "Μ"
 
@@ -6390,72 +6417,72 @@ msgid "Volume:"
 msgstr "Ἴαχος:"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:82
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:80
 msgid "Pause music on focus loss"
 msgstr "Μοῦσαν παύειν ὅταν προσοχὴν ἀπολέσῃς"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:83
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:81
 msgid "Pause the music when you switch to any other window"
 msgstr "Παύειν τὴν μοῦσαν ὅταν ἐπ᾽ ἄλλο παράθυρον τρέψῃ"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:104
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects"
 msgstr "Ψόφων ἀπὸ πράξεων"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:104
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects on/off"
 msgstr "Ψόφων ἀπὸ πράξεων ἐνεργοῦν/ἀδρανεῖς"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:105
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:97
 msgid "Change the sound effects volume"
 msgstr "Μετατιθέναι τὸν ἴαχον τῶν ψόφων ἀπὸ πράξεων"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:115
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music"
 msgstr "Μοῦσα"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:115
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music on/off"
 msgstr "Μοῦσα ἐνεργοῦσα/ἀδρανής"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:116
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:110
 msgid "Change the music volume"
 msgstr "Μετατιθέναι τὸν ἴαχον τῆς μούσης"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:127
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Κώδωνος ψόφον παίζειν ἀρχομένης τῆς σῆς τροπῆς"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:127
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Turn bell"
 msgstr "Τροπῆς κώδων"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:128
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:124
 msgid "Change the bell volume"
 msgstr "Μετατιθέναι τὸν ἴαχον τοῦ κώδωνος"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:137
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "Turn menu and button sounds on/off"
 msgstr "Ψόφους θυρῶν καὶ κουμπίων ἐνεργοὺς/ἀδρανεῖς τιθέναι"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:137
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "User interface sounds"
 msgstr "Προσώπου ψόφοι"
 
 #. [column]
-#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:138
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:136
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Μετατιθέναι τὸν ἴαχον ψόφων κουμπίων κλπ."
 
@@ -6879,7 +6906,7 @@ msgstr "Ἐπιτίθεσθαι Ἐχθρῷ"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:572
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "★"
 msgstr "★"
 
@@ -6918,28 +6945,28 @@ msgstr "Κατάστασις"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:147
-#: src/gui/widgets/unit_preview_pane.cpp:390
-#: src/gui/widgets/unit_preview_pane.cpp:525
+#: src/gui/widgets/unit_preview_pane.cpp:398
+#: src/gui/widgets/unit_preview_pane.cpp:533
 msgid "Traits"
 msgstr "Ἦθη"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:403
+#: data/gui/themes/default/dialogs/units_dialog.cfg:405
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Ζητεῖν ὄνομα μονάδος, τύπου μονάδος, βαθμὸν μονάδος, ἢ ἦθος"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:548
+#: data/gui/themes/default/dialogs/units_dialog.cfg:550
 msgid "Dismiss"
 msgstr "Ἀποπέμπειν"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:559
+#: data/gui/themes/default/dialogs/units_dialog.cfg:561
 msgid "Rename"
 msgstr "Μετονομάζειν"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:573
+#: data/gui/themes/default/dialogs/units_dialog.cfg:575
 msgid "Mark/unmark the selected unit as favorite"
 msgstr "Σημειοῦν/ἀποσημοῦν τὴν ἐκλεγεῖσαν μονάδα ὡς φίλην"
 
@@ -7108,7 +7135,7 @@ msgstr "Οὐδεμία γραφικὴ τομὴ ὡρισμένη τῇ κατ
 msgid "No resolution defined for "
 msgstr "Οὐδεμία ἀνάλυσις ὡρισμένη "
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:428
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -7138,13 +7165,13 @@ msgstr "Συνετελέσθη $count/$total"
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:999 src/gui/dialogs/addon/manager.cpp:1041
+#: src/gui/dialogs/addon/manager.cpp:991 src/gui/dialogs/addon/manager.cpp:1033
 msgid "The server responded with an error:"
 msgstr "Ὁ διακομιστὴς ἀντεκρίθη σφάλματι:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1017
-#: src/gui/dialogs/addon/manager.cpp:1044
+#: src/gui/dialogs/addon/manager.cpp:1009
+#: src/gui/dialogs/addon/manager.cpp:1036
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Ἀπόκρισις"
@@ -7398,23 +7425,23 @@ msgstr "καταβαίνουσα"
 msgid "newest to oldest"
 msgstr "νεώτατον πρὸς παλαιότατον"
 
-#: src/gui/dialogs/addon/manager.cpp:567
+#: src/gui/dialogs/addon/manager.cpp:566
 msgid "addons^Back to List"
 msgstr "Ἐπιστροφὴ πρὸς Κατάλογον"
 
-#: src/gui/dialogs/addon/manager.cpp:579
+#: src/gui/dialogs/addon/manager.cpp:578
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Σφάλμα ἐγένετο κατὰ καταφορτὴν καταλόγου προσθηκῶν ἐκ διακομιστοῦ."
 
-#: src/gui/dialogs/addon/manager.cpp:617
+#: src/gui/dialogs/addon/manager.cpp:616
 msgid "No Add-ons Available"
 msgstr "Οὐδεμίαι Προσθῆκαι Διαθέσιμοι"
 
-#: src/gui/dialogs/addon/manager.cpp:617
+#: src/gui/dialogs/addon/manager.cpp:616
 msgid "There are no add-ons available for download from this server."
 msgstr "Οὐδεμίαι προσθῆκαι διαθέσιμοι πρὸς καταφορτὴν ἐκ τούτου διακομιστοῦ."
 
-#: src/gui/dialogs/addon/manager.cpp:884
+#: src/gui/dialogs/addon/manager.cpp:876
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7422,15 +7449,15 @@ msgstr ""
 "Ἡ ἐφεξῆς προσθήκη ἔχειν φαίνεται δημοσιευτικὰ ἢ ἐκδοτικὰ δεδομένα ἐγχωρίως "
 "ἀποκείμενα, καὶ οὐκ ἀφαιρεθήσεται:"
 
-#: src/gui/dialogs/addon/manager.cpp:892
+#: src/gui/dialogs/addon/manager.cpp:884
 msgid "The following add-on could not be deleted properly:"
 msgstr "Ἡ ἐφεξῆς προσθήκη οὐκ ἠδυνήθη ὀρθῶς ἀφαιρεθῆναι:"
 
-#: src/gui/dialogs/addon/manager.cpp:972
+#: src/gui/dialogs/addon/manager.cpp:964
 msgid "Warning"
 msgstr "Προειδοποίησις"
 
-#: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/addon/manager.cpp:965
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7438,20 +7465,20 @@ msgstr ""
 "Ἡ ἐκτικὴ ἔκδοσις ταύτης τῆς προσθήκης μείζων ἐστὶν ἢ ἴση τῇ ἀναβαλλομένῃ. "
 "Ἆρά γε βούλει ἐπιμένειν?"
 
-#: src/gui/dialogs/addon/manager.cpp:991
+#: src/gui/dialogs/addon/manager.cpp:983
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 "Τὸ γνώρισμα συνθήματος οὐ δύναται παρεῖναι ὅτε ἡ συζυγία_συνεδρίου χρῆται."
 
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:988
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Ἄκυρος ὁδὸς εἰκόνος. Βεβαιώθητι τὴν ὁδὸν δείκνυσθαι εἰκὼν ἔγκυρον."
 
-#: src/gui/dialogs/addon/manager.cpp:1002
+#: src/gui/dialogs/addon/manager.cpp:994
 msgid "The add-on was rejected by the server:"
 msgstr "Ἡ προσθήκη ἀπερίληπτος ὑπὸ τοῦ διακομιστοῦ ἐγένετο:"
 
-#: src/gui/dialogs/addon/manager.cpp:1029
+#: src/gui/dialogs/addon/manager.cpp:1021
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7460,23 +7487,23 @@ msgstr ""
 "ἀναβατικοὺς ἀριθμοὺς αὐτῆς ἐπὶ τοῦ διακομιστοῦ προσθηκῶν. Ἆρά γε βούλει "
 "ἐπιμένειν?"
 
-#: src/gui/dialogs/addon/manager.cpp:1061
+#: src/gui/dialogs/addon/manager.cpp:1053
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Βούλει ἀποκαθιστάναι '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1094
+#: src/gui/dialogs/addon/manager.cpp:1086
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Β %δ %Υ, %Ι:%Μ %π"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1097
+#: src/gui/dialogs/addon/manager.cpp:1089
 msgid "%B %d %Y, %H:%M"
 msgstr "%Β %δ %Υ, %Ή:%Μ"
 
-#: src/gui/dialogs/addon/manager.cpp:1152
+#: src/gui/dialogs/addon/manager.cpp:1144
 msgid "url^None"
 msgstr "Οὐδεμία"
 
@@ -7680,67 +7707,63 @@ msgstr "Ἀποσωζόμεναι ἀλλοιώσεις ἀπολεῖσθαι �
 msgid "Unit type saved."
 msgstr "Τύπος μονάδος ἀποσεσωσμένος."
 
-#: src/gui/dialogs/editor/generator_settings.cpp:70
-msgid "/1000 tiles"
+#: src/gui/dialogs/editor/generator_settings.cpp:38
+#, fuzzy
+#| msgid "/1000 tiles"
+msgid "$count/1000 tiles"
 msgstr "/1000 πλακόπρωρα"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
 msgstr "Παραθαλάσσιος"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Inland"
 msgstr "Μεσόγειος"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Island"
 msgstr "Νῆσος"
 
-#: src/gui/dialogs/file_dialog.cpp:105
+#: src/gui/dialogs/file_dialog.cpp:116
 msgid "Find File"
 msgstr "Εὑρεῖν Γραφεῖον"
 
-#: src/gui/dialogs/file_dialog.cpp:180
-msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-msgstr "<span color='#00dcff' size='small'>εἰσάγετε ὄνομα γραφείου</span>"
+#: src/gui/dialogs/file_dialog.cpp:191
+#, fuzzy
+#| msgid "Winter Elven Castle"
+msgid "enter filename"
+msgstr "Ὑπόγειον Φρούριον Νάνων"
 
-#: src/gui/dialogs/file_dialog.cpp:202
-msgid ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
-"extension, use $extensions</span></span>"
+#: src/gui/dialogs/file_dialog.cpp:201
+msgid "invalid extension (use $extensions)"
 msgstr ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>ἄκυρον "
-"ἐπέκτασιν, χρῆσαι $extensions</span></span>"
 
-#: src/gui/dialogs/file_dialog.cpp:205
-msgid ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span "
-"size='small'>whitespace is not allowed in filename</span></span>"
+#: src/gui/dialogs/file_dialog.cpp:208
+msgid "filename contains whitespace"
 msgstr ""
-"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>κενὰ "
-"οὐκ ἐπιτρέπεται ἐν ὀνόματι γραφείου</span></span>"
 
-#: src/gui/dialogs/file_dialog.cpp:230
+#: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
 msgstr "Ἀνοίγειν"
 
-#: src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:313
 msgid "Opening files is not supported, contact your packager"
 msgstr "Ἀνοίγειν γραφεῖα οὐκ ἐπικουρεῖται, ἐπικοινώνει τῷ συσκευαστῇ σου"
 
-#: src/gui/dialogs/file_dialog.cpp:363
+#: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Τὸ γραφεῖον ἤδη ὑπάρχει. Βούλει αὐτὸ ὑπεργράφειν?"
 
-#: src/gui/dialogs/file_dialog.cpp:387
+#: src/gui/dialogs/file_dialog.cpp:395
 msgid "The file or folder $path cannot be created."
 msgstr "Τὸ γραφεῖον ἢ φάκελος $path οὐ δυνατὸν γενέσθαι."
 
-#: src/gui/dialogs/file_dialog.cpp:393
+#: src/gui/dialogs/file_dialog.cpp:401
 msgid "The file or folder $path does not exist."
 msgstr "Τὸ γραφεῖον ἢ φάκελος $path οὐχ ὑπάρχει."
 
-#: src/gui/dialogs/file_dialog.cpp:769
+#: src/gui/dialogs/file_dialog.cpp:777
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7748,19 +7771,19 @@ msgstr ""
 "Οὐκ ἠδυνήθη νέος φάκελος γενέσθαι κατὰ $path|. Βεβαιώθητι ἔχειν τὰς "
 "προσηκούσας ἐξουσίας γράφειν εἰς τοῦτον τὸν τόπον."
 
-#: src/gui/dialogs/file_dialog.cpp:787
+#: src/gui/dialogs/file_dialog.cpp:795
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Ὁ ἐφεξῆς φάκελος καὶ τὰ ἐν αὐτῷ ἀφανισθήσονται ἀνεπανορθώτως:"
 
-#: src/gui/dialogs/file_dialog.cpp:788
+#: src/gui/dialogs/file_dialog.cpp:796
 msgid "The following file will be permanently deleted:"
 msgstr "Τὸ ἐφεξὲς γραφεῖον ἀφανισθήσεται ἀνεπανορθώτως:"
 
-#: src/gui/dialogs/file_dialog.cpp:789
+#: src/gui/dialogs/file_dialog.cpp:797
 msgid "Do you wish to continue?"
 msgstr "Βούλει ἐπιμένειν?"
 
-#: src/gui/dialogs/file_dialog.cpp:801
+#: src/gui/dialogs/file_dialog.cpp:809
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -8002,8 +8025,8 @@ msgstr "Δεδομένα ἀνδρῶνος καταφόρτωσιν"
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"Ἡ Λούα γραμματοποιία μόνον ἐν τρόπῳ διερευνητῇ χρησιμεύει! (Πρῶτον δέσποζε "
-"‘:debug’)"
+"Ἡ Λούα γραμματοποιία μόνον ἐν τρόπῳ διερευνητῇ χρησιμεύει! (Πρῶτον δέσποζε ‘:"
+"debug’)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8021,8 +8044,8 @@ msgstr ""
 "Σταθμοὺς ἐκ προτέρας Βεσνοθίας παραλλαγῆς εἰσκομίζειν ἐβούλετο, ἀλλ᾽ οὐδεμία "
 "ἄλλη παραλλαγὴ ἐν τῷ ὀργάνῳ εὑρέθη"
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:134
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:500
+#: src/gui/dialogs/multiplayer/faction_select.cpp:200
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:498
 msgid "Random"
 msgstr "Τυχηρόν"
 
@@ -8106,18 +8129,18 @@ msgstr "Θεαταὶ ἐπιτρέπονται"
 msgid "Observers not allowed"
 msgstr "Θεαταὶ οὐκ ἐπιτρέπονται"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:621
+#: src/gui/dialogs/multiplayer/lobby.cpp:641
 msgid "lobby"
 msgstr "Ἀνδρών"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:943
+#: src/gui/dialogs/multiplayer/lobby.cpp:966
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Τούτῳ τῷ παιγνίῳ θεαταὶ οὐκ ἐπιτρέπονται. Θεᾶσθαι ἐπιτροπικῇ ἐξουσίᾳ "
 "χρώμενος?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:954
+#: src/gui/dialogs/multiplayer/lobby.cpp:977
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8125,7 +8148,7 @@ msgstr ""
 "Τῷ βάσει δεδομένων παραλλαγῆς προσθηκῶν ἀνδρῶνος συμπαραλαμβανομένῳ "
 "συμβέβηκε κακῶς ἔχειν. Ἀναφέρετε τοῦτο ἐπὶ https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:975
+#: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Τοῦτο τὸ παιγνίδιον ῥήματι φυλασσόμενον ἐστίν. Συμμετέχειν ἐπιτροπικῇ "
@@ -8171,41 +8194,41 @@ msgstr "Σκηνικαὶ Ἴδιαι"
 msgid "Random Maps"
 msgstr "Χάρται Τυχηροί"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:272
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "No games found."
 msgstr "Οὐδὲν παιγνίδιον εὑρέθη."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:332
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
 msgid "No eras found."
 msgstr "Οὐδεὶς αἰὼν εὑρέθη."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:333
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:339
 msgid "No eras found"
 msgstr "Οὐδεὶς αἰὼν εὑρέθη"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:602
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:608
 msgid "No eras available for this game."
 msgstr "Οὐδεὶς αἰὼν προκείμενος τούτῳ τῷ παιγνίῳ."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:814
 msgid "number of players^$min to $max"
 msgstr "$min πρὸς $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:919
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:951
 msgid "The selected game has no sides!"
 msgstr "Τῷ ἐπιλεχθέντι παιγνίῳ οὐδεμία πλευρά!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:958
 msgid "The selected game cannot be created."
 msgstr "Τὸ ἐπιλεχθὲν παιγνίδιον γενέσθαι ἀδύνατον."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
 msgid "Choose Starting Scenario"
 msgstr "Ἐκλεγέσθω Ἀρχομένη Σκηνή"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:999
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
 msgid "Select at which point to begin this campaign."
 msgstr "Ἐκλεγέσθω πόθεν ταύτην τὴν στρατείαν ἄρχεσθαι."
 
@@ -8230,7 +8253,7 @@ msgid "empty"
 msgstr "κενή"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:107
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 msgid "this game"
 msgstr "τοῦτο τὸ παιγνίδιον"
 
@@ -8242,11 +8265,15 @@ msgstr "Ἀνδρών"
 msgid "Game"
 msgstr "Παιγνίδιον"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:310
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:81
+msgid "Hotkey(s): $bindings"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
 msgstr "Ἄκυρον Χρῶμα"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:517
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to choose factions..."
 msgstr "Τοὺς παίζοντας ἐκδέχεσθαι αἱρέσεις φυλῶν ποιεῖσθαι..."
 
@@ -8275,12 +8302,12 @@ msgstr "Ἄκυρος ὀνομαστός"
 msgid "Not on friends or ignore lists"
 msgstr "Οὐκ ἐπὶ φίλων ἢ ἀμελήσεων καταλόγων"
 
-#: src/gui/dialogs/preferences_dialog.cpp:930
-#: src/gui/dialogs/preferences_dialog.cpp:994
+#: src/gui/dialogs/preferences_dialog.cpp:925
+#: src/gui/dialogs/preferences_dialog.cpp:989
 msgid "No hotkey selected"
 msgstr "Οὐδεμία θερμὴ κλείς ἐπιλελέκται"
 
-#: src/gui/dialogs/preferences_dialog.cpp:958
+#: src/gui/dialogs/preferences_dialog.cpp:953
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8288,15 +8315,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” ὑπὸ “<b>$old_hotkey_action|</b>” χρῆται.\n"
 "Βούλει αὐτὴν τῷ “<b>$new_hotkey_action|</b>” ἀνατιθέναι?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid "Reassign Hotkey"
 msgstr "Θερμὴν Κλεῖν Ἀνατιθέναι"
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:976
 msgid "All hotkeys have been reset to their default values."
 msgstr "Πᾶσαι θερμαὶ κλῇδες ἐπανῆκται εἰς τὰς προορίους τιμάς."
 
-#: src/gui/dialogs/preferences_dialog.cpp:981
+#: src/gui/dialogs/preferences_dialog.cpp:976
 msgid "Hotkeys Reset"
 msgstr "Θερμαὶ Κλῇδες Ἐπανῆκται"
 
@@ -8383,69 +8410,69 @@ msgstr "Στιγμογραφία"
 msgid "Version $version"
 msgstr "Παραλλαγὴ $version"
 
-#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Ἐκλεγέσθω Πειραματικὴ Σκηνή"
 
-#: src/gui/dialogs/units_dialog.cpp:240 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:239 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Στρατιώτην Ἀνανομάζειν"
 
-#: src/gui/dialogs/units_dialog.cpp:273
+#: src/gui/dialogs/units_dialog.cpp:272
 msgid "This unit requires no upkeep."
 msgstr "Οὗτος ὁ στρατιώτης ἀτέλειας οὐ δεῖται."
 
-#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
-#: src/gui/dialogs/units_dialog.cpp:284
+#: src/gui/dialogs/units_dialog.cpp:273 src/gui/dialogs/units_dialog.cpp:278
+#: src/gui/dialogs/units_dialog.cpp:283
 msgid "Do you really want to dismiss him?"
 msgstr "Ἆρα ἀληθῶς βούλει αὐτὸν ἀποπέμπειν?"
 
-#: src/gui/dialogs/units_dialog.cpp:275 src/gui/dialogs/units_dialog.cpp:280
-#: src/gui/dialogs/units_dialog.cpp:285
+#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
+#: src/gui/dialogs/units_dialog.cpp:284
 msgid "Do you really want to dismiss her?"
 msgstr "Ἆρα ἀληθῶς βούλει αὐτὴν ἀποπέμπειν?"
 
-#: src/gui/dialogs/units_dialog.cpp:278
+#: src/gui/dialogs/units_dialog.cpp:277
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Οὗτος ὁ στρατιώτης ἔμπειρός ἐστι, προκοπὰς προβεβηκώς."
 
-#: src/gui/dialogs/units_dialog.cpp:283
+#: src/gui/dialogs/units_dialog.cpp:282
 msgid "This unit is close to advancing a level."
 msgstr "Οὗτος ὁ στρατιώτης ἐγγὺς προκοπῆς ἐστιν."
 
-#: src/gui/dialogs/units_dialog.cpp:289
+#: src/gui/dialogs/units_dialog.cpp:288
 msgid "Dismiss Unit"
 msgstr "Στρατιώτην Ἀποπέμπειν"
 
-#: src/gui/dialogs/units_dialog.cpp:433
+#: src/gui/dialogs/units_dialog.cpp:432
 msgid "unit_variation^Default Variation"
 msgstr "Προορίου Παραλλαγή"
 
-#: src/gui/dialogs/units_dialog.cpp:469
+#: src/gui/dialogs/units_dialog.cpp:468
 msgid "Create Unit"
 msgstr "Στρατιώτην Ποιεῖν"
 
-#: src/gui/dialogs/units_dialog.cpp:540
+#: src/gui/dialogs/units_dialog.cpp:539
 msgid "Recruit Unit"
 msgstr "Στρατιώτην Στρατολογεῖν"
 
-#: src/gui/dialogs/units_dialog.cpp:541 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:540 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Στρατολογεῖν"
 
-#: src/gui/dialogs/units_dialog.cpp:558 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:557 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Κατάλογος Στρατιωτῶν"
 
-#: src/gui/dialogs/units_dialog.cpp:706
+#: src/gui/dialogs/units_dialog.cpp:701
 msgid "Recall Unit"
 msgstr "Στρατιώτην Ἀνακαλεῖσθαι"
 
-#: src/gui/dialogs/units_dialog.cpp:707 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:702 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Ἀνακαλεῖσθαι"
 
-#: src/gui/dialogs/units_dialog.cpp:837
+#: src/gui/dialogs/units_dialog.cpp:832
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8453,12 +8480,12 @@ msgstr ""
 "Οὗτος ὁ στρατιώτης οὐκ ἀνακαλεῖσθαι δύναται, ἐπεὶ οὐκ ἕξεις ἱκανὸν χρυσίον "
 "κατὰ τοῦτο τῆς βουλῆς."
 
-#: src/gui/dialogs/units_dialog.cpp:839
+#: src/gui/dialogs/units_dialog.cpp:834
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "Οὗτος ὁ στρατιώτης οὐκ ἀνακαλεῖσθαι δύναται, ἐπεὶ οὐκ ἱκανὸν χρυσίον ἔχεις."
 
-#: src/gui/gui.cpp:130
+#: src/gui/gui.cpp:133
 msgid "No default gui defined."
 msgstr "Οὐδεμία προορίου γραφικὴ διαμόρφωσις ὥρισται."
 
@@ -8487,15 +8514,15 @@ msgstr "Προσθήκην ἐξ ὑπηρετητοῦ ἐξαλείψαι"
 msgid "NEW"
 msgstr "ΝΕΟΝ"
 
-#: src/gui/widgets/chatbox.cpp:300
+#: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
 msgstr "ψιθυρίζειν πρὸς $receiver"
 
-#: src/gui/widgets/chatbox.cpp:384
+#: src/gui/widgets/chatbox.cpp:382
 msgid "Joined <i>$name</i>"
 msgstr "Συνελήλυθε <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:390
+#: src/gui/widgets/chatbox.cpp:388
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8515,16 +8542,16 @@ msgstr "Σύνδεσμον ἀνοίγειν?"
 msgid "Copied link!"
 msgstr "Σύνδεσμος ἀπεμιμήθη!"
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr "‘list_data’ ἀριθμὸν στηλῶν ἴσον τῷ ‘list_definition’ ἔχειν δεῖ."
 
-#: src/gui/widgets/listbox.cpp:760 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "Οὐδεὶς κατάλογος ὥρισται."
 
-#: src/gui/widgets/listbox.cpp:765
+#: src/gui/widgets/listbox.cpp:735
 msgid "A ‘list_definition’ should contain one row."
 msgstr "Ὁ ‘list_definition’ μίαν σειρὰν περιέχειν δεῖ."
 
@@ -8570,7 +8597,7 @@ msgstr "Ἄκυρον μέγεθος."
 msgid "No widget defined."
 msgstr "Οὐδεμία γραφικὴ μονὰς ὥρισται."
 
-#: src/gui/widgets/slider.cpp:355
+#: src/gui/widgets/slider.cpp:356
 msgid "The number of value_labels and values don’t match."
 msgstr "Οἱ ἀριθμοὶ τιμαλφητῶν καὶ τιμῶν οὐ συμφωνοῦσιν."
 
@@ -8578,7 +8605,7 @@ msgstr "Οἱ ἀριθμοὶ τιμαλφητῶν καὶ τιμῶν οὐ �
 msgid "No stack layers defined."
 msgstr "Οὐδεμία στοιβάς ὥρισται."
 
-#: src/gui/widgets/styled_widget.cpp:592
+#: src/gui/widgets/styled_widget.cpp:591
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Γραφικὴν μονάδα μετὰ συνόδου καὶ ἄνευ ἐργαλείου εὑρέθη."
 
@@ -8586,11 +8613,11 @@ msgstr "Γραφικὴν μονάδα μετὰ συνόδου καὶ ἄνε�
 msgid "No grid defined for tab container control"
 msgstr "Οὐδεμία πλέγμα ὥρισται τῷ ἐφαρμογῆς πτύχων ἐφαρμοστῇ"
 
-#: src/gui/widgets/tree_view.cpp:288
+#: src/gui/widgets/tree_view.cpp:287
 msgid "No nodes defined for a tree view."
 msgstr "Οὐδεμία κληὶς ὥρισται τῷ δένδρου θεάματι."
 
-#: src/gui/widgets/tree_view.cpp:318
+#: src/gui/widgets/tree_view.cpp:317
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "[κλῇς]ταυτότης ‘root’ τῇ ἐνεργείᾳ ἀφωρισμένη ἐστίν."
 
@@ -8598,62 +8625,62 @@ msgstr "[κλῇς]ταυτότης ‘root’ τῇ ἐνεργείᾳ ἀφω�
 msgid "Unknown builder id for tree view node."
 msgstr "Ἄγνωστος οἰκοδόμου ταυτότης τῇ δένδρου κληῖδι."
 
-#: src/gui/widgets/unit_preview_pane.cpp:136
+#: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
 msgstr "Ἀντισχύσεις: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:138
+#: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
 msgstr "(Ἐπίθεσις / Ἄμυνα)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:224
+#: src/gui/widgets/unit_preview_pane.cpp:222
 msgid "Remaining: $left/$max"
 msgstr "Λοιπόν: $left/$max"
 
-#: src/gui/widgets/unit_preview_pane.cpp:227
+#: src/gui/widgets/unit_preview_pane.cpp:225
 msgid "This unit can attack multiple times per turn."
 msgstr "Οὗτος ὁ στρατιώτης πλεονάκις τροπὴν ἐπιθέσθαι δύναται."
 
-#: src/gui/widgets/unit_preview_pane.cpp:269
+#: src/gui/widgets/unit_preview_pane.cpp:277
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:312
-#: src/gui/widgets/unit_preview_pane.cpp:343
-#: src/gui/widgets/unit_preview_pane.cpp:452
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:320
+#: src/gui/widgets/unit_preview_pane.cpp:351
+#: src/gui/widgets/unit_preview_pane.cpp:460
+#: src/gui/widgets/unit_preview_pane.cpp:492
 msgid "Lvl $lvl"
 msgstr "Βαθμὸς $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:350
-#: src/gui/widgets/unit_preview_pane.cpp:363
-#: src/gui/widgets/unit_preview_pane.cpp:491
-#: src/gui/widgets/unit_preview_pane.cpp:508
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:371
+#: src/gui/widgets/unit_preview_pane.cpp:499
+#: src/gui/widgets/unit_preview_pane.cpp:516
 msgid "HP: "
 msgstr "Ζωῆς Μέτρα: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:352
-#: src/gui/widgets/unit_preview_pane.cpp:368
-#: src/gui/widgets/unit_preview_pane.cpp:494
-#: src/gui/widgets/unit_preview_pane.cpp:496
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:360
+#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:502
+#: src/gui/widgets/unit_preview_pane.cpp:504
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "XP: "
 msgstr "Πείρας Μέτρα: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:370
-#: src/gui/widgets/unit_preview_pane.cpp:515
+#: src/gui/widgets/unit_preview_pane.cpp:378
+#: src/gui/widgets/unit_preview_pane.cpp:523
 msgid "Experience Modifier: "
 msgstr "Μεταποιητὴς Πείρας: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:373
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:381
+#: src/gui/widgets/unit_preview_pane.cpp:526
 msgid "MP: "
 msgstr "Μετακινήσεως Μέτρα: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:400
-#: src/gui/widgets/unit_preview_pane.cpp:539
+#: src/gui/widgets/unit_preview_pane.cpp:408
+#: src/gui/widgets/unit_preview_pane.cpp:547
 msgid "Abilities"
 msgstr "Δυνάμεις"
 
@@ -8755,7 +8782,9 @@ msgid "Select/Move/Attack"
 msgstr "Ἐκλέγειν/Μετακινεῖν/Ἐπιθέσθαι"
 
 #: src/hotkey/hotkey_command.cpp:84
-msgid "Touch"
+#, fuzzy
+#| msgid "Touch"
+msgid "Touch Hex"
 msgstr "Ἁπτόμενος"
 
 #: src/hotkey/hotkey_command.cpp:85
@@ -9533,11 +9562,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Ὑπηρετεῖον Εὑρίσκειν"
 
-#: src/preferences/preferences.cpp:1797
+#: src/preferences/preferences.cpp:1824
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1799
+#: src/preferences/preferences.cpp:1826
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9568,3 +9597,23 @@ msgstr "Ἐν τμήματι ‘[$section|]’ τὸ ἀναγκαῖον κλε
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "Ἐν τμήματι ‘[$section|]’ τὸ ἀναγκαῖον ὑποσημείωμα ‘[$tag|]’ λείπει."
+
+#~ msgid "Turn dialog"
+#~ msgstr "Τροπῆς διάλογος"
+
+#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
+#~ msgstr "<span color='#00dcff' size='small'>εἰσάγετε ὄνομα γραφείου</span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>wrong extension, use $extensions</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>ἄκυρον ἐπέκτασιν, χρῆσαι $extensions</span></span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>whitespace is not allowed in filename</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>κενὰ οὐκ ἐπιτρέπεται ἐν ὀνόματι γραφείου</span></span>"
