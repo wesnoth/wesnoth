@@ -1,6 +1,11 @@
 name: Android CI
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -40,14 +45,19 @@ jobs:
         with:
           key: ${{ steps.restore-deps-cache.outputs.cache-primary-key }}
           path: ${{ env.PREFIXDIR }}
-          
-      - name: Upload Deps
+
+      - name: Tar dependencies
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        run: cd packaging/android; tar -cvzf dependencies.tar.gz prefix
+
+      - name: Upload Dependencies archive
         uses: actions/upload-artifact@v4
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         with:
-          name: dependencies
-          path: ${{ env.PREFIXDIR }}
+          name: dependencies.tar.gz
+          path: ./packaging/android/dependencies.tar.gz
 
       - name: Build Wesnoth and create APKs and AAB
         env:
