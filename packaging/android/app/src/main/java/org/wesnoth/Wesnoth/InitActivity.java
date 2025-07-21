@@ -62,7 +62,7 @@ import android.widget.Toast;
 public class InitActivity extends Activity {
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String VERSION_ID = "1.19.13";
+	private final static String VERSION_ID = "1.19.14";
 	private final static String ARCHIVE_URL =
 		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
 
