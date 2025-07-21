@@ -1,6 +1,4 @@
-## Version 1.19.13+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.14
 ### Campaigns
    * Eastern Invasion
      * Terraent arcane resistance from 30% to 40%, melee arcane 9-5 to 8-5, cost: 82 -> 80
@@ -8,9 +6,6 @@
    * Fixed side default income getting incremented to 2 each time a scenario is saved
 ### Multiplayer
    * Add presets to allow saving and easily reusing game settings.
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Ancient Greek, Arabic, Bengali, British English, Chinese (Simplified), Czech, Finnish, Hungarian
    * Added new Japanese font that has support for bolding text and fix font order so italics works.
