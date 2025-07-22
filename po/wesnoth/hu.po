@@ -12,13 +12,13 @@
 # Széll András <szell.andris@gmail.com>, 2018.
 # Krutki Tamás <krtamas-wesnoth@0x64.org>, 2018.
 # Pazurik L. Ádám <pazurik.laszlo.adam@gmail.com>, 2018.
-# Berda Jenő <big4billy@gmail.com>, 2024.
+# Berda Jenő <big4billy@gmail.com>, 2024-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2024-12-05 23:12+0100\n"
+"PO-Revision-Date: 2025-07-18 22:04+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -70,8 +70,14 @@ msgstr "Tömörítetlen egyszerű szövegfájlok"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
+#, fuzzy
+#| msgid ""
+#| "Disabling saves bandwidth by not sending icons for the add-ons list in "
+#| "the add-ons manager"
 msgid "Whether to show icons in the add-ons list on the add-ons manager"
 msgstr ""
+"A letiltása sávszélességet takarít meg, mivel nem küld ikonokat a "
+"kiegészítők listájához a kiegészítők kezelőjében"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:27
@@ -79,6 +85,8 @@ msgid ""
 "Disabling saves bandwidth by not sending icons for the add-ons list in the "
 "add-ons manager"
 msgstr ""
+"A letiltása sávszélességet takarít meg, mivel nem küld ikonokat a "
+"kiegészítők listájához a kiegészítők kezelőjében"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:34
@@ -3063,6 +3071,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=híd|átkelő|hídja\n"
+"\t\tmain=$base {bridge_type}|$base {bridge_type}|$base {bridge_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3073,6 +3085,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=országút|hágó|út|útja|csapás|ösvény\n"
+"\t\tmain=$base {road_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3083,6 +3099,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=folyó|folyam|folyója|patak|csermely|vízfolyás|csatorna\n"
+"\t\tmain=$base {river_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3093,6 +3113,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=erdő|erdeje|vadon\n"
+"\t\tmain=$base {forest_type}|$base {forest_type}|$base {forest_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3103,6 +3127,10 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=tó|tava|tenger|tengere\n"
+"\t\tmain=$base {lake_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3113,7 +3141,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tmain=$base{!} orma|$base-orom|$base-hegy|$base-hegy\n"
+"\t\tmain=$base orma|$base-orom|$base-hegy|$base-hegy\n"
 "\t"
 
 #. [naming]
@@ -3125,6 +3153,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"suffix=mocsara|mocsár|láp|ingovány\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3135,6 +3167,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=falu|falva|tanya|háza|laka\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3146,6 +3182,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=fok|part|sziget|mellék\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3158,6 +3199,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|a folyónál\n"
+"\t\tsuffix=sziget|part|rév|mellék| {river}\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3169,6 +3216,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=hídvég|fő|hidas\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3179,6 +3231,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=mező|puszta|földe\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3190,6 +3246,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=fa|liget|erdő| erdő\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3200,6 +3261,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=domb|dombó|halom|halma\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3211,6 +3276,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=hegy|kő|kövesd\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3221,6 +3291,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=-hegy|-hegység|kő|-csúcs|-szikla|-sziklák\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3232,6 +3306,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix= pihenő|szállás|keresztúr|őr|vásárhely\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3243,6 +3322,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=víz|haláp|berek|gát|berény\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3595,7 +3679,7 @@ msgstr "Kör visszajátszása..."
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
 msgid "Actions"
-msgstr "Parancsok"
+msgstr "Tevékenységek"
 
 #. [label]: id=label-hp
 #: data/themes/default.cfg:164
@@ -3634,7 +3718,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>– Wesnoth taktikai útmutató</i>"
+msgstr "<i>― Wesnoth taktikai útmutató</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -3668,7 +3752,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>– Delfador nagy mágus, w.i.sz. 516.</i>"
+msgstr "<i>― Delfador nagymágus, w.i.sz. 516.</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -3694,7 +3778,7 @@ msgstr ""
 #: data/tips.cfg:206 data/tips.cfg:214 data/tips.cfg:234 data/tips.cfg:242
 #: data/tips.cfg:250 data/tips.cfg:266 data/tips.cfg:271 data/tips.cfg:276
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "<i>– Wesnoth taktikai útmutató</i>"
+msgstr "<i>― Wesnoth taktikai útmutató</i>"
 
 #. [tip]
 #: data/tips.cfg:24
@@ -3711,7 +3795,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>– Konrad király, w.i.sz. 536.</i>"
+msgstr "<i>― Konrad király, w.i.sz. 536.</i>"
 
 #. [tip]
 #: data/tips.cfg:28
@@ -3730,7 +3814,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>– Gweddry emlékiratai, w.i.sz. 627.</i>"
+msgstr "<i>― Gweddry emlékiratai, w.i.sz. 627.</i>"
 
 #. [tip]
 #: data/tips.cfg:32
@@ -3772,7 +3856,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:218 data/tips.cfg:230
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>– Kalenz főlord, w.i.sz. 470.</i>"
+msgstr "<i>― Kalenz főlord, w.i.sz. 470.</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -3808,7 +3892,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:53
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>– A Wesnoth Közösség</i>"
+msgstr "<i>― A Wesnoth Közösség</i>"
 
 #. [tip]
 #: data/tips.cfg:56
@@ -3827,7 +3911,7 @@ msgstr ""
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
-"<i>– Királyi vezérfonal a harcászati szaknyelvhez – II. kötet, újranyomva "
+"<i>― Királyi vezérfonal a harcászati szaknyelvhez – II. kötet, újranyomva "
 "w.i.sz. 221-ben</i>"
 
 #. [tip]
@@ -3843,24 +3927,38 @@ msgstr ""
 #: data/tips.cfg:222
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr ""
-"<i>– A taktikai analízis kézikönyve, I. rész – II. Haldric, w.i.sz. 42.</i>"
+"<i>― A taktikai analízis kézikönyve, I. rész – II. Haldric, w.i.sz. 42.</i>"
 
 #. [tip]
 #: data/tips.cfg:64
+#, fuzzy
+#| msgid ""
+#| "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you "
+#| "won’t know what you’re facing. In this case, long-range scouting units "
+#| "are worth their cost. Try to choose scouts that can easily move across "
+#| "the surrounding terrain, because usually units can only see as far as "
+#| "they can move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Ha <b>Eltakarással</b> vagy <b>Köddel</b> játszol, akkor nem fogod tudni, "
-"mivel állsz szemben. Ebben az esetben a nagy hatótávolságú felderítő "
+"Ha aktív <b>eltakarással</b> vagy <b>köddel</b> játszol, akkor nem fogod "
+"tudni, mivel állsz szemben. Ebben az esetben a nagy hatótávolságú felderítő "
 "egységek jócskán megérik az árukat. Válassz olyan felderítőket, amelyek "
 "könnyen mozognak a környező terepen, mert az egységek csak addig látnak el, "
 "ameddig el is tudnának jutni egy kör alatt."
 
 #. [tip]
 #: data/tips.cfg:68
+#, fuzzy
+#| msgid ""
+#| "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</"
+#| "i>, <i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have "
+#| "weaknesses against different types of attacks. Right-click on a unit and "
+#| "select <b>Unit Type Description</b> to see which attacks it is resistant "
+#| "to, and which will affect it the most."
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -3870,9 +3968,9 @@ msgid ""
 msgstr ""
 "Hatféle támadás létezik: <i>szúrás</i>, <i>vágás</i>, <i>ütés</i>, <i>tűz</"
 "i>, <i>hideg</i> és <i>földöntúli</i>. A különböző egységek az egyes "
-"támadásokkal szemben különböző mértékben védettek. Kattints a jobb gombbal "
-"egy egységre, és válaszd ki az <b>Egység leírása</b> pontot, hogy lásd, mely "
-"támadásokkal szemben ellenálló, és melyeket tanácsos inkább kerülnie."
+"támadásokra különböző mértékben érzékenyek. Kattints a jobb gombbal egy "
+"egységre, és válaszd ki az <b>Egység leírása</b> pontot, hogy lásd, mely "
+"támadásokkal szemben ellenálló, és melyek sebzik leginkább."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -3950,7 +4048,7 @@ msgstr ""
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
 msgstr ""
-"<i>– A taktikai analízis kézikönyve, I. rész – II. Haldric, w.i.sz. 43.</i>"
+"<i>― A taktikai analízis kézikönyve, I. rész – II. Haldric, w.i.sz. 43.</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -3999,7 +4097,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>– Sir Kaylan, w.i.sz. 498.</i>"
+msgstr "<i>― Sir Kaylan, w.i.sz. 498.</i>"
 
 #. [tip]
 #: data/tips.cfg:108
@@ -4014,7 +4112,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>– Sir Kaylan, w.i.sz. 502.</i>"
+msgstr "<i>― Sir Kaylan, w.i.sz. 502.</i>"
 
 #. [tip]
 #: data/tips.cfg:112
@@ -4067,7 +4165,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>– Meneldur, w.i.sz. 123.</i>"
+msgstr "<i>― Meneldur, w.i.sz. 123.</i>"
 
 #. [tip]
 #: data/tips.cfg:132
@@ -4143,7 +4241,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>– Kai Laudiss, w.i.sz. 623.</i>"
+msgstr "<i>― Kai Laudiss, w.i.sz. 623.</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4155,7 +4253,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>– Li’sar hercegnő, w.i.sz. 515.</i>"
+msgstr "<i>― Li’sar hercegnő, w.i.sz. 515.</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -4187,7 +4285,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:169 data/tips.cfg:210
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>– Chantal tekercse, w.i.sz. 516.</i>"
+msgstr "<i>― Chantal tekercse, w.i.sz. 516.</i>"
 
 #. [tip]
 #: data/tips.cfg:172
@@ -4207,7 +4305,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:177
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>– Dacyn, a Nagy Bölcs, w.i.sz. 626.</i>"
+msgstr "<i>― Dacyn, a Nagy Bölcs, w.i.sz. 626.</i>"
 
 #. [tip]
 #: data/tips.cfg:180
@@ -4229,6 +4327,14 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:188
+#, fuzzy
+#| msgid ""
+#| "Once a unit reaches maximum level, further advancement provides a minor "
+#| "bonus called an “AMLA” — “After Maximum Level Advancement.” Some "
+#| "campaigns let you choose between several AMLA options, but the only "
+#| "default AMLA is a +3 bonus to maximum hitpoints. AMLAs are usually weaker "
+#| "than the normal benefits of advancing a level, so it is generally wiser "
+#| "to advance your lower-level units instead."
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -4236,11 +4342,12 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Az egységek képesek lehetnek <i>Legfelsőbb Szint Utáni Szintlépésre</i> "
-"(LSzUSz), amely teljesen felgyógyítja őket, és megemeli az elérhető "
-"életerőpontjukat hárommal. Ugyanakkor az új LSzUSz megszerzése egyre "
-"nehezebbé válik minden egyes megszerzett LSzUSz után. Ezért általában "
-"bölcsebb, ha az alacsonyabb szintű egységeidet próbálod szintet léptetni."
+"Amint egy egység eléri a maximális szintet, a további előrelépés egy kisebb "
+"bónuszt biztosít, az \"LSzUSz\"-t (Legfelsőbb Szint Utáni Szintlépés). Egyes "
+"hadjáratok lehetővé teszik, hogy több LSzUSz-opció közül válasszunk, de az "
+"egyetlen alapértelmezett LSzUSz a +3 bónusz a maximális életerőponthoz. Az "
+"LSzUSz-ok jutalmai általában gyengébbek, mint a normál szintlépéseké, ezért "
+"általában bölcsebb az alacsonyabb szintű egységeket szintet léptetni."
 
 #. [tip]
 #: data/tips.cfg:192
@@ -4256,7 +4363,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:193
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>– Li’sar királynő, w.i.sz. 528.</i>"
+msgstr "<i>― Li’sar királynő, w.i.sz. 528.</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -4363,7 +4470,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>– Hamel, Knalga ura</i>"
+msgstr "<i>― Hamel, Knalga ura</i>"
 
 #. [tip]
 #: data/tips.cfg:229
@@ -4430,7 +4537,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:246
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>– Asheviere királynő, w.i.sz. 503.</i>"
+msgstr "<i>― Asheviere királynő, w.i.sz. 503.</i>"
 
 #. [tip]
 #: data/tips.cfg:249
@@ -5193,14 +5300,19 @@ msgstr[1] ""
 "arany többlettel fogod kezdeni."
 
 #: src/carryover_show_gold.cpp:136
+#, fuzzy
+#| msgid ""
+#| "You will start the next scenario with the defined minimum starting gold."
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"A következő pályát a meghatározott minimális kezdési arannyal fogod kezdeni."
+"A következő küldetésben a meghatározott minimális kezdő arannyal fogsz "
+"indulni."
 msgstr[1] ""
-"A következő pályát a meghatározott minimális kezdési arannyal fogod kezdeni."
+"A következő küldetésben a meghatározott minimális kezdő arannyal fogsz "
+"indulni."
 
 #: src/carryover_show_gold.cpp:143
 msgid ""
@@ -5573,6 +5685,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Hiba: Az [advancefrom] a továbbiakban már nem működik. A(z) '$lower_level' "
+"egységek nem léphetnek elő '$higher_level' szintre. Kérd meg a kiegészítő "
+"szerzőjét, hogy használja helyette ezt: [modify_unit_type]."
 
 #: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6226,12 +6341,16 @@ msgid "Schedule"
 msgstr "Ütemezés"
 
 #: src/help/help_impl.cpp:530
+#, fuzzy
+#| msgid "Units with this special attack"
 msgid "<header>text='Units with this special attack'</header>"
-msgstr "<header>text='Egységek ezzel a speciális támadással'</header>"
+msgstr "Egységek ezzel a speciális támadással"
 
 #: src/help/help_impl.cpp:594
+#, fuzzy
+#| msgid "Units with this ability"
 msgid "<header>text='Units with this ability'</header>"
-msgstr "<header>text='Ezzel a képességgel rendelkező egységek'</header>"
+msgstr "Egységek ezzel a képességgel"
 
 #: src/help/help_impl.cpp:624
 msgid "Era:"
@@ -6272,28 +6391,40 @@ msgstr "Beállítottság: "
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1149
+#, fuzzy
+#| msgid ""
+#| "This is a group of units, all of whom are <ref "
+#| "dst='$topic_id'>$help_taxonomy</ref>."
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
-"Ez egy egységcsoport, amelyek mindegyike <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>."
+"Ez egy egységcsoport, amelyek mindegyike <ref "
+"dst='$topic_id'>$help_taxonomy</ref>."
 
 #: src/help/help_impl.cpp:1154
+#, fuzzy
+#| msgid "Subgroups of units within this group"
 msgid "<header>text='Subgroups of units within this group'</header>"
-msgstr "<header>text='A csoporton belüli egységek alcsoportjai'</header>"
+msgstr "Egységek alcsoportjai ebben a csoportban"
 
 #: src/help/help_impl.cpp:1156
+#, fuzzy
+#| msgid "Groups of units within this race"
 msgid "<header>text='Groups of units within this race'</header>"
-msgstr "<header>text='Egységcsoportok ezen a fajon belül'</header>"
+msgstr "Egységcsoportok ezen a fajon belül"
 
 #: src/help/help_impl.cpp:1165
+#, fuzzy
+#| msgid "Units of this group"
 msgid "<header>text='Units of this group'</header>"
-msgstr "<header>text='A csoport egységei'</header>"
+msgstr "E csoport egységei"
 
 #: src/help/help_impl.cpp:1167
+#, fuzzy
+#| msgid "Units of this race"
 msgid "<header>text='Units of this race'</header>"
-msgstr "<header>text='E faj egységei'</header>"
+msgstr "E faj egységei"
 
 #: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
@@ -6441,6 +6572,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"\"all\" = az összes parancs áttekintése, <command> = egy adott parancs neve "
+"(további részleteket tartalmaz)"
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
@@ -6644,6 +6778,9 @@ msgid ""
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
+"[<side> [on/off/full]]\n"
+"\"on\" = engedélyezi, de megtartja a látást, \"full\" = mintha egy másik "
+"játékos irányítaná"
 
 #: src/menu_events.cpp:1232
 msgid "Change terrain type of current hex"
@@ -6911,9 +7048,10 @@ msgstr "A helyi MI csapat („$side”) irányítása nem adható át a gépnek.
 
 #: src/menu_events.cpp:1481
 #, fuzzy
-#| msgid "Can't droid networked side: '$side'."
+#| msgid "Can’t droid networked side: ‘$side’."
 msgid "Can't droid networked side: '$side'."
-msgstr "A hálózati csapat („$side”) irányítása nem adható át a gépnek."
+msgstr ""
+"Nem vonhatsz gépi irányítás alá hálózatról kapcsolódó csapatot: ‘$side’."
 
 #: src/menu_events.cpp:1493 src/menu_events.cpp:1509 src/menu_events.cpp:1541
 #, fuzzy
@@ -6935,9 +7073,9 @@ msgstr "A(z) \"$side\" oldalt mostantól az MI vezérli."
 
 #: src/menu_events.cpp:1505
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is already taken."
+#| msgid "Side ‘$side’ is already droided."
 msgid "Side '$side' is already droided."
-msgstr "Ez a becenév („$nick”) már foglalt."
+msgstr "A ‘$side’ csapat már gépi irányítás alatt van."
 
 #: src/menu_events.cpp:1519 src/menu_events.cpp:1551
 #, fuzzy
@@ -6947,9 +7085,9 @@ msgstr "A(z) \"$side\" oldalt mostantól ember vezérli."
 
 #: src/menu_events.cpp:1521
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is already taken."
+#| msgid "Side ‘$side’ is already not droided."
 msgid "Side '$side' is already not droided."
-msgstr "Ez a becenév („$nick”) már foglalt."
+msgstr "A ‘$side’ csapat már nincs gépi irányítás alatt."
 
 #: src/menu_events.cpp:1525
 #, fuzzy
@@ -7075,8 +7213,13 @@ msgid "Variable not found"
 msgstr "A változó nem található"
 
 #: src/menu_events.cpp:1985
+#, fuzzy
+#| msgid ""
+#| "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Az \"egység: $unit\" hibakeresési parancs sikertelen: nincs kiválasztott "
+"vagy föléhúzott egység."
 
 #: src/menu_events.cpp:2003
 #, fuzzy
@@ -7474,7 +7617,7 @@ msgstr "Ez az egység sebezhetetlen. Semmilyen támadás nem okoz sérülést."
 
 #: src/reports.cpp:441
 msgid "Ability: "
-msgstr "Képességek: "
+msgstr "Képesség: "
 
 #: src/reports.cpp:443 src/reports.cpp:998
 msgid " (inactive)"
@@ -8036,8 +8179,8 @@ msgstr "Egy egységet hibakereső módban hozott létre $player játékos a kör
 #: src/synced_user_choice.cpp:342
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$sides oldal várakozik erre: $desc"
+msgstr[1] "$sides oldalak várakoznak erre: $desc"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8081,7 +8224,7 @@ msgstr "Hiányos napszakjelölés"
 
 #: src/time_of_day.cpp:45
 msgid "This Time of Day is only a Stub!"
-msgstr ""
+msgstr "Ez a napszak csak egy csonk!"
 
 #: src/units/abilities.cpp:1077
 msgid "Owned: "
@@ -8324,6 +8467,15 @@ msgstr "$player terveinek elrejtése"
 msgid "Whiteboard Options"
 msgstr "Lépéstervező beállítása"
 
+#~ msgid "Urban Jungle (Internal)"
+#~ msgstr "Városi dzsungel (belső)"
+
+#~ msgid "Show icons in the Add-ons manager"
+#~ msgstr "Ikonok megjelenítése a Bővítménykezelőben"
+
+#~ msgid "Customize Reach Map (Unit Movement UI)"
+#~ msgstr "Elérési térkép testreszabása (egységmozgás felhasználói felülete)"
+
 #~ msgid "deflect"
 #~ msgstr "eltérít"
 
@@ -8358,6 +8510,35 @@ msgstr "Lépéstervező beállítása"
 #~ "Ez az egység blokkolhatja az ellenség csapásait, így azok kevesebb kárt "
 #~ "okoznak."
 
+#~ msgid ""
+#~ "\n"
+#~ "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
+#~ "{ending_consonnant}|{prefix} {starting_vowel}{consonnant}{ending_vowel}|"
+#~ "{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
+#~ "{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}"
+#~ "{consonnant}{vowel}{consonnant}{ending_vowel}\n"
+#~ "prefix=Blessed|Golden|Fearless|Mighty|Lucky|Old|The|The|Valiant\n"
+#~ "starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+#~ "starting_vowel=A|E|I|O|U\n"
+#~ "consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+#~ "vowel=a|ae|é|i|o|u\n"
+#~ "ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+#~ "ending_vowel=a|ae|o|u\n"
+#~ msgstr ""
+#~ "\n"
+#~ "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
+#~ "{ending_consonnant}|{prefix} {starting_vowel}{consonnant}{ending_vowel}|"
+#~ "{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
+#~ "{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}"
+#~ "{consonnant}{vowel}{consonnant}{ending_vowel}\n"
+#~ "prefix=Dicsőséges|Arany|Vakmerő|Hatalmas|Szerencsés|Vén|A|Az|Merész\n"
+#~ "starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+#~ "starting_vowel=A|E|I|O|U\n"
+#~ "consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+#~ "vowel=a|ae|é|i|o|u\n"
+#~ "ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+#~ "ending_vowel=a|ae|o|u\n"
+
 #~ msgid "Yellow"
 #~ msgstr "Sárga"
 
@@ -8367,8 +8548,178 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "Urban"
 #~ msgstr "Városi"
 
+#~ msgid ""
+#~ "Densely packed structures are less suitable for garrison than traditional "
+#~ "villages, providing no income or healing. They are difficult to navigate "
+#~ "quickly, but offer significant protection."
+#~ msgstr ""
+#~ "A sűrűn zsúfolt építmények kevésbé alkalmasak helyőrségnek, mint a "
+#~ "hagyományos falvak; nem biztosítanak jövedelmet vagy gyógyulást. Nehéz "
+#~ "gyorsan közlekedni rajtuk, de jelentős védelmet nyújtanak."
+
+#~ msgid "Urban Jungle"
+#~ msgstr "Városi dzsungel"
+
+#~ msgid "Dawn"
+#~ msgstr "hajnal"
+
+#~ msgid "Morning"
+#~ msgstr "reggel"
+
+#~ msgid "Midday"
+#~ msgstr "dél"
+
+#~ msgid "Afternoon"
+#~ msgstr "délután"
+
+#~ msgid "Dusk"
+#~ msgstr "alkonyat"
+
+#~ msgid "First Watch"
+#~ msgstr "Első őrjárat"
+
+#~ msgid "Midnight"
+#~ msgstr "éjfél"
+
+#~ msgid "Second Watch"
+#~ msgstr "Második őrjárat"
+
+#~ msgid "Max HP bonus +3, Max XP +20%"
+#~ msgstr "Max ÉP bónusz +3, Max TP +20%"
+
+#~ msgid "Gain +8 hitpoints."
+#~ msgstr "+8 életerőpontot szerezel."
+
+#~ msgid "Gain +4 melee damage."
+#~ msgstr "+4 közelharci sebzés."
+
+#~ msgid "Gain +2 melee damage."
+#~ msgstr "+2 közelharci sebzést kapsz."
+
+#~ msgid "Gain +1 melee damage."
+#~ msgstr "+1 közelharci sebzést kapsz."
+
+#~ msgid "Gain +4 ranged damage."
+#~ msgstr "+4 távolsági sebzést kapsz."
+
+#~ msgid "Gain +2 ranged damage."
+#~ msgstr "+2 távolsági sebzést kapsz."
+
+#~ msgid "Gain +1 ranged damage."
+#~ msgstr "+1 távolsági sebzést kapsz."
+
+#~ msgid ""
+#~ "Congratulations, your $unit.language_name has leveled up... but they’re "
+#~ "already at their max level!\n"
+#~ "\n"
+#~ "When this happens, <span color='#0D87B6'><b>some campaigns</b></span> — "
+#~ "like this one — allow you to select a minor bonus to hitpoints or damage. "
+#~ "These bonuses are called “AMLAs”: “After Maximum Level Advancements”. If "
+#~ "your max-level units have normal, <span color='#0D87B6'><b>blue "
+#~ "experience bars</b></span>, that means these AMLAs are available.\n"
+#~ "\n"
+#~ "<span color='#9608CF'><b><i>Other campaigns</i></b></span> don’t have "
+#~ "these AMLA options, and instead always give max-level units +3 max hp "
+#~ "when they level up. If your max-level units have <span "
+#~ "color='#9608CF'><b>purple experience bars</b></span>, they’ll only get +3 "
+#~ "max hp when they level up.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Gratulálunk, a $unit.language_name egység szintet lépett... ámde már "
+#~ "jelenleg is a maximális szintjükön vannak!\n"
+#~ "\n"
+#~ "Amikor ez megtörténik, <span color='#0D87B6'><b>egyes hadjáratok</b></"
+#~ "span> — például ez — lehetővé teszik, hogy egy kisebb bónuszt válassz az "
+#~ "életerőpontokhoz vagy a sebzéshez. Ezeket a bónuszokat \"LSzUSz-nak\" "
+#~ "(Legfelsőbb Szint Utáni Szintlépés) nevezik. Ha a maximális szintű "
+#~ "egységek normál, <span color='#0D87B6'><b>kék élménysávokkal</b></span> "
+#~ "rendelkeznek, az azt jelenti, hogy ezek az LSzUSz-ok elérhetők.\n"
+#~ "\n"
+#~ "<span color='#9608CF'><b><i>Más hadjáratok</i></b></span> nem "
+#~ "rendelkeznek ezekkel az LSzUSz opciókkal, ehelyett mindig +3 maximális "
+#~ "életerőt adnak a maximális szintű egységeknek, amikor szintet lépnek. Ha "
+#~ "a maximális szintű egységeid <span color='#9608CF'><b>lila tapasztalati "
+#~ "sávokkal</b></span> rendelkeznek, akkor csak +3 maximális életerőt "
+#~ "kapnak, ha szintet lépnek.\n"
+
+#~ msgid "Ok, continue with the game"
+#~ msgstr "Rendben, folytasd a játékot"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Ne jelenjen meg újra ez az üzenet"
+
 #~ msgid "<i>― Great Mage Delfador, 520YW</i>"
 #~ msgstr "<i>― Delfador nagymágus, W.i.sz. 520</i>"
+
+#~ msgid "Requesting add-on counts by type..."
+#~ msgstr "Kiegészítők számának lekérése típus szerint..."
+
+#~ msgid "Requesting add-on downloads by version..."
+#~ msgstr "Kiegészítő letöltések kérése verzió szerint..."
+
+#~ msgid "Requesting forum_auth usage..."
+#~ msgstr "forum_auth felhasználás lekérése..."
+
+#~ msgid "Requesting list of admins..."
+#~ msgstr "Adminisztrátorok listájának lekérése..."
+
+#~ msgid "Getting list of hidden add-ons..."
+#~ msgstr "Rejtett kiegészítők listájának lekérése..."
+
+#~ msgid "Hiding add-on..."
+#~ msgstr "Kiegészítő elrejtése..."
+
+#~ msgid "Unhiding add-on..."
+#~ msgstr "Kiegészítő felfedése..."
+
+#~ msgid ""
+#~ "The file size for the icon for the add-on <i>$addon_title</i> is too "
+#~ "large."
+#~ msgstr "A(z) <i>$addon_title</i> kiegészítő ikonjának fájlmérete túl nagy."
+
+#~ msgid "The add-on’s icon’s file size is too large."
+#~ msgstr "A kiegészítő ikonjának fájlmérete túl nagy."
+
+#~ msgid "Measure roundtrip packet time between client and server."
+#~ msgstr "Megméri az ügyfél és a kiszolgáló közötti oda-vissza csomagidőt."
+
+#~ msgid "timespan^$num year"
+#~ msgid_plural "timespan^$num years"
+#~ msgstr[0] "$num év"
+#~ msgstr[1] "$num év"
+
+#~ msgid "timespan^$num month"
+#~ msgid_plural "timespan^$num months"
+#~ msgstr[0] "$num hónap"
+#~ msgstr[1] "$num hónap"
+
+#~ msgid "timespan^$num week"
+#~ msgid_plural "timespan^$num weeks"
+#~ msgstr[0] "$num hét"
+#~ msgstr[1] "$num hét"
+
+#~ msgid "timespan^$num day"
+#~ msgid_plural "timespan^$num days"
+#~ msgstr[0] "$num nap"
+#~ msgstr[1] "$num nap"
+
+#~ msgid "timespan^$num hour"
+#~ msgid_plural "timespan^$num hours"
+#~ msgstr[0] "$num óra"
+#~ msgstr[1] "$num óra"
+
+#~ msgid "timespan^$num minute"
+#~ msgid_plural "timespan^$num minutes"
+#~ msgstr[0] "$num perc"
+#~ msgstr[1] "$num perc"
+
+#~ msgid "timespan^$num second"
+#~ msgid_plural "timespan^$num seconds"
+#~ msgstr[0] "$num másodperc"
+#~ msgstr[1] "$num másodperc"
+
+#~ msgid "timespan^expired"
+#~ msgstr "letelt"
 
 #~ msgid "Your IP address is banned on this server for $duration|."
 #~ msgstr "Az IP-címed $duration| időtartamra le van tiltva a szerverről."
@@ -8382,10 +8733,8 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "‘Undiscover’ all units in help."
 #~ msgstr "Az összes egység súgójának elrejtése."
 
-#, fuzzy
-#~| msgid "Can't droid invalid side: '$side'."
 #~ msgid "Can’t droid invalid side: ‘$side’."
-#~ msgstr "Az érvénytelen csapat („$side”) irányítása nem adható át a gépnek."
+#~ msgstr "Nem vonhatod gépi irányítás alá az érvénytelen csapatot: ‘$side’."
 
 #~ msgid "Side ‘$side’ is not a human or AI player."
 #~ msgstr "A(z) \"$side\" oldal nem emberi vagy MI játékos."
@@ -8407,6 +8756,17 @@ msgstr "Lépéstervező beállítása"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 #~ msgstr "<span color=\"$color\">$number_or_percent</span> max. lőtáv"
+
+#~ msgid "This unit cannot be dismissed."
+#~ msgstr "Ezt az egységet nem lehet elbocsátani."
+
+#~ msgid "This unit is a leader and cannot be dismissed."
+#~ msgstr "Ez az egység vezető és nem bocsátható el."
+
+#, fuzzy
+#~| msgid "Description"
+#~ msgid "description"
+#~ msgstr "Leírás"
 
 # súgó
 # https://forums.wesnoth.org/viewtopic.php?t=32691&start=15#p473320
@@ -8821,11 +9181,6 @@ msgstr "Lépéstervező beállítása"
 #~ msgstr " (inaktív)"
 
 #, fuzzy
-#~| msgid "Max swarm bonus: "
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "Maximum rajzási bónusz: "
-
-#, fuzzy
 #~| msgid "XP to advance"
 #~ msgid "$value| XP to advance"
 #~ msgstr "TP a szintlépéshez"
@@ -8834,13 +9189,6 @@ msgstr "Lépéstervező beállítása"
 #~| msgid "Be more defensive"
 #~ msgid "+moves defense"
 #~ msgstr "Védekezési hajlam fokozása"
-
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "A(z) „<i>$addon_title</i>” kiegészítő küldése..."
 
 #, fuzzy
 #~| msgid "The Battle for Wesnoth"
@@ -9395,9 +9743,6 @@ msgstr "Lépéstervező beállítása"
 #~ msgstr ""
 #~ "Nincsenek a meghatározott feltételeknek megfelelő kiegészítések ezen a "
 #~ "kiszolgálón."
-
-#~ msgid "Description"
-#~ msgstr "Leírás"
 
 #~ msgid "Update All"
 #~ msgstr "Mindet frissít"
@@ -10990,12 +11335,6 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "A kiszolgáló a következő hibajelzéssel válaszolt: „$error|”"
 
-#~ msgid "Sending add-on"
-#~ msgstr "Kiegészítés küldése"
-
-#~ msgid "Requesting the addon to be deleted"
-#~ msgstr "A kiegészítést törölni kell"
-
 #~ msgid "Downloading..."
 #~ msgstr "Letöltés..."
 
@@ -11060,9 +11399,6 @@ msgstr "Lépéstervező beállítása"
 #~ msgstr ""
 #~ "A kiszolgáló mindaddig fut a háttérben, amíg minden felhasználó le nem "
 #~ "kapcsolódik."
-
-#~ msgid "Don’t show again"
-#~ msgstr "Ne mutasd többször"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "A fejléc nélküli térképek nincsenek támogatva"
