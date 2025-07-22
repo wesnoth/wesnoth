@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-21 03:54 UTC\n"
-"PO-Revision-Date: 2025-06-26 22:35+1000\n"
+"PO-Revision-Date: 2025-07-21 16:04+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -4067,17 +4067,6 @@ msgstr "Fog and Vision:"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:653
-#, fuzzy
-#| msgid ""
-#| "In fog, units (including yours) can see 1 hex further than their "
-#| "movement.\n"
-#| "\n"
-#| "For this scenario, we’ve highlighted which hexes the goblins and saurians "
-#| "can see.\n"
-#| "If you end your turn in vision of a living goblins or saurian, you’ll "
-#| "lose the scenario!\n"
-#| "\n"
-#| "If you’re having trouble reaching the beacon, try lowering the difficulty."
 msgid ""
 "In fog, units (including yours) can see 1 hex further than their movement.\n"
 "\n"
@@ -4094,23 +4083,15 @@ msgstr ""
 "\n"
 "For this scenario, we’ve highlighted which hexes the goblins and saurians "
 "can see.\n"
-"If you end your turn in vision of a living goblins or saurian, you’ll lose "
+"If you end your turn in vision of a living goblin or saurian, you’ll lose "
 "the scenario!\n"
 "\n"
-"If you’re having trouble reaching the beacon, try lowering the difficulty."
+"With the right spells and strategy, this scenario (like all campaigns) can "
+"be completed \n"
+"<i><b>without relying on luck or risky attacks.</b></i>"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:666
-#, fuzzy
-#| msgid ""
-#| "In fog, units (including yours) can see 1 hex further than their "
-#| "movement.\n"
-#| "\n"
-#| "On lower difficulties, this scenario specially highlights which hexes\n"
-#| "are in enemy vision. Because you’re playing on the highest difficulty,\n"
-#| "you’ll have to keep track on your own.\n"
-#| "\n"
-#| "If you’re having trouble reaching the beacon, try lowering the difficulty."
 msgid ""
 "In fog, units (including yours) can see 1 hex further than their movement.\n"
 "\n"
@@ -4127,7 +4108,8 @@ msgstr ""
 "are in enemy vision. Because you’re playing on the highest difficulty,\n"
 "you’ll have to keep track on your own.\n"
 "\n"
-"If you’re having trouble reaching the beacon, try lowering the difficulty."
+"With the right spells and strategy, this scenario (like all campaigns) \n"
+"can be completed <i><b>without relying on luck or risky attacks.</b></i>"
 
 #. [message]: speaker=Lynyan
 #. that one's patrolling back and forth! Those lizards are ugly
@@ -8940,16 +8922,12 @@ msgstr ""
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:634
-#, fuzzy
-#| msgid ""
-#| "Oh no, I don’t think so. You forget you’re speaking to your king, old "
-#| "man. Solders, attack! ATTACK!"
 msgid ""
 "Oh no, I don’t think so. You forget you’re speaking to your king, old man. "
 "Soldiers, attack! ATTACK!"
 msgstr ""
 "Oh no, I don’t think so. You forget you’re speaking to your king, old man. "
-"Solders, attack! ATTACK!"
+"Soldiers, attack! ATTACK!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:644
@@ -10161,10 +10139,8 @@ msgstr "mnemonic"
 
 #. [disable]: id=skill_counterspell
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1047
-#, fuzzy
-#| msgid "Counterspell"
 msgid "counterspelled"
-msgstr "Counterspell"
+msgstr "counter-spelled"
 
 #. [disable]: id=skill_counterspell
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1048
@@ -10223,7 +10199,7 @@ msgstr "dancing daggers"
 #. [abilities]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1509
 msgid "dazed"
-msgstr ""
+msgstr "dazed"
 
 #. [message]: speaker=unit
 #. Delfador is magically disguised as a drake, and has just case a fireball
@@ -10331,10 +10307,8 @@ msgid "Colonel Dommel"
 msgstr "Colonel Dommel"
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:142
-#, fuzzy
-#| msgid "Captain Kestrel"
 msgid "Kestrel"
-msgstr "Captain Kestrel"
+msgstr "Kestrel"
 
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:174
 msgid "Iliah-Malal"
@@ -10397,15 +10371,11 @@ msgstr "Deoran, I never had a chance to tell you—"
 
 #. [message]: speaker=Lynyan
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:631
-#, fuzzy
-#| msgid "Boss, I ’aint feelin’ too hot..."
 msgid "Boss, I ain’t feelin’ too hot..."
 msgstr "Boss, I ain’t feelin’ too hot..."
 
 #. [message]: speaker=Lynyan
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:636
-#, fuzzy
-#| msgid "I ’aint feelin’ too hot..."
 msgid "I ain’t feelin’ too hot..."
 msgstr "I ain’t feelin’ too hot..."
 

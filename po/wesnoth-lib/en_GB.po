@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-20 22:54-0500\n"
-"PO-Revision-Date: 2025-05-21 13:25+1000\n"
+"PO-Revision-Date: 2025-07-21 15:59+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5019,7 +5019,7 @@ msgstr "Match-making"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
 msgid "Presets"
-msgstr ""
+msgstr "Presets"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5033,10 +5033,8 @@ msgstr "Requires a password to join"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Delete Unit"
+msgstr "Delete this preset"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5742,10 +5740,8 @@ msgstr "Map size:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Saved Games"
+msgstr "Save Preset"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -6080,14 +6076,12 @@ msgstr "Do not allow automatic movements at the beginning of a turn"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Turn prompt"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Display a dialogue at the beginning of your turn"
+msgstr "Display a prompt at the beginning of your turn"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:128
@@ -7700,10 +7694,8 @@ msgid "Unit type saved."
 msgstr "Unit type saved."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 tiles"
+msgstr "$count/1000 tiles"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7722,18 +7714,16 @@ msgid "Find File"
 msgstr "Find File"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Winter Elven Castle"
+msgstr "enter file name"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "invalid extension (use $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "file name contains white-space"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8253,10 +8243,8 @@ msgid "Game"
 msgstr "Game"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
-#, fuzzy
-#| msgid "Hotkey Settings"
 msgid "Hotkey(s): $bindings"
-msgstr "Hotkey Settings"
+msgstr "Hot-key(s): $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
@@ -8772,10 +8760,8 @@ msgid "Select/Move/Attack"
 msgstr "Select/Move/Attack"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Touch"
+msgstr "Touch Hex"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
