@@ -52,12 +52,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.documentfile.provider.DocumentFile;
 
 import org.wesnoth.Wesnoth.BuildConfig;
 
@@ -106,6 +109,8 @@ public class InitActivity extends Activity {
 			initialize();
 		} else if (reqCode == 2 && resCode == RESULT_OK) {
 			initializeAssetsFromZip(intent.getData());
+		} else if (reqCode == 4 && resCode == RESULT_OK) {
+			exportUserData();
 		}
 	}
 
@@ -122,6 +127,9 @@ public class InitActivity extends Activity {
 					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
 					showZIPHelpDialog();
+					return true;
+				} else if (menuItem.getItemId() == R.id.mnuImportExport) {
+					showImportExportDialog();
 					return true;
 				}
 				return false;
@@ -361,6 +369,78 @@ public class InitActivity extends Activity {
 		inttOpen.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
 		Intent inttOpen2 = Intent.createChooser(inttOpen, "Open ZIP file...");
 		startActivityForResult(inttOpen2, 2);
+	}
+	
+	private void showImportExportDialog() {
+		new AlertDialog.Builder(this)
+			.setTitle("Import/Export User Data")
+			.setMessage("This allows you to import/export your userdata folder, which contains your add-ons, game saves, logs and so on. Intended for advanced users and UMC creators.")
+			.setPositiveButton("Import", (dialog, which) -> importUserData())
+			.setNegativeButton("Export", (dialog, which) -> {
+				// Open directory picker to select export destination
+				Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+				startActivityForResult(intent, 4);
+			})
+			.setNeutralButton("Cancel", null)
+			.setCancelable(false)
+			.show();
+	}
+	
+	private void importUserData() {
+		//TODO to be implemented
+	}
+	
+	private void exportUserData() {
+		Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			for (File child : getExternalFilesDir(null).listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> Toast.makeText(this, "Exporting " + child.getName(), Toast.LENGTH_SHORT).show());
+					copyFolderToTree(this, child, intent.getData());
+				}
+			}
+			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
+		});
+	}
+	
+	public void copyFolderToTree(Context context, File sourceDir, Uri treeUri) {
+		DocumentFile targetRoot = DocumentFile.fromTreeUri(context, treeUri);
+		if (targetRoot == null) return;
+		
+		copyRecursive(context, sourceDir, targetRoot);
+	}
+
+	private void copyRecursive(Context context, File source, DocumentFile targetParent) {
+		if (source.isDirectory()) {
+			DocumentFile newDir = targetParent.findFile(source.getName());
+			if (newDir == null || !newDir.isDirectory()) {
+				newDir = targetParent.createDirectory(source.getName());
+			}
+
+			for (File child : source.listFiles()) {
+				copyRecursive(context, child, newDir);
+			}
+
+		} else {
+			try {
+				DocumentFile existingFile = targetParent.findFile(source.getName());
+				if (existingFile != null && existingFile.isFile()) {
+					existingFile.delete();
+				}
+
+				DocumentFile newFile = targetParent.createFile(getMimeType(source.getName()), source.getName());
+				copyStream(
+					new FileInputStream(source),
+					context.getContentResolver().openOutputStream(newFile.getUri()));
+			} catch (IOException ioe) {
+				Log.e("Import/Export copy", "IO error", ioe);
+			}
+		}
+	}
+	
+	private String getMimeType(String filename) {
+		String ext = filename.substring(filename.lastIndexOf('.') + 1).toLowerCase();
+		return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
 	}
 
 	private void updateDownloadProgress(int progress, int max, String type) {
