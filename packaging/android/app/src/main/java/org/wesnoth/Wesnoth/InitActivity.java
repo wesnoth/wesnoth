@@ -59,12 +59,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.wesnoth.Wesnoth.BuildConfig;
+
 public class InitActivity extends Activity {
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String VERSION_ID = "1.19.14";
 	private final static String ARCHIVE_URL =
 		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
+	private static String VERSION_ID = BuildConfig.VERSION_NAME;
 
 	private File dataDir;
 
@@ -74,6 +76,11 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
+		// Delete '+dev', since SF data url doesn't have it.
+		if (VERSION_ID.endsWith("+dev")) {
+			VERSION_ID = VERSION_ID.substring(0, VERSION_ID.length() - 4);
+		}
+
 		packages.put("Core Data", "master.zip");
 		packages.put("Music", "music.zip");
 		packages.put("Patch", "patch.zip");

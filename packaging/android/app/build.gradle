@@ -14,6 +14,10 @@ android {
         versionName "1.19.14+dev"
     }
 
+    buildFeatures {
+        buildConfig true
+    }
+
     buildTypes {
         debug {
             ndk {
