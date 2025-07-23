@@ -36,8 +36,7 @@ static const char* Source = "sound source";
 class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
-	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
-	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(std::move(new_track)) {}
+	explicit lua_music_track(std::shared_ptr<sound::music_track>&& new_track) : track(std::move(new_track)) {}
 	sound::music_track& operator*() {
 		return *track;
 	}
@@ -52,16 +51,15 @@ public:
 	}
 };
 
-static lua_music_track* push_track(lua_State* L, int i) {
-	lua_music_track* trk = new(L) lua_music_track(i);
-	luaL_setmetatable(L, Track);
-	return trk;
-}
-
-static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
-	lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
-	luaL_setmetatable(L, Track);
-	return trk;
+static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track>&& new_track) {
+	if(new_track) {
+		lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
+		luaL_setmetatable(L, Track);
+		return trk;
+	} else {
+		lua_pushnil(L);
+		return nullptr;
+	}
 }
 
 static lua_music_track* get_track(lua_State* L, int i) {
@@ -109,7 +107,7 @@ static int impl_track_collect(lua_State* L)
 
 static int impl_music_get(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		push_track(L, lua_tointeger(L, 2) - 1);
+		push_track(L, sound::get_track(lua_tointeger(L, 2) - 1));
 		return 1;
 	}
 	const char* m = luaL_checkstring(L, 2);
