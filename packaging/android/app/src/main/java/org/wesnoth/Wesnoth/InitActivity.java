@@ -57,6 +57,7 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
 
@@ -103,6 +104,8 @@ public class InitActivity extends Activity {
 			initialize();
 		} else if (reqCode == 2 && resCode == RESULT_OK) {
 			initializeAssetsFromZip(intent.getData());
+		} else if (reqCode == 3 && resCode == RESULT_OK) {
+			importUserData(intent.getData());
 		} else if (reqCode == 4 && resCode == RESULT_OK) {
 			exportUserData(intent.getData());
 		}
@@ -117,7 +120,7 @@ public class InitActivity extends Activity {
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
 				if (menuItem.getItemId() == R.id.mnuClear) {
 					// TODO do the deleting in another thread
-					clearGameData(dataDir);
+					showClearDataDialog(dataDir);
 					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
 					showZIPHelpDialog();
@@ -307,7 +310,7 @@ public class InitActivity extends Activity {
 	private void initializeAssetsFromZip(Uri uri) {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
-
+			
 			Properties status = initStatusFile(dataDir);
 
 			if (unpackArchive(uri, dataDir, "Core")) {
@@ -322,7 +325,7 @@ public class InitActivity extends Activity {
 		});
 	}
 
-	private void clearGameData(File dataDir) {
+	private void showClearDataDialog(File dataDir) {
 		new AlertDialog.Builder(this)
 			.setTitle("Confirm Deletion")
 			.setMessage("All gamedata will be completely deleted. Are you sure?")
@@ -369,19 +372,31 @@ public class InitActivity extends Activity {
 		new AlertDialog.Builder(this)
 			.setTitle("Import/Export User Data")
 			.setMessage("This allows you to import/export your userdata folder, which contains your add-ons, game saves, logs and so on. Intended for advanced users and UMC creators.")
-			.setPositiveButton("Import", (dialog, which) -> importUserData())
+			.setPositiveButton("Import", (dialog, which) -> {
+				// Open directory picker to select import destination
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 3);
+			})
 			.setNegativeButton("Export", (dialog, which) -> {
 				// Open directory picker to select export destination
-				Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-				startActivityForResult(intent, 4);
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 4);
 			})
 			.setNeutralButton("Cancel", null)
 			.setCancelable(false)
 			.show();
 	}
 	
-	private void importUserData() {
-		//TODO to be implemented
+	private void importUserData(Uri uri) {
+		Toast.makeText(this, "Importing...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			DocumentFile targetDir = DocumentFile.fromTreeUri(this, uri);
+			for (DocumentFile child : targetDir.listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> Toast.makeText(this, "Importing " + child.getName(), Toast.LENGTH_SHORT).show());
+					IOUtils.copyRecursive(this, child, getExternalFilesDir(null));
+				}
+			}
+			runOnUiThread(()-> Toast.makeText(this, "Imported!", Toast.LENGTH_SHORT).show());
+		});
 	}
 	
 	private void exportUserData(Uri uri) {
@@ -390,7 +405,7 @@ public class InitActivity extends Activity {
 			for (File child : getExternalFilesDir(null).listFiles()) {
 				if (!child.getName().equals("gamedata")) {
 					runOnUiThread(()-> Toast.makeText(this, "Exporting " + child.getName(), Toast.LENGTH_SHORT).show());
-					IOUtils.copyFolderToTree(this, child, uri);
+					IOUtils.copyRecursive(this, child, uri);
 				}
 			}
 			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
