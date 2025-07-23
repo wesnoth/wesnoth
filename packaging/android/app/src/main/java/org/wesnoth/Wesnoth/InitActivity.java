@@ -52,17 +52,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.webkit.MimeTypeMap;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.documentfile.provider.DocumentFile;
-
-import org.wesnoth.Wesnoth.BuildConfig;
 
 public class InitActivity extends Activity {
 
@@ -110,7 +104,7 @@ public class InitActivity extends Activity {
 		} else if (reqCode == 2 && resCode == RESULT_OK) {
 			initializeAssetsFromZip(intent.getData());
 		} else if (reqCode == 4 && resCode == RESULT_OK) {
-			exportUserData();
+			exportUserData(intent.getData());
 		}
 	}
 
@@ -304,7 +298,7 @@ public class InitActivity extends Activity {
 
 		try (FileOutputStream certStream = new FileOutputStream(certFile)) {
 			certFile.createNewFile();
-			copyStream(getResources().openRawResource(R.raw.cacert), certStream);
+			IOUtils.copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 		} catch (Exception e) {
 			Log.e("InitActivity", "Exception", e);
 		}
@@ -390,92 +384,40 @@ public class InitActivity extends Activity {
 		//TODO to be implemented
 	}
 	
-	private void exportUserData() {
+	private void exportUserData(Uri uri) {
 		Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show();
 		Executors.newSingleThreadExecutor().execute(() -> {
 			for (File child : getExternalFilesDir(null).listFiles()) {
 				if (!child.getName().equals("gamedata")) {
 					runOnUiThread(()-> Toast.makeText(this, "Exporting " + child.getName(), Toast.LENGTH_SHORT).show());
-					copyFolderToTree(this, child, intent.getData());
+					IOUtils.copyFolderToTree(this, child, uri);
 				}
 			}
 			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
 		});
 	}
 	
-	public void copyFolderToTree(Context context, File sourceDir, Uri treeUri) {
-		DocumentFile targetRoot = DocumentFile.fromTreeUri(context, treeUri);
-		if (targetRoot == null) return;
-		
-		copyRecursive(context, sourceDir, targetRoot);
-	}
-
-	private void copyRecursive(Context context, File source, DocumentFile targetParent) {
-		if (source.isDirectory()) {
-			DocumentFile newDir = targetParent.findFile(source.getName());
-			if (newDir == null || !newDir.isDirectory()) {
-				newDir = targetParent.createDirectory(source.getName());
-			}
-
-			for (File child : source.listFiles()) {
-				copyRecursive(context, child, newDir);
-			}
-
-		} else {
-			try {
-				DocumentFile existingFile = targetParent.findFile(source.getName());
-				if (existingFile != null && existingFile.isFile()) {
-					existingFile.delete();
-				}
-
-				DocumentFile newFile = targetParent.createFile(getMimeType(source.getName()), source.getName());
-				copyStream(
-					new FileInputStream(source),
-					context.getContentResolver().openOutputStream(newFile.getUri()));
-			} catch (IOException ioe) {
-				Log.e("Import/Export copy", "IO error", ioe);
-			}
-		}
-	}
-	
-	private String getMimeType(String filename) {
-		String ext = filename.substring(filename.lastIndexOf('.') + 1).toLowerCase();
-		return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+	private void updateProgress(String progressMsg, int progress) {
+		TextView progressText = (TextView) findViewById(R.id.download_msg);
+		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setProgress(progress);
+		progressText.setText(progressMsg);
 	}
 
 	private void updateDownloadProgress(int progress, int max, String type) {
-		TextView progressText = (TextView) findViewById(R.id.download_msg);
-		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-		progressBar.setProgress(progress);
-		progressText.setText("Downloading " + type + " ... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+		updateProgress(
+			String.format("Downloading %s ... (%s/%s)", type, toSizeString(progress), toSizeString(max)),
+			progress);
 	}
 
 	private void updateUnpackProgress(int progress, int max, String type) {
-		TextView progressText = (TextView) findViewById(R.id.download_msg);
-		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
 		// also, when installing from zip the total number of files is
-		// not available, so don't show it in that case.
-		if (max > 0) {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
-		} else {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + ")");
-		}
-	}
-
-	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
-		byte[] buffer = new byte[8192];
-		int length;
-		while ((length = in.read(buffer)) > 0) {
-			out.write(buffer, 0, length);
-		}
-	}
-
-	private void copyStream(InputStream in, OutputStream out) throws IOException {
-		copyStreamNoClose(in, out);
-		out.close();
-		in.close();
+		// not available, so don't show max in that case.
+		String unpackMsg = max > 0
+			? String.format("Unpacking %s assets... (%s/%s)", type, progress+1, max)
+			: String.format("Unpacking %s assets... (%s)", type, progress+1);
+		updateProgress(unpackMsg, progress);
 	}
 
 	private long downloadFile(String url, File destpath, String type, long modified) {
@@ -554,7 +496,7 @@ public class InitActivity extends Activity {
 			return false;
 		}
 
-		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
+		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
 			AtomicInteger progress = new AtomicInteger(1);
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
@@ -570,7 +512,7 @@ public class InitActivity extends Activity {
 					}
 				} else {
 					FileOutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
-					copyStreamNoClose(zf, out);
+					IOUtils.copyStreamNoClose(zf, out);
 					out.close();
 				}
 
@@ -622,7 +564,7 @@ public class InitActivity extends Activity {
 						dir.mkdir();
 					}
 				} else {
-					copyStream(
+					IOUtils.copyStream(
 						zf.getInputStream(ze),
 						new FileOutputStream(new File(destdir, ze.getName())));
 				}
