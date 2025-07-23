@@ -1,7 +1,6 @@
 package org.wesnoth.Wesnoth;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,33 +26,43 @@ public class IOUtils {
 		in.close();
 	}
 	
-	public static void copyFolderToTree(Context context, File sourceDir, Uri treeUri) {
-		DocumentFile targetRoot = DocumentFile.fromTreeUri(context, treeUri);
-		if (targetRoot == null) return;
+	public static void copyRecursive(Context context, File sourceFile, Uri targetUri) {
+		DocumentFile source = DocumentFile.fromFile(sourceFile);
+		DocumentFile targetDir = DocumentFile.fromTreeUri(context, targetUri);
+		if (source == null || targetDir == null) return;
 		
-		copyRecursive(context, sourceDir, targetRoot);
+		copyRecursive(context, source, targetDir);
 	}
-
-	private static void copyRecursive(Context context, File source, DocumentFile targetParent) {
+	
+	public static void copyRecursive(Context context, DocumentFile source, File targetFile) {
+		DocumentFile targetDir = DocumentFile.fromFile(targetFile);
+		if (source == null || targetDir == null) return;
+		
+		copyRecursive(context, source, targetDir);
+	}
+	
+	private static void copyRecursive(Context context, DocumentFile source, DocumentFile targetParent) {
+		final String sourceName = source.getName();
+		
 		if (source.isDirectory()) {
-			DocumentFile newDir = targetParent.findFile(source.getName());
+			DocumentFile newDir = targetParent.findFile(sourceName);
 			if (newDir == null || !newDir.isDirectory()) {
-				newDir = targetParent.createDirectory(source.getName());
+				newDir = targetParent.createDirectory(sourceName);
 			}
 
-			for (File child : source.listFiles()) {
+			for (DocumentFile child : source.listFiles()) {
 				copyRecursive(context, child, newDir);
 			}
 		} else {
 			try {
-				DocumentFile existingFile = targetParent.findFile(source.getName());
+				DocumentFile existingFile = targetParent.findFile(sourceName);
 				if (existingFile != null && existingFile.isFile()) {
 					existingFile.delete();
 				}
 
-				DocumentFile newFile = targetParent.createFile(getMimeType(source.getName()), source.getName());
+				DocumentFile newFile = targetParent.createFile(getMimeType(sourceName), sourceName);
 				copyStream(
-					new FileInputStream(source),
+					context.getContentResolver().openInputStream(source.getUri()),
 					context.getContentResolver().openOutputStream(newFile.getUri()));
 			} catch (IOException ioe) {
 				Log.e("Import/Export copy", "IO error", ioe);
