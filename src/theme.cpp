@@ -287,6 +287,17 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 	}
 }
 
+static void proprocess_theme_cfg(config& cfg)
+{
+	if(cfg["preprocessed"].to_bool()) {
+		return;
+	}
+	auto res = config{"preprocessed", true};
+	res.inherit_attributes(cfg);
+	do_resolve_rects(expand_partialresolution(cfg), res);
+	cfg = res;
+}
+
 theme::object::object()
 	: location_modified_(false)
 	, id_()
@@ -592,10 +603,10 @@ const std::string theme::action::tooltip(std::size_t index) const
 	return result.str();
 }
 
-theme::theme(const config& cfg, const rect& screen)
+theme::theme(std::shared_ptr<config> cfg, const rect& screen)
 	: theme_reset_event_("theme_reset")
 	, cur_theme()
-	, cfg_()
+	, cfg_(std::move(cfg))
 	, panels_()
 	, labels_()
 	, menus_()
@@ -611,7 +622,6 @@ theme::theme(const config& cfg, const rect& screen)
 	, cur_spec_width_(0)
 	, cur_spec_height_(0)
 {
-	do_resolve_rects(expand_partialresolution(cfg), cfg_);
 	set_resolution(screen);
 }
 
@@ -623,7 +633,7 @@ bool theme::set_resolution(const rect& screen)
 
 	int current_rating = 1000000;
 	const config* current = nullptr;
-	for(const config& i : cfg_.child_range("resolution")) {
+	for(const config& i : cfg().child_range("resolution")) {
 		int width = i["width"].to_int();
 		int height = i["height"].to_int();
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
@@ -642,7 +652,7 @@ bool theme::set_resolution(const rect& screen)
 	}
 
 	if(!current) {
-		if(cfg_.child_count("resolution")) {
+		if(cfg().child_count("resolution")) {
 			ERR_DP << "No valid resolution found";
 		}
 		return false;
@@ -971,7 +981,7 @@ theme::object* theme::refresh_title2(const std::string& id, const std::string& t
 {
 	std::string new_title;
 
-	const config& cfg = find_ref(id, cfg_, false);
+	const config& cfg = find_ref(id, this->cfg(), false);
 	if(!cfg[title_tag].empty())
 		new_title = cfg[title_tag].str();
 
@@ -993,7 +1003,7 @@ void theme::set_known_themes(const game_config_view* cfg)
 	if(cfg) {
 		known_themes.clear();
 		for(const config& thm : cfg->child_range("theme")) {
-			known_themes[thm["id"]] = thm;
+			known_themes[thm["id"]] = std::make_shared<config>(thm);
 		}
 	}
 }
@@ -1003,21 +1013,23 @@ std::vector<theme_info> theme::get_basic_theme_info(bool include_hidden)
 	std::vector<theme_info> res;
 
 	for(const auto& [id, cfg] : known_themes) {
-		if(!cfg["hidden"].to_bool(false) || include_hidden) {
+		if(!(*cfg)["hidden"].to_bool(false) || include_hidden) {
 			auto& info = res.emplace_back();
 			info.id = id;
-			info.name = cfg["name"].t_str();
-			info.description = cfg["description"].t_str();
+			info.name = (*cfg)["name"].t_str();
+			info.description = (*cfg)["description"].t_str();
 		}
 	}
 
 	return res;
 }
 
-const config& theme::get_theme_config(const std::string& id)
+
+std::shared_ptr<config> theme::get_theme_config(const std::string& id)
 {
 	auto iter = known_themes.find(id);
 	if(iter != known_themes.end()) {
+		proprocess_theme_cfg(*iter->second);
 		return iter->second;
 	}
 
@@ -1028,11 +1040,11 @@ const config& theme::get_theme_config(const std::string& id)
 
 	iter = known_themes.find("Default");
 	if(iter != known_themes.end()) {
+		proprocess_theme_cfg(*iter->second);
 		return iter->second;
 	}
 
 	ERR_DP << "Default theme not found.";
 
-	static config empty;
-	return empty;
+	return std::make_shared<config>();
 }
