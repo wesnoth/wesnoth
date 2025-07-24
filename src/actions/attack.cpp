@@ -168,13 +168,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Compute chance to hit.
-	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
-		- (opp_weapon ? opp_weapon->parry() : 0);
-
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
-
+	signed int cth = weapon->modified_chance_to_hit(opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)));
 
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
@@ -310,10 +304,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		}
 	}
 
-	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
+	signed int cth = weapon->modified_chance_to_hit(100 - opp_terrain_defense, true);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
