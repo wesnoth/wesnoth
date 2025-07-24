@@ -961,7 +961,7 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 		auth_ban = user_handler_->user_is_banned(username, client_address(socket));
 	}
 
-	if(auth_ban.type) {
+	if(auth_ban.type != user_handler::BAN_NONE) {
 		std::string ban_type_desc;
 		std::string ban_reason;
 		const char* msg_numeric;

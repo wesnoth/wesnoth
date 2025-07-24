@@ -517,7 +517,7 @@ void map_context::load_scenario()
 		}
 
 		for(const config& music : evt.child_range("music")) {
-			music_tracks_.emplace(music["name"], sound::music_track(music));
+			music_tracks_.emplace_back(sound::music_track::create(music));
 		}
 
 		for(config& a_unit : evt.child_range("unit")) {
@@ -531,6 +531,20 @@ void map_context::load_scenario()
 bool map_context::select_area(int index)
 {
 	return map_.set_selection(tod_manager_->get_area_by_index(index));
+}
+
+bool map_context::playlist_contains(const std::shared_ptr<sound::music_track>& track) const
+{
+	return utils::contains(music_tracks_, track);
+}
+
+void map_context::toggle_track(const std::shared_ptr<sound::music_track>& track)
+{
+	if(playlist_contains(track)) {
+		music_tracks_.remove(track);
+	} else {
+		music_tracks_.push_back(track);
+	}
 }
 
 void map_context::draw_terrain(const t_translation::terrain_code& terrain, const map_location& loc, bool one_layer_only)
@@ -730,8 +744,8 @@ config map_context::to_config()
 	}
 
 	// [music]s
-	for(const music_map::value_type& track : music_tracks_) {
-		track.second.write(event, true);
+	for(const auto& track : music_tracks_) {
+		track->write(event, true);
 	}
 
 	// [unit]s

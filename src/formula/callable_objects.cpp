@@ -21,7 +21,6 @@
 #include "display_context.hpp"
 #include "team.hpp"
 #include "units/attack_type.hpp"
-#include "units/formula_manager.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "log.hpp"
@@ -351,12 +350,6 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.is_fearless());
 	} else if(key == "healthy") {
 		return variant(u_.is_healthy());
-	} else if(key == "vars") {
-		if(u_.formula_manager().formula_vars()) {
-			return variant(u_.formula_manager().formula_vars());
-		}
-
-		return variant();
 	} else if(key == "wml_vars") {
 		return variant(std::make_shared<config_callable>(u_.variables()));
 	} else if(key == "n"      || key == "s"       || key == "ne"      || key == "se"      || key == "nw" || key == "sw" ||

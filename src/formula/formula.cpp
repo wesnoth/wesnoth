@@ -107,9 +107,6 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 	std::vector<tk::token> tokens;
 	std::string::const_iterator i1 = text.begin(), i2 = text.end();
 
-	// Set true when 'fai' keyword is found
-	bool fai_keyword = false;
-
 	// Set true when 'wfl' keyword is found
 	bool wfl_keyword = false;
 
@@ -148,21 +145,9 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 			} else if(current_type == tk::token_type::eol) {
 				files.back().second++;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "fai")) {
-				fai_keyword = true;
-				tokens.pop_back();
 			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")) {
 				wfl_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")) {
-				if(files.size() > 1) {
-					files.pop_back();
-					filenames_it = filenames.find(files.back().first);
-
-					tokens.pop_back();
-				} else {
-					throw formula_error("Unexpected 'faiend' found", "", "", 0);
-				}
 			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")) {
 				if(files.size() > 1) {
 					files.pop_back();
@@ -172,7 +157,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 				} else {
 					throw formula_error("Unexpected 'wflend' found", "", "", 0);
 				}
-			} else if(fai_keyword || wfl_keyword) {
+			} else if(wfl_keyword) {
 				if(current_type == tk::token_type::string_literal) {
 					std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
@@ -182,22 +167,13 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 					if(success) {
 						filenames_it = pos;
 					} else {
-						if(fai_keyword) {
-							throw formula_error("Faifile already included", "fai" + str, "", 0);
-						} else {
-							throw formula_error("Wflfile already included", "wfl" + str, "", 0);
-						}
+						throw formula_error("Wflfile already included", "wfl" + str, "", 0);
 					}
 
 					tokens.pop_back();
-					fai_keyword = false;
 					wfl_keyword = false;
 				} else {
-					if(fai_keyword) {
-						throw formula_error("Expected string after the 'fai'", "fai", "", 0);
-					} else {
-						throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
-					}
+					throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
 				}
 			} else {
 				// In every token not specified above, store line number and name of file it came from

@@ -213,7 +213,6 @@ public:
 	 */
 	int support() const { return static_cast<int>(villages_.size()) * village_support(); }
 	void new_turn() { info_.gold += total_income(); }
-	void get_shared_maps();
 	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { info_.gold -= amount; }
@@ -235,6 +234,8 @@ public:
 	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
+	void increment_action_bonus_count() { ++action_bonus_count_; }
+	void decrement_action_bonus_count() { --action_bonus_count_; }
 	recall_list_manager& recall_list() {return recall_list_;}
 	const recall_list_manager & recall_list() const {return recall_list_;}
 	void set_current_player(const std::string& player)
@@ -249,7 +250,7 @@ public:
 	void set_recruits(const std::set<std::string>& recruits);
 	int minimum_recruit_price() const;
 	const std::string& last_recruit() const { return last_recruit_; }
-	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
+	void set_last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 
 	const std::string& save_id() const { return info_.save_id; }
 	std::string save_id_or_number() const { return info_.save_id.empty() ? std::to_string(info_.side) : info_.save_id; }

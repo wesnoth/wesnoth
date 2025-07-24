@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: 2020-10-19 14:43+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -309,7 +309,6 @@ msgstr ""
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
 msgid "OK"
 msgstr "OK"
 
@@ -334,65 +333,74 @@ msgid "No"
 msgstr ""
 
 #. [label]: id=title
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
-msgid "Map Settings"
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
+#, fuzzy
+#| msgid "Map Settings"
+msgid "Map Generator Settings"
 msgstr "Ustawienia mapy"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
-msgid " players: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
+msgid "Players:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-msgid " scenario: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
+#, fuzzy
+#| msgid " scenario: "
+msgid "Scenario:"
 msgstr " scenariusz: "
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
-msgid " map: "
-msgstr " mapa: "
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
-msgid "map size"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
+msgid "Map:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
-msgid "village density"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
+msgid "Map Size:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
-msgid "keep size"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
+msgid "Village Density:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
+msgid "Keep Size:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
 #, fuzzy
 #| msgid "Factions"
-msgid "iterations"
+msgid "Iterations:"
 msgstr "Frakcje"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
 #, fuzzy
 #| msgid "terrain^water"
-msgid "terrain factor"
+msgid "Terrain Factor:"
 msgstr "woda"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
-msgid "island factor"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
+msgid "Island Factor:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
 #, fuzzy
 #| msgid "Tome of secrets"
-msgid "number of keeps"
+msgid "Number of Keeps:"
 msgstr "Księga tajemnic"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
+msgid "Close"
+msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 #, fuzzy
@@ -4187,6 +4195,12 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr ""
+
+#~ msgid " scenario: "
+#~ msgstr " scenariusz: "
+
+#~ msgid " map: "
+#~ msgstr " mapa: "
 
 #, fuzzy
 #~| msgid "World Conquest"

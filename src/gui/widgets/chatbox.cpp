@@ -253,9 +253,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
 	add_chat_message(std::chrono::system_clock::now(), prefs::get().login(), 0, message);
-
-	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
-	send_to_server(c);
+	send_to_server(::config{"message", ::config{"message", message, "sender", prefs::get().login()}});
 }
 
 void chatbox::clear_messages()
@@ -454,13 +452,10 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	return &open_windows_.back();
 }
 
-void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
+void chatbox::close_window_button_callback(const std::string& room_name, bool& handled, bool& halt)
 {
-	const int index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
-		[&room_name](const lobby_chat_window& room) { return room.name == room_name; }
-	));
-
-	close_window(index);
+	close_window(std::distance(open_windows_.begin(),
+		utils::ranges::find(open_windows_, room_name, &lobby_chat_window::name)));
 
 	handled = halt = true;
 }

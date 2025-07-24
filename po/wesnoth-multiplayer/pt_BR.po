@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: 2023-01-13 17:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -2896,6 +2896,36 @@ msgstr ""
 "Os gritos de batalha podem ser ouvidos novamente nesse campo desgastado "
 "pelas guerras passadas, onde os fantasmas de milhares de bravos guerreiros "
 "flutuam invisíveis por entre as montanhas, rios e árvores."
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:7
+msgid "6p — Double Siege"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:8
+msgid ""
+"Two armies attacked a single city, both emerged victorious. Now, only one "
+"can claim the victory."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:25
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:61
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:73
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Top"
+msgstr "Norte"
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:37
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:49
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:85
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Bottom"
+msgstr "Norte"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5

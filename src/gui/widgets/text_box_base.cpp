@@ -301,13 +301,6 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-#ifdef __ANDROID__
-		if (state_ == state_t::FOCUSED) {
-			SDL_StartTextInput();
-		} else {
-			SDL_StopTextInput();
-		}
-#endif
 		queue_redraw();
 	}
 }
@@ -694,14 +687,18 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
+#ifdef __ANDROID__
+	SDL_StartTextInput();
+#endif
 	set_state(FOCUSED);
 }
 
 void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
+#ifdef __ANDROID__
+	SDL_StopTextInput();
+#endif
 	set_state(ENABLED);
 }
 
@@ -709,7 +706,6 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
 	if(state_ != FOCUSED) {
 		set_state(HOVERED);
 	}

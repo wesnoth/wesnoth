@@ -133,9 +133,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						draw::blit(tile, dest);
 
 						// NOTE: we skip the overlay when base is missing (to avoid hiding the error)
-						if(tile && map.tdata()->get_terrain_info(terrain).is_combined()
-							&& !terrain_info.minimap_image_overlay().empty())
-						{
+						if(tile && terrain_info.is_combined() && !terrain_info.minimap_image_overlay().empty()) {
 							const std::string overlay_file = "terrain/" + terrain_info.minimap_image_overlay() + ".png";
 							const texture& overlay = image::get_texture(overlay_file); // image::HEXED
 
@@ -214,9 +212,9 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		// Villages
 		//
-		if(preferences_minimap_draw_villages) {
+		if(preferences_minimap_draw_villages && !is_blindfolded) {
 			for(const map_location& loc : map.villages()) {
-				if(is_blindfolded || (vw && (vw->shrouded(loc) || vw->fogged(loc)))) {
+				if(vw && (vw->shrouded(loc) || vw->fogged(loc))) {
 					continue;
 				}
 

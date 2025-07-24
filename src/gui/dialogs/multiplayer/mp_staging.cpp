@@ -536,9 +536,7 @@ void mp_staging::network_handler()
 
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();
-
-	bool quit_signal_received;
-	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
+	const bool quit_signal_received = connect_engine_.process_network_data(data);
 
 	if(quit_signal_received) {
 		set_retval(retval::CANCEL);

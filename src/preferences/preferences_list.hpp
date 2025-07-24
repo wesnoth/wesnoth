@@ -397,6 +397,8 @@ struct preferences_list_defines
 	ADDPREF(show_combat)
 	/** whether to show deprecation warnings for WML, lua, etc APIs */
 	ADDPREF(show_deprecation)
+	/** whether to show an indicator above defenders when an attack misses */
+	ADDPREF(show_attack_miss_indicator)
 	/** whether to use a 12 hour vs 24 hours clock in various places on the UI */
 	ADDPREF(use_twelve_hour_clock_format)
 
@@ -543,6 +545,7 @@ struct preferences_list_defines
 		show_all_units_in_help,
 		show_combat,
 		show_deprecation,
+		show_attack_miss_indicator,
 		use_twelve_hour_clock_format,
 		player_joins_sound,
 		player_joins_notif,

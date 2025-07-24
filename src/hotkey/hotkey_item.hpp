@@ -299,7 +299,7 @@ public:
 	/**
 	 * Initialise new instance of this class that has no button associated with is.
 	 */
-	hotkey_mouse() : hotkey_base(), button_ (0)
+	hotkey_mouse() : hotkey_base(), button_(0), clicks_(1)
 	{}
 
 	/**
@@ -311,13 +311,20 @@ public:
 		return button_ != 0;
 	}
 
-	/* new functionality for this class */
+	/** Sets the mouse button for this hotkey */
 	void set_button(int button)
 	{
 		button_ = button;
 	}
+
+	/** Sets the number of mouse clicks needed for this hotkey */
+	void set_clicks(int clicks)
+	{
+		clicks_ = clicks;
+	}
 protected:
 	int button_;
+	int clicks_;
 
 	virtual void save_helper(config& cfg) const;
 	virtual const std::string get_name_helper() const;

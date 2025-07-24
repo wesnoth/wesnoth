@@ -502,6 +502,7 @@ std::string get_program_invocation(const std::string &program_name);
  * Returns the localized version of the given filename, if it exists.
  */
 utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path);
 
 /**
  * Returns the add-on ID from a path.

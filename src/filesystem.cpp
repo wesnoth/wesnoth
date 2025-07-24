@@ -1858,6 +1858,17 @@ utils::optional<std::string> get_localized_path(const std::string& file, const s
 	return utils::nullopt;
 }
 
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path)
+{
+	if(base_path) {
+		if(auto localized = get_localized_path(*base_path)) {
+			return localized;
+		}
+	}
+
+	return base_path;
+}
+
 utils::optional<std::string> get_addon_id_from_path(const std::string& location)
 {
 	std::string full_path = normalize_path(location, true);

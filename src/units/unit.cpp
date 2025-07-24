@@ -43,11 +43,11 @@
 #include "units/abilities.hpp"           // for effect, filter_base_matches
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
-#include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
 #include "utils/config_filters.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
@@ -277,7 +277,6 @@ unit::unit(const unit& o)
 	, dismiss_message_(o.dismiss_message_)
 	, side_(o.side_)
 	, gender_(o.gender_)
-	, formula_man_(new unit_formula_manager(o.formula_manager()))
 	, movement_(o.movement_)
 	, max_movement_(o.max_movement_)
 	, vision_(o.vision_)
@@ -363,7 +362,6 @@ unit::unit(unit_ctor_t)
 	, dismiss_message_(_("This unit cannot be dismissed."))
 	, side_(0)
 	, gender_(unit_race::NUM_GENDERS)
-	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
 	, vision_(-1)
@@ -622,7 +620,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(auto ai = cfg.optional_child("ai")) {
-		formula_man_->read(*ai);
 		config ai_events;
 		for(config mai : ai->child_range("micro_ai")) {
 			mai.clear_children("filter");
@@ -1620,9 +1617,6 @@ void unit::write(config& cfg, bool write_all) const
 	if(type_id() != type().parent_id()) {
 		cfg["parent_type"] = type().parent_id();
 	}
-
-	// Support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
-	formula_man_->write(cfg);
 
 	cfg["gender"] = gender_string(gender_);
 	cfg["variation"] = variation_;

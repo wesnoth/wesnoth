@@ -46,8 +46,6 @@ public:
 	connect_engine(saved_game& state,
 		const bool first_scenario, mp_game_metadata* metadata);
 
-	config* current_config();
-
 	void import_user(const std::string& name, const bool observer,
 		int side_taken = -1);
 	void import_user(const config& data, const bool observer,
@@ -67,9 +65,8 @@ public:
 
 	void leave_game();
 
-	// Return pair first element specifies whether to leave the game
-	// and second element whether to silently update UI.
-	std::pair<bool, bool> process_network_data(const config& data);
+	// Returns true if a signal to leave the game was received
+	bool process_network_data(const config& data);
 
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.
@@ -103,7 +100,7 @@ public:
 		return team_data_;
 	}
 
-	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
+	const std::vector<side_engine_ptr>& side_engines() const { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
@@ -135,6 +132,8 @@ private:
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
 	std::vector<team_data_pod> team_data_;
+
+	ng::era_metadata era_info_;
 
 	std::set<std::string>& connected_users_rw();
 };

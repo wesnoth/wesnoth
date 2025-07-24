@@ -60,33 +60,12 @@ const std::set<std::string> children_to_swap {
 	"ai"
 };
 
-void sort_faction_options(std::vector<const config*>& factions)
-{
-	// Since some eras have multiple random options we can't just
-	// assume there is only one random faction on top of the list.
-	std::sort(factions.begin(), factions.end(), [](const config* lhs, const config* rhs) {
-		bool lhs_rand = (*lhs)["random_faction"].to_bool();
-		bool rhs_rand = (*rhs)["random_faction"].to_bool();
-
-		// Random factions always first.
-		if(lhs_rand && !rhs_rand) {
-			return true;
-		}
-
-		if(!lhs_rand && rhs_rand) {
-			return false;
-		}
-
-		return translation::compare((*lhs)["name"].str(), (*rhs)["name"].str()) < 0;
-	});
-}
-
 } // end anon namespace
 
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_game_metadata* metadata)
-	: level_()
+	: level_(mp::initial_level_config(state))
 	, state_(state)
 	, params_(state.mp_settings())
 	, default_controller_(metadata ? CNTR_NETWORK : CNTR_LOCAL)
@@ -96,20 +75,15 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	, side_engines_()
 	, era_factions_()
 	, team_data_()
+	, era_info_(level_.mandatory_child("era"))
 {
-	// Initial level config from the mp_game_settings.
-	level_ = mp::initial_level_config(state_);
-	if(level_.empty()) {
-		return;
-	}
-
 	const config& era_config = level_.mandatory_child("era");
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
 	force_lock_settings_ = (state.mp_settings().saved_game != saved_game_mode::type::midgame) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
-	config::child_itors sides = current_config()->child_range("side");
+	config::child_itors sides = scenario().child_range("side");
 
 	// AI algorithms.
 	ai::configuration::add_era_ai_from_config(era_config);
@@ -196,10 +170,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		era_factions_.push_back(&ms);
 	}
 
-	if(era_config["auto_sort"].to_bool(true)) {
-		sort_faction_options(era_factions_);
-	}
-
 	game_config::add_color_info(game_config_view::wrap(scenario()));
 
 	// Create side engines.
@@ -224,11 +194,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 	// If we are connected, send data to the connected host.
 	send_level_data();
-}
-
-
-config* connect_engine::current_config() {
-	return &scenario();
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer, int side_taken)
@@ -259,7 +224,7 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 	}
 
 	// Check if user has a side(s) reserved for him.
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		if(side->reserved_for() == username && side->player_id().empty() && side->controller() != CNTR_COMPUTER) {
 			side->place_user(data);
 
@@ -270,7 +235,7 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 	// If no sides were assigned for a user,
 	// take a first available side.
 	if(side_taken < 0 && !side_assigned) {
-		for(side_engine_ptr side : side_engines_) {
+		for(const side_engine_ptr& side : side_engines_) {
 			if(side->available_for_user(username) ||
 				side->controller() == CNTR_LOCAL) {
 					side->place_user(data);
@@ -283,9 +248,9 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 
 	// Check if user has taken any sides, which should get control
 	// over any other sides.
-	for(side_engine_ptr user_side : side_engines_) {
+	for(const side_engine_ptr& user_side : side_engines_) {
 		if(user_side->player_id() == username && !user_side->previous_save_id().empty()) {
-			for(side_engine_ptr side : side_engines_){
+			for(const side_engine_ptr& side : side_engines_){
 				if(side->player_id().empty() && side->previous_save_id() == user_side->previous_save_id()) {
 					side->place_user(data);
 				}
@@ -296,7 +261,7 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 
 bool connect_engine::sides_available() const
 {
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		if(side->available_for_user()) {
 			return true;
 		}
@@ -311,7 +276,7 @@ void connect_engine::update_level()
 
 	scenario().clear_children("side");
 
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		scenario().add_child("side", side->new_config());
 	}
 }
@@ -321,11 +286,8 @@ void connect_engine::update_and_send_diff()
 	config old_level = level_;
 	update_level();
 
-	config diff = level_.get_diff(old_level);
-	if(!diff.empty()) {
-		config scenario_diff;
-		scenario_diff.add_child("scenario_diff", std::move(diff));
-		mp::send_to_server(scenario_diff);
+	if(config diff = level_.get_diff(old_level); !diff.empty()) {
+		mp::send_to_server(config{"scenario_diff", std::move(diff)});
 	}
 }
 
@@ -336,7 +298,7 @@ bool connect_engine::can_start_game() const
 	}
 
 	// First check if all sides are ready to start the game.
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		if(!side->ready_for_start()) {
 			const int side_num = side->index() + 1;
 			DBG_MP << "not all sides are ready, side " <<
@@ -354,7 +316,7 @@ bool connect_engine::can_start_game() const
 	 * creative in what is used in multiplayer [1] so use a simpler test now.
 	 * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568029
 	 */
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		if(side->controller() != CNTR_EMPTY && side->allow_player()) {
 			return true;
 		}
@@ -394,12 +356,12 @@ void connect_engine::start_game()
 	// Resolves the "random faction", "random gender" and "random message"
 	// Must be done before shuffle sides, or some cases will cause errors
 	randomness::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
 		if(params_.mode != random_faction_mode::type::independent) {
-			for(side_engine_ptr side2 : side_engines_) {
+			for(const side_engine_ptr& side2 : side_engines_) {
 				if(!side2->flg().is_random_faction()) {
 					switch(params_.mode) {
 						case random_faction_mode::type::no_mirror:
@@ -425,7 +387,7 @@ void connect_engine::start_game()
 
 		// Only playable sides should be shuffled.
 		std::vector<int> playable_sides;
-		for(side_engine_ptr side : side_engines_) {
+		for(const side_engine_ptr& side : side_engines_) {
 			if(side->allow_player() && side->allow_shuffle()) {
 				playable_sides.push_back(side->index());
 			}
@@ -453,8 +415,7 @@ void connect_engine::start_game()
 	}
 
 	// Make other clients not show the results of resolve_random().
-	config lock("stop_updates");
-	mp::send_to_server(lock);
+	mp::send_to_server(config{"stop_updates"});
 
 	update_and_send_diff();
 
@@ -463,7 +424,7 @@ void connect_engine::start_game()
 	// Build the gamestate object after updating the level.
 	mp::level_to_gamestate(level_, state_);
 
-	mp::send_to_server(config("start_game"));
+	mp::send_to_server(config{"start_game"});
 }
 
 void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
@@ -473,7 +434,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 	randomness::mt_rng rng;
 
 	unsigned num = 0;
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		num++;
 
 		// Set the faction, if commandline option is given.
@@ -563,23 +524,19 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	// Build the gamestate object after updating the level
 	mp::level_to_gamestate(level_, state_);
-	mp::send_to_server(config("start_game"));
+	mp::send_to_server(config{"start_game"});
 }
 
 void connect_engine::leave_game()
 {
 	DBG_MP << "leaving the game";
-
-	mp::send_to_server(config("leave_game"));
+	mp::send_to_server(config{"leave_game"});
 }
 
-std::pair<bool, bool> connect_engine::process_network_data(const config& data)
+bool connect_engine::process_network_data(const config& data)
 {
-	std::pair<bool, bool> result(false, true);
-
 	if(data.has_child("leave_game")) {
-		result.first = true;
-		return result;
+		return true;
 	}
 
 	// A side has been dropped.
@@ -587,7 +544,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		unsigned side_index = side_drop["side_num"].to_int() - 1;
 
 		if(side_index < side_engines_.size()) {
-			side_engine_ptr side_to_drop = side_engines_[side_index];
+			const side_engine_ptr& side_to_drop = side_engines_[side_index];
 
 			// Remove user, whose side was dropped.
 			connected_users_rw().erase(side_to_drop->player_id());
@@ -596,8 +553,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			side_to_drop->reset();
 
 			update_and_send_diff();
-
-			return result;
+			return false;
 		}
 	}
 
@@ -608,32 +564,18 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
 		if(name.empty()) {
-			config response;
-			response["failed"] = true;
-			mp::send_to_server(response);
-
 			ERR_CF << "ERROR: No username provided with the side.";
-
-			return result;
+			return false;
 		}
 
 		if(connected_users().find(name) != connected_users().end()) {
 			// TODO: Seems like a needless limitation
 			// to only allow one side per player.
 			if(find_user_side_index_by_id(name) != -1) {
-				config response;
-				response["failed"] = true;
-				response["message"] = "The nickname '" + name +
-					"' is already in use.";
-				mp::send_to_server(response);
-
-				return result;
+				return false;
 			} else {
 				connected_users_rw().erase(name);
 				update_side_controller_options();
-				config observer_quit;
-				observer_quit.add_child("observer_quit")["name"] = name;
-				mp::send_to_server(observer_quit);
 			}
 		}
 
@@ -643,7 +585,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				// This side is already taken.
 				// Try to reassing the player to a different position.
 				side_taken = 0;
-				for(side_engine_ptr s : side_engines_) {
+				for(const side_engine_ptr& s : side_engines_) {
 					if(s->available_for_user()) {
 						break;
 					}
@@ -652,21 +594,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				}
 
 				if(side_taken >= side_engines_.size()) {
-					config response;
-					response["failed"] = true;
-					mp::send_to_server(response);
-
-					config res;
-					config& kick = res.add_child("kick");
-					kick["username"] = data["name"];
-					mp::send_to_server(res);
+					mp::send_to_server(config{"kick", config{"username", data["name"]}});
 
 					update_and_send_diff();
 
-					ERR_CF << "ERROR: Couldn't assign a side to '" <<
-						name << "'";
-
-					return result;
+					ERR_CF << "ERROR: Couldn't assign a side to '" << name << "'";
+					return false;
 				}
 			}
 
@@ -678,15 +611,9 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			// Wait for them to choose faction if allowed.
 			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes());
 			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes();
-			result.second = false;
-
 			LOG_NW << "sent player data";
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken;
-
-			config response;
-			response["failed"] = true;
-			mp::send_to_server(response);
 		}
 	}
 
@@ -718,13 +645,13 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		}
 	}
 
-	return result;
+	return false;
 }
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	std::size_t i = 0;
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		if(side->player_id() == id) {
 			break;
 		}
@@ -756,9 +683,7 @@ void connect_engine::send_level_data() const
 		});
 		mp::send_to_server(level_);
 	} else {
-		config next_level;
-		next_level.add_child("store_next_scenario", level_);
-		mp::send_to_server(next_level);
+		mp::send_to_server(config{"store_next_scenario", level_});
 	}
 }
 
@@ -767,7 +692,7 @@ void connect_engine::save_reserved_sides_information()
 	// Add information about reserved sides to the level config.
 	// N.B. This information is needed only for a host player.
 	std::map<std::string, std::string> side_users = utils::map_split(level_.child_or_empty("multiplayer")["side_users"]);
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		const std::string& save_id = side->save_id();
 		const std::string& player_id = side->player_id();
 		if(!save_id.empty() && !player_id.empty()) {
@@ -782,7 +707,7 @@ void connect_engine::load_previous_sides_users()
 {
 	std::map<std::string, std::string> side_users = utils::map_split(level_.mandatory_child("multiplayer")["side_users"]);
 	std::set<std::string> names;
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		const std::string& save_id = side->previous_save_id();
 		if(side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
@@ -807,7 +732,7 @@ void connect_engine::load_previous_sides_users()
 
 void connect_engine::update_side_controller_options()
 {
-	for(side_engine_ptr side : side_engines_) {
+	for(const side_engine_ptr& side : side_engines_) {
 		side->update_controller_options();
 	}
 }
@@ -846,14 +771,13 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
+	, flg_(parent_.era_info_, parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
 	, allow_changes_(parent_.params_.saved_game != saved_game_mode::type::midgame && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
 	//TODO: what should we do if color_ is out of range?
 	, color_id_(color_options_.at(color_))
 {
-
 	// Save default attributes that could be overwritten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
 	cfg_.clear_children("default_faction");
@@ -867,7 +791,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 			"gender", (p_cfg)["gender"],
 		});
 	}
-
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1;

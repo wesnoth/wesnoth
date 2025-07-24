@@ -30,6 +30,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "gettext.hpp"
 #include "utils/math.hpp"
 
@@ -96,6 +97,23 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	return s.str();
+}
+
+std::string attack_type::accuracy_parry_tooltip() const
+{
+	if(accuracy_ == 0 && parry_ == 0) {
+		return "";
+	}
+
+	std::stringstream tooltip;
+	if (accuracy_) {
+		tooltip << _("Accuracy:") << " " << markup::bold(utils::signed_percent(accuracy_)) << "\n";
+	}
+	if (parry_) {
+		tooltip << _("Parry:") << " " << markup::bold(utils::signed_percent(parry_));
+	}
+
+	return tooltip.str();
 }
 
 /**

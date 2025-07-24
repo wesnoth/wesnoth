@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,7 +285,6 @@ msgstr ""
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
 msgid "OK"
 msgstr ""
 
@@ -310,58 +309,63 @@ msgid "No"
 msgstr ""
 
 #. [label]: id=title
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
-msgid "Map Settings"
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
+msgid "Map Generator Settings"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
-msgid " players: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
+msgid "Players:"
 msgstr ""
 
-#. [label]
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
+msgid "Scenario:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
+msgid "Map:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
+msgid "Map Size:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
+msgid "Village Density:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
+msgid "Keep Size:"
+msgstr ""
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+msgid "Iterations:"
+msgstr ""
+
+#. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-msgid " scenario: "
+msgid "Terrain Factor:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
-msgid " map: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
+msgid "Island Factor:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
-msgid "map size"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
+msgid "Number of Keeps:"
 msgstr ""
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
-msgid "village density"
-msgstr ""
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
-msgid "keep size"
-msgstr ""
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-msgid "iterations"
-msgstr ""
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-msgid "terrain factor"
-msgstr ""
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
-msgid "island factor"
-msgstr ""
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-msgid "number of keeps"
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
+msgid "Close"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5

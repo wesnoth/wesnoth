@@ -138,6 +138,10 @@ void gui_definition::activate() const
 	settings::sound_slider_adjust = settings_.sound_slider_adjust;
 	settings::has_helptip_message = settings_.has_helptip_message;
 	settings::tips = tips_;
+
+	// Let SDL know to use the configured time value
+	auto hint_value = std::to_string(settings::double_click_time.count());
+	SDL_SetHint(SDL_HINT_MOUSE_DOUBLE_CLICK_TIME, hint_value.data());
 }
 
 namespace

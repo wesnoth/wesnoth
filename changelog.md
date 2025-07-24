@@ -1,4 +1,4 @@
-## Version 1.19.13+dev
+## Version 1.19.14+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
@@ -8,11 +8,43 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Ancient Greek, Arabic, Bengali, British English, Chinese (Simplified), Finnish, Hungarian
+   * Updated translations: British English, Hungarian
 ### Units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+
+## Version 1.19.14
+### Campaigns
+   * Eastern Invasion
+     * Terraent arcane resistance from 30% to 40%, melee arcane 9-5 to 8-5, cost: 82 -> 80
+### Editor
+   * Fixed side default income getting incremented to 2 each time a scenario is saved
+### Multiplayer
+   * Add presets to allow saving and easily reusing game settings.
+### Translations
+   * Updated translations: Ancient Greek, Arabic, Bengali, British English, Chinese (Simplified), Czech, Finnish, Hungarian
+   * Added new Japanese font that has support for bolding text and fix font order so italics works.
+### Units
+   * Arcane Resistance of all Skeletal Type Undead changed from -20 % to -40%.
+      * The list for core skeletal Undead units includes: Skeleton, Revenant, Deathblade, Draug, Death Squire, Death Knight, Skeleton Archer, Bone Shooter, Banebow, Lich, Ancient Lich, Skeleton Rider, Bone Knight
+      * Campaign units include: Pyre Wight and Barrow Wight from *Eastern Invasion*.
+   * Dwarvish Thunderer: cost decreased from 17 gold to 16 gold.
+   * Ghoul, Necrophage, Ghast: pierce resistance changed from 30% to 10%, impact resistance changed from 0% to 20%, arcane resistance changed from 10% to 30%.
+   * Paladin: arcane resistance from 30% to 40%, melee arcane 9-5 to 8-5, cost: 82 -> 80
+   * Dunefolk Horse Archer, Marauder, Raider, Rider, and Windbolt sprites were cleaned up and various animations added.
+   * Cleanup and add defend animations for the Dunefolk Firetrooper and Scorcher.
+### User interface
+   * On touch devices, double tap no longer shows context menu. It can still be accessed via long press. Single tap selects the unit. Another single tap on a hex shows hover info, which was previously not available. Single tap select followed by double tap on a hex moves the unit. Dragging now indicates the path and defense.
+   * Fixed various graphical bugs with ship units.
+   * Fixed units' weapons tooltip to correctly account for effects from the [damage_type] ability
+   * Various UI refinements, primarily to the new Celes theme
+### WML Engine
+   * The legacy FormulaAI API has been removed.
+   * Added new WFL functions: `nearest_loc`, `run_file`, `debug_label`, `is_shrouded`, `is_fogged`
+### Miscellaneous and Bug Fixes
+   * Fixed a WML error being printed in Secrets of the Ancients.
+   * Fixed non-permanent multiplayer server bans not working.
 
 ## Version 1.19.13
 ### Translations

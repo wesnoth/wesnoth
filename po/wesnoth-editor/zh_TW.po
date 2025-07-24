@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-05-20 17:31-0500\n"
+"POT-Creation-Date: 2025-07-20 22:54-0500\n"
 "PO-Revision-Date: 2024-03-03 22:06+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -270,55 +270,55 @@ msgstr "等級："
 msgid "Cost: "
 msgstr "費用："
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "你真的想要退出嗎？"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "你真的想要退出嗎？將會遺失從上次儲存後到現在對地圖所作的更動。"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "你真的想要退出嗎？將遺失對以下地圖所作的更動："
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "沒有找到時段編輯器。"
 
-#: src/editor/controller/editor_controller.cpp:885
+#: src/editor/controller/editor_controller.cpp:874
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "模組"
 
-#: src/editor/controller/editor_controller.cpp:898
+#: src/editor/controller/editor_controller.cpp:887
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "不支援剪貼簿，請聯絡你的遊戲提供者"
 
-#: src/editor/controller/editor_controller.cpp:1323
+#: src/editor/controller/editor_controller.cpp:1328
 msgid "Change Unit ID"
 msgstr "更改單位ID"
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1329
 msgid "ID:"
 msgstr "ID："
 
-#: src/editor/controller/editor_controller.cpp:1340
+#: src/editor/controller/editor_controller.cpp:1345
 msgid "Rename Unit"
 msgstr "重新命名單位"
 
-#: src/editor/controller/editor_controller.cpp:1341
+#: src/editor/controller/editor_controller.cpp:1346
 msgid "Name:"
 msgstr "名稱："
 
@@ -331,8 +331,10 @@ msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:217
-msgid "Load Map"
-msgstr "載入地圖"
+#, fuzzy
+#| msgid "Map loaded from scenario"
+msgid "Load Map or Scenario"
+msgstr "已從章節中讀取地圖"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1133
 msgid "New Map"
@@ -342,110 +344,110 @@ msgstr "新地圖"
 msgid "New Scenario"
 msgstr "新章節"
 
-#: src/editor/map/context_manager.cpp:382
+#: src/editor/map/context_manager.cpp:374
 msgid "No Recent Files"
 msgstr "沒有最近使用過的檔案"
 
-#: src/editor/map/context_manager.cpp:420
+#: src/editor/map/context_manager.cpp:402
 msgid "Unnamed Area"
 msgstr "未命名地區"
 
-#: src/editor/map/context_manager.cpp:451
+#: src/editor/map/context_manager.cpp:428
 msgid "New Side"
 msgstr "新陣營"
 
-#: src/editor/map/context_manager.cpp:507
+#: src/editor/map/context_manager.cpp:467
 msgid "Apply Mask"
 msgstr "套用遮罩"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "讀取遮罩時錯誤"
 
-#: src/editor/map/context_manager.cpp:536
+#: src/editor/map/context_manager.cpp:496
 msgid "Identifier:"
 msgstr "識別："
 
-#: src/editor/map/context_manager.cpp:536
+#: src/editor/map/context_manager.cpp:496
 msgid "Rename Area"
 msgstr "重新命名地區"
 
-#: src/editor/map/context_manager.cpp:550
+#: src/editor/map/context_manager.cpp:510
 msgid "Choose Target Map"
 msgstr "選擇目標地圖"
 
-#: src/editor/map/context_manager.cpp:559
-#: src/editor/map/context_manager.cpp:984
+#: src/editor/map/context_manager.cpp:519
+#: src/editor/map/context_manager.cpp:944
 msgid "Error loading map"
 msgstr "讀取地圖錯誤"
 
-#: src/editor/map/context_manager.cpp:691
+#: src/editor/map/context_manager.cpp:651
 msgid "Save Map As"
 msgstr "儲存地圖至"
 
-#: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:717 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "錯誤"
 
-#: src/editor/map/context_manager.cpp:709
-#: src/editor/map/context_manager.cpp:758
+#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:718
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "你真的想要退出嗎？"
 
-#: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:677
+#: src/editor/map/context_manager.cpp:885
 msgid "This map is already open."
 msgstr "這個地圖已被開啟。"
 
-#: src/editor/map/context_manager.cpp:740
+#: src/editor/map/context_manager.cpp:700
 msgid "Save Scenario As"
 msgstr "儲存章節至"
 
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:726
 msgid "This scenario is already open."
 msgstr "這個章節已被開啟。"
 
-#: src/editor/map/context_manager.cpp:799
+#: src/editor/map/context_manager.cpp:759
 msgid "No random map generators found."
 msgstr "沒有找到隨機地圖產生器。"
 
-#: src/editor/map/context_manager.cpp:812
-#: src/editor/map/context_manager.cpp:817
+#: src/editor/map/context_manager.cpp:772
+#: src/editor/map/context_manager.cpp:777
 msgid "Map creation failed."
 msgstr "建立地圖失敗。"
 
-#: src/editor/map/context_manager.cpp:832
+#: src/editor/map/context_manager.cpp:792
 msgid "Unsaved Changes"
 msgstr "未儲存的更動"
 
-#: src/editor/map/context_manager.cpp:833
+#: src/editor/map/context_manager.cpp:793
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "你想要放棄從上次儲存到現在對地圖的所有更動？"
 
-#: src/editor/map/context_manager.cpp:886
+#: src/editor/map/context_manager.cpp:846
 msgid "Scenario saved."
 msgstr "章節已儲存。"
 
-#: src/editor/map/context_manager.cpp:901
+#: src/editor/map/context_manager.cpp:861
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "地圖已儲存。"
 
-#: src/editor/map/context_manager.cpp:976
+#: src/editor/map/context_manager.cpp:936
 msgid "Loaded embedded map data"
 msgstr "已讀取嵌入地圖的資料"
 
-#: src/editor/map/context_manager.cpp:977
-#: src/editor/map/context_manager.cpp:980
+#: src/editor/map/context_manager.cpp:937
+#: src/editor/map/context_manager.cpp:940
 msgid "Map loaded from scenario"
 msgstr "已從章節中讀取地圖"
 
-#: src/editor/map/context_manager.cpp:980
+#: src/editor/map/context_manager.cpp:940
 msgid "Loaded referenced map file:"
 msgstr "已讀取引用的地圖檔案："
 
@@ -524,15 +526,15 @@ msgstr "無法儲存章節"
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖：$msg"
 
-#: src/editor/palette/editor_palettes.cpp:50
+#: src/editor/palette/editor_palettes.cpp:47
 msgid "(Unknown Group)"
 msgstr "（未知的群組）"
 
-#: src/editor/palette/editor_palettes.cpp:308
+#: src/editor/palette/editor_palettes.cpp:300
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:309
+#: src/editor/palette/editor_palettes.cpp:301
 msgid "Will not work in game without extra care."
 msgstr "如果不特別處理，在遊戲中就不會正常運作。"
 
@@ -590,6 +592,9 @@ msgstr "cmd + 左鍵或右鍵：選擇地形"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "ctrl + 左鍵或右鍵：選擇地形"
+
+#~ msgid "Load Map"
+#~ msgstr "載入地圖"
 
 #~ msgid "Choose File"
 #~ msgstr "選擇檔案"

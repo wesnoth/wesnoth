@@ -26,6 +26,7 @@
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "terrain/filter.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"

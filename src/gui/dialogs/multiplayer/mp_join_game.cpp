@@ -87,7 +87,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		mp::send_to_server(config("load_next_scenario"));
+		mp::send_to_server(config{"load_next_scenario"});
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -313,7 +313,8 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const bool use_map_settings = level_.mandatory_child("multiplayer")["mp_use_map_settings"].to_bool();
 		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.mandatory_child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
-		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
+		const auto era_info = ng::era_metadata(*era);
+		ng::flg_manager flg(era_info, era_factions, *side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
@@ -324,8 +325,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 			}
 		}
 
-		config faction;
-		config& change = faction.add_child("change_faction");
+		config change;
 		change["change_faction"] = true;
 		change["name"] = prefs::get().login();
 		change["faction"] = flg.current_faction()["id"];
@@ -334,7 +334,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		mp::send_to_server(faction);
+		mp::send_to_server(config{"change_faction", std::move(change)});
 	}
 
 	return true;
@@ -579,14 +579,10 @@ void mp_join_game::post_show()
 	}
 
 	if(get_retval() == retval::OK) {
-
 		mp::level_to_gamestate(level_, state_);
-
 		mp::ui_alerts::game_has_begun();
-	} else if(observe_game_) {
-		mp::send_to_server(config("observer_quit", config { "name", prefs::get().login() }));
 	} else {
-		mp::send_to_server(config("leave_game"));
+		mp::send_to_server(config{"leave_game"});
 	}
 }
 

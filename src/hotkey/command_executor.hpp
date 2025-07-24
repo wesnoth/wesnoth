@@ -63,10 +63,13 @@ struct ui_command
 		: ui_command(cmd.command, cmd.id, index)
 	{
 	}
-	// the string @param id references must live longer than this object.
 	explicit ui_command(std::string_view id, int index = -1)
-		: ui_command(hotkey::get_hotkey_command(id), index)
+		: ui_command(hotkey::HOTKEY_NULL, id, index)
 	{
+		// Only set the command from the associated hotkey_command, not the ID.
+		// There are cases (specifically, autoload items) with which no command
+		// is associated, yet whose ID should be stored unmodified.
+		hotkey_command = hotkey::get_hotkey_command(id).command;
 	}
 };
 

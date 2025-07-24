@@ -157,6 +157,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
+		mouse->set_clicks(event.button.clicks);
 		break;
 	}
 
@@ -180,10 +181,15 @@ hotkey_ptr load_from_config(const config& cfg)
 	if(!mouse_cfg.empty()) {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+
 		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
 			mouse->set_button(TOUCH_MOUSE_INDEX);
 		} else {
 			mouse->set_button(cfg["button"].to_int());
+		}
+
+		if(!cfg["click"].empty()) {
+			mouse->set_clicks(cfg["click"].to_int(1));
 		}
 	}
 
@@ -225,8 +231,13 @@ hotkey_ptr load_from_config(const config& cfg)
 
 bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
-	if(event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_FINGERDOWN
-		&& event.type != SDL_FINGERUP) {
+	switch(event.type) {
+	case SDL_MOUSEBUTTONUP:
+	case SDL_MOUSEBUTTONDOWN:
+	case SDL_FINGERDOWN:
+	case SDL_FINGERUP:
+		break; // Continue with validation
+	default:
 		return false;
 	}
 
@@ -236,7 +247,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 	}
 
 	if(events::is_touch(event.button)) {
-		return button_ == TOUCH_MOUSE_INDEX;
+		return button_ == TOUCH_MOUSE_INDEX && clicks_ == event.button.clicks;
 	}
 
 	return event.button.button == button_;
@@ -244,7 +255,35 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 
 const std::string hotkey_mouse::get_name_helper() const
 {
-	return "mouse " + std::to_string(button_);
+	std::stringstream hotkey_name;
+	switch(button_) {
+	case SDL_BUTTON_LEFT:
+		hotkey_name << "left mouse";
+		break;
+	case SDL_BUTTON_RIGHT:
+		hotkey_name << "right mouse";
+		break;
+	case SDL_BUTTON_MIDDLE:
+		hotkey_name << "middle mouse";
+		break;
+	case SDL_BUTTON_X1:
+		hotkey_name << "mouse back";
+		break;
+	case SDL_BUTTON_X2:
+		hotkey_name << "mouse forward";
+		break;
+	case TOUCH_MOUSE_INDEX:
+		hotkey_name << "touch";
+		break;
+	default:
+		hotkey_name << "mouse " + std::to_string(button_);
+	}
+
+	if(clicks_ > 1) {
+		hotkey_name << " (clicks: " << clicks_ << ")";
+	}
+
+	return hotkey_name.str();
 }
 
 void hotkey_mouse::save_helper(config& item) const

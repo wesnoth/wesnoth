@@ -25,11 +25,11 @@
 #include "actions/create.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
-#include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "color.hpp"
 #include "display_chat_manager.hpp"
 #include "font/standard_colors.hpp"
+#include "formula/callable_objects.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
@@ -266,43 +266,45 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
 	std::map<const unit_type*, t_string> err_msgs_map;
 	std::vector<const unit_type*> recruit_list;
-	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 	std::vector<t_string> unknown_units;
+
+	// Required for purse checks
 	team& current_team = board().get_team(side_num);
+	const int reserved_gold = unit_helper::planned_gold_spent(side_num);
 
-	int selected = -1, i = 0;
+	int selected_index = -1, i = 0;
 
-	for(const auto& recruit : recruits) {
+	for(const auto& recruit : actions::get_recruits(side_num, last_hex)) {
 		const unit_type* type = unit_types.find(recruit);
-		if(!type) {
+		if(type) {
+			recruit_list.push_back(type);
+		} else {
 			ERR_NG << "could not find unit '" << recruit << "'";
 			unknown_units.emplace_back(recruit);
 			continue;
 		}
 
-		map_location ignored;
-		map_location recruit_hex = last_hex;
-		t_string err_msg = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
-		if (!err_msg.empty()) {
-			err_msgs_map[type] = err_msg;
+		// Empty if validation passes
+		err_msgs_map[type] = unit_helper::check_recruit_purse(type->cost(), current_team.gold(), reserved_gold);
+
+		// Save index of last selected item
+		if(type->id() == last_recruit) {
+			selected_index = i;
 		}
-		recruit_list.push_back(type);
-		if (type->id() == last_recruit) {
-			selected = i;
-		}
+
 		i++;
 	}
 
 	if(!unknown_units.empty()) {
-		auto unknown_ids = utils::format_conjunct_list("", unknown_units);
 		// TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 		// any units that the player can recruit then their standard recruitment dialog will be shown after this
 		// error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-		const auto message = VNGETTEXT("Error: there’s an unknown unit type on your recruit list: $unknown_ids",
+		gui2::show_transient_message("", VNGETTEXT(
+			"Error: there’s an unknown unit type on your recruit list: $unknown_ids",
 			"Error: there are several unknown unit types on your recruit list: $unknown_ids",
 			unknown_units.size(),
-			utils::string_map { { "unknown_ids", unknown_ids }});
-		gui2::show_transient_message("", message);
+			{{ "unknown_ids", utils::format_conjunct_list("", unknown_units) }}
+		));
 	}
 
 	if(recruit_list.empty()) {
@@ -310,47 +312,76 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	const auto& dlg = units_dialog::build_recruit_dialog(recruit_list, err_msgs_map, current_team);
-	dlg->set_selected_index(selected);
+	auto dlg = units_dialog::build_recruit_dialog(recruit_list, err_msgs_map, current_team);
+	dlg->set_selected_index(selected_index);
 	dlg->show();
-	const auto& type = recruit_list[dlg->get_selected_index()];
+
+	const unit_type* type = recruit_list[dlg->get_selected_index()];
 	last_recruit = type->id();
 
-	if((dlg->get_retval() == gui2::retval::OK) && dlg->is_selected()) {
-		map_location recruit_hex = last_hex;
-		do_recruit(type->id(), side_num, recruit_hex);
+	if(dlg->get_retval() == gui2::retval::OK) {
+		if(err_msgs_map[type].empty()) {
+			do_recruit(type->id(), side_num, last_hex);
+		} else {
+			gui2::show_transient_message("", err_msgs_map[type]);
+		}
 	}
 }
 
 void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
-	const std::string& last_recruit = board().get_team(side_num).last_recruit();
-	if(!last_recruit.empty()) {
-		map_location recruit_hex = last_hex;
-		do_recruit(last_recruit, side_num, recruit_hex);
+	team& current_team = board().get_team(side_num);
+	const std::string& last_recruit = current_team.last_recruit();
+	if(last_recruit.empty()) return;
+
+	const auto validation = std::array
+	{
+		// The recruit list may have been modified since the last recruit...
+		unit_helper::check_recruit_list(last_recruit, current_team.side(), last_hex),
+
+		// ...or we may be unable to afford any more units.
+		unit_helper::check_recruit_purse(
+			unit_types.find(last_recruit)->cost(), current_team.gold(), unit_helper::planned_gold_spent(side_num)),
+	};
+
+	// Show the first non-empty error
+	for(const std::string& err : validation) {
+		if(!err.empty()) {
+			gui2::show_transient_message("", err);
+			return;
+		}
 	}
+
+	do_recruit(last_recruit, side_num, last_hex);
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+bool menu_handler::do_recruit(const std::string& type, int side_num, const map_location& target_hex)
 {
-	map_location recruited_from = map_location::null_location();
-	team& current_team = board().get_team(side_num);
-	const auto& res = unit_helper::recruit_message(name, loc, recruited_from, current_team);
+	// TODO: do we still need this? Can't tell what exactly it's guarding...
+	const events::command_disabler disable_commands;
 
-	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
-		// MP_COUNTDOWN grant time bonus for recruiting
-		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+	// NOTE: dst may not equal target_hex after validation (when repeating recruits, for example)
+	const auto [err, dst, src] = unit_helper::validate_recruit_target(type, side_num, target_hex);
 
-		// Do the recruiting.
-		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
-		return true;
-	} else if(res.empty()) {
-		return false;
-	} else {
-		gui2::show_transient_message("", res);
+	if(!err.empty()) {
+		gui2::show_transient_message("", err);
 		return false;
 	}
 
+	if(auto wb = pc_.get_whiteboard()) {
+		if(wb->save_recruit(type, side_num, dst)) {
+			return false;
+		}
+	}
+
+	// MP_COUNTDOWN grant time bonus for recruiting
+	team& current_team = board().get_team(side_num);
+	current_team.increment_action_bonus_count();
+	current_team.set_last_recruit(type);
+
+	// Do the recruiting.
+	synced_context::run_and_throw("recruit", replay_helper::get_recruit(type, dst, src));
+	return true;
 }
 
 void menu_handler::recall(int side_num, const map_location& last_hex)
@@ -716,9 +747,6 @@ type_gender_variation choose_unit()
  * (Intended for use with any units created via debug mode.)
  */
 void create_and_place(
-	game_display&,
-	const gamemap&,
-	unit_map&,
 	const map_location& loc,
 	const unit_type& u_type,
 	unit_race::GENDER gender = unit_race::NUM_GENDERS,
@@ -745,12 +773,11 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	// Save the current mouse location before popping up the choice menu (which
 	// gives time for the mouse to move, changing the location).
 	const map_location destination = mousehandler.get_last_hex();
-	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
 	if(const auto& [type, gender, variation] = choose_unit(); type != nullptr) {
 		// Make it so.
-		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *type, gender, variation);
+		create_and_place(destination, *type, gender, variation);
 	}
 }
 
@@ -1617,21 +1644,6 @@ void console_handler::do_theme()
 	prefs::get().show_theme_dialog();
 }
 
-struct save_id_matches
-{
-	save_id_matches(const std::string& save_id)
-		: save_id_(save_id)
-	{
-	}
-
-	bool operator()(const team& t) const
-	{
-		return t.save_id() == save_id_;
-	}
-
-	std::string save_id_;
-};
-
 void console_handler::do_control()
 {
 	// :control <side> <nick>
@@ -1651,7 +1663,7 @@ void console_handler::do_control()
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(const bad_lexical_cast&) {
 		const auto& teams = menu_handler_.pc_.get_teams();
-		const auto it_t = std::find_if(teams.begin(), teams.end(), save_id_matches(side));
+		const auto it_t = utils::ranges::find(teams, side, &team::save_id);
 
 		if(it_t == teams.end()) {
 			utils::string_map symbols;
@@ -2029,7 +2041,7 @@ void console_handler::do_create()
 		}
 
 		// Create the unit.
-		create_and_place(*menu_handler_.gui_, menu_handler_.pc_.get_map(), menu_handler_.pc_.get_units(), loc, *ut);
+		create_and_place(loc, *ut);
 	} else {
 		command_failed(_("Invalid location"));
 	}
@@ -2092,10 +2104,12 @@ void console_handler::do_whiteboard_options()
 	}
 }
 
-void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_handler& /*mousehandler*/)
+// TODO: rename this function - it only does general wfl now
+void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse_handler& /*mousehandler*/)
 {
 	try {
-		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
+		wfl::variant result = wfl::formula(str).evaluate(wfl::gamestate_callable());
+		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, result.to_debug_string());
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
 		add_chat_message(std::chrono::system_clock::now(), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());

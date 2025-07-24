@@ -30,7 +30,6 @@
 #include "map/map.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
-#include "formula/callable_objects.hpp" // for location_callable
 #include "resources.hpp"
 #include "game_board.hpp"
 
@@ -39,8 +38,6 @@ static lg::log_domain log_ai("ai/attack");
 #define ERR_AI LOG_STREAM(err, log_ai)
 
 namespace ai {
-
-extern ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,
@@ -329,134 +326,6 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		<< " alternative quality: " << alternative_terrain_quality;
 
 	return value;
-}
-
-wfl::variant attack_analysis::get_value(const std::string& key) const
-{
-	using namespace wfl;
-	if(key == "target") {
-		return variant(std::make_shared<location_callable>(target));
-	} else if(key == "movements") {
-		std::vector<variant> res;
-		for(std::size_t n = 0; n != movements.size(); ++n) {
-			auto item = std::make_shared<map_formula_callable>(nullptr);
-			item->add("src", variant(std::make_shared<location_callable>(movements[n].first)));
-			item->add("dst", variant(std::make_shared<location_callable>(movements[n].second)));
-			res.emplace_back(item);
-		}
-
-		return variant(res);
-	} else if(key == "units") {
-		std::vector<variant> res;
-		for(std::size_t n = 0; n != movements.size(); ++n) {
-			res.emplace_back(std::make_shared<location_callable>(movements[n].first));
-		}
-
-		return variant(res);
-	} else if(key == "target_value") {
-		return variant(static_cast<int>(target_value*1000));
-	} else if(key == "avg_losses") {
-		return variant(static_cast<int>(avg_losses*1000));
-	} else if(key == "chance_to_kill") {
-		return variant(static_cast<int>(chance_to_kill*100));
-	} else if(key == "avg_damage_inflicted") {
-		return variant(static_cast<int>(avg_damage_inflicted));
-	} else if(key == "target_starting_damage") {
-		return variant(target_starting_damage);
-	} else if(key == "avg_damage_taken") {
-		return variant(static_cast<int>(avg_damage_taken));
-	} else if(key == "resources_used") {
-		return variant(static_cast<int>(resources_used));
-	} else if(key == "terrain_quality") {
-		return variant(static_cast<int>(terrain_quality));
-	} else if(key == "alternative_terrain_quality") {
-		return variant(static_cast<int>(alternative_terrain_quality));
-	} else if(key == "vulnerability") {
-		return variant(static_cast<int>(vulnerability));
-	} else if(key == "support") {
-		return variant(static_cast<int>(support));
-	} else if(key == "leader_threat") {
-		return variant(leader_threat);
-	} else if(key == "uses_leader") {
-		return variant(uses_leader);
-	} else if(key == "is_surrounded") {
-		return variant(is_surrounded);
-	} else {
-		return variant();
-	}
-}
-
-void attack_analysis::get_inputs(wfl::formula_input_vector& inputs) const
-{
-	add_input(inputs, "target");
-	add_input(inputs, "movements");
-	add_input(inputs, "units");
-	add_input(inputs, "target_value");
-	add_input(inputs, "avg_losses");
-	add_input(inputs, "chance_to_kill");
-	add_input(inputs, "avg_damage_inflicted");
-	add_input(inputs, "target_starting_damage");
-	add_input(inputs, "avg_damage_taken");
-	add_input(inputs, "resources_used");
-	add_input(inputs, "terrain_quality");
-	add_input(inputs, "alternative_terrain_quality");
-	add_input(inputs, "vulnerability");
-	add_input(inputs, "support");
-	add_input(inputs, "leader_threat");
-	add_input(inputs, "uses_leader");
-	add_input(inputs, "is_surrounded");
-}
-
-wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
-	//If we get an attack analysis back we will do the first attack.
-	//Then the AI can get run again and re-choose.
-	if(movements.empty()) {
-		return wfl::variant(false);
-	}
-
-	unit_map& units = resources::gameboard->units();
-
-	//make sure that unit which has to attack is at given position and is able to attack
-	unit_map::const_iterator unit = units.find(movements.front().first);
-	if(!unit.valid() || unit->attacks_left() == 0) {
-		return wfl::variant(false);
-	}
-
-	const map_location& move_from = movements.front().first;
-	const map_location& att_src = movements.front().second;
-	const map_location& att_dst = target;
-
-	//check if target is still valid
-	unit = units.find(att_dst);
-	if(unit == units.end()) {
-		return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), attack_result::E_EMPTY_DEFENDER, move_from));
-	}
-
-	//check if we need to move
-	if(move_from != att_src) {
-		//now check if location to which we want to move is still unoccupied
-		unit = units.find(att_src);
-		if(unit != units.end()) {
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), move_result::E_NO_UNIT, move_from));
-		}
-
-		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
-		if(!result->is_ok()) {
-			//move part failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
-		}
-	}
-
-	if(units.count(att_src)) {
-		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
-		if(!result->is_ok()) {
-			//attack failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
-		}
-	}
-	return wfl::variant(true);
 }
 
 } //end of namespace ai

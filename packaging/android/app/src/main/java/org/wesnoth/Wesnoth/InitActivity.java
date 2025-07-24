@@ -59,12 +59,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.wesnoth.Wesnoth.BuildConfig;
+
 public class InitActivity extends Activity {
 
 	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String VERSION_ID = "1.19.13";
 	private final static String ARCHIVE_URL =
 		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
+	private static String VERSION_ID = BuildConfig.VERSION_NAME;
 
 	private File dataDir;
 
@@ -74,6 +76,11 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
+		// Delete '+dev', since SF data url doesn't have it.
+		if (VERSION_ID.endsWith("+dev")) {
+			VERSION_ID = VERSION_ID.substring(0, VERSION_ID.length() - 4);
+		}
+
 		packages.put("Core Data", "master.zip");
 		packages.put("Music", "music.zip");
 		packages.put("Patch", "patch.zip");
@@ -83,7 +90,7 @@ public class InitActivity extends Activity {
 
 		// Keep the screen on while this activity runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		
+
 		initMainDataDir();
 
 		initSettingsMenu();
@@ -277,16 +284,19 @@ public class InitActivity extends Activity {
 
 	// Extract certificate file from apk raw resource
 	private void extractNetworkCertificate() {
+		// TODO update mechanism for this file
 		File certDir = new File(dataDir, "certificates");
 		if (!certDir.exists()) {
 			certDir.mkdir();
 		}
 		File certFile = new File(certDir, "cacert.pem");
+		if (certFile.exists()) {
+			return;
+		}
+
 		try (FileOutputStream certStream = new FileOutputStream(certFile)) {
-			if (!certFile.exists()) {
-				certFile.createNewFile();
-				copyStream(getResources().openRawResource(R.raw.cacert), certStream);
-			}
+			certFile.createNewFile();
+			copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 		} catch (Exception e) {
 			Log.e("InitActivity", "Exception", e);
 		}

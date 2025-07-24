@@ -326,7 +326,7 @@ bool update_framebuffer()
 		// Translate active_area into display coordinates as input_area_
 		input_area_ = {
 			(active_area.origin() * wsize) / osize,
-			(active_area.origin() * wsize) / osize
+			(active_area.size() * wsize) / osize
 		};
 		LOG_DP << "input area: " << input_area_;
 	}

@@ -50,7 +50,6 @@
 #include "units/unit.hpp"                  // for unit
 #include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
-#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <cmath>                       // for sqrt
@@ -539,15 +538,6 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 	return av;
 }
 
-const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
-{
-	if (attacks_) {
-		return attacks_->get_variant();
-	}
-	static wfl::variant v;
-	return v;
-}
-
 const terrain_filter& readonly_context_impl::get_avoid() const
 {
 	if (avoid_) {
@@ -983,8 +973,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 double readonly_context_impl::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
-	int ratings[6];
-	std::fill_n(ratings, 0, 6);
+	int ratings[6]{};
 	int num_used_locs = 0;
 
 	const auto locs = get_adjacent_tiles(loc);

@@ -123,10 +123,15 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const config& game : prefs::get().get_game_presets()) {
+		optional_const_config scenario = game_config_manager::get()->game_config().find_child("multiplayer", "id", game["scenario"].str());
+		if(!scenario) {
+			ERR_LB << "Scenario " << game["scenario"].str() << " not found in game config";
+			continue;
+		}
+
 		config qgame;
-		const config& scenario = game_config_manager::get()->game_config().find_mandatory_child("multiplayer", "id", game["scenario"].str());
 		int human_sides = 0;
-		for(const auto& side : scenario.child_range("side")) {
+		for(const auto& side : scenario->child_range("side")) {
 			if(side["controller"].str() == "human") {
 				human_sides++;
 			}
@@ -160,7 +165,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = human_sides;
 
-		if(scenario.has_attribute("map_data")) {
+		if(scenario->has_attribute("map_data")) {
 			qgame["map_data"] = scenario["map_data"];
 		} else {
 			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);

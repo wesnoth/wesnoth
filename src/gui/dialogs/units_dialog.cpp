@@ -188,32 +188,31 @@ void units_dialog::show_list(listbox& list)
 
 	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
-		widget_item column;
-		// generate tooltip for ith row
-		if (tooltip_gen_) {
-			column["tooltip"] = tooltip_gen_(i);
+
+		// If custom filter text generator exists, use it to generate the filter text
+		if(filter_gen_) {
+			filter_options_.emplace_back(filter_gen_(i));
+		} else {
+			filter_options_.emplace_back();
 		}
 
-		// if custom filter text generator exists, use it to generate the filter text
-		if (filter_gen_) {
-			filter_options_.push_back(filter_gen_(i));
-		}
+		for(const auto& [id, generator] : column_generators_) {
+			auto result = std::invoke(generator, i);
 
-		std::vector<std::string> filter_keys;
-		for (const auto& [id, gen] : column_generators_) {
-			column["use_markup"] = "true";
-			// generate label for ith row and column with 'id'
-			column["label"] = gen(i);
-			if (!filter_gen_ && id != "unit_image") {
-				filter_keys.emplace_back(column["label"]);
+			// Register labels to be filtered upon provided no filter generator exists
+			if(!filter_gen_ && id != "unit_image") {
+				filter_options_.back().push_back(result);
 			}
-			row_data.emplace(id, column);
+
+			row_data.emplace(id, widget_item{{ "use_markup", "true" }, { "label", std::move(result) }});
 		}
 
-		if (!filter_gen_) {
-			filter_options_.push_back(filter_keys);
+		grid& row_grid = list.add_row(row_data);
+
+		// Generate tooltip for ith row
+		if(tooltip_gen_) {
+			row_grid.find_widget<styled_widget>("row_panel").set_tooltip(tooltip_gen_(i));
 		}
-		list.add_row(row_data);
 	}
 
 	const auto [sorter_id, order] = sort_last.value_or(sort_order_);
@@ -689,11 +688,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	std::vector<unit_const_ptr>& recall_list,
 	const team& team)
 {
-	int wb_gold = 0;
-	if(resources::controller && resources::controller->get_whiteboard()) {
-		wb::future_map future; // So gold takes into account planned spending
-		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(team.side());
-	}
+	int wb_gold = unit_helper::planned_gold_spent(team.side());
 
 	// Lambda to check if a unit is recallable
 	const auto recallable = [wb_gold, &team](const unit& unit) {

@@ -197,7 +197,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	scenario["turns"] = params.num_turns;
 
 	for(config& side : scenario.child_range("side")) {
-		side["controller_lock"] = true;
+		side["controller_lock"] = false;
 		side["team_lock"] = true;
 		side["gold_lock"] = true;
 		side["income_lock"] = true;
@@ -281,9 +281,8 @@ void mp_create_game::pre_show()
 
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
-		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == *level_type::get_enum(prefs::get().mp_level_type());
-		});
+		const auto index = utils::ranges::find(level_types_,
+			level_type::get_enum(prefs::get().mp_level_type()).value(), &level_type_info::first);
 
 		if(index != level_types_.end()) {
 			return std::distance(level_types_.begin(), index);
@@ -529,25 +528,25 @@ void mp_create_game::sync_with_depcheck()
 		DBG_MP << "sync_with_depcheck: correcting scenario";
 
 		// Match scenario and scenario type
-		const auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
-		const bool different_type = new_level_index.first != create_engine_.current_level_type();
+		const auto [new_level_type, new_level_index] = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
+		const bool different_type = new_level_type != create_engine_.current_level_type();
 
-		if(new_level_index.second != -1) {
-			create_engine_.set_current_level_type(new_level_index.first);
-			create_engine_.set_current_level(new_level_index.second);
-			selected_game_index_ = new_level_index.second;
+		if(new_level_index != -1) {
+			create_engine_.set_current_level_type(new_level_type);
+			create_engine_.set_current_level(new_level_index);
+			selected_game_index_ = new_level_index;
 
-			auto& game_types_list = find_widget<menu_button>("game_types");
-			game_types_list.set_value(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; })));
+			auto iter = utils::ranges::find(level_types_, new_level_type, &level_type_info::first);
+			find_widget<menu_button>("game_types").set_value(std::distance(level_types_.begin(), iter));
 
 			if(different_type) {
-				display_games_of_type(new_level_index.first, create_engine_.current_level().id());
+				display_games_of_type(new_level_type, create_engine_.current_level().id());
 			} else {
 				// This function (or rather on_game_select) might be triggered by a listbox callback, in
 				// which case we cannot use display_games_of_type since it destroys the list (and its
 				// elements) which might result in segfaults. Instead, we assume that a listbox-triggered
 				// sync_with_depcheck call never changes the game type and goes to this branch instead.
-				find_widget<listbox>("games_list").select_row(new_level_index.second);
+				find_widget<listbox>("games_list").select_row(new_level_index);
 
 				// Override the last selection so on_game_select selects the new level
 				selected_game_index_ = -1;

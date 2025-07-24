@@ -1121,8 +1121,6 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 
 	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
 		select_or_action(browse);
-	} else {
-		deselect_hex();
 	}
 }
 
@@ -1445,7 +1443,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 				defw_type = string_table["type_" + defw_type];
 			}
 
-			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
+			const std::set<std::string> checking_tags_other = {"defense", "damage_type", "disable", "berserk", "drains",
 				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 			std::string attw_specials = attacker_weapon.weapon_specials();
 			std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
@@ -1627,7 +1625,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	gui().clear_attack_indicator();
 	gui().unhighlight_reach();
 
-	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
+	current_team().increment_action_bonus_count();
 	// TODO: change ToD to be location specific for the defender
 
 	const tod_manager& tod_man = pc_.get_tod_manager();
@@ -1646,23 +1644,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 			tod_man.get_time_of_day()
 		)
 	);
-}
-
-std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const
-{
-	std::set<map_location> res;
-
-	const team& uteam = pc_.get_teams()[side - 1];
-
-	for(const map_location& aloc : get_adjacent_tiles(loc)) {
-		unit_map::const_iterator i = find_unit(aloc);
-
-		if(i && uteam.is_enemy(i->side())) {
-			res.insert(aloc);
-		}
-	}
-
-	return res;
 }
 
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)

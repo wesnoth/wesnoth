@@ -74,7 +74,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, hotkey_record_()
 	, image_(cfg["image"].str())
 	, description_(cfg["description"].t_str())
-	, needs_select_(cfg["needs_select"].to_bool(false))
 	, show_if_(cfg.child_or_empty("show_if"), true)
 	, filter_location_(cfg.child_or_empty("filter_location"), true)
 	, command_(cfg.child_or_empty("command"))
@@ -83,6 +82,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, use_wml_menu_(cfg["use_hotkey"].str() != "only")
 	, is_synced_(cfg["synced"].to_bool(true))
 	, persistent_(cfg["persistent"].to_bool(true))
+	, needs_select_(cfg["needs_select"].to_bool(false))
 {
 	if(cfg.has_attribute("needs_select")) {
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
@@ -97,7 +97,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	, hotkey_record_()
 	, image_()
 	, description_()
-	, needs_select_(false)
 	, show_if_(vconfig::empty_vconfig())
 	, filter_location_(vconfig::empty_vconfig())
 	, command_()
@@ -106,6 +105,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	, use_wml_menu_(true)
 	, is_synced_(true)
 	, persistent_(true)
+	, needs_select_(false)
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
@@ -123,7 +123,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, w
 	, hotkey_record_(std::move(original.hotkey_record_)) // Make sure we have full lifetime control of the old record
 	, image_(original.image_)
 	, description_(original.description_)
-	, needs_select_(original.needs_select_)
 	, show_if_(original.show_if_)
 	, filter_location_(original.filter_location_)
 	, command_(original.command_)
@@ -132,6 +131,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, w
 	, use_wml_menu_(original.use_wml_menu_)
 	, is_synced_(original.is_synced_)
 	, persistent_(original.persistent_)
+	, needs_select_(original.needs_select_)
 {
 	// Apply WML.
 	update(definition);

@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "gui/sort_order.hpp"
+
 #include <string>
 #include <vector>
 
@@ -25,11 +27,22 @@ namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
+// TODO: use this for more [era] stuff
+// TODO: move this somewhere more general
+struct era_metadata
+{
+	/** Parses an [era] tag. */
+	explicit era_metadata(const config& cfg);
+
+	/** The order to display factions when a player selects their leader. */
+	sort_order::type faction_sort_order;
+};
+
 /** FLG stands for faction, leader and gender. */
 class flg_manager
 {
 public:
-	flg_manager(const std::vector<const config*>& era_factions,
+	flg_manager(const era_metadata& era_info, const std::vector<const config*>& era_factions,
 		const config& side, bool lock_settings, bool use_map_settings, bool saved_game);
 
 	void set_current_faction(const unsigned index);
@@ -80,6 +93,11 @@ public:
 	bool leader_lock() const
 		{ return leader_lock_; }
 
+	const era_metadata& era_info() const
+	{
+		return era_info_;
+	}
+
 private:
 	flg_manager(const flg_manager&) = delete;
 	flg_manager& operator=(const flg_manager&) = delete;
@@ -101,6 +119,8 @@ private:
 	int leader_index(const std::string& leader) const;
 	/** returns -1 if no gender with that name was found */
 	int gender_index(const std::string& gender) const;
+
+	const era_metadata& era_info_;
 
 	const std::vector<const config*>& era_factions_;
 

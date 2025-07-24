@@ -198,6 +198,14 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 	return 0;
 }
 
+/**
+ * This function return true if locations checked are the same, or if units have same id.
+ */
+bool same_unit(const unit& u, const unit& unit)
+{
+	return (u.get_location() == unit.get_location() || u.id() == unit.id());
+}
+
 }
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
@@ -220,7 +228,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || &u == this || !u.affect_distant(tag_name)) {
+		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -262,7 +270,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// If so, add to unit_ability_list.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || &u == this || !u.affect_distant(tag_name)) {
+		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -476,7 +484,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, loc);
-			if(&u == &self || distance > radius || !ufilt(u, self)) {
+			if(same_unit(u, self) || distance > radius || !ufilt(u, self)) {
 				continue;
 			}
 			int dir = 0;
@@ -645,7 +653,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 	const unit_map& units = get_unit_map();
 
 	for(const unit& u : units) {
-		if(!u.has_ability_distant_image() || u.incapacitated() || &u == this) {
+		if(!u.has_ability_distant_image() || u.incapacitated() || same_unit(u, *this)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -848,11 +856,12 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
+	bool inverse_affect = abilities_list::weapon_inverse_affect_tags().count(special) != 0;
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
-		if(special_active(i, AFFECT_SELF, special)) {
+		if(special_active(i, inverse_affect ? AFFECT_OTHER : AFFECT_SELF, special)) {
 			res.emplace_back(&i, loc, loc);
 		}
 	}
@@ -862,7 +871,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
-		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
+		if(other_attack_->special_active(i, inverse_affect ? AFFECT_SELF : AFFECT_OTHER, special)) {
 			res.emplace_back(&i, other_loc_, other_loc_);
 		}
 	}
@@ -941,7 +950,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 	}
 	for(const unit& u : get_unit_map()) {
-		if(!u.has_ability_distant() || u.incapacitated() || &u == self_.get()) {
+		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -1113,7 +1122,7 @@ void attack_type::weapon_specials_impl_adj(
 	const unit_map& units = get_unit_map();
 	if(self){
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || &u == self.get()) {
+			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1377,6 +1386,15 @@ double attack_type::modified_damage() const
 	return damage_value;
 }
 
+int attack_type::modified_chance_to_hit(int cth, bool special_only) const
+{
+	int parry = other_attack_ ? other_attack_->parry() : 0;
+	unit_ability_list defense_list = special_only ? get_specials("defense") : get_specials_and_abilities("defense");
+	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
+	cth = std::clamp((100 - composite_value(defense_list, 100 - cth)) + accuracy_ - parry, 0, 100);
+	return composite_value(chance_to_hit_list, cth);
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 
@@ -1549,17 +1567,18 @@ namespace { // Helpers for attack_type::special_active()
 
 unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
 {
+	bool inverse_affect = abilities_list::weapon_inverse_affect_tags().count(ability) != 0;
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, true);
+			return special_active(*i.ability_cfg, inverse_affect ? AFFECT_OTHER : AFFECT_SELF, ability, true);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true);
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, inverse_affect ? AFFECT_SELF : AFFECT_OTHER, ability, true);
 		});
 	}
 
@@ -1785,7 +1804,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || &u == self_.get()) {
+			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *self_)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1810,7 +1829,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || &u == other_.get()) {
+			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *other_)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1890,7 +1909,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 			}
 		}
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || &u == self_.get()) {
+			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1916,7 +1935,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		}
 
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || &u == other_.get()) {
+			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -2179,7 +2198,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		}
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || &u == self_.get()) {
+				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
@@ -2207,7 +2226,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || &u == other_.get()) {
+				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
@@ -2477,7 +2496,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 			}
 		}
 
-		if(wham == EFFECT_DEFAULT || wham == EFFECT_CUMULABLE){
+		if(wham != EFFECT_WITHOUT_CLAMP_MIN_MAX) {
 			if(cfg.has_attribute("max_value")){
 				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
@@ -2534,7 +2553,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 	}
 
-	if((wham != EFFECT_CUMULABLE) && set_effect_max.type != NOT_USED) {
+	if(wham != EFFECT_CUMULABLE && set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);

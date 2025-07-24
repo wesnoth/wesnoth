@@ -3,8 +3,8 @@
      com.gamemaker.game
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionName="1.19.13"
-    android:versionCode="11913"
+    android:versionName="1.19.14+dev"
+    android:versionCode="11914"
     android:installLocation="auto">
 
     <!-- OpenGL ES 2.0 -->
@@ -101,10 +101,20 @@
         <activity android:name=".WesnothActivity"
             android:screenOrientation="locked"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTask"
             android:configChanges="layoutDirection|locale|orientation|uiMode|screenLayout|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:exported="true">
         </activity>
+        
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="org.wesnoth.Wesnoth.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -2793,6 +2793,36 @@ msgstr ""
 "戦いによるときの声が再びこの使い古された戦場に聞こえる。ここには、何千人もの"
 "勇敢な兵士たちの幽霊が浮かんでいる。彼らは目に見えないが、山々、木々、川に存"
 "在している。"
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:7
+msgid "6p — Double Siege"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:8
+msgid ""
+"Two armies attacked a single city, both emerged victorious. Now, only one "
+"can claim the victory."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:25
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:61
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:73
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Top"
+msgstr "北軍"
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:37
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:49
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:85
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Bottom"
+msgstr "北軍"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5

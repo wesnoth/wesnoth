@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
 "PO-Revision-Date: 2021-01-23 15:27+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -2964,6 +2964,36 @@ msgstr ""
 "Els sorolls de la batalla es poden tornar a sentir en aquest camp de batalla "
 "erosionat pel temps, on els fantasmes de milers de valents guerrers floten "
 "invisiblement entre les muntanyes, el arbres i els rius."
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:7
+msgid "6p — Double Siege"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Double_Siege
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:8
+msgid ""
+"Two armies attacked a single city, both emerged victorious. Now, only one "
+"can claim the victory."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:25
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:61
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:73
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Top"
+msgstr "teamname^Nord"
+
+#. [side]
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:37
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:49
+#: data/multiplayer/scenarios/6p_Double_Siege.cfg:85
+#, fuzzy
+#| msgid "teamname^North"
+msgid "teamname^Bottom"
+msgstr "teamname^Nord"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5

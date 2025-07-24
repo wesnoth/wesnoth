@@ -258,21 +258,6 @@ public:
 public:
 
 	// =======================================================================
-	// EVALUATION
-	// =======================================================================
-
-	/**
-	 * Evaluates a string command using command AI.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager. Will intercept those commands which start with '!'
-	 *       and '?', and will try to evaluate them as internal commands.
-	 * @param side side number (1-based).
-	 * @param str string to evaluate.
-	 * @return string result of evaluation.
-	 */
-	const std::string evaluate_command( side_number side, const std::string& str );
-
-	// =======================================================================
 	// ADD, CREATE AIs, OR LIST AI TYPES
 	// =======================================================================
 
@@ -435,26 +420,6 @@ private:
 	AI_map_of_stacks ai_map_;
 
 	static manager* singleton_;
-
-	// =======================================================================
-	// EVALUATION
-	// =======================================================================
-
-	/**
-	 * Evaluates an internal manager command.
-	 * @param side side number (1-based).
-	 * @param str string to evaluate.
-	 * @return string result of evaluation.
-	 * TODO: rewrite this function to use a fai or lua parser.
-	 */
-	const std::string internal_evaluate_command( side_number side, const std::string& str );
-
-	/**
-	 * Determines if the command should be intercepted and evaluated as internal command.
-	 * @param str command string to check.
-	 * @return true if the command should be intercepted and evaluated.
-	 */
-	bool should_intercept( const std::string& str ) const;
 
 	// =======================================================================
 	// AI STACKS

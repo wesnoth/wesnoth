@@ -47,6 +47,7 @@ public:
 	int min_range() const { return min_range_; }
 	int max_range() const { return max_range_; }
 	std::string accuracy_parry_description() const;
+	std::string accuracy_parry_tooltip() const;
 	int accuracy() const { return accuracy_; }
 	int parry() const { return parry_; }
 	int damage() const { return damage_; }
@@ -104,6 +105,11 @@ public:
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	double modified_damage() const;
+	/** Return the defense value, considering specials.
+	 * @param cth The chance_to_hit value modified or not by function.
+	 * @param special_only Decide if get_specials() or get_specials_and_abilities()should be used.
+	 */
+	int modified_chance_to_hit(int cth, bool special_only = false) const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.

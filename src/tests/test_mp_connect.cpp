@@ -94,7 +94,7 @@ static test_connect_engine* create_test_connect_engine()
 static ng::side_engine* create_side_engine(const config& defaults,
 	test_connect_engine* connect_engine)
 {
-	config side_cfg = connect_engine->current_config()->mandatory_child("side");
+	config side_cfg = connect_engine->scenario().mandatory_child("side");
 	side_cfg.remove_attributes("faction");
 	side_cfg.clear_children("default_faction");
 	side_cfg.clear_children("leader");
