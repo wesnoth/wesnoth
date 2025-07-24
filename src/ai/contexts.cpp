@@ -973,8 +973,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 double readonly_context_impl::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
-	int ratings[6];
-	std::fill_n(ratings, 0, 6);
+	int ratings[6]{};
 	int num_used_locs = 0;
 
 	const auto locs = get_adjacent_tiles(loc);
