@@ -19,25 +19,11 @@
 #include "game_config_view.hpp"
 #include "sound_music_track.hpp"
 #include "time_of_day.hpp"
+#include "utils/general.hpp"
 
 //
 // Helper methods for the editor_controller class
 //
-
-namespace utils
-{
-/**
- * Retuns a vector whose elements are initialized from the given range.
- *
- * @todo Make this a global utility.
- */
-template<typename T, typename Range>
-inline std::vector<T> from_range(Range&& range)
-{
-	return std::vector<T>(range.begin(), range.end());
-}
-
-} // namespace utils
 
 namespace editor
 {

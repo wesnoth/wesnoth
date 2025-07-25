@@ -145,6 +145,17 @@ auto* find(Container& container, const Value& value)
 }
 
 /**
+ * Returns a vector whose elements are initialized from the given range.
+ *
+ * @todo C++23: use std::vector and co's from_range constructor
+ */
+template<typename T, typename Range>
+inline std::vector<T> from_range(Range&& range)
+{
+	return std::vector<T>(range.begin(), range.end());
+}
+
+/**
  * Conveniences wrapper for range algorithms.
  *
  * @todo C++20: use std::ranges
