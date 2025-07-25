@@ -26,13 +26,12 @@
 #include "mouse_handler_base.hpp"
 #include "tooltips.hpp"
 
-#include "sound_music_track.hpp"
+namespace font { struct floating_label_context; }
+namespace sound { class music_track; }
 
-namespace font {
-struct floating_label_context;
-}
-
-namespace editor {
+namespace editor
+{
+struct schedule_metadata;
 
 /**
  * The editor_controller class contains the mouse and keyboard event handling
@@ -196,9 +195,6 @@ private:
 	/** init the display object and general set-up */
 	void init_gui();
 
-	/** init the available time-of-day settings */
-	void init_tods(const game_config_view& game_config);
-
 	/** Reload images */
 	void refresh_image_cache();
 
@@ -228,8 +224,7 @@ private:
 	const std::unique_ptr<editor_display> gui_;
 
 	/** Pre-defined time of day lighting settings for the settings dialog */
-	typedef std::map<std::string, std::pair<std::string ,std::vector<time_of_day>>> tods_map;
-	tods_map tods_;
+	std::map<std::string, editor::schedule_metadata> schedules_;
 
 	/* managers */
 public:
