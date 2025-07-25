@@ -877,6 +877,18 @@ WIDGET_SETTER("on_left_click", lua_index_raw, gui2::widget)
 	}
 }
 
+WIDGET_SETTER("on_double_click", lua_index_raw, gui2::widget)
+{
+	gui2::window* wd = w.get_window();
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
+	}
+	lua_pushvalue(L, value.index);
+	if (!luaW_setwidgetcallback(L, &w, wd, "on_double_click")) {
+		connect_signal_mouse_left_double_click(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_double_click"));
+	}
+}
+
 WIDGET_SETTER("on_button_click", lua_index_raw, gui2::widget)
 {
 	gui2::window* wd = w.get_window();
